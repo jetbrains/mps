@@ -13,9 +13,9 @@ import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import jetbrains.mps.ide.MPSCodeInsightBundle;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import javax.swing.Icon;
-import jetbrains.mps.ide.editor.popup.IconResourceBundle_OverrideImplements;
+import jetbrains.mps.ide.editor.popup.OverrideImplementsIcons;
 import com.intellij.openapi.actionSystem.AnAction;
 import jetbrains.mps.workbench.action.BaseAction;
 import com.intellij.openapi.actionSystem.ActionManager;
@@ -63,12 +63,12 @@ public final class MethodIsOverriddenEditorMessage extends AbstractOverrideEdito
   }
 
   private static String getTextFromOverride(SNode override) {
-    return ((String) BHReflection.invoke0(((SNode) BHReflection.invoke0(override, CONCEPTS.ConceptMethodDeclaration$N0, SMethodTrimmedId.create("getContainingConcept", CONCEPTS.ConceptMethodDeclaration$N0, "i3POAMX"))), CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+    return ((String) BHReflection.invoke0(((SNode) BHReflection.invoke0(override, CONCEPTS.ConceptMethodDeclaration$N0, SMethodIdV2.create("getContainingConcept", 1241074789565L, 0x28bccc7daff7d4f3L))), CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL)));
   }
 
   @Override
   public Icon getIcon() {
-    return (this.myOverridden ? IconResourceBundle_OverrideImplements.getInstance().getResource("OVERRIDDEN") : IconResourceBundle_OverrideImplements.getInstance().getResource("IMPLEMENTED"));
+    return (this.myOverridden ? OverrideImplementsIcons.OVERRIDDEN : OverrideImplementsIcons.IMPLEMENTED);
   }
 
   @Override
@@ -78,7 +78,7 @@ public final class MethodIsOverriddenEditorMessage extends AbstractOverrideEdito
 
   @Override
   public AnAction getClickAction() {
-    // that is right: the method is overridden (implemented) and we can navigate to the implemeting methods (descendant)
+    // that is right: the method is overridden (implemented) and we can navigate to the implementing methods (descendant)
     return ((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.ide.actions.GoToImplementationBehaviorMethod_Action"));
   }
 

@@ -20,7 +20,7 @@ import com.intellij.facet.FacetManager;
 import com.intellij.facet.FacetType;
 import com.intellij.facet.ModifiableFacetModel;
 import com.intellij.openapi.module.Module;
-import com.intellij.openapi.project.ModuleAdapter;
+import com.intellij.openapi.project.ModuleListener;
 import com.intellij.openapi.project.Project;
 import com.intellij.util.Function;
 import jetbrains.mps.ide.findusages.model.scopes.ProjectScope;
@@ -51,7 +51,7 @@ import java.util.Set;
 /**
  * Created by danilla on 6/15/15.
  */
-public class ModuleRenameHandler extends ModuleAdapter {
+public class ModuleRenameHandler implements ModuleListener {
   @Override
   public void modulesRenamed(@NotNull final Project project, @NotNull List<? extends Module> modules, @NotNull Function<? super Module, String> oldNameProvider) {
     for (final Module module : modules) {

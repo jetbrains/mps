@@ -44,11 +44,7 @@ public class NonTypesystemRule_PatternOverrides_check extends MigrationScriptBas
     {
       SearchScope scope_wz5m8m_a0f = CommandUtil.createScope(m);
       final SearchScope scope_wz5m8m_a0f_0 = new EditableFilteringScope(scope_wz5m8m_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_wz5m8m_a0f_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_wz5m8m_a0f_0;
       List<Problem> result = ListSequence.fromList(new ArrayList<Problem>());
       for (SNode rule : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NonTypesystemRule$um, false))) {
         if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(rule, LINKS.applicableNode$Ro4C), CONCEPTS.PatternCondition$zC)) {
@@ -61,7 +57,7 @@ public class NonTypesystemRule_PatternOverrides_check extends MigrationScriptBas
       return result;
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, "jetbrains.mps.lang.typesystem"), 2);
   }
 

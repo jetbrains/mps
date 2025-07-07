@@ -12,7 +12,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.baseLanguage.util.BaseLanguageEnvironmentHelper;
+import jetbrains.mps.baseLanguage.util.StubClassDiscovery;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -29,7 +29,7 @@ public class subtyping_classifier_SubtypingRule extends SubtypingRule_Runtime im
     List<SNode> supertypes = ListSequence.fromList(new ArrayList<SNode>());
     if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$bK)) {
       SNode classConcept = SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$bK);
-      if (!((SLinkOperations.getTarget(classConcept, LINKS.superclass$Mp9$) == null))) {
+      if (!(SLinkOperations.getTarget(classConcept, LINKS.superclass$Mp9$) == null)) {
         ListSequence.fromList(supertypes).addElement(SLinkOperations.getTarget(classConcept, LINKS.superclass$Mp9$));
       }
       ListSequence.fromList(supertypes).addSequence(ListSequence.fromList(SLinkOperations.getChildren(classConcept, LINKS.implementedInterface$rujG)));
@@ -44,7 +44,7 @@ public class subtyping_classifier_SubtypingRule extends SubtypingRule_Runtime im
     if (ListSequence.fromList(supertypes).isEmpty()) {
       ListSequence.fromList(result).addElement(_quotation_createNode_pgdy8e_a0a0a6a1());
     }
-    List<SNode> mirrors = new BaseLanguageEnvironmentHelper().findCompatibleClassifiers(classifier);
+    List<SNode> mirrors = new StubClassDiscovery().findCompatibleClassifiers(classifier);
     for (SNode mirror : ListSequence.fromList(mirrors)) {
       SNode mirrorType = SNodeOperations.copyNode(clt);
       SLinkOperations.setTarget(mirrorType, LINKS.classifier$cxMr, mirror);
@@ -52,8 +52,9 @@ public class subtyping_classifier_SubtypingRule extends SubtypingRule_Runtime im
     }
     for (SNode supertype : supertypes) {
       SNode supertypeCopy = SNodeOperations.cast(SNodeOperations.copyNode(supertype), CONCEPTS.ClassifierType$bL);
+      boolean skip = false;
       for (SNode typeParam : SLinkOperations.getChildren(supertypeCopy, LINKS.parameter$oqG$)) {
-        List<SNode> descendants = ListSequence.fromList(SNodeOperations.getNodeDescendants(typeParam, CONCEPTS.TypeVariableReference$WL, true, new SAbstractConcept[]{})).toListSequence();
+        List<SNode> descendants = ListSequence.fromList(SNodeOperations.getNodeDescendants(typeParam, CONCEPTS.TypeVariableReference$WL, true, new SAbstractConcept[]{})).toList();
         for (SNode typeVar : descendants) {
           int i = ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$Lipp)).indexOf(SLinkOperations.getTarget(typeVar, LINKS.typeVariableDeclaration$Lz1I));
           if (i < 0) {
@@ -63,12 +64,17 @@ public class subtyping_classifier_SubtypingRule extends SubtypingRule_Runtime im
             // substitute the typevar ref with the existing type from the original CT
             SNodeOperations.replaceWithAnother(typeVar, SNodeOperations.copyNode(ListSequence.fromList(SLinkOperations.getChildren(clt, LINKS.parameter$oqG$)).getElement(i)));
           } else {
-            // this is a (partially) raw class
-            typeParam.delete();
+            // this is a (partially) raw class, it is no use to add it
+            skip = true;
+            break;
           }
         }
       }
-      ListSequence.fromList(result).addElement(supertypeCopy);
+
+      // Skip supertypes that rely on our parameters
+      if (!(skip)) {
+        ListSequence.fromList(result).addElement(supertypeCopy);
+      }
     }
     ListSequence.fromList(supertypes).addElement(clt);
     for (SNode supertype : supertypes) {

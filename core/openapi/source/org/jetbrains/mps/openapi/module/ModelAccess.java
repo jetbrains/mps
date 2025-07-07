@@ -25,6 +25,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 import java.util.concurrent.Semaphore;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 /**
@@ -72,11 +73,18 @@ public interface ModelAccess {
    */
   void runWriteAction(Runnable r);
 
+  default <T> T computeReadAction(Supplier<T> s) {
+    return computeXXXAction(s, this::runReadAction);
+  }
   default <T> T computeWriteAction(Supplier<T> s) {
+    return computeXXXAction(s, this::runWriteAction);
+  }
+
+  private static <T> T computeXXXAction(Supplier<T> s, Consumer<Runnable> runWithXXX) {
     var aux = new Object() {
       T result = null;
     };
-    runWriteAction(() -> {
+    runWithXXX.accept(() -> {
       aux.result = s.get();
     });
     return aux.result;

@@ -3,6 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
+    <use id="3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1" name="jetbrains.mps.lang.constraints" version="6" />
     <devkit ref="00000000-0000-4000-0000-5604ebd4f22c(jetbrains.mps.devkit.aspect.constraints)" />
   </languages>
   <imports>
@@ -74,7 +75,7 @@
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -107,6 +108,7 @@
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -187,7 +189,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -207,7 +209,6 @@
       <concept id="1153944233411" name="jetbrains.mps.baseLanguage.collections.structure.ForEachVariableReference" flags="nn" index="2GrUjf">
         <reference id="1153944258490" name="variable" index="2Gs0qQ" />
       </concept>
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1160612413312" name="jetbrains.mps.baseLanguage.collections.structure.AddElementOperation" flags="nn" index="TSZUe" />
       <concept id="1202120902084" name="jetbrains.mps.baseLanguage.collections.structure.WhereOperation" flags="nn" index="3zZkjj" />
     </language>
@@ -430,9 +431,9 @@
                   </node>
                   <node concept="3zZkjj" id="5Vvmn_QkihY" role="2OqNvi">
                     <node concept="1bVj0M" id="5Vvmn_QkihZ" role="23t8la">
-                      <node concept="Rh6nW" id="5Vvmn_Qkii0" role="1bW2Oz">
+                      <node concept="gl6BB" id="5W7E4fV0VSN" role="1bW2Oz">
                         <property role="TrG5h" value="it" />
-                        <node concept="2jxLKc" id="5Vvmn_Qkii1" role="1tU5fm" />
+                        <node concept="2jxLKc" id="5W7E4fV0VSO" role="1tU5fm" />
                       </node>
                       <node concept="3clFbS" id="5Vvmn_Qkii2" role="1bW5cS">
                         <node concept="3clFbF" id="5Vvmn_Qkii3" role="3cqZAp">
@@ -441,7 +442,7 @@
                               <node concept="2yIwOk" id="5Vvmn_Qkii6" role="2OqNvi" />
                               <node concept="2OqwBi" id="5Vvmn_Qkii7" role="2Oq$k0">
                                 <node concept="37vLTw" id="5Vvmn_Qkii8" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="5Vvmn_Qkii0" resolve="it" />
+                                  <ref role="3cqZAo" node="5W7E4fV0VSN" resolve="it" />
                                 </node>
                                 <node concept="2qgKlT" id="5Vvmn_Qkii9" role="2OqNvi">
                                   <ref role="37wK5l" to="tp4h:hEwJimy" resolve="createType" />

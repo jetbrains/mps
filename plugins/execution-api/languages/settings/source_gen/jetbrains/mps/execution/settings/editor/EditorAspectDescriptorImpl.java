@@ -63,29 +63,28 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     }
     return Collections.<ConceptEditor>emptyList();
   }
-
+  private Collection<ConceptEditorComponent> getDeclaredEC_0(String editorComponentId) {
+    switch (editorComponentId) {
+      case "jetbrains.mps.execution.settings.editor.EditorComponent":
+        return Collections.singletonList(new EditorComponent());
+      case "jetbrains.mps.execution.settings.editor.PersistentMethodsComponent":
+        return Collections.singletonList(new PersistentMethodsComponent());
+      case "jetbrains.mps.execution.settings.editor.PersistentPropertiesComponent":
+        return Collections.singletonList(new PersistentPropertiesComponent());
+    }
+    return Collections.emptyList();
+  }
   @NotNull
   public Collection<ConceptEditorComponent> getDeclaredEditorComponents(SAbstractConcept concept, String editorComponentId) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
     switch (conceptIndex1.index(cncpt)) {
       case 0:
-        if (true) {
-          switch (editorComponentId) {
-            case "jetbrains.mps.execution.settings.editor.EditorComponent":
-              return Collections.<ConceptEditorComponent>singletonList(new EditorComponent());
-            case "jetbrains.mps.execution.settings.editor.PersistentMethodsComponent":
-              return Collections.<ConceptEditorComponent>singletonList(new PersistentMethodsComponent());
-            case "jetbrains.mps.execution.settings.editor.PersistentPropertiesComponent":
-              return Collections.<ConceptEditorComponent>singletonList(new PersistentPropertiesComponent());
-            default:
-              return Collections.<ConceptEditorComponent>emptyList();
-          }
-        }
-        break;
+        return getDeclaredEC_0(editorComponentId);
       default:
     }
-    return Collections.<ConceptEditorComponent>emptyList();
+    return Collections.emptyList();
   }
+
 
   @NotNull
   @Override

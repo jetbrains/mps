@@ -13,16 +13,14 @@ import jetbrains.mps.make.script.IScript;
 import jetbrains.mps.make.script.IScriptController;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.messages.Message;
-import jetbrains.mps.messages.MessageKind;
-import jetbrains.mps.internal.make.runtime.util.FutureValue;
 import jetbrains.mps.make.dependencies.MakeSequence;
 import jetbrains.mps.make.service.CoreMakeTask;
+import jetbrains.mps.internal.make.runtime.util.FutureValue;
 import jetbrains.mps.make.IMakeNotificationListener;
 
 /**
  * Simplistic make service tailored for MPS own tests
+ * XXX pretty much identical to BuildMakeService, do we care to keep both?
  */
 @GeneratedClass(node = "r:d1867d68-bb03-4cb4-adc6-3d5ffa40e888(jetbrains.mps.testbench)/6214179127578263953", model = "r:d1867d68-bb03-4cb4-adc6-3d5ffa40e888(jetbrains.mps.testbench)")
 public class TestMakeService extends AbstractMakeService implements IMakeService {
@@ -31,18 +29,11 @@ public class TestMakeService extends AbstractMakeService implements IMakeService
 
   @Override
   public Future<IResult> make(MakeSession session, Iterable<? extends IResource> resources, IScript script, IScriptController controller, @NotNull ProgressMonitor monitor) {
-    String scrName = "Build";
-    if (Sequence.fromIterable(resources).isEmpty()) {
-      String msg = scrName + " aborted: nothing to do";
-      session.getMessageHandler().handle(new Message(MessageKind.ERROR, msg));
-      return new FutureValue<IResult>(new IResult.FAILURE(null));
-    }
-
     MakeSequence makeSeq = new MakeSequence(resources, script, session);
 
     IScriptController ctl = this.completeController(controller, session);
 
-    CoreMakeTask task = new CoreMakeTask(scrName, makeSeq, ctl, session.getMessageHandler());
+    CoreMakeTask task = new CoreMakeTask(makeSeq, ctl, session.getMessageHandler());
     task.run(monitor);
     return new FutureValue<IResult>(task.getResult());
   }

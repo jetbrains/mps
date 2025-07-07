@@ -15,22 +15,21 @@ import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopes;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.HashMap;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ResourceClassifierType_Constraints extends BaseConstraintsDescriptor {
@@ -55,30 +54,18 @@ public class ResourceClassifierType_Constraints extends BaseConstraintsDescripto
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.classifier$cxMr, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.classifier$cxMr, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_ymgo28_a0a0a0a0a1a0a0a0d;
+            return new SNodePointer("r:6df86908-c97f-4644-97f0-5eff375e8e15(jetbrains.mps.make.facet.constraints)", "6836281137582793036");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forResolvableElements(Sequence.fromIterable(SNodeOperations.ofConcept(ClassifierScopes.getVisibleClassifiersScope((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), false).getAvailableElements(null), CONCEPTS.Classifier$Ix)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(it, SLinkOperations.getTarget(_quotation_createNode_ymgo28_a0a0a0a0a0a0a1a0a0a1a0a0a0d(), LINKS.classifier$cxMr)) || Sequence.fromIterable((SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.as(it, CONCEPTS.NamedTupleDeclaration$aM), LINKS.implements$1gsv), LINKS.classifier$cxMr))).any(new IWhereFilter<SNode>() {
-                  public boolean accept(SNode it2) {
-                    return (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(it2, SLinkOperations.getTarget(_quotation_createNode_ymgo28_a0a0a0a0a0a0a0a0a0b0a0a0b0a0a0a3(), LINKS.classifier$cxMr));
-                  }
-                });
-              }
-            }));
+            return ListScope.forResolvableElements(Sequence.fromIterable(SNodeOperations.ofConcept(ClassifierScopes.getVisibleClassifiersScope((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), false).getAvailableElements(null), CONCEPTS.Classifier$Ix)).where((it) -> (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(it, SLinkOperations.getTarget(_quotation_createNode_ymgo28_a0a0a0a0a0a0a1a0a0a0a0a0a0d(), LINKS.classifier$cxMr)) || Sequence.fromIterable((SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.as(it, CONCEPTS.NamedTupleDeclaration$aM), LINKS.implements$1gsv), LINKS.classifier$cxMr))).any((it2) -> (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(it2, SLinkOperations.getTarget(_quotation_createNode_ymgo28_a0a0a0a0a0a0a0a0a0b0a0a0a0a0a0a3(), LINKS.classifier$cxMr)))));
           }
         };
       }
@@ -90,14 +77,14 @@ public class ResourceClassifierType_Constraints extends BaseConstraintsDescripto
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ResourceTypeDeclaration$hB);
   }
-  private static SNode _quotation_createNode_ymgo28_a0a0a0a0a0a0a1a0a0a1a0a0a0d() {
+  private static SNode _quotation_createNode_ymgo28_a0a0a0a0a0a0a1a0a0a0a0a0a0d() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
     quotedNode_1 = nb.getResult();
     nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "r:4ea5a78b-cb8a-4831-b227-f7860a22491d(jetbrains.mps.make.resources)/6168415856807657256");
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_ymgo28_a0a0a0a0a0a0a0a0a0b0a0a0b0a0a0a3() {
+  private static SNode _quotation_createNode_ymgo28_a0a0a0a0a0a0a0a0a0b0a0a0a0a0a0a3() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
     quotedNode_1 = nb.getResult();
@@ -105,7 +92,6 @@ public class ResourceClassifierType_Constraints extends BaseConstraintsDescripto
     return quotedNode_1;
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:6df86908-c97f-4644-97f0-5eff375e8e15(jetbrains.mps.make.facet.constraints)", "1227128029536561895");
-  private static final SNodePointer breakingNode_ymgo28_a0a0a0a0a1a0a0a0d = new SNodePointer("r:6df86908-c97f-4644-97f0-5eff375e8e15(jetbrains.mps.make.facet.constraints)", "6836281137582793036");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ResourceClassifierType$$Z = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1a6da65e8aea0b4L, "jetbrains.mps.make.facet.structure.ResourceClassifierType");

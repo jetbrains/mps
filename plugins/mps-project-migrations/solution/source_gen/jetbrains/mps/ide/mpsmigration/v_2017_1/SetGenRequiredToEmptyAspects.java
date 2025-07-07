@@ -12,8 +12,6 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.generator.ModelGenerationStatusManager;
 import jetbrains.mps.generator.GenerationFacade;
 
@@ -26,31 +24,11 @@ public class SetGenRequiredToEmptyAspects extends BaseProjectMigration {
     {
       SearchScope scope_sw0agr_a0b = CommandUtil.createScope(project);
       final SearchScope scope_sw0agr_a0b_0 = new EditableFilteringScope(scope_sw0agr_a0b);
-      final QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_sw0agr_a0b_0;
-        }
-      };
+      final QueryExecutionContext context = () -> scope_sw0agr_a0b_0;
       final Wrappers._T<Iterable<SModel>> modelsToClean = new Wrappers._T<Iterable<SModel>>();
-      project.getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          modelsToClean.value = Sequence.fromIterable(CommandUtil.modules(CommandUtil.selectScope(null, context))).ofType(Language.class).translate(new ITranslator2<Language, SModel>() {
-            public Iterable<SModel> translate(Language it) {
-              return it.getModels();
-            }
-          }).where(new IWhereFilter<SModel>() {
-            public boolean accept(SModel it) {
-              return !(it.getRootNodes().iterator().hasNext());
-            }
-          });
-        }
-      });
+      project.getRepository().getModelAccess().runReadAction(() -> modelsToClean.value = Sequence.fromIterable(CommandUtil.modules(CommandUtil.selectScope(null, context))).ofType(Language.class).translate((it) -> it.getModels()).where((it) -> !(it.getRootNodes().iterator().hasNext())));
 
-      project.getComponent(ModelGenerationStatusManager.class).discard(Sequence.fromIterable(modelsToClean.value).where(new IWhereFilter<SModel>() {
-        public boolean accept(SModel it) {
-          return GenerationFacade.canGenerate(it);
-        }
-      }));
+      project.getComponent(ModelGenerationStatusManager.class).discard(Sequence.fromIterable(modelsToClean.value).where((it) -> GenerationFacade.canGenerate(it)));
     }
     return true;
   }

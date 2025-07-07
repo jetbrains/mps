@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package jetbrains.mps.smodel.nodeidmap;
 import gnu.trove.THashMap;
 import jetbrains.mps.smodel.SNodeId.StringBasedId;
 import jetbrains.mps.smodel.StringBasedIdForJavaStubMethods;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
 
@@ -26,6 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * THIS CLASS IS NO LONGER IN USE. KEEP IF FOR 2023.3 JUST IN CASE AND REMOVE THEN.
+ *
  * if not stub id everything works the same
  *
  * if stub id then we have the following:
@@ -43,7 +44,7 @@ import java.util.List;
  *
  * @author apyshkin
  */
-@ToRemove(version = 193)
+@Deprecated(since = "193", forRemoval = true)
 public final class MigratingJavaStubRefsNodeIdMap implements INodeIdToNodeMap {
   /**
    * contains all the nodes with the usual foreign ids + java stub method node ids with the short (no return) string key.

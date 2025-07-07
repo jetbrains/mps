@@ -14,10 +14,18 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
+import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
+import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import java.util.Objects;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class check_ConstructorInvocationStatementIsFirstStatement_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ConstructorInvocationStatementIsFirstStatement_NonTypesystemRule() {
@@ -33,6 +41,35 @@ public class check_ConstructorInvocationStatementIsFirstStatement_NonTypesystemR
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(constructorInvocation, "Call to '" + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(constructorInvocation) + "' must be first statement in constructor body", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3133930811460325358", null, errorTarget);
         }
       }
+
+      Iterable<SNode> members = IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(SNodeOperations.getNodeAncestor(constructor, CONCEPTS.Classifier$Ix, false, false)));
+      final Iterable<SNode> allMyAndInheritedMethods = SNodeOperations.ofConcept(members, CONCEPTS.InstanceMethodDeclaration$39);
+      final Iterable<SNode> allMyAndInheritedFieldDeclarations = SNodeOperations.ofConcept(members, CONCEPTS.FieldDeclaration$ie);
+
+      ListSequence.fromList(SLinkOperations.getChildren(constructorInvocation, LINKS.actualArgument$pzdx)).translate((arg) -> SNodeOperations.getNodeDescendants(arg, CONCEPTS.LocalMethodCall$zT, true, new SAbstractConcept[]{})).where((final SNode call) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(call, LINKS.baseMethodDeclaration$pyYw), CONCEPTS.InstanceMethodDeclaration$39) && Sequence.fromIterable(allMyAndInheritedMethods).any((it) -> Objects.equals(it, SNodeOperations.as(SLinkOperations.getTarget(call, LINKS.baseMethodDeclaration$pyYw), CONCEPTS.InstanceMethodDeclaration$39)))).visitAll((it) -> {
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it, "cannot reference " + SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$pyYw), PROPS.name$MnvL) + " before supertype constructor has been called", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "320231408715320037", null, errorTarget);
+        }
+      });
+      ListSequence.fromList(SLinkOperations.getChildren(constructorInvocation, LINKS.actualArgument$pzdx)).translate((arg) -> SNodeOperations.getNodeDescendants(arg, CONCEPTS.VariableReference$TC, true, new SAbstractConcept[]{})).where((final SNode ref) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ref, LINKS.variableDeclaration$N1XG), CONCEPTS.FieldDeclaration$ie) && Sequence.fromIterable(allMyAndInheritedFieldDeclarations).any((it) -> Objects.equals(it, SNodeOperations.as(SLinkOperations.getTarget(ref, LINKS.variableDeclaration$N1XG), CONCEPTS.FieldDeclaration$ie)))).visitAll((it) -> {
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it, "cannot reference " + SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), PROPS.name$MnvL) + " before supertype constructor has been called", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "320231408717436561", null, errorTarget);
+        }
+      });
+      ListSequence.fromList(SLinkOperations.getChildren(constructorInvocation, LINKS.actualArgument$pzdx)).translate((arg) -> SNodeOperations.getNodeDescendants(arg, CONCEPTS.SuperMethodCall$pW, true, new SAbstractConcept[]{})).visitAll((it) -> {
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it, "cannot reference super before supertype constructor has been called", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "320231408717469940", null, errorTarget);
+        }
+      });
+      ListSequence.fromList(SLinkOperations.getChildren(constructorInvocation, LINKS.actualArgument$pzdx)).translate((arg) -> SNodeOperations.getNodeDescendants(arg, CONCEPTS.ThisExpression$$o, true, new SAbstractConcept[]{})).where((it) -> (SLinkOperations.getTarget(it, LINKS.classConcept$zzjZ) == null)).visitAll((it) -> {
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it, "cannot reference this before supertype constructor has been called", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "320231408717482840", null, errorTarget);
+        }
+      });
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -47,10 +84,25 @@ public class check_ConstructorInvocationStatementIsFirstStatement_NonTypesystemR
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ConstructorDeclaration$yG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept FieldDeclaration$ie = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
+    /*package*/ static final SConcept LocalMethodCall$zT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall");
+    /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept SuperMethodCall$pW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf9d78b55aaL, "jetbrains.mps.baseLanguage.structure.SuperMethodCall");
+    /*package*/ static final SConcept ThisExpression$$o = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression");
     /*package*/ static final SConcept ConstructorInvocationStatement$yY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x121119ae5ffL, "jetbrains.mps.baseLanguage.structure.ConstructorInvocationStatement");
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink classConcept$zzjZ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

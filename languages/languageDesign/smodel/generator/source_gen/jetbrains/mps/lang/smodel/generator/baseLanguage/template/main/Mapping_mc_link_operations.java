@@ -52,13 +52,13 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_2_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jzpaek_b0a0c0d0c0b3));
-          tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_jzpaek_b0a0c0d0c0b3, "tpl/r:00000000-0000-4000-0000-011c89590303/1205438232670", context1);
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_2_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro));
+          tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro, "tpl/r:00000000-0000-4000-0000-011c89590303/1205438232670", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
         {
           Collection<SNode> tlist3 = null;
-          SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_2_1(new SourceSubstituteMacroNodeContext(context1, callMacro_jzpaek_b0a0a1a4a2a1d));
+          SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_2_1(new SourceSubstituteMacroNodeContext(context1, callMacro));
           TemplateContext context2 = context1;
           context2 = context2.subContext(null, callInputNode3);
           if (callInputNode3 != null) {
@@ -90,20 +90,20 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_2_2(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jzpaek_b0a0c0d0c0c4));
-          tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_jzpaek_b0a0c0d0c0c4, "tpl/r:00000000-0000-4000-0000-011c89590303/6246743999000387772", context1);
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_2_2(new SourceSubstituteMacroNodeContext(context1, copySrcMacro1));
+          tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro1, "tpl/r:00000000-0000-4000-0000-011c89590303/6246743999000387772", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
         {
           Collection<SNode> tlist3 = null;
           {
-            final SNode switchInput3 = QueriesGenerated.sourceNodeQuery_2_3(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_jzpaek_b0a0a0a1a4a2a2e));
+            final SNode switchInput3 = QueriesGenerated.sourceNodeQuery_2_3(new SourceSubstituteMacroNodeContext(context1, switchMacroRef));
             if (switchInput3 == null) {
               tlist3 = Collections.emptyList();
             } else {
               TemplateContext switchContext3 = context1;
               switchContext3 = switchContext3.subContext(null, switchInput3);
-              tlist3 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a2e, switchContext3);
+              tlist3 = environment.trySwitch(templateSwitchNode, switchContext3);
               if (tlist3 == null) {
                 final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
                 tlist3 = TemplateUtil.singletonList(tnode4);
@@ -114,9 +114,9 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
         }
         {
           Collection<SNode> tlist5 = Collections.emptyList();
-          if (QueriesGenerated.ifMacro_Condition_2_0(new IfMacroContext(context1, ifMacroRef_jzpaek_b0a0b0f0c0c4))) {
+          if (QueriesGenerated.ifMacro_Condition_2_0(new IfMacroContext(context1, ifMacroRef))) {
             Collection<SNode> tlist6 = null;
-            SNode callInputNode6 = QueriesGenerated.sourceNodeQuery_2_4(new SourceSubstituteMacroNodeContext(context1, callMacro_jzpaek_b0a0a1a1a5a2a2e));
+            SNode callInputNode6 = QueriesGenerated.sourceNodeQuery_2_4(new SourceSubstituteMacroNodeContext(context1, callMacro1));
             TemplateContext context2 = context1;
             context2 = context2.subContext(null, callInputNode6);
             if (callInputNode6 != null) {
@@ -153,20 +153,20 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_2_5(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jzpaek_b0a0c0d0c0c5));
-          tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_jzpaek_b0a0c0d0c0c5, "tpl/r:00000000-0000-4000-0000-011c89590303/6246743999000991648", context1);
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_2_5(new SourceSubstituteMacroNodeContext(context1, copySrcMacro2));
+          tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro2, "tpl/r:00000000-0000-4000-0000-011c89590303/6246743999000991648", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
         {
           Collection<SNode> tlist3 = null;
           {
-            final SNode switchInput3 = QueriesGenerated.sourceNodeQuery_2_6(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_jzpaek_b0a0a0a1a4a2a2f));
+            final SNode switchInput3 = QueriesGenerated.sourceNodeQuery_2_6(new SourceSubstituteMacroNodeContext(context1, switchMacroRef1));
             if (switchInput3 == null) {
               tlist3 = Collections.emptyList();
             } else {
               TemplateContext switchContext3 = context1;
               switchContext3 = switchContext3.subContext(null, switchInput3);
-              tlist3 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a2f, switchContext3);
+              tlist3 = environment.trySwitch(templateSwitchNode1, switchContext3);
               if (tlist3 == null) {
                 final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
                 tlist3 = TemplateUtil.singletonList(tnode4);
@@ -177,8 +177,8 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
         }
         {
           Collection<SNode> tlist5 = null;
-          final SNode copySrcInput5 = QueriesGenerated.sourceNodeQuery_2_7(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jzpaek_b0a0c0f0c0c5));
-          tlist5 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput5), copySrcMacro_jzpaek_b0a0c0f0c0c5, "tpl/r:00000000-0000-4000-0000-011c89590303/6246743999000991666", context1);
+          final SNode copySrcInput5 = QueriesGenerated.sourceNodeQuery_2_7(new SourceSubstituteMacroNodeContext(context1, copySrcMacro3));
+          tlist5 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput5), copySrcMacro3, "tpl/r:00000000-0000-4000-0000-011c89590303/6246743999000991666", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist5);
         }
       }
@@ -199,20 +199,20 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_2_8(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jzpaek_b0a0c0d0c0b6));
-          tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_jzpaek_b0a0c0d0c0b6, "tpl/r:00000000-0000-4000-0000-011c89590303/3719571763733973059", context1);
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_2_8(new SourceSubstituteMacroNodeContext(context1, copySrcMacro4));
+          tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro4, "tpl/r:00000000-0000-4000-0000-011c89590303/3719571763733973059", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
         {
           Collection<SNode> tlist3 = null;
           {
-            final SNode switchInput3 = QueriesGenerated.sourceNodeQuery_2_9(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_jzpaek_b0a0a0a1a4a2a1g));
+            final SNode switchInput3 = QueriesGenerated.sourceNodeQuery_2_9(new SourceSubstituteMacroNodeContext(context1, switchMacroRef2));
             if (switchInput3 == null) {
               tlist3 = Collections.emptyList();
             } else {
               TemplateContext switchContext3 = context1;
               switchContext3 = switchContext3.subContext(null, switchInput3);
-              tlist3 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a1g, switchContext3);
+              tlist3 = environment.trySwitch(templateSwitchNode2, switchContext3);
               if (tlist3 == null) {
                 final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
                 tlist3 = TemplateUtil.singletonList(tnode4);
@@ -224,13 +224,13 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
         {
           Collection<SNode> tlist5 = null;
           {
-            final SNode switchInput5 = QueriesGenerated.sourceNodeQuery_2_10(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_jzpaek_b0a0a0a1a5a2a1g));
+            final SNode switchInput5 = QueriesGenerated.sourceNodeQuery_2_10(new SourceSubstituteMacroNodeContext(context1, switchMacroRef3));
             if (switchInput5 == null) {
               tlist5 = Collections.emptyList();
             } else {
               TemplateContext switchContext5 = context1;
               switchContext5 = switchContext5.subContext(null, switchInput5);
-              tlist5 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a5a2a1g, switchContext5);
+              tlist5 = environment.trySwitch(templateSwitchNode3, switchContext5);
               if (tlist5 == null) {
                 final SNode tnode6 = environment.createOutputNode(myConcepts[1]);
                 tlist5 = TemplateUtil.singletonList(tnode6);
@@ -261,20 +261,20 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_2_11(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jzpaek_b0a0c0d0c0c7));
-          tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_jzpaek_b0a0c0d0c0c7, "tpl/r:00000000-0000-4000-0000-011c89590303/9051222292532830808", context1);
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_2_11(new SourceSubstituteMacroNodeContext(context1, copySrcMacro5));
+          tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro5, "tpl/r:00000000-0000-4000-0000-011c89590303/9051222292532830808", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
         {
           Collection<SNode> tlist3 = null;
           {
-            final SNode switchInput3 = QueriesGenerated.sourceNodeQuery_2_12(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_jzpaek_b0a0a0a1a4a2a2h));
+            final SNode switchInput3 = QueriesGenerated.sourceNodeQuery_2_12(new SourceSubstituteMacroNodeContext(context1, switchMacroRef4));
             if (switchInput3 == null) {
               tlist3 = Collections.emptyList();
             } else {
               TemplateContext switchContext3 = context1;
               switchContext3 = switchContext3.subContext(null, switchInput3);
-              tlist3 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a2h, switchContext3);
+              tlist3 = environment.trySwitch(templateSwitchNode4, switchContext3);
               if (tlist3 == null) {
                 final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
                 tlist3 = TemplateUtil.singletonList(tnode4);
@@ -305,20 +305,20 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_2_13(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jzpaek_b0a0c0d0c0c8));
-          tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_jzpaek_b0a0c0d0c0c8, "tpl/r:00000000-0000-4000-0000-011c89590303/9051222292532842598", context1);
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_2_13(new SourceSubstituteMacroNodeContext(context1, copySrcMacro6));
+          tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro6, "tpl/r:00000000-0000-4000-0000-011c89590303/9051222292532842598", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
         {
           Collection<SNode> tlist3 = null;
           {
-            final SNode switchInput3 = QueriesGenerated.sourceNodeQuery_2_14(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_jzpaek_b0a0a0a1a4a2a2i));
+            final SNode switchInput3 = QueriesGenerated.sourceNodeQuery_2_14(new SourceSubstituteMacroNodeContext(context1, switchMacroRef5));
             if (switchInput3 == null) {
               tlist3 = Collections.emptyList();
             } else {
               TemplateContext switchContext3 = context1;
               switchContext3 = switchContext3.subContext(null, switchInput3);
-              tlist3 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a2i, switchContext3);
+              tlist3 = environment.trySwitch(templateSwitchNode5, switchContext3);
               if (tlist3 == null) {
                 final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
                 tlist3 = TemplateUtil.singletonList(tnode4);
@@ -329,7 +329,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
         }
         {
           Collection<SNode> tlist5 = null;
-          SNode callInputNode5 = QueriesGenerated.sourceNodeQuery_2_15(new SourceSubstituteMacroNodeContext(context1, callMacro_jzpaek_b0a0a1a5a2a2i));
+          SNode callInputNode5 = QueriesGenerated.sourceNodeQuery_2_15(new SourceSubstituteMacroNodeContext(context1, callMacro2));
           TemplateContext context2 = context1;
           context2 = context2.subContext(null, callInputNode5);
           if (callInputNode5 != null) {
@@ -369,29 +369,29 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
       return rv;
     }
   }
-  private static final SNodePointer copySrcMacro_jzpaek_b0a0c0d0c0b3 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1205438232671");
-  private static final SNodePointer callMacro_jzpaek_b0a0a1a4a2a1d = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145281");
-  private static final SNodePointer copySrcMacro_jzpaek_b0a0c0d0c0c4 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6246743999000387773");
-  private static final SNodePointer switchMacroRef_jzpaek_b0a0a0a1a4a2a2e = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6246743999000387783");
-  private static final SNodePointer templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a2e = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1205432344145");
-  private static final SNodePointer callMacro_jzpaek_b0a0a1a1a5a2a2e = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145282");
-  private static final SNodePointer ifMacroRef_jzpaek_b0a0b0f0c0c4 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "347387891234646999");
-  private static final SNodePointer copySrcMacro_jzpaek_b0a0c0d0c0c5 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6246743999000991649");
-  private static final SNodePointer switchMacroRef_jzpaek_b0a0a0a1a4a2a2f = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6246743999000995128");
-  private static final SNodePointer templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a2f = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1205432344145");
-  private static final SNodePointer copySrcMacro_jzpaek_b0a0c0f0c0c5 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6246743999000991667");
-  private static final SNodePointer copySrcMacro_jzpaek_b0a0c0d0c0b6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3719571763733973060");
-  private static final SNodePointer switchMacroRef_jzpaek_b0a0a0a1a4a2a1g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3719571763733973070");
-  private static final SNodePointer templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a1g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1205432344145");
-  private static final SNodePointer switchMacroRef_jzpaek_b0a0a0a1a5a2a1g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3719571763733973078");
-  private static final SNodePointer templateSwitchNode_jzpaek_a0a0c0a1a1a5a2a1g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3320646261222008448");
-  private static final SNodePointer copySrcMacro_jzpaek_b0a0c0d0c0c7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "9051222292532830809");
-  private static final SNodePointer switchMacroRef_jzpaek_b0a0a0a1a4a2a2h = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "9051222292532830819");
-  private static final SNodePointer templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a2h = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1205432344145");
-  private static final SNodePointer copySrcMacro_jzpaek_b0a0c0d0c0c8 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "9051222292532842599");
-  private static final SNodePointer switchMacroRef_jzpaek_b0a0a0a1a4a2a2i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "9051222292532842609");
-  private static final SNodePointer templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a2i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1205432344145");
-  private static final SNodePointer callMacro_jzpaek_b0a0a1a5a2a2i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "9051222292532846779");
+  private static final SNodePointer copySrcMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1205438232671");
+  private static final SNodePointer callMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145281");
+  private static final SNodePointer copySrcMacro1 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6246743999000387773");
+  private static final SNodePointer switchMacroRef = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6246743999000387783");
+  private static final SNodePointer templateSwitchNode = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1205432344145");
+  private static final SNodePointer callMacro1 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145282");
+  private static final SNodePointer ifMacroRef = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "347387891234646999");
+  private static final SNodePointer copySrcMacro2 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6246743999000991649");
+  private static final SNodePointer switchMacroRef1 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6246743999000995128");
+  private static final SNodePointer templateSwitchNode1 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1205432344145");
+  private static final SNodePointer copySrcMacro3 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6246743999000991667");
+  private static final SNodePointer copySrcMacro4 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3719571763733973060");
+  private static final SNodePointer switchMacroRef2 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3719571763733973070");
+  private static final SNodePointer templateSwitchNode2 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1205432344145");
+  private static final SNodePointer switchMacroRef3 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3719571763733973078");
+  private static final SNodePointer templateSwitchNode3 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3320646261222008448");
+  private static final SNodePointer copySrcMacro5 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "9051222292532830809");
+  private static final SNodePointer switchMacroRef4 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "9051222292532830819");
+  private static final SNodePointer templateSwitchNode4 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1205432344145");
+  private static final SNodePointer copySrcMacro6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "9051222292532842599");
+  private static final SNodePointer switchMacroRef5 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "9051222292532842609");
+  private static final SNodePointer templateSwitchNode5 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1205432344145");
+  private static final SNodePointer callMacro2 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "9051222292532846779");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept SLinkAccess$Pk = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96ea2caL, "jetbrains.mps.lang.smodel.structure.SLinkAccess");

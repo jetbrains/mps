@@ -19,6 +19,7 @@ import jetbrains.mps.lang.editor.menus.transformation.CompletionActionItemUtil;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
+import jetbrains.mps.openapi.editor.menus.IconResourceProvider;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstitutionAcceptable;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
@@ -31,7 +32,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
-public class CompletionActionItemAsSubstituteAction implements SubstituteAction {
+public class CompletionActionItemAsSubstituteAction implements SubstituteAction, IconResourceProvider {
   private final CompletionActionItem myActionItem;
   private final SNode mySourceNode;
   private final SRepository myRepository;

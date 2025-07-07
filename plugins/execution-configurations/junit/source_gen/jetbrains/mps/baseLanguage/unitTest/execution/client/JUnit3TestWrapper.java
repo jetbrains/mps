@@ -4,39 +4,38 @@ package jetbrains.mps.baseLanguage.unitTest.execution.client;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
+import jetbrains.mps.baseLanguage.unitTest.runtime.TestNodeUtil;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.IClassifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
+/**
+ * Please migrate to TestDescriptor API.
+ * 
+ * @deprecated 
+ */
+@Deprecated(since = "2023.1", forRemoval = true)
 public class JUnit3TestWrapper extends AbstractTestWrapper<SNode> {
   private final String myQualifiedName;
   private final String myName;
   private final List<JUnit3MethodWrapper> myMethods;
 
+  @Deprecated
   public JUnit3TestWrapper(SNode classConcept) {
-    super(classConcept, true, AbstractTestWrapper.needsMPS(classConcept));
+    super(classConcept, false, TestNodeUtil.needsMPS(classConcept), true);
     myQualifiedName = INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(classConcept);
     myName = SPropertyOperations.getString(classConcept, PROPS.name$MnvL);
-    myMethods = Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(classConcept)), CONCEPTS.InstanceMethodDeclaration$39)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return JUnit3MethodWrapper.isTestMethod(it);
-      }
-    }).select(new ISelector<SNode, JUnit3MethodWrapper>() {
-      public JUnit3MethodWrapper select(SNode it) {
-        return new JUnit3MethodWrapper(JUnit3TestWrapper.this, it);
-      }
-    }).toListSequence();
+    myMethods = Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(classConcept)), CONCEPTS.InstanceMethodDeclaration$39)).where((it) -> TestNodeUtil.isTestMethod(it)).select((it) -> new JUnit3MethodWrapper(JUnit3TestWrapper.this, it)).toList();
   }
 
   @Override
@@ -58,8 +57,8 @@ public class JUnit3TestWrapper extends AbstractTestWrapper<SNode> {
   @NotNull
   @Override
   public Iterable<ITestNodeWrapper> getTestMethods() {
-    return ListSequence.fromList(myMethods).select(new ISelector<JUnit3MethodWrapper, ITestNodeWrapper>() {
-      public ITestNodeWrapper select(JUnit3MethodWrapper it) {
+    return ListSequence.fromList(myMethods).select(new _FunctionTypes._return_P1_E0<ITestNodeWrapper, JUnit3MethodWrapper>() {
+      public ITestNodeWrapper invoke(JUnit3MethodWrapper it) {
         return (ITestNodeWrapper) it;
       }
     });

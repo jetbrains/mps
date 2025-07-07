@@ -10,7 +10,6 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -35,41 +34,25 @@ public class ConceptArgumentExpression extends MigrationScriptBase {
     {
       SearchScope scope_g6zf2_a0e = CommandUtil.createScope(m);
       final SearchScope scope_g6zf2_a0e_0 = new EditableFilteringScope(scope_g6zf2_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_g6zf2_a0e_0;
-        }
-      };
-      for (SNode op : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.Model_RootsOperation$JA, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.concept$eK4w) != null;
-        }
-      })) {
+      QueryExecutionContext context = () -> scope_g6zf2_a0e_0;
+      for (SNode op : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.Model_RootsOperation$JA, false)).where((it) -> SLinkOperations.getTarget(it, LINKS.concept$eK4w) != null)) {
         SNode cr = SLinkOperations.setNewChild(op, LINKS.conceptArgument$6vat, CONCEPTS.RefConcept_Reference$Ij);
         SLinkOperations.setTarget(cr, LINKS.conceptDeclaration$3mP7, SLinkOperations.getTarget(op, LINKS.concept$eK4w));
         SLinkOperations.setTarget(op, LINKS.concept$eK4w, null);
       }
-      for (SNode op : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.Model_RootsIncludingImportedOperation$pG, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.concept$J57w) != null;
-        }
-      })) {
+      for (SNode op : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.Model_RootsIncludingImportedOperation$pG, false)).where((it) -> SLinkOperations.getTarget(it, LINKS.concept$J57w) != null)) {
         SNode cr = SLinkOperations.setNewChild(op, LINKS.conceptArgument$4a3d, CONCEPTS.RefConcept_Reference$Ij);
         SLinkOperations.setTarget(cr, LINKS.conceptDeclaration$3mP7, SLinkOperations.getTarget(op, LINKS.concept$J57w));
         SLinkOperations.setTarget(op, LINKS.concept$J57w, null);
       }
-      for (SNode op : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.Model_NodesIncludingImportedOperation$i0, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.concept$vArQ) != null;
-        }
-      })) {
+      for (SNode op : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.Model_NodesIncludingImportedOperation$i0, false)).where((it) -> SLinkOperations.getTarget(it, LINKS.concept$vArQ) != null)) {
         SNode cr = SLinkOperations.setNewChild(op, LINKS.conceptArgument$NMF2, CONCEPTS.RefConcept_Reference$Ij);
         SLinkOperations.setTarget(cr, LINKS.conceptDeclaration$3mP7, SLinkOperations.getTarget(op, LINKS.concept$vArQ));
         SLinkOperations.setTarget(op, LINKS.concept$vArQ, null);
       }
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 17);
   }
 

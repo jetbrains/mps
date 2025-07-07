@@ -5,18 +5,15 @@ package jetbrains.mps.java.core.sourceStubs;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.extapi.persistence.CopyableModelRoot;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import jetbrains.mps.extapi.persistence.SourceRootKind;
 import java.util.Collections;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import jetbrains.mps.vfs.IFile;
-import org.jetbrains.mps.openapi.persistence.Memento;
-import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.extapi.persistence.DefaultSourceRoot;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.extapi.persistence.SourceRoot;
@@ -24,18 +21,15 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.Set;
 import java.util.HashSet;
 import jetbrains.mps.java.stub.JavaPackageNameStub;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.extapi.persistence.CopyNotSupportedException;
 import jetbrains.mps.persistence.CopyFileBasedModelRootHelper;
 
 @GeneratedClass(node = "r:39747a8f-4d04-48b7-83c5-4b4f5e43330c(jetbrains.mps.java.core.sourceStubs)/4423331261408184030", model = "r:39747a8f-4d04-48b7-83c5-4b4f5e43330c(jetbrains.mps.java.core.sourceStubs)")
 public class JavaSourceStubModelRoot extends FileBasedModelRoot implements CopyableModelRoot<JavaSourceStubModelRoot> {
-  private static final Logger LOG = Logger.getLogger(JavaSourceStubModelRoot.class);
 
   private static final String TYPE = "java_source_stubs";
-
-  private static final String PATH_KEY = "path";
 
   public JavaSourceStubModelRoot() {
   }
@@ -52,25 +46,19 @@ public class JavaSourceStubModelRoot extends FileBasedModelRoot implements Copya
   }
 
   @Override
-  public SModel getModel(SModelId id) {
+  @Nullable
+  public SModel getModel(@NotNull SModelId id) {
     // TODO
     return null;
   }
 
-  protected MPSJavaSrcDataSource newDataSource(IFile dir) {
-    return new MPSJavaSrcDataSource(dir);
-  }
 
   @Override
-  public void load(Memento memento) {
-    super.load(memento);
-    if (memento.get(PATH_KEY) == null) {
-      return;
-    }
-    String path = FileUtil.stripLastSlashes(memento.get(PATH_KEY));
-    assert path != null;
-    IFile file = getFileSystem().getFile(path);
-    addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(file));
+  public boolean canCreateModels() {
+    return false;
+  }
+  protected MPSJavaSrcDataSource newDataSource(IFile dir) {
+    return new MPSJavaSrcDataSource(dir);
   }
 
   @Override
@@ -100,17 +88,13 @@ public class JavaSourceStubModelRoot extends FileBasedModelRoot implements Copya
           SetSequence.fromSet(models).addElement(model);
         }
       } else {
-        LOG.error("Could not create java source stub model for directory " + dir.getPath() + " (failed to guess package name)");
+        Logger.getLogger(JavaSourceStubModelRoot.class).error("Could not create java source stub model for directory " + dir.getPath() + " (failed to guess package name)");
       }
     }
 
     // should be one line: dir.getChildren().where cannot be entered...
     Iterable<IFile> children = dir.getChildren();
-    Iterable<IFile> subDirs = Sequence.fromIterable(children).where(new IWhereFilter<IFile>() {
-      public boolean accept(IFile it) {
-        return it.isDirectory();
-      }
-    });
+    Iterable<IFile> subDirs = Sequence.fromIterable(children).where((it) -> it.isDirectory());
 
     for (IFile subDir : Sequence.fromIterable(subDirs)) {
       Set<SModel> set = getModels(subDir);
@@ -123,16 +107,5 @@ public class JavaSourceStubModelRoot extends FileBasedModelRoot implements Copya
   @Override
   public void copyTo(@NotNull JavaSourceStubModelRoot targetModelRoot) throws CopyNotSupportedException {
     new CopyFileBasedModelRootHelper(this, targetModelRoot).copy();
-  }
-
-
-  @Override
-  public boolean canCreateModel(String string) {
-    return false;
-  }
-
-  @Override
-  public SModel createModel(String string) {
-    return null;
   }
 }

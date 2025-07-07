@@ -7,5 +7,5 @@ import jetbrains.mps.vfs.IFile;
 
 @GeneratedClass(node = "r:ab35dba0-4d05-45fe-8a07-0916d087799f(jetbrains.mps.tool.builder.paths)/1169333190357286292", model = "r:ab35dba0-4d05-45fe-8a07-0916d087799f(jetbrains.mps.tool.builder.paths)")
 public interface IRedirects {
-  IFile getRedirect(String path);
+  IFile getRedirect(IFile path);
 }

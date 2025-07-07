@@ -12,7 +12,6 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.lang.editor.cellProviders.SReferenceCellProvider;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.editor.runtime.impl.CellUtil;
 import jetbrains.mps.nodeEditor.cellMenu.CompositeSubstituteInfo;
 import jetbrains.mps.lang.editor.cellProviders.ReferenceCellContext;
@@ -21,7 +20,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.LinkAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
@@ -35,7 +33,6 @@ import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
@@ -45,9 +42,8 @@ import java.util.Set;
 import jetbrains.mps.findUsages.FindUsagesManager;
 import java.util.Collections;
 import jetbrains.mps.progress.EmptyProgressMonitor;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -100,11 +96,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     final SReferenceLink referenceLink = LINKS.quickfix$q6rO;
     SReferenceCellProvider provider = new SReferenceCellProvider(getNode(), referenceLink, getEditorContext()) {
       protected EditorCell createReferenceCell(final SNode targetNode) {
-        EditorCell cell = getUpdateSession().updateReferencedNodeCell(new Computable<EditorCell>() {
-          public EditorCell compute() {
-            return new Inline_Builder0(getEditorContext(), getNode(), targetNode).createCell();
-          }
-        }, targetNode, LINKS.quickfix$q6rO);
+        EditorCell cell = getUpdateSession().updateReferencedNodeCell(() -> new Inline_Builder0(getEditorContext(), getNode(), targetNode).createCell(), targetNode, LINKS.quickfix$q6rO);
         CellUtil.setupIDeprecatableStyles(targetNode, cell);
         setSemanticNodeToCells(cell, getNode());
         installDeleteActions_nullable_reference(cell);
@@ -121,11 +113,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     }
     editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new ReferenceCellContext(getNode(), getNode(), referenceLink), new SubstituteInfoPartExt[]{new ApplyQuickFix_generic_cellMenu_jhinkb_a0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
     Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.LinkAttribute$v_);
-    Iterable<SNode> currentReferenceAttributes = Sequence.fromIterable(referenceAttributes).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(it), referenceLink);
-      }
-    });
+    Iterable<SNode> currentReferenceAttributes = Sequence.fromIterable(referenceAttributes).where((it) -> Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(it), referenceLink));
     if (Sequence.fromIterable(currentReferenceAttributes).isNotEmpty()) {
       EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
       return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentReferenceAttributes).first(), AttributeKind.REFERENCE, editorCell);
@@ -165,7 +153,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
       editorCell.setCellId("ReadOnlyModelAccessor_jhinkb_a0b0");
       Style style = new StyleImpl();
       style.set(StyleAttributes.UNDERLINED, true);
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.blue));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.blue));
       style.set(StyleAttributes.EDITABLE, false);
       editorCell.getStyle().putAll(style);
       return editorCell;
@@ -180,34 +168,18 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
       SAbstractConcept reportConcept = CONCEPTS.AbstractReportStatement$8d;
       Set<SNode> reportInstances = FindUsagesManager.getInstance().findInstances(module.getScope(), Collections.singleton(reportConcept), false, new EmptyProgressMonitor());
-      List<SNode> reports = SetSequence.fromSet(reportInstances).toListSequence().select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.cast(it, CONCEPTS.AbstractReportStatement$8d);
-        }
-      }).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.helginsIntention$WhDe)).isNotEmpty();
-        }
-      }).toListSequence();
+      List<SNode> reports = ListSequence.fromList(SetSequence.fromSet(reportInstances).toList()).select((it) -> SNodeOperations.cast(it, CONCEPTS.AbstractReportStatement$8d)).where((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.helginsIntention$WhDe)).isNotEmpty()).toList();
 
       SAbstractConcept equationConcept = CONCEPTS.AbstractEquationStatement$If;
       Set<SNode> equationInstances = FindUsagesManager.getInstance().findInstances(module.getScope(), Collections.singleton(equationConcept), false, new EmptyProgressMonitor());
-      List<SNode> equations = SetSequence.fromSet(equationInstances).toListSequence().select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.cast(it, CONCEPTS.AbstractEquationStatement$If);
-        }
-      }).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.helginsIntention$ixU_)).isNotEmpty();
-        }
-      }).toListSequence();
+      List<SNode> equations = ListSequence.fromList(SetSequence.fromSet(equationInstances).toList()).select((it) -> SNodeOperations.cast(it, CONCEPTS.AbstractEquationStatement$If)).where((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.helginsIntention$ixU_)).isNotEmpty()).toList();
 
       List<SNode> intentions = ListSequence.fromList(new ArrayList<SNode>());
       for (SNode report : ListSequence.fromList(reports)) {
-        intentions.addAll(ListSequence.fromList(SLinkOperations.getChildren(report, LINKS.helginsIntention$WhDe)).toListSequence());
+        intentions.addAll(ListSequence.fromList(SLinkOperations.getChildren(report, LINKS.helginsIntention$WhDe)).toList());
       }
       for (SNode report : ListSequence.fromList(equations)) {
-        intentions.addAll(ListSequence.fromList(SLinkOperations.getChildren(report, LINKS.helginsIntention$ixU_)).toListSequence());
+        intentions.addAll(ListSequence.fromList(SLinkOperations.getChildren(report, LINKS.helginsIntention$ixU_)).toList());
       }
       return intentions;
 

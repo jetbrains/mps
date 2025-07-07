@@ -14,7 +14,6 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -28,16 +27,12 @@ public class check_StyleAttributeDeclaration_NonTypesystemRule extends AbstractN
   }
   public void applyRule(final SNode declaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(declaration, LINKS.valueType$y6zA), CONCEPTS.PrimitiveType$sR)) {
-      if (!((SLinkOperations.getTarget(declaration, LINKS.defaultValue$FcNo) != null))) {
+      if (!(SLinkOperations.getTarget(declaration, LINKS.defaultValue$FcNo) != null)) {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(declaration, "Attribute of primitive type should have default value", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "8307535009119141639", null, errorTarget);
       }
     }
-    if (!(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collectMany(SModelOperations.roots(SNodeOperations.getModel(declaration), CONCEPTS.StyleSheet$Sg), LINKS.styles$hCVz), CONCEPTS.StyleAttributeDeclaration$kv)).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(declaration, PROPS.name$MnvL))) || it == declaration;
-      }
-    }))) {
+    if (!(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collectMany(SModelOperations.roots(SNodeOperations.getModel(declaration), CONCEPTS.StyleSheet$Sg), LINKS.styles$hCVz), CONCEPTS.StyleAttributeDeclaration$kv)).all((it) -> !(Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(declaration, PROPS.name$MnvL))) || it == declaration))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(declaration, "Attribute with name " + SPropertyOperations.getString(declaration, PROPS.name$MnvL) + " is declared several times in this language", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "3160281275655011020", null, errorTarget);
     }

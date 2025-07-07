@@ -9,7 +9,6 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -24,15 +23,7 @@ public class check_TypeVariableDeclarationDuplicateName_NonTypesystemRule extend
   public check_TypeVariableDeclarationDuplicateName_NonTypesystemRule() {
   }
   public void applyRule(final SNode typeVariableDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    boolean duplicateName = ListSequence.fromList(SNodeOperations.getAllSiblings(typeVariableDeclaration, false)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.TypeVariableDeclaration$4Y) && SNodeOperations.getIndexInParent(it) < SNodeOperations.getIndexInParent(typeVariableDeclaration);
-      }
-    }).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.TypeVariableDeclaration$4Y), PROPS.name$MnvL), SPropertyOperations.getString(typeVariableDeclaration, PROPS.name$MnvL));
-      }
-    });
+    boolean duplicateName = ListSequence.fromList(SNodeOperations.getAllSiblings(typeVariableDeclaration, false)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.TypeVariableDeclaration$4Y) && SNodeOperations.getIndexInParent(it) < SNodeOperations.getIndexInParent(typeVariableDeclaration)).any((it) -> Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.TypeVariableDeclaration$4Y), PROPS.name$MnvL), SPropertyOperations.getString(typeVariableDeclaration, PROPS.name$MnvL)));
 
     if (duplicateName) {
       String msg = "Duplicate type parameter " + SPropertyOperations.getString(typeVariableDeclaration, PROPS.name$MnvL);

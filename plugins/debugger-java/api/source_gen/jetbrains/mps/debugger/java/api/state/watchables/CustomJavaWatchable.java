@@ -6,7 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.debug.api.programState.AbstractWatchable;
 import jetbrains.mps.debugger.java.api.state.proxy.JavaValue;
 import jetbrains.mps.debug.api.programState.IValue;
-import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.debug.api.programState.WatchablesCategory;
@@ -27,11 +26,6 @@ public abstract class CustomJavaWatchable extends AbstractWatchable {
   @Override
   public String getName() {
     return myVisibleName;
-  }
-
-  @Override
-  public SNode getNode() {
-    return null;
   }
 
   @Nullable

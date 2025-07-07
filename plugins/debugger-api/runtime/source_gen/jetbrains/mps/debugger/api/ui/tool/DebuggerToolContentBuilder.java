@@ -4,8 +4,7 @@ package jetbrains.mps.debugger.api.ui.tool;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.Disposable;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NonNls;
 import com.intellij.execution.runners.ProgramRunner;
 import com.intellij.openapi.project.Project;
@@ -24,9 +23,8 @@ import jetbrains.mps.workbench.action.BaseGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
 import jetbrains.mps.debug.api.AbstractDebugSession;
 import jetbrains.mps.debug.api.DebugSessionManagerComponent;
-import org.apache.log4j.Level;
 import com.intellij.ui.content.Content;
-import com.intellij.openapi.util.IconLoader;
+import com.intellij.icons.AllIcons;
 import com.intellij.execution.ui.layout.PlaceInGrid;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
@@ -42,7 +40,7 @@ import com.intellij.openapi.util.Disposer;
 
 @GeneratedClass(node = "r:891e5016-c8e3-4b89-90ed-01a5f21e6fc3(jetbrains.mps.debugger.api.ui.tool)/4474271214083120245", model = "r:891e5016-c8e3-4b89-90ed-01a5f21e6fc3(jetbrains.mps.debugger.api.ui.tool)")
 public class DebuggerToolContentBuilder implements Disposable {
-  private static final Logger LOG = LogManager.getLogger(DebuggerToolContentBuilder.class);
+  private static final Logger LOG = Logger.getLogger(DebuggerToolContentBuilder.class);
   @NonNls
   private static final String JAVA_RUNNER = "JavaRunner";
   private final ProgramRunner myRunner;
@@ -76,7 +74,7 @@ public class DebuggerToolContentBuilder implements Disposable {
     buildUi(ui, console);
     MyRunContentDescriptor contentDescriptor = createDescriptorInternal(ui, profile);
     ui.getOptions().setLeftToolbar(createActionToolbar(ui, contentDescriptor), ActionPlaces.DEBUGGER_TOOLBAR);
-    ui.getOptions().setTopToolbar(((BaseGroup) ActionManager.getInstance().getAction("jetbrains.mps.debugger.api.ui.actions.DebugStepsMenu_ActionGroup")), ActionPlaces.DEBUGGER_TOOLBAR);
+    ui.getOptions().setTopLeftToolbar(((BaseGroup) ActionManager.getInstance().getAction("jetbrains.mps.debugger.api.ui.actions.DebugStepsMenu_ActionGroup")), ActionPlaces.DEBUGGER_TOOLBAR);
     return contentDescriptor;
   }
   private MyRunContentDescriptor createDescriptorInternal(RunnerLayoutUi ui, RunProfile profile) {
@@ -86,13 +84,13 @@ public class DebuggerToolContentBuilder implements Disposable {
     ui.getOptions().setMoveToGridActionEnabled(true).setMinimizeActionEnabled(true);
     AbstractDebugSession debugSession = DebugSessionManagerComponent.getInstance(myProject).getDebugSession(myExecutionResult.getProcessHandler());
     if (debugSession == null) {
-      if (LOG.isEnabledFor(Level.ERROR)) {
+      if (LOG.isErrorLevel()) {
         LOG.error("No debug session found for process handler " + myExecutionResult.getProcessHandler());
       }
     } else {
       new DebuggerToolPanel(myProject, debugSession, ui);
     }
-    Content consoleContent = ui.createContent("Console2.0", console.getComponent(), "Console", IconLoader.getIcon("/debugger/console.png"), console.getPreferredFocusableComponent());
+    Content consoleContent = ui.createContent("Console2.0", console.getComponent(), "Console", AllIcons.Debugger.Console, console.getPreferredFocusableComponent());
     consoleContent.setSearchComponent(console.getComponent());
     consoleContent.setCloseable(false);
     ui.addContent(consoleContent, 1, PlaceInGrid.center, false);

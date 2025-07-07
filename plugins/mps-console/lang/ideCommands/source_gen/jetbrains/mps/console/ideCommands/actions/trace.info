@@ -13,13 +13,14 @@
   </root>
   <root nodeRef="r:02073207-e767-4759-a6fd-2e43f805a438(jetbrains.mps.console.ideCommands.actions)/2087237500476328199">
     <file name="NodeStatisticsTarget_Setup.java">
-      <node id="2087237500476347103" at="15,91,16,96" concept="0" />
+      <node id="2087237500476347103" at="15,102,16,96" concept="0" />
       <node id="2087237500476328199" at="21,0,22,0" concept="5" trace="target$bymM" />
       <node id="2087237500476328199" at="25,0,26,0" concept="5" trace="NodeReference$En" />
-      <node id="2087237500476328251" at="15,0,18,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
-      <scope id="2087237500476328251" at="15,91,16,96" />
+      <node id="2087237500476328251" at="15,0,18,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;ILorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <scope id="2087237500476328251" at="15,102,16,96" />
       <scope id="2087237500476328251" at="15,0,18,0">
         <var name="enclosingNode" id="2087237500476328251" />
+        <var name="index" id="2087237500476328251" />
         <var name="model" id="2087237500476328251" />
         <var name="newNode" id="2087237500476328251" />
         <var name="sampleNode" id="2087237500476328251" />
@@ -35,12 +36,13 @@
       <node id="5308946314782064317" at="17,78,18,171" concept="0" />
       <node id="5308946314782063423" at="24,0,25,0" concept="5" trace="argument$Y1rJ" />
       <node id="5308946314782063423" at="28,0,29,0" concept="5" trace="AbsractMake$uZ" />
-      <node id="5308946314782063429" at="16,91,19,7" concept="1" />
-      <node id="5308946314782063424" at="16,0,21,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <node id="5308946314782063429" at="16,102,19,7" concept="1" />
+      <node id="5308946314782063424" at="16,0,21,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;ILorg/jetbrains/mps/openapi/model/SModel;)V" />
       <scope id="5308946314782063430" at="17,78,18,171" />
-      <scope id="5308946314782063424" at="16,91,19,7" />
+      <scope id="5308946314782063424" at="16,102,19,7" />
       <scope id="5308946314782063424" at="16,0,21,0">
         <var name="enclosingNode" id="5308946314782063424" />
+        <var name="index" id="5308946314782063424" />
         <var name="model" id="5308946314782063424" />
         <var name="newNode" id="5308946314782063424" />
         <var name="sampleNode" id="5308946314782063424" />

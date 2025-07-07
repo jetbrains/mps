@@ -5,7 +5,6 @@ package jetbrains.mps.baseLanguage.constraints;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.behavior.ClassifierMember__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -16,11 +15,7 @@ public class ConstraintsUtil {
     if (!(isInsideOfClassifier(node))) {
       return false;
     }
-    return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, CONCEPTS.ClassifierMember$At, true)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !((boolean) ClassifierMember__BehaviorDescriptor.isStatic_id7MS72Gc8avw.invoke(it));
-      }
-    }).isNotEmpty();
+    return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, CONCEPTS.ClassifierMember$At, true)).where((it) -> !((boolean) ClassifierMember__BehaviorDescriptor.isStaticClassifierMember_id7MS72Gc8avw.invoke(it))).isNotEmpty();
   }
 
   public static boolean isInsideOfClassifier(SNode node) {

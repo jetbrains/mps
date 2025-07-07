@@ -4,17 +4,15 @@ package jetbrains.mps.ide.httpsupport.manager.plugin;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.io.CustomPortServerManagerBase;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import java.net.ServerSocket;
 import java.net.InetSocketAddress;
 import java.net.BindException;
 import java.io.IOException;
-import org.apache.log4j.Level;
 
 @GeneratedClass(node = "r:05ff02e5-9836-4ae9-a454-eab43fa58c8f(jetbrains.mps.ide.httpsupport.manager.plugin)/802768723527085987", model = "r:05ff02e5-9836-4ae9-a454-eab43fa58c8f(jetbrains.mps.ide.httpsupport.manager.plugin)")
 public class MPSIntegrationPortManager extends CustomPortServerManagerBase {
-  private static final Logger LOG = LogManager.getLogger(MPSIntegrationPortManager.class);
+  private static final Logger LOG = Logger.getLogger(MPSIntegrationPortManager.class);
 
   public static final int PORT_FIRST = 63330;
   public static final int PORT_LAST = 63339;
@@ -42,7 +40,7 @@ public class MPSIntegrationPortManager extends CustomPortServerManagerBase {
       } catch (BindException e) {
         // continue 
       } catch (IOException e) {
-        if (LOG.isEnabledFor(Level.ERROR)) {
+        if (LOG.isErrorLevel()) {
           LOG.error("IOException while traversing ports for integration port manager", e);
         }
       }

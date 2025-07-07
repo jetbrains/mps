@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.ide.make;
 
 import com.intellij.notification.Notification;
+import com.intellij.notification.NotificationGroup;
 import com.intellij.notification.NotificationType;
 import com.intellij.notification.Notifications;
 import com.intellij.openapi.application.ApplicationManager;
@@ -24,33 +25,37 @@ import com.intellij.openapi.project.DumbModeTask;
 import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.startup.StartupActivity;
-import jetbrains.mps.compiler.JavaCompilerOptions;
+import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.compiler.JavaCompilerOptionsComponent;
 import jetbrains.mps.icons.MPSIcons;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.platform.watching.ReloadManager;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.make.MPSCompilationResult;
 import jetbrains.mps.make.ModuleMaker;
+import jetbrains.mps.make.kotlin.KotlinCompilerOptions;
+import jetbrains.mps.make.kotlin.cache.JvmKotlinCompileCacheHandler;
+import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.ProjectLibraryManager;
-import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.PathManager;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
  * Compiles all project modules at startup
  */
 public final class StartupModuleMakerImpl extends StartupModuleMaker implements StartupActivity.Background {
-  private static final Logger LOG = LogManager.getLogger(StartupModuleMakerImpl.class);
+  private static final Logger LOG = Logger.getLogger(StartupModuleMakerImpl.class);
 
   private MPSProject myMPSProject;
   private MPSCoreComponents myComponents;
@@ -60,6 +65,9 @@ public final class StartupModuleMakerImpl extends StartupModuleMaker implements 
 
   @Override
   public void runActivity(@NotNull final Project project) {
+    if (MakeServiceConfiguration.getInstance(project).isDisableMakeOnStartup()) {
+      return;
+    }
     if (ApplicationManager.getApplication().isUnitTestMode()) {
       return;
     }
@@ -70,9 +78,15 @@ public final class StartupModuleMakerImpl extends StartupModuleMaker implements 
     myMPSProject = ProjectHelper.fromIdeaProject(project);
     // ProjectLibraryManager used to be cons parameter
     @SuppressWarnings("unused")
-    final ProjectLibraryManager plm = project.getComponent(ProjectLibraryManager.class);
+    final ProjectLibraryManager plm = ProjectLibraryManager.getInstance(project);
     myComponents = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class);
-    DumbService.getInstance(project).queueTask(new DumbModeTask(this) {
+    DumbService.getInstance(project).queueTask(new DumbModeTask() {
+      @Override
+      public @Nullable DumbModeTask tryMergeWith(@NotNull DumbModeTask taskFromQueue) {
+        // there could be only one
+        return getClass() == taskFromQueue.getClass() ? this : null;
+      }
+
       @Override
       public void performInDumbMode(@NotNull ProgressIndicator indicator) {
         doBuild(new ProgressMonitorAdapter(indicator));
@@ -94,34 +108,50 @@ public final class StartupModuleMakerImpl extends StartupModuleMaker implements 
 
   private void doBuild(ProgressMonitor monitor) {
     LOG.info("Building modules on startup");
-    myMPSProject.getModelAccess().runWriteAction(() -> {
-      // XXX used to collect project modules in a separate read action with no apparent reason
-      final Collection<SModule> modules = getModules();
-      final ModuleMaker maker = new ModuleMaker();
-      final ReloadManager reloadManager = ApplicationManager.getApplication().getComponent(ReloadManager.class);
-      final MPSCompilationResult compileResult = reloadManager.computeNoReload(() -> {
-        monitor.start("", 4);
-        JavaCompilerOptions compilerOptions = JavaCompilerOptionsComponent.getInstance().getJavaCompilerOptions(myMPSProject);
-        MPSCompilationResult result = maker.make(modules, monitor.subTask(3, SubProgressKind.REPLACING), compilerOptions);
-        // XXX why not result.isOk && isCompiledAnything to trigger reload?
-        myComponents.getClassLoaderManager().reloadModules(modules, monitor.subTask(1, SubProgressKind.REPLACING));
-        monitor.done();
-        return result;
+    final ModuleMaker maker = new ModuleMaker();
+
+    // Create temporary client file
+    final File clientFile = KotlinCompilerOptions.createClientFile();
+    maker.options(JavaCompilerOptionsComponent.getInstance().getJavaCompilerOptions(myMPSProject))
+         .kotlinCompileCache(new JvmKotlinCompileCacheHandler(IMessageHandler.NULL_HANDLER))
+         .kotlinOptions(new KotlinCompilerOptions(clientFile));
+    final ReloadManager reloadManager = ReloadManager.getInstance();
+    reloadManager.computeNoReload(() -> {
+      monitor.start("", 5);
+      final ArrayList<SModule> modules = new ArrayList<>(100);
+      myMPSProject.getModelAccess().runReadAction(() -> {
+        fillModules(modules);
+        maker.prepare(modules, false, monitor.subTask(2, SubProgressKind.REPLACING));
       });
-      if (!compileResult.isOk()) {
-        final Notification n = new Notification(StartupModuleMaker.class.getName(), MPSIcons.Small.Error, NotificationType.ERROR);
-        n.setTitle(String.format("Project compilation on startup failed, %d errors and %d warnings", compileResult.getErrorsCount(), compileResult.getWarningsCount()));
+
+      MPSCompilationResult cr = maker.make(monitor.subTask(2, SubProgressKind.REPLACING));
+      if (cr.isOk()) {
+        if (cr.isCompiledAnything()) {
+          final ClassLoaderManager clm = myComponents.getClassLoaderManager();
+          myMPSProject.getModelAccess().runWriteAction(() -> clm.reloadModules(modules, monitor.subTask(1, SubProgressKind.REPLACING)));
+        }
+      } else {
+        final NotificationGroup ng = NotificationGroup.findRegisteredGroup(StartupModuleMaker.class.getName());
+        final Notification n = ng.createNotification("Compilation failed", "<p>Project compilation on startup failed</p>", NotificationType.ERROR);
+        n.setIcon(MPSIcons.Small.Error);
+        n.setSubtitle(String.format("%d errors, %d warnings", cr.getErrorsCount(), cr.getWarningsCount()));
         n.setImportant(true);
         Notifications.Bus.notify(n, myMPSProject.getProject());
+        LOG.info(n.getTitle());
       }
+
+      // Delete client file after exit
+      clientFile.delete();
+      return null;
     });
     LOG.info("Building on startup is finished");
   }
 
-  private Collection<SModule> getModules() {
+  private void fillModules(Collection<SModule> modules) {
     if (PathManager.isFromSources()) {
-      return IterableUtil.asCollection(myMPSProject.getRepository().getModules());
+      myMPSProject.getRepository().getModules().forEach(modules::add);
+    } else {
+      modules.addAll(myMPSProject.getProjectModulesWithGenerators());
     }
-    return myMPSProject.getProjectModulesWithGenerators();
   }
 }

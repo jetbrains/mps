@@ -25,5 +25,7 @@ public class RefactoringAdditions_ActionGroup extends GeneratedActionGroup {
     RefactoringAdditions_ActionGroup.this.addAction("jetbrains.mps.baseLanguage.pluginSolution.plugin.RenameMethod_Action");
     RefactoringAdditions_ActionGroup.this.addAction("jetbrains.mps.baseLanguage.pluginSolution.plugin.RenameVariable_Action");
     RefactoringAdditions_ActionGroup.this.addAction("jetbrains.mps.baseLanguage.pluginSolution.plugin.SafeDeleteConceptMethod_Action");
+    RefactoringAdditions_ActionGroup.this.addAction("jetbrains.mps.baseLanguage.pluginSolution.plugin.ReplacePropertyWithField_Action");
+    RefactoringAdditions_ActionGroup.this.addAction("jetbrains.mps.baseLanguage.pluginSolution.plugin.ReplaceFieldWithProperty_Action");
   }
 }

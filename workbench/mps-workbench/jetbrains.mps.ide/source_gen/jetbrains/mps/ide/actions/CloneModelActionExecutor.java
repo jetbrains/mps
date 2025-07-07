@@ -8,7 +8,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.ide.dialogs.project.creation.NewModelDialog;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.ide.dialogs.project.creation.NewModelDialogDefaultSettings;
@@ -35,11 +34,7 @@ public class CloneModelActionExecutor extends ModelCreationActionsBaseExecutor {
 
   @Override
   protected final SModule selectModule() {
-    return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(new Computable<SModule>() {
-      public SModule compute() {
-        return myOriginalModel.getModule();
-      }
-    });
+    return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> myOriginalModel.getModule());
   }
 
   @Override

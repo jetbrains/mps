@@ -5,10 +5,10 @@ package org.jetbrains.mps.samples.ParallelFor.constraints;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.SNodePointer;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
@@ -23,18 +23,13 @@ public class ThreadPool_Constraints extends BaseConstraintsDescriptor {
 
   public static class NumberOfThreads_Property extends BasePropertyConstraintsDescriptor {
     public NumberOfThreads_Property(ConstraintsDescriptor container) {
-      super(PROPS.numberOfThreads$KKe_, container);
+      super(PROPS.numberOfThreads$KKe_, container, false, false, true);
     }
-    @Override
-    public boolean hasOwnValidator() {
-      return true;
-    }
-    private static final SNodePointer validatePropertyBreakingPoint = new SNodePointer("r:30f28ecb-3abe-411d-8f10-86fc65916e39(org.jetbrains.mps.samples.ParallelFor.constraints)", "633195941006921801");
     @Override
     public boolean validateValue(SNode node, Object propertyValue, CheckingNodeContext checkingNodeContext) {
       boolean result = staticValidateProperty(node, SPropertyOperations.castInteger(propertyValue));
       if (!(result) && checkingNodeContext != null) {
-        checkingNodeContext.setBreakingNode(validatePropertyBreakingPoint);
+        checkingNodeContext.setBreakingNode(new SNodePointer("r:30f28ecb-3abe-411d-8f10-86fc65916e39(org.jetbrains.mps.samples.ParallelFor.constraints)", "633195941006921801"));
       }
       return result;
     }

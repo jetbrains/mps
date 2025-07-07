@@ -23,17 +23,20 @@ public class ModelsScope extends Scope {
   private final boolean myRootsOnly;
   private final SAbstractConcept myTargetConcept;
   private final Set<SModel> myModels;
+
   public ModelsScope(Iterable<SModel> models, boolean rootsOnly, @Nullable SAbstractConcept targetConcept) {
     myModels = SetSequence.fromSetWithValues(new HashSet<SModel>(), models);
     myRootsOnly = rootsOnly;
     //  null means any, essentially BaseConcept but I see no reason to force to specify it explicitly
     myTargetConcept = targetConcept;
   }
+
   @Override
   public boolean contains(SNode node) {
     final boolean isInstance = (myTargetConcept == null ? true : SNodeUtil.isInstanceOf(node, myTargetConcept));
     return isInstance && (!(myRootsOnly) || SNodeOperations.isRoot(node)) && SetSequence.fromSet(myModels).contains(node.getModel());
   }
+
   @Override
   public SNode resolve(SNode contextNode, @NotNull String refText) {
     SNode result = null;
@@ -74,6 +77,7 @@ public class ModelsScope extends Scope {
     }
     return result;
   }
+
   @Override
   public Iterable<SNode> getAvailableElements(@Nullable String prefix) {
     List<SNode> result = new ArrayList<SNode>();
@@ -110,6 +114,7 @@ public class ModelsScope extends Scope {
     }
     return result;
   }
+
   @Override
   public String getReferenceText(SNode contextNode, SNode node) {
     String resolveInfo = SNodeOperations.getResolveInfo(node);
@@ -118,6 +123,7 @@ public class ModelsScope extends Scope {
     }
     return node.getPresentation();
   }
+
   public Iterable<SModel> getModels() {
     return myModels;
   }

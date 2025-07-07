@@ -19,8 +19,9 @@ public final class GeneratorProperties {
    */
   private static final String USE_STATIC_REFS = "use-static-refs";
   private static final String SKIP_UNMODIFIED_MODELS = "skip-unmodified-models";
+  private static final String MSG_LEVEL = "message-level";
 
-  private Script myScript;
+  private final Script myScript;
 
   public GeneratorProperties(Script script) {
     myScript = script;
@@ -77,5 +78,16 @@ public final class GeneratorProperties {
   }
   public boolean isSkipUnmodifiedModels() {
     return Boolean.parseBoolean(myScript.getProperty(SKIP_UNMODIFIED_MODELS));
+  }
+  public GeneratorProperties setMessageLevel(String level) {
+    if (level != null) {
+      // there's no mechanism to 'delete' a property, but as long as script is populated once,
+      // seems fine just to ignore null(default) value. FTR, Script serialization code doesn't like null values.
+      myScript.putProperty(MSG_LEVEL, level);
+    }
+    return this;
+  }
+  public String getMessageLevel() {
+    return myScript.getProperty(MSG_LEVEL);
   }
 }

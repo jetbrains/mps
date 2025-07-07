@@ -94,15 +94,11 @@ public class ShowDefinition_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._T<List<SNode>> nodes = new Wrappers._T<List<SNode>>();
-    ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        nodes.value = ShowDefinition_Action.this.findImplementations(_params);
-      }
-    });
+    ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().runReadAction(() -> nodes.value = ShowDefinition_Action.this.findImplementations(_params));
     PopupWithNodeEditor popupWithNodeEditor = new SimplePopupWithNodeEditor(((MPSProject) MapSequence.fromMap(_params).get("project")), ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")), nodes.value);
     popupWithNodeEditor.show();
   }
-  /*package*/ List<SNode> findImplementations(final Map<String, Object> _params) {
+  private List<SNode> findImplementations(final Map<String, Object> _params) {
     ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().checkReadAccess();
 
     final List<SNode> nodes = new ArrayList<SNode>();
@@ -118,7 +114,7 @@ public class ShowDefinition_Action extends BaseAction {
     } else if (ShowDefinition_Action.this.isMethodDeclaration(_params)) {
       results = FindUtils.getSearchResults(new EmptyProgressMonitor(), ShowDefinition_Action.this.getUnwrapped(_params), scope, "jetbrains.mps.baseLanguage.findUsages.DerivedMethods_Finder");
     } else {
-      return Sequence.fromIterable(Sequence.<SNode>singleton(ShowDefinition_Action.this.findNodeDeclaration(_params))).toListSequence();
+      return Sequence.fromIterable(Sequence.<SNode>singleton(ShowDefinition_Action.this.findNodeDeclaration(_params))).toList();
     }
     for (SearchResult<SNode> searchResult : results.getSearchResults2()) {
       SNode foundNode = searchResult.getObject();

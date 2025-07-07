@@ -43,20 +43,18 @@ public final class TransformHelper {
   public TransformHelper transform() {
     // XXX Guess, I shall re-use TMP if TransformHelper is reused.
     myTransientsProvider = new TransientModelsProvider(myRepository, null);
-    myTransientsProvider.getRepository().getModelAccess().runWriteAction(new Runnable() {
-      public void run() {
-        GenerationOptions.OptionsBuilder optBuilder = GenerationOptions.getDefaults();
-        ModelGenerationPlan plan = (myPlanProvider == null ? null : myPlanProvider.getPlan(myInputModel));
-        if (plan != null) {
-          optBuilder.customPlan(myInputModel, plan);
-          myTransientsProvider.initCheckpointModule();
-        }
-        GenerationFacade genFacade = new GenerationFacade(myRepository, optBuilder.create());
-        final GenerationTaskRecorder<GeneratorTask> taskHandler = new GenerationTaskRecorder<GeneratorTask>(null);
-        genFacade.transients(myTransientsProvider).messages(myMessages).taskHandler(taskHandler);
-        genFacade.process(new EmptyProgressMonitor(), myInputModel);
-        myGenOutcome = taskHandler.getAllRecorded().get(0);
+    myTransientsProvider.getRepository().getModelAccess().runWriteAction(() -> {
+      GenerationOptions.OptionsBuilder optBuilder = GenerationOptions.getDefaults();
+      ModelGenerationPlan plan = (myPlanProvider == null ? null : myPlanProvider.getPlan(myInputModel));
+      if (plan != null) {
+        optBuilder.customPlan(myInputModel, plan);
+        myTransientsProvider.initCheckpointModule();
       }
+      GenerationFacade genFacade = new GenerationFacade(myRepository, optBuilder.create());
+      final GenerationTaskRecorder<GeneratorTask> taskHandler = new GenerationTaskRecorder<GeneratorTask>(null);
+      genFacade.transients(myTransientsProvider).messages(myMessages).taskHandler(taskHandler);
+      genFacade.process(new EmptyProgressMonitor(), myInputModel);
+      myGenOutcome = taskHandler.getAllRecorded().get(0);
     });
     return this;
 

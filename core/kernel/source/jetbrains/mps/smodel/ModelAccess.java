@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,19 +15,16 @@
  */
 package jetbrains.mps.smodel;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.references.ImmatureReferences;
 import jetbrains.mps.smodel.references.UnregisteredNodes;
 import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.ComputeRunnable;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
-import org.jetbrains.mps.openapi.model.SReference;
 
 import java.util.IdentityHashMap;
 import java.util.Map;
@@ -53,7 +50,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * @see org.jetbrains.mps.openapi.module.ModelAccess
  */
 public abstract class ModelAccess extends AbstractModelAccess implements ModelCommandExecutor, org.jetbrains.mps.openapi.module.ModelAccess, ModelCommandContext.Provider {
-  protected static final Logger LOG = LogManager.getLogger(ModelAccess.class);
+  protected static final Logger LOG = Logger.getLogger(ModelAccess.class);
 
   protected static ModelAccess ourInstance = new DefaultModelAccess();
 
@@ -73,8 +70,7 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
    * @deprecated
    * @since 3.1
    */
-  @Deprecated
-  @ToRemove(version = 3.3)
+@Deprecated(since = "3.3", forRemoval = true)
   public static ModelAccess instance() {
     return ourInstance;
   }
@@ -96,9 +92,7 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
     if (canRead()) {
       return c.compute();
     }
-    ComputeRunnable<T> r = new ComputeRunnable<>(c);
-    runReadAction(r);
-    return r.getResult();
+    return computeReadAction(c::compute);
   }
 
   @Override
@@ -106,9 +100,7 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
     if (canWrite()) {
       return c.compute();
     }
-    ComputeRunnable<T> r = new ComputeRunnable<>(c);
-    runWriteAction(r);
-    return r.getResult();
+    return computeWriteAction(c::compute);
   }
 
   protected final void assertNotWriteFromRead() {
@@ -238,7 +230,7 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
     private ImmatureReferences myIR;
 
     public CommandContextImpl(@Nullable UndoHandler undoHandler, /*NotNull*/ SModel m) {
-      myUndoHandler = undoHandler == null ? a -> {} : undoHandler;
+      myUndoHandler = undoHandler == null ? new DefaultUndoHandler() : undoHandler;
       myModel = m;
       myUN = new UnregisteredNodes(myModel.getReference());
     }
@@ -254,12 +246,12 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
     }
 
     @Override
-    public void associationSet(SReference association) {
-      if (association instanceof StaticReference && ((StaticReference) association).isDirect()) {
+    public void associationSet(SNode node, SReferenceLink link, AssociationData association) {
+      if (association != null && association.isDirectNode()) {
         if (myIR == null) {
           myIR = new ImmatureReferences();
         }
-        myIR.add((StaticReference) association);
+        myIR.add(node, link);
       }
     }
 
@@ -271,6 +263,11 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
 
     @Override
     public void registerActionWithUndo(SNodeUndoableAction action) {
+      myUndoHandler.addUndoableAction(action);
+    }
+
+    @Override
+    public void registerActionWithUndo(ModelRenameUndoableAction action) {
       myUndoHandler.addUndoableAction(action);
     }
 

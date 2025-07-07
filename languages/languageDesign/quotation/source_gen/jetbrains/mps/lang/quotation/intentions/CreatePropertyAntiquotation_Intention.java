@@ -10,10 +10,10 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.openapi.editor.cells.EditorCell;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
@@ -26,35 +26,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class CreatePropertyAntiquotation_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public CreatePropertyAntiquotation_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:f4b34c7d-c02f-43b9-b6e7-feff8966461c(jetbrains.mps.lang.quotation.intentions)", "1227886844257"));
   }
+
   @Override
   public String getPresentation() {
     return "CreatePropertyAntiquotation";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    EditorCell selectedCell = editorContext.getSelectedCell();
-    if (check_vcwk4z_a0b0e(check_vcwk4z_a0a1a4(check_vcwk4z_a0a0b0e(selectedCell))) == null) {
-      return false;
-    }
-    SNode contextNode = SNodeOperations.cast(selectedCell.getSNode(), CONCEPTS.BaseConcept$gP);
-    if (contextNode == null) {
-      return false;
-    }
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -64,10 +50,12 @@ public final class CreatePropertyAntiquotation_Intention extends AbstractIntenti
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Create Property Antiquotation";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if (editorContext == null) {
@@ -95,24 +83,47 @@ public final class CreatePropertyAntiquotation_Intention extends AbstractIntenti
         editorContext.selectWRTFocusPolicy(propertyAntiquotation);
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      EditorCell selectedCell = editorContext.getSelectedCell();
+      if (check_vcwk4z_a0b0i9(check_vcwk4z_a0a1a8j(check_vcwk4z_a0a0b0i9(selectedCell))) == null) {
+        return false;
+      }
+      SNode contextNode = SNodeOperations.cast(selectedCell.getSNode(), CONCEPTS.BaseConcept$gP);
+      if (contextNode == null) {
+        return false;
+      }
+      return true;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return CreatePropertyAntiquotation_Intention.this;
     }
+
   }
-  private static SProperty check_vcwk4z_a0b0e(SPropertyInfo checkedDotOperand) {
+  private static SProperty check_vcwk4z_a0b0i9(SPropertyInfo checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getProperty();
     }
     return null;
   }
-  private static SPropertyInfo check_vcwk4z_a0a1a4(EditorCellContext checkedDotOperand) {
+  private static SPropertyInfo check_vcwk4z_a0a1a8j(EditorCellContext checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getPropertyInfo();
     }
     return null;
   }
-  private static EditorCellContext check_vcwk4z_a0a0b0e(EditorCell checkedDotOperand) {
+  private static EditorCellContext check_vcwk4z_a0a0b0i9(EditorCell checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getCellContext();
     }

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.LinkedHashMap;
 import java.util.Collections;
-import org.apache.log4j.Level;
+import java.util.logging.Level;
 import org.jdom.Element;
 import java.io.FileNotFoundException;
 import org.jdom.Document;
@@ -41,9 +41,11 @@ public class Script {
 
   public Script() {
   }
+
   public RepositoryDescriptor getRepoDescriptor() {
     return myStartupData.getRepo();
   }
+
   public void setRepoDescriptor(RepositoryDescriptor repo) {
     myStartupData.setRepo(repo);
   }
@@ -59,9 +61,11 @@ public class Script {
     assert file.exists() && !(file.isDirectory()) : "bad file: " + file.toString();
     myModels.add(file);
   }
+
   public Set<File> getModels() {
     return Collections.unmodifiableSet(myModels);
   }
+
   public void updateModels(Set<File> models) {
     myModels.addAll(models);
   }
@@ -70,9 +74,11 @@ public class Script {
     assert file.exists() && !(file.isDirectory());
     myExcludedFromDiff.add(file);
   }
+
   public Set<File> getExcludedFromDiffFiles() {
     return Collections.unmodifiableSet(myExcludedFromDiff);
   }
+
   public void updateExcludedFromDiffFiles(Set<File> excluded) {
     myExcludedFromDiff.addAll(excluded);
   }
@@ -81,9 +87,11 @@ public class Script {
     assert file.exists() && !(file.isDirectory()) : "bad file: " + file.toString();
     myModules.add(file);
   }
+
   public Set<File> getModules() {
     return Collections.unmodifiableSet(myModules);
   }
+
   public void updateModules(Set<File> modules) {
     myModules.addAll(modules);
   }
@@ -91,6 +99,7 @@ public class Script {
   public List<File> getMPSProjectFiles() {
     return Collections.unmodifiableList(myMPSProjects);
   }
+
   public void updateMPSProjectFiles(List<File> mpsProjects) {
     myMPSProjects.addAll(mpsProjects);
   }
@@ -98,6 +107,7 @@ public class Script {
   public boolean getFailOnError() {
     return myStartupData.getFailOnError();
   }
+
   public void updateFailOnError(boolean showError) {
     myStartupData.setFailOnError(showError);
   }
@@ -105,12 +115,15 @@ public class Script {
   public Map<String, String> getProperties() {
     return Collections.unmodifiableMap(myStartupData.getProperties());
   }
+
   public void updateProperties(Map<String, String> properties) {
     myStartupData.getProperties().putAll(properties);
   }
+
   public void putProperty(String name, String value) {
     myStartupData.addProperty(name, value);
   }
+
   public String getProperty(String name) {
     return myStartupData.getProperties().get(name);
   }
@@ -119,9 +132,11 @@ public class Script {
   public void addLibrary(String name, File dir) {
     myStartupData.addLibrary(name, dir);
   }
+
   public Map<String, File> getLibraries() {
     return Collections.unmodifiableMap(myStartupData.getLibraries());
   }
+
   public void updateLibraries(Map<String, File> libraries) {
     myStartupData.getLibraries().putAll(libraries);
   }
@@ -129,9 +144,11 @@ public class Script {
   public void addMacro(String name, String value) {
     myStartupData.addMacro(name, value);
   }
+
   public Map<String, String> getMacro() {
     return Collections.unmodifiableMap(myStartupData.getMacros());
   }
+
   public void updateMacro(Map<String, String> macro) {
     myStartupData.getMacros().putAll(macro);
   }
@@ -139,6 +156,15 @@ public class Script {
   public void addPlugin(PluginData p) {
     myStartupData.addPlugin(p);
   }
+
+  public void setAutomaticPluginDiscoveryMode() {
+    myStartupData.setAutomaticPLuginDiscoveryMode();
+  }
+
+  public boolean getAutomaticPluginDiscoveryMode() {
+    return myStartupData.getAutomaticPLuginDiscoveryMode();
+  }
+
   public List<PluginData> getPlugins() {
     return Collections.unmodifiableList(myStartupData.getPlugins());
   }
@@ -146,6 +172,7 @@ public class Script {
   public void updateLogLevel(Level level) {
     myStartupData.setLogLevel(level);
   }
+
   public Level getLogLevel() {
     return myStartupData.getLogLevel();
   }
@@ -153,9 +180,11 @@ public class Script {
   public void addChunk(List<String> modules, boolean isBootstrap) {
     myChunks.put(modules, isBootstrap);
   }
+
   public Map<List<String>, Boolean> getChunks() {
     return Collections.unmodifiableMap(myChunks);
   }
+
   public void updateChunks(Map<List<String>, Boolean> chunks) {
     myChunks.putAll(chunks);
   }
@@ -163,9 +192,11 @@ public class Script {
   public void addLibraryJar(String libraryJar) {
     myStartupData.addLibraryJar(libraryJar);
   }
+
   public List<String> getLibraryJars() {
     return Collections.unmodifiableList(myStartupData.getLibraryJars());
   }
+
   public void updateLibraryJars(List<String> libraryJars) {
     myStartupData.getLibraryJars().addAll(libraryJars);
   }
@@ -221,6 +252,7 @@ public class Script {
       }
     }
   }
+
   public File dumpToTmpFile() throws FileNotFoundException {
     Element root = new Element("script");
     Element startup = new Element("startup");

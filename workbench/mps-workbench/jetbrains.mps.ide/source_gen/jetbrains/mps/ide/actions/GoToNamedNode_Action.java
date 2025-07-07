@@ -20,6 +20,7 @@ public class GoToNamedNode_Action extends BaseAction {
     this.action = action_par;
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

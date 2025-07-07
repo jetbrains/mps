@@ -6,8 +6,6 @@ import jetbrains.mps.refactoring.framework.BaseRefactoring;
 import jetbrains.mps.refactoring.framework.IRefactoringTarget;
 import jetbrains.mps.refactoring.framework.RefactoringContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import java.util.List;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.progress.EmptyProgressMonitor;
@@ -29,9 +27,6 @@ public class Rename extends BaseRefactoring {
   }
   public void refactor(final RefactoringContext refactoringContext) {
     SPropertyOperations.assign(refactoringContext.getSelectedNode(), PROPS.name$MnvL, ((String) refactoringContext.getParameter("newName")));
-  }
-  public List<SModel> getModelsToGenerate(final RefactoringContext refactoringContext) {
-    return (List<SModel>) refactoringContext.getModelsFromUsages(refactoringContext.getSelectedModel());
   }
   public SearchResults getAffectedNodes(final RefactoringContext refactoringContext) {
     return FindUtils.getSearchResults(new EmptyProgressMonitor(), refactoringContext.getSelectedNode(), refactoringContext.getCurrentScope(), "jetbrains.mps.lang.core.findUsages.NodeAndDescendantsUsages_Finder");

@@ -19,7 +19,6 @@
       <concept id="3348158742936976480" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration" flags="ng" index="25R33">
         <property id="1421157252384165432" name="memberId" index="3tVfz5" />
         <property id="672037151186491528" name="presentation" index="1L1pqM" />
-        <reference id="899069222106091871" name="oldMember" index="2wpffI" />
       </concept>
       <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclaration" flags="ng" index="25R3W">
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
@@ -42,22 +41,8 @@
       <concept id="1082978164218" name="jetbrains.mps.lang.structure.structure.DataTypeDeclaration" flags="ng" index="AxPO6">
         <property id="7791109065626895363" name="datatypeId" index="3F6X1D" />
       </concept>
-      <concept id="1082978164219" name="jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old" flags="ng" index="AxPO7">
-        <property id="1212080844762" name="hasNoDefaultMember" index="PDuV0" />
-        <reference id="1083171729157" name="memberDataType" index="M4eZT" />
-        <child id="1083172003582" name="member" index="M5hS2" />
-      </concept>
       <concept id="1082978499127" name="jetbrains.mps.lang.structure.structure.ConstrainedDataTypeDeclaration" flags="ng" index="Az7Fb">
         <property id="1083066089218" name="constraint" index="FLfZY" />
-      </concept>
-      <concept id="1588368162884797030" name="jetbrains.mps.lang.structure.structure.EnumMigrationInfo" flags="ng" index="2JgGob">
-        <property id="6491077959634662372" name="valueOpMigration" index="3scbB" />
-        <property id="6491077959634650670" name="nameOpMigration" index="3sfsH" />
-        <child id="6491077959632451996" name="oldEnum" index="3lCyv" />
-      </concept>
-      <concept id="1083171877298" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration_Old" flags="ig" index="M4N5e">
-        <property id="1083923523172" name="externalValue" index="1uS6qo" />
-        <property id="1083923523171" name="internalValue" index="1uS6qv" />
       </concept>
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
@@ -101,7 +86,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -131,6 +116,15 @@
       <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="5253498789149547704" />
       <ref role="20lvS9" node="4zCbl23d1MR" resolve="BuildMps_ModuleDependency" />
+    </node>
+    <node concept="1TJgyj" id="3XLirLmGAHt" role="1TKVEi">
+      <property role="IQ2ns" value="4571516170014976861" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="output" />
+      <ref role="20lvS9" to="3ior:6qcrfIJFdKY" resolve="BuildSourcePath" />
+      <node concept="t5JxF" id="3XLirLmHo3u" role="lGtFl">
+        <property role="t5JxN" value="Experimental functionality, MPSI-36" />
+      </node>
     </node>
     <node concept="PrWs8" id="2fQZjorSLPQ" role="PzmwI">
       <ref role="PrY4T" to="3ior:2fQZjorRfOB" resolve="BuildSource_CompilablePart" />
@@ -202,7 +196,7 @@
         <node concept="1TJgyi" id="eYcmk9RcI2" role="3l_iP">
           <property role="TrG5h" value="sourcesKind" />
           <property role="IQ2nx" value="269707337715731330" />
-          <ref role="AX2Wp" node="eYcmk9QOkj" resolve="BuildMps_ModuleSourcesKind" />
+          <ref role="AX2Wp" node="3Ftr4R6BFCz" resolve="BuildMps_ModuleSourcesKind" />
         </node>
       </node>
     </node>
@@ -243,7 +237,7 @@
       <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="6OtXG9K2II1" resolve="BuildMps_GeneratorRef" />
       <node concept="t5JxF" id="6OtXG9KbD9B" role="lGtFl">
-        <property role="t5JxN" value="unlike generator containment, this one references generators onwed by project itself. Generator modules refererences this way are bundled along with the language." />
+        <property role="t5JxN" value="unlike generator containment, this one references generators owned by project itself. Generator modules references this way are bundled along with the language." />
         <node concept="t5JxR" id="6OtXG9KlQBU" role="t5JxU">
           <ref role="t5JxO" node="7YI57w6gNwB" resolve="generator" />
         </node>
@@ -530,6 +524,10 @@
       <property role="TrG5h" value="modelsOnly" />
       <property role="IQ2nx" value="4643216374596270214" />
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+      <node concept="asaX9" id="3QjSZgCYW6Y" role="lGtFl">
+        <property role="YLPcu" value="2023.3" />
+        <property role="YLQ7P" value="not in use for a long time, remove once 2023.3 is out" />
+      </node>
     </node>
     <node concept="1TJgyi" id="6R_3WZ3d1$J" role="1TKVEl">
       <property role="TrG5h" value="stripImplementation" />
@@ -625,6 +623,14 @@
     <ref role="1TJDcQ" to="3ior:5KZfyKsUo6u" resolve="BuildPlugin" />
     <node concept="PrWs8" id="27eOSzOUT_O" role="PzmwI">
       <ref role="PrY4T" to="3ior:IFRVVI6zqz" resolve="BuildExternalDependency" />
+    </node>
+    <node concept="1TJgyi" id="3XLirLmzCUO" role="1TKVEl">
+      <property role="IQ2nx" value="4571516170012626612" />
+      <property role="TrG5h" value="useMakeTask" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+      <node concept="t5JxF" id="3XLirLmzD72" role="lGtFl">
+        <property role="t5JxN" value="Enable experimental functionality of MPSI-36" />
+      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="6CY5wCYZA9O">
@@ -779,7 +785,6 @@
     <node concept="1TJgyj" id="5j4USBYFOGl" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="aboutScreen" />
-      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="6108265972537182997" />
       <ref role="20lvS9" to="3ior:6qcrfIJFdKY" resolve="BuildSourcePath" />
     </node>
@@ -1487,13 +1492,11 @@
       <property role="TrG5h" value="skipUnmodifiedModels" />
       <property role="IQ2nx" value="250862790757300262" />
       <ref role="AX2Wp" node="3Ftr4R6BFCC" resolve="BuildMps_GeneratorOptions_SkipUnmodifiedModels" />
-      <node concept="3l_iC" id="3Ftr4R6BH9U" role="lGtFl">
-        <node concept="1TJgyi" id="dVfA4asVwA" role="3l_iP">
-          <property role="IQ2nx" value="250862790757300262" />
-          <property role="TrG5h" value="skipUnmodifiedModels" />
-          <ref role="AX2Wp" node="dVfA4asWrb" resolve="BuildMps_GeneratorOptions_SkipUnmodifiedModels" />
-        </node>
-      </node>
+    </node>
+    <node concept="1TJgyi" id="1yfou3g9sXN" role="1TKVEl">
+      <property role="IQ2nx" value="1769740796772601715" />
+      <property role="TrG5h" value="messageLevel" />
+      <ref role="AX2Wp" node="1yfou3g9sxM" resolve="BuildMps_GeneratorOptions_MessageLevel" />
     </node>
     <node concept="PrWs8" id="3Iy_$1rs43y" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
@@ -1754,44 +1757,23 @@
     <property role="TrG5h" value="BuildMps_ModuleSourcesKind" />
     <property role="3GE5qa" value="Project.Sources" />
     <property role="3F6X1D" value="269707337715631379" />
-    <node concept="2JgGob" id="3Ftr4R6BFC$" role="lGtFl">
-      <property role="3scbB" value="5CkWgdpp3eZ/string_presentation" />
-      <property role="3sfsH" value="5CkWgdpp0p2/by_presentation" />
-      <node concept="AxPO7" id="eYcmk9QOkj" role="3lCyv">
-        <property role="3GE5qa" value="Project.Sources" />
-        <property role="TrG5h" value="BuildMps_ModuleSourcesKind" />
-        <property role="PDuV0" value="true" />
-        <property role="3F6X1D" value="269707337715631379" />
-        <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
-        <node concept="M4N5e" id="eYcmk9QOli" role="M5hS2">
-          <property role="1uS6qo" value="sources" />
-          <property role="1uS6qv" value="sources" />
-        </node>
-        <node concept="M4N5e" id="eYcmk9QOlj" role="M5hS2">
-          <property role="1uS6qo" value="sources and tests" />
-          <property role="1uS6qv" value="sources and tests" />
-        </node>
-        <node concept="M4N5e" id="eYcmk9QOls" role="M5hS2">
-          <property role="1uS6qo" value="tests" />
-          <property role="1uS6qv" value="tests" />
-        </node>
-      </node>
-    </node>
     <node concept="25R33" id="3Ftr4R6BFC_" role="25R1y">
       <property role="TrG5h" value="sources" />
       <property role="3tVfz5" value="269707337715631442" />
-      <ref role="2wpffI" node="eYcmk9QOli" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFCA" role="25R1y">
       <property role="TrG5h" value="sources_and_tests" />
       <property role="1L1pqM" value="sources and tests" />
       <property role="3tVfz5" value="269707337715631443" />
-      <ref role="2wpffI" node="eYcmk9QOlj" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFCB" role="25R1y">
       <property role="TrG5h" value="tests" />
       <property role="3tVfz5" value="269707337715631452" />
-      <ref role="2wpffI" node="eYcmk9QOls" />
+    </node>
+    <node concept="25R33" id="77WRb6jODAF" role="25R1y">
+      <property role="3tVfz5" value="8213682475664316843" />
+      <property role="TrG5h" value="none" />
+      <property role="1L1pqM" value="no sources" />
     </node>
   </node>
   <node concept="25R3W" id="3Ftr4R6BFCC">
@@ -1799,33 +1781,14 @@
     <property role="3GE5qa" value="Project" />
     <property role="3F6X1D" value="250862790757304011" />
     <ref role="1H5jkz" node="3Ftr4R6BFCE" resolve="use_mps_generator_skipUnmodifiedModels_macro" />
-    <node concept="2JgGob" id="3Ftr4R6BFCD" role="lGtFl">
-      <property role="3scbB" value="5CkWgdpp3fo/by_custom_methods" />
-      <property role="3sfsH" value="5CkWgdpp0p2/by_presentation" />
-      <node concept="AxPO7" id="dVfA4asWrb" role="3lCyv">
-        <property role="3GE5qa" value="Project" />
-        <property role="TrG5h" value="BuildMps_GeneratorOptions_SkipUnmodifiedModels" />
-        <property role="3F6X1D" value="250862790757304011" />
-        <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
-        <node concept="M4N5e" id="dVfA4asWrc" role="M5hS2">
-          <property role="1uS6qo" value="use mps.generator.skipUnmodifiedModels macro" />
-        </node>
-        <node concept="M4N5e" id="dVfA4asWrd" role="M5hS2">
-          <property role="1uS6qv" value="never" />
-          <property role="1uS6qo" value="never" />
-        </node>
-      </node>
-    </node>
     <node concept="25R33" id="3Ftr4R6BFCE" role="25R1y">
       <property role="TrG5h" value="use_mps_generator_skipUnmodifiedModels_macro" />
       <property role="1L1pqM" value="use mps.generator.skipUnmodifiedModels macro" />
       <property role="3tVfz5" value="250862790757304012" />
-      <ref role="2wpffI" node="dVfA4asWrc" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFCF" role="25R1y">
       <property role="TrG5h" value="never" />
       <property role="3tVfz5" value="250862790757304013" />
-      <ref role="2wpffI" node="dVfA4asWrd" />
     </node>
   </node>
   <node concept="1TIwiD" id="3AMbuf6a9Q4">
@@ -1870,6 +1833,57 @@
     <property role="34LRSv" value="module manifest" />
     <property role="R4oN_" value="enumerates MPS modules of the layout" />
     <ref role="1TJDcQ" to="3ior:6qcrfIJF4M5" resolve="BuildLayout_Node" />
+  </node>
+  <node concept="1TIwiD" id="7M00clbFm1W">
+    <property role="TrG5h" value="BuildMps_ModuleDependencyTargetLanguage" />
+    <property role="3GE5qa" value="Project.Deps" />
+    <property role="EcuMT" value="8971171305100238972" />
+    <ref role="1TJDcQ" node="4zCbl23d1MR" resolve="BuildMps_ModuleDependency" />
+    <node concept="1TJgyj" id="7M00clbFm1X" role="1TKVEi">
+      <property role="20kJfa" value="language" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="3189788309731922643" />
+      <ref role="20lvS9" node="2L4pT56gD3S" resolve="BuildMps_Language" />
+    </node>
+    <node concept="RPilO" id="7M00clbFm1Y" role="lGtFl">
+      <ref role="RPilL" node="7M00clbFm1X" resolve="language" />
+      <node concept="ROjv2" id="7M00clbFm1Z" role="ROhUF">
+        <property role="1W_73P" value="target " />
+      </node>
+    </node>
+    <node concept="t5JxF" id="7M00clbFm5z" role="lGtFl">
+      <property role="t5JxN" value="Captures GENERATES_INTO dependency scope; to respect runtime modules of languages that show up during m2m" />
+    </node>
+  </node>
+  <node concept="25R3W" id="1yfou3g9sxM">
+    <property role="3F6X1D" value="1769740796772599922" />
+    <property role="TrG5h" value="BuildMps_GeneratorOptions_MessageLevel" />
+    <node concept="25R33" id="1yfou3g9sxN" role="25R1y">
+      <property role="3tVfz5" value="1769740796772599923" />
+      <property role="TrG5h" value="info" />
+    </node>
+    <node concept="25R33" id="1yfou3g9sFW" role="25R1y">
+      <property role="3tVfz5" value="1769740796772600572" />
+      <property role="TrG5h" value="warn" />
+    </node>
+    <node concept="25R33" id="1yfou3g9sJn" role="25R1y">
+      <property role="3tVfz5" value="1769740796772600791" />
+      <property role="TrG5h" value="error" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="1znuW2OtAIH">
+    <property role="EcuMT" value="1790035444494658477" />
+    <property role="3GE5qa" value="Project.Sources" />
+    <property role="TrG5h" value="BuildMps_ModuleDoc" />
+    <property role="R4oN_" value="documentation files" />
+    <ref role="1TJDcQ" node="4zCbl23d1OJ" resolve="BuildMps_ModuleSource" />
+    <node concept="1TJgyj" id="1znuW2OtALF" role="1TKVEi">
+      <property role="IQ2ns" value="1790035444494658667" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="files" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="3ior:4zlO3QT8$m$" resolve="BuildInputFiles" />
+    </node>
   </node>
 </model>
 

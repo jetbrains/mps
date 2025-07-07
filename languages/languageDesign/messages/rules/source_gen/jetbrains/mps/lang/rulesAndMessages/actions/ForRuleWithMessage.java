@@ -13,7 +13,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ForRuleWithMessage {
   public static class NodeFactory_6990313848119162803 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.RuleWithMessage$9Q)) {
         if (SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.RuleWithMessage$9Q), LINKS.messageProvider$PUh$) != null) {
           SLinkOperations.setTarget(newNode, LINKS.messageProvider$PUh$, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.RuleWithMessage$9Q), LINKS.messageProvider$PUh$));

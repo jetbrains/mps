@@ -10,10 +10,10 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -21,27 +21,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class CreateInternalLabel_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public CreateInternalLabel_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "9163255059340117948"));
   }
+
   @Override
   public String getPresentation() {
     return "CreateInternalLabel";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (SNodeOperations.isInstanceOf(node, CONCEPTS.BreakStatement$WM) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.BreakStatement$WM), PROPS.label$pRTe))) || (SNodeOperations.isInstanceOf(node, CONCEPTS.ContinueStatement$JY) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.ContinueStatement$JY), PROPS.label$uFTQ))) || (SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractLoopStatement$Xv) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.AbstractLoopStatement$Xv), PROPS.label$nCHj))) || (SNodeOperations.isInstanceOf(node, CONCEPTS.SwitchStatement$kN) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.SwitchStatement$kN), PROPS.label$vLWZ)));
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -51,10 +45,12 @@ public final class CreateInternalLabel_Intention extends AbstractIntentionDescri
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Create Internal Label";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       String value = "label";
@@ -68,10 +64,25 @@ public final class CreateInternalLabel_Intention extends AbstractIntentionDescri
         SPropertyOperations.set(SNodeOperations.cast(node, CONCEPTS.SwitchStatement$kN), PROPS.label$vLWZ, value);
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return (SNodeOperations.isInstanceOf(node, CONCEPTS.BreakStatement$WM) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.BreakStatement$WM), PROPS.label$pRTe))) || (SNodeOperations.isInstanceOf(node, CONCEPTS.ContinueStatement$JY) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.ContinueStatement$JY), PROPS.label$uFTQ))) || (SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractLoopStatement$Xv) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.AbstractLoopStatement$Xv), PROPS.label$nCHj))) || (SNodeOperations.isInstanceOf(node, CONCEPTS.SwitchStatement$kN) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.SwitchStatement$kN), PROPS.label$vLWZ)));
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return CreateInternalLabel_Intention.this;
     }
+
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.isEmpty();

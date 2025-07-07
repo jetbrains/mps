@@ -11,9 +11,7 @@ import java.util.Set;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -30,15 +28,7 @@ public class check_BuildProject_unusedModules_NonTypesystemRule extends Abstract
   }
   public void applyRule(final SNode buildProject, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     Set<SNode> modules = new HashSet<SNode>();
-    for (SNode jm : ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.parts$mGDj)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildSource_JavaModule$NC);
-      }
-    }).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SNodeOperations.cast(it, CONCEPTS.BuildSource_JavaModule$NC);
-      }
-    })) {
+    for (SNode jm : ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.parts$mGDj)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BuildSource_JavaModule$NC)).select((it) -> SNodeOperations.cast(it, CONCEPTS.BuildSource_JavaModule$NC))) {
       modules.add(jm);
     }
 

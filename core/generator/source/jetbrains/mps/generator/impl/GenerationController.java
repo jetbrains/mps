@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package jetbrains.mps.generator.impl;
 
 import jetbrains.mps.generator.GenerationCanceledException;
 import jetbrains.mps.generator.GenerationOptions;
+import jetbrains.mps.generator.GenerationParametersProvider;
 import jetbrains.mps.generator.GenerationStatus;
 import jetbrains.mps.generator.GenerationTrace;
 import jetbrains.mps.generator.GeneratorTask;
@@ -26,7 +27,7 @@ import jetbrains.mps.generator.impl.IGenerationTaskPool.ITaskPoolProvider;
 import jetbrains.mps.generator.impl.IGenerationTaskPool.SimpleGenerationTaskPool;
 import jetbrains.mps.smodel.ModelAccessBase;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.typechecking.TypecheckingSession;
+import jetbrains.mps.typechecking.TypecheckingSession.Flags;
 import jetbrains.mps.typechecking.TypecheckingSession.Handle;
 import jetbrains.mps.util.performance.IPerformanceTracer;
 import jetbrains.mps.util.performance.IPerformanceTracer.NullPerformanceTracer;
@@ -78,13 +79,15 @@ public class GenerationController implements ITaskPoolProvider {
           myParallelTaskPool = null;
         }
       }
+      final long duration = System.currentTimeMillis() - startJobTime;
+
       if (generationOK) {
         if (myLogger.needsInfo()) {
-          myLogger.info("generation completed successfully in " + (System.currentTimeMillis() - startJobTime) + " ms");
+          myLogger.info(String.format("generation completed successfully in %d ms", duration));
         }
         monitor.advance(0);
       } else {
-        myLogger.error("generation completed with errors in " + (System.currentTimeMillis() - startJobTime) + " ms");
+        myLogger.error(String.format("generation completed with errors in %d ms", duration));
       }
       return generationOK;
     } catch (GenerationCanceledException gce) {
@@ -111,11 +114,19 @@ public class GenerationController implements ITaskPoolProvider {
     }
 
     IPerformanceTracer ttrace = myOptions.getTracingMode() != GenerationOptions.TRACE_OFF
-      ? new PerformanceTracer("model " + inputModel.getName().getSimpleName())
+      ? new PerformanceTracer("*** model " + inputModel.getName().getValue())
       : new NullPerformanceTracer();
 
     boolean traceTypes = myOptions.getTracingMode() == GenerationOptions.TRACE_TYPES;
-    Handle typecheckingSessionToken = TypecheckingFacade.getFromContext().requestNewSession(TypecheckingSession.Flags.generator());
+    Flags flags = Flags.generator();
+    if (traceTypes) {
+      flags = flags.withTracer(ttrace);
+    }
+    GenerationParametersProvider parametersProvider = myOptions.getParametersProvider();
+    if (parametersProvider != null) {
+      flags = flags.withParameters(parametersProvider.getDefaultParameters());
+    }
+    Handle typecheckingSessionToken = TypecheckingFacade.getFromContext().requestNewSession(flags);
 
     final TransientModelsModule transientModule = myContext.getTransientModelProvider().getModule(task);
     final GenerationTrace genTrace = myOptions.isSaveTransientModels() ? new GenTraceImpl(transientModule) : new GenerationTrace.NoOp();
@@ -124,7 +135,7 @@ public class GenerationController implements ITaskPoolProvider {
 
     monitor.start(inputModel.getName().getValue(), 10);
     try {
-      generationSession.getLoggingHandler().register();
+      generationSession.activateLogTracking();
       if (myLogger.needsInfo()) {
         myLogger.info("");
         myLogger.info("[model " + inputModel.getName() +
@@ -143,16 +154,15 @@ public class GenerationController implements ITaskPoolProvider {
         transientModule.publishTrace(inputModel.getReference(), genTrace);
       }
 
+      if (!(ttrace instanceof NullPerformanceTracer)) {
+        status.setPerformanceTrace(ttrace);
+      }
       myGenerationHandler.done(task, status);
       monitor.advance(1);
 
-      String report = ttrace.report();
-      if (report != null) {
-        myLogger.trace(report);
-      }
       return currentGenerationOK;
     } finally {
-      generationSession.getLoggingHandler().unregister();
+      generationSession.deactivateLogTracking();
       generationSession.discardTransients();
 
       monitor.done();

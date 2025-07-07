@@ -42,7 +42,7 @@ public class ComparableBlock extends RelationBlock {
       return;
     }
 
-    SubTypingManagerNew subTyping = (SubTypingManagerNew) TypeChecker.getInstance().getSubtypingManager();
+    SubTypingManagerNew subTyping = (SubTypingManagerNew) getState().getTypeCheckingContext().getTypeCheckerHelper().getSubtypingManager();
     // if subType or superType
     boolean isWeak = myRelationKind.isWeak();
     if (subTyping.isComparable(left, right, isWeak)) {

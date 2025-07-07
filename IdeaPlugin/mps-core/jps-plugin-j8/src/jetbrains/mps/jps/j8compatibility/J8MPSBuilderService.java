@@ -16,7 +16,7 @@
 
 package jetbrains.mps.jps.j8compatibility;
 
-import com.intellij.openapi.util.SystemInfo;
+import com.intellij.util.lang.JavaVersion;
 import jetbrains.mps.jps.build.MPSBuilderService;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.jps.incremental.BuilderService;
@@ -33,7 +33,7 @@ public class J8MPSBuilderService extends BuilderService {
   @NotNull
   @Override
   public List<? extends ModuleLevelBuilder> createModuleLevelBuilders() {
-    if (!SystemInfo.isJavaVersionAtLeast(11)) {
+    if (!JavaVersion.current().isAtLeast(11)) {
       return Collections.emptyList();
     }
 

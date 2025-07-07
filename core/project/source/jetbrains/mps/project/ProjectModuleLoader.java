@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,49 +17,79 @@ package jetbrains.mps.project;
 
 import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.library.ModulesMiner.ModuleHandle;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.structure.project.ModulePath;
 import jetbrains.mps.smodel.ModuleInstanceFactory;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.util.Pair;
-import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.regex.Matcher;
+import java.util.stream.Stream;
 
 /**
- * Extracted project modules loading logic. Currently used in the project only.
+ * Responsible to populate {@code Project} instance with {@code SModule} instances obtained from {@code ModulePath}.
+ * Keeps record of modules and their {@code ModulePaths} as its state.
+ * Dispatches {@link ProjectModuleLoadingListener} notifications as the state changes.
+ *
+ * Project modules without a ModulePath are still in grey zone, we don't track them here, nor does ProjectBase
+ *
  * Supposed to be merged with the SLibraries modules loading logic (it is essentially the same thing)
  * TODO the code structure is a shame, rewrite
+ *
+ * FIXME what about modules without path, i.e. those without descriptor file. Perhaps PML shall care about
+ *       ModulePath-backed modules, while ProjectBase could deal with non-MP modules? Alternatively, keep
+ *       fake/singleton/uniquely generated MP for a module without one. Might need to change contains() logic then
  *
  * Created by apyshkin on 11/5/15.
  */
 /*package*/ final class ProjectModuleLoader {
-  private static final Logger LOG = LogManager.getLogger(ProjectModuleLoader.class);
+  private static final Logger LOG = Logger.getLogger(ProjectModuleLoader.class);
 
-  @NotNull private final ProjectBase myProject;
+  private final ProjectBase myProject;
   private final List<ProjectModuleLoadingListener> myListeners = new CopyOnWriteArrayList<>();
-  private final StringBuilder myErrors = new StringBuilder();
+  private final List<String> myErrors = new ArrayList<>();
+
+  private final Map<SModuleReference, ModulePath> myModuleToPathMap = new LinkedHashMap<>();
+  private final List<ModulePath> myBrokenModules = new ArrayList<>();
 
   ProjectModuleLoader(@NotNull ProjectBase project) {
     myProject = project;
   }
 
-  private Collection<Pair<ModulePath, SModule>> getRemovedModules(List<ModulePath> newModulePaths) {
-    ArrayList<Pair<ModulePath, SModule>> removedModules = new ArrayList<>();
-    for (SModule oldModule : myProject.getProjectModules()) {
-      ModulePath oldModulePath = myProject.getPath(oldModule);
+  @Nullable
+  final ModulePath getPath(@NotNull SModuleReference mRef) {
+    return myModuleToPathMap.get(mRef);
+  }
+
+  Collection<SModuleReference> activeModules() {
+    return myModuleToPathMap.keySet();
+  }
+
+  Stream<ModulePath> allPaths() {
+    return Stream.concat(myModuleToPathMap.values().stream(), myBrokenModules.stream());
+  }
+
+  // return modules known to the loader that are not among newModulePaths
+  private Collection<Pair<ModulePath, SModuleReference>> getRemovedModules(Collection<ModulePath> newModulePaths) {
+    ArrayList<Pair<ModulePath, SModuleReference>> removedModules = new ArrayList<>();
+    for (Map.Entry<SModuleReference,ModulePath> e : myModuleToPathMap.entrySet()) {
+      ModulePath oldModulePath = e.getValue();
+      final SModuleReference oldModule = e.getKey();
       if (!newModulePaths.contains(oldModulePath)) {
         removedModules.add(new Pair<>(oldModulePath, oldModule));
       }
@@ -67,10 +97,16 @@ import java.util.regex.Matcher;
     return removedModules;
   }
 
-  private List<ModulePath> getPathsToLoad(List<ModulePath> newModulePaths) {
+  // active/known modules
+  private boolean containsPath(@NotNull ModulePath modulePath) {
+    return myModuleToPathMap.containsValue(modulePath);
+  }
+
+  private List<ModulePath> getPathsToLoad(Collection<ModulePath> newModulePaths) {
     List<ModulePath> pathsToLoad = new ArrayList<>();
     for (ModulePath newModulePath : newModulePaths) {
-      if (!myProject.containsPath(newModulePath)) {
+      if (!containsPath(newModulePath)) {
+        // FIXME shall we check not only loaded modules but also broken? Likely not, we need to try to load any module that is not known
         pathsToLoad.add(newModulePath);
       }
     }
@@ -79,22 +115,25 @@ import java.util.regex.Matcher;
 
   @NotNull
   public String getErrors() {
-    return myErrors.toString();
+    return String.join(System.getProperty("line.separator"), myErrors);
   }
 
   /**
    * updates module paths in the project.
+   * expects model write for project repository
    */
-  void updatePathsInProject(final List<ModulePath> newModulePaths) {
+  void updatePathsInProject(final Collection<ModulePath> newModulePaths) {
     LOG.info("Loading modules...");
     clearErrorsBuffer();
 
     // Note the order which matters (the case is when the modules.xml is updated from the FS directly --
     // one of the modules might change its virtual folder but not the location
     // in this case we need to remove that module from project and insert it again
-    final Collection<Pair<ModulePath, SModule>> removedModules = getRemovedModules(newModulePaths);
+    final Collection<Pair<ModulePath, SModuleReference>> removedModules = getRemovedModules(newModulePaths);
     removeAbsentModules(removedModules);
 
+    // we treat as a new complete set of project modules, we can forget those we didn't manage to load last time
+    myBrokenModules.clear();
     final List<ModulePath> pathsToLoad = getPathsToLoad(newModulePaths);
     int loadedModules = loadNewPaths(pathsToLoad);
 
@@ -108,23 +147,28 @@ import java.util.regex.Matcher;
     final ModulesMiner modulesMiner = new ModulesMiner(myProject.getPlatform());
     final Map<IFile, ModulePath> fileToPath = new HashMap<>();
     for (ModulePath modulePath : pathsToLoad) {
-      String descriptorPath = modulePath.getPath();
       try {
-        // fixme Michael Muhin
-        IFile descriptorFile = FileSystem.getInstance().getFile(descriptorPath);
+        IFile descriptorFile = modulePath.getFile();
         if (descriptorFile.exists()) {
           // there could be more than 1 module collected from a single file
+          // XXX in fact, we know we reference individual descriptor files here, and don't need all facilities of MM, like
+          //    collecting 'excluded' locations (necessary for recursive discovery). Even support for deployed module discovery
+          //    might be superfluous here (OTOH, might be a nice feature if we want to compose a project with deployed modules)
+          //    Perhaps, shall use specific discovery method or introduce a mode/flag to avoid unnecessary processing of MD values
           modulesMiner.collectModules(descriptorFile);
           // if there's more than 1 modulePath with the same IFile, I don't care, fine with the last one
           fileToPath.put(descriptorFile, modulePath);
         } else {
-          error(String.format("Can't load module from %s. File doesn't exist.", descriptorPath));
+          error(String.format("Can't load module from %s. File doesn't exist.", descriptorFile.getPath()));
           fireModuleNotFound(modulePath);
+          myBrokenModules.add(modulePath);
         }
       } catch (PathFormatException e) {
+        myBrokenModules.add(modulePath);
+        // fixme apyshkin
         Matcher matcher = MacroHelper.MACRO_PATTERN.matcher(e.getProblemPath());
         if (matcher.find()) {
-          LOG.warn("Some paths might contain unknown macros, please define them in 'Path variables' and reopen the project");
+          LOG.warning("Some paths might contain unknown macros, please define them in 'Path variables' and reopen the project");
         } else {
           throw e;
         }
@@ -143,38 +187,67 @@ import java.util.regex.Matcher;
         // it's quite tempting, indeed, to move project update (i.e. addModule) into listener ProjectModuleLoadingListener.moduleLoaded
         // just need to sort out ModuleLoader and Project relationship.
 
-        if (myProject.addModule0(modulePath, module)) {
-          ++loadedModules;
-          // XXX Here, in ProjectModuleLoadingListener/ModuleFileChangeListener, we track language files only, and rely on regular
-          //     Language.reloadAfterDescriptorChange code to reflect changes in Generator modules
-          fireModuleLoaded(modulePath, module);
-          // Note, historically we didn't do ++loadedModules, nor fireModuleLoaded for Generator modules, beware of the change
-          // if there's existing code that did not account for generator modules. Note, we do this for standalone generators only (addModule0()
-          // returns false when module is not a top-level one)
-        }
+        myProject.associateWithProjectRepo(module);
+        record(module, modulePath);
+        ++loadedModules;
       } else {
         error(String.format("Can't load module from %s. Unknown file type.", handle.getFile().getPath()));
         fireModuleTypeIsUnknown(modulePath);
+        myBrokenModules.add(modulePath);
       }
     }
     return loadedModules;
   }
 
-  private void removeAbsentModules(final Collection<Pair<ModulePath, SModule>> removedModules) {
-    for (Pair<ModulePath, SModule> p : removedModules) {
-      myProject.removeModule(p.o2);
+  // needs model write
+  private void removeAbsentModules(final Collection<Pair<ModulePath, SModuleReference>> removedModules) {
+    final SRepository projectRepo = myProject.getRepository();
+    for (Pair<ModulePath, SModuleReference> p : removedModules) {
+      // XXX I wonder is project.getScope().resolve isn't a better alternative (provided I fix its linear
+      //     search implementation. I do care about modules belonging to the project only, scope seems to be fair
+      //     alternative to a repository which may provide access to foreign modules.
+      final SModule oldModule = p.o2.resolve(projectRepo);
+      if (oldModule == null) {
+        LOG.error(String.format("Module %s (%s) not found in the project repository", p.o2.getModuleName(), p.o1));
+        continue;
+      }
+      // fire event with module still attached to a project repo
+      forget(oldModule, p.o1);
+      // checkProjectIsOwner=false: assume all modules we track here are with ModulePath and do belong to the project
+      myProject.dissociateFromProjectRepo(oldModule, false);
     }
+  }
+
+  @Nullable
+  ModulePath unloaded(@NotNull SModuleReference moduleReference) {
+    final ModulePath mp = myModuleToPathMap.remove(moduleReference);
+    if (mp != null && !myBrokenModules.contains(mp)) {
+      myBrokenModules.add(mp);
+    }
+    return mp;
+  }
+
+  // FIXME seems reasonable to
+  void forget(@NotNull SModule module, @NotNull ModulePath modulePath) {
+    myModuleToPathMap.remove(module.getModuleReference(), modulePath);
+    myBrokenModules.remove(modulePath);
+    fireModuleRemoved(modulePath, module);
+  }
+
+  // XXX the method dispatches moduleLoaded event with SModule instance, but as long as the only thing from the module needed there is SModuleReference,
+  // we don't care if the module is registered in a repo or not. FIXME update listener to take SModuleReference instead
+  void record(@NotNull SModule module, @NotNull ModulePath modulePath) {
+    myModuleToPathMap.put(module.getModuleReference(), modulePath);
+    myBrokenModules.remove(modulePath);
+    fireModuleLoaded(modulePath, module);
   }
 
   private void clearErrorsBuffer() {
-    myErrors.setLength(0);
+    myErrors.clear();
   }
 
   private void error(@NotNull String text) {
-    if (myErrors.length() > 0) {
-      myErrors.append(System.getProperty("line.separator"));
-    }
-    myErrors.append(text);
+    myErrors.add(text);
     LOG.error(text);
   }
 
@@ -184,7 +257,7 @@ import java.util.regex.Matcher;
 
   public void removeListener(@NotNull ProjectModuleLoadingListener listener) {
     if (!myListeners.contains(listener)) {
-      LOG.warn("Listener could not be found : " + listener);
+      LOG.warning("Listener could not be found : " + listener);
     }
     myListeners.remove(listener);
   }
@@ -201,15 +274,23 @@ import java.util.regex.Matcher;
     }
   }
 
-  /*package*/ void fireModuleRemoved(ModulePath modulePath, SModule module) {
+  private void fireModuleRemoved(ModulePath modulePath, SModule module) {
     for (ProjectModuleLoadingListener listener : myListeners) {
       listener.moduleRemoved(modulePath, module);
     }
   }
 
-  /*package*/ void fireModuleLoaded(ModulePath modulePath, SModule module) {
+  private void fireModuleLoaded(ModulePath modulePath, SModule module) {
     for (ProjectModuleLoadingListener listener : myListeners) {
       listener.moduleLoaded(modulePath, module);
+    }
+  }
+
+  /*package*/ void setVirtualFolder(SModuleReference moduleReference, String newFolder) {
+    final ModulePath modulePath = myModuleToPathMap.get(moduleReference);
+    if (modulePath != null) {
+      ModulePath newPath = modulePath.withVirtualFolder(newFolder);
+      myModuleToPathMap.put(moduleReference, newPath);
     }
   }
 }

@@ -17,19 +17,12 @@
 <idea-plugin>
   <depends>jetbrains.mps.core</depends>
 
-  <project-components>
-    <component>
-      <interface-class>jetbrains.mps.ide.migration.IStartupMigrationExecutor</interface-class>
-      <implementation-class>jetbrains.mps.ide.migration.MigrationTrigger</implementation-class>
-      <headless-implementation-class>jetbrains.mps.ide.migration.HeadlessMigrationExecutor</headless-implementation-class>
-    </component>
-  </project-components>
-
   <extensions defaultExtensionNs="com.intellij">
-    <mps.LanguageLibrary dir="/solutions" hide="true"/>
+    <projectService serviceInterface="jetbrains.mps.migration.global.MigrationProperties"
+                    serviceImplementation="jetbrains.mps.migration.global.ProjectMigrationProperties"/>
+
+    <mps.LanguageLibrary dir="/" hide="true"/>
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
-    <projectService serviceInterface="jetbrains.mps.ide.migration.MigrationRegistry"
-                    serviceImplementation="jetbrains.mps.ide.migration.MigrationRegistryImpl"/>
     <notificationGroup id="Migration" displayType="STICKY_BALLOON"/>
   </extensions>
 </idea-plugin>

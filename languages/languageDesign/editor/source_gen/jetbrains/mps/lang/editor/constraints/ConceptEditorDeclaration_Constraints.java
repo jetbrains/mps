@@ -50,11 +50,7 @@ public class ConceptEditorDeclaration_Constraints extends BaseConstraintsDescrip
   }
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$MnvL, container);
-    }
-    @Override
-    public boolean hasOwnGetter() {
-      return true;
+      super(PROPS.name$MnvL, container, true, false, false);
     }
     @Override
     public Object getValue(SNode node) {

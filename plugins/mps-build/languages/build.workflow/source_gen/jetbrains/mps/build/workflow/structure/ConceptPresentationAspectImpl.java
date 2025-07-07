@@ -9,6 +9,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
+  private ConceptPresentation props_BwfAntProjectPart;
   private ConceptPresentation props_BwfAntStatement;
   private ConceptPresentation props_BwfAntTaskBundleDeclaration;
   private ConceptPresentation props_BwfAntTaskDeclaration;
@@ -36,6 +37,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_BwfTaskDependency;
   private ConceptPresentation props_BwfTaskLibrary;
   private ConceptPresentation props_BwfTaskLibraryDependency;
+  private ConceptPresentation props_BwfTaskMacroCondition;
   private ConceptPresentation props_BwfTaskPart;
   private ConceptPresentation props_BwfValueReference;
   private ConceptPresentation props_BwfValueStatement;
@@ -46,6 +48,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
+      case LanguageConceptSwitch.BwfAntProjectPart:
+        if (props_BwfAntProjectPart == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("ant");
+          props_BwfAntProjectPart = cpb.create();
+        }
+        return props_BwfAntProjectPart;
       case LanguageConceptSwitch.BwfAntStatement:
         if (props_BwfAntStatement == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -234,6 +243,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_BwfTaskLibraryDependency = cpb.create();
         }
         return props_BwfTaskLibraryDependency;
+      case LanguageConceptSwitch.BwfTaskMacroCondition:
+        if (props_BwfTaskMacroCondition == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("if/unless macro value condition for a task");
+          cpb.rawPresentation("condition");
+          props_BwfTaskMacroCondition = cpb.create();
+        }
+        return props_BwfTaskMacroCondition;
       case LanguageConceptSwitch.BwfTaskPart:
         if (props_BwfTaskPart == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

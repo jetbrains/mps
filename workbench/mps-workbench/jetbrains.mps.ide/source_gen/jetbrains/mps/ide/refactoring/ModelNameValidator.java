@@ -5,14 +5,14 @@ package jetbrains.mps.ide.refactoring;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModelName;
+import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.language.LanguageAspectSupport;
 import jetbrains.mps.ide.IdeBundle;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import java.util.function.Predicate;
 import org.jetbrains.mps.openapi.model.SModel;
 
 /**
@@ -32,8 +32,6 @@ public final class ModelNameValidator {
 
   /**
    * Try to construct SModelName from input and validate it.
-   * <br>
-   * See {@link jetbrains.mps.ide.refactoring.ModelNameValidator#validate(SModelName) }
    * 
    * @param modelName string containing fully qualified model name
    * @return validation error text or null if name is valid
@@ -44,14 +42,33 @@ public final class ModelNameValidator {
     if (check != SModelName.SModelNameCheck.Pass) {
       return check.getProblemDescription();
     }
+    return validate(new SModelName(modelName), null);
+  }
 
-    return validate(new SModelName(modelName));
+  /**
+   * Try to construct SModelName from input and validate it.
+   * When renaming on case-insensitive file systems it should be permitted to rename to a name that differs from existing names in capitalization.
+   * When creating new models this should not be allowed.
+   * <br>
+   * See {@link jetbrains.mps.ide.refactoring.ModelNameValidator#validate(SModelName, EditableSModel) }
+   * 
+   * @param modelName string containing fully qualified model name
+   * @param currentModelDescriptor The current model that is going to be renamed
+   * @return validation error text or null if name is valid
+   */
+  @Nullable
+  public String validateForRename(@NotNull final String modelName, @NotNull EditableSModel currentModelDescriptor) {
+    SModelName.SModelNameCheck check = SModelName.checkModelName(modelName);
+    if (check != SModelName.SModelNameCheck.Pass) {
+      return check.getProblemDescription();
+    }
+    return validate(new SModelName(modelName), currentModelDescriptor);
   }
 
   /**
    * Try to construct SModelName from input and validate it.
    * <br>
-   * See {@link jetbrains.mps.ide.refactoring.ModelNameValidator#validate(SModelName) }
+   * See {@link jetbrains.mps.ide.refactoring.ModelNameValidator#validate(SModelName, EditableSModel) }
    * 
    * @param modelLongName string containing long model name
    * @param stereotype string containing model stereotype
@@ -64,7 +81,7 @@ public final class ModelNameValidator {
       return check.getProblemDescription();
     }
 
-    return validate(new SModelName(modelLongName, stereotype));
+    return validate(new SModelName(modelLongName, stereotype), null);
   }
 
   /**
@@ -73,10 +90,11 @@ public final class ModelNameValidator {
    * See {@link org.jetbrains.mps.openapi.model.SModelName }
    * 
    * @param modelName SModelName for validation
+   * @param currentModelDescriptor The current model that is going to be renamed, null if a new model is being created
    * @return validation error text or null if name is valid
    */
   @Nullable
-  public String validate(@NotNull final SModelName modelName) {
+  public String validate(@NotNull final SModelName modelName, @Nullable final EditableSModel currentModelDescriptor) {
     final SModule module = myModelRoot.getModule();
 
     if (module instanceof Language) {
@@ -86,23 +104,17 @@ public final class ModelNameValidator {
     }
 
     final Wrappers._boolean duplicatesExistingModel = new Wrappers._boolean();
-    module.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        duplicatesExistingModel.value = !(module.getModels(new Predicate<SModel>() {
-          public boolean test(SModel model) {
-            return modelName.equals(model.getName());
-          }
-        }).isEmpty());
-      }
-    });
+    module.getRepository().getModelAccess().runReadAction(() -> duplicatesExistingModel.value = !(module.getModels((SModel model) -> modelName.equals(model.getName())).isEmpty()));
     if (duplicatesExistingModel.value) {
       return IdeBundle.message("dialogs.model.new.error.model.name.already.exists", modelName, module.getModuleName());
     }
 
     final Wrappers._boolean canCreateModel = new Wrappers._boolean();
-    module.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
+    module.getRepository().getModelAccess().runReadAction(() -> {
+      if (currentModelDescriptor == null) {
         canCreateModel.value = myModelRoot.canCreateModel(modelName);
+      } else {
+        canCreateModel.value = myModelRoot.canRenameModel(modelName, currentModelDescriptor);
       }
     });
     if (!(canCreateModel.value)) {

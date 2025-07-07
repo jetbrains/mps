@@ -33,8 +33,8 @@ import java.util.HashSet;
 import java.util.Queue;
 import jetbrains.mps.internal.collections.runtime.QueueSequence;
 import java.util.LinkedList;
-import jetbrains.mps.smodel.LanguageAspect;
-import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -46,14 +46,14 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class ConceptBehavior__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
 
-  public static final SMethod<List<SNode>> getMembers_idhEwJjl2 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMembers").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwJjl2").build();
-  public static final SMethod<IExtractMethodRefactoringProcessor> getExtractMethodRefactoringProcessor_idhLwHWdT = new SMethodBuilder<IExtractMethodRefactoringProcessor>(new SJavaCompoundTypeImpl(IExtractMethodRefactoringProcessor.class)).name("getExtractMethodRefactoringProcessor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hLwHWdT").build(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""));
-  public static final SMethod<List<SNode>> getMethodsToOverride_id4GM03FJm3zL = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMethodsToOverride").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4GM03FJm3zL").build();
-  public static final SMethod<List<SNode>> getMethodsToImplement_id4GM03FJm5q2 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMethodsToImplement").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4GM03FJm5q2").build();
-  public static final SMethod<List<SNode>> getAllSuperBehaviors_id1$X$vL9L8i8 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getAllSuperBehaviors").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1$X$vL9L8i8").build();
-  public static final SMethod<SNode> getBaseConcept_id2hxg_BDjKM8 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getBaseConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2hxg_BDjKM8").build();
-  public static final SMethod<Void> setBaseConcept_id5r_35Ihc58c = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setBaseConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5r_35Ihc58c").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<String> getBehaviorFqName_id66HNO1XTVFW = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getBehaviorFqName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("66HNO1XTVFW").build();
+  public static final SMethod<List<SNode>> getMembers_idhEwJjl2 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMembers").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877531970L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<IExtractMethodRefactoringProcessor> getExtractMethodRefactoringProcessor_idhLwHWdT = new SMethodBuilder<IExtractMethodRefactoringProcessor>(new SJavaCompoundTypeImpl(IExtractMethodRefactoringProcessor.class)).name("getExtractMethodRefactoringProcessor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1221393367929L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""));
+  public static final SMethod<List<SNode>> getMethodsToOverride_id4GM03FJm3zL = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMethodsToOverride").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5418393554803767537L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<List<SNode>> getMethodsToImplement_id4GM03FJm5q2 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMethodsToImplement").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5418393554803775106L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<List<SNode>> getAllSuperBehaviors_id1$X$vL9L8i8 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getAllSuperBehaviors").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1818770337282950280L).languageId(0x87d963a55f2a9db1L, 0xaf65afd8f0dd4942L).build2();
+  public static final SMethod<SNode> getBaseConcept_id2hxg_BDjKM8 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getBaseConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2621449412040133768L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
+  public static final SMethod<Void> setBaseConcept_id5r_35Ihc58c = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setBaseConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6261424444345963020L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<String> getBehaviorFqName_id66HNO1XTVFW = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getBehaviorFqName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7038509668547148540L).languageId(0x87d963a55f2a9db1L, 0xaf65afd8f0dd4942L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMembers_idhEwJjl2, getExtractMethodRefactoringProcessor_idhLwHWdT, getMethodsToOverride_id4GM03FJm3zL, getMethodsToImplement_id4GM03FJm5q2, getAllSuperBehaviors_id1$X$vL9L8i8, getBaseConcept_id2hxg_BDjKM8, setBaseConcept_id5r_35Ihc58c, getBehaviorFqName_id66HNO1XTVFW);
 
@@ -154,7 +154,7 @@ public final class ConceptBehavior__BehaviorDescriptor extends BaseBHDescriptor 
     }
     List<SNode> result = new ArrayList<SNode>();
     for (SNode concept : conceptResult) {
-      SNode behavior = SNodeOperations.cast(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspect_id7g4OXB0ykew.invoke(concept, LanguageAspect.BEHAVIOR), CONCEPTS.ConceptBehavior$2);
+      SNode behavior = SNodeOperations.cast(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspect_id7g4OXB0yku$.invoke(concept, SModuleOperations.getAspect(SNodeOperations.getModel(concept).getModule(), "behavior")), CONCEPTS.ConceptBehavior$2);
       if (behavior != null) {
         ListSequence.fromList(result).addElement(behavior);
       }
@@ -168,7 +168,7 @@ public final class ConceptBehavior__BehaviorDescriptor extends BaseBHDescriptor 
     SLinkOperations.setTarget(__thisNode__, LINKS.concept$u6dL, baseConcept);
   }
   /*package*/ static String getBehaviorFqName_id66HNO1XTVFW(@NotNull SNode __thisNode__) {
-    return NameUtil.getModelLongName(SNodeOperations.getModel(__thisNode__)) + "." + SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.concept$u6dL), PROPS.name$MnvL) + BehaviorMethodNames.BEHAVIOR_DESCRIPTOR_SUFFIX;
+    return SModelOperations.getModelName(SNodeOperations.getModel(__thisNode__)) + "." + SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.concept$u6dL), PROPS.name$MnvL) + BehaviorMethodNames.BEHAVIOR_DESCRIPTOR_SUFFIX;
   }
 
   /*package*/ ConceptBehavior__BehaviorDescriptor() {

@@ -26,6 +26,7 @@ public class ShowDFA_Action extends BaseAction {
     super("Show Data Flow Graph", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -54,11 +55,9 @@ public class ShowDFA_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._T<Program> program = new Wrappers._T<Program>();
     final Wrappers._T<ControlFlowGraph<InstructionWrapper>> graph = new Wrappers._T<ControlFlowGraph<InstructionWrapper>>();
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        program.value = new MPSProgramBuilder(event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository()).buildProgram(event.getData(MPSCommonDataKeys.NODE));
-        graph.value = new ControlFlowGraph<InstructionWrapper>(new ProgramWrapper(program.value), new GraphCreator());
-      }
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(() -> {
+      program.value = new MPSProgramBuilder(event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository()).buildProgram(event.getData(MPSCommonDataKeys.NODE));
+      graph.value = new ControlFlowGraph<InstructionWrapper>(new ProgramWrapper(program.value), new GraphCreator());
     });
     new ShowCFGDialog(graph.value, event.getData(MPSCommonDataKeys.MPS_PROJECT), "Data Flow Graph").show();
   }

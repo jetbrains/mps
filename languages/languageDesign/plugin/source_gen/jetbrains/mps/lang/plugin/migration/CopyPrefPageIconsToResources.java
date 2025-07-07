@@ -10,19 +10,16 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.LanguageAspect;
 import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -46,33 +43,15 @@ public class CopyPrefPageIconsToResources extends MigrationScriptBase {
     {
       SearchScope scope_8o28b_a0e = CommandUtil.createScope(m);
       final SearchScope scope_8o28b_a0e_0 = new EditableFilteringScope(scope_8o28b_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_8o28b_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PreferencePage$Cm, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return isNotEmptyString(SPropertyOperations.getString(it, PROPS.iconPath$7y8G));
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          // we re-shrink paths to convert ${language_descriptoe} to ${module} at the same time
-          MacroHelper macros = MacrosFactory.forModule(m);
-          String newPath = macros.shrinkPath(macros.expandPath(SPropertyOperations.getString(it, PROPS.iconPath$7y8G)));
-          SPropertyOperations.assign(SLinkOperations.setNewChild(it, LINKS.icon$otia, CONCEPTS.FileIcon$Z0), PROPS.file$686H, newPath);
-          it.setProperty(PROPS.iconPath$7y8G, null);
-        }
+      QueryExecutionContext context = () -> scope_8o28b_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PreferencePage$Cm, false)).where((it) -> isNotEmptyString(SPropertyOperations.getString(it, PROPS.iconPath$7y8G))).visitAll((it) -> {
+        // we re-shrink paths to convert ${language_descriptoe} to ${module} at the same time
+        MacroHelper macros = MacrosFactory.forModule(m);
+        String newPath = macros.shrinkPath(macros.expandPath(SPropertyOperations.getString(it, PROPS.iconPath$7y8G)));
+        SPropertyOperations.assign(SLinkOperations.setNewChild(it, LINKS.icon$otia, CONCEPTS.FileIcon$Z0), PROPS.file$686H, newPath);
+        it.setProperty(PROPS.iconPath$7y8G, null);
       });
-      Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SModel>() {
-        public boolean accept(SModel it) {
-          return LanguageAspect.STRUCTURE.is(it) && !(((SModelInternal) it).importedLanguageIds().contains(MetaAdapterFactory.getLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources")));
-        }
-      }).visitAll(new IVisitor<SModel>() {
-        public void visit(SModel it) {
-          ((SModelInternal) it).addLanguage(MetaAdapterFactory.getLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources"));
-        }
-      });
+      Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).where((it) -> LanguageAspect.STRUCTURE.is(it) && !(((SModelInternal) it).importedLanguageIds().contains(MetaAdapterFactory.getLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources")))).visitAll((it) -> ((SModelInternal) it).addLanguage(MetaAdapterFactory.getLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources")));
     }
   }
   @Override
@@ -81,17 +60,9 @@ public class CopyPrefPageIconsToResources extends MigrationScriptBase {
     {
       SearchScope scope_8o28b_b0f = CommandUtil.createScope(m);
       final SearchScope scope_8o28b_b0f_0 = new EditableFilteringScope(scope_8o28b_b0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_8o28b_b0f_0;
-        }
-      };
-      result = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PreferencePage$Cm, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return isNotEmptyString(SPropertyOperations.getString(it, PROPS.iconPath$7y8G));
-        }
-      }).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
+      QueryExecutionContext context = () -> scope_8o28b_b0f_0;
+      result = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PreferencePage$Cm, false)).where((it) -> isNotEmptyString(SPropertyOperations.getString(it, PROPS.iconPath$7y8G))).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+        public Problem invoke(SNode it) {
           return ((Problem) new NotMigratedNode(it) {
             public String getMessage() {
               return "Icon path was not migrated";
@@ -102,7 +73,7 @@ public class CopyPrefPageIconsToResources extends MigrationScriptBase {
     }
     return result;
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, "jetbrains.mps.lang.plugin"), 0);
   }
 

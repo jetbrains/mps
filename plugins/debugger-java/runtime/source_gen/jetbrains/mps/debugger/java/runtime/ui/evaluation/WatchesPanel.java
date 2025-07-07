@@ -50,7 +50,7 @@ public class WatchesPanel extends EvaluationUi {
         });
       }
     };
-    ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, ((BaseGroup) ActionManager.getInstance().getAction("jetbrains.mps.debugger.java.runtime.ui.actions.WatchesToolbarActions_ActionGroup")), false);
+    ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, ((BaseGroup) ActionManager.getInstance().getAction("jetbrains.mps.debugger.java.runtime.ui.actions.WatchesToolbarActions_ActionGroup")), false);
     toolbar.setLayoutPolicy(ActionToolbar.WRAP_LAYOUT_POLICY);
 
     add(toolbar.getComponent(), BorderLayout.WEST);

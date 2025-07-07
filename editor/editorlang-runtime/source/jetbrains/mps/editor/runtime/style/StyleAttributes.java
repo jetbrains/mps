@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,37 +15,25 @@
  */
 package jetbrains.mps.editor.runtime.style;
 
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.openapi.editor.descriptor.StyleAttributeProvider;
 import jetbrains.mps.openapi.editor.style.StyleAttribute;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.smodel.language.LanguageRegistryListener;
 import jetbrains.mps.smodel.language.LanguageRuntime;
-import jetbrains.mps.util.annotation.Hack;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.LogManager;
-import org.jetbrains.annotations.ApiStatus.Internal;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConceptFeature;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.PaintContext;
-import java.awt.Rectangle;
-import java.awt.RenderingHints;
-import java.awt.color.ColorSpace;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
-import java.awt.image.ColorModel;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Supplier;
 
 /**
  * User: shatalin
@@ -55,46 +43,21 @@ public class StyleAttributes {
 
   private static StyleAttributes ourInstance;
 
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(StyleAttributes.class));
-
   private StyleAttributes() {
-    if (LanguageRegistry.getInstance() == null) {
-      // For testing purposes
-      // TODO: modify this code. Introduce ILanguageAspect.dispose() method, unregister
-      // TODO: StyleAttributes from EditorAspectDescriptor.dispose()
-      // TODO: similar code present in ValidEditorDescriptorsCache
-      return;
-    }
-    LanguageRegistry.getInstance().addRegistryListener(new LanguageRegistryListener() {
-      @Override
-      public void afterLanguagesLoaded(Iterable<LanguageRuntime> languages) {
-      }
-
-      @Override
-      public void beforeLanguagesUnloaded(Iterable<LanguageRuntime> languages) {
-        for (LanguageRuntime language : languages) {
-          Map<String, StyleAttribute> attributeMap = ourLanguageAttributes.get(language);
-          if (attributeMap != null) {
-            for (StyleAttribute attribute : attributeMap.values()) {
-              attribute.unregister();
-            }
-            ourLanguageAttributes.remove(language);
-          }
-        }
-      }
-    });
   }
 
   public static StyleAttributes getInstance() {
     if (ourInstance == null) {
+      // FIXME would be great to get LanguageRegistry instance here,
+      // or to utilize the fact
       ourInstance = new StyleAttributes();
     }
     return ourInstance;
   }
 
-  private List<StyleAttribute> ourAttributes = new ArrayList<>();
-  private Set<Integer> ourFreeIndices = new LinkedHashSet<>();
-  private Map<LanguageRuntime, Map<String, StyleAttribute>> ourLanguageAttributes = new HashMap<>();
+  private final List<StyleAttribute> ourAttributes = new ArrayList<>();
+  private final Set<Integer> ourFreeIndices = new LinkedHashSet<>();
+  private final Map<SLanguage, Map<String, StyleAttribute>> ourLanguageAttributes = new HashMap<>();
 
   int getAttributesCount() {
     return ourAttributes.size();
@@ -127,37 +90,65 @@ public class StyleAttributes {
     return a instanceof SimpleStyleAttribute;
   }
 
+  // legacy one, it's better to use SLanguage identity rather than string
   public <T> StyleAttribute<T> getAttribute(String languageName, String attributeName) {
     LanguageRuntime language = LanguageRegistry.getInstance().getLanguage(languageName);
-    if (language == null) {
+    return getAttribute(language, languageName, attributeName);
+  }
+
+  public <T> StyleAttribute<T> getAttribute(SLanguage languageId, String attributeName) {
+    return getAttribute(LanguageRegistry.getInstance().getLanguage(languageId), languageId.getQualifiedName(), attributeName);
+  }
+
+  private <T> StyleAttribute<T> getAttribute(@Nullable LanguageRuntime languageRuntime, String languageName, String attributeName) {
+    if (languageRuntime == null) {
       throw new IllegalArgumentException("language not found: " + languageName);
     }
-    if (!ourLanguageAttributes.containsKey(language)) {
-      ourLanguageAttributes.put(language, new HashMap<>());
+    final SLanguage languageId = languageRuntime.getIdentity();
+    Map<String, StyleAttribute> attributes = ourLanguageAttributes.get(languageId);
+    //noinspection Java8MapApi
+    if (attributes == null) {
+      ourLanguageAttributes.put(languageId, attributes = new HashMap<>());
     }
-    if (ourLanguageAttributes.get(language).containsKey(attributeName)) {
-      return ourLanguageAttributes.get(language).get(attributeName);
+    if (attributes.containsKey(attributeName)) {
+      return attributes.get(attributeName);
     } else {
-      EditorAspectDescriptor editorAspectDescriptor = language.getAspect(EditorAspectDescriptor.class);
+      EditorAspectDescriptor editorAspectDescriptor = languageRuntime.getAspect(EditorAspectDescriptor.class);
       if (!(editorAspectDescriptor instanceof StyleAttributeProvider)) {
-        throw new IllegalArgumentException("language does not contain editor descriptor: " + languageName);
+        throw new IllegalArgumentException("language does not contain editor descriptor: " + languageId.getQualifiedName());
       }
       StyleAttribute attribute = ((StyleAttributeProvider) editorAspectDescriptor).getStyleAttribute(attributeName);
       if (attribute == null) {
-        throw new IllegalArgumentException("language " + languageName + "does not contain style attribute" + attributeName);
+        throw new IllegalArgumentException("language " + languageId.getQualifiedName() + "does not contain style attribute" + attributeName);
       }
-      ourLanguageAttributes.get(language).put(attributeName, attribute);
+      attributes.put(attributeName, attribute);
       attribute.register();
       return attribute;
     }
   }
 
+  // invoke when StyleAttributeProvider is disposed to clear any cached instance of attribute provided by the language
+  // does nothing if no attributes for the language were ever queried.
+  // since 2021.2
+  public void forgetAttributes(@NotNull SLanguage language) {
+    final Map<String, StyleAttribute> knownAttributes = ourLanguageAttributes.remove(language);
+    if (knownAttributes != null) {
+      for (StyleAttribute attribute : knownAttributes.values()) {
+        // XXX not sure that I need register/unregister in StyleAttribute, when
+        // both these activities happen here, in this class.
+        // Seems all I need is just to solve register() for style attributes declared statically (see static fields
+        // in this class). If this is the only place, perhaps, can write static{} section that would reflectively
+        // register all fields assignable from StyleAttribute. If static{} execution order is tricky,
+        // may register these on first access
+        attribute.unregister();
+      }
+    }
+  }
+
   public static final StyleAttribute<Color> BACKGROUND_COLOR = new InheritableStyleAttribute<>("background-color", null, true);
   public static final StyleAttribute<Color> BRACKETS_COLOR = new InheritableStyleAttribute<>("bracket-color", Color.BLACK, true);
-  public static final StyleAttribute<Color> TEXT_COLOR = new InheritableStyleAttribute<>(
-      "text-color", new ColorAdapter(() -> StyleRegistry.getInstance().getEditorForeground(), Color.BLACK), true);
-  public static final StyleAttribute<Color> NULL_TEXT_COLOR = new InheritableStyleAttribute<>(
-      "null-text-color", new ColorAdapter(() -> StyleRegistry.getInstance().getColor("DEFAULT_NULL_TEXT_COLOR"), Color.GRAY), true);
+  public static final StyleAttribute<Color> TEXT_COLOR = new InheritableStyleAttribute<>("text-color", Color.BLACK, true);
+  public static final StyleAttribute<Color> NULL_TEXT_COLOR = new InheritableStyleAttribute<>("null-text-color", Color.GRAY, true);
   public static final StyleAttribute<Color> TEXT_BACKGROUND_COLOR = new InheritableStyleAttribute<>("text-background-color", null, true);
   public static final StyleAttribute<Color> NULL_TEXT_BACKGROUND_COLOR = new InheritableStyleAttribute<>("null-text-color", null, true);
   public static final StyleAttribute<Color> SELECTED_TEXT_BACKGROUND_COLOR = new InheritableStyleAttribute<>("selected-text-background-color", null, true);
@@ -166,6 +157,7 @@ public class StyleAttributes {
   public static final StyleAttribute<Boolean> DRAW_BRACKETS = new SimpleStyleAttribute<>("draw-brackets", false, true);
   public static final StyleAttribute<Boolean> DRAW_BORDER = new SimpleStyleAttribute<>("draw-border", false, true);
   public static final StyleAttribute<Boolean> SELECTABLE = new SimpleStyleAttribute<>("selectable", true, true);
+  public static final StyleAttribute<Boolean> TRANSPARENT = new SimpleStyleAttribute<>("transparent", false, true);
   public static final StyleAttribute<Boolean> EDITABLE = new SimpleStyleAttribute<>("editable", true, true);
   public static final StyleAttribute<Boolean> READ_ONLY = new InheritableStyleAttribute<>("read-only", false, true);
   public static final StyleAttribute<Boolean> UNDERLINED = new SimpleStyleAttribute<>("underlined", false, true);
@@ -196,6 +188,8 @@ public class StyleAttributes {
 
   public static final StyleAttribute<Boolean> PUNCTUATION_LEFT = new SimpleStyleAttribute<>("punctuation-left", false, true);
   public static final StyleAttribute<Boolean> PUNCTUATION_RIGHT = new SimpleStyleAttribute<>("punctuation-right", false, true);
+
+  public static final StyleAttribute<Boolean> SEPARATOR_RIGHT = new SimpleStyleAttribute<>("position-right", false, true);
 
   public static final StyleAttribute<Padding> HORIZONTAL_GAP = new SimpleStyleAttribute<>("horizontal-gap", new Padding(1.0), true);
 
@@ -232,130 +226,5 @@ public class StyleAttributes {
 
   public static final StyleAttribute<String> URL = new SimpleStyleAttribute<>("url", null, true);
 
-  /**
-   * Adapter for {@link Color} to support color scheme changes.
-   * <br>
-   * Due to the facts:
-   * <ul>
-   * <li>reference dependency to static final field from other places</li>
-   * <li>{@link InheritableStyleAttribute} immutable parameter</li>
-   * <li>isolation from platform code in this module</li>
-   * </ul>
-   * this hack is only option to support dynamic colors.
-   * <br>
-   * <br>
-   * Should <b>not</b> be used anywhere else and removed after refactoring.
-   */
-  @Internal
-  @Hack
-  private static final class ColorAdapter extends Color {
-    private final Supplier<Color> myColorSupplier;
-    private final Color myFallbackColor;
-
-    ColorAdapter(Supplier<Color> color, Color fallbackColor) {
-      super(0, 0, 0);
-      myColorSupplier = color;
-      myFallbackColor = fallbackColor;
-    }
-
-    private Color getColor() {
-      return StyleRegistry.getInstance() == null ? myFallbackColor : myColorSupplier.get();
-    }
-
-    @Override
-    public int getRed() {
-      return getColor().getRed();
-    }
-
-    @Override
-    public int getGreen() {
-      return getColor().getGreen();
-    }
-
-    @Override
-    public int getBlue() {
-      return getColor().getBlue();
-    }
-
-    @Override
-    public int getAlpha() {
-      return getColor().getAlpha();
-    }
-
-    @Override
-    public int getRGB() {
-      final Color color = getColor();
-      return color != null ? color.getRGB() : -1;
-    }
-
-    @Override
-    public Color brighter() {
-      return getColor().brighter();
-    }
-
-    @Override
-    public Color darker() {
-      return getColor().darker();
-    }
-
-    @Override
-    public int hashCode() {
-      return getColor().hashCode();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-      return getColor() != null && getColor().equals(obj);
-    }
-
-    @Override
-    public String toString() {
-      return getColor().toString();
-    }
-
-    @Override
-    public float[] getRGBComponents(float[] compArray) {
-      return getColor().getRGBComponents(compArray);
-    }
-
-    @Override
-    public float[] getRGBColorComponents(float[] compArray) {
-      return getColor().getRGBColorComponents(compArray);
-    }
-
-    @Override
-    public float[] getComponents(float[] compArray) {
-      return getColor().getComponents(compArray);
-    }
-
-    @Override
-    public float[] getColorComponents(float[] compArray) {
-      return getColor().getColorComponents(compArray);
-    }
-
-    @Override
-    public float[] getComponents(ColorSpace cspace, float[] compArray) {
-      return getColor().getComponents(cspace, compArray);
-    }
-
-    @Override
-    public float[] getColorComponents(ColorSpace cspace, float[] compArray) {
-      return getColor().getColorComponents(cspace, compArray);
-    }
-
-    @Override
-    public ColorSpace getColorSpace() {
-      return getColor().getColorSpace();
-    }
-
-    @Override
-    public synchronized PaintContext createContext(ColorModel cm, Rectangle r, Rectangle2D r2d, AffineTransform xform, RenderingHints hints) {
-      return getColor().createContext(cm, r, r2d, xform, hints);
-    }
-
-    @Override
-    public int getTransparency() {
-      return getColor().getTransparency();
-    }
-  }
+  public static final StyleAttribute<Boolean> SPELLCHECK = new SimpleStyleAttribute<>("spellcheck", false, true);
 }

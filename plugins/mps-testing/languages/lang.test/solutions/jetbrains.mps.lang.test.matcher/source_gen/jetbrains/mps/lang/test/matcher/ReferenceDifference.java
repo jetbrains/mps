@@ -5,7 +5,7 @@ package jetbrains.mps.lang.test.matcher;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
 
-/*package*/ class ReferenceDifference extends DifferenceItem {
+public final class ReferenceDifference extends DifferenceItem {
   private final SReferenceLink myRole;
   private final boolean myInternal;
   private final SNode myTarget1;
@@ -34,7 +34,7 @@ import org.jetbrains.mps.openapi.model.SNode;
     if (obj == null) {
       return false;
     }
-    if (!((obj instanceof ReferenceDifference))) {
+    if (!(obj instanceof ReferenceDifference)) {
       return false;
     }
     ReferenceDifference diff = (ReferenceDifference) obj;

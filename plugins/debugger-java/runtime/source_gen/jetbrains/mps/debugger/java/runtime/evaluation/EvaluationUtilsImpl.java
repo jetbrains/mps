@@ -4,8 +4,7 @@ package jetbrains.mps.debugger.java.runtime.evaluation;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.debugger.java.api.evaluation.EvaluationUtils;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import com.intellij.openapi.application.ApplicationManager;
 import com.sun.jdi.Value;
 import com.sun.jdi.ArrayReference;
@@ -52,7 +51,8 @@ import com.sun.jdi.ObjectReference;
 
 @GeneratedClass(node = "r:1f2ecb68-8f37-460f-acb8-866f8f05b15e(jetbrains.mps.debugger.java.runtime.evaluation)/3187167456722533876", model = "r:1f2ecb68-8f37-460f-acb8-866f8f05b15e(jetbrains.mps.debugger.java.runtime.evaluation)")
 public class EvaluationUtilsImpl extends EvaluationUtils {
-  private static final Logger LOG = LogManager.getLogger(EvaluationUtilsImpl.class);
+  private static final Logger LOG = Logger.getLogger(EvaluationUtilsImpl.class);
+  public static final String JAVA_LANG_OBJECT_CLASSNAME = "java.lang.Object";
   public EvaluationUtilsImpl() {
   }
   @Override
@@ -195,10 +195,10 @@ public class EvaluationUtilsImpl extends EvaluationUtils {
       return virtualMachine.mirrorOf((double) 1.0).type();
     } else if (typeSignature.startsWith("[")) {
       try {
-        return createArrayProxy(EvaluationUtils.JAVA_LANG_OBJECT, virtualMachine, 0).getJDIValue().type();
+        return createArrayProxy(JAVA_LANG_OBJECT_CLASSNAME, virtualMachine, 0).getJDIValue().type();
       } catch (EvaluationException e) {
         LOG.error(e);
-        return findClassTypeSilently(JAVA_LANG_OBJECT, virtualMachine);
+        return findClassTypeSilently(JAVA_LANG_OBJECT_CLASSNAME, virtualMachine);
       }
     }
     return findClassTypeSilently(typeSignature.substring(1, typeSignature.length() - 1), virtualMachine);
@@ -218,13 +218,13 @@ public class EvaluationUtilsImpl extends EvaluationUtils {
       @Override
       public Boolean invoke() throws InvocationException, InvalidTypeException, ClassNotLoadedException, IncompatibleThreadStateException, EvaluationException {
         if (jniSignature.startsWith("[")) {
-          if (!((what instanceof ArrayType))) {
+          if (!(what instanceof ArrayType)) {
             return false;
           }
           return EvaluationUtilsImpl.this.instanceOf(((ArrayType) what).componentType(), jniSignature.substring(1), machine);
         } else
         if (jniSignature.startsWith("L")) {
-          if (!((what instanceof ClassType))) {
+          if (!(what instanceof ClassType)) {
             return false;
           }
           ReferenceType type = findClassTypeSilently(jniSignature.substring(1, jniSignature.length() - 1), machine);

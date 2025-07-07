@@ -25,12 +25,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class XmlWhitespace__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3cfaa8L, "jetbrains.mps.core.xml.structure.XmlWhitespace");
 
-  public static final SMethod<Boolean> onNewLine_id1Qs9WekVZ9$ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("onNewLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1Qs9WekVZ9$").build();
-  public static final SMethod<Boolean> hasNewLineAfter_id1Qs9WekVZ9E = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasNewLineAfter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1Qs9WekVZ9E").build();
-  public static final SMethod<Boolean> isOneLineBlock_id1Qs9WekVZ7e = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isOneLineBlock").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1Qs9WekVZ7e").build();
-  public static final SMethod<Boolean> isTextLike_id1Qs9WekVZ9O = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isTextLike").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1Qs9WekVZ9O").build();
-  public static final SMethod<Boolean> isLastPositionAllowed_id1Qs9WekVZ8v = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLastPositionAllowed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1Qs9WekVZ8v").build();
-  public static final SMethod<Boolean> isFirstPositionAllowed_id1Qs9WekVZ7m = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFirstPositionAllowed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1Qs9WekVZ7m").build();
+  public static final SMethod<Boolean> onNewLine_id1Qs9WekVZ9$ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("onNewLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2133624044437631588L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
+  public static final SMethod<Boolean> hasNewLineAfter_id1Qs9WekVZ9E = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasNewLineAfter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2133624044437631594L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
+  public static final SMethod<Boolean> isOneLineBlock_id1Qs9WekVZ7e = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isOneLineBlock").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2133624044437631438L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
+  public static final SMethod<Boolean> isTextLike_id1Qs9WekVZ9O = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isTextLike").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2133624044437631604L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
+  public static final SMethod<Boolean> isLastPositionAllowed_id1Qs9WekVZ8v = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLastPositionAllowed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2133624044437631519L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
+  public static final SMethod<Boolean> isFirstPositionAllowed_id1Qs9WekVZ7m = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFirstPositionAllowed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2133624044437631446L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(onNewLine_id1Qs9WekVZ9$, hasNewLineAfter_id1Qs9WekVZ9E, isOneLineBlock_id1Qs9WekVZ7e, isTextLike_id1Qs9WekVZ9O, isLastPositionAllowed_id1Qs9WekVZ8v, isFirstPositionAllowed_id1Qs9WekVZ7m);
 
@@ -47,7 +47,7 @@ public final class XmlWhitespace__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static boolean hasNewLineAfter_id1Qs9WekVZ9E(@NotNull SNode __thisNode__) {
     if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.value$bSFr)) && (SNodeOperations.getNextSibling(__thisNode__) != null)) {
-      return !(((boolean) XmlPart__BehaviorDescriptor.onNewLine_id1Qs9WekVZ9$.invoke(__thisNode__)));
+      return !((boolean) XmlPart__BehaviorDescriptor.onNewLine_id1Qs9WekVZ9$.invoke(__thisNode__));
     }
     return false;
   }

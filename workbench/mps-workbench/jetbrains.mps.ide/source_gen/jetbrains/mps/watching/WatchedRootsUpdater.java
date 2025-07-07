@@ -4,25 +4,22 @@ package jetbrains.mps.watching;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.Disposable;
-import jetbrains.mps.library.AdditionalLibrariesManager;
-import jetbrains.mps.classloading.ClassLoaderManager;
 import java.util.Map;
 import jetbrains.mps.library.Library;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import java.util.HashMap;
-import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.project.ProjectManagerListener;
-import com.intellij.util.messages.MessageBusConnection;
-import jetbrains.mps.ide.MPSCoreComponents;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.project.ProjectLibraryManager;
 import com.intellij.openapi.application.ApplicationManager;
+import jetbrains.mps.library.AdditionalLibrariesManager;
 import java.util.Set;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Collection;
 import java.util.ArrayList;
+import java.util.Objects;
+import java.util.Collections;
 
 /**
  * This should probably be gone.
@@ -30,46 +27,38 @@ import java.util.ArrayList;
  */
 @GeneratedClass(node = "r:b41d4b6d-4038-4cd8-94d3-475689babea3(jetbrains.mps.watching)/6793838228148720923", model = "r:b41d4b6d-4038-4cd8-94d3-475689babea3(jetbrains.mps.watching)")
 public class WatchedRootsUpdater implements Disposable {
-  private final AdditionalLibrariesManager myLibraryManager;
-  private final ClassLoaderManager myClassLoaderManager;
   private final Map<Library, LocalFileSystem.WatchRequest> myLibrariesRequests = new HashMap<Library, LocalFileSystem.WatchRequest>();
   private final Map<Library, LocalFileSystem.WatchRequest> myProjectLibrariesRequests = new HashMap<Library, LocalFileSystem.WatchRequest>();
-  private final ProjectManager myProjectManager;
-  private ProjectManagerListener myProjectManagerListener;
-  private final MessageBusConnection myConnection;
+  private boolean myAppLibInitialized = false;
 
-  public WatchedRootsUpdater(MPSCoreComponents coreComponents, AdditionalLibrariesManager libraryManager, ProjectManager projectManager) {
-    myLibraryManager = libraryManager;
-    myProjectManager = projectManager;
-    myClassLoaderManager = coreComponents.getClassLoaderManager();
-
-    processLibrariesChange();
-    myProjectManagerListener = new ProjectManagerListener() {
-      @Override
-      public void projectOpened(@NotNull Project project) {
-        processLibrariesChange(project.getComponent(ProjectLibraryManager.class).getUILibraries(), myProjectLibrariesRequests);
-      }
-      @Override
-      public void projectClosing(@NotNull Project project) {
-        processLibrariesChange(project.getComponent(ProjectLibraryManager.class).getUILibraries(), myProjectLibrariesRequests);
-      }
-    };
-
-    myConnection = ApplicationManager.getApplication().getMessageBus().connect();
-    myConnection.subscribe(ProjectManager.TOPIC, myProjectManagerListener);
+  public WatchedRootsUpdater() {
   }
 
-  private void processLibrariesChange() {
-    processLibrariesChange(myLibraryManager.getUILibraries(), myLibrariesRequests);
-    processProjectLibrariesChange();
-  }
-
-  private void processProjectLibrariesChange() {
-    Set<Library> libs = new HashSet<Library>();
-    for (Project p : myProjectManager.getOpenProjects()) {
-      libs.addAll(p.getComponent(ProjectLibraryManager.class).getUILibraries());
+  public static class ProjectListener implements ProjectManagerListener {
+    @Override
+    public void projectOpened(@NotNull Project project) {
+      ProjectLibraryManager plm = ProjectLibraryManager.getInstance(project);
+      WatchedRootsUpdater wru = ApplicationManager.getApplication().getService(WatchedRootsUpdater.class);
+      wru.initAppLibrariesIfNecessary();
+      wru.processProjectLibraries(plm);
     }
-    processLibrariesChange(libs, myProjectLibrariesRequests);
+    @Override
+    public void projectClosing(@NotNull Project project) {
+      ProjectLibraryManager plm = ProjectLibraryManager.getInstance(project);
+      WatchedRootsUpdater wru = ApplicationManager.getApplication().getService(WatchedRootsUpdater.class);
+      wru.processProjectLibraries(plm);
+    }
+  }
+
+  /*package*/ void initAppLibrariesIfNecessary() {
+    if (!(myAppLibInitialized)) {
+      AdditionalLibrariesManager appLM = AdditionalLibrariesManager.getInstance();
+      processLibrariesChange(appLM.getUILibraries(), myLibrariesRequests);
+      myAppLibInitialized = true;
+    }
+  }
+  /*package*/ void processProjectLibraries(ProjectLibraryManager plm) {
+    processLibrariesChange(plm.getUILibraries(), myProjectLibrariesRequests);
   }
 
   private void processLibrariesChange(Set<Library> currentLibraries, Map<Library, LocalFileSystem.WatchRequest> libraryToRequest) {
@@ -96,12 +85,12 @@ public class WatchedRootsUpdater implements Disposable {
     }
   }
 
-  private List<Library> librarySubtract(Collection<Library> from, Collection<Library> what) {
+  private static List<Library> librarySubtract(Collection<Library> from, Collection<Library> what) {
     List<Library> result = new ArrayList<Library>();
     for (Library pattern : from) {
       boolean found = false;
       for (Library possibleMatching : what) {
-        if (pattern.getPath().equals(possibleMatching.getPath())) {
+        if (Objects.equals(pattern.getPath(), possibleMatching.getPath())) {
           found = true;
           break;
         }
@@ -115,6 +104,10 @@ public class WatchedRootsUpdater implements Disposable {
 
   @Override
   public void dispose() {
-    myConnection.disconnect();
+    if (myAppLibInitialized) {
+      // pretend there are no more libraries, just clear the watched root for all previously known
+      processLibrariesChange(Collections.<Library>emptySet(), myLibrariesRequests);
+      myAppLibInitialized = false;
+    }
   }
 }

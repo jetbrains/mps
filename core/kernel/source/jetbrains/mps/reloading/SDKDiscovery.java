@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,15 @@
  */
 package jetbrains.mps.reloading;
 
+import jetbrains.mps.file.Files;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.SystemInfo;
-import jetbrains.mps.vfs.Files;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.iofs.jrt.JrtIoFileSystem;
 import jetbrains.mps.vfs.path.PathFormats;
 import jetbrains.mps.vfs.util.PathUtil;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -33,9 +32,7 @@ import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
 import java.net.URI;
-import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.charset.Charset;
 import java.nio.file.DirectoryStream;
@@ -43,7 +40,6 @@ import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
@@ -69,16 +65,16 @@ public class SDKDiscovery {
       url = URLDecoder.decode(url, Charset.defaultCharset().name()).replace('/', File.separatorChar);
       String prefix = "jar:";
       if (!url.startsWith(prefix)) {
-        LOG.warn("Can't extract JDK tools path from " + url);
+        LOG.warning("Can't extract JDK tools path from " + url);
         return null;
       }
 
       String jarPath = url.substring(prefix.length(), url.indexOf('!'));
-      // fixme: why to convert back and forth?
       jetbrains.mps.vfs.path.Path path = PathFormats.getCurrentSystemFormat().fromString(jarPath);
-      return new QualifiedPath(VFSManager.FILE_FS, Files.fromPath(path).getPath());
+      // toUnixPathFormat() is just an attempt to keep QP stable and to replace path conversion through IFile
+      return new QualifiedPath(VFSManager.FILE_FS, path.toUnixPathFormat().toText());
     } catch (ClassNotFoundException e) {
-      LOG.warn("jar file for class " + toolsJarClass + " could not be found");
+      LOG.warning("jar file for class " + toolsJarClass + " could not be found");
       return null;
     } catch (UnsupportedEncodingException e) {
       LOG.error("Exception when trying to find tools.jar: ", e);
@@ -88,7 +84,7 @@ public class SDKDiscovery {
 
   //-------------------------------------copied from JavaSdkImpl----------------------------------
 
-  private static final Logger LOG = LogManager.getLogger(SDKDiscovery.class);
+  private static final Logger LOG = Logger.getLogger(SDKDiscovery.class);
 
   @NotNull
   private static List<QualifiedPath> findJavaRuntimeClasses(@NotNull File javaHome) {
@@ -103,28 +99,32 @@ public class SDKDiscovery {
       }
     } else if (isModularRuntime(javaHome)) {
       String jrtBase = getPath(javaHome) + JrtIoFileSystem.JDK_PATH_SEPARATOR + IFileSystem.SEPARATOR;
-      List<String> modules = readModulesFromReleaseFile(javaHome);
-      // XXX this seems to be dead code, isModularRuntime() here true iff isFile() == true (isExplodedModularRuntime branch is above)
-      //     and there could be no "release" file under another File (in java.io)
-      if (modules != null) {
-        for (String module : modules) {
-          result.add(new QualifiedPath(VFSManager.JRT_FS, jrtBase + module));
-        }
-      } else {
-        // JrtIoFile#getChildren
-        java.nio.file.FileSystem jrtfs = FileSystems.getFileSystem(URI.create("jrt:/"));
-        Path jdkRoot = jrtfs.getPath("modules");
-        if (java.nio.file.Files.isDirectory(jdkRoot)) {
-          try (DirectoryStream<Path> ds = java.nio.file.Files.newDirectoryStream(jdkRoot)) {
-            for (Path p : ds) {
-              // see JrtIoFile#getPath.
-              // JrtIoFile#getPathInJDK() doesn't include "modules" part, which is hardcoded in JrtIoFile#getRealFile, hence p.getFileName only
-              result.add(new QualifiedPath(VFSManager.JRT_FS, jrtBase + p.getFileName().toString()));
+      try {
+        List<String> modules = Files.readModulesFromReleaseFile(javaHome);
+        // XXX this seems to be dead code, isModularRuntime() here true iff isFile() == true (isExplodedModularRuntime branch is above)
+        //     and there could be no "release" file under another File (in java.io)
+        if (modules != null) {
+          for (String module : modules) {
+            result.add(new QualifiedPath(VFSManager.JRT_FS, jrtBase + module));
+          }
+        } else {
+          // JrtIoFile#getChildren
+          java.nio.file.FileSystem jrtfs = FileSystems.getFileSystem(URI.create("jrt:/"));
+          Path jdkRoot = jrtfs.getPath("modules");
+          if (java.nio.file.Files.isDirectory(jdkRoot)) {
+            try (DirectoryStream<Path> ds = java.nio.file.Files.newDirectoryStream(jdkRoot)) {
+              for (Path p : ds) {
+                // see JrtIoFile#getPath.
+                // JrtIoFile#getPathInJDK() doesn't include "modules" part, which is hardcoded in JrtIoFile#getRealFile, hence p.getFileName only
+                result.add(new QualifiedPath(VFSManager.JRT_FS, jrtBase + p.getFileName().toString()));
+              }
+            } catch (IOException e) {
+              LOG.warning(String.format("Can't read %s", jdkRoot), e);
             }
-          } catch (IOException e) {
-            LOG.warn(String.format("Can't read %s", jdkRoot), e);
           }
         }
+      } catch (IOException | IllegalArgumentException ex) {
+        LOG.info("Can't process modular Java runtime", ex);
       }
     } else {
       for (File root : getJdkClassesRoots(javaHome, !new File(javaHome, "jre").exists())) {
@@ -142,28 +142,6 @@ public class SDKDiscovery {
     return result;
   }
 
-
-  /**
-   * Tries to load the list of modules in the JDK from the 'release' file. Returns null if the 'release' file is not there
-   * or doesn't contain the expected information.
-   */
-  @Nullable
-  private static List<String> readModulesFromReleaseFile(File jrtBaseDir) {
-    File releaseFile = new File(jrtBaseDir, "release");
-    if (releaseFile.isFile()) {
-      Properties p = new Properties();
-      try (FileInputStream stream = new FileInputStream(releaseFile)) {
-        p.load(stream);
-        String modules = p.getProperty("MODULES");
-        if (modules != null) {
-          return split(unquoteString(modules), " ", true, true);
-        }
-      } catch (IOException | IllegalArgumentException e) {
-        LOG.info(e);
-      }
-    }
-    return null;
-  }
 
   private static String getPath(File jarFile) {
     return PathUtil.toSystemIndependent(jarFile.getAbsolutePath());
@@ -266,82 +244,5 @@ public class SDKDiscovery {
     } catch (IOException e) {
       return null;
     }
-  }
-
-  //-------------------------------------copied from StringUtil----------------------------------
-
-  @NotNull
-  @SuppressWarnings("unchecked")
-  public static List<String> split(@NotNull String s, @NotNull String separator, boolean excludeSeparator, boolean excludeEmptyStrings) {
-    return (List) split((CharSequence) s, separator, excludeSeparator, excludeEmptyStrings);
-  }
-
-  @NotNull
-  public static List<CharSequence> split(@NotNull CharSequence s, @NotNull CharSequence separator, boolean excludeSeparator, boolean excludeEmptyStrings) {
-    if (separator.length() == 0) {
-      return Collections.singletonList(s);
-    }
-    List<CharSequence> result = new ArrayList<CharSequence>();
-    int pos = 0;
-    while (true) {
-      int index = indexOf(s, separator, pos);
-      if (index == -1) {
-        break;
-      }
-      final int nextPos = index + separator.length();
-      CharSequence token = s.subSequence(pos, excludeSeparator ? index : nextPos);
-      if (token.length() != 0 || !excludeEmptyStrings) {
-        result.add(token);
-      }
-      pos = nextPos;
-    }
-    if (pos < s.length() || !excludeEmptyStrings && pos == s.length()) {
-      result.add(s.subSequence(pos, s.length()));
-    }
-    return result;
-  }
-
-  public static int indexOf(@NotNull CharSequence sequence, @NotNull CharSequence infix, int start) {
-    return indexOf(sequence, infix, start, sequence.length());
-  }
-
-  public static int indexOf(@NotNull CharSequence sequence, @NotNull CharSequence infix, int start, int end) {
-    for (int i = start; i <= end - infix.length(); i++) {
-      if (startsWith(sequence, i, infix)) {
-        return i;
-      }
-    }
-    return -1;
-  }
-
-  public static boolean startsWith(@NotNull CharSequence text, int startIndex, @NotNull CharSequence prefix) {
-    int tl = text.length();
-    if (startIndex < 0 || startIndex > tl) {
-      throw new IllegalArgumentException("Index is out of bounds: " + startIndex + ", length: " + tl);
-    }
-    int l1 = tl - startIndex;
-    int l2 = prefix.length();
-    if (l1 < l2) {
-      return false;
-    }
-
-    for (int i = 0; i < l2; i++) {
-      if (text.charAt(i + startIndex) != prefix.charAt(i)) {
-        return false;
-      }
-    }
-
-    return true;
-  }
-
-  //-------------------------------------copied from StringUtilRt----------------------------------
-
-  public static boolean isQuotedString(@NotNull String s) {
-    return s.length() > 1 && (s.charAt(0) == '\'' || s.charAt(0) == '\"') && s.charAt(0) == s.charAt(s.length() - 1);
-  }
-
-  @NotNull
-  public static String unquoteString(@NotNull String s) {
-    return isQuotedString(s) ? s.substring(1, s.length() - 1) : s;
   }
 }

@@ -9,7 +9,6 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.project.MPSProject;
@@ -38,6 +37,7 @@ public class GoToConceptDescendants_Action extends BaseAction {
     super("Concept Implementation(s)", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -53,21 +53,18 @@ public class GoToConceptDescendants_Action extends BaseAction {
       if (node != null && !(SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$KA))) {
         node = null;
       }
-      MapSequence.fromMap(_params).put("conceptDecl", node);
       if (node == null) {
         return false;
       }
     }
     {
       EditorCell p = event.getData(MPSEditorDataKeys.EDITOR_CELL);
-      MapSequence.fromMap(_params).put("selectedCell", p);
       if (p == null) {
         return false;
       }
     }
     {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      MapSequence.fromMap(_params).put("project", p);
       if (p == null) {
         return false;
       }
@@ -79,15 +76,15 @@ public class GoToConceptDescendants_Action extends BaseAction {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("navigation.gotoImplementation");
 
     InputEvent inputEvent = event.getInputEvent();
-    SRepository repository = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository();
+    SRepository repository = event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository();
     DefaultConceptComparator comparator = new DefaultConceptComparator(repository);
     DefaultConceptNameFilter nameFilter = new DefaultConceptNameFilter(repository);
-    CaptionFunction caption = GoToConceptDescendants_Action.this.captionFun(((MPSProject) MapSequence.fromMap(_params).get("project")), ((SNode) MapSequence.fromMap(_params).get("conceptDecl")), _params);
+    CaptionFunction caption = GoToConceptDescendants_Action.this.captionFun(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.NODE), event);
     DefaultNodeRenderer renderer = new DefaultNodeRenderer(repository);
-    PopupSettingsBuilder settings = new PopupSettingsBuilder(((MPSProject) MapSequence.fromMap(_params).get("project"))).captionFun(caption).renderer(renderer).queryFromNode(((SNode) MapSequence.fromMap(_params).get("conceptDecl"))).pointFromCellAndEvent(((EditorCell) MapSequence.fromMap(_params).get("selectedCell")), inputEvent).comparator(comparator).nameFilter(nameFilter);
+    PopupSettingsBuilder settings = new PopupSettingsBuilder(event.getData(MPSCommonDataKeys.MPS_PROJECT)).captionFun(caption).renderer(renderer).queryFromNode(event.getData(MPSCommonDataKeys.NODE)).pointFromCellAndEvent(event.getData(MPSEditorDataKeys.EDITOR_CELL), inputEvent).comparator(comparator).nameFilter(nameFilter);
     GoToHelper.showPopupAndSearchNodeInBackground(settings.finders(FindUtils.getFinder("jetbrains.mps.lang.structure.findUsages.ConceptDescendants_Finder")));
   }
-  private CaptionFunction captionFun(final MPSProject mpsProject, final SNode node, final Map<String, Object> _params) {
+  private CaptionFunction captionFun(final MPSProject mpsProject, final SNode node, final AnActionEvent event) {
     return new CaptionFunction() {
       public String caption(final int usagesFound, final boolean finished) {
         return new ModelAccessHelper(mpsProject.getRepository()).runReadAction(new Computable<String>() {

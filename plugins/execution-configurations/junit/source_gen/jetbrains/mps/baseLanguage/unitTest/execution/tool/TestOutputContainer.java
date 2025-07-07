@@ -43,11 +43,7 @@ public class TestOutputContainer extends TestStateAdapter {
 
   @Override
   public void onTextAvailable(@NotNull final TextTestEvent event) {
-    SwingUtilities.invokeLater(new Runnable() {
-      public void run() {
-        appendWithParameters(event);
-      }
-    });
+    SwingUtilities.invokeLater(() -> appendWithParameters(event));
   }
 
   public void init() {

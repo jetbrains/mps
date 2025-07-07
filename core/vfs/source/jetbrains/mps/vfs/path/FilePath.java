@@ -47,11 +47,12 @@ public class FilePath extends AbstractPath {
       myPathToFile = NonArchivePath.fromString(path, pathFormat);
     } else {
       myPathToFile = NonArchivePath.fromString(archiveStrings[0], pathFormat);
-      int index = 0;
-      while (++index < archiveStrings.length) {
+      int index = 1; // we are skipping first non-archive part
+      while (index < archiveStrings.length) {
         String trimmed = trim(archiveStrings[index]);
         NonArchivePath archivePart = NonArchivePath.fromString(trimmed, PathFormats.UNIX);
         myArchivePaths.add(archivePart.toUnixPathFormat());
+        index++;
       }
     }
     myPathText = calcPathText();

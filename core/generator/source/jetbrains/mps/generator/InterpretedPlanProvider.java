@@ -78,7 +78,7 @@ public final class InterpretedPlanProvider implements ModelGenerationPlan.Provid
   }
 
   @Nullable
-  private SNode getPlanNode() {
+  /*package*/ SNode getPlanNode() {
     if (myPlanModelRef != null) {
       final SModel planModel = myPlanModelRef.resolve(myPlanModelRepo);
       if (planModel == null) {

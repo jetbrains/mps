@@ -9,7 +9,6 @@ import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
@@ -38,11 +37,7 @@ public class LinkDeclarationDeleteActions {
           return;
         }
         SNode containingAbstractConcept = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.AbstractConceptDeclaration$KA);
-        if (!(CustomActionsHandler.deleteElementFromCollectionAndSetSelection(node, ListSequence.fromList(SLinkOperations.getChildren(containingAbstractConcept, LINKS.linkDeclaration$YU1f)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc) == SPropertyOperations.getEnum(node, PROPS.metaClass$PeKc);
-          }
-        }), editorContext))) {
+        if (!(CustomActionsHandler.deleteElementFromCollectionAndSetSelection(node, ListSequence.fromList(SLinkOperations.getChildren(containingAbstractConcept, LINKS.linkDeclaration$YU1f)).where((it) -> SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc) == SPropertyOperations.getEnum(node, PROPS.metaClass$PeKc)), editorContext))) {
           if (SNodeOperations.isInstanceOf(containingAbstractConcept, CONCEPTS.ConceptDeclaration$gH)) {
             SNode cd = SNodeOperations.cast(containingAbstractConcept, CONCEPTS.ConceptDeclaration$gH);
             if (SEnumOperations.isMember(SPropertyOperations.getEnum(node, PROPS.metaClass$PeKc), 0xfc6f4e95b9L)) {
@@ -76,11 +71,7 @@ public class LinkDeclarationDeleteActions {
           return;
         }
         SNode containingAbstractConcept = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.AbstractConceptDeclaration$KA);
-        if (!(CustomActionsHandler.backspaceElementFromCollectionAndSetSelection(node, ListSequence.fromList(SLinkOperations.getChildren(containingAbstractConcept, LINKS.linkDeclaration$YU1f)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc) == SPropertyOperations.getEnum(node, PROPS.metaClass$PeKc);
-          }
-        }), editorContext))) {
+        if (!(CustomActionsHandler.backspaceElementFromCollectionAndSetSelection(node, ListSequence.fromList(SLinkOperations.getChildren(containingAbstractConcept, LINKS.linkDeclaration$YU1f)).where((it) -> SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc) == SPropertyOperations.getEnum(node, PROPS.metaClass$PeKc)), editorContext))) {
           if (SNodeOperations.isInstanceOf(containingAbstractConcept, CONCEPTS.ConceptDeclaration$gH)) {
             SNode cd = SNodeOperations.cast(containingAbstractConcept, CONCEPTS.ConceptDeclaration$gH);
             if (SEnumOperations.isMember(SPropertyOperations.getEnum(node, PROPS.metaClass$PeKc), 0xfc6f4e95b9L)) {

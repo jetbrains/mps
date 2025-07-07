@@ -19,5 +19,5 @@ public interface RootDifferencePane extends IHighlighter {
   void navigateInitial(@Nullable Bounds firstChange);
   ActionGroup getActions();
   JPanel getPanel();
-  void setRootId(SNodeId nodeId);
+  void setRootId(SNodeId nodeId, boolean isMetadataView);
 }

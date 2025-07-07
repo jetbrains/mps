@@ -18,7 +18,7 @@ public class AssignmentExpression_DataFlow extends DataFlowBuilder {
     _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.rValue$spNK));
     SNode variable = SLinkOperations.getTarget(_context.getNode(), LINKS.lValue$splI);
     if (SNodeOperations.isInstanceOf(variable, CONCEPTS.VariableReference$TC)) {
-      if (!((SNodeOperations.isInstanceOf(variable, CONCEPTS.VariableReference$TC) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(variable, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41))) || (boolean) VariableReference__BehaviorDescriptor.isVariableDefinedInThisMethod_idhPiSGi6.invoke(SNodeOperations.cast(variable, CONCEPTS.VariableReference$TC))) {
+      if (!(SNodeOperations.isInstanceOf(variable, CONCEPTS.VariableReference$TC) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(variable, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41)) || (boolean) VariableReference__BehaviorDescriptor.isVariableDefinedInThisMethod_idhPiSGi6.invoke(SNodeOperations.cast(variable, CONCEPTS.VariableReference$TC))) {
         _context.getBuilder().emitWrite(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.lValue$splI), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), SLinkOperations.getTarget(_context.getNode(), LINKS.rValue$spNK), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1225456606795");
       }
     } else {

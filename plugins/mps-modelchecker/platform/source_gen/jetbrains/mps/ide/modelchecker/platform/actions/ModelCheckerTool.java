@@ -11,6 +11,7 @@ import com.intellij.openapi.wm.ToolWindowAnchor;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.checkers.IChecker;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -20,11 +21,9 @@ import jetbrains.mps.ide.icons.GlobalIconManager;
 import com.intellij.icons.AllIcons;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.errors.item.IssueKindReportItem;
-import javax.swing.JOptionPane;
+import com.intellij.openapi.ui.Messages;
 import java.util.ArrayList;
 import com.intellij.openapi.vcs.checkin.CheckinHandler;
-import com.intellij.openapi.ui.Messages;
-import jetbrains.mps.plugins.tool.IComponentDisposer;
 
 @GeneratedClass(node = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)/3719390199793468053", model = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)")
 public class ModelCheckerTool extends BaseTabbedProjectTool {
@@ -40,15 +39,19 @@ public class ModelCheckerTool extends BaseTabbedProjectTool {
     newViewer.checkModels(models, "models");
     return newViewer;
   }
+  /**
+   * Does what the name says. For convenience, checkers specified explicitly, if any, override the default  "specific" 
+   * checkers that are returned by {@link jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerSettings#getSpecificCheckers(jetbrains.mps.project.Project) }.
+   */
   public void checkModelsAndShowResult(List<SModel> models, IChecker<?, ?>... checkers) {
     ModelCheckerViewer newViewer = createViewerForTab();
     ModelCheckerIssueFinder finder;
-    jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(myProject);
+    MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
     assert mpsProject != null;
     if (checkers == null || checkers.length == 0) {
-      finder = new ModelCheckerIssueFinder(mpsProject.getRepository(), ModelCheckerSettings.getInstance().getSpecificCheckers(mpsProject));
+      finder = new ModelCheckerIssueFinder(mpsProject, ModelCheckerSettings.getInstance().getSpecificCheckers(mpsProject));
     } else {
-      finder = new ModelCheckerIssueFinder(mpsProject.getRepository(), Sequence.fromIterable(Sequence.fromArray(checkers)).toListSequence());
+      finder = new ModelCheckerIssueFinder(mpsProject, Sequence.fromIterable(Sequence.fromArray(checkers)).toList());
     }
     String title = (ListSequence.fromList(models).count() == 1 ? ListSequence.fromList(models).first().getName().getValue() : String.format("%d models", ListSequence.fromList(models).count()));
     finder.addModelScope(models);
@@ -69,7 +72,7 @@ public class ModelCheckerTool extends BaseTabbedProjectTool {
       return;
     }
     if (searchResults.getSearchResults().isEmpty()) {
-      JOptionPane.showMessageDialog(this.getComponent(), "There were no problems detected during Model Checker execution", "Model Checker results", JOptionPane.INFORMATION_MESSAGE);
+      Messages.showInfoMessage(myProject, "There were no problems detected during Model Checker execution", "Model Checker results");
     } else {
       this.showTabWithResults(newViewer, title, icon);
     }
@@ -124,11 +127,7 @@ public class ModelCheckerTool extends BaseTabbedProjectTool {
     };
   }
   public void showTabWithResults(ModelCheckerViewer viewer, String tabTitle, Icon tabIcon) {
-    this.addTab(viewer, tabTitle, tabIcon, new IComponentDisposer<ModelCheckerViewer>() {
-      public void disposeComponent(ModelCheckerViewer c) {
-        c.dispose();
-      }
-    }, true);
+    this.addTab(viewer, tabTitle, tabIcon, (ModelCheckerViewer c) -> c.dispose(), true);
   }
 
   public static ModelCheckerTool getInstance(Project p) {

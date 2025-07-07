@@ -32,12 +32,10 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.editor.runtime.style.ScriptKind;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
-import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
@@ -151,13 +149,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
 
     protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
-      List<SConcept> result = ListSequence.fromList(new ArrayList<SConcept>());
-      for (SAbstractConcept a : ListSequence.fromList(SConceptOperations.getAllSubConcepts(SNodeOperations.asSConcept(ListSequence.fromList(ExponentialOperation__BehaviorDescriptor.getAllowedSubstituends_id2D1PBM_bxH0.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)))).first()), SNodeOperations.getModel(node)))) {
-        if (!(a.isAbstract()) && SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(a), CONCEPTS.ExponentialOperation$AR)) {
-          ListSequence.fromList(result).addElement((SConcept) a);
-        }
-      }
-      return result;
+      return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.ExponentialOperation$AR, SNodeOperations.getModel(node))).where((it) -> !(it.isAbstract())).toList();
 
     }
     protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {

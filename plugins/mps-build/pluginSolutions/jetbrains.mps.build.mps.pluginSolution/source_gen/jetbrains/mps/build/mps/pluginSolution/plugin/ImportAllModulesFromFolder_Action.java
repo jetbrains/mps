@@ -10,7 +10,6 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -18,7 +17,6 @@ import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import com.intellij.openapi.project.ProjectUtil;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import java.util.Collection;
 import jetbrains.mps.library.ModulesMiner;
@@ -42,6 +40,7 @@ public class ImportAllModulesFromFolder_Action extends BaseAction {
     super("Import All Modules from Folder", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -57,14 +56,12 @@ public class ImportAllModulesFromFolder_Action extends BaseAction {
       if (node != null && !(SNodeOperations.isInstanceOf(node, CONCEPTS.BuildProject$ae))) {
         node = null;
       }
-      MapSequence.fromMap(_params).put("node", node);
       if (node == null) {
         return false;
       }
     }
     {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      MapSequence.fromMap(_params).put("project", p);
       if (p == null) {
         return false;
       }
@@ -73,44 +70,43 @@ public class ImportAllModulesFromFolder_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    VirtualFile chosenDir = FileChooser.chooseFile(FileChooserDescriptorFactory.createSingleFolderDescriptor(), ((MPSProject) MapSequence.fromMap(_params).get("project")).getProject(), ProjectUtil.guessProjectDir(((MPSProject) MapSequence.fromMap(_params).get("project")).getProject()));
+    final MPSProject mpsProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+    VirtualFile chosenDir = FileChooser.chooseFile(FileChooserDescriptorFactory.createSingleFolderDescriptor(), mpsProject.getProject(), ProjectUtil.guessProjectDir(mpsProject.getProject()));
     if (chosenDir == null) {
       return;
     }
 
-    final IFile dir = VirtualFileUtils.toIFile(chosenDir);
-    ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
-    modelAccess.executeCommandInEDT(new Runnable() {
-      public void run() {
-        Collection<ModulesMiner.ModuleHandle> modules = new ModulesMiner(((MPSProject) MapSequence.fromMap(_params).get("project")).getPlatform()).collectModules(dir).getCollectedModules();
-        VisibleModules visible = new VisibleModules(((SNode) MapSequence.fromMap(_params).get("node")));
-        visible.collect();
+    final IFile dir = mpsProject.getFileSystem().fromVirtualFile(chosenDir);
+    ModelAccess modelAccess = mpsProject.getRepository().getModelAccess();
+    modelAccess.executeCommandInEDT(() -> {
+      Collection<ModulesMiner.ModuleHandle> modules = new ModulesMiner(mpsProject.getPlatform()).collectModules(dir).getCollectedModules();
+      VisibleModules visible = new VisibleModules(event.getData(MPSCommonDataKeys.NODE));
+      visible.collect();
 
-        List<ImportModuleHelper> helpers = new ArrayList<ImportModuleHelper>();
-        final PathConverter pathConverter = new PathConverter(((SNode) MapSequence.fromMap(_params).get("node")));
+      List<ImportModuleHelper> helpers = new ArrayList<ImportModuleHelper>();
+      final PathConverter pathConverter = new PathConverter(event.getData(MPSCommonDataKeys.NODE));
 
-        DefaultMessageHandler msgHandler = new DefaultMessageHandler(((MPSProject) MapSequence.fromMap(_params).get("project")).getProject());
+      DefaultMessageHandler msgHandler = new DefaultMessageHandler(mpsProject.getProject());
 
-        for (ModulesMiner.ModuleHandle handle : modules) {
-          SModuleReference modRef = handle.getDescriptor().getModuleReference();
-          if (visible.resolve(modRef) != null) {
-            continue;
-          }
-
-          try {
-            SNode modulePath = ListSequence.fromList(pathConverter.convertPath(handle.getFile().getPath())).first();
-            ImportModuleHelper helper = new ImportModuleHelper(((SNode) MapSequence.fromMap(_params).get("node")), modulePath, handle.getDescriptor());
-            helper.create();
-            helpers.add(helper);
-          } catch (PathConverter.PathConvertException ex) {
-            msgHandler.handle(Message.createMessage(MessageKind.ERROR, ImportModuleHelper.class.getName(), ex.getMessage(), ex));
-          }
+      for (ModulesMiner.ModuleHandle handle : modules) {
+        SModuleReference modRef = handle.getDescriptor().getModuleReference();
+        if (visible.resolve(modRef) != null) {
+          continue;
         }
 
-        ModuleLoader ml = new ModuleLoader(((SNode) MapSequence.fromMap(_params).get("node")), null, msgHandler);
-        for (ImportModuleHelper helper : helpers) {
-          helper.update(ml);
+        try {
+          SNode modulePath = ListSequence.fromList(pathConverter.convertPath(handle.getFile().getPath())).first();
+          ImportModuleHelper helper = new ImportModuleHelper(event.getData(MPSCommonDataKeys.NODE), modulePath, handle.getDescriptor());
+          helper.create();
+          helpers.add(helper);
+        } catch (PathConverter.PathConvertException ex) {
+          msgHandler.handle(Message.createMessage(MessageKind.ERROR, ImportModuleHelper.class.getName(), ex.getMessage(), ex));
         }
+      }
+
+      ModuleLoader ml = new ModuleLoader(event.getData(MPSCommonDataKeys.NODE), msgHandler);
+      for (ImportModuleHelper helper : helpers) {
+        helper.update(ml);
       }
     });
   }

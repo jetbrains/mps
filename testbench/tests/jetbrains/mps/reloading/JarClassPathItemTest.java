@@ -42,7 +42,7 @@ public class JarClassPathItemTest {
   public void testJarNestedInJar() throws Exception {
     // any jar would do, preferably with a name that won't change when platform updates.
     // I can create a custom one, just don't see a reason to bother
-    final File ij = new File(PathManager.getHomePath(), "lib/log4j.jar");
+    final File ij = new File(PathManager.getHomePath(), "lib/util.jar");
     final File oj = File.createTempFile("outer", ".jar");
     oj.deleteOnExit();
     try (JarOutputStream jos = new JarOutputStream(new FileOutputStream(oj))) {
@@ -57,7 +57,7 @@ public class JarClassPathItemTest {
     final RealClassPathItem j1 = RealClassPathItem.create(oj.getAbsolutePath() + "!/inner.jar", getClass().getName());
     Assert.assertNotNull(j1);
     Assert.assertTrue(j1 instanceof JarFileClassPathItem);
-    final URL r1 = j1.getResource("org/apache/log4j/xml/log4j.dtd"); // something that exists in the original (aka inner) jar
+    final URL r1 = j1.getResource("messages/IdeUtilIoBundle.properties"); // something that exists in the original (aka inner) jar
     final URL r2 = j1.getResource("org/jetbrains/SomethingThatDoesnotExist.png");
     Assert.assertNotNull(r1);
     Assert.assertNull(r2);

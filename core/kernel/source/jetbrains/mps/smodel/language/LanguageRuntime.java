@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,13 @@
  */
 package jetbrains.mps.smodel.language;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.BootstrapLanguages;
+import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.runtime.AspectExtensionsAware;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -31,6 +32,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
@@ -38,6 +40,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 /**
  * Runtime representation of a language, extension point for various language aspects.
@@ -52,6 +55,8 @@ public abstract class LanguageRuntime {
   private final ConcurrentMap<Class<? extends ILanguageAspect>, ILanguageAspect> myAspectDescriptors = new ConcurrentHashMap<>();
   private final List<LanguageRuntime> myExtendingLanguages = new ArrayList<>();
   private final List<LanguageRuntime> myExtendedLanguages = new ArrayList<>();
+  private List<SModuleReference> myRuntimeModules;
+  private List<SLanguageId> myGeneratesIntoTargets;
   private LanguageRegistry myLanguageRegistry;
 
   /**
@@ -218,9 +223,17 @@ public abstract class LanguageRuntime {
     //
     // XXX OTOH, does it make sense to force generation of explicit extends lang.core in each language?
     LanguageRuntime langCore = registry.getLanguage(BootstrapLanguages.getLangCore());
-    assert langCore != null;
-    if (this != langCore && !visitedLanguages.contains(langCore.getId())) {
-      langCore.registerExtendingLanguage(this);
+    if (langCore != null) {
+      if (this != langCore && !visitedLanguages.contains(langCore.getId())) {
+        langCore.registerExtendingLanguage(this);
+      }
+    } else {
+      // It's odd, yet I've seen it. $git clean -fX languages/, restart.
+      // MPS discovers e.g. core.properties (from plugins/mps-core/, not sure how come), instantiates it LR
+      // (there's no direct dependency to lang.core there, CLM goes ahead) and then fails to get lang.core which has not
+      // been compiled yet. Assertion was too much, imo.
+      final String m = "No language runtime for j.m.lang.core while initializing another language (%s), bootstrap?";
+      Logger.getLogger(LanguageRuntime.class).error(String.format(m, getNamespace()));
     }
     myLanguageRegistry = registry;
   }
@@ -293,6 +306,59 @@ public abstract class LanguageRuntime {
   void dispose() {
     myAspectDescriptors.values().forEach(ILanguageAspect::dispose);
   }
+
+  /**
+   * Gives a complete set of what's deemed a 'runtime' dependency for the language.
+   * Includes runtime  modules from extended languages as well as languages denoted as generation target.
+   * Note, this set is *wide*, not all uses of the language would consume all of these runtimes.
+   * Once/if we decide to keep relevant runtimes as part of Make output, there's likely no need to use this method
+   *  as it induces too broad set of dependencies.
+   * @since 2021.2
+   */
+  public Collection<SModuleReference> getRuntimeModules() {
+    assert myRuntimeModules != null;
+    assert myGeneratesIntoTargets != null;
+    LinkedHashSet<SModuleReference> rv = new LinkedHashSet<>();
+    rtModulesFromExtendsHierarchy(rv);
+    // need to account for possible cycles, L1 generates into L2, L2 generates into L3, L3 generates into L1,
+    //   there are such scenarios, see SOE in MPS-34452
+    final HashSet<LanguageRuntime> seen = new HashSet<>(myExtendedLanguages);
+    seen.add(this);
+    myLanguageRegistry.withAvailableLanguages(lr -> lr.rtModulesOfGenTarget(rv, seen), myGeneratesIntoTargets.stream());
+    return rv;
+  }
+
+  private void rtModulesFromExtendsHierarchy(Set<SModuleReference> dest) {
+    dest.addAll(myRuntimeModules);
+    myExtendedLanguages.stream().map(lr -> lr.myRuntimeModules).forEach(dest::addAll);
+  }
+
+  private void rtModulesOfGenTarget(Set<SModuleReference> dest, HashSet<LanguageRuntime> seen) {
+    if (seen.add(this)) {
+      rtModulesFromExtendsHierarchy(dest);
+      myLanguageRegistry.withAvailableLanguages(lr -> lr.rtModulesOfGenTarget(dest, seen), myGeneratesIntoTargets.stream());
+    }
+  }
+
+  /**
+   * From time to time, MPS needs runtime modules of a deployed language. Unlike 'extended' dependency, we don't generate
+   * these into LanguageRuntime class yet. Even if we do so, we'd need a compatibility mechanism for old generated
+   * LanguageRuntime classes to answer {@link #getRuntimeModules()} anyway.
+   * For the time being, I decided not to generate respective LR code (don't want to deal with LR versioning nor found
+   * better way to address compatibility with old generated LR classes; besides, hoping for a change in Make process
+   * to write down actual RTs employed for model transformation so that we don't need this explicit set of runtimes.
+   */
+  /*package*/ final void setLanguageRuntimeModules(Collection<SModuleReference> runtimeModules) {
+    // as long as we keep complete set of RTs on demand, there's no need to clear this one in initialize/deinitialize()
+    myRuntimeModules = List.copyOf(runtimeModules);
+  }
+
+  // pretty much the same reasoning as for setLanguageRuntimeModules(). For complete set of language's RTs we need to
+  // account for languages this one targets into, as their runtimes would need to be included, too.
+  /*package*/ final void setGeneratesIntoTargets(Collection<SModuleReference> targetLanguages) {
+    myGeneratesIntoTargets = targetLanguages.stream().map(MetaIdByDeclaration::ref2LangId).collect(Collectors.toList());
+  }
+
 
   @Override
   public String toString() {

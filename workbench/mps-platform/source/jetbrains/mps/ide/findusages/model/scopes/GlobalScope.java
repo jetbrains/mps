@@ -19,7 +19,6 @@ import jetbrains.mps.VisibleModuleRegistry;
 import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jdom.Element;
 import org.jetbrains.mps.openapi.module.SModule;
 
@@ -39,8 +38,7 @@ public class GlobalScope extends FindUsagesScope {
    *             prompt fixes in our clients. We need to change generator to use something more reasonable than new GS(), but
    *             I failed to come up with an idea what would it be (ProjectManager.allOpenProjects.collect(p->p.repo)?).
    */
-  @Deprecated
-  @ToRemove(version = 2018.1)
+@Deprecated(since = "2018.1", forRemoval = true)
   public GlobalScope() {
     addModulesFiltered(MPSModuleRepository.getInstance().getModules());
   }

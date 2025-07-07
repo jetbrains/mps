@@ -62,12 +62,12 @@ public class Template_reduce_BuildWall extends TemplateDeclarationBase {
                           TemplateContext context6 = context5.subContext();
                           {
                             final SNode tnode7 = environment.createOutputNode(myConcepts[5]);
-                            SNodeAccessUtil.setPropertyValue(tnode7, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context6, "0", propertyMacro_n5kn6a_c0a2a0a1a2a1a1a1a1a1a1a1a1a1a1a2a6)));
+                            SNodeAccessUtil.setPropertyValue(tnode7, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context6, "0", propertyMacro)));
                             environment.aggregate(tnode6, myAggregationLinks[0], tnode7);
                           }
                           {
                             final SNode tnode8 = environment.createOutputNode(myConcepts[5]);
-                            SNodeAccessUtil.setPropertyValue(tnode8, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_1(new PropertyMacroContext(context6, "0", propertyMacro_n5kn6a_c0a2a0a1a3a1a1a1a1a1a1a1a1a1a1a2a6)));
+                            SNodeAccessUtil.setPropertyValue(tnode8, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_1(new PropertyMacroContext(context6, "0", propertyMacro1)));
                             environment.aggregate(tnode6, myAggregationLinks[0], tnode8);
                           }
                         }
@@ -106,7 +106,7 @@ public class Template_reduce_BuildWall extends TemplateDeclarationBase {
                       TemplateContext context9 = context8.subContext();
                       {
                         final SNode tnode14 = environment.createOutputNode(myConcepts[5]);
-                        SNodeAccessUtil.setPropertyValue(tnode14, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_2(new PropertyMacroContext(context9, "0", propertyMacro_n5kn6a_c0a2a0a1a2a1a1a1a2a1a1a1a1a2a6)));
+                        SNodeAccessUtil.setPropertyValue(tnode14, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_2(new PropertyMacroContext(context9, "0", propertyMacro2)));
                         environment.aggregate(tnode13, myAggregationLinks[0], tnode14);
                       }
                     }
@@ -119,7 +119,7 @@ public class Template_reduce_BuildWall extends TemplateDeclarationBase {
                       TemplateContext context10 = context8.subContext();
                       {
                         final SNode tnode16 = environment.createOutputNode(myConcepts[5]);
-                        SNodeAccessUtil.setPropertyValue(tnode16, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_3(new PropertyMacroContext(context10, "0", propertyMacro_n5kn6a_c0a2a0a1a2a1a2a1a2a1a1a1a1a2a6)));
+                        SNodeAccessUtil.setPropertyValue(tnode16, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_3(new PropertyMacroContext(context10, "0", propertyMacro3)));
                         environment.aggregate(tnode15, myAggregationLinks[0], tnode16);
                       }
                     }
@@ -223,8 +223,8 @@ public class Template_reduce_BuildWall extends TemplateDeclarationBase {
       return rv;
     }
   }
-  private static final SNodePointer propertyMacro_n5kn6a_c0a2a0a1a2a1a1a1a1a1a1a1a1a1a1a2a6 = new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273563059");
-  private static final SNodePointer propertyMacro_n5kn6a_c0a2a0a1a3a1a1a1a1a1a1a1a1a1a1a2a6 = new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273563068");
-  private static final SNodePointer propertyMacro_n5kn6a_c0a2a0a1a2a1a1a1a2a1a1a1a1a2a6 = new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273648344");
-  private static final SNodePointer propertyMacro_n5kn6a_c0a2a0a1a2a1a2a1a2a1a1a1a1a2a6 = new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273648353");
+  private static final SNodePointer propertyMacro = new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273563059");
+  private static final SNodePointer propertyMacro1 = new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273563068");
+  private static final SNodePointer propertyMacro2 = new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273648344");
+  private static final SNodePointer propertyMacro3 = new SNodePointer("r:262b93f0-fe86-497c-93c5-efd684d05bc6(jetbrains.mps.samples.KajaSceneConstruction.generator.template.main@generator)", "3210697320273648353");
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 package jetbrains.mps.nodeEditor.keymaps;
 
 import gnu.trove.TIntObjectHashMap;
-import gnu.trove.TObjectProcedure;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -24,15 +24,12 @@ import jetbrains.mps.openapi.editor.cells.KeyMap;
 import jetbrains.mps.openapi.editor.cells.KeyMap.ActionKey;
 import jetbrains.mps.openapi.editor.cells.KeyMapAction;
 import jetbrains.mps.util.Pair;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 import javax.swing.JViewport;
 import javax.swing.KeyStroke;
 import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.lang.reflect.Field;
@@ -47,23 +44,23 @@ import java.util.List;
  * Date: 2/5/13
  */
 public class AWTKeymapHandler extends KeymapHandler<KeyEvent> {
-  private static final Logger LOG = LogManager.getLogger(AWTKeymapHandler.class);
-  private static TIntObjectHashMap<String> ourJavaKeyCodesMap = new TIntObjectHashMap<>();
+  private static final Logger LOG = Logger.getLogger(AWTKeymapHandler.class);
+  private static final TIntObjectHashMap<String> ourJavaKeyCodesMap = new TIntObjectHashMap<>();
 
   static {
     for (Field field : KeyEvent.class.getDeclaredFields()) {
       String name = field.getName();
       if (name.startsWith("VK_")) {
-        if (name.equals("VK_CONTROL") ||
-          name.equals("VK_ALT") ||
-          name.equals("VK_SHIFT")) {
+        if ("VK_CONTROL".equals(name) ||
+            "VK_ALT".equals(name) ||
+            "VK_SHIFT".equals(name)) {
           continue;
         }
         try {
           int value = field.getInt(null);
           ourJavaKeyCodesMap.put(value, name);
         } catch (IllegalAccessException e) {
-          LOG.error(null, e);
+          LOG.error(e);
         }
       }
     }
@@ -101,7 +98,7 @@ public class AWTKeymapHandler extends KeymapHandler<KeyEvent> {
 
   private static List<String> modifiersForEvent(KeyEvent event) {
     List<String> modifiers = new LinkedList<>();
-    if (event.getModifiers() == 0) {
+    if (event.getModifiersEx() == 0) {
       modifiers.add(KeyMap.KEY_MODIFIERS_NONE);
     } else if (event.isControlDown() && !event.isAltDown() && !event.isShiftDown()) {
       modifiers.add(KeyMap.KEY_MODIFIERS_CTRL);
@@ -133,8 +130,10 @@ public class AWTKeymapHandler extends KeymapHandler<KeyEvent> {
       keyCode != KeyEvent.VK_SHIFT &&
       keyCode != KeyEvent.VK_UNDEFINED) {
       String keyCodeName = ourJavaKeyCodesMap.get(keyCode);
-      assert keyCodeName != null : event.toString();
-      keyCodes.add(keyCodeName);
+      // it may happen that the keyCode is not repesented by any of VK_ constants (most notably umlauts on DE keyboards on Macs)
+      if (keyCodeName != null) {
+        keyCodes.add(keyCodeName);
+      }
     }
 
     // todo: the "keychar" testing in the "key pressed" event is not very reliable

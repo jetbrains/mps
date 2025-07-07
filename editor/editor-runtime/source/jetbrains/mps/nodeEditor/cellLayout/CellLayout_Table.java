@@ -15,10 +15,12 @@
  */
 package jetbrains.mps.nodeEditor.cellLayout;
 
+import jetbrains.mps.editor.runtime.HtmlTextBuilderImpl;
 import jetbrains.mps.editor.runtime.TextBuilderImpl;
 import jetbrains.mps.editor.runtime.style.DefaultBaseLine;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.editor.runtime.style.TableComponent;
+import jetbrains.mps.openapi.editor.HtmlTextBuilder;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
@@ -219,6 +221,15 @@ public class CellLayout_Table extends AbstractCellLayout {
     TextBuilder result = new TextBuilderImpl();
     for (EditorCell editorCell : editorCells) {
       result.appendToTheBottom(editorCell.renderText());
+    }
+    return result;
+  }
+
+  @Override
+  public HtmlTextBuilder doLayoutHtml(Iterable<EditorCell> editorCells) {
+    HtmlTextBuilder result = new HtmlTextBuilderImpl();
+    for (EditorCell editorCell : editorCells) {
+      result.appendToTheBottom(editorCell.renderHtml());
     }
     return result;
   }

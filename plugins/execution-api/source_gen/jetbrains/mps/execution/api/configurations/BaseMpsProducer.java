@@ -101,7 +101,7 @@ public abstract class BaseMpsProducer<T> extends RuntimeConfigurationProducer {
   @Override
   protected RunnerAndConfigurationSettings createConfigurationByElement(Location location, ConfigurationContext context) {
     myContext = context;
-    if (!((location instanceof MPSLocation))) {
+    if (!(location instanceof MPSLocation)) {
       return null;
     }
     MPSLocation mpsLocation = (MPSLocation) location;
@@ -150,7 +150,7 @@ public abstract class BaseMpsProducer<T> extends RuntimeConfigurationProducer {
 
   @Override
   public boolean equals(Object obj) {
-    if (obj == null || !((obj instanceof BaseMpsProducer))) {
+    if (obj == null || !(obj instanceof BaseMpsProducer)) {
       return false;
     }
     BaseMpsProducer configCreator = (BaseMpsProducer) obj;

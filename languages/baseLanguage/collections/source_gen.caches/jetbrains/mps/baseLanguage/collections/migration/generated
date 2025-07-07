@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-dy6dfenv21828pldo5hywn85mosrgpb">
-  <files names="ConvertDeprecatedCollectionsOperations.java:MigrationDescriptor.java" />
+<product version="3" modelHash="-9gk86eup9tr3qylcdohkwtjhsjge5q9">
+  <files names="ConvertDeprecatedCollectionsOperations.java:DiscardSmartClosureParameterDeclaration.java:MigrationDescriptor.java" />
 </product>
 

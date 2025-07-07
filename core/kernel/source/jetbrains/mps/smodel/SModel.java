@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.extapi.model.SModelDescriptorStub;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.project.structure.modules.RefUpdateUtil;
 import jetbrains.mps.smodel.event.ModelEventDispatch;
@@ -33,9 +34,6 @@ import jetbrains.mps.smodel.loading.UpdateModeSupport;
 import jetbrains.mps.smodel.nodeidmap.INodeIdToNodeMap;
 import jetbrains.mps.smodel.nodeidmap.UniversalOptimizedNodeIdMap;
 import jetbrains.mps.util.StatefulUpdate;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -83,7 +81,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * </p>
  */
 public class SModel implements SModelData, UpdateModeSupport {
-  private static final Logger LOG = LogManager.getLogger(SModel.class);
+  private static final Logger LOG = Logger.getLogger(SModel.class);
   private static AtomicLong ourCounter = new AtomicLong();
 
   static {
@@ -187,7 +185,7 @@ public class SModel implements SModelData, UpdateModeSupport {
   //--------------IMPLEMENTATION-------------------
 
   @Override
-  public void addRootNode(final org.jetbrains.mps.openapi.model.SNode node) {
+  public void addRootNode(@NotNull final org.jetbrains.mps.openapi.model.SNode node) {
     assert node instanceof SNode;
     enforceFullLoad();
     if (myRoots.contains(node)) {
@@ -388,7 +386,7 @@ public class SModel implements SModelData, UpdateModeSupport {
       try {
         sModelListener.devkitAdded(event);
       } catch (Throwable t) {
-        LOG.error(null, t);
+        LOG.error(t);
       }
     }
   }
@@ -402,7 +400,7 @@ public class SModel implements SModelData, UpdateModeSupport {
       try {
         sModelListener.devkitRemoved(event);
       } catch (Throwable t) {
-        LOG.error(null, t);
+        LOG.error(t);
       }
     }
   }
@@ -416,7 +414,7 @@ public class SModel implements SModelData, UpdateModeSupport {
       try {
         sModelListener.languageAdded(event);
       } catch (Throwable t) {
-        LOG.error(null, t);
+        LOG.error(t);
       }
     }
   }
@@ -430,7 +428,7 @@ public class SModel implements SModelData, UpdateModeSupport {
       try {
         sModelListener.languageRemoved(event);
       } catch (Throwable t) {
-        LOG.error(null, t);
+        LOG.error(t);
       }
     }
   }
@@ -444,7 +442,7 @@ public class SModel implements SModelData, UpdateModeSupport {
       try {
         sModelListener.importAdded(event);
       } catch (Throwable t) {
-        LOG.error(null, t);
+        LOG.error(t);
       }
     }
   }
@@ -458,7 +456,7 @@ public class SModel implements SModelData, UpdateModeSupport {
       try {
         sModelListener.importRemoved(event);
       } catch (Throwable t) {
-        LOG.error(null, t);
+        LOG.error(t);
       }
     }
   }
@@ -472,7 +470,7 @@ public class SModel implements SModelData, UpdateModeSupport {
       try {
         sModelListener.rootAdded(event);
       } catch (Throwable t) {
-        LOG.error(null, t);
+        LOG.error(t);
       }
     }
   }
@@ -486,7 +484,7 @@ public class SModel implements SModelData, UpdateModeSupport {
       try {
         sModelListener.rootRemoved(event);
       } catch (Throwable t) {
-        LOG.error(null, t);
+        LOG.error(t);
       }
     }
   }
@@ -500,7 +498,7 @@ public class SModel implements SModelData, UpdateModeSupport {
       try {
         sModelListener.beforeRootRemoved(event);
       } catch (Throwable t) {
-        LOG.error(null, t);
+        LOG.error(t);
       }
     }
   }
@@ -514,7 +512,7 @@ public class SModel implements SModelData, UpdateModeSupport {
       try {
         sModelListener.propertyChanged(event);
       } catch (Throwable t) {
-        LOG.error(null, t);
+        LOG.error(t);
       }
     }
   }
@@ -530,7 +528,7 @@ public class SModel implements SModelData, UpdateModeSupport {
       try {
         sModelListener.childAdded(event);
       } catch (Throwable t) {
-        LOG.error(null, t);
+        LOG.error(t);
       }
     }
   }
@@ -546,7 +544,7 @@ public class SModel implements SModelData, UpdateModeSupport {
       try {
         sModelListener.childRemoved(event);
       } catch (Throwable t) {
-        LOG.error(null, t);
+        LOG.error(t);
       }
     }
   }
@@ -562,7 +560,7 @@ public class SModel implements SModelData, UpdateModeSupport {
       try {
         sModelListener.beforeChildRemoved(event);
       } catch (Throwable t) {
-        LOG.error(null, t);
+        LOG.error(t);
       }
     }
   }
@@ -576,7 +574,7 @@ public class SModel implements SModelData, UpdateModeSupport {
       try {
         sModelListener.referenceAdded(event);
       } catch (Throwable t) {
-        LOG.error(null, t);
+        LOG.error(t);
       }
     }
   }
@@ -590,7 +588,7 @@ public class SModel implements SModelData, UpdateModeSupport {
       try {
         sModelListener.referenceRemoved(event);
       } catch (Throwable t) {
-        LOG.error(null, t);
+        LOG.error(t);
       }
     }
   }
@@ -751,7 +749,7 @@ public class SModel implements SModelData, UpdateModeSupport {
    * for clients of #getAllImportElements()
    */
   @NotNull
-  @ToRemove(version = 3.4)
+  @Deprecated(since = "3.4", forRemoval = true)
   public ImplicitImportsLegacyHolder getImplicitImportsSupport() {
     if (myLegacyImplicitImports == null) {
       myLegacyImplicitImports = new ImplicitImportsLegacyHolder(this);
@@ -763,8 +761,7 @@ public class SModel implements SModelData, UpdateModeSupport {
    * @deprecated though it's our internal API, there's 1 use in mbeddr of this exact method we need to fix first.
    * Once mbeddr use and 2 uses in our model persistence gone, remove the method
    */
-  @Deprecated
-  @ToRemove(version = 0)
+@Deprecated(since = "0", forRemoval = true)
   public List<SModuleReference> engagedOnGenerationLanguages() {
     return new SModelLegacy(this).engagedOnGenerationLanguages();
   }
@@ -834,6 +831,8 @@ public class SModel implements SModelData, UpdateModeSupport {
   // To allow update of models not yet attached to a repo (e.g. when we read a model and are going to attach it in with
   // refreshed state, rather than attach first and then refresh), we pass repository from outside rather than using this.getRepository()
   public boolean updateExternalReferences(@NotNull SRepository repository) {
+    // XXX I don't like this forced loading, to me, it has to be external code that shall care
+    // about model loading state, however, dealing with this use won't help to address 7 others
     enforceFullLoad();
 
     boolean changed = false;

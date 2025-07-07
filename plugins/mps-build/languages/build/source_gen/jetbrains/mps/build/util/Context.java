@@ -12,7 +12,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.concurrent.ConcurrentMap;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.generator.TransientModelsModule;
+import jetbrains.mps.extapi.module.TransientSModule;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -68,11 +68,11 @@ public class Context {
   }
 
   public RelativePathHelper getRelativePathHelper(@NotNull SModel model) {
-    if (model.getModule() instanceof TransientModelsModule && myGenerationContext != null) {
+    if (model.getModule() instanceof TransientSModule && myGenerationContext != null) {
       model = myGenerationContext.getOriginalInputModel();
     }
     SModule module = model.getModule();
-    if (module instanceof TransientModelsModule) {
+    if (module instanceof TransientSModule) {
       return null;
     }
     return RelativePathHelper.forModule(module);

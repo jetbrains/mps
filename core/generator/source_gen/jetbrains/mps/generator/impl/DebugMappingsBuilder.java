@@ -4,7 +4,7 @@ package jetbrains.mps.generator.impl;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.messages.IMessageHandler;
+import jetbrains.mps.generator.IGeneratorLogger;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -19,9 +19,6 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.extapi.model.TransientSModel;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.textgen.trace.TracingUtil;
-import java.util.function.Consumer;
-import jetbrains.mps.messages.Message;
-import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.generator.impl.plan.CrossModelEnvironment;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -33,19 +30,19 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public class DebugMappingsBuilder {
   private final SRepository myRepo;
   private final TransitionTrace myOriginTrace;
-  private final IMessageHandler myMessageHandler;
+  private final IGeneratorLogger myLogger;
 
-  public DebugMappingsBuilder(SRepository repo, TransitionTrace originTrace, IMessageHandler messageHandler) {
+  public DebugMappingsBuilder(SRepository repo, TransitionTrace originTrace, IGeneratorLogger logger) {
     myRepo = repo;
     myOriginTrace = originTrace;
-    myMessageHandler = messageHandler;
+    myLogger = logger;
   }
 
   public SNode build(@NotNull final SModel checkpointModel, GeneratorMappings mappings) {
     SNode rv = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_Mappings$42);
     ArrayList<String> availableLabels = new ArrayList<String>(mappings.getAvailableLabels());
     Collections.sort(availableLabels);
-    for (String label : availableLabels) {
+    for (final String label : availableLabels) {
       SNode labelEntry = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_LabelEntry$B2);
       SPropertyOperations.assign(labelEntry, PROPS.label$uXjG, label);
       ListSequence.fromList(SLinkOperations.getChildren(rv, LINKS.labels$gYNG)).addElement(labelEntry);
@@ -80,12 +77,10 @@ public class DebugMappingsBuilder {
         SNodeReference origin = TracingUtil.getInput(keyInputNode);
         SLinkOperations.setTarget(entry, LINKS.inputOrigin$JIuD, (origin == null ? null : origin.resolve(myRepo)));
         NodeMapRecord outRec = mappings.getMappingsForLabel(label).get(keyInputNode);
-        outRec.valueStream().forEach(new Consumer<SNode>() {
-          public void accept(SNode n) {
-            SNode r = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_NodeRef$2a);
-            SLinkOperations.setTarget(r, LINKS.node$JBUG, substituteOutputNode(checkpointModel, n));
-            ListSequence.fromList(SLinkOperations.getChildren(entry, LINKS.outputNode$JC9e)).addElement(r);
-          }
+        outRec.valueStream().forEach((SNode n) -> {
+          SNode r = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_NodeRef$2a);
+          SLinkOperations.setTarget(r, LINKS.node$JBUG, substituteOutputNode(checkpointModel, n, label));
+          ListSequence.fromList(SLinkOperations.getChildren(entry, LINKS.outputNode$JC9e)).addElement(r);
         });
       }
     }
@@ -98,11 +93,11 @@ public class DebugMappingsBuilder {
         SPropertyOperations.assign(entry, PROPS.isNewRoot$pwOY, true);
         ListSequence.fromList(SLinkOperations.getChildren(labelEntry, LINKS.entries$uXLI)).addElement(entry);
         SNode r = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_NodeRef$2a);
-        SLinkOperations.setTarget(r, LINKS.node$JBUG, substituteOutputNode(checkpointModel, cr));
+        SLinkOperations.setTarget(r, LINKS.node$JBUG, substituteOutputNode(checkpointModel, cr, label));
         ListSequence.fromList(SLinkOperations.getChildren(entry, LINKS.outputNode$JC9e)).addElement(r);
       }
     }
-    for (LabelRecord lr : ListSequence.fromList(mappings.getOrderedRecords())) {
+    for (final LabelRecord lr : ListSequence.fromList(mappings.getOrderedRecords())) {
       final SNode rn = SLinkOperations.addNewChild(rv, LINKS.records$1M3v, null);
       SPropertyOperations.assign(rn, PROPS.label$dc7G, lr.label);
       if (lr.key1 != null) {
@@ -115,12 +110,10 @@ public class DebugMappingsBuilder {
         fill(lr.key2, n);
         SLinkOperations.setTarget(rn, LINKS.input2$dvP0, n);
       }
-      lr.values.forEach(new Consumer<SNode>() {
-        public void accept(SNode o) {
-          SNode r = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_NodeRef$2a);
-          SLinkOperations.setTarget(r, LINKS.node$JBUG, substituteOutputNode(checkpointModel, o));
-          ListSequence.fromList(SLinkOperations.getChildren(rn, LINKS.output$dhZ5)).addElement(r);
-        }
+      lr.values.forEach((SNode o) -> {
+        SNode r = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_NodeRef$2a);
+        SLinkOperations.setTarget(r, LINKS.node$JBUG, substituteOutputNode(checkpointModel, o, lr.label));
+        ListSequence.fromList(SLinkOperations.getChildren(rn, LINKS.output$dhZ5)).addElement(r);
       });
     }
     return rv;
@@ -150,15 +143,17 @@ public class DebugMappingsBuilder {
    * script that modifies the model again, SNode values in GeneratorMappings would be 'stale' and likely from a model already
    * disposed (unless transients are kept). That's why we stick to SNodeId only.
    * It's unlikely (i.e. I can't imagine a reasonable scenario, other than explicit genContext.registerLabel) that an output node won't be from a transient model 
-   * or that we would mistakenly take a wrong one (i.e. if aforementioned script removes a node registered as an ouput and adds another one with the same id).
+   * or that we would mistakenly take a wrong one (i.e. if aforementioned script removes a node registered as an output and adds another one with the same id).
+   * 
+   * Note, as MPSSPRT-335 suggests, when a generator that records labeled mappings is part of group of generators that may further transform 
+   * output node, we may face errors here.
    */
-  private SNode substituteOutputNode(SModel checkpointModel, SNode n) {
+  private SNode substituteOutputNode(SModel checkpointModel, SNode n, String lm) {
     // Generator
     SNode tn = checkpointModel.getNode(n.getNodeId());
     if (tn == null) {
-      Message m = new Message(MessageKind.ERROR, getClass(), "Didn't find labeled output node in a checkpoint model, original value left.");
-      m.setHintObject(n.getReference());
-      myMessageHandler.handle(m);
+      String s = String.format("Didn't find labeled output node in a checkpoint model, original value left. Instance of %s, label %s", n.getConcept().getName(), lm);
+      myLogger.error(n.getReference(), s);
       return n;
     }
     return tn;

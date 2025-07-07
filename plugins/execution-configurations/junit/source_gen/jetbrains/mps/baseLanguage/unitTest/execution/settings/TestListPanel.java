@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
+import jetbrains.mps.baseLanguage.unitTest.platform.TestDiscoveryParticipant;
+import jetbrains.mps.baseLanguage.unitTest.platform.TestPlatform;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Set;
@@ -25,8 +27,7 @@ import jetbrains.mps.ide.findusages.model.scopes.ProjectScope;
 import java.util.Collections;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import com.intellij.openapi.project.Project;
 
 public class TestListPanel extends ListPanel<ITestNodeWrapper> {
@@ -58,8 +59,9 @@ public class TestListPanel extends ListPanel<ITestNodeWrapper> {
     return new ModelAccessHelper(repo).runReadAction(new Computable<List<ITestNodeWrapper>>() {
       public List<ITestNodeWrapper> compute() {
         List<SNode> nodesList = new ArrayList<SNode>();
-        Iterable<SAbstractConcept> wrappedRootConcepts = TestNodeWrapperFactory.getWrappedRootConcepts();
-        progress.start("Looking up...", Sequence.fromIterable(wrappedRootConcepts).count());
+        TestDiscoveryParticipant tdp = TestPlatform.getInstance().getAggregateDiscoveryParticipant();
+        Iterable<SAbstractConcept> wrappedRootConcepts = tdp.sourceConcepts();
+        progress.start("Looking up test roots...", Sequence.fromIterable(wrappedRootConcepts).count());
         for (SAbstractConcept c : Sequence.fromIterable(wrappedRootConcepts)) {
           Set<SNode> usages = FindUsagesFacade.getInstance().findInstances(new ProjectScope(mpsProject), Collections.singleton(c), false, progress.subTask(1, SubProgressKind.REPLACING));
           ListSequence.fromList(nodesList).addSequence(SetSequence.fromSet(usages));
@@ -76,22 +78,22 @@ public class TestListPanel extends ListPanel<ITestNodeWrapper> {
           }
           return methodsList;
         } else {
-          return ListSequence.fromList(nodesList).select(new ISelector<SNode, ITestNodeWrapper>() {
-            public ITestNodeWrapper select(SNode it) {
+          return ListSequence.fromList(nodesList).select(new _FunctionTypes._return_P1_E0<ITestNodeWrapper, SNode>() {
+            public ITestNodeWrapper invoke(SNode it) {
               return wrap(it);
             }
-          }).where(new IWhereFilter<ITestNodeWrapper>() {
-            public boolean accept(ITestNodeWrapper it) {
+          }).where(new _FunctionTypes._return_P1_E0<Boolean, ITestNodeWrapper>() {
+            public Boolean invoke(ITestNodeWrapper it) {
               return it != null;
             }
-          }).toListSequence();
+          }).toList();
         }
       }
     });
   }
 
   public TestListPanel(Project project, boolean isTestMethods) {
-    super(project, "Tests");
+    super(project, "Test " + ((isTestMethods ? "methods" : "roots")));
     myIsTestMethods = isTestMethods;
     super.setData(ListSequence.fromList(new ArrayList<ITestNodeWrapper>()));
   }

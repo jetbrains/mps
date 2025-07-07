@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel.adapter.structure.language;
 
+import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.adapter.structure.FormatException;
 import jetbrains.mps.smodel.language.LanguageRuntime;
@@ -63,8 +64,9 @@ public final class InvalidLanguage extends SLanguageAdapter {
   }
 
   @Override
+  @NotNull
   public SModuleReference getSourceModuleReference() {
-    return null;
+    return new ModuleReference(myLanguageFqName, null);
   }
 
   @Override

@@ -14,10 +14,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.lang.editor.diagram.runtime.jetpad.palette.openapi.PaletteElement;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 
 /*package*/ class PopupPaletteActionGroupAdapter extends ActionGroup implements Toggleable, AlwaysVisibleActionGroup {
   private DiagramPalette myPalette;
@@ -38,20 +34,8 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
     return ListSequence.fromList(myChildren).toGenericArray(AnAction.class);
   }
   public void updateChildren() {
-    myChildren = Sequence.fromIterable(Sequence.fromArray(myPaletteActionGroup.getElements())).select(new ISelector<PaletteElement, AnAction>() {
-      public AnAction select(PaletteElement element) {
-        return PaletteElementFactory.createPaletteElementAdapter(myPalette, element);
-      }
-    }).toListSequence();
-    ListSequence.fromList(myChildren).where(new IWhereFilter<AnAction>() {
-      public boolean accept(AnAction it) {
-        return it instanceof PaletteToggleActionAdapter;
-      }
-    }).visitAll(new IVisitor<AnAction>() {
-      public void visit(AnAction it) {
-        ((PaletteToggleActionAdapter) it).setParentGroup(PopupPaletteActionGroupAdapter.this);
-      }
-    });
+    myChildren = Sequence.fromIterable(Sequence.fromArray(myPaletteActionGroup.getElements())).select((element) -> PaletteElementFactory.createPaletteElementAdapter(myPalette, element)).toList();
+    ListSequence.fromList(myChildren).where((it) -> it instanceof PaletteToggleActionAdapter).visitAll((it) -> ((PaletteToggleActionAdapter) it).setParentGroup(PopupPaletteActionGroupAdapter.this));
   }
   public void removeChildren() {
     ListSequence.fromList(myChildren).clear();

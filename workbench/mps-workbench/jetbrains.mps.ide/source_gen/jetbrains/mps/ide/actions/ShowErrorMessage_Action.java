@@ -18,6 +18,7 @@ public class ShowErrorMessage_Action extends BaseAction {
     super("Show Error Message", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

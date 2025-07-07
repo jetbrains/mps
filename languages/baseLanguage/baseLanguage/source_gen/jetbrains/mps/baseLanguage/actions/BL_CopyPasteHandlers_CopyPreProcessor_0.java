@@ -19,7 +19,11 @@ public final class BL_CopyPasteHandlers_CopyPreProcessor_0 implements CopyPrePro
   }
   @Override
   public void preProcessNode(SNode copy, SNode original) {
-    SNode qualifiedReference = VariableDeclaration__BehaviorDescriptor.getQualifiedReference_id3Zg$dTLuqo9.invoke(SLinkOperations.getTarget(copy, LINKS.variableDeclaration$N1XG));
+    // 'copy' is a detached node, can't navigate any of its references. We use original node to get to 
+    // VariableDeclaration, which may be something like StaticFieldDeclaration, to get qualified replacement, if any.
+    // XXX however, given copy-paste might be local and doesn't need qualified, I'd say fix-up with qualified shall
+    // be part of paste logic rather than that of copy.
+    SNode qualifiedReference = VariableDeclaration__BehaviorDescriptor.getQualifiedReference_id3Zg$dTLuqo9.invoke(SLinkOperations.getTarget(original, LINKS.variableDeclaration$N1XG));
     if ((qualifiedReference != null)) {
       SNodeOperations.replaceWithAnother(copy, qualifiedReference);
     }

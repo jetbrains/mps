@@ -6,9 +6,8 @@ import jetbrains.mps.annotations.GeneratedClass;
 import java.util.Collection;
 import jetbrains.mps.migration.global.ProjectMigration;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.migration.global.CleanupProjectMigration;
-import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/8914091101145773413", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 /*package*/ class PostponedState {
@@ -29,33 +28,33 @@ import org.jetbrains.mps.openapi.module.SModule;
   }
 
   public boolean hasCleanupMigrations() {
-    return CollectionSequence.fromCollection(projectMigrations).any(new IWhereFilter<ProjectMigration>() {
-      public boolean accept(ProjectMigration it) {
-        return it instanceof CleanupProjectMigration;
-      }
-    });
+    return CollectionSequence.fromCollection(projectMigrations).any((it) -> it instanceof CleanupProjectMigration);
   }
 
   public PostponedState substract(PostponedState state) {
     PostponedState res = new PostponedState();
     res.versionUpdate = !(state.versionUpdate) && versionUpdate;
-    res.scripts = CollectionSequence.fromCollection(scripts).subtract(CollectionSequence.fromCollection(state.scripts)).toListSequence();
-    res.projectMigrations = CollectionSequence.fromCollection(projectMigrations).subtract(CollectionSequence.fromCollection(state.projectMigrations)).toListSequence();
+    res.scripts = CollectionSequence.fromCollection(scripts).subtract(CollectionSequence.fromCollection(state.scripts)).toList();
+    res.projectMigrations = CollectionSequence.fromCollection(projectMigrations).subtract(CollectionSequence.fromCollection(state.projectMigrations)).toList();
     return res;
   }
 
   public PostponedState add(PostponedState state) {
     PostponedState res = new PostponedState();
     res.versionUpdate = state.versionUpdate || versionUpdate;
-    res.scripts = CollectionSequence.fromCollection(scripts).union(CollectionSequence.fromCollection(state.scripts)).toListSequence();
-    res.projectMigrations = CollectionSequence.fromCollection(projectMigrations).union(CollectionSequence.fromCollection(state.projectMigrations)).toListSequence();
+    res.scripts = CollectionSequence.fromCollection(scripts).union(CollectionSequence.fromCollection(state.scripts)).toList();
+    res.projectMigrations = CollectionSequence.fromCollection(projectMigrations).union(CollectionSequence.fromCollection(state.projectMigrations)).toList();
     return res;
   }
 
-  public static PostponedState current(MigrationRegistry mr, Iterable<SModule> modules) {
+  public static PostponedState current(MigrationSetup mr) {
     PostponedState current = new PostponedState();
-    current.versionUpdate = mr.importVersionsUpdateRequired(modules);
-    current.scripts = mr.getModuleMigrations(modules);
+    current.versionUpdate = mr.importVersionsUpdateRequired();
+    current.scripts = CollectionSequence.fromCollection(mr.getModuleMigrations()).translate(new _FunctionTypes._return_P1_E0<Iterable<ScriptApplied>, AppliedScript>() {
+      public Iterable<ScriptApplied> invoke(AppliedScript it) {
+        return it.asLegacy();
+      }
+    }).toList();
     current.projectMigrations = mr.getProjectMigrations();
     return current;
   }

@@ -17,7 +17,6 @@ package jetbrains.mps.generator.impl.query;
 
 import jetbrains.mps.smodel.SNodeId.Regular;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -55,8 +54,7 @@ public final class QueryKeyImpl implements QueryKey {
    * @deprecated uses in generated code for non-compiled templates source node/nodes query.
    *             leave here for at least a year to facilitate graceful transition
    */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
+  @Deprecated(since = "2020.3", forRemoval = true)
   public SNodeId getQueryNodeId() {
     return myFunctionNodeId;
   }

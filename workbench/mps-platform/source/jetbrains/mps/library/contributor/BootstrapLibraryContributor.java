@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,7 +49,8 @@ public final class BootstrapLibraryContributor implements LibraryContributor {
 
   @NotNull
   private LibDescriptor createLibDescriptor(String path) {
-    return new LibDescriptor(myFileSystem.getFile(new File(path)));
+    // with hiddenLanguages() === true, boolean in LibDescriptor is irrelevant, see LibraryInitializer code
+    return new LibDescriptor(myFileSystem.getFile(new File(path)), null, "MPS Core");
   }
 
 

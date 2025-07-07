@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,17 +18,16 @@ package jetbrains.mps.project.validation;
 import jetbrains.mps.checkers.IChecker;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.errors.item.IssueKindReportItem;
-import jetbrains.mps.errors.item.ModelReportItem;
-import jetbrains.mps.errors.item.ModelReportItemBase;
 import jetbrains.mps.extapi.module.TransientSModule;
 import jetbrains.mps.generator.impl.GenPlanTranslator;
 import jetbrains.mps.generator.impl.plan.DependencyCollectorPlanBuilder;
-import jetbrains.mps.generator.impl.plan.ModelScanner;
+import jetbrains.mps.generator.impl.plan.TemplateModelScanner;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.structure.modules.Dependency;
+import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.project.facets.JavaModuleFacet.Compile;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.mappingpriorities.MappingConfig_AbstractRef;
 import jetbrains.mps.project.structure.modules.mappingpriorities.MappingPriorityRule;
@@ -38,14 +37,11 @@ import jetbrains.mps.smodel.ModelDependencyScanner;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.util.CollectionUtil;
-import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
-import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SDependency;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -54,11 +50,12 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.util.Processor;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
+import java.util.stream.Stream;
 
 public class ValidationUtil {
 
@@ -71,22 +68,6 @@ public class ValidationUtil {
         }
       }, progressMonitor);
     }
-  }
-
- // is this method called from model checker ?
-  /**
-   * @deprecated Use {@link ModelValidator} instead
-   */
-  @Deprecated
-  @ToRemove(version = 2020.1)
-  public static void validateModel(@NotNull final SModel model, @NotNull Processor<? super ModelReportItem> processor) {
-    // there was 1 use in mbeddr, in com.mbeddr.mpsutil.projectview.runtime; refactored Oct 5, 2020 in mps/2020.2 branch.
-    processor.process(new ModelReportItemBase(MessageStatus.ERROR, model.getReference(), "ValidationUtil.validateModel() is NO-OP, please refactor your code to use ModelValidator!") {
-      @Override
-      public ItemKind getIssueKind() {
-        return IssueKindReportItem.MODEL_PROPERTIES.deriveItemKind();
-      }
-    });
   }
 
   public static void validateModule(final SModule m, Processor<? super ModuleValidationProblem> processor) {
@@ -149,14 +130,12 @@ public class ValidationUtil {
         processor.process(new ModuleValidationProblem(dk, MessageStatus.ERROR, msg));
         return;
       }
-      final Iterator<SNode> roots = planModel.getRootNodes().iterator();
-      if (!roots.hasNext()) {
+      GenPlanTranslator gpt = GenPlanTranslator.fromGenPlanModel(planModel);
+      if (gpt == null) {
         final String msg = String.format("No generation plan in the model %s", planModel.getName());
         processor.process(new ModuleValidationProblem(dk, MessageStatus.ERROR, msg));
         return;
       }
-      SNode planDecl = roots.next();
-      GenPlanTranslator gpt = new GenPlanTranslator(planDecl);
       DependencyCollectorPlanBuilder dcpb = new DependencyCollectorPlanBuilder();
       gpt.feed(dcpb);
       for (SLanguage l : dcpb.getRequiredLanguages()) {
@@ -230,7 +209,7 @@ public class ValidationUtil {
         continue;
       }
       {
-        ModelScanner ms = new ModelScanner().scan(model);
+        TemplateModelScanner ms = new TemplateModelScanner().scan(model);
         usedLanguages.addAll(ms.getTargetLanguages());
       }
       depScan.walk(model);
@@ -329,19 +308,21 @@ public class ValidationUtil {
      * Here we'd like to figure out if there's a model M written in sourceLanguage L, whether it's generated code would receive all runtime modules
      * of languages L's generator would produce.
      */
-    compileTimeDeps.addAll(IterableUtil.asCollection(sourceLanguageDeployed.getLanguageRuntimes()));
+    // XXX generator reports its source language RTS as is own declared dependencies (Generator.getDeclaredDependencies())
+    //     can't I use it here?
+    final LanguageRegistry languageRegistry = LanguageRegistry.getInstance(generator.getRepository());
+    languageRegistry.withAvailableLanguages(Stream.of(sourceLanguageDeployed), lr -> compileTimeDeps.addAll(lr.getRuntimeModules()));
 
-    for (SLanguage lang : usedLanguages) {
-      Collection<SModuleReference> langRuntimes = IterableUtil.asCollection(lang.getLanguageRuntimes());
-      if (langRuntimes.isEmpty()) {
-        continue;
+    final ArrayList<String> missingRuntimeOf = new ArrayList<>(4);
+    languageRegistry.withAvailableLanguages(usedLanguages.stream(), lr -> {
+      Collection<SModuleReference> langRuntimes = lr.getRuntimeModules();
+      if (!langRuntimes.isEmpty() && !compileTimeDeps.containsAll(langRuntimes)) {
+        // language we generate into (target) has runtime, check we've got appropriate dependency
+        missingRuntimeOf.add(lr.getNamespace());
       }
-      // language we generate into (target) has runtime, check we've got appropriate dependency
-      if (compileTimeDeps.containsAll(langRuntimes)) {
-        continue;
-      }
-
-      String m = String.format("'%s' must specify the language '%s' as a generation target to include its runtime modules into compilation", sourceLanguageDeployed.getQualifiedName(), lang);
+    });
+    for (String ns : missingRuntimeOf) {
+      String m = String.format("'%s' must specify the language '%s' as a generation target to include its runtime modules into compilation", sourceLanguageDeployed.getQualifiedName(), ns);
       if (!processor.process(new ModuleValidationProblem(generator, MessageStatus.WARNING, m))) {
         return false;
       }
@@ -351,8 +332,9 @@ public class ValidationUtil {
 
   //returns true to continue analysing, false to stop
   // package-local until extracted into AbstractModuleValidator superclass to get subclassed by validators of particular module kind
-  /*package*/
-  static boolean validateAbstractModule(final AbstractModule module, Processor<? super ModuleValidationProblem> processor) {
+  // FTR, the only 2 places we care about `AbstractModule` is load exception and used devkits.
+  //      Can take any SModule, and optionally check AM for exception/devkits?
+  /*package*/ static boolean validateAbstractModule(final AbstractModule module, Processor<? super ModuleValidationProblem> processor) {
     Throwable loadException = module.getModuleDescriptor().getLoadException();
     if (loadException != null) {
       return processor.process(new ModuleValidationProblem(module, MessageStatus.ERROR, "Couldn't load module: " + loadException.getMessage()));
@@ -369,10 +351,10 @@ public class ValidationUtil {
       }
     }
 
-    ModuleDescriptor descriptor = module.getModuleDescriptor();
-    final boolean compiledInMPS = descriptor.getCompileInMPS();
-    for (Dependency dep : descriptor.getDependencies()) {
-      SModuleReference moduleRef = dep.getModuleRef();
+    final JavaModuleFacet jmf = module.getFacet(JavaModuleFacet.class);
+    final Compile compileFlag = jmf == null ? Compile.None : jmf.getCompile();
+    for (SDependency dep : module.getDeclaredDependencies()) {
+      SModuleReference moduleRef = dep.getTargetModule();
       SModule depModule = moduleRef.resolve(repository);
       if (depModule == null) {
         if (!processor.process(new ModuleValidationProblem(module, MessageStatus.ERROR, "Can't find dependency: " + moduleRef.getModuleName()))) {
@@ -380,25 +362,28 @@ public class ValidationUtil {
         }
         // fall-through
       } else {
-        if (compiledInMPS || dep.getScope() != SDependencyScope.DEFAULT) {
-          // 1) module compiled in MPS can depend from both non-MPS and MPS-managed modules
+        if (compileFlag != Compile.External || dep.getScope() != SDependencyScope.DEFAULT) {
+          // 1) module compiled in MPS (or not compiled at all) can depend on both non-MPS and MPS-managed modules
+          //    XXX For Compile.None I assume it's a 'design' dependency even if it's "DEFAULT" scope.
+          //        This consideration might need a second thought, however.
           // 2) dependencies like EXTENDS are possible between languages only (languages are compile in mps);
           //    DESIGN and GENERATES-INTO are of no interest (no classloading), other kinds are not in use now.
           continue;
         }
-        // IDEA-compiled modules are likely loaded by IDEA and may lack access to classes managed by MPS classloaders.
-        ModuleDescriptor depModuleDescriptor;
-        if (depModule instanceof AbstractModule && (depModuleDescriptor = ((AbstractModule) depModule).getModuleDescriptor()) != null) {
-          if (depModuleDescriptor.getCompileInMPS()) {
-            String msg = "Dependency target %s has MPS-managed classloader, the module may fail to load dependent classes";
-            if (!processor.process(new ModuleValidationProblem(module, MessageStatus.WARNING, String.format(msg, depModule.getModuleName())))) {
-              return false;
-            }
+        // IDEA-compiled (well, by any external facility) modules are likely loaded by IDEA and may lack access to classes managed by MPS classloaders.
+        final JavaModuleFacet depJavaFacet = depModule.getFacet(JavaModuleFacet.class);
+        if (depJavaFacet != null && depJavaFacet.getCompile() == Compile.MPS) {
+          String msg = "Dependency target %s has MPS-managed classloader, the module may fail to load dependent classes";
+          if (!processor.process(new ModuleValidationProblem(module, MessageStatus.WARNING, String.format(msg, depModule.getModuleName())))) {
+            return false;
           }
         }
       }
     }
-    for (SModuleReference reference : descriptor.getUsedDevkits()) {
+    // SModule.getUsedLanguages(), above, already checked languages coming through devkits.
+    // While I see the point to check devkits present, I find it confusing to dive into AM+MD here
+    ModuleDescriptor descriptor = module.getModuleDescriptor();
+    for (SModuleReference reference : (descriptor != null ? descriptor.getUsedDevkits() : Collections.<SModuleReference>emptySet())) {
       if (reference.resolve(repository) != null) {
         continue;
       }
@@ -408,29 +393,43 @@ public class ValidationUtil {
     }
 
     final boolean packagedModule = module.isPackaged();
-    if (descriptor.getSourcePaths() != null && !packagedModule) {
-      for (String sourcePath : descriptor.getSourcePaths()) {
-        IFile file = module.getFileSystem().getFile(sourcePath);
-        if (!file.exists()) {
-          if (!processor.process(new ModuleValidationProblem(module, MessageStatus.ERROR, "Can't find source path: " + sourcePath))) {
+    if (jmf != null && !jmf.getAdditionalSourcePaths().isEmpty() && !packagedModule) {
+      for (String sourcePath : jmf.getAdditionalSourcePaths()) {
+        try {
+          IFile file = module.getFileSystem().getFile(sourcePath);
+          if (!file.exists()) {
+            if (!processor.process(new ModuleValidationProblem(module, MessageStatus.ERROR, "Can't find source path: " + sourcePath))) {
+              return false;
+            }
+          }
+        } catch (PathFormatException ex) {
+          if (!processor.process(new ModuleValidationProblem(module, MessageStatus.ERROR, ex.getMessage()))) {
             return false;
           }
+          // try next path
         }
       }
     }
-    if (descriptor.getJavaLibs() != null) {
-      for (String path : descriptor.getJavaLibs()) {
+    if (jmf != null && !jmf.getLibraryClassPath().isEmpty()) {
+      for (String path : jmf.getLibraryClassPath()) {
         if (packagedModule && !path.endsWith(".jar")) {
           // FIXME provisional hack to deal with recently added {module}/classes in .msd to get rid of another JMFI hack.
           //       These paths are valid for source modules, and make no sense for deployed.
           continue;
         }
-        IFile file = module.getFileSystem().getFile(path);
-        if (!file.exists()) {
-          String msg = (new File(path).exists() ? "Idea VFS is not up-to-date. " : "") + "Can't find library: " + path;
-          if (!processor.process(new ModuleValidationProblem(module, MessageStatus.ERROR, msg))) {
+        try {
+          IFile file = module.getFileSystem().getFile(path);
+          if (!file.exists()) {
+            String msg = (new File(path).exists() ? "Idea VFS is not up-to-date. " : "") + "Can't find library: " + path;
+            if (!processor.process(new ModuleValidationProblem(module, MessageStatus.ERROR, msg))) {
+              return false;
+            }
+          }
+        } catch (PathFormatException ex) {
+          if (!processor.process(new ModuleValidationProblem(module, MessageStatus.ERROR, ex.getMessage()))) {
             return false;
           }
+          // try next path
         }
       }
     }

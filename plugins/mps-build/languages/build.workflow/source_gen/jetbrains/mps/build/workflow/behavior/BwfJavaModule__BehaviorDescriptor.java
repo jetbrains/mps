@@ -22,9 +22,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class BwfJavaModule__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, "jetbrains.mps.build.workflow.structure.BwfJavaModule");
 
-  public static final SMethod<List<String>> getCompilerNames_id3Par5_LaIPl = new SMethodBuilder<List<String>>(new SJavaCompoundTypeImpl((Class<List<String>>) ((Class) Object.class))).name("getCompilerNames").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3Par5_LaIPl").build();
-  public static final SMethod<String> getAntTargetName_id6pYRYgn8i1z = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getAntTargetName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6pYRYgn8i1z").build();
-  public static final SMethod<Boolean> needsFork_id3Par5_LaArg = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needsFork").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3Par5_LaArg").build();
+  public static final SMethod<List<String>> getCompilerNames_id3Par5_LaIPl = new SMethodBuilder<List<String>>(new SJavaCompoundTypeImpl((Class<List<String>>) ((Class) Object.class))).name("getCompilerNames").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4416461515996720469L).languageId(0xba8d10e3ec237f13L, 0x698a8d22a10447a0L).build2();
+  public static final SMethod<String> getAntTargetName_id6pYRYgn8i1z = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getAntTargetName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7385586609667776611L).languageId(0xba8d10e3ec237f13L, 0x698a8d22a10447a0L).build2();
+  public static final SMethod<Boolean> needsFork_id3Par5_LaArg = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needsFork").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4416461515996686032L).languageId(0xba8d10e3ec237f13L, 0x698a8d22a10447a0L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCompilerNames_id3Par5_LaIPl, getAntTargetName_id6pYRYgn8i1z, needsFork_id3Par5_LaArg);
 
@@ -38,6 +38,10 @@ public final class BwfJavaModule__BehaviorDescriptor extends BaseBHDescriptor {
     return "java.compile." + SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL);
   }
   /*package*/ static boolean needsFork_id3Par5_LaArg(@NotNull SNode __thisNode__) {
+    // Kotlin compiler with ant does not support fork, unless we find a way to allow it, withKotlin is enough to know we cannot need fork
+    if (SPropertyOperations.getBoolean(__thisNode__, PROPS.withKotlin$2$Am)) {
+      return false;
+    }
     boolean userFork = SPropertyOperations.getBoolean(__thisNode__, PROPS.fork$H$9A);
     boolean compilerForkedByDefault = isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.compiler$_$9C)) && !(SPropertyOperations.getString(__thisNode__, PROPS.compiler$_$9C).equals("IntelliJ")) && !(SPropertyOperations.getString(__thisNode__, PROPS.compiler$_$9C).equals("modern"));
     return !(compilerForkedByDefault) && userFork;
@@ -98,6 +102,7 @@ public final class BwfJavaModule__BehaviorDescriptor extends BaseBHDescriptor {
 
   private static final class PROPS {
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty withKotlin$2$Am = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x6ab0965855d6fac1L, "withKotlin");
     /*package*/ static final SProperty fork$H$9A = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x3d4a6c597112f405L, "fork");
     /*package*/ static final SProperty compiler$_$9C = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x1c936d31d30fdf98L, "compiler");
   }

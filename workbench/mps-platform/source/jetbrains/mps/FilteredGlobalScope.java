@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package jetbrains.mps;
 
 import jetbrains.mps.project.FilteredScope;
 import jetbrains.mps.project.GlobalScope;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -33,14 +32,6 @@ import org.jetbrains.mps.util.Condition;
  */
 public class FilteredGlobalScope extends FilteredScope {
   private final Condition<SModule> myCondition;
-  /**
-   * @deprecated this cons assumes single global repository, which is a non-existent thing. Use {@link #FilteredGlobalScope(SRepository)} instead
-   */
-  @Deprecated
-  @ToRemove(version = 2019.1)
-  public FilteredGlobalScope() {
-    this(GlobalScope.getInstance());
-  }
 
   public FilteredGlobalScope(SRepository repository) {
     // not that filtered *global* scope cares about a repo, but if you insist on using VR logic, and don't want to use deprecated cons,

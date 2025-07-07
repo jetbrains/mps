@@ -180,29 +180,31 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     }
     return Collections.<ConceptEditor>emptyList();
   }
-
+  private Collection<ConceptEditorComponent> getDeclaredEC_0(String editorComponentId) {
+    if ("jetbrains.mps.lang.typesystem.editor.AbstractEquationInspector".equals(editorComponentId)) {
+      return Collections.singletonList(new AbstractEquationInspector());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_1(String editorComponentId) {
+    if ("jetbrains.mps.lang.typesystem.editor._NotInRules_Component".equals(editorComponentId)) {
+      return Collections.singletonList(new _NotInRules_Component());
+    }
+    return Collections.emptyList();
+  }
   @NotNull
   public Collection<ConceptEditorComponent> getDeclaredEditorComponents(SAbstractConcept concept, String editorComponentId) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
     switch (conceptIndex1.index(cncpt)) {
       case 0:
-        if (true) {
-          if ("jetbrains.mps.lang.typesystem.editor.AbstractEquationInspector".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new AbstractEquationInspector());
-          }
-        }
-        break;
+        return getDeclaredEC_0(editorComponentId);
       case 1:
-        if (true) {
-          if ("jetbrains.mps.lang.typesystem.editor._NotInRules_Component".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new _NotInRules_Component());
-          }
-        }
-        break;
+        return getDeclaredEC_1(editorComponentId);
       default:
     }
-    return Collections.<ConceptEditorComponent>emptyList();
+    return Collections.emptyList();
   }
+
 
   @NotNull
   @Override

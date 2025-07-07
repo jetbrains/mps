@@ -30,6 +30,8 @@ public interface GenerationParametersProvider {
 
   Map<String, Object> getParameters(SModel descriptor);
 
+  Map<String, Object> getDefaultParameters();
+
   @Nullable
   default String getParametersHash(SModel model) {
     return defaultParametersHash(getParameters(model));

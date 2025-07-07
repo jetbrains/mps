@@ -22,6 +22,7 @@ public class ExpandNode_Action extends BaseAction {
     super("Expand All", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -44,6 +45,9 @@ public class ExpandNode_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     ProjectPane pane = ProjectPane.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT));
     MPSTree tree = pane.getTree();
+    if (tree == null) {
+      return;
+    }
     TreePath path = tree.getSelectionPath();
     if (path == null) {
       return;

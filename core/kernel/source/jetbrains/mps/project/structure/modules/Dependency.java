@@ -16,7 +16,6 @@
 package jetbrains.mps.project.structure.modules;
 
 import jetbrains.mps.util.Pair;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.io.ModelInputStream;
 import jetbrains.mps.util.io.ModelOutputStream;
 import org.jetbrains.annotations.NotNull;
@@ -37,8 +36,7 @@ public final class Dependency implements Copyable<Dependency> {
   /**
    * @deprecated use the other constructors instead
    */
-  @Deprecated
-  @ToRemove(version = 0)
+@Deprecated(since = "0", forRemoval = true)
   public Dependency() {
   }
 

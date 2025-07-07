@@ -5,7 +5,8 @@ package testCustomAnalyzer.dataFlow;
 import jetbrains.mps.analyzers.runtime.framework.GeneratedInstruction;
 
 public class counterInstructionBInstruction extends GeneratedInstruction {
-  private String myPresentation;
+  private final String myPresentation;
+
   public counterInstructionBInstruction() {
     StringBuilder sb = new StringBuilder();
     sb.append("counterInstructionB");

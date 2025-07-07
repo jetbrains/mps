@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -60,4 +60,18 @@ public interface SRepositoryExt extends SRepository {
   Set<MPSModuleOwner> getOwners(@NotNull SModule module);
 
   Set<SModule> getModules(MPSModuleOwner moduleOwner);
+
+  /**
+   * PROVISIONAL HACK TO ADDRESS UNCLEAR EditableSModule.isChanged semantics.
+   * Tells if there're modules/models in this repository that are changed and
+   * {@link SRepository#saveAll()} is in order.
+   *
+   * INTRODUCED FOR BUGFIX PURPOSES ONLY, NOT AN API, DON'T USE.
+   *
+   * @implNote doesn't require caller to hold model read the moment it consults the method.
+   * If necessary, implementation shall grab appropriate read access (never write!)
+   */
+  default boolean needsSave() {
+    return true;
+  }
 }

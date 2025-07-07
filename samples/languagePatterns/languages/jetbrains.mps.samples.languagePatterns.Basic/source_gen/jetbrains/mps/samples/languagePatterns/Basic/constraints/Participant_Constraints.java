@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -18,13 +19,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.scope.ListScope;
 import java.util.HashMap;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -36,18 +34,14 @@ public class Participant_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.singer$rtG4, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.singer$rtG4, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_wflc39_a0a0a0a0a1a0a0a0c;
+            return new SNodePointer("r:7e1c7518-df7a-4f22-84b2-a5e68261264a(jetbrains.mps.samples.languagePatterns.Basic.constraints)", "6836281137582847570");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
@@ -56,25 +50,9 @@ public class Participant_Constraints extends BaseConstraintsDescriptor {
 
             final List<SNode> allSingers = SLinkOperations.getChildren(concert, LINKS.performers$yMK7);
 
-            final Iterable<SNode> alreadyParticipatingSingersButMe = ListSequence.fromList(SLinkOperations.getChildren(performance, LINKS.participants$y5XW)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return !(Objects.equals(it, _context.getReferenceNode()));
-              }
-            }).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode participant) {
-                return SLinkOperations.getTarget(participant, LINKS.singer$rtG4);
-              }
-            });
+            final Iterable<SNode> alreadyParticipatingSingersButMe = ListSequence.fromList(SLinkOperations.getChildren(performance, LINKS.participants$y5XW)).where((it) -> !(Objects.equals(it, _context.getReferenceNode()))).select((participant) -> SLinkOperations.getTarget(participant, LINKS.singer$rtG4));
 
-            Iterable<SNode> candidates = ListSequence.fromList(allSingers).where(new IWhereFilter<SNode>() {
-              public boolean accept(final SNode singer) {
-                return Sequence.fromIterable(alreadyParticipatingSingersButMe).all(new IWhereFilter<SNode>() {
-                  public boolean accept(SNode participatingSinger) {
-                    return !(Objects.equals(participatingSinger, singer));
-                  }
-                });
-              }
-            });
+            Iterable<SNode> candidates = ListSequence.fromList(allSingers).where((final SNode singer) -> Sequence.fromIterable(alreadyParticipatingSingersButMe).all((participatingSinger) -> !(Objects.equals(participatingSinger, singer))));
 
             return ListScope.forNamedElements(candidates);
           }
@@ -85,7 +63,6 @@ public class Participant_Constraints extends BaseConstraintsDescriptor {
     references.put(d0.getReference(), d0);
     return references;
   }
-  private static final SNodePointer breakingNode_wflc39_a0a0a0a0a1a0a0a0c = new SNodePointer("r:7e1c7518-df7a-4f22-84b2-a5e68261264a(jetbrains.mps.samples.languagePatterns.Basic.constraints)", "6836281137582847570");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept Participant$Y_ = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae78e59fbL, "jetbrains.mps.samples.languagePatterns.Basic.structure.Participant");

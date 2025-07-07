@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -18,11 +19,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import java.util.HashMap;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -34,18 +34,14 @@ public class ReferenceMessageTarget_Constraints extends BaseConstraintsDescripto
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.linkDeclaration$X960, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.linkDeclaration$X960, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_h95xiq_a0a0a0a0a1a0a0a0c;
+            return new SNodePointer("r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)", "6836281137582807659");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
@@ -53,11 +49,11 @@ public class ReferenceMessageTarget_Constraints extends BaseConstraintsDescripto
             if (messageStatement == null) {
               return ListScope.forResolvableElements(Sequence.fromIterable(Collections.<SNode>emptyList()));
             }
-            SNode nodetype = (SLinkOperations.getTarget(messageStatement, LINKS.nodeToReport_old$EFG$) != null ? TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(messageStatement, LINKS.nodeToReport_old$EFG$)) : TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(messageStatement, LINKS.nodeToReport$xn5I)));
+            SNode nodetype = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(messageStatement, LINKS.nodeToReport$xn5I));
             {
-              SNode coercedNode_h95xiq_d0b0a0a0b0a0a0a2 = TypecheckingFacade.getFromContext().coerceType(nodetype, CONCEPTS.SNodeType$hR);
-              if (coercedNode_h95xiq_d0b0a0a0b0a0a0a2 != null) {
-                return ListScope.forResolvableElements(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(coercedNode_h95xiq_d0b0a0a0b0a0a0a2, LINKS.concept$OMgE)));
+              SNode coercedNode_h95xiq_d0b0a0a0a0a0a0a2 = TypecheckingFacade.getFromContext().coerceType(nodetype, CONCEPTS.SNodeType$hR);
+              if (coercedNode_h95xiq_d0b0a0a0a0a0a0a2 != null) {
+                return ListScope.forResolvableElements(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(coercedNode_h95xiq_d0b0a0a0a0a0a0a2, LINKS.concept$OMgE)));
               } else {
                 return ListScope.forResolvableElements(Sequence.fromIterable(Collections.<SNode>emptyList()));
               }
@@ -70,7 +66,6 @@ public class ReferenceMessageTarget_Constraints extends BaseConstraintsDescripto
     references.put(d0.getReference(), d0);
     return references;
   }
-  private static final SNodePointer breakingNode_h95xiq_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)", "6836281137582807659");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ReferenceMessageTarget$8r = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a87c94L, "jetbrains.mps.lang.typesystem.structure.ReferenceMessageTarget");
@@ -80,7 +75,6 @@ public class ReferenceMessageTarget_Constraints extends BaseConstraintsDescripto
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink linkDeclaration$X960 = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a87c94L, 0x11db4a8e070L, "linkDeclaration");
-    /*package*/ static final SContainmentLink nodeToReport_old$EFG$ = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, 0x11db4ab45e6L, "nodeToReport_old");
     /*package*/ static final SContainmentLink nodeToReport$xn5I = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5a5dL, "nodeToReport");
     /*package*/ static final SReferenceLink concept$OMgE = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
   }

@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.io.File;
 import java.io.FilenameFilter;
 import jetbrains.mps.project.MPSExtentions;
+import jetbrains.mps.workbench.actions.OpenMPSProjectTrustProjectHelper;
 import com.intellij.ide.impl.ProjectUtil;
 import com.intellij.ide.impl.OpenProjectTask;
 
@@ -24,7 +25,11 @@ public class ProjectCheckoutListener implements CheckoutListener {
       }
     });
     if (files != null && files.length > 0) {
-      ProjectUtil.openProject(files[0].toPath(), OpenProjectTask.withProjectToClose(project));
+      final Path virtualFile = files[0].toPath();
+      if (OpenMPSProjectTrustProjectHelper.checkTrust(virtualFile)) {
+        ProjectUtil.openProject(virtualFile, OpenProjectTask.build().withProjectToClose(project));
+
+      }
       return true;
     }
     return false;

@@ -10,12 +10,9 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -40,20 +37,10 @@ public class WrapNullLiteral extends MigrationScriptBase {
     {
       SearchScope scope_nzk9pr_a0e = CommandUtil.createScope(m);
       final SearchScope scope_nzk9pr_a0e_0 = new EditableFilteringScope(scope_nzk9pr_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_nzk9pr_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilderInitLink$XR, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.expression$YNz0), CONCEPTS.NullLiteral$QQ);
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode initLink) {
-          SNode nullLiteral = SLinkOperations.getTarget(initLink, LINKS.expression$YNz0);
-          SLinkOperations.setTarget(initLink, LINKS.expression$YNz0, createNodeBuilderExpression_nzk9pr_a0b0a0a0a0a6(nullLiteral));
-        }
+      QueryExecutionContext context = () -> scope_nzk9pr_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilderInitLink$XR, false)).where((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.expression$YNz0), CONCEPTS.NullLiteral$QQ)).visitAll((initLink) -> {
+        SNode nullLiteral = SLinkOperations.getTarget(initLink, LINKS.expression$YNz0);
+        SLinkOperations.setTarget(initLink, LINKS.expression$YNz0, createNodeBuilderExpression_nzk9pr_a0b0a0a0a0a6(nullLiteral));
       });
     }
   }
@@ -62,27 +49,17 @@ public class WrapNullLiteral extends MigrationScriptBase {
     {
       SearchScope scope_nzk9pr_a0f = CommandUtil.createScope(m);
       final SearchScope scope_nzk9pr_a0f_0 = new EditableFilteringScope(scope_nzk9pr_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_nzk9pr_a0f_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NullLiteral$QQ, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.hasRole(it, LINKS.expression$YNz0);
-        }
-      }).select(new ISelector<SNode, NotMigratedNode>() {
-        public NotMigratedNode select(SNode it) {
-          return new NotMigratedNode(it) {
-            public String getMessage() {
-              return "NullLiteral inside light quotation link initializer";
-            }
-          };
-        }
+      QueryExecutionContext context = () -> scope_nzk9pr_a0f_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NullLiteral$QQ, false)).where((it) -> SNodeOperations.hasRole(it, LINKS.expression$YNz0)).select((it) -> {
+        return new NotMigratedNode(it) {
+          public String getMessage() {
+            return "NullLiteral inside light quotation link initializer";
+          }
+        };
       });
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, "jetbrains.mps.lang.quotation"), 0);
   }
 

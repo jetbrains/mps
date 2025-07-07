@@ -13,7 +13,6 @@ import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.project.MPSProject;
@@ -31,6 +30,7 @@ public class AddExecutor_Action extends BaseAction {
     super("Add Executor", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -39,11 +39,7 @@ public class AddExecutor_Action extends BaseAction {
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
     final SNode nodeFinal = event.getData(MPSCommonDataKeys.NODE);
-    boolean exists = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(nodeFinal), CONCEPTS.AbstractRunConfigurationExecutor$Fp)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.configuration$CM7P) == nodeFinal;
-      }
-    });
+    boolean exists = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(nodeFinal), CONCEPTS.AbstractRunConfigurationExecutor$Fp)).any((it) -> SLinkOperations.getTarget(it, LINKS.configuration$CM7P) == nodeFinal);
     setEnabledState(event.getPresentation(), !(exists));
     event.getPresentation().setText("Create Executor for " + SPropertyOperations.getString(nodeFinal, PROPS.name$MnvL));
   }

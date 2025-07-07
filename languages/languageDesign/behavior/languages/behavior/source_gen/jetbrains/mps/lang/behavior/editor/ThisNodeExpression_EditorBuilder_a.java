@@ -53,7 +53,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "this");
     editorCell.setCellId("Constant_t6mv7u_a0");
     Style style = new StyleImpl();
-    new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeyWordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, true);
     style.set(StyleAttributes.STRIKE_OUT, _StyleParameter_QueryFunction_t6mv7u_a1a0());
     editorCell.getStyle().putAll(style);

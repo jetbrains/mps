@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -18,11 +19,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import java.util.function.Supplier;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import jetbrains.mps.baseLanguage.scopes.Members;
 import java.util.HashMap;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -34,18 +33,14 @@ public class StaticFieldReferenceOperation_Constraints extends BaseConstraintsDe
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.variableDeclaration$N1XG, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.variableDeclaration$N1XG, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_q5evsf_a0a0a0a0a1a0a0a0c;
+            return new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "3870108946630902784");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
@@ -54,11 +49,7 @@ public class StaticFieldReferenceOperation_Constraints extends BaseConstraintsDe
               return new EmptyScope();
             }
             final SNode instance = SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.DotExpression$yW), LINKS.operand$w6IR);
-            SNode instanceType = TypecheckingFacade.getFromContext().computeIsolated(new Supplier<SNode>() {
-              public SNode get() {
-                return TypecheckingFacade.getFromContext().getTypeOf(instance);
-              }
-            });
+            SNode instanceType = TypecheckingFacade.getFromContext().computeIsolated(() -> TypecheckingFacade.getFromContext().getTypeOf(instance));
 
             SNode classifierType = TypecheckingFacade.getFromContext().strongCoerceType(instanceType, CONCEPTS.ClassifierType$bL);
             if ((SLinkOperations.getTarget(classifierType, LINKS.classifier$cxMr) == null)) {
@@ -73,7 +64,6 @@ public class StaticFieldReferenceOperation_Constraints extends BaseConstraintsDe
     references.put(d0.getReference(), d0);
     return references;
   }
-  private static final SNodePointer breakingNode_q5evsf_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "3870108946630902784");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept StaticFieldReferenceOperation$nE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x35b563950dfe3377L, "jetbrains.mps.baseLanguage.structure.StaticFieldReferenceOperation");

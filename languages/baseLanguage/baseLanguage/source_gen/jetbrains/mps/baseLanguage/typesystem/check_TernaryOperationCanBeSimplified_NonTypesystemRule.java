@@ -27,7 +27,7 @@ public class check_TernaryOperationCanBeSimplified_NonTypesystemRule extends Abs
     SNode condition = SLinkOperations.getTarget(ternaryOperatorExpression, LINKS.condition$nwNI);
     SNode remainingNode;
 
-    Boolean conditionConstant = ConditionUtil.getConditionConstant(condition);
+    Boolean conditionConstant = ConditionUtil.getConditionEffectivelyConstantValue(condition);
     if (conditionConstant != null) {
       final Boolean value = conditionConstant.booleanValue();
       remainingNode = (value ? left : right);

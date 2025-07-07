@@ -33,7 +33,7 @@ public class ShowAffectedFiles_Action extends BaseAction {
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
     event.getPresentation().setText("Show All Affected Files");
-    setEnabledState(event.getPresentation(), ShowAffectedFiles_Action.this.getCellMessage(event) != null);
+    setEnabledState(event.getPresentation(), ShowAffectedFiles_Action.this.getCellMessage(event) != null && !(ShowAffectedFiles_Action.this.getCellMessage(event).getCommitsGraphNode().isLocalRevision()));
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {

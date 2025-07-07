@@ -5,7 +5,6 @@
   <property name="build.layout" location="${build.dir}/artifacts/mpsStandalone" />
   <property name="mps_home" location="${basedir}" />
   <property name="artifacts.mpsBootstrapCore" location="${build.dir}/artifacts/mpsBootstrapCore" />
-  <property name="artifacts.mpsCore" location="${build.dir}/artifacts/mpsCore" />
   <property name="artifacts.mpsWorkbench" location="${build.dir}/artifacts/mpsWorkbench" />
   <property name="artifacts.IDEA" location="${mps_home}" />
   <property file="${artifacts.mpsBootstrapCore}/build.properties" prefix="import.mpsBootstrapCore" />
@@ -44,7 +43,7 @@
     <copy todir="${build.layout}/lib">
       <fileset dir="${artifacts.mpsWorkbench}/lib" />
     </copy>
-    <copy file="${artifacts.IDEA}/plugins/java/lib/ecj-4.16.jar" todir="${build.layout}/lib" />
+    <copy file="${artifacts.IDEA}/plugins/java/lib/ecj/eclipse.jar" todir="${build.layout}/lib" />
     <mkdir dir="${build.layout}/license" />
     <copy todir="${build.layout}/license">
       <fileset dir="${basedir}/license" />
@@ -53,13 +52,9 @@
       <fileset file="${basedir}/LICENSE.txt" />
     </copy>
     <mkdir dir="${build.layout}/plugins" />
-    <mkdir dir="${build.layout}/plugins/mps-core" />
-    <copy todir="${build.layout}/plugins/mps-core">
-      <fileset dir="${artifacts.mpsCore}/mps-core" />
-    </copy>
-    <mkdir dir="${build.layout}/plugins/github" />
-    <copy todir="${build.layout}/plugins/github">
-      <fileset dir="${basedir}/plugins/github" />
+    <mkdir dir="${build.layout}/plugins/vcs-github" />
+    <copy todir="${build.layout}/plugins/vcs-github">
+      <fileset dir="${basedir}/plugins/vcs-github" />
     </copy>
     <mkdir dir="${build.layout}/plugins/vcs-changeReminder" />
     <copy todir="${build.layout}/plugins/vcs-changeReminder">
@@ -69,9 +64,9 @@
     <copy todir="${build.layout}/plugins/platform-images">
       <fileset dir="${basedir}/plugins/platform-images" />
     </copy>
-    <mkdir dir="${build.layout}/plugins/settings-repository" />
-    <copy todir="${build.layout}/plugins/settings-repository">
-      <fileset dir="${basedir}/plugins/settings-repository" />
+    <mkdir dir="${build.layout}/plugins/settingsRepository" />
+    <copy todir="${build.layout}/plugins/settingsRepository">
+      <fileset dir="${basedir}/plugins/settingsRepository" />
     </copy>
     <mkdir dir="${build.layout}/plugins/tasks" />
     <copy todir="${build.layout}/plugins/tasks">

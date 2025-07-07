@@ -9,7 +9,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -28,11 +27,7 @@ public class MoveItemToTheRightPositionWithinDailyPlan_QuickFix extends QuickFix
       return;
     }
     SNode dailyPlan = SNodeOperations.cast(SNodeOperations.getParent(item), CONCEPTS.DailyPlan$zP);
-    SNode nextSibling = ListSequence.fromList(SLinkOperations.getChildren(dailyPlan, LINKS.items$4wAy)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getInteger(it, PROPS.start$f2z3) > SPropertyOperations.getInteger(item, PROPS.start$f2z3);
-      }
-    });
+    SNode nextSibling = ListSequence.fromList(SLinkOperations.getChildren(dailyPlan, LINKS.items$4wAy)).findFirst((it) -> SPropertyOperations.getInteger(it, PROPS.start$f2z3) > SPropertyOperations.getInteger(item, PROPS.start$f2z3));
     if ((nextSibling != null)) {
       SNodeOperations.insertPrevSiblingChild(nextSibling, item);
     }

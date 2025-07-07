@@ -19,7 +19,6 @@ import java.util.Map;
 import java.util.HashMap;
 import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -53,7 +52,7 @@ public class TaskLibrariesHelper {
         }
       }
     }
-    List<SNode> parts = Sequence.fromIterable(SLinkOperations.collectMany(libs, LINKS.parts$BIl9)).toListSequence();
+    List<SNode> parts = Sequence.fromIterable(SLinkOperations.collectMany(libs, LINKS.parts$BIl9)).toList();
     Map<SNode, SNode> map = new HashMap<SNode, SNode>();
     parts = (List<SNode>) CopyUtil.copy((List<SNode>) parts, map);
     ListSequence.fromList(SLinkOperations.getChildren(project, LINKS.imports$B1XX)).clear();
@@ -61,7 +60,7 @@ public class TaskLibrariesHelper {
       for (SReference ref : n.getReferences()) {
         SNode targetNode = SNodeOperations.getTargetNodeSilently(ref);
         if (map.containsKey(targetNode)) {
-          SNodeAccessUtil.setReferenceTarget(n, ref.getLink(), map.get(targetNode));
+          n.setReferenceTarget(ref.getLink(), map.get(targetNode));
         } else {
           SNode containingRoot = targetNode.getContainingRoot();
           if (jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.isInstanceOf(containingRoot, CONCEPTS.BwfTaskLibrary$kP)) {

@@ -10,13 +10,11 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -39,33 +37,17 @@ public class EditorTestCase_TestNode extends MigrationScriptBase {
     {
       SearchScope scope_wvzb5u_a0e = CommandUtil.createScope(m);
       final SearchScope scope_wvzb5u_a0e_0 = new EditableFilteringScope(scope_wvzb5u_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_wvzb5u_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EditorTestCase$DN, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.nodeToEdit$SO8n) != null);
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode node) {
-          if ((SLinkOperations.getTarget(node, LINKS.testNodeBefore$aUeC) == null)) {
-            SLinkOperations.setTarget(node, LINKS.testNodeBefore$aUeC, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, "jetbrains.mps.lang.test.structure.TestNode")));
-            SLinkOperations.setTarget(SLinkOperations.getTarget(node, LINKS.testNodeBefore$aUeC), LINKS.nodeToCheck$OBcW, SLinkOperations.getTarget(node, LINKS.nodeToEdit$SO8n));
-          }
+      QueryExecutionContext context = () -> scope_wvzb5u_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EditorTestCase$DN, false)).where((it) -> (SLinkOperations.getTarget(it, LINKS.nodeToEdit$SO8n) != null)).visitAll((node) -> {
+        if ((SLinkOperations.getTarget(node, LINKS.testNodeBefore$aUeC) == null)) {
+          SLinkOperations.setTarget(node, LINKS.testNodeBefore$aUeC, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, "jetbrains.mps.lang.test.structure.TestNode")));
+          SLinkOperations.setTarget(SLinkOperations.getTarget(node, LINKS.testNodeBefore$aUeC), LINKS.nodeToCheck$OBcW, SLinkOperations.getTarget(node, LINKS.nodeToEdit$SO8n));
         }
       });
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EditorTestCase$DN, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.result$sGjR) != null);
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode node) {
-          if ((SLinkOperations.getTarget(node, LINKS.testNodeResult$bm9v) == null)) {
-            SLinkOperations.setTarget(node, LINKS.testNodeResult$bm9v, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, "jetbrains.mps.lang.test.structure.TestNode")));
-            SLinkOperations.setTarget(SLinkOperations.getTarget(node, LINKS.testNodeResult$bm9v), LINKS.nodeToCheck$OBcW, SLinkOperations.getTarget(node, LINKS.result$sGjR));
-          }
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EditorTestCase$DN, false)).where((it) -> (SLinkOperations.getTarget(it, LINKS.result$sGjR) != null)).visitAll((node) -> {
+        if ((SLinkOperations.getTarget(node, LINKS.testNodeResult$bm9v) == null)) {
+          SLinkOperations.setTarget(node, LINKS.testNodeResult$bm9v, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, "jetbrains.mps.lang.test.structure.TestNode")));
+          SLinkOperations.setTarget(SLinkOperations.getTarget(node, LINKS.testNodeResult$bm9v), LINKS.nodeToCheck$OBcW, SLinkOperations.getTarget(node, LINKS.result$sGjR));
         }
       });
     }
@@ -75,17 +57,9 @@ public class EditorTestCase_TestNode extends MigrationScriptBase {
     {
       SearchScope scope_wvzb5u_a0f = CommandUtil.createScope(m);
       final SearchScope scope_wvzb5u_a0f_0 = scope_wvzb5u_a0f;
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_wvzb5u_a0f_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EditorTestCase$DN, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.nodeToEdit$SO8n) != null);
-        }
-      }).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
+      QueryExecutionContext context = () -> scope_wvzb5u_a0f_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EditorTestCase$DN, false)).where((it) -> (SLinkOperations.getTarget(it, LINKS.nodeToEdit$SO8n) != null)).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+        public Problem invoke(SNode it) {
           Problem problem = new NotMigratedNode(it) {
             @Override
             public String getMessage() {
@@ -94,12 +68,8 @@ public class EditorTestCase_TestNode extends MigrationScriptBase {
           };
           return problem;
         }
-      }).concat(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EditorTestCase$DN, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.result$sGjR) != null);
-        }
-      }).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
+      }).concat(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EditorTestCase$DN, false)).where((it) -> (SLinkOperations.getTarget(it, LINKS.result$sGjR) != null)).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+        public Problem invoke(SNode it) {
           Problem problem = new NotMigratedNode(it) {
             @Override
             public String getMessage() {
@@ -111,7 +81,7 @@ public class EditorTestCase_TestNode extends MigrationScriptBase {
       }));
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, "jetbrains.mps.lang.test"), 3);
   }
 

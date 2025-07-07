@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ import jetbrains.mps.generator.impl.reference.PostponedReference;
 import jetbrains.mps.generator.impl.reference.ReferenceInfo;
 import jetbrains.mps.generator.impl.reference.ReferenceInfo_CopiedInputNode;
 import jetbrains.mps.smodel.FastNodeFinderManager;
-import jetbrains.mps.smodel.StaticReference;
+import jetbrains.mps.smodel.SNodeImplAccess;
 import jetbrains.mps.smodel.nodeidmap.INodeIdToNodeMap;
 import jetbrains.mps.smodel.nodeidmap.UniversalOptimizedNodeIdMap;
 import jetbrains.mps.util.SNodeOperations;
@@ -360,7 +360,6 @@ public abstract class DeltaBuilder {
           continue;
         }
         for (SReference reference : next.getReferences()) {
-          assert reference instanceof PostponedReference == false : "!!! unexpected PostponedReference in the input model";
           if (!inputModelRef.equals(reference.getTargetSModelReference())) {
             continue;
           }
@@ -381,15 +380,9 @@ public abstract class DeltaBuilder {
     }
     // make references to point to node directly, not (ModelId+NodeId)
     // as it would be impossible to resolve model once root is detached
+    // OTOH, it does happen automatically on node detach, isn't it?
     for (SNode rn : allReplacedNodes) {
-      for (SNode n : SNodeUtil.getDescendants(rn)) {
-        for (SReference r : n.getReferences()) {
-          if (!inputModelRef.equals(r.getTargetSModelReference()) || ! (r instanceof StaticReference)) {
-            continue;
-          }
-          ((StaticReference) r).makeDirect();
-        }
-      }
+      new SNodeImplAccess(rn).makeReferencesDirectWhen(inputModelRef);
     }
   }
 

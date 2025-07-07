@@ -23,7 +23,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class CellActionMapItem__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, "jetbrains.mps.lang.editor.structure.CellActionMapItem");
 
-  public static final SMethod<SEnumerationLiteral> getActionId_idJCy0JrvU0M = new SMethodBuilder<SEnumerationLiteral>(new SJavaCompoundTypeImpl((Class<SEnumerationLiteral>) ((Class) Object.class))).name("getActionId").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("JCy0JrvU0M").build();
+  public static final SMethod<SEnumerationLiteral> getActionId_idJCy0JrvU0M = new SMethodBuilder<SEnumerationLiteral>(new SJavaCompoundTypeImpl((Class<SEnumerationLiteral>) ((Class) Object.class))).name("getActionId").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(858085313522671666L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getActionId_idJCy0JrvU0M);
 

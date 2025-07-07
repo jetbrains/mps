@@ -8,7 +8,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
@@ -26,11 +25,7 @@ public class CellAction_DeleteEasily extends CellAction_DeleteNode {
   }
   private boolean canBeDeletedEasily() {
     SNode semanticNode = getSourceNode();
-    for (SNode child : ListSequence.fromList(SNodeOperations.getChildren(semanticNode)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(AttributeOperations.isAttribute(it));
-      }
-    })) {
+    for (SNode child : ListSequence.fromList(SNodeOperations.getChildren(semanticNode)).where((it) -> !(AttributeOperations.isAttribute(it)))) {
       SContainmentLink l = SNodeOperations.getContainingLink(child);
       if (l.isValid() && (l.isMultiple() || l.isOptional())) {
         return false;

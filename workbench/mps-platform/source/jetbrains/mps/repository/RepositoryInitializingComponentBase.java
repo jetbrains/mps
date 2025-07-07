@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,8 @@
  */
 package jetbrains.mps.repository;
 
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.BaseComponent;
-import com.intellij.openapi.components.ServiceManager;
-import jetbrains.mps.InternalFlag;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.library.LibraryInitializer;
@@ -32,11 +31,10 @@ import java.util.List;
 
 /**
  * Inits all mps distribution modules
- * When on sources {@link InternalFlag#isInternalMode()} almost the same happens
+ * When on sources {@link jetbrains.mps.RuntimeFlags#isInternalMode()} almost the same happens
  */
 public class RepositoryInitializingComponentBase implements BaseComponent {
   private final LibraryInitializer myLibraryInitializer;
-  private final IFileSystem myFS;
   private final List<LibraryContributor> myContributors = new ArrayList<>();
 
   /**
@@ -47,17 +45,10 @@ public class RepositoryInitializingComponentBase implements BaseComponent {
    * Thus we aren't supposed to use idea fs here (according to the idea fs recommendations) and we are using io-based fs.
    *
    * @param coreComponents           -- we want to load bootstrap libraries after we have all core components instatiated
-   * @param ideaPluginFacetComponent -- we want to load plugin library contributor after we have chosen the right idea plugin facet
    */
-  @SuppressWarnings("UnusedParameters")
-  public RepositoryInitializingComponentBase(MPSCoreComponents coreComponents,
-                                             IdeaPluginFacetComponent ideaPluginFacetComponent,
-                                             IdeaFileSystem fs
-  ) {
-    ServiceManager.getService(FSNotificationsImprover.class); // Need this service to be initialized before other activity
+  public RepositoryInitializingComponentBase(MPSCoreComponents coreComponents) {
+    ApplicationManager.getApplication().getService(FSNotificationsImprover.class); // Need this service to be initialized before other activity
     myLibraryInitializer = coreComponents.getLibraryInitializer();
-    // FIXME why cons, not an abstract method invoked from initComponent() to populate contributors list?
-    myFS = PathManager.isFromSources() ? fs : coreComponents.getPlatform().findComponent(VFSManager.class).getFileSystem(VFSManager.JAVA_IO_FILE_FS);
   }
 
   protected final void addContributor(LibraryContributor c) {
@@ -65,7 +56,17 @@ public class RepositoryInitializingComponentBase implements BaseComponent {
   }
 
   protected final IFileSystem getFS() {
-    return myFS;
+    // sic(!). Even if not on sources, grab the component instance to make sure it's initialized
+    // before any other code has a chance to use it through FileSystem.getInstance/FileSystemExtPoint.getFS
+    // Besides, it's IdeaFileSystem that registers various IFileSystem implementations into VFSManager.
+    // Though JAVA_IO_FILE_FS we need here is omnipresent, there could be another code that asks VFSManager for
+    // other FS protocol, and it may get unexpected value in case of IdeaFileSystem not initialized.
+    final IdeaFileSystem ideaFileSystem = ApplicationManager.getApplication().getComponent(IdeaFileSystem.class);
+    if (PathManager.isFromSources()) {
+      return ideaFileSystem;
+    } else {
+      return MPSCoreComponents.getInstance().getPlatform().findComponent(VFSManager.class).getFileSystem(VFSManager.JAVA_IO_FILE_FS);
+    }
   }
 
   @Override

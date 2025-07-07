@@ -25,6 +25,7 @@ import com.intellij.openapi.ui.LabeledComponent;
 import com.intellij.openapi.ui.SimpleToolWindowPanel;
 import com.intellij.openapi.ui.Splitter;
 import com.intellij.ui.ScrollPaneFactory;
+import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.icons.MPSIcons.Actions;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
@@ -51,6 +52,8 @@ public class MyBaseNodeDialog extends BaseNodeDialog {
     super(mpsProject, title);
 
     final SupertypesTree supertypesTree = new SupertypesTree(mpsProject);
+    //We want the tree to have its background color consistent with the other editor panels in the same dialog
+    supertypesTree.setBackground(getPreferredEditableComponentBackgroundColor());
     SimpleToolWindowPanel p = new SimpleToolWindowPanel(true, true);
     p.setContent(ScrollPaneFactory.createScrollPane(supertypesTree, true));
     ActionGroup g = new DefaultActionGroup(new ToggleAction("Strong", "Show only strong supertypes", Actions.ShowOnlyStrongSubtypes) {

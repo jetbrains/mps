@@ -10,12 +10,10 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptMemberNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -39,29 +37,9 @@ public class LightQuotation_InitLinkExpression extends MigrationScriptBase {
     {
       SearchScope scope_ppg5g5_a0e = CommandUtil.createScope(m);
       final SearchScope scope_ppg5g5_a0e_0 = new EditableFilteringScope(scope_ppg5g5_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_ppg5g5_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilderInitLink$XR, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.expression$YNz0), CONCEPTS.NodeBuilderInitLinkValue$_E) && (SLinkOperations.getTarget(it, LINKS.initValue$qHpN) == null);
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SLinkOperations.setTarget(it, LINKS.initValue$qHpN, SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.expression$YNz0), CONCEPTS.NodeBuilderInitLinkValue$_E));
-        }
-      });
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilderInitProperty$xv, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.expression$YNz0) != null) && (SLinkOperations.getTarget(it, LINKS.initValue$fqch) == null);
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SLinkOperations.setTarget(it, LINKS.initValue$fqch, SLinkOperations.getTarget(it, LINKS.expression$YNz0));
-        }
-      });
+      QueryExecutionContext context = () -> scope_ppg5g5_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilderInitLink$XR, false)).where((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.expression$YNz0), CONCEPTS.NodeBuilderInitLinkValue$_E) && (SLinkOperations.getTarget(it, LINKS.initValue$qHpN) == null)).visitAll((it) -> SLinkOperations.setTarget(it, LINKS.initValue$qHpN, SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.expression$YNz0), CONCEPTS.NodeBuilderInitLinkValue$_E)));
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilderInitProperty$xv, false)).where((it) -> (SLinkOperations.getTarget(it, LINKS.expression$YNz0) != null) && (SLinkOperations.getTarget(it, LINKS.initValue$fqch) == null)).visitAll((it) -> SLinkOperations.setTarget(it, LINKS.initValue$fqch, SLinkOperations.getTarget(it, LINKS.expression$YNz0)));
     }
   }
   @Override
@@ -69,24 +47,16 @@ public class LightQuotation_InitLinkExpression extends MigrationScriptBase {
     {
       SearchScope scope_ppg5g5_a0f = CommandUtil.createScope(m);
       final SearchScope scope_ppg5g5_a0f_0 = scope_ppg5g5_a0f;
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_ppg5g5_a0f_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilderInitPart$Zx, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.expression$YNz0) != null);
-        }
-      }).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
+      QueryExecutionContext context = () -> scope_ppg5g5_a0f_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilderInitPart$Zx, false)).where((it) -> (SLinkOperations.getTarget(it, LINKS.expression$YNz0) != null)).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+        public Problem invoke(SNode it) {
           Problem problem = new DeprecatedConceptMemberNotMigratedProblem.DeprecatedContainmentLinkNotMigratedProblem(it, LINKS.expression$YNz0);
           return problem;
         }
       });
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, "jetbrains.mps.lang.quotation"), 2);
   }
 

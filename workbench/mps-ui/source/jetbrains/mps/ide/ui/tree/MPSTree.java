@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,13 +24,13 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.wm.IdeFocusManager;
 import com.intellij.ui.DoubleClickListener;
 import com.intellij.ui.TreeUIHelper;
+import com.intellij.ui.tree.AsyncTreeModel;
 import com.intellij.util.ui.tree.WideSelectionTreeUI;
 import com.intellij.util.ui.update.MergingUpdateQueue;
 import com.intellij.util.ui.update.Update;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.ide.ThreadUtils;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -44,6 +44,7 @@ import javax.swing.event.TreeModelEvent;
 import javax.swing.event.TreeModelListener;
 import javax.swing.event.TreeWillExpandListener;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 import java.awt.Graphics;
@@ -63,9 +64,10 @@ import java.util.Set;
 public abstract class MPSTree extends DnDAwareTree implements Disposable {
   public static final String PATH = "path";
 
-  protected static final Logger LOG = LogManager.getLogger(MPSTree.class);
+  protected static final Logger LOG = Logger.getLogger(MPSTree.class);
 
   public static final String TREE_PATH_SEPARATOR = "/";
+  private final DefaultTreeModel myDefaultTreeModel;
 
   private int myTooltipManagerRecentInitialDelay;
   private boolean myAutoExpandEnabled = true;
@@ -81,11 +83,15 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
   private final Object myUpdateId = new Object();
 
   private boolean myDisposed = false;
+  //private Disposable myDisposable;
 
-  protected MPSTree() {
+  private MPSTree(DefaultTreeModel defaultTreeModel) {
     // TreeModel instance shall be the same during lifetime of the MPSTree instance
     // otherwise TreeModelListener instances attached to the model get lost
-    super(new DefaultTreeModel(null));
+    super(defaultTreeModel);
+    //myDisposable = ((DefaultTreeModelWithInvokerSupplier)defaultTreeModel).getDisposable();
+
+    myDefaultTreeModel = defaultTreeModel;
 
     new MPSTreeSpeedSearch(this);
 
@@ -159,6 +165,10 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
     clear();
   }
 
+  protected MPSTree() {
+    this(new DefaultTreeModel(null));
+  }
+
   /**
    * Initialization sequence common for each node initialized in the tree.
    * Shall invoke {@link MPSTreeNode#doInit()} to perform actual initialization, does this through appropriate runnable
@@ -194,7 +204,7 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
     if (!myLoadingDisabled && node.isLoadingEnabled()) {
       progressNode = new TextTreeNode("loading...");
       node.add(progressNode);
-      getModel().nodeStructureChanged(node);
+      getDFTreeModel().nodeStructureChanged(node);
       expandPath(new TreePath(progressNode.getPath()));
 
       Graphics g = getGraphics();
@@ -211,7 +221,7 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
     }
 
     // initialization of a node is supposed to update its children, notify structure had likely changed
-    getModel().nodeStructureChanged(node);
+    getDFTreeModel().nodeStructureChanged(node);
   }
 
   public void addTreeNodeListener(MPSTreeNodeListener listener) {
@@ -483,6 +493,7 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
   }
 
   private void expandAllImpl(MPSTreeNode node) {
+    if(node==null) return;
     expandPath(new TreePath(node.getPath()));
     for (MPSTreeNode c : node.getChildren()) {
       expandAllImpl(c);
@@ -509,6 +520,7 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
   }
 
   public void selectNode(TreeNode node) {
+    final TreeNode originalNode = node;
     List<TreeNode> nodes = new ArrayList<>();
     while (node != null) {
       nodes.add(0, node);
@@ -519,7 +531,16 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
     }
     TreePath path = new TreePath(nodes.toArray());
     setSelectionPath(path);
-    scrollRowToVisible(getRowForPath(path));
+    scrollPathToVisible(path);
+  }
+
+  @Override
+  public void expandPath(TreePath path) {
+    // Only expand if not a leaf!
+    TreeModel model = getDFTreeModel();
+    if(path != null && model != null && !model.isLeaf(path.getLastPathComponent())) {
+      setExpandedState(path, true);
+    }
   }
 
   /**
@@ -539,7 +560,7 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
    * @param saveExpansion {@code true} to indicate expanded path and selection is preserved
    */
   protected void runRebuildAction(final Runnable rebuildAction, final boolean saveExpansion) {
-    if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
+    if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment() || this.isDisposed()) {
       return;
     }
     if (!ThreadUtils.isInEDT()) {
@@ -604,20 +625,32 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
     setRootNode(new TextTreeNode("Empty"));
   }
 
+  /**
+   * @Deprecated
+   */
+  @Deprecated
+  public AsyncTreeModel getAsyncTreeModel() {
+    return null;
+  }
+
+  /**
+   * Returns the underlying DefaultTreeModel. Use DefaultTreeModel to add/remove nodes to the model.
+   * @return The DefaultTreeModel used by the MPSTree instance
+   */
+  public DefaultTreeModel getDFTreeModel() {
+    return myDefaultTreeModel;
+  }
+
   @Override
-  public DefaultTreeModel getModel() {
-    // we explicitly set DefaultTreeModel during construction of MPSTree,
-    // this method serves the purpose of convenient cast and as a reminder not to change
-    // TreeModel during lifecycle of MPSTree as it used to be. Same TreeModel instance is important
-    // to keep set of listeners attached to the tree model.
-    return (DefaultTreeModel) super.getModel();
+  public TreeModel getModel() {
+    return super.getModel();
   }
 
   private void setRootNode(@Nullable MPSTreeNode root) {
     final Object oldRoot = getModel().getRoot();
     if (oldRoot instanceof MPSTreeNode) {
       ((MPSTreeNode) oldRoot).removeThisAndChildren();
-      ((MPSTreeNode) oldRoot).setTree(null);
+      ((MPSTreeNode) oldRoot).setTree(null); // XXX removeThisAndChildren now clears myTree, do I want to keep this here?
     }
 
     if (root != null) {
@@ -625,7 +658,7 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
       root.addThisAndChildren();
     }
 
-    getModel().setRoot(root);
+    getDFTreeModel().setRoot(root);
   }
 
   private String pathToString(TreePath path) {
@@ -792,6 +825,9 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
 
   private List<String> getExpandedPaths() {
     List<String> result = new ArrayList<>();
+    if (getModel().getRoot()==null) {
+      return result;
+    }
     Enumeration<TreePath> expanded = getExpandedDescendants(new TreePath(new Object[]{getModel().getRoot()}));
     if (expanded == null) {
       return result;
@@ -800,7 +836,7 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
       TreePath path = expanded.nextElement();
       String pathString = pathToString(path);
       if (result.contains(pathString)) {
-        LOG.warn("two expanded paths have the same string representation");
+        LOG.warning("two expanded paths have the same string representation");
       }
       result.add(pathString);
     }
@@ -832,7 +868,7 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
     for (TreePath selectionPart : getSelectionPaths()) {
       String pathString = pathToString(selectionPart);
       if (result.contains(pathString)) {
-        LOG.warn("two selected paths have the same string representation");
+        LOG.warning("two selected paths have the same string representation");
       }
       result.add(pathString);
     }

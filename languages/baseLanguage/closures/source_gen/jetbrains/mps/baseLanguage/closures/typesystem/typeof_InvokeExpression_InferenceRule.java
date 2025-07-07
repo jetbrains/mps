@@ -27,7 +27,7 @@ public class typeof_InvokeExpression_InferenceRule extends AbstractInferenceRule
   }
   public void applyRule(final SNode invoke, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     final SNode cl = SNodeOperations.getNodeAncestor(invoke, CONCEPTS.ClosureLiteral$rp, false, false);
-    if (!((cl != null))) {
+    if (!(cl != null)) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(invoke, "Must be within ClosureLiteral", "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "1199711581032", null, errorTarget);
     }
@@ -46,13 +46,11 @@ public class typeof_InvokeExpression_InferenceRule extends AbstractInferenceRule
     // TODO the commented out code did not work
     {
       final SNode clt = typeCheckingContext.typeOf(cl, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "3399831762712131029", true);
-      typeCheckingContext.whenConcrete(clt, new Runnable() {
-        public void run() {
-          {
-            SNode _nodeToCheck_1029348928467 = invoke;
-            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "1225469813196", 0, null);
-            typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "1225469808572", true), (SNode) SLinkOperations.getTarget(SNodeOperations.cast(typeCheckingContext.getExpandedNode(clt), CONCEPTS.FunctionType$9U), LINKS.resultType$2oOC), _info_12389875345);
-          }
+      typeCheckingContext.whenConcrete(clt, () -> {
+        {
+          SNode _nodeToCheck_1029348928467 = invoke;
+          EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "1225469813196", 0, null);
+          typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "1225469808572", true), (SNode) SLinkOperations.getTarget(SNodeOperations.cast(typeCheckingContext.getExpandedNode(clt), CONCEPTS.FunctionType$9U), LINKS.resultType$2oOC), _info_12389875345);
         }
       }, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "3399831762712129929", false, false);
     }

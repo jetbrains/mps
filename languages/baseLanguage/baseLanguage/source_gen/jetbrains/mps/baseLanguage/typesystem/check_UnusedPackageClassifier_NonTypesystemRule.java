@@ -11,9 +11,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import org.jetbrains.mps.openapi.model.SReference;
 import java.util.Objects;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -29,23 +26,7 @@ public class check_UnusedPackageClassifier_NonTypesystemRule extends AbstractNon
   }
   public void applyRule(final SNode classifier, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if ((SLinkOperations.getTarget(classifier, LINKS.visibility$Yyua) == null) && !(SNodeOperations.isInstanceOf(classifier, CONCEPTS.AnonymousClass$Bt))) {
-      if (!(ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(classifier), null)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return ListSequence.fromList(SNodeOperations.getNodeAncestors(it, CONCEPTS.SingleLineComment$Kw, false)).isEmpty();
-        }
-      }).translate(new ITranslator2<SNode, SReference>() {
-        public Iterable<SReference> translate(SNode it) {
-          return SNodeOperations.getReferences(it);
-        }
-      }).any(new IWhereFilter<SReference>() {
-        public boolean accept(SReference ref) {
-          return Objects.equals(SLinkOperations.getTargetNode(ref), classifier) || ListSequence.fromList(SNodeOperations.getNodeAncestors(SLinkOperations.getTargetNode(ref), CONCEPTS.Classifier$Ix, false)).any(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return Objects.equals(it, classifier);
-            }
-          });
-        }
-      }))) {
+      if (!(ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(classifier), null)).where((it) -> ListSequence.fromList(SNodeOperations.getNodeAncestors(it, CONCEPTS.SingleLineComment$Kw, false)).isEmpty()).translate((it) -> SNodeOperations.getReferences(it)).any((ref) -> Objects.equals(SLinkOperations.getTargetNode(ref), classifier) || ListSequence.fromList(SNodeOperations.getNodeAncestors(SLinkOperations.getTargetNode(ref), CONCEPTS.Classifier$Ix, false)).any((it) -> Objects.equals(it, classifier))))) {
 
         String msg;
         if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.EnumClass$Vk)) {

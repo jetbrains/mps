@@ -25,8 +25,8 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class BuildLayout_EchoProperties__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x2d0f82f7bfda46aL, "jetbrains.mps.build.structure.BuildLayout_EchoProperties");
 
-  public static final SMethod<Boolean> isValidPart_id7XQqoCTkVIS = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValidPart").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7XQqoCTkVIS").build(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(SContainmentLink.class, ""));
-  public static final SMethod<String> getOutputPath_WithMacro_idbgY2XVZG2p = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getOutputPath_WithMacro").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("bgY2XVZG2p").build(SMethodBuilder.createJavaParameter(Context.class, ""));
+  public static final SMethod<Boolean> isValidPart_id7XQqoCTkVIS = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValidPart").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9184644532456897464L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(SContainmentLink.class, ""));
+  public static final SMethod<String> getOutputPath_WithMacro_idbgY2XVZG2p = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getOutputPath_WithMacro").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(202934866059116697L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Context.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isValidPart_id7XQqoCTkVIS, getOutputPath_WithMacro_idbgY2XVZG2p);
 
@@ -34,7 +34,7 @@ public final class BuildLayout_EchoProperties__BehaviorDescriptor extends BaseBH
   }
 
   /*package*/ static boolean isValidPart_id7XQqoCTkVIS(@NotNull SNode __thisNode__, String propertyValue, SContainmentLink role) {
-    return !((propertyValue.contains("$") || propertyValue.contains("/") || propertyValue.contains("\\")));
+    return !(propertyValue.contains("$") || propertyValue.contains("/") || propertyValue.contains("\\"));
   }
   /*package*/ static String getOutputPath_WithMacro_idbgY2XVZG2p(@NotNull SNode __thisNode__, Context context) {
     if ((SNodeOperations.getParent(__thisNode__) != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildLayout_Container$vv)) {

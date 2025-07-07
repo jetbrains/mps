@@ -52,7 +52,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       setCellContext(bigCell);
     }
     Style style = new StyleImpl();
-    new OperationStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new OperationStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, true);
     style.set(StyleAttributes.AUTO_DELETABLE, true);
     editorCell.getStyle().putAll(style);

@@ -6,12 +6,12 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import jetbrains.mps.icons.MPSIcons;
 import javax.swing.SwingConstants;
-import java.awt.Font;
 import com.intellij.util.ui.UIUtil;
-import com.intellij.openapi.util.SystemInfo;
-import com.intellij.util.SystemProperties;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.beans.BeanProperty;
+import java.awt.Insets;
+import com.intellij.util.ui.JBUI;
 
 /*package*/ class TransientModelsPanel extends JPanel {
   private final TransientModelsWidget myWidget;
@@ -21,9 +21,7 @@ import java.awt.event.MouseEvent;
     myWidget = widget;
     this.label = new JLabel(widget.getMaxPossibleText(), MPSIcons.Nodes.TransientModule, SwingConstants.LEFT);
     this.label.setIconTextGap(0);
-    Font labelFont = UIUtil.getLabelFont();
-    boolean framedStyle = SystemInfo.isMac || !(SystemProperties.getBooleanProperty("idea.ui.mem.use", false));
-    this.label.setFont((framedStyle ? labelFont.deriveFont(11.0f) : labelFont));
+    this.label.setFont(UIUtil.getToolbarFont());
     this.label.setPreferredSize(this.label.getPreferredSize());
     this.label.setText(myWidget.getText());
     this.add(this.label);
@@ -41,6 +39,11 @@ import java.awt.event.MouseEvent;
   public void update() {
     this.label.setText(myWidget.getText());
     this.label.setIcon(myWidget.getIcon());
+  }
+  @BeanProperty(expert = true)
+  @Override
+  public Insets getInsets() {
+    return JBUI.emptyInsets();
   }
   @Override
   public String getToolTipText() {

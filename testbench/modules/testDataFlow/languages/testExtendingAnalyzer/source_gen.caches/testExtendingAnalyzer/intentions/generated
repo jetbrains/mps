@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-ba7h0gt9xrmbmexi7hqp5e6z4o6jdd8">
+<product version="3" modelHash="cezgmyp28o804qh0mna1rh9t7coyxon">
   <files names="IntentionsDescriptor.java:SwitchToNullSafe_Intention.java:SwitchToNullUnsafe_Intention.java" />
 </product>
 

@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -31,10 +30,10 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class EnumerationMemberDeclaration_Old__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, "jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration_Old");
 
-  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIMiw").build();
-  public static final SMethod<String> getConstantName_idi2Z$rBf = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getConstantName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("i2Z$rBf").build();
-  public static final SMethod<String> getName_idi2ZRO7Q = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("i2ZRO7Q").build();
-  public static final SMethod<SNode> findReplacement_id54m$yuDZW0l = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("findReplacement").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("54m$yuDZW0l").build();
+  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  public static final SMethod<String> getConstantName_idi2Z$rBf = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getConstantName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1240164579791L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
+  public static final SMethod<String> getName_idi2ZRO7Q = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1240169660918L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
+  public static final SMethod<SNode> findReplacement_id54m$yuDZW0l = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("findReplacement").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5843018265613287445L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getConstantName_idi2Z$rBf, getName_idi2ZRO7Q, findReplacement_id54m$yuDZW0l);
 
@@ -62,11 +61,7 @@ public final class EnumerationMemberDeclaration_Old__BehaviorDescriptor extends 
   }
   /*package*/ static SNode findReplacement_id54m$yuDZW0l(@NotNull final SNode __thisNode__) {
     // old-enum-member | old-enum | enum-migration-info | new-enum
-    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.getParent(SNodeOperations.getParent(__thisNode__))), CONCEPTS.EnumerationDeclaration$hv), LINKS.members$wmsL)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.oldMember$tsh) == __thisNode__;
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.getParent(SNodeOperations.getParent(__thisNode__))), CONCEPTS.EnumerationDeclaration$hv), LINKS.members$wmsL)).findFirst((it) -> SLinkOperations.getTarget(it, LINKS.oldMember$tsh) == __thisNode__);
   }
 
   /*package*/ EnumerationMemberDeclaration_Old__BehaviorDescriptor() {

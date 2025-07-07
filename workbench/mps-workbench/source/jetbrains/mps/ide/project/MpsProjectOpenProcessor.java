@@ -15,12 +15,14 @@
  */
 package jetbrains.mps.ide.project;
 
+import com.intellij.ide.impl.OpenProjectTask;
 import com.intellij.ide.impl.ProjectUtil;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.projectImport.ProjectOpenProcessor;
 import jetbrains.mps.icons.MPSIcons;
 import jetbrains.mps.workbench.actions.OpenMPSProjectFileChooserDescriptor;
+import jetbrains.mps.workbench.actions.OpenMPSProjectTrustProjectHelper;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.Icon;
@@ -49,6 +51,10 @@ public class MpsProjectOpenProcessor extends ProjectOpenProcessor {
   @Override
   public Project doOpenProject(@NotNull VirtualFile virtualFile, Project projectToClose, boolean forceOpenInNewFrame) {
     String filePath = virtualFile.getPath();
-    return ProjectUtil.openProject(filePath, projectToClose, forceOpenInNewFrame);
+    if (OpenMPSProjectTrustProjectHelper.checkTrust(virtualFile)) {
+      return ProjectUtil.openProject(virtualFile.toNioPath(), OpenProjectTask.build().withProjectToClose(projectToClose).withForceOpenInNewFrame(forceOpenInNewFrame));
+    } else {
+      return null;
+    }
   }
 }

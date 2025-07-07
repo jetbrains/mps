@@ -15,7 +15,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.LanguageAspect;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.migration.behavior.IMigrationUnit__BehaviorDescriptor;
 import jetbrains.mps.smodel.structure.Extension;
 import java.util.List;
@@ -28,11 +27,11 @@ import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.ide.findusages.model.SearchResult;
+import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.refactoring.participant.RefactoringSession;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.lang.migration.util.NodeReferenceUtil;
@@ -66,11 +65,7 @@ public class WriteSubconceptMigrationParticipant extends RefactoringParticipantB
     public SNode resolve(SRepository repository) {
       Language resolve = ((Language) languageRef.resolve(repository));
       SModel migrationModel = LanguageAspect.MIGRATION.get(resolve);
-      return ListSequence.fromList(SModelOperations.roots(migrationModel, CONCEPTS.IMigrationUnit$xq)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (int) IMigrationUnit__BehaviorDescriptor.fromVersion_id4uVwhQyFcnl.invoke(it) == version;
-        }
-      }).first();
+      return ListSequence.fromList(SModelOperations.roots(migrationModel, CONCEPTS.IMigrationUnit$xq)).where((it) -> (int) IMigrationUnit__BehaviorDescriptor.fromVersion_id4uVwhQyFcnl.invoke(it) == version).first();
     }
   }
 
@@ -107,56 +102,36 @@ public class WriteSubconceptMigrationParticipant extends RefactoringParticipantB
     {
       SearchScope scope_8k3jue_c0m = CommandUtil.createScope(searchScope);
       final SearchScope scope_8k3jue_c0m_0 = new EditableFilteringScope(scope_8k3jue_c0m);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_8k3jue_c0m_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_8k3jue_c0m_0;
       List<SNode> subConcepts = ListSequence.fromList(new ArrayList<SNode>());
-      ListSequence.fromList(subConcepts).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptDeclaration$gH, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(SLinkOperations.getPointer(it, LINKS.extends$_Isg), initialState._0().reference());
-        }
-      }).toListSequence());
-      ListSequence.fromList(subConcepts).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.InterfaceConceptDeclaration$CG, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.extends$nawU)).any(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return Objects.equals(SNodeOperations.getPointer(it), initialState._0().reference());
-            }
-          });
-        }
-      }).toListSequence());
-      ListSequence.fromList(subConcepts).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptDeclaration$gH, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.implements$u_P2)).any(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return Objects.equals(SNodeOperations.getPointer(it), initialState._0().reference());
-            }
-          });
-        }
-      }).toListSequence());
-      List<Language> subModules = ListSequence.fromList(subConcepts).select(new ISelector<SNode, SModule>() {
-        public SModule select(SNode it) {
-          return SNodeOperations.getModel(it).getModule();
-        }
-      }).distinct().ofType(Language.class).toListSequence();
-      List<RefactoringParticipant.Change<Tuples._2<NamedNodeReference, MigrationScriptRef>, Void>> changes = ListSequence.fromList(subModules).select(new ISelector<Language, RefactoringParticipant.Change<Tuples._2<NamedNodeReference, MigrationScriptRef>, Void>>() {
-        public RefactoringParticipant.Change<Tuples._2<NamedNodeReference, MigrationScriptRef>, Void> select(final Language subModule) {
-          RefactoringParticipant.Change<Tuples._2<NamedNodeReference, MigrationScriptRef>, Void> change = new MoveNodeRefactoringParticipant.ChangeBase<Tuples._2<NamedNodeReference, MigrationScriptRef>, Void>() {
-            public SearchResults getSearchResults() {
-              SearchResults searchResults = new SearchResults();
-              searchResults.add(new SearchResult<SModule>(subModule, "induced migration script"));
-              return searchResults;
-            }
-            public void confirm(Void finalState, SRepository repository, RefactoringSession refactoringSession) {
-              LanguageStructureMigrationParticipant.MigrationBuilder migrationBuilder = LanguageStructureMigrationParticipant.MigrationBuilder.getBuilder(refactoringSession, subModule);
-              migrationBuilder.addPart(createIncludeMigrationPart_8k3jue_a0a1a1a0a0a0a0a0a5a2a21(SNodeOperations.cast(initialState._1().resolve(repository), CONCEPTS.IMigrationUnit$xq)));
-            }
-          };
-          return change;
-        }
-      }).toListSequence();
+      ListSequence.fromList(subConcepts).addSequence(ListSequence.fromList(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptDeclaration$gH, false)).where((it) -> Objects.equals(SLinkOperations.getPointer(it, LINKS.extends$_Isg), initialState._0().reference())).toList()));
+      ListSequence.fromList(subConcepts).addSequence(ListSequence.fromList(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.InterfaceConceptDeclaration$CG, false)).where((it) -> {
+        return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.extends$nawU)).any(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+          public Boolean invoke(SNode it) {
+            return Objects.equals(SNodeOperations.getPointer(it), initialState._0().reference());
+          }
+        });
+      }).toList()));
+      ListSequence.fromList(subConcepts).addSequence(ListSequence.fromList(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptDeclaration$gH, false)).where((it) -> {
+        return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.implements$u_P2)).any(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+          public Boolean invoke(SNode it) {
+            return Objects.equals(SNodeOperations.getPointer(it), initialState._0().reference());
+          }
+        });
+      }).toList()));
+      List<Language> subModules = ListSequence.fromList(subConcepts).select((it) -> SNodeOperations.getModel(it).getModule()).distinct().ofType(Language.class).toList();
+      List<RefactoringParticipant.Change<Tuples._2<NamedNodeReference, MigrationScriptRef>, Void>> changes = ListSequence.fromList(subModules).select((final Language subModule) -> {
+        RefactoringParticipant.Change<Tuples._2<NamedNodeReference, MigrationScriptRef>, Void> change = new MoveNodeRefactoringParticipant.ChangeBase<Tuples._2<NamedNodeReference, MigrationScriptRef>, Void>() {
+          public SearchResults getSearchResults() {
+            return SearchResults.singleton(new SearchResult<SModule>(subModule, "induced migration script"));
+          }
+          public void confirm(Void finalState, SRepository repository, RefactoringSession refactoringSession) {
+            LanguageStructureMigrationParticipant.MigrationBuilder migrationBuilder = LanguageStructureMigrationParticipant.MigrationBuilder.getBuilder(refactoringSession, subModule);
+            migrationBuilder.addPart(createIncludeMigrationPart_8k3jue_a0a1a1a0a0a0a0a0a5a2a21(SNodeOperations.cast(initialState._1().resolve(repository), CONCEPTS.IMigrationUnit$xq)));
+          }
+        };
+        return change;
+      }).toList();
       return changes;
     }
   }

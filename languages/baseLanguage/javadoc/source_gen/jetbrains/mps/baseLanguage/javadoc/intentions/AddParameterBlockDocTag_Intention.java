@@ -20,21 +20,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class AddParameterBlockDocTag_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddParameterBlockDocTag_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:17a5547b-be2d-47de-9fc3-8304c9f5de67(jetbrains.mps.baseLanguage.javadoc.intentions)", "5858074156537083239"));
   }
+
   @Override
   public String getPresentation() {
     return "AddParameterBlockDocTag";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -44,19 +44,30 @@ public final class AddParameterBlockDocTag_Intention extends AbstractIntentionDe
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Add @param Tag";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode addedNode = SNodeFactoryOperations.addNewChild(node, LINKS.tags$stUD, CONCEPTS.ParameterBlockDocTag$ie);
       BlockDocTagHelper.setFocus(editorContext, addedNode);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddParameterBlockDocTag_Intention.this;
     }
+
   }
 
   private static final class LINKS {

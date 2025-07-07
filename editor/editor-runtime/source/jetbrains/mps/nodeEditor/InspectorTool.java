@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,7 @@
  */
 package jetbrains.mps.nodeEditor;
 
-import com.intellij.ide.DataManager;
 import com.intellij.ide.actions.ActivateToolWindowAction;
-import com.intellij.ide.favoritesTreeView.FavoritesViewTreeBuilder;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.KeyboardShortcut;
@@ -33,10 +31,12 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.startup.StartupManager;
 import com.intellij.openapi.ui.SimpleToolWindowPanel;
 import com.intellij.openapi.wm.ToolWindowAnchor;
+import com.intellij.openapi.wm.ToolWindowId;
 import com.intellij.ui.HyperlinkLabel;
-import com.intellij.ui.LightColors;
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.tools.BaseTool;
@@ -44,9 +44,11 @@ import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import jetbrains.mps.openapi.editor.EditorInspector;
 import jetbrains.mps.openapi.editor.extensions.EditorExtensionUtil;
+import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -58,7 +60,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -83,16 +84,17 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
   public InspectorTool(Project project) {
     super(project, ID, getDefaultShortCuts(), IdeIcons.INSPECTOR_ICON, ToolWindowAnchor.BOTTOM, true, false);
 
-    hackFavoritesKeymap();
+    hackFavoritesAndBookmarksKeymap();
   }
 
-  private static void hackFavoritesKeymap() {
+  private static void hackFavoritesAndBookmarksKeymap() {
     if (IS_IN_MPS_PLUGIN) {
       return;
     }
 
     BiConsumer<String, KeyStroke> removeDefaultKeyStroke = (keymapId, keyStroke) -> {
-      String favoritesViewId = ActivateToolWindowAction.getActionIdForToolWindow(FavoritesViewTreeBuilder.ID);
+      String favoritesViewId = ActivateToolWindowAction.getActionIdForToolWindow(ToolWindowId.FAVORITES_VIEW);
+      String bookmarksViewId = ActivateToolWindowAction.getActionIdForToolWindow(ToolWindowId.BOOKMARKS);
       final Keymap keymap = KeymapManager.getInstance().getKeymap(keymapId);
       if (keymap == null) {
         return;
@@ -100,6 +102,11 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
       for (Shortcut shortcut : keymap.getShortcuts(favoritesViewId)) {
         if (shortcut instanceof KeyboardShortcut && ((KeyboardShortcut) shortcut).getFirstKeyStroke().equals(keyStroke)) {
           keymap.removeShortcut(favoritesViewId, shortcut);
+        }
+      }
+      for (Shortcut shortcut : keymap.getShortcuts(bookmarksViewId)) {
+        if (shortcut instanceof KeyboardShortcut && ((KeyboardShortcut) shortcut).getFirstKeyStroke().equals(keyStroke)) {
+          keymap.removeShortcut(bookmarksViewId, shortcut);
         }
       }
     };
@@ -162,9 +169,9 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
     StartupManager.getInstance(getProject()).registerStartupActivity(() -> ApplicationManager.getApplication().invokeLater(() -> {
       InspectorTool.this.myMessagePanel = new MyMessagePanel();
       myComponent = new MyPanel();
-      jetbrains.mps.project.Project project = ProjectHelper.toMPSProject(getProject());
+      jetbrains.mps.project.Project project = ProjectHelper.fromIdeaProject(getProject());
       myInspectorComponent = new InspectorEditorComponent(project.getRepository(),
-                                                          new EditorConfigurationBuilder().editorPanelManager(new EditorPanelManagerImpl(project)).build());
+                                                          new EditorConfigurationBuilder().editorPanelManager(new EditorPanelManagerImpl(project)).notifies(true).build());
       EditorExtensionUtil.extendUsingProject(myInspectorComponent, project);
       myComponent.setContent(myInspectorComponent.getExternalComponent());
       myMessagePanel.setNode(null);
@@ -183,7 +190,7 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
 
   @Override
   public void activate() {
-    openTool(true);
+    openToolLater(true);
   }
 
   public EditorComponent getInspector() {
@@ -212,7 +219,7 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
     myMessagePanel.setNode(node);
   }
 
-  private class MyPanel extends SimpleToolWindowPanel {
+  private final class MyPanel extends SimpleToolWindowPanel {
     private MyPanel() {
       super(true, true);
       setProvideQuickActions(false);
@@ -220,7 +227,7 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
 
     @Override
     @Nullable
-    public Object getData(@NonNls String dataId) {
+    public Object getData(@NotNull @NonNls String dataId) {
       if (MPSCommonDataKeys.FILE_EDITOR.is(dataId)) {
         return myFileEditor;
       }
@@ -233,11 +240,17 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
       if (PlatformDataKeys.PROJECT.is(dataId)) {
         return getProject();
       }
+      if (MPSEditorDataKeys.EDITOR_COMPONENT.is(dataId)) {
+        return myInspectorComponent;
+      }
+      if (MPSCommonDataKeys.MPS_PROJECT.is(dataId)) {
+        return ProjectHelper.fromIdeaProject(getProject());
+      }
       return super.getData(dataId);
     }
   }
 
-  private class MyMessagePanel extends JPanel {
+  private final class MyMessagePanel extends JPanel {
     private static final String NO_CONCEPT_MESSAGE = "<no node>";
 
     private JLabel myLabel = new JLabel();
@@ -247,10 +260,13 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
     private MyMessagePanel() {
       setLayout(new BorderLayout());
 
-      setBackground(StyleRegistry.getInstance().isDarkTheme() ? Color.LIGHT_GRAY : LightColors.YELLOW);
+      // there's also INFO_ATTRIBUTES in CodeInsightColors, but perhaps worth to come with own style for 'messages' panel?
+      // FWIW, project instance is available at cons time (to access StyleRegistry, eventually).
+      final Style wpStyle = StyleRegistry.getInstance().getStyle("WARNING_PANEL");
+      setBackground(wpStyle.get(StyleAttributes.TEXT_BACKGROUND_COLOR));
       setBorder(BorderFactory.createEmptyBorder(0, 4, 0, 4));
 
-      myLabel.setForeground(StyleRegistry.getInstance().isDarkTheme() ? Color.DARK_GRAY : StyleRegistry.getInstance().getEditorForeground());
+      myLabel.setForeground(MPSColors.BLACK);
 
       add(myLabel, BorderLayout.CENTER);
       add(myOpenConceptLabel, BorderLayout.EAST);

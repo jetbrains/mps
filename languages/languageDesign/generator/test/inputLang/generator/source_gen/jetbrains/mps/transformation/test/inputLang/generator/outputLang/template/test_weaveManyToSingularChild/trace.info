@@ -127,7 +127,7 @@
     </file>
     <file name="Template_map_outputNode.java">
       <node id="1218738789586" at="25,36,26,20" concept="10" />
-      <node id="1218738789586" at="29,43,30,32" concept="7" />
+      <node id="1218738789586" at="29,43,30,20" concept="7" />
       <node id="1218738789586" at="34,89,35,78" concept="6" />
       <node id="1218738789586" at="35,78,36,36" concept="6" />
       <node id="1218738789586" at="36,36,37,68" concept="6" />
@@ -154,7 +154,7 @@
       <node id="1218738789586" at="75,46,76,54" concept="6" />
       <node id="1218738789586" at="76,54,77,142" concept="2" />
       <node id="1218738789586" at="77,142,78,16" concept="7" />
-      <node id="1218738789586" at="81,0,82,0" concept="8" trace="template_4esnh1_a0a3" />
+      <node id="1218738789586" at="81,0,82,0" concept="8" trace="template" />
       <node id="1218738789586" at="25,0,28,0" concept="1" trace="Template_map_outputNode#()V" />
       <node id="1218738789586" at="29,0,32,0" concept="5" trace="getTemplateNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="1218738814182" at="43,55,48,7" concept="0" />
@@ -164,7 +164,7 @@
       <node id="1218738789586" at="38,69,49,5" concept="0" />
       <node id="1218738789586" at="33,0,54,0" concept="5" trace="apply#(Ljetbrains/mps/generator/runtime/TemplateContext;Ljetbrains/mps/generator/runtime/ApplySink;)V" />
       <scope id="1218738789586" at="25,36,26,20" />
-      <scope id="1218738789586" at="29,43,30,32" />
+      <scope id="1218738789586" at="29,43,30,20" />
       <scope id="1218738789586" at="25,0,28,0" />
       <scope id="1218738789586" at="29,0,32,0" />
       <scope id="1218738814182" at="44,7,47,69">
@@ -218,8 +218,8 @@
       <node id="1218738992784" at="31,43,32,202" concept="7" />
       <node id="1218740112298" at="36,106,37,78" concept="6" />
       <node id="1218740112298" at="37,78,38,69" concept="6" />
-      <node id="1218740165111" at="38,69,39,185" concept="2" />
-      <node id="1218740112298" at="39,185,40,48" concept="6" />
+      <node id="1218740165111" at="38,69,39,167" concept="2" />
+      <node id="1218740112298" at="39,167,40,48" concept="6" />
       <node id="1218740112298" at="40,48,41,14" concept="7" />
       <node id="1218740112298" at="44,89,45,39" concept="2" />
       <node id="1218738992784" at="50,34,51,38" concept="6" />
@@ -231,7 +231,7 @@
       <node id="1218738992784" at="65,46,66,54" concept="6" />
       <node id="1218738992784" at="66,54,67,142" concept="2" />
       <node id="1218738992784" at="67,142,68,16" concept="7" />
-      <node id="1218738992784" at="71,0,72,0" concept="8" trace="propertyMacro_ymqu3a_c0a2a0a2a6" />
+      <node id="1218738992784" at="71,0,72,0" concept="8" trace="propertyMacro" />
       <node id="1218738992784" at="27,0,30,0" concept="1" trace="Template_weave_InputNode_A#()V" />
       <node id="1218738992784" at="31,0,34,0" concept="5" trace="getTemplateNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="1218738992784" at="43,0,47,0" concept="5" trace="apply#(Ljetbrains/mps/generator/runtime/TemplateContext;Ljetbrains/mps/generator/runtime/ApplySink;)V" />

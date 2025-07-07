@@ -7,37 +7,16 @@ import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import jetbrains.mps.internal.collections.runtime.ISequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 
 @GeneratedClass(node = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)/1936544640085949692", model = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)")
 public abstract class GraphAnalyzer<V> {
   private Map<V, Wrapper<V>> wrapMap = MapSequence.fromMap(new HashMap<V, Wrapper<V>>());
-  private _FunctionTypes._return_P1_E0<? extends Iterable<Wrapper<V>>, ? super Wrapper<V>> forward = new _FunctionTypes._return_P1_E0<ISequence<Wrapper<V>>, Wrapper<V>>() {
-    public ISequence<Wrapper<V>> invoke(Wrapper<V> d) {
-      return Sequence.fromIterable(forwardEdges(d.vertex)).select(new ISelector<V, Wrapper<V>>() {
-        public Wrapper<V> select(V v) {
-          return MapSequence.fromMap(wrapMap).get(v);
-        }
-      });
-    }
-  };
-  private _FunctionTypes._return_P1_E0<? extends Iterable<Wrapper<V>>, ? super Wrapper<V>> backward = new _FunctionTypes._return_P1_E0<ISequence<Wrapper<V>>, Wrapper<V>>() {
-    public ISequence<Wrapper<V>> invoke(Wrapper<V> d) {
-      return Sequence.fromIterable(backwardEdges(d.vertex)).select(new ISelector<V, Wrapper<V>>() {
-        public Wrapper<V> select(V v) {
-          return MapSequence.fromMap(wrapMap).get(v);
-        }
-      });
-    }
-  };
+  private _FunctionTypes._return_P1_E0<? extends Iterable<Wrapper<V>>, ? super Wrapper<V>> forward = (Wrapper<V> d) -> Sequence.fromIterable(forwardEdges(d.vertex)).select((v) -> MapSequence.fromMap(wrapMap).get(v));
+  private _FunctionTypes._return_P1_E0<? extends Iterable<Wrapper<V>>, ? super Wrapper<V>> backward = (Wrapper<V> d) -> Sequence.fromIterable(backwardEdges(d.vertex)).select((v) -> MapSequence.fromMap(wrapMap).get(v));
   public GraphAnalyzer() {
   }
   public abstract Iterable<V> vertices();
@@ -47,11 +26,7 @@ public abstract class GraphAnalyzer<V> {
   public List<List<V>> findCycles() {
     Iterable<Wrapper<V>> ws = this.init(vertices());
     List<List<Wrapper<V>>> cycles = this.collectCycles(this.topoSort(ws), false);
-    return ListSequence.fromList(cycles).select(new ISelector<List<Wrapper<V>>, List<V>>() {
-      public List<V> select(List<Wrapper<V>> it) {
-        return unwrap(it);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(cycles).select((it) -> unwrap(it)).toList();
   }
   public List<List<V>> totalOrder() {
     return totalOrder(false);
@@ -62,11 +37,7 @@ public abstract class GraphAnalyzer<V> {
     if (compact) {
       cycles = compactCycles(cycles);
     }
-    return ListSequence.fromList(cycles).select(new ISelector<List<Wrapper<V>>, List<V>>() {
-      public List<V> select(List<Wrapper<V>> it) {
-        return unwrap(it);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(cycles).select((it) -> unwrap(it)).toList();
   }
   public Iterable<V> topologicalSort() {
     Iterable<Wrapper<V>> ws = this.init(vertices());
@@ -78,116 +49,64 @@ public abstract class GraphAnalyzer<V> {
   }
 
   private Iterable<Wrapper<V>> init(Iterable<V> vertices) {
-    return Sequence.fromIterable(vertices).select(new ISelector<V, Wrapper<V>>() {
-      public Wrapper<V> select(V v) {
-        Wrapper<V> data = new Wrapper<V>(v);
-        MapSequence.fromMap(wrapMap).put(v, data);
-        return data;
-      }
-    }).toListSequence();
+    return Sequence.fromIterable(vertices).select((v) -> {
+      Wrapper<V> data = new Wrapper<V>(v);
+      MapSequence.fromMap(wrapMap).put(v, data);
+      return data;
+    }).toList();
   }
   private List<V> unwrap(Iterable<Wrapper<V>> vertices) {
-    return Sequence.fromIterable(vertices).select(new ISelector<Wrapper<V>, V>() {
-      public V select(Wrapper<V> it) {
-        return it.vertex;
-      }
-    }).toListSequence();
+    return Sequence.fromIterable(vertices).select((it) -> it.vertex).toList();
   }
   private List<Wrapper<V>> topoSort(Iterable<Wrapper<V>> ws) {
     final List<Wrapper<V>> res = ListSequence.fromList(new ArrayList<Wrapper<V>>());
-    dfs(ws, new _FunctionTypes._void_P2_E0<Wrapper<V>, _FunctionTypes._void_P0_E0>() {
-      public void invoke(Wrapper<V> w, _FunctionTypes._void_P0_E0 cont) {
-        cont.invoke();
-        ListSequence.fromList(res).addElement(w);
-      }
+    dfs(ws, (Wrapper<V> w, _FunctionTypes._void_P0_E0 cont) -> {
+      cont.invoke();
+      ListSequence.fromList(res).addElement(w);
     }, forward);
     return ListSequence.fromList(res).reversedList();
   }
   private List<Wrapper<V>> reachable(Wrapper<V> from, Iterable<Wrapper<V>> ws, _FunctionTypes._return_P1_E0<? extends Iterable<Wrapper<V>>, ? super Wrapper<V>> edges) {
     final List<Wrapper<V>> res = ListSequence.fromList(new ArrayList<Wrapper<V>>());
-    Sequence.fromIterable(ws).visitAll(new IVisitor<Wrapper<V>>() {
-      public void visit(Wrapper<V> w) {
-        w.clear();
-      }
-    });
-    dfsVisit(from, new _FunctionTypes._void_P2_E0<Wrapper<V>, _FunctionTypes._void_P0_E0>() {
-      public void invoke(Wrapper<V> ww, _FunctionTypes._void_P0_E0 cont) {
-        cont.invoke();
-        ListSequence.fromList(res).addElement(ww);
-      }
+    Sequence.fromIterable(ws).visitAll((w) -> w.clear());
+    dfsVisit(from, (Wrapper<V> ww, _FunctionTypes._void_P0_E0 cont) -> {
+      cont.invoke();
+      ListSequence.fromList(res).addElement(ww);
     }, edges);
     return res;
   }
   private List<List<Wrapper<V>>> collectCycles(Iterable<Wrapper<V>> ws, final boolean trivial) {
     final List<List<Wrapper<V>>> cycles = ListSequence.fromList(new ArrayList<List<Wrapper<V>>>());
-    Sequence.fromIterable(ws).visitAll(new IVisitor<Wrapper<V>>() {
-      public void visit(Wrapper<V> w) {
-        w.clear();
-      }
-    });
-    Sequence.fromIterable(ws).where(new IWhereFilter<Wrapper<V>>() {
-      public boolean accept(Wrapper<V> w) {
-        return !(w.entered);
-      }
-    }).visitAll(new IVisitor<Wrapper<V>>() {
-      public void visit(final Wrapper<V> w) {
-        dfsVisit(w, new _FunctionTypes._void_P2_E0<Wrapper<V>, _FunctionTypes._void_P0_E0>() {
-          public void invoke(Wrapper<V> ww, _FunctionTypes._void_P0_E0 cont) {
-            cont.invoke();
-            if (w != ww || Sequence.fromIterable(backward.invoke(ww)).contains(ww)) {
-              w.successor(ww);
-            }
-          }
-        }, backward);
-        if (trivial || ListSequence.fromList(w.successors).isNotEmpty()) {
-          ListSequence.fromList(cycles).addElement(collectSuccessors(w, ListSequence.fromListAndArray(new ArrayList<Wrapper<V>>(), w)));
+    Sequence.fromIterable(ws).visitAll((w) -> w.clear());
+    Sequence.fromIterable(ws).where((w) -> !(w.entered)).visitAll((final Wrapper<V> w) -> {
+      dfsVisit(w, (Wrapper<V> ww, _FunctionTypes._void_P0_E0 cont) -> {
+        cont.invoke();
+        if (w != ww || Sequence.fromIterable(backward.invoke(ww)).contains(ww)) {
+          w.successor(ww);
         }
+      }, backward);
+      if (trivial || ListSequence.fromList(w.successors).isNotEmpty()) {
+        ListSequence.fromList(cycles).addElement(collectSuccessors(w, ListSequence.fromListAndArray(new ArrayList<Wrapper<V>>(), w)));
       }
     });
     return cycles;
   }
   private List<Wrapper<V>> collectSuccessors(final Wrapper<V> w, final List<Wrapper<V>> list) {
-    ListSequence.fromList(w.successors).visitAll(new IVisitor<Wrapper<V>>() {
-      public void visit(Wrapper<V> ww) {
-        if (w != ww) {
-          ListSequence.fromList(list).addElement(ww);
-          collectSuccessors(ww, list);
-        }
+    ListSequence.fromList(w.successors).visitAll((ww) -> {
+      if (w != ww) {
+        ListSequence.fromList(list).addElement(ww);
+        collectSuccessors(ww, list);
       }
     });
     return list;
   }
   private void dfs(Iterable<Wrapper<V>> ws, final _FunctionTypes._void_P2_E0<? super Wrapper<V>, ? super _FunctionTypes._void_P0_E0> visitor, final _FunctionTypes._return_P1_E0<? extends Iterable<Wrapper<V>>, ? super Wrapper<V>> edges) {
-    Sequence.fromIterable(ws).visitAll(new IVisitor<Wrapper<V>>() {
-      public void visit(Wrapper<V> w) {
-        w.clear();
-      }
-    });
-    Sequence.fromIterable(ws).where(new IWhereFilter<Wrapper<V>>() {
-      public boolean accept(Wrapper<V> w) {
-        return !(w.entered);
-      }
-    }).visitAll(new IVisitor<Wrapper<V>>() {
-      public void visit(Wrapper<V> w) {
-        dfsVisit(w, visitor, edges);
-      }
-    });
+    Sequence.fromIterable(ws).visitAll((w) -> w.clear());
+    Sequence.fromIterable(ws).where((w) -> !(w.entered)).visitAll((w) -> dfsVisit(w, visitor, edges));
   }
   private void dfsVisit(final Wrapper<V> w, final _FunctionTypes._void_P2_E0<? super Wrapper<V>, ? super _FunctionTypes._void_P0_E0> visitor, final _FunctionTypes._return_P1_E0<? extends Iterable<Wrapper<V>>, ? super Wrapper<V>> edges) {
     w.enter();
-    visitor.invoke(w, new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        Sequence.fromIterable(edges.invoke(w)).where(new IWhereFilter<Wrapper<V>>() {
-          public boolean accept(Wrapper<V> ww) {
-            return !(ww.entered);
-          }
-        }).visitAll(new IVisitor<Wrapper<V>>() {
-          public void visit(Wrapper<V> ww) {
-            dfsVisit(ww, visitor, edges);
-          }
-        });
-      }
-    });
+    visitor.invoke(w, ((_FunctionTypes._void_P0_E0) () -> Sequence.fromIterable(edges.invoke(w)).where((ww) -> !(ww.entered)).visitAll((ww) -> dfsVisit(ww, visitor, edges))));
     w.exit();
   }
   private List<List<Wrapper<V>>> compactCycles(List<List<Wrapper<V>>> cycles) {
@@ -198,16 +117,8 @@ public abstract class GraphAnalyzer<V> {
       if (prev == null) {
         prev = c;
       } else {
-        if (ListSequence.fromList(c).translate(new ITranslator2<Wrapper<V>, Wrapper<V>>() {
-          public Iterable<Wrapper<V>> translate(Wrapper<V> w) {
-            return backward.invoke(w);
-          }
-        }).intersect(ListSequence.fromList(prev).translate(new ITranslator2<Wrapper<V>, Wrapper<V>>() {
-          public Iterable<Wrapper<V>> translate(Wrapper<V> w) {
-            return forward.invoke(w);
-          }
-        })).isEmpty()) {
-          prev = ListSequence.fromList(prev).concat(ListSequence.fromList(c)).toListSequence();
+        if (ListSequence.fromList(c).translate((w) -> backward.invoke(w)).intersect(ListSequence.fromList(prev).translate((w) -> forward.invoke(w))).isEmpty()) {
+          prev = ListSequence.fromList(prev).concat(ListSequence.fromList(c)).toList();
         } else {
           ListSequence.fromList(rv).addElement(prev);
           prev = c;

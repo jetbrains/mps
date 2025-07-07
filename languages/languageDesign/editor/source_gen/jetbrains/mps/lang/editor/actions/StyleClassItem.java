@@ -15,7 +15,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class StyleClassItem {
   public static class NodeFactory_1222177342204 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.ColorStyleClassItem$fD)) {
         SPropertyOperations.assignEnum(newNode, PROPS.color$cOQW, SPropertyOperations.getEnum(SNodeOperations.cast(sampleNode, CONCEPTS.ColorStyleClassItem$fD), PROPS.color$cOQW));
         SLinkOperations.setTarget(newNode, LINKS.query$J8Xh, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ColorStyleClassItem$fD), LINKS.query$J8Xh));
@@ -23,21 +23,21 @@ public class StyleClassItem {
     }
   }
   public static class NodeFactory_1222178769288 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BooleanStyleSheetItem$uN)) {
         SPropertyOperations.assign(newNode, PROPS.flag$7SqM, SPropertyOperations.getBoolean(SNodeOperations.cast(sampleNode, CONCEPTS.BooleanStyleSheetItem$uN), PROPS.flag$7SqM));
       }
     }
   }
   public static class NodeFactory_1222178992987 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.FloatStyleClassItem$vK)) {
         SPropertyOperations.assign(newNode, PROPS.value$U7AO, SPropertyOperations.getString(SNodeOperations.cast(sampleNode, CONCEPTS.FloatStyleClassItem$vK), PROPS.value$U7AO));
       }
     }
   }
   public static class NodeFactory_4088952938557965240 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.AttributeStyleClassItem$Ec)) {
         SLinkOperations.setTarget(newNode, LINKS.query$61u7, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AttributeStyleClassItem$Ec), LINKS.query$61u7));
       }

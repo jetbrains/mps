@@ -37,11 +37,7 @@ public class DropMigratedRefPresentationQueries extends MigrationScriptBase {
     {
       SearchScope scope_yimnkw_a0e = CommandUtil.createScope(m);
       final SearchScope scope_yimnkw_a0e_0 = new EditableFilteringScope(scope_yimnkw_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_yimnkw_a0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_yimnkw_a0e_0;
       Collection<SNode> conceptConstraints = CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptConstraints$Yt, false);
       for (SNode rc : Sequence.fromIterable(SLinkOperations.collectMany(conceptConstraints, LINKS.referent$k0ZK))) {
         if ((SLinkOperations.getTarget(rc, LINKS.presentation$VLnP) == null)) {
@@ -54,7 +50,7 @@ public class DropMigratedRefPresentationQueries extends MigrationScriptBase {
       }
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, "jetbrains.mps.lang.constraints"), 5);
   }
 

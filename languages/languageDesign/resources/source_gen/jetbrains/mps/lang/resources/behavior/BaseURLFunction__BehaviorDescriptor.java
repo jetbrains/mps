@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class BaseURLFunction__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x4197d5560e696656L, "jetbrains.mps.lang.resources.structure.BaseURLFunction");
 
-  public static final SMethod<String> getGeneratedClassName_id46nPloe$m0J = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedClassName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("46nPloe$m0J").build();
+  public static final SMethod<String> getGeneratedClassName_id46nPloe$m0J = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedClassName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4726480899536937007L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGeneratedClassName_id46nPloe$m0J);
 

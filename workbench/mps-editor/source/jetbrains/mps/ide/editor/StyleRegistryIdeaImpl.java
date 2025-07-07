@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,29 +18,30 @@ package jetbrains.mps.ide.editor;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
+import com.intellij.openapi.editor.colors.CodeInsightColors;
 import com.intellij.openapi.editor.colors.ColorKey;
+import com.intellij.openapi.editor.colors.EditorColorsListener;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.editor.markup.EffectType;
 import com.intellij.openapi.editor.markup.TextAttributes;
+import com.intellij.openapi.util.Disposer;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.util.Pair;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StyleRegistryIdeaImpl extends StyleRegistry implements Disposable {
-  private static final Logger LOG = LogManager.getLogger(StyleRegistryIdeaImpl.class);
+public class StyleRegistryIdeaImpl extends StyleRegistry {
 
   private final static int colorIterationSteps = 5;
   private final static int colorIterationDelta = 50;
@@ -48,13 +49,35 @@ public class StyleRegistryIdeaImpl extends StyleRegistry implements Disposable {
   private final Map<String, String> myIDEAStylesMapping = new HashMap<>();
   private final Map<Pair<Color, Color>, Color> my2DarkColorsMapping = new HashMap<>();
 
+  private final Disposable myDisposable = Disposer.newDisposable();
+
   public StyleRegistryIdeaImpl() {
-    ourInstance = this;
     fillIdeaMappings();
     fillColorMappings();
-    ApplicationManager.getApplication().getMessageBus().connect(this).subscribe(
-        EditorColorsManager.TOPIC, scheme -> StyleRegistryIdeaImpl.this.clearCache()
-    );
+    fillCustomStyles();
+  }
+
+  private void colorsChanged(EditorColorsScheme scheme) {
+    clearCache();
+    fillCustomStyles();
+  }
+
+  /**
+   * The right way to have custom styles for MPS-own things would be registering a TextAttributesKey with respective
+   * TextAttributes into IDEA's current EditorColorsScheme. I didn't find a way to accomplish this. FWIW, there's
+   * UIThemeProvider and UIThemeMetadataProvider. Former allows to contribute new UI Theme (not what I want here), latter
+   * gives descriptive keys but doesn't help to define own styles (or I just didn't find a way).
+   * FIXME if you now a way to get getColorsScheme().getAttributes(TextAttributesKey.find("MY_CUSTOM_STYLE")) functional,
+   *       please let me know.
+   * Now, this code overcomes this with MPS-only styles, hardcoded here and not configurable from outside (e.g. IDEA UI).
+   */
+  @SuppressWarnings("UseJBColor")
+  private void fillCustomStyles() {
+    StyleImpl da = new StyleImpl();;
+    final Color cc = isDarkTheme() ? Color.GREEN : Color.RED;
+    // logic for new color taken from DeletionApproverImpl
+    da.set(StyleAttributes.TEXT_BACKGROUND_COLOR, new Color(cc.getRed(), cc.getGreen(), cc.getBlue(), cc.getAlpha() / 5));
+    setStyle("DELETION_APPROVER", da);
   }
 
   @Override
@@ -161,42 +184,47 @@ public class StyleRegistryIdeaImpl extends StyleRegistry implements Disposable {
       addIdeaMappingsExt("FOLDED_TEXT", "FOLDED_TEXT_ATTRIBUTES");
       addIdeaMappingsExt("URL", "HYPERLINK_ATTRIBUTES");
 
-      addIdeaMappingsExt("LOCAL_VARIABLE", DefaultLanguageHighlighterColors.LOCAL_VARIABLE.toString());
-      addIdeaMappingsExt("PARAMETER", DefaultLanguageHighlighterColors.PARAMETER.toString());
+      // Don't use DefaultLanguageHighlighterColors.CONSTANT.toString() as we need just an identifier, without
+      // extra information about defaults (see TextAttributesKey.toString() impl)
+      addIdeaMappingsExt("LOCAL_VARIABLE", DefaultLanguageHighlighterColors.LOCAL_VARIABLE.getExternalName());
+      addIdeaMappingsExt("PARAMETER", DefaultLanguageHighlighterColors.PARAMETER.getExternalName());
       addIdeaMappingsExt("INSTANCE_FIELD", "INSTANCE_FIELD_ATTRIBUTES");
-      addIdeaMappingsExt("METHOD_DECLARATION", DefaultLanguageHighlighterColors.FUNCTION_DECLARATION.toString());
-      addIdeaMappingsExt("METHOD_CALL", DefaultLanguageHighlighterColors.FUNCTION_CALL.toString());
+      addIdeaMappingsExt("METHOD_DECLARATION", DefaultLanguageHighlighterColors.FUNCTION_DECLARATION.getExternalName());
+      addIdeaMappingsExt("METHOD_CALL", DefaultLanguageHighlighterColors.FUNCTION_CALL.getExternalName());
       addIdeaMappingsExt("STATIC_FIELD", "STATIC_FIELD_ATTRIBUTES");
       addIdeaMappingsExt("STATIC_FINAL_FIELD", "STATIC_FINAL_FIELD_ATTRIBUTES");
-      addIdeaMappingsExt("STATIC_METHOD", DefaultLanguageHighlighterColors.STATIC_METHOD.toString());
+      addIdeaMappingsExt("STATIC_METHOD", DefaultLanguageHighlighterColors.STATIC_METHOD.getExternalName());
       addIdeaMappingsExt("DEPRECATED", "DEPRECATED_ATTRIBUTES");
 
-      addIdeaMappingsExt("CLASS_NAME", DefaultLanguageHighlighterColors.CLASS_NAME.toString());
+      addIdeaMappingsExt("CLASS_NAME", DefaultLanguageHighlighterColors.CLASS_NAME.getExternalName());
 
       addIdeaMappingsExt("ANNOTATION", "ANNOTATION_NAME_ATTRIBUTES");
       addIdeaMappingsExt("NOT_USED_ELEMENT", "NOT_USED_ELEMENT_ATTRIBUTES");
       addIdeaMappingsExt("TODO", "TODO_DEFAULT_ATTRIBUTES");
 
-      addIdeaMappingsExt("DOC_TAG", DefaultLanguageHighlighterColors.DOC_COMMENT_TAG.toString());
-      addIdeaMappingsExt("DOC_COMMENT", DefaultLanguageHighlighterColors.DOC_COMMENT.toString());
-      addIdeaMappingsExt("KEYWORD", DefaultLanguageHighlighterColors.KEYWORD.toString());
-      addIdeaMappingsExt("LINE_COMMENT", DefaultLanguageHighlighterColors.LINE_COMMENT.toString());
-      addIdeaMappingsExt("BLOCK_COMMENT", DefaultLanguageHighlighterColors.BLOCK_COMMENT.toString());
-      addIdeaMappingsExt("NUMBER", DefaultLanguageHighlighterColors.NUMBER.toString());
-      addIdeaMappingsExt("STRING", DefaultLanguageHighlighterColors.STRING.toString());
-      addIdeaMappingsExt("OPERATION_SIGN", DefaultLanguageHighlighterColors.OPERATION_SIGN.toString());
-      addIdeaMappingsExt("PARENTH", DefaultLanguageHighlighterColors.PARENTHESES.toString());
-      addIdeaMappingsExt("BRACKETS", DefaultLanguageHighlighterColors.BRACKETS.toString());
-      addIdeaMappingsExt("BRACES", DefaultLanguageHighlighterColors.BRACES.toString());
-      addIdeaMappingsExt("SEMICOLON", DefaultLanguageHighlighterColors.SEMICOLON.toString());
-      addIdeaMappingsExt("DOT", DefaultLanguageHighlighterColors.DOT.toString());
+      addIdeaMappingsExt("DOC_TAG", DefaultLanguageHighlighterColors.DOC_COMMENT_TAG.getExternalName());
+      addIdeaMappingsExt("DOC_COMMENT", DefaultLanguageHighlighterColors.DOC_COMMENT.getExternalName());
+      addIdeaMappingsExt("KEYWORD", DefaultLanguageHighlighterColors.KEYWORD.getExternalName());
+      addIdeaMappingsExt("LINE_COMMENT", DefaultLanguageHighlighterColors.LINE_COMMENT.getExternalName());
+      addIdeaMappingsExt("BLOCK_COMMENT", DefaultLanguageHighlighterColors.BLOCK_COMMENT.getExternalName());
+      addIdeaMappingsExt("NUMBER", DefaultLanguageHighlighterColors.NUMBER.getExternalName());
+      addIdeaMappingsExt("STRING", DefaultLanguageHighlighterColors.STRING.getExternalName());
+      addIdeaMappingsExt("OPERATION_SIGN", DefaultLanguageHighlighterColors.OPERATION_SIGN.getExternalName());
+      addIdeaMappingsExt("PARENTH", DefaultLanguageHighlighterColors.PARENTHESES.getExternalName());
+      addIdeaMappingsExt("BRACKETS", DefaultLanguageHighlighterColors.BRACKETS.getExternalName());
+      addIdeaMappingsExt("BRACES", DefaultLanguageHighlighterColors.BRACES.getExternalName());
+      addIdeaMappingsExt("SEMICOLON", DefaultLanguageHighlighterColors.SEMICOLON.getExternalName());
+      addIdeaMappingsExt("DOT", DefaultLanguageHighlighterColors.DOT.getExternalName());
 
+      // com.intellij.xdebugger.ui.DebuggerColors, BREAKPOINT_ATTRIBUTES and EXECUTIONPOINT_ATTRIBUTES constants
       addIdeaMappingsExt("BREAKPOINT", "BREAKPOINT_ATTRIBUTES");
       addIdeaMappingsExt("EXECUTIONPOINT", "EXECUTIONPOINT_ATTRIBUTES");
 
+      addIdeaMappingsExt("WARNING_PANEL", CodeInsightColors.WARNINGS_ATTRIBUTES.getExternalName());
+
       //addIdeaMappingsExt("","");
     } catch (StyleRegistryMappingKeyException e) {
-      LOG.error("Exception on registering IDEA style mappings", e);
+      Logger.getLogger(StyleRegistryIdeaImpl.class).error("Exception on registering IDEA style mappings", e);
     }
   }
 
@@ -231,7 +259,15 @@ public class StyleRegistryIdeaImpl extends StyleRegistry implements Disposable {
   }
 
   @Override
+  public void init() {
+    ourInstance = this;
+    ApplicationManager.getApplication().getMessageBus().connect(myDisposable).subscribe(EditorColorsManager.TOPIC, (EditorColorsListener) this::colorsChanged);
+  }
+
+  @Override
   public void dispose() {
+    ourInstance = null;
+    Disposer.dispose(myDisposable);
     clearCache();
     my2DarkColorsMapping.clear();
     myIDEAStylesMapping.clear();

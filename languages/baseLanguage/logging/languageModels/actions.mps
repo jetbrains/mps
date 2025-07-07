@@ -64,7 +64,7 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -264,6 +264,24 @@
                     <node concept="1r4Lsj" id="5ggSOO4CCYm" role="2Oq$k0" />
                     <node concept="3TrEf2" id="5ggSOO4CCYn" role="2OqNvi">
                       <ref role="3Tt5mk" to="tpib:4XBaoL6cc9v" resolve="throwable" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="1OpKexXBqpu" role="3cqZAp">
+                <node concept="37vLTI" id="1OpKexXBr0I" role="3clFbG">
+                  <node concept="2OqwBi" id="1OpKexXBr7o" role="37vLTx">
+                    <node concept="Jnkvi" id="1OpKexXBr1d" role="2Oq$k0">
+                      <ref role="1M0zk5" node="5ggSOO4CCYo" resolve="msg" />
+                    </node>
+                    <node concept="3TrEf2" id="1OpKexXBreZ" role="2OqNvi">
+                      <ref role="3Tt5mk" to="tpib:1OpKexXBmv2" resolve="hint" />
+                    </node>
+                  </node>
+                  <node concept="2OqwBi" id="1OpKexXBqAE" role="37vLTJ">
+                    <node concept="1r4Lsj" id="1OpKexXBqpt" role="2Oq$k0" />
+                    <node concept="3TrEf2" id="1OpKexXBqPd" role="2OqNvi">
+                      <ref role="3Tt5mk" to="tpib:1OpKexXBmv2" resolve="hint" />
                     </node>
                   </node>
                 </node>

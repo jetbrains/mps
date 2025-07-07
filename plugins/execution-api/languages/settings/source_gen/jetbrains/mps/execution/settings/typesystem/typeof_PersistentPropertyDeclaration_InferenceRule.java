@@ -50,7 +50,7 @@ public class typeof_PersistentPropertyDeclaration_InferenceRule extends Abstract
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.JoinType$re);
     {
       SNodeBuilder n1 = n0.forChild(LINKS.argument$Iuyp).init(CONCEPTS.ClassifierType$bL);
-      n1.setReference(LINKS.classifier$cxMr, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Cloneable")));
+      n1.setReference(LINKS.classifier$cxMr, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.structure.modules(MPS.Core/)"), facade.createNodeId("~Copyable")));
       SNodeBuilder n2 = n1.forSibling().init(CONCEPTS.ClassifierType$bL);
       n2.setReference(LINKS.classifier$cxMr, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Enum")));
       SNodeBuilder n3 = n2.forSibling().init(CONCEPTS.ClassifierType$bL);

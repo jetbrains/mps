@@ -8,13 +8,11 @@
     </modelRoot>
   </models>
   <facets>
-    <facet type="java"/>
-    <facet pluginId="com.intellij" type="ideaPlugin" />
+    <facet type="java" compile="ext" classes="provided" ext="no">
+      <library location="${mps_home}/lib/mps-environment.jar" />
+      <library location="${mps_home}/lib/mps-test.jar" />
+    </facet>
   </facets>
-  <stubModelEntries>
-    <stubModelEntry path="${mps_home}/lib/mps-environment.jar" />
-    <stubModelEntry path="${mps_home}/lib/mps-test.jar" />
-  </stubModelEntries>
   <sourcePath />
   <dependencies>
     <dependency reexport="true">847a3235-09f9-403c-b6a9-1c294a212e92(Ant)</dependency>
@@ -24,8 +22,5 @@
     <dependency reexport="false">49808fad-9d41-4b96-83fa-9231640f6b2b(JUnit)</dependency>
     <dependency reexport="true">fdaaf35f-8ee3-4c37-b09d-9efaeaaa7a41(jetbrains.mps.core.tool.environment)</dependency>
   </dependencies>
-  <usedLanguages>
-    <usedLanguage>f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)</usedLanguage>
-  </usedLanguages>
 </solution>
 

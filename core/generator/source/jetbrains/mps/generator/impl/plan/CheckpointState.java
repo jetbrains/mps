@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -92,7 +92,16 @@ public class CheckpointState {
     return myState.getMappingNameAndInputNodeToOutputNodeMap().keySet();
   }
 
-  /*package*/ Collection<SNodeId> getInputs(String mappingLabel) {
+  public boolean hasSingleKeyRecordsFor(String mappingLabel) {
+    return myState.getMappingNameAndInputNodeToOutputNodeMap().containsKey(mappingLabel);
+  }
+
+  public boolean hasTwoKeyRecordsFor(String mappingLabel) {
+    // FIXME merge the logic together with #hasSingleKeyRecordsFor()
+    return myState.hasCompositeLM(mappingLabel);
+  }
+
+    /*package*/ Collection<SNodeId> getInputs(String mappingLabel) {
     Map<SNodeId, Object> values = myState.getMappingNameAndInputNodeToOutputNodeMap().get(mappingLabel);
     assert values != null; // provided getMappingLabels().contains(mappingLabel)
     return values.keySet();
@@ -144,7 +153,7 @@ public class CheckpointState {
   public SNode getOutputIfSingle(String mappingLabel, SNode input) {
     // FIXME move the check outside of this code, and don't use this method at all.
     // ModelCheckpoints.findTransformedNode shall fail if ML present and there are multiple outputs.
-    if (!myState.getMappingNameAndInputNodeToOutputNodeMap().containsKey(mappingLabel)) {
+    if (!hasSingleKeyRecordsFor(mappingLabel)) {
       return null;
     }
     Collection<SNode> output = getOutput(mappingLabel, input);
@@ -172,5 +181,10 @@ public class CheckpointState {
       rv.add(node);
     }
     return rv;
+  }
+
+  boolean isEmptyCheckpoint() {
+    // FIXME what about proper model access here?
+    return getMappingLabels().isEmpty() && !myCheckpointModel.getRootNodes().iterator().hasNext();
   }
 }

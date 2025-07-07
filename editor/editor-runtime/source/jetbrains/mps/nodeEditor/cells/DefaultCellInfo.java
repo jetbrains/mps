@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,12 @@
  */
 package jetbrains.mps.nodeEditor.cells;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellInfo;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.util.Reference;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -37,7 +36,7 @@ public class DefaultCellInfo implements CellInfo {
   private static final String PARENT_ELEMENT = "parent";
   private static final String CELL_NUMBER_ATTR = "cellNumber";
 
-  private static final Logger LOG = LogManager.getLogger(DefaultCellInfo.class);
+  private static final Logger LOG = Logger.getLogger(DefaultCellInfo.class);
 
   /**
    * There are two valid states:
@@ -130,7 +129,7 @@ public class DefaultCellInfo implements CellInfo {
           LOG.error("Invalid serialized node reference: " + nodeReferenceText, ex);
         }
       }
-      return new DefaultCellInfo(cellId, nodeReference);
+      return new DefaultCellInfo(cellId.intern(), nodeReference);
     } else {
       int cellNumber;
       String num = e.getAttributeValue(CELL_NUMBER_ATTR);

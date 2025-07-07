@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package org.jetbrains.mps.openapi.model;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -227,10 +226,21 @@ public interface SNode {
   void setReferenceTarget(@NotNull SReferenceLink role, @Nullable SNode target);
 
   /**
-   * Establish a 'dynamic' reference, the one with target determined by external scope based on {@code resolveInfo} additional information.
+   * Establish an association with node determined by an abstraction that captures mechanism to resolve a target.
+   * There are association with fixed aka 'static' targets as well as association with 'dynamic' targets that utilize
+   * external scope implementations to determine target node  based on {@code resolveInfo} additional information.
+   * <br/>
+   * This is a low-level mechanism, intended to replace {@link #setReference(SReferenceLink, SReference)} and to hide
+   * specific {@code SReference} implementation differences spread throughout the code. End-user code is supposed to
+   * go through higher-level methods of {@code SLinkOperations} and {@code SNodeAccessUtil}.
+   * Exemplary clients of this methods are persistence, M2M (Generator) and model copy/clone facilities.
+   * <br/>
+   *
    * FIXME dynamic references are generally not persisted, don't use them in models that are serialized using regular MPS persistence
    *
    * At the moment, we support {@code String} auxiliary resolution information, see {@link ResolveInfo#of(String)}
+   *
+   * FIXME null for resolveInfo - does it mean anything specific (broken dynamic reference or dropReference?)
    *
    * @since 2020.2
    * @param role meta-object that identifies association relation.
@@ -271,7 +281,13 @@ public interface SNode {
    * Sets a reference of the given role to a node that is resolved from the SReference.
    * Since SReference can refer to nodes by name and resolve them dynamically, this method may be able to resolve
    * the target node even when working with invalid code.
+   * @deprecated cumbersome api, use explicit {@code #dropReference()} for {@code null} case, or another method that
+   *    doesn't require construction of an object with source/link already specified.
+   *
+   * @implNote
+   *  Not marked for removal as it's open api and unlikely to get removed any time soon (in few years, perhaps). Just don't use it.
    */
+  @Deprecated
   void setReference(@NotNull SReferenceLink role, @Nullable SReference reference);
   // FIXME replace with setReference(SReference) or setReference(SReferenceLink link, SNode source, SNode target).
   // It's stupid to have explicit role along with SReference.getLink() (which not necessarily match)
@@ -336,22 +352,19 @@ public interface SNode {
   /**
    * @deprecated use hasProperty(SProperty), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-  @Deprecated
-  @ToRemove(version = 2020.2)
+@Deprecated(since = "2020.2", forRemoval = true)
   boolean hasProperty(String propertyName);
 
   /**
    * @deprecated use getProperty(SProperty), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-  @Deprecated
-  @ToRemove(version = 2020.2)
+@Deprecated(since = "2020.2", forRemoval = true)
   String getProperty(String propertyName);
 
   /**
    * @deprecated use setProperty(SProperty), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-  @Deprecated
-  @ToRemove(version = 2020.2)
+@Deprecated(since = "2020.2", forRemoval = true)
   void setProperty(String propertyName, String propertyValue);
 
   /**
@@ -363,15 +376,13 @@ public interface SNode {
   /**
    * @deprecated use setReferenceTarget(SReferenceLink, SNode), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-  @Deprecated
-  @ToRemove(version = 2020.2)
+@Deprecated(since = "2020.2", forRemoval = true)
   void setReferenceTarget(String role, @Nullable SNode target);
 
   /**
    * @deprecated use getReferenceTarget(SReferenceLink), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-  @Deprecated
-  @ToRemove(version = 2020.2)
+@Deprecated(since = "2020.2", forRemoval = true)
   SNode getReferenceTarget(String role);
 
   // SReferences
@@ -379,35 +390,30 @@ public interface SNode {
   /**
    * @deprecated use getReference(SReferenceLink), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-  @Deprecated
-  @ToRemove(version = 2020.2)
+@Deprecated(since = "2020.2", forRemoval = true)
   SReference getReference(String role);
 
   /**
    * @deprecated use setReference(SReferenceLink, SReference), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-  @Deprecated
-  @ToRemove(version = 2020.2)
+@Deprecated(since = "2020.2", forRemoval = true)
   void setReference(String role, SReference reference);
 
   /**
    * @deprecated use insertChildBefore(SContainmentLink, SNode, SNode), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-  @Deprecated
-  @ToRemove(version = 2020.2)
+@Deprecated(since = "2020.2", forRemoval = true)
   void insertChildBefore(String role, SNode child, @Nullable SNode anchor);
 
   /**
    * @deprecated use addChild(SContainmentLink, SNode), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-  @Deprecated
-  @ToRemove(version = 2020.2)
+@Deprecated(since = "2020.2", forRemoval = true)
   void addChild(String role, SNode child);
 
   /**
    * @deprecated use getChildren(SContainmentLink), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-  @Deprecated
-  @ToRemove(version = 2020.2)
+@Deprecated(since = "2020.2", forRemoval = true)
   Iterable<? extends SNode> getChildren(String role);
 }

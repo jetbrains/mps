@@ -14,7 +14,6 @@ import jetbrains.mps.internal.collections.runtime.QueueSequence;
 import java.util.LinkedList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.ide.findusages.view.FindUtils;
-import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import org.jetbrains.annotations.Nullable;
@@ -46,17 +45,13 @@ public class DerivedConcepts_Finder extends GeneratedFinder {
       QueueSequence.fromQueue(currentConcepts).addLastElement(SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$gH));
       while (QueueSequence.fromQueue(currentConcepts).isNotEmpty()) {
         SNode nextNode = QueueSequence.fromQueue(currentConcepts).removeFirstElement();
-        FindUtils.searchForResults(monitor.subTask(1), new IFinder.FindCallback() {
-          public void onUsageFound(@NotNull SearchResult<?> searchResult) {
-            SNode nodeParam = (SNode) searchResult.getObject();
-            new _FunctionTypes._void_P1_E0<SNode>() {
-              public void invoke(SNode directDescendant) {
-                SNode foundConcept = SNodeOperations.cast(directDescendant, CONCEPTS.ConceptDeclaration$gH);
-                QueueSequence.fromQueue(currentConcepts).addLastElement(foundConcept);
-                callback.onUsageFound(createSingleResult(foundConcept));
-              }
-            }.invoke(nodeParam);
-          }
+        FindUtils.searchForResults(monitor.subTask(1), (searchResult) -> {
+          SNode nodeParam = (SNode) searchResult.getObject();
+          ((_FunctionTypes._void_P1_E0<SNode>) (SNode directDescendant) -> {
+            SNode foundConcept = SNodeOperations.cast(directDescendant, CONCEPTS.ConceptDeclaration$gH);
+            QueueSequence.fromQueue(currentConcepts).addLastElement(foundConcept);
+            callback.onUsageFound(createSingleResult(foundConcept));
+          }).invoke(nodeParam);
         }, new SearchQuery(nextNode, scope), FindUtils.getFinder("jetbrains.mps.lang.structure.findUsages.StraightDescendants_Finder"));
       }
     } finally {

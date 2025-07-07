@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,9 @@
  */
 package jetbrains.mps.nodeEditor.leftHighlighter;
 
+import com.intellij.codeInsight.hint.LineTooltipRenderer;
+import com.intellij.codeInsight.hint.TooltipGroup;
+import com.intellij.codeInsight.hint.TooltipRenderer;
 import com.intellij.ide.DataManager;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
@@ -23,19 +26,25 @@ import com.intellij.openapi.actionSystem.ActionPopupMenu;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataContext;
+import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.editor.colors.EditorColorsListener;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
+import com.intellij.openapi.ui.popup.Balloon;
+import com.intellij.openapi.ui.popup.Balloon.Position;
+import com.intellij.ui.JBColor;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.UIUtil;
 import gnu.trove.THashMap;
 import jetbrains.mps.ide.actions.MPSActions;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import jetbrains.mps.ide.actions.SNodeActionData;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
-import jetbrains.mps.ide.tooltips.TooltipComponent;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.EditorMessageIconRenderer;
 import jetbrains.mps.nodeEditor.EditorMessageIconRenderer.IconRendererType;
 import jetbrains.mps.nodeEditor.EditorSettings;
+import jetbrains.mps.nodeEditor.EditorTooltipProvider;
 import jetbrains.mps.nodeEditor.leftHighlighter.IconPositionCalculator.IntLocation;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.update.UpdaterListenerAdapter;
@@ -76,7 +85,7 @@ import java.util.TreeSet;
 /**
  * This class should be called in UI (EventDispatch) thread only
  */
-public final class LeftEditorHighlighter extends JComponent implements TooltipComponent {
+public final class LeftEditorHighlighter extends JComponent {
   public static final String ICON_AREA = "LeftEditorHighlighterIconArea";
 
   private static final int MIN_LEFT_TEXT_WIDTH = 0;
@@ -92,17 +101,17 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
   @Nullable
   private MessageBusConnection myMessageBusConnection;
 
-  private EditorComponent myEditorComponent;
-  private NavigableSet<AbstractFoldingAreaPainter> myFoldingAreaPainters = new TreeSet<>(PAINTERS_COMPARATOR);
-  private BracketsPainter myBracketsPainter;
-  private FoldingButtonsPainter myFoldingButtonsPainter;
+  private final EditorComponent myEditorComponent;
+  private final NavigableSet<AbstractFoldingAreaPainter> myFoldingAreaPainters = new TreeSet<>(PAINTERS_COMPARATOR);
+  private final BracketsPainter myBracketsPainter;
+  private final FoldingButtonsPainter myFoldingButtonsPainter;
 
-  private NavigableSet<AbstractHighlighterPainter> myBackgroundPainters = new TreeSet<>(PAINTERS_COMPARATOR);
-  private SelectedCellAreaPainter mySelectedCellAreaPainter;
+  private final NavigableSet<AbstractHighlighterPainter> myBackgroundPainters = new TreeSet<>(PAINTERS_COMPARATOR);
+  private final SelectedCellAreaPainter mySelectedCellAreaPainter;
 
-  private List<AbstractLeftColumn> myLeftColumns = new ArrayList<>();
+  private final List<AbstractLeftColumn> myLeftColumns = new ArrayList<>();
 
-  private Set<EditorMessageIconRenderer> myIconRenderers = new HashSet<>();
+  private final Set<EditorMessageIconRenderer> myIconRenderers = new HashSet<>();
   private THashMap<EditorMessageIconRenderer, IntLocation> myRendererToCoord;
   private EditorMessageIconRenderer myRendererUnderMouse;
   private int myMaxIconHeight = 0;
@@ -116,7 +125,8 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
   private int myRightFoldingAreaWidth;
   private int myWidth;
   private int myHeight;
-  private boolean myRightToLeft;
+  private final boolean myRightToLeft;
+  private EditorTooltipProvider myTooltipProvider = new MyTooltipProvider();
 
   public LeftEditorHighlighter(@NotNull EditorComponent editorComponent, boolean rightToLeft) {
     setBackground(EditorSettings.getInstance().getLeftHighlighterBackgroundColor());
@@ -170,7 +180,7 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
     });
     editorComponent.getUpdater().addListener(new UpdaterListenerAdapter() {
       @Override
-      public void editorUpdated(jetbrains.mps.openapi.editor.EditorComponent editorComponent) {
+      public void editorUpdated(jetbrains.mps.openapi.editor.EditorComponent ec) {
         assert SwingUtilities.isEventDispatchThread() : "LeftEditorHighlighter$RebuildListener should be called in eventDispatchThread";
         myFoldingAreaPainters.forEach(AbstractFoldingAreaPainter::editorRebuilt);
         myLeftColumns.forEach(AbstractLeftColumn::editorRebuilt);
@@ -190,7 +200,7 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
     if (ApplicationManager.getApplication() != null) {
       myMessageBusConnection = ApplicationManager.getApplication().getMessageBus().connect();
       myMessageBusConnection.subscribe(
-          EditorColorsManager.TOPIC, scheme -> LeftEditorHighlighter.this.setBackground(EditorSettings.getInstance().getLeftHighlighterBackgroundColor())
+          EditorColorsManager.TOPIC, (EditorColorsListener) scheme -> LeftEditorHighlighter.this.setBackground(EditorSettings.getInstance().getLeftHighlighterBackgroundColor())
       );
     }
   }
@@ -370,7 +380,7 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
       column.paint(g);
       //  COLORS: find out where it is and remove hardcoded color
       UIUtil.drawVDottedLine((Graphics2D) g, myRightToLeft ? column.getX() : column.getX() + column.getWidth() - 1,
-                             (int) clipBounds.getMinY(), (int) clipBounds.getMaxY(), getBackground(), Color.GRAY);
+                             (int) clipBounds.getMinY(), (int) clipBounds.getMaxY(), getBackground(), JBColor.GRAY);
     }
   }
 
@@ -420,7 +430,7 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
       recalculateTextColumnWidth();
     } else {
       // left columns should be relayouted before calculating text column width.
-      if(updateFolding){
+      if (updateFolding) {
         myLeftColumns.forEach(column -> column.relayout(true));
       }
       recalculateTextColumnWidth();
@@ -585,12 +595,14 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
   }
 
   @Override
-  public String getMPSTooltipText(MouseEvent event) {
-    return getToolTipText(event);
+  public String getToolTipText(MouseEvent e) {
+    if (getTooltipProvider() != null) {
+      return null;
+    }
+    return getToolTipTextInternal(e);
   }
 
-  @Override
-  public String getToolTipText(MouseEvent e) {
+  private String getToolTipTextInternal(MouseEvent e) {
     if (isInFoldingArea(e)) {
       for (AbstractFoldingAreaPainter painter : myFoldingAreaPainters) {
         if (painter.getToolTipText() != null) {
@@ -614,6 +626,35 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
       }
     }
     return null;
+  }
+
+  private class MyTooltipProvider implements EditorTooltipProvider {
+
+    private final TooltipGroup MPS_GUTTER_TOOLTIP_GROUP = new TooltipGroup("MPS_GUTTER_TOOLTIP_GROUP", 0);
+
+    @Override
+    public TooltipGroup getTooltipGroup() {
+      return MPS_GUTTER_TOOLTIP_GROUP;
+    }
+
+    @Override
+    public TooltipRenderer getTooltipRenderer(MouseEvent e) {
+      String text = getToolTipTextInternal(e);
+      return (text == null || text.isEmpty()) ? null : new LineTooltipRenderer(text, new Object[]{List.of(text)});
+    }
+
+    @Override
+    public Position getPreferredPosition() {
+      return Balloon.Position.atRight;
+    }
+  }
+
+  public EditorTooltipProvider getTooltipProvider() {
+    return myTooltipProvider;
+  }
+
+  public void setTooltipProvider(EditorTooltipProvider editorTooltipProvider) {
+    myTooltipProvider = editorTooltipProvider;
   }
 
   @Override
@@ -668,10 +709,12 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
       AnAction action = iconRenderer.getClickAction();
       if (e.getButton() == MouseEvent.BUTTON1 && action != null) {
         if (e.getID() == MouseEvent.MOUSE_CLICKED) {
-          AnActionEvent actionEvent =
-              new AnActionEvent(e, new LeftEditorHighlighterDataContext(myEditorComponent, iconRenderer), ICON_AREA, action.getTemplatePresentation(),
-                                ActionManager.getInstance(), e.getModifiers());
+          final DataContext dc = new LeftEditorHighlighterDataContext(myEditorComponent, iconRenderer);
+          @SuppressWarnings("UseOfClone")
+          final Presentation presentation = action.getTemplatePresentation().clone();
+          AnActionEvent actionEvent = new AnActionEvent(e, dc, ICON_AREA, presentation, ActionManager.getInstance(), e.getModifiersEx());
           action.update(actionEvent);
+          // XXX I wonder why we ignore the fact action might declare it's disabled during update()
           action.actionPerformed(actionEvent);
         }
         e.consume();
@@ -807,7 +850,13 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
 
     @Override
     public Object getData(@NotNull @NonNls String dataId) {
+      if (SNodeActionData.KEY.is(dataId) && mySelectedNode != null) {
+        // XXX not sure I need this here unless MPS actions start using SNodeActionData, not MPSCommonDataKeys.NODE;
+        //     nevertheless, doesn't hurt to keep this code here for future use.
+        return SNodeActionData.from(mySelectedNode.getReference());
+      }
       if (MPSCommonDataKeys.NODE.is(dataId)) {
+        // this context is not accessible to IDEA's PreCachedDataContext, don't bother with model access.
         return mySelectedNode;
       }
       if (MPSEditorDataKeys.EDITOR_CELL.is(dataId)) {

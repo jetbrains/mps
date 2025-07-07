@@ -17,11 +17,9 @@ public abstract class AbstractLanguageMove implements MoveNodesAction {
   public boolean checkDeployed(MPSProject project, final SNode concept, boolean silent) {
     final Wrappers._T<SAbstractConcept> deployedConcept = new Wrappers._T<SAbstractConcept>();
     final Wrappers._T<String> conceptName = new Wrappers._T<String>();
-    project.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        deployedConcept.value = MetaAdapterByDeclaration.getConcept(concept);
-        conceptName.value = SPropertyOperations.getString(concept, PROPS.name$MnvL);
-      }
+    project.getRepository().getModelAccess().runReadAction(() -> {
+      deployedConcept.value = MetaAdapterByDeclaration.getConcept(concept);
+      conceptName.value = SPropertyOperations.getString(concept, PROPS.name$MnvL);
     });
     if (!(deployedConcept.value.isValid())) {
       if (!(silent)) {

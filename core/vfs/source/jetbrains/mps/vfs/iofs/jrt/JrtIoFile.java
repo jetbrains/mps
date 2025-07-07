@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,8 @@
  */
 package jetbrains.mps.vfs.iofs.jrt;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.IFileUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
@@ -24,8 +24,6 @@ import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.util.PathFormatChecker;
 import jetbrains.mps.vfs.util.PathUtil;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Internal;
@@ -44,7 +42,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class JrtIoFile implements IFile {
-  private static final Logger LOG = LogManager.getLogger(JrtIoFile.class);
+  private static final Logger LOG = Logger.getLogger(JrtIoFile.class);
 
   //todo: not yet supported to be different from startup JDK, however, introducing support is a simple task since we have it here already
   private final String myJdkPath;
@@ -115,13 +113,13 @@ public class JrtIoFile implements IFile {
 
   @Override
   //todo [MM] check this. Initially made as in JarEntryFile, though it doesn't comply with doc
-  public boolean isArchive() {
-    return true;
+  public boolean isZipArchive() {
+    return false;
   }
 
   @Override
-  public boolean isInArchive() {
-    return true;
+  public boolean isInZipArchive() {
+    return false;
   }
 
   @Override

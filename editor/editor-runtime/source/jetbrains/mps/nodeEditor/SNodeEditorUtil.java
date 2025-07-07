@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.nodeEditor;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
 

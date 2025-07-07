@@ -60,6 +60,6 @@ public class BreakpointProvidersManager {
 
 
   public static BreakpointProvidersManager getInstance() {
-    return ApplicationManager.getApplication().getComponent(BreakpointProvidersManager.class);
+    return ApplicationManager.getApplication().getService(BreakpointProvidersManager.class);
   }
 }

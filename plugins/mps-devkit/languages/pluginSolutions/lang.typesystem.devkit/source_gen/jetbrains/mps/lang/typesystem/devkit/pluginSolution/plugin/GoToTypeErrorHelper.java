@@ -8,7 +8,6 @@ import jetbrains.mps.errors.item.ReportItem;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 
 public class GoToTypeErrorHelper {
   private final EditorComponent myEditorComponent;
@@ -20,11 +19,7 @@ public class GoToTypeErrorHelper {
     if (CollectionSequence.fromCollection(allItems).isEmpty()) {
       return null;
     }
-    List<? extends ReportItem> maxSeverityItems = CollectionSequence.fromCollection(allItems).where(new IWhereFilter<IssueKindReportItem>() {
-      public boolean accept(IssueKindReportItem it) {
-        return it.getSeverity() == CollectionSequence.fromCollection(allItems).last().getSeverity();
-      }
-    }).toListSequence();
+    List<? extends ReportItem> maxSeverityItems = CollectionSequence.fromCollection(allItems).where((it) -> it.getSeverity() == CollectionSequence.fromCollection(allItems).last().getSeverity()).toList();
     return maxSeverityItems;
   }
   public ReportItem getMostRelevantReportItem() {

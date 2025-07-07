@@ -22,6 +22,7 @@ public class ConsoleClear_Action extends BaseAction {
     super("Clear", "Clear console history", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

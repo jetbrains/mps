@@ -7,19 +7,18 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-/*package*/ abstract class TextStrategy {
+public abstract class TextStrategy {
   protected EditorContext myEditorContext;
 
   /*package*/ TextStrategy(EditorContext editorContext) {
     myEditorContext = editorContext;
   }
 
-  /*package*/ abstract void execute();
+  public abstract void execute();
 
   /**
    * Finds the closest ancestor (inclusive) that is a member of a collection
@@ -33,7 +32,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       lineContainer = SNodeOperations.getParent(lineContainer);
     }
     if (lineContainer == null) {
-      throw new IllegalStateException("The line " + currentLine + " cannot be split. It is not a member of any node collection.");
+      throw new IllegalStateException("The line " + SNodeOperations.present(currentLine) + " cannot be split. It is not a member of any node collection.");
     }
     return lineContainer;
   }
@@ -49,13 +48,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       return SNodeOperations.as(lineContainer, CONCEPTS.Line$yC);
     }
 
-    Iterable<SNode> lines = ListSequence.fromList(SNodeOperations.getNodeDescendants(lineContainer, CONCEPTS.Line$yC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.getContainingLink(it).isMultiple());
-      }
-    });
-    assert Sequence.fromIterable(lines).count() <= 1;
-    return Sequence.fromIterable(lines).first();
+    Iterable<SNode> lines = ListSequence.fromList(SNodeOperations.getNodeDescendants(lineContainer, CONCEPTS.Line$yC, false, new SAbstractConcept[]{})).where((it) -> !(SNodeOperations.getContainingLink(it).isMultiple()));
+    if (Sequence.fromIterable(lines).count() <= 1) {
+      return Sequence.fromIterable(lines).first();
+    } else {
+      return null;
+    }
   }
 
   /**

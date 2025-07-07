@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<product version="3" modelHash="-17osdvzyotrcyzw7wiwhbt0j0qg3hl6">
+  <files names="ClearLambdaLiteralHack.java:DeconstructingVariables.java:FunctionInheritance.java:LambdaLiteralStructure.java:LongAndUnsignedAsLiteral.java:MemberNavigationExpression.java:MigrateReceiverTypes.java:Migrate_MovePropertyUp_4.java:MigrationDescriptor.java:MoveControlStructureStatements.java:OptionalMemberModifiers.java:RemoveLocalPropertyTypeParameters.java:StringLiteralNewStructure.java" />
+</product>
+

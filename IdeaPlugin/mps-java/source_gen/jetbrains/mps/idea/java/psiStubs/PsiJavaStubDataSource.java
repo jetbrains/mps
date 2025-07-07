@@ -8,8 +8,6 @@ import jetbrains.mps.idea.java.psi.JavaPsiListener;
 import com.intellij.openapi.module.Module;
 import com.intellij.psi.PsiDirectory;
 import java.util.List;
-
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.persistence.DataSourceListener;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -39,15 +37,15 @@ public class PsiJavaStubDataSource extends DataSourceBase implements JavaFilesHo
 
   public void psiChanged(final JavaPsiListener.PsiEvent event) {
 
-    // this is a guard against the situation when our directory has been removed 
-    // we don't notify our listeners about anything in this case 
-    // they should be removed anyways 
+    // this is a guard against the situation when our directory has been removed
+    // we don't notify our listeners about anything in this case
+    // they should be removed anyways
     if (!(isValid())) {
       return;
     }
 
-    // we've been told something has changed in PSI 
-    // let's see what matters to us 
+    // we've been told something has changed in PSI
+    // let's see what matters to us
 
     PsiJavaStubEvent ourEvent = new OurEvent(event);
 
@@ -69,7 +67,7 @@ public class PsiJavaStubDataSource extends DataSourceBase implements JavaFilesHo
   }
 
   @Override
-  public void addListener(@NotNull DataSourceListener listener) {
+  public void addListener(DataSourceListener listener) {
     synchronized (LOCK) {
       if (ListSequence.fromList(myListeners).isEmpty()) {
         startListening();
@@ -79,7 +77,7 @@ public class PsiJavaStubDataSource extends DataSourceBase implements JavaFilesHo
   }
 
   @Override
-  public void removeListener(@NotNull DataSourceListener listener) {
+  public void removeListener(DataSourceListener listener) {
     synchronized (LOCK) {
       ListSequence.fromList(myListeners).removeElement(listener);
       if (ListSequence.fromList(myListeners).isEmpty()) {
@@ -106,7 +104,7 @@ public class PsiJavaStubDataSource extends DataSourceBase implements JavaFilesHo
     }
     return Sequence.fromIterable(Sequence.fromArray(myDirectory.getFiles())).ofType(PsiJavaFile.class).where(new IWhereFilter<PsiJavaFile>() {
       public boolean accept(PsiJavaFile it) {
-        return !((it instanceof PsiCompiledFile));
+        return !(it instanceof PsiCompiledFile);
       }
     });
   }
@@ -123,8 +121,8 @@ public class PsiJavaStubDataSource extends DataSourceBase implements JavaFilesHo
 
     /*package*/ OurEvent(JavaPsiListener.PsiEvent psiEvent) {
 
-      // here we fill our data structures based on psi event 
-      // we do filtering based on whether items are related to this data source (i.e. this psiDirectory) 
+      // here we fill our data structures based on psi event
+      // we do filtering based on whether items are related to this data source (i.e. this psiDirectory)
 
       for (PsiFileSystemItem fsItem : psiEvent.getRemoved()) {
         if (!(isOurJavaFile(fsItem))) {
@@ -144,8 +142,8 @@ public class PsiJavaStubDataSource extends DataSourceBase implements JavaFilesHo
       }
 
       for (JavaPsiListener.FSRename fsRename : psiEvent.getRenamed()) {
-        // FIXME the case when a java file was renamed to a non-java file is not handled 
-        // in this case we have to record the file as removed 
+        // FIXME the case when a java file was renamed to a non-java file is not handled
+        // in this case we have to record the file as removed
         if (!(isOurJavaFile(fsRename.item))) {
           continue;
         }

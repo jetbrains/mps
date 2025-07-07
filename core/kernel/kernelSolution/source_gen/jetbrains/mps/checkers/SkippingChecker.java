@@ -8,7 +8,12 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.util.Consumer;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
+import jetbrains.mps.progress.ProgressTask;
 
+/**
+ * Conditionally applies the checker passed as {@code origin} parameter to the constructor, based on 
+ * boolean value returned from the function {@code accept} passed as the second parameter.
+ */
 @GeneratedClass(node = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)/8195773907766032343", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
 public class SkippingChecker<O, I extends ReportItem> implements IAbstractChecker<O, I> {
   private IAbstractChecker<O, ? extends I> myOrigin;
@@ -19,8 +24,14 @@ public class SkippingChecker<O, I extends ReportItem> implements IAbstractChecke
   }
   @Override
   public void check(O toCheck, SRepository repository, Consumer<? super I> errorCollector, ProgressMonitor monitor) {
+    throw new UnsupportedOperationException();
+  }
+  @Override
+  public ProgressTask checkTask(final O toCheck, final SRepository repository, final Consumer<? super I> errorCollector) {
     if (myAccept.invoke(toCheck, repository)) {
-      myOrigin.check(toCheck, repository, errorCollector, monitor);
+      return myOrigin.checkTask(toCheck, repository, errorCollector);
+    } else {
+      return ProgressTask.nop();
     }
   }
 }

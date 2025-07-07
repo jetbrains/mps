@@ -18,10 +18,14 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.smodel.LanguageAspect;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -35,9 +39,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class ConceptDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
 
-  public static final SMethod<List<SNode>> getImmediateSuperconcepts_idhMuxyK2 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getImmediateSuperconcepts").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hMuxyK2").build();
-  public static final SMethod<List<SNode>> getAllMethodsInPriorityOrder_id7TwdR6lloFy = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getAllMethodsInPriorityOrder").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7TwdR6lloFy").build();
-  public static final SMethod<String> getDescriptionText_id69Qfsw3IqwE = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDescriptionText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("69Qfsw3IqwE").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<List<SNode>> getImmediateSuperconcepts_idhMuxyK2 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getImmediateSuperconcepts").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1222430305282L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
+  public static final SMethod<List<SNode>> getAllMethodsInPriorityOrder_id7TwdR6lloFy = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getAllMethodsInPriorityOrder").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9106339407519386338L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
+  public static final SMethod<String> getDescriptionText_id69Qfsw3IqwE = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDescriptionText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7094926192234047530L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getImmediateSuperconcepts_idhMuxyK2, getAllMethodsInPriorityOrder_id7TwdR6lloFy, getDescriptionText_id69Qfsw3IqwE);
 
@@ -47,23 +51,23 @@ public final class ConceptDeclaration__BehaviorDescriptor extends BaseBHDescript
   /*package*/ static List<SNode> getImmediateSuperconcepts_idhMuxyK2(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
     if (!(SNodeOperations.is(__thisNode__, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626")))) {
-      ListSequence.fromList(result).addElement((SLinkOperations.getTarget(__thisNode__, LINKS.extends$_Isg) == null ? SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626") : SLinkOperations.getTarget(__thisNode__, LINKS.extends$_Isg)));
+      ListSequence.fromList(result).addElement((SLinkOperations.getTarget(__thisNode__, LINKS.extends$_Isg) == null ? SPointerOperations.resolveNode(new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"), SNodeOperations.getModel(__thisNode__).getRepository()) : SLinkOperations.getTarget(__thisNode__, LINKS.extends$_Isg)));
     }
-    for (SNode interfaceConceptReference : SLinkOperations.getChildren(__thisNode__, LINKS.implements$u_P2)) {
-      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(interfaceConceptReference, LINKS.intfc$zM4e));
-    }
+    ListSequence.fromList(result).addSequence(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(__thisNode__, LINKS.implements$u_P2), LINKS.intfc$zM4e)).where(new NotNullWhereFilter()));
     return result;
   }
   /*package*/ static List<SNode> getAllMethodsInPriorityOrder_id7TwdR6lloFy(@NotNull SNode __thisNode__) {
     List<SNode> methods = ListSequence.fromList(new ArrayList<SNode>());
 
+    final SNode baseConceptDeclaration = SPointerOperations.resolveNode(new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"), SNodeOperations.getModel(__thisNode__).getRepository());
     // collect methods from extended concepts
     Set<SNode> extendedConcepts = SetSequence.fromSet(new HashSet<SNode>());
     SNode concept = __thisNode__;
     while ((concept != null) && !(SetSequence.fromSet(extendedConcepts).contains(concept))) {
       SetSequence.fromSet(extendedConcepts).addElement(concept);
-      ListSequence.fromList(methods).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspect_id7g4OXB0ykew.invoke(concept, LanguageAspect.BEHAVIOR), CONCEPTS.ConceptBehavior$2), LINKS.method$w_in)));
-      concept = ((SLinkOperations.getTarget(__thisNode__, LINKS.extends$_Isg) != null) ? SLinkOperations.getTarget(__thisNode__, LINKS.extends$_Isg) : SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"));
+      SModel bma = SModuleOperations.getAspect(SNodeOperations.getModel(concept).getModule(), "behavior");
+      ListSequence.fromList(methods).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspect_id7g4OXB0yku$.invoke(concept, bma), CONCEPTS.ConceptBehavior$2), LINKS.method$w_in)));
+      concept = ((SLinkOperations.getTarget(__thisNode__, LINKS.extends$_Isg) != null) ? SLinkOperations.getTarget(__thisNode__, LINKS.extends$_Isg) : baseConceptDeclaration);
     }
 
     // collect methods from implemented interfaces
@@ -134,8 +138,8 @@ public final class ConceptDeclaration__BehaviorDescriptor extends BaseBHDescript
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink extends$_Isg = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
-    /*package*/ static final SReferenceLink intfc$zM4e = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
     /*package*/ static final SContainmentLink implements$u_P2 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
+    /*package*/ static final SReferenceLink intfc$zM4e = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
     /*package*/ static final SContainmentLink method$w_in = MetaAdapterFactory.getContainmentLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b25L, "method");
   }
 

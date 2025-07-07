@@ -56,7 +56,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "$CALL-SITE$");
     editorCell.setCellId("Constant_qcl6lb_a0");
     Style style = new StyleImpl();
-    new macroStartStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new macroStartStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     if (true) {
       editorCell.getStyle().set(StyleAttributes.FOCUS_POLICY, FocusPolicy.ATTRACTS_FOCUS);
@@ -71,7 +71,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
     EditorCell editorCell = getUpdateSession().getAttributedCell(AttributeKind.NODE, myNode);
     Style style = new StyleImpl();
-    new nodeUnderMacroStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new nodeUnderMacroStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     return editorCell;
   }

@@ -18,7 +18,6 @@ import jetbrains.mps.smodel.adapter.structure.types.SPrimitiveTypes;
 import jetbrains.mps.references.Reference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.util.annotation.ToRemove;
 
 @GeneratedClass(node = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)/6599163591527298519", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
 public class SPropertyOperations {
@@ -277,18 +276,27 @@ public class SPropertyOperations {
     return (SEnumerationLiteral) value;
   }
 
-  @Deprecated
-  @ToRemove(version = 19.2)
+  /**
+   * 
+   * @deprecated 
+   */
+  @Deprecated(since = "19.2", forRemoval = true)
   public static String castEnumString(@Nullable Object value) {
     return castString(getRawValueFromLiteral(value));
   }
-  @Deprecated
-  @ToRemove(version = 19.2)
+  /**
+   * 
+   * @deprecated 
+   */
+  @Deprecated(since = "19.2", forRemoval = true)
   public static boolean castEnumBoolean(@Nullable Object value) {
     return castBoolean(getRawValueFromLiteral(value));
   }
-  @Deprecated
-  @ToRemove(version = 19.2)
+  /**
+   * 
+   * @deprecated 
+   */
+  @Deprecated(since = "19.2", forRemoval = true)
   public static int castEnumInteger(@Nullable Object value) {
     return castInteger(getRawValueFromLiteral(value));
   }

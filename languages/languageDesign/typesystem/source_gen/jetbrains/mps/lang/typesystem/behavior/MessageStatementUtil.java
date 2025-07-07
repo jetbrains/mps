@@ -6,7 +6,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.util.StringUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -24,15 +23,13 @@ public class MessageStatementUtil {
   private static final int MAX_LENGTH = 20;
 
   public static String generateNameFromExpression(SNode expr) {
-    List<SNode> descendants = Sequence.fromIterable(stringDescendants(expr)).toListSequence();
+    List<SNode> descendants = Sequence.fromIterable(stringDescendants(expr)).toList();
     if (ListSequence.fromList(descendants).isEmpty()) {
       return null;
     }
-    return convertToCamelCaseNameString(ListSequence.fromList(descendants).foldLeft("", new ILeftCombinator<SNode, String>() {
-      public String combine(String s, SNode it) {
-        String value = SPropertyOperations.getString(it, PROPS.value$w7MM);
-        return s + " " + ((value == null ? "" : StringUtil.unescapeJavaString(value)));
-      }
+    return convertToCamelCaseNameString(ListSequence.fromList(descendants).foldLeft("", (String s, SNode it) -> {
+      String value = SPropertyOperations.getString(it, PROPS.value$w7MM);
+      return s + " " + ((value == null ? "" : StringUtil.unescapeJavaString(value)));
     }));
   }
 

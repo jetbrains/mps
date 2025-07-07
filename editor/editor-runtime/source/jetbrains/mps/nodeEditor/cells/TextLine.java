@@ -39,7 +39,9 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.font.TextAttribute;
-import java.util.Collections;
+import java.text.AttributedCharacterIterator.Attribute;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 public class TextLine {
@@ -184,6 +186,9 @@ public class TextLine {
   }
 
   private void updateStyle(Set<StyleAttribute> attributes) {
+    myStrikeOut = myStyle.get(StyleAttributes.STRIKE_OUT);
+    myUnderlined = myStyle.get(StyleAttributes.UNDERLINED);
+
     if (attributes == null
         || attributes.contains(StyleAttributes.FONT_SIZE)
         || attributes.contains(StyleAttributes.FONT_STYLE)
@@ -203,10 +208,15 @@ public class TextLine {
       fontSize = myEditorComponentSettings.getFontSizeScaled(fontSize);
 
       final Font font = FontRegistry.getInstance().getFont(family, style, fontSize);
-      if (ApplicationManager.getApplication() != null) {
-        myFont = EditorColorsManager.getInstance().getGlobalScheme().getFontPreferences().useLigatures() ?
-                 font.deriveFont(Collections.singletonMap(TextAttribute.LIGATURES, TextAttribute.LIGATURES_ON)) : font;
+
+      Map<Attribute, Object> fontAttributes = new HashMap<>();
+      if (ApplicationManager.getApplication() != null && EditorColorsManager.getInstance().getGlobalScheme().getFontPreferences().useLigatures()) {
+        fontAttributes.put(TextAttribute.LIGATURES, TextAttribute.LIGATURES_ON);
       }
+      if (myStrikeOut) {
+        fontAttributes.put(TextAttribute.STRIKETHROUGH, TextAttribute.STRIKETHROUGH_ON);
+      }
+      myFont = fontAttributes.isEmpty() ? font : font.deriveFont(fontAttributes);
       myFontMetrics = myEditorComponentSettings.getFontMetrics(family, style, fontSize);
       myFontCorrectionRightGap = FontRegistry.getInstance().isFakeItalic(family, style) ? 1 : 0;
       myFontCorrectionTextShift = (style & Font.ITALIC) > 0 ? -1 : 0;
@@ -218,8 +228,6 @@ public class TextLine {
     myPaddingBottom = getVerticalInternalInset(myStyle.get(StyleAttributes.PADDING_BOTTOM));
 
     myControlOvered = myStyle.get(StyleAttributes.CONTROL_OVERED_REFERENCE);
-    myStrikeOut = myStyle.get(StyleAttributes.STRIKE_OUT);
-    myUnderlined = myStyle.get(StyleAttributes.UNDERLINED);
 
     myTextColor = myStyle.get(StyleAttributes.TEXT_COLOR);
     myNullTextColor = myStyle.get(StyleAttributes.NULL_TEXT_COLOR);
@@ -490,18 +498,12 @@ public class TextLine {
       if (isUnderlined()) {
         g.drawLine(shiftX + getPaddingLeft(), baselineY + 1, selectionStartX, baselineY + 1);
       }
-      if (isStrikeOut()) {
-        drawStrikeOutLine(g, shiftX + getPaddingLeft(), selectionStartX, centerLineY);
-      }
     }
 
     if (getEndTextSelectionPosition() <= myText.length()) {
       g.drawString(myText.substring(getEndTextSelectionPosition()), selectionEndX + myFontCorrectionTextShift, baselineY);
       if (isUnderlined()) {
         g.drawLine(selectionEndX, baselineY + 1, endLineX, baselineY + 1);
-      }
-      if (isStrikeOut()) {
-        drawStrikeOutLine(g, selectionEndX, endLineX, centerLineY);
       }
     }
 
@@ -520,9 +522,6 @@ public class TextLine {
       if (isUnderlined()) {
         g.drawLine(selectionStartX, baselineY + 1, selectionEndX, baselineY + 1);
       }
-      if (isStrikeOut()) {
-        drawStrikeOutLine(g, selectionStartX, selectionEndX, centerLineY);
-      }
 
       g.setColor(textColor);
     }
@@ -530,10 +529,6 @@ public class TextLine {
     if (myShowCaret) {
       drawCaret(g, shiftX, shiftY);
     }
-  }
-
-  private void drawStrikeOutLine(Graphics g, int beginX, int endX, int constY) {
-    g.drawLine(beginX, constY + 1, endX, constY + 1);
   }
 
   private void drawCaret(Graphics g, int shiftX, int shiftY) {

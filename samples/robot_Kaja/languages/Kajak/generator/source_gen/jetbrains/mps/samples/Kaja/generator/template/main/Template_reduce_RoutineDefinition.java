@@ -42,7 +42,7 @@ public class Template_reduce_RoutineDefinition extends TemplateDeclarationBase {
     TemplateContext context1 = context.subContext("routines");
     final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
     {
-      SNodeAccessUtil.setPropertyValue(tnode2, myProperties[0], QueriesGenerated.propertyMacro_GetValue_15_0(new PropertyMacroContext(context1, "bar", propertyMacro_9qqvr5_c0a2a0a4a6)));
+      SNodeAccessUtil.setPropertyValue(tnode2, myProperties[0], QueriesGenerated.propertyMacro_GetValue_15_0(new PropertyMacroContext(context1, "bar", propertyMacro)));
       TemplateContext context2 = context1.subContext();
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
@@ -58,8 +58,8 @@ public class Template_reduce_RoutineDefinition extends TemplateDeclarationBase {
           TemplateContext context3 = context2.subContext();
           {
             Collection<SNode> tlist6 = null;
-            final SNode copySrcInput6 = QueriesGenerated.sourceNodeQuery_15_0(new SourceSubstituteMacroNodeContext(context3, copySrcMacro_9qqvr5_b0a0c0b0b0e0e0g));
-            tlist6 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput6), copySrcMacro_9qqvr5_b0a0c0b0b0e0e0g, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039907017", context3);
+            final SNode copySrcInput6 = QueriesGenerated.sourceNodeQuery_15_0(new SourceSubstituteMacroNodeContext(context3, copySrcMacro));
+            tlist6 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput6), copySrcMacro, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039907017", context3);
             environment.aggregate(tnode5, myAggregationLinks[2], tlist6);
           }
         }
@@ -106,6 +106,6 @@ public class Template_reduce_RoutineDefinition extends TemplateDeclarationBase {
       return rv;
     }
   }
-  private static final SNodePointer propertyMacro_9qqvr5_c0a2a0a4a6 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039701224");
-  private static final SNodePointer copySrcMacro_9qqvr5_b0a0c0b0b0e0e0g = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039907031");
+  private static final SNodePointer propertyMacro = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039701224");
+  private static final SNodePointer copySrcMacro = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039907031");
 }

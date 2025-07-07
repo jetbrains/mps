@@ -4,20 +4,17 @@ package jetbrains.mps.ide.platform.watching;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.vfs.newvfs.BulkFileListener;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import com.intellij.openapi.vfs.newvfs.events.VFileEvent;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.ide.vfs.MPSSavingRequestor;
 import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import java.util.function.Supplier;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.newvfs.events.VFileContentChangeEvent;
 import com.intellij.openapi.vfs.newvfs.events.VFileCreateEvent;
@@ -27,7 +24,7 @@ import com.intellij.openapi.vfs.newvfs.events.VFileMoveEvent;
 
 @GeneratedClass(node = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)/8474613039627890958", model = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)")
 public final class FSChangesWatcher implements BulkFileListener {
-  private static final Logger LOG = LogManager.getLogger(FSChangesWatcher.class);
+  private static final Logger LOG = Logger.getLogger(FSChangesWatcher.class);
 
   public FSChangesWatcher() {
   }
@@ -38,40 +35,34 @@ public final class FSChangesWatcher implements BulkFileListener {
     if (application.isDisposed()) {
       return;
     }
-    final List<VFileEvent> eventsOfInterest = ListSequence.fromList(events).where(new IWhereFilter<VFileEvent>() {
-      public boolean accept(VFileEvent it) {
-        return !(VirtualFileUtils.isFileEventFromMPS(it)) && !(NodeVirtualFileSystem.isFromNodeFileSystem(it));
-      }
-    }).ofType(VFileEvent.class).toListSequence();
+    final List<VFileEvent> eventsOfInterest = ListSequence.fromList(events).where((it) -> !(it.getRequestor() instanceof MPSSavingRequestor) && !(NodeVirtualFileSystem.isFromNodeFileSystem(it))).ofType(VFileEvent.class).toList();
     if (ListSequence.fromList(eventsOfInterest).isEmpty()) {
       return;
     }
-    ApplicationManager.getApplication().getComponent(ReloadManager.class).runReload(getClass().getName(), new Supplier<FileProcessor>() {
+    ReloadManager.getInstance().runReload(getClass().getName(), new Supplier<FileProcessor>() {
       public FileProcessor get() {
         IdeaFileSystem ideaFileSystem = ApplicationManager.getApplication().getComponent(IdeaFileSystem.class);
         return new FileProcessor(ideaFileSystem);
       }
     }, new ReloadAction<FileProcessor>() {
       public void runAction(final FileProcessor participant) {
-        ListSequence.fromList(eventsOfInterest).visitAll(new IVisitor<VFileEvent>() {
-          public void visit(VFileEvent it) {
-            if (LOG.isDebugEnabled()) {
-              LOG.debug("Got event " + it);
-            }
-            processAfterEvent(it, participant);
+        ListSequence.fromList(eventsOfInterest).visitAll((it) -> {
+          if (LOG.isDebugLevel()) {
+            LOG.debug("Got event " + it);
           }
+          processAfterEvent(it, participant);
         });
       }
     });
   }
 
   private void processAfterEvent(VFileEvent event, FileProcessor processor) {
-    if (!((event.getFileSystem() instanceof LocalFileSystem))) {
+    if (!(event.getFileSystem() instanceof LocalFileSystem)) {
       return;
     }
 
     String path = event.getPath();
-    if (LOG.isDebugEnabled()) {
+    if (LOG.isDebugLevel()) {
       LOG.debug("Process after event for " + path);
     }
 

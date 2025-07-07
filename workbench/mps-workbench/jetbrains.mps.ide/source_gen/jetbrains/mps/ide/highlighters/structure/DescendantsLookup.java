@@ -17,8 +17,6 @@ import java.util.LinkedHashSet;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.ide.highlighters.behavior.EmptyProgressMonitorWithCancellable;
 import jetbrains.mps.ide.findusages.view.FindUtils;
-import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder;
-import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
@@ -54,7 +52,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       if (SetSequence.fromSet(overrides).isEmpty()) {
         return null;
       }
-      return new ConceptHasSubconceptsEditorMessage(myConcept, SetSequence.fromSet(overrides).toListSequence(), myOwner);
+      return new ConceptHasSubconceptsEditorMessage(myConcept, SetSequence.fromSet(overrides).toList(), myOwner);
     }
   }
 
@@ -66,20 +64,16 @@ import org.jetbrains.mps.openapi.language.SConcept;
         return super.isCanceled();
       }
     };
-    FindUtils.searchForResults(monitor, new IFinder.FindCallback() {
-      public void onUsageFound(@NotNull SearchResult<?> searchResult) {
-        SNode nodeParam = (SNode) searchResult.getObject();
-        new _FunctionTypes._void_P1_E0<SNode>() {
-          public void invoke(SNode res) {
-            if (SNodeOperations.isInstanceOf(res, CONCEPTS.AbstractConceptDeclaration$KA)) {
-              SetSequence.fromSet(result).addElement(SNodeOperations.cast(res, CONCEPTS.AbstractConceptDeclaration$KA));
-              if (SetSequence.fromSet(result).count() > myMaxResultsToCollect) {
-                monitor.cancel();
-              }
-            }
+    FindUtils.searchForResults(monitor, (searchResult) -> {
+      SNode nodeParam = (SNode) searchResult.getObject();
+      ((_FunctionTypes._void_P1_E0<SNode>) (SNode res) -> {
+        if (SNodeOperations.isInstanceOf(res, CONCEPTS.AbstractConceptDeclaration$KA)) {
+          SetSequence.fromSet(result).addElement(SNodeOperations.cast(res, CONCEPTS.AbstractConceptDeclaration$KA));
+          if (SetSequence.fromSet(result).count() > myMaxResultsToCollect) {
+            monitor.cancel();
           }
-        }.invoke(nodeParam);
-      }
+        }
+      }).invoke(nodeParam);
     }, new SearchQuery(myConcept, myScope), FindUtils.getFinder("jetbrains.mps.lang.structure.findUsages.ConceptDescendants_Finder"));
     return result;
   }

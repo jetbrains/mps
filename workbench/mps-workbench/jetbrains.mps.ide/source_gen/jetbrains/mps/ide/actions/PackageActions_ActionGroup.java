@@ -11,6 +11,7 @@ import jetbrains.mps.workbench.action.ApplicationPlugin;
 public class PackageActions_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.actions.PackageActions_ActionGroup";
   public static final String LABEL_ID_newActions = ID + "newActions";
+  public static final String LABEL_ID_deletion = ID + "deletion";
 
   public PackageActions_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("PackageActions", ID, plugin);
@@ -19,7 +20,7 @@ public class PackageActions_ActionGroup extends GeneratedActionGroup {
     addNamedAnchor(LABEL_ID_newActions);
     PackageActions_ActionGroup.this.addSeparator();
     PackageActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.PasteNode_Action");
-    PackageActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.DeleteNode_Action");
+    addNamedAnchor(LABEL_ID_deletion);
     PackageActions_ActionGroup.this.addSeparator();
     PackageActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.RenamePackage_Action");
   }

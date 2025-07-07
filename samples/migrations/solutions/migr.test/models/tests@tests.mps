@@ -2,7 +2,7 @@
 <model ref="r:6e4b2d34-6979-4587-970a-72cdf9e24f7c(migr.test.tests@tests)">
   <persistence version="9" />
   <languages>
-    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="5" />
+    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="6" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
     <use id="9de7c5ce-ea6f-4fb4-a7ba-45e62b53cbad" name="decl" version="2" />
     <use id="d3d2b6e3-a4b3-43d5-bb29-420d39fa86ab" name="ref" version="2" />
@@ -34,13 +34,13 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
       <concept id="8703179436978668945" name="jetbrains.mps.lang.core.structure.MigrationDataAnnotation" flags="ng" index="1tnI87">
         <child id="6807933448470330574" name="dataNode" index="2sU5YC" />
       </concept>
-      <concept id="8703179436979359251" name="jetbrains.mps.lang.core.structure.MigrationAnnotation" flags="ng" index="1tp6A5">
+      <concept id="8703179436979359251" name="jetbrains.mps.lang.core.structure.MigrationAnnotation" flags="ngI" index="1tp6A5">
         <property id="8703179436979359252" name="createdByScript" index="1tp6A2" />
       </concept>
     </language>
@@ -116,7 +116,7 @@
     <node concept="2fuMXU" id="5j9sOBrZV3n" role="2fuLKQ" />
   </node>
   <node concept="2XOHcx" id="5m50vnflPpQ">
-    <property role="2XOHcw" value="${module}/../.." />
+    <property role="2XOHcw" value="${project_home}" />
   </node>
 </model>
 

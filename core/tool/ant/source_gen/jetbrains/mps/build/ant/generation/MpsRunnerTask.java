@@ -5,8 +5,6 @@ package jetbrains.mps.build.ant.generation;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.build.ant.MpsLoadTask;
 import jetbrains.mps.tool.common.MpsRunnerProperties;
-import jetbrains.mps.build.ant.ModuleJarDataType;
-import java.io.File;
 
 @GeneratedClass(node = "r:f80180a9-2bac-487b-83fc-3ef65f97aea3(jetbrains.mps.build.ant.generation)/4271560773252437472", model = "r:f80180a9-2bac-487b-83fc-3ef65f97aea3(jetbrains.mps.build.ant.generation)")
 public class MpsRunnerTask extends MpsLoadTask {
@@ -16,14 +14,8 @@ public class MpsRunnerTask extends MpsLoadTask {
     super("jetbrains.mps.build.mps.runner.runtime.MpsRunnerWorker");
     // XXX JFTR, here we don't care about worker classpath, j.m.build.mps.runner.runtime solution, as it's part of j.m.core IDEA plugin (see mpsCore import of mpsBootstrap/ant)
     myProperties = new MpsRunnerProperties(myWhatToDo);
-  }
-
-  public void addConfiguredLibrary(ModuleJarDataType jar) {
-    File file = jar.getFile();
-    if (file == null) {
-      return;
-    }
-    addLibraryJar(file);
+    setOpenPackages(true);
+    setJnaLibraryPath(DEFAULT_JNA_LIBRARY_PATH);
   }
 
   public String getSolution() {

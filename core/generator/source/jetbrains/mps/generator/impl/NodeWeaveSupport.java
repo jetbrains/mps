@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,30 +21,32 @@ import jetbrains.mps.generator.runtime.ApplySink;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.WeavingWithAnchor;
 import jetbrains.mps.textgen.trace.TracingUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Weave support implementation
- * FIXME refactor to avoid subclass in CallSiteImpl
+ *
  * @author Artem Tikhomirov
  * @since 3.3
  */
-@ToRemove(version = 0)  // just a gentle reminder to refactor
-public abstract class NodeWeaveSupport implements ApplySink {
-  private TemplateContext myTemplateContext;
+/*package*/ final class NodeWeaveSupport implements ApplySink {
+  private final TemplateContext myTemplateContext;
   private final SNode myContextParentNode;
   private final WeavingWithAnchor myAnchorQuery;
   private final SNodeReference myTemplateNode;
   private final TemplateGenerator myGenerator;
+  private final ArrayList<SNode> myWeaved = new ArrayList<>();
 
-  protected NodeWeaveSupport(@NotNull TemplateContext templateContext, @NotNull SNode outputContextNode,
+  /*package*/ NodeWeaveSupport(@NotNull TemplateContext templateContext, @NotNull SNode outputContextNode,
                                @Nullable WeavingWithAnchor anchorQuery, @NotNull SNodeReference templateNodeReference,
                                @NotNull TemplateGenerator generator) {
     myTemplateContext = templateContext;
@@ -54,7 +56,30 @@ public abstract class NodeWeaveSupport implements ApplySink {
     myGenerator = generator;
   }
 
-  protected void weaveNode(@NotNull SContainmentLink childRole, @NotNull SNode outputNodeToWeave) throws GenerationFailureException {
+  @Override
+  public void add(SNode node) throws GenerationFailureException {
+    throw new TemplateProcessingFailureException(myTemplateNode, "Templates with fragments (TF) at the top are not supported for weaving");
+  }
+
+  @Override
+  public void add(SContainmentLink aggregation, SNode outputNodeToWeave) throws GenerationFailureException {
+    myWeaved.add(outputNodeToWeave);
+    weaveNode(aggregation, outputNodeToWeave);
+  }
+
+  @Override
+  public void add(SContainmentLink aggregation, Collection<SNode> outputNodesToWeave) throws GenerationFailureException {
+    myWeaved.addAll(outputNodesToWeave);
+    for (SNode outputNodeToWeave : outputNodesToWeave) {
+      weaveNode(aggregation, outputNodeToWeave);
+    }
+  }
+
+  List<SNode> weavedNodes() {
+    return myWeaved;
+  }
+
+  private void weaveNode(@NotNull SContainmentLink childRole, @NotNull SNode outputNodeToWeave) throws GenerationFailureException {
     SNode contextParentNode = myContextParentNode;
     SNode anchor = myAnchorQuery == null ? null : myAnchorQuery.getAnchorNode(myTemplateContext, contextParentNode, outputNodeToWeave);
     if (anchor != null && anchor.getParent() != contextParentNode) {

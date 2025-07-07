@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@ import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.SmartReferentUtil;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.StringUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -138,8 +137,7 @@ public class NodePresentationUtil {
    *
    * @deprecated use {@link #matchingText(SAbstractConcept)}  instead.
    */
-  @Deprecated
-  @ToRemove(version = 3.5)
+@Deprecated(since = "3.5", forRemoval = true)
   public static String matchingText(SAbstractConcept concept, boolean referentPresentation) {
     return matchingText(concept);
   }
@@ -149,8 +147,7 @@ public class NodePresentationUtil {
    * @deprecated This method provides a visible matching text instead of real matching text, that might be confusing.
    *             Should be replaced with {@link #visibleMatchingText(SNode, SNode)}.
    */
-  @Deprecated
-  @ToRemove(version = 3.5)
+@Deprecated(since = "3.5", forRemoval = true)
   public static String matchingText(SNode node) {
     return visibleMatchingText(node, null);
   }
@@ -160,8 +157,7 @@ public class NodePresentationUtil {
    * @deprecated This method provides a visible matching text instead of real matching text, that might be confusing.
    *             Should be replaced with {@link #visibleMatchingText(SNode, SNode)}.
    */
-  @Deprecated
-  @ToRemove(version = 3.5)
+@Deprecated(since = "3.5", forRemoval = true)
   public static String matchingText(SNode node, boolean referent_presentation) {
     return visibleMatchingText(node, null);
   }
@@ -170,8 +166,7 @@ public class NodePresentationUtil {
    *
    * @deprecated use {@link #matchingText(SNode, SNode)}, {@link #matchingText(SNode, SNode, boolean)} or {@link #visibleMatchingText(SNode, SNode)}
    */
-  @Deprecated
-  @ToRemove(version = 3.5)
+@Deprecated(since = "3.5", forRemoval = true)
   public static String matchingText(SNode node, boolean referent_presentation, boolean visible) {
     return matchingText(node, null, visible);
   }
@@ -216,8 +211,7 @@ public class NodePresentationUtil {
   /**
    * @deprecated use {@link #descriptionText(SAbstractConcept)} instead
    */
-  @Deprecated
-  @ToRemove(version = 3.5)
+@Deprecated(since = "3.5", forRemoval = true)
   public static String descriptionText(SAbstractConcept concept, boolean referentPresentation) {
     return descriptionText(concept);
   }
@@ -229,8 +223,7 @@ public class NodePresentationUtil {
   /**
    * @deprecated use {@link #descriptionText(SNode)} instead.
    */
-  @Deprecated
-  @ToRemove(version = 3.5)
+@Deprecated(since = "3.5", forRemoval = true)
   public static String descriptionText(SNode node, boolean referent_presentation) {
     return descriptionText(node, null);
   }
@@ -260,19 +253,27 @@ public class NodePresentationUtil {
     return containmentLink.getName() + " (" + NameUtil.compactNodeFQName(node.getContainingRoot()) + ")";
   }
 
+  /**
+   * @deprecated single use for deprecated property override doesn't justify existence of this odd logic
+   */
+  @Deprecated(since = "2023.1", forRemoval = true)
   public static String getAliasOrConceptName(SNode node) {
-    String alias = SNodeUtil.getConceptAlias(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.getConceptDeclaration(node));
-    if (alias != null) {
+    final SConcept c = node.getConcept();
+    String alias = c.getConceptAlias();
+    if (alias != null && !alias.isBlank()) {
       return alias;
     }
-
-    return node.getConcept().getName();
+    return c.getName();
   }
 
+  /**
+   * @deprecated single use doesn't justify existence of this odd logic
+   */
+  @Deprecated(since = "2023.1", forRemoval = true)
   public static String getRoleInParentOrConceptName(SNode node) {
-    String role = node.getRoleInParent();
+    SContainmentLink role = node.getContainmentLink();
     if (role != null) {
-      return role;
+      return role.getName();
     }
     if (SNodeUtil.isInstanceOfConceptDeclaration(node) && node.getName() != null) {
       return node.getName();

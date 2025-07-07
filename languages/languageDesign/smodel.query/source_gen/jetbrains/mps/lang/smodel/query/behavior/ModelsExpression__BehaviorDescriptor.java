@@ -23,7 +23,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class ModelsExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x5f41efb675beab2dL, "jetbrains.mps.lang.smodel.query.structure.ModelsExpression");
 
-  public static final SMethod<Iterable<SConcept>> getSupportedParameters_id3J6h25QXCDW = new SMethodBuilder<Iterable<SConcept>>(new SJavaCompoundTypeImpl((Class<Iterable<SConcept>>) ((Class) Object.class))).name("getSupportedParameters").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3J6h25QXCDW").build();
+  public static final SMethod<Iterable<SConcept>> getSupportedParameters_id3J6h25QXCDW = new SMethodBuilder<Iterable<SConcept>>(new SJavaCompoundTypeImpl((Class<Iterable<SConcept>>) ((Class) Object.class))).name("getSupportedParameters").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4307205004146936444L).languageId(0x8c346f0d90c6e75aL, 0x1a8554c4eb8443baL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getSupportedParameters_id3J6h25QXCDW);
 
@@ -31,7 +31,7 @@ public final class ModelsExpression__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static Iterable<SConcept> getSupportedParameters_id3J6h25QXCDW(@NotNull SAbstractConcept __thisConcept__) {
-    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.QueryParameterScope_old$ZG, CONCEPTS.QueryParameterScope$YW, CONCEPTS.QueryParameterIncludeReadOnly_old$kr);
+    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.QueryParameterScope$YW, CONCEPTS.QueryParameterIncludeReadOnly_old$kr);
   }
 
   /*package*/ ModelsExpression__BehaviorDescriptor() {
@@ -81,7 +81,6 @@ public final class ModelsExpression__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept QueryParameterScope_old$ZG = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc644217618ed2fL, "jetbrains.mps.lang.smodel.query.structure.QueryParameterScope_old");
     /*package*/ static final SConcept QueryParameterScope$YW = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a3L, "jetbrains.mps.lang.smodel.query.structure.QueryParameterScope");
     /*package*/ static final SConcept QueryParameterIncludeReadOnly_old$kr = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc644217618ec86L, "jetbrains.mps.lang.smodel.query.structure.QueryParameterIncludeReadOnly_old");
   }

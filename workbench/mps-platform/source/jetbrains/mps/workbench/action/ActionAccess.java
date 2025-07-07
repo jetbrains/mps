@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,12 +18,11 @@ package jetbrains.mps.workbench.action;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.UndoRunnable;
-import org.apache.log4j.Logger;
 
 /**
  * This interface is responsible for getting proper model access for the action.
@@ -96,7 +95,7 @@ public interface ActionAccess {
     public void runWithAccess(AnActionEvent event, Runnable execute) {
       Project project = AnAction.getEventProject(event);
       if (project != null && !project.isDisposed()) {
-        Logger.getLogger(ActionAccess.class).warn(String.format("Action %s needs a command but is enabled for executing without project.", getClass().getName()));
+        Logger.getLogger(ActionAccess.class).warning(String.format("Action %s needs a command but is enabled for executing without project.", getClass().getName()));
         ProjectHelper.getModelAccess(project).executeCommand(new UndoRunnable.Base(event.getPresentation().getText(), null) {
           @Override
           public void run() {

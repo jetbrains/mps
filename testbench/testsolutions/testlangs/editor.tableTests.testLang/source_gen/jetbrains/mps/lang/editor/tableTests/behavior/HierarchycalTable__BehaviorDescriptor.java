@@ -27,8 +27,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class HierarchycalTable__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x760c9302beb3e1d1L, "jetbrains.mps.lang.editor.tableTests.structure.HierarchycalTable");
 
-  public static final SMethod<Integer> getInitialColumnCount_id1653mnvAgqE = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getInitialColumnCount").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1653mnvAgqE").build();
-  public static final SMethod<Integer> getInitialRowCount_id1653mnvAgrI = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getInitialRowCount").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1653mnvAgrI").build();
+  public static final SMethod<Integer> getInitialColumnCount_id1653mnvAgqE = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getInitialColumnCount").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498026L).languageId(0xbd67f4cc27337152L, 0xdf8799e7254a406fL).build2();
+  public static final SMethod<Integer> getInitialRowCount_id1653mnvAgrI = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getInitialRowCount").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498094L).languageId(0xbd67f4cc27337152L, 0xdf8799e7254a406fL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInitialColumnCount_id1653mnvAgqE, getInitialRowCount_id1653mnvAgrI);
 

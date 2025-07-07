@@ -9,7 +9,6 @@ import java.util.Collections;
 import jetbrains.mps.baseLanguage.lightweightdsl.util.DSLDescriptorUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.lightweightdsl.behavior.DSLDescriptor__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.lightweightdsl.behavior.DSLClassMember__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -26,13 +25,11 @@ public class SubstituteUtil {
       return Collections.emptyList();
     }
 
-    return Sequence.fromIterable(SNodeOperations.ofConcept(DSLDescriptor__BehaviorDescriptor.getClassLikeMembers_id2iCqkkxuhoj.invoke(descr), SNodeOperations.asSConcept(memberConcept))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode md) {
-        if ((boolean) DSLClassMember__BehaviorDescriptor.isMultiple_id1QReUKIGS9B.invoke(md)) {
-          return true;
-        }
-        return Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(md, classNode)).isEmpty();
+    return Sequence.fromIterable(SNodeOperations.ofConcept(DSLDescriptor__BehaviorDescriptor.getClassLikeMembers_id2iCqkkxuhoj.invoke(descr), SNodeOperations.asSConcept(memberConcept))).where((md) -> {
+      if ((boolean) DSLClassMember__BehaviorDescriptor.isMultiple_id1QReUKIGS9B.invoke(md)) {
+        return true;
       }
+      return Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(md, classNode)).isEmpty();
     });
   }
 

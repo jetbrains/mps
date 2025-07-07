@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<solution name="secretCompartmentLanguage.sandbox" uuid="a86a20c0-6fca-490d-9ad5-e66a13a10beb" moduleVersion="0" compileInMPS="true">
+<solution name="secretCompartmentLanguage.sandbox" uuid="a86a20c0-6fca-490d-9ad5-e66a13a10beb" moduleVersion="0">
   <models>
     <modelRoot contentPath="${module}" type="default">
       <sourceRoot location="jetbrains" />
     </modelRoot>
   </models>
   <facets>
-    <facet type="java">
+    <facet type="java" compile="mps" classes="mps" ext="no">
       <classes generated="true" path="${module}/classes_gen" />
     </facet>
   </facets>
-  <sourcePath />
   <dependencies>
     <dependency reexport="true">6986543d-8218-4ebf-a2e9-565e5049c1ce(jetbrains.mps.samples.secretCompartmentLanguage)</dependency>
   </dependencies>

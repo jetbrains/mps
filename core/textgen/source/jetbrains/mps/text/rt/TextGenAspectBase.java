@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,9 +23,4 @@ import org.jetbrains.annotations.NotNull;
  * @since 3.3
  */
 public abstract class TextGenAspectBase implements TextGenAspectDescriptor {
-
-  public void breakdownToUnits(@NotNull TextGenModelOutline modelOutline) {
-    // no-op by default, descriptors generated with MPS 3.3 override, if any root textgen present
-    // FIXME likely the method shall move into TextGenAspectDescriptor
-  }
 }

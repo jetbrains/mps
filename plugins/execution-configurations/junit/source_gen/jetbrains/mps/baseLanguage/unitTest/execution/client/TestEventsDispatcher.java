@@ -4,17 +4,21 @@ package jetbrains.mps.baseLanguage.unitTest.execution.client;
 
 import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.process.ProcessEvent;
-import jetbrains.mps.baseLanguage.unitTest.execution.server.DefaultTestExecutor;
+import jetbrains.mps.baselanguage.unitTest.execution.launcher.DefaultTestExecutor;
 import com.intellij.openapi.util.Key;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestEventMessage;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestRawEvent;
 
 /**
+ * Redundant MITM anti-pattern. To be refactored away.
+ * 
  * Updates {@link jetbrains.mps.baseLanguage.unitTest.execution.client.TestRunState } with {@link jetbrains.mps.baseLanguage.unitTest.execution.TestEventMessage } and other events from a futher unspecified source (usually a listener of a test execution process)
  */
+@Deprecated(forRemoval = true)
 public final class TestEventsDispatcher {
   private final TestRunState myState;
 
+  @Deprecated
   public TestEventsDispatcher(@NotNull TestRunState testState) {
     myState = testState;
   }
@@ -45,10 +49,10 @@ public final class TestEventsDispatcher {
         myState.onTestFailure(event);
         break;
       case TestEventMessage.START_TESTRUN:
-        myState.onTestRunStarted();
+        myState.onTestRunStarted(event);
         break;
       case TestEventMessage.FINISH_TESTRUN:
-        myState.onTestRunFinished();
+        myState.onTestRunFinished(event);
         break;
       case TestEventMessage.ASSUMPTION_FAILURE_TEST_PREFIX:
         myState.onTestAssumptionFailure(event);

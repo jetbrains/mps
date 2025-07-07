@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class GenerationContextOp_UserObjectAccessBase__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b8fe60348L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_UserObjectAccessBase");
 
-  public static final SMethod<Boolean> isLValueInAssignment_idhIg3nxk = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLValueInAssignment").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hIg3nxk").build();
+  public static final SMethod<Boolean> isLValueInAssignment_idhIg3nxk = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLValueInAssignment").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1217892546644L).languageId(0xa3daae92af1e64d5L, 0xd7706f639be2479cL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLValueInAssignment_idhIg3nxk);
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,9 +30,7 @@ import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.util.CollectConsumer;
 import com.intellij.util.Consumer;
 import com.intellij.util.indexing.FileBasedIndex;
-import jetbrains.mps.extapi.persistence.FileDataSource;
-import jetbrains.mps.extapi.persistence.FolderDataSource;
-import jetbrains.mps.extapi.persistence.FolderSetDataSource;
+import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiProvider;
 import jetbrains.mps.idea.core.usages.IdeaSearchScope;
@@ -176,31 +174,10 @@ public class MPSJavaClassFinder extends PsiElementFinder {
       return;
     }
 
-    // Fix for MPS-19687 Import of Mps class in Java class breaks after any editing of Mps class.
-    // It would be better to use some single interface like FileSystemBasedDataSource, but its method
-    // getAffectedFiles() gives us only the folder in case of FolderDataSource, not the actual files
-    // Should consider changing it to return all _files_ not folders.
     DataSource dataSource = model.getSource();
     List<IFile> dataSourceFiles = new ArrayList<>();
-    if (dataSource instanceof FileDataSource) {
-      dataSourceFiles.add(((FileDataSource) dataSource).getFile());
-    } else if (dataSource instanceof FolderDataSource) {
-      FolderDataSource fds = (FolderDataSource) dataSource;
-      for (String stream : fds.getAvailableStreams()) {
-        dataSourceFiles.add(fds.getFile(stream));
-      }
-    } else if (dataSource instanceof FolderSetDataSource) {
-      for (IFile file : ((FolderSetDataSource) dataSource).getAffectedFiles()) {
-        if (file.getChildren() == null) {
-          continue;
-        }
-        for (IFile child : file.getChildren()) {
-          if (child.isDirectory()) {
-            continue;
-          }
-          dataSourceFiles.add(child);
-        }
-      }
+    if (dataSource instanceof FileSystemBasedDataSource) {
+      ((FileSystemBasedDataSource) dataSource).getAffectedFilesWithDirsExtracted().forEach(dataSourceFiles::add);
     }
 
     for (IFile iFile : dataSourceFiles) {

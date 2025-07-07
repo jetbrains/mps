@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -95,8 +95,6 @@ public final class CreateProjectWizard extends DialogWrapper {
 
   private TemplateItem myCurrentTemplateItem = null;
   private final MPSProjectTemplate.MPSProjectTemplateListener myTemplateListener = this::checkSettings;
-
-  private final ProjectFormatPanel myProjectFormatPanel = new ProjectFormatPanel();
 
   public CreateProjectWizard(@Nullable Project project) {
     super(project);
@@ -202,6 +200,10 @@ public final class CreateProjectWizard extends DialogWrapper {
 
     templatesGroups.addAll(Arrays.asList(ProjectTemplatesGroup.EP_NAME.getExtensions()));
 
+    // Note, although it's not mandated by API, present implementation of ProjectTemplatesGroup.getTemplates
+    // uses IDEA extension points with direct MPSProjectTemplate instantiation, i.e. template instances are the same
+    // for subsequent calls of Create Project Wizard, with values previously set and all UI elements initialized and
+    // kept in the memory. I don't know if it's intentional or not, just beware of the fact.
     for (ProjectTemplatesGroup templatesGroup : templatesGroups) {
       for (MPSProjectTemplate template : templatesGroup.getTemplates()) {
         templateItems.add(new TemplateItem(template, templatesGroup));
@@ -307,6 +309,7 @@ public final class CreateProjectWizard extends DialogWrapper {
         if (!Objects.equals(myValue, myProjectName.getText())) {
           myValue = myProjectName.getText();
           updateProjectPath();
+          checkSettings();
         }
       }
     });
@@ -376,7 +379,7 @@ public final class CreateProjectWizard extends DialogWrapper {
 
     if (myProjectName.getText().isEmpty()) {
       getOKAction().setEnabled(false);
-      setErrorText("Project name can not be empty");
+      setErrorText("Project name cannot be empty");
 
       return;
     }
@@ -455,10 +458,6 @@ public final class CreateProjectWizard extends DialogWrapper {
                              new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_BOTH,
                                                  GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
                                                  GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null));
-      myTemplateSettings.add(myProjectFormatPanel.getPanel(),
-                             new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_HORIZONTAL,
-                                                 GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED,
-                                                 null, null, null, 1));
     }
     if (myCurrentTemplateItem != null) {
       myCurrentTemplateItem.setNewProjectPath(myProjectPath.getPath());
@@ -481,19 +480,20 @@ public final class CreateProjectWizard extends DialogWrapper {
   protected void doOKAction() {
     super.doOKAction();
 
+    int exitCode = GeneralSettings.getInstance().getConfirmOpenNewProject();
     if (myCurrentProject != null) {
-      int exitCode = ProjectUtil.confirmOpenNewProject(true);
       if (exitCode == GeneralSettings.OPEN_PROJECT_SAME_WINDOW) {
-        ProjectUtil.closeAndDispose(myCurrentProject);
+        ProjectManager.getInstance().closeAndDispose(myCurrentProject);
       }
     }
+    boolean openInNewFrame = exitCode == GeneralSettings.OPEN_PROJECT_NEW_WINDOW;
 
     final ProjectOptions myOptions = new ProjectOptions();
     myOptions.setProjectName(myProjectName.getText());
     myOptions.setProjectPath(myProjectPath.getPath());
     myOptions.setCreateNewLanguage(false);
     myOptions.setCreateNewSolution(false);
-    myOptions.setStorageScheme(myProjectFormatPanel.isDefault());
+    myOptions.setStorageScheme(false);
 
     // Copy/paste from com.intellij.ide.impl.NewProjectUtil#createNewProject(AbstractProjectWizard)
     String title = JavaUiBundle.message("project.new.wizard.progress.title");
@@ -503,8 +503,13 @@ public final class CreateProjectWizard extends DialogWrapper {
       try {
         ProjectFactory factory = new ProjectFactory(myOptions);
         Project project = factory.createProject();
-        myCurrentTemplateItem.getTemplateFiller().fillProjectWithModules(project.getComponent(MPSProject.class));
-        ApplicationManager.getApplication().executeOnPooledThread(factory::activate);
+        myCurrentTemplateItem.fillProjectWithModules(project.getComponent(MPSProject.class));
+        ApplicationManager.getApplication().executeOnPooledThread(new Runnable() {
+          @Override
+          public void run() {
+            factory.activate(openInNewFrame);
+          }
+        });
       } catch (ProjectNotCreatedException e) {
         final String message = e.getMessage() != null ? e.getMessage() : "No message was provided by exception";
         Messages.showErrorDialog(message, "Project Creation Failed");
@@ -544,8 +549,9 @@ public final class CreateProjectWizard extends DialogWrapper {
       return myTemplate.getSettings();
     }
 
-    TemplateFiller getTemplateFiller() {
-      return myTemplate.getTemplateFiller();
+    void fillProjectWithModules(MPSProject mpsProject) {
+      // FIXME TemplateFiller: bloody hell the name, the pattern (why object if runs immediately) and impl (post-startup->model command inside each one)
+      myTemplate.getTemplateFiller().fillProjectWithModules(mpsProject);
     }
 
     void setNewProjectPath(String newValue) {

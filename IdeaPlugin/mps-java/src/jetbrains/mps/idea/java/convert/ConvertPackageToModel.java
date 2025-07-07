@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,15 +52,15 @@ import jetbrains.mps.idea.core.refactoring.NodePtr;
 import jetbrains.mps.idea.java.psiStubs.JavaForeignIdBuilder;
 import jetbrains.mps.java.core.newparser.JavaToMpsConverter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.smodel.DynamicReference;
-import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.util.SNodeOperations;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
@@ -79,7 +79,7 @@ import java.util.Set;
  */
 public class ConvertPackageToModel extends AnAction {
 
-  private static Logger LOG = Logger.getLogger("Convert java to mps");
+  private static final Logger LOG = Logger.getLogger(ConvertPackageToModel.class);
 
   public ConvertPackageToModel() {
     super("Convert Java to MPS", "", null);
@@ -164,7 +164,7 @@ public class ConvertPackageToModel extends AnAction {
             continue;
           }
 
-          if (!(ref instanceof StaticReference)) {
+          if (SLinkOperations.isDynamic(ref)) {
             referencesToFix.add(ref);
             continue;
           }
@@ -176,11 +176,11 @@ public class ConvertPackageToModel extends AnAction {
           // TODO need to make it more efficient (maintain this data in DirParser)
 
           SModelReference newModelRef = null;
-          String modelName = targetModelRef.getModelName();
-          modelName = modelName.substring(0, modelName.indexOf('@'));
+          final SModelName modelName = targetModelRef.getName().withoutStereotype();
           for (SModel model : parser.getModels()) {
-            if (modelName.equals(model.getModelName())) {
+            if (modelName.equals(model.getName())) {
               newModelRef = model.getReference();
+              break;
             }
           }
 
@@ -209,13 +209,13 @@ public class ConvertPackageToModel extends AnAction {
 
         for (SReference ref : referencesToFix) {
           SNode target = ref.getTargetNode();
-          if (target == null) continue;
+          if (target == null) {
+            continue;
+          }
 
           SNode source = ref.getSourceNode();
 
-          jetbrains.mps.smodel.SReference finalStaticRef = StaticReference.create(ref.getLink(), source, target);
-          finalStaticRef.setResolveInfo(SLinkOperations.getResolveInfo(ref));
-          source.setReference(finalStaticRef.getLink(), finalStaticRef);
+          source.setReference(ref.getLink(), ResolveInfo.of(target.getReference(), SLinkOperations.getResolveInfo(ref)));
         }
 
         // here more complicated logic can be written
@@ -230,7 +230,7 @@ public class ConvertPackageToModel extends AnAction {
         }
 
         // we want psi stub models to be up-to-date with regard to those deletions
-        ApplicationManager.getApplication().getComponent(ReloadManager.class).flush();
+        ReloadManager.getInstance().flush();
       }
     });
 

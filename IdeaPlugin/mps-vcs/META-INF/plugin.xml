@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright 2003-2020 JetBrains s.r.o.
+  ~ Copyright 2003-2021 JetBrains s.r.o.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -18,16 +18,16 @@
   <id>jetbrains.mps.idea.vcs</id>
   <name>MPS Version Control Support</name>
   <category>Custom Languages</category>
-  <description>MPS Version Control support</description>
-  <version>2021.1</version>
+  <description>Provides support for Version Control in MPS models</description>
+  <version>2023.3</version>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
-  <idea-version since-build="211.1" until-build="212.1"/>
+  <idea-version since-build="233.1" until-build="241.1"/>
   <depends>jetbrains.mps.core</depends>
 
   <depends optional="true">Subversion</depends>
   <depends optional="true" config-file="MPSVcsGit.xml">Git4Idea</depends>
 
-  <xi:include href="MPSVcs.xml" xpointer="xpointer(/components/*)"/>
+  <xi:include href="MPSVcs.xml"/>
 
   <extensions defaultExtensionNs="com.intellij">
     <diff.DiffTool implementation="jetbrains.mps.vcs.platform.integration.ModelDiffTool"/>
@@ -48,6 +48,8 @@
 
     <projectService serviceImplementation="jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry" />
     <projectService serviceImplementation="jetbrains.mps.vcs.changesmanager.editor.EditorHighlighterFactory"/>
+
+    <projectService serviceImplementation="jetbrains.mps.vcs.changesmanager.NodeFileStatusMapping"/>
   </extensions>
 
   <applicationListeners>
@@ -60,12 +62,5 @@
               topic="jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener"
               activeInHeadlessMode="false"/>
   </projectListeners>
-
-  <project-components>
-    <component>
-      <implementation-class>jetbrains.mps.vcs.changesmanager.NodeFileStatusMapping</implementation-class>
-    </component>
-  </project-components>
-
 
 </idea-plugin>

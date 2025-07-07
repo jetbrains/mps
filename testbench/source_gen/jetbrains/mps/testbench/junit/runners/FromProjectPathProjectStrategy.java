@@ -8,6 +8,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.tool.environment.Environment;
+import java.io.IOException;
 import java.io.File;
 import jetbrains.mps.tool.environment.EnvironmentBase;
 import jetbrains.mps.components.ComponentHost;
@@ -29,17 +30,22 @@ public class FromProjectPathProjectStrategy extends ProjectStrategyBase {
   @NotNull
   @Override
   public Project create(@NotNull Environment env) {
-    if (isApplicable()) {
-      Project newProject = openProjectIfNotAlreadyOpened(env);
-      return construct(env.getPlatform(), newProject);
+    Exception th = null;
+    try {
+      if (isApplicable()) {
+        Project newProject = openProjectIfNotAlreadyOpened(env);
+        return construct(env.getPlatform(), newProject);
+      }
+    } catch (Exception ex) {
+      th = ex;
     }
-    throw new IllegalStateException("Strategy is not applicable -- cannot create project");
+    throw new IllegalStateException("Strategy is not applicable -- cannot create project", th);
   }
 
   @NotNull
-  private Project openProjectIfNotAlreadyOpened(Environment env) {
+  private Project openProjectIfNotAlreadyOpened(Environment env) throws IOException {
     // Convert project path to absolute
-    File projectFile = new File(myProjectPath).getAbsoluteFile();
+    File projectFile = new File(myProjectPath).getAbsoluteFile().getCanonicalFile();
     Project openedProject = ((EnvironmentBase) env).getOpenedProject(projectFile);
     if (openedProject == null) {
       openedProject = env.openProject(projectFile);

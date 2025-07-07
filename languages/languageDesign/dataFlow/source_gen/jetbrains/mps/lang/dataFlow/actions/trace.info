@@ -20,15 +20,16 @@
       <node id="2557916264116455380" at="32,0,33,0" concept="5" trace="jumpTo$P0Qx" />
       <node id="2557916264116455380" at="33,0,34,0" concept="5" trace="position$hFoB" />
       <node id="2557916264116455389" at="18,38,22,9" concept="2" />
-      <node id="2557916264116455389" at="16,91,23,7" concept="0" />
-      <node id="2557916264116455381" at="16,0,25,0" concept="3" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <node id="2557916264116455389" at="16,102,23,7" concept="0" />
+      <node id="2557916264116455381" at="16,0,25,0" concept="3" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;ILorg/jetbrains/mps/openapi/model/SModel;)V" />
       <scope id="2557916264116455393" at="19,84,21,120" />
       <scope id="2557916264116455389" at="17,7,22,9">
         <var name="jump" id="2557916264116455389" />
       </scope>
-      <scope id="2557916264116455381" at="16,91,23,7" />
+      <scope id="2557916264116455381" at="16,102,23,7" />
       <scope id="2557916264116455381" at="16,0,25,0">
         <var name="enclosingNode" id="2557916264116455381" />
+        <var name="index" id="2557916264116455381" />
         <var name="model" id="2557916264116455381" />
         <var name="newNode" id="2557916264116455381" />
         <var name="sampleNode" id="2557916264116455381" />

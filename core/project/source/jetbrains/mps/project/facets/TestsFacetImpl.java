@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,31 +25,21 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
 
 public class TestsFacetImpl extends ModuleFacetBase implements TestsFacet {
-  private IFile myModuleHome;
-
-  public TestsFacetImpl() {
-    super(FACET_TYPE);
-  }
 
   public TestsFacetImpl(SModule module) {
     super(FACET_TYPE, module);
   }
 
-  @Override
-  public void attach() {
-    // fixme transfer, though currently #attach is invoked (legacy code in AbstractModule and some inheritors)
-    assert getModule() != null;
-    IFile descriptorFile = ((AbstractModule) getModule()).getDescriptorFile();
-    if (descriptorFile != null) {
-      myModuleHome = descriptorFile.getParent();
-    }
-  }
-
   @Nullable
   @Override
   public IFile getTestsOutputPath() {
-    if (myModuleHome == null) return null;
-    return myModuleHome.findChild("test_gen");
+    assert getModule() != null;
+    IFile descriptorFile = ((AbstractModule) getModule()).getDescriptorFile();
+    if (descriptorFile == null) {
+      return null;
+    }
+    IFile moduleHome = descriptorFile.getParent();
+    return moduleHome == null ? null : moduleHome.findChild("test_gen");
   }
 
   @Nullable
@@ -64,6 +54,5 @@ public class TestsFacetImpl extends ModuleFacetBase implements TestsFacet {
     } else {
       return null;
     }
-
   }
 }

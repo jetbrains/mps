@@ -11,7 +11,7 @@ import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
-import jetbrains.mps.lang.pattern.util.MatchingUtil;
+import jetbrains.mps.smodel.SNodeMatcher;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -39,7 +39,7 @@ public class check_ForeachWithErasure_NonTypesystemRule extends AbstractNonTypes
       } else {
         SNode variableType = SLinkOperations.getTarget(SLinkOperations.getTarget(foreachStatement, LINKS.variable$JNH6), LINKS.type$a1UY);
         // not an iterable or an erasure
-        if (!((MatchingUtil.matchNodes(variableType, _quotation_createNode_aftnu9_a0a0c0a2a3a1())))) {
+        if (!(new SNodeMatcher().match(variableType, _quotation_createNode_aftnu9_a0a0c0a2a3a1()))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError((variableType != null ? variableType : SLinkOperations.getTarget(foreachStatement, LINKS.variable$JNH6)), "java.lang.Object expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4312449433287189198", null, errorTarget);

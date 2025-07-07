@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ import org.jetbrains.mps.openapi.model.SNodeChangeListener;
  * This class serves as a convenient implementation of all repository listeners at once.
  * In addition it tracks all objects (modules, models and nodes) as they come and leave the repository.
  */
-public class SRepositoryContentAdapter extends SModuleListenerBase implements
+public class SRepositoryContentAdapter implements
     SModelListener, SModuleListener, SRepositoryListener, SRepositoryAttachListener, SNodeChangeListener, SNodeAccessListener {
 
   protected SRepositoryContentAdapter() {
@@ -68,16 +68,12 @@ public class SRepositoryContentAdapter extends SModuleListenerBase implements
   protected void startListening(SModule module) {
     if (!isIncluded(module)) return;
     module.addModuleListener(this);
-    for (SModel model : module.getModels()) {
-      startListening(model);
-    }
+    module.forEachRegisteredModel(this::startListening);
   }
 
   protected void stopListening(SModule module) {
     // it's not very nice to stop listening models of any module, even the one we didn't include this module in startListening(SModule), but who cares
-    for (SModel model : module.getModels()) {
-      stopListening(model);
-    }
+    module.forEachRegisteredModel(this::stopListening);
     module.removeModuleListener(this);
   }
 

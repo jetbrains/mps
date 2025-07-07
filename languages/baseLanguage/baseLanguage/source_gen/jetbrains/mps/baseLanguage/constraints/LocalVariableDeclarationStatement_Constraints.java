@@ -37,7 +37,7 @@ public class LocalVariableDeclarationStatement_Constraints extends BaseConstrain
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return !((Objects.equals(link, LINKS.ifFalseStatement$psZK)));
+    return !(Objects.equals(link, LINKS.ifFalseStatement$psZK));
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "7052739266022735007");
 

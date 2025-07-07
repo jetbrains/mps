@@ -14,12 +14,13 @@
       <node id="315923949159713056" at="17,75,18,165" concept="0" />
       <node id="315923949159711975" at="24,0,25,0" concept="3" trace="TypedDef$H3" />
       <node id="315923949159711975" at="28,0,29,0" concept="3" trace="name$MnvL" />
-      <node id="315923949159711989" at="16,91,19,7" concept="1" />
-      <node id="315923949159711976" at="16,0,21,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <node id="315923949159711989" at="16,102,19,7" concept="1" />
+      <node id="315923949159711976" at="16,0,21,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;ILorg/jetbrains/mps/openapi/model/SModel;)V" />
       <scope id="315923949159711991" at="17,75,18,165" />
-      <scope id="315923949159711976" at="16,91,19,7" />
+      <scope id="315923949159711976" at="16,102,19,7" />
       <scope id="315923949159711976" at="16,0,21,0">
         <var name="enclosingNode" id="315923949159711976" />
+        <var name="index" id="315923949159711976" />
         <var name="model" id="315923949159711976" />
         <var name="newNode" id="315923949159711976" />
         <var name="sampleNode" id="315923949159711976" />

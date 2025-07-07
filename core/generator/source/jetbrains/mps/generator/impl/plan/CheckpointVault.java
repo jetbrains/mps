@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,11 +20,11 @@ import jetbrains.mps.generator.generationTypes.StreamHandler;
 import jetbrains.mps.generator.impl.ModelStreamManager;
 import jetbrains.mps.generator.plan.CheckpointIdentity;
 import jetbrains.mps.generator.plan.PlanIdentity;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.PersistenceUtil.InMemoryStreamDataSource;
 import jetbrains.mps.persistence.UserObjectsPersistence;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.JDOMUtil;
-import org.apache.log4j.Logger;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -33,12 +33,10 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.ModelLoadException;
-import org.jetbrains.mps.openapi.persistence.MultiStreamDataSource;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -144,6 +142,13 @@ public class CheckpointVault {
       existing.myChangedState = mcp.find(next);
     }
     myKnownCheckpoints.addAll(newEntries);
+    // if we happen to update *all* checkpoints of a model, and all cp models are empty, no reason to keep records.
+    // perhaps, can just collect 'stale' while iterating over mcp.getKnownCheckpoints() (in addition to newEntries),
+    // but what if there's theoretical scenario when we have CP1 (non-empty) --> CP2 (empty) --> CP3 (non-empty), and we need
+    // CP2 for consistent transition. I don't believe the scenario is feasible, however; just don't want to deal with non-trivial cases now.
+    if (myKnownCheckpoints.stream().allMatch(e -> e.myChangedState != null && e.myChangedState.isEmptyCheckpoint())) {
+      myKnownCheckpoints.clear();
+    }
     myCheckpoints = null;
   }
 
@@ -171,7 +176,7 @@ public class CheckpointVault {
           }
         }
       } catch(IOException | JDOMException ex){
-        Logger.getLogger(GenerationPlan.class).warn("Failed to read checkpoint registry", ex);
+        Logger.getLogger(GenerationPlan.class).warning("Failed to read checkpoint registry", ex);
       }
     }
   }
@@ -204,6 +209,10 @@ public class CheckpointVault {
     if (StreamSupport.stream(myKnownCheckpoints.spliterator(), false).noneMatch(e -> e.myChangedState != null)) {
       return;
     }
+    if (myKnownCheckpoints.isEmpty()) {
+      // don't touch any file, let Make/reconcile remove stale
+      return;
+    }
     Element cpRegistry = buildCheckpointRegistry();
     // FIXME it's bad to use different sets of API (StreamProvider vs StreamHandler) to read/write CPs.
     handler.saveStream("checkpoints", cpRegistry);
@@ -218,8 +227,8 @@ public class CheckpointVault {
       final ModelFactory modelFactory = entry.modelFactory();
       InMemoryStreamDataSource ds = new InMemoryStreamDataSource();
       try {
-
-        modelFactory.save(cpState.getCheckpointModel(), ds, CONVERT_USER_OBJECTS ? UserObjectsPersistence.IGNORED : UserObjectsPersistence.REQUIRED);
+        SModel checkpointModel = cpState.getCheckpointModel();
+        modelFactory.save(checkpointModel, ds, CONVERT_USER_OBJECTS ? UserObjectsPersistence.IGNORED : UserObjectsPersistence.REQUIRED);
         handler.saveStream(entry.getFilename(), ds.getContentBytes());
       } catch (Exception ex) {
         // FIXME what can I do here?

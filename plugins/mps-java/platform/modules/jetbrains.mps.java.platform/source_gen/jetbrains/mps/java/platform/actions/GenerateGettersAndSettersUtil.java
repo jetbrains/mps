@@ -46,7 +46,7 @@ public class GenerateGettersAndSettersUtil {
   }
   public static String getParameterNameForField(SNode field, Project project) {
     String preparedFieldName = getPreparedFieldName(field, project);
-    CodeStyleSettings codeStyleSettings = CodeStyleSettingsRegistry.getSettings(project);
+    CodeStyleSettings codeStyleSettings = CodeStyleSettingsRegistry.get(project);
     if (codeStyleSettings == null) {
       return NameUtil.decapitalize(preparedFieldName);
     }
@@ -65,7 +65,7 @@ public class GenerateGettersAndSettersUtil {
     if (rawName == null || rawName.length() == 0) {
       return "unnamedField";
     }
-    CodeStyleSettings codeStyleSettings = CodeStyleSettingsRegistry.getSettings(project);
+    CodeStyleSettings codeStyleSettings = CodeStyleSettingsRegistry.get(project);
     if (codeStyleSettings == null) {
       return rawName;
     }

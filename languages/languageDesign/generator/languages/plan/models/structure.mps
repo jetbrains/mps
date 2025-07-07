@@ -17,6 +17,10 @@
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
         <child id="3348158742936976577" name="members" index="25R1y" />
       </concept>
+      <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
+        <property id="1225118929411" name="build" index="YLPcu" />
+        <property id="1225118933224" name="comment" index="YLQ7P" />
+      </concept>
       <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
         <property id="7862711839422615217" name="text" index="t5JxN" />
       </concept>
@@ -60,7 +64,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -77,6 +81,12 @@
       <property role="20lbJX" value="fLJekj6/1..n" />
       <property role="IQ2ns" value="1820634577908471815" />
       <ref role="20lvS9" node="1_4co2y1LvW" resolve="Step" />
+    </node>
+    <node concept="1TJgyj" id="6_DCGR5BD9Y" role="1TKVEi">
+      <property role="IQ2ns" value="7595781251204551294" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="forkOf" />
+      <ref role="20lvS9" node="6_DCGR5BBj5" resolve="ForkOf" />
     </node>
     <node concept="PrWs8" id="1_4co2y1LvX" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
@@ -119,6 +129,10 @@
       <property role="20lbJX" value="fLJekj5/_0__n" />
       <property role="IQ2ns" value="2944629966652439181" />
       <ref role="20lvS9" to="tp25:34EJa6aIcco" resolve="LanguageIdentity" />
+      <node concept="asaX9" id="58m62FIIPP7" role="lGtFl">
+        <property role="YLPcu" value="2023.1" />
+        <property role="YLQ7P" value="Replaced with LanguageEntry[Transform]" />
+      </node>
     </node>
     <node concept="1TJgyj" id="1009c2Af5ZQ" role="1TKVEi">
       <property role="IQ2ns" value="1152961914448142326" />
@@ -297,6 +311,14 @@
     <node concept="t5JxF" id="2JQwL_F4Efe" role="lGtFl">
       <property role="t5JxN" value="Fork transformation sequence into two branches, one goes on with active plan, another spins off with another plan." />
     </node>
+    <node concept="1TJgyi" id="3eG4OcT$N6X" role="1TKVEl">
+      <property role="IQ2nx" value="3723372171378241981" />
+      <property role="TrG5h" value="gentarget" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+      <node concept="t5JxF" id="6_DCGR5BBoa" role="lGtFl">
+        <property role="t5JxN" value="tag to use when deciding whether to actually activate the fork" />
+      </node>
+    </node>
   </node>
   <node concept="1TIwiD" id="1009c2Af4wf">
     <property role="EcuMT" value="1152961914448136207" />
@@ -349,6 +371,29 @@
     </node>
     <node concept="PrWs8" id="1UCZ1x2IYvN" role="PzmwI">
       <ref role="PrY4T" node="1UCZ1x2IYvI" resolve="ForkSelector" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6_DCGR5BBj5">
+    <property role="EcuMT" value="7595781251204543685" />
+    <property role="TrG5h" value="ForkOf" />
+    <property role="34LRSv" value="fork of" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyi" id="6_DCGR5BBl$" role="1TKVEl">
+      <property role="IQ2nx" value="7595781251204543844" />
+      <property role="TrG5h" value="gentarget" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+      <node concept="t5JxF" id="6_DCGR5BBlQ" role="lGtFl">
+        <property role="t5JxN" value="tag to use when deciding whether to actually activate the fork" />
+      </node>
+    </node>
+    <node concept="1TJgyj" id="6_DCGR5BBl9" role="1TKVEi">
+      <property role="IQ2ns" value="7595781251204543817" />
+      <property role="20kJfa" value="primary" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="1_4co2y1LvV" resolve="Plan" />
+    </node>
+    <node concept="t5JxF" id="6_DCGR5BBju" role="lGtFl">
+      <property role="t5JxN" value="Marks a plan as a fork of another plan (reverses Fork relation)" />
     </node>
   </node>
 </model>

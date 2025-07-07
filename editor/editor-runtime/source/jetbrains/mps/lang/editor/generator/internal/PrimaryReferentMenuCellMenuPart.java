@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,10 +41,10 @@ public class PrimaryReferentMenuCellMenuPart implements SubstituteInfoPartExt {
     IReferentPresentationProvider matchingTextProvider = getMatchingTextProvider();
     IReferentPresentationProvider visibleMatchingTextProvider = getVisibleMatchingTextProvider();
     if (matchingTextProvider == null) {
-      matchingTextProvider = IReferentPresentationProvider.getDefaultMatchingText(linkDeclaration);
+      matchingTextProvider = IReferentPresentationProvider.DEFAULT_MATCHING_TEXT;
     }
     if (visibleMatchingTextProvider == null) {
-      visibleMatchingTextProvider = IReferentPresentationProvider.getDefaultVisibleMatchingText(linkDeclaration);
+      visibleMatchingTextProvider = IReferentPresentationProvider.DEFAULT_VISIBLE_MATCHING_TEXT;
     }
     return ModelActions.createReferentSubstituteActions(referenceNode,
                                                         linkDeclaration,

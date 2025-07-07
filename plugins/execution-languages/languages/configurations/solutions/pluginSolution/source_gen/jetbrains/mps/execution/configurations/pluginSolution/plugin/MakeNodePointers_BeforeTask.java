@@ -11,19 +11,18 @@ import com.intellij.execution.runners.ExecutionEnvironment;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.generator.ModelGenerationStatusManager;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.resources.ModelsToResources;
+import jetbrains.mps.ide.messages.MessagesViewTool;
+import jetbrains.mps.messages.IMessageList;
+import jetbrains.mps.ide.messages.MessageListOptions;
 import jetbrains.mps.make.MakeSession;
-import jetbrains.mps.ide.make.DefaultMakeMessageHandler;
 import jetbrains.mps.make.IMakeService;
 import jetbrains.mps.make.MakeServiceComponent;
 import java.util.concurrent.Future;
@@ -60,41 +59,37 @@ public class MakeNodePointers_BeforeTask extends BaseMpsBeforeTaskProvider<MakeN
 
     public boolean execute(Project project, ExecutionEnvironment environment) {
       final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(project);
-      List<IResource> resources = new ModelAccessHelper(mpsProject.getModelAccess()).runReadAction(new Computable<List<IResource>>() {
-        public List<IResource> compute() {
-          final ModelGenerationStatusManager statusManager = mpsProject.getComponent(ModelGenerationStatusManager.class);
-          Iterable<SModel> models = ListSequence.fromList(myNodePointers).where(new NotNullWhereFilter<SNodeReference>()).select(new ISelector<SNodeReference, SModel>() {
-            public SModel select(SNodeReference it) {
-              SNode n = it.resolve(mpsProject.getRepository());
-              return (n == null ? null : n.getModel());
-            }
-          }).distinct().where(new IWhereFilter<SModel>() {
-            public boolean accept(SModel it) {
-              return statusManager.generationRequired(it);
-            }
-          });
-          if (Sequence.fromIterable(models).isEmpty()) {
-            return null;
-          }
-          List<IResource> list = ListSequence.fromListWithValues(new ArrayList<IResource>(), new ModelsToResources(models).resources());
-          return list;
+      List<IResource> resources = new ModelAccessHelper(mpsProject.getModelAccess()).runReadAction(() -> {
+        final ModelGenerationStatusManager statusManager = mpsProject.getComponent(ModelGenerationStatusManager.class);
+        Iterable<SModel> models = ListSequence.fromList(myNodePointers).where(new NotNullWhereFilter()).select((it) -> {
+          SNode n = it.resolve(mpsProject.getRepository());
+          return (n == null ? null : n.getModel());
+        }).distinct().where((it) -> statusManager.generationRequired(it));
+        if (Sequence.fromIterable(models).isEmpty()) {
+          return null;
         }
+        List<IResource> list = ListSequence.fromListWithValues(new ArrayList<IResource>(), new ModelsToResources(models).resources());
+        return list;
       });
 
       if (ListSequence.fromList(resources).isEmpty()) {
         return true;
       }
 
-      MakeSession session = new MakeSession(mpsProject, new DefaultMakeMessageHandler(mpsProject), true);
+      MessagesViewTool mvt = MessagesViewTool.getInstance(mpsProject);
+      IMessageList handler = mvt.getMessageList("Make before Run", MessageListOptions.DeafOnMessage, MessageListOptions.ReuseExisting);
+      handler.clear();
+      MakeSession session = new MakeSession(mpsProject, handler, true);
       IMakeService makeService = mpsProject.getComponent(MakeServiceComponent.class).get();
       if (makeService.openNewSession(session)) {
         Future<IResult> future = makeService.make(session, resources);
         IResult result = null;
         try {
           result = future.get();
-        } catch (CancellationException ignore) {
-        } catch (InterruptedException ignore) {
-        } catch (ExecutionException ignore) {
+        } catch (CancellationException | InterruptedException | ExecutionException ignore) {
+        }
+        if (result == null || !(result.isSucessful())) {
+          handler.wake();
         }
         return result != null && result.isSucessful();
       }

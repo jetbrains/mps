@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,20 +35,35 @@ public final class SMethodBuilder<T> {
   private SModifiersImpl myModifiers;
   private final SAbstractType myReturnType;
   private SAbstractConcept myConcept;
+  @Deprecated
   private String myId64; // base = 64
-  private BehaviorRegistry myRegistry;
+  private long myBaseMethodId;
+  private long myLangIdLo;
+  private long myLangIdHi;
 
   public SMethodBuilder(SAbstractType returnType) {
     myReturnType = returnType;
   }
 
+  @Deprecated
   public SMethod<T> build(SParameter... paramTypes) {
     return build(Arrays.asList(paramTypes));
   }
 
+  @Deprecated
   public SMethod<T> build(List<SParameter> paramTypes) {
     SMethodTrimmedId methodId = SMethodTrimmedId.create("", myModifiers.isVirtual() ? null : myConcept, myId64);
-    final BehaviorRegistry registry = myRegistry != null ? myRegistry : ConceptRegistry.getInstance().getBehaviorRegistry();
+    final BehaviorRegistry registry = ConceptRegistry.getInstance().getBehaviorRegistry();
+    return SMethodImpl.create(myName, myModifiers, myReturnType, myConcept, methodId, registry, paramTypes);
+  }
+
+  public SMethod<T> build2(SParameter... paramTypes) {
+    return build2(Arrays.asList(paramTypes));
+  }
+
+  public SMethod<T> build2(List<SParameter> paramTypes) {
+    var methodId = SMethodIdV2.create("", myBaseMethodId, myLangIdHi ^ myLangIdLo);
+    final BehaviorRegistry registry = ConceptRegistry.getInstance().getBehaviorRegistry();
     return SMethodImpl.create(myName, myModifiers, myReturnType, myConcept, methodId, registry, paramTypes);
   }
 
@@ -72,14 +87,20 @@ public final class SMethodBuilder<T> {
     return this;
   }
 
+  @Deprecated
   public SMethodBuilder<T> id(@NotNull String id) {
     myId64 = id;
     return this;
   }
 
-  @Deprecated(since = "2019.3", forRemoval = true)
-  public SMethodBuilder<T> registry(@NotNull BehaviorRegistry registry) {
-    myRegistry = registry;
+  public SMethodBuilder<T> baseMethodId(long id) {
+    myBaseMethodId = id;
+    return this;
+  }
+
+  public SMethodBuilder<T> languageId(long lo, long hi) {
+    myLangIdLo = lo;
+    myLangIdHi = hi;
     return this;
   }
 

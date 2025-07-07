@@ -7,7 +7,6 @@ import java.util.List;
 import jetbrains.mps.baseLanguage.unitTest.behavior.ITestCase__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.unitTest.behavior.ITestable__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.unitTest.behavior.ITestMethod__BehaviorDescriptor;
 import java.util.ArrayList;
@@ -15,14 +14,21 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
 import org.jetbrains.annotations.NonNls;
 
+/**
+ * Please migrate to TestDescriptor API.
+ * 
+ * @deprecated 
+ */
+@Deprecated(since = "2023.1", forRemoval = true)
 public class LanguageTestWrapper extends AbstractTestWrapper<SNode> {
   private final ITestNodeWrapper myTestCase;
   private final String myName;
   private final String myQualifiedName;
   private List<ITestNodeWrapper> myMethods;
 
+  @Deprecated
   public LanguageTestWrapper(SNode test) {
-    super(test, (boolean) ITestCase__BehaviorDescriptor.canRunInProcess_id5_jSk8paieB.invoke(test), (boolean) ITestable__BehaviorDescriptor.isMpsStartRequired_id2RMg39tmiFh.invoke(test));
+    super(test, (boolean) ITestCase__BehaviorDescriptor.canRunInProcess_id5_jSk8paieB.invoke(test), (boolean) ITestable__BehaviorDescriptor.isMpsStartRequired_id2RMg39tmiFh.invoke(test), false);
     myTestCase = null;
     myName = ITestCase__BehaviorDescriptor.getSimpleClassName_idhSQIE8p.invoke(test);
     myQualifiedName = ITestCase__BehaviorDescriptor.getClassName_idhGBnqtL.invoke(test);
@@ -32,16 +38,13 @@ public class LanguageTestWrapper extends AbstractTestWrapper<SNode> {
     // With that, indeed, we loose extensibility of TNWF, but I don't care too much as it's MPS-controlled factory anyway (let alone I doubt there's ever need to
     // have anything else under a wrapper for ITestCase).
     //  Proper fix would be to introduce tryToWrap(ITestNodeWrapper container, node<>) method, that would respect owner testcase explicitly.
-    myMethods = ListSequence.fromList(ITestCase__BehaviorDescriptor.getTestMethods_id1RfJDyhAUar.invoke(test)).select(new ISelector<SNode, LanguageTestWrapper>() {
-      public LanguageTestWrapper select(SNode it) {
-        return new LanguageTestWrapper(LanguageTestWrapper.this, it);
-      }
-    }).ofType(ITestNodeWrapper.class).toListSequence();
+    myMethods = ListSequence.fromList(ITestCase__BehaviorDescriptor.getUncommentedTestMethods_id6I8tQNTvi0f.invoke(test)).select((it) -> new LanguageTestWrapper(LanguageTestWrapper.this, it)).ofType(ITestNodeWrapper.class).toList();
   }
 
+  @Deprecated
   public LanguageTestWrapper(@NotNull ITestNodeWrapper testCase, @NotNull SNode testMethod) {
     // perhaps, shall derive MPS requirement form ITestNodeWrapper, but as long as isMpsStartRequired is in ITestable, don't see a reason.
-    super(testMethod, testCase.canRunInProcess(), (boolean) ITestable__BehaviorDescriptor.isMpsStartRequired_id2RMg39tmiFh.invoke(testMethod));
+    super(testMethod, testCase.canRunInProcess(), (boolean) ITestable__BehaviorDescriptor.isMpsStartRequired_id2RMg39tmiFh.invoke(testMethod), false);
     myTestCase = testCase;
     myName = ITestMethod__BehaviorDescriptor.getTestName_idhGBohAB.invoke(testMethod);
     myQualifiedName = testCase.getFqName() + '.' + myName;

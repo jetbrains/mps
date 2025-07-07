@@ -42,7 +42,7 @@ import jetbrains.mps.editor.runtime.style.Measure;
       setCellContext(bigCell);
     }
     Style style = new StyleImpl();
-    new genContext_operationStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new genContext_operationStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.PADDING_RIGHT, new Padding(0.0, Measure.SPACES));
     editorCell.getStyle().putAll(style);
     return editorCell;

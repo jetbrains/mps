@@ -8,7 +8,6 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -31,11 +30,7 @@ public class LeftParenDelete {
         if ((first == null)) {
           first = SNodeOperations.getPrevSibling(node);
         }
-        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elements$p7zr)).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            SNodeOperations.insertPrevSiblingChild(node, it);
-          }
-        });
+        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elements$p7zr)).visitAll((it) -> SNodeOperations.insertPrevSiblingChild(node, it));
         SNodeOperations.deleteNode(node);
         if (first != null) {
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, first, SelectionManager.FIRST_CELL, 0);

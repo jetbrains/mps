@@ -11,15 +11,12 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.project.SModuleOperations;
 import java.util.Collection;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
@@ -71,23 +68,14 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean rule_Condition_0_3(final BaseMappingRuleContext _context) {
     SModule originalModule = _context.getOriginalInputModel().getModule();
-    JavaModuleFacet javaFacet = originalModule.getFacet(JavaModuleFacet.class);
-    if (javaFacet == null || javaFacet.isCompileInMps()) {
+    if (!(SModuleOperations.isJavaModuleCompiledExternally(originalModule))) {
       return false;
     }
     Collection<SModule> visibleModules = new GlobalModuleDependenciesManager(originalModule).getModules(GlobalModuleDependenciesManager.Deptype.COMPILE);
-    if (!(CollectionSequence.fromCollection(visibleModules).select(new ISelector<SModule, SModuleReference>() {
-      public SModuleReference select(SModule it) {
-        return it.getModuleReference();
-      }
-    }).contains(PersistenceFacade.getInstance().createModuleReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)")))) {
+    if (!(CollectionSequence.fromCollection(visibleModules).select((it) -> it.getModuleReference()).contains(PersistenceFacade.getInstance().createModuleReference("3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)")))) {
       return false;
     }
-    return SNodeOperations.getParent(_context.getNode()) == null && !(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.annotation$K49I)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.annotations(MPS.Core/)", "~GeneratedClass"));
-      }
-    }));
+    return SNodeOperations.getParent(_context.getNode()) == null && !(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.annotation$K49I)).any((it) -> SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.annotations(Annotations/)", "~GeneratedClass"))));
   }
   public static Object propertyMacro_GetValue_0_0(final PropertyMacroContext _context) {
     return "resource_" + _context.getNode().getNodeId().toString();

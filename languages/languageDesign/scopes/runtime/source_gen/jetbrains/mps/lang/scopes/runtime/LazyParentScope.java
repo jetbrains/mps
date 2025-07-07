@@ -6,26 +6,34 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.scope.EmptyScope;
+import java.util.Collection;
 
 public class LazyParentScope extends DelegatingScope {
-  private final SNode node;
-  private final SAbstractConcept kind;
-  private Scope scope;
-  private boolean isCalculated = false;
+  private final SNode myNode;
+  private final SAbstractConcept myKind;
+  private Scope myScope;
+  private boolean myCalculated = false;
+
   public LazyParentScope(SNode node, SAbstractConcept kind) {
-    this.node = node;
-    this.kind = kind;
+    myNode = node;
+    myKind = kind;
   }
+
   @Override
   protected Scope getScope() {
-    if (!(isCalculated)) {
-      scope = ScopeUtils.parentScope(node, kind);
+    if (!(myCalculated)) {
+      myScope = ScopeUtils.parentScope(myNode, myKind);
       // todo: think about this case...
-      if (scope == null) {
-        scope = new EmptyScope();
+      if (myScope == null) {
+        myScope = new EmptyScope();
       }
-      isCalculated = true;
+      myCalculated = true;
     }
-    return scope;
+    return myScope;
+  }
+
+  @Override
+  public Collection<SNode> getAdditionalDependencies() {
+    return getScope().getAdditionalDependencies();
   }
 }

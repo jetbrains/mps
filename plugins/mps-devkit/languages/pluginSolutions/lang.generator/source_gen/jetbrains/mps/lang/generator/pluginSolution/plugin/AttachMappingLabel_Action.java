@@ -14,7 +14,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
@@ -23,13 +22,12 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Generator;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import java.util.List;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import java.util.Iterator;
 import com.intellij.openapi.application.ApplicationManager;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -72,19 +70,11 @@ public class AttachMappingLabel_Action extends BaseAction {
     }
     //  in in-line template with context
     if (SNodeOperations.getNodeAncestor(node, CONCEPTS.InlineTemplateWithContext_RuleConsequence$9i, false, false) != null) {
-      return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq).get(it) != null;
-        }
-      }) != null;
+      return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).findFirst((it) -> new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq).get(it) != null) != null;
     }
     //  in template fragment - ok
     if (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(node), CONCEPTS.TemplateDeclaration$5G)) {
-      return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq).get(it) != null;
-        }
-      }) != null;
+      return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).findFirst((it) -> new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq).get(it) != null) != null;
     }
     return false;
   }
@@ -124,76 +114,66 @@ public class AttachMappingLabel_Action extends BaseAction {
     Iterable<SNode> mappings;
     if (module instanceof Generator) {
       Iterable<SModel> ownTemplateModels = ((Generator) module).getOwnTemplateModels();
-      mappings = Sequence.fromIterable(ownTemplateModels).translate(new ITranslator2<SModel, SNode>() {
-        public Iterable<SNode> translate(SModel it) {
-          return SModelOperations.roots(it, CONCEPTS.MappingConfiguration$7j);
-        }
-      });
+      mappings = Sequence.fromIterable(ownTemplateModels).translate((it) -> SModelOperations.roots(it, CONCEPTS.MappingConfiguration$7j));
     } else {
       mappings = SModelOperations.roots(SNodeOperations.getModel(node), CONCEPTS.MappingConfiguration$7j);
     }
-    final List<String> existingLabels = Sequence.fromIterable(mappings).translate(new ITranslator2<SNode, String>() {
-      public Iterable<String> translate(final SNode it) {
-        return new Iterable<String>() {
-          public Iterator<String> iterator() {
-            return new YieldingIterator<String>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
+    final List<String> existingLabels = Sequence.fromIterable(mappings).translate((it) -> {
+      return (Iterable<String>) () -> {
+        return new YieldingIterator<String>() {
+          private int __CP__ = 0;
+          protected boolean moveToNext() {
 __loop__:
-                do {
+            do {
 __switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 2:
-                      this._2_label_it = ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.mappingLabel$Wvfj)).iterator();
-                    case 3:
-                      if (!(this._2_label_it.hasNext())) {
-                        this.__CP__ = 1;
-                        break;
-                      }
-                      this._2_label = this._2_label_it.next();
-                      this.__CP__ = 4;
-                      break;
-                    case 5:
-                      if (isNotEmptyString(SPropertyOperations.getString(_2_label, PROPS.name$MnvL))) {
-                        this.__CP__ = 6;
-                        break;
-                      }
-                      this.__CP__ = 3;
-                      break;
-                    case 7:
-                      this.__CP__ = 3;
-                      this.yield(SPropertyOperations.getString(_2_label, PROPS.name$MnvL));
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    case 4:
-                      this.__CP__ = 5;
-                      break;
-                    case 6:
-                      this.__CP__ = 7;
-                      break;
-                    default:
-                      break __loop__;
+              switch (this.__CP__) {
+                case -1:
+                  assert false : "Internal error";
+                  return false;
+                case 2:
+                  this._2_label_it = ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.mappingLabel$Wvfj)).iterator();
+                case 3:
+                  if (!(this._2_label_it.hasNext())) {
+                    this.__CP__ = 1;
+                    break;
                   }
-                } while (true);
-                return false;
+                  this._2_label = this._2_label_it.next();
+                  this.__CP__ = 4;
+                  break;
+                case 5:
+                  if (isNotEmptyString(SPropertyOperations.getString(_2_label, PROPS.name$MnvL))) {
+                    this.__CP__ = 6;
+                    break;
+                  }
+                  this.__CP__ = 3;
+                  break;
+                case 7:
+                  this.__CP__ = 3;
+                  this.yield(SPropertyOperations.getString(_2_label, PROPS.name$MnvL));
+                  return true;
+                case 0:
+                  this.__CP__ = 2;
+                  break;
+                case 4:
+                  this.__CP__ = 5;
+                  break;
+                case 6:
+                  this.__CP__ = 7;
+                  break;
+                default:
+                  break __loop__;
               }
-              private SNode _2_label;
-              private Iterator<SNode> _2_label_it;
-            };
+            } while (true);
+            return false;
           }
+          private SNode _2_label;
+          private Iterator<SNode> _2_label_it;
         };
-      }
-    }).toListSequence();
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        AttachMappingLabelDialog dialog = new AttachMappingLabelDialog(node, existingLabels, event.getData(MPSEditorDataKeys.EDITOR_CONTEXT), event.getData(MPSCommonDataKeys.MPS_PROJECT));
-        dialog.show();
-      }
+      };
+    }).toList();
+    ApplicationManager.getApplication().invokeLater(() -> {
+      AttachMappingLabelDialog dialog = new AttachMappingLabelDialog(node, existingLabels, event.getData(MPSEditorDataKeys.EDITOR_CONTEXT), event.getData(MPSCommonDataKeys.MPS_PROJECT));
+      dialog.show();
     });
   }
   private static boolean isNotEmptyString(String str) {

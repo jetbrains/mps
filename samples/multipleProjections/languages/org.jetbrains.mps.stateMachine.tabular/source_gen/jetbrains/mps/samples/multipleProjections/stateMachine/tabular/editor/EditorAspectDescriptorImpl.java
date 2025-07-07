@@ -12,6 +12,9 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.openapi.editor.descriptor.ConceptEditor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.Collections;
+import java.util.function.Consumer;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
@@ -37,6 +40,10 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
 
   public Collection<ConceptEditorHint> getHints() {
     return myHints;
+  }
+  @Override
+  public void employsHintsFrom(Consumer<SLanguage> consumer) {
+    consumer.accept(MetaAdapterFactory.getLanguage(0x8d18a45bac7e4d84L, 0xa53975f1d720b09bL, "jetbrains.mps.samples.multipleProjections.requestTracking"));
   }
 
 

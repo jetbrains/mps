@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -20,7 +21,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class ICanSuppressErrors__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2f16f1b357e19f42L, "jetbrains.mps.lang.core.structure.ICanSuppressErrors");
 
-  public static final SMethod<String> nodeDescription_id4oS1ku9jIXr = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("nodeDescription").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4oS1ku9jIXr").build();
+  public static final SMethod<String> nodeDescription_id4oS1ku9jIXr = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("nodeDescription").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5059799986155220827L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(nodeDescription_id4oS1ku9jIXr);
 
@@ -28,7 +29,7 @@ public final class ICanSuppressErrors__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static String nodeDescription_id4oS1ku9jIXr(@NotNull SNode __thisNode__) {
-    return "node '" + __thisNode__ + "'";
+    return "node '" + SNodeOperations.present(__thisNode__) + "'";
   }
 
   /*package*/ ICanSuppressErrors__BehaviorDescriptor() {

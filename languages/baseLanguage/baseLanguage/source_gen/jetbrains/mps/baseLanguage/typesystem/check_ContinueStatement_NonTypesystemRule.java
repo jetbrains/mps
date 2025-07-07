@@ -19,7 +19,7 @@ public class check_ContinueStatement_NonTypesystemRule extends AbstractNonTypesy
   public check_ContinueStatement_NonTypesystemRule() {
   }
   public void applyRule(final SNode nodeToCheck, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!((ContinueStatement__BehaviorDescriptor.getLoop_idhEwIA0E.invoke(nodeToCheck) != null))) {
+    if (!(ContinueStatement__BehaviorDescriptor.getLoop_idhEwIA0E.invoke(nodeToCheck) != null)) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(nodeToCheck, "No loop", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2049165965125008261", null, errorTarget);
     }

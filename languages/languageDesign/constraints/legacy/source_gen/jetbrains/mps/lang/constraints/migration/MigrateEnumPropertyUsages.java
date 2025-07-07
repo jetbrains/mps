@@ -16,8 +16,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.UsageOfMigrateNodeNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -43,11 +41,7 @@ public class MigrateEnumPropertyUsages extends MigrationScriptBase {
     {
       SearchScope scope_32rjqx_b0e = CommandUtil.createScope(m);
       final SearchScope scope_32rjqx_b0e_0 = new EditableFilteringScope(scope_32rjqx_b0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_32rjqx_b0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_32rjqx_b0e_0;
       for (SNode propertyConstraint : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodePropertyConstraint$vW, false))) {
         SNode newProperty = migration.migratePropertyReference(propertyConstraint, LINKS.applicableProperty$DrDe);
         if (newProperty != null) {
@@ -67,23 +61,11 @@ public class MigrateEnumPropertyUsages extends MigrationScriptBase {
     {
       SearchScope scope_32rjqx_a0f = CommandUtil.createScope(m);
       final SearchScope scope_32rjqx_a0f_0 = new EditableFilteringScope(scope_32rjqx_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_32rjqx_a0f_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodePropertyConstraint$vW, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SLinkOperations.getTarget(it, LINKS.applicableProperty$DrDe)), CONCEPTS.EnumPropertyMigrationInfo$O3);
-        }
-      }).select(new ISelector<SNode, UsageOfMigrateNodeNotMigratedProblem>() {
-        public UsageOfMigrateNodeNotMigratedProblem select(SNode it) {
-          return new UsageOfMigrateNodeNotMigratedProblem(it, SLinkOperations.getTarget(it, LINKS.applicableProperty$DrDe));
-        }
-      });
+      QueryExecutionContext context = () -> scope_32rjqx_a0f_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodePropertyConstraint$vW, false)).where((it) -> SNodeOperations.isInstanceOf(SNodeOperations.getParent(SLinkOperations.getTarget(it, LINKS.applicableProperty$DrDe)), CONCEPTS.EnumPropertyMigrationInfo$O3)).select((it) -> new UsageOfMigrateNodeNotMigratedProblem(it, SLinkOperations.getTarget(it, LINKS.applicableProperty$DrDe)));
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, "jetbrains.mps.lang.constraints"), 4);
   }
 

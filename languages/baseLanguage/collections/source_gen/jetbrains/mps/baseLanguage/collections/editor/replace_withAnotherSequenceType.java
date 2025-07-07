@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
@@ -32,11 +31,7 @@ public class replace_withAnotherSequenceType extends AbstractCellMenuComponent {
     protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
       List<SAbstractConcept> others = ListSequence.fromListAndArray(new ArrayList<SAbstractConcept>(), CONCEPTS.SequenceType$_s, CONCEPTS.ListType$LR, CONCEPTS.SetType$g6, CONCEPTS.SortedSetType$7K);
       SConcept act = CONCEPTS.AbstractContainerType$t4;
-      return ListSequence.fromList(others).concat(ListSequence.fromList(SConceptOperations.getAllSubConcepts2(act, SNodeOperations.getModel(node))).where(new IWhereFilter<SConcept>() {
-        public boolean accept(SConcept it) {
-          return !(it.isAbstract());
-        }
-      })).toListSequence();
+      return ListSequence.fromList(others).concat(ListSequence.fromList(SConceptOperations.getAllSubConcepts2(act, SNodeOperations.getModel(node))).where((it) -> !(it.isAbstract()))).toList();
     }
     protected SNode createReplacementNode(Object _parameterObject, SNode node, SModel model, EditorContext editorContext) {
       final SAbstractConcept parameterObject = (SAbstractConcept) _parameterObject;

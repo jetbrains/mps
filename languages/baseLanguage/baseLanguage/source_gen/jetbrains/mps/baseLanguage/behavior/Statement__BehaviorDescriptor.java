@@ -18,10 +18,7 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -33,11 +30,11 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class Statement__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
 
-  public static final SMethod<Boolean> isGuardClauseStatement_idi0z$q7V = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isGuardClauseStatement").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("i0z$q7V").build();
-  public static final SMethod<String> nodeDescription_id4oS1ku9jIXr = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("nodeDescription").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4oS1ku9jIXr").build();
-  public static final SMethod<Set<SNode>> uncaughtThrowables_id4Gt7ANIVAVT = new SMethodBuilder<Set<SNode>>(new SJavaCompoundTypeImpl((Class<Set<SNode>>) ((Class) Object.class))).name("uncaughtThrowables").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4Gt7ANIVAVT").build(SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
-  public static final SMethod<Void> collectUncaughtMethodThrowables_id4Gt7ANIVH8f = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectUncaughtMethodThrowables").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4Gt7ANIVH8f").build(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
-  public static final SMethod<Void> collectUncaughtMethodThrowables_id4Gt7ANIVBW7 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectUncaughtMethodThrowables").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4Gt7ANIVBW7").build(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> isGuardClauseStatement_idi0z$q7V = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isGuardClauseStatement").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1237547327995L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<String> nodeDescription_id4oS1ku9jIXr = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("nodeDescription").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5059799986155220827L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  public static final SMethod<Set<SNode>> uncaughtThrowables_id4Gt7ANIVAVT = new SMethodBuilder<Set<SNode>>(new SJavaCompoundTypeImpl((Class<Set<SNode>>) ((Class) Object.class))).name("uncaughtThrowables").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5412515780383108857L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
+  public static final SMethod<Void> collectUncaughtMethodThrowables_id4Gt7ANIVH8f = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectUncaughtMethodThrowables").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5412515780383134223L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
+  public static final SMethod<Void> collectUncaughtMethodThrowables_id4Gt7ANIVBW7 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectUncaughtMethodThrowables").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5412515780383112967L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isGuardClauseStatement_idi0z$q7V, nodeDescription_id4oS1ku9jIXr, uncaughtThrowables_id4Gt7ANIVAVT, collectUncaughtMethodThrowables_id4Gt7ANIVH8f, collectUncaughtMethodThrowables_id4Gt7ANIVBW7);
 
@@ -62,27 +59,7 @@ public final class Statement__BehaviorDescriptor extends BaseBHDescriptor {
     Statement__BehaviorDescriptor.collectUncaughtMethodThrowables_id4Gt7ANIVBW7.invoke(SNodeOperations.asSConcept(CONCEPTS.Statement$P6), throwables, __thisNode__);
   }
   /*package*/ static void collectUncaughtMethodThrowables_id4Gt7ANIVBW7(@NotNull SAbstractConcept __thisConcept__, final Set<SNode> throwables, SNode arg) {
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(arg, CONCEPTS.IMethodCall$M9, true, new SAbstractConcept[]{})).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$pyYw), LINKS.throwsItem$CdW$);
-      }
-    }).union(ListSequence.fromList(SNodeOperations.getNodeDescendants(arg, CONCEPTS.DefaultClassifierMethodCallOperation$9$, false, new SAbstractConcept[]{})).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.member$oLt6), LINKS.throwsItem$CdW$);
-      }
-    })).union(ListSequence.fromList(SNodeOperations.getNodeDescendants(arg, CONCEPTS.IThrowCheckedExceptions$Ox, false, new SAbstractConcept[]{})).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return (List<SNode>) IThrowCheckedExceptions__BehaviorDescriptor.getThrownExceptions_id6sjyiRHavr0.invoke(it);
-      }
-    })).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.ClassifierType$bL);
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode throwable) {
-        SetSequence.fromSet(throwables).addElement(SLinkOperations.getTarget(SNodeOperations.cast(throwable, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr));
-      }
-    });
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(arg, CONCEPTS.IMethodCall$M9, true, new SAbstractConcept[]{})).translate((it) -> SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$pyYw), LINKS.throwsItem$CdW$)).union(ListSequence.fromList(SNodeOperations.getNodeDescendants(arg, CONCEPTS.DefaultClassifierMethodCallOperation$9$, false, new SAbstractConcept[]{})).translate((it) -> SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.member$oLt6), LINKS.throwsItem$CdW$))).union(ListSequence.fromList(SNodeOperations.getNodeDescendants(arg, CONCEPTS.IThrowCheckedExceptions$Ox, false, new SAbstractConcept[]{})).translate((it) -> (List<SNode>) IThrowCheckedExceptions__BehaviorDescriptor.getThrownExceptions_id6sjyiRHavr0.invoke(it))).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.ClassifierType$bL)).visitAll((throwable) -> SetSequence.fromSet(throwables).addElement(SLinkOperations.getTarget(SNodeOperations.cast(throwable, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr)));
   }
 
   /*package*/ Statement__BehaviorDescriptor() {

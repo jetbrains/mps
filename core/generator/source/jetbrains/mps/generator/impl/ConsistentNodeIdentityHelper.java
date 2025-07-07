@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,14 +15,13 @@
  */
 package jetbrains.mps.generator.impl;
 
+import jetbrains.mps.smodel.SNodeImplAccess;
 import jetbrains.mps.smodel.SNodeUtil;
-import jetbrains.mps.smodel.StaticReference;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
-import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.util.DescendantsTreeIterator;
 
 import java.util.ArrayList;
@@ -107,13 +106,9 @@ import java.util.stream.StreamSupport;
    */
   private void makeReferencesDirect(SModel model) {
     final SModelReference modelRef = model.getReference();
-    for (SNode n : org.jetbrains.mps.openapi.model.SNodeUtil.getDescendants(model)) {
-      for (SReference r : n.getReferences()) {
-        if (r instanceof StaticReference && modelRef.equals(r.getTargetSModelReference())) {
-          // FWIW, StaticReference.makeDirect() doesn't constitute model write, is it good?
-          ((StaticReference) r).makeDirect();
-        }
-      }
+    for (SNode n : model.getRootNodes()) {
+      // FWIW, StaticReference.makeDirect() doesn't constitute model write, is it good?
+      new SNodeImplAccess(n).makeReferencesDirectWhen(modelRef);
     }
   }
 

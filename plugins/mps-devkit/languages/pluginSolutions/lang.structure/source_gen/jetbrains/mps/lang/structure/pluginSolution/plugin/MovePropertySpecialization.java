@@ -34,7 +34,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MovePropertySpecialization extends MoveConceptMemberSpecialization<SProperty> {
   public Tuples._2<SProperty, SNodeReference> fetchState(SNode movingNode, boolean filterOutInvalid) {
-    if (!((SNodeOperations.isInstanceOf(movingNode, CONCEPTS.PropertyDeclaration$1S) && SNodeOperations.hasRole(movingNode, LINKS.propertyDeclaration$YUgg) && SNodeOperations.getModel(movingNode).getModule() instanceof Language))) {
+    if (!(SNodeOperations.isInstanceOf(movingNode, CONCEPTS.PropertyDeclaration$1S) && SNodeOperations.hasRole(movingNode, LINKS.propertyDeclaration$YUgg) && SNodeOperations.getModel(movingNode).getModule() instanceof Language)) {
       return null;
     }
     SProperty deployedProperty = MetaAdapterByDeclaration.getProperty(movingNode);
@@ -69,12 +69,8 @@ public class MovePropertySpecialization extends MoveConceptMemberSpecialization<
     {
       SearchScope scope_fubpxk_a0e = CommandUtil.createScope(searchScope);
       final SearchScope scope_fubpxk_a0e_0 = new EditableFilteringScope(scope_fubpxk_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_fubpxk_a0e_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(oldProperty.getOwner()), false)).toListSequence();
+      QueryExecutionContext context = () -> scope_fubpxk_a0e_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(oldProperty.getOwner()), false)).toList();
     }
   }
   public void doReplaceInstance(SNode instance, SProperty oldProperty, SProperty newProperty) {

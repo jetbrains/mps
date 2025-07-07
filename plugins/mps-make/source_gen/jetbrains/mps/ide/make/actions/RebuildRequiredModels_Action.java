@@ -17,8 +17,6 @@ import jetbrains.mps.generator.ModelGenerationStatusManager;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 
 public class RebuildRequiredModels_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -27,6 +25,7 @@ public class RebuildRequiredModels_Action extends BaseAction {
     super("Rebuild Required Models", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -48,20 +47,10 @@ public class RebuildRequiredModels_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._T<List<SModel>> models = new Wrappers._T<List<SModel>>();
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        Iterable<? extends SModule> projectModules = event.getData(MPSCommonDataKeys.MPS_PROJECT).getProjectModulesWithGenerators();
-        final ModelGenerationStatusManager mgsm = event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(ModelGenerationStatusManager.class);
-        models.value = ListSequence.fromListWithValues(new ArrayList<SModel>(), Sequence.fromIterable(projectModules).translate(new ITranslator2<SModule, SModel>() {
-          public Iterable<SModel> translate(SModule it) {
-            return it.getModels();
-          }
-        }).where(new IWhereFilter<SModel>() {
-          public boolean accept(SModel it) {
-            return mgsm.generationRequired(it);
-          }
-        }));
-      }
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(() -> {
+      Iterable<? extends SModule> projectModules = event.getData(MPSCommonDataKeys.MPS_PROJECT).getProjectModulesWithGenerators();
+      final ModelGenerationStatusManager mgsm = event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(ModelGenerationStatusManager.class);
+      models.value = ListSequence.fromListWithValues(new ArrayList<SModel>(), Sequence.fromIterable(projectModules).translate((it) -> it.getModels()).where((it) -> mgsm.generationRequired(it)));
     });
     new MakeActionImpl(new MakeActionParameters(event.getData(MPSCommonDataKeys.MPS_PROJECT)).models(models.value).cleanMake(true)).executeAction();
   }

@@ -20,7 +20,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class AbstractTextGenParameter__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f84e1988dL, "jetbrains.mps.lang.textGen.structure.AbstractTextGenParameter");
 
-  public static final SMethod<Boolean> needConceptFunction_idhZKliUO = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needConceptFunction").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hZKliUO").build();
+  public static final SMethod<Boolean> needConceptFunction_idhZKliUO = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needConceptFunction").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1236687728308L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(needConceptFunction_idhZKliUO);
 

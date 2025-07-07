@@ -11,7 +11,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.pattern.behavior.PatternBuilder__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
@@ -29,11 +28,7 @@ public class PatternVariableDuplication_NonTypesystemRule extends AbstractNonTyp
     if (isEmptyString(SPropertyOperations.getString(variable, PROPS.name$MnvL))) {
       return;
     }
-    if (ListSequence.fromList(PatternBuilder__BehaviorDescriptor.getVariables_idPFUECvO1RN.invoke(SNodeOperations.getNodeAncestor(variable, CONCEPTS.PatternBuilder$2H, false, false))).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return it != variable && Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(variable, PROPS.name$MnvL));
-      }
-    })) {
+    if (ListSequence.fromList(PatternBuilder__BehaviorDescriptor.getVariables_idPFUECvO1RN.invoke(SNodeOperations.getNodeAncestor(variable, CONCEPTS.PatternBuilder$2H, false, false))).any((it) -> it != variable && Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(variable, PROPS.name$MnvL)))) {
       {
         final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$MnvL);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(variable, "Variable " + SPropertyOperations.getString(variable, PROPS.name$MnvL) + " is already declared", "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "8187773339869717326", null, errorTarget);

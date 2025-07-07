@@ -10,9 +10,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
-import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
-import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
@@ -24,13 +21,16 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.scope.ModelPlusImportedScope;
 import jetbrains.mps.lang.structure.constraints.Scopes;
-import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.scope.ModelPlusImportedScope;
+import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
+import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
+import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -42,11 +42,7 @@ public class IMenu_Concept_Constraints extends BaseConstraintsDescriptor {
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$MnvL, container);
-    }
-    @Override
-    public boolean hasOwnGetter() {
-      return true;
+      super(PROPS.name$MnvL, container, true, false, false);
     }
     @Override
     public Object getValue(SNode node) {
@@ -60,7 +56,6 @@ public class IMenu_Concept_Constraints extends BaseConstraintsDescriptor {
           return SPropertyOperations.getString(node, PROPS.name$MnvL);
       }
     }
-    private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5326ef9ad1607089L), MetaIdFactory.conceptId(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5326ef9ad160708aL)).seal();
   }
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
@@ -70,26 +65,22 @@ public class IMenu_Concept_Constraints extends BaseConstraintsDescriptor {
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.conceptDeclaration$h3E, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.conceptDeclaration$h3E, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_ftgaz8_a0a0a0a0a1a0a0a0e;
+            return new SNodePointer("r:00000000-0000-4000-0000-011c89590298(jetbrains.mps.lang.editor.constraints)", "5188168501463728172");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             SConcept acd = CONCEPTS.AbstractConceptDeclaration$KA;
-            if (!(SNodeOperations.getModel(_context.getContextNode()).getModule() instanceof Language)) {
-              return new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), true, acd);
+            if (Language.getLanguageFor(SNodeOperations.getModel(_context.getContextNode())) != null) {
+              return Scopes.forConcepts(_context.getContextNode(), acd);
             }
-            return Scopes.forLanguageConcepts(_context.getContextNode(), acd);
+            return new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), true, acd);
           }
         };
       }
@@ -98,7 +89,7 @@ public class IMenu_Concept_Constraints extends BaseConstraintsDescriptor {
     references.put(d0.getReference(), d0);
     return references;
   }
-  private static final SNodePointer breakingNode_ftgaz8_a0a0a0a0a1a0a0a0e = new SNodePointer("r:00000000-0000-4000-0000-011c89590298(jetbrains.mps.lang.editor.constraints)", "5188168501463728172");
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5326ef9ad1607089L), MetaIdFactory.conceptId(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5326ef9ad160708aL)).seal();
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept IMenu_Concept$6_ = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, "jetbrains.mps.lang.editor.structure.IMenu_Concept");

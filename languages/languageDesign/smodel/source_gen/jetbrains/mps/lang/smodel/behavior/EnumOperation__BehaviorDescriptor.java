@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class EnumOperation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1b4bba1ba0012cf5L, "jetbrains.mps.lang.smodel.structure.EnumOperation");
 
-  public static final SMethod<SNode> getEnumDecl_id66cvXGSmQgk = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getEnumDecl").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("66cvXGSmQgk").build();
+  public static final SMethod<SNode> getEnumDecl_id66cvXGSmQgk = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getEnumDecl").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7029133697938580500L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getEnumDecl_id66cvXGSmQgk);
 

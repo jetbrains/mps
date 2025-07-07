@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,13 +19,12 @@ import jetbrains.mps.actions.runtime.impl.ActionsUtil;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemCreatingCustomizationContext;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.nodeEditor.cellMenu.AbstractNodeSubstituteInfo;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstitutionAcceptable;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -39,7 +38,7 @@ import java.util.Optional;
  * Mar 29, 2005
  */
 public class DefaultChildNodeSubstituteAction extends AbstractNodeSubstituteAction {
-  private static final Logger LOG = LogManager.getLogger(DefaultChildNodeSubstituteAction.class);
+  private static final Logger LOG = Logger.getLogger(DefaultChildNodeSubstituteAction.class);
 
   private SNode myCurrentChild;
   private SNode myOldChild;
@@ -117,7 +116,7 @@ public class DefaultChildNodeSubstituteAction extends AbstractNodeSubstituteActi
       return false;
     }
     if (node.getParent() != null) {
-      LOG.warn("Node, created by " + this.getClass() + " action already has parent node.", new Throwable());
+      LOG.warning("Node, created by " + this.getClass() + " action already has parent node.", new Throwable());
     }
     if (ActionsUtil.isInstanceOfIType(node)) {
       return acceptable.acceptType(node);

@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -26,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class DailyPlan__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, "jetbrains.mps.samples.heating.structure.DailyPlan");
 
-  public static final SMethod<SNode> slotByStartTime_id2XgRSpVOzcU = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("slotByStartTime").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2XgRSpVOzcU").build(SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
+  public static final SMethod<SNode> slotByStartTime_id2XgRSpVOzcU = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("slotByStartTime").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3409470686615450426L).languageId(0x98ce995a7aa66941L, 0xa7d67633e8d9473bL).build2(SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(slotByStartTime_id2XgRSpVOzcU);
 
@@ -34,11 +33,7 @@ public final class DailyPlan__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode slotByStartTime_id2XgRSpVOzcU(@NotNull SNode __thisNode__, final int startTime) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.items$4wAy)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getInteger(it, PROPS.start$f2z3) == startTime;
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.items$4wAy)).findFirst((it) -> SPropertyOperations.getInteger(it, PROPS.start$f2z3) == startTime);
   }
 
   /*package*/ DailyPlan__BehaviorDescriptor() {

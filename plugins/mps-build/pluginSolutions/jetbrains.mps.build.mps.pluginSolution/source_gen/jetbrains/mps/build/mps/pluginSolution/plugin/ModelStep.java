@@ -6,13 +6,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Solution;
-import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.util.Collections;
-import org.jetbrains.mps.openapi.persistence.ModelRoot;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 
 public class ModelStep extends TwoOptionsStep<SModel> {
@@ -74,22 +68,10 @@ public class ModelStep extends TwoOptionsStep<SModel> {
     if (solution == null) {
       return new SModel[0];
     } else {
-      final List<SModel> modelsVariants = ListSequence.fromList(new ArrayList<SModel>());
-      myMPSProject.getModelAccess().runReadAction(new Runnable() {
-        @Override
-        public void run() {
-          Iterable<SModel> models = Sequence.fromIterable(Collections.<SModel>emptyList());
-          for (ModelRoot mr : solution.getModelRoots()) {
-            models = Sequence.fromIterable(models).concat(Sequence.fromIterable(mr.getModels()));
-          }
-          ListSequence.fromList(modelsVariants).addSequence(Sequence.fromIterable(models).where(new IWhereFilter<SModel>() {
-            public boolean accept(SModel it) {
-              return it instanceof EditableSModel && !(it.isReadOnly());
-            }
-          }));
-        }
+      return new ModelAccessHelper(myMPSProject.getModelAccess()).runReadAction(() -> {
+        // MR condition is likely to filter out artificial/manually registered models
+        return solution.getModels((SModel m) -> m.getModelRoot() != null && m instanceof EditableSModel && !(m.isReadOnly())).toArray(new SModel[0]);
       });
-      return ListSequence.fromList(modelsVariants).toGenericArray(SModel.class);
     }
   }
 

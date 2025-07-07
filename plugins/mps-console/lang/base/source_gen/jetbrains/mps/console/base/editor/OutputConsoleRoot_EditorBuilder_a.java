@@ -86,7 +86,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
         editorCell.setSRole(LINKS.history$LSLq);
       }
       Style style = new StyleImpl();
-      new ReadOnlyStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      new ReadOnlyStyleClass(this).apply(style, editorCell);
       editorCell.getStyle().putAll(style);
     }
     @Override

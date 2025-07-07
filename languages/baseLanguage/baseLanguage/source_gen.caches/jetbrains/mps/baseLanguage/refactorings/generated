@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-aokowab6p4ngcyl26tb91d5f2fxm1gh">
-  <files names="ChangeMethodSignature.java:ChangeMethodSignature_Target.java:MakeFieldFinal.java:MakeFieldFinal_Target.java:MakeFieldStatic.java:MakeFieldStatic_Target.java:RefactoringAspectDescriptor.java:SafeDeleteConceptMethod.java:SafeDeleteConceptMethod_Target.java:SafeDeleteMethod.java" />
+<product version="3" modelHash="bi8dpmnhly3ff7whp2we743dd4zkqoj">
+  <files names="ChangeMethodSignature.java:ChangeMethodSignature_Target.java:MakeFieldFinal.java:MakeFieldFinal_Target.java:MakeFieldStatic.java:MakeFieldStatic_Target.java:RefactoringAspectDescriptor.java:ReplaceFieldWithProperty.java:ReplaceFieldWithProperty_Target.java:ReplacePropertyWithField.java:ReplacePropertyWithField_Target.java:SafeDeleteConceptMethod.java:SafeDeleteConceptMethod_Target.java:SafeDeleteMethod.java" />
 </product>
 

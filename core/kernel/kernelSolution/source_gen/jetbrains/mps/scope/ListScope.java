@@ -11,10 +11,12 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.Collection;
+import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -22,7 +24,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 @GeneratedClass(node = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)/5455284157994035575", model = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)")
 public abstract class ListScope extends Scope {
-  private Iterable<SNode> elements;
+  private final Iterable<SNode> elements;
+
   public ListScope(Iterable<SNode> elements) {
     if (elements == null) {
       this.elements = Sequence.fromIterable(Collections.<SNode>emptyList());
@@ -51,13 +54,14 @@ public abstract class ListScope extends Scope {
   public Iterable<SNode> getAvailableElements(@Nullable String prefix) {
     List<SNode> result = new ArrayList<SNode>();
     for (SNode n : elements) {
-      String name = getName(n);
-      if (name == null) {
-        continue;
+      if (prefix != null) {
+        String name = getName(n);
+        if (name == null || !(name.startsWith(prefix))) {
+          continue;
+        }
+        // fall-through
       }
-      if (prefix == null || name.startsWith(prefix)) {
-        ListSequence.fromList(result).addElement(n);
-      }
+      ListSequence.fromList(result).addElement(n);
     }
     return result;
   }
@@ -80,6 +84,21 @@ public abstract class ListScope extends Scope {
       }
     }
     return result;
+  }
+
+
+  @Override
+  public boolean contains(SNode node) {
+    // XXX I wonder if LRU cache with capacity say ~5-10% of elements won't help in case of huge lists?
+    if (elements instanceof Collection) {
+      return ((Collection<?>) elements).contains(node);
+    }
+    for (SNode n : elements) {
+      if (n == node || Objects.equals(n, node)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   public abstract String getName(SNode child);
@@ -114,7 +133,7 @@ public abstract class ListScope extends Scope {
         if ((resolveInfo != null && resolveInfo.length() > 0)) {
           return resolveInfo;
         }
-        return ((String) (String) BHReflection.invoke0(child, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
+        return ((String) (String) BHReflection.invoke0(child, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getPresentation", 1213877396640L, 0x553941aeb020c32eL)));
       }
     };
   }

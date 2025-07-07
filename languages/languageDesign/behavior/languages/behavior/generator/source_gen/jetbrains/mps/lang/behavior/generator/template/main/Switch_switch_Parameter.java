@@ -61,13 +61,13 @@ public class Switch_switch_Parameter extends TemplateSwitchBase implements Templ
         {
           Collection<SNode> tlist2 = null;
           {
-            final SNode switchInput2 = QueriesGenerated.sourceNodeQuery_7_0(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_vnjhlw_b0a0a0a1a3a2a2f));
+            final SNode switchInput2 = QueriesGenerated.sourceNodeQuery_7_0(new SourceSubstituteMacroNodeContext(context1, switchMacroRef));
             if (switchInput2 == null) {
               tlist2 = Collections.emptyList();
             } else {
               TemplateContext switchContext2 = context1;
               switchContext2 = switchContext2.subContext(null, switchInput2);
-              tlist2 = environment.trySwitch(templateSwitchNode_vnjhlw_a0a0c0a1a1a3a2a2f, switchContext2);
+              tlist2 = environment.trySwitch(templateSwitchNode, switchContext2);
               if (tlist2 == null) {
                 final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
                 environment.associate(tnode3, myAssociationLinks[2], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object");
@@ -100,13 +100,13 @@ public class Switch_switch_Parameter extends TemplateSwitchBase implements Templ
         {
           Collection<SNode> tlist2 = null;
           {
-            final SNode switchInput2 = QueriesGenerated.sourceNodeQuery_7_1(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_vnjhlw_b0a0a0a1a3a2a1g));
+            final SNode switchInput2 = QueriesGenerated.sourceNodeQuery_7_1(new SourceSubstituteMacroNodeContext(context1, switchMacroRef1));
             if (switchInput2 == null) {
               tlist2 = Collections.emptyList();
             } else {
               TemplateContext switchContext2 = context1;
               switchContext2 = switchContext2.subContext(null, switchInput2);
-              tlist2 = environment.trySwitch(templateSwitchNode_vnjhlw_a0a0c0a1a1a3a2a1g, switchContext2);
+              tlist2 = environment.trySwitch(templateSwitchNode1, switchContext2);
               if (tlist2 == null) {
                 final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
                 environment.associate(tnode3, myAssociationLinks[2], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object");
@@ -152,10 +152,10 @@ public class Switch_switch_Parameter extends TemplateSwitchBase implements Templ
       return rv;
     }
   }
-  private static final SNodePointer switchMacroRef_vnjhlw_b0a0a0a1a3a2a2f = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4698411099515193570");
-  private static final SNodePointer templateSwitchNode_vnjhlw_a0a0c0a1a1a3a2a2f = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "2356949341616134045");
-  private static final SNodePointer switchMacroRef_vnjhlw_b0a0a0a1a3a2a1g = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7830995205626232435");
-  private static final SNodePointer templateSwitchNode_vnjhlw_a0a0c0a1a1a3a2a1g = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "2356949341616134045");
+  private static final SNodePointer switchMacroRef = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4698411099515193570");
+  private static final SNodePointer templateSwitchNode = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "2356949341616134045");
+  private static final SNodePointer switchMacroRef1 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7830995205626232435");
+  private static final SNodePointer templateSwitchNode1 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "2356949341616134045");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ParameterDeclaration$RG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");

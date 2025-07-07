@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.idea.java.sourceStubs;
 
-import com.intellij.openapi.util.SystemInfo;
+import com.intellij.util.lang.JavaVersion;
 import jetbrains.mps.idea.core.project.JpsModelRootContributor;
 import org.jetbrains.jps.model.module.JpsModule;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
@@ -25,7 +25,7 @@ public class J8JavaSourceJpsModelRootContributor implements JpsModelRootContribu
 
   @Override
   public Iterable<ModelRoot> getModelRoots(JpsModule module) {
-    if (!SystemInfo.isJavaVersionAtLeast(11)) {
+    if (!JavaVersion.current().isAtLeast(11)) {
       return null;
     }
 

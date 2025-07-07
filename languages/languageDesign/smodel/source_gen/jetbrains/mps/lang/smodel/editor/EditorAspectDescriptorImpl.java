@@ -334,48 +334,50 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     }
     return Collections.<ConceptEditor>emptyList();
   }
-
+  private Collection<ConceptEditorComponent> getDeclaredEC_0(String editorComponentId) {
+    if ("jetbrains.mps.lang.smodel.editor.EnumOperation_Alias".equals(editorComponentId)) {
+      return Collections.singletonList(new EnumOperation_Alias());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_1(String editorComponentId) {
+    if ("jetbrains.mps.lang.smodel.editor.AliasComponent".equals(editorComponentId)) {
+      return Collections.singletonList(new AliasComponent());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_2(String editorComponentId) {
+    if ("jetbrains.mps.lang.smodel.editor.ModelReferenceFQName".equals(editorComponentId)) {
+      return Collections.singletonList(new ModelReferenceFQName());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_3(String editorComponentId) {
+    switch (editorComponentId) {
+      case "jetbrains.mps.lang.smodel.editor.ReplaceableAliasAndParms_Comp":
+        return Collections.singletonList(new ReplaceableAliasAndParms_Comp());
+      case "jetbrains.mps.lang.smodel.editor.ReplaceableAlias_Comp":
+        return Collections.singletonList(new ReplaceableAlias_Comp());
+    }
+    return Collections.emptyList();
+  }
   @NotNull
   public Collection<ConceptEditorComponent> getDeclaredEditorComponents(SAbstractConcept concept, String editorComponentId) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
     switch (conceptIndex1.index(cncpt)) {
       case 0:
-        if (true) {
-          if ("jetbrains.mps.lang.smodel.editor.EnumOperation_Alias".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new EnumOperation_Alias());
-          }
-        }
-        break;
+        return getDeclaredEC_0(editorComponentId);
       case 1:
-        if (true) {
-          if ("jetbrains.mps.lang.smodel.editor.AliasComponent".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new AliasComponent());
-          }
-        }
-        break;
+        return getDeclaredEC_1(editorComponentId);
       case 2:
-        if (true) {
-          if ("jetbrains.mps.lang.smodel.editor.ModelReferenceFQName".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new ModelReferenceFQName());
-          }
-        }
-        break;
+        return getDeclaredEC_2(editorComponentId);
       case 3:
-        if (true) {
-          switch (editorComponentId) {
-            case "jetbrains.mps.lang.smodel.editor.ReplaceableAliasAndParms_Comp":
-              return Collections.<ConceptEditorComponent>singletonList(new ReplaceableAliasAndParms_Comp());
-            case "jetbrains.mps.lang.smodel.editor.ReplaceableAlias_Comp":
-              return Collections.<ConceptEditorComponent>singletonList(new ReplaceableAlias_Comp());
-            default:
-              return Collections.<ConceptEditorComponent>emptyList();
-          }
-        }
-        break;
+        return getDeclaredEC_3(editorComponentId);
       default:
     }
-    return Collections.<ConceptEditorComponent>emptyList();
+    return Collections.emptyList();
   }
+
 
   @NotNull
   @Override

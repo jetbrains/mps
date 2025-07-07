@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,12 +18,11 @@ package jetbrains.mps.ide.editor;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.util.containers.MultiMap;
 import jetbrains.mps.ide.ThreadUtils;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorComponent.EditorDisposeListener;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.extensions.EditorExtension;
 import jetbrains.mps.openapi.editor.extensions.EditorExtensionRegistry;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -33,7 +32,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class EditorExtensionRegistryImpl implements EditorExtensionRegistry, ProjectComponent {
-  private static final Logger LOG = LogManager.getLogger(EditorExtensionRegistryImpl.class);
+  private static final Logger LOG = Logger.getLogger(EditorExtensionRegistryImpl.class);
 
   private final Set<EditorExtension> myExtensions = new HashSet<>();
   private final MultiMap<EditorComponent, EditorExtension> myEditorExtensions = MultiMap.create();

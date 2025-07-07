@@ -88,7 +88,7 @@ public class StructDifferenceDialog extends DialogWrapper implements DataProvide
     myNodeDifferencePane = new StructDifferencePane(myProject, myChangeSet, myContentTitles);
     DefaultActionGroup actionGroup = new DefaultActionGroup();
     actionGroup.addAll(myNodeDifferencePane.getActions());
-    ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, actionGroup, true);
+    ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, actionGroup, true);
     myNodeDifferencePane.registerShortcuts(myComponent);
     myComponent.add(toolbar.getComponent(), BorderLayout.NORTH);
     myComponent.add(myNodeDifferencePane.getPanel(), BorderLayout.CENTER);

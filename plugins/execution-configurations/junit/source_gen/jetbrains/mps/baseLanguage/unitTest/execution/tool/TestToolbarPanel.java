@@ -64,6 +64,7 @@ public class TestToolbarPanel extends JPanel {
     actionGroup.addSeparator();
     actionGroup.addAction(createExportTestResultsAction());
     ActionToolbar toolbarActions = ActionManager.getInstance().createActionToolbar(ActionPlaces.TESTTREE_VIEW_TOOLBAR, actionGroup, true);
+    toolbarActions.setTargetComponent(myTree);
     add(toolbarActions.getComponent(), BorderLayout.CENTER);
   }
 
@@ -117,7 +118,7 @@ public class TestToolbarPanel extends JPanel {
   private ToggleAction createHidePassedAction() {
     return new ToggleAction("Hide Passed", "Hide passed tests", AllIcons.RunConfigurations.HidePassed) {
       {
-        setSelected(null, UnitTestOptions.isHidePassed());
+        setSelected(((AnActionEvent) null), UnitTestOptions.isHidePassed());
       }
 
       @Override
@@ -137,7 +138,7 @@ public class TestToolbarPanel extends JPanel {
   private ToggleAction cteateTrackRunningAction() {
     return new ToggleAction("Track Running Test", "Select currently running test in tree", AllIcons.Nodes.Jsf.Renderer) {
       {
-        setSelected(null, UnitTestOptions.isTrackRunning());
+        setSelected(((AnActionEvent) null), UnitTestOptions.isTrackRunning());
       }
 
       @Override
@@ -212,7 +213,7 @@ public class TestToolbarPanel extends JPanel {
   private ToggleAction createSelectFirstFailedAction() {
     return new ToggleAction("Select First Failed Test When Finished", "", AllIcons.RunConfigurations.ToolbarFailed) {
       {
-        setSelected(null, UnitTestOptions.isSelectFirstFailed());
+        setSelected(((AnActionEvent) null), UnitTestOptions.isSelectFirstFailed());
       }
 
       @Override

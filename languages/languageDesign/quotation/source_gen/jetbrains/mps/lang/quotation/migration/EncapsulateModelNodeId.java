@@ -38,11 +38,7 @@ public class EncapsulateModelNodeId extends MigrationScriptBase {
     {
       SearchScope scope_kbnq7e_a0e = CommandUtil.createScope(m);
       final SearchScope scope_kbnq7e_a0e_0 = new EditableFilteringScope(scope_kbnq7e_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_kbnq7e_a0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_kbnq7e_a0e_0;
       for (SNode quotation : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.Quotation$Vl, false))) {
         if ((SLinkOperations.getTarget(quotation, LINKS.modelToCreate_old$iC5) != null) && (SLinkOperations.getTarget(quotation, LINKS.modelToCreate$$LCB) == null)) {
           SLinkOperations.setNewChild(quotation, LINKS.modelToCreate$$LCB, null);
@@ -63,11 +59,7 @@ public class EncapsulateModelNodeId extends MigrationScriptBase {
     {
       SearchScope scope_kbnq7e_a0f = CommandUtil.createScope(m);
       final SearchScope scope_kbnq7e_a0f_0 = new EditableFilteringScope(scope_kbnq7e_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_kbnq7e_a0f_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_kbnq7e_a0f_0;
       List<Problem> result = ListSequence.fromList(new ArrayList<Problem>());
       for (SNode quotation : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.Quotation$Vl, false))) {
         if ((SLinkOperations.getTarget(quotation, LINKS.modelToCreate_old$iC5) != null)) {
@@ -85,7 +77,7 @@ public class EncapsulateModelNodeId extends MigrationScriptBase {
       return result;
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, "jetbrains.mps.lang.quotation"), 3);
   }
 

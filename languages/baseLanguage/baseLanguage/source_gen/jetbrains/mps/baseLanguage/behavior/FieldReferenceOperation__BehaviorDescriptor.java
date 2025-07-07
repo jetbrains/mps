@@ -32,11 +32,11 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class FieldReferenceOperation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation");
 
-  public static final SMethod<String> getVariableExpectedName_idhEwIP$B = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVariableExpectedName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIP$B").build();
-  public static final SMethod<Boolean> isDotExpressionLegalAsStatement_idi26OiY_ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDotExpressionLegalAsStatement").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("i26OiY_").build();
-  public static final SMethod<Boolean> canBeConvertedToLocal_id4APqwMfC3hI = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeConvertedToLocal").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4APqwMfC3hI").build();
-  public static final SMethod<Void> convertToLocal_id4APqwMfCtHb = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("convertToLocal").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4APqwMfCtHb").build();
-  public static final SMethod<Boolean> lvalue_id1653mnvAgvW = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("lvalue").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1653mnvAgvW").build();
+  public static final SMethod<String> getVariableExpectedName_idhEwIP$B = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVariableExpectedName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877410087L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> isDotExpressionLegalAsStatement_idi26OiY_ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDotExpressionLegalAsStatement").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1239212437413L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> canBeConvertedToLocal_id4APqwMfC3hI = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeConvertedToLocal").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5311267937735160942L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Void> convertToLocal_id4APqwMfCtHb = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("convertToLocal").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5311267937735269195L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> lvalue_id1653mnvAgvW = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("lvalue").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498364L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableExpectedName_idhEwIP$B, isDotExpressionLegalAsStatement_idi26OiY_, canBeConvertedToLocal_id4APqwMfC3hI, convertToLocal_id4APqwMfCtHb, lvalue_id1653mnvAgvW);
 
@@ -61,10 +61,10 @@ public final class FieldReferenceOperation__BehaviorDescriptor extends BaseBHDes
     Scope localsScope = Scope.getScope(Scope.parent(__thisNode__), __thisNode__, CONCEPTS.LocalVariableDeclaration$41);
     List<SNode> vars = new ArrayList<SNode>();
     if (localsScope != null) {
-      vars.addAll(Sequence.fromIterable(localsScope.getAvailableElements(null)).toListSequence());
+      vars.addAll(Sequence.fromIterable(localsScope.getAvailableElements(null)).toList());
     }
     if (paramsScope != null) {
-      vars.addAll(Sequence.fromIterable(paramsScope.getAvailableElements(null)).toListSequence());
+      vars.addAll(Sequence.fromIterable(paramsScope.getAvailableElements(null)).toList());
     }
 
     SNode field = SLinkOperations.getTarget(__thisNode__, LINKS.fieldDeclaration$H7Ag);
@@ -81,7 +81,7 @@ public final class FieldReferenceOperation__BehaviorDescriptor extends BaseBHDes
     }
     SNode classifier = ClassConcept__BehaviorDescriptor.getContextClass_id6WzWPTX2$6q.invoke(SNodeOperations.asSConcept(CONCEPTS.ClassConcept$bK), __thisNode__);
     SNode declarationClassifier = SNodeOperations.getNodeAncestor(field, CONCEPTS.Classifier$Ix, false, false);
-    if (!((classifier == declarationClassifier || ListSequence.fromList(SNodeOperations.getNodeAncestors(classifier, null, false)).contains(declarationClassifier)))) {
+    if (!(classifier == declarationClassifier || ListSequence.fromList(SNodeOperations.getNodeAncestors(classifier, null, false)).contains(declarationClassifier))) {
       return false;
     }
     while (classifier != declarationClassifier) {

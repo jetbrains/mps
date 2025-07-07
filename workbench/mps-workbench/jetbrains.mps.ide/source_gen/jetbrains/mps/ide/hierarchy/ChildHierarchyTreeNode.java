@@ -6,6 +6,8 @@ import jetbrains.mps.annotations.GeneratedClass;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.HashSet;
+import com.intellij.openapi.application.AccessToken;
+import com.intellij.util.SlowOperations;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -20,7 +22,7 @@ import com.intellij.icons.AllIcons;
 public class ChildHierarchyTreeNode extends HierarchyTreeNode {
   private final AbstractHierarchyTree myHierarchyTree;
   private boolean myInitialized = false;
-  private Set<SNode> myVisited;
+  private final Set<SNode> myVisited;
 
   public ChildHierarchyTreeNode(SNode declaration, AbstractHierarchyTree tree, Set<SNode> visited) {
     super(declaration);
@@ -36,7 +38,7 @@ public class ChildHierarchyTreeNode extends HierarchyTreeNode {
 
   @Override
   protected void doInit() {
-    try {
+    try (AccessToken unused = SlowOperations.allowSlowOperations("hierarchy-tree")) {
       //  FIXME we still use cached SNode instance here, as tree node's user object
       SNode node = (SNode) getUserObject();
       updateIcon(node);
@@ -62,8 +64,9 @@ public class ChildHierarchyTreeNode extends HierarchyTreeNode {
       errorTreeNode.setColor(JBColor.RED);
       errorTreeNode.setAdditionalText(message);
       add(errorTreeNode);
+    } finally {
+      myInitialized = true;
     }
-    myInitialized = true;
   }
 
   private void updateIcon(SNode node) {

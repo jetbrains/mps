@@ -10,6 +10,7 @@
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="beg" ref="r:09811e4e-aa47-4ea2-ad3d-57b7b9ffc7e3(jetbrains.mps.lang.constraints.plugin)" />
+    <import index="tp4f" ref="r:00000000-0000-4000-0000-011c89590373(jetbrains.mps.baseLanguage.classifiers.structure)" />
     <import index="tpc2" ref="r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)" implicit="true" />
   </imports>
   <registry>
@@ -87,7 +88,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -435,17 +436,27 @@
       <property role="IQ2ns" value="1426851521646478396" />
       <ref role="20lvS9" node="1fdcuoIX_DM" resolve="ConstraintFunction_GetInstanceIcon" />
     </node>
+    <node concept="1TJgyj" id="hz2lrYP" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="methodDeclaration" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
+      <property role="IQ2ns" value="1205851242421" />
+      <ref role="20lvS9" to="tp4f:hyXrIf3" resolve="DefaultClassifierMethodDeclaration" />
+    </node>
     <node concept="PrWs8" id="hDM2kSs" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
     <node concept="PrWs8" id="7KX5Yh0wt0_" role="PzmwI">
       <ref role="PrY4T" to="tpce:2hxg_BDjKM4" resolve="IConceptAspect" />
     </node>
+    <node concept="PrWs8" id="3AueY_NGts$" role="PzmwI">
+      <ref role="PrY4T" to="tp4f:hyWqMFP" resolve="IClassifier" />
+    </node>
     <node concept="1QGGSu" id="4Q8sAA5iJSr" role="rwd14">
       <property role="1iqoE4" value="${module}/icons/constraints.png" />
     </node>
     <node concept="1sEMCm" id="5wIG6OxYQAk" role="bvy1s">
-      <property role="1sEMCp" value="constraints.html" />
+      <property role="1sEMCp" value="constraints.html#canbechild/parent/ancestor/root" />
       <ref role="1fZFei" to="beg:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
   </node>
@@ -771,6 +782,55 @@
       <property role="20kJfa" value="editor" />
       <property role="20lbJX" value="fLJekj4/1" />
       <ref role="20lvS9" to="tpc2:fIwURLg" resolve="BaseEditorComponent" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="1EUJGK9Snwb">
+    <property role="EcuMT" value="1926061574202685451" />
+    <property role="TrG5h" value="ModelScopeEval" />
+    <property role="34LRSv" value="for model" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
+    <node concept="1TJgyj" id="1EUJGK9Snwc" role="1TKVEi">
+      <property role="IQ2ns" value="1926061574202685452" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="factory" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+    </node>
+    <node concept="1TJgyj" id="1EUJGK9SnwZ" role="1TKVEi">
+      <property role="IQ2ns" value="1926061574202685503" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="cacheKey" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="1EUJGK9SnEz">
+    <property role="EcuMT" value="1926061574202686115" />
+    <property role="TrG5h" value="RefScopeType" />
+    <property role="34LRSv" value="scope" />
+    <property role="R4oN_" value="reference scope type" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1H" resolve="Type" />
+  </node>
+  <node concept="1TIwiD" id="1EUJGK9Tmvq">
+    <property role="EcuMT" value="1926061574202943450" />
+    <property role="TrG5h" value="RootScopeEval" />
+    <property role="R4oN_" value="visible roots" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
+    <node concept="1TJgyj" id="1EUJGK9Tmvr" role="1TKVEi">
+      <property role="IQ2ns" value="1926061574202943451" />
+      <property role="20kJfa" value="kind" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="1EUJGK9Tmvt">
+    <property role="EcuMT" value="1926061574202943453" />
+    <property role="TrG5h" value="NodeScopeEval" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
+    <node concept="1TJgyj" id="1EUJGK9Tmvu" role="1TKVEi">
+      <property role="IQ2ns" value="1926061574202943454" />
+      <property role="20kJfa" value="kind" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
     </node>
   </node>
 </model>

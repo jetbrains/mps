@@ -21,9 +21,10 @@ import com.intellij.openapi.actionSystem.ActionGroup;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.workbench.action.ActionUtils;
 import javax.swing.SwingUtilities;
+import jetbrains.mps.baseLanguage.unitTest.execution.client.TestDescriptorWrapper;
 import java.util.LinkedList;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestNodeEvent;
@@ -36,7 +37,7 @@ import jetbrains.mps.baseLanguage.unitTest.execution.TextTestEvent;
  * we need to remove string association aka TestNameMap
  */
 public class TestTree extends MPSTree implements Disposable, TestStateListener {
-  private final RootTestTreeNode myRoot = new RootTestTreeNode();
+  private RootTestTreeNode myRoot;
 
   @NotNull
   private final Project myProject;
@@ -106,6 +107,12 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
     myAnimator.scheduleRepaint(treeNode);
   }
 
+  private void updateDisplayName(ITestNodeWrapper nodeWrapper, String displayName) {
+    TestTreeNode treeNode = getUINodeByModelNode(nodeWrapper);
+    treeNode.setText(displayName);
+    myAnimator.scheduleRepaint(treeNode);
+  }
+
   @Override
   protected ActionGroup createPopupActionGroup(MPSTreeNode node) {
     if (node instanceof TestCaseTreeNode) {
@@ -149,7 +156,12 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
   }
 
   private ITestNodeWrapper getParent(@NotNull ITestNodeWrapper testNode) {
-    return testNode.getTestCase();
+    ITestNodeWrapper testCase = testNode.getTestCase();
+    if (testCase instanceof TestDescriptorWrapper && ((TestDescriptorWrapper) testCase).getDescriptor().isRoot()) {
+      return null;
+
+    }
+    return testCase;
   }
 
   @NotNull
@@ -158,7 +170,7 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
       return ListSequence.fromList(new LinkedList<ITestNodeWrapper>());
     }
     Iterable<ITestNodeWrapper> testMethods = MapSequence.fromMap(myTestCase2MethodsMap).get(testNode);
-    return Sequence.fromIterable(testMethods).toListSequence();
+    return Sequence.fromIterable(testMethods).toList();
   }
 
   @NotNull
@@ -188,7 +200,10 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
     boolean hidePassed = UnitTestOptions.isHidePassed();
 
     boolean allTestCasesPassed = true;
-    myRoot.removeAllChildren();
+    if (myRoot != null) {
+      myRoot.removeAllChildren();
+    }
+    this.myRoot = new RootTestTreeNode();
     for (ITestNodeWrapper testCase : SetSequence.fromSet(MapSequence.fromMap(myTestCase2MethodsMap).keySet())) {
       assert testCase != null;
       boolean allTestMethodsPassed = true;
@@ -215,8 +230,8 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
   }
 
   public boolean hasNotPassedTests() {
-    return MapSequence.fromMap(myTests2State).any(new IWhereFilter<IMapping<ITestNodeWrapper, TestState>>() {
-      public boolean accept(IMapping<ITestNodeWrapper, TestState> it) {
+    return MapSequence.fromMap(myTests2State).any(new _FunctionTypes._return_P1_E0<Boolean, IMapping<ITestNodeWrapper, TestState>>() {
+      public Boolean invoke(IMapping<ITestNodeWrapper, TestState> it) {
         return it.value() != TestState.PASSED;
       }
     });
@@ -238,13 +253,18 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
   }
 
   @Override
-  public void onTestRunStarted() {
+  public void onTestRunStarted(TestNodeEvent event) {
+    ITestNodeWrapper currentNode = event.getTestKey().getNode();
+    String displayName = event.getRawEvent().getDisplayName();
+    if (displayName != null) {
+      updateDisplayName(currentNode, displayName);
+    }
   }
 
   private void selectFirstFailedTestIfNeeded() {
     if (UnitTestOptions.isSelectFirstFailed()) {
-      IMapping<ITestNodeWrapper, TestState> state = MapSequence.fromMap(myTests2State).findFirst(new IWhereFilter<IMapping<ITestNodeWrapper, TestState>>() {
-        public boolean accept(IMapping<ITestNodeWrapper, TestState> it) {
+      IMapping<ITestNodeWrapper, TestState> state = MapSequence.fromMap(myTests2State).findFirst(new _FunctionTypes._return_P1_E0<Boolean, IMapping<ITestNodeWrapper, TestState>>() {
+        public Boolean invoke(IMapping<ITestNodeWrapper, TestState> it) {
           return it.value() != TestState.PASSED;
         }
       });
@@ -253,11 +273,7 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
       }
       ITestNodeWrapper firstNotPassed = state.key();
       final TestTreeNode treeNode = getUINodeByModelNode(firstNotPassed);
-      TestTree.invokeLater(new Runnable() {
-        public void run() {
-          setCurrentNode(treeNode);
-        }
-      });
+      TestTree.invokeLater(() -> setCurrentNode(treeNode));
     }
   }
 
@@ -280,12 +296,12 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
   public void onTestStart(TestNodeEvent event) {
     final ITestNodeWrapper currentNode = event.getTestKey().getNode();
     updateState(currentNode, TestState.IN_PROGRESS);
+    String displayName = event.getRawEvent().getDisplayName();
+    if (displayName != null) {
+      updateDisplayName(currentNode, displayName);
+    }
     if (UnitTestOptions.isTrackRunning()) {
-      TestTree.invokeLater(new Runnable() {
-        public void run() {
-          setCurrentNode(getUINodeByModelNode(currentNode));
-        }
-      });
+      TestTree.invokeLater(() -> setCurrentNode(getUINodeByModelNode(currentNode)));
     }
   }
 

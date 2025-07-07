@@ -25,7 +25,6 @@ import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ConnectorDecorator
 import jetbrains.jetpad.model.property.ReadableProperty;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -177,11 +176,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
     private PolyLineConnection createConnection() {
       PolyLineConnection connection = new PolyLineConnection();
-      configureView(connection.view(), new _FunctionTypes._return_P0_E0<Boolean>() {
-        public Boolean invoke() {
-          return true;
-        }
-      });
+      configureView(connection.view(), () -> true);
 
       return connection;
     }

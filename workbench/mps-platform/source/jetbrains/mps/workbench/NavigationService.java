@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -63,6 +63,13 @@ public final class NavigationService {
     // first, use updated code
     participants.addAll(POINT.getPoint(myProject).getExtensionList());
     // legacy mechanism
+    // although I removed the last known use of registration through PF, I left the legacy
+    // mechanism as I realized EXT_POINT mechanism is not well suited for MPS plugin contributors
+    // (in case there's a need to contribute custom participants). Writing an IDEA Plugin might not
+    // be the best option. OTOH, again, I see little value in using this participants mechanism at all,
+    // as it serves the only purpose to use IDEA indexing mechanism. If/when we got proper model indexing,
+    // we don't care to index files and then go a long road from model's DataSource to IFile to
+    // VirtualFile and back just to query IDEA index.
     participants.addAll(PersistenceFacade.getInstance().getNavigationParticipants());
 
     monitor.start("Finding targets...", participants.size() + 5);

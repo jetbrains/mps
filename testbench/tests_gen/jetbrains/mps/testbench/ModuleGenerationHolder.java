@@ -19,9 +19,7 @@ import jetbrains.mps.make.script.IScript;
 import jetbrains.mps.make.MakeSession;
 import jetbrains.mps.internal.make.cfg.TextGenFacetInitializer;
 import jetbrains.mps.internal.make.cfg.MakeFacetInitializer;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.internal.make.cfg.GenerateFacetInitializer;
 import jetbrains.mps.make.script.IScriptController;
 import jetbrains.mps.progress.EmptyProgressMonitor;
@@ -29,8 +27,8 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.IMapping;
+import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import difflib.Patch;
 import difflib.DiffUtils;
 import java.io.BufferedReader;
@@ -41,7 +39,6 @@ import java.util.Queue;
 import jetbrains.mps.internal.collections.runtime.QueueSequence;
 import java.util.LinkedList;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.make.script.ScriptBuilder;
@@ -49,8 +46,6 @@ import jetbrains.mps.make.facet.FacetRegistry;
 import jetbrains.mps.make.facet.IFacet;
 import jetbrains.mps.make.facet.ITarget;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.make.resources.IResource;
 import java.util.Collections;
 import jetbrains.mps.smodel.resources.ModelsToResources;
@@ -104,11 +99,7 @@ public class ModuleGenerationHolder {
     // trace.info is useless for tests, however we do keep these files in repo, and diffModule test
     // fails if we don't generate one here
     TextGenFacetInitializer tgfi = new TextGenFacetInitializer().generateDebugInfo(true);
-    MakeFacetInitializer mfi = new MakeFacetInitializer().setPathToFile(new _FunctionTypes._return_P1_E0<IFile, String>() {
-      public IFile invoke(String path) {
-        return FileSystem.getInstance().getFile(tmpFile(path));
-      }
-    });
+    MakeFacetInitializer mfi = new MakeFacetInitializer().setFileToFile((IFile f) -> tmpFile(f));
     GenerateFacetInitializer gfi = new GenerateFacetInitializer().setGenerationOptions(optBuilder);
     IScriptController ctl = new IScriptController.Stub2(session, tgfi, mfi, gfi);
     result = new TestMakeService().make(session, ModuleGenerationHolder.collectResources(project, module), scr, ctl, new EmptyProgressMonitor()).get();
@@ -154,15 +145,17 @@ public class ModuleGenerationHolder {
     return diffs;
   }
 
-  private String tmpFile(String path) {
+  private IFile tmpFile(IFile ff) {
+    final IFileSystem fs = ff.getFS();
+    final String path = ff.getPath();
     if (MapSequence.fromMap(path2tmp).containsKey(path)) {
-      return MapSequence.fromMap(path2tmp).get(path);
+      return fs.getFile(MapSequence.fromMap(path2tmp).get(path));
     }
     int idx = path.indexOf('/');
     idx = (idx < 0 ? path.indexOf(File.separator) : idx);
     String tmp = tmpPath + "/" + ((idx < 0 ? path.replace(':', '_') : path.substring(idx + 1)));
     MapSequence.fromMap(path2tmp).put(path, tmp);
-    return tmp;
+    return fs.getFile(tmp);
   }
 
   private void diffDirs(final File orig, File revd, final List<String> diffs) {
@@ -174,21 +167,17 @@ public class ModuleGenerationHolder {
     Iterable<String> onames = Sequence.fromArray(orig.list());
     Iterable<String> rnames = Sequence.fromArray(revd.list());
     if (Sequence.fromIterable(onames).disjunction(Sequence.fromIterable(rnames)).isNotEmpty()) {
-      Sequence.fromIterable(onames).subtract(Sequence.fromIterable(rnames)).visitAll(new IVisitor<String>() {
-        public void visit(String it) {
-          if (ignoredFile(it)) {
-            return;
-          }
-          ListSequence.fromList(diffs).addElement("Removed: " + new File(orig, it));
+      Sequence.fromIterable(onames).subtract(Sequence.fromIterable(rnames)).visitAll((it) -> {
+        if (ignoredFile(it)) {
+          return;
         }
+        ListSequence.fromList(diffs).addElement("Removed: " + new File(orig, it));
       });
-      Sequence.fromIterable(rnames).subtract(Sequence.fromIterable(onames)).visitAll(new IVisitor<String>() {
-        public void visit(String it) {
-          if (ignoredFile(it)) {
-            return;
-          }
-          ListSequence.fromList(diffs).addElement("Created: " + new File(orig, it));
+      Sequence.fromIterable(rnames).subtract(Sequence.fromIterable(onames)).visitAll((it) -> {
+        if (ignoredFile(it)) {
+          return;
         }
+        ListSequence.fromList(diffs).addElement("Created: " + new File(orig, it));
       });
     }
     for (String name : Sequence.fromIterable(onames).intersect(Sequence.fromIterable(rnames))) {
@@ -218,7 +207,11 @@ public class ModuleGenerationHolder {
           }
           Patch patch = DiffUtils.diff(olines, rlines);
           if (patch.getDeltas().size() >= 5) {
-            ListSequence.fromList(diffs).addElement(String.format("Too many changes (%d) in file %s", Sequence.fromIterable(diffLines).count(), onext.getPath()));
+            if (Sequence.fromIterable(diffLines).count() == 0) {
+              ListSequence.fromList(diffs).addElement(String.format("Too many differences (%d) but no changed lines (i.e. ordering changes) in file %s", patch.getDeltas().size(), onext.getPath()));
+            } else {
+              ListSequence.fromList(diffs).addElement(String.format("Too many changes (%d) in file %s", patch.getDeltas().size(), onext.getPath()));
+            }
             continue;
           }
           ListSequence.fromList(diffs).addSequence(ListSequence.fromList(DiffUtils.generateUnifiedDiff(onext.getPath(), rnext.getPath(), olines, patch, 3)));
@@ -279,38 +272,26 @@ public class ModuleGenerationHolder {
     myMessageHandler.cleanUp();
   }
   /*package*/ boolean needsGeneration() {
-    return new ModelAccessHelper(project.getModelAccess()).runReadAction(new Computable<Boolean>() {
-      public Boolean compute() {
-        for (SModel descriptor : module.getModels()) {
-          if (GenerationFacade.canGenerate(descriptor)) {
-            return true;
-          }
+    return new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> {
+      for (SModel descriptor : module.getModels()) {
+        if (GenerationFacade.canGenerate(descriptor)) {
+          return true;
         }
-        return false;
       }
+      return false;
     });
   }
   private ScriptBuilder defaultScriptBuilder() {
-    return new ScriptBuilder(project.getComponent(FacetRegistry.class)).withFacetNames(new IFacet.Name("jetbrains.mps.lang.resources.Binaries"), new IFacet.Name("jetbrains.mps.lang.core.Generate"), new IFacet.Name("jetbrains.mps.lang.core.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.Make"), new IFacet.Name("jetbrains.mps.lang.editor.imageGen.GenerateImages")).withFinalTarget(new ITarget.Name("jetbrains.mps.make.facets.Make.make"));
+    return new ScriptBuilder(project.getComponent(FacetRegistry.class)).withFacetNames(new IFacet.Name("jetbrains.mps.lang.resources.Binaries"), new IFacet.Name("jetbrains.mps.make.facets.Generate"), new IFacet.Name("jetbrains.mps.make.facets.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.Make"), new IFacet.Name("jetbrains.mps.lang.editor.imageGen.GenerateImages")).withFinalTarget(new ITarget.Name("jetbrains.mps.make.facets.Make.make"));
   }
   private static Iterable<SModule> withGenerators(Iterable<SModule> modules) {
-    return Sequence.fromIterable(modules).concat(Sequence.fromIterable(modules).ofType(Language.class).translate(new ITranslator2<Language, Generator>() {
-      public Iterable<Generator> translate(Language it) {
-        return it.getGenerators();
-      }
-    }));
+    return Sequence.fromIterable(modules).concat(Sequence.fromIterable(modules).ofType(Language.class).translate((it) -> it.getGenerators()));
   }
   private static Iterable<IResource> collectResources(Project project, final SModule module) {
-    return new ModelAccessHelper(project.getModelAccess()).runReadAction(new Computable<Iterable<IResource>>() {
-      public Iterable<IResource> compute() {
+    return new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> {
 
-        Iterable<SModel> models = Sequence.fromIterable(withGenerators(Collections.singletonList(module))).translate(new ITranslator2<SModule, SModel>() {
-          public Iterable<SModel> translate(SModule mod) {
-            return mod.getModels();
-          }
-        });
-        return new ModelsToResources(models).resources();
-      }
+      Iterable<SModel> models = Sequence.fromIterable(withGenerators(Collections.singletonList(module))).translate((mod) -> mod.getModels());
+      return new ModelsToResources(models).resources();
     });
   }
   private static class MyMessageHandler implements IMessageHandler {

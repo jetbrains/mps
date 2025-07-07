@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.extapi.model;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -40,8 +39,7 @@ public interface SModelData {
    *             (there's SModelReference.getModuleReference() and we can't assume SModelData is only for UUID models),
    *             therefore it's odd to expect SModelReference for an SModelData.
    */
-  @Deprecated
-  @ToRemove(version = 2018.2)
+@Deprecated(since = "2018.2", forRemoval = true)
   SModelReference getReference();
 
   Iterable<SNode> getRootNodes();

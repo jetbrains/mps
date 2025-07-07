@@ -16,6 +16,7 @@
 package jetbrains.mps.ide.editor;
 
 import com.intellij.openapi.components.ProjectComponent;
+import com.intellij.openapi.project.Project;
 import jetbrains.mps.checkers.IChecker;
 import jetbrains.mps.checkers.ICheckingPostprocessor;
 import jetbrains.mps.editor.runtime.LanguageEditorChecker;
@@ -23,6 +24,7 @@ import jetbrains.mps.errors.CheckerRegistry;
 import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.ide.editor.checkers.ModelProblemsChecker;
 import jetbrains.mps.ide.editor.suppresserrors.SuppressErrorsChecker;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.nodeEditor.Highlighter;
 import jetbrains.mps.nodeEditor.checking.DisposableEditorChecker;
 import jetbrains.mps.nodeEditor.checking.EditorChecker;
@@ -38,29 +40,35 @@ import java.util.Stack;
 import java.util.stream.Collectors;
 
 /**
+ * Configures editor's aspects that are responsible for highlighting and checking the open root node. Maintains an
+ * instance of {@link Highlighter} that performs the actual checks in the background.
+ * <p>
+ * NB! Aside from all "editor checkers" (instances of {@link jetbrains.mps.checkers.AbstractNodeCheckerInEditor})
+ * that are returned by {@link CheckerRegistry#getEditorCheckers()} and wrapped by an instance of {@link LanguageEditorChecker},
+ * also the following checkers are hardcoded:
+ * <ul>
+ *   <li>{@link TypesEditorChecker}</li>
+ *   <li>{@link NonTypesystemEditorChecker}</li>
+ *   <li>{@link AutoResolver}</li>
+ *   <li>{@link LanguageEditorChecker}</li>
+ *   <li>{@link jetbrains.mps.checkers.SuppressErrorsChecker}</li>
+ *   <li>{@link ModelProblemsChecker}</li>
+ * </ul>
+ *
  * evgeny, 12/27/11
  */
 public class MPSValidationComponent implements ProjectComponent {
 
   private final MPSProject myProject;
-  private final Highlighter myHighlighter;
-  private Stack<EditorChecker> myCheckers = new Stack<>();
+  private Highlighter myHighlighter;
+  private final Stack<EditorChecker> myCheckers = new Stack<>();
 
-  public MPSValidationComponent(MPSProject mpsProject, Highlighter highlighter) {
-    myProject = mpsProject;
-    myHighlighter = highlighter;
-  }
-
-  @Override
-  public void initComponent() {
+  public MPSValidationComponent(Project ideaProject) {
+    myProject = ProjectHelper.fromIdeaProjectOrFail(ideaProject);
   }
 
   private void addChecker(EditorChecker checker) {
     myHighlighter.addChecker(myCheckers.push(checker));
-  }
-
-  @Override
-  public void disposeComponent() {
   }
 
   @NotNull
@@ -71,6 +79,7 @@ public class MPSValidationComponent implements ProjectComponent {
 
   @Override
   public void projectOpened() {
+    myHighlighter = Highlighter.getInstance(myProject);
     // TODO: create editor-specific "core" component in editor-runtime module and register all common checkers from there
     myProject.getModelAccess().runReadAction(() -> {
       final CheckerRegistry checkerRegistry = myProject.getComponent(CheckerRegistry.class);
@@ -97,5 +106,6 @@ public class MPSValidationComponent implements ProjectComponent {
         }
       }
     });
+    myHighlighter = null;
   }
 }

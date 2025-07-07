@@ -14,7 +14,6 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.debug.api.breakpoints.IBreakpoint;
 import javax.swing.tree.TreePath;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import java.util.ArrayList;
 import javax.swing.JComponent;
 import org.jetbrains.annotations.NonNls;
@@ -109,11 +108,7 @@ import jetbrains.mps.ide.platform.ui.CheckBoxNodeRenderer;
   @Override
   public void selectBreakpoint(@Nullable final IBreakpoint breakpoint) {
     if (breakpoint != null) {
-      MPSTreeNode treeNode = new ModelAccessHelper(myProject.getModelAccess()).runReadAction(new Computable<MPSTreeNode>() {
-        public MPSTreeNode compute() {
-          return myTree.findNodeForData(new BreakpointNodeData(breakpoint));
-        }
-      });
+      MPSTreeNode treeNode = new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> myTree.findNodeForData(new BreakpointNodeData(breakpoint)));
       myTree.selectNode(treeNode);
     } else {
       myTree.clearSelection();

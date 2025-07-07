@@ -14,7 +14,7 @@
   ~ limitations under the License.
   -->
 
-<components>
+<idea-plugin>
   <extensions defaultExtensionNs="com.intellij">
     <mps.facetTabFactory facetType="ideaPlugin" className="jetbrains.mps.ide.project.facets.ui.IdeaPluginModuleFacetTabFactory"/>
     <projectService serviceImplementation="jetbrains.mps.ide.projectPane.TreeNodeSortService"/>
@@ -39,6 +39,9 @@
   <extensions defaultExtensionNs="com.intellij">
     <projectService serviceImplementation="jetbrains.mps.ide.make.MakeServiceConfiguration"/>
     <mps.projectPrefsPanel implementation="jetbrains.mps.ide.make.MakeSettingsPanel"/>
+    <registryKey key="mps.actions.about.libraries" defaultValue="true" description="MPS: Show app/project libraries in About dialog" restartRequired="false"/>
+    <aboutPopupDescriptionProvider implementation="jetbrains.mps.library.GlobalLibraryDescriptionProvider" id="GlobalLibraryDescriptionProvider"/>
+    <aboutPopupDescriptionProvider implementation="jetbrains.mps.library.ProjectLibraryDescriptionProvider" order="after GlobalLibraryDescriptionProvider"/>
   </extensions>
 
-</components>
+</idea-plugin>

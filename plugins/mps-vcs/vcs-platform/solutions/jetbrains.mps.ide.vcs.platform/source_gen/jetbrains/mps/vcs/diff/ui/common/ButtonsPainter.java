@@ -9,14 +9,12 @@ import jetbrains.mps.nodeEditor.EditorComponent;
 import java.awt.Graphics;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.awt.event.MouseEvent;
 import java.awt.Cursor;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
 import java.awt.Point;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 
 @GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/4652592318748335093", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 public abstract class ButtonsPainter extends AbstractFoldingAreaPainter {
@@ -33,11 +31,7 @@ public abstract class ButtonsPainter extends AbstractFoldingAreaPainter {
     myWidth = (GAP + ICON_SIZE) * iconCount + LEFT_MARGIN;
     myChangeGroupLayout = changeGroupLayout;
     myHighlightLeft = changeGroupLayout.getLeftComponent() == editorComponent;
-    myChangeGroupLayout.addInvalidateListener(new ChangeGroupInvalidateListener() {
-      public void changeGroupsInvalidated() {
-        relayout();
-      }
-    });
+    myChangeGroupLayout.addInvalidateListener(() -> relayout());
   }
   protected boolean isHighlightLeft() {
     return myHighlightLeft;
@@ -67,15 +61,7 @@ public abstract class ButtonsPainter extends AbstractFoldingAreaPainter {
       myButtons = ListSequence.fromList(new ArrayList<FoldingAreaButton>());
 
       int previousStart = Integer.MIN_VALUE;
-      List<ChangeGroup> changeGroups = (myHighlightLeft ? ListSequence.fromList(myChangeGroupLayout.getChangeGroups()).sort(new ISelector<ChangeGroup, Integer>() {
-        public Integer select(ChangeGroup g) {
-          return (int) g.getLeftBounds().start();
-        }
-      }, true).toListSequence() : ListSequence.fromList(myChangeGroupLayout.getChangeGroups()).sort(new ISelector<ChangeGroup, Integer>() {
-        public Integer select(ChangeGroup g) {
-          return (int) g.getRightBounds().start();
-        }
-      }, true).toListSequence());
+      List<ChangeGroup> changeGroups = (myHighlightLeft ? ListSequence.fromList(myChangeGroupLayout.getChangeGroups()).sort((g) -> (int) g.getLeftBounds().start(), true).toList() : ListSequence.fromList(myChangeGroupLayout.getChangeGroups()).sort((g) -> (int) g.getRightBounds().start(), true).toList());
 
       for (ChangeGroup cg : ListSequence.fromList(changeGroups)) {
         int y = Math.max((int) cg.getBounds(myHighlightLeft).start() + 1, previousStart + GAP + ICON_SIZE);
@@ -118,11 +104,7 @@ public abstract class ButtonsPainter extends AbstractFoldingAreaPainter {
     ensureButtonsCreated();
 
     final int x = p.x - getLeftHighlighter().getFoldingLineX();
-    return ListSequence.fromList(myButtons).findFirst(new IWhereFilter<FoldingAreaButton>() {
-      public boolean accept(FoldingAreaButton b) {
-        return b.getX() - GAP / 2 < x && x < b.getX() + ICON_SIZE + GAP / 2 && b.getY() - GAP / 2 < p.y && p.y < b.getY() + ICON_SIZE + GAP / 2;
-      }
-    });
+    return ListSequence.fromList(myButtons).findFirst((b) -> b.getX() - GAP / 2 < x && x < b.getX() + ICON_SIZE + GAP / 2 && b.getY() - GAP / 2 < p.y && p.y < b.getY() + ICON_SIZE + GAP / 2);
   }
   @Override
   public void relayout() {

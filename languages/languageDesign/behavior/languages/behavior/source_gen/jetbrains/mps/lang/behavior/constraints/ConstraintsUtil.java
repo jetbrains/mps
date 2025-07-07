@@ -5,7 +5,6 @@ package jetbrains.mps.lang.behavior.constraints;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -26,11 +25,7 @@ public class ConstraintsUtil {
     if ((SNodeOperations.getNodeAncestor(node, CONCEPTS.ConceptConstructorDeclaration$nv, true, false) != null)) {
       return !(isStatic);
     }
-    return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, CONCEPTS.ConceptMethodDeclaration$N0, true)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getBoolean(it, PROPS.isStatic$JhJe) == isStatic;
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, CONCEPTS.ConceptMethodDeclaration$N0, true)).any((it) -> SPropertyOperations.getBoolean(it, PROPS.isStatic$JhJe) == isStatic);
   }
 
   private static final class CONCEPTS {

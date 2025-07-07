@@ -23,10 +23,10 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class BuildStringPart__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7cffL, "jetbrains.mps.build.structure.BuildStringPart");
 
-  public static final SMethod<Boolean> punctuationLeft_id4qU2HB9e$4N = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("punctuationLeft").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4qU2HB9e$4N").build();
-  public static final SMethod<Boolean> isFirstPositionAllowed_idyEtdY40p7m = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFirstPositionAllowed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("yEtdY40p7m").build();
-  public static final SMethod<Boolean> isLastPositionAllowed_idyEtdY40wNH = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLastPositionAllowed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("yEtdY40wNH").build();
-  public static final SMethod<String> getText_id3NagsOfTq4Y = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3NagsOfTq4Y").build(SMethodBuilder.createJavaParameter(MacroHelper.class, ""));
+  public static final SMethod<Boolean> punctuationLeft_id4qU2HB9e$4N = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("punctuationLeft").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5096397858823356723L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
+  public static final SMethod<Boolean> isFirstPositionAllowed_idyEtdY40p7m = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFirstPositionAllowed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(624440001685459414L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
+  public static final SMethod<Boolean> isLastPositionAllowed_idyEtdY40wNH = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLastPositionAllowed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(624440001685490925L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
+  public static final SMethod<String> getText_id3NagsOfTq4Y = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4380385936562037054L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(MacroHelper.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(punctuationLeft_id4qU2HB9e$4N, isFirstPositionAllowed_idyEtdY40p7m, isLastPositionAllowed_idyEtdY40wNH, getText_id3NagsOfTq4Y);
 

@@ -16,8 +16,7 @@
 package jetbrains.mps.ide.test.blame.command;
 
 import com.intellij.openapi.application.ApplicationInfo;
-import jetbrains.mps.ide.blame.command.Command;
-import jetbrains.mps.ide.blame.perform.Response;
+import jetbrains.mps.ide.blame.api.Reporter;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.EnvironmentAware;
 import jetbrains.mps.tool.environment.IdeaEnvironment;
@@ -51,19 +50,8 @@ public class AffectedVersionTest implements EnvironmentAware {
     if (token == null) {
       fail("No YouTrack credentials were given for the test");
     }
-
-    Command c = new Command(token);
-
-    //check that version is in versions
-    Response r = c.listVersions();
-    if (!r.isSuccess()) {
-      fail("Failed to retrieve list of versions from server");
-    }
-
-    Set<String> availableVersions = c.extractVersions(r);
-
-    assertTrue("Failed to retrieve list of versions from server", availableVersions != null);
-
-    assertTrue("version " + version + " does not exist in tracker", availableVersions.contains(version));
+    Reporter reporter = new Reporter(token);
+    //check that current version is in versions
+    assertTrue("version " + version + " does not exist in tracker", reporter.checkAffectedVersion(version));
   }
 }

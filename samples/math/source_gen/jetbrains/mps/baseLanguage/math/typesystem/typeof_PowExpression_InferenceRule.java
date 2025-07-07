@@ -31,35 +31,33 @@ public class typeof_PowExpression_InferenceRule extends AbstractInferenceRule_Ru
     }
     {
       final SNode t1v = typeCheckingContext.getRepresentative(t1_typevar_1238338983313);
-      typeCheckingContext.whenConcrete(t1v, new Runnable() {
-        public void run() {
-          if (TypecheckingFacade.getFromContext().isSubtype(typeCheckingContext.getRepresentative(t1_typevar_1238338983313), MathTypeUtil.qDouble)) {
-            {
-              SNode _nodeToCheck_1029348928467 = expression;
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238338983326", 0, null);
-              typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238338983331", true), (SNode) SNodeOperations.copyNode(MathTypeUtil.qDouble), _info_12389875345);
-            }
-            {
-              SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(expression, LINKS.exponent$1dCf);
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238339050393", 0, null);
-              typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238339041697", true), (SNode) SNodeOperations.copyNode(MathTypeUtil.qDouble), false, true, _info_12389875345);
-            }
-          } else if (SNodeOperations.isInstanceOf(typeCheckingContext.getRepresentative(t1_typevar_1238338983313), CONCEPTS.BigIntegerType$8r) || SNodeOperations.isInstanceOf(typeCheckingContext.getRepresentative(t1_typevar_1238338983313), CONCEPTS.BigDecimalType$6N) || SNodeOperations.isInstanceOf(typeCheckingContext.getRepresentative(t1_typevar_1238338983313), CONCEPTS.ComplexType$oF)) {
-            {
-              SNode _nodeToCheck_1029348928467 = expression;
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238339101308", 0, null);
-              typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238339101315", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(expression, LINKS.base$$mfd), "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238340594596", true), _info_12389875345);
-            }
-            {
-              SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(expression, LINKS.exponent$1dCf);
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, "When power base has complex or big decimal type power exponent must have integer type", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238339123613", 0, null);
-              typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238339118558", true), (SNode) SNodeOperations.copyNode(MathTypeUtil.qInt), false, true, _info_12389875345);
-            }
-          } else {
-            {
-              final MessageTarget errorTarget = new NodeMessageTarget();
-              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(expression, "Power base must be complex or big decimal number", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238340713242", null, errorTarget);
-            }
+      typeCheckingContext.whenConcrete(t1v, () -> {
+        if (TypecheckingFacade.getFromContext().isSubtype(typeCheckingContext.getRepresentative(t1_typevar_1238338983313), MathTypeUtil.qDouble)) {
+          {
+            SNode _nodeToCheck_1029348928467 = expression;
+            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238338983326", 0, null);
+            typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238338983331", true), (SNode) SNodeOperations.copyNode(MathTypeUtil.qDouble), _info_12389875345);
+          }
+          {
+            SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(expression, LINKS.exponent$1dCf);
+            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238339050393", 0, null);
+            typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238339041697", true), (SNode) SNodeOperations.copyNode(MathTypeUtil.qDouble), false, true, _info_12389875345);
+          }
+        } else if (SNodeOperations.isInstanceOf(typeCheckingContext.getRepresentative(t1_typevar_1238338983313), CONCEPTS.BigIntegerType$8r) || SNodeOperations.isInstanceOf(typeCheckingContext.getRepresentative(t1_typevar_1238338983313), CONCEPTS.BigDecimalType$6N) || SNodeOperations.isInstanceOf(typeCheckingContext.getRepresentative(t1_typevar_1238338983313), CONCEPTS.ComplexType$oF)) {
+          {
+            SNode _nodeToCheck_1029348928467 = expression;
+            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238339101308", 0, null);
+            typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238339101315", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(expression, LINKS.base$$mfd), "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238340594596", true), _info_12389875345);
+          }
+          {
+            SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(expression, LINKS.exponent$1dCf);
+            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, "When power base has complex or big decimal type power exponent must have integer type", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238339123613", 0, null);
+            typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238339118558", true), (SNode) SNodeOperations.copyNode(MathTypeUtil.qInt), false, true, _info_12389875345);
+          }
+        } else {
+          {
+            final MessageTarget errorTarget = new NodeMessageTarget();
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(expression, "Power base must be complex or big decimal number", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238340713242", null, errorTarget);
           }
         }
       }, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238338983322", false, false);

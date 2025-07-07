@@ -20,8 +20,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class MigrationDataAnnotation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625990591L, "jetbrains.mps.lang.core.structure.MigrationDataAnnotation");
 
-  public static final SMethod<Boolean> showInResults_id29O0pTxWdmG = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("showInResults").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("29O0pTxWdmG").build();
-  public static final SMethod<String> getResultsMessage_id29O0pTxWdnZ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getResultsMessage").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("29O0pTxWdnZ").build();
+  public static final SMethod<Boolean> showInResults_id29O0pTxWdmG = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("showInResults").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2482611074347619756L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  public static final SMethod<String> getResultsMessage_id29O0pTxWdnZ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getResultsMessage").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2482611074347619839L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(showInResults_id29O0pTxWdmG, getResultsMessage_id29O0pTxWdnZ);
 

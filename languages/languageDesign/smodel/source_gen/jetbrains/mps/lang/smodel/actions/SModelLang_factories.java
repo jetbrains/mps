@@ -17,7 +17,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class SModelLang_factories {
   public static class NodeFactory_1171415364777 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.SNodeOperation$pA)) {
         List<SNode> parms = SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.SNodeOperation$pA), LINKS.parameter$mzxB);
         for (SNode parm : ListSequence.fromList(parms)) {
@@ -31,7 +31,7 @@ public class SModelLang_factories {
     }
   }
   public static class NodeFactory_1207248813874 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.SNodeOperation$pA)) {
         List<SNode> parms = SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.SNodeOperation$pA), LINKS.parameter$mzxB);
         for (SNode parm : ListSequence.fromList(parms)) {
@@ -45,21 +45,21 @@ public class SModelLang_factories {
     }
   }
   public static class NodeFactory_1203553726914 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Concept_IsSubConceptOfOperation$xI)) {
         SLinkOperations.setTarget(newNode, LINKS.conceptArgument$z1aa, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.Concept_IsSubConceptOfOperation$xI), LINKS.conceptArgument$V98w));
       }
     }
   }
   public static class NodeFactory_1203553739270 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Concept_IsSuperConceptOfOperation$aG)) {
         SLinkOperations.setTarget(newNode, LINKS.conceptArgument$V98w, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.Concept_IsSuperConceptOfOperation$aG), LINKS.conceptArgument$z1aa));
       }
     }
   }
   public static class NodeFactory_1205353787833 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.SequenceType$_s)) {
         SNode elementType = SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.SequenceType$_s), LINKS.elementType$KpjL);
         if (SNodeOperations.isInstanceOf(elementType, CONCEPTS.SNodeType$hR)) {
@@ -75,14 +75,14 @@ public class SModelLang_factories {
     }
   }
   public static class NodeFactory_3602058458308809797 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.SNodeCreator$dS)) {
         SLinkOperations.setTarget(newNode, LINKS.createdType$3ZFy, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.SNodeCreator$dS), LINKS.createdType$3ZFy));
       }
     }
   }
   public static class NodeFactory_3341893916018829253 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Concept_NewInstance$S_)) {
         List<SNode> parms = SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.SNodeOperation$pA), LINKS.parameter$mzxB);
         for (SNode parm : ListSequence.fromList(parms)) {
@@ -92,7 +92,7 @@ public class SModelLang_factories {
     }
   }
   public static class NodeFactory_3341893916018829316 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Model_CreateNewNodeOperation$s$)) {
         SLinkOperations.setTarget(newNode, LINKS.concept$oQou, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.Model_CreateNewNodeOperation$s$), LINKS.concept$oQou));
         List<SNode> parms = SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.SNodeOperation$pA), LINKS.parameter$mzxB);
@@ -103,7 +103,7 @@ public class SModelLang_factories {
     }
   }
   public static class NodeFactory_3341893916018829413 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Node_InsertNewNextSiblingOperation$n7)) {
         SLinkOperations.setTarget(newNode, LINKS.concept$87SQ, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.Node_InsertNewNextSiblingOperation$n7), LINKS.concept$87SQ));
         List<SNode> parms = SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.SNodeOperation$pA), LINKS.parameter$mzxB);
@@ -114,7 +114,7 @@ public class SModelLang_factories {
     }
   }
   public static class NodeFactory_3341893916018829507 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Node_InsertNewPrevSiblingOperation$Ae)) {
         SLinkOperations.setTarget(newNode, LINKS.concept$LFQy, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.Node_InsertNewPrevSiblingOperation$Ae), LINKS.concept$LFQy));
         List<SNode> parms = SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.SNodeOperation$pA), LINKS.parameter$mzxB);
@@ -125,7 +125,7 @@ public class SModelLang_factories {
     }
   }
   public static class NodeFactory_3341893916018829548 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Node_ReplaceWithNewOperation$zd)) {
         SLinkOperations.setTarget(newNode, LINKS.concept$hL6r, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.Node_ReplaceWithNewOperation$zd), LINKS.concept$hL6r));
         List<SNode> parms = SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.SNodeOperation$pA), LINKS.parameter$mzxB);
@@ -136,7 +136,7 @@ public class SModelLang_factories {
     }
   }
   public static class NodeFactory_3341893916018829589 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Link_SetNewChildOperation$J_)) {
         SLinkOperations.setTarget(newNode, LINKS.concept$KLIK, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.Link_SetNewChildOperation$J_), LINKS.concept$KLIK));
         List<SNode> parms = SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.SNodeOperation$pA), LINKS.parameter$mzxB);
@@ -147,7 +147,7 @@ public class SModelLang_factories {
     }
   }
   public static class NodeFactory_3341893916018829632 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.LinkList_AddNewChildOperation$cY)) {
         SLinkOperations.setTarget(newNode, LINKS.concept$79ZG, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.LinkList_AddNewChildOperation$cY), LINKS.concept$79ZG));
         List<SNode> parms = SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.SNodeOperation$pA), LINKS.parameter$mzxB);

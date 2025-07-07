@@ -20,6 +20,7 @@ public class StepOver_Action extends BaseAction {
     super("Step Over", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

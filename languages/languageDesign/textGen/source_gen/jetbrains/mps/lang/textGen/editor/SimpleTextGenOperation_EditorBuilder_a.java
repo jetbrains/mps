@@ -48,7 +48,7 @@ import jetbrains.mps.editor.runtime.style.Measure;
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.core.editor.alias");
     Style style = new StyleImpl();
-    new TextGenOperationStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new TextGenOperationStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     return editorCell;
   }

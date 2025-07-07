@@ -13,7 +13,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -57,7 +57,7 @@ public class CellAction_InsertPlaceholder extends AbstractCellAction {
           containmentLink = nodeLocation.getContainmentLink();
           if (Objects.equals(containmentLink, LINKS.smodelAttribute$KJ43)) {
             if (SNodeOperations.isInstanceOf(((SNode) childNode), CONCEPTS.ChildAttribute$m8)) {
-              containmentLink = ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(childNode, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzf")));
+              containmentLink = ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(childNode, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodIdV2.create("getLink", 709746936026609871L, 0x553941aeb020c32eL)));
             } else if (SNodeOperations.isInstanceOf(((SNode) childNode), CONCEPTS.NodeAttribute$x2)) {
               childNode = parentNode;
               parentNode = check_d2uk49_a0b0a0a3a1a2a7a5(parentNode);
@@ -91,7 +91,7 @@ public class CellAction_InsertPlaceholder extends AbstractCellAction {
 
     /*package*/ void insertPlaceholder() {
       SNode placeholder = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x339681b4da4ef1a7L, "jetbrains.mps.lang.core.structure.BasePlaceholder"));
-      BHReflection.invoke0(placeholder, CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("setLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzM"), myContainmentLink);
+      BHReflection.invoke0(placeholder, CONCEPTS.ChildAttribute$m8, SMethodIdV2.create("setLink", 709746936026609906L, 0x553941aeb020c32eL), myContainmentLink);
       if (myIsAfter) {
         myParentNode.insertChildAfter(LINKS.smodelAttribute$KJ43, placeholder, myChildNode);
       } else {

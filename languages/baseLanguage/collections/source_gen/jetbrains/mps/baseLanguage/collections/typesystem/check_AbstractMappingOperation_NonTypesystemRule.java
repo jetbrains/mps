@@ -22,7 +22,7 @@ public class check_AbstractMappingOperation_NonTypesystemRule extends AbstractNo
   public check_AbstractMappingOperation_NonTypesystemRule() {
   }
   public void applyRule(final SNode amo, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!((TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(amo), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), CONCEPTS.MappingType$ni) != null))) {
+    if (!(TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(amo), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), CONCEPTS.MappingType$ni) != null)) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(amo, "not available here", "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "4998595809121257433", null, errorTarget);
     }

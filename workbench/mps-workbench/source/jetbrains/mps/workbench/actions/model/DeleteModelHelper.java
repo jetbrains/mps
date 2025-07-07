@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,11 +20,13 @@ import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.ide.messages.MessagesViewTool;
 import jetbrains.mps.ide.ui.finders.ModelImportsUsagesFinder;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.model.ModelDeleteHelper;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.project.GlobalScope;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.Solution;
@@ -40,9 +42,6 @@ import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.LanguageAspect;
 import jetbrains.mps.smodel.ModelImports;
-import jetbrains.mps.smodel.SModelStereotype;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -51,10 +50,8 @@ import org.jetbrains.mps.openapi.module.SModule;
 
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.Set;
 
 public class DeleteModelHelper {
-  private static final Logger LOG = LogManager.getLogger(DeleteModelHelper.class);
 
   public static void deleteModel(Project project, SModule contextModule, SModel modelDescriptor, boolean safeDelete, boolean deleteFiles) {
     if (LanguageAspect.STRUCTURE.is(modelDescriptor)) {
@@ -79,8 +76,8 @@ public class DeleteModelHelper {
     } else if (contextModule instanceof Generator) {
       deleteModelFromGenerator((Generator) contextModule, modelDescriptor);
     } else {
-      LOG.warn("Module type " + contextModule.getClass().getSimpleName() + " is not supported by delete refactoring." +
-               "Changes will not be saved automatically for modules of this type.");
+      Logger.getLogger(DeleteModelHelper.class).warning("Module type " + contextModule.getClass().getSimpleName() + " is not supported by delete refactoring." +
+                                                     "Changes will not be saved automatically for modules of this type.");
     }
 
     if (!modelDescriptor.isReadOnly()) {
@@ -88,6 +85,10 @@ public class DeleteModelHelper {
         new ModelDeleteHelper(modelDescriptor).delete();
       }
     }
+  }
+
+  public static boolean safeDeleteSupported(final Project mpsProject) {
+    return RefactoringAccess.getInstance(mpsProject) != null;
   }
 
   public static void safeDelete(final Project project, final SModel modelDescriptor, boolean deleteFiles) {
@@ -98,7 +99,7 @@ public class DeleteModelHelper {
 
     project.getRepository().getModelAccess().runWriteInEDT(() -> {
       if (modelDescriptor.getReference().resolve(project.getRepository()) == modelDescriptor) {
-        RefactoringAccess.getInstance().getRefactoringFacade().execute(context);
+        RefactoringAccess.getInstance(project).getRefactoringFacade().execute(context);
       }
     });
   }
@@ -177,15 +178,11 @@ public class DeleteModelHelper {
       SModule modelOwner = modelDescriptor.getModule();
 
       // delete imports from available models, helps if there are no references to deleted model
-      Set<SModel> usages = FindUsagesFacade.getInstance().findModelUsages(
-          GlobalScope.getInstance(),
+      FindUsagesFacade.getInstance().findModelUsages(
+          new EditableFilteringScope(new GlobalScope(refactoringContext.getRepository())),
           Collections.singleton(modelDescriptor.getReference()),
+          md -> new ModelImports(md).removeModelImport(modelDescriptor.getReference()),
           new EmptyProgressMonitor());
-      for (SModel md : usages) {
-        if (!SModelStereotype.isStubModel(md)) {
-          new ModelImports(md).removeModelImport(modelDescriptor.getReference());
-        }
-      }
       delete(modelOwner, modelDescriptor, myDeleteFiles);
 
       //todo: check correctness - they are not ALL model owners
@@ -201,7 +198,7 @@ public class DeleteModelHelper {
         return null;
       }
 
-      SearchQuery searchQuery = new SearchQuery(refactoringContext.getSelectedModel().getReference(), GlobalScope.getInstance());
+      SearchQuery searchQuery = new SearchQuery(refactoringContext.getSelectedModel().getReference(), new GlobalScope(refactoringContext.getRepository()));
       return FindUtils.getSearchResults(new EmptyProgressMonitor(), searchQuery, new ModelImportsUsagesFinder());
     }
   }

@@ -9,20 +9,24 @@ import jetbrains.mps.checkers.IChecker;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.testbench.PerformanceMessenger;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.checkers.ModelCheckerBuilder;
 import org.junit.Assert;
 import java.util.ArrayList;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import org.jetbrains.mps.openapi.util.Consumer;
+import jetbrains.mps.project.Project;
+import java.util.concurrent.Executor;
+import jetbrains.mps.smodel.ModelAccessBase;
+import jetbrains.mps.progress.TaskScheduler;
+import jetbrains.mps.workbench.progress.SystemBackgroundTaskScheduler;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.errors.item.NodeReportItem;
 import org.jetbrains.mps.openapi.model.SNode;
-import io.netty.handler.codec.http.QueryStringEncoder;
+import java.net.URLEncoder;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import java.nio.charset.StandardCharsets;
 import jetbrains.mps.errors.item.ModelReportItem;
 import org.jetbrains.mps.openapi.model.SModel;
 
@@ -35,11 +39,7 @@ public abstract class BaseCheckerTest extends BaseCheckModulesTest {
 
   public void runCheck(final List<IChecker<?, ? extends IssueKindReportItem>> checkers, PerformanceMessenger stats, String errorMessage) {
     final CheckingTestStatistic statistic = new CheckingTestStatistic();
-    List<String> errors = new ModelAccessHelper(BaseCheckModulesTest.getContextProject().getModelAccess()).runReadAction(new Computable<List<String>>() {
-      public List<String> compute() {
-        return BaseCheckerTest.this.applyChecker(myModule, new ModelCheckerBuilder.ModelsExtractorImpl().excludeGenerators(), checkers, statistic);
-      }
-    });
+    List<String> errors = new ModelAccessHelper(BaseCheckModulesTest.getContextProject().getModelAccess()).runReadAction(() -> BaseCheckerTest.this.applyChecker(myModule, new ModelCheckerBuilder.ModelsExtractorImpl().excludeGenerators(), checkers, statistic));
 
     if (stats != null) {
       stats.report("Errors", statistic.getNumErrors());
@@ -52,21 +52,18 @@ public abstract class BaseCheckerTest extends BaseCheckModulesTest {
     final List<String> errors = new ArrayList<String>();
     final Set<IssueKindReportItem> reportItems = SetSequence.fromSet(new HashSet<IssueKindReportItem>());
 
-
-    new ModelCheckerBuilder(modelExtractor).createChecker(checkers).check(ModelCheckerBuilder.ItemsToCheck.forSingleModule(module), module.getRepository(), new Consumer<IssueKindReportItem>() {
-      public void consume(IssueKindReportItem reportItem) {
-        SetSequence.fromSet(reportItems).addElement(reportItem);
-      }
-    }, new EmptyProgressMonitor());
+    Project mpsProject = BaseCheckModulesTest.getContextProject();
+    Executor shareReadExecutor = ((ModelAccessBase) mpsProject.getRepository().getModelAccess()).shareRead();
+    TaskScheduler scheduler = new SystemBackgroundTaskScheduler(mpsProject, shareReadExecutor);
+    new ModelCheckerBuilder(modelExtractor).withTaskScheduler(scheduler).createChecker(checkers).check(ModelCheckerBuilder.ItemsToCheck.forSingleModule(module), module.getRepository(), (IssueKindReportItem reportItem) -> SetSequence.fromSet(reportItems).addElement(reportItem), new EmptyProgressMonitor());
 
     for (IssueKindReportItem reportItem : reportItems) {
       if (reportItem.getSeverity().equals(MessageStatus.ERROR)) {
         statistic.reportError();
         if (NodeReportItem.FLAVOUR_NODE.canGet(reportItem)) {
           SNode node = NodeReportItem.FLAVOUR_NODE.tryToGet(reportItem).resolve(module.getRepository());
-          QueryStringEncoder encoder = new QueryStringEncoder("http://127.0.0.1:63320/node");
-          encoder.addParam("ref", PersistenceFacade.getInstance().asString(node.getReference()));
-          errors.add("Error message: " + reportItem.getMessage() + "   model: " + node.getModel().getName().getValue() + " root: " + node.getContainingRoot() + " node: " + encoder.toString());
+          String nodeURL = "http://127.0.0.1:63320/node?ref=" + URLEncoder.encode(PersistenceFacade.getInstance().asString(node.getReference()), StandardCharsets.UTF_8);
+          errors.add(String.format("Error message: %s   model: %s root: %s node: %s", reportItem.getMessage(), node.getModel().getName(), node.getContainingRoot(), nodeURL));
         } else if (ModelReportItem.FLAVOUR_MODEL.canGet(reportItem)) {
           SModel model = ModelReportItem.FLAVOUR_MODEL.tryToGet(reportItem).resolve(module.getRepository());
           errors.add("Error message: " + reportItem.getMessage() + "   model: " + model);

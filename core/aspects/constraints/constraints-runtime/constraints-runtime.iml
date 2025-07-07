@@ -11,7 +11,10 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="smodel" />
     <orderEntry type="module" module-name="mps-annotations" />
-    <orderEntry type="module" module-name="kernel" />
     <orderEntry type="module" module-name="context" exported="" />
+    <orderEntry type="module" module-name="behavior-api" />
+    <orderEntry type="module" module-name="behavior-runtime" />
+    <orderEntry type="module" module-name="messages-for-legacy-constraints" />
+    <orderEntry type="module" module-name="kernel" />
   </component>
 </module>

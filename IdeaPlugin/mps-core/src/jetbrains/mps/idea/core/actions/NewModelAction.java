@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,6 +32,7 @@ import jetbrains.mps.idea.core.MPSBundle;
 import jetbrains.mps.idea.core.project.module.ModuleMPSSupport;
 import jetbrains.mps.idea.core.ui.CreateFromTemplateDialog;
 import jetbrains.mps.kernel.model.MissingDependenciesFixer;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.ModelCannotBeCreatedException;
 import jetbrains.mps.persistence.PreinstalledModelFactoryTypes;
 import jetbrains.mps.project.MPSExtentions;
@@ -42,8 +43,6 @@ import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.EditableSModel;
@@ -65,7 +64,6 @@ import java.util.Map;
  * Created by danilla on 28/10/15.
  */
 public class NewModelAction extends NewModelActionBase {
-  private static Logger LOG = LogManager.getLogger(NewModelAction.class);
 
   private static final ModelTemplate EMPTY_MODEL = new ModelTemplateBase("EMPTY", MPSBundle.message("new.model.template.empty.presentation"), FileIcons.MODEL_ICON);
 
@@ -101,19 +99,11 @@ public class NewModelAction extends NewModelActionBase {
               SModelName sModelName = new SModelName(modelName);
               model = (EditableSModel) myModelRoot.createModel(sModelName, mySourceRoot, createDataSourceFactory(), modelFactory);
             } catch (ModelCannotBeCreatedException e) {
-              LOG.error("Can't create model " + modelName + " under " + path, e);
+              Logger.getLogger(NewModelAction.class).error("Can't create model " + modelName + " under " + path, e);
               return null;
             }
 
-            // FIXME something bad: see MPS-18545 SModel api: createModel(), setChanged(), isLoaded(), save()
-            // model.getSModel() ?
             template.preConfigure(model);
-
-            // likely, model.isChanged == true, but just in case it's not, force save
-            // I'm not even sure it's the right moment to save, why not after all the imports has been fixed/auto-added, but
-            // this is the way it was prior to 585b7169 I'm about to revert.
-            model.setChanged(true);
-            model.save();
 
             final MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
             if (mpsProject != null) {

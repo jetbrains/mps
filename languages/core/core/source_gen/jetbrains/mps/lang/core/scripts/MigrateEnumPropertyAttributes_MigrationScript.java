@@ -9,7 +9,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -38,11 +37,7 @@ public final class MigrateEnumPropertyAttributes_MigrationScript extends BaseMig
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        if (ListSequence.fromList(SConceptOperations.getAllSuperConcepts(SNodeOperations.getConcept(node), false)).any(new IWhereFilter<SAbstractConcept>() {
-          public boolean accept(SAbstractConcept it) {
-            return Objects.equals(it.getName(), "StringToTypedValueMigrationInfo");
-          }
-        })) {
+        if (ListSequence.fromList(SConceptOperations.getAllSuperConcepts(SNodeOperations.getConcept(node), false)).any((it) -> Objects.equals(it.getName(), "StringToTypedValueMigrationInfo"))) {
           // property will take care for providing the intention
           return false;
         }

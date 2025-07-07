@@ -11,7 +11,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -33,7 +33,7 @@ public class OverrideImplementMethodsInEnumHelper extends OverrideImplementMetho
     List<SNode> result = new ArrayList<SNode>();
     for (SNode m : baseMethods) {
       SNode baseMethod = SNodeOperations.cast(m, CONCEPTS.InstanceMethodDeclaration$39);
-      SNode method = SNodeOperations.cast(((SNode) BHReflection.invoke0(baseMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodTrimmedId.create("getMethodToImplement", CONCEPTS.BaseMethodDeclaration$kD, "3RE744JWbF"), myClassifier)), CONCEPTS.InstanceMethodDeclaration$39);
+      SNode method = SNodeOperations.cast(((SNode) BHReflection.invoke0(baseMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("getMethodToImplement", 69709522611978987L, 0x5745e3015c8914d3L), myClassifier)), CONCEPTS.InstanceMethodDeclaration$39);
       SPropertyOperations.assign(method, PROPS.isAbstract$VtH_, false);
       SLinkOperations.setTarget(method, LINKS.body$5xQk, SNodeFactoryOperations.createNewNode(SNodeOperations.getModel(myClassifier), CONCEPTS.StatementList$m_, null));
       if (index != -1) {

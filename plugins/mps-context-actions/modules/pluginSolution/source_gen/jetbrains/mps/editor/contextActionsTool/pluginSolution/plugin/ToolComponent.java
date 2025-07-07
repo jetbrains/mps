@@ -78,11 +78,7 @@ public class ToolComponent extends JComponent {
     boolean widthChanged = w != getSize().width;
     super.setBounds(x, y, w, h);
     if (widthChanged) {
-      ThreadUtils.runInUIThreadNoWait(new Runnable() {
-        public void run() {
-          reloadItems();
-        }
-      });
+      ThreadUtils.runInUIThreadNoWait(() -> reloadItems());
     }
   }
 

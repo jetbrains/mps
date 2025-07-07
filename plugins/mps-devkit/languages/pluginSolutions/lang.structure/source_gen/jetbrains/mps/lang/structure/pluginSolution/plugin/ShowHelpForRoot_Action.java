@@ -21,6 +21,7 @@ public class ShowHelpForRoot_Action extends BaseAction {
     super("Show Help for Root", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -65,10 +66,6 @@ public class ShowHelpForRoot_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        HelpHelper.showHelpForRoot(((SNode) MapSequence.fromMap(_params).get("node")));
-      }
-    });
+    ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().runReadAction(() -> HelpHelper.showHelpForRoot(((SNode) MapSequence.fromMap(_params).get("node"))));
   }
 }

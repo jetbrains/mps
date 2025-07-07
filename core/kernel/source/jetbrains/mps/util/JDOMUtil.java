@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,8 @@
  */
 package jetbrains.mps.util;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jdom.Document;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
@@ -27,7 +26,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.MultiStreamDataSource;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
-import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
@@ -50,7 +48,7 @@ import java.io.StringWriter;
 import java.io.Writer;
 
 public class JDOMUtil {
-  private static final Logger LOG = LogManager.getLogger(JDOMUtil.class);
+  private static final Logger LOG = Logger.getLogger(JDOMUtil.class);
 
   private static SAXParserFactory factory = null;
 
@@ -63,15 +61,11 @@ public class JDOMUtil {
 
   public static Document loadDocument(IFile file) throws JDOMException, IOException {
     SAXBuilder saxBuilder = createBuilder();
-    InputStream in = null;
-    try {
-      in = file.openInputStream();
+    try (InputStream in = file.openInputStream()) {
       return saxBuilder.build(new InputStreamReader(in, FileUtil.DEFAULT_CHARSET));
     } catch (JDOMException | IOException e) {
       LOG.error("FAILED TO LOAD FILE : " + file.getPath(), e);
       throw e;
-    } finally {
-      FileUtil.closeFileSafe(in);
     }
   }
 
@@ -87,14 +81,11 @@ public class JDOMUtil {
 
   public static Document loadDocument(File file) throws JDOMException, IOException {
     SAXBuilder saxBuilder = createBuilder();
-    FileInputStream in = new FileInputStream(file);
-    try {
+    try (FileInputStream in = new FileInputStream(file)) {
       return saxBuilder.build(new InputStreamReader(in, FileUtil.DEFAULT_CHARSET));
     } catch (JDOMException | IOException e) {
       LOG.error("FAILED TO LOAD FILE : " + file.getAbsolutePath());
       throw e;
-    } finally {
-      in.close();
     }
   }
 
@@ -158,11 +149,8 @@ public class JDOMUtil {
       file.createNewFile();
     }
 
-    OutputStream stream = new BufferedOutputStream(new FileOutputStream(file));
-    try {
+    try (OutputStream stream = new BufferedOutputStream(new FileOutputStream(file))) {
       writeDocument(document, stream);
-    } finally {
-      stream.close();
     }
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,23 +29,20 @@ import com.intellij.openapi.projectRoots.impl.MockSdk;
 import com.intellij.openapi.roots.ModuleRootManager;
 import com.intellij.openapi.roots.OrderRootType;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.util.messages.MessageBusConnection;
-import jetbrains.mps.idea.core.MPSBundle;
-import jetbrains.mps.util.ClassType;
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.idea.core.MPSBundle;
 import jetbrains.mps.idea.core.project.StubSolutionIdea;
-import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.structure.modules.ModuleDescriptor;
-import jetbrains.mps.smodel.BootstrapLanguages;
+import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -64,14 +61,10 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
 
   public static final String JAVA_SDK_TYPE = "JavaSDK";
   private static final String IDEA_SDK_TYPE = "IDEA JDK";
-  private final MPSCoreComponents myComponents;
-
-  private ProjectJdkTable myTable;
-  private MessageBusConnection myListenerConnection;
 
   // idea modules that need stubs for their java or idea SDKs
   // (only jdk or idea sdk, since we track them specifically)
-  private Set<Module> myModules = new HashSet<Module>();
+  private final Set<Module> myModules = new HashSet<Module>();
   private Sdk myJavaSdk;
   private Solution myJavaSdkSolution;
   private Sdk myIdeaSdk;
@@ -83,10 +76,7 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
     return false;
   }
 
-  @SuppressWarnings("UnusedParameters")
-  public JdkStubSolutionManager(MPSCoreComponents core, ProjectJdkTable table) {
-    myTable = table;
-    myComponents = core;
+  public JdkStubSolutionManager() {
   }
 
   public Solution getModuleSdkSolution(Module module) {
@@ -168,7 +158,7 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
   }
 
   private VFSManager getVFSManager() {
-    return myComponents.getPlatform().findComponent(VFSManager.class);
+    return MPSCoreComponents.getInstance().getPlatform().findComponent(VFSManager.class);
   }
 
   public void releaseSdk(Module module) {
@@ -244,10 +234,9 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
     // [artem] I see no reason to avoid duplicating the jars (one could reference either one through MPS.Core or specific SDK solution)
     //         just slightly reworked the code (in an unique creative manner) that used to rely on CommonPaths
     List<String> excludedPaths = new ArrayList<String>();
-    final SModule mpsCore = BootstrapLanguages.bootstrapSolutionRef(ClassType.CORE).resolve(repository);
-    ModuleDescriptor mpsCoreDesc;
-    if (mpsCore instanceof AbstractModule && (mpsCoreDesc = ((AbstractModule) mpsCore).getModuleDescriptor()) != null) {
-      excludedPaths.addAll(mpsCoreDesc.getJavaLibs());
+    final SModule mpsCore = PersistenceFacade.getInstance().createModuleReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)").resolve(repository);
+    if (mpsCore != null && mpsCore.getFacet(JavaModuleFacet.class) != null) {
+      excludedPaths.addAll(mpsCore.getFacet(JavaModuleFacet.class).getLibraryClassPath());
     }
 
     // turn into short names
@@ -285,7 +274,7 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
     VirtualFile[] roots = sdk.getRootProvider().getFiles(OrderRootType.CLASSES);
     SdkTypeId jdkTypeId = JavaSdk.getInstance();
 
-    for (Sdk jdk : myTable.getSdksOfType(jdkTypeId)) {
+    for (Sdk jdk : ProjectJdkTable.getInstance().getSdksOfType(jdkTypeId)) {
       String homePath = jdk.getHomePath();
       for (VirtualFile root : roots) {
         if (root.getPath().startsWith(homePath)) return jdk;

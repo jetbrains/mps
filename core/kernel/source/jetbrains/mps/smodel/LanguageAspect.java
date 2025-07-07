@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,15 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
 import jetbrains.mps.smodel.language.LanguageAspectSupport;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
@@ -36,6 +35,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+// NOTE, although quite some of these enums are not in use in MPS, there are uses in mbeddr!
 public enum LanguageAspect {
   //mostly migrated
   STRUCTURE("structure", BootstrapLanguages.structureLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "structure.html"),
@@ -104,7 +104,7 @@ public enum LanguageAspect {
   MIGRATION("migration", BootstrapLanguages.migrationLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "migrations.html");
 
   //TODO must be changed for each major/minor version release
-  public static final String HELP_CENTER_BASE = "https://www.jetbrains.com/help/mps/2021.1/";
+  public static final String HELP_CENTER_BASE = "https://www.jetbrains.com/help/mps/2023.2/";
 
   private String myName;
   private final SModuleReference myMainLang;
@@ -167,7 +167,8 @@ public enum LanguageAspect {
     } else {
       modelRoot = structureModel.getModelRoot();
     }
-    return SModuleOperations.createModelWithAdjustments(l.getModuleName() + '.' + getName(), modelRoot);
+    // I don't care there's no ModelsAutoImportManager, this is deprecated way to instantiate aspect models anyway
+    return modelRoot.createModel(new SModelName(l.getModuleName(), getName(), null));
   }
 
   @Nullable
@@ -188,8 +189,7 @@ public enum LanguageAspect {
     return res;
   }
 
-  @Deprecated
-  @ToRemove(version = 3.3)
+@Deprecated(since = "3.3", forRemoval = true)
   //not used in MPS
   //use jetbrains.mps.smodel.language.LanguageAspectSupport.getAspectModels()
   public static Collection<SModel> getAspectModels(Language l) {

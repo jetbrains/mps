@@ -76,7 +76,7 @@ public class RepoListenerTest implements EnvironmentAware {
 
   private void closeProject() {
     if (myProject != null) {
-      myProject.dispose();
+      myEnvironment.closeProject(myProject);
       myProject = null;
     }
   }

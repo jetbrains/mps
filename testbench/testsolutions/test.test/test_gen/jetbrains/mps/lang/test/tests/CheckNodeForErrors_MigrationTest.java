@@ -4,11 +4,11 @@ package jetbrains.mps.lang.test.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import jetbrains.mps.lang.test.runtime.ExecuteCommandExtension;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseMigrationTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import java.util.Collection;
@@ -25,14 +25,14 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 @MPSLaunch
 public class CheckNodeForErrors_MigrationTest extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(CheckNodeForErrors_MigrationTest.class, "${mps_home}", "r:77241c59-7b48-4e57-9855-3e6233f0c2f2(jetbrains.mps.lang.test.tests@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(CheckNodeForErrors_MigrationTest.class, "${mps_home}", "r:77241c59-7b48-4e57-9855-3e6233f0c2f2(jetbrains.mps.lang.test.tests@tests)", false));
 
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private ExecuteCommandExtension myCommandExtension = new ExecuteCommandExtension(this);
 
   public CheckNodeForErrors_MigrationTest() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test

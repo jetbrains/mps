@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,6 @@
  */
 package jetbrains.mps.vfs.path;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -37,7 +35,6 @@ import java.util.stream.Collectors;
  */
 @Immutable
 /*package*/ final class NonArchivePath extends AbstractPath {
-  private static final Logger LOG = LogManager.getLogger(NonArchivePath.class);
 
   private final static String PARENT_DIR_STR = "..";
   private final static String CUR_DIR_STR = ".";
@@ -49,19 +46,15 @@ import java.util.stream.Collectors;
 
   private final int myHashCode;
 
-  private NonArchivePath(@NotNull String path, PathFormat format) {
-    this(format.extractRootPart(path), format.extractNonRootParts(path), format);
-    // fixme this is disturbing, I know
-    validate(path);
-  }
-
   private NonArchivePath(@Nullable String rootPart, List<String> nonRootParts, PathFormat format) {
     myRootPart = rootPart;
     myFormat = format;
     if (rootPart != null) {
-      validate(rootPart);
+      format.validateRoot(rootPart);
     }
-    for (var nonRootPart : nonRootParts) validate(nonRootPart);
+    for (var nonRootPart : nonRootParts) {
+      format.validateNonRoot(nonRootPart);
+    }
     nonRootParts = skipEmptyStrings(nonRootParts);
     myNonRootParts = nonRootParts;
     myPathText = myFormat.fromRootAndParts(rootPart, nonRootParts);
@@ -73,16 +66,6 @@ import java.util.stream.Collectors;
     return strings.stream()
                   .filter(x -> !x.isEmpty())
                   .collect(Collectors.toList());
-  }
-
-  private static void validate(@NotNull String path) {
-    if (path.contains(Path.UNIX_SEPARATOR) && path.contains(Path.WIN_SEPARATOR)) {
-      LOG.warn("The path '" + path + "' contains both Unix and Windows separators which is suspicious.");
-    }
-    if (path.contains(Path.ARCHIVE_SEPARATOR)) {
-      throw new PathParseException(path, "NonArchivePath is not allowed to include archive separators." +
-                                         "One would expect FilePath to be used here.");
-    }
   }
 
   @NotNull
@@ -115,7 +98,10 @@ import java.util.stream.Collectors;
   @NotNull
   public static NonArchivePath fromString(@NotNull String path,
                                           @NotNull PathFormat format) {
-    return new NonArchivePath(path, format);
+    format.validatePath(path);
+    var rootPart = format.extractRootPart(path);
+    var nonRootParts = format.extractNonRootParts(path);
+    return new NonArchivePath(rootPart, nonRootParts, format);
   }
 
   @NotNull
@@ -173,7 +159,7 @@ import java.util.stream.Collectors;
 
   @NotNull
   @Override
-  public final NonArchivePath normalize() {
+  public NonArchivePath normalize() {
     List<String> newParts = new ArrayList<>();
     for (String part : myNonRootParts) {
       if (part.equals(PARENT_DIR_STR)) {

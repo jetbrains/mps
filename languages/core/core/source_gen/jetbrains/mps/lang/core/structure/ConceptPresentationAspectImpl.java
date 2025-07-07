@@ -20,6 +20,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_IDeprecatable;
   private ConceptPresentation props_IDontApplyTypesystemRules;
   private ConceptPresentation props_IDontSubstituteByDefault;
+  private ConceptPresentation props_IGenericComment;
   private ConceptPresentation props_IMetaLevelChanger;
   private ConceptPresentation props_INamedConcept;
   private ConceptPresentation props_IOldCommentContainer;
@@ -57,7 +58,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.Attribute:
         if (props_Attribute == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.icon(IconContainer.RESOURCE_a0a1a0a0b0ob);
+          cpb.icon(IconContainer.RESOURCE_a0a1a0a0b0pb);
           props_Attribute = cpb.create();
         }
         return props_Attribute;
@@ -127,6 +128,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_IDontSubstituteByDefault = cpb.create();
         }
         return props_IDontSubstituteByDefault;
+      case LanguageConceptSwitch.IGenericComment:
+        if (props_IGenericComment == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_IGenericComment = cpb.create();
+        }
+        return props_IGenericComment;
       case LanguageConceptSwitch.IMetaLevelChanger:
         if (props_IMetaLevelChanger == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

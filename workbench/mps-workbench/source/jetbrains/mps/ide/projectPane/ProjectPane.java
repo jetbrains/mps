@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -60,15 +60,13 @@ import jetbrains.mps.ide.ui.tree.TreeErrorMessage;
 import jetbrains.mps.ide.ui.tree.TreeHighlighterExtension;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.SNodeGroupTreeNode;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.ModelReadRunnable;
 import jetbrains.mps.smodel.tempmodel.TempModule;
 import jetbrains.mps.smodel.tempmodel.TempModule2;
 import jetbrains.mps.util.annotation.Hack;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -78,7 +76,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
-import org.jetbrains.mps.openapi.module.SRepositoryListenerBase;
+import org.jetbrains.mps.openapi.module.SRepositoryListener;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
@@ -92,8 +90,8 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectViewPaneOverride {
-  private static final Logger LOG = LogManager.getLogger(ProjectPane.class);
-  private final SRepositoryListenerBase myRepositoryListener = new SRepositoryListenerBase() {
+  private static final Logger LOG = Logger.getLogger(ProjectPane.class);
+  private final SRepositoryListener myRepositoryListener = new SRepositoryListener() {
     @Override
     public void moduleAdded(@NotNull SModule module) {
       if (module instanceof TempModule || module instanceof TempModule2) {
@@ -160,7 +158,8 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
         rebuild();
       }
     };
-    ApplicationManager.getApplication().getComponent(ReloadManager.class).addReloadListener(myReloadListener);
+    // XXX provided we add a listener, perhaps, shall keep instance in a field or introduce a method to take Disposable with listener (IDEA style)
+    ReloadManager.getInstance().addReloadListener(myReloadListener);
     // I'm using RegistryValues, not regular PersistentStateComponent properties to keep settings as I'd like to see statistics if anyone modifies
     // these settings, and, if yes, how.
     myShowDescriptorModelsAction = new ToggleAndRebuildAction(this, "@descriptor models in Generators", "mps.ProjectPane.show.descriptor.generator");
@@ -174,7 +173,7 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
   @Override
   public void dispose() {
     myUpdateQueue.dispose();
-    ApplicationManager.getApplication().getComponent(ReloadManager.class).removeReloadListener(myReloadListener);
+    ReloadManager.getInstance().removeReloadListener(myReloadListener);
     super.dispose();
   }
 
@@ -266,11 +265,12 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
     myUpdateQueue.queue(new AbstractUpdate(UpdateID.REBUILD) {
       @Override
       public void run() {
-        if (getTree() == null || getProject().isDisposed()) {
+        ProjectTree tree = getTree();
+        if (tree == null || getProject().isDisposed()) {
           cb.reject("already disposed");
           return;
         }
-        getTree().rebuildNow();
+        tree.rebuildNow();
         cb.setDone();
       }
     });
@@ -332,8 +332,7 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
   /**
    * @deprecated use {@link #rebuild()} instead
    */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
+  @Deprecated(since = "2020.3", forRemoval = true)
   public void rebuildTree() {
     // @see #updateFromRoot
     updateFromRoot(true);
@@ -575,11 +574,12 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
   }
 
   @Nullable
-  /*package*/ ErrorStripe getErrorStripe(Object object) {
+    /*package*/ ErrorStripe getErrorStripe(Object object) {
     if (object instanceof MPSTreeNode) {
       final Collection<TreeErrorMessage> messages = ((MPSTreeNode) object).findMessages(TreeErrorMessage.class);
       final TreeCellRenderer cellRenderer;
-      if (messages.isEmpty() || false == ((cellRenderer = getTree().getCellRenderer()) instanceof ProjectTreeCellRenderer)) {
+      ProjectTree tree = getTree();
+      if (messages.isEmpty() || tree == null || !((cellRenderer = tree.getCellRenderer()) instanceof ProjectTreeCellRenderer)) {
         return null;
       }
       assert cellRenderer != null : "project tree without cell renderer";
@@ -615,7 +615,7 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
   }
 
   @NotNull
-  /*package*/ ProjectTreeFindHelper createFindHelper() {
+    /*package*/ ProjectTreeFindHelper createFindHelper() {
     return new ProjectTreeFindHelper(getTree());
   }
 
@@ -701,7 +701,7 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
         }
         toSelect = createFindHelper().findMostSuitableModuleTreeNode(module);
         if (toSelect == null) {
-          LOG.warn("Couldn't select module \"" + myModule.getModuleName() + "\" : tree node not found.");
+          LOG.warning("Couldn't select module \"" + myModule.getModuleName() + "\" : tree node not found.");
           return;
         }
       } else if (myModel != null) {
@@ -711,7 +711,7 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
         }
         toSelect = createFindHelper().findMostSuitableModelTreeNode(model);
         if (toSelect == null) {
-          LOG.warn("Couldn't select model \"" + myModel.getModelName() + "\" : tree node not found.");
+          LOG.warning("Couldn't select model \"" + myModel.getModelName() + "\" : tree node not found.");
           return;
         }
       } else if (myNode != null) {
@@ -721,7 +721,7 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
         }
         toSelect = createFindHelper().findMostSuitableSNodeTreeNode(node);
         if (toSelect == null) {
-          LOG.warn("Couldn't select node \"" + myNode.toString() + "\" : tree node not found.");
+          LOG.warning("Couldn't select node \"" + myNode.toString() + "\" : tree node not found.");
           return;
         }
       }

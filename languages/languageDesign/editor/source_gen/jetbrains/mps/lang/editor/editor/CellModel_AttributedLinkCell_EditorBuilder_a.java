@@ -42,7 +42,7 @@ import jetbrains.mps.lang.editor.editor.Styles_StyleSheet.attributedCellLabelSty
     editorCell.setBig(true);
     setCellContext(editorCell);
     Style style = new StyleImpl();
-    new rootCellModelStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new rootCellModelStyleStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createConstant_0());
     editorCell.addEditorCell(createConstant_1());
@@ -75,7 +75,7 @@ import jetbrains.mps.lang.editor.editor.Styles_StyleSheet.attributedCellLabelSty
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "attributed link");
     editorCell.setCellId("Constant_54f2vs_c0");
     Style style = new StyleImpl();
-    new attributedCellLabelStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new attributedCellLabelStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;

@@ -5,23 +5,52 @@ package jetbrains.mps.lang.structure.constraints;
 import jetbrains.mps.scope.Scope;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.smodel.Language;
 import jetbrains.mps.scope.EmptyScope;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.scope.VisibleDepsSearchScope;
 import jetbrains.mps.scope.FilteringScope;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.scope.ModelsScope;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Scopes {
   public static Scope forConceptsInSameLanguage(SModel model, SAbstractConcept metaConcept) {
-    return new FullyQualifiedNamedElementsScope(ConstraintsUtilConcepts.getConceptsInSameLanguage(model, metaConcept));
+    Language language = as_kflra7_a0a0a0(model.getModule(), Language.class);
+    if (language == null) {
+      return new EmptyScope();
+    }
+    return structureRootsScope(Sequence.<Language>singleton(language), metaConcept);
   }
   public static Scope forConcepts(SNode contextNode, SAbstractConcept metaConcept) {
-    return new FullyQualifiedNamedElementsScope(ConstraintsUtilConcepts.getAvailableConcepts(contextNode, metaConcept));
+    return forConcepts(SNodeOperations.getModel(contextNode), metaConcept);
   }
+  public static Scope forConcepts(SModel contextModel, SAbstractConcept metaConcept) {
+    if (contextModel == null) {
+      return new EmptyScope();
+    }
+    SModule contextModule = contextModel.getModule();
+    if (contextModule == null) {
+      return new EmptyScope();
+    }
+    Iterable<SModule> visibleModules = new VisibleDepsSearchScope(contextModule.getRepository(), contextModule).getModules();
+
+    return structureRootsScope(Sequence.fromIterable(visibleModules).ofType(Language.class), metaConcept);
+  }
+
+  /**
+   * 
+   * @deprecated use {@link jetbrains.mps.lang.structure.constraints.Scopes#forConcepts(SNode, SAbstractConcept) } instead
+   */
+  @Deprecated(forRemoval = true, since = "2023.2")
   public static Scope forLanguageConcepts(SNode contextNode, SAbstractConcept metaConcept) {
-    return new FullyQualifiedNamedElementsScope(ConstraintsUtilConcepts.getAvailableLanguageConcepts(contextNode, metaConcept));
+    return forConcepts(contextNode, metaConcept);
   }
   public static Scope forSubconcepts(SNode contextNode, final SNode conceptNode) {
     if (conceptNode == null) {
@@ -46,6 +75,17 @@ public class Scopes {
         return (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$gH), conceptNode);
       }
     };
+  }
+
+  /**
+   * 
+   * @return Scope that covers definite roots of structure aspect
+   */
+  /*package*/ static Scope structureRootsScope(Iterable<Language> languages, SAbstractConcept metaConcept) {
+    return new ModelsScope(Sequence.fromIterable(languages).select((it) -> SModuleOperations.getAspect(it, "structure")).where(new NotNullWhereFilter()), true, metaConcept);
+  }
+  private static <T> T as_kflra7_a0a0a0(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 
   private static final class CONCEPTS {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,14 +39,12 @@ import jetbrains.mps.smodel.event.SModelPropertyEvent;
 import jetbrains.mps.smodel.event.SModelReferenceEvent;
 import jetbrains.mps.typechecking.TypeInvalidationListener;
 import jetbrains.mps.typechecking.TypecheckingObservable;
-import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.typesystem.inference.TypeRecalculatedListener;
 import jetbrains.mps.util.Cancellable;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.WeakSet;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -66,11 +64,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class IncrementalTypechecking extends ReportingTypechecking<State, TypeSystemComponent> {
 
-  private List<SModelEvent> myEvents = new ArrayList<>();
-  private List<SModel> myReplacedModels = new ArrayList<>();
+  private ConcurrentLinkedQueue<SModelEvent> myEvents = new ConcurrentLinkedQueue<>();
+  private ConcurrentLinkedQueue<SModel> myReplacedModels = new ConcurrentLinkedQueue<>();
 
   private DeployListener myClassesListener = new DeployListener() {
     @Override
@@ -94,26 +93,23 @@ public class IncrementalTypechecking extends ReportingTypechecking<State, TypeSy
 
   private NonTypeSystemComponent myNonTypeSystemComponent;
 
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(IncrementalTypechecking.class));
+  private static final Logger LOG = Logger.getLogger(IncrementalTypechecking.class);
 
   private NodeTypeAccess myNodeTypeAccess = new NodeTypeAccess();
 
   private ITypeErrorComponent myTypeErrorComponent;
 
-  private final TypeChecker myTypeChecker;
   private final ClassLoaderManager myClassManager;
   private final Consumer<SNode> myTypeInvalidationNotifier;
 
   public IncrementalTypechecking(SNode node,
                                  State state,
-                                 TypeChecker typeChecker,
                                  ClassLoaderManager clManager,
                                  Consumer<SNode> typeInvalidationNotifier) {
     super(node, state);
-    myTypeChecker = typeChecker;
     myClassManager = clManager;
     myTypeInvalidationNotifier = typeInvalidationNotifier;
-    myNonTypeSystemComponent = new NonTypeSystemComponent(typeChecker, state, this);
+    myNonTypeSystemComponent = new NonTypeSystemComponent(state, this);
     init();
   }
 
@@ -126,7 +122,7 @@ public class IncrementalTypechecking extends ReportingTypechecking<State, TypeSy
 
   @Override
   protected TypeSystemComponent createTypecheckingComponent() {
-    return new TypeSystemComponent(myTypeChecker, getState(), this);
+    return new TypeSystemComponent(getState(), this);
   }
 
   public void clear() {
@@ -219,6 +215,10 @@ public class IncrementalTypechecking extends ReportingTypechecking<State, TypeSy
     }
   }
 
+  public SNode getContextNode() {
+    return myNodeTypeAccess.peekNode();
+  }
+
   @Override
   public boolean applyNonTypesystemRulesToRoot(TypeCheckingContext typeCheckingContext, Cancellable c, TypecheckingObservable observable) {
     ITypeErrorComponent oldTypeErrorComponent = myTypeErrorComponent;
@@ -299,16 +299,14 @@ public class IncrementalTypechecking extends ReportingTypechecking<State, TypeSy
 
   private void processPendingEvents() {
     final MySModelEventVisitorAdapter visitor = new MySModelEventVisitorAdapter();
-    for (SModelEvent event : myEvents) {
+    for (SModelEvent event = myEvents.poll(); event !=  null; event = myEvents.poll()) {
       event.accept(visitor);
     }
-    for (SModel replacedModel : myReplacedModels) {
+    for (SModel replacedModel = myReplacedModels.poll(); replacedModel != null; replacedModel = myReplacedModels.poll()) {
       for (SNode node : mySModelNodes.get(replacedModel)) {
         visitor.markInvalid(node);
       }
     }
-    myReplacedModels.clear();
-    myEvents.clear();
   }
 
   public void track(SNode node) {

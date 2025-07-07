@@ -38,14 +38,14 @@ public class Template_reduce_LanguageRefExpression extends TemplateDeclarationBa
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
     {
-      final SNode switchInput1 = QueriesGenerated.sourceNodeQuery_75_0(new SourceSubstituteMacroNodeContext(context, switchMacroRef_lwhn3j_b0a0a0a2a6));
+      final SNode switchInput1 = QueriesGenerated.sourceNodeQuery_75_0(new SourceSubstituteMacroNodeContext(context, switchMacroRef));
       if (switchInput1 == null) {
-        environment.nullInputSwitch(templateSwitchNode_lwhn3j_a0a0c0a1a2a6);
+        environment.nullInputSwitch(templateSwitchNode);
         tlist1 = Collections.emptyList();
       } else {
         TemplateContext switchContext1 = context;
         switchContext1 = switchContext1.subContext(null, switchInput1);
-        tlist1 = environment.trySwitch(templateSwitchNode_lwhn3j_a0a0c0a1a2a6, switchContext1);
+        tlist1 = environment.trySwitch(templateSwitchNode, switchContext1);
         if (tlist1 == null) {
           final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
           tlist1 = TemplateUtil.singletonList(tnode2);
@@ -77,6 +77,6 @@ public class Template_reduce_LanguageRefExpression extends TemplateDeclarationBa
       return rv;
     }
   }
-  private static final SNodePointer switchMacroRef_lwhn3j_b0a0a0a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2944629966652339671");
-  private static final SNodePointer templateSwitchNode_lwhn3j_a0a0c0a1a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2944629966652298601");
+  private static final SNodePointer switchMacroRef = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2944629966652339671");
+  private static final SNodePointer templateSwitchNode = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2944629966652298601");
 }

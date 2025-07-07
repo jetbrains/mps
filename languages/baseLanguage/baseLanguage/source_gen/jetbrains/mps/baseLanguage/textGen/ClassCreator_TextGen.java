@@ -8,6 +8,7 @@ import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.baseLanguage.behavior.IInferredExpression__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -21,15 +22,18 @@ public class ClassCreator_TextGen extends TextGenDescriptorBase {
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(ctx.getPrimaryInput()), CONCEPTS.NestedNewExpression$zV)) {
       BaseLanguageTextGen.methodTypeArguments(ctx.getPrimaryInput(), ctx);
       tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.baseMethodDeclaration$pyYw), PROPS.name$MnvL));
-      BaseLanguageTextGen.typeParameters(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.typeParameter$uYiw), ctx);
-      BaseLanguageTextGen.arguments(ctx.getPrimaryInput(), ctx);
-
     } else {
       BaseLanguageTextGen.methodTypeArguments(ctx.getPrimaryInput(), ctx);
       BaseLanguageTextGen.blClassifierRef(SNodeOperations.getReference(ctx.getPrimaryInput(), LINKS.baseMethodDeclaration$pyYw), ctx);
-      BaseLanguageTextGen.typeParameters(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.typeParameter$uYiw), ctx);
-      BaseLanguageTextGen.arguments(ctx.getPrimaryInput(), ctx);
     }
+
+    if ((boolean) IInferredExpression__BehaviorDescriptor.needInference_idQ$FjPqwIoN.invoke(ctx.getPrimaryInput())) {
+      tgs.append("<>");
+    } else {
+      BaseLanguageTextGen.typeParameters(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.typeParameter$uYiw), ctx);
+    }
+
+    BaseLanguageTextGen.arguments(ctx.getPrimaryInput(), ctx);
   }
 
   private static final class LINKS {

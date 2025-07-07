@@ -16,6 +16,7 @@ import org.xml.sax.SAXParseException;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.smodel.SModel;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
+import jetbrains.mps.extapi.model.GeneratableSModel;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -29,8 +30,9 @@ import jetbrains.mps.smodel.InterfaceSNode;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
-import jetbrains.mps.smodel.StaticReference;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
 import jetbrains.mps.util.Pair;
+import jetbrains.mps.smodel.SNodePointer;
 
 @GeneratedClass(node = "r:469db833-fce3-4137-9319-1d2a980eddc8(jetbrains.mps.smodel.persistence.def.v9)/5480414999147803697", model = "r:469db833-fce3-4137-9319-1d2a980eddc8(jetbrains.mps.smodel.persistence.def.v9)")
 public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
@@ -185,7 +187,10 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
     protected void handleAttribute(Object resultObject, String name, String value) throws SAXException {
       ModelLoadResult result = (ModelLoadResult) resultObject;
       if ("doNotGenerate".equals(name)) {
-        my_modelField.getSModelHeader().setOptionalProperty(SModelHeader.DO_NOT_GENERATE, value);
+        // XXX in fact, we recognize any attribute of the model element as an optional value, see
+        // HeaderOnlyHandler code. Either need support for arbitrary attributes in xml lang to do
+        // the same here, or to stop processing attributes in the HeaderOnlyHandler
+        my_modelField.getSModelHeader().setOptionalProperty(GeneratableSModel.DO_NOT_GENERATE, value);
         return;
       }
       if ("content".equals(name)) {
@@ -596,13 +601,10 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
     }
     private void handleChild_4968492044127349726(Object resultObject, Object value) throws SAXException {
       Tuples._2<SNode, SContainmentLink> result = (Tuples._2<SNode, SContainmentLink>) resultObject;
-      Tuples._4<SReferenceLink, SModelReference, SNodeId, String> child = (Tuples._4<SReferenceLink, SModelReference, SNodeId, String>) value;
-      SModelReference targetModel = child._1();
-      SNodeId nodeId = child._2();
+      Tuples._2<SReferenceLink, ResolveInfo> child = (Tuples._2<SReferenceLink, ResolveInfo>) value;
       SReferenceLink link = child._0();
-      String resolveInfo = child._3();
-      StaticReference ref = new StaticReference(link, result._0(), targetModel, nodeId, resolveInfo);
-      result._0().setReference(link, ref);
+      ResolveInfo ri = child._1();
+      result._0().setReference(link, ri);
     }
     private void handleChild_5480414999147804300(Object resultObject, Object value) throws SAXException {
       Tuples._2<SNode, SContainmentLink> result = (Tuples._2<SNode, SContainmentLink>) resultObject;
@@ -643,7 +645,7 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
     }
     @Override
     protected Tuples._2<SProperty, String> createObject(Attributes attrs) throws SAXException {
-      return MultiTuple.<SProperty,String>from(my_readHelperParam.readProperty(attrs.getValue("role")), attrs.getValue("value"));
+      return MultiTuple.<SProperty,String>from(my_readHelperParam.readProperty(attrs.getValue("role")), my_readHelperParam.internPropertyValue(attrs.getValue("value")));
     }
   }
   public class ReferenceElementHandler extends ElementHandler {
@@ -651,15 +653,31 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
       setRequiredAttributes("role");
     }
     @Override
-    protected Tuples._4<SReferenceLink, SModelReference, SNodeId, String> createObject(Attributes attrs) throws SAXException {
+    protected Tuples._2<SReferenceLink, ResolveInfo> createObject(Attributes attrs) throws SAXException {
       SReferenceLink association = my_readHelperParam.readAssociation(attrs.getValue("role"));
+      final String riString = my_readHelperParam.internResolveInfo(attrs.getValue("resolve"));
       if (attrs.getValue("node") != null) {
         // local reference
+        // FIXME introduce dedicated RI for local references or any other mechanism to avoid need for local SModelReference 
         SNodeId targetNode = my_readHelperParam.readLocalRefTarget(attrs.getValue("node"));
-        return MultiTuple.<SReferenceLink,SModelReference,SNodeId,String>from(association, my_modelField.getReference(), targetNode, attrs.getValue("resolve"));
+        final ResolveInfo ri;
+        if (targetNode == null) {
+          // account for serialized dynamic references
+          ri = ResolveInfo.of(riString);
+        } else {
+          ri = ResolveInfo.of(new SNodePointer(my_modelField.getReference(), targetNode), riString);
+        }
+        return MultiTuple.<SReferenceLink,ResolveInfo>from(association, ri);
       } else {
         Pair<SModelReference, SNodeId> r = my_idEncoderField.parseExternalNodeReference(my_importHelperField, attrs.getValue("to"));
-        return MultiTuple.<SReferenceLink,SModelReference,SNodeId,String>from(association, r.o1, r.o2, attrs.getValue("resolve"));
+        final ResolveInfo ri;
+        if (r.o1 == null && r.o2 == null) {
+          // account for serialized dynamic references
+          ri = ResolveInfo.of(riString);
+        } else {
+          ri = ResolveInfo.of(new SNodePointer(r.o1, r.o2), riString);
+        }
+        return MultiTuple.<SReferenceLink,ResolveInfo>from(association, ri);
       }
     }
   }

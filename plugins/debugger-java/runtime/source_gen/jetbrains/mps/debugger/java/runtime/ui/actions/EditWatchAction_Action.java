@@ -23,6 +23,7 @@ public class EditWatchAction_Action extends BaseAction {
     super("Edit Watch", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

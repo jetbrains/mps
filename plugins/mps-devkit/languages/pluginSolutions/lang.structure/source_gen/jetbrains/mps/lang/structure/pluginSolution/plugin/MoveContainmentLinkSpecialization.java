@@ -38,7 +38,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class MoveContainmentLinkSpecialization extends MoveConceptMemberSpecialization<SContainmentLink> {
   public Tuples._2<SContainmentLink, SNodeReference> fetchState(SNode movingNode, boolean filterOutInvalid) {
-    if (!((SNodeOperations.isInstanceOf(movingNode, CONCEPTS.LinkDeclaration$1p) && SNodeOperations.hasRole(movingNode, LINKS.linkDeclaration$YU1f) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(movingNode, CONCEPTS.LinkDeclaration$1p), PROPS.metaClass$PeKc), 0xfc6f4e95b9L) && (SLinkOperations.getTarget(SNodeOperations.cast(movingNode, CONCEPTS.LinkDeclaration$1p), LINKS.specializedLink$7ZCN) == null) && SNodeOperations.getModel(movingNode).getModule() instanceof Language))) {
+    if (!(SNodeOperations.isInstanceOf(movingNode, CONCEPTS.LinkDeclaration$1p) && SNodeOperations.hasRole(movingNode, LINKS.linkDeclaration$YU1f) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(movingNode, CONCEPTS.LinkDeclaration$1p), PROPS.metaClass$PeKc), 0xfc6f4e95b9L) && (SLinkOperations.getTarget(SNodeOperations.cast(movingNode, CONCEPTS.LinkDeclaration$1p), LINKS.specializedLink$7ZCN) == null) && SNodeOperations.getModel(movingNode).getModule() instanceof Language)) {
       return null;
     }
     SContainmentLink deployedContainmentLink = MetaAdapterByDeclaration.getContainmentLink(movingNode);
@@ -78,12 +78,8 @@ public class MoveContainmentLinkSpecialization extends MoveConceptMemberSpeciali
     {
       SearchScope scope_mzlq6b_a0e = CommandUtil.createScope(searchScope);
       final SearchScope scope_mzlq6b_a0e_0 = new EditableFilteringScope(scope_mzlq6b_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_mzlq6b_a0e_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(oldLink.getOwner()), false)).toListSequence();
+      QueryExecutionContext context = () -> scope_mzlq6b_a0e_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(oldLink.getOwner()), false)).toList();
     }
   }
   public void doReplaceInstance(SNode instance, SContainmentLink oldLink, SContainmentLink newLink) {

@@ -3,8 +3,8 @@
   <persistence version="9" />
   <attribute name="doNotGenerate" value="true" />
   <languages>
-    <use id="7ab1a6fa-0a11-4b95-9e48-75f363d6cb00" name="jetbrains.mps.lang.generator.plan" version="1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
+    <use id="7ab1a6fa-0a11-4b95-9e48-75f363d6cb00" name="jetbrains.mps.lang.generator.plan" version="2" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
   </languages>
   <imports />
   <registry>
@@ -38,7 +38,7 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -62,7 +62,7 @@
     </node>
     <node concept="26qawf" id="KhTgyauEJ$" role="2VgMA7">
       <node concept="3ps6dm" id="1BDRb8BtZd3" role="3pRG92">
-        <ref role="3ps6dl" node="KhTgyauEJJ" resolve="MyCheckpoint" />
+        <ref role="3ps6dl" node="KhTgyauEJJ" />
       </node>
     </node>
     <node concept="2VgMA1" id="5rmusCvjwbc" role="2VgMA7">

@@ -15,8 +15,13 @@ import javax.swing.tree.TreeNode;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.ui.Messages;
-import org.jetbrains.mps.openapi.module.ModelAccess;
+import jetbrains.mps.smodel.undo.NamedCommand;
+import java.util.List;
 import org.jetbrains.mps.openapi.module.SModule;
+import com.intellij.openapi.command.undo.DocumentReference;
+import com.intellij.openapi.command.undo.UndoManager;
+import com.intellij.openapi.command.undo.UndoableAction;
+import com.intellij.openapi.command.undo.UnexpectedUndoException;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 
@@ -70,20 +75,54 @@ public class RemoveModulesVirtualFolder_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final NamespaceTextNode node = ((NamespaceTextNode) event.getData(MPSCommonDataKeys.TREE_NODE));
+    final String originalPackageName = node.getName();
 
     if (Messages.showYesNoDialog(event.getData(CommonDataKeys.PROJECT), IdeBundle.message("dialogs.virtual.package.remove.text"), IdeBundle.message("dialogs.virtual.package.remove.title"), Messages.getQuestionIcon()) != Messages.OK) {
       return;
     }
 
-    final ModelAccess modelAccess = event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess();
-    modelAccess.executeCommandInEDT(new Runnable() {
+    final MPSProject mpsProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+
+    NamedCommand command = new NamedCommand("Remove virtual folder", true) {
+      @Override
       public void run() {
-        for (SModule module : ListSequence.fromList(node.getModulesUnder())) {
-          event.getData(MPSCommonDataKeys.MPS_PROJECT).setVirtualFolder(module, null);
+        final List<SModule> modules = node.getModulesUnder();
+        final DocumentReference[] myDocumentReferences = NamespaceInternalActionsUtil.obtainDocumentReferences(modules, mpsProject);
+        for (SModule m : modules) {
+          mpsProject.setVirtualFolder(m, null);
         }
-        RemoveModulesVirtualFolder_Action.this.getProjectPane(event).rebuild();
+        UndoManager um = UndoManager.getInstance(mpsProject.getProject());
+        um.undoableActionPerformed(new UndoableAction() {
+          @Override
+          public void undo() throws UnexpectedUndoException {
+            for (SModule module : ListSequence.fromList(modules)) {
+              event.getData(MPSCommonDataKeys.MPS_PROJECT).setVirtualFolder(module, originalPackageName);
+            }
+            ProjectPane.getInstance(event.getData(CommonDataKeys.PROJECT)).rebuild();
+          }
+
+          @Override
+          public void redo() throws UnexpectedUndoException {
+            for (SModule module : modules) {
+              event.getData(MPSCommonDataKeys.MPS_PROJECT).setVirtualFolder(module, null);
+            }
+            ProjectPane.getInstance(event.getData(CommonDataKeys.PROJECT)).rebuild();
+          }
+
+          @Override
+          public DocumentReference[] getAffectedDocuments() {
+            return myDocumentReferences;
+          }
+
+          @Override
+          public boolean isGlobal() {
+            return true;
+          }
+        });
       }
-    });
+    };
+    mpsProject.getRepository().getModelAccess().executeCommand(command);
+    RemoveModulesVirtualFolder_Action.this.getProjectPane(event).rebuild();
   }
   private ProjectPane getProjectPane(final AnActionEvent event) {
     return ProjectPane.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT));

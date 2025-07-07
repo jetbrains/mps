@@ -12,7 +12,6 @@ import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.ide.findusages.view.FindUtils;
-import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import org.jetbrains.annotations.Nullable;
@@ -49,32 +48,24 @@ public class ConceptDescendants_Finder extends GeneratedFinder {
     try {
       boolean isIntfc = SNodeOperations.isInstanceOf(node, CONCEPTS.InterfaceConceptDeclaration$CG);
       if (isIntfc) {
-        FindUtils.searchForResults(monitor.subTask(1), new IFinder.FindCallback() {
-          public void onUsageFound(@NotNull SearchResult<?> searchResult) {
-            SNode nodeParam = (SNode) searchResult.getObject();
-            new _FunctionTypes._void_P1_E0<SNode>() {
-              public void invoke(SNode concept) {
-                if (monitor.isCanceled()) {
-                  return;
-                }
-                callback.onUsageFound(createSingleResult(concept));
-              }
-            }.invoke(nodeParam);
-          }
+        FindUtils.searchForResults(monitor.subTask(1), (searchResult) -> {
+          SNode nodeParam = (SNode) searchResult.getObject();
+          ((_FunctionTypes._void_P1_E0<SNode>) (SNode concept) -> {
+            if (monitor.isCanceled()) {
+              return;
+            }
+            callback.onUsageFound(createSingleResult(concept));
+          }).invoke(nodeParam);
         }, new SearchQuery(node, scope), FindUtils.getFinder("jetbrains.mps.lang.structure.findUsages.ImplementingConcepts_Finder"), FindUtils.getFinder("jetbrains.mps.lang.structure.findUsages.DerivedInterfaceConcepts_Finder"));
       } else {
-        FindUtils.searchForResults(monitor.subTask(1), new IFinder.FindCallback() {
-          public void onUsageFound(@NotNull SearchResult<?> searchResult) {
-            SNode nodeParam = (SNode) searchResult.getObject();
-            new _FunctionTypes._void_P1_E0<SNode>() {
-              public void invoke(SNode concept) {
-                if (monitor.isCanceled()) {
-                  return;
-                }
-                callback.onUsageFound(createSingleResult(concept));
-              }
-            }.invoke(nodeParam);
-          }
+        FindUtils.searchForResults(monitor.subTask(1), (searchResult) -> {
+          SNode nodeParam = (SNode) searchResult.getObject();
+          ((_FunctionTypes._void_P1_E0<SNode>) (SNode concept) -> {
+            if (monitor.isCanceled()) {
+              return;
+            }
+            callback.onUsageFound(createSingleResult(concept));
+          }).invoke(nodeParam);
         }, new SearchQuery(node, scope), FindUtils.getFinder("jetbrains.mps.lang.structure.findUsages.DerivedConcepts_Finder"));
       }
     } finally {

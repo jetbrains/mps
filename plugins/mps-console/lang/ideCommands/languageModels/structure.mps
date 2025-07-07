@@ -10,8 +10,6 @@
     <import index="tp4k" ref="r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="3xdn" ref="r:935ba0ee-7291-4caa-a807-d76e8fc69391(jetbrains.mps.lang.smodel.query.structure)" />
-    <import index="tp2q" ref="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)" />
-    <import index="hfbu" ref="r:2ea71bfd-fe13-4525-9346-023b05757b39(jetbrains.mps.lang.aspect.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
     <import index="dvox" ref="r:9dfd3567-3b1f-4edb-85a0-3981ca2bfd8c(jetbrains.mps.lang.modelapi.structure)" implicit="true" />
   </imports>
@@ -58,7 +56,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -364,30 +362,6 @@
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
   </node>
-  <node concept="1TIwiD" id="59iQg8ryOmC">
-    <property role="TrG5h" value="OfAspectOperation_old" />
-    <property role="34LRSv" value="ofAspect" />
-    <property role="3GE5qa" value="expression" />
-    <property role="R4oN_" value="filter models by their aspect" />
-    <property role="EcuMT" value="5932042262275638696" />
-    <property role="R5$K7" value="true" />
-    <property role="R5$K2" value="false" />
-    <ref role="1TJDcQ" to="tp2q:gKAMqbp" resolve="SequenceOperation" />
-    <node concept="1TJgyj" id="7Nk8HJUuKrS" role="1TKVEi">
-      <property role="IQ2ns" value="8994852683961272056" />
-      <property role="20kJfa" value="requestedAspect_old" />
-      <ref role="20lvS9" to="hfbu:2Y$EcRKMr1Q" resolve="SimpleLanguageAspectDescriptor" />
-      <node concept="asaX9" id="q_ruBBvOei" role="lGtFl">
-        <property role="YLQ7P" value="The link was moved to concept &quot;jetbrains.mps.lang.slanguage.structure.OfAspectOperation&quot;" />
-      </node>
-    </node>
-    <node concept="PrWs8" id="59iQg8ryZAl" role="PzmwI">
-      <ref role="PrY4T" to="3xdn:59iQg8ryQK3" resolve="OperationHelpProvider" />
-    </node>
-    <node concept="asaX9" id="q_ruBBvOe7" role="lGtFl">
-      <property role="YLQ7P" value="The concept was moved to language &quot;jetbrains.mps.lang.slanguage&quot;" />
-    </node>
-  </node>
   <node concept="1TIwiD" id="7mV0m3L$tuv">
     <property role="3GE5qa" value="" />
     <property role="TrG5h" value="ShowExpression" />
@@ -405,13 +379,6 @@
       <property role="IQ2ns" value="7600370246423275637" />
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
-  </node>
-  <node concept="1TIwiD" id="3J6h25QeHP2">
-    <property role="3GE5qa" value="query.parameter.old" />
-    <property role="TrG5h" value="GlobalScope_old" />
-    <property role="34LRSv" value="global" />
-    <property role="EcuMT" value="4307205004134636866" />
-    <ref role="1TJDcQ" to="3xdn:3J6h25QeHPb" resolve="ScopeParameter_old" />
   </node>
   <node concept="1TIwiD" id="238_VGTQhoN">
     <property role="3GE5qa" value="query.parameter" />

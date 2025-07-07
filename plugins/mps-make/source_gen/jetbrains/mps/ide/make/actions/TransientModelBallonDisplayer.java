@@ -36,6 +36,7 @@ public final class TransientModelBallonDisplayer implements Disposable {
 
   @Deprecated(forRemoval = true, since = "2021.1")
   public void init() {
+
   }
 
   @Override

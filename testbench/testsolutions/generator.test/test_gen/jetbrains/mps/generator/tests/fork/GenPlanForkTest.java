@@ -4,13 +4,14 @@ package jetbrains.mps.generator.tests.fork;
 
 import jetbrains.mps.lang.test.generator.rt.BaseGeneratorTest;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.generator.rt.TransformHelper;
 import java.util.Collection;
 import org.junit.Assert;
 
 public class GenPlanForkTest extends BaseGeneratorTest {
+
 
 
   private SModel myArg_EM1;
@@ -19,7 +20,7 @@ public class GenPlanForkTest extends BaseGeneratorTest {
   private SModel myArg_ForkPlan;
 
 
-  @Before
+  @BeforeEach
   public void prepareArguments() {
     myArg_EM1 = findModel("EM1", "r:05c2f926-57b0-4b6d-930c-1aabb187694d(jetbrains.mps.generator.crossmodel.sandbox.entrymodel1)");
     myArg_RM1 = findModel("RM1", "r:35b2450d-4c62-4a43-8984-fcb9e972f2a9(jetbrains.mps.generator.tests.bean1)");

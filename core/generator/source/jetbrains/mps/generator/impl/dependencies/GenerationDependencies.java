@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,17 +23,13 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 
-import java.util.Collections;
-import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * Evgeny Gryaznov, May 14, 2010
+ * 'generated' file, resides under source_gen.caches
  */
 public class GenerationDependencies {
-
-  private static final int LEGACY_VERSION = 2; // "dependencies" root
-  private static final int ACTUAL_VERSION = 3;
+  private static final int ACTUAL_VERSION = 3; // FTR, in v2, it was "dependencies" root and no file info
 
   private static final String ROOT = "product";
   private static final String ATTR_MODEL_HASH = "modelHash";
@@ -65,11 +61,6 @@ public class GenerationDependencies {
     return myParametersHash;
   }
 
-  public List<GenerationRootDependencies> getRootDependencies() {
-    // FIXME drop uses and remove
-    return Collections.emptyList();
-  }
-
   public void update(@Nullable String path, @NotNull String fileName) {
     myFiles.getOrAdd(new FilesEntry(path)).addFile(fileName);
   }
@@ -83,7 +74,7 @@ public class GenerationDependencies {
         loc = rootDir.getDescendant(fe.getDir());
       }
       for (String fname : fe.getFiles()) {
-        generatedFiles.accept(loc.getDescendant(fname));
+        generatedFiles.accept(loc.findChild(fname));
       }
     }
   }
@@ -110,7 +101,7 @@ public class GenerationDependencies {
 
   public static GenerationDependencies fromXml(Element root) {
     String version = GenerationRootDependencies.getValue(root, ATTR_VERSION);
-    if (!Integer.toString(LEGACY_VERSION).equals(version) && !Integer.toString(ACTUAL_VERSION).equals(version)) {
+    if (!Integer.toString(ACTUAL_VERSION).equals(version)) {
       /* regenerate all */
       return null;
     }
@@ -118,12 +109,10 @@ public class GenerationDependencies {
     String modelHash = GenerationRootDependencies.getValue(root, ATTR_MODEL_HASH);
     String paramsHash = GenerationRootDependencies.getValue(root, ATTR_PARAMS_HASH);
     final GenerationDependencies rv = new GenerationDependencies(modelHash, paramsHash);
-    if (Integer.toString(ACTUAL_VERSION).equals(version)) {
-      for (Element child : root.getChildren("files")) {
-        final String dir = child.getAttributeValue("dir");
-        final String files = child.getAttributeValue("names");
-        rv.myFiles.add(new FilesEntry(dir, files));
-      }
+    for (Element child : root.getChildren("files")) {
+      final String dir = child.getAttributeValue("dir");
+      final String files = child.getAttributeValue("names");
+      rv.myFiles.add(new FilesEntry(dir, files));
     }
     return rv;
   }

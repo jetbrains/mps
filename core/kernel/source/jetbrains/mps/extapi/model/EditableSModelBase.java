@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,10 +24,10 @@ import jetbrains.mps.persistence.DataSourceFactoryNotFoundException;
 import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.persistence.NoSourceRootsInModelRootException;
 import jetbrains.mps.persistence.SourceRootDoesNotExistException;
-import jetbrains.mps.smodel.event.SModelFileChangedEvent;
+import jetbrains.mps.smodel.ModelCommandContext;
+import jetbrains.mps.smodel.ModelCommandContext.Provider;
+import jetbrains.mps.smodel.ModelRenameUndoableAction;
 import jetbrains.mps.smodel.event.SModelRenamedEvent;
-import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.EditableSModel;
@@ -35,6 +35,7 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNodeChangeListener;
 import org.jetbrains.mps.openapi.model.SaveOptions;
 import org.jetbrains.mps.openapi.model.SaveResult;
+import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
@@ -45,7 +46,6 @@ import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.BiFunction;
 
 /**
  * Editable model (generally) backed up by file. Implicitly bound to files due to
@@ -54,7 +54,7 @@ import java.util.function.BiFunction;
  */
 public abstract class EditableSModelBase extends SModelBase implements EditableSModel {
 
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(EditableSModelBase.class));
+  private static final Logger LOG = Logger.getLogger(EditableSModelBase.class);
   protected final ModelSourceChangeTracker myTimestampTracker;
   @NotNull private volatile StorageMemoryConflictResolver<EditableSModel> myConflictResolver = createDefaultResolver();
   private final AtomicBoolean myResolveConflictInProgress = new AtomicBoolean();
@@ -75,7 +75,7 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
       public CompletionStage<ConflictResolved> resolveConflict(@NotNull EditableSModel model) {
         LOG.warning("Conflict happens, we always choose memory data by default", new Throwable());
         model.save(new SaveOptions.SaveOptionsBuilder()
-                       .force()
+                       .forceSave()
                        .build());
         return CompletableFuture.completedFuture(ConflictResolved.MEMORY_CHOSEN);
       }
@@ -202,7 +202,6 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
       return myConflictResolver.resolveConflict(this)
                                .thenApply(EditableSModelBase::convert)
                                .handle((saveResult, throwable) -> {
-                                 LOG.warning("HANDLED");
                                  myResolveConflictInProgress.set(false);
                                  return saveResult;
                                });
@@ -246,27 +245,29 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
   public CompletionStage<SaveResult> save(@NotNull SaveOptions options) {
     assertCanChange();
     if (!isLoaded()) {
-      if (options.force() || options.preloadModelIfNeeded()) {
+      if (options.preloadModel() || options.forceSave()) {
         load();
       } else {
         return CompletableFuture.completedFuture(SaveResult.NOT_LOADED);
       }
     }
     assert isLoaded();
-    if (options.force()) {
+    if (options.forceSave()) {
       setChanged(true);
+    }
+    if (options.updateResolveInfoInRefs()) {
+      new ResolveInfoUpdater().updateResolveInfoInRefs(this);
     }
     if (!isChanged()) {
       return CompletableFuture.completedFuture(SaveResult.NOT_CHANGED);
     }
-    assert isChanged();
 
     LOG.debug(" Saving the model " + getName().getLongName());
 
     if (options.refreshDataSource()) {
       getSource().refresh();
     }
-    if (!options.force()) {
+    if (options.resolveConflicts()) {
       CompletionStage<SaveResult> conflictFuture = resolveConflictsOnSave();
       if (conflictFuture != null) {
         return conflictFuture;
@@ -329,21 +330,11 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
         if (!(getSource() instanceof FileDataSource)) {
           throw new UnsupportedOperationException("cannot change model file on non-file data source");
         }
-        // FIXME it's odd to send out model file changed event from the model, and it's legacy with no uses (I didn't find any neither in ext nor in mbeddr)
-        //       there are legacy listener implementations in mbeddr and 4 references to ModelFileChangedEvent, but no special handling.
-        // FIXME shall just drop these
-        IFile oldFile = ((FileDataSource) getSource()).getFile();
-        fireBeforeModelFileChanged(new SModelFileChangedEvent(this, oldFile, null));
 
         ModelRoot root = getModelRoot();
         if (root instanceof DefaultModelRoot) { // todo only default model root? this code does not belong here but model root
           ((DefaultModelRoot) root).rename(((FileDataSource) getSource()), newModelName);
           updateTimestamp();
-        }
-        // XXX see above, just drop it
-        final IFile newFile = ((FileDataSource) getSource()).getFile();
-        if (!oldFile.getPath().equals(newFile.getPath())) {
-          fireModelFileChanged(new SModelFileChangedEvent(this, oldFile, newFile));
         }
       }
     } catch (DataSourceFactoryNotFoundException | NoSourceRootsInModelRootException | SourceRootDoesNotExistException e) {
@@ -353,6 +344,18 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
 
     fireModelRenamed(new SModelRenamedEvent(this, oldName.getModelName(), newModelName));
     fireModelRenamed(oldName);
+
+    //TODO apply to normal persistence as well to fix MPS-32728
+    if (!changeFile) {
+      //per-root persistence
+      ModelAccess modelAccess = getRepository().getModelAccess();
+      if (modelAccess instanceof ModelCommandContext.Provider) {
+        final ModelCommandContext cc = ((Provider) modelAccess).getCommandContext(this);
+        if (cc != null) {
+          cc.registerActionWithUndo(new ModelRenameUndoableAction(this, oldName.getModelName(), newModelName));
+        }
+      }
+    }
   }
 
   @Override

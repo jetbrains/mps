@@ -18,6 +18,7 @@ import com.intellij.openapi.util.Key;
 import com.intellij.openapi.editor.Document;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.ide.undo.MPSUndoUtil;
+import com.intellij.openapi.vfs.VirtualFile;
 
 @GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/4393777506305219687", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 public class DiffFileEditor implements DocumentsEditor {
@@ -92,5 +93,10 @@ public class DiffFileEditor implements DocumentsEditor {
     }
     Document document = MPSUndoUtil.getDoc(virtualFile);
     return (document != null ? new Document[]{document} : new Document[0]);
+  }
+  @Override
+  public VirtualFile getFile() {
+    MPSNodeVirtualFile virtualFile = myEditor.getVirtualFile();
+    return virtualFile;
   }
 }

@@ -17,7 +17,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class NodeFactories {
   public static class NodeFactory_1207674454116 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.NodeMacro$qU)) {
         SLinkOperations.setTarget(newNode, LINKS.mappingLabel$jbOO, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NodeMacro$qU), LINKS.mappingLabel$jbOO));
         SNode sourceNodeQuery = SNodeOperations.cast(RuleUtil.getSourceNodeQuery(sampleNode), CONCEPTS.SourceSubstituteMacro_SourceNodeQuery$i3);
@@ -36,14 +36,14 @@ public class NodeFactories {
     }
   }
   public static class NodeFactory_7834938100936651350 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.LoopMacro$1T)) {
         SLinkOperations.setTarget(newNode, LINKS.sourceNodesQuery$RIct, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.LoopMacro$1T), LINKS.sourceNodesQuery$XjmI));
       }
     }
   }
   public static class NodeFactory_224926278906344315 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(enclosingNode, CONCEPTS.TemplateSwitch$j_)) {
         SPropertyOperations.assign(newNode, PROPS.applyToConceptInheritors$PfLi, true);
       }

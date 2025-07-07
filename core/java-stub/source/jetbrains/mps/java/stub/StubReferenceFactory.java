@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,11 +17,12 @@ package jetbrains.mps.java.stub;
 
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager.Deptype;
-import jetbrains.mps.smodel.SModelStereotype;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -50,6 +51,7 @@ public final class StubReferenceFactory implements ReferenceFactory {
   private final VisibleModel myModel;
   private final String myModelLongName;
   private final SModelReference myModelReference;
+  private final String myStereotype;
 
   // 1. we used to keep this cache separately, in StubModelsResolver, which might be better approach
   // if we decide to re-use this cache throughout all models loaded within a module. We didn't use this cache,
@@ -63,27 +65,29 @@ public final class StubReferenceFactory implements ReferenceFactory {
    * @param module module we try to resolve references in, provides dependencies
    * @param model  model we try to resolve references in, ensures priority of local nodes over those from dependencies
    */
-  public StubReferenceFactory(@NotNull SModule module, @NotNull SModel model) {
+  public StubReferenceFactory(@NotNull SModule module, @NotNull SModel model, @NotNull String stereotype) {
     myModule = module;
     myModel = new VisibleModel(model);
     myModelReference = model.getReference();
     myModelLongName = model.getName().getLongName();
+    myStereotype = stereotype;
   }
 
-  @NotNull
   @Override
   public void create(SNode source, String pack, SNodeId targetNodeId, SReferenceLink role, String resolveInfo, SNodeId targetTopClassifier) {
+    resolveInfo = resolveInfo.intern();
+
     if (pack.equals(myModelLongName)) {
       if (myModel.isKnownRoot(targetTopClassifier)) {
-        source.setReference(role, jetbrains.mps.smodel.SReference.create(role, source, myModelReference, targetNodeId, resolveInfo));
+        source.setReference(role, ResolveInfo.of(new SNodePointer(myModelReference, targetNodeId), resolveInfo));
         return;
       }
     }
 
-    Collection<VisibleModel> possibleModels = findModels(new SModelName(pack, SModelStereotype.JAVA_STUB));
+    Collection<VisibleModel> possibleModels = findModels(new SModelName(pack, myStereotype));
 
     if (possibleModels.isEmpty()) {
-      source.setReference(role, jetbrains.mps.smodel.SReference.create(role, source, null, targetNodeId, resolveInfo));
+      source.setReference(role, ResolveInfo.of(new SNodePointer(null, targetNodeId), resolveInfo));
       return;
     }
 
@@ -93,7 +97,7 @@ public final class StubReferenceFactory implements ReferenceFactory {
       SModelReference targetModel = possibleModels.iterator().next().getModelReference();
       addImport(targetModel);
 
-      source.setReference(role, jetbrains.mps.smodel.SReference.create(role, source, targetModel, targetNodeId, resolveInfo));
+      source.setReference(role, ResolveInfo.of(new SNodePointer(targetModel, targetNodeId), resolveInfo));
       return;
     } else {
       for (VisibleModel vm : possibleModels) {
@@ -103,7 +107,7 @@ public final class StubReferenceFactory implements ReferenceFactory {
         }
         if (vm.isKnownRoot(targetTopClassifier)) {
           addImport(modelRef);
-          source.setReference(role, jetbrains.mps.smodel.SReference.create(role, source, modelRef, targetNodeId, resolveInfo));
+          source.setReference(role, ResolveInfo.of(new SNodePointer(modelRef, targetNodeId), resolveInfo));
           return;
         }
       }

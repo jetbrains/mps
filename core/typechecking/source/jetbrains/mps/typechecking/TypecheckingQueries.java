@@ -145,8 +145,17 @@ public interface TypecheckingQueries {
    * Returns true iff the root doesn't need to be "re-checked", that is all the pending changes to the root have been processed
    * and the cached types and errors are up-to-date.
    * This method only makes sense if the session has been created with "incremental" flag.
+   * @deprecated Please switch to {@link #getCacheState(SNode)}. This API is no longer supported.
    */
+  @Deprecated(forRemoval = true)
   boolean isCacheUpToDate(SNode root);
+
+  /**
+   * Provides access to {@code CacheState} describing the current state of the cache.
+   */
+  default CacheState getCacheState(SNode root) {
+    return CacheState.DIRTY;
+  }
 
   /**
    * Returns the object to be used for managing listeners that are notified during

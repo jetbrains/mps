@@ -16,7 +16,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.scripts.NodePointerMigrations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -44,11 +43,7 @@ public class MigrateOldNodePointerExpressions extends MigrationScriptBase {
     {
       SearchScope scope_5d7h7i_a0e = CommandUtil.createScope(m);
       final SearchScope scope_5d7h7i_a0e_0 = new EditableFilteringScope(scope_5d7h7i_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_5d7h7i_a0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_5d7h7i_a0e_0;
       for (SNode node : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodePointerExpression_Old$34, false))) {
         if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43)).isNotEmpty()) {
           new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration_old$2j).set(node, createReviewMigration_old_5d7h7i_a0a0a0a0a0a6());
@@ -67,19 +62,11 @@ public class MigrateOldNodePointerExpressions extends MigrationScriptBase {
     {
       SearchScope scope_5d7h7i_a0f = CommandUtil.createScope(m);
       final SearchScope scope_5d7h7i_a0f_0 = new EditableFilteringScope(scope_5d7h7i_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_5d7h7i_a0f_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodePointerExpression_Old$34, false)).select(new ISelector<SNode, DeprecatedConceptNotMigratedProblem>() {
-        public DeprecatedConceptNotMigratedProblem select(SNode it) {
-          return new DeprecatedConceptNotMigratedProblem(it);
-        }
-      });
+      QueryExecutionContext context = () -> scope_5d7h7i_a0f_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodePointerExpression_Old$34, false)).select((it) -> new DeprecatedConceptNotMigratedProblem(it));
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 10);
   }
 

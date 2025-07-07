@@ -16,7 +16,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class TextualFactories {
   public static class NodeFactory_9189109070801858976 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode l = sampleNode;
         if (SNodeOperations.isInstanceOf(l, CONCEPTS.Letter$kd)) {
@@ -28,7 +28,7 @@ public class TextualFactories {
     }
   }
   public static class NodeFactory_3129707072769713286 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode p = sampleNode;
         if (SNodeOperations.isInstanceOf(p, CONCEPTS.Paragraph$XF)) {
@@ -39,7 +39,7 @@ public class TextualFactories {
     }
   }
   public static class NodeFactory_1094247804558658408 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode l = sampleNode;
         if (SNodeOperations.isInstanceOf(l, CONCEPTS.Line$yC)) {
@@ -49,7 +49,7 @@ public class TextualFactories {
     }
   }
   public static class NodeFactory_6746006958027564752 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode p = sampleNode;
         if (SNodeOperations.isInstanceOf(p, CONCEPTS.IndentedPoint$BF)) {

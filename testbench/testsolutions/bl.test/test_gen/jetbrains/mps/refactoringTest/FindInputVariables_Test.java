@@ -4,11 +4,10 @@ package jetbrains.mps.refactoringTest;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ExtractMethodRefactoringAnalyzer;
@@ -21,13 +20,11 @@ import org.junit.Assert;
 
 @MPSLaunch
 public class FindInputVariables_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(FindInputVariables_Test.class, "${mps_home}", "r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(FindInputVariables_Test.class, "${mps_home}", "r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)", false));
 
   public FindInputVariables_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -41,12 +38,19 @@ public class FindInputVariables_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052444310");
+    }
+
     public void test_inputVariablesTest() throws Exception {
-      addNodeById("1230052444310");
-      ExtractMethodRefactoringAnalyzer a = new ExtractMethodRefactoringAnalyzer(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052444319"), getNodeById("1230052444324"), getNodeById("1230052444331")));
-      List<MethodParameter> vars = a.getInputVariables();
-      Assert.assertEquals(1, ListSequence.fromList(vars).count());
-      Assert.assertEquals(getNodeById("1230052444315"), ListSequence.fromList(vars).first().getDeclaration());
+      initTestNodes();
+      runWithinCommand(() -> {
+        ExtractMethodRefactoringAnalyzer a = new ExtractMethodRefactoringAnalyzer(ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("l1"), getAnnotatedNode("l2"), getAnnotatedNode("l3")));
+        List<MethodParameter> vars = a.getInputVariables();
+        Assert.assertEquals(1, ListSequence.fromList(vars).count());
+        Assert.assertEquals(getAnnotatedNode("var"), ListSequence.fromList(vars).first().getDeclaration());
+      });
     }
 
   }

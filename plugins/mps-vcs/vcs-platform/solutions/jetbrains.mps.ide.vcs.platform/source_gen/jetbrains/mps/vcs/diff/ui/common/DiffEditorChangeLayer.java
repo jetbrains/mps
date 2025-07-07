@@ -9,13 +9,9 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import org.jetbrains.annotations.Nullable;
 import java.awt.Color;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.awt.Graphics;
 import jetbrains.mps.nodeEditor.leftHighlighter.BackgroundWithFoldingLinePainter;
 import com.intellij.diff.util.TextDiffTypeFactory;
@@ -60,11 +56,7 @@ import java.awt.Graphics2D;
     myRank = rank;
     myParent = parent;
     SetSequence.fromSet(myChildren).removeSequence(SetSequence.fromSet(getNextLevelChildren()));
-    SetSequence.fromSet(myChildren).visitAll(new IVisitor<DiffEditorChangeLayer>() {
-      public void visit(DiffEditorChangeLayer it) {
-        it.setRankAndParent(rank + 1, DiffEditorChangeLayer.this);
-      }
-    });
+    SetSequence.fromSet(myChildren).visitAll((it) -> it.setRankAndParent(rank + 1, DiffEditorChangeLayer.this));
   }
 
   private Set<DiffEditorChangeLayer> getNextLevelChildren() {
@@ -136,12 +128,8 @@ import java.awt.Graphics2D;
     return Color.GRAY;
   }
 
-  /*package*/ String getDescription() {
-    return IterableUtils.join(ListSequence.fromList(getGroup().getChanges()).select(new ISelector<ModelChange, String>() {
-      public String select(ModelChange ch) {
-        return ch.getDescription();
-      }
-    }), "\n\n");
+  /*package*/ String getDescription(final boolean useShortChangeDescriptions) {
+    return IterableUtils.join(ListSequence.fromList(getGroup().getChanges()).select((ch) -> (useShortChangeDescriptions ? ch.getShortDescription() : ch.getDescription())), "\n\n");
   }
 
   /*package*/ void setSelected(boolean selected) {
@@ -158,16 +146,8 @@ import java.awt.Graphics2D;
     final int end = (int) getGroupBounds().end();
     int length = end - start;
 
-    Iterable<DiffEditorChangeLayer> sameStartLayers = Sequence.fromIterable(otherLayers).where(new IWhereFilter<DiffEditorChangeLayer>() {
-      public boolean accept(DiffEditorChangeLayer it) {
-        return (int) it.getGroupBounds().start() == start;
-      }
-    });
-    Iterable<DiffEditorChangeLayer> bottomLayers = Sequence.fromIterable(otherLayers).where(new IWhereFilter<DiffEditorChangeLayer>() {
-      public boolean accept(DiffEditorChangeLayer it) {
-        return (int) it.getGroupBounds().start() == end;
-      }
-    });
+    Iterable<DiffEditorChangeLayer> sameStartLayers = Sequence.fromIterable(otherLayers).where((it) -> (int) it.getGroupBounds().start() == start);
+    Iterable<DiffEditorChangeLayer> bottomLayers = Sequence.fromIterable(otherLayers).where((it) -> (int) it.getGroupBounds().start() == end);
 
     myHasBottomLayer = Sequence.fromIterable(bottomLayers).isNotEmpty() || (length == 1 && Sequence.fromIterable(sameStartLayers).isNotEmpty());
 
@@ -180,22 +160,14 @@ import java.awt.Graphics2D;
     myY = start;
     myHeight = length;
 
-    boolean hasLineWithSameStart = Sequence.fromIterable(sameStartLayers).where(new IWhereFilter<DiffEditorChangeLayer>() {
-      public boolean accept(DiffEditorChangeLayer it) {
-        return it.getGroupBounds().length() == 1;
-      }
-    }).isNotEmpty();
+    boolean hasLineWithSameStart = Sequence.fromIterable(sameStartLayers).where((it) -> it.getGroupBounds().length() == 1).isNotEmpty();
 
     if (hasLineWithSameStart) {
       myY += (LINE_SHIFT + GAP);
       myHeight -= (LINE_SHIFT + GAP);
     }
     if (myHasBottomLayer) {
-      boolean hasLineBottomNeighbour = Sequence.fromIterable(bottomLayers).where(new IWhereFilter<DiffEditorChangeLayer>() {
-        public boolean accept(DiffEditorChangeLayer it) {
-          return it.getGroupBounds().length() == 1;
-        }
-      }).isNotEmpty();
+      boolean hasLineBottomNeighbour = Sequence.fromIterable(bottomLayers).where((it) -> it.getGroupBounds().length() == 1).isNotEmpty();
       if (hasLineBottomNeighbour) {
         myHeight -= (LINE_HEIGHT - LINE_SHIFT + GAP);
       } else {

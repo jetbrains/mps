@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.project;
 
-import jetbrains.mps.classloading.CustomClassLoadingFacet;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModuleBase;
 import jetbrains.mps.project.io.DescriptorIO;
 import jetbrains.mps.project.io.DescriptorIOFacade;
@@ -23,7 +23,6 @@ import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionKind;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -73,7 +72,7 @@ public class Solution extends ReloadableModuleBase {
     super.save();
 
     try {
-      DescriptorIO<SolutionDescriptor> io = DescriptorIOFacade.getInstance().standardProvider().solutionDescriptorIO();
+      DescriptorIO<SolutionDescriptor> io = new DescriptorIOFacade().standardProvider().solutionDescriptorIO();
       io.writeToFile(getModuleDescriptor(), getDescriptorFile());
     } catch (Exception ex) {
       Logger.getLogger(getClass()).error("Save failed", ex);
@@ -89,13 +88,13 @@ public class Solution extends ReloadableModuleBase {
     return getModuleName() + " [solution]";
   }
 
+  /**
+   * @deprecated no direct replacement, check {@link jetbrains.mps.project.facets.JavaModuleFacet.LoadExtensions}
+   */
+  @Deprecated(since = "2022.3", forRemoval = true)
   public SolutionKind getKind() {
+    // there are uses of the method in JMFI to set up defaults
+    // Logger.getLogger(getClass()).warnDeprecatedUse("Solution.getKind() and SolutionKind are deprecated, don't use");
     return getModuleDescriptor().getKind();
-  }
-
-  @Override
-  public boolean canLoadClasses() {
-    // TODO mps facet from this [like IDEA plugin facet]
-    return getKind() != SolutionKind.NONE || getFacet(CustomClassLoadingFacet.class) != null;
   }
 }

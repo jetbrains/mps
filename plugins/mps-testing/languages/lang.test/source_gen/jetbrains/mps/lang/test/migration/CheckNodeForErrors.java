@@ -17,15 +17,13 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -51,19 +49,11 @@ public class CheckNodeForErrors extends MigrationScriptBase {
     {
       SearchScope scope_j3gqtx_a0e = CommandUtil.createScope(m);
       final SearchScope scope_j3gqtx_a0e_0 = new EditableFilteringScope(scope_j3gqtx_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_j3gqtx_a0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_j3gqtx_a0e_0;
       Collection<SNode> allInstances = CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.CheckNodeForErrors$89, true);
       final Map<SNode, String> nameMap = MapSequence.fromMap(new HashMap<SNode, String>());
       for (SNode source : CollectionSequence.fromCollection(allInstances)) {
-        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(source, LINKS.nodeToCheck$bx55), CONCEPTS.TestNodeReference$hm) && SNodeOperations.hasRole(source, LINKS.statement$53DE) && SNodeOperations.hasRole(SNodeOperations.getParent(source), LINKS.body$5xQk) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(source)), CONCEPTS.SimpleNodeTest$X9) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(source), CONCEPTS.StatementList$m_), LINKS.statement$53DE)).all(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)), CONCEPTS.CheckNodeForErrors$89) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)), CONCEPTS.SingleLineComment$Kw) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)), CONCEPTS.Statement$P6);
-          }
-        }) && ListSequence.fromList(SLinkOperations.getChildren(source, LINKS.smodelAttribute$KJ43)).isEmpty()) {
+        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(source, LINKS.nodeToCheck$bx55), CONCEPTS.TestNodeReference$hm) && SNodeOperations.hasRole(source, LINKS.statement$53DE) && SNodeOperations.hasRole(SNodeOperations.getParent(source), LINKS.body$5xQk) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(source)), CONCEPTS.SimpleNodeTest$X9) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(source), CONCEPTS.StatementList$m_), LINKS.statement$53DE)).all((it) -> SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)), CONCEPTS.CheckNodeForErrors$89) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)), CONCEPTS.SingleLineComment$Kw) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)), CONCEPTS.Statement$P6)) && ListSequence.fromList(SLinkOperations.getChildren(source, LINKS.smodelAttribute$KJ43)).isEmpty()) {
           String testName = SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.cast(SNodeOperations.getParent(source), CONCEPTS.StatementList$m_)), CONCEPTS.SimpleNodeTest$X9), PROPS.name$MnvL);
           if (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(source), CONCEPTS.StatementList$m_), LINKS.statement$53DE)).count() > 1) {
             testName += "_migrated" + (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(source), CONCEPTS.StatementList$m_), LINKS.statement$53DE), CONCEPTS.CheckNodeForErrors$89)).indexOf(source) + 1);
@@ -73,25 +63,23 @@ public class CheckNodeForErrors extends MigrationScriptBase {
           MapSequence.fromMap(nameMap).put(source, testName);
         }
       }
-      CollectionSequence.fromCollection(allInstances).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode source) {
-          if (MapSequence.fromMap(nameMap).containsKey(source)) {
-            SNode nodeToCheck = SNodeOperations.getParent(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(source, LINKS.nodeToCheck$bx55), CONCEPTS.TestNodeReference$hm), LINKS.declaration$hXIv));
-            if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj).get(nodeToCheck) == null)) {
-              new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj).setNew(nodeToCheck);
-            }
-            ListSequence.fromList(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj).get(nodeToCheck), LINKS.nodeOperations$Mgf9)).addElement(createCheckNodeForErrorMessagesOperation_j3gqtx_a0a2a0a0a0d0a0d(SPropertyOperations.getBoolean(source, PROPS.includeSelf$q9ZQ), MapSequence.fromMap(nameMap).get(source)));
-            SNodeOperations.insertPrevSiblingChild(source, _quotation_createNode_j3gqtx_a0a3a0a0a0d0a0d());
-            SNodeOperations.insertPrevSiblingChild(source, _quotation_createNode_j3gqtx_a0a4a0a0a0d0a0d(SLinkOperations.getTarget(source, LINKS.nodeToCheck$bx55)));
-            SNodeOperations.deleteNode(source);
-          } else {
-            SNode ann = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, "jetbrains.mps.lang.core.structure.ReviewMigration"));
-            SPropertyOperations.set(ann, PROPS.createdByScript$dQMM, CheckNodeForErrors.this.getReference().serialize());
-            SPropertyOperations.assign(ann, PROPS.reasonShort$dDui, "too complex to migrate");
-            SPropertyOperations.assign(ann, PROPS.todo$dICC, "This statement should have been migrated, but test method is too complex to be migrated. Please replace `check error messages` statements with test node annotations.");
-            SPropertyOperations.assign(ann, PROPS.readableId$dIRD, CheckNodeForErrors.this.description);
-            new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u).set(source, ann);
+      CollectionSequence.fromCollection(allInstances).visitAll((source) -> {
+        if (MapSequence.fromMap(nameMap).containsKey(source)) {
+          SNode nodeToCheck = SNodeOperations.getParent(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(source, LINKS.nodeToCheck$bx55), CONCEPTS.TestNodeReference$hm), LINKS.declaration$hXIv));
+          if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj).get(nodeToCheck) == null)) {
+            new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj).setNew(nodeToCheck);
           }
+          ListSequence.fromList(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj).get(nodeToCheck), LINKS.nodeOperations$Mgf9)).addElement(createCheckNodeForErrorMessagesOperation_j3gqtx_a0a2a0a0a0d0a0d(SPropertyOperations.getBoolean(source, PROPS.includeSelf$q9ZQ), MapSequence.fromMap(nameMap).get(source)));
+          SNodeOperations.insertPrevSiblingChild(source, _quotation_createNode_j3gqtx_a0a3a0a0a0d0a0d());
+          SNodeOperations.insertPrevSiblingChild(source, _quotation_createNode_j3gqtx_a0a4a0a0a0d0a0d(SLinkOperations.getTarget(source, LINKS.nodeToCheck$bx55)));
+          SNodeOperations.deleteNode(source);
+        } else {
+          SNode ann = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, "jetbrains.mps.lang.core.structure.ReviewMigration"));
+          SPropertyOperations.set(ann, PROPS.createdByScript$dQMM, CheckNodeForErrors.this.getReference().serialize());
+          SPropertyOperations.assign(ann, PROPS.reasonShort$dDui, "too complex to migrate");
+          SPropertyOperations.assign(ann, PROPS.todo$dICC, "This statement should have been migrated, but test method is too complex to be migrated. Please replace `check error messages` statements with test node annotations.");
+          SPropertyOperations.assign(ann, PROPS.readableId$dIRD, CheckNodeForErrors.this.description);
+          new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u).set(source, ann);
         }
       });
     }
@@ -101,24 +89,16 @@ public class CheckNodeForErrors extends MigrationScriptBase {
     {
       SearchScope scope_j3gqtx_a0f = CommandUtil.createScope(m);
       final SearchScope scope_j3gqtx_a0f_0 = scope_j3gqtx_a0f;
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_j3gqtx_a0f_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.CheckNodeForErrors$89, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u).get(it) == null);
-        }
-      }).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
+      QueryExecutionContext context = () -> scope_j3gqtx_a0f_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.CheckNodeForErrors$89, false)).where((it) -> (new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u).get(it) == null)).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+        public Problem invoke(SNode it) {
           Problem problem = new DeprecatedConceptNotMigratedProblem(it);
           return problem;
         }
       });
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, "jetbrains.mps.lang.test"), 2);
   }
 

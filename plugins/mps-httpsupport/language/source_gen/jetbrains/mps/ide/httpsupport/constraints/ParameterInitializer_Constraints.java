@@ -15,6 +15,7 @@ import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -23,11 +24,10 @@ import jetbrains.mps.scope.FilteringScope;
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -53,18 +53,14 @@ public class ParameterInitializer_Constraints extends BaseConstraintsDescriptor 
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.parameter$DxS8, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.parameter$DxS8, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_9zeh4o_a0a0a0a0a1a0a0a0d;
+            return new SNodePointer("r:13dad04a-0370-4fef-a258-0eee3aa2ee6a(jetbrains.mps.ide.httpsupport.constraints)", "6836281137582836959");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
@@ -74,11 +70,11 @@ public class ParameterInitializer_Constraints extends BaseConstraintsDescriptor 
 
               @Override
               public boolean isExcluded(final SNode node) {
-                return ListSequence.fromList(SLinkOperations.getChildren(bilder, LINKS.initializer$Xe8)).findFirst(new IWhereFilter<SNode>() {
-                  public boolean accept(SNode it) {
-                    return check_9zeh4o_a0a0a0a0a0b0a0c0b0a0a0b0a0a0a3(SLinkOperations.getTarget(it, LINKS.parameter$DxS8), node);
+                return ListSequence.fromList(SLinkOperations.getChildren(bilder, LINKS.initializer$Xe8)).findFirst(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+                  public Boolean invoke(SNode it) {
+                    return check_9zeh4o_a0a0a0a0a0b0a0c0b0a0a0a0a0a0a3(SLinkOperations.getTarget(it, LINKS.parameter$DxS8), node);
                   }
-                }) != null && !((SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.parameter$DxS8) != null));
+                }) != null && !(SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.parameter$DxS8) != null);
               }
             };
           }
@@ -92,14 +88,13 @@ public class ParameterInitializer_Constraints extends BaseConstraintsDescriptor 
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.RequestURLBuilderExpression$pg);
   }
-  private static boolean check_9zeh4o_a0a0a0a0a0b0a0c0b0a0a0b0a0a0a3(SNode checkedDotOperand, SNode node) {
+  private static boolean check_9zeh4o_a0a0a0a0a0b0a0c0b0a0a0a0a0a0a3(SNode checkedDotOperand, SNode node) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.equals(node);
     }
     return false;
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:13dad04a-0370-4fef-a258-0eee3aa2ee6a(jetbrains.mps.ide.httpsupport.constraints)", "1227128029536566389");
-  private static final SNodePointer breakingNode_9zeh4o_a0a0a0a0a1a0a0a0d = new SNodePointer("r:13dad04a-0370-4fef-a258-0eee3aa2ee6a(jetbrains.mps.ide.httpsupport.constraints)", "6836281137582836959");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ParameterInitializer$k5 = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5cf17L, "jetbrains.mps.ide.httpsupport.structure.ParameterInitializer");

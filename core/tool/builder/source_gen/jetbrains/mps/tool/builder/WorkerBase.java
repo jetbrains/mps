@@ -18,16 +18,13 @@ import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.tool.common.PluginData;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import org.apache.log4j.Logger;
+import java.util.logging.Logger;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.components.ComponentHost;
 import java.util.Set;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.smodel.SModelStereotype;
-import jetbrains.mps.generator.GenerationFacade;
-import java.util.Collection;
 import org.jetbrains.mps.openapi.module.SRepository;
+import java.util.Collection;
 import java.util.LinkedHashSet;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.VFSManager;
@@ -38,7 +35,7 @@ import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.extapi.module.SRepositoryExt;
-import org.apache.log4j.Level;
+import java.util.logging.Level;
 import java.io.StringWriter;
 import java.io.PrintWriter;
 
@@ -75,13 +72,26 @@ public abstract class WorkerBase {
     return new JavaCompilerOptions(parsedJavaVersion);
   }
 
+  protected final boolean isRunningOnTeamCity() {
+    return myWhatToDo.getProperty("teamcity.version") != null;
+  }
+
   protected abstract Environment createEnvironment();
 
+  protected EnvironmentConfig initEnvironmentConfig() {
+    EnvironmentConfig res = EnvironmentConfig.emptyConfig().withBootstrapLibraries().withWorkbenchPath();
+    if (myWhatToDo.getAutomaticPluginDiscoveryMode()) {
+      res = res.withAutomaticPluginDiscovery();
+    } else {
+      res = res.withDefaultPlugins();
+    }
+    return res;
+  }
+
   protected EnvironmentConfig createEnvironmentConfig(Script whatToDo) {
-    EnvironmentConfig config = EnvironmentConfig.emptyConfig().withDefaultSamples().withDefaultPlugins();
+    EnvironmentConfig config = initEnvironmentConfig();
     RepositoryDescriptor repo = whatToDo.getRepoDescriptor();
     if (repo != null) {
-      config = config.withBootstrapLibraries().withWorkbenchPath();
       // todo make this code more typed
       for (String folder : repo.folders) {
         if (!(new File(folder).exists())) {
@@ -95,9 +105,8 @@ public abstract class WorkerBase {
         }
         config = config.addLib(file);
       }
-    } else {
-      config = config.withBootstrapLibraries().withWorkbenchPath();
     }
+    // else assume the one coming from initEnvironmentConfig is fine
     for (IMapping<String, String> macro : MapSequence.fromMap(whatToDo.getMacro())) {
       config.addMacro(macro.key(), new File(macro.value()));
     }
@@ -122,15 +131,25 @@ public abstract class WorkerBase {
 
   public void workFromMain() {
     try {
-      Logger.getRootLogger().setLevel(myWhatToDo.getLogLevel());
+      // FIXME I don't like the way log initialization happens (from static{} blocks in MpsEnv/IdeaEnv)
+      //      I'd rather have it initialized here explicitly. However, seems too much to change now
+      //      to make sure log is ready before any code in EnvBase or Launcher uses it.
+      Logger.getLogger("").setLevel(myWhatToDo.getLogLevel());
       myEnvironment = createEnvironment();
-      work();
-      myEnvironment.flushAllEvents();
-      Thread.sleep(10000);
-      dispose();
+      try {
+        work();
+      } finally {
+        myEnvironment.flushAllEvents();
+        dispose();
+      }
+      // if work() does failBuild(), e.g. like GeneratorWorker does, we either pass w/o error or already in catch(BuildFailureException)
+      failBuild(getClass().getSimpleName());
       System.exit(0);
+    } catch (BuildFailureException ex) {
+      System.err.println(ex.getMessage());
+      System.exit(ex.getSystemExitCode());
     } catch (Throwable e) {
-      log(e);
+      error("workFromMain", e);
       System.exit(1);
     }
   }
@@ -171,29 +190,10 @@ public abstract class WorkerBase {
   }
   protected void failBuild(String name) {
     if (!(myErrors.isEmpty()) && myWhatToDo.getFailOnError()) {
-      throw new RuntimeException(this.formatErrorsReport(name).toString());
+      throw new BuildFailureException(this.formatErrorsReport(name).toString(), -13);
     }
   }
 
-  protected void extractModels(Set<SModel> result, Project project) {
-    for (SModule module : project.getProjectModulesWithGenerators()) {
-      for (SModel model : module.getModels()) {
-        if (includeModel(model)) {
-          result.add(model);
-        }
-      }
-    }
-  }
-  private boolean includeModel(SModel model) {
-    return !(SModelStereotype.isStubModel(model)) && GenerationFacade.canGenerate(model);
-  }
-  protected void extractModels(Collection<SModel> modelsList, SModule m) {
-    for (SModel d : m.getModels()) {
-      if (includeModel(d)) {
-        modelsList.add(d);
-      }
-    }
-  }
   /**
    * Discovers module(s) from specified location of a module descriptor, loads and registers them in
    * global (JUST FOR NOW) repository with custom owner.
@@ -232,11 +232,13 @@ public abstract class WorkerBase {
   }
 
   private void log(String text, Level level) {
-    if (!(level.isGreaterOrEqual(myWhatToDo.getLogLevel()))) {
+    // see jul.Logger.isLoggable(Level)
+    final int globalLevel = myWhatToDo.getLogLevel().intValue();
+    if (level.intValue() < globalLevel || globalLevel == Level.OFF.intValue()) {
       return;
     }
 
-    if (level == Level.ERROR) {
+    if (level == Level.SEVERE) {
       System.err.println(text);
     } else {
       System.out.println(text);
@@ -246,26 +248,38 @@ public abstract class WorkerBase {
     log(text, Level.INFO);
   }
   public void warning(String text) {
-    log(text, Level.WARN);
+    log(text, Level.WARNING);
   }
   public void debug(String text) {
-    log(text, Level.DEBUG);
+    log(text, Level.FINE);
   }
   public void error(String text) {
-    log(text, Level.ERROR);
+    log(text, Level.SEVERE);
     myErrors.add(text);
   }
-  public void log(Throwable e) {
-    StringBuffer sb = WorkerBase.extractStackTrace(e);
-    error(sb.toString());
+  public void error(String text, Throwable e) {
+    if (e != null) {
+      StringBuffer sb = WorkerBase.extractStackTrace(e);
+      text = text + "\n" + sb.toString();
+    }
+    error(text);
   }
-  public void log(String text, Throwable e) {
-    StringBuffer sb = WorkerBase.extractStackTrace(e);
-    error(text + "\n" + sb.toString());
-  }
-  public static StringBuffer extractStackTrace(Throwable e) {
+  private static StringBuffer extractStackTrace(Throwable e) {
     StringWriter writer = new StringWriter();
     e.printStackTrace(new PrintWriter(writer));
     return writer.getBuffer();
+  }
+
+  /*package*/ static class BuildFailureException extends RuntimeException {
+    private final int myExitCode;
+
+    /*package*/ BuildFailureException(String message, int systemExitCode) {
+      super(message);
+      myExitCode = systemExitCode;
+    }
+
+    public int getSystemExitCode() {
+      return myExitCode;
+    }
   }
 }

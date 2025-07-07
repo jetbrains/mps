@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,11 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.core.navbar;
 
 import com.intellij.ide.navigationToolbar.NavBarModelExtension;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
+import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
@@ -25,12 +27,12 @@ import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiManager;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.extapi.persistence.FolderDataSource;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiModel;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiNodeBase;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiProvider;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiRootNode;
 import jetbrains.mps.idea.core.psi.impl.file.FileSourcePsiFile;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.persistence.DataSource;
@@ -52,6 +54,12 @@ public class MPSNavBarExtension implements NavBarModelExtension{
       return ((MPSPsiRootNode) object).getName();
     }
     return null;
+  }
+
+  @Override
+  public PsiElement getLeafElement(@NotNull DataContext dataContext) {
+    PsiElement data = CommonDataKeys.PSI_ELEMENT.getData(dataContext);
+    return data instanceof MPSPsiNodeBase ? data.getContainingFile() : null;
   }
 
   @Nullable
@@ -92,20 +100,28 @@ public class MPSNavBarExtension implements NavBarModelExtension{
   }
 
   private PsiDirectory getModelFileParent(FileDataSource dataSource, PsiManager manager) {
-    VirtualFile file = VirtualFileUtils.getProjectVirtualFile(dataSource.getFile());
-    if (file == null || !file.isValid()) return null;
+    VirtualFile file = LocalFileSystem.getInstance().findFileByPath(dataSource.getFile().getPath());
+    if (file == null || !file.isValid()) {
+      return null;
+    }
 
     PsiFile psiFile = manager.findFile(file);
-    if (psiFile == null) return null;
+    if (psiFile == null) {
+      return null;
+    }
     return psiFile.getParent();
   }
 
   private PsiDirectory getModelDirectoryParent(FolderDataSource dataSource, PsiManager manager) {
-    VirtualFile dir = VirtualFileUtils.getProjectVirtualFile(dataSource.getFolder());
-    if (dir == null || !dir.isValid()) return null;
+    VirtualFile dir = LocalFileSystem.getInstance().findFileByPath(dataSource.getFolder().getPath());
+    if (dir == null || !dir.isValid()) {
+      return null;
+    }
 
     PsiDirectory psiDir = manager.findDirectory(dir);
-    if (psiDir == null) return null;
+    if (psiDir == null) {
+      return null;
+    }
     // skipping the very directory where this model lives because MPSPsiModel is already in navbar
     return psiDir.getParent();
   }

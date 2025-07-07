@@ -1,0 +1,1356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082485599095:jetbrains.mps.baseLanguage.structure.BlockStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1178893518978:jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" />
+  <root>
+    <file name="DataFlowAspectDescriptorImpl.java">
+      <unit at="17,0,98,0" name="jetbrains.mps.kotlin.dataFlow.DataFlowAspectDescriptorImpl" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/1768019175237194781">
+    <file name="SmartCastEvaluator.java">
+      <node id="1768019175237268719" at="28,43,29,18" concept="7" />
+      <node id="1768019175237271554" at="30,5,31,0" concept="9" />
+      <node id="1768019175237205130" at="31,0,32,69" concept="6" />
+      <node id="1768019175237278887" at="32,69,33,171" concept="2" />
+      <node id="1768019175237205222" at="33,171,34,0" concept="9" />
+      <node id="1768019175237205223" at="34,0,35,18" concept="7" />
+      <node id="1768019175239313652" at="38,264,39,36" concept="8" />
+      <node id="1768019175239006984" at="40,68,41,87" concept="6" />
+      <node id="1768019175239189676" at="41,87,42,50" concept="2" />
+      <node id="1768019175239007016" at="42,50,43,69" concept="7" />
+      <node id="5745248974110024869" at="47,218,48,36" concept="8" />
+      <node id="5745248974110024883" at="48,36,49,85" concept="6" />
+      <node id="5745248974110024893" at="49,85,50,34" concept="2" />
+      <node id="5745248974110024899" at="50,34,51,59" concept="7" />
+      <node id="1768019175237485082" at="55,201,56,51" concept="6" />
+      <node id="1768019175237485089" at="56,51,57,53" concept="6" />
+      <node id="1768019175237485115" at="57,53,58,0" concept="9" />
+      <node id="1768019175237485118" at="59,44,60,34" concept="8" />
+      <node id="8610627324482936486" at="60,34,61,71" concept="6" />
+      <node id="8610627324482943410" at="61,71,62,73" concept="6" />
+      <node id="1768019175238870621" at="63,50,64,28" concept="8" />
+      <node id="1768019175238512354" at="65,92,66,71" concept="6" />
+      <node id="8610627324483011356" at="66,71,67,85" concept="2" />
+      <node id="8610627324483114570" at="67,85,68,86" concept="2" />
+      <node id="1768019175237485186" at="71,51,72,22" concept="8" />
+      <node id="1768019175237485192" at="73,149,74,39" concept="8" />
+      <node id="1768019175237485199" at="74,39,75,56" concept="6" />
+      <node id="8610627324483326314" at="76,90,77,86" concept="6" />
+      <node id="1768019175240098519" at="78,58,79,84" concept="2" />
+      <node id="1768019175240295772" at="80,16,81,84" concept="2" />
+      <node id="1768019175239780740" at="82,9,83,89" concept="2" />
+      <node id="1768019175240430223" at="85,5,86,0" concept="9" />
+      <node id="1768019175240465799" at="86,0,87,20" concept="8" />
+      <node id="1768019175240498369" at="87,20,88,36" concept="7" />
+      <node id="8610627324483073690" at="92,17,93,39" concept="7" />
+      <node id="8610627324483068018" at="94,12,95,19" concept="7" />
+      <node id="1768019175240664552" at="102,27,103,46" concept="6" />
+      <node id="1768019175240664559" at="103,46,104,47" concept="6" />
+      <node id="1768019175241173910" at="104,47,105,0" concept="9" />
+      <node id="1768019175240664566" at="105,0,106,135" concept="8" />
+      <node id="1768019175240664624" at="106,135,107,147" concept="8" />
+      <node id="8610627324482878601" at="110,41,111,93" concept="2" />
+      <node id="1768019175241923010" at="113,11,114,0" concept="9" />
+      <node id="1768019175242762159" at="116,78,117,97" concept="6" />
+      <node id="1768019175242462362" at="117,97,118,62" concept="2" />
+      <node id="5745248974109715237" at="119,11,120,0" concept="9" />
+      <node id="1768019175243069147" at="122,78,123,99" concept="6" />
+      <node id="1768019175243069170" at="123,99,124,62" concept="2" />
+      <node id="1768019175244704446" at="127,5,128,36" concept="7" />
+      <node id="8132605767569827055" at="132,159,133,26" concept="7" />
+      <node id="1768019175244264964" at="137,201,138,51" concept="6" />
+      <node id="8610627324483174050" at="140,88,141,81" concept="6" />
+      <node id="1768019175243597812" at="141,81,142,64" concept="6" />
+      <node id="8386893935429480841" at="142,64,143,75" concept="6" />
+      <node id="8610627324483177455" at="144,21,145,58" concept="2" />
+      <node id="8610627324483188637" at="146,16,147,58" concept="2" />
+      <node id="8610627324483194479" at="148,9,149,0" concept="9" />
+      <node id="8610627324483146028" at="149,0,150,78" concept="2" />
+      <node id="1768019175244580620" at="152,12,153,38" concept="7" />
+      <node id="1768019175237194781" at="158,0,159,0" concept="10" trace="NullLiteral$jK" />
+      <node id="1768019175240225309" at="80,14,82,9" concept="0" />
+      <node id="8610627324483086731" at="94,10,96,5" concept="0" />
+      <node id="8610627324483186520" at="146,14,148,9" concept="0" />
+      <node id="1768019175244563628" at="152,10,154,5" concept="0" />
+      <node id="1768019175237251534" at="27,129,30,5" concept="4" />
+      <node id="8610627324482878599" at="109,114,112,11" concept="4" />
+      <node id="5745248974110819468" at="115,91,119,11" concept="7" />
+      <node id="5745248974111329653" at="121,31,125,11" concept="7" />
+      <node id="8132605767567379639" at="131,0,135,0" concept="5" trace="acceptBackedge#(Ljetbrains/mps/lang/dataFlow/framework/instructions/AbstractJumpInstruction;Ljetbrains/mps/kotlin/dataflow/instructions/State;)Ljava/util/stream/Stream;" />
+      <node id="1768019175239006966" at="39,36,44,7" concept="7" />
+      <node id="1768019175239338496" at="64,28,69,11" concept="7" />
+      <node id="1768019175239750657" at="77,86,82,9" concept="4" />
+      <node id="8610627324483055494" at="91,78,96,5" concept="4" />
+      <node id="5745248974110403799" at="108,39,113,11" concept="7" />
+      <node id="8610627324483181283" at="143,75,148,9" concept="4" />
+      <node id="5745248974110024867" at="47,0,53,0" concept="5" trace="singleOutcome#(Ljetbrains/mps/kotlin/dataflow/instructions/State;ILjetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P1_E0;)Ljava/util/stream/Stream;" />
+      <node id="8610627324483048390" at="91,0,98,0" concept="5" trace="negatedIfNeeded#(Ljetbrains/mps/kotlin/smartcast/SmartCastType;Z)Ljetbrains/mps/kotlin/smartcast/SmartCastType;" />
+      <node id="1768019175238962599" at="38,0,46,0" concept="5" trace="binaryOutcomes#(Ljetbrains/mps/kotlin/dataflow/instructions/State;ILjetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P2_E0;)Ljava/util/stream/Stream;" />
+      <node id="8610627324482842470" at="62,73,70,7" concept="4" />
+      <node id="1768019175239697199" at="75,56,84,9" concept="7" />
+      <node id="1768019175237200948" at="26,0,37,0" concept="5" trace="merge#(Ljava/util/HashMap;Ljava/util/HashMap;)Ljava/util/HashMap;" />
+      <node id="1768019175244546310" at="139,25,151,9" concept="7" />
+      <node id="1768019175244351543" at="138,51,154,5" concept="4" />
+      <node id="1768019175240664641" at="107,147,126,7" concept="4" />
+      <node id="8386893935429082937" at="136,0,156,0" concept="5" trace="acceptIsType#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;ZILjetbrains/mps/kotlin/dataflow/instructions/State;)Ljava/util/stream/Stream;" />
+      <node id="1768019175240664550" at="101,199,127,5" concept="4" />
+      <node id="1768019175237485116" at="58,0,85,5" concept="4" />
+      <node id="8386893935428397807" at="100,0,130,0" concept="5" trace="acceptAssign#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;ZILjetbrains/mps/kotlin/dataflow/instructions/State;)Ljava/util/stream/Stream;" />
+      <node id="1768019175237200968" at="54,0,90,0" concept="5" trace="acceptEquals#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;ZILjetbrains/mps/kotlin/dataflow/instructions/State;)Ljava/util/stream/Stream;" />
+      <scope id="1768019175237251536" at="28,43,29,18" />
+      <scope id="1768019175237485185" at="71,51,72,22" />
+      <scope id="1768019175239750659" at="78,58,79,84" />
+      <scope id="1768019175240225310" at="80,16,81,84" />
+      <scope id="8610627324483055496" at="92,17,93,39" />
+      <scope id="8610627324483086732" at="94,12,95,19" />
+      <scope id="8610627324482878600" at="110,41,111,93" />
+      <scope id="8132605767567379656" at="132,159,133,26" />
+      <scope id="8610627324483181285" at="144,21,145,58" />
+      <scope id="8610627324483186521" at="146,16,147,58" />
+      <scope id="1768019175244563629" at="152,12,153,38" />
+      <scope id="5745248974110855294" at="116,78,118,62">
+        <var name="newState" id="1768019175242762160" />
+      </scope>
+      <scope id="5745248974111329658" at="122,78,124,62">
+        <var name="newState" id="1768019175243069148" />
+      </scope>
+      <scope id="1768019175239006972" at="40,68,43,69">
+        <var name="newStates" id="1768019175239006985" />
+      </scope>
+      <scope id="1768019175239407333" at="65,92,68,86">
+        <var name="negate" id="1768019175238512355" />
+      </scope>
+      <scope id="5745248974110582553" at="109,114,112,11" />
+      <scope id="5745248974110024868" at="47,218,51,59">
+        <var name="newStates" id="5745248974110024884" />
+      </scope>
+      <scope id="1768019175240664695" at="121,31,125,11" />
+      <scope id="8132605767567379639" at="131,0,135,0">
+        <var name="instruction" id="8132605767567379640" />
+        <var name="previousState" id="8132605767567379642" />
+      </scope>
+      <scope id="8610627324483048393" at="91,78,96,5" />
+      <scope id="1768019175240664670" at="115,91,120,0" />
+      <scope id="1768019175238962602" at="38,264,44,7" />
+      <scope id="5745248974110024867" at="47,0,53,0">
+        <var name="initializer" id="5745248974110024922" />
+        <var name="instruction" id="5745248974110024920" />
+        <var name="previousState" id="5745248974110024915" />
+      </scope>
+      <scope id="8610627324482842472" at="63,50,69,11" />
+      <scope id="1768019175240664642" at="108,39,114,0" />
+      <scope id="1768019175239697204" at="76,90,83,89">
+        <var name="addedType" id="8610627324483326315" />
+      </scope>
+      <scope id="8610627324483048390" at="91,0,98,0">
+        <var name="input" id="8610627324483065224" />
+        <var name="negate" id="1768019175238276535" />
+      </scope>
+      <scope id="1768019175237200966" at="27,129,35,18">
+        <var name="result" id="1768019175237205131" />
+      </scope>
+      <scope id="1768019175238962599" at="38,0,46,0">
+        <var name="initializer" id="1768019175238976695" />
+        <var name="instructionIndex" id="1768019175239266825" />
+        <var name="previousState" id="1768019175239043532" />
+      </scope>
+      <scope id="1768019175243368426" at="140,88,150,78">
+        <var name="data" id="8610627324483174051" />
+        <var name="negate" id="1768019175243597813" />
+        <var name="reference" id="8386893935429480842" />
+      </scope>
+      <scope id="1768019175237200948" at="26,0,37,0">
+        <var name="left" id="1768019175237200949" />
+        <var name="right" id="1768019175237200951" />
+      </scope>
+      <scope id="1768019175237485117" at="59,44,70,7">
+        <var name="leftCast" id="8610627324482936487" />
+        <var name="rightCast" id="8610627324482943411" />
+      </scope>
+      <scope id="1768019175237485191" at="73,149,84,9">
+        <var name="var" id="1768019175237485200" />
+      </scope>
+      <scope id="1768019175244351545" at="139,25,151,9" />
+      <scope id="8386893935429082960" at="137,201,154,5">
+        <var name="left" id="1768019175244264965" />
+      </scope>
+      <scope id="8386893935429082937" at="136,0,156,0">
+        <var name="instructionIndex" id="8386893935429082944" />
+        <var name="leftNode" id="8386893935429082938" />
+        <var name="negation" id="8386893935429082942" />
+        <var name="previousState" id="8386893935429082946" />
+        <var name="right" id="8386893935429082940" />
+      </scope>
+      <scope id="1768019175240664551" at="102,27,126,7">
+        <var name="l" id="1768019175240664553" />
+        <var name="r" id="1768019175240664560" />
+      </scope>
+      <scope id="8386893935428397830" at="101,199,128,36" />
+      <scope id="8386893935428397807" at="100,0,130,0">
+        <var name="instructionIndex" id="8386893935428397814" />
+        <var name="isLeftAssignable" id="8386893935428397812" />
+        <var name="left" id="8386893935428397808" />
+        <var name="previousState" id="8386893935428397816" />
+        <var name="right" id="8386893935428397810" />
+      </scope>
+      <scope id="1768019175237200985" at="55,201,88,36">
+        <var name="left" id="1768019175237485083" />
+        <var name="right" id="1768019175237485090" />
+      </scope>
+      <scope id="1768019175237200968" at="54,0,90,0">
+        <var name="instructionIndex" id="8386893935427869735" />
+        <var name="isNegation" id="8386893935427492713" />
+        <var name="leftNode" id="8386893935427125142" />
+        <var name="previousState" id="1768019175237200971" />
+        <var name="rightNode" id="8386893935427150485" />
+      </scope>
+      <unit id="1768019175237194781" at="157,0,160,0" name="jetbrains.mps.kotlin.dataFlow.SmartCastEvaluator$CONCEPTS" />
+      <unit id="1768019175237194781" at="24,0,161,0" name="jetbrains.mps.kotlin.dataFlow.SmartCastEvaluator" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/4182901135631295286">
+    <file name="Assignment_DataFlow.java">
+      <node id="4182901135631309315" at="13,60,14,104" concept="2" />
+      <node id="4182901135631357590" at="14,104,15,105" concept="2" />
+      <node id="4182901135631295286" at="19,0,20,0" concept="10" trace="left$UqF2" />
+      <node id="4182901135631295286" at="20,0,21,0" concept="10" trace="right$Uro5" />
+      <node id="4182901135631295286" at="13,0,17,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="4182901135631295288" at="13,60,15,105" />
+      <scope id="4182901135631295286" at="13,0,17,0">
+        <var name="_context" id="4182901135631295286" />
+      </scope>
+      <unit id="4182901135631295286" at="18,0,22,0" name="jetbrains.mps.kotlin.dataFlow.Assignment_DataFlow$LINKS" />
+      <unit id="4182901135631295286" at="12,0,23,0" name="jetbrains.mps.kotlin.dataFlow.Assignment_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/4182901135637555469">
+    <file name="IConstructorSuperSpecifier_DataFlow.java">
+      <node id="4182901135637555497" at="14,60,15,155" concept="2" />
+      <node id="4182901135637555469" at="19,0,20,0" concept="10" trace="arguments$zJyV" />
+      <node id="4182901135637555469" at="14,0,17,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="4182901135637555471" at="14,60,15,155" />
+      <scope id="4182901135637555469" at="14,0,17,0">
+        <var name="_context" id="4182901135637555469" />
+      </scope>
+      <unit id="4182901135637555469" at="18,0,21,0" name="jetbrains.mps.kotlin.dataFlow.IConstructorSuperSpecifier_DataFlow$LINKS" />
+      <unit id="4182901135637555469" at="13,0,22,0" name="jetbrains.mps.kotlin.dataFlow.IConstructorSuperSpecifier_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/4739626969667450831">
+    <file name="VariableRefExpression_DataFlow.java">
+      <node id="4739626969667450858" at="12,60,13,194" concept="2" />
+      <node id="4739626969667450831" at="17,0,18,0" concept="10" trace="target$xQFr" />
+      <node id="4739626969667450831" at="12,0,15,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="4739626969667450833" at="12,60,13,194" />
+      <scope id="4739626969667450831" at="12,0,15,0">
+        <var name="_context" id="4739626969667450831" />
+      </scope>
+      <unit id="4739626969667450831" at="16,0,19,0" name="jetbrains.mps.kotlin.dataFlow.VariableRefExpression_DataFlow$LINKS" />
+      <unit id="4739626969667450831" at="11,0,20,0" name="jetbrains.mps.kotlin.dataFlow.VariableRefExpression_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/4739626969672513348">
+    <file name="DataFlowAspectDescriptorImpl.java">
+      <node id="4739626969672513348" at="22,53,23,255" concept="7" />
+      <scope id="4739626969672513348" at="22,53,23,255" />
+    </file>
+    <file name="SmartCastAnalyzerRunner.java">
+      <node id="4739626969672513348" at="27,0,28,0" concept="3" trace="myNode" />
+      <node id="4739626969672513348" at="28,106,29,91" concept="13" />
+      <node id="4739626969672513348" at="31,147,32,22" concept="12" />
+      <node id="4739626969672513348" at="32,22,33,18" concept="2" />
+      <node id="4739626969672513348" at="33,18,34,50" concept="2" />
+      <node id="4739626969672513348" at="34,50,35,46" concept="2" />
+      <node id="4739626969672513348" at="35,46,36,110" concept="2" />
+      <node id="1768019175237187026" at="40,0,41,0" concept="3" trace="evaluator" />
+      <node id="1768019175237187026" at="41,90,42,33" concept="2" />
+      <node id="5745248974062785567" at="44,80,45,37" concept="7" />
+      <node id="1768019175236982643" at="48,51,49,39" concept="7" />
+      <node id="1768019175237106484" at="50,61,51,52" concept="7" />
+      <node id="1768019175246947471" at="52,14,53,66" concept="8" />
+      <node id="5745248974066107847" at="53,66,54,109" concept="7" />
+      <node id="1333278577684143684" at="58,33,59,122" concept="8" />
+      <node id="1333278577686288383" at="59,122,60,59" concept="8" />
+      <node id="1333278577684167248" at="60,59,61,21" concept="7" />
+      <node id="1333278577684184912" at="62,7,63,0" concept="9" />
+      <node id="5745248974062797940" at="63,0,64,64" concept="6" />
+      <node id="5745248974062786254" at="65,29,66,105" concept="2" />
+      <node id="1768019175246992756" at="67,7,68,89" concept="7" />
+      <node id="4739626969672513348" at="70,45,71,39" concept="7" />
+      <node id="4739626969672513348" at="28,0,31,0" concept="1" trace="SmartCastAnalyzerRunner#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/kotlin/dataflow/instructions/DataflowEvaluator;)V" />
+      <node id="4739626969672513348" at="41,0,44,0" concept="1" trace="SmartCastAnalyzer#(Ljetbrains/mps/kotlin/dataflow/instructions/DataflowEvaluator;)V" />
+      <node id="4739626969672513348" at="44,0,47,0" concept="5" trace="initial#(Ljetbrains/mps/lang/dataFlow/framework/Program;)Ljava/util/List;" />
+      <node id="6662832579603822713" at="52,12,55,7" concept="0" />
+      <node id="5745248974062768465" at="64,64,67,7" concept="4" />
+      <node id="4739626969672513348" at="70,0,73,0" concept="5" trace="getDirection#()Ljetbrains/mps/lang/dataFlow/framework/AnalysisDirection;" />
+      <node id="1333278577684118342" at="57,214,62,7" concept="4" />
+      <node id="4739626969672513348" at="31,0,38,0" concept="1" trace="SmartCastAnalyzerRunner#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/lang/dataFlow/framework/ProgramFactory;Ljetbrains/mps/kotlin/dataflow/instructions/DataflowEvaluator;)V" />
+      <node id="6662832579603790083" at="47,134,55,7" concept="4" />
+      <node id="4739626969672513348" at="47,0,57,0" concept="5" trace="merge#(Ljetbrains/mps/lang/dataFlow/framework/Program;Ljava/util/List;)Ljava/util/List;" />
+      <node id="4739626969672513348" at="57,0,70,0" concept="5" trace="fun#(Ljava/util/List;Ljetbrains/mps/lang/dataFlow/framework/ProgramState;Ljava/util/Map;)Ljava/util/List;" />
+      <scope id="4739626969672513348" at="28,106,29,91" />
+      <scope id="4739626969672513348" at="41,90,42,33" />
+      <scope id="4739626969672513350" at="44,80,45,37" />
+      <scope id="6662832579603790085" at="48,51,49,39" />
+      <scope id="6662832579603801404" at="50,61,51,52" />
+      <scope id="5745248974062768467" at="65,29,66,105" />
+      <scope id="4739626969672513348" at="70,45,71,39" />
+      <scope id="6662832579603822714" at="52,14,54,109" />
+      <scope id="4739626969672513348" at="28,0,31,0">
+        <var name="evaluator" id="1768019175237187026" />
+        <var name="node" id="4739626969672513348" />
+      </scope>
+      <scope id="4739626969672513348" at="41,0,44,0">
+        <var name="evaluator" id="1768019175237187026" />
+      </scope>
+      <scope id="4739626969672513348" at="44,0,47,0">
+        <var name="program" id="4739626969672513348" />
+      </scope>
+      <scope id="1333278577684118344" at="58,33,61,21" />
+      <scope id="4739626969672513348" at="70,0,73,0" />
+      <scope id="4739626969672513348" at="31,147,36,110" />
+      <scope id="4739626969672513348" at="31,0,38,0">
+        <var name="evaluator" id="1768019175237187026" />
+        <var name="factory" id="4739626969672513348" />
+        <var name="node" id="4739626969672513348" />
+      </scope>
+      <scope id="4739626969672513352" at="47,134,55,7" />
+      <scope id="4739626969672513348" at="47,0,57,0">
+        <var name="input" id="4739626969672513348" />
+        <var name="program" id="4739626969672513348" />
+      </scope>
+      <scope id="4739626969672513354" at="57,214,68,89">
+        <var name="result" id="5745248974062797941" />
+      </scope>
+      <scope id="4739626969672513348" at="57,0,70,0">
+        <var name="input" id="4739626969672513348" />
+        <var name="state" id="4739626969672513348" />
+        <var name="stateValues" id="4739626969672513348" />
+      </scope>
+      <unit id="4739626969672513348" at="39,0,74,0" name="jetbrains.mps.kotlin.dataFlow.SmartCastAnalyzerRunner$SmartCastAnalyzer" />
+      <unit id="4739626969672513348" at="26,0,75,0" name="jetbrains.mps.kotlin.dataFlow.SmartCastAnalyzerRunner" />
+    </file>
+    <file name="assignInstruction.java">
+      <node id="7914615281050580984" at="9,0,10,0" concept="3" trace="myleft" />
+      <node id="7914615281050585630" at="10,0,11,0" concept="3" trace="myright" />
+      <node id="7914615281050585653" at="11,0,12,0" concept="3" trace="myisLeftAssignable" />
+      <node id="7914615281050576001" at="12,0,13,0" concept="3" trace="myPresentation" />
+      <node id="7914615281050576001" at="14,79,15,43" concept="6" />
+      <node id="7914615281050576001" at="15,43,16,24" concept="2" />
+      <node id="7914615281050580984" at="16,24,17,18" concept="2" />
+      <node id="7914615281050585630" at="17,18,18,20" concept="2" />
+      <node id="7914615281050585653" at="18,20,19,42" concept="2" />
+      <node id="7914615281050580984" at="19,42,20,32" concept="2" />
+      <node id="7914615281050585630" at="20,32,21,34" concept="2" />
+      <node id="7914615281050585653" at="21,34,22,56" concept="2" />
+      <node id="7914615281050580984" at="22,56,23,23" concept="2" />
+      <node id="7914615281050585630" at="23,23,24,24" concept="2" />
+      <node id="7914615281050585653" at="24,24,25,35" concept="2" />
+      <node id="7914615281050580984" at="25,35,26,48" concept="2" />
+      <node id="7914615281050585630" at="26,48,27,49" concept="2" />
+      <node id="7914615281050585653" at="27,49,28,60" concept="2" />
+      <node id="7914615281050576001" at="28,60,29,35" concept="2" />
+      <node id="7914615281050576001" at="32,39,33,26" concept="7" />
+      <node id="7914615281050580984" at="35,26,36,18" concept="7" />
+      <node id="7914615281050585630" at="38,27,39,19" concept="7" />
+      <node id="7914615281050585653" at="41,40,42,30" concept="7" />
+      <node id="7914615281050580984" at="35,0,38,0" concept="5" trace="getleft#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7914615281050585630" at="38,0,41,0" concept="5" trace="getright#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7914615281050585653" at="41,0,44,0" concept="5" trace="getisLeftAssignable#()Z" />
+      <node id="7914615281050576001" at="31,0,35,0" concept="5" trace="commandPresentation#()Ljava/lang/String;" />
+      <node id="7914615281050576001" at="14,0,31,0" concept="1" trace="assignInstruction#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Z)V" />
+      <scope id="7914615281050576001" at="32,39,33,26" />
+      <scope id="7914615281050580984" at="35,26,36,18" />
+      <scope id="7914615281050585630" at="38,27,39,19" />
+      <scope id="7914615281050585653" at="41,40,42,30" />
+      <scope id="7914615281050580984" at="35,0,38,0" />
+      <scope id="7914615281050585630" at="38,0,41,0" />
+      <scope id="7914615281050585653" at="41,0,44,0" />
+      <scope id="7914615281050576001" at="31,0,35,0" />
+      <scope id="7914615281050576001" at="14,79,29,35">
+        <var name="sb" id="7914615281050576001" />
+      </scope>
+      <scope id="7914615281050576001" at="14,0,31,0">
+        <var name="isLeftAssignable" id="7914615281050585653" />
+        <var name="left" id="7914615281050580984" />
+        <var name="right" id="7914615281050585630" />
+      </scope>
+      <unit id="7914615281050576001" at="8,0,45,0" name="jetbrains.mps.kotlin.dataFlow.assignInstruction" />
+    </file>
+    <file name="equalsInstruction.java">
+      <node id="7914615281050695061" at="9,0,10,0" concept="3" trace="myleft" />
+      <node id="7914615281050695063" at="10,0,11,0" concept="3" trace="myright" />
+      <node id="7914615281050695065" at="11,0,12,0" concept="3" trace="myisNegation" />
+      <node id="7914615281050681971" at="12,0,13,0" concept="3" trace="myPresentation" />
+      <node id="7914615281050681971" at="14,73,15,43" concept="6" />
+      <node id="7914615281050681971" at="15,43,16,24" concept="2" />
+      <node id="7914615281050695061" at="16,24,17,18" concept="2" />
+      <node id="7914615281050695063" at="17,18,18,20" concept="2" />
+      <node id="7914615281050695065" at="18,20,19,30" concept="2" />
+      <node id="7914615281050695061" at="19,30,20,32" concept="2" />
+      <node id="7914615281050695063" at="20,32,21,34" concept="2" />
+      <node id="7914615281050695065" at="21,34,22,44" concept="2" />
+      <node id="7914615281050695061" at="22,44,23,23" concept="2" />
+      <node id="7914615281050695063" at="23,23,24,24" concept="2" />
+      <node id="7914615281050695065" at="24,24,25,29" concept="2" />
+      <node id="7914615281050695061" at="25,29,26,48" concept="2" />
+      <node id="7914615281050695063" at="26,48,27,49" concept="2" />
+      <node id="7914615281050695065" at="27,49,28,54" concept="2" />
+      <node id="7914615281050681971" at="28,54,29,35" concept="2" />
+      <node id="7914615281050681971" at="32,39,33,26" concept="7" />
+      <node id="7914615281050695061" at="35,26,36,18" concept="7" />
+      <node id="7914615281050695063" at="38,27,39,19" concept="7" />
+      <node id="7914615281050695065" at="41,34,42,24" concept="7" />
+      <node id="7914615281050695061" at="35,0,38,0" concept="5" trace="getleft#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7914615281050695063" at="38,0,41,0" concept="5" trace="getright#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7914615281050695065" at="41,0,44,0" concept="5" trace="getisNegation#()Z" />
+      <node id="7914615281050681971" at="31,0,35,0" concept="5" trace="commandPresentation#()Ljava/lang/String;" />
+      <node id="7914615281050681971" at="14,0,31,0" concept="1" trace="equalsInstruction#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Z)V" />
+      <scope id="7914615281050681971" at="32,39,33,26" />
+      <scope id="7914615281050695061" at="35,26,36,18" />
+      <scope id="7914615281050695063" at="38,27,39,19" />
+      <scope id="7914615281050695065" at="41,34,42,24" />
+      <scope id="7914615281050695061" at="35,0,38,0" />
+      <scope id="7914615281050695063" at="38,0,41,0" />
+      <scope id="7914615281050695065" at="41,0,44,0" />
+      <scope id="7914615281050681971" at="31,0,35,0" />
+      <scope id="7914615281050681971" at="14,73,29,35">
+        <var name="sb" id="7914615281050681971" />
+      </scope>
+      <scope id="7914615281050681971" at="14,0,31,0">
+        <var name="isNegation" id="7914615281050695065" />
+        <var name="left" id="7914615281050695061" />
+        <var name="right" id="7914615281050695063" />
+      </scope>
+      <unit id="7914615281050681971" at="8,0,45,0" name="jetbrains.mps.kotlin.dataFlow.equalsInstruction" />
+    </file>
+    <file name="isTypeInstruction.java">
+      <node id="7914615281050727934" at="9,0,10,0" concept="3" trace="myleft" />
+      <node id="7914615281050727941" at="10,0,11,0" concept="3" trace="myright" />
+      <node id="7914615281050727950" at="11,0,12,0" concept="3" trace="myisNegation" />
+      <node id="7914615281050714837" at="12,0,13,0" concept="3" trace="myPresentation" />
+      <node id="7914615281050714837" at="14,73,15,43" concept="6" />
+      <node id="7914615281050714837" at="15,43,16,24" concept="2" />
+      <node id="7914615281050727934" at="16,24,17,18" concept="2" />
+      <node id="7914615281050727941" at="17,18,18,20" concept="2" />
+      <node id="7914615281050727950" at="18,20,19,30" concept="2" />
+      <node id="7914615281050727934" at="19,30,20,32" concept="2" />
+      <node id="7914615281050727941" at="20,32,21,34" concept="2" />
+      <node id="7914615281050727950" at="21,34,22,44" concept="2" />
+      <node id="7914615281050727934" at="22,44,23,23" concept="2" />
+      <node id="7914615281050727941" at="23,23,24,24" concept="2" />
+      <node id="7914615281050727950" at="24,24,25,29" concept="2" />
+      <node id="7914615281050727934" at="25,29,26,48" concept="2" />
+      <node id="7914615281050727941" at="26,48,27,49" concept="2" />
+      <node id="7914615281050727950" at="27,49,28,54" concept="2" />
+      <node id="7914615281050714837" at="28,54,29,35" concept="2" />
+      <node id="7914615281050714837" at="32,39,33,26" concept="7" />
+      <node id="7914615281050727934" at="35,26,36,18" concept="7" />
+      <node id="7914615281050727941" at="38,27,39,19" concept="7" />
+      <node id="7914615281050727950" at="41,34,42,24" concept="7" />
+      <node id="7914615281050727934" at="35,0,38,0" concept="5" trace="getleft#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7914615281050727941" at="38,0,41,0" concept="5" trace="getright#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7914615281050727950" at="41,0,44,0" concept="5" trace="getisNegation#()Z" />
+      <node id="7914615281050714837" at="31,0,35,0" concept="5" trace="commandPresentation#()Ljava/lang/String;" />
+      <node id="7914615281050714837" at="14,0,31,0" concept="1" trace="isTypeInstruction#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Z)V" />
+      <scope id="7914615281050714837" at="32,39,33,26" />
+      <scope id="7914615281050727934" at="35,26,36,18" />
+      <scope id="7914615281050727941" at="38,27,39,19" />
+      <scope id="7914615281050727950" at="41,34,42,24" />
+      <scope id="7914615281050727934" at="35,0,38,0" />
+      <scope id="7914615281050727941" at="38,0,41,0" />
+      <scope id="7914615281050727950" at="41,0,44,0" />
+      <scope id="7914615281050714837" at="31,0,35,0" />
+      <scope id="7914615281050714837" at="14,73,29,35">
+        <var name="sb" id="7914615281050714837" />
+      </scope>
+      <scope id="7914615281050714837" at="14,0,31,0">
+        <var name="isNegation" id="7914615281050727950" />
+        <var name="left" id="7914615281050727934" />
+        <var name="right" id="7914615281050727941" />
+      </scope>
+      <unit id="7914615281050714837" at="8,0,45,0" name="jetbrains.mps.kotlin.dataFlow.isTypeInstruction" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/5846445209154502700">
+    <file name="FlowUtil.java">
+      <node id="2195067079599496730" at="18,44,19,125" concept="6" />
+      <node id="2195067079599496738" at="19,125,20,57" concept="7" />
+      <node id="4707000485325991372" at="23,52,24,223" concept="7" />
+      <node id="5846445209154502700" at="28,0,29,0" concept="10" trace="VariableRefExpression$J$" />
+      <node id="5846445209154502700" at="32,0,33,0" concept="10" trace="target$xQFr" />
+      <node id="4707000485325986623" at="23,0,26,0" concept="11" trace="isCastable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="5846445209154502807" at="18,0,22,0" concept="11" trace="getLocal#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="4707000485325986626" at="23,52,24,223" />
+      <scope id="5846445209154502810" at="18,44,20,57">
+        <var name="target" id="2195067079599496731" />
+      </scope>
+      <scope id="4707000485325986623" at="23,0,26,0">
+        <var name="variable" id="4707000485325987215" />
+      </scope>
+      <scope id="5846445209154502807" at="18,0,22,0">
+        <var name="node" id="5846445209154502840" />
+      </scope>
+      <unit id="5846445209154502700" at="27,0,30,0" name="jetbrains.mps.kotlin.dataFlow.FlowUtil$CONCEPTS" />
+      <unit id="5846445209154502700" at="31,0,34,0" name="jetbrains.mps.kotlin.dataFlow.FlowUtil$LINKS" />
+      <unit id="5846445209154502700" at="13,0,35,0" name="jetbrains.mps.kotlin.dataFlow.FlowUtil" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6288995850928842162">
+    <file name="WhenEntry_DataFlow.java">
+      <node id="7914615281050609833" at="16,116,17,166" concept="2" />
+      <node id="6288995850928972503" at="17,166,18,46" concept="2" />
+      <node id="7914615281050614597" at="18,46,19,0" concept="9" />
+      <node id="7914615281050613723" at="19,0,20,34" concept="8" />
+      <node id="7914615281050612509" at="20,34,21,192" concept="2" />
+      <node id="1768019175234101640" at="22,7,23,177" concept="2" />
+      <node id="1768019175234102471" at="23,177,24,47" concept="2" />
+      <node id="6288995850929008539" at="24,47,25,156" concept="2" />
+      <node id="6288995850928842162" at="29,0,30,0" concept="10" trace="conditions$jFw5" />
+      <node id="6288995850928842162" at="30,0,31,0" concept="10" trace="statements$R3pt" />
+      <node id="6288995850928924812" at="15,60,22,7" concept="2" />
+      <node id="6288995850928842162" at="15,0,27,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="6288995850928971595" at="16,116,21,192" />
+      <scope id="6288995850928842164" at="15,60,25,156" />
+      <scope id="6288995850928842162" at="15,0,27,0">
+        <var name="_context" id="6288995850928842162" />
+      </scope>
+      <unit id="6288995850928842162" at="28,0,32,0" name="jetbrains.mps.kotlin.dataFlow.WhenEntry_DataFlow$LINKS" />
+      <unit id="6288995850928842162" at="14,0,33,0" name="jetbrains.mps.kotlin.dataFlow.WhenEntry_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6288995850928852635">
+    <file name="WhenExpression_DataFlow.java">
+      <node id="4739626969668712418" at="14,60,15,106" concept="2" />
+      <node id="6288995850928878045" at="16,113,17,46" concept="2" />
+      <node id="7914615281050619532" at="17,46,18,0" concept="9" />
+      <node id="7914615281050620486" at="18,0,19,34" concept="8" />
+      <node id="7914615281050621314" at="19,34,20,181" concept="2" />
+      <node id="6288995850928882755" at="21,7,22,109" concept="2" />
+      <node id="6288995850928852635" at="26,0,27,0" concept="10" trace="target$I2XO" />
+      <node id="6288995850928852635" at="27,0,28,0" concept="10" trace="entries$NvX2" />
+      <node id="6288995850928852635" at="28,0,29,0" concept="10" trace="elseEntry$vv2S" />
+      <node id="6288995850928852732" at="15,106,21,7" concept="2" />
+      <node id="6288995850928852635" at="14,0,24,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="6288995850928877532" at="16,113,20,181" />
+      <scope id="6288995850928852637" at="14,60,22,109" />
+      <scope id="6288995850928852635" at="14,0,24,0">
+        <var name="_context" id="6288995850928852635" />
+      </scope>
+      <unit id="6288995850928852635" at="25,0,30,0" name="jetbrains.mps.kotlin.dataFlow.WhenExpression_DataFlow$LINKS" />
+      <unit id="6288995850928852635" at="13,0,31,0" name="jetbrains.mps.kotlin.dataFlow.WhenExpression_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6374444830328813351">
+    <file name="IFunctionCall_DataFlow.java">
+      <node id="6374444830331474643" at="17,60,18,108" concept="8" />
+      <node id="6374444830331483575" at="19,94,20,119" concept="6" />
+      <node id="6374444830331497042" at="23,52,24,88" concept="2" />
+      <node id="6374444830331500750" at="28,5,29,0" concept="9" />
+      <node id="6374444830331501644" at="29,0,30,28" concept="8" />
+      <node id="6374444830330310740" at="30,28,31,208" concept="2" />
+      <node id="6374444830328813351" at="35,0,36,0" concept="10" trace="IOverloadableOperator$Wi" />
+      <node id="6374444830331490570" at="22,78,25,11" concept="4" />
+      <node id="6374444830331484585" at="21,29,26,11" concept="2" />
+      <node id="6374444830331483760" at="20,119,27,7" concept="4" />
+      <node id="6374444830331470947" at="18,108,28,5" concept="4" />
+      <node id="6374444830328813351" at="17,0,33,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="6374444830331490572" at="23,52,24,88" />
+      <scope id="6374444830331489967" at="22,78,25,11" />
+      <scope id="6374444830331483762" at="21,29,26,11" />
+      <scope id="6374444830331470949" at="19,94,27,7">
+        <var name="receiver" id="6374444830331483576" />
+      </scope>
+      <scope id="6374444830328813353" at="17,60,31,208" />
+      <scope id="6374444830328813351" at="17,0,33,0">
+        <var name="_context" id="6374444830328813351" />
+      </scope>
+      <unit id="6374444830328813351" at="34,0,37,0" name="jetbrains.mps.kotlin.dataFlow.IFunctionCall_DataFlow$CONCEPTS" />
+      <unit id="6374444830328813351" at="16,0,38,0" name="jetbrains.mps.kotlin.dataFlow.IFunctionCall_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6374444830330622208">
+    <file name="BinaryExpression_DataFlow.java">
+      <node id="6374444830330622235" at="13,60,14,104" concept="2" />
+      <node id="6374444830330624897" at="14,104,15,105" concept="2" />
+      <node id="6374444830330622208" at="19,0,20,0" concept="10" trace="left$yQgK" />
+      <node id="6374444830330622208" at="20,0,21,0" concept="10" trace="right$yQIM" />
+      <node id="6374444830330622208" at="13,0,17,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="6374444830330622210" at="13,60,15,105" />
+      <scope id="6374444830330622208" at="13,0,17,0">
+        <var name="_context" id="6374444830330622208" />
+      </scope>
+      <unit id="6374444830330622208" at="18,0,22,0" name="jetbrains.mps.kotlin.dataFlow.BinaryExpression_DataFlow$LINKS" />
+      <unit id="6374444830330622208" at="12,0,23,0" name="jetbrains.mps.kotlin.dataFlow.BinaryExpression_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6374444830330635439">
+    <file name="IfExpression_DataFlow.java">
+      <node id="763915685524556172" at="15,60,16,81" concept="8" />
+      <node id="7914615281050634569" at="16,81,17,229" concept="2" />
+      <node id="6374444830330635466" at="17,229,18,109" concept="2" />
+      <node id="7914615281050644651" at="18,109,19,32" concept="8" />
+      <node id="7914615281050641793" at="19,32,20,189" concept="2" />
+      <node id="6374444830330666975" at="21,83,22,106" concept="2" />
+      <node id="8394457476610741357" at="23,5,24,177" concept="2" />
+      <node id="7914615281050644986" at="24,177,25,0" concept="9" />
+      <node id="8394457476612120093" at="25,0,26,46" concept="2" />
+      <node id="6374444830330642678" at="26,46,27,156" concept="2" />
+      <node id="6374444830330635439" at="31,0,32,0" concept="10" trace="condition$$T1H" />
+      <node id="6374444830330635439" at="32,0,33,0" concept="10" trace="else$$UEO" />
+      <node id="6374444830330635439" at="33,0,34,0" concept="10" trace="statements$R3pt" />
+      <node id="4739626969671277576" at="20,189,23,5" concept="4" />
+      <node id="6374444830330635439" at="15,0,29,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="4739626969671277578" at="21,83,22,106" />
+      <scope id="6374444830330635441" at="15,60,27,156" />
+      <scope id="6374444830330635439" at="15,0,29,0">
+        <var name="_context" id="6374444830330635439" />
+      </scope>
+      <unit id="6374444830330635439" at="30,0,35,0" name="jetbrains.mps.kotlin.dataFlow.IfExpression_DataFlow$LINKS" />
+      <unit id="6374444830330635439" at="14,0,36,0" name="jetbrains.mps.kotlin.dataFlow.IfExpression_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6374444830330671491">
+    <file name="UnaryExpression_DataFlow.java">
+      <node id="6374444830330672636" at="13,60,14,107" concept="2" />
+      <node id="6374444830330671491" at="18,0,19,0" concept="10" trace="operand$YS5t" />
+      <node id="6374444830330671491" at="13,0,16,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="6374444830330671493" at="13,60,14,107" />
+      <scope id="6374444830330671491" at="13,0,16,0">
+        <var name="_context" id="6374444830330671491" />
+      </scope>
+      <unit id="6374444830330671491" at="17,0,20,0" name="jetbrains.mps.kotlin.dataFlow.UnaryExpression_DataFlow$LINKS" />
+      <unit id="6374444830330671491" at="12,0,21,0" name="jetbrains.mps.kotlin.dataFlow.UnaryExpression_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6374444830330675454">
+    <file name="ContinueExpression_DataFlow.java">
+      <node id="6374444830330709551" at="15,60,16,35" concept="8" />
+      <node id="6374444830330706632" at="17,90,18,231" concept="2" />
+      <node id="6374444830330709751" at="19,12,20,130" concept="6" />
+      <node id="1206465288371" at="21,33,22,170" concept="2" />
+      <node id="1409563270992122147" at="23,14,24,131" concept="2" />
+      <node id="6374444830330675454" at="30,0,31,0" concept="10" trace="targetLabel$iS7r" />
+      <node id="6374444830330675454" at="34,0,35,0" concept="10" trace="AbstractConditionalLoop$w2" />
+      <node id="1206465386572" at="23,12,25,7" concept="0" />
+      <node id="1206465288364" at="20,130,25,7" concept="4" />
+      <node id="6374444830330713077" at="19,10,26,5" concept="0" />
+      <node id="6374444830330704060" at="16,35,26,5" concept="4" />
+      <node id="6374444830330675454" at="15,0,28,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="6374444830330704062" at="17,90,18,231" />
+      <scope id="1206465288370" at="21,33,22,170" />
+      <scope id="1409563270991702782" at="23,14,24,131" />
+      <scope id="6374444830330713078" at="19,12,25,7">
+        <var name="loopAncestor" id="6374444830330709752" />
+      </scope>
+      <scope id="6374444830330675456" at="15,60,26,5" />
+      <scope id="6374444830330675454" at="15,0,28,0">
+        <var name="_context" id="6374444830330675454" />
+      </scope>
+      <unit id="6374444830330675454" at="29,0,32,0" name="jetbrains.mps.kotlin.dataFlow.ContinueExpression_DataFlow$LINKS" />
+      <unit id="6374444830330675454" at="33,0,36,0" name="jetbrains.mps.kotlin.dataFlow.ContinueExpression_DataFlow$CONCEPTS" />
+      <unit id="6374444830330675454" at="14,0,37,0" name="jetbrains.mps.kotlin.dataFlow.ContinueExpression_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6374444830330713529">
+    <file name="ThrowExpression_DataFlow.java">
+      <node id="6374444830330744565" at="13,60,14,109" concept="2" />
+      <node id="6374444830330930728" at="14,109,15,56" concept="8" />
+      <node id="6374444830330930670" at="15,56,16,127" concept="2" />
+      <node id="6374444830330713529" at="20,0,21,0" concept="10" trace="throwable$QSxU" />
+      <node id="6374444830330713529" at="13,0,18,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="6374444830330713531" at="13,60,16,127" />
+      <scope id="6374444830330713529" at="13,0,18,0">
+        <var name="_context" id="6374444830330713529" />
+      </scope>
+      <unit id="6374444830330713529" at="19,0,22,0" name="jetbrains.mps.kotlin.dataFlow.ThrowExpression_DataFlow$LINKS" />
+      <unit id="6374444830330713529" at="12,0,23,0" name="jetbrains.mps.kotlin.dataFlow.ThrowExpression_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6374444830330930916">
+    <file name="WhileStatement_DataFlow.java">
+      <node id="1206455219940" at="17,118,18,111" concept="2" />
+      <node id="6374444830330945462" at="18,111,19,179" concept="2" />
+      <node id="8386893935424195186" at="20,12,21,231" concept="2" />
+      <node id="8132605767563016352" at="21,231,22,111" concept="2" />
+      <node id="8386893935424203125" at="22,111,23,0" concept="9" />
+      <node id="8386893935424203178" at="23,0,24,34" concept="8" />
+      <node id="8386893935424200145" at="24,34,25,192" concept="2" />
+      <node id="8386893935424202764" at="25,192,26,179" concept="2" />
+      <node id="8132605767563023709" at="27,5,28,0" concept="9" />
+      <node id="8386893935424201385" at="28,0,29,47" concept="2" />
+      <node id="6374444830330946591" at="29,47,30,156" concept="2" />
+      <node id="8386893935424205824" at="30,156,31,178" concept="2" />
+      <node id="6374444830330930916" at="35,0,36,0" concept="10" trace="condition$2cvd" />
+      <node id="6374444830330930916" at="36,0,37,0" concept="10" trace="statements$R3pt" />
+      <node id="8132605767563020400" at="20,10,27,5" concept="0" />
+      <node id="6374444830330941927" at="16,60,27,5" concept="4" />
+      <node id="6374444830330930916" at="16,0,33,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="6374444830330941929" at="17,118,19,179" />
+      <scope id="8132605767563020401" at="20,12,26,179" />
+      <scope id="6374444830330930918" at="16,60,31,178" />
+      <scope id="6374444830330930916" at="16,0,33,0">
+        <var name="_context" id="6374444830330930916" />
+      </scope>
+      <unit id="6374444830330930916" at="34,0,38,0" name="jetbrains.mps.kotlin.dataFlow.WhileStatement_DataFlow$LINKS" />
+      <unit id="6374444830330930916" at="15,0,39,0" name="jetbrains.mps.kotlin.dataFlow.WhileStatement_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6374444830330988080">
+    <file name="DoWhileStatement_DataFlow.java">
+      <node id="6374444830330989614" at="15,60,16,156" concept="2" />
+      <node id="8132605767562963664" at="16,156,17,0" concept="9" />
+      <node id="8386893935424150539" at="17,0,18,229" concept="2" />
+      <node id="1206536360279" at="18,229,19,159" concept="2" />
+      <node id="8386893935424161781" at="19,159,20,0" concept="9" />
+      <node id="8386893935424160522" at="20,0,21,32" concept="8" />
+      <node id="8386893935424159334" at="21,32,22,180" concept="2" />
+      <node id="6374444830330988080" at="26,0,27,0" concept="10" trace="statements$R3pt" />
+      <node id="6374444830330988080" at="27,0,28,0" concept="10" trace="condition$2cvd" />
+      <node id="6374444830330988080" at="15,0,24,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="6374444830330988082" at="15,60,22,180" />
+      <scope id="6374444830330988080" at="15,0,24,0">
+        <var name="_context" id="6374444830330988080" />
+      </scope>
+      <unit id="6374444830330988080" at="25,0,29,0" name="jetbrains.mps.kotlin.dataFlow.DoWhileStatement_DataFlow$LINKS" />
+      <unit id="6374444830330988080" at="14,0,30,0" name="jetbrains.mps.kotlin.dataFlow.DoWhileStatement_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6374444830331031298">
+    <file name="ForStatement_DataFlow.java">
+      <node id="1206987765749" at="15,60,16,102" concept="2" />
+      <node id="6374444830331112829" at="16,102,17,155" concept="2" />
+      <node id="1207063213423" at="17,155,18,45" concept="2" />
+      <node id="8386893935424175638" at="18,45,19,0" concept="9" />
+      <node id="8386893935424176069" at="19,0,20,50" concept="8" />
+      <node id="8386893935424170029" at="20,50,21,180" concept="2" />
+      <node id="6374444830331253097" at="21,180,22,179" concept="2" />
+      <node id="8386893935424176646" at="22,179,23,0" concept="9" />
+      <node id="6374444830331195189" at="23,0,24,156" concept="2" />
+      <node id="8386893935424179832" at="24,156,25,186" concept="2" />
+      <node id="6374444830331031298" at="29,0,30,0" concept="10" trace="in$_8gh" />
+      <node id="6374444830331031298" at="30,0,31,0" concept="10" trace="variables$EO9Z" />
+      <node id="6374444830331031298" at="31,0,32,0" concept="10" trace="statements$R3pt" />
+      <node id="6374444830331031298" at="15,0,27,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="6374444830331031300" at="15,60,25,186" />
+      <scope id="6374444830331031298" at="15,0,27,0">
+        <var name="_context" id="6374444830331031298" />
+      </scope>
+      <unit id="6374444830331031298" at="28,0,33,0" name="jetbrains.mps.kotlin.dataFlow.ForStatement_DataFlow$LINKS" />
+      <unit id="6374444830331031298" at="14,0,34,0" name="jetbrains.mps.kotlin.dataFlow.ForStatement_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6374444830331253579">
+    <file name="IStatementHolder_DataFlow.java">
+      <node id="6374444830331253735" at="14,60,15,156" concept="2" />
+      <node id="6374444830331253579" at="19,0,20,0" concept="10" trace="statements$R3pt" />
+      <node id="6374444830331253579" at="14,0,17,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="6374444830331253581" at="14,60,15,156" />
+      <scope id="6374444830331253579" at="14,0,17,0">
+        <var name="_context" id="6374444830331253579" />
+      </scope>
+      <unit id="6374444830331253579" at="18,0,21,0" name="jetbrains.mps.kotlin.dataFlow.IStatementHolder_DataFlow$LINKS" />
+      <unit id="6374444830331253579" at="13,0,22,0" name="jetbrains.mps.kotlin.dataFlow.IStatementHolder_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6374444830331295250">
+    <file name="FunctionDeclaration_DataFlow.java">
+      <node id="6374444830331350787" at="14,60,15,156" concept="2" />
+      <node id="6374444830331295250" at="19,0,20,0" concept="10" trace="statements$R3pt" />
+      <node id="6374444830331295250" at="14,0,17,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="6374444830331295252" at="14,60,15,156" />
+      <scope id="6374444830331295250" at="14,0,17,0">
+        <var name="_context" id="6374444830331295250" />
+      </scope>
+      <unit id="6374444830331295250" at="18,0,21,0" name="jetbrains.mps.kotlin.dataFlow.FunctionDeclaration_DataFlow$LINKS" />
+      <unit id="6374444830331295250" at="13,0,22,0" name="jetbrains.mps.kotlin.dataFlow.FunctionDeclaration_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6374444830331394545">
+    <file name="NavigationOperation_DataFlow.java">
+      <node id="6374444830331394572" at="13,60,14,107" concept="2" />
+      <node id="6374444830331397602" at="14,107,15,106" concept="2" />
+      <node id="6374444830331394545" at="19,0,20,0" concept="10" trace="operand$YS5t" />
+      <node id="6374444830331394545" at="20,0,21,0" concept="10" trace="target$C6zp" />
+      <node id="6374444830331394545" at="13,0,17,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="6374444830331394547" at="13,60,15,106" />
+      <scope id="6374444830331394545" at="13,0,17,0">
+        <var name="_context" id="6374444830331394545" />
+      </scope>
+      <unit id="6374444830331394545" at="18,0,22,0" name="jetbrains.mps.kotlin.dataFlow.NavigationOperation_DataFlow$LINKS" />
+      <unit id="6374444830331394545" at="12,0,23,0" name="jetbrains.mps.kotlin.dataFlow.NavigationOperation_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6374444830331397821">
+    <file name="MemberNavigationExpression_DataFlow.java">
+      <node id="6374444830331397848" at="13,60,14,107" concept="2" />
+      <node id="6374444830331400713" at="14,107,15,106" concept="2" />
+      <node id="6374444830331397821" at="19,0,20,0" concept="10" trace="operand$8jSC" />
+      <node id="6374444830331397821" at="20,0,21,0" concept="10" trace="target$aBAp" />
+      <node id="6374444830331397821" at="13,0,17,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="6374444830331397823" at="13,60,15,106" />
+      <scope id="6374444830331397821" at="13,0,17,0">
+        <var name="_context" id="6374444830331397821" />
+      </scope>
+      <unit id="6374444830331397821" at="18,0,22,0" name="jetbrains.mps.kotlin.dataFlow.MemberNavigationExpression_DataFlow$LINKS" />
+      <unit id="6374444830331397821" at="12,0,23,0" name="jetbrains.mps.kotlin.dataFlow.MemberNavigationExpression_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6374444830331401127">
+    <file name="ParenthesizedExpression_DataFlow.java">
+      <node id="6374444830331401154" at="13,60,14,106" concept="2" />
+      <node id="6374444830331401127" at="18,0,19,0" concept="10" trace="nested$xoIL" />
+      <node id="6374444830331401127" at="13,0,16,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="6374444830331401129" at="13,60,14,106" />
+      <scope id="6374444830331401127" at="13,0,16,0">
+        <var name="_context" id="6374444830331401127" />
+      </scope>
+      <unit id="6374444830331401127" at="17,0,20,0" name="jetbrains.mps.kotlin.dataFlow.ParenthesizedExpression_DataFlow$LINKS" />
+      <unit id="6374444830331401127" at="12,0,21,0" name="jetbrains.mps.kotlin.dataFlow.ParenthesizedExpression_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6374444830331403738">
+    <file name="AnonymousFunction_DataFlow.java">
+      <node id="3280047453045051419" at="15,60,16,180" concept="2" />
+      <node id="6374444830331414500" at="16,180,17,179" concept="2" />
+      <node id="6374444830331442955" at="17,179,18,56" concept="8" />
+      <node id="6374444830331414656" at="18,56,19,156" concept="2" />
+      <node id="6374444830331442712" at="19,156,20,127" concept="2" />
+      <node id="6374444830331403738" at="24,0,25,0" concept="10" trace="statements$R3pt" />
+      <node id="6374444830331403738" at="15,0,22,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="6374444830331403740" at="15,60,20,127" />
+      <scope id="6374444830331403738" at="15,0,22,0">
+        <var name="_context" id="6374444830331403738" />
+      </scope>
+      <unit id="6374444830331403738" at="23,0,26,0" name="jetbrains.mps.kotlin.dataFlow.AnonymousFunction_DataFlow$LINKS" />
+      <unit id="6374444830331403738" at="14,0,27,0" name="jetbrains.mps.kotlin.dataFlow.AnonymousFunction_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6374444830331517703">
+    <file name="LambdaLiteral_DataFlow.java">
+      <node id="3280047453045053840" at="15,60,16,180" concept="2" />
+      <node id="6374444830331517730" at="16,180,17,179" concept="2" />
+      <node id="6374444830331546378" at="17,179,18,74" concept="8" />
+      <node id="6374444830331517923" at="18,74,19,156" concept="2" />
+      <node id="6374444830331545963" at="19,156,20,127" concept="2" />
+      <node id="6374444830331517703" at="24,0,25,0" concept="10" trace="statements$R3pt" />
+      <node id="6374444830331517703" at="15,0,22,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="6374444830331517705" at="15,60,20,127" />
+      <scope id="6374444830331517703" at="15,0,22,0">
+        <var name="_context" id="6374444830331517703" />
+      </scope>
+      <unit id="6374444830331517703" at="23,0,26,0" name="jetbrains.mps.kotlin.dataFlow.LambdaLiteral_DataFlow$LINKS" />
+      <unit id="6374444830331517703" at="14,0,27,0" name="jetbrains.mps.kotlin.dataFlow.LambdaLiteral_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6374444830331552736">
+    <file name="IStringLiteral_DataFlow.java">
+      <node id="6374444830331552764" at="12,60,13,181" concept="2" />
+      <node id="6374444830331552736" at="12,0,15,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="6374444830331552738" at="12,60,13,181" />
+      <scope id="6374444830331552736" at="12,0,15,0">
+        <var name="_context" id="6374444830331552736" />
+      </scope>
+      <unit id="6374444830331552736" at="11,0,16,0" name="jetbrains.mps.kotlin.dataFlow.IStringLiteral_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6374444830331556823">
+    <file name="CollectionLiteral_DataFlow.java">
+      <node id="6374444830331556851" at="14,60,15,157" concept="2" />
+      <node id="6374444830331556823" at="19,0,20,0" concept="10" trace="expressions$_AIQ" />
+      <node id="6374444830331556823" at="14,0,17,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="6374444830331556825" at="14,60,15,157" />
+      <scope id="6374444830331556823" at="14,0,17,0">
+        <var name="_context" id="6374444830331556823" />
+      </scope>
+      <unit id="6374444830331556823" at="18,0,21,0" name="jetbrains.mps.kotlin.dataFlow.CollectionLiteral_DataFlow$LINKS" />
+      <unit id="6374444830331556823" at="13,0,22,0" name="jetbrains.mps.kotlin.dataFlow.CollectionLiteral_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6374444830331604403">
+    <file name="AndExpression_DataFlow.java">
+      <node id="8386893935424258682" at="14,60,15,224" concept="2" />
+      <node id="6374444830331605813" at="15,224,16,104" concept="2" />
+      <node id="8386893935424267314" at="16,104,17,0" concept="9" />
+      <node id="8386893935424266991" at="17,0,18,26" concept="8" />
+      <node id="8386893935424262416" at="18,26,19,225" concept="2" />
+      <node id="8386893935424266278" at="19,225,20,177" concept="2" />
+      <node id="8386893935424267663" at="20,177,21,0" concept="9" />
+      <node id="6374444830331609177" at="21,0,22,105" concept="2" />
+      <node id="6374444830331604403" at="26,0,27,0" concept="10" trace="left$yQgK" />
+      <node id="6374444830331604403" at="27,0,28,0" concept="10" trace="right$yQIM" />
+      <node id="6374444830331604403" at="14,0,24,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="6374444830331604405" at="14,60,22,105" />
+      <scope id="6374444830331604403" at="14,0,24,0">
+        <var name="_context" id="6374444830331604403" />
+      </scope>
+      <unit id="6374444830331604403" at="25,0,29,0" name="jetbrains.mps.kotlin.dataFlow.AndExpression_DataFlow$LINKS" />
+      <unit id="6374444830331604403" at="13,0,30,0" name="jetbrains.mps.kotlin.dataFlow.AndExpression_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6374444830331610505">
+    <file name="OrExpression_DataFlow.java">
+      <node id="8386893935424268931" at="14,60,15,224" concept="2" />
+      <node id="4235809288651524133" at="15,224,16,104" concept="2" />
+      <node id="8386893935424268796" at="16,104,17,0" concept="9" />
+      <node id="8386893935424268702" at="17,0,18,26" concept="8" />
+      <node id="8386893935424268250" at="18,26,19,179" concept="2" />
+      <node id="4235809288651524185" at="19,179,20,105" concept="2" />
+      <node id="6374444830331610505" at="24,0,25,0" concept="10" trace="left$yQgK" />
+      <node id="6374444830331610505" at="25,0,26,0" concept="10" trace="right$yQIM" />
+      <node id="6374444830331610505" at="14,0,22,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="6374444830331610507" at="14,60,20,105" />
+      <scope id="6374444830331610505" at="14,0,22,0">
+        <var name="_context" id="6374444830331610505" />
+      </scope>
+      <unit id="6374444830331610505" at="23,0,27,0" name="jetbrains.mps.kotlin.dataFlow.OrExpression_DataFlow$LINKS" />
+      <unit id="6374444830331610505" at="13,0,28,0" name="jetbrains.mps.kotlin.dataFlow.OrExpression_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6662832579598629079">
+    <file name="ElvisOperator_SmartCast.java">
+      <node id="6662832579598629079" at="20,43,21,64" concept="6" />
+      <node id="6662832579598629079" at="21,64,22,64" concept="6" />
+      <node id="6662832579598629079" at="22,64,23,90" concept="7" />
+      <node id="6662832579598629079" at="25,50,26,37" concept="7" />
+      <node id="7914615281050728674" at="29,5,30,71" concept="6" />
+      <node id="7914615281050728674" at="31,43,32,31" concept="6" />
+      <node id="7914615281050728674" at="32,31,33,54" concept="6" />
+      <node id="7914615281050728674" at="33,54,34,182" concept="6" />
+      <node id="7914615281050728674" at="34,182,35,130" concept="2" />
+      <node id="7914615281050728674" at="35,130,36,36" concept="2" />
+      <node id="7914615281050728674" at="36,36,37,68" concept="2" />
+      <node id="5712768052210958159" at="41,72,42,72" concept="6" />
+      <node id="5712768052210958159" at="42,72,43,71" concept="2" />
+      <node id="5712768052210958159" at="43,71,44,26" concept="7" />
+      <node id="6662832579598629079" at="48,0,49,0" concept="10" trace="ElvisOperator$j5" />
+      <node id="6662832579598629079" at="49,0,50,0" concept="10" trace="NullableType$E0" />
+      <node id="6662832579598629079" at="50,0,51,0" concept="10" trace="IType$Ni" />
+      <node id="6662832579598629079" at="54,0,55,0" concept="10" trace="left$yQgK" />
+      <node id="6662832579598629079" at="55,0,56,0" concept="10" trace="type$Tm0J" />
+      <node id="6662832579598629079" at="25,0,28,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="6662832579598629079" at="20,0,25,0" concept="5" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="5712768052210958159" at="41,0,46,0" concept="11" trace="createNullableType_z6xg77_b0a0c0b0a0c#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7914615281050728674" at="30,71,38,7" concept="4" />
+      <node id="7914615281050728674" at="28,53,39,5" concept="0" />
+      <node id="6662832579598629079" at="28,0,41,0" concept="5" trace="performActions#(Ljetbrains/mps/lang/dataFlow/framework/Program;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <scope id="6662832579598629079" at="25,50,26,37" />
+      <scope id="6662832579598629079" at="20,43,23,90">
+        <var name="applicableConcept" id="6662832579598629079" />
+        <var name="concept" id="6662832579598629079" />
+      </scope>
+      <scope id="6662832579598629079" at="25,0,28,0" />
+      <scope id="5712768052210958159" at="41,72,44,26">
+        <var name="n0" id="5712768052210958159" />
+      </scope>
+      <scope id="6662832579598629079" at="20,0,25,0">
+        <var name="node" id="6662832579598629079" />
+      </scope>
+      <scope id="5712768052210958159" at="41,0,46,0">
+        <var name="p0" id="5712768052210958159" />
+      </scope>
+      <scope id="7914615281050728674" at="31,43,37,68">
+        <var name="before" id="7914615281050728674" />
+        <var name="instruction" id="7914615281050728674" />
+        <var name="position" id="7914615281050728674" />
+      </scope>
+      <scope id="7914615281050728674" at="29,5,38,7">
+        <var name="object" id="7914615281050728674" />
+      </scope>
+      <scope id="6662832579598629125" at="28,53,39,5" />
+      <scope id="6662832579598629079" at="28,0,41,0">
+        <var name="node" id="6662832579598629079" />
+        <var name="o" id="6662832579598629079" />
+      </scope>
+      <unit id="6662832579598629079" at="53,0,57,0" name="jetbrains.mps.kotlin.dataFlow.ElvisOperator_SmartCast$LINKS" />
+      <unit id="6662832579598629079" at="47,0,52,0" name="jetbrains.mps.kotlin.dataFlow.ElvisOperator_SmartCast$CONCEPTS" />
+      <unit id="6662832579598629079" at="19,0,58,0" name="jetbrains.mps.kotlin.dataFlow.ElvisOperator_SmartCast" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6662832579598672027">
+    <file name="ElvisOperator_DataFlow.java">
+      <node id="6662832579598672054" at="13,60,14,104" concept="2" />
+      <node id="7914615281050735493" at="14,104,15,0" concept="9" />
+      <node id="7914615281050735000" at="15,0,16,32" concept="8" />
+      <node id="7914615281050734705" at="16,32,17,179" concept="2" />
+      <node id="7914615281050735562" at="17,179,18,0" concept="9" />
+      <node id="6662832579598676203" at="18,0,19,105" concept="2" />
+      <node id="6662832579598672027" at="23,0,24,0" concept="10" trace="left$yQgK" />
+      <node id="6662832579598672027" at="24,0,25,0" concept="10" trace="right$yQIM" />
+      <node id="6662832579598672027" at="13,0,21,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="6662832579598672029" at="13,60,19,105" />
+      <scope id="6662832579598672027" at="13,0,21,0">
+        <var name="_context" id="6662832579598672027" />
+      </scope>
+      <unit id="6662832579598672027" at="22,0,26,0" name="jetbrains.mps.kotlin.dataFlow.ElvisOperator_DataFlow$LINKS" />
+      <unit id="6662832579598672027" at="12,0,27,0" name="jetbrains.mps.kotlin.dataFlow.ElvisOperator_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6662832579598734912">
+    <file name="IsOperator_SmartCast.java">
+      <node id="6662832579598734912" at="19,43,20,64" concept="6" />
+      <node id="6662832579598734912" at="20,64,21,64" concept="6" />
+      <node id="6662832579598734912" at="21,64,22,90" concept="7" />
+      <node id="6662832579598734912" at="24,50,25,34" concept="7" />
+      <node id="7914615281050743256" at="28,5,29,27" concept="6" />
+      <node id="7914615281050743256" at="30,43,31,31" concept="6" />
+      <node id="7914615281050743256" at="31,31,32,54" concept="6" />
+      <node id="7914615281050743256" at="32,54,33,218" concept="6" />
+      <node id="7914615281050743256" at="33,218,34,130" concept="2" />
+      <node id="7914615281050743256" at="34,130,35,36" concept="2" />
+      <node id="7914615281050743256" at="35,36,36,68" concept="2" />
+      <node id="6662832579598734912" at="42,0,43,0" concept="10" trace="IsOperator$V0" />
+      <node id="6662832579598734912" at="46,0,47,0" concept="10" trace="operand$YS5t" />
+      <node id="6662832579598734912" at="47,0,48,0" concept="10" trace="type$omaO" />
+      <node id="6662832579598734912" at="51,0,52,0" concept="10" trace="negation$kFAJ" />
+      <node id="6662832579598734912" at="24,0,27,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="6662832579598734912" at="19,0,24,0" concept="5" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="7914615281050743256" at="29,27,37,7" concept="4" />
+      <node id="7914615281050743256" at="27,53,38,5" concept="0" />
+      <node id="6662832579598734912" at="27,0,40,0" concept="5" trace="performActions#(Ljetbrains/mps/lang/dataFlow/framework/Program;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <scope id="6662832579598734912" at="24,50,25,34" />
+      <scope id="6662832579598734912" at="19,43,22,90">
+        <var name="applicableConcept" id="6662832579598734912" />
+        <var name="concept" id="6662832579598734912" />
+      </scope>
+      <scope id="6662832579598734912" at="24,0,27,0" />
+      <scope id="6662832579598734912" at="19,0,24,0">
+        <var name="node" id="6662832579598734912" />
+      </scope>
+      <scope id="7914615281050743256" at="30,43,36,68">
+        <var name="before" id="7914615281050743256" />
+        <var name="instruction" id="7914615281050743256" />
+        <var name="position" id="7914615281050743256" />
+      </scope>
+      <scope id="7914615281050743256" at="28,5,37,7">
+        <var name="object" id="7914615281050743256" />
+      </scope>
+      <scope id="6662832579598734914" at="27,53,38,5" />
+      <scope id="6662832579598734912" at="27,0,40,0">
+        <var name="node" id="6662832579598734912" />
+        <var name="o" id="6662832579598734912" />
+      </scope>
+      <unit id="6662832579598734912" at="41,0,44,0" name="jetbrains.mps.kotlin.dataFlow.IsOperator_SmartCast$CONCEPTS" />
+      <unit id="6662832579598734912" at="50,0,53,0" name="jetbrains.mps.kotlin.dataFlow.IsOperator_SmartCast$PROPS" />
+      <unit id="6662832579598734912" at="45,0,49,0" name="jetbrains.mps.kotlin.dataFlow.IsOperator_SmartCast$LINKS" />
+      <unit id="6662832579598734912" at="18,0,54,0" name="jetbrains.mps.kotlin.dataFlow.IsOperator_SmartCast" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6662832579598845069">
+    <file name="PropertyDefaultAssignement_DataFlow.java">
+      <node id="6662832579598845096" at="13,60,14,110" concept="2" />
+      <node id="6662832579598845069" at="18,0,19,0" concept="10" trace="expression$guTv" />
+      <node id="6662832579598845069" at="13,0,16,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="6662832579598845071" at="13,60,14,110" />
+      <scope id="6662832579598845069" at="13,0,16,0">
+        <var name="_context" id="6662832579598845069" />
+      </scope>
+      <unit id="6662832579598845069" at="17,0,20,0" name="jetbrains.mps.kotlin.dataFlow.PropertyDefaultAssignement_DataFlow$LINKS" />
+      <unit id="6662832579598845069" at="12,0,21,0" name="jetbrains.mps.kotlin.dataFlow.PropertyDefaultAssignement_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6662832579598847158">
+    <file name="PropertyDefaultAssignement_SmartCast.java">
+      <node id="6662832579598847158" at="21,43,22,64" concept="6" />
+      <node id="6662832579598847158" at="22,64,23,64" concept="6" />
+      <node id="6662832579598847158" at="23,64,24,90" concept="7" />
+      <node id="6662832579598847158" at="26,50,27,50" concept="7" />
+      <node id="9079241161330005375" at="29,53,30,100" concept="6" />
+      <node id="6662832579598873354" at="30,100,31,109" concept="6" />
+      <node id="6662832579598847169" at="31,109,32,0" concept="9" />
+      <node id="6662832579598908609" at="32,0,33,50" concept="8" />
+      <node id="9079241161330091781" at="34,143,35,143" concept="6" />
+      <node id="7914615281050560906" at="36,7,37,29" concept="6" />
+      <node id="7914615281050560906" at="38,45,39,33" concept="6" />
+      <node id="7914615281050560906" at="39,33,40,56" concept="6" />
+      <node id="7914615281050560906" at="40,56,41,169" concept="6" />
+      <node id="7914615281050560906" at="41,169,42,132" concept="2" />
+      <node id="7914615281050560906" at="42,132,43,38" concept="2" />
+      <node id="7914615281050560906" at="43,38,44,70" concept="2" />
+      <node id="6662832579598847158" at="51,0,52,0" concept="10" trace="PropertyDefaultAssignement$Ng" />
+      <node id="6662832579598847158" at="52,0,53,0" concept="10" trace="LocalPropertyDeclaration$eD" />
+      <node id="6662832579598847158" at="56,0,57,0" concept="10" trace="expression$guTv" />
+      <node id="6662832579598847158" at="26,0,29,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="6662832579598847158" at="21,0,26,0" concept="5" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="7914615281050560906" at="37,29,45,9" concept="4" />
+      <node id="7914615281050560906" at="35,143,46,7" concept="0" />
+      <node id="9079241161330012512" at="33,50,47,5" concept="4" />
+      <node id="6662832579598847158" at="29,0,49,0" concept="5" trace="performActions#(Ljetbrains/mps/lang/dataFlow/framework/Program;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <scope id="6662832579598847158" at="26,50,27,50" />
+      <scope id="6662832579598847158" at="21,43,24,90">
+        <var name="applicableConcept" id="6662832579598847158" />
+        <var name="concept" id="6662832579598847158" />
+      </scope>
+      <scope id="6662832579598847158" at="26,0,29,0" />
+      <scope id="6662832579598847158" at="21,0,26,0">
+        <var name="node" id="6662832579598847158" />
+      </scope>
+      <scope id="7914615281050560906" at="38,45,44,70">
+        <var name="before" id="7914615281050560906" />
+        <var name="instruction" id="7914615281050560906" />
+        <var name="position" id="7914615281050560906" />
+      </scope>
+      <scope id="7914615281050560906" at="36,7,45,9">
+        <var name="object" id="7914615281050560906" />
+      </scope>
+      <scope id="9079241161330012514" at="34,143,46,7">
+        <var name="self" id="9079241161330091782" />
+      </scope>
+      <scope id="6662832579598847160" at="29,53,47,5">
+        <var name="localVariable" id="9079241161330005376" />
+        <var name="parent" id="6662832579598873355" />
+      </scope>
+      <scope id="6662832579598847158" at="29,0,49,0">
+        <var name="node" id="6662832579598847158" />
+        <var name="o" id="6662832579598847158" />
+      </scope>
+      <unit id="6662832579598847158" at="55,0,58,0" name="jetbrains.mps.kotlin.dataFlow.PropertyDefaultAssignement_SmartCast$LINKS" />
+      <unit id="6662832579598847158" at="50,0,54,0" name="jetbrains.mps.kotlin.dataFlow.PropertyDefaultAssignement_SmartCast$CONCEPTS" />
+      <unit id="6662832579598847158" at="20,0,59,0" name="jetbrains.mps.kotlin.dataFlow.PropertyDefaultAssignement_SmartCast" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6662832579598919408">
+    <file name="Assignment_SmartCast.java">
+      <node id="6662832579598919408" at="20,43,21,64" concept="6" />
+      <node id="6662832579598919408" at="21,64,22,64" concept="6" />
+      <node id="6662832579598919408" at="22,64,23,90" concept="7" />
+      <node id="6662832579598919408" at="25,50,26,34" concept="7" />
+      <node id="7914615281050789169" at="29,5,30,27" concept="6" />
+      <node id="7914615281050789169" at="31,43,32,31" concept="6" />
+      <node id="7914615281050789169" at="32,31,33,54" concept="6" />
+      <node id="7914615281050789169" at="33,54,34,313" concept="6" />
+      <node id="7914615281050789169" at="34,313,35,130" concept="2" />
+      <node id="7914615281050789169" at="35,130,36,36" concept="2" />
+      <node id="7914615281050789169" at="36,36,37,68" concept="2" />
+      <node id="6662832579598919408" at="43,0,44,0" concept="10" trace="Assignment$zN" />
+      <node id="6662832579598919408" at="47,0,48,0" concept="10" trace="left$UqF2" />
+      <node id="6662832579598919408" at="48,0,49,0" concept="10" trace="right$Uro5" />
+      <node id="6662832579598919408" at="25,0,28,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="6662832579598919408" at="20,0,25,0" concept="5" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="7914615281050789169" at="30,27,38,7" concept="4" />
+      <node id="7914615281050789169" at="28,53,39,5" concept="0" />
+      <node id="6662832579598919408" at="28,0,41,0" concept="5" trace="performActions#(Ljetbrains/mps/lang/dataFlow/framework/Program;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <scope id="6662832579598919408" at="25,50,26,34" />
+      <scope id="6662832579598919408" at="20,43,23,90">
+        <var name="applicableConcept" id="6662832579598919408" />
+        <var name="concept" id="6662832579598919408" />
+      </scope>
+      <scope id="6662832579598919408" at="25,0,28,0" />
+      <scope id="6662832579598919408" at="20,0,25,0">
+        <var name="node" id="6662832579598919408" />
+      </scope>
+      <scope id="7914615281050789169" at="31,43,37,68">
+        <var name="before" id="7914615281050789169" />
+        <var name="instruction" id="7914615281050789169" />
+        <var name="position" id="7914615281050789169" />
+      </scope>
+      <scope id="7914615281050789169" at="29,5,38,7">
+        <var name="object" id="7914615281050789169" />
+      </scope>
+      <scope id="6662832579598919410" at="28,53,39,5" />
+      <scope id="6662832579598919408" at="28,0,41,0">
+        <var name="node" id="6662832579598919408" />
+        <var name="o" id="6662832579598919408" />
+      </scope>
+      <unit id="6662832579598919408" at="42,0,45,0" name="jetbrains.mps.kotlin.dataFlow.Assignment_SmartCast$CONCEPTS" />
+      <unit id="6662832579598919408" at="46,0,50,0" name="jetbrains.mps.kotlin.dataFlow.Assignment_SmartCast$LINKS" />
+      <unit id="6662832579598919408" at="19,0,51,0" name="jetbrains.mps.kotlin.dataFlow.Assignment_SmartCast" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6662832579598959433">
+    <file name="TypeTest_SmartCast.java">
+      <node id="6662832579598959433" at="19,43,20,64" concept="6" />
+      <node id="6662832579598959433" at="20,64,21,64" concept="6" />
+      <node id="6662832579598959433" at="21,64,22,90" concept="7" />
+      <node id="6662832579598959433" at="24,50,25,32" concept="7" />
+      <node id="7914615281050753137" at="28,5,29,27" concept="6" />
+      <node id="7914615281050753137" at="30,43,31,31" concept="6" />
+      <node id="7914615281050753137" at="31,31,32,54" concept="6" />
+      <node id="7914615281050753137" at="32,54,33,292" concept="6" />
+      <node id="7914615281050753137" at="33,292,34,130" concept="2" />
+      <node id="7914615281050753137" at="34,130,35,36" concept="2" />
+      <node id="7914615281050753137" at="35,36,36,68" concept="2" />
+      <node id="6662832579598959433" at="42,0,43,0" concept="10" trace="TypeTest$U8" />
+      <node id="6662832579598959433" at="43,0,44,0" concept="10" trace="WhenExpression$iN" />
+      <node id="6662832579598959433" at="47,0,48,0" concept="10" trace="target$I2XO" />
+      <node id="6662832579598959433" at="48,0,49,0" concept="10" trace="type$_0jF" />
+      <node id="6662832579598959433" at="52,0,53,0" concept="10" trace="negation$i74L" />
+      <node id="6662832579598959433" at="24,0,27,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="6662832579598959433" at="19,0,24,0" concept="5" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="7914615281050753137" at="29,27,37,7" concept="4" />
+      <node id="7914615281050753137" at="27,53,38,5" concept="0" />
+      <node id="6662832579598959433" at="27,0,40,0" concept="5" trace="performActions#(Ljetbrains/mps/lang/dataFlow/framework/Program;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <scope id="6662832579598959433" at="24,50,25,32" />
+      <scope id="6662832579598959433" at="19,43,22,90">
+        <var name="applicableConcept" id="6662832579598959433" />
+        <var name="concept" id="6662832579598959433" />
+      </scope>
+      <scope id="6662832579598959433" at="24,0,27,0" />
+      <scope id="6662832579598959433" at="19,0,24,0">
+        <var name="node" id="6662832579598959433" />
+      </scope>
+      <scope id="7914615281050753137" at="30,43,36,68">
+        <var name="before" id="7914615281050753137" />
+        <var name="instruction" id="7914615281050753137" />
+        <var name="position" id="7914615281050753137" />
+      </scope>
+      <scope id="7914615281050753137" at="28,5,37,7">
+        <var name="object" id="7914615281050753137" />
+      </scope>
+      <scope id="6662832579598959435" at="27,53,38,5" />
+      <scope id="6662832579598959433" at="27,0,40,0">
+        <var name="node" id="6662832579598959433" />
+        <var name="o" id="6662832579598959433" />
+      </scope>
+      <unit id="6662832579598959433" at="51,0,54,0" name="jetbrains.mps.kotlin.dataFlow.TypeTest_SmartCast$PROPS" />
+      <unit id="6662832579598959433" at="41,0,45,0" name="jetbrains.mps.kotlin.dataFlow.TypeTest_SmartCast$CONCEPTS" />
+      <unit id="6662832579598959433" at="46,0,50,0" name="jetbrains.mps.kotlin.dataFlow.TypeTest_SmartCast$LINKS" />
+      <unit id="6662832579598959433" at="18,0,55,0" name="jetbrains.mps.kotlin.dataFlow.TypeTest_SmartCast" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6662832579599016815">
+    <file name="IdentityBinaryExpression_SmartCast.java">
+      <node id="6662832579599016815" at="20,43,21,64" concept="6" />
+      <node id="6662832579599016815" at="21,64,22,64" concept="6" />
+      <node id="6662832579599016815" at="22,64,23,90" concept="7" />
+      <node id="6662832579599016815" at="25,50,26,40" concept="7" />
+      <node id="6662832579599210498" at="28,53,29,25" concept="8" />
+      <node id="7914615281050664991" at="30,152,31,363" concept="6" />
+      <node id="7914615281050695315" at="32,7,33,29" concept="6" />
+      <node id="7914615281050695315" at="34,45,35,33" concept="6" />
+      <node id="7914615281050695315" at="35,33,36,56" concept="6" />
+      <node id="7914615281050695315" at="36,56,37,171" concept="6" />
+      <node id="7914615281050695315" at="37,171,38,132" concept="2" />
+      <node id="7914615281050695315" at="38,132,39,38" concept="2" />
+      <node id="7914615281050695315" at="39,38,40,70" concept="2" />
+      <node id="6662832579599016815" at="47,0,48,0" concept="10" trace="BinaryExpression$$S" />
+      <node id="6662832579599016815" at="48,0,49,0" concept="10" trace="IdentityOperator$Qr" />
+      <node id="6662832579599016815" at="49,0,50,0" concept="10" trace="AbstractEqualityOperation$V_" />
+      <node id="6662832579599016815" at="53,0,54,0" concept="10" trace="negation$pCRI" />
+      <node id="6662832579599016815" at="57,0,58,0" concept="10" trace="left$yQgK" />
+      <node id="6662832579599016815" at="58,0,59,0" concept="10" trace="right$yQIM" />
+      <node id="6662832579599016815" at="25,0,28,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="6662832579599016815" at="20,0,25,0" concept="5" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="7914615281050695315" at="33,29,41,9" concept="4" />
+      <node id="7914615281050695315" at="31,363,42,7" concept="0" />
+      <node id="7914615281050664989" at="29,25,43,5" concept="4" />
+      <node id="6662832579599016815" at="28,0,45,0" concept="5" trace="performActions#(Ljetbrains/mps/lang/dataFlow/framework/Program;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <scope id="6662832579599016815" at="25,50,26,40" />
+      <scope id="6662832579599016815" at="20,43,23,90">
+        <var name="applicableConcept" id="6662832579599016815" />
+        <var name="concept" id="6662832579599016815" />
+      </scope>
+      <scope id="6662832579599016815" at="25,0,28,0" />
+      <scope id="6662832579599016815" at="20,0,25,0">
+        <var name="node" id="6662832579599016815" />
+      </scope>
+      <scope id="7914615281050695315" at="34,45,40,70">
+        <var name="before" id="7914615281050695315" />
+        <var name="instruction" id="7914615281050695315" />
+        <var name="position" id="7914615281050695315" />
+      </scope>
+      <scope id="7914615281050695315" at="32,7,41,9">
+        <var name="object" id="7914615281050695315" />
+      </scope>
+      <scope id="7914615281050664990" at="30,152,42,7">
+        <var name="isNegation" id="7914615281050664992" />
+      </scope>
+      <scope id="6662832579599016817" at="28,53,43,5" />
+      <scope id="6662832579599016815" at="28,0,45,0">
+        <var name="node" id="6662832579599016815" />
+        <var name="o" id="6662832579599016815" />
+      </scope>
+      <unit id="6662832579599016815" at="52,0,55,0" name="jetbrains.mps.kotlin.dataFlow.IdentityBinaryExpression_SmartCast$PROPS" />
+      <unit id="6662832579599016815" at="56,0,60,0" name="jetbrains.mps.kotlin.dataFlow.IdentityBinaryExpression_SmartCast$LINKS" />
+      <unit id="6662832579599016815" at="46,0,51,0" name="jetbrains.mps.kotlin.dataFlow.IdentityBinaryExpression_SmartCast$CONCEPTS" />
+      <unit id="6662832579599016815" at="19,0,61,0" name="jetbrains.mps.kotlin.dataFlow.IdentityBinaryExpression_SmartCast" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/7681599500227794206">
+    <file name="SmartCastHelper.java">
+      <node id="7681599500227930115" at="22,130,23,60" concept="6" />
+      <node id="5887161262767846193" at="23,60,24,82" concept="6" />
+      <node id="7681599500227990467" at="24,82,25,134" concept="7" />
+      <node id="5745248974083330847" at="29,29,30,62" concept="6" />
+      <node id="5745248974083330852" at="30,62,31,88" concept="6" />
+      <node id="5745248974083147691" at="31,88,32,44" concept="6" />
+      <node id="5745248974083151233" at="33,34,34,75" concept="6" />
+      <node id="5745248974083741272" at="34,75,35,109" concept="6" />
+      <node id="5745248974105096809" at="35,109,36,0" concept="9" />
+      <node id="5745248974083154132" at="37,38,38,181" concept="7" />
+      <node id="5745248974096167658" at="41,5,42,0" concept="9" />
+      <node id="5745248974083830755" at="42,0,43,28" concept="7" />
+      <node id="7681599500227794206" at="47,0,48,0" concept="10" trace="target$xQFr" />
+      <node id="5745248974083795961" at="36,0,39,9" concept="4" />
+      <node id="7681599500227794346" at="22,0,27,0" concept="11" trace="getFullAnalysisResult#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_2;" />
+      <node id="5745248974105096808" at="32,44,40,7" concept="4" />
+      <node id="5745248974096124153" at="28,91,41,5" concept="4" />
+      <node id="5745248974083044304" at="28,0,45,0" concept="11" trace="getSmartCastData#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/util/Optional;" />
+      <scope id="5745248974083795963" at="37,38,38,181" />
+      <scope id="7681599500227794349" at="22,130,25,134">
+        <var name="evaluator" id="7681599500227976078" />
+        <var name="runner" id="7681599500227974429" />
+      </scope>
+      <scope id="7681599500227794346" at="22,0,27,0">
+        <var name="node" id="7681599500227794380" />
+      </scope>
+      <scope id="5745248974105096810" at="33,34,39,9">
+        <var name="instructionData" id="5745248974083741273" />
+        <var name="targetInstruction" id="5745248974083151234" />
+      </scope>
+      <scope id="5745248974096124155" at="29,29,40,7">
+        <var name="evaluator" id="5745248974083330848" />
+        <var name="program" id="5745248974083147692" />
+        <var name="runner" id="5745248974083330853" />
+      </scope>
+      <scope id="5745248974083044307" at="28,91,43,28" />
+      <scope id="5745248974083044304" at="28,0,45,0">
+        <var name="function" id="5745248974083044698" />
+        <var name="ref" id="5745248974083044743" />
+      </scope>
+      <unit id="7681599500227794206" at="46,0,49,0" name="jetbrains.mps.kotlin.dataFlow.SmartCastHelper$LINKS" />
+      <unit id="7681599500227794206" at="21,0,50,0" name="jetbrains.mps.kotlin.dataFlow.SmartCastHelper" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/7760721608577025715">
+    <file name="AbstractPropertyDeclaration_DataFlow.java">
+      <node id="7760721608577025742" at="13,60,14,110" concept="2" />
+      <node id="7760721608577025715" at="18,0,19,0" concept="10" trace="assignment$nl1j" />
+      <node id="7760721608577025715" at="13,0,16,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="7760721608577025717" at="13,60,14,110" />
+      <scope id="7760721608577025715" at="13,0,16,0">
+        <var name="_context" id="7760721608577025715" />
+      </scope>
+      <unit id="7760721608577025715" at="17,0,20,0" name="jetbrains.mps.kotlin.dataFlow.AbstractPropertyDeclaration_DataFlow$LINKS" />
+      <unit id="7760721608577025715" at="12,0,21,0" name="jetbrains.mps.kotlin.dataFlow.AbstractPropertyDeclaration_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/7760721608577413365">
+    <file name="ReturnExpression_DataFlow.java">
+      <node id="7760721608577414081" at="13,60,14,108" concept="2" />
+      <node id="4182901135557110967" at="14,108,15,127" concept="2" />
+      <node id="7760721608577413365" at="19,0,20,0" concept="10" trace="returned$QXVK" />
+      <node id="7760721608577413365" at="13,0,17,0" concept="5" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="7760721608577413367" at="13,60,15,127" />
+      <scope id="7760721608577413365" at="13,0,17,0">
+        <var name="_context" id="7760721608577413365" />
+      </scope>
+      <unit id="7760721608577413365" at="18,0,21,0" name="jetbrains.mps.kotlin.dataFlow.ReturnExpression_DataFlow$LINKS" />
+      <unit id="7760721608577413365" at="12,0,22,0" name="jetbrains.mps.kotlin.dataFlow.ReturnExpression_DataFlow" />
+    </file>
+  </root>
+</debug-info>
+

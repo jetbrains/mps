@@ -7,14 +7,12 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.collections.plugin.CollectionsLanguage;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -23,49 +21,41 @@ public class CustomContainersUtil {
   public CustomContainersUtil() {
   }
   public static Iterable<SNode> containerCreators(SModel model, final SNode type) {
-    return (Iterable<SNode>) ((SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(type)), CONCEPTS.MapType$h0) ? Sequence.fromIterable(containerDeclarations(model, type)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode ccd) {
-        SNode cmc = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x15e2150d4bff8a67L, "jetbrains.mps.baseLanguage.collections.structure.CustomMapCreator"));
-        SLinkOperations.setTarget(cmc, LINKS.containerDeclaration$QVZa, ccd);
-        List<SNode> tvds = SLinkOperations.getChildren(ccd, LINKS.typeVariableDeclaration$Lipp);
-        List<SNode> ctParams = ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(ccd, LINKS.containerType$WQze), CONCEPTS.MapType$h0), LINKS.keyType$cmqk), SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(ccd, LINKS.containerType$WQze), CONCEPTS.MapType$h0), LINKS.valueType$hLQn));
-        List<SNode> typeParams = ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(SNodeOperations.as(type, CONCEPTS.MapType$h0), LINKS.keyType$cmqk), SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.MapType$h0), LINKS.valueType$hLQn));
+    return (Iterable<SNode>) ((SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(type)), CONCEPTS.MapType$h0) ? Sequence.fromIterable(containerDeclarations(model, type)).select((ccd) -> {
+      SNode cmc = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x15e2150d4bff8a67L, "jetbrains.mps.baseLanguage.collections.structure.CustomMapCreator"));
+      SLinkOperations.setTarget(cmc, LINKS.containerDeclaration$QVZa, ccd);
+      List<SNode> tvds = SLinkOperations.getChildren(ccd, LINKS.typeVariableDeclaration$Lipp);
+      List<SNode> ctParams = ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(ccd, LINKS.containerType$WQze), CONCEPTS.MapType$h0), LINKS.keyType$cmqk), SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(ccd, LINKS.containerType$WQze), CONCEPTS.MapType$h0), LINKS.valueType$hLQn));
+      List<SNode> typeParams = ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(SNodeOperations.as(type, CONCEPTS.MapType$h0), LINKS.keyType$cmqk), SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.MapType$h0), LINKS.valueType$hLQn));
 with_ctParams:
-        for (int idx = 0; idx < ListSequence.fromList(ctParams).count(); idx++) {
-          SNode c = ListSequence.fromList(ctParams).getElement(idx);
-          if (SNodeOperations.isInstanceOf(c, CONCEPTS.TypeVariableReference$WL)) {
-            SNode pt = ListSequence.fromList(typeParams).getElement((ListSequence.fromList(tvds).count() > 1 ? ListSequence.fromList(tvds).indexOf(SLinkOperations.getTarget(SNodeOperations.cast(c, CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I)) : idx));
-            switch (idx) {
-              case 0:
-                SLinkOperations.setTarget(cmc, LINKS.keyType$Uj4M, (SNode) SNodeOperations.copyNode(pt));
-                break;
-              case 1:
-                SLinkOperations.setTarget(cmc, LINKS.valueType$2EUo, (SNode) SNodeOperations.copyNode(pt));
-                break;
-              default:
-                break with_ctParams;
-            }
+      for (int idx = 0; idx < ListSequence.fromList(ctParams).count(); idx++) {
+        SNode c = ListSequence.fromList(ctParams).getElement(idx);
+        if (SNodeOperations.isInstanceOf(c, CONCEPTS.TypeVariableReference$WL)) {
+          SNode pt = ListSequence.fromList(typeParams).getElement((ListSequence.fromList(tvds).count() > 1 ? ListSequence.fromList(tvds).indexOf(SLinkOperations.getTarget(SNodeOperations.cast(c, CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I)) : idx));
+          switch (idx) {
+            case 0:
+              SLinkOperations.setTarget(cmc, LINKS.keyType$Uj4M, (SNode) SNodeOperations.copyNode(pt));
+              break;
+            case 1:
+              SLinkOperations.setTarget(cmc, LINKS.valueType$2EUo, (SNode) SNodeOperations.copyNode(pt));
+              break;
+            default:
+              break with_ctParams;
           }
         }
-        return cmc;
       }
-    }) : Sequence.fromIterable(containerDeclarations(model, type)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode ccd) {
-        SNode ccc = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x127be81db92655b3L, "jetbrains.mps.baseLanguage.collections.structure.CustomContainerCreator"));
-        SLinkOperations.setTarget(ccc, LINKS.containerDeclaration$nqf8, ccd);
-        if (ListSequence.fromList(SLinkOperations.getChildren(ccd, LINKS.typeVariableDeclaration$Lipp)).count() == 1) {
-          SLinkOperations.setTarget(ccc, LINKS.elementType$WxmV, SNodeOperations.as(ListSequence.fromList(SNodeOperations.getChildren(type)).first(), CONCEPTS.Type$bu));
-        }
-        return ccc;
+      return cmc;
+    }) : Sequence.fromIterable(containerDeclarations(model, type)).select((ccd) -> {
+      SNode ccc = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x127be81db92655b3L, "jetbrains.mps.baseLanguage.collections.structure.CustomContainerCreator"));
+      SLinkOperations.setTarget(ccc, LINKS.containerDeclaration$nqf8, ccd);
+      if (ListSequence.fromList(SLinkOperations.getChildren(ccd, LINKS.typeVariableDeclaration$Lipp)).count() == 1) {
+        SLinkOperations.setTarget(ccc, LINKS.elementType$WxmV, SNodeOperations.as(ListSequence.fromList(SNodeOperations.getChildren(type)).first(), CONCEPTS.Type$bu));
       }
+      return ccc;
     })));
   }
   public static Iterable<SNode> containerDeclarations(SModel model, final SNode type) {
-    return ListSequence.fromList(CollectionsLanguage.getInstance().getCustomContainersRegistry().accessibleCustomContainerDeclarations(model)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode ccd) {
-        return SNodeOperations.getConcept(SLinkOperations.getTarget(ccd, LINKS.containerType$WQze)) == SNodeOperations.getConcept(type);
-      }
-    });
+    return ListSequence.fromList(CollectionsLanguage.getInstance().getCustomContainersRegistry().accessibleCustomContainerDeclarations(model)).where((ccd) -> SNodeOperations.getConcept(SLinkOperations.getTarget(ccd, LINKS.containerType$WQze)) == SNodeOperations.getConcept(type));
   }
 
   private static final class LINKS {

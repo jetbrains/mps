@@ -4,20 +4,21 @@ package jetbrains.mps.lang.editor.selection.test;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.junit.Assert;
 
 @MPSLaunch
 public class SelectAllNonSelectableRootThroughNonSelectable_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(SelectAllNonSelectableRootThroughNonSelectable_Test.class, "${mps_home}", "r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(SelectAllNonSelectableRootThroughNonSelectable_Test.class, "${mps_home}", "r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)", false));
 
   public SelectAllNonSelectableRootThroughNonSelectable_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -35,11 +36,7 @@ public class SelectAllNonSelectableRootThroughNonSelectable_Test extends BaseTra
     public void testMethodImpl() throws Exception {
       initEditorComponent("3756708898179594225", "3756708898179594401");
       invokeAction("jetbrains.mps.ide.editor.actions.SelectAll_Action");
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          Assert.assertEquals(getNodeById("3756708898179594226"), getEditorComponent().getSelectedNode());
-        }
-      });
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> Assert.assertEquals(getAnnotatedNode("intermediateCell"), getEditorComponent().getSelectedNode()));
       invokeAction("jetbrains.mps.ide.editor.actions.SelectDown_Action");
     }
   }

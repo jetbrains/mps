@@ -1,10 +1,9 @@
 package jetbrains.mps.plugin;
 
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.util.io.FileUtil;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 
 import java.net.InetAddress;
 import java.rmi.RemoteException;
@@ -12,7 +11,7 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class MPSPluginImpl extends UnicastRemoteObject implements IMPSPlugin {
 
-  private static final Logger LOG = LogManager.getLogger(MPSPluginImpl.class);
+  private static final Logger LOG = Logger.getInstance(MPSPluginImpl.class);
 
   public MPSPluginImpl() throws RemoteException {
     super();

@@ -26,22 +26,18 @@ public abstract class AbstractDecoratorView extends GroupView {
       @Override
       protected void registerSynchronizers(Mapper.SynchronizersConfiguration configuration) {
         super.registerSynchronizers(configuration);
-        configuration.add(Synchronizers.forProperty(hasError, new Runnable() {
-          public void run() {
-            if (hasError.get()) {
-              errorDecorator.setItem(Boolean.TRUE);
-            } else {
-              errorDecorator.setItem(null);
-            }
+        configuration.add(Synchronizers.forProperty(hasError, () -> {
+          if (hasError.get()) {
+            errorDecorator.setItem(Boolean.TRUE);
+          } else {
+            errorDecorator.setItem(null);
           }
         }));
-        configuration.add(Synchronizers.forProperty(isSelected, new Runnable() {
-          public void run() {
-            if (isSelected.get()) {
-              selectionDecorator.setItem(Boolean.TRUE);
-            } else {
-              selectionDecorator.setItem(null);
-            }
+        configuration.add(Synchronizers.forProperty(isSelected, () -> {
+          if (isSelected.get()) {
+            selectionDecorator.setItem(Boolean.TRUE);
+          } else {
+            selectionDecorator.setItem(null);
           }
         }));
       }

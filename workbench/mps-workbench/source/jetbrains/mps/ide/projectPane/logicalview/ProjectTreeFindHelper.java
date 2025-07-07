@@ -30,7 +30,6 @@ import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.SNodeTreeNode;
 import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.project.Project;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.util.SNodeOperations;
@@ -49,9 +48,10 @@ import java.util.ArrayDeque;
 import java.util.LinkedList;
 
 public final class ProjectTreeFindHelper {
-  private ProjectTree myProjectTree;
+  @Nullable
+  private final ProjectTree myProjectTree;
 
-  public ProjectTreeFindHelper(ProjectTree projectTree) {
+  public ProjectTreeFindHelper(@Nullable ProjectTree projectTree) {
     myProjectTree = projectTree;
   }
 
@@ -62,7 +62,10 @@ public final class ProjectTreeFindHelper {
       return result;
     }
 
-    ProjectModulesPoolTreeNode modulesPoolNode = getTree().getModulesPoolNode();
+    if (myProjectTree == null) {
+      return null;
+    }
+    ProjectModulesPoolTreeNode modulesPoolNode = myProjectTree.getModulesPoolNode();
     if (modulesPoolNode == null) {
       return null;
     }
@@ -101,59 +104,63 @@ public final class ProjectTreeFindHelper {
       return srcDescriptorFile != null && srcDescriptorFile.equals(moduleFile);
     };
     // first, look at project modules
-    MPSTreeNode rv = findTreeNode(getTree().getRootNode(), new ModuleInProjectCondition(), module4file);
+    MPSTreeNode rv = findTreeNode(getRootNode(), new ModuleInProjectCondition(), module4file);
     if (rv == null) {
       // if not among project, try pool of loaded then
-      rv = findTreeNode(getTree().getRootNode(), new ModuleEverywhereCondition(), module4file);
+      rv = findTreeNode(getRootNode(), new ModuleEverywhereCondition(), module4file);
     }
     return (ProjectModuleTreeNode) rv;
   }
 
-  protected ProjectModuleTreeNode findModuleTreeNodeInProject(final @NotNull SModule module) {
-    return (ProjectModuleTreeNode) findTreeNode(getTree().getRootNode(),
-        new ModuleInProjectCondition(),
-        new NodeForModuleCondition(module));
+  private ProjectModuleTreeNode findModuleTreeNodeInProject(final @NotNull SModule module) {
+    return (ProjectModuleTreeNode) findTreeNode(getRootNode(),
+                                                new ModuleInProjectCondition(),
+                                                new NodeForModuleCondition(module));
   }
 
-  protected ProjectModuleTreeNode findModuleTreeNodeAnywhere(@NotNull SModule module) {
-    return (ProjectModuleTreeNode) findTreeNode(getTree().getRootNode(),
-        new ModuleEverywhereCondition(),
-        new NodeForModuleCondition(module));
+  private ProjectModuleTreeNode findModuleTreeNodeAnywhere(@NotNull SModule module) {
+    return (ProjectModuleTreeNode) findTreeNode(getRootNode(),
+                                                new ModuleEverywhereCondition(),
+                                                new NodeForModuleCondition(module));
   }
 
   public SModelTreeNode findMostSuitableModelTreeNode(@NotNull SModel model) {
     SModule module = model.getModule();
     if (module == null) {
-      return findModelTreeNodeAnywhere(model, getTree().getRootNode());
+      return findModelTreeNodeAnywhere(model, getRootNode());
     }
 
     ProjectModuleTreeNode moduleTreeNode = findMostSuitableModuleTreeNode(module);
     if (moduleTreeNode == null) {
-      return findModelTreeNodeAnywhere(model, getTree().getRootNode());
+      return findModelTreeNodeAnywhere(model, getRootNode());
     }
 
     return findModelTreeNodeInModule(model, moduleTreeNode);
   }
 
-  protected SModelTreeNode findModelTreeNodeInModule(final @NotNull SModel model, @NotNull ProjectModuleTreeNode moduleNode) {
+  private SModelTreeNode findModelTreeNodeInModule(final @NotNull SModel model, @NotNull ProjectModuleTreeNode moduleNode) {
     return (SModelTreeNode) findTreeNode(moduleNode, new ModelInModuleCondition(model), new NodeForModelCondition(model));
   }
 
-  protected SModelTreeNode findModelTreeNodeAnywhere(@NotNull SModel model, @NotNull MPSTreeNode parentNode) {
+  private SModelTreeNode findModelTreeNodeAnywhere(@NotNull SModel model, @NotNull MPSTreeNode parentNode) {
     return (SModelTreeNode) findTreeNode(parentNode, new ModelEverywhereCondition(model), new NodeForModelCondition(model));
   }
 
   public MPSTreeNodeEx findMostSuitableSNodeTreeNode(@NotNull SNode node) {
     SModel model = node.getModel();
-    if (model == null) return null;
+    if (model == null) {
+      return null;
+    }
     SModelTreeNode modelNode = findMostSuitableModelTreeNode(model);
-    if (modelNode == null) return null;
+    if (modelNode == null) {
+      return null;
+    }
 
     return findSNodeTreeNodeInParent(node, modelNode);
   }
 
   //todo rewrite using findTreeNode
-  protected MPSTreeNodeEx findSNodeTreeNodeInParent(@NotNull final SNode node, @NotNull final SModelTreeNode parent) {
+  private MPSTreeNodeEx findSNodeTreeNodeInParent(@NotNull final SNode node, @NotNull final SModelTreeNode parent) {
     LinkedList<SNode> ancestors = new LinkedList<>();
     SNode current = node;
     while (current != null) {
@@ -164,25 +171,33 @@ public final class ProjectTreeFindHelper {
     MPSTreeNode currentTreeNode = parent;
     for (final SNode anc : ancestors) {
       final MPSTreeNode finalCurrentTreeNode = currentTreeNode;
-      if (!currentTreeNode.isInitialized() && !currentTreeNode.hasInfiniteSubtree()) currentTreeNode.init();
+      if (!currentTreeNode.isInitialized() && !currentTreeNode.hasInfiniteSubtree()) {
+        currentTreeNode.init();
+      }
 
       currentTreeNode = findTreeNode(finalCurrentTreeNode,
                                      object -> {
-                                       if (object == finalCurrentTreeNode) return true;
-                                       if (!(object instanceof PackageNode)) return false;
+                                       if (object == finalCurrentTreeNode) {
+                                         return true;
+                                       }
+                                       if (!(object instanceof PackageNode)) {
+                                         return false;
+                                       }
                                        String pack = ((PackageNode) object).getFullPackage();
                                        String vp = node.getContainingRoot().getProperty(SNodeUtil.property_BaseConcept_virtualPackage);
                                        return vp != null && vp.startsWith(pack);
                                      }, tNode -> (tNode instanceof SNodeTreeNode) && (((SNodeTreeNode) tNode).getSNode() == anc)
       );
-      if (currentTreeNode == null) return null;
+      if (currentTreeNode == null) {
+        return null;
+      }
     }
 
     return (MPSTreeNodeEx) currentTreeNode;
   }
 
   @Nullable
-  protected MPSTreeNode findTreeNode(MPSTreeNode start, Condition<MPSTreeNode> descendCondition, Condition<MPSTreeNode> resultCondition) {
+  private MPSTreeNode findTreeNode(MPSTreeNode start, Condition<MPSTreeNode> descendCondition, Condition<MPSTreeNode> resultCondition) {
     // breadth-first to find top-most module (e.g. not the one under 'runtime' dependencies)
     ArrayDeque<MPSTreeNode> queue = new ArrayDeque<>(128);
     queue.add(start);
@@ -210,22 +225,34 @@ public final class ProjectTreeFindHelper {
   //todo: will work bad e.g. if operating with project data from modules pool
   public MPSTreeNode findNextTreeNode(SNode node) {
     MPSTreeNode foundNode = findMostSuitableSNodeTreeNode(node);
-    if (foundNode == null) return null;
+    if (foundNode == null) {
+      return null;
+    }
     DefaultMutableTreeNode parentNode = (DefaultMutableTreeNode) foundNode.getParent();
     TreeNode result = parentNode.getChildAfter(foundNode);
-    if (result == null) result = parentNode.getChildBefore(foundNode);
-    if (result == null) result = parentNode;
+    if (result == null) {
+      result = parentNode.getChildBefore(foundNode);
+    }
+    if (result == null) {
+      result = parentNode;
+    }
     return (MPSTreeNode) result;
   }
 
   //todo: will work bad e.g. if operating with project data from modules pool
   public MPSTreeNode findNextTreeNode(SModel modelDescriptor) {
     SModelTreeNode sModelNode = findMostSuitableModelTreeNode(modelDescriptor);
-    if (sModelNode == null) return null;
+    if (sModelNode == null) {
+      return null;
+    }
     DefaultMutableTreeNode parentNode = (DefaultMutableTreeNode) sModelNode.getParent();
     TreeNode result = parentNode.getChildAfter(sModelNode);
-    if (result == null) result = parentNode.getChildBefore(sModelNode);
-    if (result == null) result = parentNode;
+    if (result == null) {
+      result = parentNode.getChildBefore(sModelNode);
+    }
+    if (result == null) {
+      result = parentNode;
+    }
     return (MPSTreeNode) result;
   }
 
@@ -260,11 +287,15 @@ public final class ProjectTreeFindHelper {
 
     @Override
     public boolean met(MPSTreeNode node) {
-      if (!super.met(node)) return false;
+      if (!super.met(node)) {
+        return false;
+      }
 
       if (node instanceof SModelTreeNode) {
         SModelTreeNode modelNode = (SModelTreeNode) node;
-        if (!modelNode.hasModelsUnder()) return false;
+        if (!modelNode.hasModelsUnder()) {
+          return false;
+        }
 
         String outerName = SNodeOperations.getModelLongName(modelNode.getModel());
         String innerName = SNodeOperations.getModelLongName(myModel);
@@ -273,14 +304,28 @@ public final class ProjectTreeFindHelper {
 
       boolean descent = false;
 
-      if (node instanceof ProjectModuleTreeNode) descent = true;
-      if (node instanceof NamespaceTextNode) descent = true;
-      if (node instanceof AccessoriesModelTreeNode) descent = true;
-      if (node instanceof StubsTreeNode) descent = true;
-      if (node instanceof AllModelsTreeNode) descent = true;
-      if (node instanceof TestsTreeNode) descent = true;
+      if (node instanceof ProjectModuleTreeNode) {
+        descent = true;
+      }
+      if (node instanceof NamespaceTextNode) {
+        descent = true;
+      }
+      if (node instanceof AccessoriesModelTreeNode) {
+        descent = true;
+      }
+      if (node instanceof StubsTreeNode) {
+        descent = true;
+      }
+      if (node instanceof AllModelsTreeNode) {
+        descent = true;
+      }
+      if (node instanceof TestsTreeNode) {
+        descent = true;
+      }
 
-      if (!descent) return false;
+      if (!descent) {
+        return false;
+      }
 
       if (!node.isInitialized() && !node.hasInfiniteSubtree()) {
         node.init();
@@ -300,10 +345,14 @@ public final class ProjectTreeFindHelper {
 
     @Override
     public boolean met(MPSTreeNode node) {
-      if (node instanceof SNodeTreeNode) return false;
+      if (node instanceof SNodeTreeNode) {
+        return false;
+      }
       if (node instanceof SModelTreeNode) {
         SModelTreeNode modelNode = (SModelTreeNode) node;
-        if (!modelNode.hasModelsUnder()) return false;
+        if (!modelNode.hasModelsUnder()) {
+          return false;
+        }
 
         String outerName = SNodeOperations.getModelLongName(modelNode.getModel());
         String innerName = jetbrains.mps.util.SNodeOperations.getModelLongName(myModel);
@@ -342,7 +391,9 @@ public final class ProjectTreeFindHelper {
 
     @Override
     public boolean met(MPSTreeNode node) {
-      if (!(node instanceof SModelTreeNode)) return false;
+      if (!(node instanceof SModelTreeNode)) {
+        return false;
+      }
       SModelTreeNode modelNode = (SModelTreeNode) node;
       SModel modelDescriptor = modelNode.getModel();
       SModelReference modelReference = modelDescriptor.getReference();
@@ -352,11 +403,11 @@ public final class ProjectTreeFindHelper {
 
   //-----------getters----------
 
-  protected Project getProject() {
-    return getTree().getProject();
-  }
-
-  protected ProjectTree getTree() {
-    return myProjectTree;
+  @Nullable
+  private MPSTreeNode getRootNode() {
+    if (myProjectTree == null) {
+      return null;
+    }
+    return myProjectTree.getRootNode();
   }
 }

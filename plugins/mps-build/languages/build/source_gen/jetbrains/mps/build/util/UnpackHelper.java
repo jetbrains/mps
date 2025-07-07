@@ -17,7 +17,6 @@ public class UnpackHelper extends DependenciesHelper {
   private final Set<SNode> requiredSet = new HashSet<SNode>();
   private final Set<SNode> requiredWithContent = new HashSet<SNode>();
   private boolean evaluated = false;
-  private final List<SNode> statements = new ArrayList<SNode>();
   private PathProvider myPathProvider;
 
   /*package*/ UnpackHelper(VisibleArtifacts visible, TemplateQueryContext genContext) {
@@ -59,24 +58,8 @@ public class UnpackHelper extends DependenciesHelper {
   public boolean isContentRequired(SNode n) {
     return requiredWithContent.contains(n);
   }
-  /**
-   * 
-   * @deprecated bad design, shall not persist. No more uses in MPS. Use templates to produce necessary statements
-   */
-  @Deprecated
-  public void emit(SNode st) {
-    ListSequence.fromList(statements).addElement(st);
-  }
   public SNode parent(SNode node) {
     return visible.parent(node);
-  }
-  /**
-   * 
-   * @deprecated see emit(node), above
-   */
-  @Deprecated
-  public List<SNode> getStatements() {
-    return ListSequence.fromList(statements).asUnmodifiable();
   }
   public PathProvider getPathProvider() {
     return myPathProvider;

@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -23,7 +24,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.classifiers.behavior.BaseClassifierType__BehaviorDescriptor;
 import jetbrains.mps.scope.ListScope;
 import java.util.HashMap;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -36,18 +36,14 @@ public class IMemberOperation_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.member$oLt6, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.member$oLt6, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_dyvyal_a0a0a0a0a1a0a0a0c;
+            return new SNodePointer("r:00000000-0000-4000-0000-011c8959036e(jetbrains.mps.baseLanguage.classifiers.constraints)", "6836281137582646442");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
@@ -55,9 +51,9 @@ public class IMemberOperation_Constraints extends BaseConstraintsDescriptor {
             SNode operand = SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.DotExpression$yW), LINKS.operand$w6IR);
             List<SNode> applicableMembers = new ArrayList<SNode>();
             {
-              SNode coercedNode_dyvyal_d0b0a0a0b0a0a0a2 = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(operand), CONCEPTS.BaseClassifierType$S7);
-              if (coercedNode_dyvyal_d0b0a0a0b0a0a0a2 != null) {
-                for (SNode member : ListSequence.fromList(BaseClassifierType__BehaviorDescriptor.getMembers_idhEwINC$.invoke(coercedNode_dyvyal_d0b0a0a0b0a0a0a2, enclosingNode))) {
+              SNode coercedNode_dyvyal_d0b0a0a0a0a0a0a2 = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(operand), CONCEPTS.BaseClassifierType$S7);
+              if (coercedNode_dyvyal_d0b0a0a0a0a0a0a2 != null) {
+                for (SNode member : ListSequence.fromList(BaseClassifierType__BehaviorDescriptor.getMembers_idhEwINC$.invoke(coercedNode_dyvyal_d0b0a0a0a0a0a0a2, enclosingNode))) {
                   if (SNodeOperations.isInstanceOf(member, SNodeOperations.asSConcept(_context.getLinkTargetConcept()))) {
                     ListSequence.fromList(applicableMembers).addElement(member);
                   }
@@ -74,7 +70,6 @@ public class IMemberOperation_Constraints extends BaseConstraintsDescriptor {
     references.put(d0.getReference(), d0);
     return references;
   }
-  private static final SNodePointer breakingNode_dyvyal_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c8959036e(jetbrains.mps.baseLanguage.classifiers.constraints)", "6836281137582646442");
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept IMemberOperation$iZ = MetaAdapterFactory.getInterfaceConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, "jetbrains.mps.baseLanguage.classifiers.structure.IMemberOperation");

@@ -9,7 +9,6 @@ import jetbrains.mps.lang.constraints.rules.skeleton.behavior.RuleBlockMember__B
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -28,11 +27,7 @@ public class InsertMemberAfterMember {
       }
       public void execute_internal(EditorContext editorContext, final SNode node) {
         SNode block = RuleBlockMember__BehaviorDescriptor.getBlock_id1BFxp3HHhy9.invoke(node);
-        SNode newNode = SNodeOperations.insertNextSiblingChild(ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.members$9HnD)).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return Objects.equals(it, SNodeOperations.getParent(node));
-          }
-        }), SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(MetaAdapterFactory.getInterfaceConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb51750L, "jetbrains.mps.lang.constraints.rules.skeleton.structure.RuleBlockMember"))));
+        SNode newNode = SNodeOperations.insertNextSiblingChild(ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.members$9HnD)).findFirst((it) -> Objects.equals(it, SNodeOperations.getParent(node))), SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(MetaAdapterFactory.getInterfaceConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb51750L, "jetbrains.mps.lang.constraints.rules.skeleton.structure.RuleBlockMember"))));
         editorContext.selectWRTFocusPolicy(newNode);
       }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,14 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.logging.Log4jUtil;
+import jetbrains.mps.extapi.model.ResolveInfoExt;
+import jetbrains.mps.logging.Logger;
+import jetbrains.mps.smodel.AssociationData.DirectNode;
+import jetbrains.mps.smodel.AssociationData.DynamicPtr;
+import jetbrains.mps.smodel.AssociationData.IndirectNodePtr;
+import jetbrains.mps.smodel.AssociationData.SNodeAssociationUpdate;
+import jetbrains.mps.smodel.event.SModelPropertyEvent;
 import jetbrains.mps.util.containers.EmptyIterable;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -27,16 +31,16 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.ResolveInfo;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 
 import static jetbrains.mps.util.SNodeOperations.getDebugText;
 
@@ -46,9 +50,10 @@ import static jetbrains.mps.util.SNodeOperations.getDebugText;
  *
  * How come this one is in [kernel], not [smodel]?
  */
-public class SNode implements org.jetbrains.mps.openapi.model.SNode {
-  private static final Logger LOG = LogManager.getLogger(SNode.class);
-  private static final String[] EMPTY_ARRAY = new String[0];
+public class SNode implements org.jetbrains.mps.openapi.model.SNode, SNodeAssociationUpdate {
+  private static final Logger LOG = Logger.getLogger(SNode.class);
+  private static final String[] EMPTY_STRING_ARRAY = new String[0];
+  private static final Object[] EMPTY_OBJECT_ARRAY = new Object[0];
   private static final Object USER_OBJECT_LOCK = new Object();
 
   /**
@@ -62,7 +67,14 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
   @NotNull
   private SNodeOwner myOwner = FreeFloatNodeOwner.INSTANCE;
   private SContainmentLink myRoleInParent;
-  private jetbrains.mps.smodel.SReference[] myReferences = jetbrains.mps.smodel.SReference.EMPTY_ARRAY;
+
+  // field is never null; but individual elements may be null. References are unordered!
+  // Note, when switch to keeping ref data only, may introduce a placeholder that would
+  // simplify makeReferencesDirect() implementation (empty methods instead of != null check)
+  // Like myProperties, keeps pairs of [SReferenceLink, AssociationData]
+  private Object[] myReferences = EMPTY_OBJECT_ARRAY;
+
+  // Keeps pairs [SProperty, String]
   private Object[] myProperties = null;
   private org.jetbrains.mps.openapi.model.SNodeId myId;
 
@@ -146,7 +158,7 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
     assertCanRead();
 
     if (getConcept().isSubConceptOf(SNodeUtil.concept_INamedConcept)) {
-      return SNodeAccessUtil.getProperty(this, SNodeUtil.property_INamedConcept_name);
+      return getProperty(SNodeUtil.property_INamedConcept_name);
     } else {
       myOwner.fireNodeRead(this, false);
       return null;
@@ -231,7 +243,7 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
         s = String.format("(instance of %s)", getConcept().getName());
       }
     } catch (RuntimeException t) {
-      LOG.error(Log4jUtil.createMessageObject("Failed to get string presentation of a node", this), t);
+      LOG.error("Failed to get string presentation of a node", t, this);
     }
     if (s == null) {
       return "???";
@@ -286,19 +298,20 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
         return;
       }
 
-      for (int i = 0; i < myUserObjects.length; i += 2) {
+      final int curLen = myUserObjects.length;
+      for (int i = 0; i < curLen; i += 2) {
         if (myUserObjects[i].equals(key)) {
           Object[] newarr = new Object[myUserObjects.length];
-          System.arraycopy(myUserObjects, 0, newarr, 0, myUserObjects.length);
+          System.arraycopy(myUserObjects, 0, newarr, 0, curLen);
           newarr[i + 1] = value;
           myUserObjects = newarr;
           return;
         }
       }
-      Object[] newarr = new Object[myUserObjects.length + 2];
-      System.arraycopy(myUserObjects, 0, newarr, 2, myUserObjects.length);
-      newarr[0] = key;
-      newarr[1] = value;
+      Object[] newarr = new Object[curLen + 2];
+      System.arraycopy(myUserObjects, 0, newarr, 0, curLen);
+      newarr[curLen] = key;
+      newarr[curLen+1] = value;
       myUserObjects = newarr;
     }
   }
@@ -316,7 +329,17 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
 
     myOwner.fireNodeRead(this, true);
 
-    return Arrays.asList(myReferences);
+    ArrayList<jetbrains.mps.smodel.SReference> rv = new ArrayList<>(myReferences.length >>> 1);
+    for (int i = 1, x = myReferences.length; i < x; i+=2) {
+      final Object d = myReferences[i];
+      if (d != null) {
+        final SReferenceLink link = (SReferenceLink) myReferences[i - 1];
+        rv.add(toAPI(link, d));
+      }
+    }
+    // XXX there's override of the method in mps-extensions that doesn't allow me to use openapi.SReference at the moment
+    //     (without simultaneous change in MPS-extensions as well)
+    return rv;
   }
 
   @Override
@@ -430,31 +453,58 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
     }
   }
 
+
+  /*package*/ SReference toAPI(SReferenceLink link, Object associationData) {
+    // both arguments not null
+    if (associationData instanceof DynamicPtr) {
+      return new DynamicReference(link, this, (DynamicPtr) associationData);
+    } else {
+      return new StaticReference(link, this, (AssociationData) associationData);
+    }
+  }
+
+
+  @Override
+  public void updateAssociation(SReferenceLink link, AssociationData oldRef, AssociationData newRef) {
+    for (int i = 0, x = myReferences.length; i < x; i+=2) {
+      if (link.equals(myReferences[i])) {
+        assert myReferences[i+1] == oldRef;
+        myReferences[i+1] = newRef;
+        return;
+      }
+    }
+    assert false : String.format("attempt to update missing association link %s", link);
+  }
+
   /**
-   * for a subtree starting at this node, ask all references to establish identity-backed target information, rather than instance-backed.
-   * This operation usually follows attachment of a node/subtree
+   * for a subtree starting at this node, apply the function to each association link known to the node.
+   * This operation usually follows attachment of a node/subtree or precedes detachment of a node/subtree.
    */
-  final void makeReferencesIndirect() {
-    for (SReference ref : myReferences) {
-      ref.makeIndirect();
+  /*package*/ final void forEachAssociationDeep(Function<AssociationData, AssociationData> translate) {
+    for (int i = 1, x = myReferences.length; i < x; i+=2) {
+      AssociationData d = (AssociationData) myReferences[i];
+      if (d == null) {
+        continue;
+      }
+      myReferences[i] = translate.apply(d);
     }
 
     for (SNode child = firstChild(); child != null; child = child.treeNext()) {
-      child.makeReferencesIndirect();
+      child.forEachAssociationDeep(translate);
     }
   }
 
   /**
-   * for a subtree starting at this node, ask all references to point to an actual target node object instead of by-name/by-id value.
-   * This operation usually precedes detachment of a node/subtree. Direct object pointer then facilitates reference access operations from
-   * the detached nodes just in case there's need.
+   * apply the function to each association link known to the node.
+   * unlike {@link #forEachAssociationDeep(Function)}, doesn't visit children
    */
-  final void makeReferencesDirect() {
-    for (SReference ref : myReferences) {
-      ref.makeDirect();
-    }
-    for (SNode child = firstChild(); child != null; child = child.treeNext()) {
-      child.makeReferencesDirect();
+  /*package*/ final void forEachAssociationShallow(BiFunction<SReferenceLink, AssociationData, AssociationData> translate) {
+    for (int i = 1, x = myReferences.length; i < x; i += 2) {
+      AssociationData d = (AssociationData) myReferences[i];
+      if (d == null) {
+        continue;
+      }
+      myReferences[i] = translate.apply((SReferenceLink) myReferences[i-1], d);
     }
   }
 
@@ -476,42 +526,6 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
 
   /*package*/ void setNodeOwner(/*NotNull*/ SNodeOwner owner) {
     myOwner = owner;
-  }
-
-  //--------private-------
-
-  // perform inner structures update, doesn't dispatch any events
-  private void addReferenceInternal(final SReference reference) {
-    int oldLen = myReferences.length;
-    jetbrains.mps.smodel.SReference[] newArray = new jetbrains.mps.smodel.SReference[oldLen + 1];
-    System.arraycopy(myReferences, 0, newArray, 0, oldLen);
-    newArray[oldLen] = reference;
-    myReferences = newArray;
-
-    myOwner.performUndoableAction(new InsertReferenceAtUndoableAction(this, reference));
-  }
-
-  // perform inner structures update, doesn't dispatch any events
-  private void removeReferenceInternal(final SReference ref) {
-    int index = -1;
-    for (int i = 0; i < myReferences.length; i++) {
-      if (myReferences[i] == ref) {
-        index = i;
-        break;
-      }
-    }
-
-    if (index == -1) {
-      LOG.error("ref not found " + ref, new Throwable());
-      return;
-    }
-
-    jetbrains.mps.smodel.SReference[] newArray = new jetbrains.mps.smodel.SReference[myReferences.length - 1];
-    System.arraycopy(myReferences, 0, newArray, 0, index);
-    System.arraycopy(myReferences, index + 1, newArray, index, myReferences.length - index - 1);
-    myReferences = newArray;
-
-    myOwner.performUndoableAction(new RemoveReferenceAtUndoableAction(this, ref));
   }
 
   protected SNode firstChild() {
@@ -596,7 +610,7 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
 
     String val = findProperty(property);
     myOwner.firePropertyRead(this, property, val, true);
-    return !SModelUtil_new.isEmptyPropertyValue(val);
+    return !SModelPropertyEvent.isEmptyPropertyValue(val);
   }
 
   @Override
@@ -640,7 +654,7 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
         System.arraycopy(oldProperties, index + 2, myProperties, index, newLength - index);
       }
     } else if (oldValue == null) {
-      Object[] oldProperties = myProperties == null ? EMPTY_ARRAY : myProperties;
+      Object[] oldProperties = myProperties == null ? EMPTY_STRING_ARRAY : myProperties;
       myProperties = new Object[oldProperties.length + 2];
       System.arraycopy(oldProperties, 0, myProperties, 0, oldProperties.length);
       myProperties[myProperties.length - 2] = property;
@@ -672,58 +686,42 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
   @Override
   public void setReferenceTarget(@NotNull SReferenceLink role, @Nullable org.jetbrains.mps.openapi.model.SNode target) {
     assertCanChange();
-
-    SReference toDelete = null;
-    if (myReferences != null) {
-      for (SReference reference : myReferences) {
-        if (!reference.getLink().equals(role)) continue;
-        toDelete = reference;
-        break;
+    final AssociationData newValue;
+    if (target == null) {
+      newValue = null; // basically, == dropReference() without extra assertCanChange
+    } else {
+      if (getModel() != null && target.getModel() != null) {
+        // 'mature' reference
+        newValue = new IndirectNodePtr(target.getModel().getReference(), target.getNodeId(), target.getName());
+      } else {
+        newValue = new DirectNode(target);
       }
     }
-    if (toDelete == null && target == null) {
-      return;
-    }
-
-    if (toDelete != null) {
-      removeReferenceInternal(toDelete);
-    }
-    SReference newValue = null;
-    if (target != null) {
-      newValue = SReference.create(role, this, target);
-      addReferenceInternal(newValue);
-    }
-
-    myOwner.fireReferenceChange(this, role, toDelete, newValue);
+    doSetAssociation(role, newValue);
   }
 
   @Override
   public void setReference(@NotNull SReferenceLink role, ResolveInfo resolveInfo) {
-    String ri = resolveInfo instanceof ResolveInfo.S ? ((ResolveInfo.S) resolveInfo).getValue() : null;
-    setReference(role, DynamicReference.createDynamicReference(role, this, null, ri));
+    if (resolveInfo instanceof ResolveInfoExt) {
+      setReference(role, ((ResolveInfoExt) resolveInfo).create(this, role));
+    } else if (resolveInfo instanceof ResolveInfo.S) {
+      String ri = ((ResolveInfo.S) resolveInfo).getValue();
+      setReference(role, DynamicReference.createDynamicReference(role, this, null, ri));
+    } else if (resolveInfo instanceof ResolveInfo.PS) {
+      ResolveInfo.PS ri = (ResolveInfo.PS) resolveInfo;
+      setReference(role, SReference.create(role, this, ri.getTargetNode(), ri.getValue()));
+    } else if (resolveInfo == null) {
+      LOG.warning("Unexpected use of ResolveInfo == null. Reference would be removed, although explicit dropReference() has to be used", new Throwable());
+      dropReference(role);
+    } else {
+      LOG.warning(String.format("Unexpected ResolveInfo kind: %s(%s)", resolveInfo, resolveInfo.getClass()), new Throwable());
+    }
   }
 
   @Override
   public void setReference(@NotNull SReferenceLink role, @NotNull SNodeReference target) {
     assertCanChange();
-
-    SReference toDelete = null;
-    if (myReferences != null) {
-      for (SReference reference : myReferences) {
-        if (reference.getLink().equals(role)) {
-          toDelete = reference;
-          break;
-        }
-      }
-    }
-
-    if (toDelete != null) {
-      removeReferenceInternal(toDelete);
-    }
-    SReference newValue = SReference.create(role, this, target, null);
-    addReferenceInternal(newValue);
-
-    myOwner.fireReferenceChange(this, role, toDelete, newValue);
+    doSetAssociation(role, new IndirectNodePtr(target.getModelReference(), target.getNodeId(), null));
   }
 
   @Override
@@ -749,44 +747,95 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
    * Bare access, no notifications nor checks
    */
   private SReference findReference(@NotNull SReferenceLink role) {
-    for (SReference reference : myReferences) {
-      if (role.equals(reference.getLink())) {
-        return reference;
+    for (int i = 0, x = myReferences.length; i < x; i+=2) {
+      final Object link = myReferences[i];
+      if (role.equals(link)) {
+        return toAPI(role, myReferences[i+1]);
       }
     }
     return null;
   }
 
+  // clear or replace an SReference
+  // package visibility for undoable actions
+  /*package*/ void doSetAssociation(/*not null*/ SReferenceLink role, /*nullable*/ AssociationData newValue) {
+    AssociationData oldValue = null;
+    int i = 1, x = myReferences.length, empty = x;
+    for (; i < x; i+=2) {
+      Object r = myReferences[i];
+      if (r == null) {
+        empty = i; // fine to take the latest empty, but if not, may add (&& empty == x) into condition
+        continue;
+      }
+      if (role.equals(myReferences[i-1])) {
+        oldValue = ((AssociationData) r); // don't assign oldValue unless matched
+        break;
+      }
+    }
+    if (i >= x && newValue == null) {
+      // none found and nothing to add/replace with. no referenceChanged event.
+      return;
+    }
+    if (i < x) {
+      // found existing, just replace
+      myOwner.performUndoableAction(new RemoveReferenceAtUndoableAction(this, role, oldValue));
+      if (newValue != null) {
+        myReferences[i] = newValue;
+        myOwner.performUndoableAction(new InsertReferenceAtUndoableAction(this, role, newValue));
+      } else {
+        // drop
+        myReferences[i-1] = null;
+        myReferences[i] = null;
+        // check if we just replaced the last existing reference with null
+        boolean allNulls = true;
+        for (int j = 1; j < x; j += 2) {
+          if (myReferences[j] != null) {
+            allNulls = false;
+            break;
+          }
+        }
+        if (allNulls) {
+          myReferences = EMPTY_OBJECT_ARRAY;
+        }
+      }
+      myOwner.fireReferenceChange(this, role, oldValue, newValue);
+      return;
+    }
+    assert i >= x && newValue != null; // in fact, with +=2, it's i > x
+    if (empty < x) {
+      // there's available slot
+      myReferences[empty-1] = role;
+      myReferences[empty] = newValue;
+    } else {
+      // no space available, storage have to grow. Allocate 2 slots (x2 Objects) right away
+      Object[] newArray = new Object[x + 4];
+      System.arraycopy(myReferences, 0, newArray, 0, x);
+      newArray[x] = role;
+      newArray[x+1] = newValue;
+      myReferences = newArray;
+    }
+    myOwner.performUndoableAction(new InsertReferenceAtUndoableAction(this, role, newValue));
+    myOwner.fireReferenceChange(this, role, null, newValue);
+  }
+
   // FIXME odd to have role parameter, while SReference.getLink gives exactly what's needed (and doesn't violate consistency)
   // to clear reference, one could use setReferenceTarget(). Alternatively, SReference shall not keep
   // the meta-object, and query its source node for role instead (as a free-floating Reference shall not answer its SReferenceLink).
+  //
+  // XXX besides, unlike setReference(role, (SNode) null), used to send out referenceChanged event even if no respective link was found.
   @Override
   public void setReference(@NotNull SReferenceLink role, org.jetbrains.mps.openapi.model.SReference toAdd) {
+    // FIXME why assert, not RuntimeException?! OTOH, as I retire uses of the method, shall I care?
+    assert toAdd == null || toAdd.getSourceNode() == this;
+    assert toAdd == null || role.equals(toAdd.getLink());
     assertCanChange();
-
-    SReference toRemove = null;
-    for (SReference r : myReferences) {
-      if (!r.getLink().equals(role)) continue;
-      toRemove = r;
-      break;
-    }
-
-    if (toRemove != null) {
-      removeReferenceInternal(toRemove);
-    }
-
-    if (toAdd != null) {
-      assert toAdd.getSourceNode() == this;
-      assert role.equals(toAdd.getLink());
-      addReferenceInternal((SReference) toAdd);
-    }
-
-    myOwner.fireReferenceChange(this, role, toRemove, toAdd);
+    doSetAssociation(role, toAdd == null ? null : ((SReference) toAdd).getData());
   }
 
   @Override
   public void dropReference(@NotNull SReferenceLink role) {
-    setReference(role, (org.jetbrains.mps.openapi.model.SReference) null);
+    assertCanChange();
+    doSetAssociation(role, null);
   }
 
   public void insertChildBefore(@NotNull final SContainmentLink role, @NotNull org.jetbrains.mps.openapi.model.SNode child,

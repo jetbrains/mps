@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,14 +17,18 @@ package jetbrains.mps.ide.editor;
 
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.DataProvider;
-import com.intellij.openapi.components.ServiceManager;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Document;
+import com.intellij.openapi.editor.colors.EditorColorsListener;
+import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.wm.IdeFocusManager;
 import com.intellij.ui.components.JBScrollPane;
+import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.JBUI;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.EditorPanelManagerImpl;
 import jetbrains.mps.nodeEditor.InspectorTool;
@@ -36,10 +40,8 @@ import jetbrains.mps.openapi.editor.EditorComponentState;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.EditorState;
 import jetbrains.mps.openapi.editor.extensions.EditorExtensionUtil;
-import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.project.Project;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -57,7 +59,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public abstract class BaseNodeEditor implements Editor {
-  private static final Logger LOG = LogManager.getLogger(BaseNodeEditor.class);
+  private static final Logger LOG = Logger.getLogger(BaseNodeEditor.class);
 
   private NodeEditorComponent myEditorComponent;
   private final JComponent myComponent = new EditorPanel();
@@ -67,18 +69,33 @@ public abstract class BaseNodeEditor implements Editor {
   private SNodeReference myCurrentlyEditedNode = null;
   protected final Map<TaskType, PrioritizedTask> myType2TaskMap = new HashMap<>();
   private boolean mySelected;
+  @Nullable
+  private MessageBusConnection myMessageBusConnection;
+
 
   public BaseNodeEditor(@NotNull Project mpsProject) {
     myProject = mpsProject;
     myEditorPanel.setLayout(new BorderLayout());
     myEditorPanel.setBorder(new EmptyBorder(JBUI.emptyInsets()));
     myComponent.add(myEditorPanel, BorderLayout.CENTER);
+    if (ApplicationManager.getApplication() != null) {
+      myMessageBusConnection = ApplicationManager.getApplication().getMessageBus().connect();
+      myMessageBusConnection.subscribe(
+          EditorColorsManager.TOPIC, (EditorColorsListener) scheme -> {
+            if (myEditorComponent != null) {
+              // XXX no idea why update comes first, and backround change next
+              myEditorComponent.update();
+              myEditorComponent.setBackground(StyleRegistry.getInstance().getEditorBackground());
+            }
+          }
+      );
+    }
     showEditor();
   }
 
   public abstract List<Document> getAllEditedDocuments();
 
-  public JComponent getComponent() {
+  public final JComponent getComponent() {
     return myComponent;
   }
 
@@ -101,7 +118,7 @@ public abstract class BaseNodeEditor implements Editor {
     return myCurrentlyEditedNode;
   }
 
-  protected void editNode(@NotNull final SNodeReference nodeToEdit, @Nullable final SNodeReference nodeToSelect) {
+  protected final void editNode(@NotNull final SNodeReference nodeToEdit, @Nullable final SNodeReference nodeToSelect) {
     assert myEditorComponent != null;
     executeInEDT(new PrioritizedTask(TaskType.EDIT_NODE, myType2TaskMap) {
       @Override
@@ -133,6 +150,10 @@ public abstract class BaseNodeEditor implements Editor {
 
   @Override
   public void dispose() {
+    if (myMessageBusConnection != null) {
+      myMessageBusConnection.disconnect();
+      myMessageBusConnection = null;
+    }
     setEditorComponent(null);
   }
 
@@ -143,7 +164,7 @@ public abstract class BaseNodeEditor implements Editor {
 
   protected abstract Object getData(@NonNls String dataId);
 
-  private class EditorPanel extends JPanel implements DataProvider {
+  private final class EditorPanel extends JPanel implements DataProvider {
     private EditorPanel() {
       setLayout(new BorderLayout());
       setBorder(new EmptyBorder(JBUI.emptyInsets()));
@@ -155,6 +176,9 @@ public abstract class BaseNodeEditor implements Editor {
       if (MPSEditorDataKeys.MPS_EDITOR.is(dataId)) {
         return BaseNodeEditor.this;
       }
+      // FIXME I believe next keys, namely MPS_PROJECT and PROJECT, have to be part of DataProvider in
+      //       MPSFileNodeEditor's component. Indeed, we've got MPSProject here, and it's not a big deal, but
+      //       OTOH EditorPanel is additional JPanel with no true value.
       if (MPSCommonDataKeys.MPS_PROJECT.is(dataId)) {
         // we need this much, LocationRule & MPSProjectRule works due to this + delegation
         return myProject;
@@ -163,28 +187,21 @@ public abstract class BaseNodeEditor implements Editor {
         // we do not need this much but why not
         return ProjectHelper.toIdeaProject(myProject);
       }
-      Object data = BaseNodeEditor.this.getData(dataId);
-      if (data != null) {
-        return data;
-      }
-      // fixme kind of strange to delegate to descendant in this framework though I am scared to remove this
-      NodeEditorComponent editorComponent = getCurrentEditorComponent();
-      return editorComponent == null ? null : editorComponent.getData(dataId);
+      // give BaseNodeEditor subclasses a chance to contribute to DataContext without
+      // need to inject another Component into hierarchy.
+      // TODO if (BaseNodeEditor.this instanceof DataProvider) cast+invoke or at least default impl for getData
+      return BaseNodeEditor.this.getData(dataId);
     }
   }
 
-  protected void showEditor() {
+  protected final void showEditor() {
     if (myReplace != null) {
       myEditorPanel.remove(myReplace);
       myReplace = null;
     }
     NodeEditorComponent editorComponent =
-        new NodeEditorComponent(myProject.getRepository(), new EditorConfigurationBuilder().editorPanelManager(new EditorPanelManagerImpl(myProject)));
-    try {
-      EditorExtensionUtil.extendUsingProject(editorComponent, myProject);
-    } catch (LinkageError le) {
-      LOG.error("Caught while trying to apply extensions to the editor component " + editorComponent, le);
-    }
+        new NodeEditorComponent(myProject.getRepository(), new EditorConfigurationBuilder().editorPanelManager(new EditorPanelManagerImpl(myProject)).notifies(true));
+    EditorExtensionUtil.extendUsingProject(editorComponent, myProject);
 
     setEditorComponent(editorComponent);
   }
@@ -248,17 +265,14 @@ public abstract class BaseNodeEditor implements Editor {
   }
 
   protected void saveState(BaseEditorState state) {
-    EditorContext editorContext = getEditorContext();
-    if (editorContext != null) {
-      state.memento = editorContext.getEditorComponentState();
-      NodeEditorComponent editorComponent = getCurrentEditorComponent();
-      if (editorComponent != null) {
-        state.isEditorFocused = editorComponent.getFocusTracker().getEffectiveFocusState();
-        EditorComponent inspector = editorComponent.getInspector();
-        if (inspector != null) {
-          state.inspectorMemento = inspector.getEditorContext().getEditorComponentState();
-          state.isInspectorFocused = !state.isEditorFocused && inspector.getFocusTracker().getEffectiveFocusState();
-        }
+    NodeEditorComponent editorComponent = getCurrentEditorComponent();
+    if (editorComponent != null) {
+      state.memento = editorComponent.captureState();
+      state.isEditorFocused = editorComponent.getFocusTracker().getEffectiveFocusState();
+      EditorComponent inspector = editorComponent.getInspector();
+      if (inspector != null) {
+        state.inspectorMemento = inspector.captureState();
+        state.isInspectorFocused = !state.isEditorFocused && inspector.getFocusTracker().getEffectiveFocusState();
       }
     }
   }
@@ -270,12 +284,11 @@ public abstract class BaseNodeEditor implements Editor {
     }
 
     final BaseEditorState s = (BaseEditorState) state;
-    final EditorContext editorContext = getEditorContext();
     final NodeEditorComponent editorComponent = getCurrentEditorComponent();
-    if (s.memento == null || editorContext == null || editorComponent == null) {
+    if (s.memento == null || editorComponent == null) {
       return;
     }
-    final IdeFocusManager focusManager = ServiceManager.getService(((MPSProject)myProject).getProject(), IdeFocusManager.class);
+    final IdeFocusManager focusManager = IdeFocusManager.findInstance();
 
     executeInEDT(new PrioritizedTask(TaskType.EDITOR_MEMENTO, myType2TaskMap) {
       @Override
@@ -283,12 +296,13 @@ public abstract class BaseNodeEditor implements Editor {
         if (editorComponent.isDisposed()) {
           return;
         }
-        editorContext.restoreEditorComponentState(s.memento);
+        editorComponent.restoreState(s.memento);
 
         editorComponent.getFocusTracker().setEffectiveFocusState(s.isEditorFocused);
         if (s.isEditorFocused && focusManager != null) {
           focusManager.requestFocus(editorComponent, true);
         }
+        editorComponent.deactivateSubstituteChooser();
       }
     });
     if (s.inspectorMemento == null) {
@@ -299,11 +313,13 @@ public abstract class BaseNodeEditor implements Editor {
       LOG.error("No inspector - memento will not be restored");
       return;
     }
-    final EditorContext inspectorEditorContext = inspectorEditorComponent.getEditorContext();
     executeInEDT(new PrioritizedTask(TaskType.INSPECTOR_MEMENTO, myType2TaskMap) {
       @Override
       public void performTask() {
-        inspectorEditorContext.restoreEditorComponentState(s.inspectorMemento);
+        if (editorComponent.isDisposed()) {
+          return;
+        }
+        inspectorEditorComponent.restoreState(s.inspectorMemento);
         inspectorEditorComponent.getFocusTracker().setEffectiveFocusState(s.isInspectorFocused);
         if (s.isInspectorFocused && focusManager != null) {
           InspectorTool inspectorTool = myProject.getComponent(InspectorTool.class);
@@ -419,6 +435,10 @@ public abstract class BaseNodeEditor implements Editor {
       if (inspectorMemento != null) {
         inspectorMemento.clearSessionState();
       }
+    }
+
+    boolean hasErrors() {
+      return memento.hasErrors();
     }
 
     @Override

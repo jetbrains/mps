@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -67,24 +67,8 @@ public class FakeReloadableModule implements ReloadableModule {
 
   @NotNull
   @Override
-  public ClassLoaderManager getCLM() {
-    return ClassLoaderManager.getInstance();
-  }
-
-  @NotNull
-  @Override
-  public MPSModuleClassLoader getClassLoader0() {
+  public MPSModuleClassLoader getClassLoader() {
     throw new UnsupportedOperationException("Not implemented");
-  }
-
-  @Override
-  public void reload() {
-  }
-
-  @NotNull
-  @Override
-  public DeploymentStatus getStatus() {
-    return DeploymentStatuses.DEPLOYED;
   }
 
   @NotNull
@@ -140,14 +124,16 @@ public class FakeReloadableModule implements ReloadableModule {
     return null;
   }
 
+  @NotNull
   @Override
   public Iterable<SModel> getModels() {
     return Collections.emptyList();
   }
 
+  @NotNull
   @Override
   public Iterable<SModuleFacet> getFacets() {
-    return null;
+    return Collections.emptyList();
   }
 
   @Nullable

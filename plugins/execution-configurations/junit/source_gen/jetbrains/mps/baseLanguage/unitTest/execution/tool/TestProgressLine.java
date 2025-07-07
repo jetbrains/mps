@@ -50,11 +50,9 @@ public class TestProgressLine extends NonOpaquePanel implements TestRunStateUpda
     if (data.getAvailableText() != null) {
       return;
     }
-    SwingUtilities.invokeLater(new Runnable() {
-      public void run() {
-        updateProgressBar(data);
-        updateLabel(data);
-      }
+    SwingUtilities.invokeLater(() -> {
+      updateProgressBar(data);
+      updateLabel(data);
     });
   }
 
@@ -100,9 +98,6 @@ public class TestProgressLine extends NonOpaquePanel implements TestRunStateUpda
       if (!(data.isFinished())) {
         return AllIcons.RunConfigurations.TestTerminated;
       } else {
-        if (completed != total) {
-          return AllIcons.RunConfigurations.TestError;
-        }
         if (failed > 0) {
           return AllIcons.RunConfigurations.TestFailed;
         }
@@ -111,6 +106,9 @@ public class TestProgressLine extends NonOpaquePanel implements TestRunStateUpda
         }
         if (ignored > 0) {
           return AllIcons.RunConfigurations.TestIgnored;
+        }
+        if (completed != total) {
+          return AllIcons.RunConfigurations.TestError;
         }
         return AllIcons.RunConfigurations.TestPassed;
       }

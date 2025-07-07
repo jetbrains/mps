@@ -8,10 +8,10 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -20,28 +20,29 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public class FilteringByNameScope extends Scope {
   private final Set<String> filteredNames;
   private final Scope scope;
+
   public FilteringByNameScope(Set<String> filteredNames, @NotNull Scope scope) {
     this.filteredNames = filteredNames;
     this.scope = scope;
   }
+
   @Override
   public Iterable<SNode> getAvailableElements(@Nullable String prefix) {
-    return Sequence.fromIterable(scope.getAvailableElements(prefix)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.INamedConcept$Kd)) || !(SetSequence.fromSet(filteredNames).contains(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL)));
-      }
-    });
+    return Sequence.fromIterable(scope.getAvailableElements(prefix)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.INamedConcept$Kd)) || !(SetSequence.fromSet(filteredNames).contains(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL))));
   }
+
   @Nullable
   @Override
   public SNode resolve(SNode contextNode, @NotNull String refText) {
     return (!(SetSequence.fromSet(filteredNames).contains(refText)) ? scope.resolve(contextNode, refText) : null);
   }
+
   @Nullable
   @Override
   public String getReferenceText(SNode contextNode, @NotNull SNode node) {
     return scope.getReferenceText(contextNode, node);
   }
+
   @Override
   public boolean contains(SNode node) {
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$Kd)) {
@@ -50,6 +51,11 @@ public class FilteringByNameScope extends Scope {
     } else {
       return scope.contains(node);
     }
+  }
+
+  @Override
+  public Collection<SNode> getAdditionalDependencies() {
+    return scope.getAdditionalDependencies();
   }
 
   private static final class CONCEPTS {

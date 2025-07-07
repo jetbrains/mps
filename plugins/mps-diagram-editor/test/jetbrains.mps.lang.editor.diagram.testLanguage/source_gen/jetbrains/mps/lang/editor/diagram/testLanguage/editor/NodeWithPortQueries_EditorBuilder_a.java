@@ -17,7 +17,6 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.HashSet;
 import jetbrains.jetpad.mapper.Mapper;
 import jetbrains.jetpad.projectional.diagram.view.DiagramNodeView;
@@ -141,16 +140,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       myPropertyCell_tny8cn_a2a.synchronize();
       myPropertyCell_tny8cn_a3a.synchronize();
       myPropertyCell_tny8cn_a4a.synchronize();
-      syncPortObjects(ListSequence.fromList(SLinkOperations.getChildren(getSNode(), LINKS.inputs$oxFv)).select(new ISelector<SNode, String>() {
-        public String select(SNode it) {
-          return SPropertyOperations.getString(it, PROPS.name$MnvL);
-        }
-      }), myInputPorts.listIterator(), new HashSet<String>(myInputPorts));
-      syncPortObjects(ListSequence.fromList(SLinkOperations.getChildren(getSNode(), LINKS.outputs$oKtu)).select(new ISelector<SNode, String>() {
-        public String select(SNode it) {
-          return SPropertyOperations.getString(it, PROPS.name$MnvL);
-        }
-      }), myOutputPorts.listIterator(), new HashSet<String>(myOutputPorts));
+      syncPortObjects(ListSequence.fromList(SLinkOperations.getChildren(getSNode(), LINKS.inputs$oxFv)).select((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL)), myInputPorts.listIterator(), new HashSet<String>(myInputPorts));
+      syncPortObjects(ListSequence.fromList(SLinkOperations.getChildren(getSNode(), LINKS.outputs$oKtu)).select((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL)), myOutputPorts.listIterator(), new HashSet<String>(myOutputPorts));
     }
     public Mapper<SNode, DiagramNodeView> createMapper() {
       return new Mapper<SNode, DiagramNodeView>(getSNode(), createDiagramNodeView()) {
@@ -221,21 +212,11 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
                 @Override
                 protected void registerSynchronizers(Mapper.SynchronizersConfiguration configuration) {
                   super.registerSynchronizers(configuration);
-                  configuration.add(Synchronizers.forProperty(getTarget().prop(MovableContentView.POSITION_X), new Runnable() {
-                    public void run() {
-                      updatePositionsFromModel(getTarget(), diagramNodeView);
-                    }
-                  }));
-                  configuration.add(Synchronizers.forProperty(getTarget().prop(MovableContentView.POSITION_Y), new Runnable() {
-                    public void run() {
-                      updatePositionsFromModel(getTarget(), diagramNodeView);
-                    }
-                  }));
-                  configuration.add(Synchronizers.forProperty(getTarget().bounds(), new WritableProperty<Rectangle>() {
-                    public void set(Rectangle bounds) {
-                      getTarget().prop(MovableContentView.POSITION_X).set(bounds.origin.x);
-                      getTarget().prop(MovableContentView.POSITION_Y).set(bounds.origin.y);
-                    }
+                  configuration.add(Synchronizers.forProperty(getTarget().prop(MovableContentView.POSITION_X), () -> updatePositionsFromModel(getTarget(), diagramNodeView)));
+                  configuration.add(Synchronizers.forProperty(getTarget().prop(MovableContentView.POSITION_Y), () -> updatePositionsFromModel(getTarget(), diagramNodeView)));
+                  configuration.add(Synchronizers.forProperty(getTarget().bounds(), (Rectangle bounds) -> {
+                    getTarget().prop(MovableContentView.POSITION_X).set(bounds.origin.x);
+                    getTarget().prop(MovableContentView.POSITION_Y).set(bounds.origin.y);
                   }));
                   myPropertyCell_tny8cn_a0a.registerSynchronizers(configuration, getTarget().prop(MovableContentView.POSITION_X));
                   myPropertyCell_tny8cn_a1a.registerSynchronizers(configuration, getTarget().prop(MovableContentView.POSITION_Y));
@@ -301,16 +282,14 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
           final BoxFigureExt contentView = (BoxFigureExt) getContentView();
           configuration.add(Synchronizers.forProperty(contentView.bounds(), getTarget().bounds));
           configuration.add(Synchronizers.forProperty(Properties.constant(Boolean.TRUE), getTarget().resizable));
-          configuration.add(Synchronizers.forProperty(getTarget().boundsDelta, new WritableProperty<Rectangle>() {
-            public void set(Rectangle delta) {
-              if (delta == null) {
-                return;
-              }
-              Vector positionDelta = delta.origin;
-              Vector sizeDelta = delta.dimension;
-              blockMapper.getTarget().move(positionDelta);
-              contentView.prop(ResizableContentView.PREFERRED_SIZE).set(contentView.prop(ResizableContentView.PREFERRED_SIZE).get().add(sizeDelta));
+          configuration.add(Synchronizers.forProperty(getTarget().boundsDelta, (Rectangle delta) -> {
+            if (delta == null) {
+              return;
             }
+            Vector positionDelta = delta.origin;
+            Vector sizeDelta = delta.dimension;
+            blockMapper.getTarget().move(positionDelta);
+            contentView.prop(ResizableContentView.PREFERRED_SIZE).set(contentView.prop(ResizableContentView.PREFERRED_SIZE).get().add(sizeDelta));
           }));
           configuration.add(Synchronizers.forObservableRole(this, myInputPorts, getTarget().inputPortDecotatorView.children(), new MapperFactory<String, PortDecoratorView>() {
             public Mapper<? extends String, ? extends PortDecoratorView> createMapper(final String id) {

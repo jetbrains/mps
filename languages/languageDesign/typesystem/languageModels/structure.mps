@@ -2,8 +2,6 @@
 <model ref="r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)">
   <persistence version="9" />
   <languages>
-    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="9" />
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
@@ -13,6 +11,7 @@
     <import index="tp3t" ref="r:00000000-0000-4000-0000-011c89590345(jetbrains.mps.lang.pattern.structure)" />
     <import index="tp25" ref="r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)" />
     <import index="f7uj" ref="r:8ffb9fde-829b-4ee3-ade6-f4eee43e66a8(jetbrains.mps.lang.typesystem.plugin)" />
+    <import index="tp4f" ref="r:00000000-0000-4000-0000-011c89590373(jetbrains.mps.baseLanguage.classifiers.structure)" />
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
@@ -28,7 +27,6 @@
       <concept id="3348158742936976480" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration" flags="ng" index="25R33">
         <property id="1421157252384165432" name="memberId" index="3tVfz5" />
         <property id="672037151186491528" name="presentation" index="1L1pqM" />
-        <reference id="899069222106091871" name="oldMember" index="2wpffI" />
       </concept>
       <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclaration" flags="ng" index="25R3W">
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
@@ -45,19 +43,6 @@
       </concept>
       <concept id="1082978164218" name="jetbrains.mps.lang.structure.structure.DataTypeDeclaration" flags="ng" index="AxPO6">
         <property id="7791109065626895363" name="datatypeId" index="3F6X1D" />
-      </concept>
-      <concept id="1082978164219" name="jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old" flags="ng" index="AxPO7">
-        <reference id="1083171729157" name="memberDataType" index="M4eZT" />
-        <child id="1083172003582" name="member" index="M5hS2" />
-      </concept>
-      <concept id="1588368162884797030" name="jetbrains.mps.lang.structure.structure.EnumMigrationInfo" flags="ng" index="2JgGob">
-        <property id="6491077959634662372" name="valueOpMigration" index="3scbB" />
-        <property id="6491077959634650670" name="nameOpMigration" index="3sfsH" />
-        <child id="6491077959632451996" name="oldEnum" index="3lCyv" />
-      </concept>
-      <concept id="1083171877298" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration_Old" flags="ig" index="M4N5e">
-        <property id="1083923523172" name="externalValue" index="1uS6qo" />
-        <property id="1083923523171" name="internalValue" index="1uS6qv" />
       </concept>
       <concept id="2992811758677295509" name="jetbrains.mps.lang.structure.structure.AttributeInfo" flags="ng" index="M6xJ_">
         <property id="7588428831955550663" name="role" index="Hh88m" />
@@ -185,7 +170,7 @@
       <property role="1iqoE4" value="${module}/icons/rule.png" />
     </node>
     <node concept="1sEMCm" id="5wIG6OxYTvO" role="bvy1s">
-      <property role="1sEMCp" value="typesystem.html" />
+      <property role="1sEMCp" value="typesystem.html#inferencerules" />
       <ref role="1fZFei" to="f7uj:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
   </node>
@@ -458,7 +443,7 @@
       <property role="1iqoE4" value="${module}/icons/subtyping.png" />
     </node>
     <node concept="1sEMCm" id="5wIG6OxYTwc" role="bvy1s">
-      <property role="1sEMCp" value="typesystem.html" />
+      <property role="1sEMCp" value="typesystem.html#subtypingrules" />
       <ref role="1fZFei" to="f7uj:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
   </node>
@@ -586,7 +571,7 @@
         <node concept="1TJgyi" id="40aP6yznmf7" role="3l_iP">
           <property role="TrG5h" value="strong" />
           <property role="IQ2nx" value="4614734314076988359" />
-          <ref role="AX2Wp" node="6HBcgFN52a$" resolve="InequalityProperty" />
+          <ref role="AX2Wp" node="3Ftr4R6BFC0" resolve="InequalityProperty" />
         </node>
       </node>
     </node>
@@ -701,7 +686,7 @@
         <node concept="1TJgyi" id="6HBcgFN5t8Q" role="3l_iP">
           <property role="TrG5h" value="strong" />
           <property role="IQ2nx" value="7739208407757214262" />
-          <ref role="AX2Wp" node="6HBcgFN52a$" resolve="InequalityProperty" />
+          <ref role="AX2Wp" node="3Ftr4R6BFC0" resolve="InequalityProperty" />
         </node>
       </node>
     </node>
@@ -791,6 +776,11 @@
     <ref role="1TJDcQ" to="tpee:fz3vP1H" resolve="Type" />
     <node concept="PrWs8" id="hfSilrW" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+    <node concept="1TJgyi" id="3qDC_E6FIdA" role="1TKVEl">
+      <property role="IQ2nx" value="3938857858802574182" />
+      <property role="TrG5h" value="pullUp" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
   </node>
   <node concept="1TIwiD" id="hgmwoz7">
@@ -912,7 +902,7 @@
       <property role="1iqoE4" value="${module}/icons/comparison.png" />
     </node>
     <node concept="1sEMCm" id="5wIG6OxYTvf" role="bvy1s">
-      <property role="1sEMCp" value="typesystem.html" />
+      <property role="1sEMCp" value="typesystem.html#comparisoninequationsandcomparisonrules" />
       <ref role="1fZFei" to="f7uj:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
   </node>
@@ -935,6 +925,13 @@
       <property role="IQ2ns" value="1195213635060" />
       <ref role="20lvS9" to="tpee:fzclF80" resolve="StatementList" />
     </node>
+    <node concept="1TJgyj" id="1KUls25Fk4a" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="methodDeclaration" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
+      <property role="IQ2ns" value="2034032467076006154" />
+      <ref role="20lvS9" to="tp4f:hyXrIf3" resolve="DefaultClassifierMethodDeclaration" />
+    </node>
     <node concept="1TJgyj" id="1y5tROjsjnW" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="overridesFun_old" />
@@ -946,6 +943,9 @@
     </node>
     <node concept="PrWs8" id="4FhjFA_0uio" role="PzmwI">
       <ref role="PrY4T" to="tpck:19gBtYEAf4C" resolve="InterfacePart" />
+    </node>
+    <node concept="PrWs8" id="1KUls25OaYv" role="PzmwI">
+      <ref role="PrY4T" to="tp4f:hyWqMFP" resolve="IClassifier" />
     </node>
   </node>
   <node concept="1TIwiD" id="hp8kY3U">
@@ -974,7 +974,7 @@
       <ref role="20lvS9" node="21kJG8H0nwI" resolve="CheckingRuleReference" />
     </node>
     <node concept="1sEMCm" id="5wIG6OxYQAk" role="bvy1s">
-      <property role="1sEMCp" value="typesystem.html" />
+      <property role="1sEMCp" value="typesystem.html#checkingrules" />
       <ref role="1fZFei" to="f7uj:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
     <node concept="1TJgyi" id="6eD3qW7n4QW" role="1TKVEl">
@@ -1010,8 +1010,14 @@
       <property role="1iqoE4" value="${module}/icons/replacement.png" />
     </node>
     <node concept="1sEMCm" id="5wIG6OxYTvt" role="bvy1s">
-      <property role="1sEMCp" value="typesystem.html" />
+      <property role="1sEMCp" value="typesystem.html#replacementrules" />
       <ref role="1fZFei" to="f7uj:46nPloez0vX" resolve="HelpCenterDocUrl" />
+    </node>
+    <node concept="1TJgyj" id="5NQsOaEkow4" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="overridesFun" />
+      <property role="IQ2ns" value="6698668225922697220" />
+      <ref role="20lvS9" node="1y5tROjsd_V" resolve="OverridesConceptFunction" />
     </node>
   </node>
   <node concept="1TIwiD" id="hv622I5">
@@ -1161,7 +1167,7 @@
         <node concept="1TJgyi" id="hCOb7dq" role="3l_iP">
           <property role="TrG5h" value="inequationPriority" />
           <property role="IQ2nx" value="1212056105818" />
-          <ref role="AX2Wp" node="hCObp5h" resolve="InequationPriority" />
+          <ref role="AX2Wp" node="3Ftr4R6BFAD" resolve="InequationPriority" />
         </node>
       </node>
     </node>
@@ -1178,7 +1184,7 @@
         <node concept="1TJgyi" id="6HBcgFN52aD" role="3l_iP">
           <property role="TrG5h" value="strong" />
           <property role="IQ2nx" value="7739208407757103785" />
-          <ref role="AX2Wp" node="6HBcgFN52a$" resolve="InequalityProperty" />
+          <ref role="AX2Wp" node="3Ftr4R6BFC0" resolve="InequalityProperty" />
         </node>
       </node>
     </node>
@@ -1190,7 +1196,7 @@
         <node concept="1TJgyi" id="6HBcgFN52aE" role="3l_iP">
           <property role="TrG5h" value="orientation" />
           <property role="IQ2nx" value="7739208407757103786" />
-          <ref role="AX2Wp" node="6HBcgFN52a$" resolve="InequalityProperty" />
+          <ref role="AX2Wp" node="3Ftr4R6BFC0" resolve="InequalityProperty" />
         </node>
       </node>
     </node>
@@ -1244,8 +1250,18 @@
       <property role="1iqoE4" value="${module}/icons/quickFix.png" />
     </node>
     <node concept="1sEMCm" id="5wIG6OxYTuV" role="bvy1s">
-      <property role="1sEMCp" value="typesystem.html" />
+      <property role="1sEMCp" value="typesystem.html#quick-fixes" />
       <ref role="1fZFei" to="f7uj:46nPloez0vX" resolve="HelpCenterDocUrl" />
+    </node>
+    <node concept="PrWs8" id="3AueY_NAKU8" role="PzmwI">
+      <ref role="PrY4T" to="tp4f:hyWqMFP" resolve="IClassifier" />
+    </node>
+    <node concept="1TJgyj" id="hz2lrYP" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="methodDeclaration" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
+      <property role="IQ2ns" value="1205851242421" />
+      <ref role="20lvS9" to="tp4f:hyXrIf3" resolve="DefaultClassifierMethodDeclaration" />
     </node>
   </node>
   <node concept="1TIwiD" id="hGQ5ZVt">
@@ -1524,10 +1540,6 @@
     <node concept="1QGGSu" id="4Q8sAA5iJQ5" role="rwd14">
       <property role="1iqoE4" value="${module}/icons/variableReplacement.png" />
     </node>
-    <node concept="1sEMCm" id="5wIG6OxYTwf" role="bvy1s">
-      <property role="1sEMCp" value="typesystem.html" />
-      <ref role="1fZFei" to="f7uj:46nPloez0vX" resolve="HelpCenterDocUrl" />
-    </node>
   </node>
   <node concept="1TIwiD" id="hS7z$4e">
     <property role="R5$K7" value="false" />
@@ -1697,7 +1709,7 @@
       <property role="1iqoE4" value="${module}/icons/overloadedRules.png" />
     </node>
     <node concept="1sEMCm" id="5wIG6OxYTv_" role="bvy1s">
-      <property role="1sEMCp" value="typesystem.html" />
+      <property role="1sEMCp" value="typesystem.html#overloadedoperators" />
       <ref role="1fZFei" to="f7uj:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
   </node>
@@ -2068,7 +2080,7 @@
       <property role="1iqoE4" value="${module}/icons/substitute.png" />
     </node>
     <node concept="1sEMCm" id="5wIG6OxYTvM" role="bvy1s">
-      <property role="1sEMCp" value="typesystem.html" />
+      <property role="1sEMCp" value="typesystem.html#advancedfeaturesoftypesystemlanguage" />
       <ref role="1fZFei" to="f7uj:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
   </node>
@@ -2102,45 +2114,20 @@
     <property role="3GE5qa" value="definition.statement.inequality" />
     <property role="3F6X1D" value="7739208407757103780" />
     <ref role="1H5jkz" node="3Ftr4R6BFC2" resolve="as_is" />
-    <node concept="2JgGob" id="3Ftr4R6BFC1" role="lGtFl">
-      <property role="3scbB" value="5CkWgdpp3fb/int_ordinal" />
-      <property role="3sfsH" value="5CkWgdpp0p2/by_presentation" />
-      <node concept="AxPO7" id="6HBcgFN52a$" role="3lCyv">
-        <property role="TrG5h" value="InequalityProperty" />
-        <property role="3GE5qa" value="definition.statement.inequality" />
-        <property role="3F6X1D" value="7739208407757103780" />
-        <ref role="M4eZT" to="tpck:fKAQMTA" resolve="integer" />
-        <node concept="M4N5e" id="6HBcgFN52a_" role="M5hS2">
-          <property role="1uS6qv" value="0" />
-          <property role="1uS6qo" value="as is" />
-        </node>
-        <node concept="M4N5e" id="6HBcgFN52aA" role="M5hS2">
-          <property role="1uS6qv" value="1" />
-          <property role="1uS6qo" value="same as inequality" />
-        </node>
-        <node concept="M4N5e" id="6HBcgFN52aB" role="M5hS2">
-          <property role="1uS6qv" value="2" />
-          <property role="1uS6qo" value="opposite to inequality" />
-        </node>
-      </node>
-    </node>
     <node concept="25R33" id="3Ftr4R6BFC2" role="25R1y">
       <property role="TrG5h" value="as_is" />
       <property role="1L1pqM" value="as is" />
       <property role="3tVfz5" value="7739208407757103781" />
-      <ref role="2wpffI" node="6HBcgFN52a_" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFC3" role="25R1y">
       <property role="TrG5h" value="same_as_inequality" />
       <property role="1L1pqM" value="same as inequality" />
       <property role="3tVfz5" value="7739208407757103782" />
-      <ref role="2wpffI" node="6HBcgFN52aA" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFC4" role="25R1y">
       <property role="TrG5h" value="opposite_to_inequality" />
       <property role="1L1pqM" value="opposite to inequality" />
       <property role="3tVfz5" value="7739208407757103783" />
-      <ref role="2wpffI" node="6HBcgFN52aB" />
     </node>
   </node>
   <node concept="25R3W" id="3Ftr4R6BFAD">
@@ -2148,64 +2135,29 @@
     <property role="3GE5qa" value="definition.statement.inequality" />
     <property role="3F6X1D" value="1212056179025" />
     <ref role="1H5jkz" node="3Ftr4R6BFAF" resolve="_0" />
-    <node concept="2JgGob" id="3Ftr4R6BFAE" role="lGtFl">
-      <property role="3scbB" value="5CkWgdpp3fo/by_custom_methods" />
-      <property role="3sfsH" value="5CkWgdpp0p2/by_presentation" />
-      <node concept="AxPO7" id="hCObp5h" role="3lCyv">
-        <property role="TrG5h" value="InequationPriority" />
-        <property role="3GE5qa" value="definition.statement.inequality" />
-        <property role="3F6X1D" value="1212056179025" />
-        <ref role="M4eZT" to="tpck:fKAQMTA" resolve="integer" />
-        <node concept="M4N5e" id="hCObp5i" role="M5hS2">
-          <property role="1uS6qv" value="0" />
-          <property role="1uS6qo" value="0" />
-        </node>
-        <node concept="M4N5e" id="hCObrQz" role="M5hS2">
-          <property role="1uS6qv" value="1" />
-          <property role="1uS6qo" value="1" />
-        </node>
-        <node concept="M4N5e" id="hCObsgs" role="M5hS2">
-          <property role="1uS6qv" value="2" />
-          <property role="1uS6qo" value="2" />
-        </node>
-        <node concept="M4N5e" id="hCObvjx" role="M5hS2">
-          <property role="1uS6qv" value="3" />
-          <property role="1uS6qo" value="3" />
-        </node>
-        <node concept="M4N5e" id="hCObwW2" role="M5hS2">
-          <property role="1uS6qv" value="500" />
-          <property role="1uS6qo" value="inf" />
-        </node>
-      </node>
-    </node>
     <node concept="25R33" id="3Ftr4R6BFAF" role="25R1y">
       <property role="TrG5h" value="_0" />
       <property role="1L1pqM" value="0" />
       <property role="3tVfz5" value="1212056179026" />
-      <ref role="2wpffI" node="hCObp5i" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFAG" role="25R1y">
       <property role="TrG5h" value="_1" />
       <property role="1L1pqM" value="1" />
       <property role="3tVfz5" value="1212056190371" />
-      <ref role="2wpffI" node="hCObrQz" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFAH" role="25R1y">
       <property role="TrG5h" value="_2" />
       <property role="1L1pqM" value="2" />
       <property role="3tVfz5" value="1212056192028" />
-      <ref role="2wpffI" node="hCObsgs" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFAI" role="25R1y">
       <property role="TrG5h" value="_3" />
       <property role="1L1pqM" value="3" />
       <property role="3tVfz5" value="1212056204513" />
-      <ref role="2wpffI" node="hCObvjx" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFAJ" role="25R1y">
       <property role="TrG5h" value="inf" />
       <property role="3tVfz5" value="1212056211202" />
-      <ref role="2wpffI" node="hCObwW2" />
     </node>
   </node>
   <node concept="1TIwiD" id="21kJG8H0nwI">

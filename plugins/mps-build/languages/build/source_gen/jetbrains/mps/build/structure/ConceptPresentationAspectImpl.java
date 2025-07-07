@@ -994,8 +994,9 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_BuildVariableMacroInitWithString;
       case LanguageConceptSwitch.BuildVariableMacroInitWithValueFromFile:
         if (props_BuildVariableMacroInitWithValueFromFile == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("load from file");
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x365f30e12d43ad7L);
+          cpb.deprecateProperty(0x365f30e12d43adaL, "unused");
+          cpb.rawPresentation("load property file");
           props_BuildVariableMacroInitWithValueFromFile = cpb.create();
         }
         return props_BuildVariableMacroInitWithValueFromFile;

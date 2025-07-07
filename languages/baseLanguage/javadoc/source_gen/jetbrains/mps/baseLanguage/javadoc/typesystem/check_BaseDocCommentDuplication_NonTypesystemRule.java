@@ -9,7 +9,6 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -22,11 +21,7 @@ public class check_BaseDocCommentDuplication_NonTypesystemRule extends AbstractN
   public check_BaseDocCommentDuplication_NonTypesystemRule() {
   }
   public void applyRule(final SNode baseDocComment, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (ListSequence.fromList(SNodeOperations.getAllSiblings(baseDocComment, false)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(Objects.equals(it, baseDocComment)) && SNodeOperations.isInstanceOf(it, CONCEPTS.BaseDocComment$bU);
-      }
-    })) {
+    if (ListSequence.fromList(SNodeOperations.getAllSiblings(baseDocComment, false)).any((it) -> !(Objects.equals(it, baseDocComment)) && SNodeOperations.isInstanceOf(it, CONCEPTS.BaseDocComment$bU))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(baseDocComment, "Duplicate comment", "r:65bec5f7-cc7d-4b90-b2b7-cc6bad1763aa(jetbrains.mps.baseLanguage.javadoc.typesystem)", "174203568773667750", null, errorTarget);

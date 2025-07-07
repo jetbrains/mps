@@ -12,7 +12,6 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ExtractMethodFactory;
 import org.jetbrains.annotations.NotNull;
@@ -40,11 +39,7 @@ public class ExtractMethod_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return !(ReadOnlyUtil.isCellsReadOnlyInEditor(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")), ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes"))).select(new ISelector<SNode, EditorCell>() {
-      public EditorCell select(SNode it) {
-        return (EditorCell) ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).findNodeCell(it);
-      }
-    }))) && ExtractMethodFactory.isRefactoringAvailable(((List<SNode>) MapSequence.fromMap(_params).get("nodes")));
+    return !(ReadOnlyUtil.isCellsReadOnlyInEditor(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")), ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes"))).select((it) -> (EditorCell) ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).findNodeCell(it)))) && ExtractMethodFactory.isRefactoringAvailable(((List<SNode>) MapSequence.fromMap(_params).get("nodes")));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -101,12 +96,10 @@ public class ExtractMethod_Action extends BaseAction {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("refactoring.extractMethod");
     final Wrappers._T<ExtractMethodRefactoringParameters> params = new Wrappers._T<ExtractMethodRefactoringParameters>();
     final Wrappers._T<ExtractMethodRefactoring> refactoring = new Wrappers._T<ExtractMethodRefactoring>();
-    ((EditorContext) MapSequence.fromMap(_params).get("context")).getRepository().getModelAccess().runWriteAction(new Runnable() {
-      public void run() {
-        params.value = ExtractMethodFactory.createParameters(((List<SNode>) MapSequence.fromMap(_params).get("nodes")));
-        refactoring.value = ExtractMethodFactory.createRefactoring(params.value);
-        params.value.setReturnType(refactoring.value.getMethodType());
-      }
+    ((EditorContext) MapSequence.fromMap(_params).get("context")).getRepository().getModelAccess().runWriteAction(() -> {
+      params.value = ExtractMethodFactory.createParameters(((List<SNode>) MapSequence.fromMap(_params).get("nodes")));
+      refactoring.value = ExtractMethodFactory.createRefactoring(params.value);
+      params.value.setReturnType(refactoring.value.getMethodType());
     });
     ExtractMethodDialog dialog = new ExtractMethodDialog(((MPSProject) MapSequence.fromMap(_params).get("project")), ((EditorContext) MapSequence.fromMap(_params).get("context")), params.value, refactoring.value);
     dialog.show();

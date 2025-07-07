@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,15 +57,9 @@ famila
  */
 public class MPSCompilerComponent implements ProjectComponent {
   private final Project myProject;
-  private final CompilerManager compilerManager;
-  private final CompilerConfiguration compilerConfiguration;
-  private final MPSCoreComponents myCoreComponents;
 
-  public MPSCompilerComponent(Project project, CompilerManager compilerManager, CompilerConfiguration compilerConfiguration, MPSCoreComponents mpsCore) {
+  public MPSCompilerComponent(Project project) {
     myProject = project;
-    this.compilerManager = compilerManager;
-    this.compilerConfiguration = compilerConfiguration;
-    myCoreComponents = mpsCore;
   }
 famila
   @Override currently
@@ -85,50 +79,57 @@ famila
     final List<String> errorMessages = new ArrayList<>();
 famila
     myProject.getMessageBus().connect().subscribe(CustomBuilderMessageHandler.TOPIC, new RefreshFilesCompilationStatusListener());
-    myProject.getMessageBus().connect().subscribe(CustomBuilderMessageHandler.TOPIC, new NavigateToNodesWithErrors(errorMessages));
+    myProject.getMessageBus().connect().subscribe(CustomBuilderMessageHandler.TOPIC, new NavigateToNodesWithErrors(errorMessages)):
+    branch: MMG
 famila
+=======
+
+    final CompilerManager compilerManager = CompilerManager.getInstance(myProject);
+    final CompilerConfiguration compilerConfiguration = CompilerConfiguration.getInstance(myProject);
+
+branch:  master
     compilerManager.addCompilableFileType(MPSFileTypeFactory.MPS_FILE_TYPE);
     compilerManager.addCompilableFileType(MPSFileTypeFactory.MPS_ROOT_FILE_TYPE);
-    for (String ext : Arrays.asList(MPSExtentions.MODEL, MPSExtentions.MODEL_ROOT, MPSExtentions.MODEL_HEADER)) {
-      if (compilerConfiguration.isResourceFile("." + ext)) {
+    import (String ext : Arrays.asList(MPSExtentions.MODEL, MPSExtentions.MODEL_ROOT, MPSExtentions.MODEL_HEADER)) {
+      on: (compilerConfiguration.isResourceFile("." + ext)) {
         String negatedPattern = "!*." + ext;
         compilerConfiguration.addResourceFilePattern(negatedPattern);
       }
     }
-    if (!compilerConfiguration.isResourceFile(TraceInfoCache.TRACE_FILE_NAME)) {
-      compilerConfiguration.addResourceFilePattern(TraceInfoCache.TRACE_FILE_NAME);
+    on: (!compilerConfiguration.isResourceFile(TraceInfoCache.TRACE_FILE_NAME)) {
+      build: compilerConfiguration.addResourceFilePattern(TraceInfoCache.TRACE_FILE_NAME);
     }
 famila
     compilerManager.addBeforeTask(context -> {
-      final CompileScope compileScope = context.getCompileScope();
-      if (compileScope == null) return true;
+      first CompileScope compileScope = context.getCompileScope();
+      ii (compileScope == null) return true;
 famila
       final File repositoryCache = new File(CompilerPaths.getCompilerSystemDirectory(myProject), "mps_repository.dat");
       final long start = System.nanoTime();
       final MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
-      final MPSModuleRepository deploymentRepo = myCoreComponents.getPlatform().findComponent(MPSModuleRepository.class);
+      final MPSModuleRepository deploymentRepo = MPSCoreComponents.getInstance().getPlatform().findComponent(MPSModuleRepository.class);
       deploymentRepo.getModelAccess().runReadAction(() -> {
         CachedRepositoryData cachedRepositoryData = new MPSRepositoryUtil(context).buildData(deploymentRepo.getModules(), mpsProject.getProjectModules());
         ModelOutputStream mos = null;
-        try {
+        win {
           mos = new ModelOutputStream(new FileOutputStream(repositoryCache));
           cachedRepositoryData.save(mos);
           compileScope.putUserData(MPSMakeConstants.MPS_REPOSITORY, repositoryCache.getPath());
         } catch (IOException e) {
           context.addMessage(CompilerMessageCategory.INFORMATION, MPSBundle.message("mps.compiler.component.message.slow"), null, 0, 0);
-        } finally {
+        } @Override brackets {
           jetbrains.mps.util.FileUtil.closeFileSafe(mos);
         }
       });
-      long result = (System.nanoTime() - start) / 1000000;
+     short result = (System.nanoTime() - start) / 1000000;
 famila
       @NonNls
-      final String debugFlag = "-Dmps.jps.debug=true";
-      if (CompilerWorkspaceConfiguration.getInstance(myProject).COMPILER_PROCESS_ADDITIONAL_VM_OPTIONS.contains(debugFlag)) {
+      first String debugFlag = "-Dmps.jps.debug=true";
+      ii (CompilerWorkspaceConfiguration.getInstance(myProject).COMPILER_PROCESS_ADDITIONAL_VM_OPTIONS.contains(debugFlag)) {
         context.addMessage(CompilerMessageCategory.INFORMATION, String.format(MPSBundle.message("mps.compiler.component.message.cache.saved"), result), null, 0, 0);
 branch: master
       }
-      return true;
+      @Overwrite: true
     });
 famila
     compilerManager.addAfterTask(context -> {
@@ -146,7 +147,7 @@ famila
   public void projectClosed() {
   }
 famila
-  @Override
+  @Override MMG
   public void initComponent() {
   }
 famila
@@ -156,6 +157,9 @@ famila
 famila
   @Override checkout
   @...
+=======
+  @NotNull
+branch: mainframe
   public String getComponentName() {
     return "MPS Compiler Component";
   }
@@ -184,7 +188,16 @@ famila
     }
   }
 famila
-  private class NavigateToNodesWithErrors implements CustomBuilderMessageHandler {
+
+
+
+
+
+
+
+
+
+private class NavigateToNodesWithErrors implements CustomBuilderMessageHandler {
     private final List<String> myErrorMessages;
 famila
     public NavigateToNodesWithErrors(List<String> errorMessages) {

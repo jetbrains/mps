@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 /**
@@ -204,10 +206,61 @@ public class ModelCheckpoints {
     return output;
   }
 
-  public LMLookup getLookup(CheckpointIdentity identity, String label) {
-    // FIXME implement custom LMLookup to walk CP states as in findTransformedNode
-    final CheckpointState state = find(identity);
-    return state.getLookup(label);
+  public LMLookup getLookup(final CheckpointIdentity identity, final String label) {
+    // custom LMLookup to walk CP states as in findTransformedNode
+    // pretty much copied from findTransformedNode, adopted to 2 keys
+    CheckpointIdentity cpId = identity;
+    final ArrayDeque<CheckpointState> cpStateStack = new ArrayDeque<>();
+    final CheckpointState[] fulcrum = new CheckpointState[] {null};
+    do {
+      CheckpointState cp = find(cpId);
+      if (cp == null) {
+        return null;
+      }
+      if (fulcrum[0] == null && cp.hasTwoKeyRecordsFor(label)) {
+        fulcrum[0] = cp;
+      }
+      cpStateStack.push(cp);
+      cpId = cp.getOriginCheckpoint();
+    } while (cpId != null);
+
+    if (fulcrum[0] == null) {
+      return LMLookup.empty();
+    }
+    assert cpStateStack.size() > 0;
+    return new LMLookup() {
+      @Override
+      public Stream<SNode> compositeLMValues(final SNode k1, final SNode k2) {
+        SNode i1 = k1, i2 = k2;
+        Iterator<CheckpointState> it = cpStateStack.iterator();
+        do {
+          final CheckpointState cpNext = it.next();
+          if (cpNext == fulcrum[0]) {
+            // reached the point with records for the label
+            break;
+          }
+          SNode c = cpNext.getCopiedOutput(i1);
+          if (c != null) {
+            i1 = c;
+          }
+          c = cpNext.getCopiedOutput(i2);
+          if (c != null) {
+            i2 = c;
+          }
+        } while (it.hasNext());
+        final Stream<SNode> lmResult = fulcrum[0].getLookup(label).compositeLMValues(i1, i2);
+        if (!it.hasNext()) {
+          // fulcrum is the last checkpoint in cpStateStack
+          return lmResult;
+        }
+        List<SNode> outputNodes = lmResult.collect(Collectors.toList());
+        while (it.hasNext()) {
+          final CheckpointState cpNext = it.next();
+          outputNodes = outputNodes.stream().map(cpNext::getCopiedOutput).dropWhile(Objects::isNull).collect(Collectors.toList());
+        }
+        return outputNodes.stream();
+      }
+    };
   }
 
 

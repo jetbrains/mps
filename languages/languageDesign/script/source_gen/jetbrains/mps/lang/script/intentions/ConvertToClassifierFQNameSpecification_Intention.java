@@ -25,21 +25,21 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public final class ConvertToClassifierFQNameSpecification_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ConvertToClassifierFQNameSpecification_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:b58ac159-1e62-40c6-8c0d-e9511a9824de(jetbrains.mps.lang.script.intentions)", "5434557751114211965"));
   }
+
   @Override
   public String getPresentation() {
     return "ConvertToClassifierFQNameSpecification";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -49,10 +49,12 @@ public final class ConvertToClassifierFQNameSpecification_Intention extends Abst
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Convert Direct Classifier reference to hardcoded FQName specification";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode classifierSpecification = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.FQNameClassifierSpecification$zs);
@@ -61,10 +63,19 @@ public final class ConvertToClassifierFQNameSpecification_Intention extends Abst
       SPropertyOperations.assign(classifierSpecification, PROPS.snodeId$ECu6, SLinkOperations.getTarget(node, LINKS.classifier$$MQn).getNodeId().toString());
       SNodeOperations.deleteNode(node);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ConvertToClassifierFQNameSpecification_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

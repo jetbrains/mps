@@ -54,7 +54,7 @@ public class Mapping_mc_property_operations extends MapConfigBase implements Tem
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_1_0(new SourceSubstituteMacroNodeContext(context, callMacro_1xpg9b_b0a0a2a1e));
+      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_1_0(new SourceSubstituteMacroNodeContext(context, callMacro));
       TemplateContext context1 = context;
       context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
@@ -130,7 +130,7 @@ public class Mapping_mc_property_operations extends MapConfigBase implements Tem
 
 
   }
-  private static final SNodePointer callMacro_1xpg9b_b0a0a2a1e = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1189519421088913806");
+  private static final SNodePointer callMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1189519421088913806");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept SPropertyAccess$d9 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, "jetbrains.mps.lang.smodel.structure.SPropertyAccess");

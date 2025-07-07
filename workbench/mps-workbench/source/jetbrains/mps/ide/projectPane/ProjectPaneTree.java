@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,10 +27,10 @@ import com.intellij.openapi.ui.popup.Balloon;
 import com.intellij.openapi.ui.popup.Balloon.Position;
 import com.intellij.openapi.ui.popup.BalloonBuilder;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
-import com.intellij.ui.HintHint;
 import com.intellij.ui.awt.RelativePoint;
 import com.intellij.util.ArrayUtil;
 import com.intellij.util.messages.MessageBusConnection;
+import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.projectPane.logicalview.ProjectTree;
 import jetbrains.mps.ide.projectPane.logicalview.highlighting.ProjectPaneTreeHighlighter;
@@ -38,6 +38,7 @@ import jetbrains.mps.ide.ui.smodel.ConceptTreeNode;
 import jetbrains.mps.ide.ui.smodel.PropertiesTreeNode;
 import jetbrains.mps.ide.ui.smodel.ReferencesTreeNode;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
+import jetbrains.mps.ide.ui.tree.MPSTreeNodeEx;
 import jetbrains.mps.ide.ui.tree.TreeErrorMessage;
 import jetbrains.mps.ide.ui.tree.module.ProjectModuleTreeNode;
 import jetbrains.mps.ide.ui.tree.module.SModelsSubtree;
@@ -248,17 +249,16 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
     }
     sb.append("</html>");
 
-    // using awtTooltip just because I found similar code elsewhere in MPS, no idea what it means
-    final HintHint hintHint = new HintHint(e).setAwtTooltip(true).setForcePopup(true);
-//    final JEditorPane content = IdeTooltipManager.initPane(sb.toString(), hintHint, null);
     final JLabel content = new JLabel(sb.toString());
+    content.setForeground(UIUtil.getToolTipForeground());
     // XXX perhaps, shall use JBPopupFactory.createHtmlTextBalloonBuilder()
     // FWIW, there's also JBPopupFactory.createComponentPopupBuilder, used in IDEA's HelpTooltip.
     //       I don't know what's difference between the two.
     final BalloonBuilder bb = JBPopupFactory.getInstance().createBalloonBuilder(content);
     bb.setDisposable(this);
     // BalloonPopupBuilderImpl cons set default fill color, have to override even though content has proper background color
-    bb.setFadeoutTime(15000).setFillColor(hintHint.getTextBackground());
+    bb.setFadeoutTime(15000).setFillColor(UIUtil.getToolTipBackground());
+
     final Balloon b = bb.setHideOnClickOutside(true).setShowCallout(true).setHideOnKeyOutside(true).createBalloon();
     b.show(new RelativePoint(e), Position.above);
   }
@@ -308,6 +308,11 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
         treeNode.add(treeNode.createChildTreeNode(child));
       }
     }
+  }
+
+  @Override
+  public boolean isShowMembers() {
+    return myProjectPane.showNodeStructure();
   }
 
   @Override
@@ -407,8 +412,10 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
       final List<Pair<SNodeReference, String>> result = new ArrayList<>();
 
       getProject().getModelAccess().runReadAction(() -> {
-        for (SNode node : myProjectPane.getSelectedSNodes()) {
-          result.add(new Pair<>(new jetbrains.mps.smodel.SNodePointer(node), ""));
+        for (MPSTreeNodeEx node : myProjectPane.getSelectedTreeNodes(MPSTreeNodeEx.class)) {
+          if (node.getNodePointer() != null) {
+            result.add(new Pair<>(node.getNodePointer(), ""));
+          }
         }
         SModel contextDescriptor = myProjectPane.getContextModel();
         if (contextDescriptor != null) {
@@ -438,7 +445,7 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
                 basePack.append('.');
               }
               basePack.append(secondPart);
-              result.add(new Pair<>(new jetbrains.mps.smodel.SNodePointer(node), basePack.toString()));
+              result.add(new Pair<>(node.getReference(), basePack.toString()));
             }
           }
         }

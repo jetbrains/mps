@@ -27,6 +27,7 @@ public class GoToBreakpointSourceAction_Action extends BaseAction {
     super("Go To", "Go To Source", ICON);
     this.setIsAlwaysVisible(true);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,17 +28,14 @@ import jetbrains.mps.ide.editor.NodeEditor;
 import jetbrains.mps.ide.editor.tabs.TabbedEditor;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.tools.BaseTool;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.highlighter.EditorsHelper;
 import jetbrains.mps.plugins.BasePluginManager;
 import jetbrains.mps.plugins.PluginContributor;
-import jetbrains.mps.plugins.PluginLoaderRegistry;
 import jetbrains.mps.plugins.prefs.BaseProjectPrefsComponent;
 import jetbrains.mps.plugins.projectplugins.BaseProjectPlugin.PluginState;
 import jetbrains.mps.plugins.projectplugins.ProjectPluginManager.PluginsState;
 import jetbrains.mps.plugins.relations.RelationDescriptor;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -59,18 +56,19 @@ import java.util.Map;
     storages = @Storage(StoragePathMacros.WORKSPACE_FILE)
 )
 public class ProjectPluginManager extends BasePluginManager<BaseProjectPlugin> implements ProjectComponent, PersistentStateComponent<PluginsState> {
-  private static final Logger LOG = LogManager.getLogger(ProjectPluginManager.class);
+  private static final Logger LOG = Logger.getLogger(ProjectPluginManager.class);
 
   private PluginsState myState = new PluginsState();
   private final Project myProject;
   private final jetbrains.mps.project.Project myMpsProject;
 
+  // FIXME in 2023.3, we changed tool<> template to use this method instead of project.getComponent(). In few releases from 23.3
+  //       can replace ProjectComponent with project service
   public static ProjectPluginManager getInstance(Project ideaProject) {
     return ideaProject.getComponent(ProjectPluginManager.class);
   }
 
-  public ProjectPluginManager(@NotNull Project project, PluginLoaderRegistry pluginLoaderRegistry) {
-    super(pluginLoaderRegistry);
+  public ProjectPluginManager(@NotNull Project project) {
     myProject = project;
     myMpsProject = ProjectHelper.fromIdeaProject(project);
   }
@@ -195,23 +193,6 @@ public class ProjectPluginManager extends BasePluginManager<BaseProjectPlugin> i
     return myMpsProject.isDisposed();
   }
 
-  //----------------COMPONENT STUFF---------------------
-
-  @Override
-  @NonNls
-  @NotNull
-  public String getComponentName() {
-    return ProjectPluginManager.class.getName();
-  }
-
-  @Override
-  public void initComponent() {
-  }
-
-  @Override
-  public void disposeComponent() {
-  }
-
   //----------------STATE STUFF------------------------
 
   @Override
@@ -229,7 +210,14 @@ public class ProjectPluginManager extends BasePluginManager<BaseProjectPlugin> i
 //    myState.pluginsState.clear();
     for (BaseProjectPlugin plugin : plugins) {
       PluginState state = plugin.getState();
-      if (state != null) {
+      // XXX can make BaseProjectPlugin.getState() return null if there's nothing to store,
+      //     however, null return value sort of PersistentStateComponent.getState() has special
+      //     meaning (use previous). Although it's just this PPM that asks getState() and
+      //     we could establish own contract, I decided not to - well, unless we replace
+      //     IDEA's API with own (identical), where we can have this contract explicit.
+      //     That's why here's a !myComponentsState.isEmpty check, not to write blank xml elements
+      //     into workspace.xml for each MPS Project Plugin.
+      if (state != null && !state.myComponentsState.isEmpty()) {
         myState.pluginsState.put(plugin.getClass().getName(), state);
       } else {
         myState.pluginsState.remove(plugin.getClass().getName());

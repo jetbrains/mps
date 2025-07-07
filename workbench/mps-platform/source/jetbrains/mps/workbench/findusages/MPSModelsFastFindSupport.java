@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,19 +16,22 @@
 package jetbrains.mps.workbench.findusages;
 
 import com.intellij.openapi.Disposable;
+import com.intellij.openapi.application.AccessToken;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.IndexNotReadyException;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.startup.StartupActivity;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.util.SlowOperations;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.findUsages.InstanceLookup;
 import jetbrains.mps.findUsages.ModelImportLookup;
 import jetbrains.mps.findUsages.NodeUsageLookup;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.ide.vfs.FileSystemBridge;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.FilePerRootDataSource;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.progress.EmptyProgressMonitor;
@@ -38,10 +41,10 @@ import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.containers.ManyToManyMap;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.workbench.ProjectModelFilter;
 import jetbrains.mps.workbench.findusages.UsageEntry.ConceptInstance;
 import jetbrains.mps.workbench.findusages.UsageEntry.ModelUse;
 import jetbrains.mps.workbench.findusages.UsageEntry.NodeUse;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -181,6 +184,7 @@ public class MPSModelsFastFindSupport implements FindUsagesParticipant, Disposab
     // get all files in scope
     final ManyToManyMap<SModel, VirtualFile> scopeFiles = new ManyToManyMap<>();
     final ArrayList<SModel> models2consume = new ArrayList<>(models.size());
+    final FileSystemBridge fsBridge = myModelFilter.project().getFileSystem();
     for (final SModel sm : models) {
       if (sm instanceof EditableSModel && ((EditableSModel) sm).isChanged()) {
         continue;
@@ -212,15 +216,15 @@ public class MPSModelsFastFindSupport implements FindUsagesParticipant, Disposab
           break;
         }
 
-        // FIXME use of getOrCreateVirtualFile() leads to VF creation for models that reside in project libraries
+        // FIXME use of VFU.getOrCreateVirtualFile() or fsBridge.asVirtualFile may lead to VF creation for models that reside in project libraries
         //       e.g. deployed modules. One have to be careful to make sure these files get indexed (i.e. covered
         //       by indexable roots, see MPSIndexableSetContributor & IndexableRootCalculator), otherwise we may
         //       mark model as 'consumed' here while it wasn't indexed at all.
         // FIXME Perhaps, there's an API to find out whether VF is part of index, so that we don't consume its model here
         //       unless it is in the index.
-        VirtualFile vf = VirtualFileUtils.getOrCreateVirtualFile(modelFile);
+        VirtualFile vf = fsBridge.asVirtualFile(modelFile);
         if (vf == null) {
-          LogManager.getLogger(MPSModelsFastFindSupport.class).warn(
+          Logger.getLogger(MPSModelsFastFindSupport.class).warning(
               String.format("Model %s: virtual file not found for model file. Model file: %s", sm.getName(), modelFile.getPath()));
           continue;
         }
@@ -243,7 +247,7 @@ public class MPSModelsFastFindSupport implements FindUsagesParticipant, Disposab
 
       Collection<VirtualFile> matchingFiles;
 
-      try {
+      try (AccessToken unused = SlowOperations.allowSlowOperations("mps.find-usage")) {
         matchingFiles = MPSModelsIndexer.getContainingFiles(entry, allFiles);
       } catch (ProcessCanceledException | IndexNotReadyException ex) {
         fileMatchFailedAtLeastOnce = true;

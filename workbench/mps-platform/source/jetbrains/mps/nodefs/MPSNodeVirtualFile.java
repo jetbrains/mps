@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,26 +15,30 @@
  */
 package jetbrains.mps.nodefs;
 
+import com.intellij.openapi.fileEditor.impl.FileEditorManagerImpl;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileSystem;
+import com.intellij.psi.search.ProjectAwareVirtualFile;
 import com.intellij.util.LocalTimeCounter;
 import jetbrains.mps.extapi.module.TransientSModule;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.logging.Logger;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public final class MPSNodeVirtualFile extends VirtualFile {
+public final class MPSNodeVirtualFile extends VirtualFile implements ProjectAwareVirtualFile {
   private static final byte[] CONTENTS = new byte[0];
-  private static final Logger LOG = LogManager.getLogger(MPSNodeVirtualFile.class);
+  private static final Logger LOG = Logger.getLogger(MPSNodeVirtualFile.class);
   static final String NODE_PREFIX = "node://";
 
   @NotNull
@@ -51,6 +55,8 @@ public final class MPSNodeVirtualFile extends VirtualFile {
   MPSNodeVirtualFile(@NotNull SNodeReference nodePointer, @NotNull RepositoryVirtualFiles vfs) {
     myNode = nodePointer;
     myRepoFiles = vfs;
+    // MPS-35481 temporarily disable preview tab until properly integrated
+    putUserData(FileEditorManagerImpl.FORBID_PREVIEW_TAB, true);
     updateFields();
   }
 
@@ -61,7 +67,7 @@ public final class MPSNodeVirtualFile extends VirtualFile {
     myRepoFiles.getRepository().getModelAccess().runReadAction(() -> {
       SNode node = myNode.resolve(myRepoFiles.getRepository());
       if (node == null) {
-        LOG.warn("Cannot find node for passed SNodeReference: " + myNode);
+        LOG.warning("Cannot find node for passed SNodeReference: " + myNode);
         myName = myPresentationName = "";
         myPath = "";
       } else {
@@ -116,6 +122,7 @@ public final class MPSNodeVirtualFile extends VirtualFile {
    * Pre-evaluated user-presentable name of the file, may include extra information to distinguish nodes with the same {@linkplain #getName() name}.
    * This method doesn't require model access.
    */
+  @NotNull
   @Override
   public String getPresentableName() {
     return myPresentationName;
@@ -131,6 +138,7 @@ public final class MPSNodeVirtualFile extends VirtualFile {
     return 0;
   }
 
+  @NotNull
   @Override
   public InputStream getInputStream() {
     throw new UnsupportedOperationException();
@@ -240,5 +248,19 @@ public final class MPSNodeVirtualFile extends VirtualFile {
 
   public void setModificationStamp(long newValue) {
     myModificationStamp = newValue;
+  }
+
+  @Override
+  public boolean isInProject(@NotNull Project project) {
+    final MPSProject mpsProject = ProjectHelper.fromIdeaProject(project);
+    if (mpsProject!=null && mpsProject.getRepository()!=null) {
+      final boolean[] result = new boolean[]{false};
+      mpsProject.getRepository().getModelAccess().runReadAction(() -> {
+        final SModel model = myNode.getModelReference().resolve(mpsProject.getRepository());
+        result[0] = model != null && !model.isReadOnly();
+      });
+      return result[0];
+    }
+    return false;
   }
 }

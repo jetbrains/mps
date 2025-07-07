@@ -12,7 +12,6 @@ import jetbrains.mps.baseLanguage.lightweightdsl.behavior.MemberInstance__Behavi
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.baseLanguage.lightweightdsl.behavior.PlaceholderModifier__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -31,26 +30,16 @@ public class EditorUtil {
       decl.value = MemberInstance__BehaviorDescriptor.getDeclaration_id7T23sO8vZuR.invoke(SNodeOperations.cast(mi, CONCEPTS.MemberInstance$YT));
     } else {
       // custom members
-      decl.value = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv).get(ListSequence.fromList(SNodeOperations.getNodeAncestors(mi, CONCEPTS.ClassConcept$bK, false)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv).get(it) != null);
-        }
-      })), LINKS.descriptor$aNbO), LINKS.classLikeMember$ZDsQ), CONCEPTS.CustomMemberDescriptor$8z)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          // viva la interpretation!
-          return SNodeOperations.getConcept(mi).equals(MetaAdapterByDeclaration.getConcept(SLinkOperations.getTarget(it, LINKS.cncpt$IpcN)));
-        }
+      decl.value = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv).get(ListSequence.fromList(SNodeOperations.getNodeAncestors(mi, CONCEPTS.ClassConcept$bK, false)).findFirst((it) -> (new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv).get(it) != null))), LINKS.descriptor$aNbO), LINKS.classLikeMember$ZDsQ), CONCEPTS.CustomMemberDescriptor$8z)).findFirst((it) -> {
+        // viva la interpretation!
+        return SNodeOperations.getConcept(mi).equals(MetaAdapterByDeclaration.getConcept(SLinkOperations.getTarget(it, LINKS.cncpt$IpcN)));
       });
     }
     if (decl.value == null) {
       return;
     }
 
-    boolean lastInstance = (boolean) DSLClassMember__BehaviorDescriptor.isRequired_id2WSWNq1VhVM.invoke(decl.value) && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(mi, CONCEPTS.ClassConcept$bK, false, false), LINKS.member$L_2d), CONCEPTS.MemberInstance$YT)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return MemberInstance__BehaviorDescriptor.getDeclaration_id7T23sO8vZuR.invoke(it) == decl.value;
-      }
-    }).count() == 1;
+    boolean lastInstance = (boolean) DSLClassMember__BehaviorDescriptor.isRequired_id2WSWNq1VhVM.invoke(decl.value) && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(mi, CONCEPTS.ClassConcept$bK, false, false), LINKS.member$L_2d), CONCEPTS.MemberInstance$YT)).where((it) -> MemberInstance__BehaviorDescriptor.getDeclaration_id7T23sO8vZuR.invoke(it) == decl.value).count() == 1;
     if (lastInstance) {
       return;
     }

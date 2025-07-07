@@ -11,13 +11,13 @@ import jetbrains.mps.workbench.action.ApplicationPlugin;
 public class AnalyzeModule_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.actions.AnalyzeModule_ActionGroup";
   public static final String LABEL_ID_analyze = ID + "analyze";
+  public static final String LABEL_ID_other = ID + "other";
 
   public AnalyzeModule_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("Analyze", ID, plugin);
     setIsInternal(false);
     setPopup(true);
     addNamedAnchor(LABEL_ID_analyze);
-    AnalyzeModule_ActionGroup.this.addAction("jetbrains.mps.ide.platform.actions.AnalyzeDependencies_Action");
-    AnalyzeModule_ActionGroup.this.addAction("jetbrains.mps.ide.actions.AnalyzeModuleDependencies_Action");
+    addNamedAnchor(LABEL_ID_other);
   }
 }

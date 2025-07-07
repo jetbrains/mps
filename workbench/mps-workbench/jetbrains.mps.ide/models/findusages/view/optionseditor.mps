@@ -2,21 +2,21 @@
 <model ref="r:39c01cc7-82c8-4706-9a38-48a33acb0535(jetbrains.mps.ide.findusages.view.optionseditor)">
   <persistence version="9" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
+    <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
   </languages>
   <imports>
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="fyhk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps(MPS.Core/)" />
     <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" />
-    <import index="mmaq" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.jdom(MPS.Core/)" />
     <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
     <import index="32gr" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.ide.findusages.view.optionseditor.options(MPS.Workbench/)" />
     <import index="rhcb" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.ide.findusages.view.optionseditor(MPS.Workbench/)" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="ogzp" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages(MPS.Core/)" />
     <import index="z1c3" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
     <import index="alof" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.project(MPS.Platform/)" />
+    <import index="mmaq" ref="f647e48e-4568-4f4c-b48a-1546492c6a2e/java:org.jdom(org.jdom/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -33,7 +33,7 @@
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
         <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
@@ -115,7 +115,7 @@
       <concept id="1079359253375" name="jetbrains.mps.baseLanguage.structure.ParenthesizedExpression" flags="nn" index="1eOMI4">
         <child id="1079359253376" name="expression" index="1eOMHV" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -139,7 +139,7 @@
         <child id="8276990574895933172" name="throwable" index="1zc67B" />
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1144226303539" name="jetbrains.mps.baseLanguage.structure.ForeachStatement" flags="nn" index="1DcWWT">
@@ -166,8 +166,15 @@
         <reference id="1116615189566" name="classifier" index="3VsUkX" />
       </concept>
     </language>
+    <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
+      <concept id="2034914114981261497" name="jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement" flags="ng" index="RRSsy">
+        <property id="2034914114981261751" name="severity" index="RRSoG" />
+        <child id="2034914114981261755" name="throwable" index="RRSow" />
+        <child id="2034914114981261753" name="message" index="RRSoy" />
+      </concept>
+    </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -227,21 +234,6 @@
       <node concept="3Tm6S6" id="1AxNPWQ_W2" role="1B3o_S" />
       <node concept="Xl_RD" id="1AxNPWQ_W3" role="33vP2m">
         <property role="Xl_RC" value="node" />
-      </node>
-    </node>
-    <node concept="Wx3nA" id="1AxNPWQ_W4" role="jymVt">
-      <property role="TrG5h" value="LOG" />
-      <property role="3TUv4t" value="false" />
-      <node concept="2YIFZM" id="Hn0$MvbXW0" role="33vP2m">
-        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-        <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-        <node concept="3VsKOn" id="Hn0$MvbXW1" role="37wK5m">
-          <ref role="3VsUkX" node="1AxNPWQ_V$" resolve="DefaultSearchOptionsComponent" />
-        </node>
-      </node>
-      <node concept="3Tm6S6" id="1AxNPWQ_W6" role="1B3o_S" />
-      <node concept="3uibUv" id="Hn0$MvbXVS" role="1tU5fm">
-        <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
       </node>
     </node>
     <node concept="312cEg" id="1AxNPWQ_VB" role="jymVt">
@@ -459,9 +451,9 @@
                       <ref role="Rm8GQ" to="32gr:~ScopeOptions$ScopeType.GLOBAL" resolve="GLOBAL" />
                       <ref role="1Px2BO" to="32gr:~ScopeOptions$ScopeType" resolve="ScopeOptions.ScopeType" />
                     </node>
-                    <node concept="2YIFZM" id="1AxNPWQ_XI" role="3K4Cdx">
-                      <ref role="1Pybhc" to="fyhk:~InternalFlag" resolve="InternalFlag" />
-                      <ref role="37wK5l" to="fyhk:~InternalFlag.isInternalMode()" resolve="isInternalMode" />
+                    <node concept="2YIFZM" id="6V2p7IujFXA" role="3K4Cdx">
+                      <ref role="37wK5l" to="fyhk:~RuntimeFlags.isInternalMode()" resolve="isInternalMode" />
+                      <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
                     </node>
                   </node>
                 </node>
@@ -700,20 +692,13 @@
               </node>
             </node>
             <node concept="3clFbS" id="1AxNPWQ_Y8" role="1zc67A">
-              <node concept="3clFbF" id="1AxNPWQ_Y9" role="3cqZAp">
-                <node concept="2OqwBi" id="1AxNPWQ_Ya" role="3clFbG">
-                  <node concept="37vLTw" id="2BHiRxeodjI" role="2Oq$k0">
-                    <ref role="3cqZAo" node="1AxNPWQ_W4" resolve="LOG" />
-                  </node>
-                  <node concept="liA8E" id="1AxNPWQ_Yc" role="2OqNvi">
-                    <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
-                    <node concept="Xl_RD" id="1AxNPWQ_Yd" role="37wK5m">
-                      <property role="Xl_RC" value="error saving options" />
-                    </node>
-                    <node concept="37vLTw" id="3GM_nagT$kM" role="37wK5m">
-                      <ref role="3cqZAo" node="1AxNPWQ_Yf" resolve="e" />
-                    </node>
-                  </node>
+              <node concept="RRSsy" id="6V2p7IujJl0" role="3cqZAp">
+                <property role="RRSoG" value="gZ5fh_4/error" />
+                <node concept="Xl_RD" id="1AxNPWQ_Yd" role="RRSoy">
+                  <property role="Xl_RC" value="error saving options" />
+                </node>
+                <node concept="37vLTw" id="6V2p7IujPaI" role="RRSow">
+                  <ref role="3cqZAo" node="1AxNPWQ_Yf" resolve="e" />
                 </node>
               </node>
             </node>
@@ -918,20 +903,13 @@
                   </node>
                 </node>
               </node>
-              <node concept="3clFbF" id="1AxNPWQ_ZB" role="3cqZAp">
-                <node concept="2OqwBi" id="1AxNPWQ_ZC" role="3clFbG">
-                  <node concept="37vLTw" id="2BHiRxeoq7H" role="2Oq$k0">
-                    <ref role="3cqZAo" node="1AxNPWQ_W4" resolve="LOG" />
-                  </node>
-                  <node concept="liA8E" id="1AxNPWQ_ZE" role="2OqNvi">
-                    <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
-                    <node concept="Xl_RD" id="1AxNPWQ_ZF" role="37wK5m">
-                      <property role="Xl_RC" value="error reading options" />
-                    </node>
-                    <node concept="37vLTw" id="3GM_nagTsd$" role="37wK5m">
-                      <ref role="3cqZAo" node="1AxNPWQ_ZH" resolve="e" />
-                    </node>
-                  </node>
+              <node concept="RRSsy" id="6V2p7IujUDM" role="3cqZAp">
+                <property role="RRSoG" value="gZ5fh_4/error" />
+                <node concept="Xl_RD" id="1AxNPWQ_ZF" role="RRSoy">
+                  <property role="Xl_RC" value="error reading options" />
+                </node>
+                <node concept="37vLTw" id="6V2p7Iuk0iC" role="RRSow">
+                  <ref role="3cqZAo" node="1AxNPWQ_ZH" resolve="e" />
                 </node>
               </node>
             </node>

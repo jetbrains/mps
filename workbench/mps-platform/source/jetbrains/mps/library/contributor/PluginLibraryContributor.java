@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,9 +20,8 @@ import com.intellij.ide.plugins.PluginManagerCore;
 import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.util.io.FileUtil;
 import jetbrains.mps.LanguageLibrary;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.vfs.IFileSystem;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -35,7 +34,7 @@ import java.util.Set;
  * Contributes user libraries from the extension point in {@link LanguageLibrary#EP_LANGUAGE_LIBS}
  */
 public final class PluginLibraryContributor implements LibraryContributor {
-  private static final Logger LOG = LogManager.getLogger(PluginLibraryContributor.class);
+  private static final Logger LOG = Logger.getLogger(PluginLibraryContributor.class);
   private final IFileSystem myFileSystem;
 
   public PluginLibraryContributor(IFileSystem fileSystem) {
@@ -65,7 +64,8 @@ public final class PluginLibraryContributor implements LibraryContributor {
       pluginPath = pluginPath.getParent().getParent();
     }
     final File libraryPath = new File(pluginPath.toFile(), library.dir);
-    return new LibDescriptor(myFileSystem.getFile(libraryPath), plugin.getPluginClassLoader(), library.hidden);
+    final String contribName = String.format("%s [%s]", plugin.getName(), pluginId.getIdString());
+    return new LibDescriptor(myFileSystem.getFile(libraryPath), plugin.getPluginClassLoader(), contribName, library.hidden);
   }
 
   @Override

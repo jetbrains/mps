@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -20,7 +21,6 @@ import jetbrains.mps.lang.test.behavior.ScopesTest__BehaviorDescriptor;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SReference;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -31,18 +31,14 @@ public class ScopesExpectedNode_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.ref$RHE6, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.ref$RHE6, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_1jj8js_a0a0a0a0a1a0a0a0c;
+            return new SNodePointer("r:00000000-0000-4000-0000-011c89590382(jetbrains.mps.lang.test.constraints)", "6836281137582846233");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
@@ -51,7 +47,7 @@ public class ScopesExpectedNode_Constraints extends BaseConstraintsDescriptor {
               return null;
             }
             SNode scopesTest = SNodeOperations.cast(enclosingNode, CONCEPTS.ScopesTest$TD);
-            ModelPlusImportedScope modelPlusImportedScope = new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), false, check_1jj8js_c0a0d0b0a0a0b0a0a0a2(check_1jj8js_a2a0a3a1a0a0a1a0a0a0c(ScopesTest__BehaviorDescriptor.getCheckingReference_id4IvydoGvimX.invoke(scopesTest))));
+            ModelPlusImportedScope modelPlusImportedScope = new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), false, check_1jj8js_c0a0d0b0a0a0a0a0a0a2(check_1jj8js_a2a0a3a1a0a0a0a0a0a0c(ScopesTest__BehaviorDescriptor.getCheckingReference_id4IvydoGvimX.invoke(scopesTest))));
             return modelPlusImportedScope;
           }
         };
@@ -61,19 +57,18 @@ public class ScopesExpectedNode_Constraints extends BaseConstraintsDescriptor {
     references.put(d0.getReference(), d0);
     return references;
   }
-  private static SAbstractConcept check_1jj8js_c0a0d0b0a0a0b0a0a0a2(SReferenceLink checkedDotOperand) {
+  private static SAbstractConcept check_1jj8js_c0a0d0b0a0a0a0a0a0a2(SReferenceLink checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetConcept();
     }
     return null;
   }
-  private static SReferenceLink check_1jj8js_a2a0a3a1a0a0a1a0a0a0c(SReference checkedDotOperand) {
+  private static SReferenceLink check_1jj8js_a2a0a3a1a0a0a0a0a0a0c(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getLink();
     }
     return null;
   }
-  private static final SNodePointer breakingNode_1jj8js_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c89590382(jetbrains.mps.lang.test.constraints)", "6836281137582846233");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ScopesExpectedNode$ol = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x32ba5b0ec25fe9f3L, "jetbrains.mps.lang.test.structure.ScopesExpectedNode");

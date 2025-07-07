@@ -71,7 +71,7 @@ public class CheckNamespace_Action extends BaseAction {
     List<SModule> modules = CheckNamespace_Action.this.modules2check(_params);
     ModelCheckerTool.getInstance(((Project) MapSequence.fromMap(_params).get("project"))).checkModulesAndShowResult(modules);
   }
-  /*package*/ List<SModule> modules2check(final Map<String, Object> _params) {
+  private List<SModule> modules2check(final Map<String, Object> _params) {
     List<SModule> modules = ListSequence.fromList(new ArrayList<SModule>());
     for (TreeNode node : ListSequence.fromList(((List<TreeNode>) MapSequence.fromMap(_params).get("treeNodes")))) {
       if (!(node instanceof NamespaceTextNode)) {

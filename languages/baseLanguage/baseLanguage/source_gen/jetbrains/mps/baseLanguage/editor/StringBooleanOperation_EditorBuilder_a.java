@@ -39,7 +39,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.CompactKey
       setCellContext(bigCell);
     }
     Style style = new StyleImpl();
-    new CompactKeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new CompactKeyWordStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     return editorCell;
   }

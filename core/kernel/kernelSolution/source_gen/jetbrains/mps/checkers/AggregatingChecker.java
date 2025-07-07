@@ -9,17 +9,33 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.util.Consumer;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
+import jetbrains.mps.progress.ProgressTask;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.util.CollectConsumer;
+import jetbrains.mps.util.containers.ConcurrentHashSet;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
-import java.util.Collection;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import java.util.Map;
+import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 
+/**
+ * An aggregating checker that calls all the checkers from {@code origins} parameter to the constructor in sequence.
+ * <p>
+ * The process is organized into the following steps: 
+ * <ol>
+ * <li>First all the checkers from {@code origins} are called in sequence</li>
+ * <li>Then all the errors reported by these are wrapped into {@link jetbrains.mps.checkers.CheckingSession.SuppressableError }</li>
+ * <li>These wrapped errors are then passed to the {@link jetbrains.mps.checkers.IChecker#getPostprocessor() } of every checker</li>
+ * <li>Only errors not suppressed in the previous step get reported to {@code errorCollector} object, 
+ *     along with any additional errors produced by the "post processors"
+ * </ol>
+ * See {@link jetbrains.mps.checkers.CheckingSession }<br>
+ * See {@link jetbrains.mps.checkers.ICheckingPostprocessor }<br>
+ */
 @GeneratedClass(node = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)/8195773907765992281", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
 public class AggregatingChecker<O> implements IAbstractChecker<O, IssueKindReportItem> {
   private List<? extends IChecker<O, ? extends IssueKindReportItem>> myOrigins;
@@ -30,55 +46,101 @@ public class AggregatingChecker<O> implements IAbstractChecker<O, IssueKindRepor
   }
   @Override
   public void check(O toCheck, SRepository repository, final Consumer<? super IssueKindReportItem> errorCollector, ProgressMonitor monitor) {
-    monitor.start("Checking " + myNameGetter.invoke(toCheck), ListSequence.fromList(myOrigins).count());
-    try {
-      CollectConsumer<IssueKindReportItem> consumer = new CollectConsumer<IssueKindReportItem>();
-      for (IChecker<O, ? extends IssueKindReportItem> origin : ListSequence.fromList(myOrigins)) {
-        ProgressMonitor subTask = monitor.subTask(1, SubProgressKind.DEFAULT);
-        subTask.start(origin.getCategory().toString(), 1);
-        origin.check(toCheck, repository, consumer, subTask.subTask(1, SubProgressKind.AS_COMMENT));
-        subTask.done();
+    throw new UnsupportedOperationException();
+  }
 
-        if (monitor.isCanceled()) {
-          break;
-        }
+  @Override
+  public ProgressTask checkTask(final O toCheck, final SRepository repository, final Consumer<? super IssueKindReportItem> errorCollector) {
+
+    ProgressTask.Builder taskBuilder = new ProgressTask.Builder();
+    taskBuilder.addTask(new ProgressTask.SimpleTask("Checking " + myNameGetter.invoke(toCheck)) {
+      @Override
+      protected void run() {
+        myMonitor.start(getTitle(), ListSequence.fromList(myOrigins).count());
       }
+    });
+
+    final CollectConsumer<IssueKindReportItem> consumer = new CollectConsumer<IssueKindReportItem>(new ConcurrentHashSet<>());
+    ProgressTask.Builder builder;
+    builder = new ProgressTask.Builder();
+    for (final IChecker<O, ? extends IssueKindReportItem> origin : ListSequence.fromList(myOrigins)) {
+      builder.addTask(new ProgressTask.SimpleTask(String.format("apply %s", origin)) {
+        @Override
+        protected void run() {
+          final ProgressMonitor subTask = myMonitor.subTask(1, SubProgressKind.DEFAULT);
+          subTask.start(origin.getCategory().toString(), 1);
+          new ModelAccessHelper(repository).runReadAction(() -> {
+            origin.check(toCheck, repository, consumer, subTask.subTask(1, SubProgressKind.AS_COMMENT));
+
+          });
+          subTask.done();
+        }
+        @Override
+        public boolean isReady() {
+          return !(myMonitor.isCanceled());
+        }
+      });
+    }
+    ProgressTask callCheckers = builder.asSequential();
+
+    final Map<IssueKindReportItem.PathObject, Collection<MySuppressableError>> consumerResultMap = MapSequence.fromMap(new HashMap<IssueKindReportItem.PathObject, Collection<MySuppressableError>>());
+
+    ProgressTask wrapReportItems = ProgressTask.just(() -> {
       Collection<? extends IssueKindReportItem> consumerResult = consumer.getResult();
-      final Map<IssueKindReportItem.PathObject, Collection<MySuppressableError>> consumerResultMap = MapSequence.fromMap(new HashMap<IssueKindReportItem.PathObject, Collection<MySuppressableError>>());
       for (IssueKindReportItem reported : consumerResult) {
         if (MapSequence.fromMap(consumerResultMap).get(IssueKindReportItem.PATH_OBJECT.get(reported)) == null) {
           MapSequence.fromMap(consumerResultMap).put(IssueKindReportItem.PATH_OBJECT.get(reported), ListSequence.fromList(new ArrayList<MySuppressableError>()));
         }
         MapSequence.fromMap(consumerResultMap).get(IssueKindReportItem.PATH_OBJECT.get(reported)).add(new MySuppressableError(reported));
       }
-      for (IChecker<O, ? extends IssueKindReportItem> origin : myOrigins) {
-        ICheckingPostprocessor<? extends IssueKindReportItem> postprocessor = origin.getPostprocessor();
-        if (postprocessor != null) {
-          postprocessor.postProcess(repository, monitor, new CheckingSession<IssueKindReportItem>() {
-            @Override
-            public Map<IssueKindReportItem.PathObject, ? extends Collection<? extends CheckingSession.SuppressableError<? extends IssueKindReportItem>>> getAllFoundErrors() {
-              return consumerResultMap;
-            }
-            @Override
-            public Consumer<? super IssueKindReportItem> postprocessingConsumer() {
-              return errorCollector;
-            }
-          });
-        }
+    });
+
+    builder = new ProgressTask.Builder();
+    for (IChecker<O, ? extends IssueKindReportItem> origin : myOrigins) {
+      final ICheckingPostprocessor<? extends IssueKindReportItem> postprocessor = origin.getPostprocessor();
+      if (postprocessor != null) {
+        builder.addTask(new ProgressTask.SimpleTask("postprocessing") {
+          @Override
+          protected void run() {
+            new ModelAccessHelper(repository).runReadAction(() -> {
+              postprocessor.postProcess(repository, myMonitor, new CheckingSession<IssueKindReportItem>() {
+                @Override
+                public Map<IssueKindReportItem.PathObject, ? extends Collection<? extends CheckingSession.SuppressableError<? extends IssueKindReportItem>>> getAllFoundErrors() {
+                  return consumerResultMap;
+                }
+                @Override
+                public Consumer<? super IssueKindReportItem> postprocessingConsumer() {
+                  return errorCollector;
+                }
+              });
+            });
+          }
+        });
+
       }
-      for (MySuppressableError approved : Sequence.fromIterable(MapSequence.fromMap(consumerResultMap).values()).translate(new ITranslator2<Collection<MySuppressableError>, MySuppressableError>() {
-        public Iterable<MySuppressableError> translate(Collection<MySuppressableError> it) {
-          return it;
-        }
-      })) {
+    }
+    ProgressTask callPostProcessors = builder.asSequential();
+
+    ProgressTask collectErrors = ProgressTask.just(() -> {
+      for (MySuppressableError approved : Sequence.fromIterable(MapSequence.fromMap(consumerResultMap).values()).translate((it) -> it)) {
         if (!(approved.isSuppressed())) {
           errorCollector.consume(approved.getError());
         }
       }
-    } finally {
-      monitor.done();
-    }
+    });
+
+    taskBuilder.addTask(callCheckers.then(wrapReportItems).then(callPostProcessors).then(collectErrors));
+
+    taskBuilder.addTask(new ProgressTask.SimpleTask("Checking finished") {
+      @Override
+      public void onFinished() {
+        myMonitor.done();
+      }
+    });
+
+    return taskBuilder.asSequential();
   }
+
   private static class MySuppressableError extends CheckingSession.SuppressableError<IssueKindReportItem> {
     private boolean suppressed = false;
     public MySuppressableError(IssueKindReportItem reported) {

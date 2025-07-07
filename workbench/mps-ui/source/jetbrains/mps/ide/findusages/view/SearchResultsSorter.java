@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,8 @@ package jetbrains.mps.ide.findusages.view;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.IterableUtil;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -129,7 +129,7 @@ import java.util.Map;
       if (name1.equals(name2)) {
         int rv = m1.getReference().toString().compareTo(m2.getReference().toString());
         if (rv == 0) {
-          LogManager.getLogger(SearchResultsSorter.class).warn("The comparing for models " + m1 + " and " + m2 + " return 0 though they are supposed to be different");
+          Logger.getLogger(SearchResultsSorter.class).warning("References for models " + m1 + " and " + m2 + " are same though instances are different");
         }
         return rv;
       }

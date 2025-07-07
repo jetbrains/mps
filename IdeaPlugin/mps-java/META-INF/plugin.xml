@@ -17,20 +17,16 @@
 <idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude">
   <id>jetbrains.mps.idea.java</id>
   <name>MPS BaseLanguage Support</name>
-  <description>Support of the MPS BaseLanguage (JAVA)</description>
+  <description>Integrate MPS BaseLanguage (Java) into IDEA PSI Model</description>
   <category>Custom Languages</category>
-  <version>2021.1</version>
+  <version>2023.3</version>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
-  <idea-version since-build="211.1" until-build="212.1"/>
+  <idea-version since-build="233.1" until-build="241.1"/>
   <depends>jetbrains.mps.core</depends>
-  <depends>jetbrains.mps.ide.migration.idea</depends>
 
-  <xi:include href="JavaPlatform.xml" xpointer="xpointer(/components/*)"/>
+  <xi:include href="JavaPlatform.xml"/>
 
   <application-components>
-    <component>
-      <implementation-class>jetbrains.mps.idea.java.fastFind.JavaPsiStubsNavigationContributor</implementation-class>
-    </component>
     <component>
       <implementation-class>jetbrains.mps.idea.java.fastFind.EmptyJavaStubsFindUsages</implementation-class>
     </component>
@@ -38,20 +34,13 @@
 
   <project-components>
     <component>
-      <implementation-class>jetbrains.mps.idea.java.debugger.IdeaDebuggerPositionHighlighter</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.idea.java.debugger.breakpoints.IdeaBreakpointsUiComponent</implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.idea.java.refactoring.MoveRenameBatch</implementation-class>
     </component>
     <component>
       <implementation-class>jetbrains.mps.idea.java.psi.PsiChangesWatcher</implementation-class>
     </component>
     <component>
-      <implementation-class>jetbrains.mps.idea.java.refactoring.RegisterMoveStaticMemberPsiParticipant
-      </implementation-class>
+      <implementation-class>jetbrains.mps.idea.java.refactoring.RegisterMoveStaticMemberPsiParticipant</implementation-class>
     </component>
   </project-components>
 
@@ -94,7 +83,32 @@
     <findUsagesHandlerFactory implementation="jetbrains.mps.idea.java.usages.MPSFindUsagesHandlerFactory" id="mps"
                               order="before java"/>
     <refactoring.elementListenerProvider implementation="jetbrains.mps.idea.java.refactoring.PackageRenameListener"/>
+    <mps.gotoParticipant implementation="jetbrains.mps.idea.java.fastFind.JavaPsiStubsNavigationContributor"/>
+    <!-- BreakpointEditorIntegration service comes together with EditorIntegrationListener projectListener, below -->
+    <projectService serviceInterface="jetbrains.mps.debugger.core.breakpoints.BreakpointEditorIntegration"
+                    serviceImplementation="jetbrains.mps.idea.java.debugger.breakpoints.IdeaBreakpointsUiComponent"/>
+    <projectService serviceImplementation="jetbrains.mps.idea.java.debugger.IdeaDebuggerPositionHighlighter"/>
   </extensions>
+
+  <projectListeners>
+    <!-- this listener works together with BreakpointEditorIntegration service, above-->
+    <listener class="jetbrains.mps.debugger.core.breakpoints.EditorIntegrationListener"
+              topic="jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener"
+              activeInTestMode="false"
+              activeInHeadlessMode="false"/>
+    <listener class="jetbrains.mps.idea.java.debugger.breakpoints.IdeaBreakpointsUiComponent$BreakpointListener"
+              topic="com.intellij.xdebugger.breakpoints.XBreakpointListener"
+              activeInTestMode="false"
+              activeInHeadlessMode="false"/>
+    <listener class="jetbrains.mps.idea.java.debugger.IdeaDebuggerPositionHighlighter$RunContentListener"
+              topic="com.intellij.execution.ui.RunContentWithExecutorListener"
+              activeInTestMode="false"
+              activeInHeadlessMode="false"/>
+    <listener class="jetbrains.mps.idea.java.debugger.IdeaDebuggerPositionHighlighter$DebuggerManagerListener"
+              topic="com.intellij.debugger.impl.DebuggerManagerListener"
+              activeInTestMode="false"
+              activeInHeadlessMode="false"/>
+  </projectListeners>
 
   <extensions defaultExtensionNs="jetbrains.mps">
     <nodeStructureViewProvider implementation="jetbrains.mps.idea.java.psi.structureView.MPSStructureViewFactory"/>

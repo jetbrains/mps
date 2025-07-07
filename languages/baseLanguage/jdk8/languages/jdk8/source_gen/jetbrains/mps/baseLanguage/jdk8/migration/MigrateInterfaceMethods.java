@@ -10,17 +10,14 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringRuntime;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptMemberNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
@@ -43,38 +40,10 @@ public class MigrateInterfaceMethods extends MigrationScriptBase {
     {
       SearchScope scope_5i2tiq_a0e = CommandUtil.createScope(m);
       final SearchScope scope_5i2tiq_a0e_0 = new EditableFilteringScope(scope_5i2tiq_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_5i2tiq_a0e_0;
-        }
-      };
-      Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, "jetbrains.mps.baseLanguage.jdk8"), 0x40ed0df0ef40a332L, "DefaultModifier_old")));
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode node) {
-          RefactoringRuntime.replaceWithNewConcept(node, MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x40ed0df0ef40a332L, "DefaultModifier"));
-        }
-      });
-      Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, "jetbrains.mps.baseLanguage.jdk8"), 0x17dbb10eeb72e5d9L, "SuperInterfaceMethodCall_old")));
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode node) {
-          RefactoringRuntime.replaceWithNewConcept(node, MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x17dbb10eeb72e5d9L, "SuperInterfaceMethodCall"));
-        }
-      });
-      Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x17dbb10eeb72e5d9L, "SuperInterfaceMethodCall"))) || MigrateInterfaceMethods.isMovedConcept(SNodeOperations.getConcept(it));
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode node) {
-          RefactoringRuntime.changeReferenceLinkInstances(node, MetaAdapterFactory.getReferenceLink(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, 0x17dbb10eeb72e5d9L, 0x17dbb10eeb7528deL, "classifier_old"), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x17dbb10eeb72e5d9L, 0x17dbb10eeb7528deL, "classifier"));
-        }
-      });
+      QueryExecutionContext context = () -> scope_5i2tiq_a0e_0;
+      Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where((it) -> SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, "jetbrains.mps.baseLanguage.jdk8"), 0x40ed0df0ef40a332L, "DefaultModifier_old")))).visitAll((SNode node) -> RefactoringRuntime.replaceWithNewConcept(node, MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x40ed0df0ef40a332L, "DefaultModifier")));
+      Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where((it) -> SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, "jetbrains.mps.baseLanguage.jdk8"), 0x17dbb10eeb72e5d9L, "SuperInterfaceMethodCall_old")))).visitAll((SNode node) -> RefactoringRuntime.replaceWithNewConcept(node, MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x17dbb10eeb72e5d9L, "SuperInterfaceMethodCall")));
+      Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where((it) -> SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x17dbb10eeb72e5d9L, "SuperInterfaceMethodCall"))) || MigrateInterfaceMethods.isMovedConcept(SNodeOperations.getConcept(it))).visitAll((SNode node) -> RefactoringRuntime.changeReferenceLinkInstances(node, MetaAdapterFactory.getReferenceLink(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, 0x17dbb10eeb72e5d9L, 0x17dbb10eeb7528deL, "classifier_old"), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x17dbb10eeb72e5d9L, 0x17dbb10eeb7528deL, "classifier")));
     }
   }
   @Override
@@ -82,13 +51,9 @@ public class MigrateInterfaceMethods extends MigrationScriptBase {
     {
       SearchScope scope_5i2tiq_a0f = CommandUtil.createScope(m);
       final SearchScope scope_5i2tiq_a0f_0 = new EditableFilteringScope(scope_5i2tiq_a0f);
-      final QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_5i2tiq_a0f_0;
-        }
-      };
-      return Sequence.fromClosure(new ISequenceClosure<Problem>() {
-        public Iterable<Problem> iterable() {
+      final QueryExecutionContext context = () -> scope_5i2tiq_a0f_0;
+      return Sequence.fromClosure(new _FunctionTypes._return_P0_E0<Iterable<Problem>>() {
+        public Iterable<Problem> invoke() {
           return new Iterable<Problem>() {
             public Iterator<Problem> iterator() {
               return new YieldingIterator<Problem>() {
@@ -102,12 +67,8 @@ __switch__:
                         assert false : "Internal error";
                         return false;
                       case 2:
-                        this._2__yield_5i2tiq_a0a0d0a0f_it = Sequence.fromIterable(Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SNode>() {
-                          public boolean accept(SNode it) {
-                            return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, "jetbrains.mps.baseLanguage.jdk8"), 0x40ed0df0ef40a332L, "DefaultModifier_old"))) && !(SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x40ed0df0ef40a332L, "DefaultModifier"))));
-                          }
-                        }).select(new ISelector<SNode, Problem>() {
-                          public Problem select(SNode it) {
+                        this._2__yield_5i2tiq_a0a0d0a0f_it = Sequence.fromIterable(Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where((it) -> SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, "jetbrains.mps.baseLanguage.jdk8"), 0x40ed0df0ef40a332L, "DefaultModifier_old"))) && !(SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x40ed0df0ef40a332L, "DefaultModifier"))))).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+                          public Problem invoke(SNode it) {
                             Problem problem = new DeprecatedConceptNotMigratedProblem(it);
                             return problem;
                           }
@@ -121,12 +82,8 @@ __switch__:
                         this.__CP__ = 4;
                         break;
                       case 5:
-                        this._6__yield_5i2tiq_b0a0d0a0f_it = Sequence.fromIterable(Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SNode>() {
-                          public boolean accept(SNode it) {
-                            return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, "jetbrains.mps.baseLanguage.jdk8"), 0x17dbb10eeb72e5d9L, "SuperInterfaceMethodCall_old"))) && !(SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x17dbb10eeb72e5d9L, "SuperInterfaceMethodCall"))));
-                          }
-                        }).select(new ISelector<SNode, Problem>() {
-                          public Problem select(SNode it) {
+                        this._6__yield_5i2tiq_b0a0d0a0f_it = Sequence.fromIterable(Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where((it) -> SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, "jetbrains.mps.baseLanguage.jdk8"), 0x17dbb10eeb72e5d9L, "SuperInterfaceMethodCall_old"))) && !(SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x17dbb10eeb72e5d9L, "SuperInterfaceMethodCall"))))).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+                          public Problem invoke(SNode it) {
                             Problem problem = new DeprecatedConceptNotMigratedProblem(it);
                             return problem;
                           }
@@ -140,16 +97,8 @@ __switch__:
                         this.__CP__ = 8;
                         break;
                       case 9:
-                        this._10__yield_5i2tiq_c0a0d0a0f_it = Sequence.fromIterable(Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SNode>() {
-                          public boolean accept(SNode it) {
-                            return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, "jetbrains.mps.baseLanguage.jdk8"), 0x17dbb10eeb72e5d9L, "SuperInterfaceMethodCall_old"))) || SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x17dbb10eeb72e5d9L, "SuperInterfaceMethodCall")));
-                          }
-                        }).where(new IWhereFilter<SNode>() {
-                          public boolean accept(SNode it) {
-                            return it.getReference(MetaAdapterFactory.getReferenceLink(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, 0x17dbb10eeb72e5d9L, 0x17dbb10eeb7528deL, "classifier_old")) != null;
-                          }
-                        }).select(new ISelector<SNode, Problem>() {
-                          public Problem select(SNode it) {
+                        this._10__yield_5i2tiq_c0a0d0a0f_it = Sequence.fromIterable(Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where((it) -> SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, "jetbrains.mps.baseLanguage.jdk8"), 0x17dbb10eeb72e5d9L, "SuperInterfaceMethodCall_old"))) || SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x17dbb10eeb72e5d9L, "SuperInterfaceMethodCall")))).where((it) -> it.getReference(MetaAdapterFactory.getReferenceLink(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, 0x17dbb10eeb72e5d9L, 0x17dbb10eeb7528deL, "classifier_old")) != null).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+                          public Problem invoke(SNode it) {
                             return DeprecatedConceptMemberNotMigratedProblem.deprecatedReferenceLink(it, MetaAdapterFactory.getReferenceLink(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, 0x17dbb10eeb72e5d9L, 0x17dbb10eeb7528deL, "classifier_old"));
                           }
                         })).iterator();
@@ -200,11 +149,12 @@ __switch__:
               };
             }
           };
+
         }
       });
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, "jetbrains.mps.baseLanguage.jdk8"), 0);
   }
   public static boolean isMovedConcept(SAbstractConcept c) {

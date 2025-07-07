@@ -17,12 +17,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import org.jetbrains.annotations.NonNls;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -34,15 +32,15 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class CommandDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be8L, "jetbrains.mps.execution.commands.structure.CommandDeclaration");
 
-  public static final SMethod<Boolean> isDebuggable_idJzCdmU6yOQ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDebuggable").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("JzCdmU6yOQ").build();
-  public static final SMethod<String> getSuffix_idO$iR4JBsSb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSuffix").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("O$iR4JBsSb").build();
-  public static final SMethod<SNode> createType_idhEwJimy = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwJimy").build();
-  public static final SMethod<List<SNode>> getDistinctFieldParameters_id5keEkmeCrcX = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getDistinctFieldParameters").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5keEkmeCrcX").build();
-  public static final SMethod<List<SNode>> getDistinctByNameAndTypeFieldParameters_id3gpm$NHlR4n = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getDistinctByNameAndTypeFieldParameters").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3gpm$NHlR4n").build();
-  /*package*/ static final SMethod<Iterable<SNode>> getFieldParameters_id3gpm$NHlR5N = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getFieldParameters").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).id("3gpm$NHlR5N").build();
-  public static final SMethod<String> getCreateProcessMethodName_idJzCdmU6yOE = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getCreateProcessMethodName").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).id("JzCdmU6yOE").build();
-  public static final SMethod<String> getGetDebuggerMethodName_idJzCdmU6yOK = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGetDebuggerMethodName").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).id("JzCdmU6yOK").build();
-  public static final SMethod<String> getGetDebuggerConfidurationMethodName_id5pE1_aqZc7s = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGetDebuggerConfidurationMethodName").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5pE1_aqZc7s").build();
+  public static final SMethod<Boolean> isDebuggable_idJzCdmU6yOQ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDebuggable").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(856705193941282102L).languageId(0x8ac91574f25c986fL, 0xf3347d8a0e794f35L).build2();
+  public static final SMethod<String> getSuffix_idO$iR4JBsSb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSuffix").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(946964771156905483L).languageId(0x8292b8985697c74bL, 0x73c1a49099fa4d0dL).build2();
+  public static final SMethod<SNode> createType_idhEwJimy = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877527970L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
+  public static final SMethod<List<SNode>> getDistinctFieldParameters_id5keEkmeCrcX = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getDistinctFieldParameters").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6129022259108623165L).languageId(0x8ac91574f25c986fL, 0xf3347d8a0e794f35L).build2();
+  public static final SMethod<List<SNode>> getDistinctByNameAndTypeFieldParameters_id3gpm$NHlR4n = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getDistinctByNameAndTypeFieldParameters").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3754131050835964183L).languageId(0x8ac91574f25c986fL, 0xf3347d8a0e794f35L).build2();
+  /*package*/ static final SMethod<Iterable<SNode>> getFieldParameters_id3gpm$NHlR5N = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getFieldParameters").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(3754131050835964275L).languageId(0x8ac91574f25c986fL, 0xf3347d8a0e794f35L).build2();
+  public static final SMethod<String> getCreateProcessMethodName_idJzCdmU6yOE = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getCreateProcessMethodName").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(856705193941282090L).languageId(0x8ac91574f25c986fL, 0xf3347d8a0e794f35L).build2();
+  public static final SMethod<String> getGetDebuggerMethodName_idJzCdmU6yOK = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGetDebuggerMethodName").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(856705193941282096L).languageId(0x8ac91574f25c986fL, 0xf3347d8a0e794f35L).build2();
+  public static final SMethod<String> getGetDebuggerConfidurationMethodName_id5pE1_aqZc7s = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGetDebuggerConfidurationMethodName").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6226796386650472924L).languageId(0x8ac91574f25c986fL, 0xf3347d8a0e794f35L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isDebuggable_idJzCdmU6yOQ, getSuffix_idO$iR4JBsSb, createType_idhEwJimy, getDistinctFieldParameters_id5keEkmeCrcX, getDistinctByNameAndTypeFieldParameters_id3gpm$NHlR4n, getFieldParameters_id3gpm$NHlR5N, getCreateProcessMethodName_idJzCdmU6yOE, getGetDebuggerMethodName_idJzCdmU6yOK, getGetDebuggerConfidurationMethodName_id5pE1_aqZc7s);
 
@@ -63,55 +61,33 @@ public final class CommandDeclaration__BehaviorDescriptor extends BaseBHDescript
   /*package*/ static List<SNode> getDistinctFieldParameters_id5keEkmeCrcX(@NotNull SNode __thisNode__) {
     // we get all parameters generated into fields and select a list with uniquie names
     final Iterable<SNode> parameterDeclarations = CommandDeclaration__BehaviorDescriptor.getFieldParameters_id3gpm$NHlR5N.invokeSpecial(__thisNode__);
-    Iterable<String> fieldNames = Sequence.fromIterable(parameterDeclarations).select(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return (String) CommandParameterDeclaration__BehaviorDescriptor.getFieldName_id6mJVBGGspQq.invoke(it);
+    Iterable<String> fieldNames = Sequence.fromIterable(parameterDeclarations).select((it) -> (String) CommandParameterDeclaration__BehaviorDescriptor.getFieldName_id6mJVBGGspQq.invoke(it)).distinct();
+    return Sequence.fromIterable(fieldNames).translate((final String it) -> {
+      SNode first = Sequence.fromIterable(parameterDeclarations).findFirst((decl) -> Objects.equals(CommandParameterDeclaration__BehaviorDescriptor.getFieldName_id6mJVBGGspQq.invoke(decl), it));
+      if (first == null) {
+        return new ArrayList<SNode>();
       }
-    }).distinct();
-    return Sequence.fromIterable(fieldNames).translate(new ITranslator2<String, SNode>() {
-      public Iterable<SNode> translate(final String it) {
-        SNode first = Sequence.fromIterable(parameterDeclarations).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode decl) {
-            return Objects.equals(CommandParameterDeclaration__BehaviorDescriptor.getFieldName_id6mJVBGGspQq.invoke(decl), it);
-          }
-        });
-        if (first == null) {
-          return new ArrayList<SNode>();
-        }
-        return Sequence.<SNode>singleton(first);
-      }
-    }).toListSequence();
+      return Sequence.<SNode>singleton(first);
+    }).toList();
   }
   /*package*/ static List<SNode> getDistinctByNameAndTypeFieldParameters_id3gpm$NHlR4n(@NotNull SNode __thisNode__) {
     final Iterable<SNode> parameterDeclarations = CommandDeclaration__BehaviorDescriptor.getFieldParameters_id3gpm$NHlR5N.invoke(__thisNode__);
-    Iterable<String> fieldNames = Sequence.fromIterable(parameterDeclarations).select(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return (String) CommandParameterDeclaration__BehaviorDescriptor.getSetterLongName_id3gpm$NHlR8F.invoke(it);
+    Iterable<String> fieldNames = Sequence.fromIterable(parameterDeclarations).select((it) -> (String) CommandParameterDeclaration__BehaviorDescriptor.getSetterLongName_id3gpm$NHlR8F.invoke(it)).distinct();
+    return Sequence.fromIterable(fieldNames).translate((final String it) -> {
+      SNode first = Sequence.fromIterable(parameterDeclarations).findFirst((decl) -> Objects.equals(CommandParameterDeclaration__BehaviorDescriptor.getSetterLongName_id3gpm$NHlR8F.invoke(decl), it));
+      if (first == null) {
+        return new ArrayList<SNode>();
       }
-    }).distinct();
-    return Sequence.fromIterable(fieldNames).translate(new ITranslator2<String, SNode>() {
-      public Iterable<SNode> translate(final String it) {
-        SNode first = Sequence.fromIterable(parameterDeclarations).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode decl) {
-            return Objects.equals(CommandParameterDeclaration__BehaviorDescriptor.getSetterLongName_id3gpm$NHlR8F.invoke(decl), it);
-          }
-        });
-        if (first == null) {
-          return new ArrayList<SNode>();
-        }
-        return Sequence.<SNode>singleton(first);
-      }
-    }).toListSequence();
+      return Sequence.<SNode>singleton(first);
+    }).toList();
   }
   /*package*/ static Iterable<SNode> getFieldParameters_id3gpm$NHlR5N(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.executePart$8WBn)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return ListSequence.fromList(ExecuteCommandPart__BehaviorDescriptor.getParameters_id5keEkmeCqHW.invoke(it)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return (boolean) CommandParameterDeclaration__BehaviorDescriptor.generateField_id7mEQKPeolUk.invoke(it);
-          }
-        });
-      }
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.executePart$8WBn)).translate((it) -> {
+      return ListSequence.fromList(ExecuteCommandPart__BehaviorDescriptor.getParameters_id5keEkmeCqHW.invoke(it)).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+        public Boolean invoke(SNode it) {
+          return (boolean) CommandParameterDeclaration__BehaviorDescriptor.generateField_id7mEQKPeolUk.invoke(it);
+        }
+      });
     });
   }
   /*package*/ static String getCreateProcessMethodName_idJzCdmU6yOE(@NotNull SAbstractConcept __thisConcept__) {

@@ -8,12 +8,13 @@ import javax.swing.Icon;
 import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.datatransfer.DataTransferManager;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.openapi.navigation.NavigationSupport;
 
@@ -25,11 +26,20 @@ public class CloneRoot_Action extends BaseAction {
     super("Clone Root", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
     this.addPlace(null);
   }
   @Override
   public boolean isDumbAware() {
     return true;
+  }
+  @Override
+  public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
+    return ListSequence.fromList(event.getData(MPSCommonDataKeys.NODES)).all((it) -> !(SNodeOperations.getModel(it).isReadOnly()));
+  }
+  @Override
+  public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
+    this.setEnabledState(event.getPresentation(), this.isApplicable(event, _params));
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
@@ -59,6 +69,7 @@ public class CloneRoot_Action extends BaseAction {
     for (SNode node : ListSequence.fromList(event.getData(MPSCommonDataKeys.NODES))) {
       SNode root = SNodeOperations.getContainingRoot(node);
       SNode copy = SNodeOperations.copyNode(root);
+      DataTransferManager.getInstance().postProcessNode(copy);
       SModelOperations.addRootNode(SNodeOperations.getModel(root), copy);
       NavigationSupport.getInstance().openNode(event.getData(MPSCommonDataKeys.MPS_PROJECT), copy, true, true);
       NavigationSupport.getInstance().selectInTree(event.getData(MPSCommonDataKeys.MPS_PROJECT), copy, false);

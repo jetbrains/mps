@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,10 @@ package jetbrains.mps.languageScope;
 
 import jetbrains.mps.smodel.ModelDependencyResolver;
 import jetbrains.mps.smodel.SLanguageHierarchy;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
+import jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies;
 import jetbrains.mps.util.Computable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -26,6 +29,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 public class LanguageScopeExecutor {
@@ -35,67 +39,47 @@ public class LanguageScopeExecutor {
    * If {@code sModel} is {@code null}, global scope (with all languages?) is assumed.
    * Beware, {@code sModel}, if provided, expected to be attached to a repository to get its usages (namely, devkits)
    * properly resolved.
-   * @deprecated use the overloaded method with additional {@link LanguageScopeFactory} parameter
    */
-  @Deprecated
-  public static <T> T execWithModelScope(@Nullable SModel sModel, Computable<T> computable) {
-    LanguageScopeFactory languageScopeFactory = LanguageScopeFactory.getInstance();
-    return execWithModelScope(sModel, computable, languageScopeFactory);
-  }
-
   public static <T> T execWithModelScope(@Nullable SModel model,
                                          @Nullable Computable<T> computable,
                                          @NotNull LanguageScopeFactory languageScopeFactory) {
-    LanguageScope languageScope;
+    final LanguageScope languageScope;
     if (model == null) {
-      languageScope = LanguageScope.getGlobal();
+      languageScope = languageScopeFactory.getGlobal();
     } else {
       SRepository repository = languageScopeFactory.getRepository();
       LanguageRegistry lr = LanguageRegistry.getInstance(repository);
       final Collection<SLanguage> languageImports = new ModelDependencyResolver(lr, repository).usedLanguages(model);
-      final SLanguageHierarchy languageHierarchy = new SLanguageHierarchy(lr, languageImports);
-      final Set<SLanguage> usedLangDeps = languageHierarchy.getExtended();
-      usedLangDeps.addAll(languageHierarchy.getAggregated());
+      final Set<SLanguage> usedLangDeps = new HashSet<>();
+      new SLanguageHierarchy(lr, languageImports).forEachExtended(lrt -> {
+        usedLangDeps.add(lrt.getIdentity());
+        final StructureAspectDescriptor sad = lrt.getAspect(StructureAspectDescriptor.class);
+        if (sad == null) {
+          return;
+        }
+        sad.reportDependencies(new Dependencies() {
+          @Override
+          public void aggregatedLanguage(long hiBits, long lowBits, String name) {
+            usedLangDeps.add(MetaAdapterFactory.getLanguage(hiBits, lowBits, name));
+          }
+
+          @Override
+          public void employedLanguage(long hiBits, long lowBits, String name) {
+            usedLangDeps.add(MetaAdapterFactory.getLanguage(hiBits, lowBits, name));
+          }
+        });
+      });
       languageScope = languageScopeFactory.getLanguageScope(usedLangDeps);
     }
-    try{
-      LanguageScope.pushCurrent(languageScope, computable);
-      return computable.compute();
-    }
-    finally {
-      LanguageScope.popCurrent(languageScope, computable);
-    }
+    return languageScope.compute(computable);
   }
 
-  public static <T> T execWithGlobalScope(Computable<T> computable) {
-    LanguageScope languageScope = LanguageScope.getGlobal();
-    try{
-       LanguageScope.pushCurrent(languageScope, computable);
-       return computable.compute();
-    }
-    finally {
-      LanguageScope.popCurrent(languageScope, computable);
-    }
-  }
-
-  /**
-   * @deprecated use the overloaded method with additional {@link LanguageScopeFactory} parameter.
-   */
-  @Deprecated
-  public static <T> T execWithMultiLanguageScope(Collection<SLanguage> langs, Computable<T> computable) {
-    LanguageScopeFactory languageScopeFactory = LanguageScopeFactory.getInstance();
-    return execWithMultiLanguageScope(langs, computable, languageScopeFactory);
+  public static <T> T execWithGlobalScope(Computable<T> computable, LanguageScopeFactory scopeFactory) {
+    return scopeFactory.getGlobal().compute(computable);
   }
 
   public static <T> T execWithMultiLanguageScope(@Nullable Collection<SLanguage> langs, @Nullable Computable<T> computable,
-                                                  LanguageScopeFactory languageScopeFactory) {
-    LanguageScope languageScope = languageScopeFactory.getLanguageScope(langs);
-    try{
-      LanguageScope.pushCurrent(languageScope, computable);
-      return computable.compute();
-    }
-    finally {
-      LanguageScope.popCurrent(languageScope, computable);
-    }
+                                                  @NotNull LanguageScopeFactory languageScopeFactory) {
+    return languageScopeFactory.getLanguageScope(langs).compute(computable);
   }
 }

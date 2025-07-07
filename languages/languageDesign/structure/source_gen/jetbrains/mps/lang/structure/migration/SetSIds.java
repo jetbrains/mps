@@ -10,14 +10,12 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.SNodeId;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
@@ -43,28 +41,22 @@ public class SetSIds extends MigrationScriptBase {
     {
       SearchScope scope_u6fl1v_a0e = CommandUtil.createScope(m);
       final SearchScope scope_u6fl1v_a0e_0 = new EditableFilteringScope(scope_u6fl1v_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_u6fl1v_a0e_0;
+      QueryExecutionContext context = () -> scope_u6fl1v_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AbstractConceptDeclaration$KA, false)).visitAll((it) -> {
+        if (isEmptyString(SPropertyOperations.getString(it, PROPS.conceptId$rrGe))) {
+          SPropertyOperations.assign(it, PROPS.conceptId$rrGe, ((SNodeId.Regular) it.getNodeId()).getId() + "");
         }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AbstractConceptDeclaration$KA, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          if (isEmptyString(SPropertyOperations.getString(it, PROPS.conceptId$rrGe))) {
-            SPropertyOperations.assign(it, PROPS.conceptId$rrGe, ((SNodeId.Regular) it.getNodeId()).getId() + "");
-          }
-          it.setProperty(PROPS.intConceptId$OXxd, null);
+        it.setProperty(PROPS.intConceptId$OXxd, null);
 
-          for (SNode p : ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.propertyDeclaration$YUgg))) {
-            if (isEmptyString(SPropertyOperations.getString(p, PROPS.propertyId$m5HU))) {
-              SPropertyOperations.assign(p, PROPS.propertyId$m5HU, ((SNodeId.Regular) p.getNodeId()).getId() + "");
-            }
+        for (SNode p : ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.propertyDeclaration$YUgg))) {
+          if (isEmptyString(SPropertyOperations.getString(p, PROPS.propertyId$m5HU))) {
+            SPropertyOperations.assign(p, PROPS.propertyId$m5HU, ((SNodeId.Regular) p.getNodeId()).getId() + "");
           }
+        }
 
-          for (SNode l : ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.linkDeclaration$YU1f))) {
-            if (isEmptyString(SPropertyOperations.getString(l, PROPS.linkId$mi9g))) {
-              SPropertyOperations.assign(l, PROPS.linkId$mi9g, ((SNodeId.Regular) l.getNodeId()).getId() + "");
-            }
+        for (SNode l : ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.linkDeclaration$YU1f))) {
+          if (isEmptyString(SPropertyOperations.getString(l, PROPS.linkId$mi9g))) {
+            SPropertyOperations.assign(l, PROPS.linkId$mi9g, ((SNodeId.Regular) l.getNodeId()).getId() + "");
           }
         }
       });
@@ -75,17 +67,9 @@ public class SetSIds extends MigrationScriptBase {
     {
       SearchScope scope_u6fl1v_a0f = CommandUtil.createScope(m);
       final SearchScope scope_u6fl1v_a0f_0 = new EditableFilteringScope(scope_u6fl1v_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_u6fl1v_a0f_0;
-        }
-      };
-      Iterable<Problem> notSet = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AbstractConceptDeclaration$KA, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return isEmptyString(SPropertyOperations.getString(it, PROPS.conceptId$rrGe));
-        }
-      }).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
+      QueryExecutionContext context = () -> scope_u6fl1v_a0f_0;
+      Iterable<Problem> notSet = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AbstractConceptDeclaration$KA, false)).where((it) -> isEmptyString(SPropertyOperations.getString(it, PROPS.conceptId$rrGe))).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+        public Problem invoke(SNode it) {
           return ((Problem) new NotMigratedNode(it) {
             public String getMessage() {
               return "Concept id is not set";
@@ -93,12 +77,8 @@ public class SetSIds extends MigrationScriptBase {
           });
         }
       });
-      Iterable<Problem> notSetProp = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyDeclaration$1S, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return isEmptyString(SPropertyOperations.getString(it, PROPS.propertyId$m5HU));
-        }
-      }).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
+      Iterable<Problem> notSetProp = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyDeclaration$1S, false)).where((it) -> isEmptyString(SPropertyOperations.getString(it, PROPS.propertyId$m5HU))).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+        public Problem invoke(SNode it) {
           return ((Problem) new NotMigratedNode(it) {
             public String getMessage() {
               return "Property id is not set";
@@ -106,12 +86,8 @@ public class SetSIds extends MigrationScriptBase {
           });
         }
       });
-      Iterable<Problem> notSetLinks = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LinkDeclaration$1p, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return isEmptyString(SPropertyOperations.getString(it, PROPS.linkId$mi9g));
-        }
-      }).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
+      Iterable<Problem> notSetLinks = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LinkDeclaration$1p, false)).where((it) -> isEmptyString(SPropertyOperations.getString(it, PROPS.linkId$mi9g))).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+        public Problem invoke(SNode it) {
           return ((Problem) new NotMigratedNode(it) {
             public String getMessage() {
               return "Link id is not set";
@@ -119,12 +95,8 @@ public class SetSIds extends MigrationScriptBase {
           });
         }
       });
-      Iterable<Problem> notEmpty = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AbstractConceptDeclaration$KA, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SPropertyOperations.getInteger(it, PROPS.intConceptId$OXxd) != 0;
-        }
-      }).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
+      Iterable<Problem> notEmpty = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AbstractConceptDeclaration$KA, false)).where((it) -> SPropertyOperations.getInteger(it, PROPS.intConceptId$OXxd) != 0).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+        public Problem invoke(SNode it) {
           return ((Problem) new NotMigratedNode(it) {
             public String getMessage() {
               return "Old concept id != null";
@@ -135,7 +107,7 @@ public class SetSIds extends MigrationScriptBase {
       return Sequence.fromIterable(notSet).union(Sequence.fromIterable(notSetProp)).union(Sequence.fromIterable(notSetLinks)).union(Sequence.fromIterable(notEmpty));
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure"), 1);
   }
 

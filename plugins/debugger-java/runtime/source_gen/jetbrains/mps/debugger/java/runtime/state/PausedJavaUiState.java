@@ -9,15 +9,13 @@ import java.util.List;
 import jetbrains.mps.debug.api.programState.IWatchable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.debugger.java.api.state.proxy.JavaThread;
 import com.sun.jdi.ThreadReference;
 import org.jetbrains.annotations.Nullable;
 import com.sun.jdi.ObjectReference;
 import jetbrains.mps.debugger.java.api.state.proxy.JavaStackFrame;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.debug.api.AbstractUiState;
 import jetbrains.mps.debug.api.programState.IStackFrame;
+import jetbrains.mps.debugger.java.api.state.proxy.JavaThread;
 import jetbrains.mps.debugger.java.runtime.engine.events.EventContext;
 import com.sun.jdi.event.EventSet;
 import jetbrains.mps.debugger.java.runtime.state.watchables.EventWatchablesCreator;
@@ -38,11 +36,7 @@ public class PausedJavaUiState extends JavaUiStateImpl {
 
     myThreadIndex = findThreadIndex();
     assert myThreadIndex >= 0;
-    ListSequence.fromList(getThreads()).visitAll(new IVisitor<JavaThread>() {
-      public void visit(JavaThread it) {
-        it.initializeFrames();
-      }
-    });
+    ListSequence.fromList(getThreads()).visitAll((it) -> it.initializeFrames());
 
     myStackFrameIndex = findStackFrameIndex();
     check_vzg6vq_a01a3(getStackFrame(), this);
@@ -71,11 +65,7 @@ public class PausedJavaUiState extends JavaUiStateImpl {
     myStackFrameIndex = frameIndex;
 
     initializeThreads();
-    ListSequence.fromList(getThreads()).visitAll(new IVisitor<JavaThread>() {
-      public void visit(JavaThread it) {
-        it.initializeFrames();
-      }
-    });
+    ListSequence.fromList(getThreads()).visitAll((it) -> it.initializeFrames());
     getStackFrame().initializeWatchables();
     ListSequence.fromList(myWatchables).addSequence(ListSequence.fromList(getAdditionalWatchables()));
   }
@@ -113,12 +103,10 @@ public class PausedJavaUiState extends JavaUiStateImpl {
   }
   @Override
   public void selectFrame(final int frame) {
-    myDebugSession.getEventsProcessor().schedule(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        PausedJavaUiState newState = selectFrameInternal(frame);
-        if (newState != PausedJavaUiState.this) {
-          myAbstractDebugSession.trySetState(PausedJavaUiState.this, newState);
-        }
+    myDebugSession.getEventsProcessor().schedule(() -> {
+      PausedJavaUiState newState = selectFrameInternal(frame);
+      if (newState != PausedJavaUiState.this) {
+        myAbstractDebugSession.trySetState(PausedJavaUiState.this, newState);
       }
     });
   }

@@ -11,7 +11,7 @@ import org.jdom.Element;
 @GeneratedClass(node = "r:3189948c-a57a-415e-beba-405572f2d13c(jetbrains.mps.ide.findusages.model.scopes)/8568892084424440553", model = "r:3189948c-a57a-415e-beba-405572f2d13c(jetbrains.mps.ide.findusages.model.scopes)")
 public class ProjectScope extends FindUsagesScope {
   public ProjectScope(@NotNull Project project) {
-    for (SModule module : project.getModulesWithGenerators()) {
+    for (SModule module : project.getScope().getModules()) {
       addModule(module);
     }
   }

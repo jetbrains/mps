@@ -18,14 +18,11 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.openapi.editor.message.FormattingOptions;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.nodeEditor.EditorMessage;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.DefaultEditorMessage;
 import jetbrains.mps.openapi.editor.cells.CellMessagesUtil;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessage;
 import java.awt.Graphics;
 import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
@@ -68,18 +65,10 @@ public final class AnnotatedCellMessage extends EditorMessageWithTarget {
     if (!(myShowCommitInfo)) {
       return "";
     }
-    List<String> formattedMessages = SetSequence.fromSet(myChanges).select(new ISelector<RevisionNodeChange, String>() {
-      public String select(RevisionNodeChange it) {
-        return EditorMessage.formatMessage(it.getMessage(), FormattingOptions.PLAIN_TEXT);
-      }
-    }).toListSequence();
+    List<String> formattedMessages = SetSequence.fromSet(myChanges).select((it) -> EditorMessage.formatMessage(it.getMessage(), FormattingOptions.PLAIN_TEXT)).toList();
     final StringBuilder sb = new StringBuilder();
     if (ListSequence.fromList(formattedMessages).isNotEmpty()) {
-      ListSequence.fromList(formattedMessages).visitAll(new IVisitor<String>() {
-        public void visit(String it) {
-          sb.append("<b>").append(it).append("</b>").append("<br>");
-        }
-      });
+      ListSequence.fromList(formattedMessages).visitAll((it) -> sb.append("<b>").append(it).append("</b>").append("<br>"));
       sb.append("<br>");
     }
     sb.append(myCommitsGraphNode.getRevisionDescription(myProject));
@@ -129,11 +118,7 @@ public final class AnnotatedCellMessage extends EditorMessageWithTarget {
     EditorCell parent = cell;
     while (parent != null) {
       List<DefaultEditorMessage> messages = CellMessagesUtil.getMessages(parent, DefaultEditorMessage.class);
-      if (ListSequence.fromList(messages).where(new IWhereFilter<DefaultEditorMessage>() {
-        public boolean accept(DefaultEditorMessage it) {
-          return it.isBackground() && !((it instanceof AnnotatedCellMessage || (it instanceof ChangeEditorMessage && !(((ChangeEditorMessage) it).showInEditor()))));
-        }
-      }).isNotEmpty()) {
+      if (ListSequence.fromList(messages).where((it) -> it.isBackground() && !(it instanceof AnnotatedCellMessage || (it instanceof ChangeEditorMessage && !(((ChangeEditorMessage) it).showInEditor())))).isNotEmpty()) {
         return true;
       }
       parent = parent.getParent();

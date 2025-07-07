@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,12 +19,10 @@ import jetbrains.mps.extapi.model.GeneratableSModel;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.extapi.persistence.SourceRoot;
-import jetbrains.mps.extapi.persistence.datasource.URLNotSupportedException;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -43,7 +41,7 @@ import static jetbrains.mps.extapi.persistence.datasource.PreinstalledPathDataSo
  * Created by apyshkin on 12/19/16.
  */
 final class CopyDefaultModelRootHelper extends CopyFileBasedModelRootHelper<DefaultModelRoot> {
-  private final static Logger LOG = LogManager.getLogger(CopyDefaultModelRootHelper.class);
+  private final static Logger LOG = Logger.getLogger(CopyDefaultModelRootHelper.class);
 
   public CopyDefaultModelRootHelper(@NotNull DefaultModelRoot sourceModelRoot, @NotNull DefaultModelRoot targetModelRoot) {
     super(sourceModelRoot, targetModelRoot);
@@ -62,7 +60,7 @@ final class CopyDefaultModelRootHelper extends CopyFileBasedModelRootHelper<Defa
         IFile targetModelFile = calculateTargetModelFile(sourceModelSourceRoot, targetModelSourceRoot, file);
         SModelBase modelData = (SModelBase) factory.load(dataSource, options.convertToLoadingOptions());
         createModelCopy(factory, targetModelFile, modelData);
-      } catch (URLNotSupportedException | IOException | ModelCannotBeCreatedException | ModelLoadException e) {
+      } catch (IOException | ModelCannotBeCreatedException | ModelLoadException e) {
         LOG.error("Could not create a model copy because of unexpected error", e);
       }
     }).traverse(sourceModelSourceRoot);
@@ -72,7 +70,6 @@ final class CopyDefaultModelRootHelper extends CopyFileBasedModelRootHelper<Defa
   private SModel createModelCopy(@NotNull ModelFactory factory,
                                  @NotNull IFile targetModelFile,
                                  @NotNull SModelBase modelDataToCopy) throws IOException,
-                                                                             URLNotSupportedException,
                                                                              ModelCannotBeCreatedException {
     DataSource targetDataSource = FILE_OR_FOLDER.create(targetModelFile.toPath());
     ParametersCalculator prmCalculator = new ParametersCalculator(myTargetModelRoot);
@@ -88,7 +85,9 @@ final class CopyDefaultModelRootHelper extends CopyFileBasedModelRootHelper<Defa
     if (targetModel instanceof GeneratableSModel && modelDataToCopy instanceof GeneratableSModel) {
       ((GeneratableSModel) targetModel).setDoNotGenerate(((GeneratableSModel) modelDataToCopy).isDoNotGenerate());
     }
-    saveModel(targetModel);
+    if (targetModel instanceof EditableSModel) {
+      ((EditableSModel) targetModel).save();
+    }
     return targetModel;
   }
 
@@ -111,13 +110,5 @@ final class CopyDefaultModelRootHelper extends CopyFileBasedModelRootHelper<Defa
       name = myTargetModule.getModuleName() + name.substring(mySourceModule.getModuleName().length());
     }
     return name;
-  }
-
-  // FIXME see MPS-18545
-  private static void saveModel(@NotNull SModel targetModel) {
-    if (targetModel instanceof EditableSModel) {
-      ((EditableSModel) targetModel).setChanged(true);
-      ((EditableSModel) targetModel).save();
-    }
   }
 }

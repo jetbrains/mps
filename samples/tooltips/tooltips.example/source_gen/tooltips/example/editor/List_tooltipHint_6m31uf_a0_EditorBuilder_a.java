@@ -46,7 +46,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     return editorCell;
   }
   private EditorCell createConstant_0() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "i'm a tooltip");
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "I'm a tooltip");
     editorCell.setCellId("Constant_xg96h9_a0");
     editorCell.setDefaultText("");
     return editorCell;

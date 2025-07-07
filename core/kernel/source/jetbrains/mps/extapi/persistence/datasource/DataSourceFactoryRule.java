@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,10 @@
  */
 package jetbrains.mps.extapi.persistence.datasource;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.path.Path;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
-
-import java.net.URL;
 
 /**
  * Service-provider interface for breeding new {@link DataSourceFactoryFromName} and
@@ -57,19 +54,6 @@ public interface DataSourceFactoryRule {
    */
   @Nullable
   DataSourceFactoryFromName spawn(@NotNull DataSourceType dataSourceType);
-
-  /**
-   * Constructs a factory from a specified URL.
-   * Might return null which means that the passed argument does not satisfy
-   * the rule.
-   * @return a new data source factory based on the data source type information
-   *         null if the provided data source type does not suit the rule preconditions.
-   * @deprecated use the {@link #spawn(Path)}
-   */
-  @Nullable
-  @ToRemove(version=2022.2)
-  @Deprecated
-  DataSourceFactoryFromURL spawn(@NotNull URL url);
 
   /**
    * Constructs a factory from a specified URL.

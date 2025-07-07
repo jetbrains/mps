@@ -15,8 +15,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 import java.util.Collections;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -56,15 +54,7 @@ public class ChangeSetImpl implements ModelChangeSet {
   @NotNull
   @Override
   public <C extends ModelChange> Iterable<C> getModelChanges(final Class<C> changeClass) {
-    return ListSequence.fromList(myModelChanges).where(new IWhereFilter<ModelChange>() {
-      public boolean accept(ModelChange ch) {
-        return changeClass.isInstance(ch);
-      }
-    }).select(new ISelector<ModelChange, C>() {
-      public C select(ModelChange ch) {
-        return (C) ch;
-      }
-    });
+    return ListSequence.fromList(myModelChanges).where((ch) -> changeClass.isInstance(ch)).select((ch) -> (C) ch);
   }
   @NotNull
   @Override
@@ -92,12 +82,10 @@ public class ChangeSetImpl implements ModelChangeSet {
     if (myOppositeChangeSet == null) {
       myOppositeChangeSet = new ChangeSetImpl(myNewModel, myOldModel);
       myOppositeChangeSet.myOppositeChangeSet = this;
+    } else {
+      myOppositeChangeSet.clear();
     }
-    ListSequence.fromList(myOppositeChangeSet.myModelChanges).addSequence(ListSequence.fromList(myModelChanges).select(new ISelector<ModelChange, ModelChange>() {
-      public ModelChange select(ModelChange c) {
-        return c.getOppositeChange();
-      }
-    }));
+    ListSequence.fromList(myOppositeChangeSet.myModelChanges).addSequence(ListSequence.fromList(myModelChanges).select((c) -> c.getOppositeChange()));
     myOppositeChangeSet.fillRootToChange();
   }
   public void add(@NotNull ModelChange change) {
@@ -115,11 +103,7 @@ public class ChangeSetImpl implements ModelChangeSet {
   public void addAll(Iterable<? extends ModelChange> changes) {
     ListSequence.fromList(myModelChanges).addSequence(Sequence.fromIterable(changes));
     if (myOppositeChangeSet != null) {
-      ListSequence.fromList(myOppositeChangeSet.myModelChanges).addSequence(Sequence.fromIterable(changes).select(new ISelector<ModelChange, ModelChange>() {
-        public ModelChange select(ModelChange c) {
-          return c.getOppositeChange();
-        }
-      }));
+      ListSequence.fromList(myOppositeChangeSet.myModelChanges).addSequence(Sequence.fromIterable(changes).select((c) -> c.getOppositeChange()));
     }
   }
 
@@ -159,52 +143,42 @@ public class ChangeSetImpl implements ModelChangeSet {
 
     final Set<SNodeId> ids = SetSequence.fromSet(new HashSet<SNodeId>());
     if ((oldNode != null)) {
-      SetSequence.fromSet(ids).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(oldNode, null, true, new SAbstractConcept[]{})).select(new ISelector<SNode, SNodeId>() {
-        public SNodeId select(SNode it) {
-          return it.getNodeId();
-        }
-      }));
+      SetSequence.fromSet(ids).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(oldNode, null, true, new SAbstractConcept[]{})).select((it) -> it.getNodeId()));
     }
     if ((newNode != null)) {
-      SetSequence.fromSet(ids).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(newNode, null, true, new SAbstractConcept[]{})).select(new ISelector<SNode, SNodeId>() {
-        public SNodeId select(SNode it) {
-          return it.getNodeId();
-        }
-      }));
+      SetSequence.fromSet(ids).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(newNode, null, true, new SAbstractConcept[]{})).select((it) -> it.getNodeId()));
     }
-    return SetSequence.fromSet(changesForRoot).where(new IWhereFilter<ModelChange>() {
-      public boolean accept(ModelChange change) {
-        if (change instanceof NodeChange) {
-          return SetSequence.fromSet(ids).contains(((NodeChange) change).getAffectedNodeId());
-        }
-        if (change instanceof AddRootChange) {
-          return ((AddRootChange) change).getRootId().equals(nodeId);
-        }
-        if (change instanceof DeleteRootChange) {
-          return ((DeleteRootChange) change).getRootId().equals(nodeId);
-        }
-        if (change instanceof NodeGroupChange) {
-          return SetSequence.fromSet(ids).contains(((NodeGroupChange) change).getOldParentNodeId());
-        }
-        if (change instanceof NodeIdChange) {
-          return SetSequence.fromSet(ids).contains(((NodeIdChange) change).getNodeId(false));
-        }
-        if (change instanceof HierarchicalNodeGroupChange) {
-          HierarchicalNodeGroupChange ngc = (HierarchicalNodeGroupChange) change;
-          for (SNodeId chId : ngc.getIds(false)) {
-            if (SetSequence.fromSet(ids).contains(chId)) {
-              return true;
-            }
+    return SetSequence.fromSet(changesForRoot).where((change) -> {
+      if (change instanceof NodeChange) {
+        return SetSequence.fromSet(ids).contains(((NodeChange) change).getAffectedNodeId());
+      }
+      if (change instanceof AddRootChange) {
+        return ((AddRootChange) change).getRootId().equals(nodeId);
+      }
+      if (change instanceof DeleteRootChange) {
+        return ((DeleteRootChange) change).getRootId().equals(nodeId);
+      }
+      if (change instanceof NodeGroupChange) {
+        return SetSequence.fromSet(ids).contains(((NodeGroupChange) change).getOldParentNodeId());
+      }
+      if (change instanceof NodeIdChange) {
+        return SetSequence.fromSet(ids).contains(((NodeIdChange) change).getNodeId(false));
+      }
+      if (change instanceof HierarchicalNodeGroupChange) {
+        HierarchicalNodeGroupChange ngc = (HierarchicalNodeGroupChange) change;
+        for (SNodeId chId : ngc.getIds(false)) {
+          if (SetSequence.fromSet(ids).contains(chId)) {
+            return true;
           }
-          for (SNodeId chId : ngc.getIds(true)) {
-            if (SetSequence.fromSet(ids).contains(chId)) {
-              return true;
-            }
+        }
+        for (SNodeId chId : ngc.getIds(true)) {
+          if (SetSequence.fromSet(ids).contains(chId)) {
+            return true;
           }
-          return false;
         }
         return false;
       }
+      return false;
     });
   }
 
@@ -230,5 +204,30 @@ public class ChangeSetImpl implements ModelChangeSet {
   @Override
   public Iterable<SNodeId> getAffectedRoots() {
     return (ListSequence.fromList(myMetadataChanges).isEmpty() ? MapSequence.fromMap(myRootToChanges).keySet() : SetSequence.fromSet(MapSequence.fromMap(myRootToChanges).keySet()).concat(ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<SNodeId>(), null))));
+  }
+
+  @Override
+  public ChangeSet getChangeSetCopy(boolean withOpposite) {
+    final ChangeSetImpl copy = new ChangeSetImpl(myOldModel, myNewModel);
+    ListSequence.fromList(copy.myModelChanges).addSequence(ListSequence.fromList(myModelChanges));
+    MapSequence.fromMap(myRootToChanges).visitAll((it) -> MapSequence.fromMap(copy.myRootToChanges).put(it.key(), it.value()));
+    ListSequence.fromList(copy.myMetadataChanges).addSequence(ListSequence.fromList(myMetadataChanges));
+    if (withOpposite && myOppositeChangeSet != null) {
+      copy.myOppositeChangeSet = (ChangeSetImpl) myOppositeChangeSet.getChangeSetCopy(false);
+    }
+    return copy;
+  }
+  @Override
+  public void restoreChangeSetByCopy(@NotNull ChangeSet copy, boolean withOpposite) {
+    ChangeSetImpl copyImpl = (ChangeSetImpl) copy;
+    ListSequence.fromList(myModelChanges).clear();
+    ListSequence.fromList(myModelChanges).addSequence(ListSequence.fromList(copyImpl.myModelChanges));
+    MapSequence.fromMap(myRootToChanges).clear();
+    MapSequence.fromMap(copyImpl.myRootToChanges).visitAll((it) -> MapSequence.fromMap(myRootToChanges).put(it.key(), it.value()));
+    ListSequence.fromList(myMetadataChanges).clear();
+    ListSequence.fromList(myMetadataChanges).addSequence(ListSequence.fromList(copyImpl.myMetadataChanges));
+    if (withOpposite && copyImpl.myOppositeChangeSet != null) {
+      myOppositeChangeSet.restoreChangeSetByCopy(copyImpl.myOppositeChangeSet, false);
+    }
   }
 }

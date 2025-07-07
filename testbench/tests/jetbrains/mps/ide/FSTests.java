@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,9 @@
  */
 package jetbrains.mps.ide;
 
-import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
 import jetbrains.mps.project.Solution;
+import jetbrains.mps.project.modules.LanguageProducer;
+import jetbrains.mps.project.modules.SolutionProducer;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.util.IterableUtil;
@@ -44,12 +45,12 @@ public final class FSTests extends ModuleInProjectTest { // e.g. in order to get
     ProjectBackup projectBackup = new ProjectBackup(myProject);
     Reference<Language> langRef = new Reference<>();
     Reference<Solution> solutionRef = new Reference<>();
-    invokeInCommand(() -> langRef.set(NewModuleUtil.createLanguage(langName, createNewDirInProject(), myProject)));
-    invokeInCommand(() -> solutionRef.set(NewModuleUtil.createSolution(solutionName, createNewDirInProject(), myProject)));
+    invokeInCommand(() -> langRef.set(new LanguageProducer(myProject).create(langName, createNewDirInProject())));
+    invokeInCommand(() -> solutionRef.set(new SolutionProducer( myProject).create(solutionName, createNewDirInProject())));
+    saveProjectInTest();
     invokeInCommand(() -> {
       @NotNull Language lang = langRef.get();
       @NotNull Solution solution = solutionRef.get();
-      saveProjectInTest();
       projectBackup.doBackup();
 
       lang.addDependency(solution.getModuleReference(), false);
@@ -72,21 +73,21 @@ public final class FSTests extends ModuleInProjectTest { // e.g. in order to get
     String solutionName = getNewModuleName();
     ProjectBackup projectBackup = new ProjectBackup(myProject);
     Reference<Language> langRef = new Reference<>();
-    invokeInCommand(() -> langRef.set(NewModuleUtil.createLanguage(langName, createNewDirInProject(), myProject)));
+    invokeInCommand(() -> langRef.set(new LanguageProducer(myProject).create(langName, createNewDirInProject())));
+    saveProjectInTest();
     invokeInCommand(() -> {
-      saveProjectInTest();
       projectBackup.doBackup();
     });
     Reference<Solution> solutionRef = new Reference<>();
-    invokeInCommand(() -> solutionRef.set(NewModuleUtil.createSolution(solutionName, createNewDirInProject(), myProject)));
+    invokeInCommand(() -> solutionRef.set(new SolutionProducer(myProject).create(solutionName, createNewDirInProject())));
     invokeInCommand(() -> {
       @NotNull Language lang = langRef.get();
       @NotNull Solution solution = solutionRef.get();
       lang.addDependency(solution.getModuleReference(), false);
       lang.save();
       lang.getGenerators().forEach(Generator::save);
-      saveProjectInTest();
     });
+    saveProjectInTest();
     invokeInCommand(projectBackup::restoreFromBackup);
     refreshProjectRecursively();
     invokeInCommand(() -> {

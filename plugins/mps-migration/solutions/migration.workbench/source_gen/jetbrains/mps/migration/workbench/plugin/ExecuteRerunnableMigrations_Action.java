@@ -11,23 +11,22 @@ import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import org.jetbrains.annotations.NotNull;
-import java.util.List;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.progress.ProgressIndicator;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import com.intellij.util.WaitForProgressToShow;
-import java.util.Set;
-import org.jetbrains.mps.openapi.language.SLanguage;
-import jetbrains.mps.smodel.SLanguageHierarchy;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import java.util.List;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import com.intellij.util.WaitForProgressToShow;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.smodel.SLanguageHierarchy;
+import jetbrains.mps.smodel.language.LanguageRuntime;
 
 public class ExecuteRerunnableMigrations_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -37,6 +36,7 @@ public class ExecuteRerunnableMigrations_Action extends BaseAction {
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
     this.setMnemonic("r".charAt(0));
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -63,44 +63,48 @@ public class ExecuteRerunnableMigrations_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final List<SModule>[] modules = new List[1];
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        jetbrains.mps.project.Project p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-        modules[0] = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(p)).toListSequence();
-      }
-    });
+    final MPSProject mpsProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
     ProgressManager.getInstance().run(new Task.Modal(event.getData(CommonDataKeys.PROJECT), "Run Migrations", true) {
       public void run(@NotNull ProgressIndicator progressIndicator) {
-        ProgressMonitorAdapter progressMonitor = new ProgressMonitorAdapter(progressIndicator);
-        int steps = modules[0].size();
-        progressMonitor.start("Running...", steps);
-        final MPSProject mpsProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-        for (final SModule module : ListSequence.fromList(modules[0])) {
-          progressMonitor.step(module.getModuleName());
-          WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(new Runnable() {
-            public void run() {
-              mpsProject.getRepository().getModelAccess().executeCommand(new Runnable() {
-                public void run() {
-                  Set<SLanguage> languages = new SLanguageHierarchy(mpsProject.getComponent(LanguageRegistry.class), module.getUsedLanguages()).getExtended();
-                  for (SLanguage language : SetSequence.fromSet(languages)) {
-                    for (int ver = 0; ver < language.getLanguageVersion(); ver++) {
-                      MigrationScript script = new MigrationScriptReference(language, ver).resolve(mpsProject, true);
-                      if (script != null && Sequence.fromIterable(script.requiresData()).isEmpty() && script.isRerunnable()) {
-                        script.execute(module);
-                        RunMigration.updateModelVesionsIfPossible(module, language, ver, ver + 1);
-                      }
+        final ProgressMonitorAdapter progressMonitor = new ProgressMonitorAdapter(progressIndicator);
+        final LanguageRegistry languageRegistry = mpsProject.getComponent(LanguageRegistry.class);
+        final Map<SLanguage, List<MigrationScript>> availableScripts = MigrationScriptReference.availableScripts(languageRegistry, null);
+        WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(() -> {
+          // FIXME deal with deprecated runOrInvoke... method and check if command is truly necessary (can I undo migrations?)
+          mpsProject.getRepository().getModelAccess().executeCommand(() -> {
+            List<SModule> migrateableModulesFromProject = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(mpsProject)).toList();
+            progressMonitor.start("Running...", ListSequence.fromList(migrateableModulesFromProject).count());
+            for (SModule module : ListSequence.fromList(migrateableModulesFromProject)) {
+              if (progressMonitor.isCanceled()) {
+                break;
+              }
+              new SLanguageHierarchy(languageRegistry, module.getUsedLanguages()).forEachExtended(new SLanguageHierarchy.HierarchyVisitor() {
+                @Override
+                public void accept(LanguageRuntime lang) {
+                  List<MigrationScript> scripts4lang = availableScripts.get(lang.getIdentity());
+                  if (scripts4lang == null) {
+                    return;
+                  }
+                  // XXX I wonder if we should not limit applied scripts UP TO the language version used in this particular module?
+                  //    Now we just apply all scripts up to actual deployed version, which may get wrong e.g. if we got few modules, some migrated to newest,
+                  //    some still with the older language version
+                  for (MigrationScript ms : ListSequence.fromList(scripts4lang)) {
+                    if (ms.isRerunnable() && Sequence.fromIterable(ms.requiresData()).isEmpty()) {
+                      ms.execute(module);
                     }
+                    // try to shift version even if this particular migration is not re-runnable or requires input data, just in case there are subsequent 
+                    // re-runnable migrations we'll apply
+                    int ver = ms.getReference().getFromVersion();
+                    // need alternative MigrationExecutor implementation, the one that hides update logic but doesn't check pre-conditions like MigrationExecutorImpl
+                    RunMigration.updateModelVesionsIfPossible(module, lang.getIdentity(), ver, ver + 1);
                   }
                 }
               });
+              progressMonitor.advance(1);
             }
           });
-          progressMonitor.advance(1);
-          if (progressMonitor.isCanceled()) {
-            break;
-          }
-        }
+        });
+        progressMonitor.done();
       }
     });
   }

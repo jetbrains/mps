@@ -16,14 +16,13 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import java.util.List;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.scope.ListScope;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.HashMap;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -36,11 +35,7 @@ public class ConceptMethodDeclaration_Constraints extends BaseConstraintsDescrip
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.overriddenMethod$quKH, this) {
-      @Override
-      public boolean hasOwnOnReferenceSetHandler() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.overriddenMethod$quKH, this, true, true) {
       @Override
       public boolean validate(final SNode referenceNode, final SNode oldReferentNode, final SNode newReferentNode) {
         return true;
@@ -58,27 +53,19 @@ public class ConceptMethodDeclaration_Constraints extends BaseConstraintsDescrip
           SLinkOperations.setTarget(referenceNode, LINKS.returnType$5xoi, SNodeOperations.copyNode(SLinkOperations.getTarget(newReferentNode, LINKS.returnType$5xoi)));
         }
       }
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_sgoqec_a0a0a0a0a4a0a0a0c;
+            return new SNodePointer("r:6786d6ee-e5cc-4a77-9efd-65a8dca8b187(jetbrains.mps.lang.behavior.constraints)", "6836281137582780722");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode concept = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ConceptBehavior$2, true, false), LINKS.concept$u6dL);
             List<SNode> methods = AbstractConceptDeclaration__BehaviorDescriptor.getVirtualConceptMethods_idhEwILHM.invoke(concept);
-            return ListScope.forResolvableElements(ListSequence.fromList(methods).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return SLinkOperations.getTarget(it, LINKS.overriddenMethod$quKH) == null;
-              }
-            }));
+            return ListScope.forResolvableElements(ListSequence.fromList(methods).where((it) -> SLinkOperations.getTarget(it, LINKS.overriddenMethod$quKH) == null));
           }
         };
       }
@@ -87,7 +74,6 @@ public class ConceptMethodDeclaration_Constraints extends BaseConstraintsDescrip
     references.put(d0.getReference(), d0);
     return references;
   }
-  private static final SNodePointer breakingNode_sgoqec_a0a0a0a0a4a0a0a0c = new SNodePointer("r:6786d6ee-e5cc-4a77-9efd-65a8dca8b187(jetbrains.mps.lang.behavior.constraints)", "6836281137582780722");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ConceptMethodDeclaration$N0 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");

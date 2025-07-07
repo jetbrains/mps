@@ -5,6 +5,7 @@ package jetbrains.mps.ide.icons;
 import jetbrains.mps.annotations.GeneratedClass;
 import javax.swing.Icon;
 import com.intellij.openapi.util.IconLoader;
+import com.intellij.ui.ExperimentalUI;
 
 @GeneratedClass(node = "r:836426ab-a6f4-4fa3-9a9c-34c02ed6ab5d(jetbrains.mps.ide.icons)/4459225238462083668", model = "r:836426ab-a6f4-4fa3-9a9c-34c02ed6ab5d(jetbrains.mps.ide.icons)")
 public class IconLoadingUtil {
@@ -20,5 +21,9 @@ public class IconLoadingUtil {
     String packName = loader.getPackage().getName();
     String resourcePath = (packName.isEmpty() ? "/" + resource : "/" + packName.replace('.', '/') + "/" + resource);
     return IconLoader.findIcon(resourcePath, loader.getClassLoader());
+  }
+
+  public static boolean isNewUIActive() {
+    return ExperimentalUI.isNewUI();
   }
 }

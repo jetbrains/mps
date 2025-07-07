@@ -6,6 +6,7 @@ import java.util.SortedMap;
 import java.io.Serializable;
 import java.util.Comparator;
 import java.util.TreeMap;
+import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.impl.NullSortedMapSequence;
 
 public class SortedMapSequence<U, V> extends AbstractMapSequence<U, V> implements ISortedMapSequence<U, V>, SortedMap<U, V>, Serializable {
@@ -45,8 +46,20 @@ public class SortedMapSequence<U, V> extends AbstractMapSequence<U, V> implement
     SortedMap<P, Q> map = new TreeMap<P, Q>();
     return new SortedMapSequenceInitializer<P, Q>(new SortedMapSequence<P, Q>(map), keys);
   }
+  /**
+   * 
+   * @deprecated replaced by fromMapAndEntryArray, which works better with type inference
+   */
+  @Deprecated
   public static <P, Q> SortedMapSequenceInitializer<P, Q> fromMapAndKeysArray(SortedMap<P, Q> map, P... keys) {
     return new SortedMapSequenceInitializer<P, Q>(new SortedMapSequence<P, Q>(map), keys);
+  }
+  public static <P, Q> ISortedMapSequence<P, Q> fromMapAndEntryArray(SortedMap<P, Q> map, Map.Entry<? extends P, ? extends Q>... entries) {
+    SortedMapSequence<P, Q> sequence = new SortedMapSequence<P, Q>(map);
+    for (Map.Entry<? extends P, ? extends Q> entry : entries) {
+      sequence.put(entry.getKey(), entry.getValue());
+    }
+    return sequence;
   }
   public static <P, Q> ISortedMapSequence<P, Q> fromArray(IMapping<P, Q>... mappings) {
     SortedMap<P, Q> map = new TreeMap<P, Q>();

@@ -9,7 +9,7 @@ import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.generator.template.TemplateQueryContext;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.messages.LogHandler;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.build.util.DependenciesHelper;
@@ -25,6 +25,7 @@ import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -50,7 +51,7 @@ public final class VisibleModules {
   }
 
   public VisibleModules(SNode project, @Nullable TemplateQueryContext genContext) {
-    this(project, new LogHandler(LogManager.getLogger(VisibleModules.class)), genContext);
+    this(project, new LogHandler(Logger.getLogger(VisibleModules.class)), genContext);
   }
 
   public VisibleModules(@NotNull SNode project, @NotNull IMessageHandler msgHandler, @Nullable TemplateQueryContext genContext) {
@@ -107,8 +108,16 @@ public final class VisibleModules {
         // FIXME given we use only UUID of module identity to resolve modules, myName2Module is of no use for us. Besides, it forces unique module names, something we don't really care about. Why not to drop it altogether?
         existing = myName2Module.get(SPropertyOperations.getString(newModule, PROPS.name$MnvL));
         if (existing != null) {
-          String msg = "There are two modules visible from the project [%s] with the same name '%s'. The first module is from project [%s] from the model %s, the second module is from [%s] from the model %s";
-          report(String.format(msg, SPropertyOperations.getString(myProject, PROPS.name$MnvL), SPropertyOperations.getString(newModule, PROPS.name$MnvL), SPropertyOperations.getString(SNodeOperations.getNodeAncestor(existing, CONCEPTS.BuildProject$ae, false, false), PROPS.name$MnvL), SNodeOperations.getModel(existing), SPropertyOperations.getString(project, PROPS.name$MnvL), SNodeOperations.getModel(newModule)), existing);
+          SNode projectOfSeen = SNodeOperations.getNodeAncestor(existing, CONCEPTS.BuildProject$ae, false, false);
+          String msg;
+          if (projectOfSeen == myProject) {
+            String fmt = "There are two modules in the project [%s] with the same name '%s'. The first module is %s, another is %s";
+            msg = String.format(fmt, SPropertyOperations.getString(myProject, PROPS.name$MnvL), SPropertyOperations.getString(newModule, PROPS.name$MnvL), SNodeOperations.getConcept(newModule).getName(), SNodeOperations.getConcept(existing).getName());
+          } else {
+            String fmt = "There are two modules visible from the project [%s] with the same name '%s'. The first module is from project [%s] from the model %s, the second module is from [%s] from the model %s";
+            msg = String.format(fmt, SPropertyOperations.getString(myProject, PROPS.name$MnvL), SPropertyOperations.getString(newModule, PROPS.name$MnvL), SPropertyOperations.getString(projectOfSeen, PROPS.name$MnvL), SModelOperations.getModelName(SNodeOperations.getModel(existing)), SPropertyOperations.getString(project, PROPS.name$MnvL), SModelOperations.getModelName(SNodeOperations.getModel(newModule)));
+          }
+          myMsgHandler.handle(Message.createMessage(MessageKind.WARNING, this.getClass().getName(), msg, SNodeOperations.getPointer(existing)));
         } else {
           myName2Module.put(SPropertyOperations.getString(newModule, PROPS.name$MnvL), newModule);
         }
@@ -138,21 +147,6 @@ public final class VisibleModules {
 
   public SNode resolveGenerator(SModuleReference moduleRef) {
     return SNodeOperations.as(resolve(moduleRef), CONCEPTS.BuildMps_Generator$RQ);
-  }
-
-  /**
-   * use the one below
-   */
-  @Deprecated
-  public SNode resolve(String moduleName, String moduleId) {
-    SNode result = null;
-    if (moduleId != null) {
-      result = myId2Module.get(moduleId);
-    }
-    if (result == null && moduleName != null) {
-      result = myName2Module.get(moduleName);
-    }
-    return result;
   }
 
   @Nullable

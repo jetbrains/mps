@@ -16,7 +16,7 @@
 
 package jetbrains.mps.jps.j8compatibility;
 
-import com.intellij.openapi.util.SystemInfo;
+import com.intellij.util.lang.JavaVersion;
 import jetbrains.mps.idea.core.project.JpsModelRootContributor;
 import jetbrains.mps.jps.project.ClassStubsJpsModelRootContributor;
 import org.jetbrains.jps.model.module.JpsModule;
@@ -29,7 +29,7 @@ public class J8ClassStubsJpsModelRootContributor implements JpsModelRootContribu
 
   @Override
   public Iterable<ModelRoot> getModelRoots(JpsModule module) {
-    if (!SystemInfo.isJavaVersionAtLeast(11)) {
+    if (!JavaVersion.current().isAtLeast(11)) {
       return Collections.emptyList();
     }
 

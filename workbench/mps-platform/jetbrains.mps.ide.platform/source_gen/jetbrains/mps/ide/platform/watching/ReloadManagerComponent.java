@@ -4,8 +4,7 @@ package jetbrains.mps.ide.platform.watching;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.Disposable;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.make.IMakeNotificationListener;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -13,9 +12,9 @@ import java.util.ArrayList;
 import com.intellij.util.ui.update.MergingUpdateQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 import jetbrains.mps.make.IMakeService;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.vfs.VirtualFileManager;
 import java.util.function.Supplier;
-import org.apache.log4j.Level;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import com.intellij.openapi.project.Project;
@@ -36,7 +35,7 @@ import com.intellij.openapi.vfs.VirtualFileManagerListener;
 
 @GeneratedClass(node = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)/4774203567222173397", model = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)")
 public class ReloadManagerComponent extends ReloadManager implements Disposable {
-  private static final Logger LOG = LogManager.getLogger(ReloadManagerComponent.class);
+  private static final Logger LOG = Logger.getLogger(ReloadManagerComponent.class);
 
   private final IMakeNotificationListener myMakeListener = new NotReloadingOnMakeListener();
   private final List<ReloadListener> myReloadListeners = ListSequence.fromList(new ArrayList<ReloadListener>());
@@ -47,9 +46,11 @@ public class ReloadManagerComponent extends ReloadManager implements Disposable 
 
   private final IMakeService myMakeService;
 
-  public ReloadManagerComponent(IMakeService makeService) {
+  public ReloadManagerComponent() {
     myTaskQueue.setRestartTimerOnAdd(true);
-    myMakeService = makeService;
+    // I'd love to use MakeServiceComponent.get() but no mechanism to ensure MakeServiceComponent is already initialized,
+    // (it's WorkbenchMakeService AppComponent that is responsible for init), therefore have to access the instance explicitly
+    myMakeService = ApplicationManager.getApplication().getComponent(IMakeService.class);
     myMakeService.addListener(myMakeListener);
     VirtualFileManager.getInstance().addVirtualFileManagerListener(new NoReloadOnRefresh(), this);
   }
@@ -85,7 +86,7 @@ public class ReloadManagerComponent extends ReloadManager implements Disposable 
         rs.updateStatus();
       }
     } catch (RuntimeException e) {
-      if (LOG.isEnabledFor(Level.ERROR)) {
+      if (LOG.isErrorLevel()) {
         LOG.error("Exception during reload", e);
       }
       throw e;

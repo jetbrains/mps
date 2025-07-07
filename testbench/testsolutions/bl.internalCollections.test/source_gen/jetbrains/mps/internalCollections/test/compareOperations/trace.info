@@ -348,5 +348,65 @@
       <unit id="2796241438627699197" at="6,0,10,0" name="jetbrains.mps.internalCollections.test.compareOperations.Bar" />
     </file>
   </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895903ef(jetbrains.mps.internalCollections.test.compareOperations)/6551446852582687368">
+    <file name="EqualsListSequence_Test.java">
+      <node id="6551446852583764538" at="16,62,17,149" concept="4" />
+      <node id="6551446852583764570" at="17,149,18,43" concept="3" />
+      <node id="6551446852583764576" at="18,43,19,16" concept="1" />
+      <node id="6551446852583764581" at="19,16,20,16" concept="1" />
+      <node id="6551446852583764586" at="20,16,21,53" concept="3" />
+      <node id="6551446852583764593" at="21,53,22,40" concept="1" />
+      <node id="6551446852583764602" at="25,62,26,43" concept="3" />
+      <node id="6551446852583764608" at="26,43,27,16" concept="1" />
+      <node id="6551446852583764613" at="27,16,28,16" concept="1" />
+      <node id="6551446852583764618" at="28,16,29,53" concept="3" />
+      <node id="6551446852583764625" at="29,53,30,40" concept="1" />
+      <node id="6551446852582696703" at="33,60,34,39" concept="3" />
+      <node id="6551446852582697552" at="34,39,35,15" concept="1" />
+      <node id="6551446852582717598" at="35,15,36,15" concept="1" />
+      <node id="6551446852582741389" at="36,15,37,51" concept="3" />
+      <node id="6551446852582770409" at="37,51,38,39" concept="1" />
+      <node id="6551446852587519743" at="41,60,42,39" concept="3" />
+      <node id="6551446852587519749" at="42,39,43,15" concept="1" />
+      <node id="6551446852587519754" at="43,15,44,15" concept="1" />
+      <node id="6551446852587519759" at="44,15,45,51" concept="3" />
+      <node id="6551446852587519766" at="45,51,46,39" concept="1" />
+      <node id="6551446852583872232" at="49,69,50,54" concept="3" />
+      <node id="6551446852583872248" at="50,54,51,51" concept="3" />
+      <node id="6551446852587599850" at="51,51,52,41" concept="1" />
+      <node id="6551446852587625459" at="52,41,53,41" concept="1" />
+      <node id="6551446852582818183" at="48,0,55,0" concept="2" trace="test_setSequenceEqualsListSequence#()V" />
+      <node id="6551446852583764598" at="24,0,32,0" concept="2" trace="test_listSequenceEqualsList#()V" />
+      <node id="6551446852582688021" at="32,0,40,0" concept="2" trace="test_setEqualsSetSequence#()V" />
+      <node id="6551446852587519739" at="40,0,48,0" concept="2" trace="test_setSequenceEqualsSet#()V" />
+      <node id="6551446852583764534" at="15,0,24,0" concept="2" trace="test_listEqualsListSequence#()V" />
+      <scope id="6551446852582818186" at="49,69,53,41">
+        <var name="list" id="6551446852583872233" />
+        <var name="set" id="6551446852583872249" />
+      </scope>
+      <scope id="6551446852583764601" at="25,62,30,40">
+        <var name="list" id="6551446852583764603" />
+        <var name="seq" id="6551446852583764619" />
+      </scope>
+      <scope id="6551446852582688024" at="33,60,38,39">
+        <var name="seq" id="6551446852582741390" />
+        <var name="set" id="6551446852582696704" />
+      </scope>
+      <scope id="6551446852587519742" at="41,60,46,39">
+        <var name="seq" id="6551446852587519760" />
+        <var name="set" id="6551446852587519744" />
+      </scope>
+      <scope id="6551446852583764537" at="16,62,22,40">
+        <var name="list" id="6551446852583764571" />
+        <var name="seq" id="6551446852583764587" />
+      </scope>
+      <scope id="6551446852582818183" at="48,0,55,0" />
+      <scope id="6551446852583764598" at="24,0,32,0" />
+      <scope id="6551446852582688021" at="32,0,40,0" />
+      <scope id="6551446852587519739" at="40,0,48,0" />
+      <scope id="6551446852583764534" at="15,0,24,0" />
+      <unit id="6551446852582687368" at="14,0,56,0" name="jetbrains.mps.internalCollections.test.compareOperations.EqualsListSequence_Test" />
+    </file>
+  </root>
 </debug-info>
 

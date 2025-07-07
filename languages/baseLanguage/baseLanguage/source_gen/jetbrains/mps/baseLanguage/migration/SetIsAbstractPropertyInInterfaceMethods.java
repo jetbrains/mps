@@ -10,10 +10,9 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
@@ -39,27 +38,21 @@ public class SetIsAbstractPropertyInInterfaceMethods extends MigrationScriptBase
     {
       SearchScope scope_km8cgg_a0e = CommandUtil.createScope(m);
       final SearchScope scope_km8cgg_a0e_0 = new EditableFilteringScope(scope_km8cgg_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_km8cgg_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.Interface$db, true)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.member$L_2d)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SNodeOperations.isInstanceOf(it, CONCEPTS.InstanceMethodDeclaration$39);
-            }
-          }).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode it) {
-              SPropertyOperations.assign(SNodeOperations.cast(it, CONCEPTS.InstanceMethodDeclaration$39), PROPS.isAbstract$VtH_, false);
-            }
-          });
-        }
+      QueryExecutionContext context = () -> scope_km8cgg_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.Interface$db, true)).visitAll((it) -> {
+        ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.member$L_2d)).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+          public Boolean invoke(SNode it) {
+            return SNodeOperations.isInstanceOf(it, CONCEPTS.InstanceMethodDeclaration$39);
+          }
+        }).visitAll(new _FunctionTypes._void_P1_E0<SNode>() {
+          public void invoke(SNode it) {
+            SPropertyOperations.assign(SNodeOperations.cast(it, CONCEPTS.InstanceMethodDeclaration$39), PROPS.isAbstract$VtH_, false);
+          }
+        });
       });
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 7);
   }
 

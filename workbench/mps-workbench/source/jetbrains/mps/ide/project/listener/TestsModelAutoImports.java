@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,6 @@ import jetbrains.mps.project.ModelsAutoImportsManager.AutoImportsContributor;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.BootstrapLanguages;
 import jetbrains.mps.smodel.SModelStereotype;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -40,8 +39,9 @@ public class TestsModelAutoImports extends AutoImportsContributor {
   @Override
   public Collection<SLanguage> getLanguages(SModule contextModule, SModel model) {
     if (SModelStereotype.isTestModel(model)) {
-      SLanguage langTest = MetaAdapterFactory.getLanguage(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, "jetbrains.mps.lang.test");
-      return Arrays.asList(BootstrapLanguages.getBaseLangUnitTestLang(), langTest);
+      SLanguage langTest = BootstrapLanguages.getLangTest();
+      final SLanguage blUnitTest = BootstrapLanguages.getBaseLangUnitTestLang();
+      return Arrays.asList(blUnitTest, langTest);
     } else {
       return Collections.emptySet();
     }

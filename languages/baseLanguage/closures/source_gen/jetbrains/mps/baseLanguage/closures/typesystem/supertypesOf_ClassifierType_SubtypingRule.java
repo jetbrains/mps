@@ -15,7 +15,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Iterator;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -45,11 +44,7 @@ public class supertypesOf_ClassifierType_SubtypingRule extends SubtypingRule_Run
       // here, use of classifier.member.ofConceptM<> instead of methods() is intentional. First of all, we don't care about legacy roles (man, they have been deprecated centuries ago!),
       //  second, I'd like to benefit from lazy sequences rather than heavy-weight list of members() to speed things up.
       Iterable<SNode> methods = SNodeOperations.ofConcept(SLinkOperations.getChildren(classifier, LINKS.member$L_2d), CONCEPTS.InstanceMethodDeclaration$39);
-      Iterator<SNode> cands = Sequence.fromIterable(methods).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode m) {
-          return (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(m) && !("equals".equals(SPropertyOperations.getString(m, PROPS.name$MnvL)));
-        }
-      }).iterator();
+      Iterator<SNode> cands = Sequence.fromIterable(methods).where((m) -> (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(m) && !("equals".equals(SPropertyOperations.getString(m, PROPS.name$MnvL)))).iterator();
       SNode mtd = (cands.hasNext() ? cands.next() : null);
 
       final boolean aFunctionInterface = !(cands.hasNext());

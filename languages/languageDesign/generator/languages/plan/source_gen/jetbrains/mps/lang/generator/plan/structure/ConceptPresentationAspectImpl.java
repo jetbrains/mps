@@ -19,6 +19,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_DocumentationLine;
   private ConceptPresentation props_DocumentationStep;
   private ConceptPresentation props_Fork;
+  private ConceptPresentation props_ForkOf;
   private ConceptPresentation props_ForkSelector;
   private ConceptPresentation props_InPlaceCheckpointRefSpec;
   private ConceptPresentation props_InPlaceCheckpointSpec;
@@ -109,6 +110,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Fork = cpb.create();
         }
         return props_Fork;
+      case LanguageConceptSwitch.ForkOf:
+        if (props_ForkOf == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("fork of");
+          props_ForkOf = cpb.create();
+        }
+        return props_ForkOf;
       case LanguageConceptSwitch.ForkSelector:
         if (props_ForkSelector == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -169,7 +177,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_TextDocLine;
       case LanguageConceptSwitch.Transform:
         if (props_Transform == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071802L);
+          cpb.deprecateAggregation(0x28dd6d5a7549fa8dL, "languages");
           cpb.shortDesc("Collection of languages to reduce (iow, generators to apply)");
           cpb.rawPresentation("Transform");
           props_Transform = cpb.create();

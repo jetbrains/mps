@@ -58,7 +58,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "copy with trace");
     editorCell.setCellId("Constant_gjxy38_a0");
     Style style = new StyleImpl();
-    new genContext_operationStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new genContext_operationStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setTransformationMenuLookup(new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.GenerationContextOp_Base$yi));
     editorCell.setDefaultText("");

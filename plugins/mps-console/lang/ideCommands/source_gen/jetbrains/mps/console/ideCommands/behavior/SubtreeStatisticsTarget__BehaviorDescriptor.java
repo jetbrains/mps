@@ -30,8 +30,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class SubtreeStatisticsTarget__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x1cf75b72b0b3962bL, "jetbrains.mps.console.ideCommands.structure.SubtreeStatisticsTarget");
 
-  public static final SMethod<Iterable<Tuples._2<String, Integer>>> getStat_id6vMIJHUBlVT = new SMethodBuilder<Iterable<Tuples._2<String, Integer>>>(new SJavaCompoundTypeImpl((Class<Iterable<Tuples._2<String, Integer>>>) ((Class) Object.class))).name("getStat").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6vMIJHUBlVT").build(SMethodBuilder.createJavaParameter(ConsoleContext.class, ""));
-  public static final SMethod<Iterable<SNode>> getNodes_id4x3U0fq41hN = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getNodes").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4x3U0fq41hN").build(SMethodBuilder.createJavaParameter(ConsoleContext.class, ""));
+  public static final SMethod<Iterable<Tuples._2<String, Integer>>> getStat_id6vMIJHUBlVT = new SMethodBuilder<Iterable<Tuples._2<String, Integer>>>(new SJavaCompoundTypeImpl((Class<Iterable<Tuples._2<String, Integer>>>) ((Class) Object.class))).name("getStat").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7490254719527247609L).languageId(0xaab368fdf1c34ed0L, 0xa5e4de5346a344daL).build2(SMethodBuilder.createJavaParameter(ConsoleContext.class, ""));
+  public static final SMethod<Iterable<SNode>> getNodes_id4x3U0fq41hN = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getNodes").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5207260697411458163L).languageId(0xaab368fdf1c34ed0L, 0xa5e4de5346a344daL).build2(SMethodBuilder.createJavaParameter(ConsoleContext.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getStat_id6vMIJHUBlVT, getNodes_id4x3U0fq41hN);
 
@@ -45,7 +45,7 @@ public final class SubtreeStatisticsTarget__BehaviorDescriptor extends BaseBHDes
     int properties = 0;
     for (SNode node : subNodes) {
       references += IterableUtil.asCollection(node.getReferences()).size();
-      properties += jetbrains.mps.util.SNodeOperations.getProperties(node).keySet().size();
+      properties += IterableUtil.asCollection(node.getProperties()).size();
     }
     List<Tuples._2<String, Integer>> result = ListSequence.fromList(new ArrayList<Tuples._2<String, Integer>>());
     ListSequence.fromList(result).addElement(MultiTuple.<String,Integer>from("Nodes", ListSequence.fromList(subNodes).count()));

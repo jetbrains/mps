@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,19 +17,15 @@ package jetbrains.mps.repository;
 
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.ide.MPSCoreComponents;
-import jetbrains.mps.ide.vfs.IdeaFileSystem;
+import jetbrains.mps.library.AdditionalLibrariesManager;
 import jetbrains.mps.library.contributor.BootstrapLibraryContributor;
 import jetbrains.mps.library.contributor.PluginLibraryContributor;
 import jetbrains.mps.library.contributor.WorkbenchLibraryContributor;
 import jetbrains.mps.plugins.applicationplugins.ApplicationPluginManager;
 
 public final class RepositoryInitializingComponent extends RepositoryInitializingComponentBase {
-  @SuppressWarnings("UnusedParameters")
-  public RepositoryInitializingComponent(MPSCoreComponents coreComponents,
-                                         IdeaPluginFacetComponent ideaPluginFacetComponent,
-                                         IdeaFileSystem fs
-  ) {
-    super(coreComponents, ideaPluginFacetComponent, fs);
+  public RepositoryInitializingComponent() {
+    super(MPSCoreComponents.getInstance());
     final ApplicationPluginManager apm = ApplicationManager.getApplication().getComponent(ApplicationPluginManager.class);
     if (apm == null) {
       // not 100% sure if considerations of ApplicationPluginManager.initComponent() are still valid.
@@ -37,8 +33,14 @@ public final class RepositoryInitializingComponent extends RepositoryInitializin
       // Not sure about ide plugin, though. Seems safe just to init APM here, prior to any contribution processing.
       throw new IllegalStateException("ApplicationPluginManager has to get initialized prior to contributing other modules");
     }
+  }
+
+  @Override
+  public void initComponent() {
     addContributor(new BootstrapLibraryContributor(getFS()));
     addContributor(new WorkbenchLibraryContributor(getFS())); // needed only on sources
     addContributor(new PluginLibraryContributor(getFS()));
+    addContributor(AdditionalLibrariesManager.getInstance().createContributor(getFS()));
+    super.initComponent();
   }
 }

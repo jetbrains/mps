@@ -29,9 +29,10 @@ public class check_LinkToAbstractConcept_NonTypesystemRule extends AbstractNonTy
       if (SEnumOperations.isMember(SPropertyOperations.getEnum(linkToCheck, PROPS.metaClass$PeKc), 0xfc6f4e95b9L)) {
         SNode concept = SLinkOperations.getTarget(linkToCheck, LINKS.target$m40F);
         if (ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getNotImplementedConceptMethods_idhEwILIz.invoke(concept)).isNotEmpty()) {
+          // XXX perhaps, it's better to have intention to provide default implementation instead of (in addition to?) this message?
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(linkToCheck, "The link's target concept has abstract unimplemented methods.\n" + " It is better to have default implementation for every such method since at the present moment\n" + "MPS creates instances of abstract concepts which are contained as a child link in some concept\n " + "and any method of such concept might be spuriously invoked.\n", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "3021881260572292358", null, errorTarget);
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(linkToCheck, "The link's target concept has abstract unimplemented methods.\n" + "Sometimes, MPS Editor creates instances of abstract concepts.\n" + "If you don't provide implementation for the methods, MPS uses built-in defaults if methods get invoked.", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "6568087819227559050", null, errorTarget);
           }
         }
       }

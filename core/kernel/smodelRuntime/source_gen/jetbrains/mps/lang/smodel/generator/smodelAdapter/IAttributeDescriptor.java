@@ -10,14 +10,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -72,11 +70,7 @@ public interface IAttributeDescriptor {
     }
 
     protected Iterable<SNode> doGet(SNode node) {
-      return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return match(it);
-        }
-      });
+      return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43)).where((it) -> match(it));
     }
 
     protected final SAbstractConcept attrConcept() {
@@ -144,19 +138,11 @@ public interface IAttributeDescriptor {
     private void deleteAll(SNode node) {
       List<SNode> list = new ArrayList<SNode>();
       ListSequence.fromList(list).addSequence(Sequence.fromIterable(doGet(node)));
-      ListSequence.fromList(list).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.deleteNode(it);
-        }
-      });
+      ListSequence.fromList(list).visitAll((it) -> SNodeOperations.deleteNode(it));
     }
 
     /*package*/ void deleteOne(SNode node, final SNode attrValue) {
-      SNodeOperations.deleteNode(Sequence.fromIterable(doGet(node)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return it == attrValue;
-        }
-      }));
+      SNodeOperations.deleteNode(Sequence.fromIterable(doGet(node)).findFirst((it) -> it == attrValue));
     }
 
     @Override
@@ -195,11 +181,11 @@ public interface IAttributeDescriptor {
     }
     @Override
     public boolean match(@NotNull SNode attribute) {
-      return super.match(attribute) && (myLink == null || myLink.equals(((SReferenceLink) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.LinkAttribute$v_), CONCEPTS.LinkAttribute$v_, SMethodTrimmedId.create("getLink", CONCEPTS.LinkAttribute$v_, "1avfQ4BEFo6")))));
+      return super.match(attribute) && (myLink == null || myLink.equals(((SReferenceLink) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.LinkAttribute$v_), CONCEPTS.LinkAttribute$v_, SMethodIdV2.create("getLink", 1341860900489573894L, 0x553941aeb020c32eL)))));
     }
     @Override
     public void update(@NotNull SNode attribute) {
-      BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.LinkAttribute$v_), CONCEPTS.LinkAttribute$v_, SMethodTrimmedId.create("setLink", CONCEPTS.LinkAttribute$v_, "6Gg5KlvuxxF"), myLink);
+      BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.LinkAttribute$v_), CONCEPTS.LinkAttribute$v_, SMethodIdV2.create("setLink", 7714691473529772139L, 0x553941aeb020c32eL), myLink);
     }
   }
   final class ChildAttribute extends AttributeDescriptor {
@@ -210,11 +196,11 @@ public interface IAttributeDescriptor {
     }
     @Override
     public boolean match(@NotNull SNode attribute) {
-      return super.match(attribute) && (myLink == null || myLink.equals(((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzf")))));
+      return super.match(attribute) && (myLink == null || myLink.equals(((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodIdV2.create("getLink", 709746936026609871L, 0x553941aeb020c32eL)))));
     }
     @Override
     public void update(@NotNull SNode attribute) {
-      BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("setLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzM"), myLink);
+      BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodIdV2.create("setLink", 709746936026609906L, 0x553941aeb020c32eL), myLink);
     }
   }
   final class PropertyAttribute extends AttributeDescriptor {
@@ -225,11 +211,11 @@ public interface IAttributeDescriptor {
     }
     @Override
     public boolean match(@NotNull SNode attribute) {
-      return super.match(attribute) && (myProperty == null || myProperty.equals(((SProperty) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.PropertyAttribute$Gb), CONCEPTS.PropertyAttribute$Gb, SMethodTrimmedId.create("getProperty", CONCEPTS.PropertyAttribute$Gb, "1avfQ4BBzOo")))));
+      return super.match(attribute) && (myProperty == null || myProperty.equals(((SProperty) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.PropertyAttribute$Gb), CONCEPTS.PropertyAttribute$Gb, SMethodIdV2.create("getProperty", 1341860900488756504L, 0x553941aeb020c32eL)))));
     }
     @Override
     public void update(@NotNull SNode attribute) {
-      BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.PropertyAttribute$Gb), CONCEPTS.PropertyAttribute$Gb, SMethodTrimmedId.create("setProperty", CONCEPTS.PropertyAttribute$Gb, "6Gg5Klvu8CV"), myProperty);
+      BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.PropertyAttribute$Gb), CONCEPTS.PropertyAttribute$Gb, SMethodIdV2.create("setProperty", 7714691473529670203L, 0x553941aeb020c32eL), myProperty);
     }
   }
 

@@ -4,7 +4,6 @@ package jetbrains.mps.testbench.junit.suites;
 
 import org.junit.runner.RunWith;
 import jetbrains.mps.annotations.GeneratedClass;
-import jetbrains.mps.tool.environment.IdeaEnvironment;
 
 /**
  * * This suite used to run the tests, specified in the ant-xml junit task
@@ -15,8 +14,4 @@ import jetbrains.mps.tool.environment.IdeaEnvironment;
 @Deprecated
 @GeneratedClass(node = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)/5835181105767457626", model = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)")
 public class AntModuleTestSuite {
-  static {
-    // old behavior
-    System.setProperty(IdeaEnvironment.CREATE_PLUGIN_CLASSLOADERS, Boolean.FALSE.toString());
-  }
 }

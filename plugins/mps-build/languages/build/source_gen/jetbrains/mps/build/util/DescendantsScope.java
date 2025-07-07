@@ -9,11 +9,8 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
-import org.jetbrains.mps.util.Condition;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -32,23 +29,13 @@ public abstract class DescendantsScope extends Scope {
   public abstract String getName(SNode child);
   @Override
   public Iterable<SNode> getAvailableElements(@Nullable final String prefix) {
-    Iterable<SNode> seq = ListSequence.fromList(SNodeOperations.getChildren(node, link)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SNodeUtil.getDescendants(it, new Condition<SNode>() {
-          public boolean met(SNode n) {
-            return SNodeOperations.isInstanceOf(n, SNodeOperations.asSConcept(concept));
-          }
-        }, true);
-      }
-    });
+    Iterable<SNode> seq = ListSequence.fromList(SNodeOperations.getChildren(node, link)).translate((it) -> SNodeUtil.getDescendants(it, (SNode n) -> SNodeOperations.isInstanceOf(n, SNodeOperations.asSConcept(concept)), true));
     if (prefix == null || prefix.isEmpty()) {
       return seq;
     }
-    return Sequence.fromIterable(seq).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        String name = getName(it);
-        return name != null && name.startsWith(prefix);
-      }
+    return Sequence.fromIterable(seq).where((it) -> {
+      String name = getName(it);
+      return name != null && name.startsWith(prefix);
     });
   }
   @Nullable

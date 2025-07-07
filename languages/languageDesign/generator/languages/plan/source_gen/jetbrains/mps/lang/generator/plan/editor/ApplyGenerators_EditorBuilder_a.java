@@ -34,7 +34,6 @@ import java.util.ArrayList;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import java.util.function.Consumer;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.smodel.language.GeneratorRuntime;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -193,11 +192,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
     protected List<?> createParameterObjects(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, EditorContext editorContext) {
       final ArrayList<SModuleReference> rv = new ArrayList<SModuleReference>();
       LanguageRegistry languageRegistry = LanguageRegistry.getInstance(SNodeOperations.getModel(node).getRepository());
-      languageRegistry.withAvailableLanguages(new Consumer<LanguageRuntime>() {
-        public void accept(LanguageRuntime lr) {
-          for (GeneratorRuntime gr : lr.getGenerators()) {
-            rv.add(gr.getModuleReference());
-          }
+      languageRegistry.withAvailableLanguages((LanguageRuntime lr) -> {
+        for (GeneratorRuntime gr : lr.getGenerators()) {
+          rv.add(gr.getModuleReference());
         }
       });
       return rv;

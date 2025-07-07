@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,18 +15,22 @@
  */
 package jetbrains.mps.nodeEditor;
 
+import com.intellij.codeInsight.hint.TooltipGroup;
+import com.intellij.codeInsight.hint.TooltipRenderer;
 import com.intellij.icons.AllIcons.General;
 import com.intellij.openapi.editor.colors.CodeInsightColors;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.impl.EditorImpl;
+import com.intellij.openapi.project.Project;
 import com.intellij.ui.ColorUtil;
+import com.intellij.ui.awt.RelativePoint;
 import com.intellij.util.IconUtil;
 import com.intellij.util.containers.SortedList;
 import com.intellij.util.ui.ButtonlessScrollBarUI;
 import com.intellij.util.ui.update.MergingUpdateQueue;
 import com.intellij.util.ui.update.Update;
 import jetbrains.mps.errors.MessageStatus;
-import jetbrains.mps.ide.tooltips.TooltipComponent;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
@@ -53,27 +57,39 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements TooltipComponent, MouseMotionListener, MouseListener {
+public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements MouseMotionListener, MouseListener {
   private static final Comparator<GutterMark> EDITOR_MESSAGES_COMPARATOR = (mark, otherMark) -> otherMark.getPriority() != mark.getPriority() ?
                                                                                                 otherMark.getPriority() - mark.getPriority() :
                                                                                                 otherMark.getStatus().ordinal() - mark.getStatus().ordinal();
 
   private final EditorComponent myEditorComponent;
+
+  // towards independence from EditorComponent, use it where EC is assumed to be JComponent.
+  // this MessagesGutter has to become regular Swing element, with EC-dependent code being separate
+  private final JComponent myScrollable;
   private final MyErrorsButton myErrorsButton = new MyErrorsButton();
   private final List<SimpleEditorMessage> myMessages = new CopyOnWriteArrayList<>();
   private List<GutterMark> myGutterMarks = Collections.emptyList();
   private final boolean myRightToLeft;
   private MergingUpdateQueue myUpdateQueue;
   private final Object myUpdateIdentity = new Object();
+  private final HintPopupController myHintPopupController;
 
   public MessagesGutter(EditorComponent editorComponent, boolean rightToLeft) {
     myEditorComponent = editorComponent;
+    myScrollable = editorComponent;
     myRightToLeft = rightToLeft;
+    myHintPopupController = new HintPopupController(this::showHintToolTip);
   }
 
   @Override
   protected JButton createDecreaseButton(int orientation) {
+    // don't see a reason to expose EditorComponent to MyErrorsButton just for the sake of background color
+    // in case we need to react to BG changes in EC scrollable, could use property change listener
+    // FWIW, BasicScrollBarUI.createDecreaseButton() set background here and doesn't track its changes, AFAIU.
+    myErrorsButton.setBackground(myScrollable.getBackground());
     return myErrorsButton;
   }
 
@@ -82,10 +98,12 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
     super.installListeners();
     scrollbar.addMouseListener(this);
     scrollbar.addMouseMotionListener(this);
+    myHintPopupController.installListeners(scrollbar);
   }
 
   @Override
   public void uninstallListeners() {
+    myHintPopupController.uninstallListeners(scrollbar);
     scrollbar.removeMouseMotionListener(this);
     scrollbar.removeMouseListener(this);
     super.uninstallListeners();
@@ -169,9 +187,14 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
       if (message instanceof EditorMessage) {
         ((EditorMessage) message).doNavigate(myEditorComponent);
       } else {
-        // (markY - y) / markHeight = (realY - start) / height
-        int realY = message.getStart(myEditorComponent) + (mark.getY() - y) * message.getHeight(myEditorComponent) / mark.getHeight();
-        EditorCell editorCell = myEditorComponent.findCellWeak(1, realY + 1);
+        // I assume y comes within scrollable area, where some space is occupied by decrement button,
+        // and area with messages starts right after the button.
+        // Perhaps, the ratio constant shall be part of GutterMark?
+        int scrollableY = (int) Math.round((y - getMessagesAreaShift()) / scrollBar2ScrollableRatio());
+        // I don't expect any negative value here, provided we found the mark, but there's some range tolerated for
+        // discovery in getGutterMarksAt(int), max() is for extra safety here.
+        // +1 is legacy, I suppose it's to deal with rounding and the EditorCell_Collection trick in calculateHeight()
+        EditorCell editorCell = myEditorComponent.findCellWeak(1, Math.max(0, scrollableY + 1));
         if (editorCell != null) {
           myEditorComponent.changeSelection(editorCell);
         }
@@ -191,10 +214,6 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
   public void mouseExited(MouseEvent e) {
   }
 
-  public EditorComponent getEditorComponent() {
-    return myEditorComponent;
-  }
-
   private void updateGutterMarks() {
     if (scrollbar == null) {
       return;
@@ -204,11 +223,16 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
       public void run() {
         GutterStatus status = GutterStatus.OK;
         List<GutterMark> marks = new ArrayList<>();
+        Rectangle msgBounds = new Rectangle();
+        final double areaRatio = scrollBar2ScrollableRatio();
+        final int xx = myRightToLeft ? -2 : 4;
+        final int ww = General.InspectionsOK.getIconWidth() - 1;
         for (SimpleEditorMessage message : myMessages) {
-          GutterMark mark = new GutterMark(message);
-          if (!mark.isValid()) {
+          if (!GutterMark.isValid(message, myEditorComponent)) {
             continue;
           }
+          msgBounds.setBounds(xx, calculateY(message, areaRatio), ww, calculateHeight(message, areaRatio));
+          GutterMark mark = new GutterMark(message, adjustBounds(message, msgBounds));
 
           GutterStatus messageStatus = GutterStatus.getStatus(message.getStatus());
           if (messageStatus.ordinal() > status.ordinal()) {
@@ -246,7 +270,7 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
 
   private MergingUpdateQueue getUpdateQueue() {
     if (myUpdateQueue == null) {
-      myUpdateQueue = new MergingUpdateQueue("MessagesGutter", 500, true, myEditorComponent, null, null, true);
+      myUpdateQueue = new MergingUpdateQueue("MessagesGutter", 500, true, myScrollable, null, null, true);
       myUpdateQueue.setRestartTimerOnAdd(true);
       // TODO add update queue to the disposables tree
     }
@@ -318,12 +342,53 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
   }
 
   private int getMessagesAreaShift() {
-    return Math.max(0, getDecrementButtonHeight() - scrollbar.getBounds().y);
+    // we need to find first position *after* decrement button.
+    // there's no need to take scrollbar.Y into account (nether + nor -) as we position message marks relative
+    // to the scrollbar, and its position within its parent (that's what scrollbar.Y is) doesn't affect
+    // positions of the marks.
+    return getDecrementButtonHeight();
   }
 
   private int getMessagesAreaHeight() {
-    return scrollbar.getHeight() - getIncrementButtonHeight() - Math.max(getDecrementButtonHeight(), scrollbar.getBounds().y);
+    return scrollbar.getHeight() - getIncrementButtonHeight() - getMessagesAreaShift();
   }
+
+  private int calculateY(SimpleEditorMessage message, double areaRatio) {
+    return getMessagesAreaShift() + (int) (message.getStart(myEditorComponent) * areaRatio);
+  }
+
+  // to translate Y position inside Scrollable to Y position in scroll bar.
+  // 1/value translates Y in scroll bar to Y in Scrollable
+  private double scrollBar2ScrollableRatio() {
+    return ((double) getMessagesAreaHeight()) / myScrollable.getHeight();
+  }
+
+  // magic around right-to-left and horizontal/vertical shape
+  private Rectangle adjustBounds(SimpleEditorMessage message, Rectangle rect) {
+    // FIXME I don't like approach with function to tell horizontal mark from vertical
+    if (myIsMessageThin.test(message)) {
+      rect.x = myRightToLeft ? rect.width : 0;
+      rect.width = 2;
+    }
+    return rect;
+  }
+
+  private int calculateHeight(SimpleEditorMessage message, double areaRatio) {
+    int height = message.getHeight(myEditorComponent);
+    if (message instanceof EditorMessage) {
+      EditorCell cell = ((EditorMessage) message).getCell(myEditorComponent);
+      if (cell != null) {
+        while (cell instanceof EditorCell_Collection) {
+          cell = ((EditorCell_Collection) cell).lastCell();
+        }
+        if (cell != null) {
+          height -= cell.getHeight();
+        }
+      }
+    }
+    return (int) (height * areaRatio) + 2;
+  }
+
 
   private List<GutterMark> getGutterMarksAt(int y) {
     List<GutterMark> result = new SortedList<>(EDITOR_MESSAGES_COMPARATOR);
@@ -337,8 +402,31 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
     return result;
   }
 
-  @Override
-  public String getMPSTooltipText(MouseEvent event) {
+  private void showHintToolTip(MouseEvent event) {
+    int y = event.getY();
+
+    List<GutterMark> gutterMarks = getGutterMarksAt(y);
+    List<SimpleEditorMessage> messages = gutterMarks.stream()
+                                                    .map(GutterMark::getEditorMessage)
+                                                    .collect(Collectors.toList());
+
+    // by some reason tooltip provider expects messages to be in reverse order
+    Collections.reverse(messages);
+
+    EditorTooltipProvider tooltipProvider = myEditorComponent.getTooltipProvider();
+    final TooltipRenderer tooltipRenderer = tooltipProvider.getTooltipRenderer(messages);
+    if (tooltipRenderer == null) {
+      return;
+    }
+    final TooltipGroup tooltipGroup = tooltipProvider.getTooltipGroup();
+
+    Project project = ProjectHelper.toIdeaProject(ProjectHelper.getProject(myEditorComponent.getRepository()));
+    RelativePoint showPoint = new RelativePoint(scrollbar, event.getPoint());
+
+    myHintPopupController.showInfoToolTip(project, myEditorComponent.getPlatformEditorEmulation(), null, tooltipRenderer, tooltipGroup, showPoint);
+  }
+
+  /*package*/ String getMPSTooltipText(MouseEvent event) {
     int y = event.getY();
 
     List<GutterMark> gutterMarks = getGutterMarksAt(y);
@@ -362,55 +450,29 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
     myIsMessageThin = isMessageThin;
   }
 
-  private class GutterMark {
-    private int myX, myY, myWidth, myHeight;
+  private static class GutterMark {
+    private final int myX, myY, myWidth, myHeight;
     private final SimpleEditorMessage myMessage;
-    private boolean myValid = false;
 
-    GutterMark(SimpleEditorMessage message) {
-      if ((myMessage = message) == null || (myMessage.getColor()) == null ||
-          myMessage instanceof EditorMessage && !((EditorMessage) myMessage).isValid(myEditorComponent)) {
-        return;
+    static boolean isValid(SimpleEditorMessage message, EditorComponent editorComponent) {
+      if (message == null || message.getColor() == null) {
+        return false;
       }
-      myValid = true;
-
-      myX = myRightToLeft ? -2 : 4;
-      myWidth = General.InspectionsOK.getIconWidth() - 1;
-      if (myIsMessageThin.test(myMessage)) {
-        myX = myRightToLeft ? myWidth : 0;
-        myWidth = 2;
+      if (message instanceof EditorMessage && !((EditorMessage) message).isValid(editorComponent)) {
+        return false;
       }
-      myY = calculateY(myMessage);
-      myHeight = calculateHeight(myMessage);
+      return true;
     }
 
-    private int calculateY(SimpleEditorMessage message) {
-      return getMessagesAreaShift() +
-             (int) (message.getStart(myEditorComponent) * (((double) getMessagesAreaHeight()) / ((double) myEditorComponent.getHeight())));
-    }
-
-    private int calculateHeight(SimpleEditorMessage message) {
-      int height = message.getHeight(myEditorComponent);
-      if (message instanceof EditorMessage) {
-        EditorCell cell = ((EditorMessage) message).getCell(myEditorComponent);
-        if (cell != null) {
-          while (cell instanceof EditorCell_Collection) {
-            cell = ((EditorCell_Collection) cell).lastCell();
-          }
-          if (cell != null) {
-            height -= cell.getHeight();
-          }
-        }
-      }
-      return (int) (height * (((double) getMessagesAreaHeight()) / ((double) myEditorComponent.getHeight()))) + 2;
-    }
-
-    public boolean isValid() {
-      return myValid;
+    GutterMark(SimpleEditorMessage message, Rectangle bounds) {
+      myMessage = message;
+      myX = bounds.x;
+      myY = bounds.y;
+      myWidth = bounds.width;
+      myHeight = bounds.height;
     }
 
     public void paint(Graphics g) {
-      assert myValid;
       Color color = myMessage.getColor();
       g.setColor(color);
       int x = getX();
@@ -466,7 +528,7 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
     }
   }
 
-  private final class MyErrorsButton extends JButton {
+  private static final class MyErrorsButton extends JButton {
     private MyErrorsButton() {
       super(General.InspectionsEye);
       setFocusable(false);
@@ -476,7 +538,7 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
     public void paint(Graphics g) {
       final Rectangle bounds = getBounds();
 
-      g.setColor(getEditorComponent().getBackground());
+      g.setColor(getBackground());
       g.fillRect(0, 0, bounds.width, bounds.height);
 
       Icon icon = getIcon();

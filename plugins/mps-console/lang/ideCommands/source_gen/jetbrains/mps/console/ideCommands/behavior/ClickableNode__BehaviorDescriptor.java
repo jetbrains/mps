@@ -26,8 +26,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class ClickableNode__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x72ed699ef9552c28L, "jetbrains.mps.console.ideCommands.structure.ClickableNode");
 
-  public static final SMethod<Runnable> execute_id7oNS25df64x = new SMethodBuilder<Runnable>(new SJavaCompoundTypeImpl(Runnable.class)).name("execute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7oNS25df64x").build(SMethodBuilder.createJavaParameter(MPSProject.class, ""));
-  public static final SMethod<Boolean> canExecute_id2QdC0h7dh1h = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canExecute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2QdC0h7dh1h").build();
+  public static final SMethod<Runnable> execute_id7oNS25df64x = new SMethodBuilder<Runnable>(new SJavaCompoundTypeImpl(Runnable.class)).name("execute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8517397753922085153L).languageId(0xb306d4d17f64c375L, 0xde1ad86d6e504a02L).build2(SMethodBuilder.createJavaParameter(MPSProject.class, ""));
+  public static final SMethod<Boolean> canExecute_id2QdC0h7dh1h = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canExecute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3282455643657932881L).languageId(0xb306d4d17f64c375L, 0xde1ad86d6e504a02L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(execute_id7oNS25df64x, canExecute_id2QdC0h7dh1h);
 
@@ -36,11 +36,7 @@ public final class ClickableNode__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static Runnable execute_id7oNS25df64x(@NotNull SNode __thisNode__, final MPSProject project) {
     final SNodeReference tn = NodeIdentity__BehaviorDescriptor.toNodeReference_id4nxIQVLmsc4.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.target$IMmQ));
-    return new Runnable() {
-      public void run() {
-        new EditorNavigator(project).shallFocus(true).shallSelect(false).open(tn);
-      }
-    };
+    return () -> new EditorNavigator(project).shallFocus(true).shallSelect(false).open(tn);
   }
   /*package*/ static boolean canExecute_id2QdC0h7dh1h(@NotNull SNode __thisNode__) {
     return SLinkOperations.getTarget(__thisNode__, LINKS.target$IMmQ) != null;

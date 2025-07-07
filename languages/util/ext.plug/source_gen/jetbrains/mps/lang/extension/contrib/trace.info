@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1144226303539:jetbrains.mps.baseLanguage.structure.ForeachStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <root nodeRef="r:b3b120da-1538-456c-9910-2f0a2ef85a08(jetbrains.mps.lang.extension.contrib)/3713096702805678964">
+    <file name="ExtensionsInDescriptorModel.java">
+      <node id="3713096702806144448" at="24,125,25,72" concept="4" />
+      <node id="3713096702806650427" at="26,41,27,143" concept="0" />
+      <node id="3713096702806188866" at="29,56,30,13" concept="5" />
+      <node id="879692643837511222" at="31,5,32,160" concept="0" />
+      <node id="3713096702806121569" at="32,160,33,38" concept="4" />
+      <node id="3713096702806139876" at="34,57,35,210" concept="4" />
+      <node id="3713096702806141308" at="35,210,36,54" concept="0" />
+      <node id="3713096702805678964" at="41,0,42,0" concept="6" trace="BasicExtensionDeclaration$tJ" />
+      <node id="3713096702805678964" at="45,0,46,0" concept="6" trace="ext$o1Mc" />
+      <node id="3713096702806640959" at="25,72,28,5" concept="1" />
+      <node id="3713096702806155091" at="28,5,31,5" concept="2" />
+      <node id="3713096702806190154" at="33,38,37,5" concept="1" />
+      <node id="3713096702805695880" at="23,0,39,0" concept="3" trace="contribute#(Ljetbrains/mps/project/structure/DescriptorModelProvider;Lorg/jetbrains/mps/openapi/module/SModule;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <scope id="3713096702806640962" at="26,41,27,143" />
+      <scope id="3713096702806155093" at="29,56,30,13" />
+      <scope id="3713096702806190160" at="34,57,36,54">
+        <var name="r" id="3713096702806139877" />
+      </scope>
+      <scope id="3713096702806640959" at="25,72,28,5">
+        <var name="m" id="3713096702806640963" />
+      </scope>
+      <scope id="3713096702806190154" at="33,38,37,5">
+        <var name="d" id="3713096702806190156" />
+      </scope>
+      <scope id="3713096702805695894" at="24,125,37,5">
+        <var name="declarations" id="3713096702806144451" />
+        <var name="dm" id="3713096702806121572" />
+      </scope>
+      <scope id="3713096702805695880" at="23,0,39,0">
+        <var name="descriptorModel" id="3713096702805695891" />
+        <var name="origin" id="3713096702805695885" />
+        <var name="target" id="3713096702805695888" />
+      </scope>
+      <unit id="3713096702805678964" at="40,0,43,0" name="jetbrains.mps.lang.extension.contrib.ExtensionsInDescriptorModel$CONCEPTS" />
+      <unit id="3713096702805678964" at="44,0,47,0" name="jetbrains.mps.lang.extension.contrib.ExtensionsInDescriptorModel$LINKS" />
+      <unit id="3713096702805678964" at="21,0,48,0" name="jetbrains.mps.lang.extension.contrib.ExtensionsInDescriptorModel" />
+    </file>
+  </root>
+</debug-info>
+

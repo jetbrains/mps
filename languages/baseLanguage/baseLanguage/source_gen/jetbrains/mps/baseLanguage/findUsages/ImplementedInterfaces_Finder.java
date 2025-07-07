@@ -44,22 +44,26 @@ public class ImplementedInterfaces_Finder extends GeneratedFinder {
     try {
       monitor.start("", 2);
       List<SNode> result = new ArrayList<SNode>();
+      List<SNode> classNodes = new ArrayList<SNode>();
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.AnonymousClass$Bt)) {
         SNode classifier = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.AnonymousClass$Bt), LINKS.classifier$q_Y$);
         if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.Interface$db)) {
           ListSequence.fromList(result).addElement(SNodeOperations.cast(classifier, CONCEPTS.Interface$db));
           ListSequence.fromList(result).addSequence(ListSequence.fromList((List<SNode>) FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.InterfaceAncestors_Finder", SNodeOperations.cast(classifier, CONCEPTS.Interface$db), scope, new EmptyProgressMonitor())));
+        } else if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$bK)) {
+          classNodes = FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.ClassAncestors_Finder", classifier, scope, monitor.subTask(1));
+          ListSequence.fromList(classNodes).addElement(classifier);
         }
       } else {
-        List<SNode> classNodes = FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.ClassAncestors_Finder", node, scope, monitor.subTask(1));
+        classNodes = FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.ClassAncestors_Finder", node, scope, monitor.subTask(1));
         ListSequence.fromList(classNodes).addElement(node);
-        for (SNode classNode : ListSequence.fromList(classNodes)) {
-          for (SNode implementedInterface : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classNode, CONCEPTS.ClassConcept$bK), LINKS.implementedInterface$rujG))) {
-            SNode interfaceNode = (SNode) SLinkOperations.getTarget(implementedInterface, LINKS.classifier$cxMr);
-            if ((interfaceNode != null)) {
-              ListSequence.fromList(result).addElement(interfaceNode);
-              ListSequence.fromList(result).addSequence(ListSequence.fromList((List<SNode>) FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.InterfaceAncestors_Finder", interfaceNode, scope, new EmptyProgressMonitor())));
-            }
+      }
+      for (SNode classNode : ListSequence.fromList(classNodes)) {
+        for (SNode implementedInterface : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classNode, CONCEPTS.ClassConcept$bK), LINKS.implementedInterface$rujG))) {
+          SNode interfaceNode = (SNode) SLinkOperations.getTarget(implementedInterface, LINKS.classifier$cxMr);
+          if ((interfaceNode != null)) {
+            ListSequence.fromList(result).addElement(interfaceNode);
+            ListSequence.fromList(result).addSequence(ListSequence.fromList((List<SNode>) FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.InterfaceAncestors_Finder", interfaceNode, scope, new EmptyProgressMonitor())));
           }
         }
       }

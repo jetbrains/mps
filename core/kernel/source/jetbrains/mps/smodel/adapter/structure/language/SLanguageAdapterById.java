@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -79,7 +79,9 @@ public final class SLanguageAdapterById extends SLanguageAdapter {
   }
 
   @Override
+  @NotNull
   public SModuleReference getSourceModuleReference() {
+    // opposite to MetaIdByDeclaration.ref2LangId; similar to MetaAdapterFactory.getLanguage():SLanguage
     return new ModuleReference(getQualifiedName(), ModuleId.regular(myLanguage.getIdValue()));
   }
 

@@ -11,7 +11,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
@@ -28,11 +27,7 @@ public class PatternMemberDuplication_NonTypesystemRule extends AbstractNonTypes
     if (isEmptyString(SPropertyOperations.getString(patternMember, PROPS.name$MnvL))) {
       return;
     }
-    if (Sequence.fromIterable(SNodeOperations.ofConcept(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(SNodeOperations.getNodeAncestor(patternMember, CONCEPTS.Classifier$Ix, false, false)), CONCEPTS.PatternBuilderClassifierMember$kC)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return it != patternMember && Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(patternMember, PROPS.name$MnvL));
-      }
-    })) {
+    if (Sequence.fromIterable(SNodeOperations.ofConcept(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(SNodeOperations.getNodeAncestor(patternMember, CONCEPTS.Classifier$Ix, false, false)), CONCEPTS.PatternBuilderClassifierMember$kC)).any((it) -> it != patternMember && Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(patternMember, PROPS.name$MnvL)))) {
       {
         final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$MnvL);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(patternMember, "Pattern " + SPropertyOperations.getString(patternMember, PROPS.name$MnvL) + " is already declared", "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "576141512673851244", null, errorTarget);

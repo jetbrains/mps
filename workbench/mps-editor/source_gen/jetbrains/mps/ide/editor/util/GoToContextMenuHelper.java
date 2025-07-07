@@ -4,7 +4,6 @@ package jetbrains.mps.ide.editor.util;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.ide.navigation.NodeNavigatable;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.project.Project;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -23,7 +22,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.util.Function;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 
 @GeneratedClass(node = "r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)/1616056205644408858", model = "r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)")
 public final class GoToContextMenuHelper extends GoToContextMenuHelperBase<NodeNavigatable> {
@@ -33,8 +31,7 @@ public final class GoToContextMenuHelper extends GoToContextMenuHelperBase<NodeN
    * 
    * @deprecated use the new method instead
    */
-  @Deprecated
-  @ToRemove(version = 2018.3)
+  @Deprecated(since = "2018.3", forRemoval = true)
   public static void showMenu(Project project, String title, List<SNodeReference> nodes, final BaseRenderer renderer, RelativePoint point) {
     if (ListSequence.fromList(nodes).isEmpty()) {
       return;
@@ -56,8 +53,11 @@ public final class GoToContextMenuHelper extends GoToContextMenuHelperBase<NodeN
     openTargets(point, navigatables, title, renderer);
   }
 
-  @ToRemove(version = 2018.3)
-  @Deprecated
+  /**
+   * 
+   * @deprecated 
+   */
+  @Deprecated(since = "2018.3", forRemoval = true)
   private static void openTargets(RelativePoint p, List<NodeNavigatable> targets, String title, ListCellRenderer listRenderer) {
     assert !(GoToContextMenuHelper.class.getClassLoader() instanceof ModuleClassLoader) : "if this class is loaded by a reloadable classloader, this will cause memleaks. See MPS-13481";
     if (targets.isEmpty()) {
@@ -106,20 +106,12 @@ public final class GoToContextMenuHelper extends GoToContextMenuHelperBase<NodeN
 
   @NotNull
   public GoToContextMenuHelperBase.ContextMenuComposite<NodeNavigatable> showMenuWithNodes(@NotNull List<SNodeReference> nodes, @NotNull RelativePoint point) {
-    return showMenu(ListSequence.fromList(nodes).distinct().select(new ISelector<SNodeReference, NodeNavigatable>() {
-      public NodeNavigatable select(SNodeReference it) {
-        return new NodeNavigatable(myProject, it);
-      }
-    }).toListSequence(), point);
+    return showMenu(ListSequence.fromList(nodes).distinct().select((it) -> new NodeNavigatable(myProject, it)).toList(), point);
   }
 
   @NotNull
   public GoToContextMenuHelperBase.ContextMenuComposite<NodeNavigatable> buildPopupWithNodes(@NotNull List<SNodeReference> foundUsages) {
-    return buildPopup(ListSequence.fromList(foundUsages).select(new ISelector<SNodeReference, NodeNavigatable>() {
-      public NodeNavigatable select(SNodeReference it) {
-        return new NodeNavigatable(myProject, it);
-      }
-    }).toListSequence());
+    return buildPopup(ListSequence.fromList(foundUsages).select((it) -> new NodeNavigatable(myProject, it)).toList());
   }
 
   private static Function<NodeNavigatable, String> adaptNamerForNavigatable(final Function<SNodeReference, String> namer) {

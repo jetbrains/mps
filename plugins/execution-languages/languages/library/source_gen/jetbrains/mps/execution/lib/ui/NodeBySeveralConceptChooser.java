@@ -8,18 +8,15 @@ import jetbrains.mps.execution.lib.NodesDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.FindUsagesFacade;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Set;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -28,12 +25,12 @@ public class NodeBySeveralConceptChooser extends NodeChooser {
   private final List<NodesDescriptor> myTargetConcepts = ListSequence.fromList(new ArrayList<NodesDescriptor>());
 
   public NodeBySeveralConceptChooser(NodesDescriptor... targets) {
-    this(Sequence.fromIterable(Sequence.fromArray(targets)).toListSequence());
+    this(Sequence.fromIterable(Sequence.fromArray(targets)).toList());
   }
 
   public NodeBySeveralConceptChooser(List<NodesDescriptor> targets) {
-    ListSequence.fromList(myTargetConcepts).addSequence(ListSequence.fromList(targets).select(new ISelector<NodesDescriptor, NodesDescriptor>() {
-      public NodesDescriptor select(NodesDescriptor it) {
+    ListSequence.fromList(myTargetConcepts).addSequence(ListSequence.fromList(targets).select(new _FunctionTypes._return_P1_E0<NodesDescriptor, NodesDescriptor>() {
+      public NodesDescriptor invoke(NodesDescriptor it) {
         return new NodesDescriptor((it.concept() == null ? CONCEPTS.BaseConcept$gP : it.concept()), it.filter());
       }
     }));
@@ -41,22 +38,20 @@ public class NodeBySeveralConceptChooser extends NodeChooser {
 
   @Override
   protected List<SNode> findToChooseFromOnInit(final FindUsagesFacade manager, final SearchScope scope, final ProgressMonitor monitor) {
-    return (List<SNode>) (ListSequence.fromList(myTargetConcepts).translate(new ITranslator2<NodesDescriptor, SNode>() {
-      public Iterable<SNode> translate(NodesDescriptor it) {
-        SAbstractConcept targetConcept = it.concept();
-        final _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> function = it.filter();
-        Set<SNode> instances = manager.findInstances(scope, Collections.singleton(targetConcept), false, monitor.subTask(10));
-        if (function == null) {
-          return instances;
-        } else {
-          return SetSequence.fromSet(instances).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return function.invoke(it);
-            }
-          });
-        }
+    return (List<SNode>) (ListSequence.fromList(myTargetConcepts).translate((it) -> {
+      SAbstractConcept targetConcept = it.concept();
+      final _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> function = it.filter();
+      Set<SNode> instances = manager.findInstances(scope, Collections.singleton(targetConcept), false, monitor.subTask(10));
+      if (function == null) {
+        return instances;
+      } else {
+        return SetSequence.fromSet(instances).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+          public Boolean invoke(SNode it) {
+            return function.invoke(it);
+          }
+        });
       }
-    }).toListSequence());
+    }).toList());
   }
 
   private static final class CONCEPTS {

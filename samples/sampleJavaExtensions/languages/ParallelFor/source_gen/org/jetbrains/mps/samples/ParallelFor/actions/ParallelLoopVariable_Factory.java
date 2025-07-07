@@ -11,7 +11,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ParallelLoopVariable_Factory {
   public static class NodeFactory_8923957828369569661 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SPropertyOperations.assign(newNode, PROPS.isFinal$gvTP, true);
       SPropertyOperations.assign(newNode, PROPS.name$MnvL, "a");
     }

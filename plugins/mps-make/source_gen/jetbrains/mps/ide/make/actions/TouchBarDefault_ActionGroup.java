@@ -13,6 +13,7 @@ public class TouchBarDefault_ActionGroup extends GeneratedActionGroup {
     super("TouchBarDefault", ID, plugin);
     setIsInternal(false);
     setPopup(false);
+    updateInBackground(true);
     TouchBarDefault_ActionGroup.this.addAction("jetbrains.mps.ide.make.actions.MakeProject_Action");
   }
 }

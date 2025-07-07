@@ -52,15 +52,13 @@ public class MethodCallsFixer extends BaseEditorChecker {
     // Start a read action here since MethodDeclarationFixer used to process events in a read action.
     // Ideally we should not need read action and we should avoid walking through the model since we receive events
     // asynchronously and with a delay, so the model may be in an unexpected state.
-    myRepository.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        for (SModelEvent event : ListSequence.fromList(events)) {
-          if (event instanceof SModelReplacedEvent) {
-            myCurrentSession = null;
-            break;
-          }
-          event.accept(visitor);
+    myRepository.getModelAccess().runReadAction(() -> {
+      for (SModelEvent event : ListSequence.fromList(events)) {
+        if (event instanceof SModelReplacedEvent) {
+          myCurrentSession = null;
+          break;
         }
+        event.accept(visitor);
       }
     });
   }
@@ -85,11 +83,7 @@ public class MethodCallsFixer extends BaseEditorChecker {
         return UpdateResult.CANCELLED;
       }
 
-      TypecheckingFacade.getFromContext().runWithSession(typecheckingSession, new Runnable() {
-        public void run() {
-          doCreateMessages(editedNode, incremental, repository);
-        }
-      });
+      TypecheckingFacade.getFromContext().runWithSession(typecheckingSession, () -> doCreateMessages(editedNode, incremental, repository));
 
       return new UpdateResult.Completed(true, Collections.<EditorMessage>emptySet());
     } catch (RuntimeException e) {
@@ -125,20 +119,14 @@ public class MethodCallsFixer extends BaseEditorChecker {
 
     final Map<SNode, SNode> methodCallsToUpdate = myCurrentSession.collectMethodCallsToUpdate();
     if (!(methodCallsToUpdate.isEmpty()) && repository != null) {
-      ThreadUtils.runInUIThreadNoWait(new Runnable() {
-        public void run() {
-          repository.getModelAccess().executeUndoTransparentCommand(new Runnable() {
-            public void run() {
-              for (SNode methodCall : methodCallsToUpdate.keySet()) {
-                SNode referent = methodCallsToUpdate.get(methodCall);
-                if (referent != null && SNodeUtil.isAccessible(referent, repository)) {
-                  SLinkOperations.setTarget(methodCall, LINKS.baseMethodDeclaration$pyYw, referent);
-                }
-              }
-            }
-          });
+      ThreadUtils.runInUIThreadNoWait(() -> repository.getModelAccess().executeUndoTransparentCommand(() -> {
+        for (SNode methodCall : methodCallsToUpdate.keySet()) {
+          SNode referent = methodCallsToUpdate.get(methodCall);
+          if (referent != null && SNodeUtil.isAccessible(referent, repository)) {
+            SLinkOperations.setTarget(methodCall, LINKS.baseMethodDeclaration$pyYw, referent);
+          }
         }
-      });
+      }));
     }
   }
 

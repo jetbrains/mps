@@ -25,7 +25,6 @@ public class EmptyParagraphActions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        assert false;
         SNode currentNode = editorContext.getSelectedNode();
         if (!(Objects.equals(currentNode, node))) {
           SNodeOperations.deleteNode(node);
@@ -44,7 +43,6 @@ public class EmptyParagraphActions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        assert false;
         SNode next = SNodeOperations.insertNextSiblingChild(node, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph")));
         Paragraph__BehaviorDescriptor.initialize_id1v077Wg2A59.invoke(next);
       }

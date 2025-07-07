@@ -4,11 +4,13 @@ package jetbrains.mps.test.smodel;
 
 import jetbrains.mps.lang.test.generator.rt.BaseGeneratorTest;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.generator.rt.TransformHelper;
+import jetbrains.mps.lang.test.generator.rt.ModelAssert;
 
 public class BasicTest1 extends BaseGeneratorTest {
+
 
 
   private SModel myArg_A;
@@ -17,7 +19,7 @@ public class BasicTest1 extends BaseGeneratorTest {
   private SModel myArg_ClosuresOnlyPlan;
 
 
-  @Before
+  @BeforeEach
   public void prepareArguments() {
     myArg_A = findModel("A", "r:a0bda7de-bcb5-44a6-828e-6ce19d09a34f(jetbrains.mps.test.smodel.data1)");
     myArg_B = findModel("B", "r:c850a08e-438b-4a8e-9ce5-5acf32b55cff(jetbrains.mps.test.smodel.refdata1)");
@@ -32,7 +34,8 @@ public class BasicTest1 extends BaseGeneratorTest {
     t.setInput(i);
     t.transform();
     SModel rm = myArg_B;
-    assertMatch(t.getOutputModel(), rm);
+    ModelAssert ma = new ModelAssert(t.getResult().getOutputRepository());
+    ma.assertMatch(t.getOutputModel(), rm);
   }
   @Test
   public void testTransformAndMatch1() {
@@ -42,7 +45,8 @@ public class BasicTest1 extends BaseGeneratorTest {
     t.setPlanProvider(planProviderFromModel(myArg_ClosuresOnlyPlan));
     t.transform();
     SModel rm = myArg_NoClosures;
-    assertMatch(t.getOutputModel(), rm);
+    ModelAssert ma = new ModelAssert(t.getResult().getOutputRepository());
+    ma.assertMatch(t.getOutputModel(), rm);
   }
 
 }

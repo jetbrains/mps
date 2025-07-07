@@ -31,25 +31,23 @@ public class typeof_TrigonometricExpression_InferenceRule extends AbstractInfere
     }
     {
       final SNode t1v = typeCheckingContext.getRepresentative(t1_typevar_1238344499359);
-      typeCheckingContext.whenConcrete(t1v, new Runnable() {
-        public void run() {
-          if (TypecheckingFacade.getFromContext().isSubtype(typeCheckingContext.getRepresentative(t1_typevar_1238344499359), MathTypeUtil.qDouble)) {
-            {
-              SNode _nodeToCheck_1029348928467 = expression;
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238344499372", 0, null);
-              typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238344499377", true), (SNode) SNodeOperations.copyNode(MathTypeUtil.qDouble), _info_12389875345);
-            }
-          } else if (SNodeOperations.isInstanceOf(typeCheckingContext.getRepresentative(t1_typevar_1238344499359), CONCEPTS.ComplexType$oF)) {
-            {
-              SNode _nodeToCheck_1029348928467 = expression;
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238344499408", 0, null);
-              typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238344499415", true), (SNode) SNodeOperations.copyNode(MathTypeUtil.qComplex), _info_12389875345);
-            }
-          } else {
-            {
-              final MessageTarget errorTarget = new NodeMessageTarget();
-              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(expression, "Trigonometric functions are defined for subtypes of complex", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238344499429", null, errorTarget);
-            }
+      typeCheckingContext.whenConcrete(t1v, () -> {
+        if (TypecheckingFacade.getFromContext().isSubtype(typeCheckingContext.getRepresentative(t1_typevar_1238344499359), MathTypeUtil.qDouble)) {
+          {
+            SNode _nodeToCheck_1029348928467 = expression;
+            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238344499372", 0, null);
+            typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238344499377", true), (SNode) SNodeOperations.copyNode(MathTypeUtil.qDouble), _info_12389875345);
+          }
+        } else if (SNodeOperations.isInstanceOf(typeCheckingContext.getRepresentative(t1_typevar_1238344499359), CONCEPTS.ComplexType$oF)) {
+          {
+            SNode _nodeToCheck_1029348928467 = expression;
+            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238344499408", 0, null);
+            typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238344499415", true), (SNode) SNodeOperations.copyNode(MathTypeUtil.qComplex), _info_12389875345);
+          }
+        } else {
+          {
+            final MessageTarget errorTarget = new NodeMessageTarget();
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(expression, "Trigonometric functions are defined for subtypes of complex", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238344499429", null, errorTarget);
           }
         }
       }, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238344499368", false, false);

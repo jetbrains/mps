@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright 2003-2020 JetBrains s.r.o.
+  ~ Copyright 2003-2022 JetBrains s.r.o.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -16,9 +16,12 @@
 <!DOCTYPE idea-plugin PUBLIC "Plugin/DTD" "http://plugins.intellij.net/plugin.dtd">
 <idea-plugin>
   <id>jetbrains.mps.ide.devkit</id>
-  <name>Languages DevKit</name>
-  <description>Allows to develop new MPS languages</description>
-  <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
+  <name>MPS Languages DevKit</name>
+  <description>Plugin intended for Language Designers. Facilitates developing new MPS languages</description>
+  <category>Custom Languages</category>
+  <version>2023.3</version>
+  <vendor url="http://www.jetbrains.com/mps/" email="support@jetbrains.com">JetBrains</vendor>
+  <idea-version since-build="233.1" until-build="241.1"/>
   <depends>jetbrains.mps.ide.make</depends>
   <depends>jetbrains.mps.testing</depends>
 
@@ -37,8 +40,11 @@
   </project-components>
 
   <extensions defaultExtensionNs="com.intellij">
-    <mps.LanguageLibrary dir="/" hide="true"/>
-    <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
+    <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter" />
+  </extensions>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <mps.LanguageLibrary dir="languages/" hide="true"/>
     <mps.VisibleModuleMask mask="jetbrains\.mps\.analyzers.*"/>
     <mps.VisibleModuleMask mask="jetbrains\.mps\.build.*"/>
     <mps.VisibleModuleMask mask="jetbrains\.mps\.dataFlow\.runtime"/>
@@ -47,7 +53,7 @@
     <mps.VisibleModuleMask mask="jetbrains\.mps\.devkit\.aspect\..*"/>
     <mps.VisibleModuleMask mask="jetbrains\.mps\.devkit\.templates"/>
     <mps.VisibleModuleMask mask="jetbrains\.mps\.editor\.runtime"/>
-    <mps.VisibleModuleMask mask="jetbrains\.mps\.execution\.api"/>
+    <mps.VisibleModuleMask mask="jetbrains\.mps\.execution\..*"/>
     <mps.VisibleModuleMask mask="jetbrains\.mps\.findUsages.*"/>
     <mps.VisibleModuleMask mask="jetbrains\.mps\.generator"/>
     <mps.VisibleModuleMask mask="jetbrains\.mps\.ide.*"/>
@@ -65,10 +71,11 @@
     <mps.VisibleModuleMask mask="stubUtils"/>
     <mps.VisibleModuleMask mask="Testbench"/>
     <mps.VisibleModuleMask mask="typesystemIntegration"/>
-    <mps.IntentionActionsProvider implementation="jetbrains.mps.ide.devkit.actions.IntentionActionsProviderImpl" />
+    <mps.VisibleModuleMask mask="jetbrains\.mps\.kotlin.*"/>
+    <mps.VisibleModuleMask mask="jetbrains\.mps\.baseLanguage\.kotlinRefs.*"/>
+    <mps.IntentionActionsProvider implementation="jetbrains.mps.ide.devkit.editor.IntentionActionsProviderImpl" />
     <mps.projectGroupTemplateEP implementation="jetbrains.mps.workbench.dialogs.project.newproject.LanguageProjectsGroup"/>
     <mps.languageProjectTemplateEP implementation="jetbrains.mps.workbench.dialogs.project.newproject.DefaultLanguageProjectTemplate"/>
-    <mps.PluginComponentContributor application="jetbrains.mps.ide.devkit.actions.Mpsdevkit_ApplicationPlugin" project="jetbrains.mps.ide.devkit.actions.Mpsdevkit_ProjectPlugin" />
   </extensions>
   <actions>
     <!--  Insert MPS actions between IntelliJ Help group actions  -->

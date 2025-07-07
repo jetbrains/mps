@@ -31,14 +31,16 @@ import java.util.Objects;
 /**
  * Represents a handle which uniquely identifies {@link SMethod} within the concept (including all the ancestors).
  * This implementation is based on the NodeId of the method node (in the behavior aspect of the concept)
+ * @deprecated replaced with SMethodIdV2
  */
 @Immutable
+@Deprecated(since = "2022.2")
 public final class SMethodTrimmedId implements SMethodId {
   private final SAbstractConcept myConcept;
-  private final SNodeId myNodeId;
+  final SNodeId myNodeId;
 
   /**
-   * @param concept is null iff is is a virtual method id (for them the concept does not belong to the id)
+   * @param concept is null iff it is a virtual method id (for them the concept does not belong to the id)
    */
   private SMethodTrimmedId(@Nullable SAbstractConcept concept, @NotNull SNodeId id) {
     myConcept = concept;
@@ -47,7 +49,8 @@ public final class SMethodTrimmedId implements SMethodId {
 
   @Override
   public int hashCode() {
-    return Objects.hash(myConcept, myNodeId);
+    // please do not change, it is equal to the SMethodIdV2 counterpart
+    return Long.hashCode(SMethodIdV2.nodeIdToLong(myNodeId));
   }
 
   @Override
@@ -55,6 +58,8 @@ public final class SMethodTrimmedId implements SMethodId {
     if (o instanceof SMethodTrimmedId) {
       return ((SMethodTrimmedId) o).myNodeId.equals(myNodeId) &&
           Objects.equals(((SMethodTrimmedId) o).myConcept, myConcept);
+    } else if (o instanceof SMethodIdV2) {
+      return o.equals(this);
     }
     return false;
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,9 @@
  */
 package jetbrains.mps.nodeEditor;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.smodel.language.LanguageRuntime;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
@@ -42,7 +42,7 @@ import java.util.stream.Collectors;
  * @param <ContributionT> contribution type
  */
 abstract class EditorAspectContributionsCache<KeyT, ContributionT> {
-  private static final jetbrains.mps.logging.Logger LOG = jetbrains.mps.logging.Logger.wrap(LogManager.getLogger(EditorAspectContributionsCache.class));
+  private static final Logger LOG = Logger.getLogger(EditorAspectContributionsCache.class);
 
   private final Map<KeyT, Map<String, Collection<ContributionT>>> myCache = new HashMap<>();
 

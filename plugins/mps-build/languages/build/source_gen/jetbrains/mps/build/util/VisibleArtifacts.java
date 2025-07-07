@@ -12,7 +12,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
-import jetbrains.mps.generator.TransientModelsModule;
+import jetbrains.mps.extapi.module.TransientSModule;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -146,7 +146,7 @@ public class VisibleArtifacts {
   }
 
   public static VisibleArtifacts createExternalFor(SNode project) {
-    assert !(SNodeOperations.getModel(project).getModule() instanceof TransientModelsModule);
+    assert !(SNodeOperations.getModel(project).getModule() instanceof TransientSModule);
     VisibleArtifacts artifacts = new VisibleArtifacts(project);
     artifacts.collectOnlyExternal();
     return artifacts;

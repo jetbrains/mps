@@ -24,6 +24,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   @Override
   public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
     deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
+    deps.extendedLanguage(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, "jetbrains.mps.baseLanguage.unitTest");
   }
 
   @Override
@@ -55,7 +56,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.parent(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L);
     b.origin("r:64e94938-18bf-4ea3-91e4-d65e2551d6fe(jetbrains.mps.samples.CustomTestCases.structure)/6739048166692147040");
-    b.version(2);
+    b.version(3);
     b.aggregate("methods", 0x5d85e89a43efbbccL).target(0x41a74638991d41c3L, 0xb85c39ba842bab0dL, 0x5d85e89a43ef0901L).optional(true).ordered(true).multiple(true).origin("6739048166692207564").done();
     return b.create();
   }
@@ -65,7 +66,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.parent(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b27438a3dL);
     b.origin("r:64e94938-18bf-4ea3-91e4-d65e2551d6fe(jetbrains.mps.samples.CustomTestCases.structure)/6739048166692161793");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
 }

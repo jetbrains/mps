@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.ArrayList;
 import org.junit.Assert;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;
@@ -30,15 +29,13 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   public void testWeave(final SNode root, List<SNode> nodes, int startLine) {
     final Wrappers._int line = new Wrappers._int(startLine);
     final int delta = 3;
-    ListSequence.fromList(nodes).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), it);
-          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getTracedNode(root, line.value));
-          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-        }
-        line.value += delta;
+    ListSequence.fromList(nodes).visitAll((it) -> {
+      {
+        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), it);
+        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getTracedNode(root, line.value));
+        Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
       }
+      line.value += delta;
     });
   }
 
@@ -46,16 +43,14 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     final Wrappers._int line = new Wrappers._int(startLine);
     final int delta = 3;
     final int howMany = 3;
-    ListSequence.fromList(nodes).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        for (int i = 0; i < howMany; i++) {
-          {
-            List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), it);
-            List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getTracedNode(root, line.value));
-            Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-          }
-          line.value += delta;
+    ListSequence.fromList(nodes).visitAll((it) -> {
+      for (int i = 0; i < howMany; i++) {
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), it);
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getTracedNode(root, line.value));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
         }
+        line.value += delta;
       }
     });
   }

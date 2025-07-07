@@ -27,22 +27,14 @@ import jetbrains.mps.idea.core.MPSBundle;
 import jetbrains.mps.smodel.MPSModuleRepository;
 
 public class MPSGlobalLibImporter extends BaseLibImporter implements ApplicationComponent {
-  private final ApplicationLibraryTable myTable;
-  private final MPSCoreComponents myCoreComponents;
-
-  public MPSGlobalLibImporter(MPSCoreComponents core, ApplicationLibraryTable table) {
-    super(core);
-    myCoreComponents = core;
-    myTable = table;
-  }
 
   @Override
   protected SRepositoryExt getRepository() {
-    return myCoreComponents.getPlatform().findComponent(MPSModuleRepository.class);
+    return MPSCoreComponents.getInstance().getPlatform().findComponent(MPSModuleRepository.class);
   }
 
   protected LibraryTable getLibTable() {
-    return myTable;
+    return ApplicationLibraryTable.getApplicationTable();
   }
 
   @Override
@@ -50,6 +42,7 @@ public class MPSGlobalLibImporter extends BaseLibImporter implements Application
     return false;
   }
 
+  @SuppressWarnings("UnresolvedPropertyKey")
   @Override
   protected void handleModuleNameTaken(StubModuleNameTakenException exception) {
     String message = String.format(

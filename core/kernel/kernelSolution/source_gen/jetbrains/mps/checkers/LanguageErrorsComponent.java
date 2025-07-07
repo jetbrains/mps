@@ -15,11 +15,11 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.Collection;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
+import java.util.Queue;
+import java.util.LinkedList;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.util.Cancellable;
 import java.util.Map;
@@ -43,6 +43,17 @@ import org.jetbrains.mps.openapi.model.SModelListenerBase;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
+/**
+ * Used by {@code jetbrains.mps.editor.runtime.ErrorComponent}. 
+ * Responsible for collecting and tracking errors reported by instances of
+ * {@link jetbrains.mps.checkers.AbstractNodeCheckerInEditor } for a specific editor component.
+ * <p>
+ * Maintains internal map of nodes to error items reported, and tries to correctly guess when entries in this map
+ * are to be cleared (invalidated).
+ * <p>
+ * See {@code jetbrains.mps.editor.runtime.ErrorComponents}<br>
+ * See {@code jetbrains.mps.editor.runtime.LanguageEditorChecker}<br>
+ */
 @GeneratedClass(node = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)/7390982340086718486", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
 public class LanguageErrorsComponent extends LanguageErrorsCollector {
   /**
@@ -73,14 +84,14 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
     public boolean myApproved;
   }
 
-  private MultiMap<SNode, ApprovableError> myNodesToErrors = new SetBasedMultiMap<SNode, ApprovableError>();
-  private MultiMap<SNode, NodeReportItem> myPostprocessedNodesToErrors = new SetBasedMultiMap<SNode, NodeReportItem>();
-  private ManyToManyMap<SNode, SNode> myDependenciesToNodesAndViceVersa = new ManyToManyMap<SNode, SNode>();
+  private final MultiMap<SNode, ApprovableError> myNodesToErrors = new SetBasedMultiMap<SNode, ApprovableError>();
+  private final MultiMap<SNode, NodeReportItem> myPostprocessedNodesToErrors = new SetBasedMultiMap<SNode, NodeReportItem>();
+  private final ManyToManyMap<SNode, SNode> myDependenciesToNodesAndViceVersa = new ManyToManyMap<SNode, SNode>();
   private Set<SNode> myInvalidNodes = new HashSet<SNode>();
-  private Set<SNode> myDependenciesToInvalidate = new HashSet<SNode>();
-  private MyModelChangeListener myChangeListener = new MyModelChangeListener();
-  private MyModelUnloadListener myUnloadListener = new MyModelUnloadListener();
-  private Set<SModel> myListenedModels = new HashSet<SModel>();
+  private final Set<SNode> myDependenciesToInvalidate = new HashSet<SNode>();
+  private final MyModelChangeListener myChangeListener = new MyModelChangeListener();
+  private final MyModelUnloadListener myUnloadListener = new MyModelUnloadListener();
+  private final Set<SModel> myListenedModels = new HashSet<SModel>();
   private boolean myFullCheckCompleted = false;
   private SNode myCurrentNode = null;
   private SModel myModel;
@@ -109,15 +120,7 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
     Set<NodeReportItem> result = SetSequence.fromSet(new HashSet<NodeReportItem>());
     SetSequence.fromSet(result).addSequence(CollectionSequence.fromCollection(myPostprocessedNodesToErrors.values()));
     Collection<? extends ApprovableError> values = myNodesToErrors.values();
-    SetSequence.fromSet(result).addSequence(CollectionSequence.fromCollection(values).where(new IWhereFilter<ApprovableError>() {
-      public boolean accept(ApprovableError it) {
-        return it.myApproved;
-      }
-    }).select(new ISelector<ApprovableError, NodeReportItem>() {
-      public NodeReportItem select(ApprovableError it) {
-        return it.getError();
-      }
-    }));
+    SetSequence.fromSet(result).addSequence(CollectionSequence.fromCollection(values).where((it) -> it.myApproved).select((it) -> it.getError()));
     return result;
   }
 
@@ -178,14 +181,20 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
     // removing dependency node from any mappings together with all checked nodes
     // depending on this dependency node
     // Note, have to collect checked nodes for all dependencies first, and clearSecond only once all dependencies are processed
-    Set<SNode> checkedNodes = SetSequence.fromSet(new HashSet<SNode>());
-    for (SNode dep : dependencies) {
-      // here, we query by dependency, utilizing the fact the map is in fact bi-directional, the moment we recorded checked node->its dependency, we've also recorded dependency->checked node
-      SetSequence.fromSet(checkedNodes).addSequence(SetSequence.fromSet(myDependenciesToNodesAndViceVersa.getByFirst(dep)));
+    Queue<SNode> queue = new LinkedList<SNode>(dependencies);
+    Set<SNode> checkedNodes = SetSequence.fromSetWithValues(new HashSet<SNode>(), dependencies);
+    while (!(queue.isEmpty())) {
+      SNode dep = queue.poll();
+      Set<SNode> byFirst = myDependenciesToNodesAndViceVersa.getByFirst(dep);
+      for (SNode next : SetSequence.fromSet(byFirst)) {
+        if (!(SetSequence.fromSet(checkedNodes).contains(next))) {
+          queue.add(next);
+        }
+      }
       // changed properties and references record the node to myDependenciesToInvalidate only, but these could be changes of a checked node itself
       // perhaps, we shall do it right away in the respective processEvent(). Besides, not clear whether I shall match source nodes against 
       // myDependenciesToNodesAndViceVersa.getBySecond set to filter out events from 'checked' nodes
-      SetSequence.fromSet(checkedNodes).addElement(dep);
+      SetSequence.fromSet(checkedNodes).addSequence(SetSequence.fromSet(byFirst));
     }
     for (SNode node : checkedNodes) {
       // avoid searching for _already_removed_ node later in check()
@@ -198,7 +207,6 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
   }
 
   /**
-   * 
    * 
    * @return whether state has changed after the check
    */
@@ -250,11 +258,7 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
       Collection<ApprovableError> value = nodeErrors.getValue();
       MapSequence.fromMap(nodesToErrors).put(new IssueKindReportItem.PathObject.NodePathObject(nodeErrors.getKey().getReference()), ListSequence.fromList(ListSequence.fromListWithValues(new ArrayList<ApprovableError>(), value)).asUnmodifiable());
     }
-    final Consumer<NodeReportItem> consumer = new Consumer<NodeReportItem>() {
-      public void consume(NodeReportItem reportItem) {
-        myPostprocessedNodesToErrors.putValue(reportItem.getNode().resolve(myModel.getRepository()), reportItem);
-      }
-    };
+    final Consumer<NodeReportItem> consumer = (NodeReportItem reportItem) -> myPostprocessedNodesToErrors.putValue(reportItem.getNode().resolve(myModel.getRepository()), reportItem);
     for (AbstractNodeCheckerInEditor checker : checkers) {
       ICheckingPostprocessor postProcessChecker = checker.getPostprocessor();
       if (postProcessChecker != null) {

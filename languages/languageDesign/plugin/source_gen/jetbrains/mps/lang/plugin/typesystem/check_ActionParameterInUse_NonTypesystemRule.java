@@ -10,7 +10,6 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -24,11 +23,7 @@ public class check_ActionParameterInUse_NonTypesystemRule extends AbstractNonTyp
   public check_ActionParameterInUse_NonTypesystemRule() {
   }
   public void applyRule(final SNode actionParameter, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    boolean inUse = ListSequence.fromList(SNodeOperations.getNodeDescendantsWhereConceptInList(SNodeOperations.getNodeAncestor(actionParameter, CONCEPTS.ActionDeclaration$T0, false, false), new SAbstractConcept[]{CONCEPTS.ActionParameterReferenceOperation$c$, CONCEPTS.ActionDataParameterReferenceOperation$dX}, false, new SAbstractConcept[]{})).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.member$oLt6) == actionParameter;
-      }
-    });
+    boolean inUse = ListSequence.fromList(SNodeOperations.getNodeDescendantsWhereConceptInList(SNodeOperations.getNodeAncestor(actionParameter, CONCEPTS.ActionDeclaration$T0, false, false), new SAbstractConcept[]{CONCEPTS.ActionParameterReferenceOperation$c$, CONCEPTS.ActionDataParameterReferenceOperation$dX}, false, new SAbstractConcept[]{})).any((it) -> SLinkOperations.getTarget(it, LINKS.member$oLt6) == actionParameter);
     if (!(inUse)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();

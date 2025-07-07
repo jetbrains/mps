@@ -16,7 +16,6 @@
 package jetbrains.mps.compiler;
 
 import jetbrains.mps.project.Project;
-import org.eclipse.jdt.internal.compiler.impl.CompilerOptions;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -63,17 +62,42 @@ public class JavaCompilerOptionsComponent {
       return JavaVersion.VERSION_1_7;
     } else if (property.startsWith("1.8")) {
       return JavaVersion.VERSION_1_8;
+    } else if (property.startsWith("9")) {
+      return JavaVersion.VERSION_9;
+    } else if (property.startsWith("10")) {
+      return JavaVersion.VERSION_10;
+    } else if (property.startsWith("11")) {
+      return JavaVersion.VERSION_11;
+    } else if (property.startsWith("12")) {
+      return JavaVersion.VERSION_12;
+    } else if (property.startsWith("13")) {
+      return JavaVersion.VERSION_13;
+    } else if (property.startsWith("14")) {
+      return JavaVersion.VERSION_14;
+    } else if (property.startsWith("15")) {
+      return JavaVersion.VERSION_15;
+    } else if (property.startsWith("16")) {
+      return JavaVersion.VERSION_16;
+    } else if (property.startsWith("17")) {
+      return JavaVersion.VERSION_17;
     }
-    return JavaVersion.VERSION_11;
+    return JavaVersion.VERSION_17;
   }
 
   public enum JavaVersion {
-    VERSION_1_6(CompilerOptions.VERSION_1_6),
-    VERSION_1_7(CompilerOptions.VERSION_1_7),
-    VERSION_1_8(CompilerOptions.VERSION_1_8),
-    VERSION_9(CompilerOptions.VERSION_9),
-    VERSION_10(CompilerOptions.VERSION_10),
-    VERSION_11(CompilerOptions.VERSION_11);
+    // arguments are inlined values of org.eclipse.jdt.internal.compiler.impl.CompilerOptions.VERSION_XXX
+    VERSION_1_6("1.6"),
+    VERSION_1_7("1.7"),
+    VERSION_1_8("1.8"),
+    VERSION_9("9"),
+    VERSION_10("10"),
+    VERSION_11("11"),
+    VERSION_12("12"),
+    VERSION_13("13"),
+    VERSION_14("14"),
+    VERSION_15("15"),
+    VERSION_16("16"),
+    VERSION_17("17");
 
     private final String myCompilerVersion;
 

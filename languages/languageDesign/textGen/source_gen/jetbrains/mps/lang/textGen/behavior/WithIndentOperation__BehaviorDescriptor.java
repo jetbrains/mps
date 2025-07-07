@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class WithIndentOperation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11fd28e1146L, "jetbrains.mps.lang.textGen.structure.WithIndentOperation");
 
-  public static final SMethod<Boolean> inLangConcept_idhZi_Zwx = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("inLangConcept").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hZi_Zwx").build();
+  public static final SMethod<Boolean> inLangConcept_idhZi_Zwx = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("inLangConcept").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1236188788769L).languageId(0x8a3665e25f4dd253L, 0xb83431fe5c8f40bcL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(inLangConcept_idhZi_Zwx);
 

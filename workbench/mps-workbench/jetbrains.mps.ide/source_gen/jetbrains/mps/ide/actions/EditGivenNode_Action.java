@@ -24,6 +24,7 @@ public class EditGivenNode_Action extends BaseAction {
     this.text = text_par;
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

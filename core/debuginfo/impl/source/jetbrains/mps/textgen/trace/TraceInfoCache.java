@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,11 +22,10 @@ import jetbrains.mps.generator.cache.ParseFacility.Parser;
 import jetbrains.mps.generator.generationTypes.StreamHandler;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.facets.JavaModuleFacet;
-import jetbrains.mps.smodel.SModelOperations;
-import jetbrains.mps.util.IFileUtil;
+import jetbrains.mps.project.facets.TestsFacet;
+import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.util.JDOMUtil;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.Logger;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -38,7 +37,6 @@ import org.jetbrains.mps.openapi.module.SModule;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -73,11 +71,15 @@ public final class TraceInfoCache {
   /**
    * Invoke to set new cached value
    */
-  /*package*/
-  final void update(SModel model, DebugInfo cache) {
+  /*package*/ void update(SModel model, DebugInfo cache) {
     final SModelReference mr = model.getReference();
     myCache.put(mr, cache);
   }
+
+  /*package*/ void drop(SModel model) {
+    myCache.remove(model.getReference());
+  }
+
 
 
   private DebugInfo readCache(final SModel sm) {
@@ -90,8 +92,9 @@ public final class TraceInfoCache {
       }
     }
 
-    // XXX Could have resorted to workspace location here, if failed. However, not quite sure it's the right approach,
-    //     JavaTraceInfoResourceProvider didn't look elsewhere but module classpath.
+    // Modules in IDEA with MPS Plugin installed, do not have a classloader.
+    // To address https://youtrack.jetbrains.com/issue/MPS-26254 (as well as other issues, see [MM] below),
+    // we have to look into source output.
 
     // [MM] this may help when we want to establish connection between generated code and source nodes. We may
     // not even have compiled classes in this case (or compiled not to /classes_gen, for example, as some parts of MPS project itself)
@@ -111,7 +114,7 @@ public final class TraceInfoCache {
    *
    * Note, cl.getResource() looks not into module only, but in dependent modules too. Though it's not intended and indeed poor, it's not
    * that different from the old approach (classpath in JavaModuleFacet lists all dependencies as well, and classloader for IDEA plugin would
-   * search plugin CP completely, too). FIXME however, I'd like to have this fixed with ReloadeableModule.getOwnResource()
+   * search plugin CP completely, too). FIXME however, I'd like to have this fixed with ModuleRuntime.getOwnResource()
    */
   @Nullable
   private URL getDeployedLocation(@NotNull SModel sm) {
@@ -127,21 +130,6 @@ public final class TraceInfoCache {
       ClassLoader moduleClassLoader = ((ReloadableModule) module).getClassLoader();
       url = moduleClassLoader == null ? null : moduleClassLoader.getResource(resourcePath);
     }
-    // Modules in IDEA with MPS Plugin installed, do not have a classloader, instead, there's a hack to supply
-    // location of generated classes via custom JavaModuleFacet implementation (see SolutionIdea#setupFacet())
-    // Therefore, here we address https://youtrack.jetbrains.com/issue/MPS-26254 and look into location supplied by the hack
-    if (url == null) {
-      JavaModuleFacet javaModuleFacet = module.getFacet(JavaModuleFacet.class);
-      IFile classesGen = javaModuleFacet == null ? null : javaModuleFacet.getClassesGen();
-      if (classesGen != null) {
-        try {
-          url = IFileUtil.getDescendant(classesGen, resourcePath).getUrl();
-        } catch (MalformedURLException ex) {
-          String msg = "Failed to look up trace.info location for module %s";
-          Logger.getLogger(getClass()).debug(String.format(msg, module.getModuleName()), ex);
-        }
-      }
-    }
     return url;
   }
 
@@ -153,7 +141,20 @@ public final class TraceInfoCache {
   @Nullable
   //todo [MM] why does the return type differ from that of getDeployedLocation?
   private IFile getWorkspaceLocation(@NotNull SModel model) {
-    IFile outputLocation = SModelOperations.getOutputLocation(model);
+    // Intentionally don't ask any GenerationTargetFacet, trace.info is about Java anyway, it's fine to
+    // restrict to Java-specific module facets only. The code below is what used to be in SModelOperations.getOutputLocation()
+    IFile outputLocation = null;
+    if (SModelStereotype.isTestModel(model)) {
+      TestsFacet facet = model.getModule().getFacet(TestsFacet.class);
+      if (facet != null) {
+        outputLocation = facet.getOutputLocation(model);
+      }
+      // fall-through
+    }
+    if (outputLocation == null) {
+      JavaModuleFacet jmf = model.getModule().getFacet(JavaModuleFacet.class);
+      outputLocation = jmf == null ? null : jmf.getOutputLocation(model);
+    }
     if (outputLocation == null) {
       return null;
     }
@@ -165,21 +166,25 @@ public final class TraceInfoCache {
     return new CacheGen(newInfo);
   }
 
-  private class CacheGen implements CacheGenerator {
+  private class CacheGen implements CacheGenerator<GenerationStatus> {
     private final DebugInfo myInfoNew;
 
     public CacheGen(DebugInfo newInfo) {
       myInfoNew = newInfo;
     }
 
-
     @Override
     public void generateCache(GenerationStatus status, StreamHandler handler) {
       DebugInfo cache = myInfoNew;
       if (cache == null) {
+        drop(status.getInputModel());
         return;
       }
       update(status.getInputModel(), cache);
+      if (!cache.getRoots().iterator().hasNext()) {
+        // don't serialize empty file, let Make/reconcile logic remove is (as untouched)
+        return;
+      }
       handler.saveStream(TRACE_FILE_NAME, SerializeSupport.serialize(cache));
     }
   }

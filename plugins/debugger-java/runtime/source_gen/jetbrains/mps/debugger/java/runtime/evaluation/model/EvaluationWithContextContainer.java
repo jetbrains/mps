@@ -4,8 +4,7 @@ package jetbrains.mps.debugger.java.runtime.evaluation.model;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.debugger.java.runtime.evaluation.container.EvaluationContainer;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.debugger.java.runtime.state.DebugSession;
 import org.jetbrains.annotations.NotNull;
@@ -18,14 +17,13 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.ModelDependencyUpdate;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.debugger.java.runtime.evaluation.container.BaseLanguagesImportHelper;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -33,17 +31,16 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.LinkedHashMap;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import com.sun.jdi.InvalidStackFrameException;
-import org.apache.log4j.Level;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import org.jetbrains.mps.openapi.model.SModelName;
 import jetbrains.mps.java.stub.JavaPackageNameStub;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.ide.findusages.model.scopes.ModelsScope;
 import org.jetbrains.mps.openapi.module.FindUsagesFacade;
@@ -53,14 +50,6 @@ import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.debugger.java.runtime.evaluation.container.IEvaluationContainer;
 import jetbrains.mps.smodel.CopyUtil;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.extensions.PluginId;
-import com.intellij.ide.plugins.PluginManager;
-import jetbrains.mps.debug.api.Debuggers;
-import jetbrains.mps.debugger.java.runtime.JavaDebugger;
-import java.io.File;
-import java.util.ArrayList;
-import com.intellij.ide.plugins.IdeaPluginDescriptorImpl;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -71,7 +60,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 @GeneratedClass(node = "r:86d21248-3bf4-41d8-8375-ab68885d035f(jetbrains.mps.debugger.java.runtime.evaluation.model)/317191294095137637", model = "r:86d21248-3bf4-41d8-8375-ab68885d035f(jetbrains.mps.debugger.java.runtime.evaluation.model)")
 public class EvaluationWithContextContainer extends EvaluationContainer {
-  private static final Logger LOG = LogManager.getLogger(EvaluationWithContextContainer.class);
+  private static final Logger LOG = Logger.getLogger(EvaluationWithContextContainer.class);
   private final boolean myIsInWatch;
   private boolean myVariablesInitialized = false;
   protected final EvaluationContext myEvaluationContext;
@@ -101,22 +90,29 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
     new ModelDependencyUpdate(containerModel).updateUsedLanguages().updateImportedModels(myDebuggerRepository).updateModuleDependencies(myDebuggerRepository);
   }
 
-  private void setUpDependencies(final EvaluationModule containerModule, SModel containerModel) {
-    ListSequence.fromList(myEvaluationContext.getClassPath()).union(ListSequence.fromList(getDebuggerStubPath())).visitAll(new IVisitor<String>() {
-      public void visit(String it) {
-        containerModule.addClassPathItem(it);
-      }
-    });
-    containerModule.updateModelsSet();
+  private void setUpDependencies(EvaluationModule containerModule, SModel containerModel) {
+    // alternative to myEvaluationContext.getClassPath(), just depend from a module rather than
+    // use its calculated execution classpath (btw, how come exec classpath helped compilation?!)
+    SModule locationModule = myEvaluationContext.getLocationModule();
+    if (locationModule != null) {
+      containerModule.addDependency(locationModule.getModuleReference(), false);
+    }
+    // alternative to getDebuggerStubPath(), again direct module dependencies shall induce
+    // relevant lib/ and the rest
+    containerModule.addDependency(PersistenceFacade.getInstance().createModuleReference("cc7da2f6-419f-4133-a811-31fcd3295a85(jetbrains.mps.debugger.api.api)"), false);
+    containerModule.addDependency(PersistenceFacade.getInstance().createModuleReference("fcffe3cf-3ebc-4d3d-989b-2f30533bc904(jetbrains.mps.debugger.java.runtime)"), false);
+    // next dependency was part of EvaluationContainer.generateClass(). No idea if it's necessary, doesn't hurt to have, I suppose.
+    containerModule.addDependency(PersistenceFacade.getInstance().createModuleReference("cf8c9de5-1b4a-4dc8-8e6d-847159af31dd(jetbrains.mps.debugger.java.api)"), false);
+    // XXX not sure there's any reason to add JDK explicitly, as it's likely to get there trough dependencies anyway
+    containerModule.addDependency(PersistenceFacade.getInstance().createModuleReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)"), false);
 
     ModelImports modelImports = new ModelImports(containerModel);
     modelImports.addUsedLanguage(MetaAdapterFactory.getLanguage(0x7da4580f9d754603L, 0x816251a896d78375L, "jetbrains.mps.debugger.java.evaluation"));
     modelImports.addUsedLanguage(MetaAdapterFactory.getLanguage(0x802088974572437dL, 0xb50e8f050cba9566L, "jetbrains.mps.debugger.java.privateMembers"));
-    containerModule.addDependency(PersistenceFacade.getInstance().createModuleReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)"), false);
   }
   private void tryToImport(final SNode evaluatorNode, List<SNodeReference> nodesToImport) {
     BaseLanguagesImportHelper helper = new MyBaseLanguagesImportHelper(evaluatorNode);
-    helper.tryToImport(((SNode) BHReflection.invoke0(evaluatorNode, CONCEPTS.IEvaluatorConcept$E8, SMethodTrimmedId.create("getCode", null, "hASWOEj0jB"))), nodesToImport);
+    helper.tryToImport(((SNode) BHReflection.invoke0(evaluatorNode, CONCEPTS.IEvaluatorConcept$E8, SMethodIdV2.create("getCode", 317191294093624551L, 0xfcc609a70ba2c576L))), nodesToImport);
   }
 
   protected SNode createEvaluatorNode() {
@@ -133,11 +129,7 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
   }
   private void fillVariables(SNode evaluatorConcept) {
     try {
-      _FunctionTypes._return_P1_E0<? extends SNode, ? super String> createClassifierType = new _FunctionTypes._return_P1_E0<SNode, String>() {
-        public SNode invoke(String name) {
-          return createClassifierType(name);
-        }
-      };
+      _FunctionTypes._return_P1_E0<? extends SNode, ? super String> createClassifierType = (String name) -> createClassifierType(name);
       Map<String, VariableDescription> contextVariables = myEvaluationContext.getVariables(createClassifierType);
 
       Map<String, SNode> declaredVariables = MapSequence.fromMap(new LinkedHashMap<String, SNode>(16, (float) 0.75, false));
@@ -165,11 +157,7 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
       }
 
       // now mark vars which are currently out of scope
-      Sequence.fromIterable(MapSequence.fromMap(declaredVariables).values()).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SPropertyOperations.set(it, PROPS.isOutOfScope$49K_, !(SetSequence.fromSet(foundVars).contains(it)));
-        }
-      });
+      Sequence.fromIterable(MapSequence.fromMap(declaredVariables).values()).visitAll((it) -> SPropertyOperations.set(it, PROPS.isOutOfScope$49K_, !(SetSequence.fromSet(foundVars).contains(it))));
 
       if (needUpdateVariables()) {
         // create static context type
@@ -179,8 +167,8 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
       }
       // todo highlight when this type or static context type are invalid
     } catch (InvalidStackFrameException e) {
-      if (LOG.isEnabledFor(Level.WARN)) {
-        LOG.warn("InvalidStackFrameException", e);
+      if (LOG.isWarningLevel()) {
+        LOG.warning("InvalidStackFrameException", e);
       }
     }
     myVariablesInitialized = true;
@@ -193,11 +181,7 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
       // createVars used to execute command (runWriteActionInCommand), hence I assume (a) we've got proper thread here
       // (b) there's need to run inside a command. Although it looks undoTransparent (the one that doesn't record any changes)
       // is suited much better here.
-      myDebuggerRepository.getModelAccess().executeCommand(new Runnable() {
-        public void run() {
-          createVars();
-        }
-      });
+      myDebuggerRepository.getModelAccess().executeCommand(() -> createVars());
     }
   }
   @Nullable
@@ -211,17 +195,17 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
     return classifierType;
   }
   public SNode findUnit(final String unitName) {
+    // FIXME I wonder if this code to respect stub models first is related to the face EvaluationModule used to expose its 
+    // dependencies as stubs (when it was populated with classpath of a dependency instead of dependency itself).
+    // In either case, I suspect we shall look through models visible in EvaluationModule only, not the whole repository?
+
     // I hate the next piece of code
     // (and this class in general, since it inherited a lot of the ugly stuff from the old evaluation code)
     ModuleRepositoryFacade repoFacade = new ModuleRepositoryFacade(myDebuggerRepository);
     // first, try @java_stub model
     final String qualifiedModelName = modelFqNameFromUnitName(unitName);
     for (SModel stub : repoFacade.getModelsByName(new SModelName(new JavaPackageNameStub(qualifiedModelName).asModelId().getModelName()))) {
-      SNode node = ListSequence.fromList(SModelOperations.nodes(stub, CONCEPTS.UnitConcept$1g)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(((String) BHReflection.invoke0(it, CONCEPTS.UnitConcept$1g, SMethodTrimmedId.create("getUnitName", null, "4pl5GY7LKmR"))), unitName) && SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$Ix);
-        }
-      });
+      SNode node = ListSequence.fromList(SModelOperations.nodes(stub, CONCEPTS.UnitConcept$1g)).findFirst((it) -> Objects.equals(((String) BHReflection.invoke0(it, CONCEPTS.UnitConcept$1g, SMethodIdV2.create("getUnitName", 5067982036267369911L, 0x223441e8c194cd94L))), unitName) && SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$Ix));
       if (node != null) {
         return node;
       }
@@ -232,19 +216,11 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
     //     incompletely matching name (i.e. match qualified name only).
     //     With that, there's little reason to handle @java_stub explicitly, above (other than give them priority), perhaps, shall
     //     combine into single piece of code? Need to pay attention, though, if stubs get indexed or not (common code could't use FindUsagesFacade if not, then)
-    ModelsScope scope = new ModelsScope(Sequence.fromIterable(((Iterable<SModel>) repoFacade.getAllModels())).where(new IWhereFilter<SModel>() {
-      public boolean accept(SModel it) {
-        return it.getName().getLongName().equals(qualifiedModelName);
-      }
-    }));
+    ModelsScope scope = new ModelsScope(Sequence.fromIterable(((Iterable<SModel>) repoFacade.getAllModels())).where((it) -> it.getName().getLongName().equals(qualifiedModelName)));
     FindUsagesFacade findUsages = FindUsagesFacade.getInstance();
     SAbstractConcept concept = CONCEPTS.UnitConcept$1g;
     Set<SNode> instances = findUsages.findInstances(scope, Collections.singleton(concept), false, new EmptyProgressMonitor());
-    return SNodeOperations.cast(SetSequence.fromSet(instances).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$Ix) && ((String) BHReflection.invoke0(SNodeOperations.cast(it, CONCEPTS.UnitConcept$1g), CONCEPTS.UnitConcept$1g, SMethodTrimmedId.create("getUnitName", null, "4pl5GY7LKmR"))).equals(unitName);
-      }
-    }), CONCEPTS.UnitConcept$1g);
+    return SNodeOperations.cast(SetSequence.fromSet(instances).findFirst((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$Ix) && ((String) BHReflection.invoke0(SNodeOperations.cast(it, CONCEPTS.UnitConcept$1g), CONCEPTS.UnitConcept$1g, SMethodIdV2.create("getUnitName", 5067982036267369911L, 0x223441e8c194cd94L))).equals(unitName)), CONCEPTS.UnitConcept$1g);
   }
 
   private boolean needUpdateVariables() {
@@ -261,33 +237,14 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
         return newEvaluator;
       }
     };
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        myProject.getModelAccess().executeCommand(new Runnable() {
-          public void run() {
-            rv.setUpNode(null);
-          }
-        });
-        onNodeSetUp.invoke(rv);
-      }
+    ApplicationManager.getApplication().invokeLater(() -> {
+      myProject.getModelAccess().executeCommand(() -> rv.setUpNode(null));
+      onNodeSetUp.invoke(rv);
     });
     // FIXME return value is ignored (callback is employed instead), shall change IEvaluationContainer.copy to reflect this
     return rv;
   }
-  public static List<String> getDebuggerStubPath() {
-    PluginId apiPlugin = PluginManager.getPluginByClassName(Debuggers.class.getName());
-    PluginId javaPlugin = PluginManager.getPluginByClassName(JavaDebugger.class.getName());
 
-    List<File> paths = ListSequence.fromList(new ArrayList<File>());
-    ListSequence.fromList(paths).addSequence(ListSequence.fromList(((IdeaPluginDescriptorImpl) PluginManager.getPlugin(apiPlugin)).getClassPath()));
-    ListSequence.fromList(paths).addSequence(ListSequence.fromList(((IdeaPluginDescriptorImpl) PluginManager.getPlugin(javaPlugin)).getClassPath()));
-
-    return ListSequence.fromList(paths).select(new ISelector<File, String>() {
-      public String select(File it) {
-        return (String) it.getAbsolutePath();
-      }
-    }).toListSequence();
-  }
   private static String modelFqNameFromUnitName(String unitName) {
     int lastDot = unitName.lastIndexOf('.');
     return ((lastDot == -1 ? "" : unitName.substring(0, lastDot)));
@@ -300,17 +257,9 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
     }
     @Override
     public SNode findVariable(final SReference variableReference) {
-      SNode matchingVar = ListSequence.fromList(SLinkOperations.getChildren(myEvaluatorNode, LINKS.variables$I5Ku)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode variable) {
-          return Objects.equals(SNodePointer.deserialize(SPropertyOperations.getString(variable, PROPS.highLevelNodeId$vUtS)), SNodeOperations.getPointer(SLinkOperations.getTargetNode(variableReference)));
-        }
-      });
+      SNode matchingVar = ListSequence.fromList(SLinkOperations.getChildren(myEvaluatorNode, LINKS.variables$I5Ku)).findFirst((variable) -> Objects.equals(SNodePointer.deserialize(SPropertyOperations.getString(variable, PROPS.highLevelNodeId$vUtS)), SNodeOperations.getPointer(SLinkOperations.getTargetNode(variableReference))));
       if (matchingVar == null) {
-        matchingVar = ListSequence.fromList(SLinkOperations.getChildren(myEvaluatorNode, LINKS.variables$I5Ku)).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode variable) {
-            return Objects.equals(SPropertyOperations.getString(variable, PROPS.name$MnvL), SPropertyOperations.getString(SNodeOperations.cast(SLinkOperations.getTargetNode(variableReference), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL));
-          }
-        });
+        matchingVar = ListSequence.fromList(SLinkOperations.getChildren(myEvaluatorNode, LINKS.variables$I5Ku)).findFirst((variable) -> Objects.equals(SPropertyOperations.getString(variable, PROPS.name$MnvL), SPropertyOperations.getString(SNodeOperations.cast(SLinkOperations.getTargetNode(variableReference), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL)));
       }
       return matchingVar;
     }

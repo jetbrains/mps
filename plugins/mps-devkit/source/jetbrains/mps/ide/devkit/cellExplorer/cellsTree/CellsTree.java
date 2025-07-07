@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -97,7 +97,7 @@ public class CellsTree extends MPSTreeWithAction {
 
     MPSTreeNode current = findCellNode(cell);
     if (current == null) {
-      CellExplorerTool.LOG.warn("Can't find cell in tree");
+      CellExplorerTool.LOG.warning("Can't find cell in tree");
       return;
     }
     selectNode(current);

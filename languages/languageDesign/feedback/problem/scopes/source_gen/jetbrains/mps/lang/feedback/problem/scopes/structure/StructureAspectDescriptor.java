@@ -49,9 +49,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForRefOutOfScopeProblem() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.feedback.problem.scopes", "RefOutOfScopeProblem", 0xfeec32f9bc8f4da8L, 0x8efd7f3f9dd4101bL, 0x161a25d49703afdbL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot", 0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL);
+    // extends: jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot
+    b.super_(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL);
     b.origin("r:bc41db58-2589-400b-8121-4dd19c77316b(jetbrains.mps.lang.feedback.problem.scopes.structure)/1592627013225787355");
-    b.version(2);
+    b.version(3);
     b.associate("ref", 0x161a25d49703b44eL).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL).optional(false).origin("1592627013225788494").done();
     b.alias("when reference is out of scope");
     return b.create();

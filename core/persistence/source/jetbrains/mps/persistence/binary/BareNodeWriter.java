@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,6 @@ import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.smodel.DynamicReference.DynamicReferenceOrigin;
 import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.io.ModelOutputStream;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -59,15 +58,6 @@ public class BareNodeWriter {
   protected final ModelOutputStream myOut;
   private boolean myWriteUserObjects = true; // true is legacy setting
 
-  /**
-   * @deprecated use {@link #BareNodeWriter(Predicate, ModelOutputStream, boolean)} instead
-   */
-  @Deprecated
-  @ToRemove(version = 2020.2)
-  public BareNodeWriter(@NotNull SModelReference modelReference, @NotNull ModelOutputStream os) {
-    this(modelReference::equals, os, true);
-  }
-
   public BareNodeWriter(@NotNull Predicate<SModelReference> localModelRefPredicate, @NotNull ModelOutputStream os, boolean writeUserObjects) {
     myLocalModelReference = localModelRefPredicate;
     myOut = os;
@@ -77,8 +67,6 @@ public class BareNodeWriter {
   public BareNodeWriter(@NotNull ModelOutputStream os) {
     this(x -> false, os, true);
   }
-
-
 
   public void writeNodes(Collection<SNode> nodes) throws IOException {
     myOut.writeInt(nodes.size());
@@ -109,7 +97,7 @@ public class BareNodeWriter {
 
     writeReferences(node);
 
-    writeNodes(IterableUtil.asCollection(node.getChildren()));
+    writeChildren(node);
 
     myOut.writeByte('}');
   }
@@ -127,6 +115,10 @@ public class BareNodeWriter {
       myOut.writeReferenceLink(r.getLink());
       writeReferenceTarget(r);
     }
+  }
+
+  protected void writeChildren(SNode node) throws IOException {
+    writeNodes(IterableUtil.asCollection(node.getChildren()));
   }
 
   protected void writeReferenceTarget(SReference reference) throws IOException {

@@ -23,19 +23,11 @@ public class ImplementationCode_Constraints extends BaseConstraintsDescriptor {
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$MnvL, container);
-    }
-    @Override
-    public boolean hasOwnGetter() {
-      return true;
+      super(PROPS.name$MnvL, container, true, true, false);
     }
     @Override
     public Object getValue(SNode node) {
       return "Implementation of " + SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.descriptor$u9AN), PROPS.name$MnvL);
-    }
-    @Override
-    public boolean hasOwnSetter() {
-      return true;
     }
     @Override
     public void setPropertyValue(SNode node, Object propertyValue) {

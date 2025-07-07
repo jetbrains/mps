@@ -5,12 +5,11 @@ package jetbrains.mps.debugger.java.runtime.engine;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.debugger.java.runtime.engine.requests.IRequestManager;
 import jetbrains.mps.logging.Logger;
-import org.apache.log4j.LogManager;
 import java.util.Map;
 import jetbrains.mps.debugger.java.runtime.engine.requests.Requestor;
 import java.util.Set;
 import com.sun.jdi.request.EventRequest;
-import com.intellij.util.containers.HashMap;
+import java.util.HashMap;
 import com.sun.jdi.request.EventRequestManager;
 import jetbrains.mps.debugger.java.runtime.engine.events.EventsProcessor;
 import java.util.List;
@@ -39,7 +38,6 @@ import com.sun.jdi.ThreadReference;
 import jetbrains.mps.debugger.java.runtime.engine.requests.StepRequestor;
 import jetbrains.mps.debugger.java.runtime.engine.requests.ClassPrepareRequestor;
 import com.sun.jdi.request.ClassPrepareRequest;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import com.sun.jdi.event.ClassPrepareEvent;
 import com.sun.jdi.ClassType;
 import com.sun.jdi.InterfaceType;
@@ -48,7 +46,7 @@ import jetbrains.mps.debug.api.breakpoints.IBreakpoint;
 
 @GeneratedClass(node = "r:0b933946-5ee4-42ea-9b69-bd1790a8e611(jetbrains.mps.debugger.java.runtime.engine)/8961922059449033006", model = "r:0b933946-5ee4-42ea-9b69-bd1790a8e611(jetbrains.mps.debugger.java.runtime.engine)")
 public class RequestManager implements IRequestManager {
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(RequestManager.class));
+  private static final Logger LOG = Logger.getLogger(RequestManager.class);
   private static final Object REQUESTOR = new Object();
   private static final Object CLASS_NAME = new Object();
   private final Map<Requestor, Set<EventRequest>> myRequestorToBelongedRequests = new HashMap<Requestor, Set<EventRequest>>();
@@ -228,11 +226,7 @@ public class RequestManager implements IRequestManager {
   public void setInvalid(Requestor requestor, String message) {
     ManagerThread.assertIsMangerThread();
     myInvalidRequestsAndWarnings.put(requestor, message);
-    ListSequence.fromList(myWarningsListeners).visitAll(new IVisitor<_FunctionTypes._void_P0_E0>() {
-      public void visit(_FunctionTypes._void_P0_E0 it) {
-        it.invoke();
-      }
-    });
+    ListSequence.fromList(myWarningsListeners).visitAll((it) -> it.invoke());
   }
   @Nullable
   public String getWarning(Requestor requestor) {
@@ -258,20 +252,16 @@ public class RequestManager implements IRequestManager {
     }
   }
   public static void createClassPrepareRequests(final JavaBreakpoint breakpoint) {
-    VMEventsProcessorManagerComponent.getInstance(breakpoint.getProject()).performAllDebugProcessesAction(new _FunctionTypes._void_P1_E0<EventsProcessor>() {
-      public void invoke(EventsProcessor processor) {
-        if (processor.isAttached()) {
-          breakpoint.createClassPrepareRequest(processor);
-        }
+    VMEventsProcessorManagerComponent.getInstance(breakpoint.getProject()).performAllDebugProcessesAction((EventsProcessor processor) -> {
+      if (processor.isAttached()) {
+        breakpoint.createClassPrepareRequest(processor);
       }
     });
   }
   public static void removeClassPrepareRequests(final JavaBreakpoint breakpoint) {
-    VMEventsProcessorManagerComponent.getInstance(breakpoint.getProject()).performAllDebugProcessesAction(new _FunctionTypes._void_P1_E0<EventsProcessor>() {
-      public void invoke(EventsProcessor processor) {
-        if (processor.isAttached()) {
-          processor.getRequestManager().deleteRequests(breakpoint);
-        }
+    VMEventsProcessorManagerComponent.getInstance(breakpoint.getProject()).performAllDebugProcessesAction((EventsProcessor processor) -> {
+      if (processor.isAttached()) {
+        processor.getRequestManager().deleteRequests(breakpoint);
       }
     });
   }
@@ -287,13 +277,11 @@ public class RequestManager implements IRequestManager {
     public void processAttached(@NotNull EventsProcessor process) {
       myEventRequestManager = myDebugEventsProcessor.getVirtualMachine().eventRequestManager();
       //  invoke later, so that requests are for sure created only _after_ 'processAttached()' methods of other listeneres are executed
-      process.schedule(new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          BreakpointManagerComponent breakpointManager = myDebugEventsProcessor.getBreakpointManager();
-          for (IBreakpoint breakpoint : breakpointManager.getAllIBreakpoints()) {
-            if (breakpoint instanceof JavaBreakpoint) {
-              ((JavaBreakpoint) breakpoint).createClassPrepareRequest(myDebugEventsProcessor);
-            }
+      process.schedule(() -> {
+        BreakpointManagerComponent breakpointManager = myDebugEventsProcessor.getBreakpointManager();
+        for (IBreakpoint breakpoint : breakpointManager.getAllIBreakpoints()) {
+          if (breakpoint instanceof JavaBreakpoint) {
+            ((JavaBreakpoint) breakpoint).createClassPrepareRequest(myDebugEventsProcessor);
           }
         }
       });

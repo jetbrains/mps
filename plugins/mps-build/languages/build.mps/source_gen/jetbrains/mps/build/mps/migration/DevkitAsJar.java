@@ -14,7 +14,6 @@ import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -39,22 +38,14 @@ public class DevkitAsJar extends MigrationScriptBase {
     {
       SearchScope scope_66hauc_a0e = CommandUtil.createScope(m);
       final SearchScope scope_66hauc_a0e_0 = new EditableFilteringScope(scope_66hauc_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_66hauc_a0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_66hauc_a0e_0;
       for (SNode dk : CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BuildMps_DevKit$jc, false)) {
         if (SLinkOperations.getTarget(dk, LINKS.path$iYKB) == null) {
           continue;
         }
         final String devkitPath = BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(dk, LINKS.path$iYKB));
         SNode buildProject = SNodeOperations.getNodeAncestor(dk, CONCEPTS.BuildProject$ae, false, false);
-        for (SNode blFile : ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(buildProject, LINKS.layout$r7bw), CONCEPTS.BuildLayout_File$Kk, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return (SLinkOperations.getTarget(it, LINKS.path$xmoo) != null) && devkitPath.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(it, LINKS.path$xmoo)));
-          }
-        })) {
+        for (SNode blFile : ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(buildProject, LINKS.layout$r7bw), CONCEPTS.BuildLayout_File$Kk, false, new SAbstractConcept[]{})).where((it) -> (SLinkOperations.getTarget(it, LINKS.path$xmoo) != null) && devkitPath.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(it, LINKS.path$xmoo))))) {
           SNode moduleJars = SModelOperations.createNewNode(SNodeOperations.getModel(buildProject), null, CONCEPTS.BuildMpsLayout_ModuleJars$MZ);
           SLinkOperations.setTarget(moduleJars, LINKS.module$iRYT, dk);
           SNodeOperations.replaceWithAnother(blFile, moduleJars);
@@ -62,7 +53,7 @@ public class DevkitAsJar extends MigrationScriptBase {
       }
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xcf935df46994e9cL, 0xa132fa109541cba3L, "jetbrains.mps.build.mps"), 4);
   }
 

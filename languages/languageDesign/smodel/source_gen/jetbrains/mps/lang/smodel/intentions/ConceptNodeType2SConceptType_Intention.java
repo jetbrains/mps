@@ -21,21 +21,21 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public final class ConceptNodeType2SConceptType_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ConceptNodeType2SConceptType_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902ff(jetbrains.mps.lang.smodel.intentions)", "5979510592532822087"));
   }
+
   @Override
   public String getPresentation() {
     return "ConceptNodeType2SConceptType";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -45,20 +45,31 @@ public final class ConceptNodeType2SConceptType_Intention extends AbstractIntent
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Convert to concept<...>";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode repl = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, "jetbrains.mps.lang.smodel.structure.SConceptType"));
       SLinkOperations.setTarget(repl, LINKS.conceptDeclaraton$K4R0, SLinkOperations.getTarget(node, LINKS.conceptDeclaraton$Pc1V));
       SNodeOperations.replaceWithAnother(node, repl);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ConceptNodeType2SConceptType_Intention.this;
     }
+
   }
 
   private static final class LINKS {

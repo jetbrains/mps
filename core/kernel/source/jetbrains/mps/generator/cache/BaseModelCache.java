@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.generator.cache;
 
-import jetbrains.mps.smodel.SModelOperations;
+import jetbrains.mps.project.facets.GenerationTargetFacet;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
@@ -24,8 +24,11 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Per-repository, model-associated caches.
@@ -43,14 +46,27 @@ public abstract class BaseModelCache<T> {
   public abstract String getCacheFileName();
 
   @Nullable
-  protected IFile getCacheFile(SModel modelDescriptor) {
-    IFile cachesDir = SModelOperations.getOutputCacheLocation(modelDescriptor);
-    if (cachesDir == null) {
-      return null;
+  protected IFile getCacheFile(final SModel model) {
+    // account for multiple GTFs, take the one to answer with cache dir and prefer existing files
+    final Stream<GenerationTargetFacet> allFacets = GenerationTargetFacet.stream(model);
+    IFile firstNotNullNonExistentFile = null;
+    for (IFile cachesDir : allFacets.map(gtf -> gtf.getOutputCacheLocation(model)).filter(Objects::nonNull).collect(Collectors.toList())) {
+      final IFile descendant = cachesDir.findChild(getCacheFileName());
+      if (descendant.isDirectory()) {
+        // generally, files answer isDirectory/isFile along with existence check, but as long as our IFile API doesn't
+        // document this explicitly not have isFile() method,  I've got additional exists() check.
+        continue;
+      }
+      if (!descendant.exists()) {
+        if (firstNotNullNonExistentFile == null) {
+          firstNotNullNonExistentFile = descendant;
+        }
+        continue;
+      }
+      return descendant;
     }
-
-    final IFile descendant = cachesDir.findChild(getCacheFileName());
-    return descendant.isDirectory() ? null : descendant;
+    // I believe use of this method in update() expects non-existent file to get one created
+    return firstNotNullNonExistentFile;
   }
 
   // In fact, can be application-wide if we use compound key (repo+modelref)
@@ -111,8 +127,15 @@ public abstract class BaseModelCache<T> {
     final SModelReference mr = model.getReference();
     Pair<IFile, T> entry = myCache.remove(mr);
     if (entry != null) {
-      // decided not to update with incomplete entry, although perhaps it won't hurt (file == null))
       myCache.put(mr, new Pair<>(entry.o1, cache));
+    } else {
+      // Note, we need to record new value in cache, otherwise there's no re-use of values we pass here from
+      // e.g. BLDependenciesCache.generateCache(). BLDependenciesCache instance then goes from TextGen to JavaCompile,
+      // where same models get queried for their BL deps. If I don't want to read them again, need to keep cached value here.
+      myCache.put(mr, new Pair<>(getCacheFile(model), cache));
+      // decided not to update with incomplete entry, although perhaps it won't hurt (file == null))
+      // File name presence seems to affect discard() only; BLDependenciesCache instance populated this way (through update()) doesn't go
+      // far beyond TextGen/JavaCompile facets, where I don't expect any explicit 'discard'. Perhaps, file == null is ok as well.
     }
   }
 

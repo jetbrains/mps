@@ -23,8 +23,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.test.runtime.CheckScopesAction;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -34,14 +32,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class ScopesTest__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, "jetbrains.mps.lang.test.structure.ScopesTest");
 
-  public static final SMethod<SReference> getCheckingReference_id4IvydoGvimX = new SMethodBuilder<SReference>(new SJavaCompoundTypeImpl(SReference.class)).name("getCheckingReference").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4IvydoGvimX").build();
-  public static final SMethod<Boolean> isSimple_id4IvydoGvpbr = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSimple").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4IvydoGvpbr").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> isApplicable_id4IvydoGviup = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isApplicable").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4IvydoGviup").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getTestCase_idhGBgWVd = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTestCase").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hGBgWVd").build();
-  public static final SMethod<Boolean> isMpsStartRequired_id2RMg39tmiFh = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isMpsStartRequired").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2RMg39tmiFh").build();
-  public static final SMethod<String> getTestName_idhGBohAB = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTestName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hGBohAB").build();
-  public static final SMethod<SNode> getAnnotatedNode_id38gbJV0XvZR = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getAnnotatedNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("38gbJV0XvZR").build();
-  public static final SMethod<Void> perform_id1kgh5YabdhC = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("perform").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1kgh5YabdhC").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(ComponentHost.class, ""));
+  public static final SMethod<SReference> getCheckingReference_id4IvydoGvimX = new SMethodBuilder<SReference>(new SJavaCompoundTypeImpl(SReference.class)).name("getCheckingReference").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5449224527592367549L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
+  public static final SMethod<Boolean> isSimple_id4IvydoGvpbr = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSimple").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5449224527592395483L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> isApplicable_id4IvydoGviup = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isApplicable").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5449224527592368025L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getTestCase_idhGBgWVd = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTestCase").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1216134500045L).languageId(0xb98d6c438812c2f6L, 0xf61473f9130f42f6L).build2();
+  public static final SMethod<Boolean> isMpsStartRequired_id2RMg39tmiFh = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isMpsStartRequired").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3310779261129403089L).languageId(0xb98d6c438812c2f6L, 0xf61473f9130f42f6L).build2();
+  public static final SMethod<String> getTestName_idhGBohAB = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTestName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1216136419751L).languageId(0xb98d6c438812c2f6L, 0xf61473f9130f42f6L).build2();
+  public static final SMethod<SNode> getAnnotatedNode_id38gbJV0XvZR = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getAnnotatedNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3607434973217685495L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
+  public static final SMethod<Void> perform_id1kgh5YabdhC = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("perform").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1517788251554632808L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(ComponentHost.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCheckingReference_id4IvydoGvimX, isSimple_id4IvydoGvpbr, isApplicable_id4IvydoGviup, getTestCase_idhGBgWVd, isMpsStartRequired_id2RMg39tmiFh, getTestName_idhGBohAB, getAnnotatedNode_id38gbJV0XvZR, perform_id1kgh5YabdhC);
 
@@ -85,11 +83,7 @@ public final class ScopesTest__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static void perform_id1kgh5YabdhC(@NotNull SNode __thisNode__, SNode node, @Nullable ComponentHost host) {
     SReference checkingReference = ScopesTest__BehaviorDescriptor.getCheckingReference_id4IvydoGvimX.invoke(__thisNode__);
-    new CheckScopesAction(checkingReference.getSourceNode(), checkingReference.getLink(), ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.nodes$Many)).select(new ISelector<SNode, SNodeReference>() {
-      public SNodeReference select(SNode it) {
-        return SLinkOperations.getPointer(it, LINKS.ref$RHE6);
-      }
-    }).toListSequence()).check();
+    new CheckScopesAction(checkingReference.getSourceNode(), checkingReference.getLink(), ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.nodes$Many)).select((it) -> SLinkOperations.getPointer(it, LINKS.ref$RHE6)).toList()).check();
   }
 
   /*package*/ ScopesTest__BehaviorDescriptor() {

@@ -56,7 +56,7 @@ public class Template_nodeBuilder extends TemplateDeclarationBase {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
         {
           environment.nodeCopied(context1, tnode2, "tpl/r:00000000-0000-4000-0000-011c8959034c/2249837730599246770");
-          SNodeAccessUtil.setPropertyValue(tnode2, myProperties[0], QueriesGenerated.propertyMacro_GetValue_9_0(new PropertyMacroContext(context1, "nb", propertyMacro_vdsosq_c0a2a1a1a1a2a7)));
+          SNodeAccessUtil.setPropertyValue(tnode2, myProperties[0], QueriesGenerated.propertyMacro_GetValue_9_0(new PropertyMacroContext(context1, "nb", propertyMacro)));
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
@@ -78,7 +78,7 @@ public class Template_nodeBuilder extends TemplateDeclarationBase {
                       TemplateContext context5 = context4.subContext();
                       {
                         Collection<SNode> tlist7 = Collections.emptyList();
-                        if (QueriesGenerated.ifMacro_Condition_9_0(new IfMacroContext(context5, ifMacroRef_vdsosq_b0a0b0c0b0b0b0b0b0e0b0b0c0h))) {
+                        if (QueriesGenerated.ifMacro_Condition_9_0(new IfMacroContext(context5, ifMacroRef))) {
                           final SNode tnode8 = environment.createOutputNode(myConcepts[6]);
                           tlist7 = TemplateUtil.singletonList(tnode8);
                         } else {
@@ -107,7 +107,7 @@ public class Template_nodeBuilder extends TemplateDeclarationBase {
                       }
                       {
                         Collection<SNode> tlist12 = Collections.emptyList();
-                        if (QueriesGenerated.ifMacro_Condition_9_1(new IfMacroContext(context5, ifMacroRef_vdsosq_b0a0b0d0b0b0b0b0b0e0b0b0c0h))) {
+                        if (QueriesGenerated.ifMacro_Condition_9_1(new IfMacroContext(context5, ifMacroRef1))) {
                           final SNode tnode13 = environment.createOutputNode(myConcepts[6]);
                           tlist12 = TemplateUtil.singletonList(tnode13);
                         } else {
@@ -148,14 +148,14 @@ public class Template_nodeBuilder extends TemplateDeclarationBase {
                   {
                     Collection<SNode> tlist18 = null;
                     {
-                      final SNode switchInput18 = QueriesGenerated.sourceNodeQuery_9_0(new SourceSubstituteMacroNodeContext(context8, switchMacroRef_vdsosq_b0a0a0a1a2a1a2a1a4a1a1a2a7));
+                      final SNode switchInput18 = QueriesGenerated.sourceNodeQuery_9_0(new SourceSubstituteMacroNodeContext(context8, switchMacroRef));
                       if (switchInput18 == null) {
-                        environment.nullInputSwitch(templateSwitchNode_vdsosq_a0a0c0a1a1a2a1a2a1a4a1a1a2a7);
+                        environment.nullInputSwitch(templateSwitchNode);
                         tlist18 = Collections.emptyList();
                       } else {
                         TemplateContext switchContext18 = context8;
                         switchContext18 = switchContext18.subContext(null, switchInput18);
-                        tlist18 = environment.trySwitch(templateSwitchNode_vdsosq_a0a0c0a1a1a2a1a2a1a4a1a1a2a7, switchContext18);
+                        tlist18 = environment.trySwitch(templateSwitchNode, switchContext18);
                         if (tlist18 == null) {
                           final SNode tnode19 = environment.createOutputNode(myConcepts[6]);
                           tlist18 = TemplateUtil.singletonList(tnode19);
@@ -192,7 +192,7 @@ public class Template_nodeBuilder extends TemplateDeclarationBase {
               TemplateContext context3 = context2.subContext();
               {
                 final SNode tnode4 = environment.createOutputNode(myConcepts[8]);
-                environment.resolveInTemplateLater(tnode4, myAssociationLinks[2], templateNode_vdsosq_c0a0a1a1a1a1a1a1a2a8, "tpl/r:00000000-0000-4000-0000-011c8959034c/2249837730599246770", "nb", context3);
+                environment.resolveInTemplateLater(tnode4, myAssociationLinks[2], templateNode, "tpl/r:00000000-0000-4000-0000-011c8959034c/2249837730599246770", "nb", context3);
                 environment.aggregate(tnode3, myAggregationLinks[5], tnode4);
               }
               {
@@ -223,7 +223,7 @@ public class Template_nodeBuilder extends TemplateDeclarationBase {
   protected FragmentResult applyPart2(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final List<SNode> tlist1 = new ArrayList<SNode>();
-    final Iterable<SNode> loopList1 = QueriesGenerated.sourceNodesQuery_9_0(new SourceSubstituteMacroNodesContext(context, loopMacroRef_vdsosq_b0a0a2a9));
+    final Iterable<SNode> loopList1 = QueriesGenerated.sourceNodesQuery_9_0(new SourceSubstituteMacroNodesContext(context, loopMacroRef));
     for (SNode itnode1 : loopList1) {
       if (itnode1 == null) {
         continue;
@@ -238,7 +238,7 @@ public class Template_nodeBuilder extends TemplateDeclarationBase {
             TemplateContext context3 = context2.subContext();
             {
               final SNode tnode4 = environment.createOutputNode(myConcepts[8]);
-              environment.resolveInTemplateLater(tnode4, myAssociationLinks[2], templateNode_vdsosq_c0a0a1a1a1a1a3a3a9, "tpl/r:00000000-0000-4000-0000-011c8959034c/2249837730599246770", "nb", context3);
+              environment.resolveInTemplateLater(tnode4, myAssociationLinks[2], templateNode1, "tpl/r:00000000-0000-4000-0000-011c8959034c/2249837730599246770", "nb", context3);
               environment.aggregate(tnode3, myAggregationLinks[5], tnode4);
             }
             {
@@ -248,7 +248,7 @@ public class Template_nodeBuilder extends TemplateDeclarationBase {
                 TemplateContext context4 = context3.subContext();
                 {
                   Collection<SNode> tlist6 = null;
-                  SNode callInputNode6 = QueriesGenerated.sourceNodeQuery_9_1(new SourceSubstituteMacroNodeContext(context4, callMacro_vdsosq_b0a0a1a2a1a2a1a1a3a3a9));
+                  SNode callInputNode6 = QueriesGenerated.sourceNodeQuery_9_1(new SourceSubstituteMacroNodeContext(context4, callMacro));
                   TemplateContext context5 = context4;
                   context5 = context5.subContext(null, callInputNode6);
                   if (callInputNode6 != null) {
@@ -260,7 +260,7 @@ public class Template_nodeBuilder extends TemplateDeclarationBase {
                 }
                 {
                   final SNode tnode7 = environment.createOutputNode(myConcepts[12]);
-                  SNodeAccessUtil.setPropertyValue(tnode7, myProperties[1], QueriesGenerated.propertyMacro_GetValue_9_1(new PropertyMacroContext(context4, "propertyValue", propertyMacro_vdsosq_c0a2a0a1a3a1a2a1a1a3a3a9)));
+                  SNodeAccessUtil.setPropertyValue(tnode7, myProperties[1], QueriesGenerated.propertyMacro_GetValue_9_1(new PropertyMacroContext(context4, "propertyValue", propertyMacro1)));
                   environment.aggregate(tnode5, myAggregationLinks[3], tnode7);
                 }
               }
@@ -278,7 +278,7 @@ public class Template_nodeBuilder extends TemplateDeclarationBase {
   protected FragmentResult applyPart3(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final List<SNode> tlist1 = new ArrayList<SNode>();
-    final Iterable<SNode> loopList1 = QueriesGenerated.sourceNodesQuery_9_1(new SourceSubstituteMacroNodesContext(context, loopMacroRef_vdsosq_b0a0a2a01));
+    final Iterable<SNode> loopList1 = QueriesGenerated.sourceNodesQuery_9_1(new SourceSubstituteMacroNodesContext(context, loopMacroRef1));
     for (SNode itnode1 : loopList1) {
       if (itnode1 == null) {
         continue;
@@ -290,7 +290,7 @@ public class Template_nodeBuilder extends TemplateDeclarationBase {
         TemplateContext context2 = context1.subContext();
         {
           Collection<SNode> tlist3 = Collections.emptyList();
-          if (QueriesGenerated.ifMacro_Condition_9_2(new IfMacroContext(context2, ifMacroRef_vdsosq_b0a0b0b0e0d0k))) {
+          if (QueriesGenerated.ifMacro_Condition_9_2(new IfMacroContext(context2, ifMacroRef2))) {
             final SNode tnode4 = environment.createOutputNode(myConcepts[13]);
             {
               environment.associate(tnode4, myAssociationLinks[3], "8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SNodeAccessUtil");
@@ -315,7 +315,7 @@ public class Template_nodeBuilder extends TemplateDeclarationBase {
               }
               {
                 Collection<SNode> tlist7 = null;
-                SNode callInputNode7 = QueriesGenerated.sourceNodeQuery_9_2(new SourceSubstituteMacroNodeContext(context3, callMacro_vdsosq_b0a0a1a4a1a1a1a4a3a01));
+                SNode callInputNode7 = QueriesGenerated.sourceNodeQuery_9_2(new SourceSubstituteMacroNodeContext(context3, callMacro1));
                 TemplateContext context5 = context3;
                 context5 = context5.subContext(null, callInputNode7);
                 if (callInputNode7 != null) {
@@ -341,8 +341,8 @@ public class Template_nodeBuilder extends TemplateDeclarationBase {
                   }
                   {
                     Collection<SNode> tlist10 = null;
-                    final SNode copySrcInput10 = QueriesGenerated.sourceNodeQuery_9_3(new SourceSubstituteMacroNodeContext(context6, copySrcMacro_vdsosq_b0a0c0c0b0f0b0b0b0e0d0k));
-                    tlist10 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput10), copySrcMacro_vdsosq_b0a0c0c0b0f0b0b0b0e0d0k, "tpl/r:00000000-0000-4000-0000-011c8959034c/2249837730599247130", context6);
+                    final SNode copySrcInput10 = QueriesGenerated.sourceNodeQuery_9_3(new SourceSubstituteMacroNodeContext(context6, copySrcMacro));
+                    tlist10 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput10), copySrcMacro, "tpl/r:00000000-0000-4000-0000-011c8959034c/2249837730599247130", context6);
                     environment.aggregate(tnode8, myAggregationLinks[1], tlist10);
                   }
                 }
@@ -375,7 +375,7 @@ public class Template_nodeBuilder extends TemplateDeclarationBase {
               }
               {
                 Collection<SNode> tlist14 = null;
-                SNode callInputNode14 = QueriesGenerated.sourceNodeQuery_9_4(new SourceSubstituteMacroNodeContext(context7, callMacro_vdsosq_b0a0a1a4a1a0b0b0e0d0k));
+                SNode callInputNode14 = QueriesGenerated.sourceNodeQuery_9_4(new SourceSubstituteMacroNodeContext(context7, callMacro2));
                 TemplateContext context9 = context7;
                 context9 = context9.subContext(null, callInputNode14);
                 if (callInputNode14 != null) {
@@ -420,7 +420,7 @@ public class Template_nodeBuilder extends TemplateDeclarationBase {
   protected FragmentResult applyPart4(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final List<SNode> tlist1 = new ArrayList<SNode>();
-    final Iterable<SNode> loopList1 = QueriesGenerated.sourceNodesQuery_9_2(new SourceSubstituteMacroNodesContext(context, loopMacroRef_vdsosq_b0a0a2a11));
+    final Iterable<SNode> loopList1 = QueriesGenerated.sourceNodesQuery_9_2(new SourceSubstituteMacroNodesContext(context, loopMacroRef2));
     for (SNode itnode1 : loopList1) {
       if (itnode1 == null) {
         continue;
@@ -435,7 +435,7 @@ public class Template_nodeBuilder extends TemplateDeclarationBase {
             TemplateContext context3 = context2.subContext();
             {
               final SNode tnode4 = environment.createOutputNode(myConcepts[8]);
-              environment.resolveInTemplateLater(tnode4, myAssociationLinks[2], templateNode_vdsosq_c0a0a1a1a1a1a3a3a11, "tpl/r:00000000-0000-4000-0000-011c8959034c/2249837730599246770", "nb", context3);
+              environment.resolveInTemplateLater(tnode4, myAssociationLinks[2], templateNode2, "tpl/r:00000000-0000-4000-0000-011c8959034c/2249837730599246770", "nb", context3);
               environment.aggregate(tnode3, myAggregationLinks[5], tnode4);
             }
             {
@@ -445,7 +445,7 @@ public class Template_nodeBuilder extends TemplateDeclarationBase {
                 TemplateContext context4 = context3.subContext();
                 {
                   Collection<SNode> tlist6 = null;
-                  SNode callInputNode6 = QueriesGenerated.sourceNodeQuery_9_5(new SourceSubstituteMacroNodeContext(context4, callMacro_vdsosq_b0a0a1a2a1a2a1a1a3a3a11));
+                  SNode callInputNode6 = QueriesGenerated.sourceNodeQuery_9_5(new SourceSubstituteMacroNodeContext(context4, callMacro3));
                   TemplateContext context5 = context4;
                   context5 = context5.subContext(null, callInputNode6);
                   if (callInputNode6 != null) {
@@ -457,7 +457,7 @@ public class Template_nodeBuilder extends TemplateDeclarationBase {
                 }
                 {
                   final SNode tnode7 = environment.createOutputNode(myConcepts[12]);
-                  SNodeAccessUtil.setPropertyValue(tnode7, myProperties[1], QueriesGenerated.propertyMacro_GetValue_9_2(new PropertyMacroContext(context4, "targetNodeId", propertyMacro_vdsosq_c0a2a0a1a3a1a2a1a1a3a3a11)));
+                  SNodeAccessUtil.setPropertyValue(tnode7, myProperties[1], QueriesGenerated.propertyMacro_GetValue_9_2(new PropertyMacroContext(context4, "targetNodeId", propertyMacro2)));
                   environment.aggregate(tnode5, myAggregationLinks[3], tnode7);
                 }
               }
@@ -475,7 +475,7 @@ public class Template_nodeBuilder extends TemplateDeclarationBase {
   protected FragmentResult applyPart5(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final List<SNode> tlist1 = new ArrayList<SNode>();
-    final Iterable<SNode> loopList1 = QueriesGenerated.sourceNodesQuery_9_3(new SourceSubstituteMacroNodesContext(context, loopMacroRef_vdsosq_b0a0a2a21));
+    final Iterable<SNode> loopList1 = QueriesGenerated.sourceNodesQuery_9_3(new SourceSubstituteMacroNodesContext(context, loopMacroRef3));
     for (SNode itnode1 : loopList1) {
       if (itnode1 == null) {
         continue;
@@ -510,7 +510,7 @@ public class Template_nodeBuilder extends TemplateDeclarationBase {
             }
             {
               Collection<SNode> tlist6 = null;
-              SNode callInputNode6 = QueriesGenerated.sourceNodeQuery_9_6(new SourceSubstituteMacroNodeContext(context3, callMacro_vdsosq_b0a0a1a4a1a1a4a3a21));
+              SNode callInputNode6 = QueriesGenerated.sourceNodeQuery_9_6(new SourceSubstituteMacroNodeContext(context3, callMacro4));
               TemplateContext context5 = context3;
               context5 = context5.subContext(null, callInputNode6);
               if (callInputNode6 != null) {
@@ -553,7 +553,7 @@ public class Template_nodeBuilder extends TemplateDeclarationBase {
   protected FragmentResult applyPart6(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final List<SNode> tlist1 = new ArrayList<SNode>();
-    final Iterable<SNode> loopList1 = QueriesGenerated.sourceNodesQuery_9_4(new SourceSubstituteMacroNodesContext(context, loopMacroRef_vdsosq_b0a0a2a31));
+    final Iterable<SNode> loopList1 = QueriesGenerated.sourceNodesQuery_9_4(new SourceSubstituteMacroNodesContext(context, loopMacroRef4));
     for (SNode itnode1 : loopList1) {
       if (itnode1 == null) {
         continue;
@@ -571,7 +571,7 @@ public class Template_nodeBuilder extends TemplateDeclarationBase {
   protected FragmentResult applyPart7(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = Collections.emptyList();
-    if (QueriesGenerated.ifMacro_Condition_9_3(new IfMacroContext(context, ifMacroRef_vdsosq_b0a0c0o))) {
+    if (QueriesGenerated.ifMacro_Condition_9_3(new IfMacroContext(context, ifMacroRef3))) {
       final SNode tnode2 = environment.createOutputNode(myConcepts[10]);
       {
         TemplateContext context1 = context.subContext();
@@ -596,7 +596,7 @@ public class Template_nodeBuilder extends TemplateDeclarationBase {
                 TemplateContext context3 = context2.subContext();
                 {
                   Collection<SNode> tlist6 = null;
-                  SNode callInputNode6 = QueriesGenerated.sourceNodeQuery_9_7(new SourceSubstituteMacroNodeContext(context3, callMacro_vdsosq_b0a0a1a2a1a2a1a1a1a2a41));
+                  SNode callInputNode6 = QueriesGenerated.sourceNodeQuery_9_7(new SourceSubstituteMacroNodeContext(context3, callMacro5));
                   TemplateContext context4 = context3;
                   context4 = context4.subContext(null, callInputNode6);
                   if (callInputNode6 != null) {
@@ -702,28 +702,28 @@ public class Template_nodeBuilder extends TemplateDeclarationBase {
       return rv;
     }
   }
-  private static final SNodePointer propertyMacro_vdsosq_c0a2a1a1a1a2a7 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599246937");
-  private static final SNodePointer ifMacroRef_vdsosq_b0a0b0c0b0b0b0b0b0e0b0b0c0h = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599246776");
-  private static final SNodePointer ifMacroRef_vdsosq_b0a0b0d0b0b0b0b0b0e0b0b0c0h = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599246831");
-  private static final SNodePointer switchMacroRef_vdsosq_b0a0a0a1a2a1a2a1a4a1a1a2a7 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599246899");
-  private static final SNodePointer templateSwitchNode_vdsosq_a0a0c0a1a1a2a1a2a1a4a1a1a2a7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6911370362349543308");
-  private static final SNodePointer templateNode_vdsosq_c0a0a1a1a1a1a1a1a2a8 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599246951");
-  private static final SNodePointer loopMacroRef_vdsosq_b0a0a2a9 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599246989");
-  private static final SNodePointer templateNode_vdsosq_c0a0a1a1a1a1a3a3a9 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599246966");
-  private static final SNodePointer callMacro_vdsosq_b0a0a1a2a1a2a1a1a3a3a9 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599246969");
-  private static final SNodePointer propertyMacro_vdsosq_c0a2a0a1a3a1a2a1a1a3a3a9 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599246977");
-  private static final SNodePointer loopMacroRef_vdsosq_b0a0a2a01 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599247062");
-  private static final SNodePointer callMacro_vdsosq_b0a0a1a4a1a1a1a4a3a01 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599247098");
-  private static final SNodePointer copySrcMacro_vdsosq_b0a0c0c0b0f0b0b0b0e0d0k = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599247131");
-  private static final SNodePointer ifMacroRef_vdsosq_b0a0b0b0e0d0k = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599247145");
-  private static final SNodePointer callMacro_vdsosq_b0a0a1a4a1a0b0b0e0d0k = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599247165");
-  private static final SNodePointer loopMacroRef_vdsosq_b0a0a2a11 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599247218");
-  private static final SNodePointer templateNode_vdsosq_c0a0a1a1a1a1a3a3a11 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599247200");
-  private static final SNodePointer callMacro_vdsosq_b0a0a1a2a1a2a1a1a3a3a11 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599247203");
-  private static final SNodePointer propertyMacro_vdsosq_c0a2a0a1a3a1a2a1a1a3a3a11 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599247211");
-  private static final SNodePointer loopMacroRef_vdsosq_b0a0a2a21 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599247636");
-  private static final SNodePointer callMacro_vdsosq_b0a0a1a4a1a1a4a3a21 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599247603");
-  private static final SNodePointer loopMacroRef_vdsosq_b0a0a2a31 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599444110");
-  private static final SNodePointer callMacro_vdsosq_b0a0a1a2a1a2a1a1a1a2a41 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599247706");
-  private static final SNodePointer ifMacroRef_vdsosq_b0a0c0o = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599247736");
+  private static final SNodePointer propertyMacro = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599246937");
+  private static final SNodePointer ifMacroRef = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599246776");
+  private static final SNodePointer ifMacroRef1 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599246831");
+  private static final SNodePointer switchMacroRef = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599246899");
+  private static final SNodePointer templateSwitchNode = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6911370362349543308");
+  private static final SNodePointer templateNode = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599246951");
+  private static final SNodePointer loopMacroRef = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599246989");
+  private static final SNodePointer templateNode1 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599246966");
+  private static final SNodePointer callMacro = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599246969");
+  private static final SNodePointer propertyMacro1 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599246977");
+  private static final SNodePointer loopMacroRef1 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599247062");
+  private static final SNodePointer callMacro1 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599247098");
+  private static final SNodePointer copySrcMacro = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599247131");
+  private static final SNodePointer ifMacroRef2 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599247145");
+  private static final SNodePointer callMacro2 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599247165");
+  private static final SNodePointer loopMacroRef2 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599247218");
+  private static final SNodePointer templateNode2 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599247200");
+  private static final SNodePointer callMacro3 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599247203");
+  private static final SNodePointer propertyMacro2 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599247211");
+  private static final SNodePointer loopMacroRef3 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599247636");
+  private static final SNodePointer callMacro4 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599247603");
+  private static final SNodePointer loopMacroRef4 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599444110");
+  private static final SNodePointer callMacro5 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599247706");
+  private static final SNodePointer ifMacroRef3 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599247736");
 }

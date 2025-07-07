@@ -5,26 +5,25 @@
   <module value="com.intellij.modules.mps"/>
   <module value="com.intellij.modules.all"/>
 
-  <xi:include href="/META-INF/IdeTipsAndTricks.xml" xpointer="xpointer(/idea-plugin/*)"/>
-  <xi:include href="/META-INF/PlatformLangPlugin.xml" xpointer="xpointer(/idea-plugin/*)"/>
+  <xi:include href="/META-INF/IdeTipsAndTricks.xml"/>
+  <xi:include href="/META-INF/PlatformLangPlugin.xml"/>
 
   <!-- Next three includes can be removed if PlatformLangXmlPlugin.xml will be imported instead of PlatformLangPlugin.xml -->
-  <xi:include href="/META-INF/XmlPlugin.xml" xpointer="xpointer(/idea-plugin/*)"/>
-  <xi:include href="/META-INF/JsonPlugin.xml" xpointer="xpointer(/idea-plugin/*)">
+  <xi:include href="/META-INF/XmlPlugin.xml"/>
+  <xi:include href="intellij.json.xml">
     <xi:fallback/>
   </xi:include>
-  <xi:include href="/META-INF/SpellCheckerPlugin.xml" xpointer="xpointer(/idea-plugin/*)">
+  <xi:include href="/META-INF/SpellCheckerPlugin.xml">
     <xi:fallback/>
   </xi:include>
-
   <projectListeners>
-    <listener class="jetbrains.mps.intellij.integration.MPSToolWindowManagerListener"
+    <listener class="jetbrains.mps.intellij.integration.DisablingPlatformToolWindowsListener"
               topic="com.intellij.openapi.wm.ex.ToolWindowManagerListener"/>
   </projectListeners>
   <!-- Customizations to platform -->
-  <xi:include href="/META-INF/DisabledPlatformActions.xml" xpointer="xpointer(/idea-plugin/*)"/>
-  <xi:include href="/META-INF/DisabledLangActions.xml" xpointer="xpointer(/idea-plugin/*)"/>
-  <xi:include href="/META-INF/DisabledXmlPluginActions.xml" xpointer="xpointer(/idea-plugin/*)"/>
+  <xi:include href="/META-INF/DisabledPlatformActions.xml"/>
+  <xi:include href="/META-INF/DisabledLangActions.xml"/>
+  <xi:include href="/META-INF/DisabledXmlPluginActions.xml"/>
   <actions>
     <!-- File -->
     <action id="NewElement" class="com.intellij.ide.actions.NewElementAction"/>
@@ -33,10 +32,19 @@
       <add-to-group group-id="FileOpenGroup" anchor="first"/>
     </group>
     <group id="MPSNewProjectOrModuleGroup">
-      <action id="NewProject" class="jetbrains.mps.workbench.actions.NewMPSProjectAction" text="New MPS Project"/>
+      <action id="NewProject" class="jetbrains.mps.workbench.actions.NewMPSProjectAction" text="New MPS Project">
+        <override-text place="ProjectWidgetPopup" text="New MPS Project..."/>
+        <add-to-group group-id="ProjectWidget.Actions" anchor="first"/>
+      </action>
       <add-to-group group-id="NewProjectOrModuleGroup"/>
     </group>
-    <action id="ForceSaveAll" class="jetbrains.mps.ide.actions.ForcedSaveAll_Action">
+
+    <action id="ProjectFromVersionControl" class="com.intellij.openapi.wm.impl.welcomeScreen.ProjectFromVersionControlAction" text="Checkout from Version Control">
+      <override-text place="ProjectWidgetPopup" text="Get from Version Control..."/>
+      <add-to-group group-id="ProjectWidget.Actions" relative-to-action="OpenProjectGroup" anchor="after"/>
+    </action>
+
+    <action id="ForceSaveAll" class="jetbrains.mps.ide.actions.ForceSaveAll_Action">
       <add-to-group group-id="FileMenu" relative-to-action="SaveAll" anchor="after"/>
     </action>
     <action id="SaveAsNewFormat" class="com.intellij.ide.actions.SaveAsDirectoryBasedFormatAction" text="Save as Directory-Based Format...">
@@ -49,26 +57,19 @@
     <group overrides="true" class="com.intellij.openapi.actionSystem.EmptyActionGroup" id="InspectCodeInCodeMenuGroup"/>
     <group overrides="true" class="com.intellij.openapi.actionSystem.EmptyActionGroup" id="InspectCodeActionInPopupMenus"/>
 
-    <group id="AnalyzeActions">
-    </group>
-
     <group id="AnalyzeMenu" popup="true">
       <separator/>
       <reference ref="AnalyzeActions"/>
       <add-to-group group-id="MainMenu" anchor="after" relative-to-action="CodeMenu"/>
     </group>
-
-    <!-- Help -->
-    <action id="WhatsNewAction" class="com.intellij.ide.actions.WhatsNewAction">
-      <add-to-group group-id="HelpMenu" anchor="after" relative-to-action="ShowTips"/>
-    </action>
     <!--End of analog of groups changes from JavaActions.xml-->
   </actions>
 
-  <xi:include href="/META-INF/MPSComponents.xml" xpointer="xpointer(/components/*)"/> <!--only MPS components-->
-  <xi:include href="/idea/MPSActionManager.xml" xpointer="xpointer(/component/*)"/> <!--only MPS actions-->
-  <xi:include href="/jetbrains/mps/ide/platform/actions/PlatformActions.xml" xpointer="xpointer(/components/*)"/> <!--only MPS actions-->
-  <xi:include href="/jetbrains/mps/ide/editor/actions/MPSEditorActions.xml" xpointer="xpointer(/components/*)"/> <!--only MPS editor actions-->
+  <xi:include href="/META-INF/MPSComponents.xml"/> <!--only MPS components-->
+  <xi:include href="/idea/MPSActionManager.xml"/> <!--only MPS actions-->
+  <xi:include href="/jetbrains/mps/ide/platform/actions/PlatformActions.xml"/> <!--only MPS
+  actions-->
+  <xi:include href="/jetbrains/mps/ide/editor/actions/MPSEditorActions.xml"/> <!--only MPS editor actions-->
 
   <extensions defaultExtensionNs="com.intellij">
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
@@ -84,14 +85,15 @@
     <extensionPoint name="mps.TabColorProvider" area="IDEA_PROJECT" interface="jetbrains.mps.ide.editorTabs.TabColorProvider"/>
     <extensionPoint name="mps.projectPrefsPanel" interface="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPrefsExtraPanel"
                     area="IDEA_PROJECT"/>
-    <extensionPoint name="mps.projectGroupTemplateEP" interface="jetbrains.mps.workbench.dialogs.project.newproject.ProjectTemplatesGroup"/>
-    <extensionPoint name="mps.languageProjectTemplateEP" interface="jetbrains.mps.workbench.dialogs.project.newproject.LanguageProjectTemplate"/>
-    <extensionPoint name="mps.solutionProjectTemplateEP" interface="jetbrains.mps.workbench.dialogs.project.newproject.SolutionProjectTemplate"/>
-    <extensionPoint name="mps.otherProjectTemplateEP" interface="jetbrains.mps.workbench.dialogs.project.newproject.OtherProjectTemplate"/>
+    <extensionPoint name="mps.projectGroupTemplateEP" interface="jetbrains.mps.workbench.dialogs.project.newproject.ProjectTemplatesGroup" dynamic="true"/>
+    <extensionPoint name="mps.languageProjectTemplateEP" interface="jetbrains.mps.workbench.dialogs.project.newproject.LanguageProjectTemplate" dynamic="true"/>
+    <extensionPoint name="mps.solutionProjectTemplateEP" interface="jetbrains.mps.workbench.dialogs.project.newproject.SolutionProjectTemplate" dynamic="true"/>
+    <extensionPoint name="mps.otherProjectTemplateEP" interface="jetbrains.mps.workbench.dialogs.project.newproject.OtherProjectTemplate" dynamic="true"/>
   </extensionPoints>
 
   <extensions defaultExtensionNs="com.intellij">
     <applicationInitializedListener implementation="com.intellij.internal.statistic.updater.StatisticsJobsScheduler"/>
+    <applicationInitializedListener implementation="com.intellij.internal.statistic.updater.StatisticsStateCollectorsScheduler"/>
 
     <projectViewPane implementation="jetbrains.mps.ide.projectPane.ProjectPane"/>
     <projectViewPane implementation="jetbrains.mps.ide.projectPane.fileSystem.FileViewProjectPane"/>
@@ -129,6 +131,7 @@
     <applicationService serviceImplementation="com.intellij.debugger.settings.NodeRendererSettings"/>
     <applicationService serviceImplementation="com.intellij.debugger.settings.ViewsGeneralSettings"/>
     <applicationService serviceImplementation="com.intellij.debugger.settings.DebuggerSettings"/>
+    <applicationService serviceImplementation="com.intellij.refactoring.JavaRefactoringSettings"/>
     <projectService serviceImplementation="com.intellij.debugger.settings.DebuggerProjectSettings"/>
     <applicationService serviceImplementation="com.intellij.debugger.settings.ThreadsViewSettings"/>
     <applicationService serviceImplementation="com.intellij.debugger.settings.TraceSettings"/>
@@ -153,15 +156,6 @@
     <applicationService serviceImplementation="com.intellij.packaging.impl.artifacts.InvalidArtifactType"/>
     <!-- End of same registrations as in JavaPlugin.xml -->
 
-    <!--Editor-->
-    <applicationConfigurable groupId="editor" groupWeight="200" instance="jetbrains.mps.nodeEditor.EditorSettingsConfigurable"
-                             bundle="jetbrains.mps.nodeEditor.resources.EditorSettingsBundle" key="title.editor.settings"
-                             id="mps.editor.settings" order="before preferences.editor"/>
-
-    <!--Editor Hints-->
-    <projectConfigurable groupId="editor" groupWeight="180" dynamic="true"
-                         instance="jetbrains.mps.nodeEditor.hintsSettings.ConceptEditorHintConfigurable"
-                         displayName="Editor hints" order="after preferences.sourceCode" nonDefaultProject="true"/>
     <!-- Global Code Style -->
     <projectConfigurable parentId="preferences.sourceCode" displayName="MPS" instance="jetbrains.mps.ide.codeStyle.CodeStyleSettingsConfigurable" />
     <projectConfigurable groupId="build" groupWeight="110" instance="jetbrains.mps.ide.compiler.CompilerSettingsConfigurable" order="after project"
@@ -171,9 +165,9 @@
 
     <!--MPS patch: add two setting pages-->
     <projectConfigurable groupId="build" groupWeight="130" instance="jetbrains.mps.library.ProjectLibraryManagerConfigurable"
-                         id="preferences.projectLibraryManager" nonDefaultProject="true"/>
+                         id="preferences.projectLibraryManager" displayName="Project Libraries" nonDefaultProject="true"/>
     <applicationConfigurable groupId="build" groupWeight="120" instance="jetbrains.mps.library.LibraryManagerConfigurable"
-                             id="preferences.libraryManager"/>
+                             id="preferences.libraryManager" displayName="Global Libraries"/>
 
     <!-- allow mps to open mpr projects from command line -->
     <projectOpenProcessor implementation="jetbrains.mps.ide.project.MpsProjectOpenProcessor"/>
@@ -182,7 +176,7 @@
 
     <!--For run config creation with action-->
     <getDataRule key="Location"
-                 implementationClass="jetbrains.mps.workbench.dataExtraction.runConfig.LocationRule"/>
+                 implementationClass="jetbrains.mps.workbench.dataExtraction.runConfig.LocationRule" type="context"/>
 
     <editorTabTitleProvider implementation="jetbrains.mps.ide.editor.tabs.EditorTabTitleProviderImpl"/>
 
@@ -190,9 +184,7 @@
     <favoriteNodeProvider implementation="jetbrains.mps.ide.projectPane.favorites.providers.MPSFavoriteReferenceProvider"/>
     <favoriteNodeProvider implementation="jetbrains.mps.ide.projectPane.favorites.providers.MPSFavoriteModelProvider"/>
     <favoriteNodeProvider implementation="jetbrains.mps.ide.projectPane.favorites.providers.MPSFavoriteModuleProvider"/>
-    <!-- TODO: decide, if it is needed
     <favoriteNodeProvider implementation="jetbrains.mps.ide.projectPane.favorites.providers.MPSFavoritePropertyProvider"/>
-    -->
 
     <!-- Seems like we should set platform prefix different from IDEA/community so this scope will not be necessary anymore -->
     <customScopesProvider implementation="com.intellij.packageDependencies.TestScopeProvider"/>
@@ -217,12 +209,12 @@
 
     <fileIconProvider implementation="jetbrains.mps.workbench.editors.MPSIconProvider"/>
 
-    <bundledKeymap file="Visual Studio.xml"/>
-
-    <!-- TODO: check if can be removed -->
-    <projectService serviceImplementation="com.intellij.openapi.vcs.impl.ModuleVcsDetector" preload="notHeadless"/>
-
     <projectService serviceImplementation="jetbrains.mps.ide.findusages.caches.IndexableRootCalculator"/>
+
+    <sdkType implementation="com.intellij.openapi.projectRoots.impl.JavaSdkImpl"/>
+    <applicationService serviceInterface="com.intellij.openapi.projectRoots.DefaultJdkConfigurator"
+                        serviceImplementation="com.intellij.openapi.projectRoots.impl.DefaultJdkConfiguratorImpl"/>
+    <orderRootType implementation="com.intellij.openapi.roots.JavadocOrderRootType"/>
   </extensions>
 
   <actions>
@@ -235,9 +227,14 @@
     <group id="FileChooserToolbar.MPS">
       <action id="FileChooser.GotoMPSModule"
               class="jetbrains.mps.ide.ui.filechoosers.treefilechooser.GotoModuleDirectory"
-              icon="/nodes/ideaModule.png"/>
+              text="Go to Module Directory"
+              icon="com.intellij.icons.AllIcons.Actions.ModuleDirectory"/>
       <add-to-group group-id="FileChooserToolbar" anchor="after" relative-to-action="FileChooser.GotoProject"/>
     </group>
+    <action id="FileChooser.ShowHidden" class="com.intellij.openapi.fileChooser.actions.ToggleVisibilityAction" overrides="true"
+    icon="AllIcons.Actions.ToggleVisibility"/>
+    <action id="OpenFile" class="jetbrains.mps.workbench.actions.OpenMPSProjectAction" overrides="true" icon="AllIcons.Actions.MenuOpen"/>
+    <action id="WelcomeScreen.OpenDirectoryProject" class="jetbrains.mps.workbench.actions.OpenMPSProjectAction$OnMPSWelcomeScreen" overrides="true"/>
   </actions>
 
 </idea-plugin>

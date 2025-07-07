@@ -61,7 +61,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, true);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:9f12744a-a702-440b-b5fb-61597de1c627(MultiTarget.structure)/852022627621592861");
-    b.version(2);
+    b.version(3);
     b.aggregate("members", 0xbd2fe10cbfadf21L).target(0x42cb30372cd244e7L, 0x8fe7254f0c50f311L, 0xbd2fe10cbfadf20L).optional(true).ordered(true).multiple(true).origin("852022627621592865").done();
     b.alias("container");
     return b.create();
@@ -70,15 +70,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("MultiTarget", "Member", 0x42cb30372cd244e7L, 0x8fe7254f0c50f311L, 0xbd2fe10cbfadf20L);
     b.class_(false, true, false);
     b.origin("r:9f12744a-a702-440b-b5fb-61597de1c627(MultiTarget.structure)/852022627621592864");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForNumericValue() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("MultiTarget", "NumericValue", 0x42cb30372cd244e7L, 0x8fe7254f0c50f311L, 0xbd2fe10cbfadf8dL);
     b.class_(false, false, false);
-    b.super_("MultiTarget.structure.Member", 0x42cb30372cd244e7L, 0x8fe7254f0c50f311L, 0xbd2fe10cbfadf20L);
+    // extends: MultiTarget.structure.Member
+    b.super_(0x42cb30372cd244e7L, 0x8fe7254f0c50f311L, 0xbd2fe10cbfadf20L);
     b.origin("r:9f12744a-a702-440b-b5fb-61597de1c627(MultiTarget.structure)/852022627621592973");
-    b.version(2);
+    b.version(3);
     b.property("value", 0xbd2fe10cbfadf8eL).type(PrimitiveTypeId.INTEGER).origin("852022627621592974").done();
     b.alias("numeric value");
     return b.create();
@@ -86,9 +87,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForStringValue() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("MultiTarget", "StringValue", 0x42cb30372cd244e7L, 0x8fe7254f0c50f311L, 0xbd2fe10cbfadf5fL);
     b.class_(false, false, false);
-    b.super_("MultiTarget.structure.Member", 0x42cb30372cd244e7L, 0x8fe7254f0c50f311L, 0xbd2fe10cbfadf20L);
+    // extends: MultiTarget.structure.Member
+    b.super_(0x42cb30372cd244e7L, 0x8fe7254f0c50f311L, 0xbd2fe10cbfadf20L);
     b.origin("r:9f12744a-a702-440b-b5fb-61597de1c627(MultiTarget.structure)/852022627621592927");
-    b.version(2);
+    b.version(3);
     b.property("value", 0xbd2fe10cbfadf60L).type(PrimitiveTypeId.STRING).origin("852022627621592928").done();
     b.alias("string value");
     return b.create();

@@ -14,10 +14,7 @@ import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import org.junit.Assert;
 import jetbrains.mps.lang.test.matcher.NodeDifference;
@@ -44,7 +41,7 @@ public abstract class BaseMigrationTestBody extends BaseTestBody {
   public void testMethod() {
     MigrationScript[] scripts = getMigrationScript();
     SModel model = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule());
-    for (SNode root : ListSequence.fromList(CopyUtil.copy(CollectionSequence.fromCollection(getInputNodes()).toListSequence()))) {
+    for (SNode root : ListSequence.fromList(CopyUtil.copy(CollectionSequence.fromCollection(getInputNodes()).toList()))) {
       SModelOperations.addRootNode(model, root);
     }
     SModel model2 = null;
@@ -52,15 +49,7 @@ public abstract class BaseMigrationTestBody extends BaseTestBody {
       model2 = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule());
       CopyUtil.copyModelContentAndPreserveIds(model, model2);
       // It is unclear why CopyUtil does not update internal references by itself and we have to do it explicitly
-      for (Tuples._2<SNode, SReferenceLink> ref : ListSequence.fromList(SModelOperations.nodes(model2, null)).translate(new ITranslator2<SNode, SReference>() {
-        public Iterable<SReference> translate(SNode it) {
-          return SNodeOperations.getReferences(it);
-        }
-      }).select(new ISelector<SReference, Tuples._2<SNode, SReferenceLink>>() {
-        public Tuples._2<SNode, SReferenceLink> select(SReference it) {
-          return MultiTuple.<SNode,SReferenceLink>from(it.getSourceNode(), it.getLink());
-        }
-      })) {
+      for (Tuples._2<SNode, SReferenceLink> ref : ListSequence.fromList(SModelOperations.nodes(model2, null)).translate((it) -> SNodeOperations.getReferences(it)).select((it) -> MultiTuple.<SNode,SReferenceLink>from(it.getSourceNode(), it.getLink()))) {
         SNode referenceTarget = ref._0().getReferenceTarget(ref._1());
         if (referenceTarget != null && referenceTarget.getModel() == model) {
           ref._0().setReferenceTarget(ref._1(), model2.getNode(referenceTarget.getNodeId()));
@@ -68,7 +57,7 @@ public abstract class BaseMigrationTestBody extends BaseTestBody {
       }
     }
     List<SNode> roots = runMigration(model, scripts);
-    List<SNode> outputNodes = CollectionSequence.fromCollection(getOutputNodes()).toListSequence();
+    List<SNode> outputNodes = CollectionSequence.fromCollection(getOutputNodes()).toList();
     postProcess(roots);
     postProcess(outputNodes);
     Assert.assertEquals(ListSequence.fromList(roots).count(), ListSequence.fromList(outputNodes).count());
@@ -88,16 +77,8 @@ public abstract class BaseMigrationTestBody extends BaseTestBody {
       List<NodeDifference> differences2 = matcher2.diff();
       Assert.assertTrue(ListSequence.fromList(differences2).isEmpty());
       Map<SNode, SNode> matchedMap = matcher2.getMap();
-      for (SNode descendant : ListSequence.fromList(roots).translate(new ITranslator2<SNode, SNode>() {
-        public Iterable<SNode> translate(SNode it) {
-          return SNodeOperations.getNodeDescendants(it, null, true, new SAbstractConcept[]{});
-        }
-      })) {
-        Assert.assertEquals(String.format("Node id differs for node %s:", ListSequence.fromList(SNodeOperations.getNodeAncestors(descendant, null, true)).reversedList().select(new ISelector<SNode, String>() {
-          public String select(SNode it) {
-            return SNodeOperations.getConcept(it).getName();
-          }
-        }).toListSequence().stream().collect(Collectors.joining("->"))), descendant.getNodeId(), MapSequence.fromMap(matchedMap).get(descendant).getNodeId());
+      for (SNode descendant : ListSequence.fromList(roots).translate((it) -> SNodeOperations.getNodeDescendants(it, null, true, new SAbstractConcept[]{}))) {
+        Assert.assertEquals(String.format("Node id differs for node %s:", ListSequence.fromList(SNodeOperations.getNodeAncestors(descendant, null, true)).reversedList().select((it) -> SNodeOperations.getConcept(it).getName()).toList().stream().collect(Collectors.joining("->"))), descendant.getNodeId(), MapSequence.fromMap(matchedMap).get(descendant).getNodeId());
       }
       TemporaryModels.getInstance().dispose(model2);
     }

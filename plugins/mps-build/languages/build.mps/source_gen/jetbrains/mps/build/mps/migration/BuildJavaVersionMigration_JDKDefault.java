@@ -7,11 +7,9 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -34,23 +32,15 @@ public class BuildJavaVersionMigration_JDKDefault extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     Iterable<SModel> models = m.getModels();
-    Iterable<SNode> projects = Sequence.fromIterable(models).translate(new ITranslator2<SModel, SNode>() {
-      public Iterable<SNode> translate(SModel model) {
-        return SModelOperations.nodes(((SModel) model), CONCEPTS.BuildProject$ae);
-      }
-    });
+    Iterable<SNode> projects = Sequence.fromIterable(models).translate((model) -> SModelOperations.nodes(((SModel) model), CONCEPTS.BuildProject$ae));
     for (SNode project : Sequence.fromIterable(projects)) {
       Iterable<SNode> javaOptionsSeq = SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.parts$mGDj), CONCEPTS.BuildSource_JavaOptions$D);
-      for (SNode javaOptions : Sequence.fromIterable(javaOptionsSeq).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return "1.6".equals(SPropertyOperations.getString(it, PROPS.javaLevel$8zbK));
-        }
-      })) {
+      for (SNode javaOptions : Sequence.fromIterable(javaOptionsSeq).where((it) -> "1.6".equals(SPropertyOperations.getString(it, PROPS.javaLevel$8zbK)))) {
         SPropertyOperations.assign(javaOptions, PROPS.javaLevel$8zbK, "");
       }
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xcf935df46994e9cL, 0xa132fa109541cba3L, "jetbrains.mps.build.mps"), 1);
   }
 

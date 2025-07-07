@@ -42,7 +42,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
     editorCell.setCellId("Collection_vdat08_a");
     Style style = new StyleImpl();
-    new AndDefsAreDefinedHintStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new AndDefsAreDefinedHintStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createCustom_0());
@@ -50,15 +50,11 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     return editorCell;
   }
   private EditorCell createCustom_0() {
-    AbstractCellProvider provider = new _FunctionTypes._return_P0_E0<HintDefsCustomEditorCell>() {
-      public HintDefsCustomEditorCell invoke() {
-        return new HintDefsCustomEditorCell(myNode);
-      }
-    }.invoke();
+    AbstractCellProvider provider = ((_FunctionTypes._return_P0_E0<HintDefsCustomEditorCell>) () -> new HintDefsCustomEditorCell(myNode)).invoke();
     EditorCell editorCell = provider.createEditorCell(getEditorContext());
     editorCell.setCellId("Custom_vdat08_a0");
     Style style = new StyleImpl();
-    new AndDefsAreDefinedHintStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new AndDefsAreDefinedHintStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
     return editorCell;
@@ -73,7 +69,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
       editorCell = createConstant_1();
     }
     Style style = new StyleImpl();
-    new AndDefsAreDefinedHintStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new AndDefsAreDefinedHintStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     return editorCell;
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,15 +28,8 @@ import java.util.stream.Stream.Builder;
  * @since 2020.3
  */
 public abstract class LMLookup {
-  protected final LMLookup myNext;
-
   protected LMLookup() {
-    myNext = null;
-  }
-
-  // FIXME uncertain am I if there's a clean contract given few public methods, some being abstract, some coming with an impl.
-  protected LMLookup(LMLookup andThen) {
-    myNext = andThen;
+    // could be an interface with default methods now
   }
 
   // XXX use BiFunction instead?
@@ -46,6 +39,39 @@ public abstract class LMLookup {
 
   public abstract Stream<SNode> compositeLMValues(SNode k1, SNode k2);
 
+
+  public LMLookup andThen(final LMLookup next) {
+    final LMLookup first = this;
+    return new LMLookup() {
+
+      // XXX with compositeLMValues() implemented as it's now (stream concat), do I care to override this method?
+      @Override
+      public SNode findOutputRecordSingle(SNode k1, SNode k2) {
+        SNode rv = first.findOutputRecordSingle(k1, k2);
+        return rv != null ? rv : next.findOutputRecordSingle(k1, k2);
+      }
+
+      // XXX do I care to provide combined stream, is this correct from the method contract/uses perspective?
+      @Override
+      public Stream<SNode> compositeLMValues(SNode k1, SNode k2) {
+        return Stream.concat(first.compositeLMValues(k1, k2), next.compositeLMValues(k1, k2));
+      }
+    };
+  }
+
+  public static LMLookup empty() {
+    return new LMLookup() {
+      @Override
+      public SNode findOutputRecordSingle(SNode k1, SNode k2) {
+        return null;
+      }
+
+      @Override
+      public Stream<SNode> compositeLMValues(SNode k1, SNode k2) {
+        return Stream.empty();
+      }
+    };
+  };
 
   public static LMLookup forPersisted(final String label, List<LabelRecordBase<InputKeyIdentity, SNode>> compositeKeyLabels) {
     return new LMLookup() {
@@ -64,6 +90,11 @@ public abstract class LMLookup {
         return builder.build();
       }
     };
+  }
+
+  // here just to overcome package boundaries as long as MappingsMemento resides in .cache and has no access to LRB fields
+  public static boolean hasCompositeLM(final String label, List<LabelRecordBase<InputKeyIdentity, SNode>> compositeKeyLabels) {
+    return compositeKeyLabels.stream().anyMatch(r -> Objects.equals(r.label, label));
   }
 
   private static boolean nullSafeMatch(InputKeyIdentity i, SNode k) {

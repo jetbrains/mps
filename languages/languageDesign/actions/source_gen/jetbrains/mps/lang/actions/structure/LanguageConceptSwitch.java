@@ -31,14 +31,15 @@ public final class LanguageConceptSwitch {
   public static final int NodeFactory = 19;
   public static final int NodeSetupFunction = 20;
   public static final int NodeSetupFunction_EnclosingNode = 21;
-  public static final int NodeSetupFunction_NewNode = 22;
-  public static final int NodeSetupFunction_SampleNode = 23;
-  public static final int PastePostProcessFunction = 24;
-  public static final int PastePostProcessor = 25;
-  public static final int PasteWrapper = 26;
-  public static final int PasteWrappers = 27;
-  public static final int QueryFunction_PasteWrapper = 28;
-  public static final int SNodeCreatorAndInitializer = 29;
+  public static final int NodeSetupFunction_Index = 22;
+  public static final int NodeSetupFunction_NewNode = 23;
+  public static final int NodeSetupFunction_SampleNode = 24;
+  public static final int PastePostProcessFunction = 25;
+  public static final int PastePostProcessor = 26;
+  public static final int PasteWrapper = 27;
+  public static final int PasteWrappers = 28;
+  public static final int QueryFunction_PasteWrapper = 29;
+  public static final int SNodeCreatorAndInitializer = 30;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL);
@@ -64,6 +65,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x10dc7f1f421L, NodeFactory);
     builder.put(0x10dc7f89eecL, NodeSetupFunction);
     builder.put(0x4d7fc32c166cf35eL, NodeSetupFunction_EnclosingNode);
+    builder.put(0x163faec98ba93877L, NodeSetupFunction_Index);
     builder.put(0x4d7fc32c166cd43fL, NodeSetupFunction_NewNode);
     builder.put(0x4d7fc32c166cf25dL, NodeSetupFunction_SampleNode);
     builder.put(0x53a34ae13c0cee4fL, PastePostProcessFunction);

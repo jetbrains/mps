@@ -11,12 +11,12 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -34,7 +34,7 @@ public class TestRefConstraints_Target_Constraints extends BaseConstraintsDescri
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_4c311l_a0a0a0a0a0a0a0a2;
+            return new SNodePointer("r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)", "2614955748380194141");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
@@ -44,7 +44,6 @@ public class TestRefConstraints_Target_Constraints extends BaseConstraintsDescri
       }
     };
   }
-  private static final SNodePointer breakingNode_4c311l_a0a0a0a0a0a0a0a2 = new SNodePointer("r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)", "2614955748380194141");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept TestRefConstraints_Target$tm = MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641c74L, "constraints.test.structure.TestRefConstraints_Target");

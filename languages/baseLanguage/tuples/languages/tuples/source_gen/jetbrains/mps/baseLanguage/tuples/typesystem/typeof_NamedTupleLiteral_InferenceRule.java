@@ -10,7 +10,6 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.tuples.behavior.NamedTupleDeclaration__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -18,7 +17,6 @@ import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.baseLanguage.behavior.IGenericType__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.typesystem.inference.EquationInfo;
@@ -35,11 +33,7 @@ public class typeof_NamedTupleLiteral_InferenceRule extends AbstractInferenceRul
   public typeof_NamedTupleLiteral_InferenceRule() {
   }
   public void applyRule(final SNode literal, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!(ListSequence.fromList(SLinkOperations.getChildren(literal, LINKS.componentRef$hTGc)).count() == (int) ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(literal, LINKS.tupleDeclaration$Pcb7))).foldLeft(0, new ILeftCombinator<SNode, Integer>() {
-      public Integer combine(Integer s, SNode ntd) {
-        return s + ListSequence.fromList(SLinkOperations.getChildren(ntd, LINKS.component$wCHx)).count();
-      }
-    }))) {
+    if (!(ListSequence.fromList(SLinkOperations.getChildren(literal, LINKS.componentRef$hTGc)).count() == (int) ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(literal, LINKS.tupleDeclaration$Pcb7))).foldLeft(0, (Integer s, SNode ntd) -> s + ListSequence.fromList(SLinkOperations.getChildren(ntd, LINKS.component$wCHx)).count()))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(literal, "Invalid components number", "r:e119dbbd-3529-4067-8bad-6b9edd79d0b6(jetbrains.mps.baseLanguage.tuples.typesystem)", "1239579091243", null, errorTarget);
     }
@@ -51,13 +45,11 @@ public class typeof_NamedTupleLiteral_InferenceRule extends AbstractInferenceRul
 
     final Map<SNode, SNode> subs = MapSequence.fromMap(new HashMap<SNode, SNode>());
     // all generics are inferred in a tuple literal
-    List<SNode> typeParam = ListSequence.fromList(SLinkOperations.getChildren(tdecl, LINKS.typeVariableDeclaration$Lipp)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode tp) {
-        final SNode TP_typevar_4340163696368051056 = typeCheckingContext.createNewRuntimeTypesVariable();
-        SNode tmp = typeCheckingContext.getRepresentative(TP_typevar_4340163696368051056);
-        return tmp;
-      }
-    }).toListSequence();
+    List<SNode> typeParam = ListSequence.fromList(SLinkOperations.getChildren(tdecl, LINKS.typeVariableDeclaration$Lipp)).select((tp) -> {
+      final SNode TP_typevar_4340163696368051056 = typeCheckingContext.createNewRuntimeTypesVariable();
+      SNode tmp = typeCheckingContext.getRepresentative(TP_typevar_4340163696368051056);
+      return tmp;
+    }).toList();
     SNode newType = _quotation_createNode_bcpcms_a0i0b(tdecl, typeParam);
     IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(newType, subs);
 

@@ -10,6 +10,7 @@ import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
   private ConceptPresentation props_ConceptDocumentation;
+  private ConceptPresentation props_ModuleDescriptorDeputy;
 
   @Override
   @Nullable
@@ -23,6 +24,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ConceptDocumentation = cpb.create();
         }
         return props_ConceptDocumentation;
+      case LanguageConceptSwitch.ModuleDescriptorDeputy:
+        if (props_ModuleDescriptorDeputy == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("ModuleDescriptorDeputy");
+          props_ModuleDescriptorDeputy = cpb.create();
+        }
+        return props_ModuleDescriptorDeputy;
     }
     return null;
   }

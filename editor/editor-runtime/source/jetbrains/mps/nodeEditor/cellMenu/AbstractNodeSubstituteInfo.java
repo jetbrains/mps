@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor.cellMenu;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
@@ -27,8 +28,6 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.tempmodel.TempModuleOptions;
 import jetbrains.mps.smodel.tempmodel.TemporaryModels;
 import jetbrains.mps.util.Computable;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SRepository;
 
@@ -40,7 +39,7 @@ import java.util.List;
  * Time: Oct 29, 2003 2:17:38 PM
  */
 public abstract class AbstractNodeSubstituteInfo implements SubstituteInfo {
-  private static final Logger LOG = LogManager.getLogger(AbstractNodeSubstituteInfo.class);
+  private static final Logger LOG = Logger.getLogger(AbstractNodeSubstituteInfo.class);
 
   private static SModel ourModelForTypechecking = null;
 
@@ -51,7 +50,7 @@ public abstract class AbstractNodeSubstituteInfo implements SubstituteInfo {
   private List<SubstituteAction> myCachedActionList;
 
   private String myOriginalText;
-  private EditorContext myEditorContext;
+  private final EditorContext myEditorContext;
 
   public AbstractNodeSubstituteInfo(EditorContext editorContext) {
     myEditorContext = editorContext;
@@ -59,10 +58,6 @@ public abstract class AbstractNodeSubstituteInfo implements SubstituteInfo {
 
   public EditorContext getEditorContext() {
     return myEditorContext;
-  }
-
-  public IOperationContext getOperationContext() {
-    return myEditorContext.getOperationContext();
   }
 
   @Override

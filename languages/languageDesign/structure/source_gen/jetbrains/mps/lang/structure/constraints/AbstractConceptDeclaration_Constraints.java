@@ -11,11 +11,12 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.UUID;
@@ -39,11 +40,11 @@ public class AbstractConceptDeclaration_Constraints extends BaseConstraintsDescr
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_c1kwet_a0a0a0a0a0a0a0a2;
+            return new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "6836281137582805233");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return Scopes.forConcepts(_context.getContextNode(), CONCEPTS.AbstractConceptDeclaration$KA);
+            return _context.getScopeEvaluationContext().ofModel(_context.getModel(), "j.m.l.structure.ACD", (SModel m) -> (Scope) Scopes.forConcepts(m, CONCEPTS.AbstractConceptDeclaration$KA));
           }
         };
       }
@@ -51,18 +52,13 @@ public class AbstractConceptDeclaration_Constraints extends BaseConstraintsDescr
   }
   public static class ConceptId_Property extends BasePropertyConstraintsDescriptor {
     public ConceptId_Property(ConstraintsDescriptor container) {
-      super(PROPS.conceptId$rrGe, container);
+      super(PROPS.conceptId$rrGe, container, false, false, true);
     }
-    @Override
-    public boolean hasOwnValidator() {
-      return true;
-    }
-    private static final SNodePointer validatePropertyBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "6342519961666428205");
     @Override
     public boolean validateValue(SNode node, Object propertyValue, CheckingNodeContext checkingNodeContext) {
       boolean result = staticValidateProperty(node, SPropertyOperations.castString(propertyValue));
       if (!(result) && checkingNodeContext != null) {
-        checkingNodeContext.setBreakingNode(validatePropertyBreakingPoint);
+        checkingNodeContext.setBreakingNode(new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "6342519961666428205"));
       }
       return result;
     }
@@ -80,18 +76,13 @@ public class AbstractConceptDeclaration_Constraints extends BaseConstraintsDescr
   }
   public static class LanguageId_Property extends BasePropertyConstraintsDescriptor {
     public LanguageId_Property(ConstraintsDescriptor container) {
-      super(PROPS.languageId$79NI, container);
+      super(PROPS.languageId$79NI, container, false, false, true);
     }
-    @Override
-    public boolean hasOwnValidator() {
-      return true;
-    }
-    private static final SNodePointer validatePropertyBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "9005308665739310235");
     @Override
     public boolean validateValue(SNode node, Object propertyValue, CheckingNodeContext checkingNodeContext) {
       boolean result = staticValidateProperty(node, SPropertyOperations.castString(propertyValue));
       if (!(result) && checkingNodeContext != null) {
-        checkingNodeContext.setBreakingNode(validatePropertyBreakingPoint);
+        checkingNodeContext.setBreakingNode(new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "9005308665739310235"));
       }
       return result;
     }
@@ -114,7 +105,6 @@ public class AbstractConceptDeclaration_Constraints extends BaseConstraintsDescr
     properties.put(PROPS.languageId$79NI, new LanguageId_Property(this));
     return properties;
   }
-  private static final SNodePointer breakingNode_c1kwet_a0a0a0a0a0a0a0a2 = new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "6836281137582805233");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");

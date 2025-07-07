@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,17 +15,22 @@
  */
 package jetbrains.mps.ide.vfs;
 
+import com.intellij.openapi.application.AccessToken;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.WriteAction;
+import com.intellij.openapi.fileTypes.FileTypes;
 import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.openapi.vfs.JarFileSystem;
 import com.intellij.openapi.vfs.LocalFileSystem;
+import com.intellij.openapi.vfs.SavingRequestor;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileSystem;
 import com.intellij.openapi.vfs.newvfs.ArchiveFileSystem;
 import com.intellij.openapi.vfs.newvfs.NewVirtualFile;
+import com.intellij.util.SlowOperations;
 import jetbrains.mps.ide.platform.watching.FileSystemListenersContainer;
 import jetbrains.mps.ide.platform.watching.FileSystemListenersContainer.ListenersForPath;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
@@ -40,8 +45,6 @@ import jetbrains.mps.vfs.refresh.FileListenerAdapter;
 import jetbrains.mps.vfs.refresh.FileSystemListener;
 import jetbrains.mps.vfs.util.PathFormatChecker;
 import jetbrains.mps.vfs.util.PathUtil;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -54,7 +57,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -62,12 +64,12 @@ import java.util.List;
 
 /**
  * NOTE the IdeaFiles' equality now totally depends on the starting string.
- * That means that some IdeaFiles which point to the essentially the same place on fs, might not be equal in the sense
+ * That means that some IdeaFiles which point to essentially the same place on fs, might not be equal in the sense
  * of the current #equals relation
  */
 @Immutable
 public class IdeaFile implements IFile, CachingFile {
-  private final static Logger LOG = LogManager.getLogger(IdeaFile.class);
+  private final static Logger LOG = Logger.getLogger(IdeaFile.class);
   private final BaseIdeaFileSystem myFS;
 
   /*
@@ -125,7 +127,7 @@ public class IdeaFile implements IFile, CachingFile {
     VirtualFile virtualFile = findVirtualFile();
     try {
       if (virtualFile == null) {
-        LOG.warn("Could not find the virtual file for " + this);
+        LOG.warning("Could not find the virtual file for " + this);
         return guessURLForPath(myPath);
       }
       return VirtualFileUtils.extractURLFromVirtualFile(virtualFile);
@@ -281,7 +283,7 @@ public class IdeaFile implements IFile, CachingFile {
         }
         String fileName = getName();
         directory.findChild(fileName); // This is a workaround for IDEA-67279
-        directory.createChildData(getFileSystem(), fileName);
+        directory.createChildData(new MPSSavingRequestor(), fileName);
         return true;
       } catch (IOException e) {
         LOG.error("Got a problem while creating a new file", e);
@@ -315,7 +317,7 @@ public class IdeaFile implements IFile, CachingFile {
       if (child != null && child.isDirectory()) {
         return child;
       }
-      return parent.createChildDirectory(getFileSystem(), dirName);
+      return parent.createChildDirectory(new MPSSavingRequestor(), dirName);
     }
     return file;
   }
@@ -346,14 +348,14 @@ public class IdeaFile implements IFile, CachingFile {
     if (virtualFile != null) {
       try {
         checkNoListenersWhenRemove();
-        virtualFile.delete(getFileSystem());
+        virtualFile.delete(new MPSSavingRequestor());
         return true;
       } catch (IOException e) {
-        LOG.warn("Could not delete the file: ", e);
+        LOG.warning("Could not delete the file: ", e);
         return false;
       }
     } else {
-      LOG.warn("Could not find the file to delete: " + myPath, new Throwable());
+      LOG.warning("Could not find the file to delete: " + myPath, new Throwable());
       return false;
     }
   }
@@ -363,14 +365,14 @@ public class IdeaFile implements IFile, CachingFile {
     try {
       VirtualFile virtualFile = findVirtualFile();
       if (virtualFile != null) {
-        virtualFile.rename(getFileSystem(), newName);
+        virtualFile.rename(new MPSSavingRequestor(), newName);
         return true;
       } else {
         LOG.error("Could not find the file: " + myPath, new Throwable());
         return false;
       }
     } catch (IOException e) {
-      LOG.warn("Could not rename the file: ", e);
+      LOG.warning("Could not rename the file: ", e);
       return false;
     }
   }
@@ -380,7 +382,7 @@ public class IdeaFile implements IFile, CachingFile {
     ListenersForPath listenersForPath = container.getListenersForPath(myPath);
     List<FileSystemListener> all = listenersForPath.getMeAndDescendants();
     if (!all.isEmpty()) {
-      LOG.warn(String.format("%d listener(s) have not been unregistered for the path '%s':", all.size(), getPath()));
+      LOG.warning(String.format("%d listener(s) have not been unregistered for the path '%s':", all.size(), getPath()));
       for (FileSystemListener listener : all) {
         myFS.removeListener(listener);
       }
@@ -399,10 +401,10 @@ public class IdeaFile implements IFile, CachingFile {
           return this;
         }
         checkNoListenersWhenRemove();
-        virtualFile.rename(getFileSystem(), newName);
+        virtualFile.rename(new MPSSavingRequestor(), newName);
         return getParent().findChild(newName);
       } else {
-        LOG.warn("Could not find the file: " + myPath);
+        LOG.warning("Could not find the file: " + myPath);
         return this;
       }
     } catch (IOException e) {
@@ -421,14 +423,14 @@ public class IdeaFile implements IFile, CachingFile {
       try {
         VirtualFile virtualFile = findVirtualFile();
         if (virtualFile != null) {
-          VirtualFile copy = virtualFile.copy(getFileSystem(), newParentFile, newName);
+          VirtualFile copy = virtualFile.copy(new MPSSavingRequestor(), newParentFile, newName);
           return new IdeaFile(myFS, copy);
         } else {
           LOG.error("Could not find the file to copy: '" + myPath + "'", new Throwable());
           return null;
         }
       } catch (IOException e) {
-        LOG.warn("Could not copy file: ", e);
+        LOG.warning("Could not copy file: ", e);
         return null;
       }
     }
@@ -445,14 +447,14 @@ public class IdeaFile implements IFile, CachingFile {
       try {
         VirtualFile virtualFile = findVirtualFile();
         if (virtualFile != null) {
-          virtualFile.move(getFileSystem(), newParentFile);
+          virtualFile.move(new MPSSavingRequestor(), newParentFile);
           return true;
         } else {
           LOG.error("Could not find the file to move: " + myPath + ". The file was not moved", new Throwable());
           return false;
         }
       } catch (IOException e) {
-        LOG.warn("Could not rename file: ", e);
+        LOG.warning("Could not rename file: ", e);
         return false;
       }
     }
@@ -472,14 +474,14 @@ public class IdeaFile implements IFile, CachingFile {
         VirtualFile virtualFile = findVirtualFile();
         if (virtualFile != null) {
           checkNoListenersWhenRemove();
-          virtualFile.move(getFileSystem(), newParentFile);
+          virtualFile.move(new MPSSavingRequestor(), newParentFile);
           return newParent.findChild(virtualFile.getName());
         } else {
           LOG.error("Could not find the file to move: '" + myPath + "'", new Throwable());
           return this;
         }
       } catch (IOException e) {
-        LOG.warn("Could not rename file: ", e);
+        LOG.warning("Could not rename file: ", e);
         return this;
       }
     }
@@ -492,7 +494,10 @@ public class IdeaFile implements IFile, CachingFile {
     if (virtualFile == null) {
       throw new FileNotFoundException("File not found: " + myPath);
     }
-    return virtualFile.getInputStream();
+    try (AccessToken ignored = SlowOperations.allowSlowOperations("known-issues")) {
+      // there's no indication (javadoc) for VF#getInputStream() that it's not supposed to be invoked in EDT!
+      return virtualFile.getInputStream();
+    }
   }
 
   @Override
@@ -511,7 +516,7 @@ public class IdeaFile implements IFile, CachingFile {
       throw new UnsupportedOperationException("Cannot write to JAR files");
     } else {
       virtualFile = renameIfCaseSensitive(virtualFile);
-      return virtualFile.getOutputStream(getFileSystem());
+      return virtualFile.getOutputStream(new MPSSavingRequestor(){});
     }
   }
 
@@ -523,7 +528,7 @@ public class IdeaFile implements IFile, CachingFile {
       // try to bring the name up to the desired one.
       final String desiredFileName = getName();
       if (!virtualFile.getName().equals(desiredFileName)) {
-        virtualFile.rename(getFileSystem(), desiredFileName);
+        virtualFile.rename(new MPSSavingRequestor(), desiredFileName);
       }
       virtualFile = findVirtualFile0(false);
     }
@@ -543,7 +548,7 @@ public class IdeaFile implements IFile, CachingFile {
         ((NewVirtualFile) virtualFile).setTimeStamp(time);
         return true;
       } catch (IOException e) {
-        LOG.warn("", e);
+        LOG.warning("", e);
       }
     }
     return false;
@@ -563,7 +568,7 @@ public class IdeaFile implements IFile, CachingFile {
   }
 
   @Override
-  public boolean isInArchive() {
+  public boolean isInZipArchive() {
     VirtualFile virtualFile = findVirtualFile();
     if (virtualFile != null) {
       return virtualFile.getFileSystem() instanceof ArchiveFileSystem;
@@ -573,8 +578,12 @@ public class IdeaFile implements IFile, CachingFile {
   }
 
   @Override
-  public boolean isArchive() {
-    return myPath.endsWith(JarFileSystem.PROTOCOL) || myPath.endsWith(Path.ARCHIVE_SEPARATOR);
+  public boolean isZipArchive() {
+    var virtualFile = findVirtualFile();
+    if (virtualFile == null) {
+      LOG.warning("could not find the virtual file for " + this);
+    }
+    return virtualFile != null && virtualFile.exists() && virtualFile.getFileType() == FileTypes.ARCHIVE;
   }
 
   @Override
@@ -645,8 +654,8 @@ public class IdeaFile implements IFile, CachingFile {
 
   @Override
   public void addListener(@NotNull FileListener listener) {
-    if (isInArchive()) {
-      LOG.warn("There might be a problem when adding file listener for the files inside the archive: '" + getPath() + "'");
+    if (isInZipArchive()) {
+      LOG.warning("There might be a problem when adding file listener for the files inside the archive: '" + getPath() + "'");
     }
     getFileSystem().addListener(FileListenerAdapter.adapt(this, listener));
   }

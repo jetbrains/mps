@@ -16,53 +16,86 @@
 package org.jetbrains.mps.openapi.model;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.annotations.Internal;
 
 /**
  * Seems like we might want save the model differently in different scenarios.
  * This interface is the description of the parameters of EditableSModel#save.
  *
+ * @author apyshkin
  * @see EditableSModel#save(SaveOptions)
  * @see SaveOptionsBuilder for construction
- * @author apyshkin
  */
 public interface SaveOptions {
   /**
-   * @return true iff the implementation of EditableSModel needs to refresh the data source before saving the data to the data source
+   * @return true if the implementation of EditableSModel needs to refresh the data source before saving the data to the data source
    */
-  boolean refreshDataSource();
+  default boolean refreshDataSource() {
+    // the default value is false because in MPS we save models before loading fs changes, see FSChangesWatcher and around that
+    return false;
+  }
 
   /**
-   * @return true then the EditableSModel implementation does not consider the changes coming
-   * from the {@link EditableSModel#getSource()}, always choosing the current model data;
-   * and the implementation does not consider {@link EditableSModel#isChanged()} flag as well.
-   *
-   * if false then the implementation is free to choose between {@link EditableSModel#getSource()} and internal data.
-   * The resulting model must be {@link EditableSModel#isChanged()} = false and the content is either
-   * equal to the current data or the new loaded data from {@link EditableSModel#getSource()}
+   * @return true if the implementation of EditableSModel needs to rebuild all resolve-info in all references
    */
-  default boolean force() {
+  default boolean updateResolveInfoInRefs() {
     return false;
+  }
+
+  /**
+   * @return true if the implementation does #load -> #setChanged(false) -> #save() sequence of calls
+   * if true then the return of #preloadModel is ignored
+   */
+  default boolean forceSave() {
+    return false;
+  }
+
+  default boolean resolveConflicts() {
+    return true;
   }
 
   /**
    * @return true if the EditableSModel implementation must load model ({@link EditableSModel#load()}) before saving it
    */
-  default boolean preloadModelIfNeeded() {
+  default boolean preloadModel() {
     return false;
   }
 
-  SaveOptions LEGACY = new SaveOptionsBuilder().build();
-  SaveOptions FORCE = new SaveOptionsBuilder().force().build();
+  // the model is not pre-loaded, not force saved
+  // in case of conflict a dialog is shown where the user chooses how to resolve the conflict.
+  SaveOptions LEGACY = new SaveOptionsBuilder()
+                           .build();
+
+  // force saves the models, allows to resolve the conflicts
+  SaveOptions FORCE_SAVE = new SaveOptionsBuilder()
+                               .forceSave()
+                               .build();
+
+  // chooses the memory version, ignores the disk changes
+  // you almost never want to use this one, it ignores the file system changes, which might lead to a data loss
+  @Internal
+  SaveOptions FORCE_SAVE_MEMORY = new SaveOptionsBuilder()
+                                      .forceSave()
+                                      .resolveConflicts(false)
+                                      .build();
+
+  SaveOptions FORCE_SAVE_WITH_RESOLVE_INFO = new SaveOptionsBuilder()
+                                                 .forceSave()
+                                                 .resolveConflicts(true)
+                                                 .updateResolveInfoInRefs()
+                                                 .build();
 
   final class SaveOptionsBuilder {
     private boolean myRefreshDataSourceFlag;
     private boolean myForceFlag;
     private boolean myLoadModelFlag;
+    private boolean myResolveConflictsFlag = true;
+    private boolean myUpdateResolveInfo;
 
     public SaveOptionsBuilder() {
     }
 
-    public SaveOptionsBuilder force() {
+    public SaveOptionsBuilder forceSave() {
       myForceFlag = true;
       return this;
     }
@@ -72,8 +105,18 @@ public interface SaveOptions {
       return this;
     }
 
-    public SaveOptionsBuilder loadModelIfNeeded() {
+    public SaveOptionsBuilder preloadModel() {
       myLoadModelFlag = true;
+      return this;
+    }
+
+    public SaveOptionsBuilder resolveConflicts(boolean value) {
+      myResolveConflictsFlag = value;
+      return this;
+    }
+
+    public SaveOptionsBuilder updateResolveInfoInRefs() {
+      myUpdateResolveInfo = true;
       return this;
     }
 
@@ -81,12 +124,22 @@ public interface SaveOptions {
     public SaveOptions build() {
       return new SaveOptions() {
         @Override
-        public boolean force() {
+        public boolean forceSave() {
           return myForceFlag;
         }
 
         @Override
-        public boolean preloadModelIfNeeded() {
+        public boolean resolveConflicts() {
+          return myResolveConflictsFlag;
+        }
+
+        @Override
+        public boolean updateResolveInfoInRefs() {
+          return myUpdateResolveInfo;
+        }
+
+        @Override
+        public boolean preloadModel() {
           return myLoadModelFlag;
         }
 

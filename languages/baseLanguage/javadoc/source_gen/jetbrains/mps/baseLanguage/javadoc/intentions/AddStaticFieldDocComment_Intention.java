@@ -23,21 +23,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class AddStaticFieldDocComment_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddStaticFieldDocComment_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:17a5547b-be2d-47de-9fc3-8304c9f5de67(jetbrains.mps.baseLanguage.javadoc.intentions)", "4021391592916341753"));
   }
+
   @Override
   public String getPresentation() {
     return "AddStaticFieldDocComment";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -47,10 +47,12 @@ public final class AddStaticFieldDocComment_Intention extends AbstractIntentionD
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl).get(node) == null) ? "Add Documentation Comment" : "Remove Documentation Comment");
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       DocCommentHelper.addJavadocLangIfMissing(node);
@@ -64,10 +66,19 @@ public final class AddStaticFieldDocComment_Intention extends AbstractIntentionD
         new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl).set(node, null);
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddStaticFieldDocComment_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

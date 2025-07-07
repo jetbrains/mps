@@ -266,39 +266,6 @@
       <unit id="2097240597884176496" at="19,0,91,0" name="jetbrains.mps.lang.smodel.generator.baseLanguage.util.ConceptMethodSuperCall" />
     </file>
   </root>
-  <root nodeRef="r:00000000-0000-4000-0000-011c89590302(jetbrains.mps.lang.smodel.generator.baseLanguage.util)/4645065164080384548">
-    <file name="LanguageIdCalculator.java">
-      <node id="4645065164080719188" at="18,0,19,0" concept="4" trace="myContext" />
-      <node id="4645065164080719192" at="20,61,21,24" concept="3" />
-      <node id="4645065164080387640" at="25,77,26,72" concept="9" />
-      <node id="4645065164080722279" at="27,5,28,50" concept="8" />
-      <node id="4645065164080723701" at="29,56,30,48" concept="3" />
-      <node id="9005308665740239913" at="31,5,32,40" concept="8" />
-      <node id="9005308665740242765" at="32,40,33,73" concept="8" />
-      <node id="4645065164080764087" at="33,73,34,31" concept="9" />
-      <node id="4645065164080384548" at="38,0,39,0" concept="11" trace="languageId$79NI" />
-      <node id="4645065164080389425" at="20,0,23,0" concept="2" trace="LanguageIdCalculator#(Ljetbrains/mps/generator/template/TemplateQueryContext;)V" />
-      <node id="4645065164080384605" at="24,40,27,5" concept="6" />
-      <node id="4645065164080725854" at="28,50,31,5" concept="6" />
-      <node id="4645065164080384569" at="24,0,36,0" concept="7" trace="calcLangId#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <scope id="4645065164080389429" at="20,61,21,24" />
-      <scope id="4645065164080384607" at="25,77,26,72" />
-      <scope id="4645065164080725856" at="29,56,30,48" />
-      <scope id="4645065164080389425" at="20,0,23,0">
-        <var name="context" id="4645065164080389431" />
-      </scope>
-      <scope id="4645065164080384572" at="24,40,34,31">
-        <var name="model" id="4645065164080722280" />
-        <var name="module1" id="9005308665740239914" />
-        <var name="moduleId" id="9005308665740242766" />
-      </scope>
-      <scope id="4645065164080384569" at="24,0,36,0">
-        <var name="decl" id="4645065164080384574" />
-      </scope>
-      <unit id="4645065164080384548" at="37,0,40,0" name="jetbrains.mps.lang.smodel.generator.baseLanguage.util.LanguageIdCalculator$PROPS" />
-      <unit id="4645065164080384548" at="17,0,41,0" name="jetbrains.mps.lang.smodel.generator.baseLanguage.util.LanguageIdCalculator" />
-    </file>
-  </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590302(jetbrains.mps.lang.smodel.generator.baseLanguage.util)/651058060500868337">
     <file name="EnumSwitchQuieries.java">
       <node id="651058060500878431" at="16,52,17,38" concept="8" />

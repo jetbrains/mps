@@ -43,22 +43,20 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private EditorCell createCustom_0() {
-    AbstractCellProvider provider = new _FunctionTypes._return_P0_E0<AbstractCellProvider>() {
-      public AbstractCellProvider invoke() {
-        return new AbstractCellProvider(myNode) {
-          public EditorCell createEditorCell(EditorContext context) {
-            EditorCell_Label cell = new EditorCell_Constant(context, myNode, "");
-            cell.setDefaultText(SPropertyOperations.getString(myNode, PROPS.caption$Gtrh));
-            cell.setSelectable(true);
-            cell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ClassLikeMemberPlaceholderMenu()}));
+    AbstractCellProvider provider = ((_FunctionTypes._return_P0_E0<AbstractCellProvider>) () -> {
+      return new AbstractCellProvider(myNode) {
+        public EditorCell createEditorCell(EditorContext context) {
+          EditorCell_Label cell = new EditorCell_Constant(context, myNode, "");
+          cell.setDefaultText(SPropertyOperations.getString(myNode, PROPS.caption$Gtrh));
+          cell.setSelectable(true);
+          cell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ClassLikeMemberPlaceholderMenu()}));
 
-            // this is a dirty hack. TODO remove this code when MPS-22216 is fixed
-            Placeholder2RealObject.setCellActions(cell, myNode, context);
-            return cell;
-          }
-        };
-      }
-    }.invoke();
+          // this is a dirty hack. TODO remove this code when MPS-22216 is fixed
+          Placeholder2RealObject.setCellActions(cell, myNode, context);
+          return cell;
+        }
+      };
+    }).invoke();
     EditorCell editorCell = provider.createEditorCell(getEditorContext());
     editorCell.setCellId("Custom_9j55p5_a");
     EditorCell bigCell = BigCellUtil.findBigCell(editorCell, getNode());
@@ -67,7 +65,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       setCellContext(bigCell);
     }
     Style style = new StyleImpl();
-    new CommentStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new CommentStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.SELECTABLE, true);
     editorCell.getStyle().putAll(style);
     return editorCell;

@@ -31,6 +31,7 @@ public class ShowDiffererenceWithCurrentRevision_Action extends BaseAction {
     super("Compare with the Same Repository Version", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -90,13 +91,9 @@ public class ShowDiffererenceWithCurrentRevision_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     ShowDiffererenceWithCurrentRevision_Action.this.getVcsActionsUtil(event).showRootDifference(null);
   }
-  /*package*/ VcsActionsUtil getVcsActionsUtil(final AnActionEvent event) {
+  private VcsActionsUtil getVcsActionsUtil(final AnActionEvent event) {
     final Wrappers._T<String> rootName = new Wrappers._T<String>();
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        rootName.value = SNodeOperations.getContainingRoot(event.getData(MPSCommonDataKeys.NODE)).getName();
-      }
-    });
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(() -> rootName.value = SNodeOperations.getContainingRoot(event.getData(MPSCommonDataKeys.NODE)).getName());
     return new VcsActionsUtil(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.NODE).getReference(), rootName.value);
   }
 }

@@ -1,32 +1,17 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2000-2022 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.tool.environment;
 
-import com.intellij.ide.plugins.MainRunner;
-import com.intellij.idea.MainImpl;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ApplicationStarter;
+import jetbrains.mps.ide.util.PlatformStarter;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * The proper way to start all our ***Workers that involve IJ startup must implement ApplicationStarter
@@ -40,16 +25,10 @@ import java.util.concurrent.locks.ReentrantLock;
 public final class MPSHeadlessPlatformStarter implements ApplicationStarter {
   /*package*/ enum Holder {
     IT;
-    private final Lock myLock = new ReentrantLock();
-    private final Condition myInitializedCondition = myLock.newCondition();
+    private final CountDownLatch myInitializedLatch = new CountDownLatch(1);
 
     /*package*/ void signalInitialized() {
-      myLock.lock();
-      try {
-        myInitializedCondition.signal();
-      } finally {
-        myLock.unlock();
-      }
+      myInitializedLatch.countDown();
     }
 
     /**
@@ -58,25 +37,27 @@ public final class MPSHeadlessPlatformStarter implements ApplicationStarter {
      */
     @NotNull
     /*package*/ Application createApp() {
-      MainRunner.start(MAIN_CLASS.getName(),
-                       new String[]{MPSHeadlessPlatformStarter.CMD_NAME},
-                       new LinkedHashMap<>());
-      myLock.lock();
       try {
-        myInitializedCondition.await(100, TimeUnit.SECONDS);
+        PlatformStarter.startApplicationAsync();
+      } catch (Exception e) {
+        throw new RuntimeException("FAILED TO START CMDLINE IJ", e);
+      }
+
+      try {
+        if (!myInitializedLatch.await(100, TimeUnit.SECONDS)) {
+          throw new RuntimeException("FAILED TO START CMDLINE IJ: TIMED OUT WAITING");
+        }
       } catch (InterruptedException e) {
         throw new RuntimeException("FAILED TO START CMDLINE IJ", e);
-      } finally {
-        myLock.unlock();
       }
       return ApplicationManager.getApplication();
     }
 
-    private final Class<MainImpl> MAIN_CLASS = MainImpl.class;
+
   }
 
   @Override
-  public void main(@NotNull String[] args) {
+  public void main(@NotNull List<String> args) {
     Holder.IT.signalInitialized();
   }
 

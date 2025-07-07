@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,11 @@
  */
 package jetbrains.mps.lang.editor.menus.transformation;
 
+import jetbrains.mps.nodeEditor.cellMenu.CompletionItemCustomizationUtil;
 import jetbrains.mps.nodeEditor.menus.EditorMenuTraceImpl;
 import jetbrains.mps.nodeEditor.menus.substitute.DefaultSubstituteMenuContext;
 import jetbrains.mps.nodeEditor.menus.substitute.DefaultSubstituteMenuContextBuilder;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTrace;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
@@ -48,9 +48,9 @@ public class SubstituteItemsCollector {
   private final SContainmentLink myContainmentLink;
   private final EditorContext myEditorContext;
   private final SubstituteMenuLookup myMenuLookup;
-  private SAbstractConcept myTargetConcept;
-  private EditorMenuTrace myEditorMenuTrace;
-  private Collection<EditorMenuItemCustomizer> myCustomizers;
+  private final SAbstractConcept myTargetConcept;
+  private final EditorMenuTrace myEditorMenuTrace;
+  private final Collection<EditorMenuItemCustomizer> myCustomizers;
 
   public SubstituteItemsCollector(@NotNull SNode parentNode, @Nullable SNode currentChild, @Nullable SContainmentLink containmentLink,
       @NotNull EditorContext editorContext, @Nullable SubstituteMenuLookup menuLookup) {
@@ -72,13 +72,7 @@ public class SubstituteItemsCollector {
     myMenuLookup = menuLookup;
     myEditorMenuTrace = editorMenuTrace;
     myCustomizers = new HashSet<>();
-    LanguageRegistry.getInstance(myEditorContext.getRepository()).withAvailableLanguages(languageRuntime -> {
-      EditorAspectDescriptor aspect = languageRuntime.getAspect(EditorAspectDescriptor.class);
-      if (aspect != null) {
-        Collection<EditorMenuItemCustomizer> editorMenuItemCustomizers = aspect.getEditorMenuItemCustomizers();
-        myCustomizers.addAll(editorMenuItemCustomizers);
-      }
-    });
+    CompletionItemCustomizationUtil.apply(LanguageRegistry.getInstance(myEditorContext.getRepository()), myCustomizers::add);
   }
 
   public SubstituteItemsCollector(@NotNull TransformationMenuContext transformationMenuContext, SubstituteMenuLookup menuLookup){

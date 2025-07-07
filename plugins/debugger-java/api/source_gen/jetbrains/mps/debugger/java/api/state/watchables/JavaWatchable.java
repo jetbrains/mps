@@ -6,7 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.debug.api.programState.AbstractWatchable;
 import com.sun.jdi.ThreadReference;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 @GeneratedClass(node = "r:6ed9d174-6cbf-4569-b2b8-259c43efcbd9(jetbrains.mps.debugger.java.api.state.watchables)/3432969378036014056", model = "r:6ed9d174-6cbf-4569-b2b8-259c43efcbd9(jetbrains.mps.debugger.java.api.state.watchables)")
@@ -14,12 +13,6 @@ public abstract class JavaWatchable extends AbstractWatchable {
   protected ThreadReference myThreadReference;
   public JavaWatchable(ThreadReference threadReference) {
     myThreadReference = threadReference;
-  }
-
-  @Nullable
-  @Deprecated
-  public SNode getNode() {
-    return null;
   }
 
   @Nullable

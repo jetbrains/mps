@@ -72,7 +72,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -1687,6 +1687,9 @@
     <node concept="PrWs8" id="4WR1jK$23yk" role="PzmwI">
       <ref role="PrY4T" node="1lUJQtrPjRM" resolve="IReferenceOperation" />
     </node>
+    <node concept="t5JxF" id="3TdPJoXEvic" role="lGtFl">
+      <property role="t5JxN" value="operation to retrieve resolve information recorded with a reference; doesn't construct new one if unknown" />
+    </node>
   </node>
   <node concept="1TIwiD" id="1lvHLgR6tlS">
     <property role="R5$K7" value="false" />
@@ -3191,6 +3194,14 @@
     <property role="R4oN_" value="SReferenceLink projection" />
     <property role="34LRSv" value="association" />
     <ref role="1TJDcQ" to="tpee:fz3vP1H" resolve="Type" />
+  </node>
+  <node concept="1TIwiD" id="7eq243tT_Ux">
+    <property role="EcuMT" value="8329979535468945057" />
+    <property role="3GE5qa" value="operation.node" />
+    <property role="TrG5h" value="Node_PresentationOperation" />
+    <property role="34LRSv" value="presentation" />
+    <property role="R4oN_" value="string representation" />
+    <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
   </node>
 </model>
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -91,6 +91,12 @@ public abstract class SPropertyAdapter implements SProperty {
   public SNodeReference getSourceNode() {
     final PropertyDescriptor pd = getPropertyDescriptor();
     return pd == null ? null : pd.getSourceNode();
+  }
+
+  @Override
+  public boolean isTransient() {
+    final PropertyDescriptor pd = getPropertyDescriptor();
+    return pd != null && pd.isTransient();
   }
 
   public abstract String serialize();

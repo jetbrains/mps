@@ -11,7 +11,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
@@ -33,11 +32,7 @@ public class Model {
     List<SNode> roots1 = SModelOperations.roots(model, null);
     SModelOperations.rootsIncludingImported(model, null);
     List<SNode> roots2 = SModelOperations.roots(model, CONCEPTS.ClassConcept$bK);
-    Iterable<SNode> roots3 = ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ClassConcept$bK)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode c) {
-        return SPropertyOperations.hasValue(c, PROPS.name$MnvL, "Utils");
-      }
-    });
+    Iterable<SNode> roots3 = ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ClassConcept$bK)).where((c) -> SPropertyOperations.hasValue(c, PROPS.name$MnvL, "Utils"));
   }
   public void roots_access_2(SModel model) {
     SModelOperations.rootsIncludingImported(model, CONCEPTS.IfStatement$Q4);
@@ -45,11 +40,7 @@ public class Model {
   public void nodes_access_1(SModel model) {
     List<SNode> nodes1 = SModelOperations.nodes(model, null);
     List<SNode> nodes2 = SModelOperations.nodes(model, CONCEPTS.ClassConcept$bK);
-    Iterable<SNode> nodes3 = ListSequence.fromList(SModelOperations.nodes(model, CONCEPTS.ClassConcept$bK)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode c) {
-        return SPropertyOperations.hasValue(c, PROPS.name$MnvL, "Utils");
-      }
-    });
+    Iterable<SNode> nodes3 = ListSequence.fromList(SModelOperations.nodes(model, CONCEPTS.ClassConcept$bK)).where((c) -> SPropertyOperations.hasValue(c, PROPS.name$MnvL, "Utils"));
   }
 
   private static final class CONCEPTS {

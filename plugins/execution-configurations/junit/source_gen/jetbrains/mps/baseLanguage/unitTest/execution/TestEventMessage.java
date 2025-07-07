@@ -33,9 +33,9 @@ public final class TestEventMessage {
     myEvent = new TestRawEvent(description);
   }
 
-  private TestEventMessage(@NotNull String token, String testCaseName, String testMethodName, long memoryUsage, long time) {
+  private TestEventMessage(@NotNull String token, String testCaseName, String testMethodName, long memoryUsage, long time, String displayName) {
     myToken = token;
-    myEvent = new TestRawEvent(testCaseName, testMethodName, memoryUsage, time);
+    myEvent = new TestRawEvent(testCaseName, testMethodName, memoryUsage, time, displayName);
   }
 
   @Override
@@ -106,10 +106,10 @@ public final class TestEventMessage {
     if (messageString.startsWith(expectedToken)) {
       String params = messageString.substring(expectedToken.length());
       {
-        Pattern _pattern_0 = REGEXP_gypf5b_a0a0b0b0hb;
+        Pattern _pattern_0 = REGEXP;
         Matcher _matcher_0 = _pattern_0.matcher(params);
         if (_matcher_0.matches()) {
-          testEvent = new TestEventMessage(expectedToken, _matcher_0.group(1), _matcher_0.group(2), Long.parseLong(_matcher_0.group(3)), Long.parseLong(_matcher_0.group(4)));
+          testEvent = new TestEventMessage(expectedToken, _matcher_0.group(1), _matcher_0.group(2), Long.parseLong(_matcher_0.group(3)), Long.parseLong(_matcher_0.group(4)), _matcher_0.group(5));
         }
       }
     }
@@ -119,5 +119,5 @@ public final class TestEventMessage {
   static {
     TestEventMessage.ALL_TOKENS = ListSequence.fromListAndArray(new ArrayList<String>(), TestEventMessage.START_TEST, TestEventMessage.FINISH_TEST, TestEventMessage.FAILURE_TEST_BEGIN, TestEventMessage.ASSUMPTION_FAILURE_TEST_PREFIX, IGNORE_FAILURE_TEST_PREFIX, TestEventMessage.START_TESTRUN, FINISH_TESTRUN);
   }
-  private static final Pattern REGEXP_gypf5b_a0a0b0b0hb = Pattern.compile("([^:]+)(?::([^:]+))?:memory=(\\d+):time=(\\d+)", 0);
+  private static final Pattern REGEXP = Pattern.compile("([^:]+)(?::([^:]+))?:memory=(\\d+):time=(\\d+)(?::(.*)$)?", 0);
 }

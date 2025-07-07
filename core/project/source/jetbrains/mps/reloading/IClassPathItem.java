@@ -16,7 +16,6 @@
 package jetbrains.mps.reloading;
 
 import jetbrains.mps.classloading.ModuleClassLoaderSupport;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

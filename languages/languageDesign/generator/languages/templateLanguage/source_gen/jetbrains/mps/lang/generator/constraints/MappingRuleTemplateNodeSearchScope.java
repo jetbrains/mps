@@ -6,16 +6,11 @@ import jetbrains.mps.scope.ModelsScope;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.scope.ModelPlusImportedScope;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SModelStereotype;
 
 /*package*/ class MappingRuleTemplateNodeSearchScope extends ModelsScope {
   public MappingRuleTemplateNodeSearchScope(SModel model) {
     // any named node (restriction of rule target link) inside a visible generator model
-    super(Sequence.fromIterable(((Iterable<SModel>) new ModelPlusImportedScope(model, true, null).getModels())).where(new IWhereFilter<SModel>() {
-      public boolean accept(SModel it) {
-        return SModelStereotype.isGeneratorModel(it);
-      }
-    }), true, null);
+    super(Sequence.fromIterable(((Iterable<SModel>) new ModelPlusImportedScope(model, true, null).getModels())).where((it) -> SModelStereotype.isGeneratorModel(it)), true, null);
   }
 }

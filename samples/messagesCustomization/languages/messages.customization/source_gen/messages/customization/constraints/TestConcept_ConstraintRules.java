@@ -62,6 +62,7 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
     public boolean appliesTo(@NotNull CanBeRootContext context) {
       return true;
     }
+
   }
 
   public static final class Def_Depth2802122285522081733 {
@@ -74,17 +75,15 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
       if (!(isDefined(context))) {
         return null;
       }
-      return (Integer) new _FunctionTypes._return_P0_E0<Integer>() {
-        public Integer invoke() {
-          SNode n = context.getParentNode();
-          int depth = 1;
-          while (n != context.getAncestorNode()) {
-            n = SNodeOperations.getParent(n);
-            ++depth;
-          }
-          return depth;
+      return (Integer) ((_FunctionTypes._return_P0_E0<Integer>) () -> {
+        SNode n = context.getParentNode();
+        int depth = 1;
+        while (n != context.getAncestorNode()) {
+          n = SNodeOperations.getParent(n);
+          ++depth;
         }
-      }.invoke();
+        return depth;
+      }).invoke();
     }
 
     public static boolean isDefined(@NotNull CanBeAncestorContext context) {
@@ -112,6 +111,7 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
       }
       return true;
     }
+
   }
 
   public static final class Def_ChildName2802122285522074390 {
@@ -152,6 +152,7 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
       }
       return true;
     }
+
   }
 
   public static final class Def_Root3071492597344669935 {
@@ -164,7 +165,7 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
       if (!(isDefined(context))) {
         return null;
       }
-      return (SNode) SNodeOperations.cast(SNodeOperations.getContainingRoot(context.getParentNode()), CONCEPTS.INamedConcept$Kd);
+      return (SNode) ListSequence.fromList(SNodeOperations.getNodeAncestors(context.getParentNode(), CONCEPTS.INamedConcept$Kd, true)).last();
     }
 
     public static boolean isDefined(@NotNull ContainmentContext context) {
@@ -189,6 +190,7 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
     public boolean appliesTo(@NotNull ContainmentContext context) {
       return true;
     }
+
   }
 
   /*package*/ TestConcept_ConstraintRules() {

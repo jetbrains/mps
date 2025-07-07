@@ -11,9 +11,9 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -30,7 +30,7 @@ public class TransformationMenu_Named_Constraints extends BaseConstraintsDescrip
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_6r45os_a0a0a0a0a0a0a0a2;
+            return new SNodePointer("r:00000000-0000-4000-0000-011c89590298(jetbrains.mps.lang.editor.constraints)", "6836281137582782548");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
@@ -40,7 +40,6 @@ public class TransformationMenu_Named_Constraints extends BaseConstraintsDescrip
       }
     };
   }
-  private static final SNodePointer breakingNode_6r45os_a0a0a0a0a0a0a0a2 = new SNodePointer("r:00000000-0000-4000-0000-011c89590298(jetbrains.mps.lang.editor.constraints)", "6836281137582782548");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept TransformationMenu_Named$dh = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0ac4ee8L, "jetbrains.mps.lang.editor.structure.TransformationMenu_Named");

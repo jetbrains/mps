@@ -8,9 +8,6 @@ import com.sun.jdi.ThreadReference;
 import org.jetbrains.annotations.NotNull;
 import com.sun.jdi.event.LocatableEvent;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
-import com.sun.jdi.event.Event;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.debugger.java.runtime.engine.RequestManager;
 
 @GeneratedClass(node = "r:6c060161-192f-4aa3-a797-df89b30aa449(jetbrains.mps.debugger.java.runtime.engine.events)/6460341978864584962", model = "r:6c060161-192f-4aa3-a797-df89b30aa449(jetbrains.mps.debugger.java.runtime.engine.events)")
@@ -24,15 +21,7 @@ public class EventContext implements Context {
     myEventProcessor = eventProcessor;
     myVotesToVote = eventSet.size();
 
-    LocatableEvent event = (LocatableEvent) Sequence.fromIterable(Sequence.fromClosure(new ISequenceClosure<Event>() {
-      public Iterable<Event> iterable() {
-        return myEventSet;
-      }
-    })).findFirst(new IWhereFilter<Event>() {
-      public boolean accept(Event it) {
-        return it instanceof LocatableEvent;
-      }
-    });
+    LocatableEvent event = (LocatableEvent) Sequence.fromIterable(Sequence.fromClosure(() -> myEventSet)).findFirst((it) -> it instanceof LocatableEvent);
     myThreadReference = check_gqjtnu_a0f0e(event);
   }
   @Override

@@ -144,7 +144,7 @@
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
       <concept id="1830039279190439966" name="jetbrains.mps.baseLanguage.structure.AdditionalForLoopVariable" flags="ng" index="1gjucp" />
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -166,7 +166,7 @@
         <child id="8276990574895933172" name="throwable" index="1zc67B" />
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
@@ -203,7 +203,7 @@
       </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
-      <concept id="1196350785110" name="jetbrains.mps.lang.quotation.structure.AbstractAntiquotation" flags="ng" index="2c44t0">
+      <concept id="1196350785110" name="jetbrains.mps.lang.quotation.structure.AbstractAntiquotation" flags="ngI" index="2c44t0">
         <child id="1196350785111" name="expression" index="2c44t1" />
       </concept>
       <concept id="1196350785117" name="jetbrains.mps.lang.quotation.structure.ReferenceAntiquotation" flags="ng" index="2c44tb" />
@@ -299,6 +299,7 @@
       </concept>
       <concept id="1143226024141" name="jetbrains.mps.lang.smodel.structure.SModelType" flags="in" index="H_c77" />
       <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
+      <concept id="8329979535468945057" name="jetbrains.mps.lang.smodel.structure.Node_PresentationOperation" flags="ng" index="2Iv5rx" />
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
@@ -338,7 +339,7 @@
         <property id="1757699476691236116" name="role_DebugInfo" index="2qtEX8" />
         <property id="1341860900488019036" name="linkId" index="P3scX" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -1231,8 +1232,11 @@
                             <node concept="Xl_RD" id="2gzehMflZJM" role="3uHU7B">
                               <property role="Xl_RC" value="Duplicated member '" />
                             </node>
-                            <node concept="2GrUjf" id="2gzehMflZVD" role="3uHU7w">
-                              <ref role="2Gs0qQ" node="2gzehMflVDi" resolve="memberDescriptor" />
+                            <node concept="2OqwBi" id="ivXwD0FlkF" role="3uHU7w">
+                              <node concept="2GrUjf" id="2gzehMflZVD" role="2Oq$k0">
+                                <ref role="2Gs0qQ" node="2gzehMflVDi" resolve="memberDescriptor" />
+                              </node>
+                              <node concept="2Iv5rx" id="ivXwD0FlkG" role="2OqNvi" />
                             </node>
                           </node>
                           <node concept="Xl_RD" id="5zDW7Nr$xG7" role="3uHU7w">
@@ -1345,8 +1349,11 @@
                     <node concept="Xl_RD" id="2gzehMflRTZ" role="3uHU7B">
                       <property role="Xl_RC" value="Member '" />
                     </node>
-                    <node concept="2GrUjf" id="2gzehMflSzd" role="3uHU7w">
-                      <ref role="2Gs0qQ" node="2gzehMflLww" resolve="memberDescriptor" />
+                    <node concept="2OqwBi" id="ivXwD0FllU" role="3uHU7w">
+                      <node concept="2GrUjf" id="2gzehMflSzd" role="2Oq$k0">
+                        <ref role="2Gs0qQ" node="2gzehMflLww" resolve="memberDescriptor" />
+                      </node>
+                      <node concept="2Iv5rx" id="ivXwD0FllV" role="2OqNvi" />
                     </node>
                   </node>
                 </node>

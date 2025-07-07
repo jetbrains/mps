@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,9 +18,9 @@ package jetbrains.mps.library;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.generator.fileGenerator.FileGenerationUtil;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.persistence.PersistenceRegistry;
-import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.io.DescriptorIO;
 import jetbrains.mps.project.io.DescriptorIOException;
 import jetbrains.mps.project.io.DescriptorIOFacade;
@@ -44,8 +44,7 @@ import jetbrains.mps.util.io.ModelOutputStream;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.path.Path;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -72,7 +71,7 @@ import java.util.Set;
  * NB: we will go inside the jar if it either has a 'modules' folder (with modules (!)) or has a module.xml file in the META-INF folder
  */
 public final class ModulesMiner {
-  private static final Logger LOG = LogManager.getLogger(ModulesMiner.class);
+  private static final Logger LOG = Logger.getLogger(ModulesMiner.class);
   public static final String META_INF = "META-INF";
   private static final String JAR_SEPARATOR = Path.ARCHIVE_SEPARATOR;
   public static final String MODULE_XML = "module.xml";
@@ -281,7 +280,9 @@ public final class ModulesMiner {
         return true;
       }
 
-      processExcludes(moduleXml, moduleDescriptor); // do I really need to exclude anything for DD? There's source module, indeed.
+      // we don't dive into deployed modules (no nested modules at deployment), nothing to exclude.
+      // well, technically we can still exclude sources and library locations (could be outside a module), but generally
+      // when discovering deployed modules, we don't expect code to look into unexpected, nested layouts
       fillOutcome(new ModuleHandle(moduleXml, moduleDescriptor), false);
       // even if we didn't succeed to read a module, presence of META-INF/module.xml prevents processing of any other possible
       // module location under moduleHome
@@ -337,6 +338,30 @@ public final class ModulesMiner {
       }
       // XXX now we ignore deployment descriptors here, is it desired?
       if (trySourceModuleDescriptorsFromFile(child)) {
+        // There used to be a hack in JavaModuleFacetImpl.getClassPath():
+        // >>>
+        // Solution(s) bundled into single jar with classes (both from hand-written and generated sources) at the root.
+        // HACK. Fallback for manually bundled modules (vcs.jar or mps-core.jar):
+        //   my.jar
+        //     compile output of module1
+        //   modules
+        //      module sources of module1
+        // There's no DD there, and assumption is that there are classes at the jar root.
+        // Not yet sure what's the right way to deal with them:
+        //   - specify DD (META-INF/module.xml) at build time looks most 'honest', however, with multiple modules inside same jar it's not an option,
+        //     unless we can make DD per module, not per jar (requires support in MM.tryReadFromModulesDir). Support in Build language needed, too (to
+        //     specify 'module descriptor of' under 'folder with sources of'
+        //   - Patch MD in MM when loaded from modules/ location (e.g. add DD with proper classpath there). (+) keep knowledge about deployment layout
+        //     inside MM.
+        //   - Hack in JMFI.getClassPath()
+        // <<<
+        // MPS no longer bundles such modules, nor does mbeddr (well, in MPS there are jars with stub modules packaged this way, but they don't
+        //     assume classes in the same jar, rather reference external jars in their source module descriptors).
+        //     I don't see a point to keep this hack, however, one can never be sure if there's any code elsewhere that still uses this approach
+        //     so I leave this note here. I suppose it's always possible to workaround the case with individual jars
+        //     (+meta-inf/plugin descriptor, +module/sources of), but in case it turns out we have to support the aforementioned case, this is the
+        //     place to fix. Here, one would need to patch source module discovered by trySourceModuleDescriptorsFromFile to use 'bundleHome' value as
+        //     an addition to module classpath.
         return true;
       }
     }
@@ -366,7 +391,7 @@ public final class ModulesMiner {
     String filePath = file.getPath();
     if (filePath.endsWith(SLASH_META_INF_MODULE_XML)) {
       IFile moduleHome;
-      if (file.isInArchive()) {
+      if (file.isInZipArchive()) {
         moduleHome = file.getBundleHome();
       } else {
         // IFile.getBundleHome is not smart enough to recognize META-INF/module.xml in a regular directory (not archive), and yields
@@ -436,6 +461,7 @@ public final class ModulesMiner {
         if (".".equals(cpEntry)) {
           it.set(moduleHome.getPath());
         } else if (!cpEntry.isEmpty()) {
+          // XXX what about ../lib/myhandcrafted.jar scenario, why can't I use this for CP?
           StringBuilder moduleHomePath = new StringBuilder();
           if (IFileUtil.isJarFile(moduleHome)) {
             moduleHomePath.append(IFileUtil.stepIntoJar(moduleHome).getPath());
@@ -443,7 +469,7 @@ public final class ModulesMiner {
             moduleHomePath.append(moduleHome.getPath());
           }
           if (cpEntry.charAt(0) != '/') {
-            // it doesn't hurt to have extra fs delimiter, e.g. if moduleHome doesn't ends with one.
+            // it doesn't hurt to have extra fs delimiter, e.g. if moduleHome doesn't end with one.
             moduleHomePath.append('/');
           }
           moduleHomePath.append(cpEntry);
@@ -460,7 +486,7 @@ public final class ModulesMiner {
         // In fact, code shall resort to libraries of DD if present (e.g. JavaModuleFacetImpl shall do it), but it doesn't hurt to have source
         // module updated anyway.
         // Here we ignore stub libraries from source module descriptor, use libs from DeploymentDescriptor
-        result.getJavaLibs().clear();
+        result.getJavaLibPersistedValues().clear();
         // XXX I don't like this assumption that libraries are siblings to module home, but have no better idea now.
         IFile bundleParent = moduleHome.getParent();
         for (String jarFile : deploymentDescriptor.getLibraries()) {
@@ -470,9 +496,14 @@ public final class ModulesMiner {
           deploymentLibraries.add(jar);
           if (jar.exists()) {
             String path = jar.getPath();
-            result.getJavaLibs().add(path);
+            // FWIW, we mangle getJavaLibPersistedValues() here, and don't touch getJavaLibOriginalValues(), but as long as we are
+            // processing deployed modules (not project), I don't expect this to break anything.
+            result.getJavaLibPersistedValues().add(path);
           }
         }
+        // hack, see DD.getLibrariesResolved() for explanation
+        deploymentDescriptor.getLibrariesResolved().clear();
+        deploymentDescriptor.getLibrariesResolved().addAll(deploymentLibraries);
 
         // fix @java_stub locations, if any
         fixJavaStubModelRoots(result, sourceDescriptorFile, moduleHome, deploymentLibraries);
@@ -527,6 +558,7 @@ public final class ModulesMiner {
         // trying to load new format : replacing paths like **.jar!/module ->
         // Here, macroHelper have to be the same as the one used to load sourceModuleDescriptor, and it's just a hidden knowledge that
         // DescriptorIOFacade uses same approach to construct its macro helper.
+        // FIXME with no macro expansion on MD persistence, no need to shink anything here
         String contentPath = macroHelper.shrinkPath(rootDescriptor.getMemento().get(FileBasedModelRoot.CONTENT_PATH));
         if (contentPath == null || !contentPath.startsWith(MacrosFactory.MODULE)) {
           continue;
@@ -596,10 +628,11 @@ public final class ModulesMiner {
   }
 
   // part of processExcludes() with common code for any module type
-  private void processModuleExcludes(jetbrains.mps.vfs.openapi.FileSystem fileSystem, ModuleDescriptor descriptor) {
-    String generatorOutputPath = ProjectPathUtil.getGeneratorOutputPath(descriptor);
+  @SuppressWarnings("removal")
+  private void processModuleExcludes(jetbrains.mps.vfs.openapi.FileSystem fileSystem, MacroHelper macroHelper, ModuleDescriptor descriptor) {
+    String generatorOutputPath = descriptor.getOutputRoot();
     if (generatorOutputPath != null) {
-      IFile genOutputFile = fileSystem.getFile(generatorOutputPath);
+      IFile genOutputFile = fileSystem.getFile(macroHelper.expandPath(generatorOutputPath));
       excludeGeneratedSourcesDir(genOutputFile);
       // we don't care if there's indeed tests facet or if the folder exists
       // and I don't see why TestsFacetImpl.fromModuleDescriptor(arbitraryFile, MD) gives better result than hard-coded, source_gen-relative path,
@@ -625,12 +658,13 @@ public final class ModulesMiner {
       // -generator.jar nor -src.jar, so no reason to put their roots into excludes (on a side note, why not ".jar" itself, but ".jar!/"?)
     }
 
-    for (String p : descriptor.getSourcePaths()) {
-      myExcludes.add(fileSystem.getFile(p));
+    // I can tolerate use of MD.getSourcePaths here as MM knows about MD anyway
+    for (String p : descriptor.getSourcePathPersistedValue()) {
+      myExcludes.add(fileSystem.getFile(macroHelper.expandPath(p)));
     }
 
-    for (String entry : descriptor.getJavaLibs()) {
-      myExcludes.add(fileSystem.getFile(entry));
+    for (String entry : descriptor.getJavaLibPersistedValues()) {
+      myExcludes.add(fileSystem.getFile(macroHelper.expandPath(entry)));
     }
   }
 
@@ -641,23 +675,27 @@ public final class ModulesMiner {
     if (descriptor == null || descriptorFile.isReadOnly()) {
       return;
     }
-    jetbrains.mps.vfs.openapi.FileSystem fileSystem = descriptorFile.getFileSystem();
-    processModuleExcludes(fileSystem, descriptor);
+    try {
+      jetbrains.mps.vfs.openapi.FileSystem fileSystem = descriptorFile.getFileSystem();
+      final MacroHelper mh = MacrosFactory.forModuleFile(descriptorFile);
+      processModuleExcludes(fileSystem, mh, descriptor);
 
-    if (descriptor instanceof LanguageDescriptor) {
-      for (GeneratorDescriptor generator : ((LanguageDescriptor) descriptor).getGenerators()) {
-        processModuleExcludes(fileSystem, generator);
+      if (descriptor instanceof LanguageDescriptor) {
+        for (GeneratorDescriptor generator : ((LanguageDescriptor) descriptor).getGenerators()) {
+          processModuleExcludes(fileSystem, mh, generator);
+        }
       }
+    } catch (PathFormatException ex) {
+      // ignore, we can live w/o excludes, all we pay is extra time walking source_gen and classes_gen.
+      // well, unless there's some clever code that hides other modules under Java Libraries location and assumes MM ignores these.
+      LOG.warning(String.format("Failed to process excludes for a module from %s: %s", descriptorFile, ex.getMessage()));
     }
   }
 
   private void excludeGeneratedSourcesDir(IFile sourceDir) {
     if (sourceDir != null) {
       myExcludes.add(sourceDir);
-      // todo: why?
-      if (!sourceDir.isReadOnly()) {
-        myExcludes.add(FileGenerationUtil.getCachesDir(sourceDir));
-      }
+      myExcludes.add(FileGenerationUtil.getCachesDir(sourceDir));
     }
   }
 

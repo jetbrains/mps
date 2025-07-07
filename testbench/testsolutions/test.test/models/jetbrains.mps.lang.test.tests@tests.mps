@@ -2,7 +2,7 @@
 <model ref="r:77241c59-7b48-4e57-9855-3e6233f0c2f2(jetbrains.mps.lang.test.tests@tests)">
   <persistence version="9" />
   <languages>
-    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="-1" />
+    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="6" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="-1" />
     <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="-1" />
   </languages>
@@ -48,6 +48,7 @@
       </concept>
       <concept id="1225467090849" name="jetbrains.mps.lang.test.structure.ProjectExpression" flags="nn" index="1jxXqW" />
       <concept id="1216913645126" name="jetbrains.mps.lang.test.structure.NodesTestCase" flags="lg" index="1lH9Xt">
+        <property id="2616911529524314943" name="accessMode" index="3DII0k" />
         <child id="1217501822150" name="nodesToCheck" index="1SKRRt" />
         <child id="1217501895093" name="testMethods" index="1SL9yI" />
       </concept>
@@ -102,14 +103,14 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
       <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7">
         <property id="8575328350543493365" name="message" index="huDt6" />
         <property id="2423417345669755629" name="filter" index="1eyWvh" />
       </concept>
-      <concept id="8703179436979359251" name="jetbrains.mps.lang.core.structure.MigrationAnnotation" flags="ng" index="1tp6A5">
+      <concept id="8703179436979359251" name="jetbrains.mps.lang.core.structure.MigrationAnnotation" flags="ngI" index="1tp6A5">
         <property id="8703179436979359252" name="createdByScript" index="1tp6A2" />
       </concept>
       <concept id="8703179436979359238" name="jetbrains.mps.lang.core.structure.ReviewMigration" flags="ng" index="1tp6Ag">
@@ -138,6 +139,7 @@
     <node concept="1qefOq" id="6IYCYtgaunx" role="2lJO3o">
       <node concept="1lH9Xt" id="6IYCYtgaunw" role="1qenE9">
         <property role="TrG5h" value="SomeTest" />
+        <property role="3DII0k" value="2hh8MJdVwqX/command" />
         <node concept="1LZb2c" id="6IYCYtgav2S" role="1SL9yI">
           <property role="TrG5h" value="test1" />
           <node concept="3cqZAl" id="6IYCYtgav2T" role="3clF45" />
@@ -456,6 +458,7 @@
       </node>
       <node concept="1lH9Xt" id="6IYCYtgnCCy" role="1qenE9">
         <property role="TrG5h" value="SomeTest" />
+        <property role="3DII0k" value="2hh8MJdVwqX/command" />
         <node concept="1LZb2c" id="6IYCYtgnCCz" role="1SL9yI">
           <property role="TrG5h" value="test1" />
           <node concept="3cqZAl" id="6IYCYtgnCC$" role="3clF45" />
@@ -767,6 +770,7 @@
     <property role="TrG5h" value="ProjectExpressionIsThere" />
     <node concept="1qefOq" id="VLMLLsYLiH" role="25YQCW">
       <node concept="1lH9Xt" id="VLMLLsYLiO" role="1qenE9">
+        <property role="3DII0k" value="2hh8MJdVwqX/command" />
         <node concept="1LZb2c" id="VLMLLsYLj0" role="1SL9yI">
           <node concept="3cqZAl" id="VLMLLsYLj1" role="3clF45" />
           <node concept="3clFbS" id="VLMLLsYLj5" role="3clF47">
@@ -783,6 +787,7 @@
     </node>
     <node concept="1qefOq" id="VLMLLsYLiR" role="25YQFr">
       <node concept="1lH9Xt" id="VLMLLsYLiQ" role="1qenE9">
+        <property role="3DII0k" value="2hh8MJdVwqX/command" />
         <node concept="1LZb2c" id="VLMLLsZ1Cu" role="1SL9yI">
           <node concept="3cqZAl" id="VLMLLsZ1Cv" role="3clF45" />
           <node concept="3clFbS" id="VLMLLsZ1Cw" role="3clF47">

@@ -10,7 +10,6 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -30,11 +29,7 @@ public class CheckNoDuplicatedLinkHints_NonTypesystemRule extends AbstractNonTyp
       return;
     }
 
-    Iterable<SNode> sameFeatureHints = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(ld, CONCEPTS.ConceptVCSDescriptor$rz, false, false), LINKS.features$1ZkL), CONCEPTS.LinkVCSDescriptor$hA)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.lnk$j8LJ) == SLinkOperations.getTarget(ld, LINKS.lnk$j8LJ);
-      }
-    });
+    Iterable<SNode> sameFeatureHints = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(ld, CONCEPTS.ConceptVCSDescriptor$rz, false, false), LINKS.features$1ZkL), CONCEPTS.LinkVCSDescriptor$hA)).where((it) -> SLinkOperations.getTarget(it, LINKS.lnk$j8LJ) == SLinkOperations.getTarget(ld, LINKS.lnk$j8LJ));
     if (Sequence.fromIterable(sameFeatureHints).count() != 1) {
       {
         final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.lnk$j8LJ);

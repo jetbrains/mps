@@ -9,15 +9,13 @@ import jetbrains.mps.vcs.platform.util.PluginUtil;
 import com.intellij.openapi.vcs.VcsRoot;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import com.intellij.openapi.vcs.ProjectLevelVcsManager;
 import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.util.NameUtil;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.util.Computable;
+import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.util.StringsIO;
 import jetbrains.mps.vcs.core.mergedriver.FileType;
 import java.io.IOException;
@@ -39,22 +37,10 @@ import com.intellij.openapi.vcs.AbstractVcs;
     if (Sequence.fromIterable(gitRoots).isEmpty()) {
       return AbstractInstaller.State.INSTALLED;
     } else {
-      List<AbstractInstaller.State> states = Sequence.fromIterable(gitRoots).select(new ISelector<VcsRoot, AbstractInstaller.State>() {
-        public AbstractInstaller.State select(VcsRoot r) {
-          return installForRootInWrite(r.getPath(), dryRun);
-        }
-      }).toListSequence();
-      if (ListSequence.fromList(states).all(new IWhereFilter<AbstractInstaller.State>() {
-        public boolean accept(AbstractInstaller.State s) {
-          return s == AbstractInstaller.State.INSTALLED;
-        }
-      })) {
+      List<AbstractInstaller.State> states = Sequence.fromIterable(gitRoots).select((r) -> installForRootInWrite(r.getPath(), dryRun)).toList();
+      if (ListSequence.fromList(states).all((s) -> s == AbstractInstaller.State.INSTALLED)) {
         return AbstractInstaller.State.INSTALLED;
-      } else if (ListSequence.fromList(states).any(new IWhereFilter<AbstractInstaller.State>() {
-        public boolean accept(AbstractInstaller.State s) {
-          return s == AbstractInstaller.State.OUTDATED;
-        }
-      })) {
+      } else if (ListSequence.fromList(states).any((s) -> s == AbstractInstaller.State.OUTDATED)) {
         if (dryRun) {
           return AbstractInstaller.State.OUTDATED;
         }
@@ -67,23 +53,11 @@ import com.intellij.openapi.vcs.AbstractVcs;
     }
   }
   private int getRootsToInstall() {
-    return Sequence.fromIterable(getGitRoots()).select(new ISelector<VcsRoot, AbstractInstaller.State>() {
-      public AbstractInstaller.State select(VcsRoot r) {
-        return installForRootInWrite(r.getPath(), true);
-      }
-    }).where(new IWhereFilter<AbstractInstaller.State>() {
-      public boolean accept(AbstractInstaller.State st) {
-        return st == AbstractInstaller.State.NOT_INSTALLED || st == AbstractInstaller.State.OUTDATED;
-      }
-    }).count();
+    return Sequence.fromIterable(getGitRoots()).select((r) -> installForRootInWrite(r.getPath(), true)).where((st) -> st == AbstractInstaller.State.NOT_INSTALLED || st == AbstractInstaller.State.OUTDATED).count();
   }
   private Iterable<VcsRoot> getGitRoots() {
     VcsRoot[] allRoots = ProjectLevelVcsManager.getInstance(myProject).getAllVcsRoots();
-    return Sequence.fromIterable(Sequence.fromArray(allRoots)).where(new IWhereFilter<VcsRoot>() {
-      public boolean accept(VcsRoot root) {
-        return "Git".equals(check_mnsjzr_a0a0a0a0b0e(root.getVcs()));
-      }
-    });
+    return Sequence.fromIterable(Sequence.fromArray(allRoots)).where((root) -> "Git".equals(check_mnsjzr_a0a0a0a0b0e(root.getVcs())));
   }
   private AbstractInstaller.State installForRoots(Iterable<VcsRoot> roots) {
     int updated = 0;
@@ -117,11 +91,8 @@ import com.intellij.openapi.vcs.AbstractVcs;
     if (dryRun) {
       return installForRoot(vcsRootPath, dryRun);
     } else {
-      return ApplicationManager.getApplication().runWriteAction(new Computable<AbstractInstaller.State>() {
-        public AbstractInstaller.State compute() {
-          return installForRoot(vcsRootPath, dryRun);
-        }
-      });
+      Computable<AbstractInstaller.State> function = () -> installForRoot(vcsRootPath, dryRun);
+      return ApplicationManager.getApplication().runWriteAction(function);
     }
   }
   @NotNull
@@ -139,23 +110,7 @@ import com.intellij.openapi.vcs.AbstractVcs;
       }
       final List<String> lines = StringsIO.readLines(attributesFile.getInputStream());
 
-      if (Sequence.fromIterable(Sequence.fromArray(FileType.BY_NAME)).all(new IWhereFilter<FileType>() {
-        public boolean accept(final FileType fname) {
-          return ListSequence.fromList(lines).any(new IWhereFilter<String>() {
-            public boolean accept(String line) {
-              return line.matches("\\s*" + fname.getSuffix().replace(".", "\\.") + "\\s.*merge=mps\\s*");
-            }
-          });
-        }
-      }) && Sequence.fromIterable(Sequence.fromArray(FileType.BY_EXT)).all(new IWhereFilter<FileType>() {
-        public boolean accept(final FileType ext) {
-          return ListSequence.fromList(lines).any(new IWhereFilter<String>() {
-            public boolean accept(String line) {
-              return line.matches("\\s*\\*\\." + ext.getSuffix() + "\\s.*merge=mps\\s*");
-            }
-          });
-        }
-      })) {
+      if (Sequence.fromIterable(Sequence.fromArray(FileType.BY_NAME)).all((final FileType fname) -> ListSequence.fromList(lines).any((line) -> line.matches("\\s*" + fname.getSuffix().replace(".", "\\.") + "\\s.*merge=mps\\s*"))) && Sequence.fromIterable(Sequence.fromArray(FileType.BY_EXT)).all((final FileType ext) -> ListSequence.fromList(lines).any((line) -> line.matches("\\s*\\*\\." + ext.getSuffix() + "\\s.*merge=mps\\s*")))) {
         return AbstractInstaller.State.INSTALLED;
       }
 

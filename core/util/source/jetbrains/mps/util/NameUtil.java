@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.util;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelName;
@@ -388,8 +387,7 @@ public class NameUtil {
    * @param model not null
    * @return qualified name of the model without stereotype
    */
-  @Deprecated
-  @ToRemove(version = 3.4)
+@Deprecated(since = "3.4", forRemoval = true)
   public static String getModelLongName(SModel model) {
     return model.getName().getLongName();
   }
@@ -399,8 +397,7 @@ public class NameUtil {
    * @param modelRef not null
    * @return qualified name of the model without stereotype
    */
-  @Deprecated
-  @ToRemove(version = 3.4)
+@Deprecated(since = "3.4", forRemoval = true)
   public static String getModelLongName(SModelReference modelRef) {
     return modelRef.getName().getLongName();
   }

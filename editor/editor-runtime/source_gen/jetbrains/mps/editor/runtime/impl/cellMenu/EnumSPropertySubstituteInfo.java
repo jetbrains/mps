@@ -33,7 +33,7 @@ public class EnumSPropertySubstituteInfo extends AbstractNodeSubstituteInfo impl
   @Override
   protected List<SubstituteAction> createActions() {
     SDataType type = myProperty.getType();
-    if (!((type instanceof SEnumeration))) {
+    if (!(type instanceof SEnumeration)) {
       return Collections.<SubstituteAction>emptyList();
     }
     SEnumeration enumm = as_u10lvr_a0a2a3(type, SEnumeration.class);

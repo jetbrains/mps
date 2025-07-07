@@ -8,7 +8,6 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicable2Status;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
@@ -20,15 +19,7 @@ public class setType_with_vars_subtypeOf_setType_InequationReplacementRule exten
   public setType_with_vars_subtypeOf_setType_InequationReplacementRule() {
   }
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
-    return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(subtype)), SNodeOperations.asSConcept(SNodeOperations.getConcept(supertype))) && !(ListSequence.fromList(SNodeOperations.getChildren(supertype)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode ch) {
-        return SNodeOperations.isInstanceOf(ch, CONCEPTS.TypeVariableReference$WL);
-      }
-    })) && ListSequence.fromList(SNodeOperations.getChildren(subtype)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode ch) {
-        return SNodeOperations.isInstanceOf(ch, CONCEPTS.TypeVariableReference$WL);
-      }
-    });
+    return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(subtype)), SNodeOperations.asSConcept(SNodeOperations.getConcept(supertype))) && !(ListSequence.fromList(SNodeOperations.getChildren(supertype)).any((ch) -> SNodeOperations.isInstanceOf(ch, CONCEPTS.TypeVariableReference$WL))) && ListSequence.fromList(SNodeOperations.getChildren(subtype)).any((ch) -> SNodeOperations.isInstanceOf(ch, CONCEPTS.TypeVariableReference$WL));
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     // Anyway... there should be the only one child.

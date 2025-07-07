@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,21 +16,21 @@
 package jetbrains.mps.workbench.action;
 
 import com.intellij.openapi.actionSystem.ActionGroup;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.project.DumbAware;
-import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.NlsActions.ActionText;
-import jetbrains.mps.InternalFlag;
-import jetbrains.mps.ide.MPSCoreComponents;
-import jetbrains.mps.ide.project.ProjectHelper;
+import com.intellij.openapi.util.registry.Registry;
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.workbench.ActionPlace;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.ModelAccess;
+import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.util.Condition;
 
 import javax.swing.Icon;
@@ -42,6 +42,8 @@ public class BaseGroup extends DefaultActionGroup implements DumbAware {
   private final String myId;
   private boolean myIsInternal = false;
   private boolean myIsAlwaysVisible = true;
+
+  private ActionUpdateThread myUpdateThread;
 
   public BaseGroup(String name) {
     this(name, name);
@@ -106,15 +108,16 @@ public class BaseGroup extends DefaultActionGroup implements DumbAware {
   @Override
   public void update(final AnActionEvent e) {
     super.update(e);
-    if (myIsInternal && !InternalFlag.isInternalMode()) {
+    if (myIsInternal && !RuntimeFlags.isInternalMode()) {
       e.getPresentation().setEnabled(false);
       e.getPresentation().setVisible(false);
     } else {
-      getModelAccess(e).runReadAction(() -> {
+      final SRepository repo = BaseAction.getRepository(e);
+      repo.getModelAccess().runReadAction(() -> {
         try {
           e.getPresentation().setEnabled(true);
           e.getPresentation().setVisible(true);
-          doUpdate(e);
+          doUpdate(e.withDataContext(BaseAction.legacyWrap(repo, e.getDataContext())));
         } catch (Throwable ex) {
           Logger.getLogger(BaseGroup.this.getClass()).error("Action group update failed", ex);
         }
@@ -145,13 +148,26 @@ public class BaseGroup extends DefaultActionGroup implements DumbAware {
     }
   }
 
-  // copied from BaseAction.getModelAccess()
-  protected final ModelAccess getModelAccess(AnActionEvent event) {
-    Project project = getEventProject(event);
-    if (project != null) {
-      return ProjectHelper.getModelAccess(project);
-    } else {
-      return MPSCoreComponents.getInstance().getModuleRepository().getModelAccess();
+  /**
+   * @param updateInBackground when {@code false}, update of the action runs in EDT thread
+   */
+  public final void updateInBackground(boolean updateInBackground) {
+    myUpdateThread = updateInBackground ? ActionUpdateThread.BGT : ActionUpdateThread.EDT;
+  }
+
+  @Override
+  public @NotNull ActionUpdateThread getActionUpdateThread() {
+    // copied from BaseAction
+    if (myUpdateThread == null) {
+      myUpdateThread = Registry.is("mps.actions.old_edt", false) ? ActionUpdateThread.OLD_EDT : ActionUpdateThread.EDT;
     }
+    return myUpdateThread;
+  }
+
+
+  // copied from BaseAction.getModelAccess()
+  @Deprecated(forRemoval = true, since = "2021.3")
+  protected final ModelAccess getModelAccess(AnActionEvent event) {
+    return BaseAction.getRepository(event).getModelAccess();
   }
 }

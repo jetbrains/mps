@@ -24,15 +24,12 @@ import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
-import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
 import jetbrains.mps.lang.text.behavior.TextualElement__BehaviorDescriptor;
@@ -41,9 +38,7 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -200,12 +195,12 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
     if (type == CellActionType.BACKSPACE || type == CellActionType.DELETE) {
       performDeleteAction(type);
     } else if (type == CellActionType.COPY) {
-      CopyPasteUtil.copyNodesAndTextToClipboard(wrapSelectedNodesInNewParagraphs(), null, buildTextualRepresentationOfSelectedCells());
+      editorContext.getClipboard().put(wrapSelectedNodesInNewParagraphs(), buildTextualRepresentationOfSelectedCells());
     } else if (type == CellActionType.CUT) {
       SNode prevSelectableNode = getNextSelectableNode(myFirstNode, false);
       SNode nextSelectableNode = getNextSelectableNode(myLastNode, true);
 
-      CopyPasteUtil.copyNodesAndTextToClipboard(wrapSelectedNodesInNewParagraphs(), null, buildTextualRepresentationOfSelectedCells());
+      editorContext.getClipboard().put(wrapSelectedNodesInNewParagraphs(), buildTextualRepresentationOfSelectedCells());
       for (SNode n : getSelectedNodes()) {
         SNodeOperations.deleteNode(n);
       }
@@ -260,15 +255,7 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
     for (SNode l : paragraphs) {
       SNode lc = SNodeFactoryOperations.createNewNode(SNodeOperations.getConcept(l), l);
       Paragraph__BehaviorDescriptor.clearTextualElements_id1uSfHaoOxlA.invoke(lc);
-      Paragraph__BehaviorDescriptor.addAllTextualElements_id1uSfHaoPgT1.invoke(lc, Sequence.fromIterable(Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(l)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return selectedNodes.contains(it);
-        }
-      }).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.copyNode(it);
-        }
-      }));
+      Paragraph__BehaviorDescriptor.addAllTextualElements_id1uSfHaoPgT1.invoke(lc, Sequence.fromIterable(Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(l)).where((it) -> selectedNodes.contains(it)).select((it) -> SNodeOperations.copyNode(it)));
       ListSequence.fromList(copiesOfParagraphs).addElement(lc);
       ListSequence.fromList(SLinkOperations.getChildren(artificialParent, LINKS.paragraphs$ZAOz)).addElement(lc);
     }
@@ -558,11 +545,7 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
   }
 
   private boolean canExecute(final EditorContext editorContext, final CellAction action) {
-    return new ModelAccessHelper(editorContext.getRepository()).runReadAction(new Computable<Boolean>() {
-      public Boolean compute() {
-        return action.canExecute(editorContext);
-      }
-    });
+    return new ModelAccessHelper(editorContext.getRepository()).runReadAction(() -> action.canExecute(editorContext));
   }
   private boolean selectNode(SNode node, boolean startPosition) {
     if (node != null) {
@@ -585,11 +568,7 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
     return null;
   }
   public static Iterable<? extends SNode> getChildIterable(SNode paragraph) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(paragraph, true), CONCEPTS.Paragraph$XF)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode p) {
-        return (Iterable<SNode>) Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(p);
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(paragraph, true), CONCEPTS.Paragraph$XF)).translate((p) -> (Iterable<SNode>) Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(p));
   }
   @Override
   public void ensureVisible() {
@@ -649,44 +628,20 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
   }
 
   public void turnBold() {
-    _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> query = new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
-      public Boolean invoke(SNode letter) {
-        return SPropertyOperations.getBoolean(letter, PROPS.bold$Xqbk);
-      }
-    };
-    _FunctionTypes._void_P2_E0<? super SNode, ? super Boolean> modifier = new _FunctionTypes._void_P2_E0<SNode, Boolean>() {
-      public void invoke(SNode letter, Boolean value) {
-        SPropertyOperations.assign(letter, PROPS.bold$Xqbk, value);
-      }
-    };
+    _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> query = (SNode letter) -> SPropertyOperations.getBoolean(letter, PROPS.bold$Xqbk);
+    _FunctionTypes._void_P2_E0<? super SNode, ? super Boolean> modifier = (SNode letter, Boolean value) -> SPropertyOperations.assign(letter, PROPS.bold$Xqbk, value);
     turn(query, modifier);
   }
 
   public void turnItalics() {
-    _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> query = new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
-      public Boolean invoke(SNode letter) {
-        return SPropertyOperations.getBoolean(letter, PROPS.italic$Xqql);
-      }
-    };
-    _FunctionTypes._void_P2_E0<? super SNode, ? super Boolean> modifier = new _FunctionTypes._void_P2_E0<SNode, Boolean>() {
-      public void invoke(SNode letter, Boolean value) {
-        SPropertyOperations.assign(letter, PROPS.italic$Xqql, value);
-      }
-    };
+    _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> query = (SNode letter) -> SPropertyOperations.getBoolean(letter, PROPS.italic$Xqql);
+    _FunctionTypes._void_P2_E0<? super SNode, ? super Boolean> modifier = (SNode letter, Boolean value) -> SPropertyOperations.assign(letter, PROPS.italic$Xqql, value);
     turn(query, modifier);
   }
 
   public void turnUnderlined() {
-    _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> query = new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
-      public Boolean invoke(SNode letter) {
-        return SPropertyOperations.getBoolean(letter, PROPS.underlined$XqDm);
-      }
-    };
-    _FunctionTypes._void_P2_E0<? super SNode, ? super Boolean> modifier = new _FunctionTypes._void_P2_E0<SNode, Boolean>() {
-      public void invoke(SNode letter, Boolean value) {
-        SPropertyOperations.assign(letter, PROPS.underlined$XqDm, value);
-      }
-    };
+    _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> query = (SNode letter) -> SPropertyOperations.getBoolean(letter, PROPS.underlined$XqDm);
+    _FunctionTypes._void_P2_E0<? super SNode, ? super Boolean> modifier = (SNode letter, Boolean value) -> SPropertyOperations.assign(letter, PROPS.underlined$XqDm, value);
     turn(query, modifier);
   }
 

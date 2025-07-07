@@ -35,7 +35,7 @@ public class AnnotateRevision_Action extends BaseAction {
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
     event.getPresentation().setText(VcsBundle.messagePointer("action.annotate.revision.text"));
     event.getPresentation().setDescription(VcsBundle.messagePointer("action.annotate.selected.revision.in.new.tab.description"));
-    setEnabledState(event.getPresentation(), AnnotateRevision_Action.this.getCellMessage(event) != null);
+    setEnabledState(event.getPresentation(), AnnotateRevision_Action.this.getCellMessage(event) != null && !(AnnotateRevision_Action.this.getCellMessage(event).getCommitsGraphNode().isLocalRevision()));
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {

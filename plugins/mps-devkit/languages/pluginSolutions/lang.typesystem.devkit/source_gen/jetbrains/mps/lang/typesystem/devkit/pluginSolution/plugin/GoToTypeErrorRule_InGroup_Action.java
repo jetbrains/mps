@@ -25,6 +25,7 @@ public class GoToTypeErrorRule_InGroup_Action extends BaseAction {
     this.immediate = immediate_par;
     this.setIsAlwaysVisible(true);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

@@ -49,9 +49,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForSout() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testLangWithRT", "Sout", 0x2e4f876dc3944f48L, 0x93c5b5f4c0ec9b51L, 0x748e34155462f038L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.Expression", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL);
+    // extends: jetbrains.mps.baseLanguage.structure.Expression
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL);
     b.origin("r:162e8c9d-0e2f-4199-9d48-c1736d4ebd5c(testLangWithRT.structure)/8398707621307281464");
-    b.version(2);
+    b.version(3);
     b.alias("System.out.println");
     return b.create();
   }

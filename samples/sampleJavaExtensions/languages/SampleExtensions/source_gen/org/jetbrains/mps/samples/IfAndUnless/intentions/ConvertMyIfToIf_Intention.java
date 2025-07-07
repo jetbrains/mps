@@ -23,21 +23,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ConvertMyIfToIf_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ConvertMyIfToIf_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:c94a864e-ad51-4b38-a592-c0d7623187a1(org.jetbrains.mps.samples.IfAndUnless.intentions)", "954830572076058611"));
   }
+
   @Override
   public String getPresentation() {
     return "ConvertMyIfToIf";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -47,10 +47,12 @@ public final class ConvertMyIfToIf_Intention extends AbstractIntentionDescriptor
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Convert to If";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode statement = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement"));
@@ -66,10 +68,19 @@ public final class ConvertMyIfToIf_Intention extends AbstractIntentionDescriptor
       SNodeOperations.replaceWithAnother(node, statement);
       editorContext.select(SLinkOperations.getTarget(statement, LINKS.condition$5R17));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ConvertMyIfToIf_Intention.this;
     }
+
   }
 
   private static final class LINKS {

@@ -8,224 +8,56 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import java.util.Iterator;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.baseLanguage.collections.behavior.InternalSequenceOperation__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class closure_operations {
-  public static class NodeFactory_1225118817881 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+  public static class NodeFactory_5185644189117529668 implements NodeFactory {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
+      SNode expression;
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.InternalSequenceOperation$My)) {
-        SLinkOperations.setTarget(newNode, LINKS.closure$Rjuo, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.InternalSequenceOperation$My), LINKS.closure$Rjuo)));
+        expression = SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.InternalSequenceOperation$My), LINKS.closure$Rjuo);
+        SLinkOperations.setTarget(newNode, LINKS.closure$Rjuo, SNodeOperations.deleteNode(expression));
       } else {
-        SNode sel = SLinkOperations.getTarget(newNode, LINKS.closure$Rjuo);
-        if ((sel == null)) {
-          sel = SNodeFactoryOperations.setNewChild(newNode, LINKS.closure$Rjuo, CONCEPTS.ClosureLiteral$rp);
-        }
-        SNode pd = SNodeFactoryOperations.addNewChild(SNodeOperations.cast(sel, CONCEPTS.ClosureLiteral$rp), LINKS.parameter$b4Y3, CONCEPTS.SmartClosureParameterDeclaration$bO);
-        SPropertyOperations.set(pd, PROPS.name$MnvL, "it");
+        expression = ((SLinkOperations.getTarget(newNode, LINKS.closure$Rjuo) == null) ? SNodeFactoryOperations.setNewChild(newNode, LINKS.closure$Rjuo, CONCEPTS.ClosureLiteral$rp) : SLinkOperations.getTarget(newNode, LINKS.closure$Rjuo));
       }
-    }
-  }
-  public static class NodeFactory_1225119174306 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.InternalSequenceOperation$My)) {
-        SLinkOperations.setTarget(newNode, LINKS.closure$Rjuo, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.InternalSequenceOperation$My), LINKS.closure$Rjuo)));
-      } else {
-        SNode sel = SLinkOperations.getTarget(newNode, LINKS.closure$Rjuo);
-        if ((sel == null)) {
-          sel = SNodeFactoryOperations.setNewChild(newNode, LINKS.closure$Rjuo, CONCEPTS.ClosureLiteral$rp);
-        }
-        SNode pd = SNodeFactoryOperations.addNewChild(SNodeOperations.cast(sel, CONCEPTS.ClosureLiteral$rp), LINKS.parameter$b4Y3, CONCEPTS.SmartClosureParameterDeclaration$bO);
-        SPropertyOperations.set(pd, PROPS.name$MnvL, "it");
-      }
-    }
-  }
-  public static class NodeFactory_1225119188770 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.InternalSequenceOperation$My)) {
-        SLinkOperations.setTarget(newNode, LINKS.closure$Rjuo, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.InternalSequenceOperation$My), LINKS.closure$Rjuo)));
-      } else {
-        SNode sel = SLinkOperations.getTarget(newNode, LINKS.closure$Rjuo);
-        if ((sel == null)) {
-          sel = SNodeFactoryOperations.setNewChild(newNode, LINKS.closure$Rjuo, CONCEPTS.ClosureLiteral$rp);
-        }
-        SNode pd = SNodeFactoryOperations.addNewChild(SNodeOperations.cast(sel, CONCEPTS.ClosureLiteral$rp), LINKS.parameter$b4Y3, CONCEPTS.SmartClosureParameterDeclaration$bO);
-        SPropertyOperations.set(pd, PROPS.name$MnvL, "it");
-      }
-    }
-  }
-  public static class NodeFactory_1225119083460 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.InternalSequenceOperation$My)) {
-        SLinkOperations.setTarget(newNode, LINKS.closure$Rjuo, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.InternalSequenceOperation$My), LINKS.closure$Rjuo)));
-      } else {
-        SNode sel = SLinkOperations.getTarget(newNode, LINKS.closure$Rjuo);
-        if ((sel == null)) {
-          sel = SNodeFactoryOperations.setNewChild(newNode, LINKS.closure$Rjuo, CONCEPTS.ClosureLiteral$rp);
-        }
-        SNode pd = SNodeFactoryOperations.addNewChild(SNodeOperations.cast(sel, CONCEPTS.ClosureLiteral$rp), LINKS.parameter$b4Y3, CONCEPTS.SmartClosureParameterDeclaration$bO);
-        SPropertyOperations.set(pd, PROPS.name$MnvL, "it");
-      }
-    }
-  }
-  public static class NodeFactory_1225119114838 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.InternalSequenceOperation$My)) {
-        SLinkOperations.setTarget(newNode, LINKS.closure$Rjuo, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.InternalSequenceOperation$My), LINKS.closure$Rjuo)));
-      } else {
-        SNode sel = SLinkOperations.getTarget(newNode, LINKS.closure$Rjuo);
-        if ((sel == null)) {
-          sel = SNodeFactoryOperations.setNewChild(newNode, LINKS.closure$Rjuo, CONCEPTS.ClosureLiteral$rp);
-        }
-        SNode pd = SNodeFactoryOperations.addNewChild(SNodeOperations.cast(sel, CONCEPTS.ClosureLiteral$rp), LINKS.parameter$b4Y3, CONCEPTS.SmartClosureParameterDeclaration$bO);
-        SPropertyOperations.set(pd, PROPS.name$MnvL, "it");
-      }
-    }
-  }
-  public static class NodeFactory_1225110009888 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SNode sel = SLinkOperations.getTarget(newNode, LINKS.closure$Rjuo);
-      if ((sel == null)) {
-        sel = SNodeFactoryOperations.setNewChild(newNode, LINKS.closure$Rjuo, CONCEPTS.ClosureLiteral$rp);
-      }
-      SNode pda = SNodeFactoryOperations.addNewChild(SNodeOperations.cast(sel, CONCEPTS.ClosureLiteral$rp), LINKS.parameter$b4Y3, CONCEPTS.SmartClosureParameterDeclaration$bO);
-      SPropertyOperations.set(pda, PROPS.name$MnvL, "a");
-      SNode pdb = SNodeFactoryOperations.addNewChild(SNodeOperations.cast(sel, CONCEPTS.ClosureLiteral$rp), LINKS.parameter$b4Y3, CONCEPTS.SmartClosureParameterDeclaration$bO);
-      SPropertyOperations.set(pdb, PROPS.name$MnvL, "b");
-    }
-  }
-  public static class NodeFactory_1225728791327 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.InternalSequenceOperation$My)) {
-        SLinkOperations.setTarget(newNode, LINKS.closure$Rjuo, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.InternalSequenceOperation$My), LINKS.closure$Rjuo)));
-      } else {
-        SNode filter = SLinkOperations.getTarget(newNode, LINKS.closure$Rjuo);
-        if ((filter == null)) {
-          filter = SNodeFactoryOperations.setNewChild(newNode, LINKS.closure$Rjuo, CONCEPTS.ClosureLiteral$rp);
-        }
-        SNode pd = SNodeFactoryOperations.addNewChild(SNodeOperations.cast(filter, CONCEPTS.ClosureLiteral$rp), LINKS.parameter$b4Y3, CONCEPTS.SmartClosureParameterDeclaration$bO);
-        SPropertyOperations.set(pd, PROPS.name$MnvL, "it");
-      }
-    }
-  }
-  public static class NodeFactory_1225730740847 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.InternalSequenceOperation$My)) {
-        SLinkOperations.setTarget(newNode, LINKS.closure$Rjuo, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.InternalSequenceOperation$My), LINKS.closure$Rjuo)));
-      } else {
-        SNode filter = SLinkOperations.getTarget(newNode, LINKS.closure$Rjuo);
-        if ((filter == null)) {
-          filter = SNodeFactoryOperations.setNewChild(newNode, LINKS.closure$Rjuo, CONCEPTS.ClosureLiteral$rp);
-        }
-        SNode pd = SNodeFactoryOperations.addNewChild(SNodeOperations.cast(filter, CONCEPTS.ClosureLiteral$rp), LINKS.parameter$b4Y3, CONCEPTS.SmartClosureParameterDeclaration$bO);
-        SPropertyOperations.set(pd, PROPS.name$MnvL, "it");
-      }
-    }
-  }
-  public static class NodeFactory_1235567398001 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.InternalSequenceOperation$My)) {
-        SLinkOperations.setTarget(newNode, LINKS.closure$Rjuo, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.InternalSequenceOperation$My), LINKS.closure$Rjuo)));
-      } else {
-        SNode filter = SLinkOperations.getTarget(newNode, LINKS.closure$Rjuo);
-        if ((filter == null)) {
-          filter = SNodeFactoryOperations.setNewChild(newNode, LINKS.closure$Rjuo, CONCEPTS.ClosureLiteral$rp);
-        }
-        SNode pd = SNodeFactoryOperations.addNewChild(SNodeOperations.cast(filter, CONCEPTS.ClosureLiteral$rp), LINKS.parameter$b4Y3, CONCEPTS.SmartClosureParameterDeclaration$bO);
-        SPropertyOperations.set(pd, PROPS.name$MnvL, "it");
-      }
-    }
-  }
-  public static class NodeFactory_1235567424420 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.InternalSequenceOperation$My)) {
-        SLinkOperations.setTarget(newNode, LINKS.closure$Rjuo, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.InternalSequenceOperation$My), LINKS.closure$Rjuo)));
-      } else {
-        SNode filter = SLinkOperations.getTarget(newNode, LINKS.closure$Rjuo);
-        if ((filter == null)) {
-          filter = SNodeFactoryOperations.setNewChild(newNode, LINKS.closure$Rjuo, CONCEPTS.ClosureLiteral$rp);
-        }
-        SNode pd = SNodeFactoryOperations.addNewChild(SNodeOperations.cast(filter, CONCEPTS.ClosureLiteral$rp), LINKS.parameter$b4Y3, CONCEPTS.SmartClosureParameterDeclaration$bO);
-        SPropertyOperations.set(pd, PROPS.name$MnvL, "it");
-      }
-    }
-  }
-  public static class NodeFactory_3055999550620994085 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.InternalSequenceOperation$My)) {
-        SLinkOperations.setTarget(newNode, LINKS.closure$Rjuo, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.InternalSequenceOperation$My), LINKS.closure$Rjuo)));
-      } else {
-        SNode filter = SLinkOperations.getTarget(newNode, LINKS.closure$Rjuo);
-        if ((filter == null)) {
-          filter = SNodeFactoryOperations.setNewChild(newNode, LINKS.closure$Rjuo, CONCEPTS.ClosureLiteral$rp);
-        }
-        SNode pd = SNodeFactoryOperations.addNewChild(SNodeOperations.cast(filter, CONCEPTS.ClosureLiteral$rp), LINKS.parameter$b4Y3, CONCEPTS.SmartClosureParameterDeclaration$bO);
-        SPropertyOperations.set(pd, PROPS.name$MnvL, "it");
-      }
-    }
-  }
-  public static class NodeFactory_1522217801069385377 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SNode comb = SLinkOperations.getTarget(newNode, LINKS.closure$Rjuo);
-      if ((comb == null)) {
-        comb = SNodeFactoryOperations.setNewChild(newNode, LINKS.closure$Rjuo, CONCEPTS.ClosureLiteral$rp);
-      }
-      SNode pda = SNodeFactoryOperations.addNewChild(SNodeOperations.cast(comb, CONCEPTS.ClosureLiteral$rp), LINKS.parameter$b4Y3, CONCEPTS.SmartClosureParameterDeclaration$bO);
-      SPropertyOperations.set(pda, PROPS.name$MnvL, "a");
-      SNode pdb = SNodeFactoryOperations.addNewChild(SNodeOperations.cast(comb, CONCEPTS.ClosureLiteral$rp), LINKS.parameter$b4Y3, CONCEPTS.SmartClosureParameterDeclaration$bO);
-      SPropertyOperations.set(pdb, PROPS.name$MnvL, "b");
-    }
-  }
-  public static class NodeFactory_1522217801069396478 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SNode comb = SLinkOperations.getTarget(newNode, LINKS.closure$Rjuo);
-      if ((comb == null)) {
-        comb = SNodeFactoryOperations.setNewChild(newNode, LINKS.closure$Rjuo, CONCEPTS.ClosureLiteral$rp);
-      }
-      SNode pda = SNodeFactoryOperations.addNewChild(SNodeOperations.cast(comb, CONCEPTS.ClosureLiteral$rp), LINKS.parameter$b4Y3, CONCEPTS.SmartClosureParameterDeclaration$bO);
-      SPropertyOperations.set(pda, PROPS.name$MnvL, "a");
-      SNode pdb = SNodeFactoryOperations.addNewChild(SNodeOperations.cast(comb, CONCEPTS.ClosureLiteral$rp), LINKS.parameter$b4Y3, CONCEPTS.SmartClosureParameterDeclaration$bO);
-      SPropertyOperations.set(pdb, PROPS.name$MnvL, "b");
-    }
-  }
-  public static class NodeFactory_1522217801069421699 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SNode comb = SLinkOperations.getTarget(newNode, LINKS.closure$Rjuo);
-      if ((comb == null)) {
-        comb = SNodeFactoryOperations.setNewChild(newNode, LINKS.closure$Rjuo, CONCEPTS.ClosureLiteral$rp);
-      }
-      SNode pds = SNodeFactoryOperations.addNewChild(SNodeOperations.cast(comb, CONCEPTS.ClosureLiteral$rp), LINKS.parameter$b4Y3, CONCEPTS.ParameterDeclaration$RG);
-      SPropertyOperations.set(pds, PROPS.name$MnvL, "s");
-      SNode pdit = SNodeFactoryOperations.addNewChild(SNodeOperations.cast(comb, CONCEPTS.ClosureLiteral$rp), LINKS.parameter$b4Y3, CONCEPTS.SmartClosureParameterDeclaration$bO);
-      SPropertyOperations.set(pdit, PROPS.name$MnvL, "it");
-    }
-  }
-  public static class NodeFactory_1522217801069421974 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SNode comb = SLinkOperations.getTarget(newNode, LINKS.closure$Rjuo);
-      if ((comb == null)) {
-        comb = SNodeFactoryOperations.setNewChild(newNode, LINKS.closure$Rjuo, CONCEPTS.ClosureLiteral$rp);
-      }
-      SNode pdit = SNodeFactoryOperations.addNewChild(SNodeOperations.cast(comb, CONCEPTS.ClosureLiteral$rp), LINKS.parameter$b4Y3, CONCEPTS.SmartClosureParameterDeclaration$bO);
-      SPropertyOperations.set(pdit, PROPS.name$MnvL, "it");
-      SNode pds = SNodeFactoryOperations.addNewChild(SNodeOperations.cast(comb, CONCEPTS.ClosureLiteral$rp), LINKS.parameter$b4Y3, CONCEPTS.ParameterDeclaration$RG);
-      SPropertyOperations.set(pds, PROPS.name$MnvL, "s");
-    }
-  }
 
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink closure$Rjuo = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1188372895aL, 0x11883748452L, "closure");
-    /*package*/ static final SContainmentLink parameter$b4Y3 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter");
+      // New parameters or rename existing one (type might be invalid afterwards)
+      {
+        final SNode closure = expression;
+        if (SNodeOperations.isInstanceOf(closure, CONCEPTS.ClosureLiteral$rp)) {
+          Iterator<SNode> existingParameters = ListSequence.fromList(SLinkOperations.getChildren(closure, LINKS.parameter$b4Y3)).iterator();
+
+          for (String name : InternalSequenceOperation__BehaviorDescriptor.getClosureParameterNames_id4vR6YDfUMx0.invoke(newNode)) {
+            SNode param = (existingParameters.hasNext() ? existingParameters.next() : SNodeFactoryOperations.addNewChild(closure, LINKS.parameter$b4Y3, CONCEPTS.InferredClosureParameterDeclaration$DV));
+
+            SPropertyOperations.set(param, PROPS.name$MnvL, name);
+          }
+
+          while (existingParameters.hasNext()) {
+            // Clear extra ones
+            SNodeOperations.deleteNode(existingParameters.next());
+          }
+        }
+      }
+    }
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept InternalSequenceOperation$My = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1188372895aL, "jetbrains.mps.baseLanguage.collections.structure.InternalSequenceOperation");
     /*package*/ static final SConcept ClosureLiteral$rp = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral");
-    /*package*/ static final SConcept SmartClosureParameterDeclaration$bO = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x118374464e4L, "jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration");
-    /*package*/ static final SConcept ParameterDeclaration$RG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
+    /*package*/ static final SConcept InferredClosureParameterDeclaration$DV = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x2308899d335ce07aL, "jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink closure$Rjuo = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1188372895aL, 0x11883748452L, "closure");
+    /*package*/ static final SContainmentLink parameter$b4Y3 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter");
   }
 
   private static final class PROPS {

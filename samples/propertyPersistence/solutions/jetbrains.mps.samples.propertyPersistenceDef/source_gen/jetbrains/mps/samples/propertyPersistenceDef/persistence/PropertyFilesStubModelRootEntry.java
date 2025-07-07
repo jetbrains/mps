@@ -6,19 +6,21 @@ import org.jetbrains.mps.openapi.ui.persistence.ModelRootEntry;
 import org.jetbrains.mps.openapi.ui.persistence.ModelRootEntryExt;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.ui.dialogs.properties.roots.editors.FileBasedModelRootEntry;
+import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.ui.persistence.ModelRootEntryEditor;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.JComponent;
 import java.awt.Color;
+import jetbrains.mps.util.IStatus;
 
-public class PropertyFilesStubModelRootEntry implements ModelRootEntry<PropertyFilesStubModelRoot>, ModelRootEntryExt {
+public final class PropertyFilesStubModelRootEntry implements ModelRootEntry<PropertyFilesStubModelRoot>, ModelRootEntryExt {
   @NotNull
   private final FileBasedModelRootEntry myModelRootData;
   @NotNull
   private final PropertyFilesStubModelRoot myRoot;
 
-  public PropertyFilesStubModelRootEntry(PropertyFilesStubModelRoot root) {
-    myModelRootData = new FileBasedModelRootEntry(root);
+  public PropertyFilesStubModelRootEntry(MPSProject mpsProject, PropertyFilesStubModelRoot root) {
+    myModelRootData = new FileBasedModelRootEntry(mpsProject, root);
     this.myRoot = root;
   }
 
@@ -65,5 +67,11 @@ public class PropertyFilesStubModelRootEntry implements ModelRootEntry<PropertyF
   @Override
   public void dispose() {
     myModelRootData.dispose();
+  }
+
+  @NotNull
+  @Override
+  public IStatus conflictsWith(@NotNull ModelRootEntry<PropertyFilesStubModelRoot> other) {
+    return myModelRootData.conflictsWith(((PropertyFilesStubModelRootEntry) other).myModelRootData);
   }
 }

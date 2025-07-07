@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-bg2dgmw1ykaohcszjuw6nxfnx8rr63o">
+<product version="3" modelHash="-1av3vgtwm16mqgs2ba19kmm6jowkan">
   <files names="BehaviorAspectDescriptor.java:CurrentStockPrice__BehaviorDescriptor.java:MoneyLiteral__BehaviorDescriptor.java:MoneyType__BehaviorDescriptor.java:MovingAverage__BehaviorDescriptor.java:StockSymbol__BehaviorDescriptor.java" />
 </product>
 

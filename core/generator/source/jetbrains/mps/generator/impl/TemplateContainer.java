@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package jetbrains.mps.generator.impl;
 import jetbrains.mps.generator.GenerationCanceledException;
 import jetbrains.mps.generator.GenerationTrace;
 import jetbrains.mps.generator.GenerationTracerUtil;
+import jetbrains.mps.generator.IGeneratorLogger.ProblemDescription;
 import jetbrains.mps.generator.runtime.ApplySink;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
@@ -29,17 +30,18 @@ import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 /**
  * Container for Template Fragments, collects them and applies through supplied TemplateProcessor.
- * <p>For weave rule/macro there's {@link jetbrains.mps.generator.impl.WeaveTemplateContainer} counterpart.
+ *
+ * I hope to get to https://youtrack.jetbrains.com/issue/MPS-23373 and deal with TF in different roles,
+ * just need to figure out what to do with COPY-SRC (see TemplateContainer#extractTemplateFragments())
  * @author Artem Tikhomirov
  */
-public class TemplateContainer {
-  protected final SNode myTemplateNode;
-  protected List<Pair<SNode, String>> myNodeAndMappingNamePairs;
+public final class TemplateContainer {
+  private final SNode myTemplateNode;
+  private List<Pair<SNode, String>> myNodeAndMappingNamePairs;
 
   public TemplateContainer(@NotNull SNode templateContainer) {
     myTemplateNode = templateContainer;
@@ -60,7 +62,7 @@ public class TemplateContainer {
     List<SNode> fragments = extractTemplateFragments();
     List<Pair<SNode, String>> result = new ArrayList<>(fragments.size());
     for (SNode fragment : fragments) {
-      result.add(new Pair<>(fragment.getParent(), GeneratorUtilEx.getMappingName_TemplateFragment(fragment, null)));
+      result.add(new Pair<>(fragment.getParent(), RuleUtil.getTemplateFragmentLabel(fragment)));
     }
     myNodeAndMappingNamePairs = result;
   }
@@ -84,29 +86,34 @@ public class TemplateContainer {
   }
 
   @NotNull
-  protected List<SNode> extractTemplateFragments() throws TemplateProcessingFailureException {
+  private List<SNode> extractTemplateFragments() throws TemplateProcessingFailureException {
     List<SNode> fragments = GeneratorUtilEx.getTemplateFragments(myTemplateNode);
+    // GeneratorUtilEx.getTemplateFragments() shall not return null
     if (fragments.isEmpty()) {
       throw new TemplateProcessingFailureException(myTemplateNode, "couldn't process template: no template fragments found");
     }
     if (fragments.size() > 1) {
-      // GeneratorUtilEx.getTemplateFragments() shall not return null
-      Iterator<SNode> it = fragments.iterator();
-      SNode fragmentParent = it.next().getParent();
-      assert fragmentParent != null; // free-floating fragment would be odd
-      final SNode commonParent = fragmentParent.getParent();
-      final SContainmentLink role = fragmentParent.getContainmentLink();
-      while (it.hasNext()) {
-        fragmentParent = it.next().getParent();
-        assert fragmentParent != null; // free-floating fragment would be odd
-        // it's parent template that specifies context node and its role where these template fragments would get injected into,
-        // thus we check there's no assumption context node is different for fragments, and that they do not assume they may end up in distinct roles.
-        // Technically, provided ITemplateProcessor.apply() would yield something extra but SNode, we could answer with Pair(SContainmentLink,SNode)
-        // and inject TF outcome into different roles (see https://youtrack.jetbrains.com/issue/MPS-23373). However, this would compromise COPY-SRC
-        // idea (it's attached to a distinct role), and we'd need something more general, like <<apply-templates/>> to handle all children
-        if (commonParent != fragmentParent.getParent() || !role.equals(fragmentParent.getContainmentLink())) {
-          String msg = "Couldn't process template: all template fragments must reside in the same parent node. Roles: expected %s, met %s";
-          throw new TemplateProcessingFailureException(myTemplateNode, String.format(msg, role, fragmentParent.getContainmentLink().getName()));
+      SNode defaultContext = null;
+      SContainmentLink firstCL = null, otherCL = null;
+      for (SNode templateFragment : fragments) {
+        final SNode tfNode = templateFragment.getParent();
+        assert tfNode != null; // free-floating fragment would be odd
+        assert tfNode.getContainmentLink() != null;
+        // assert containmentLink != null is here just in case tfNode.getParent() get refactored.
+        SNode fragmentContextNode = tfNode.getParent();
+        if (defaultContext == null) {
+          defaultContext = fragmentContextNode;
+          firstCL = tfNode.getContainmentLink();
+        } else if (defaultContext != fragmentContextNode) {
+          // it's parent template that specifies context node and its role where these template fragments would get injected into,
+          // thus we check there's no assumption context node is different for fragments, and that they do not assume they may end up in distinct roles.
+          // Technically, given use of ApplySink these days, we could  inject TF outcome into different roles
+          // (see https://youtrack.jetbrains.com/issue/MPS-23373). However, this would compromise COPY-SRC
+          // idea (it's attached to a distinct role), and we'd need something more general, like <<apply-templates/>> to handle all children
+          otherCL = tfNode.getContainmentLink();
+          final ProblemDescription tnpd = GeneratorUtil.describe(myTemplateNode, "template node");
+          final String msg = "All fragments within template shall have the same parent. Roles: expected %s, met %s";
+          throw new TemplateProcessingFailureException(fragmentContextNode, String.format(msg, firstCL.getName(), otherCL.getName()), tnpd);
         }
       }
     }

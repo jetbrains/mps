@@ -9,7 +9,6 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -22,12 +21,10 @@ public class check_SubstituteFeaturesAreNotDuplicated_NonTypesystemRule extends 
   public check_SubstituteFeaturesAreNotDuplicated_NonTypesystemRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    ListSequence.fromList(DuplicationUtil.getDuplications(SLinkOperations.getChildren(node, LINKS.features$HM6B))).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        {
-          final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it, "duplicated feature", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "4001367738979321840", null, errorTarget);
-        }
+    ListSequence.fromList(DuplicationUtil.getDuplications(SLinkOperations.getChildren(node, LINKS.features$HM6B))).visitAll((it) -> {
+      {
+        final MessageTarget errorTarget = new NodeMessageTarget();
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it, "duplicated feature", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "4001367738979321840", null, errorTarget);
       }
     });
   }

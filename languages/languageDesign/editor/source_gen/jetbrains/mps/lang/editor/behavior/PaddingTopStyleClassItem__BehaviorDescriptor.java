@@ -20,7 +20,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class PaddingTopStyleClassItem__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11d878b980aL, "jetbrains.mps.lang.editor.structure.PaddingTopStyleClassItem");
 
-  public static final SMethod<Boolean> canUseSpaces_idhQgEOB0 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canUseSpaces").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hQgEOB0").build();
+  public static final SMethod<Boolean> canUseSpaces_idhQgEOB0 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canUseSpaces").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1226492824000L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canUseSpaces_idhQgEOB0);
 

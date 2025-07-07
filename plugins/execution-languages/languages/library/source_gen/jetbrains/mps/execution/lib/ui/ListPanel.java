@@ -16,6 +16,7 @@ import java.awt.GridBagLayout;
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 import com.intellij.ui.ScrollPaneFactory;
+import com.intellij.util.ui.JBUI;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.workbench.action.ActionUtils;
@@ -29,7 +30,6 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import com.intellij.openapi.progress.ProgressManager;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.ide.platform.dialogs.choosers.NodeChooserDialog;
 import javax.swing.AbstractListModel;
 import javax.swing.JList;
@@ -67,6 +67,8 @@ public abstract class ListPanel<T> extends JBPanel {
     JScrollPane scrolledListComponent = ScrollPaneFactory.createScrollPane(myListComponent);
     scrolledListComponent.doLayout();
     mainPanel.add(scrolledListComponent, BorderLayout.CENTER);
+    int scaledSz = JBUI.scale(3);
+    mainPanel.setBorder(JBUI.Borders.empty(scaledSz, 0, scaledSz, 0));
 
     AnAction add = new MyListAddAction(myListComponent);
     AnAction remove = new MyListRemoveAction(this.myListComponent);
@@ -74,8 +76,8 @@ public abstract class ListPanel<T> extends JBPanel {
     ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.RUN_CONFIGURATIONS_COMBOBOX, group, false);
     mainPanel.add(toolbar.getComponent(), BorderLayout.EAST);
 
-    this.add(new JBLabel(myTitle + ":"), LayoutUtil.createLabelConstraints(0));
-    this.add(mainPanel, LayoutUtil.createPanelConstraints(1));
+    add(new JBLabel(myTitle + ":"), LayoutUtil.createLabelConstraints(0));
+    add(mainPanel, LayoutUtil.createPanelConstraints(1));
   }
 
   protected abstract T wrap(SNode node);
@@ -131,11 +133,7 @@ public abstract class ListPanel<T> extends JBPanel {
 
     synchronized (myLock) {
       ListSequence.fromList(this.myCandidates).removeSequence(ListSequence.fromList(this.myValues));
-      return ListSequence.fromList(this.myCandidates).select(new ISelector<T, SNodeReference>() {
-        public SNodeReference select(T it) {
-          return unwrap(it);
-        }
-      }).toListSequence();
+      return ListSequence.fromList(this.myCandidates).select((it) -> unwrap(it)).toList();
     }
   }
 
@@ -191,11 +189,7 @@ public abstract class ListPanel<T> extends JBPanel {
         return;
       }
       final Wrappers._T<T> wrapper = new Wrappers._T<T>();
-      myMpsProject.getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          wrapper.value = wrap(resultNode.resolve(myMpsProject.getRepository()));
-        }
-      });
+      myMpsProject.getModelAccess().runReadAction(() -> wrapper.value = wrap(resultNode.resolve(myMpsProject.getRepository())));
       if (wrapper.value == null) {
         return;
       }
@@ -237,11 +231,7 @@ public abstract class ListPanel<T> extends JBPanel {
       for (Object value : ListPanel.this.myListComponent.getSelectedValuesList()) {
         for (final T node : ListPanel.this.myValues) {
           final Wrappers._T<String> presentation = new Wrappers._T<String>();
-          myMpsProject.getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              presentation.value = getPresentation(node);
-            }
-          });
+          myMpsProject.getModelAccess().runReadAction(() -> presentation.value = getPresentation(node));
           if (presentation.value.equals(value)) {
             ListSequence.fromList(ListPanel.this.myValues).removeElement(node);
             break;

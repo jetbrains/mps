@@ -9,7 +9,6 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -24,11 +23,7 @@ public class DisptachParamIsClass_NonTypesystemRule extends AbstractNonTypesyste
   public DisptachParamIsClass_NonTypesystemRule() {
   }
   public void applyRule(final SNode method, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.modifiers$F5MM)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.DispatchModifier$PK);
-      }
-    }).isEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.modifiers$F5MM)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.DispatchModifier$PK)).isEmpty()) {
       return;
     }
     // type not specified yet

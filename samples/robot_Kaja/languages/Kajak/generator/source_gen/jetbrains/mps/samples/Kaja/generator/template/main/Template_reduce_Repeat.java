@@ -46,7 +46,7 @@ public class Template_reduce_Repeat extends TemplateDeclarationBase {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
         {
           environment.nodeCopied(context1, tnode2, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039660399");
-          SNodeAccessUtil.setPropertyValue(tnode2, myProperties[0], QueriesGenerated.propertyMacro_GetValue_7_0(new PropertyMacroContext(context1, "i", propertyMacro_9c7i7b_c0a2a1a1a1a2a6)));
+          SNodeAccessUtil.setPropertyValue(tnode2, myProperties[0], QueriesGenerated.propertyMacro_GetValue_7_0(new PropertyMacroContext(context1, "i", propertyMacro)));
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
@@ -66,8 +66,8 @@ public class Template_reduce_Repeat extends TemplateDeclarationBase {
           TemplateContext context3 = context1.subContext();
           {
             Collection<SNode> tlist6 = null;
-            final SNode copySrcInput6 = QueriesGenerated.sourceNodeQuery_7_0(new SourceSubstituteMacroNodeContext(context3, copySrcMacro_9c7i7b_b0a0c0b0b0c0c0g));
-            tlist6 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput6), copySrcMacro_9c7i7b_b0a0c0b0b0c0c0g, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039939717", context3);
+            final SNode copySrcInput6 = QueriesGenerated.sourceNodeQuery_7_0(new SourceSubstituteMacroNodeContext(context3, copySrcMacro));
+            tlist6 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput6), copySrcMacro, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039939717", context3);
             environment.aggregate(tnode5, myAggregationLinks[3], tlist6);
           }
         }
@@ -79,12 +79,12 @@ public class Template_reduce_Repeat extends TemplateDeclarationBase {
           TemplateContext context4 = context1.subContext();
           {
             final SNode tnode8 = environment.createOutputNode(myConcepts[3]);
-            SNodeAccessUtil.setPropertyValue(tnode8, myProperties[1], QueriesGenerated.propertyMacro_GetValue_7_1(new PropertyMacroContext(context4, "10", propertyMacro_9c7i7b_c0a2a0a1a1a1a3a2a6)));
+            SNodeAccessUtil.setPropertyValue(tnode8, myProperties[1], QueriesGenerated.propertyMacro_GetValue_7_1(new PropertyMacroContext(context4, "10", propertyMacro1)));
             environment.aggregate(tnode7, myAggregationLinks[5], tnode8);
           }
           {
             final SNode tnode9 = environment.createOutputNode(myConcepts[6]);
-            environment.resolveInTemplateLater(tnode9, myAssociationLinks[0], templateNode_9c7i7b_c0a0a1a2a1a3a2a6, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039660399", "i", context4);
+            environment.resolveInTemplateLater(tnode9, myAssociationLinks[0], templateNode, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039660399", "i", context4);
             environment.aggregate(tnode7, myAggregationLinks[6], tnode9);
           }
         }
@@ -96,7 +96,7 @@ public class Template_reduce_Repeat extends TemplateDeclarationBase {
           TemplateContext context5 = context1.subContext();
           {
             final SNode tnode11 = environment.createOutputNode(myConcepts[6]);
-            environment.resolveInTemplateLater(tnode11, myAssociationLinks[0], templateNode_9c7i7b_c0a0a1a1a1a4a2a6, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039660399", "i", context5);
+            environment.resolveInTemplateLater(tnode11, myAssociationLinks[0], templateNode1, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039660399", "i", context5);
             environment.aggregate(tnode10, myAggregationLinks[8], tnode11);
           }
         }
@@ -157,9 +157,9 @@ public class Template_reduce_Repeat extends TemplateDeclarationBase {
       return rv;
     }
   }
-  private static final SNodePointer propertyMacro_9c7i7b_c0a2a1a1a1a2a6 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "859008965969411037");
-  private static final SNodePointer copySrcMacro_9c7i7b_b0a0c0b0b0c0c0g = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039939724");
-  private static final SNodePointer propertyMacro_9c7i7b_c0a2a0a1a1a1a3a2a6 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039660460");
-  private static final SNodePointer templateNode_9c7i7b_c0a0a1a2a1a3a2a6 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "4265636116363070570");
-  private static final SNodePointer templateNode_9c7i7b_c0a0a1a1a1a4a2a6 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "4265636116363077196");
+  private static final SNodePointer propertyMacro = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "859008965969411037");
+  private static final SNodePointer copySrcMacro = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039939724");
+  private static final SNodePointer propertyMacro1 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039660460");
+  private static final SNodePointer templateNode = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "4265636116363070570");
+  private static final SNodePointer templateNode1 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "4265636116363077196");
 }

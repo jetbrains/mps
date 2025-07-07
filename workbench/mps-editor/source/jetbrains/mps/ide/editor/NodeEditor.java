@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,9 @@
  */
 package jetbrains.mps.ide.editor;
 
-import com.intellij.openapi.actionSystem.LangDataKeys;
 import com.intellij.openapi.editor.Document;
 import jetbrains.mps.ide.undo.MPSUndoUtil;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
-import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.project.Project;
 import org.jetbrains.annotations.NonNls;
@@ -29,20 +27,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class NodeEditor extends BaseNodeEditor {
-  private final MPSNodeVirtualFile myVirtualFile;
-
   public NodeEditor(Project mpsProject, SNode node) {
     super(mpsProject);
-    myVirtualFile = NodeVirtualFileSystem.getInstance().getFileFor(mpsProject.getRepository(), node);
     editNode(node.getReference(), null);
   }
 
   @Override
   public Object getData(@NonNls String dataId) {
-    if (LangDataKeys.VIRTUAL_FILE.is(dataId)) {
-      return myVirtualFile;
-    }
-
     return null;
   }
 

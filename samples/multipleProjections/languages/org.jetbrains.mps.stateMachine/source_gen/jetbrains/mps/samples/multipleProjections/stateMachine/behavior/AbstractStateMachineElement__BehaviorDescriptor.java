@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class AbstractStateMachineElement__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0x6e3eaf7a54e76eeaL, "jetbrains.mps.samples.multipleProjections.stateMachine.structure.AbstractStateMachineElement");
 
-  public static final SMethod<SNode> getStateMachine_id6SYFRDkTQVW = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getStateMachine").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6SYFRDkTQVW").build();
+  public static final SMethod<SNode> getStateMachine_id6SYFRDkTQVW = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getStateMachine").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7943979732673457916L).languageId(0xba56de1bbf3afda7L, 0x530533eef7894c1eL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getStateMachine_id6SYFRDkTQVW);
 

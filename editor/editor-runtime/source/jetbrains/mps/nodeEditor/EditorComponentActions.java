@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,6 @@ package jetbrains.mps.nodeEditor;
 
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_CommentOrUncommentCurrentSelectedNode;
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_InsertPlaceholder;
-import jetbrains.mps.nodeEditor.NodeEditorActions.CompleteSmart;
-import jetbrains.mps.nodeEditor.NodeEditorActions.ShowMessage;
 import jetbrains.mps.nodeEditor.actions.CursorPositionTracker;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_CopyNode;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_CutNode;
@@ -42,10 +40,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.HashMap;
 
 class EditorComponentActions {
-  private HashMap<CellActionType, CellAction> myActionMap;
+  private final HashMap<CellActionType, CellAction> myActionMap;
 
   @NotNull
-  private EditorComponent myEditorComponent;
+  private final EditorComponent myEditorComponent;
 
   EditorComponentActions(@NotNull EditorComponent editorComponent) {
     myEditorComponent = editorComponent;
@@ -93,15 +91,19 @@ class EditorComponentActions {
     myActionMap.put(CellActionType.RIGHT_TRANSFORM, new CellAction_SideTransform(Side.RIGHT));
     myActionMap.put(CellActionType.LEFT_TRANSFORM, new CellAction_SideTransform(Side.LEFT));
 
-    myActionMap.put(CellActionType.COMPLETE, new NodeEditorActions.Complete());
-    myActionMap.put(CellActionType.COMPLETE_SMART, new CompleteSmart());
+    myActionMap.put(CellActionType.COMPLETE, new NodeEditorActions.Complete(false));
+    myActionMap.put(CellActionType.COMPLETE_SMART, new NodeEditorActions.Complete(true));
 
-    myActionMap.put(CellActionType.SHOW_MESSAGE, new ShowMessage());
+    myActionMap.put(CellActionType.SHOW_MESSAGE, new NodeEditorActions.ShowMessage());
 
     myActionMap.put(CellActionType.COMMENT, new CellAction_CommentOrUncommentCurrentSelectedNode());
     myActionMap.put(CellActionType.INSERT_PLACEHOLDER, new CellAction_InsertPlaceholder(true));
     myActionMap.put(CellActionType.INSERT_PLACEHOLDER_BEFORE, new CellAction_InsertPlaceholder(false));
 
+    myActionMap.put(CellActionType.FIND, new NodeEditorActions.FindTextInEditor());
+    myActionMap.put(CellActionType.FIND_NEXT, new NodeEditorActions.FindNextTextInEditor());
+    myActionMap.put(CellActionType.FIND_PREV, new NodeEditorActions.FindPrevTextInEditor());
+    myActionMap.put(CellActionType.FIND_STOP, new NodeEditorActions.CancelFindTextInEditor());
   }
 
 

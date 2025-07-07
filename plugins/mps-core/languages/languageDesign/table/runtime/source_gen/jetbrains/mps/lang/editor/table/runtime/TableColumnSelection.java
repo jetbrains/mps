@@ -74,17 +74,9 @@ public class TableColumnSelection extends AbstractMultipleSelection {
     setSelectedCells(myTableCell.getColumnCells(myColumnNumber));
   }
   private void initActionMap() {
-    MapSequence.fromMap(actionMap).put(CellActionType.SELECT_UP, new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        selectUp();
-      }
-    });
+    MapSequence.fromMap(actionMap).put(CellActionType.SELECT_UP, () -> selectUp());
     MapSequence.fromMap(actionMap).put(CellActionType.CUT, null);
-    MapSequence.fromMap(actionMap).put(CellActionType.COPY, new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        copyNodes();
-      }
-    });
+    MapSequence.fromMap(actionMap).put(CellActionType.COPY, () -> copyNodes());
     MapSequence.fromMap(actionMap).put(CellActionType.PASTE, null);
   }
   @Override

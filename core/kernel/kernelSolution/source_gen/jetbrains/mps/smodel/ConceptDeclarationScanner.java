@@ -12,6 +12,7 @@ import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import java.util.function.Predicate;
 import java.util.Collections;
@@ -57,14 +58,17 @@ public class ConceptDeclarationScanner {
         myExternalConcepts.add(ex);
       }
       for (SNode icd : SLinkOperations.collect(SLinkOperations.getChildren(cd, LINKS.implements$u_P2), LINKS.intfc$zM4e)) {
-        if (SNodeOperations.getModel(icd) != m) {
+        if (SNodeOperations.getModel(icd) != m && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.MarkerInterfaceAttribute$8S).get(icd) == null)) {
+          // we respect 'marker iface' attribute for the directly implemented interfaces, and don't care if its
+          // superinterface may be denoted as marker.
           myExternalIfaces.add(icd);
         }
       }
     }
     for (SNode icd : SNodeOperations.ofConcept(roots, CONCEPTS.InterfaceConceptDeclaration$CG)) {
       for (SNode iface : SLinkOperations.collect(SLinkOperations.getChildren(icd, LINKS.extends$nawU), LINKS.intfc$zM4e)) {
-        if (SNodeOperations.getModel(iface) != m) {
+        if (SNodeOperations.getModel(iface) != m && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.MarkerInterfaceAttribute$8S).get(iface) == null)) {
+          // XXX again, marker interface directly extended does not constitute 'extends' for languages
           myExternalIfaces.add(iface);
         }
       }
@@ -118,6 +122,7 @@ public class ConceptDeclarationScanner {
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept MarkerInterfaceAttribute$8S = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x4d7dcbe8bf135fd0L, "jetbrains.mps.lang.structure.structure.MarkerInterfaceAttribute");
     /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
     /*package*/ static final SConcept InterfaceConceptDeclaration$CG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
   }

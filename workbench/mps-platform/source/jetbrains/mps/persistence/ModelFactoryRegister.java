@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ import com.intellij.util.xmlb.annotations.Transient;
 import jetbrains.mps.components.HostAware;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.ide.MPSCoreComponents;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Internal;
@@ -65,7 +65,7 @@ public final class ModelFactoryRegister implements ApplicationComponent {
         String m = String.format("Failed to load %s in the plugin %s",
                                  provider.getImplementationClassName(),
                                  provider.getPluginDescriptor().getPluginId());
-        LogManager.getLogger(ModelFactoryRegister.class).error(m, e);
+        Logger.getLogger(ModelFactoryRegister.class).error(m, e);
       }
     }
   }

@@ -14,14 +14,6 @@ public class FileDeltaCollector implements StreamHandler {
   private final IFile myOutputDir;
   private final FileProcessor myProcessor;
 
-  /**
-   * 
-   * @deprecated use {@link jetbrains.mps.internal.make.runtime.java.FileDeltaCollector#FileDeltaCollector(FilesDelta, IFile, FileProcessor) } instead
-   */
-  @Deprecated
-  public FileDeltaCollector(IFile outputDir, FileProcessor fileProcessor) {
-    this(new FilesDelta(outputDir), outputDir, fileProcessor);
-  }
 
   /**
    * 

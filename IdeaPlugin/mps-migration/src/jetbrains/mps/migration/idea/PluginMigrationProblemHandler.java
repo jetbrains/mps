@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,14 +28,21 @@ import com.intellij.ui.content.ContentManager;
 import com.intellij.ui.content.MessageView;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.MessageCategory;
+import jetbrains.mps.core.platform.DynamicComponentWarden;
+import jetbrains.mps.core.platform.DynamicComponentWarden.Token;
+import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.errors.item.NodeFlavouredItem;
+import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.migration.IStartupMigrationExecutor;
 import jetbrains.mps.ide.migration.MigrationProblemHandler;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.usages.NodeNavigatable;
+import jetbrains.mps.migration.component.MigrationAccess;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class PluginMigrationProblemHandler implements MigrationProblemHandler {
   private final Project myProject;
@@ -43,20 +50,32 @@ public class PluginMigrationProblemHandler implements MigrationProblemHandler {
   public static final class Plug implements StartupActivity.Background {
     @Override
     public void runActivity(@NotNull Project project) {
-      final IStartupMigrationExecutor migrationTrigger = project.getComponent(IStartupMigrationExecutor.class);
-      if (migrationTrigger == null) {
-        return;
-      }
-      migrationTrigger.setProblemHandler(new PluginMigrationProblemHandler(project));
+      // don't want to use IStartupMigrationExecutor.getInstance as there's no confidence IDEA's StartupActivity would get
+      //  executed *after* respective ModuleActivator.
+      final AtomicReference<IStartupMigrationExecutor> migrationTrigger = new AtomicReference<>();
+      final Platform platform = MPSCoreComponents.getInstance().getPlatform();
+      // FWIW, if I move j.m.migration.component to MPS space, still need few classes, like
+      //       MigrationAccess, IStartupMigrationExecutor and MigrationProblemHandler to be available to IDEA CL,
+      //       unless I find another way to configure MigrationProblemHandler in MPS-as-IDEA plugin.
+      final Token migrationTriggerToken = platform.findComponent(DynamicComponentWarden.class).whenAvailable(MigrationAccess.class, (ma -> {
+        final IStartupMigrationExecutor vv = ma.get(ProjectHelper.fromIdeaProject(project));
+        vv.setProblemHandler(new PluginMigrationProblemHandler(project));
+        migrationTrigger.set(vv);
+      }));
       // I'd love to use Disposer.register(project, myCleanupCode) but IDEA tells me not to use
       // project as disposable root. XXX no idea what's going on if IDEA attempts to unload a plugin
       // that added an instance elsewhere like we do here.
+      // Perhaps, could have registered as PluginMigrationProblemHandler, make it Disposable and responsible to setProblemHandler(null);
+      //   however, don't see a value in using IDEA to keep an instance of the class just for the sake of implements Disposable
       final MessageBusConnection mbc = project.getMessageBus().connect(project);
       mbc.subscribe(ProjectManager.TOPIC, new ProjectManagerListener() {
         @Override
         public void projectClosing(@NotNull Project pp) {
           if (project == pp) {
-            migrationTrigger.setProblemHandler(null);
+            migrationTriggerToken.discard();
+            if (migrationTrigger.get() != null) {
+              migrationTrigger.getAndSet(null).setProblemHandler(null);
+            }
             mbc.disconnect();
           }
         }
@@ -71,7 +90,7 @@ public class PluginMigrationProblemHandler implements MigrationProblemHandler {
   @Override
   public void showProblems(Collection<IssueKindReportItem> problems) {
     MigrationErrorView treeView = new MigrationErrorView(myProject);
-    Content content = ContentFactory.SERVICE.getInstance().createContent(treeView.getComponent(), "Migration Problems", true);
+    Content content = ContentFactory.getInstance().createContent(treeView.getComponent(), "Migration Problems", true);
 
     MessageView messageView = getMessageView();
     ContentManager contentManager = messageView.getContentManager();
@@ -98,7 +117,7 @@ public class PluginMigrationProblemHandler implements MigrationProblemHandler {
 
   @NotNull
   private MessageView getMessageView() {
-    return MessageView.SERVICE.getInstance(myProject);
+    return MessageView.getInstance(myProject);
   }
 
   private static class MyNonNavigatable implements Navigatable {

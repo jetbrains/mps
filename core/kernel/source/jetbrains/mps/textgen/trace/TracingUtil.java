@@ -17,7 +17,6 @@ package jetbrains.mps.textgen.trace;
 
 import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -96,8 +95,7 @@ public final class TracingUtil {
   /**
    * @deprecated code branching done with boolean flag.
    */
-  @Deprecated
-  @ToRemove(version = 2018.2)
+@Deprecated(since = "2018.2", forRemoval = true)
   public static void fillOriginalNode(@NotNull SNode inputNode, @NotNull SNode outputNode, boolean originalInput) {
     if (originalInput) {
       putInputNode(outputNode, inputNode);

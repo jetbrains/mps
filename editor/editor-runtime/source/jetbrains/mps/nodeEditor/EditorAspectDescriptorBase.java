@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor;
 
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.openapi.editor.descriptor.ConceptEditor;
 import jetbrains.mps.openapi.editor.descriptor.ConceptEditorComponent;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
@@ -48,6 +49,10 @@ public class EditorAspectDescriptorBase implements EditorAspectDescriptor, Langu
 
   private DefaultSubstituteMenusCache myDefaultSubstituteMenusCache;
   private NamedSubstituteMenusCache myNamedSubstituteMenusCache;
+
+  // remove once StyleAttributeProvider subclasses generate forgetAttributes() code
+  //    or there's another mechanism to dispose StyleAttribute instances
+  private SLanguage myThisLanguageIdentity;
 
   @NotNull
   public Collection<ConceptEditor> getEditors(final SAbstractConcept concept) {
@@ -99,6 +104,7 @@ public class EditorAspectDescriptorBase implements EditorAspectDescriptor, Langu
 
   @Override
   public void setLanguageRuntime(@NotNull LanguageRuntime languageRuntime) {
+    myThisLanguageIdentity = languageRuntime.getIdentity();
     myEditorsCache = new EditorsCache(languageRuntime);
     myEditorComponentsCache = new EditorComponentsCache(languageRuntime);
     myDefaultTransformationMenusCache = new DefaultTransformationMenusCache(languageRuntime);
@@ -139,11 +145,17 @@ public class EditorAspectDescriptorBase implements EditorAspectDescriptor, Langu
 
   @Override
   public void dispose() {
+    // may generate this code only in subclasses implementing StyleAttributeProvider,
+    // just want to get rid of LanguageRegistryListener in StylesAttributes ASAP, thus need to make
+    // it functional for existing languages out there.
+    StyleAttributes.getInstance().forgetAttributes(myThisLanguageIdentity);
     clearAllCaches();
   }
 
   @Override
   public void extensionsChanged() {
+    // XXX I wonder if StyleAttributes might be affected by extensions to this language.
+    //     If yes, need to clear StyleAttributes as well, see #dispose(), above.
     clearAllCaches();
   }
 

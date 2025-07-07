@@ -20,12 +20,12 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.scopes.VisibilityUtil;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopeUtils;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Set;
 import java.util.HashSet;
+import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -36,21 +36,22 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class ClassifierMember__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember");
 
-  public static final SMethod<Boolean> isStatic_id7MS72Gc8avw = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isStatic").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7MS72Gc8avw").build();
-  public static final SMethod<Boolean> isVisible_id70J2WaK_oVl = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVisible").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("70J2WaK_oVl").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Void> populateMember_id6r77ob2UW9O = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateMember").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6r77ob2UW9O").build(SMethodBuilder.createJavaParameter(MembersPopulatingContext.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> isVisible_id5laDzmpBPv8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVisible").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5laDzmpBPv8").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> isStatic_id6r77ob2USS8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isStatic").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6r77ob2USS8").build();
-  public static final SMethod<Boolean> needsEmptyLineBefore_idzB21h1tQit = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needsEmptyLineBefore").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("zB21h1tQit").build();
-  public static final SMethod<Boolean> needsEmptyLineAfter_idzB21h1tQNm = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needsEmptyLineAfter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("zB21h1tQNm").build();
-  public static final SMethod<Boolean> canBeInterfaceMember_id2zJQqQIUx2B = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeInterfaceMember").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2zJQqQIUx2B").build();
+  public static final SMethod<Boolean> isStaticClassifierMember_id7MS72Gc8avw = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isStaticClassifierMember").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8986964027630462944L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> isVisible_id70J2WaK_oVl = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVisible").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8083692786967482069L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Void> populateMember_id6r77ob2UW9O = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateMember").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7405920559687254644L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(MembersPopulatingContext.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> isVisible_id5laDzmpBPv8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVisible").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6145907390641297352L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> isStatic_id6r77ob2USS8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isStatic").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7405920559687241224L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> needsEmptyLineBefore_idzB21h1tQit = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needsEmptyLineBefore").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(641490355014296733L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> needsEmptyLineAfter_idzB21h1tQNm = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needsEmptyLineAfter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(641490355014298838L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> canBeInterfaceMember_id2zJQqQIUx2B = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeInterfaceMember").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2949815620938109095L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<String> getDescriptionText_id69Qfsw3IqwE = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDescriptionText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7094926192234047530L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isStatic_id7MS72Gc8avw, isVisible_id70J2WaK_oVl, populateMember_id6r77ob2UW9O, isVisible_id5laDzmpBPv8, isStatic_id6r77ob2USS8, needsEmptyLineBefore_idzB21h1tQit, needsEmptyLineAfter_idzB21h1tQNm, canBeInterfaceMember_id2zJQqQIUx2B);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isStaticClassifierMember_id7MS72Gc8avw, isVisible_id70J2WaK_oVl, populateMember_id6r77ob2UW9O, isVisible_id5laDzmpBPv8, isStatic_id6r77ob2USS8, needsEmptyLineBefore_idzB21h1tQit, needsEmptyLineAfter_idzB21h1tQNm, canBeInterfaceMember_id2zJQqQIUx2B, getDescriptionText_id69Qfsw3IqwE);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static boolean isStatic_id7MS72Gc8avw(@NotNull SNode __thisNode__) {
+  /*package*/ static boolean isStaticClassifierMember_id7MS72Gc8avw(@NotNull SNode __thisNode__) {
     return false;
   }
   /*package*/ static boolean isVisible_id70J2WaK_oVl(@NotNull SNode __thisNode__, SNode contextClassifier, SNode contextNode) {
@@ -84,11 +85,7 @@ public final class ClassifierMember__BehaviorDescriptor extends BaseBHDescriptor
       }
 
       // two cases: 1) from class 2) from dot expression
-      Iterable<SNode> possibleClassifiers = ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, CONCEPTS.Classifier$Ix, true)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SetSequence.fromSet(ClassifierScopeUtils.getExtendedClassifiers(it)).contains(_contextClassifier.value);
-        }
-      });
+      Iterable<SNode> possibleClassifiers = ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, CONCEPTS.Classifier$Ix, true)).where((it) -> SetSequence.fromSet(ClassifierScopeUtils.getExtendedClassifiers(it)).contains(_contextClassifier.value));
       if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.DotExpression$yW))) {
         // 1
         return Sequence.fromIterable(possibleClassifiers).isNotEmpty();
@@ -96,11 +93,7 @@ public final class ClassifierMember__BehaviorDescriptor extends BaseBHDescriptor
         // 2
         SNode leftClassifier = DotExpression__BehaviorDescriptor.getClassifier_idhEwIPI9.invoke(SNodeOperations.cast(contextNode, CONCEPTS.DotExpression$yW));
         final Set<SNode> extendedClassifiers = SetSequence.fromSetWithValues(new HashSet<SNode>(), ClassifierScopeUtils.getExtendedClassifiers(leftClassifier));
-        return Sequence.fromIterable(possibleClassifiers).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SetSequence.fromSet(extendedClassifiers).contains(it);
-          }
-        });
+        return Sequence.fromIterable(possibleClassifiers).any((it) -> SetSequence.fromSet(extendedClassifiers).contains(it));
       }
     }
 
@@ -113,7 +106,7 @@ public final class ClassifierMember__BehaviorDescriptor extends BaseBHDescriptor
     return ((boolean) ClassifierMember__BehaviorDescriptor.isVisible_id70J2WaK_oVl.invoke(__thisNode__, SNodeOperations.cast(IClassifierType__BehaviorDescriptor.getClassifier_id6r77ob2URY9.invoke(contextClassifierType), CONCEPTS.Classifier$Ix), contextNode));
   }
   /*package*/ static boolean isStatic_id6r77ob2USS8(@NotNull SNode __thisNode__) {
-    return ((boolean) ClassifierMember__BehaviorDescriptor.isStatic_id7MS72Gc8avw.invoke(__thisNode__));
+    return ((boolean) ClassifierMember__BehaviorDescriptor.isStaticClassifierMember_id7MS72Gc8avw.invoke(__thisNode__));
   }
   /*package*/ static boolean needsEmptyLineBefore_idzB21h1tQit(@NotNull SNode __thisNode__) {
     return false;
@@ -123,6 +116,10 @@ public final class ClassifierMember__BehaviorDescriptor extends BaseBHDescriptor
   }
   /*package*/ static boolean canBeInterfaceMember_id2zJQqQIUx2B(@NotNull SAbstractConcept __thisConcept__) {
     return false;
+  }
+  /*package*/ static String getDescriptionText_id69Qfsw3IqwE(@NotNull SNode __thisNode__, SNode reference) {
+    SNode classifier = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$Ix, false, false);
+    return String.format("%s (%s)", SNodeOperations.getContainingLink(__thisNode__).getName(), (classifier != null ? NameUtil.compactNodeFQName(classifier) : "?classifier?"));
   }
 
   /*package*/ ClassifierMember__BehaviorDescriptor() {
@@ -141,7 +138,7 @@ public final class ClassifierMember__BehaviorDescriptor extends BaseBHDescriptor
     }
     switch (methodIndex) {
       case 0:
-        return (T) ((Boolean) isStatic_id7MS72Gc8avw(node));
+        return (T) ((Boolean) isStaticClassifierMember_id7MS72Gc8avw(node));
       case 1:
         return (T) ((Boolean) isVisible_id70J2WaK_oVl(node, (SNode) parameters[0], (SNode) parameters[1]));
       case 2:
@@ -155,6 +152,8 @@ public final class ClassifierMember__BehaviorDescriptor extends BaseBHDescriptor
         return (T) ((Boolean) needsEmptyLineBefore_idzB21h1tQit(node));
       case 6:
         return (T) ((Boolean) needsEmptyLineAfter_idzB21h1tQNm(node));
+      case 8:
+        return (T) ((String) getDescriptionText_id69Qfsw3IqwE(node, (SNode) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

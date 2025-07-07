@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,10 @@
 package jetbrains.mps.core.aspects.behaviour;
 
 import jetbrains.mps.core.aspects.behaviour.api.AbstractConceptLike;
-import jetbrains.mps.core.aspects.behaviour.api.AbstractConceptLike.ConceptLike;
-import jetbrains.mps.core.aspects.behaviour.api.AbstractConceptLike.InterfaceConceptLike;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * This class counts the linearization for a concept (method resolution order).
@@ -34,6 +32,6 @@ import java.util.List;
 public class C3StarAncestorResolutionOrder<C extends AbstractConceptLike> extends AbstractC3StarAncestorResolutionOrder<C> {
   @NotNull
   protected final List<C> getImmediateParents(@NotNull C concept) {
-    return concept.getImmediateParents();
+    return concept.getImmediateParents().stream().map(e -> (C) e).collect(Collectors.toList());
   }
 }

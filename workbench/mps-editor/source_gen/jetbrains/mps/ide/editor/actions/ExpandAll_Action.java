@@ -62,7 +62,7 @@ public class ExpandAll_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     ExpandAll_Action.this.getAction(event).execute(event.getData(MPSEditorDataKeys.EDITOR_CONTEXT));
   }
-  /*package*/ CellAction getAction(final AnActionEvent event) {
+  private CellAction getAction(final AnActionEvent event) {
     return event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getComponentAction(CellActionType.UNFOLD_ALL);
   }
 }

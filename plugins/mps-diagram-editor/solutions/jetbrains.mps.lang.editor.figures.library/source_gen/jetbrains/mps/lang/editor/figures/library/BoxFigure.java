@@ -58,21 +58,9 @@ public class BoxFigure extends AbstractVerticalLayoutFigure {
     protected void registerSynchronizers(Mapper.SynchronizersConfiguration configuration) {
       super.registerSynchronizers(configuration);
       final BoxFigure source = getSource();
-      configuration.add(Synchronizers.forProperty(source.figureWidth, new Runnable() {
-        public void run() {
-          source.adjustPolyLinePoints();
-        }
-      }));
-      configuration.add(Synchronizers.forProperty(source.figureHeight, new Runnable() {
-        public void run() {
-          source.adjustPolyLinePoints();
-        }
-      }));
-      configuration.add(Synchronizers.forProperty(source.lineWidth, new Runnable() {
-        public void run() {
-          source.adjustPolyLinePoints();
-        }
-      }));
+      configuration.add(Synchronizers.forProperty(source.figureWidth, () -> source.adjustPolyLinePoints()));
+      configuration.add(Synchronizers.forProperty(source.figureHeight, () -> source.adjustPolyLinePoints()));
+      configuration.add(Synchronizers.forProperty(source.lineWidth, () -> source.adjustPolyLinePoints()));
       configuration.add(Synchronizers.forProperty(source.lineWidth, source.myPolyLine.width()));
     }
   }

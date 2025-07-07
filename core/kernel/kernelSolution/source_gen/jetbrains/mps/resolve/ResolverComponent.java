@@ -18,18 +18,16 @@ import java.util.Iterator;
 @GeneratedClass(node = "r:f77c2bf1-6f5c-4cb2-b314-a84dd502542e(jetbrains.mps.resolve)/3840495236046418263", model = "r:f77c2bf1-6f5c-4cb2-b314-a84dd502542e(jetbrains.mps.resolve)")
 public class ResolverComponent implements CoreComponent {
   private static ResolverComponent INSTANCE;
-  private static Comparator<SReference> REFERENCE_COMPARATOR = new Comparator<SReference>() {
-    public int compare(SReference first, SReference second) {
-      SNode firstNode = first.getSourceNode();
-      SNode secondNode = second.getSourceNode();
-      if (SNodeOperations.isAncestor(firstNode, secondNode)) {
-        return 1;
-      }
-      if (SNodeOperations.isAncestor(secondNode, firstNode)) {
-        return -1;
-      }
-      return 0;
+  private static Comparator<SReference> REFERENCE_COMPARATOR = (SReference first, SReference second) -> {
+    SNode firstNode = first.getSourceNode();
+    SNode secondNode = second.getSourceNode();
+    if (SNodeOperations.isAncestor(firstNode, secondNode)) {
+      return 1;
     }
+    if (SNodeOperations.isAncestor(secondNode, firstNode)) {
+      return -1;
+    }
+    return 0;
   };
   private List<IResolver> myResolvers;
   private ScopeResolver myScopeResolver;
@@ -70,7 +68,7 @@ public class ResolverComponent implements CoreComponent {
     return false;
   }
   public void resolveScopesOnly(Iterable<SReference> references, SRepository repository) {
-    List<SReference> unresolvedReferences = Sequence.fromIterable(references).sort(REFERENCE_COMPARATOR, true).toListSequence();
+    List<SReference> unresolvedReferences = Sequence.fromIterable(references).sort(REFERENCE_COMPARATOR, true).toList();
     boolean performResolve = true;
     while (performResolve) {
       performResolve = false;
@@ -84,11 +82,19 @@ public class ResolverComponent implements CoreComponent {
   }
   public boolean resolveScopesOnly(SReference reference, SRepository repository) {
     SNode sourceNode = reference.getSourceNode();
-    if (sourceNode == null || sourceNode.getReference(reference.getLink()) != reference) {
+    // XXX in fact, no idea why we used to demand equality for supplied and actual references here; 
+    // feel it's enough to check the one is still there (with SReference as facade, equality doesn't work, anyway)
+    SReference updatedInstance;
+    if (sourceNode == null || (updatedInstance = sourceNode.getReference(reference.getLink())) == null) {
       return false;
     }
-    return myScopeResolver.resolve(reference, sourceNode, repository);
+    return myScopeResolver.resolve(updatedInstance, sourceNode, repository);
   }
+  /**
+   * 
+   * @deprecated ResolverComponent is CoreComponent, access its instance via ComponentHost
+   */
+  @Deprecated(since = "2023.3", forRemoval = true)
   public static ResolverComponent getInstance() {
     return INSTANCE;
   }

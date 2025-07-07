@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,138 +15,106 @@
  */
 package jetbrains.mps.lang.pattern.util;
 
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.util.IterableUtil;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.smodel.SNodeHashStrategy;
+import jetbrains.mps.smodel.SNodeMatcher;
+import jetbrains.mps.smodel.SNodeMatcher.AssociationMatchStrategy;
+import jetbrains.mps.smodel.SNodeMatcher.IdenticalTargetNode;
+import jetbrains.mps.smodel.SNodeMatcher.SameOrderChildMatch;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SDataType;
 import org.jetbrains.mps.openapi.language.SProperty;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SReference;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
+import java.util.function.BiPredicate;
 
+
+
+/**
+ * @deprecated use {@link jetbrains.mps.smodel.SNodeMatcher} instead
+ */
 // FIXME seems to be the only class in patternRuntime to use [kernel], not [openapi]. Perhaps, worth moving into [kernel]?
+@Deprecated(since = "2022.2", forRemoval = true)
 public class MatchingUtil {
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(MatchingUtil.class));
 
   public static boolean matchNodes(SNode node1, SNode node2) {
-    return matchNodes(node1, node2, IMatchModifier.DEFAULT, true);
+    // IMatchModifier.DEFAULT does nothing, no need to care for its methods
+    final IdenticalTargetNode ams = new IdenticalTargetNode();
+    // FIXME we enforce same child ordering here, while code above is bit relaxed for references or properties. Is it intended?
+    final SameOrderChildMatch agms = new SameOrderChildMatch();
+    return new SNodeMatcher(MatchingUtil::matchProperties, ams, agms).match(node1, node2);
   }
 
-  public static boolean matchNodes(SNode node1, SNode node2, IMatchModifier matchModifier, boolean matchAttributes) {
-    if (node1 == node2) return true;
-    if (node1 == null) return false;
-    if (node2 == null) return false;
-    if (!node1.getConcept().equals(node2.getConcept())) return false;
-
-    //properties
-    final Set<SProperty> properties = new HashSet<>();
-    properties.addAll(IterableUtil.asSet(node1.getProperties()));
-    properties.addAll(IterableUtil.asSet(node2.getProperties()));
-
-    for (SProperty property : properties) {
-      // use of SNode.getProperty() directly (not SNodeAccessUtil.getProperty())
-      // as we are checking for structural equality. If there's e.g. a 'derived' property
-      // == getName() + getNodeId(), its values from SNodeAccessUtil would differ and nodes would not match
-      // (assuming NodeId is different and nodes otherwise match).
-      String stringValue1 = node1.getProperty(property);
-      String stringValue2 = node2.getProperty(property);
-      Object propertyValue1 = stringValue1;
-      Object propertyValue2 = stringValue2;
-      if (!IterableUtil.asCollection(node1.getConcept().getProperties()).contains(property)) {
-        SNode diagnosticsNode = stringValue1 != null ? node1 : node2;
-        LOG.warning("can't find a property declaration for property `" + property.getName() + "` in a concept " + diagnosticsNode.getConcept().getQualifiedName(), diagnosticsNode);
-        LOG.warning("try to compare just properties' internal values");
-      } else {
-        SDataType dataType = property.getType();
-        if (dataType != null) {
-          propertyValue1 = dataType.fromString(stringValue1);
-          propertyValue2 = dataType.fromString(stringValue2);
-        }
-      }
-      if (!Objects.equals(propertyValue1, propertyValue2)) return false;
-    }
-
-    //-- matching references
-    Set<SReferenceLink> referenceRoles = new HashSet<>();
-    for (SReference ref : node1.getReferences()) {
-      referenceRoles.add(ref.getLink());
-    }
-    for (SReference ref : node2.getReferences()) {
-      referenceRoles.add(ref.getLink());
-    }
-    for (SReferenceLink role : referenceRoles) {
-      SNode target1 = node1.getReferenceTarget(role);
-      SNode target2 = node2.getReferenceTarget(role);
+  public static boolean matchNodes(SNode node1, SNode node2, final IMatchModifier matchModifier, boolean matchAttributes) {
+    // IdenticalTargetNode strategy with respect to IMatchModifier
+    final AssociationMatchStrategy ams = (n1, n2, link) -> {
+      SNode target1 = n1.getReferenceTarget(link);
+      SNode target2 = n2.getReferenceTarget(link);
       if (matchModifier.accept(target1, target2)) {
         matchModifier.performAction(target1, target2);
-        continue;
+        return true;
       }
-      if (target2 != target1) return false;
-    }
-
-    // children
-    Set<SContainmentLink> childRoles = jetbrains.mps.util.SNodeOperations.getChildRoles(node1, matchAttributes);
-    childRoles.addAll(jetbrains.mps.util.SNodeOperations.getChildRoles(node2, matchAttributes));
-    for (SContainmentLink role : childRoles) {
-      List<SNode> children1 = IterableUtil.asList(node1.getChildren(role));
-      List<SNode> children2 = IterableUtil.asList(node2.getChildren(role));
-      if (matchModifier.acceptList(children1, children2)) {
-        matchModifier.performGroupAction(children1, children2);
-        continue;
-      }
-      Iterator<? extends SNode> childrenIterator = children1.iterator();
-      for (SNode child2 : children2.toArray(new SNode[0])) {
-        SNode child1 = childrenIterator.hasNext() ? childrenIterator.next() : null;
-        if (matchModifier.accept(child1, child2)) {
-          matchModifier.performAction(child1, child2);
-          continue;
-        }
-        if (!matchNodes(child1, child2, matchModifier, matchAttributes)) return false;
-      }
-      while (childrenIterator.hasNext()) {
-        SNode child1 = childrenIterator.next();
-        SNode child2 = null;
-        if (matchModifier.accept(child1, child2)) {
-          matchModifier.performAction(child1, child2);
-          continue;
-        }
-        if (!matchNodes(child1, child2, matchModifier, matchAttributes)) return false;
-      }
-    }
-
-    return true;
+      return target2 == target1;
+    };
+    final SameOrderChildMatch agms = new ChildMatch(matchModifier);
+    return new SNodeMatcher(MatchingUtil::matchProperties, ams, agms).withAttributes(matchAttributes).match(node1, node2);
   }
 
-  public static int hash(SNode node) {
-    int result = node.getConcept().hashCode();
-    for (SReference reference : node.getReferences()) {
-      SNode targetNode = jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(reference);
-      if (targetNode != null) {
-        result = 31 * result + reference.getLink().hashCode();
-        result = 31 * result + targetNode.hashCode();
+  private static boolean matchProperties(SNode node1, SNode node2, SProperty property) {
+    // use of SNode.getProperty() directly (not SNodeAccessUtil.getProperty())
+    // as we are checking for structural equality. If there's e.g. a 'derived' property
+    // == getName() + getNodeId(), its values from SNodeAccessUtil would differ and nodes would not match
+    // (assuming NodeId is different and nodes otherwise match).
+    String stringValue1 = node1.getProperty(property);
+    String stringValue2 = node2.getProperty(property);
+    Object propertyValue1;
+    Object propertyValue2;
+    if (property.isValid()) {
+      SDataType dataType = property.getType();
+      propertyValue1 = dataType.fromString(stringValue1);
+      propertyValue2 = dataType.fromString(stringValue2);
+    } else {
+      propertyValue1 = stringValue1;
+      propertyValue2 = stringValue2;
+    }
+    return Objects.equals(propertyValue1, propertyValue2);
+  }
+
+  // compatibility code to let existing IMatchModifier code to work
+  private static class ChildMatch extends SNodeMatcher.SameOrderChildMatch {
+    private final IMatchModifier myMatchModifier;
+
+    ChildMatch(IMatchModifier mm) {
+      myMatchModifier = mm;
+    }
+
+    @Override
+    public boolean match(@NotNull SNode node1, @NotNull SNode node2, @NotNull SContainmentLink link, @NotNull BiPredicate<SNode, SNode> childMatcher) {
+      BiPredicate<SNode, SNode> withModifier = this::matchChild;
+      return super.match(node1, node2, link, withModifier.or(childMatcher));
+      // this::matchChild works for immediate child check; for next level, SNodeMatcher.match() uses 'this'
+      // for next level and therefore nested children don't get withModifier wrapper
+    }
+
+    // pre: child1.getContainmentLink().equals(child2.getContainmentLink())
+    private boolean matchChild(@Nullable SNode child1, @Nullable SNode child2) {
+      if (myMatchModifier.accept(child1, child2)) {
+        myMatchModifier.performAction(child1, child2);
+        return true;
       }
+      return false;
     }
-    Map<String, String> properties = jetbrains.mps.util.SNodeOperations.getProperties(node);
-    for (String propertyName : properties.keySet()) {
-      result = 31 * result + propertyName.hashCode();
-    }
-    for (String propertyValue : properties.values()) {
-      result = 31 * result + propertyValue.hashCode();
-    }
-    for (SNode child : node.getChildren()) {
-      if (AttributeOperations.isAttribute(child)) continue;
-      result = 31 * result + child.getContainmentLink().hashCode();
-      result = 31 * result + hash(child);
-    }
-    return result;
+  }
+
+  /**
+   * @deprecated use some implementation of {@link jetbrains.mps.smodel.SNodeHashStrategy} instead.
+   *             Logic of {@link jetbrains.mps.smodel.SNodeHashStrategy#WholeTreeAndIgnoreAttributes} is practically the same as
+   *             was here in the implementation of this method.
+   */
+  @Deprecated(since = "2022.2", forRemoval = true)
+  public static int hash(SNode node) {
+    return SNodeHashStrategy.WholeTreeAndIgnoreAttributes.hash(node);
   }
 }

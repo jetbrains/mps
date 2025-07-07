@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,10 +17,9 @@ package jetbrains.mps.vfs.tracking;
 
 import jetbrains.mps.extapi.model.EditableSModelBase;
 import jetbrains.mps.extapi.model.StorageMemoryConflictResolver;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.vfs.VFSManager;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -40,7 +39,7 @@ import java.util.concurrent.CompletionStage;
  * @author apyshkin
  */
 /*package*/ final class ModelStorageConflictsListener extends SRepositoryContentAdapter implements StorageMemoryConflictResolver<EditableSModel> {
-  private static final Logger LOG = LogManager.getLogger(ModelStorageConflictsListener.class);
+  private static final Logger LOG = Logger.getLogger(ModelStorageConflictsListener.class);
 
   private final ConflictResolverImpl myMemoryDiskConflictResolver;
 

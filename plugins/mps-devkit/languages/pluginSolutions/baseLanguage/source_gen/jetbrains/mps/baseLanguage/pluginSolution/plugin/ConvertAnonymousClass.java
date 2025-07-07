@@ -35,33 +35,21 @@ public class ConvertAnonymousClass implements MoveNodesAction {
   }
   public boolean isApplicable(MPSProject project, final List<SNode> nodes) {
     final Wrappers._boolean result = new Wrappers._boolean();
-    project.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        result.value = ListSequence.fromList(nodes).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(nodes).first(), CONCEPTS.AnonymousClass$Bt) && (SNodeOperations.getNodeAncestor(ListSequence.fromList(nodes).first(), CONCEPTS.Classifier$Ix, false, false) != null);
-      }
-    });
+    project.getRepository().getModelAccess().runReadAction(() -> result.value = ListSequence.fromList(nodes).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(nodes).first(), CONCEPTS.AnonymousClass$Bt) && (SNodeOperations.getNodeAncestor(ListSequence.fromList(nodes).first(), CONCEPTS.Classifier$Ix, false, false) != null));
     return result.value;
   }
   public void execute(final MPSProject project, List<SNode> nodes) {
     final SNode target = SNodeOperations.cast(ListSequence.fromList(nodes).first(), CONCEPTS.AnonymousClass$Bt);
 
     final Wrappers._T<String> classifierName = new Wrappers._T<String>();
-    project.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        classifierName.value = SPropertyOperations.getString(SLinkOperations.getTarget(target, LINKS.classifier$q_Y$), PROPS.name$MnvL);
-      }
-    });
+    project.getRepository().getModelAccess().runReadAction(() -> classifierName.value = SPropertyOperations.getString(SLinkOperations.getTarget(target, LINKS.classifier$q_Y$), PROPS.name$MnvL));
 
     final String newName = StringChooserDialog.getString(project.getProject(), "Convert Anonymous Class", "Class Name", "My" + classifierName.value, true);
 
     if (newName == null) {
       return;
     }
-    project.getRepository().getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        new ConvertAnonymousRefactoring(target, newName).doRefactor();
-      }
-    });
+    project.getRepository().getModelAccess().executeCommand(() -> new ConvertAnonymousRefactoring(target, newName).doRefactor());
   }
 
   private static final class CONCEPTS {

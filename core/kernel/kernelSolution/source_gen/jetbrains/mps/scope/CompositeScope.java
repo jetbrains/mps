@@ -11,10 +11,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import java.util.HashSet;
 
 @GeneratedClass(node = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)/8401916545537277021", model = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)")
 public class CompositeScope extends Scope {
-  private List<Scope> myScopes;
+  private final List<Scope> myScopes;
   public CompositeScope(Scope... scopeChain) {
     myScopes = new ArrayList<Scope>();
     for (Scope scope : scopeChain) {
@@ -25,6 +26,7 @@ public class CompositeScope extends Scope {
       }
     }
   }
+
   public void addScope(Scope scope) {
     if (scope instanceof CompositeScope) {
       myScopes.addAll(((CompositeScope) scope).getScopes());
@@ -32,9 +34,11 @@ public class CompositeScope extends Scope {
       myScopes.add(scope);
     }
   }
+
   public Collection<Scope> getScopes() {
     return Collections.unmodifiableCollection(myScopes);
   }
+
   @Override
   public SNode resolve(SNode contextNode, String refText) {
     SNode result = null;
@@ -51,6 +55,7 @@ public class CompositeScope extends Scope {
     }
     return result;
   }
+
   @Override
   public Iterable<SNode> getAvailableElements(@Nullable String prefix) {
     List<SNode> result = new ArrayList<SNode>();
@@ -59,6 +64,7 @@ public class CompositeScope extends Scope {
     }
     return result;
   }
+
   @Override
   public String getReferenceText(SNode contextNode, SNode node) {
     String result = null;
@@ -75,6 +81,16 @@ public class CompositeScope extends Scope {
     }
     return result;
   }
+
+  @Override
+  public Collection<SNode> getAdditionalDependencies() {
+    Collection<SNode> result = new HashSet<SNode>();
+    for (Scope scope : myScopes) {
+      result.addAll(scope.getAdditionalDependencies());
+    }
+    return result;
+  }
+
   public static Scope createComposite(Scope... scopes) {
     Scope last = null;
     for (Scope s : scopes) {

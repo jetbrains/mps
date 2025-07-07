@@ -77,7 +77,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "case");
     editorCell.setCellId("Constant_shllfo_a0");
     Style style = new StyleImpl();
-    new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeyWordStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     InsertAndDeleteForExtensionCases.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");

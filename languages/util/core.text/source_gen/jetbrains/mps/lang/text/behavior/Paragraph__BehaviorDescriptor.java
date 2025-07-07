@@ -16,13 +16,12 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -35,25 +34,25 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph");
 
-  public static final SMethod<Void> initialize_id1v077Wg2A59 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("initialize").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1v077Wg2A59").build();
-  public static final SMethod<Void> clearTextualElements_id1uSfHaoOxlA = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("clearTextualElements").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1uSfHaoOxlA").build();
-  /*package*/ static final SMethod<Void> clearFromEmptyLetters_id10ljsgpnzm5 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("clearFromEmptyLetters").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).id("10ljsgpnzm5").build();
-  public static final SMethod<Iterable<SNode>> getTextualElements_id250QDwq2ueg = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getTextualElements").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("250QDwq2ueg").build();
-  public static final SMethod<Iterable<SNode>> getNonEmptyTextualElements_id250QDwq53RO = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getNonEmptyTextualElements").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("250QDwq53RO").build();
-  public static final SMethod<Void> removeTextualElementAt_id250QDwq2Yav = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("removeTextualElementAt").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("250QDwq2Yav").build(SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
-  public static final SMethod<Void> addTextualElement_id1uSfHaoOOLl = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addTextualElement").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1uSfHaoOOLl").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Void> addAllTextualElements_id1uSfHaoPgT1 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addAllTextualElements").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1uSfHaoPgT1").build(SMethodBuilder.createJavaParameter((Class<Iterable<SNode>>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> isEmptyParagraph_id7r4EKYUymRW = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isEmptyParagraph").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7r4EKYUymRW").build();
-  public static final SMethod<Void> merge_id4HqBHuNzqyw = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("merge").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4HqBHuNzqyw").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Void> merge_id4HqBHuNzqyK = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("merge").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4HqBHuNzqyK").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
-  public static final SMethod<SNode> split_id4HqBHuN_RSC = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("split").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4HqBHuN_RSC").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Void> initializeFromLine_id6n6K0Pj71DU = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("initializeFromLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6n6K0Pj71DU").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> createLineInstance_id7q4Ywce6bwW = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createLineInstance").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7q4Ywce6bwW").build();
-  public static final SMethod<Void> insertTextualElementAtCaret_id7evo$BZbvad = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("insertTextualElementAtCaret").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7evo$BZbvad").build(SMethodBuilder.createJavaParameter(EditorContext.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<String> wrapTextForClipboard_idfcFkhVLuVF = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("wrapTextForClipboard").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("fcFkhVLuVF").build(SMethodBuilder.createJavaParameter(String.class, ""));
-  public static final SMethod<String> representAsText_id1iNeTGeVhLf = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("representAsText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1iNeTGeVhLf").build();
-  /*package*/ static final SMethod<Void> copyLettersFromWord_id1iNeTGf7YHg = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("copyLettersFromWord").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).id("1iNeTGf7YHg").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  /*package*/ static final SMethod<Void> copyLettersFromString_id1iNeTGf8gbV = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("copyLettersFromString").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).id("1iNeTGf8gbV").build(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
+  public static final SMethod<Void> initialize_id1v077Wg2A59 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("initialize").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1711399190456328521L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
+  public static final SMethod<Void> clearTextualElements_id1uSfHaoOxlA = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("clearTextualElements").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1709185132815062374L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
+  /*package*/ static final SMethod<Void> clearFromEmptyLetters_id10ljsgpnzm5 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("clearFromEmptyLetters").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1158917983752304005L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
+  public static final SMethod<Iterable<SNode>> getTextualElements_id250QDwq2ueg = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getTextualElements").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2396155348567843728L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
+  public static final SMethod<Iterable<SNode>> getNonEmptyTextualElements_id250QDwq53RO = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getNonEmptyTextualElements").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2396155348568522228L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
+  public static final SMethod<Void> removeTextualElementAt_id250QDwq2Yav = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("removeTextualElementAt").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2396155348567974559L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
+  public static final SMethod<Void> addTextualElement_id1uSfHaoOOLl = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addTextualElement").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1709185132815141973L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Void> addAllTextualElements_id1uSfHaoPgT1 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addAllTextualElements").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1709185132815257153L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<Iterable<SNode>>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> isEmptyParagraph_id7r4EKYUymRW = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isEmptyParagraph").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8558153275953212924L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
+  public static final SMethod<Void> merge_id4HqBHuNzqyw = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("merge").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5429826950016116896L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Void> merge_id4HqBHuNzqyK = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("merge").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5429826950016116912L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
+  public static final SMethod<SNode> split_id4HqBHuN_RSC = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("split").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5429826950016761384L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Void> initializeFromLine_id6n6K0Pj71DU = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("initializeFromLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7333760206680889978L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> createLineInstance_id7q4Ywce6bwW = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createLineInstance").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8540225684429649980L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
+  public static final SMethod<Void> insertTextualElementAtCaret_id7evo$BZbvad = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("insertTextualElementAtCaret").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8331485905612042893L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter(EditorContext.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<String> wrapTextForClipboard_idfcFkhVLuVF = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("wrapTextForClipboard").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(273784187008708331L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<String> representAsText_id1iNeTGeVhLf = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("representAsText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1491601438746156111L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
+  /*package*/ static final SMethod<Void> copyLettersFromWord_id1iNeTGf7YHg = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("copyLettersFromWord").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1491601438749485904L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  /*package*/ static final SMethod<Void> copyLettersFromString_id1iNeTGf8gbV = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("copyLettersFromString").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1491601438749557499L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(initialize_id1v077Wg2A59, clearTextualElements_id1uSfHaoOxlA, clearFromEmptyLetters_id10ljsgpnzm5, getTextualElements_id250QDwq2ueg, getNonEmptyTextualElements_id250QDwq53RO, removeTextualElementAt_id250QDwq2Yav, addTextualElement_id1uSfHaoOOLl, addAllTextualElements_id1uSfHaoPgT1, isEmptyParagraph_id7r4EKYUymRW, merge_id4HqBHuNzqyw, merge_id4HqBHuNzqyK, split_id4HqBHuN_RSC, initializeFromLine_id6n6K0Pj71DU, createLineInstance_id7q4Ywce6bwW, insertTextualElementAtCaret_id7evo$BZbvad, wrapTextForClipboard_idfcFkhVLuVF, representAsText_id1iNeTGeVhLf, copyLettersFromWord_id1iNeTGf7YHg, copyLettersFromString_id1iNeTGf8gbV);
 
@@ -78,11 +77,7 @@ public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
     return SLinkOperations.getChildren(__thisNode__, LINKS.letters$rNyA);
   }
   /*package*/ static Iterable<SNode> getNonEmptyTextualElements_id250QDwq53RO(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$rNyA)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.EmptyParagraphLetter$W6));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$rNyA)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.EmptyParagraphLetter$W6)));
 
   }
   /*package*/ static void removeTextualElementAt_id250QDwq2Yav(@NotNull SNode __thisNode__, int index) {
@@ -98,15 +93,7 @@ public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
     ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$rNyA)).addSequence(Sequence.fromIterable(l));
   }
   /*package*/ static boolean isEmptyParagraph_id7r4EKYUymRW(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$rNyA)).isEmpty() || !(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$rNyA)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.EmptyParagraphLetter$W6));
-      }
-    })) || ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$rNyA)).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.Letter$kd) && isEmptyString(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Letter$kd), PROPS.value$X7Tp));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$rNyA)).isEmpty() || !(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$rNyA)).any((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.EmptyParagraphLetter$W6)))) || ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$rNyA)).all((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.Letter$kd) && isEmptyString(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Letter$kd), PROPS.value$X7Tp)));
   }
   /*package*/ static void merge_id4HqBHuNzqyw(@NotNull SNode __thisNode__, SNode other) {
     Paragraph__BehaviorDescriptor.merge_id4HqBHuNzqyK.invoke(__thisNode__, other, Sequence.fromIterable(Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(__thisNode__)).last(), ((boolean) false));
@@ -117,13 +104,11 @@ public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
     }
 
     final Wrappers._T<SNode> currentPosition = new Wrappers._T<SNode>(position);
-    Sequence.fromIterable(Paragraph__BehaviorDescriptor.getNonEmptyTextualElements_id250QDwq53RO.invoke(other)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode element) {
-        if (inFrontOfPosition) {
-          SNodeOperations.insertPrevSiblingChild(currentPosition.value, element);
-        } else {
-          currentPosition.value = SNodeOperations.insertNextSiblingChild(currentPosition.value, element);
-        }
+    Sequence.fromIterable(Paragraph__BehaviorDescriptor.getNonEmptyTextualElements_id250QDwq53RO.invoke(other)).visitAll((element) -> {
+      if (inFrontOfPosition) {
+        SNodeOperations.insertPrevSiblingChild(currentPosition.value, element);
+      } else {
+        currentPosition.value = SNodeOperations.insertNextSiblingChild(currentPosition.value, element);
       }
     });
     if (!((boolean) Paragraph__BehaviorDescriptor.isEmptyParagraph_id7r4EKYUymRW.invoke(other)) && isEmptyString(trim_7af07r_a0a0e0kb(SPropertyOperations.getString(SNodeOperations.as(position, CONCEPTS.Letter$kd), PROPS.value$X7Tp)))) {
@@ -142,8 +127,8 @@ public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static void initializeFromLine_id6n6K0Pj71DU(@NotNull final SNode __thisNode__, SNode l) {
     Paragraph__BehaviorDescriptor.initialize_id1v077Wg2A59.invoke(__thisNode__);
-    ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
+    ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).visitAll(new _FunctionTypes._void_P1_E0<SNode>() {
+      public void invoke(SNode it) {
         if (SNodeOperations.isInstanceOf(it, CONCEPTS.Word$Dn)) {
           String url = SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Word$Dn), PROPS.url$SIrt);
           if ((url != null && url.length() > 0)) {

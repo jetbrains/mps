@@ -42,7 +42,6 @@ import jetbrains.mps.nodeEditor.cells.SPropertyAccessor;
 import jetbrains.mps.nodeEditor.cellMenu.SPropertySubstituteInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
@@ -105,11 +104,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
           SPropertyOperations.assign(node, PROPS.x$NHmW, x);
           SPropertyOperations.assign(node, PROPS.y$NHOY, y);
         }
-      }), createNewDiagramConnectorActions(getSNode(), CONCEPTS.OutputToInputPortConnector$DB, LINKS.nodeConnectors$hHlG, new _FunctionTypes._return_P4_E0<Boolean, SNode, Object, SNode, Object>() {
-        public Boolean invoke(SNode from, Object fromId, SNode to, Object toId) {
-          return SNodeOperations.isInstanceOf(from, CONCEPTS.OutputPort$3_) && SNodeOperations.isInstanceOf(to, CONCEPTS.InputPort$Uh);
-        }
-      }, new _FunctionTypes._void_P5_E0<SNode, SNode, Object, SNode, Object>() {
+      }), createNewDiagramConnectorActions(getSNode(), CONCEPTS.OutputToInputPortConnector$DB, LINKS.nodeConnectors$hHlG, (SNode from, Object fromId, SNode to, Object toId) -> SNodeOperations.isInstanceOf(from, CONCEPTS.OutputPort$3_) && SNodeOperations.isInstanceOf(to, CONCEPTS.InputPort$Uh), new _FunctionTypes._void_P5_E0<SNode, SNode, Object, SNode, Object>() {
         public void invoke(SNode node, SNode from, Object fromId, SNode to, Object toId) {
           SLinkOperations.setTarget(node, LINKS.src$j_mU, SNodeOperations.cast(from, CONCEPTS.OutputPort$3_));
           SLinkOperations.setTarget(node, LINKS.dst$m6yD, SNodeOperations.cast(to, CONCEPTS.InputPort$Uh));
@@ -119,23 +114,15 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     }
 
     protected SubstituteInfoPartExt[] createPaletteBlockSubstituteInfoPartExts() {
-      return new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), CONCEPTS.Node$fW, LINKS.mainNodes$JiCC, new _FunctionTypes._void_P3_E0<SNode, Integer, Integer>() {
-        public void invoke(SNode node, Integer x, Integer y) {
-          SPropertyOperations.assign(node, PROPS.x$NHmW, x);
-          SPropertyOperations.assign(node, PROPS.y$NHOY, y);
-        }
+      return new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), CONCEPTS.Node$fW, LINKS.mainNodes$JiCC, (SNode node, Integer x, Integer y) -> {
+        SPropertyOperations.assign(node, PROPS.x$NHmW, x);
+        SPropertyOperations.assign(node, PROPS.y$NHOY, y);
       })};
     }
     protected SubstituteInfoPartExt[] createPaletteConnectorSubstituteInfoPartExts() {
-      return new SubstituteInfoPartExt[]{createNewDiagramConnectorActions(getSNode(), CONCEPTS.OutputToInputPortConnector$DB, LINKS.nodeConnectors$hHlG, new _FunctionTypes._return_P4_E0<Boolean, SNode, Object, SNode, Object>() {
-        public Boolean invoke(SNode from, Object fromId, SNode to, Object toId) {
-          return SNodeOperations.isInstanceOf(from, CONCEPTS.OutputPort$3_) && SNodeOperations.isInstanceOf(to, CONCEPTS.InputPort$Uh);
-        }
-      }, new _FunctionTypes._void_P5_E0<SNode, SNode, Object, SNode, Object>() {
-        public void invoke(SNode node, SNode from, Object fromId, SNode to, Object toId) {
-          SLinkOperations.setTarget(node, LINKS.src$j_mU, SNodeOperations.cast(from, CONCEPTS.OutputPort$3_));
-          SLinkOperations.setTarget(node, LINKS.dst$m6yD, SNodeOperations.cast(to, CONCEPTS.InputPort$Uh));
-        }
+      return new SubstituteInfoPartExt[]{createNewDiagramConnectorActions(getSNode(), CONCEPTS.OutputToInputPortConnector$DB, LINKS.nodeConnectors$hHlG, (SNode from, Object fromId, SNode to, Object toId) -> SNodeOperations.isInstanceOf(from, CONCEPTS.OutputPort$3_) && SNodeOperations.isInstanceOf(to, CONCEPTS.InputPort$Uh), (SNode node, SNode from, Object fromId, SNode to, Object toId) -> {
+        SLinkOperations.setTarget(node, LINKS.src$j_mU, SNodeOperations.cast(from, CONCEPTS.OutputPort$3_));
+        SLinkOperations.setTarget(node, LINKS.dst$m6yD, SNodeOperations.cast(to, CONCEPTS.InputPort$Uh));
       })};
     }
     public Mapper<SNode, DiagramView> createMapper(SNode node) {
@@ -235,11 +222,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
       Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
-      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-        }
-      });
+      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
       if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
         EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
         return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);

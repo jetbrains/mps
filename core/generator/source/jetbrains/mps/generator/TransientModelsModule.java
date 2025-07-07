@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.module.TransientSModule;
 import jetbrains.mps.generator.TransientModelsProvider.TransientSwapSpace;
 import jetbrains.mps.generator.impl.ModelVault;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.SDependencyImpl;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.smodel.FastNodeFinderManager;
@@ -28,16 +29,15 @@ import jetbrains.mps.smodel.ModelDependencyUpdate;
 import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.SModelId.IntegerSModelId;
+import jetbrains.mps.smodel.SNodeImplAccess;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
-import jetbrains.mps.smodel.references.ImmatureReferencesTracker;
 import jetbrains.mps.util.containers.ConcurrentHashSet;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SDependency;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -54,11 +54,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.BiConsumer;
 
 public class TransientModelsModule extends AbstractModule implements TransientSModule {
-  private static final Logger LOG = LogManager.getLogger(TransientModelsModule.class);
+  private static final Logger LOG = Logger.getLogger(TransientModelsModule.class);
 
   private final TransientModelsProvider myComponent;
 
-  private Set<SModel> myPublished = new ConcurrentHashSet<>();
+  private final Set<SModel> myPublished = new ConcurrentHashSet<>();
   private final ModelVault<TransientSModelDescriptor> myModelVault = new ModelVault<>();
 
   private final Map<String, GenerationTrace> myTraces = new HashMap<>();
@@ -71,6 +71,18 @@ public class TransientModelsModule extends AbstractModule implements TransientSM
   /*package*/ TransientModelsModule(@NotNull TransientModelsProvider tmProvider, @NotNull SModuleReference moduleReference) {
     myComponent = tmProvider;
     setModuleReference(moduleReference);
+  }
+
+  @Override
+  public boolean isReadOnly() {
+    // I treat this as an end-user POV; it's generator that modifies this module internally, but users don't need to
+    // deal with the module. This doesn't mean any [openapi]TransientSModule has to be read-only; only the one of Generator scenario.
+    return true;
+  }
+
+  @Override
+  public boolean isPackaged() {
+    return false;
   }
 
   public boolean hasPublished() {
@@ -292,12 +304,14 @@ public class TransientModelsModule extends AbstractModule implements TransientSM
   public final class TransientSModelDescriptor extends EditableSModelBase implements jetbrains.mps.extapi.model.TransientSModel, ModelWithAttributes {
     protected volatile TransientSModel mySModel;
     private boolean wasUnloaded = false;
-    private ImmatureReferencesTracker myRefsTracker = new ImmatureReferencesTracker();
+    // XXX IRT relies on model changed events. TransientSModel.canFireEvents suggests our intention here was not
+    // to fire any events at all. It's not true now - we respect canFireEvents() for few SModelListener events only,
+    // perhaps, worth respecting the flag for all modification events, in which case IRT here would make no sense.
+
     private int myBranchSerial = 0;
 
     private TransientSModelDescriptor(@NotNull SModelReference modelRef) {
       super(modelRef, new NullDataSource());
-      myRefsTracker.attach(this,false);
     }
 
     /*package*/ void setBranchSerial(int v) {
@@ -314,7 +328,7 @@ public class TransientModelsModule extends AbstractModule implements TransientSM
     }
 
     @Override
-    public final jetbrains.mps.smodel.SModel getSModelInternal() {
+    public jetbrains.mps.smodel.SModel getSModel() {
       if (mySModel != null) {
         return mySModel;
       }
@@ -401,7 +415,6 @@ public class TransientModelsModule extends AbstractModule implements TransientSM
 
     // unlike unload, doesn't not swap out model data
     private void dropModel() {
-      myRefsTracker.detach();
       if (mySModel != null) {
         LOG.debug("Dropped " + getReference());
         mySModel.dispose();
@@ -437,7 +450,12 @@ public class TransientModelsModule extends AbstractModule implements TransientSM
     }
 
     public void makeRefsMature() {
-      myRefsTracker.makeMature();
+      for ( SNode n : getRootNodes()) {
+        new SNodeImplAccess(n).makeReferencesIndirect();
+        // XXX makeIndirect() doesn't force 'maturing' of references to hanging nodes (from models not in repository)
+        //     I wonder if transient model happen to have a reference to a checkpoint model, does it mean we fail to
+        //     serialize these? Is it an issue?
+      }
     }
 
     private SModelHeader getModelHeader() {

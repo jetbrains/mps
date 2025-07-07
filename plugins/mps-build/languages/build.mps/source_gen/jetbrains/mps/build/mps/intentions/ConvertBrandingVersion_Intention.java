@@ -10,11 +10,11 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.build.mps.behavior.BuildMps_Branding__BehaviorDescriptor;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.build.mps.behavior.BuildMps_Branding__BehaviorDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -24,27 +24,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ConvertBrandingVersion_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ConvertBrandingVersion_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:e8fca550-89ba-41bb-ae28-dc9cae640a8a(jetbrains.mps.build.mps.intentions)", "4157435862285143069"));
   }
+
   @Override
   public String getPresentation() {
     return "ConvertBrandingVersion";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return !((boolean) BuildMps_Branding__BehaviorDescriptor.isNewVersionFormat_id3AMbuf0qvWw.invoke(node));
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -54,10 +48,12 @@ public final class ConvertBrandingVersion_Intention extends AbstractIntentionDes
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Convert deprecated branding version to the new format";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SLinkOperations.setTarget(node, LINKS.version$1QyI, createBuildMps_BrandingVersion_fmkrdx_a0a0a(SPropertyOperations.getInteger(node, PROPS.major$o5cB) + "", SPropertyOperations.getInteger(node, PROPS.minor$o5rC) + ""));
@@ -68,10 +64,25 @@ public final class ConvertBrandingVersion_Intention extends AbstractIntentionDes
         SLinkOperations.setTarget(SLinkOperations.getTarget(node, LINKS.version$1QyI), LINKS.versionEap$uCSk, createBuildString_fmkrdx_a0a0c0a());
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return !((boolean) BuildMps_Branding__BehaviorDescriptor.isNewVersionFormat_id3AMbuf0qvWw.invoke(node));
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ConvertBrandingVersion_Intention.this;
     }
+
   }
   private static SNode createBuildMps_BrandingVersion_fmkrdx_a0a0a(String p0, String p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BuildMps_BrandingVersion$E5);

@@ -20,11 +20,8 @@ import jetbrains.mps.vcs.history.CommitsGraph;
 import jetbrains.mps.vcs.history.RootCommitsGraphTraverser;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
-import jetbrains.mps.vcs.diff.changes.ModelChange;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
@@ -46,7 +43,7 @@ import jetbrains.mps.vcs.diff.ChangeSetBuilder;
   private final RootCommitsGraphTraverser myRootCommitsGraphTraverser;
 
 
-  /*package*/ RootModelHistoryExtractor(MPSProject project, List<VcsFileRevision> revisions, SNodeId root, VirtualFile file, Runnable onUpdate) {
+  /*package*/ RootModelHistoryExtractor(MPSProject project, List<VcsFileRevision> revisions, SNodeId root, VirtualFile file, Runnable onUpdate) throws CommitsGraph.BuildException {
     myProject = project;
     myLocalRevision = ((CurrentRevision) revisions.get(0));
     myRootId = root;
@@ -88,11 +85,7 @@ import jetbrains.mps.vcs.diff.ChangeSetBuilder;
       if (node == null) {
         return Collections.emptyList();
       }
-      return ListSequence.fromList(node.getParents()).select(new ISelector<CommitsGraphNode, VcsFileRevision>() {
-        public VcsFileRevision select(CommitsGraphNode it) {
-          return it.getRevision();
-        }
-      }).toListSequence();
+      return ListSequence.fromList(node.getParents()).select((it) -> it.getRevision()).toList();
     }
   }
 
@@ -144,40 +137,32 @@ import jetbrains.mps.vcs.diff.ChangeSetBuilder;
     CommitsGraphNode parent1 = ListSequence.fromList(node.getParents()).getElement(0);
     CommitsGraphNode parent2 = ListSequence.fromList(node.getParents()).getElement(1);
 
-    Iterable<ModelChange> changes1 = getChanges(parent1.getLoadedModel(), node.getLoadedModel());
-    Iterable<ModelChange> changes2 = getChanges(parent2.getLoadedModel(), node.getLoadedModel());
+    boolean modelsHaveChanges1 = modelsHaveChanges(parent1.getLoadedModel(), node.getLoadedModel());
+    boolean modelsHaveChanges2 = modelsHaveChanges(parent2.getLoadedModel(), node.getLoadedModel());
 
-    if (Sequence.fromIterable(changes1).isEmpty() && Sequence.fromIterable(changes2).isEmpty()) {
+    if (!(modelsHaveChanges1) && !(modelsHaveChanges2)) {
       return;
     }
 
     //  we ignore a branch if all changes from another branch were accepted   
-    if (Sequence.fromIterable(changes1).isEmpty()) {
+    if (!(modelsHaveChanges1)) {
       parent2.setIgnoredByChild(node);
       return;
     }
-    if (Sequence.fromIterable(changes2).isEmpty()) {
+    if (!(modelsHaveChanges2)) {
       parent1.setIgnoredByChild(node);
       return;
     }
     addNodeToHistory(node.getNodeWithLoadedModel());
   }
 
-  private boolean modelsHaveChanges(@Nullable SModel prevModel, @Nullable SModel model) {
-    if (prevModel == model) {
+  private boolean modelsHaveChanges(@Nullable final SModel prevModel, @Nullable final SModel model) {
+    if (prevModel == model || prevModel == null || model == null) {
       return false;
     }
-    return ListSequence.fromList(getChanges(prevModel, model)).isNotEmpty();
-  }
-
-  private List<ModelChange> getChanges(@Nullable final SModel prevModel, @Nullable final SModel model) {
-    final Wrappers._T<List<ModelChange>> changes = new Wrappers._T<List<ModelChange>>();
-    myProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        changes.value = ChangeSetBuilder.buildChangeSetForNode(prevModel, model, myRootId, false, true).getModelChanges();
-      }
-    });
-    return changes.value;
+    final Wrappers._boolean modelsHaveChanges = new Wrappers._boolean();
+    myProject.getModelAccess().runReadAction(() -> modelsHaveChanges.value = ChangeSetBuilder.hasChangesForNodeId(prevModel, model, myRootId));
+    return modelsHaveChanges.value;
   }
 
   private void addNodeToHistory(CommitsGraphNode node) {

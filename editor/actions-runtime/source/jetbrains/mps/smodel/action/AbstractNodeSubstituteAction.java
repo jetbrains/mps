@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemCreatingCustomizationContext;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.cellMenu.CompletionItemCustomizationUtil;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import jetbrains.mps.openapi.editor.EditorContext;
@@ -29,8 +30,6 @@ import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizationConte
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -40,7 +39,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Optional;
 
 public abstract class AbstractNodeSubstituteAction implements SubstituteAction {
-  private static final Logger LOG = LogManager.getLogger(AbstractNodeSubstituteAction.class);
+  private static final Logger LOG = Logger.getLogger(AbstractNodeSubstituteAction.class);
   private SNode mySourceNode;
   private Object myParameterObject;
   private SNode myOutputConcept;    // todo: this class is still too abstract to have 'output concept'
@@ -144,7 +143,7 @@ public abstract class AbstractNodeSubstituteAction implements SubstituteAction {
     try {
       matchingText = getMatchingText(pattern);
     } catch (Exception e) {
-      LOG.error(null, e);
+      LOG.error(e);
     }
     return matchingText != null && matchingText.length() != 0;
   }

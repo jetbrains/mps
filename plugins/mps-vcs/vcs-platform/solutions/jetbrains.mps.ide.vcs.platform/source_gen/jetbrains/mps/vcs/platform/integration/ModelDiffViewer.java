@@ -15,17 +15,23 @@ import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import com.intellij.diff.contents.DiffContent;
 import com.intellij.openapi.fileTypes.FileType;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
-import org.jetbrains.mps.openapi.model.SModel;
+import java.util.ArrayList;
 import com.intellij.diff.requests.DiffRequest;
 import com.intellij.diff.contents.EmptyContent;
 import jetbrains.mps.vfs.tracking.ModelDiffContent;
 import com.intellij.diff.contents.DocumentContent;
+import com.intellij.diff.actions.DocumentFragmentContent;
 import com.intellij.diff.contents.FileContent;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import com.intellij.openapi.actionSystem.AnAction;
+import com.intellij.openapi.actionSystem.ActionManager;
+import java.util.Arrays;
 import jetbrains.mps.vcs.diff.merge.MergeTemporaryModel;
 import jetbrains.mps.smodel.SModelReference;
 import jetbrains.mps.smodel.SModelId;
@@ -37,9 +43,9 @@ import java.io.IOException;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.smodel.SModelFileTracker;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
+import com.intellij.openapi.project.Project;
 import org.jetbrains.mps.openapi.model.SNode;
 
 @GeneratedClass(node = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)/2146316116462344446", model = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)")
@@ -51,45 +57,32 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
   private ModelDifferenceViewer myViewer;
 
   public ModelDiffViewer(@NotNull DiffContext context, @NotNull ContentDiffRequest request) {
-    MPSProject mpsProject = context.getProject().getComponent(MPSProject.class);
+    final MPSProject mpsProject = check_qg7y9c_a0a0g(context.getProject());
 
     List<DiffContent> contents = request.getContents();
-    FileType type = (contents.get(0).getContentType() != null ? contents.get(0).getContentType() : contents.get(1).getContentType());
+    final FileType type = (ListSequence.fromList(contents).getElement(0).getContentType() != null ? ListSequence.fromList(contents).getElement(0).getContentType() : ListSequence.fromList(contents).getElement(1).getContentType());
     SNodeId rootId;
-    final boolean showTree;
-    if (MPSFileTypeFactory.MPS_ROOT_FILE_TYPE.equals(type) || MPSFileTypeFactory.MPS_HEADER_FILE_TYPE.equals(type)) {
-      Tuples._2<SModel, SNodeId> oldModel1 = getModelAndRoot(mpsProject, contents.get(0), type);
-      Tuples._2<SModel, SNodeId> newModel = getModelAndRoot(mpsProject, contents.get(1), type);
-      Tuples._2<SModel, SNodeId> oldModel2 = (contents.size() == 3 ? getModelAndRoot(mpsProject, contents.get(2), type) : null);
-      rootId = (newModel._1() != null ? newModel._1() : oldModel1._1());
-      showTree = DIFF_SHOW_TREE.get(request, false);
-      myViewer = new ModelDifferenceViewer(mpsProject, showTree);
-      myViewer.prepareModels(oldModel1._0(), (oldModel2 == null ? null : oldModel2._0()), newModel._0(), (showTree ? null : rootId), true);
+    List<SModel> models;
+    boolean perRootPersistence = MPSFileTypeFactory.MPS_ROOT_FILE_TYPE.equals(type) || MPSFileTypeFactory.MPS_HEADER_FILE_TYPE.equals(type);
+    if (perRootPersistence) {
+      List<Tuples._2<SModel, SNodeId>> modelsIds = ListSequence.fromList(contents).select((it) -> getModelAndRoot(mpsProject, it, type)).toList();
+      rootId = (ListSequence.fromList(modelsIds).getElement(1)._1() != null ? ListSequence.fromList(modelsIds).getElement(1)._1() : ListSequence.fromList(modelsIds).getElement(0)._1());
+      models = ListSequence.fromList(modelsIds).select((it) -> it._0()).toList();
     } else {
-      SModel oldModel1 = ModelDiffViewer.getModel(mpsProject, contents.get(0), type);
-      SModel newModel = ModelDiffViewer.getModel(mpsProject, contents.get(1), type);
-      SModel oldModel2 = (contents.size() == 3 ? ModelDiffViewer.getModel(mpsProject, contents.get(2), type) : null);
       //  show one root only if requested
       rootId = request.getUserData(DIFF_SHOW_ROOTID);
-      showTree = DIFF_SHOW_TREE.get(request, true);
-      myViewer = new ModelDifferenceViewer(mpsProject, showTree);
-      myViewer.prepareModels(oldModel1, oldModel2, newModel, (showTree ? null : rootId), false);
+      models = ListSequence.fromList(contents).select((it) -> ModelDiffViewer.getModel(mpsProject, it, type)).toList();
     }
-    myViewer.setContentTitles(request.getContentTitles());
-    if (!(showTree) || rootId != null) {
-      // if we don't show tree then we should show something anyway
-      // beware, rootId == null is treated as 'show model metadata changes', regardless of whether there are such changes 
-      myViewer.setCurrentRoot(rootId);
-    }
-    // navigate to specific place in editor if requested
-    Bounds scrollTo = request.getUserData(DIFF_NAVIGATE_TO);
-    if (scrollTo != null) {
-      myViewer.navigate(scrollTo);
-    }
+    List<String> titles = ListSequence.fromList(new ArrayList<String>());
+    ListSequence.fromList(titles).addSequence(ListSequence.fromList(request.getContentTitles()));
+
+    boolean showTree = DIFF_SHOW_TREE.get(request, !(perRootPersistence));
+    myViewer = new ModelDifferenceViewer(mpsProject, models, titles, showTree, perRootPersistence);
+    myViewer.showDiff(showTree, rootId, request.getUserData(DIFF_NAVIGATE_TO));
   }
 
   public static boolean canShow(@NotNull DiffContext context, @NotNull DiffRequest request) {
-    if (!((request instanceof ContentDiffRequest))) {
+    if (!(request instanceof ContentDiffRequest)) {
       return false;
     }
     List<DiffContent> contents = ((ContentDiffRequest) request).getContents();
@@ -102,7 +95,7 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
       if (!(canShowContent(content))) {
         return false;
       }
-      if (!((content instanceof EmptyContent))) {
+      if (!(content instanceof EmptyContent)) {
         allEmpty = false;
       }
       if (content instanceof ModelDiffContent) {
@@ -130,7 +123,7 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
   }
 
   private static boolean canShowContent(@NotNull DiffContent content) {
-    return content instanceof ModelDiffContent || content instanceof EmptyContent || content instanceof DocumentContent || content instanceof FileContent;
+    return content instanceof ModelDiffContent || content instanceof EmptyContent || (content instanceof DocumentContent && !(content instanceof DocumentFragmentContent)) || content instanceof FileContent;
   }
   private static boolean sameTypes(@NotNull FileType baseType, @Nullable FileType type1, @Nullable FileType type2) {
     if (type1 != null && !(baseType.equals(type1))) {
@@ -147,6 +140,7 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
 
 
   @NotNull
+  @Override
   public JComponent getComponent() {
     if (myViewer == null) {
       return new JLabel("Failed to create diff viewer");
@@ -155,11 +149,20 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
   }
   @Nullable
   public JComponent getPreferredFocusedComponent() {
+    if (myViewer == null) {
+      return new JLabel("Failed to create diff viewer");
+    }
     return myViewer.getPreferredFocusedComponent();
   }
   @NotNull
   public FrameDiffTool.ToolbarComponents init() {
-    return new FrameDiffTool.ToolbarComponents();
+    FrameDiffTool.ToolbarComponents toolbarComponents = new FrameDiffTool.ToolbarComponents();
+    AnAction showInNewWindow = ActionManager.getInstance().getAction("Vcs.Diff.ShowDiffInNewWindow");
+    AnAction showInEditorTab = ActionManager.getInstance().getAction("Vcs.Diff.ShowDiffInEditorTab");
+    // by some reason a wrong icon is created for showInEditorTab action
+    showInEditorTab.getTemplatePresentation().setIcon(showInNewWindow.getTemplatePresentation().getIcon());
+    toolbarComponents.toolbarActions = Arrays.asList(showInEditorTab, showInNewWindow);
+    return toolbarComponents;
   }
   public void dispose() {
     if (myViewer != null) {
@@ -240,6 +243,12 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
       }
     }
     return MultiTuple.<SModel,SNodeId>from(model, rootId);
+  }
+  private static MPSProject check_qg7y9c_a0a0g(Project checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getComponent(MPSProject.class);
+    }
+    return null;
   }
   private static SNodeId check_qg7y9c_a0d0x(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {

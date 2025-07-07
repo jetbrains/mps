@@ -23,8 +23,8 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class BuildMps_TestModule__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef372L, "jetbrains.mps.build.mps.tests.structure.BuildMps_TestModule");
 
-  public static final SMethod<Boolean> contains_id3X9rC2XzJi8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("contains").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3X9rC2XzJi8").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Iterable<SNode>> getModules_id3X9rC2XzJij = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getModules").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3X9rC2XzJij").build();
+  public static final SMethod<Boolean> contains_id3X9rC2XzJi8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("contains").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4560297596904469640L).languageId(0x996822924406419eL, 0x3600cb0a44dd4a5bL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Iterable<SNode>> getModules_id3X9rC2XzJij = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getModules").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4560297596904469651L).languageId(0x996822924406419eL, 0x3600cb0a44dd4a5bL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(contains_id3X9rC2XzJi8, getModules_id3X9rC2XzJij);
 

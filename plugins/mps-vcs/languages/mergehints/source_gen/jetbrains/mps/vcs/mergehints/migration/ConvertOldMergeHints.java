@@ -24,7 +24,7 @@ public class ConvertOldMergeHints extends MigrationScriptBase {
   public void doExecute(final SModule m) {
     // MergeHints were completely removed
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x37e03aa1728949bcL, 0x826930de5eceec76L, "jetbrains.mps.vcs.mergehints"), 0);
   }
 

@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Collections;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -64,7 +64,7 @@ public class ConceptAndSuperConceptsScope extends Scope {
       return Collections.<SNode>emptyList();
     }
     List<SNode> result = new ArrayList<SNode>();
-    for (SNode node : ((Iterable<SNode>) BHReflection.invoke0(myTopConcept, CONCEPTS.AbstractConceptDeclaration$KA, SMethodTrimmedId.create("getAllSuperConcepts", CONCEPTS.AbstractConceptDeclaration$KA, "2A8AB0rAWpG"), ((boolean) true)))) {
+    for (SNode node : ((Iterable<SNode>) BHReflection.invoke0(myTopConcept, CONCEPTS.AbstractConceptDeclaration$KA, SMethodIdV2.create("getAllSuperConcepts", 2992811758677902956L, 0x44a456bea0df1cf0L), ((boolean) true)))) {
       // FIXME why do we collect *all* children, including InterfaceConceptReference of implements/extends, ACD.helpURL and CD.icon?
       // I suppose all we need here is linkDeclaration + propertyDeclaration, both available in node<ACD> we've got here
       for (SNode n : SNodeUtil.getDescendants(node, condition, true)) {

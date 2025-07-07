@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,18 +15,18 @@
  */
 package jetbrains.mps.smodel;
 
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.extapi.module.EditableSModule;
 import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.extapi.module.SRepositoryBase;
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.extapi.module.SRepositoryRegistry;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.smodel.runtime.EvaluateScopeContext;
 import jetbrains.mps.util.containers.ManyToManyMap;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.EditableSModel;
@@ -40,23 +40,28 @@ import org.jetbrains.mps.openapi.repository.ReadActionListener;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
 
+@SuppressWarnings("UnstableApiUsage") // just to get rid of errors for log4j.Logger
 public class MPSModuleRepository extends SRepositoryBase implements CoreComponent, SRepositoryExt, ReferenceScopeHelper.Source {
-  private static final Logger LOG = LogManager.getLogger(MPSModuleRepository.class);
+  private static final Logger LOG = Logger.getLogger(MPSModuleRepository.class);
   private static MPSModuleRepository ourInstance;
 
   private final GlobalModelAccess myGlobalModelAccess;
   private final CommandListener myCommandListener;
   private final CachingReferenceScopeHelper myScopeCache;
 
-  private Set<SModule> myModules = new LinkedHashSet<>();
-  private Map<SModuleId, SModule> myIdToModuleMap = new ConcurrentHashMap<>();
-  private ManyToManyMap<SModule, MPSModuleOwner> myModuleToOwners = new ManyToManyMap<>();
+  private final Set<SModule> myModules = new LinkedHashSet<>();
+  private final Map<SModuleId, SModule> myIdToModuleMap = new ConcurrentHashMap<>();
+  private final ManyToManyMap<SModule, MPSModuleOwner> myModuleToOwners = new ManyToManyMap<>();
 
   /**
    * Compatibility code, the instance available through SModelRepository.getInstance for legacy code.
@@ -81,8 +86,7 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
    * @since 3.2
    * @deprecated
    */
-  @Deprecated
-  @ToRemove(version = 3.4)
+@Deprecated(since = "3.4", forRemoval = true)
   public static MPSModuleRepository getInstance() {
     return ourInstance;
   }
@@ -160,6 +164,8 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
 
     myIdToModuleMap.put(moduleToRegister.getModuleId(), moduleToRegister);
     myModules.add(moduleToRegister);
+    // XXX for now, decided to let AbstractModule.attach to control whether it has incomplete model set; although might be reasonable
+    //     to keep this logic here, without the need for markIncompleteModelSet() callback or an SRepositoryListener notifications?
 
     checkModelsAreNotChanged(aModuleToRegister);
     aModuleToRegister.attach(this);
@@ -171,13 +177,12 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
 
   // Adding not saved model can cause data loss, see MPS-18743.
   private void checkModelsAreNotChanged(AbstractModule aModuleToRegister) {
-    for (org.jetbrains.mps.openapi.model.SModel model : aModuleToRegister.getModels()) {
+    aModuleToRegister.forEachRegisteredModel(model -> {
       if (model instanceof EditableSModel && ((EditableSModel) model).isChanged()) {
         LOG.error("Added a module with unsaved model to a repository. " +
-            "Modify models that are not added to a module or modify them when they are in repo already", new Throwable());
-        break;
+                  "Modify models that are not added to a module or modify them when they are in repo already", new Throwable());
       }
-    }
+    });
   }
 
   /**
@@ -238,7 +243,7 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
     }
 
     if (!myModuleToOwners.containsSecond(owner)) {
-      LOG.warn(String.format("Attempt to unlink module %s from unexpected owner %s", module, owner), new Throwable());
+      LOG.warning(String.format("Attempt to unlink module %s from unexpected owner %s", module, owner), new Throwable());
       return false;
     }
 
@@ -246,6 +251,7 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
     boolean remove = myModuleToOwners.getByFirst(module).isEmpty();
     if (remove) {
       fireBeforeModuleRemoved(module);
+      myIncompleteModelLoad.forget(module);
       myModules.remove(module);
       myIdToModuleMap.remove(module.getModuleReference().getModuleId());
       return true;
@@ -267,7 +273,7 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
     return Collections.unmodifiableSet(myModuleToOwners.getBySecond(moduleOwner));
   }
 
-  public Set<MPSModuleOwner> getOwners(SModule module) {
+  public Set<MPSModuleOwner> getOwners(@NotNull SModule module) {
     getModelAccess().checkReadAccess();
 
     return Collections.unmodifiableSet(myModuleToOwners.getByFirst(module));
@@ -290,7 +296,18 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
   @Override
   public SModel getModel(@NotNull SModelId modelId) {
     if (modelId.isGloballyUnique()) {
-      return myModelRepository.getModelDescriptor(modelId);
+      //noinspection deprecation
+      final SModel md = myModelRepository.getModelDescriptor(modelId);
+      if (md == null) {
+        final Collection<SModule> incompleteModules = myIncompleteModelLoad.detachedCopy();
+        for (SModule peek : incompleteModules) {
+          final SModel model = peek.getModel(modelId);
+          if (model != null) {
+            return model;
+          }
+        }
+      }
+      return md;
     }
     return super.getModel(modelId);
   }
@@ -302,13 +319,23 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
     // left empty for now as its uses record places we need to pay attention to (e.g. if we need to drop some caches in the future)
   }
 
+  private final GuardedSet<SModule> myIncompleteModelLoad = new GuardedSet<>();
+  @Override
+  public void markIncompleteModelSet(SModule module) {
+    myIncompleteModelLoad.offer(module);
+  }
+
+  @Override
+  public void markCompleteModelSet(SModule module) {
+    myIncompleteModelLoad.forget(module);
+  }
+
   //------------------listeners--------------------
 
   @Override
   public void saveAll() {
     getModelAccess().checkWriteAccess();
     long beginTime = System.nanoTime();
-    LOG.debug("Saving repository");
     try {
       for (SModule module : getModules()) {
         if (module instanceof EditableSModule) {
@@ -321,8 +348,28 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
 
       myModelRepository.saveAll();
     } finally {
-      LOG.info(String.format("Saving of the repository took %.3f s", (System.nanoTime() - beginTime) / 1e9));
+      final long msElapsed = (System.nanoTime() - beginTime) / 1000000;
+      final long magicLongSaveMS = 2000;
+      final String fmt = "Saving of the repository took %.3f s";
+      if (RuntimeFlags.isInternalMode() || msElapsed > magicLongSaveMS) {
+        LOG.info(String.format(fmt, msElapsed / 1e3));
+      } else if (LOG.isDebugLevel()) {
+        LOG.debug(String.format(fmt, msElapsed / 1e3));
+      }
     }
+  }
+
+  @Override
+  public boolean needsSave() {
+    if (getModelAccess().canRead()) {
+      return checkModulesModelsChanged();
+    }
+    return getModelAccess().computeReadAction(this::checkModulesModelsChanged);
+  }
+
+  private boolean checkModulesModelsChanged() {
+    boolean changedModule = myModules.stream().filter(EditableSModule.class::isInstance).map(EditableSModule.class::cast).anyMatch(EditableSModule::isChanged);
+    return changedModule || myModelRepository.hasModelsToSave();
   }
 
   //
@@ -339,12 +386,16 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
      * distinct scope instances per thread.
      */
     private ThreadLocal<Map<SReference, Scope>> myCache;
+    private ThreadLocal<EvaluateScopeContext> myContextCache;
 
 
     @Override
     public Scope getScope(@NotNull SReference reference) {
       if (myCache == null) {
-        // we might be inside proper read but myCache still == null due to threading issue described in ActionDispatcher
+        // perfectly legal scenario, e.g. inside model write, where we don't cache values.
+        // XXX perhaps, shall come up with a better approach (now can not tell whether it's
+        //     write or just a defect in read notification dispatch as it used to be with old
+        //     ActionDispatcher implementation)
         return super.getScope(reference);
       }
       final Map<SReference, Scope> thisThreadCache = myCache.get();
@@ -356,13 +407,70 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
     }
 
     @Override
+    public EvaluateScopeContext getContext() {
+      if (myContextCache == null) {
+        // see @getScope(), above
+        return super.getContext();
+      }
+      return myContextCache.get();
+    }
+
+    @Override
     public void readStarted() {
       myCache = ThreadLocal.withInitial(ConcurrentHashMap::new);
+      myContextCache = ThreadLocal.withInitial(RefScopeCacheContext::new);
     }
 
     @Override
     public void readFinished() {
       myCache = null;
+      myContextCache = null;
+    }
+  }
+
+  private static class RefScopeCacheContext extends EvaluateScopeContext {
+    private final HashMap<Object, Map<SModel, Scope>> myScopeCache = new HashMap<>();
+
+    /*package*/ RefScopeCacheContext() {
+    }
+
+    @Override
+    public Scope ofModel(@NotNull SModel model, @NotNull Object equalityKey, @NotNull Function<SModel, Scope> factory) {
+      final Map<SModel, Scope> modelScopeMap = myScopeCache.computeIfAbsent(equalityKey, k -> new HashMap<>());
+      return modelScopeMap.computeIfAbsent(model, factory);
+    }
+  }
+
+  private static class GuardedSet<V> {
+    private final Set<V> myElements = new HashSet<>();
+
+    void forget(V element) {
+      synchronized (myElements) {
+        myElements.remove(element);
+      }
+    }
+
+    Collection<V> detachedCopy() {
+      synchronized (myElements) {
+        return new ArrayList<>(myElements);
+      }
+    }
+    @Nullable
+    V removeAny() {
+      synchronized (myElements) {
+        final Iterator<V> it = myElements.iterator();
+        if (it.hasNext()) {
+          final V rv = it.next();
+          it.remove();
+          return rv;
+        }
+        return null;
+      }
+    }
+    void offer(V element) {
+      synchronized (myElements) {
+        myElements.add(element);
+      }
     }
   }
 }

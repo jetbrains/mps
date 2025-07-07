@@ -14,27 +14,27 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class SetStructureIds {
   public static class NodeFactory_5424895381998988571 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SPropertyOperations.assign(newNode, PROPS.conceptId$rrGe, ConceptIdHelper.generateConceptId(model, newNode) + "");
     }
   }
   public static class NodeFactory_7791109065626944384 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SPropertyOperations.assign(newNode, PROPS.datatypeId$$gBg, ConceptIdHelper.generateDatatypeId(model, newNode) + "");
     }
   }
   public static class NodeFactory_5424895381999015715 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SPropertyOperations.assign(newNode, PROPS.propertyId$m5HU, ConceptIdHelper.generatePropertyId(SNodeOperations.as(enclosingNode, CONCEPTS.AbstractConceptDeclaration$KA), newNode) + "");
     }
   }
   public static class NodeFactory_5424895381999015757 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SPropertyOperations.assign(newNode, PROPS.linkId$mi9g, ConceptIdHelper.generateLinkId(SNodeOperations.as(enclosingNode, CONCEPTS.AbstractConceptDeclaration$KA), newNode) + "");
     }
   }
   public static class NodeFactory_1421157252384198379 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SPropertyOperations.assign(newNode, PROPS.memberId$LVXV, ConceptIdHelper.generateEnumMemberId(SNodeOperations.as(enclosingNode, CONCEPTS.EnumerationDeclaration$hv), newNode) + "");
     }
   }

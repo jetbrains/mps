@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.jps.model;
 
 import jetbrains.mps.baseLanguage.search.MPSBaseLanguage;
-import jetbrains.mps.classloading.CustomClassLoadingFacet;
 import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.core.platform.PlatformFactory;
 import jetbrains.mps.core.platform.PlatformOptionsBuilder;
@@ -33,10 +32,10 @@ import jetbrains.mps.jps.project.JpsSolutionIdea;
 import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.library.ModulesMiner.ModuleHandle;
 import jetbrains.mps.persistence.DefaultModelRoot;
-import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.project.ModuleId;
-import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
+import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
@@ -56,7 +55,6 @@ import org.jetbrains.jps.model.module.JpsModule;
 import org.jetbrains.jps.model.module.JpsSdkDependency;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.persistence.Memento;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.jetbrains.mps.openapi.persistence.ModelRootFactory;
 
@@ -81,7 +79,6 @@ public class JpsMPSRepositoryFacade implements MPSModuleOwner {
   public static final UUID JDK_UUID = UUID.fromString("6354ebe7-c22a-4a0f-ac54-50b52ab9b065");
 
   private Platform myPlatform;
-  private MPSBaseLanguage myMPSBaseLanguage;
   private volatile boolean isInitialized = false;
   private CachedRepositoryData myRepo;
   private Map<JpsModule, JpsSolutionIdea> myJpsToMpsModules = new HashMap<JpsModule, JpsSolutionIdea>();
@@ -323,11 +320,9 @@ public class JpsMPSRepositoryFacade implements MPSModuleOwner {
       SModule existingModule = myRepository.getModule(jdkId);
       if (existingModule != null) {
         desc.setNamespace(existingModule.getModuleName());
-        CustomClassLoadingFacet facet = existingModule.getFacet(CustomClassLoadingFacet.class);
+        JavaModuleFacet facet = existingModule.getFacet(JavaModuleFacet.class);
         assert facet != null;
-        Memento memento = new MementoImpl();
-        facet.save(memento);
-        desc.getModuleFacetDescriptors().add(new ModuleFacetDescriptor(facet.getFacetType(), memento));
+        desc.getModuleFacetDescriptors().add(JavaModuleFacetImpl.forJavaCodeModule(facet));
         // XXX here used to be a check not to unregister from owner == this, but as long as it was commented out, just
         // use a method that unregisters from all owners at once.
         new ModuleRepositoryFacade(myRepository).unregisterModule(existingModule);
@@ -372,13 +367,10 @@ public class JpsMPSRepositoryFacade implements MPSModuleOwner {
 
   private void initMPS() {
     myPlatform = PlatformFactory.initPlatform(PlatformOptionsBuilder.ALL);
-
-    myMPSBaseLanguage = new MPSBaseLanguage();
-    myMPSBaseLanguage.init();
+    myPlatform.install(new MPSBaseLanguage());
   }
 
   private void disposeMPS() {
-    myMPSBaseLanguage.dispose();
     myPlatform.dispose();
   }
 

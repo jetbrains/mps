@@ -17,7 +17,12 @@
       </concept>
     </language>
     <language id="68015e26-cc4d-49db-8715-b643faea1769" name="jetbrains.mps.lang.test.generator">
+      <concept id="8945822034016668031" name="jetbrains.mps.lang.test.generator.structure.ModelMatchOptions" flags="ng" index="1difz1">
+        <property id="8945822034016710951" name="aggregateIgnoreOrder" index="1di42p" />
+        <property id="8945822034016699605" name="propertyUserValue" index="1di7lF" />
+      </concept>
       <concept id="554465258093203543" name="jetbrains.mps.lang.test.generator.structure.TransformationMatchAssertion" flags="ng" index="3FggHx">
+        <child id="8945822034017524340" name="matchOptions" index="1dnYJa" />
         <child id="554465258093203555" name="transformationPlan" index="3FggHl" />
         <child id="554465258093203552" name="referenceModel" index="3FggHm" />
         <child id="554465258093203550" name="inputModel" index="3FggHC" />
@@ -35,7 +40,7 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -96,6 +101,44 @@
         <node concept="1j_P7g" id="354Yu58sl42" role="1j$8Uc">
           <property role="1j_P7h" value="jetbrains.mps.test.smodel.gp@genplan" />
         </node>
+      </node>
+    </node>
+  </node>
+  <node concept="3FgkA8" id="1NpV1yWUGQg">
+    <property role="TrG5h" value="IgnoreNodeOrderTest" />
+    <property role="3Fgkti" value="Check that option to ignore node ordering works" />
+    <node concept="3Fgkto" id="1NpV1yWUGQJ" role="3Fgkth">
+      <property role="TrG5h" value="IN" />
+      <node concept="1dCxOl" id="1NpV1yWUGQU" role="3Fgkt4">
+        <property role="1XweGQ" value="r:9e2eb6a3-9feb-4149-9dda-889f02c65334" />
+        <node concept="1j_P7g" id="1NpV1yWUGQV" role="1j$8Uc">
+          <property role="1j_P7h" value="jetbrains.mps.test.smodel.data2" />
+        </node>
+      </node>
+    </node>
+    <node concept="3Fgkto" id="1NpV1yWUGQk" role="3Fgkth">
+      <property role="TrG5h" value="OUT" />
+      <node concept="1dCxOl" id="1NpV1yWUGR6" role="3Fgkt4">
+        <property role="1XweGQ" value="r:cda9f2b4-efae-4c0c-996c-6a34ae3da753" />
+        <node concept="1j_P7g" id="1NpV1yWUGR7" role="1j$8Uc">
+          <property role="1j_P7h" value="jetbrains.mps.test.smodel.refdata3" />
+        </node>
+      </node>
+    </node>
+    <node concept="1difz1" id="1NpV1yWUGRi" role="3Fgkth">
+      <property role="1di42p" value="true" />
+      <property role="TrG5h" value="any-order" />
+      <property role="1di7lF" value="true" />
+    </node>
+    <node concept="3FggHx" id="1NpV1yWUGRr" role="3FggHh">
+      <node concept="3FggHH" id="1NpV1yWUGRs" role="3FggHC">
+        <ref role="3FggHE" node="1NpV1yWUGQJ" resolve="IN" />
+      </node>
+      <node concept="3FggHH" id="1NpV1yWUGRt" role="3FggHm">
+        <ref role="3FggHE" node="1NpV1yWUGQk" resolve="OUT" />
+      </node>
+      <node concept="3FggHH" id="1NpV1yWUGRx" role="1dnYJa">
+        <ref role="3FggHE" node="1NpV1yWUGRi" resolve="any-order" />
       </node>
     </node>
   </node>

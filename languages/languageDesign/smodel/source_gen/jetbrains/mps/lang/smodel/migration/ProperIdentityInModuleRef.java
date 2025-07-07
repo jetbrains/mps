@@ -10,7 +10,6 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
@@ -40,16 +39,8 @@ public class ProperIdentityInModuleRef extends MigrationScriptBase {
     {
       SearchScope scope_g2wvru_a0e = CommandUtil.createScope(m);
       final SearchScope scope_g2wvru_a0e_0 = new EditableFilteringScope(scope_g2wvru_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_g2wvru_a0e_0;
-        }
-      };
-      for (SNode mre : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ModuleRefExpression$J0, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.moduleId$APaR), CONCEPTS.ModulePointer$Ay);
-        }
-      })) {
+      QueryExecutionContext context = () -> scope_g2wvru_a0e_0;
+      for (SNode mre : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ModuleRefExpression$J0, false)).where((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.moduleId$APaR), CONCEPTS.ModulePointer$Ay))) {
         SNode mpOld = SNodeOperations.cast(SLinkOperations.getTarget(mre, LINKS.moduleId$APaR), CONCEPTS.ModulePointer$Ay);
         SNode mpNew = SModelOperations.createNewNode(SNodeOperations.getModel(mre), null, CONCEPTS.ModulePointer$7i);
         SPropertyOperations.assign(mpNew, PROPS.moduleName$RP9b, SPropertyOperations.getString(mpOld, PROPS.moduleName$QKD6));
@@ -73,7 +64,7 @@ public class ProperIdentityInModuleRef extends MigrationScriptBase {
       }
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 14);
   }
 

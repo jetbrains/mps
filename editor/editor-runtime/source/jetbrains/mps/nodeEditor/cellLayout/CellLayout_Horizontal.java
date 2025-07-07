@@ -15,10 +15,11 @@
  */
 package jetbrains.mps.nodeEditor.cellLayout;
 
+import jetbrains.mps.editor.runtime.HtmlTextBuilderImpl;
 import jetbrains.mps.editor.runtime.TextBuilderImpl;
 import jetbrains.mps.editor.runtime.style.CellAlign;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.nodeEditor.EditorSettings;
+import jetbrains.mps.openapi.editor.HtmlTextBuilder;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
@@ -130,7 +131,7 @@ public class CellLayout_Horizontal extends AbstractCellLayout {
     if (editorCells.getStyle().isSpecified(StyleAttributes.MAX_WIDTH)) {
       return editorCells.getX() + editorCells.getStyle().get(StyleAttributes.MAX_WIDTH);
     }
-    return editorCells.getRootParent().getX() + EditorSettings.getInstance().getVerticalBoundWidth();
+    return editorCells.getRootParent().getX() + editorCells.getEditorComponent().getEditorComponentSettings().getRightMargin();
   }
 
   @Override
@@ -138,6 +139,15 @@ public class CellLayout_Horizontal extends AbstractCellLayout {
     TextBuilder result = new TextBuilderImpl();
     for (EditorCell editorCell : editorCells) {
       result.appendToTheRight(editorCell.renderText(), PunctuationUtil.hasLeftGap(editorCell));
+    }
+    return result;
+  }
+
+  @Override
+  public HtmlTextBuilder doLayoutHtml(Iterable<EditorCell> editorCells) {
+    HtmlTextBuilderImpl result = new HtmlTextBuilderImpl();
+    for (EditorCell editorCell : editorCells){
+      result.appendToTheRight(editorCell.renderHtml(), PunctuationUtil.hasLeftGap(editorCell));
     }
     return result;
   }

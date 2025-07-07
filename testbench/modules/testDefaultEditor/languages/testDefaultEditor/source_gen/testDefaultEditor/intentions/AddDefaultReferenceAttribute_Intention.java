@@ -23,21 +23,21 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public final class AddDefaultReferenceAttribute_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddDefaultReferenceAttribute_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:be519384-ff73-407d-8bb6-1d18a1417684(testDefaultEditor.intentions)", "2870455723671213010"));
   }
+
   @Override
   public String getPresentation() {
     return "AddDefaultReferenceAttribute";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -47,6 +47,7 @@ public final class AddDefaultReferenceAttribute_Intention extends AbstractIntent
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       if ((new IAttributeDescriptor.LinkAttribute(CONCEPTS.DefaultReferenceAttribute$Cs, LINKS.bestFriend$rXFF).get(node) != null)) {
@@ -55,6 +56,7 @@ public final class AddDefaultReferenceAttribute_Intention extends AbstractIntent
         return "add default reference attribute";
       }
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if ((new IAttributeDescriptor.LinkAttribute(CONCEPTS.DefaultReferenceAttribute$Cs, LINKS.bestFriend$rXFF).get(node) != null)) {
@@ -65,10 +67,19 @@ public final class AddDefaultReferenceAttribute_Intention extends AbstractIntent
       }
 
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddDefaultReferenceAttribute_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

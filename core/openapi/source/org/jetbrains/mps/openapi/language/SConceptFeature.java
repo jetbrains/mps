@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,4 +39,13 @@ public interface SConceptFeature extends SNamedElement {
    * @return false when MPS doesn't have full runtime descriptor for this element and therefore this element may be of limited use in MPS
    */
   boolean isValid();
+
+  /**
+   * Indicates that model persistence shall ignore certain features (i.e. properties, association and aggregation links) when
+   * serialising node instance
+   * @return {@code} false for regular features that shall get persisted
+   */
+  default boolean isTransient() {
+    return false;
+  }
 }

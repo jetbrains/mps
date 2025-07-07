@@ -137,11 +137,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
   }
   private EditorCell createCustom_0() {
-    AbstractCellProvider provider = new _FunctionTypes._return_P0_E0<HLineCellProvider>() {
-      public HLineCellProvider invoke() {
-        return new HLineCellProvider(myNode);
-      }
-    }.invoke();
+    AbstractCellProvider provider = ((_FunctionTypes._return_P0_E0<HLineCellProvider>) () -> new HLineCellProvider(myNode)).invoke();
     EditorCell editorCell = provider.createEditorCell(getEditorContext());
     editorCell.setCellId("Custom_ksgn1c_b1a");
     Style style = new StyleImpl();

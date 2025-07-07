@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,13 +31,13 @@ import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
 import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.IndexAwareModelFactory;
 import jetbrains.mps.persistence.IndexAwareModelFactory.Callback;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.workbench.findusages.UsageEntry.ConceptInstance;
 import jetbrains.mps.workbench.findusages.UsageEntry.ModelUse;
 import jetbrains.mps.workbench.findusages.UsageEntry.NodeUse;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNodeId;
@@ -163,7 +163,7 @@ public class MPSModelsIndexer extends ScalarIndexExtension<UsageEntry> {
       try {
         mf.index(new ByteArrayInputStream(content), cb);
       } catch (IOException ex) {
-        Logger.getLogger(MPSModelsIndexer.class).warn(String.format("Indexing failed: %s", ex), ex);
+        Logger.getLogger(MPSModelsIndexer.class).warning(String.format("Indexing failed: %s", ex), ex);
       }
       return cb.getResult();
     }

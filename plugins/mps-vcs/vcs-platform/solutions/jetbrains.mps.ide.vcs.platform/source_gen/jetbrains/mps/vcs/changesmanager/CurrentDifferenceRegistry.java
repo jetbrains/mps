@@ -60,11 +60,7 @@ public class CurrentDifferenceRegistry {
     // do not start the command thread immediately, let project refresh its structures and components.
     // Not sure whether to use StartupManager.registerPostStartupActivity or runWhenSmart; chose latter as its javadoc
     // promises initialized project in addition to indexing done (to some extent).
-    DumbService.getInstance(getProject()).runWhenSmart(new Runnable() {
-      public void run() {
-        myCommandQueue.startThread();
-      }
-    });
+    DumbService.getInstance(getProject()).runWhenSmart(() -> myCommandQueue.startThread());
   }
 
   private void projectClosed() {
@@ -219,6 +215,7 @@ public class CurrentDifferenceRegistry {
     @Override
     protected void stopListening(SModel model) {
       model.removeModelListener(this);
+      disposeModelChangesManager(model.getReference());
     }
 
 
@@ -230,11 +227,6 @@ public class CurrentDifferenceRegistry {
       updateModelIfTracked(model.getReference(), true);
     }
 
-    @Override
-    public void beforeModelRemoved(SModule module, SModel model) {
-      disposeModelChangesManager(model.getReference());
-      super.beforeModelRemoved(module, model);
-    }
   }
 
   private static class MyEventsCollector extends ModelsEventsCollector {

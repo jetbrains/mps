@@ -32,8 +32,6 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -45,16 +43,16 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class CellActionMapDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951978cfeL, "jetbrains.mps.lang.editor.structure.CellActionMapDeclaration");
 
-  public static final SMethod<SNode> getBaseConcept_id2hxg_BDjKM8 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getBaseConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2hxg_BDjKM8").build();
-  public static final SMethod<Void> setBaseConcept_id5r_35Ihc58c = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setBaseConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5r_35Ihc58c").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getApplicableConcept_id1hkJY7harvo = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getApplicableConcept").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1hkJY7harvo").build();
-  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Iterable<ImportCycle>> detectCycles_id7pqJbakYMN2 = new SMethodBuilder<Iterable<ImportCycle>>(new SJavaCompoundTypeImpl((Class<Iterable<ImportCycle>>) ((Class) Object.class))).name("detectCycles").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7pqJbakYMN2").build();
-  /*package*/ static final SMethod<Void> detectCycles_id5Sx2dSLQoMP = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("detectCycles").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).id("5Sx2dSLQoMP").build(SMethodBuilder.createJavaParameter((Class<Iterable<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<List<ImportCycle>>) ((Class) Object.class), ""));
-  public static final SMethod<Void> forEachActionOfType_id2pg2GNQfgVG = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("forEachActionOfType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2pg2GNQfgVG").build(SMethodBuilder.createJavaParameter((Class<SEnumerationLiteral>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Consumer.class, ""));
-  /*package*/ static final SMethod<Void> forEachActionOfType_id2pg2GNQaQaM = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("forEachActionOfType").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).id("2pg2GNQaQaM").build(SMethodBuilder.createJavaParameter((Class<SEnumerationLiteral>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Iterable<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Consumer.class, ""));
-  public static final SMethod<Iterable<SNode>> collectItemsOfType_id5Sx2dSLnOI$ = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("collectItemsOfType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5Sx2dSLnOI$").build(SMethodBuilder.createJavaParameter((Class<SEnumerationLiteral>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> containsItemOfType_id2pg2GNQgnKJ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("containsItemOfType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2pg2GNQgnKJ").build(SMethodBuilder.createJavaParameter((Class<SEnumerationLiteral>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getBaseConcept_id2hxg_BDjKM8 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getBaseConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2621449412040133768L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
+  public static final SMethod<Void> setBaseConcept_id5r_35Ihc58c = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setBaseConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6261424444345963020L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getApplicableConcept_id1hkJY7harvo = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getApplicableConcept").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1465006755399972824L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Iterable<ImportCycle>> detectCycles_id7pqJbakYMN2 = new SMethodBuilder<Iterable<ImportCycle>>(new SJavaCompoundTypeImpl((Class<Iterable<ImportCycle>>) ((Class) Object.class))).name("detectCycles").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8528336319569145026L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  /*package*/ static final SMethod<Void> detectCycles_id5Sx2dSLQoMP = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("detectCycles").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(6782712264208780469L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2(SMethodBuilder.createJavaParameter((Class<Iterable<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<List<ImportCycle>>) ((Class) Object.class), ""));
+  public static final SMethod<Void> forEachActionOfType_id2pg2GNQfgVG = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("forEachActionOfType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2760718446998916844L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2(SMethodBuilder.createJavaParameter((Class<SEnumerationLiteral>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Consumer.class, ""));
+  /*package*/ static final SMethod<Void> forEachActionOfType_id2pg2GNQaQaM = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("forEachActionOfType").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(2760718446997758642L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2(SMethodBuilder.createJavaParameter((Class<SEnumerationLiteral>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Iterable<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Consumer.class, ""));
+  public static final SMethod<Iterable<SNode>> collectItemsOfType_id5Sx2dSLnOI$ = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("collectItemsOfType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6782712264200768420L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2(SMethodBuilder.createJavaParameter((Class<SEnumerationLiteral>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> containsItemOfType_id2pg2GNQgnKJ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("containsItemOfType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2760718446999206959L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2(SMethodBuilder.createJavaParameter((Class<SEnumerationLiteral>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getBaseConcept_id2hxg_BDjKM8, setBaseConcept_id5r_35Ihc58c, getApplicableConcept_id1hkJY7harvo, getScope_id52_Geb4QDV$, detectCycles_id7pqJbakYMN2, detectCycles_id5Sx2dSLQoMP, forEachActionOfType_id2pg2GNQfgVG, forEachActionOfType_id2pg2GNQaQaM, collectItemsOfType_id5Sx2dSLnOI$, containsItemOfType_id2pg2GNQgnKJ);
 
@@ -105,22 +103,14 @@ public final class CellActionMapDeclaration__BehaviorDescriptor extends BaseBHDe
       return;
     }
 
-    if (Sequence.fromIterable(_traceback.value).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode imp) {
-        return Objects.equals(SLinkOperations.getTarget(next, LINKS.cellActionMap$$ow7), SLinkOperations.getTarget(imp, LINKS.cellActionMap$$ow7));
-      }
-    })) {
+    if (Sequence.fromIterable(_traceback.value).any((imp) -> Objects.equals(SLinkOperations.getTarget(next, LINKS.cellActionMap$$ow7), SLinkOperations.getTarget(imp, LINKS.cellActionMap$$ow7)))) {
       // Found a cycle which, however, doesn't contain this action map.
       // Ignore here, it is detected from a different starting point.
       return;
     }
 
     _traceback.value = Sequence.fromIterable(_traceback.value).concat(ListSequence.fromList(Collections.singletonList(next)));
-    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(next, LINKS.cellActionMap$$ow7), LINKS.imports$QP4v)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode imp) {
-        CellActionMapDeclaration__BehaviorDescriptor.detectCycles_id5Sx2dSLQoMP.invokeSpecial(__thisNode__, _traceback.value, imp, accumulator);
-      }
-    });
+    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(next, LINKS.cellActionMap$$ow7), LINKS.imports$QP4v)).visitAll((imp) -> CellActionMapDeclaration__BehaviorDescriptor.detectCycles_id5Sx2dSLQoMP.invokeSpecial(__thisNode__, _traceback.value, imp, accumulator));
   }
   /*package*/ static void forEachActionOfType_id2pg2GNQfgVG(@NotNull SNode __thisNode__, SEnumerationLiteral actionId, Consumer<? super SNode> f) {
     CellActionMapDeclaration__BehaviorDescriptor.forEachActionOfType_id2pg2GNQaQaM.invokeSpecial(__thisNode__, actionId, Collections.<SNode>emptyList(), f);
@@ -135,31 +125,23 @@ public final class CellActionMapDeclaration__BehaviorDescriptor extends BaseBHDe
     _visited.value = Sequence.fromIterable(_visited.value).concat(Sequence.fromIterable(Sequence.<SNode>singleton(__thisNode__)));
 
     // first handle imports
-    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.imports$QP4v)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode imp) {
-        if ((boolean) CellActionMapImportSelector__BehaviorDescriptor.selectsActionId_id3XXPjz_pJfc.invoke(SLinkOperations.getTarget(imp, LINKS.selector$hL1R), actionId)) {
-          CellActionMapDeclaration__BehaviorDescriptor.forEachActionOfType_id2pg2GNQaQaM.invoke(SLinkOperations.getTarget(imp, LINKS.cellActionMap$$ow7), actionId, _visited.value, f);
-        }
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.imports$QP4v)).visitAll((imp) -> {
+      if ((boolean) CellActionMapImportSelector__BehaviorDescriptor.selectsActionId_id3XXPjz_pJfc.invoke(SLinkOperations.getTarget(imp, LINKS.selector$hL1R), actionId)) {
+        CellActionMapDeclaration__BehaviorDescriptor.forEachActionOfType_id2pg2GNQaQaM.invoke(SLinkOperations.getTarget(imp, LINKS.cellActionMap$$ow7), actionId, _visited.value, f);
       }
     });
 
 
     // then handle actions defined directly in this action map
-    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.item$ZCi9)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        if (Objects.equals(CellActionMapItem__BehaviorDescriptor.getActionId_idJCy0JrvU0M.invoke(it), actionId)) {
-          f.accept(it);
-        }
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.item$ZCi9)).visitAll((it) -> {
+      if (Objects.equals(CellActionMapItem__BehaviorDescriptor.getActionId_idJCy0JrvU0M.invoke(it), actionId)) {
+        f.accept(it);
       }
     });
   }
   /*package*/ static Iterable<SNode> collectItemsOfType_id5Sx2dSLnOI$(@NotNull SNode __thisNode__, SEnumerationLiteral actionId) {
     final List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
-    Consumer<? super SNode> add = new Consumer<SNode>() {
-      public void accept(SNode item) {
-        ListSequence.fromList(result).addElement(item);
-      }
-    };
+    Consumer<? super SNode> add = (SNode item) -> ListSequence.fromList(result).addElement(item);
     CellActionMapDeclaration__BehaviorDescriptor.forEachActionOfType_id2pg2GNQfgVG.invoke(__thisNode__, actionId, add);
     return result;
   }

@@ -23,7 +23,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class CellModel_HierarchycalTable__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x272d3b44cc8481eL, 0x9e2f07793fbfcb41L, 0x1f44bcab4ea21b62L, "jetbrains.mps.lang.editor.table.structure.CellModel_HierarchycalTable");
 
-  public static final SMethod<SNode> getContainingConceptDeclaration_id5p3TFWLvETA = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getContainingConceptDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5p3TFWLvETA").build();
+  public static final SMethod<SNode> getContainingConceptDeclaration_id5p3TFWLvETA = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getContainingConceptDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6216065619544944230L).languageId(0x9e2f07793fbfcb41L, 0x272d3b44cc8481eL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getContainingConceptDeclaration_id5p3TFWLvETA);
 

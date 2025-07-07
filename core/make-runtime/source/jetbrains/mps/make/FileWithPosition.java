@@ -33,6 +33,7 @@ public final class FileWithPosition {
   }
 
   // use {@code -1} for any unknown value
+  // offset, line and column are 0-based
   public FileWithPosition(File file, long offset, long line, long column) {
     myFile = file;
     myOffset = offset;

@@ -21,11 +21,7 @@ public class BuildCompositePath_Constraints extends BaseConstraintsDescriptor {
 
   public static class Head_Property extends BasePropertyConstraintsDescriptor {
     public Head_Property(ConstraintsDescriptor container) {
-      super(PROPS.head$$gC$, container);
-    }
-    @Override
-    public boolean hasOwnGetter() {
-      return true;
+      super(PROPS.head$$gC$, container, true, false, false);
     }
     @Override
     public Object getValue(SNode node) {

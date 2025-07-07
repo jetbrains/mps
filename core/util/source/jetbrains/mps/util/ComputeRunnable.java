@@ -18,8 +18,10 @@ package jetbrains.mps.util;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * @deprecated With method references and {@link java.util.function.Supplier}, no reason to keep this class
  * @author Artem Tikhomirov
  */
+@Deprecated(since = "2023.3", forRemoval = true)
 public class ComputeRunnable<T> extends AbstractComputeRunnable<T> {
   private final Computable<T> myComputable;
 

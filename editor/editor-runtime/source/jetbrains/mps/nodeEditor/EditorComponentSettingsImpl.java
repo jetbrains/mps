@@ -21,6 +21,8 @@ import jetbrains.mps.openapi.editor.cells.EditorFontMetrics;
 
 import javax.swing.JComponent;
 import java.awt.Font;
+import java.util.HashMap;
+import java.util.Map;
 
 public class EditorComponentSettingsImpl implements EditorComponentSettings {
 
@@ -28,9 +30,22 @@ public class EditorComponentSettingsImpl implements EditorComponentSettings {
 
   private final JComponent myNodeEditorComponent;
   private double myUIScale = 1.0;
+  private final Map<String, EditorFontMetricsImpl> myFontMetrics = new HashMap<>();
 
   EditorComponentSettingsImpl(EditorComponent nodeEditorComponent) {
     myNodeEditorComponent = nodeEditorComponent;
+  }
+
+  @Override
+  public int getRightMargin() {
+    return getWidth(' ', EditorSettings.getInstance().getVerticalBound());
+  }
+
+  @Override
+  public int getWidth(char c, int count) {
+    EditorSettings settings = EditorSettings.getInstance();
+    EditorFontMetrics fontMetrics = getFontMetrics(settings.getFontFamily(), Font.PLAIN, getFontSize());
+    return fontMetrics.getWidth(c, count);
   }
 
   @Override
@@ -50,7 +65,8 @@ public class EditorComponentSettingsImpl implements EditorComponentSettings {
 
   @Override
   public EditorFontMetrics getFontMetrics(String family, int style, int fontSize) {
-    return new EditorFontMetricsImpl(family, style, fontSize, myNodeEditorComponent);
+    String key = style + family + fontSize;
+    return myFontMetrics.computeIfAbsent(key, k -> new EditorFontMetricsImpl(family, style, fontSize, myNodeEditorComponent));
   }
 
   private int scale(int fontSize) {

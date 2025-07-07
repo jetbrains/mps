@@ -12,7 +12,7 @@
   </root>
   <root nodeRef="r:88d422f8-169d-45a0-bc07-791cf8753838(jetbrains.mps.lang.behavior.actions)/1238617792577">
     <file name="ConceptMethod.java">
-      <node id="1238617792581" at="21,91,22,123" concept="3" />
+      <node id="1238617792581" at="21,102,22,123" concept="3" />
       <node id="1238617792588" at="22,123,23,103" concept="0" />
       <node id="1238617792603" at="24,196,25,70" concept="0" />
       <node id="1238617792610" at="25,70,26,69" concept="0" />
@@ -24,13 +24,14 @@
       <node id="1238617792577" at="43,0,44,0" concept="4" trace="isAbstract$qvtK" />
       <node id="1238617792577" at="44,0,45,0" concept="4" trace="isVirtual$quZI" />
       <node id="1238617792594" at="23,103,27,7" concept="1" />
-      <node id="1238617792578" at="21,0,29,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <node id="1238617792578" at="21,0,29,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;ILorg/jetbrains/mps/openapi/model/SModel;)V" />
       <scope id="1238617792602" at="24,196,26,69" />
-      <scope id="1238617792578" at="21,91,27,7">
+      <scope id="1238617792578" at="21,102,27,7">
         <var name="behaviour" id="1238617792582" />
       </scope>
       <scope id="1238617792578" at="21,0,29,0">
         <var name="enclosingNode" id="1238617792578" />
+        <var name="index" id="1238617792578" />
         <var name="model" id="1238617792578" />
         <var name="newNode" id="1238617792578" />
         <var name="sampleNode" id="1238617792578" />

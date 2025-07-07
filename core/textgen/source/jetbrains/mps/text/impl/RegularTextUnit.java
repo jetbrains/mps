@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,8 @@
  */
 package jetbrains.mps.text.impl;
 
+import jetbrains.mps.components.ComponentHost;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.text.BufferSnapshot;
 import jetbrains.mps.text.CompatibilityTextUnit;
@@ -34,6 +36,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
+import java.util.stream.Stream.Builder;
 
 /**
  * General {@link TextUnit} implementation for use both Java and non-Java source code, as well as binary (Base64-encoded) units.
@@ -45,6 +49,9 @@ public class RegularTextUnit implements TextUnit, CompatibilityTextUnit {
   private final String myFilename;
   private final String myPath;
   private final Charset myEncoding;
+
+  private final ComponentHost myPlatform;
+
   private Status myState = Status.Undefined;
   private String myOutcome;
   private BufferLayoutConfiguration myLayoutBuilder;
@@ -53,19 +60,42 @@ public class RegularTextUnit implements TextUnit, CompatibilityTextUnit {
   private ErrorCollector myErrorCollector;
   private List<Pair<String,Object>> myContextObjects;
 
+  /**
+   * @deprecated use {@link #RegularTextUnit(SNode, String, String, Charset, ComponentHost)} instead
+   */
+  @Deprecated(since = "2023.3", forRemoval = true)
   public RegularTextUnit(@NotNull SNode root, @NotNull String filename) {
     this(root, filename, null, null);
   }
 
+  /**
+   * @deprecated use {@link #RegularTextUnit(SNode, String, String, Charset, ComponentHost)} instead
+   */
+  @Deprecated(since = "2023.3", forRemoval = true)
   public RegularTextUnit(@NotNull SNode root, @NotNull String filename, @Nullable Charset encoding) {
     this(root, filename, null, encoding);
   }
 
+  /**
+   * @deprecated use {@link #RegularTextUnit(SNode, String, String, Charset, ComponentHost)} instead
+   */
+  @Deprecated(since = "2023.3", forRemoval = true)
   public RegularTextUnit(@NotNull SNode root, @NotNull String filename, @Nullable String unitPath, @Nullable Charset encoding) {
     myStartNode = root;
     myFilename = filename;
     myPath = unitPath;
     myEncoding = encoding;
+    // FIXME transition period, remove once there we generate uses of cons with CH and there are no uses of these constructors
+    myPlatform = null;
+    myLayoutBuilder = new BufferLayoutConfiguration();
+  }
+
+  public RegularTextUnit(@NotNull SNode root, @NotNull String filename, @Nullable String unitPath, @Nullable Charset encoding, @NotNull ComponentHost mpsPlatform) {
+    myStartNode = root;
+    myFilename = filename;
+    myPath = unitPath;
+    myEncoding = encoding;
+    myPlatform = mpsPlatform;
     myLayoutBuilder = new BufferLayoutConfiguration();
   }
 
@@ -85,6 +115,7 @@ public class RegularTextUnit implements TextUnit, CompatibilityTextUnit {
 
   /**
    * XXX Perhaps, getAssociatedData(Class) would be better name?
+   * XXX Promote method to TextUnit!
    *
    * Access context object compatible with the supplied class.
    * Return the instance supplied through {@link #addContextObject(String, Object)}, if any.
@@ -93,22 +124,24 @@ public class RegularTextUnit implements TextUnit, CompatibilityTextUnit {
    * similar to IAdaptable in the future (i.e. each context object that is IAdaptable would get consulted IAdaptable.adapt()
    * in addition to isInstance()).
    */
+  @Override
   @Nullable
-  public <T> T findContextObject(Class<T> kind) {
+  public <T> Stream<T> findContextObject(Class<T> kind) {
     if (myContextObjects == null) {
-      return null;
+      return Stream.empty();
     }
+    final Builder<T> builder = Stream.builder();
     for (Pair<String, Object> p : myContextObjects) {
       if (kind.isInstance(p.o2)) {
-        return kind.cast(p.o2);
+        builder.add(kind.cast(p.o2));
       }
     }
-    return null;
+    return builder.build();
   }
 
   /**
    * @param identity key an object has been registered with in {@link #addContextObject(String, Object)}
-   * @param kind object instance has to be instance of supplied class for the call to succeed
+   * @param kind object instance has to be an instance of supplied class for the call to succeed
    * @param <T> context object type
    * @return registered context object or {@code null} if no record matching both identity key and Java class found.
    */
@@ -146,7 +179,8 @@ public class RegularTextUnit implements TextUnit, CompatibilityTextUnit {
 
   @Override
   public void generate() {
-    if (!TextGenRegistry.getInstance().hasTextGen(myStartNode)) {
+    final TextGenRegistry textGenRegistry = myPlatform == null ? TextGenRegistry.getInstance() : myPlatform.findComponent(TextGenRegistry.class);
+    if (!textGenRegistry.hasTextGen(myStartNode)) {
       myState = Status.Empty;
       return;
     }
@@ -158,11 +192,11 @@ public class RegularTextUnit implements TextUnit, CompatibilityTextUnit {
 
 
     // if we got that far (tried to generate(), at least), do not consider state == undefined.
-    // It's easy way to deal with uncaught exceptions from text generation and not to fail with assert state != Undefined in TextGen_Facet.
+    // It's an easy way to deal with uncaught exceptions from text generation and not to fail with assert state != Undefined in TextGen_Facet.
     // Proper way is likely to try/catch/re-throw here.
     myState = Status.Failed;
     myErrorCollector = new ErrorCollector();
-    TextGenTransitionContext tgContext = new TextGenTransitionContext(myStartNode, this, myErrorCollector, trueBuffer);
+    TextGenContextImpl tgContext = new TextGenContextImpl(myStartNode, new TextGenContextImpl.Values(textGenRegistry, this, myErrorCollector, trueBuffer));
 
     TextGenSupport tgs = new TextGenSupport(tgContext);
     tgs.appendNode(myStartNode);
@@ -220,16 +254,19 @@ public class RegularTextUnit implements TextUnit, CompatibilityTextUnit {
 
   @Nullable
   public Map<SNode, TraceablePositionInfo> getPositions() {
+    Logger.getLogger(getClass()).warnDeprecatedUse("Stop using CompatibilityTextUnit");
     return myTraceCollector == null ? null : myTraceCollector.getTracePositions();
   }
 
   @Nullable
   public Map<SNode, ScopePositionInfo> getScopePositions() {
+    Logger.getLogger(getClass()).warnDeprecatedUse("Stop using CompatibilityTextUnit");
     return myTraceCollector == null ? null : myTraceCollector.getScopePositions();
   }
 
   @Nullable
   public Map<SNode, UnitPositionInfo> getUnitPositions() {
+    Logger.getLogger(getClass()).warnDeprecatedUse("Stop using CompatibilityTextUnit");
     return myTraceCollector == null ? null : myTraceCollector.getUnitPositions();
   }
 

@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright 2003-2020 JetBrains s.r.o.
+  ~ Copyright 2003-2024 JetBrains s.r.o.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -14,12 +14,9 @@
   ~ limitations under the License.
   -->
 
-<components>
+<idea-plugin>
   <actions>
     <group id="MPS.MessagesView" popup="false"/>
-    <!-- MPS patch: see MPS-24488  TODO: investigate-->
-    <action id="QuickImplementations" class="jetbrains.mps.codeInsight.hint.actions.MockShowImplementationsAction" overrides="true"/>
-    <action id="QuickJavaDoc" class="jetbrains.mps.codeInsight.documentation.actions.MockShowQuickDocInfoAction" overrides="true"/>
   </actions>
 
   <application-components>
@@ -52,15 +49,6 @@
     </component>
 
     <component>
-      <implementation-class>jetbrains.mps.ide.vfs.JrtIdeaFileSystem</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.vfs.JarIdeaFileSystem</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.vfs.LocalIdeaFileSystem</implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.ide.vfs.IdeaFileSystem</implementation-class>
     </component>
     <component>
@@ -90,10 +78,6 @@
     <component>
       <implementation-class>jetbrains.mps.ide.undo.OnReloadingUndoCleaner</implementation-class>
     </component>    <!-- migration: versions handling -->
-    <component>
-      <interface-class>jetbrains.mps.migration.global.MigrationProperties</interface-class>
-      <implementation-class>jetbrains.mps.migration.global.ProjectMigrationProperties</implementation-class>
-    </component>
   </project-components>
 
   <applicationListeners>
@@ -101,6 +85,7 @@
     <listener class="jetbrains.mps.ide.save.IdeMPSFileSaver" topic="com.intellij.openapi.fileEditor.FileDocumentManagerListener" activeInHeadlessMode="false"/>
     <listener class="jetbrains.mps.ide.platform.watching.ModelCacheReloader" topic="com.intellij.openapi.vfs.newvfs.BulkFileListener"/>
     <listener class="jetbrains.mps.ide.platform.watching.FSChangesWatcher" topic="com.intellij.openapi.vfs.newvfs.BulkFileListener"/>
+    <listener class="jetbrains.mps.ide.platform.watching.IdeaDocumentReloader" topic="com.intellij.openapi.vfs.newvfs.BulkFileListener"/>
     <listener class="jetbrains.mps.repository.FSNotificationsCleaner" topic="com.intellij.ide.AppLifecycleListener"/>
   </applicationListeners>
 
@@ -111,6 +96,8 @@
                     beanClass="jetbrains.mps.VisibleModuleMask"/>
     <extensionPoint qualifiedName="com.intellij.mps.modelRootFactory"
                     beanClass="jetbrains.mps.ide.persistence.ModelRootFactoryEP"/>
+    <extensionPoint qualifiedName="com.intellij.mps.modelIdFactory"
+                    beanClass="jetbrains.mps.ide.persistence.ModelIdFactoryExtension"/>
     <extensionPoint qualifiedName="com.intellij.mps.ModelFactoryProvider"
                     beanClass="jetbrains.mps.persistence.ModelFactoryRegister$ModelFactoryProvider"/>
     <extensionPoint qualifiedName="com.intellij.mps.DataSourceFactoryRuleProvider"
@@ -120,6 +107,8 @@
     <extensionPoint qualifiedName="com.intellij.mps.gotoParticipant"
                     interface="org.jetbrains.mps.openapi.persistence.NavigationParticipant"
                     area="IDEA_PROJECT"/>
+    <extensionPoint qualifiedName="jetbrains.mps.componentPluginFactory"
+                    interface="jetbrains.mps.components.ComponentPluginFactory"/>
   </extensionPoints>
 
   <extensions defaultExtensionNs="com.intellij">
@@ -127,6 +116,8 @@
     <applicationService serviceImplementation="jetbrains.mps.VisibleModuleRegistry"/>
     <applicationService serviceImplementation="jetbrains.mps.ide.platform.watching.WatchedRoots"/>
     <applicationService serviceImplementation="jetbrains.mps.repository.FSNotificationsImprover"/>
+
+    <projectService serviceImplementation="jetbrains.mps.ide.vfs.ProjectRootListenerComponent" />
 
     <fileTypeFactory implementation="jetbrains.mps.fileTypes.MPSFileTypeFactory"/>
 
@@ -136,8 +127,8 @@
     <getDataRule key="context.ProjectFileDirectory"
                  implementationClass="jetbrains.mps.ide.dataExtraction.fileChooser.ProjectFileRule"/>
 
-    <getDataRule key="MPS_MPSProject" implementationClass="jetbrains.mps.ide.dataExtraction.MPSProjectRule"/>
-    <getDataRule key="MPS_Frame" implementationClass="jetbrains.mps.ide.dataExtraction.FrameRule"/>
+    <getDataRule key="MPS_MPSProject" implementationClass="jetbrains.mps.ide.dataExtraction.MPSProjectRule" type="fast"/>
+    <getDataRule key="MPS_Frame" implementationClass="jetbrains.mps.ide.dataExtraction.FrameRule" type="fast"/>
 
     <fileBasedIndex implementation="jetbrains.mps.workbench.findusages.MPSModelsIndexer"/>
     <fileBasedIndex implementation="jetbrains.mps.workbench.index.RootNodeNameIndex"/>
@@ -148,6 +139,13 @@
     <postStartupActivity implementation="jetbrains.mps.workbench.findusages.MPSModelsFastFindSupport$Plug" />
     <mps.gotoParticipant implementation="jetbrains.mps.workbench.goTo.index.MPSModelNavigationContributor" />
     <mps.gotoParticipant implementation="jetbrains.mps.workbench.goTo.index.JavaStubNavigationContributor"/>
-
+    <registryKey key="mps.module.visibility.mask.always" defaultValue="false" description="MPS: always use visibility mask to show modules" restartRequired="false"/>
+    <registryKey key="mps.module.rename.show.details" defaultValue="false" description="MPS: Rename Module Dialog to show extra details" restartRequired="false"/>
+    <registryKey key="mps.module.rename.related.ignore" defaultValue="false" description="MPS: Rename Module Dialog to ignore 'related' modules" restartRequired="false"/>
+    <registryKey key="mps.actions.old_edt" defaultValue="false" description="MPS: Use legacy EDT action update" restartRequired="true"/>
   </extensions>
-</components>
+
+  <extensions defaultExtensionNs="jetbrains.mps">
+    <componentPluginFactory implementation="jetbrains.mps.baseLanguage.search.MPSBaseLanguage$Factory"/>
+  </extensions>
+</idea-plugin>

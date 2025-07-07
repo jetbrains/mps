@@ -22,7 +22,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class Antiquotation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104658L, "jetbrains.mps.lang.quotation.structure.Antiquotation");
 
-  public static final SMethod<SContainmentLink> getAttributedLink_id5e7X3XC_mgR = new SMethodBuilder<SContainmentLink>(new SJavaCompoundTypeImpl(SContainmentLink.class)).name("getAttributedLink").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5e7X3XC_mgR").build();
+  public static final SMethod<SContainmentLink> getAttributedLink_id5e7X3XC_mgR = new SMethodBuilder<SContainmentLink>(new SJavaCompoundTypeImpl(SContainmentLink.class)).name("getAttributedLink").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6019047980178695223L).languageId(0xbbcc75c4219e9555L, 0x3a13115c633c4c5cL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAttributedLink_id5e7X3XC_mgR);
 

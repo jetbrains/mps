@@ -62,7 +62,7 @@ public class Collapse_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     Collapse_Action.this.getAction(event).execute(event.getData(MPSEditorDataKeys.EDITOR_CONTEXT));
   }
-  /*package*/ CellAction getAction(final AnActionEvent event) {
+  private CellAction getAction(final AnActionEvent event) {
     return event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getComponentAction(CellActionType.FOLD);
   }
 }

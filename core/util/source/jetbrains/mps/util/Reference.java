@@ -19,7 +19,6 @@ package jetbrains.mps.util;
  * Serves to be used e.g. in the anonymous classes instead of one-sized arrays
  * Not thread-safe
  */
-
 public final class Reference<T> {
   private T myValue;
 

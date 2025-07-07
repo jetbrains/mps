@@ -10,9 +10,9 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
@@ -20,27 +20,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class AddWhenCondition_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddWhenCondition_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:7766928c-8170-4dae-abab-7bf1d84b3b9b(jetbrains.mps.lang.constraints.rules.intentions)", "2355419765871307171"));
   }
+
   @Override
   public String getPresentation() {
     return "AddWhenCondition";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SLinkOperations.getTarget(node, LINKS.condition$h$Ae) == null;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -50,10 +44,12 @@ public final class AddWhenCondition_Intention extends AbstractIntentionDescripto
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Specify a Custom 'When' Condition";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SLinkOperations.setTarget(node, LINKS.condition$h$Ae, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x3172094ab484cd2cL, "jetbrains.mps.lang.constraints.rules.structure.ApplicableCondition")));
@@ -61,10 +57,25 @@ public final class AddWhenCondition_Intention extends AbstractIntentionDescripto
       SLinkOperations.setTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.condition$h$Ae), LINKS.expr$ZgCK), LINKS.expression$aVsE, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
       editorContext.selectWRTFocusPolicy(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.condition$h$Ae), LINKS.expr$ZgCK), LINKS.expression$aVsE));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return SLinkOperations.getTarget(node, LINKS.condition$h$Ae) == null;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddWhenCondition_Intention.this;
     }
+
   }
 
   private static final class LINKS {

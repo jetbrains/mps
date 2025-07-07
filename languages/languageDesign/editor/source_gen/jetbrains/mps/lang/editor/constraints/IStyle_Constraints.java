@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.project.AbstractModule;
@@ -23,15 +24,11 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -48,7 +45,7 @@ public class IStyle_Constraints extends BaseConstraintsDescriptor {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_56bmov_a0a0a0a0a0a0a0a2;
+            return new SNodePointer("r:00000000-0000-4000-0000-011c89590298(jetbrains.mps.lang.editor.constraints)", "6836281137582783666");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
@@ -61,27 +58,14 @@ public class IStyle_Constraints extends BaseConstraintsDescriptor {
               }
             }
 
-            Iterable<SNode> styles = SetSequence.fromSet(contextLanguages).select(new ISelector<Language, SModel>() {
-              public SModel select(Language it) {
-                return SModuleOperations.getAspect(it, "editor");
-              }
-            }).where(new IWhereFilter<SModel>() {
-              public boolean accept(SModel it) {
-                return it != null;
-              }
-            }).translate(new ITranslator2<SModel, SNode>() {
-              public Iterable<SNode> translate(SModel it) {
-                return SModelOperations.nodes(((SModel) it), CONCEPTS.IStyle$eb);
-              }
-            });
+            Iterable<SNode> styles = SetSequence.fromSet(contextLanguages).select((it) -> SModuleOperations.getAspect(it, "editor")).where((it) -> it != null).translate((it) -> SModelOperations.nodes(((SModel) it), CONCEPTS.IStyle$eb));
 
-            return ListScope.forResolvableElements(Sequence.fromIterable(styles).toListSequence());
+            return ListScope.forResolvableElements(Sequence.fromIterable(styles).toList());
           }
         };
       }
     };
   }
-  private static final SNodePointer breakingNode_56bmov_a0a0a0a0a0a0a0a2 = new SNodePointer("r:00000000-0000-4000-0000-011c89590298(jetbrains.mps.lang.editor.constraints)", "6836281137582783666");
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept IStyle$eb = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab1f5847b8L, "jetbrains.mps.lang.editor.structure.IStyle");

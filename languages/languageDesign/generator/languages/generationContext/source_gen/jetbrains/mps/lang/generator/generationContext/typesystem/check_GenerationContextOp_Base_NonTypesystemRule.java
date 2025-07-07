@@ -23,7 +23,7 @@ public class check_GenerationContextOp_Base_NonTypesystemRule extends AbstractNo
   }
   public void applyRule(final SNode op, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     //  only applicable to 'genctx'
-    SNode contextType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(op), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR));
+    SNode contextType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(op), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR));
     if (!(SNodeOperations.isInstanceOf(contextType, CONCEPTS.GenerationContextType$Xq))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(op, "operation is not applicable", "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "1216860931285", null, errorTarget);

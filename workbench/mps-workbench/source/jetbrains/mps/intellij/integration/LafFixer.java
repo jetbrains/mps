@@ -16,7 +16,6 @@
 package jetbrains.mps.intellij.integration;
 
 import com.intellij.ide.AppLifecycleListener;
-import com.intellij.ide.WelcomeWizardUtil;
 import com.intellij.ide.ui.laf.LafManagerImpl;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
@@ -25,6 +24,8 @@ import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.impl.EditorColorsManagerImpl;
 import com.intellij.util.ui.StartupUiUtil;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.annotations.ApiStatus.Internal;
 
 
@@ -49,7 +50,8 @@ final class LafFixer {
       // Only do this in test mode and change default laf - state should not be persisted
       // Default MPS run configurations override config path and in process execution avoids this code
       // As result user settings for laf should not be affected
-      WelcomeWizardUtil.setWizardLAF("com.intellij.ide.ui.laf.IntelliJLaf");
+      // Deleted in IDEA b2fe8e65ab1507a66ee1845310db63d53cefabca
+      // WelcomeWizardUtil.setWizardLAF("com.intellij.ide.ui.laf.IntelliJLaf");
     }
   }
 
@@ -68,6 +70,13 @@ final class LafFixer {
    */
   @Internal
   private static final class MyAppLifecycleListener implements AppLifecycleListener {
+    @Override
+    public void appStarted() {
+      // Disables the Welcome screen banner and Project settings toolbar action's (gear icon) tooltip promoting new UI
+      if (System.getProperty("experimental.ui.used.once") != null) {
+        com.intellij.ide.util.PropertiesComponent.getInstance().setValue(com.intellij.ui.ExperimentalUI.NEW_UI_USED_PROPERTY, true);
+      }
+    }
     @Override
     public void welcomeScreenDisplayed() {
       if (ConfigImportHelper.isFirstSession() && !ConfigImportHelper.isConfigImported()) {

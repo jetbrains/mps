@@ -23,7 +23,6 @@ import jetbrains.mps.generator.impl.TemplateGenerator;
 import jetbrains.mps.generator.impl.query.GeneratorQueryProvider;
 import jetbrains.mps.generator.template.ITemplateProcessor;
 import jetbrains.mps.generator.template.QueryExecutionContext;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -48,7 +47,7 @@ import java.util.List;
  * Unlike {@link jetbrains.mps.generator.runtime.TemplateContext}, which is call stack for particular template/rule, this class is of broader scope/life-cycle.
  * <p/>
  * This interface is not deemed to be implemented by clients. Generator subsystem provides implementation of this interface, which is an API to generator
- * facilities. New API methods may be added as needed, depecation of existing methods shall respect generated code out there.
+ * facilities. New API methods may be added as needed, deprecation of existing methods shall respect generated code out there.
  *
  * @see jetbrains.mps.generator.runtime.TemplateContext
  * Evgeny Gryaznov, 10/22/10
@@ -70,8 +69,7 @@ public interface TemplateExecutionEnvironment extends GeneratorQueryProvider.Sou
    * TemplateGenerator is implementation class and there's no apparent reason why TEE clients might need access to it.
    * @return
    */
-  @Deprecated
-  @ToRemove(version = 2020.1)
+@Deprecated(since = "2020.1", forRemoval = true)
   @NotNull
   TemplateGenerator getGenerator();
 

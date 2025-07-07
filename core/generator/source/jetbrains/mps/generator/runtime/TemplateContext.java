@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package jetbrains.mps.generator.runtime;
 
 import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -47,6 +48,7 @@ public interface TemplateContext {
    */
   TemplateContext withNewExecutionPath();
 
+  @Nullable
   SNode getInput();
 
   String getInputName();
@@ -124,5 +126,5 @@ public interface TemplateContext {
    * @param newInputNode new input
    * @return context with desired input and present input name
    */
-  TemplateContext subContext(SNode newInputNode);
+  TemplateContext subContext(@Nullable SNode newInputNode);
 }

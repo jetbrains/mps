@@ -3,8 +3,8 @@
   <persistence version="9" />
   <languages>
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="-1" />
-    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="5" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="6" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="2e4f876d-c394-4f48-93c5-b5f4c0ec9b51" name="testLangWithRT" version="0" />
   </languages>
   <imports>
@@ -17,6 +17,7 @@
         <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
       </concept>
       <concept id="1216913645126" name="jetbrains.mps.lang.test.structure.NodesTestCase" flags="lg" index="1lH9Xt">
+        <property id="2616911529524314943" name="accessMode" index="3DII0k" />
         <property id="6339244025081158986" name="needsNoWriteAction" index="3OwPAg" />
         <child id="1217501895093" name="testMethods" index="1SL9yI" />
       </concept>
@@ -63,7 +64,7 @@
         <property id="1068580320021" name="value" index="3cmrfH" />
       </concept>
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -100,13 +101,15 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
   </registry>
   <node concept="1lH9Xt" id="617g7o6hhfk">
     <property role="TrG5h" value="SimpleTestCase_Test" />
+    <property role="3OwPAg" value="true" />
+    <property role="3DII0k" value="2hh8MJdVwqT/none" />
     <node concept="1LZb2c" id="617g7o6hiNn" role="1SL9yI">
       <property role="TrG5h" value="test1" />
       <node concept="3cqZAl" id="617g7o6hiNo" role="3clF45" />
@@ -119,6 +122,8 @@
   </node>
   <node concept="1lH9Xt" id="5vTxdEzy3vs">
     <property role="TrG5h" value="FailedTestCase_Test" />
+    <property role="3OwPAg" value="true" />
+    <property role="3DII0k" value="2hh8MJdVwqT/none" />
     <node concept="1LZb2c" id="5vTxdEzy8JZ" role="1SL9yI">
       <property role="TrG5h" value="test1" />
       <node concept="3cqZAl" id="5vTxdEzy8K0" role="3clF45" />
@@ -134,6 +139,7 @@
   <node concept="1lH9Xt" id="5vTxdEz_CuU">
     <property role="TrG5h" value="WaitingTestCase_Test" />
     <property role="3OwPAg" value="true" />
+    <property role="3DII0k" value="2hh8MJdVwqT/none" />
     <node concept="1LZb2c" id="5vTxdEz_CuV" role="1SL9yI">
       <property role="TrG5h" value="test1" />
       <node concept="3cqZAl" id="5vTxdEz_CuW" role="3clF45" />
@@ -176,6 +182,8 @@
   </node>
   <node concept="1lH9Xt" id="4rbJdZOxa1h">
     <property role="TrG5h" value="PropertyIsAvailaibleInMPSTestCase" />
+    <property role="3OwPAg" value="true" />
+    <property role="3DII0k" value="2hh8MJdVwqT/none" />
     <node concept="1LZb2c" id="4rbJdZOxa1i" role="1SL9yI">
       <property role="TrG5h" value="test1" />
       <node concept="3cqZAl" id="4rbJdZOxa1j" role="3clF45" />
@@ -197,6 +205,8 @@
   </node>
   <node concept="1lH9Xt" id="3P4ieJEE8Pu">
     <property role="TrG5h" value="ReadingPropertyTestCase_Test" />
+    <property role="3OwPAg" value="true" />
+    <property role="3DII0k" value="2hh8MJdVwqT/none" />
     <node concept="1LZb2c" id="3P4ieJEE8Pv" role="1SL9yI">
       <property role="TrG5h" value="test1" />
       <node concept="3cqZAl" id="3P4ieJEE8Pw" role="3clF45" />
@@ -225,6 +235,8 @@
   </node>
   <node concept="1lH9Xt" id="3nltER8R_$p">
     <property role="TrG5h" value="UsingLangTestCase" />
+    <property role="3OwPAg" value="true" />
+    <property role="3DII0k" value="2hh8MJdVwqT/none" />
     <node concept="1LZb2c" id="3nltER8R__a" role="1SL9yI">
       <property role="TrG5h" value="asdf" />
       <node concept="3cqZAl" id="3nltER8R__b" role="3clF45" />

@@ -13,25 +13,24 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
-import jetbrains.mps.scope.EmptyScope;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.scopes.MethodsScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.scopes.Members;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.project.facets.JavaLanguageLevel;
 import jetbrains.mps.baseLanguage.util.BaseLanguageEnvironmentHelper;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -57,39 +56,21 @@ public class SuperInterfaceMethodCall_Constraints extends BaseConstraintsDescrip
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.classifier$S2nP, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.classifier$S2nP, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
-        return new BaseScopeProvider() {
-          @Override
-          public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_bs3nei_a0a0a0a0a1a0a0a0d;
-          }
-          @Override
-          public Scope createScope(final ReferenceConstraintsContext _context) {
-            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.SuperInerfaceKind$Si);
-            return (scope == null ? new EmptyScope() : scope);
-          }
-        };
+        return ReferenceScopeProvider.fromHierarchy(CONCEPTS.SuperInerfaceKind$Si, new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "8287904403586986407"));
       }
     };
-    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.baseMethodDeclaration$pyYw, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.baseMethodDeclaration$pyYw, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_bs3nei_a0a0a0a0a1a0a0b0d;
+            return new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "6836281137582776108");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
@@ -98,11 +79,7 @@ public class SuperInterfaceMethodCall_Constraints extends BaseConstraintsDescrip
               return new EmptyScope();
             }
             SNode classifierType = Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(superClassifier);
-            MethodsScope scope = new MethodsScope(classifierType, Sequence.fromIterable(Members.visibleInstanceMethods(classifierType, _context.getContextNode())).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it));
-              }
-            }));
+            MethodsScope scope = new MethodsScope(classifierType, Sequence.fromIterable(Members.visibleInstanceMethods(classifierType, _context.getContextNode())).where((it) -> !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it))));
             return scope;
           }
         };
@@ -117,8 +94,6 @@ public class SuperInterfaceMethodCall_Constraints extends BaseConstraintsDescrip
     return JavaLanguageLevel.JAVA_8.covers(new BaseLanguageEnvironmentHelper().getLanguageLevel(node)) && ConstraintsUtil.isInNonStaticClasssifierContext(parentNode);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "1227128029536560559");
-  private static final SNodePointer breakingNode_bs3nei_a0a0a0a0a1a0a0a0d = new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "8287904403586986407");
-  private static final SNodePointer breakingNode_bs3nei_a0a0a0a0a1a0a0b0d = new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "6836281137582776108");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept SuperInterfaceMethodCall$oI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x17dbb10eeb72e5d9L, "jetbrains.mps.baseLanguage.structure.SuperInterfaceMethodCall");

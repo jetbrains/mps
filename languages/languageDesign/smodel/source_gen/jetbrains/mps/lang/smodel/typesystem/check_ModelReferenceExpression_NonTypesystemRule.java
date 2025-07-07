@@ -23,7 +23,7 @@ public class check_ModelReferenceExpression_NonTypesystemRule extends AbstractNo
     if ((SLinkOperations.getTarget(modelRefExpr, LINKS.repo$cK2X) == null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(modelRefExpr, "Shall specify repository to look up model at", "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1423104411233793145", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(modelRefExpr, "Shall specify repository to look up model at", "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "8646272096493143147", null, errorTarget);
       }
     }
   }

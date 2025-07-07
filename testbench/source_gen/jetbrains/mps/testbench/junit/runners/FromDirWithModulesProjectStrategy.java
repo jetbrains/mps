@@ -18,7 +18,6 @@ import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.project.io.DescriptorIOFacade;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 
 @GeneratedClass(node = "r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)/6450649963068242642", model = "r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)")
 public class FromDirWithModulesProjectStrategy extends ProjectStrategyBase {
@@ -52,12 +51,10 @@ public class FromDirWithModulesProjectStrategy extends ProjectStrategyBase {
     Set<IFile> exclude = createExcludesSet(localFS);
     ModulesMiner mm = new ModulesMiner(exclude, mpsPlatform.findComponent(DescriptorIOFacade.class));
     Iterable<ModulesMiner.ModuleHandle> minedHandles = mm.collectModules(projectRoot).getCollectedModules();
-    List<ModulesMiner.ModuleHandle> moduleHandles = Sequence.fromIterable(minedHandles).where(new IWhereFilter<ModulesMiner.ModuleHandle>() {
-      public boolean accept(ModulesMiner.ModuleHandle it) {
-        // temporary ignore .iml files
-        return !(it.getFile().getName().endsWith(".iml"));
-      }
-    }).toListSequence();
+    List<ModulesMiner.ModuleHandle> moduleHandles = Sequence.fromIterable(minedHandles).where((it) -> {
+      // temporary ignore .iml files
+      return !(it.getFile().getName().endsWith(".iml"));
+    }).toList();
     return loadProjectFromModuleHandles(emptyProject, moduleHandles);
   }
 

@@ -10,27 +10,30 @@ import com.intellij.openapi.project.Project;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import com.intellij.openapi.ui.Messages;
-import com.intellij.notification.NotificationGroupManager;
 import com.intellij.notification.NotificationType;
 import com.intellij.notification.NotificationListener;
 import org.jetbrains.annotations.NotNull;
 import javax.swing.event.HyperlinkEvent;
-import com.intellij.notification.Notifications;
+import com.intellij.notification.NotificationGroup;
+import com.intellij.notification.NotificationGroupManager;
 import java.util.Set;
 import org.jetbrains.mps.openapi.language.SLanguage;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.smodel.language.LanguageRuntime;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import com.intellij.openapi.ui.popup.Balloon;
 import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
+import com.intellij.openapi.actionSystem.AnAction;
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.util.IStatus;
+import jetbrains.mps.migration.global.ProjectMigrationsRegistry;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/2632090902167058889", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 /*package*/ abstract class MigrationNotificationsSupport {
@@ -57,7 +60,12 @@ import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
   }
 
   public void showNotRequired() {
-    Messages.showMessageDialog(myIdeaProject, "Project doesn't need to be migrated.\n" + "Migration assistant will not be started.", "Migration Not Required", null);
+    if (myLastNotification != null) {
+      myLastNotification.expire();
+    }
+    myLastNotification = getNofifyGroup().createNotification("No migration required", "<p>This project doesn't need migration." + "<p>Migration Assistant will not start.", NotificationType.INFORMATION);
+    myLastNotification.addAction(new ShowProjectDetails());
+    myLastNotification.notify(myIdeaProject);
   }
 
   public void showPreUpdateCheckOk() {
@@ -65,10 +73,18 @@ import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
   }
 
   public boolean showRequired() {
-    if (myLastNotification != null && !(myLastNotification.isExpired())) {
-      return false;
+    if (myLastNotification != null) {
+      if (myLastNotification.getType() == NotificationType.INFORMATION) {
+        myLastNotification.expire();
+        // fall-through
+      } else {
+        // FIXME there's single use of return value; I'd prefer just to expire() any notification and show the new one
+        // but perhaps there's a reason for this false?
+        return false;
+      }
     }
-    myLastNotification = new Notification(NotificationGroupManager.getInstance().getNotificationGroup("Migration").getDisplayId(), "Migration required", "<p>This project requires migration.</p><p><a href=\"" + REF_RUN_MIGRATION + "\">Migrate</a></p>", NotificationType.INFORMATION, new NotificationListener() {
+    myLastNotification = getNofifyGroup().createNotification("Migration required", "<p>This project requires migration.</p><p><a href=\"" + REF_RUN_MIGRATION + "\">Migrate</a></p>", NotificationType.INFORMATION);
+    myLastNotification.setListener(new NotificationListener() {
       @Override
       public void hyperlinkUpdate(@NotNull Notification notification, @NotNull HyperlinkEvent e) {
         if (e.getEventType() != HyperlinkEvent.EventType.ACTIVATED) {
@@ -80,8 +96,25 @@ import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
         notification.expire();
       }
     });
-    Notifications.Bus.notify(myLastNotification, myIdeaProject);
+    myLastNotification.addAction(new ShowProjectDetails());
+    myLastNotification.notify(myIdeaProject);
     return true;
+  }
+
+  private NotificationGroup getNofifyGroup() {
+    return NotificationGroupManager.getInstance().getNotificationGroup("Migration");
+  }
+
+  public void showProjectVersionError(String extraInfo) {
+    if (myLastNotification != null) {
+      if (myLastNotification.getType() == NotificationType.ERROR) {
+        // there's an error already, don't obscure by another one
+        return;
+      }
+      myLastNotification.expire();
+    }
+    myLastNotification = getNofifyGroup().createNotification("Migrations", "Project has been migrated with a newer MPS version<br/>" + extraInfo, NotificationType.ERROR);
+    myLastNotification.notify(myIdeaProject);
   }
 
   public void showDeployWarn(boolean hasCleanups) {
@@ -93,12 +126,12 @@ import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
     }
 
     // expire old, show new to get the balloon again
-    if (myLastDeployWarning != null && !((myLastDeployWarning.isExpired()))) {
+    if (myLastDeployWarning != null && !(myLastDeployWarning.isExpired())) {
       myLastDeployWarning.expire();
     }
 
     myLastDeployWarning = createDeployWarn(problems, hasCleanups);
-    Notifications.Bus.notify(myLastDeployWarning, myIdeaProject);
+    myLastDeployWarning.notify(myIdeaProject);
   }
 
   public void setRebuildHandler(Consumer<Iterable<SModuleReference>> rebuildHandler) {
@@ -106,28 +139,19 @@ import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
   }
 
   /*package*/ Set<SLanguage> getNotDeployedUsedLanguages() {
-    Iterable<SModule> projectModules = MigrationModuleUtil.getMigrateableModulesFromProject(myMpsProject);
-    final Set<SLanguage> allUsedLanguages = SetSequence.fromSetWithValues(new HashSet<SLanguage>(), Sequence.fromIterable(projectModules).translate(new ITranslator2<SModule, SLanguage>() {
-      public Iterable<SLanguage> translate(SModule it) {
-        return it.getUsedLanguages();
-      }
-    }));
-    // remove deployed languages (i.e. known to LanguageRegistry) from the set
-    myLangRegistry.withAvailableLanguages(new Consumer<LanguageRuntime>() {
-      public void accept(LanguageRuntime lr) {
-        SetSequence.fromSet(allUsedLanguages).removeElement(lr.getIdentity());
-      }
+    final Set<SLanguage> allUsedLanguages = SetSequence.fromSet(new HashSet<SLanguage>());
+    myMpsProject.getModelAccess().runReadAction(() -> {
+      Iterable<SModule> projectModules = MigrationModuleUtil.getMigrateableModulesFromProject(myMpsProject);
+      SetSequence.fromSet(allUsedLanguages).addSequence(Sequence.fromIterable(projectModules).translate((it) -> it.getUsedLanguages()));
     });
+    // remove deployed languages (i.e. known to LanguageRegistry) from the set
+    myLangRegistry.withAvailableLanguages((LanguageRuntime lr) -> SetSequence.fromSet(allUsedLanguages).removeElement(lr.getIdentity()));
     return allUsedLanguages;
   }
 
   private MigrationSuspendedNotification createDeployWarn(final Set<SLanguage> problems, boolean hasCleanups) {
     final int treshold = 20;
-    Iterable<SLanguage> sortedProblems = SetSequence.fromSet(problems).sort(new ISelector<SLanguage, String>() {
-      public String select(SLanguage it) {
-        return NameUtil.compactNamespace(it.getQualifiedName());
-      }
-    }, true);
+    Iterable<SLanguage> sortedProblems = SetSequence.fromSet(problems).sort((it) -> NameUtil.compactNamespace(it.getQualifiedName()), true);
 
     StringBuilder sb = new StringBuilder();
     sb.append("Some languages used in project are not deployed. Can't check migrations applicability.<br><br>");
@@ -162,11 +186,7 @@ import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
       sb.append("<br><p>There are some cleanup migrations to execute, which might fix the problem. <a href=\"" + REF_RUN_MIGRATION + "\">Run migration</a></p>");
     }
 
-    return new MigrationSuspendedNotification(sb.toString(), hasCleanups, SetSequence.fromSet(problems).select(new ISelector<SLanguage, SModuleReference>() {
-      public SModuleReference select(SLanguage it) {
-        return it.getSourceModuleReference();
-      }
-    }).where(new NotNullWhereFilter<SModuleReference>()));
+    return new MigrationSuspendedNotification(sb.toString(), hasCleanups, SetSequence.fromSet(problems).select((it) -> it.getSourceModuleReference()).where(new NotNullWhereFilter()));
   }
 
   public abstract void runAssistant();
@@ -197,6 +217,21 @@ import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
         }
       });
       myHasCleanups = hasCleanups;
+    }
+  }
+
+  private static class ShowProjectDetails extends AnAction {
+    /*package*/ ShowProjectDetails() {
+      super("Show Details");
+    }
+    @Override
+    public void update(@NotNull AnActionEvent e) {
+      e.getPresentation().setEnabled(e.getProject() != null && ProjectHelper.fromIdeaProject(e.getProject()) != null);
+    }
+    @Override
+    public void actionPerformed(@NotNull AnActionEvent event) {
+      IStatus m = ProjectMigrationsRegistry.getInstance().checkMigratedToNewerVersion(ProjectHelper.fromIdeaProject(event.getProject()));
+      Messages.showInfoMessage(event.getProject(), m.getMessage(), "Project Details");
     }
   }
 }

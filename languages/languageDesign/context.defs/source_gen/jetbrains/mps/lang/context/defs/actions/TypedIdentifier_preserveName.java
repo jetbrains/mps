@@ -13,7 +13,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class TypedIdentifier_preserveName {
   public static class NodeFactory_315923949159711976 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.TypedDef$H3)) {
         SPropertyOperations.assign(newNode, PROPS.name$MnvL, SPropertyOperations.getString(SNodeOperations.cast(sampleNode, CONCEPTS.TypedDef$H3), PROPS.name$MnvL));
       }

@@ -7,7 +7,7 @@ import com.intellij.icons.AllIcons;
 import jetbrains.mps.icons.MPSIcons;
 
 public class IconContainer {
-  protected static Icon ICON_b0a0a0c0d;
+  protected static Icon ICON_b0a0a0c0d = AllIcons.RunConfigurations.Application;
   protected static Icon ICON_b0a0a0d0d = AllIcons.RunConfigurations.Junit;
   protected static Icon ICON_b0a0a0e0d = MPSIcons.MPS16x16;
   protected static Icon ICON_b0a0a0f0d = AllIcons.RunConfigurations.Remote;

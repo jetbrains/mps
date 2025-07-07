@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,12 @@
  */
 package jetbrains.mps.classloading;
 
-import jetbrains.mps.reloading.ClassBytesProvider.ClassBytes;
-import jetbrains.mps.reloading.IClassPathItem;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.project.facets.JavaModuleFacet.LoadClasses;
+import jetbrains.mps.reloading.ClassBytesProvider.ClassBytes;
+import jetbrains.mps.reloading.IClassPathItem;
+import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
 
 import java.net.URL;
@@ -32,10 +34,9 @@ public class ModuleClassLoaderSupport {
   private volatile List<ClassLoader> myCompileDependencies;
   private final Supplier<List<ClassLoader>> myDependenciesSupplier;
 
-  private ModuleClassLoaderSupport(@NotNull ReloadableModule module,
-                                   Supplier<List<ClassLoader>> dependencySupplier) {
-    this(module, dependencySupplier, calcClassPath(module));
-  }
+  private ModuleClassLoader myModuleClassLoader;
+
+  private final ClassLoader myRootClassLoader;
 
   private static IClassPathItem calcClassPath(@NotNull ReloadableModule module) {
     JavaModuleFacet facet = module.getFacet(JavaModuleFacet.class);
@@ -49,6 +50,8 @@ public class ModuleClassLoaderSupport {
     myModule = module;
     myDependenciesSupplier = dependencySupplier;
     myClassPathItem = classPathItem;
+    // module access needs model lock, walk it as long as the instance is valid, do not delay.
+    myRootClassLoader = new RootClassloaderLookup(module).get();
   }
 
   /**
@@ -58,51 +61,60 @@ public class ModuleClassLoaderSupport {
    * TODO: must be just MPS_FACET
    * ext point possible here
    */
-  public static boolean canCreate(@NotNull ReloadableModule module) {
+  /*package*/ static boolean canCreate(@NotNull ReloadableModule module) {
     JavaModuleFacet facet = module.getFacet(JavaModuleFacet.class);
-    return facet != null && facet.isCompileInMps() && module.getFacet(CustomClassLoadingFacet.class) == null;
+    // first part is equivalent to SModuleOperations.isCompileInMPS(), just don't want to introduce another [kernel]-[project]
+    // dependency. XXX perhaps, SModuleOperations shall move to kernel?
+    // FTR, we used to have 'getFacet(CCLF) == null' here. If we ever get to an alternative where CL is supplied
+    // neither from MPS nor deployment provider, but by third-party means (i.e. true CustomClassLoadingFacet, not just its rudimentary
+    // IDEA lackey), we'd need another LoadClasses constant anyway (not ManagedByMPS)
+    return facet != null && facet.getLoadClasses() == LoadClasses.ManagedByMPS;
   }
 
   public static ModuleClassLoaderSupport create(@NotNull ReloadableModule module,
                                                 Supplier<List<ClassLoader>> dependencySupplier) {
-    return new ModuleClassLoaderSupport(module, dependencySupplier);
+    return new ModuleClassLoaderSupport(module, dependencySupplier, calcClassPath(module));
+  }
+
+  /*package*/ ModuleClassLoader getModuleClassLoader() {
+    final ModuleClassLoader rv = myModuleClassLoader;
+    if (rv != null) {
+      return rv;
+    }
+    synchronized (this) {
+      if (myModuleClassLoader == null) {
+        myModuleClassLoader = new ModuleClassLoader(this);
+      }
+      return myModuleClassLoader;
+    }
   }
 
   @NotNull
   public ReloadableModule getModule() {
+    // seems to be necessary for reporting purposes only. Means can get replaced with a value not retaining SModule instance, e.g. important for
+    // scenarios where module is gone but CL is still in use. OTOH, CL is an intimate friend of a module, might be worth keeping the bond.
     return myModule;
   }
 
-  public boolean canFindClass(String name) {
-    return myClassPathItem.hasClass(name);
-  }
-
-  public ClassBytes findClassBytes(String name) {
-    return myClassPathItem.getClassBytes(name);
-  }
-
-  public URL findResource(String name) {
-    return myClassPathItem.getResource(name);
-  }
-
-  public Enumeration<URL> findResources(String name) {
-    return myClassPathItem.getResources(name);
-  }
-
   /**
-   * important to have the calculation here: at the time of construction the classloaders might be not available yet
+   * important to have the calculation of dependency CLs delayed: at the time of construction the classloaders might be not available yet
    */
-  List<ClassLoader> getCompileDependencies() {
-    if (myCompileDependencies == null) {
-      myCompileDependencies = myDependenciesSupplier.get();
-    }
-    return myCompileDependencies;
+  /*package*/ Supplier<List<ClassLoader>> getCompileDependencies() {
+    return myDependenciesSupplier;
   }
 
   /**
    * @return parent classloader for a module classloader, see {@link RootClassloaderLookup}
    */
   /*package*/ ClassLoader getRootClassLoader() {
-    return new RootClassloaderLookup(myModule).get();
+    return myRootClassLoader;
+  }
+
+  /*package*/ String suggestClassLoaderName() {
+    return NameUtil.compactNamespace(myModule.getModuleName());
+  }
+
+  /*package*/ IClassPathItem getClassPathItem() {
+    return myClassPathItem;
   }
 }

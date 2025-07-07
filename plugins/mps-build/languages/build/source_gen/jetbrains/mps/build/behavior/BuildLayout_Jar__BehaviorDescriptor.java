@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -32,15 +31,15 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class BuildLayout_Jar__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f9aL, "jetbrains.mps.build.structure.BuildLayout_Jar");
 
-  public static final SMethod<Void> unpack_id6IqTD4bJTWZ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("unpack").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6IqTD4bJTWZ").build(SMethodBuilder.createJavaParameter(UnpackHelper.class, ""));
-  public static final SMethod<Boolean> isFile_id1bWeed$oPZ2 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFile").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1bWeed$oPZ2").build();
-  public static final SMethod<Boolean> exports_id5FtnUVJQES1 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("exports").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5FtnUVJQES1").build(SMethodBuilder.createJavaParameter(Object.class, ""));
-  /*package*/ static final SMethod<Boolean> scanInJarNodes_id5bqm540K$Gi = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("scanInJarNodes").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).id("5bqm540K$Gi").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Object.class, ""));
-  public static final SMethod<String> getApproximateName_id4RsV8qJDnFm = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getApproximateName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4RsV8qJDnFm").build();
-  public static final SMethod<String> getFileSetExtension_id5zIo$W4pFTK = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFileSetExtension").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5zIo$W4pFTK").build();
-  public static final SMethod<Boolean> hasPrefixAttribute_id5zIo$W4pFU0 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasPrefixAttribute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5zIo$W4pFU0").build();
-  public static final SMethod<Boolean> hasFileModeAttribute_id5zIo$W4pFU5 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasFileModeAttribute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5zIo$W4pFU5").build();
-  public static final SMethod<String> getExpectedExtension_id62K_yvYRytT = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getExpectedExtension").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("62K_yvYRytT").build();
+  public static final SMethod<Void> unpack_id6IqTD4bJTWZ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("unpack").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7753763219113484095L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(UnpackHelper.class, ""));
+  public static final SMethod<Boolean> isFile_id1bWeed$oPZ2 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFile").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1368030936106753986L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
+  public static final SMethod<Boolean> exports_id5FtnUVJQES1 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("exports").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6547494638219603457L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Object.class, ""));
+  /*package*/ static final SMethod<Boolean> scanInJarNodes_id5bqm540K$Gi = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("scanInJarNodes").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(5970181360961342226L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Object.class, ""));
+  public static final SMethod<String> getApproximateName_id4RsV8qJDnFm = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getApproximateName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5610619299013425878L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
+  public static final SMethod<String> getFileSetExtension_id5zIo$W4pFTK = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFileSetExtension").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6408167411310575216L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
+  public static final SMethod<Boolean> hasPrefixAttribute_id5zIo$W4pFU0 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasPrefixAttribute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6408167411310575232L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
+  public static final SMethod<Boolean> hasFileModeAttribute_id5zIo$W4pFU5 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasFileModeAttribute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6408167411310575237L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
+  public static final SMethod<String> getExpectedExtension_id62K_yvYRytT = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getExpectedExtension").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6967233722066020217L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(unpack_id6IqTD4bJTWZ, isFile_id1bWeed$oPZ2, exports_id5FtnUVJQES1, scanInJarNodes_id5bqm540K$Gi, getApproximateName_id4RsV8qJDnFm, getFileSetExtension_id5zIo$W4pFTK, hasPrefixAttribute_id5zIo$W4pFU0, hasFileModeAttribute_id5zIo$W4pFU5, getExpectedExtension_id62K_yvYRytT);
 
@@ -75,11 +74,7 @@ public final class BuildLayout_Jar__BehaviorDescriptor extends BaseBHDescriptor 
         // FIXME Does anybody have an idea why BuildSource_JavaModule is processed here independently from the logic in scanInJarNodes(), below?
         // i.e. what if I put _CompileOutputOf under a folder or a 'transparent' container? Why not _CompileOutputOf is not _InJarNode (there's even constraint that 
         // forbids creating _CompileOutputOf under anything but _Jar!)
-        return Sequence.fromIterable(SNodeOperations.ofConcept(ListSequence.fromList(children).union(Sequence.fromIterable(importedContent)), CONCEPTS.BuildLayout_CompileOutputOf$1E)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.module$qsl4) == node;
-          }
-        });
+        return Sequence.fromIterable(SNodeOperations.ofConcept(ListSequence.fromList(children).union(Sequence.fromIterable(importedContent)), CONCEPTS.BuildLayout_CompileOutputOf$1E)).any((it) -> SLinkOperations.getTarget(it, LINKS.module$qsl4) == node);
       } else {
         return ((boolean) BuildLayout_Jar__BehaviorDescriptor.scanInJarNodes_id5bqm540K$Gi.invokeSpecial(__thisNode__, __thisNode__, object));
       }
@@ -87,18 +82,10 @@ public final class BuildLayout_Jar__BehaviorDescriptor extends BaseBHDescriptor 
     return false;
   }
   /*package*/ static boolean scanInJarNodes_id5bqm540K$Gi(@NotNull final SNode __thisNode__, SNode container, final Object object) {
-    if (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(container, LINKS.children$aMRO), CONCEPTS.BuildLayout_InJarNode$lb)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) BuildLayout_InJarNode__BehaviorDescriptor.reexportsFromJar_id5bqm540K$Gb.invoke(it, object);
-      }
-    })) {
+    if (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(container, LINKS.children$aMRO), CONCEPTS.BuildLayout_InJarNode$lb)).any((it) -> (boolean) BuildLayout_InJarNode__BehaviorDescriptor.reexportsFromJar_id5bqm540K$Gb.invoke(it, object))) {
       return true;
     }
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(container, LINKS.children$aMRO), CONCEPTS.BuildLayout_Folder$AH)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ((boolean) BuildLayout_Jar__BehaviorDescriptor.scanInJarNodes_id5bqm540K$Gi.invokeSpecial(__thisNode__, it, object));
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(container, LINKS.children$aMRO), CONCEPTS.BuildLayout_Folder$AH)).any((it) -> ((boolean) BuildLayout_Jar__BehaviorDescriptor.scanInJarNodes_id5bqm540K$Gi.invokeSpecial(__thisNode__, it, object)));
   }
   /*package*/ static String getApproximateName_id4RsV8qJDnFm(@NotNull SNode __thisNode__) {
     return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.containerName$ES_Y), null);

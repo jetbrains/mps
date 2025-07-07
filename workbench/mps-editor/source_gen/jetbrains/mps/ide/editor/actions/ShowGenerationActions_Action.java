@@ -10,14 +10,11 @@ import java.util.Map;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionGroupUtil;
-import java.util.Objects;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import com.intellij.openapi.ui.popup.ListPopup;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
 import com.intellij.ui.awt.RelativePoint;
@@ -32,6 +29,7 @@ public class ShowGenerationActions_Action extends BaseAction {
     super("Insert...", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -41,7 +39,7 @@ public class ShowGenerationActions_Action extends BaseAction {
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     ActionGroup group = ((ActionGroup) ActionManager.getInstance().getAction("jetbrains.mps.ide.editor.actions.GenerationActions_ActionGroup"));
     group.update(event);
-    return !(ActionGroupUtil.isGroupEmpty(group, event, Objects.requireNonNullElse(event.getData(PlatformDataKeys.IS_MODAL_CONTEXT), false)));
+    return !(ActionGroupUtil.isGroupEmpty(group, event));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -72,22 +70,14 @@ public class ShowGenerationActions_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     int x = ((EditorCell) MapSequence.fromMap(_params).get("selectedCell")).getX();
     int y = ((EditorCell) MapSequence.fromMap(_params).get("selectedCell")).getY() + ((EditorCell) MapSequence.fromMap(_params).get("selectedCell")).getHeight();
-    final Wrappers._T<ListPopup> popup = new Wrappers._T<ListPopup>(null);
-    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        ActionGroup group = ((ActionGroup) ActionManager.getInstance().getAction("jetbrains.mps.ide.editor.actions.GenerationActions_ActionGroup"));
-        group.update(event);
-        if (group.getChildren(event).length == 0) {
-          return;
-        }
-        popup.value = JBPopupFactory.getInstance().createActionGroupPopup("Generate", group, event.getDataContext(), JBPopupFactory.ActionSelectionAid.NUMBERING, false);
-      }
-    });
-    if (popup.value == null) {
+    ListPopup popup = null;
+    ActionGroup group = ((ActionGroup) ActionManager.getInstance().getAction("jetbrains.mps.ide.editor.actions.GenerationActions_ActionGroup"));
+    group.update(event);
+    if (group.getChildren(event).length == 0) {
       return;
     }
-
+    popup = JBPopupFactory.getInstance().createActionGroupPopup("Generate", group, event.getDataContext(), JBPopupFactory.ActionSelectionAid.NUMBERING, false);
     RelativePoint relativePoint = new RelativePoint((EditorComponent) ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getEditorComponent(), new Point(x, y));
-    popup.value.show(relativePoint);
+    popup.show(relativePoint);
   }
 }

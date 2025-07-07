@@ -18,7 +18,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -32,14 +31,14 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class EnumClass__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
 
-  public static final SMethod<SNode> findConstantByName_idhEwIiGU = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("findConstantByName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIiGU").build(SMethodBuilder.createJavaParameter(String.class, ""));
-  public static final SMethod<SNode> getSuperclass_idi3H_lLu = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSuperclass").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("i3H_lLu").build();
-  public static final SMethod<List<SNode>> getExtendedClassifierTypes_id1UeCwxlWKny = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getExtendedClassifierTypes").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1UeCwxlWKny").build();
-  /*package*/ static final SMethod<SNode> getExtendedEnumJavaType_id6O4rE5gbZ0q = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExtendedEnumJavaType").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).id("6O4rE5gbZ0q").build();
-  public static final SMethod<List<SNode>> getMembers_idhEwJjl2 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMembers").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwJjl2").build();
-  public static final SMethod<Boolean> hasStaticMemebers_idhFq8xqE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasStaticMemebers").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hFq8xqE").build();
-  public static final SMethod<List<SNode>> getMethodsToImplement_id4GM03FJm5q2 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMethodsToImplement").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4GM03FJm5q2").build();
-  public static final SMethod<List<SNode>> getMethodsToOverride_id4GM03FJm3zL = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMethodsToOverride").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4GM03FJm3zL").build();
+  public static final SMethod<SNode> findConstantByName_idhEwIiGU = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("findConstantByName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877267258L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<SNode> getSuperclass_idi3H_lLu = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSuperclass").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1240936569950L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<List<SNode>> getExtendedClassifierTypes_id1UeCwxlWKny = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getExtendedClassifierTypes").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2201875424516179426L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  /*package*/ static final SMethod<SNode> getExtendedEnumJavaType_id6O4rE5gbZ0q = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExtendedEnumJavaType").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(7855525289155096602L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<List<SNode>> getMembers_idhEwJjl2 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMembers").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877531970L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> hasStaticMemebers_idhFq8xqE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasStaticMemebers").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1214840444586L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<List<SNode>> getMethodsToImplement_id4GM03FJm5q2 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMethodsToImplement").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5418393554803775106L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<List<SNode>> getMethodsToOverride_id4GM03FJm3zL = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMethodsToOverride").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5418393554803767537L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(findConstantByName_idhEwIiGU, getSuperclass_idi3H_lLu, getExtendedClassifierTypes_id1UeCwxlWKny, getExtendedEnumJavaType_id6O4rE5gbZ0q, getMembers_idhEwJjl2, hasStaticMemebers_idhFq8xqE, getMethodsToImplement_id4GM03FJm5q2, getMethodsToOverride_id4GM03FJm3zL);
 
@@ -83,38 +82,16 @@ public final class EnumClass__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static List<SNode> getMethodsToImplement_id4GM03FJm5q2(@NotNull SNode __thisNode__) {
     List<SNode> methodsToImplement = IMemberContainer__BehaviorDescriptor.getMethodsToImplement_id4GM03FJm5q2.invokeSuper(__thisNode__, CONCEPTS.EnumClass$Vk);
     final List<SNode> ownMethods = Classifier__BehaviorDescriptor.getOwnMethods_id1DPgsAlM_WC.invoke(SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Enum"));
-    Iterable<SNode> remaining = ListSequence.fromList(methodsToImplement).where(new IWhereFilter<SNode>() {
-      public boolean accept(final SNode toBeImplemented) {
-        return !(ListSequence.fromList(ownMethods).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode own) {
-            return !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(own)) && (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(toBeImplemented, own);
-          }
-        }));
-      }
-    });
-    return Sequence.fromIterable(remaining).toListSequence();
+    Iterable<SNode> remaining = ListSequence.fromList(methodsToImplement).where((final SNode toBeImplemented) -> !(ListSequence.fromList(ownMethods).any((own) -> !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(own)) && (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(toBeImplemented, own))));
+    return Sequence.fromIterable(remaining).toList();
   }
   /*package*/ static List<SNode> getMethodsToOverride_id4GM03FJm3zL(@NotNull SNode __thisNode__) {
     final List<SNode> methodsToOverride = IMemberContainer__BehaviorDescriptor.getMethodsToOverride_id4GM03FJm3zL.invokeSuper(__thisNode__, CONCEPTS.EnumClass$Vk);
-    Iterable<SNode> ownMethods = ListSequence.fromList(Classifier__BehaviorDescriptor.getOwnMethods_id1DPgsAlM_WC.invoke(SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Enum"))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.InstanceMethodDeclaration$39) || SNodeOperations.isInstanceOf(it, CONCEPTS.ConstructorDeclaration$yG);
-      }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        SNode v = SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.IVisible$zu), LINKS.visibility$Yyua);
-        return (v != null) && !(SNodeOperations.isInstanceOf(v, CONCEPTS.PrivateVisibility$l0)) && !(SPropertyOperations.getBoolean(SNodeOperations.as(it, CONCEPTS.InstanceMethodDeclaration$39), PROPS.isFinal$eVPk));
-      }
+    Iterable<SNode> ownMethods = ListSequence.fromList(Classifier__BehaviorDescriptor.getOwnMethods_id1DPgsAlM_WC.invoke(SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Enum"))).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.InstanceMethodDeclaration$39) || SNodeOperations.isInstanceOf(it, CONCEPTS.ConstructorDeclaration$yG)).where((it) -> {
+      SNode v = SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.IVisible$zu), LINKS.visibility$Yyua);
+      return (v != null) && !(SNodeOperations.isInstanceOf(v, CONCEPTS.PrivateVisibility$l0)) && !(SPropertyOperations.getBoolean(SNodeOperations.as(it, CONCEPTS.InstanceMethodDeclaration$39), PROPS.isFinal$eVPk));
     });
-    Iterable<SNode> allToBeAdded = Sequence.fromIterable(ownMethods).where(new IWhereFilter<SNode>() {
-      public boolean accept(final SNode own) {
-        return !(ListSequence.fromList(methodsToOverride).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode toBeOverriden) {
-            return (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(own, toBeOverriden);
-          }
-        }));
-      }
-    });
+    Iterable<SNode> allToBeAdded = Sequence.fromIterable(ownMethods).where((final SNode own) -> !(ListSequence.fromList(methodsToOverride).any((toBeOverriden) -> (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(own, toBeOverriden))));
     return ListSequence.fromList(methodsToOverride).addSequence(Sequence.fromIterable(allToBeAdded));
   }
 

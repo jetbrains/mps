@@ -63,7 +63,7 @@ public final class OverrideConceptMethodsChecker extends BaseEventProcessingEdit
       return ancestors;
     }
     List<EditorMessage> descendants = new DescendantsMethodsLookup(cancellable, new GlobalScope(myProject), behavior, this, MAX_ITEMS_TO_SHOW).calcMessages();
-    return ListSequence.fromList(ancestors).union(ListSequence.fromList(descendants)).toListSequence();
+    return ListSequence.fromList(ancestors).union(ListSequence.fromList(descendants)).toList();
   }
 
   private static final class CONCEPTS {

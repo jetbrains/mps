@@ -4,11 +4,10 @@ package jetbrains.mps.console.performance;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import java.time.Duration;
@@ -35,13 +34,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 @MPSLaunch
 public class SuppressErrorsPerformanceTest_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(SuppressErrorsPerformanceTest_Test.class, "${mps_home}", "r:331d12a3-ff36-4324-a0a5-3624fa05f749(jetbrains.mps.console.performance@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(SuppressErrorsPerformanceTest_Test.class, "${mps_home}", "r:331d12a3-ff36-4324-a0a5-3624fa05f749(jetbrains.mps.console.performance@tests)", false));
 
   public SuppressErrorsPerformanceTest_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -55,23 +52,30 @@ public class SuppressErrorsPerformanceTest_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("5968606277575949800");
+    }
+
     public void test_testPerformance() throws Exception {
-      addNodeById("5968606277575949800");
-      // the goal of that test is to ensure more efficient than quadratic complexity
-      Duration durationA = this.measureSuppressPerformance(4 * 1000);
-      Duration durationB = this.measureSuppressPerformance(40 * 1000);
-      Assert.assertTrue(String.format("%d expected to be approximately 10 times greater that %d", durationB.toMillis(), durationA.toMillis()), durationA.multipliedBy(15).compareTo(durationB) > 0);
-      Assert.assertTrue(String.format("%d expected to be greater than 5 ms", durationA.toMillis()), durationA.compareTo(Duration.ofMillis(5)) > 0);
-      Assert.assertTrue(String.format("%d expected to be less than 10000 ms", durationB.toMillis()), durationB.compareTo(Duration.ofMillis(10000)) < 0);
+      initTestNodes();
+      runWithinCommand(() -> {
+        // the goal of that test is to ensure more efficient than quadratic complexity
+        Duration durationA = TestBody.this.measureSuppressPerformance(4 * 1000);
+        Duration durationB = TestBody.this.measureSuppressPerformance(40 * 1000);
+        Assert.assertTrue(String.format("%d expected to be approximately 10 times greater that %d", durationB.toMillis(), durationA.toMillis()), durationA.multipliedBy(15).compareTo(durationB) > 0);
+        Assert.assertTrue(String.format("%d expected to be greater than 5 ms", durationA.toMillis()), durationA.compareTo(Duration.ofMillis(5)) > 0);
+        Assert.assertTrue(String.format("%d expected to be less than 10000 ms", durationB.toMillis()), durationB.compareTo(Duration.ofMillis(10000)) < 0);
+      });
     }
 
     public Duration measureSuppressPerformance(int modelSize) {
       SNode var5968606277576107105 = getNodeById("5968606277576107085");
-      ListSequence.fromList(SLinkOperations.getChildren(getNodeById("5968606277576107085"), LINKS.item$upGD)).clear();
+      ListSequence.fromList(SLinkOperations.getChildren(getAnnotatedNode("response"), LINKS.item$upGD)).clear();
       for (int i = 0; i < modelSize; i++) {
-        ListSequence.fromList(SLinkOperations.getChildren(getNodeById("5968606277576107085"), LINKS.item$upGD)).addElement(createNodeResponseItem_wxn1w7_a0a0a2a5h());
+        ListSequence.fromList(SLinkOperations.getChildren(getAnnotatedNode("response"), LINKS.item$upGD)).addElement(createNodeResponseItem_wxn1w7_a0a0a2a7g());
       }
-      SModel modelToCheck = SNodeOperations.getModel(getNodeById("5968606277576107085"));
+      SModel modelToCheck = SNodeOperations.getModel(getAnnotatedNode("response"));
       IChecker<SNode, NodeReportItem> structureChecker = new StructureChecker();
       long startTime = System.nanoTime();
       IAbstractChecker<ModelCheckerBuilder.ItemsToCheck, IssueKindReportItem> checker = new ModelCheckerBuilder(false).createChecker(ListSequence.fromListAndArray(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>(), structureChecker, new SuppressErrorsChecker()));
@@ -79,7 +83,7 @@ public class SuppressErrorsPerformanceTest_Test extends BaseTransformationTest {
       long stopTime = System.nanoTime();
       return Duration.ofNanos(stopTime - startTime);
     }
-    private static SNode createNodeResponseItem_wxn1w7_a0a0a2a5h() {
+    private static SNode createNodeResponseItem_wxn1w7_a0a0a2a7g() {
       SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodeResponseItem$Xr);
       n0.forChild(LINKS.node$X2qT).initNull();
       return n0.getResult();

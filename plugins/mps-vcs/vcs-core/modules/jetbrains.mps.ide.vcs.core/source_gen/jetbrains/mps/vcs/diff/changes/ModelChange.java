@@ -10,8 +10,6 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcs.util.MergeStrategy;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/8813828754313712692", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public abstract class ModelChange {
@@ -66,6 +64,14 @@ public abstract class ModelChange {
     return null;
   }
 
+  public boolean conflictsWith(@NotNull ModelChange otherChange) {
+    return false;
+  }
+
+  public boolean isSymmetricWith(@NotNull ModelChange otherChange) {
+    return false;
+  }
+
   @Override
   public abstract String toString();
 
@@ -79,21 +85,14 @@ public abstract class ModelChange {
     assert Sequence.fromIterable(changes).isNotEmpty();
     final SModel model = Sequence.fromIterable(changes).first().getChangeSet().getNewModel();
     final NodeCopier nc = new NodeCopier(model);
-    Iterable<ModelChange> oppositeChanges = Sequence.fromIterable(changes).select(new ISelector<ModelChange, ModelChange>() {
-      public ModelChange select(ModelChange ch) {
-        return ch.getOppositeChange();
-      }
-    });
+    Iterable<ModelChange> oppositeChanges = Sequence.fromIterable(changes).select((ch) -> ch.getOppositeChange());
     for (ModelChange ch : Sequence.fromIterable(oppositeChanges)) {
       if (ch instanceof NodeGroupChange) {
         ((NodeGroupChange) ch).prepare();
       }
     }
-    Sequence.fromIterable(oppositeChanges).visitAll(new IVisitor<ModelChange>() {
-      public void visit(ModelChange ch) {
-        ch.apply(model, nc);
-      }
-    });
+    HierarchicalNodeGroupChange.applyChanges(Sequence.fromIterable(oppositeChanges).ofType(HierarchicalNodeGroupChange.class), model, nc);
+    Sequence.fromIterable(oppositeChanges).where((it) -> !(it instanceof HierarchicalNodeGroupChange)).visitAll((ch) -> ch.apply(model, nc));
     nc.restoreIds(true);
   }
 }

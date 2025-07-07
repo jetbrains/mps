@@ -14,7 +14,7 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
@@ -44,10 +44,10 @@ public class ImplementMethodsAsIntention_Action extends BaseAction {
     if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.EnumClass$Vk)) {
       SNode enumConstant = SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("selectedNode")), CONCEPTS.EnumConstantDeclaration$MW, true, false);
       if ((enumConstant != null)) {
-        return !(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).isInspector()) && ListSequence.fromList(((List<SNode>) BHReflection.invoke0(enumConstant, CONCEPTS.IMemberContainer$yM, SMethodTrimmedId.create("getMethodsToImplement", null, "4GM03FJm5q2")))).isNotEmpty();
+        return !(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).isInspector()) && ListSequence.fromList(((List<SNode>) BHReflection.invoke0(enumConstant, CONCEPTS.IMemberContainer$yM, SMethodIdV2.create("getMethodsToImplement", 5418393554803775106L, 0x5745e3015c8914d3L)))).isNotEmpty();
       }
     }
-    return !(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).isInspector()) && (classifier != null) && ListSequence.fromList(((List<SNode>) BHReflection.invoke0(classifier, CONCEPTS.IMemberContainer$yM, SMethodTrimmedId.create("getMethodsToImplement", null, "4GM03FJm5q2")))).isNotEmpty();
+    return !(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).isInspector()) && (classifier != null) && ListSequence.fromList(((List<SNode>) BHReflection.invoke0(classifier, CONCEPTS.IMemberContainer$yM, SMethodIdV2.create("getMethodsToImplement", 5418393554803775106L, 0x5745e3015c8914d3L)))).isNotEmpty();
 
   }
   @Override

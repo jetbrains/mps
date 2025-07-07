@@ -62,8 +62,8 @@ public class Switch_switch_toSAbstractConcept extends TemplateSwitchBase impleme
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_68_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_594pev_b0a0c0d0c0b6));
-          tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_594pev_b0a0c0d0c0b6, "tpl/r:00000000-0000-4000-0000-011c89590303/6677504323281106683", context1);
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_68_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro));
+          tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro, "tpl/r:00000000-0000-4000-0000-011c89590303/6677504323281106683", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
       }
@@ -78,7 +78,7 @@ public class Switch_switch_toSAbstractConcept extends TemplateSwitchBase impleme
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_68_1(new SourceSubstituteMacroNodeContext(context, callMacro_594pev_b0a0a2a1h));
+      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_68_1(new SourceSubstituteMacroNodeContext(context, callMacro));
       TemplateContext context1 = context;
       context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
@@ -114,8 +114,8 @@ public class Switch_switch_toSAbstractConcept extends TemplateSwitchBase impleme
       return rv;
     }
   }
-  private static final SNodePointer copySrcMacro_594pev_b0a0c0d0c0b6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6677504323281106684");
-  private static final SNodePointer callMacro_594pev_b0a0a2a1h = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145324");
+  private static final SNodePointer copySrcMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6677504323281106684");
+  private static final SNodePointer callMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145324");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept PoundExpression$$N = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11885c0d945L, "jetbrains.mps.lang.smodel.structure.PoundExpression");

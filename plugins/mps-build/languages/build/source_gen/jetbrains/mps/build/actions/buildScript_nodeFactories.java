@@ -5,8 +5,8 @@ package jetbrains.mps.build.actions;
 import jetbrains.mps.openapi.actions.descriptor.NodeFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.generator.TransientModelsModule;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.generator.TransientModelsModule;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -21,47 +21,46 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class buildScript_nodeFactories {
   public static class NodeFactory_6099797596647447256 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SModel modelDescriptor = model;
-      if (model.getModule() instanceof TransientModelsModule || modelDescriptor == null) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
+      if (model == null) {
         return;
       }
-      SModule module = modelDescriptor.getModule();
-      if (module == null || ((AbstractModule) module).getDescriptorFile() == null) {
+      SModule module = model.getModule();
+      if (module == null || module instanceof TransientModelsModule || ((AbstractModule) module).getDescriptorFile() == null) {
         return;
       }
 
       SPropertyOperations.set(newNode, PROPS.internalBaseDirectory$_8Zr, ".");
-      SLinkOperations.setTarget(newNode, LINKS.scriptsDir$Ezqo, createBuildSourceProjectRelativePath_v3u3ao_a0a6a0a());
+      SLinkOperations.setTarget(newNode, LINKS.scriptsDir$Ezqo, createBuildSourceProjectRelativePath_v3u3ao_a0a5a0a());
     }
-    private static SNode createBuildSourceProjectRelativePath_v3u3ao_a0a6a0a() {
+    private static SNode createBuildSourceProjectRelativePath_v3u3ao_a0a5a0a() {
       SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BuildSourceProjectRelativePath$uc);
       return n0.getResult();
     }
   }
   public static class NodeFactory_7389400916848172015 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BuildSourceProjectRelativePath$uc)) {
         SLinkOperations.setTarget(newNode, LINKS.compositePart$blMW, SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.BuildSourceProjectRelativePath$uc), LINKS.compositePart$blMW)));
       }
     }
   }
   public static class NodeFactory_5481553824944787386 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BuildSourceMacroRelativePath$b7)) {
         SLinkOperations.setTarget(newNode, LINKS.compositePart$blMW, SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.BuildSourceMacroRelativePath$b7), LINKS.compositePart$blMW)));
       }
     }
   }
   public static class NodeFactory_1258644073389160370 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BuildInputSingleFile$4U)) {
         SLinkOperations.setTarget(newNode, LINKS.path$dYr6, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.BuildInputSingleFile$4U), LINKS.path$dYr6));
       }
     }
   }
   public static class NodeFactory_1258644073389160421 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BuildInputFiles$lR)) {
         SLinkOperations.setTarget(newNode, LINKS.dir$e6r$, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.BuildInputFiles$lR), LINKS.dir$e6r$));
         ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.selectors$hp_C)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.BuildInputFiles$lR), LINKS.selectors$hp_C)));
@@ -69,14 +68,14 @@ public class buildScript_nodeFactories {
     }
   }
   public static class NodeFactory_6099797596647417250 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(newNode, CONCEPTS.INamedConcept$Kd) && SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.INamedConcept$Kd)) {
         SPropertyOperations.assign(SNodeOperations.cast(newNode, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL, SPropertyOperations.getString(SNodeOperations.cast(sampleNode, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL));
       }
     }
   }
   public static class NodeFactory_6099797596647438149 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BuildLayout_NamedContainer$Ug)) {
         ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.children$aMRO)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.BuildLayout_NamedContainer$Ug), LINKS.children$aMRO)));
         SLinkOperations.setTarget(newNode, LINKS.containerName$ES_Y, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.BuildLayout_NamedContainer$Ug), LINKS.containerName$ES_Y));
@@ -84,14 +83,14 @@ public class buildScript_nodeFactories {
     }
   }
   public static class NodeFactory_6099797596647440630 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BuildMacro$qd)) {
         SPropertyOperations.assign(newNode, PROPS.name$MnvL, SPropertyOperations.getString(SNodeOperations.cast(sampleNode, CONCEPTS.BuildMacro$qd), PROPS.name$MnvL));
       }
     }
   }
   public static class NodeFactory_6977615362526183835 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BuildLayout_AbstractCopy$Ss)) {
         SLinkOperations.setTarget(newNode, LINKS.fileset$tUzn, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.BuildLayout_AbstractCopy$Ss), LINKS.fileset$tUzn));
       }

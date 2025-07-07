@@ -14,7 +14,7 @@ import java.util.HashSet;
 import java.util.ArrayList;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
-import jetbrains.mps.lang.pattern.util.MatchingUtil;
+import jetbrains.mps.smodel.SNodeMatcher;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import java.util.Objects;
@@ -73,7 +73,7 @@ public class TypeMatcher {
             ListSequence.fromList(queue).addElement(superType);
           }
           SNode javaType = Type__BehaviorDescriptor.getJavaType_idhEwIzO1.invoke(SNodeOperations.as(candidate, CONCEPTS.Type$bu));
-          if (!((MatchingUtil.matchNodes(candidate, javaType)))) {
+          if (!(new SNodeMatcher().match(candidate, javaType))) {
             ListSequence.fromList(queue).addElement(javaType);
           }
         }

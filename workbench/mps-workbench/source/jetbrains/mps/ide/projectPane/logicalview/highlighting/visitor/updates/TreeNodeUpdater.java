@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,13 @@
  */
 package jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.updates;
 
-
 import com.intellij.concurrency.JobScheduler;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.CancellableReadAction;
 import jetbrains.mps.util.Pair;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.containers.ConcurrentHashSet;
-import org.apache.log4j.Logger;
 
 import java.util.ArrayDeque;
 import java.util.Iterator;
@@ -114,8 +112,7 @@ public final class TreeNodeUpdater {
    *             element properties already updated.
    *             XXX can remove it right away, as mbeddr got their own outdated copy, and no clients are expected to plug into this updater.
    */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
+  @Deprecated(since = "2020.3", forRemoval = true)
   public void addUpdate(MPSTreeNode node, NodeUpdate r) {
     if (!r.needed(node)) {
       return;
@@ -189,7 +186,7 @@ public final class TreeNodeUpdater {
         }
       }
       final Logger logger = Logger.getLogger(TreeNodeUpdater.class);
-      if (logger.isDebugEnabled()) {
+      if (logger.isDebugLevel()) {
         String msg = String.format("TreeNode refresh %d + %d, left: %d. Cancelled: %b", c1, c2, myElements2Refresh.size(), cancel);
         logger.debug(msg);
       }

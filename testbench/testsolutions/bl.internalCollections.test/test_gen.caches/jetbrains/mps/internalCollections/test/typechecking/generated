@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="94v4wyo2exbueexud4xyulw77li8arm">
-  <files names="TypeCheckingErrors_Test.java" />
+<product version="3" modelHash="-4dvd6k0jwef4ppz5jjw2mmmoj592k3g">
+  <files names="CollectionGenericsTest_Test.java:ForEachStatementTypeInference_Test.java:TypeCheckingErrors_Test.java" />
 </product>
 

@@ -22,6 +22,7 @@ import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService;
 import jetbrains.mps.java.stub.ClassStubRootProvider;
 import jetbrains.mps.persistence.java.library.JavaClassesPersistence;
+import jetbrains.mps.persistence.kotlin.KotlinClassesPersistence;
 import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -52,6 +53,7 @@ public final class MPSPersistence extends ComponentPlugin implements ComponentHo
     init(new ModelFactoryCoreService(myModelFactoryService));
     final ClassStubRootProvider srp = init(new ClassStubRootProvider());
     init(new JavaClassesPersistence(myPersistenceFacade, myVfsManager, srp));
+    init(new KotlinClassesPersistence(myPersistenceFacade));
   }
 
   @Override

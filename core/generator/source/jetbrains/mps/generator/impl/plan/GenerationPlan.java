@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,8 +19,7 @@ import jetbrains.mps.generator.ModelGenerationPlan;
 import jetbrains.mps.generator.impl.plan.PriorityConflicts.Kind;
 import jetbrains.mps.generator.runtime.TemplateMappingConfiguration;
 import jetbrains.mps.generator.runtime.TemplateModule;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -48,7 +47,7 @@ import java.util.List;
  */
 public class GenerationPlan implements ModelGenerationPlan {
 
-  private static final Logger LOG = LogManager.getLogger(GenerationPlan.class);
+  private static final Logger LOG = Logger.getLogger(GenerationPlan.class);
 
   private final Collection<TemplateModule> myGenerators;
 
@@ -64,7 +63,7 @@ public class GenerationPlan implements ModelGenerationPlan {
     try {
       EngagedGeneratorCollector c = new EngagedGeneratorCollector(inputModel, additionalLanguages);
       myGenerators = c.getGenerators();
-      if (LOG.isDebugEnabled()) {
+      if (LOG.isDebugLevel()) {
         LOG.debug(">>>");
         c.dump(LOG::debug);
         LOG.debug("<<<");

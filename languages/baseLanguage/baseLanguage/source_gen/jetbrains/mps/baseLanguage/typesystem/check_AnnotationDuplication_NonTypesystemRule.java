@@ -10,9 +10,7 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -31,20 +29,10 @@ public class check_AnnotationDuplication_NonTypesystemRule extends AbstractNonTy
       return;
     }
     SNode parent = SNodeOperations.cast(SNodeOperations.getParent(annotationInstance), CONCEPTS.HasAnnotation$Dg);
-    ListSequence.fromList(SLinkOperations.getChildren(parent, LINKS.annotation$K49I)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.getIndexInParent(it) > SNodeOperations.getIndexInParent(annotationInstance);
-      }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getTarget(it, LINKS.annotation$12Ek), SLinkOperations.getTarget(annotationInstance, LINKS.annotation$12Ek));
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        {
-          final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it, "Duplicate annotation", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "543866787085723337", null, errorTarget);
-        }
+    ListSequence.fromList(SLinkOperations.getChildren(parent, LINKS.annotation$K49I)).where((it) -> SNodeOperations.getIndexInParent(it) > SNodeOperations.getIndexInParent(annotationInstance)).where((it) -> Objects.equals(SLinkOperations.getTarget(it, LINKS.annotation$12Ek), SLinkOperations.getTarget(annotationInstance, LINKS.annotation$12Ek))).visitAll((it) -> {
+      {
+        final MessageTarget errorTarget = new NodeMessageTarget();
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it, "Duplicate annotation", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "543866787085723337", null, errorTarget);
       }
     });
   }

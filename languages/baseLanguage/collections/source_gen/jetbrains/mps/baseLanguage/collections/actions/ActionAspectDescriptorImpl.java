@@ -8,7 +8,6 @@ import java.util.Collection;
 import jetbrains.mps.openapi.actions.descriptor.NodeFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.Collections;
-import java.util.Arrays;
 
 public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor implements ActionAspectDescriptor {
   private static final String LANGUAGE_FQ_NAME = "jetbrains.mps.baseLanguage.collections";
@@ -17,6 +16,8 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
   public Collection<NodeFactory> getFactories(SAbstractConcept concept) {
     if (LANGUAGE_FQ_NAME.equals(concept.getLanguage().getQualifiedName())) {
       switch (concept.getName()) {
+        case "AbstractContainerCreator":
+          return Collections.<NodeFactory>singletonList(new creators.NodeFactory_7830826264631420967());
         case "AbstractContainerType":
           return Collections.<NodeFactory>singletonList(new replace_sequence_type.NodeFactory_7886927014685056895());
         case "AddAllElementsOperation":
@@ -27,26 +28,14 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
           return Collections.<NodeFactory>singletonList(new single_argument_operations.NodeFactory_7212626807240862104());
         case "AddLastElementOperation":
           return Collections.<NodeFactory>singletonList(new single_argument_operations.NodeFactory_7212626807240862107());
-        case "AllOperation":
-          return Collections.<NodeFactory>singletonList(new closure_operations.NodeFactory_1235567398001());
-        case "AnyOperation":
-          return Collections.<NodeFactory>singletonList(new closure_operations.NodeFactory_1235567424420());
         case "ComparatorSortOperation":
-          return Arrays.asList(new NodeFactory[]{new closure_operations.NodeFactory_1225110009888(), new set_ascending_order.NodeFactory_1225119833430()});
+          return Collections.<NodeFactory>singletonList(new set_ascending_order.NodeFactory_1225119833430());
         case "ContainsAllOperation":
           return Collections.<NodeFactory>singletonList(new single_argument_operations.NodeFactory_7212626807240862110());
         case "ContainsOperation":
           return Collections.<NodeFactory>singletonList(new single_argument_operations.NodeFactory_7212626807240862113());
         case "CustomContainerDeclaration":
           return Collections.<NodeFactory>singletonList(new CustomContainerDeclaration_make_public.NodeFactory_1279588871815312987());
-        case "FindFirstOperation":
-          return Collections.<NodeFactory>singletonList(new closure_operations.NodeFactory_1225728791327());
-        case "FindLastOperation":
-          return Collections.<NodeFactory>singletonList(new closure_operations.NodeFactory_1225730740847());
-        case "FoldLeftOperation":
-          return Collections.<NodeFactory>singletonList(new closure_operations.NodeFactory_1522217801069421699());
-        case "FoldRightOperation":
-          return Collections.<NodeFactory>singletonList(new closure_operations.NodeFactory_1522217801069421974());
         case "ForEachStatement":
           return Collections.<NodeFactory>singletonList(new Default.NodeFactory_8656797459614853042());
         case "GetElementOperation":
@@ -57,54 +46,28 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
           return Collections.<NodeFactory>singletonList(new single_argument_operations.NodeFactory_4020503625588455826());
         case "HashMapCreator":
           return Collections.<NodeFactory>singletonList(new creators.NodeFactory_1241475150554());
-        case "HashSetCreator":
-          return Collections.<NodeFactory>singletonList(new creators.NodeFactory_1241475097267());
-        case "LinkedHashMapCreator":
-          return Collections.<NodeFactory>singletonList(new creators.NodeFactory_1241475270085());
-        case "LinkedHashSetCreator":
-          return Collections.<NodeFactory>singletonList(new creators.NodeFactory_1241475118079());
-        case "LinkedListCreator":
-          return Collections.<NodeFactory>singletonList(new creators.NodeFactory_1241474511499());
-        case "ListCreatorWithInit":
-          return Collections.<NodeFactory>singletonList(new creators.NodeFactory_1241474531795());
+        case "InternalSequenceOperation":
+          return Collections.<NodeFactory>singletonList(new closure_operations.NodeFactory_5185644189117529668());
         case "ListType":
           return Collections.<NodeFactory>singletonList(new replace_sequence_type.NodeFactory_7246115176735618985());
         case "MultiForEachStatement":
           return Collections.<NodeFactory>singletonList(new Default.NodeFactory_8656797459614949039());
         case "PushOperation":
           return Collections.<NodeFactory>singletonList(new single_argument_operations.NodeFactory_7212626807240862122());
-        case "ReduceLeftOperation":
-          return Collections.<NodeFactory>singletonList(new closure_operations.NodeFactory_1522217801069385377());
-        case "ReduceRightOperation":
-          return Collections.<NodeFactory>singletonList(new closure_operations.NodeFactory_1522217801069396478());
         case "RemoveAllElementsOperation":
           return Collections.<NodeFactory>singletonList(new single_argument_operations.NodeFactory_7212626807240862125());
         case "RemoveElementOperation":
           return Collections.<NodeFactory>singletonList(new single_argument_operations.NodeFactory_7212626807240862128());
-        case "RemoveWhereOperation":
-          return Collections.<NodeFactory>singletonList(new closure_operations.NodeFactory_3055999550620994085());
-        case "SelectOperation":
-          return Collections.<NodeFactory>singletonList(new closure_operations.NodeFactory_1225118817881());
         case "SequenceType":
           return Collections.<NodeFactory>singletonList(new replace_sequence_type.NodeFactory_7246115176735615123());
         case "SetType":
           return Collections.<NodeFactory>singletonList(new replace_sequence_type.NodeFactory_7246115176735619032());
         case "SortOperation":
-          return Arrays.asList(new NodeFactory[]{new closure_operations.NodeFactory_1225119114838(), new set_ascending_order.NodeFactory_1225119783187()});
+          return Collections.<NodeFactory>singletonList(new set_ascending_order.NodeFactory_1225119783187());
         case "TestAddElementOperation":
           return Collections.<NodeFactory>singletonList(new single_argument_operations.NodeFactory_5699792037748117963());
         case "TestRemoveElementOperation":
           return Collections.<NodeFactory>singletonList(new single_argument_operations.NodeFactory_7072176981128389277());
-        case "TranslateOperation":
-          return Collections.<NodeFactory>singletonList(new closure_operations.NodeFactory_1225119174306());
-        case "TreeMapCreator":
-          return Collections.<NodeFactory>singletonList(new creators.NodeFactory_1241475279119());
-        case "TreeSetCreator":
-          return Collections.<NodeFactory>singletonList(new creators.NodeFactory_1241475137153());
-        case "VisitAllOperation":
-          return Collections.<NodeFactory>singletonList(new closure_operations.NodeFactory_1225119188770());
-        case "WhereOperation":
-          return Collections.<NodeFactory>singletonList(new closure_operations.NodeFactory_1225119083460());
         default:
       }
     }

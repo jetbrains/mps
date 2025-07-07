@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,11 +17,10 @@ package jetbrains.mps.persistence;
 
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ApplicationComponent;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRule;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService;
 import jetbrains.mps.ide.MPSCoreComponents;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.annotations.Internal;
 
@@ -32,6 +31,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * A platform-level extension point to client custom data source factories
  * delegates to the {@link DataSourceFactoryRuleService}
  *
+ * FIXME (a) could be a service, not an app component (b) with extensions come and go, would be better for this class to become
+ *       'provider' answering based on actual extpoint state; rather than simply add/remove code from extensions.
  * @author apyshkin
  */
 @Internal
@@ -40,19 +41,20 @@ public final class DataSourceFactoryRuleRegistrar implements Disposable {
   private final List<DataSourceFactoryRule> myRegisteredRules = new CopyOnWriteArrayList<>();
   private final MPSCoreComponents myCoreComponents;
 
-  public DataSourceFactoryRuleRegistrar(MPSCoreComponents mpsCoreComponents) {
-    myCoreComponents = mpsCoreComponents;
+  public DataSourceFactoryRuleRegistrar() {
+    myCoreComponents = MPSCoreComponents.getInstance();
     DataSourceFactoryRuleService dsRegistry = myCoreComponents.getPlatform().findComponent(DataSourceFactoryRuleService.class);
     for (DataSourceFactoryRuleProvider provider : DataSourceFactoryRuleProvider.EP_DATA_SOURCE_FACTORY.getExtensions()) {
       try {
-        DataSourceFactoryRule factoryRule = provider.instantiate(provider.getImplementationClass(), ApplicationManager.getApplication().getPicoContainer());
+        // TODO: 232 platform API change
+        DataSourceFactoryRule factoryRule = provider.instantiate(provider.getImplementationClass(), null);//ApplicationManager.getApplication().getPicoContainer());
         myRegisteredRules.add(factoryRule);
         dsRegistry.register(factoryRule);
       } catch (ClassNotFoundException e) {
         String message = String.format("Failed to load %s in the plugin %s",
                                        provider.getImplementationClass(),
                                        provider.getPluginDescriptor().getPluginId());
-        LogManager.getLogger(DataSourceFactoryRuleRegistrar.class).error(message, e);
+        Logger.getLogger(DataSourceFactoryRuleRegistrar.class).error(message, e);
       }
     }
   }

@@ -86,7 +86,7 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -126,6 +126,22 @@
                     </node>
                     <node concept="3TrEf2" id="i1LCz8y" role="2OqNvi">
                       <ref role="3Tt5mk" to="tpee:fzcqZ_w" resolve="variableDeclaration" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3_FXB6" id="3xYtul1Re4S" role="3cqZAp">
+                  <node concept="2OqwBi" id="3xYtul1Re4T" role="3_H1SZ">
+                    <node concept="1PxgMI" id="3xYtul1Re4U" role="2Oq$k0">
+                      <property role="1BlNFB" value="true" />
+                      <node concept="37vLTw" id="3xYtul1Re4V" role="1m5AlR">
+                        <ref role="3cqZAo" node="i1LAY0j" resolve="mbr" />
+                      </node>
+                      <node concept="chp4Y" id="3xYtul1Re4W" role="3oSUPX">
+                        <ref role="cht4Q" to="cx9y:3xYtul1rirb" resolve="LocalVariableDeclarationInTuple" />
+                      </node>
+                    </node>
+                    <node concept="3TrEf2" id="3xYtul1Re4X" role="2OqNvi">
+                      <ref role="3Tt5mk" to="cx9y:3xYtul1rito" resolve="variable" />
                     </node>
                   </node>
                 </node>

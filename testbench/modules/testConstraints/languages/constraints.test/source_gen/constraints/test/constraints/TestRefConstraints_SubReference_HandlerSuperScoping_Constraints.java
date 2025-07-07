@@ -21,11 +21,7 @@ public class TestRefConstraints_SubReference_HandlerSuperScoping_Constraints ext
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.target$Wyj6, this) {
-      @Override
-      public boolean hasOwnOnReferenceSetHandler() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.target$Wyj6, this, false, true) {
       @Override
       public boolean validate(final SNode referenceNode, final SNode oldReferentNode, final SNode newReferentNode) {
         return true;

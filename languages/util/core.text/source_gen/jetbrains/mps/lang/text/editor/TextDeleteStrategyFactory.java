@@ -13,13 +13,12 @@ import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-/*package*/ class TextDeleteStrategyFactory {
+public class TextDeleteStrategyFactory {
   private TextDeleteStrategyFactory() {
   }
 
@@ -32,7 +31,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     }
   }
 
-  /*package*/ static TextStrategy createDeleteStrategy(SNode currentNode, EditorContext editorContext, boolean isForward) {
+  public static TextStrategy createDeleteStrategy(SNode currentNode, EditorContext editorContext, boolean isForward) {
     SNode neighbour = SNodeOperations.as(((isForward ? SNodeOperations.getNextSibling(currentNode) : SNodeOperations.getPrevSibling(currentNode))), CONCEPTS.TextElement$WN);
     if (SNodeOperations.isInstanceOf(currentNode, CONCEPTS.Word$Dn) && (neighbour != null)) {
       if (SNodeOperations.isInstanceOf(neighbour, CONCEPTS.Word$Dn)) {
@@ -77,7 +76,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     }
 
     @Override
-    /*package*/ void execute() {
+    public void execute() {
       int selectionIndex = (myIsForward ? myCurrentWordValue.length() : myNeighbourValue.length());
       SNode newWord;
       if ((myCurrentWordValue == null || myCurrentWordValue.length() == 0)) {
@@ -121,7 +120,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     }
 
     @Override
-    /*package*/ void execute() {
+    public void execute() {
       SNodeOperations.deleteNode(myCurrentWord);
       if (myIsForward) {
         SelectionUtil.selectLabelCellAnSetCaret(myEditorContext, myNeighbour, SelectionManager.FIRST_CELL, 0);
@@ -139,7 +138,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     }
 
     @Override
-    /*package*/ void execute() {
+    public void execute() {
       boolean wasApproved = DeletionApproverUtil.approve(myEditorContext, myNeighbour);
       if (!(wasApproved)) {
         SNodeOperations.deleteNode(myNeighbour);
@@ -155,7 +154,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     }
 
     @Override
-    /*package*/ void execute() {
+    public void execute() {
       if (myIsForward) {
         SelectionUtil.selectLabelCellAnSetCaret(myEditorContext, myNeighbour, SelectionManager.FIRST_CELL, 0);
       } else {
@@ -172,7 +171,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     }
 
     @Override
-    /*package*/ void execute() {
+    public void execute() {
       boolean wasApproved = DeletionApproverUtil.approve(myEditorContext, myCommentText);
       if (!(wasApproved)) {
         SNodeOperations.deleteNode(myCommentText);
@@ -193,23 +192,15 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     }
 
     @Override
-    /*package*/ void execute() {
+    public void execute() {
       SNode edgeElement;
       if (myIsForward) {
         edgeElement = ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$_j45)).first();
-        ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$_j45)).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            ListSequence.fromList(SLinkOperations.getChildren(myCurrentLine, LINKS.elements$_j45)).addElement(it);
-          }
-        });
+        ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$_j45)).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(myCurrentLine, LINKS.elements$_j45)).addElement(it));
         SNodeOperations.deleteNode(TextStrategy.findLineContainer(myNeighbourLine));
       } else {
         edgeElement = ListSequence.fromList(SLinkOperations.getChildren(myCurrentLine, LINKS.elements$_j45)).first();
-        ListSequence.fromList(SLinkOperations.getChildren(myCurrentLine, LINKS.elements$_j45)).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$_j45)).addElement(it);
-          }
-        });
+        ListSequence.fromList(SLinkOperations.getChildren(myCurrentLine, LINKS.elements$_j45)).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$_j45)).addElement(it));
         SNodeOperations.deleteNode(TextStrategy.findLineContainer(myCurrentLine));
       }
       if (SNodeOperations.isInstanceOf(edgeElement, CONCEPTS.Word$Dn) && SNodeOperations.isInstanceOf(myCurrentNode, CONCEPTS.Word$Dn)) {

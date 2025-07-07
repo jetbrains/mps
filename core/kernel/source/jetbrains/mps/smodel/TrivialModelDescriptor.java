@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.smodel;
 
 import jetbrains.mps.extapi.model.SModelBase;
+import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -44,13 +45,18 @@ public class TrivialModelDescriptor extends SModelBase {
   }
 
   @Override
-  public SModel getSModelInternal() {
+  public SModel getSModel() {
     return getCurrentModelInternal();
   }
 
   @Nullable
   @Override
   protected SModel getCurrentModelInternal() {
+    return myModelData;
+  }
+
+  @Override
+  public SModelData getModelData() {
     return myModelData;
   }
 

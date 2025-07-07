@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,9 +40,7 @@ public final class ModelAccessHelper {
   }
 
   public <T> T runReadAction(final Computable<T> c) {
-    final ComputeRunnable<T> r = new ComputeRunnable<>(c);
-    myModelAccess.runReadAction(r);
-    return r.getResult();
+    return myModelAccess.computeReadAction(c::compute);
   }
 
   public void runReadAction(Runnable r) {
@@ -50,9 +48,7 @@ public final class ModelAccessHelper {
   }
 
   public <T> T runWriteAction(final Computable<T> c) {
-    final ComputeRunnable<T> r = new ComputeRunnable<>(c);
-    myModelAccess.runWriteAction(r);
-    return r.getResult();
+    return myModelAccess.computeWriteAction(c::compute);
   }
 
   public void runWriteAction(Runnable r) {

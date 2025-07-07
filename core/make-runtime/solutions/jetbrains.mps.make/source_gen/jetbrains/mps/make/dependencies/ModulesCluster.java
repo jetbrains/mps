@@ -15,7 +15,6 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.ArrayList;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -30,7 +29,6 @@ import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import java.util.LinkedList;
 import jetbrains.mps.internal.make.runtime.util.GraphAnalyzer;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 
 @GeneratedClass(node = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)/5888262800849895741", model = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)")
 public class ModulesCluster {
@@ -65,11 +63,7 @@ public class ModulesCluster {
   public Iterable<List<SModule>> buildOrder(Iterable<SModule> pool) {
     collectRequired(pool);
     List<ModulesGraph.Cycle> compacted = new ModulesGraph(MapSequence.fromMap(myDepsGraph).values()).compactTotalOrder();
-    return ListSequence.fromList(compacted).select(new ISelector<ModulesGraph.Cycle, List<SModule>>() {
-      public List<SModule> select(ModulesGraph.Cycle cycle) {
-        return cycle.modules();
-      }
-    }).toListSequence();
+    return ListSequence.fromList(compacted).select((cycle) -> cycle.modules()).toList();
   }
 
   public Iterable<SLanguage> usedLanguage(SModule m) {
@@ -151,11 +145,7 @@ public class ModulesCluster {
     GlobalModuleDependenciesManager depman = new GlobalModuleDependenciesManager(modExt);
     Iterable<SModule> reqmods = depman.getModules(GlobalModuleDependenciesManager.Deptype.COMPILE);
     // record edges only to existing vertexes
-    SetSequence.fromSet(reqs).addSequence(Sequence.fromIterable(reqmods).select(new ISelector<SModule, ModuleDeps>() {
-      public ModuleDeps select(SModule m) {
-        return MapSequence.fromMap(myDepsGraph).get(m.getModuleReference());
-      }
-    }).where(new NotNullWhereFilter<ModuleDeps>()));
+    SetSequence.fromSet(reqs).addSequence(Sequence.fromIterable(reqmods).select((m) -> MapSequence.fromMap(myDepsGraph).get(m.getModuleReference())).where(new NotNullWhereFilter()));
 
 
     // XXX perhaps, we shall respect target languages of used languages as well, as they may appear while generating this module.
@@ -203,7 +193,7 @@ public class ModulesCluster {
     private final List<ModuleDeps> myAllVertices;
 
     public ModulesGraph(Iterable<ModuleDeps> allVertices) {
-      myAllVertices = Sequence.fromIterable(allVertices).toListSequence();
+      myAllVertices = Sequence.fromIterable(allVertices).toList();
     }
 
     @Override
@@ -222,11 +212,7 @@ public class ModulesCluster {
     public List<Cycle> compactTotalOrder() {
       // with compact() code moved to GraphAnalyzer, no need to use old method
       List<List<ModuleDeps>> order = totalOrder(true);
-      return ListSequence.fromList(order).select(new ISelector<List<ModuleDeps>, Cycle>() {
-        public Cycle select(List<ModuleDeps> it) {
-          return toCycle(it);
-        }
-      }).toListSequence();
+      return ListSequence.fromList(order).select((it) -> toCycle(it)).toList();
     }
 
     public List<Cycle> compactTotalOrderOld() {
@@ -270,30 +256,18 @@ public class ModulesCluster {
       }
 
       /*package*/ Cycle concat(Cycle other) {
-        return new Cycle(ListSequence.fromList(myElements).concat(ListSequence.fromList(other.myElements)).toListSequence());
+        return new Cycle(ListSequence.fromList(myElements).concat(ListSequence.fromList(other.myElements)).toList());
       }
 
       /*package*/ List<SModule> modules() {
-        return ListSequence.fromList(myElements).select(new ISelector<ModuleDeps, SModule>() {
-          public SModule select(ModuleDeps md) {
-            return md.getModule();
-          }
-        }).toListSequence();
+        return ListSequence.fromList(myElements).select((md) -> md.getModule()).toList();
       }
 
       private Iterable<ModuleDeps> allRequired() {
-        return ListSequence.fromList(myElements).translate(new ITranslator2<ModuleDeps, ModuleDeps>() {
-          public Iterable<ModuleDeps> translate(ModuleDeps mr) {
-            return mr.required();
-          }
-        });
+        return ListSequence.fromList(myElements).translate((mr) -> mr.required());
       }
       private Iterable<ModuleDeps> allDependent() {
-        return ListSequence.fromList(myElements).translate(new ITranslator2<ModuleDeps, ModuleDeps>() {
-          public Iterable<ModuleDeps> translate(ModuleDeps mr) {
-            return mr.dependent();
-          }
-        });
+        return ListSequence.fromList(myElements).translate((mr) -> mr.dependent());
       }
     }
   }

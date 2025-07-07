@@ -4,11 +4,11 @@ package jetbrains.mps.execution.impl.configurations.tests.inprocess;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
-import org.junit.ClassRule;
+import jetbrains.mps.logging.Logger;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import java.util.List;
@@ -33,12 +33,12 @@ import com.intellij.execution.ExecutionException;
 
 @MPSLaunch
 public class JUnitInProcess_Test extends BaseTransformationTest {
-  private static final Logger LOG = LogManager.getLogger(JUnitInProcess_Test.class);
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(JUnitInProcess_Test.class, "${mps_home}", "r:ff98d12f-bc65-4639-94c3-dee022b33791(jetbrains.mps.execution.impl.configurations.tests.inprocess@tests)", false);
+  private static final Logger LOG = Logger.getLogger(JUnitInProcess_Test.class);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(JUnitInProcess_Test.class, "${mps_home}", "r:ff98d12f-bc65-4639-94c3-dee022b33791(jetbrains.mps.execution.impl.configurations.tests.inprocess@tests)", false));
 
   public JUnitInProcess_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -56,35 +56,40 @@ public class JUnitInProcess_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
+    }
+
     public void test_startSimpleTestCase() throws Exception {
+      initTestNodes();
       List<ITestNodeWrapper> wrappedTests = new TestNodeWrapHelper(myProject.getRepository()).discover(new SNodePointer("r:bbc844ac-dcda-4460-9717-8eb5d64b4778(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2@tests)", "6937584626643047380"));
       this.checkTests(wrappedTests, ListSequence.fromList(new ArrayList<ITestNodeWrapper>()));
     }
     public void test_startFailedTestCase() throws Exception {
+      initTestNodes();
       List<ITestNodeWrapper> wrappedTests = new TestNodeWrapHelper(myProject.getRepository()).discover(new SNodePointer("r:bbc844ac-dcda-4460-9717-8eb5d64b4778(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2@tests)", "6339244025082034140"));
       this.checkTests(ListSequence.fromList(new ArrayList<ITestNodeWrapper>()), wrappedTests);
     }
 
     public void checkTests(final List<ITestNodeWrapper> success, final List<ITestNodeWrapper> failure) {
       try {
-        List<ITestNodeWrapper> testNodes = ListSequence.fromList(success).union(ListSequence.fromList(failure)).toListSequence();
+        List<ITestNodeWrapper> testNodes = ListSequence.fromList(success).union(ListSequence.fromList(failure)).toList();
         final TestRunState runState = new TestRunState(testNodes);
         Project ideaProject = ((MPSProject) myProject).getProject();
         JUnitTests_Configuration junitRC = new JUnitTests_Configuration(ideaProject, null, "dummyRCInitializer");
         JUnitProcessStarter processExecutor = new JUnitInProcessRunStarter(myProject, junitRC, testNodes);
-        if (LOG.isInfoEnabled()) {
+        if (LOG.isInfoLevel()) {
           LOG.info("Starting in-process-execution");
         }
         ProcessHandler process = processExecutor.execute();
         final Wrappers._T<CheckTestStateListener> checkListener = new Wrappers._T<CheckTestStateListener>();
-        myProject.getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            // CheckTestStateListener collects names from ITestNodeWrapper, which generally needs to access a model,
-            // therefore, here's read action. Unlike JUnitCommand test, which is exectuted inside a command, this test
-            // states it doesn't need write action to run.
-            checkListener.value = new CheckTestStateListener(success, failure);
-            runState.addListener(checkListener.value);
-          }
+        myProject.getModelAccess().runReadAction(() -> {
+          // CheckTestStateListener collects names from ITestNodeWrapper, which generally needs to access a model,
+          // therefore, here's read action. Unlike JUnitCommand test, which is exectuted inside a command, this test
+          // states it doesn't need write action to run.
+          checkListener.value = new CheckTestStateListener(success, failure);
+          runState.addListener(checkListener.value);
         });
         process.addProcessListener(new UnitTestProcessListener(runState));
         int exitCode = ProcessHandlerBuilder.startAndWait(process, 30 * 1000);
@@ -95,13 +100,13 @@ public class JUnitInProcess_Test extends BaseTransformationTest {
           Assert.fail("Process is running for too long");
         }
         if (runState.getFailedTests() != failedMustBe) {
-          Assert.fail("The number of failed tests be equal to " + failedMustBe + ", not to " + runState.getFailedTests());
+          Assert.fail("The number of failed tests must be equal to " + failedMustBe + ", not to " + runState.getFailedTests());
         }
         int completedMustBe = ListSequence.fromList(failure).count() + ListSequence.fromList(success).count();
         if (runState.getCompletedTests() != completedMustBe) {
-          Assert.fail("The number of completed tests be equal to " + ListSequence.fromList(failure).count() + ", not to " + runState.getFailedTests());
+          Assert.fail("The number of completed tests must be equal to " + completedMustBe + ", not to " + runState.getCompletedTests());
         }
-        if (!(checkListener.value.getMessages().equals(""))) {
+        if (!(checkListener.value.getMessages().isEmpty())) {
           Assert.fail(checkListener.value.getMessages());
         }
       } catch (ExecutionException e) {

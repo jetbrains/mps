@@ -44,49 +44,49 @@
       <node id="8878450512092605113" at="40,39,41,96" concept="9" />
       <node id="8878450512092605113" at="45,63,46,95" concept="5" />
       <node id="8878450512092605113" at="50,67,51,18" concept="5" />
-      <node id="8878450512092611869" at="56,0,57,0" concept="7" trace="SOURCE_NODE_REF" />
-      <node id="8878450512092611869" at="57,0,58,0" concept="7" trace="ID_toleranceNotTooLow" />
-      <node id="8878450512092611869" at="59,38,60,95" concept="9" />
-      <node id="8878450512092611869" at="64,63,65,93" concept="5" />
-      <node id="8878450512092611869" at="69,67,70,18" concept="5" />
-      <node id="2184230058468666857" at="74,46,75,19" concept="9" />
-      <node id="2184230058468666857" at="79,0,80,0" concept="7" trace="tolerance$vCY" />
+      <node id="8878450512092611869" at="57,0,58,0" concept="7" trace="SOURCE_NODE_REF" />
+      <node id="8878450512092611869" at="58,0,59,0" concept="7" trace="ID_toleranceNotTooLow" />
+      <node id="8878450512092611869" at="60,38,61,95" concept="9" />
+      <node id="8878450512092611869" at="65,63,66,93" concept="5" />
+      <node id="8878450512092611869" at="70,67,71,18" concept="5" />
+      <node id="2184230058468666857" at="76,46,77,19" concept="9" />
+      <node id="2184230058468666857" at="81,0,82,0" concept="7" trace="tolerance$vCY" />
       <node id="8878450512092605113" at="40,0,43,0" concept="0" trace="Rule_toleranceNotTooHigh#()V" />
-      <node id="8878450512092611869" at="59,0,62,0" concept="0" trace="Rule_toleranceNotTooLow#()V" />
-      <node id="2184230058468666857" at="74,0,77,0" concept="0" trace="ChildConcept_ConstraintRules#()V" />
+      <node id="8878450512092611869" at="60,0,63,0" concept="0" trace="Rule_toleranceNotTooLow#()V" />
+      <node id="2184230058468666857" at="76,0,79,0" concept="0" trace="ChildConcept_ConstraintRules#()V" />
       <node id="8878450512092605113" at="44,0,48,0" concept="3" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
       <node id="8878450512092605113" at="49,0,53,0" concept="3" trace="appliesTo#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
-      <node id="8878450512092611869" at="63,0,67,0" concept="3" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
-      <node id="8878450512092611869" at="68,0,72,0" concept="3" trace="appliesTo#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
+      <node id="8878450512092611869" at="64,0,68,0" concept="3" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
+      <node id="8878450512092611869" at="69,0,73,0" concept="3" trace="appliesTo#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
       <node id="2184230058468666857" at="30,0,35,0" concept="3" trace="getDeclaredRules#()Ljava/util/List;" />
       <scope id="2184230058468666857" at="32,43,33,17" />
       <scope id="8878450512092605113" at="40,39,41,96" />
       <scope id="8878450512092605113" at="45,63,46,95" />
       <scope id="8878450512092605113" at="50,67,51,18" />
-      <scope id="8878450512092611869" at="59,38,60,95" />
-      <scope id="8878450512092611869" at="64,63,65,93" />
-      <scope id="8878450512092611869" at="69,67,70,18" />
-      <scope id="2184230058468666857" at="74,46,75,19" />
+      <scope id="8878450512092611869" at="60,38,61,95" />
+      <scope id="8878450512092611869" at="65,63,66,93" />
+      <scope id="8878450512092611869" at="70,67,71,18" />
+      <scope id="2184230058468666857" at="76,46,77,19" />
       <scope id="8878450512092605113" at="40,0,43,0" />
-      <scope id="8878450512092611869" at="59,0,62,0" />
-      <scope id="2184230058468666857" at="74,0,77,0" />
+      <scope id="8878450512092611869" at="60,0,63,0" />
+      <scope id="2184230058468666857" at="76,0,79,0" />
       <scope id="8878450512092605113" at="44,0,48,0">
         <var name="context" id="8878450512092605113" />
       </scope>
       <scope id="8878450512092605113" at="49,0,53,0">
         <var name="context" id="8878450512092605113" />
       </scope>
-      <scope id="8878450512092611869" at="63,0,67,0">
+      <scope id="8878450512092611869" at="64,0,68,0">
         <var name="context" id="8878450512092611869" />
       </scope>
-      <scope id="8878450512092611869" at="68,0,72,0">
+      <scope id="8878450512092611869" at="69,0,73,0">
         <var name="context" id="8878450512092611869" />
       </scope>
       <scope id="2184230058468666857" at="30,0,35,0" />
-      <unit id="2184230058468666857" at="78,0,81,0" name="constraints.rules.test.constraints.ChildConcept_ConstraintRules$PROPS" />
-      <unit id="8878450512092605113" at="36,0,54,0" name="constraints.rules.test.constraints.ChildConcept_ConstraintRules$Rule_toleranceNotTooHigh" />
-      <unit id="8878450512092611869" at="55,0,73,0" name="constraints.rules.test.constraints.ChildConcept_ConstraintRules$Rule_toleranceNotTooLow" />
-      <unit id="2184230058468666857" at="22,0,82,0" name="constraints.rules.test.constraints.ChildConcept_ConstraintRules" />
+      <unit id="2184230058468666857" at="80,0,83,0" name="constraints.rules.test.constraints.ChildConcept_ConstraintRules$PROPS" />
+      <unit id="8878450512092605113" at="36,0,55,0" name="constraints.rules.test.constraints.ChildConcept_ConstraintRules$Rule_toleranceNotTooHigh" />
+      <unit id="8878450512092611869" at="56,0,75,0" name="constraints.rules.test.constraints.ChildConcept_ConstraintRules$Rule_toleranceNotTooLow" />
+      <unit id="2184230058468666857" at="22,0,84,0" name="constraints.rules.test.constraints.ChildConcept_ConstraintRules" />
     </file>
     <file name="ChildConcept_ConstraintsFeedback.java">
       <node id="2184230058468666857" at="20,0,21,0" concept="7" trace="CONCEPT" />
@@ -129,9 +129,9 @@
       <node id="4999334160817514363" at="38,37,39,93" concept="9" />
       <node id="4999334160817514363" at="43,61,44,79" concept="5" />
       <node id="4999334160817514363" at="48,65,49,18" concept="5" />
-      <node id="4999334160817514360" at="53,58,54,19" concept="9" />
+      <node id="4999334160817514360" at="54,58,55,19" concept="9" />
       <node id="4999334160817514363" at="38,0,41,0" concept="0" trace="Rule_unnamed_10yvtm_a0#()V" />
-      <node id="4999334160817514360" at="53,0,56,0" concept="0" trace="SometimesRootableConcept_ConstraintRules#()V" />
+      <node id="4999334160817514360" at="54,0,57,0" concept="0" trace="SometimesRootableConcept_ConstraintRules#()V" />
       <node id="4999334160817514363" at="42,0,46,0" concept="3" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeRootContext;)Z" />
       <node id="4999334160817514363" at="47,0,51,0" concept="3" trace="appliesTo#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/CanBeRootContext;)Z" />
       <node id="4999334160817514360" at="28,0,33,0" concept="3" trace="getDeclaredRules#()Ljava/util/List;" />
@@ -139,9 +139,9 @@
       <scope id="4999334160817514363" at="38,37,39,93" />
       <scope id="4999334160817514363" at="43,61,44,79" />
       <scope id="4999334160817514363" at="48,65,49,18" />
-      <scope id="4999334160817514360" at="53,58,54,19" />
+      <scope id="4999334160817514360" at="54,58,55,19" />
       <scope id="4999334160817514363" at="38,0,41,0" />
-      <scope id="4999334160817514360" at="53,0,56,0" />
+      <scope id="4999334160817514360" at="54,0,57,0" />
       <scope id="4999334160817514363" at="42,0,46,0">
         <var name="context" id="4999334160817514363" />
       </scope>
@@ -149,8 +149,8 @@
         <var name="context" id="4999334160817514363" />
       </scope>
       <scope id="4999334160817514360" at="28,0,33,0" />
-      <unit id="4999334160817514363" at="34,0,52,0" name="constraints.rules.test.constraints.SometimesRootableConcept_ConstraintRules$Rule_unnamed_10yvtm_a0" />
-      <unit id="4999334160817514360" at="21,0,57,0" name="constraints.rules.test.constraints.SometimesRootableConcept_ConstraintRules" />
+      <unit id="4999334160817514363" at="34,0,53,0" name="constraints.rules.test.constraints.SometimesRootableConcept_ConstraintRules$Rule_unnamed_10yvtm_a0" />
+      <unit id="4999334160817514360" at="21,0,58,0" name="constraints.rules.test.constraints.SometimesRootableConcept_ConstraintRules" />
     </file>
     <file name="SometimesRootableConcept_ConstraintsFeedback.java">
       <node id="4999334160817514360" at="20,0,21,0" concept="7" trace="CONCEPT" />
@@ -186,51 +186,51 @@
       <node id="8878450512092601214" at="43,32,44,90" concept="9" />
       <node id="8878450512092601214" at="48,63,49,122" concept="5" />
       <node id="8878450512092601214" at="53,67,54,18" concept="5" />
-      <node id="8878450512092603199" at="59,0,60,0" concept="7" trace="SOURCE_NODE_REF" />
-      <node id="8878450512092603199" at="60,0,61,0" concept="7" trace="ID_propIsTrue" />
-      <node id="8878450512092603199" at="62,30,63,88" concept="9" />
-      <node id="8878450512092603199" at="67,63,68,97" concept="5" />
-      <node id="8878450512092603199" at="72,67,73,18" concept="5" />
-      <node id="7247338141359841462" at="77,47,78,19" concept="9" />
-      <node id="7247338141359841462" at="82,0,83,0" concept="7" trace="ChildConcept$v" />
-      <node id="7247338141359841462" at="86,0,87,0" concept="7" trace="canHaveChildren$2qgy" />
+      <node id="8878450512092603199" at="60,0,61,0" concept="7" trace="SOURCE_NODE_REF" />
+      <node id="8878450512092603199" at="61,0,62,0" concept="7" trace="ID_propIsTrue" />
+      <node id="8878450512092603199" at="63,30,64,88" concept="9" />
+      <node id="8878450512092603199" at="68,63,69,97" concept="5" />
+      <node id="8878450512092603199" at="73,67,74,18" concept="5" />
+      <node id="7247338141359841462" at="79,47,80,19" concept="9" />
+      <node id="7247338141359841462" at="84,0,85,0" concept="7" trace="ChildConcept$v" />
+      <node id="7247338141359841462" at="88,0,89,0" concept="7" trace="canHaveChildren$2qgy" />
       <node id="8878450512092601214" at="43,0,46,0" concept="0" trace="Rule_childConcept#()V" />
-      <node id="8878450512092603199" at="62,0,65,0" concept="0" trace="Rule_propIsTrue#()V" />
-      <node id="7247338141359841462" at="77,0,80,0" concept="0" trace="ParentConcept_ConstraintRules#()V" />
+      <node id="8878450512092603199" at="63,0,66,0" concept="0" trace="Rule_propIsTrue#()V" />
+      <node id="7247338141359841462" at="79,0,82,0" concept="0" trace="ParentConcept_ConstraintRules#()V" />
       <node id="8878450512092601214" at="47,0,51,0" concept="3" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
       <node id="8878450512092601214" at="52,0,56,0" concept="3" trace="appliesTo#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
-      <node id="8878450512092603199" at="66,0,70,0" concept="3" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
-      <node id="8878450512092603199" at="71,0,75,0" concept="3" trace="appliesTo#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
+      <node id="8878450512092603199" at="67,0,71,0" concept="3" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
+      <node id="8878450512092603199" at="72,0,76,0" concept="3" trace="appliesTo#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
       <node id="7247338141359841462" at="33,0,38,0" concept="3" trace="getDeclaredRules#()Ljava/util/List;" />
       <scope id="7247338141359841462" at="35,43,36,17" />
       <scope id="8878450512092601214" at="43,32,44,90" />
       <scope id="8878450512092601214" at="48,63,49,122" />
       <scope id="8878450512092601214" at="53,67,54,18" />
-      <scope id="8878450512092603199" at="62,30,63,88" />
-      <scope id="8878450512092603199" at="67,63,68,97" />
-      <scope id="8878450512092603199" at="72,67,73,18" />
-      <scope id="7247338141359841462" at="77,47,78,19" />
+      <scope id="8878450512092603199" at="63,30,64,88" />
+      <scope id="8878450512092603199" at="68,63,69,97" />
+      <scope id="8878450512092603199" at="73,67,74,18" />
+      <scope id="7247338141359841462" at="79,47,80,19" />
       <scope id="8878450512092601214" at="43,0,46,0" />
-      <scope id="8878450512092603199" at="62,0,65,0" />
-      <scope id="7247338141359841462" at="77,0,80,0" />
+      <scope id="8878450512092603199" at="63,0,66,0" />
+      <scope id="7247338141359841462" at="79,0,82,0" />
       <scope id="8878450512092601214" at="47,0,51,0">
         <var name="context" id="8878450512092601214" />
       </scope>
       <scope id="8878450512092601214" at="52,0,56,0">
         <var name="context" id="8878450512092601214" />
       </scope>
-      <scope id="8878450512092603199" at="66,0,70,0">
+      <scope id="8878450512092603199" at="67,0,71,0">
         <var name="context" id="8878450512092603199" />
       </scope>
-      <scope id="8878450512092603199" at="71,0,75,0">
+      <scope id="8878450512092603199" at="72,0,76,0">
         <var name="context" id="8878450512092603199" />
       </scope>
       <scope id="7247338141359841462" at="33,0,38,0" />
-      <unit id="7247338141359841462" at="81,0,84,0" name="constraints.rules.test.constraints.ParentConcept_ConstraintRules$CONCEPTS" />
-      <unit id="7247338141359841462" at="85,0,88,0" name="constraints.rules.test.constraints.ParentConcept_ConstraintRules$PROPS" />
-      <unit id="8878450512092601214" at="39,0,57,0" name="constraints.rules.test.constraints.ParentConcept_ConstraintRules$Rule_childConcept" />
-      <unit id="8878450512092603199" at="58,0,76,0" name="constraints.rules.test.constraints.ParentConcept_ConstraintRules$Rule_propIsTrue" />
-      <unit id="7247338141359841462" at="25,0,89,0" name="constraints.rules.test.constraints.ParentConcept_ConstraintRules" />
+      <unit id="7247338141359841462" at="83,0,86,0" name="constraints.rules.test.constraints.ParentConcept_ConstraintRules$CONCEPTS" />
+      <unit id="7247338141359841462" at="87,0,90,0" name="constraints.rules.test.constraints.ParentConcept_ConstraintRules$PROPS" />
+      <unit id="8878450512092601214" at="39,0,58,0" name="constraints.rules.test.constraints.ParentConcept_ConstraintRules$Rule_childConcept" />
+      <unit id="8878450512092603199" at="59,0,78,0" name="constraints.rules.test.constraints.ParentConcept_ConstraintRules$Rule_propIsTrue" />
+      <unit id="7247338141359841462" at="25,0,91,0" name="constraints.rules.test.constraints.ParentConcept_ConstraintRules" />
     </file>
   </root>
   <root nodeRef="r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rules.test.constraints)/8409512132773796220">

@@ -20,4 +20,7 @@ public interface ChangeSet {
   SModel getNewModel();
   @NotNull
   ChangeSet getOppositeChangeSet();
+  @NotNull
+  ChangeSet getChangeSetCopy(boolean withOpposite);
+  void restoreChangeSetByCopy(@NotNull ChangeSet copy, boolean withOpposite);
 }

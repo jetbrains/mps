@@ -16,7 +16,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -36,6 +35,7 @@ public class NewCreateRootRule_Action extends BaseAction {
     super("Create Conditional Root Rule", "Creates new 'conditional root rule' for a root template (unless such rule already exists)", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -55,11 +55,7 @@ public class NewCreateRootRule_Action extends BaseAction {
       return false;
     }
     //  not used in a rule yet?
-    return !(Sequence.fromIterable(SLinkOperations.collectMany(configs, LINKS.createRootRule$kw86)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.templateNode$vPtI) == event.getData(MPSCommonDataKeys.NODE);
-      }
-    }));
+    return !(Sequence.fromIterable(SLinkOperations.collectMany(configs, LINKS.createRootRule$kw86)).any((it) -> SLinkOperations.getTarget(it, LINKS.templateNode$vPtI) == event.getData(MPSCommonDataKeys.NODE)));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -89,13 +85,9 @@ public class NewCreateRootRule_Action extends BaseAction {
     List<SNode> configs = SModelOperations.roots(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)), CONCEPTS.MappingConfiguration$7j);
     if (ListSequence.fromList(configs).count() > 1) {
       final String virtualPackage = SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.virtualPackage$EkXl);
-      Iterable<SNode> sameVPackConfigs = ListSequence.fromList(configs).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.virtualPackage$EkXl), virtualPackage);
-        }
-      });
+      Iterable<SNode> sameVPackConfigs = ListSequence.fromList(configs).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.virtualPackage$EkXl), virtualPackage));
       if (Sequence.fromIterable(sameVPackConfigs).isNotEmpty()) {
-        configs = Sequence.fromIterable(sameVPackConfigs).toListSequence();
+        configs = Sequence.fromIterable(sameVPackConfigs).toList();
       }
     }
     if (ListSequence.fromList(configs).count() > 1) {

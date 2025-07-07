@@ -5,6 +5,7 @@ package jetbrains.mps.lang.test.pluginSolution.plugin;
 import jetbrains.mps.plugins.applicationplugins.BaseApplicationPlugin;
 import com.intellij.openapi.extensions.PluginId;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.ide.refactoring.plugin.ModelRefactoring_ActionGroup;
 import jetbrains.mps.ide.actions.DebugActions_ActionGroup;
 
 public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
@@ -20,10 +21,13 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
 
   public void createGroups() {
     // actions w/o parameters
+    addAction(new ReorderModelRoots_Action());
     // groups
+    addGroup(new ContributeToModelRefactorings_ActionGroup(this));
     addGroup(new EditorInternalAddition_ActionGroup(this));
   }
   public void adjustRegularGroups() {
+    insertGroupIntoAnother(ContributeToModelRefactorings_ActionGroup.ID, ModelRefactoring_ActionGroup.ID, null);
     insertGroupIntoAnother(EditorInternalAddition_ActionGroup.ID, DebugActions_ActionGroup.ID, DebugActions_ActionGroup.LABEL_ID_editor);
   }
 }

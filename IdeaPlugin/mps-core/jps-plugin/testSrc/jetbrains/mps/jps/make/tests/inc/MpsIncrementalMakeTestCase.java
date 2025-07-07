@@ -19,7 +19,7 @@ package jetbrains.mps.jps.make.tests.inc;
 import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.testFramework.TestDataFile;
-import gnu.trove.THashSet;
+import com.intellij.util.containers.CollectionFactory;
 import jetbrains.mps.jps.make.tests.MpsJpsModelsEnvironmentTestCase;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -219,7 +219,7 @@ public abstract class MpsIncrementalMakeTestCase extends MpsJpsModelsEnvironment
     }
 
     private class LogEvent {
-      private Set<String> myPaths = new THashSet<>(FileUtil.PATH_HASHING_STRATEGY);
+      private Set<String> myPaths = CollectionFactory.createFilePathSet();
       private String myBuilderName;
       private EventKind myKind;
 

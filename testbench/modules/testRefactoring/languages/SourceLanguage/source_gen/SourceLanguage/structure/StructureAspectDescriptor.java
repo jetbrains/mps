@@ -60,7 +60,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("SourceLanguage", "A", 0xe4cf406fc7e4ee7L, 0xa6f393f8c8dbdc64L, 0x2e4829759291c9fdL);
     b.class_(false, false, true);
     b.origin("r:3a85a332-d9ac-4332-b817-0bc70c21b404(SourceLanguage.structure)/3334961109014792701");
-    b.version(2);
+    b.version(3);
     b.property("propAstring", 0x2e4829759291ca60L).type(PrimitiveTypeId.STRING).origin("3334961109014792800").done();
     b.aggregate("childA1", 0x2e4829759291ca44L).target(0xe4cf406fc7e4ee7L, 0xa6f393f8c8dbdc64L, 0x2e4829759291c9fdL).optional(true).ordered(true).multiple(false).origin("3334961109014792772").done();
     return b.create();
@@ -68,27 +68,29 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForB() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("SourceLanguage", "B", 0xe4cf406fc7e4ee7L, 0xa6f393f8c8dbdc64L, 0x2e4829759291c9feL);
     b.class_(false, false, false);
-    b.super_("SourceLanguage.structure.A", 0xe4cf406fc7e4ee7L, 0xa6f393f8c8dbdc64L, 0x2e4829759291c9fdL);
+    // extends: SourceLanguage.structure.A
+    b.super_(0xe4cf406fc7e4ee7L, 0xa6f393f8c8dbdc64L, 0x2e4829759291c9fdL);
     b.parent(0xe4cf406fc7e4ee7L, 0xa6f393f8c8dbdc64L, 0x2e4829759291ca00L);
     b.origin("r:3a85a332-d9ac-4332-b817-0bc70c21b404(SourceLanguage.structure)/3334961109014792702");
-    b.version(2);
+    b.version(3);
     b.property("propB", 0x2e4829759291ca40L).type(PrimitiveTypeId.STRING).origin("3334961109014792768").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForC() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("SourceLanguage", "C", 0xe4cf406fc7e4ee7L, 0xa6f393f8c8dbdc64L, 0x2e4829759291c9ffL);
     b.class_(false, false, false);
-    b.super_("SourceLanguage.structure.B", 0xe4cf406fc7e4ee7L, 0xa6f393f8c8dbdc64L, 0x2e4829759291c9feL);
+    // extends: SourceLanguage.structure.B
+    b.super_(0xe4cf406fc7e4ee7L, 0xa6f393f8c8dbdc64L, 0x2e4829759291c9feL);
     b.parent(0xe4cf406fc7e4ee7L, 0xa6f393f8c8dbdc64L, 0x2e4829759291ca00L);
     b.origin("r:3a85a332-d9ac-4332-b817-0bc70c21b404(SourceLanguage.structure)/3334961109014792703");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForI() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("SourceLanguage", "I", 0xe4cf406fc7e4ee7L, 0xa6f393f8c8dbdc64L, 0x2e4829759291ca00L);
     b.interface_();
     b.origin("r:3a85a332-d9ac-4332-b817-0bc70c21b404(SourceLanguage.structure)/3334961109014792704");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
 }

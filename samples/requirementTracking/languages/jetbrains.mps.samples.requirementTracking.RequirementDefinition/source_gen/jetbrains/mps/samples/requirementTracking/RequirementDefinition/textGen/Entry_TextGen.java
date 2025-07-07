@@ -9,8 +9,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -29,21 +27,17 @@ public class Entry_TextGen extends TextGenDescriptorBase {
     }
     tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$MnvL));
     tgs.newLine();
-    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.description$ksG0), LINKS.lines$U$m7)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode line) {
-        ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.elements$_j45)).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode element) {
-            if (SNodeOperations.isInstanceOf(element, CONCEPTS.Word$Dn)) {
-              tgs.append(SPropertyOperations.getString(SNodeOperations.cast(element, CONCEPTS.Word$Dn), PROPS.value$zQr_));
-              tgs.append(" ");
-            } else if (SNodeOperations.isInstanceOf(element, CONCEPTS.NodeWrapperElement$c8)) {
-              tgs.append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(SNodeOperations.cast(element, CONCEPTS.NodeWrapperElement$c8), LINKS.node$KGJq)));
-              tgs.append(" ");
-            }
-          }
-        });
-        tgs.newLine();
-      }
+    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.description$ksG0), LINKS.lines$U$m7)).visitAll((line) -> {
+      ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.elements$_j45)).visitAll((element) -> {
+        if (SNodeOperations.isInstanceOf(element, CONCEPTS.Word$Dn)) {
+          tgs.append(SPropertyOperations.getString(SNodeOperations.cast(element, CONCEPTS.Word$Dn), PROPS.value$zQr_));
+          tgs.append(" ");
+        } else if (SNodeOperations.isInstanceOf(element, CONCEPTS.NodeWrapperElement$c8)) {
+          tgs.append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(SNodeOperations.cast(element, CONCEPTS.NodeWrapperElement$c8), LINKS.node$KGJq)));
+          tgs.append(" ");
+        }
+      });
+      tgs.newLine();
     });
     tgs.newLine();
 

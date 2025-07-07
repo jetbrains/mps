@@ -3,7 +3,7 @@
   <persistence version="9" />
   <attribute name="doNotGenerate" value="false" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
   </languages>
   <imports>
@@ -44,7 +44,7 @@
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
         <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
@@ -117,9 +117,7 @@
         <child id="1068580123134" name="parameter" index="3clF46" />
         <child id="1068580123135" name="body" index="3clF47" />
       </concept>
-      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_">
-        <property id="1178608670077" name="isAbstract" index="1EzhhJ" />
-      </concept>
+      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_" />
       <concept id="1068580123152" name="jetbrains.mps.baseLanguage.structure.EqualsExpression" flags="nn" index="3clFbC" />
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
@@ -158,7 +156,7 @@
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -177,7 +175,7 @@
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615" />
@@ -241,7 +239,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -1120,13 +1118,16 @@
     </node>
     <node concept="2AHcQZ" id="pf7SrZYAqI" role="2AJF6D">
       <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-    </node>
-    <node concept="2AHcQZ" id="pf7SrZYCmn" role="2AJF6D">
-      <ref role="2AI5Lk" to="mhfm:~ApiStatus$ScheduledForRemoval" resolve="ApiStatus.ScheduledForRemoval" />
-      <node concept="2B6LJw" id="pf7SrZYEKN" role="2B76xF">
-        <ref role="2B6OnR" to="mhfm:~ApiStatus$ScheduledForRemoval.inVersion()" resolve="inVersion" />
-        <node concept="Xl_RD" id="pf7SrZYEPc" role="2B70Vg">
+      <node concept="2B6LJw" id="2sePq$_siYf" role="2B76xF">
+        <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+        <node concept="Xl_RD" id="2sePq$_siYe" role="2B70Vg">
           <property role="Xl_RC" value="2020.1" />
+        </node>
+      </node>
+      <node concept="2B6LJw" id="2sePq$_siYg" role="2B76xF">
+        <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+        <node concept="3clFbT" id="2sePq$_siYh" role="2B70Vg">
+          <property role="3clFbU" value="true" />
         </node>
       </node>
     </node>
@@ -1346,13 +1347,16 @@
     </node>
     <node concept="2AHcQZ" id="pf7SrZYGQz" role="2AJF6D">
       <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-    </node>
-    <node concept="2AHcQZ" id="pf7SrZYH4a" role="2AJF6D">
-      <ref role="2AI5Lk" to="mhfm:~ApiStatus$ScheduledForRemoval" resolve="ApiStatus.ScheduledForRemoval" />
-      <node concept="2B6LJw" id="pf7SrZYHue" role="2B76xF">
-        <ref role="2B6OnR" to="mhfm:~ApiStatus$ScheduledForRemoval.inVersion()" resolve="inVersion" />
-        <node concept="Xl_RD" id="pf7SrZYHyD" role="2B70Vg">
+      <node concept="2B6LJw" id="2sePq$_siYj" role="2B76xF">
+        <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+        <node concept="Xl_RD" id="2sePq$_siYi" role="2B70Vg">
           <property role="Xl_RC" value="2020.1" />
+        </node>
+      </node>
+      <node concept="2B6LJw" id="2sePq$_siYk" role="2B76xF">
+        <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+        <node concept="3clFbT" id="2sePq$_siYl" role="2B70Vg">
+          <property role="3clFbU" value="true" />
         </node>
       </node>
     </node>
@@ -2682,13 +2686,16 @@
     </node>
     <node concept="2AHcQZ" id="5N7YVqEHS39" role="2AJF6D">
       <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-    </node>
-    <node concept="2AHcQZ" id="5N7YVqEHT7j" role="2AJF6D">
-      <ref role="2AI5Lk" to="mhfm:~ApiStatus$ScheduledForRemoval" resolve="ApiStatus.ScheduledForRemoval" />
-      <node concept="2B6LJw" id="5N7YVqEHUvy" role="2B76xF">
-        <ref role="2B6OnR" to="mhfm:~ApiStatus$ScheduledForRemoval.inVersion()" resolve="inVersion" />
-        <node concept="Xl_RD" id="5N7YVqEHUIE" role="2B70Vg">
+      <node concept="2B6LJw" id="2sePq$_siYn" role="2B76xF">
+        <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+        <node concept="Xl_RD" id="2sePq$_siYm" role="2B70Vg">
           <property role="Xl_RC" value="2020.1" />
+        </node>
+      </node>
+      <node concept="2B6LJw" id="2sePq$_siYo" role="2B76xF">
+        <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+        <node concept="3clFbT" id="2sePq$_siYp" role="2B70Vg">
+          <property role="3clFbU" value="true" />
         </node>
       </node>
     </node>
@@ -2696,7 +2703,6 @@
   <node concept="3HP615" id="35QfjTUxgYp">
     <property role="TrG5h" value="TooltipComponent" />
     <node concept="3clFb_" id="35QfjTUxgYr" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getMPSTooltipText" />
       <node concept="3Tm1VV" id="35QfjTUxgYt" role="1B3o_S" />
       <node concept="3clFbS" id="35QfjTUxgYu" role="3clF47" />
@@ -2731,13 +2737,16 @@
     </node>
     <node concept="2AHcQZ" id="pf7SrZYKeh" role="2AJF6D">
       <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-    </node>
-    <node concept="2AHcQZ" id="pf7SrZYKfg" role="2AJF6D">
-      <ref role="2AI5Lk" to="mhfm:~ApiStatus$ScheduledForRemoval" resolve="ApiStatus.ScheduledForRemoval" />
-      <node concept="2B6LJw" id="pf7SrZYKgS" role="2B76xF">
-        <ref role="2B6OnR" to="mhfm:~ApiStatus$ScheduledForRemoval.inVersion()" resolve="inVersion" />
-        <node concept="Xl_RD" id="pf7SrZYKlf" role="2B70Vg">
+      <node concept="2B6LJw" id="2sePq$_siYr" role="2B76xF">
+        <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+        <node concept="Xl_RD" id="2sePq$_siYq" role="2B70Vg">
           <property role="Xl_RC" value="2020.1" />
+        </node>
+      </node>
+      <node concept="2B6LJw" id="2sePq$_siYs" role="2B76xF">
+        <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+        <node concept="3clFbT" id="2sePq$_siYt" role="2B70Vg">
+          <property role="3clFbU" value="true" />
         </node>
       </node>
     </node>

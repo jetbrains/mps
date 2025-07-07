@@ -8,10 +8,19 @@ import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeRoot;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.CheckingNodeContext;
+import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.SNodePointer;
+import java.util.regex.Pattern;
+import java.util.Map;
+import org.jetbrains.mps.openapi.language.SProperty;
+import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
+import java.util.HashMap;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.smodel.SModelStereotype;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -35,6 +44,33 @@ public class ConstrainedDataTypeDeclaration_Constraints extends BaseConstraintsD
       }
     };
   }
+  public static class Constraint_Property extends BasePropertyConstraintsDescriptor {
+    public Constraint_Property(ConstraintsDescriptor container) {
+      super(PROPS.constraint$Gtcd, container, false, false, true);
+    }
+    @Override
+    public boolean validateValue(SNode node, Object propertyValue, CheckingNodeContext checkingNodeContext) {
+      boolean result = staticValidateProperty(node, SPropertyOperations.castString(propertyValue));
+      if (!(result) && checkingNodeContext != null) {
+        checkingNodeContext.setBreakingNode(new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "5659659203002618643"));
+      }
+      return result;
+    }
+    private static boolean staticValidateProperty(SNode node, String propertyValue) {
+      try {
+        Pattern.compile(propertyValue.translateEscapes());
+      } catch (Exception e) {
+        return false;
+      }
+      return true;
+    }
+  }
+  @Override
+  protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
+    Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
+    properties.put(PROPS.constraint$Gtcd, new Constraint_Property(this));
+    return properties;
+  }
   private static boolean staticCanBeARoot(SModel model) {
     return SModuleOperations.isAspect(model, "structure") || SModelStereotype.isGeneratorModel(model);
   }
@@ -42,5 +78,9 @@ public class ConstrainedDataTypeDeclaration_Constraints extends BaseConstraintsD
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ConstrainedDataTypeDeclaration$Ch = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc268c7a37L, "jetbrains.mps.lang.structure.structure.ConstrainedDataTypeDeclaration");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty constraint$Gtcd = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc268c7a37L, 0xfc2bc4ff02L, "constraint");
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,6 @@ import com.intellij.openapi.roots.RootProvider;
 import com.intellij.openapi.roots.RootProvider.RootSetChangedListener;
 import com.intellij.openapi.roots.libraries.Library;
 import com.intellij.openapi.vfs.VirtualFile;
-import jetbrains.mps.classloading.IdeaPluginModuleFacet;
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.extapi.persistence.DefaultSourceRoot;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
@@ -36,8 +35,11 @@ import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.persistence.java.library.JavaClassStubsModelRoot;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.Solution;
+import jetbrains.mps.project.facets.JavaModuleFacet.Compile;
+import jetbrains.mps.project.facets.JavaModuleFacet.LoadClasses;
+import jetbrains.mps.project.facets.JavaModuleFacet.LoadExtensions;
+import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
-import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
@@ -154,7 +156,8 @@ public abstract class StubSolutionIdea extends Solution {
     sd.setNamespace(name);
     sd.setId(ModuleId.foreign(name));
     sd.setCompileInMPS(false);
-    sd.getModuleFacetDescriptors().add(new ModuleFacetDescriptor(IdeaPluginModuleFacet.FACET_TYPE, new MementoImpl()));
+    // ext+contrib is just to replace IdeaPluginModuleFacet. Not quite sure if it is proper configuration for JavaModuleFacet here.
+    sd.getModuleFacetDescriptors().add(JavaModuleFacetImpl.forJavaCodeModule(Compile.External, LoadClasses.ManagedByContributor, LoadExtensions.NotAvailable));
     if (!isJdk) {
       addModelRoots(sd, roots);
     } else {

@@ -32,7 +32,6 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.lang.constraints.rules.editor.Rules_Styles_StyleSheet.AndDefsAreDefinedHintStyleClass;
 import jetbrains.mps.editor.runtime.style.Padding;
 import jetbrains.mps.editor.runtime.style.Measure;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.nodeEditor.cellMenu.CompositeSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.BasicCellContext;
@@ -42,13 +41,11 @@ import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic
 import java.util.List;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
-import java.util.function.Function;
 import jetbrains.mps.smodel.action.NodeSubstituteActionWrapper;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.nodeEditor.menus.EditorMenuTraceInfoImpl;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
-import java.util.stream.Collectors;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -118,8 +115,8 @@ import jetbrains.mps.openapi.editor.selection.SelectionManager;
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Vertical());
     editorCell.setCellId("Collection_gagq4k_b0a0");
     Style style = new StyleImpl();
-    new RuleStyleStyleClass(getEditorContext(), getNode()).unapply(style, editorCell);
-    new DefStyleStyleClass(getEditorContext(), getNode()).unapply(style, editorCell);
+    new RuleStyleStyleClass(this).unapply(style, editorCell);
+    new DefStyleStyleClass(this).unapply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createRefNode_0());
     if (nodeCondition_gagq4k_a1b0a0()) {
@@ -198,7 +195,7 @@ import jetbrains.mps.openapi.editor.selection.SelectionManager;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "and");
     editorCell.setCellId("Constant_gagq4k_a1b0a0");
     Style style = new StyleImpl();
-    new AndDefsAreDefinedHintStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new AndDefsAreDefinedHintStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.SELECTABLE, false);
     style.set(StyleAttributes.PADDING_LEFT, new Padding(2, Measure.SPACES));
     editorCell.getStyle().putAll(style);
@@ -213,8 +210,8 @@ import jetbrains.mps.openapi.editor.selection.SelectionManager;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "(auto-hint)");
     editorCell.setCellId("Constant_gagq4k_c1b0a0");
     Style style = new StyleImpl();
-    new AndDefsAreDefinedHintStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.darkGray));
+    new AndDefsAreDefinedHintStyleClass(this).apply(style, editorCell);
+    style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.darkGray));
     style.set(StyleAttributes.SELECTABLE, false);
     style.set(StyleAttributes.PADDING_LEFT, new Padding(2, Measure.SPACES));
     editorCell.getStyle().putAll(style);
@@ -231,8 +228,8 @@ import jetbrains.mps.openapi.editor.selection.SelectionManager;
       editorCell = createCollection_4();
     }
     Style style = new StyleImpl();
-    new RuleStyleStyleClass(getEditorContext(), getNode()).unapply(style, editorCell);
-    new DefStyleStyleClass(getEditorContext(), getNode()).unapply(style, editorCell);
+    new RuleStyleStyleClass(this).unapply(style, editorCell);
+    new DefStyleStyleClass(this).unapply(style, editorCell);
     editorCell.getStyle().putAll(style);
     return editorCell;
   }
@@ -243,7 +240,7 @@ import jetbrains.mps.openapi.editor.selection.SelectionManager;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
     editorCell.setCellId("Constant_gagq4k_a0a0_0");
     Style style = new StyleImpl();
-    new AndDefsAreDefinedHintStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new AndDefsAreDefinedHintStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.PADDING_RIGHT, new Padding(0.5, Measure.SPACES));
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("always");
@@ -255,20 +252,16 @@ import jetbrains.mps.openapi.editor.selection.SelectionManager;
     }
     @Override
     public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-      List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-      Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-        public SubstituteAction apply(SubstituteAction action) {
-          return new NodeSubstituteActionWrapper(action) {
-            @Override
-            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-              result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:c333438f-9631-41c0-a716-72d23eed1ba4(jetbrains.mps.lang.constraints.rules.editor)", "5149341188733522756")));
-              return result;
-            }
-          };
-        }
-      };
-      return actions.stream().map(mapper).collect(Collectors.toList());
+      return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
+        return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
+          @Override
+          public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+            EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+            result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:c333438f-9631-41c0-a716-72d23eed1ba4(jetbrains.mps.lang.constraints.rules.editor)", "5149341188733522756")));
+            return result;
+          }
+        };
+      }).toList();
     }
 
     protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
@@ -293,7 +286,7 @@ import jetbrains.mps.openapi.editor.selection.SelectionManager;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "when");
     editorCell.setCellId("Constant_gagq4k_a0a0a");
     Style style = new StyleImpl();
-    new AndDefsAreDefinedHintStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new AndDefsAreDefinedHintStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.SELECTABLE, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
@@ -305,20 +298,16 @@ import jetbrains.mps.openapi.editor.selection.SelectionManager;
     }
     @Override
     public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-      List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-      Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-        public SubstituteAction apply(SubstituteAction action) {
-          return new NodeSubstituteActionWrapper(action) {
-            @Override
-            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-              result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:c333438f-9631-41c0-a716-72d23eed1ba4(jetbrains.mps.lang.constraints.rules.editor)", "2554379189369791776")));
-              return result;
-            }
-          };
-        }
-      };
-      return actions.stream().map(mapper).collect(Collectors.toList());
+      return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
+        return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
+          @Override
+          public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+            EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+            result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:c333438f-9631-41c0-a716-72d23eed1ba4(jetbrains.mps.lang.constraints.rules.editor)", "2554379189369791776")));
+            return result;
+          }
+        };
+      }).toList();
     }
 
     protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
@@ -341,8 +330,8 @@ import jetbrains.mps.openapi.editor.selection.SelectionManager;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "(auto-hint)");
     editorCell.setCellId("Constant_gagq4k_c0a0a");
     Style style = new StyleImpl();
-    new AndDefsAreDefinedHintStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.darkGray));
+    new AndDefsAreDefinedHintStyleClass(this).apply(style, editorCell);
+    style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.darkGray));
     style.set(StyleAttributes.SELECTABLE, false);
     style.set(StyleAttributes.PADDING_LEFT, new Padding(2, Measure.SPACES));
     editorCell.getStyle().putAll(style);

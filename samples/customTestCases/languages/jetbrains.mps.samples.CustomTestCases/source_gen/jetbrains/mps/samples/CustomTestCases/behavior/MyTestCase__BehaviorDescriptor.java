@@ -26,8 +26,8 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class MyTestCase__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x41a74638991d41c3L, 0xb85c39ba842bab0dL, 0x5d85e89a43eecf60L, "jetbrains.mps.samples.CustomTestCases.structure.MyTestCase");
 
-  public static final SMethod<List<SNode>> getTestSet_idhGB2z8L = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getTestSet").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hGB2z8L").build();
-  public static final SMethod<List<SNode>> getTestMethods_id1RfJDyhAUar = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getTestMethods").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1RfJDyhAUar").build();
+  public static final SMethod<List<SNode>> getTestSet_idhGB2z8L = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getTestSet").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1216130724401L).languageId(0xb98d6c438812c2f6L, 0xf61473f9130f42f6L).build2();
+  public static final SMethod<List<SNode>> getTestMethods_id1RfJDyhAUar = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getTestMethods").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2148145109766218395L).languageId(0xb98d6c438812c2f6L, 0xf61473f9130f42f6L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTestSet_idhGB2z8L, getTestMethods_id1RfJDyhAUar);
 

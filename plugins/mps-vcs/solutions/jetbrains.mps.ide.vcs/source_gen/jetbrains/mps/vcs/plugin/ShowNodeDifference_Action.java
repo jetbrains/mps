@@ -14,6 +14,9 @@ import com.intellij.openapi.actionSystem.CommonDataKeys;
 import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
+import java.util.Objects;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.vcs.diff.ui.StructDifferenceDialog;
 
 @GeneratedClass(node = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/8199015172308449938", model = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)")
@@ -24,6 +27,7 @@ public class ShowNodeDifference_Action extends BaseAction {
     super("Compare Two Nodes", "Structure difference (node IDs ignored) between two nodes", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -67,12 +71,16 @@ public class ShowNodeDifference_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode n1 = event.getData(MPSCommonDataKeys.NODES).get(0);
-        SNode n2 = event.getData(MPSCommonDataKeys.NODES).get(1);
-        StructDifferenceDialog.showNodeDifference(event.getData(CommonDataKeys.PROJECT), n1, n2, n1.toString(), n2.toString());
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(() -> {
+      SNode n1 = event.getData(MPSCommonDataKeys.NODES).get(0);
+      SNode n2 = event.getData(MPSCommonDataKeys.NODES).get(1);
+      String title1 = n1.toString();
+      String title2 = n2.toString();
+      if (Objects.equals(title1, title2)) {
+        title1 += " from " + SModelOperations.getModelName(SNodeOperations.getModel(n1)) + " (" + SModelOperations.getModuleStub(SNodeOperations.getModel(n1)).getName() + ")";
+        title2 += " from " + SModelOperations.getModelName(SNodeOperations.getModel(n2)) + " (" + SModelOperations.getModuleStub(SNodeOperations.getModel(n2)).getName() + ")";
       }
+      StructDifferenceDialog.showNodeDifference(event.getData(CommonDataKeys.PROJECT), n1, n2, title1, title2);
     });
   }
 }

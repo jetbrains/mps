@@ -26,15 +26,9 @@ public class DecoratorTestRunner {
     editorComponent.getHighlightManager().mark(ListSequence.fromListAndArray(new ArrayList<SimpleEditorMessage>(), new ModelProblemMessage(node, MessageStatus.ERROR, null, "error", new EditorMessageOwner() {})));
     final SRepository editorRepo = editorComponent.getEditorContext().getRepository();
     // next code is to make sure EDT model read to update editor, postponed from mark(), above, has been completed
-    ThreadUtils.runInUIThreadAndWait(new Runnable() {
-      public void run() {
-        editorRepo.getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            // intentionally left empty
-          }
-        });
-      }
-    });
+    ThreadUtils.runInUIThreadAndWait(() -> editorRepo.getModelAccess().runReadAction(() -> {
+      // intentionally left empty
+    }));
     EditorCell cell = CellFinderUtil.findChildByClass(editorComponent.getRootCell(), cellClass, true);
     if (cell instanceof AbstractJetpadCell) {
       ((AbstractJetpadCell) cell).paint(new BufferedImage(cell.getWidth(), cell.getHeight(), BufferedImage.TYPE_INT_RGB).getGraphics());

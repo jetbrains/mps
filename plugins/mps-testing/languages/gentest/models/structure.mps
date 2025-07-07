@@ -11,7 +11,15 @@
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" implicit="true" />
   </imports>
   <registry>
+    <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
+      <concept id="8974276187400029883" name="jetbrains.mps.lang.resources.structure.FileIcon" flags="ng" index="1QGGSu">
+        <property id="2756621024541341363" name="file" index="1iqoE4" />
+      </concept>
+    </language>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
+      <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
+        <property id="7862711839422615217" name="text" index="t5JxN" />
+      </concept>
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
         <property id="4628067390765907488" name="conceptShortDescription" index="R4oN_" />
@@ -28,6 +36,7 @@
       <concept id="1071489090640" name="jetbrains.mps.lang.structure.structure.ConceptDeclaration" flags="ig" index="1TIwiD">
         <property id="1096454100552" name="rootable" index="19KtqR" />
         <reference id="1071489389519" name="extends" index="1TJDcQ" />
+        <child id="6327362524875300597" name="icon" index="rwd14" />
         <child id="1169129564478" name="implements" index="PzmwI" />
       </concept>
       <concept id="1071489288299" name="jetbrains.mps.lang.structure.structure.PropertyDeclaration" flags="ig" index="1TJgyi">
@@ -43,7 +52,10 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
+        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
+      </concept>
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -74,6 +86,9 @@
       <property role="20kJfa" value="tests" />
       <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="uLQNrGWd1o" resolve="TestAssertion" />
+    </node>
+    <node concept="1QGGSu" id="3BBX6eJsZ5h" role="rwd14">
+      <property role="1iqoE4" value="${module}/icons/generatorTest.png" />
     </node>
   </node>
   <node concept="PlHQZ" id="uLQNrGW9LE">
@@ -128,6 +143,12 @@
       <property role="20kJfa" value="transformationPlan" />
       <ref role="20lvS9" node="uLQNrGWd1r" resolve="ArgumentReference" />
     </node>
+    <node concept="1TJgyj" id="7K_WrSLuxDO" role="1TKVEi">
+      <property role="IQ2ns" value="8945822034017524340" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="matchOptions" />
+      <ref role="20lvS9" node="uLQNrGWd1r" resolve="ArgumentReference" />
+    </node>
   </node>
   <node concept="PlHQZ" id="uLQNrGWd1o">
     <property role="EcuMT" value="554465258093203544" />
@@ -171,6 +192,47 @@
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="transformationPlan" />
       <ref role="20lvS9" node="uLQNrGWd1r" resolve="ArgumentReference" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="7K_WrSLrg_Z">
+    <property role="EcuMT" value="8945822034016668031" />
+    <property role="TrG5h" value="ModelMatchOptions" />
+    <property role="34LRSv" value="model match options" />
+    <property role="R4oN_" value="how to match individual nodes in a model" />
+    <node concept="PrWs8" id="7K_WrSLrgXG" role="PzmwI">
+      <ref role="PrY4T" node="uLQNrGW9LE" resolve="TestArgument" />
+    </node>
+    <node concept="1TJgyi" id="7K_WrSLrojl" role="1TKVEl">
+      <property role="IQ2nx" value="8945822034016699605" />
+      <property role="TrG5h" value="propertyUserValue" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+      <node concept="t5JxF" id="7K_WrSLrown" role="lGtFl">
+        <property role="t5JxN" value="true to match property values as perceived by user (converted to data type and constraint-processed). false to match persistence values" />
+      </node>
+    </node>
+    <node concept="1TJgyi" id="7K_WrSLrpt1" role="1TKVEl">
+      <property role="IQ2nx" value="8945822034016704321" />
+      <property role="TrG5h" value="associationIdenticalTarget" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+      <node concept="t5JxF" id="7K_WrSLrqLu" role="lGtFl">
+        <property role="t5JxN" value="true to check association target nodes; false to match target references/pointers only" />
+      </node>
+    </node>
+    <node concept="1TJgyi" id="7K_WrSLrr4B" role="1TKVEl">
+      <property role="IQ2nx" value="8945822034016710951" />
+      <property role="TrG5h" value="aggregateIgnoreOrder" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+      <node concept="t5JxF" id="7K_WrSLrrBc" role="lGtFl">
+        <property role="t5JxN" value="true to try to match child nodes irrespective to their ordering (based on concept+name); false to match one by one in the order they are in a model" />
+      </node>
+    </node>
+    <node concept="1TJgyi" id="7K_WrSLrt1p" role="1TKVEl">
+      <property role="IQ2nx" value="8945822034016718937" />
+      <property role="TrG5h" value="comment" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="PrWs8" id="7K_WrSLrsOK" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
   </node>
 </model>
