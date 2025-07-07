@@ -17,7 +17,7 @@ import com.intellij.openapi.util.Computable;
   private final JCheckBox myShowPopupBox;
   public WidgetSettingsPanel() {
     super(new GridBagLayout());
-    myShowPopupBox = new JCheckBox("Display balloon on generation", TransientModelBallonDisplayer.isPopupShown());
+    myShowPopupBox = new JCheckBox("Display balloon on generation", TransientModelBalloonDisplayer.isPopupShown());
     myShowPopupBox.setBorder(new EmptyBorder(2, 3, 0, 4));
     myShowPopupBox.setEnabled(NotificationsConfigurationImpl.getInstanceImpl().SHOW_BALLOONS);
 
@@ -34,6 +34,6 @@ import com.intellij.openapi.util.Computable;
     popup.show(point);
   }
   private void onClose() {
-    TransientModelBallonDisplayer.setShowPopup(myShowPopupBox.isSelected());
+    TransientModelBalloonDisplayer.setShowPopup(myShowPopupBox.isSelected());
   }
 }

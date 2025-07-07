@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,12 +29,12 @@ import jetbrains.mps.generator.impl.FastRuleFinder.BlockedReductionsData;
 import jetbrains.mps.generator.impl.RoleValidation.RoleValidator;
 import jetbrains.mps.generator.impl.RoleValidation.Status;
 import jetbrains.mps.generator.impl.plan.CheckpointState;
-import jetbrains.mps.generator.impl.plan.CrossModelEnvironment;
 import jetbrains.mps.generator.impl.plan.ModelCheckpoints;
 import jetbrains.mps.generator.impl.query.GeneratorQueryProvider;
 import jetbrains.mps.generator.impl.reference.DynamicReferenceUpdate;
 import jetbrains.mps.generator.impl.reference.PostponedReference;
 import jetbrains.mps.generator.impl.reference.PostponedReferenceUpdate;
+import jetbrains.mps.generator.impl.reference.ReferenceInfo;
 import jetbrains.mps.generator.impl.reference.ReferenceInfo_CopiedInputNode;
 import jetbrains.mps.generator.impl.template.DeltaBuilder;
 import jetbrains.mps.generator.impl.template.QueryExecutionContextWithTracing;
@@ -60,6 +60,7 @@ import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.smodel.FastNodeFinderManager;
 import jetbrains.mps.smodel.ModelDependencyUpdate;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.textgen.trace.TracingUtil;
 import jetbrains.mps.util.SNodeOperations;
@@ -70,6 +71,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -90,6 +92,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Stream;
 
 /**
  * Created by: Sergey Dmitriev
@@ -116,12 +119,16 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
   private DeltaBuilder myDeltaBuilder;
   private boolean myInplaceModelChange = false; // indicates transformation was in-place (even after deltaBuilder was disposed). cries for better approach
   private WeavingProcessor myWeavingProcessor;
-  private TemplateProcessor myTemplateProcessor;
+  private final TemplateProcessor myTemplateProcessor;
   private final PostponedReferenceUpdate myPostponedRefs;
   private final DynamicReferenceUpdate myDynamicRefs;
   private final GenerationTrace myNewTrace;
   private final TransitionTrace myTransitionTrace;
   private final IPerformanceTracer myPerformanceTrace; // not null
+  private final ArrayList<LMCollector> myPerThreadLabels = new ArrayList<>();
+  private final ArrayList<EmployedLanguageCollector> myLanguageCollectors = new ArrayList<>();
+  private final Object myAuxEnvPartsLock = new Object();
+  private final ArrayList<SLanguage> myEmployedLanguages = new ArrayList<>();
 
   static final class StepArguments {
     public final GenPlanActiveStep planStep;
@@ -151,7 +158,7 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
     myIsStrict = options.isStrictMode();
     myDelayedChanges = new DelayedChanges();
     myOutputRoots = new ArrayList<>();
-    DefaultQueryExecutionContext ctx = new DefaultQueryExecutionContext(this);
+    DefaultQueryExecutionContext ctx = new DefaultQueryExecutionContext();
     myPerformanceTrace = stepArgs.performanceTrace;
     myExecutionContext = options.getTracingMode() >= GenerationOptions.TRACE_LANGS
       ? new QueryExecutionContextWithTracing(ctx, stepArgs.performanceTrace)
@@ -160,6 +167,9 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
     myDynamicRefs = new DynamicReferenceUpdate(this);
     myNewTrace = stepArgs.genTrace;
     myTransitionTrace = stepArgs.transitionTrace;
+    // any newExecutionEnvironment() use needs myTemplateProcessor field at the moment
+    //     even though it's not gonna use it (see MappingScript and WeavingProcessor.prepareWeavingRules
+    myTemplateProcessor = new TemplateProcessor(this);
   }
 
   public boolean apply(@NotNull ProgressMonitor progressMonitor, boolean isPrimary) throws GenerationFailureException, GenerationCanceledException {
@@ -167,12 +177,11 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
     checkMonitorCanceled();
     final IPerformanceTracer ttrace = getPerformanceTracer();
     myAreMappingsReady = false;
-    // WeavingProcessor.prepareWeavingRules needs myTemplateProcessor to be initialized. Guess, we could have had it as a final field?
-    myTemplateProcessor = new TemplateProcessor(this);
 
     // prepare weaving
     ttrace.push("weavings");
     myWeavingProcessor = new WeavingProcessor(this);
+    // JFTR, WeavingProcessor.prepareWeavingRules needs myTemplateProcessor to be initialized.
     myWeavingProcessor.prepareWeavingRules(getInputModel());
     ttrace.pop();
 
@@ -181,6 +190,22 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
     applyReductions(isPrimary);
     ttrace.pop();
     myInplaceModelChange = myDeltaBuilder != null;
+
+    getMappings().fillFrom(myPerThreadLabels);
+    // we can't just throw LMCollectors away, there could be weaving rules and delayed changes that
+    // may register more labels that we need to flush once more. The only assumption is that there are no
+    // new LMCollector instances, though it's still ok if there's a new one.
+    // As it turned out, generator of closures languages heavily employ weaving rules that register new labels.
+    // Moreover, weaving rules there trigger regular reduction rule, which registers a label the next weaving rule gonna need
+    // (see closures.Advanced_Test, foreach closure/yield + nested while/yield. foreach closure get replaced with switch,
+    // nested closure is kept as is. Then, weave_case_for_ForeachStatement injects a case and replaces (COPY-SRC) nested while and its
+    // ClosureLiteral (registers 'closure_switch' LM). Next in the sequence of armed weaving rules comes WR for WhileStatement, that needs
+    // most recent 'closure_switch' mapping). This is plain wrong (one could argue that even using reduction rules inside weavings is not
+    // perfectly right), but changing closure templates is something next to impossible, that's why TEEI exposes LMs collected for the root
+    // right away, to mimic behavior lang.closures templates (and Advanced_Test) expect. Indeed, if the test use statements in other order,
+    // the defect would have surface immediately.
+    myPerThreadLabels.forEach(LMCollector::clear);
+
 
     myAreMappingsReady = true;
 
@@ -206,6 +231,11 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
       myDelayedChanges.doAllChanges(this);
       ttrace.pop();
     }
+
+    // flush them once again, and finally, drop. No more labels would get registered
+    // (well, the registerLabel call would still work, but these values are not recorded anywhere)
+    getMappings().fillFrom(myPerThreadLabels);
+    myPerThreadLabels.clear();
 
     //////////////////////////////////////////////////////////////
     // replace references with PostponedReference to respect model changes up to this point
@@ -237,14 +267,22 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
       // be using model scopes and TypeSystem, and latter is quite picky about imports.
       // we don't use any repository as it's ok to reference language's accessory model explicitly for a transient model
       new ModelDependencyUpdate(getOutputModel()).updateUsedLanguages().updateImportedModels(null);
+      EmployedLanguageCollector lc = new EmployedLanguageCollector();
+      myLanguageCollectors.forEach(lc::addAll);
+      lc.forEachLanguage(myEmployedLanguages::add);
+      myLanguageCollectors.clear();
     }
 
     // replace reference placeholders (PostponedReference) with resolved
     // replace DynamicReference with StaticReference, if needed
     if (!myPostponedRefs.isEmpty() || !myDynamicRefs.isEmpty()) {
       ttrace.push("restoring references");
+      ttrace.push("replace regular");
       myPostponedRefs.replace();
+      ttrace.pop();
+      ttrace.push("replace dynamic");
       myDynamicRefs.replace();
+      ttrace.pop();
       ttrace.pop();
     }
 
@@ -261,7 +299,8 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
   }
 
   public void executeScript(TemplateMappingScript script) throws GenerationFailureException {
-    getDefaultExecutionContext().executeScript(script, myInputModel);
+    TemplateContext tc = new DefaultTemplateContext(newExecutionEnvironment(getDefaultExecutionContext()), null, null);
+    getDefaultExecutionContext().executeScript(script, myInputModel, tc);
   }
 
   protected void applyReductions(boolean isPrimary) throws GenerationCanceledException, GenerationFailureException {
@@ -487,6 +526,11 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
     return super.getOutputModel();
   }
 
+  // empty unless #apply() changed anything
+  /*package*/ Collection<SLanguage> getEmployedLanguages() {
+    return myEmployedLanguages;
+  }
+
   /**
    * Executor for queries from primary/main thread. If there's only one thread, this is the only query executor out there.
    * For parallel execution, {@link ParallelTemplateGenerator subclass} shall provide an appropriate wrapper as needed and when needed
@@ -510,23 +554,23 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
    * @return never null
    */
   protected final TemplateExecutionEnvironmentImpl newExecutionEnvironment(QueryExecutionContext queryExecutor) {
-    return new TemplateExecutionEnvironmentImpl(myTemplateProcessor, queryExecutor, new ReductionTrack(getBlockedReductionsData()));
+    // FIXME revisit need to QueryExecutionContext, likely don't need one if switch to per-query tracing/wrapping
+    // FIXME revisit use of template processor there, it's only necessary for interpreted templates, can I avoid exposing it
+    //       from TEE?
+    return teeAuxParts(new TemplateExecutionEnvironmentImpl(myTemplateProcessor, queryExecutor, new ReductionTrack(getBlockedReductionsData())));
+  }
+
+  private TemplateExecutionEnvironmentImpl teeAuxParts(TemplateExecutionEnvironmentImpl env) {
+    synchronized (myAuxEnvPartsLock) {
+      // newExecutionEnvironment can get invoked in parallel threads
+      myPerThreadLabels.add(env.getNamedLabels());
+      myLanguageCollectors.add(env.getEmployedLanguages());
+    }
+    return env;
   }
 
   protected DeltaBuilder createDeltaBuilder() {
     return DeltaBuilder.newSingleThreadDeltaBuilder();
-  }
-
-  @Override
-  public void registerMappingLabel(SNode inputNode, String mappingName, SNode outputNode) {
-    final TraceFacility traceSession;
-    if (inputNode != null && mappingName != null && outputNode != null && (traceSession = getTraceSession()) != null) {
-      final LabelTrace lt = traceSession.lm(mappingName);
-      if (lt != null) {
-        lt.register(inputNode, outputNode);
-      }
-    }
-    super.registerMappingLabel(inputNode, mappingName, outputNode);
   }
 
   @Override
@@ -553,8 +597,7 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
       return null;
     }
 //    CheckpointState cp = findMatchingStateFor(inputNodeModel);
-    CrossModelEnvironment env = getGeneratorSessionContext().getCrossModelEnvironment();
-    ModelCheckpoints modelCheckpoints = env.getState(inputNodeModel);
+    ModelCheckpoints modelCheckpoints = getModelHistory(inputNodeModel);
     if (modelCheckpoints == null) {
       return null;
     }
@@ -605,8 +648,7 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
       return null;
     }
 //    CheckpointState cp = findMatchingStateFor(inputNodeModel);
-    CrossModelEnvironment env = getGeneratorSessionContext().getCrossModelEnvironment();
-    ModelCheckpoints modelCheckpoints = env.getState(inputNodeModel);
+    ModelCheckpoints modelCheckpoints = getModelHistory(inputNodeModel);
     if (modelCheckpoints == null) {
       return null;
     }
@@ -624,8 +666,12 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
     return output;
   }
 
+  @Nullable
+  private ModelCheckpoints getModelHistory(/*non-null*/SModel model) {
+    return getGeneratorSessionContext().getCrossModelEnvironment().getState(model);
+  }
+
   private CheckpointState findMatchingStateFor(/*non-null*/SModel model) {
-    CrossModelEnvironment env = getGeneratorSessionContext().getCrossModelEnvironment();
     // last and next are not necessarily in immediately adjacent generation steps, i.e. cpLast, transfStep1, transfStep2, activeTransformStep, transfStep3, cpNext
     Checkpoint lastPoint = myPlanStep.getLastCheckpoint();
     // XXX alternatively, we can extract active checkpoint from TransitionTrace. Do we need both ways to get the value I don't care to use?
@@ -637,7 +683,7 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
     }
     // Note, myPlanStep.getPlanIdentity() points to the plan in action; while we need that of target model
     // which could be generated against different plan (although with a shared CP).
-    ModelCheckpoints modelHistory = env.getState(model);
+    ModelCheckpoints modelHistory = getModelHistory(model);
     if (modelHistory == null) {
       return null;
     }
@@ -665,6 +711,30 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
     return rv.get(0);
   }
 
+  /*package*/ LMLookup getLabelMapLookup(final String label) {
+    // first, check those known in this generator session
+    final LMLookup first = getMappings().getCompositeLabelsLookup(label);
+    final Checkpoint targetPoint = myPlanStep.getNextCheckpoint();
+    if (targetPoint == null) {
+      return first;
+    }
+    // resort to those we can discover in checkpoints
+    final LMLookup second = new LMLookup() {
+      @Override
+      public Stream<SNode> compositeLMValues(SNode k1, SNode k2) {
+        if (k1 == null || k1.getModel() == null) {
+          return Stream.empty();
+        }
+        final ModelCheckpoints modelHistory = getModelHistory(k1.getModel());
+        if (modelHistory == null) {
+          return Stream.empty();
+        }
+        return modelHistory.getLookup(targetPoint.getIdentity(), label).compositeLMValues(k1, k2);
+      }
+    };
+    return first.andThen(second);
+  }
+
   // in fact, it's reasonable to keep this method in TEEI (in ReductionTrack, actually), to reflect narrowing scope of
   // generator -> TEEI -> TemplateProcessor. This would take another round of refactoring, though
   // (first of all, shall update TEEI API)
@@ -688,7 +758,8 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
         Collection<SNode> _outputNodes = env.tryToReduce(newInputNode);
         if (_outputNodes != null) {
           if (mappingName != null && _outputNodes.size() == 1) {
-            registerMappingLabel(newInputNode, mappingName, _outputNodes.iterator().next());
+            // XXX no idea why we register LM only when there's single output node. Dates back to year 2010 with no explanation
+            env.registerLabel(newInputNode, _outputNodes.iterator().next(), mappingName);
           }
           outputNodes.addAll(_outputNodes);
         } else {
@@ -697,8 +768,11 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
           // XXX I wonder if there's any sense recording output node for a template under COPY-SRC.
           //     Got puzzled by the code while investigating MPS-31826. The code dates back to 2007 and it's impossible to figure out the reason behind it
           //  addOutputNodeByInputAndTemplateNode(newInputNode, templateId, copiedNode);
+          //  OTOH, we do env.nodeCopied for each node we create from a template, perhaps, the reason for line above is to
+          //        do the same foe node copied from the input one. However, still don't see scenarios when I can make use of it.
+          //        Need to wait for wider adoption of MPS 2020.1 to see if it really affects anyone. If not, can drop templateId parameter
           if (mappingName != null) {
-            registerMappingLabel(newInputNode, mappingName, copiedNode);
+            env.registerLabel(newInputNode, copiedNode, mappingName);
           }
           outputNodes.add(copiedNode);
         }
@@ -756,7 +830,13 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
     return myPlanStep;
   }
 
-  public void checkIsExpectedLanguage(@NotNull Iterable<SNode> nodes, @NotNull SNodeReference templateNode, @NotNull TemplateContext templateContext) {
+  // FIXME with TEEImpl responsible to collect languages that showed up during transformations
+  //       we could report 'unexpected' languages as a single operation once step is over.
+  //       Keep in mind, for a 'partial' GP, 'unexpected' languages are fine, in fact.
+  //       Benefit of this method is that it has a reference to template where the node showed up (otherwise,
+  //       might be tricky to nail the location down at the end of the step).
+  //       Also, have to deal with cases when an uncontrolled node comes from $INSERT$ or a COPY-SRC query
+  /*package*/ void checkIsExpectedLanguage(@NotNull Iterable<SNode> nodes, @NotNull SNodeReference templateNode, @NotNull TemplateContext templateContext) {
     Collection<SNode> toReport = getGenerationPlan().selectUnexpectedNodes(nodes);
     if (toReport.isEmpty()) {
       return;
@@ -777,10 +857,6 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
 
   final RuleManager getRuleManager() {
     return myPlanStep.getRuleManager();
-  }
-
-  public TemplateSwitchMapping getSwitch(SNodeReference switch_) {
-    return getRuleManager().getSwitch(switch_);
   }
 
   @Override
@@ -804,7 +880,7 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
    * keep references dynamic during generation (as it only slows down model access due to ongoing scope use.
    * @param dr DynamicReference instance
    */
-  public void registerDynamicReference(@NotNull SReference dr) {
+  public void registerDynamicReference(@NotNull ReferenceInfo.DRI dr) {
     myDynamicRefs.add(dr);
   }
 
@@ -1112,11 +1188,12 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
       final SModel inputNodeModel = inputNode.getModel();
       if (inputNode.getNodeId() != null && inputNodeModel != null) {
         // copy preserving id
-        outputNode = myNodeFactory.create(inputNode);
+        // XXX what this inputNodeModel != null check is about? Didn't find any explanation in history
+        //     nor any idea why it's important to keep node id (although doesn't hurt, I guess).
+        outputNode = myEnv.createOutputNode(inputNode);
       } else {
-        outputNode = myEnv.getOutputModel().createNode(inputNode.getConcept());
+        outputNode = myEnv.createOutputNode(inputNode.getConcept());
       }
-      myEnv.getGenerator().recordCopyInputTrace(inputNode, outputNode);
       myEnv.blockReductionsForCopiedNode(inputNode, outputNode); // prevent infinite applying of the same reduction to the 'same' node.
 
       // output node should be accessible via 'findCopiedNode'
@@ -1125,12 +1202,15 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
       CopyUtil.copyProperties(inputNode, outputNode);
       CopyUtil.copyUserObjects(inputNode, outputNode);
 
+      myEnv.getGenerator().recordCopyInputTrace(inputNode, outputNode);
+
       final List<ReferenceReductionRule> referenceRules = myEnv.getGenerator().getRuleManager().getReferenceReductionRules(inputNode);
       final Set<SReferenceLink> handledReferences;
       if (!referenceRules.isEmpty()) {
         handledReferences = new HashSet<>();
         DefaultTemplateContext templateContext = new DefaultTemplateContext(myEnv, inputNode, null);
         for (ReferenceReductionRule rule : referenceRules) {
+          // XXX I wonder why didn't I pass RRR.isApplicable through QueryExecutionContext?!
           if (rule.isApplicable(templateContext)) {
             handledReferences.add(rule.getApplicableLink());
             rule.apply(templateContext, outputNode);
@@ -1146,36 +1226,20 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
           continue;
         }
         if (inputNodeModel != null) {
-          boolean external = true;
-          if (inputReference instanceof PostponedReference){
-            external = false;
-          } else if (inputNodeModel.getReference().equals(inputReference.getTargetSModelReference())){
-            external = false;
-          }
+          final boolean external = !inputNodeModel.getReference().equals(inputReference.getTargetSModelReference());
           if (inputReference instanceof DynamicReference || external) {
             // dynamic & external references don't need validation => replace input model with output
             SModelReference targetModelReference = external ? inputReference.getTargetSModelReference() : myOutputModelRef;
+            // FIXME ^^^ external == false ==> it's DynamicReference - why do we care to set myOutputModelRef?!
             if (inputReference instanceof StaticReference) {
               if (targetModelReference == null) {
                 reportBrokenRef(inputNode, inputReference);
                 continue;
               }
-
-              SReference reference = new StaticReference(
-                  inputReference.getLink(),
-                  outputNode,
-                  targetModelReference,
-                  inputReference.getTargetNodeId(),
-                  ((StaticReference) inputReference).getResolveInfo());
-              outputNode.setReference(reference.getLink(), reference);
+              final SNodePointer ptr = new SNodePointer(targetModelReference, inputReference.getTargetNodeId());
+              outputNode.setReference(inputReference.getLink(), ResolveInfo.of(ptr, ((StaticReference) inputReference).getResolveInfo()));
             } else if (inputReference instanceof DynamicReference) {
-              DynamicReference outputReference = new DynamicReference(
-                  inputReference.getLink(),
-                  outputNode,
-                  targetModelReference,
-                  ((DynamicReference) inputReference).getResolveInfo());
-              outputReference.setOrigin(((DynamicReference) inputReference).getOrigin());
-              outputNode.setReference(outputReference.getLink(), outputReference);
+              outputNode.setReference(inputReference.getLink(), inputReference.describeTarget());
             } else {
               String msg = "internal error: can't clone reference '%s' in %s. Reference class: %s";
               getLogger().error(inputNode.getReference(),

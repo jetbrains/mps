@@ -4,7 +4,7 @@ package jetbrains.mps.editor.runtime.style;
 
 import jetbrains.mps.annotations.GeneratedClass;
 
-@GeneratedClass(node = "r:1e25de74-7cc0-4f15-8cec-3735c776efd2(jetbrains.mps.editor.runtime.style)/6822392181927252916", model = "r:1e25de74-7cc0-4f15-8cec-3735c776efd2(jetbrains.mps.editor.runtime.style)")
+@GeneratedClass(nodeId = "6822392181927252916", model = "r:1e25de74-7cc0-4f15-8cec-3735c776efd2(jetbrains.mps.editor.runtime.style)")
 public interface StyledTextPrinter {
   StyledTextPrinter setBold(boolean bold);
   StyledTextPrinter append(String text);

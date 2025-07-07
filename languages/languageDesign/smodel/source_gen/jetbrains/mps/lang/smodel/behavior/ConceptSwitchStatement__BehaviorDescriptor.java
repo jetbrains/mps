@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -17,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -30,7 +28,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class ConceptSwitchStatement__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x527e98a73771f42dL, "jetbrains.mps.lang.smodel.structure.ConceptSwitchStatement");
 
-  public static final SMethod<Iterable<SNode>> getOrderedExactCases_id52uv6IIm2QO = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getOrderedExactCases").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52uv6IIm2QO").build();
+  public static final SMethod<Iterable<SNode>> getOrderedExactCases_id52uv6IIm2QO = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getOrderedExactCases").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5809217371282877876L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getOrderedExactCases_id52uv6IIm2QO);
 
@@ -38,11 +36,7 @@ public final class ConceptSwitchStatement__BehaviorDescriptor extends BaseBHDesc
   }
 
   /*package*/ static Iterable<SNode> getOrderedExactCases_id52uv6IIm2QO(@NotNull SNode __thisNode__) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.case$A3Bo), CONCEPTS.ExactConceptCase$dp)).sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.concept$HtZZ), LINKS.concept$WQBy), PROPS.name$MnvL);
-      }
-    }, true);
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.case$A3Bo), CONCEPTS.ExactConceptCase$dp)).sort((it) -> SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.concept$HtZZ), LINKS.concept$WQBy), PROPS.name$MnvL), true);
   }
 
   /*package*/ ConceptSwitchStatement__BehaviorDescriptor() {

@@ -11,13 +11,11 @@ import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.regex.Matcher;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -46,16 +44,12 @@ public class IntroduceSmartRefAttribute extends MigrationScriptBase {
     {
       SearchScope scope_nopsft_a0e = CommandUtil.createScope(m);
       final SearchScope scope_nopsft_a0e_0 = new EditableFilteringScope(scope_nopsft_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_nopsft_a0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_nopsft_a0e_0;
       Collection<SNode> conceptNodes = CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptDeclaration$gH, false);
 
       for (SNode conceptNode : CollectionSequence.fromCollection(conceptNodes)) {
 
-        if ((AttributeOperations.getAttribute(conceptNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3)) != null)) {
+        if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3).get(conceptNode) != null)) {
           continue;
         }
         if (SPropertyOperations.getBoolean(conceptNode, PROPS.abstract$ibpT)) {
@@ -69,11 +63,7 @@ public class IntroduceSmartRefAttribute extends MigrationScriptBase {
 
         if (smartAliasMatcher.matches()) {
           final String role = smartAliasMatcher.group(2);
-          SNode characteristicLink = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(conceptNode)).findFirst(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return hasRole(it, role);
-            }
-          });
+          SNode characteristicLink = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(conceptNode)).findFirst((it) -> hasRole(it, role));
 
           if ((characteristicLink != null)) {
             String prefix = smartAliasMatcher.group(1);
@@ -81,16 +71,16 @@ public class IntroduceSmartRefAttribute extends MigrationScriptBase {
 
             SPropertyOperations.remove(conceptNode, PROPS.conceptAlias$OL_L);
 
-            AttributeOperations.setAttribute(conceptNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3), createSmartReferenceAttribute_nopsft_a0f0d0h0c0a0g(characteristicLink));
+            new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3).set(conceptNode, createSmartReferenceAttribute_nopsft_a0f0d0h0c0a0g(characteristicLink));
             if ((prefix != null && prefix.length() > 0) || (suffix != null && suffix.length() > 0)) {
-              SLinkOperations.setTarget(AttributeOperations.getAttribute(conceptNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3)), LINKS.refPresentationTemplate$di5B, createRefPresentationTemplate_nopsft_a0a0g0d0h0c0a0g(prefix, suffix));
+              SLinkOperations.setTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3).get(conceptNode), LINKS.refPresentationTemplate$di5B, createRefPresentationTemplate_nopsft_a0a0g0d0h0c0a0g(prefix, suffix));
             }
           }
         }
       }
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure"), 4);
   }
 
@@ -122,7 +112,7 @@ public class IntroduceSmartRefAttribute extends MigrationScriptBase {
     return n0.getResult();
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
 
   private static final class CONCEPTS {

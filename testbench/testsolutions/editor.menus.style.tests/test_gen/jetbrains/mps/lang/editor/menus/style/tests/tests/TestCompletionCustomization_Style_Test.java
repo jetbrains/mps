@@ -4,14 +4,15 @@ package jetbrains.mps.lang.editor.menus.style.tests.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.lang.test.runtime.EditorTestUtil;
 import jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.nodeEditor.cellMenu.EditorMenuItemStyleImpl;
 import java.util.Objects;
@@ -19,11 +20,11 @@ import java.awt.Color;
 
 @MPSLaunch
 public class TestCompletionCustomization_Style_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(TestCompletionCustomization_Style_Test.class, "${mps_home}", "r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestCompletionCustomization_Style_Test.class).projectPath(null).modelRef("r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)").reopenProject(false).build());
 
   public TestCompletionCustomization_Style_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -41,21 +42,19 @@ public class TestCompletionCustomization_Style_Test extends BaseTransformationTe
     public void testMethodImpl() throws Exception {
       initEditorComponent("8199816903239854353", "");
 
-      EditorTestUtil.runWithCompletionStyling(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
-          NodeSubstituteChooser nodeSubstituteChooser = getEditorComponent().getNodeSubstituteChooser();
-          Assert.assertTrue(nodeSubstituteChooser.getNumberOfActions() == 1);
-          SubstituteAction currentSubstituteAction = nodeSubstituteChooser.getCurrentSubstituteAction();
-          EditorMenuItemStyleImpl impl = new EditorMenuItemStyleImpl();
-          currentSubstituteAction.customize("", impl);
-          Assert.assertTrue(impl.isBold());
-          Assert.assertTrue(impl.isItalic());
-          Assert.assertTrue(impl.isStrikeout());
-          Assert.assertTrue(Objects.equals(impl.getDescriptionText().orElse(null), "custom_description"));
-          Assert.assertTrue(Objects.equals(impl.getBackgroundColor().orElse(null), Color.BLUE));
-          Assert.assertTrue(Objects.equals(impl.getTextColor().orElse(null), Color.YELLOW));
-        }
+      EditorTestUtil.runWithCompletionStyling(() -> {
+        invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
+        NodeSubstituteChooser nodeSubstituteChooser = getEditorComponent().getNodeSubstituteChooser();
+        Assert.assertTrue(nodeSubstituteChooser.getNumberOfActions() == 1);
+        SubstituteAction currentSubstituteAction = nodeSubstituteChooser.getCurrentSubstituteAction();
+        EditorMenuItemStyleImpl impl = new EditorMenuItemStyleImpl();
+        currentSubstituteAction.customize("", impl);
+        Assert.assertTrue(impl.isBold());
+        Assert.assertTrue(impl.isItalic());
+        Assert.assertTrue(impl.isStrikeout());
+        Assert.assertTrue(Objects.equals(impl.getDescriptionText().orElse(null), "custom_description"));
+        Assert.assertTrue(Objects.equals(impl.getBackgroundColor().orElse(null), Color.BLUE));
+        Assert.assertTrue(Objects.equals(impl.getTextColor().orElse(null), Color.YELLOW));
       }, true);
     }
   }

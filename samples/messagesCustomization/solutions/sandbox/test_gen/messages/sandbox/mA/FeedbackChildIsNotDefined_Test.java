@@ -4,27 +4,23 @@ package messages.sandbox.mA;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
-import jetbrains.mps.project.ProjectBase;
 
 @MPSLaunch
 public class FeedbackChildIsNotDefined_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(FeedbackChildIsNotDefined_Test.class, "${mps_home}", "r:eb16dd70-ac3a-40ca-8c61-d7f237615dbf(messages.sandbox.mA@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(FeedbackChildIsNotDefined_Test.class).projectPath(null).modelRef("r:eb16dd70-ac3a-40ca-8c61-d7f237615dbf(messages.sandbox.mA@tests)").reopenProject(null).build());
 
   public FeedbackChildIsNotDefined_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -38,11 +34,17 @@ public class FeedbackChildIsNotDefined_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7019192671317644652");
+    }
 
     public void test_NodeErrorCheck7019192671317896959() throws Exception {
-      SNode nodeToCheck = getRealNodeById("7019192671317644651");
-      SNode operation = getRealNodeById("7019192671317896959");
-      new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "Child 'no_child' does not belong to the concept!!!", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7019192671317644651");
+        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "Child 'no_child' does not belong to the concept!!!", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
 
   }

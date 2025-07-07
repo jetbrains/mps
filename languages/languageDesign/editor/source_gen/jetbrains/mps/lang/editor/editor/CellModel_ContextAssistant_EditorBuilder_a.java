@@ -37,7 +37,7 @@ import jetbrains.mps.lang.editor.editor.Styles_StyleSheet.rootCellModelStyleStyl
     editorCell.setBig(true);
     setCellContext(editorCell);
     Style style = new StyleImpl();
-    new rootCellModelStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new rootCellModelStyleStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("*context assistant menu placeholder*");
     return editorCell;

@@ -11,7 +11,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -27,16 +26,12 @@ public class check_DefaultClassCreator_NonTypesystemRule extends AbstractNonType
   public check_DefaultClassCreator_NonTypesystemRule() {
   }
   public void applyRule(final SNode classCreator, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.as(SLinkOperations.getTarget(classCreator, LINKS.classifier$9NRM), CONCEPTS.ClassConcept$bK))).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).isEmpty();
-      }
-    }) != null)) {
+    if ((Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.as(SLinkOperations.getTarget(classCreator, LINKS.classifier$9NRM), CONCEPTS.ClassConcept$bK))).findFirst((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).isEmpty()) != null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(classCreator, "Non-default no-arg constructor is available", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5542703911566518616", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.QuickFixForDefaultClassCreator_QuickFix", true);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.QuickFixForDefaultClassCreator_QuickFix", "5542703911566518694", true);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }

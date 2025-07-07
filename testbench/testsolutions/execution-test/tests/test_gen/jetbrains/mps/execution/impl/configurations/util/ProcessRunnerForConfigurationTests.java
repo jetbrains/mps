@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 import jetbrains.mps.execution.api.commands.ProcessHandlerBuilder;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.execution.process.ProcessEvent;
-import junit.framework.Assert;
+import org.junit.Assert;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.execution.process.ProcessAdapter;
@@ -129,7 +129,7 @@ public class ProcessRunnerForConfigurationTests {
 
     @Override
     public synchronized void onTextAvailable(ProcessEvent event, Key key) {
-      // assuming everything comes in lines 
+      // assuming everything comes in lines
       String text = event.getText();
       if ((text == null || text.length() == 0)) {
         return;

@@ -34,7 +34,7 @@ import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.progress.ProgressIndicator;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 
-@GeneratedClass(node = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)/1366781238034254686", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
+@GeneratedClass(nodeId = "1366781238034254686", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
 public class GetModelContentsFromSource_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -108,9 +108,9 @@ public class GetModelContentsFromSource_Action extends BaseAction {
     for (VirtualFile vfile : chosen) {
       ListSequence.fromList(chosenIFiles).addElement(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getFileSystem().fromVirtualFile(vfile));
     }
-    final List<IFile> ifilesToParse = Sequence.fromIterable(JavaConvertUtil.flattenDirs(chosenIFiles)).toListSequence();
+    final List<IFile> ifilesToParse = Sequence.fromIterable(JavaConvertUtil.flattenDirs(chosenIFiles)).toList();
 
-    final JavaToMpsConverter parser = new JavaToMpsConverter(((SModel) MapSequence.fromMap(_params).get("model")), ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository(), ideaProject.getComponent(MessagesViewTool.class).newHandler());
+    final JavaToMpsConverter parser = new JavaToMpsConverter(((SModel) MapSequence.fromMap(_params).get("model")), ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository(), ideaProject.getService(MessagesViewTool.class).newHandler());
     ProgressManager.getInstance().run(new Task.Modal(null, "Convert to MPS", false) {
       public void run(@NotNull ProgressIndicator indicator) {
         parser.convertToMps(ifilesToParse, new ProgressMonitorAdapter(indicator));

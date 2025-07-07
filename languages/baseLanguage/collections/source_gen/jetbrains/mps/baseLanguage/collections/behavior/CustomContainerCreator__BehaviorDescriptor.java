@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -17,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -30,22 +28,20 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class CustomContainerCreator__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x127be81db92655b3L, "jetbrains.mps.baseLanguage.collections.structure.CustomContainerCreator");
 
-  public static final SMethod<SNode> createType_idi0I0ppH = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i0I0ppH").build();
-  public static final SMethod<String> getEntityName_id6LXz$urfgAS = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getEntityName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6LXz$urfgAS").build();
+  public static final SMethod<SNode> createType_id6MGFJY7SgiV = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7830826264610014395L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<String> getEntityName_id6LXz$urfgAS = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getEntityName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7817560966383339960L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(createType_idi0I0ppH, getEntityName_id6LXz$urfgAS);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(createType_id6MGFJY7SgiV, getEntityName_id6LXz$urfgAS);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static SNode createType_idi0I0ppH(@NotNull final SNode __thisNode__) {
+  /*package*/ static SNode createType_id6MGFJY7SgiV(@NotNull SNode __thisNode__, final SNode elementType) {
     SNode res = SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.containerDeclaration$nqf8), LINKS.containerType$WQze));
-    //  workaround an SModel's dumbness 
-    ListSequence.fromList(SNodeOperations.getChildren(res)).toListSequence().visitAll(new IVisitor<SNode>() {
-      public void visit(SNode chld) {
-        if (SNodeOperations.isInstanceOf(chld, CONCEPTS.TypeVariableReference$WL)) {
-          SNodeOperations.replaceWithAnother(chld, SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$WxmV)));
-        }
+    //  workaround an SModel's dumbness
+    ListSequence.fromList(ListSequence.fromList(SNodeOperations.getChildren(res)).toList()).visitAll((chld) -> {
+      if (SNodeOperations.isInstanceOf(chld, CONCEPTS.TypeVariableReference$WL)) {
+        SNodeOperations.replaceWithAnother(chld, SNodeOperations.copyNode(elementType));
       }
     });
     return res;
@@ -70,7 +66,7 @@ public final class CustomContainerCreator__BehaviorDescriptor extends BaseBHDesc
     }
     switch (methodIndex) {
       case 0:
-        return (T) ((SNode) createType_idi0I0ppH(node));
+        return (T) ((SNode) createType_id6MGFJY7SgiV(node, (SNode) parameters[0]));
       case 1:
         return (T) ((String) getEntityName_id6LXz$urfgAS(node));
       default:
@@ -105,7 +101,6 @@ public final class CustomContainerCreator__BehaviorDescriptor extends BaseBHDesc
   private static final class LINKS {
     /*package*/ static final SReferenceLink containerDeclaration$nqf8 = MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x127be81db92655b3L, 0x127be81db92655b4L, "containerDeclaration");
     /*package*/ static final SContainmentLink containerType$WQze = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x54a5d587c1f3c7e0L, 0x54a5d587c1f3c83fL, "containerType");
-    /*package*/ static final SContainmentLink elementType$WxmV = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType");
   }
 
   private static final class CONCEPTS {

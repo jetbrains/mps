@@ -4,7 +4,7 @@ package jetbrains.mps.lang.smodel.generator.smodelAdapter;
 
 import jetbrains.mps.annotations.GeneratedClass;
 
-@GeneratedClass(node = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)/6599163591527270715", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
+@GeneratedClass(nodeId = "6599163591527270715", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
 public class NodeCastException extends RuntimeException {
   public NodeCastException(String message) {
     super(message);

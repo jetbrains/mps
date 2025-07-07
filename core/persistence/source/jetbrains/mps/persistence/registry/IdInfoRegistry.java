@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@ import jetbrains.mps.smodel.adapter.ids.SReferenceLinkId;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SConceptFeature;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -46,6 +47,8 @@ public class IdInfoRegistry {
    * In fact, just a view of myLanguagesInUse.values().getConceptsInUse().select(it -> map(it.getConceptId(), it))
    */
   private final HashMap<SConceptId, ConceptInfo> myRegistry;
+
+  private final HashSet<SConceptFeature> myTransients = new HashSet<>();
 
   public IdInfoRegistry() {
     myRegistry = new HashMap<>();
@@ -152,6 +155,13 @@ public class IdInfoRegistry {
         }
       }
     }
+  }
+
+  public void markTransient(SConceptFeature feature) {
+    myTransients.add(feature);
+  }
+  public boolean isTransient(SConceptFeature feature) {
+    return myTransients.contains(feature);
   }
 
   private static void fill(HashSet<String> usedIndexes, BaseInfo bi, IndexEncoder indexEncoder) {

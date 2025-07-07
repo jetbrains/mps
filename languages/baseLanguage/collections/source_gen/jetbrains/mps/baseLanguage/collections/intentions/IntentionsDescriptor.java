@@ -33,7 +33,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[2];
           intentions[0] = new add_init_values_Intention();
           intentions[1] = new add_copy_from_Intention();
@@ -41,28 +41,28 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 1:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new AddAllSetElementsOperation_replace_Intention();
         }
         break;
       case 2:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new AddSetElementOperation_replace_Intention();
         }
         break;
       case 3:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new IterateOverSequence_Intention();
         }
         break;
       case 4:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[2];
           intentions[0] = new ConvertForEachStatementToForeachStatement_Intention();
           intentions[1] = new ConvertToMultiForeach_Intention();
@@ -70,42 +70,42 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 5:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new ConvertForeachStatementToForEach_Intention();
         }
         break;
       case 6:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new CreateInitializer_Intention();
         }
         break;
       case 7:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new RemoveAllSetElementsOperation_replace_Intention();
         }
         break;
       case 8:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new RemoveSetElementOperation_replace_Intention();
         }
         break;
       case 9:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new add_sequence_initializer_Intention();
         }
         break;
       case 10:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new Add_Comparator_Intention();
         }

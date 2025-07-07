@@ -49,7 +49,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.execution.util", "IMainClass", 0x4caf0310491e41f5L, 0x8a9b2006b3a94898L, 0x40c1a7cb987d20d5L);
     b.interface_();
     b.origin("r:fa713d69-08ea-4732-b1f2-cb07f9e103ef(jetbrains.mps.execution.util.structure)/4666195181811081429");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
 }

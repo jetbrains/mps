@@ -13,10 +13,10 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.refactoring.participant.RefactoringSession;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -46,17 +46,17 @@ public class UpdateConceptReferencesParticipant extends UpdateReferencesParticip
     if (ListSequence.fromList(selectedOptions).contains(WriteSubconceptMigrationParticipant.OPTION)) {
       super.doUpdateReference(selectedOptions, repository, containingNode, role, newTarget, resolveInfo);
     } else {
-      // do nothing 
+      // do nothing
     }
   }
   @Override
-  protected void doUpdateModelImport(List<RefactoringParticipant.Option> selectedOptions, SRepository repository, SNode containingNode, SReferenceLink role, UpdateReferencesParticipantBase.NodeData<Void> newTarget) {
+  protected void doUpdateModelImport(List<RefactoringParticipant.Option> selectedOptions, SRepository repository, SModel model2update, UpdateReferencesParticipantBase.NodeData<Void> newTarget) {
     if (ListSequence.fromList(selectedOptions).contains(WriteSubconceptMigrationParticipant.OPTION)) {
-      super.doUpdateModelImport(selectedOptions, repository, containingNode, role, newTarget);
+      super.doUpdateModelImport(selectedOptions, repository, model2update, newTarget);
       SModule targetLanguage = check_m5uax2_a0b0a0i(check_m5uax2_a0a1a0a8(newTarget.baseData().reference().getModelReference(), repository));
-      Language sourceLanguage = (Language) check_m5uax2_a0a2a0a8(containingNode.getModel());
-      if (sourceLanguage != null && targetLanguage != null) {
-        sourceLanguage.addExtendedLanguage(targetLanguage.getModuleReference());
+      SModule sourceLanguage = check_m5uax2_a0c0a0i(model2update);
+      if (sourceLanguage instanceof Language && targetLanguage instanceof Language) {
+        ((Language) sourceLanguage).addExtendedLanguage(targetLanguage.getModuleReference());
       }
     }
   }
@@ -89,7 +89,7 @@ public class UpdateConceptReferencesParticipant extends UpdateReferencesParticip
     }
     return null;
   }
-  private static SModule check_m5uax2_a0a2a0a8(SModel checkedDotOperand) {
+  private static SModule check_m5uax2_a0c0a0i(SModel checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModule();
     }

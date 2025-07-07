@@ -4,11 +4,10 @@ package jetbrains.mps.refactoringTest;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ExtractMethodRefactoringParameters;
@@ -16,23 +15,19 @@ import jetbrains.mps.baseLanguage.util.plugin.refactorings.ExtractMethodFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ExtractMethodRefactoring;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.MethodMatch;
 import java.util.List;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;
 
 @MPSLaunch
 public class SimpleFindForExtractFromStatement_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(SimpleFindForExtractFromStatement_Test.class, "${mps_home}", "r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SimpleFindForExtractFromStatement_Test.class).projectPath(null).modelRef("r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)").reopenProject(null).build());
 
   public SimpleFindForExtractFromStatement_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -46,24 +41,29 @@ public class SimpleFindForExtractFromStatement_Test extends BaseTransformationTe
       super(owner);
     }
 
-    public void test_SimpleFindForExtractFromStatementTest() throws Exception {
-      addNodeById("8556882668095222065");
-      addNodeById("8556882668095222149");
-      ExtractMethodRefactoringParameters params = ExtractMethodFactory.createParameters(ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("8556882668095222071"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement")))));
-      params.setName("print");
-      ExtractMethodRefactoring ref = ExtractMethodFactory.createRefactoring(params);
-      SNode res = ref.doRefactor();
-      for (MethodMatch match : ListSequence.fromList(ref.getMatches())) {
-        ExtractMethodRefactoring matchRef = ExtractMethodFactory.createRefactoring(ExtractMethodFactory.createParameters(match.getNodes()));
-        matchRef.replaceMatch(match, res);
-      }
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("8556882668095222066"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("8556882668095222150"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
-        Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-      }
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("8556882668095222065", "8556882668095222149");
     }
 
+    public void test_SimpleFindForExtractFromStatementTest() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        ExtractMethodRefactoringParameters params = ExtractMethodFactory.createParameters(ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("replace")));
+        params.setName("print");
+        ExtractMethodRefactoring ref = ExtractMethodFactory.createRefactoring(params);
+        SNode res = ref.doRefactor();
+        for (MethodMatch match : ListSequence.fromList(ref.getMatches())) {
+          ExtractMethodRefactoring matchRef = ExtractMethodFactory.createRefactoring(ExtractMethodFactory.createParameters(match.getNodes()));
+          matchRef.replaceMatch(match, res);
+        }
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("before"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("after"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+      });
+    }
 
   }
 }

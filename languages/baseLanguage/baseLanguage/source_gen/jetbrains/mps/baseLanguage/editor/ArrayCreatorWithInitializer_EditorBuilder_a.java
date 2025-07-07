@@ -43,13 +43,11 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceChild_Item;
 import java.util.List;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
-import java.util.function.Function;
 import jetbrains.mps.smodel.action.NodeSubstituteActionWrapper;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.nodeEditor.menus.EditorMenuTraceInfoImpl;
 import java.util.stream.Collectors;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBraceStyleClass;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -145,7 +143,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "[]");
     editorCell.setCellId("Constant_ym22pt_b0");
     Style style = new StyleImpl();
-    new BracketStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new BracketStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.PUNCTUATION_LEFT, true);
     editorCell.getStyle().putAll(style);
     ArrayCreatorWithInitializers_Delete_Brackets.setCellActions(editorCell, myNode, getEditorContext());
@@ -158,7 +156,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "{");
     editorCell.setCellId("Constant_ym22pt_c0");
     Style style = new StyleImpl();
-    new LeftBraceStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new LeftBraceStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.PUNCTUATION_LEFT, true);
     style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
     editorCell.getStyle().putAll(style);
@@ -171,7 +169,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("init");
     Style style = new StyleImpl();
-    style.set(StyleAttributes.SELECTABLE, true);
+    style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
     if (true) {
       editorCell.getStyle().set(StyleAttributes.FOCUS_POLICY, FocusPolicy.ATTRACTS_FOCUS);
@@ -284,33 +282,26 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     @Override
     public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-      List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-      Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-        public SubstituteAction apply(SubstituteAction action) {
-          return new NodeSubstituteActionWrapper(action) {
-            @Override
-            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-              result.setDescriptor(new EditorMenuDescriptorBase("replace child item: " + ArrayCreatorWithInitializer_initValue_cellMenu_ym22pt_b0d0.this.getMatchingText(), new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "3229217637169539052")));
-              return result;
-            }
-          };
-        }
-      };
-      return actions.stream().map(mapper).collect(Collectors.toList());
+      return super.createActions(cellContext, editorContext).stream().map((action) -> {
+        return new NodeSubstituteActionWrapper(action) {
+          @Override
+          public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+            EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+            result.setDescriptor(new EditorMenuDescriptorBase("replace child item: " + ArrayCreatorWithInitializer_initValue_cellMenu_ym22pt_b0d0.this.getMatchingText(), new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "3229217637169539052")));
+            return result;
+          }
+        };
+      }).collect(Collectors.toList());
     }
 
 
     public String getMatchingText() {
       return "{";
     }
-    public boolean isCustomCreateChildNode() {
+    protected boolean isCustomCreateChildNode() {
       return true;
     }
-    public SNode customCreateChildNode(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      return customCreateChildNode_impl(node, currentChild, defaultChildConcept.getDeclarationNode(), defaultChildConcept, model, operationContext, editorContext);
-    }
-    private SNode customCreateChildNode_impl(SNode node, SNode currentChild, SNode defaultConceptOfChild, SAbstractConcept defaultChildConcept, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected SNode customCreateChildNode(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model, EditorContext editorContext) {
       return SNodeFactoryOperations.createNewNode(CONCEPTS.ArrayLiteral$Ey, null);
     }
   }
@@ -318,7 +309,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "}");
     editorCell.setCellId("Constant_ym22pt_e0");
     Style style = new StyleImpl();
-    new RightBraceStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new RightBraceStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.PUNCTUATION_LEFT, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");

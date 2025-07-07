@@ -22,7 +22,7 @@ import java.io.OutputStream;
 import java.io.InputStream;
 import com.intellij.util.ArrayUtil;
 
-@GeneratedClass(node = "r:0e3b77a4-c2c4-4ca6-a3b1-df5ad0152a9c(jetbrains.mps.ide.make)/173672751428922365", model = "r:0e3b77a4-c2c4-4ca6-a3b1-df5ad0152a9c(jetbrains.mps.ide.make)")
+@GeneratedClass(nodeId = "173672751428922365", model = "r:0e3b77a4-c2c4-4ca6-a3b1-df5ad0152a9c(jetbrains.mps.ide.make)")
 public class TextPreviewFile extends VirtualFile {
   private static TextPreviewVirtualFileSystem FS = new TextPreviewVirtualFileSystem();
   private static final String BINARY_CONTENT = "<binary content>";
@@ -37,7 +37,7 @@ public class TextPreviewFile extends VirtualFile {
   }
 
   public TextPreviewFile(TextUnit textUnit, String modelName) {
-    // FIXME what's in modelName, do we really care to prepend it to file name? 
+    // FIXME what's in modelName, do we really care to prepend it to file name?
     this(textUnit.getFileName(), textUnit, modelName);
   }
 
@@ -268,7 +268,7 @@ public class TextPreviewFile extends VirtualFile {
   }
   @Override
   public void refresh(boolean b, boolean b1, @Nullable Runnable runnable) {
-    // Do nothing and don't throw exception as StubVirtualFile to prevent error from TextPreviewModel_Action 
+    // Do nothing and don't throw exception as StubVirtualFile to prevent error from TextPreviewModel_Action
   }
 
   @Override

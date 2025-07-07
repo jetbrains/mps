@@ -95,10 +95,10 @@
       <node id="4001135958234413420" at="60,17,61,141" concept="7" />
       <node id="4001135958233562533" at="61,141,62,64" concept="2" />
       <node id="4001135958234410687" at="62,64,63,0" concept="10" />
-      <node id="4001135958234652131" at="64,42,65,38" concept="9" />
-      <node id="4001135958234666987" at="65,38,66,28" concept="8" />
-      <node id="4001135958233635293" at="67,53,68,38" concept="9" />
-      <node id="4001135958233621269" at="68,38,69,28" concept="8" />
+      <node id="4001135958234652131" at="64,42,65,37" concept="9" />
+      <node id="4001135958234666987" at="65,37,66,28" concept="8" />
+      <node id="4001135958233635293" at="67,53,68,37" concept="9" />
+      <node id="4001135958233621269" at="68,37,69,28" concept="8" />
       <node id="4001135958233546085" at="71,20,72,29" concept="2" />
       <node id="4001135958235113327" at="74,11,75,62" concept="2" />
       <node id="4001135958233645900" at="76,9,77,96" concept="8" />
@@ -186,42 +186,27 @@
   </root>
   <root nodeRef="r:540d5e3a-9424-4c25-a6ed-9d51ec46dfad(org.jetbrains.mps.samples.money.runtime)/4001135958235925037">
     <file name="StockPriceCalculator.java">
-      <node id="4001135958235930004" at="12,91,13,69" concept="7" />
-      <node id="4001135958235981132" at="15,52,16,37" concept="8" />
-      <node id="4001135958235981141" at="19,61,20,24" concept="8" />
-      <node id="4001135958236004160" at="22,7,23,100" concept="7" />
-      <node id="4001135958235984470" at="23,100,24,16" concept="8" />
-      <node id="4001135958235983660" at="24,16,25,0" concept="10" />
-      <node id="4001135958235928198" at="28,91,29,64" concept="8" />
-      <node id="4001135958235981130" at="15,0,18,0" concept="6" trace="select#(Lorg/jetbrains/mps/samples/money/runtime/DailyStockPrice;)Ljava/math/BigDecimal;" />
-      <node id="4001135958235981139" at="19,0,22,0" concept="6" trace="combine#(Ljava/math/BigDecimal;Ljava/math/BigDecimal;)Ljava/math/BigDecimal;" />
-      <node id="4001135958235928366" at="28,0,31,0" concept="12" trace="retrievePricesWithin#(Ljava/util/List;)Ljava/util/List;" />
-      <node id="4001135958235981124" at="13,69,22,7" concept="7" />
-      <node id="4001135958235925119" at="12,0,27,0" concept="12" trace="calculateMovingAverage#(Ljava/util/List;)Ljava/lang/Iterable;" />
-      <scope id="4001135958235981131" at="15,52,16,37" />
-      <scope id="4001135958235981140" at="19,61,20,24" />
-      <scope id="4001135958235926134" at="28,91,29,64" />
-      <scope id="4001135958235981130" at="15,0,18,0">
-        <var name="it" id="4001135958235981130" />
-      </scope>
-      <scope id="4001135958235981139" at="19,0,22,0">
-        <var name="a" id="4001135958235981139" />
-        <var name="b" id="4001135958235981139" />
-      </scope>
-      <scope id="4001135958235928366" at="28,0,31,0">
+      <node id="4001135958235930004" at="10,91,11,69" concept="7" />
+      <node id="4001135958235981124" at="11,69,12,125" concept="7" />
+      <node id="4001135958236004160" at="12,125,13,100" concept="7" />
+      <node id="4001135958235984470" at="13,100,14,16" concept="8" />
+      <node id="4001135958235983660" at="14,16,15,0" concept="10" />
+      <node id="4001135958235928198" at="18,91,19,64" concept="8" />
+      <node id="4001135958235928366" at="18,0,21,0" concept="12" trace="retrievePricesWithin#(Ljava/util/List;)Ljava/util/List;" />
+      <node id="4001135958235925119" at="10,0,17,0" concept="12" trace="calculateMovingAverage#(Ljava/util/List;)Ljava/lang/Iterable;" />
+      <scope id="4001135958235926134" at="18,91,19,64" />
+      <scope id="4001135958235928366" at="18,0,21,0">
         <var name="prices" id="4001135958235926164" />
       </scope>
-      <scope id="4001135958235925122" at="12,91,25,0">
+      <scope id="4001135958235925122" at="10,91,15,0">
         <var name="divided" id="4001135958236004161" />
         <var name="pricesToUse" id="4001135958235930005" />
         <var name="sum" id="4001135958235981125" />
       </scope>
-      <scope id="4001135958235925119" at="12,0,27,0">
+      <scope id="4001135958235925119" at="10,0,17,0">
         <var name="prices" id="4001135958235925133" />
       </scope>
-      <unit id="4001135958235981130" at="14,67,18,5" name="org.jetbrains.mps.samples.money.runtime.StockPriceCalculator$1" />
-      <unit id="4001135958235981139" at="18,22,22,5" name="org.jetbrains.mps.samples.money.runtime.StockPriceCalculator$2" />
-      <unit id="4001135958235925037" at="11,0,32,0" name="org.jetbrains.mps.samples.money.runtime.StockPriceCalculator" />
+      <unit id="4001135958235925037" at="9,0,22,0" name="org.jetbrains.mps.samples.money.runtime.StockPriceCalculator" />
     </file>
   </root>
   <root nodeRef="r:540d5e3a-9424-4c25-a6ed-9d51ec46dfad(org.jetbrains.mps.samples.money.runtime)/5447719361346501252">

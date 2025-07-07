@@ -25,7 +25,6 @@ import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import java.util.List;
 import jetbrains.mps.generator.template.TemplateVarContext;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.ReductionRuleCondition;
 import java.util.HashMap;
@@ -35,7 +34,6 @@ import jetbrains.mps.generator.template.ReductionRuleQueryContext;
 import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.impl.query.CreateRootCondition;
 import jetbrains.mps.generator.impl.query.SourceNodeQuery;
-import jetbrains.mps.generator.impl.query.QueryKeyImpl;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.impl.query.SourceNodesQuery;
 import java.util.Collection;
@@ -56,11 +54,11 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean createRootRule_Condition_0_0(final CreateRootRuleContext _context) {
-    // see MPS-24613 
+    // see MPS-24613
     return SModuleOperations.isAspect(_context.getOriginalInputModel(), "findUsages");
   }
   public static boolean rule_Condition_7_0(final BaseMappingRuleContext _context) {
-    // see MPS-24613 
+    // see MPS-24613
     return SModuleOperations.isAspect(((SModel) _context.getVariable("model")), "findUsages");
   }
   public static Object propertyMacro_GetValue_0_0(final PropertyMacroContext _context) {
@@ -100,10 +98,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return "FindUsagesDescriptor";
   }
   public static Object propertyMacro_GetValue_6_2(final PropertyMacroContext _context) {
-    return ((Integer) _context.getVariable("cv:c"));
+    return (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_6_3(final PropertyMacroContext _context) {
-    return ((Integer) _context.getVariable("cv:c"));
+    return (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_6_4(final PropertyMacroContext _context) {
     return NameUtil.toValidIdentifier(SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL));
@@ -117,11 +115,21 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object referenceMacro_GetReferent_1_0(final ReferenceMacroContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.forConcept$tZey);
   }
+  public static Object referenceMacro_GetReferent_1_1(final ReferenceMacroContext _context) {
+    return _context.getOutputNodeByMappingLabel("AspectDescriptorClass", null);
+  }
+  public static Object referenceMacro_GetReferent_1_2(final ReferenceMacroContext _context) {
+    return _context.getOutputNodeByMappingLabel("DeclaringModelField", null);
+  }
   public static Object referenceMacro_GetReferent_6_0(final ReferenceMacroContext _context) {
+    return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "map_FinderConstructor");
+  }
+  public static Object referenceMacro_GetReferent_6_1(final ReferenceMacroContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.forConcept$tZey);
   }
   public static Object referenceMacro_GetReferent_7_0(final ReferenceMacroContext _context) {
-    // TODO genContext.get output FindUsagesDescriptorCons for model model; 
+    // TODO genContext.get output AspectDesctiptorConstructor for model model;
+    //     ONCE there's devkit for findUsages!
     return SModelOperations.getModelName(((SModel) _context.getVariable("model"))) + ".FindUsagesDescriptor";
   }
   public static boolean ifMacro_Condition_0_0(final IfMacroContext _context) {
@@ -259,11 +267,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.finders$fx_5);
   }
   public static Object varMacro_Value_6_0(final TemplateVarContext _context) {
-    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.FinderDeclaration$R8)).sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }, true).toListSequence();
+    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.FinderDeclaration$R8)).sort((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL), true).toList();
   }
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {
@@ -273,11 +277,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public ReductionRuleCondition getReductionRuleCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(rrcMethods.containsKey(id))) {
-      return super.getReductionRuleCondition(identity);
-    }
-    return rrcMethods.get(id);
+    ReductionRuleCondition query = identity.forTemplateNode(rrcMethods);
+    return (query != null ? query : super.getReductionRuleCondition(identity));
   }
   private static class RRC implements ReductionRuleCondition {
     private final int methodKey;
@@ -302,11 +303,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public CreateRootCondition getCreateRootRuleCondition(@NotNull QueryKey identity) {
-    String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(crcMethods.containsKey(id))) {
-      return super.getCreateRootRuleCondition(identity);
-    }
-    return crcMethods.get(id);
+    CreateRootCondition query = identity.forTemplateNode(crcMethods);
+    return (query != null ? query : super.getCreateRootRuleCondition(identity));
   }
   private static class CRC implements CreateRootCondition {
     private final int methodKey;
@@ -351,11 +349,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public SourceNodeQuery getSourceNodeQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snqMethods.containsKey(id))) {
-      return super.getSourceNodeQuery(identity);
-    }
-    return snqMethods.get(id);
+    SourceNodeQuery query = identity.forFunctionNode(snqMethods);
+    return (query != null ? query : super.getSourceNodeQuery(identity));
   }
   private static class SNQ implements SourceNodeQuery {
     private final int methodKey;
@@ -424,11 +419,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public SourceNodesQuery getSourceNodesQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snsqMethods.containsKey(id))) {
-      return super.getSourceNodesQuery(identity);
-    }
-    return snsqMethods.get(id);
+    SourceNodesQuery query = identity.forFunctionNode(snsqMethods);
+    return (query != null ? query : super.getSourceNodesQuery(identity));
   }
   private static class SNsQ implements SourceNodesQuery {
     private final int methodKey;
@@ -476,11 +468,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public PropertyValueQuery getPropertyValueQuery(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(pvqMethods.containsKey(id))) {
-      return super.getPropertyValueQuery(identity);
-    }
-    return pvqMethods.get(id);
+    PropertyValueQuery query = identity.forTemplateNode(pvqMethods);
+    return (query != null ? query : super.getPropertyValueQuery(identity));
   }
   private static class PVQ extends PropertyValueQuery.Base {
     private final int methodKey;
@@ -553,11 +542,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public IfMacroCondition getIfMacroCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(imcMethods.containsKey(id))) {
-      return super.getIfMacroCondition(identity);
-    }
-    return imcMethods.get(id);
+    IfMacroCondition query = identity.forTemplateNode(imcMethods);
+    return (query != null ? query : super.getIfMacroCondition(identity));
   }
   private static class IfMC implements IfMacroCondition {
     private final int methodKey;
@@ -611,17 +597,17 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
     rtqMethods.put("8928180329700848723", new RTQ(0, "BaseConcept"));
-    rtqMethods.put("5697304327501162559", new RTQ(1, "BaseConcept"));
-    rtqMethods.put("4147950839246952263", new RTQ(2, "FindUsagesDescriptor"));
+    rtqMethods.put("3435289394585991959", new RTQ(1, "FindUsagesDescriptor"));
+    rtqMethods.put("3435289394586040449", new RTQ(2, "DECLARING_MODEL"));
+    rtqMethods.put("3435289394586050747", new RTQ(3, "FinderClass"));
+    rtqMethods.put("5697304327501162559", new RTQ(4, "BaseConcept"));
+    rtqMethods.put("4147950839246952263", new RTQ(5, "FindUsagesDescriptor"));
   }
   @NotNull
   @Override
   public ReferenceTargetQuery getReferenceTargetQuery(@NotNull QueryKey queryKey) {
-    final String id = queryKey.getTemplateNode().getNodeId().toString();
-    if (!(rtqMethods.containsKey(id))) {
-      return super.getReferenceTargetQuery(queryKey);
-    }
-    return rtqMethods.get(id);
+    ReferenceTargetQuery query = queryKey.forTemplateNode(rtqMethods);
+    return (query != null ? query : super.getReferenceTargetQuery(queryKey));
   }
   private static class RTQ extends ReferenceTargetQuery.Base {
     private final int methodKey;
@@ -635,8 +621,14 @@ public class QueriesGenerated extends QueryProviderBase {
         case 0:
           return QueriesGenerated.referenceMacro_GetReferent_1_0(ctx);
         case 1:
-          return QueriesGenerated.referenceMacro_GetReferent_6_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_1_1(ctx);
         case 2:
+          return QueriesGenerated.referenceMacro_GetReferent_1_2(ctx);
+        case 3:
+          return QueriesGenerated.referenceMacro_GetReferent_6_0(ctx);
+        case 4:
+          return QueriesGenerated.referenceMacro_GetReferent_6_1(ctx);
+        case 5:
           return QueriesGenerated.referenceMacro_GetReferent_7_0(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
@@ -650,11 +642,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public VariableValueQuery getVariableValueQuery(@NotNull QueryKey queryKey) {
-    final String id = queryKey.getTemplateNode().getNodeId().toString();
-    if (!(vvqMethods.containsKey(id))) {
-      return super.getVariableValueQuery(queryKey);
-    }
-    return vvqMethods.get(id);
+    VariableValueQuery query = queryKey.forTemplateNode(vvqMethods);
+    return (query != null ? query : super.getVariableValueQuery(queryKey));
   }
   private static class VVQ implements VariableValueQuery {
     private final int methodKey;

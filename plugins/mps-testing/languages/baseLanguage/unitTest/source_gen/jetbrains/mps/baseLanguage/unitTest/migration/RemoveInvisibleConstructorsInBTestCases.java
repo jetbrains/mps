@@ -9,10 +9,9 @@ import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -36,23 +35,11 @@ public class RemoveInvisibleConstructorsInBTestCases extends MigrationScriptBase
     {
       SearchScope scope_zcz6pn_a0e = CommandUtil.createScope(m);
       final SearchScope scope_zcz6pn_a0e_0 = new EditableFilteringScope(scope_zcz6pn_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_zcz6pn_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BTestCase$_a, false)).translate(new ITranslator2<SNode, SNode>() {
-        public Iterable<SNode> translate(SNode it) {
-          return SLinkOperations.getChildren(it, LINKS.constructor$Tr4k);
-        }
-      }).toListSequence().visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.deleteNode(it);
-        }
-      });
+      QueryExecutionContext context = () -> scope_zcz6pn_a0e_0;
+      ListSequence.fromList(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BTestCase$_a, false)).translate((it) -> SLinkOperations.getChildren(it, LINKS.constructor$Tr4k)).toList()).visitAll((it) -> SNodeOperations.deleteNode(it));
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, "jetbrains.mps.baseLanguage.unitTest"), 0);
   }
 

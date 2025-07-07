@@ -2,9 +2,9 @@
 <model ref="r:9dd38274-05d8-45ba-a41e-44ac52909443(jetbrains.mps.lang.editor.forms.test@tests)">
   <persistence version="9" />
   <languages>
-    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="5" />
+    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="6" />
     <use id="afb9a5fd-bc5d-4169-a225-42d8823d623a" name="jetbrains.mps.lang.editor.formsTests" version="0" />
-    <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="4" />
+    <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="6" />
   </languages>
   <imports />
   <registry>
@@ -25,9 +25,6 @@
         <property id="1229194968595" name="cellId" index="LIFWd" />
         <property id="1932269937152561478" name="useLabelSelection" index="OXtK3" />
         <property id="1229432188737" name="isLastPosition" index="ZRATv" />
-      </concept>
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
       </concept>
       <concept id="210559400605421433" name="jetbrains.mps.lang.test.structure.PressMouseStatement" flags="ng" index="37Q87h">
         <property id="210559400606080744" name="y" index="37OD10" />
@@ -64,14 +61,11 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
   </registry>
-  <node concept="2XOHcx" id="hlYdQAfJtj">
-    <property role="2XOHcw" value="${mps_home}" />
-  </node>
   <node concept="LiM7Y" id="4CPWB7pWCi9">
     <property role="TrG5h" value="TextCheckbox_SPACE_Toggles" />
     <property role="3YCmrE" value="When inside a checkbox, pressing SPACE will toggle it" />
@@ -185,8 +179,8 @@
     <property role="3YCmrE" value="Clicking on a checkbox toggles it" />
     <node concept="3clFbS" id="65lbGMleZar" role="LjaKd">
       <node concept="37Q87h" id="65lbGMleZas" role="3cqZAp">
-        <property role="37OD1f" value="0" />
-        <property role="37OD10" value="0" />
+        <property role="37OD1f" value="5" />
+        <property role="37OD10" value="5" />
         <node concept="3clFbS" id="65lbGMleZat" role="9aQI4" />
       </node>
     </node>

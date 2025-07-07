@@ -4,11 +4,10 @@ package jetbrains.mps.refactoringTest;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ExtractMethodRefactoringParameters;
@@ -16,23 +15,19 @@ import jetbrains.mps.baseLanguage.util.plugin.refactorings.ExtractMethodFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ExtractMethodRefactoring;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ExtractMethodWithReturn;
 import java.util.List;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;
 
 @MPSLaunch
 public class ExtractDifferentReturns_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(ExtractDifferentReturns_Test.class, "${mps_home}", "r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ExtractDifferentReturns_Test.class).projectPath(null).modelRef("r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)").reopenProject(null).build());
 
   public ExtractDifferentReturns_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -46,21 +41,26 @@ public class ExtractDifferentReturns_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_extractDifferentReturns() throws Exception {
-      addNodeById("1230052641812");
-      addNodeById("1230052641841");
-      ExtractMethodRefactoringParameters params = ExtractMethodFactory.createParameters(ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("1230052641823"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b217L, "IfStatement")))));
-      params.setName("foo");
-      ExtractMethodRefactoring ref = ExtractMethodFactory.createRefactoring(params);
-      Assert.assertTrue(ref instanceof ExtractMethodWithReturn);
-      ref.doRefactor();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("1230052641813"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("1230052641842"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
-        Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-      }
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052641812", "1230052641841");
     }
 
+    public void test_extractDifferentReturns() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        ExtractMethodRefactoringParameters params = ExtractMethodFactory.createParameters(ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("l1")));
+        params.setName("foo");
+        ExtractMethodRefactoring ref = ExtractMethodFactory.createRefactoring(params);
+        Assert.assertTrue(ref instanceof ExtractMethodWithReturn);
+        ref.doRefactor();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("before"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("after"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+      });
+    }
 
   }
 }

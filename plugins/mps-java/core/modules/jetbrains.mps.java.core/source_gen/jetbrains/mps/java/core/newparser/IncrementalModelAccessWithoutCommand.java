@@ -7,7 +7,7 @@ import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.messages.IMessageHandler;
 
-@GeneratedClass(node = "r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)/2063851301518712147", model = "r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)")
+@GeneratedClass(nodeId = "2063851301518712147", model = "r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)")
 /*package*/ class IncrementalModelAccessWithoutCommand extends IncrementalModelAccessBase {
   public IncrementalModelAccessWithoutCommand(ModelAccess modelAccess, Iterable<SModel> models, IMessageHandler messageHandler) {
     super(modelAccess, models, messageHandler);
@@ -15,7 +15,7 @@ import jetbrains.mps.messages.IMessageHandler;
 
   @Override
   public void replaceNodes(Runnable runnable) {
-    // replacing nodes in update mode, without command, to avoid command listeners 
+    // replacing nodes in update mode, without command, to avoid command listeners
     executeInUpdateMode(runnable);
   }
 

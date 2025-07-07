@@ -1,96 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
-  <dependency className="jetbrains.mps.ide.findusages.model.CategoryKind">
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="javax.swing.Icon" />
-    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-  </dependency>
-  <dependency className="jetbrains.mps.ide.findusages.model.IResultProvider">
-    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder" />
-    <classNode dependClassName="jetbrains.mps.ide.findusages.model.SearchQuery" />
-    <classNode dependClassName="jetbrains.mps.ide.findusages.model.SearchResults" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.module.SearchScope" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.util.ProgressMonitor" />
-    <classNode extendsClassName="jetbrains.mps.ide.findusages.IExternalizeable" />
-  </dependency>
-  <dependency className="jetbrains.mps.ide.findusages.model.SearchObjectResolver">
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModelReference" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.module.SModuleReference" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.module.SRepository" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.module.SearchScope" />
-  </dependency>
-  <dependency className="jetbrains.mps.ide.findusages.model.SearchQuery">
-    <classNode dependClassName="java.lang.Class" />
-    <classNode dependClassName="java.lang.Exception" />
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.ide.findusages.CantLoadSomethingException" />
-    <classNode dependClassName="jetbrains.mps.ide.findusages.CantSaveSomethingException" />
-    <classNode dependClassName="jetbrains.mps.ide.findusages.model.SearchObjectResolver" />
-    <classNode dependClassName="jetbrains.mps.ide.findusages.model.holders.IHolder" />
-    <classNode dependClassName="jetbrains.mps.ide.findusages.model.holders.ModelHolder" />
-    <classNode dependClassName="jetbrains.mps.ide.findusages.model.holders.ModuleRefHolder" />
-    <classNode dependClassName="jetbrains.mps.ide.findusages.model.holders.NodeHolder" />
-    <classNode dependClassName="jetbrains.mps.ide.findusages.model.holders.VoidHolder" />
-    <classNode dependClassName="jetbrains.mps.ide.findusages.model.scopes.FindUsagesScope" />
-    <classNode dependClassName="jetbrains.mps.project.Project" />
-    <classNode dependClassName="org.jdom.Element" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModelReference" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.module.SearchScope" />
-    <classNode extendsClassName="jetbrains.mps.ide.findusages.IExternalizeable" />
-  </dependency>
-  <dependency className="jetbrains.mps.ide.findusages.model.SearchResult">
-    <classNode dependClassName="java.lang.Object" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.util.ArrayList" />
-    <classNode dependClassName="java.util.Arrays" />
-    <classNode dependClassName="java.util.Collections" />
-    <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="java.util.Objects" />
-    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.ide.findusages.model.CategoryKind" />
-    <classNode dependClassName="jetbrains.mps.util.Pair" />
-  </dependency>
-  <dependency className="jetbrains.mps.ide.findusages.model.SearchResults">
-    <classNode dependClassName="java.lang.Deprecated" />
-    <classNode dependClassName="java.lang.Object" />
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.util.ArrayList" />
-    <classNode dependClassName="java.util.Collection" />
-    <classNode dependClassName="java.util.Collections" />
-    <classNode dependClassName="java.util.HashSet" />
-    <classNode dependClassName="java.util.LinkedHashSet" />
-    <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="java.util.Set" />
-    <classNode dependClassName="java.util.stream.Collectors" />
-    <classNode dependClassName="java.util.stream.Stream" />
-    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.ide.findusages.findalgorithm.finders.SearchedObjects" />
-    <classNode dependClassName="jetbrains.mps.ide.findusages.model.SearchResult" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode extendsClassName="jetbrains.mps.findUsages.UsagesList" />
-  </dependency>
-  <dependency className="jetbrains.mps.ide.findusages.model.SearchTask">
-    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.ide.findusages.model.SearchResults" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.util.ProgressMonitor" />
-  </dependency>
+  <uses language="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />
+  <uses language="l:f2801650-65d5-424e-bb1b-463a8781b786:jetbrains.mps.baseLanguage.javadoc" />
+  <uses language="l:c7fb639f-be78-4307-89b0-b5959c3fa8c8:jetbrains.mps.lang.text" />
+  <uses module="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="dp" />
+  <uses module="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="rt+dp" />
+  <uses module="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="dp" />
+  <uses module="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="dp" />
+  <uses module="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
+  <uses module="bfbdd672-7ff5-403f-af4f-16da5226f34c(jetbrains.mps.findUsages.runtime)" kind="dp" />
+  <uses module="f647e48e-4568-4f4c-b48a-1546492c6a2e(org.jdom)" kind="dp" />
 </dependenciesRoot>
 

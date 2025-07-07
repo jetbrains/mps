@@ -16,8 +16,25 @@ import jetbrains.mps.baseLanguage.unitTest.execution.TextTestEvent;
  */
 public interface TestStateListener {
   void onProcessNotified();
-  void onTestRunStarted();
-  void onTestRunFinished();
+  /**
+   * Use the overloaded method with {@code TestNodeEvent} parameter
+   */
+  @Deprecated
+  default void onTestRunStarted() {
+    // NOP by default
+  }
+  default void onTestRunStarted(TestNodeEvent event) {
+    onTestRunStarted();
+  }
+  /**
+   * Use the overloaded method with {@code TestNodeEvent} parameter
+   */
+  @Deprecated
+  default void onTestRunFinished() {
+  }
+  default void onTestRunFinished(TestNodeEvent event) {
+    onTestRunFinished();
+  }
   void onTestStart(TestNodeEvent event);
   void onTestFinish(TestNodeEvent event);
   void onTestFailure(TestNodeEvent event);

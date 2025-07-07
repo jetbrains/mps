@@ -5,30 +5,32 @@ package jetbrains.mps.java.core.newparser;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Map;
+import java.util.List;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
 import jetbrains.mps.progress.EmptyProgressMonitor;
-import java.util.concurrent.atomic.AtomicBoolean;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.HashMap;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import java.util.List;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.smodel.ModelImports;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.function.Consumer;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -37,11 +39,13 @@ import org.jetbrains.mps.openapi.language.SProperty;
 /**
  * To deal with ambiguous notations in Java source code (like a.b.c.d.E.f), we need to perform few rounds of reference resolution.
  */
-@GeneratedClass(node = "r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)/4078359035437906003", model = "r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)")
+@GeneratedClass(nodeId = "4078359035437906003", model = "r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)")
 public class YetUnknownResolver {
   private final Iterable<SNode> myInitialNodes;
   private Map<SNode, SNode> myResolutionMap;
+  private List<SNode> myNodesToResolve;
   private Set<SModelReference> myRefTargetOfResolved;
+  private Set<SLanguage> myLanguagesOfResolved;
   private int myIterationCount = 0;
   private SModel myModel;
 
@@ -59,8 +63,8 @@ public class YetUnknownResolver {
    * Handy method that combines other public methods of this class into proper sequence, and wraps calls with proper IncrementalModelAccess
    * Use this method unless you need to handle resolution in some special way (and you are 119% sure you know what you do)
    */
-  public void tryResolveUnknowns(ProgressMonitor progress, IncrementalModelAccess modelAccess) {
-    // make room for this many passes, and just don't advance the progress afterwards 
+  public void tryResolveUnknowns(ProgressMonitor progress) {
+    // make room for this many passes, and just don't advance the progress afterwards
     final int PASSES_TO_SHOW_UNDER_PROGRESS = 5;
     progress.start("", PASSES_TO_SHOW_UNDER_PROGRESS + 1);
     int k = 0;
@@ -73,20 +77,11 @@ public class YetUnknownResolver {
         progressForThisPass = new EmptyProgressMonitor();
       }
       progressForThisPass.start("", 3);
-      final AtomicBoolean anyUnresolvedYet = new AtomicBoolean(false);
-      modelAccess.accessModel(new Runnable() {
-        public void run() {
-          anyUnresolvedYet.set(collectYetUnresolved(progressForThisPass.subTask(2, SubProgressKind.REPLACING)));
-
-        }
-      });
-      if (anyUnresolvedYet.get()) {
-        modelAccess.replaceNodes(new Runnable() {
-          public void run() {
-            replaceYetUnresolved(progressForThisPass.subTask(1, SubProgressKind.REPLACING));
-            updateWithImportsOfResolved();
-          }
-        });
+      // JFTR, collectYetUnresolved, despite the name, may alter model (see subst in collectYetUnresolved(node<IYetUnresolved>))
+      final boolean anyUnresolvedYet = collectYetUnresolved(progressForThisPass.subTask(2, SubProgressKind.REPLACING));
+      if (anyUnresolvedYet) {
+        replaceYetUnresolved(progressForThisPass.subTask(1, SubProgressKind.REPLACING));
+        updateWithImportsOfResolved();
       } else {
         break;
       }
@@ -102,8 +97,8 @@ public class YetUnknownResolver {
    * @return {@code true} when there are IYetUnresolved with substitutions
    */
   public boolean collectYetUnresolved(ProgressMonitor progress) {
-    assert myIterationCount == 0 || myResolutionMap != null;
-    collectYetUnresolved((myResolutionMap == null ? myInitialNodes : MapSequence.fromMap(myResolutionMap).values()), progress);
+    assert myIterationCount == 0 || (myResolutionMap != null && myNodesToResolve != null);
+    collectYetUnresolved((myNodesToResolve == null ? myInitialNodes : myNodesToResolve), progress);
     myIterationCount++;
     return !(MapSequence.fromMap(myResolutionMap).isEmpty());
   }
@@ -111,27 +106,37 @@ public class YetUnknownResolver {
   private void collectYetUnresolved(Iterable<SNode> roots, ProgressMonitor progress) {
     progress.start("Ambiguous concepts...", Sequence.fromIterable(roots).count());
     myResolutionMap = MapSequence.fromMap(new HashMap<SNode, SNode>());
+    myNodesToResolve = ListSequence.fromList(new ArrayList<SNode>());
+
     for (SNode node : Sequence.fromIterable(roots)) {
       progress.step((SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$Kd) ? ("node: " + SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL)) : ""));
-      List<SNode> unknowns = SNodeOperations.getNodeDescendants(node, CONCEPTS.IYetUnresolved$h4, false, new SAbstractConcept[]{CONCEPTS.IYetUnresolved$h4});
-      for (SNode unk : ListSequence.fromList(unknowns)) {
-        final SNode unkNode = unk;
-        final _FunctionTypes._return_P0_E0<? extends SNode> subst = ((_FunctionTypes._return_P0_E0<? extends SNode>) BHReflection.invoke0(unk, CONCEPTS.IYetUnresolved$h4, SMethodTrimmedId.create("evaluateSubst", null, "73E7sj5sxxG")));
-        if (subst == null) {
-          continue;
-        }
-
-        SNode theRightNode = subst.invoke();
-        MapSequence.fromMap(myResolutionMap).put(unkNode, theRightNode);
+      for (SNode unk : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.IYetUnresolved$h4, true, new SAbstractConcept[]{CONCEPTS.IYetUnresolved$h4}))) {
+        ListSequence.fromList(myNodesToResolve).addElement(collectYetUnresolved(unk));
       }
       progress.advance(1);
     }
     progress.done();
   }
 
+  private SNode collectYetUnresolved(SNode unk) {
+    final _FunctionTypes._return_P0_E0<? extends SNode> subst = ((_FunctionTypes._return_P0_E0<? extends SNode>) BHReflection.invoke0(unk, CONCEPTS.IYetUnresolved$h4, SMethodIdV2.create("evaluateSubst", 8136348407761606764L, 0x5745e3015c8914d3L)));
+    if (subst == null) {
+      // Try to solve strict descendants if any (and still report this node to be solved later)
+      for (SNode it : ListSequence.fromList(SNodeOperations.getNodeDescendants(unk, CONCEPTS.IYetUnresolved$h4, false, new SAbstractConcept[]{CONCEPTS.IYetUnresolved$h4}))) {
+        collectYetUnresolved(it);
+      }
+      return unk;
+    } else {
+      SNode theRightNode = subst.invoke();
+      MapSequence.fromMap(myResolutionMap).put(unk, theRightNode);
+      return theRightNode;
+    }
+  }
+
   public void replaceYetUnresolved(final ProgressMonitor progress) {
     progress.start("replacing nodes", MapSequence.fromMap(myResolutionMap).count());
     myRefTargetOfResolved = SetSequence.fromSet(new HashSet<SModelReference>());
+    myLanguagesOfResolved = SetSequence.fromSet(new HashSet<SLanguage>());
     for (IMapping<SNode, SNode> it : MapSequence.fromMap(myResolutionMap)) {
       SNode unresolved = it.key();
       SNode resolved = it.value();
@@ -142,6 +147,11 @@ public class YetUnknownResolver {
           SetSequence.fromSet(myRefTargetOfResolved).addElement(targetModelRef);
         }
       }
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(resolved, null, true, new SAbstractConcept[]{})).visitAll(new _FunctionTypes._void_P1_E0<SNode>() {
+        public void invoke(SNode it) {
+          SetSequence.fromSet(myLanguagesOfResolved).addElement(SNodeOperations.getConcept(it).getLanguage());
+        }
+      });
       progress.advance(1);
     }
     progress.done();
@@ -149,16 +159,18 @@ public class YetUnknownResolver {
 
   /**
    * Update imports of a source model with references to newly resolved targets (discovered from replacement nodes of most recent {@link jetbrains.mps.java.core.newparser.YetUnknownResolver#replaceYetUnresolved(ProgressMonitor) } run).
-   * Although it's not necessary to update imports after *each* replacement step, it might be vital for replacement of futher IYetUnresolved as model imports affect scope.
+   * Although it's not necessary to update imports after *each* replacement step, it might be vital for replacement of further IYetUnresolved as model imports affect scope.
    */
   public void updateWithImportsOfResolved() {
     assert myRefTargetOfResolved != null;
     SModelReference srcModelRef = SModelOperations.getPointer(myModel);
     SetSequence.fromSet(myRefTargetOfResolved).removeElement(srcModelRef);
-    ModelImports mi = new ModelImports(myModel);
+    final ModelImports mi = new ModelImports(myModel);
     for (SModelReference mr : myRefTargetOfResolved) {
       mi.addModelImport(mr);
     }
+    SetSequence.fromSet(myLanguagesOfResolved).subtract(CollectionSequence.fromCollection(mi.getUsedLanguages())).visitAll((it) -> mi.addUsedLanguage(it));
+    SetSequence.fromSet(myLanguagesOfResolved).clear();
   }
 
   /**

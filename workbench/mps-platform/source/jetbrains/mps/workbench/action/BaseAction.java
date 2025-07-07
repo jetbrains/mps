@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,15 @@
  */
 package jetbrains.mps.workbench.action;
 
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.Presentation;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.MessageType;
+import com.intellij.openapi.util.NlsActions.ActionText;
 import com.intellij.openapi.wm.IdeFrame;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.openapi.wm.ex.StatusBarEx;
@@ -30,19 +32,20 @@ import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.make.MakeServiceComponent;
 import jetbrains.mps.workbench.ActionPlace;
-import org.apache.log4j.Level;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.module.ModelAccess;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import javax.swing.Icon;
-import java.awt.event.KeyEvent;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Supplier;
 
 public abstract class BaseAction extends AnAction {
   private boolean myIsAlwaysVisible = true;
@@ -52,8 +55,10 @@ public abstract class BaseAction extends AnAction {
   private boolean myDisableOnNoProject = true;
   private Set<ActionPlace> myPlaces = null;
 
+  private ActionUpdateThread myUpdateThread = ActionUpdateThread.EDT;
+
   public BaseAction() {
-    this(null, null, null);
+    this((String) null, (String) null, (Icon) null);
   }
 
   public BaseAction(String text) {
@@ -63,6 +68,28 @@ public abstract class BaseAction extends AnAction {
   public BaseAction(@Nullable String text, @Nullable String description, @Nullable Icon icon) {
     super(text, description, icon);
     setEnabledInModalContext(true);
+  }
+
+  public BaseAction(Supplier<@ActionText String> dynamicText) {
+    super(dynamicText);
+    setEnabledInModalContext(true);
+  }
+
+  public BaseAction(@NotNull Supplier<@ActionText String> dynamicText, @NotNull Supplier<@ActionText String> dynamicDescription, @Nullable Icon icon) {
+    super(dynamicText, dynamicDescription, icon);
+    setEnabledInModalContext(true);
+  }
+
+  /**
+   * @param updateInBackground when {@code false}, update of the action runs in EDT thread
+   */
+  public final void updateInBackground(boolean updateInBackground) {
+    myUpdateThread = updateInBackground ? ActionUpdateThread.BGT : ActionUpdateThread.EDT;
+  }
+
+  @Override
+  public @NotNull ActionUpdateThread getActionUpdateThread() {
+    return myUpdateThread;
   }
 
   public final void setIsAlwaysVisible(boolean isAlwaysVisible) {
@@ -119,17 +146,15 @@ public abstract class BaseAction extends AnAction {
   }
 
   @Override
-  public final void update(final AnActionEvent e) {
+  public void update(final AnActionEvent e) {
     super.update(e);
 
     ActionPlace place = e.getData(MPSCommonDataKeys.PLACE);
 
-    if (e.getInputEvent() instanceof KeyEvent) {
-      if (!getPlaces().contains(null)) {
-        if (!getPlaces().contains(place)) {
-          disable(e.getPresentation());
-          return;
-        }
+    if (!getPlaces().contains(null)) {
+      if (!getPlaces().contains(place)) {
+        disable(e.getPresentation());
+        return;
       }
     }
 
@@ -147,22 +172,31 @@ public abstract class BaseAction extends AnAction {
     }
 
     // In fact, here might be no read required. Perhaps, ActionAccess should also responsible for this.
-    getModelAccess(e).runReadAction(() -> {
+    final SRepository repo = getRepository(e);
+    repo.getModelAccess().runReadAction(() -> {
       try {
         Map<String, Object> params = new THashMap<>();
-        if (!collectActionData(e, params)) {
+        // for unknown reason, I can't get MPSCommonDataKeys.MPS_PROJECT from event's DataContext despite MPSProjectRule
+        // being consulted (it fails to get CommonDataKeys.PROJECT, no idea how come). Therefore, need to pass
+        // repository to resolve node/model/module pointers at explicitly
+        final AnActionEvent dcBridgeEvent = e.withDataContext(legacyWrap(repo, e.getDataContext()));
+        if (!collectActionData(dcBridgeEvent, params)) {
           disable(e.getPresentation());
           return;
         }
-        doUpdate(e, params);
+        doUpdate(dcBridgeEvent, params);
       } catch (ProcessCanceledException ex) {
         // though PCE states we shall not catch it, I don't see how to let it go without alerting ModelAccess code that doesn't like exceptions
         // thrown inside a model action
         disable(e.getPresentation());
         return;
-      } catch (RuntimeException ex) {
-        final Logger log = LogManager.getLogger(getClass());
-        if (log.isEnabledFor(Level.ERROR)) {
+      }  catch (RuntimeException ex) {
+        // hack to work around async update mechanism in com.intellij.openapi.actionSystem.impl.ActionUpdater
+        if ("com.intellij.openapi.actionSystem.impl.AwaitSharedData".equals(ex.getClass().getName())) {
+          throw ex;
+        }
+        final Logger log = Logger.getLogger(getClass());
+        if (log.isErrorLevel()) {
           log.error(String.format("User's action doUpdate method failed. Action: %s. Class: %s", getTemplatePresentation().getText(),
                                   BaseAction.this.getClass().getName()), ex);
         }
@@ -181,25 +215,56 @@ public abstract class BaseAction extends AnAction {
     getActionAccess().runWithAccess(event, () -> {
       try {
         Map<String, Object> params = new THashMap<>();
-        // read action here is redundant always except ActionAccess.EmptyAccess
-        getModelAccess(event).runReadAction(() -> collectActionData(event, params));
-        doExecute(event, params);
+        // read action here is redundant always except ActionAccess.EmptyAccess; we're already within appropriate model lock
+        final SRepository repo = getRepository(event);
+        final DataContext dataContext = new CachingDataContext(legacyWrap(repo, event.getDataContext()));
+        final AnActionEvent dcBridgeEvent = event.withDataContext(dataContext);
+        repo.getModelAccess().runReadAction(() -> collectActionData(dcBridgeEvent, params));
+        doExecute(dcBridgeEvent, params);
       } catch (RuntimeException ex) {
-        final Logger log = LogManager.getLogger(getClass());
-        if (log.isEnabledFor(Level.ERROR)) {
-          log.error(String.format("User's action execute method failed. Action: %s. Class: %s", event.getPresentation().getText(), BaseAction.this.getClass().getName()), ex);
+        final Logger log = Logger.getLogger(getClass());
+        if (log.isErrorLevel()) {
+          log.error(String.format("User's action execute method failed. Action: %s. Class: %s", event.getPresentation().getText(),
+                                  BaseAction.this.getClass().getName()), ex);
         }
       }
     });
   }
 
-  protected static ModelAccess getModelAccess(AnActionEvent event) {
+  protected static SRepository getRepository(AnActionEvent event) {
     Project project = getEventProject(event);
     if (project != null && !project.isDisposed()) {
-      return ProjectHelper.getModelAccess(project);
+      return ProjectHelper.getProjectRepository(project);
     } else {
-      return ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getModuleRepository().getModelAccess();
+      //noinspection removal
+      return MPSCoreComponents.getInstance().getModuleRepository();
     }
+
+  }
+
+  /**
+   * @deprecated use {@link #getRepository(AnActionEvent)} if necessary
+   */
+  @Deprecated(forRemoval = true, since = "2021.3")
+  protected static ModelAccess getModelAccess(AnActionEvent event) {
+    return getRepository(event).getModelAccess();
+  }
+
+  /**
+   * Mechanism to transition from old code that needs {@code MPSCommonDataKeys.NODE}, {@code MPSCommonDataKeys.MODEL} and {{@code MPSCommonDataKeys.MODULE}
+   * from MPS {@code DataProviders} answering with {@code ActionData} subclasses.
+   *
+   * Check {@link LegacyDataContextBridge} for detailed explanation.
+   *
+   * Note, this method is exposed just in case clients need immediate workaround while migrating to {@code MPS 2021.3}. Do not expect this API to persist,
+   * once complete {@code MPS} adopts IDEA's async update, there's be no need for the converter code.
+   *
+   * @see AnActionEvent#withDataContext(DataContext)
+   * @return DataContext instance capable to translate old NODE, MODEL and MODULE requests to providers of {@link jetbrains.mps.ide.actions.ActionData}
+   */
+  @Internal
+  public static DataContext legacyWrap(@NotNull SRepository repository, @NotNull DataContext delegate) {
+    return new LegacyDataContextBridge(repository, delegate);
   }
 
   protected void disable(Presentation p) {
@@ -254,7 +319,7 @@ public abstract class BaseAction extends AnAction {
   protected abstract void doExecute(AnActionEvent e, Map<String, Object> params);
 
   protected final boolean isMakeSessionActive() {
-    final Platform mpsPlaf = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getPlatform();
+    final Platform mpsPlaf = MPSCoreComponents.getInstance().getPlatform();
     final MakeServiceComponent makeService = mpsPlaf.findComponent(MakeServiceComponent.class);
     return makeService != null && makeService.isSessionActive();
   }

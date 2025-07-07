@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,21 +15,19 @@
  */
 package jetbrains.mps.smodel.tempmodel;
 
-import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.facets.JavaLanguageLevel;
 import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.Memento;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Collections;
 import java.util.Set;
+import java.util.function.Function;
 
 /**
  * A simple java facet provided with two locations of source_gen and classes_gen
@@ -37,33 +35,29 @@ import java.util.Set;
  * Created by apyshkin on 12/7/17.
  */
 public final class NaiveJavaModuleFacet implements JavaModuleFacet {
-  private final static Logger LOG = LogManager.getLogger(TempModule.class);
-
-  @NotNull
-  private final AbstractModule myOwningModule;
+  private SModule myOwningModule;
   private final IFile mySourceGen;
   private final IFile myClassesGen;
+  private final JavaLanguageLevel myJavaLevel;
 
-  @NotNull
-  @Override
-  public String getFacetType() {
-    return FACET_TYPE;
+  public NaiveJavaModuleFacet(@NotNull SModule owningModule, @NotNull Function<File, IFile> fsMap, @Nullable String sourceGen, @NotNull String classesGen) {
+    this(owningModule, sourceGen == null ? null : fsMap.apply(FileUtil.createTmpDir(sourceGen)), fsMap.apply(FileUtil.createTmpDir(classesGen)));
   }
 
-  public NaiveJavaModuleFacet(@NotNull AbstractModule owningModule, @Nullable String sourceGen, @NotNull String classesGen) {
-    myOwningModule = owningModule;
-    mySourceGen = sourceGen == null ? null : createTempDirectory("TempModule_source_gen");
-    myClassesGen = createTempDirectory("TempModule_classes_gen");
+  public NaiveJavaModuleFacet(@NotNull SModule owningModule, @Nullable IFile sourceGen, @NotNull IFile classesGen) {
+    this(sourceGen, classesGen, JavaLanguageLevel.getDefault(true));
+    attach(owningModule);
   }
 
-  @Override
-  public boolean isCompileInMps() {
-    return true;
+  /*package*/ NaiveJavaModuleFacet(@Nullable IFile sourceGen, @Nullable IFile classesGen, JavaLanguageLevel javaLevel) {
+    mySourceGen = sourceGen;
+    myClassesGen = classesGen;
+    myJavaLevel = javaLevel;
   }
 
   @Override
   public JavaLanguageLevel getLanguageLevel() {
-    return JavaLanguageLevel.getDefault(true);
+    return myJavaLevel;
   }
 
   @Nullable
@@ -72,7 +66,7 @@ public final class NaiveJavaModuleFacet implements JavaModuleFacet {
     return mySourceGen;
   }
 
-  @NotNull
+  @Nullable
   @Override
   public IFile getClassesGen() {
     return myClassesGen;
@@ -109,24 +103,34 @@ public final class NaiveJavaModuleFacet implements JavaModuleFacet {
     throw new UnsupportedOperationException();
   }
 
-  private IFile createTempDirectory(@NotNull String prefix) {
-    try {
-      final File temp;
+  @NotNull
+  @Override
+  public Compile getCompile() {
+    // as long as isCompileInMPS() === true, keep MPS, although
+    // I'm not sure every use of this facet needs compilation with MPS. Some, perhaps, would be ok with External (if classes are provided)
+    return Compile.MPS;
+  }
 
-      temp = File.createTempFile(prefix, "");
+  @NotNull
+  @Override
+  public LoadClasses getLoadClasses() {
+    return LoadClasses.ManagedByMPS;
+  }
 
-      if (!(temp.delete())) {
-        throw new IOException("Could not delete temp file: " + temp.getAbsolutePath());
-      }
+  @Override
+  public LoadExtensions getLoadExtensions() {
+    // unless requested, assume nobody loads extensions from temp modules
+    return LoadExtensions.NotAvailable;
+  }
 
-      if (!(temp.mkdir())) {
-        throw new IOException("Could not create temp directory: " + temp.getAbsolutePath());
-      }
+  @Override
+  public void attach(@NotNull SModule module) {
+    assert myOwningModule == null : "Module already attached";
+    myOwningModule = module;
+  }
 
-      return myOwningModule.getFileSystem().getFile(temp.getAbsolutePath());
-    } catch (IOException e) {
-      LOG.error(e.toString(), e);
-      return null;
-    }
+  @Override
+  public void detach() {
+    myOwningModule = null;
   }
 }

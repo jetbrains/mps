@@ -12,6 +12,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.lang.generator.editor.Styles_StyleSheet.GeneratorKeyWordStyleClass;
@@ -19,17 +20,13 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.SPropertyAccessor;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
-import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.nodeEditor.cellMenu.CompositeSubstituteInfo;
 import jetbrains.mps.lang.editor.cellProviders.PropertyCellContext;
 import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
@@ -38,25 +35,22 @@ import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Propert
 import java.util.List;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
-import java.util.function.Function;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.action.NodeSubstituteActionWrapper;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.nodeEditor.menus.EditorMenuTraceInfoImpl;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
-import java.util.stream.Collectors;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.lang.editor.cellProviders.SReferenceCellProvider;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.editor.runtime.impl.CellUtil;
 import jetbrains.mps.nodeEditor.cellMenu.SReferenceSubstituteInfo;
 import jetbrains.mps.lang.core.behavior.LinkAttribute__BehaviorDescriptor;
+import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.nodeEditor.cellMenu.SPropertySubstituteInfo;
+import jetbrains.mps.nodeEditor.MPSFonts;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandler;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -97,8 +91,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setBig(true);
     setCellContext(editorCell);
     editorCell.addEditorCell(createCollection_1());
-    editorCell.addEditorCell(createConstant_4());
-    editorCell.addEditorCell(createConstant_5());
+    editorCell.addEditorCell(createConstant_6());
+    editorCell.addEditorCell(createConstant_7());
     editorCell.addEditorCell(createRefNode_0());
     return editorCell;
   }
@@ -111,10 +105,16 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setGridLayout(true);
     editorCell.addEditorCell(createCollection_2());
     editorCell.addEditorCell(createCollection_3());
-    editorCell.addEditorCell(createConstant_2());
-    editorCell.addEditorCell(createConstant_3());
+    if (nodeCondition_pyph5i_a2a0()) {
+      editorCell.addEditorCell(createCollection_4());
+    }
+    editorCell.addEditorCell(createConstant_4());
+    editorCell.addEditorCell(createConstant_5());
     editorCell.addEditorCell(createRefNodeList_0());
     return editorCell;
+  }
+  private boolean nodeCondition_pyph5i_a2a0() {
+    return SPropertyOperations.getBoolean(myNode, PROPS.needCallSite$fSr_);
   }
   private EditorCell createCollection_2() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
@@ -130,7 +130,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "template");
     editorCell.setCellId("Constant_pyph5i_a0a0");
     Style style = new StyleImpl();
-    new GeneratorKeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new GeneratorKeyWordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.SELECTABLE, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
@@ -144,17 +144,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
       editorCell.setCellId("property_name");
-      Style style = new StyleImpl();
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.yellow));
-      editorCell.getStyle().putAll(style);
       editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new TemplateDeclaration_name_cellMenu_pyph5i_a0b0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
-      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-        }
-      });
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
+      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
       if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
         EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
         return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);
@@ -169,23 +162,19 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     @Override
     public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-      List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-      Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-        public SubstituteAction apply(SubstituteAction action) {
-          return new NodeSubstituteActionWrapper(action) {
-            @Override
-            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-              result.setDescriptor(new EditorMenuDescriptorBase("property postfix values", new SNodePointer("r:00000000-0000-4000-0000-011c895902e3(jetbrains.mps.lang.generator.editor)", "1183548083857")));
-              return result;
-            }
-          };
-        }
-      };
-      return actions.stream().map(mapper).collect(Collectors.toList());
+      return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
+        return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
+          @Override
+          public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+            EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+            result.setDescriptor(new EditorMenuDescriptorBase("property postfix values", new SNodePointer("r:00000000-0000-4000-0000-011c895902e3(jetbrains.mps.lang.generator.editor)", "1183548083857")));
+            return result;
+          }
+        };
+      }).toList();
     }
 
-    public List<String> getPropertyValues(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<String> getPropertyValues(SNode node, EditorContext editorContext) {
       List<String> values = ListSequence.fromList(new ArrayList<String>());
       if ((SLinkOperations.getTarget(node, LINKS.applicableConcept$JSvx) != null)) {
         ListSequence.fromList(values).addElement("reduce_" + SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.applicableConcept$JSvx), PROPS.name$MnvL));
@@ -208,7 +197,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "input");
     editorCell.setCellId("Constant_pyph5i_a1a0");
     Style style = new StyleImpl();
-    new GeneratorKeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new GeneratorKeyWordStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -217,11 +206,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     final SReferenceLink referenceLink = LINKS.applicableConcept$JSvx;
     SReferenceCellProvider provider = new SReferenceCellProvider(getNode(), referenceLink, getEditorContext()) {
       protected EditorCell createReferenceCell(final SNode targetNode) {
-        EditorCell cell = getUpdateSession().updateReferencedNodeCell(new Computable<EditorCell>() {
-          public EditorCell compute() {
-            return new Inline_Builder0(getEditorContext(), getNode(), targetNode).createCell();
-          }
-        }, targetNode, LINKS.applicableConcept$JSvx);
+        EditorCell cell = getUpdateSession().updateReferencedNodeCell(() -> new Inline_Builder0(getEditorContext(), getNode(), targetNode).createCell(), targetNode, LINKS.applicableConcept$JSvx);
         CellUtil.setupIDeprecatableStyles(targetNode, cell);
         setSemanticNodeToCells(cell, getNode());
         installDeleteActions_nullable_reference(cell);
@@ -237,12 +222,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setSRole(LINKS.applicableConcept$JSvx);
     }
     editorCell.setSubstituteInfo(new SReferenceSubstituteInfo(editorCell, referenceLink));
-    Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.LinkAttribute$v_);
-    Iterable<SNode> currentReferenceAttributes = Sequence.fromIterable(referenceAttributes).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(it), referenceLink);
-      }
-    });
+    Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.LinkAttribute$v_);
+    Iterable<SNode> currentReferenceAttributes = Sequence.fromIterable(referenceAttributes).where((it) -> Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(it), referenceLink));
     if (Sequence.fromIterable(currentReferenceAttributes).isNotEmpty()) {
       EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
       return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentReferenceAttributes).first(), AttributeKind.REFERENCE, editorCell);
@@ -279,16 +260,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.setDefaultText("<no name>");
         editorCell.setCellId("property_name1");
         Style style = new StyleImpl();
-        style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_MAGENTA));
+        style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_MAGENTA));
         editorCell.getStyle().putAll(style);
         editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
         setCellContext(editorCell);
-        Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
-        Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-          }
-        });
+        Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
+        Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
         if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
           EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
           return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);
@@ -299,23 +276,53 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
     }
   }
+  private EditorCell createCollection_4() {
+    EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
+    editorCell.setCellId("Collection_pyph5i_c0a");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.SELECTABLE, false);
+    editorCell.getStyle().putAll(style);
+    editorCell.addEditorCell(createConstant_2());
+    editorCell.addEditorCell(createConstant_3());
+    return editorCell;
+  }
   private EditorCell createConstant_2() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
-    editorCell.setCellId("Constant_pyph5i_c0a");
+    editorCell.setCellId("Constant_pyph5i_a2a0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.SELECTABLE, false);
+    editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
   }
   private EditorCell createConstant_3() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "parameters");
-    editorCell.setCellId("Constant_pyph5i_d0a");
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "requires call site");
+    editorCell.setCellId("Constant_pyph5i_b2a0");
     Style style = new StyleImpl();
-    new GeneratorKeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    style.set(StyleAttributes.EDITABLE, false);
+    style.set(StyleAttributes.SELECTABLE, false);
+    style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
+    editorCell.getStyle().putAll(style);
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_4() {
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
+    editorCell.setCellId("Constant_pyph5i_d0a");
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_5() {
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "parameters");
+    editorCell.setCellId("Constant_pyph5i_e0a");
+    Style style = new StyleImpl();
+    new GeneratorKeyWordStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new parameterListHandler_pyph5i_e0a(myNode, getEditorContext());
+    AbstractCellListHandler handler = new parameterListHandler_pyph5i_f0a(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Vertical(), false);
     editorCell.setCellId("refNodeList_parameter");
     Style style = new StyleImpl();
@@ -324,11 +331,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setSRole(handler.getElementSRole());
     return editorCell;
   }
-  private static class parameterListHandler_pyph5i_e0a extends RefNodeListHandler {
+  private static class parameterListHandler_pyph5i_f0a extends RefNodeListHandler {
     @NotNull
     private SNode myNode;
 
-    public parameterListHandler_pyph5i_e0a(SNode ownerNode, EditorContext context) {
+    public parameterListHandler_pyph5i_f0a(SNode ownerNode, EditorContext context) {
       super(context, false);
       myNode = ownerNode;
     }
@@ -351,7 +358,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(parameterListHandler_pyph5i_e0a.this.getNode(), LINKS.parameter$5PGb));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(parameterListHandler_pyph5i_f0a.this.getNode(), LINKS.parameter$5PGb));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -391,7 +398,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
     }
   }
-  private EditorCell createConstant_4() {
+  private EditorCell createConstant_6() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
     editorCell.setCellId("Constant_pyph5i_b0");
     Style style = new StyleImpl();
@@ -400,11 +407,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createConstant_5() {
+  private EditorCell createConstant_7() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "content node:");
     editorCell.setCellId("Constant_pyph5i_c0");
     Style style = new StyleImpl();
-    new GeneratorKeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new GeneratorKeyWordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
@@ -467,6 +474,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
+    /*package*/ static final SProperty needCallSite$fSr_ = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, 0x18ecef336962ae09L, "needCallSite");
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 

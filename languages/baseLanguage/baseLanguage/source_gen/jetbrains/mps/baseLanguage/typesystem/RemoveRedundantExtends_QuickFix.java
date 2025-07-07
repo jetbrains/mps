@@ -14,7 +14,7 @@ public class RemoveRedundantExtends_QuickFix extends QuickFix_Runtime {
     super(new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2298236629740276246"));
   }
   public String getDescription(SNode node) {
-    return "Remove redundunt 'extends Object'";
+    return "Remove redundant 'extends Object'";
   }
   public void execute(SNode node) {
     SNodeOperations.replaceWithNewChild(node, CONCEPTS.WildCardType$uV);

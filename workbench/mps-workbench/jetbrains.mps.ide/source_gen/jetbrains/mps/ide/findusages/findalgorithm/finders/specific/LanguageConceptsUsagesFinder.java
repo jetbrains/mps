@@ -27,7 +27,7 @@ import org.jetbrains.mps.openapi.util.Consumer;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 
-@GeneratedClass(node = "r:3decc57d-6015-4d6c-ad86-7f2134c013b6(jetbrains.mps.ide.findusages.findalgorithm.finders.specific)/7228605397000826641", model = "r:3decc57d-6015-4d6c-ad86-7f2134c013b6(jetbrains.mps.ide.findusages.findalgorithm.finders.specific)")
+@GeneratedClass(nodeId = "7228605397000826641", model = "r:3decc57d-6015-4d6c-ad86-7f2134c013b6(jetbrains.mps.ide.findusages.findalgorithm.finders.specific)")
 public class LanguageConceptsUsagesFinder implements IFinder {
   public LanguageConceptsUsagesFinder() {
   }
@@ -58,7 +58,7 @@ public class LanguageConceptsUsagesFinder implements IFinder {
       return;
     }
     monitor.start(getDescription(), 4);
-    // I'm not sure linked set is of any value here, just would like to keep the order the way it was with a list. 
+    // I'm not sure linked set is of any value here, just would like to keep the order the way it was with a list.
     Set<SNode> roots = new LinkedHashSet<SNode>();
     for (SNode root : structureModel.getRootNodes()) {
       roots.add(root);
@@ -75,8 +75,8 @@ public class LanguageConceptsUsagesFinder implements IFinder {
           models.add((SModel) mr);
         }
       }
-      // don't use NodeUsages finder for each root, as it's quite ineffective with large model scope (each model from the scope is walked completely to see if any of its node's reference 
-      // points to the supplied node, i.e. each model is completely traversed N (== roots.size) times. Imagine looking up concepts of BL (hundreds of roots, in hundreds of models). 
+      // don't use NodeUsages finder for each root, as it's quite ineffective with large model scope (each model from the scope is walked completely to see if any of its node's reference
+      // points to the supplied node, i.e. each model is completely traversed N (== roots.size) times. Imagine looking up concepts of BL (hundreds of roots, in hundreds of models).
       FindUsagesFacade.getInstance().findUsages(new ModelsScope(models), roots, new Consumer<SReference>() {
         @Override
         public void consume(@NotNull SReference ref) {

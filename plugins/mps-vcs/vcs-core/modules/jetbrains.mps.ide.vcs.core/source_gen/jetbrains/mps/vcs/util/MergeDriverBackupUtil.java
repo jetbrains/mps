@@ -13,11 +13,11 @@ import org.jetbrains.annotations.NotNull;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@GeneratedClass(node = "r:d58d9938-2526-431c-a5fe-6bbbfeb64ac2(jetbrains.mps.vcs.util)/3531370237489972135", model = "r:d58d9938-2526-431c-a5fe-6bbbfeb64ac2(jetbrains.mps.vcs.util)")
+@GeneratedClass(nodeId = "3531370237489972135", model = "r:d58d9938-2526-431c-a5fe-6bbbfeb64ac2(jetbrains.mps.vcs.util)")
 public class MergeDriverBackupUtil {
   private static String backupDirPath;
   public MergeDriverBackupUtil() {
-    // Used in MergeProviderDecorator 
+    // Used in MergeProviderDecorator
   }
   public static File zipModel(byte[][] contents, @Nullable SModelName modelName) throws IOException {
     String shortFileName = "unknown.mps";

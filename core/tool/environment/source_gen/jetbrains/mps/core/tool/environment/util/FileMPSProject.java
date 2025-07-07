@@ -5,91 +5,86 @@ package jetbrains.mps.core.tool.environment.util;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.project.ProjectBase;
 import jetbrains.mps.project.FileBasedProject;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 import java.io.File;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.core.platform.Platform;
-import jetbrains.mps.project.structure.project.ProjectDescriptor;
+import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.project.ProjectModelAccess;
+import jetbrains.mps.project.ProjectRepository;
+import jetbrains.mps.extapi.module.SRepositoryRegistry;
 import jetbrains.mps.util.MacroHelper;
+import jetbrains.mps.util.MacrosFactory;
+import jetbrains.mps.project.structure.project.ProjectDescriptor;
+import jetbrains.mps.project.persistence.ProjectDescriptorPersistence;
+import java.io.IOException;
+import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.VFSManager;
-import jetbrains.mps.util.MacrosFactory;
-import java.io.IOException;
-import org.apache.log4j.Level;
-import jetbrains.mps.project.persistence.ProjectDescriptorPersistence;
-import org.jetbrains.annotations.Nullable;
-import org.jdom.Element;
-import jetbrains.mps.project.ElementProjectDataSource;
 
-@GeneratedClass(node = "r:a139668a-5a0e-46e2-a802-102190e497e5(jetbrains.mps.core.tool.environment.util)/2546981710035458892", model = "r:a139668a-5a0e-46e2-a802-102190e497e5(jetbrains.mps.core.tool.environment.util)")
+@GeneratedClass(nodeId = "2546981710035458892", model = "r:a139668a-5a0e-46e2-a802-102190e497e5(jetbrains.mps.core.tool.environment.util)")
 public class FileMPSProject extends ProjectBase implements FileBasedProject {
-  private static final Logger LOG = LogManager.getLogger(FileMPSProject.class);
   private final File myProjectFile;
 
   public FileMPSProject(@NotNull File file, @NotNull Platform mpsPlatform) {
-    super(new ProjectDescriptor(file.getName()), mpsPlatform);
+    super(file.getName(), mpsPlatform, false);
+    MPSModuleRepository rootRepo = mpsPlatform.findComponent(MPSModuleRepository.class);
+    ProjectModelAccess pma = new ProjectModelAccess(this, rootRepo.getModelAccess());
+    ProjectRepository r = new ProjectRepository(this, rootRepo, mpsPlatform.findComponent(SRepositoryRegistry.class), pma);
+    r.init();
+    initRepository(r);
     myProjectFile = file;
     init();
   }
 
   @NotNull
   private MacroHelper createMacroHelper() {
-    // todo [MM] investigate why it fails when using just path (where those . and .. come from) 
-    // XXX here uses to be LocalIoFileSystem.getInstance, therefore I stick to JAVA_IO_FILE_FS, not just FILE_FS, thoufh see no apparent reason to be that specific. 
-    IFileSystem fs = getPlatform().findComponent(VFSManager.class).getFileSystem(VFSManager.JAVA_IO_FILE_FS);
-    return MacrosFactory.forProjectFile(fs.getFile(getProjectFile()));
-  }
-
-  @Override
-  @NotNull
-  public String getName() {
-    try {
-      return myProjectFile.getCanonicalFile().getName();
-    } catch (IOException e) {
-      if (LOG.isEnabledFor(Level.ERROR)) {
-        LOG.error("Got while accessing the project file", e);
-      }
-      return myProjectFile.getName();
-    }
+    // todo [MM] investigate why it fails when using just path (where those . and .. come from)
+    return MacrosFactory.forProjectFile(projectHome());
   }
 
   @Override
   public void save() {
-    MacroHelper helper = createMacroHelper();
-    new ProjectDescriptorPersistence(getProjectFile(), helper).save(myProjectDescriptor);
-  }
-
-  /**
-   * 
-   * @return the element with xml description of the project
-   */
-  @Nullable
-  private Element getElement() {
-    return new ProjectDescriptorPersistence(getProjectFile(), createMacroHelper()).loadProjectElement();
+    try {
+      MacroHelper helper = createMacroHelper();
+      ProjectDescriptor pd = new ProjectDescriptor(getName());
+      allModulePaths().forEach(pd::addModulePath);
+      new ProjectDescriptorPersistence(projectHome(), helper).saveToFile(pd);
+    } catch (IOException ex) {
+      // FIXME log or report otherwise
+      ex.printStackTrace();
+    }
   }
 
   private void init() {
-    loadProjectDescriptorWithMacros();
     update();
     projectOpened();
   }
 
-  private void loadProjectDescriptorWithMacros() {
-    loadDescriptor(new ElementProjectDataSource(getElement(), getProjectFile(), createMacroHelper()));
-  }
 
+  @Override
+  protected void update() {
+    getModelAccess().runWriteAction(() -> {
+      ProjectDescriptor pd = new ProjectDescriptorPersistence(projectHome(), createMacroHelper()).loadFromFile();
+      loadModules(pd.getModulePaths());
+    });
+  }
 
   @Override
   public void dispose() {
     projectClosed();
-    assert getProjectModules().isEmpty();
     super.dispose();
+    assert getProjectModules().isEmpty();
   }
 
   @Override
   @NotNull
   public final File getProjectFile() {
     return myProjectFile;
+  }
+
+  private IFile projectHome() {
+    // XXX here uses to be LocalIoFileSystem.getInstance, therefore I stick to JAVA_IO_FILE_FS, not just FILE_FS, though see no apparent reason to be that specific.
+    IFileSystem fs = getPlatform().findComponent(VFSManager.class).getFileSystem(VFSManager.JAVA_IO_FILE_FS);
+    return fs.getFile(getProjectFile());
   }
 }

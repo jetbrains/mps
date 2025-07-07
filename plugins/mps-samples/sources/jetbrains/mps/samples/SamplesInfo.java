@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,17 @@
  */
 package jetbrains.mps.samples;
 
+import com.intellij.openapi.application.ApplicationManager;
+import org.jetbrains.annotations.Nullable;
+
 public interface SamplesInfo {
   String SAMPLES_IN_MPS_HOME_ZIP = "samples.zip";
   String SAMPLES_IN_USER_HOME_DIR = "MPSSamples";
 
+  @Nullable
   String getSamplesPath();
+
+  static SamplesInfo getInstance() {
+    return ApplicationManager.getApplication().getService(SamplesInfo.class);
+  }
 }

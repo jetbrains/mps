@@ -14,9 +14,7 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptNotMigratedProblem;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.migration.runtime.base.UsageOfMigrateNodeNotMigratedProblem;
@@ -26,7 +24,6 @@ import jetbrains.mps.baseLanguage.behavior.IOperation__BehaviorDescriptor;
 import jetbrains.mps.lang.structure.behavior.EnumerationMemberDeclaration_Old__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -57,65 +54,17 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
     {
       SearchScope scope_xqhmgi_a0f = CommandUtil.createScope(m);
       final SearchScope scope_xqhmgi_a0f_0 = new EditableFilteringScope(scope_xqhmgi_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_xqhmgi_a0f_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_xqhmgi_a0f_0;
       List<Problem> problems = ListSequence.fromList(new ArrayList<Problem>());
-      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EnumMember_NameOperation_Old$QG, false)).select(new ISelector<SNode, DeprecatedConceptNotMigratedProblem>() {
-        public DeprecatedConceptNotMigratedProblem select(SNode it) {
-          return new DeprecatedConceptNotMigratedProblem(it);
-        }
-      }));
-      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EnumMember_ValueOperation_Old$rN, false)).select(new ISelector<SNode, DeprecatedConceptNotMigratedProblem>() {
-        public DeprecatedConceptNotMigratedProblem select(SNode it) {
-          return new DeprecatedConceptNotMigratedProblem(it);
-        }
-      }));
-      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EnumMemberReference_Old$15, false)).select(new ISelector<SNode, DeprecatedConceptNotMigratedProblem>() {
-        public DeprecatedConceptNotMigratedProblem select(SNode it) {
-          return new DeprecatedConceptNotMigratedProblem(it);
-        }
-      }));
-      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SEnumOperationInvocation$_F, false)).select(new ISelector<SNode, DeprecatedConceptNotMigratedProblem>() {
-        public DeprecatedConceptNotMigratedProblem select(SNode it) {
-          return new DeprecatedConceptNotMigratedProblem(it);
-        }
-      }));
-      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SEnumOperation_Old$hZ, false)).select(new ISelector<SNode, DeprecatedConceptNotMigratedProblem>() {
-        public DeprecatedConceptNotMigratedProblem select(SNode it) {
-          return new DeprecatedConceptNotMigratedProblem(it);
-        }
-      }));
-      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EnumMemberValueRefExpression$QG, false)).select(new ISelector<SNode, DeprecatedConceptNotMigratedProblem>() {
-        public DeprecatedConceptNotMigratedProblem select(SNode it) {
-          return new DeprecatedConceptNotMigratedProblem(it);
-        }
-      }));
-      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EnumMemberReference_Old$15, false)).select(new ISelector<SNode, DeprecatedConceptNotMigratedProblem>() {
-        public DeprecatedConceptNotMigratedProblem select(SNode it) {
-          return new DeprecatedConceptNotMigratedProblem(it);
-        }
-      }));
-      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SPropertyAccess$d9, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SLinkOperations.getTarget(it, LINKS.property$UiOu)), CONCEPTS.EnumPropertyMigrationInfo$O3);
-        }
-      }).select(new ISelector<SNode, UsageOfMigrateNodeNotMigratedProblem>() {
-        public UsageOfMigrateNodeNotMigratedProblem select(SNode it) {
-          return new UsageOfMigrateNodeNotMigratedProblem(it, SLinkOperations.getTarget(it, LINKS.property$UiOu));
-        }
-      }));
-      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SEnumerationMemberType$td, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.enum$VTAM), CONCEPTS.EnumerationDataTypeDeclaration_Old$B8);
-        }
-      }).select(new ISelector<SNode, UsageOfMigrateNodeNotMigratedProblem>() {
-        public UsageOfMigrateNodeNotMigratedProblem select(SNode it) {
-          return new UsageOfMigrateNodeNotMigratedProblem(it, SLinkOperations.getTarget(it, LINKS.enum$VTAM));
-        }
-      }));
+      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EnumMember_NameOperation_Old$QG, false)).select((it) -> new DeprecatedConceptNotMigratedProblem(it)));
+      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EnumMember_ValueOperation_Old$rN, false)).select((it) -> new DeprecatedConceptNotMigratedProblem(it)));
+      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EnumMemberReference_Old$15, false)).select((it) -> new DeprecatedConceptNotMigratedProblem(it)));
+      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SEnumOperationInvocation$_F, false)).select((it) -> new DeprecatedConceptNotMigratedProblem(it)));
+      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SEnumOperation_Old$hZ, false)).select((it) -> new DeprecatedConceptNotMigratedProblem(it)));
+      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EnumMemberValueRefExpression$QG, false)).select((it) -> new DeprecatedConceptNotMigratedProblem(it)));
+      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EnumMemberReference_Old$15, false)).select((it) -> new DeprecatedConceptNotMigratedProblem(it)));
+      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SPropertyAccess$d9, false)).where((it) -> SNodeOperations.isInstanceOf(SNodeOperations.getParent(SLinkOperations.getTarget(it, LINKS.property$UiOu)), CONCEPTS.EnumPropertyMigrationInfo$O3)).select((it) -> new UsageOfMigrateNodeNotMigratedProblem(it, SLinkOperations.getTarget(it, LINKS.property$UiOu))));
+      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SEnumerationMemberType$td, false)).where((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.enum$VTAM), CONCEPTS.EnumerationDataTypeDeclaration_Old$B8)).select((it) -> new UsageOfMigrateNodeNotMigratedProblem(it, SLinkOperations.getTarget(it, LINKS.enum$VTAM))));
 
       return problems;
     }
@@ -123,7 +72,7 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
   public Iterable<MigrationScriptReference> executeAfter() {
     return ListSequence.fromListAndArray(new ArrayList<MigrationScriptReference>(), new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure"), 8));
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 15);
   }
 
@@ -133,13 +82,9 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
     {
       SearchScope scope_xqhmgi_a0l = CommandUtil.createScope(m);
       final SearchScope scope_xqhmgi_a0l_0 = new EditableFilteringScope(scope_xqhmgi_a0l);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_xqhmgi_a0l_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_xqhmgi_a0l_0;
 
-      // node.enumProp 
+      // node.enumProp
       for (SNode propertyAccess : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SPropertyAccess$d9, false))) {
         SNode newProperty = migration.migratePropertyReference(propertyAccess, LINKS.property$UiOu);
         if (newProperty != null) {
@@ -171,7 +116,7 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
         ListSequence.fromList(SLinkOperations.getChildren(res, LINKS.smodelAttribute$KJ43)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(dotExpression, LINKS.smodelAttribute$KJ43)));
       }
 
-      // enum/.../.op 
+      // enum/.../.op
       for (SNode enumOpInvocation : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SEnumOperationInvocation$_F, false))) {
         SNode operation = SLinkOperations.getTarget(enumOpInvocation, LINKS.operation$hgaB);
 
@@ -208,7 +153,7 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
           continue;
         }
 
-        // theoretical extensions of SEnumOperation_Old should be migrated by their implementors 
+        // theoretical extensions of SEnumOperation_Old should be migrated by their implementors
       }
 
       for (SNode enumMemberValueRef : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EnumMemberValueRefExpression$QG, false))) {
@@ -234,7 +179,7 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(dotExpression), CONCEPTS.DotExpression$yW)) {
       SNode grandDotExpression = SNodeOperations.as(SNodeOperations.getParent(dotExpression), CONCEPTS.DotExpression$yW);
 
-      // node.enumProp.is(< enumMember >) 
+      // node.enumProp.is(< enumMember >)
       if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(grandDotExpression, LINKS.operation$gs9E), CONCEPTS.Property_HasValue_Enum$dn)) {
         SNode operation = SNodeOperations.cast(SLinkOperations.getTarget(grandDotExpression, LINKS.operation$gs9E), CONCEPTS.Property_HasValue_Enum$dn);
         if (ListSequence.fromList(SNodeOperations.getNodeDescendants(operation, CONCEPTS.Attribute$g1, false, new SAbstractConcept[]{})).isNotEmpty()) {
@@ -247,12 +192,12 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
         return;
       }
 
-      // node.enumProp.set(...) 
+      // node.enumProp.set(...)
       if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(grandDotExpression, LINKS.operation$gs9E), CONCEPTS.Property_SetOperation$ot)) {
         SNode operation = SNodeOperations.cast(SLinkOperations.getTarget(grandDotExpression, LINKS.operation$gs9E), CONCEPTS.Property_SetOperation$ot);
         SNode value = SLinkOperations.getTarget(operation, LINKS.value$VXqu);
 
-        // set(< ... >) 
+        // set(< ... >)
         if (SNodeOperations.isInstanceOf(value, CONCEPTS.EnumMemberReference_Old$15)) {
           if (ListSequence.fromList(SLinkOperations.getChildren(value, LINKS.smodelAttribute$KJ43)).isNotEmpty()) {
             return;
@@ -267,7 +212,7 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
       }
     }
 
-    // node.enumProp = ... 
+    // node.enumProp = ...
     if (SNodeOperations.hasRole(dotExpression, LINKS.lValue$splI)) {
       SNode assigmentExpression = SNodeOperations.cast(SNodeOperations.getParent(dotExpression), CONCEPTS.AssignmentExpression$SE);
       SNode value = SLinkOperations.getTarget(assigmentExpression, LINKS.rValue$spNK);
@@ -276,7 +221,7 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
       return;
     }
 
-    // by default surround existing dotExpression with member->value conversion code 
+    // by default surround existing dotExpression with member->value conversion code
     migration.downgradeExpressionType(newEnum, dotExpression);
   }
 
@@ -288,42 +233,48 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
     return SNodeOperations.cast(enumm, CONCEPTS.EnumerationDeclaration$hv);
   }
   private static SNode _quotation_createNode_xqhmgi_a0a0a0k0j0a0k(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x116b46a08c4L, "DotExpression")).getResult();
-    quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x50352c802d81bed4L, "EnumerationIdRefExpression")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x116b46a08c4L, "DotExpression"));
+    quotedNode_2 = nb.getResult();
+    SNodeBuilder nb1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x50352c802d81bed4L, "EnumerationIdRefExpression"));
+    quotedNode_3 = nb1.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_3, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x50352c802d81bed4L, 0x50352c802d81bed5L, "enumDeclaration"), (SNode) parameter_1);
     quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"), quotedNode_3);
-    quotedNode_4 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x1b4bba1ba0012d68L, "Enum_MembersOperation")).getResult();
+    SNodeBuilder nb2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x1b4bba1ba0012d68L, "Enum_MembersOperation"));
+    quotedNode_4 = nb2.getResult();
     quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"), quotedNode_4);
     return quotedNode_2;
   }
   private static SNode _quotation_createNode_xqhmgi_a0a1a21a9a0a01(Object parameter_1, Object parameter_2) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
     SNode quotedNode_5 = null;
-    quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x116b46a08c4L, "DotExpression")).getResult();
-    quotedNode_4 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x50352c802d81bed4L, "EnumerationIdRefExpression")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x116b46a08c4L, "DotExpression"));
+    quotedNode_3 = nb.getResult();
+    SNodeBuilder nb1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x50352c802d81bed4L, "EnumerationIdRefExpression"));
+    quotedNode_4 = nb1.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_4, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x50352c802d81bed4L, 0x50352c802d81bed5L, "enumDeclaration"), (SNode) parameter_1);
     quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"), quotedNode_4);
-    quotedNode_5 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x1b4bba1ba0012d60L, "Enum_MemberLiteral")).getResult();
+    SNodeBuilder nb2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x1b4bba1ba0012d60L, "Enum_MemberLiteral"));
+    quotedNode_5 = nb2.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_5, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1b4bba1ba0012d60L, 0x1b4bba1ba0012d64L, "memberDeclaration"), (SNode) parameter_2);
     quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"), quotedNode_5);
     return quotedNode_3;
   }
   private static SNode _quotation_createNode_xqhmgi_c0a4a11a0a01(Object parameter_1, Object parameter_2) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
     SNode quotedNode_5 = null;
-    quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x116b46a08c4L, "DotExpression")).getResult();
-    quotedNode_4 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x50352c802d81bed4L, "EnumerationIdRefExpression")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x116b46a08c4L, "DotExpression"));
+    quotedNode_3 = nb.getResult();
+    SNodeBuilder nb1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x50352c802d81bed4L, "EnumerationIdRefExpression"));
+    quotedNode_4 = nb1.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_4, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x50352c802d81bed4L, 0x50352c802d81bed5L, "enumDeclaration"), (SNode) parameter_1);
     quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"), quotedNode_4);
-    quotedNode_5 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x1b4bba1ba0012d60L, "Enum_MemberLiteral")).getResult();
+    SNodeBuilder nb2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x1b4bba1ba0012d60L, "Enum_MemberLiteral"));
+    quotedNode_5 = nb2.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_5, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1b4bba1ba0012d60L, 0x1b4bba1ba0012d64L, "memberDeclaration"), (SNode) parameter_2);
     quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"), quotedNode_5);
     return quotedNode_3;

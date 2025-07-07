@@ -34,11 +34,7 @@ public class EnumPropertyPersistedById extends MigrationScriptBase {
     {
       SearchScope scope_ul5hh3_a0e = CommandUtil.createScope(m);
       final SearchScope scope_ul5hh3_a0e_0 = new EditableFilteringScope(scope_ul5hh3_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_ul5hh3_a0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_ul5hh3_a0e_0;
       for (SNode node : Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context)))) {
         Iterable<SProperty> properties = SNodeOperations.getConcept(node).getProperties();
         for (SProperty prop : Sequence.fromIterable(properties)) {
@@ -51,7 +47,7 @@ public class EnumPropertyPersistedById extends MigrationScriptBase {
       }
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core"), 1);
   }
 

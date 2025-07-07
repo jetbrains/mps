@@ -16,13 +16,12 @@ import jetbrains.mps.debugger.api.ui.DebugActionsUtil;
 import jetbrains.mps.debug.api.AbstractUiState;
 import jetbrains.mps.debugger.java.api.state.JavaUiState;
 import com.sun.jdi.ThreadReference;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.debugger.java.api.evaluation.EvaluationUtils;
 import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 import jetbrains.mps.debug.api.AbstractDebugSession;
 import jetbrains.mps.debugger.java.api.state.proxy.JavaThread;
 
-@GeneratedClass(node = "r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)/8894158296385402494", model = "r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)")
+@GeneratedClass(nodeId = "8894158296385402494", model = "r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)")
 public class CopyValueAction_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -30,6 +29,7 @@ public class CopyValueAction_Action extends BaseAction {
     super("Copy Value", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -58,11 +58,7 @@ public class CopyValueAction_Action extends BaseAction {
       return;
     }
 
-    String result = javaUiState.invokeEvaluationSynchronously(new _FunctionTypes._return_P0_E0<String>() {
-      public String invoke() {
-        return EvaluationUtils.getInstance().getStringPresentation(((JavaValue) value).getValue().getJDIValue(), thread);
-      }
-    });
+    String result = javaUiState.invokeEvaluationSynchronously(() -> EvaluationUtils.getInstance().getStringPresentation(((JavaValue) value).getValue().getJDIValue(), thread));
     if ((result != null && result.length() > 0)) {
       CopyPasteUtil.copyTextToClipboard(result);
     }

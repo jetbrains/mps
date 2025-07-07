@@ -9,10 +9,8 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -29,20 +27,16 @@ public class check_ArrayLength_NonTypesystemRule extends AbstractNonTypesystemRu
   public check_ArrayLength_NonTypesystemRule() {
   }
   public void applyRule(final SNode fieldRefOperation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    // FIXME: almost duplicate code with MultipleFilesParser 
+    // FIXME: almost duplicate code with MultipleFilesParser
     SReference fieldRef = SNodeOperations.getReference(fieldRefOperation, LINKS.fieldDeclaration$H7Ag);
-    if (!((fieldRef instanceof DynamicReference && "length".equals((((DynamicReference) fieldRef).getResolveInfo()))))) {
+    if (!(SLinkOperations.isDynamic(fieldRef) && "length".equals(SLinkOperations.getResolveInfo(fieldRef)))) {
       return;
     }
 
     SNode operand = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(fieldRefOperation), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR);
     Iterable<SReference> operandRefs = SNodeOperations.getReferences(operand);
-    if (Sequence.fromIterable(operandRefs).any(new IWhereFilter<SReference>() {
-      public boolean accept(SReference it) {
-        return it instanceof DynamicReference;
-      }
-    })) {
-      // let's not mess with dynamic references 
+    if (Sequence.fromIterable(operandRefs).any((it) -> SLinkOperations.isDynamic(it))) {
+      // let's not mess with dynamic references
       return;
     }
 
@@ -51,7 +45,7 @@ public class check_ArrayLength_NonTypesystemRule extends AbstractNonTypesystemRu
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(fieldRefOperation, "should be length operation", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2364881513287750350", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.replaceNode_QuickFix", true);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.replaceNode_QuickFix", "2364881513287754523", true);
           intentionProvider.putArgument("newNode", SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1197781411dL, "jetbrains.mps.baseLanguage.structure.ArrayLengthOperation")));
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }

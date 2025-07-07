@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,16 +17,15 @@ package jetbrains.mps.idea.core.project;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.projectRoots.SdkModificator;
 import com.intellij.openapi.roots.OrderRootType;
 import com.intellij.openapi.roots.RootProvider;
 import com.intellij.openapi.roots.RootProvider.RootSetChangedListener;
 import com.intellij.openapi.roots.libraries.Library;
 import com.intellij.openapi.vfs.VirtualFile;
-import jetbrains.mps.classloading.IdeaPluginModuleFacet;
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.extapi.persistence.DefaultSourceRoot;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
+import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.idea.core.project.stubs.JdkStubSolutionManager;
 import jetbrains.mps.idea.core.project.stubs.StubModuleNameTakenException;
 import jetbrains.mps.module.SDependencyImpl;
@@ -35,8 +34,11 @@ import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.persistence.java.library.JavaClassStubsModelRoot;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.Solution;
+import jetbrains.mps.project.facets.JavaModuleFacet.Compile;
+import jetbrains.mps.project.facets.JavaModuleFacet.LoadClasses;
+import jetbrains.mps.project.facets.JavaModuleFacet.LoadExtensions;
+import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
-import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
@@ -110,13 +112,13 @@ public abstract class StubSolutionIdea extends Solution {
   }
 
   public static Solution newInstance(Sdk sdk, Sdk baseJdk, MPSModuleOwner moduleOwner, SRepositoryExt repository, @NotNull VFSManager vfsManager) {
-    SolutionDescriptor descriptor = createDescriptor(sdk.getName(), ((SdkModificator) sdk).getRoots(OrderRootType.CLASSES), false, vfsManager);
+    SolutionDescriptor descriptor = createDescriptor(sdk.getName(), sdk.getRootProvider().getFiles(OrderRootType.CLASSES), false, vfsManager);
     return register(repository, moduleOwner, new SdkStubSolution(descriptor, vfsManager, sdk, baseJdk));
   }
 
   public static Solution newInstanceForJdk(Sdk sdk, MPSModuleOwner moduleOwner, SRepositoryExt repository, @NotNull VFSManager vfsManager) {
     // FIXME in fact, with ClassStubRootConfiguration in place, don't need to replace JDK solution any more, just need to provide proper roots
-    SolutionDescriptor descriptor = createDescriptor("JDK", ((SdkModificator) sdk).getRoots(OrderRootType.CLASSES), true, vfsManager);
+    SolutionDescriptor descriptor = createDescriptor("JDK", sdk.getRootProvider().getFiles(OrderRootType.CLASSES), true, vfsManager);
 
     // giving the SDK the hard-coded module id
     ModuleId jdkId = ModuleId.regular(UUID.fromString("6354ebe7-c22a-4a0f-ac54-50b52ab9b065"));
@@ -153,7 +155,8 @@ public abstract class StubSolutionIdea extends Solution {
     sd.setNamespace(name);
     sd.setId(ModuleId.foreign(name));
     sd.setCompileInMPS(false);
-    sd.getModuleFacetDescriptors().add(new ModuleFacetDescriptor(IdeaPluginModuleFacet.FACET_TYPE, new MementoImpl()));
+    // ext+contrib is just to replace IdeaPluginModuleFacet. Not quite sure if it is proper configuration for JavaModuleFacet here.
+    sd.getModuleFacetDescriptors().add(JavaModuleFacetImpl.forJavaCodeModule(Compile.External, LoadClasses.ManagedByContributor, LoadExtensions.NotAvailable));
     if (!isJdk) {
       addModelRoots(sd, roots);
     } else {
@@ -164,12 +167,11 @@ public abstract class StubSolutionIdea extends Solution {
 
   @NotNull
   private static QualifiedPath file2QP(VirtualFile f, @NotNull VFSManager vfsManager) {
-    String url = f.getUrl();
-    String fsId = url.substring(0, url.indexOf(":"));
-    if (vfsManager.getFileSystem(fsId)==null){
-      throw new IllegalArgumentException("File system not supported: " + fsId);
+    final QualifiedPath qp = VirtualFileUtils.asQualifiedPath(f);
+    if (vfsManager.getFileSystem(qp.getFsId()) == null){
+      throw new IllegalArgumentException("File system not supported: " + qp.getFsId());
     }
-    return new QualifiedPath(fsId, f.getPath());
+    return qp;
   }
 
   private static ModelRootDescriptor jdkModelRoot(VirtualFile[] roots, VFSManager vfsManager) {

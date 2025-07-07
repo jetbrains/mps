@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@ import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.structure.ProjectStructureModule;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import org.jetbrains.annotations.NotNull;
@@ -30,6 +29,7 @@ import org.jetbrains.mps.openapi.module.SModule;
 
 public abstract class ProjectModuleTreeNode extends MPSTreeNode implements MPSModuleTreeNode, TreeElement {
   private final SModule myModule;
+  private final Project myProject;
 
   public static ProjectModuleTreeNode createFor(Project project, SModule module) {
     return createFor(project, module, false);
@@ -38,7 +38,7 @@ public abstract class ProjectModuleTreeNode extends MPSTreeNode implements MPSMo
   public static ProjectModuleTreeNode createFor(Project project, SModule module, boolean shortNameOnly) {
     if (module instanceof Language) {
       return new ProjectLanguageTreeNode((Language) module, project, shortNameOnly);
-    } else if (module instanceof Solution || module instanceof ProjectStructureModule) {
+    } else if (module instanceof Solution) {
       return new ProjectSolutionTreeNode((AbstractModule) module, project, shortNameOnly);
     } else if (module instanceof DevKit) {
       return new ProjectDevKitTreeNode((DevKit) module, project, false);
@@ -48,8 +48,16 @@ public abstract class ProjectModuleTreeNode extends MPSTreeNode implements MPSMo
     return null;
   }
 
+  @Deprecated
   protected ProjectModuleTreeNode(@NotNull SModule module) {
     super(module.getModuleName());
+    myModule = module;
+    myProject = null;
+  }
+
+  protected ProjectModuleTreeNode(@NotNull SModule module, Project project) {
+    super(module.getModuleName());
+    myProject = project;
     myModule = module;
   }
 

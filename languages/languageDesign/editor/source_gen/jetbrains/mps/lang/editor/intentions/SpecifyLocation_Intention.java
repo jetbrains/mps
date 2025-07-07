@@ -10,9 +10,9 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
@@ -21,27 +21,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class SpecifyLocation_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public SpecifyLocation_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:00000000-0000-4000-0000-011c8959029b(jetbrains.mps.lang.editor.intentions)", "1287594904106317083"));
   }
+
   @Override
   public String getPresentation() {
     return "SpecifyLocation";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (SLinkOperations.getTarget(node, LINKS.location$eYD_) == null);
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -51,19 +45,36 @@ public final class SpecifyLocation_Intention extends AbstractIntentionDescriptor
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Specify Location";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SLinkOperations.setTarget(node, LINKS.location$eYD_, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa6L, "jetbrains.mps.lang.editor.structure.TransformationLocation")));
       SelectionUtil.selectNode(editorContext, SLinkOperations.getTarget(node, LINKS.location$eYD_));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return (SLinkOperations.getTarget(node, LINKS.location$eYD_) == null);
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return SpecifyLocation_Intention.this;
     }
+
   }
 
   private static final class LINKS {

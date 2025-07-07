@@ -17,6 +17,7 @@ package jetbrains.mps.typesystem.inference;
 
 import org.jetbrains.mps.openapi.model.SNode;
 
+@Deprecated(forRemoval = true)
 public interface TypesReadListener {
   void nodeTypeAccessed(SNode term);
 }

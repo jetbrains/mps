@@ -35,7 +35,7 @@ import jetbrains.mps.smodel.SModelOperations;
  * FIXME perhaps, shall either use LanguageUsageFinder for uses in models (i.e. build another scope from caller and pass to LUF), or
  * shall respect scope's models here (not only/in addition to models of scope modules). Note, LUF looks up nodes, while this shall stop at model's level.
  */
-@GeneratedClass(node = "r:50589489-29e2-47e3-84bb-6bbe4094b4ce(jetbrains.mps.ide.ui.finders)/1151761026712845018", model = "r:50589489-29e2-47e3-84bb-6bbe4094b4ce(jetbrains.mps.ide.ui.finders)")
+@GeneratedClass(nodeId = "1151761026712845018", model = "r:50589489-29e2-47e3-84bb-6bbe4094b4ce(jetbrains.mps.ide.ui.finders)")
 public class LanguageImportFinder implements IFinder {
   private static final String MODELS_WRITTEN_IN_LANGUAGE = "models written in language";
   private static final String EXPORTED_BY = "exported by";
@@ -107,8 +107,8 @@ public class LanguageImportFinder implements IFinder {
 
   private void collectUsagesInModels(SLanguage searchedLanguage, SModule owner, @NotNull IFinder.FindCallback callback) {
     for (SModel model : owner.getModels()) {
-      // FIXME rest of the class relies on plain (no unwraped devkits and extended languages) imports, 
-      // perhaps, shall revert to SModel.getUsedLanguages() here as well? 
+      // FIXME rest of the class relies on plain (no unwraped devkits and extended languages) imports,
+      // perhaps, shall revert to SModel.getUsedLanguages() here as well?
       if (SModelOperations.getAllLanguageImports(model).contains(searchedLanguage)) {
         callback.onUsageFound(new SearchResult<SModel>(model, MODELS_WRITTEN_IN_LANGUAGE));
       }

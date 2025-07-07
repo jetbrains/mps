@@ -22,7 +22,7 @@ public final class SometimesRootableConcept_ConstraintsFeedback extends BaseFeed
   private static final FeedbackProvider<CanBeRootContext> MSGPROVIDER_WhenConstraintRuleFails_uykiez_a = new BaseMessageProvider<CanBeRootContext>(new FailingRuleProblemId(SometimesRootableConcept_ConstraintRules.Rule_unnamed_10yvtm_a0.ID_unnamed_10yvtm_a0)) {
     @NotNull
     @Override
-    public MessageProvider.StringMsg yieldMessage(CanBeRootContext context) {
+    public MessageProvider.Msg yieldMessage(CanBeRootContext context) {
       return new MessageProvider.StringMsg("The model name must start with 'A'");
     }
   };

@@ -4,20 +4,21 @@ package jetbrains.mps.lang.editor.attribues;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.lang.test.runtime.EditorTestUtil;
 
 @MPSLaunch
 public class RemovingLeftTransformForAttributedProperty_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(RemovingLeftTransformForAttributedProperty_Test.class, "${mps_home}", "r:09fb198f-3544-4746-9d3e-f773f4bfde46(jetbrains.mps.lang.editor.attribues)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(RemovingLeftTransformForAttributedProperty_Test.class).projectPath(null).modelRef("r:09fb198f-3544-4746-9d3e-f773f4bfde46(jetbrains.mps.lang.editor.attribues)").reopenProject(false).build());
 
   public RemovingLeftTransformForAttributedProperty_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -34,11 +35,9 @@ public class RemovingLeftTransformForAttributedProperty_Test extends BaseTransfo
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("3447504547919025678", "3447504547919025683");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          typeString(" ");
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-        }
+      EditorTestUtil.runWithTwoStepDeletion(() -> {
+        typeString(" ");
+        invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
       }, false);
     }
   }

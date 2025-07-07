@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.Icon;
-import java.awt.Font;
+import java.awt.font.TextAttribute;
 
 class CellNode extends MPSTreeNode {
   @NotNull
@@ -45,7 +45,9 @@ class CellNode extends MPSTreeNode {
   protected void doUpdatePresentation() {
     setIcon(calculateIcon());
     setText(calculateText());
-    setFontStyle(calculateFontStyle());
+    if (!hasSameNodeAsParent()) {
+      addFontAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD);
+    }
   }
 
   private Icon calculateIcon() {
@@ -89,10 +91,6 @@ class CellNode extends MPSTreeNode {
       return ((EditorCell_Label) myCell).getText();
     }
     return null;
-  }
-
-  private int calculateFontStyle() {
-    return hasSameNodeAsParent() ? Font.PLAIN : Font.BOLD;
   }
 
   private boolean hasSameNodeAsParent() {

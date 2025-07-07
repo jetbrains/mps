@@ -7,7 +7,6 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -26,7 +25,7 @@ public class ReplaceClassAntiquotationWithClassifierType_QuickFix extends QuickF
     SNode parent = SNodeOperations.getParent(((SNode) ReplaceClassAntiquotationWithClassifierType_QuickFix.this.getField("antiquotation")[0]));
     parent.removeChild(((SNode) ReplaceClassAntiquotationWithClassifierType_QuickFix.this.getField("antiquotation")[0]));
     SNode classifierType = SNodeOperations.replaceWithNewChild(parent, CONCEPTS.ClassifierType$bL);
-    SNode referenceAntiquotation = AttributeOperations.createAndSetAttrbiute(classifierType, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAntiquotation$Xh, LINKS.classifier$cxMr), CONCEPTS.ReferenceAntiquotation$Xh);
+    SNode referenceAntiquotation = new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAntiquotation$Xh, LINKS.classifier$cxMr).setNew(classifierType);
     SLinkOperations.setTarget(referenceAntiquotation, LINKS.expression$hE$, expression);
   }
 

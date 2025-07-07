@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -130,7 +130,7 @@ public class CellAction_DeleteNode extends AbstractCellAction {
 
 
   private void selectNullCell(EditorComponent editorComponent, SNode parent, SContainmentLink link) {
-    EditorCell nullCell = editorComponent.findNodeCellWithRole(parent, link.getName());
+    EditorCell nullCell = editorComponent.findNodeCellWithRole(parent, link);
     if (nullCell != null) {
       ((jetbrains.mps.nodeEditor.EditorComponent) editorComponent).changeSelectionWRTFocusPolicy(nullCell);
       return;

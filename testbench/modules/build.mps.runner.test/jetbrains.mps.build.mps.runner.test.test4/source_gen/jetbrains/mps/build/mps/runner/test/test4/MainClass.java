@@ -8,21 +8,16 @@ import java.io.File;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.internal.collections.runtime.IListSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.ide.ThreadUtils;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -40,65 +35,37 @@ public class MainClass {
     assert project != null;
 
     System.out.println("Test model access...");
-    final List<SModel> projectModels = new ModelAccessHelper(project.getModelAccess()).runReadAction(new Computable<IListSequence<SModel>>() {
-      public IListSequence<SModel> compute() {
-        return ListSequence.fromListWithValues(new ArrayList<SModel>(), project.getProjectModels());
-      }
-    });
-    assert ListSequence.fromList(projectModels).count() == 2 : "Project models count: " + ListSequence.fromList(projectModels).count();
-    final SModel model = new ModelAccessHelper(project.getModelAccess()).runReadAction(new Computable<SModel>() {
-      public SModel compute() {
-        return ListSequence.fromList(projectModels).findFirst(new IWhereFilter<SModel>() {
-          public boolean accept(SModel it) {
-            return MPS_MODEL.equals(it.getName().getValue());
-          }
-        });
-      }
-    });
+    final List<SModel> projectModels = new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> ListSequence.fromListWithValues(new ArrayList<SModel>(), project.getProjectModels()));
+    assert ListSequence.fromList(projectModels).count() == 1 : "Project models count: " + ListSequence.fromList(projectModels).count();
+    final SModel model = new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> ListSequence.fromList(projectModels).findFirst((it) -> MPS_MODEL.equals(it.getName().getValue())));
     assert model != null;
-    // check model content 
-    final SNode node = new ModelAccessHelper(project.getModelAccess()).runReadAction(new Computable<SNode>() {
-      public SNode compute() {
-        return ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ClassConcept$bK)).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return MODEL_CLASSNAME.equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-          }
-        });
-      }
-    });
+    // check model content
+    final SNode node = new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ClassConcept$bK)).findFirst((it) -> MODEL_CLASSNAME.equals(SPropertyOperations.getString(it, PROPS.name$MnvL))));
     assert node != null;
 
-    // test write access 
+    // test write access
     final Wrappers._T<SNode> result = new Wrappers._T<SNode>(null);
-    ThreadUtils.runInUIThreadAndWait(new Runnable() {
-      public void run() {
-        project.getModelAccess().executeCommand(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
-          public SNode invoke() {
-            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(_quotation_createNode_ea23db_a0a0a0a0a0a0p0e());
-            return result.value = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.member$L_2d), CONCEPTS.FieldDeclaration$ie)).findFirst(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return "n".equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-              }
-            });
-          }
-        }));
-      }
-    });
+    ThreadUtils.runInUIThreadAndWait(() -> project.getModelAccess().executeCommand(() -> {
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(_quotation_createNode_ea23db_a0a0a0a0a0a0p0e());
+      result.value = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.member$L_2d), CONCEPTS.FieldDeclaration$ie)).findFirst((it) -> "n".equals(SPropertyOperations.getString(it, PROPS.name$MnvL)));
+    }));
     assert result.value != null;
 
-    // create resulting file to signal everything is OK 
+    // create resulting file to signal everything is OK
     jetbrains.mps.build.mps.runner.test.test1.MainClass.mpsMain();
   }
   private static SNode _quotation_createNode_ea23db_a0a0a0a0a0a0p0e() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca68L, "FieldDeclaration")).getResult();
-    quotedNode_1.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "n");
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10af9586f0cL, "PrivateVisibility")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca68L, "FieldDeclaration"));
+    quotedNode_1 = nb.getResult();
+    nb.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "n");
+    SNodeBuilder nb1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10af9586f0cL, "PrivateVisibility"));
+    quotedNode_2 = nb1.getResult();
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"), quotedNode_2);
-    quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d22479L, "IntegerType")).getResult();
+    SNodeBuilder nb2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d22479L, "IntegerType"));
+    quotedNode_3 = nb2.getResult();
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), quotedNode_3);
     return quotedNode_1;
   }

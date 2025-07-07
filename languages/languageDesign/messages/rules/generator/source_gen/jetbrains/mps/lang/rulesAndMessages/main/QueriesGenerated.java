@@ -8,10 +8,9 @@ import jetbrains.mps.generator.template.BaseMappingRuleContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import java.util.Map;
@@ -22,7 +21,6 @@ import jetbrains.mps.generator.impl.query.QueryKey;
 import jetbrains.mps.generator.template.MapRootRuleContext;
 import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.impl.query.SourceNodeQuery;
-import jetbrains.mps.generator.impl.query.QueryKeyImpl;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.impl.query.SourceNodesQuery;
 import java.util.Collection;
@@ -39,11 +37,7 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.InlineMessageProvider$bB, false, new SAbstractConcept[]{})).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.messagesExpr$Ys2v) != null);
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.InlineMessageProvider$bB, false, new SAbstractConcept[]{})).any((it) -> (SLinkOperations.getTarget(it, LINKS.messagesExpr$Ys2v) != null));
   }
   public static Object referenceMacro_GetReferent_2_0(final ReferenceMacroContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.concept$ztsG);
@@ -58,11 +52,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.messageProvider$PUh$), LINKS.messagesExpr$Ys2v);
   }
   public static Iterable<SNode> sourceNodesQuery_2_0(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.RuleWithMessage$9Q, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.messageProvider$PUh$), LINKS.messagesExpr$Ys2v) != null);
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.RuleWithMessage$9Q, false, new SAbstractConcept[]{})).where((it) -> (SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.messageProvider$PUh$), LINKS.messagesExpr$Ys2v) != null));
   }
   private final Map<String, MapRootRuleCondition> mrrcMethods = new HashMap<String, MapRootRuleCondition>();
   {
@@ -72,11 +62,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public MapRootRuleCondition getMapRootRuleCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(mrrcMethods.containsKey(id))) {
-      return super.getMapRootRuleCondition(identity);
-    }
-    return mrrcMethods.get(id);
+    MapRootRuleCondition query = identity.forTemplateNode(mrrcMethods);
+    return (query != null ? query : super.getMapRootRuleCondition(identity));
   }
   private static class MRRC implements MapRootRuleCondition {
     private final int methodKey;
@@ -102,11 +89,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public SourceNodeQuery getSourceNodeQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snqMethods.containsKey(id))) {
-      return super.getSourceNodeQuery(identity);
-    }
-    return snqMethods.get(id);
+    SourceNodeQuery query = identity.forFunctionNode(snqMethods);
+    return (query != null ? query : super.getSourceNodeQuery(identity));
   }
   private static class SNQ implements SourceNodeQuery {
     private final int methodKey;
@@ -133,11 +117,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public SourceNodesQuery getSourceNodesQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snsqMethods.containsKey(id))) {
-      return super.getSourceNodesQuery(identity);
-    }
-    return snsqMethods.get(id);
+    SourceNodesQuery query = identity.forFunctionNode(snsqMethods);
+    return (query != null ? query : super.getSourceNodesQuery(identity));
   }
   private static class SNsQ implements SourceNodesQuery {
     private final int methodKey;
@@ -162,11 +143,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public ReferenceTargetQuery getReferenceTargetQuery(@NotNull QueryKey queryKey) {
-    final String id = queryKey.getTemplateNode().getNodeId().toString();
-    if (!(rtqMethods.containsKey(id))) {
-      return super.getReferenceTargetQuery(queryKey);
-    }
-    return rtqMethods.get(id);
+    ReferenceTargetQuery query = queryKey.forTemplateNode(rtqMethods);
+    return (query != null ? query : super.getReferenceTargetQuery(queryKey));
   }
   private static class RTQ extends ReferenceTargetQuery.Base {
     private final int methodKey;

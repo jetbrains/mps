@@ -32,15 +32,42 @@ import java.util.Set;
 
 public abstract class TypeCheckingContext {
 
+  public abstract TypeCheckerHelper getTypeCheckerHelper();
+
   public abstract SNode getRepresentative(SNode node);
 
   public abstract boolean isIncrementalMode();
 
-  public abstract void setIsNonTypesystemComputation();
+  public enum NonTypesystemComputationMode {
+    OFF,
+    ON_THE_FLY,
+    NORMAL
+  }
 
-  public abstract void resetIsNonTypesystemComputation();
+  public abstract boolean setNonTypesystemComputationMode(@NotNull NonTypesystemComputationMode mode);
 
-  public abstract boolean isNonTypesystemComputation();
+  @NotNull
+  public abstract NonTypesystemComputationMode getNonTypesystemComputationMode();
+
+  /**
+   * @deprecated use {@link #setNonTypesystemComputationMode(NonTypesystemComputationMode)}
+   */
+@Deprecated(since = "2020.2", forRemoval = true)
+  public /*final*/ void setIsNonTypesystemComputation() {
+    setNonTypesystemComputationMode(NonTypesystemComputationMode.NORMAL);
+  }
+
+  /**
+   * @deprecated use {@link #setNonTypesystemComputationMode(NonTypesystemComputationMode)}
+   */
+@Deprecated(since = "2020.2", forRemoval = true)
+  public /*final*/ void resetIsNonTypesystemComputation() {
+    setNonTypesystemComputationMode(NonTypesystemComputationMode.OFF);
+  }
+
+  public /*final*/ boolean isNonTypesystemComputation() {
+    return getNonTypesystemComputationMode() != NonTypesystemComputationMode.OFF;
+  }
 
   //errors reporting
   public abstract IErrorReporter reportTypeError(SNode nodeWithError, String errorString, String ruleModel, String ruleId, QuickFixProvider intentionProvider, MessageTarget errorTarget);
@@ -98,6 +125,8 @@ public abstract class TypeCheckingContext {
 
   public abstract void whenConcrete(SNode argument, Runnable r, String nodeModel, String nodeId, boolean isShallow, boolean skipError);
 
+  public abstract void whenConcrete(SNode argument, Runnable r, String nodeModel, String nodeId, boolean isShallow, boolean skipError, String warningMessage);
+
   public abstract void whenConcrete(List<SNode> argument, Runnable r, String nodeModel, String nodeId, boolean isShallow, boolean skipError);
 
   public abstract void whenConcrete(List<NodeInfo> arguments, Runnable r);
@@ -136,6 +165,7 @@ public abstract class TypeCheckingContext {
 
   public abstract void checkRoot(boolean refreshTypes);
 
+  @Deprecated
   public abstract Set<Pair<SNode, List<IErrorReporter>>> checkRootAndGetErrors(boolean refreshTypes);
 
   public abstract Set<Pair<SNode, List<IErrorReporter>>> getNodesWithErrors(boolean typesystemErrors);

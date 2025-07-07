@@ -6,7 +6,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.lightweightdsl.behavior.AutoInitDSLClass__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -18,7 +17,7 @@ public class DSLDescriptorUtil {
     if (SNodeOperations.isInstanceOf(n, CONCEPTS.AutoInitDSLClass$Ms)) {
       return AutoInitDSLClass__BehaviorDescriptor.getDescriptor_idUBgfI9eMAt.invoke(SNodeOperations.cast(n, CONCEPTS.AutoInitDSLClass$Ms));
     }
-    return SLinkOperations.getTarget(AttributeOperations.getAttribute(n, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv)), LINKS.descriptor$aNbO);
+    return SLinkOperations.getTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv).get(n), LINKS.descriptor$aNbO);
   }
 
   private static final class CONCEPTS {

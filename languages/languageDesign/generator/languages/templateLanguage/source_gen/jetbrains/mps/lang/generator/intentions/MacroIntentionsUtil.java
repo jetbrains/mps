@@ -8,7 +8,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import java.util.List;
 import java.util.ArrayList;
@@ -18,7 +17,6 @@ import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.Generator;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -38,7 +36,7 @@ public final class MacroIntentionsUtil {
   private static SNode getConceptFrom(SNode macro) {
     SNode query = QueriesUtil.getQueryFunction_fromSourceSubstituteMacro(macro);
     SNode returnType = TypecheckingFacade.getFromContext().getTypeOf(query);
-    // ====== 
+    // ======
     if (SNodeOperations.isInstanceOf(query, CONCEPTS.SourceSubstituteMacro_SourceNodeQuery$i3)) {
       {
         GeneratedMatchingPattern pattern_iiuth6_a0d0b = new Pattern_iiuth6_a0a0a0d0b(_quotation_createNode_iiuth6_a0a0a0a0d0b());
@@ -68,8 +66,8 @@ public final class MacroIntentionsUtil {
     if (contextNode == null) {
       return null;
     }
-    if (ListSequence.fromList(AttributeOperations.getAttributeList(contextNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU))).isNotEmpty()) {
-      return ListSequence.fromList(AttributeOperations.getAttributeList(contextNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU))).last();
+    if (ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU).list(contextNode)).isNotEmpty()) {
+      return ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU).list(contextNode)).last();
     }
     return findOuterMacro(SNodeOperations.getParent(contextNode));
   }
@@ -92,12 +90,12 @@ public final class MacroIntentionsUtil {
     return result;
   }
   public static String getPresentation(SNode intentionParam) {
-    //  characters '_' and '&' are treated as mnemonics in AnAction that is created for each intention, 
-    //  however it's common to see '_' in link/property/conecept/template names, and removing this char 
-    //  (as mnemonics processing does) results in incorrect name shown to user, which is wrong. 
-    // Here I escape only '_' as it's unlikely to see '&' in metamodel-level names, 
-    // although correct (but impossible now) solution would be to change the way actions for intentions are created 
-    // (i.e. without mnemonics processing). 
+    //  characters '_' and '&' are treated as mnemonics in AnAction that is created for each intention,
+    //  however it's common to see '_' in link/property/conecept/template names, and removing this char
+    //  (as mnemonics processing does) results in incorrect name shown to user, which is wrong.
+    // Here I escape only '_' as it's unlikely to see '&' in metamodel-level names,
+    // although correct (but impossible now) solution would be to change the way actions for intentions are created
+    // (i.e. without mnemonics processing).
     return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(intentionParam).replaceAll("_{1}", "__");
   }
   public static void copyVirtualPackage(SNode to, SNode from) {
@@ -108,17 +106,18 @@ public final class MacroIntentionsUtil {
     return model != null && model.getModule() instanceof Generator;
   }
   private static SNode _quotation_createNode_iiuth6_a0a0a0a0d0b() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"));
+    quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
   private static SNode _quotation_createNode_iiuth6_a0a0a0a0a3a1() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10c260e9444L, "SequenceType")).getResult();
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10c260e9444L, "SequenceType"));
+    quotedNode_1 = nb.getResult();
+    SNodeBuilder nb1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"));
+    quotedNode_2 = nb1.getResult();
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType"), quotedNode_2);
     return quotedNode_1;
   }

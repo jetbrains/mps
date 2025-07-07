@@ -18,16 +18,13 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.ModelAccessor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -77,19 +74,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createReadOnlyModelAccessor_0() {
     EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
       public String getText() {
-        SNode annotation = ListSequence.fromList(SLinkOperations.getChildren(ActionParameter__BehaviorDescriptor.getFieldDeclaration_id112RIkgil0h.invoke(myNode), LINKS.annotation$K49I)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.annotation$12Ek), PROPS.name$MnvL).equals(SPropertyOperations.getString(SNodeOperations.cast(SLinkOperations.getTarget(_quotation_createNode_xpsq7t_a0a0a0a0a0a0a0a0a0a(), LINKS.classifier$cxMr), CONCEPTS.Annotation$he), PROPS.name$MnvL));
-          }
-        }).first();
+        SNode annotation = ListSequence.fromList(SLinkOperations.getChildren(ActionParameter__BehaviorDescriptor.getFieldDeclaration_id112RIkgil0h.invoke(myNode), LINKS.annotation$K49I)).where((it) -> SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.annotation$12Ek), PROPS.name$MnvL).equals(SPropertyOperations.getString(SNodeOperations.cast(SLinkOperations.getTarget(_quotation_createNode_xpsq7t_a0a0a0a0a0a0a0a0a0a(), LINKS.classifier$cxMr), CONCEPTS.Annotation$he), PROPS.name$MnvL))).first();
         if (annotation == null) {
           return "";
         }
-        SNode description = ListSequence.fromList(SLinkOperations.getChildren(annotation, LINKS.value$uK2B)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return it != null && SLinkOperations.getTarget(it, LINKS.key$bSmV) != null && "description".equals(SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.key$bSmV), PROPS.name$MnvL));
-          }
-        }).first();
+        SNode description = ListSequence.fromList(SLinkOperations.getChildren(annotation, LINKS.value$uK2B)).where((it) -> it != null && SLinkOperations.getTarget(it, LINKS.key$bSmV) != null && "description".equals(SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.key$bSmV), PROPS.name$MnvL))).first();
         if (description == null) {
           return "";
         }
@@ -118,19 +107,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createReadOnlyModelAccessor_1() {
     EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
       public String getText() {
-        SNode annotation = ListSequence.fromList(SLinkOperations.getChildren(ActionParameter__BehaviorDescriptor.getFieldDeclaration_id112RIkgil0h.invoke(myNode), LINKS.annotation$K49I)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.annotation$12Ek), PROPS.name$MnvL).equals(SPropertyOperations.getString(SNodeOperations.cast(SLinkOperations.getTarget(_quotation_createNode_xpsq7t_a0a0a0a0a0a0a0a0a2a(), LINKS.classifier$cxMr), CONCEPTS.Annotation$he), PROPS.name$MnvL));
-          }
-        }).first();
+        SNode annotation = ListSequence.fromList(SLinkOperations.getChildren(ActionParameter__BehaviorDescriptor.getFieldDeclaration_id112RIkgil0h.invoke(myNode), LINKS.annotation$K49I)).where((it) -> SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.annotation$12Ek), PROPS.name$MnvL).equals(SPropertyOperations.getString(SNodeOperations.cast(SLinkOperations.getTarget(_quotation_createNode_xpsq7t_a0a0a0a0a0a0a0a0a2a(), LINKS.classifier$cxMr), CONCEPTS.Annotation$he), PROPS.name$MnvL))).first();
         if (annotation == null) {
           return "";
         }
-        SNode longDescription = ListSequence.fromList(SLinkOperations.getChildren(annotation, LINKS.value$uK2B)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return it != null && SLinkOperations.getTarget(it, LINKS.key$bSmV) != null && "longDescription".equals(SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.key$bSmV), PROPS.name$MnvL));
-          }
-        }).last();
+        SNode longDescription = ListSequence.fromList(SLinkOperations.getChildren(annotation, LINKS.value$uK2B)).where((it) -> it != null && SLinkOperations.getTarget(it, LINKS.key$bSmV) != null && "longDescription".equals(SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.key$bSmV), PROPS.name$MnvL))).last();
         if (longDescription == null) {
           return "";
         }
@@ -148,17 +129,17 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private static SNode _quotation_createNode_xpsq7t_a0a0a0a0a0a0a0a0a0a() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
-    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.actions(MPS.Platform/)"), facade.createNodeId("~MPSCommonDataKeys$Description")));
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+    quotedNode_1 = nb.getResult();
+    nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.actions(MPS.Platform/)/~MPSCommonDataKeys$Description");
     return quotedNode_1;
   }
   private static SNode _quotation_createNode_xpsq7t_a0a0a0a0a0a0a0a0a2a() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
-    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.actions(MPS.Platform/)"), facade.createNodeId("~MPSCommonDataKeys$Description")));
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+    quotedNode_1 = nb.getResult();
+    nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.actions(MPS.Platform/)/~MPSCommonDataKeys$Description");
     return quotedNode_1;
   }
 

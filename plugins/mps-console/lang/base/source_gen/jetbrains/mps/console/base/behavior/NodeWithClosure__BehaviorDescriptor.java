@@ -8,14 +8,13 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.console.actions.ClosureHoldingNodeUtil;
+import jetbrains.mps.console.tool.ClosureHoldingNodeUtil;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -23,8 +22,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class NodeWithClosure__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0xf6d4d958ec2f2c6L, "jetbrains.mps.console.base.structure.NodeWithClosure");
 
-  public static final SMethod<Runnable> execute_id7oNS25df64x = new SMethodBuilder<Runnable>(new SJavaCompoundTypeImpl(Runnable.class)).name("execute").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7oNS25df64x").build(SMethodBuilder.createJavaParameter(MPSProject.class, ""));
-  public static final SMethod<Boolean> canExecute_id2QdC0h7dh1h = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canExecute").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2QdC0h7dh1h").build();
+  public static final SMethod<Runnable> execute_id7oNS25df64x = new SMethodBuilder<Runnable>(new SJavaCompoundTypeImpl(Runnable.class)).name("execute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8517397753922085153L).languageId(0xb306d4d17f64c375L, 0xde1ad86d6e504a02L).build2(SMethodBuilder.createJavaParameter(MPSProject.class, ""));
+  public static final SMethod<Boolean> canExecute_id2QdC0h7dh1h = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canExecute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3282455643657932881L).languageId(0xb306d4d17f64c375L, 0xde1ad86d6e504a02L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(execute_id7oNS25df64x, canExecute_id2QdC0h7dh1h);
 

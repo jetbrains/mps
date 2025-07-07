@@ -15,7 +15,7 @@ import com.intellij.openapi.actionSystem.LangDataKeys;
 import jetbrains.mps.debug.api.DebugSessionManagerComponent;
 import com.intellij.execution.ExecutionManager;
 
-@GeneratedClass(node = "r:16e1d5b7-80ca-4570-9d1a-1cf2ce305e08(jetbrains.mps.debugger.api.ui)/2392684134639614907", model = "r:16e1d5b7-80ca-4570-9d1a-1cf2ce305e08(jetbrains.mps.debugger.api.ui)")
+@GeneratedClass(nodeId = "2392684134639614907", model = "r:16e1d5b7-80ca-4570-9d1a-1cf2ce305e08(jetbrains.mps.debugger.api.ui)")
 public class DebugActionsUtil {
   public DebugActionsUtil() {
   }
@@ -41,15 +41,15 @@ public class DebugActionsUtil {
 
     RunContentDescriptor runContentDescriptor = dataContext.getData(LangDataKeys.RUN_CONTENT_DESCRIPTOR);
     if (runContentDescriptor != null) {
-      // tool window 
+      // tool window
       return DebugSessionManagerComponent.getInstance(project).getDebugSession(runContentDescriptor.getProcessHandler());
     }
 
-    // main menu 
+    // main menu
     RunContentDescriptor selectedContent = ExecutionManager.getInstance(project).getContentManager().getSelectedContent();
     if (selectedContent == null) {
-      // when Debug is first started for the first time, the debug tool window is shown but not activated 
-      // here we deal with this situation 
+      // when Debug is first started for the first time, the debug tool window is shown but not activated
+      // here we deal with this situation
       selectedContent = ExecutionManager.getInstance(project).getContentManager().getSelectedContent();
       if (selectedContent == null) {
         return null;

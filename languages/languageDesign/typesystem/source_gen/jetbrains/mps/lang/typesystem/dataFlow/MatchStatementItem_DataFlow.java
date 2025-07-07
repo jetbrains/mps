@@ -15,11 +15,7 @@ public class MatchStatementItem_DataFlow extends DataFlowBuilder {
     _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.condition$Cpdn));
     _context.getBuilder().emitIfJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c895902af(jetbrains.mps.lang.typesystem.dataFlow)/1207321343587");
     _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.ifTrue$zIln));
-    _context.getBuilder().emitMayBeUnreachable(new Runnable() {
-      public void run() {
-        _context.getBuilder().emitJump(_context.getBuilder().after(SNodeOperations.getParent(_context.getNode())), "r:00000000-0000-4000-0000-011c895902af(jetbrains.mps.lang.typesystem.dataFlow)/1207321554299");
-      }
-    });
+    _context.getBuilder().emitMayBeUnreachable(() -> _context.getBuilder().emitJump(_context.getBuilder().after(SNodeOperations.getParent(_context.getNode())), "r:00000000-0000-4000-0000-011c895902af(jetbrains.mps.lang.typesystem.dataFlow)/1207321554299"));
   }
 
   private static final class LINKS {

@@ -10,7 +10,7 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.pattern.util.MatchingUtil;
+import jetbrains.mps.smodel.SNodeMatcher;
 import jetbrains.mps.lang.smodel.typesystem.RulesUtil;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
@@ -31,12 +31,12 @@ public class check_ClassLikeProperty_NonTypesystemRule extends AbstractNonTypesy
       SPropertyOperations.assign(property, PROPS.name$MnvL, SPropertyOperations.getString(SLinkOperations.getTarget(property, LINKS.decl$RIl), PROPS.name$MnvL));
     }
 
-    if (!((MatchingUtil.matchNodes(SLinkOperations.getTarget(property, LINKS.type$a1UY), RulesUtil.datatypeBLType(SLinkOperations.getTarget(SLinkOperations.getTarget(property, LINKS.decl$RIl), LINKS.type$Jbws)))))) {
+    if (!(new SNodeMatcher().match(SLinkOperations.getTarget(property, LINKS.type$a1UY), RulesUtil.datatypeBLType(SLinkOperations.getTarget(SLinkOperations.getTarget(property, LINKS.decl$RIl), LINKS.type$Jbws))))) {
       {
         final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$MnvL);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(property, "Property type is not the same as in descriptor", "c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:e04b7053-8c89-4f87-b296-94779c625d9d(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.typesystem)", "3855110916780273812", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.lightweightdsl.typesystem.fix_SignatureMismatch_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.lightweightdsl.typesystem.fix_SignatureMismatch_QuickFix", "3855110916780273893", false);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }

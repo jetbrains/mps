@@ -86,7 +86,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
         editorCell.setSRole(LINKS.ref$U7VA);
       }
       Style style = new StyleImpl();
-      new ReferenceDecoratedStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      new ReferenceDecoratedStyleClass(this).apply(style, editorCell);
       editorCell.getStyle().putAll(style);
     }
     @Override

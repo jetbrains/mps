@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.build.util.Context;
 import java.util.List;
@@ -28,10 +27,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class BuildSourceArchiveRelativePath__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x233d92f9e348d768L, "jetbrains.mps.build.structure.BuildSourceArchiveRelativePath");
 
-  public static final SMethod<String> getBasePath_id4jjtc7WZMYz = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getBasePath").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4jjtc7WZMYz").build(SMethodBuilder.createJavaParameter(Context.class, ""));
-  public static final SMethod<String> getRelativePath_id4Kip2_918YF = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getRelativePath").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4Kip2_918YF").build();
-  public static final SMethod<String> getAntPath_id7ro1ZztyOh5 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getAntPath").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7ro1ZztyOh5").build(SMethodBuilder.createJavaParameter(Context.class, ""));
-  public static final SMethod<String> getUnpackPath_id7ro1Zzt$ck7 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getUnpackPath").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7ro1Zzt$ck7").build(SMethodBuilder.createJavaParameter(Context.class, ""));
+  public static final SMethod<String> getBasePath_id4jjtc7WZMYz = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getBasePath").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4959435991187140515L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Context.class, ""));
+  public static final SMethod<String> getRelativePath_id4Kip2_918YF = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getRelativePath").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5481553824944787371L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
+  public static final SMethod<String> getAntPath_id7ro1ZztyOh5 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getAntPath").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8563603456895173701L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Context.class, ""));
+  public static final SMethod<String> getUnpackPath_id7ro1Zzt$ck7 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getUnpackPath").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8563603456895534343L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Context.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getBasePath_id4jjtc7WZMYz, getRelativePath_id4Kip2_918YF, getAntPath_id7ro1ZztyOh5, getUnpackPath_id7ro1Zzt$ck7);
 
@@ -50,7 +49,7 @@ public final class BuildSourceArchiveRelativePath__BehaviorDescriptor extends Ba
     return BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.archivePath$ic$p)) + "!/" + BuildCompositePath__BehaviorDescriptor.getPath_id7usrAn05okK.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.compositePart$blMW));
   }
   /*package*/ static String getAntPath_id7ro1ZztyOh5(@NotNull SNode __thisNode__, Context context) {
-    // no idea if context could be null, but doesn't hurt to check 
+    // no idea if context could be null, but doesn't hurt to check
     String unpackPath = (context == null ? null : BuildSourceArchiveRelativePath__BehaviorDescriptor.getUnpackPath_id7ro1Zzt$ck7.invoke(__thisNode__, context));
     if ((unpackPath == null || unpackPath.length() == 0)) {
       return BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(__thisNode__);
@@ -58,15 +57,15 @@ public final class BuildSourceArchiveRelativePath__BehaviorDescriptor extends Ba
     return unpackPath + "/" + BuildCompositePath__BehaviorDescriptor.getPath_id7usrAn05okK.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.compositePart$blMW));
   }
   /*package*/ static String getUnpackPath_id7ro1Zzt$ck7(@NotNull SNode __thisNode__, Context context) {
-    // this method is intended for use solely during generation, when nodes could be modified freely. 
-    // the method preserves state as node's user object, for different templates to share unpacked location 
+    // this method is intended for use solely during generation, when nodes could be modified freely.
+    // the method preserves state as node's user object, for different templates to share unpacked location
     assert context != null;
     final String CACHED_VALUE_KEY = "BSARP.unpackPath";
     Object value = __thisNode__.getUserObject(CACHED_VALUE_KEY);
     if (value instanceof String) {
       return (String) value;
     }
-    // copied from #calculateUnpackPath(), although doesn't match e.g. BL_Zip pattern for temp names, perhaps worth a change 
+    // copied from #calculateUnpackPath(), although doesn't match e.g. BL_Zip pattern for temp names, perhaps worth a change
     SNode nlayout = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.BuildNamedLayout$ZG, true, false);
     String tempPath = context.getTempPath(__thisNode__, BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.archivePath$ic$p)).replace('.', '_'), ((nlayout != null) ? SPropertyOperations.getString(nlayout, PROPS.name$MnvL) : "default"));
     __thisNode__.putUserObject(CACHED_VALUE_KEY, tempPath);

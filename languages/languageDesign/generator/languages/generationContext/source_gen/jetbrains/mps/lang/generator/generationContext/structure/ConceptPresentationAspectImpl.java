@@ -14,7 +14,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_GenerationContextOp_CopyWithTrace;
   private ConceptPresentation props_GenerationContextOp_CreateIndexedName;
   private ConceptPresentation props_GenerationContextOp_CreateUniqueName;
-  private ConceptPresentation props_GenerationContextOp_DirtyNode;
   private ConceptPresentation props_GenerationContextOp_GenParameterRef;
   private ConceptPresentation props_GenerationContextOp_GetCopiedOutputByInput;
   private ConceptPresentation props_GenerationContextOp_GetInputModel;
@@ -41,10 +40,10 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_GenerationContextOp_TransientObjectAccess;
   private ConceptPresentation props_GenerationContextOp_UniqueValidId;
   private ConceptPresentation props_GenerationContextOp_UserObjectAccessBase;
-  private ConceptPresentation props_GenerationContextOp_VarRef;
   private ConceptPresentation props_GenerationContextOp_VarRef2;
   private ConceptPresentation props_GenerationContextType;
   private ConceptPresentation props_TemplateFunctionParameter_generationContext;
+  private ConceptPresentation props_TypeHintAttribute;
 
   @Override
   @Nullable
@@ -88,15 +87,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_GenerationContextOp_CreateUniqueName = cpb.create();
         }
         return props_GenerationContextOp_CreateUniqueName;
-      case LanguageConceptSwitch.GenerationContextOp_DirtyNode:
-        if (props_GenerationContextOp_DirtyNode == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.deprecated(true);
-          cpb.shortDesc("checks if node is not ignored by generator");
-          cpb.rawPresentation("is dirty");
-          props_GenerationContextOp_DirtyNode = cpb.create();
-        }
-        return props_GenerationContextOp_DirtyNode;
       case LanguageConceptSwitch.GenerationContextOp_GenParameterRef:
         if (props_GenerationContextOp_GenParameterRef == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -294,13 +284,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_GenerationContextOp_UserObjectAccessBase = cpb.create();
         }
         return props_GenerationContextOp_UserObjectAccessBase;
-      case LanguageConceptSwitch.GenerationContextOp_VarRef:
-        if (props_GenerationContextOp_VarRef == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByReference(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x25c655ce6e80fdd8L, 0x25c655ce6e80fddaL, "varmacro", "", "");
-          props_GenerationContextOp_VarRef = cpb.create();
-        }
-        return props_GenerationContextOp_VarRef;
       case LanguageConceptSwitch.GenerationContextOp_VarRef2:
         if (props_GenerationContextOp_VarRef2 == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -324,6 +307,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_TemplateFunctionParameter_generationContext = cpb.create();
         }
         return props_TemplateFunctionParameter_generationContext;
+      case LanguageConceptSwitch.TypeHintAttribute:
+        if (props_TypeHintAttribute == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("TypeHintAttribute");
+          props_TypeHintAttribute = cpb.create();
+        }
+        return props_TypeHintAttribute;
     }
     return null;
   }

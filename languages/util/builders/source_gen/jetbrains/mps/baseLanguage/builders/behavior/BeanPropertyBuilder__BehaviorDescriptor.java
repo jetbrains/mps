@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -20,7 +19,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
@@ -30,11 +28,11 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class BeanPropertyBuilder__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x252efd34f8a58ec7L, "jetbrains.mps.baseLanguage.builders.structure.BeanPropertyBuilder");
 
-  public static final SMethod<SNode> getResultType_id67LR$5LQPoF = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getResultType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("67LR$5LQPoF").build();
-  public static final SMethod<SNode> getCreatorExpression_id67LR$5LQRIR = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getCreatorExpression").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("67LR$5LQRIR").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getAttachStatementChild_id4ak9ytIaIgr = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getAttachStatementChild").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4ak9ytIaIgr").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> leaf_id1653mnvAgw2 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("leaf").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgw2").build();
-  public static final SMethod<String> getPropertyName_id2kIZjjSEvS7 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPropertyName").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2kIZjjSEvS7").build(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<SNode> getResultType_id67LR$5LQPoF = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getResultType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7057666463730718251L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2();
+  public static final SMethod<SNode> getCreatorExpression_id67LR$5LQRIR = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getCreatorExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7057666463730727863L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getAttachStatementChild_id4ak9ytIaIgr = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getAttachStatementChild").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4797501453850305563L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> leaf_id1653mnvAgw2 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("leaf").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498370L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2();
+  public static final SMethod<String> getPropertyName_id2kIZjjSEvS7 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPropertyName").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2679357232284040711L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2(SMethodBuilder.createJavaParameter(String.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getResultType_id67LR$5LQPoF, getCreatorExpression_id67LR$5LQRIR, getAttachStatementChild_id4ak9ytIaIgr, leaf_id1653mnvAgw2, getPropertyName_id2kIZjjSEvS7);
 
@@ -122,19 +120,21 @@ public final class BeanPropertyBuilder__BehaviorDescriptor extends BaseBHDescrip
     return CONCEPT;
   }
   private static SNode _quotation_createNode_ec1xrx_a0a2(Object parameter_1, Object parameter_2, Object parameter_3) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_4 = null;
     SNode quotedNode_5 = null;
     SNode quotedNode_6 = null;
     SNode quotedNode_7 = null;
     SNode quotedNode_8 = null;
-    quotedNode_4 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement")).getResult();
-    quotedNode_5 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x116b46a08c4L, "DotExpression")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement"));
+    quotedNode_4 = nb.getResult();
+    SNodeBuilder nb1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x116b46a08c4L, "DotExpression"));
+    quotedNode_5 = nb1.getResult();
     quotedNode_6 = (SNode) parameter_1;
     if (quotedNode_6 != null) {
       quotedNode_5.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"), SNodeOperations.copyIfNecessary(quotedNode_6));
     }
-    quotedNode_7 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x118154a6332L, "InstanceMethodCallOperation")).getResult();
+    SNodeBuilder nb2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x118154a6332L, "InstanceMethodCallOperation"));
+    quotedNode_7 = nb2.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_7, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), (SNode) parameter_3);
     quotedNode_8 = (SNode) parameter_2;
     if (quotedNode_8 != null) {

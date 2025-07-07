@@ -4,8 +4,7 @@ package jetbrains.mps.ide.findusages.findalgorithm.resultproviders.treenodes;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.ide.findusages.model.IResultProvider;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,9 +27,9 @@ import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 /**
  * NOTE: all nodes except UnionNode MUST have <2 children
  */
-@GeneratedClass(node = "r:266e1124-850c-4d14-97a9-eecae558e700(jetbrains.mps.ide.findusages.findalgorithm.resultproviders.treenodes)/8568892084424437236", model = "r:266e1124-850c-4d14-97a9-eecae558e700(jetbrains.mps.ide.findusages.findalgorithm.resultproviders.treenodes)")
+@GeneratedClass(nodeId = "8568892084424437236", model = "r:266e1124-850c-4d14-97a9-eecae558e700(jetbrains.mps.ide.findusages.findalgorithm.resultproviders.treenodes)")
 public abstract class BaseNode implements IResultProvider {
-  private static final Logger LOG = LogManager.getLogger(BaseNode.class);
+  private static final Logger LOG = Logger.getLogger(BaseNode.class);
   private static final String CHILD = "child";
   private static final String CHILD_CLASS = "rpn";
   protected BaseNode myParent;
@@ -88,7 +87,7 @@ public abstract class BaseNode implements IResultProvider {
   @NotNull
   @Override
   public SearchResults getResults(@NotNull SearchQuery query, @Nullable ProgressMonitor monitor) {
-    // assert !ThreadUtils.isEventDispatchThread(); 
+    // assert !ThreadUtils.isEventDispatchThread();
     CollectingCallback callback = new CollectingCallback();
     findResults(query, callback, monitor);
     return callback.getResults();

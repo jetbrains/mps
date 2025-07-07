@@ -50,18 +50,18 @@
       <concept id="3123291046850546418" name="jetbrains.mps.samples.ChemMastery.structure.ExplicitBond" flags="ng" index="3EXQ9q" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
     <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
-      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
         <property id="155656958578482949" name="value" index="3oM_SC" />
       </concept>
-      <concept id="2535923850359206929" name="jetbrains.mps.lang.text.structure.Text" flags="ng" index="1Pa9Pv">
+      <concept id="2535923850359206929" name="jetbrains.mps.lang.text.structure.Text" flags="nn" index="1Pa9Pv">
         <child id="2535923850359210936" name="lines" index="1PaQFQ" />
       </concept>
-      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="nn" index="1PaTwC">
         <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
@@ -69,6 +69,51 @@
   <node concept="35q3_Z" id="6VR64YFCuBw">
     <property role="TrG5h" value="Inorganic reactions" />
     <property role="3AAcwC" value="true" />
+    <node concept="1Pa9Pv" id="6VR64YFCuBx" role="35q3_V">
+      <node concept="1PaTwC" id="6VR64YFCuC0" role="1PaQFQ">
+        <node concept="3oM_SD" id="6VR64YFCuB$" role="1PaTwD">
+          <property role="3oM_SC" value="The" />
+        </node>
+        <node concept="3oM_SD" id="6VR64YFW4mv" role="1PaTwD">
+          <property role="3oM_SC" value="basic" />
+        </node>
+        <node concept="3oM_SD" id="6VR64YFW4mB" role="1PaTwD">
+          <property role="3oM_SC" value="inorganic" />
+        </node>
+        <node concept="3oM_SD" id="2Hoaaz1FO0z" role="1PaTwD">
+          <property role="3oM_SC" value="chemistry" />
+        </node>
+        <node concept="3oM_SD" id="6VR64YFW4mY" role="1PaTwD">
+          <property role="3oM_SC" value="formulas" />
+        </node>
+        <node concept="3oM_SD" id="6VR64YFW4n8" role="1PaTwD">
+          <property role="3oM_SC" value="that" />
+        </node>
+        <node concept="3oM_SD" id="6VR64YFW4nt" role="1PaTwD">
+          <property role="3oM_SC" value="form" />
+        </node>
+        <node concept="3oM_SD" id="6VR64YFW4n$" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="6VR64YFW4nG" role="1PaTwD">
+          <property role="3oM_SC" value="basis" />
+        </node>
+        <node concept="3oM_SD" id="6VR64YFW4nP" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="6VR64YFW4nZ" role="1PaTwD">
+          <property role="3oM_SC" value="chemistry." />
+        </node>
+      </node>
+      <node concept="1PaTwC" id="6VR64YFW4ob" role="1PaQFQ">
+        <node concept="3oM_SD" id="6VR64YFW4oa" role="1PaTwD">
+          <property role="3oM_SC" value="Learn" />
+        </node>
+        <node concept="3oM_SD" id="6VR64YFW4op" role="1PaTwD">
+          <property role="3oM_SC" value="them!" />
+        </node>
+      </node>
+    </node>
     <node concept="35q3MH" id="5QoCnbDfBaj" role="35q3Mi">
       <node concept="1Pa9Pv" id="5QoCnbDfBak" role="35q3MG">
         <node concept="1PaTwC" id="5QoCnbDfBal" role="1PaQFQ">
@@ -366,51 +411,6 @@
             <property role="35kj7f" value="0" />
             <ref role="35kj4N" node="5GAeeyXOA49" resolve="Oxygen" />
           </node>
-        </node>
-      </node>
-    </node>
-    <node concept="1Pa9Pv" id="6VR64YFCuBx" role="35q3_V">
-      <node concept="1PaTwC" id="6VR64YFCuC0" role="1PaQFQ">
-        <node concept="3oM_SD" id="6VR64YFCuB$" role="1PaTwD">
-          <property role="3oM_SC" value="The" />
-        </node>
-        <node concept="3oM_SD" id="6VR64YFW4mv" role="1PaTwD">
-          <property role="3oM_SC" value="basic" />
-        </node>
-        <node concept="3oM_SD" id="6VR64YFW4mB" role="1PaTwD">
-          <property role="3oM_SC" value="inorganic" />
-        </node>
-        <node concept="3oM_SD" id="2Hoaaz1FO0z" role="1PaTwD">
-          <property role="3oM_SC" value="chemistry" />
-        </node>
-        <node concept="3oM_SD" id="6VR64YFW4mY" role="1PaTwD">
-          <property role="3oM_SC" value="formulas" />
-        </node>
-        <node concept="3oM_SD" id="6VR64YFW4n8" role="1PaTwD">
-          <property role="3oM_SC" value="that" />
-        </node>
-        <node concept="3oM_SD" id="6VR64YFW4nt" role="1PaTwD">
-          <property role="3oM_SC" value="form" />
-        </node>
-        <node concept="3oM_SD" id="6VR64YFW4n$" role="1PaTwD">
-          <property role="3oM_SC" value="the" />
-        </node>
-        <node concept="3oM_SD" id="6VR64YFW4nG" role="1PaTwD">
-          <property role="3oM_SC" value="basis" />
-        </node>
-        <node concept="3oM_SD" id="6VR64YFW4nP" role="1PaTwD">
-          <property role="3oM_SC" value="of" />
-        </node>
-        <node concept="3oM_SD" id="6VR64YFW4nZ" role="1PaTwD">
-          <property role="3oM_SC" value="chemistry." />
-        </node>
-      </node>
-      <node concept="1PaTwC" id="6VR64YFW4ob" role="1PaQFQ">
-        <node concept="3oM_SD" id="6VR64YFW4oa" role="1PaTwD">
-          <property role="3oM_SC" value="Learn" />
-        </node>
-        <node concept="3oM_SD" id="6VR64YFW4op" role="1PaTwD">
-          <property role="3oM_SC" value="them!" />
         </node>
       </node>
     </node>

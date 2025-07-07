@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import jetbrains.mps.debugger.java.api.evaluation.proxies.PrimitiveValueProxy;
 import jetbrains.mps.debugger.java.api.state.customViewers.CustomViewersManager;
 
-@GeneratedClass(node = "r:9d33947d-45a8-4aa4-b61a-9c874e4614d7(jetbrains.mps.debugger.java.customViewers.plugin.plugin)/2929731761237869400", model = "r:9d33947d-45a8-4aa4-b61a-9c874e4614d7(jetbrains.mps.debugger.java.customViewers.plugin.plugin)")
+@GeneratedClass(nodeId = "2929731761237869400", model = "r:9d33947d-45a8-4aa4-b61a-9c874e4614d7(jetbrains.mps.debugger.java.customViewers.plugin.plugin)")
 public class Set_WrapperFactory extends ValueWrapperFactory {
   public Set_WrapperFactory() {
   }
@@ -57,7 +57,7 @@ public class Set_WrapperFactory extends ValueWrapperFactory {
       }, Collections.<CustomJavaWatchable>emptyList());
     }
     protected List<CustomJavaWatchable> getSubvaluesImpl(IObjectValueProxy value) throws EvaluationException {
-      // again, same as ListViewer 
+      // again, same as ListViewer
       List<CustomJavaWatchable> watchables = new ArrayList<CustomJavaWatchable>();
 
       PrimitiveValueProxy size = ((PrimitiveValueProxy) value.invokeMethod("size", "()I", getThreadReference()));

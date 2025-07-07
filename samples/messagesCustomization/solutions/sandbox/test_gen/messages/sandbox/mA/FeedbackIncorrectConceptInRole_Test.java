@@ -4,30 +4,25 @@ package messages.sandbox.mA;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
-import jetbrains.mps.project.ProjectBase;
 import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
+import java.util.Arrays;
 
 @MPSLaunch
 public class FeedbackIncorrectConceptInRole_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(FeedbackIncorrectConceptInRole_Test.class, "${mps_home}", "r:eb16dd70-ac3a-40ca-8c61-d7f237615dbf(messages.sandbox.mA@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(FeedbackIncorrectConceptInRole_Test.class).projectPath(null).modelRef("r:eb16dd70-ac3a-40ca-8c61-d7f237615dbf(messages.sandbox.mA@tests)").reopenProject(null).build());
 
   public FeedbackIncorrectConceptInRole_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -57,31 +52,45 @@ public class FeedbackIncorrectConceptInRole_Test extends BaseTransformationTest 
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("116705030628907896", "116705030628940201", "116705030628902107", "116705030628903722");
+    }
 
     public void test_NodeErrorCheck116705030629664053() throws Exception {
-      SNode nodeToCheck = getRealNodeById("116705030628902880");
-      SNode operation = getRealNodeById("116705030629664053");
-      new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "CHILD ROLE IS of CONCEPT messages.customization.structure.TestConcept which is not subconcept of messages.customization.structure.AuxConcept", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("116705030628902880");
+        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "CHILD ROLE IS of CONCEPT messages.customization.structure.TestConcept which is not subconcept of messages.customization.structure.AuxConcept", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
     public void test_ErrorMessagesCheck116705030628903652() throws Exception {
-      SNode nodeToCheck = getRealNodeById("116705030628902106");
-      SNode operation = getRealNodeById("116705030628903652");
-      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getRealNodeById("116705030628902880"), MessageStatus.ERROR, "CHILD ROLE IS of CONCEPT messages.customization.structure.TestConcept which is not subconcept of messages.customization.structure.AuxConcept", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getRealNodeById("116705030628902106"), MessageStatus.ERROR, "The reference  aux2 (obligatoryref) is out of search scope", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getRealNodeById("116705030628902106"), MessageStatus.ERROR, "Incompatible target concept in the reference role \"obligatoryref\": subconcept of \"messages.customization.structure.AuxConcept\" expected, \"messages.customization.structure.TestConcept\" found", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("116705030628902106");
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(true).exclude(Arrays.<CheckExpectedMessageRunnable>asList(new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getNodeById("116705030628902880"), MessageStatus.ERROR, "CHILD ROLE IS of CONCEPT messages.customization.structure.TestConcept which is not subconcept of messages.customization.structure.AuxConcept", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getNodeById("116705030628902106"), MessageStatus.ERROR, "The reference  aux2 (obligatoryref) is out of search scope", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getNodeById("116705030628902106"), MessageStatus.ERROR, "Incompatible target concept in the reference role \"obligatoryref\": subconcept of \"messages.customization.structure.AuxConcept\" expected, \"messages.customization.structure.TestConcept\" found", myProject.getRepository(), myProject.getPlatform()))).run();
+      });
     }
     public void test_NodeErrorCheck116705030629664185() throws Exception {
-      SNode nodeToCheck = getRealNodeById("116705030628902106");
-      SNode operation = getRealNodeById("116705030629664185");
-      new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "The reference  aux2 (obligatoryref) is out of search scope", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("116705030628902106");
+        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "The reference  aux2 (obligatoryref) is out of search scope", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
     public void test_NodeErrorCheck116705030629664187() throws Exception {
-      SNode nodeToCheck = getRealNodeById("116705030628902106");
-      SNode operation = getRealNodeById("116705030629664187");
-      new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "Incompatible target concept in the reference role \"obligatoryref\": subconcept of \"messages.customization.structure.AuxConcept\" expected, \"messages.customization.structure.TestConcept\" found", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("116705030628902106");
+        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "Incompatible target concept in the reference role \"obligatoryref\": subconcept of \"messages.customization.structure.AuxConcept\" expected, \"messages.customization.structure.TestConcept\" found", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
     public void test_ErrorMessagesCheck116705030628903726() throws Exception {
-      SNode nodeToCheck = getRealNodeById("116705030628903723");
-      SNode operation = getRealNodeById("116705030628903726");
-      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("116705030628903723");
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(true).exclude(Arrays.<CheckExpectedMessageRunnable>asList()).run();
+      });
     }
 
   }

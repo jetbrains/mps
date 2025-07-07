@@ -62,27 +62,23 @@ public class MyConnectorCreationAction implements PaletteToggleAction {
           final SRepository repo = myDiagramCell.getContext().getRepository();
           final DiagramCell.ConnectionInfo connectionInfo = myDiagramCell.getConnectionInfo();
           final Wrappers._boolean result = new Wrappers._boolean(false);
-          repo.getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              if (connectionInfo.isValid() && SNodeOperations.isInstanceOf(connectionInfo.getFromNode(), CONCEPTS.BlockInstance$xU) && connectionInfo.getFromId() instanceof SNode && SNodeOperations.isInstanceOf(connectionInfo.getToNode(), CONCEPTS.BlockInstance$xU) && connectionInfo.getToId() instanceof SNode && Objects.equals(SNodeOperations.getContainingLink(((SNode) connectionInfo.getToId())), LINKS.inMetaPorts$BclS)) {
-                result.value = true;
-              }
+          repo.getModelAccess().runReadAction(() -> {
+            if (connectionInfo.isValid() && SNodeOperations.isInstanceOf(connectionInfo.getFromNode(), CONCEPTS.BlockInstance$xU) && connectionInfo.getFromId() instanceof SNode && SNodeOperations.isInstanceOf(connectionInfo.getToNode(), CONCEPTS.BlockInstance$xU) && connectionInfo.getToId() instanceof SNode && Objects.equals(SNodeOperations.getContainingLink(((SNode) connectionInfo.getToId())), LINKS.inMetaPorts$BclS)) {
+              result.value = true;
             }
           });
           if (!(result.value)) {
             return;
           }
-          repo.getModelAccess().executeCommand(new Runnable() {
-            public void run() {
-              SNode connectorInstance = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, "jetbrains.mps.testHybridEditor.structure.ConnectorInstance"));
-              SLinkOperations.setTarget(connectorInstance, LINKS.source$qWKq, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, "jetbrains.mps.testHybridEditor.structure.ConnectorEndInstance")));
-              SLinkOperations.setTarget(connectorInstance, LINKS.target$trP0, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, "jetbrains.mps.testHybridEditor.structure.ConnectorEndInstance")));
-              SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, LINKS.source$qWKq), LINKS.block$8o8N, SNodeOperations.cast(connectionInfo.getFromNode(), CONCEPTS.BlockInstance$xU));
-              SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, LINKS.source$qWKq), LINKS.metaPort$8onO, ((SNode) connectionInfo.getFromId()));
-              SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, LINKS.target$trP0), LINKS.block$8o8N, SNodeOperations.cast(connectionInfo.getToNode(), CONCEPTS.BlockInstance$xU));
-              SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, LINKS.target$trP0), LINKS.metaPort$8onO, ((SNode) connectionInfo.getToId()));
-              ListSequence.fromList(SLinkOperations.getChildren(((SNode) myDiagramCell.getSNode()), LINKS.newConnectors$Gj00)).addElement(connectorInstance);
-            }
+          repo.getModelAccess().executeCommand(() -> {
+            SNode connectorInstance = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, "jetbrains.mps.testHybridEditor.structure.ConnectorInstance"));
+            SLinkOperations.setTarget(connectorInstance, LINKS.source$qWKq, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, "jetbrains.mps.testHybridEditor.structure.ConnectorEndInstance")));
+            SLinkOperations.setTarget(connectorInstance, LINKS.target$trP0, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, "jetbrains.mps.testHybridEditor.structure.ConnectorEndInstance")));
+            SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, LINKS.source$qWKq), LINKS.block$8o8N, SNodeOperations.cast(connectionInfo.getFromNode(), CONCEPTS.BlockInstance$xU));
+            SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, LINKS.source$qWKq), LINKS.metaPort$8onO, ((SNode) connectionInfo.getFromId()));
+            SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, LINKS.target$trP0), LINKS.block$8o8N, SNodeOperations.cast(connectionInfo.getToNode(), CONCEPTS.BlockInstance$xU));
+            SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, LINKS.target$trP0), LINKS.metaPort$8onO, ((SNode) connectionInfo.getToId()));
+            ListSequence.fromList(SLinkOperations.getChildren(((SNode) myDiagramCell.getSNode()), LINKS.newConnectors$Gj00)).addElement(connectorInstance);
           });
           event.consume();
 

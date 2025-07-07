@@ -10,7 +10,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.generator.template.TemplateQueryContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -21,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 @Generated
 public class QueriesGenerated {
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
-    // the same as in property macro over x LocalVariableDeclaration 
+    // the same as in property macro over x LocalVariableDeclaration
     return "var" + ((Integer) _context.getVariable("idx")) + "decl";
   }
   public static Object propertyMacro_GetValue_1_1(final PropertyMacroContext _context) {
@@ -37,11 +36,7 @@ public class QueriesGenerated {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.inputChild$4qxF);
   }
   public static boolean mc_Condition_0(final TemplateQueryContext _context) {
-    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.InputRoot$nY)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.useInTest$1LnL), 0x46ec5377fe3b9e63L);
-      }
-    }).isNotEmpty();
+    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.InputRoot$nY)).where((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.useInTest$1LnL), 0x46ec5377fe3b9e63L)).isNotEmpty();
   }
 
   private static final class LINKS {

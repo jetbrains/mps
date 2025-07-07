@@ -2,7 +2,7 @@
 <model ref="r:b4f50ed2-df75-4f06-8889-d503cb129f2d(jetbrains.mps.lang.editor.menus.sideTransform.tests.tests@tests)">
   <persistence version="9" />
   <languages>
-    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="5" />
+    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="6" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
     <use id="14a4b501-59f6-4c39-b5de-4a5d59477831" name="jetbrains.mps.lang.editor.menus.sideTransform.testLanguage" version="0" />
   </languages>
@@ -36,9 +36,6 @@
       </concept>
       <concept id="1227182079811" name="jetbrains.mps.lang.test.structure.TypeKeyStatement" flags="nn" index="2TK7Tu">
         <property id="1227184461946" name="keys" index="2TTd_B" />
-      </concept>
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
       </concept>
       <concept id="5773579205429866751" name="jetbrains.mps.lang.test.structure.EditorComponentExpression" flags="nn" index="369mXd" />
       <concept id="4239542196496927193" name="jetbrains.mps.lang.test.structure.MPSActionReference" flags="ng" index="1iFQzN">
@@ -75,7 +72,7 @@
         <child id="1068581242865" name="localVariableDeclaration" index="3cpWs9" />
       </concept>
       <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
       </concept>
       <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
@@ -128,14 +125,11 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
   </registry>
-  <node concept="2XOHcx" id="5o7iAW5ntIJ">
-    <property role="2XOHcw" value="${mps_home}" />
-  </node>
   <node concept="LiM7Y" id="5o7iAW5ntIK">
     <property role="TrG5h" value="TestSideTransform_SimpleNode_DefaultRightAction" />
     <node concept="3clFbS" id="5o7iAW5nzp3" role="LjaKd">

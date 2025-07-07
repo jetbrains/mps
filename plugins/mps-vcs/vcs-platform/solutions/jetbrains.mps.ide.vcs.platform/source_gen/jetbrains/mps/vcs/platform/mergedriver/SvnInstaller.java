@@ -17,12 +17,11 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.Objects;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.vcs.core.mergedriver.MergeDriverMain;
 import java.io.IOException;
 
-@GeneratedClass(node = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)/5006749173646651481", model = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)")
+@GeneratedClass(nodeId = "5006749173646651481", model = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)")
 /*package*/ class SvnInstaller extends AbstractInstaller {
   private File myConfigFile;
   private File myConfigDir;
@@ -50,7 +49,7 @@ import java.io.IOException;
     }
 
     if (!(dryRun)) {
-      // copy driver files to the proper place 
+      // copy driver files to the proper place
       MergeDriverPacker.getInstance().pack(myProject);
     }
     if (!(myConfigFile.exists())) {
@@ -73,14 +72,14 @@ import java.io.IOException;
     for (int i = 0; i < ListSequence.fromList(lines).count(); i++) {
       String line = ListSequence.fromList(lines).getElement(i);
       if (line.trim().startsWith("diff3-cmd")) {
-        // Some diff3 is already present 
+        // Some diff3 is already present
 
         Matcher matcher = Pattern.compile("^\\s*diff3-cmd\\s*=\\s*(.+)$").matcher(line);
         if (matcher.matches()) {
           String cmd = matcher.group(1);
 
           if (cmd.contains("mps-merger.")) {
-            // already installed 
+            // already installed
 
             if (dryRun && !(Objects.equals(line, configLine))) {
               return AbstractInstaller.State.OUTDATED;
@@ -88,7 +87,7 @@ import java.io.IOException;
             lineToReplace = i;
             break;
           } else {
-            // another is installed 
+            // another is installed
 
             if (!(dryRun)) {
               if (Messages.showYesNoDialog(myProject, String.format("You already have custom diff3-cmd in your Subversion config (%s).\nIt will be overriden by MPS custom diff3. Continue?", cmd), "diff3-cmd is already present", Messages.getQuestionIcon()) != 0) {
@@ -103,38 +102,22 @@ import java.io.IOException;
     }
 
     if (lineToReplace == -1) {
-      String commented = ListSequence.fromList(lines).findFirst(new IWhereFilter<String>() {
-        public boolean accept(String line) {
-          return line.trim().startsWith("# diff3-cmd");
-        }
-      });
+      String commented = ListSequence.fromList(lines).findFirst((line) -> line.trim().startsWith("# diff3-cmd"));
       if (commented != null) {
         lineToReplace = ListSequence.fromList(lines).indexOf(commented);
       } else {
-        int helpersStart = ListSequence.fromList(lines).indexOf(ListSequence.fromList(lines).findFirst(new IWhereFilter<String>() {
-          public boolean accept(String line) {
-            return line.trim().equals("[helpers]");
-          }
-        }));
+        int helpersStart = ListSequence.fromList(lines).indexOf(ListSequence.fromList(lines).findFirst((line) -> line.trim().equals("[helpers]")));
         if (helpersStart != -1) {
-          // [helpers] section is present, finding next section start 
-          int nextStart = ListSequence.fromList(lines).indexOf(ListSequence.fromList(lines).skip(helpersStart + 1).findFirst(new IWhereFilter<String>() {
-            public boolean accept(String line) {
-              return line.trim().startsWith("[");
-            }
-          }));
+          // [helpers] section is present, finding next section start
+          int nextStart = ListSequence.fromList(lines).indexOf(ListSequence.fromList(lines).skip(helpersStart + 1).findFirst((line) -> line.trim().startsWith("[")));
           if (nextStart == -1) {
-            // [helpers] is the last section 
+            // [helpers] is the last section
             ListSequence.fromList(lines).addElement("");
             lineToReplace = ListSequence.fromList(lines).count() - 1;
           } else {
             Iterable<String> section = ListSequence.fromList(lines).page(helpersStart + 1, nextStart);
-            // Finding last non-comment line 
-            int nonComment = Sequence.fromIterable(section).indexOf(Sequence.fromIterable(section).findLast(new IWhereFilter<String>() {
-              public boolean accept(String line) {
-                return !(line.trim().startsWith("#")) && !(line.trim().isEmpty());
-              }
-            }));
+            // Finding last non-comment line
+            int nonComment = Sequence.fromIterable(section).indexOf(Sequence.fromIterable(section).findLast((line) -> !(line.trim().startsWith("#")) && !(line.trim().isEmpty())));
             if (nonComment == -1) {
               lineToReplace = helpersStart + 1;
             } else {

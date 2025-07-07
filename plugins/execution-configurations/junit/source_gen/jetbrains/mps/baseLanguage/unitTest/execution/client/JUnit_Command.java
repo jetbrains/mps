@@ -8,7 +8,8 @@ import jetbrains.mps.project.Project;
 import java.util.List;
 import jetbrains.mps.baseLanguage.execution.api.JavaRunParameters;
 import com.intellij.execution.ExecutionException;
-import jetbrains.mps.execution.configurations.implementation.plugin.plugin.JUnitTests_Configuration;
+import jetbrains.mps.baseLanguage.execution.api.JavaRunParameters_Configuration;
+import jetbrains.mps.baseLanguage.unitTest.execution.settings.JUnitSettings_Configuration;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.execution.api.Java_Command;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -25,6 +26,7 @@ import jetbrains.mps.debug.api.Debuggers;
 
 public class JUnit_Command {
   private String myDebuggerSettings_String;
+  private UserProvidedPluginsConfiguration myUserPlugins_UserProvidedPluginsConfiguration;
   private String myVirtualMachineParameter_String;
   private String myJrePath_String;
   private File myWorkingDirectory_File = new File(".");
@@ -33,6 +35,12 @@ public class JUnit_Command {
   public JUnit_Command setDebuggerSettings_String(String debuggerSettings) {
     if (debuggerSettings != null) {
       myDebuggerSettings_String = debuggerSettings;
+    }
+    return this;
+  }
+  public JUnit_Command setUserPlugins_UserProvidedPluginsConfiguration(UserProvidedPluginsConfiguration userPlugins) {
+    if (userPlugins != null) {
+      myUserPlugins_UserProvidedPluginsConfiguration = userPlugins;
     }
     return this;
   }
@@ -58,24 +66,24 @@ public class JUnit_Command {
   public ProcessHandler createProcess(Project project, List<ITestNodeWrapper> tests, JavaRunParameters javaRunParameters) throws ExecutionException {
     return new JUnit_Command().setVirtualMachineParameter_String(check_txeh3_a2a0a0a(javaRunParameters)).setJrePath_String((check_txeh3_a0d0a0a0(javaRunParameters) ? javaRunParameters.jrePath() : null)).setWorkingDirectory_File((isEmptyString(check_txeh3_a0a4a0a0a(javaRunParameters)) ? null : new File(javaRunParameters.workingDirectory()))).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(project, tests);
   }
-  public ProcessHandler createProcess(Project project, List<ITestNodeWrapper> tests, JUnitTests_Configuration junitRC) throws ExecutionException {
-    JavaRunParameters javaParams = junitRC.getJavaRunParameters().getJavaParameters();
+  public ProcessHandler createProcess(Project project, List<ITestNodeWrapper> tests, JavaRunParameters_Configuration javaRunParameters, JUnitSettings_Configuration junitParameters) throws ExecutionException {
+    JavaRunParameters javaParams = javaRunParameters.getJavaParameters();
     TestsWithParameters testsWithParams = TestsWithParameters.createFromTest2RunList(tests);
-    TestsWithParametersAndConfiguration settings = new TestsWithParametersAndConfiguration(project.getRepository(), testsWithParams, junitRC);
+    TestsWithParametersAndConfiguration settings = new TestsWithParametersAndConfiguration(project.getRepository(), testsWithParams, javaRunParameters, junitParameters, myUserPlugins_UserProvidedPluginsConfiguration);
 
     String updatedVmParams = JUnit_Command.getUpdatedVMParameters(settings);
-    List<String> calculatedCP = ListSequence.fromList(JUnit_Command.getClasspath(settings)).toListSequence();
+    List<String> calculatedCP = ListSequence.fromList(JUnit_Command.getClasspath(settings)).toList();
     String workingDir = javaParams.workingDirectory();
     return new Java_Command().setVirtualMachineParameter_String(updatedVmParams).setClassPath_ListString(calculatedCP).setJrePath_String((check_txeh3_a0c0h0a1(javaParams) ? javaParams.jrePath() : null)).setWorkingDirectory_File((workingDir == null ? null : new File(workingDir))).setProgramParameter_String(JUnit_Command.getProgramParameters(settings)).setProject_Project(project).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(testsWithParams.getParameters().getExecutorClass().getName());
   }
   public ProcessHandler createProcess(Project project, List<ITestNodeWrapper> tests) throws ExecutionException {
     TestsWithParameters testsWithParams = TestsWithParameters.createFromTest2RunList(tests);
-    // It's fine to demand an MPS project when we launch MPS tests from ITestNodeWrapper 
+    // It's fine to demand an MPS project when we launch MPS tests from ITestNodeWrapper
     final SRepository repo = project.getRepository();
-    TestsWithParametersAndConfiguration settings = new TestsWithParametersAndConfiguration(repo, testsWithParams, null);
+    TestsWithParametersAndConfiguration settings = new TestsWithParametersAndConfiguration(repo, testsWithParams);
 
     String vmArgs = IterableUtils.join(ListSequence.fromList(testsWithParams.getParameters().getJvmArgs()), " ") + (((myVirtualMachineParameter_String != null && myVirtualMachineParameter_String.length() > 0) ? " " + myVirtualMachineParameter_String : ""));
-    return new Java_Command().setVirtualMachineParameter_String(vmArgs).setClassPath_ListString(ListSequence.fromList(JUnit_Command.getClasspath(settings)).toListSequence()).setJrePath_String(myJrePath_String).setWorkingDirectory_File(myWorkingDirectory_File).setProgramParameter_String(JUnit_Command.getProgramParameters(settings)).setProject_Project(project).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(testsWithParams.getParameters().getExecutorClass().getName());
+    return new Java_Command().setVirtualMachineParameter_String(vmArgs).setClassPath_ListString(ListSequence.fromList(JUnit_Command.getClasspath(settings)).toList()).setJrePath_String(myJrePath_String).setWorkingDirectory_File(myWorkingDirectory_File).setProgramParameter_String(JUnit_Command.getProgramParameters(settings)).setProject_Project(project).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(testsWithParams.getParameters().getExecutorClass().getName());
   }
 
   public static IDebugger getDebugger() {
@@ -89,9 +97,12 @@ public class JUnit_Command {
     return new ProgramParametersCalculator(settings).calculate();
   }
   private static String getUpdatedVMParameters(TestsWithParametersAndConfiguration settings) {
-    String vmParam = settings.myConfiguration.getJavaRunParameters().getJavaParameters().vmOptions();
-    vmParam = IterableUtils.join(ListSequence.fromList(settings.myTests2Run.getParameters().getJvmArgs()), " ") + (((vmParam != null && vmParam.length() > 0) ? " " + vmParam : ""));
-    String settingsPath = settings.myConfiguration.getJUnitSettings().getSettingsLocation();
+    JavaRunParameters_Configuration javaRunParameters = settings.myJavaRunParameters;
+    JUnitSettings_Configuration junitParameters = settings.myJUnitParameters;
+    TestsWithParameters tests2run = settings.myTests2Run;
+    String vmParam = javaRunParameters.getJavaParameters().vmOptions();
+    vmParam = IterableUtils.join(ListSequence.fromList(tests2run.getParameters().getJvmArgs()), " ") + (((vmParam != null && vmParam.length() > 0) ? " " + vmParam : "")) + JUnit_Command.jnaBootLib();
+    String settingsPath = junitParameters.getSettingsLocation();
     if ((settingsPath != null && settingsPath.length() > 0)) {
       String configPath = new File(settingsPath, "config").getAbsolutePath();
       String systemPath = new File(settingsPath, "system").getAbsolutePath();
@@ -100,6 +111,26 @@ public class JUnit_Command {
     } else {
       return vmParam;
     }
+  }
+  private static String jnaBootLib() {
+    String argString = "";
+    if (!(jetbrains.mps.util.PathManager.isFromSources())) {
+      // we're running from app bundle/installed app
+      argString = String.format(" -Djna.boot.library.path=\"%s/jna\"", jetbrains.mps.util.PathManager.getLibPath());
+
+    } else {
+      File lib = new File(PathManager.getLibPath(), "jna");
+      if (lib.exists()) {
+        StringBuilder sb = new StringBuilder(" -Djna.boot.library.path=");
+        String ps = "";
+        for (File subdir : lib.listFiles((File f) -> f.isDirectory())) {
+          sb.append(ps).append(String.format("\"%s%s%s%s%s\"", jetbrains.mps.util.PathManager.getLibPath(), File.separator, "jna", File.separator, subdir.getName()));
+          ps = File.pathSeparator;
+        }
+        argString = sb.toString();
+      }
+    }
+    return argString;
   }
   private static String createPropString(String propName, String propValue) {
     String val = NameUtil.escapeString(propValue);
@@ -145,6 +176,6 @@ public class JUnit_Command {
     return false;
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
 }

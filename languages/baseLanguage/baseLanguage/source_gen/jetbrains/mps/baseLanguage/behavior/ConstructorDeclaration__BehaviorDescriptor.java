@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.smodel.runtime.IconResource;
 import java.util.List;
@@ -23,7 +22,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.lang.core.behavior.ISmartReferent__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -35,21 +34,24 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class ConstructorDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
 
-  public static final SMethod<Boolean> isDeprecated_idhOwoPtR = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDeprecated").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hOwoPtR").build();
-  public static final SMethod<Boolean> canBeAnnotated_idhWp4PwP = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeAnnotated").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hWp4PwP").build();
-  public static final SMethod<IconResource> getSideIcon_id6TtJ6IUjtJX = new SMethodBuilder<IconResource>(new SJavaCompoundTypeImpl(IconResource.class)).name("getSideIcon").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6TtJ6IUjtJX").build();
-  public static final SMethod<Boolean> isReturnsVoid_idhX_$1pM = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVoidReturn").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hX_$1pM").build();
-  public static final SMethod<List<SNode>> getChildrenToDisplayIntention_id3vsDNFqJVhw = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getChildrenToDisplayIntention").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3vsDNFqJVhw").build();
-  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIMiw").build();
-  public static final SMethod<String> getPresentationInContext_idQAyHtBupSt = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentationInContext").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("QAyHtBupSt").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<String> jniSignature_id7F81Cd2CcPY = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("jniSignature").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7F81Cd2CcPY").build();
-  public static final SMethod<Boolean> containsImplicitSuperConstructorCall_id6d19RW5IPof = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("containsImplicitSuperConstructorCall").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6d19RW5IPof").build();
-  public static final SMethod<SNode> getThisConstructorInvocation_id5e6QuLS30e$ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getThisConstructorInvocation").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5e6QuLS30e$").build();
-  public static final SMethod<SNode> getSuperDefaultConstructor_id6d19RW5J1tP = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSuperDefaultConstructor").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6d19RW5J1tP").build();
-  public static final SMethod<Boolean> hasImplicitSuperDefaultConstructor_id5lFB3KB0eQS = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasImplicitSuperDefaultConstructor").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5lFB3KB0eQS").build();
-  public static final SMethod<Void> populateMember_id6r77ob2UW9O = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateMember").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6r77ob2UW9O").build(SMethodBuilder.createJavaParameter(MembersPopulatingContext.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> isDeprecated_idhOwoPtR = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDeprecated").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1224609060727L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  public static final SMethod<Boolean> canBeAnnotated_idhWp4PwP = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeAnnotated").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1233076312117L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<IconResource> getSideIcon_id6TtJ6IUjtJX = new SMethodBuilder<IconResource>(new SJavaCompoundTypeImpl(IconResource.class)).name("getSideIcon").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7952719687879351293L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  public static final SMethod<Boolean> isReturnsVoid_idhX_$1pM = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVoidReturn").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1234359555698L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<List<SNode>> getChildrenToDisplayIntention_id3vsDNFqJVhw = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getChildrenToDisplayIntention").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4025276038182319200L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  public static final SMethod<String> getPresentationInContext_idQAyHtBupSt = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentationInContext").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(983626226385657373L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  /*package*/ static final SMethod<String> getPresentationInContext_id2Yg2DIzbsBp = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentationInContext").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(3427250980002843097L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<String> jniSignature_id7F81Cd2CcPY = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("jniSignature").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8847328628797656446L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> containsImplicitSuperConstructorCall_id6d19RW5IPof = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("containsImplicitSuperConstructorCall").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7152041109751551503L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> getThisConstructorInvocation_id5e6QuLS30e$ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getThisConstructorInvocation").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6018737561676809124L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> getSuperDefaultConstructor_id6d19RW5J1tP = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSuperDefaultConstructor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7152041109751601013L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> hasImplicitSuperDefaultConstructor_id5lFB3KB0eQS = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasImplicitSuperDefaultConstructor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6155185097898257848L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Void> populateMember_id6r77ob2UW9O = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateMember").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7405920559687254644L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(MembersPopulatingContext.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<String> getPresentation_id69Qfsw3IoJg = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7094926192234040272L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<String> getMatchingText_id69Qfsw3InJX = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMatchingText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7094926192234036221L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isDeprecated_idhOwoPtR, canBeAnnotated_idhWp4PwP, getSideIcon_id6TtJ6IUjtJX, isReturnsVoid_idhX_$1pM, getChildrenToDisplayIntention_id3vsDNFqJVhw, getPresentation_idhEwIMiw, getPresentationInContext_idQAyHtBupSt, jniSignature_id7F81Cd2CcPY, containsImplicitSuperConstructorCall_id6d19RW5IPof, getThisConstructorInvocation_id5e6QuLS30e$, getSuperDefaultConstructor_id6d19RW5J1tP, hasImplicitSuperDefaultConstructor_id5lFB3KB0eQS, populateMember_id6r77ob2UW9O);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isDeprecated_idhOwoPtR, canBeAnnotated_idhWp4PwP, getSideIcon_id6TtJ6IUjtJX, isReturnsVoid_idhX_$1pM, getChildrenToDisplayIntention_id3vsDNFqJVhw, getPresentation_idhEwIMiw, getPresentationInContext_idQAyHtBupSt, getPresentationInContext_id2Yg2DIzbsBp, jniSignature_id7F81Cd2CcPY, containsImplicitSuperConstructorCall_id6d19RW5IPof, getThisConstructorInvocation_id5e6QuLS30e$, getSuperDefaultConstructor_id6d19RW5J1tP, hasImplicitSuperDefaultConstructor_id5lFB3KB0eQS, populateMember_id6r77ob2UW9O, getPresentation_id69Qfsw3IoJg, getMatchingText_id69Qfsw3InJX);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -75,8 +77,13 @@ public final class ConstructorDeclaration__BehaviorDescriptor extends BaseBHDesc
     return ((String) ConstructorDeclaration__BehaviorDescriptor.getPresentationInContext_idQAyHtBupSt.invoke(__thisNode__, null));
   }
   /*package*/ static String getPresentationInContext_idQAyHtBupSt(@NotNull SNode __thisNode__, SNode context) {
+    return ConstructorDeclaration__BehaviorDescriptor.getPresentationInContext_id2Yg2DIzbsBp.invokeSpecial(__thisNode__, context, null);
+  }
+  /*package*/ static String getPresentationInContext_id2Yg2DIzbsBp(@NotNull SNode __thisNode__, SNode context, String customName) {
     StringBuilder result = new StringBuilder();
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.ClassConcept$bK)) {
+    if (customName != null) {
+      result.append(customName);
+    } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.ClassConcept$bK)) {
       result.append(Classifier__BehaviorDescriptor.getNestedNameInContext_id7q4lzBFjvF8.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.ClassConcept$bK), context));
     } else {
       result.append(".ctor");
@@ -108,6 +115,9 @@ public final class ConstructorDeclaration__BehaviorDescriptor extends BaseBHDesc
     return sb.toString();
   }
   /*package*/ static boolean containsImplicitSuperConstructorCall_id6d19RW5IPof(@NotNull SNode __thisNode__) {
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.body$5xQk) == null) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.body$5xQk), CONCEPTS.StubStatementList$v6)) {
+      return false;
+    }
     SNode firstStatement = StatementList__BehaviorDescriptor.getFirstStatement_id4GU1DgEHJ2u.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.body$5xQk));
     return !(SNodeOperations.isInstanceOf(firstStatement, CONCEPTS.ConstructorInvocationStatement$yY));
   }
@@ -130,11 +140,7 @@ public final class ConstructorDeclaration__BehaviorDescriptor extends BaseBHDesc
     }
     SNode superclass = SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$bK);
     if (!(SNodeOperations.is(superclass, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Enum")))) {
-      Iterable<SNode> constructors = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(superclass)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$Yyua), CONCEPTS.PrivateVisibility$l0));
-        }
-      });
+      Iterable<SNode> constructors = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(superclass)).where((it) -> !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$Yyua), CONCEPTS.PrivateVisibility$l0)));
       if (Sequence.fromIterable(constructors).isEmpty()) {
         return null;
       }
@@ -164,6 +170,25 @@ public final class ConstructorDeclaration__BehaviorDescriptor extends BaseBHDesc
     if (SNodeOperations.getParent(__thisNode__) == IClassifierType__BehaviorDescriptor.getClassifier_id6r77ob2URY9.invoke(classifierType)) {
       context.exposeMember(__thisNode__, null);
     }
+  }
+  /*package*/ static String getPresentation_id69Qfsw3IoJg(@NotNull SNode __thisNode__, SNode reference) {
+    {
+      final SNode ref = reference;
+      if (SNodeOperations.isInstanceOf(ref, CONCEPTS.ICustomConstructorReference$1A)) {
+        return ConstructorDeclaration__BehaviorDescriptor.getPresentationInContext_id2Yg2DIzbsBp.invokeSpecial(__thisNode__, reference, ICustomConstructorReference__BehaviorDescriptor.getNameForConstructor_id2Yg2DIzb3El.invoke(ref, __thisNode__));
+      }
+    }
+    return ConstructorDeclaration__BehaviorDescriptor.getPresentationInContext_id2Yg2DIzbsBp.invokeSpecial(__thisNode__, reference, null);
+  }
+  /*package*/ static String getMatchingText_id69Qfsw3InJX(@NotNull SNode __thisNode__, SNode reference) {
+    {
+      final SNode ref = reference;
+      if (SNodeOperations.isInstanceOf(ref, CONCEPTS.ICustomConstructorReference$1A)) {
+        return ConstructorDeclaration__BehaviorDescriptor.getPresentationInContext_id2Yg2DIzbsBp.invokeSpecial(__thisNode__, reference, ICustomConstructorReference__BehaviorDescriptor.getNameForConstructor_id2Yg2DIzb3El.invoke(ref, __thisNode__));
+      }
+    }
+
+    return ((String) ISmartReferent__BehaviorDescriptor.getMatchingText_id69Qfsw3InJX.invoke0(__thisNode__, CONCEPTS.ISmartReferent$57, reference));
   }
 
   /*package*/ ConstructorDeclaration__BehaviorDescriptor() {
@@ -196,18 +221,24 @@ public final class ConstructorDeclaration__BehaviorDescriptor extends BaseBHDesc
       case 6:
         return (T) ((String) getPresentationInContext_idQAyHtBupSt(node, (SNode) parameters[0]));
       case 7:
-        return (T) ((String) jniSignature_id7F81Cd2CcPY(node));
+        return (T) ((String) getPresentationInContext_id2Yg2DIzbsBp(node, (SNode) parameters[0], (String) parameters[1]));
       case 8:
-        return (T) ((Boolean) containsImplicitSuperConstructorCall_id6d19RW5IPof(node));
+        return (T) ((String) jniSignature_id7F81Cd2CcPY(node));
       case 9:
-        return (T) ((SNode) getThisConstructorInvocation_id5e6QuLS30e$(node));
+        return (T) ((Boolean) containsImplicitSuperConstructorCall_id6d19RW5IPof(node));
       case 10:
-        return (T) ((SNode) getSuperDefaultConstructor_id6d19RW5J1tP(node));
+        return (T) ((SNode) getThisConstructorInvocation_id5e6QuLS30e$(node));
       case 11:
-        return (T) ((Boolean) hasImplicitSuperDefaultConstructor_id5lFB3KB0eQS(node));
+        return (T) ((SNode) getSuperDefaultConstructor_id6d19RW5J1tP(node));
       case 12:
+        return (T) ((Boolean) hasImplicitSuperDefaultConstructor_id5lFB3KB0eQS(node));
+      case 13:
         populateMember_id6r77ob2UW9O(node, (MembersPopulatingContext) parameters[0], (SNode) parameters[1]);
         return null;
+      case 14:
+        return (T) ((String) getPresentation_id69Qfsw3IoJg(node, (SNode) parameters[0]));
+      case 15:
+        return (T) ((String) getMatchingText_id69Qfsw3InJX(node, (SNode) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -241,8 +272,11 @@ public final class ConstructorDeclaration__BehaviorDescriptor extends BaseBHDesc
     /*package*/ static final SInterfaceConcept IDeprecatable$2W = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x11d205fe38dL, "jetbrains.mps.lang.core.structure.IDeprecatable");
     /*package*/ static final SConcept ConstructorDeclaration$yG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
     /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept StubStatementList$v6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4975dc2bdcfa0c49L, "jetbrains.mps.baseLanguage.structure.StubStatementList");
     /*package*/ static final SConcept ConstructorInvocationStatement$yY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x121119ae5ffL, "jetbrains.mps.baseLanguage.structure.ConstructorInvocationStatement");
     /*package*/ static final SConcept PrivateVisibility$l0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
+    /*package*/ static final SInterfaceConcept ICustomConstructorReference$1A = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2f900a9ba2b698c3L, "jetbrains.mps.baseLanguage.structure.ICustomConstructorReference");
+    /*package*/ static final SInterfaceConcept ISmartReferent$57 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x62763dc803b97bd8L, "jetbrains.mps.lang.core.structure.ISmartReferent");
   }
 
   private static final class LINKS {

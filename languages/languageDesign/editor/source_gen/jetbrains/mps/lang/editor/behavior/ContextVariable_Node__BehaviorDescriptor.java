@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -18,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -26,9 +24,9 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class ContextVariable_Node__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x794cf8ea9e1140f4L, "jetbrains.mps.lang.editor.structure.ContextVariable_Node");
 
-  public static final SMethod<SAbstractConcept> getProviderConcept_idaxxf7pcCKs = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl(SAbstractConcept.class)).name("getProviderConcept").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("axxf7pcCKs").build();
-  /*package*/ static final SMethod<SNode> getApplicableConcept_id4Fjf6xN2WlM = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getApplicableConcept").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("4Fjf6xN2WlM").build();
-  public static final SMethod<SNode> getType_id27DJnJtIQ9C = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("27DJnJtIQ9C").build();
+  public static final SMethod<SAbstractConcept> getProviderConcept_idaxxf7pcCKs = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl(SAbstractConcept.class)).name("getProviderConcept").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(189578833592224796L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  /*package*/ static final SMethod<SNode> getApplicableConcept_id4Fjf6xN2WlM = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getApplicableConcept").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(5391719598197032306L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<SNode> getType_id27DJnJtIQ9C = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2443692612523876968L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getProviderConcept_idaxxf7pcCKs, getApplicableConcept_id4Fjf6xN2WlM, getType_id27DJnJtIQ9C);
 
@@ -43,7 +41,7 @@ public final class ContextVariable_Node__BehaviorDescriptor extends BaseBHDescri
     return ((provider == null) ? null : INodeProvider__BehaviorDescriptor.getApplicableConcept_id7_cYeEu4lWA.invoke(provider));
   }
   /*package*/ static SNode getType_id27DJnJtIQ9C(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_s1ykml_a0a2(ContextVariable_Node__BehaviorDescriptor.getApplicableConcept_id4Fjf6xN2WlM.invoke(__thisNode__));
+    return _quotation_createNode_s1ykml_a0a2(ContextVariable_Node__BehaviorDescriptor.getApplicableConcept_id4Fjf6xN2WlM.invokeSpecial(__thisNode__));
   }
 
   /*package*/ ContextVariable_Node__BehaviorDescriptor() {
@@ -96,9 +94,9 @@ public final class ContextVariable_Node__BehaviorDescriptor extends BaseBHDescri
     return CONCEPT;
   }
   private static SNode _quotation_createNode_s1ykml_a0a2(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"));
+    quotedNode_2 = nb.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"), (SNode) parameter_1);
     return quotedNode_2;
   }

@@ -4,31 +4,36 @@ package jetbrains.mps.vcs.diff.changes;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.vcs.diff.ChangeSet;
+import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcs.util.MergeStrategy;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 
-@GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/8813828754313712692", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
+@GeneratedClass(nodeId = "8813828754313712692", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public abstract class ModelChange {
-  private ChangeSet myChangeSet;
+  private final ChangeSet myChangeSet;
   private ModelChange myOpposite = null;
-  protected ModelChange(@NotNull ChangeSet changeSet) {
+  private final SNodeId myRootId;
+
+  protected ModelChange(@NotNull ChangeSet changeSet, @Nullable SNodeId rootId) {
     myChangeSet = changeSet;
+    myRootId = rootId;
   }
+
   @NotNull
   public final ChangeSet getChangeSet() {
     return myChangeSet;
   }
+
   @Nullable
-  public SNodeId getRootId() {
-    return null;
+  public final SNodeId getRootId() {
+    return myRootId;
   }
+
   public abstract void apply(@NotNull SModel model, @NotNull NodeCopier nodeCopier);
+
   public ModelChange getOppositeChange() {
     if (myOpposite == null) {
       myOpposite = createOppositeChange();
@@ -36,40 +41,52 @@ public abstract class ModelChange {
     }
     return myOpposite;
   }
+
   @NotNull
   protected abstract ModelChange createOppositeChange();
+
   @NotNull
   public abstract ChangeType getType();
+
   public boolean isNonConflicting() {
-    // true - change can never conflict with other change and should be ignored if connected change exists (e.g. resolveInfo change) 
+    // true - change can never conflict with other change and should be ignored if connected change exists (e.g. resolveInfo change)
     return getMergeHint() != null;
   }
+
   @Nullable
   public MergeStrategy getMergeHint() {
     return null;
   }
+
+  public boolean conflictsWith(@NotNull ModelChange otherChange) {
+    return false;
+  }
+
+  public boolean isSymmetricWith(@NotNull ModelChange otherChange) {
+    return false;
+  }
+
   @Override
   public abstract String toString();
+
   public abstract String getDescription();
+
+  public String getShortDescription() {
+    return getDescription();
+  }
+
   public static void rollbackChanges(Iterable<ModelChange> changes) {
     assert Sequence.fromIterable(changes).isNotEmpty();
     final SModel model = Sequence.fromIterable(changes).first().getChangeSet().getNewModel();
     final NodeCopier nc = new NodeCopier(model);
-    Iterable<ModelChange> oppositeChanges = Sequence.fromIterable(changes).select(new ISelector<ModelChange, ModelChange>() {
-      public ModelChange select(ModelChange ch) {
-        return ch.getOppositeChange();
-      }
-    });
+    Iterable<ModelChange> oppositeChanges = Sequence.fromIterable(changes).select((ch) -> ch.getOppositeChange());
     for (ModelChange ch : Sequence.fromIterable(oppositeChanges)) {
       if (ch instanceof NodeGroupChange) {
         ((NodeGroupChange) ch).prepare();
       }
     }
-    Sequence.fromIterable(oppositeChanges).visitAll(new IVisitor<ModelChange>() {
-      public void visit(ModelChange ch) {
-        ch.apply(model, nc);
-      }
-    });
+    HierarchicalNodeGroupChange.applyChanges(Sequence.fromIterable(oppositeChanges).ofType(HierarchicalNodeGroupChange.class), model, nc);
+    Sequence.fromIterable(oppositeChanges).where((it) -> !(it instanceof HierarchicalNodeGroupChange)).visitAll((ch) -> ch.apply(model, nc));
     nc.restoreIds(true);
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,10 +56,7 @@ import java.util.Collection;
  * Evgeny Gryaznov, Feb 10, 2010
  */
 public class DefaultQueryExecutionContext implements QueryExecutionContext {
-  private final ITemplateGenerator myGenerator;
-
-  public DefaultQueryExecutionContext(@NotNull ITemplateGenerator generator) {
-    myGenerator = generator;
+  public DefaultQueryExecutionContext() {
   }
 
   @Override
@@ -269,9 +266,9 @@ public class DefaultQueryExecutionContext implements QueryExecutionContext {
   }
 
   @Override
-  public boolean applyRule(TemplateWeavingRule rule, TemplateContext context, SNode outputContextNode) throws GenerationException {
+  public boolean applyRule(@NotNull TemplateWeavingRule rule, @NotNull TemplateContext context) throws GenerationException {
     try {
-      return rule.apply(context.getEnvironment(), context, outputContextNode);
+      return rule.apply(context);
     } catch (GenerationException ex) {
       throw ex;
     } catch (Throwable t) {
@@ -283,23 +280,9 @@ public class DefaultQueryExecutionContext implements QueryExecutionContext {
   }
 
   @Override
-  public SNode getContextNode(TemplateWeavingRule rule, TemplateContext context) throws GenerationFailureException {
+  public void executeScript(@NotNull TemplateMappingScript mappingScript, @NotNull SModel model, @NotNull TemplateContext templateContext) throws GenerationFailureException {
     try {
-      return rule.getContextNode(context.getEnvironment(), context);
-    } catch (GenerationFailureException ex) {
-      throw ex;
-    } catch (Throwable t) {
-      TemplateQueryException ex = new TemplateQueryException("cannot evaluate rule context query", t);
-      ex.setTemplateContext(context);
-      ex.setTemplateModelLocation(rule.getRuleNode());
-      throw ex;
-    }
-  }
-
-  @Override
-  public void executeScript(TemplateMappingScript mappingScript, SModel model) throws GenerationFailureException {
-    try {
-      mappingScript.apply(model, myGenerator);
+      mappingScript.apply(model, templateContext);
     } catch (GenerationFailureException ex) {
       throw ex;
     } catch (Throwable t) {

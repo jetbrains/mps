@@ -17,12 +17,11 @@ import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.List;
 import java.util.ArrayList;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.ide.findusages.CantSaveSomethingException;
 
-@GeneratedClass(node = "r:3189948c-a57a-415e-beba-405572f2d13c(jetbrains.mps.ide.findusages.model.scopes)/8568892084424435948", model = "r:3189948c-a57a-415e-beba-405572f2d13c(jetbrains.mps.ide.findusages.model.scopes)")
+@GeneratedClass(nodeId = "8568892084424435948", model = "r:3189948c-a57a-415e-beba-405572f2d13c(jetbrains.mps.ide.findusages.model.scopes)")
 public class ModulesScope extends FindUsagesScope {
   private static final String MODULE_ID = "ref";
   private static final String MODULE_TAG = "module";
@@ -69,7 +68,7 @@ public class ModulesScope extends FindUsagesScope {
   }
   private static Iterable<SModule> resolveModules(Element element, SRepository repo) throws CantLoadSomethingException {
     List<SModule> result = new ArrayList<SModule>();
-    final Logger log = LogManager.getLogger(ModulesScope.class);
+    final Logger log = Logger.getLogger(ModulesScope.class);
     for (Element moduleXml : element.getChildren(MODULE_TAG)) {
       try {
         final String moduleRef = moduleXml.getAttributeValue(MODULE_ID);
@@ -81,7 +80,7 @@ public class ModulesScope extends FindUsagesScope {
         if (module != null) {
           result.add(module);
         } else {
-          log.warn("module not found " + moduleRef);
+          log.warning("module not found " + moduleRef);
         }
       } catch (IllegalArgumentException e) {
         throw new CantLoadSomethingException(e);

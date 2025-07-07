@@ -18,7 +18,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 
-@GeneratedClass(node = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/8072311592772918312", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
+@GeneratedClass(nodeId = "8072311592772918312", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
 public class GoToDeclarationInMenu_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -68,14 +68,12 @@ public class GoToDeclarationInMenu_Action extends BaseAction {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("navigation.goto.definition");
 
     final SNode declaration = GoToDeclarationInMenu_Action.this.getNodeDeclaration(_params);
-    ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).deactivateSubstituteChooser();
-        new EditorNavigator(((MPSProject) MapSequence.fromMap(_params).get("project"))).shallFocus(true).selectIfChild().open(SNodeOperations.getPointer(declaration));
-      }
+    ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().runReadAction(() -> {
+      ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).deactivateSubstituteChooser();
+      new EditorNavigator(((MPSProject) MapSequence.fromMap(_params).get("project"))).shallFocus(true).selectIfChild().open(SNodeOperations.getPointer(declaration));
     });
   }
-  /*package*/ SNode getNodeDeclaration(final Map<String, Object> _params) {
+  private SNode getNodeDeclaration(final Map<String, Object> _params) {
     return FindDeclarationUtils.findDeclarationFromMenu(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")));
   }
 }

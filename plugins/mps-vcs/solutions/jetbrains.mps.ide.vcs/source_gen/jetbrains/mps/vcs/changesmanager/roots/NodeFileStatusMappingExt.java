@@ -4,34 +4,31 @@ package jetbrains.mps.vcs.changesmanager.roots;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.vcs.changesmanager.NodeFileStatusMapping;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
-import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry;
+import jetbrains.mps.logging.Logger;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vcs.FileStatusManager;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.plugins.relations.RelationDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
-import org.apache.log4j.Level;
 
-@GeneratedClass(node = "r:21243d57-0512-4c07-bcfd-21ee53d2aeb3(jetbrains.mps.vcs.changesmanager.roots)/2722286076674321023", model = "r:21243d57-0512-4c07-bcfd-21ee53d2aeb3(jetbrains.mps.vcs.changesmanager.roots)")
+@GeneratedClass(nodeId = "2722286076674321023", model = "r:21243d57-0512-4c07-bcfd-21ee53d2aeb3(jetbrains.mps.vcs.changesmanager.roots)")
 public class NodeFileStatusMappingExt extends NodeFileStatusMapping {
-  private static final Logger LOG = LogManager.getLogger(NodeFileStatusMappingExt.class);
+  private static final Logger LOG = Logger.getLogger(NodeFileStatusMappingExt.class);
 
-  public NodeFileStatusMappingExt(MPSProject project, CurrentDifferenceRegistry registry) {
-    super(project, registry);
+  public NodeFileStatusMappingExt(Project ideaProject) {
+    super(ideaProject);
   }
 
   @Override
   protected void statusChanged(FileStatusManager fsm, SNode currentNode) {
     super.statusChanged(fsm, currentNode);
-    for (RelationDescriptor d : ListSequence.fromList(myProject.getProject().getComponent(ProjectPluginManager.class).getTabDescriptors())) {
+    for (RelationDescriptor d : ListSequence.fromList(ProjectPluginManager.getInstance(myProject.getProject()).getTabDescriptors())) {
       SNode baseNode = null;
       try {
         baseNode = d.getBaseNode(currentNode);
       } catch (Throwable t) {
-        if (LOG.isEnabledFor(Level.ERROR)) {
+        if (LOG.isErrorLevel()) {
           LOG.error("Exception in extension: ", t);
         }
       }

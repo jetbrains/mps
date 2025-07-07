@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -17,11 +16,9 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.baseLanguage.javadoc.behavior.BaseDocComment__BehaviorDescriptor;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.core.behavior.IDeprecatable__BehaviorDescriptor;
@@ -37,14 +34,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class IBLDeprecatable__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d2ea8a339L, "jetbrains.mps.baseLanguage.structure.IBLDeprecatable");
 
-  public static final SMethod<Boolean> isDeprecated_idhOwoPtR = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDeprecated").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hOwoPtR").build();
-  /*package*/ static final SMethod<Boolean> hasDeprecatedAnnotation_id7UfLy9aMQ9M = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasDeprecatedAnnotation").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("7UfLy9aMQ9M").build();
-  public static final SMethod<Boolean> hasDeprecatedBlockDocTag_id3yvWaPI09DC = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasDeprecatedBlockDocTag").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3yvWaPI09DC").build();
-  public static final SMethod<Boolean> shouldDeprecatedDocBeVisible_id7gdCoemJ2WL = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("shouldDeprecatedDocBeVisible").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7gdCoemJ2WL").build();
-  public static final SMethod<Void> markDeprecated_id6Va_BJexupi = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("markDeprecated").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6Va_BJexupi").build();
-  public static final SMethod<Void> removeDeprecationFromDoc_id63oBH1IM79r = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("removeDeprecationFromDoc").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("63oBH1IM79r").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Void> unmarkDeprecated_id6Va_BJex$aE = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("unmarkDeprecated").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6Va_BJex$aE").build();
-  public static final SMethod<String> getMessage_idhP43_8K = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMessage").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hP43_8K").build();
+  public static final SMethod<Boolean> isDeprecated_idhOwoPtR = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDeprecated").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1224609060727L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  /*package*/ static final SMethod<Boolean> hasDeprecatedAnnotation_id7UfLy9aMQ9M = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasDeprecatedAnnotation").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(9119725621034574450L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> hasDeprecatedBlockDocTag_id3yvWaPI09DC = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasDeprecatedBlockDocTag").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4080244415086500456L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> shouldDeprecatedDocBeVisible_id7gdCoemJ2WL = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("shouldDeprecatedDocBeVisible").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8362517669638582065L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Void> markDeprecated_id6Va_BJexupi = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("markDeprecated").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7983358747957651026L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Void> removeDeprecationFromDoc_id63oBH1IM79r = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("removeDeprecationFromDoc").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6978502240659599963L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Void> unmarkDeprecated_id6Va_BJex$aE = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("unmarkDeprecated").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7983358747957674666L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<String> getMessage_idhP43_8K = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMessage").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1225207468592L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isDeprecated_idhOwoPtR, hasDeprecatedAnnotation_id7UfLy9aMQ9M, hasDeprecatedBlockDocTag_id3yvWaPI09DC, shouldDeprecatedDocBeVisible_id7gdCoemJ2WL, markDeprecated_id6Va_BJexupi, removeDeprecationFromDoc_id63oBH1IM79r, unmarkDeprecated_id6Va_BJex$aE, getMessage_idhP43_8K);
 
@@ -52,7 +49,7 @@ public final class IBLDeprecatable__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static boolean isDeprecated_idhOwoPtR(@NotNull SNode __thisNode__) {
-    return ((boolean) IBLDeprecatable__BehaviorDescriptor.hasDeprecatedAnnotation_id7UfLy9aMQ9M.invoke(__thisNode__));
+    return ((boolean) IBLDeprecatable__BehaviorDescriptor.hasDeprecatedAnnotation_id7UfLy9aMQ9M.invokeSpecial(__thisNode__));
   }
   /*package*/ static boolean hasDeprecatedAnnotation_id7UfLy9aMQ9M(@NotNull SNode __thisNode__) {
     if (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.HasAnnotation$Dg)) {
@@ -61,7 +58,7 @@ public final class IBLDeprecatable__BehaviorDescriptor extends BaseBHDescriptor 
         if ((annotation == null) || (annotationLink == null) || SPropertyOperations.getString(annotationLink, PROPS.name$MnvL) == null) {
           continue;
         }
-        if (SPropertyOperations.getString(annotationLink, PROPS.name$MnvL).equals("Deprecated")) {
+        if (SNodeOperations.is(annotationLink, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated"))) {
           return true;
         }
       }
@@ -69,39 +66,15 @@ public final class IBLDeprecatable__BehaviorDescriptor extends BaseBHDescriptor 
     return false;
   }
   /*package*/ static boolean hasDeprecatedBlockDocTag_id3yvWaPI09DC(@NotNull SNode __thisNode__) {
-    return (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.BaseMethodDeclaration$kD) && ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(SNodeOperations.cast(__thisNode__, CONCEPTS.BaseMethodDeclaration$kD), new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)), LINKS.tags$stUD)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode docTag) {
-        return SNodeOperations.isInstanceOf(docTag, CONCEPTS.DeprecatedBlockDocTag$8n);
-      }
-    })) || (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.FieldDeclaration$ie) && ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(SNodeOperations.cast(__thisNode__, CONCEPTS.FieldDeclaration$ie), new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl)), LINKS.tags$stUD)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode docTag) {
-        return SNodeOperations.isInstanceOf(docTag, CONCEPTS.DeprecatedBlockDocTag$8n);
-      }
-    })) || (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.StaticFieldDeclaration$jR) && ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(SNodeOperations.cast(__thisNode__, CONCEPTS.StaticFieldDeclaration$jR), new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl)), LINKS.tags$stUD)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode docTag) {
-        return SNodeOperations.isInstanceOf(docTag, CONCEPTS.DeprecatedBlockDocTag$8n);
-      }
-    })) || (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.Classifier$Ix) && ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(SNodeOperations.cast(__thisNode__, CONCEPTS.Classifier$Ix), new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh)), LINKS.tags$stUD)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode docTag) {
-        return SNodeOperations.isInstanceOf(docTag, CONCEPTS.DeprecatedBlockDocTag$8n);
-      }
-    }));
+    return (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.BaseMethodDeclaration$kD) && ListSequence.fromList(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(SNodeOperations.cast(__thisNode__, CONCEPTS.BaseMethodDeclaration$kD)), LINKS.tags$stUD)).any((docTag) -> SNodeOperations.isInstanceOf(docTag, CONCEPTS.DeprecatedBlockDocTag$8n))) || (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.FieldDeclaration$ie) && ListSequence.fromList(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl).get(SNodeOperations.cast(__thisNode__, CONCEPTS.FieldDeclaration$ie)), LINKS.tags$stUD)).any((docTag) -> SNodeOperations.isInstanceOf(docTag, CONCEPTS.DeprecatedBlockDocTag$8n))) || (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.StaticFieldDeclaration$jR) && ListSequence.fromList(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl).get(SNodeOperations.cast(__thisNode__, CONCEPTS.StaticFieldDeclaration$jR)), LINKS.tags$stUD)).any((docTag) -> SNodeOperations.isInstanceOf(docTag, CONCEPTS.DeprecatedBlockDocTag$8n))) || (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.Classifier$Ix) && ListSequence.fromList(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh).get(SNodeOperations.cast(__thisNode__, CONCEPTS.Classifier$Ix)), LINKS.tags$stUD)).any((docTag) -> SNodeOperations.isInstanceOf(docTag, CONCEPTS.DeprecatedBlockDocTag$8n)));
   }
   /*package*/ static boolean shouldDeprecatedDocBeVisible_id7gdCoemJ2WL(@NotNull SNode __thisNode__) {
-    return (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.BaseMethodDeclaration$kD) && (AttributeOperations.getAttribute(SNodeOperations.cast(__thisNode__, CONCEPTS.BaseMethodDeclaration$kD), new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)) == null)) || (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.FieldDeclaration$ie) && (AttributeOperations.getAttribute(SNodeOperations.cast(__thisNode__, CONCEPTS.FieldDeclaration$ie), new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl)) == null)) || (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.StaticFieldDeclaration$jR) && (AttributeOperations.getAttribute(SNodeOperations.cast(__thisNode__, CONCEPTS.StaticFieldDeclaration$jR), new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl)) == null)) || (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.Classifier$Ix) && (AttributeOperations.getAttribute(SNodeOperations.cast(__thisNode__, CONCEPTS.Classifier$Ix), new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh)) == null));
+    return (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.BaseMethodDeclaration$kD) && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(SNodeOperations.cast(__thisNode__, CONCEPTS.BaseMethodDeclaration$kD)) == null)) || (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.FieldDeclaration$ie) && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl).get(SNodeOperations.cast(__thisNode__, CONCEPTS.FieldDeclaration$ie)) == null)) || (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.StaticFieldDeclaration$jR) && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl).get(SNodeOperations.cast(__thisNode__, CONCEPTS.StaticFieldDeclaration$jR)) == null)) || (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.Classifier$Ix) && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh).get(SNodeOperations.cast(__thisNode__, CONCEPTS.Classifier$Ix)) == null));
   }
   /*package*/ static void markDeprecated_id6Va_BJexupi(@NotNull SNode __thisNode__) {
   }
   /*package*/ static void removeDeprecationFromDoc_id63oBH1IM79r(@NotNull SNode __thisNode__, SNode comment) {
-    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.DeprecatedBlockDocTag$8n);
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNodeOperations.deleteNode(it);
-      }
-    });
+    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.DeprecatedBlockDocTag$8n)).visitAll((it) -> SNodeOperations.deleteNode(it));
     if ((boolean) BaseDocComment__BehaviorDescriptor.isTagSectionEmpty_id7lVCwDcz6WN.invoke(comment) && !((boolean) BaseDocComment__BehaviorDescriptor.hasTags_id4iGwz$GSfd_.invoke(comment)) && ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.body$OAGp)).isEmpty()) {
       SNodeOperations.deleteNode(comment);
     }
@@ -113,18 +86,12 @@ public final class IBLDeprecatable__BehaviorDescriptor extends BaseBHDescriptor 
     result.append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(__thisNode__));
     result.append(" is deprecated");
 
-    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.smodelAttribute$KJ43)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.IDeprecatable$2W);
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        String msg = IDeprecatable__BehaviorDescriptor.getMessage_idhP43_8K.invoke(SNodeOperations.cast(it, CONCEPTS.IDeprecatable$2W));
-        if ((msg != null && msg.length() > 0)) {
-          result.append(" (");
-          result.append(msg);
-          result.append(")\n");
-        }
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.smodelAttribute$KJ43)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.IDeprecatable$2W)).visitAll((it) -> {
+      String msg = IDeprecatable__BehaviorDescriptor.getMessage_idhP43_8K.invoke(SNodeOperations.cast(it, CONCEPTS.IDeprecatable$2W));
+      if ((msg != null && msg.length() > 0)) {
+        result.append(" (");
+        result.append(msg);
+        result.append(")\n");
       }
     });
     return result.toString();

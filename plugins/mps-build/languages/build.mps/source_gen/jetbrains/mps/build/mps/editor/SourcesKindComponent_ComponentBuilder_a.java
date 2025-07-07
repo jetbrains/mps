@@ -19,7 +19,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -36,10 +35,8 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.SPropertyAccessor;
 import jetbrains.mps.nodeEditor.cellMenu.SPropertySubstituteInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
@@ -93,22 +90,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public BuildMps_Solution_generic_cellMenu_qubgco_a0a() {
     }
 
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-      return ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92974f7L, "jetbrains.mps.build.structure.BuildSource_JavaContentFolderKind"))).toListSequence();
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
+      return ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92974f7L, "jetbrains.mps.build.structure.BuildSource_JavaContentFolderKind"))).toList();
+
     }
-    protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      this.handleAction_impl((SEnumerationLiteral) parameterObject, node, model, operationContext, editorContext);
+    protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      this.handleAction_impl((SEnumerationLiteral) parameterObject, node, model, editorContext);
     }
-    public void handleAction_impl(SEnumerationLiteral parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    private void handleAction_impl(SEnumerationLiteral parameterObject, SNode node, SModel model, EditorContext editorContext) {
       SPropertyOperations.setEnum(node, PROPS.sourcesKind$cgod, SEnumOperations.getMemberForPresentation(MetaAdapterFactory.getEnumeration(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3be316509db4513L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleSourcesKind"), SEnumOperations.getMemberName0(parameterObject)));
     }
-    public boolean isReferentPresentation() {
+    protected boolean isReferentPresentation() {
       return false;
     }
-    public String getMatchingText(Object parameterObject) {
-      return this.getMatchingText_internal((SEnumerationLiteral) parameterObject);
-    }
-    public String getMatchingText_internal(SEnumerationLiteral parameterObject) {
+    protected String getMatchingText(Object _parameterObject) {
+      final SEnumerationLiteral parameterObject = (SEnumerationLiteral) _parameterObject;
       return "(with " + SEnumOperations.getMemberName0(parameterObject) + ")";
     }
 
@@ -121,7 +117,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "(with");
     editorCell.setCellId("Constant_qubgco_a0");
     Style style = new StyleImpl();
-    new keywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new keywordStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -135,17 +131,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setDefaultText("<no sourcesKind>");
       editorCell.setCellId("SKC_property_sourcesKind");
       Style style = new StyleImpl();
-      new keywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      new keywordStyleClass(this).apply(style, editorCell);
       style.set(StyleAttributes.EDITABLE, false);
       editorCell.getStyle().putAll(style);
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
-      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-        }
-      });
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
+      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
       if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
         EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
         return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);
@@ -159,7 +151,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "sources");
     editorCell.setCellId("Constant_qubgco_c0");
     Style style = new StyleImpl();
-    new keywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new keywordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, false);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
@@ -170,22 +162,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public BuildMps_Solution_generic_cellMenu_qubgco_a0c0() {
     }
 
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-      return ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3be316509db4513L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleSourcesKind"))).toListSequence();
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
+      return ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3be316509db4513L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleSourcesKind"))).toList();
+
     }
-    protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      this.handleAction_impl((SEnumerationLiteral) parameterObject, node, model, operationContext, editorContext);
+    protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      this.handleAction_impl((SEnumerationLiteral) parameterObject, node, model, editorContext);
     }
-    public void handleAction_impl(SEnumerationLiteral parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    private void handleAction_impl(SEnumerationLiteral parameterObject, SNode node, SModel model, EditorContext editorContext) {
       SPropertyOperations.setEnum(node, PROPS.sourcesKind$cgod, SEnumOperations.getMemberForPresentation(MetaAdapterFactory.getEnumeration(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3be316509db4513L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleSourcesKind"), SEnumOperations.getMemberPresentation(parameterObject)));
     }
-    public boolean isReferentPresentation() {
+    protected boolean isReferentPresentation() {
       return false;
     }
-    public String getMatchingText(Object parameterObject) {
-      return this.getMatchingText_internal((SEnumerationLiteral) parameterObject);
-    }
-    public String getMatchingText_internal(SEnumerationLiteral parameterObject) {
+    protected String getMatchingText(Object _parameterObject) {
+      final SEnumerationLiteral parameterObject = (SEnumerationLiteral) _parameterObject;
       return "(with " + SEnumOperations.getMemberPresentation(parameterObject) + ")";
     }
 
@@ -198,7 +189,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ")");
     editorCell.setCellId("Constant_qubgco_d0");
     Style style = new StyleImpl();
-    new keywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new keywordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.PUNCTUATION_LEFT, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");

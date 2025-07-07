@@ -16,7 +16,6 @@
 package jetbrains.mps.extapi.persistence.datasource;
 
 import jetbrains.mps.extapi.persistence.SourceRoot;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModelName;
@@ -34,7 +33,7 @@ import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
  *
  * It is used when we create a new model from anywhere (IDE, tests, etc.).
  *
- * @see DataSourceFactoryFromURL
+ * @see DataSourceFactoryFromPath
  * @author apyshkin
  * @since 3.5
  */

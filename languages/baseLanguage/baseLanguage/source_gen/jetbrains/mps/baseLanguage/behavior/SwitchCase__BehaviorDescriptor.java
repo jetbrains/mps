@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -26,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class SwitchCase__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, "jetbrains.mps.baseLanguage.structure.SwitchCase");
 
-  public static final SMethod<Void> collectUncaughtThrowables_id3JrbGEZ6KoZ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectUncaughtThrowables").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3JrbGEZ6KoZ").build(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
+  public static final SMethod<Void> collectUncaughtThrowables_id3JrbGEZ6KoZ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectUncaughtThrowables").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4313092516461872703L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(collectUncaughtThrowables_id3JrbGEZ6KoZ);
 
@@ -37,7 +36,9 @@ public final class SwitchCase__BehaviorDescriptor extends BaseBHDescriptor {
     if (!(ignoreMayBeThrowables)) {
       Statement__BehaviorDescriptor.collectUncaughtMethodThrowables_id4Gt7ANIVBW7.invoke(SNodeOperations.asSConcept(CONCEPTS.Statement$P6), throwables, SLinkOperations.getTarget(__thisNode__, LINKS.expression$QQk6));
     }
-    StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.body$5LhG), throwables, ((boolean) ignoreMayBeThrowables));
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.body$5LhG) != null)) {
+      StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.body$5LhG), throwables, ((boolean) ignoreMayBeThrowables));
+    }
   }
 
   /*package*/ SwitchCase__BehaviorDescriptor() {

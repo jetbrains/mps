@@ -9,14 +9,18 @@ import jetbrains.mps.icons.MPSIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.workbench.MPSDataKeys;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.ide.newModuleDialogs.NewSolutionDialog;
+import jetbrains.mps.ide.ui.dialogs.modules.NameLocationPanel;
+import jetbrains.mps.ide.ui.dialogs.modules.NewModuleDialog;
+import jetbrains.mps.project.modules.NewModuleCheck;
 import jetbrains.mps.project.Solution;
+import jetbrains.mps.util.IStatus;
+import java.io.File;
+import jetbrains.mps.project.modules.SolutionProducer;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1229271450720", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1229271450720", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class NewSolution_Action extends BaseAction {
   private static final Icon ICON = MPSIcons.Nodes.Solution;
 
@@ -24,6 +28,7 @@ public class NewSolution_Action extends BaseAction {
     super("Solution", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -36,28 +41,52 @@ public class NewSolution_Action extends BaseAction {
     }
     {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      MapSequence.fromMap(_params).put("project", p);
       if (p == null) {
         return false;
       }
     }
     {
       String p = event.getData(MPSDataKeys.NAMESPACE);
-      MapSequence.fromMap(_params).put("namespace", p);
     }
     return true;
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    NewSolutionDialog dialog = new NewSolutionDialog(((MPSProject) MapSequence.fromMap(_params).get("project")), ((String) MapSequence.fromMap(_params).get("namespace")));
+    final MPSProject mpsProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+    final String virtualFolder = event.getData(MPSDataKeys.NAMESPACE);
+    final NameLocationPanel cfg = new NameLocationPanel(NewModuleDialog.projectHome(mpsProject), "Solution name:", "Solution file location:");
+    cfg.withDefaults("NewSolution", "solutions");
+    final NewModuleCheck mc = new NewModuleCheck().forSolution();
+    mc.withScope(mpsProject.getRepository());
+
+    NewModuleDialog<Solution> dialog = new NewModuleDialog<>(mpsProject, cfg);
+    dialog.withCheck(() -> {
+      mc.withName(cfg.getModuleName()).withHome(cfg.getModuleLocation());
+      IStatus s = mc.checkAll();
+      return (s.isOk() ? null : s.getMessage());
+    });
+    dialog.withFactory(() -> {
+      String moduleName = cfg.getModuleName();
+      File moduleLocation = cfg.getModuleLocation();
+      final SolutionProducer sp = new SolutionProducer(mpsProject);
+      Solution result = sp.create(moduleName, mpsProject.getFileSystem().getFile(moduleLocation));
+      mpsProject.setVirtualFolder(result, virtualFolder);
+      return result;
+    });
+
+    dialog.setTitle("New Solution");
     dialog.show();
-    Solution solution = dialog.getModule();
+    if (!(dialog.isOK())) {
+      return;
+    }
+
+    Solution solution = dialog.getResult();
     if (solution == null) {
       return;
     }
 
-    // TODO: Sync ProjectPane.rebuildTree() with NewSolution, CloneModule actions 
-    ProjectPane projectPane = ProjectPane.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project")).getProject());
+    // TODO: Sync ProjectPane.rebuildTree() with NewSolution, CloneModule actions
+    ProjectPane projectPane = ProjectPane.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT));
     projectPane.selectModule(solution, false);
   }
 }

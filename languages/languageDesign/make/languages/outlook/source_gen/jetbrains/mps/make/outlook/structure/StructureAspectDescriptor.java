@@ -52,7 +52,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, true);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:c2ffe851-b1b7-4bfa-aad8-33ebdf91b115(jetbrains.mps.make.outlook.structure)/5608160002100057298");
-    b.version(2);
+    b.version(3);
     b.aggregate("facet", 0x4dd42fcf00ba59a1L).target(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5979ed6d2b21b2f2L).optional(true).ordered(true).multiple(true).origin("5608160002100058529").done();
     return b.create();
   }

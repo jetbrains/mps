@@ -10,7 +10,6 @@ import java.util.List;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Arrays;
@@ -20,15 +19,13 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
-import jetbrains.mps.smodel.SReference;
 
 public final class CellMenuPart_ReplaceChild_CustomChildConcept_Query__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f5026c90dL, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReplaceChild_CustomChildConcept_Query");
 
-  public static final SMethod<List<SConcept>> getParameterConcepts_id2xELmDxyi2v = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getParameterConcepts").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2xELmDxyi2v").build();
-  public static final SMethod<SNode> getExpectedReturnType_idhEwIGRD = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpectedReturnType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIGRD").build();
+  public static final SMethod<List<SConcept>> getParameterConcepts_id2xELmDxyi2v = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getParameterConcepts").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2912357169742028959L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> getExpectedReturnType_idhEwIGRD = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpectedReturnType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877374441L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameterConcepts_id2xELmDxyi2v, getExpectedReturnType_idhEwIGRD);
 
@@ -40,8 +37,7 @@ public final class CellMenuPart_ReplaceChild_CustomChildConcept_Query__BehaviorD
     ListSequence.fromList(result).addElement(CONCEPTS.CellMenuPart_ReplaceChild_currentChild$MV);
     ListSequence.fromList(result).addElement(CONCEPTS.CellMenuPart_ReplaceChild_defaultChildConcept$8E);
     ListSequence.fromList(result).addElement(CONCEPTS.CellMenuPart_Abstract_editedNode$Mf);
-    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_operationContext$HV);
-    ListSequence.fromList(result).addElement(CONCEPTS.CellMenuPart_ReplaceChild_defaultConceptOfChild$v6);
+    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_editorContext$vJ);
     return result;
   }
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
@@ -96,10 +92,10 @@ public final class CellMenuPart_ReplaceChild_CustomChildConcept_Query__BehaviorD
     return CONCEPT;
   }
   private static SNode _quotation_createNode_eqbwyn_a0a1() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType")).getResult();
-    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"), SReference.create(MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"), quotedNode_1, facade.createModelReference("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)"), facade.createNodeId("1071489090640")));
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"));
+    quotedNode_1 = nb.getResult();
+    nb.setReference(MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"), "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/1071489090640");
     return quotedNode_1;
   }
 
@@ -108,7 +104,6 @@ public final class CellMenuPart_ReplaceChild_CustomChildConcept_Query__BehaviorD
     /*package*/ static final SConcept CellMenuPart_ReplaceChild_currentChild$MV = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10eaa3a3c68L, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReplaceChild_currentChild");
     /*package*/ static final SConcept CellMenuPart_ReplaceChild_defaultChildConcept$8E = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x306b0e1228f7e93aL, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReplaceChild_defaultChildConcept");
     /*package*/ static final SConcept CellMenuPart_Abstract_editedNode$Mf = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10eecc9de0fL, "jetbrains.mps.lang.editor.structure.CellMenuPart_Abstract_editedNode");
-    /*package*/ static final SConcept ConceptFunctionParameter_operationContext$HV = MetaAdapterFactory.getConcept(0x13744753c81f424aL, 0x9c1bcf8943bf4e86L, 0x10e761c927aL, "jetbrains.mps.lang.sharedConcepts.structure.ConceptFunctionParameter_operationContext");
-    /*package*/ static final SConcept CellMenuPart_ReplaceChild_defaultConceptOfChild$v6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10eaa4bf8b2L, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReplaceChild_defaultConceptOfChild");
+    /*package*/ static final SConcept ConceptFunctionParameter_editorContext$vJ = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10e76200a6fL, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_editorContext");
   }
 }

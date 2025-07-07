@@ -4,32 +4,27 @@ package jetbrains.mps.refactoringTest;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ConvertAnonymousRefactoring;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;
 
 @MPSLaunch
 public class ConvertAnonymousWithTypeVariablesTest_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(ConvertAnonymousWithTypeVariablesTest_Test.class, "${mps_home}", "r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ConvertAnonymousWithTypeVariablesTest_Test.class).projectPath(null).modelRef("r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)").reopenProject(null).build());
 
   public ConvertAnonymousWithTypeVariablesTest_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -43,18 +38,22 @@ public class ConvertAnonymousWithTypeVariablesTest_Test extends BaseTransformati
       super(owner);
     }
 
-    public void test_TypeVariablesTest() throws Exception {
-      addNodeById("2230400082817266598");
-      addNodeById("2230400082817266608");
-      addNodeById("2230400082817278213");
-      new ConvertAnonymousRefactoring(SNodeOperations.cast(getNodeById("2230400082817266637"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x1107e0cb103L, "AnonymousClass"))), "MyParam").doRefactor();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("2230400082817266612"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("2230400082817278239"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
-        Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-      }
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2230400082817266598", "2230400082817266608", "2230400082817278213");
     }
 
+    public void test_TypeVariablesTest() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        new ConvertAnonymousRefactoring(getAnnotatedNode("convert"), "MyParam").doRefactor();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("before"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("after"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+      });
+    }
 
   }
 }

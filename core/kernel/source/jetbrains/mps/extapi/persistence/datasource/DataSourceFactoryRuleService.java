@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.extapi.persistence.datasource;
 
 import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.vfs.path.Path;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Internal;
@@ -23,9 +24,6 @@ import org.jetbrains.mps.annotations.Mutable;
 import org.jetbrains.mps.annotations.Singleton;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
@@ -76,9 +74,9 @@ public final class DataSourceFactoryRuleService implements CoreComponent  {
   }
 
   @Nullable
-  public synchronized DataSourceFactoryFromURL getFactory(@NotNull URL url) {
+  public synchronized DataSourceFactoryFromPath getFactory(@NotNull Path path) {
     for (DataSourceFactoryRule rule : myFactoryRules) {
-      DataSourceFactoryFromURL result = rule.spawn(url);
+      var result = rule.spawn(path);
       if (result != null) {
         return result;
       }
@@ -86,11 +84,11 @@ public final class DataSourceFactoryRuleService implements CoreComponent  {
     return null;
   }
 
-  /**
+   /**
    * @return factories in the reverse order of registration -- from the newest to the oldest.
    */
   @NotNull
   public synchronized List<DataSourceFactoryRule> getFactoryRules() {
-    return Collections.unmodifiableList(new ArrayList<>(myFactoryRules));
+    return List.copyOf(myFactoryRules);
   }
 }

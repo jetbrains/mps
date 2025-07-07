@@ -11,8 +11,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
@@ -33,16 +31,8 @@ public class CheckNoDuplicatedConceptHints_NonTypesystemRule extends AbstractNon
       return;
     }
 
-    // check only one hint is specified for exact concept 
-    Iterable<SNode> sameConceptHints = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(cd), CONCEPTS.VCSHints$kA)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.getChildren(it, LINKS.concepts$nb$7);
-      }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.cncpt$ubC$) == SLinkOperations.getTarget(cd, LINKS.cncpt$ubC$);
-      }
-    });
+    // check only one hint is specified for exact concept
+    Iterable<SNode> sameConceptHints = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(cd), CONCEPTS.VCSHints$kA)).translate((it) -> SLinkOperations.getChildren(it, LINKS.concepts$nb$7)).where((it) -> SLinkOperations.getTarget(it, LINKS.cncpt$ubC$) == SLinkOperations.getTarget(cd, LINKS.cncpt$ubC$));
     if (Sequence.fromIterable(sameConceptHints).count() != 1) {
       {
         final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.cncpt$ubC$);

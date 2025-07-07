@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@ import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService;
 import jetbrains.mps.java.stub.ClassStubRootProvider;
 import jetbrains.mps.persistence.java.library.JavaClassesPersistence;
+import jetbrains.mps.persistence.kotlin.KotlinClassesPersistence;
 import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -31,6 +32,14 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
  * evgeny, 11/9/12
  */
 public final class MPSPersistence extends ComponentPlugin implements ComponentHost {
+
+  /**
+   *  DO NOT USE EXCEPT FOR PROTOTYPE PURPOSES
+   *  Model attribute to keep information if user objects need to be persisted. Serialized value of {@link UserObjectsPersistence} enum
+   *  FIXME wrong placement, just can't find a better one, and don't want to introduce a separate CU
+   */
+  public static final String UO_MODEL_ATTRIBUTE = "mps:internal:user-objects";
+
   private final PersistenceFacade myPersistenceFacade;
   private final ModelFactoryService myModelFactoryService;
   private final DataSourceFactoryRuleService myDataSourceService;
@@ -48,10 +57,11 @@ public final class MPSPersistence extends ComponentPlugin implements ComponentHo
   public void init() {
     super.init();
     myDigestHelper = init(new ModelDigestHelper());
-    init(new DataSourceFactoryRuleCoreService(myDataSourceService));
-    init(new ModelFactoryCoreService(myModelFactoryService));
+    init(new DataSourceFactoryRuleCoreService(myDataSourceService, myVfsManager));
+    init(new ModelFactoryCoreService(myModelFactoryService, myPersistenceFacade));
     final ClassStubRootProvider srp = init(new ClassStubRootProvider());
     init(new JavaClassesPersistence(myPersistenceFacade, myVfsManager, srp));
+    init(new KotlinClassesPersistence(myPersistenceFacade));
   }
 
   @Override

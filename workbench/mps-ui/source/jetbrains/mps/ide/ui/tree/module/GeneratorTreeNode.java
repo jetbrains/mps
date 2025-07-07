@@ -25,7 +25,7 @@ public class GeneratorTreeNode extends ProjectModuleTreeNode implements Stereoty
   private boolean myInitialized;
 
   public GeneratorTreeNode(@NotNull Generator generator, Project project) {
-    super(generator);
+    super(generator, project);
     setNodeIdentifier(generator.getModuleName());
     setIcon(IdeIcons.GENERATOR_ICON);
   }

@@ -4,19 +4,20 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/885275291024029562", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "885275291024029562", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class View_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.actions.View_ActionGroup";
 
-  public View_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public View_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("View", ID, plugin);
     setIsInternal(false);
     setPopup(false);
     View_ActionGroup.this.addSeparator();
     View_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ShowParameters_Action");
     View_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ShowNodeInfo_Action");
+    View_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ShowQuickDocumentation_Action");
   }
 }

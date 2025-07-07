@@ -31,7 +31,7 @@ public class check_MappingConfiguration_NonTypesystemRule extends AbstractNonTyp
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(scriptReference, "pre-processing script kind is expected", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1195601255636", null, errorTarget);
       }
     }
-    // -- 
+    // --
     for (SNode scriptReference : ListSequence.fromList(SLinkOperations.getChildren(mc, LINKS.postMappingScript$TFZg))) {
       if (!(SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(scriptReference, LINKS.mappingScript$AU0b), PROPS.scriptKind$6esh), 0x1165f09be34L))) {
         final MessageTarget errorTarget = new NodeMessageTarget();

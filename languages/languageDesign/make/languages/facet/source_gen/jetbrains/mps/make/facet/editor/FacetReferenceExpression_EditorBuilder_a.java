@@ -57,7 +57,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "&");
     editorCell.setCellId("Constant_vp6dq8_a0");
     Style style = new StyleImpl();
-    new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeyWordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, false);
     style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
     editorCell.getStyle().putAll(style);
@@ -101,7 +101,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
         editorCell.setSRole(LINKS.reference$adKT);
       }
       Style style = new StyleImpl();
-      new StaticFieldStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      new StaticFieldStyleClass(this).apply(style, editorCell);
       editorCell.getStyle().putAll(style);
     }
     @Override

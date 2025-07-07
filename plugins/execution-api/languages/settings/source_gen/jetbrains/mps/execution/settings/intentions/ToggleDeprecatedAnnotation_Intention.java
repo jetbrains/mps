@@ -12,7 +12,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -23,21 +22,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ToggleDeprecatedAnnotation_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ToggleDeprecatedAnnotation_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:2f15cca9-9d4b-4caa-8c6d-31f12b9faf00(jetbrains.mps.execution.settings.intentions)", "9191251033651652580"));
   }
+
   @Override
   public String getPresentation() {
     return "ToggleDeprecatedAnnotation";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -47,25 +46,36 @@ public final class ToggleDeprecatedAnnotation_Intention extends AbstractIntentio
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedAnnotation$xW)) == null)) {
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedAnnotation$xW).get(node) == null)) {
         return "Deprecate configuration " + SPropertyOperations.getString(node, PROPS.name$MnvL);
       }
       return "Remove deprecated annotation";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedAnnotation$xW)) == null)) {
-        AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedAnnotation$xW), CONCEPTS.DeprecatedAnnotation$xW);
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedAnnotation$xW).get(node) == null)) {
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedAnnotation$xW).setNew(node);
       } else {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedAnnotation$xW)));
+        SNodeOperations.deleteNode(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedAnnotation$xW).get(node));
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ToggleDeprecatedAnnotation_Intention.this;
     }
+
   }
 
   private static final class PROPS {

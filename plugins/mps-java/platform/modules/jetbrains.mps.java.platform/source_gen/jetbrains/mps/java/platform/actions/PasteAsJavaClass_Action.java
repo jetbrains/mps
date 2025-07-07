@@ -16,15 +16,21 @@ import jetbrains.mps.java.platform.util.JavaPaster;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.project.MPSProject;
+import com.intellij.openapi.project.Project;
+import jetbrains.mps.ide.project.ProjectHelper;
+import com.intellij.openapi.progress.ProgressManager;
+import jetbrains.mps.progress.ProgressMonitorAdapter;
+import jetbrains.mps.ide.IdeBundle;
 
-@GeneratedClass(node = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)/2872212824181502651", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
+@GeneratedClass(nodeId = "2872212824181502651", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
 public class PasteAsJavaClass_Action extends BaseAction {
   private static final Icon ICON = null;
 
   public PasteAsJavaClass_Action() {
     super("Paste as Java Class", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    this.setActionAccess(ActionAccess.NONE);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -36,7 +42,7 @@ public class PasteAsJavaClass_Action extends BaseAction {
       return false;
     }
     SModel m = event.getData(MPSCommonDataKeys.MODEL);
-    return m != null && SModelOperations.getAllLanguageImports(m).contains(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage")) && JavaPaster.areDataAvailableInClipboard();
+    return m != null && SModelOperations.getAllLanguageImports(m).contains(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage")) && JavaPaster.isStringOnlyDataAvailableInClipboard();
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -66,6 +72,16 @@ public class PasteAsJavaClass_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    new JavaPaster().pasteJavaAsClass(event.getData(MPSCommonDataKeys.MODEL), event.getData(MPSCommonDataKeys.MPS_PROJECT));
+    Project ideaProject = ProjectHelper.toIdeaProject(event.getData(MPSCommonDataKeys.MPS_PROJECT));
+    ProgressManager pm = ProgressManager.getInstance();
+    pm.runProcessWithProgressSynchronously(() -> {
+      ProgressMonitorAdapter monitor = new ProgressMonitorAdapter(ProgressManager.getInstance().getProgressIndicator());
+      monitor.start(IdeBundle.message("actions.pasteAsJavaClass.progressTitle"), 5);
+      try {
+        new JavaPaster().pasteJavaAsClass(event.getData(MPSCommonDataKeys.MODEL), event.getData(MPSCommonDataKeys.MPS_PROJECT), monitor, event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository());
+      } finally {
+        monitor.done();
+      }
+    }, IdeBundle.message("actions.pasteAsJavaClass.progressTitle"), false, ideaProject);
   }
 }

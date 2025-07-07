@@ -10,7 +10,6 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -32,15 +31,7 @@ public class SortKeymapMembers extends BaseRefactoring {
     SNode node = refactoringContext.getSelectedNode();
     List<SNode> copy = ListSequence.fromListWithValues(new ArrayList<SNode>(), SLinkOperations.getChildren(node, LINKS.shortcutChange$L1Z4));
     ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.shortcutChange$L1Z4)).clear();
-    ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.shortcutChange$L1Z4)).addSequence(ListSequence.fromList(copy).sort(new ISelector<SNode, Boolean>() {
-      public Boolean select(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.ParameterizedShortcutChange$S6);
-      }
-    }, true).alsoSort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.action$wOJd), PROPS.name$MnvL);
-      }
-    }, true));
+    ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.shortcutChange$L1Z4)).addSequence(ListSequence.fromList(copy).sort((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.ParameterizedShortcutChange$S6), true).alsoSort((it) -> SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.action$wOJd), PROPS.name$MnvL), true));
   }
 
   private static final class LINKS {

@@ -24,15 +24,15 @@ public final class CardinalityTestConcept_FeedbackFeedback extends BaseFeedbackD
   private static final FeedbackProvider<RefCardinalityContext> MSGPROVIDER_WhenThereIsNoRefInRoleWithNonzeroCardinality_cez0w0_a = new BaseMessageProvider<RefCardinalityContext>(new ProblemKindId(PredefinedStructureProblemKind.NO_REF_IN_OBLIGATORY_ROLE)) {
     @NotNull
     @Override
-    public MessageProvider.StringMsg yieldMessage(RefCardinalityContext context) {
-      return new MessageProvider.StringMsg("No ref in the very obligatory role '" + context.getLink() + "'");
+    public MessageProvider.Msg yieldMessage(RefCardinalityContext context) {
+      return format("No ref in the very obligatory role '%s'", context.getLink());
     }
   };
   private static final FeedbackProvider<ChildCardinalityContext> MSGPROVIDER_WhenThereIsNoChildInRoleWithNonzeroCardinality_cez0w0_b = new BaseMessageProvider<ChildCardinalityContext>(new ProblemKindId(PredefinedStructureProblemKind.NO_CHILD_IN_OBLIGATORY_ROLE)) {
     @NotNull
     @Override
-    public MessageProvider.StringMsg yieldMessage(ChildCardinalityContext context) {
-      return new MessageProvider.StringMsg("No child in the very obligatory role '" + context.getLink() + "'");
+    public MessageProvider.Msg yieldMessage(ChildCardinalityContext context) {
+      return format("No child in the very obligatory role '%s'", context.getLink());
     }
   };
 

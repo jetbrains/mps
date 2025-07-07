@@ -173,6 +173,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ToArrayOperation;
   private ConceptPresentation props_ToIteratorOperation;
   private ConceptPresentation props_ToListOperation;
+  private ConceptPresentation props_ToStreamOperation;
   private ConceptPresentation props_TranslateOperation;
   private ConceptPresentation props_TreeMapCreator;
   private ConceptPresentation props_TreeSetCreator;
@@ -542,7 +543,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_ForEachVariable == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a74b0qg);
+          cpb.icon(IconContainer.RESOURCE_0);
           props_ForEachVariable = cpb.create();
         }
         return props_ForEachVariable;
@@ -1231,6 +1232,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.SmartClosureParameterDeclaration:
         if (props_SmartClosureParameterDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.shortDesc("smart closure parameter");
           cpb.presentationByName();
           props_SmartClosureParameterDeclaration = cpb.create();
@@ -1392,6 +1394,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ToListOperation = cpb.create();
         }
         return props_ToListOperation;
+      case LanguageConceptSwitch.ToStreamOperation:
+        if (props_ToStreamOperation == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("use as stream");
+          cpb.rawPresentation("toStream");
+          props_ToStreamOperation = cpb.create();
+        }
+        return props_ToStreamOperation;
       case LanguageConceptSwitch.TranslateOperation:
         if (props_TranslateOperation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

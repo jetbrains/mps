@@ -1,18 +1,15 @@
-<components>
-  <project-components>
-    <component>
-      <implementation-class>jetbrains.mps.ide.findusages.view.UsagesViewTool</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.messages.MessagesViewTool</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.platform.actions.AnalyzeDependenciesViewTool</implementation-class>
-    </component>
-  </project-components>
+<idea-plugin>
   <extensions defaultExtensionNs="com.intellij">
     <projectService serviceImplementation="jetbrains.mps.ide.messages.navigation.NavigationManager"/>
+    <projectService serviceImplementation="jetbrains.mps.ide.messages.MessagesViewTool"/>
+    <postStartupActivity implementation="jetbrains.mps.ide.messages.MessagesViewTool$MessageViewToolInitialization"/>
+    <toolWindow id="Usages" anchor="bottom" icon="AllIcons.Toolwindows.ToolWindowFind" factoryClass="jetbrains.mps.ide.findusages.view.UsagesViewTool$Factory" doNotActivateOnStart="false" canCloseContents="true"/>
   </extensions>
+
+  <applicationListeners>
+    <listener class="jetbrains.mps.ide.messages.MessagesViewTool$MessagesViewProjectListener"
+              topic="com.intellij.openapi.project.ProjectManagerListener"/>
+  </applicationListeners>
 
   <extensionPoints>
     <extensionPoint qualifiedName="com.intellij.mps.modelRootEntry" beanClass="jetbrains.mps.ide.ui.dialogs.properties.persistence.ModelRootEntryEP"/>
@@ -41,6 +38,10 @@
         <keyboard-shortcut first-keystroke="DELETE" keymap="$default"/>
       </action>
       <action id="jetbrains.mps.ui.usage.tree.selected-only" text="Include selected only" class="jetbrains.mps.ide.findusages.view.SelectedOnlyAction"/>
+      <action id="jetbrains.mps.ui.usage.tree.copy"
+              text="Copy Text"
+              class="jetbrains.mps.ide.findusages.view.CopyUsagesTextAction"
+              icon="AllIcons.Actions.Copy"/>
     </group>
   </actions>
 
@@ -49,9 +50,23 @@
     <mps.modelRootEntry rootType="java_classes" title="Java &amp;Classes" className="jetbrains.mps.ide.java.ui.JavaClassStubsModelRootEntryFactory"/>
     <mps.facetTabFactory facetType="java" className="jetbrains.mps.ide.java.ui.JavaModuleFacetTabFactory"/>
     <mps.facetTabFactory facetType="generator" className="jetbrains.mps.ide.generator.CustomGenFacetTabFactory"/>
+    <mps.facetTabFactory facetType="unknown" className="jetbrains.mps.ide.ui.dialogs.properties.tabs.UnknownFacetTabFactory"/>
+    <mps.facetTabFactory facetType="plaintext" className="jetbrains.mps.ide.plaintext.PlainTextFacetTabFactory"/>
+    <mps.facetTabFactory facetType="documentation" className="jetbrains.mps.ide.documentation.DocumentationFacetTabFactory"/>
     <mps.projectGroupTemplateEP implementation="jetbrains.mps.workbench.dialogs.project.newproject.SolutionProjectsGroup"/>
     <mps.solutionProjectTemplateEP implementation="jetbrains.mps.workbench.dialogs.project.newproject.DefaultSolutionProjectTemplate"/>
     <mps.projectGroupTemplateEP implementation="jetbrains.mps.workbench.dialogs.project.newproject.OtherProjectsGroup"/>
     <mps.otherProjectTemplateEP implementation="jetbrains.mps.workbench.dialogs.project.newproject.EmptyProjectTemplate"/>
+    <iconMapper mappingFile="MPSIconsIconMappings.json"/>
   </extensions>
-</components>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <registryKey key="mps.ProjectPane.messages.use.underline" defaultValue="true" description="Underline tree elements with errors or warnings" restartRequired="false"/>
+    <registryKey key="mps.ProjectPane.messages.use.indicator" defaultValue="true" description="Show dedicated control for a tree elements with errors or warnings" restartRequired="false"/>
+    <registryKey key="mps.ProjectPane.messages.error.only" defaultValue="false" description="Do not show warning and informational messages in the project tree" restartRequired="false"/>
+    <registryKey key="mps.ProjectPane.show.descriptor.generator" defaultValue="false" description="Show @descriptor model in Generator modules" restartRequired="false"/>
+    <registryKey key="mps.ProjectPane.show.descriptor.solution" defaultValue="false" description="Show @descriptor model in Solution modules" restartRequired="false"/>
+    <registryKey key="ide.favorites.tool.window.applicable" defaultValue="true" description="Allows to enable the Favorites tool window" restartRequired="false"/>
+    <registryKey key="mps.projectView.generationRequired.icon" defaultValue="false" description="Display blue dot instead of (generation required)" restartRequired="false"/>
+  </extensions>
+</idea-plugin>

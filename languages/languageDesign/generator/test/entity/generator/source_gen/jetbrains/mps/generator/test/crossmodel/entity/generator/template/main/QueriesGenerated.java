@@ -13,7 +13,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.ReductionRuleCondition;
 import java.util.HashMap;
@@ -22,7 +21,6 @@ import jetbrains.mps.generator.impl.query.QueryKey;
 import jetbrains.mps.generator.template.ReductionRuleQueryContext;
 import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.impl.query.SourceNodesQuery;
-import jetbrains.mps.generator.impl.query.QueryKeyImpl;
 import java.util.Collection;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.generator.impl.query.PropertyValueQuery;
@@ -60,18 +58,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.use1$5gNj), LINKS.owner$5jeb), "Node2Bean");
   }
   public static Iterable<SNode> sourceNodesQuery_3_0(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.entries$Ii9u)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.kind$IJIT), 0x3c70a9e3bda9ab87L);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.entries$Ii9u)).where((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.kind$IJIT), 0x3c70a9e3bda9ab87L));
   }
   public static Iterable<SNode> sourceNodesQuery_3_1(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.entries$Ii9u)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.kind$IJIT), 0x3c70a9e3bda9ab88L);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.entries$Ii9u)).where((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.kind$IJIT), 0x3c70a9e3bda9ab88L));
   }
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {
@@ -82,11 +72,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public ReductionRuleCondition getReductionRuleCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(rrcMethods.containsKey(id))) {
-      return super.getReductionRuleCondition(identity);
-    }
-    return rrcMethods.get(id);
+    ReductionRuleCondition query = identity.forTemplateNode(rrcMethods);
+    return (query != null ? query : super.getReductionRuleCondition(identity));
   }
   private static class RRC implements ReductionRuleCondition {
     private final int methodKey;
@@ -114,11 +101,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public SourceNodesQuery getSourceNodesQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snsqMethods.containsKey(id))) {
-      return super.getSourceNodesQuery(identity);
-    }
-    return snsqMethods.get(id);
+    SourceNodesQuery query = identity.forFunctionNode(snsqMethods);
+    return (query != null ? query : super.getSourceNodesQuery(identity));
   }
   private static class SNsQ implements SourceNodesQuery {
     private final int methodKey;
@@ -147,11 +131,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public PropertyValueQuery getPropertyValueQuery(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(pvqMethods.containsKey(id))) {
-      return super.getPropertyValueQuery(identity);
-    }
-    return pvqMethods.get(id);
+    PropertyValueQuery query = identity.forTemplateNode(pvqMethods);
+    return (query != null ? query : super.getPropertyValueQuery(identity));
   }
   private static class PVQ extends PropertyValueQuery.Base {
     private final int methodKey;
@@ -181,11 +162,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public ReferenceTargetQuery getReferenceTargetQuery(@NotNull QueryKey queryKey) {
-    final String id = queryKey.getTemplateNode().getNodeId().toString();
-    if (!(rtqMethods.containsKey(id))) {
-      return super.getReferenceTargetQuery(queryKey);
-    }
-    return rtqMethods.get(id);
+    ReferenceTargetQuery query = queryKey.forTemplateNode(rtqMethods);
+    return (query != null ? query : super.getReferenceTargetQuery(queryKey));
   }
   private static class RTQ extends ReferenceTargetQuery.Base {
     private final int methodKey;

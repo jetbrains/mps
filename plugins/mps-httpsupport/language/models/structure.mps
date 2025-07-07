@@ -2,14 +2,14 @@
 <model ref="r:3c30b5c5-2f86-4daf-bab8-b406cfefcb4f(jetbrains.mps.ide.httpsupport.structure)">
   <persistence version="9" />
   <languages>
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="3" />
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="tp25" ref="r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)" />
+    <import index="v54s" ref="r:2a0fe383-d602-4f5b-813c-e41afdbbb97e(jetbrains.mps.lang.extension.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
-    <import index="v54s" ref="r:2a0fe383-d602-4f5b-813c-e41afdbbb97e(jetbrains.mps.lang.extension.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
@@ -46,6 +46,7 @@
         <property id="1071599893252" name="sourceCardinality" index="20lbJX" />
         <property id="1071599937831" name="metaClass" index="20lmBu" />
         <property id="241647608299431140" name="linkId" index="IQ2ns" />
+        <property id="2395585628928459314" name="unordered" index="38shpt" />
         <reference id="1071599976176" name="target" index="20lvS9" />
       </concept>
     </language>
@@ -53,7 +54,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -94,6 +95,14 @@
       <property role="20kJfa" value="queryParameters" />
       <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="21vgRr5xrgT" resolve="QueryParameter" />
+    </node>
+    <node concept="1TJgyj" id="33sncJYNC$K" role="1TKVEi">
+      <property role="IQ2ns" value="3520791039919950128" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="handledMethods" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <property role="38shpt" value="true" />
+      <ref role="20lvS9" node="33sncJYNC_c" resolve="HttpMethod" />
     </node>
     <node concept="1TJgyj" id="5dkEk59WWZa" role="1TKVEi">
       <property role="IQ2ns" value="6004610301070397386" />
@@ -446,6 +455,83 @@
     <property role="34LRSv" value="getURL" />
     <property role="R4oN_" value="provides URL to this node" />
     <ref role="1TJDcQ" to="tp25:g$eCIIG" resolve="SNodeOperation" />
+  </node>
+  <node concept="1TIwiD" id="33sncJYNC_c">
+    <property role="EcuMT" value="3520791039919950156" />
+    <property role="TrG5h" value="HttpMethod" />
+    <property role="R5$K7" value="true" />
+    <property role="3GE5qa" value="handler.method" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+  </node>
+  <node concept="1TIwiD" id="33sncJYNC_z">
+    <property role="EcuMT" value="3520791039919950179" />
+    <property role="3GE5qa" value="handler.method" />
+    <property role="TrG5h" value="HttpMethod_Options" />
+    <property role="34LRSv" value="OPTIONS" />
+    <ref role="1TJDcQ" node="33sncJYNC_c" resolve="HttpMethod" />
+  </node>
+  <node concept="1TIwiD" id="33sncJYNC_U">
+    <property role="EcuMT" value="3520791039919950202" />
+    <property role="3GE5qa" value="handler.method" />
+    <property role="TrG5h" value="HttpMethod_Get" />
+    <property role="34LRSv" value="GET" />
+    <ref role="1TJDcQ" node="33sncJYNC_c" resolve="HttpMethod" />
+  </node>
+  <node concept="1TIwiD" id="33sncJYNCAh">
+    <property role="EcuMT" value="3520791039919950225" />
+    <property role="3GE5qa" value="handler.method" />
+    <property role="TrG5h" value="HttpMethod_Head" />
+    <property role="34LRSv" value="HEAD" />
+    <ref role="1TJDcQ" node="33sncJYNC_c" resolve="HttpMethod" />
+  </node>
+  <node concept="1TIwiD" id="33sncJYNCAC">
+    <property role="EcuMT" value="3520791039919950248" />
+    <property role="3GE5qa" value="handler.method" />
+    <property role="TrG5h" value="HttpMethod_Post" />
+    <property role="34LRSv" value="POST" />
+    <ref role="1TJDcQ" node="33sncJYNC_c" resolve="HttpMethod" />
+  </node>
+  <node concept="1TIwiD" id="33sncJYNCAZ">
+    <property role="EcuMT" value="3520791039919950271" />
+    <property role="3GE5qa" value="handler.method" />
+    <property role="TrG5h" value="HttpMethod_Put" />
+    <property role="34LRSv" value="PUT" />
+    <ref role="1TJDcQ" node="33sncJYNC_c" resolve="HttpMethod" />
+  </node>
+  <node concept="1TIwiD" id="33sncJYNCBm">
+    <property role="EcuMT" value="3520791039919950294" />
+    <property role="3GE5qa" value="handler.method" />
+    <property role="TrG5h" value="HttpMethod_Patch" />
+    <property role="34LRSv" value="PATCH" />
+    <ref role="1TJDcQ" node="33sncJYNC_c" resolve="HttpMethod" />
+  </node>
+  <node concept="1TIwiD" id="33sncJYNCBH">
+    <property role="EcuMT" value="3520791039919950317" />
+    <property role="3GE5qa" value="handler.method" />
+    <property role="TrG5h" value="HttpMethod_Delete" />
+    <property role="34LRSv" value="DELETE" />
+    <ref role="1TJDcQ" node="33sncJYNC_c" resolve="HttpMethod" />
+  </node>
+  <node concept="1TIwiD" id="33sncJYNCC4">
+    <property role="EcuMT" value="3520791039919950340" />
+    <property role="3GE5qa" value="handler.method" />
+    <property role="TrG5h" value="HttpMethod_Trace" />
+    <property role="34LRSv" value="TRACE" />
+    <ref role="1TJDcQ" node="33sncJYNC_c" resolve="HttpMethod" />
+  </node>
+  <node concept="1TIwiD" id="33sncJYNCCr">
+    <property role="EcuMT" value="3520791039919950363" />
+    <property role="3GE5qa" value="handler.method" />
+    <property role="TrG5h" value="HttpMethod_Connect" />
+    <property role="34LRSv" value="CONNECT" />
+    <ref role="1TJDcQ" node="33sncJYNC_c" resolve="HttpMethod" />
+  </node>
+  <node concept="1TIwiD" id="30pFmTipvz0">
+    <property role="EcuMT" value="3465992077578729664" />
+    <property role="3GE5qa" value="handler.method" />
+    <property role="TrG5h" value="HttpMethod_ANY" />
+    <property role="34LRSv" value="ANY HTTP METHOD" />
+    <ref role="1TJDcQ" node="33sncJYNC_c" resolve="HttpMethod" />
   </node>
 </model>
 

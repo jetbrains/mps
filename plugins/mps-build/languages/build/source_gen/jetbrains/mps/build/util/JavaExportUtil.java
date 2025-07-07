@@ -11,10 +11,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -60,14 +57,13 @@ public class JavaExportUtil {
           }
 
         } else {
-          // fatal, unknown element 
+          // fatal, unknown element
           ListSequence.fromList(result).clear();
           break;
         }
       }
 
       if (ListSequence.fromList(result).isNotEmpty()) {
-        builder.needsFetch(contextNode);
         for (Tuples._2<SNode, Boolean> pair : ListSequence.fromList(result)) {
           if ((boolean) pair._1()) {
             builder.addWithContent(pair._0());
@@ -81,17 +77,10 @@ public class JavaExportUtil {
 
     SNode artifact = SNodeOperations.as(artifacts.findArtifact(library), CONCEPTS.BuildLayout_Node$Rb);
     if (artifact != null) {
-      builder.needsFetch(contextNode);
       if (SNodeOperations.isInstanceOf(artifact, CONCEPTS.BuildLayout_ExportAsJavaLibrary$KO)) {
-        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(artifact, CONCEPTS.BuildLayout_ExportAsJavaLibrary$KO), LINKS.children$aMRO)).select(new ISelector<SNode, SNode>() {
-          public SNode select(SNode it) {
-            return SNodeOperations.as(artifacts.findArtifact(it), CONCEPTS.BuildLayout_Node$Rb);
-          }
-        }).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            if (it != null) {
-              builder.add(it);
-            }
+        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(artifact, CONCEPTS.BuildLayout_ExportAsJavaLibrary$KO), LINKS.children$aMRO)).select((it) -> SNodeOperations.as(artifacts.findArtifact(it), CONCEPTS.BuildLayout_Node$Rb)).visitAll((it) -> {
+          if (it != null) {
+            builder.add(it);
           }
         });
       } else {
@@ -101,16 +90,12 @@ public class JavaExportUtil {
   }
   public static void requireModule(VisibleArtifacts artifacts, SNode target, SNode contextNode, RequiredDependenciesBuilder builder) {
 
-    // dependencies closure 
+    // dependencies closure
     JavaModulesClosure closure = new JavaModulesClosure(target).closure(true);
 
-    // searh for artifacts 
-    Iterable<SNode> required = Sequence.fromIterable(((Iterable<SNode>) closure.getModules())).concat(Sequence.fromIterable(((Iterable<SNode>) closure.getJars())).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.path$M9si);
-      }
-    })).concat(Sequence.fromIterable(Sequence.<SNode>singleton(target)));
-    boolean hasDependencies = false;
+    // search for artifacts
+    // XXX how come we concat BuildSource_JavaModule with BuildSourcePath, and use findArtifact for both?
+    Iterable<SNode> required = Sequence.fromIterable(closure.getModules()).concat(Sequence.fromIterable(closure.getJars()).select((it) -> SLinkOperations.getTarget(it, LINKS.path$M9si))).concat(Sequence.fromIterable(Sequence.<SNode>singleton(target)));
     for (SNode n : Sequence.fromIterable(required)) {
       if (SNodeOperations.getContainingRoot(n) == SNodeOperations.getContainingRoot(contextNode)) {
         continue;
@@ -119,11 +104,10 @@ public class JavaExportUtil {
       SNode artifact = SNodeOperations.as(artifacts.findArtifact(n), CONCEPTS.BuildLayout_Node$Rb);
       if (artifact != null) {
         builder.add(artifact);
-        hasDependencies = true;
       }
     }
 
-    for (SNode lib : Sequence.fromIterable((Iterable<SNode>) closure.getLibraries())) {
+    for (SNode lib : Sequence.fromIterable(closure.getLibraries())) {
       if (SNodeOperations.getContainingRoot(lib) == SNodeOperations.getContainingRoot(contextNode)) {
         continue;
       }
@@ -131,7 +115,7 @@ public class JavaExportUtil {
       requireLibrary(artifacts, lib, contextNode, builder);
     }
 
-    for (SNode extJar : CollectionSequence.fromCollection(closure.getExternalJars())) {
+    for (SNode extJar : Sequence.fromIterable(closure.getExternalJars())) {
       if (SNodeOperations.getContainingRoot(extJar) == SNodeOperations.getContainingRoot(contextNode)) {
         continue;
       }
@@ -143,11 +127,10 @@ public class JavaExportUtil {
         } else {
           builder.add(jarImport._0());
         }
-        hasDependencies = true;
       }
     }
 
-    for (Tuples._2<SNode, String> extJarInFolder : CollectionSequence.fromCollection(closure.getExternalJarsInFolder())) {
+    for (Tuples._2<SNode, String> extJarInFolder : Sequence.fromIterable(closure.getExternalJarsInFolder())) {
       if (SNodeOperations.getContainingRoot(extJarInFolder._0()) == SNodeOperations.getContainingRoot(contextNode)) {
         continue;
       }
@@ -155,17 +138,12 @@ public class JavaExportUtil {
       SNode folderNode = requireJarFolder(artifacts, extJarInFolder._0());
       if (folderNode != null) {
         builder.addWithContent(folderNode);
-        hasDependencies = true;
       }
-    }
-
-    if (hasDependencies) {
-      builder.needsFetch(contextNode);
     }
   }
   @Nullable
   public static Tuples._2<SNode, Boolean> requireJar(VisibleArtifacts artifacts, SNode jar, SNode contextNode) {
-    // FIXME there's little value in contextNode, perhaps, shall leave the check to outer code (in case it cares at all) 
+    // FIXME there's little value in contextNode, perhaps, shall leave the check to outer code (in case it cares at all)
     if (SNodeOperations.getContainingRoot(jar) == SNodeOperations.getContainingRoot(contextNode)) {
       return null;
     }

@@ -6,14 +6,14 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 
-@GeneratedClass(node = "r:a178d3c3-970e-4352-b61c-4e55abc3bc24(jetbrains.mps.vcs.core.mergedriver)/3342666646761698631", model = "r:a178d3c3-970e-4352-b61c-4e55abc3bc24(jetbrains.mps.vcs.core.mergedriver)")
+@GeneratedClass(nodeId = "3342666646761698631", model = "r:a178d3c3-970e-4352-b61c-4e55abc3bc24(jetbrains.mps.vcs.core.mergedriver)")
 /*package*/ class TextMerger extends AbstractContentMerger {
   public TextMerger() {
   }
   @Nullable
   @Override
   public Tuples._2<Integer, byte[]> mergeContents(FileContent baseContent, FileContent localContent, FileContent latestContent) {
-    // TODO: add text merger call for SVN command line tool 
+    // TODO: add text merger call for SVN command line tool
     return null;
   }
 }

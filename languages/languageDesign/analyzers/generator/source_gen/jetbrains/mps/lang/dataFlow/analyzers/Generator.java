@@ -36,22 +36,20 @@ public class Generator extends TemplateModuleInterpreted2 {
 
   @Override
   protected void fillReferencedGenerators(TemplateModuleBase.ReferencedGenerators referencedGenerators) {
-    referencedGenerators.extended("e7d4970e-3e9f-4cf0-a129-f5976c82d635(jetbrains.mps.lang.pattern#1174810948060)");
     referencedGenerators.extended("bdfab909-4d8f-4566-b44e-c33957ce28ef(jetbrains.mps.lang.dataFlow#1206455293228)");
   }
 
   @Override
   public Collection<SLanguage> getTargetLanguages() {
-    SLanguage[] rv = new SLanguage[4];
+    SLanguage[] rv = new SLanguage[3];
     rv[0] = MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
-    rv[1] = MetaAdapterFactory.getLanguage(0xf280165065d5424eL, 0xbb1b463a8781b786L, "jetbrains.mps.baseLanguage.javadoc");
-    rv[2] = MetaAdapterFactory.getLanguage(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, "jetbrains.mps.baseLanguageInternal");
-    rv[3] = MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel");
+    rv[1] = MetaAdapterFactory.getLanguage(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, "jetbrains.mps.baseLanguageInternal");
+    rv[2] = MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel");
     return Arrays.asList(rv);
   }
 
   @Override
   public Collection<TemplateMappingPriorityRule> getPriorities() {
-    return TemplateUtil.asCollection(TemplateUtil.createStrictlyTogetherRule(TemplateUtil.createRefExternal("fead051a-767c-4c80-9582-25e0330f675a(jetbrains.mps.lang.dataFlow.analyzers#9177062368042328054)", TemplateUtil.createRefLocal()), TemplateUtil.createRefExternal("e7d4970e-3e9f-4cf0-a129-f5976c82d635(jetbrains.mps.lang.pattern#1174810948060)", TemplateUtil.createRefLocal())), TemplateUtil.createStrictlyTogetherRule(TemplateUtil.createRefExternal("fead051a-767c-4c80-9582-25e0330f675a(jetbrains.mps.lang.dataFlow.analyzers#9177062368042328054)", TemplateUtil.createRefLocal()), TemplateUtil.createRefExternal("bdfab909-4d8f-4566-b44e-c33957ce28ef(jetbrains.mps.lang.dataFlow#1206455293228)", TemplateUtil.createRefLocal())));
+    return TemplateUtil.asCollection(TemplateUtil.createStrictlyTogetherRule(TemplateUtil.createRefExternal("fead051a-767c-4c80-9582-25e0330f675a(jetbrains.mps.lang.dataFlow.analyzers#9177062368042328054)", TemplateUtil.createRefLocal()), TemplateUtil.createRefExternal("bdfab909-4d8f-4566-b44e-c33957ce28ef(jetbrains.mps.lang.dataFlow#1206455293228)", TemplateUtil.createRefLocal())));
   }
 }

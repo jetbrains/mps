@@ -4,22 +4,23 @@ package jetbrains.mps.lang.editor.actions.test;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.lang.test.runtime.EditorTestUtil;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 
 @MPSLaunch
 public class TwoStepDeleteLabelPartiallySelected_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(TwoStepDeleteLabelPartiallySelected_Test.class, "${mps_home}", "r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TwoStepDeleteLabelPartiallySelected_Test.class).projectPath(null).modelRef("r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)").reopenProject(false).build());
 
   public TwoStepDeleteLabelPartiallySelected_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -36,12 +37,10 @@ public class TwoStepDeleteLabelPartiallySelected_Test extends BaseTransformation
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("1241246198932159606", "1241246198932159611");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-          Assert.assertTrue(DeletionApproverUtil.isApprovedForDeletion(getEditorComponent().getEditorContext(), getEditorComponent().getSelectedNode()));
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-        }
+      EditorTestUtil.runWithTwoStepDeletion(() -> {
+        invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
+        Assert.assertTrue(DeletionApproverUtil.isApprovedForDeletion(getEditorComponent().getEditorContext(), getEditorComponent().getSelectedNode()));
+        invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
       }, true);
     }
   }

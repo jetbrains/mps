@@ -10,7 +10,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.annotations.NotNull;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1215907579103", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1215907579103", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class ShowErrorMessage_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -18,6 +18,7 @@ public class ShowErrorMessage_Action extends BaseAction {
     super("Show Error Message", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

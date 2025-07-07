@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.build.util.VisibleArtifacts;
 import jetbrains.mps.build.util.RequiredDependenciesBuilder;
@@ -19,16 +18,14 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.build.util.DescendantsScope;
-import jetbrains.mps.build.behavior.BuildPlugin__BehaviorDescriptor;
-import jetbrains.mps.build.util.DependenciesHelper;
-import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
+import jetbrains.mps.scope.ListScope;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.build.behavior.BuildPlugin__BehaviorDescriptor;
+import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.build.mps.util.VisibleModules;
 import jetbrains.mps.build.mps.util.MPSModulesClosure;
 import jetbrains.mps.build.behavior.BuildProject__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.scope.CompositeScope;
 import jetbrains.mps.build.mps.util.MPSModulesPartitioner;
 import jetbrains.mps.build.mps.util.ModulePlugins;
@@ -36,9 +33,6 @@ import java.util.ArrayList;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.builder.SNodeBuilder;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -46,107 +40,81 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xc0bde9fc71699d9L, "jetbrains.mps.build.mps.structure.BuildMPSPlugin");
 
-  public static final SMethod<Scope> getLayoutScope_id13YBgBBRSOA = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getLayoutScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("13YBgBBRSOA").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
-  public static final SMethod<Void> fetchDependencies_id57YmpYyL8F1 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("fetchDependencies").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("57YmpYyL8F1").build(SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""), SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, ""));
-  public static final SMethod<Scope> getProjectStructureScope_id3fifI_xCJOQ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getProjectStructureScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3fifI_xCJOQ").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
-  public static final SMethod<Iterable<SNode>> getImportedLibraries_id3zFnP6MwWdL = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getImportedLibraries").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3zFnP6MwWdL").build();
-  public static final SMethod<SNode> getMpsLibrary_id3zFnP6MM9ge = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getMpsLibrary").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3zFnP6MM9ge").build();
-  /*package*/ static final SMethod<Void> fetchGenerationDeps_id3WZD5LHqDLU = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("fetchGenerationDeps").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("3WZD5LHqDLU").build(SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""), SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, ""));
-  /*package*/ static final SMethod<Void> addPluginsRequiredForGenerationToDepBuilder_id5VKiljnaBi = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addPluginsRequiredForGenerationToDepBuilder").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("5VKiljnaBi").build(SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, ""), SMethodBuilder.createJavaParameter((Class<Iterable<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""));
-  /*package*/ static final SMethod<Boolean> areLocatedInTheSameRoot_id5eGY5T7x8$N = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("areLocatedInTheSameRoot").modifiers(SModifiersImpl.create(1, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("5eGY5T7x8$N").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Scope> getLayoutScope_id13YBgBBRSOA = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getLayoutScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1224588814561807654L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
+  public static final SMethod<Void> fetchDependencies_id57YmpYyL8F1 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("fetchDependencies").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5908258303322131137L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""), SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, ""));
+  public static final SMethod<Scope> getProjectStructureScope_id3fifI_xCJOQ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getProjectStructureScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3734116213129936182L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
+  /*package*/ static final SMethod<Void> fetchGenerationDeps_id3WZD5LHqDLU = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("fetchGenerationDeps").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(4557542064801881210L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""), SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, ""));
+  /*package*/ static final SMethod<Void> addPluginsRequiredForGenerationToDepBuilder_id5VKiljnaBi = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addPluginsRequiredForGenerationToDepBuilder").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(106891382229871058L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, ""), SMethodBuilder.createJavaParameter((Class<Iterable<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""));
+  /*package*/ static final SMethod<Boolean> areLocatedInTheSameRoot_id5eGY5T7x8$N = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("areLocatedInTheSameRoot").modifiers(1, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(6029467084952734003L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLayoutScope_id13YBgBBRSOA, fetchDependencies_id57YmpYyL8F1, getProjectStructureScope_id3fifI_xCJOQ, getImportedLibraries_id3zFnP6MwWdL, getMpsLibrary_id3zFnP6MM9ge, fetchGenerationDeps_id3WZD5LHqDLU, addPluginsRequiredForGenerationToDepBuilder_id5VKiljnaBi, areLocatedInTheSameRoot_id5eGY5T7x8$N);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLayoutScope_id13YBgBBRSOA, fetchDependencies_id57YmpYyL8F1, getProjectStructureScope_id3fifI_xCJOQ, fetchGenerationDeps_id3WZD5LHqDLU, addPluginsRequiredForGenerationToDepBuilder_id5VKiljnaBi, areLocatedInTheSameRoot_id5eGY5T7x8$N);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static Scope getLayoutScope_id13YBgBBRSOA(@NotNull SNode __thisNode__, SAbstractConcept kind) {
+  /*package*/ static Scope getLayoutScope_id13YBgBBRSOA(@NotNull SNode __thisNode__, final SAbstractConcept kind) {
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildMps_AbstractModule$FZ) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildMps_Group$Jc) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildMps_IdeaPlugin$po)) {
-      return DescendantsScope.forNamedElements(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__), LINKS.parts$mGDj, kind);
+      return ListScope.forNamedElements(ListSequence.fromList(SLinkOperations.getChildren(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__), LINKS.parts$mGDj)).translate((it) -> SNodeOperations.getNodeDescendants(it, SNodeOperations.asSConcept(kind), true, new SAbstractConcept[]{})));
     }
-
     return null;
   }
   /*package*/ static void fetchDependencies_id57YmpYyL8F1(@NotNull SNode __thisNode__, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
     SNode project = artifacts.getProject();
 
-    // fetch generation deps 
-    BuildMPSPlugin__BehaviorDescriptor.fetchGenerationDeps_id3WZD5LHqDLU.invoke(__thisNode__, artifacts, builder);
+    // fetch generation deps
+    BuildMPSPlugin__BehaviorDescriptor.fetchGenerationDeps_id3WZD5LHqDLU.invokeSpecial(__thisNode__, artifacts, builder);
 
-    // fetch stuff for ant task classpath 
-    DependenciesHelper helper = new DependenciesHelper(builder.getGenContext(), project);
-    SNode originalProject = project;
-    SNode antMpsModule = SNodeOperations.as(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(originalProject, CONCEPTS.BuildSource_JavaModule$NC, LINKS.parts$mGDj, ((int) 0)).resolve(originalProject, "ant-mps"), CONCEPTS.BuildSource_JavaModule$NC);
+    // fetch stuff for ant task classpath
+    SNode antMpsModule = SNodeOperations.as(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(project, CONCEPTS.BuildSource_JavaModule$NC, LINKS.parts$mGDj, ((int) 0)).resolve(project, "ant-mps"), CONCEPTS.BuildSource_JavaModule$NC);
     if ((antMpsModule != null)) {
       SNode antMpsJar = SNodeOperations.as(artifacts.findArtifact(antMpsModule), CONCEPTS.BuildLayout_Node$Rb);
       if ((antMpsJar != null)) {
-        helper.putArtifact("ant-mps", antMpsJar);
-        builder.add(antMpsJar);
+        builder.addWithTag(antMpsJar, "ant-mps");
       }
     }
-    // FIXME consider JavaExternalLibraryHelper re-use 
-    // XXX isn't it odd to populate DependenciesHelper here, and not in unpack? 
-    SNode jdomLib = SNodeOperations.as(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(project, CONCEPTS.BuildSource_JavaLibrary$6q, LINKS.parts$mGDj, ((int) 0)).resolve(project, "jdom-lib"), CONCEPTS.BuildSource_JavaLibrary$6q);
-    if (jdomLib != null) {
-      SNode jdomJarRef = SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(jdomLib, LINKS.elements$fli0), CONCEPTS.BuildSource_JavaLibraryCP$up)).first(), LINKS.classpath$WEG$), CONCEPTS.BuildSource_JavaLibraryExternalJar$gz), LINKS.extJar$Hzyz);
-      SNode jdomArtifact = SNodeOperations.as(artifacts.findArtifact(SLinkOperations.getTarget(jdomJarRef, LINKS.jar$JLD3)), CONCEPTS.BuildLayout_Node$Rb);
-      if (jdomArtifact != null) {
-        helper.putArtifact("jdom", jdomArtifact);
-        builder.add(jdomArtifact);
-      }
-    }
-    SNode log4jLib = SNodeOperations.as(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(project, CONCEPTS.BuildSource_JavaLibrary$6q, LINKS.parts$mGDj, ((int) 0)).resolve(project, "log4j-lib"), CONCEPTS.BuildSource_JavaLibrary$6q);
-    if (log4jLib != null) {
-      SNode log4jJarRef = SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(log4jLib, LINKS.elements$fli0), CONCEPTS.BuildSource_JavaLibraryCP$up)).first(), LINKS.classpath$WEG$), CONCEPTS.BuildSource_JavaLibraryExternalJar$gz), LINKS.extJar$Hzyz);
-      SNode log4jArtifact = SNodeOperations.as(artifacts.findArtifact(SLinkOperations.getTarget(log4jJarRef, LINKS.jar$JLD3)), CONCEPTS.BuildLayout_Node$Rb);
-      if (log4jArtifact != null) {
-        helper.putArtifact("log4j", log4jArtifact);
-        builder.add(log4jArtifact);
+    // FIXME consider JavaExternalLibraryHelper re-use
+    // XXX isn't it odd to populate DependenciesHelper here (addWithTag hides this now, but still), and not in unpack?
+    SNode util = SNodeOperations.as(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(project, CONCEPTS.BuildSource_JavaLibrary$6q, LINKS.parts$mGDj, ((int) 0)).resolve(project, "org.jdom"), CONCEPTS.BuildSource_JavaLibrary$6q);
+    // I decided to go with org.jdom as an "anchor" dependency to obtain IDEA/lib/ location with libraries necessary to start MPS Ant tasks
+    // as I find 'util' a bit vague and I hate IDEA's approach to constantly change what's in util.jar
+    if (util != null) {
+      SNode utilJarRef = SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(util, LINKS.elements$fli0), CONCEPTS.BuildSource_JavaLibraryCP$up)).first(), LINKS.classpath$WEG$), CONCEPTS.BuildSource_JavaLibraryExternalJar$gz), LINKS.extJar$Hzyz);
+      SNode utilArtifact = SNodeOperations.as(artifacts.findArtifact(SLinkOperations.getTarget(utilJarRef, LINKS.jar$JLD3)), CONCEPTS.BuildLayout_Node$Rb);
+      if (utilArtifact != null) {
+        builder.addWithTag(utilArtifact, "org.jdom");
       }
     }
 
-    // fetch gentest language 
-    VisibleModules visibleModules = new VisibleModules(artifacts.getProject(), builder.getGenContext());
-    visibleModules.collect();
-    // jetbrains.mps.tool.gentest 
-    SNode gentest = SNodeOperations.cast(visibleModules.resolveById("3ba7b7cf-6a5a-4981-ba0b-3302e59ffef7"), CONCEPTS.BuildMps_Module$JW);
+    // fetch jetbrains.mps.tool.gentest language which holds Diff and Test make facets
+    SNode gentest = SNodeOperations.cast(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(project, CONCEPTS.BuildMps_Module$JW, LINKS.parts$mGDj, ((int) 0)).resolve(project, "jetbrains.mps.tool.gentest"), CONCEPTS.BuildMps_Module$JW);
 
-    if ((gentest != null)) {
-      if (SNodeOperations.getContainingRoot(gentest) != SNodeOperations.getContainingRoot(__thisNode__)) {
-        MPSModulesClosure closure = new MPSModulesClosure(gentest, new MPSModulesClosure.ModuleDependenciesOptions());
-        Iterable<SNode> gentestDeps = Sequence.fromIterable(closure.runtimeClosure().getAllModules()).union(Sequence.fromIterable(Sequence.<SNode>singleton(gentest)));
+    if ((gentest != null) && SNodeOperations.getContainingRoot(gentest) != SNodeOperations.getContainingRoot(__thisNode__)) {
+      MPSModulesClosure closure = new MPSModulesClosure(gentest, new MPSModulesClosure.ModuleDependenciesOptions());
+      Iterable<SNode> gentestDeps = Sequence.fromIterable(closure.runtimeClosure().getAllModules()).union(Sequence.fromIterable(Sequence.<SNode>singleton(gentest)));
 
-        for (SNode gentestDep : Sequence.fromIterable(gentestDeps)) {
-          SNode depLayoutNode = SNodeOperations.as(artifacts.findArtifact(gentestDep), CONCEPTS.BuildLayout_Node$Rb);
-          if (depLayoutNode != null) {
-            // FIXME what's the purpose of uuid string to node mapping here? I didn't find any use 
-            builder.add(depLayoutNode);
-          }
+      for (SNode gentestDep : Sequence.fromIterable(gentestDeps)) {
+        SNode depLayoutNode = SNodeOperations.as(artifacts.findArtifact(gentestDep), CONCEPTS.BuildLayout_Node$Rb);
+        if (depLayoutNode != null) {
+          builder.add(depLayoutNode);
         }
       }
     }
   }
   /*package*/ static Scope getProjectStructureScope_id3fifI_xCJOQ(@NotNull SNode __thisNode__, final SAbstractConcept kind) {
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildMps_AbstractModule$FZ) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildMps_IdeaPlugin$po) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildMps_Group$Jc)) {
-      Iterable<DescendantsScope> forAllVisible = Sequence.fromIterable(BuildProject__BehaviorDescriptor.getVisibleProjects_id13YBgBBRSOL.invoke(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__), ((boolean) false))).select(new ISelector<SNode, DescendantsScope>() {
-        public DescendantsScope select(SNode it) {
-          return DescendantsScope.forNamedElements(it, LINKS.parts$mGDj, kind);
-        }
-      });
-      Iterable<DescendantsScope> forThis = Sequence.<DescendantsScope>singleton(DescendantsScope.forNamedElements(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__), LINKS.parts$mGDj, kind));
-      return new CompositeScope(Sequence.fromIterable(forAllVisible).concat(Sequence.fromIterable(forThis)).toGenericArray(DescendantsScope.class));
+
+      SNode bp = BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__);
+      Iterable<SNode> projects = Sequence.fromIterable(BuildProject__BehaviorDescriptor.getVisibleProjects_id13YBgBBRSOL.invoke(bp, ((boolean) false))).concat(Sequence.fromIterable(Sequence.<SNode>singleton(bp)));
+      // Here I intentionally don't initialize scope with .toList value (unlike BuildMps_ModuleDependencyOnModule) as this scope is unlikely to be re-used
+      // - there's no mechanism to cache 'inherited/hierarchical' scope.
+      Iterable<Scope> perProject = Sequence.fromIterable(projects).select((p) -> ListScope.forNamedElements(ListSequence.fromList(SLinkOperations.getChildren(p, LINKS.parts$mGDj)).translate((it) -> SNodeOperations.getNodeDescendants(it, SNodeOperations.asSConcept(kind), true, new SAbstractConcept[]{}))));
+      return new CompositeScope(Sequence.fromIterable(perProject).toGenericArray(Scope.class));
     }
     return null;
   }
-  /*package*/ static Iterable<SNode> getImportedLibraries_id3zFnP6MwWdL(@NotNull SNode __thisNode__) {
-    return Sequence.<SNode>singleton(BuildMPSPlugin__BehaviorDescriptor.getMpsLibrary_id3zFnP6MM9ge.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildMPSPlugin$YW)));
-  }
-  /*package*/ static SNode getMpsLibrary_id3zFnP6MM9ge(@NotNull SAbstractConcept __thisConcept__) {
-    return SLinkOperations.getTarget(createBwfTaskLibraryDependency_6x52oe_a0a0e(), LINKS.target$UbI8);
-  }
   /*package*/ static void fetchGenerationDeps_id3WZD5LHqDLU(@NotNull SNode __thisNode__, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
     MPSModulesPartitioner partitioner = new MPSModulesPartitioner(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__));
-    partitioner.buildChunks();
+    // XXX I see no apparent reason to build chunks as long as all we use is set of 'external' modules
     partitioner.buildExternalDependencies();
     Iterable<SNode> allModules = partitioner.getExternal();
     for (SNode generationDep : Sequence.fromIterable(allModules)) {
@@ -156,10 +124,10 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
         builder.add(artifact);
       }
     }
-    BuildMPSPlugin__BehaviorDescriptor.addPluginsRequiredForGenerationToDepBuilder_id5VKiljnaBi.invoke(__thisNode__, builder, allModules, artifacts);
+    BuildMPSPlugin__BehaviorDescriptor.addPluginsRequiredForGenerationToDepBuilder_id5VKiljnaBi.invokeSpecial(__thisNode__, builder, allModules, artifacts);
   }
   /*package*/ static void addPluginsRequiredForGenerationToDepBuilder_id5VKiljnaBi(@NotNull SNode __thisNode__, RequiredDependenciesBuilder builder, Iterable<SNode> allRequiredModules, VisibleArtifacts artifacts) {
-    ModulePlugins plugins = new ModulePlugins(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__), builder.getGenContext());
+    ModulePlugins plugins = new ModulePlugins(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__));
     plugins.collect(allRequiredModules, new ArrayList<SNode>());
     for (SNode plugin : Sequence.fromIterable(plugins.getDependency())) {
       SNode pluginArtifact = SNodeOperations.as(artifacts.findArtifact(plugin), CONCEPTS.BuildLayout_Node$Rb);
@@ -195,11 +163,9 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
       case 2:
         return (T) ((Scope) getProjectStructureScope_id3fifI_xCJOQ(node, (SAbstractConcept) parameters[0]));
       case 3:
-        return (T) ((Iterable<SNode>) getImportedLibraries_id3zFnP6MwWdL(node));
-      case 5:
         fetchGenerationDeps_id3WZD5LHqDLU(node, (VisibleArtifacts) parameters[0], (RequiredDependenciesBuilder) parameters[1]);
         return null;
-      case 6:
+      case 4:
         addPluginsRequiredForGenerationToDepBuilder_id5VKiljnaBi(node, (RequiredDependenciesBuilder) parameters[0], (Iterable<SNode>) parameters[1], (VisibleArtifacts) parameters[2]);
         return null;
       default:
@@ -214,9 +180,7 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
-      case 4:
-        return (T) ((SNode) getMpsLibrary_id3zFnP6MM9ge(concept));
-      case 7:
+      case 5:
         return (T) ((Boolean) areLocatedInTheSameRoot_id5eGY5T7x8$N(concept, (SNode) parameters[0], (SNode) parameters[1]));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -234,12 +198,6 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  private static SNode createBwfTaskLibraryDependency_6x52oe_a0a0e() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BwfTaskLibraryDependency$g5);
-    n0.setReference(LINKS.target$UbI8, new SNodePointer(facade.createModelReference("r:4c16a3e9-db56-4447-9b0d-14adce23db0d(jetbrains.mps.build.mps.accessories)"), facade.createNodeId("398731435597190701")));
-    return n0.getResult();
-  }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink parts$mGDj = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
@@ -247,7 +205,6 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
     /*package*/ static final SContainmentLink classpath$WEG$ = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b61d4cbbL, 0x3395e884b61d4cbdL, "classpath");
     /*package*/ static final SContainmentLink extJar$Hzyz = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb50da7L, 0x4ddcec86afb50da8L, "extJar");
     /*package*/ static final SReferenceLink jar$JLD3 = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb2f64cL, 0x4ddcec86afb2f64dL, "jar");
-    /*package*/ static final SReferenceLink target$UbI8 = MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da1147260537L, 0x6565da1147260538L, "target");
   }
 
   private static final class CONCEPTS {
@@ -260,7 +217,5 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
     /*package*/ static final SConcept BuildSource_JavaLibraryCP$up = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b61d4cbbL, "jetbrains.mps.build.structure.BuildSource_JavaLibraryCP");
     /*package*/ static final SConcept BuildSource_JavaLibraryExternalJar$gz = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb50da7L, "jetbrains.mps.build.structure.BuildSource_JavaLibraryExternalJar");
     /*package*/ static final SConcept BuildMps_Module$JW = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, "jetbrains.mps.build.mps.structure.BuildMps_Module");
-    /*package*/ static final SConcept BuildMPSPlugin$YW = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xc0bde9fc71699d9L, "jetbrains.mps.build.mps.structure.BuildMPSPlugin");
-    /*package*/ static final SConcept BwfTaskLibraryDependency$g5 = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da1147260537L, "jetbrains.mps.build.workflow.structure.BwfTaskLibraryDependency");
   }
 }

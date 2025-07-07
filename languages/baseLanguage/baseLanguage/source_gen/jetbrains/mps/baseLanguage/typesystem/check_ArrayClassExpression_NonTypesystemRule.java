@@ -27,7 +27,7 @@ public class check_ArrayClassExpression_NonTypesystemRule extends AbstractNonTyp
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(arrayClassExpression, "Array type expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1587149463194054693", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.FixArrayClassExpressionNotOnArrayType_QuickFix", true);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.FixArrayClassExpressionNotOnArrayType_QuickFix", "1587149463195359053", true);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }

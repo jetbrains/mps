@@ -26,10 +26,6 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
-      InferenceRule_Runtime inferenceRule = new typeof_GenerationContextOp_DirtyNode_InferenceRule();
-      this.myInferenceRules.add(inferenceRule);
-    }
-    {
       InferenceRule_Runtime inferenceRule = new typeof_GenerationContextOp_GenParameterRef_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
@@ -106,15 +102,11 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
-      InferenceRule_Runtime inferenceRule = new typeof_GenerationContextOp_VarRef_InferenceRule();
-      this.myInferenceRules.add(inferenceRule);
-    }
-    {
       InferenceRule_Runtime inferenceRule = new typeof_GenerationContextOp_VarRef2_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
-      InferenceRule_Runtime inferenceRule = new typeof_VarMacro_InferenceRule();
+      InferenceRule_Runtime inferenceRule = new typeof_TypeHintAttribute_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
@@ -123,6 +115,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_GenerationContextOp_GetOutputByLabel_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_GetOutputListByLabelAndInput_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {

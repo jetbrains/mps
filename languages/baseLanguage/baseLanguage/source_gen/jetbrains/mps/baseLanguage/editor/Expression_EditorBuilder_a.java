@@ -55,19 +55,17 @@ import jetbrains.mps.editor.runtime.style.Padding;
     return isEmptyString(SConceptOperations.conceptAlias(SNodeOperations.getConcept(myNode)));
   }
   private EditorCell createCustom_0() {
-    AbstractCellProvider provider = new _FunctionTypes._return_P0_E0<AbstractCellProvider>() {
-      public AbstractCellProvider invoke() {
-        return new AbstractCellProvider(myNode) {
-          @Override
-          public EditorCell createEditorCell(EditorContext context) {
-            EditorCell_Error result = new EditorCell_Error(context, myNode, "<" + SNodeOperations.getContainingLink(myNode).getName() + ">");
-            result.getStyle().set(StyleAttributes.PADDING_LEFT, new Padding(0.0));
-            result.getStyle().set(StyleAttributes.PADDING_RIGHT, new Padding(0.0));
-            return result;
-          }
-        };
-      }
-    }.invoke();
+    AbstractCellProvider provider = ((_FunctionTypes._return_P0_E0<AbstractCellProvider>) () -> {
+      return new AbstractCellProvider(myNode) {
+        @Override
+        public EditorCell createEditorCell(EditorContext context) {
+          EditorCell_Error result = new EditorCell_Error(context, myNode, "<" + SNodeOperations.getContainingLink(myNode).getName() + ">");
+          result.getStyle().set(StyleAttributes.PADDING_LEFT, new Padding(0.0));
+          result.getStyle().set(StyleAttributes.PADDING_RIGHT, new Padding(0.0));
+          return result;
+        }
+      };
+    }).invoke();
     EditorCell editorCell = provider.createEditorCell(getEditorContext());
     editorCell.setCellId("Custom_1ltshm_a0");
     return editorCell;
@@ -77,6 +75,6 @@ import jetbrains.mps.editor.runtime.style.Padding;
     return editorCell;
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
 }

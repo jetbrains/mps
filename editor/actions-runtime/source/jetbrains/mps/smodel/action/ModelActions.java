@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,9 +20,7 @@ import jetbrains.mps.lang.editor.menus.transformation.DefaultSubstituteMenuItemA
 import jetbrains.mps.lang.editor.menus.transformation.DefaultTransformationMenuLookup;
 import jetbrains.mps.lang.editor.menus.transformation.SubstituteActionsCollector;
 import jetbrains.mps.lang.editor.menus.transformation.SubstituteItemsCollector;
-import jetbrains.mps.nodeEditor.CellSide;
 import jetbrains.mps.nodeEditor.cellActions.SideTransformSubstituteInfo;
-import jetbrains.mps.nodeEditor.cellActions.SideTransformSubstituteInfo.Side;
 import jetbrains.mps.nodeEditor.menus.MenuUtil;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -32,9 +30,7 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
 import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuItem;
 import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuLookup;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -85,29 +81,6 @@ public class ModelActions {
                                                                        EditorContext editorContext) {
     return ReferentSubstituteActionsHelper.createActions(referenceNode, link, matchingTextProvider, visibleMatchingTextProvider, editorContext);
   }
-
-  //-------------------
-  // right-transform hint substitute
-  //-------------------
-
-  /**
-   * @deprecated use {@link #createSideTransformSubstituteActions(EditorCell, Side)}
-   */
-  @Deprecated
-  @ToRemove(version = 2019.3)
-  public static boolean canCreateSideTransformHintSubstituteActions(SNode sourceNode, CellSide side, String transformTag, IOperationContext context) {
-    return false;
-  }
-
-  /**
-   * @deprecated use {@link #createSideTransformSubstituteActions(EditorCell, Side)}
-   */
-  @Deprecated
-  @ToRemove(version = 2019.3)
-  public static List<SubstituteAction> createSideTransformHintSubstituteActions(SNode sourceNode, CellSide side, String transformTag, IOperationContext context) {
-    return Collections.emptyList();
-  }
-
 
   public static List<SubstituteAction> createSideTransformSubstituteActions(@NotNull EditorCell cell, @NotNull SideTransformSubstituteInfo.Side side) {
     final SNode sourceNode = cell.getSNode();

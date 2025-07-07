@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="after_entities" />
   <attribute name="generation-plan" value="the plan" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="wp8d" ref="r:50ff6b7f-83ef-42ff-924a-dd008ef8173d(jetbrains.mps.samples.Entities.world)" />
@@ -32,7 +33,7 @@
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS" />
       <concept id="1068580123140" name="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" flags="ig" index="3clFbW" />
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
       </concept>
       <concept id="1212685548494" name="jetbrains.mps.baseLanguage.structure.ClassCreator" flags="nn" index="1pGfFk" />
@@ -42,19 +43,12 @@
       <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
         <reference id="1107535924139" name="classifier" index="3uigEE" />
       </concept>
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
     <language id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator">
-      <concept id="7980339663309897032" name="jetbrains.mps.lang.generator.structure.OriginTrace" flags="ng" index="cd27G">
-        <child id="7980339663309897037" name="origin" index="cd27D" />
-      </concept>
-      <concept id="9032177546941580387" name="jetbrains.mps.lang.generator.structure.TrivialNodeId" flags="nn" index="2$VJBW">
-        <property id="9032177546941580392" name="nodeId" index="2$VJBR" />
-        <child id="8557539026538618631" name="cncpt" index="3iCydw" />
-      </concept>
       <concept id="5808518347809715508" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_InputNode" flags="nn" index="385nmt">
         <property id="5808518347809748738" name="presentation" index="385vuF" />
         <child id="5808518347809747118" name="node" index="385v07" />
@@ -78,54 +72,25 @@
         <property id="3637169702552512269" name="nodeId" index="3u3nmv" />
       </concept>
     </language>
-    <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
-      <concept id="6911370362349121511" name="jetbrains.mps.lang.smodel.structure.ConceptId" flags="nn" index="2x4n5u">
-        <property id="6911370362349122519" name="conceptName" index="2x4mPI" />
-        <property id="6911370362349121516" name="conceptId" index="2x4n5l" />
-        <child id="6911370362349121514" name="languageIdentity" index="2x4n5j" />
-      </concept>
-      <concept id="3542851458883438784" name="jetbrains.mps.lang.smodel.structure.LanguageId" flags="nn" index="2V$Bhx">
-        <property id="3542851458883439831" name="namespace" index="2V$B1Q" />
-        <property id="3542851458883439832" name="languageId" index="2V$B1T" />
-      </concept>
-    </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
-        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
-      </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
   </registry>
   <node concept="312cEu" id="0">
     <property role="TrG5h" value="Fan" />
+    <uo k="s:originTrace" v="n:4053600266038343136" />
     <node concept="3clFbW" id="1" role="jymVt">
-      <node concept="3cqZAl" id="5" role="3clF45">
-        <node concept="cd27G" id="9" role="lGtFl">
-          <node concept="3u3nmq" id="a" role="cd27D">
-            <property role="3u3nmv" value="4053600266038343136" />
-          </node>
-        </node>
+      <uo k="s:originTrace" v="n:4053600266038343136" />
+      <node concept="3cqZAl" id="4" role="3clF45">
+        <uo k="s:originTrace" v="n:4053600266038343136" />
       </node>
-      <node concept="3Tm1VV" id="6" role="1B3o_S">
-        <node concept="cd27G" id="b" role="lGtFl">
-          <node concept="3u3nmq" id="c" role="cd27D">
-            <property role="3u3nmv" value="4053600266038343136" />
-          </node>
-        </node>
+      <node concept="3Tm1VV" id="5" role="1B3o_S">
+        <uo k="s:originTrace" v="n:4053600266038343136" />
       </node>
-      <node concept="3clFbS" id="7" role="3clF47">
-        <node concept="cd27G" id="d" role="lGtFl">
-          <node concept="3u3nmq" id="e" role="cd27D">
-            <property role="3u3nmv" value="4053600266038343136" />
-          </node>
-        </node>
-      </node>
-      <node concept="cd27G" id="8" role="lGtFl">
-        <node concept="3u3nmq" id="f" role="cd27D">
-          <property role="3u3nmv" value="4053600266038343136" />
-        </node>
+      <node concept="3clFbS" id="6" role="3clF47">
+        <uo k="s:originTrace" v="n:4053600266038343136" />
       </node>
     </node>
     <node concept="312cEg" id="2" role="jymVt">
@@ -133,75 +98,38 @@
       <property role="eg7rD" value="false" />
       <property role="3TUv4t" value="false" />
       <property role="TrG5h" value="admires_r5l_a" />
-      <node concept="3Tm1VV" id="g" role="1B3o_S">
-        <node concept="cd27G" id="k" role="lGtFl">
-          <node concept="3u3nmq" id="l" role="cd27D">
-            <property role="3u3nmv" value="4053600266038343136" />
-          </node>
-        </node>
+      <uo k="s:originTrace" v="n:4053600266038343136" />
+      <node concept="3Tm1VV" id="7" role="1B3o_S">
+        <uo k="s:originTrace" v="n:4053600266038343136" />
       </node>
-      <node concept="3uibUv" id="h" role="1tU5fm">
-        <ref role="3uigEE" to="azh3:k" resolve="Harry" />
-        <node concept="cd27G" id="m" role="lGtFl">
-          <node concept="3u3nmq" id="n" role="cd27D">
-            <property role="3u3nmv" value="4053600266038343136" />
-          </node>
-        </node>
+      <node concept="3uibUv" id="8" role="1tU5fm">
+        <ref role="3uigEE" to="azh3:e" resolve="Harry" />
+        <uo k="s:originTrace" v="n:4053600266038343136" />
       </node>
-      <node concept="2ShNRf" id="i" role="33vP2m">
-        <node concept="1pGfFk" id="o" role="2ShVmc">
-          <ref role="37wK5l" to="azh3:l" resolve="Harry" />
-          <node concept="cd27G" id="q" role="lGtFl">
-            <node concept="3u3nmq" id="r" role="cd27D">
-              <property role="3u3nmv" value="4053600266038343136" />
-            </node>
-          </node>
-        </node>
-        <node concept="cd27G" id="p" role="lGtFl">
-          <node concept="3u3nmq" id="s" role="cd27D">
-            <property role="3u3nmv" value="4053600266038343136" />
-          </node>
-        </node>
-      </node>
-      <node concept="cd27G" id="j" role="lGtFl">
-        <node concept="3u3nmq" id="t" role="cd27D">
-          <property role="3u3nmv" value="4053600266038343136" />
+      <node concept="2ShNRf" id="9" role="33vP2m">
+        <uo k="s:originTrace" v="n:4053600266038343136" />
+        <node concept="1pGfFk" id="a" role="2ShVmc">
+          <ref role="37wK5l" to="azh3:f" resolve="Harry" />
+          <uo k="s:originTrace" v="n:4053600266038343136" />
         </node>
       </node>
     </node>
     <node concept="3Tm1VV" id="3" role="1B3o_S">
-      <node concept="cd27G" id="u" role="lGtFl">
-        <node concept="3u3nmq" id="v" role="cd27D">
-          <property role="3u3nmv" value="4053600266038343136" />
-        </node>
-      </node>
-    </node>
-    <node concept="cd27G" id="4" role="lGtFl">
-      <node concept="3u3nmq" id="w" role="cd27D">
-        <property role="3u3nmv" value="4053600266038343136" />
-      </node>
+      <uo k="s:originTrace" v="n:4053600266038343136" />
     </node>
   </node>
-  <node concept="39dXUE" id="x">
-    <node concept="39e2AJ" id="y" role="39e2AI">
+  <node concept="39dXUE" id="b">
+    <node concept="39e2AJ" id="c" role="39e2AI">
       <property role="39e3Y2" value="entity2Class" />
-      <node concept="39e2AG" id="z" role="39e3Y0">
+      <node concept="39e2AG" id="d" role="39e3Y0">
         <ref role="39e2AK" to="wp8d:3x1hZseDfnw" resolve="Fan" />
-        <node concept="385nmt" id="$" role="385vvn">
+        <node concept="385nmt" id="e" role="385vvn">
           <property role="385vuF" value="Fan" />
-          <node concept="2$VJBW" id="A" role="385v07">
-            <property role="2$VJBR" value="4053600266038343136" />
-            <node concept="2x4n5u" id="B" role="3iCydw">
-              <property role="2x4mPI" value="Entity" />
-              <property role="2x4n5l" value="uspdda9xsgqb" />
-              <node concept="2V$Bhx" id="C" role="2x4n5j">
-                <property role="2V$B1T" value="7917ee54-129c-42c6-8b53-ba6a5e718e32" />
-                <property role="2V$B1Q" value="jetbrains.mps.samples.Entities" />
-              </node>
-            </node>
+          <node concept="3u3nmq" id="g" role="385v07">
+            <property role="3u3nmv" value="4053600266038343136" />
           </node>
         </node>
-        <node concept="39e2AT" id="_" role="39e2AY">
+        <node concept="39e2AT" id="f" role="39e2AY">
           <ref role="39e2AS" node="0" resolve="Fan" />
         </node>
       </node>

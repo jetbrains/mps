@@ -23,7 +23,6 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Generator;
 import org.jetbrains.mps.openapi.module.SDependency;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -39,15 +38,15 @@ public class check_TemplateSwitch_NonTypesystemRule extends AbstractNonTypesyste
     if (SLinkOperations.getTarget(templateSwitch, LINKS.modifiedSwitch$h3H5) == null) {
       return;
     }
-    // allow to modify/extend switches that accept exactly same parameters only, not superset thereof. 
-    // the reason is sub-switch may be invoked directly, while the rules of its parent would expect more parameters than there're actually 
+    // allow to modify/extend switches that accept exactly same parameters only, not superset thereof.
+    // the reason is sub-switch may be invoked directly, while the rules of its parent would expect more parameters than there're actually
     SNode modified = SLinkOperations.getTarget(templateSwitch, LINKS.modifiedSwitch$h3H5);
     if (ListSequence.fromList(SLinkOperations.getChildren(modified, LINKS.parameter$5PGb)).count() != ListSequence.fromList(SLinkOperations.getChildren(templateSwitch, LINKS.parameter$5PGb)).count()) {
       {
         final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.parameter$5PGb);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(templateSwitch, "Parameters count doesn't match that of modified switch", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "490483628479870596", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.generator.typesystem.fix_MatchParametersOfModifiedSwitch_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.generator.typesystem.fix_MatchParametersOfModifiedSwitch_QuickFix", "490483628479984885", false);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }
@@ -57,24 +56,24 @@ public class check_TemplateSwitch_NonTypesystemRule extends AbstractNonTypesyste
       SNode p1 = ListSequence.fromList(SLinkOperations.getChildren(templateSwitch, LINKS.parameter$5PGb)).getElement(i);
       SNode p2 = ListSequence.fromList(SLinkOperations.getChildren(modified, LINKS.parameter$5PGb)).getElement(i);
       if (!(Objects.equals(SPropertyOperations.getString(p1, PROPS.name$MnvL), SPropertyOperations.getString(p2, PROPS.name$MnvL)))) {
-        // names shall be identical as we identify them with strings in TemplateContext 
+        // names shall be identical as we identify them with strings in TemplateContext
         {
           final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$MnvL);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(p1, String.format("Name of parameter #%d, %s, doesn't match name of the original parameter (%s)", i + 1, SPropertyOperations.getString(p1, PROPS.name$MnvL), SPropertyOperations.getString(p2, PROPS.name$MnvL)), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "490483628479871387", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.generator.typesystem.fix_MatchParametersOfModifiedSwitch_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.generator.typesystem.fix_MatchParametersOfModifiedSwitch_QuickFix", "490483628479988736", false);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }
       }
-      // extending switch may declare more generic parameter types (basically, it tells it supports wider set of parameters than the switch it modifies) 
-      // It's perfectly ok when invoked directly, and when invoked as extension of modified switch, it's guaranteed to receive only subtype of expected parameter type. 
+      // extending switch may declare more generic parameter types (basically, it tells it supports wider set of parameters than the switch it modifies)
+      // It's perfectly ok when invoked directly, and when invoked as extension of modified switch, it's guaranteed to receive only subtype of expected parameter type.
       if (!(TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(p2, LINKS.type$Q7dG), SLinkOperations.getTarget(p1, LINKS.type$Q7dG)))) {
         {
           final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.type$Q7dG);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(p1, String.format("Type of parameter #%d doesn't match type of the original parameter", i + 1), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "490483628479944799", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.generator.typesystem.fix_MatchParametersOfModifiedSwitch_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.generator.typesystem.fix_MatchParametersOfModifiedSwitch_QuickFix", "490483628479989443", false);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }
@@ -85,17 +84,13 @@ public class check_TemplateSwitch_NonTypesystemRule extends AbstractNonTypesyste
       SModule module = SNodeOperations.getModel(templateSwitch).getModule();
       if (module instanceof Generator && !(generatorDependency.equals(module.getModuleReference()))) {
         Iterable<SDependency> declaredDependencies = module.getDeclaredDependencies();
-        if (!(Sequence.fromIterable(declaredDependencies).any(new IWhereFilter<SDependency>() {
-          public boolean accept(SDependency it) {
-            return generatorDependency.equals(it.getTargetModule()) && SDependencyScope.EXTENDS.equals(it.getScope());
-          }
-        }))) {
+        if (!(Sequence.fromIterable(declaredDependencies).any((it) -> generatorDependency.equals(it.getTargetModule()) && SDependencyScope.EXTENDS.equals(it.getScope())))) {
           String m = "Missing extends dependency to generator %s for extended switch %s";
           {
             final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.modifiedSwitch$h3H5);
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(templateSwitch, String.format(m, generatorDependency.getModuleName(), SPropertyOperations.getString(modified, PROPS.name$MnvL)), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "6216030778770432994", null, errorTarget);
             {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.generator.typesystem.FixExtendsGenerator_QuickFix", false);
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.generator.typesystem.FixExtendsGenerator_QuickFix", "6216030778770471366", false);
               intentionProvider.putArgument("extendingGenerator", (Generator) module);
               intentionProvider.putArgument("extendedGenerator", generatorDependency);
               _reporter_2309309498.addIntentionProvider(intentionProvider);

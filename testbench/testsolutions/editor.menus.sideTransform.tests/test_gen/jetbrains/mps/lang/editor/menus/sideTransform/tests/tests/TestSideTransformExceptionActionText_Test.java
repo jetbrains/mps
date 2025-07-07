@@ -4,23 +4,23 @@ package jetbrains.mps.lang.editor.menus.sideTransform.tests.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.testbench.util.CachingAppender;
-import org.apache.log4j.Priority;
 
 @MPSLaunch
 public class TestSideTransformExceptionActionText_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(TestSideTransformExceptionActionText_Test.class, "${mps_home}", "r:b4f50ed2-df75-4f06-8889-d503cb129f2d(jetbrains.mps.lang.editor.menus.sideTransform.tests.tests@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestSideTransformExceptionActionText_Test.class).projectPath(null).modelRef("r:b4f50ed2-df75-4f06-8889-d503cb129f2d(jetbrains.mps.lang.editor.menus.sideTransform.tests.tests@tests)").reopenProject(false).build());
 
   public TestSideTransformExceptionActionText_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -46,7 +46,7 @@ public class TestSideTransformExceptionActionText_Test extends BaseTransformatio
 
     @Override
     protected void populateExpectedEvents(CachingAppender appender) {
-      appender.expectEvent(Priority.ERROR_INT, null);
+      appender.expectEvent(CachingAppender.Level.ERROR, null);
     }
   }
 }

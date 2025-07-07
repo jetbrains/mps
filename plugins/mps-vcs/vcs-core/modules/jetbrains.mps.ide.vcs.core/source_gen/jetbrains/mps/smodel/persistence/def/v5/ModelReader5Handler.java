@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.loading.ModelLoadResult;
 import java.util.Stack;
 import org.xml.sax.Locator;
 import jetbrains.mps.smodel.SModelHeader;
-import jetbrains.mps.smodel.SModelVersionsInfo;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.persistence.def.IReferencePersister;
 import jetbrains.mps.smodel.persistence.def.SAXVisibleModelElements;
@@ -25,10 +24,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.persistence.def.v4.VersionUtil;
 import jetbrains.mps.vcspersistence.SNodeFactory;
 import org.jetbrains.mps.openapi.model.SNodeId;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import jetbrains.mps.smodel.SNodeLegacy;
 import jetbrains.mps.smodel.persistence.def.v4.ReferencePersister4;
 
-@GeneratedClass(node = "r:2cdd9596-2ed5-4152-b387-8144a1963c4c(jetbrains.mps.smodel.persistence.def.v5)/2286463592495096552", model = "r:2cdd9596-2ed5-4152-b387-8144a1963c4c(jetbrains.mps.smodel.persistence.def.v5)")
+@GeneratedClass(nodeId = "2286463592495096552", model = "r:2cdd9596-2ed5-4152-b387-8144a1963c4c(jetbrains.mps.smodel.persistence.def.v5)")
 public class ModelReader5Handler extends XMLSAXHandler<ModelLoadResult> {
   private ModelElementHandler modelHandler = new ModelElementHandler();
   private PersistenceElementHandler persistenceHandler = new PersistenceElementHandler();
@@ -46,7 +45,6 @@ public class ModelReader5Handler extends XMLSAXHandler<ModelLoadResult> {
   private Locator myLocator;
   private ModelLoadResult myResult;
   private SModelHeader my_headerParam;
-  private SModelVersionsInfo my_versionsInfoField;
   private ArrayList<IReferencePersister> my_referenceDescriptorsField;
   private SAXVisibleModelElements my_visibleModelElementsField;
   private DefaultSModel my_modelField;
@@ -85,13 +83,13 @@ public class ModelReader5Handler extends XMLSAXHandler<ModelLoadResult> {
   public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
     ElementHandler current = (myHandlersStack.empty() ? (ElementHandler) null : myHandlersStack.peek());
     if (current == null) {
-      // root 
+      // root
       current = modelHandler;
     } else {
       current = current.createChild(myValues.peek(), qName, attributes);
     }
 
-    // check required 
+    // check required
     for (String attr : current.requiredAttributes()) {
       if (attributes.getValue(attr) == null) {
         throw new SAXParseException("attribute " + attr + " is absent", null);
@@ -103,7 +101,7 @@ public class ModelReader5Handler extends XMLSAXHandler<ModelLoadResult> {
       myResult = (ModelLoadResult) result;
     }
 
-    // handle attributes 
+    // handle attributes
     for (int i = 0; i < attributes.getLength(); i++) {
       String name = attributes.getQName(i);
       String value = attributes.getValue(i);
@@ -149,8 +147,7 @@ public class ModelReader5Handler extends XMLSAXHandler<ModelLoadResult> {
     }
     @Override
     protected ModelLoadResult createObject(Attributes attrs) throws SAXException {
-      my_versionsInfoField = new SModelVersionsInfo();
-      my_referenceDescriptorsField = new ArrayList<IReferencePersister>();
+      my_referenceDescriptorsField = new ArrayList<>();
       my_visibleModelElementsField = new SAXVisibleModelElements();
       my_modelField = new DefaultSModel(VCSPersistenceUtil.createModelReference(attrs.getValue("modelUID")), my_headerParam);
       return new ModelLoadResult((SModel) my_modelField, ModelLoadingState.FULLY_LOADED);
@@ -228,7 +225,7 @@ public class ModelReader5Handler extends XMLSAXHandler<ModelLoadResult> {
     private void handleChild_2286463592495498109(Object resultObject, Object value) throws SAXException {
       String[] child = (String[]) value;
       int version = Integer.parseInt(child[1]);
-      my_modelField.getImplicitImportsSupport().addAdditionalModelVersion(VCSPersistenceUtil.createModelReference(child[0]), version);
+      my_modelField.addModelImport(new SModel.ImportElement(VCSPersistenceUtil.createModelReference(child[0]), -1, version));
     }
     private void handleChild_2286463592495498227(Object resultObject, Object value) throws SAXException {
       String child = (String) value;
@@ -321,7 +318,6 @@ public class ModelReader5Handler extends XMLSAXHandler<ModelLoadResult> {
       String rawFqName = attrs.getValue("type");
       String conceptFQName = VersionUtil.getConceptFQName(rawFqName);
       SNode node = SNodeFactory.newRegular(conceptFQName);
-      VersionUtil.fetchConceptVersion(rawFqName, node, my_versionsInfoField);
       return node;
     }
     @Override
@@ -329,7 +325,6 @@ public class ModelReader5Handler extends XMLSAXHandler<ModelLoadResult> {
       SNode result = (SNode) resultObject;
       if ("role".equals(name)) {
         result.putUserObject("role", VersionUtil.getRole(value));
-        VersionUtil.fetchChildNodeRoleVersion(value, result, my_versionsInfoField);
         return;
       }
       if ("id".equals(name)) {
@@ -377,20 +372,20 @@ public class ModelReader5Handler extends XMLSAXHandler<ModelLoadResult> {
       SNode result = (SNode) resultObject;
       String[] child = (String[]) value;
       if (child[1] != null) {
-        SNodeAccessUtil.setProperty(result, VersionUtil.getPropertyName(child[0], result, my_versionsInfoField), child[1]);
+        new SNodeLegacy(result).setProperty(VersionUtil.getPropertyName(child[0]), child[1]);
       }
     }
     private void handleChild_355506112072964454(Object resultObject, Object value) throws SAXException {
       SNode result = (SNode) resultObject;
       String[] child = (String[]) value;
       ReferencePersister4 rp = new ReferencePersister4();
-      rp.fillFields(child[0], child[1], child[2], result, false, my_versionsInfoField);
+      rp.fillFields(child[0], child[1], child[2], result, false);
       my_referenceDescriptorsField.add(rp);
     }
     private void handleChild_7707758858785937650(Object resultObject, Object value) throws SAXException {
       SNode result = (SNode) resultObject;
       SNode child = (SNode) value;
-      result.addChild(((String) child.getUserObject("role")), child);
+      new SNodeLegacy(result).insertChildBefore(((String) child.getUserObject("role")), child, null);
       child.putUserObject("role", null);
     }
   }

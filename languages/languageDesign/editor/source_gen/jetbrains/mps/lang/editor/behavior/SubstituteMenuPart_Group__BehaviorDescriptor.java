@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -32,7 +31,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class SubstituteMenuPart_Group__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab4546bL, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_Group");
 
-  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$);
 
@@ -41,8 +40,8 @@ public final class SubstituteMenuPart_Group__BehaviorDescriptor extends BaseBHDe
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.SubstituteMenuVariableDeclaration$F7)) {
-      // For simplicity this does not take into account the position of the child, so variables declared earlier may 
-      // (incorrectly) reference variables declared later. 
+      // For simplicity this does not take into account the position of the child, so variables declared earlier may
+      // (incorrectly) reference variables declared later.
       return new HidingByNameScope(CONCEPTS.SubstituteMenuVariableDeclaration$F7, kind, new NamedElementsScope(SLinkOperations.getChildren(__thisNode__, LINKS.variables$yprQ)), ScopeUtils.lazyParentScope(__thisNode__, kind));
     }
     return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$aq, kind, child);

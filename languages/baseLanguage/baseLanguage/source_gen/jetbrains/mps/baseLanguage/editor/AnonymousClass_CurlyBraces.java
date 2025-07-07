@@ -10,7 +10,7 @@ import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -22,6 +22,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class AnonymousClass_CurlyBraces {
 
@@ -39,25 +40,15 @@ public class AnonymousClass_CurlyBraces {
           if ((SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$pyYw) != null) && ListSequence.fromList(SNodeOperations.getNodeAncestors(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$pyYw), CONCEPTS.Classifier$Ix, false)).contains(SLinkOperations.getTarget(node, LINKS.classifier$q_Y$))) {
             final SNode classCreator = SNodeFactoryOperations.replaceWithNewChild(parent, CONCEPTS.ClassCreator$ZG);
             SLinkOperations.setTarget(classCreator, LINKS.baseMethodDeclaration$pyYw, SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$pyYw));
-            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeParameter$F9H8)).visitAll(new IVisitor<SNode>() {
-              public void visit(SNode it) {
-                ListSequence.fromList(SLinkOperations.getChildren(classCreator, LINKS.typeParameter$uYiw)).addElement(it);
-              }
-            });
-            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$pzdx)).visitAll(new IVisitor<SNode>() {
-              public void visit(SNode it) {
-                ListSequence.fromList(SLinkOperations.getChildren(classCreator, LINKS.actualArgument$pzdx)).addElement(it);
-              }
-            });
+            SPropertyOperations.assign(classCreator, PROPS.inferTypeParams$bgj_, SPropertyOperations.getBoolean(node, PROPS.inferTypeParams$bgj_));
+            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeParameter$F9H8)).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(classCreator, LINKS.typeParameter$uYiw)).addElement(it));
+            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$pzdx)).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(classCreator, LINKS.actualArgument$pzdx)).addElement(it));
             SelectionUtil.selectCell(editorContext, classCreator, SelectionManager.LAST_CELL);
           } else {
             final SNode defaultClassCreator = SNodeFactoryOperations.replaceWithNewChild(parent, CONCEPTS.DefaultClassCreator$TC);
             SLinkOperations.setTarget(defaultClassCreator, LINKS.classifier$9NRM, SLinkOperations.getTarget(node, LINKS.classifier$q_Y$));
-            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeParameter$F9H8)).visitAll(new IVisitor<SNode>() {
-              public void visit(SNode it) {
-                ListSequence.fromList(SLinkOperations.getChildren(defaultClassCreator, LINKS.typeParameter$KPP3)).addElement(it);
-              }
-            });
+            SPropertyOperations.assign(defaultClassCreator, PROPS.inferTypeParams$bgj_, SPropertyOperations.getBoolean(node, PROPS.inferTypeParams$bgj_));
+            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeParameter$F9H8)).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(defaultClassCreator, LINKS.typeParameter$KPP3)).addElement(it));
             SelectionUtil.selectCell(editorContext, defaultClassCreator, SelectionManager.LAST_CELL);
 
           }
@@ -80,11 +71,11 @@ public class AnonymousClass_CurlyBraces {
     CellAction originalDelete = editorCell.getAction(CellActionType.DELETE);
     CellAction originalBackspace = editorCell.getAction(CellActionType.BACKSPACE);
 
-    // set actions that were actually defined 
+    // set actions that were actually defined
     setDefinedCellActions(editorCell, node, context);
 
-    // If we set a DELETE action but no BACKSPACE action, 
-    // use the DELETE action for BACKSPACE as well. 
+    // If we set a DELETE action but no BACKSPACE action,
+    // use the DELETE action for BACKSPACE as well.
     CellAction delete = editorCell.getAction(CellActionType.DELETE);
     CellAction backspace = editorCell.getAction(CellActionType.BACKSPACE);
     if (delete != originalDelete && backspace == originalBackspace) {
@@ -101,17 +92,17 @@ public class AnonymousClass_CurlyBraces {
   private static final Object OB = new Object();
 
   public static void setDefinedCellActions(EditorCell editorCell, SNode node, EditorContext context) {
-    // set cell actions from all imported action maps 
+    // set cell actions from all imported action maps
 
-    // set cell actions defined directly in this action map 
+    // set cell actions defined directly in this action map
     editorCell.setAction(CellActionType.DELETE, createAction_DELETE(node));
   }
 
   public static void setDefinedCellActionsOfType(EditorCell editorCell, SNode node, EditorContext context, CellActionType actionType) {
 
-    // set cell action(s) of the given type from imported action maps 
+    // set cell action(s) of the given type from imported action maps
 
-    // set cell action of the given type defined directly in this action map 
+    // set cell action of the given type defined directly in this action map
     if (Objects.equals(actionType, CellActionType.DELETE)) {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }
@@ -132,5 +123,9 @@ public class AnonymousClass_CurlyBraces {
     /*package*/ static final SReferenceLink classifier$q_Y$ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
     /*package*/ static final SReferenceLink classifier$9NRM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
     /*package*/ static final SContainmentLink typeParameter$KPP3 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0accfdb3L, "typeParameter");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty inferTypeParams$bgj_ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x15003fd0d31aebe1L, 0x15003fd0d20d8b1dL, "inferTypeParams");
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,9 @@
  */
 package jetbrains.mps.nodeEditor.highlighter;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.util.Cancellable;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -56,7 +56,7 @@ class HighlighterUpdateSessionCancellable implements Cancellable {
   @Override
   public boolean isCancelled() {
     long timeSinceLastCheck = System.currentTimeMillis() - myLastCheckTime;
-    if (timeSinceLastCheck > MAX_CHECK_INTERVAL_MS && LOG.isDebugEnabled()) {
+    if (timeSinceLastCheck > MAX_CHECK_INTERVAL_MS && LOG.isDebugLevel()) {
       Throwable stackTrace = new Throwable();
       stackTrace.fillInStackTrace();
       LOG.debug(String.format("Checker %s: long time since last cancellation check (%d ms > threshold %d ms). Stack trace:",
@@ -86,7 +86,7 @@ class HighlighterUpdateSessionCancellable implements Cancellable {
   }
 
   /*package*/ static void debugReason(String reason) {
-    if (LOG.isDebugEnabled()) {
+    if (LOG.isDebugLevel()) {
       LOG.debug("Cancelling highlighter update run: " + reason);
     }
   }

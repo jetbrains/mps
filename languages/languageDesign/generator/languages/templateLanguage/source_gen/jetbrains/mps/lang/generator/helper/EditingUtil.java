@@ -7,16 +7,13 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.lang.core.behavior.LinkAttribute__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.ArrayList;
 import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
 import jetbrains.mps.openapi.editor.cells.EditorCellContext;
@@ -35,8 +32,8 @@ public final class EditingUtil {
     if (!(isAnyMacroApplicable(node))) {
       return false;
     }
-    // ----- 
-    // it can be 'ref.cell->{name}'. in this case both are 'applicable'. but link has priority 
+    // -----
+    // it can be 'ref.cell->{name}'. in this case both are 'applicable'. but link has priority
     SReferenceLink linkRole = EditingUtil.getEditedLink(cell);
     if (linkRole != null) {
       return false;
@@ -45,7 +42,7 @@ public final class EditingUtil {
     if (property == null) {
       return false;
     }
-    return AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, property)) == null;
+    return new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, property).get(node) == null;
   }
   public static boolean isReferenceMacroApplicable(SNode node, EditorCell cell) {
     if (cell == null) {
@@ -59,40 +56,36 @@ public final class EditingUtil {
     if (ref == null) {
       return false;
     }
-    return AttributeOperations.getAttribute(referentNode, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, ref)) == null;
+    return new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, ref).get(referentNode) == null;
   }
   public static boolean isAnyMacroApplicable(SNode node) {
-    // not inside 'root template annotation' 
+    // not inside 'root template annotation'
     if (SNodeOperations.getNodeAncestor(node, CONCEPTS.RootTemplateAnnotation$9O, true, false) != null) {
       return false;
     }
-    //  not inside any kind of macro (code shown in inspector) but OK on a macro node itself 
+    //  not inside any kind of macro (code shown in inspector) but OK on a macro node itself
     SNode ancestorTemplateElement = SNodeOperations.getNodeAncestorWhereConceptInList(node, new SAbstractConcept[]{CONCEPTS.NodeMacro$qU, CONCEPTS.PropertyMacro$c9, CONCEPTS.ReferenceMacro$30, CONCEPTS.InlineTemplate_RuleConsequence$u9, CONCEPTS.InlineTemplateWithContext_RuleConsequence$9i, CONCEPTS.TemplateFragment$eq}, true, false);
     if (ancestorTemplateElement != null) {
-      //  exception: can be inside 'alternativeConsequence' in IF-macro 
+      //  exception: can be inside 'alternativeConsequence' in IF-macro
       if (SNodeOperations.isInstanceOf(ancestorTemplateElement, CONCEPTS.InlineTemplate_RuleConsequence$u9) || SNodeOperations.isInstanceOf(ancestorTemplateElement, CONCEPTS.InlineTemplateWithContext_RuleConsequence$9i)) {
         return true;
       }
       return false;
     }
-    // inside 'root template' 
-    if (AttributeOperations.getAttribute(SNodeOperations.getContainingRoot(node), new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O)) != null) {
+    // inside 'root template'
+    if (new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(SNodeOperations.getContainingRoot(node)) != null) {
       return true;
     }
-    //  inside template declaration 
+    //  inside template declaration
     if (SNodeOperations.getNodeAncestorWhereConceptInList(node, new SAbstractConcept[]{CONCEPTS.TemplateDeclaration$5G, CONCEPTS.InlineTemplate_RuleConsequence$u9, CONCEPTS.InlineTemplateWithContext_RuleConsequence$9i}, false, false) != null) {
       return true;
     }
     return false;
   }
   public static SNode addNodeMacro(SNode node) {
-    // do not hang $$ on other attributes 
-    SNode applyToNode = ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isAttribute(it));
-      }
-    }).first();
-    // surround with <TF> if necessary 
+    // do not hang $$ on other attributes
+    SNode applyToNode = ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).where((it) -> !(SNodeOperations.isAttribute(it))).first();
+    // surround with <TF> if necessary
     if (SNodeOperations.getNodeAncestorWhereConceptInList(applyToNode, new SAbstractConcept[]{CONCEPTS.TemplateDeclaration$5G, CONCEPTS.InlineTemplateWithContext_RuleConsequence$9i}, false, false) != null) {
       if (!(EditingUtil.isInsideTemplateFragment(applyToNode))) {
         EditingUtil.createTemplateFragment(applyToNode);
@@ -102,7 +95,7 @@ public final class EditingUtil {
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.NodeMacro$qU) && ListSequence.fromList(SNodeOperations.getChildren(applyToNode)).contains(node)) {
       SNodeOperations.insertPrevSiblingChild(node, nodeMacro);
     } else {
-      ListSequence.fromList(AttributeOperations.getAttributeList(applyToNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU))).addElement(nodeMacro);
+      ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU).list(applyToNode)).addElement(nodeMacro);
     }
     return nodeMacro;
   }
@@ -115,7 +108,7 @@ public final class EditingUtil {
    */
   public static SNode addPropertyMacro(SNode node, EditorCell cell) {
 
-    // surround with <TF> if necessary 
+    // surround with <TF> if necessary
     if (SNodeOperations.getNodeAncestorWhereConceptInList(node, new SAbstractConcept[]{CONCEPTS.TemplateDeclaration$5G, CONCEPTS.InlineTemplateWithContext_RuleConsequence$9i}, false, false) != null) {
       if (!(EditingUtil.isInsideTemplateFragment(node))) {
         EditingUtil.createTemplateFragment(node);
@@ -128,7 +121,7 @@ public final class EditingUtil {
   }
   public static SNode addReferenceMacro(SNode node, EditorCell cell) {
     SNode referentNode = EditingUtil.getEditedLinkReferentNode(cell);
-    // surround with <TF> if necessary 
+    // surround with <TF> if necessary
     if (SNodeOperations.getNodeAncestorWhereConceptInList(referentNode, new SAbstractConcept[]{CONCEPTS.TemplateDeclaration$5G, CONCEPTS.InlineTemplateWithContext_RuleConsequence$9i}, false, false) != null) {
       if (!(EditingUtil.isInsideTemplateFragment(referentNode))) {
         EditingUtil.createTemplateFragment(referentNode);
@@ -142,37 +135,21 @@ public final class EditingUtil {
     return referenceMacro;
   }
   public static boolean isInsideTemplateFragment(SNode node) {
-    Iterable<SNode> ancestorTFs = ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq)) != null;
-      }
-    });
+    Iterable<SNode> ancestorTFs = ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).where((it) -> new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq).get(it) != null);
     return Sequence.fromIterable(ancestorTFs).isNotEmpty();
   }
   public static void createTemplateFragment(final SNode node) {
     SNodeFactoryOperations.setNewAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq), CONCEPTS.TemplateFragment$eq);
-    // remove subordinate template fragments 
-    // XXX (1) not quite clear why we go only 1 level deep. Why not descendants. Guess, TF could be anywhere? 
-    // (2) What if there's attribute (not NodeMacro) with TF attached? We don't remove it here then, and may face 
-    // issues like https://youtrack.jetbrains.com/issue/MPS-20691 
-    Iterable<SNode> children = ListSequence.fromList(SNodeOperations.getChildren(node)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isAttribute(it));
-      }
-    });
+    // remove subordinate template fragments
+    // XXX (1) not quite clear why we go only 1 level deep. Why not descendants. Guess, TF could be anywhere?
+    // (2) What if there's attribute (not NodeMacro) with TF attached? We don't remove it here then, and may face
+    // issues like https://youtrack.jetbrains.com/issue/MPS-20691
+    Iterable<SNode> children = ListSequence.fromList(SNodeOperations.getChildren(node)).where((it) -> !(SNodeOperations.isAttribute(it)));
     for (SNode child : Sequence.fromIterable(children)) {
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(child, CONCEPTS.TemplateFragment$eq, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.deleteNode(it);
-        }
-      });
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(child, CONCEPTS.TemplateFragment$eq, false, new SAbstractConcept[]{})).visitAll((it) -> SNodeOperations.deleteNode(it));
     }
-    // re append all macros to make them go 'after' the <TF> 
-    ListSequence.fromList(ListSequence.fromListWithValues(new ArrayList<SNode>(), AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU)))).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU))).addElement(it);
-      }
-    });
+    // re append all macros to make them go 'after' the <TF>
+    ListSequence.fromList(ListSequence.fromListWithValues(new ArrayList<SNode>(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU).list(node))).visitAll((it) -> ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU).list(node)).addElement(it));
   }
   public static String getEditedPropertyName(EditorCell cell) {
     return check_vooyx9_a0a21(getEditedProperty(cell));

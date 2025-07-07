@@ -36,21 +36,13 @@ public class IfStatement_LastBrace {
           if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.ifFalseStatement$psZK))) {
             return;
           }
-          SNode nodeToSelect = UnwrapStatementsUtil.unwrapElse(node);
-          if (nodeToSelect != null) {
-            SelectionUtil.selectCell(editorContext, nodeToSelect, SelectionManager.FIRST_CELL);
-          } else {
-            SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, SelectionManager.LAST_CELL, -1);
-          }
+          SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.ifFalseStatement$psZK));
+          SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, SelectionManager.LAST_CELL, -1);
         } else {
           if (DeletionApproverUtil.approve(editorContext, node)) {
             return;
           }
-          if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.ifTrue$5Rg8), LINKS.statement$53DE)).isNotEmpty()) {
-            UnwrapStatementsUtil.unwrapIf(node);
-          } else {
-            SNodeOperations.deleteNode(node);
-          }
+          SNodeOperations.deleteNode(node);
         }
       }
 
@@ -61,11 +53,11 @@ public class IfStatement_LastBrace {
     CellAction originalDelete = editorCell.getAction(CellActionType.DELETE);
     CellAction originalBackspace = editorCell.getAction(CellActionType.BACKSPACE);
 
-    // set actions that were actually defined 
+    // set actions that were actually defined
     setDefinedCellActions(editorCell, node, context);
 
-    // If we set a DELETE action but no BACKSPACE action, 
-    // use the DELETE action for BACKSPACE as well. 
+    // If we set a DELETE action but no BACKSPACE action,
+    // use the DELETE action for BACKSPACE as well.
     CellAction delete = editorCell.getAction(CellActionType.DELETE);
     CellAction backspace = editorCell.getAction(CellActionType.BACKSPACE);
     if (delete != originalDelete && backspace == originalBackspace) {
@@ -82,17 +74,17 @@ public class IfStatement_LastBrace {
   private static final Object OB = new Object();
 
   public static void setDefinedCellActions(EditorCell editorCell, SNode node, EditorContext context) {
-    // set cell actions from all imported action maps 
+    // set cell actions from all imported action maps
 
-    // set cell actions defined directly in this action map 
+    // set cell actions defined directly in this action map
     editorCell.setAction(CellActionType.DELETE, createAction_DELETE(node));
   }
 
   public static void setDefinedCellActionsOfType(EditorCell editorCell, SNode node, EditorContext context, CellActionType actionType) {
 
-    // set cell action(s) of the given type from imported action maps 
+    // set cell action(s) of the given type from imported action maps
 
-    // set cell action of the given type defined directly in this action map 
+    // set cell action of the given type defined directly in this action map
     if (Objects.equals(actionType, CellActionType.DELETE)) {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }
@@ -101,7 +93,5 @@ public class IfStatement_LastBrace {
   private static final class LINKS {
     /*package*/ static final SContainmentLink ifFalseStatement$psZK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
     /*package*/ static final SContainmentLink elsifClauses$EVJW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0x118cecf1287L, "elsifClauses");
-    /*package*/ static final SContainmentLink ifTrue$5Rg8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
-    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

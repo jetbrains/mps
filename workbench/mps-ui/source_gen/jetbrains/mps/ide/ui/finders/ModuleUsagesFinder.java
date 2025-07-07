@@ -33,7 +33,7 @@ import jetbrains.mps.smodel.SModelInternal;
 /**
  * In fact, ModuleDependencyFinder, looks up given module as a dependency in other modules and their models.
  */
-@GeneratedClass(node = "r:50589489-29e2-47e3-84bb-6bbe4094b4ce(jetbrains.mps.ide.ui.finders)/4132059805486520986", model = "r:50589489-29e2-47e3-84bb-6bbe4094b4ce(jetbrains.mps.ide.ui.finders)")
+@GeneratedClass(nodeId = "4132059805486520986", model = "r:50589489-29e2-47e3-84bb-6bbe4094b4ce(jetbrains.mps.ide.ui.finders)")
 public class ModuleUsagesFinder implements IFinder {
   /*package*/ static final String USED_BY = "used by";
   private static final String DEPENDENT_MODULES = "dependent modules";
@@ -48,7 +48,7 @@ public class ModuleUsagesFinder implements IFinder {
   private Set<SModel> myModels2Visit;
 
   public ModuleUsagesFinder() {
-    // by default, look module uses up to model imports only. 
+    // by default, look module uses up to model imports only.
     this(false);
   }
 
@@ -71,7 +71,7 @@ public class ModuleUsagesFinder implements IFinder {
       searchedModuleRef = searchedModule.getModuleReference();
     } else if (value instanceof SModuleReference) {
       searchedModuleRef = (SModuleReference) value;
-      searchedModule = query.getScope().resolve(searchedModuleRef);
+      searchedModule = query.getSearchObjectResolver().resolve(searchedModuleRef);
     }
     if (searchedModuleRef == null) {
       return;
@@ -203,7 +203,7 @@ public class ModuleUsagesFinder implements IFinder {
   }
 
   private static Set<SDependency> findDependencies(SModule from, SModuleReference to) {
-    // FIXME nice candidate to move into SModule (along with findDependencies(SDependencyKind) 
+    // FIXME nice candidate to move into SModule (along with findDependencies(SDependencyKind)
     LinkedHashSet<SDependency> rv = new LinkedHashSet<SDependency>();
     for (SDependency dep : from.getDeclaredDependencies()) {
       if (dep.getTargetModule().equals(to)) {
@@ -238,7 +238,7 @@ public class ModuleUsagesFinder implements IFinder {
     /*package*/ void collectImports(Collection<SModel> scope, ProgressMonitor progress) {
       progress.start("", scope.size());
       for (SModel model : scope) {
-        // getImportedModelUIDs doesn't report implicit model imports 
+        // getImportedModelUIDs doesn't report implicit model imports
         for (SModelReference mRef : SModelOperations.getImportedModelUIDs(model)) {
           if (myModelsToFind.contains(mRef)) {
             myCallback.onUsageFound(new SearchResult<SModel>(model, USED_BY));
@@ -251,8 +251,8 @@ public class ModuleUsagesFinder implements IFinder {
     }
 
     /*package*/ void collectNodes(Collection<SModel> scope, ProgressMonitor progress) {
-      // unless we have a mechanism to get complete set of model imports (including implicit), 
-      // we check models even if they don't import any model of interest explicitly 
+      // unless we have a mechanism to get complete set of model imports (including implicit),
+      // we check models even if they don't import any model of interest explicitly
       progress.start("", myModelsToFind.size());
       for (SModelReference mr : myModelsToFind) {
         myModelUsageFinder.doFind(mr, scope, myCallback, progress.subTask(1, SubProgressKind.AS_COMMENT));

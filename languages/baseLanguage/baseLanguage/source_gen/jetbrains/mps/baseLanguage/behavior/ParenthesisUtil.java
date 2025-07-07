@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.behavior;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -13,7 +12,6 @@ import java.util.Objects;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -50,8 +48,8 @@ public class ParenthesisUtil {
 
     SNode current = findWrappingParens(expressionToProcess);
     while (current != null) {
-      SNode leftParenOnParens = AttributeOperations.getAttribute(current, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7));
-      SNode rightParenOnParens = AttributeOperations.getAttribute(current, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc));
+      SNode leftParenOnParens = new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(current);
+      SNode rightParenOnParens = new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(current);
       boolean propagateNewParensInsteadOfExpr = false;
 
       SNode replacing = SLinkOperations.getTarget(SNodeOperations.cast(current, CONCEPTS.ParenthesizedExpression$Ws), LINKS.expression$TlhM);
@@ -74,12 +72,12 @@ public class ParenthesisUtil {
         expressionToProcess = (propagateNewParensInsteadOfExpr ? localExpToSetFocusOn : leftMostNode);
       }
 
-      // Remember the first parenthing result for the editor to set focus to 
+      // Remember the first parenthing result for the editor to set focus to
       if (expressionToSetFocusOn == null) {
         expressionToSetFocusOn = localExpToSetFocusOn;
       }
 
-      // Put back the parens that were on the wrapping parentheses and belong to the mating expr 
+      // Put back the parens that were on the wrapping parentheses and belong to the mating expr
       if (completingByRightParen && leftParenOnParens != null) {
         setOrMergeParen(localExpToSetFocusOn, false, leftParenOnParens);
       }
@@ -87,7 +85,7 @@ public class ParenthesisUtil {
         setOrMergeParen(localExpToSetFocusOn, true, rightParenOnParens);
       }
 
-      // Put back the parens that were on the wrapping parentheses and belong to the new expressionToProcess 
+      // Put back the parens that were on the wrapping parentheses and belong to the new expressionToProcess
       if (completingByRightParen && rightParenOnParens != null) {
         setOrMergeParen(expressionToProcess, true, rightParenOnParens);
       }
@@ -115,7 +113,7 @@ public class ParenthesisUtil {
   }
 
   private static void setOrIncreaseParen(SNode node, boolean right) {
-    SNode paren = (right ? AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc)) : AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7)));
+    SNode paren = (right ? new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(node) : new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(node));
     if (paren != null) {
       IIncompleteParen__BehaviorDescriptor.increaseCount_idVufYxgmE1y.invoke(paren);
     } else {
@@ -128,7 +126,7 @@ public class ParenthesisUtil {
   }
 
   private static void setOrMergeParen(SNode myNode, boolean right, SNode parens) {
-    SNode nodesParens = (right ? AttributeOperations.getAttribute(myNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc)) : AttributeOperations.getAttribute(myNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7)));
+    SNode nodesParens = (right ? new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(myNode) : new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(myNode));
     if (nodesParens == null) {
       if (right) {
         nodesParens = SNodeFactoryOperations.setNewAttribute(myNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc), CONCEPTS.IncompleteRightParen$Sc);
@@ -148,23 +146,19 @@ public class ParenthesisUtil {
    */
   private static SNode createUnmatchedParenthesis(@NotNull SNode myExpression, boolean completingByRightParen) {
 
-    if (!(completingByRightParen) && AttributeOperations.getAttribute(myExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7)) != null) {
-      IIncompleteParen__BehaviorDescriptor.increaseCount_idVufYxgmE1y.invoke(AttributeOperations.getAttribute(myExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7)));
+    if (!(completingByRightParen) && new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(myExpression) != null) {
+      IIncompleteParen__BehaviorDescriptor.increaseCount_idVufYxgmE1y.invoke(new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(myExpression));
       return myExpression;
     }
-    if (completingByRightParen && AttributeOperations.getAttribute(myExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc)) != null) {
-      IIncompleteParen__BehaviorDescriptor.increaseCount_idVufYxgmE1y.invoke(AttributeOperations.getAttribute(myExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc)));
+    if (completingByRightParen && new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(myExpression) != null) {
+      IIncompleteParen__BehaviorDescriptor.increaseCount_idVufYxgmE1y.invoke(new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(myExpression));
       return myExpression;
     }
 
     List<SNode> myParentPath = parentPath(myExpression, completingByRightParen);
-    SNode topExp = ListSequence.fromList(myParentPath).findLast(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.IBinaryLike$eU);
-      }
-    });
+    SNode topExp = ListSequence.fromList(myParentPath).findLast((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.IBinaryLike$eU));
     if (topExp == null) {
-      // No IBinaryLike ancestor of myExpression exists 
+      // No IBinaryLike ancestor of myExpression exists
       topExp = myExpression;
     }
 
@@ -173,27 +167,23 @@ public class ParenthesisUtil {
     int index = ListSequence.fromList(candidateParenthedNodes).count() - 1;
     SNode candidateExpression = null;
     final Wrappers._T<List<SNode>> candidateParentPath = new Wrappers._T<List<SNode>>(null);
-    // The bottom-most common ancestor 
+    // The bottom-most common ancestor
     SNode firstCommonAncestor = null;
-    // Find a matching parenthesis among candidates, going from the back of the list 
+    // Find a matching parenthesis among candidates, going from the back of the list
     while (index >= 0) {
       candidateExpression = ListSequence.fromList(candidateParenthedNodes).getElement(index);
       if (Objects.equals(candidateExpression, myExpression)) {
-        // they are both the same node 
+        // they are both the same node
         SNode parens = SNodeFactoryOperations.replaceWithNewChild(candidateExpression, CONCEPTS.ParenthesizedExpression$Ws);
         SLinkOperations.setTarget(parens, LINKS.expression$TlhM, candidateExpression);
         ParenthesisUtil.clearIncompleteParens(candidateExpression, completingByRightParen, parens);
         return parens;
       }
 
-      // Find the bottom-most common ancestor 
+      // Find the bottom-most common ancestor
       candidateParentPath.value = parentPath(candidateExpression, !(completingByRightParen));
       if (ListSequence.fromList(myParentPath).contains(ListSequence.fromList(candidateParentPath.value).last()) || ListSequence.fromList(candidateParentPath.value).contains(ListSequence.fromList(myParentPath).last())) {
-        firstCommonAncestor = ListSequence.fromList(myParentPath).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return ListSequence.fromList(candidateParentPath.value).contains(it);
-          }
-        });
+        firstCommonAncestor = ListSequence.fromList(myParentPath).findFirst((it) -> ListSequence.fromList(candidateParentPath.value).contains(it));
         assert firstCommonAncestor != null;
         if (!(SNodeOperations.isInstanceOf(firstCommonAncestor, CONCEPTS.IBinaryLike$eU))) {
           continue;
@@ -204,20 +194,20 @@ public class ParenthesisUtil {
         List<SNode> candidateAncestors = SNodeOperations.getNodeAncestors(candidateExpression, null, true);
         List<SNode> myAncestors = SNodeOperations.getNodeAncestors(myExpression, null, true);
 
-        // Validate the bottom-most ancestor, whether the two parentheses can be paired legally 
+        // Validate the bottom-most ancestor, whether the two parentheses can be paired legally
         if (completingByRightParen && (ListSequence.fromList(candidateAncestors).contains(leftSideExpression) || leftSideExpression == null) && (ListSequence.fromList(myAncestors).contains(rightSideExpression) || rightSideExpression == null)) {
           break;
         }
         if (!(completingByRightParen) && (ListSequence.fromList(myAncestors).contains(leftSideExpression) || leftSideExpression == null) && (ListSequence.fromList(candidateAncestors).contains(rightSideExpression) || rightSideExpression == null)) {
           break;
         }
-        // Break out if found a valid match 
+        // Break out if found a valid match
       }
-      // Continue to try another candidate parenthesis 
+      // Continue to try another candidate parenthesis
       index--;
     }
     if (index == -1) {
-      // no common ancestor with any of the candidate parens or swapped left-right -> can't parenthesise 
+      // no common ancestor with any of the candidate parens or swapped left-right -> can't parenthesise
       if (completingByRightParen) {
         setOrIncreaseParen(myExpression, true);
       } else {
@@ -227,10 +217,10 @@ public class ParenthesisUtil {
     }
 
 
-    // Let's call them left and right parens from now, instead of 'my' and 'candidate' 
+    // Let's call them left and right parens from now, instead of 'my' and 'candidate'
     SNode leftExpression = (completingByRightParen ? candidateExpression : myExpression);
     SNode rightExpression = (completingByRightParen ? myExpression : candidateExpression);
-    // Find the turning points, if exist, otherwise just wrap in parens 
+    // Find the turning points, if exist, otherwise just wrap in parens
     SNode leftTurn = ParenthesisUtil.findLeftTurn(leftExpression, firstCommonAncestor);
     SNode rightTurn = ParenthesisUtil.findRightTurn(rightExpression, firstCommonAncestor);
 
@@ -290,11 +280,7 @@ public class ParenthesisUtil {
       result = ListSequence.fromList(result).reversedList();
     }
 
-    result = ListSequence.fromList(result).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return completingByRightParen && (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7)) != null) || !(completingByRightParen) && (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc)) != null);
-      }
-    }).toListSequence();
+    result = ListSequence.fromList(result).where((it) -> completingByRightParen && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(it) != null) || !(completingByRightParen) && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(it) != null)).toList();
 
     return result;
   }
@@ -308,11 +294,11 @@ public class ParenthesisUtil {
    */
   private static SNode rebalance(SNode leftTurn, SNode firstCommonAncestor, SNode rightTurn) {
 
-    // Accumulate expressions between the leftTurn and firstCommon to include inside the parens. 
-    // These would be the nodes into which we come from the left child. 
+    // Accumulate expressions between the leftTurn and firstCommon to include inside the parens.
+    // These would be the nodes into which we come from the left child.
     SNode leftAccumulator = buildAccumulator(firstCommonAncestor, leftTurn, true);
-    // Accumulate expressions between the rightTurn and firstCommon to include inside the parens. 
-    // These would be the nodes into which we come from the right child. 
+    // Accumulate expressions between the rightTurn and firstCommon to include inside the parens.
+    // These would be the nodes into which we come from the right child.
     SNode rightAccumulator = buildAccumulator(firstCommonAncestor, rightTurn, false);
 
     SNode parens = SNodeFactoryOperations.createNewNode(CONCEPTS.ParenthesizedExpression$Ws, null);
@@ -395,7 +381,7 @@ public class ParenthesisUtil {
   private static SNode buildAccumulator(SNode firstCommonAncestor, SNode turn, boolean left) {
     SNode accumulator;
     if (turn != null && !(Objects.equals(turn, firstCommonAncestor))) {
-      // Accumulate nodes on the path up from the left/right paren 
+      // Accumulate nodes on the path up from the left/right paren
       accumulator = (left ? IBinaryLike__BehaviorDescriptor.getSyntacticallyRightSideExpression_id1wHCnsn590i.invoke(turn) : IBinaryLike__BehaviorDescriptor.getSyntacticallyLeftSideExpression_id1wHCnsn590c.invoke(turn));
       SNodeOperations.deleteNode(accumulator);
       SNode current = SNodeOperations.cast(SNodeOperations.getParent(turn), CONCEPTS.IBinaryLike$eU);
@@ -416,7 +402,7 @@ public class ParenthesisUtil {
         current = SNodeOperations.cast(SNodeOperations.getParent(previous), CONCEPTS.IBinaryLike$eU);
       }
     } else {
-      // Nothing to accumulate 
+      // Nothing to accumulate
       SNode firstCommonAncestorChild = (left ? IBinaryLike__BehaviorDescriptor.getSyntacticallyLeftSideExpression_id1wHCnsn590c.invoke(firstCommonAncestor) : IBinaryLike__BehaviorDescriptor.getSyntacticallyRightSideExpression_id1wHCnsn590i.invoke(firstCommonAncestor));
       if (firstCommonAncestorChild != null) {
         accumulator = firstCommonAncestorChild;
@@ -434,16 +420,16 @@ public class ParenthesisUtil {
   private static void clearIncompleteParens(SNode otherExpression, boolean completingByRightParen, SNode parens) {
     int count = 0;
     if (completingByRightParen) {
-      count = SPropertyOperations.getInteger(AttributeOperations.getAttribute(otherExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7)), PROPS.count$FDpi);
-      AttributeOperations.setAttribute(otherExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7), null);
-      AttributeOperations.setAttribute(parens, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7), null);
+      count = SPropertyOperations.getInteger(new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(otherExpression), PROPS.count$FDpi);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).set(otherExpression, null);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).set(parens, null);
     } else {
-      count = SPropertyOperations.getInteger(AttributeOperations.getAttribute(otherExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc)), PROPS.count$FDpi);
-      AttributeOperations.setAttribute(otherExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc), null);
-      AttributeOperations.setAttribute(parens, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc), null);
+      count = SPropertyOperations.getInteger(new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(otherExpression), PROPS.count$FDpi);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).set(otherExpression, null);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).set(parens, null);
     }
 
-    // One paren has been matched, so we should decrease the count 
+    // One paren has been matched, so we should decrease the count
     count -= 1;
     if (count < 1) {
       return;
@@ -508,7 +494,7 @@ public class ParenthesisUtil {
 
   public static void checkWholeExpressionPriorities(SNode expr) {
     SNode current = expr;
-    // find the top-most expression 
+    // find the top-most expression
     while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(current), CONCEPTS.Expression$mB)) {
       current = SNodeOperations.cast(SNodeOperations.getParent(current), CONCEPTS.Expression$mB);
     }

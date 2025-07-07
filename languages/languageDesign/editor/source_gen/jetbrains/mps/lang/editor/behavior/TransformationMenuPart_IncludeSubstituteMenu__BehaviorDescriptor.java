@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.scope.Scope;
 import java.util.List;
@@ -31,8 +30,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class TransformationMenuPart_IncludeSubstituteMenu__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6a77f9c87420a6caL, "jetbrains.mps.lang.editor.structure.TransformationMenuPart_IncludeSubstituteMenu");
 
-  public static final SMethod<SNode> getReference_id3rSzFHWOe4u = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReference").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3rSzFHWOe4u").build();
-  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getReference_id3rSzFHWOe4u = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3961072808176443678L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getReference_id3rSzFHWOe4u, getScope_id52_Geb4QDV$);
 
@@ -52,7 +51,7 @@ public final class TransformationMenuPart_IncludeSubstituteMenu__BehaviorDescrip
       @Override
       public boolean isExcluded(SNode node) {
         if (SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$KA)) {
-          return !(((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SNodeOperations.cast(node, CONCEPTS.AbstractConceptDeclaration$KA), targetConcept)));
+          return !((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SNodeOperations.cast(node, CONCEPTS.AbstractConceptDeclaration$KA), targetConcept));
         } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.SubstituteMenu_Named$cm)) {
           return !((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(SNodeOperations.cast(node, CONCEPTS.SubstituteMenu_Named$cm)), targetConcept));
         }

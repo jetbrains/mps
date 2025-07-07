@@ -12,7 +12,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
 import jetbrains.mps.build.mps.behavior.BuildMps_Module__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -30,7 +29,7 @@ public class check_BuildMpsLayout_ModuleXml_CustomJarLocation_NonTypesystemRule 
   public check_BuildMpsLayout_ModuleXml_CustomJarLocation_NonTypesystemRule() {
   }
   public void applyRule(final SNode jarLoc, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    // if a CustomJarLocation points maps a file module has no dependency to, report a warning. Such a mapping would get ignored when generating module.xml 
+    // if a CustomJarLocation points maps a file module has no dependency to, report a warning. Such a mapping would get ignored when generating module.xml
     SNode module = SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(jarLoc), CONCEPTS.BuildMpsLayout_ModuleJars$MZ), LINKS.module$iRYT);
     if (module == null) {
       module = SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(jarLoc), CONCEPTS.BuildMpsLayout_ModuleXml$_e), LINKS.module$yKRo);
@@ -39,20 +38,12 @@ public class check_BuildMpsLayout_ModuleXml_CustomJarLocation_NonTypesystemRule 
       return;
     }
     final String expectedPath = BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(jarLoc, LINKS.path$t1zS));
-    // This logic is from BuildMpsLayout_ModuleXml template in main MC to create <library> elements 
+    // This logic is from BuildMpsLayout_ModuleXml template in main MC to create <library> elements
     Iterable<SNode> moduleDeps = BuildMps_Module__BehaviorDescriptor.getDependenciesUnwrapped_id3QtfwKhgryb.invoke(SNodeOperations.as(module, CONCEPTS.BuildMps_Module$JW));
-    if (Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(moduleDeps, CONCEPTS.BuildMps_ModuleDependencyJar$Rm), LINKS.path$yTVo)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(it), expectedPath);
-      }
-    })) {
+    if (Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(moduleDeps, CONCEPTS.BuildMps_ModuleDependencyJar$Rm), LINKS.path$yTVo)).any((it) -> Objects.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(it), expectedPath))) {
       return;
     }
-    if (Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(moduleDeps, CONCEPTS.BuildMps_ModuleDependencyOnJavaModule$MK), LINKS.javaLibLocation$cmtb)).where(new NotNullWhereFilter<SNode>()).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(it), expectedPath);
-      }
-    })) {
+    if (Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(moduleDeps, CONCEPTS.BuildMps_ModuleDependencyOnJavaModule$MK), LINKS.javaLibLocation$cmtb)).where(new NotNullWhereFilter()).any((it) -> Objects.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(it), expectedPath))) {
       return;
     }
     {

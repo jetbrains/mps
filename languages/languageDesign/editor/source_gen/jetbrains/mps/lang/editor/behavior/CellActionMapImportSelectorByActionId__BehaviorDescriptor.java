@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -27,10 +26,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class CellActionMapImportSelectorByActionId__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4f883d0411451703L, "jetbrains.mps.lang.editor.structure.CellActionMapImportSelectorByActionId");
 
-  public static final SMethod<SEnumerationLiteral> getActionId_id3XXPjz_5Jxc = new SMethodBuilder<SEnumerationLiteral>(new SJavaCompoundTypeImpl((Class<SEnumerationLiteral>) ((Class) Object.class))).name("getActionId").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3XXPjz_5Jxc").build();
-  public static final SMethod<Boolean> selectsActionId_id3XXPjz_pJfc = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("selectsActionId").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3XXPjz_pJfc").build(SMethodBuilder.createJavaParameter((Class<SEnumerationLiteral>) ((Class) Object.class), ""));
-  public static final SMethod<CheckingResult> checkPresenceOfImportee_id3XXPjz_qqny = new SMethodBuilder<CheckingResult>(new SJavaCompoundTypeImpl(CheckingResult.class)).name("checkPresenceOfImportee").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3XXPjz_qqny").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getNavigatableNodeWithin_id5Sx2dSLnDj7 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getNavigatableNodeWithin").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5Sx2dSLnDj7").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SEnumerationLiteral> getActionId_id3XXPjz_5Jxc = new SMethodBuilder<SEnumerationLiteral>(new SJavaCompoundTypeImpl((Class<SEnumerationLiteral>) ((Class) Object.class))).name("getActionId").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4575047236816664652L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<Boolean> selectsActionId_id3XXPjz_pJfc = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("selectsActionId").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4575047236821906380L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2(SMethodBuilder.createJavaParameter((Class<SEnumerationLiteral>) ((Class) Object.class), ""));
+  public static final SMethod<CheckingResult> checkPresenceOfImportee_id3XXPjz_qqny = new SMethodBuilder<CheckingResult>(new SJavaCompoundTypeImpl(CheckingResult.class)).name("checkPresenceOfImportee").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4575047236822083042L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getNavigatableNodeWithin_id5Sx2dSLnDj7 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getNavigatableNodeWithin").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6782712264200721607L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getActionId_id3XXPjz_5Jxc, selectsActionId_id3XXPjz_pJfc, checkPresenceOfImportee_id3XXPjz_qqny, getNavigatableNodeWithin_id5Sx2dSLnDj7);
 
@@ -48,7 +47,7 @@ public final class CellActionMapImportSelectorByActionId__BehaviorDescriptor ext
     return ((boolean) CellActionMapDeclaration__BehaviorDescriptor.containsItemOfType_id2pg2GNQgnKJ.invoke(actionMap, actionId) ? CheckingResult.success() : CheckingResult.failure("Action map " + SPropertyOperations.getString(actionMap, PROPS.name$MnvL) + " does not define or import " + SEnumOperations.getMemberPresentation(actionId)));
   }
   /*package*/ static SNode getNavigatableNodeWithin_id5Sx2dSLnDj7(@NotNull SNode __thisNode__, SNode actionMap) {
-    // navigate to the action item of the matching type 
+    // navigate to the action item of the matching type
     return Sequence.fromIterable(CellActionMapDeclaration__BehaviorDescriptor.collectItemsOfType_id5Sx2dSLnOI$.invoke(actionMap, CellActionMapImportSelectorByActionId__BehaviorDescriptor.getActionId_id3XXPjz_5Jxc.invoke(__thisNode__))).last();
   }
 

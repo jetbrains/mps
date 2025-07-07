@@ -12,8 +12,12 @@ import jetbrains.mps.lang.generator.plugin.URLFunction_HelpCenterDocUrl;
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
   private ConceptPresentation props_AbandonInput_RuleConsequence;
   private ConceptPresentation props_AbstractMacro;
+  private ConceptPresentation props_AbstractNodeMacroNamespace;
   private ConceptPresentation props_BaseMappingRule;
   private ConceptPresentation props_BaseMappingRule_Condition;
+  private ConceptPresentation props_CP_InputKey;
+  private ConceptPresentation props_CP_InputNode;
+  private ConceptPresentation props_CP_LabelRecord;
   private ConceptPresentation props_ContextVariableDeclaration;
   private ConceptPresentation props_ContextVariableProvider;
   private ConceptPresentation props_CopySrcListMacro;
@@ -46,10 +50,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_InlineSwitch_RuleConsequence;
   private ConceptPresentation props_InlineTemplateWithContext_RuleConsequence;
   private ConceptPresentation props_InlineTemplate_RuleConsequence;
+  private ConceptPresentation props_InsertCallSiteMacro;
   private ConceptPresentation props_InsertMacro;
   private ConceptPresentation props_InsertMacro_CreateNodeQuery;
   private ConceptPresentation props_LabelMacro;
+  private ConceptPresentation props_LabelMacroInputQuery;
   private ConceptPresentation props_LoopMacro;
+  private ConceptPresentation props_LoopMacroNamespaceAccessor;
   private ConceptPresentation props_MapSrcListMacro;
   private ConceptPresentation props_MapSrcMacro_MapperFunction;
   private ConceptPresentation props_MapSrcMacro_PostMapperFunction;
@@ -85,7 +92,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_TemplateArgumentQuery;
   private ConceptPresentation props_TemplateArgumentQueryExpression;
   private ConceptPresentation props_TemplateArgumentVarRefExpression2;
-  private ConceptPresentation props_TemplateArgumentVariableRefExpression;
   private ConceptPresentation props_TemplateCall;
   private ConceptPresentation props_TemplateCallMacro;
   private ConceptPresentation props_TemplateDeclaration;
@@ -105,7 +111,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_TraceMacro;
   private ConceptPresentation props_TrivialNodeId;
   private ConceptPresentation props_VarDeclaration;
-  private ConceptPresentation props_VarMacro;
   private ConceptPresentation props_VarMacro2;
   private ConceptPresentation props_VarMacro_ValueQuery;
   private ConceptPresentation props_WeaveEach_RuleConsequence;
@@ -132,6 +137,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_AbstractMacro = cpb.create();
         }
         return props_AbstractMacro;
+      case LanguageConceptSwitch.AbstractNodeMacroNamespace:
+        if (props_AbstractNodeMacroNamespace == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("abstract namespace accessor for a node macro");
+          props_AbstractNodeMacroNamespace = cpb.create();
+        }
+        return props_AbstractNodeMacroNamespace;
       case LanguageConceptSwitch.BaseMappingRule:
         if (props_BaseMappingRule == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -145,6 +157,26 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_BaseMappingRule_Condition = cpb.create();
         }
         return props_BaseMappingRule_Condition;
+      case LanguageConceptSwitch.CP_InputKey:
+        if (props_CP_InputKey == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_CP_InputKey = cpb.create();
+        }
+        return props_CP_InputKey;
+      case LanguageConceptSwitch.CP_InputNode:
+        if (props_CP_InputNode == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("CP_InputNode");
+          props_CP_InputNode = cpb.create();
+        }
+        return props_CP_InputNode;
+      case LanguageConceptSwitch.CP_LabelRecord:
+        if (props_CP_LabelRecord == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("CP_LabelRecord");
+          props_CP_LabelRecord = cpb.create();
+        }
+        return props_CP_LabelRecord;
       case LanguageConceptSwitch.ContextVariableDeclaration:
         if (props_ContextVariableDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -372,6 +404,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_InlineTemplate_RuleConsequence = cpb.create();
         }
         return props_InlineTemplate_RuleConsequence;
+      case LanguageConceptSwitch.InsertCallSiteMacro:
+        if (props_InsertCallSiteMacro == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("insert call site node");
+          cpb.rawPresentation("$CALL-SITE$");
+          props_InsertCallSiteMacro = cpb.create();
+        }
+        return props_InsertCallSiteMacro;
       case LanguageConceptSwitch.InsertMacro:
         if (props_InsertMacro == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -395,14 +435,30 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_LabelMacro = cpb.create();
         }
         return props_LabelMacro;
+      case LanguageConceptSwitch.LabelMacroInputQuery:
+        if (props_LabelMacroInputQuery == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("query");
+          props_LabelMacroInputQuery = cpb.create();
+        }
+        return props_LabelMacroInputQuery;
       case LanguageConceptSwitch.LoopMacro:
         if (props_LoopMacro == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047ce009c3L);
+          cpb.deprecateProperty(0x671e792f3d97a344L, "counterVarName");
           cpb.shortDesc("loop macro");
           cpb.rawPresentation("$LOOP$");
           props_LoopMacro = cpb.create();
         }
         return props_LoopMacro;
+      case LanguageConceptSwitch.LoopMacroNamespaceAccessor:
+        if (props_LoopMacroNamespaceAccessor == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("access enclosing $LOOP$ macro variables");
+          cpb.rawPresentation("LOOP.");
+          props_LoopMacroNamespaceAccessor = cpb.create();
+        }
+        return props_LoopMacroNamespaceAccessor;
       case LanguageConceptSwitch.MapSrcListMacro:
         if (props_MapSrcListMacro == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -437,8 +493,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_MappingConfiguration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a44b0ae);
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a44b0ae);
+          cpb.helpUrl(HELP_URL);
+          cpb.icon(IconContainer.RESOURCE_0);
           props_MappingConfiguration = cpb.create();
         }
         return props_MappingConfiguration;
@@ -461,7 +517,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_MappingScript == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a74b0ae);
+          cpb.helpUrl(HELP_URL1);
+          cpb.icon(IconContainer.RESOURCE_1);
           props_MappingScript = cpb.create();
         }
         return props_MappingScript;
@@ -650,13 +707,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_TemplateArgumentVarRefExpression2 = cpb.create();
         }
         return props_TemplateArgumentVarRefExpression2;
-      case LanguageConceptSwitch.TemplateArgumentVariableRefExpression:
-        if (props_TemplateArgumentVariableRefExpression == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByReference(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3d6f2506d88aa028L, 0x25c655ce6e80fddaL, "varmacro", "", "");
-          props_TemplateArgumentVariableRefExpression = cpb.create();
-        }
-        return props_TemplateArgumentVariableRefExpression;
       case LanguageConceptSwitch.TemplateCall:
         if (props_TemplateCall == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -676,7 +726,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_TemplateDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a87b0ae);
+          cpb.helpUrl(HELP_URL2);
+          cpb.icon(IconContainer.RESOURCE_2);
           props_TemplateDeclaration = cpb.create();
         }
         return props_TemplateDeclaration;
@@ -754,7 +805,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_TemplateSwitch == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a98b0ae);
+          cpb.helpUrl(HELP_URL3);
+          cpb.icon(IconContainer.RESOURCE_3);
           props_TemplateSwitch = cpb.create();
         }
         return props_TemplateSwitch;
@@ -784,6 +836,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.TrivialNodeId:
         if (props_TrivialNodeId == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.rawPresentation("TrivialNodeId");
           props_TrivialNodeId = cpb.create();
         }
@@ -795,15 +848,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_VarDeclaration = cpb.create();
         }
         return props_VarDeclaration;
-      case LanguageConceptSwitch.VarMacro:
-        if (props_VarMacro == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.deprecated(true);
-          cpb.shortDesc("(DEPRECTATED) compute and store value in variable");
-          cpb.presentationByName();
-          props_VarMacro = cpb.create();
-        }
-        return props_VarMacro;
       case LanguageConceptSwitch.VarMacro2:
         if (props_VarMacro2 == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -859,5 +903,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     }
     return null;
   }
-  private static final String HELP_URL_lpa09p_a0a2a0a44b0ae = URLFunction_HelpCenterDocUrl.getUrl() + "mps-generator.html";
+  private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "mps-generator.html#mappingconfiguration";
+  private static final String HELP_URL1 = URLFunction_HelpCenterDocUrl.getUrl() + "mps-generator.html#mappingscript";
+  private static final String HELP_URL2 = URLFunction_HelpCenterDocUrl.getUrl() + "mps-generator.html#externaltemplate";
+  private static final String HELP_URL3 = URLFunction_HelpCenterDocUrl.getUrl() + "mps-generator.html#templateswitch";
 }

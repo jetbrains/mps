@@ -16,7 +16,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.generator.helper.EditingUtil;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -24,21 +23,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class AddContext_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddContext_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)", "3462145372628250475"));
   }
+
   @Override
   public String getPresentation() {
     return "AddContext";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -48,10 +47,12 @@ public final class AddContext_Intention extends AbstractIntentionDescriptor impl
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Convert to Inline Template with Context";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode tNode = SLinkOperations.getTarget(node, LINKS.templateNode$1Rss);
@@ -64,20 +65,31 @@ public final class AddContext_Intention extends AbstractIntentionDescriptor impl
       }
       EditingUtil.createTemplateFragment(tNode);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddContext_Intention.this;
     }
+
   }
   private static SNode _quotation_createNode_4m6r5j_a0a0d0a(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
     SNode quotedNode_5 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfc092b6b77L, "BlockStatement")).getResult();
-    quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b200L, "StatementList")).getResult();
-    quotedNode_4 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfc092b6b77L, "BlockStatement"));
+    quotedNode_2 = nb.getResult();
+    SNodeBuilder nb1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b200L, "StatementList"));
+    quotedNode_3 = nb1.getResult();
+    SNodeBuilder nb2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement"));
+    quotedNode_4 = nb2.getResult();
     quotedNode_5 = (SNode) parameter_1;
     if (quotedNode_5 != null) {
       quotedNode_4.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression"), SNodeOperations.copyIfNecessary(quotedNode_5));

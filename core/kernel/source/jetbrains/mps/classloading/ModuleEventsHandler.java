@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,29 +15,13 @@
  */
 package jetbrains.mps.classloading;
 
-import jetbrains.mps.module.ReloadableModule;
-import jetbrains.mps.module.ReloadableModuleBase;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.smodel.SRepositoryBatchListener;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
-import org.jetbrains.mps.openapi.module.event.SModuleAddedEvent;
-import org.jetbrains.mps.openapi.module.event.SModuleChangedEvent;
-import org.jetbrains.mps.openapi.module.event.SModuleEventVisitor;
-import org.jetbrains.mps.openapi.module.event.SModuleRemovedEvent;
-import org.jetbrains.mps.openapi.module.event.SModuleRemovingEvent;
 import org.jetbrains.mps.openapi.module.event.SRepositoryEvent;
 
-import java.lang.invoke.VarHandle;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -48,21 +32,17 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * No such module events can happen outside of write action.
  */
 class ModuleEventsHandler implements SRepositoryBatchListener {
-  private ClassLoaderManager myManager;
-  private final ModulesWatcher myModulesWatcher;
+  private final ClassLoaderManager myManager;
   private final ModuleEventsDispatcher myDispatcher;
 
-  // order for modules loading in order to reproduce any error
-  private static final Comparator<Object> MODULE_COMPARATOR = Comparator.comparing(Object::toString);
   private final AtomicBoolean myPaused = new AtomicBoolean();
 
-  public ModuleEventsHandler(@NotNull SRepository repository, ModulesWatcher modulesWatcher) {
-    myModulesWatcher = modulesWatcher;
+  public ModuleEventsHandler(@NotNull SRepository repository, ClassLoaderManager classLoaderManager) {
+    myManager = classLoaderManager;
     myDispatcher = new ModuleEventsDispatcher(repository);
   }
 
-  public void init(ClassLoaderManager classLoaderManager) {
-    myManager = classLoaderManager;
+  public void init() {
     myDispatcher.init();
     myDispatcher.addRepositoryBatchEventsListener(this);
   }
@@ -83,44 +63,9 @@ class ModuleEventsHandler implements SRepositoryBatchListener {
     return false;
   }
 
-  private void addModules(List<? extends ReloadableModuleBase> modules) {
-    modules.sort(MODULE_COMPARATOR);
-    myModulesWatcher.addModules(modules);
-    // fixme decouple! the handler must only change the state (valid/invalid to load) it must not do any reloading
-    //  it will be possible when we generate classpath and do not have to grab the read lock when calculating the dependencies
-    //  then we will be able to return the up-to-date classloader without
-    myManager.preLoadModules(modules, new EmptyProgressMonitor());
-  }
-
-  private void updateModules(List<? extends ReloadableModuleBase> modules) {
-    List<SModule> modulesToReload = new ArrayList<>(modules);
-    modulesToReload.sort(MODULE_COMPARATOR);
-    // fixme
-    myManager.doReloadModules(modulesToReload, new EmptyProgressMonitor());
-  }
-
-  private void removeModules(List<SModuleReference> modules) {
-    modules.sort(MODULE_COMPARATOR.reversed());
-    // fixme this is wrong but otherwise we will never unload them
-    myManager.unloadModules(modules, new EmptyProgressMonitor());
-    myModulesWatcher.removeModules(modules);
-  }
-
   @Override
   public void eventsHappened(List<SRepositoryEvent> events) {
-    if (events.isEmpty()) return;
-    MyModuleEventVisitor visitor = new MyModuleEventVisitor();
-    for (SRepositoryEvent event : events) {
-      event.accept(visitor);
-    }
-
-    // fixme we should move rather to the accurate events processing instead of calculating status for each module
-    List<SModuleReference> modulesToUnload = visitor.getModulesToUnload();
-    List<ReloadableModuleBase> modulesToUpdate = visitor.getModulesToUpdate();
-    List<ReloadableModuleBase> modulesToLoad = visitor.getModulesToLoad();
-    if (!modulesToUnload.isEmpty()) removeModules(modulesToUnload);
-    if (!modulesToLoad.isEmpty()) addModules(modulesToLoad);
-    if (!modulesToUpdate.isEmpty()) updateModules(modulesToUpdate);
+    myManager.processModuleChanges(events, new EmptyProgressMonitor());
   }
 
   public void pause() {
@@ -131,66 +76,5 @@ class ModuleEventsHandler implements SRepositoryBatchListener {
   public void proceed() {
     myDispatcher.unpause();
     myPaused.set(true);
-  }
-
-  private class MyModuleEventVisitor implements SModuleEventVisitor {
-    private final Set<ReloadableModuleBase> myModulesToUpdate = new LinkedHashSet<>();
-    private final Set<ReloadableModuleBase> myModulesToLoad = new LinkedHashSet<>();
-    private final Set<SModuleReference> myModulesToUnload = new LinkedHashSet<>();
-
-    @Override
-    public void visit(SModuleAddedEvent event) {
-      SModule module = event.getModule();
-      if (module instanceof ReloadableModule) {
-        assert module instanceof ReloadableModuleBase;
-        myModulesToLoad.add((ReloadableModuleBase) module);
-      }
-    }
-
-    @Override
-    public void visit(SModuleRemovingEvent event) {
-//      NOP
-    }
-
-    @Override
-    public void visit(SModuleChangedEvent event) {
-      SModule module = event.getModule();
-      if (module instanceof ReloadableModule) {
-        assert module instanceof ReloadableModuleBase;
-        myModulesToUpdate.add((ReloadableModuleBase) module);
-      }
-    }
-
-    @Override
-    public void visit(SModuleRemovedEvent event) {
-      SModuleReference mRef = event.getModuleReference();
-      removeUnloaded(mRef);
-      myModulesToUnload.add(mRef);
-    }
-
-    private void removeUnloaded(SModuleReference mRef) {
-      for (Iterator<ReloadableModuleBase> iterator = myModulesToLoad.iterator(); iterator.hasNext();) {
-        ReloadableModule module = iterator.next();
-        SModuleReference ref = module.getModuleReference();
-        if (mRef.equals(ref)) iterator.remove();
-      }
-      for (Iterator<ReloadableModuleBase> iterator = myModulesToUpdate.iterator(); iterator.hasNext();) {
-        ReloadableModule module = iterator.next();
-        SModuleReference ref = module.getModuleReference();
-        if (mRef.equals(ref)) iterator.remove();
-      }
-    }
-
-    public List<SModuleReference> getModulesToUnload() {
-      return new ArrayList<>(myModulesToUnload);
-    }
-
-    public List<ReloadableModuleBase> getModulesToLoad() {
-      return new ArrayList<>(myModulesToLoad);
-    }
-
-    public List<ReloadableModuleBase> getModulesToUpdate() {
-      return new ArrayList<>(myModulesToUpdate);
-    }
   }
 }

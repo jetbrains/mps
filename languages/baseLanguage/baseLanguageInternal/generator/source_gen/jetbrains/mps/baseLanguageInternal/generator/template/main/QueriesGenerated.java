@@ -24,6 +24,8 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.generator.template.WeavingMappingRuleContext;
+import jetbrains.mps.generator.template.WeavingAnchorContext;
+import java.util.Objects;
 import jetbrains.mps.generator.template.MappingScriptContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import java.util.Map;
@@ -40,10 +42,8 @@ import jetbrains.mps.generator.impl.query.WeaveRuleCondition;
 import jetbrains.mps.generator.impl.query.WeaveRuleQuery;
 import jetbrains.mps.generator.impl.query.WeaveAnchorQuery;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.generator.template.WeavingAnchorContext;
 import jetbrains.mps.generator.impl.query.ScriptCodeBlock;
 import jetbrains.mps.generator.impl.query.SourceNodeQuery;
-import jetbrains.mps.generator.impl.query.QueryKeyImpl;
 import jetbrains.mps.generator.impl.query.SourceNodesQuery;
 import java.util.Collection;
 import jetbrains.mps.util.IterableUtil;
@@ -73,7 +73,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
     if (SPropertyOperations.getBoolean(_context.getNode(), PROPS.makeUnique$pDva)) {
       SNode context = ContextUtil.getContextForConstant(_context, _context.getNode(), true);
-      return _context.createUniqueName(SPropertyOperations.getString(_context.getNode(), PROPS.fieldName$QHgB), context);
+      return _context.createIndexedName(SPropertyOperations.getString(_context.getNode(), PROPS.fieldName$QHgB), context, true);
     }
     return SPropertyOperations.getString(_context.getNode(), PROPS.fieldName$QHgB);
   }
@@ -226,6 +226,15 @@ public class QueriesGenerated extends QueryProviderBase {
   public static SNode weavingRule_ContextQuery_0_3(final WeavingMappingRuleContext _context) {
     return ContextUtil.getContextForConstant(_context, _context.getNode(), true);
   }
+  public static SNode weaving_AnchorQuery_0_0(final WeavingAnchorContext _context) {
+    SNode usage = _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "exprUsage");
+    SNode staticField = SNodeOperations.getNodeAncestor(usage, CONCEPTS.StaticFieldDeclaration$jR, false, false);
+
+    if ((staticField != null) && Objects.equals(SNodeOperations.getParent(staticField), _context.getMainContextNode())) {
+      return staticField;
+    }
+    return null;
+  }
   public static void mappingScript_CodeBlock_2(final MappingScriptContext _context) {
     for (SNode nn : SModelOperations.nodes(_context.getModel(), CONCEPTS.ExtractStatementListExpression$$r)) {
       List<SNode> all = SNodeOperations.getNodeAncestors(nn, CONCEPTS.Statement$P6, false);
@@ -270,11 +279,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public ReductionRuleCondition getReductionRuleCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(rrcMethods.containsKey(id))) {
-      return super.getReductionRuleCondition(identity);
-    }
-    return rrcMethods.get(id);
+    ReductionRuleCondition query = identity.forTemplateNode(rrcMethods);
+    return (query != null ? query : super.getReductionRuleCondition(identity));
   }
   private static class RRC implements ReductionRuleCondition {
     private final int methodKey;
@@ -302,29 +308,20 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public WeaveRuleCondition getWeaveRuleCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(wrcnMethods.containsKey(id))) {
-      return super.getWeaveRuleCondition(identity);
-    }
-    return wrcnMethods.get(id);
+    WRQ query = identity.forTemplateNode(wrcnMethods);
+    return (query != null ? query : super.getWeaveRuleCondition(identity));
   }
   @Override
   @NotNull
   public WeaveRuleQuery getWeaveRuleQuery(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(wrcnMethods.containsKey(id))) {
-      return super.getWeaveRuleQuery(identity);
-    }
-    return wrcnMethods.get(id);
+    WRQ query = identity.forTemplateNode(wrcnMethods);
+    return (query != null ? query : super.getWeaveRuleQuery(identity));
   }
   @NotNull
   @Override
   public WeaveAnchorQuery getWeaveAnchorQuery(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(wrcnMethods.containsKey(id))) {
-      return super.getWeaveAnchorQuery(identity);
-    }
-    return wrcnMethods.get(id);
+    WRQ query = identity.forTemplateNode(wrcnMethods);
+    return (query != null ? query : super.getWeaveAnchorQuery(identity));
   }
   private static class WRQ implements WeaveRuleQuery, WeaveRuleCondition, WeaveAnchorQuery {
     private final int methodKey;
@@ -373,7 +370,7 @@ public class QueriesGenerated extends QueryProviderBase {
         case 2:
           return null;
         case 3:
-          return null;
+          return QueriesGenerated.weaving_AnchorQuery_0_0(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no anchor query method for rule %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -388,11 +385,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public ScriptCodeBlock getScriptCodeBlock(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(mscbMethods.containsKey(id))) {
-      return super.getScriptCodeBlock(identity);
-    }
-    return mscbMethods.get(id);
+    ScriptCodeBlock query = identity.forTemplateNode(mscbMethods);
+    return (query != null ? query : super.getScriptCodeBlock(identity));
   }
   private static class SCB implements ScriptCodeBlock {
     private final int methodKey;
@@ -436,11 +430,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public SourceNodeQuery getSourceNodeQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snqMethods.containsKey(id))) {
-      return super.getSourceNodeQuery(identity);
-    }
-    return snqMethods.get(id);
+    SourceNodeQuery query = identity.forFunctionNode(snqMethods);
+    return (query != null ? query : super.getSourceNodeQuery(identity));
   }
   private static class SNQ implements SourceNodeQuery {
     private final int methodKey;
@@ -506,11 +497,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public SourceNodesQuery getSourceNodesQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snsqMethods.containsKey(id))) {
-      return super.getSourceNodesQuery(identity);
-    }
-    return snsqMethods.get(id);
+    SourceNodesQuery query = identity.forFunctionNode(snsqMethods);
+    return (query != null ? query : super.getSourceNodesQuery(identity));
   }
   private static class SNsQ implements SourceNodesQuery {
     private final int methodKey;
@@ -561,11 +549,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public PropertyValueQuery getPropertyValueQuery(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(pvqMethods.containsKey(id))) {
-      return super.getPropertyValueQuery(identity);
-    }
-    return pvqMethods.get(id);
+    PropertyValueQuery query = identity.forTemplateNode(pvqMethods);
+    return (query != null ? query : super.getPropertyValueQuery(identity));
   }
   private static class PVQ extends PropertyValueQuery.Base {
     private final int methodKey;
@@ -601,11 +586,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public IfMacroCondition getIfMacroCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(imcMethods.containsKey(id))) {
-      return super.getIfMacroCondition(identity);
-    }
-    return imcMethods.get(id);
+    IfMacroCondition query = identity.forTemplateNode(imcMethods);
+    return (query != null ? query : super.getIfMacroCondition(identity));
   }
   private static class IfMC implements IfMacroCondition {
     private final int methodKey;
@@ -636,11 +618,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public ReferenceTargetQuery getReferenceTargetQuery(@NotNull QueryKey queryKey) {
-    final String id = queryKey.getTemplateNode().getNodeId().toString();
-    if (!(rtqMethods.containsKey(id))) {
-      return super.getReferenceTargetQuery(queryKey);
-    }
-    return rtqMethods.get(id);
+    ReferenceTargetQuery query = queryKey.forTemplateNode(rtqMethods);
+    return (query != null ? query : super.getReferenceTargetQuery(queryKey));
   }
   private static class RTQ extends ReferenceTargetQuery.Base {
     private final int methodKey;
@@ -679,9 +658,9 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SConcept ExtractStaticInnerClassExpression$jb = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x6b63d4344723dac8L, "jetbrains.mps.baseLanguageInternal.structure.ExtractStaticInnerClassExpression");
     /*package*/ static final SConcept ConstructorDeclaration$yG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
     /*package*/ static final SConcept ExtractStatementListExpression$$r = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x2c5dbc7b762fd2a7L, "jetbrains.mps.baseLanguageInternal.structure.ExtractStatementListExpression");
+    /*package*/ static final SConcept StaticFieldDeclaration$jR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
     /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
     /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
-    /*package*/ static final SConcept StaticFieldDeclaration$jR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
     /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
     /*package*/ static final SConcept ExtractToSingleConstantExpression$c7 = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x4460846a234a2626L, "jetbrains.mps.baseLanguageInternal.structure.ExtractToSingleConstantExpression");
   }

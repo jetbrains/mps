@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 import java.awt.GridLayout;
 import java.awt.FlowLayout;
 import com.intellij.openapi.project.Project;
-import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 import java.awt.Dimension;
 import com.intellij.openapi.util.DimensionService;
@@ -22,7 +21,7 @@ import java.util.ArrayList;
 import javax.swing.JCheckBox;
 import jetbrains.mps.ide.ThreadUtils;
 
-@GeneratedClass(node = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)/6124943338883990550", model = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)")
+@GeneratedClass(nodeId = "6124943338883990550", model = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)")
 public class MergeDriverOptionsDialog extends DialogWrapper {
   private JPanel myPanel = new JPanel(new GridLayout(0, 1));
   private JPanel myMainPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -35,7 +34,7 @@ public class MergeDriverOptionsDialog extends DialogWrapper {
   public MergeDriverOptionsDialog(Project project) {
     super(project);
     setTitle("MPS VCS Add-ons");
-    // TODO get rid of code duplication 
+    // TODO get rid of code duplication
     myProject = project;
     myGitFixes = new InstallerCheckBox<GitGlobalConfigFixesInstaller>(new GitGlobalConfigFixesInstaller(myProject));
     myGitDriver = new InstallerCheckBox<GitMergeDriverInstaller>(new GitMergeDriverInstaller(myProject));
@@ -47,11 +46,7 @@ public class MergeDriverOptionsDialog extends DialogWrapper {
     }
 
     myGitFixes.addIfNeeded();
-    myGitDriver.addItemListener(new ItemListener() {
-      public void itemStateChanged(ItemEvent e) {
-        myGitRepos.setEnabled(myGitDriver.isSelected());
-      }
-    });
+    myGitDriver.addItemListener((ItemEvent e) -> myGitRepos.setEnabled(myGitDriver.isSelected()));
     myGitDriver.addIfNeeded();
     myGitRepos.addIfNeeded();
     if (myIdeSvn != null) {

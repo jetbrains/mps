@@ -355,6 +355,18 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
+      InferenceRule_Runtime inferenceRule = new typeof_Node_GetUID_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      InferenceRule_Runtime inferenceRule = new typeof_Node_HasNextSiblingOperation_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      InferenceRule_Runtime inferenceRule = new typeof_Node_HasPrevSiblingOperation_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
       InferenceRule_Runtime inferenceRule = new typeof_Node_InsertNewNextSiblingOperation_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
@@ -399,11 +411,19 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
+      InferenceRule_Runtime inferenceRule = new typeof_Node_PresentationOperation_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
       InferenceRule_Runtime inferenceRule = new typeof_Node_ReplaceWithAnotherOperation_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
       InferenceRule_Runtime inferenceRule = new typeof_Node_ReplaceWithNewOperation_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      InferenceRule_Runtime inferenceRule = new typeof_Node_SetUID_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
@@ -480,6 +500,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       InferenceRule_Runtime inferenceRule = new typeof_Reference_GetTargetOperation_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      InferenceRule_Runtime inferenceRule = new typeof_Reference_IsDynamic_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
@@ -603,6 +627,14 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
+      SubtypingRule_Runtime subtypingRule = new AggregationLinkTypeSuper_SubtypingRule();
+      this.mySubtypingRules.add(subtypingRule);
+    }
+    {
+      SubtypingRule_Runtime subtypingRule = new AssociationLinkTypeSuper_SubtypingRule();
+      this.mySubtypingRules.add(subtypingRule);
+    }
+    {
       SubtypingRule_Runtime subtypingRule = new supertypesOf_ClassifierTypeSConceptNode_SConceptType_SubtypingRule();
       this.mySubtypingRules.add(subtypingRule);
     }
@@ -624,6 +656,18 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       SubtypingRule_Runtime subtypingRule = new supertypesOf_ClassifierTypeSNode_SNodeType_SubtypingRule();
+      this.mySubtypingRules.add(subtypingRule);
+    }
+    {
+      SubtypingRule_Runtime subtypingRule = new supertypesOf_ClassifierType_SContainmentLink_AggregationLinkType_SubtypingRule();
+      this.mySubtypingRules.add(subtypingRule);
+    }
+    {
+      SubtypingRule_Runtime subtypingRule = new supertypesOf_ClassifierType_SReferenceLink_AssociationLinkType_SubtypingRule();
+      this.mySubtypingRules.add(subtypingRule);
+    }
+    {
+      SubtypingRule_Runtime subtypingRule = new supertypesOf_ClassifierType_SReference_SReferenceType_SubtypingRule();
       this.mySubtypingRules.add(subtypingRule);
     }
     {
@@ -713,6 +757,14 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     {
       SubtypingRule_Runtime subtypingRule = new supertypesOf_SetType_SetType_elementSNode_SubtypingRule();
       this.mySubtypingRules.add(subtypingRule);
+    }
+    {
+      ComparisonRule_Runtime comparisonRule = new AggregationLinkTypeAsClassifier_ComparisonRule();
+      this.myComparisonRules.add(comparisonRule);
+    }
+    {
+      ComparisonRule_Runtime comparisonRule = new AssociationLinkTypeAsClassifier_ComparisonRule();
+      this.myComparisonRules.add(comparisonRule);
     }
     {
       ComparisonRule_Runtime comparisonRule = new SConceptType_comparable_SConcept_ComparisonRule();

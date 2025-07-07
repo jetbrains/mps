@@ -30,7 +30,6 @@ import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.smodel.Generator;
@@ -38,7 +37,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-@GeneratedClass(node = "r:22e3ec81-a192-41cd-83a2-488758bdeedc(jetbrains.mps.ide.migration.util)/2009787284780725896", model = "r:22e3ec81-a192-41cd-83a2-488758bdeedc(jetbrains.mps.ide.migration.util)")
+@GeneratedClass(nodeId = "2009787284780725896", model = "r:22e3ec81-a192-41cd-83a2-488758bdeedc(jetbrains.mps.ide.migration.util)")
 public class MigrationDataUtil {
   public static void saveData(AbstractModule module, Iterable<Tuples._2<MigrationScriptReference, SNode>> data) {
     IFile file = getDataFile(module);
@@ -85,26 +84,22 @@ public class MigrationDataUtil {
     return result;
   }
   public static void addData(SModule module, MigrationScriptReference script, SNode data) {
-    List<Tuples._2<MigrationScriptReference, SNode>> loadedData = Sequence.fromIterable(loadData((AbstractModule) module)).toListSequence();
+    List<Tuples._2<MigrationScriptReference, SNode>> loadedData = Sequence.fromIterable(loadData((AbstractModule) module)).toList();
     ListSequence.fromList(loadedData).addElement(MultiTuple.<MigrationScriptReference,SNode>from(script, data));
     saveData((AbstractModule) module, loadedData);
   }
   public static SNode readData(SModule module, final MigrationScriptReference script) {
-    List<Tuples._2<MigrationScriptReference, SNode>> loadedData = Sequence.fromIterable(loadData((AbstractModule) module)).toListSequence();
+    List<Tuples._2<MigrationScriptReference, SNode>> loadedData = Sequence.fromIterable(loadData((AbstractModule) module)).toList();
     if (loadedData == null) {
       return null;
     }
-    Tuples._2<MigrationScriptReference, SNode> result = ListSequence.fromList(loadedData).where(new IWhereFilter<Tuples._2<MigrationScriptReference, SNode>>() {
-      public boolean accept(Tuples._2<MigrationScriptReference, SNode> it) {
-        return Objects.equals(it._0(), script);
-      }
-    }).first();
+    Tuples._2<MigrationScriptReference, SNode> result = ListSequence.fromList(loadedData).where((it) -> Objects.equals(it._0(), script)).first();
     return (result == null ? null : result._1());
   }
 
   private static IFile getDataFile(AbstractModule module) {
-    // XXX note, next code implies data files are kept along with META-INF/module.xml for packaged modules, but who cares provided these files were never distributed with a build 
-    //     (there's no support in build language) 
+    // XXX note, next code implies data files are kept along with META-INF/module.xml for packaged modules, but who cares provided these files were never distributed with a build
+    //     (there's no support in build language)
     IFile descriptorFile = module.getDescriptorFile();
     if (descriptorFile == null) {
       return null;
@@ -112,7 +107,7 @@ public class MigrationDataUtil {
     String dataFileName = FileUtil.getNameWithoutExtension(descriptorFile.getName());
     if (module instanceof Generator) {
       dataFileName = dataFileName + "generator.migration";
-      // sic(!), no dot in front, that's how it was 
+      // sic(!), no dot in front, that's how it was
     } else {
       dataFileName = dataFileName + ".migration";
     }

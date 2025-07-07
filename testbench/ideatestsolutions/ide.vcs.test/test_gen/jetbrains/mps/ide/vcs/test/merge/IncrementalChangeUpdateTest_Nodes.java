@@ -8,19 +8,15 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import org.junit.Test;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.editor.runtime.impl.cellActions.CommentUtil;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -29,139 +25,91 @@ import org.jetbrains.mps.openapi.language.SConcept;
 /**
  * These tests check that incremental changes building works well with 
  */
-@GeneratedClass(node = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)/8885850892994830683", model = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)")
+@GeneratedClass(nodeId = "8885850892994830683", model = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)")
 public class IncrementalChangeUpdateTest_Nodes extends ChangesTestBase {
 
   /*package*/ SNode getTestRoot() {
-    // expects proper (at least read) model access 
+    // expects proper (at least read) model access
     return SPointerOperations.resolveNode(new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"), getProject().getRepository());
   }
   /*package*/ SNode getTestMethod1() {
-    // expects proper (at least read) model access 
+    // expects proper (at least read) model access
     return SPointerOperations.resolveNode(new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "8885850892994216610"), getProject().getRepository());
   }
 
   /*package*/ SNode getTestCommentedMethod() {
-    // expects proper (at least read) model access 
+    // expects proper (at least read) model access
     return SPointerOperations.resolveNode(new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5297043982019668093"), getProject().getRepository());
   }
 
   @Test
   public void testRemoveRoot() {
-    testChanges(new Runnable() {
-      public void run() {
-        SNodeOperations.deleteNode(getTestRoot());
-      }
-    });
+    testChanges(() -> SNodeOperations.deleteNode(getTestRoot()));
   }
 
   @Test
   public void testAddRoot() {
-    testChanges(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
-      public SNode invoke() {
-        return SModelOperations.addRootNode(((SModel) getTestModel()), createClassConcept_2k50sb_a0a0a0a0a8());
-      }
-    }));
+    testChanges(() -> SModelOperations.addRootNode(((SModel) getTestModel()), createClassConcept_2k50sb_a0a0a0a0a8()));
   }
 
   @Test
   public void testPropertyChange() {
-    testChanges(new Runnable() {
-      public void run() {
-        SPropertyOperations.assign(getTestRoot(), PROPS.name$MnvL, "RenamedRoot");
-      }
-    });
+    testChanges(() -> SPropertyOperations.assign(getTestRoot(), PROPS.name$MnvL, "RenamedRoot"));
   }
 
   @Test
   public void changeReference() {
-    testChanges(new Runnable() {
-      public void run() {
-        SLinkOperations.setPointer(SNodeOperations.cast(SLinkOperations.getTarget(getTestMethod1(), LINKS.returnType$5xoi), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"));
-      }
-    });
+    testChanges(() -> SLinkOperations.setPointer(SNodeOperations.cast(SLinkOperations.getTarget(getTestMethod1(), LINKS.returnType$5xoi), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705")));
   }
 
   @Test
   public void addChild() {
-    testChanges(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
-      public SNode invoke() {
-        return SLinkOperations.setTarget(getTestRoot(), LINKS.superclass$Mp9$, _quotation_createNode_2k50sb_a0a0a0a0o());
-      }
-    }));
+    testChanges(() -> SLinkOperations.setTarget(getTestRoot(), LINKS.superclass$Mp9$, _quotation_createNode_2k50sb_a0a0a0a0o()));
   }
 
   @Test
   public void addSameRoleChildren() {
-    testChanges(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
-      public SNode invoke() {
-        SNode testRoot = getTestRoot();
-        ListSequence.fromList(SLinkOperations.getChildren(testRoot, LINKS.implementedInterface$rujG)).addElement(_quotation_createNode_2k50sb_a0a1a0a0a61());
-        ListSequence.fromList(SLinkOperations.getChildren(testRoot, LINKS.implementedInterface$rujG)).addElement(_quotation_createNode_2k50sb_a0a2a0a0a61());
-        return ListSequence.fromList(SLinkOperations.getChildren(testRoot, LINKS.implementedInterface$rujG)).addElement(_quotation_createNode_2k50sb_a0a3a0a0a61());
-      }
-    }));
+    testChanges(() -> {
+      SNode testRoot = getTestRoot();
+      ListSequence.fromList(SLinkOperations.getChildren(testRoot, LINKS.implementedInterface$rujG)).addElement(_quotation_createNode_2k50sb_a0a1a0a0a61());
+      ListSequence.fromList(SLinkOperations.getChildren(testRoot, LINKS.implementedInterface$rujG)).addElement(_quotation_createNode_2k50sb_a0a2a0a0a61());
+      ListSequence.fromList(SLinkOperations.getChildren(testRoot, LINKS.implementedInterface$rujG)).addElement(_quotation_createNode_2k50sb_a0a3a0a0a61());
+    });
   }
 
   @Test
   public void addNodeAttribute() {
-    testChanges(new Runnable() {
-      public void run() {
-        AttributeOperations.createAndSetAttrbiute(getTestRoot(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u), CONCEPTS.ReviewMigration$8u);
-      }
-    });
+    testChanges(() -> new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u).setNew(getTestRoot()));
   }
   @Test
   public void addChildAttribute() {
-    testChanges(new Runnable() {
-      public void run() {
-        ChangesTestUtil.addCommentedMethod(getTestRoot(), ListSequence.fromList(SLinkOperations.getChildren(getTestRoot(), LINKS.member$L_2d)).first());
-      }
-    });
+    testChanges(() -> ChangesTestUtil.addCommentedMethod(getTestRoot(), ListSequence.fromList(SLinkOperations.getChildren(getTestRoot(), LINKS.member$L_2d)).first()));
   }
 
   @Test
   public void removeChild() {
-    testChanges(new Runnable() {
-      public void run() {
-        SNodeOperations.deleteNode(getTestMethod1());
-      }
-    });
+    testChanges(() -> SNodeOperations.deleteNode(getTestMethod1()));
   }
   @Test
   public void removeChildAttribute() {
-    testChanges(new Runnable() {
-      public void run() {
-        SNodeOperations.deleteNode(SNodeOperations.cast(SNodeOperations.getParent(getTestCommentedMethod()), CONCEPTS.BaseCommentAttribute$nv));
-      }
-    });
+    testChanges(() -> SNodeOperations.deleteNode(SNodeOperations.cast(SNodeOperations.getParent(getTestCommentedMethod()), CONCEPTS.BaseCommentAttribute$nv)));
   }
   @Test
   public void commentChild() {
-    testChanges(new Runnable() {
-      public void run() {
-        CommentUtil.commentOut(getTestMethod1());
-      }
-    });
+    testChanges(() -> CommentUtil.commentOut(getTestMethod1()));
   }
   @Test
   public void uncommentChild() {
-    testChanges(new Runnable() {
-      public void run() {
-        ChangesTestUtil.uncommentFirstCommentedMethod(getTestRoot());
-      }
-    });
+    testChanges(() -> ChangesTestUtil.uncommentFirstCommentedMethod(getTestRoot()));
   }
 
   @Test
   public void moveChild() {
-    testChanges(new Runnable() {
-      public void run() {
-        SNode method = getTestMethod1();
-        assert ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE)).count() > 2;
-        SNode firstStmt = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE)).first();
-        SNodeOperations.insertNextSiblingChild(SNodeOperations.getNextSibling(firstStmt), firstStmt);
-      }
+    testChanges(() -> {
+      SNode method = getTestMethod1();
+      assert ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE)).count() > 2;
+      SNode firstStmt = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE)).first();
+      SNodeOperations.insertNextSiblingChild(SNodeOperations.getNextSibling(firstStmt), firstStmt);
     });
   }
   private static SNode createClassConcept_2k50sb_a0a0a0a0a8() {
@@ -170,31 +118,31 @@ public class IncrementalChangeUpdateTest_Nodes extends ChangesTestBase {
     return n0.getResult();
   }
   private static SNode _quotation_createNode_2k50sb_a0a0a0a0o() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
-    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Object")));
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+    quotedNode_1 = nb.getResult();
+    nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~Object");
     return quotedNode_1;
   }
   private static SNode _quotation_createNode_2k50sb_a0a1a0a0a61() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
-    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Runnable")));
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+    quotedNode_1 = nb.getResult();
+    nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~Runnable");
     return quotedNode_1;
   }
   private static SNode _quotation_createNode_2k50sb_a0a2a0a0a61() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
-    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Readable")));
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+    quotedNode_1 = nb.getResult();
+    nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~Readable");
     return quotedNode_1;
   }
   private static SNode _quotation_createNode_2k50sb_a0a3a0a0a61() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
-    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Iterable")));
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+    quotedNode_1 = nb.getResult();
+    nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~Iterable");
     return quotedNode_1;
   }
 

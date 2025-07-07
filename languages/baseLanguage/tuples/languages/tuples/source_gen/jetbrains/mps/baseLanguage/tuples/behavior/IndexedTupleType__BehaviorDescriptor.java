@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Map;
@@ -30,11 +29,11 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class IndexedTupleType__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, "jetbrains.mps.baseLanguage.tuples.structure.IndexedTupleType");
 
-  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIMiw").build();
-  public static final SMethod<List<String>> getVariableSuffixes_idhEwIzNo = new SMethodBuilder<List<String>>(new SJavaCompoundTypeImpl((Class<List<String>>) ((Class) Object.class))).name("getVariableSuffixes").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIzNo").build();
-  public static final SMethod<Void> collectGenericSubstitutions_id3zZky3wF74h = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectGenericSubstitutions").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3zZky3wF74h").build(SMethodBuilder.createJavaParameter((Class<Map<SNode, SNode>>) ((Class) Object.class), ""));
-  public static final SMethod<String> getLeftBracket_id1653mnvAgpU = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLeftBracket").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgpU").build();
-  public static final SMethod<String> getRightBracket_id1653mnvAgqW = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getRightBracket").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgqW").build();
+  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  public static final SMethod<List<String>> getVariableSuffixes_idhEwIzNo = new SMethodBuilder<List<String>>(new SJavaCompoundTypeImpl((Class<List<String>>) ((Class) Object.class))).name("getVariableSuffixes").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877337304L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Void> collectGenericSubstitutions_id3zZky3wF74h = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectGenericSubstitutions").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4107091686347010321L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<Map<SNode, SNode>>) ((Class) Object.class), ""));
+  public static final SMethod<String> getLeftBracket_id1653mnvAgpU = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLeftBracket").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741497978L).languageId(0xb8d207e93feba96aL, 0xa247e09e243545baL).build2();
+  public static final SMethod<String> getRightBracket_id1653mnvAgqW = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getRightBracket").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498044L).languageId(0xb8d207e93feba96aL, 0xa247e09e243545baL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getVariableSuffixes_idhEwIzNo, collectGenericSubstitutions_id3zZky3wF74h, getLeftBracket_id1653mnvAgpU, getRightBracket_id1653mnvAgqW);
 

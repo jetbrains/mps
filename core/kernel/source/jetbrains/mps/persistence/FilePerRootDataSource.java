@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,35 +16,26 @@
 package jetbrains.mps.persistence;
 
 import jetbrains.mps.extapi.persistence.FolderDataSource;
-import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromURL;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Internal;
-import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
-import java.net.URI;
+import java.io.File;
 import java.util.Objects;
 
 /**
- * @see FolderDataSource comments
- *
  * evgeny, 6/3/13
  */
-@ToRemove(version = 4.0)
 public final class FilePerRootDataSource extends FolderDataSource {
+  @Deprecated(forRemoval = true)
   public static final String HEADER_FILE = MPSExtentions.DOT_MODEL_HEADER;
+  @Deprecated(forRemoval = true)
   public static final String ROOT_EXTENSION = MPSExtentions.MODEL_ROOT;
 
   public FilePerRootDataSource(@NotNull IFile folder) {
-    super(folder);
-  }
-
-  @Override
-  public boolean isIncluded(@NotNull IFile file) {
-    return super.isIncluded(file) && isPerRootPersistenceFile(file);
+    super(folder, FilePerRootDataSource::isPerRootPersistenceFile);
   }
 
   @Override
@@ -62,12 +53,18 @@ public final class FilePerRootDataSource extends FolderDataSource {
 
   @Internal
   public static boolean isPerRootPersistenceFile(@NotNull IFile file) {
+    // I don't like this pair of methods, nor the way they are used in vcs!
+    return isPerRootPersistenceFile(new File(file.getPath()));
+  }
+
+  @Internal
+  public static boolean isPerRootPersistenceFile(@NotNull File file) {
     String fileName = file.getName();
-    if (HEADER_FILE.equals(fileName)) {
+    if (MPSExtentions.DOT_MODEL_HEADER.equals(fileName)) {
       return true;
     }
 
     String extension = FileUtil.getExtension(fileName);
-    return ROOT_EXTENSION.equals(extension);
+    return MPSExtentions.MODEL_ROOT.equals(extension);
   }
 }

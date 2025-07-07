@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,14 @@
  */
 package jetbrains.mps.persistence.binary;
 
+import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.persistence.IndexAwareModelFactory.Callback;
 import jetbrains.mps.persistence.MetaModelInfoProvider;
 import jetbrains.mps.persistence.MetaModelInfoProvider.BaseMetaModelInfo;
 import jetbrains.mps.persistence.MetaModelInfoProvider.RegularMetaModelInfo;
 import jetbrains.mps.persistence.MetaModelInfoProvider.StuffedMetaModelInfo;
+import jetbrains.mps.persistence.UserObjectsPersistence;
 import jetbrains.mps.persistence.registry.AggregationLinkInfo;
 import jetbrains.mps.persistence.registry.AssociationLinkInfo;
 import jetbrains.mps.persistence.registry.ConceptInfo;
@@ -40,6 +42,7 @@ import jetbrains.mps.smodel.adapter.ids.SReferenceLinkId;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
+import jetbrains.mps.smodel.persistence.def.ModelPersistence;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import jetbrains.mps.smodel.persistence.def.v9.IdInfoCollector;
 import jetbrains.mps.smodel.runtime.ConceptKind;
@@ -56,6 +59,7 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.persistence.ModelSaveOption;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 
 import java.io.IOException;
@@ -189,13 +193,23 @@ public final class BinaryPersistence {
     }
   }
 
+  /**
+   * writes binary presentation of the model to supplied output stream (both non-null) with respect to save options (nullable).
+   */
+  public static void writeModel(org.jetbrains.mps.openapi.model.SModel model, ModelOutputStream os, ModelSaveOption... options) throws IOException {
+    final MetaModelInfoProvider mmiProvider = ModelPersistence.mmiProviderFor(((SModelBase) model).getModelData());
+
+    BinaryPersistence bp = new BinaryPersistence(mmiProvider, ((SModelBase) model).getSModel());
+    IdInfoRegistry meta = bp.saveModelProperties(os);
+
+    Collection<SNode> roots = IterableUtil.asCollection(model.getRootNodes());
+    final NodesWriter nodeWriter = new NodesWriter(model.getReference(), os, meta);
+    nodeWriter.keepUserObjects(UserObjectsPersistence.DESIRED.present(options) || UserObjectsPersistence.REQUIRED.present(options));
+    nodeWriter.writeNodes(roots);
+  }
+
   private static void saveModel(SModel model, ModelOutputStream os) throws IOException {
-    final MetaModelInfoProvider mmiProvider;
-    if (model instanceof DefaultSModel && ((DefaultSModel) model).getSModelHeader().getMetaInfoProvider() != null) {
-      mmiProvider = ((DefaultSModel) model).getSModelHeader().getMetaInfoProvider();
-    } else {
-      mmiProvider = new RegularMetaModelInfo();
-    }
+    final MetaModelInfoProvider mmiProvider = ModelPersistence.mmiProviderFor(model);
     BinaryPersistence bp = new BinaryPersistence(mmiProvider, model);
     IdInfoRegistry meta = bp.saveModelProperties(os);
 
@@ -286,7 +300,12 @@ public final class BinaryPersistence {
         os.writeLong(ci.getConceptId().getIdValue());
         assert ul.getName().equals(NameUtil.namespaceFromConceptFQName(ci.getName())) : "We save concept short name. This check ensures we can re-construct fqn based on language name";
         os.writeString(ci.getBriefName());
-        os.writeByte(ci.getKind().ordinal() << 4 | ci.getScope().ordinal());
+        // there are 4 values in ConceptKind enum, I don't expect it to grow
+        int flags = ci.getKind().ordinal() << 4 | ci.getScope().ordinal();
+        if (ci.isInterfaceConcept()) {
+          flags |= 0x80;
+        }
+        os.writeByte(flags);
         if (ci.isImplementationWithStub()) {
           os.writeByte(STUB_ID);
           os.writeLong(ci.getStubCounterpart().getIdValue());
@@ -352,7 +371,10 @@ public final class BinaryPersistence {
           assert stubToken == STUB_ID;
           stubId = new SConceptId(languageId, is.readLong());
         }
-        rh.withConcept(conceptId, conceptName, StaticScope.values()[flags & 0x0f], ConceptKind.values()[flags >> 4 & 0x0f], stubId, conceptIndex++);
+        final StaticScope ss = StaticScope.values()[flags & 0x0f];
+        final ConceptKind ck = ConceptKind.values()[flags >> 4 & 0x07];
+        final boolean isInterfaceConcept = 0 != (flags & 0x80);
+        rh.withConcept(conceptId, conceptName, ss, ck, isInterfaceConcept, stubId, conceptIndex++);
         //
         int propertyCount = is.readShort();
         while (propertyCount-- > 0) {
@@ -460,8 +482,8 @@ public final class BinaryPersistence {
     }
   }
 
-  public static SModelData getModelData(InputStream input) throws IOException {
-    ModelLoadResult result = loadModel(input, false, new StuffedMetaModelInfo(new BaseMetaModelInfo()));
+  public static SModelData getModelData(InputStream input, boolean keepMetaModelInfo) throws IOException {
+    ModelLoadResult result = loadModel(input, false, keepMetaModelInfo ? new StuffedMetaModelInfo(new RegularMetaModelInfo()) : null);
     return result.getModel();
   }
 

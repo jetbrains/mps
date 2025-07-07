@@ -25,7 +25,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.regex.Pattern;
 
-@GeneratedClass(node = "r:128708be-e37c-484b-b372-892904c802d9(jetbrains.mps.tool.builder.unittest)/2546981710036148096", model = "r:128708be-e37c-484b-b372-892904c802d9(jetbrains.mps.tool.builder.unittest)")
+@GeneratedClass(nodeId = "2546981710036148096", model = "r:128708be-e37c-484b-b372-892904c802d9(jetbrains.mps.tool.builder.unittest)")
 public class XmlTestReporter implements ITestReporter {
   private static final String ISO8601_DATETIME_PATTERN = "yyyy-MM-dd'T'HH:mm:ss";
   private static final String TESTSUITES = "testsuites";
@@ -155,11 +155,11 @@ public class XmlTestReporter implements ITestReporter {
     return sb;
   }
   private String shortName(String testFQname) {
-    Matcher matcher = REGEXP_rw4j9x_a0a0a74.matcher(testFQname);
+    Matcher matcher = REGEXP.matcher(testFQname);
     return (matcher.matches() ? matcher.group(1) : testFQname);
   }
   private String prefix(String testFQname) {
-    Matcher matcher = REGEXP_rw4j9x_a0a0a84.matcher(testFQname);
+    Matcher matcher = REGEXP1.matcher(testFQname);
     return (matcher.matches() ? matcher.group(1) : testFQname);
   }
   public String seconds(long millis) {
@@ -182,6 +182,6 @@ public class XmlTestReporter implements ITestReporter {
     }
     return this.hostname;
   }
-  private static final Pattern REGEXP_rw4j9x_a0a0a74 = Pattern.compile(".+\\.([^\\.]+)$", 0);
-  private static final Pattern REGEXP_rw4j9x_a0a0a84 = Pattern.compile("(.*)\\.[^\\.]+$", 0);
+  private static final Pattern REGEXP = Pattern.compile(".+\\.([^\\.]+)$", 0);
+  private static final Pattern REGEXP1 = Pattern.compile("(.*)\\.[^\\.]+$", 0);
 }

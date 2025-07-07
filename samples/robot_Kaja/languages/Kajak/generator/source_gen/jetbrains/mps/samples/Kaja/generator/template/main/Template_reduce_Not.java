@@ -16,8 +16,7 @@ import java.util.Collection;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
-import jetbrains.mps.generator.runtime.NodeWeaveFacility;
-import java.util.ArrayList;
+import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -26,6 +25,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class Template_reduce_Not extends TemplateDeclarationBase {
 
   public Template_reduce_Not() {
+    super(new MO());
   }
 
   public SNodeReference getTemplateNode() {
@@ -36,18 +36,14 @@ public class Template_reduce_Not extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       TemplateContext context1 = context.subContext();
       {
         Collection<SNode> tlist2 = null;
-        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_6_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_mriqof_b0a0c0b0c0g));
-        tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_mriqof_b0a0c0b0c0g, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039654090", context1);
-        for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-          tnode1.addChild(myAggregationLinks[0], child3);
-        }
-        // TODO validate child 
+        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_6_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro));
+        tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039654090", context1);
+        environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(1, tnode1);
     return rv;
@@ -57,23 +53,23 @@ public class Template_reduce_Not extends TemplateDeclarationBase {
     applyPart0(context).reportTo(sink);
   }
 
-  public Collection<SNode> weave(@NotNull NodeWeaveFacility weaveSupport) throws GenerationException {
-    ArrayList<SNode> rv = new ArrayList<SNode>();
-    applyPart0(weaveSupport.getTemplateContext()).weaveWith(weaveSupport).reportTo(rv);
-    return rv;
+  /*package*/ static final class MO implements MetaObjectContainer {
+    @Override
+    public SConcept[] concepts() {
+      SConcept[] rv = new SConcept[1];
+      rv[0] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbcf6bd10dL, "NotExpression");
+      return rv;
+    }
+
+
+
+    @Override
+    public SContainmentLink[] aggregations() {
+      SContainmentLink[] rv = new SContainmentLink[2];
+      rv[0] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
+      rv[1] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
+      return rv;
+    }
   }
-  @Override
-  protected SConcept[] initConcepts() {
-    SConcept[] rv = new SConcept[1];
-    rv[0] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbcf6bd10dL, "NotExpression");
-    return rv;
-  }
-  @Override
-  protected SContainmentLink[] initAggregationLinks() {
-    SContainmentLink[] rv = new SContainmentLink[2];
-    rv[0] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
-    rv[1] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
-    return rv;
-  }
-  private static final SNodePointer copySrcMacro_mriqof_b0a0c0b0c0g = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039654093");
+  private static final SNodePointer copySrcMacro = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039654093");
 }

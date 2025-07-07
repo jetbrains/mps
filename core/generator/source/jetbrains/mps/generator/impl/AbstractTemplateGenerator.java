@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,7 @@ import java.util.List;
 
 public abstract class AbstractTemplateGenerator implements ITemplateGenerator {
 
-  private GenerationSessionContext myOperationContext;
+  private final GenerationSessionContext myOperationContext;
   protected ProgressMonitor myProgressMonitor;
 
   protected final SModel myInputModel;
@@ -89,15 +89,6 @@ public abstract class AbstractTemplateGenerator implements ITemplateGenerator {
   @Override
   public GeneratorQueryProvider getQueryProvider(@NotNull SNodeReference templateNodeRef) {
     return myQuerySource.getQueryProvider(templateNodeRef);
-  }
-
-  @Override
-  public void registerMappingLabel(SNode inputNode, String mappingName, SNode outputNode) {
-    if (inputNode != null) {
-      myMappings.addOutputNodeByInputNodeAndMappingName(inputNode, mappingName, outputNode);
-    } else {
-      myMappings.addNewOutputNode(mappingName, outputNode);
-    }
   }
 
   @Override

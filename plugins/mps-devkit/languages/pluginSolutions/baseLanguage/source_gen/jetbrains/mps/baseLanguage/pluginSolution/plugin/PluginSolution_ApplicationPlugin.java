@@ -10,6 +10,7 @@ import java.util.List;
 import jetbrains.mps.plugins.actions.BaseKeymapChanges;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import jetbrains.mps.plugins.part.ApplicationPluginPart;
 
 public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
   private final PluginId myId = PluginId.getId("jetbrains.mps.baseLanguage.pluginSolution");
@@ -23,7 +24,8 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
   }
 
   public void createGroups() {
-    // actions w/o parameters 
+    // actions w/o parameters
+    addAction(new CreateMatchingConstructor_Action());
     addAction(new ExtractMethod_Action());
     addAction(new InlineField_Action());
     addAction(new InlineLocalVariable_Action());
@@ -35,16 +37,22 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new MakeFieldStatic_Action());
     addAction(new RenameMethod_Action());
     addAction(new RenameVariable_Action());
+    addAction(new ReplaceFieldWithProperty_Action());
+    addAction(new ReplacePropertyWithField_Action());
     addAction(new SafeDeleteConceptMethod_Action());
     addAction(new ShowNullDFA_Action());
-    // groups 
+    // groups
     addGroup(new AnalyzersActions_ActionGroup(this));
     addGroup(new RefactoringAdditions_ActionGroup(this));
+    addGroup(new ShowAsErrorIntentions_ActionGroup(this));
+    addGroup(new ShowAsIntentions_ActionGroup(this));
     addGroup(new TouchBarDefault_shift_ActionGroup(this));
   }
   public void adjustRegularGroups() {
     insertGroupIntoAnother(RefactoringAdditions_ActionGroup.ID, "jetbrains.mps.ide.platform.actions.NodeRefactoring_ActionGroup", null);
     insertGroupIntoAnother(TouchBarDefault_shift_ActionGroup.ID, jetbrains.mps.ide.actions.TouchBarDefault_shift_ActionGroup.ID, jetbrains.mps.ide.actions.TouchBarDefault_shift_ActionGroup.LABEL_ID_rename);
+    insertGroupIntoAnother(ShowAsErrorIntentions_ActionGroup.ID, "jetbrains.mps.ide.editor.actions.ActionsAsErrorIntentions_ActionGroup", null);
+    insertGroupIntoAnother(ShowAsIntentions_ActionGroup.ID, "jetbrains.mps.ide.editor.actions.ActionsAsIntentions_ActionGroup", null);
     insertGroupIntoAnother(AnalyzersActions_ActionGroup.ID, DFAActions_ActionGroup.ID, null);
   }
   public List<BaseKeymapChanges> initKeymaps() {
@@ -52,5 +60,9 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
     ListSequence.fromList(res).addElement(new Default_KeymapChanges());
     ListSequence.fromList(res).addElement(new Mac_10_5_KeymapChanges());
     return res;
+  }
+  @Override
+  public void fillCustomParts(List<ApplicationPluginPart> parts) {
+    parts.add(new CheckExtensions_AppPluginPart());
   }
 }

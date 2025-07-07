@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-34b5bno1558vzhbcs8pc35glqt1dltn">
+<product version="3" modelHash="e4vbmh6gc3xlzlxkicgh1bfltgfeif5">
   <files names="AbstractBreakpointsTree.java:BreakpointIconRenderer.java:BreakpointPainter.java:BreakpointViewSettingsComponent.java:BreakpointsBrowserDialog.java:BreakpointsTable.java:BreakpointsTree.java:BreakpointsUiComponent.java:BreakpointsUtil.java:BreakpointsView.java:GroupedTree.java:JPanelWithCheckbox.java" />
 </product>
 

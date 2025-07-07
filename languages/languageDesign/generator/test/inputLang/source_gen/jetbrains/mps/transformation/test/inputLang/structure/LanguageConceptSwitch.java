@@ -9,23 +9,27 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public final class LanguageConceptSwitch {
   private final LanguageConceptIndex myIndex;
-  public static final int ExpressionToReduceToStatement = 0;
-  public static final int InputNode = 1;
-  public static final int InputNode_A = 2;
-  public static final int InputNode_B = 3;
-  public static final int InputNode_C = 4;
-  public static final int InputRoot = 5;
-  public static final int InputRootWithStatementList = 6;
-  public static final int RefTestClass = 7;
-  public static final int RefTestExpression = 8;
-  public static final int RefTestMethod = 9;
-  public static final int RefTestMethodCall = 10;
-  public static final int RefTestParam = 11;
-  public static final int RefTestParamRef = 12;
+  public static final int ClassExport = 0;
+  public static final int ExpressionToReduceToStatement = 1;
+  public static final int InputNamedList = 2;
+  public static final int InputNode = 3;
+  public static final int InputNode_A = 4;
+  public static final int InputNode_B = 5;
+  public static final int InputNode_C = 6;
+  public static final int InputRoot = 7;
+  public static final int InputRootWithStatementList = 8;
+  public static final int RefTestClass = 9;
+  public static final int RefTestExpression = 10;
+  public static final int RefTestMethod = 11;
+  public static final int RefTestMethodCall = 12;
+  public static final int RefTestParam = 13;
+  public static final int RefTestParamRef = 14;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL);
+    builder.put(0x670a61c4fae70efdL, ClassExport);
     builder.put(0x11986c01fc7L, ExpressionToReduceToStatement);
+    builder.put(0x5eafe56cff7c3e1dL, InputNamedList);
     builder.put(0x11645a1114eL, InputNode);
     builder.put(0x11645be5a7aL, InputNode_A);
     builder.put(0x118e69cb58aL, InputNode_B);

@@ -9,7 +9,6 @@ import jetbrains.mps.lang.constraints.rules.skeleton.behavior.RuleBlockMember__B
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -28,11 +27,7 @@ public class InsertMemberAfterMember {
       }
       public void execute_internal(EditorContext editorContext, final SNode node) {
         SNode block = RuleBlockMember__BehaviorDescriptor.getBlock_id1BFxp3HHhy9.invoke(node);
-        SNode newNode = SNodeOperations.insertNextSiblingChild(ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.members$9HnD)).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return Objects.equals(it, SNodeOperations.getParent(node));
-          }
-        }), SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(MetaAdapterFactory.getInterfaceConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb51750L, "jetbrains.mps.lang.constraints.rules.skeleton.structure.RuleBlockMember"))));
+        SNode newNode = SNodeOperations.insertNextSiblingChild(ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.members$9HnD)).findFirst((it) -> Objects.equals(it, SNodeOperations.getParent(node))), SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(MetaAdapterFactory.getInterfaceConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb51750L, "jetbrains.mps.lang.constraints.rules.skeleton.structure.RuleBlockMember"))));
         editorContext.selectWRTFocusPolicy(newNode);
       }
 
@@ -43,11 +38,11 @@ public class InsertMemberAfterMember {
     CellAction originalDelete = editorCell.getAction(CellActionType.DELETE);
     CellAction originalBackspace = editorCell.getAction(CellActionType.BACKSPACE);
 
-    // set actions that were actually defined 
+    // set actions that were actually defined
     setDefinedCellActions(editorCell, node, context);
 
-    // If we set a DELETE action but no BACKSPACE action, 
-    // use the DELETE action for BACKSPACE as well. 
+    // If we set a DELETE action but no BACKSPACE action,
+    // use the DELETE action for BACKSPACE as well.
     CellAction delete = editorCell.getAction(CellActionType.DELETE);
     CellAction backspace = editorCell.getAction(CellActionType.BACKSPACE);
     if (delete != originalDelete && backspace == originalBackspace) {
@@ -64,17 +59,17 @@ public class InsertMemberAfterMember {
   private static final Object OB = new Object();
 
   public static void setDefinedCellActions(EditorCell editorCell, SNode node, EditorContext context) {
-    // set cell actions from all imported action maps 
+    // set cell actions from all imported action maps
 
-    // set cell actions defined directly in this action map 
+    // set cell actions defined directly in this action map
     editorCell.setAction(CellActionType.INSERT, createAction_INSERT(node));
   }
 
   public static void setDefinedCellActionsOfType(EditorCell editorCell, SNode node, EditorContext context, CellActionType actionType) {
 
-    // set cell action(s) of the given type from imported action maps 
+    // set cell action(s) of the given type from imported action maps
 
-    // set cell action of the given type defined directly in this action map 
+    // set cell action of the given type defined directly in this action map
     if (Objects.equals(actionType, CellActionType.INSERT)) {
       editorCell.setAction(actionType, createAction_INSERT(node));
     }

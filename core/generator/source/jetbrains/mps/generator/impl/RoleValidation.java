@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,6 +37,8 @@ public class RoleValidation {
   private final boolean myShowBadChildWarning;
   private final RoleValidator mySuccessValidator = new RoleValidator();
   // the code might need refactoring to be more thread-friendly, e.g. validators per thread, not per single generator as it's now
+  // however, the map doesn't grow too much, e.g. for lang.generator/editor there are 87 concept entries total,
+  // with maximum of 7 link->validator map size.
   private final ConcurrentHashMap<SConcept, Map<SAbstractLink, RoleValidator>> validators = new ConcurrentHashMap<>();
 
   public RoleValidation(boolean showBadChildWarning) {
@@ -137,8 +139,8 @@ public class RoleValidation {
 
     @Override
     public Status validate(SNode targetNode) {
-      // XXX could keep set of concepts already checked to avoid isSubConceptOf (if expensive)
       if (targetNode.getConcept().isSubConceptOf(myLinkTarget)) {
+        // no reason to cache isSubConceptOf result, it's few ms in total (e.g. 11 ms for lang.generator/editor)
         return null;
       }
       if (myIsContainment && DelayedChanges.isTempNode(targetNode)) {

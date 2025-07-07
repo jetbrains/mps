@@ -4,9 +4,10 @@ package jetbrains.mps.lang.editor.diagram.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import java.awt.Component;
@@ -14,22 +15,21 @@ import java.awt.event.MouseEvent;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.jetpad.mapper.Mapper;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.nodeEditor.cells.jetpad.DiagramCell;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.jetpad.projectional.view.View;
 import org.jetbrains.mps.openapi.language.SProperty;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class SelectPortQuery_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(SelectPortQuery_Test.class, "${mps_home}", "r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SelectPortQuery_Test.class).projectPath(null).modelRef("r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)").reopenProject(false).build());
 
   public SelectPortQuery_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -54,13 +54,11 @@ public class SelectPortQuery_Test extends BaseTransformationTest {
         processSecondaryMouseEvent(eventTargetComponent_vw537p_a0, x_vw537p_a0, y_vw537p_a0, MouseEvent.MOUSE_CLICKED);
       }
       final Wrappers._T<Mapper> descendantMapper = new Wrappers._T<Mapper>();
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          EditorCell selectedCell = getEditorComponent().getSelectedCell();
-          Assert.assertTrue(selectedCell != null);
-          DiagramCell diagramCell = CellFinderUtil.findChildByClass(getEditorComponent().getRootCell(), DiagramCell.class, true);
-          descendantMapper.value = diagramCell.getRootMapper().getDescendantMapper(SPropertyOperations.getString(SNodeOperations.cast(getNodeById("2278461409092334466"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, "jetbrains.mps.lang.editor.diagram.testLanguage"), 0x4ce40ecaf41f722aL, "OutputPort"))), PROPS.name$MnvL));
-        }
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> {
+        EditorCell selectedCell = getEditorComponent().getSelectedCell();
+        Assert.assertTrue(selectedCell != null);
+        DiagramCell diagramCell = CellFinderUtil.findChildByClass(getEditorComponent().getRootCell(), DiagramCell.class, true);
+        descendantMapper.value = diagramCell.getRootMapper().getDescendantMapper(SPropertyOperations.getString(getAnnotatedNode("port"), PROPS.name$MnvL));
       });
       Assert.assertTrue(descendantMapper.value != null && descendantMapper.value.getTarget() != null);
       Assert.assertTrue(((View) descendantMapper.value.getTarget()).focused().get());

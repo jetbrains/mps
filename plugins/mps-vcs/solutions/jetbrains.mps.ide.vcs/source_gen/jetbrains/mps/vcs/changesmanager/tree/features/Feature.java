@@ -5,59 +5,21 @@ package jetbrains.mps.vcs.changesmanager.tree.features;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.module.SRepository;
-import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
 
 /**
  * Feature is either node, node's property, node's reference, node's property list,
  * or node's reference list (see subclasses)
  */
-@GeneratedClass(node = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)/5060092229902868305", model = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)")
+@GeneratedClass(nodeId = "5060092229902868305", model = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)")
 public abstract class Feature {
   private final SModelReference myModelReference;
-  private int myHashCode;
+
   protected Feature(@NotNull SModelReference modelReference) {
     myModelReference = modelReference;
   }
+
   @NotNull
   public final SModelReference getModelReference() {
     return myModelReference;
-  }
-  @Nullable
-  protected abstract Feature getParent(SRepository repo);
-  @Override
-  public int hashCode() {
-    if (myHashCode == 0) {
-      myHashCode = toString().hashCode();
-      if (myHashCode == 0) {
-        assert false : "Feature hash code cannot be 0";
-      }
-    }
-    return myHashCode;
-  }
-  @Override
-  public boolean equals(Object object) {
-    if (this.getClass() == object.getClass()) {
-      Feature that = ((Feature) object);
-      if (this.hashCode() == that.hashCode()) {
-        if (this.myModelReference.equals(that.myModelReference)) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-  @NotNull
-  @Override
-  public abstract String toString();
-  public Feature[] getAncestors(SRepository repo) {
-    List<Feature> features = ListSequence.fromList(new ArrayList<Feature>());
-    for (Feature current = getParent(repo); current != null; current = current.getParent(repo)) {
-      ListSequence.fromList(features).addElement(current);
-    }
-    return ListSequence.fromList(features).toGenericArray(Feature.class);
   }
 }

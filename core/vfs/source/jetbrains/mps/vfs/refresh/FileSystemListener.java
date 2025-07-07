@@ -19,9 +19,7 @@ import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * The client points the file he wants to know about and also
- * enumerates some other listeners, which are supposed to get notifications before the client.
- *
+ * The client points the file he wants to know about.
  * Sometimes it is useful to have a single listener and to change IFile (FileListener)
  *
  * @see FileListenerAdapter

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package jetbrains.mps.project.structure;
 
 import jetbrains.mps.extapi.model.GeneratableSModel;
 import jetbrains.mps.generator.ModelDigestUtil;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.persistence.GeneratorDescriptorPersistence;
 import jetbrains.mps.smodel.BootstrapLanguages;
 import jetbrains.mps.smodel.Generator;
@@ -26,7 +27,6 @@ import jetbrains.mps.smodel.SnapshotModelData;
 import jetbrains.mps.smodel.TrivialModelDescriptor;
 import jetbrains.mps.util.JDOMUtil;
 import jetbrains.mps.util.MacrosFactory;
-import org.apache.log4j.Logger;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -88,7 +88,7 @@ public class GeneratorDescriptorModelProvider extends DescriptorModelProvider {
     GeneratorDescriptorModel dm = myModels.get(modelReference);
     if (dm != null) {
       Generator generator = (Generator) module;
-      assert dm.getModule() == generator;
+      assert dm.getModule() == generator : String.format("Descriptor model owned by module %s while associated with %s", dm.getModule(), generator);
       generator.unregisterModel(dm);
       myModels.remove(modelReference);
     }
@@ -156,12 +156,13 @@ public class GeneratorDescriptorModelProvider extends DescriptorModelProvider {
       if (hash != null) {
         return hash;
       }
-      Element element = new GeneratorDescriptorPersistence(MacrosFactory.forModule((SModule) myModule), true).save(myModule.getModuleDescriptor());
+      // indeed, can find out if it's standalone generator module, but for the purposes of hash additional <source-language> element doesn't mean much
+      Element element = new GeneratorDescriptorPersistence(true).save(myModule.getModuleDescriptor());
       StringWriter out = new StringWriter();
       try {
         JDOMUtil.writeDocument(new Document(element), out);
       } catch (IOException ex) {
-        Logger.getLogger(getClass()).warn(ex.getMessage(), ex);
+        Logger.getLogger(getClass()).warning(ex.getMessage(), ex);
       }
       hash = ModelDigestUtil.hashText(out.toString());
       BigInteger modelHash = new BigInteger(hash, Character.MAX_RADIX);

@@ -41,7 +41,6 @@ import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParenStyleClass;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.LeftBraceStyleClass;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBraceStyleClass;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -91,7 +90,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.core.editor.alias");
     Style style = new StyleImpl();
-    new KeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeywordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, true);
     editorCell.getStyle().putAll(style);
     ForConstantCellsInTheExpression.setCellActions(editorCell, myNode, getEditorContext());
@@ -154,7 +153,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       EditorCell_Collection editorCell = handler.createCells(new CellLayout_Horizontal(), false);
       editorCell.setCellId("refNodeList_parameter");
       Style style = new StyleImpl();
-      new ParameterStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      new ParameterStyleClass(this).apply(style, editorCell);
       editorCell.getStyle().putAll(style);
       ParameterActionMap.setCellActions(editorCell, myNode, getEditorContext());
       editorCell.setSRole(handler.getElementSRole());
@@ -232,7 +231,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "found by");
     editorCell.setCellId("Constant_50ofcu_c0");
     Style style = new StyleImpl();
-    new KeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeywordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, false);
     editorCell.getStyle().putAll(style);
     ForConstantCellsInTheExpression.setCellActions(editorCell, myNode, getEditorContext());
@@ -265,11 +264,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.FinderReference$BS;
     }
-    public SNode createNodeToInsert(EditorContext editorContext) {
-      return nodeFactory();
+    public SNode createNodeToInsert(EditorContext editorContext, SNode prevNode, SNode nextNode, int index) {
+      return nodeFactory(prevNode, nextNode, index);
     }
 
-    public SNode nodeFactory() {
+    public SNode nodeFactory(SNode prevNode, SNode nextNode, int index) {
       return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x1bd5a514384e195fL, "jetbrains.mps.lang.findUsages.structure.FinderReference"));
     }
     public EditorCell createNodeCell(SNode elementNode) {
@@ -342,7 +341,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "(");
     editorCell.setCellId("Constant_50ofcu_f0");
     Style style = new StyleImpl();
-    new LeftParenAfterNameStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new LeftParenAfterNameStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -534,7 +533,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ")");
     editorCell.setCellId("Constant_50ofcu_l0");
     Style style = new StyleImpl();
-    new RightParenStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new RightParenStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -543,7 +542,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "invoke");
     editorCell.setCellId("Constant_50ofcu_m0");
     Style style = new StyleImpl();
-    new KeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeywordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, false);
     editorCell.getStyle().putAll(style);
     ForConstantCellsInTheExpression.setCellActions(editorCell, myNode, getEditorContext());
@@ -554,9 +553,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "{");
     editorCell.setCellId("Constant_50ofcu_n0");
     Style style = new StyleImpl();
-    new LeftBraceStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new LeftBraceStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_BLUE));
+    style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_BLUE));
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -677,8 +676,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "}");
     editorCell.setCellId("Constant_50ofcu_p0");
     Style style = new StyleImpl();
-    new RightBraceStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_BLUE));
+    new RightBraceStyleClass(this).apply(style, editorCell);
+    style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_BLUE));
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");

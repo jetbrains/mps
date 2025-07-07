@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.debug.api.SessionChangeAdapter;
 import jetbrains.mps.debug.api.AbstractDebugSession;
 
-@GeneratedClass(node = "r:63e7a653-1334-49d4-8e81-fd72b84fb4ff(jetbrains.mps.debugger.java.runtime.state)/4352118152439835940", model = "r:63e7a653-1334-49d4-8e81-fd72b84fb4ff(jetbrains.mps.debugger.java.runtime.state)")
+@GeneratedClass(nodeId = "4352118152439835940", model = "r:63e7a653-1334-49d4-8e81-fd72b84fb4ff(jetbrains.mps.debugger.java.runtime.state)")
 public abstract class SessionStopDisposer {
   private final DebugSession myDebugSession;
   public SessionStopDisposer(DebugSession debugSession) {

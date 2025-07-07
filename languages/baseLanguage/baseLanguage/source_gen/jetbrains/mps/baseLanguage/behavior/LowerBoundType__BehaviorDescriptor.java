@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Map;
@@ -21,9 +20,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
-import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -31,13 +28,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class LowerBoundType__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, "jetbrains.mps.baseLanguage.structure.LowerBoundType");
 
-  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIMiw").build();
-  public static final SMethod<SNode> getErasure_idB1mAlA38Mq = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getErasure").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("B1mAlA38Mq").build();
-  public static final SMethod<Boolean> isReifiable_id2soW6EObTNQ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isReifiable").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2soW6EObTNQ").build();
-  public static final SMethod<SNode> expandGenerics_id3$PgO9fYTB5 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("expandGenerics").modifiers(SModifiersImpl.create(8, AccessPrivileges.PROTECTED)).concept(CONCEPT).id("3$PgO9fYTB5").build(SMethodBuilder.createJavaParameter((Class<Map<SNode, SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""));
-  public static final SMethod<Void> collectGenericSubstitutions_id3zZky3wF74h = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectGenericSubstitutions").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3zZky3wF74h").build(SMethodBuilder.createJavaParameter((Class<Map<SNode, SNode>>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> isSupersetOf_id7PgshREdQKp = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSupersetOf").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7PgshREdQKp").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Map<SNode, SNode>>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> isValueType_id4bFkYVCcmm2 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValueType").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4bFkYVCcmm2").build();
+  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  public static final SMethod<SNode> getErasure_idB1mAlA38Mq = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getErasure").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(702942408396803226L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> isReifiable_id2soW6EObTNQ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isReifiable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2817265908000464118L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> expandGenerics_id3$PgO9fYTB5 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("expandGenerics").modifiers(8, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(4122274986016348613L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<Map<SNode, SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""));
+  public static final SMethod<Void> collectGenericSubstitutions_id3zZky3wF74h = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectGenericSubstitutions").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4107091686347010321L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<Map<SNode, SNode>>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> isSupersetOf_id7PgshREdQKp = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSupersetOf").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9029841626175335449L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Map<SNode, SNode>>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> isValueType_id4bFkYVCcmm2 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValueType").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4822040111593121154L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getErasure_idB1mAlA38Mq, isReifiable_id2soW6EObTNQ, expandGenerics_id3$PgO9fYTB5, collectGenericSubstitutions_id3zZky3wF74h, isSupersetOf_id7PgshREdQKp, isValueType_id4bFkYVCcmm2);
 
@@ -144,17 +141,17 @@ public final class LowerBoundType__BehaviorDescriptor extends BaseBHDescriptor {
     return CONCEPT;
   }
   private static SNode _quotation_createNode_kcjgm5_a0a1() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
-    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Object")));
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+    quotedNode_1 = nb.getResult();
+    nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~Object");
     return quotedNode_1;
   }
   private static SNode _quotation_createNode_kcjgm5_a2a0a3(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x110dae9d53dL, "LowerBoundType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x110dae9d53dL, "LowerBoundType"));
+    quotedNode_2 = nb.getResult();
     quotedNode_3 = (SNode) parameter_1;
     if (quotedNode_3 != null) {
       quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, 0x110dae9f25bL, "bound"), SNodeOperations.copyIfNecessary(quotedNode_3));

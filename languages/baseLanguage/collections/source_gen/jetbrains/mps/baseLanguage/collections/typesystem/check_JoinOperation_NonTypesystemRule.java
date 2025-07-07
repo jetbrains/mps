@@ -22,7 +22,7 @@ public class check_JoinOperation_NonTypesystemRule extends AbstractNonTypesystem
   public check_JoinOperation_NonTypesystemRule() {
   }
   public void applyRule(final SNode jo, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!((TypecheckingFacade.getFromContext().coerceType(SLinkOperations.getTarget(TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(jo), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), CONCEPTS.SequenceType$_s), LINKS.elementType$KpjL), CONCEPTS.StringType$uX) != null))) {
+    if (!(TypecheckingFacade.getFromContext().coerceType(SLinkOperations.getTarget(TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(jo), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), CONCEPTS.SequenceType$_s), LINKS.elementType$KpjL), CONCEPTS.StringType$uX) != null)) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(jo, "not available here", "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "4998595809121299089", null, errorTarget);
     }

@@ -15,7 +15,11 @@ public class SwitchStatement_DataFlow extends DataFlowBuilder {
     for (SNode switchCase : SLinkOperations.getChildren(_context.getNode(), LINKS.case$8PWE)) {
       _context.getBuilder().emitIfJump(_context.getBuilder().before(switchCase), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1207558714582");
     }
-    _context.getBuilder().emitIfJump(_context.getBuilder().before(SLinkOperations.getTarget(_context.getNode(), LINKS.defaultBlock$QOu8)), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1207558718604");
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.defaultBlock$QOu8) != null)) {
+      _context.getBuilder().emitIfJump(_context.getBuilder().before(SLinkOperations.getTarget(_context.getNode(), LINKS.defaultBlock$QOu8)), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1207558718604");
+    } else {
+      _context.getBuilder().emitIfJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/4056233746971386157");
+    }
     for (SNode switchCase : SLinkOperations.getChildren(_context.getNode(), LINKS.case$8PWE)) {
       _context.getBuilder().build((SNode) switchCase);
     }

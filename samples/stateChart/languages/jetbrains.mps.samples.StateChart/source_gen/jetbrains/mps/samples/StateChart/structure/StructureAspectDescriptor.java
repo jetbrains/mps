@@ -78,15 +78,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.StateChart", "ChartOperation", 0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x5e8f0d038ab26a37L);
     b.class_(false, true, false);
     b.origin("r:89aa1fb5-b463-4059-be0d-fc7ef188f902(jetbrains.mps.samples.StateChart.structure)/6813679070097861175");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForEmptyOperation() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.StateChart", "EmptyOperation", 0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x5e8f0d038ab26aecL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.StateChart.structure.ChartOperation", 0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x5e8f0d038ab26a37L);
+    // extends: jetbrains.mps.samples.StateChart.structure.ChartOperation
+    b.super_(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x5e8f0d038ab26a37L);
     b.origin("r:89aa1fb5-b463-4059-be0d-fc7ef188f902(jetbrains.mps.samples.StateChart.structure)/6813679070097861356");
-    b.version(2);
+    b.version(3);
     b.alias("<empty>");
     return b.create();
   }
@@ -95,16 +96,17 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:89aa1fb5-b463-4059-be0d-fc7ef188f902(jetbrains.mps.samples.StateChart.structure)/1480846759627646115");
-    b.version(2);
+    b.version(3);
     b.alias("event");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForLog() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.StateChart", "Log", 0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x5e8f0d038ab26a92L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.StateChart.structure.ChartOperation", 0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x5e8f0d038ab26a37L);
+    // extends: jetbrains.mps.samples.StateChart.structure.ChartOperation
+    b.super_(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x5e8f0d038ab26a37L);
     b.origin("r:89aa1fb5-b463-4059-be0d-fc7ef188f902(jetbrains.mps.samples.StateChart.structure)/6813679070097861266");
-    b.version(2);
+    b.version(3);
     b.property("value", 0x5e8f0d038ab26a93L).type(PrimitiveTypeId.STRING).origin("6813679070097861267").done();
     b.alias("log");
     return b.create();
@@ -113,16 +115,17 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.StateChart", "OperationsList", 0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x5e8f0d038ab26ac1L);
     b.class_(false, false, false);
     b.origin("r:89aa1fb5-b463-4059-be0d-fc7ef188f902(jetbrains.mps.samples.StateChart.structure)/6813679070097861313");
-    b.version(2);
+    b.version(3);
     b.aggregate("operations", 0x5e8f0d038ab26ac2L).target(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x5e8f0d038ab26a37L).optional(true).ordered(true).multiple(true).origin("6813679070097861314").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForRaise() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.StateChart", "Raise", 0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x5e8f0d038ab26a70L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.StateChart.structure.ChartOperation", 0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x5e8f0d038ab26a37L);
+    // extends: jetbrains.mps.samples.StateChart.structure.ChartOperation
+    b.super_(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x5e8f0d038ab26a37L);
     b.origin("r:89aa1fb5-b463-4059-be0d-fc7ef188f902(jetbrains.mps.samples.StateChart.structure)/6813679070097861232");
-    b.version(2);
+    b.version(3);
     b.associate("event", 0x5e8f0d038ab26a71L).target(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a3L).optional(false).origin("6813679070097861233").done();
     b.alias("raise");
     return b.create();
@@ -130,10 +133,11 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForState() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.StateChart", "State", 0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a6L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.StateChart.structure.Stateful", 0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x2dff568bfe7dd8b5L);
+    // extends: jetbrains.mps.samples.StateChart.structure.Stateful
+    b.super_(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x2dff568bfe7dd8b5L);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:89aa1fb5-b463-4059-be0d-fc7ef188f902(jetbrains.mps.samples.StateChart.structure)/1480846759627646118");
-    b.version(2);
+    b.version(3);
     b.property("isInitial", 0x148d064832658c3eL).type(PrimitiveTypeId.BOOLEAN).origin("1480846759627689022").done();
     b.property("isFinal", 0x148d064832668aabL).type(PrimitiveTypeId.BOOLEAN).origin("1480846759627754155").done();
     b.aggregate("transitions", 0x148d06483264e4afL).target(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a9L).optional(true).ordered(true).multiple(true).origin("1480846759627646127").done();
@@ -145,10 +149,11 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForStateChart() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.StateChart", "StateChart", 0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e46aL);
     b.class_(false, false, true);
-    b.super_("jetbrains.mps.samples.StateChart.structure.Stateful", 0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x2dff568bfe7dd8b5L);
+    // extends: jetbrains.mps.samples.StateChart.structure.Stateful
+    b.super_(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x2dff568bfe7dd8b5L);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:89aa1fb5-b463-4059-be0d-fc7ef188f902(jetbrains.mps.samples.StateChart.structure)/1480846759627646058");
-    b.version(2);
+    b.version(3);
     b.alias("state chart");
     return b.create();
   }
@@ -157,7 +162,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, true, false);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L);
     b.origin("r:89aa1fb5-b463-4059-be0d-fc7ef188f902(jetbrains.mps.samples.StateChart.structure)/3314463010038077621");
-    b.version(2);
+    b.version(3);
     b.aggregate("availableTriggers", 0x148d06483264e4b1L).target(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a3L).optional(true).ordered(true).multiple(true).origin("1480846759627646129").done();
     b.aggregate("states", 0x148d06483264e4b3L).target(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a6L).optional(true).ordered(true).multiple(true).origin("1480846759627646131").done();
     return b.create();
@@ -166,7 +171,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.StateChart", "Transition", 0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a9L);
     b.class_(false, false, false);
     b.origin("r:89aa1fb5-b463-4059-be0d-fc7ef188f902(jetbrains.mps.samples.StateChart.structure)/1480846759627646121");
-    b.version(2);
+    b.version(3);
     b.associate("trigger", 0x148d06483264e4aaL).target(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a3L).optional(false).origin("1480846759627646122").done();
     b.associate("target", 0x148d06483264e4acL).target(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a6L).optional(false).origin("1480846759627646124").done();
     b.aggregate("onTransit", 0x5e8f0d038ab3c886L).target(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x5e8f0d038ab26ac1L).optional(false).ordered(true).multiple(false).origin("6813679070097950854").done();

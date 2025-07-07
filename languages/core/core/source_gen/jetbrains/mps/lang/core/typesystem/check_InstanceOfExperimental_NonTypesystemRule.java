@@ -9,6 +9,8 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
 import jetbrains.mps.kernel.language.ConceptAspectsHelper;
+import jetbrains.mps.smodel.SModelStereotype;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -26,10 +28,11 @@ public class check_InstanceOfExperimental_NonTypesystemRule extends AbstractNonT
       return;
     }
 
-    if (conceptPresentation.isExperimental()) {
+    if (conceptPresentation.isExperimental() && !(SModelStereotype.isDescriptorModel(SNodeOperations.getModel(node)))) {
+      // there are known uses of experimental concepts in @descriptor models, we are ok with that. Besides, there's nothing user could do about these models anyway.
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(node, "The node '" + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(node) + "' is an instance of concept marked with API.Experimental attribute", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "7881641160411827657", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(node, String.format("The node '%s' is an instance of concept marked with API.Experimental attribute", BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(node)), "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "7881641160411827657", null, errorTarget);
       }
     }
   }

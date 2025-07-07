@@ -4,8 +4,7 @@ package jetbrains.mps.execution.configurations.implementation.plugin.plugin;
 
 import jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration;
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.project.structure.modules.Copyable;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.execution.api.settings.PersistentConfigurationContext;
 import com.intellij.execution.configurations.RuntimeConfigurationException;
@@ -13,7 +12,6 @@ import org.jdom.Element;
 import com.intellij.openapi.util.WriteExternalException;
 import com.intellij.util.xmlb.XmlSerializer;
 import com.intellij.openapi.util.InvalidDataException;
-import org.apache.log4j.Level;
 import jetbrains.mps.debugger.java.api.settings.RemoteConnectionSettings;
 import com.intellij.openapi.project.Project;
 import com.intellij.execution.configurations.ConfigurationFactory;
@@ -31,8 +29,7 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import com.intellij.openapi.util.Key;
 import com.intellij.execution.BeforeRunTask;
 
-public class Remote_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
-  private static final Logger LOG = LogManager.getLogger(Remote_Configuration.class);
+public final class Remote_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration, Copyable<Remote_Configuration> {
   @NotNull
   private MyState myState = new MyState();
 
@@ -49,22 +46,22 @@ public class Remote_Configuration extends BaseMpsRunConfiguration implements IPe
     if (element == null) {
       throw new InvalidDataException("Cant read " + this + ": element is null.");
     }
-    XmlSerializer.deserializeInto(myState, (Element) element.getChildren().get(0));
+    XmlSerializer.deserializeInto(myState, element.getChildren().get(0));
   }
 
   @Override
+  @Deprecated
   public Remote_Configuration clone() {
-    Remote_Configuration clone = createCloneTemplate();
-    try {
-      // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as 
-      // the value of myState, and != clone as regular Java passer-by would expect. 
-      clone.myState = (MyState) myState.clone();
-    } catch (CloneNotSupportedException ex) {
-      if (LOG.isEnabledFor(Level.ERROR)) {
-        LOG.error("", ex);
-      }
-    }
-    return clone;
+    return copy();
+  }
+
+  @Override
+  public Remote_Configuration copy() {
+    Remote_Configuration cloneTemplate = createCloneTemplate();
+    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
+    // the value of myState, and != clone as regular Java passer-by would expect.
+    cloneTemplate.myState = myState.copy();
+    return cloneTemplate;
   }
 
   public RemoteConnectionSettings getSettings() {
@@ -75,16 +72,24 @@ public class Remote_Configuration extends BaseMpsRunConfiguration implements IPe
     myState.mySettings = value;
   }
 
-  public final class MyState {
+  public final class MyState implements Copyable<MyState>, Cloneable {
     public RemoteConnectionSettings mySettings = new RemoteConnectionSettings("localhost", 5005);
 
+    @Deprecated
     @Override
-    public Object clone() throws CloneNotSupportedException {
-      MyState state = new MyState();
-      if (mySettings != null) {
-        state.mySettings = mySettings.clone();
+    public MyState clone() {
+      try {
+        MyState state = (MyState) super.clone();
+        state.mySettings = mySettings;
+        return state;
+      } catch (CloneNotSupportedException ex) {
+        throw new IllegalStateException("Shall not happen", ex);
       }
-      return state;
+    }
+
+    @Override
+    public MyState copy() {
+      return clone();
     }
   }
   public Remote_Configuration(Project project, ConfigurationFactory factory, String name) {
@@ -113,11 +118,7 @@ public class Remote_Configuration extends BaseMpsRunConfiguration implements IPe
   @Override
   public void checkConfiguration() throws RuntimeConfigurationException {
     final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
-    checkConfiguration(new PersistentConfigurationContext() {
-      public jetbrains.mps.project.Project getProject() {
-        return mpsProject;
-      }
-    });
+    checkConfiguration(() -> mpsProject);
   }
   @Override
   public boolean canExecute(String executorId) {

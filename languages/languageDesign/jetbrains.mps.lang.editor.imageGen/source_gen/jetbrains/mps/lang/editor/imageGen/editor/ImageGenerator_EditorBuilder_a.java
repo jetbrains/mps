@@ -15,14 +15,11 @@ import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.lang.structure.editor.structure_StyleSheet.KeywordStyleClass;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.lang.editor.cellProviders.SReferenceCellProvider;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.editor.runtime.impl.CellUtil;
 import jetbrains.mps.nodeEditor.cellMenu.SReferenceSubstituteInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.LinkAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
@@ -80,7 +77,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "generate");
     editorCell.setCellId("Constant_ess7oq_a0");
     Style style = new StyleImpl();
-    new KeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeywordStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -89,7 +86,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "image");
     editorCell.setCellId("Constant_ess7oq_b0");
     Style style = new StyleImpl();
-    new KeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeywordStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -98,7 +95,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "for");
     editorCell.setCellId("Constant_ess7oq_c0");
     Style style = new StyleImpl();
-    new KeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeywordStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -107,7 +104,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "node");
     editorCell.setCellId("Constant_ess7oq_d0");
     Style style = new StyleImpl();
-    new KeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeywordStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -116,11 +113,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     final SReferenceLink referenceLink = LINKS.node$Il43;
     SReferenceCellProvider provider = new SReferenceCellProvider(getNode(), referenceLink, getEditorContext()) {
       protected EditorCell createReferenceCell(final SNode targetNode) {
-        EditorCell cell = getUpdateSession().updateReferencedNodeCell(new Computable<EditorCell>() {
-          public EditorCell compute() {
-            return new Inline_Builder0(getEditorContext(), getNode(), targetNode).createCell();
-          }
-        }, targetNode, LINKS.node$Il43);
+        EditorCell cell = getUpdateSession().updateReferencedNodeCell(() -> new Inline_Builder0(getEditorContext(), getNode(), targetNode).createCell(), targetNode, LINKS.node$Il43);
         CellUtil.setupIDeprecatableStyles(targetNode, cell);
         setSemanticNodeToCells(cell, getNode());
         installDeleteActions_nullable_reference(cell);
@@ -136,12 +129,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setSRole(LINKS.node$Il43);
     }
     editorCell.setSubstituteInfo(new SReferenceSubstituteInfo(editorCell, referenceLink));
-    Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.LinkAttribute$v_);
-    Iterable<SNode> currentReferenceAttributes = Sequence.fromIterable(referenceAttributes).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(it), referenceLink);
-      }
-    });
+    Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.LinkAttribute$v_);
+    Iterable<SNode> currentReferenceAttributes = Sequence.fromIterable(referenceAttributes).where((it) -> Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(it), referenceLink));
     if (Sequence.fromIterable(currentReferenceAttributes).isNotEmpty()) {
       EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
       return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentReferenceAttributes).first(), AttributeKind.REFERENCE, editorCell);
@@ -170,7 +159,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
 
     private EditorCell createReferencePresentation_0() {
-      EditorCell_Property editorCell = EditorCell_RefPresentation.create(getEditorContext(), myNode, myReferencingNode, IReferentPresentationProvider.getDefaultPresentation(LINKS.node$Il43));
+      EditorCell_Property editorCell = EditorCell_RefPresentation.create(getEditorContext(), myNode, myReferencingNode, IReferentPresentationProvider.DEFAULT_PRESENTATION);
       editorCell.setCellId("ReferencePresentation_ess7oq_a0e0");
       return editorCell;
     }
@@ -179,7 +168,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "{");
     editorCell.setCellId("Constant_ess7oq_f0");
     Style style = new StyleImpl();
-    new LeftBraceStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new LeftBraceStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
@@ -220,7 +209,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "file");
     editorCell.setCellId("Constant_ess7oq_a0g0");
     Style style = new StyleImpl();
-    new KeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeywordStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -229,7 +218,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "name");
     editorCell.setCellId("Constant_ess7oq_b0g0");
     Style style = new StyleImpl();
-    new KeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeywordStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -238,7 +227,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ":");
     editorCell.setCellId("Constant_ess7oq_c0g0");
     Style style = new StyleImpl();
-    new KeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeywordStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -253,12 +242,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setCellId("property_fileName");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
-      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-        }
-      });
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
+      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
       if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
         EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
         return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);
@@ -284,7 +269,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "scale");
     editorCell.setCellId("Constant_ess7oq_a1g0");
     Style style = new StyleImpl();
-    new KeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeywordStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -293,7 +278,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ":");
     editorCell.setCellId("Constant_ess7oq_b1g0");
     Style style = new StyleImpl();
-    new KeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeywordStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -308,12 +293,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setCellId("property_scale");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
-      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-        }
-      });
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
+      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
       if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
         EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
         return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);
@@ -340,7 +321,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "image");
     editorCell.setCellId("Constant_ess7oq_a2g0");
     Style style = new StyleImpl();
-    new KeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeywordStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -349,7 +330,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "format");
     editorCell.setCellId("Constant_ess7oq_b2g0");
     Style style = new StyleImpl();
-    new KeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeywordStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -358,7 +339,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ":");
     editorCell.setCellId("Constant_ess7oq_c2g0");
     Style style = new StyleImpl();
-    new KeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeywordStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -373,12 +354,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setCellId("property_imageFormat");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
-      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-        }
-      });
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
+      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
       if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
         EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
         return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);
@@ -405,7 +382,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "node");
     editorCell.setCellId("Constant_ess7oq_a3g0");
     Style style = new StyleImpl();
-    new KeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeywordStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -414,7 +391,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "id");
     editorCell.setCellId("Constant_ess7oq_b3g0");
     Style style = new StyleImpl();
-    new KeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeywordStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -423,7 +400,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ":");
     editorCell.setCellId("Constant_ess7oq_c3g0");
     Style style = new StyleImpl();
-    new KeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeywordStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -438,12 +415,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setCellId("property_id");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
-      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-        }
-      });
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
+      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
       if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
         EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
         return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);
@@ -457,7 +430,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "}");
     editorCell.setCellId("Constant_ess7oq_h0");
     Style style = new StyleImpl();
-    new RightBraceStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new RightBraceStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;

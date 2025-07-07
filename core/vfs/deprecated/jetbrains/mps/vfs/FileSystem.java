@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,29 +15,38 @@
  */
 package jetbrains.mps.vfs;
 
-import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.util.FileUtil;
+import jetbrains.mps.vfs.path.Path;
+import jetbrains.mps.vfs.util.PathUtil;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
+
 /**
- * Use IFileSystem instead
  * Note the IFileSystem is per-protocol, in which it differs from FileSystem.
  */
-@Deprecated
-@ToRemove(version = 2019.1)
 public interface FileSystem extends jetbrains.mps.vfs.openapi.FileSystem {
 
-  @Deprecated
-  @ToRemove(version = 2019.1)
-  @NotNull IFile getFile(@NotNull String path);
+  @NotNull
+  IFile getFile(@NotNull String path);
 
-  @Deprecated
-  @ToRemove(version = 2019.1)
+  @NotNull
+  default IFile getFile(@NotNull Path path) {
+    // fixme for now we resort to the text representation, but Path is to be extensively used in IFile implementations
+    return getFile(path.toUnixPathFormat().toText());
+  }
+
+  @NotNull
+  default IFile getFile(@NotNull File file) {
+    return getFile(PathUtil.toSystemIndependent(FileUtil.getCanonicalPath(file.getAbsolutePath())));
+  }
+
+  @Deprecated(since = "2019.1", forRemoval = true)
   static FileSystem getInstance() {
     return FileSystemExtPoint.getFS();
   }
 
-  @Deprecated
-  @ToRemove(version = 2019.1)
+  @Deprecated(since = "2019.1", forRemoval = true)
   boolean isFileIgnored(@NotNull String name);
 
   /**
@@ -45,7 +54,6 @@ public interface FileSystem extends jetbrains.mps.vfs.openapi.FileSystem {
    * @param r code to execute within platform write lock
    * @return <code>false</code> if an exception was encountered
    */
-  @Deprecated
-  @ToRemove(version = 2019.1)
+  @Deprecated(since = "2019.1", forRemoval = true)
   boolean runWriteTransaction(@NotNull Runnable r);
 }

@@ -6,7 +6,6 @@ import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.nodeEditor.selection.SelectUpUtil;
-import java.util.function.BooleanSupplier;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -23,11 +22,7 @@ public class CustomSelectAll {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(final EditorContext editorContext, SNode node) {
-        SelectUpUtil.executeWhile(editorContext, new BooleanSupplier() {
-          public boolean getAsBoolean() {
-            return !(editorContext.getSelectionManager().getSelection().getSelectedNodes().get(0).isInstanceOfConcept(CONCEPTS.SelectableCustomizedContainer$O6));
-          }
-        });
+        SelectUpUtil.executeWhile(editorContext, () -> !(editorContext.getSelectionManager().getSelection().getSelectedNodes().get(0).isInstanceOfConcept(CONCEPTS.SelectableCustomizedContainer$O6)));
       }
       @Override
       public boolean canExecute(EditorContext editorContext) {
@@ -44,11 +39,11 @@ public class CustomSelectAll {
     CellAction originalDelete = editorCell.getAction(CellActionType.DELETE);
     CellAction originalBackspace = editorCell.getAction(CellActionType.BACKSPACE);
 
-    // set actions that were actually defined 
+    // set actions that were actually defined
     setDefinedCellActions(editorCell, node, context);
 
-    // If we set a DELETE action but no BACKSPACE action, 
-    // use the DELETE action for BACKSPACE as well. 
+    // If we set a DELETE action but no BACKSPACE action,
+    // use the DELETE action for BACKSPACE as well.
     CellAction delete = editorCell.getAction(CellActionType.DELETE);
     CellAction backspace = editorCell.getAction(CellActionType.BACKSPACE);
     if (delete != originalDelete && backspace == originalBackspace) {
@@ -65,17 +60,17 @@ public class CustomSelectAll {
   private static final Object OB = new Object();
 
   public static void setDefinedCellActions(EditorCell editorCell, SNode node, EditorContext context) {
-    // set cell actions from all imported action maps 
+    // set cell actions from all imported action maps
 
-    // set cell actions defined directly in this action map 
+    // set cell actions defined directly in this action map
     editorCell.setAction(CellActionType.SELECT_ALL, createAction_SELECT_ALL(node));
   }
 
   public static void setDefinedCellActionsOfType(EditorCell editorCell, SNode node, EditorContext context, CellActionType actionType) {
 
-    // set cell action(s) of the given type from imported action maps 
+    // set cell action(s) of the given type from imported action maps
 
-    // set cell action of the given type defined directly in this action map 
+    // set cell action of the given type defined directly in this action map
     if (Objects.equals(actionType, CellActionType.SELECT_ALL)) {
       editorCell.setAction(actionType, createAction_SELECT_ALL(node));
     }

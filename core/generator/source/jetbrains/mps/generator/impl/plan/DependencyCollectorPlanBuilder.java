@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.generator.impl.plan;
 
 import gnu.trove.THashSet;
-import gnu.trove.TObjectHashingStrategy;
 import jetbrains.mps.generator.GenerationPlanBuilder;
 import jetbrains.mps.generator.ModelGenerationPlan;
 import jetbrains.mps.generator.RigidGenerationPlan;
@@ -24,6 +23,7 @@ import jetbrains.mps.generator.plan.CheckpointIdentity;
 import jetbrains.mps.generator.plan.PlanIdentity;
 import jetbrains.mps.generator.runtime.TemplateMappingConfiguration;
 import jetbrains.mps.generator.runtime.TemplateModule;
+import jetbrains.mps.util.ObjectIdentityHashingStrategy;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -44,8 +44,24 @@ public class DependencyCollectorPlanBuilder implements GenerationPlanBuilder {
   @SuppressWarnings("unchecked")
   public DependencyCollectorPlanBuilder() {
     // I don't expect to get different instances of the same module during single model traverse operation, hence IDENTITY
-    myLanguages = new THashSet<>(TObjectHashingStrategy.IDENTITY);
-    myGenerators = new THashSet<SModuleReference>(TObjectHashingStrategy.IDENTITY);
+    myLanguages = new THashSet<>(ObjectIdentityHashingStrategy.IDENTITY);
+    myGenerators = new THashSet<SModuleReference>(ObjectIdentityHashingStrategy.IDENTITY);
+  }
+
+  @Override
+  public TransformStepBuilder transform(boolean ignored) {
+    return new TransformStepBuilder() {
+      @Override
+      public TransformStepBuilder include(@NotNull SLanguage language, BuilderOption option) {
+        myLanguages.add(language); // XXX what about extended, do I care to support these?
+        return this;
+      }
+
+      @Override
+      public void complete() {
+        // no-op
+      }
+    };
   }
 
   @Override

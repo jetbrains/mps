@@ -46,7 +46,7 @@
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleIdentifier</key>
-    <string>com.jetbrains.intellij</string>
+    <string>com.jetbrains.mps</string>
     <key>CFBundleSignature</key>
     <string>????</string>
     <key>CFBundleGetInfoString</key>
@@ -66,13 +66,12 @@
     
     <key>LSArchitecturePriority</key>
     <array>
-      <string>x86_64</string>
-      <string>i386</string>
+      <string>$platform$</string>
     </array>
     <key>LSRequiresNativeExecution</key>
     <string>YES</string>
     <key>LSMinimumSystemVersion</key>
-    <string>10.6</string>
+    <string>10.13</string>
     <key>CFBundleURLTypes</key>
     <array>
       <dict>
@@ -85,40 +84,5 @@
       </dict>
     </array>
     
-    <key>JVMOptions</key>
-    <dict>
-      <key>ClassPath</key>
-      <string>$APP_PACKAGE/Contents/lib/branding.jar:$APP_PACKAGE/Contents/lib/mps-boot.jar:$APP_PACKAGE/Contents/lib/mps-boot-util.jar:$APP_PACKAGE/Contents/lib/bootstrap.jar:$APP_PACKAGE/Contents/lib/extensions.jar:$APP_PACKAGE/Contents/lib/util.jar:$APP_PACKAGE/Contents/lib/jdom.jar:$APP_PACKAGE/Contents/lib/log4j.jar:$APP_PACKAGE/Contents/lib/trove4j.jar:$APP_PACKAGE/Contents/lib/jna.jar</string>
-      <key>JVMVersion</key>
-      <string>11*</string>
-      <key>MainClass</key>
-      <string>jetbrains.mps.Launcher</string>
-      <key>Properties</key>
-      <dict>
-        <key>apple.laf.useScreenMenuBar</key>
-        <string>true</string>
-        <key>com.apple.mrj.application.live-resize</key>
-        <string>false</string>
-        
-        <key>idea.paths.selector</key>
-        <string>MPS2020.1</string>
-        
-        <key>idea.vendor.name</key>
-        <string>JetBrains</string>
-        
-        <key>idea.executable</key>
-        <string>mps</string>
-        
-        <key>idea.java.redist</key>
-        <string>NoJavaDistribution</string>
-        <key>idea.home.path</key>
-        <string>$APP_PACKAGE/Contents</string>
-      </dict>
-      <!--Use Contents/bin/mps.vmoptions or ~/Library/Preferences/MPS2020.1/mps.vmoptions file to modify VMOptions-->
-      <key>VMOptions</key>
-      <string>-XX:+UseCompressedOops</string>
-      <key>WorkingDirectory</key>
-      <string>$APP_PACKAGE/Contents/bin</string>
-    </dict>
   </dict>
 </plist>

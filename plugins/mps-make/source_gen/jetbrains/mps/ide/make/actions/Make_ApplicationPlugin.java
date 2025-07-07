@@ -5,9 +5,9 @@ package jetbrains.mps.ide.make.actions;
 import jetbrains.mps.plugins.applicationplugins.BaseApplicationPlugin;
 import com.intellij.openapi.extensions.PluginId;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.ide.actions.CommonModuleActions_ActionGroup;
 import jetbrains.mps.ide.actions.ToolsInternal_ActionGroup;
 import jetbrains.mps.ide.actions.ProjectActions_ActionGroup;
-import jetbrains.mps.ide.actions.CommonModuleActions_ActionGroup;
 import jetbrains.mps.ide.actions.Build_ActionGroup;
 import jetbrains.mps.ide.actions.ModelActions_ActionGroup;
 import jetbrains.mps.ide.actions.NodeActions_ActionGroup;
@@ -29,14 +29,14 @@ public class Make_ApplicationPlugin extends BaseApplicationPlugin {
   }
 
   public void createGroups() {
-    // actions w/o parameters 
+    // actions w/o parameters
     addAction(new BuildAllGeneratableGenerators_Action());
     addAction(new BuildAllGenerators_Action());
     addAction(new BuildAllLanguageDescriptors_Action());
-    addAction(new CheckModelsBeforeGeneration_Action());
     addAction(new CleanModule_Action());
     addAction(new CleanProject_Action());
     addAction(new CompileProject_Action());
+    addAction(new DocPreviewModel_Action());
     addAction(new MakeModule_Action());
     addAction(new MakeProject_Action());
     addAction(new MakeSelectedModels_Action());
@@ -49,7 +49,7 @@ public class Make_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new RebuildSelectedModules_Action());
     addAction(new RecompileProject_Action());
     addAction(new TextPreviewModel_Action());
-    // groups 
+    // groups
     addGroup(new GenerateOptions_ActionGroup(this));
     addGroup(new GlobalMake_ActionGroup(this));
     addGroup(new JavaModuleActions_ActionGroup(this));
@@ -59,18 +59,18 @@ public class Make_ApplicationPlugin extends BaseApplicationPlugin {
     addGroup(new NamespaceMake_ActionGroup(this));
     addGroup(new ProjectCompileActions_ActionGroup(this));
     addGroup(new ProjectMake_ActionGroup(this));
-    addGroup(new SaveTransientModels_ActionGroup(this));
+    addGroup(new SaveTransientAndCheckModelsToggleActions_ActionGroup(this));
     addGroup(new TextPreviewGroup_ActionGroup(this));
     addGroup(new ToolbarMake_ActionGroup(this));
     addGroup(new TouchBarDefault_ActionGroup(this));
   }
   public void adjustRegularGroups() {
+    insertGroupIntoAnother(JavaModuleActions_ActionGroup.ID, CommonModuleActions_ActionGroup.ID, CommonModuleActions_ActionGroup.LABEL_ID_compileJava);
     insertGroupIntoAnother(MakeAddition_ActionGroup.ID, ToolsInternal_ActionGroup.ID, null);
     insertGroupIntoAnother(MakeAspects_ActionGroup.ID, MakeAddition_ActionGroup.ID, MakeAddition_ActionGroup.LABEL_ID_aspects);
     insertGroupIntoAnother(ProjectCompileActions_ActionGroup.ID, ProjectActions_ActionGroup.ID, ProjectActions_ActionGroup.LABEL_ID_compileJava);
-    insertGroupIntoAnother(JavaModuleActions_ActionGroup.ID, CommonModuleActions_ActionGroup.ID, CommonModuleActions_ActionGroup.LABEL_ID_compileJava);
     insertGroupIntoAnother(GenerateOptions_ActionGroup.ID, Build_ActionGroup.ID, Build_ActionGroup.LABEL_ID_options);
-    insertGroupIntoAnother(SaveTransientModels_ActionGroup.ID, GenerateOptions_ActionGroup.ID, GenerateOptions_ActionGroup.LABEL_ID_saveTransientModels);
+    insertGroupIntoAnother(SaveTransientAndCheckModelsToggleActions_ActionGroup.ID, GenerateOptions_ActionGroup.ID, GenerateOptions_ActionGroup.LABEL_ID_saveTransientModels);
     insertGroupIntoAnother(TouchBarDefault_ActionGroup.ID, "TouchBarDefault", null);
     insertGroupIntoAnother(Make_ActionGroup.ID, CommonModuleActions_ActionGroup.ID, CommonModuleActions_ActionGroup.LABEL_ID_make);
     insertGroupIntoAnother(Make_ActionGroup.ID, ModelActions_ActionGroup.ID, ModelActions_ActionGroup.LABEL_ID_make);

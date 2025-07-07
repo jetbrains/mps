@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +28,7 @@ import jetbrains.mps.intentions.IntentionsVisitor.GetHighestAvailableIntentionTy
 import jetbrains.mps.lang.script.runtime.AbstractMigrationRefactoring;
 import jetbrains.mps.lang.script.runtime.RefactoringScript;
 import jetbrains.mps.lang.script.runtime.ScriptAspectDescriptor;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.HighlighterMessage;
 import jetbrains.mps.openapi.editor.EditorContext;
@@ -37,14 +38,12 @@ import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionExecutable;
 import jetbrains.mps.openapi.intentions.IntentionFactory;
 import jetbrains.mps.openapi.intentions.Kind;
+import jetbrains.mps.smodel.ModelDependencyResolver;
 import jetbrains.mps.smodel.SLanguageHierarchy;
-import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.util.Pair;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -70,26 +69,23 @@ import java.util.stream.Collectors;
     storages = @Storage("intentions.xml")
 )
 public class IntentionsManager implements PersistentStateComponent<IntentionsManager.MyState> {
-  private static final Logger LOG = LogManager.getLogger(IntentionsManager.class);
+  private static final Logger LOG = Logger.getLogger(IntentionsManager.class);
 
   public static String getDescriptorClassName(SModuleReference langRef) {
     return "IntentionsDescriptor";
   }
 
   public static IntentionsManager getInstance() {
-    return ApplicationManager.getApplication().getComponent(IntentionsManager.class);
+    return ApplicationManager.getApplication().getService(IntentionsManager.class);
   }
 
   private MyState myState = new MyState();
 
-  private final LanguageRegistry myLanguageRegistry;
-
-  public IntentionsManager(MPSCoreComponents coreComponents) {
-    myLanguageRegistry = coreComponents.getPlatform().findComponent(LanguageRegistry.class);
+  public IntentionsManager() {
   }
 
   public synchronized Kind getHighestAvailableBaseIntentionType(final SNode node, final EditorContext editorContext) {
-    final GetHighestAvailableIntentionTypeVisitor visitor = new GetHighestAvailableIntentionTypeVisitor();
+    final GetHighestAvailableIntentionTypeVisitor visitor = new GetHighestAvailableIntentionTypeVisitor(editorContext);
     // FIXME invoking runWithSession is unnecessary here b/c the only client takes care of that already
     if (((EditorComponent) editorContext.getEditorComponent()).getTypecheckingSession() == null) return null;
     
@@ -231,44 +227,9 @@ public class IntentionsManager implements PersistentStateComponent<IntentionsMan
 
   private Map<IntentionExecutable, Kind> getAvailableIntentionsForExactNode(@NotNull final SNode node, @NotNull final EditorContext context, boolean isAncestor,
                                                                             Filter filter) {
-    CollectAvailableIntentionsVisitor visitor = new CollectAvailableIntentionsVisitor();
+    CollectAvailableIntentionsVisitor visitor = new CollectAvailableIntentionsVisitor(context);
     visitIntentions(node, visitor, filter, isAncestor, context);
-
-    Map<IntentionExecutable, Kind> result = new HashMap<>();
-    for (IntentionFactory factory : visitor.getAvailableIntentionFactories()) {
-      try {
-        for (IntentionExecutable executable : factory.instances(node, context)) {
-          result.put(executable, factory.getKind());
-        }
-      } catch (Throwable t) {
-        LOG.error("Exception during parameterized intentions instantiation", t);
-      }
-    }
-
-    List<ReportItem> messages = new ArrayList<>();
-    for (SimpleEditorMessage simpleEditorMessage : ((EditorComponent) context.getEditorComponent()).getHighlightManager().getMessagesFor(node)) {
-      if (simpleEditorMessage instanceof HighlighterMessage) {
-        HighlighterMessage highlighterMessage = (HighlighterMessage) simpleEditorMessage;
-        messages.add(highlighterMessage.getReportItem());
-      }
-    }
-    for (ReportItem message : messages) {
-      Collection<EditorQuickFix> intentionProviders = TypesystemReportItemAdapter.FLAVOUR_EDITOR_QUICKFIX.getCollection(message);
-      for (EditorQuickFix intentionProvider : intentionProviders) {
-        QuickFixAdapter intention = new QuickFixAdapter(intentionProvider, message.getSeverity());
-        if (!filter.accept(intention) ||(isAncestor && !intention.isAvailableInChildNodes()) || !intention.isApplicable(node, context)) {
-          continue;
-        }
-        try {
-          for (IntentionExecutable executable : intention.instances(node, context)) {
-            result.put(executable, intention.getKind());
-          }
-        } catch (Throwable t) {
-          LOG.error("Exception during quickfix intentions instantiation", t);
-        }
-      }
-    }
-    return result;
+    return visitor.getResult();
   }
 
   public synchronized boolean isIntentionDisabled(String persistentStateKey) {
@@ -300,21 +261,18 @@ public class IntentionsManager implements PersistentStateComponent<IntentionsMan
   //-------------node info by intention-----------------
 
   /**
-   * Returning combined sorted list of all {@link IntentionFactory} available in the current repository.
-   * This list will be first sorted by the language FQ name and then sorted by presentation of each intention,
-   * so result can be easily displayed in UI components.
+   * Returning combined list of all {@link IntentionFactory} available in the current repository.
+   * This list is intended for intention presentation in UI components.
    *
-   * @deprecated shall not expose LanguageRuntime, which is (a) implementation, (b) reloadable class not suited for map keys
    * @return combined sorted list of all available {@link IntentionFactory}
    */
-  @Deprecated
   @NotNull
-  public synchronized Map<LanguageRuntime, Collection<IntentionFactory>> getAllIntentionFactories() {
-    Map<LanguageRuntime, Collection<IntentionFactory>> result = new HashMap<>();
+  public synchronized Map<SLanguage, Collection<IntentionFactory>> getAllIntentionFactories() {
+    Map<SLanguage, Collection<IntentionFactory>> result = new HashMap<>();
 
-    myLanguageRegistry.withAvailableLanguages(lr -> {
+    final LanguageRegistry languageRegistry = MPSCoreComponents.getInstance().getPlatform().findComponent(LanguageRegistry.class);
+    languageRegistry.withAvailableLanguages(lr -> {
       List<IntentionFactory> languageIntentions = new ArrayList<>();
-      result.put(lr, languageIntentions);
 
       IntentionAspectDescriptor intentionAspect = lr.getAspect(IntentionAspectDescriptor.class);
       if (intentionAspect != null) {
@@ -324,6 +282,9 @@ public class IntentionsManager implements PersistentStateComponent<IntentionsMan
       final ScriptAspectDescriptor scriptAspect = lr.getAspect(ScriptAspectDescriptor.class);
       if (scriptAspect != null) {
         languageIntentions.addAll(new MigrationRefactoringIntentions(lr, scriptAspect).getIntentions());
+      }
+      if (!languageIntentions.isEmpty()) {
+        result.put(lr.getIdentity(), languageIntentions);
       }
     });
     return result;
@@ -335,12 +296,18 @@ public class IntentionsManager implements PersistentStateComponent<IntentionsMan
     if (node.getModel() == null) {
       return true;
     }
-    LanguageRegistry languageRegistry = myLanguageRegistry;
+    return visitIntentionsImpl(node, visitor, filter, isAncestor, editorContext)
+           && visitQuickFixes(node, visitor, filter, isAncestor, editorContext);
+  }
+
+  private static boolean visitIntentionsImpl(SNode node, IntentionsVisitor visitor, Filter filter, boolean isAncestor, EditorContext editorContext) {
+    final LanguageRegistry languageRegistry = MPSCoreComponents.getInstance().getPlatform().findComponent(LanguageRegistry.class);
     // respect intentions from imported languages only
     ArrayList<IntentionAspectDescriptor> activeIntentionAspects = new ArrayList<>();
     // respect migration scripts from imported languages only
     ArrayList<MigrationRefactoringIntentions> activeIntentionsFromMigrationScripts = new ArrayList<>();
-    for (SLanguage l : new SLanguageHierarchy(languageRegistry, SModelOperations.getAllLanguageImports(node.getModel())).getExtended()) {
+    ModelDependencyResolver mdr = new ModelDependencyResolver(languageRegistry, editorContext.getRepository());
+    for (SLanguage l : new SLanguageHierarchy(languageRegistry, mdr.usedLanguages(node.getModel())).getExtended()) {
       final LanguageRuntime lr = languageRegistry.getLanguage(l);
       if (lr == null) {
         continue;
@@ -378,17 +345,30 @@ public class IntentionsManager implements PersistentStateComponent<IntentionsMan
           continue;
         }
 
-        boolean isApplicable = false;
-        try {
-          isApplicable = intentionFactory.isApplicable(node, editorContext);
-        } catch (Throwable t) {
-          LOG.error("Failed to evaluate isApplicable for " + intentionFactory.getClass().getName(), t);
+        if (!visitor.visit(intentionFactory, node)) {
+          return false;
         }
-        if (!isApplicable) {
+      }
+    }
+    return true;
+  }
+
+  private static boolean visitQuickFixes(SNode node, IntentionsVisitor visitor, Filter filter, boolean isAncestor, EditorContext context) {
+    List<ReportItem> messages = new ArrayList<>();
+    for (SimpleEditorMessage simpleEditorMessage : ((EditorComponent) context.getEditorComponent()).getHighlightManager().getMessagesFor(node)) {
+      if (simpleEditorMessage instanceof HighlighterMessage) {
+        HighlighterMessage highlighterMessage = (HighlighterMessage) simpleEditorMessage;
+        messages.add(highlighterMessage.getReportItem());
+      }
+    }
+    for (ReportItem message : messages) {
+      Collection<EditorQuickFix> intentionProviders = TypesystemReportItemAdapter.FLAVOUR_EDITOR_QUICKFIX.getCollection(message);
+      for (EditorQuickFix intentionProvider : intentionProviders) {
+        QuickFixAdapter intention = new QuickFixAdapter(intentionProvider, message.getSeverity());
+        if (!filter.accept(intention) || (isAncestor && !intention.isAvailableInChildNodes())) {
           continue;
         }
-
-        if (!visitor.visit(intentionFactory)) {
+        if (!visitor.visit(intention, node)) {
           return false;
         }
       }

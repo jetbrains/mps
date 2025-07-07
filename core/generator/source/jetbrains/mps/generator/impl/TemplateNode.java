@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,6 @@ import jetbrains.mps.generator.impl.reference.ReferenceInfo_Template;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.template.PropertyMacroContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.SNodeUtil;
@@ -38,6 +37,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -97,7 +97,7 @@ class TemplateNode {
     if (myMold == null) {
       synchronized (this) {
         if (myMold == null) {
-          myMold = new Mold(myNode, generator, generator.getLogger());
+          myMold = new Mold(myNode, env, env.getLogger());
         }
       }
     }
@@ -111,8 +111,7 @@ class TemplateNode {
     }
     for (RefInfo r : myMold.myStaticRefs) {
       // optimization for external static references (do not resolve them)
-      SReference newReference = new StaticReference(r.role, outputNode, r.targetModel, r.targetId, r.resolveInfo);
-      outputNode.setReference(r.role, newReference);
+      outputNode.setReference(r.role, ResolveInfo.of(new SNodePointer(r.targetModel, r.targetId), r.resolveInfo));
     }
     for (RefInfo r : myMold.myInnerRefs) {
       ReferenceInfo_Template refInfo = new ReferenceInfo_Template(getTemplateNodeReference(), GeneratorUtil.getTemplateNodeId(r.targetNode), r.resolveInfo, context);
@@ -189,14 +188,14 @@ class TemplateNode {
         SConcept templateChildNodeConcept = templateChildNode.getConcept();
         if (RuleUtil.isTemplateLanguageElement(templateChildNodeConcept)) {
           if (templateChildNodeConcept.equals(RuleUtil.concept_PropertyMacro)) {
-            final SProperty propertyName = SNodeUtil.getProperty(templateChildNode);
+            final SProperty propertyName = RuleUtil.getPropertyMacro_property(templateChildNode);
             propsHandledWithMacro.add(propertyName);
             SNode function = RuleUtil.getPropertyMacro_ValueFunction(templateChildNode);
             QueryKey qk = new QueryKeyImpl(templateChildNode.getReference(), function.getNodeId());
             final PropertyValueQuery q = queryProvider.getPropertyValueQuery(qk);
             propertyMacros.add(new PropertyMacro(q, templateChildNode.getReference()));
           } else if (templateChildNodeConcept.equals(RuleUtil.concept_ReferenceMacro)) {
-            final SReferenceLink refMacroRole = SNodeUtil.getLink(templateChildNode);
+            final SReferenceLink refMacroRole = RuleUtil.getReferenceMacro_associationRole(templateChildNode);
             SNode function = RuleUtil.getReferenceMacro_GetReferent(templateChildNode);
             if (function == null) {
               log.error(templateChildNode.getReference(), "No query function for reference macro, reference would be copied as is");

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,8 @@
  */
 package jetbrains.mps.generator.runtime;
 
-import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -47,6 +47,7 @@ public interface TemplateContext {
    */
   TemplateContext withNewExecutionPath();
 
+  @Nullable
   SNode getInput();
 
   String getInputName();
@@ -91,9 +92,22 @@ public interface TemplateContext {
   TemplateContext withVariable(String name, Object value);
 
   /**
-   * @return new context that preserves input, but discards {@link #getInputName() mapping label}
+   *
+   * @param callSiteNode FIXME decide whether null is valid argument (do I need to clear call
+   *                     site when calling a template w/o call site from within a template WITH the site set?
+   * @return object with recorded site FIXME decide if I can set value into the same TC instance - I don't need TC with call site to be
+   *         available 'later' (e.g. for reference resolution), so it doesn't seem that immutable copy is necessary
+   * @since 2020.3
    */
-  TemplateContext subContext(GeneratedMatchingPattern pattern);
+  TemplateContext withCallSiteNode(SNode callSiteNode);
+
+  /**
+   * @return value previously set in {@link #withCallSiteNode(SNode)}
+   * @since 2020.3
+   */
+  SNode getCallSiteNode();
+
+  TemplateContext subContext(PatternMatch pattern);
 
   /**
    * Reset input name, unlike {@link #subContext(String)} and {@link #subContext(String, org.jetbrains.mps.openapi.model.SNode)} that
@@ -108,5 +122,5 @@ public interface TemplateContext {
    * @param newInputNode new input
    * @return context with desired input and present input name
    */
-  TemplateContext subContext(SNode newInputNode);
+  TemplateContext subContext(@Nullable SNode newInputNode);
 }

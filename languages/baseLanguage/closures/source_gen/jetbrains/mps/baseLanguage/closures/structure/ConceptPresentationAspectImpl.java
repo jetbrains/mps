@@ -13,11 +13,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ClosureArgReference;
   private ConceptPresentation props_ClosureLiteral;
   private ConceptPresentation props_ClosureLiteralType;
+  private ConceptPresentation props_ClosureVarType;
   private ConceptPresentation props_CompactInvokeFunctionExpression;
   private ConceptPresentation props_ControlAbstractionContainer;
   private ConceptPresentation props_ControlAbstractionDeclaration;
   private ConceptPresentation props_FunctionMethodDeclaration;
   private ConceptPresentation props_FunctionType;
+  private ConceptPresentation props_IIncompatibleWithJavaLambda;
+  private ConceptPresentation props_InferredClosureParameterDeclaration;
   private ConceptPresentation props_InvokeExpression;
   private ConceptPresentation props_InvokeFunctionExpression;
   private ConceptPresentation props_InvokeFunctionOperation;
@@ -63,6 +66,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ClosureLiteralType = cpb.create();
         }
         return props_ClosureLiteralType;
+      case LanguageConceptSwitch.ClosureVarType:
+        if (props_ClosureVarType == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("inferred type");
+          cpb.rawPresentation("var");
+          props_ClosureVarType = cpb.create();
+        }
+        return props_ClosureVarType;
       case LanguageConceptSwitch.CompactInvokeFunctionExpression:
         if (props_CompactInvokeFunctionExpression == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -100,6 +111,20 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_FunctionType = cpb.create();
         }
         return props_FunctionType;
+      case LanguageConceptSwitch.IIncompatibleWithJavaLambda:
+        if (props_IIncompatibleWithJavaLambda == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_IIncompatibleWithJavaLambda = cpb.create();
+        }
+        return props_IIncompatibleWithJavaLambda;
+      case LanguageConceptSwitch.InferredClosureParameterDeclaration:
+        if (props_InferredClosureParameterDeclaration == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("generic inferred parameter");
+          cpb.presentationByName();
+          props_InferredClosureParameterDeclaration = cpb.create();
+        }
+        return props_InferredClosureParameterDeclaration;
       case LanguageConceptSwitch.InvokeExpression:
         if (props_InvokeExpression == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

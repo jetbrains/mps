@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,36 +16,64 @@
 package org.jetbrains.mps.openapi.persistence;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
- * A data source with multiple input streams, each identified by a unique name.
+ * A data source with multiple input/output stream data sources (streams), each identified by a unique name.
+ * It may be useful if we want to read/write data from different places independently.
+ *
+ * For instance, I want to store metadata in one place and the real stuff in the other place.
+ * Or I can store my special meta-data nodes in-memory, while the main data on disk.
+ *
  * FolderDataSource may serve as a good example of a concrete implementation.
+ *
+ * @see StreamDataSource
+ * @author apyshkin
  */
 public interface MultiStreamDataSource extends DataSource {
 
-  @NotNull Iterable<String> getAvailableStreams();
+  /**
+   * return a sequence of possible streams;
+   * each stream we identify uniquely by {@link StreamDataSource#getStreamName()}
+   */
+  @NotNull Stream<StreamDataSource> getSubStreams();
+  // XXX how come this MultiStreamDataSource is limited to StreamDataSource only? Why can't I have nested MultiStreamDataSource?!
+
+  @Nullable
+  default StreamDataSource getStreamByName(@NotNull String name) {
+    List<StreamDataSource> collect = getSubStreams().filter(sds -> name.equals(sds.getStreamName())).collect(Collectors.toList());
+    if (collect.size() > 1) {
+      LogManager.getLogManager().getLogger("MultiStreamDataSource").log(Level.WARNING, "There are multiple sub streams with the same name " + this);
+    }
+    return collect.stream()
+                  .findAny()
+                  .orElse(null);
+  }
 
   /**
-   * Access named stream for reading. Caller is responsible to close the stream once done.
-   * @param name name of the stream to read // fixme what does it mean -- the name???
-   * @return stream to read from, never <code>null</code>
-   * @throws IOException if failed to open given named stream
+   * override {@link #getStreamByName(String)} please instead of this method
    */
   @NotNull
-  InputStream openInputStream(String name) throws IOException;
+  default StreamDataSource getStreamByNameOrFail(@NotNull String name) {
+    StreamDataSource streamByName = getStreamByName(name);
+    if (streamByName == null) {
+      throw new IllegalArgumentException("Could not find a stream by the name " + name + " in " + this);
+    }
+    return streamByName;
+  }
 
   /**
-   * Access named stream for writing. Caller is responsible to close the stream once done.
-   * @param name name of the stream to write
-   * @return stream to write to, never <code>null</code>
-   * @throws IOException
+   * counterpart for {@link #getStreamByNameOrFail(String)}, which allows to add new streams
+   * btw it'd be great if {@code DisposableDataSource#delete} invoked on a sub-stream
+   * make it disappear from the return value of this method.
+   * currently this is so
    */
   @NotNull
-  OutputStream openOutputStream(String name) throws IOException;
-
-  boolean delete(String name);
+  StreamDataSource getStreamByNameOrCreate(@NotNull String name);
 }

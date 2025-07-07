@@ -29,7 +29,7 @@ public class check_UpperBoundType_NonTypesystemRule extends AbstractNonTypesyste
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(upperBoundType, "Wildcard type argument '?' explicitly extends java.lang.Object", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2298236629740276241", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveRedundantExtends_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveRedundantExtends_QuickFix", "2298236629740276261", false);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,24 +16,23 @@
 package jetbrains.mps.ide.ui.dialogs.properties.roots.editors;
 
 import com.intellij.icons.AllIcons.Nodes;
-import com.intellij.ide.util.treeView.NodeDescriptor;
-import com.intellij.ide.util.treeView.NodeRenderer;
-import com.intellij.openapi.fileChooser.FileElement;
+import com.intellij.openapi.fileChooser.tree.FileNode;
 import com.intellij.openapi.vfs.VirtualFile;
-import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
-import jetbrains.mps.extapi.persistence.SourceRoot;
+import com.intellij.ui.ColoredTreeCellRenderer;
+import com.intellij.ui.SimpleTextAttributes;
 import jetbrains.mps.extapi.persistence.SourceRootKind;
-import jetbrains.mps.vfs.IFileSystem;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.ui.persistence.ModelRootEntry;
 
 import javax.swing.Icon;
 import javax.swing.JTree;
-import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.Color;
-import java.util.Collection;
 
-public class FileBasedModelRootEntryTreeCellRender extends NodeRenderer {
+import static com.intellij.openapi.fileChooser.FileElement.isFileHidden;
+import static com.intellij.openapi.util.IconLoader.getTransparentIcon;
+
+public class FileBasedModelRootEntryTreeCellRender extends ColoredTreeCellRenderer {
+  private static final Color GRAYED = SimpleTextAttributes.GRAYED_ATTRIBUTES.getFgColor();
+  private static final Color HIDDEN = SimpleTextAttributes.DARK_TEXT.getFgColor();
 
   private final FileBasedModelRootEditor myModelRootEditor;
 
@@ -43,60 +42,79 @@ public class FileBasedModelRootEntryTreeCellRender extends NodeRenderer {
 
   @Override
   public void customizeCellRenderer(@NotNull JTree tree, Object value, boolean selected, boolean expanded, boolean leaf, int row, boolean hasFocus) {
-    super.customizeCellRenderer(tree, value, selected, expanded, leaf, row, hasFocus);
+    customize(value);
 
-    ModelRootEntry<FileBasedModelRoot> entry = myModelRootEditor.getFileBasedModelRootEntry();
+    FileBasedModelRootEntry entry = myModelRootEditor.getFileBasedModelRootEntry();
     if (entry != null) {
-      final Object userObject = ((DefaultMutableTreeNode) value).getUserObject();
-      if (userObject instanceof NodeDescriptor) {
-        final Object element = ((NodeDescriptor) userObject).getElement();
-        if (element instanceof FileElement) {
-          final VirtualFile file = ((FileElement) element).getFile();
-          if (file != null) {
-            final FileBasedModelRoot modelRoot = entry.getModelRoot();
-            if (file.isDirectory()) {
-              setIcon(updateIcon(modelRoot, file, getIcon()));
-            } else if (!file.isDirectory()) {
-              final Color colorForFile = getColorForFile(modelRoot, file);
-              if (colorForFile != null) {
-                setForeground(colorForFile);
-              }
-            }
-          }
+      VirtualFile file = null;
+      if (value instanceof FileNode) {
+        file = ((FileNode)value).getFile();
+      }
+      if (file != null) {
+        if (file.isDirectory()) {
+          setIcon(updateIcon(entry, file, getIcon()));
+        }
+        final Color colorForFile = getColorForFile(entry, file);
+        if (colorForFile != null) {
+          setForeground(colorForFile);
         }
       }
     }
   }
 
-  private Icon updateIcon(FileBasedModelRoot modelRoot, VirtualFile file, Icon originalIcon) {
-    SourceRootKind kind = isFileUnderRoot(file, modelRoot);
+  /**
+   * A copy of com.intellij.openapi.fileChooser.tree.FileRenderer#customize(com.intellij.ui.SimpleColoredComponent, java.lang.Object)
+   * since I could not find out a way it could be reused here. Private methods and anonymous inner classes can hardly be utilized in a generic way.
+   */
+  private void customize(Object value) {
+    int style = SimpleTextAttributes.STYLE_PLAIN;
+    Color color = null;
+    Icon icon = null;
+    String name = null;
+    String comment = null;
+    boolean hidden = false;
+    boolean valid = true;
+    if (value instanceof FileNode) {
+      FileNode node = (FileNode)value;
+      icon = node.getIcon();
+      name = node.getName();
+      comment = node.getComment();
+      hidden = node.isHidden();
+      valid = node.isValid();
+    }
+    else if (value instanceof VirtualFile) {
+      VirtualFile file = (VirtualFile)value;
+      name = file.getName();
+      hidden = isFileHidden(file);
+      valid = file.isValid();
+    }
+    else if (value != null) {
+      name = value.toString(); //NON-NLS
+      color = GRAYED;
+    }
+    if (!valid) style |= SimpleTextAttributes.STYLE_STRIKEOUT;
+    if (hidden) color = HIDDEN;
+    setIcon(!hidden || icon == null ? icon : getTransparentIcon(icon));
+    SimpleTextAttributes attributes = new SimpleTextAttributes(style, color);
+    if (name != null) append(name, attributes);
+    if (comment != null) append(comment, attributes);
+  }
+
+  private Icon updateIcon(FileBasedModelRootEntry modelRootEntry, VirtualFile file, Icon originalIcon) {
+    SourceRootKind kind = modelRootEntry.isFileUnderRoot(file);
     if (kind != null) {
       return myModelRootEditor.getFileBasedModelRootEntry().getKindIcon(kind);
     }
-    if (modelRoot.getContentDirectory() != null && file.getPath().equals(modelRoot.getContentDirectory().getPath())) {
+    if (modelRootEntry.getContentDirectory() != null && file.getPath().equals(modelRootEntry.getContentDirectory().getPath())) {
       return Nodes.HomeFolder;
     }
     return originalIcon;
   }
 
-  private Color getColorForFile(FileBasedModelRoot modelRoot, VirtualFile file) {
-    SourceRootKind kind = isFileUnderRoot(file, modelRoot);
+  private Color getColorForFile(FileBasedModelRootEntry modelRootEntry, VirtualFile file) {
+    SourceRootKind kind = modelRootEntry.isFileUnderRoot(file);
     if (kind != null) {
       return myModelRootEditor.getFileBasedModelRootEntry().getKindColor(kind);
-    }
-    return null;
-  }
-
-  private static SourceRootKind isFileUnderRoot(VirtualFile file, FileBasedModelRoot modelRoot) {
-    final String filePath = file.getPath();
-    for (SourceRootKind kind : modelRoot.getSupportedFileKinds1()) {
-      Collection<SourceRoot> sr = modelRoot.getSourceRoots(kind);
-      for (SourceRoot r : sr) {
-        final String srFilePath = r.getAbsolutePath().getPath();
-        if (filePath.equals(srFilePath) || filePath.startsWith(srFilePath + IFileSystem.SEPARATOR_CHAR)) {
-          return kind;
-        }
-      }
     }
     return null;
   }

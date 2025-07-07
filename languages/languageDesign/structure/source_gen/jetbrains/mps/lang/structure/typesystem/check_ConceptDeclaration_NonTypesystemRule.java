@@ -9,7 +9,6 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -30,55 +29,31 @@ public class check_ConceptDeclaration_NonTypesystemRule extends AbstractNonTypes
   }
   public void applyRule(final SNode conceptDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     Iterable<SNode> allSuperConcepts = AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(conceptDeclaration, ((boolean) false));
-    boolean isStub = Sequence.fromIterable(allSuperConcepts).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "155087542027447621"));
-      }
-    });
+    boolean isStub = Sequence.fromIterable(allSuperConcepts).any((it) -> SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "155087542027447621")));
     if (isStub) {
       return;
     }
 
-    if (Sequence.fromIterable(allSuperConcepts).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1319728274784973096"));
-      }
-    }) && Sequence.fromIterable(allSuperConcepts).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1319728274783077719")) || SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "6999738288738427190"));
-      }
-    })) {
+    if (Sequence.fromIterable(allSuperConcepts).any((it) -> SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1319728274784973096"))) && Sequence.fromIterable(allSuperConcepts).any((it) -> SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1319728274783077719")) || SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "6999738288738427190")))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(conceptDeclaration, "The concept is marked both as an InterfacePart and an ImplementationPart. It will be treated as InterfacePart ", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "6579840439426263826", null, errorTarget);
       }
     }
 
-    boolean isInterfacePart = Sequence.fromIterable(allSuperConcepts).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1319728274784973096"));
-      }
-    });
+    boolean isInterfacePart = Sequence.fromIterable(allSuperConcepts).any((it) -> SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1319728274784973096")));
     if (isInterfacePart) {
       return;
     }
-    if (Sequence.fromIterable(allSuperConcepts).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "6999738288738427190"));
-      }
-    })) {
+    if (Sequence.fromIterable(allSuperConcepts).any((it) -> SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "6999738288738427190")))) {
       final String stubName = "Stub" + SPropertyOperations.getString(conceptDeclaration, PROPS.name$MnvL);
-      boolean stubExists = ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(conceptDeclaration), CONCEPTS.ConceptDeclaration$gH)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), stubName) && Objects.equals(SPropertyOperations.getString(it, PROPS.virtualPackage$EkXl), SPropertyOperations.getString(conceptDeclaration, PROPS.virtualPackage$EkXl));
-        }
-      }).isNotEmpty();
+      boolean stubExists = ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(conceptDeclaration), CONCEPTS.ConceptDeclaration$gH)).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), stubName) && Objects.equals(SPropertyOperations.getString(it, PROPS.virtualPackage$EkXl), SPropertyOperations.getString(conceptDeclaration, PROPS.virtualPackage$EkXl))).isNotEmpty();
       if (!(stubExists)) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(conceptDeclaration, "Missing stub for a non-stub ImplementationWithStubPart concept", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "5624281226435558417", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.CreateMissingStub_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.CreateMissingStub_QuickFix", "4082234026705857781", false);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }

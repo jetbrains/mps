@@ -26,15 +26,15 @@ public final class TestConcept_FeedbackFeedback extends BaseFeedbackDescriptor {
   private static final FeedbackProvider<FailingPropertyConstraintContext> MSGPROVIDER_WhenPropertyConstraintFails_pavl6x_a = new BaseMessageProvider<FailingPropertyConstraintContext>(new FailingPropertyConstraintProblemId(PROPS.prop$FBgM)) {
     @NotNull
     @Override
-    public MessageProvider.StringMsg yieldMessage(FailingPropertyConstraintContext context) {
-      return new MessageProvider.StringMsg("Property constraints are broken for the property" + " " + context.getProperty() + " " + " ");
+    public MessageProvider.Msg yieldMessage(FailingPropertyConstraintContext context) {
+      return format("Property constraints are broken for the property %s  ", context.getProperty());
     }
   };
   private static final FeedbackProvider<RefOutOfScopeContext> MSGPROVIDER_WhenReferenceIsOutOfScope_pavl6x_b = new BaseMessageProvider<RefOutOfScopeContext>(new RefOutOfScopeProblemId(LINKS.link$t661)) {
     @NotNull
     @Override
-    public MessageProvider.StringMsg yieldMessage(RefOutOfScopeContext context) {
-      return new MessageProvider.StringMsg("Reference is out of scope: can not found " + "the link '" + context.getLink() + "' in the node " + context.getNode());
+    public MessageProvider.Msg yieldMessage(RefOutOfScopeContext context) {
+      return format("Reference is out of scope: can not found the link '%s' in the node %s", context.getLink(), context.getNode());
     }
   };
 

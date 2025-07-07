@@ -12,7 +12,6 @@ import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -38,24 +37,20 @@ public class DropMigratedRefPresentationQueries extends MigrationScriptBase {
     {
       SearchScope scope_yimnkw_a0e = CommandUtil.createScope(m);
       final SearchScope scope_yimnkw_a0e_0 = new EditableFilteringScope(scope_yimnkw_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_yimnkw_a0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_yimnkw_a0e_0;
       Collection<SNode> conceptConstraints = CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptConstraints$Yt, false);
       for (SNode rc : Sequence.fromIterable(SLinkOperations.collectMany(conceptConstraints, LINKS.referent$k0ZK))) {
         if ((SLinkOperations.getTarget(rc, LINKS.presentation$VLnP) == null)) {
           continue;
         }
-        SNode migrated = AttributeOperations.getAttribute(SLinkOperations.getTarget(rc, LINKS.presentation$VLnP), new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$T3));
+        SNode migrated = new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$T3).get(SLinkOperations.getTarget(rc, LINKS.presentation$VLnP));
         if ((migrated != null) && ListSequence.fromList(SLinkOperations.getChildren(migrated, LINKS.problems$4CuI)).isEmpty()) {
           SNodeOperations.deleteNode(SLinkOperations.getTarget(rc, LINKS.presentation$VLnP));
         }
       }
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, "jetbrains.mps.lang.constraints"), 5);
   }
 

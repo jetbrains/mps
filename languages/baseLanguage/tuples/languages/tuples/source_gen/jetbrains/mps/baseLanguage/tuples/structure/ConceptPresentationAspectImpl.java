@@ -12,6 +12,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_IndexedTupleLiteral;
   private ConceptPresentation props_IndexedTupleMemberAccessExpression;
   private ConceptPresentation props_IndexedTupleType;
+  private ConceptPresentation props_LocalVariableDeclarationInTuple;
   private ConceptPresentation props_NamedTupleComponentAccessOperation;
   private ConceptPresentation props_NamedTupleComponentDeclaration;
   private ConceptPresentation props_NamedTupleComponentReference;
@@ -48,6 +49,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_IndexedTupleType = cpb.create();
         }
         return props_IndexedTupleType;
+      case LanguageConceptSwitch.LocalVariableDeclarationInTuple:
+        if (props_LocalVariableDeclarationInTuple == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("LocalVariableDeclarationInTuple");
+          props_LocalVariableDeclarationInTuple = cpb.create();
+        }
+        return props_LocalVariableDeclarationInTuple;
       case LanguageConceptSwitch.NamedTupleComponentAccessOperation:
         if (props_NamedTupleComponentAccessOperation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -74,7 +82,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("Named tuple declaration");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a6b0k);
+          cpb.icon(IconContainer.RESOURCE_0);
           props_NamedTupleDeclaration = cpb.create();
         }
         return props_NamedTupleDeclaration;

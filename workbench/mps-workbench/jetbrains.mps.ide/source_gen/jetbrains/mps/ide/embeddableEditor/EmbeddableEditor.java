@@ -26,7 +26,7 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import javax.swing.JComponent;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a6(jetbrains.mps.ide.embeddableEditor)/1757086175614073066", model = "r:00000000-0000-4000-0000-011c895904a6(jetbrains.mps.ide.embeddableEditor)")
+@GeneratedClass(nodeId = "1757086175614073066", model = "r:00000000-0000-4000-0000-011c895904a6(jetbrains.mps.ide.embeddableEditor)")
 public class EmbeddableEditor extends JPanel implements DataProvider {
   private final Project project;
   private final SRepository repository;
@@ -38,7 +38,7 @@ public class EmbeddableEditor extends JPanel implements DataProvider {
   private MPSFileNodeEditor nodeEditor;
 
   public EmbeddableEditor(Project project, boolean editable) {
-    // todo: merge with UIEditorComponent ? 
+    // todo: merge with UIEditorComponent ?
     super(new BorderLayout());
     this.project = project;
     this.repository = project.getRepository();
@@ -86,10 +86,10 @@ public class EmbeddableEditor extends JPanel implements DataProvider {
 
   private MPSFileNodeEditor createEditorForNode(SNode node) {
     if (SNodeOperations.getModel(node) == null) {
-      // node is not in repository 
+      // node is not in repository
       if (!(editable)) {
         if (temporaryModel == null) {
-          temporaryModel = TemporaryModels.getInstance().createReadOnly(TempModuleOptions.forDefaultModule());
+          temporaryModel = TemporaryModels.getInstance().createReadOnly(TempModuleOptions.nonReloadableModule(project.getRepository()));
         }
         SModelOperations.addRootNode(temporaryModel, node);
         TemporaryModels.getInstance().addMissingImports(temporaryModel);
@@ -102,11 +102,7 @@ public class EmbeddableEditor extends JPanel implements DataProvider {
 
   public void disposeEditor() {
     if (temporaryModel != null) {
-      repository.getModelAccess().runWriteAction(new Runnable() {
-        public void run() {
-          TemporaryModels.getInstance().dispose(temporaryModel);
-        }
-      });
+      repository.getModelAccess().runWriteAction(() -> TemporaryModels.getInstance().dispose(temporaryModel));
     }
     if (nodeEditor != null) {
       nodeEditor.dispose();

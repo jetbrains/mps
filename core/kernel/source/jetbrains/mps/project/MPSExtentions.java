@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.project;
 
-public class MPSExtentions {
+public final class MPSExtentions {
   public static final String MPS_PROJECT = "mpr";
   public static final String IDEAWORKSPACE = "iws";
   public static final String WORKSPACE = "mws";
@@ -30,11 +30,14 @@ public class MPSExtentions {
   public static final String MODEL_ROOT = "mpsr";
   public static final String MODEL_HEADER = "model";
   public static final String JAVAFILE = "java";
+  public static final String KOTLINFILE = "kt";
+  public static final String KOTLINMODULE = "kotlin_module";
   public static final String CLASSFILE = "class";
   public static final String IDEA_PROJECT = "mpr";
   public static final String PACKAGED_MODULE = "module.xml";
 
   public static final String MPS_ARCH = "jar";
+
 
   public static final String DOT = ".";
   public static final String DOT_MPS_PROJECT = DOT + MPS_PROJECT;
@@ -46,6 +49,8 @@ public class MPSExtentions {
   public static final String DOT_MODEL_ROOT = DOT + MODEL_ROOT;
   public static final String DOT_MODEL_HEADER = DOT + MODEL_HEADER;
   public static final String DOT_JAVAFILE = DOT + JAVAFILE;
+  public static final String DOT_KOTLINFILE = DOT + KOTLINFILE;
+  public static final String DOT_KOTLINMODULE = DOT + KOTLINMODULE;
   public static final String DOT_CLASSFILE = DOT + CLASSFILE;
   public static final String DOT_IDEAWORKSPACE = DOT + IDEAWORKSPACE;
   public static final String DOT_WORKSPACE = DOT + WORKSPACE;

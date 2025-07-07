@@ -13,7 +13,6 @@ import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
@@ -39,7 +38,6 @@ public final class MethodToClassifierMethod_PasteWrapper_0 implements PasteWrapp
     return _quotation_createNode_sqg5bj_a4a0a(types, SNodeOperations.copyNode(SLinkOperations.getTarget(sourceNode, LINKS.visibility$Yyua)), SNodeOperations.copyNode(SLinkOperations.getTarget(sourceNode, LINKS.returnType$5xoi)), body, SPropertyOperations.getString(sourceNode, PROPS.name$MnvL), typeParam);
   }
   private static SNode _quotation_createNode_sqg5bj_a4a0a(Object parameter_1, Object parameter_2, Object parameter_3, Object parameter_4, Object parameter_5, Object parameter_6) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_7 = null;
     SNode quotedNode_8 = null;
     SNode quotedNode_9 = null;
@@ -50,13 +48,11 @@ public final class MethodToClassifierMethod_PasteWrapper_0 implements PasteWrapp
     SNode quotedNode_14 = null;
     SNode quotedNode_15 = null;
     SNode quotedNode_16 = null;
-    quotedNode_7 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, "jetbrains.mps.baseLanguage.classifiers"), 0x118bd6ee3c3L, "DefaultClassifierMethodDeclaration")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, "jetbrains.mps.baseLanguage.classifiers"), 0x118bd6ee3c3L, "DefaultClassifierMethodDeclaration"));
+    quotedNode_7 = nb.getResult();
     SNodeAccessUtil.setPropertyValue(quotedNode_7, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), (String) parameter_5);
-    {
-      List<SNode> nodes = (List<SNode>) parameter_1;
-      for (SNode child : nodes) {
-        quotedNode_7.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"), SNodeOperations.copyIfNecessary(child));
-      }
+    for (SNode child : (List<SNode>) parameter_1) {
+      quotedNode_7.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"), SNodeOperations.copyIfNecessary(child));
     }
     quotedNode_9 = (SNode) parameter_2;
     if (quotedNode_9 != null) {
@@ -66,19 +62,14 @@ public final class MethodToClassifierMethod_PasteWrapper_0 implements PasteWrapp
     if (quotedNode_10 != null) {
       quotedNode_7.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType"), SNodeOperations.copyIfNecessary(quotedNode_10));
     }
-    quotedNode_11 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b200L, "StatementList")).getResult();
-    {
-      List<SNode> nodes = (List<SNode>) parameter_4;
-      for (SNode child : nodes) {
-        quotedNode_11.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"), SNodeOperations.copyIfNecessary(child));
-      }
+    SNodeBuilder nb1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b200L, "StatementList"));
+    quotedNode_11 = nb1.getResult();
+    for (SNode child : (List<SNode>) parameter_4) {
+      quotedNode_11.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"), SNodeOperations.copyIfNecessary(child));
     }
     quotedNode_7.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body"), quotedNode_11);
-    {
-      List<SNode> nodes = (List<SNode>) parameter_6;
-      for (SNode child : nodes) {
-        quotedNode_7.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration"), SNodeOperations.copyIfNecessary(child));
-      }
+    for (SNode child : (List<SNode>) parameter_6) {
+      quotedNode_7.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration"), SNodeOperations.copyIfNecessary(child));
     }
     return quotedNode_7;
   }

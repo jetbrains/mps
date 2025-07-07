@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.text.impl;
 
 import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.ModelDependencyScanner;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.language.LanguageRegistry;
@@ -24,7 +25,6 @@ import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.text.MissingTextGenDescriptor;
 import jetbrains.mps.text.rt.TextGenAspectDescriptor;
 import jetbrains.mps.text.rt.TextGenDescriptor;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -41,8 +41,6 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Excerpt from ConceptRegistry related to TextGenDescriptor.
  * It's artifact of refactoring to break [textgen] and [kernel] cycle dependency.
- * FIXME For the time being, it's initialized together with ConceptRegistry from MPSCore, though shall be separate ComponentPlugin,
- * like MPSGenerator, and initialized from MPSCoreComponents and alike.
  * @author Artem Tikhomirov
  * @since 3.3
  */
@@ -130,7 +128,7 @@ public class TextGenRegistry implements CoreComponent, LanguageRegistryListener 
     LanguageRuntime languageRuntime = myLanguageRegistry.getLanguage(concept.getLanguage());
     if (languageRuntime == null) {
       // Then language was just renamed and was not re-generated then it can happen that it has no
-      Logger.getLogger(TextGenRegistry.class).warn(String.format("No language for concept %s, while looking for textgen descriptor.", concept));
+      Logger.getLogger(TextGenRegistry.class).warning(String.format("No language for concept %s, while looking for textgen descriptor.", concept));
       return null;
     } else {
       return languageRuntime.getAspect(TextGenAspectDescriptor.class);

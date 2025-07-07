@@ -19,7 +19,6 @@ import java.awt.event.ActionEvent;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.JComponent;
 import java.awt.Insets;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
@@ -61,7 +60,7 @@ public class AttachMappingLabelDialog extends DialogWrapper {
       textField.setSelectionStart(0);
       textField.setSelectionEnd(selectedItem.length());
     }
-    // myNameCombo.setSelectedItem above triggers actionPerformed event, attach listener once combo is initialized 
+    // myNameCombo.setSelectedItem above triggers actionPerformed event, attach listener once combo is initialized
     myNameCombo.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent p0) {
@@ -75,7 +74,7 @@ public class AttachMappingLabelDialog extends DialogWrapper {
   @Override
   protected JComponent createCenterPanel() {
     setOKButtonText("Attach label");
-    // 
+    //  
     JPanel panel = new JPanel(new GridBagLayout());
     GridBagConstraints c = new GridBagConstraints();
     c.fill = GridBagConstraints.HORIZONTAL;
@@ -103,23 +102,21 @@ public class AttachMappingLabelDialog extends DialogWrapper {
   }
 
   protected void doAttachMappingLabel() {
-    myEditorContext.getRepository().getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        SNode mappingLabel = MappingLabelUtil.findOrCreateMappingLabelForName(AttachMappingLabelDialog.this.myTemplateNode, AttachMappingLabelDialog.this.myResultLabelName);
-        SNode existingMacro = ListSequence.fromList(AttributeOperations.getAttributeList(AttachMappingLabelDialog.this.myTemplateNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU))).last();
-        if (existingMacro != null) {
-          SLinkOperations.setTarget(existingMacro, LINKS.mappingLabel$jbOO, mappingLabel);
-          return;
-        }
-        SNode templateFragment = AttributeOperations.getAttribute(AttachMappingLabelDialog.this.myTemplateNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq));
-        if (templateFragment != null) {
-          SLinkOperations.setTarget(templateFragment, LINKS.labelDeclaration$ORJN, mappingLabel);
-          return;
-        }
-        // create new Label macro 
-        SNode newMacro = SNodeFactoryOperations.addNewAttribute(AttachMappingLabelDialog.this.myTemplateNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU), CONCEPTS.LabelMacro$Lz);
-        SLinkOperations.setTarget(newMacro, LINKS.mappingLabel$jbOO, mappingLabel);
+    myEditorContext.getRepository().getModelAccess().executeCommand(() -> {
+      SNode mappingLabel = MappingLabelUtil.findOrCreateMappingLabelForName(AttachMappingLabelDialog.this.myTemplateNode, AttachMappingLabelDialog.this.myResultLabelName);
+      SNode existingMacro = ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU).list(AttachMappingLabelDialog.this.myTemplateNode)).last();
+      if (existingMacro != null) {
+        SLinkOperations.setTarget(existingMacro, LINKS.mappingLabel$jbOO, mappingLabel);
+        return;
       }
+      SNode templateFragment = new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq).get(AttachMappingLabelDialog.this.myTemplateNode);
+      if (templateFragment != null) {
+        SLinkOperations.setTarget(templateFragment, LINKS.labelDeclaration$ORJN, mappingLabel);
+        return;
+      }
+      // create new Label macro
+      SNode newMacro = SNodeFactoryOperations.addNewAttribute(AttachMappingLabelDialog.this.myTemplateNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU), CONCEPTS.LabelMacro$Lz);
+      SLinkOperations.setTarget(newMacro, LINKS.mappingLabel$jbOO, mappingLabel);
     });
   }
 

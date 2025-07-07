@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,10 @@
  */
 package jetbrains.mps.ide.memtool;
 
+import com.intellij.notification.Notification;
+import com.intellij.notification.NotificationGroup;
+import com.intellij.notification.NotificationGroupManager;
+import com.intellij.notification.NotificationType;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.CustomStatusBarWidget;
 import com.intellij.openapi.wm.StatusBar;
@@ -23,14 +27,19 @@ import com.intellij.openapi.wm.StatusBarWidgetFactory;
 import com.intellij.openapi.wm.impl.status.TextPanel;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
+import com.intellij.util.concurrency.AppExecutorUtil;
 import com.intellij.util.concurrency.EdtExecutorService;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import com.intellij.util.ui.update.Activatable;
 import com.intellij.util.ui.update.UiNotifyConnector;
 import jetbrains.mps.icons.MPSIcons.ProjectPane;
+import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.make.MakeServiceComponent;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.smodel.CancellableReadAction;
+import jetbrains.mps.smodel.SModelStereotype;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -46,23 +55,34 @@ import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Arrays;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
 
 public final class LoadedModelsPanel extends TextPanel implements CustomStatusBarWidget, Activatable {
   public static final String WIDGET_ID = "Models";
   private static final Color USED_COLOR = JBColor.namedColor("MemoryIndicator.usedBackground", new JBColor(Gray._185, Gray._110));
+  private static final Color UNUSED_COLOR = JBColor.namedColor("MemoryIndicator.allocatedBackground", new JBColor(Gray._215, Gray._90));
 
   private final MPSProject myProject;
   private ScheduledFuture<?> myFuture;
-  private int myLastLoadedModels = 0;
-  private int myModelsTotal = 1000;
+
+  private final Stats myStats = new Stats();
 
   private final MouseListener myActionListener = new MouseAdapter() {
     @Override
     public void mouseClicked(MouseEvent e) {
+      if (MPSCoreComponents.getInstance().getPlatform().findComponent(MakeServiceComponent.class).isSessionActive()) {
+        final NotificationGroup ng = NotificationGroupManager.getInstance().getNotificationGroup("MPS Memory Stats");
+        final Notification n = ng.createNotification("Can not perform cleanup while Make is in progress", NotificationType.INFORMATION);
+        n.notify(myProject.getProject());
+        return;
+      }
       new UnloadModelsActivity(myProject.getRepository()).run();
 
+      // not that I really want to perform model walk in EDT, but it used to be that way for some time,
+      // and it's user action, after all, he could reasonably expect to see some delay
       updateState();
     }
   };
@@ -75,14 +95,14 @@ public final class LoadedModelsPanel extends TextPanel implements CustomStatusBa
 
     addMouseListener(myActionListener);
     setBorder(JBUI.Borders.empty(0, 2));
-    updateUI();
+    updateUI(); // XXX this method is invoked from constructor of superclass, why again?
 
     new UiNotifyConnector(this, this);
   }
 
   @Override
   public void showNotify() {
-    myFuture = EdtExecutorService.getScheduledExecutorInstance().scheduleWithFixedDelay(this::updateState, 1, 5, TimeUnit.SECONDS);
+    myFuture = AppExecutorUtil.getAppScheduledExecutorService().scheduleWithFixedDelay(this::updateState, 1, 5, TimeUnit.SECONDS);
   }
 
   @Override
@@ -124,19 +144,20 @@ public final class LoadedModelsPanel extends TextPanel implements CustomStatusBa
     Dimension size = getSize();
     int barWidth = size.width;
 
-    int usedBarLength = barWidth * myLastLoadedModels / myModelsTotal;
+    int usedBarLength = myStats.totalModels == 0 ? 0 : barWidth * myStats.loadedModels / myStats.totalModels;
 
-    // background
-    g.setColor(UIUtil.getPanelBackground());
+    // assuming that the width of the whole panel is used for indication of the percentage of loaded models
+    // Otherwise g.setColor(UIUtil.getPanelBackground()); should be used to paint the background of the panel first.
+    g.setColor(UNUSED_COLOR);
     g.fillRect(0, 0, barWidth, size.height - 1);
 
     // gauge (used)
     g.setColor(USED_COLOR);
     g.fillRect(0, 0, usedBarLength, size.height - 1);
 
-    g.setColor(JBColor.GRAY);
-    g.drawLine(size.width - 1, 0, size.width - 1, size.height - 1);
-    g.drawLine(0, 0, 0, size.height - 1);
+//    g.setColor(JBColor.GRAY);
+//    g.drawLine(size.width - 1, 0, size.width - 1, size.height - 1);
+//    g.drawLine(0, 0, 0, size.height - 1);
 
     Icon icon = ProjectPane.LogicalView;
     icon.paintIcon(this, g, size.width - icon.getIconWidth() - 4, (size.height - icon.getIconHeight()) / 2);
@@ -147,36 +168,67 @@ public final class LoadedModelsPanel extends TextPanel implements CustomStatusBa
 
   @Override
   protected String getTextForPreferredSize() {
-    return " " + getCaption(1000, 1000);
+    // 5 digits per counter, 2 counters in "current of total"
+    char[] c = new char[5*3];
+    Arrays.fill(c, '0');
+    return new String(c);
   }
 
-  private void updateState() {
+  // generally runs on a pooled, non-EDT, thread
+  /*package*/ void updateState() {
+    // FIXME tell project models/modules from deployed modules/models
+    final SRepository repo = myProject.getRepository();
+    // don't want to block any write action, there's nothing important in this mem indicator
+    class ModelCounter extends CancellableReadAction implements Consumer<SModel> {
+      final Stats s = new Stats();
+
+      @Override
+      protected void execute() {
+        for (SModule module : repo.getModules()) {
+          if (isCancelRequested()) {
+            confirmCancel();
+            return;
+          }
+          s.totalModules++;
+          if (myProject.isProjectModule(module)) {
+            s.projectModules++;
+          }
+          if (module.isPackaged()) {
+            s.packagedModules++;
+          }
+          module.forEachRegisteredModel(this);
+        }
+      }
+
+      @Override
+      public void accept(SModel m) {
+        s.totalModels++;
+        if (m.isLoaded()) {
+          s.loadedModels++;
+        }
+        if (SModelStereotype.isStubModel(m)) {
+          s.stubModels++;
+        }
+      }
+    };
+    ModelCounter mc = new ModelCounter();
+    repo.getModelAccess().runReadAction(mc);
+    if (myStats.differs(mc.s)) {
+      myStats.resetFrom(mc.s);
+      final String tx = myStats.caption();
+      final String tt = myStats.tooltip();
+      EdtExecutorService.getInstance().execute(() -> updateVisuals(tx, tt));
+    }
+  }
+
+  // XXX not sure setText/setToolTipText/isShowing do need EDT, but it's safe to assume they do,
+  //     so this method expects EDT
+  /*package*/ void updateVisuals(String text, String tooltip) {
     if (!isShowing()) {
       return;
     }
-
-    final SRepository repo = myProject.getRepository();
-    repo.getModelAccess().runReadAction(()->{
-
-      myLastLoadedModels = 0;
-      myModelsTotal = 0;
-      for (SModule module : repo.getModules()) {
-        for (SModel m : module.getModels()) {
-          myModelsTotal++;
-          if (m.isLoaded()) {
-            myLastLoadedModels++;
-          }
-        }
-      }
-    });
-
-    setText(getCaption(myLastLoadedModels, myModelsTotal));
-    setToolTipText("Models Loaded: " + myLastLoadedModels + "<br>" + "Total: " + myModelsTotal);
-  }
-
-  @NotNull
-  private String getCaption(int loaded, int max) {
-    return loaded + " of " + max + "       "; // last spaces make a place for icon
+    setText(text);
+    setToolTipText(tooltip);
   }
 
   public static final class WidgetFactory implements StatusBarWidgetFactory {

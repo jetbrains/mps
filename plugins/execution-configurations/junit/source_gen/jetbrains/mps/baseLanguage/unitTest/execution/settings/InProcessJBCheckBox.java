@@ -8,7 +8,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.LinkedList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.annotations.NotNull;
 import java.awt.Component;
 import java.awt.Container;
@@ -26,11 +25,7 @@ public final class InProcessJBCheckBox extends JBCheckBox {
   }
 
   public void forceUpdate() {
-    ListSequence.fromList(myUpdaters).visitAll(new IVisitor<Updater>() {
-      public void visit(Updater it) {
-        it.updateMe();
-      }
-    });
+    ListSequence.fromList(myUpdaters).visitAll((it) -> it.updateMe());
   }
 
   public void registerUpdater(@NotNull Updater updater) {
@@ -63,7 +58,6 @@ public final class InProcessJBCheckBox extends JBCheckBox {
     public void updateMe() {
       syncComponent(myComp, !(InProcessJBCheckBox.this.isSelected()));
     }
-
   }
 
   private static void syncComponent(Component component, boolean flag) {

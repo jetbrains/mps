@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,19 +19,13 @@ import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode.DeleteDirection;
-import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteOnErrorReference;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteOnErrorSReference;
-import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteReference;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Basic;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
-import jetbrains.mps.smodel.SNodeLegacy;
 import jetbrains.mps.smodel.presentation.ReferenceConceptUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SAbstractLink;

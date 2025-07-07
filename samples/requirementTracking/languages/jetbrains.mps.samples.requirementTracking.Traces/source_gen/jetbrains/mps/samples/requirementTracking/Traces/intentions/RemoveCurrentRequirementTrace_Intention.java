@@ -17,21 +17,21 @@ import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 
 public final class RemoveCurrentRequirementTrace_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public RemoveCurrentRequirementTrace_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:fddf7047-be18-427f-9162-f31299b900ec(jetbrains.mps.samples.requirementTracking.Traces.intentions)", "4174052498197999444"));
   }
+
   @Override
   public String getPresentation() {
     return "RemoveCurrentRequirementTrace";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -41,17 +41,28 @@ public final class RemoveCurrentRequirementTrace_Intention extends AbstractInten
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Remove Requirement Trace";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNodeOperations.deleteNode(node);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return RemoveCurrentRequirementTrace_Intention.this;
     }
+
   }
 }

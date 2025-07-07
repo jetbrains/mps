@@ -96,7 +96,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "/**");
     editorCell.setCellId("Constant_q2jz9e_a0a");
     Style style = new StyleImpl();
-    new CommentStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new CommentStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, _StyleParameter_QueryFunction_q2jz9e_a0a0a());
     editorCell.getStyle().putAll(style);
     if (nodeCondition_q2jz9e_a0a0()) {
@@ -117,7 +117,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_body");
     Style style = new StyleImpl();
-    new CommentStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new CommentStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
     editorCell.getStyle().putAll(style);
@@ -219,7 +219,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Vertical(), false);
     editorCell.setCellId("refNodeList_tags");
     Style style = new StyleImpl();
-    new CommentStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new CommentStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, _StyleParameter_QueryFunction_q2jz9e_a0d0a());
     style.set(StyleAttributes.INDENT_LAYOUT_INDENT, _StyleParameter_QueryFunction_q2jz9e_a1d0a());
     editorCell.getStyle().putAll(style);
@@ -245,11 +245,11 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.BaseBlockDocTag$jo;
     }
-    public SNode createNodeToInsert(EditorContext editorContext) {
-      return nodeFactory();
+    public SNode createNodeToInsert(EditorContext editorContext, SNode prevNode, SNode nextNode, int index) {
+      return nodeFactory(prevNode, nextNode, index);
     }
 
-    public SNode nodeFactory() {
+    public SNode nodeFactory(SNode prevNode, SNode nextNode, int index) {
       return SNodeFactoryOperations.createNewNode(CONCEPTS.EmptyBlockDocTag$U4, null);
     }
     public EditorCell createNodeCell(SNode elementNode) {
@@ -379,7 +379,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_author");
     Style style = new StyleImpl();
-    new CommentStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new CommentStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
     style.set(StyleAttributes.INDENT_LAYOUT_CHILDREN_NEWLINE, true);
     editorCell.getStyle().putAll(style);
@@ -458,7 +458,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_since");
     Style style = new StyleImpl();
-    new CommentStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new CommentStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
     style.set(StyleAttributes.INDENT_LAYOUT_CHILDREN_NEWLINE, true);
     editorCell.getStyle().putAll(style);
@@ -537,7 +537,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_version");
     Style style = new StyleImpl();
-    new CommentStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new CommentStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
     style.set(StyleAttributes.INDENT_LAYOUT_CHILDREN_NEWLINE, true);
     editorCell.getStyle().putAll(style);
@@ -616,7 +616,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_see");
     Style style = new StyleImpl();
-    new CommentStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new CommentStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
     style.set(StyleAttributes.INDENT_LAYOUT_CHILDREN_NEWLINE, true);
     editorCell.getStyle().putAll(style);
@@ -695,7 +695,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_param");
     Style style = new StyleImpl();
-    new CommentStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new CommentStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
     style.set(StyleAttributes.INDENT_LAYOUT_CHILDREN_NEWLINE, true);
     editorCell.getStyle().putAll(style);
@@ -806,7 +806,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
         editorCell.setSRole(LINKS.deprecated$M8kQ);
       }
       Style style = new StyleImpl();
-      new JavaDocStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      new JavaDocStyleClass(this).apply(style, editorCell);
       style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
       style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
       editorCell.getStyle().putAll(style);
@@ -834,7 +834,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, " */");
     editorCell.setCellId("Constant_q2jz9e_f0a");
     Style style = new StyleImpl();
-    new CommentStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new CommentStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
     style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, _StyleParameter_QueryFunction_q2jz9e_a1f0a());
     editorCell.getStyle().putAll(style);

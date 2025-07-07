@@ -12,7 +12,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -27,25 +26,17 @@ public class check_PropertyDeclaration_NonTypesystemRule extends AbstractNonType
   public check_PropertyDeclaration_NonTypesystemRule() {
   }
   public void applyRule(final SNode prop, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    // property overriding is banned 
+    // property overriding is banned
     if (SPropertyOperations.getString(prop, PROPS.name$MnvL) == null) {
       return;
     }
     SNode concept = SNodeOperations.getNodeAncestor(prop, CONCEPTS.AbstractConceptDeclaration$KA, false, false);
-    // XXX this check is invoked for each property visible in ConceptDeclaration editor. If it takes noticeably longer than it was compared 
-    // to cached access to property declarations, we'd better introduce a notion of caching context here and calculate concept hierarchy/property declarations 
-    // once per checking session (this doesn't seem to be any trouble using TypecheckingContext to keep cached values during checking session.  
-    // Could use setIsNonTypesystemComputation()/ resetIsNonTypesystemComputation() of IncrementalTypecheckingContext to clean the cache) 
-    List<SNode> otherProps = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(concept)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return it != prop;
-      }
-    }).toListSequence();
-    SNode propInConcept = ListSequence.fromList(otherProps).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(prop, PROPS.name$MnvL));
-      }
-    });
+    // XXX this check is invoked for each property visible in ConceptDeclaration editor. If it takes noticeably longer than it was compared
+    // to cached access to property declarations, we'd better introduce a notion of caching context here and calculate concept hierarchy/property declarations
+    // once per checking session (this doesn't seem to be any trouble using TypecheckingContext to keep cached values during checking session. 
+    // Could use setIsNonTypesystemComputation()/ resetIsNonTypesystemComputation() of IncrementalTypecheckingContext to clean the cache)
+    List<SNode> otherProps = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(concept)).where((it) -> it != prop).toList();
+    SNode propInConcept = ListSequence.fromList(otherProps).findFirst((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(prop, PROPS.name$MnvL)));
     if (propInConcept != null) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -53,13 +44,9 @@ public class check_PropertyDeclaration_NonTypesystemRule extends AbstractNonType
       }
       return;
     }
-    // check constant names generated in adapters 
+    // check constant names generated in adapters
     final String name = NameUtil.toConstantName(SPropertyOperations.getString(prop, PROPS.name$MnvL));
-    SNode node = ListSequence.fromList(otherProps).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(name, NameUtil.toConstantName(SPropertyOperations.getString(it, PROPS.name$MnvL)));
-      }
-    });
+    SNode node = ListSequence.fromList(otherProps).findFirst((it) -> Objects.equals(name, NameUtil.toConstantName(SPropertyOperations.getString(it, PROPS.name$MnvL))));
     if ((node != null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();

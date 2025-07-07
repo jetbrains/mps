@@ -15,7 +15,7 @@ import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 
-@GeneratedClass(node = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/3415850104095322575", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
+@GeneratedClass(nodeId = "3415850104095322575", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
 public class Complete_Action extends BaseAction {
   private static final Icon ICON = null;
 

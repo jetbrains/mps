@@ -10,7 +10,6 @@ import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
@@ -24,8 +23,8 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class PreferencesComponentType__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119c497fc64L, "jetbrains.mps.lang.plugin.structure.PreferencesComponentType");
 
-  public static final SMethod<List<SNode>> getMembers_idhEwINC$ = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMembers").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwINC$").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getClassExpression_idhEwIzOd = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClassExpression").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIzOd").build();
+  public static final SMethod<List<SNode>> getMembers_idhEwINC$ = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMembers").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877402148L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getClassExpression_idhEwIzOd = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClassExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877337357L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMembers_idhEwINC$, getClassExpression_idhEwIzOd);
 

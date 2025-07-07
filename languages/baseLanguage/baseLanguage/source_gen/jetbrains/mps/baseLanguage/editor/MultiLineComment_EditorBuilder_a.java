@@ -9,10 +9,10 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
+import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.CommentStyleClass;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.TODOStyleClass;
@@ -54,9 +54,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setCellId("Collection_petcxp_a");
     editorCell.setBig(true);
     setCellContext(editorCell);
-    Style style = new StyleImpl();
-    new CommentStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
-    editorCell.getStyle().putAll(style);
+    MultiLineCommentCopyPaste.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.addEditorCell(createConstant_0());
     editorCell.addEditorCell(createRefNodeList_0());
     editorCell.addEditorCell(createConstant_1());
@@ -66,6 +64,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "/*");
     editorCell.setCellId("Constant_petcxp_a0");
     Style style = new StyleImpl();
+    new CommentStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
@@ -76,7 +75,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_lines");
     Style style = new StyleImpl();
-    new TODOStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new TODOStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.SELECTABLE, false);
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
     style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
@@ -104,11 +103,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.Line$yC;
     }
-    public SNode createNodeToInsert(EditorContext editorContext) {
-      return nodeFactory();
+    public SNode createNodeToInsert(EditorContext editorContext, SNode prevNode, SNode nextNode, int index) {
+      return nodeFactory(prevNode, nextNode, index);
     }
 
-    public SNode nodeFactory() {
+    public SNode nodeFactory(SNode prevNode, SNode nextNode, int index) {
       SNode l = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
       SLinkOperations.addNewChild(l, LINKS.elements$_j45, CONCEPTS.Word$Dn);
       return l;
@@ -164,7 +163,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "*/");
     editorCell.setCellId("Constant_petcxp_c0");
     Style style = new StyleImpl();
-    new CommentStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new CommentStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;

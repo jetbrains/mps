@@ -6,68 +6,74 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.messages.IMessageHandler;
-import jetbrains.mps.smodel.ModuleRepositoryFacade;
+import jetbrains.mps.smodel.RepositoryFacade;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.project.structure.modules.SolutionDescriptor;
-import jetbrains.mps.project.structure.modules.DevkitDescriptor;
-import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
+import jetbrains.mps.smodel.Language;
+import jetbrains.mps.project.Solution;
+import jetbrains.mps.project.DevKit;
+import jetbrains.mps.smodel.Generator;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import jetbrains.mps.project.structure.modules.DevkitDescriptor;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.module.SModuleReference;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import java.util.Set;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.generator.impl.GenPlanTranslator;
 import jetbrains.mps.generator.impl.plan.DependencyCollectorPlanBuilder;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import java.util.Set;
 import jetbrains.mps.smodel.BootstrapLanguages;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import jetbrains.mps.project.structure.modules.Dependency;
+import org.jetbrains.mps.openapi.module.SDependencyScope;
+import jetbrains.mps.messages.Message;
+import jetbrains.mps.messages.MessageKind;
+import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.build.mps.behavior.BuildMps_AbstractModule__BehaviorDescriptor;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.persistence.PersistenceRegistry;
-import jetbrains.mps.build.mps.behavior.BuildMps_Solution__BehaviorDescriptor;
-import jetbrains.mps.build.util.RelativePathHelper;
+import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.project.ProjectPathUtil;
-import jetbrains.mps.project.facets.TestsFacetImpl;
+import jetbrains.mps.build.mps.behavior.BuildMps_Solution__BehaviorDescriptor;
+import jetbrains.mps.project.facets.TestsFacet;
+import jetbrains.mps.project.facets.DocumentationFacet;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.HashSet;
-import jetbrains.mps.project.structure.modules.Dependency;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import org.jetbrains.mps.openapi.module.SDependencyScope;
 import jetbrains.mps.build.mps.behavior.BuildMps_Generator__BehaviorDescriptor;
 import java.util.LinkedHashMap;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.project.facets.JavaModuleFacetImpl;
+import jetbrains.mps.util.PathSpec;
+import jetbrains.mps.util.MacrosFactory;
+import java.util.stream.Collectors;
 import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
 import jetbrains.mps.build.mps.behavior.BuildMps_Module__BehaviorDescriptor;
-import jetbrains.mps.messages.Message;
-import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.extapi.module.SRepositoryExt;
-import jetbrains.mps.smodel.MPSModuleOwner;
+import jetbrains.mps.smodel.GeneralModuleFactory;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.smodel.ModelImports;
-import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SProperty;
-import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ModuleChecker {
   private final SNode myModule;
@@ -78,15 +84,15 @@ public final class ModuleChecker {
   private final IMessageHandler myReporter;
   /**
    * To access certain module properties (like used languages and devkits), we need to load modules temporarily.
-   * The field is not in use and may stay null unless CheckType.doFullImport  or doPartialImport is true
    */
-  private final ModuleRepositoryFacade myRepository;
+  private final RepositoryFacade myRepository;
   private SModule myLoadedModule;
 
-  /*package*/ ModuleChecker(SNode module, VisibleModules visible, PathConverter pathConverter, IFile moduleDescriptorFile, ModuleDescriptor moduleDescriptor, IMessageHandler reporter, ModuleRepositoryFacade repo) {
+  /*package*/ ModuleChecker(SNode module, VisibleModules visible, PathConverter pathConverter, @Nullable IFile moduleDescriptorFile, ModuleDescriptor moduleDescriptor, IMessageHandler reporter, RepositoryFacade repo) {
     myModule = module;
     myVisibleModules = visible;
-    myPathConverter = pathConverter;
+    // seems that moduleDescriptorFile != null for partial/full import scenarios, and can be null for 'check';
+    myPathConverter = (moduleDescriptorFile == null ? pathConverter : pathConverter.forModule(moduleDescriptorFile));
     myModuleDescriptorFile = moduleDescriptorFile;
     myModuleDescriptor = moduleDescriptor;
     myReporter = reporter;
@@ -96,7 +102,9 @@ public final class ModuleChecker {
   private ModuleChecker(ModuleChecker parent, SNode module, IFile moduleDescriptorFile, ModuleDescriptor moduleDescriptor) {
     myModule = module;
     myVisibleModules = parent.myVisibleModules;
-    myPathConverter = parent.myPathConverter;
+    // though moduleDescriptorFile seems to be the same as in parent, can just use myPathConverter as is. Still, better not 
+    // to keep explicit moduleDescriptorFile argument then.
+    myPathConverter = (moduleDescriptorFile == null ? parent.myPathConverter : parent.myPathConverter.forModule(moduleDescriptorFile));
     myModuleDescriptorFile = moduleDescriptorFile;
     myModuleDescriptor = moduleDescriptor;
     myReporter = parent.myReporter;
@@ -115,8 +123,8 @@ public final class ModuleChecker {
       SPropertyOperations.assign(myModule, PROPS.compact$3xo1, false);
     }
 
-    if (myModuleDescriptor == null) {
-      report("module descriptor is null for " + SPropertyOperations.getString(myModule, PROPS.name$MnvL));
+    if (myModuleDescriptor == null || getLoadedModule() == null) {
+      report(String.format("can't load module %s from %s", SPropertyOperations.getString(myModule, PROPS.name$MnvL), SLinkOperations.getTarget(myModule, LINKS.path$iYKB)));
       return;
     }
 
@@ -127,8 +135,7 @@ public final class ModuleChecker {
     checkModule(type);
 
     if (myRepository != null && myLoadedModule != null) {
-      // XXX in case myModule is _Language, there' might be another _Generator that references it, and we need to keep module registered. 
-      // Don't want to deal with different module kinds right now (i.e. can drop _Solution and _Generator here) 
+      // we unregister all modules at once in ModuleLoader. FIXME Shall pass module instance here as we use SModule all the time now
       myLoadedModule = null;
     }
   }
@@ -145,7 +152,7 @@ public final class ModuleChecker {
 
     SNode module = SNodeOperations.cast(myModule, CONCEPTS.BuildMps_Module$JW);
 
-    List<SNode> previous = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(module, LINKS.dependencies$j8Lj), CONCEPTS.BuildMps_ExtractedModuleDependency$e8)).toListSequence();
+    List<SNode> previous = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(module, LINKS.dependencies$j8Lj), CONCEPTS.BuildMps_ExtractedModuleDependency$e8)).toList();
 
     collectDependencies(type, previous);
 
@@ -153,14 +160,20 @@ public final class ModuleChecker {
       collectLocalDependencies();
     }
 
-    // in case of doFullImport/doPartialImport, collectSources has to go in front of checkGenerators(), which needs Language module already instantiated 
-    collectSources(type);
+    // in case of doFullImport/doPartialImport, collectSources has to go in front of checkGenerators(), which needs Language module already instantiated
+    try {
+      collectSources(type);
+    } catch (PathConverter.PathConvertException e) {
+      report(e.getMessage());
+      return;
+    }
 
     if (SNodeOperations.isInstanceOf(module, CONCEPTS.BuildMps_Language$RA)) {
       LanguageChecker lc = new LanguageChecker((LanguageDescriptor) myModuleDescriptor, SNodeOperations.cast(module, CONCEPTS.BuildMps_Language$RA));
       lc.checkLanguageRuntime(type);
       lc.checkAccessoryModels(type);
       lc.processExtendedLanguages(type, previous);
+      lc.checkTargetLanguages(type, previous);
       if (type.doFullImport) {
         lc.importLanguageImplicitDependencies();
       }
@@ -184,26 +197,26 @@ public final class ModuleChecker {
 
   private boolean checkContentTypeMatchesModuleType() {
     if (SNodeOperations.isInstanceOf(myModule, CONCEPTS.BuildMps_Language$RA)) {
-      if (!(myModuleDescriptor instanceof LanguageDescriptor)) {
+      if (!(getLoadedModule() instanceof Language)) {
         report("The imported file is not a language file " + SPropertyOperations.getString(myModule, PROPS.name$MnvL));
         return false;
       }
     }
     if (SNodeOperations.isInstanceOf(myModule, CONCEPTS.BuildMps_Solution$R7)) {
-      if (!(myModuleDescriptor instanceof SolutionDescriptor)) {
+      if (!(getLoadedModule() instanceof Solution)) {
         report("The imported file is not a solution file " + SPropertyOperations.getString(myModule, PROPS.name$MnvL));
         return false;
       }
     }
 
     if (SNodeOperations.isInstanceOf(myModule, CONCEPTS.BuildMps_DevKit$jc)) {
-      if (!(myModuleDescriptor instanceof DevkitDescriptor)) {
+      if (!(getLoadedModule() instanceof DevKit)) {
         report("The imported file is not a devkit file " + SPropertyOperations.getString(myModule, PROPS.name$MnvL));
         return false;
       }
     }
     if (SNodeOperations.isInstanceOf(myModule, CONCEPTS.BuildMps_Generator$RQ)) {
-      if (!(myModuleDescriptor instanceof GeneratorDescriptor)) {
+      if (!(getLoadedModule() instanceof Generator)) {
         report("The imported file does not contain generator descriptor " + SPropertyOperations.getString(myModule, PROPS.name$MnvL));
         return false;
       }
@@ -212,7 +225,7 @@ public final class ModuleChecker {
   }
 
   public boolean checkModuleReference(CheckType type) {
-    String expectedModuleName = myModuleDescriptor.getNamespace();
+    String expectedModuleName = getLoadedModule().getModuleName();
     if (type.doCheck && (!(Objects.equals(SPropertyOperations.getString(myModule, PROPS.name$MnvL), expectedModuleName)))) {
       report("The name in import doesn't match file content " + SPropertyOperations.getString(myModule, PROPS.name$MnvL) + ", should be: " + expectedModuleName);
       return false;
@@ -221,14 +234,14 @@ public final class ModuleChecker {
       SPropertyOperations.assign(myModule, PROPS.name$MnvL, expectedModuleName);
     }
 
-    String expectedModuleUUID = myModuleDescriptor.getId().toString();
+    String expectedModuleUUID = PersistenceFacade.getInstance().asString(getLoadedModule().getModuleReference().getModuleId());
     if (type.doCheck && !(Objects.equals(SPropertyOperations.getString(myModule, PROPS.uuid$pC01), expectedModuleUUID))) {
       String m = "The module id in import doesn't match file content %s, expected: %s";
-      report(String.format(m, SPropertyOperations.getString(myModule, PROPS.name$MnvL), myModuleDescriptor.getId()));
+      report(String.format(m, SPropertyOperations.getString(myModule, PROPS.name$MnvL), expectedModuleUUID));
       return false;
     }
     if (type.doPartialImport) {
-      SPropertyOperations.assign(myModule, PROPS.uuid$pC01, myModuleDescriptor.getId().toString());
+      SPropertyOperations.assign(myModule, PROPS.uuid$pC01, expectedModuleUUID);
     }
 
     return true;
@@ -248,20 +261,12 @@ public final class ModuleChecker {
         continue;
       }
 
-      if (type.doCheck && !(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myModule, CONCEPTS.BuildMps_DevKit$jc), LINKS.extends$SF0h)).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.devkit$uPRS) == resolved;
-        }
-      }))) {
+      if (type.doCheck && !(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myModule, CONCEPTS.BuildMps_DevKit$jc), LINKS.extends$SF0h)).any((it) -> SLinkOperations.getTarget(it, LINKS.devkit$uPRS) == resolved))) {
         report("extends devkit dependency should be extracted into build script: " + module.toString());
       }
 
       if (type.doPartialImport) {
-        SNode ul = ListSequence.fromList(prevExt).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.devkit$uPRS) == resolved;
-          }
-        });
+        SNode ul = ListSequence.fromList(prevExt).findFirst((it) -> SLinkOperations.getTarget(it, LINKS.devkit$uPRS) == resolved);
         if (ul == null) {
           ul = SModelOperations.createNewNode(SNodeOperations.getModel(devKit), null, CONCEPTS.BuildMps_DevKitRef$Jf);
           SLinkOperations.setTarget(ul, LINKS.devkit$uPRS, resolved);
@@ -272,27 +277,20 @@ public final class ModuleChecker {
       }
     }
 
-    for (SModuleReference module : descriptor.getExportedLanguages()) {
+    final Set<SModuleReference> exportedLanguages = descriptor.getExportedLanguages();
+    for (SModuleReference module : exportedLanguages) {
       final SNode resolved = myVisibleModules.resolveLanguage(module);
       if (resolved == null) {
         report("cannot find exported languages in dependencies: " + module.getModuleName());
         continue;
       }
 
-      if (type.doCheck && !(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.cast(myModule, CONCEPTS.BuildMps_DevKit$jc), LINKS.exports$Qvxv), CONCEPTS.BuildMps_DevKitExportLanguage$EV)).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.language$qqxl) == resolved;
-        }
-      }))) {
+      if (type.doCheck && !(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.cast(myModule, CONCEPTS.BuildMps_DevKit$jc), LINKS.exports$Qvxv), CONCEPTS.BuildMps_DevKitExportLanguage$EV)).any((it) -> SLinkOperations.getTarget(it, LINKS.language$qqxl) == resolved))) {
         report("export language dependency should be extracted into build script: " + module.toString());
       }
 
       if (type.doPartialImport) {
-        SNode ul = Sequence.fromIterable(SNodeOperations.ofConcept(prevExp, CONCEPTS.BuildMps_DevKitExportLanguage$EV)).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.language$qqxl) == resolved;
-          }
-        });
+        SNode ul = Sequence.fromIterable(SNodeOperations.ofConcept(prevExp, CONCEPTS.BuildMps_DevKitExportLanguage$EV)).findFirst((it) -> SLinkOperations.getTarget(it, LINKS.language$qqxl) == resolved);
         if (ul == null) {
           ul = SModelOperations.createNewNode(SNodeOperations.getModel(devKit), null, CONCEPTS.BuildMps_DevKitExportLanguage$EV);
           SLinkOperations.setTarget(ul, LINKS.language$qqxl, resolved);
@@ -303,7 +301,7 @@ public final class ModuleChecker {
       }
     }
 
-    // import devkit 
+    // import devkit
     for (SModuleReference module : descriptor.getExportedSolutions()) {
       final SNode resolved = SNodeOperations.as(myVisibleModules.resolve(module), CONCEPTS.BuildMps_Solution$R7);
       if (resolved == null) {
@@ -311,20 +309,12 @@ public final class ModuleChecker {
         continue;
       }
 
-      if (type.doCheck && !(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.cast(myModule, CONCEPTS.BuildMps_DevKit$jc), LINKS.exports$Qvxv), CONCEPTS.BuildMps_DevKitExportSolution$71)).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.solution$qxKS) == resolved;
-        }
-      }))) {
+      if (type.doCheck && !(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.cast(myModule, CONCEPTS.BuildMps_DevKit$jc), LINKS.exports$Qvxv), CONCEPTS.BuildMps_DevKitExportSolution$71)).any((it) -> SLinkOperations.getTarget(it, LINKS.solution$qxKS) == resolved))) {
         report("export solution dependency should be extracted into build script: " + module.toString());
       }
 
       if (type.doPartialImport) {
-        SNode ul = Sequence.fromIterable(SNodeOperations.ofConcept(prevExp, CONCEPTS.BuildMps_DevKitExportSolution$71)).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.solution$qxKS) == resolved;
-          }
-        });
+        SNode ul = Sequence.fromIterable(SNodeOperations.ofConcept(prevExp, CONCEPTS.BuildMps_DevKitExportSolution$71)).findFirst((it) -> SLinkOperations.getTarget(it, LINKS.solution$qxKS) == resolved);
         if (ul == null) {
           ul = SModelOperations.createNewNode(SNodeOperations.getModel(devKit), null, CONCEPTS.BuildMps_DevKitExportSolution$71);
           SLinkOperations.setTarget(ul, LINKS.solution$qxKS, resolved);
@@ -336,42 +326,54 @@ public final class ModuleChecker {
     }
 
     if (descriptor.getAssociatedGenPlan() != null) {
-      // there's a check_ModulesImport that makes sure modules (languages and generators) referenced from an associated plan are among visible modules 
-      // here, we just record these into DevKit's exports so that other build projects, dependant from the one with devkit, add explicit dependencies to plan's required modules 
-      // FIXME I feel BuildMps_DevKit shall be no different from other BuildMps_Module (_AbstractModule and _Module merged into one concept) and I shall use _Module.dependencies 
-      //        to keep information about GP's dependencies, instead of 'exports' 
-      if (type.doPartialImport || type.doFullImport) {
-        // use both doPartial and doFullImport just in case users didn't refresh their build scripts. It costs me extra check of devKit.exports during generation, I humbly accept that. 
-        // FIXME need a mechanism to obtain the plan model! It's not part of the repo we use to provisionally load modules of BuildProject 
-        //     Could utilize assumption GP model is available through a solution exported by the devkit, yet the code to get exported solutions loaded would be too complicated for the bugfix 
-        //     therefore, try repository of build project model (this is unlikely to work for a command-line build, unless we use other means to make sure solution with genplan is part of the same project 
-        //     as the build project node. Therefore, I add these dependencies in doPartialImport as well (not only in doFullImport), so that they are readily available in cmdline build, even though I don't like the fact 
-        //  I make them visible for an end-user. 
-        SModel gp = descriptor.getAssociatedGenPlan().resolve(SNodeOperations.getModel(myModule).getRepository());
-        if (gp != null && gp.getRootNodes().iterator().hasNext()) {
-          SNode planNode = gp.getRootNodes().iterator().next();
-          // the code below is the same as in check_ModulesImport 
-          // use stub classes of j.m.generator.impl, available through MPS.Core, to avoid dependency to j.m.generator solution 
-          GenPlanTranslator gpt = new GenPlanTranslator(planNode);
-          DependencyCollectorPlanBuilder dcpb = new DependencyCollectorPlanBuilder();
-          gpt.feed(dcpb);
-          for (SLanguage reql : dcpb.getRequiredLanguages()) {
-            final SNode resolved = myVisibleModules.resolve(reql);
-            if (resolved == null) {
-              report(String.format("cannot find language `%s` required by a devkit's associated plan", reql.getQualifiedName()));
-              continue;
-            }
-            boolean alreadyExported = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(devKit, LINKS.exports$Qvxv), CONCEPTS.BuildMps_DevKitExportLanguage$EV)).any(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return SLinkOperations.getTarget(it, LINKS.language$qqxl) == resolved;
-              }
-            });
-            if (!(alreadyExported)) {
-              SNode expl = SLinkOperations.addNewChild(devKit, LINKS.exports$Qvxv, CONCEPTS.BuildMps_DevKitExportLanguage$EV);
-              SLinkOperations.setTarget(expl, LINKS.language$qqxl, resolved);
+      // FIXME I feel BuildMps_DevKit shall be no different from other BuildMps_Module (_AbstractModule and _Module merged into one concept) and I shall use _Module.dependencies
+      //        to keep information about GP's dependencies, instead of 'exports'
+
+      // use both doPartial and doFullImport just in case users didn't refresh their build scripts. It costs me extra check of devKit.exports during generation, I humbly accept that.
+      // FIXME need a mechanism to obtain the plan model! It's not necessarily part of the repo we use to provisionally load modules of BuildProject
+      //     Could utilize assumption GP model is available through a solution exported by the devkit, yet the code to get exported solutions loaded would be too complicated for the bugfix
+      //     therefore, try repository of build project model (this is unlikely to work for a command-line build, unless we use other means to make sure solution with genplan is part of the same project
+      //     as the build project node. Therefore, I add these dependencies in doPartialImport as well (not only in doFullImport), so that they are readily available in cmdline build, even though I don't like the fact
+      //  I make them visible for an end-user.
+      SModel gp = descriptor.getAssociatedGenPlan().resolve(SNodeOperations.getModel(myModule).getRepository());
+      if (gp == null && !(type.doFullImport) && (type.doCheck || type.doPartialImport)) {
+        //  in full import, just rely on extracted information; don't stop generation if can't load GP model
+        report(String.format("Missing associated generation plan %s", descriptor.getAssociatedGenPlan().getModelName()));
+        return;
+      }
+      // use stub classes of j.m.generator.impl, available through MPS.Generator, to avoid dependency to j.m.generator solution
+      final GenPlanTranslator gpt;
+      if (gp != null && (gpt = GenPlanTranslator.fromGenPlanModel(gp)) != null) {
+        // FWIW similar code is in ValidationUtil
+        DependencyCollectorPlanBuilder dcpb = new DependencyCollectorPlanBuilder();
+        gpt.feed(dcpb);
+        for (SLanguage reql : dcpb.getRequiredLanguages()) {
+          if (exportedLanguages.contains(reql.getSourceModuleReference())) {
+            // already handled the language among exported explicitly
+            continue;
+          }
+          final SNode resolved = myVisibleModules.resolve(reql);
+          if (resolved == null) {
+            report(String.format("cannot find language `%s` required by a devkit's associated plan", reql.getQualifiedName()));
+            continue;
+          }
+          if (type.doPartialImport || type.doFullImport) {
+            SNode ul = Sequence.fromIterable(SNodeOperations.ofConcept(prevExp, CONCEPTS.BuildMps_DevKitExportLanguage$EV)).findFirst((it) -> SLinkOperations.getTarget(it, LINKS.language$qqxl) == resolved);
+            if (ul == null) {
+              ul = SLinkOperations.addNewChild(devKit, LINKS.exports$Qvxv, CONCEPTS.BuildMps_DevKitExportLanguage$EV);
+              SLinkOperations.setTarget(ul, LINKS.language$qqxl, resolved);
+            } else {
+              ListSequence.fromList(prevExp).removeElement(ul);
             }
           }
-          // FIXME dcpb.requiredGenerators are not taken into account, shall address that once merge _AM and _Module and use module.dependencies instead of devkit.exports 
+        }
+        for (SModuleReference g : dcpb.getRequiredGenerators()) {
+          if (myVisibleModules.resolveGenerator(g) == null) {
+            report(String.format("cannot find generator `%s` required by a devkit's associated plan", g.getModuleName()));
+            continue;
+          }
+          // FIXME dcpb.requiredGenerators are not recorded into module deps (there's no respective BuildMps_DevKitExport sub-concept), shall address that 
+          //     once merge _AM and _Module and use module.dependencies instead of devkit.exports
         }
       }
     }
@@ -402,20 +404,12 @@ public final class ModuleChecker {
           continue;
         }
 
-        if (type.doCheck && !(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(myLangNode, LINKS.runtime$lxKd), CONCEPTS.BuildMps_ModuleSolutionRuntime$b5)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.solution$3MS) == resolved;
-          }
-        }))) {
+        if (type.doCheck && !(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(myLangNode, LINKS.runtime$lxKd), CONCEPTS.BuildMps_ModuleSolutionRuntime$b5)).any((it) -> SLinkOperations.getTarget(it, LINKS.solution$3MS) == resolved))) {
           report("runtime solution should be extracted into build script: " + runtimeModule.toString());
         }
 
         if (type.doPartialImport) {
-          SNode ul = Sequence.fromIterable(SNodeOperations.ofConcept(previous, CONCEPTS.BuildMps_ModuleSolutionRuntime$b5)).findFirst(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SLinkOperations.getTarget(it, LINKS.solution$3MS) == resolved;
-            }
-          });
+          SNode ul = Sequence.fromIterable(SNodeOperations.ofConcept(previous, CONCEPTS.BuildMps_ModuleSolutionRuntime$b5)).findFirst((it) -> SLinkOperations.getTarget(it, LINKS.solution$3MS) == resolved);
           if (ul == null) {
             ul = SModelOperations.createNewNode(SNodeOperations.getModel(myLangNode), null, CONCEPTS.BuildMps_ModuleSolutionRuntime$b5);
             SLinkOperations.setTarget(ul, LINKS.solution$3MS, resolved);
@@ -428,13 +422,13 @@ public final class ModuleChecker {
     }
 
     /*package*/ void checkAccessoryModels(CheckType type) {
-      // FIXME revisit this and similar code above. What's the purpose of previous.remove() down there? Is it not to encounter it again 
-      // FIXME or we intend to update original node? 
-      List<SNode> previous = ListSequence.fromListWithValues(new ArrayList(), SLinkOperations.getChildren(myLangNode, LINKS.accessory$q_0N));
+      // FIXME revisit this and similar code above. What's the purpose of previous.remove() down there? Is it not to encounter it again
+      // FIXME or we intend to update original node?
+      List<SNode> previous = ListSequence.fromListWithValues(new ArrayList<>(), SLinkOperations.getChildren(myLangNode, LINKS.accessory$q_0N));
 
       for (SModelReference accessoryModel : myModuleDescriptor.getAccessoryModels()) {
         if (accessoryModel.getModuleReference() == null) {
-          // FIXME report erroneous accessory model 
+          // FIXME report erroneous accessory model
           continue;
         }
         final SNode resolved = myVisibleModules.resolve(accessoryModel.getModuleReference());
@@ -443,27 +437,19 @@ public final class ModuleChecker {
           continue;
         }
         if (resolved == myLangNode) {
-          // accessory model belongs to the language itself, nothing to expose 
+          // accessory model belongs to the language itself, nothing to expose
           continue;
         }
 
-        if (type.doCheck && !(ListSequence.fromList(SLinkOperations.getChildren(myLangNode, LINKS.accessory$q_0N)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.module$HG6S) == resolved;
-          }
-        }))) {
+        if (type.doCheck && !(ListSequence.fromList(SLinkOperations.getChildren(myLangNode, LINKS.accessory$q_0N)).any((it) -> SLinkOperations.getTarget(it, LINKS.module$HG6S) == resolved))) {
           report(String.format("Dependency to module %s with accessory models has to be extracted into the project", accessoryModel.getModuleReference().getModuleName()));
         }
 
         if (type.doPartialImport) {
-          SNode ul = ListSequence.fromList(previous).findFirst(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SLinkOperations.getTarget(it, LINKS.module$HG6S) == resolved;
-            }
-          });
+          SNode ul = ListSequence.fromList(previous).findFirst((it) -> SLinkOperations.getTarget(it, LINKS.module$HG6S) == resolved);
           if (ul == null) {
             ul = SModelOperations.createNewNode(SNodeOperations.getModel(myLangNode), null, CONCEPTS.BuildMps_ModuleRef$rH);
-            // I hate BM_AbstractModule vs BM_Module distinction and gonna remove it some day, meanwhile have to cast 
+            // I hate BM_AbstractModule vs BM_Module distinction and gonna remove it some day, meanwhile have to cast
             SLinkOperations.setTarget(ul, LINKS.module$HG6S, SNodeOperations.cast(resolved, CONCEPTS.BuildMps_Module$JW));
             ListSequence.fromList(SLinkOperations.getChildren(myLangNode, LINKS.accessory$q_0N)).addElement(ul);
           } else {
@@ -503,8 +489,8 @@ public final class ModuleChecker {
           ListSequence.fromList(SLinkOperations.getChildren(myLangNode, LINKS.dependencies$j8Lj)).addElement(ul);
         }
       }
-      // any language module needs a devkit LDMP injects into lang@descriptor model. 
-      //  Do I care if I add it twice (if there's one already)? 
+      // any language module needs a devkit LDMP injects into lang@descriptor model.
+      //  Do I care if I add it twice (if there's one already)?
       SNode langDescriptorDevkit = SNodeOperations.as(myVisibleModules.resolve(BootstrapLanguages.getLanguageDescriptorDevKit()), CONCEPTS.BuildMps_DevKit$jc);
       if (langDescriptorDevkit == null) {
         report("cannot find language descriptor devkit in dependencies for " + SPropertyOperations.getString(myLangNode, PROPS.name$MnvL));
@@ -523,22 +509,14 @@ public final class ModuleChecker {
           continue;
         }
 
-        // XXX it's odd to execute same query first against module.dependencies and then against 'previous' sequence. 
-        // It's done again and again throughout whole ModuleChecker. Worth refactoring? 
-        if (type.doCheck && !(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(myLangNode, LINKS.dependencies$j8Lj), CONCEPTS.BuildMps_ExtractedModuleDependency$e8)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyExtendLanguage$W) && SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyExtendLanguage$W), LINKS.language$NYXp) == resolved;
-          }
-        }))) {
+        // XXX it's odd to execute same query first against module.dependencies and then against 'previous' sequence.
+        // It's done again and again throughout whole ModuleChecker. Worth refactoring?
+        if (type.doCheck && !(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(myLangNode, LINKS.dependencies$j8Lj), CONCEPTS.BuildMps_ExtractedModuleDependency$e8)).any((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyExtendLanguage$W) && SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyExtendLanguage$W), LINKS.language$NYXp) == resolved))) {
           report("extends language dependency should be extracted into build script: " + extendedLang.toString());
         }
 
         if (type.doPartialImport) {
-          SNode res = ListSequence.fromList(previous).findFirst(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyExtendLanguage$W) && SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyExtendLanguage$W), LINKS.language$NYXp) == resolved;
-            }
-          });
+          SNode res = ListSequence.fromList(previous).findFirst((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyExtendLanguage$W) && SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyExtendLanguage$W), LINKS.language$NYXp) == resolved);
           if (res == null) {
             res = SModelOperations.createNewNode(SNodeOperations.getModel(myLangNode), null, CONCEPTS.BuildMps_ExtractedModuleDependency$e8);
             SNode ul = SModelOperations.createNewNode(SNodeOperations.getModel(myLangNode), null, CONCEPTS.BuildMps_ModuleDependencyExtendLanguage$W);
@@ -547,6 +525,49 @@ public final class ModuleChecker {
             ListSequence.fromList(SLinkOperations.getChildren(myLangNode, LINKS.dependencies$j8Lj)).addElement(res);
           } else {
             ListSequence.fromList(previous).removeElement(res);
+          }
+        }
+      }
+    }
+
+    /*package*/ void checkTargetLanguages(CheckType type, List<SNode> previous) {
+      List<Dependency> targetLanguages = Sequence.fromIterable(((Iterable<Dependency>) myModuleDescriptor.getDependencies())).where((it) -> it.getScope() == SDependencyScope.GENERATES_INTO).distinct().toList();
+      Iterable<SNode> directDep = SNodeOperations.ofConcept(SLinkOperations.getChildren(myLangNode, LINKS.dependencies$j8Lj), CONCEPTS.BuildMps_ModuleDependencyTargetLanguage$oN);
+      for (Dependency tl : targetLanguages) {
+        SModuleReference moduleRef = tl.getModuleRef();
+        final SNode resolved = SNodeOperations.as(myVisibleModules.resolve(moduleRef), CONCEPTS.BuildMps_Language$RA);
+        if (resolved == null) {
+          report("dependency on a module not visible from current build project: " + tl.getModuleRef().toString());
+          continue;
+        }
+        SNode extracted = ListSequence.fromList(previous).findFirst((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyTargetLanguage$oN) && SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyTargetLanguage$oN), LINKS.language$wAwY) == resolved);
+        if (extracted != null) {
+          if (type.doPartialImport) {
+            ListSequence.fromList(previous).removeElement(extracted);
+          }
+          continue;
+        }
+        if (Sequence.fromIterable(directDep).any((it) -> SLinkOperations.getTarget(it, LINKS.language$wAwY) == resolved)) {
+          if (type.doCheck) {
+            String m = String.format("Wrap '%s' with 'extracted' to manage automatically", moduleRef.getModuleName());
+            myReporter.handle(Message.createMessage(MessageKind.INFORMATION, getClass().getName(), m, SNodeOperations.getPointer(myLangNode)));
+          }
+          continue;
+        } else {
+          if (type.doPartialImport) {
+            extracted = SModelOperations.createNewNode(SNodeOperations.getModel(myLangNode), null, CONCEPTS.BuildMps_ExtractedModuleDependency$e8);
+            SNode ll = SModelOperations.createNewNode(SNodeOperations.getModel(myLangNode), null, CONCEPTS.BuildMps_ModuleDependencyTargetLanguage$oN);
+            SLinkOperations.setTarget(ll, LINKS.language$wAwY, resolved);
+            SLinkOperations.setTarget(extracted, LINKS.dependency$u_ko, ll);
+            ListSequence.fromList(SLinkOperations.getChildren(myLangNode, LINKS.dependencies$j8Lj)).addElement(extracted);
+          } else if (type.doFullImport) {
+            // doFullImport comes before doCheck, as LOAD_ALL got both, and I don't want errors to break generation
+            // FIXME this is provisional code, remove after 2021.2 is out and clients get a chance to update their build scripts
+            SNode ll = SModelOperations.createNewNode(SNodeOperations.getModel(myLangNode), null, CONCEPTS.BuildMps_ModuleDependencyTargetLanguage$oN);
+            SLinkOperations.setTarget(ll, LINKS.language$wAwY, resolved);
+            ListSequence.fromList(SLinkOperations.getChildren(myLangNode, LINKS.dependencies$j8Lj)).addElement(ll);
+          } else if (type.doCheck) {
+            report(String.format("Extract dependency to target language '%s'", moduleRef.getModuleName()));
           }
         }
       }
@@ -569,20 +590,12 @@ public final class ModuleChecker {
         report("cannot find extended generator among visible modules : " + extendedGenerator.getModuleName());
         continue;
       }
-      // XXX Unlike extends between languages, I don't yet added dedicated BM_ModuleDependencyExtendGenerator, stick to regular _ModuleDependencyOnModule 
-      if (type.doCheck && !(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(generator, LINKS.dependencies$j8Lj), CONCEPTS.BuildMps_ExtractedModuleDependency$e8), LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyOnModule$1C)).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.module$kGi0) == resolved;
-        }
-      }))) {
+      // XXX Unlike extends between languages, I don't yet added dedicated BM_ModuleDependencyExtendGenerator, stick to regular _ModuleDependencyOnModule
+      if (type.doCheck && !(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(generator, LINKS.dependencies$j8Lj), CONCEPTS.BuildMps_ExtractedModuleDependency$e8), LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyOnModule$1C)).any((it) -> SLinkOperations.getTarget(it, LINKS.module$kGi0) == resolved))) {
         report("extends dependency for generator should be extracted into build script: " + extendedGenerator.toString());
       }
       if (type.doPartialImport) {
-        SNode existing = ListSequence.fromList(previous).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyOnModule$1C) && SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyOnModule$1C), LINKS.module$kGi0) == resolved;
-          }
-        });
+        SNode existing = ListSequence.fromList(previous).findFirst((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyOnModule$1C) && SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyOnModule$1C), LINKS.module$kGi0) == resolved);
         if (existing == null) {
           SNode extg = SModelOperations.createNewNode(SNodeOperations.getModel(generator), null, CONCEPTS.BuildMps_ModuleDependencyOnModule$1C);
           SLinkOperations.setTarget(extg, LINKS.module$kGi0, resolved);
@@ -590,7 +603,7 @@ public final class ModuleChecker {
           SLinkOperations.setTarget(existing, LINKS.dependency$u_ko, extg);
           ListSequence.fromList(SLinkOperations.getChildren(generator, LINKS.dependencies$j8Lj)).addElement(existing);
         } else {
-          // consume it 
+          // consume it
           ListSequence.fromList(previous).removeElement(existing);
         }
       }
@@ -599,8 +612,8 @@ public final class ModuleChecker {
 
   private void generatorSourceLanguage(CheckType type) {
     SNode generator = SNodeOperations.cast(myModule, CONCEPTS.BuildMps_Generator$RQ);
-    // no need to set sourceLanguage for a generator module nested inside a language module 
-    // in fact, may do that for doFullImport case as it's what we do in loadModules anyway 
+    // no need to set sourceLanguage for a generator module nested inside a language module
+    // in fact, may do that for doFullImport case as it's what we do in loadModules anyway
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(generator), CONCEPTS.BuildMps_Language$RA)) {
       return;
     }
@@ -627,119 +640,111 @@ public final class ModuleChecker {
     }
   }
 
-  public void collectSources(CheckType type) {
+  public void collectSources(CheckType type) throws PathConverter.PathConvertException {
     SNode module = SNodeOperations.cast(myModule, CONCEPTS.BuildMps_Module$JW);
-    // indeed, it's odd way to figure out if there's a model that would produce sources to compile, but ModuleChecker as a whole is odd, why would I bother to make this one perfect? 
-    final boolean hasModels = Sequence.fromIterable(((Iterable<ModelRootDescriptor>) myModuleDescriptor.getModelRootDescriptors())).any(new IWhereFilter<ModelRootDescriptor>() {
-      public boolean accept(ModelRootDescriptor it) {
-        return PersistenceRegistry.DEFAULT_MODEL_ROOT.equals(it.getType());
-      }
-    });
+    // indeed, it's odd way to figure out if there's a model that would produce sources to compile, but ModuleChecker as a whole is odd, why would I bother to make this one perfect?
+    final boolean hasModels = Sequence.fromIterable(((Iterable<ModelRootDescriptor>) myModuleDescriptor.getModelRootDescriptors())).any((it) -> PersistenceRegistry.DEFAULT_MODEL_ROOT.equals(it.getType()));
 
-    final boolean doNotCompile;
-    if (myModuleDescriptor instanceof SolutionDescriptor && SNodeOperations.isInstanceOf(module, CONCEPTS.BuildMps_Solution$R7)) {
-      SNode solutionModule = SNodeOperations.cast(module, CONCEPTS.BuildMps_Solution$R7);
-      final boolean gotSourcesToCompile = ((boolean) BuildMps_Solution__BehaviorDescriptor.hasSources_id6ogfLD6hwDf.invoke(solutionModule) && hasModels) || (boolean) BuildMps_Solution__BehaviorDescriptor.hasTestsSources_id6ogfLD6evrW.invoke(solutionModule) || !(myModuleDescriptor.getSourcePaths().isEmpty());
-      doNotCompile = !(((SolutionDescriptor) myModuleDescriptor).getCompileInMPS()) || !(gotSourcesToCompile);
-    } else {
-      // languages and generators are always compiled in MPS. NO idea about other module kinds (once/if possible). 
-      doNotCompile = false;
-    }
-    if (type.doCheck && SPropertyOperations.getBoolean(module, PROPS.doNotCompile$4EF) != doNotCompile) {
-      report("compile in MPS flag doesn't match file content " + SPropertyOperations.getString(myModule, PROPS.name$MnvL) + ", should be: " + doNotCompile);
-    }
-
-    if (type.doPartialImport) {
-      SPropertyOperations.assign(module, PROPS.doNotCompile$4EF, doNotCompile);
-    }
 
     final BuildModuleFacade buildModuleFacade = new BuildModuleFacade(module);
     if (type.doPartialImport || type.doFullImport) {
 
-      List<SNode> prevRoots = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(module, LINKS.sources$mT1j), CONCEPTS.BuildMps_ModuleModelRoot$Ie)).toListSequence();
+      List<SNode> prevRoots = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(module, LINKS.sources$mT1j), CONCEPTS.BuildMps_ModuleModelRoot$Ie)).where((it) -> SPropertyOperations.getBoolean(it, PROPS.extracted$UUL7)).toList();
 
-      // see comment next to makeRelative use, below, regarding hardcoded parent location knowledge 
-      // XXX instead of myModuleDescriptoFile, could use module.path.getLocalPath() 
-      RelativePathHelper moduleRelativePathHelper = new RelativePathHelper(myModuleDescriptorFile.getParent().getPath());
-      // getLoadedModule(), below, needs myRepository which is available in doFullImport || doPartialImport 
       SModule loadedModule = getLoadedModule();
       if (loadedModule != null) {
+        final JavaModuleFacet jmf = loadedModule.getFacet(JavaModuleFacet.class);
+        // here used to be some confusing logic with presence of sources and models, I see no reason to check it here
+        // shall be checking rule, if necessary
+
+        // remove doNotComplie if it was by setting to false
+        if (SPropertyOperations.getBoolean(module, PROPS.doNotCompile$4EF)) {
+          SPropertyOperations.assign(module, PROPS.doNotCompile$4EF, false);
+        }
+        // this is used instead of doNotCompile
+        SPropertyOperations.assignEnum(module, PROPS.javaCode$OceX, (jmf == null || !(jmf.getCompile().isCompiled()) ? SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x352834178d0efa67L, "jetbrains.mps.build.mps.structure.BuildMps_CodeKind"), 0x352834178d0efa6bL, "none") : (jmf.getCompile() == JavaModuleFacet.Compile.MPS ? SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x352834178d0efa67L, "jetbrains.mps.build.mps.structure.BuildMps_CodeKind"), 0x352834178d0efa68L, "compile_mps") : SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x352834178d0efa67L, "jetbrains.mps.build.mps.structure.BuildMps_CodeKind"), 0x352834178d0efa69L, "compile_ext"))));
+
+
         for (ModelRoot mr : loadedModule.getModelRoots()) {
-          // XXX it's not clear why we do not copy model roots other than default here. 
+          // XXX it's not clear why we do not copy model roots other than default here.
           if (!(mr instanceof DefaultModelRoot)) {
             continue;
           }
-          // XXX here I assume ModuleModelRoot represent DefaultModelRoot and are arranged in module.sources in exactly the same order they are reported by SModule.getModelRoots 
-          // When ModuleModelRoot marked as 'extracted', I assume I can overwrite its paths here as I see fit. If it's not 'extracted', just keep it as is (assume user has modified it according to custom needs). 
-          // XXX I'm aware this approach likely to break the moment one introduces new model roots, just can't craft an utter solution at the moment. 
-          SNode prev = (ListSequence.fromList(prevRoots).isEmpty() ? null : ListSequence.fromList(prevRoots).removeElementAt(0));
-          if (prev != null && !(SPropertyOperations.getBoolean(prev, PROPS.extracted$UUL7))) {
-            continue;
-          }
-          String deployName = null;
           for (SourceRoot sr : ((DefaultModelRoot) mr).getSourceRoots(SourceRootKinds.SOURCES)) {
-            String path = sr.getAbsolutePath().getPath();
+            IFile path = sr.getAbsolutePath();
             SNode p = convertPath(path);
             if (p == null) {
               continue;
             }
 
-            if (deployName == null) {
-              try {
-                // We used to imply model roots reside under a parent folder of a module descriptor file (in contentOf_BuildMpsLayout_ModuleSources). 
-                // Now, we just extracted the logic here and make the name of the deployment folder explicit. 
-                // FIXME in fact, we shall reference these names inside generated/copied module descriptors and stop implying they match names in the original descriptor source 
-                deployName = moduleRelativePathHelper.makeRelative(path);
-              } catch (RelativePathHelper.PathException ex) {
-                report(String.format("Failed to make model root path %s relative to module %s, using default folder name for deployment", sr, moduleRelativePathHelper.getBasePath()), ex);
-                deployName = "models";
-              }
-              buildModuleFacade.withModelRoot(prev, deployName);
-            }
-            buildModuleFacade.addSourcesToCurrentModelRoot(p);
-          }
-          if (deployName != null) {
-            // well, in fact it's not necessary, as any next model root get deployName = null and withModelRoot() eventually that precedes any addModelSource; still helps to get the idea 
+            // XXX here I assume ModuleModelRoot represent DefaultModelRoot and are arranged in module.sources in exactly the same order they are reported by SModule.getModelRoots
+            // When ModuleModelRoot marked as 'extracted', I assume I can overwrite its paths here as I see fit. If it's not 'extracted', just keep it as is (assume user has modified it according to custom needs).
+            // XXX I'm aware this approach likely to break the moment one introduces new model roots, just can't craft an utter solution at the moment.
+            SNode prev = (ListSequence.fromList(prevRoots).isEmpty() ? null : ListSequence.fromList(prevRoots).removeElementAt(0));
+
+            // We used to imply model roots reside under a parent folder of a module descriptor file (in contentOf_BuildMpsLayout_ModuleSources).
+            // Now, we just extracted the logic here and make the name of the deployment folder explicit.
+            // FIXME in fact, we shall reference these names inside generated/copied module descriptors and stop implying they match names in the original descriptor source
+            // FWIW, we used to build relative path to module descriptor file here, but as it's just the folder name (single segment), I don't see a reason to bother with RelativePathHelper
+            String deployName = myPathConverter.moduleRelativePart(path.getPath());
+            // this somewhat puzzling logic is here as a tribute to an attempt to keep single BM_ModuleModelRoot per DefaultModelRoot
+            // which turned out not nice as source module still listed 2 sources under the root, and complained about missing models 
+            // when reading deployed module. Indeed, would be better to have it fixed in templates not to combine all locations of 
+            // BM_ModuleModelRoot into a single output folder, but this approach, here, looks easier
+            buildModuleFacade.withModelRoot(prev, deployName);
+            // seems that true is equivalent of prev.extracted; given how we build prevRoots
+            buildModuleFacade.addSourcesToCurrentModelRoot(p, true);
             buildModuleFacade.popModelRoot();
           }
         }
-        // if any 'auto-extracted' model root left in the module, remove it 
-        // intentionally kept inside laodedModule != null not to delete user data in case we have no idea what's the module we are trying to deal with 
-        ListSequence.fromList(prevRoots).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SPropertyOperations.getBoolean(it, PROPS.extracted$UUL7);
-          }
-        }).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            SNodeOperations.deleteNode(it);
-          }
-        });
+        // if any 'auto-extracted' model root left in the module, remove it
+        // intentionally kept inside loadedModule != null not to delete user data in case we have no idea what's the module we are trying to deal with
+        ListSequence.fromList(prevRoots).visitAll((it) -> SNodeOperations.deleteNode(it));
       }
     }
 
     if (type.doFullImport) {
-      for (String path : myModuleDescriptor.getSourcePaths()) {
-        SNode p = convertPath(path);
-        buildModuleFacade.addJavaSources(p, false);
-      }
 
-      if (!(SNodeOperations.isInstanceOf(myModule, CONCEPTS.BuildMps_Solution$R7)) || ((boolean) BuildMps_Solution__BehaviorDescriptor.hasSources_id6ogfLD6hwDf.invoke(SNodeOperations.cast(myModule, CONCEPTS.BuildMps_Solution$R7)) && hasModels)) {
-        // XXX   (1) why do we assume all generated sources are Java? Why don't we look at JavaModuleFacet.getOutputRoot() instead? 
-        //       (2) Use of ProjectPathUtil is dubious. Could have used AbstractModule.getOutputPath if I'd deal with SModule, not ModuleDescriptor. 
-        //       (3) Use of SModule would allow direct use of JavaModuleFacet instead of ModuleFacetDescriptor, keeping all the logic of location handling hidden. 
-        String genPath = ProjectPathUtil.getGeneratorOutputPath(myModuleDescriptor);
-        if (genPath != null) {
-          buildModuleFacade.addJavaSources(convertPath(genPath), true);
+      // XXX shall I take !doNotCompile into account here? Legacy code doesn't check that, is there use for sources
+      //    in case of !doNotCompile?
+      SModule loadedModule = getLoadedModule();
+      JavaModuleFacet jmf = loadedModule.getFacet(JavaModuleFacet.class);
+      if (jmf != null) {
+        for (String path : jmf.getAdditionalSourcePaths()) {
+          SNode p = convertPath(path);
+          buildModuleFacade.addJavaSources(p, false);
+        }
+
+        // I hate this condition, but decided to keep it for a while. Seems that its intention was to handle test-only modules
+        //    i.e. to exclude them here, shall check if it's still relevant given JMF use
+        if (!(SNodeOperations.isInstanceOf(myModule, CONCEPTS.BuildMps_Solution$R7)) || ((boolean) BuildMps_Solution__BehaviorDescriptor.hasSources_id6ogfLD6hwDf.invoke(SNodeOperations.cast(myModule, CONCEPTS.BuildMps_Solution$R7)) && hasModels)) {
+          buildModuleFacade.addJavaSources(convertPath(jmf.getOutputRoot()), true);
+        }
+      }
+      if (SPropertyOperations.getBoolean(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getContainingRoot(myModule), CONCEPTS.BuildProject$ae), LINKS.plugins$AsCR), CONCEPTS.BuildMPSPlugin$YW)).first(), PROPS.useMakeTask$aRFt)) {
+        // MPSI-36
+        buildModuleFacade.addOutputPath(convertPath(jmf.getClassesGen()));
+        //  guess I don't need outputPath unless we use <mps-make> task. Well, just to save some script re-generating 
+      }
+      // FIXME shall not limit tests sources to solutions only (TestsFacetImpl allows Languages to have tests).
+      //      Left Solution check as a tribute to old code, pending refactoring of hasSources/hasTestsSources setting. I don't see a reason to keep it.
+      //      Once/if it's gone, the check would be no longer necessary. OTOH, may pull these methods up to any _Module
+      boolean hasTests = SNodeOperations.isInstanceOf(myModule, CONCEPTS.BuildMps_Solution$R7) && (boolean) BuildMps_Solution__BehaviorDescriptor.hasTestsSources_id6ogfLD6evrW.invoke(SNodeOperations.cast(myModule, CONCEPTS.BuildMps_Solution$R7));
+
+      TestsFacet tf = loadedModule.getFacet(TestsFacet.class);
+      if (hasTests && tf != null) {
+        IFile testsOutputPath = tf.getTestsOutputPath();
+        if (testsOutputPath != null) {
+          buildModuleFacade.addTestSources(convertPath(testsOutputPath), true);
         }
       }
 
-      // FIXME shall not limit tests sources to solutions only (even TestsFacetImpl allows Languages to have tests). Shall look to tests facet descriptor instead of blind forModuleDescriptor 
-      IFile testsPathFile = TestsFacetImpl.getTestsOutputPath(myModuleDescriptor, myModuleDescriptorFile);
-      boolean hasTests = SNodeOperations.isInstanceOf(myModule, CONCEPTS.BuildMps_Solution$R7) && (boolean) BuildMps_Solution__BehaviorDescriptor.hasTestsSources_id6ogfLD6evrW.invoke(SNodeOperations.cast(myModule, CONCEPTS.BuildMps_Solution$R7));
-      if (testsPathFile != null && hasTests) {
-        String testPath = testsPathFile.getPath();
-        SNode p = convertPath(testPath);
-        buildModuleFacade.addTestSources(p, true);
+      // FIXME handle GenerationTargetFacet other than JMF/TF. Need to introduce BuildMps_ModuleSource subconcept for non-java
+      //      sources and fix weave_Tasks/cleanSources to remove these as well
+
+      DocumentationFacet docFacet = loadedModule.getFacet(DocumentationFacet.class);
+      if (docFacet != null) {
+        buildModuleFacade.addDoc(convertPath(docFacet.getLocation()));
       }
     }
   }
@@ -771,30 +776,30 @@ public final class ModuleChecker {
 
     Map<SNode, SNode> seen = new HashMap<SNode, SNode>();
 
-    // To build a module, we don't need its artifical dependencies, like design-time (DESIGN, which helps addressing priority rules) and execution-time (GENERATES_INTO, 
-    // which tells what uses of the language module would need, rather than the module itself). 
-    Iterable<Dependency> dependencies = SetSequence.fromSet(SetSequence.fromSetWithValues(new HashSet<Dependency>(), myModuleDescriptor.getDependencies())).where(new IWhereFilter<Dependency>() {
-      public boolean accept(Dependency it) {
-        return it.getScope() != SDependencyScope.DESIGN && it.getScope() != SDependencyScope.GENERATES_INTO;
-      }
-    });
-
-    // todo: hack 
+    // To build a module, we don't need its artificial dependencies, like design-time (DESIGN, which helps addressing priority rules) 
+    // but we still need execution-time (GENERATES_INTO, which tells what uses of the language module would need, rather than the module itself)
+    // because we need runtimes of GENERATES_INTO targets to compile code for model using source language.
+    // We collect them separately in LanguageChecker, as 'dependencies' get converted into BM_ModuleDependencyOnModule, while for
+    // target language we need BM_ModuleDependencyTargetLanguage, and we've got LanguageChecker that deals with BM_Language specifically
+    Iterable<Dependency> dependencies = SetSequence.fromSet(SetSequence.fromSetWithValues(new HashSet<Dependency>(), myModuleDescriptor.getDependencies())).where((it) -> it.getScope() != SDependencyScope.DESIGN && it.getScope() != SDependencyScope.GENERATES_INTO);
+    // todo: hack
     if (type.doFullImport) {
       if (SNodeOperations.isInstanceOf(myModule, CONCEPTS.BuildMps_Generator$RQ)) {
-        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myModule, CONCEPTS.BuildMps_Generator$RQ), LINKS.dependencies$j8Lj)).addElement(createBuildMps_ModuleDependencyOnModule_yr5c5g_a0a0a0a31a63(BuildMps_Generator__BehaviorDescriptor.getSourceLanguage_id7YI57w6ZMdZ.invoke(SNodeOperations.cast(myModule, CONCEPTS.BuildMps_Generator$RQ))));
+        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myModule, CONCEPTS.BuildMps_Generator$RQ), LINKS.dependencies$j8Lj)).addElement(createBuildMps_ModuleDependencyOnModule_yr5c5g_a0a0a0a51a63(BuildMps_Generator__BehaviorDescriptor.getSourceLanguage_id7YI57w6ZMdZ.invoke(SNodeOperations.cast(myModule, CONCEPTS.BuildMps_Generator$RQ))));
       }
     }
     if (!(SNodeOperations.isInstanceOf(myModule, CONCEPTS.BuildMps_Generator$RQ))) {
       for (Dependency dependency : dependencies) {
         SModuleReference moduleRef = dependency.getModuleRef();
+        // FIXME it's stupid way to check it's a generator, and, moreover, likely a wrong place to check for this defect at all.
         if (moduleRef.getModuleName().contains("#")) {
-          report("modules except generators cannot depend on generator: `" + moduleRef.getModuleName() + "'");
+          String m = String.format("Generally, modules except generators shall not depend on generator: `%s'", moduleRef.getModuleName());
+          myReporter.handle(Message.createMessage(MessageKind.WARNING, getClass().getName(), m, SNodeOperations.getPointer(myModule)));
         }
       }
     }
 
-    // resolve all dependencies 
+    // resolve all dependencies
     Map<SNode, Boolean> depsToReexport = new LinkedHashMap<SNode, Boolean>();
     for (Dependency dep : dependencies) {
       SModuleReference moduleRef = dep.getModuleRef();
@@ -811,7 +816,7 @@ public final class ModuleChecker {
       boolean reexport = dep.isReexport();
       depsToReexport.put(resolved, reexport);
 
-      // import required 
+      // import required
       if (type.doPartialImport) {
         SNode prev = seen.get(resolved);
         if (prev != null) {
@@ -821,11 +826,7 @@ public final class ModuleChecker {
           continue;
         }
 
-        SNode extr = ListSequence.fromList(previous).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyOnModule$1C) && SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyOnModule$1C), LINKS.module$kGi0) == resolved;
-          }
-        });
+        SNode extr = ListSequence.fromList(previous).findFirst((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyOnModule$1C) && SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyOnModule$1C), LINKS.module$kGi0) == resolved);
 
         if (extr == null) {
           extr = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x64bd442e1cf7aaeeL, "jetbrains.mps.build.mps.structure.BuildMps_ExtractedModuleDependency"));
@@ -841,7 +842,7 @@ public final class ModuleChecker {
       }
     }
 
-    // check & create 
+    // check & create
     if (type.doFullImport || type.doCheck) {
       for (Map.Entry<SNode, Boolean> entry : depsToReexport.entrySet()) {
         SNode resolved = entry.getKey();
@@ -870,100 +871,106 @@ public final class ModuleChecker {
       }
     }
 
-    // java stubs: jars 
-    for (String path : myModuleDescriptor.getJavaLibs()) {
-      SNode p = convertPath(path);
-      if (p == null) {
-        continue;
+    // java stubs: jars
+    SModule loadedModule = getLoadedModule();
+    if (loadedModule == null) {
+      return;
+    }
+    JavaModuleFacet jmf = loadedModule.getFacet(JavaModuleFacet.class);
+    if (false == jmf instanceof JavaModuleFacetImpl) {
+      return;
+    }
+    for (PathSpec path : ((JavaModuleFacetImpl) jmf).getJavaLibrarySpec()) {
+      if (type.doCheck && path.hasMacro()) {
+        final List<String> declaredMacro = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getContainingRoot(myModule), CONCEPTS.BuildProject$ae), LINKS.macros$r8_A), CONCEPTS.BuildFolderMacro$mR)).select((it) -> String.format("${%s}", SPropertyOperations.getString(it, PROPS.name$MnvL))).union(Sequence.fromIterable(Sequence.singleton(MacrosFactory.MODULE))).toList();
+        String missing = path.allMacro().filter((m) -> !(ListSequence.fromList(declaredMacro).contains(m))).collect(Collectors.joining(","));
+        if ((missing != null && missing.length() > 0)) {
+          String message = String.format("Java Library specification %s needs folder macro declaration for %s", path.value(), missing);
+          myReporter.handle(Message.createMessage(MessageKind.WARNING, getClass().getName(), message, SNodeOperations.getPointer(myModule)));
+        }
       }
+      // I don't see much value in these checks and extracted data, but it's not the thing to change now
+      //    for lib spec I can check macro name (if present in the value) is matching anything in the build project
+      try {
+        List<SNode> p = myPathConverter.convertPath(path.value());
+        if (ListSequence.fromList(p).isEmpty()) {
 
-      final String relPath = BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(p);
-      if (path.endsWith(".jar")) {
-        // XXX hack to avoid exposing huge varying lists of jars from stub modules like MPS.Core or MPS.IDEA 
-        // we check if there's hand-written (not extracted) re-exported dependency on a java module that re-exports at least 1 java library 
-        // ('java module' is here just as it's the only way for an MPS module to depend on 'java library'; alternatively would need BuildMps_ModuleDependencyOnJavaLibrary, which  
-        // would probably be be better solution). We assume that this dependency would cover jars manifested in the module descriptor. 
-        // TODO try BuildMps_ModuleDependencyOnJavaLibrary alternative, there could be a 'wildcard' flag to indicate this particular scenario 
-        boolean nonAutoDepToExportedJavaLib = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(module, LINKS.dependencies$j8Lj), CONCEPTS.BuildMps_ModuleDependencyOnJavaModule$MK)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SPropertyOperations.getBoolean(it, PROPS.reexport$RnCo) && (SLinkOperations.getTarget(it, LINKS.javaLibLocation$cmtb) == null) && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.module$RnRp), LINKS.dependencies$eBQR), CONCEPTS.BuildSource_JavaDependencyLibrary$TO)).any(new IWhereFilter<SNode>() {
-              public boolean accept(SNode l) {
-                return SPropertyOperations.getBoolean(l, PROPS.reexport$1qdl);
-              }
-            });
-          }
-        });
-        if (type.doCheck) {
-          boolean extractedJar = Sequence.fromIterable(SNodeOperations.ofConcept(BuildMps_Module__BehaviorDescriptor.getDependenciesUnwrapped_id3QtfwKhgryb.invoke(module), CONCEPTS.BuildMps_ModuleDependencyJar$Rm)).any(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return Objects.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(it, LINKS.path$yTVo)), relPath);
-            }
-          });
-          if (!(extractedJar)) {
-            boolean extractedAsJavaModule = Sequence.fromIterable(SNodeOperations.ofConcept(BuildMps_Module__BehaviorDescriptor.getDependenciesUnwrapped_id3QtfwKhgryb.invoke(module), CONCEPTS.BuildMps_ModuleDependencyOnJavaModule$MK)).any(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return (SLinkOperations.getTarget(it, LINKS.javaLibLocation$cmtb) != null) && Objects.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(it, LINKS.javaLibLocation$cmtb)), relPath);
-              }
-            });
-            if (!(extractedAsJavaModule) && !(nonAutoDepToExportedJavaLib)) {
-              report("Java library jar should be extracted into build script: " + relPath);
-            }
-          }
+          continue;
         }
 
-        if (type.doPartialImport) {
-          SNode extr = ListSequence.fromList(previous).findFirst(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyJar$Rm) && Objects.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyJar$Rm), LINKS.path$yTVo)), relPath);
-            }
-          });
-          if (extr == null) {
-            //  if there was extracted dependency to a java module that manifests itself as provider of this java lib, remove it from 'previous' list 
-            extr = ListSequence.fromList(previous).findFirst(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyOnJavaModule$MK) && (SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyOnJavaModule$MK), LINKS.javaLibLocation$cmtb) != null) && Objects.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyOnJavaModule$MK), LINKS.javaLibLocation$cmtb)), relPath);
+        final List<String> allRelativePathVariants = ListSequence.fromList(p).select((it) -> (String) BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(it)).toList();
+        if (path.value().endsWith(".jar")) {
+          // XXX hack to avoid exposing huge varying lists of jars from stub modules like MPS.Core or MPS.IDEA
+          // we check if there's hand-written (not extracted) re-exported dependency on a java module that re-exports at least 1 java library
+          // ('java module' is here just as it's the only way for an MPS module to depend on 'java library'; alternatively would need BuildMps_ModuleDependencyOnJavaLibrary, which 
+          // would probably be be better solution). We assume that this dependency would cover jars manifested in the module descriptor.
+          // TODO try BuildMps_ModuleDependencyOnJavaLibrary alternative, there could be a 'wildcard' flag to indicate this particular scenario
+          boolean nonAutoDepToExportedJavaLib = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(module, LINKS.dependencies$j8Lj), CONCEPTS.BuildMps_ModuleDependencyOnJavaModule$MK)).any((it) -> SPropertyOperations.getBoolean(it, PROPS.reexport$RnCo) && (SLinkOperations.getTarget(it, LINKS.javaLibLocation$cmtb) == null) && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.module$RnRp), LINKS.dependencies$eBQR), CONCEPTS.BuildSource_JavaDependencyLibrary$TO)).any((l) -> SPropertyOperations.getBoolean(l, PROPS.reexport$1qdl)));
+          final boolean extractedAsJavaModule = Sequence.fromIterable(SNodeOperations.ofConcept(BuildMps_Module__BehaviorDescriptor.getDependenciesUnwrapped_id3QtfwKhgryb.invoke(module), CONCEPTS.BuildMps_ModuleDependencyOnJavaModule$MK)).any((it) -> (SLinkOperations.getTarget(it, LINKS.javaLibLocation$cmtb) != null) && ListSequence.fromList(allRelativePathVariants).contains(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(it, LINKS.javaLibLocation$cmtb))));
+          if (type.doCheck) {
+            boolean extractedJar = Sequence.fromIterable(SNodeOperations.ofConcept(BuildMps_Module__BehaviorDescriptor.getDependenciesUnwrapped_id3QtfwKhgryb.invoke(module), CONCEPTS.BuildMps_ModuleDependencyJar$Rm)).any((it) -> ListSequence.fromList(allRelativePathVariants).contains(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(it, LINKS.path$yTVo))));
+            if (!(extractedJar)) {
+              if (!(extractedAsJavaModule) && !(nonAutoDepToExportedJavaLib)) {
+                report(String.format("Java library jar \n%s\n should be extracted into build script,\n e.g. like %s", path.value(), allRelativePathVariants));
               }
-            });
-          }
-
-          if (extr == null) {
-            extr = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x64bd442e1cf7aaeeL, "jetbrains.mps.build.mps.structure.BuildMps_ExtractedModuleDependency"));
-            SNode jar = SModelOperations.createNewNode(SNodeOperations.getModel(module), null, CONCEPTS.BuildMps_ModuleDependencyJar$Rm);
-            SLinkOperations.setTarget(jar, LINKS.path$yTVo, p);
-            SLinkOperations.setTarget(extr, LINKS.dependency$u_ko, jar);
-            ListSequence.fromList(SLinkOperations.getChildren(module, LINKS.dependencies$j8Lj)).addElement(extr);
-          } else {
-            ListSequence.fromList(previous).removeElement(extr);
-          }
-        }
-      } else if (path.endsWith("/classes")) {
-        if (type.doCheck) {
-          if (!(Sequence.fromIterable(SNodeOperations.ofConcept(BuildMps_Module__BehaviorDescriptor.getDependenciesUnwrapped_id3QtfwKhgryb.invoke(module), CONCEPTS.BuildMps_ModuleDependencyOnJavaModule$MK)).any(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return (SLinkOperations.getTarget(it, LINKS.javaLibLocation$cmtb) != null) && Objects.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(it, LINKS.javaLibLocation$cmtb)), relPath);
             }
-          }))) {
-            String message = "Java library location should be extracted into build script as Java Module dependency: " + relPath;
-            myReporter.handle(Message.createMessage(MessageKind.WARNING, getClass().getName(), message, SNodeOperations.getPointer(myModule)));
           }
+
+          if (type.doPartialImport) {
+            SNode extr = ListSequence.fromList(previous).findFirst((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyJar$Rm) && ListSequence.fromList(allRelativePathVariants).contains(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyJar$Rm), LINKS.path$yTVo))));
+            if (extr == null) {
+              //  if there was extracted dependency to a java module that manifests itself as provider of this java lib, remove it from 'previous' list
+              extr = ListSequence.fromList(previous).findFirst((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyOnJavaModule$MK) && (SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyOnJavaModule$MK), LINKS.javaLibLocation$cmtb) != null) && ListSequence.fromList(allRelativePathVariants).contains(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyOnJavaModule$MK), LINKS.javaLibLocation$cmtb))));
+            }
+
+            if (extr == null) {
+              // add extracted dep only if there's no hand-crafter dependency to java module that provides classes of the jar in question
+              if (!(extractedAsJavaModule)) {
+                extr = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x64bd442e1cf7aaeeL, "jetbrains.mps.build.mps.structure.BuildMps_ExtractedModuleDependency"));
+                SNode jar = SModelOperations.createNewNode(SNodeOperations.getModel(module), null, CONCEPTS.BuildMps_ModuleDependencyJar$Rm);
+                // take any, expect user to modify with an alternative if needed
+                SLinkOperations.setTarget(jar, LINKS.path$yTVo, ListSequence.fromList(p).first());
+                SLinkOperations.setTarget(extr, LINKS.dependency$u_ko, jar);
+                ListSequence.fromList(SLinkOperations.getChildren(module, LINKS.dependencies$j8Lj)).addElement(extr);
+              }
+            } else {
+              if (!(extractedAsJavaModule)) {
+                // previous.remove() means "keep the dependency", but as long as there's hand-crafted java module dependency that manifest the jar,
+                // not reason to keep extracted one for the same jar
+                ListSequence.fromList(previous).removeElement(extr);
+              }
+            }
+          }
+        } else if (path.value().endsWith("/classes")) {
+          if (type.doCheck) {
+            if (!(Sequence.fromIterable(SNodeOperations.ofConcept(BuildMps_Module__BehaviorDescriptor.getDependenciesUnwrapped_id3QtfwKhgryb.invoke(module), CONCEPTS.BuildMps_ModuleDependencyOnJavaModule$MK)).any((it) -> (SLinkOperations.getTarget(it, LINKS.javaLibLocation$cmtb) != null) && ListSequence.fromList(allRelativePathVariants).contains(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(it, LINKS.javaLibLocation$cmtb)))))) {
+              String message = String.format("Java library location \n%s\n should be extracted into build script as Java Module dependency,\ne.g. like %s", path.value(), allRelativePathVariants);
+              myReporter.handle(Message.createMessage(MessageKind.WARNING, getClass().getName(), message, SNodeOperations.getPointer(myModule)));
+            }
+          }
+
+          // just ignore for now. To remove a hack in JavaModuleFacetImpl.getLibraryClassPath, i'd like to specify classes location explicitly with java libs.
+          // the plan is to support general FS locations here, likely with another BM_ModuleDependency that is capable to reference 'java module'
+        } else {
+          report("only jar stub libraries are supported, found: " + path.value());
         }
 
-        // just ignore for now. To remove a hack in JavaModuleFacetImpl.getLibraryClassPath, i'd like to specify classes location explicitly with java libs. 
-        // the plan is to support general FS locations here, likely with another BM_ModuleDependency that is capable to reference 'java module' 
-      } else {
-        report("only jar stub libraries are supported, found: " + path);
+      } catch (PathConverter.PathConvertException ex) {
+        report("Failed to convert path " + path.value(), ex);
+        // ignore, try next
       }
     }
+    // XXX there's getLoadedModule + JMF != null check, above. If you add code here, reconsider returns
   }
 
   private void checkGenerators(CheckType type) {
     SNode language = SNodeOperations.cast(myModule, CONCEPTS.BuildMps_Language$RA);
     LanguageDescriptor languageDescriptor = (LanguageDescriptor) myModuleDescriptor;
-    String langName = languageDescriptor.getModuleReference().getModuleName();
+    String langName = getLoadedModule().getModuleName();
 
     if (languageDescriptor.getGenerators().isEmpty()) {
       if (type.doCheck && (SLinkOperations.getTarget(language, LINKS.generator$OCOG) != null)) {
-        report("no generators in module descriptor for `" + langName + "'");
+        report(String.format("no generators in module descriptor for `%s'", langName));
       }
       if (type.doPartialImport) {
         SLinkOperations.setTarget(language, LINKS.generator$OCOG, null);
@@ -972,14 +979,9 @@ public final class ModuleChecker {
     }
 
     GeneratorDescriptor generatorDescriptor = languageDescriptor.getGenerators().get(0);
-    String generatorName = generatorDescriptor.getNamespace();
-    if (generatorName != null && !(generatorName.startsWith(langName + "#"))) {
-      report("wrong generator name `" + generatorName + "', should start with `" + langName + "#'");
-      return;
-    }
 
     if (type.doCheck && (SLinkOperations.getTarget(language, LINKS.generator$OCOG) == null)) {
-      report("language generator should be extracted for `" + langName + "'");
+      report(String.format("language generator should be extracted for `%s'", langName));
       return;
     }
     if (type.doPartialImport & (SLinkOperations.getTarget(language, LINKS.generator$OCOG) == null)) {
@@ -989,26 +991,26 @@ public final class ModuleChecker {
     ModuleChecker moduleCheckerForGenerator = new ModuleChecker(this, SLinkOperations.getTarget(language, LINKS.generator$OCOG), myModuleDescriptorFile, generatorDescriptor);
     moduleCheckerForGenerator.check(type);
     if (type.doFullImport) {
-      // propagate collected generator dependencies up to generator's source language dependencies. 
-      // do it at runtime only (doFullImport == true) as extracted dependencies are enough to reconstruct 
-      // complete set of dependencies 
-      // FIXME Note, we don't need this hack once we have proper GENERATE_INTO dependency for languages. Now (for historical reasons), we do it 
-      // wrong - we do not record/ignore GENERATE_INTO dependencies (see collectDependencies above), but copy all generator dependencies into language 
-      // at full import. Otherwise, we could record GENERATE_INTO (either at doPartialImport or perhaps better, at doFullImport), and do not copy a lot of unrelated dependencies 
-      // from generator. MPSModulePartitioner.runtimeClosure() (or generationDependenciesClosure?) shall respect GENERATE_INTO so that <generate> task knows what it needs to compile 
-      // generated code. 
+      // propagate collected generator dependencies up to generator's source language dependencies.
+      // do it at runtime only (doFullImport == true) as extracted dependencies are enough to reconstruct
+      // complete set of dependencies
+      // FIXME Note, we don't need this hack once we have proper GENERATE_INTO dependency for languages. Now (for historical reasons), we do it
+      // wrong - we do not record/ignore GENERATE_INTO dependencies (see collectDependencies above), but copy all generator dependencies into language
+      // at full import. Otherwise, we could record GENERATE_INTO (either at doPartialImport or perhaps better, at doFullImport), and do not copy a lot of unrelated dependencies
+      // from generator. MPSModulePartitioner.runtimeClosure() (or generationDependenciesClosure?) shall respect GENERATE_INTO so that <generate> task knows what it needs to compile
+      // generated code.
       Set<SNode> alreadyInDeps = unwrapExtractedDeps(language);
       SetSequence.fromSet(alreadyInDeps).addElement(language);
       Set<SNode> generatorDeps = unwrapExtractedDeps(SLinkOperations.getTarget(language, LINKS.generator$OCOG));
       for (SNode dep : generatorDeps) {
         SNode extraDep = dep;
         if (SNodeOperations.isInstanceOf(dep, CONCEPTS.BuildMps_Generator$RQ)) {
-          // generator depends on another generator, use dependant generator's language as our dependency 
+          // generator depends on another generator, use dependant generator's language as our dependency
           extraDep = SLinkOperations.getTarget(SNodeOperations.cast(dep, CONCEPTS.BuildMps_Generator$RQ), LINKS.sourceLanguage$A51U);
           if (extraDep == null && SNodeOperations.isInstanceOf(SNodeOperations.getParent(dep), CONCEPTS.BuildMps_Language$RA)) {
-            // There are no bi-directional references in MPS, and sourceLanguage is set explicitly now only when BM_Generator moves to top level, 
-            // and is not initialized in a regular state. FIXME we'd better set this reference the moment generator is added to a language, if possible. 
-            // For the time being, howver, fall back to parent 
+            // There are no bi-directional references in MPS, and sourceLanguage is set explicitly now only when BM_Generator moves to top level,
+            // and is not initialized in a regular state. FIXME we'd better set this reference the moment generator is added to a language, if possible.
+            // For the time being, however, fall back to parent
             extraDep = SNodeOperations.as(SNodeOperations.getParent(dep), CONCEPTS.BuildMps_Language$RA);
           }
         }
@@ -1024,7 +1026,7 @@ public final class ModuleChecker {
   }
 
   private static Set<SNode> unwrapExtractedDeps(SNode module) {
-    // unwrap extracted dependencies into true dependencies, find dependencies from modules 
+    // unwrap extracted dependencies into true dependencies, find dependencies from modules
     return SetSequence.fromSetWithValues(new HashSet<SNode>(), SLinkOperations.collect(SNodeOperations.ofConcept(BuildMps_Module__BehaviorDescriptor.getDependenciesUnwrapped_id3QtfwKhgryb.invoke(module), CONCEPTS.BuildMps_ModuleDependencyOnModule$1C), LINKS.module$kGi0));
   }
 
@@ -1072,12 +1074,8 @@ public final class ModuleChecker {
 
   private SModule getLoadedModule() {
     if (myLoadedModule == null) {
-      myLoadedModule = myRepository.instantiate(myModuleDescriptor, myModuleDescriptorFile);
-      ((SRepositoryExt) myRepository.getRepository()).registerModule(myLoadedModule, new MPSModuleOwner() {
-        public boolean isHidden() {
-          return true;
-        }
-      });
+      myLoadedModule = new GeneralModuleFactory().instantiate(myModuleDescriptor, myModuleDescriptorFile);
+      myRepository.registerModule(myLoadedModule);
     }
     return myLoadedModule;
   }
@@ -1092,10 +1090,10 @@ public final class ModuleChecker {
       return;
     }
     for (SModel m : loadedModule.getModels()) {
-      // we are going to generate models only that are deemed to, therefore, we don't need to respect dependencies of other models, 
-      // like accessory models that otherwise result in bootstrap dependency. 
-      // This check doesn't help to eliminate bootstrap issue completely (i.e. a language is often in use by its typesystem aspect to specify 
-      // quoted type instances), but relieves few common scenarions at least. 
+      // we are going to generate models only that are deemed to, therefore, we don't need to respect dependencies of other models,
+      // like accessory models that otherwise result in bootstrap dependency.
+      // This check doesn't help to eliminate bootstrap issue completely (i.e. a language is often in use by its typesystem aspect to specify
+      // quoted type instances), but relieves few common scenarios at least.
       if (!(GenerationFacade.canGenerate(m))) {
         continue;
       }
@@ -1103,7 +1101,7 @@ public final class ModuleChecker {
       usedLanguage.addAll(imports.getUsedLanguages());
       usedDevkits.addAll(imports.getUsedDevKits());
     }
-    // the module gets unloaded at the end of the check, to facilitate access to loaded instance for any child module (i.e. language's generators) 
+    // the module gets unloaded at the end of the check, to facilitate access to loaded instance for any child module (i.e. language's generators)
 
     for (SLanguage lang : usedLanguage) {
       SNode resolved = myVisibleModules.resolve(lang);
@@ -1127,14 +1125,16 @@ public final class ModuleChecker {
     }
   }
 
-  private SNode convertPath(String path) {
-    // XXX why on earth do we produce list here and ignore all but first element everywhere? 
-    try {
-      return ListSequence.fromList(myPathConverter.convertPath(path)).first();
-    } catch (PathConverter.PathConvertException ex) {
-      report("Failed to convert path " + path, ex);
+  private SNode convertPath(String path) throws PathConverter.PathConvertException {
+    // XXX why on earth do we produce list here and ignore all but first element everywhere?
+    return ListSequence.fromList(myPathConverter.convertPath(path)).first();
+  }
+
+  private SNode convertPath(@Nullable IFile file) throws PathConverter.PathConvertException {
+    if (file == null) {
       return null;
     }
+    return convertPath(file.getPath());
   }
 
   private void report(String message) {
@@ -1188,31 +1188,36 @@ public final class ModuleChecker {
       myCurrentModelRoot = null;
     }
 
-    /*package*/ BuildModuleFacade addSourcesToCurrentModelRoot(final SNode p) {
+    /*package*/ BuildModuleFacade addSourcesToCurrentModelRoot(final SNode p, boolean makeThisPathTheOnlyOne) {
       SNode mroot = myCurrentModelRoot;
-      SNode loc = ListSequence.fromList(SLinkOperations.getChildren(mroot, LINKS.location$UU44)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(it, LINKS.dir$e6r$)).equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(p));
-        }
-      });
-      if (loc == null) {
-        loc = SLinkOperations.addNewChild(mroot, LINKS.location$UU44, null);
-        SLinkOperations.setTarget(loc, LINKS.dir$e6r$, p);
+      // we may get here both when there's already location with dir == p, and we need to keep the instance to preserve selectors
+      // and also when there's an invalid location (e.g. due to copy-paste of another module), seem MPS-32138 
+      final Wrappers._T<SNode> loc = new Wrappers._T<SNode>(ListSequence.fromList(SLinkOperations.getChildren(mroot, LINKS.location$UU44)).findFirst((it) -> BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(it, LINKS.dir$e6r$)).equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(p))));
+      if (loc.value == null) {
+        loc.value = SLinkOperations.addNewChild(mroot, LINKS.location$UU44, null);
+        SLinkOperations.setTarget(loc.value, LINKS.dir$e6r$, p);
       }
-      // Note, we don't update selectors (unless completely missing), expect that user could change pattern for an 'extracted' root (that's exactly scenario of MPS-30707) 
-      if (ListSequence.fromList(SLinkOperations.getChildren(loc, LINKS.selectors$hp_C)).isNotEmpty()) {
+      // Used to be provisional code to ensure transition from single ModuleModelRoot with 2+ locations to
+      // distinct ModuleModelRoot for each location. However, need to respect MPS-32138 scenario and delete
+      // any unknown location in `extracted` root. Perhaps, shall pass root.extracted value as makeThisPathThrOnlyOne value
+      // instead of constant 'true'?
+      if (makeThisPathTheOnlyOne) {
+        ListSequence.fromList(ListSequence.fromList(SLinkOperations.getChildren(mroot, LINKS.location$UU44)).where((it) -> it != loc.value).toList()).visitAll((it) -> SNodeOperations.deleteNode(it));
+      }
+      // Note, we don't update selectors (unless completely missing), expect that user could change pattern for an 'extracted' root (that's exactly scenario of MPS-30707)
+      if (ListSequence.fromList(SLinkOperations.getChildren(loc.value, LINKS.selectors$hp_C)).isNotEmpty()) {
         return this;
       }
-      // use BuildFileIncludesSelector to mimic what contentOf_BuildMpsLayout_ModuleSources used to have 
-      SNode selector = SLinkOperations.addNewChild(loc, LINKS.selectors$hp_C, CONCEPTS.BuildFileIncludesSelector$kb);
-      // pattern reflects what we know to be regular MPS models (single-file and per-root persistence) 
+      // use BuildFileIncludesSelector to mimic what contentOf_BuildMpsLayout_ModuleSources used to have
+      SNode selector = SLinkOperations.addNewChild(loc.value, LINKS.selectors$hp_C, CONCEPTS.BuildFileIncludesSelector$kb);
+      // pattern reflects what we know to be regular MPS models (single-file and per-root persistence)
       SPropertyOperations.assign(selector, PROPS.pattern$u5_$, "**/*.mps, **/*.mpsr, **/.model");
       SPropertyOperations.assign(mroot, PROPS.convert2binary$GPhk, true);
       SPropertyOperations.assign(mroot, PROPS.extracted$UUL7, true);
       return this;
     }
 
-    public BuildModuleFacade addJavaSources(SNode p, boolean isGeneratedSources) {
+    public BuildModuleFacade addJavaSources(@Nullable SNode p, boolean isGeneratedSources) {
       if (p == null) {
         return this;
       }
@@ -1224,7 +1229,7 @@ public final class ModuleChecker {
       return this;
     }
 
-    public BuildModuleFacade addTestSources(SNode p, boolean isGeneratedSources) {
+    public BuildModuleFacade addTestSources(@Nullable SNode p, boolean isGeneratedSources) {
       if (p == null) {
         return this;
       }
@@ -1235,10 +1240,31 @@ public final class ModuleChecker {
       ListSequence.fromList(SLinkOperations.getChildren(myModule, LINKS.sources$mT1j)).addElement(testSource);
       return this;
     }
+
+    public BuildModuleFacade addDoc(@Nullable SNode p) {
+      if (p == null) {
+        return this;
+      }
+      SNode doc = SModelOperations.createNewNode(SNodeOperations.getModel(myModule), null, CONCEPTS.BuildMps_ModuleDoc$Ke);
+      SLinkOperations.setTarget(doc, LINKS.files$yhMU, SModelOperations.createNewNode(SNodeOperations.getModel(myModule), null, CONCEPTS.BuildInputFiles$lR));
+      SLinkOperations.setTarget(SLinkOperations.getTarget(doc, LINKS.files$yhMU), LINKS.dir$e6r$, p);
+      SNode selector = SLinkOperations.addNewChild(SLinkOperations.getTarget(doc, LINKS.files$yhMU), LINKS.selectors$hp_C, CONCEPTS.BuildFileIncludesSelector$kb);
+      SPropertyOperations.assign(selector, PROPS.pattern$u5_$, "**/*.html, **/*.css");
+      ListSequence.fromList(SLinkOperations.getChildren(myModule, LINKS.sources$mT1j)).addElement(doc);
+      return this;
+    }
+
+    public BuildModuleFacade addOutputPath(@Nullable SNode p) {
+      // not quite useful method, just to keep all path-related operations close to each other
+      if (p != null) {
+        SLinkOperations.setTarget(myModule, LINKS.output$Hskt, p);
+      }
+      return this;
+    }
   }
 
 
-  private static SNode createBuildMps_ModuleDependencyOnModule_yr5c5g_a0a0a0a31a63(SNode p0) {
+  private static SNode createBuildMps_ModuleDependencyOnModule_yr5c5g_a0a0a0a51a63(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BuildMps_ModuleDependencyOnModule$1C);
     n0.setReferenceTarget(LINKS.module$kGi0, p0);
     n0.setProperty(PROPS.reexport$kN5t, "" + (false));
@@ -1249,8 +1275,10 @@ public final class ModuleChecker {
     /*package*/ static final SProperty compact$3xo1 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x742675d05378e98dL, "compact");
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
     /*package*/ static final SProperty uuid$pC01 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid");
-    /*package*/ static final SProperty doNotCompile$4EF = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x14d3fb6fb84ac614L, "doNotCompile");
     /*package*/ static final SProperty extracted$UUL7 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c195c50L, 0x70ece8f91dd584e6L, "extracted");
+    /*package*/ static final SProperty doNotCompile$4EF = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x14d3fb6fb84ac614L, "doNotCompile");
+    /*package*/ static final SProperty javaCode$OceX = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x28a3c6c6f75d7a0bL, "javaCode");
+    /*package*/ static final SProperty useMakeTask$aRFt = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xc0bde9fc71699d9L, 0x3f7149bc568e8eb4L, "useMakeTask");
     /*package*/ static final SProperty reexport$kN5t = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, 0x48e82d5083341cc1L, "reexport");
     /*package*/ static final SProperty reexport$1qdl = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, 0x52fab202d8f26228L, "reexport");
     /*package*/ static final SProperty reexport$RnCo = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643e8fbL, 0x2c4467914643e8fcL, "reexport");
@@ -1259,6 +1287,43 @@ public final class ModuleChecker {
     /*package*/ static final SProperty convert2binary$GPhk = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c195c50L, 0x70ece8f91dd90968L, "convert2binary");
     /*package*/ static final SProperty isGenerated$EIvr = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334bdeaL, 0x52da585100dba65aL, "isGenerated");
     /*package*/ static final SProperty isGenerated$WkmJ = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x21286cd3b0f27758L, 0x66103f1a46523841L, "isGenerated");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink path$iYKB = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d47f25L, "path");
+    /*package*/ static final SContainmentLink dependencies$j8Lj = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341cb8L, "dependencies");
+    /*package*/ static final SContainmentLink extends$SF0h = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2060eL, 0x4780308f5d23142L, "extends");
+    /*package*/ static final SContainmentLink exports$Qvxv = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2060eL, 0x4780308f5d29d82L, "exports");
+    /*package*/ static final SReferenceLink devkit$uPRS = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2313aL, 0x4780308f5d2313bL, "devkit");
+    /*package*/ static final SReferenceLink language$qqxl = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d29d6aL, 0x4780308f5d29d73L, "language");
+    /*package*/ static final SReferenceLink solution$qxKS = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d29d7aL, 0x4780308f5d29d7bL, "solution");
+    /*package*/ static final SContainmentLink runtime$lxKd = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x2c4467914643be24L, "runtime");
+    /*package*/ static final SReferenceLink solution$3MS = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914644b6e3L, 0x2c4467914644b6e4L, "solution");
+    /*package*/ static final SContainmentLink accessory$q_0N = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x6e2dd2f4c4c3e91dL, "accessory");
+    /*package*/ static final SReferenceLink module$HG6S = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6e2dd2f4c4c3e91aL, 0x6e2dd2f4c4c3e91bL, "module");
+    /*package*/ static final SReferenceLink language$NYXp = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c19032eL, 0x3b60c4a45c190330L, "language");
+    /*package*/ static final SReferenceLink language$udAS = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643d2d2L, 0x2c4467914643d2d3L, "language");
+    /*package*/ static final SReferenceLink devkit$Q_pH = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d5bc49L, 0x4780308f5d5bc4aL, "devkit");
+    /*package*/ static final SContainmentLink dependency$u_ko = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x64bd442e1cf7aaeeL, 0x64bd442e1cf7aaefL, "dependency");
+    /*package*/ static final SReferenceLink language$wAwY = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x7c8000c54bad607cL, 0x2c4467914643d2d3L, "language");
+    /*package*/ static final SReferenceLink module$kGi0 = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, 0x48e82d5083341cb9L, "module");
+    /*package*/ static final SReferenceLink sourceLanguage$A51U = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, 0xc0f2d501dbb734cL, "sourceLanguage");
+    /*package*/ static final SContainmentLink sources$mT1j = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341d31L, "sources");
+    /*package*/ static final SContainmentLink plugins$AsCR = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x5c3f3e2c1ce9ac70L, "plugins");
+    /*package*/ static final SContainmentLink macros$r8_A = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a22L, "macros");
+    /*package*/ static final SReferenceLink module$RnRp = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643e8fbL, 0x2c4467914643e8fdL, "module");
+    /*package*/ static final SContainmentLink dependencies$eBQR = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc38L, 0x263ae7d4319896abL, "dependencies");
+    /*package*/ static final SContainmentLink javaLibLocation$cmtb = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643e8fbL, 0x65b9b06022080842L, "javaLibLocation");
+    /*package*/ static final SContainmentLink path$yTVo = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x3b60c4a45c197e1aL, "path");
+    /*package*/ static final SContainmentLink generator$OCOG = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x7fae147806433827L, "generator");
+    /*package*/ static final SContainmentLink location$UU44 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c195c50L, 0x70ece8f91dd584e3L, "location");
+    /*package*/ static final SContainmentLink dir$e6r$ = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245a6L, "dir");
+    /*package*/ static final SContainmentLink selectors$hp_C = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245f7L, "selectors");
+    /*package*/ static final SContainmentLink folder$URyp = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334bdeaL, 0x48e82d508334bdecL, "folder");
+    /*package*/ static final SContainmentLink path$zL7z = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x1ff930b22643b0ffL, 0x1ff930b22643b100L, "path");
+    /*package*/ static final SContainmentLink folder$ICh7 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x21286cd3b0f27758L, 0x21286cd3b0f28a50L, "folder");
+    /*package*/ static final SContainmentLink files$yhMU = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x18d77bc0b4766badL, 0x18d77bc0b4766c6bL, "files");
+    /*package*/ static final SContainmentLink output$Hskt = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x3f7149bc56b26b5dL, "output");
   }
 
   private static final class CONCEPTS {
@@ -1276,8 +1341,12 @@ public final class ModuleChecker {
     /*package*/ static final SConcept BuildMps_ModuleDependencyExtendLanguage$W = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c19032eL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyExtendLanguage");
     /*package*/ static final SConcept BuildMps_ModuleDependencyUseLanguage$uH = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643d2d2L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyUseLanguage");
     /*package*/ static final SConcept BuildMps_ModuleDependencyOnDevKit$4s = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d5bc49L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyOnDevKit");
+    /*package*/ static final SConcept BuildMps_ModuleDependencyTargetLanguage$oN = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x7c8000c54bad607cL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyTargetLanguage");
     /*package*/ static final SConcept BuildMps_ModuleDependencyOnModule$1C = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyOnModule");
     /*package*/ static final SConcept BuildMps_ModuleModelRoot$Ie = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c195c50L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleModelRoot");
+    /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+    /*package*/ static final SConcept BuildMPSPlugin$YW = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xc0bde9fc71699d9L, "jetbrains.mps.build.mps.structure.BuildMPSPlugin");
+    /*package*/ static final SConcept BuildFolderMacro$mR = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafadd002L, "jetbrains.mps.build.structure.BuildFolderMacro");
     /*package*/ static final SConcept BuildMps_ModuleDependencyOnJavaModule$MK = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643e8fbL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyOnJavaModule");
     /*package*/ static final SConcept BuildSource_JavaDependencyLibrary$TO = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, "jetbrains.mps.build.structure.BuildSource_JavaDependencyLibrary");
     /*package*/ static final SConcept BuildMps_ModuleDependencyJar$Rm = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyJar");
@@ -1285,36 +1354,7 @@ public final class ModuleChecker {
     /*package*/ static final SConcept BuildMps_ModuleJavaSource$M6 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334bdeaL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleJavaSource");
     /*package*/ static final SConcept BuildInputSingleFolder$FH = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x1ff930b22643b0ffL, "jetbrains.mps.build.structure.BuildInputSingleFolder");
     /*package*/ static final SConcept BuildMps_ModuleTestSource$tl = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x21286cd3b0f27758L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleTestSource");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink dependencies$j8Lj = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341cb8L, "dependencies");
-    /*package*/ static final SContainmentLink extends$SF0h = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2060eL, 0x4780308f5d23142L, "extends");
-    /*package*/ static final SContainmentLink exports$Qvxv = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2060eL, 0x4780308f5d29d82L, "exports");
-    /*package*/ static final SReferenceLink devkit$uPRS = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2313aL, 0x4780308f5d2313bL, "devkit");
-    /*package*/ static final SReferenceLink language$qqxl = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d29d6aL, 0x4780308f5d29d73L, "language");
-    /*package*/ static final SReferenceLink solution$qxKS = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d29d7aL, 0x4780308f5d29d7bL, "solution");
-    /*package*/ static final SContainmentLink runtime$lxKd = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x2c4467914643be24L, "runtime");
-    /*package*/ static final SReferenceLink solution$3MS = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914644b6e3L, 0x2c4467914644b6e4L, "solution");
-    /*package*/ static final SContainmentLink accessory$q_0N = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x6e2dd2f4c4c3e91dL, "accessory");
-    /*package*/ static final SReferenceLink module$HG6S = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6e2dd2f4c4c3e91aL, 0x6e2dd2f4c4c3e91bL, "module");
-    /*package*/ static final SReferenceLink language$NYXp = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c19032eL, 0x3b60c4a45c190330L, "language");
-    /*package*/ static final SReferenceLink language$udAS = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643d2d2L, 0x2c4467914643d2d3L, "language");
-    /*package*/ static final SReferenceLink devkit$Q_pH = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d5bc49L, 0x4780308f5d5bc4aL, "devkit");
-    /*package*/ static final SContainmentLink dependency$u_ko = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x64bd442e1cf7aaeeL, 0x64bd442e1cf7aaefL, "dependency");
-    /*package*/ static final SReferenceLink module$kGi0 = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, 0x48e82d5083341cb9L, "module");
-    /*package*/ static final SReferenceLink sourceLanguage$A51U = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, 0xc0f2d501dbb734cL, "sourceLanguage");
-    /*package*/ static final SContainmentLink sources$mT1j = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341d31L, "sources");
-    /*package*/ static final SReferenceLink module$RnRp = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643e8fbL, 0x2c4467914643e8fdL, "module");
-    /*package*/ static final SContainmentLink dependencies$eBQR = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc38L, 0x263ae7d4319896abL, "dependencies");
-    /*package*/ static final SContainmentLink javaLibLocation$cmtb = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643e8fbL, 0x65b9b06022080842L, "javaLibLocation");
-    /*package*/ static final SContainmentLink path$yTVo = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x3b60c4a45c197e1aL, "path");
-    /*package*/ static final SContainmentLink generator$OCOG = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x7fae147806433827L, "generator");
-    /*package*/ static final SContainmentLink location$UU44 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c195c50L, 0x70ece8f91dd584e3L, "location");
-    /*package*/ static final SContainmentLink dir$e6r$ = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245a6L, "dir");
-    /*package*/ static final SContainmentLink selectors$hp_C = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245f7L, "selectors");
-    /*package*/ static final SContainmentLink folder$URyp = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334bdeaL, 0x48e82d508334bdecL, "folder");
-    /*package*/ static final SContainmentLink path$zL7z = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x1ff930b22643b0ffL, 0x1ff930b22643b100L, "path");
-    /*package*/ static final SContainmentLink folder$ICh7 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x21286cd3b0f27758L, 0x21286cd3b0f28a50L, "folder");
+    /*package*/ static final SConcept BuildMps_ModuleDoc$Ke = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x18d77bc0b4766badL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDoc");
+    /*package*/ static final SConcept BuildInputFiles$lR = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, "jetbrains.mps.build.structure.BuildInputFiles");
   }
 }

@@ -7,16 +7,13 @@ import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.baseLanguage.behavior.Tokens__BehaviorDescriptor;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -26,12 +23,11 @@ import jetbrains.mps.internal.collections.runtime.DequeSequence;
 import java.util.LinkedList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SReference;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.BaseQuickFixProvider;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -43,27 +39,21 @@ public class check_UnneededJavaImports_NonTypesystemRule extends AbstractNonType
   public check_UnneededJavaImports_NonTypesystemRule() {
   }
   public void applyRule(final SNode clas, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((AttributeOperations.getAttribute(clas, new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_)) == null)) {
+    if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).get(clas) == null)) {
       return;
     }
 
     final Map<String, SNode> importsByName = MapSequence.fromMap(new HashMap<String, SNode>());
-    ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(clas, new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_)), LINKS.entries$neZo)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SPropertyOperations.getBoolean(it, PROPS.onDemand$Gmdi));
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        MapSequence.fromMap(importsByName).put(Tokens__BehaviorDescriptor.lastToken_id17WpDCYLyrY.invoke(it), it);
+    ListSequence.fromList(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).get(clas), LINKS.entries$neZo)).where((it) -> !(SPropertyOperations.getBoolean(it, PROPS.onDemand$Gmdi))).visitAll((it) -> {
+      MapSequence.fromMap(importsByName).put(Tokens__BehaviorDescriptor.lastToken_id17WpDCYLyrY.invoke(it), it);
 
-      }
     });
 
     boolean unknownPresent = false;
     boolean dynRefsPresent = false;
     Set<SNode> retain = SetSequence.fromSet(new HashSet<SNode>());
 
-    Deque<SNode> stack = DequeSequence.fromDequeNew(new LinkedList<SNode>());
+    Deque<SNode> stack = DequeSequence.fromDeque(new LinkedList<SNode>());
     DequeSequence.fromDequeNew(stack).pushElement(clas);
 
     while (DequeSequence.fromDequeNew(stack).isNotEmpty()) {
@@ -75,56 +65,55 @@ public class check_UnneededJavaImports_NonTypesystemRule extends AbstractNonType
         break;
       }
 
-      Iterable<? extends SReference> refs = node.getReferences();
-      for (SReference ref : Sequence.fromIterable(refs)) {
-        if (!(ref instanceof DynamicReference)) {
+      for (SReference ref : ListSequence.fromList(SNodeOperations.getReferences(node))) {
+        if (!(SLinkOperations.isDynamic(ref))) {
           continue;
         }
 
         dynRefsPresent = true;
 
-        String resolveInfo = ((DynamicReference) ref).getResolveInfo();
+        String resolveInfo = SLinkOperations.getResolveInfo(ref);
         SetSequence.fromSet(retain).addElement(MapSequence.fromMap(importsByName).get(resolveInfo));
       }
     }
 
-    // retain all imports if 'unknown' concepts still present 
+    // retain all imports if 'unknown' concepts still present
     if (unknownPresent) {
       return;
     }
-    // on the other hand, if everything is resolved, remove all imports altogether 
+    // on the other hand, if everything is resolved, remove all imports altogether
     if (dynRefsPresent == false) {
-      // quick-fix 
+      // quick-fix
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(clas, "Java imports annotation is present", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2235632002330933633", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveAllJavaImports_QuickFix", true);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveAllJavaImports_QuickFix", "2235632002330984367", true);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }
       return;
     }
-    // removing only those single-type imports that didn't get into retain set 
-    // quick fix 
+    // removing only those single-type imports that didn't get into retain set
+    // quick fix
     Iterable<SNode> unneeded = Sequence.fromIterable(MapSequence.fromMap(importsByName).values()).subtract(SetSequence.fromSet(retain));
-    if (Sequence.fromIterable(unneeded).count() < ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(clas, new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_)), LINKS.entries$neZo)).count()) {
+    if (Sequence.fromIterable(unneeded).count() < ListSequence.fromList(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).get(clas), LINKS.entries$neZo)).count()) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(clas, "Unneeded java imports present", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2235632002330933240", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveGivenJavaImports_QuickFix", true);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveGivenJavaImports_QuickFix", "2235632002331139627", true);
           intentionProvider.putArgument("toRemove", unneeded);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }
     } else {
-      // removing all imports at once 
+      // removing all imports at once
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(clas, "Java imports annotation is present", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4988876388990444236", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveAllJavaImports_QuickFix", true);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveAllJavaImports_QuickFix", "4988876388990444239", true);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }

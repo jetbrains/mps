@@ -15,8 +15,8 @@ import org.jetbrains.annotations.NotNull;
  * to JUnit command. Of most importance is Java class to start and to receive set of arguments
  * that describe tests to run. Besides, there's extra classpath and jvmArgs that help the process to start.
  * 
- * Note, generally classpath shall include executorClass, though for executors coming with MPS ({@link jetbrains.mps.baseLanguage.unitTest.execution.server.DefaultTestExecutor },
- * {@link jetbrains.mps.baseLanguage.unitTest.execution.server.WithPlatformTestExecutor }, classpath is provided by JUnit command itself (it adds bl.unitTest.execution module 
+ * Note, generally classpath shall include executorClass, though for executors coming with MPS ({@link jetbrains.mps.baselanguage.unitTest.execution.launcher.DefaultTestExecutor },
+ * {@link jetbrains.mps.baselanguage.unitTest.execution.launcher.WithPlatformTestExecutor }, classpath is provided by JUnit command itself (it adds bl.unitTest.execution module 
  * into CP). If the story of TestParameters class evolves, we might want to move this information here (as in fact it's
  * TestParameters instantiating code that knows where executorClass resides). I'd combine this activity with a replacement
  * of Class of executorClass, as JUnit command needs nothing but its FQN, and the only place we use its Class nature is 
@@ -34,13 +34,15 @@ public final class TestParameters {
   private final List<String> myClassPath;
   private final List<String> myAdditionalJvmArgs;
   private final boolean myNeedsMPS;
+  private boolean myCompatibilityMode = false;
 
   public TestParameters(Class<?> executorClass, List<String> classPath, List<String> jvmArgs) {
     this(executorClass, false, classPath, jvmArgs);
   }
 
-  public TestParameters(Class<?> executorClass, List<String> classPath) {
+  public TestParameters(Class<?> executorClass, boolean compatibilityMode, List<String> classPath) {
     this(executorClass, false, classPath, ListSequence.fromList(new LinkedList<String>()));
+    myCompatibilityMode = compatibilityMode;
   }
 
   public TestParameters(Class<?> executorClass, boolean mpsRequired, @Nullable List<String> classPath, @Nullable List<String> jvmArgs) {
@@ -50,7 +52,46 @@ public final class TestParameters {
     myNeedsMPS = mpsRequired;
     if (myNeedsMPS) {
       ListSequence.fromList(myAdditionalJvmArgs).addElement("-DNO_FS_ROOTS_ACCESS_CHECK=true");
-      ListSequence.fromList(myAdditionalJvmArgs).addElement("-Djdk.module.illegalAccess.silent=true");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("-Dintellij.platform.load.app.info.from.resources=true");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/java.io=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/java.lang=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/java.lang.reflect=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/java.net=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/java.nio=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/java.nio.charset=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/java.text=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/java.time=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/java.util=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/java.util.concurrent=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/jdk.internal.vm=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/sun.nio.ch=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/sun.nio.fs=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/sun.security.ssl=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/sun.security.util=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/com.apple.eawt=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/com.apple.eawt.event=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/com.apple.laf=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/java.awt=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/java.awt.dnd.peer=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/java.awt.event=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/java.awt.image=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/java.awt.peer=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/javax.swing=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/javax.swing.text.html=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/sun.awt.datatransfer=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/sun.awt.image=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/sun.awt.windows=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/sun.awt.X11=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/sun.awt=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/sun.font=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/sun.java2d=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/sun.swing=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=jdk.attach/sun.tools.attach=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=jdk.jdi/com.sun.tools.jdi=ALL-UNNAMED");
     }
   }
 
@@ -75,7 +116,10 @@ public final class TestParameters {
     }
     if (other.getExecutorClass().isAssignableFrom(getExecutorClass())) {
       if (!(myNeedsMPS) && other.myNeedsMPS) {
-        // tests that don't need MPS can run from within MPS instance, but not other way round. 
+        // tests that don't need MPS can run from within MPS instance, but not other way round.
+        return false;
+      }
+      if (myCompatibilityMode != other.myCompatibilityMode) {
         return false;
       }
       if (ListSequence.fromList(myClassPath).containsSequence(ListSequence.fromList(other.getClassPath()))) {
@@ -93,5 +137,13 @@ public final class TestParameters {
    */
   public boolean needsMPS() {
     return myNeedsMPS;
+  }
+
+  /**
+   * Returns true if the tests should be run in a "compatibility mode", such as using one the obsolete frameworks
+   * like junit/junit4. Otherwise test should be launched with JUnit5 platform.
+   */
+  public boolean useCompatibilityMode() {
+    return myCompatibilityMode;
   }
 }

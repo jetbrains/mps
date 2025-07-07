@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <root nodeRef="r:38928266-eb4a-4a90-9bf2-f59f52019600(jetbrains.mps.dataflow.rttest@tests)/2568469341009300766">
+    <file name="ProgramTest.java">
+      <node id="2568469341009300772" at="15,39,16,93" concept="2" />
+      <node id="2568469341009300780" at="16,93,17,79" concept="0" />
+      <node id="2568469341009300790" at="20,39,21,129" concept="2" />
+      <node id="2568469341009300801" at="21,129,22,109" concept="0" />
+      <node id="2568469341009300811" at="25,42,26,138" concept="2" />
+      <node id="2568469341009300827" at="29,35,30,111" concept="2" />
+      <node id="2568469341009300843" at="33,29,34,56" concept="0" />
+      <node id="2568469341009300855" at="37,35,38,60" concept="0" />
+      <node id="2568469341009300867" at="41,34,42,59" concept="0" />
+      <node id="2568469341009300877" at="45,29,46,84" concept="2" />
+      <node id="2568469341009300883" at="46,84,47,101" concept="0" />
+      <node id="2568469341009300895" at="50,33,51,74" concept="2" />
+      <node id="2568469341009300900" at="51,74,52,93" concept="0" />
+      <node id="2568469341009300912" at="55,49,56,84" concept="2" />
+      <node id="2568469341009300918" at="56,84,57,77" concept="0" />
+      <node id="2568469341009300928" at="60,56,61,111" concept="2" />
+      <node id="2568469341009300936" at="61,111,62,62" concept="0" />
+      <node id="2568469341009300946" at="65,34,66,78" concept="2" />
+      <node id="2568469341009300952" at="66,78,67,114" concept="0" />
+      <node id="2568469341009300966" at="70,35,71,79" concept="2" />
+      <node id="2568469341009300972" at="71,79,72,114" concept="0" />
+      <node id="2568469341009300986" at="75,52,76,93" concept="2" />
+      <node id="2568469341009300994" at="76,93,77,64" concept="0" />
+      <node id="2568469341009300807" at="24,0,28,0" concept="1" trace="tryFinallyInFinallyBlock#()V" />
+      <node id="2568469341009300823" at="28,0,32,0" concept="1" trace="retInFinallyBlock#()V" />
+      <node id="2568469341009300837" at="32,0,36,0" concept="1" trace="danglingTry#()V" />
+      <node id="2568469341009300849" at="36,0,40,0" concept="1" trace="unexpectedFinally#()V" />
+      <node id="2568469341009300861" at="40,0,44,0" concept="1" trace="unexpectedEndTry#()V" />
+      <node id="2568469341009300768" at="14,0,19,0" concept="1" trace="simpleProgramBuilding#()V" />
+      <node id="2568469341009300786" at="19,0,24,0" concept="1" trace="programWithTryFinally#()V" />
+      <node id="2568469341009300873" at="44,0,49,0" concept="1" trace="unreachable#()V" />
+      <node id="2568469341009300891" at="49,0,54,0" concept="1" trace="expectedReturns#()V" />
+      <node id="2568469341009300908" at="54,0,59,0" concept="1" trace="expectedReturnInUnreachableCode#()V" />
+      <node id="2568469341009300924" at="59,0,64,0" concept="1" trace="noExpectedReturnInTryFinallyWithReturn#()V" />
+      <node id="2568469341009300942" at="64,0,69,0" concept="1" trace="unitializedReads#()V" />
+      <node id="2568469341009300962" at="69,0,74,0" concept="1" trace="unusedAssignments#()V" />
+      <node id="2568469341009300982" at="74,0,79,0" concept="1" trace="writeWithReadIsNotUnusedAssignment#()V" />
+      <scope id="2568469341009300809" at="25,42,26,138">
+        <var name="program" id="2568469341009300810" />
+      </scope>
+      <scope id="2568469341009300825" at="29,35,30,111">
+        <var name="program" id="2568469341009300826" />
+      </scope>
+      <scope id="2568469341009300842" at="33,29,34,56" />
+      <scope id="2568469341009300854" at="37,35,38,60" />
+      <scope id="2568469341009300866" at="41,34,42,59" />
+      <scope id="2568469341009300770" at="15,39,17,79">
+        <var name="program" id="2568469341009300771" />
+      </scope>
+      <scope id="2568469341009300788" at="20,39,22,109">
+        <var name="program" id="2568469341009300789" />
+      </scope>
+      <scope id="2568469341009300875" at="45,29,47,101">
+        <var name="program" id="2568469341009300876" />
+      </scope>
+      <scope id="2568469341009300893" at="50,33,52,93">
+        <var name="program" id="2568469341009300894" />
+      </scope>
+      <scope id="2568469341009300910" at="55,49,57,77">
+        <var name="program" id="2568469341009300911" />
+      </scope>
+      <scope id="2568469341009300926" at="60,56,62,62">
+        <var name="program" id="2568469341009300927" />
+      </scope>
+      <scope id="2568469341009300944" at="65,34,67,114">
+        <var name="program" id="2568469341009300945" />
+      </scope>
+      <scope id="2568469341009300964" at="70,35,72,114">
+        <var name="program" id="2568469341009300965" />
+      </scope>
+      <scope id="2568469341009300984" at="75,52,77,64">
+        <var name="program" id="2568469341009300985" />
+      </scope>
+      <scope id="2568469341009300807" at="24,0,28,0" />
+      <scope id="2568469341009300823" at="28,0,32,0" />
+      <scope id="2568469341009300837" at="32,0,36,0" />
+      <scope id="2568469341009300849" at="36,0,40,0" />
+      <scope id="2568469341009300861" at="40,0,44,0" />
+      <scope id="2568469341009300768" at="14,0,19,0" />
+      <scope id="2568469341009300786" at="19,0,24,0" />
+      <scope id="2568469341009300873" at="44,0,49,0" />
+      <scope id="2568469341009300891" at="49,0,54,0" />
+      <scope id="2568469341009300908" at="54,0,59,0" />
+      <scope id="2568469341009300924" at="59,0,64,0" />
+      <scope id="2568469341009300942" at="64,0,69,0" />
+      <scope id="2568469341009300962" at="69,0,74,0" />
+      <scope id="2568469341009300982" at="74,0,79,0" />
+      <unit id="2568469341009300766" at="13,0,80,0" name="jetbrains.mps.dataflow.rttest.ProgramTest" />
+    </file>
+  </root>
+  <root nodeRef="r:38928266-eb4a-4a90-9bf2-f59f52019600(jetbrains.mps.dataflow.rttest@tests)/7866188537679791403">
+    <file name="StructuralProgramBuilderTest.java">
+      <node id="7866188537679791409" at="19,24,20,45" concept="2" />
+      <node id="7866188537679791413" at="20,45,21,69" concept="2" />
+      <node id="7866188537679791418" at="21,69,22,50" concept="0" />
+      <node id="7866188537679791428" at="25,30,26,167" concept="2" />
+      <node id="7866188537679791439" at="26,167,27,69" concept="2" />
+      <node id="7866188537679791444" at="27,69,28,98" concept="0" />
+      <node id="7866188537679791454" at="31,33,32,126" concept="2" />
+      <node id="7866188537679791463" at="32,126,33,69" concept="2" />
+      <node id="7866188537679791468" at="33,69,34,86" concept="0" />
+      <node id="7866188537679791478" at="37,26,38,104" concept="2" />
+      <node id="7866188537679791486" at="38,104,39,69" concept="2" />
+      <node id="7866188537679791491" at="39,69,40,72" concept="0" />
+      <node id="7866188537679791405" at="18,0,24,0" concept="1" trace="simple#()V" />
+      <node id="7866188537679791424" at="24,0,30,0" concept="1" trace="ifExpression#()V" />
+      <node id="7866188537679791450" at="30,0,36,0" concept="1" trace="whileExpression#()V" />
+      <node id="7866188537679791474" at="36,0,42,0" concept="1" trace="sequence#()V" />
+      <scope id="7866188537679791407" at="19,24,22,50">
+        <var name="p" id="7866188537679791412" />
+        <var name="program" id="7866188537679791408" />
+      </scope>
+      <scope id="7866188537679791426" at="25,30,28,98">
+        <var name="p" id="7866188537679791438" />
+        <var name="program" id="7866188537679791427" />
+      </scope>
+      <scope id="7866188537679791452" at="31,33,34,86">
+        <var name="p" id="7866188537679791462" />
+        <var name="program" id="7866188537679791453" />
+      </scope>
+      <scope id="7866188537679791476" at="37,26,40,72">
+        <var name="p" id="7866188537679791485" />
+        <var name="program" id="7866188537679791477" />
+      </scope>
+      <scope id="7866188537679791405" at="18,0,24,0" />
+      <scope id="7866188537679791424" at="24,0,30,0" />
+      <scope id="7866188537679791450" at="30,0,36,0" />
+      <scope id="7866188537679791474" at="36,0,42,0" />
+      <unit id="7866188537679791403" at="17,0,43,0" name="jetbrains.mps.dataflow.rttest.StructuralProgramBuilderTest" />
+    </file>
+  </root>
+  <root nodeRef="r:38928266-eb4a-4a90-9bf2-f59f52019600(jetbrains.mps.dataflow.rttest@tests)/7866188537679791503">
+    <file name="InitializedVariablesAnalysisTest.java">
+      <node id="7866188537679791509" at="15,24,16,73" concept="2" />
+      <node id="7866188537679791516" at="16,73,17,82" concept="2" />
+      <node id="7866188537679791521" at="17,82,18,75" concept="0" />
+      <node id="7866188537679791531" at="21,34,22,87" concept="2" />
+      <node id="7866188537679791540" at="22,87,23,82" concept="2" />
+      <node id="7866188537679791545" at="23,82,24,90" concept="0" />
+      <node id="7866188537679791555" at="27,50,28,114" concept="2" />
+      <node id="7866188537679791568" at="28,114,29,82" concept="2" />
+      <node id="7866188537679791573" at="29,82,30,122" concept="0" />
+      <node id="7866188537679791583" at="33,23,34,111" concept="2" />
+      <node id="7866188537679791595" at="34,111,35,82" concept="2" />
+      <node id="7866188537679791600" at="35,82,36,118" concept="0" />
+      <node id="7866188537679791610" at="39,31,40,95" concept="2" />
+      <node id="7866188537679791620" at="40,95,41,82" concept="2" />
+      <node id="7866188537679791625" at="41,82,42,102" concept="0" />
+      <node id="7866188537679791505" at="14,0,20,0" concept="1" trace="simple#()V" />
+      <node id="7866188537679791527" at="20,0,26,0" concept="1" trace="mayBeInitialized#()V" />
+      <node id="7866188537679791551" at="26,0,32,0" concept="1" trace="twoBranchesWhereCanBeInitialized#()V" />
+      <node id="7866188537679791579" at="32,0,38,0" concept="1" trace="cycle#()V" />
+      <node id="7866188537679791606" at="38,0,44,0" concept="1" trace="emptyEntrySet#()V" />
+      <scope id="7866188537679791507" at="15,24,18,75">
+        <var name="p" id="7866188537679791508" />
+        <var name="result" id="7866188537679791515" />
+      </scope>
+      <scope id="7866188537679791529" at="21,34,24,90">
+        <var name="p" id="7866188537679791530" />
+        <var name="result" id="7866188537679791539" />
+      </scope>
+      <scope id="7866188537679791553" at="27,50,30,122">
+        <var name="p" id="7866188537679791554" />
+        <var name="result" id="7866188537679791567" />
+      </scope>
+      <scope id="7866188537679791581" at="33,23,36,118">
+        <var name="p" id="7866188537679791582" />
+        <var name="result" id="7866188537679791594" />
+      </scope>
+      <scope id="7866188537679791608" at="39,31,42,102">
+        <var name="p" id="7866188537679791609" />
+        <var name="result" id="7866188537679791619" />
+      </scope>
+      <scope id="7866188537679791505" at="14,0,20,0" />
+      <scope id="7866188537679791527" at="20,0,26,0" />
+      <scope id="7866188537679791551" at="26,0,32,0" />
+      <scope id="7866188537679791579" at="32,0,38,0" />
+      <scope id="7866188537679791606" at="38,0,44,0" />
+      <unit id="7866188537679791503" at="13,0,45,0" name="jetbrains.mps.dataflow.rttest.InitializedVariablesAnalysisTest" />
+    </file>
+  </root>
+  <root nodeRef="r:38928266-eb4a-4a90-9bf2-f59f52019600(jetbrains.mps.dataflow.rttest@tests)/7866188537679791640">
+    <file name="LivenessAnalysisTest.java">
+      <node id="7866188537679791646" at="15,31,16,101" concept="2" />
+      <node id="7866188537679791657" at="16,101,17,78" concept="2" />
+      <node id="7866188537679791662" at="17,78,18,115" concept="0" />
+      <node id="7866188537679791672" at="21,27,22,87" concept="2" />
+      <node id="7866188537679791681" at="22,87,23,78" concept="2" />
+      <node id="7866188537679791686" at="23,78,24,96" concept="0" />
+      <node id="7866188537679791696" at="27,31,28,100" concept="2" />
+      <node id="7866188537679791707" at="28,100,29,78" concept="2" />
+      <node id="7866188537679791712" at="29,78,30,122" concept="0" />
+      <node id="7866188537679791642" at="14,0,20,0" concept="1" trace="linearProgram#()V" />
+      <node id="7866188537679791668" at="20,0,26,0" concept="1" trace="overwrite#()V" />
+      <node id="7866188537679791692" at="26,0,32,0" concept="1" trace="cyclicProgram#()V" />
+      <scope id="7866188537679791644" at="15,31,18,115">
+        <var name="analysisResult" id="7866188537679791656" />
+        <var name="p" id="7866188537679791645" />
+      </scope>
+      <scope id="7866188537679791670" at="21,27,24,96">
+        <var name="analysisResult" id="7866188537679791680" />
+        <var name="p" id="7866188537679791671" />
+      </scope>
+      <scope id="7866188537679791694" at="27,31,30,122">
+        <var name="analysisResult" id="7866188537679791706" />
+        <var name="p" id="7866188537679791695" />
+      </scope>
+      <scope id="7866188537679791642" at="14,0,20,0" />
+      <scope id="7866188537679791668" at="20,0,26,0" />
+      <scope id="7866188537679791692" at="26,0,32,0" />
+      <unit id="7866188537679791640" at="13,0,33,0" name="jetbrains.mps.dataflow.rttest.LivenessAnalysisTest" />
+    </file>
+  </root>
+  <root nodeRef="r:38928266-eb4a-4a90-9bf2-f59f52019600(jetbrains.mps.dataflow.rttest@tests)/7866188537679791727">
+    <file name="ReachingDefinitionsTest.java">
+      <node id="7866188537679791733" at="16,30,17,88" concept="2" />
+      <node id="7866188537679791742" at="17,88,18,96" concept="2" />
+      <node id="7866188537679791748" at="18,96,19,118" concept="0" />
+      <node id="7866188537679791758" at="22,23,23,102" concept="2" />
+      <node id="7866188537679791769" at="23,102,24,96" concept="2" />
+      <node id="7866188537679791775" at="24,96,25,192" concept="0" />
+      <node id="7866188537679791729" at="15,0,21,0" concept="1" trace="simpleLinear#()V" />
+      <node id="7866188537679791754" at="21,0,27,0" concept="1" trace="cycle#()V" />
+      <scope id="7866188537679791731" at="16,30,19,118">
+        <var name="p" id="7866188537679791732" />
+        <var name="result" id="7866188537679791741" />
+      </scope>
+      <scope id="7866188537679791756" at="22,23,25,192">
+        <var name="p" id="7866188537679791757" />
+        <var name="result" id="7866188537679791768" />
+      </scope>
+      <scope id="7866188537679791729" at="15,0,21,0" />
+      <scope id="7866188537679791754" at="21,0,27,0" />
+      <unit id="7866188537679791727" at="14,0,28,0" name="jetbrains.mps.dataflow.rttest.ReachingDefinitionsTest" />
+    </file>
+  </root>
+  <root nodeRef="r:38928266-eb4a-4a90-9bf2-f59f52019600(jetbrains.mps.dataflow.rttest@tests)/7866188537679792034">
+    <file name="ReachabilityAnaysisTest.java">
+      <node id="7866188537679792040" at="14,24,15,96" concept="2" />
+      <node id="7866188537679792049" at="15,96,16,81" concept="2" />
+      <node id="7866188537679792054" at="16,81,17,103" concept="0" />
+      <node id="7866188537679792064" at="20,34,21,105" concept="2" />
+      <node id="7866188537679792073" at="21,105,22,75" concept="2" />
+      <node id="7866188537679792078" at="22,75,23,119" concept="0" />
+      <node id="7866188537679792088" at="26,44,27,105" concept="2" />
+      <node id="7866188537679792097" at="27,105,28,75" concept="2" />
+      <node id="7866188537679792102" at="28,75,29,119" concept="0" />
+      <node id="7866188537679792112" at="32,41,33,115" concept="2" />
+      <node id="7866188537679792122" at="33,115,34,75" concept="2" />
+      <node id="7866188537679792127" at="34,75,35,133" concept="0" />
+      <node id="7866188537679792137" at="38,29,39,162" concept="2" />
+      <node id="7866188537679792151" at="39,162,40,75" concept="2" />
+      <node id="7866188537679792156" at="40,75,41,193" concept="0" />
+      <node id="7866188537679792036" at="13,0,19,0" concept="1" trace="simple#()V" />
+      <node id="7866188537679792060" at="19,0,25,0" concept="1" trace="simpleTryFinally#()V" />
+      <node id="7866188537679792084" at="25,0,31,0" concept="1" trace="simpleTryFinallyWithReturn#()V" />
+      <node id="7866188537679792108" at="31,0,37,0" concept="1" trace="unreachableAfterFinally#()V" />
+      <node id="7866188537679792133" at="37,0,43,0" concept="1" trace="nestedTries#()V" />
+      <scope id="7866188537679792038" at="14,24,17,103">
+        <var name="program" id="7866188537679792039" />
+        <var name="result" id="7866188537679792048" />
+      </scope>
+      <scope id="7866188537679792062" at="20,34,23,119">
+        <var name="p" id="7866188537679792063" />
+        <var name="result" id="7866188537679792072" />
+      </scope>
+      <scope id="7866188537679792086" at="26,44,29,119">
+        <var name="p" id="7866188537679792087" />
+        <var name="result" id="7866188537679792096" />
+      </scope>
+      <scope id="7866188537679792110" at="32,41,35,133">
+        <var name="p" id="7866188537679792111" />
+        <var name="result" id="7866188537679792121" />
+      </scope>
+      <scope id="7866188537679792135" at="38,29,41,193">
+        <var name="p" id="7866188537679792136" />
+        <var name="result" id="7866188537679792150" />
+      </scope>
+      <scope id="7866188537679792036" at="13,0,19,0" />
+      <scope id="7866188537679792060" at="19,0,25,0" />
+      <scope id="7866188537679792084" at="25,0,31,0" />
+      <scope id="7866188537679792108" at="31,0,37,0" />
+      <scope id="7866188537679792133" at="37,0,43,0" />
+      <unit id="7866188537679792034" at="12,0,44,0" name="jetbrains.mps.dataflow.rttest.ReachabilityAnaysisTest" />
+    </file>
+  </root>
+</debug-info>
+

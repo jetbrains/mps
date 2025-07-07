@@ -22,7 +22,6 @@ import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
@@ -33,14 +32,14 @@ import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Item;
-import java.util.function.Function;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.action.NodeSubstituteActionWrapper;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.nodeEditor.menus.EditorMenuTraceInfoImpl;
-import java.util.stream.Collectors;
 import jetbrains.mps.lang.editor.generator.internal.PrimaryReplaceChildMenuCellMenuPart;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceChild_CustomChildConcept;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceChild_Item;
+import java.util.stream.Collectors;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -150,20 +149,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public RefNodeList_generic_cellMenu_ugmp9z_a0a0() {
     }
 
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-      boolean var = operationContext != null || node != null || editorContext != null;
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
+      boolean var = node != null || editorContext != null;
       return (var ? null : null);
+
     }
-    protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
+    protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      this.handleAction_impl((String) parameterObject, node, model, editorContext);
     }
-    public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      boolean var = parameterObject != null || node != null || model != null || editorContext != null || operationContext != null;
+    private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      boolean var = parameterObject != null || node != null || model != null || editorContext != null;
       if (var) {
-        // just usage of var 
+        // just usage of var
       }
     }
-    public boolean isReferentPresentation() {
+    protected boolean isReferentPresentation() {
       return false;
     }
 
@@ -176,27 +176,24 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public RefNodeList_generic_cellMenu_ugmp9z_b0a0() {
     }
 
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
       return null;
+
     }
-    protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
+    protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      this.handleAction_impl((String) parameterObject, node, model, editorContext);
     }
-    public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
     }
-    public boolean isReferentPresentation() {
+    protected boolean isReferentPresentation() {
       return false;
     }
-    public String getMatchingText(Object parameterObject) {
-      return this.getMatchingText_internal((String) parameterObject);
-    }
-    public String getMatchingText_internal(String parameterObject) {
+    protected String getMatchingText(Object _parameterObject) {
+      final String parameterObject = (String) _parameterObject;
       return String.valueOf(parameterObject);
     }
-    public String getDescriptionText(Object parameterObject) {
-      return this.getDescriptionText_internal((String) parameterObject);
-    }
-    public String getDescriptionText_internal(String parameterObject) {
+    protected String getDescriptionText(Object _parameterObject) {
+      final String parameterObject = (String) _parameterObject;
       return String.valueOf(parameterObject);
     }
 
@@ -208,27 +205,17 @@ import org.jetbrains.mps.openapi.language.SConcept;
   public static class RefNodeList_children_cellMenu_ugmp9z_c0a0 extends AbstractCellMenuPart_ReplaceChild_Group {
     public RefNodeList_children_cellMenu_ugmp9z_c0a0() {
     }
-    public List<?> createParameterObjects(SNode node, SNode currentChild, SAbstractConcept defaultConceptOfChild, IOperationContext operationContext, EditorContext editorContext) {
-      return createParameterObjects_impl(node, currentChild, defaultConceptOfChild.getDeclarationNode(), defaultConceptOfChild, operationContext, editorContext);
-    }
-
-    private List<?> createParameterObjects_impl(SNode node, SNode currentChild, SNode defaultConceptOfChild, SAbstractConcept defaultChildConcept, IOperationContext operationContext, EditorContext editorContext) {
-      boolean var = operationContext != null || node != null || currentChild != null || defaultChildConcept.getDeclarationNode() != null;
+    protected List<?> createParameterObjects(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, EditorContext editorContext) {
+      boolean var = node != null || currentChild != null || defaultChildConcept != null;
       return (var ? null : null);
     }
-
-    public boolean isCustomCreateChildNode() {
+    protected boolean isCustomCreateChildNode() {
       return true;
     }
-    public SNode customCreateChildNode(Object parameterObject, SNode node, SNode currentChild, SAbstractConcept defaultConceptOfChild, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      return this.customCreateChildNode_impl((String) parameterObject, node, currentChild, defaultConceptOfChild.getDeclarationNode(), defaultConceptOfChild, model, operationContext, editorContext);
-    }
-    public SNode customCreateChildNode_impl(String parameterObject, SNode node, SNode currentChild, SNode defaultConceptOfChild, SAbstractConcept defaultChildConcept, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      boolean var = operationContext != null || defaultChildConcept.getDeclarationNode() != null || model != null || node != null || currentChild != null || parameterObject != null;
+    protected SNode customCreateChildNode(Object _parameterObject, SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model, EditorContext editorContext) {
+      String parameterObject = (String) _parameterObject;
+      boolean var = defaultChildConcept != null || model != null || node != null || currentChild != null || parameterObject != null;
       return (var ? null : null);
-    }
-    public boolean isReferentPresentation() {
-      return false;
     }
 
     @Override
@@ -239,27 +226,15 @@ import org.jetbrains.mps.openapi.language.SConcept;
   public static class RefNodeList_children_cellMenu_ugmp9z_d0a0 extends AbstractCellMenuPart_ReplaceChild_Group {
     public RefNodeList_children_cellMenu_ugmp9z_d0a0() {
     }
-    public List<?> createParameterObjects(SNode node, SNode currentChild, SAbstractConcept defaultConceptOfChild, IOperationContext operationContext, EditorContext editorContext) {
-      return createParameterObjects_impl(node, currentChild, defaultConceptOfChild.getDeclarationNode(), defaultConceptOfChild, operationContext, editorContext);
-    }
-
-    private List<?> createParameterObjects_impl(SNode node, SNode currentChild, SNode defaultConceptOfChild, SAbstractConcept defaultChildConcept, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<?> createParameterObjects(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, EditorContext editorContext) {
       return null;
     }
-
-    public boolean isReferentPresentation() {
-      return false;
-    }
-    public String getMatchingText(Object parameterObject) {
-      return this.getMatchingText_internal((String) parameterObject);
-    }
-    public String getMatchingText_internal(String parameterObject) {
+    protected String getMatchingText(Object _parameterObject) {
+      final String parameterObject = (String) _parameterObject;
       return String.valueOf(parameterObject);
     }
-    public String getDescriptionText(Object parameterObject) {
-      return this.getDescriptionText_internal((String) parameterObject);
-    }
-    public String getDescriptionText_internal(String parameterObject) {
+    protected String getDescriptionText(Object _parameterObject) {
+      final String parameterObject = (String) _parameterObject;
       return String.valueOf(parameterObject);
     }
 
@@ -271,19 +246,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
   public static class RefNodeList_customReplace_cellMenu_ugmp9z_e0a0 extends AbstractCellMenuPart_ReplaceNode_Group {
     public RefNodeList_customReplace_cellMenu_ugmp9z_e0a0() {
     }
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-      boolean var = operationContext != null || node != null || editorContext != null;
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
+      boolean var = node != null || editorContext != null;
       return (var ? null : null);
     }
-    public SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      return createReplacementNode_impl((String) parameterObject, node, model, operationContext, editorContext);
-    }
-    public SNode createReplacementNode_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      boolean var = parameterObject != null || node != null || model != null || editorContext != null || operationContext != null;
+    protected SNode createReplacementNode(Object _parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      final String parameterObject = (String) _parameterObject;
+      boolean var = parameterObject != null || node != null || model != null || editorContext != null;
       return (var ? null : null);
-    }
-    public boolean isReferentPresentation() {
-      return false;
     }
     @Override
     protected EditorMenuDescriptor getEditorMenuDescriptor(Object parameterObject) {
@@ -294,28 +264,19 @@ import org.jetbrains.mps.openapi.language.SConcept;
   public static class RefNodeList_customReplace_cellMenu_ugmp9z_f0a0 extends AbstractCellMenuPart_ReplaceNode_Group {
     public RefNodeList_customReplace_cellMenu_ugmp9z_f0a0() {
     }
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
       return null;
     }
-    public SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      return createReplacementNode_impl((String) parameterObject, node, model, operationContext, editorContext);
-    }
-    public SNode createReplacementNode_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected SNode createReplacementNode(Object _parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      final String parameterObject = (String) _parameterObject;
       return null;
     }
-    public boolean isReferentPresentation() {
-      return false;
-    }
-    public String getMatchingText(Object parameterObject) {
-      return this.getMatchingText_internal((String) parameterObject);
-    }
-    public String getMatchingText_internal(String parameterObject) {
+    protected String getMatchingText(Object _parameterObject) {
+      final String parameterObject = (String) _parameterObject;
       return String.valueOf(parameterObject);
     }
-    public String getDescriptionText(Object parameterObject) {
-      return this.getDescriptionText_internal((String) parameterObject);
-    }
-    public String getDescriptionText_internal(String parameterObject) {
+    protected String getDescriptionText(Object _parameterObject) {
+      final String parameterObject = (String) _parameterObject;
       return String.valueOf(parameterObject);
     }
     @Override
@@ -338,26 +299,22 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     @Override
     public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-      List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-      Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-        public SubstituteAction apply(SubstituteAction action) {
-          return new NodeSubstituteActionWrapper(action) {
-            @Override
-            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-              result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "53454498079782450")));
-              return result;
-            }
-          };
-        }
-      };
-      return actions.stream().map(mapper).collect(Collectors.toList());
+      return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
+        return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
+          @Override
+          public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+            EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+            result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "53454498079782450")));
+            return result;
+          }
+        };
+      }).toList();
     }
 
-    public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      boolean var = node != null || model != null || editorContext != null || operationContext != null;
+    protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
+      boolean var = node != null || model != null || editorContext != null;
       if (var) {
-        // just usage of var 
+        // just usage of var
       }
     }
     public String getMatchingText() {
@@ -376,11 +333,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
   public static class RefNodeList_children_cellMenu_ugmp9z_j0a0 extends AbstractCellMenuPart_ReplaceChild_CustomChildConcept {
     public RefNodeList_children_cellMenu_ugmp9z_j0a0() {
     }
-    public SNode getConceptOfChild(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, IOperationContext operationContext, EditorContext editorContext) {
-      return getConceptOfChild_impl(node, currentChild, defaultChildConcept.getDeclarationNode(), defaultChildConcept, operationContext, editorContext);
-    }
-    private SNode getConceptOfChild_impl(SNode node, SNode currentChild, SNode defaultConceptOfChild, SAbstractConcept defaultChildConcept, IOperationContext operationContext, EditorContext editorContext) {
-      boolean var = currentChild != null || defaultChildConcept.getDeclarationNode() != null || node != null || operationContext != null;
+    protected SNode getConceptOfChild(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, EditorContext editorContext) {
+      boolean var = currentChild != null || defaultChildConcept != null || node != null;
       return (var ? null : null);
     }
     @Override
@@ -393,20 +347,16 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     @Override
     public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-      List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-      Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-        public SubstituteAction apply(SubstituteAction action) {
-          return new NodeSubstituteActionWrapper(action) {
-            @Override
-            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-              result.setDescriptor(new EditorMenuDescriptorBase("replace child item: " + RefNodeList_children_cellMenu_ugmp9z_k0a0.this.getMatchingText(), new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "53454498079871301")));
-              return result;
-            }
-          };
-        }
-      };
-      return actions.stream().map(mapper).collect(Collectors.toList());
+      return super.createActions(cellContext, editorContext).stream().map((action) -> {
+        return new NodeSubstituteActionWrapper(action) {
+          @Override
+          public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+            EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+            result.setDescriptor(new EditorMenuDescriptorBase("replace child item: " + RefNodeList_children_cellMenu_ugmp9z_k0a0.this.getMatchingText(), new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "53454498079871301")));
+            return result;
+          }
+        };
+      }).collect(Collectors.toList());
     }
 
 
@@ -416,14 +366,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public String getDescriptionText() {
       return "text";
     }
-    public boolean isCustomCreateChildNode() {
+    protected boolean isCustomCreateChildNode() {
       return true;
     }
-    public SNode customCreateChildNode(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      return customCreateChildNode_impl(node, currentChild, defaultChildConcept.getDeclarationNode(), defaultChildConcept, model, operationContext, editorContext);
-    }
-    private SNode customCreateChildNode_impl(SNode node, SNode currentChild, SNode defaultConceptOfChild, SAbstractConcept defaultChildConcept, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      boolean var = currentChild != null || defaultChildConcept.getDeclarationNode() != null || operationContext != null || model != null || node != null;
+    protected SNode customCreateChildNode(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model, EditorContext editorContext) {
+      boolean var = currentChild != null || defaultChildConcept != null || model != null || node != null;
       return (var ? null : null);
     }
   }

@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -27,10 +26,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class BaseMappingRule__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, "jetbrains.mps.lang.generator.structure.BaseMappingRule");
 
-  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIMiw").build();
-  public static final SMethod<SAbstractConcept> getTemplateType_idhEwJbaf = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl((Class<SAbstractConcept>) ((Class) Object.class))).name("getTemplateType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwJbaf").build();
-  /*package*/ static final SMethod<String> getMappingLabelText_idhEwJbak = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMappingLabelText").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("hEwJbak").build();
-  public static final SMethod<Boolean> hasMappingLabel_id3uqP$qKDAVt = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasMappingLabel").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3uqP$qKDAVt").build();
+  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  public static final SMethod<SAbstractConcept> getTemplateType_idhEwJbaf = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl((Class<SAbstractConcept>) ((Class) Object.class))).name("getTemplateType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877498511L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
+  /*package*/ static final SMethod<String> getMappingLabelText_idhEwJbak = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMappingLabelText").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1213877498516L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
+  public static final SMethod<Boolean> hasMappingLabel_id3uqP$qKDAVt = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasMappingLabel").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4006750417599229661L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getTemplateType_idhEwJbaf, getMappingLabelText_idhEwJbak, hasMappingLabel_id3uqP$qKDAVt);
 
@@ -57,7 +56,7 @@ public final class BaseMappingRule__BehaviorDescriptor extends BaseBHDescriptor 
     return null;
   }
   /*package*/ static boolean hasMappingLabel_id3uqP$qKDAVt(@NotNull SNode __thisNode__) {
-    // to avoid coding same code that check non-empty mapping label 
+    // to avoid coding same code that check non-empty mapping label
     return (SLinkOperations.getTarget(__thisNode__, LINKS.labelDeclaration$4kKU) != null) && isNotEmptyString(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.labelDeclaration$4kKU), PROPS.name$MnvL));
   }
 

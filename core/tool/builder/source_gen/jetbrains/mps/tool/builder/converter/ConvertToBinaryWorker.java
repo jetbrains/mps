@@ -23,13 +23,13 @@ import java.io.IOException;
 import org.jetbrains.mps.openapi.persistence.ModelSaveException;
 import jetbrains.mps.extapi.persistence.DataSourceBase;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
+import org.jetbrains.annotations.NotNull;
 import java.io.InputStream;
 import java.io.FileInputStream;
 import java.io.OutputStream;
 import java.io.FileOutputStream;
-import org.jetbrains.annotations.NotNull;
 
-@GeneratedClass(node = "r:39e596a9-ed2d-4e2f-b055-9544a1f3a151(jetbrains.mps.tool.builder.converter)/7841036633975757760", model = "r:39e596a9-ed2d-4e2f-b055-9544a1f3a151(jetbrains.mps.tool.builder.converter)")
+@GeneratedClass(nodeId = "7841036633975757760", model = "r:39e596a9-ed2d-4e2f-b055-9544a1f3a151(jetbrains.mps.tool.builder.converter)")
 public final class ConvertToBinaryWorker {
   private final Map<File, File> myMap;
   private final Boolean myStripImplementation;
@@ -56,7 +56,7 @@ public final class ConvertToBinaryWorker {
     final PersistenceFacade pf = PersistenceFacade.getInstance();
     ModelFactory modelFactory = pf.getModelFactory(FileUtil.getExtension(sourceFile.getName()));
     if (modelFactory == null) {
-      // assuming user knows what he's doing and supplied us with a model file, try default factory. 
+      // assuming user knows what he's doing and supplied us with a model file, try default factory.
       modelFactory = pf.getDefaultModelFactory();
     }
     try {
@@ -84,15 +84,18 @@ public final class ConvertToBinaryWorker {
     private final File myFile;
 
     /*package*/ FileDataSource(File file) {
+      // don't bother with DisposableDataSource.delete() as it's beyond the scope of the task
       myFile = file;
     }
 
     @Override
+    @NotNull
     public InputStream openInputStream() throws IOException {
       return new FileInputStream(myFile);
     }
 
     @Override
+    @NotNull
     public OutputStream openOutputStream() throws IOException {
       myFile.getParentFile().mkdirs();
       myFile.createNewFile();
@@ -102,7 +105,7 @@ public final class ConvertToBinaryWorker {
 
     @Override
     public boolean isReadOnly() {
-      // we are not going to write into sourceFile anyway, and have to write into destFile, therefore no reason to bother with actual state 
+      // we are not going to write into sourceFile anyway, and have to write into destFile, therefore no reason to bother with actual state
       return false;
     }
 
@@ -110,6 +113,17 @@ public final class ConvertToBinaryWorker {
     @Override
     public String getLocation() {
       return myFile.getPath();
+    }
+
+    @NotNull
+    @Override
+    public String getStreamName() {
+      return myFile.getName();
+    }
+
+    @Override
+    public boolean exists() {
+      return myFile.exists();
     }
   }
 }

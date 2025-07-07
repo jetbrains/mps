@@ -10,14 +10,12 @@ import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.kernel.model.SModelUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -32,8 +30,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class CopyPasteHandlers__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x528ba37dd3383e1eL, "jetbrains.mps.lang.actions.structure.CopyPasteHandlers");
 
-  public static final SMethod<List<SNode>> getBaseConceptCollection_id4$$3zrO3UBG = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getBaseConceptCollection").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4$$3zrO3UBG").build();
-  public static final SMethod<Void> setBaseConcept_id5r_35Ihc58c = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setBaseConcept").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5r_35Ihc58c").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<List<SNode>> getBaseConceptCollection_id4$$3zrO3UBG = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getBaseConceptCollection").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5270353093116013036L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
+  public static final SMethod<Void> setBaseConcept_id5r_35Ihc58c = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setBaseConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6261424444345963020L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getBaseConceptCollection_id4$$3zrO3UBG, setBaseConcept_id5r_35Ihc58c);
 
@@ -42,16 +40,8 @@ public final class CopyPasteHandlers__BehaviorDescriptor extends BaseBHDescripto
 
   /*package*/ static List<SNode> getBaseConceptCollection_id4$$3zrO3UBG(@NotNull SNode __thisNode__) {
     final List<SNode> result = new ArrayList<SNode>();
-    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.preProcessor$8IAF)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        ListSequence.fromList(result).addElement(SLinkOperations.getTarget(it, LINKS.concept$u0zD));
-      }
-    });
-    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.postProcessor$8InE)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        ListSequence.fromList(result).addElement(SLinkOperations.getTarget(it, LINKS.concept$Zuzq));
-      }
-    });
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.preProcessor$8IAF)).visitAll((it) -> ListSequence.fromList(result).addElement(SLinkOperations.getTarget(it, LINKS.concept$u0zD)));
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.postProcessor$8InE)).visitAll((it) -> ListSequence.fromList(result).addElement(SLinkOperations.getTarget(it, LINKS.concept$Zuzq)));
     return result;
   }
   /*package*/ static void setBaseConcept_id5r_35Ihc58c(@NotNull SNode __thisNode__, SNode baseConcept) {

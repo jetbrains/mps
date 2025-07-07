@@ -4,31 +4,26 @@ package jetbrains.mps.baseLanguage.test;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
-import jetbrains.mps.project.ProjectBase;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
+import java.util.Arrays;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.smodel.SNodePointer;
 
 @MPSLaunch
 public class UnusedParameters_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(UnusedParameters_Test.class, "${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(UnusedParameters_Test.class).projectPath(null).modelRef("r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)").reopenProject(null).build());
 
   public UnusedParameters_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -50,21 +45,31 @@ public class UnusedParameters_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1220265258910");
+    }
 
     public void test_ErrorMessagesCheck1220265437276() throws Exception {
-      SNode nodeToCheck = getRealNodeById("1220265263160");
-      SNode operation = getRealNodeById("1220265437276");
-      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("3951985765451231454"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1225278748067"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("3951985765451230984"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1225278748067"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("1220265263160");
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(false).exclude(Arrays.<CheckExpectedMessageRunnable>asList(new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("3951985765451231454"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1225278748067"), "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("3951985765451230984"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1225278748067"), "", myProject.getRepository(), myProject.getPlatform()))).run();
+      });
     }
     public void test_NodeUnusedParameterWarningCheck6923385624929809514() throws Exception {
-      SNode nodeToCheck = getRealNodeById("3951985765451231454");
-      SNode operation = getRealNodeById("6923385624929809514");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1225278748067"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("3951985765451231454");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1225278748067"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
     public void test_NodeUnusedParameterWarningCheck6923385624927380174() throws Exception {
-      SNode nodeToCheck = getRealNodeById("3951985765451230984");
-      SNode operation = getRealNodeById("6923385624927380174");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1225278748067"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("3951985765451230984");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1225278748067"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
 
   }

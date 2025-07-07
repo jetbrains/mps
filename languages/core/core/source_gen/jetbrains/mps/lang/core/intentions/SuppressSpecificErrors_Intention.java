@@ -6,10 +6,10 @@ import jetbrains.mps.intentions.AbstractIntentionDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionFactory;
 import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collection;
 import jetbrains.mps.openapi.intentions.IntentionExecutable;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -17,13 +17,11 @@ import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.openapi.intentions.ParameterizedIntentionExecutable;
 import jetbrains.mps.lang.core.behavior.ICanSuppressErrors__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -34,21 +32,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class SuppressSpecificErrors_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
+
   public SuppressSpecificErrors_Intention() {
     super(Kind.ERROR, true, new SNodePointer("r:00000000-0000-4000-0000-011c89590285(jetbrains.mps.lang.core.intentions)", "243673576855293524"));
   }
+
   @Override
   public String getPresentation() {
     return "SuppressSpecificErrors";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     List<IntentionExecutable> list = ListSequence.fromList(new ArrayList<IntentionExecutable>());
     List<IssueKindReportItem> paramList = parameter(node, context);
@@ -65,31 +63,38 @@ public final class SuppressSpecificErrors_Intention extends AbstractIntentionDes
     if (SNodeOperations.hasRole(node, LINKS.smodelAttribute$KJ43)) {
       ListSequence.fromList(reportItemsForCell).addSequence(CollectionSequence.fromCollection(editorComponent.getReportItemsForCell(editorComponent.findNodeCell(SNodeOperations.getParent(node)))));
     }
-    return ListSequence.fromListWithValues(new ArrayList<IssueKindReportItem>(), ListSequence.fromList(reportItemsForCell).where(new IWhereFilter<IssueKindReportItem>() {
-      public boolean accept(IssueKindReportItem it) {
-        return Objects.equals(it.getSeverity(), MessageStatus.ERROR);
-      }
-    }));
+    return ListSequence.fromListWithValues(new ArrayList<IssueKindReportItem>(), ListSequence.fromList(reportItemsForCell).where((it) -> Objects.equals(it.getSeverity(), MessageStatus.ERROR)));
   }
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable implements ParameterizedIntentionExecutable {
     private IssueKindReportItem myParameter;
     public IntentionImplementation(IssueKindReportItem parameter) {
       myParameter = parameter;
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Suppress error '" + myParameter.getMessage() + "' for " + ICanSuppressErrors__BehaviorDescriptor.nodeDescription_id4oS1ku9jIXr.invoke(node);
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode annotation = ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1))).insertElement(0, SNodeFactoryOperations.createNewNode(CONCEPTS.SuppressErrorsAnnotation$D1, null));
+      SNode annotation = ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1).list(node)).insertElement(0, SNodeFactoryOperations.createNewNode(CONCEPTS.SuppressErrorsAnnotation$D1, null));
       SPropertyOperations.assign(annotation, PROPS.filter$LICx, myParameter.toPredicate(myParameter.getIdFlavours()).serialize());
       SPropertyOperations.assign(annotation, PROPS.message$_mpB, myParameter.getMessage());
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return SuppressSpecificErrors_Intention.this;
     }
+
     public Object getParameter() {
       return myParameter;
     }

@@ -9,9 +9,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
@@ -28,27 +26,20 @@ public class QuickFixForDefaultClassCreator_QuickFix extends QuickFix_Runtime {
     return "Replace with direct reference to no-arg cons";
   }
   public void execute(SNode node) {
-    SNode constructor = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.DefaultClassCreator$TC), LINKS.classifier$9NRM), CONCEPTS.ClassConcept$bK))).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).isEmpty();
-      }
-    });
+    SNode constructor = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.DefaultClassCreator$TC), LINKS.classifier$9NRM), CONCEPTS.ClassConcept$bK))).findFirst((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).isEmpty());
     if ((constructor != null)) {
       SNode newCreator = _quotation_createNode_4h0y95_a0a0b0c(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.DefaultClassCreator$TC), LINKS.typeParameter$KPP3), constructor);
       SNodeOperations.replaceWithAnother(node, newCreator);
     }
   }
   private static SNode _quotation_createNode_4h0y95_a0a0b0c(Object parameter_1, Object parameter_2) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
-    quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11a59b0fbceL, "ClassCreator")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11a59b0fbceL, "ClassCreator"));
+    quotedNode_3 = nb.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_3, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), (SNode) parameter_2);
-    {
-      List<SNode> nodes = (List<SNode>) parameter_1;
-      for (SNode child : nodes) {
-        quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter"), SNodeOperations.copyIfNecessary(child));
-      }
+    for (SNode child : (List<SNode>) parameter_1) {
+      quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter"), SNodeOperations.copyIfNecessary(child));
     }
     return quotedNode_3;
   }

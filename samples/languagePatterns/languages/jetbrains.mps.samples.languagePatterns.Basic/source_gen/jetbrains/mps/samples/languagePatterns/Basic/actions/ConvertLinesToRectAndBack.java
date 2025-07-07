@@ -15,7 +15,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class ConvertLinesToRectAndBack {
   public static class NodeFactory_3548406301613038524 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode rect = sampleNode;
         if (SNodeOperations.isInstanceOf(rect, CONCEPTS.DrawRect$td)) {
@@ -43,7 +43,7 @@ public class ConvertLinesToRectAndBack {
     }
   }
   public static class NodeFactory_3548406301613072220 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode rect = sampleNode;
         if (SNodeOperations.isInstanceOf(rect, CONCEPTS.DrawRect$td)) {

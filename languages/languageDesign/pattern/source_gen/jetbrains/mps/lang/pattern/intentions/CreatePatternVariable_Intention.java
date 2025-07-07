@@ -10,34 +10,28 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.pattern.editor.PatternAddingUtil;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.lang.pattern.editor.PatternAddingUtil;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 
 public final class CreatePatternVariable_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public CreatePatternVariable_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:00000000-0000-4000-0000-011c89590344(jetbrains.mps.lang.pattern.intentions)", "3514655265371682052"));
   }
+
   @Override
   public String getPresentation() {
     return "CreatePatternVariable";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return PatternAddingUtil.isPatternApplicable(editorContext);
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -47,17 +41,34 @@ public final class CreatePatternVariable_Intention extends AbstractIntentionDesc
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Create Pattern Variable";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       PatternAddingUtil.addVariablePattern(editorContext);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return PatternAddingUtil.isPatternApplicable(editorContext);
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return CreatePatternVariable_Intention.this;
     }
+
   }
 }

@@ -2,7 +2,6 @@
 <model ref="r:4a23ef0d-9c2f-48a6-8597-fbdd5b11f792(jetbrains.mps.lang.generator.plan.structure)">
   <persistence version="9" />
   <languages>
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
@@ -11,8 +10,22 @@
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
+      <concept id="3348158742936976480" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration" flags="ng" index="25R33">
+        <property id="1421157252384165432" name="memberId" index="3tVfz5" />
+      </concept>
+      <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclaration" flags="ng" index="25R3W">
+        <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
+        <child id="3348158742936976577" name="members" index="25R1y" />
+      </concept>
+      <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
+        <property id="1225118929411" name="build" index="YLPcu" />
+        <property id="1225118933224" name="comment" index="YLQ7P" />
+      </concept>
       <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
         <property id="7862711839422615217" name="text" index="t5JxN" />
+      </concept>
+      <concept id="1082978164218" name="jetbrains.mps.lang.structure.structure.DataTypeDeclaration" flags="ng" index="AxPO6">
+        <property id="7791109065626895363" name="datatypeId" index="3F6X1D" />
       </concept>
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
@@ -51,7 +64,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -68,6 +81,19 @@
       <property role="20lbJX" value="fLJekj6/1..n" />
       <property role="IQ2ns" value="1820634577908471815" />
       <ref role="20lvS9" node="1_4co2y1LvW" resolve="Step" />
+    </node>
+    <node concept="1TJgyj" id="6_DCGR5BD9Y" role="1TKVEi">
+      <property role="IQ2ns" value="7595781251204551294" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="forkOf" />
+      <ref role="20lvS9" node="6_DCGR5BBj5" resolve="ForkOf" />
+      <node concept="asaX9" id="6RmmpomDKFQ" role="lGtFl" />
+    </node>
+    <node concept="1TJgyj" id="1tYEJSwm25y" role="1TKVEi">
+      <property role="IQ2ns" value="1692978518378946914" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="forkAs" />
+      <ref role="20lvS9" node="1tYEJSwlxTv" resolve="ForkAs" />
     </node>
     <node concept="PrWs8" id="1_4co2y1LvX" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
@@ -99,12 +125,28 @@
     <property role="R4oN_" value="Collection of languages to reduce (iow, generators to apply)" />
     <property role="EcuMT" value="1820634577908471810" />
     <ref role="1TJDcQ" node="1_4co2y1LvW" resolve="Step" />
+    <node concept="1TJgyi" id="1UCZ1x2IcLE" role="1TKVEl">
+      <property role="IQ2nx" value="2209292798354050154" />
+      <property role="TrG5h" value="individualStepPerGenerator" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
     <node concept="1TJgyj" id="2ztrlDPivEd" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="languages" />
-      <property role="20lbJX" value="fLJekj6/1..n" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
       <property role="IQ2ns" value="2944629966652439181" />
       <ref role="20lvS9" to="tp25:34EJa6aIcco" resolve="LanguageIdentity" />
+      <node concept="asaX9" id="58m62FIIPP7" role="lGtFl">
+        <property role="YLPcu" value="2023.1" />
+        <property role="YLQ7P" value="Replaced with LanguageEntry[Transform]" />
+      </node>
+    </node>
+    <node concept="1TJgyj" id="1009c2Af5ZQ" role="1TKVEi">
+      <property role="IQ2ns" value="1152961914448142326" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="entries" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="1009c2Af4wf" resolve="LanguageEntry" />
     </node>
   </node>
   <node concept="1TIwiD" id="7c$ruAHVa5L">
@@ -261,6 +303,12 @@
     <property role="R4oN_" value="fork a new transformation branch with specified plan" />
     <property role="34LRSv" value="fork" />
     <ref role="1TJDcQ" node="1_4co2y1LvW" resolve="Step" />
+    <node concept="1TJgyj" id="1UCZ1x2IYvJ" role="1TKVEi">
+      <property role="IQ2ns" value="2209292798354253807" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="filter" />
+      <ref role="20lvS9" node="1UCZ1x2IYvI" resolve="ForkSelector" />
+    </node>
     <node concept="1TJgyj" id="2JQwL_F4Efc" role="1TKVEi">
       <property role="IQ2ns" value="3167863533095527372" />
       <property role="20kJfa" value="plan" />
@@ -269,6 +317,108 @@
     </node>
     <node concept="t5JxF" id="2JQwL_F4Efe" role="lGtFl">
       <property role="t5JxN" value="Fork transformation sequence into two branches, one goes on with active plan, another spins off with another plan." />
+    </node>
+    <node concept="1TJgyi" id="3eG4OcT$N6X" role="1TKVEl">
+      <property role="IQ2nx" value="3723372171378241981" />
+      <property role="TrG5h" value="gentarget" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+      <node concept="t5JxF" id="6_DCGR5BBoa" role="lGtFl">
+        <property role="t5JxN" value="tag to use when deciding whether to actually activate the fork" />
+      </node>
+    </node>
+  </node>
+  <node concept="1TIwiD" id="1009c2Af4wf">
+    <property role="EcuMT" value="1152961914448136207" />
+    <property role="TrG5h" value="LanguageEntry" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="1009c2Af4wg" role="1TKVEi">
+      <property role="IQ2ns" value="1152961914448136208" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="language" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tp25:34EJa6aIcco" resolve="LanguageIdentity" />
+    </node>
+    <node concept="1TJgyi" id="1009c2Af5ZI" role="1TKVEl">
+      <property role="IQ2nx" value="1152961914448142318" />
+      <property role="TrG5h" value="kind" />
+      <ref role="AX2Wp" node="1009c2Af4wi" resolve="TransformKind" />
+    </node>
+  </node>
+  <node concept="25R3W" id="1009c2Af4wi">
+    <property role="3F6X1D" value="1152961914448136210" />
+    <property role="TrG5h" value="TransformKind" />
+    <ref role="1H5jkz" node="1009c2Af4wj" resolve="Transform" />
+    <node concept="25R33" id="1009c2Af4wj" role="25R1y">
+      <property role="3tVfz5" value="1152961914448136211" />
+      <property role="TrG5h" value="Transform" />
+    </node>
+    <node concept="25R33" id="1009c2Af4wk" role="25R1y">
+      <property role="3tVfz5" value="1152961914448136212" />
+      <property role="TrG5h" value="TargetAt" />
+    </node>
+    <node concept="25R33" id="1009c2Af4wn" role="25R1y">
+      <property role="3tVfz5" value="1152961914448136215" />
+      <property role="TrG5h" value="Extend" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="1UCZ1x2IYvI">
+    <property role="EcuMT" value="2209292798354253806" />
+    <property role="TrG5h" value="ForkSelector" />
+  </node>
+  <node concept="1TIwiD" id="1UCZ1x2IYvM">
+    <property role="EcuMT" value="2209292798354253810" />
+    <property role="TrG5h" value="ConceptListSelector" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="1UCZ1x2IYvP" role="1TKVEi">
+      <property role="IQ2ns" value="2209292798354253813" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="concepts" />
+      <property role="20lbJX" value="fLJekj6/_1__n" />
+      <ref role="20lvS9" to="tp25:gNgn60t" resolve="ConceptReference" />
+    </node>
+    <node concept="PrWs8" id="1UCZ1x2IYvN" role="PzmwI">
+      <ref role="PrY4T" node="1UCZ1x2IYvI" resolve="ForkSelector" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6_DCGR5BBj5">
+    <property role="EcuMT" value="7595781251204543685" />
+    <property role="TrG5h" value="ForkOf" />
+    <property role="34LRSv" value="fork of" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyi" id="6_DCGR5BBl$" role="1TKVEl">
+      <property role="IQ2nx" value="7595781251204543844" />
+      <property role="TrG5h" value="gentarget" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+      <node concept="t5JxF" id="6_DCGR5BBlQ" role="lGtFl">
+        <property role="t5JxN" value="tag to use when deciding whether to actually activate the fork" />
+      </node>
+    </node>
+    <node concept="1TJgyj" id="6_DCGR5BBl9" role="1TKVEi">
+      <property role="IQ2ns" value="7595781251204543817" />
+      <property role="20kJfa" value="primary" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="1_4co2y1LvV" resolve="Plan" />
+    </node>
+    <node concept="t5JxF" id="6_DCGR5BBju" role="lGtFl">
+      <property role="t5JxN" value="Marks a plan as a fork of another plan (reverses Fork relation)" />
+    </node>
+    <node concept="asaX9" id="1tYEJSwjs5e" role="lGtFl" />
+  </node>
+  <node concept="1TIwiD" id="1tYEJSwlxTv">
+    <property role="EcuMT" value="1692978518378815071" />
+    <property role="TrG5h" value="ForkAs" />
+    <property role="34LRSv" value="fork as" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyi" id="1tYEJSwlxVa" role="1TKVEl">
+      <property role="IQ2nx" value="1692978518378815178" />
+      <property role="TrG5h" value="gentarget" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+      <node concept="t5JxF" id="1tYEJSwlxVb" role="lGtFl">
+        <property role="t5JxN" value="tag to use when deciding whether to actually activate the fork" />
+      </node>
+    </node>
+    <node concept="t5JxF" id="1tYEJSwlxTT" role="lGtFl">
+      <property role="t5JxN" value="Marks a plan as a fork of another plan with specific generation target" />
     </node>
   </node>
 </model>

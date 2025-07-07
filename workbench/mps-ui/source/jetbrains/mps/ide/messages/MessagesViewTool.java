@@ -1,17 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2000-2023 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.ide.messages;
 
@@ -19,12 +7,14 @@ import com.intellij.openapi.Disposable;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
-import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.components.StoragePathMacros;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ProjectManagerListener;
+import com.intellij.openapi.startup.ProjectActivity;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowId;
@@ -32,7 +22,6 @@ import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentManager;
 import com.intellij.ui.content.MessageView;
-import com.intellij.ui.content.MessageView.SERVICE;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.ide.ThreadUtils.RunInUIRunnable;
 import jetbrains.mps.ide.messages.MessageList.MessageListState;
@@ -44,7 +33,11 @@ import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.messages.IMessageList;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
+import jetbrains.mps.project.MPSProject;
+import kotlin.Unit;
+import kotlin.coroutines.Continuation;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.JList;
 import java.text.MessageFormat;
@@ -58,7 +51,7 @@ import java.util.Map;
     name = "MessagesViewTool",
     storages = @Storage(StoragePathMacros.WORKSPACE_FILE)
 )
-public class MessagesViewTool implements ProjectComponent, PersistentStateComponent<MessageViewToolState>, Disposable {
+public class MessagesViewTool implements PersistentStateComponent<MessageViewToolState>, Disposable {
   private static final String DEFAULT_LIST = "DEFAULT_LIST";
 
   private final Project myProject;
@@ -70,12 +63,26 @@ public class MessagesViewTool implements ProjectComponent, PersistentStateCompon
     myProject = project;
     myDefaultList = new MyMessageList("Messages");
     Disposer.register(this, myDefaultList);
+    Disposer.register(project, this);
     // default list doesn't need too much attention, don't activate it on any message
     myDefaultList.setActivateOnMessage(false);
     myDefaultList.setTitleUpdateFormat(
         "{1,choice,0#--|1#1 error|2#{1} errors}/{2,choice,0#--|1#1 warning|2#{2} warnings}/{3,choice,0#--|1#1 info|2#{3} infos}");
     addList(DEFAULT_LIST, myDefaultList);
     myMessageViewLoggingHandler = new MessageViewLoggingHandler(this, ProjectHelper.fromIdeaProject(project));
+  }
+
+  @Nullable
+  public static MessagesViewTool getInstance(jetbrains.mps.project.Project mpsProject) {
+    if (!(mpsProject instanceof MPSProject)) {
+      return null;
+    }
+
+    return ((MPSProject) mpsProject).getProject().getService(MessagesViewTool.class);
+  }
+
+  public static void log(Project p, MessageKind kind, String message) {
+    p.getService(MessagesViewTool.class).add(new Message(kind, message));
   }
 
   @Override
@@ -106,43 +113,12 @@ public class MessagesViewTool implements ProjectComponent, PersistentStateCompon
     getAvailableList(listName, true).add(message);
   }
 
-  @Override
-  @NotNull
-  public String getComponentName() {
-    return MessagesViewTool.class.getSimpleName();
-  }
-
-  @Override
-  public void initComponent() {
-    getDefaultList().createContent(false, false);
-  }
-
-  @Override
-  public void disposeComponent() {
-    Disposer.dispose(this);
-  }
-
-  @Override
-  public void projectOpened() {
+  public void registerLoggingHandler() {
     myMessageViewLoggingHandler.register();
   }
 
-  @Override
-  public void projectClosed() {
+  private void unregisterLoggingHandler() {
     myMessageViewLoggingHandler.unregister();
-  }
-
-  public static class MessageViewToolState {
-    public MessageViewToolState(MessageListState defaultListState) {
-      this.defaultListState = defaultListState;
-    }
-
-    public MessageViewToolState() {
-      // default cons is essential for IDEA to construct the state.
-      this.defaultListState = new MessageListState();
-    }
-
-    public MessageListState defaultListState;
   }
 
   @Override
@@ -155,8 +131,8 @@ public class MessagesViewTool implements ProjectComponent, PersistentStateCompon
     getDefaultList().loadState(state.defaultListState);
   }
 
-  /*package*/ MessageView getMessagesService() {
-    return SERVICE.getInstance(myProject);
+  private MessageView getMessagesService() {
+    return MessageView.getInstance(myProject);
   }
 
   public IMessageHandler newHandler() {
@@ -171,7 +147,7 @@ public class MessagesViewTool implements ProjectComponent, PersistentStateCompon
   }
 
   /**
-   * @param name identifies named collection of messages, value is visible in UI as the name of the collection.
+   * @param name  identifies named collection of messages, value is visible in UI as the name of the collection.
    * @param clear true if caller doesn't need to keep messages already reported under same named handler (if any)
    * @return handler that pipes messages to designated UI component, never {@code null}
    */
@@ -185,23 +161,43 @@ public class MessagesViewTool implements ProjectComponent, PersistentStateCompon
 
   /**
    * Creates/retrieves existing named collection of messages, with respect to supplied options.
-   * @param name name of the list. It's up to caller to provide reasonable name in case of {@link MessageListOptions#AlwaysNew} to tell one list from another.
-   * @param options if no options specified, {@link MessageListOptions#ReuseExisting} + {@link MessageListOptions#ActivateOnMessage} is assumed.
-   * @return UI-backed collection of messages.
+   *
+   * @param name    name of the list. It's up to caller to provide reasonable name in case of {@link MessageListOptions#AlwaysNew} to tell one list from another.
+   * @param options if no options specified, {@link MessageListOptions#ActivateOnMessage} and {@link MessageListOptions#ReuseExisting} is assumed.
+   * @return UI-backed collection of messages
    */
   @NotNull
   public IMessageList getMessageList(@NotNull final String name, MessageListOptions... options) {
+    return this.getMessageList(name, null, options);
+  }
+  /**
+   * Creates/retrieves existing named collection of messages, with respect to supplied options.
+   *
+   * @param name    name of the list. It's up to caller to provide reasonable name in case of {@link MessageListOptions#AlwaysNew} to tell one list from another.
+   * @param nonActivationHandler A handler to notify the user if the tool window is not activated as a result of adding new messages
+   * @param options if no options specified, {@link MessageListOptions#ActivateOnMessage} and {@link MessageListOptions#ReuseExisting} is assumed.
+   * @return UI-backed collection of messages
+   */
+  @NotNull
+  public IMessageList getMessageList(@NotNull final String name, @Nullable final Runnable nonActivationHandler, MessageListOptions... options) {
     List<MessageListOptions> optionsList = Arrays.asList(options);
+    if (!optionsList.isEmpty()) {
+      if (!optionsList.contains(MessageListOptions.AlwaysNew) && !optionsList.contains(MessageListOptions.ReuseExisting)) {
+        throw new IllegalArgumentException("One of AlwaysNew, ReuseExisting options must be provided");
+      }
+    }
     boolean alwaysNew = optionsList.contains(MessageListOptions.AlwaysNew);
-    boolean reuseExisting = !alwaysNew && (optionsList.isEmpty() || optionsList.contains(MessageListOptions.ReuseExisting));
-    boolean activateOnMessage = !optionsList.contains(MessageListOptions.DeafOnMessage) || optionsList.contains(MessageListOptions.ActivateOnMessage);
     MessageList list;
     if (alwaysNew) {
       list = createList(name);
     } else {
-      list = getAvailableList(name, reuseExisting);
+      list = getAvailableList(name, true);
     }
+
+    boolean activateOnMessage = !optionsList.contains(MessageListOptions.DeafOnMessage) ||
+                                optionsList.contains(MessageListOptions.ActivateOnMessage);
     list.setActivateOnMessage(activateOnMessage);
+    list.setNonActivationHandler(nonActivationHandler);
     return list;
   }
 
@@ -215,7 +211,7 @@ public class MessagesViewTool implements ProjectComponent, PersistentStateCompon
 
   /**
    * @deprecated I don't feel it's a nice idea to expose implementation detail, {@link #newHandler()} shall suffice, perhaps,
-   *             augmented with options object to pass info/warn/clear settings
+   * augmented with options object to pass info/warn/clear settings
    */
   @Deprecated
   public synchronized MessageList getAvailableList(String name, boolean createIfNotFound) {
@@ -258,6 +254,19 @@ public class MessagesViewTool implements ProjectComponent, PersistentStateCompon
 
   private MessageList getDefaultList() {
     return myDefaultList;
+  }
+
+  public static class MessageViewToolState {
+    public MessageListState defaultListState;
+
+    public MessageViewToolState(MessageListState defaultListState) {
+      this.defaultListState = defaultListState;
+    }
+
+    public MessageViewToolState() {
+      // default cons is essential for IDEA to construct the state.
+      this.defaultListState = new MessageListState();
+    }
   }
 
   private class MyMessageList extends MessageList {
@@ -303,7 +312,7 @@ public class MessagesViewTool implements ProjectComponent, PersistentStateCompon
     }
 
     public void createContent(final boolean canClose, final boolean isMultiple) {
-      if (RuntimeFlags.isTestMode()) {
+      if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
         return;
       }
 
@@ -374,8 +383,34 @@ public class MessagesViewTool implements ProjectComponent, PersistentStateCompon
     }
   }
 
-  public static void log(Project p, MessageKind kind, String message) {
-    p.getComponent(MessagesViewTool.class).add(new Message(kind, message));
+  public static final class MessagesViewProjectListener implements ProjectManagerListener {
+    @Override
+    public void projectOpened(@NotNull Project project) {
+      final MessagesViewTool messagesViewTool = project.getService(MessagesViewTool.class);
+      messagesViewTool.registerLoggingHandler();
+    }
+
+    @Override
+    public void projectClosing(@NotNull Project project) {
+      MessagesViewTool messagesViewTool = project.getServiceIfCreated(MessagesViewTool.class);
+      if (messagesViewTool != null) {
+        messagesViewTool.unregisterLoggingHandler();
+      }
+    }
   }
 
+  public static final class MessageViewToolInitialization implements ProjectActivity {
+
+    @Nullable
+    @Override
+    public Object execute(@NotNull Project project, @NotNull Continuation<? super Unit> continuation) {
+      if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
+        return null;
+      }
+      // First access to the com.intellij.ui.content.MessageView service should be done from dispatch thread.
+      // This post startup activity is used to achieve this.
+      ApplicationManager.getApplication().invokeLater(() -> project.getService(MessagesViewTool.class).getDefaultList().createContent(false, false));
+      return null;
+    }
+  }
 }

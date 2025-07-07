@@ -14,7 +14,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
@@ -29,10 +28,10 @@ public class typeof_ConceptFunctionParameter_sourceNode_InferenceRule extends Ab
     SNode functionParent = SNodeOperations.getParent(function);
     SNode link;
     if (SNodeOperations.isInstanceOf(functionParent, CONCEPTS.CellMenuPart_Abstract$Fh)) {
-      // we are in inline cell menu 
+      // we are in inline cell menu
       link = CellMenuPart_Abstract__BehaviorDescriptor.getEditedLink_idhJEvotS.invoke((SNodeOperations.as(functionParent, CONCEPTS.CellMenuPart_Abstract$Fh)));
     } else {
-      // we are in 'ref. presentation' cell 
+      // we are in 'ref. presentation' cell
       link = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(functionParent, CONCEPTS.CellModel_RefCell$7g, false, false), LINKS.relationDeclaration$E2hc);
     }
     {
@@ -51,9 +50,9 @@ public class typeof_ConceptFunctionParameter_sourceNode_InferenceRule extends Ab
     return false;
   }
   private static SNode _quotation_createNode_muejbh_a1a0c0e0b(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"));
+    quotedNode_2 = nb.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"), (SNode) parameter_1);
     return quotedNode_2;
   }

@@ -19,7 +19,6 @@ import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -29,27 +28,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class ConvertForEachStatementToForeachStatement_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ConvertForEachStatementToForeachStatement_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c8959032c(jetbrains.mps.baseLanguage.collections.intentions)", "1193396656620"));
   }
+
   @Override
   public String getPresentation() {
     return "ConvertForEachStatementToForeachStatement";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -59,10 +52,12 @@ public final class ConvertForEachStatementToForeachStatement_Intention extends A
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Convert to 'for (Type var: iterable)'";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       final SNode oldVariable = SLinkOperations.getTarget(node, LINKS.variable$8Haf);
@@ -75,18 +70,29 @@ public final class ConvertForEachStatementToForeachStatement_Intention extends A
       SNode newVariable = SNodeFactoryOperations.setNewChild(foreachStatement, LINKS.variable$JNH6, null);
       SPropertyOperations.set(newVariable, PROPS.name$MnvL, SPropertyOperations.getString(oldVariable, PROPS.name$MnvL));
       SLinkOperations.setTarget(newVariable, LINKS.type$a1UY, variableType);
-      for (SNode oldRef : ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(foreachStatement, LINKS.body$c1sm), CONCEPTS.ForEachVariableReference$CR, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.variable$j6kA) == oldVariable;
-        }
-      })) {
+      for (SNode oldRef : ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(foreachStatement, LINKS.body$c1sm), CONCEPTS.ForEachVariableReference$CR, false, new SAbstractConcept[]{})).where((it) -> SLinkOperations.getTarget(it, LINKS.variable$j6kA) == oldVariable)) {
         SLinkOperations.setTarget(SNodeFactoryOperations.replaceWithNewChild(oldRef, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG, newVariable);
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ConvertForEachStatementToForeachStatement_Intention.this;
     }
+
   }
 
   private static final class LINKS {

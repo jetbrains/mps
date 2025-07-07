@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -26,9 +25,7 @@ import jetbrains.mps.baseLanguage.scopes.Scopes;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
-import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -36,16 +33,16 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class ClosureLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral");
 
-  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIMiw").build();
-  public static final SMethod<String> getFunctionInterfaceName_idhEwI$6K = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFunctionInterfaceName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwI$6K").build();
-  public static final SMethod<SNode> getType_idhTgUC0Q = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hTgUC0Q").build(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> isStatementListCompactable_idi0zvp2S = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isStatementListCompactable").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i0zvp2S").build();
-  public static final SMethod<SNode> getBody_idi2fhZ_m = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getBody").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i2fhZ_m").build();
-  public static final SMethod<SNode> getExpectedRetType_idi2fhBNC = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpectedRetType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i2fhBNC").build();
-  public static final SMethod<List<SNode>> getThrowableTypes_id5op8ooRkkc7 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getThrowableTypes").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5op8ooRkkc7").build();
-  public static final SMethod<Boolean> implicitThrows_id4kX30tnJ9kz = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("implicitThrows").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4kX30tnJ9kz").build();
-  public static final SMethod<Boolean> isClosure_id2P5W1FWMZPJ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isClosure").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2P5W1FWMZPJ").build();
-  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  public static final SMethod<String> getFunctionInterfaceName_idhEwI$6K = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFunctionInterfaceName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877338544L).languageId(0x907112563d152375L, 0xfd3920347849419dL).build2();
+  public static final SMethod<SNode> getType_idhTgUC0Q = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1229718192182L).languageId(0x907112563d152375L, 0xfd3920347849419dL).build2(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> isStatementListCompactable_idi0zvp2S = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isStatementListCompactable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1237546012856L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> getBody_idi2fhZ_m = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getBody").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1239354440022L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> getExpectedRetType_idi2fhBNC = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpectedRetType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1239354342632L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<List<SNode>> getThrowableTypes_id5op8ooRkkc7 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getThrowableTypes").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6204026822016975623L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> implicitThrows_id4kX30tnJ9kz = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("implicitThrows").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4989157187872658723L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> isClosure_id2P5W1FWMZPJ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isClosure").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3262277503800835439L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getFunctionInterfaceName_idhEwI$6K, getType_idhTgUC0Q, isStatementListCompactable_idi0zvp2S, getBody_idi2fhZ_m, getExpectedRetType_idi2fhBNC, getThrowableTypes_id5op8ooRkkc7, implicitThrows_id4kX30tnJ9kz, isClosure_id2P5W1FWMZPJ, getScope_id52_Geb4QDV$);
 
@@ -74,8 +71,8 @@ public final class ClosureLiteral__BehaviorDescriptor extends BaseBHDescriptor {
     return SLinkOperations.getTarget(__thisNode__, LINKS.body$Ujx2);
   }
   /*package*/ static SNode getExpectedRetType_idi2fhBNC(@NotNull SNode __thisNode__) {
-    // everything which is not void and null is good, 
-    // look at ExpressionStatement.canServeAsReturn 
+    // everything which is not void and null is good,
+    // look at ExpressionStatement.canServeAsReturn
     return _quotation_createNode_l77foe_a2a5();
   }
   /*package*/ static List<SNode> getThrowableTypes_id5op8ooRkkc7(@NotNull SNode __thisNode__) {
@@ -160,35 +157,29 @@ public final class ClosureLiteral__BehaviorDescriptor extends BaseBHDescriptor {
     return CONCEPT;
   }
   private static SNode _quotation_createNode_l77foe_a0a2(Object parameter_1, Object parameter_2, Object parameter_3) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_4 = null;
     SNode quotedNode_5 = null;
     SNode quotedNode_6 = null;
     SNode quotedNode_7 = null;
-    quotedNode_4 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures"), 0xe8770ba07b68051L, "ClosureLiteralType")).getResult();
-    {
-      List<SNode> nodes = (List<SNode>) parameter_1;
-      for (SNode child : nodes) {
-        quotedNode_4.addChild(MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4e013cL, "parameterType"), SNodeOperations.copyIfNecessary(child));
-      }
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures"), 0xe8770ba07b68051L, "ClosureLiteralType"));
+    quotedNode_4 = nb.getResult();
+    for (SNode child : (List<SNode>) parameter_1) {
+      quotedNode_4.addChild(MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4e013cL, "parameterType"), SNodeOperations.copyIfNecessary(child));
     }
     quotedNode_6 = (SNode) parameter_2;
     if (quotedNode_6 != null) {
       quotedNode_4.addChild(MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4d5371L, "resultType"), SNodeOperations.copyIfNecessary(quotedNode_6));
     }
-    {
-      List<SNode> nodes = (List<SNode>) parameter_3;
-      for (SNode child : nodes) {
-        quotedNode_4.addChild(MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x11ad99d9c36L, "throwsType"), SNodeOperations.copyIfNecessary(child));
-      }
+    for (SNode child : (List<SNode>) parameter_3) {
+      quotedNode_4.addChild(MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x11ad99d9c36L, "throwsType"), SNodeOperations.copyIfNecessary(child));
     }
     return quotedNode_4;
   }
   private static SNode _quotation_createNode_l77foe_a2a5() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
-    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Object")));
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+    quotedNode_1 = nb.getResult();
+    nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~Object");
     return quotedNode_1;
   }
 

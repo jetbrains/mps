@@ -153,7 +153,7 @@ public class NodeExplorerComponent extends JPanel implements Disposable {
     @Override
     protected void doubleClick(@NotNull MPSTreeNode nodeToClick) {
       // TODO: update navigation logic to avoid this copy/paste
-      // Copied from jetbrains.mps.ide.projectPane.logicalview.ProjectPaneTree.doubleClick()
+      // Copied from jetbrains.mps.ide.projectPane.ProjectPaneTree.doubleClick()
       if (nodeToClick instanceof NodeTargetProvider) {
         final SNodeReference navigationTarget = ((NodeTargetProvider) nodeToClick).getNavigationTarget();
         if (navigationTarget != null) {

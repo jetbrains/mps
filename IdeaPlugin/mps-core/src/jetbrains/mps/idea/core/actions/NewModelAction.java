@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,6 +32,7 @@ import jetbrains.mps.idea.core.MPSBundle;
 import jetbrains.mps.idea.core.project.module.ModuleMPSSupport;
 import jetbrains.mps.idea.core.ui.CreateFromTemplateDialog;
 import jetbrains.mps.kernel.model.MissingDependenciesFixer;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.ModelCannotBeCreatedException;
 import jetbrains.mps.persistence.PreinstalledModelFactoryTypes;
 import jetbrains.mps.project.MPSExtentions;
@@ -42,15 +43,12 @@ import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
@@ -58,16 +56,14 @@ import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 
 import javax.lang.model.SourceVersion;
 import java.io.File;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Created by danilla on 28/10/15.
  */
 public class NewModelAction extends NewModelActionBase {
-  private static Logger LOG = LogManager.getLogger(NewModelAction.class);
 
   private static final ModelTemplate EMPTY_MODEL = new ModelTemplateBase("EMPTY", MPSBundle.message("new.model.template.empty.presentation"), FileIcons.MODEL_ICON);
 
@@ -103,19 +99,11 @@ public class NewModelAction extends NewModelActionBase {
               SModelName sModelName = new SModelName(modelName);
               model = (EditableSModel) myModelRoot.createModel(sModelName, mySourceRoot, createDataSourceFactory(), modelFactory);
             } catch (ModelCannotBeCreatedException e) {
-              LOG.error("Can't create model " + modelName + " under " + path, e);
+              Logger.getLogger(NewModelAction.class).error("Can't create model " + modelName + " under " + path, e);
               return null;
             }
 
-            // FIXME something bad: see MPS-18545 SModel api: createModel(), setChanged(), isLoaded(), save()
-            // model.getSModel() ?
             template.preConfigure(model);
-
-            // likely, model.isChanged == true, but just in case it's not, force save
-            // I'm not even sure it's the right moment to save, why not after all the imports has been fixed/auto-added, but
-            // this is the way it was prior to 585b7169 I'm about to revert.
-            model.setChanged(true);
-            model.save();
 
             final MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
             if (mpsProject != null) {
@@ -126,13 +114,13 @@ public class NewModelAction extends NewModelActionBase {
             model.save(); // just in case performImports or fixModuleDependencies touched the model and didn't save it - fixImports, below
             // may reload module (when/if project libraries change), and AbstractModule.doUpdateModelsSet doesn't reload models in changed state.
 
-            if (new ModelImports(model).getUsedLanguages().isEmpty()) {
+            final Collection<SLanguage> usedLanguages = new ModelImports(model).getUsedLanguages();
+            if (usedLanguages.isEmpty()) {
               return model;
             }
             final SModelReference modelReference = model.getReference();
-            final Stream<SModuleReference> ls = new ModelImports(model).getUsedLanguages().stream().map(SLanguage::getSourceModuleReference);
 
-            ModuleMPSSupport.getInstance().fixImports(ideaModule, ls.collect(Collectors.toSet()));
+            ModuleMPSSupport.getInstance().fixImports(ideaModule, usedLanguages);
             // chances are fixImports reloads module with the model, therefore need to take the new one
             return modelReference.resolve(repository);
           }

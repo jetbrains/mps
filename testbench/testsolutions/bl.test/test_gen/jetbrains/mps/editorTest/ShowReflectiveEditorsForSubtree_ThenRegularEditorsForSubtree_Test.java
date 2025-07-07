@@ -4,23 +4,22 @@ package jetbrains.mps.editorTest;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.nodeEditor.reflectiveEditor.ReflectiveHintsManager;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class ShowReflectiveEditorsForSubtree_ThenRegularEditorsForSubtree_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(ShowReflectiveEditorsForSubtree_ThenRegularEditorsForSubtree_Test.class, "${mps_home}", "r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ShowReflectiveEditorsForSubtree_ThenRegularEditorsForSubtree_Test.class).projectPath(null).modelRef("r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)").reopenProject(false).build());
 
   public ShowReflectiveEditorsForSubtree_ThenRegularEditorsForSubtree_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -44,11 +43,7 @@ public class ShowReflectiveEditorsForSubtree_ThenRegularEditorsForSubtree_Test e
       Assert.assertTrue(isActionApplicable("jetbrains.mps.ide.editor.actions.ShowReflectiveEditorsForSubtree_Action"));
       Assert.assertFalse(isActionApplicable("jetbrains.mps.ide.editor.actions.ShowRegularEditor_Action"));
 
-      ReflectiveEditorActionsUtil.runReadInEDTAndWait(getEditorComponent(), new Runnable() {
-        public void run() {
-          getEditorComponent().selectNode(SNodeOperations.cast(getNodeById("897648160459353473"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement"))));
-        }
-      });
+      ReflectiveEditorActionsUtil.runReadInEDTAndWait(getEditorComponent(), () -> getEditorComponent().selectNode(getAnnotatedNode("child")));
       Assert.assertFalse(ReflectiveHintsManager.shouldShowReflectiveEditor(getEditorComponent().getSelectedCell().getCellContext()));
       Assert.assertTrue(isActionApplicable("jetbrains.mps.ide.editor.actions.ShowReflectiveEditor_Action"));
       Assert.assertTrue(isActionApplicable("jetbrains.mps.ide.editor.actions.ShowReflectiveEditorsForSubtree_Action"));

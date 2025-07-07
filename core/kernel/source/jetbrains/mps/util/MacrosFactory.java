@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,12 +19,16 @@ import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.PathMacros;
-import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.util.PathFormatChecker;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public final class MacrosFactory implements MacroHelper.Source {
   public static final String MODULE = "${module}";
@@ -78,21 +82,15 @@ public final class MacrosFactory implements MacroHelper.Source {
   public static MacroHelper forModule(SModule module) {
     // XXX would be great to adapt/cast SModule to MacroHelper (or anything that could be source of macro values, so that we don't need to expose 'descriptorFile')
     if (module instanceof AbstractModule && ((AbstractModule) module).getDescriptorFile() != null) {
+      IFile anchorFile = ((AbstractModule) module).getDescriptorFile();
+      final ModuleDescriptor md = ((AbstractModule) module).getModuleDescriptor();
+      if (md != null && md.getDeploymentDescriptor() != null) {
+        anchorFile = ModulesMiner.getSourceDescriptorFile(anchorFile, md.getDeploymentDescriptor());
+      }
       // no need to go through checks of  #forModuleFile(IFile) when we know for sure it is, indeed.
-      return new MacroHelperImpl(((AbstractModule) module).getDescriptorFile(), new ModuleMacros(PathMacros.getInstance()));
+      return new MacroHelperImpl(anchorFile, new ModuleMacros(PathMacros.getInstance()));
     }
     return getGlobal();
-  }
-
-  /**
-   * @deprecated why would anyone care to cast openapi.SModule to AbstractModule? Use {@link #forModule(SModule)} instead.
-   */
-  @Deprecated
-  @ToRemove(version = 2018.1)
-  public static MacroHelper forModule(AbstractModule module) {
-    // todo: if descriptor file == null?
-    IFile file = module.getDescriptorFile();
-    return file == null ? null : forModuleFile(file);
   }
 
   public static MacroHelper forProjectFile(IFile projectFile) {
@@ -128,14 +126,41 @@ public final class MacrosFactory implements MacroHelper.Source {
     }
 
     @Override
-    protected String shrink(String absolutePath, IFile anchorFile) {
+    protected void shrink(String absolutePath, IFile anchorFile, List<String> alternatives) {
       new PathFormatChecker(absolutePath).osIndependentPath().noDots().absolute();
 
-      String prefix = getAnchorFolder(anchorFile).getPath();
+      final IFile anchorFolder = getAnchorFolder(anchorFile);
+      String prefix = anchorFolder.getPath();
       if (pathStartsWith(absolutePath, prefix)) {
-        return MODULE + shrink(absolutePath, prefix);
+        alternatives.add(MODULE + shrink(absolutePath, prefix));
       }
-      return super.shrink(absolutePath, anchorFile);
+      ArrayList<String> a = new ArrayList<>();
+      super.shrink(absolutePath, anchorFile, a);
+      if (a.stream().anyMatch(MacrosFactory::containsMacro)) {
+        // HomeMacros superclass found some global path var to substitute, go on then
+        alternatives.addAll(a);
+        // fall-through, collect other alternatives, just in case
+      }
+      // try ${module}/../
+      final IFile anchorParent = anchorFolder.getParent();
+      final String parentPrefix = anchorParent.getPath();
+      if (pathStartsWith(absolutePath, parentPrefix)) {
+        // FWIW, shrink() always starts with IFileSystem.SEPARATOR
+        alternatives.add(MODULE + IFileSystem.SEPARATOR + ".." + shrink(absolutePath, parentPrefix));
+      }
+      if (anchorParent.getParent() != null) {
+        // Generally, I wouldn't care to account for modules at the root, like c:/mymodule/
+        // however, we face anchor files like abc.jar!/META-INF/module.xml, with anchorFolder == META-INF,
+        // anchorParent being jar file root entry !/, and grandparent, jar file, not accessible from JarEntryFile
+        // I'm not sure if I agree with this, but without a change in IFileSystem we'd better guard it here
+        final String grandParentPrefix = anchorParent.getParent().getPath();
+        if (pathStartsWith(absolutePath, grandParentPrefix)) {
+          // FIXME there's corner case when anchorFile is /a/module/module.msd; "/a".getParent() gives "/", any absolute path starts with it,
+          //       but shrink->FileUtil.getRelativePath fails with exception. Although it's not quite common to keep modules that close to
+          //       the root, worth fixing. Use CloneModule_Test for check
+          alternatives.add(MODULE + "/../.." + shrink(absolutePath, grandParentPrefix));
+        }
+      }
     }
 
     private IFile getAnchorFolder(IFile anchorFile) {
@@ -167,14 +192,14 @@ public final class MacrosFactory implements MacroHelper.Source {
     }
 
     @Override
-    protected String shrink(String absolutePath, IFile anchorFile) {
+    protected void shrink(String absolutePath, IFile anchorFile, List<String> alternatives) {
       new PathFormatChecker(absolutePath).osIndependentPath().noDots().absolute();
 
       String prefix = getProjectDir(anchorFile).getPath();
       if (pathStartsWith(absolutePath, prefix)) {
-        return PROJECT + shrink(absolutePath, prefix);
+        alternatives.add(PROJECT + shrink(absolutePath, prefix));
       }
-      return super.shrink(absolutePath, anchorFile);
+      super.shrink(absolutePath, anchorFile, alternatives);
     }
 
     /**
@@ -237,25 +262,23 @@ public final class MacrosFactory implements MacroHelper.Source {
     }
 
     @Override
-    protected String shrink(String absolutePath, IFile anchorFile) {
+    protected void shrink(String absolutePath, IFile anchorFile, List<String> alternatives) {
       new PathFormatChecker(absolutePath).osIndependentPath().noDots().absolute();
-
+      // series of if, not else-if, as few paths (e.g. platform_lib and mps_home) can match
       if (pathStartsWith(absolutePath, libExtPath())) {
         String relationalPath = shrink(absolutePath, libExtPath());
-        return LIB_EXT + relationalPath;
+        alternatives.add(LIB_EXT + relationalPath);
       }
-
       if (pathStartsWith(absolutePath, platformLibPath())) {
         String relationalPath = shrink(absolutePath, platformLibPath());
-        return PLATFORM_LIB + relationalPath;
+        alternatives.add(PLATFORM_LIB + relationalPath);
       }
-
       if (pathStartsWith(absolutePath, homePath())) {
         String relationalPath = shrink(absolutePath, homePath());
-        return MPS_HOME + relationalPath;
+        alternatives.add(MPS_HOME + relationalPath);
       }
 
-      return super.shrink(absolutePath, anchorFile);
+      super.shrink(absolutePath, anchorFile, alternatives);
     }
   }
 }

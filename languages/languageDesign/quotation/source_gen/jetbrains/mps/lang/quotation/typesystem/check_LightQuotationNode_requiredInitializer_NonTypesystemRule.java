@@ -13,7 +13,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -37,11 +36,7 @@ public class check_LightQuotationNode_requiredInitializer_NonTypesystemRule exte
     }
 
     for (final SNode link : ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getAggregationLinkDeclarations_idhEwILLp.invoke(SLinkOperations.getTarget(node, LINKS.concept$xoA0)))) {
-      if (!(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.values$JgAV)).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.NodeBuilderInitLink$XR) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.NodeBuilderInitLink$XR), LINKS.link$VNT5) == link;
-        }
-      }))) {
+      if (!(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.values$JgAV)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.NodeBuilderInitLink$XR) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.NodeBuilderInitLink$XR), LINKS.link$VNT5) == link))) {
         String message = "required link is not initialized `" + SPropertyOperations.getString(link, PROPS.role$Nsjf) + "'";
         switch (checkPolicy.reportRequiredContainmentLink(node, link)) {
           case ERROR:
@@ -49,7 +44,7 @@ public class check_LightQuotationNode_requiredInitializer_NonTypesystemRule exte
               final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(node, message, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "3741790230810467494", null, errorTarget);
               {
-                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.quotation.typesystem.addLinkValue_QuickFix", false);
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.quotation.typesystem.addLinkValue_QuickFix", "3741790230810467503", false);
                 intentionProvider.putArgument("link", link);
                 _reporter_2309309498.addIntentionProvider(intentionProvider);
               }
@@ -60,7 +55,7 @@ public class check_LightQuotationNode_requiredInitializer_NonTypesystemRule exte
               final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(node, message, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "5721350981296883806", null, errorTarget);
               {
-                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.quotation.typesystem.addLinkValue_QuickFix", false);
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.quotation.typesystem.addLinkValue_QuickFix", "5721350981296883816", false);
                 intentionProvider.putArgument("link", link);
                 _reporter_2309309498.addIntentionProvider(intentionProvider);
               }
@@ -70,11 +65,7 @@ public class check_LightQuotationNode_requiredInitializer_NonTypesystemRule exte
       }
     }
     for (final SNode referenceLink : ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(SLinkOperations.getTarget(node, LINKS.concept$xoA0)))) {
-      if (!(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.values$JgAV)).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.NodeBuilderInitLink$XR) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.NodeBuilderInitLink$XR), LINKS.link$VNT5) == referenceLink;
-        }
-      }))) {
+      if (!(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.values$JgAV)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.NodeBuilderInitLink$XR) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.NodeBuilderInitLink$XR), LINKS.link$VNT5) == referenceLink))) {
         String message = "required reference is not initialized `" + SPropertyOperations.getString(referenceLink, PROPS.role$Nsjf) + "'";
         switch (checkPolicy.reportRequiredReferenceLink(node, referenceLink)) {
           case ERROR:
@@ -82,7 +73,7 @@ public class check_LightQuotationNode_requiredInitializer_NonTypesystemRule exte
               final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(node, message, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "5721350981296887946", null, errorTarget);
               {
-                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.quotation.typesystem.addLinkValue_QuickFix", false);
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.quotation.typesystem.addLinkValue_QuickFix", "5721350981296887949", false);
                 intentionProvider.putArgument("link", referenceLink);
                 _reporter_2309309498.addIntentionProvider(intentionProvider);
               }
@@ -93,7 +84,7 @@ public class check_LightQuotationNode_requiredInitializer_NonTypesystemRule exte
               final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(node, message, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "5721350981296887955", null, errorTarget);
               {
-                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.quotation.typesystem.addLinkValue_QuickFix", false);
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.quotation.typesystem.addLinkValue_QuickFix", "5721350981296887958", false);
                 intentionProvider.putArgument("link", referenceLink);
                 _reporter_2309309498.addIntentionProvider(intentionProvider);
               }
@@ -103,11 +94,7 @@ public class check_LightQuotationNode_requiredInitializer_NonTypesystemRule exte
       }
     }
     for (final SNode property : ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(SLinkOperations.getTarget(node, LINKS.concept$xoA0)))) {
-      if (!(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.values$JgAV)).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.NodeBuilderInitProperty$xv) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.NodeBuilderInitProperty$xv), LINKS.property$Y_u4) == property;
-        }
-      }))) {
+      if (!(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.values$JgAV)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.NodeBuilderInitProperty$xv) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.NodeBuilderInitProperty$xv), LINKS.property$Y_u4) == property))) {
         String message = "required property is not initialized `" + SPropertyOperations.getString(property, PROPS.name$MnvL) + "'";
         switch (checkPolicy.reportRequiredProperty(node, property)) {
           case ERROR:
@@ -115,7 +102,7 @@ public class check_LightQuotationNode_requiredInitializer_NonTypesystemRule exte
               final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(node, message, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "5721350981296906886", null, errorTarget);
               {
-                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.quotation.typesystem.addPropertyValue_QuickFix", false);
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.quotation.typesystem.addPropertyValue_QuickFix", "5721350981296906889", false);
                 intentionProvider.putArgument("property", property);
                 _reporter_2309309498.addIntentionProvider(intentionProvider);
               }
@@ -126,7 +113,7 @@ public class check_LightQuotationNode_requiredInitializer_NonTypesystemRule exte
               final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(node, message, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "5721350981296942620", null, errorTarget);
               {
-                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.quotation.typesystem.addPropertyValue_QuickFix", false);
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.quotation.typesystem.addPropertyValue_QuickFix", "5721350981296942624", false);
                 intentionProvider.putArgument("property", property);
                 _reporter_2309309498.addIntentionProvider(intentionProvider);
               }

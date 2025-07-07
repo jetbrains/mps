@@ -4,38 +4,32 @@ package jetbrains.mps.refactoringTest;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ChangeMethodSignatureParameters;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ChangeMethodSignatureRefactoring;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.ArrayList;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
-import jetbrains.mps.smodel.SReference;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 @MPSLaunch
 public class AddThrowDeclaration_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(AddThrowDeclaration_Test.class, "${mps_home}", "r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(AddThrowDeclaration_Test.class).projectPath(null).modelRef("r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)").reopenProject(null).build());
 
   public AddThrowDeclaration_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -49,26 +43,31 @@ public class AddThrowDeclaration_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_AddThrowDeclaration() throws Exception {
-      addNodeById("1230052902926");
-      addNodeById("1230052902935");
-      ChangeMethodSignatureParameters params = new ChangeMethodSignatureParameters(SNodeOperations.cast(getNodeById("1230052902928"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b21dL, "InstanceMethodDeclaration"))));
-      ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.throwsItem$CdW$)).addElement(_quotation_createNode_njbq9a_a0a3a3h());
-      ChangeMethodSignatureRefactoring ref = new ChangeMethodSignatureRefactoring(params, SNodeOperations.cast(getNodeById("1230052902928"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b21dL, "InstanceMethodDeclaration"))));
-      ref.doRefactoring();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("1230052902927"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("1230052902936"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
-        Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-      }
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052902926", "1230052902935");
     }
 
+    public void test_AddThrowDeclaration() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        ChangeMethodSignatureParameters params = new ChangeMethodSignatureParameters(getAnnotatedNode("method"));
+        ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.throwsItem$CdW$)).addElement(_quotation_createNode_njbq9a_a0a1a0a1a5g());
+        ChangeMethodSignatureRefactoring ref = new ChangeMethodSignatureRefactoring(params, getAnnotatedNode("method"));
+        ref.doRefactoring();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("before"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("after"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+      });
+    }
 
-    private static SNode _quotation_createNode_njbq9a_a0a3a3h() {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
+    private static SNode _quotation_createNode_njbq9a_a0a1a0a1a5g() {
       SNode quotedNode_1 = null;
-      quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
-      quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~NullPointerException")));
+      SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+      quotedNode_1 = nb.getResult();
+      nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~NullPointerException");
       return quotedNode_1;
     }
   }

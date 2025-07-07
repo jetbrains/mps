@@ -4,11 +4,10 @@ package jetbrains.mps.refactoringTest;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -22,19 +21,17 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ExtractMethodRefactoring;
 import java.util.List;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 @MPSLaunch
 public class staticContainerClassTest_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(staticContainerClassTest_Test.class, "${mps_home}", "r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(staticContainerClassTest_Test.class).projectPath(null).modelRef("r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)").reopenProject(null).build());
 
   public staticContainerClassTest_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -48,27 +45,30 @@ public class staticContainerClassTest_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_staticContainerClassTest() throws Exception {
-      addNodeById("1230052684687");
-      addNodeById("1230052684697");
-      addNodeById("1230052684705");
-      addNodeById("1230052684709");
-      SNode call = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, "jetbrains.mps.baseLanguage.structure.StaticMethodCall"));
-      SLinkOperations.setTarget(call, LINKS.baseMethodDeclaration$pyYw, SNodeOperations.cast(getNodeById("1230052684711"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbbebabf0aL, "StaticMethodDeclaration"))));
-      SLinkOperations.setTarget(call, LINKS.classConcept$M5BC, SNodeOperations.cast(getNodeById("1230052684710"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
-      SNodeOperations.replaceWithAnother(SNodeOperations.cast(getNodeById("1230052684702"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc59b314L, "IntegerConstant"))), call);
-      ExtractMethodRefactoringParameters params = ExtractMethodFactory.createParameters(ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("1230052684691"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7f0L, "LocalVariableDeclarationStatement"))), SNodeOperations.cast(getNodeById("6195342755327940882"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement")))));
-      params.setName("foo");
-      ExtractMethodRefactoring ref = ExtractMethodFactory.createRefactoring(params);
-      ref.setStaticContainer(SNodeOperations.cast(getNodeById("1230052684706"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
-      ref.doRefactor();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("1230052684688"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, "jetbrains.mps.lang.behavior"), 0x11d43447b1aL, "ConceptBehavior"))), SNodeOperations.cast(getNodeById("1230052684706"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("1230052684698"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, "jetbrains.mps.lang.behavior"), 0x11d43447b1aL, "ConceptBehavior"))), SNodeOperations.cast(getNodeById("1230052684710"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
-        Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-      }
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052684687", "1230052684697", "1230052684705", "1230052684709");
     }
 
+    public void test_staticContainerClassTest() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode call = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, "jetbrains.mps.baseLanguage.structure.StaticMethodCall"));
+        SLinkOperations.setTarget(call, LINKS.baseMethodDeclaration$pyYw, getAnnotatedNode("method"));
+        SLinkOperations.setTarget(call, LINKS.classConcept$M5BC, getAnnotatedNode("containerAfter"));
+        SNodeOperations.replaceWithAnother(getAnnotatedNode("expression"), call);
+        ExtractMethodRefactoringParameters params = ExtractMethodFactory.createParameters(ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("l1"), getAnnotatedNode("l2")));
+        params.setName("foo");
+        ExtractMethodRefactoring ref = ExtractMethodFactory.createRefactoring(params);
+        ref.setStaticContainer(getAnnotatedNode("containerBefore"));
+        ref.doRefactor();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("before"), getAnnotatedNode("containerBefore"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("after"), getAnnotatedNode("containerAfter"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+      });
+    }
 
   }
 

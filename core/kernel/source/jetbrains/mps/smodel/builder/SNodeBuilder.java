@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 package jetbrains.mps.smodel.builder;
 
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.SReference;
+import jetbrains.mps.smodel.NodeIdentityComponent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -28,10 +28,10 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -128,11 +128,7 @@ public class SNodeBuilder implements AbstractNodeBuilder {
     if (myModel != null) {
       return myModel.createNode(c, myNodeIdHint);
     }
-    if (myNodeIdHint != null) {
-      return new jetbrains.mps.smodel.SNode(c, myNodeIdHint);
-    } else {
-      return new jetbrains.mps.smodel.SNode(c);
-    }
+    return new jetbrains.mps.smodel.SNode(c, myNodeIdHint != null ? myNodeIdHint : NodeIdentityComponent.getInstance().issue(null));
   }
 
   @Override
@@ -143,9 +139,16 @@ public class SNodeBuilder implements AbstractNodeBuilder {
   @Override
   public void setReference(SReferenceLink link, @Nullable SNodeReference value) {
     if (value != null) {
-      myNode.setReference(link, SReference.create(link, myNode, value, null));
+      myNode.setReference(link, value);
     }
   }
+
+  public void setReference(@NotNull SReferenceLink link, @NotNull String serializedNodeReference) {
+    // not sure it's good naming, as it's easy to confuse with String resolve info of dynamic reference.
+    // as long as there's no need to create dynamic references in lang.quotation, I can live with that, though not 100% ok
+    myNode.setReference(link, PersistenceFacade.getInstance().createNodeReference(serializedNodeReference));
+  }
+
 
   @Override
   public void setReferenceTarget(SReferenceLink link, @Nullable SNode target) {

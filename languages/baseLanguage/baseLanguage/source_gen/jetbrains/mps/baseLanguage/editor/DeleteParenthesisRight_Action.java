@@ -5,7 +5,6 @@ package jetbrains.mps.baseLanguage.editor;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -31,8 +30,8 @@ public class DeleteParenthesisRight_Action {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        int unmatchedLeftParens = ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7)) != null) ? SPropertyOperations.getInteger(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7)), PROPS.count$FDpi) : 0);
-        int unmatchedRightParens = ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc)) != null) ? SPropertyOperations.getInteger(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc)), PROPS.count$FDpi) : 0);
+        int unmatchedLeftParens = ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(node) != null) ? SPropertyOperations.getInteger(new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(node), PROPS.count$FDpi) : 0);
+        int unmatchedRightParens = ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(node) != null) ? SPropertyOperations.getInteger(new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(node), PROPS.count$FDpi) : 0);
 
         SNode replacing = SLinkOperations.getTarget(node, LINKS.expression$TlhM);
         if (replacing == null) {
@@ -66,11 +65,11 @@ public class DeleteParenthesisRight_Action {
     CellAction originalDelete = editorCell.getAction(CellActionType.DELETE);
     CellAction originalBackspace = editorCell.getAction(CellActionType.BACKSPACE);
 
-    // set actions that were actually defined 
+    // set actions that were actually defined
     setDefinedCellActions(editorCell, node, context);
 
-    // If we set a DELETE action but no BACKSPACE action, 
-    // use the DELETE action for BACKSPACE as well. 
+    // If we set a DELETE action but no BACKSPACE action,
+    // use the DELETE action for BACKSPACE as well.
     CellAction delete = editorCell.getAction(CellActionType.DELETE);
     CellAction backspace = editorCell.getAction(CellActionType.BACKSPACE);
     if (delete != originalDelete && backspace == originalBackspace) {
@@ -87,17 +86,17 @@ public class DeleteParenthesisRight_Action {
   private static final Object OB = new Object();
 
   public static void setDefinedCellActions(EditorCell editorCell, SNode node, EditorContext context) {
-    // set cell actions from all imported action maps 
+    // set cell actions from all imported action maps
 
-    // set cell actions defined directly in this action map 
+    // set cell actions defined directly in this action map
     editorCell.setAction(CellActionType.DELETE, createAction_DELETE(node));
   }
 
   public static void setDefinedCellActionsOfType(EditorCell editorCell, SNode node, EditorContext context, CellActionType actionType) {
 
-    // set cell action(s) of the given type from imported action maps 
+    // set cell action(s) of the given type from imported action maps
 
-    // set cell action of the given type defined directly in this action map 
+    // set cell action of the given type defined directly in this action map
     if (Objects.equals(actionType, CellActionType.DELETE)) {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }

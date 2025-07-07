@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.language.LanguageAspectSupport;
 import jetbrains.mps.project.MPSProject;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1215874656794", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1215874656794", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class CloneModel_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -48,7 +48,7 @@ public class CloneModel_Action extends BaseAction {
     }
     SModule module = ((SModel) MapSequence.fromMap(_params).get("model")).getModule();
     boolean isAspectModel = module instanceof Language && LanguageAspectSupport.isAspectModel(((SModel) MapSequence.fromMap(_params).get("model")));
-    presentation.setEnabledAndVisible(!(isAspectModel));
+    presentation.setEnabledAndVisible(!(isAspectModel) && !(module.isReadOnly()));
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
@@ -76,6 +76,10 @@ public class CloneModel_Action extends BaseAction {
         return false;
       }
     }
+    {
+      SModule p = event.getData(MPSCommonDataKeys.TARGET_MODULE);
+      MapSequence.fromMap(_params).put("targetModule", p);
+    }
     return true;
   }
   @Override
@@ -83,6 +87,6 @@ public class CloneModel_Action extends BaseAction {
     CloneModel_Action.this.getExecutor(_params).execute();
   }
   protected CloneModelActionExecutor getExecutor(final Map<String, Object> _params) {
-    return new CloneModelActionExecutor(((MPSProject) MapSequence.fromMap(_params).get("project")), ((SModel) MapSequence.fromMap(_params).get("model")));
+    return new CloneModelActionExecutor(((MPSProject) MapSequence.fromMap(_params).get("project")), ((SModel) MapSequence.fromMap(_params).get("model")), ((SModule) MapSequence.fromMap(_params).get("targetModule")));
   }
 }

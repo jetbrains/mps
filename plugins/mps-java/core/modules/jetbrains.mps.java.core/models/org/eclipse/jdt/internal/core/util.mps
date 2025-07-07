@@ -3,20 +3,20 @@
   <persistence version="9" />
   <languages>
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
-    <import index="pyqq" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.eclipse.jdt.internal.compiler.parser(MPS.Core/)" />
-    <import index="twf3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.eclipse.jdt.internal.compiler.ast(MPS.Core/)" />
-    <import index="mm0s" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.eclipse.jdt.internal.compiler.problem(MPS.Core/)" />
-    <import index="rs4p" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.eclipse.jdt.core.compiler(MPS.Core/)" />
-    <import index="6g5n" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.eclipse.jdt.internal.compiler(MPS.Core/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
-    <import index="sc83" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.eclipse.jdt.internal.compiler.impl(MPS.Core/)" />
-    <import index="tz9m" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.eclipse.jdt.internal.compiler.env(MPS.Core/)" />
-    <import index="i7h4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.eclipse.jdt.internal.compiler.classfmt(MPS.Core/)" />
-    <import index="539" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.eclipse.jdt.internal.compiler.util(MPS.Core/)" />
-    <import index="49uf" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.eclipse.jdt.internal.compiler.batch(MPS.Core/)" />
+    <import index="pyqq" ref="eb57df31-1cf1-45a8-9e5c-fb583b442849/java:org.eclipse.jdt.internal.compiler.parser(Eclipse.ECJ/)" />
+    <import index="twf3" ref="eb57df31-1cf1-45a8-9e5c-fb583b442849/java:org.eclipse.jdt.internal.compiler.ast(Eclipse.ECJ/)" />
+    <import index="mm0s" ref="eb57df31-1cf1-45a8-9e5c-fb583b442849/java:org.eclipse.jdt.internal.compiler.problem(Eclipse.ECJ/)" />
+    <import index="rs4p" ref="eb57df31-1cf1-45a8-9e5c-fb583b442849/java:org.eclipse.jdt.core.compiler(Eclipse.ECJ/)" />
+    <import index="6g5n" ref="eb57df31-1cf1-45a8-9e5c-fb583b442849/java:org.eclipse.jdt.internal.compiler(Eclipse.ECJ/)" />
+    <import index="sc83" ref="eb57df31-1cf1-45a8-9e5c-fb583b442849/java:org.eclipse.jdt.internal.compiler.impl(Eclipse.ECJ/)" />
+    <import index="tz9m" ref="eb57df31-1cf1-45a8-9e5c-fb583b442849/java:org.eclipse.jdt.internal.compiler.env(Eclipse.ECJ/)" />
+    <import index="i7h4" ref="eb57df31-1cf1-45a8-9e5c-fb583b442849/java:org.eclipse.jdt.internal.compiler.classfmt(Eclipse.ECJ/)" />
+    <import index="539" ref="eb57df31-1cf1-45a8-9e5c-fb583b442849/java:org.eclipse.jdt.internal.compiler.util(Eclipse.ECJ/)" />
+    <import index="49uf" ref="eb57df31-1cf1-45a8-9e5c-fb583b442849/java:org.eclipse.jdt.internal.compiler.batch(Eclipse.ECJ/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -145,7 +145,7 @@
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -175,7 +175,7 @@
       <concept id="1184952934362" name="jetbrains.mps.baseLanguage.structure.DimensionExpression" flags="nn" index="3$GHV9">
         <child id="1184953288404" name="expression" index="3$I4v7" />
       </concept>
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
@@ -230,15 +230,15 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
     <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
-      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
         <property id="155656958578482949" name="value" index="3oM_SC" />
       </concept>
-      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="nn" index="1PaTwC">
         <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>

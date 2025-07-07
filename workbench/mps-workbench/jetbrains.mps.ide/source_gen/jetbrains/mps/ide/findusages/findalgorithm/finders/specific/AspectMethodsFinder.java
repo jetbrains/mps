@@ -23,14 +23,14 @@ import jetbrains.mps.project.Project;
 import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 import jetbrains.mps.ide.findusages.CantSaveSomethingException;
 
-@GeneratedClass(node = "r:3decc57d-6015-4d6c-ad86-7f2134c013b6(jetbrains.mps.ide.findusages.findalgorithm.finders.specific)/7228605397000826824", model = "r:3decc57d-6015-4d6c-ad86-7f2134c013b6(jetbrains.mps.ide.findusages.findalgorithm.finders.specific)")
+@GeneratedClass(nodeId = "7228605397000826824", model = "r:3decc57d-6015-4d6c-ad86-7f2134c013b6(jetbrains.mps.ide.findusages.findalgorithm.finders.specific)")
 public class AspectMethodsFinder implements IFinder {
   public AspectMethodsFinder() {
   }
 
   @Override
   public void find(SearchQuery query, @NotNull IFinder.FindCallback callback, ProgressMonitor monitor) {
-    // I've got no idea what aspect methods it looks for. MPS Integration plugin in Idea takes PsiMethod and pass here package statement and method name 
+    // I've got no idea what aspect methods it looks for. MPS Integration plugin in Idea takes PsiMethod and pass here package statement and method name
     final AspectMethodQueryData data = (AspectMethodQueryData) query.getObjectHolder().getObject();
     final List<SModel> applicableModelDescriptors = new ArrayList<SModel>();
     for (SModel model : query.getScope().getModels()) {

@@ -15,7 +15,6 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
@@ -30,28 +29,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ForbidIncomingReferencesInSubconcepts_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ForbidIncomingReferencesInSubconcepts_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:e5a8b5c7-85b5-4d59-9e4e-850a142e2560(jetbrains.mps.lang.structure.intentions)", "1957700446084421329"));
   }
+
   @Override
   public String getPresentation() {
     return "ForbidIncomingReferencesInSubconcepts";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    // todo: temporary disabled, see MPS-18470 
-    return false;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -61,22 +53,20 @@ public final class ForbidIncomingReferencesInSubconcepts_Intention extends Abstr
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Forbid Incoming references in all sub-concepts";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       Collection<SModel> allModels = new ModuleRepositoryFacade(editorContext.getRepository()).getAllModels();
-      Iterable<SModel> seq = Sequence.fromIterable(((Iterable<SModel>) allModels)).where(new IWhereFilter<SModel>() {
-        public boolean accept(SModel md) {
-          return SModuleOperations.isAspect(md, "structure");
-        }
-      });
+      Iterable<SModel> seq = Sequence.fromIterable(((Iterable<SModel>) allModels)).where((md) -> SModuleOperations.isAspect(md, "structure"));
 
       for (SModel model : Sequence.fromIterable(seq)) {
         for (SNode cd : ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ConceptDeclaration$gH))) {
-          List<SNode> allSupers = Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(cd, ((boolean) true))).toListSequence();
+          List<SNode> allSupers = Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(cd, ((boolean) true))).toList();
           ListSequence.fromList(allSupers).addElement(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"));
 
           if (ListSequence.fromList(allSupers).contains(node)) {
@@ -85,10 +75,26 @@ public final class ForbidIncomingReferencesInSubconcepts_Intention extends Abstr
         }
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      // todo: temporary disabled, see MPS-18470
+      return false;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ForbidIncomingReferencesInSubconcepts_Intention.this;
     }
+
   }
 
   private static final class PROPS {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,6 @@
  */
 package jetbrains.mps.smodel.persistence.def.v9;
 
-import jetbrains.mps.RuntimeFlags;
-import jetbrains.mps.persistence.FilePerRootDataSource;
 import jetbrains.mps.persistence.MetaModelInfoProvider;
 import jetbrains.mps.persistence.registry.AggregationLinkInfo;
 import jetbrains.mps.persistence.registry.AssociationLinkInfo;
@@ -24,14 +22,15 @@ import jetbrains.mps.persistence.registry.ConceptInfo;
 import jetbrains.mps.persistence.registry.IdInfoRegistry;
 import jetbrains.mps.persistence.registry.LangInfo;
 import jetbrains.mps.persistence.registry.PropertyInfo;
+import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.smodel.DefaultSModel;
 import jetbrains.mps.smodel.SModel;
 import jetbrains.mps.smodel.SModel.ImportElement;
 import jetbrains.mps.smodel.SModelHeader;
-import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import jetbrains.mps.smodel.persistence.def.FilePerRootFormatUtil;
 import jetbrains.mps.smodel.persistence.def.IModelWriter;
+import jetbrains.mps.smodel.persistence.def.UserObjectEncoder;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
@@ -54,20 +53,19 @@ import java.util.Set;
 public class ModelWriter9 implements IModelWriter {
   public static final int VERSION = 9;
   private final MetaModelInfoProvider myMetaInfoProvider;
+  private final UserObjectEncoder myUserObjectEncoder;
 
   private IdInfoRegistry myMetaInfo;
   private ImportsHelper myImportsHelper;
   private final IdEncoder myIdEncoder = new IdEncoder();
-  private boolean myUseActualResolveInfo = true;
 
-  public ModelWriter9(@NotNull MetaModelInfoProvider mmiProvider) {
+  public ModelWriter9(@NotNull MetaModelInfoProvider mmiProvider, boolean saveUserObjects) {
     myMetaInfoProvider = mmiProvider;
+    myUserObjectEncoder = saveUserObjects ? new UserObjectEncoder() : null;
   }
 
   @Override
   public Document saveModel(SModel sourceModel) {
-    setUseActualResolveInfo(sourceModel);
-
     myMetaInfo = new IdInfoRegistry();
     new IdInfoCollector(myMetaInfo, myMetaInfoProvider).fill(sourceModel.getRootNodes());
     myImportsHelper = new ImportsHelper(sourceModel.getReference());
@@ -87,14 +85,6 @@ public class ModelWriter9 implements IModelWriter {
     }
 
     return new Document(rootElement);
-  }
-
-  private void setUseActualResolveInfo(SModel sourceModel) {
-    // sometimes we serialize detached models (e.g. in tests), no need to enforce actual resolveInfo in that case
-    // In fact, I doubt the need to ensure actual resolve info at all during serialization. If needed, could be explicit step prior to
-    // save or part of MMIP
-    final boolean attachedModel = sourceModel.getModelDescriptor() != null && sourceModel.getModelDescriptor().getRepository() != null;
-    myUseActualResolveInfo = !RuntimeFlags.isMergeDriverMode() && attachedModel;
   }
 
   private void saveModelProperties(SModel sourceModel, Element rootElement) {
@@ -206,6 +196,9 @@ public class ModelWriter9 implements IModelWriter {
     for (SNode r : model.getRootNodes()) {
       for (SNode n : SNodeUtil.getDescendants(r)) {
         for (SReference ref : n.getReferences()) {
+          if (myMetaInfo.isTransient(ref.getLink())) {
+            continue;
+          }
           SModelReference target = ref.getTargetSModelReference();
           if (target != null) {
             crossModelRefs.add(target);
@@ -271,6 +264,9 @@ public class ModelWriter9 implements IModelWriter {
     }
 
     for (SProperty pid : node.getProperties()) {
+      if (myMetaInfo.isTransient(pid)) {
+        continue;
+      }
       Element propertyElement = new Element(ModelPersistence9.NODE_PROPERTY);
       final PropertyInfo propertyInfo = myMetaInfo.find(pid);
       propertyElement.setAttribute(ModelPersistence9.ROLE_ID, propertyInfo.getIndex());
@@ -279,6 +275,9 @@ public class ModelWriter9 implements IModelWriter {
     }
 
     for (SReference reference : node.getReferences()) {
+      if (myMetaInfo.isTransient(reference.getLink())) {
+        continue;
+      }
       Element linkElement = new Element(ModelPersistence9.NODE_REFERENCE);
       final AssociationLinkInfo associationLinkInfo = myMetaInfo.find(reference.getLink());
       linkElement.setAttribute(ModelPersistence9.ROLE_ID, associationLinkInfo.getIndex());
@@ -292,16 +291,41 @@ public class ModelWriter9 implements IModelWriter {
       nodeElement.addContent(linkElement);
     }
 
+    if (myUserObjectEncoder != null) {
+      for (Object key : node.getUserObjectKeys()) {
+        if (!myUserObjectEncoder.supported(key)) {
+          // perhaps, could report unsupported keys through myUserObjectEncoder (to keep record of already reported to warn only once)
+          continue;
+        }
+        final Object value = node.getUserObject(key);
+        if (!myUserObjectEncoder.supported(value)) {
+          continue;
+        }
+        try {
+          Element uoElement = new Element("uo");
+          uoElement.setAttribute("k", myUserObjectEncoder.toText(key));
+          uoElement.setAttribute("v", myUserObjectEncoder.toText(value));
+          nodeElement.addContent(uoElement);
+        } catch (IllegalArgumentException ex) {
+          // ignore
+        }
+      }
+    }
+
     for (SNode childNode : node.getChildren()) {
-      nodeElement.addContent(saveNode(childNode));
+      if (!myMetaInfo.isTransient(childNode.getContainmentLink())) {
+        nodeElement.addContent(saveNode(childNode));
+      }
     }
     return nodeElement;
   }
 
   @Override
   public Map<String, Document> saveModelAsMultiStream(SModel sourceModel) {
-    setUseActualResolveInfo(sourceModel);
-
+    // we are going to build individual myMetaInfo for each root, but before that, we need one
+    // with an overall model knowledge e.g. to help figure out which x-model references need to be written down into header
+    myMetaInfo = new IdInfoRegistry();
+    new IdInfoCollector(myMetaInfo, myMetaInfoProvider).fill(sourceModel.getRootNodes());
     myImportsHelper = new ImportsHelper(sourceModel.getReference()); // saveModelProperties->saveImports fills it
 
     // header
@@ -313,7 +337,7 @@ public class ModelWriter9 implements IModelWriter {
     final ImportsHelper wholeModelImports = myImportsHelper;
 
     Map<String, Document> result = new HashMap<>();
-    result.put(FilePerRootDataSource.HEADER_FILE, new Document(headerRoot));
+    result.put(MPSExtentions.DOT_MODEL_HEADER, new Document(headerRoot));
     // roots
     Map<SNodeId, String> rootToFile = FilePerRootFormatUtil.getStreamNames(sourceModel.getRootNodes());
     for (SNode root : sourceModel.getRootNodes()) {
@@ -355,18 +379,10 @@ public class ModelWriter9 implements IModelWriter {
     return result;
   }
 
-  // not-null arg
+  /**
+   * @param ref != null
+   */
   private String genResolveInfo(SReference ref) {
-    if (myUseActualResolveInfo) {
-      SNode target = ref instanceof StaticReference ? ref.getTargetNode() : null;
-      if (target != null) {
-        String resolveInfo = jetbrains.mps.util.SNodeOperations.getResolveInfo(target);
-        if (resolveInfo != null) {
-          return resolveInfo;
-        }
-      }
-      // fall-through
-    }
     if (ref instanceof jetbrains.mps.smodel.SReference) {
       return ((jetbrains.mps.smodel.SReference) ref).getResolveInfo();
     }

@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import javax.swing.UIManager;
 
-@GeneratedClass(node = "r:e8d15a56-f89d-47fc-ac9f-8a35d3539ac3(jetbrains.mps.debugger.api.ui.breakpoints)/4474271214083111858", model = "r:e8d15a56-f89d-47fc-ac9f-8a35d3539ac3(jetbrains.mps.debugger.api.ui.breakpoints)")
+@GeneratedClass(nodeId = "4474271214083111858", model = "r:e8d15a56-f89d-47fc-ac9f-8a35d3539ac3(jetbrains.mps.debugger.api.ui.breakpoints)")
 /*package*/ abstract class GroupedTree<D extends CheckBoxNodeRenderer.NodeData> extends MPSTree {
   public GroupedTree() {
     setCellRenderer(new CheckBoxNodeRenderer(true, getCellRenderer()));
@@ -89,17 +89,17 @@ import javax.swing.UIManager;
   private class GroupTreeNode<T> extends MPSTreeNode {
 
     public GroupTreeNode(@NotNull GroupKind<D, T> kind, @NotNull T group, Collection<D> data) {
-      // populate tree element with all data necessary for rendering, so that CheckBoxNodeRenderer shall not care to grab a model lock 
-      // CheckBoxNodeRenderer deals with 
+      // populate tree element with all data necessary for rendering, so that CheckBoxNodeRenderer shall not care to grab a model lock
+      // CheckBoxNodeRenderer deals with
       String text = kind.getText(group);
       setNodeIdentifier(text);
       setText(text);
-      // XXX any reason to set it here provided there's renderer that likely does its own coloring? 
+      // XXX any reason to set it here provided there's renderer that likely does its own coloring?
       setColor(UIManager.getColor("Tree.textForeground"));
       setIcon(kind.getIcon(group));
 
-      // CheckBoxNodeRenderer uses NodeData to represent checked state, therefore we have to attach NodeData to group node to 
-      // represent composite state of its children 
+      // CheckBoxNodeRenderer uses NodeData to represent checked state, therefore we have to attach NodeData to group node to
+      // represent composite state of its children
       setUserObject(new CheckBoxNodeRenderer.NodeData() {
         @Override
         public Icon getIcon() {
@@ -119,7 +119,7 @@ import javax.swing.UIManager;
                 return false;
               }
             }
-            // ignore other tree nodes 
+            // ignore other tree nodes
           }
           return true;
         }

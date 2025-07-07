@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,8 @@
 package jetbrains.mps.ide.findusages.model.scopes;
 
 import jetbrains.mps.VisibleModuleRegistry;
-import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jdom.Element;
 import org.jetbrains.mps.openapi.module.SModule;
 
@@ -32,18 +30,6 @@ import java.util.LinkedHashSet;
  * either source modules being edited or deployed modules project runs with.
  */
 public class GlobalScope extends FindUsagesScope {
-  /**
-   * @deprecated use {@link #GlobalScope(Project)} instead. There are no more uses in MPS, please don't introduce any new one.
-   *             However, we have to keep this code fore fe releases as there's 'execute finders' expression, which defaults to
-   *             use of this scope when none is specified. Though we warn about unspecified scope now, it's unlikely to trigger
-   *             prompt fixes in our clients. We need to change generator to use something more reasonable than new GS(), but
-   *             I failed to come up with an idea what would it be (ProjectManager.allOpenProjects.collect(p->p.repo)?).
-   */
-  @Deprecated
-  @ToRemove(version = 2018.1)
-  public GlobalScope() {
-    addModulesFiltered(MPSModuleRepository.getInstance().getModules());
-  }
 
   private void addModulesFiltered(Iterable<SModule> modules) {
     VisibleModuleRegistry registry = VisibleModuleRegistry.getInstance();

@@ -36,7 +36,7 @@ public class NoAssignmentsToNonFinalVariablesOutsideTheScope_NonTypesystemRule e
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(variableReference, "Cannot refer non-final variables and parameters from within concurrent code", "r:4c36f4b4-7816-4067-aa6e-a49c547265ed(org.jetbrains.mps.samples.ParallelFor.typesystem)", "7793246093816027855", null, errorTarget);
             {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("org.jetbrains.mps.samples.ParallelFor.typesystem.MakeDeclarationFinal_QuickFix", false);
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("org.jetbrains.mps.samples.ParallelFor.typesystem.MakeDeclarationFinal_QuickFix", "7793246093816040853", false);
               _reporter_2309309498.addIntentionProvider(intentionProvider);
             }
           }

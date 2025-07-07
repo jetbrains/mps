@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,10 @@ import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 
 import java.util.Objects;
 
+/**
+ * @deprecated Use {@link jetbrains.mps.ide.ui.tree.TreeMessage} with {@code additional text}
+ */
+@Deprecated(since = "2020.3", forRemoval = true)
 public class AdditionalTextNodeUpdate extends NodeUpdate {
   private final String myText;
 

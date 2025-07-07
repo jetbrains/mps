@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.smodel.references.UnregisteredNodes;
 import jetbrains.mps.util.StringUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -66,10 +65,7 @@ public class SNodePointer implements SNodeReference {
 
       SModel model = myModelReference.resolve(repo);
       if (model != null) {
-        SNode node = model.getNode(myNodeId);
-        if (node != null) {
-          return node;
-        }
+        return model.getNode(myNodeId);
       }
     }
 

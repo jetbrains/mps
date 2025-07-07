@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <root nodeRef="r:2388a65b-960f-41e8-af35-6516f089933c(jetbrains.mps.lang.doctext.runtime.runtime)/4655076208679846674">
+    <file name="DocumentationPathResolver.java">
+      <node id="4655076208677093507" at="23,94,24,50" concept="2" />
+      <node id="4655076208677191254" at="25,56,26,49" concept="0" />
+      <node id="4655076208670520323" at="27,5,28,39" concept="2" />
+      <node id="4655076208670520332" at="28,39,29,76" concept="2" />
+      <node id="4655076208682005993" at="30,27,31,18" concept="3" />
+      <node id="4655076208670520346" at="32,5,33,42" concept="2" />
+      <node id="4655076208678539890" at="33,42,34,28" concept="3" />
+      <node id="4655076208678655464" at="38,85,39,145" concept="3" />
+      <node id="4655076208678666459" at="40,96,41,161" concept="3" />
+      <node id="4655076208680082466" at="42,88,43,138" concept="3" />
+      <node id="4655076208680100766" at="44,94,45,157" concept="3" />
+      <node id="4655076208680145920" at="46,90,47,199" concept="3" />
+      <node id="4655076208680205384" at="48,92,49,210" concept="3" />
+      <node id="4655076208680276938" at="50,80,51,180" concept="3" />
+      <node id="4655076208679180404" at="52,5,53,135" concept="0" />
+      <node id="4655076208679177856" at="53,135,54,68" concept="3" />
+      <node id="4655076208678887627" at="57,96,58,58" concept="3" />
+      <node id="4655076208678705009" at="62,83,63,50" concept="2" />
+      <node id="4655076208678705017" at="64,56,65,49" concept="0" />
+      <node id="4655076208678721478" at="66,5,67,66" concept="3" />
+      <node id="4655076208680483376" at="70,80,71,94" concept="2" />
+      <node id="4655076208682058475" at="72,30,73,18" concept="3" />
+      <node id="4655076208678924687" at="74,5,75,82" concept="2" />
+      <node id="4655076208678957334" at="75,82,76,82" concept="2" />
+      <node id="4655076208678989817" at="76,82,77,59" concept="3" />
+      <node id="4655076208680662100" at="80,80,81,50" concept="2" />
+      <node id="4655076208680662108" at="82,56,83,49" concept="0" />
+      <node id="4655076208680662120" at="84,5,85,39" concept="2" />
+      <node id="4655076208680662127" at="85,39,86,76" concept="2" />
+      <node id="4655076208680662134" at="86,76,87,28" concept="3" />
+      <node id="4655076208679846674" at="91,0,92,0" concept="4" trace="AbstractConceptDeclaration$KA" />
+      <node id="4655076208679846674" at="92,0,93,0" concept="4" trace="ConstrainedDataTypeDeclaration$Ch" />
+      <node id="4655076208679846674" at="93,0,94,0" concept="4" trace="EnumerationDeclaration$hv" />
+      <node id="4655076208679846674" at="94,0,95,0" concept="4" trace="PrimitiveDataTypeDeclaration$80" />
+      <node id="4655076208679846674" at="95,0,96,0" concept="4" trace="ConceptEditorDeclaration$BH" />
+      <node id="4655076208679846674" at="96,0,97,0" concept="4" trace="EditorComponentDeclaration$WM" />
+      <node id="4655076208679846674" at="97,0,98,0" concept="4" trace="ConceptBehavior$2" />
+      <node id="4655076208679846674" at="101,0,102,0" concept="4" trace="conceptId$rrGe" />
+      <node id="4655076208679846674" at="102,0,103,0" concept="4" trace="datatypeId$$gBg" />
+      <node id="4655076208679846674" at="106,0,107,0" concept="4" trace="conceptDeclaration$HJmJ" />
+      <node id="4655076208679846674" at="107,0,108,0" concept="4" trace="concept$u6dL" />
+      <node id="4655076208677145717" at="24,50,27,5" concept="1" />
+      <node id="4655076208681993927" at="29,76,32,5" concept="1" />
+      <node id="4655076208678759593" at="57,0,60,0" concept="5" trace="getDocFileNameWithExtension#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="4655076208678705015" at="63,50,66,5" concept="1" />
+      <node id="4655076208682043180" at="71,94,74,5" concept="1" />
+      <node id="4655076208680662106" at="81,50,84,5" concept="1" />
+      <node id="4655076208678643730" at="62,0,69,0" concept="5" trace="getModulePath#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/generator/template/TemplateQueryContext;)Ljava/lang/String;" />
+      <node id="4655076208680475026" at="70,0,79,0" concept="5" trace="getDocPath#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/generator/template/TemplateQueryContext;)Ljava/lang/String;" />
+      <node id="4655076208680662093" at="80,0,89,0" concept="5" trace="docExists#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/generator/template/TemplateQueryContext;)Z" />
+      <node id="4655076208678444268" at="23,0,36,0" concept="5" trace="getDocumentationLocation#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/generator/template/TemplateQueryContext;)Ljava/lang/String;" />
+      <node id="4655076208678648991" at="37,99,52,5" concept="1" />
+      <node id="4655076208678627294" at="37,0,56,0" concept="5" trace="getDocFileNameWithoutExtension#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <scope id="4655076208677145719" at="25,56,26,49" />
+      <scope id="4655076208681993929" at="30,27,31,18" />
+      <scope id="4655076208678648993" at="38,85,39,145" />
+      <scope id="4655076208678664214" at="40,96,41,161" />
+      <scope id="4655076208680082465" at="42,88,43,138" />
+      <scope id="4655076208680100765" at="44,94,45,157" />
+      <scope id="4655076208680145919" at="46,90,47,199" />
+      <scope id="4655076208680205383" at="48,92,49,210" />
+      <scope id="4655076208680276937" at="50,80,51,180" />
+      <scope id="4655076208678759594" at="57,96,58,58" />
+      <scope id="4655076208678705016" at="64,56,65,49" />
+      <scope id="4655076208682043182" at="72,30,73,18" />
+      <scope id="4655076208680662107" at="82,56,83,49" />
+      <scope id="4655076208678759593" at="57,0,60,0">
+        <var name="node" id="4655076208678759627" />
+      </scope>
+      <scope id="4655076208678643731" at="62,83,67,66">
+        <var name="model" id="4655076208678705010" />
+      </scope>
+      <scope id="4655076208678643730" at="62,0,69,0">
+        <var name="genContext" id="4655076208678705468" />
+        <var name="node" id="4655076208678643740" />
+      </scope>
+      <scope id="4655076208680475029" at="70,80,77,59">
+        <var name="docLocation" id="4655076208680483377" />
+        <var name="fileName" id="4655076208678957337" />
+        <var name="modulePath" id="4655076208678924690" />
+      </scope>
+      <scope id="4655076208680662099" at="80,80,87,28">
+        <var name="docFacet" id="4655076208680662128" />
+        <var name="model" id="4655076208680662101" />
+        <var name="module" id="4655076208680662121" />
+      </scope>
+      <scope id="4655076208680475026" at="70,0,79,0">
+        <var name="genContext" id="4655076208680476003" />
+        <var name="node" id="4655076208680475618" />
+      </scope>
+      <scope id="4655076208680662093" at="80,0,89,0">
+        <var name="genContext" id="4655076208680662097" />
+        <var name="node" id="4655076208680662095" />
+      </scope>
+      <scope id="4655076208678444271" at="23,94,34,28">
+        <var name="docFacet" id="4655076208670520333" />
+        <var name="folder" id="4655076208670520347" />
+        <var name="model" id="4655076208677093510" />
+        <var name="module" id="4655076208670520324" />
+      </scope>
+      <scope id="4655076208678444268" at="23,0,36,0">
+        <var name="genContext" id="4655076208678452468" />
+        <var name="node" id="4655076208678444348" />
+      </scope>
+      <scope id="4655076208678627297" at="37,99,54,68" />
+      <scope id="4655076208678627294" at="37,0,56,0">
+        <var name="node" id="4655076208678627526" />
+      </scope>
+      <unit id="4655076208679846674" at="100,0,104,0" name="jetbrains.mps.lang.doctext.runtime.runtime.DocumentationPathResolver$PROPS" />
+      <unit id="4655076208679846674" at="105,0,109,0" name="jetbrains.mps.lang.doctext.runtime.runtime.DocumentationPathResolver$LINKS" />
+      <unit id="4655076208679846674" at="90,0,99,0" name="jetbrains.mps.lang.doctext.runtime.runtime.DocumentationPathResolver$CONCEPTS" />
+      <unit id="4655076208679846674" at="22,0,110,0" name="jetbrains.mps.lang.doctext.runtime.runtime.DocumentationPathResolver" />
+    </file>
+  </root>
+</debug-info>
+

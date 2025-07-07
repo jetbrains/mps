@@ -12,6 +12,7 @@ import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import java.util.function.Predicate;
 import java.util.Collections;
@@ -24,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
  * Scanner of a model with {@code ConceptDeclarations}to find cross-model dependencies.
  * Much like {@link jetbrains.mps.smodel.ModelDependencyScanner } albeit narrow tailored for structure models and extends relation between Language modules.
  */
-@GeneratedClass(node = "r:5ff047e0-2953-4750-806a-bdc16824aa89(jetbrains.mps.smodel)/7408719695775110713", model = "r:5ff047e0-2953-4750-806a-bdc16824aa89(jetbrains.mps.smodel)")
+@GeneratedClass(nodeId = "7408719695775110713", model = "r:5ff047e0-2953-4750-806a-bdc16824aa89(jetbrains.mps.smodel)")
 public class ConceptDeclarationScanner {
   private final Set<SNode> myExternalConcepts = new HashSet<SNode>();
   private final Set<SNode> myExternalIfaces = new HashSet<SNode>();
@@ -52,19 +53,22 @@ public class ConceptDeclarationScanner {
     List<SNode> roots = SModelOperations.roots(m, null);
     for (SNode cd : SNodeOperations.ofConcept(roots, CONCEPTS.ConceptDeclaration$gH)) {
       SNode ex = SLinkOperations.getTarget(cd, LINKS.extends$_Isg);
-      // ex could be null if no explicit BaseConcept in super 
+      // ex could be null if no explicit BaseConcept in super
       if (ex != null && SNodeOperations.getModel(ex) != m) {
         myExternalConcepts.add(ex);
       }
       for (SNode icd : SLinkOperations.collect(SLinkOperations.getChildren(cd, LINKS.implements$u_P2), LINKS.intfc$zM4e)) {
-        if (SNodeOperations.getModel(icd) != m) {
+        if (SNodeOperations.getModel(icd) != m && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.MarkerInterfaceAttribute$8S).get(icd) == null)) {
+          // we respect 'marker iface' attribute for the directly implemented interfaces, and don't care if its
+          // superinterface may be denoted as marker.
           myExternalIfaces.add(icd);
         }
       }
     }
     for (SNode icd : SNodeOperations.ofConcept(roots, CONCEPTS.InterfaceConceptDeclaration$CG)) {
       for (SNode iface : SLinkOperations.collect(SLinkOperations.getChildren(icd, LINKS.extends$nawU), LINKS.intfc$zM4e)) {
-        if (SNodeOperations.getModel(iface) != m) {
+        if (SNodeOperations.getModel(iface) != m && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.MarkerInterfaceAttribute$8S).get(iface) == null)) {
+          // XXX again, marker interface directly extended does not constitute 'extends' for languages
           myExternalIfaces.add(iface);
         }
       }
@@ -72,14 +76,14 @@ public class ConceptDeclarationScanner {
     for (SNode cd : myExternalConcepts) {
       myExtendedModels.add(SNodeOperations.getModel(cd));
     }
-    // XXX for the time being, consider implements of a CD as 'extends' relation between the languages, although this needs extra consideration 
-    // perhaps, shall not treat CD.implements (but still ICD.extends) as mandatory for 'extends' between languages, as it's common to see marker interfaces 
-    // (like IMainClass) that bring (sometimes huge) dependency hierarchy for no added value. 
+    // XXX for the time being, consider implements of a CD as 'extends' relation between the languages, although this needs extra consideration
+    // perhaps, shall not treat CD.implements (but still ICD.extends) as mandatory for 'extends' between languages, as it's common to see marker interfaces
+    // (like IMainClass) that bring (sometimes huge) dependency hierarchy for no added value.
     for (SNode cd : myExternalIfaces) {
       myExtendedModels.add(SNodeOperations.getModel(cd));
     }
     if (myExcludeLangCore) {
-      // here comes an odd way to deal with missing model-reference expression 
+      // here comes an odd way to deal with missing model-reference expression
       final SModelReference langCoreStructureModelRef = new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626").getModelReference();
 
       myExtendedModels.removeIf(new Predicate<SModel>() {
@@ -118,6 +122,7 @@ public class ConceptDeclarationScanner {
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept MarkerInterfaceAttribute$8S = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x4d7dcbe8bf135fd0L, "jetbrains.mps.lang.structure.structure.MarkerInterfaceAttribute");
     /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
     /*package*/ static final SConcept InterfaceConceptDeclaration$CG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
   }

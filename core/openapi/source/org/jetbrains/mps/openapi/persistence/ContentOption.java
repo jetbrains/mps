@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,12 +23,15 @@ import org.jetbrains.mps.openapi.model.SModelName;
  * and tread loaded model as mere container for nodes, <code>SModelData</code>-like.
  * We use this mechanism from merge driver and various tools that are going to access nodes from
  * the model but are not going to expose this model anywhere else.
- * [AT]
  *
  * @see ModelFactory#create(DataSource, SModelName, ModelLoadingOption...)
  * @see ModelFactory#load(DataSource, ModelLoadingOption...)
  * @author apyshkin
  */
 public enum ContentOption implements ModelLoadingOption {
+  /**
+   * Use of this option in ModelFactory#load(DataSource, ModelLoadingOption...) tells to load complete model and
+   * to substitute original {@code DataSource} with another (read-only), effectively discarding it
+   */
   CONTENT_ONLY
 }

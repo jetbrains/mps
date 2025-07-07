@@ -37,7 +37,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.StaticMeth
     editorCell.setBig(true);
     setCellContext(editorCell);
     Style style = new StyleImpl();
-    new StaticMethodStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new StaticMethodStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;

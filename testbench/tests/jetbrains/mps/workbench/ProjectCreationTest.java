@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,11 @@
  */
 package jetbrains.mps.workbench;
 
-import com.intellij.ide.impl.ProjectUtil;
+import com.intellij.configurationStore.StoreUtil;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ex.ProjectManagerEx;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.Solution;
@@ -29,11 +30,13 @@ import jetbrains.mps.tool.environment.EnvironmentAware;
 import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.util.Reference;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.workbench.dialogs.project.newproject.ProjectFactory;
 import jetbrains.mps.workbench.dialogs.project.newproject.ProjectFactory.ProjectNotCreatedException;
 import jetbrains.mps.workbench.dialogs.project.newproject.ProjectOptions;
 import org.jetbrains.annotations.NotNull;
 import org.junit.Assert;
+import org.junit.Assume;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -57,14 +60,18 @@ import java.util.StringJoiner;
  * @author Evgeny Gerashchenko
  */
 public class ProjectCreationTest implements EnvironmentAware {
+  // FIXME shall decide whether we care to go on with support for file-based projects that IDEA decided to fade away.
+  private static final boolean CARE_TO_SUPPORT_FILE_PROJECT = false;
+
   private static final String PROJECT_NAME = "CreatedTestProject";
   private static final String LANGUAGE_NAMESPACE = "CreatedLanguage";
   private static final String SOLUTION_NAMESPACE = "CreatedSandbox";
-  private static final String DEVEKIT_NAMESPACE = "CreatedDevkit";
+  private static final String DEVKIT_NAMESPACE = "CreatedDevkit";
   private static final String PROJECT_PROPERTIES_DIR = PROJECT_NAME + "/.mps";
   private static final List<String> PROJECT_PROPERTIES_DIR_CONTENT = Arrays.asList(
       PROJECT_PROPERTIES_DIR + "/modules.xml",
       PROJECT_PROPERTIES_DIR + "/workspace.xml",
+      PROJECT_PROPERTIES_DIR + "/product-workspace.xml",
       PROJECT_PROPERTIES_DIR + "/migration.xml");
 
   private static final List<String> EMPTY_PROJECT_PATH_LIST_FB = Arrays.asList(
@@ -91,7 +98,7 @@ public class ProjectCreationTest implements EnvironmentAware {
       rv[i] = String.format(PATH_IN_PROJECT, projectName, LANGUAGES_ROOT, languageNamespace, Language.LANGUAGE_MODELS, languageNamespace + "." + aspects[i].getName(), MPSExtentions.MODEL);
     }
     rv[aspects.length] =
-        String.format(PATH_IN_PROJECT, projectName, LANGUAGES_ROOT, languageNamespace, "generator/templates", "main@generator", MPSExtentions.MODEL);
+        String.format(PATH_IN_PROJECT, projectName, LANGUAGES_ROOT, languageNamespace, "generator/templates", languageNamespace + ".generator.templates@generator", MPSExtentions.MODEL);
     return Arrays.asList(rv);
   }
 
@@ -114,7 +121,7 @@ public class ProjectCreationTest implements EnvironmentAware {
     List<String> template = new ArrayList<>();
     final String languageModule = PROJECT_NAME + "/" + LANGUAGES_ROOT + "/" + LANGUAGE_NAMESPACE + "/" + LANGUAGE_NAMESPACE + MPSExtentions.DOT_LANGUAGE;
     final String solutionModule = PROJECT_NAME + "/" + SOLUTIONS_ROOT + "/" + SOLUTION_NAMESPACE + "/" + SOLUTION_NAMESPACE + MPSExtentions.DOT_SOLUTION;
-    final String devkitModule = PROJECT_NAME + "/" + DEVKIT_ROOT + "/" + DEVEKIT_NAMESPACE + "/" + DEVEKIT_NAMESPACE + MPSExtentions.DOT_DEVKIT;
+    final String devkitModule = PROJECT_NAME + "/" + DEVKIT_ROOT + "/" + DEVKIT_NAMESPACE + "/" + DEVKIT_NAMESPACE + MPSExtentions.DOT_DEVKIT;
     template.add(languageModule);
     template.add(solutionModule);
     template.add(devkitModule);
@@ -130,6 +137,7 @@ public class ProjectCreationTest implements EnvironmentAware {
 
   @Test
   public void emptyProjectFileBased() {
+    Assume.assumeTrue("Test for .mpr project", CARE_TO_SUPPORT_FILE_PROJECT);
     invokeTest(new EmptyProjectProvider(true), EMPTY_PROJECT_PATH_LIST_FB);
   }
 
@@ -140,6 +148,7 @@ public class ProjectCreationTest implements EnvironmentAware {
 
   @Test
   public void projectWithModulesFileBased() {
+    Assume.assumeTrue("Test for .mpr project", CARE_TO_SUPPORT_FILE_PROJECT);
     invokeTest(new ProjectWithModulesProvider(true), PROJECT_WITH_MODULES_PATH_LIST_FB);
   }
 
@@ -149,42 +158,19 @@ public class ProjectCreationTest implements EnvironmentAware {
   }
 
   private void invokeTest(final ProjectOptionsProvider projectOptionsProvider, List<String> expectedPathList) {
-    final Reference<Throwable> refThrowable = new Reference<>();
-    ApplicationManager.getApplication().invokeAndWait(new Runnable() {
-      @Override
-      public void run() {
-        ApplicationManager.getApplication().runWriteAction(new Runnable() {
-          @Override
-          public void run() {
-            try {
-              myTmpDir = IFileUtil.createTmpDir();
-              try {
-                ProjectFactory factory = new ProjectFactory(projectOptionsProvider.getProjectOptions(myTmpDir));
-                myProject = factory.createProject();
-                factory.activate();
-                myProject.save();
-              } catch (ProjectNotCreatedException e) {
-                Assert.fail();
-              }
-            } catch (Throwable t) {
-              refThrowable.set(t);
-            }
-          }
-        });
-      }
-    }, ModalityState.defaultModalityState());
-    if (!refThrowable.isNull()) {
-      throw new RuntimeException(refThrowable.get());
+    myTmpDir = IFileUtil.createTmpDir(myEnv.getPlatform().findComponent(VFSManager.class).getUmbrellaFileSystemJavaIO());
+    try {
+      ProjectFactory factory = new ProjectFactory(projectOptionsProvider.getProjectOptions(myTmpDir));
+      myProject = factory.createProject();
+      factory.activate(false);
+      myProject.save();
+    } catch (ProjectNotCreatedException e) {
+      Assert.fail();
     }
-    Exception exception = ThreadUtils.runInUIThreadAndWait(new Runnable() {
-      @Override
-      public void run() {
-        try {
-          ProjectUtil.closeAndDispose(myProject);
-        } catch (Throwable t) {
-          refThrowable.set(t);
-        }
-      }
+
+    Exception exception = ThreadUtils.runInUIThreadAndWait(() -> {
+      StoreUtil.saveSettings(myProject, true);
+      ProjectManagerEx.getInstanceEx().closeAndDispose(myProject);
     });
     if (exception != null) {
       throw new RuntimeException(exception);
@@ -235,7 +221,7 @@ public class ProjectCreationTest implements EnvironmentAware {
   }
 
   private static class EmptyProjectProvider implements ProjectOptionsProvider {
-    private boolean myDefaultScheme;
+    private final boolean myDefaultScheme;
 
     public EmptyProjectProvider(boolean defaultScheme) {
       myDefaultScheme = defaultScheme;
@@ -258,7 +244,7 @@ public class ProjectCreationTest implements EnvironmentAware {
   }
 
   private static class ProjectWithModulesProvider implements ProjectOptionsProvider {
-    private boolean myDefaultScheme;
+    private final boolean myDefaultScheme;
 
     public ProjectWithModulesProvider(boolean defaultScheme) {
       myDefaultScheme = defaultScheme;
@@ -283,8 +269,8 @@ public class ProjectCreationTest implements EnvironmentAware {
       options.setCreateModel(true);
 
       options.setCreateNewDevkit(true);
-      options.setDevkitNamespace(DEVEKIT_NAMESPACE);
-      options.setDevkitPath(projectDir.findChild(DEVKIT_ROOT).findChild(DEVEKIT_NAMESPACE).getPath());
+      options.setDevkitNamespace(DEVKIT_NAMESPACE);
+      options.setDevkitPath(projectDir.findChild(DEVKIT_ROOT).findChild(DEVKIT_NAMESPACE).getPath());
 
       return options;
     }

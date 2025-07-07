@@ -14,9 +14,7 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
@@ -40,46 +38,28 @@ public class MigratePropertyPatternVariables extends MigrationScriptBase {
     return null;
   }
   public void doExecute(final SModule m) {
-    // implemented in languages that aggregate the patten concept 
+    // implemented in languages that aggregate the patten concept
   }
   @Override
   public Iterable<Problem> check(SModule m) {
     {
       SearchScope scope_mymgc3_a0f = CommandUtil.createScope(m);
       final SearchScope scope_mymgc3_a0f_0 = new EditableFilteringScope(scope_mymgc3_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_mymgc3_a0f_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_mymgc3_a0f_0;
       List<Problem> res = ListSequence.fromList(new ArrayList<Problem>());
-      ListSequence.fromList(res).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyPatternVariableDeclaration$aQ, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SPropertyOperations.getBoolean(it, PROPS.stringValueMigrated$2KQs));
-        }
-      }).select(new ISelector<SNode, NotMigratedNode>() {
-        public NotMigratedNode select(SNode it) {
-          return new NotMigratedNode(it) {
-            @Override
-            public String getMessage() {
-              return "Property pattern variable uses raw property value";
-            }
-          };
-        }
+      ListSequence.fromList(res).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyPatternVariableDeclaration$aQ, false)).where((it) -> !(SPropertyOperations.getBoolean(it, PROPS.stringValueMigrated$2KQs))).select((it) -> {
+        return new NotMigratedNode(it) {
+          @Override
+          public String getMessage() {
+            return "Property pattern variable uses raw property value";
+          }
+        };
       }));
-      ListSequence.fromList(res).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyPatternVariableDeclaration$aQ, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SNodeOperations.getParent(PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(it)), CONCEPTS.EnumPropertyMigrationInfo$O3);
-        }
-      }).select(new ISelector<SNode, UsageOfMigrateNodeNotMigratedProblem>() {
-        public UsageOfMigrateNodeNotMigratedProblem select(SNode it) {
-          return new UsageOfMigrateNodeNotMigratedProblem(it, PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(it));
-        }
-      }));
+      ListSequence.fromList(res).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyPatternVariableDeclaration$aQ, false)).where((it) -> SNodeOperations.isInstanceOf(SNodeOperations.getParent(PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(it)), CONCEPTS.EnumPropertyMigrationInfo$O3)).select((it) -> new UsageOfMigrateNodeNotMigratedProblem(it, PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(it))));
       return res;
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, "jetbrains.mps.lang.pattern"), 1);
   }
 

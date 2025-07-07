@@ -18,13 +18,9 @@ import jetbrains.mps.execution.api.commands.KeyValueCommandPart;
 import java.io.File;
 import com.intellij.openapi.application.PathManager;
 import jetbrains.mps.reloading.CommonPaths;
-import jetbrains.mps.util.ClassType;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import com.intellij.openapi.application.PathMacros;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -95,7 +91,7 @@ public class Ant_Command {
     if ((jdkHome == null || jdkHome.length() == 0)) {
       throw new ExecutionException("Could not find valid java home.");
     }
-    return new Java_Command().setProject_Project(myProject_Project).createProcess(new ListCommandPart(ListSequence.fromListAndArray(new ArrayList(), new PropertyCommandPart("java.home", jdkHome), new PropertyCommandPart("ant.home", myAntLocation_String), new ListCommandPart(ListSequence.fromListWithValues(new ArrayList<CommandPart>(), Ant_Command.getMacroValues(myMacroToDefine_ListString, myOptions_String))), (((myOptions_String != null && myOptions_String.length() > 0) ? myOptions_String + " " : "")), new KeyValueCommandPart("-" + "f", new File(antFilePath)), (((myTargetName_String == null || myTargetName_String.length() == 0) ? "" : " " + myTargetName_String)))), "org.apache.tools.ant.launch.Launcher", Ant_Command.getAntClassPath(myAntLocation_String));
+    return new Java_Command().setProject_Project(myProject_Project).createProcess(new ListCommandPart(ListSequence.fromListAndArray(new ArrayList<>(), new PropertyCommandPart("java.home", jdkHome), new PropertyCommandPart("ant.home", myAntLocation_String), new ListCommandPart(ListSequence.fromListWithValues(new ArrayList<CommandPart>(), Ant_Command.getMacroValues(myMacroToDefine_ListString, myOptions_String))), (((myOptions_String != null && myOptions_String.length() > 0) ? myOptions_String + " " : "")), new KeyValueCommandPart("-" + "f", new File(antFilePath)), (((myTargetName_String == null || myTargetName_String.length() == 0) ? "" : " " + myTargetName_String)))), "org.apache.tools.ant.launch.Launcher", Ant_Command.getAntClassPath(myAntLocation_String));
   }
 
 
@@ -116,46 +112,26 @@ public class Ant_Command {
       }
     }
 
-    List<String> mpsPaths = CommonPaths.getMPSPaths(ClassType.JDK_TOOLS);
-    ListSequence.fromList(classPath).addSequence(ListSequence.fromList(mpsPaths).select(new ISelector<String, File>() {
-      public File select(String it) {
-        return new File(it);
-      }
-    }));
+    List<String> mpsPaths = CommonPaths.getJDKToolsPath();
+    ListSequence.fromList(classPath).addSequence(ListSequence.fromList(mpsPaths).select((it) -> new File(it)));
 
     return classPath;
   }
   private static Iterable<CommandPart> getMacroValues(final List<String> toDefine, final String options) {
     final PathMacros pathMacros = PathMacros.getInstance();
     List<CommandPart> macroValues = ListSequence.fromList(new ArrayList<CommandPart>());
-    // rather questionable : why do you feel ok passing MPS_HOME explicitly when you are running from cmd 
-    // but running the same build script (obviusly with empty MPS_HOME macro) from MPS needs to be hacked? 
-    // I would say ant command will not know about mps at all. 
-    // It is going to be totally transferred to the build script rc producer or 
-    // better a separate build script creating ant-mps.jar will be created and everyone will depend on it 
+    // rather questionable : why do you feel ok passing MPS_HOME explicitly when you are running from cmd
+    // but running the same build script (obviusly with empty MPS_HOME macro) from MPS needs to be hacked?
+    // I would say ant command will not know about mps at all.
+    // It is going to be totally transferred to the build script rc producer or
+    // better a separate build script creating ant-mps.jar will be created and everyone will depend on it
     String mpsHomeMacroName = MacrosFactory.MPS_HOME_MACRO_NAME;
     if (ListSequence.fromList(toDefine).contains(mpsHomeMacroName)) {
       if (!(Ant_Command.optionsAlreadyContainMacro(options, mpsHomeMacroName))) {
         ListSequence.fromList(macroValues).addElement(new PropertyCommandPart(mpsHomeMacroName, jetbrains.mps.util.PathManager.getHomePath()));
       }
     }
-    return ListSequence.fromList(macroValues).union(Sequence.fromIterable(Sequence.fromClosure(new ISequenceClosure<String>() {
-      public Iterable<String> iterable() {
-        return pathMacros.getUserMacroNames();
-      }
-    })).where(new IWhereFilter<String>() {
-      public boolean accept(String it) {
-        return toDefine == null || ListSequence.fromList(toDefine).contains(it);
-      }
-    }).where(new IWhereFilter<String>() {
-      public boolean accept(String it) {
-        return !(Ant_Command.optionsAlreadyContainMacro(options, it));
-      }
-    }).select(new ISelector<String, PropertyCommandPart>() {
-      public PropertyCommandPart select(String it) {
-        return new PropertyCommandPart(it, pathMacros.getValue(it));
-      }
-    }));
+    return ListSequence.fromList(macroValues).union(Sequence.fromIterable(Sequence.fromClosure(() -> pathMacros.getUserMacroNames())).where((it) -> toDefine == null || ListSequence.fromList(toDefine).contains(it)).where((it) -> !(Ant_Command.optionsAlreadyContainMacro(options, it))).select((it) -> new PropertyCommandPart(it, pathMacros.getValue(it))));
   }
   private static boolean optionsAlreadyContainMacro(String options, String macroName) {
     return options != null && options.contains("-D" + macroName + "=");
@@ -163,7 +139,7 @@ public class Ant_Command {
   private static String getGeneratedFileName(SNode project) {
     IFile file;
     SModel model = SNodeOperations.getModel(project);
-    // XXX note, build scripts are copied/deployed to a different location with CopyGeneratedScripts, here we use origin, not the 'deployed' script location. 
+    // XXX note, build scripts are copied/deployed to a different location with CopyGeneratedScripts, here we use origin, not the 'deployed' script location.
     file = model.getModule().getFacet(JavaModuleFacet.class).getOutputLocation(model);
     file = file.findChild(SPropertyOperations.getString(project, PROPS.name$MnvL) + ".xml");
     return file.getPath();

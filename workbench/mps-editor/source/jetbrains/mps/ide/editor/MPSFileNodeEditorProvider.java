@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,53 +23,38 @@ import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.vfs.VirtualFile;
-import jetbrains.mps.fileTypes.MPSFileTypeFactory;
-import jetbrains.mps.ide.vfs.IdeaFileSystem;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
-import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import jetbrains.mps.openapi.editor.EditorState;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.smodel.SModelFileTracker;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.module.SRepository;
 
 public class MPSFileNodeEditorProvider implements FileEditorProvider, DumbAware {
-  private static final Logger LOG = LogManager.getLogger(MPSFileNodeEditorProvider.class);
-
   private static final String CLASS = "class";
 
   @Override
   public boolean accept(@NotNull Project project, @NotNull VirtualFile file) {
-    return file instanceof MPSNodeVirtualFile || file.getFileType() == MPSFileTypeFactory.MPS_ROOT_FILE_TYPE;
+    return file instanceof MPSNodeVirtualFile;
   }
 
   @Override
   @NotNull
   public FileEditor createEditor(@NotNull Project project, @NotNull final VirtualFile file) {
-    final MPSProject mpsProject = project.getComponent(MPSProject.class);
-    if (file instanceof MPSNodeVirtualFile) {
-      return new MPSFileNodeEditor(mpsProject, (MPSNodeVirtualFile) file);
+    final MPSProject mpsProject = ProjectHelper.fromIdeaProjectOrFail(project);
+    if (!(file instanceof MPSNodeVirtualFile)) {
+      throw new IllegalArgumentException("expecting only our node virtual files");
     }
-
-    SRepository repository = mpsProject.getRepository();
-    NodeFileComputable nodeFileComputable = new NodeFileComputable(repository, file, mpsProject.getFileSystem());
-    MPSNodeVirtualFile mpsNodeVirtualFile = new ModelAccessHelper(repository).runReadAction(nodeFileComputable);
-    return mpsNodeVirtualFile != null ? new MPSFileNodeEditor(mpsProject, mpsNodeVirtualFile) :
-           new MPSFileNodeEditor(mpsProject, repository, nodeFileComputable);
+    final MPSFileNodeEditor mpsFileNodeEditor = new MPSFileNodeEditor(mpsProject, (MPSNodeVirtualFile) file);
+    EditorTrackService.getInstance(project).editorCreated(mpsFileNodeEditor);
+    return mpsFileNodeEditor;
   }
 
   @Override
   public void disposeEditor(@NotNull FileEditor editor) {
+    // I'd love to notify EditorTrackService, but there's no project to get its instance, and I don't want any hacks to get one
     Disposer.dispose(editor);
   }
 
@@ -82,8 +67,8 @@ public class MPSFileNodeEditorProvider implements FileEditorProvider, DumbAware 
     }
 
     try {
-      Class cls = Class.forName(className);
-      EditorState instance = (EditorState) cls.newInstance();
+      Class<? extends EditorState> cls = (Class<EditorState>) Class.forName(className);
+      EditorState instance = cls.getDeclaredConstructor().newInstance();
       instance.load(sourceElement);
       MPSEditorStateWrapper result = new MPSEditorStateWrapper();
       result.setEditorState(instance);
@@ -91,7 +76,7 @@ public class MPSFileNodeEditorProvider implements FileEditorProvider, DumbAware 
     } catch (ClassNotFoundException e) {
       //do nothing - class is not there anymore
     } catch (Throwable t) {
-      LOG.error(null, t);
+      Logger.getLogger(MPSFileNodeEditorProvider.class).error(t);
     }
 
     return FileEditorState.INSTANCE;
@@ -120,37 +105,5 @@ public class MPSFileNodeEditorProvider implements FileEditorProvider, DumbAware 
   @NotNull
   public FileEditorPolicy getPolicy() {
     return FileEditorPolicy.HIDE_DEFAULT_EDITOR;
-  }
-
-  static class NodeFileComputable implements Computable<MPSNodeVirtualFile> {
-    private final SRepository myRepository;
-    private final VirtualFile myFile;
-    private final String myNameToMatch;
-    private IdeaFileSystem myFileSystem;
-
-    NodeFileComputable(SRepository repository, VirtualFile file, IdeaFileSystem fileSystem) {
-      myRepository = repository;
-      myFile = file;
-      myFileSystem = fileSystem;
-      myNameToMatch = FileUtil.getNameWithoutExtension(file.getName());
-    }
-
-    @Override
-    public MPSNodeVirtualFile compute() {
-      if (!myFileSystem.canConvert(myFile)){
-        return null;
-      }
-      SModel model = SModelFileTracker.getInstance(myRepository).findModel(myFileSystem.fromVirtualFile(myFile));
-      if (model == null) {
-        return null;
-      }
-
-      for (SNode node : model.getRootNodes()) {
-        if (myNameToMatch.equals(node.getName()) || myNameToMatch.equals(node.getNodeId().toString())) {
-          return NodeVirtualFileSystem.getInstance().getFileFor(myRepository, node);
-        }
-      }
-      return null;
-    }
   }
 }

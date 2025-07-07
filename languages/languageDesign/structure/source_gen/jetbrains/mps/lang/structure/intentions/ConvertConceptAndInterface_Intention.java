@@ -10,42 +10,45 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.openapi.editor.EditorPanelManager;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.smodel.Language;
+import java.util.List;
+import org.jetbrains.mps.openapi.model.SModel;
+import java.util.ArrayList;
+import jetbrains.mps.smodel.Generator;
+import java.util.Objects;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class ConvertConceptAndInterface_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ConvertConceptAndInterface_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:e5a8b5c7-85b5-4d59-9e4e-850a142e2560(jetbrains.mps.lang.structure.intentions)", "2686330069581322162"));
   }
+
   @Override
   public String getPresentation() {
     return "ConvertConceptAndInterface";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), CONCEPTS.ConceptDeclaration$gH) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), CONCEPTS.InterfaceConceptDeclaration$CG);
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -55,10 +58,12 @@ public final class ConvertConceptAndInterface_Intention extends AbstractIntentio
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return (SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptDeclaration$gH) ? "Convert to Interface" : "Convert to Concept");
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode created = null;
@@ -66,7 +71,7 @@ public final class ConvertConceptAndInterface_Intention extends AbstractIntentio
         SNode icd = SModelOperations.createNewRootNode(SNodeOperations.getModel(node), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration"));
         ConceptConversionHelper.copy(node, icd);
         ListSequence.fromList(SLinkOperations.getChildren(icd, LINKS.extends$nawU)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$gH), LINKS.implements$u_P2)));
-        // what to do with concept's "extends"? Copy to implements? 
+        // what to do with concept's "extends"? Copy to implements?
         created = icd;
       } else {
         SNode cd = SModelOperations.createNewRootNode(SNodeOperations.getModel(node), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration"));
@@ -74,14 +79,59 @@ public final class ConvertConceptAndInterface_Intention extends AbstractIntentio
         ListSequence.fromList(SLinkOperations.getChildren(cd, LINKS.implements$u_P2)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.InterfaceConceptDeclaration$CG), LINKS.extends$nawU)));
         created = cd;
       }
+      this._additional_updateReferences(node, created);
       SNodeOperations.deleteNode(node);
 
-      NavigationSupport.getInstance().openNode(editorContext.getOperationContext().getProject(), created, true, false);
+      EditorPanelManager epm = editorContext.getEditorPanelManager();
+      if (epm != null) {
+        epm.openEditor(created);
+      }
+    }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), CONCEPTS.ConceptDeclaration$gH) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), CONCEPTS.InterfaceConceptDeclaration$CG);
+    }
+
+
+    private void _additional_updateReferences(final SNode original, final SNode createdNode) {
+      SModule module = SNodeOperations.getModel(original).getModule();
+      if (module == null || !(module instanceof Language)) {
+        return;
+      }
+      Language lang = ((Language) module);
+      List<SModel> allModels = ListSequence.fromList(new ArrayList<SModel>());
+      ListSequence.fromList(allModels).addSequence(ListSequence.fromList(lang.getModels()));
+      ListSequence.fromList(allModels).addSequence(ListSequence.fromList(lang.getAccessoryModels()));
+      for (Generator generator : lang.getGenerators()) {
+        ListSequence.fromList(allModels).addSequence(ListSequence.fromList(generator.getModels()));
+      }
+      for (SModel currentModel : allModels) {
+        Iterable<SNode> nodesWithRefs = ListSequence.fromList(SModelOperations.nodes(currentModel, null)).where((n) -> !(Objects.equals(n, original)) && ListSequence.fromList(SNodeOperations.getReferences(n)).any((ref) -> Objects.equals(SLinkOperations.getTargetNode(ref), original)));
+        Sequence.fromIterable(nodesWithRefs).visitAll((referingNode) -> {
+          Iterable<? extends SReference> references = referingNode.getReferences();
+          for (SReference r : references) {
+            if (Objects.equals(SLinkOperations.getTargetNode(r), original)) {
+              referingNode.setReferenceTarget(r.getLink(), null);
+              referingNode.setReferenceTarget(r.getLink(), createdNode);
+            }
+          }
+        });
+
+      }
     }
     @Override
     public IntentionDescriptor getDescriptor() {
       return ConvertConceptAndInterface_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

@@ -5,9 +5,9 @@ package jetbrains.mps.lang.generator.generator.baseLanguage.template.util;
 import jetbrains.mps.generator.template.TemplateQueryContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.generator.impl.template.MetaObjectGenerationHelper;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -22,20 +22,16 @@ public class GenUtil {
   public GenUtil() {
   }
   public static String getVar(TemplateQueryContext context, SNode node, int skipMacro) {
-    List<SNode> macros = ListSequence.fromList(SNodeOperations.getChildren(node)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.NodeMacro$qU);
-      }
-    }).toListSequence();
+    List<SNode> macros = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(node), CONCEPTS.NodeMacro$qU)).toList();
     SNode real = (ListSequence.fromList(macros).count() <= skipMacro ? node : ListSequence.fromList(macros).getElement(skipMacro));
     return (String) context.getTransientObject(MultiTuple.<String,SNode>from(KEY, real));
   }
   public static String saveListVar(TemplateQueryContext context, SNode node, int varIndex) {
-    // Don't want "tlist" and "tnode" scattered around 
+    // Don't want "tlist" and "tnode" scattered around
     return saveVar(context, node, "tlist" + varIndex);
   }
   public static String saveNodeVar(TemplateQueryContext context, SNode node, int varIndex, boolean canBeNull) {
-    // Don't want "tlist" and "tnode" scattered around 
+    // Don't want "tlist" and "tnode" scattered around
     String varName = saveVar(context, node, "tnode" + varIndex);
     node.putUserObject("GenUtil:NotNull", Boolean.valueOf(!(canBeNull)));
     return varName;
@@ -43,20 +39,20 @@ public class GenUtil {
   public static String saveVar(TemplateQueryContext context, SNode node, String var) {
     SNode original = (SNodeOperations.isInstanceOf(node, CONCEPTS.NodeMacro$qU) ? SNodeOperations.getParent(node) : node);
     if (context.getTransientObject(original) == null) {
-      // guess, it's a mechanism to access variable name without knowledge of skipMacro value 
+      // guess, it's a mechanism to access variable name without knowledge of skipMacro value
       context.putTransientObject(original, var);
     }
     context.putTransientObject(MultiTuple.<String,SNode>from(KEY, node), var);
     return var;
   }
   public static String getVarHack(TemplateQueryContext context, SNode node) {
-    // see saveVar above 
+    // see saveVar above
     Object obj = context.getTransientObject(node);
     return (obj instanceof String ? (String) obj : null);
   }
 
   public static boolean isCollectionVariable(TemplateQueryContext context, SNode node) {
-    // or !startsWith("tnode")? 
+    // or !startsWith("tnode")?
     String n = getVarHack(context, node);
     return n != null && n.startsWith("tlist");
   }
@@ -117,8 +113,8 @@ public class GenUtil {
       } else if (Character.isJavaIdentifierStart(c) && c != '$') {
         sb.append(c);
       } else {
-        // replace all non-identifier characters with underscore 
-        //  I realize that may lead to name clashes, but odds are too low and do not justify e.g. _x0020 in the name with spaces 
+        // replace all non-identifier characters with underscore
+        //  I realize that may lead to name clashes, but odds are too low and do not justify e.g. _x0020 in the name with spaces
         sb.append('_');
       }
     }
@@ -131,7 +127,7 @@ public class GenUtil {
    * to resolve output using this template node as identity)
    */
   public static void markHasIncomingRefs(SNode n) {
-    //  just care about the fact there are references, not their number nor nature 
+    //  just care about the fact there are references, not their number nor nature
     n.putUserObject("hasIncomingRefs", Boolean.TRUE);
   }
   /**

@@ -7,16 +7,13 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -36,32 +33,26 @@ public class MigrateReferences extends MigrationScriptBase {
     return null;
   }
   public void doExecute(final SModule m) {
-    Iterable<SModel> models = Sequence.fromIterable(((Iterable<SModel>) m.getModels())).where(new IWhereFilter<SModel>() {
-      public boolean accept(SModel it) {
-        return !(SModuleOperations.isAspect(it, "migration"));
-      }
-    });
+    Iterable<SModel> models = Sequence.fromIterable(((Iterable<SModel>) m.getModels())).where((it) -> !(SModuleOperations.isAspect(it, "migration")));
 
-    Sequence.fromIterable(models).translate(new ITranslator2<SModel, SNode>() {
-      public Iterable<SNode> translate(SModel m) {
+    Sequence.fromIterable(models).translate(new _FunctionTypes._return_P1_E0<Iterable<SNode>, SModel>() {
+      public Iterable<SNode> invoke(SModel m) {
         return SModelOperations.nodes(m, CONCEPTS.OldComponentRef$TN);
       }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode oldNode) {
-        SNode newNode = _quotation_createNode_w5820p_a0a0a0a2a5(SLinkOperations.getTarget(oldNode, LINKS.target$H6Jr));
-        ((jetbrains.mps.smodel.SNode) newNode).setId(((jetbrains.mps.smodel.SNode) oldNode).getNodeId());
-        SNodeOperations.replaceWithAnother(oldNode, newNode);
-      }
+    }).visitAll((oldNode) -> {
+      SNode newNode = _quotation_createNode_w5820p_a0a0a0a2a5(SLinkOperations.getTarget(oldNode, LINKS.target$H6Jr));
+      ((jetbrains.mps.smodel.SNode) newNode).setId(((jetbrains.mps.smodel.SNode) oldNode).getNodeId());
+      SNodeOperations.replaceWithAnother(oldNode, newNode);
     });
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x1610048531ac4899L, 0x91122289e22843ddL, "references"), 0);
   }
 
   private static SNode _quotation_createNode_w5820p_a0a0a0a2a5(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x1610048531ac4899L, 0x91122289e22843ddL, "references"), 0x6aff2c104932a6c9L, "NewComponentRef")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x1610048531ac4899L, 0x91122289e22843ddL, "references"), 0x6aff2c104932a6c9L, "NewComponentRef"));
+    quotedNode_2 = nb.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0x1610048531ac4899L, 0x91122289e22843ddL, 0x6aff2c104932a6c9L, 0x6aff2c104932a6caL, "target"), (SNode) parameter_1);
     return quotedNode_2;
   }

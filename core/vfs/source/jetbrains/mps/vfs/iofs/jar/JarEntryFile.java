@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.vfs.iofs.jar;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.util.annotation.Hack;
 import jetbrains.mps.vfs.FileSystem;
@@ -22,7 +23,8 @@ import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.vfs.VFSManager;
-import jetbrains.mps.vfs.impl.IoFileSystem;
+import jetbrains.mps.vfs.path.Path;
+import jetbrains.mps.vfs.path.PathFormats;
 import jetbrains.mps.vfs.util.PathFormatChecker;
 import jetbrains.mps.vfs.util.PathUtil;
 import org.jetbrains.annotations.NotNull;
@@ -33,23 +35,23 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 @Immutable
 //todo: currently, myEntryPath can be empty or like "a/b/c". Force it to have "/a/b/c" format and be non-empty (like in JRT file)
 public class JarEntryFile implements IFile {
 
   private final AbstractJarFileData myJarFileData;
-  private final File myJarFile;
   private final String myEntryPath;
   private final JarIoFileSystem myFileSystem;
 
-  JarEntryFile(AbstractJarFileData jarFileData, File jarFile, String entryPath, JarIoFileSystem fileSystem) {
+  JarEntryFile(AbstractJarFileData jarFileData, String entryPath, JarIoFileSystem fileSystem) {
     myJarFileData = jarFileData;
-    myJarFile = jarFile;
     myEntryPath = entryPath;
     myFileSystem = fileSystem;
   }
@@ -63,7 +65,7 @@ public class JarEntryFile implements IFile {
   @NotNull
   @Override
   public FileSystem getFileSystem() {
-    return IoFileSystem.INSTANCE;
+    return myFileSystem.getUmbrellaFileSystem();
   }
 
   @NotNull
@@ -85,7 +87,7 @@ public class JarEntryFile implements IFile {
     if (myEntryPath.isEmpty()) {
       return null;
     } else {
-      return myFileSystem.createFile(myJarFile, myJarFileData.getParentDirectory(myEntryPath), myJarFileData);
+      return myFileSystem.createFile(myJarFileData.getParentDirectory(myEntryPath), myJarFileData);
     }
   }
 
@@ -97,24 +99,36 @@ public class JarEntryFile implements IFile {
 
     List<IFile> result = new ArrayList<>();
     for (String e : myJarFileData.getSubdirectories(myEntryPath)) {
-      result.add(myFileSystem.createFile(myJarFile, e, myJarFileData));
+      result.add(myFileSystem.createFile(e, myJarFileData));
     }
-    final String prefix = myEntryPath.length() > 0 ? myEntryPath + '/' : null;
+    final String prefix = myEntryPath.isEmpty() ? null : myEntryPath + '/';
     for (String e : myJarFileData.getFiles(myEntryPath)) {
-      result.add(myFileSystem.createFile(myJarFile, prefix != null ? prefix + e : e, myJarFileData));
+      result.add(myFileSystem.createFile(prefix != null ? prefix + e : e, myJarFileData));
     }
 
     return result;
   }
 
   @Override
-  public boolean isArchive() {
-    return true;
+  public boolean isZipArchive() {
+    return false;
   }
 
   @Override
-  public boolean isInArchive() {
+  @NotNull
+  public IFile stepIntoArchive() {
+    return this;
+  }
+
+  @Override
+  public boolean isInZipArchive() {
     return true;
+  }
+
+  @NotNull
+  @Override
+  public IFile stepUpToArchive() {
+    return myFileSystem.getUmbrellaFileSystem().getFile(myJarFileData.getFile());
   }
 
   @Override
@@ -131,8 +145,8 @@ public class JarEntryFile implements IFile {
   @NotNull
   public IFile findChild(@NotNull String name) {
     new PathFormatChecker(name).nonEmpty().noSeparators();
-    String path = myEntryPath.length() > 0 ? myEntryPath + IFileSystem.SEPARATOR + name : name;
-    return myFileSystem.createFile(myJarFile, path, myJarFileData);
+    String path = myEntryPath.isEmpty() ? name : myEntryPath + IFileSystem.SEPARATOR + name;
+    return myFileSystem.createFile(path, myJarFileData);
   }
 
   @Override
@@ -143,7 +157,24 @@ public class JarEntryFile implements IFile {
   @NotNull
   @Override
   public String getPath() {
-    return PathUtil.toSystemIndependent(myJarFile.getAbsolutePath()) + "!/" + myEntryPath;
+    return PathUtil.toSystemIndependent(myJarFileData.getFile().getAbsolutePath()) + "!/" + myEntryPath;
+  }
+
+  @NotNull
+  @Override
+  public Path toPath() {
+    return PathFormats.UNIX.fromParts(myJarFileData.getFile().getAbsolutePath(), myEntryPath);
+  }
+
+  @NotNull
+  @Override
+  public String toRealPath() {
+    try {
+      return PathUtil.toSystemIndependent(myJarFileData.getFile().getCanonicalPath()) + "!/" + myEntryPath;
+    } catch (IOException e) {
+      Logger.getLogger(JarEntryFile.class).warning("Got problem while accessing canonical path of " + this, e);
+      return getPath();
+    }
   }
 
   @Override
@@ -153,7 +184,7 @@ public class JarEntryFile implements IFile {
 
   @Override
   public long lastModified() {
-    return myJarFile.lastModified();
+    return myJarFileData.getFile().lastModified();
   }
 
   @Override
@@ -225,7 +256,7 @@ public class JarEntryFile implements IFile {
 
   @Override
   public IFile getBundleHome() {
-    return myFileSystem.getManager().getFileSystem(VFSManager.JAVA_IO_FILE_FS).getFile(myJarFile);
+    return stepUpToArchive();
   }
 
   @Override
@@ -254,12 +285,8 @@ public class JarEntryFile implements IFile {
   @Hack
   @Override
   public URL getUrl() throws MalformedURLException {
-//    try {
-//      return new URI("jar:file", "", myJarFile.getAbsolutePath() + "!/" + myEntryPath, null, null).toURL();
-//    } catch (URISyntaxException e) {
-//      throw new RuntimeException(e);
-//    }
-    return new URL("jar:file://" + myJarFile.getAbsolutePath() + "!/" + myEntryPath);
+    String encoded = new File(myJarFileData.getFile().getAbsoluteFile() + Path.ARCHIVE_SEPARATOR + myEntryPath).toURI().toASCIIString();
+    return URI.create("jar:" + encoded).toURL();
   }
 
   @Override
@@ -273,16 +300,13 @@ public class JarEntryFile implements IFile {
 
     JarEntryFile that = (JarEntryFile) o;
 
-    if (myEntryPath != null ? !myEntryPath.equals(that.myEntryPath) : that.myEntryPath != null) {
-      return false;
-    }
-    return myJarFile != null ? myJarFile.equals(that.myJarFile) : that.myJarFile == null;
+    return Objects.equals(myEntryPath, that.myEntryPath) && (myJarFileData == that.myJarFileData || Objects.equals(myJarFileData.getFile(), that.myJarFileData.getFile()));
   }
 
   @Override
   public int hashCode() {
-    int result = myJarFile != null ? myJarFile.hashCode() : 0;
-    result = 31 * result + (myEntryPath != null ? myEntryPath.hashCode() : 0);
+    int result = myJarFileData.hashCode();
+    result += myEntryPath != null ? myEntryPath.hashCode() : 0;
     return result;
   }
 }

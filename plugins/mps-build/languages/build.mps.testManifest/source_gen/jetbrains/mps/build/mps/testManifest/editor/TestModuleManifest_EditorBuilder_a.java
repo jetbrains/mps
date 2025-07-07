@@ -19,10 +19,8 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.SPropertyAccessor;
 import jetbrains.mps.nodeEditor.cellMenu.SPropertySubstituteInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
@@ -40,6 +38,7 @@ import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 /*package*/ class TestModuleManifest_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -83,6 +82,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.core.editor.alias");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.SELECTABLE, false);
+    style.set(StyleAttributes.READ_ONLY, true);
+    editorCell.getStyle().putAll(style);
     return editorCell;
   }
   private EditorCell createProperty_0() {
@@ -95,12 +98,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setCellId("property_name");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
-      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-        }
-      });
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
+      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
       if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
         EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
         return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);
@@ -146,7 +145,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return LINKS.language$tWhW;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.LanguageReferenceExpression$yZ;
+      return CONCEPTS.ModuleIdentity$2y;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -203,7 +202,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
-    /*package*/ static final SConcept LanguageReferenceExpression$yZ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3dc174aL, "jetbrains.mps.lang.smodel.structure.LanguageReferenceExpression");
+    /*package*/ static final SInterfaceConcept ModuleIdentity$2y = MetaAdapterFactory.getInterfaceConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x96ca5405afc2bc9L, "jetbrains.mps.lang.modelapi.structure.ModuleIdentity");
   }
 
   private static final class LINKS {

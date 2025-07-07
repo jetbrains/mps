@@ -21,7 +21,7 @@ import com.intellij.ide.IdeBundle;
 import com.intellij.ide.projectView.ProjectView;
 import jetbrains.mps.ide.projectPane.fileSystem.FileViewProjectPane;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3858094006307618582", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "3858094006307618582", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class NewDirectory_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -29,6 +29,7 @@ public class NewDirectory_Action extends BaseAction {
     super("Directory", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -77,12 +78,10 @@ public class NewDirectory_Action extends BaseAction {
           return false;
         }
 
-        ApplicationManager.getApplication().runWriteAction(new Runnable() {
-          public void run() {
-            try {
-              result[0] = dir.createChildDirectory(null, p);
-            } catch (IOException e) {
-            }
+        ApplicationManager.getApplication().runWriteAction(() -> {
+          try {
+            result[0] = dir.createChildDirectory(null, p);
+          } catch (IOException e) {
           }
         });
         return true;
@@ -91,11 +90,7 @@ public class NewDirectory_Action extends BaseAction {
     Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("project")), IdeBundle.message("prompt.enter.new.directory.name"), IdeBundle.message("title.new.directory"), Messages.getQuestionIcon(), "", validator);
     if (result[0] != null) {
       ProjectView.getInstance(((Project) MapSequence.fromMap(_params).get("project"))).refresh();
-      ApplicationManager.getApplication().invokeLater(new Runnable() {
-        public void run() {
-          ProjectView.getInstance(((Project) MapSequence.fromMap(_params).get("project"))).getProjectViewPaneById(FileViewProjectPane.ID).select(null, result[0], true);
-        }
-      });
+      ApplicationManager.getApplication().invokeLater(() -> ProjectView.getInstance(((Project) MapSequence.fromMap(_params).get("project"))).getProjectViewPaneById(FileViewProjectPane.ID).select(null, result[0], true));
     }
   }
 }

@@ -22,8 +22,8 @@ public final class TestConcept0_ConstraintsFeedback extends BaseFeedbackDescript
   private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_12wgcr_a = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(TestConcept0_ConstraintRules.Rule_parentHasTheSameName.ID_parentHasTheSameName)) {
     @NotNull
     @Override
-    public MessageProvider.StringMsg yieldMessage(ContainmentContext context) {
-      return new MessageProvider.StringMsg("Parent " + context.getParentNode() + " must be the prefix of " + context.getChildNode() + " name");
+    public MessageProvider.Msg yieldMessage(ContainmentContext context) {
+      return format("Parent %s must be the prefix of %s name", context.getParentNode(), context.getChildNode());
     }
   };
 

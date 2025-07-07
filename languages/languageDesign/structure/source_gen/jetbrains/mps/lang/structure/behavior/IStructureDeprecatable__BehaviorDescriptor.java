@@ -8,13 +8,11 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -27,8 +25,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class IStructureDeprecatable__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x11d2ea63881L, "jetbrains.mps.lang.structure.structure.IStructureDeprecatable");
 
-  public static final SMethod<Boolean> isDeprecated_idhOwoPtR = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDeprecated").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hOwoPtR").build();
-  public static final SMethod<String> getMessage_idhP43_8K = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMessage").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hP43_8K").build();
+  public static final SMethod<Boolean> isDeprecated_idhOwoPtR = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDeprecated").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1224609060727L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  public static final SMethod<String> getMessage_idhP43_8K = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMessage").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1225207468592L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isDeprecated_idhOwoPtR, getMessage_idhP43_8K);
 
@@ -36,19 +34,19 @@ public final class IStructureDeprecatable__BehaviorDescriptor extends BaseBHDesc
   }
 
   /*package*/ static boolean isDeprecated_idhOwoPtR(@NotNull SNode __thisNode__) {
-    return (AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV)) != null);
+    return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV).get(__thisNode__) != null);
   }
   /*package*/ static String getMessage_idhP43_8K(@NotNull SNode __thisNode__) {
     StringBuilder result = new StringBuilder();
     result.append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(__thisNode__));
     result.append(" is deprecated");
-    if (SPropertyOperations.getString(AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV)), PROPS.build$n9$x) != null) {
+    if (SPropertyOperations.getString(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV).get(__thisNode__), PROPS.build$n9$x) != null) {
       result.append(" since build ");
-      result.append(SPropertyOperations.getString(AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV)), PROPS.build$n9$x));
+      result.append(SPropertyOperations.getString(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV).get(__thisNode__), PROPS.build$n9$x));
     }
-    if (SPropertyOperations.getString(AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV)), PROPS.comment$Ux58) != null) {
+    if (SPropertyOperations.getString(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV).get(__thisNode__), PROPS.comment$Ux58) != null) {
       result.append(" (");
-      result.append(SPropertyOperations.getString(AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV)), PROPS.comment$Ux58));
+      result.append(SPropertyOperations.getString(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV).get(__thisNode__), PROPS.comment$Ux58));
       result.append(")");
     }
     return result.toString();

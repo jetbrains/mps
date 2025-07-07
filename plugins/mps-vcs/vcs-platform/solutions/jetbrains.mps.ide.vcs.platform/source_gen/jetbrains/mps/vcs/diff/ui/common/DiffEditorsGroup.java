@@ -23,84 +23,123 @@ import jetbrains.mps.openapi.editor.selection.SingularSelection;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.JViewport;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 
-@GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/4652592318748338723", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
+@GeneratedClass(nodeId = "4652592318748338723", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 public class DiffEditorsGroup {
   private List<DiffEditor> myDiffEditors = ListSequence.fromList(new ArrayList<DiffEditor>());
-  private MyCellSelectionListener myCellSelectionListener = new MyCellSelectionListener();
-  private final MyViewportChangeListener viewportChangeListener = new MyViewportChangeListener();
-  public DiffEditorsGroup() {
+  private final MyCellSelectionListener myMainCellSelectionListener = new MyCellSelectionListener();
+  private final MyViewportChangeListener myMainViewportChangeListener = new MyViewportChangeListener(false);
+  private final MyViewportChangeListener myInspectorViewportChangeListener = new MyViewportChangeListener(true);
+  private boolean myIsEditorsSyncEnabled;
+  private static final String DIFF_EDITOR_PROPERTY_KEY = "jetbrains.mps.vcs.diff.ui.common.DiffEditor";
+
+  public DiffEditorsGroup(boolean isEditorsSyncEnabled) {
+    myIsEditorsSyncEnabled = isEditorsSyncEnabled;
   }
+
   public void add(DiffEditor diffEditor) {
     ListSequence.fromList(myDiffEditors).addElement(diffEditor);
-    DiffEditor.MainEditorComponent mainEditor = diffEditor.getMainEditor();
-    mainEditor.getSelectionManager().addSelectionListener(myCellSelectionListener);
-    mainEditor.getViewport().putClientProperty("jetbrains.mps.vcs.diff.ui.common.DiffEditor", diffEditor);
-    mainEditor.getViewport().addChangeListener(viewportChangeListener);
+    if (myIsEditorsSyncEnabled) {
+      addViewportListeners(diffEditor);
+    }
+    diffEditor.getMainEditor().getSelectionManager().addSelectionListener(myMainCellSelectionListener);
+    diffEditor.getMainEditor().getViewport().putClientProperty(DIFF_EDITOR_PROPERTY_KEY, diffEditor);
+    diffEditor.getInspector().getViewport().putClientProperty(DIFF_EDITOR_PROPERTY_KEY, diffEditor);
   }
 
   public void dispose() {
     for (DiffEditor diffEditor : ListSequence.fromList(myDiffEditors)) {
-      DiffEditor.MainEditorComponent mainEditor = diffEditor.getMainEditor();
-      mainEditor.getViewport().removeChangeListener(viewportChangeListener);
-      mainEditor.getSelectionManager().removeSelectionListener(myCellSelectionListener);
+      if (myIsEditorsSyncEnabled) {
+        removeViewportListeners(diffEditor);
+      }
+      diffEditor.getMainEditor().getSelectionManager().removeSelectionListener(myMainCellSelectionListener);
       diffEditor.dispose();
     }
   }
 
-  public void synchronizeViewWithOther(final DiffEditor thisDiffEditor, final DiffEditor otherDiffEditor) {
+  private void addViewportListeners(DiffEditor editor) {
+    editor.getMainEditor().getViewport().addChangeListener(myMainViewportChangeListener);
+    editor.getInspector().getViewport().addChangeListener(myInspectorViewportChangeListener);
+  }
+
+  private void removeViewportListeners(DiffEditor editor) {
+    editor.getMainEditor().getViewport().removeChangeListener(myMainViewportChangeListener);
+    editor.getInspector().getViewport().removeChangeListener(myInspectorViewportChangeListener);
+  }
+
+  public void enableEditorsSynchronization(boolean enable) {
+    if (myIsEditorsSyncEnabled == enable) {
+      return;
+    }
+    myIsEditorsSyncEnabled = enable;
+    for (DiffEditor diffEditor : ListSequence.fromList(myDiffEditors)) {
+      if (enable) {
+        addViewportListeners(diffEditor);
+      } else {
+        removeViewportListeners(diffEditor);
+      }
+    }
+  }
+
+  /**
+   * 
+   * @deprecated 
+   */
+  @Deprecated
+  public void synchronizeViewWithOther(DiffEditor thisDiffEditor, DiffEditor otherDiffEditor) {
+    synchronizeViewWithOther(thisDiffEditor, otherDiffEditor, false);
+  }
+
+  public void synchronizeViewWithOther(final DiffEditor thisDiffEditor, final DiffEditor otherDiffEditor, boolean inspector) {
     if (thisDiffEditor == otherDiffEditor) {
       return;
     }
-    final EditorComponent thisEditor = thisDiffEditor.getMainEditor();
-    final EditorComponent otherEditor = otherDiffEditor.getMainEditor();
+    final EditorComponent thisEditor = thisDiffEditor.getEditorComponent(inspector);
+    final EditorComponent otherEditor = otherDiffEditor.getEditorComponent(inspector);
 
     final SRepository editorRepo = thisEditor.getEditorContext().getRepository();
     assert editorRepo == otherEditor.getEditorContext().getRepository();
-    editorRepo.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        int viewY = thisEditor.getViewport().getViewPosition().y;
-        SNode visibleNode = thisEditor.getEditedNode();
-        if (viewY > thisEditor.getRootCell().getY()) {
-          visibleNode = check_s6qw4f_a0a0c0a0a6a8(thisEditor.findCellWeak(1, viewY));
-        }
-        SModel otherModel = check_s6qw4f_a0d0a0a6a8(otherEditor.getEditedNode());
-        if (otherModel == null) {
-          return;
-        }
+    editorRepo.getModelAccess().runReadAction(() -> {
+      int viewY = thisEditor.getViewport().getViewPosition().y;
+      SNode visibleNode = thisEditor.getEditedNode();
+      if (viewY > thisEditor.getRootCell().getY()) {
+        visibleNode = check_s6qw4f_a0a0c0a0a6a12(thisEditor.findCellWeak(1, viewY));
+      }
+      SModel otherModel = check_s6qw4f_a0d0a0a6a12(otherEditor.getEditedNode());
+      if (otherModel == null) {
+        return;
+      }
 
-        while (visibleNode != null) {
-          SNodeId id = visibleNode.getNodeId();
-          EditorCell thisCell = thisEditor.findNodeCell(visibleNode);
-          if (thisCell != null) {
-            int newRelativePos = viewY - thisCell.getY();
-            SNodeId nodeId = mapID(thisDiffEditor, id, otherDiffEditor);
-            EditorCell otherCell = (nodeId != null ? otherEditor.findNodeCell(otherModel.getNode(nodeId)) : null);
-            Point position = thisEditor.getViewport().getViewPosition();
-            if (otherCell != null) {
-              Rectangle viewRect = otherEditor.getViewport().getViewRect();
-              int newX = Math.min((int) position.getX(), otherEditor.getWidth() - viewRect.width);
-              int newY = Math.min(newRelativePos + otherCell.getY(), otherEditor.getHeight() - viewRect.height);
-              otherEditor.getViewport().setViewPosition(new Point(newX, newY));
-              return;
-            }
-          }
-
-          SContainmentLink link = SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection(visibleNode);
-          SNode parent = visibleNode.getParent();
-
-          if (link == null || parent == null) {
+      while (visibleNode != null) {
+        SNodeId id = visibleNode.getNodeId();
+        EditorCell thisCell = thisEditor.findNodeCell(visibleNode);
+        if (thisCell != null) {
+          int newRelativePos = viewY - thisCell.getY();
+          SNodeId nodeId = mapID(thisDiffEditor, id, otherDiffEditor);
+          EditorCell otherCell = (nodeId != null ? otherEditor.findNodeCell(otherModel.getNode(nodeId)) : null);
+          Point position = thisEditor.getViewport().getViewPosition();
+          if (otherCell != null) {
+            Rectangle viewRect = otherEditor.getViewport().getViewRect();
+            // XXX likely, can use getViewport().getView().getBounds() to replace width and height access?
+            int newX = Math.min((int) position.getX(), otherEditor.getWidth() - viewRect.width);
+            int newY = Math.min(newRelativePos + otherCell.getY(), otherEditor.getHeight() - viewRect.height);
+            otherEditor.getViewport().setViewPosition(new Point(newX, newY));
             return;
           }
-          int index = SNodeOperations.getIndexInChildrenAndChildAttributesCollection(visibleNode);
-          if (index != 0) {
-            visibleNode = ListSequence.fromList(Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(parent, link)).toListSequence()).getElement(index - 1);
-          } else {
-            visibleNode = parent;
-          }
+        }
+
+        SContainmentLink link = SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection(visibleNode);
+        SNode parent = visibleNode.getParent();
+
+        if (link == null || parent == null) {
+          return;
+        }
+        int index = SNodeOperations.getIndexInChildrenAndChildAttributesCollection(visibleNode);
+        if (index != 0) {
+          visibleNode = ListSequence.fromList(Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(parent, link)).toList()).getElement(index - 1);
+        } else {
+          visibleNode = parent;
         }
       }
     });
@@ -110,17 +149,15 @@ public class DiffEditorsGroup {
     }
     @Override
     protected void selectionChangedTo(final jetbrains.mps.openapi.editor.EditorComponent component, final SingularSelection newSelection) {
-      component.getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          SNodeId selectionId = check_s6qw4f_a0a0a0a0a1j(check_s6qw4f_a0a0a0a0a0b9(newSelection.getEditorCell()));
-          if (selectionId != null) {
-            DiffEditor diffEditor0 = getDiffEditor(component);
-            for (DiffEditor diffEditor : ListSequence.fromList(myDiffEditors)) {
-              jetbrains.mps.openapi.editor.EditorComponent mainEditor = diffEditor.getMainEditor();
-              SNodeId nodeId = mapID(diffEditor0, selectionId, diffEditor);
-              SNode node = (nodeId != null ? check_s6qw4f_a0a2a1a1a0a0a0b9(check_s6qw4f_a0a0c0b0b0a0a0a1j(mainEditor.getEditedNode()), nodeId) : null);
-              diffEditor.inspect(node);
-            }
+      component.getEditorContext().getRepository().getModelAccess().runReadAction(() -> {
+        SNodeId selectionId = check_s6qw4f_a0a0a0a0a1w(check_s6qw4f_a0a0a0a0a0b22(newSelection.getEditorCell()));
+        if (selectionId != null) {
+          DiffEditor diffEditor0 = getDiffEditor(component);
+          for (DiffEditor diffEditor : ListSequence.fromList(myDiffEditors)) {
+            jetbrains.mps.openapi.editor.EditorComponent mainEditor = diffEditor.getEditorComponent(false);
+            SNodeId nodeId = mapID(diffEditor0, selectionId, diffEditor);
+            SNode node = (nodeId != null ? check_s6qw4f_a0a2a1a1a0a0a0b22(check_s6qw4f_a0a0c0b0b0a0a0a1w(mainEditor.getEditedNode()), nodeId) : null);
+            diffEditor.inspect(node);
           }
         }
       });
@@ -128,7 +165,12 @@ public class DiffEditorsGroup {
   }
   private class MyViewportChangeListener implements ChangeListener {
 
+    private final boolean myIsInspector;
     private boolean myViewportSetInProgress = false;
+
+    public MyViewportChangeListener(boolean isInspector) {
+      myIsInspector = isInspector;
+    }
 
     @Override
     public void stateChanged(ChangeEvent event) {
@@ -136,12 +178,8 @@ public class DiffEditorsGroup {
         return;
       }
       myViewportSetInProgress = true;
-      final DiffEditor myDiffEditor = (DiffEditor) (((JViewport) event.getSource()).getClientProperty("jetbrains.mps.vcs.diff.ui.common.DiffEditor"));
-      ListSequence.fromList(myDiffEditors).visitAll(new IVisitor<DiffEditor>() {
-        public void visit(DiffEditor other) {
-          synchronizeViewWithOther(myDiffEditor, other);
-        }
-      });
+      final DiffEditor myDiffEditor = (DiffEditor) (((JViewport) event.getSource()).getClientProperty(DIFF_EDITOR_PROPERTY_KEY));
+      ListSequence.fromList(myDiffEditors).visitAll((other) -> synchronizeViewWithOther(myDiffEditor, other, myIsInspector));
       myViewportSetInProgress = false;
     }
   }
@@ -152,43 +190,43 @@ public class DiffEditorsGroup {
   }
 
   private DiffEditor getDiffEditor(final jetbrains.mps.openapi.editor.EditorComponent component) {
-    return ListSequence.fromList(myDiffEditors).findFirst(new IWhereFilter<DiffEditor>() {
-      public boolean accept(DiffEditor it) {
-        return it.getMainEditor() == component;
-      }
-    });
+    return ListSequence.fromList(myDiffEditors).findFirst((it) -> it.getMainEditor() == component || it.getInspector() == component);
   }
-  private static SNode check_s6qw4f_a0a0c0a0a6a8(EditorCell checkedDotOperand) {
+
+  public List<DiffEditor> getEditors() {
+    return myDiffEditors;
+  }
+  private static SNode check_s6qw4f_a0a0c0a0a6a12(EditorCell checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getSNode();
     }
     return null;
   }
-  private static SModel check_s6qw4f_a0d0a0a6a8(SNode checkedDotOperand) {
+  private static SModel check_s6qw4f_a0d0a0a6a12(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModel();
     }
     return null;
   }
-  private static SNodeId check_s6qw4f_a0a0a0a0a1j(SNode checkedDotOperand) {
+  private static SNodeId check_s6qw4f_a0a0a0a0a1w(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getNodeId();
     }
     return null;
   }
-  private static SNode check_s6qw4f_a0a0a0a0a0b9(EditorCell checkedDotOperand) {
+  private static SNode check_s6qw4f_a0a0a0a0a0b22(EditorCell checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getSNode();
     }
     return null;
   }
-  private static SNode check_s6qw4f_a0a2a1a1a0a0a0b9(SModel checkedDotOperand, SNodeId nodeId) {
+  private static SNode check_s6qw4f_a0a2a1a1a0a0a0b22(SModel checkedDotOperand, SNodeId nodeId) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getNode(nodeId);
     }
     return null;
   }
-  private static SModel check_s6qw4f_a0a0c0b0b0a0a0a1j(SNode checkedDotOperand) {
+  private static SModel check_s6qw4f_a0a0c0b0b0a0a0a1w(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModel();
     }

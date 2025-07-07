@@ -5,6 +5,7 @@ package jetbrains.mps.build.mps.util;
 import jetbrains.mps.build.util.RelativePathHelper;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.build.util.Context;
 import jetbrains.mps.build.behavior.BuildProject__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -13,10 +14,10 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.build.behavior.BuildFolderMacro__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.io.File;
 import java.io.IOException;
@@ -30,6 +31,7 @@ public class PathConverter {
   private final Iterable<Tuples._2<String, SNode>> macros;
   private final Iterable<SNode> macrosWithoutPath;
   private final PathBuilder myPathBuilder;
+  private final IFile myModuleLocation;
 
   public PathConverter(SNode project) {
     this(Context.defaultContext(), project);
@@ -38,47 +40,88 @@ public class PathConverter {
   public PathConverter(final Context ctx, SNode project) {
     String workingDir = BuildProject__BehaviorDescriptor.getBasePath_id4jjtc7WZOyG.invoke(project, ctx);
     this.workingDirectory = new RelativePathHelper(workingDir);
-    // model argument is merely a factory of new path nodes and doesn't need to be 'original' one 
+    // model argument is merely a factory of new path nodes and doesn't need to be 'original' one
     myPathBuilder = new PathBuilder(SNodeOperations.getModel(project));
 
     final List<Tuples._2<String, SNode>> result = ListSequence.fromList(new ArrayList<Tuples._2<String, SNode>>());
     final List<SNode> withoutPath = ListSequence.fromList(new ArrayList<SNode>());
-    Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.macros$r8_A), CONCEPTS.BuildFolderMacro$mR)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        String path = normalizePath(BuildFolderMacro__BehaviorDescriptor.evaluate_id4jjtc7WZOzA.invoke(it, ctx), true);
-        if (path != null && path.length() > 1) {
-          ListSequence.fromList(result).addElement(MultiTuple.<String,SNode>from(path, it));
-        } else {
-          ListSequence.fromList(withoutPath).addElement(it);
-        }
+    Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.macros$r8_A), CONCEPTS.BuildFolderMacro$mR)).visitAll((it) -> {
+      String path = normalizePath(BuildFolderMacro__BehaviorDescriptor.evaluate_id4jjtc7WZOzA.invoke(it, ctx), true);
+      if (path != null && path.length() > 1) {
+        ListSequence.fromList(result).addElement(MultiTuple.<String,SNode>from(path, it));
+      } else {
+        ListSequence.fromList(withoutPath).addElement(it);
       }
     });
-    macros = ListSequence.fromList(result).sort(new ISelector<Tuples._2<String, SNode>, Integer>() {
-      public Integer select(Tuples._2<String, SNode> it) {
-        return it._0().length() * 2;
-      }
-    }, false);
+    macros = ListSequence.fromList(result).sort((it) -> it._0().length() * 2, false);
     macrosWithoutPath = withoutPath;
+    myModuleLocation = null;
+  }
+
+  private PathConverter(PathConverter original, IFile moduleLocation) {
+    workingDirectory = original.workingDirectory;
+    myPathBuilder = original.myPathBuilder;
+    macros = original.macros;
+    macrosWithoutPath = original.macrosWithoutPath;
+    myModuleLocation = moduleLocation;
+  }
+
+  public PathConverter forModule(@NotNull IFile moduleDescriptorFile) {
+    // hard-coded knowledge about descriptor file - module dir relation, like in ModuleMacros.getAnchorFolder()
+    return new PathConverter(this, moduleDescriptorFile.getParent());
   }
 
   public String getWorkingDir() {
     return workingDirectory.getBasePath();
   }
 
+  /*package*/ String moduleRelativePart(String path) throws PathConvertException {
+    if (myModuleLocation == null) {
+      throw new PathConvertException(String.format("No module location known attempting to convert path %s", path));
+    }
+    path = normalizePath(path, false);
+    if (path.startsWith(MacrosFactory.MODULE)) {
+      return path.substring(MacrosFactory.MODULE.length());
+    }
+    if (path.equals(myModuleLocation.getPath())) {
+      return "";
+    }
+    // Causes NPE on Windows where the first part of Path.getAllParts() may be null
+    String moduleLocWithTrailingSlash = normalizePath(myModuleLocation.getPath(), true);
+    if (path.startsWith(moduleLocWithTrailingSlash)) {
+      return path.substring(moduleLocWithTrailingSlash.length());
+    }
+    throw new PathConvertException(String.format("Path %s is not relative to module location %s", path, myModuleLocation));
+  }
+
   /**
-   * Produce a path node using supplied path factory/builder to instatiate them
+   * Produce a path node using supplied path factory/builder to instantiate them
    * 
    * @return never null
    */
   public List<SNode> convertPath(String path) throws PathConvertException {
     path = normalizePath(path, false);
+    if (path.startsWith(MacrosFactory.MODULE)) {
+      // if path starts with '${module}', generally no chance to match any project macro (hope nobody declares 'module' macro),
+      // however, full path (resolved to module location) may get matched against some macro and has to be relative to working dir
+      // I need all possible locations as I don't know they way user specified location in a build script, and sometimes (e.g. java libraries)
+      // we need to match ${module}/path against user-specified values
+      if (myModuleLocation == null) {
+        throw new PathConvertException(String.format("PathConverter doesn't know module location to convert path %s", path));
+      }
+      String modLocDir = normalizePath(myModuleLocation.getPath(), true);
+      // I know I can keep modLocDir right away in the cons, but I like IFile better. String type is very vague, imo.
+      // and I need trailing '/' just in cast dir.getPath() doesn't give one, and original path didn't bother to add one, too,
+      // e.g. "${module}lib/file.jpg"
+      path = normalizePath(modLocDir + path.substring(MacrosFactory.MODULE.length()), false);
+    }
     String withSlash = normalizePath(path, true);
     List<SNode> result = new ArrayList<SNode>();
     final boolean startsWithMacroPrefix = path.startsWith("$");
     for (Tuples._2<String, SNode> m : Sequence.fromIterable(macros)) {
       String mdir = (startsWithMacroPrefix ? "${" + SPropertyOperations.getString(m._1(), PROPS.name$MnvL) + "}/" : m._0());
-      // XXX what's the check path.length < mdir.length supposed to do? If the path is shorter 
-      // than macro path, it would never match? 
+      // XXX what's the check path.length < mdir.length supposed to do? If the path is shorter
+      // than macro path, it would never match?
       String currPath = (path.length() < mdir.length() ? withSlash : path);
 
       if (currPath.startsWith(mdir)) {
@@ -86,10 +129,12 @@ public class PathConverter {
         ListSequence.fromList(result).addElement(myPathBuilder.buildRelative(m._1(), currPath));
       }
     }
+    // XXX don't quite buy why isRelative needs withSlash (inside, it normalizes again, w/o slash)
     if (workingDirectory.isRelative(withSlash)) {
       try {
         ListSequence.fromList(result).addElement(myPathBuilder.buildRelative(workingDirectory.makeRelative(withSlash)));
       } catch (RelativePathHelper.PathException ex) {
+        // XXX odd exception handling, would be great to review uses and refactor
         throw new PathConvertException(ex.toString());
       }
     }
@@ -110,8 +155,8 @@ public class PathConverter {
   }
 
   private static String normalizePath(String path, boolean addSlash) {
-    // FIXME much similar to RelativePathHelper.normalize, except that this one resorts to full path when there's no macro variable (which is generally not the case 
-    // provided PathConverter is used to populate build project from module descriptor (where BP macros are not available) 
+    // FIXME much similar to RelativePathHelper.normalize, except that this one resorts to full path when there's no macro variable (which is generally not the case
+    // provided PathConverter is used to populate build project from module descriptor (where BP macros are not available)
     if (path == null || (path == null || path.length() == 0)) {
       return null;
     }
@@ -119,7 +164,7 @@ public class PathConverter {
       path = (path.startsWith("${") ? path : new File(path).getCanonicalPath());
       path = path.replace("\\", "/");
     } catch (IOException ignore) {
-      // ignore 
+      // ignore
     }
     if (addSlash && !(path.endsWith("/"))) {
       path = path + "/";

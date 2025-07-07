@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,7 @@
  */
 package jetbrains.mps.nodeEditor.cells;
 
-import jetbrains.mps.ide.messages.MessagesViewTool;
-import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.nodeEditor.AbstractDefaultEditor;
@@ -33,12 +30,10 @@ import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
 import jetbrains.mps.util.SNodeOperations;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SLanguage;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Collection;
@@ -56,16 +51,16 @@ import java.util.stream.Stream;
  * Date: 4/24/13
  */
 public class EditorCellFactoryImpl implements EditorCellFactory {
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(EditorCellFactoryImpl.class));
+  private static final Logger LOG = Logger.getLogger(EditorCellFactoryImpl.class);
 
   private static final EditorCellContext DEFAULT_CELL_CONTEXT = Collections::emptySet;
   public static final String BASE_COMMENT_HINT = "jetbrains.mps.lang.core.editor.BaseEditorContextHints.comment";
 
   private final EditorContext myEditorContext;
   private Deque<EditorCellContextImpl> myCellContextStack;
-  private Map<SNode, Set<Class<? extends ConceptEditor>>> myUsedEditors = new HashMap<>();
-  private Map<EditorCellContext, Map<SConcept, Map<Collection<Class<? extends ConceptEditor>>, ConceptEditor>>> myEditorsCache = new HashMap<>();
-  private Map<EditorCellContext, Map<SConcept, Map<String, ConceptEditorComponent>>> myEditorComponentsCache = new HashMap<>();
+  private final Map<SNode, Set<Class<? extends ConceptEditor>>> myUsedEditors = new HashMap<>();
+  private final Map<Collection<String>, Map<SConcept, Map<Collection<Class<? extends ConceptEditor>>, ConceptEditor>>> myEditorsCache = new HashMap<>();
+  private final Map<Collection<String>, Map<SConcept, Map<String, ConceptEditorComponent>>> myEditorComponentsCache = new HashMap<>();
 
   public EditorCellFactoryImpl(EditorContext editorContext) {
     myEditorContext = editorContext;
@@ -106,6 +101,7 @@ public class EditorCellFactoryImpl implements EditorCellFactory {
       try {
         result = createCell(node, isInspector, editor);
         assert result.isBig() : "Non-big " + (isInspector ? "inspector " : "") + "cell was created by " + editor.getClass().getName() + " ConceptEditor.";
+        reportSuccess(node);
       } catch (RuntimeException | AssertionError | LinkageError e) {
         reportError(node, e);
         LOG.warning("Failed to create cell for node: " + SNodeOperations.getDebugText(node) + " using default editor", e, node);
@@ -121,17 +117,19 @@ public class EditorCellFactoryImpl implements EditorCellFactory {
     return result;
   }
 
+  private void reportSuccess(SNode node){
+    Message message = new Message(MessageKind.INFORMATION, this.getClass(), "");
+    message.setHintObject(node.getReference());
+    myEditorContext.getEditorComponent().getMessageHandler().handle(message);
+  }
+
   private void reportError(SNode node, Throwable e) {
-    IMessageHandler messageHandler = ProjectHelper.getProject(myEditorContext.getRepository()).getComponent(MessagesViewTool.class).newHandler("Editor");
-
-    SModel model = node.getModel();
     SLanguage language = node.getConcept().getLanguage();
-    String text = String.format("Error creating editor cell: Model: %s, Language: %s", model.getName(), language.getQualifiedName());
-
+    String text = String.format("Error creating editor cell: Node: %s (%s from %s)", node.getPresentation(), node.getConcept().getName(), language.getQualifiedName());
     Message message = new Message(MessageKind.ERROR, this.getClass(), text);
     message.setException(e);
     message.setHintObject(node.getReference());
-    messageHandler.handle(message);
+    myEditorContext.getEditorComponent().getMessageHandler().handle(message);
   }
 
   private EditorCell createCell(SNode node, boolean isInspector, ConceptEditor editor) {
@@ -234,21 +232,23 @@ public class EditorCellFactoryImpl implements EditorCellFactory {
   }
 
   private ConceptEditor getCachedEditor(SConcept concept, Collection<Class<? extends ConceptEditor>> excludedEditors) {
-    return myEditorsCache.computeIfAbsent(getCellContext(), c -> new HashMap<>()).computeIfAbsent(concept, c -> new HashMap<>()).computeIfAbsent(
-        excludedEditors, key -> new ConceptEditorRegistry(key).get(concept));
+    final Collection<String> hints = getCellContext().getHints();
+    return myEditorsCache.computeIfAbsent(hints, c -> new HashMap<>()).computeIfAbsent(concept, c -> new HashMap<>()).computeIfAbsent(
+        excludedEditors, key -> new ConceptEditorRegistry(hints, key).get(concept));
   }
 
 
   private ConceptEditorComponent getCachedEditorComponent(SConcept concept, String editorComponentId) {
-    return myEditorComponentsCache.computeIfAbsent(getCellContext(), c -> new HashMap<>()).computeIfAbsent(concept, c -> new HashMap<>()).computeIfAbsent(
-        editorComponentId, id -> new ConceptEditorComponentRegistry(id).get(concept));
+    final Collection<String> hints = getCellContext().getHints();
+    return myEditorComponentsCache.computeIfAbsent(hints, c -> new HashMap<>()).computeIfAbsent(concept, c -> new HashMap<>()).computeIfAbsent(
+        editorComponentId, id -> new ConceptEditorComponentRegistry(hints, id).get(concept));
   }
 
   private class ConceptEditorRegistry extends AbstractEditorRegistry<ConceptEditor> {
     private final Collection<Class<? extends ConceptEditor>> myExcludedEditors;
 
-    private ConceptEditorRegistry(Collection<Class<? extends ConceptEditor>> excludedEditors) {
-      super(getCellContext(), myEditorContext.getRepository());
+    private ConceptEditorRegistry(Collection<String> hints, Collection<Class<? extends ConceptEditor>> excludedEditors) {
+      super(hints, myEditorContext.getRepository());
       myExcludedEditors = excludedEditors;
     }
 
@@ -262,8 +262,8 @@ public class EditorCellFactoryImpl implements EditorCellFactory {
   private class ConceptEditorComponentRegistry extends AbstractEditorRegistry<ConceptEditorComponent> {
     private final String myEditorComponentId;
 
-    private ConceptEditorComponentRegistry(String editorComponentId) {
-      super(getCellContext(), myEditorContext.getRepository());
+    private ConceptEditorComponentRegistry(Collection<String> hints, String editorComponentId) {
+      super(hints, myEditorContext.getRepository());
       myEditorComponentId = editorComponentId;
     }
 

@@ -4,32 +4,25 @@ package jetbrains.mps.internal.make.runtime.script;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.make.script.IScript;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.make.facet.ITarget;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.make.facet.FacetRegistry;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.make.script.IResult;
 import jetbrains.mps.make.script.IScriptController;
 import jetbrains.mps.make.resources.IResource;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.make.facet.ITargetEx2;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.make.script.IJobMonitor;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.make.facet.ITargetEx;
 import jetbrains.mps.make.script.IFeedback;
 import jetbrains.mps.make.script.IJob;
@@ -47,9 +40,9 @@ import jetbrains.mps.make.resources.IPropertiesPersistence;
 import jetbrains.mps.make.resources.IPropertiesAccessor;
 import jetbrains.mps.make.resources.IResourceWithProperties;
 
-@GeneratedClass(node = "r:8e0d2787-667a-41b8-9f98-9bb45c087fba(jetbrains.mps.internal.make.runtime.script)/6168415856807657480", model = "r:8e0d2787-667a-41b8-9f98-9bb45c087fba(jetbrains.mps.internal.make.runtime.script)")
+@GeneratedClass(nodeId = "6168415856807657480", model = "r:8e0d2787-667a-41b8-9f98-9bb45c087fba(jetbrains.mps.internal.make.runtime.script)")
 public class Script implements IScript {
-  private static Logger LOG = LogManager.getLogger(Script.class);
+  private static Logger LOG = Logger.getLogger(Script.class);
   public static final ITarget.Name TIME_STATISTIC_RESULT_NAME = new ITarget.Name("TIME_STATISTIC");
   private ITarget.Name startingTarget;
   private ITarget.Name finalTarget;
@@ -78,11 +71,7 @@ public class Script implements IScript {
     if (targetRange.hasCycles()) {
       error("cycle(s) detected: " + targetRange.cycles());
     }
-    if (startingTarget != null && !(Sequence.fromIterable(targetRange.targetAndSortedPrecursors(finalTarget)).select(new ISelector<ITarget, ITarget.Name>() {
-      public ITarget.Name select(ITarget t) {
-        return t.getName();
-      }
-    }).contains(startingTarget))) {
+    if (startingTarget != null && !(Sequence.fromIterable(targetRange.targetAndSortedPrecursors(finalTarget)).select((t) -> t.getName()).contains(startingTarget))) {
       error("invalid starting target: " + startingTarget);
     }
     validated = true;
@@ -124,6 +113,9 @@ public class Script implements IScript {
     }
     return trg;
   }
+  private boolean isRequestedTarget(ITarget trg) {
+    return targetRange.isRequested(trg.getName());
+  }
   @Override
   public String toString() {
     return "Script<" + finalTarget + ">";
@@ -133,16 +125,16 @@ public class Script implements IScript {
     ListSequence.fromList(this.errors).addElement(new ValidationError(this, message));
   }
   /*package*/ FacetRegistry getFacetRegistry() {
-    // nullable 
+    // nullable
     return myFacetRegistry;
   }
   public void setFacetRegistry(FacetRegistry facetRegistry) {
-    // FIXME provisional mechanism to get FacetRegistry instance for use in PropertiesWithBackstore 
-    //       Shall be set prior to execute() call. General MPS implementation supplies one as MResource it uses are of IResourceWithProperties kind 
-    //       and chances are we get to loadProperties(IFacet.Name). Tests that don't use MResource don't need to bother. 
-    //       Alternatively, could extract FacetRegistry from IJobMonitor.getSession().getProject().getComponent() inside #executeTargets 
-    //       but find this setter much more straightforward (although don't like the approach in general - not clear what's Script and what's its relation  
-    //       to FacetRegistry as long as it keeps ITarget.Name. Still, there's execute, so it's not pure target container, and I'm in doubt how to wrap it up right, hence fixme) 
+    // FIXME provisional mechanism to get FacetRegistry instance for use in PropertiesWithBackstore
+    //       Shall be set prior to execute() call. General MPS implementation supplies one as MResource it uses are of IResourceWithProperties kind
+    //       and chances are we get to loadProperties(IFacet.Name). Tests that don't use MResource don't need to bother.
+    //       Alternatively, could extract FacetRegistry from IJobMonitor.getSession().getProject().getComponent() inside #executeTargets
+    //       but find this setter much more straightforward (although don't like the approach in general - not clear what's Script and what's its relation 
+    //       to FacetRegistry as long as it keeps ITarget.Name. Still, there's execute, so it's not pure target container, and I'm in doubt how to wrap it up right, hence fixme)
     myFacetRegistry = facetRegistry;
   }
   @Override
@@ -157,61 +149,57 @@ public class Script implements IScript {
       monitor.advance(1);
 
       final Wrappers._T<ITarget.Name> waitFor = new Wrappers._T<ITarget.Name>(startingTarget);
-      Iterable<ITarget> toExecute = Sequence.fromIterable(targetRange.targetAndSortedPrecursors(finalTarget)).translate(new ITranslator2<ITarget, ITarget>() {
-        public Iterable<ITarget> translate(final ITarget tn) {
-          return new Iterable<ITarget>() {
-            public Iterator<ITarget> iterator() {
-              return new YieldingIterator<ITarget>() {
-                private int __CP__ = 0;
-                protected boolean moveToNext() {
+      Iterable<ITarget> toExecute = Sequence.fromIterable(targetRange.targetAndSortedPrecursors(finalTarget)).translate((tn) -> {
+        return (Iterable<ITarget>) () -> {
+          return new YieldingIterator<ITarget>() {
+            private int __CP__ = 0;
+            protected boolean moveToNext() {
 __loop__:
-                  do {
+              do {
 __switch__:
-                    switch (this.__CP__) {
-                      case -1:
-                        assert false : "Internal error";
-                        return false;
-                      case 2:
-                        if (waitFor.value != null) {
-                          this.__CP__ = 3;
-                          break;
-                        }
-                        this.__CP__ = 7;
-                        break;
-                      case 4:
-                        if (waitFor.value.equals(tn.getName())) {
-                          this.__CP__ = 5;
-                          break;
-                        }
-                        this.__CP__ = 1;
-                        break;
-                      case 8:
-                        this.__CP__ = 1;
-                        this.yield(tn);
-                        return true;
-                      case 0:
-                        this.__CP__ = 2;
-                        break;
-                      case 3:
-                        this.__CP__ = 4;
-                        break;
-                      case 5:
-                        waitFor.value = null;
-                        this.__CP__ = 1;
-                        break;
-                      case 7:
-                        this.__CP__ = 8;
-                        break;
-                      default:
-                        break __loop__;
+                switch (this.__CP__) {
+                  case -1:
+                    assert false : "Internal error";
+                    return false;
+                  case 2:
+                    if (waitFor.value != null) {
+                      this.__CP__ = 3;
+                      break;
                     }
-                  } while (true);
-                  return false;
+                    this.__CP__ = 7;
+                    break;
+                  case 4:
+                    if (waitFor.value.equals(tn.getName())) {
+                      this.__CP__ = 5;
+                      break;
+                    }
+                    this.__CP__ = 1;
+                    break;
+                  case 8:
+                    this.__CP__ = 1;
+                    this.yield(tn);
+                    return true;
+                  case 0:
+                    this.__CP__ = 2;
+                    break;
+                  case 3:
+                    this.__CP__ = 4;
+                    break;
+                  case 5:
+                    waitFor.value = null;
+                    this.__CP__ = 1;
+                    break;
+                  case 7:
+                    this.__CP__ = 8;
+                    break;
+                  default:
+                    break __loop__;
                 }
-              };
+              } while (true);
+              return false;
             }
           };
-        }
+        };
       });
 
       LOG.debug("Beginning to execute script");
@@ -249,129 +237,105 @@ __switch__:
   }
   private void executeTargets(IScriptController ctl, final Iterable<ITarget> toExecute, final Iterable<? extends IResource> scriptInput, final ParametersPool pool, final CompositeResult results, final ProgressMonitor monitor) {
     final Map<ITarget.Name, Long> timeStatistic = MapSequence.fromMap(new HashMap<ITarget.Name, Long>());
-    // add time statistic result first - in composite result output() is the last one 
+    // add time statistic result first - in composite result output() is the last one
     results.addResult(TIME_STATISTIC_RESULT_NAME, new IResult.SUCCESS(Sequence.<IResource>singleton(new TimeStatisticResource(timeStatistic))));
 
-    ctl.runJobWithMonitor(new _FunctionTypes._void_P1_E0<IJobMonitor>() {
-      public void invoke(final IJobMonitor monit) {
-        monitor.start("", Sequence.fromIterable(toExecute).foldLeft(0, new ILeftCombinator<ITarget, Integer>() {
-          public Integer combine(Integer s, ITarget it) {
-            return s + workEstimate(it);
-          }
-        }));
-        try {
+    ctl.runJobWithMonitor((final IJobMonitor monit) -> {
+      monitor.start("", Sequence.fromIterable(toExecute).foldLeft(0, (Integer s, ITarget it) -> s + workEstimate(it)));
+      try {
 with_targets:
-          for (final ITarget trg : Sequence.fromIterable(toExecute)) {
-            LOG.debug("Executing " + trg.getName());
+        for (final ITarget trg : Sequence.fromIterable(toExecute)) {
+          LOG.debug("Executing " + trg.getName());
+          try {
+            Iterable<ITarget> impre = targetRange.immediatePrecursors(trg.getName());
+            Iterable<IResource> preInput = Sequence.fromIterable(impre).select((t) -> results.getResult(t.getName())).translate((r) -> r.output());
+            Iterable<? extends IResource> allinput = (Sequence.fromIterable(impre).isEmpty() ? scriptInput : preInput);
+            Iterable<IResource> rawInput = Sequence.fromIterable(allinput).distinct().ofType(IResource.class).toList();
+            LOG.debug("Raw input: " + rawInput);
+            Iterable<IResource> input = (Iterable<IResource>) Sequence.fromIterable(rawInput).where((final IResource res) -> Sequence.fromIterable(trg.expectedInput()).any((ifc) -> ifc.isInstance(res))).toList();
+            LOG.debug("Input: " + input);
+
+            if (trg.requiresInput()) {
+              if (Sequence.fromIterable(input).isEmpty()) {
+                if (trg instanceof ITargetEx && ((ITargetEx) trg).isOptional()) {
+                  LOG.info(String.format("No input. Skipping optional target '%s'.", trg.getName()));
+                  results.addResult(trg.getName(), new IResult.SUCCESS(null));
+                  continue with_targets;
+                } else {
+                  LOG.debug("No input. Stopping");
+                  monit.reportFeedback(new IFeedback.ERROR("Error executing target " + trg.getName() + " : no input. Stopping"));
+                  results.addResult(trg.getName(), new IResult.FAILURE(null));
+                  return;
+                }
+              }
+            } else if (trg instanceof ITargetEx && ((ITargetEx) trg).isOptional() && !(isRequestedTarget(trg))) {
+              LOG.info(String.format("Skipping optional target '%s'.", trg.getName()));
+              results.addResult(trg.getName(), new IResult.SUCCESS(null));
+              continue with_targets;
+            }
+
+            ProgressMonitor subMonitor = monitor.subTask(workEstimate(trg));
+            IJob job = trg.createJob();
+            long startTime = System.currentTimeMillis();
+            IResult jr;
             try {
-              Iterable<ITarget> impre = targetRange.immediatePrecursors(trg.getName());
-              Iterable<IResource> preInput = Sequence.fromIterable(impre).select(new ISelector<ITarget, IResult>() {
-                public IResult select(ITarget t) {
-                  return results.getResult(t.getName());
-                }
-              }).translate(new ITranslator2<IResult, IResource>() {
-                public Iterable<IResource> translate(IResult r) {
-                  return r.output();
-                }
-              });
-              Iterable<? extends IResource> allinput = (Sequence.fromIterable(impre).isEmpty() ? scriptInput : preInput);
-              Iterable<IResource> rawInput = Sequence.fromIterable(allinput).distinct().ofType(IResource.class).toListSequence();
-              LOG.debug("Raw input: " + rawInput);
-              Iterable<IResource> input = (Iterable<IResource>) Sequence.fromIterable(rawInput).where(new IWhereFilter<IResource>() {
-                public boolean accept(final IResource res) {
-                  return Sequence.fromIterable(trg.expectedInput()).any(new IWhereFilter<Class<? extends IResource>>() {
-                    public boolean accept(Class<? extends IResource> ifc) {
-                      return ifc.isInstance(res);
-                    }
-                  });
-                }
-              }).toListSequence();
-              LOG.debug("Input: " + input);
+              jr = job.execute(Sequence.fromIterable(input).where((it) -> !(monit.stopRequested())), monit, new PropertiesAccessor(pool), subMonitor);
+            } finally {
+              MapSequence.fromMap(timeStatistic).put(trg.getName(), ((MapSequence.fromMap(timeStatistic).containsKey(trg.getName()) ? MapSequence.fromMap(timeStatistic).get(trg.getName()) : 0)) + (System.currentTimeMillis() - startTime));
+            }
+            if (!(trg.producesOutput())) {
+              // ignore the output
+              jr = new SubsOutputResult(jr, (trg.requiresInput() ? Sequence.fromIterable(rawInput).subtract(Sequence.fromIterable(input)) : rawInput));
+            }
+            results.addResult(trg.getName(), jr);
 
-              if (trg.requiresInput()) {
-                if (Sequence.fromIterable(input).isEmpty()) {
-                  if (trg instanceof ITargetEx && ((ITargetEx) trg).isOptional()) {
-                    LOG.info("No input. Skipping optional target.");
-                    results.addResult(trg.getName(), new IResult.SUCCESS(null));
-                    continue with_targets;
-                  } else {
-                    LOG.debug("No input. Stopping");
-                    monit.reportFeedback(new IFeedback.ERROR("Error executing target " + trg.getName() + " : no input. Stopping"));
-                    results.addResult(trg.getName(), new IResult.FAILURE(null));
-                    return;
-                  }
-                }
-              }
-
-              ProgressMonitor subMonitor = monitor.subTask(workEstimate(trg));
-              IJob job = trg.createJob();
-              long startTime = System.currentTimeMillis();
-              IResult jr;
-              try {
-                jr = job.execute(Sequence.fromIterable(input).where(new IWhereFilter<IResource>() {
-                  public boolean accept(IResource it) {
-                    return !(monit.stopRequested());
-                  }
-                }), monit, new PropertiesAccessor(pool), subMonitor);
-              } finally {
-                MapSequence.fromMap(timeStatistic).put(trg.getName(), ((MapSequence.fromMap(timeStatistic).containsKey(trg.getName()) ? MapSequence.fromMap(timeStatistic).get(trg.getName()) : 0)) + (System.currentTimeMillis() - startTime));
-              }
-              if (!(trg.producesOutput())) {
-                // ignore the output 
-                jr = new SubsOutputResult(jr, (trg.requiresInput() ? Sequence.fromIterable(rawInput).subtract(Sequence.fromIterable(input)) : rawInput));
-              }
-              results.addResult(trg.getName(), jr);
-
-              if (!(jr.isSucessful()) || monit.stopRequested()) {
-                monit.reportFeedback((jr.isSucessful() ? new IFeedback.INFORMATION("Cancelled by user") : new IFeedback.ERROR("Error executing target " + trg.getName())));
-                LOG.debug((jr.isSucessful() ? "Stop requested" : "Execution failed"));
-                return;
-              }
-
-              monitor.advance(0);
-            } catch (TimeOutRuntimeException to) {
-              LOG.debug("Timeout executing target " + trg.getName(), to);
-              monit.reportFeedback(new IFeedback.ERROR("Target execution aborted " + trg.getName(), to));
-              results.addResult(trg.getName(), new IResult.FAILURE(null));
-              return;
-            } catch (RuntimeException rex) {
-              LOG.debug("Exception executing target " + trg.getName(), rex);
-              monit.reportFeedback(new IFeedback.ERROR("Exception executing target " + trg.getName(), rex));
-              results.addResult(trg.getName(), new IResult.FAILURE(null));
-              return;
-            } catch (Throwable th) {
-              String msg = String.format("Exception %s while executing target %s", th.getClass().getName(), trg.getName());
-              LOG.error(msg, th);
-              monit.reportFeedback(new IFeedback.ERROR(msg));
-              results.addResult(trg.getName(), new IResult.FAILURE(null));
+            if (!(jr.isSucessful()) || monit.stopRequested()) {
+              monit.reportFeedback((jr.isSucessful() ? new IFeedback.INFORMATION("Cancelled by user") : new IFeedback.ERROR("Error executing target " + trg.getName())));
+              LOG.debug((jr.isSucessful() ? "Stop requested" : "Execution failed"));
               return;
             }
+
+            monitor.advance(0);
+          } catch (TimeOutRuntimeException to) {
+            LOG.debug("Timeout executing target " + trg.getName(), to);
+            monit.reportFeedback(new IFeedback.ERROR("Target execution aborted " + trg.getName(), to));
+            results.addResult(trg.getName(), new IResult.FAILURE(null));
+            return;
+          } catch (RuntimeException rex) {
+            LOG.debug("Exception executing target " + trg.getName(), rex);
+            monit.reportFeedback(new IFeedback.ERROR("Exception executing target " + trg.getName(), rex));
+            results.addResult(trg.getName(), new IResult.FAILURE(null));
+            return;
+          } catch (Throwable th) {
+            String msg = String.format("Exception %s while executing target %s", th.getClass().getName(), trg.getName());
+            LOG.error(msg, th);
+            monit.reportFeedback(new IFeedback.ERROR(msg));
+            results.addResult(trg.getName(), new IResult.FAILURE(null));
+            return;
           }
-        } finally {
-          monitor.done();
         }
+      } finally {
+        monitor.done();
       }
     });
   }
   private void configureTargets(IScriptController ctl, final Iterable<ITarget> toExecute, final ParametersPool pool, final CompositeResult results) {
-    ctl.runConfigWithMonitor(new _FunctionTypes._void_P1_E0<IConfigMonitor>() {
-      public void invoke(IConfigMonitor cmon) {
-        for (ITarget trg : Sequence.fromIterable(toExecute)) {
-          try {
-            LOG.debug("Configuring " + trg.getName());
-            IConfig cfg = trg.createConfig();
-            if (cfg != null && !(cfg.configure(cmon, new PropertiesAccessor(pool)))) {
-              LOG.debug("Configuration failed for target " + trg.getName());
-              cmon.reportFeedback(new IFeedback.ERROR("Configuration failed for target " + trg.getName()));
-              results.addResult(trg.getName(), new IResult.FAILURE(null));
-              return;
-            }
-          } catch (RuntimeException rex) {
-            LOG.error("Exception configuring target " + trg.getName(), rex);
-            cmon.reportFeedback(new IFeedback.ERROR("Exception configuring target " + trg.getName()));
+    ctl.runConfigWithMonitor((IConfigMonitor cmon) -> {
+      for (ITarget trg : Sequence.fromIterable(toExecute)) {
+        try {
+          LOG.debug("Configuring " + trg.getName());
+          IConfig cfg = trg.createConfig();
+          if (cfg != null && !(cfg.configure(cmon, new PropertiesAccessor(pool)))) {
+            LOG.debug("Configuration failed for target " + trg.getName());
+            cmon.reportFeedback(new IFeedback.ERROR("Configuration failed for target " + trg.getName()));
             results.addResult(trg.getName(), new IResult.FAILURE(null));
             return;
           }
+        } catch (RuntimeException rex) {
+          LOG.error("Exception configuring target " + trg.getName(), rex);
+          cmon.reportFeedback(new IFeedback.ERROR("Exception configuring target " + trg.getName()));
+          results.addResult(trg.getName(), new IResult.FAILURE(null));
+          return;
         }
       }
     });
@@ -395,7 +359,7 @@ with_targets:
             try {
               orig = cls.cast(available);
             } catch (ClassCastException cce) {
-              // ignore, just assume the original value is null 
+              // ignore, just assume the original value is null
               Script.LOG.debug("can't cast original parameters to required class [" + cls.getName() + "]");
               Script.LOG.debug("requested class's classloader " + cls.getClassLoader() + "@" + System.identityHashCode(cls.getClassLoader()));
               Script.LOG.debug("original object's classloader " + available.getClass().getClassLoader() + "@" + System.identityHashCode(available.getClass().getClassLoader()));

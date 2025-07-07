@@ -18,7 +18,7 @@ import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.nodeEditor.selection.EditorCellLabelSelection;
 import jetbrains.mps.openapi.editor.selection.SingularSelection;
 
-@GeneratedClass(node = "r:b9f36c08-4a75-4513-9277-a390d3426e0f(jetbrains.mps.editor.runtime.impl.cellActions)/3384976123267963700", model = "r:b9f36c08-4a75-4513-9277-a390d3426e0f(jetbrains.mps.editor.runtime.impl.cellActions)")
+@GeneratedClass(nodeId = "3384976123267963700", model = "r:b9f36c08-4a75-4513-9277-a390d3426e0f(jetbrains.mps.editor.runtime.impl.cellActions)")
 public abstract class AbstractCommentAction extends AbstractCellAction {
   protected RestorableSelection createRestorableSelection(EditorContext editorContext) {
     EditorCell selectedCell = editorContext.getSelectedCell();

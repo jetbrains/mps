@@ -305,19 +305,15 @@ public class Inequalities {
     }
     return false;
   }
-
-  private void collectNodesTransitive(SNode node, Set<SNode> collected, boolean isLeft, Map<SNode, RelationBlock> typesToBlocks, AbstractRelation relation, Set<SNode> alreadyPassed) {
+  
+  private void collectNodesTransitive(SNode toSolve, Set<SNode> collectForward, Set<SNode> collectBackward, boolean isLeft, Map<SNode, RelationBlock> typesToBlocks, AbstractRelation relation, Set<SNode> alreadyPassed) {
     // Patching a deficiency of this algorithm: we're listening to equation/inequation adding, but not removing
     // TODO: update the incremental maps on equation/inequation removal
-    Set<RelationBlock> blocks = new THashSet<>(myNodesToBlocksInc.getByFirst(node));
+    Set<RelationBlock> blocks = new THashSet<>(myNodesToBlocksInc.getByFirst(toSolve));
     final Set<Block> stateBlocks = myState.getBlocks();
-    for(Iterator<RelationBlock> it = blocks.iterator(); it.hasNext();) {
-      final RelationBlock next = it.next();
-      if(!stateBlocks.contains(next) || isRecursive(next)) { // recursive relations are solved at the end
-        it.remove();
-      }
-    }
-    alreadyPassed.add(node);
+    // recursive relations are solved at the end
+    blocks.removeIf(next -> !stateBlocks.contains(next) || isRecursive(next));
+    alreadyPassed.add(toSolve);
     blocks = getRelationBlocks(blocks, relation);
     for (RelationBlock block : blocks) {
       if (block.isCheckOnly()) {
@@ -328,17 +324,21 @@ public class Inequalities {
       if (right == left) {
         continue;
       }
-      SNode cur = isLeft ? left : right;
-      SNode other = isLeft ? right : left;
-      if (cur == node) {
-        if (!TypesUtil.isVariable(other)) {
-          SNode type = myState.expand(other);
-          collected.add(type);
-          typesToBlocks.put(type, block);
-        } else {
-          if (!alreadyPassed.contains(other)){
-            collectNodesTransitive(other, collected, isLeft, typesToBlocks, relation, alreadyPassed);
+      SNode nowSolving = isLeft ? left : right;
+      SNode nowOpposite = isLeft ? right : left;
+      if (nowSolving == toSolve || nowOpposite == toSolve) {
+        boolean forward = nowSolving == toSolve;
+        Set<SNode> cfwd = forward ? collectForward : collectBackward;
+        Set<SNode> cbwd = forward ? collectBackward : collectForward;
+        SNode nextToSolve = forward ? nowOpposite : nowSolving;
+        if (!TypesUtil.isVariable(nextToSolve)) {
+          SNode type = myState.expand(nextToSolve);
+          if (type != null) {
+            cfwd.add(type);
+            typesToBlocks.put(type, block);
           }
+        } else if (!alreadyPassed.contains(nextToSolve)){
+          collectNodesTransitive(nextToSolve, cfwd, cbwd, forward == isLeft, typesToBlocks, relation, alreadyPassed);
         }
       }
     }
@@ -369,10 +369,11 @@ public class Inequalities {
     assert TypesUtil.isVariable(node);
     Set<SNode> rightTypes = new LinkedHashSet<>();
     Set<SNode> leftTypes = new LinkedHashSet<>();
-    collectNodesTransitive(node, leftTypes, false, typesToBlocks, relation, new HashSet<>());
-    if (!mySolveOnlyRight) {
-      collectNodesTransitive(node, rightTypes, true, typesToBlocks, relation, new HashSet<>());
-    }
+    // to handle the following system: y <= x, TypeA <= y, y <= TypeB
+    // (solving for x we get TypeA with mySolveOnlyRight, while TypeB may be preferrable)
+    // collect all types, moving in both directions at once
+    // ignore mySolveOnlyRight (seems to be unnecessary now)
+    collectNodesTransitive(node, leftTypes, rightTypes, false, typesToBlocks, relation, new HashSet<>());
     return relation.solve(node, leftTypes, rightTypes, myState, typesToBlocks);
   }
 

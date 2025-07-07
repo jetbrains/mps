@@ -12,7 +12,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -23,21 +22,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class AddDefaultNodeAttribute_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddDefaultNodeAttribute_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:be519384-ff73-407d-8bb6-1d18a1417684(testDefaultEditor.intentions)", "2870455723671212067"));
   }
+
   @Override
   public String getPresentation() {
     return "AddDefaultNodeAttribute";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -47,27 +46,38 @@ public final class AddDefaultNodeAttribute_Intention extends AbstractIntentionDe
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$_u)) != null)) {
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$_u).get(node) != null)) {
         return "remove default node attribute";
       } else {
         return "add default node attribute";
       }
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$_u)) != null)) {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$_u)));
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$_u).get(node) != null)) {
+        SNodeOperations.deleteNode(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$_u).get(node));
       } else {
-        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$_u), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0x27d5e845b8e8aee1L, "testDefaultEditor.structure.DefaultNodeAttribute")));
-        SelectionUtil.selectCell(editorContext, AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$_u)), "const");
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$_u).set(node, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0x27d5e845b8e8aee1L, "testDefaultEditor.structure.DefaultNodeAttribute")));
+        SelectionUtil.selectCell(editorContext, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$_u).get(node), "const");
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddDefaultNodeAttribute_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

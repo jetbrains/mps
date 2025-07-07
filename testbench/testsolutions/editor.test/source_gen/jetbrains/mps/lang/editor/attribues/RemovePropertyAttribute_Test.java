@@ -4,20 +4,21 @@ package jetbrains.mps.lang.editor.attribues;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.lang.test.runtime.EditorTestUtil;
 
 @MPSLaunch
 public class RemovePropertyAttribute_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(RemovePropertyAttribute_Test.class, "${mps_home}", "r:09fb198f-3544-4746-9d3e-f773f4bfde46(jetbrains.mps.lang.editor.attribues)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(RemovePropertyAttribute_Test.class).projectPath(null).modelRef("r:09fb198f-3544-4746-9d3e-f773f4bfde46(jetbrains.mps.lang.editor.attribues)").reopenProject(false).build());
 
   public RemovePropertyAttribute_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -34,11 +35,7 @@ public class RemovePropertyAttribute_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("3447504547919025669", "3447504547919025675");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-        }
-      }, false);
+      EditorTestUtil.runWithTwoStepDeletion(() -> invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action"), false);
     }
   }
 }

@@ -13,7 +13,7 @@ import jetbrains.mps.debugger.java.api.state.watchables.JavaWatchablesCategory;
 import jetbrains.mps.debug.api.programState.IValue;
 import javax.swing.Icon;
 
-@GeneratedClass(node = "r:50efd6f2-8d02-4682-b313-bd69c46e78df(jetbrains.mps.debugger.java.runtime.state.watchables)/3187167456722650178", model = "r:50efd6f2-8d02-4682-b313-bd69c46e78df(jetbrains.mps.debugger.java.runtime.state.watchables)")
+@GeneratedClass(nodeId = "3187167456722650178", model = "r:50efd6f2-8d02-4682-b313-bd69c46e78df(jetbrains.mps.debugger.java.runtime.state.watchables)")
 /*package*/ class JavaReturnWatchable extends JavaWatchable {
   private final JavaValue myValue;
   public JavaReturnWatchable(Value value, ThreadReference threadReference) {

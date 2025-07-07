@@ -10,39 +10,32 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class Add_Comparator_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public Add_Comparator_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c8959032c(jetbrains.mps.baseLanguage.collections.intentions)", "2261417478149151571"));
   }
+
   @Override
   public String getPresentation() {
     return "Add_Comparator";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (SLinkOperations.getTarget(node, LINKS.copyFrom$DKAJ) == null) && (SLinkOperations.getTarget(node, LINKS.initSize$VCLN) == null) && (SLinkOperations.getTarget(node, LINKS.comparator$TiSb) == null);
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -52,51 +45,71 @@ public final class Add_Comparator_Intention extends AbstractIntentionDescriptor 
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Specify Comparator";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SLinkOperations.setTarget(node, LINKS.comparator$TiSb, _quotation_createNode_1k32yi_a0a0a0(SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.elementType$WxmV)), SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.elementType$WxmV))));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return (SLinkOperations.getTarget(node, LINKS.copyFrom$DKAJ) == null) && (SLinkOperations.getTarget(node, LINKS.initSize$VCLN) == null) && (SLinkOperations.getTarget(node, LINKS.comparator$TiSb) == null);
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return Add_Comparator_Intention.this;
     }
+
   }
   private static SNode _quotation_createNode_1k32yi_a0a0a0(Object parameter_1, Object parameter_2) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
     SNode quotedNode_5 = null;
     SNode quotedNode_6 = null;
     SNode quotedNode_7 = null;
     SNode quotedNode_8 = null;
-    quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures"), 0x1174bed3125L, "ClosureLiteral")).getResult();
-    quotedNode_4 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e94L, "ParameterDeclaration")).getResult();
-    quotedNode_4.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "a");
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures"), 0x1174bed3125L, "ClosureLiteral"));
+    quotedNode_3 = nb.getResult();
+    SNodeBuilder nb1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e94L, "ParameterDeclaration"));
+    quotedNode_4 = nb1.getResult();
+    nb1.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "a");
     quotedNode_7 = (SNode) parameter_1;
     if (quotedNode_7 != null) {
       quotedNode_4.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), SNodeOperations.copyIfNecessary(quotedNode_7));
     }
     quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter"), quotedNode_4);
-    quotedNode_5 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e94L, "ParameterDeclaration")).getResult();
-    quotedNode_5.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "b");
+    SNodeBuilder nb2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e94L, "ParameterDeclaration"));
+    quotedNode_5 = nb2.getResult();
+    nb2.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "b");
     quotedNode_8 = (SNode) parameter_2;
     if (quotedNode_8 != null) {
       quotedNode_5.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), SNodeOperations.copyIfNecessary(quotedNode_8));
     }
     quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter"), quotedNode_5);
-    quotedNode_6 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b200L, "StatementList")).getResult();
+    SNodeBuilder nb3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b200L, "StatementList"));
+    quotedNode_6 = nb3.getResult();
     quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body"), quotedNode_6);
     return quotedNode_3;
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink comparator$TiSb = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4838d33L, 0x1f622b3701eae8beL, "comparator");
+    /*package*/ static final SContainmentLink elementType$WxmV = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType");
     /*package*/ static final SContainmentLink copyFrom$DKAJ = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202e9082e6L, "copyFrom");
     /*package*/ static final SContainmentLink initSize$VCLN = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x15ae66cec05cb2eaL, "initSize");
-    /*package*/ static final SContainmentLink elementType$WxmV = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType");
   }
 }

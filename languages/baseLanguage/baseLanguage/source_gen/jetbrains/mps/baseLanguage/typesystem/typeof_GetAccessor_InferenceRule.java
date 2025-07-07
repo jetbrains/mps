@@ -35,7 +35,7 @@ public class typeof_GetAccessor_InferenceRule extends AbstractInferenceRule_Runt
     Iterable<SNode> returnStatements = RulesFunctions_BaseLanguage.collectReturnStatements(SLinkOperations.getTarget(getAccessor, LINKS.statementList$HQ20));
     SNode expectedRetType = IMethodLike__BehaviorDescriptor.getExpectedRetType_idi2fhBNC.invoke(getAccessor);
 
-    // should return subtypes of the 'expected type' 
+    // should return subtypes of the 'expected type'
     for (SNode returnStatement : Sequence.fromIterable(returnStatements)) {
       if ((SLinkOperations.getTarget(returnStatement, LINKS.expression$eJ92) == null)) {
         {
@@ -47,20 +47,20 @@ public class typeof_GetAccessor_InferenceRule extends AbstractInferenceRule_Runt
         if (!(typeCheckingContext.isSingleTypeComputation())) {
           {
             SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(returnStatement, LINKS.expression$eJ92);
-            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, "" + expectedRetType + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4285773203933582367", 0, null);
+            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, "" + SNodeOperations.present(expectedRetType) + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4285773203933582367", 0, null);
             typeCheckingContext.createLessThanInequality((SNode) returnType, (SNode) expectedRetType, true, true, _info_12389875345);
           }
         }
       }
     }
-    // last expression statement can serve as return statement 
+    // last expression statement can serve as return statement
     SNode lastStatement = IMethodLike__BehaviorDescriptor.getLastStatement_idi2fhS7A.invoke(getAccessor);
     if (SNodeOperations.isInstanceOf(lastStatement, CONCEPTS.ExpressionStatement$O8)) {
       SNode returnType = typeCheckingContext.typeOf(SLinkOperations.getTarget(SNodeOperations.cast(lastStatement, CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4285773203933582401", true);
       if (!(typeCheckingContext.isSingleTypeComputation())) {
         {
           SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(SNodeOperations.cast(lastStatement, CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M);
-          EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, expectedRetType + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4285773203933582406", 0, null);
+          EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, SNodeOperations.present(expectedRetType) + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4285773203933582406", 0, null);
           typeCheckingContext.createLessThanInequality((SNode) returnType, (SNode) expectedRetType, true, true, _info_12389875345);
         }
       }

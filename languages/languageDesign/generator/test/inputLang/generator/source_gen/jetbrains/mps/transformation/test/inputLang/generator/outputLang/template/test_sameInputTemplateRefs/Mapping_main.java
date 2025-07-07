@@ -20,6 +20,7 @@ import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.MapRootRuleBase;
+import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -28,7 +29,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   private final Collection<TemplateReductionRule> rules;
   private final Collection<TemplateRootMappingRule> rootRules;
   public Mapping_main(@NotNull TemplateModel model) {
-    super(new SNodePointer("r:3974355c-942b-4134-9ce5-040d47bdb681(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_sameInputTemplateRefs@generator)", "5110551451990206258"), "main", model, false);
+    super(new SNodePointer("r:3974355c-942b-4134-9ce5-040d47bdb681(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_sameInputTemplateRefs@generator)", "5110551451990206258"), "main", model, false, new MO());
     rules = TemplateUtil.<TemplateReductionRule>asCollection(new ReductionRule0());
     rootRules = TemplateUtil.<TemplateRootMappingRule>asCollection(new RootMappingRule0());
   }
@@ -44,7 +45,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   public Collection<TemplateRootMappingRule> getRootRules() {
     return rootRules;
   }
-  /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
       super(new SNodePointer("r:3974355c-942b-4134-9ce5-040d47bdb681(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_sameInputTemplateRefs@generator)", "5110551451990249110"), CONCEPTS.InputNode$SS, true);
     }
@@ -52,30 +53,30 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      TemplateContext context1;
-      context1 = context.withVariable("idx", 1);
+      TemplateContext context1 = context;
+      context1 = context1.withVariable("idx", 1);
       tlist1 = environment.callSite(new Template_reduce_StmtAndRef(), new SNodePointer("r:3974355c-942b-4134-9ce5-040d47bdb681(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_sameInputTemplateRefs@generator)", "5110551451990249188")).apply(context1);
       Collection<SNode> tlist2 = null;
-      TemplateContext context2;
-      context2 = context.withVariable("idx", 3);
+      TemplateContext context2 = context;
+      context2 = context2.withVariable("idx", 3);
       tlist2 = environment.callSite(new Template_reduce_StmtAndRef(), new SNodePointer("r:3974355c-942b-4134-9ce5-040d47bdb681(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_sameInputTemplateRefs@generator)", "5110551451990249191")).apply(context2);
       Collection<SNode> tlist3 = null;
-      TemplateContext context3;
-      context3 = context.withVariable("idx", 7);
+      TemplateContext context3 = context;
+      context3 = context3.withVariable("idx", 7);
       tlist3 = environment.callSite(new Template_reduce_StmtAndRef(), new SNodePointer("r:3974355c-942b-4134-9ce5-040d47bdb681(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_sameInputTemplateRefs@generator)", "5110551451990249194")).apply(context3);
       Collection<SNode> tlist4 = null;
-      TemplateContext context4;
-      context4 = context.withVariable("idx", 11);
+      TemplateContext context4 = context;
+      context4 = context4.withVariable("idx", 11);
       tlist4 = environment.callSite(new Template_reduce_StmtAndRef(), new SNodePointer("r:3974355c-942b-4134-9ce5-040d47bdb681(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_sameInputTemplateRefs@generator)", "5110551451990249197")).apply(context4);
       Collection<SNode> tlist5 = null;
-      TemplateContext context5;
-      context5 = context.withVariable("idx", 13);
+      TemplateContext context5 = context;
+      context5 = context5.withVariable("idx", 13);
       tlist5 = environment.callSite(new Template_reduce_StmtAndRef(), new SNodePointer("r:3974355c-942b-4134-9ce5-040d47bdb681(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_sameInputTemplateRefs@generator)", "5110551451990249200")).apply(context5);
       Collection<SNode> tlist6 = TemplateUtil.asList(tlist1, tlist2, tlist3, tlist4, tlist5);
       return tlist6;
     }
   }
-  /*package*/ static final class RootMappingRule0 extends MapRootRuleBase implements TemplateRootMappingRule {
+  /*package*/ final class RootMappingRule0 extends MapRootRuleBase implements TemplateRootMappingRule {
     public RootMappingRule0() {
       super(new SNodePointer("r:3974355c-942b-4134-9ce5-040d47bdb681(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_sameInputTemplateRefs@generator)", "6736062018948355377"), CONCEPTS.InputRoot$nY, false, false);
     }
@@ -85,6 +86,12 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       Collection<SNode> result = environment.callSite(new Template_Output(), new SNodePointer("r:3974355c-942b-4134-9ce5-040d47bdb681(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_sameInputTemplateRefs@generator)", "6736062018948355377")).apply(context);
       return result;
     }
+  }
+
+  /*package*/ static final class MO implements MetaObjectContainer {
+
+
+
   }
 
   private static final class CONCEPTS {

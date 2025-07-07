@@ -25,6 +25,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
+      InferenceRule_Runtime inferenceRule = new typeof_LoopMacroNamespace_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
       InferenceRule_Runtime inferenceRule = new typeof_PatternReduction_MappingRule_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
@@ -46,10 +50,6 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       InferenceRule_Runtime inferenceRule = new typeof_TemplateArgumentVarRefExpression2_InferenceRule();
-      this.myInferenceRules.add(inferenceRule);
-    }
-    {
-      InferenceRule_Runtime inferenceRule = new typeof_TemplateArgumentVariableRefExpression_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
@@ -86,6 +86,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_InlineTemplateWithContext_RuleConsequence_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_LabelMacro_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {

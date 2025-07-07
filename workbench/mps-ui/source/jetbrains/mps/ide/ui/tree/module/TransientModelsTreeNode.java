@@ -32,7 +32,7 @@ import java.util.Collections;
 public class TransientModelsTreeNode extends ProjectModuleTreeNode {
 
   public TransientModelsTreeNode(@NotNull Project project, @NotNull TransientModelsModule module) {
-    super(module);
+    super(module, project);
     setNodeIdentifier(module.getModuleReference().toString());
     populate();
   }

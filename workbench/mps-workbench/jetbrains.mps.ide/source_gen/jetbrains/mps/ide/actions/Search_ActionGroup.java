@@ -4,14 +4,14 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/7921481111246565812", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "7921481111246565812", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class Search_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.actions.Search_ActionGroup";
 
-  public Search_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public Search_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("Search", ID, plugin);
     setIsInternal(false);
     setPopup(false);
@@ -20,11 +20,5 @@ public class Search_ActionGroup extends GeneratedActionGroup {
     Search_ActionGroup.this.addAction("jetbrains.mps.ide.editor.actions.FindPrevious_Action");
     Search_ActionGroup.this.addSeparator();
     Search_ActionGroup.this.addAction("jetbrains.mps.ide.actions.FindTextInProject_Action");
-    Search_ActionGroup.this.addSeparator();
-    Search_ActionGroup.this.addAction("jetbrains.mps.ide.actions.FastFindNodeUsages_Action");
-    Search_ActionGroup.this.addAction("jetbrains.mps.ide.actions.FindConceptInstances_Action");
-    Search_ActionGroup.this.addAction("jetbrains.mps.ide.actions.FindSpecificNodeUsages_Action");
-    Search_ActionGroup.this.addAction("jetbrains.mps.ide.actions.HighlightUsages_Action");
-    Search_ActionGroup.this.addAction("jetbrains.mps.ide.actions.HighlightInstances_Action");
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.ModelAccessor;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.smodel.SNodeUtil;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -31,7 +30,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
 
 public class ReadOnlyDefaultEditor extends AbstractDefaultEditor {
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(ReadOnlyDefaultEditor.class));
+  private static final Logger LOG = Logger.getLogger(ReadOnlyDefaultEditor.class);
 
   public ReadOnlyDefaultEditor(@NotNull SConcept concept, boolean reflectiveRoot) {
     super(concept, reflectiveRoot);
@@ -48,7 +47,6 @@ public class ReadOnlyDefaultEditor extends AbstractDefaultEditor {
 
     for (SReference sReference : getNode().getReferences()) {
       SReferenceLink link = sReference.getLink();
-      assert link != null : "Null meta-link from node: " + getNode() + ", role: " + sReference.getRole();
       if (link.getOwner().equals(SNodeUtil.concept_BaseConcept)) {
         addReferenceLink(link);
       }

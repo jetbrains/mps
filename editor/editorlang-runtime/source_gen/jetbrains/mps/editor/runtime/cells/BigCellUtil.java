@@ -15,7 +15,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:c8a1fc75-b429-441c-bf65-e0144f080c3f(jetbrains.mps.editor.runtime.cells)/5299592197032499638", model = "r:c8a1fc75-b429-441c-bf65-e0144f080c3f(jetbrains.mps.editor.runtime.cells)")
+@GeneratedClass(nodeId = "5299592197032499638", model = "r:c8a1fc75-b429-441c-bf65-e0144f080c3f(jetbrains.mps.editor.runtime.cells)")
 public class BigCellUtil {
   public static EditorCell findBigCell(EditorCell cell, SNode node) {
     SNode cellNode = cell.getSNode();

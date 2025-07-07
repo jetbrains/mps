@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.scope.Scope;
 import java.util.List;
@@ -21,7 +20,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -32,9 +30,9 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class TransformStatement__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6529ec9L, "jetbrains.mps.lang.migration.structure.TransformStatement");
 
-  public static final SMethod<SNode> getPatternConcept_id4SSaNAQl5wN = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getPatternConcept").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4SSaNAQl5wN").build();
-  public static final SMethod<SNode> getQuotationConcept_id4SSaNAQlbzK = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getQuotationConcept").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4SSaNAQlbzK").build();
-  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getPatternConcept_id4SSaNAQl5wN = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getPatternConcept").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5636302460526286899L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2();
+  public static final SMethod<SNode> getQuotationConcept_id4SSaNAQlbzK = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getQuotationConcept").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5636302460526311664L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2();
+  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPatternConcept_id4SSaNAQl5wN, getQuotationConcept_id4SSaNAQlbzK, getScope_id52_Geb4QDV$);
 
@@ -45,18 +43,14 @@ public final class TransformStatement__BehaviorDescriptor extends BaseBHDescript
     return (SNode) SNodeOperations.asNode(PatternExpression__BehaviorDescriptor.getQuotedNodeConcept_id4vXWNHn1_L$.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.pattern$W39N)));
   }
   /*package*/ static SNode getQuotationConcept_id4SSaNAQlbzK(@NotNull SNode __thisNode__) {
-    if (!((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.consequence$W3BP), CONCEPTS.QuotationConsequence$jg)))) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.consequence$W3BP), CONCEPTS.QuotationConsequence$jg))) {
       return null;
     }
     return SNodeOperations.asNode(SNodeOperations.getConcept(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.consequence$W3BP), CONCEPTS.QuotationConsequence$jg), LINKS.quotation$Fkf), LINKS.quotedNode$ip4)));
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, final SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.PropertyPatternVariableDeclaration$aQ) || SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.LinkPatternVariableDeclaration$8a) || SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.PatternVariableDeclaration$ZH) || SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.ListPattern$1B)) {
-      return new NamedElementsScope(SNodeOperations.ofConcept(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(__thisNode__, LINKS.pattern$W39N), SNodeOperations.asSConcept((SAbstractConcept) kind), false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)), SNodeOperations.asSConcept(kind));
-        }
-      }), CONCEPTS.INamedConcept$Kd));
+      return new NamedElementsScope(SNodeOperations.ofConcept(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(__thisNode__, LINKS.pattern$W39N), SNodeOperations.asSConcept((SAbstractConcept) kind), false, new SAbstractConcept[]{})).where((it) -> SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)), SNodeOperations.asSConcept(kind))), CONCEPTS.INamedConcept$Kd));
     }
 
     return null;

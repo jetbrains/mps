@@ -11,23 +11,18 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import java.util.Objects;
-import jetbrains.mps.smodel.DynamicReference;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
-@GeneratedClass(node = "r:f5448de3-0d76-42bb-afa7-00b3b32de849(jetbrains.mps.debugger.java.runtime.evaluation.container)/846214144116398663", model = "r:f5448de3-0d76-42bb-afa7-00b3b32de849(jetbrains.mps.debugger.java.runtime.evaluation.container)")
+@GeneratedClass(nodeId = "846214144116398663", model = "r:f5448de3-0d76-42bb-afa7-00b3b32de849(jetbrains.mps.debugger.java.runtime.evaluation.container)")
 public abstract class BaseLanguagesImportHelper {
   public abstract SNode findVariable(SReference variableReference);
   public abstract SNode createVariableReference(SNode variable);
@@ -35,11 +30,7 @@ public abstract class BaseLanguagesImportHelper {
   }
   public void tryToImport(SNode container, List<SNodeReference> nodesToImport) {
     final SRepository repository = SNodeOperations.getModel(container).getRepository();
-    List<SNode> nodes = CopyUtil.copy(ListSequence.fromList(nodesToImport).select(new ISelector<SNodeReference, SNode>() {
-      public SNode select(SNodeReference it) {
-        return (SNode) it.resolve(repository);
-      }
-    }).where(new NotNullWhereFilter<SNode>()).toListSequence());
+    List<SNode> nodes = CopyUtil.copy(ListSequence.fromList(nodesToImport).select((it) -> (SNode) it.resolve(repository)).where(new NotNullWhereFilter()).toList());
     for (SNode node : ListSequence.fromList(nodes)) {
       if (node == null) {
         continue;
@@ -59,15 +50,15 @@ public abstract class BaseLanguagesImportHelper {
       SModel targetModel = SNodeOperations.getModel(SLinkOperations.getTargetNode(reference));
       if (!(Objects.equals(targetModel, containerModel))) {
         SModel scopeModel = targetModel.getReference().resolve(containerModel.getRepository());
-        // XXX I don't understand this code, and not sure it ever worked (how come model != model.reference.resolve(global repo) 
-        // just refactored it a bit, with a guess that intention is to replace references pointing outside of debugger repository 
-        // with dynamics that would get resolved with proper debugger node later on. 
+        // XXX I don't understand this code, and not sure it ever worked (how come model != model.reference.resolve(global repo)
+        // just refactored it a bit, with a guess that intention is to replace references pointing outside of debugger repository
+        // with dynamics that would get resolved with proper debugger node later on.
         if (scopeModel != null && !(Objects.equals(scopeModel, targetModel))) {
           String resolveInfo = SLinkOperations.getResolveInfo(reference);
           if ((resolveInfo == null || resolveInfo.length() == 0)) {
             resolveInfo = jetbrains.mps.util.SNodeOperations.getResolveInfo(SLinkOperations.getTargetNode(reference));
           }
-          node.setReference(reference.getLink(), new DynamicReference(reference.getLink(), node, scopeModel.getReference(), resolveInfo));
+          node.setReference(reference.getLink(), jetbrains.mps.util.SNodeOperations.qualifiedResolveInfo(reference.getLink(), scopeModel.getReference(), resolveInfo));
         }
       }
     }
@@ -84,26 +75,18 @@ public abstract class BaseLanguagesImportHelper {
     }
   }
   private void transformNode(SNode node, final SModel containerModel) {
-    // try to resolve variables 
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(node, null, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ListSequence.fromList(SNodeOperations.getChildren(it)).isEmpty();
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        transformNodeToProperVariableReference(it, containerModel);
-      }
-    });
-    // all links to subs -> to debugger stubs 
+    // try to resolve variables
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(node, null, false, new SAbstractConcept[]{})).where((it) -> ListSequence.fromList(SNodeOperations.getChildren(it)).isEmpty()).visitAll((it) -> transformNodeToProperVariableReference(it, containerModel));
+    // all links to subs -> to debugger stubs
     for (SNode d : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, null, true, new SAbstractConcept[]{}))) {
       replaceStubReferences(d, containerModel);
     }
   }
   private static SNode _quotation_createNode_5vd2f2_a0a0b0c0d(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement"));
+    quotedNode_2 = nb.getResult();
     quotedNode_3 = (SNode) parameter_1;
     if (quotedNode_3 != null) {
       quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression"), SNodeOperations.copyIfNecessary(quotedNode_3));

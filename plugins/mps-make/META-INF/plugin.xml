@@ -25,5 +25,10 @@
   <extensions defaultExtensionNs="com.intellij">
     <mps.LanguageLibrary dir="/"/>
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
+    <notificationGroup id="Saving Transient Models Is On" displayType="BALLOON" isLogByDefault="false"/>
+
+    <advancedSetting id="mps.make.include.dependencies" default="true"
+                     groupKey="advanced.settings.group.mps.make" bundle="messages.MPSIdeBundle"/>
+
   </extensions>
 </idea-plugin>

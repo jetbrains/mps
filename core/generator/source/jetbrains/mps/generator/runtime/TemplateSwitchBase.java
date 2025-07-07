@@ -15,10 +15,10 @@
  */
 package jetbrains.mps.generator.runtime;
 
-import jetbrains.mps.generator.impl.DefaultTemplateContext;
-import org.jetbrains.mps.openapi.model.SNode;
-
-import java.util.Collection;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 /**
  * Base implementation of {@link jetbrains.mps.generator.runtime.TemplateSwitchMapping} to use as superclass in generated code
@@ -26,16 +26,15 @@ import java.util.Collection;
  * @author Artem Tikhomirov
  */
 public abstract class TemplateSwitchBase implements TemplateSwitchMapping {
+  protected final SConcept[] myConcepts;
+  protected final SProperty[] myProperties;
+  protected final SReferenceLink[] myAssociationLinks;
+  protected final SContainmentLink[] myAggregationLinks;
 
-  @Override
-  public Collection<SNode> applyDefault(TemplateContext context) throws GenerationException {
-    // getSwitchNode() is likely not the the same one as it used to be before the change in case it's 'extending' switch (now it's ref to extending, while used to be extended),
-    // but I see no mechanism applyDefault() could have ever used the value.
-    return applyDefault(context.getEnvironment(), getSwitchNode(), context.getInputName(), context);
-  }
-
-  @Override
-  public void processNull(TemplateExecutionEnvironment environment) {
-    processNull(environment, getSwitchNode(), new DefaultTemplateContext(environment, null, null));
+  protected TemplateSwitchBase(MetaObjectContainer metaObjectContainer) {
+    myConcepts = metaObjectContainer.concepts();
+    myProperties = metaObjectContainer.properties();
+    myAssociationLinks = metaObjectContainer.associations();
+    myAggregationLinks = metaObjectContainer.aggregations();
   }
 }

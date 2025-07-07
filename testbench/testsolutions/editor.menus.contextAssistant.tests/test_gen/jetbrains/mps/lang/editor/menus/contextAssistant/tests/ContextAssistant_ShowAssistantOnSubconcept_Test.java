@@ -4,25 +4,24 @@ package jetbrains.mps.lang.editor.menus.contextAssistant.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.nodeEditor.EditorContext;
 import javax.swing.SwingUtilities;
 import jetbrains.mps.openapi.editor.assist.ContextAssistantManager;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 @MPSLaunch
 public class ContextAssistant_ShowAssistantOnSubconcept_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(ContextAssistant_ShowAssistantOnSubconcept_Test.class, "${mps_home}", "r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ContextAssistant_ShowAssistantOnSubconcept_Test.class).projectPath(null).modelRef("r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)").reopenProject(false).build());
 
   public ContextAssistant_ShowAssistantOnSubconcept_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -40,20 +39,14 @@ public class ContextAssistant_ShowAssistantOnSubconcept_Test extends BaseTransfo
     public void testMethodImpl() throws Exception {
       initEditorComponent("9025427969322513568", "");
       final EditorContext editorContext = getEditorComponent().getEditorContext();
-      SwingUtilities.invokeAndWait(new Runnable() {
-        public void run() {
-          editorContext.getRepository().getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              ContextAssistantManager contextAssistantManager = editorContext.getContextAssistantManager();
+      SwingUtilities.invokeAndWait(() -> editorContext.getRepository().getModelAccess().runReadAction(() -> {
+        ContextAssistantManager contextAssistantManager = editorContext.getContextAssistantManager();
 
-              getEditorComponent().getSelectionManager().setSelection(SNodeOperations.cast(getNodeById("9025427969322528788"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage"), 0x7d40c2eb5957a904L, "OtherSubconceptOfChild"))));
-              contextAssistantManager.updateImmediately();
-              Assert.assertNotNull(contextAssistantManager.getActiveAssistant());
-              Assert.assertNotNull(contextAssistantManager.getActiveMenuItems());
-            }
-          });
-        }
-      });
+        getEditorComponent().getSelectionManager().setSelection(getAnnotatedNode("base"));
+        contextAssistantManager.updateImmediately();
+        Assert.assertNotNull(contextAssistantManager.getActiveAssistant());
+        Assert.assertNotNull(contextAssistantManager.getActiveMenuItems());
+      }));
     }
   }
 }

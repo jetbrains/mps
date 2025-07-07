@@ -4,8 +4,7 @@ package jetbrains.mps.execution.configurations.implementation.plugin.plugin;
 
 import jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration;
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.project.structure.modules.Copyable;
 import jetbrains.mps.execution.lib.NodeBySeveralConcepts_Configuration;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -34,7 +33,6 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.baseLanguage.behavior.StaticMethodDeclaration__BehaviorDescriptor;
 import com.intellij.openapi.project.Project;
 import com.intellij.execution.configurations.ConfigurationFactory;
@@ -55,17 +53,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
-public class Java_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
-  private static final Logger LOG = LogManager.getLogger(Java_Configuration.class);
-  private NodeBySeveralConcepts_Configuration myNode = new NodeBySeveralConcepts_Configuration(ListSequence.fromListAndArray(new ArrayList<NodesDescriptor>(), new NodesDescriptor(CONCEPTS.ClassConcept$bK, new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
-    public Boolean invoke(SNode node) {
-      return (ClassConcept__BehaviorDescriptor.getMainMethod_idhEwIClG.invoke(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK)) != null);
-    }
-  }), new NodesDescriptor(CONCEPTS.IMainClass$iX, new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
-    public Boolean invoke(SNode node) {
-      return (boolean) IMainClass__BehaviorDescriptor.isNodeRunnable_id431DWIovi3C.invoke(SNodeOperations.cast(node, CONCEPTS.IMainClass$iX)) && Java_Command.isUnitNode(node);
-    }
-  })));
+public final class Java_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration, Copyable<Java_Configuration> {
+  private NodeBySeveralConcepts_Configuration myNode = new NodeBySeveralConcepts_Configuration(ListSequence.fromListAndArray(new ArrayList<NodesDescriptor>(), new NodesDescriptor(CONCEPTS.ClassConcept$bK, ((_FunctionTypes._return_P1_E0<Boolean, SNode>) (SNode node) -> (ClassConcept__BehaviorDescriptor.getMainMethod_idhEwIClG.invoke(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK)) != null))), new NodesDescriptor(CONCEPTS.IMainClass$iX, ((_FunctionTypes._return_P1_E0<Boolean, SNode>) (SNode node) -> (boolean) IMainClass__BehaviorDescriptor.isNodeRunnable_id431DWIovi3C.invoke(SNodeOperations.cast(node, CONCEPTS.IMainClass$iX)) && Java_Command.isUnitNode(node)))));
   private JavaRunParameters_Configuration myRunParameters = new JavaRunParameters_Configuration(this.getProject());
 
   @Override
@@ -73,12 +62,10 @@ public class Java_Configuration extends BaseMpsRunConfiguration implements IPers
     this.getNode().checkConfiguration(context);
     final Wrappers._boolean hasMainMethod = new Wrappers._boolean(false);
     final MPSProject mpsProject = ProjectHelper.fromIdeaProject(this.getProject());
-    mpsProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode node = Java_Configuration.this.getNode().getNode().resolve(mpsProject.getRepository());
-        if (SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$bK)) {
-          hasMainMethod.value = (ClassConcept__BehaviorDescriptor.getMainMethod_idhEwIClG.invoke(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK)) == null);
-        }
+    mpsProject.getModelAccess().runReadAction(() -> {
+      SNode node = Java_Configuration.this.getNode().getNode().resolve(mpsProject.getRepository());
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$bK)) {
+        hasMainMethod.value = (ClassConcept__BehaviorDescriptor.getMainMethod_idhEwIClG.invoke(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK)) == null);
       }
     });
 
@@ -105,25 +92,11 @@ public class Java_Configuration extends BaseMpsRunConfiguration implements IPers
     if (element == null) {
       throw new InvalidDataException("Cant read " + this + ": element is null.");
     }
-    {
-      Element fieldElement = element.getChild("myNode");
-      if (fieldElement != null) {
-        myNode.readExternal(fieldElement);
-      } else {
-        if (LOG.isDebugEnabled()) {
-          LOG.debug("Element " + "myNode" + " in " + this.getClass().getName() + " was null.");
-        }
-      }
+    if (element.getChild("myNode") != null) {
+      myNode.readExternal(element.getChild("myNode"));
     }
-    {
-      Element fieldElement = element.getChild("myRunParameters");
-      if (fieldElement != null) {
-        myRunParameters.readExternal(fieldElement);
-      } else {
-        if (LOG.isDebugEnabled()) {
-          LOG.debug("Element " + "myRunParameters" + " in " + this.getClass().getName() + " was null.");
-        }
-      }
+    if (element.getChild("myRunParameters") != null) {
+      myRunParameters.readExternal(element.getChild("myRunParameters"));
     }
   }
 
@@ -136,33 +109,39 @@ public class Java_Configuration extends BaseMpsRunConfiguration implements IPers
         return true;
       }
       final SRepository repository = mpsElement.getMPSProject().getRepository();
-      return new ModelAccessHelper(repository).runReadAction(new Computable<Boolean>() {
-        public Boolean compute() {
-          SNode source = nodePointer.resolve(repository);
-          if (!(SNodeOperations.isInstanceOf(source, CONCEPTS.Classifier$Ix))) {
-            // XXX Seems that this code assumes source to be descendant of a classifier, exactly as described in MPS-25114 
-            //     If, however, source points to a non-classifier root (e.g. samples.shapes.Canvas which implements IMainClass) 
-            //     the code below looks odd (StaticMethodDeclaration ancestor?!). 
-            SNode mainMethodCandidate = SNodeOperations.getNodeAncestor(source, CONCEPTS.StaticMethodDeclaration$FJ, true, false);
-            if (mainMethodCandidate != null && (boolean) StaticMethodDeclaration__BehaviorDescriptor.isMainMethod_idhEwJkuu.invoke(mainMethodCandidate)) {
-              SNode classifier = SNodeOperations.getNodeAncestor(mainMethodCandidate, CONCEPTS.Classifier$Ix, false, false);
-              source = classifier;
-            } else {
-              return false;
-            }
+      return new ModelAccessHelper(repository).runReadAction(() -> {
+        SNode source = nodePointer.resolve(repository);
+        if (!(SNodeOperations.isInstanceOf(source, CONCEPTS.Classifier$Ix))) {
+          // XXX Seems that this code assumes source to be descendant of a classifier, exactly as described in MPS-25114
+          //     If, however, source points to a non-classifier root (e.g. samples.shapes.Canvas which implements IMainClass)
+          //     the code below looks odd (StaticMethodDeclaration ancestor?!).
+          SNode mainMethodCandidate = SNodeOperations.getNodeAncestor(source, CONCEPTS.StaticMethodDeclaration$FJ, true, false);
+          if (mainMethodCandidate != null && (boolean) StaticMethodDeclaration__BehaviorDescriptor.isMainMethod_idhEwJkuu.invoke(mainMethodCandidate)) {
+            SNode classifier = SNodeOperations.getNodeAncestor(mainMethodCandidate, CONCEPTS.Classifier$Ix, false, false);
+            source = classifier;
+          } else {
+            return false;
           }
-          return Objects.equals(SNodeOperations.getPointer(source), Java_Configuration.this.getNode().getNode());
         }
+        return Objects.equals(SNodeOperations.getPointer(source), Java_Configuration.this.getNode().getNode());
       });
     }
     return false;
   }
   @Override
+  @Deprecated
   public Java_Configuration clone() {
-    Java_Configuration clone = createCloneTemplate();
-    clone.myNode = (NodeBySeveralConcepts_Configuration) myNode.clone();
-    clone.myRunParameters = (JavaRunParameters_Configuration) myRunParameters.clone();
-    return clone;
+    return copy();
+  }
+
+  @Override
+  public Java_Configuration copy() {
+    Java_Configuration cloneTemplate = createCloneTemplate();
+    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
+    // the value of myState, and != clone as regular Java passer-by would expect.
+    cloneTemplate.myNode = ((Copyable<NodeBySeveralConcepts_Configuration>) myNode).copy();
+    cloneTemplate.myRunParameters = ((Copyable<JavaRunParameters_Configuration>) myRunParameters).copy();
+    return cloneTemplate;
   }
 
   public NodeBySeveralConcepts_Configuration getNode() {
@@ -205,11 +184,7 @@ public class Java_Configuration extends BaseMpsRunConfiguration implements IPers
   @Override
   public void checkConfiguration() throws RuntimeConfigurationException {
     final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
-    checkConfiguration(new PersistentConfigurationContext() {
-      public jetbrains.mps.project.Project getProject() {
-        return mpsProject;
-      }
-    });
+    checkConfiguration(() -> mpsProject);
   }
   @Override
   public boolean canExecute(String executorId) {

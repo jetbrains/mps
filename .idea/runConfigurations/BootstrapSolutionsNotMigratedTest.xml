@@ -11,12 +11,13 @@
     <option name="MAIN_CLASS_NAME" value="jetbrains.mps.migration.BootstrapSolutionsNotMigratedTest" />
     <option name="METHOD_NAME" value="" />
     <option name="TEST_OBJECT" value="class" />
-    <option name="VM_PARAMETERS" value="-ea -Xmx2048m -XX:NewSize=384m -noverify -XX:+HeapDumpOnOutOfMemoryError -Dmps.junit.project=. -client" />
+    <option name="VM_PARAMETERS" value="-ea -Xmx2048m -XX:+UseG1GC -XX:+HeapDumpOnOutOfMemoryError -client -Dmps.junit.project=. --add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED" />
     <option name="PARAMETERS" value="" />
     <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     <method v="2">
       <option name="Make" enabled="true" />
       <option name="BuildArtifacts" enabled="true">
+        <artifact name="bootstrap:aspects-feedback" />
         <artifact name="bootstrap:mps-annotations" />
         <artifact name="bootstrap:mps-core" />
         <artifact name="bootstrap:mps-editor" />
@@ -24,6 +25,8 @@
         <artifact name="bootstrap:mps-platform" />
         <artifact name="bootstrap:mps-testbench" />
         <artifact name="bootstrap:mps-workbench" />
+        <artifact name="bootstrap:scripts-runtime" />
+        <artifact name="mpsdevkit" />
       </option>
       <option name="AntTarget" enabled="true" antfile="file://$PROJECT_DIR$/testbench/cleanup.xml" target="cleanup" />
     </method>

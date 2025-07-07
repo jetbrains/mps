@@ -28,7 +28,7 @@ public class check_TernaryOperatorExpression_NonTypesystemRule extends AbstractN
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(ternaryOperatorExpression, "A ternary operator must be wrapped in parenthesis when being an operand of binary operations", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "818296778583740232", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.wrapMisplacedTernaryOperatorInParens_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.wrapMisplacedTernaryOperatorInParens_QuickFix", "818296778585083812", false);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }
@@ -38,7 +38,7 @@ public class check_TernaryOperatorExpression_NonTypesystemRule extends AbstractN
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(ternaryOperatorExpression, "A ternary operator must be wrapped in parenthesis when being a condition of a ternary operations", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "818296778607035886", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.wrapMisplacedTernaryOperatorInParens_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.wrapMisplacedTernaryOperatorInParens_QuickFix", "818296778607035889", false);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }

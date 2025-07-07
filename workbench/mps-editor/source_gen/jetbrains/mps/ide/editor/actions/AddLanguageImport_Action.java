@@ -18,7 +18,7 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.project.LanguageImportHelper;
 
-@GeneratedClass(node = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/3467203700125709751", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
+@GeneratedClass(nodeId = "3467203700125709751", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
 public class AddLanguageImport_Action extends BaseAction {
   private static final Icon ICON = MPSIcons.Nodes.Language;
 
@@ -26,6 +26,7 @@ public class AddLanguageImport_Action extends BaseAction {
     super("Add Language Import", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -33,7 +34,7 @@ public class AddLanguageImport_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    // 'editable' flag for a context parameter implies 'required', hence the check 
+    // 'editable' flag for a context parameter implies 'required', hence the check
     return (((SModel) MapSequence.fromMap(_params).get("model")) instanceof EditableSModel && !(((SModel) MapSequence.fromMap(_params).get("model")).isReadOnly())) || (((SModel) MapSequence.fromMap(_params).get("model")) == null && ((SModule) MapSequence.fromMap(_params).get("module")) instanceof DevKit);
   }
   @Override
@@ -76,6 +77,6 @@ public class AddLanguageImport_Action extends BaseAction {
     }
   }
   protected void configureImportHelper(LanguageImportHelper helper, final Map<String, Object> _params) {
-    // no-op, intended to be overridden in subclass (mps-idea-plugin needs additional activities to be executed when a language is added to a model) 
+    // no-op, intended to be overridden in subclass (mps-idea-plugin needs additional activities to be executed when a language is added to a model)
   }
 }

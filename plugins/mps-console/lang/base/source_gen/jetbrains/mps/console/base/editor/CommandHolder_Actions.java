@@ -9,7 +9,6 @@ import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.nodeEditor.selection.SelectUpUtil;
-import java.util.function.BooleanSupplier;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -42,7 +41,7 @@ public class CommandHolder_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        // do not select command holder or root 
+        // do not select command holder or root
       }
       @Override
       public boolean canExecute(EditorContext editorContext) {
@@ -60,11 +59,7 @@ public class CommandHolder_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(final EditorContext editorContext, final SNode node) {
-        SelectUpUtil.executeWhile(editorContext, new BooleanSupplier() {
-          public boolean getAsBoolean() {
-            return !(Objects.equals(editorContext.getSelectionManager().getSelection().getSelectedNodes().get(0), SLinkOperations.getTarget(node, LINKS.command$RGil)));
-          }
-        });
+        SelectUpUtil.executeWhile(editorContext, () -> !(Objects.equals(editorContext.getSelectionManager().getSelection().getSelectedNodes().get(0), SLinkOperations.getTarget(node, LINKS.command$RGil))));
       }
       @Override
       public boolean canExecute(EditorContext editorContext) {
@@ -81,11 +76,11 @@ public class CommandHolder_Actions {
     CellAction originalDelete = editorCell.getAction(CellActionType.DELETE);
     CellAction originalBackspace = editorCell.getAction(CellActionType.BACKSPACE);
 
-    // set actions that were actually defined 
+    // set actions that were actually defined
     setDefinedCellActions(editorCell, node, context);
 
-    // If we set a DELETE action but no BACKSPACE action, 
-    // use the DELETE action for BACKSPACE as well. 
+    // If we set a DELETE action but no BACKSPACE action,
+    // use the DELETE action for BACKSPACE as well.
     CellAction delete = editorCell.getAction(CellActionType.DELETE);
     CellAction backspace = editorCell.getAction(CellActionType.BACKSPACE);
     if (delete != originalDelete && backspace == originalBackspace) {
@@ -102,9 +97,9 @@ public class CommandHolder_Actions {
   private static final Object OB = new Object();
 
   public static void setDefinedCellActions(EditorCell editorCell, SNode node, EditorContext context) {
-    // set cell actions from all imported action maps 
+    // set cell actions from all imported action maps
 
-    // set cell actions defined directly in this action map 
+    // set cell actions defined directly in this action map
     editorCell.setAction(CellActionType.COMMENT, createAction_COMMENT(node));
     editorCell.setAction(CellActionType.SELECT_UP, createAction_SELECT_UP(node));
     editorCell.setAction(CellActionType.SELECT_ALL, createAction_SELECT_ALL(node));
@@ -112,9 +107,9 @@ public class CommandHolder_Actions {
 
   public static void setDefinedCellActionsOfType(EditorCell editorCell, SNode node, EditorContext context, CellActionType actionType) {
 
-    // set cell action(s) of the given type from imported action maps 
+    // set cell action(s) of the given type from imported action maps
 
-    // set cell action of the given type defined directly in this action map 
+    // set cell action of the given type defined directly in this action map
     if (Objects.equals(actionType, CellActionType.COMMENT)) {
       editorCell.setAction(actionType, createAction_COMMENT(node));
     }

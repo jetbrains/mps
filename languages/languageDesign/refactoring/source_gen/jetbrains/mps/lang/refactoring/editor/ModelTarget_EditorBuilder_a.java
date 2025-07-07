@@ -46,7 +46,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.KeyWordSty
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "model");
     editorCell.setCellId("Constant_e6o8mx_a0");
     Style style = new StyleImpl();
-    new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeyWordStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,6 +34,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.font.TextAttribute;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Artem Tikhomirov
@@ -85,15 +87,16 @@ final class UsagesCellRenderer implements TreeCellRenderer {
 
     myMainTextLabel.setForeground(UIUtil.getTreeForeground(selected, hasFocus));
 
-    Font f;
+    Map<TextAttribute, Object> fontAttributes = usagesTreeNode.getFontAttributes();
     if (usageData != null && usageData.isExcluded()) {
-      f = tree.getFont().deriveFont(Collections.singletonMap(TextAttribute.STRIKETHROUGH, TextAttribute.STRIKETHROUGH_ON));
-    } else {
-      f = tree.getFont();
+      if (fontAttributes.isEmpty()) {
+        fontAttributes = Collections.singletonMap(TextAttribute.STRIKETHROUGH, TextAttribute.STRIKETHROUGH_ON);
+      } else {
+        fontAttributes = new HashMap<>(fontAttributes);
+        fontAttributes.put(TextAttribute.STRIKETHROUGH, TextAttribute.STRIKETHROUGH_ON);
+      }
     }
-    if (usagesTreeNode.getFontStyle() != Font.PLAIN) {
-      f = f.deriveFont(usagesTreeNode.getFontStyle());
-    }
+    Font f = fontAttributes.isEmpty() ? tree.getFont() : tree.getFont().deriveFont(fontAttributes);
 
     myMainTextLabel.setFont(f);
     myAdditionalTextLabel.setFont(f);

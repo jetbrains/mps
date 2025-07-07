@@ -10,15 +10,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.smodel.SNodePointer;
 import java.util.List;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -27,21 +23,21 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class BL_node_factories {
   public static class NodeFactory_1213605907036 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if ((enclosingNode != null) && !(SNodeOperations.isInstanceOf(enclosingNode, CONCEPTS.Interface$db))) {
         SPropertyOperations.set(newNode, PROPS.nonStatic$aWW8, true);
       }
     }
   }
   public static class NodeFactory_3073231036166227544 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if ((enclosingNode != null)) {
         SPropertyOperations.set(newNode, PROPS.nonStatic$aWW8, true);
       }
     }
   }
   public static class NodeFactory_8355037393041908808 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if ((SLinkOperations.getTarget(newNode, LINKS.returnType$5xoi) == null)) {
         SNodeFactoryOperations.setNewChild(newNode, LINKS.returnType$5xoi, CONCEPTS.VoidType$BF);
       }
@@ -59,7 +55,6 @@ public class BL_node_factories {
           ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.annotation$K49I)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(original, LINKS.annotation$K49I)));
           ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.parameter$5xBj)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(original, LINKS.parameter$5xBj)));
           ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.typeVariableDeclaration$Lipp)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(original, LINKS.typeVariableDeclaration$Lipp)));
-          AttributeOperations.setAttribute(newNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI), AttributeOperations.getAttribute(original, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)));
         }
       }
       if (SNodeOperations.isInstanceOf(enclosingNode, CONCEPTS.Interface$db)) {
@@ -82,13 +77,13 @@ public class BL_node_factories {
     }
   }
   public static class NodeFactory_6624237184120886046 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SNode classifierType = SNodeFactoryOperations.setNewChild(newNode, LINKS.returnType$5xoi, CONCEPTS.ClassifierType$bL);
       SLinkOperations.setPointer(classifierType, LINKS.classifier$cxMr, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String"));
     }
   }
   public static class NodeFactory_2580416627845395972 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(enclosingNode, CONCEPTS.AnnotationInstance$yl)) {
         SNode annotationInstance = SNodeOperations.cast(enclosingNode, CONCEPTS.AnnotationInstance$yl);
         List<SNode> annotationMethodDeclarations = SLinkOperations.getChildren(SLinkOperations.getTarget(annotationInstance, LINKS.annotation$12Ek), LINKS.method$_DCK);
@@ -99,7 +94,7 @@ public class BL_node_factories {
     }
   }
   public static class NodeFactory_1178291730239 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(enclosingNode, CONCEPTS.Interface$db)) {
         SNodeFactoryOperations.setNewChild(newNode, LINKS.visibility$Yyua, CONCEPTS.PublicVisibility$R0);
         SPropertyOperations.assign(newNode, PROPS.isFinal$gvTP, true);
@@ -110,7 +105,7 @@ public class BL_node_factories {
     }
   }
   public static class NodeFactory_2509912883396146006 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SNodeFactoryOperations.setNewChild(newNode, LINKS.returnType$5xoi, CONCEPTS.VoidType$BF);
 
       {
@@ -126,7 +121,6 @@ public class BL_node_factories {
           ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.annotation$K49I)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(original, LINKS.annotation$K49I)));
           ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.parameter$5xBj)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(original, LINKS.parameter$5xBj)));
           ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.typeVariableDeclaration$Lipp)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(original, LINKS.typeVariableDeclaration$Lipp)));
-          AttributeOperations.setAttribute(newNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI), AttributeOperations.getAttribute(original, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)));
         }
       }
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.IncompleteMemberDeclaration$jI) || SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.PlaceholderMember$s8)) {
@@ -147,9 +141,9 @@ public class BL_node_factories {
     }
   }
   public static class NodeFactory_1178291598889 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SNodeFactoryOperations.setNewChild(newNode, LINKS.returnType$5xoi, CONCEPTS.VoidType$BF);
-      // else keep package (null) visibility for constructors in Enums 
+      // else keep package (null) visibility for constructors in Enums
       if (!(SNodeOperations.isInstanceOf(enclosingNode, CONCEPTS.EnumClass$Vk))) {
         if (enclosingNode != null && SNodeOperations.isInstanceOf(enclosingNode, CONCEPTS.IVisible$zu)) {
           SLinkOperations.setTarget(newNode, LINKS.visibility$Yyua, SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.IVisible$zu), LINKS.visibility$Yyua)));
@@ -160,7 +154,7 @@ public class BL_node_factories {
     }
   }
   public static class NodeFactory_1158797366354 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BinaryOperation$W1)) {
         SLinkOperations.setTarget(newNode, LINKS.leftExpression$sEj, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.BinaryOperation$W1), LINKS.leftExpression$sEj));
         SLinkOperations.setTarget(newNode, LINKS.rightExpression$nvX, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.BinaryOperation$W1), LINKS.rightExpression$nvX));
@@ -169,7 +163,7 @@ public class BL_node_factories {
     }
   }
   public static class NodeFactory_1231770721117 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BaseAssignmentExpression$PA)) {
         SLinkOperations.setTarget(newNode, LINKS.lValue$splI, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.BaseAssignmentExpression$PA), LINKS.lValue$splI));
         SLinkOperations.setTarget(newNode, LINKS.rValue$spNK, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.BaseAssignmentExpression$PA), LINKS.rValue$spNK));
@@ -179,26 +173,26 @@ public class BL_node_factories {
     }
   }
   public static class NodeFactory_1158857529258 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Expression$mB)) {
         SLinkOperations.setTarget(newNode, LINKS.expression$TlhM, SNodeOperations.cast(sampleNode, CONCEPTS.Expression$mB));
       }
     }
   }
   public static class NodeFactory_1187945171249 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      //  moved to substitute/expression/new 
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
+      //  moved to substitute/expression/new
     }
   }
   public static class NodeFactory_1158938591701 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.ExpressionStatement$O8)) {
         SLinkOperations.setTarget(newNode, LINKS.expression$eJ92, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M));
       }
     }
   }
   public static class NodeFactory_1178272045313 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.IContainsStatementList$v9)) {
         SNodeFactoryOperations.setNewChild(newNode, LINKS.condition$5R17, null);
         SNodeFactoryOperations.setNewChild(newNode, LINKS.ifTrue$5Rg8, null);
@@ -218,28 +212,28 @@ public class BL_node_factories {
     }
   }
   public static class NodeFactory_1205764418295 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Statement$P6)) {
         ListSequence.fromList(SLinkOperations.getChildren(SNodeFactoryOperations.setNewChild(newNode, LINKS.statements$q65M, CONCEPTS.StatementList$m_), LINKS.statement$53DE)).addElement(SNodeOperations.cast(sampleNode, CONCEPTS.Statement$P6));
       }
     }
   }
   public static class NodeFactory_3450034536571911384 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SNodeFactoryOperations.setNewChild(newNode, LINKS.body$c1sm, null);
       SNodeFactoryOperations.setNewChild(newNode, LINKS.condition$KEkM, null);
       AlterStatementListContainerFactoryUtils.buildContainerIfPossible(sampleNode, newNode);
     }
   }
   public static class NodeFactory_3450034536571911403 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SNodeFactoryOperations.setNewChild(newNode, LINKS.body$c1sm, null);
       SNodeFactoryOperations.setNewChild(newNode, LINKS.condition$UPf8, null);
       AlterStatementListContainerFactoryUtils.buildContainerIfPossible(sampleNode, newNode);
     }
   }
   public static class NodeFactory_1188991552884 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.IContainsStatementList$v9)) {
         SNodeFactoryOperations.setNewChild(newNode, LINKS.body$c1sm, null);
         AlterStatementListContainerFactoryUtils.buildContainer(SNodeOperations.cast(sampleNode, CONCEPTS.IContainsStatementList$v9), newNode);
@@ -249,7 +243,7 @@ public class BL_node_factories {
     }
   }
   public static class NodeFactory_1188991457470 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.IContainsStatementList$v9)) {
         SNodeFactoryOperations.setNewChild(newNode, LINKS.body$c1sm, null);
         AlterStatementListContainerFactoryUtils.buildContainer(SNodeOperations.cast(sampleNode, CONCEPTS.IContainsStatementList$v9), newNode);
@@ -259,28 +253,28 @@ public class BL_node_factories {
     }
   }
   public static class NodeFactory_1183997671100 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Statement$P6)) {
         ListSequence.fromList(SLinkOperations.getChildren(SNodeFactoryOperations.setNewChild(newNode, LINKS.body$pDF2, CONCEPTS.StatementList$m_), LINKS.statement$53DE)).addElement(SNodeOperations.cast(sampleNode, CONCEPTS.Statement$P6));
       }
     }
   }
   public static class NodeFactory_1183997675651 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Statement$P6)) {
         ListSequence.fromList(SLinkOperations.getChildren(SNodeFactoryOperations.setNewChild(newNode, LINKS.body$Gg33, CONCEPTS.StatementList$m_), LINKS.statement$53DE)).addElement(SNodeOperations.cast(sampleNode, CONCEPTS.Statement$P6));
       }
     }
   }
   public static class NodeFactory_5181868005285685187 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Statement$P6)) {
         ListSequence.fromList(SLinkOperations.getChildren(SNodeFactoryOperations.setNewChild(newNode, LINKS.body$KFk, CONCEPTS.StatementList$m_), LINKS.statement$53DE)).addElement(SNodeOperations.cast(sampleNode, CONCEPTS.Statement$P6));
       }
     }
   }
   public static class NodeFactory_1159218040860 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Expression$mB)) {
         SLinkOperations.setTarget(newNode, LINKS.expression$sv_H, SNodeOperations.cast(sampleNode, CONCEPTS.Expression$mB));
         if (PrecedenceUtil.needsParensAroundNotExpression(newNode)) {
@@ -291,39 +285,39 @@ public class BL_node_factories {
     }
   }
   public static class NodeFactory_1225896127900 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Expression$mB)) {
         SLinkOperations.setTarget(newNode, LINKS.expression$$XK9, SNodeOperations.cast(sampleNode, CONCEPTS.Expression$mB));
       }
     }
   }
   public static class NodeFactory_434283027167909682 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Expression$mB)) {
         SLinkOperations.setTarget(newNode, LINKS.expression$uRUg, SNodeOperations.cast(sampleNode, CONCEPTS.Expression$mB));
       }
     }
   }
   public static class NodeFactory_434283027167909705 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Expression$mB)) {
         SLinkOperations.setTarget(newNode, LINKS.expression$uRUg, SNodeOperations.cast(sampleNode, CONCEPTS.Expression$mB));
       }
     }
   }
   public static class NodeFactory_5649551303341182515 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SLinkOperations.setTarget(newNode, LINKS.variable$JNH6, _quotation_createNode_ns07og_a0a0a0ab());
     }
     private static SNode _quotation_createNode_ns07og_a0a0a0ab() {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_1 = null;
-      quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7efL, "LocalVariableDeclaration")).getResult();
+      SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7efL, "LocalVariableDeclaration"));
+      quotedNode_1 = nb.getResult();
       return quotedNode_1;
     }
   }
   public static class NodeFactory_2256531611052034561 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode original = sampleNode;
         if (SNodeOperations.isInstanceOf(original, CONCEPTS.LocalVariableDeclaration$41)) {
@@ -335,14 +329,14 @@ public class BL_node_factories {
       }
     }
     private static SNode _quotation_createNode_ns07og_a0a0a1a0bb() {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_1 = null;
-      quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d22479L, "IntegerType")).getResult();
+      SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d22479L, "IntegerType"));
+      quotedNode_1 = nb.getResult();
       return quotedNode_1;
     }
   }
   public static class NodeFactory_1704216628350805216 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode original = sampleNode;
         if (SNodeOperations.isInstanceOf(original, CONCEPTS.LocalVariableDeclaration$41)) {
@@ -350,17 +344,36 @@ public class BL_node_factories {
           SLinkOperations.setTarget(newNode, LINKS.type$a1UY, SNodeOperations.copyNode(SLinkOperations.getTarget(original, LINKS.type$a1UY)));
           SLinkOperations.setTarget(newNode, LINKS.initializer$2twD, SNodeOperations.copyNode(SLinkOperations.getTarget(original, LINKS.initializer$2twD)));
           SPropertyOperations.assign(newNode, PROPS.isFinal$gvTP, SPropertyOperations.getBoolean(original, PROPS.isFinal$gvTP));
-          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.annotation$K49I)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(original, LINKS.annotation$K49I)).select(new ISelector<SNode, SNode>() {
-            public SNode select(SNode it) {
-              return SNodeOperations.copyNode(it);
-            }
-          }));
+          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.annotation$K49I)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(original, LINKS.annotation$K49I)).select((it) -> SNodeOperations.copyNode(it)));
+        }
+      }
+    }
+  }
+  public static class NodeFactory_8353134822315570241 implements NodeFactory {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
+      {
+        final SNode other = sampleNode;
+        if (SNodeOperations.isInstanceOf(other, CONCEPTS.LongLiteral$y2)) {
+          String value = SPropertyOperations.getString(other, PROPS.value$b84M);
+          if (value.startsWith("0x")) {
+            value = value.substring(2, value.length());
+          }
+          if (value.startsWith("0")) {
+            value = value.substring(1, value.length());
+          }
+          SPropertyOperations.assign(newNode, PROPS.hexValue$ZIVH, value);
+        }
+      }
+      {
+        final SNode other = sampleNode;
+        if (SNodeOperations.isInstanceOf(other, CONCEPTS.IntegerConstant$Na)) {
+          SPropertyOperations.assign(newNode, PROPS.hexValue$ZIVH, "" + SPropertyOperations.getInteger(other, PROPS.value$jgCM) + "L");
         }
       }
     }
   }
   public static class NodeFactory_141880770457524215 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode other = sampleNode;
         if (SNodeOperations.isInstanceOf(other, CONCEPTS.OctalIntegerLiteral$He)) {
@@ -373,10 +386,32 @@ public class BL_node_factories {
           SPropertyOperations.assign(newNode, PROPS.value$JSvS, SPropertyOperations.getString(other, PROPS.value$UlRI));
         }
       }
+      {
+        final SNode other = sampleNode;
+        if (SNodeOperations.isInstanceOf(other, CONCEPTS.IntegerConstant$Na)) {
+          SPropertyOperations.assign(newNode, PROPS.value$JSvS, "" + SPropertyOperations.getInteger(other, PROPS.value$jgCM));
+        }
+      }
+      {
+        final SNode other = sampleNode;
+        if (SNodeOperations.isInstanceOf(other, CONCEPTS.LongLiteral$y2)) {
+          String value = SPropertyOperations.getString(other, PROPS.value$b84M);
+          if (value.endsWith("L") || value.endsWith("l")) {
+            value = value.substring(0, value.length() - 1);
+          }
+          if (value.startsWith("0x")) {
+            value = value.substring(2, value.length());
+          }
+          if (value.startsWith("0")) {
+            value = value.substring(1, value.length());
+          }
+          SPropertyOperations.assign(newNode, PROPS.value$JSvS, value);
+        }
+      }
     }
   }
   public static class NodeFactory_141880770457552783 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode other = sampleNode;
         if (SNodeOperations.isInstanceOf(other, CONCEPTS.HexIntegerLiteral$yn)) {
@@ -389,10 +424,32 @@ public class BL_node_factories {
           SPropertyOperations.assign(newNode, PROPS.value$K0EJ, SPropertyOperations.getString(other, PROPS.value$UlRI));
         }
       }
+      {
+        final SNode other = sampleNode;
+        if (SNodeOperations.isInstanceOf(other, CONCEPTS.IntegerConstant$Na)) {
+          SPropertyOperations.assign(newNode, PROPS.value$K0EJ, "" + SPropertyOperations.getInteger(other, PROPS.value$jgCM));
+        }
+      }
+      {
+        final SNode other = sampleNode;
+        if (SNodeOperations.isInstanceOf(other, CONCEPTS.LongLiteral$y2)) {
+          String value = SPropertyOperations.getString(other, PROPS.value$b84M);
+          if (value.endsWith("L") || value.endsWith("l")) {
+            value = value.substring(0, value.length() - 1);
+          }
+          if (value.startsWith("0c")) {
+            value = value.substring(2, value.length());
+          }
+          if (value.startsWith("0")) {
+            value = value.substring(1, value.length());
+          }
+          SPropertyOperations.assign(newNode, PROPS.value$K0EJ, value);
+        }
+      }
     }
   }
   public static class NodeFactory_141880770457554690 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode other = sampleNode;
         if (SNodeOperations.isInstanceOf(other, CONCEPTS.OctalIntegerLiteral$He)) {
@@ -405,6 +462,28 @@ public class BL_node_factories {
           SPropertyOperations.assign(newNode, PROPS.value$UlRI, SPropertyOperations.getString(other, PROPS.value$JSvS));
         }
       }
+      {
+        final SNode other = sampleNode;
+        if (SNodeOperations.isInstanceOf(other, CONCEPTS.IntegerConstant$Na)) {
+          SPropertyOperations.assign(newNode, PROPS.value$UlRI, "" + SPropertyOperations.getInteger(other, PROPS.value$jgCM));
+        }
+      }
+      {
+        final SNode other = sampleNode;
+        if (SNodeOperations.isInstanceOf(other, CONCEPTS.LongLiteral$y2)) {
+          String value = SPropertyOperations.getString(other, PROPS.value$b84M);
+          if (value.endsWith("L") || value.endsWith("l")) {
+            value = value.substring(0, value.length() - 1);
+          }
+          if (value.startsWith("0b")) {
+            value = value.substring(2, value.length());
+          }
+          if (value.startsWith("0")) {
+            value = value.substring(1, value.length());
+          }
+          SPropertyOperations.assign(newNode, PROPS.value$UlRI, value);
+        }
+      }
     }
   }
 
@@ -412,7 +491,6 @@ public class BL_node_factories {
     /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
     /*package*/ static final SConcept VoidType$BF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
     /*package*/ static final SConcept MethodDeclaration$_P = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration");
-    /*package*/ static final SConcept MethodDocComment$HI = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, "jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment");
     /*package*/ static final SInterfaceConcept IVisible$zu = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible");
     /*package*/ static final SConcept IncompleteMemberDeclaration$jI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, "jetbrains.mps.baseLanguage.structure.IncompleteMemberDeclaration");
     /*package*/ static final SConcept PlaceholderMember$s8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember");
@@ -431,6 +509,8 @@ public class BL_node_factories {
     /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
     /*package*/ static final SConcept ParenthesizedExpression$Ws = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
     /*package*/ static final SConcept LocalVariableDeclaration$41 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
+    /*package*/ static final SConcept LongLiteral$y2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b418722717710b4L, "jetbrains.mps.baseLanguage.structure.LongLiteral");
+    /*package*/ static final SConcept IntegerConstant$Na = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, "jetbrains.mps.baseLanguage.structure.IntegerConstant");
     /*package*/ static final SConcept OctalIntegerLiteral$He = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xe81fba3b64ca8f8L, "jetbrains.mps.baseLanguage.structure.OctalIntegerLiteral");
     /*package*/ static final SConcept BinaryIntegerLiteral$Ud = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10872a073bf6450aL, "jetbrains.mps.baseLanguage.structure.BinaryIntegerLiteral");
     /*package*/ static final SConcept HexIntegerLiteral$yn = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1129761e073L, "jetbrains.mps.baseLanguage.structure.HexIntegerLiteral");
@@ -443,6 +523,9 @@ public class BL_node_factories {
     /*package*/ static final SProperty isSynchronized$58UL = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x3b576cda23612c7aL, "isSynchronized");
     /*package*/ static final SProperty isNative$GNAF = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, 0x73f30e3df95c0b73L, "isNative");
     /*package*/ static final SProperty isFinal$gvTP = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty value$b84M = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b418722717710b4L, 0x3b418722717710b5L, "value");
+    /*package*/ static final SProperty hexValue$ZIVH = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x73ec4bdd32ac9ed3L, 0x73ec4bdd32ac9f1cL, "hexValue");
+    /*package*/ static final SProperty value$jgCM = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
     /*package*/ static final SProperty value$JSvS = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1129761e073L, 0x11297628b3cL, "value");
     /*package*/ static final SProperty value$K0EJ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xe81fba3b64ca8f8L, 0x11297628b3cL, "value");
     /*package*/ static final SProperty value$UlRI = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10872a073bf6450aL, 0x11297628b3cL, "value");

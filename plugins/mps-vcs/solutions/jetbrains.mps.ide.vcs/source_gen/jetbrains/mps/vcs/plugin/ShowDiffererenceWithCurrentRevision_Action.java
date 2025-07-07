@@ -14,7 +14,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vcs.ProjectLevelVcsManager;
 import com.intellij.openapi.vcs.FileStatus;
-import com.intellij.openapi.vcs.impl.VcsFileStatusProvider;
+import com.intellij.openapi.vcs.FileStatusManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.project.MPSProject;
@@ -23,7 +23,7 @@ import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.vcs.platform.actions.VcsActionsUtil;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 
-@GeneratedClass(node = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/7545884443035919781", model = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)")
+@GeneratedClass(nodeId = "7545884443035919781", model = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)")
 public class ShowDiffererenceWithCurrentRevision_Action extends BaseAction {
   private static final Icon ICON = AllIcons.Actions.Diff;
 
@@ -31,6 +31,7 @@ public class ShowDiffererenceWithCurrentRevision_Action extends BaseAction {
     super("Compare with the Same Repository Version", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -38,7 +39,7 @@ public class ShowDiffererenceWithCurrentRevision_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    // only applicable to root nodes 
+    // only applicable to root nodes
     if (SNodeOperations.getParent(event.getData(MPSCommonDataKeys.NODE)) != null) {
       return false;
     }
@@ -49,7 +50,7 @@ public class ShowDiffererenceWithCurrentRevision_Action extends BaseAction {
 
     final Project ideaProject = event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject();
     if (ProjectLevelVcsManager.getInstance(ideaProject).getVcsFor(virtualFile) != null) {
-      FileStatus fileStatus = VcsFileStatusProvider.getInstance(ideaProject).getFileStatus(virtualFile);
+      FileStatus fileStatus = FileStatusManager.getInstance(ideaProject).getStatus(virtualFile);
       return FileStatus.ADDED != fileStatus && FileStatus.UNKNOWN != fileStatus;
     }
     return false;
@@ -90,13 +91,9 @@ public class ShowDiffererenceWithCurrentRevision_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     ShowDiffererenceWithCurrentRevision_Action.this.getVcsActionsUtil(event).showRootDifference(null);
   }
-  /*package*/ VcsActionsUtil getVcsActionsUtil(final AnActionEvent event) {
+  private VcsActionsUtil getVcsActionsUtil(final AnActionEvent event) {
     final Wrappers._T<String> rootName = new Wrappers._T<String>();
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        rootName.value = SNodeOperations.getContainingRoot(event.getData(MPSCommonDataKeys.NODE)).getName();
-      }
-    });
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(() -> rootName.value = SNodeOperations.getContainingRoot(event.getData(MPSCommonDataKeys.NODE)).getName());
     return new VcsActionsUtil(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.NODE).getReference(), rootName.value);
   }
 }

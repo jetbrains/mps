@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.errors.item.NodeReportItem;
@@ -17,9 +16,7 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import java.util.Objects;
@@ -31,8 +28,8 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class ISuppressErrors__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2f16f1b357e19f43L, "jetbrains.mps.lang.core.structure.ISuppressErrors");
 
-  public static final SMethod<Boolean> suppress_id2WmWrdnSpX7 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("suppress").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2WmWrdnSpX7").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> suppress_id3612de_vrfV = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("suppress").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3612de_vrfV").build(SMethodBuilder.createJavaParameter(NodeReportItem.class, ""));
+  public static final SMethod<Boolean> suppress_id2WmWrdnSpX7 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("suppress").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3393165121846091591L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> suppress_id3612de_vrfV = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("suppress").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3567142084961743867L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter(NodeReportItem.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(suppress_id2WmWrdnSpX7, suppress_id3612de_vrfV);
 
@@ -40,11 +37,7 @@ public final class ISuppressErrors__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static boolean suppress_id2WmWrdnSpX7(@NotNull SNode __thisNode__, SNode child) {
-    return !(SNodeOperations.isInstanceOf(ListSequence.fromList(SNodeOperations.getNodeAncestors(child, null, true)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.IAntisuppressErrors$MM) || SNodeOperations.isInstanceOf(it, CONCEPTS.ISuppressErrors$qB) || Sequence.fromIterable(SNodeOperations.ofConcept(AttributeOperations.getAttributeList(it, new IAttributeDescriptor.AllAttributes()), CONCEPTS.ISuppressErrors$qB)).isNotEmpty();
-      }
-    }), CONCEPTS.IAntisuppressErrors$MM));
+    return !(SNodeOperations.isInstanceOf(ListSequence.fromList(SNodeOperations.getNodeAncestors(child, null, true)).findFirst((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.IAntisuppressErrors$MM) || SNodeOperations.isInstanceOf(it, CONCEPTS.ISuppressErrors$qB) || Sequence.fromIterable(SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(it), CONCEPTS.ISuppressErrors$qB)).isNotEmpty()), CONCEPTS.IAntisuppressErrors$MM));
   }
   /*package*/ static boolean suppress_id3612de_vrfV(@NotNull SNode __thisNode__, NodeReportItem reportItem) {
     IssueKindReportItem.KindLevel kindLevel = reportItem.getIssueKind().getChecker().getKindLevel();

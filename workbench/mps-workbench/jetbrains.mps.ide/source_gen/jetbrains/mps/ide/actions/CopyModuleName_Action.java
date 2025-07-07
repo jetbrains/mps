@@ -9,11 +9,10 @@ import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1236184251962", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1236184251962", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class CopyModuleName_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -21,6 +20,7 @@ public class CopyModuleName_Action extends BaseAction {
     super("Copy Module Name", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -33,7 +33,6 @@ public class CopyModuleName_Action extends BaseAction {
     }
     {
       SModule p = event.getData(MPSCommonDataKeys.MODULE);
-      MapSequence.fromMap(_params).put("module", p);
       if (p == null) {
         return false;
       }
@@ -42,6 +41,6 @@ public class CopyModuleName_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    CopyPasteUtil.copyTextToClipboard(((SModule) MapSequence.fromMap(_params).get("module")).getModuleName());
+    CopyPasteUtil.copyTextToClipboard(event.getData(MPSCommonDataKeys.MODULE).getModuleName());
   }
 }

@@ -11,6 +11,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.DEFAULT_STATIC_FIELD_StyleKey;
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
 
 /*package*/ class GetMakeSessionExpression_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -37,7 +38,8 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.DEFAULT_STA
     editorCell.setBig(true);
     setCellContext(editorCell);
     Style style = new StyleImpl();
-    new DEFAULT_STATIC_FIELD_StyleKey().apply(style);
+    new DEFAULT_STATIC_FIELD_StyleKey().apply(this, style);
+    style.set(StyleAttributes.EDITABLE, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;

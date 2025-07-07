@@ -35,7 +35,7 @@ public class check_OverrideNullAnnotations_NonTypesystemRule extends AbstractNon
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(method, "This method must have @NotNull annotation", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6841011242013479830", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.Add_NotNullAnnotation_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.Add_NotNullAnnotation_QuickFix", "6841011242013481773", false);
             intentionProvider.putArgument("method", method);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
@@ -50,7 +50,7 @@ public class check_OverrideNullAnnotations_NonTypesystemRule extends AbstractNon
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(param, "This parameter must have @Nullable annotation", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6841011242013479681", null, errorTarget);
             {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.Add_NullableAnnotationToParameter_QuickFix", false);
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.Add_NullableAnnotationToParameter_QuickFix", "6841011242013479771", false);
               intentionProvider.putArgument("parameter", param);
               _reporter_2309309498.addIntentionProvider(intentionProvider);
             }

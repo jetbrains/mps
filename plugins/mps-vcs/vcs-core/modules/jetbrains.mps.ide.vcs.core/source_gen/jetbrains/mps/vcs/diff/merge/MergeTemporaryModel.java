@@ -14,20 +14,21 @@ import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.smodel.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.smodel.SNodeImplAccess;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.DefaultSModel;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelHeader;
 
 /**
  * Merge model has to be EditableSModel for now (there's otherwise dubious use of isChanged status),
  * however, rest of the EditableSModel API is superfluous for the merge model.
  */
-@GeneratedClass(node = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)/1549936565245931290", model = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)")
+@GeneratedClass(nodeId = "1549936565245931290", model = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)")
 public final class MergeTemporaryModel extends EditableModelDescriptor implements PersistenceVersionAware, EditableSModel, GeneratableSModel {
-  private boolean myReadOnly;
+  private final boolean myReadOnly;
 
   public MergeTemporaryModel(SModelReference modelRef, boolean readonly) {
     super(modelRef, new NullDataSource());
@@ -43,15 +44,20 @@ public final class MergeTemporaryModel extends EditableModelDescriptor implement
   }
 
   private static MergeTemporaryModel cloneDataInto(MergeTemporaryModel rv, SModel origin) {
-    // TODO generalize merge for any SModel 
+    // TODO generalize merge for any SModel
     jetbrains.mps.smodel.SModel resModel = CopyUtil.copyModel(((SModelBase) origin).getSModel());
     rv.replace(new ModelLoadResult<jetbrains.mps.smodel.SModel>(resModel, ModelLoadingState.FULLY_LOADED));
+    // FIXME CopyUtil replaces all LocalNodePtr with IndirectNodePtr, and subsequent change of model references doesn't update these IndirectNodePtr, making them point to another model.
+    //      here, sort of hack to ensure IndirectNodePtr for the same model get replaced back with LocalNodePtr
+    for (SNode root : resModel.getRootNodes()) {
+      new SNodeImplAccess(root).rerouteAssociationDeep(rv.getReference(), rv.getReference());
+    }
     return rv;
   }
 
   @NotNull
   protected ModelLoadResult<jetbrains.mps.smodel.SModel> createModel() {
-    // XXX why not UnsupportedOperationException? Generally, we shall never get here (well, except of unloaded model) 
+    // XXX why not UnsupportedOperationException? Generally, we shall never get here (well, except of unloaded model)
     return new ModelLoadResult<jetbrains.mps.smodel.SModel>(new jetbrains.mps.smodel.SModel(getReference()), ModelLoadingState.FULLY_LOADED);
   }
 
@@ -62,12 +68,7 @@ public final class MergeTemporaryModel extends EditableModelDescriptor implement
 
   @Override
   public void save() {
-    // no-op 
-  }
-
-  @Override
-  public void rename(String newModelName, boolean changeFile) {
-    throw new UnsupportedOperationException();
+    // no-op
   }
 
   @Override
@@ -78,15 +79,6 @@ public final class MergeTemporaryModel extends EditableModelDescriptor implement
   @Override
   public void reloadFromSource() {
     throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public void updateTimestamp() {
-    // no-op 
-  }
-  @Override
-  public boolean needsReloading() {
-    return false;
   }
 
   public void setPersistenceVersion(int version) {
@@ -103,8 +95,8 @@ public final class MergeTemporaryModel extends EditableModelDescriptor implement
 
   @Nullable
   public ModelFactory getModelFactory() {
-    // in fact, shall derive persistence from models being merged, however, so far we've got merge for default/xml persistence only, thus it's ok to hardcode specific factory 
-    // XXX is there any use of the method during merge? Perhaps, could go with plain 'null'? 
+    // in fact, shall derive persistence from models being merged, however, so far we've got merge for default/xml persistence only, thus it's ok to hardcode specific factory
+    // XXX is there any use of the method during merge? Perhaps, could go with plain 'null'?
     return PersistenceFacade.getInstance().getDefaultModelFactory();
   }
 
@@ -126,13 +118,13 @@ public final class MergeTemporaryModel extends EditableModelDescriptor implement
   @Override
   public void setDoNotGenerate(boolean b) {
     if (getModelData() instanceof DefaultSModel) {
-      ((DefaultSModel) getModelData()).getSModelHeader().setOptionalProperty(SModelHeader.DO_NOT_GENERATE, Boolean.toString(b));
+      ((DefaultSModel) getModelData()).getSModelHeader().setOptionalProperty(GeneratableSModel.DO_NOT_GENERATE, Boolean.toString(b));
     }
   }
   @Override
   public boolean isDoNotGenerate() {
     if (getModelData() instanceof DefaultSModel) {
-      return Boolean.parseBoolean(((DefaultSModel) getModelData()).getSModelHeader().getOptionalProperty(SModelHeader.DO_NOT_GENERATE));
+      return Boolean.parseBoolean(((DefaultSModel) getModelData()).getSModelHeader().getOptionalProperty(GeneratableSModel.DO_NOT_GENERATE));
     }
     return false;
   }

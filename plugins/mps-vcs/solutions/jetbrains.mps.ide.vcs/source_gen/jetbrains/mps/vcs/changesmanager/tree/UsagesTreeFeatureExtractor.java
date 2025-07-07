@@ -16,7 +16,7 @@ import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.NodeNodeD
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.vcs.changesmanager.tree.features.NodeFeature;
 
-@GeneratedClass(node = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)/285677603355151499", model = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)")
+@GeneratedClass(nodeId = "285677603355151499", model = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)")
 public class UsagesTreeFeatureExtractor implements TreeNodeFeatureExtractor {
   public UsagesTreeFeatureExtractor() {
   }
@@ -33,7 +33,7 @@ public class UsagesTreeFeatureExtractor implements TreeNodeFeatureExtractor {
       } else if (nodeData instanceof NodeNodeData) {
         SNodeReference np = ((NodeNodeData) nodeData).getNodePointer();
         if (np != null) {
-          return new NodeFeature(np);
+          return new NodeFeature(np, null);
         }
       }
     }

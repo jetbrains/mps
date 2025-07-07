@@ -22,7 +22,6 @@ import jetbrains.mps.generator.template.ReductionRuleQueryContext;
 import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.impl.query.MapConfigurationCondition;
 import jetbrains.mps.generator.impl.query.SourceNodeQuery;
-import jetbrains.mps.generator.impl.query.QueryKeyImpl;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.impl.query.InlineSwitchCaseCondition;
 import jetbrains.mps.generator.template.InlineSwitchCaseContext;
@@ -38,7 +37,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
     SNode lt = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$sEj));
     SNode rt = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$nvX));
-    return (SNodeOperations.isInstanceOf(lt, CONCEPTS.PrimitiveType$sR) || SNodeOperations.isInstanceOf(rt, CONCEPTS.PrimitiveType$sR)) && !((SNodeOperations.isInstanceOf(lt, CONCEPTS.NullType$Ea) || SNodeOperations.isInstanceOf(rt, CONCEPTS.NullType$Ea)));
+    return (SNodeOperations.isInstanceOf(lt, CONCEPTS.PrimitiveType$sR) || SNodeOperations.isInstanceOf(rt, CONCEPTS.PrimitiveType$sR)) && !(SNodeOperations.isInstanceOf(lt, CONCEPTS.NullType$Ea) || SNodeOperations.isInstanceOf(rt, CONCEPTS.NullType$Ea));
   }
   public static boolean rule_Condition_0_1(final BaseMappingRuleContext _context) {
     return Helper.isCollectionElementAccess(SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$sEj));
@@ -46,7 +45,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static boolean rule_Condition_0_2(final BaseMappingRuleContext _context) {
     SNode lt = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$sEj));
     SNode rt = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$nvX));
-    return (SNodeOperations.isInstanceOf(lt, CONCEPTS.PrimitiveType$sR) || SNodeOperations.isInstanceOf(rt, CONCEPTS.PrimitiveType$sR)) && !((SNodeOperations.isInstanceOf(lt, CONCEPTS.NullType$Ea) || SNodeOperations.isInstanceOf(rt, CONCEPTS.NullType$Ea)));
+    return (SNodeOperations.isInstanceOf(lt, CONCEPTS.PrimitiveType$sR) || SNodeOperations.isInstanceOf(rt, CONCEPTS.PrimitiveType$sR)) && !(SNodeOperations.isInstanceOf(lt, CONCEPTS.NullType$Ea) || SNodeOperations.isInstanceOf(rt, CONCEPTS.NullType$Ea));
   }
   public static boolean rule_Condition_0_3(final BaseMappingRuleContext _context) {
     return Helper.isCollectionElementAccess(SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$nvX));
@@ -88,11 +87,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public ReductionRuleCondition getReductionRuleCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(rrcMethods.containsKey(id))) {
-      return super.getReductionRuleCondition(identity);
-    }
-    return rrcMethods.get(id);
+    ReductionRuleCondition query = identity.forTemplateNode(rrcMethods);
+    return (query != null ? query : super.getReductionRuleCondition(identity));
   }
   private static class RRC implements ReductionRuleCondition {
     private final int methodKey;
@@ -119,11 +115,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public MapConfigurationCondition getMapConfigurationCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(mccMethods.containsKey(id))) {
-      return super.getMapConfigurationCondition(identity);
-    }
-    return mccMethods.get(id);
+    MapConfigurationCondition query = identity.forTemplateNode(mccMethods);
+    return (query != null ? query : super.getMapConfigurationCondition(identity));
   }
   private static class MCC implements MapConfigurationCondition {
     private final int methodKey;
@@ -153,11 +146,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public SourceNodeQuery getSourceNodeQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snqMethods.containsKey(id))) {
-      return super.getSourceNodeQuery(identity);
-    }
-    return snqMethods.get(id);
+    SourceNodeQuery query = identity.forFunctionNode(snqMethods);
+    return (query != null ? query : super.getSourceNodeQuery(identity));
   }
   private static class SNQ implements SourceNodeQuery {
     private final int methodKey;
@@ -193,11 +183,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public InlineSwitchCaseCondition getInlineSwitchCaseCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(isccMethods.containsKey(id))) {
-      return super.getInlineSwitchCaseCondition(identity);
-    }
-    return isccMethods.get(id);
+    InlineSwitchCaseCondition query = identity.forTemplateNode(isccMethods);
+    return (query != null ? query : super.getInlineSwitchCaseCondition(identity));
   }
   private static class ISCC implements InlineSwitchCaseCondition {
     private final int methodKey;

@@ -10,14 +10,11 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringRuntime;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptMemberNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -39,20 +36,8 @@ public class InferenceRule_OverridesFun extends MigrationScriptBase {
     {
       SearchScope scope_gt4fl_a0e = CommandUtil.createScope(m);
       final SearchScope scope_gt4fl_a0e_0 = new EditableFilteringScope(scope_gt4fl_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_gt4fl_a0e_0;
-        }
-      };
-      Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, "jetbrains.mps.lang.typesystem"), 0x1117e2f5efaL, "InferenceRule"))) || InferenceRule_OverridesFun.isMovedConcept(SNodeOperations.getConcept(it));
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode node) {
-          RefactoringRuntime.changeContainmentLinkInstance(node, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x1885777d137135fcL, "overridesFun_old"), MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, 0x5dbc5aa1b944adaL, "overridesFun"));
-        }
-      });
+      QueryExecutionContext context = () -> scope_gt4fl_a0e_0;
+      Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where((it) -> SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, "jetbrains.mps.lang.typesystem"), 0x1117e2f5efaL, "InferenceRule"))) || InferenceRule_OverridesFun.isMovedConcept(SNodeOperations.getConcept(it))).visitAll((SNode node) -> RefactoringRuntime.changeContainmentLinkInstance(node, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x1885777d137135fcL, "overridesFun_old"), MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, 0x5dbc5aa1b944adaL, "overridesFun")));
     }
   }
   @Override
@@ -60,23 +45,11 @@ public class InferenceRule_OverridesFun extends MigrationScriptBase {
     {
       SearchScope scope_gt4fl_a0f = CommandUtil.createScope(m);
       final SearchScope scope_gt4fl_a0f_0 = new EditableFilteringScope(scope_gt4fl_a0f);
-      final QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_gt4fl_a0f_0;
-        }
-      };
-      return Sequence.fromClosure(new ISequenceClosure<Problem>() {
-        public Iterable<Problem> iterable() {
-          return Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, "jetbrains.mps.lang.typesystem"), 0x1164847e929L, "AbstractCheckingRule"))) || SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, "jetbrains.mps.lang.typesystem"), 0x1117e2f5efaL, "InferenceRule")));
-            }
-          }).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return it.getChildren(MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x1885777d137135fcL, "overridesFun_old")).iterator().hasNext();
-            }
-          }).select(new ISelector<SNode, Problem>() {
-            public Problem select(SNode it) {
+      final QueryExecutionContext context = () -> scope_gt4fl_a0f_0;
+      return Sequence.fromClosure(new _FunctionTypes._return_P0_E0<Iterable<Problem>>() {
+        public Iterable<Problem> invoke() {
+          return Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where((it) -> SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, "jetbrains.mps.lang.typesystem"), 0x1164847e929L, "AbstractCheckingRule"))) || SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, "jetbrains.mps.lang.typesystem"), 0x1117e2f5efaL, "InferenceRule")))).where((it) -> it.getChildren(MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x1885777d137135fcL, "overridesFun_old")).iterator().hasNext()).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+            public Problem invoke(SNode it) {
               return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x1885777d137135fcL, "overridesFun_old"));
             }
           });
@@ -84,7 +57,7 @@ public class InferenceRule_OverridesFun extends MigrationScriptBase {
       });
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, "jetbrains.mps.lang.typesystem"), 3);
   }
   public static boolean isMovedConcept(SAbstractConcept c) {

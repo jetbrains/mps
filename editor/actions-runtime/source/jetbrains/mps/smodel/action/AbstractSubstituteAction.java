@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,18 +15,17 @@
  */
 package jetbrains.mps.smodel.action;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 
 public abstract class AbstractSubstituteAction implements SubstituteAction {
-  private static final Logger LOG = LogManager.getLogger(AbstractSubstituteAction.class);
+  private static final Logger LOG = Logger.getLogger(AbstractSubstituteAction.class);
   private SNode mySourceNode;
 
   protected AbstractSubstituteAction(SNode sourceNode) {
@@ -98,7 +97,7 @@ public abstract class AbstractSubstituteAction implements SubstituteAction {
     try {
       matchingText = getMatchingText(pattern);
     } catch (Exception e) {
-      LOG.error(null, e);
+      LOG.error(e);
     }
     return matchingText != null && matchingText.length() != 0;
   }

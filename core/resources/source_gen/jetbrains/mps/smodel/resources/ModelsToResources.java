@@ -8,32 +8,36 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import java.util.Map;
+import org.jetbrains.mps.openapi.module.SModule;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import java.util.Iterator;
-import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
+import java.util.HashMap;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.project.AbstractModule;
 import java.util.ArrayList;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
 
-@GeneratedClass(node = "r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)/7219626660275504879", model = "r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)")
+@GeneratedClass(nodeId = "7219626660275504879", model = "r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)")
 public class ModelsToResources {
   private final Iterable<SModel> models;
   private _FunctionTypes._return_P1_E0<? extends Boolean, ? super SModel> myCanGenerateCondition;
+  private final boolean myCleanMake;
 
   /**
    * 
    * @param models models to break down by module to constitute a MResource. Only models that satisfy 'are subject to generation' criteria (see {@link GenerationFacade} are taken into account.
    */
   public ModelsToResources(Iterable<SModel> models) {
+    this(models, false);
+  }
+  /**
+   * 
+   * @param models models to break down by module to constitute a MResource. Only models that satisfy 'are subject to generation' criteria (see {@link GenerationFacade} are taken into account.
+   */
+  public ModelsToResources(Iterable<SModel> models, boolean cleanMake) {
     this.models = models;
-    myCanGenerateCondition = new _FunctionTypes._return_P1_E0<Boolean, SModel>() {
-      public Boolean invoke(SModel it) {
-        return GenerationFacade.canGenerate(it);
-      }
-    };
+    myCanGenerateCondition = (SModel it) -> GenerationFacade.canGenerate(it);
+    myCleanMake = cleanMake;
   }
 
   /**
@@ -46,118 +50,23 @@ public class ModelsToResources {
 
   public Iterable<IResource> resources() {
     Iterable<SModel> smds = Sequence.fromIterable(models).where(myCanGenerateCondition).distinct();
-    smds = Sequence.fromIterable(smds).sort(new ISelector<SModel, String>() {
-      public String select(SModel desc) {
-        return desc.getModule().getModuleName();
-      }
-    }, true);
+    smds = Sequence.fromIterable(smds).sort((desc) -> desc.getModule().getModuleName(), true);
     return arrangeByModule(smds);
   }
 
   private Iterable<IResource> arrangeByModule(Iterable<SModel> smds) {
-    final Wrappers._T<List<SModel>> models = new Wrappers._T<List<SModel>>(null);
-    return (Iterable<IResource>) Sequence.fromIterable(smds).concat(Sequence.fromIterable(Sequence.<SModel>singleton(null))).translate(new ITranslator2<SModel, MResource>() {
-      public Iterable<MResource> translate(final SModel smd) {
-        return new Iterable<MResource>() {
-          public Iterator<MResource> iterator() {
-            return new YieldingIterator<MResource>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
-__loop__:
-                do {
-__switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 2:
-                      if (smd == null) {
-                        this.__CP__ = 3;
-                        break;
-                      }
-                      this.__CP__ = 8;
-                      break;
-                    case 5:
-                      if (models.value != null) {
-                        this.__CP__ = 6;
-                        break;
-                      }
-                      this.__CP__ = 1;
-                      break;
-                    case 9:
-                      if (models.value != null) {
-                        this.__CP__ = 10;
-                        break;
-                      }
-                      this.__CP__ = 11;
-                      break;
-                    case 12:
-                      if (ListSequence.fromList(models.value).last().getModule() == smd.getModule()) {
-                        this.__CP__ = 13;
-                        break;
-                      }
-                      this.__CP__ = 15;
-                      break;
-                    case 11:
-                      if (models.value == null) {
-                        this.__CP__ = 18;
-                        break;
-                      }
-                      this.__CP__ = 1;
-                      break;
-                    case 7:
-                      this.__CP__ = 1;
-                      this.yield(new MResource((AbstractModule) ListSequence.fromList(models.value).last().getModule(), (Iterable<SModel>) (Iterable) models.value));
-                      return true;
-                    case 16:
-                      this.__CP__ = 17;
-                      this.yield(new MResource((AbstractModule) ListSequence.fromList(models.value).last().getModule(), (Iterable<SModel>) (Iterable) models.value));
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    case 3:
-                      // end marker reached 
-                      this.__CP__ = 5;
-                      break;
-                    case 6:
-                      this.__CP__ = 7;
-                      break;
-                    case 8:
-                      this.__CP__ = 9;
-                      break;
-                    case 10:
-                      this.__CP__ = 12;
-                      break;
-                    case 13:
-                      ListSequence.fromList(models.value).addElement(smd);
-                      this.__CP__ = 11;
-                      break;
-                    case 15:
-                      this.__CP__ = 16;
-                      break;
-                    case 17:
-                      models.value = null;
-                      this.__CP__ = 11;
-                      break;
-                    case 18:
-                      models.value = ListSequence.fromListAndArray(new ArrayList<SModel>(), smd);
-                      this.__CP__ = 1;
-                      break;
-                    default:
-                      break __loop__;
-                  }
-                } while (true);
-                return false;
-              }
-            };
-          }
-        };
+    Map<SModule, List<SModel>> groupByModule = MapSequence.fromMap(new HashMap<SModule, List<SModel>>());
+    for (SModel model : smds) {
+      SModule module = model.getModule();
+      if (!(MapSequence.fromMap(groupByModule).containsKey(module))) {
+        MapSequence.fromMap(groupByModule).put(module, ListSequence.fromList(new ArrayList<SModel>()));
       }
-    }).select(new ISelector<MResource, IResource>() {
-      public IResource select(MResource r) {
-        return (IResource) r;
-      }
-    }).toListSequence();
+      ListSequence.fromList(MapSequence.fromMap(groupByModule).get(module)).addElement(model);
+    }
+    return SetSequence.fromSet(MapSequence.fromMap(groupByModule).mappingsSet()).select((map) -> {
+      MResource mres = new MResource(map.key(), map.value());
+      mres.setValue(MakeKeys.CLEAN_MAKE, myCleanMake);
+      return mres;
+    }).ofType(IResource.class).toList();
   }
 }

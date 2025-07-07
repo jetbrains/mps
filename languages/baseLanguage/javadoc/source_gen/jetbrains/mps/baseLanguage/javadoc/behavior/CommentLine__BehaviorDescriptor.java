@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.baseLanguage.javadoc.editor.NodeCaretPair;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -19,7 +18,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -30,8 +28,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class CommentLine__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLine");
 
-  public static final SMethod<NodeCaretPair> tryMergeToRight_idooaTF_3fF3 = new SMethodBuilder<NodeCaretPair>(new SJavaCompoundTypeImpl(NodeCaretPair.class)).name("tryMergeToRight").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("ooaTF_3fF3").build(SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
-  public static final SMethod<String> buildCommentText_id7Qt73fl2z8k = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("buildCommentText").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7Qt73fl2z8k").build();
+  public static final SMethod<NodeCaretPair> tryMergeToRight_idooaTF_3fF3 = new SMethodBuilder<NodeCaretPair>(new SJavaCompoundTypeImpl(NodeCaretPair.class)).name("tryMergeToRight").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(439148907936414403L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2(SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
+  public static final SMethod<String> buildCommentText_id7Qt73fl2z8k = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("buildCommentText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9051421835027690004L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(tryMergeToRight_idooaTF_3fF3, buildCommentText_id7Qt73fl2z8k);
 
@@ -51,11 +49,7 @@ public final class CommentLine__BehaviorDescriptor extends BaseBHDescriptor {
     return null;
   }
   /*package*/ static String buildCommentText_id7Qt73fl2z8k(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$QuzQ)).foldLeft("", new ILeftCombinator<SNode, String>() {
-      public String combine(String s, SNode it) {
-        return s + CommentLinePart__BehaviorDescriptor.buildCommentText_id7Qt73fl2F3N.invoke(it);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$QuzQ)).foldLeft("", (String s, SNode it) -> s + CommentLinePart__BehaviorDescriptor.buildCommentText_id7Qt73fl2F3N.invoke(it));
   }
 
   /*package*/ CommentLine__BehaviorDescriptor() {
@@ -106,7 +100,7 @@ public final class CommentLine__BehaviorDescriptor extends BaseBHDescriptor {
     return CONCEPT;
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
 
   private static final class LINKS {

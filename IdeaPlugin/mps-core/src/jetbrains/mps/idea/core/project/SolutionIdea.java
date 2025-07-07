@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import com.intellij.ProjectTopics;
 import com.intellij.facet.Facet;
 import com.intellij.facet.FacetManager;
 import com.intellij.facet.FacetManagerAdapter;
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.projectRoots.JavaSdkVersion;
@@ -34,14 +35,14 @@ import com.intellij.openapi.roots.OrderEntry;
 import com.intellij.openapi.roots.OrderEnumerator;
 import com.intellij.openapi.roots.RootProvider;
 import com.intellij.openapi.roots.RootProvider.RootSetChangedListener;
-import com.intellij.openapi.roots.impl.libraries.ProjectLibraryTable;
 import com.intellij.openapi.roots.libraries.Library;
 import com.intellij.openapi.roots.libraries.LibraryTable.Listener;
+import com.intellij.openapi.roots.libraries.LibraryTablesRegistrar;
+import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.CommonProcessors.FindProcessor;
 import com.intellij.util.Processor;
 import com.intellij.util.messages.MessageBusConnection;
-import jetbrains.mps.extapi.module.ModuleFacetBase;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.facet.MPSFacet;
 import jetbrains.mps.idea.core.facet.MPSFacetType;
@@ -52,21 +53,20 @@ import jetbrains.mps.idea.core.project.stubs.JdkStubSolutionManager;
 import jetbrains.mps.idea.core.project.stubs.MultipleSdkProblemNotifier;
 import jetbrains.mps.idea.core.psi.impl.PsiModelReloadListener;
 import jetbrains.mps.module.SDependencyImpl;
+import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.facets.JavaModuleFacet;
-import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import jetbrains.mps.project.structure.modules.Dependency;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
-import jetbrains.mps.vfs.FileSystem;
-import jetbrains.mps.vfs.FileSystemExtPoint;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SDependency;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleFacet;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
@@ -84,15 +84,17 @@ import java.util.Set;
 public class SolutionIdea extends Solution {
   @NotNull
   private final Module myModule;
-  private ModelAccess myModelAccess;
+  private final ModelAccess myModelAccess;
   private List<SDependency> myDependencies;
   private Set<ModelRoot> myContributedModelRoots;
-  private MessageBusConnection myConnection;
+  private final MessageBusConnection myConnection;
   private final SolutionIdea.MyRootSetChangedListener myRootSetListener = new MyRootSetChangedListener();
   private final SolutionIdea.MyLibrariesListener myLibrariesListener = new MyLibrariesListener();
 
-  public SolutionIdea(@NotNull Module module, SolutionDescriptor descriptor) {
-    super(descriptor, FileSystemExtPoint.getFS().getFile(module.getModuleFilePath()));
+  // FIXME Not sure there's need for descriptor file for this module; supposed to fix MPS-26338.
+  //       FTR, descriptorFile was removed deliberately, see 207abf6e881(MPS-26448)
+  public SolutionIdea(@NotNull Module module, SolutionDescriptor descriptor, IFile descriptorFile) {
+    super(descriptor, descriptorFile);
 
     myModule = module;
     myModelAccess = ProjectHelper.getModelAccess(myModule.getProject());
@@ -100,20 +102,28 @@ public class SolutionIdea extends Solution {
 
     // having it before call to setModuleDescriptor() (which should be removed by the way) because it leads to
     // updateModelSet() which sends modelAdded events
-    addModuleListener(myModule.getProject().getComponent(PsiModelReloadListener.class).getModuleListener());
+    addModuleListener(PsiModelReloadListener.getInstance(myModule.getProject()).getModuleListener());
 
-    // TODO: simply set solution descriptor local variable?
-    setModuleDescriptor(descriptor);
     myConnection = myModule.getProject().getMessageBus().connect();
     myConnection.subscribe(ProjectTopics.PROJECT_ROOTS, new MyModuleRootListener());
     myConnection.subscribe(FacetManager.FACETS_TOPIC, new MyFacetManagerAdapter());
-    final ProjectLibraryTable projectLibraryTable = (ProjectLibraryTable) ProjectLibraryTable.getInstance(myModule.getProject());
+    var projectLibraryTable = LibraryTablesRegistrar.getInstance().getLibraryTable(myModule.getProject());
     for (final Library library : projectLibraryTable.getLibraries()) {
-      if (ModuleLibraryType.isModuleLibrary(library)) {
+      if (ModuleLibraryType.isMPSModuleLibrary(library)) {
         library.getRootProvider().addRootSetChangedListener(myRootSetListener);
+        Disposer.register(library, new Disposable() {
+          @Override
+          public void dispose() {
+            myModelAccess.runReadAction(() -> {
+              library.getRootProvider().removeRootSetChangedListener(myRootSetListener);
+            });
+          }
+        });
       }
     }
     projectLibraryTable.addListener(myLibrariesListener);
+    // used to be part of setModuleDescriptor() call
+    updateJDKSolutionIfNeeded();
   }
 
   @Override
@@ -141,29 +151,19 @@ public class SolutionIdea extends Solution {
     String versionString = sdk.getVersionString();
     JavaSdkVersion sdkVersion = JavaSdkVersion.fromVersionString(versionString);
     if (sdkVersion == null || !sdkVersion.isAtLeast(JavaSdkVersion.JDK_11)) {
-      myModule.getProject().getComponent(MultipleSdkProblemNotifier.class).reportIncorrectJDK(myModule, versionString);
+      MultipleSdkProblemNotifier.getInstance(myModule.getProject()).reportIncorrectJDK(myModule, versionString);
     }
 
     try {
       ApplicationManager.getApplication().getComponent(JdkStubSolutionManager.class).claimSdk(myModule);
     } catch (final DifferentSdkException e) {
-      myModule.getProject().getComponent(MultipleSdkProblemNotifier.class).reportSdkProblem(myModule, e);
+      MultipleSdkProblemNotifier.getInstance(myModule.getProject()).reportSdkProblem(myModule, e);
     }
   }
 
   @Override
   public void dispose() {
-    final ProjectLibraryTable projectLibraryTable = (ProjectLibraryTable) ProjectLibraryTable.getInstance(myModule.getProject());
-    myModelAccess.runReadAction(new Runnable() {
-      @Override
-      public void run() {
-        for (final Library library : projectLibraryTable.getLibraries()) {
-          if (ModuleLibraryType.isModuleLibrary(library)) {
-            library.getRootProvider().removeRootSetChangedListener(myRootSetListener);
-          }
-        }
-      }
-    });
+    var projectLibraryTable = LibraryTablesRegistrar.getInstance().getLibraryTable(myModule.getProject());
     projectLibraryTable.removeListener(myLibrariesListener);
     ApplicationManager.getApplication().getComponent(JdkStubSolutionManager.class).releaseSdk(myModule);
     super.dispose();
@@ -234,7 +234,7 @@ public class SolutionIdea extends Solution {
           return true;
         }
 
-        if (ModuleLibraryType.isModuleLibrary(library)) {
+        if (ModuleLibraryType.isMPSModuleLibrary(library)) {
           Set<SModuleReference> moduleReferences = ModuleLibrariesUtil.getModules(ProjectHelper.getProjectRepository(myModule.getProject()), library);
           for (SModuleReference moduleReference : moduleReferences) {
             SModule m = moduleReference.resolve(getRepository());
@@ -289,12 +289,6 @@ public class SolutionIdea extends Solution {
   }
 
   @Override
-  protected void dependenciesChanged() {
-    super.dependenciesChanged();
-    myDependencies = null;
-  }
-
-  @Override
   public boolean isPackaged() {
     return false;
   }
@@ -304,6 +298,15 @@ public class SolutionIdea extends Solution {
     // TODO: implement saving functionality here.
     // should this methods really do something?
 //        super.save();    //To change body of overridden methods use File | Settings | File Templates.
+
+    // Mark facet as changed to trigger save
+    FacetManager facetManager = myModule.getComponent(FacetManager.class);
+    if (facetManager != null) {
+      MPSFacet mpsFacet = facetManager.getFacetByType(MPSFacetType.ID);
+      if (mpsFacet != null) {
+        facetManager.facetConfigurationChanged(mpsFacet);
+      }
+    }
   }
 
   private void handleFacetChanged(Facet facet) {
@@ -332,32 +335,29 @@ public class SolutionIdea extends Solution {
     return true;
   }
 
-  @Override
-  protected ModuleFacetBase setupFacet(ModuleFacetBase facet, Memento memento) {
-    if (facet instanceof JavaModuleFacet) {
-      facet = new JavaModuleFacetImpl() {
-        @Override
-        public IFile getClassesGen() {
-          IFile descriptorFile = getDescriptorFile();
-          if (descriptorFile != null && descriptorFile.isReadOnly()) {
-            return super.getClassesGen();
-          }
-
-          // FIXME the code here looks like a hack to allow TraceInfoCache to find trace.info files copied after build into classes_gen location.
-          //       I see no other reason to mangle getClassesGen() of a module in IDEA, as there are no classloading for these modules.
-          //       Perhaps, we shall override getOutputLocation() instead, see TraceInfoCache for further information.
-          CompilerModuleExtension compilerModuleExtension = ModuleRootManager.getInstance(myModule).getModuleExtension(CompilerModuleExtension.class);
-          VirtualFile compilerOutputPath = compilerModuleExtension.getCompilerOutputPath();
-          if (compilerOutputPath == null) {
-            return null;
-          }
-          return FileSystem.getInstance().getFile(compilerOutputPath.getPath());
-        }
-      };
-      facet.setModule(this);
-    }
-    return super.setupFacet(facet, memento);
-  }
+//  protected SModuleFacet loadAndAttachIfNeeded(@NotNull SModuleFacet facet, Memento memento) {
+//    if (facet instanceof JavaModuleFacet) {
+//      // XXX we used to mangle getClassesGen() here as a hack to allow TraceInfoCache to find trace.info files
+//      //    copied after build into classes_gen location. With the hack gone, I don't think there's any reason to
+//      //    override classes_gen location for a JMF of a module in IDEA project, however I just don't want to loose knowledge this code captures.
+//      // Indeed, it's quite specific to JavaModuleFacetImpl, and we'd rather get custom JMF implementation for MPS-as-IDEA-plugin
+//      //    scenario, but it would take another round of refactoring, including consideration of GenerationTargetFacet over JMF.
+//      CompilerModuleExtension compilerModuleExtension = ModuleRootManager.getInstance(myModule).getModuleExtension(CompilerModuleExtension.class);
+//      VirtualFile compilerOutputPath = compilerModuleExtension.getCompilerOutputPath();
+//      if (compilerOutputPath != null) {
+//        if (memento == null) {
+//          memento = new MementoImpl();
+//        }
+//        // In-line values of JavaModuleFacetImpl.CLASSES_KEY and other keys
+//        final Memento c = memento.createChild("classes");
+//        c.put("generated", "true");
+//        c.put("path", compilerOutputPath.getPath());
+//        return super.loadAndAttachIfNeeded(facet, c);
+//      }
+//      // fall through
+//    }
+//    return super.loadAndAttachIfNeeded(facet, memento);
+//  }
 
   public Module getIdeaModule() {
     return myModule;
@@ -423,7 +423,7 @@ public class SolutionIdea extends Solution {
 
     @Override
     public void afterLibraryAdded(final Library newLibrary) {
-      if (ModuleLibraryType.isModuleLibrary(newLibrary)) {
+      if (ModuleLibraryType.isMPSModuleLibrary(newLibrary)) {
         newLibrary.getRootProvider().addRootSetChangedListener(myRootSetListener);
       }
     }
@@ -434,7 +434,9 @@ public class SolutionIdea extends Solution {
 
     @Override
     public void beforeLibraryRemoved(Library library) {
-      library.getRootProvider().addRootSetChangedListener(myRootSetListener);
+      if (ModuleLibraryType.isMPSModuleLibrary(library)) {
+        library.getRootProvider().removeRootSetChangedListener(myRootSetListener);
+      }
     }
 
     @Override

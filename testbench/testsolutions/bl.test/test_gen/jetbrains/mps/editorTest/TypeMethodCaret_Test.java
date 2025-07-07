@@ -4,19 +4,20 @@ package jetbrains.mps.editorTest;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 
 @MPSLaunch
 public class TypeMethodCaret_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(TypeMethodCaret_Test.class, "${mps_home}", "r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TypeMethodCaret_Test.class).projectPath(null).modelRef("r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)").reopenProject(false).build());
 
   public TypeMethodCaret_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -33,7 +34,7 @@ public class TypeMethodCaret_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("9032151315009630216", "3378334413599967885");
-      typeString("publicstaticvoidmain(");
+      typeString("publicstaticvoid main(");
     }
   }
 }

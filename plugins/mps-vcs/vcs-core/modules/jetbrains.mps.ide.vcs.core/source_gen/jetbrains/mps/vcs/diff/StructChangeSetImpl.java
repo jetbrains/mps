@@ -16,13 +16,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import org.jetbrains.annotations.Nullable;
 
-@GeneratedClass(node = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)/8199015172308236776", model = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)")
+@GeneratedClass(nodeId = "8199015172308236776", model = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)")
 public class StructChangeSetImpl implements StructChangeSet {
   private final SModel myOldModel;
   private final SNodeId myOldNodeId;
@@ -52,15 +50,7 @@ public class StructChangeSetImpl implements StructChangeSet {
   @NotNull
   @Override
   public <C extends ModelChange> Iterable<C> getModelChanges(final Class<C> changeClass) {
-    return ListSequence.fromList(myModelChanges).where(new IWhereFilter<ModelChange>() {
-      public boolean accept(ModelChange ch) {
-        return changeClass.isInstance(ch);
-      }
-    }).select(new ISelector<ModelChange, C>() {
-      public C select(ModelChange ch) {
-        return (C) ch;
-      }
-    });
+    return ListSequence.fromList(myModelChanges).where((ch) -> changeClass.isInstance(ch)).select((ch) -> (C) ch);
   }
   @NotNull
   @Override
@@ -99,11 +89,7 @@ public class StructChangeSetImpl implements StructChangeSet {
 
       MapSequence.fromMap(myOppositeChangeSet.myOldToNewMap).putAll(myNewToOldMap);
       MapSequence.fromMap(myOppositeChangeSet.myNewToOldMap).putAll(myOldToNewMap);
-      ListSequence.fromList(myOppositeChangeSet.myModelChanges).addSequence(ListSequence.fromList(myModelChanges).select(new ISelector<ModelChange, ModelChange>() {
-        public ModelChange select(ModelChange c) {
-          return c.getOppositeChange();
-        }
-      }));
+      ListSequence.fromList(myOppositeChangeSet.myModelChanges).addSequence(ListSequence.fromList(myModelChanges).select((c) -> c.getOppositeChange()));
     }
   }
   public void add(@NotNull ModelChange change) {
@@ -121,11 +107,7 @@ public class StructChangeSetImpl implements StructChangeSet {
   public void addAll(Iterable<? extends ModelChange> changes) {
     ListSequence.fromList(myModelChanges).addSequence(Sequence.fromIterable(changes));
     if (myOppositeChangeSet != null) {
-      ListSequence.fromList(myOppositeChangeSet.myModelChanges).addSequence(Sequence.fromIterable(changes).select(new ISelector<ModelChange, ModelChange>() {
-        public ModelChange select(ModelChange c) {
-          return c.getOppositeChange();
-        }
-      }));
+      ListSequence.fromList(myOppositeChangeSet.myModelChanges).addSequence(Sequence.fromIterable(changes).select((c) -> c.getOppositeChange()));
     }
   }
   public void buildNodeMaps(Map<SNodeId, SNodeId> oldToNewMap) {
@@ -141,5 +123,15 @@ public class StructChangeSetImpl implements StructChangeSet {
   @Nullable
   public SNodeId mapToOldId(SNodeId idNew) {
     return MapSequence.fromMap(myNewToOldMap).get(idNew);
+  }
+
+  @NotNull
+  @Override
+  public ChangeSet getChangeSetCopy(boolean withOpposite) {
+    throw new Error("Not implemented");
+  }
+  @Override
+  public void restoreChangeSetByCopy(@NotNull ChangeSet copy, boolean withOpposite) {
+    throw new Error("Not implemented");
   }
 }

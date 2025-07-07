@@ -8,8 +8,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import jetbrains.mps.baseLanguage.actions.PrecedenceUtil;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
@@ -20,7 +20,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -28,11 +27,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class SNodeTypeCastExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10975850da7L, "jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression");
 
-  public static final SMethod<Boolean> isSNodeCast_idi1Btg5H = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSNodeCast").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i1Btg5H").build();
-  public static final SMethod<Boolean> hasValidType_id3$jHpAYjQYh = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasValidType").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3$jHpAYjQYh").build();
-  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIMiw").build();
+  public static final SMethod<Boolean> isSNodeCast_idi1Btg5H = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSNodeCast").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1238686302573L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
+  public static final SMethod<Boolean> hasValidType_id3$jHpAYjQYh = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasValidType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4112830556646895505L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
+  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  public static final SMethod<PrecedenceUtil.Precedence> getPrecedenceLevel_id1O90zDONSxM = new SMethodBuilder<PrecedenceUtil.Precedence>(new SJavaCompoundTypeImpl(PrecedenceUtil.Precedence.class)).name("getPrecedenceLevel").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2092205951981422706L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isSNodeCast_idi1Btg5H, hasValidType_id3$jHpAYjQYh, getPresentation_idhEwIMiw);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isSNodeCast_idi1Btg5H, hasValidType_id3$jHpAYjQYh, getPresentation_idhEwIMiw, getPrecedenceLevel_id1O90zDONSxM);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -49,6 +49,9 @@ public final class SNodeTypeCastExpression__BehaviorDescriptor extends BaseBHDes
   }
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     return (SPropertyOperations.getBoolean(__thisNode__, PROPS.asCast$Egst) ? "as" : ":");
+  }
+  /*package*/ static PrecedenceUtil.Precedence getPrecedenceLevel_id1O90zDONSxM(@NotNull SAbstractConcept __thisConcept__) {
+    return PrecedenceUtil.Precedence.ARRAY_OPERATIONS_AND_METHOD_CALLS;
   }
 
   /*package*/ SNodeTypeCastExpression__BehaviorDescriptor() {
@@ -84,6 +87,8 @@ public final class SNodeTypeCastExpression__BehaviorDescriptor extends BaseBHDes
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 3:
+        return (T) ((PrecedenceUtil.Precedence) getPrecedenceLevel_id1O90zDONSxM(concept));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -101,15 +106,15 @@ public final class SNodeTypeCastExpression__BehaviorDescriptor extends BaseBHDes
     return CONCEPT;
   }
   private static SNode _quotation_createNode_cjhknp_b0a0b0a() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x110f9b63680L, "ConceptNodeType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x110f9b63680L, "ConceptNodeType"));
+    quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
   private static SNode _quotation_createNode_cjhknp_b0a1a1() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"));
+    quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
 

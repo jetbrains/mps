@@ -10,7 +10,6 @@ import jetbrains.mps.baseLanguage.behavior.Expression__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -31,11 +30,7 @@ public class ParameterNameUtil {
         ListSequence.fromList(expectedNames).addSequence(ListSequence.fromList(variableSuffixes));
       }
     }
-    List<String> candidates = ListSequence.fromList(expectedNames).where(new IWhereFilter<String>() {
-      public boolean accept(String it) {
-        return it.matches("[a-zA-Z0-9_]*");
-      }
-    }).toListSequence();
+    List<String> candidates = ListSequence.fromList(expectedNames).where((it) -> it.matches("[a-zA-Z0-9_]*")).toList();
     if (ListSequence.fromList(candidates).isEmpty()) {
       ListSequence.fromList(candidates).addElement("");
     }
@@ -51,7 +46,7 @@ public class ParameterNameUtil {
   }
 
   public static boolean isArgumentSubtypeOfParameter(SNode argType, SNode paramType) {
-    return (argType == null) || SNodeOperations.isInstanceOf(argType, CONCEPTS.RuntimeTypeVariable$4a) || TypecheckingFacade.getFromContext().isSubtype(argType, paramType) || typeCannotBeCheckedQuickly(paramType) || typeCannotBeCheckedQuickly(argType);
+    return (argType == null) || SNodeOperations.isInstanceOf(argType, CONCEPTS.RuntimeTypeVariable$4a) || (!(SNodeOperations.isInstanceOf(argType, CONCEPTS.VoidType$BF)) && TypecheckingFacade.getFromContext().isSubtype(argType, paramType)) || typeCannotBeCheckedQuickly(paramType) || typeCannotBeCheckedQuickly(argType);
   }
   private static boolean typeCannotBeCheckedQuickly(SNode typeToCheck) {
     return (SNodeOperations.isInstanceOf(typeToCheck, CONCEPTS.IGenericType$13) && !(SNodeOperations.isInstanceOf(typeToCheck, CONCEPTS.StringType$uX)) && (!(SNodeOperations.isInstanceOf(typeToCheck, CONCEPTS.ClassifierType$bL)) || ListSequence.fromList(SNodeOperations.getNodeDescendants(typeToCheck, CONCEPTS.TypeVariableReference$WL, true, new SAbstractConcept[]{})).isNotEmpty()));
@@ -88,6 +83,7 @@ public class ParameterNameUtil {
   private static final class CONCEPTS {
     /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
     /*package*/ static final SConcept RuntimeTypeVariable$4a = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x113f84956fbL, "jetbrains.mps.lang.typesystem.structure.RuntimeTypeVariable");
+    /*package*/ static final SConcept VoidType$BF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
     /*package*/ static final SInterfaceConcept IGenericType$13 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL, "jetbrains.mps.baseLanguage.structure.IGenericType");
     /*package*/ static final SConcept StringType$uX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47da71ecL, "jetbrains.mps.baseLanguage.structure.StringType");
     /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");

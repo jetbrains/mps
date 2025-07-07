@@ -8,20 +8,12 @@ import jetbrains.mps.internal.make.runtime.util.FilesDelta;
 import jetbrains.mps.vfs.IFile;
 import org.jdom.Element;
 
-@GeneratedClass(node = "r:6bc4612e-813e-4efa-8244-77b9a4da8b36(jetbrains.mps.internal.make.runtime.java)/4101850974336562102", model = "r:6bc4612e-813e-4efa-8244-77b9a4da8b36(jetbrains.mps.internal.make.runtime.java)")
+@GeneratedClass(nodeId = "4101850974336562102", model = "r:6bc4612e-813e-4efa-8244-77b9a4da8b36(jetbrains.mps.internal.make.runtime.java)")
 public class FileDeltaCollector implements StreamHandler {
   private final FilesDelta myDelta;
   private final IFile myOutputDir;
   private final FileProcessor myProcessor;
 
-  /**
-   * 
-   * @deprecated use {@link jetbrains.mps.internal.make.runtime.java.FileDeltaCollector#FileDeltaCollector(FilesDelta, IFile, FileProcessor) } instead
-   */
-  @Deprecated
-  public FileDeltaCollector(IFile outputDir, FileProcessor fileProcessor) {
-    this(new FilesDelta(outputDir), outputDir, fileProcessor);
-  }
 
   /**
    * 
@@ -63,7 +55,7 @@ public class FileDeltaCollector implements StreamHandler {
   }
 
   public void saveStream(IFile file, byte[] content) {
-    // FIXME this is in fact part of future proper API for StreamHandler, once we allow arbitrary path for TextGen units 
+    // FIXME this is in fact part of future proper API for StreamHandler, once we allow arbitrary path for TextGen units
     if (myProcessor.saveContent(file, content)) {
       myDelta.written(file);
     } else {
@@ -73,8 +65,8 @@ public class FileDeltaCollector implements StreamHandler {
 
   @Override
   public boolean touch(String name) {
-    // TODO seems that we no longer need this method, remove along with StreamHandler rewrite to use InputStream/ISProvider instead of present 
-    //      approach that keeps copies of all TextUnits 
+    // TODO seems that we no longer need this method, remove along with StreamHandler rewrite to use InputStream/ISProvider instead of present
+    //      approach that keeps copies of all TextUnits
     IFile file = getFile(name);
     myDelta.kept(file);
     return file.exists();

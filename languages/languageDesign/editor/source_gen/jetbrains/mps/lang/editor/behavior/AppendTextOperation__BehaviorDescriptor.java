@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -18,15 +17,14 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class AppendTextOperation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e34c38c0ad5587L, "jetbrains.mps.lang.editor.structure.AppendTextOperation");
 
-  public static final SMethod<String> getMethodToGenerate_id1653mnvAf1C = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMethodToGenerate").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAf1C").build();
-  public static final SMethod<List<SNode>> getOperationArgumentType_id5GZRL5t2d36 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getOperationArgumentType").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5GZRL5t2d36").build();
+  public static final SMethod<String> getMethodToGenerate_id1653mnvAf1C = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMethodToGenerate").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741492328L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<List<SNode>> getOperationArgumentType_id5GZRL5t2d36 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getOperationArgumentType").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6575219246652510406L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMethodToGenerate_id1653mnvAf1C, getOperationArgumentType_id5GZRL5t2d36);
 
@@ -90,9 +88,9 @@ public final class AppendTextOperation__BehaviorDescriptor extends BaseBHDescrip
     return CONCEPT;
   }
   private static SNode _quotation_createNode_jh7h4_a0a1a1() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"));
+    quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
 

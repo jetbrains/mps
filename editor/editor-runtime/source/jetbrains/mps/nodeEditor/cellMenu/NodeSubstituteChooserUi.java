@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,26 +15,26 @@
  */
 package jetbrains.mps.nodeEditor.cellMenu;
 
-import com.intellij.openapi.editor.colors.EditorColors;
-import com.intellij.openapi.editor.colors.EditorColorsManager;
+import com.intellij.openapi.actionSystem.AnAction;
+import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
+import com.intellij.openapi.keymap.KeymapUtil;
 import com.intellij.openapi.ui.popup.JBPopup;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
 import com.intellij.ui.ScrollPaneFactory;
 import com.intellij.util.ui.AbstractLayoutManager;
-import com.intellij.util.ui.UIUtil;
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
+import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.util.ModelComputeRunnable;
 import jetbrains.mps.util.WindowsUtil;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -45,15 +45,11 @@ import static jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser.MAX_LOOKUP
 
 class NodeSubstituteChooserUi implements ISubstituteChooserUi {
   //COLORS: change after IDEA com.intellij.codeInsight.lookup.impl.LookupCellRenderer will be refactored to use Editor's Fonts & Colors settings
-  private static final Color BACKGROUND_COLOR = UIUtil.isUnderDarcula() ? new Color(0x141D29) : new Color(235, 244, 254);
-  static final Color FOREGROUND_COLOR = EditorColorsManager.getInstance().getGlobalScheme().getDefaultForeground();
-  private static final Color SELECTED_BACKGROUND_COLOR = EditorColorsManager.getInstance().getGlobalScheme().getColor(EditorColors.SELECTION_BACKGROUND_COLOR);
-  static final Color SELECTED_FOREGROUND_COLOR = EditorColorsManager.getInstance().getGlobalScheme().getColor(EditorColors.SELECTION_FOREGROUND_COLOR);
   private static final int MY_MIN_CELL_WIDTH = 300;
 
 
-  private NodeSubstituteChooser myNodeSubstituteChooser;
-  private NodeSubstitutePatternEditor myPatternEditor;
+  private final NodeSubstituteChooser myNodeSubstituteChooser;
+  private final NodeSubstitutePatternEditor myPatternEditor;
   private final JList<SubstituteAction> myList;
   private NodeItemCellRenderer myCellRenderer;
 
@@ -100,11 +96,14 @@ class NodeSubstituteChooserUi implements ISubstituteChooserUi {
   public void show() {
     myList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     //TODO: change to EditorColorManager default font
+    // XXX perhaps, can use EC.getEditorComponentSettings().getDefaultFont(), like NodeSubstitutePatternEditor.EditorWindow does?
+    //     or pass one through "COMPLETION_POPUP" style?
     myList.setFont(EditorSettings.getInstance().getDefaultEditorFont());
-    myList.setBackground(BACKGROUND_COLOR);
-    myList.setForeground(FOREGROUND_COLOR);
-    myList.setSelectionBackground(SELECTED_BACKGROUND_COLOR);
-    myList.setSelectionForeground(SELECTED_FOREGROUND_COLOR);
+    final Style cpStyle = myNodeSubstituteChooser.getEditorComponent().getStyleRegistry().getStyle("COMPLETION_POPUP");
+    myList.setBackground(cpStyle.get(StyleAttributes.TEXT_BACKGROUND_COLOR));
+    myList.setForeground(cpStyle.get(StyleAttributes.TEXT_COLOR));
+    myList.setSelectionBackground(cpStyle.get(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR));
+    myList.setSelectionForeground(cpStyle.get(StyleAttributes.SELECTED_TEXT_COLOR));
     myList.setFocusable(false);
     myCellRenderer = new NodeItemCellRenderer(myNodeSubstituteChooser);
     myList.setCellRenderer(myCellRenderer);
@@ -120,6 +119,12 @@ class NodeSubstituteChooserUi implements ISubstituteChooserUi {
     JPanel mainPanel = new JPanel(new MyLayoutManager());
     mainPanel.add(myScrollPane, BorderLayout.CENTER);
 
+    String adText = null;
+    AnAction action = ActionManagerEx.getInstance().getAction("jetbrains.mps.ide.devkit.actions.ShowEditorMenuItemTrace_Action");
+    if (action != null) {
+      adText = "Press " + KeymapUtil.getFirstKeyboardShortcutText(action) + " to " + action.getTemplateText();
+    }
+
     myPopup = JBPopupFactory.getInstance().createComponentPopupBuilder(mainPanel, mainPanel)
                             .setResizable(true)
                             .setCancelKeyEnabled(false)
@@ -127,6 +132,7 @@ class NodeSubstituteChooserUi implements ISubstituteChooserUi {
                             .setCancelOnOtherWindowOpen(false)
                             .setCancelOnWindowDeactivation(true)
                             .setLocateWithinScreenBounds(false)
+                            .setAdText(adText)
                             .setCancelCallback(() -> {
                               myNodeSubstituteChooser.setVisible(false);
                               return true;
@@ -194,14 +200,17 @@ class NodeSubstituteChooserUi implements ISubstituteChooserUi {
   }
 
   private PopupPosition calculateRelativePosition(Dimension popupSize) {
-    Point location = myPatternEditor.getLeftBottomPosition();
-    Rectangle deviceBounds = WindowsUtil.findDeviceBoundsAt(location);
-    if (location.getY() + popupSize.height > deviceBounds.height + deviceBounds.y - 150 &&
-        location.getY() - myPatternEditor.getHeight() / 2 > deviceBounds.y + deviceBounds.height / 2) {
-      return PopupPosition.TOP;
-    } else {
-      return PopupPosition.BOTTOM;
+    if (myRelativePosition == null) {
+      Point location = myPatternEditor.getLeftBottomPosition();
+      Rectangle deviceBounds = WindowsUtil.findDeviceBoundsAt(location);
+      if (location.y + popupSize.height > deviceBounds.height + deviceBounds.y - 150 &&
+          location.y - myPatternEditor.getHeight() / 2 > deviceBounds.y + deviceBounds.height / 2) {
+        myRelativePosition = PopupPosition.TOP;
+      } else {
+        myRelativePosition = PopupPosition.BOTTOM;
+      }
     }
+    return myRelativePosition;
   }
 
   private void resetRelativePosition(Dimension popupSize) {
@@ -212,7 +221,6 @@ class NodeSubstituteChooserUi implements ISubstituteChooserUi {
       }
     }
   }
-
 
   private Point getLocationWithRespectToScreenBounds(Point location, Rectangle deviceBounds, Dimension popupSize) {
     if (location.x < deviceBounds.x) {

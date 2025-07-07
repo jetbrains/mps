@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@ import jetbrains.mps.extapi.module.SRepositoryRegistry;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.structure.ProjectStructureModule;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.smodel.BaseMPSModuleOwner;
 import jetbrains.mps.smodel.GeneralModuleFactory;
@@ -31,8 +30,6 @@ import jetbrains.mps.smodel.SModelId;
 import jetbrains.mps.smodel.TrivialModelDescriptor;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.EnvironmentAware;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.ComputeRunnable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -41,11 +38,12 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SRepositoryAttachListener;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 import org.jetbrains.mps.openapi.module.SRepositoryListener;
-import org.jetbrains.mps.openapi.module.SRepositoryListenerBase;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.function.Supplier;
 
 /**
  * Check contract of SRepositoryListener and SRepositoryContentAdapter.
@@ -77,7 +75,7 @@ public class RepoListenerTest implements EnvironmentAware {
 
   private void closeProject() {
     if (myProject != null) {
-      myProject.dispose();
+      myEnvironment.closeProject(myProject);
       myProject = null;
     }
   }
@@ -229,7 +227,7 @@ public class RepoListenerTest implements EnvironmentAware {
     return new TrivialModelDescriptor(new SModel(PersistenceFacade.getInstance().createModelReference(moduleRef, SModelId.generate(), name)));
   }
 
-  private static class CreateSolution implements Computable<Solution> {
+  private static class CreateSolution implements Supplier<Solution> {
     private final SRepositoryExt myRepository;
     private final MPSModuleOwner myModuleOwner;
 
@@ -238,7 +236,7 @@ public class RepoListenerTest implements EnvironmentAware {
       myModuleOwner = moduleOwner;
     }
     @Override
-    public Solution compute() {
+    public Solution get() {
       SolutionDescriptor descriptor = new SolutionDescriptor();
       descriptor.setNamespace("Solution");
       descriptor.setId(ModuleId.regular());
@@ -247,9 +245,7 @@ public class RepoListenerTest implements EnvironmentAware {
     }
 
     public Solution execute() {
-      ComputeRunnable<Solution> cr = new ComputeRunnable<Solution>(this);
-      myRepository.getModelAccess().runWriteAction(cr);
-      return cr.getResult();
+      return myRepository.getModelAccess().computeWriteAction(CreateSolution.this);
     }
   }
 
@@ -274,7 +270,7 @@ public class RepoListenerTest implements EnvironmentAware {
     }
   }
 
-  private static class AttachRepoListener extends SRepositoryListenerBase implements SRepositoryAttachListener {
+  private static class AttachRepoListener implements SRepositoryAttachListener {
     private int myStartListen = 0, myStopListen = 0;
     private int myModuleAdded = 0, myModuleRemoved = 0, myModuleBeforeRemoved = 0;
 
@@ -323,13 +319,6 @@ public class RepoListenerTest implements EnvironmentAware {
 
   private static class ContentAdapter extends SRepositoryContentAdapter {
     private int myModelAdded = 0, myModelRemoved = 0, myModelBeforeRemoved = 0;
-
-    @Override
-    protected boolean isIncluded(SModule module) {
-      // when test module is added, ProjectStructureModule adds a model for it, and obscures results we intend to observe,
-      // thus we don't track it altogether
-      return !(module instanceof ProjectStructureModule);
-    }
 
     @Override
     public void modelAdded(SModule module, org.jetbrains.mps.openapi.model.SModel model) {

@@ -38,18 +38,25 @@ public class check_parametersCount_NonTypesystemRule extends AbstractNonTypesyst
         isParamNumOk = ListSequence.fromList(parameterDeclarations).count() == ListSequence.fromList(actualArguments).count();
       }
       if (!(isParamNumOk)) {
-        {
-          final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(iMethodCall, "wrong number of parameters", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1219948518456", null, errorTarget);
+        if (!(SNodeOperations.getModel(SLinkOperations.getTarget(iMethodCall, LINKS.baseMethodDeclaration$pyYw)).isReadOnly())) {
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.CreateMethodFromCall_QuickFix", false);
-            intentionProvider.putArgument("call", iMethodCall);
-            _reporter_2309309498.addIntentionProvider(intentionProvider);
+            final MessageTarget errorTarget = new NodeMessageTarget();
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(iMethodCall, "wrong number of parameters", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1219948518456", null, errorTarget);
+            {
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.CreateMethodFromCall_QuickFix", "1515164410409225290", false);
+              intentionProvider.putArgument("call", iMethodCall);
+              _reporter_2309309498.addIntentionProvider(intentionProvider);
+            }
+            {
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeMethodSignatureFromCall_QuickFix", "3523844428090211122", false);
+              intentionProvider.putArgument("call", iMethodCall);
+              _reporter_2309309498.addIntentionProvider(intentionProvider);
+            }
           }
+        } else {
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeMethodSignatureFromCall_QuickFix", false);
-            intentionProvider.putArgument("call", iMethodCall);
-            _reporter_2309309498.addIntentionProvider(intentionProvider);
+            final MessageTarget errorTarget = new NodeMessageTarget();
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(iMethodCall, "wrong number of parameters", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5948132024743462708", null, errorTarget);
           }
         }
       } else {
@@ -74,18 +81,25 @@ public class check_parametersCount_NonTypesystemRule extends AbstractNonTypesyst
 
         }
         if (!(isParamTypesOk)) {
-          {
-            final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(iMethodCall, "Incompatible method signature", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2234318170389157992", null, errorTarget);
+          if (!(SNodeOperations.getModel(SLinkOperations.getTarget(iMethodCall, LINKS.baseMethodDeclaration$pyYw)).isReadOnly())) {
             {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeMethodSignatureFromCall_QuickFix", false);
-              intentionProvider.putArgument("call", iMethodCall);
-              _reporter_2309309498.addIntentionProvider(intentionProvider);
+              final MessageTarget errorTarget = new NodeMessageTarget();
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(iMethodCall, "Incompatible method signature", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2234318170389157992", null, errorTarget);
+              {
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeMethodSignatureFromCall_QuickFix", "2234318170389163539", false);
+                intentionProvider.putArgument("call", iMethodCall);
+                _reporter_2309309498.addIntentionProvider(intentionProvider);
+              }
+              {
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.CreateMethodFromCall_QuickFix", "2234318170389173053", false);
+                intentionProvider.putArgument("call", iMethodCall);
+                _reporter_2309309498.addIntentionProvider(intentionProvider);
+              }
             }
+          } else {
             {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.CreateMethodFromCall_QuickFix", false);
-              intentionProvider.putArgument("call", iMethodCall);
-              _reporter_2309309498.addIntentionProvider(intentionProvider);
+              final MessageTarget errorTarget = new NodeMessageTarget();
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(iMethodCall, "Incompatible method signature", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5948132024743482654", null, errorTarget);
             }
           }
         }

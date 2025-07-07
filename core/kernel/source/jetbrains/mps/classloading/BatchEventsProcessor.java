@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,19 +15,17 @@
  */
 package jetbrains.mps.classloading;
 
-import jetbrains.mps.module.ReloadableModuleBase.SModuleDependenciesListener;
-import jetbrains.mps.module.ReloadableModuleBase;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleListener;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
-import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 import org.jetbrains.mps.openapi.module.SRepositoryListener;
 import org.jetbrains.mps.openapi.module.event.SModuleAddedEvent;
 import org.jetbrains.mps.openapi.module.event.SModuleChangedEvent;
 import org.jetbrains.mps.openapi.module.event.SModuleRemovedEvent;
+import org.jetbrains.mps.openapi.module.event.SModuleRemovingEvent;
 import org.jetbrains.mps.openapi.module.event.SRepositoryEvent;
 
 import java.util.ArrayList;
@@ -40,7 +38,7 @@ import java.util.List;
  * not thread-safe
  */
 public class BatchEventsProcessor {
-  private static Logger LOG = LogManager.getLogger(BatchEventsProcessor.class);
+  private static final Logger LOG = Logger.getLogger(BatchEventsProcessor.class);
   private volatile boolean myBatchStarted = false;
 
   private static final Object LOCK = new Object();
@@ -61,7 +59,7 @@ public class BatchEventsProcessor {
       LOG.error("Batching has been already started; Ignoring...", new IllegalStateException());
     }
     if (!myEvents.isEmpty()) {
-      LOG.warn("Events have not been flushed");
+      LOG.warning("Events have not been flushed");
     }
     myBatchStarted = true;
   }
@@ -100,9 +98,11 @@ public class BatchEventsProcessor {
   /**
    *  This class listens for module's add/removal, for 'moduleChanged' event (triggered by AbstractModule)
    *  and for internal (so far) 'dependenciesChanged' event.
+   *  I don't use {@code SRepositoryContentAdapter} as I don't need {@code SRepositoryAttachListener} and imposed
+   *  model read on listener add/remove
    */
-  private class MySRepositoryListener extends SRepositoryContentAdapter implements SModuleDependenciesListener {
-    private void addEventToList(@NotNull SRepositoryEvent event) {
+  private class MySRepositoryListener implements SRepositoryListener, SModuleListener {
+    private void addEventToList(SRepositoryEvent event) {
       synchronized (LOCK) {
         myEvents.add(event);
       }
@@ -110,39 +110,32 @@ public class BatchEventsProcessor {
 
     @Override
     public void moduleAdded(@NotNull SModule module) {
-      if (!myBatchStarted) return;
-      if (module instanceof ReloadableModuleBase) {
-        module.addModuleListener(this);
-        ((ReloadableModuleBase) module).addDependenciesListener(this);
+      if (myBatchStarted) {
+        addEventToList(new SModuleAddedEvent(module));
       }
-      addEventToList(new SModuleAddedEvent(module));
+      module.addModuleListener(this);
     }
 
     @Override
     public void beforeModuleRemoved(@NotNull SModule module) {
-      if (!myBatchStarted) return;
-      if (module instanceof ReloadableModuleBase) {
-        ((ReloadableModuleBase) module).removeDependenciesListener(this);
-        module.removeModuleListener(this);
+      module.removeModuleListener(this);
+      if (myBatchStarted) {
+        addEventToList(new SModuleRemovingEvent(module));
       }
     }
 
     @Override
     public void moduleRemoved(@NotNull SModuleReference mRef) {
-      if (!myBatchStarted) return;
-      addEventToList(new SModuleRemovedEvent(mRef, myRepository));
+      if (myBatchStarted) {
+        addEventToList(new SModuleRemovedEvent(mRef, myRepository));
+      }
     }
 
     @Override
     public void moduleChanged(@NotNull SModule module) {
-      if (!myBatchStarted) return;
-      addEventToList(new SModuleChangedEvent(module));
-    }
-
-    @Override
-    public void dependenciesChanged(@NotNull ReloadableModuleBase module) {
-      if (!myBatchStarted) return;
-      moduleChanged(module);
+      if (myBatchStarted) {
+        addEventToList(new SModuleChangedEvent(module));
+      }
     }
   }
 }

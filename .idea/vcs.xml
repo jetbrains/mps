@@ -20,13 +20,12 @@
       <list>
         <IssueNavigationLink>
           <option name="issueRegexp" value="[A-Z]+\-\d+" />
-          <option name="linkRegexp" value="http://youtrack.jetbrains.net/issue/$0" />
+          <option name="linkRegexp" value="https://youtrack.jetbrains.com/issue/$0" />
         </IssueNavigationLink>
       </list>
     </option>
   </component>
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/IdeaPlugin/sandbox/plugin/config/settingsRepository/repository" vcs="Git" />
   </component>
 </project>

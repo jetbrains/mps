@@ -6,41 +6,32 @@ import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.components.PersistentStateComponent;
-import com.intellij.openapi.components.ApplicationComponent;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import javax.swing.Icon;
 import com.intellij.openapi.application.ApplicationManager;
 import java.util.List;
 import jetbrains.mps.checkers.IChecker;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.errors.CheckerRegistry;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 
+/**
+ * A persistent state component responsible for accessing and editing "Model Checker" settings.
+ * <p>
+ * See {@link jetbrains.mps.checkers.IChecker }
+ * See {@link jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerTool }
+ * See {@link jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerViewer }
+ */
 @State(name = "ModelCheckerSettings", storages = @Storage(value = "modelCheckerSettings.xml")
 , reportStatistic = true)
-@GeneratedClass(node = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)/3719390199793464912", model = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)")
-public class ModelCheckerSettings implements PersistentStateComponent<ModelCheckerSettings.MyState>, ApplicationComponent {
+@GeneratedClass(nodeId = "3719390199793464912", model = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)")
+public class ModelCheckerSettings implements PersistentStateComponent<ModelCheckerSettings.MyState> {
   private MyState myState = new MyState();
 
   public ModelCheckerSettings() {
   }
 
-  @NonNls
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "Model Checker Settings";
-  }
-  @Override
-  public void initComponent() {
-  }
-  @Override
-  public void disposeComponent() {
-  }
   @Override
   public MyState getState() {
     return myState;
@@ -49,13 +40,20 @@ public class ModelCheckerSettings implements PersistentStateComponent<ModelCheck
   public void loadState(MyState state) {
     myState = state;
   }
-  @Nullable
-  public Icon getIcon() {
-    return null;
-  }
+
   public static ModelCheckerSettings getInstance() {
-    return ApplicationManager.getApplication().getComponent(ModelCheckerSettings.class);
+    // XXX as long as clients query specific checkers for a given project, shall become a project service, perhaps?
+    return ApplicationManager.getApplication().getService(ModelCheckerSettings.class);
   }
+
+  /**
+   * Retrieves the list of all "specific" (in the sense that they are doing some job themselves) checkers 
+   * currently active according to the settings. 
+   * <p>
+   * See {@link jetbrains.mps.errors.item.IssueKindReportItem } for the list of checker levels. 
+   * Checkers registered at the level {@code KindLevel.MANUAL } are included if "additional checks" is selected.
+   * <p>
+   */
   public List<IChecker<?, ?>> getSpecificCheckers(@NotNull Project mpsProject) {
     List<IChecker<?, ?>> result = ListSequence.fromList(new ArrayList<IChecker<?, ?>>());
     CheckerRegistry checkerRegistry = mpsProject.getComponent(CheckerRegistry.class);
@@ -104,12 +102,19 @@ public class ModelCheckerSettings implements PersistentStateComponent<ModelCheck
   public void setCheckBeforeCommit(boolean checkBeforeCommit) {
     myState.myCheckBeforeCommit = checkBeforeCommit;
   }
+  public boolean isRunInParallel() {
+    return myState.myRunInParallel;
+  }
+  public void setRunInParallel(boolean runInParallel) {
+    myState.myRunInParallel = runInParallel;
+  }
 
   public static class MyState {
     public CheckingLevel myCheckingLevel = CheckingLevel.TYPESYSTEM;
     public boolean myIncludeAdditionalChecks = true;
     public boolean myCheckBeforeCommit = true;
     public boolean myCheckStubs = false;
+    public boolean myRunInParallel = true;
     public MyState() {
     }
   }

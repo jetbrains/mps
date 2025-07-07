@@ -8,9 +8,9 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.baseLanguage.actions.PrecedenceUtil;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
@@ -24,11 +24,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class PostfixDecrementExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11aded05fe6L, "jetbrains.mps.baseLanguage.structure.PostfixDecrementExpression");
 
-  public static final SMethod<Boolean> isLegalAsStatement_idi26MfYG = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLegalAsStatement").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i26MfYG").build();
-  public static final SMethod<Boolean> canPropagateUnmatchedParenUp_id1wHCnsn58ZA = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canPropagateUnmatchedParenUp").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1wHCnsn58ZA").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
-  public static final SMethod<SNode> getSyntacticallyLeftSideExpression_id1wHCnsn590c = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSyntacticallyLeftSideExpression").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1wHCnsn590c").build();
+  public static final SMethod<Boolean> isLegalAsStatement_idi26MfYG = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLegalAsStatement").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1239211900844L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> canPropagateUnmatchedParenUp_id1wHCnsn58ZA = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canPropagateUnmatchedParenUp").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1742226163722653670L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
+  public static final SMethod<SNode> getSyntacticallyLeftSideExpression_id1wHCnsn590c = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSyntacticallyLeftSideExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1742226163722653708L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<PrecedenceUtil.Precedence> getPrecedenceLevel_id1O90zDONSxM = new SMethodBuilder<PrecedenceUtil.Precedence>(new SJavaCompoundTypeImpl(PrecedenceUtil.Precedence.class)).name("getPrecedenceLevel").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2092205951981422706L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLegalAsStatement_idi26MfYG, canPropagateUnmatchedParenUp_id1wHCnsn58ZA, getSyntacticallyLeftSideExpression_id1wHCnsn590c);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLegalAsStatement_idi26MfYG, canPropagateUnmatchedParenUp_id1wHCnsn58ZA, getSyntacticallyLeftSideExpression_id1wHCnsn590c, getPrecedenceLevel_id1O90zDONSxM);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -41,6 +42,9 @@ public final class PostfixDecrementExpression__BehaviorDescriptor extends BaseBH
   }
   /*package*/ static SNode getSyntacticallyLeftSideExpression_id1wHCnsn590c(@NotNull SNode __thisNode__) {
     return SLinkOperations.getTarget(__thisNode__, LINKS.expression$uRUg);
+  }
+  /*package*/ static PrecedenceUtil.Precedence getPrecedenceLevel_id1O90zDONSxM(@NotNull SAbstractConcept __thisConcept__) {
+    return PrecedenceUtil.Precedence.POSTFIX_EXPRESSIONS;
   }
 
   /*package*/ PostfixDecrementExpression__BehaviorDescriptor() {
@@ -76,6 +80,8 @@ public final class PostfixDecrementExpression__BehaviorDescriptor extends BaseBH
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 3:
+        return (T) ((PrecedenceUtil.Precedence) getPrecedenceLevel_id1O90zDONSxM(concept));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

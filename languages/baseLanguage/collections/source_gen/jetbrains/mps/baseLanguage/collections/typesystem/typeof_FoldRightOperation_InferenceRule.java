@@ -7,16 +7,16 @@ import jetbrains.mps.lang.typesystem.runtime.InferenceRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
-import jetbrains.mps.baseLanguage.behavior.IOperation__BehaviorDescriptor;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class typeof_FoldRightOperation_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_FoldRightOperation_InferenceRule() {
@@ -24,11 +24,7 @@ public class typeof_FoldRightOperation_InferenceRule extends AbstractInferenceRu
   public void applyRule(final SNode operation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     final SNode elementType_typevar_1522217801069421887 = typeCheckingContext.createNewRuntimeTypesVariable();
     final SNode seedType_typevar_1522217801069421888 = typeCheckingContext.createNewRuntimeTypesVariable();
-    {
-      SNode _nodeToCheck_1029348928467 = IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(operation);
-      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "2762046050488366611", 0, null);
-      typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_tdnv4o_a0a0c0c0b(typeCheckingContext.getRepresentative(elementType_typevar_1522217801069421887)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1522217801069421897", true), false, true, _info_12389875345);
-    }
+    final SNode resultType_typevar_1728138900161187518 = typeCheckingContext.createNewRuntimeTypesVariable();
     {
       SNode _nodeToCheck_1029348928467 = operation;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1522217801069421902", 0, null);
@@ -36,15 +32,23 @@ public class typeof_FoldRightOperation_InferenceRule extends AbstractInferenceRu
     }
     {
       SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.seed$Fm_k);
-      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1522217801069421908", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1522217801069421912", true), (SNode) typeCheckingContext.getRepresentative(seedType_typevar_1522217801069421888), _info_12389875345);
+      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "8870397224951687408", 0, null);
+      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "8870397224951687413", true), (SNode) typeCheckingContext.getRepresentative(seedType_typevar_1522217801069421888), false, true, _info_12389875345);
     }
-    if (!(typeCheckingContext.isSingleTypeComputation())) {
-      {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.closure$Rjuo);
-        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1522217801069421916", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1522217801069421930", true), (SNode) _quotation_createNode_tdnv4o_a1a0c0a0f0b(typeCheckingContext.getRepresentative(elementType_typevar_1522217801069421887), typeCheckingContext.getRepresentative(seedType_typevar_1522217801069421888), typeCheckingContext.getRepresentative(seedType_typevar_1522217801069421888)), true, true, _info_12389875345);
-      }
+
+    // See comment in FoldLeft operation for details and explanations
+    SPropertyOperations.assign(SNodeOperations.as(typeCheckingContext.getRepresentative(seedType_typevar_1522217801069421888), CONCEPTS.RuntimeTypeVariable$4a), PROPS.pullUp$lTOJ, true);
+
+    OperationInference.inferInternalOperation(typeCheckingContext, operation, typeCheckingContext.getRepresentative(elementType_typevar_1522217801069421887), _quotation_createNode_tdnv4o_d0j0b(typeCheckingContext.getRepresentative(elementType_typevar_1522217801069421887), typeCheckingContext.getRepresentative(seedType_typevar_1522217801069421888), typeCheckingContext.getRepresentative(resultType_typevar_1728138900161187518)));
+    {
+      final SNode _seed = typeCheckingContext.getRepresentative(seedType_typevar_1522217801069421888);
+      typeCheckingContext.whenConcrete(_seed, () -> {
+        {
+          SNode _nodeToCheck_1029348928467 = operation;
+          EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1728138900161189597", 0, null);
+          typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getRepresentative(resultType_typevar_1728138900161187518), (SNode) typeCheckingContext.getRepresentative(seedType_typevar_1522217801069421888), false, true, _info_12389875345);
+        }
+      }, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1728138900161189595", true, false);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -56,24 +60,13 @@ public class typeof_FoldRightOperation_InferenceRule extends AbstractInferenceRu
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_tdnv4o_a0a0c0c0b(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode quotedNode_2 = null;
-    SNode quotedNode_3 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10c260e9444L, "SequenceType")).getResult();
-    quotedNode_3 = (SNode) parameter_1;
-    if (quotedNode_3 != null) {
-      quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType"), SNodeOperations.copyIfNecessary(quotedNode_3));
-    }
-    return quotedNode_2;
-  }
-  private static SNode _quotation_createNode_tdnv4o_a1a0c0a0f0b(Object parameter_1, Object parameter_2, Object parameter_3) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
+  private static SNode _quotation_createNode_tdnv4o_d0j0b(Object parameter_1, Object parameter_2, Object parameter_3) {
     SNode quotedNode_4 = null;
     SNode quotedNode_5 = null;
     SNode quotedNode_6 = null;
     SNode quotedNode_7 = null;
-    quotedNode_4 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures"), 0x1174a4d19ffL, "FunctionType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures"), 0x1174a4d19ffL, "FunctionType"));
+    quotedNode_4 = nb.getResult();
     quotedNode_5 = (SNode) parameter_1;
     if (quotedNode_5 != null) {
       quotedNode_4.addChild(MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4e013cL, "parameterType"), SNodeOperations.copyIfNecessary(quotedNode_5));
@@ -91,10 +84,14 @@ public class typeof_FoldRightOperation_InferenceRule extends AbstractInferenceRu
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink seed$Fm_k = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x152001066784e507L, 0x152001066784e509L, "seed");
-    /*package*/ static final SContainmentLink closure$Rjuo = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1188372895aL, 0x11883748452L, "closure");
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept RuntimeTypeVariable$4a = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x113f84956fbL, "jetbrains.mps.lang.typesystem.structure.RuntimeTypeVariable");
     /*package*/ static final SConcept FoldRightOperation$iz = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x152001066784e507L, "jetbrains.mps.baseLanguage.collections.structure.FoldRightOperation");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty pullUp$lTOJ = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x113f84956fbL, 0x36a9a25a86aee366L, "pullUp");
   }
 }

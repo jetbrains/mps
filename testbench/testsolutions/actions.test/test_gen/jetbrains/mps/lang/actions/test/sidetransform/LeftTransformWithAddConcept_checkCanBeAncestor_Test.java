@@ -4,22 +4,23 @@ package jetbrains.mps.lang.actions.test.sidetransform;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 
 @MPSLaunch
 public class LeftTransformWithAddConcept_checkCanBeAncestor_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(LeftTransformWithAddConcept_checkCanBeAncestor_Test.class, "${mps_home}", "r:3643c33a-b564-4832-938b-79a88b40b6f2(jetbrains.mps.lang.actions.test.sidetransform@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(LeftTransformWithAddConcept_checkCanBeAncestor_Test.class).projectPath(null).modelRef("r:3643c33a-b564-4832-938b-79a88b40b6f2(jetbrains.mps.lang.actions.test.sidetransform@tests)").reopenProject(false).build());
 
   public LeftTransformWithAddConcept_checkCanBeAncestor_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -39,7 +40,7 @@ public class LeftTransformWithAddConcept_checkCanBeAncestor_Test extends BaseTra
       typeString(" ");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
       Assert.assertTrue(getEditorComponent().getNodeSubstituteChooser().isVisible());
-      Assert.assertEquals(1, getEditorComponent().getNodeSubstituteChooser().getNumberOfActions());
+      Assert.assertEquals(Integer.valueOf(1), Integer.valueOf(getEditorComponent().getNodeSubstituteChooser().getNumberOfActions()));
       getEditorComponent().getNodeSubstituteChooser().setVisible(false);
       pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ESCAPE"));
     }

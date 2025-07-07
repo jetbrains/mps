@@ -6,13 +6,11 @@ import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.scopes.Members;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -28,11 +26,7 @@ public class QueriesUtil {
     return QueriesUtil.replaceNodeMenu_parameterObjects(visibleStatics, classifier);
   }
   public static List<SNode> replaceNodeMenu_parameterObjects(Iterable<SNode> members, SNode classifier) {
-    List<SNode> result = Sequence.fromIterable(members).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.StaticMethodDeclaration$FJ) || SNodeOperations.isInstanceOf(it, CONCEPTS.StaticFieldDeclaration$jR) || SNodeOperations.isInstanceOf(it, CONCEPTS.EnumConstantDeclaration$MW) || SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$Ix);
-      }
-    }).toListSequence();
+    List<SNode> result = Sequence.fromIterable(members).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.StaticMethodDeclaration$FJ) || SNodeOperations.isInstanceOf(it, CONCEPTS.StaticFieldDeclaration$jR) || SNodeOperations.isInstanceOf(it, CONCEPTS.EnumConstantDeclaration$MW) || SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$Ix)).toList();
     if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.EnumClass$Vk)) {
       ListSequence.fromList(result).addElement(SNodeFactoryOperations.createNewNode(CONCEPTS.EnumValueOfExpression$49, null));
       ListSequence.fromList(result).addElement(SNodeFactoryOperations.createNewNode(CONCEPTS.EnumValuesExpression$YB, null));
@@ -72,7 +66,7 @@ public class QueriesUtil {
       SLinkOperations.setTarget(newNode, LINKS.enumClass$PMF6, SNodeOperations.cast(classifier, CONCEPTS.EnumClass$Vk));
       return newNode;
     }
-    throw new RuntimeException("Bad parameter object " + parameterObject);
+    throw new RuntimeException("Bad parameter object " + SNodeOperations.present(parameterObject));
   }
   public static SNode fillStaticMethodCall(SNode newNode, SNode parameterObject, SNode classifier, SNode oldNode) {
     SLinkOperations.setTarget(newNode, LINKS.baseMethodDeclaration$pyYw, SNodeOperations.cast(parameterObject, CONCEPTS.StaticMethodDeclaration$FJ));
@@ -86,7 +80,7 @@ public class QueriesUtil {
         ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.typeArgument$jaIN)).addElement(SNodeOperations.copyNode(arg));
       }
     }
-    for (SNode attribute : ListSequence.fromList(AttributeOperations.getAttributeList(oldNode, new IAttributeDescriptor.AllAttributes()))) {
+    for (SNode attribute : ListSequence.fromList(new IAttributeDescriptor.AllAttributes().list(oldNode))) {
       SContainmentLink role = SNodeOperations.getContainingLink(attribute);
       newNode.addChild(role, SNodeOperations.copyNode(attribute));
     }

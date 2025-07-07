@@ -10,7 +10,7 @@ import jetbrains.mps.ide.ui.dialogs.properties.renderers.RuleTypeRenderer;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 
-@GeneratedClass(node = "r:e46d921f-36a3-4bc0-aa46-fc10c6f85948(jetbrains.mps.ide.ui.dialogs.properties.editors)/3995997045458443074", model = "r:e46d921f-36a3-4bc0-aa46-fc10c6f85948(jetbrains.mps.ide.ui.dialogs.properties.editors)")
+@GeneratedClass(nodeId = "3995997045458443074", model = "r:e46d921f-36a3-4bc0-aa46-fc10c6f85948(jetbrains.mps.ide.ui.dialogs.properties.editors)")
 public class RuleTypeEditor extends DefaultCellEditor {
   private JComboBox myComboBox;
   public RuleTypeEditor() {

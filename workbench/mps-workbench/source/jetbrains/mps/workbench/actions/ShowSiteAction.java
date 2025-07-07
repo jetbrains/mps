@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package jetbrains.mps.workbench.actions;
 
 import com.intellij.icons.AllIcons.Nodes;
 import com.intellij.ide.BrowserUtil;
+import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.project.DumbAware;
 import jetbrains.mps.workbench.action.BaseAction;
@@ -28,7 +29,12 @@ public abstract class ShowSiteAction extends BaseAction implements DumbAware {
     super(name);
     setExecuteOutsideCommand(true);
     setDisableOnNoProject(false);
-    getTemplatePresentation().setIcon(Nodes.PpWeb);
+  }
+
+  @Override
+  protected void doUpdate(AnActionEvent e, Map<String, Object> params) {
+    super.doUpdate(e, params);
+    getTemplatePresentation().setIcon(ActionPlaces.MAIN_MENU.equals(e.getPlace()) ? null : Nodes.PpWeb);
   }
 
   protected void doExecute(AnActionEvent e, Map<String, Object> _params) {

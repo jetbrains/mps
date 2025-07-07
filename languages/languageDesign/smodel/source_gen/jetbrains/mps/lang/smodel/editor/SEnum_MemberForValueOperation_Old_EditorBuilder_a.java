@@ -60,7 +60,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "memberForValue");
     editorCell.setCellId("Constant_3onrlh_a0");
     Style style = new StyleImpl();
-    new StaticMethodStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new StaticMethodStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -69,7 +69,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "(");
     editorCell.setCellId("Constant_3onrlh_b0");
     Style style = new StyleImpl();
-    new LeftParenAfterNameStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new LeftParenAfterNameStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -111,7 +111,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
         editorCell.setSRole(LINKS.valueExpression$iM30);
       }
       Style style = new StyleImpl();
-      new ParameterStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      new ParameterStyleClass(this).apply(style, editorCell);
       editorCell.getStyle().putAll(style);
     }
     @Override
@@ -136,7 +136,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ")");
     editorCell.setCellId("Constant_3onrlh_d0");
     Style style = new StyleImpl();
-    new RightParenStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new RightParenStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;

@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.wm.IdeFrame;
 import com.intellij.openapi.wm.WindowManager;
 
-@GeneratedClass(node = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)/8632185942131072990", model = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)")
+@GeneratedClass(nodeId = "8632185942131072990", model = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)")
 public class PluginStateMonitor implements ProjectComponent {
   private final Project myProject;
   private StatusBar myStatusBar;
@@ -47,7 +47,7 @@ public class PluginStateMonitor implements ProjectComponent {
     if (myStatusBar == null) {
       return;
     }
-    myStatusBar.removeWidget(myWidget.ID());
+    myStatusBar.removeWidget(PluginStateWidget.WIDGET_ID);
   }
   @Nullable
   private StatusBar getStatusBar() {

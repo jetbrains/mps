@@ -40,7 +40,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
       setCellContext(bigCell);
     }
     Style style = new StyleImpl();
-    new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeyWordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, true);
     editorCell.getStyle().putAll(style);
     DeleteDefault.setCellActions(editorCell, myNode, getEditorContext());

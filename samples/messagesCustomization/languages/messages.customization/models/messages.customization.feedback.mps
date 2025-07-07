@@ -35,7 +35,7 @@
       <concept id="2554379189374329844" name="jetbrains.mps.lang.feedback.problem.structural.structure.MissingChildInConceptProblem" flags="ng" index="3Jf5Ay" />
     </language>
     <language id="cd17a113-ca4e-472f-a8de-c49008f9eea8" name="jetbrains.mps.lang.feedback">
-      <concept id="6285588811486118729" name="jetbrains.mps.lang.feedback.structure.Feedback" flags="ng" index="3JXyrL">
+      <concept id="6285588811486118729" name="jetbrains.mps.lang.feedback.structure.Feedback" flags="ngI" index="3JXyrL">
         <child id="6285588811486118732" name="problem" index="3JXyrO" />
       </concept>
     </language>

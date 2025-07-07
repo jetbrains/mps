@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,26 +15,29 @@
  */
 package jetbrains.mps.smodel;
 
+import jetbrains.mps.extapi.model.ResolveInfoExt;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.scope.ErrorScope;
 import jetbrains.mps.scope.Scope;
+import jetbrains.mps.smodel.AssociationData.DynamicPtr;
+import jetbrains.mps.smodel.AssociationData.DynamicPtrWithOrigin;
+import jetbrains.mps.smodel.AssociationData.SNodeAssociationUpdate;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
-import jetbrains.mps.smodel.legacy.ConceptMetaInfoConverter;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
-import org.jetbrains.mps.openapi.model.SModelName;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -43,14 +46,12 @@ import java.util.Set;
  *       (a) confusing with openapi counterpart; (b) duplicates {@code SReferenceBase}
  * JFI, there's code that filters node references based on {@code SReferenceBase} e.g. to setTargetSModelReference, shall decide if it's correct with respect
  *      to the aforementioned change in superclass
- *
- * Igor Alshannikov
- * Dec 10, 2007
+ * XXX what makes it live in [kernel]? Is it only ModelConstraints or anything else? Can I refactor it to keep the class in [smodel]?
  */
-public class DynamicReference extends SReferenceBase {
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(DynamicReference.class));
+public final class DynamicReference extends jetbrains.mps.smodel.SReference {
+  private static final Logger LOG = Logger.getLogger(DynamicReference.class);
 
-  private DynamicReferenceOrigin myOrigin;
+  private DynamicPtr myData;
 
   // this is for tracking loops in dynref resolving, typically arising from interaction
   // between type system rules and scopes
@@ -70,39 +71,26 @@ public class DynamicReference extends SReferenceBase {
     }
   };
 
-  private boolean myHasBeenResolve;
-  private SNode myCachedTargetNode;
-
-  /*
-   * create 'mature' reference
-   * Left for compatibility with legacy persistence code
+  /**
+   * @deprecated Use {@link SNode#setReference(SReferenceLink, ResolveInfo)} instead, with {@link ResolveInfo#of(String)}
    */
-  @Deprecated
-  public DynamicReference(@NotNull String role, @NotNull SNode sourceNode, @Nullable SModelReference targetModelReference, String resolveInfo) {
-    this(((ConceptMetaInfoConverter) sourceNode.getConcept()).convertAssociation(role), sourceNode, targetModelReference == null ? null : targetModelReference.getName(), resolveInfo);
-  }
-
-  public DynamicReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, @Nullable SModelReference targetModelReference, String resolveInfo) {
-    this(role, sourceNode, targetModelReference == null ? null : targetModelReference.getName(), resolveInfo);
-  }
-
+  @Deprecated(forRemoval = true, since = "2024.1")
   public static DynamicReference createDynamicReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, @Nullable String modelName, String resolveInfo) {
-    return new DynamicReference(role, sourceNode, modelName == null ? null : new SModelName(modelName), resolveInfo);
+    return new DynamicReference(role, sourceNode, new DynamicPtr(resolveInfo));
   }
 
-  private DynamicReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, @Nullable SModelName modelName, String resolveInfo) {
-    super(role, sourceNode, null);
-    if (modelName != null && !resolveInfo.startsWith(modelName.getLongName()) && isTargetClassifier(role)) {
-      // hack for classifiers resolving with specified targetModelReference. For now (18/04/2012) targetModelReference used only for Classifiers (in stubs and [model]node construction).
-      setResolveInfo(modelName.getLongName() + '.' + resolveInfo);
-    } else {
-      setResolveInfo(resolveInfo);
-    }
+  /**
+   * Use this factory method to create a link with {@code DynamicReferenceOrigin} instead of combination
+   * {@code create()} + {@code setOrigin()}.
+   * @since 2022.2
+   */
+  public static DynamicReference create(@NotNull SReferenceLink role, @NotNull SNode sourceNode, String resolveInfo, @NotNull DynamicReferenceOrigin origin) {
+    return new DynamicReference(role, sourceNode, new DynamicPtrWithOrigin(resolveInfo, origin.getTemplate(), origin.getInputNode()));
   }
 
-  private static boolean isTargetClassifier(@NotNull SReferenceLink role) {
-    SAbstractConcept lnkTarget = role.getTargetConcept();
-    return lnkTarget.isSubConceptOf(SNodeUtil.concept_Classifier);
+  /*package*/ DynamicReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, @NotNull DynamicPtr data) {
+    super(role, sourceNode);
+    myData = data;
   }
 
   @Override
@@ -121,18 +109,21 @@ public class DynamicReference extends SReferenceBase {
   }
 
   @Override
-  protected SNode getTargetNode_internal() {
+  protected SNode getTargetNode_internal(ProblemReporter report) {
     // seems like getTargetNode() doesn't make sense if source node is detached
     if (mySourceNode.getModel() == null) {
-      assert myHasBeenResolve : "Taking target node of dynamic reference whose source node is not in a model";
-      return myCachedTargetNode;
+      report.error("Taking target node of dynamic reference whose source node is not in a model");
+      return null;
     }
 
     final SRepository owner = mySourceNode.getModel().getRepository();
-
+    // XXX perhaps, shall return null right away if owner == null. No point to resolve
+    //     a reference from a model that is not yet part of a repository
 
     final Set<DynamicReference> currentRefs = currentlyResolved.get();
     final Set<DynamicReference> loggedRefs = currentlySourceNodeLogged.get();
+    // FIXME use of (this) works as long as equals/hashCode is right. Consider using another identity object
+    //       or come up with another mechanism to avoid stack overflow and reference resolution cycles
     if (currentRefs.contains(this)) {
       // loop detected!
       if (!loggedRefs.contains(this)) {
@@ -146,7 +137,7 @@ public class DynamicReference extends SReferenceBase {
     try {
 
       if (getResolveInfo() == null) {
-        reportErrorWithOrigin("bad reference: no resolve info");
+        reportErrorWithOrigin("bad reference: no resolve info", report);
         return null;
       }
 
@@ -158,7 +149,7 @@ public class DynamicReference extends SReferenceBase {
         scope = ModelConstraints.getScope(this);
       }
       if (scope instanceof ErrorScope) {
-        reportErrorWithOrigin("cannot obtain scope for reference `" + getRole() + "': " + ((ErrorScope) scope).getMessage());
+        reportErrorWithOrigin("cannot obtain scope for reference `" + getRole() + "': " + ((ErrorScope) scope).getMessage(), report);
         return null;
 
       }
@@ -171,12 +162,9 @@ public class DynamicReference extends SReferenceBase {
       }
 
       if (targetNode == null) {
-
-        reportErrorWithOrigin("cannot resolve reference by string: '" + getResolveInfo() + "'");
+        reportErrorWithOrigin("cannot resolve reference by string: '" + getResolveInfo() + "'", report);
       }
 
-      myHasBeenResolve = true;
-      myCachedTargetNode = targetNode;
       return targetNode;
 
     } finally {
@@ -187,43 +175,87 @@ public class DynamicReference extends SReferenceBase {
 
   @Override
   public SNodeReference getTargetNodeReference() {
-    SNode targetNode = getTargetNode_internal();
+    SNode targetNode = getTargetNode_internal(new ProblemReporter() {});
     if (targetNode == null) {
       return new SNodePointer(null);
     }
     return targetNode.getReference();
   }
 
-  private void reportErrorWithOrigin(String message) {
+  private void reportErrorWithOrigin(String message, ProblemReporter report) {
     Set<DynamicReference> refs = currentlySourceNodeLogged.get();
     try {
       refs.add(this);
-      if (myOrigin != null) {
+      if (myData instanceof DynamicPtrWithOrigin) {
+        final DynamicPtrWithOrigin dpo = (DynamicPtrWithOrigin) myData;
         List<ProblemDescription> result = new ArrayList<>(2);
-        if (myOrigin.getInputNode() != null) {
-          result.add(new ProblemDescription(myOrigin.getInputNode(), " -- was input: " + myOrigin.getInputNode().toString()));
+        if (dpo.getOriginInput() != null) {
+          result.add(new ProblemDescription(dpo.getOriginInput(), " -- was input: " + dpo.getOriginInput()));
         }
-        if (myOrigin.getTemplate() != null) {
-          result.add(new ProblemDescription(myOrigin.getTemplate(), " -- was template: " + myOrigin.getTemplate().toString()));
+        if (dpo.getOriginTemplate() != null) {
+          result.add(new ProblemDescription(dpo.getOriginTemplate(), " -- was template: " + dpo.getOriginTemplate()));
         }
         if (result.size() > 0) {
-          error(message, false, result.toArray(new ProblemDescription[0]));
+          report.error(message, result.toArray(new ProblemDescription[0]));
           return;
         }
       }
-      error(message, false);
+      report.error(message);
     } finally {
       refs.remove(this);
     }
   }
 
-  @Nullable
-  public DynamicReferenceOrigin getOrigin() {
-    return myOrigin;
+  public String getResolveInfo() {
+    return myData.getRI();
   }
 
+  public void setResolveInfo(String info) {
+    if (Objects.equals(myData.getRI(), info)) {
+      return;
+    }
+    setData(myData.withRI(info == null ? null : info.intern()));
+  }
+
+  @NotNull
+  @Override
+  public ResolveInfo describeTarget() {
+    // myData is immutable
+    return new DRI(myData);
+  }
+
+  @Nullable
+  public DynamicReferenceOrigin getOrigin() {
+    DynamicReferenceOrigin origin = null;
+    if (myData instanceof DynamicPtrWithOrigin) {
+      final DynamicPtrWithOrigin dpo = (DynamicPtrWithOrigin) myData;
+      origin = new DynamicReferenceOrigin(dpo.getOriginTemplate(), dpo.getOriginInput());
+    }
+    return origin;
+  }
+
+  /**
+   * XXX change in logic: now could use this method for a reference already associated with a node,
+   *     not for a newly created reference. FIXME perhaps, could change setData() to account for this case
+   */
   public void setOrigin(@Nullable DynamicReferenceOrigin origin) {
-    myOrigin = origin;
+    if (origin == null) {
+      if (myData instanceof DynamicPtrWithOrigin) {
+        setData(new DynamicPtr(myData.getRI()));
+      } // else no reason to do anything
+    } else {
+      setData(new DynamicPtrWithOrigin(myData.getRI(), origin.getTemplate(), origin.getInputNode()));
+    }
+  }
+
+  @Override
+  /*package*/ AssociationData getData() {
+    return myData;
+  }
+
+  private void setData(DynamicPtr data) {
+    ((SNodeAssociationUpdate) mySourceNode).updateAssociation(getLink(), myData, data);
+    myData = data;
   }
 
   @Immutable
@@ -242,6 +274,19 @@ public class DynamicReference extends SReferenceBase {
 
     public SNodeReference getInputNode() {
       return inputNode;
+    }
+  }
+
+  private static class DRI implements ResolveInfo, ResolveInfoExt {
+    private final DynamicPtr myResolveInfo;
+
+    private DRI(DynamicPtr resolveInfo) {
+      myResolveInfo = resolveInfo;
+    }
+
+    @Override
+    public SReference create(@NotNull SNode source, @NotNull SReferenceLink link) {
+      return new DynamicReference(link, source, myResolveInfo);
     }
   }
 }

@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.scope.Scope;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -30,12 +29,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class CellModel_ListWithRole__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, "jetbrains.mps.lang.editor.structure.CellModel_ListWithRole");
 
-  public static final SMethod<Boolean> isVertical_idi2IdWzG = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVertical").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i2IdWzG").build();
-  public static final SMethod<Boolean> isVerticalGrid_idi2IfsZ1 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVerticalGrid").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i2IfsZ1").build();
-  public static final SMethod<Boolean> isHorizontal_idi2IfsZo = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isHorizontal").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i2IfsZo").build();
-  public static final SMethod<Boolean> isFoldingEnabled_id3ZqNA5Aj2vG = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFoldingEnabled").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3ZqNA5Aj2vG").build();
-  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getLayout_iditlittTD4U = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLayout").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("itlittTD4U").build();
+  public static final SMethod<Boolean> isVertical_idi2IdWzG = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVertical").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1239873472748L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<Boolean> isVerticalGrid_idi2IfsZ1 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVerticalGrid").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1239873867713L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<Boolean> isHorizontal_idi2IfsZo = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isHorizontal").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1239873867736L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<Boolean> isFoldingEnabled_id3ZqNA5Aj2vG = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFoldingEnabled").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4601216887035799532L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getLayout_iditlittTD4U = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLayout").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(332515575062761786L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isVertical_idi2IdWzG, isVerticalGrid_idi2IfsZ1, isHorizontal_idi2IfsZo, isFoldingEnabled_id3ZqNA5Aj2vG, getScope_id52_Geb4QDV$, getLayout_iditlittTD4U);
 
@@ -56,9 +55,9 @@ public final class CellModel_ListWithRole__BehaviorDescriptor extends BaseBHDesc
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.AbstractConceptDeclaration$KA) && SLinkOperations.getTarget(__thisNode__, LINKS.emptyCellModel$ZSa$) == child) {
-      // Empty cells belong to the parent node, not child, so return null here to avoid calling the superclass 
-      // implementation which would return the scope from the point of view of the child. 
-      // Instead, returning null will cause the search for scope provider to continue upwards in cell hierarchy. 
+      // Empty cells belong to the parent node, not child, so return null here to avoid calling the superclass
+      // implementation which would return the scope from the point of view of the child.
+      // Instead, returning null will cause the search for scope provider to continue upwards in cell hierarchy.
       return null;
     }
     return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invokeSuper(__thisNode__, CONCEPTS.CellModel_ListWithRole$16, kind, child));

@@ -13,7 +13,7 @@ import java.awt.event.ActionEvent;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NonNls;
 
-@GeneratedClass(node = "r:b4456070-b665-4c03-b3d3-15a7362ba923(jetbrains.mps.debugger.java.runtime.ui.evaluation)/5849716370568348282", model = "r:b4456070-b665-4c03-b3d3-15a7362ba923(jetbrains.mps.debugger.java.runtime.ui.evaluation)")
+@GeneratedClass(nodeId = "5849716370568348282", model = "r:b4456070-b665-4c03-b3d3-15a7362ba923(jetbrains.mps.debugger.java.runtime.ui.evaluation)")
 public class EvaluationDialog extends AbstractEvaluationDialog {
   public EvaluationDialog(@NotNull Project ideaProject, @NotNull EvaluationProvider provider, IEvaluationContainer container) {
     super(ideaProject, provider, container, "Evaluate");

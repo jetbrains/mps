@@ -9,7 +9,6 @@ import com.intellij.icons.AllIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SearchScope;
@@ -20,7 +19,7 @@ import jetbrains.mps.ide.ui.finders.ModelImportsUsagesFinder;
 import jetbrains.mps.ide.findusages.view.UsageToolOptions;
 import jetbrains.mps.ide.findusages.view.UsagesViewTool;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2214103008221911165", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "2214103008221911165", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class FindModelUsages_Action extends BaseAction {
   private static final Icon ICON = AllIcons.Actions.Find;
 
@@ -28,6 +27,7 @@ public class FindModelUsages_Action extends BaseAction {
     super("Find Usages", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -40,14 +40,12 @@ public class FindModelUsages_Action extends BaseAction {
     }
     {
       SModel p = event.getData(MPSCommonDataKeys.MODEL);
-      MapSequence.fromMap(_params).put("model", p);
       if (p == null) {
         return false;
       }
     }
     {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      MapSequence.fromMap(_params).put("project", p);
       if (p == null) {
         return false;
       }
@@ -56,10 +54,10 @@ public class FindModelUsages_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    SearchScope scope = ((MPSProject) MapSequence.fromMap(_params).get("project")).getScope();
-    final SearchQuery query = new SearchQuery(((SModel) MapSequence.fromMap(_params).get("model")).getReference(), scope);
+    SearchScope scope = event.getData(MPSCommonDataKeys.MPS_PROJECT).getScope();
+    final SearchQuery query = new SearchQuery(event.getData(MPSCommonDataKeys.MODEL).getReference(), scope);
     final IResultProvider provider = FindUtils.makeProvider(new ModelImportsUsagesFinder());
     UsageToolOptions opt = new UsageToolOptions().allowRunAgain(true).navigateIfSingle(false).forceNewTab(false).notFoundMessage("Model has no usages");
-    UsagesViewTool.showUsages(((MPSProject) MapSequence.fromMap(_params).get("project")).getProject(), provider, query, opt);
+    UsagesViewTool.showUsages(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject(), provider, query, opt);
   }
 }

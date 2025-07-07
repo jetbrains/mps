@@ -26,7 +26,6 @@ import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.lang.editor.cellProviders.SReferenceCellProvider;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.editor.runtime.impl.CellUtil;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -35,10 +34,8 @@ import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLoo
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.lang.editor.cellProviders.ReferenceCellContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.LinkAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
@@ -52,7 +49,6 @@ import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.lang.editor.generator.internal.PrimaryReferentMenuCellMenuPart;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import java.util.Collections;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
@@ -115,11 +111,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     final SReferenceLink referenceLink = LINKS.propertyDeclaration$Vpxj;
     SReferenceCellProvider provider = new SReferenceCellProvider(getNode(), referenceLink, getEditorContext()) {
       protected EditorCell createReferenceCell(final SNode targetNode) {
-        EditorCell cell = getUpdateSession().updateReferencedNodeCell(new Computable<EditorCell>() {
-          public EditorCell compute() {
-            return new Inline_Builder0(getEditorContext(), getNode(), targetNode).createCell();
-          }
-        }, targetNode, LINKS.propertyDeclaration$Vpxj);
+        EditorCell cell = getUpdateSession().updateReferencedNodeCell(() -> new Inline_Builder0(getEditorContext(), getNode(), targetNode).createCell(), targetNode, LINKS.propertyDeclaration$Vpxj);
         CellUtil.setupIDeprecatableStyles(targetNode, cell);
         setSemanticNodeToCells(cell, getNode());
         installDeleteActions_notnull_smartReference(cell);
@@ -144,12 +136,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     ConcreteCellSelector_Actions.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.PropertyDeclarationCellSelector$XF, "jetbrains.mps.lang.editor.editor.PropertyDeclarationCellSelector_Empty_SideTransformMenu"));
     editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new ReferenceCellContext(getNode(), getNode(), referenceLink), new SubstituteInfoPartExt[]{new PropertyDeclarationCellSelector_propertyDeclaration_cellMenu_c8nh03_a0b0(), new PropertyDeclarationCellSelector_generic_cellMenu_c8nh03_b0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
-    Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.LinkAttribute$v_);
-    Iterable<SNode> currentReferenceAttributes = Sequence.fromIterable(referenceAttributes).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(it), referenceLink);
-      }
-    });
+    Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.LinkAttribute$v_);
+    Iterable<SNode> currentReferenceAttributes = Sequence.fromIterable(referenceAttributes).where((it) -> Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(it), referenceLink));
     if (Sequence.fromIterable(currentReferenceAttributes).isNotEmpty()) {
       EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
       return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentReferenceAttributes).first(), AttributeKind.REFERENCE, editorCell);
@@ -187,12 +175,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
         editorCell.setCellId("property_name");
         editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
         setCellContext(editorCell);
-        Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
-        Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-          }
-        });
+        Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
+        Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
         if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
           EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
           return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);
@@ -211,29 +195,26 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     public PropertyDeclarationCellSelector_generic_cellMenu_c8nh03_b0b0() {
     }
 
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
       return Collections.singletonList("#");
+
     }
-    protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
+    protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      this.handleAction_impl((String) parameterObject, node, model, editorContext);
     }
-    public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
       SNode propertyExpression = SNodeOperations.replaceWithNewChild(node, CONCEPTS.PropertyExpressionCellSelector$18);
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, propertyExpression, "sharp", -1);
     }
-    public boolean isReferentPresentation() {
+    protected boolean isReferentPresentation() {
       return false;
     }
-    public String getMatchingText(Object parameterObject) {
-      return this.getMatchingText_internal((String) parameterObject);
-    }
-    public String getMatchingText_internal(String parameterObject) {
+    protected String getMatchingText(Object _parameterObject) {
+      final String parameterObject = (String) _parameterObject;
       return "#";
     }
-    public String getDescriptionText(Object parameterObject) {
-      return this.getDescriptionText_internal((String) parameterObject);
-    }
-    public String getDescriptionText_internal(String parameterObject) {
+    protected String getDescriptionText(Object _parameterObject) {
+      final String parameterObject = (String) _parameterObject;
       return "specify property declaration by expression";
     }
 

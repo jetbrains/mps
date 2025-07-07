@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.smodel.adapter.structure.language;
 
-import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.adapter.structure.FormatException;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
@@ -31,15 +30,9 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SDataType;
 import org.jetbrains.mps.openapi.language.SLanguage;
-import org.jetbrains.mps.openapi.module.SDependency;
-import org.jetbrains.mps.openapi.module.SDependencyScope;
-import org.jetbrains.mps.openapi.module.SModuleReference;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
 
 public abstract class SLanguageAdapter implements SLanguage {
   public static final String ID_DELIM = ":";
@@ -51,18 +44,6 @@ public abstract class SLanguageAdapter implements SLanguage {
 
   @Nullable
   public abstract LanguageRuntime getLanguageDescriptor();
-
-  @Override
-  @Nullable
-  public abstract Language getSourceModule();
-
-  @Override
-  public abstract SModuleReference getSourceModuleReference();
-
-  @Override
-  public boolean isValid() {
-    return getLanguageDescriptor() != null;
-  }
 
   @Override
   public Iterable<SAbstractConcept> getConcepts() {
@@ -113,37 +94,6 @@ public abstract class SLanguageAdapter implements SLanguage {
     return result;
   }
 
-  @Override
-  public Iterable<SModuleReference> getLanguageRuntimes() {
-    Set<SModuleReference> runtimes = new HashSet<>();
-    Language sourceModule = getSourceModule();
-    if (sourceModule == null) {
-      return Collections.emptyList();
-    }
-    // XXX RuntimesOfUsedLanguageCalculator uses this method in its source strategy. I wonder if this logic matches
-    // what we generate during the build into module deployment descriptor (so that source and packaged strategies match).
-    HashSet<Language> processed = new HashSet<>();
-    ArrayDeque<Language> queue = new ArrayDeque<>(sourceModule.getAllExtendedLanguages());
-    while (!queue.isEmpty()) {
-      Language language = queue.removeFirst();
-      if (!processed.add(language)) {
-        continue;
-      }
-      runtimes.addAll(language.getRuntimeModulesReferences());
-      // GeneratesInto doesn't qualify as 'true' language runtime, it's rather generator aspect, however, for the time being,
-      // while we transit from using 'Extends' between languages to 'GenerateInto' to grab runtime modules, keep them together
-      // although GlobalModuleDependenciesManager might be better place to care about this kind of dependency. Anyway,
-      // we likely need to move both true RT and 'GeneratesInto' to LanguageRuntime to get rid of source module use here.
-      for (SDependency dep : language.getDeclaredDependencies()) {
-        if (dep.getScope() == SDependencyScope.GENERATES_INTO && dep.getTarget() instanceof Language) {
-          Language target = (Language) dep.getTarget();
-          queue.addAll(target.getAllExtendedLanguages());
-        }
-      }
-    }
-    return runtimes;
-  }
-
   public int getLanguageVersion() {
     LanguageRuntime languageDescriptor = getLanguageDescriptor();
     if (languageDescriptor == null) {
@@ -154,7 +104,7 @@ public abstract class SLanguageAdapter implements SLanguage {
 
   @Override
   public String toString() {
-    return getQualifiedName();
+    return myLanguageFqName;
   }
 
   public abstract String serialize();

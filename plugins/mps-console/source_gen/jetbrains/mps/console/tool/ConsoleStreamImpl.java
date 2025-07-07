@@ -14,7 +14,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.io.StringWriter;
 import java.io.PrintWriter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.console.actions.ClosureHoldingNodeUtil;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.ide.findusages.model.SearchResults;
@@ -26,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-@GeneratedClass(node = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)/4692848271443657146", model = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)")
+@GeneratedClass(nodeId = "4692848271443657146", model = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)")
 public class ConsoleStreamImpl implements ConsoleStream {
   private BaseConsoleTab myTab;
   private List<SNode> myResponse = ListSequence.fromList(new ArrayList<SNode>());
@@ -82,15 +81,7 @@ public class ConsoleStreamImpl implements ConsoleStream {
     if (resultsCount == 0) {
       addText("empty sequence");
     } else {
-      addClosure(new Runnable() {
-        public void run() {
-          project.getRepository().getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              ConsoleUtil.show(project, results);
-            }
-          });
-        }
-      }, resultsCount + " " + resultDescription);
+      addClosure(() -> project.getRepository().getModelAccess().runReadAction(() -> ConsoleUtil.show(project, results)), resultsCount + " " + resultDescription);
     }
   }
 

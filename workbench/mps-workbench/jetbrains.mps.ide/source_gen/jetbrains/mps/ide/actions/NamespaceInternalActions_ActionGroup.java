@@ -11,48 +11,58 @@ import org.jetbrains.mps.util.Condition;
 import jetbrains.mps.workbench.action.BaseAction;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.List;
-import javax.swing.tree.TreeNode;
-import jetbrains.mps.ide.ui.tree.module.NamespaceTextNode;
+import jetbrains.mps.ide.ui.tree.VirtualFolder;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.Optional;
+import jetbrains.mps.ide.ui.tree.ContextValueProvider;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.workbench.action.BaseGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
+import org.jetbrains.annotations.Nullable;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1226502116289", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1226502116289", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class NamespaceInternalActions_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.actions.NamespaceInternalActions_ActionGroup";
   private final Set<Pair<ActionPlace, Condition<BaseAction>>> myPlaces = SetSequence.fromSet(new HashSet<Pair<ActionPlace, Condition<BaseAction>>>());
 
-  public NamespaceInternalActions_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public NamespaceInternalActions_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("NamespaceInternalActions", ID, plugin);
     setIsInternal(false);
     setPopup(false);
   }
   public void doUpdate(AnActionEvent event) {
     removeAll();
-    List<TreeNode> selectedNodes = event.getData(MPSCommonDataKeys.TREE_NODES);
-    if (selectedNodes == null) {
+    List<Object> selectedValues = event.getData(MPSCommonDataKeys.VALUES);
+    List<Object> selectedObjects = event.getData(MPSCommonDataKeys.USER_OBJECTS);
+    if (selectedValues == null) {
       return;
     }
-    for (TreeNode selectedNode : selectedNodes) {
-      if (!(selectedNode instanceof NamespaceTextNode)) {
+    for (Object selectedValue : selectedValues) {
+      if (!(selectedValue instanceof VirtualFolder.Models || selectedValue instanceof VirtualFolder.Modules)) {
         return;
       }
     }
-    if (ListSequence.fromList(selectedNodes).count() == 1) {
-      NamespaceTextNode node = (NamespaceTextNode) ListSequence.fromList(selectedNodes).first();
-      DefaultActionGroup newGroup = NamespaceInternalActionsUtil.createNewGroup(node);
-      if (newGroup != null) {
-        NamespaceInternalActions_ActionGroup.this.add(newGroup);
-        NamespaceInternalActions_ActionGroup.this.addSeparator();
+    boolean singleSelection = ListSequence.fromList(selectedValues).count() == 1 && ListSequence.fromList(selectedObjects).count() == 1;
+    Optional<VirtualFolder.ModulesPool> modulesPoolOptional = Optional.empty();
+    if (singleSelection) {
+      if (ListSequence.fromList(selectedObjects).getElement(0) instanceof ContextValueProvider) {
+        modulesPoolOptional = ((ContextValueProvider) ListSequence.fromList(selectedObjects).getElement(0)).contextValueOfType(VirtualFolder.ModulesPool.class);
+      }
+      if (modulesPoolOptional.isEmpty()) {
+        // we're not in the "Modules Pool" branch
+        DefaultActionGroup newGroup = NamespaceInternalActionsUtil.createNewGroup((VirtualFolder) ListSequence.fromList(selectedValues).first());
+        if (newGroup != null) {
+          NamespaceInternalActions_ActionGroup.this.add(newGroup);
+          NamespaceInternalActions_ActionGroup.this.addSeparator();
+        }
       }
     }
     NamespaceInternalActions_ActionGroup.this.add(((BaseGroup) ActionManager.getInstance().getAction("jetbrains.mps.ide.actions.NamespaceMakeActions_ActionGroup")));
-    if (ListSequence.fromList(selectedNodes).count() == 1) {
+    if (singleSelection && modulesPoolOptional.isEmpty()) {
       NamespaceInternalActions_ActionGroup.this.addSeparator();
       NamespaceInternalActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.RenameModulesVirtualFolder_Action");
       NamespaceInternalActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.RemoveModulesVirtualFolder_Action");

@@ -17,21 +17,18 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.tempmodel.TemporaryModels;
 import jetbrains.mps.smodel.tempmodel.TempModuleOptions;
 import jetbrains.mps.debugger.java.api.evaluation.EvaluationException;
-import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.classloading.MPSModuleClassLoader;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.debugger.java.api.evaluation.Evaluator;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.Computable;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:f5448de3-0d76-42bb-afa7-00b3b32de849(jetbrains.mps.debugger.java.runtime.evaluation.container)/846214144107996102", model = "r:f5448de3-0d76-42bb-afa7-00b3b32de849(jetbrains.mps.debugger.java.runtime.evaluation.container)")
+@GeneratedClass(nodeId = "846214144107996102", model = "r:f5448de3-0d76-42bb-afa7-00b3b32de849(jetbrains.mps.debugger.java.runtime.evaluation.container)")
 public abstract class EvaluationContainer implements IEvaluationContainer {
   protected final Project myProject;
   protected final SModuleReference myContainerModule;
@@ -60,21 +57,10 @@ public abstract class EvaluationContainer implements IEvaluationContainer {
 
   @Override
   public Class generateClass() throws EvaluationException {
-    // XXX this method is invoked from EvaluationUi, from a thread without any model access. 
+    // XXX this method is invoked from EvaluationUi, from a thread without any model access.
+    // but as it used to work for years, don't want to touch it
     SModel containerModel = myContainerModel.resolve(myDebuggerRepository);
-    // FIXME in fact, I'm pretty sure we can accomplish the same with regular dependency to j.m.d.java.api from EvaluationModule 
-    //       Then, classpath built for EvaluationModule would include everything we try to push here with an extra CL. However, 
-    //       don't want to dive too deep into this mess now, shall refactor make facet to get rid of CResource use anyway, and 
-    //       refresh the whole idea of EvaluationModule and its temp models, and how are they handled/processed. Then, this code is likely to fade away. 
-    ClassLoader extraCL = new ModelAccessHelper(myDebuggerRepository).runReadAction(new Computable<MPSModuleClassLoader>() {
-      public MPSModuleClassLoader compute() {
-        SModule extraClasspath = PersistenceFacade.getInstance().createModuleReference("cf8c9de5-1b4a-4dc8-8e6d-847159af31dd(jetbrains.mps.debugger.java.api)").resolve(myDebuggerRepository);
-        assert extraClasspath instanceof ReloadableModule;
-
-        return ((ReloadableModule) extraClasspath).getClassLoader0();
-      }
-    });
-    return GeneratorUtil.generateAndLoadEvaluatorClass(myProject, containerModel, Properties.EVALUATOR_NAME, Properties.IS_DEVELOPER_MODE, extraCL);
+    return GeneratorUtil.generateAndLoadEvaluatorClass(myProject, containerModel, Properties.EVALUATOR_NAME);
   }
 
   @Override
@@ -90,7 +76,7 @@ public abstract class EvaluationContainer implements IEvaluationContainer {
     return new ModelAccessHelper(myDebuggerRepository).runReadAction(new Computable<String>() {
       @Override
       public String compute() {
-        return PresentationUtil.getPresentation(((SNode) BHReflection.invoke0(SNodeOperations.cast(getNode(), CONCEPTS.IEvaluatorConcept$E8), CONCEPTS.IEvaluatorConcept$E8, SMethodTrimmedId.create("getCode", null, "hASWOEj0jB"))));
+        return PresentationUtil.getPresentation(((SNode) BHReflection.invoke0(SNodeOperations.cast(getNode(), CONCEPTS.IEvaluatorConcept$E8), CONCEPTS.IEvaluatorConcept$E8, SMethodIdV2.create("getCode", 317191294093624551L, 0xfcc609a70ba2c576L))));
       }
     });
   }

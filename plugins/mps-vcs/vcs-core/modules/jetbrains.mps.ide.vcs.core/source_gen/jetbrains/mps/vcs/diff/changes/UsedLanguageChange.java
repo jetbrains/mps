@@ -9,8 +9,9 @@ import jetbrains.mps.vcs.diff.ChangeSet;
 import jetbrains.mps.smodel.SModelInternal;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.extapi.model.SModelBase;
+import java.util.Objects;
 
-@GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/5653442531631622559", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
+@GeneratedClass(nodeId = "5653442531631622559", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class UsedLanguageChange extends MetadataChange {
   private final SLanguage myLanguage;
   private final int myNewVersion;
@@ -20,7 +21,7 @@ public class UsedLanguageChange extends MetadataChange {
     super(changeSet);
     myLanguage = language;
     myNewVersion = version;
-    // ChangeType:  ADD - language added, DELETE - language deleted, CHANGE - version changed 
+    // ChangeType:  ADD - language added, DELETE - language deleted, CHANGE - version changed
     myChangeType = changeType;
   }
 
@@ -33,7 +34,7 @@ public class UsedLanguageChange extends MetadataChange {
   @NotNull
   protected ModelChange createOppositeChange() {
     SModelInternal oldModel = as_72pvsi_a0a0a8(getChangeSet().getOldModel(), SModelInternal.class);
-    int oldVersion = oldModel.getLanguageImportVersion(myLanguage);
+    int oldVersion = (myChangeType == ChangeType.ADD ? -1 : oldModel.getLanguageImportVersion(myLanguage));
     return new UsedLanguageChange(getChangeSet().getOppositeChangeSet(), myLanguage, oldVersion, (myChangeType == ChangeType.ADD ? ChangeType.DELETE : (myChangeType == ChangeType.DELETE ? ChangeType.ADD : myChangeType)));
   }
 
@@ -76,7 +77,39 @@ public class UsedLanguageChange extends MetadataChange {
   public String toString() {
     return myLanguage.toString();
   }
+
+  @Override
+  public boolean conflictsWith(@NotNull ModelChange otherChange) {
+    return otherChange instanceof UsedLanguageChange && Objects.equals(as_72pvsi_a0a0a0a02(otherChange, UsedLanguageChange.class).getLanguage(), this.getLanguage());
+  }
+
+  @Override
+  public boolean isSymmetricWith(@NotNull ModelChange otherChange) {
+    if (!(this.conflictsWith(otherChange))) {
+      return false;
+    }
+    UsedLanguageChange otherUsedLanguageChange = as_72pvsi_a0a1a22(otherChange, UsedLanguageChange.class);
+    if (this.getType() == ChangeType.DELETE && otherUsedLanguageChange.getType() == ChangeType.DELETE) {
+      // delete the same language
+      return true;
+    } else if (this.getType() == ChangeType.DELETE || otherUsedLanguageChange.getType() == ChangeType.DELETE) {
+      // delete vs update => conflict
+      return false;
+    } else if (this.getVersion() == otherUsedLanguageChange.getVersion()) {
+      // added or updated with the same version
+      return true;
+    } else {
+      // added with different versions or changed version differently
+      return false;
+    }
+  }
   private static <T> T as_72pvsi_a0a0a8(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_72pvsi_a0a0a0a02(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_72pvsi_a0a1a22(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

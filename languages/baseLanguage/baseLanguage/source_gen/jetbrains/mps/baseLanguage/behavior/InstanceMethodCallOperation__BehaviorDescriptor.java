@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Map;
@@ -23,7 +22,6 @@ import java.util.Collections;
 import jetbrains.mps.baseLanguage.scopes.MethodResolveUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.scopes.Members;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -39,14 +37,14 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class InstanceMethodCallOperation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
 
-  public static final SMethod<String> getVariableExpectedName_idhEwIP$B = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVariableExpectedName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIP$B").build();
-  public static final SMethod<SNode> getInstanceType_id6WzWPTX2vuB = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getInstanceType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6WzWPTX2vuB").build();
-  public static final SMethod<Map<SNode, SNode>> getTypesByTypeVars_idJfLh5LDMrj = new SMethodBuilder<Map<SNode, SNode>>(new SJavaCompoundTypeImpl(Map.class)).name("getTypesByTypeVars").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("JfLh5LDMrj").build();
-  public static final SMethod<Iterable<SNode>> getAvailableMethodDeclarations_id50EF2fWdwEN = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getAvailableMethodDeclarations").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("50EF2fWdwEN").build(SMethodBuilder.createJavaParameter(String.class, ""));
-  public static final SMethod<Boolean> canBeConvertedToLocal_id4APqwMfCiZK = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeConvertedToLocal").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4APqwMfCiZK").build();
-  public static final SMethod<Void> convertToLocal_id4APqwMfCtHI = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("convertToLocal").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4APqwMfCtHI").build();
-  public static final SMethod<Boolean> isInTypeInferenceContext_id4cxv$9$kw67 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isInTypeInferenceContext").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4cxv$9$kw67").build();
-  public static final SMethod<Boolean> substituteInAmbigousPosition_id1653mnvAgq$ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("substituteInAmbigousPosition").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgq$").build();
+  public static final SMethod<String> getVariableExpectedName_idhEwIP$B = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVariableExpectedName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877410087L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> getInstanceType_id6WzWPTX2vuB = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getInstanceType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8008512149545154471L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Map<SNode, SNode>> getTypesByTypeVars_idJfLh5LDMrj = new SMethodBuilder<Map<SNode, SNode>>(new SJavaCompoundTypeImpl(Map.class)).name("getTypesByTypeVars").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(851115533308208851L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Iterable<SNode>> getAvailableMethodDeclarations_id50EF2fWdwEN = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getAvailableMethodDeclarations").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5776618742611315379L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<Boolean> canBeConvertedToLocal_id4APqwMfCiZK = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeConvertedToLocal").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5311267937735225328L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Void> convertToLocal_id4APqwMfCtHI = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("convertToLocal").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5311267937735269230L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> isInTypeInferenceContext_id4cxv$9$kw67 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isInTypeInferenceContext").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4837286298388660615L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> substituteInAmbigousPosition_id1653mnvAgq$ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("substituteInAmbigousPosition").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498020L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableExpectedName_idhEwIP$B, getInstanceType_id6WzWPTX2vuB, getTypesByTypeVars_idJfLh5LDMrj, getAvailableMethodDeclarations_id50EF2fWdwEN, canBeConvertedToLocal_id4APqwMfCiZK, convertToLocal_id4APqwMfCtHI, isInTypeInferenceContext_id4cxv$9$kw67, substituteInAmbigousPosition_id1653mnvAgq$);
 
@@ -72,18 +70,14 @@ public final class InstanceMethodCallOperation__BehaviorDescriptor extends BaseB
     return TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(__thisNode__)), CONCEPTS.ClassifierType$bL);
   }
   /*package*/ static Map<SNode, SNode> getTypesByTypeVars_idJfLh5LDMrj(@NotNull SNode __thisNode__) {
-    SNode instanceType = IMethodCall__BehaviorDescriptor.getInstanceType_id6WzWPTX2vuB.invoke(__thisNode__);
+    SNode instanceType = IFixableMethodReference__BehaviorDescriptor.getInstanceType_id6WzWPTX2vuB.invoke(__thisNode__);
     if ((SLinkOperations.getTarget(instanceType, LINKS.classifier$cxMr) == null)) {
       return Collections.emptyMap();
     }
     return MethodResolveUtil.getTypesByTypeVars(SLinkOperations.getTarget(instanceType, LINKS.classifier$cxMr), SLinkOperations.getChildren(instanceType, LINKS.parameter$oqG$));
   }
   /*package*/ static Iterable<SNode> getAvailableMethodDeclarations_id50EF2fWdwEN(@NotNull SNode __thisNode__, final String methodName) {
-    return Sequence.fromIterable(Members.visibleInstanceMethods(IMethodCall__BehaviorDescriptor.getInstanceType_id6WzWPTX2vuB.invoke(__thisNode__), __thisNode__)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), methodName);
-      }
-    }).toListSequence();
+    return Sequence.fromIterable(Members.visibleInstanceMethods(IFixableMethodReference__BehaviorDescriptor.getInstanceType_id6WzWPTX2vuB.invoke(__thisNode__), __thisNode__)).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), methodName)).toList();
   }
   /*package*/ static boolean canBeConvertedToLocal_id4APqwMfCiZK(@NotNull SNode __thisNode__) {
     if (!(SNodeOperations.isInstanceOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(__thisNode__), CONCEPTS.ThisExpression$$o))) {
@@ -98,7 +92,7 @@ public final class InstanceMethodCallOperation__BehaviorDescriptor extends BaseB
     SNode declaration = SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$pyYw);
     SNode classifier = ClassConcept__BehaviorDescriptor.getContextClass_id6WzWPTX2$6q.invoke(SNodeOperations.asSConcept(CONCEPTS.ClassConcept$bK), __thisNode__);
     SNode declarationClassifier = SNodeOperations.getNodeAncestor(declaration, CONCEPTS.Classifier$Ix, false, false);
-    if (!((classifier == declarationClassifier || ListSequence.fromList(SNodeOperations.getNodeAncestors(classifier, null, false)).contains(declarationClassifier)))) {
+    if (!(classifier == declarationClassifier || ListSequence.fromList(SNodeOperations.getNodeAncestors(classifier, null, false)).contains(declarationClassifier))) {
       return false;
     }
     while (classifier != declarationClassifier) {

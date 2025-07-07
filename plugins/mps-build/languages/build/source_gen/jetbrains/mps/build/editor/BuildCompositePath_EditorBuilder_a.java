@@ -19,14 +19,12 @@ import jetbrains.mps.nodeEditor.cells.SPropertyAccessor;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.cellMenu.CompositeSubstituteInfo;
 import jetbrains.mps.lang.editor.cellProviders.PropertyCellContext;
 import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
@@ -36,18 +34,17 @@ import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.build.behavior.BuildCompositePath__BehaviorDescriptor;
 import jetbrains.mps.build.util.Context;
 import jetbrains.mps.nodeEditor.MPSColors;
+import com.intellij.ui.JBColor;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_PropertyValues;
 import java.util.List;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
-import java.util.function.Function;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.action.NodeSubstituteActionWrapper;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.nodeEditor.menus.EditorMenuTraceInfoImpl;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
-import java.util.stream.Collectors;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.build.behavior.BuildRelativePath__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
@@ -110,16 +107,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setDefaultText("");
       editorCell.setCellId("property_head");
       Style style = new StyleImpl();
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_n78otj_a0a0()));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_n78otj_a0a0()));
       editorCell.getStyle().putAll(style);
       editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new BuildCompositePath_head_cellMenu_n78otj_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
-      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-        }
-      });
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
+      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
       if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
         EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
         return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);
@@ -135,7 +128,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return MPSColors.BLACK;
     }
     if (f.exists()) {
-      return new Color(0, 0, 0x80);
+      return new JBColor(0x000080, 0x9e5181);
     }
     return MPSColors.RED;
   }
@@ -144,23 +137,19 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     @Override
     public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-      List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-      Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-        public SubstituteAction apply(SubstituteAction action) {
-          return new NodeSubstituteActionWrapper(action) {
-            @Override
-            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-              result.setDescriptor(new EditorMenuDescriptorBase("property postfix values", new SNodePointer("r:00f69407-23a8-49a2-a236-9e89a32679aa(jetbrains.mps.build.editor)", "4959435991187212091")));
-              return result;
-            }
-          };
-        }
-      };
-      return actions.stream().map(mapper).collect(Collectors.toList());
+      return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
+        return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
+          @Override
+          public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+            EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+            result.setDescriptor(new EditorMenuDescriptorBase("property postfix values", new SNodePointer("r:00f69407-23a8-49a2-a236-9e89a32679aa(jetbrains.mps.build.editor)", "4959435991187212091")));
+            return result;
+          }
+        };
+      }).toList();
     }
 
-    public List<String> getPropertyValues(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<String> getPropertyValues(SNode node, EditorContext editorContext) {
       return (List<String>) BuildCompositePath__BehaviorDescriptor.getHeadSuggestions_id4jjtc7X04td.invoke(node, BuildRelativePath__BehaviorDescriptor.getBasePath_id4jjtc7WZMYz.invoke(SNodeOperations.getNodeAncestor(node, CONCEPTS.BuildRelativePath$Kc, false, false), Context.defaultContext()));
     }
   }

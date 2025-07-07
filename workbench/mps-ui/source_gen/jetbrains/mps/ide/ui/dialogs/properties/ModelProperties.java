@@ -18,7 +18,7 @@ import java.util.HashSet;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.project.DevKit;
 
-@GeneratedClass(node = "r:25996281-7301-4cd9-9368-f68f49d5af63(jetbrains.mps.ide.ui.dialogs.properties)/3995997045458695685", model = "r:25996281-7301-4cd9-9368-f68f49d5af63(jetbrains.mps.ide.ui.dialogs.properties)")
+@GeneratedClass(nodeId = "3995997045458695685", model = "r:25996281-7301-4cd9-9368-f68f49d5af63(jetbrains.mps.ide.ui.dialogs.properties)")
 public class ModelProperties {
   private final List<SModelReference> myImportedModels = new ArrayList<SModelReference>();
   private final List<SLanguage> myUsedLanguages = new ArrayList<SLanguage>();
@@ -44,7 +44,7 @@ public class ModelProperties {
     return myImportedModels;
   }
   public List<SLanguage> getUsedLanguages() {
-    // imported directly only. Languages coming from devkits are separate 
+    // imported directly only. Languages coming from devkits are separate
     return myUsedLanguages;
   }
   public List<SModuleReference> getUsedDevKits() {
@@ -131,12 +131,12 @@ public class ModelProperties {
     Set<SLanguage> languagesInModel = new HashSet<SLanguage>((modelInternal).getLanguagesEngagedOnGeneration());
     Set<SLanguage> languagesInProps = new HashSet<SLanguage>(getLanguagesEngagedOnGeneration());
     for (SLanguage l : languagesInModel) {
-      // remove if not from actual state 
+      // remove if not from actual state
       if (!(languagesInProps.remove(l))) {
         modelInternal.removeEngagedOnGenerationLanguage(l);
       }
     }
-    // add those left 
+    // add those left
     for (SLanguage l : languagesInProps) {
       modelInternal.addEngagedOnGenerationLanguage(l);
     }

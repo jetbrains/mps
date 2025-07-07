@@ -12,9 +12,9 @@
         <value />
       </option>
     </JavaCodeStyleSettings>
-    <XML>
-      <option name="XML_LEGACY_SETTINGS_IMPORTED" value="true" />
-    </XML>
+    <JetCodeStyleSettings>
+      <option name="CODE_STYLE_DEFAULTS" value="KOTLIN_OFFICIAL" />
+    </JetCodeStyleSettings>
     <ADDITIONAL_INDENT_OPTIONS fileType="py">
       <option name="USE_TAB_CHARACTER" value="true" />
     </ADDITIONAL_INDENT_OPTIONS>
@@ -60,6 +60,9 @@
       <indentOptions>
         <option name="INDENT_SIZE" value="2" />
       </indentOptions>
+    </codeStyleSettings>
+    <codeStyleSettings language="kotlin">
+      <option name="CODE_STYLE_DEFAULTS" value="KOTLIN_OFFICIAL" />
     </codeStyleSettings>
   </code_scheme>
 </component>

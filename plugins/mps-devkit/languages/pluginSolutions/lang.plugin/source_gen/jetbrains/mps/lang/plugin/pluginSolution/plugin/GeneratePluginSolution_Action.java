@@ -11,17 +11,20 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.workbench.MPSDataKeys;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.ide.newModuleDialogs.NewSolutionDialog;
+import jetbrains.mps.ide.ui.dialogs.modules.NameLocationPanel;
+import jetbrains.mps.ide.ui.dialogs.modules.NewModuleDialog;
+import jetbrains.mps.project.modules.NewModuleCheck;
 import jetbrains.mps.project.Solution;
+import jetbrains.mps.util.IStatus;
+import java.io.File;
+import jetbrains.mps.project.modules.SolutionProducer;
+import jetbrains.mps.ide.projectPane.ProjectPane;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.extapi.model.SModelBase;
+import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.project.structure.modules.SolutionKind;
-import jetbrains.mps.ide.projectPane.ProjectPane;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 
 public class GeneratePluginSolution_Action extends BaseAction {
@@ -31,6 +34,7 @@ public class GeneratePluginSolution_Action extends BaseAction {
     super("Plugin Solution", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -54,38 +58,62 @@ public class GeneratePluginSolution_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    NewSolutionDialog dialog = new NewSolutionDialog(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSDataKeys.NAMESPACE));
+    final MPSProject mpsProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+    final String virtualFolder = event.getData(MPSDataKeys.NAMESPACE);
+    final NameLocationPanel cfg = new NameLocationPanel(NewModuleDialog.projectHome(mpsProject), "Plugin Solution name:", "Plugin Solution file location:");
+    cfg.withDefaults("NewPluginSolution", "solutions");
+    final NewModuleCheck mc = new NewModuleCheck().forSolution();
+    mc.withScope(mpsProject.getRepository());
+
+    NewModuleDialog<Solution> dialog = new NewModuleDialog<>(mpsProject, cfg);
+    dialog.withCheck(() -> {
+      mc.withName(cfg.getModuleName()).withHome(cfg.getModuleLocation());
+      IStatus s = mc.checkAll();
+      return (s.isOk() ? null : s.getMessage());
+    });
+    dialog.withFactory(() -> {
+      String moduleName = cfg.getModuleName();
+      File moduleLocation = cfg.getModuleLocation();
+      SolutionProducer sp = new SolutionProducer(mpsProject);
+      sp.withPluginJavaFacet();
+      Solution result = sp.create(moduleName, mpsProject.getFileSystem().getFile(moduleLocation));
+      GeneratePluginSolution_Action.this.createModel(result, event);
+      mpsProject.setVirtualFolder(result, virtualFolder);
+      return result;
+    });
+
+    dialog.setTitle("New Plugin Solution");
     dialog.show();
-    final Solution s = dialog.getModule();
+    if (!(dialog.isOK())) {
+      return;
+    }
+
+    final Solution s = dialog.getResult();
     if (s == null) {
       return;
     }
 
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        ModelRoot defaultRoot = s.getModelRoots().iterator().next();
-        SModel newModel = defaultRoot.createModel(s.getModuleName() + ".plugin");
-
-        ((SModelBase) newModel).addLanguage(MetaAdapterFactory.getLanguage(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, "jetbrains.mps.lang.plugin"));
-        ((SModelBase) newModel).addLanguage(MetaAdapterFactory.getLanguage(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, "jetbrains.mps.lang.plugin.standalone"));
-        ((SModelBase) newModel).addLanguage(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"));
-        ((SModelBase) newModel).addLanguage(MetaAdapterFactory.getLanguage(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, "jetbrains.mps.lang.access"));
-        ((SModelBase) newModel).addLanguage(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"));
-
-        SModelOperations.addRootNode(newModel, _quotation_createNode_ljjiw0_a0a9a0a0a0a5a0());
-
-        s.getModuleDescriptor().setKind(SolutionKind.PLUGIN_OTHER);
-        event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().saveAll();
-      }
-    });
-
     ProjectPane projectPane = ProjectPane.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT));
     projectPane.selectModule(s, false);
   }
-  private static SNode _quotation_createNode_ljjiw0_a0a9a0a0a0a5a0() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
+  private void createModel(Solution s, final AnActionEvent event) {
+    ModelRoot defaultRoot = s.getModelRoots().iterator().next();
+    SModel newModel = defaultRoot.createModel(s.getModuleName() + ".plugin");
+    ModelImports mi = new ModelImports(newModel);
+
+    mi.addUsedLanguage(MetaAdapterFactory.getLanguage(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, "jetbrains.mps.lang.plugin"));
+    mi.addUsedLanguage(MetaAdapterFactory.getLanguage(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, "jetbrains.mps.lang.plugin.standalone"));
+    mi.addUsedLanguage(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"));
+    mi.addUsedLanguage(MetaAdapterFactory.getLanguage(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, "jetbrains.mps.lang.access"));
+    mi.addUsedLanguage(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"));
+
+    SModelOperations.addRootNode(newModel, _quotation_createNode_ljjiw0_a0a01a0());
+
+  }
+  private static SNode _quotation_createNode_ljjiw0_a0a01a0() {
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, "jetbrains.mps.lang.plugin.standalone"), 0x685ef16bc1750e9cL, "StandalonePluginDescriptor")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, "jetbrains.mps.lang.plugin.standalone"), 0x685ef16bc1750e9cL, "StandalonePluginDescriptor"));
+    quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
 }

@@ -5,23 +5,29 @@ package jetbrains.mps.vcs.changesmanager.tree.features;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.SNodePointer;
 
-@GeneratedClass(node = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)/6277750378633134066", model = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)")
+@GeneratedClass(nodeId = "6277750378633134066", model = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)")
 public abstract class AbstractNodeFeature extends Feature {
   private final SNodeReference myNodeRef;
+  private final Feature myParentFeature;
 
-  protected AbstractNodeFeature(@NotNull SNodeReference nodePointer) {
+  protected AbstractNodeFeature(@NotNull SNodeReference nodePointer, Feature parentFeature) {
     super(nodePointer.getModelReference());
     myNodeRef = nodePointer;
+    myParentFeature = parentFeature;
   }
-  public SNodeReference getNodePointer() {
+
+  @Nullable
+  public final Feature getParent() {
+    return myParentFeature;
+  }
+
+  public final SNodeReference getNodePointer() {
     return myNodeRef;
   }
-  @Override
-  public boolean equals(Object object) {
-    return super.equals(object) && myNodeRef.equals(((AbstractNodeFeature) object).myNodeRef);
-  }
+
   protected final String getNodePointerString() {
     return SNodePointer.serialize(myNodeRef);
   }

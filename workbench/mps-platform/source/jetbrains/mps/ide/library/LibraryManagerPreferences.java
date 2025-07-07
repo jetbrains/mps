@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,26 +17,16 @@ package jetbrains.mps.ide.library;
 
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
+import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.openapi.ui.Messages;
 import com.intellij.ui.ToolbarDecorator;
 import com.intellij.ui.components.JBList;
+import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.library.BaseLibraryManager;
 import jetbrains.mps.library.Library;
 import jetbrains.mps.util.ToStringComparator;
 
-import javax.swing.AbstractAction;
-import javax.swing.DefaultListCellRenderer;
-import javax.swing.DefaultListModel;
-import javax.swing.Icon;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
@@ -49,10 +39,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LibraryManagerPreferences {
-  private BaseLibraryManager myManager;
-  private JPanel myMainPanel = new JPanel(new BorderLayout());
-  private DefaultListModel<Library> myListModel = new DefaultListModel<>();
-  private JList<Library> myLibrariesList = new JBList<>(myListModel);
+  private final BaseLibraryManager myManager;
+  private final JPanel myMainPanel = new JPanel(new BorderLayout());
+  private final DefaultListModel<Library> myListModel = new DefaultListModel<>();
+  private final JList<Library> myLibrariesList = new JBList<>(myListModel);
 
   private boolean myChanged;
 
@@ -95,7 +85,7 @@ public class LibraryManagerPreferences {
     }
 
     if (updateManager) {
-      myManager.getInitializer().update();
+      MPSCoreComponents.getInstance().getLibraryInitializer().update();
     }
   }
 
@@ -116,7 +106,8 @@ public class LibraryManagerPreferences {
       return;
     }
 
-    l.setPath(result.getPath());
+    final Library originalLibrary = myManager.getLibrary(l.getName());
+    originalLibrary.setPath(result.getPath());
 
     updateModel(true);
     myChanged = true;

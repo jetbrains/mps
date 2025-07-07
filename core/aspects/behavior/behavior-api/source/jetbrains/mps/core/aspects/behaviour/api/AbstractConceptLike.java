@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.core.aspects.behaviour.api;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -26,21 +25,12 @@ import java.util.List;
  * @author apyshkin
  */
 public interface AbstractConceptLike {
+  @NotNull String getName();
+
+  boolean isAbstract(); // is there need for the method?
+
+  // XXX Perhaps, shall parameterize AbstractConceptLike with <C extends ACL>
+  // and use List<C> here to facilitate _SAbstractConcept.getImmediateParents():List<_SAbstractConcept>
   @NotNull
-  String getName();
-
-  @NotNull
-  List<InterfaceConceptLike> getSuperInterfaces();
-
-  interface InterfaceConceptLike extends AbstractConceptLike {
-  }
-
-  interface ConceptLike extends AbstractConceptLike {
-    boolean isAbstract();
-
-    /**
-     * @return null iff it is a root
-     */
-    @Nullable ConceptLike getSuperConcept();
-  }
+  List<AbstractConceptLike> getImmediateParents();
 }

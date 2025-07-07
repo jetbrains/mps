@@ -18,28 +18,25 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.smodel.SModelId;
-import jetbrains.mps.smodel.SReferenceBase;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.smodel.SNodeImplAccess;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
-@GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/4652592318748339723", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
+@GeneratedClass(nodeId = "4652592318748339723", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 public class DiffModelUtil {
   private static Map<SModel, TempModuleOptions> myRegisteredModels = MapSequence.fromMap(new HashMap<SModel, TempModuleOptions>());
   public static void renameModelAndRegister(SModel model, String version) {
-    // takes a model, changes its reference if version is specified, and registers a model with a newly created 
-    // module which is registered with a global repository. 
+    // takes a model, changes its reference if version is specified, and registers a model with a newly created
+    // module which is registered with a global repository.
     renameModelAndRegister(model, version, false);
   }
   public static void renameModelAndRegister(SModel model, String version, boolean fixReferences) {
-    // if fixRefeneces == true => set links to hanged static references back to the original model (that is most probably in repository 
-    // This can help in per root persistence when only one root is in the model: reference to other root will point to repository model 
+    // if fixRefeneces == true => set links to hanged static references back to the original model (that is most probably in repository
+    // This can help in per root persistence when only one root is in the model: reference to other root will point to repository model
     if (version != null) {
       renameModel(model, version, fixReferences);
     }
@@ -70,12 +67,10 @@ public class DiffModelUtil {
     }
   }
   private static void resetMissedReferences(SModel model, SModelReference oldModelRef, SModelReference newModelRef) {
-    // set references that are not in the model back to old model 
-    Set<SNodeId> nodeIds = SetSequence.fromSetWithValues(new HashSet<SNodeId>(), ListSequence.fromList(SModelOperations.nodes(model, null)).select(new ISelector<SNode, SNodeId>() {
-      public SNodeId select(SNode it) {
-        return it.getNodeId();
-      }
-    }));
+    // set references that are not in the model back to old model
+    Set<SNodeId> nodeIds = SetSequence.fromSetWithValues(new HashSet<SNodeId>(), ListSequence.fromList(SModelOperations.nodes(model, null)).select((it) -> it.getNodeId()));
+    // FIXME would be nice to employ SNodeImplAccess, like in #fixModelReferences(), below, but need an extra condition
+    //      also in StructureChange.fixInnerModelReferences()
     for (SNode node : SModelOperations.nodes(model, null)) {
       for (SReference reference : SNodeOperations.getReferences(node)) {
         if (reference instanceof StaticReference && newModelRef.equals(reference.getTargetSModelReference()) && !(SetSequence.fromSet(nodeIds).contains(reference.getTargetNodeId()))) {
@@ -89,22 +84,15 @@ public class DiffModelUtil {
     assert modelRef.getModelId() instanceof SModelId.ForeignSModelId;
     as_5x16vn_a0a2a8(model, SModelBase.class).changeModelReference(getOriginalSModelRef(modelRef));
   }
-  public static void fixModelReferences(SModel model, final SModelReference modelRef) {
-    // modelRef - generated references, will be replaced with original one through the model 
+
+  public static void fixModelReferences(SModel model, SModelReference modelRef) {
+    // modelRef - generated references, will be replaced with original one through the model
     assert modelRef.getModelId() instanceof SModelId.ForeignSModelId;
-    final SModelReference oldModelRef = getOriginalSModelRef(modelRef);
-    for (SNode node : ListSequence.fromList(SModelOperations.nodes(model, null))) {
-      // XXX FWIW, there's similar code in smodel.SModel.updateExternalReferences() 
-      //     Would be great to keep it in a single place 
-      ListSequence.fromList(SNodeOperations.getReferences(node)).ofType(SReferenceBase.class).where(new IWhereFilter<SReferenceBase>() {
-        public boolean accept(SReferenceBase it) {
-          return modelRef.equals(it.getTargetSModelReference());
-        }
-      }).visitAll(new IVisitor<SReferenceBase>() {
-        public void visit(SReferenceBase it) {
-          it.setTargetSModelReference(oldModelRef);
-        }
-      });
+    SModelReference oldModelRef = getOriginalSModelRef(modelRef);
+    for (SNode node : ListSequence.fromList(SModelOperations.roots(model, null))) {
+      // XXX FWIW, there's similar code in smodel.SModel.updateExternalReferences() and in UpdateDependentModelsRefactoringParticipant.updateUsages()
+      //     Would be great to keep it in a single place
+      new SNodeImplAccess(node).rerouteAssociationDeep(modelRef, oldModelRef);
     }
   }
 
@@ -114,7 +102,7 @@ public class DiffModelUtil {
     return PersistenceFacade.getInstance().createModelReference(ref.getModuleReference(), newId, newName);
   }
   private static SModelReference getOriginalSModelRef(SModelReference ref) {
-    String id = as_5x16vn_a0a0a0m(ref.getModelId(), SModelId.ForeignSModelId.class).getId();
+    String id = as_5x16vn_a0a0a0n(ref.getModelId(), SModelId.ForeignSModelId.class).getId();
     String name = ref.getModelName();
     org.jetbrains.mps.openapi.model.SModelId oldId = SModelId.fromString(id.substring(id.indexOf("#") + 1));
     String oldName = name.substring(0, name.lastIndexOf("@"));
@@ -126,7 +114,7 @@ public class DiffModelUtil {
   private static <T> T as_5x16vn_a0a2a8(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_5x16vn_a0a0a0m(Object o, Class<T> type) {
+  private static <T> T as_5x16vn_a0a0a0n(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

@@ -62,7 +62,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, true);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:6d672fff-19ac-419c-b29d-e20cdd951b7d(jetbrains.mps.build.tips.structure)/6818892319999103942");
-    b.version(2);
+    b.version(3);
     b.aggregate("tips", 0x5ea1926fdf2fb911L).target(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf2fb910L).optional(true).ordered(true).multiple(true).origin("6818892319999113489").done();
     b.alias("Tips And Tricks");
     return b.create();
@@ -71,7 +71,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.build.tips", "MPSTipsAndTricks_Image", 0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x1377553280f03b1dL);
     b.class_(false, false, false);
     b.origin("r:6d672fff-19ac-419c-b29d-e20cdd951b7d(jetbrains.mps.build.tips.structure)/1402683484349152029");
-    b.version(2);
+    b.version(3);
     b.property("file", 0x1377553280f17f4bL).type(PrimitiveTypeId.STRING).origin("1402683484349235019").done();
     b.property("width", 0x1377553280f5dba2L).type(PrimitiveTypeId.STRING).origin("1402683484349520802").done();
     b.property("height", 0x1377553280f5dba3L).type(PrimitiveTypeId.STRING).origin("1402683484349520803").done();
@@ -81,7 +81,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.build.tips", "MPSTipsAndTricks_Text", 0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf32687cL);
     b.class_(false, false, false);
     b.origin("r:6d672fff-19ac-419c-b29d-e20cdd951b7d(jetbrains.mps.build.tips.structure)/6818892319999289468");
-    b.version(2);
+    b.version(3);
     b.property("language", 0x5ea1926fdf40725aL).type(PrimitiveTypeId.STRING).origin("6818892320000209498").done();
     b.aggregate("element", 0x5ea1926fdf38a2a2L).target(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L).optional(true).ordered(true).multiple(true).origin("6818892319999697570").done();
     b.alias("text");
@@ -92,7 +92,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:6d672fff-19ac-419c-b29d-e20cdd951b7d(jetbrains.mps.build.tips.structure)/6818892319999113488");
-    b.version(2);
+    b.version(3);
     b.aggregate("text", 0x5ea1926fdf32687eL).target(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf32687cL).optional(true).ordered(true).multiple(true).origin("6818892319999289470").done();
     b.aggregate("image", 0x1377553280f7a6a7L).target(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x1377553280f03b1dL).optional(true).ordered(true).multiple(false).origin("1402683484349638311").done();
     return b.create();

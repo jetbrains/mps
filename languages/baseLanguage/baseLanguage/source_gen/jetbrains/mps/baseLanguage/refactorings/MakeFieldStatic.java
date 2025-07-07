@@ -14,9 +14,7 @@ import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
@@ -38,22 +36,20 @@ public class MakeFieldStatic extends BaseRefactoring {
   }
   public boolean init(final RefactoringContext refactoringContext) {
     final SNode node = refactoringContext.getSelectedNode();
-    refactoringContext.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        if (SNodeOperations.isInstanceOf(node, CONCEPTS.FieldDeclaration$ie)) {
-          refactoringContext.setParameter("declaration", SNodeOperations.cast(node, CONCEPTS.FieldDeclaration$ie));
-        } else {
-          refactoringContext.setParameter("declaration", SNodeOperations.cast(ListSequence.fromList(SNodeOperations.getReferences(node)).first().getTargetNode(), CONCEPTS.FieldDeclaration$ie));
-        }
-        // XXX perhaps, we shall use refactoringContext.mpsProject.getScope() instead of refactoringContext.scope 
-        //     as we might be interested in any usage. However, it's not clear what rc.scope is and as since it's 
-        //     technically the same now, I decided to go with just rc.scope. 
-        refactoringContext.setParameter("usages", FindUtils.getSearchResults(new EmptyProgressMonitor(), ((SNode) refactoringContext.getParameter("declaration")), refactoringContext.getCurrentScope(), "jetbrains.mps.baseLanguage.findUsages.FieldUsages_Finder"));
-        refactoringContext.setParameter("hasExternalUsages", false);
-        for (SearchResult<SNode> result : ListSequence.fromList(((SearchResults<SNode>) refactoringContext.getParameter("usages")).getSearchResults())) {
-          if (SNodeOperations.getContainingRoot(result.getObject()) != SNodeOperations.getContainingRoot(((SNode) refactoringContext.getParameter("declaration")))) {
-            refactoringContext.setParameter("hasExternalUsages", true);
-          }
+    refactoringContext.getRepository().getModelAccess().runReadAction(() -> {
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.FieldDeclaration$ie)) {
+        refactoringContext.setParameter("declaration", SNodeOperations.cast(node, CONCEPTS.FieldDeclaration$ie));
+      } else {
+        refactoringContext.setParameter("declaration", SNodeOperations.cast(ListSequence.fromList(SNodeOperations.getReferences(node)).first().getTargetNode(), CONCEPTS.FieldDeclaration$ie));
+      }
+      // XXX perhaps, we shall use refactoringContext.mpsProject.getScope() instead of refactoringContext.scope
+      //     as we might be interested in any usage. However, it's not clear what rc.scope is and as since it's
+      //     technically the same now, I decided to go with just rc.scope.
+      refactoringContext.setParameter("usages", FindUtils.getSearchResults(new EmptyProgressMonitor(), ((SNode) refactoringContext.getParameter("declaration")), refactoringContext.getCurrentScope(), "jetbrains.mps.baseLanguage.findUsages.FieldUsages_Finder"));
+      refactoringContext.setParameter("hasExternalUsages", false);
+      for (SearchResult<SNode> result : ListSequence.fromList(((SearchResults<SNode>) refactoringContext.getParameter("usages")).getSearchResults())) {
+        if (SNodeOperations.getContainingRoot(result.getObject()) != SNodeOperations.getContainingRoot(((SNode) refactoringContext.getParameter("declaration")))) {
+          refactoringContext.setParameter("hasExternalUsages", true);
         }
       }
     });
@@ -65,7 +61,7 @@ public class MakeFieldStatic extends BaseRefactoring {
     SPropertyOperations.assign(newDeclaration, PROPS.isFinal$gvTP, SPropertyOperations.getBoolean(((SNode) refactoringContext.getParameter("declaration")), PROPS.isFinal$gvTP));
     SLinkOperations.setTarget(newDeclaration, LINKS.initializer$2twD, SNodeOperations.copyNode(SLinkOperations.getTarget(((SNode) refactoringContext.getParameter("declaration")), LINKS.initializer$2twD)));
     ListSequence.fromList(SLinkOperations.getChildren(newDeclaration, LINKS.annotation$K49I)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(((SNode) refactoringContext.getParameter("declaration")), LINKS.annotation$K49I)));
-    AttributeOperations.setAttribute(newDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl), AttributeOperations.getAttribute(((SNode) refactoringContext.getParameter("declaration")), new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl)));
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl).set(newDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl).get(((SNode) refactoringContext.getParameter("declaration"))));
 
     SNodeOperations.insertNextSiblingChild(((SNode) refactoringContext.getParameter("declaration")), newDeclaration);
     for (SearchResult<SNode> result : ListSequence.fromList(((SearchResults<SNode>) refactoringContext.getParameter("usages")).getSearchResults())) {
@@ -87,17 +83,17 @@ public class MakeFieldStatic extends BaseRefactoring {
     SNodeOperations.deleteNode(((SNode) refactoringContext.getParameter("declaration")));
   }
   public SearchResults getAffectedNodes(final RefactoringContext refactoringContext) {
-    if (!(((Boolean) refactoringContext.getParameter("hasExternalUsages")))) {
+    if (!((Boolean) refactoringContext.getParameter("hasExternalUsages"))) {
       return null;
     }
     return ((SearchResults<SNode>) refactoringContext.getParameter("usages"));
   }
   private static SNode _quotation_createNode_so6etp_a0a0a(Object parameter_1, Object parameter_2, Object parameter_3) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_4 = null;
     SNode quotedNode_5 = null;
     SNode quotedNode_6 = null;
-    quotedNode_4 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf93c84351fL, "StaticFieldDeclaration")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf93c84351fL, "StaticFieldDeclaration"));
+    quotedNode_4 = nb.getResult();
     SNodeAccessUtil.setPropertyValue(quotedNode_4, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), (String) parameter_3);
     quotedNode_5 = (SNode) parameter_1;
     if (quotedNode_5 != null) {
@@ -110,17 +106,17 @@ public class MakeFieldStatic extends BaseRefactoring {
     return quotedNode_4;
   }
   private static SNode _quotation_createNode_so6etp_a0a0e0i0a(Object parameter_1, Object parameter_2) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
-    quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940c80846L, "StaticFieldReference")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940c80846L, "StaticFieldReference"));
+    quotedNode_3 = nb.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_3, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier"), (SNode) parameter_1);
     SNodeAccessUtil.setReferenceTarget(quotedNode_3, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"), (SNode) parameter_2);
     return quotedNode_3;
   }
   private static SNode _quotation_createNode_so6etp_a0a0a4a8a0(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e98L, "VariableReference")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e98L, "VariableReference"));
+    quotedNode_2 = nb.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"), (SNode) parameter_1);
     return quotedNode_2;
   }

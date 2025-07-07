@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -44,15 +43,12 @@ public class typeof_IndexedTupleLiteral_InferenceRule extends AbstractInferenceR
     return false;
   }
   private static SNode _quotation_createNode_6bpfww_a1a0c0c0b(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xa247e09e243545baL, 0xb8d207e93feba96aL, "jetbrains.mps.baseLanguage.tuples"), 0x1207157a8dcL, "IndexedTupleType")).getResult();
-    {
-      List<SNode> nodes = (List<SNode>) parameter_1;
-      for (SNode child : nodes) {
-        quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, 0x1207158795cL, "componentType"), SNodeOperations.copyIfNecessary(child));
-      }
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xa247e09e243545baL, 0xb8d207e93feba96aL, "jetbrains.mps.baseLanguage.tuples"), 0x1207157a8dcL, "IndexedTupleType"));
+    quotedNode_2 = nb.getResult();
+    for (SNode child : (List<SNode>) parameter_1) {
+      quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, 0x1207158795cL, "componentType"), SNodeOperations.copyIfNecessary(child));
     }
     return quotedNode_2;
   }

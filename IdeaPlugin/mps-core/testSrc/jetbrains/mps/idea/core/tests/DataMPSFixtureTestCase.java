@@ -55,12 +55,6 @@ public abstract class DataMPSFixtureTestCase extends AbstractMPSFixtureTestCase 
     return false;
   }
 
-  @Override
-  protected void invokeTestRunnable(@NotNull Runnable runnable) throws Exception {
-    // superclass's method always starts this in the EDT
-    runnable.run();
-  }
-
   protected void preConfigureSourceRoot(IFile sourceRoot) throws IOException {
   }
 

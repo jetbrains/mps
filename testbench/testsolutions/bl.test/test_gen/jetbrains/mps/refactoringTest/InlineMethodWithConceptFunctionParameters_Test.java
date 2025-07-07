@@ -4,32 +4,27 @@ package jetbrains.mps.refactoringTest;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.InlineMethodRefactoring;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;
 
 @MPSLaunch
 public class InlineMethodWithConceptFunctionParameters_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(InlineMethodWithConceptFunctionParameters_Test.class, "${mps_home}", "r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(InlineMethodWithConceptFunctionParameters_Test.class).projectPath(null).modelRef("r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)").reopenProject(null).build());
 
   public InlineMethodWithConceptFunctionParameters_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -43,19 +38,23 @@ public class InlineMethodWithConceptFunctionParameters_Test extends BaseTransfor
       super(owner);
     }
 
-    public void test_InlineMethodWithConceptFunctionParameters() throws Exception {
-      addNodeById("4412735672780107330");
-      addNodeById("4412735672780109161");
-      addNodeById("4412735672780116642");
-      InlineMethodRefactoring ref = new InlineMethodRefactoring(SNodeOperations.cast(getNodeById("4412735672780109165"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbbebabf09L, "StaticMethodCall"))));
-      ref.doRefactor();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("4412735672780109162"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, "jetbrains.mps.lang.intentions"), 0x115b81bfaa7L, "DescriptionBlock"))));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("4412735672780116650"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, "jetbrains.mps.lang.intentions"), 0x115b81bfaa7L, "DescriptionBlock"))));
-        Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-      }
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("4412735672780107330", "4412735672780109161", "4412735672780116642");
     }
 
+    public void test_InlineMethodWithConceptFunctionParameters() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        InlineMethodRefactoring ref = new InlineMethodRefactoring(getAnnotatedNode("call"));
+        ref.doRefactor();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("before"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("after"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+      });
+    }
 
   }
 }

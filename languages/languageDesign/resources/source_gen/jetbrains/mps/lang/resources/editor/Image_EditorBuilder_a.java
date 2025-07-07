@@ -14,7 +14,6 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.lang.resources.behavior.Image__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
@@ -72,7 +71,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "<no icon>");
     editorCell.setCellId("Constant_w2956w_a0a");
     Style style = new StyleImpl();
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.lightGray));
+    style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.lightGray));
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -107,18 +106,14 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private EditorCell_Image fromImageCellProvider0() {
-    String imagePath = (new _FunctionTypes._return_P0_E0<String>() {
-      public String invoke() {
-        return SPropertyOperations.getString(myNode, PROPS.file$He6o);
-      }
-    }).invoke();
+    String imagePath = (((_FunctionTypes._return_P0_E0<String>) () -> SPropertyOperations.getString(myNode, PROPS.file$He6o))).invoke();
     return EditorCell_Image.createImageCell(getEditorContext(), myNode, imagePath);
   }
   private EditorCell createConstant_1() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "<invalid path>");
     editorCell.setCellId("Constant_w2956w_a0a0");
     Style style = new StyleImpl();
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.red));
+    style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.red));
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -132,7 +127,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return EditorUtil.createSelectImageButton(myNode, PROPS.file$He6o, getEditorContext());
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
 
   private static final class PROPS {

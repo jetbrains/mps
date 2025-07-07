@@ -4,25 +4,26 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
-import com.intellij.openapi.extensions.PluginId;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2899596005954254197", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "2899596005954254197", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class ToolsInternal_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.actions.ToolsInternal_ActionGroup";
+  public static final String LABEL_ID_A = ID + "A";
+  public static final String LABEL_ID_B = ID + "B";
+  public static final String LABEL_ID_C = ID + "C";
 
-  public ToolsInternal_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public ToolsInternal_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("Internal", ID, plugin);
     setIsInternal(true);
     setPopup(false);
-    ToolsInternal_ActionGroup.this.addParameterizedAction(new EmulateMakeSession_Action(new MockMakeSessionProvider()), PluginId.getId("jetbrains.mps.ide"), new MockMakeSessionProvider());
+    addNamedAnchor(LABEL_ID_A);
     ToolsInternal_ActionGroup.this.addSeparator();
     ToolsInternal_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ConvertToBinaryPersistence_Action");
+    addNamedAnchor(LABEL_ID_B);
     ToolsInternal_ActionGroup.this.addSeparator();
-    ToolsInternal_ActionGroup.this.addAction("jetbrains.mps.ide.actions.FindRootableConceptsWithoutIcons_Action");
-    ToolsInternal_ActionGroup.this.addAction("jetbrains.mps.ide.actions.CalcSNodeStatistic_Action");
-    ToolsInternal_ActionGroup.this.addAction("jetbrains.mps.ide.actions.FindUnusedAndDeprecatedConcepts_Action");
-    ToolsInternal_ActionGroup.this.addAction("jetbrains.mps.ide.actions.CalcClassifiersInRootsStatistic_Action");
+    addNamedAnchor(LABEL_ID_C);
+    ToolsInternal_ActionGroup.this.addSeparator();
   }
 }

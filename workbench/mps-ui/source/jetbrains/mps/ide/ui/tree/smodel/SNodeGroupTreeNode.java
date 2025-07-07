@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,6 @@
  */
 package jetbrains.mps.ide.ui.tree.smodel;
 
-import com.intellij.openapi.editor.colors.ColorKey;
-import com.intellij.openapi.editor.colors.EditorColorsManager;
-import com.intellij.ui.JBColor;
-import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.ide.ui.tree.TextTreeNode;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -46,27 +42,6 @@ public class SNodeGroupTreeNode extends TextTreeNode {
 
   public SModelReference getModelReference() {
     return myModelReference;
-  }
-
-  @Override
-  protected void doUpdatePresentation() {
-    if (hasErrors()) {
-      setColor(JBColor.RED);
-    }
-    setColor(EditorColorsManager.getInstance().getGlobalScheme().getColor(ColorKey.createColorKey("FILESTATUS_NOT_CHANGED")));
-  }
-
-  private boolean hasErrors() {
-    for (MPSTreeNode node : getChildren()) {
-      if (node instanceof SNodeTreeNode && ((SNodeTreeNode) node).hasErrors()) {
-        return true;
-      }
-      if (node instanceof SNodeGroupTreeNode && ((SNodeGroupTreeNode) node).hasErrors()) {
-        return true;
-      }
-    }
-
-    return false;
   }
 
   public boolean isAutoDelete() {

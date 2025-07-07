@@ -8,7 +8,6 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.util.ModelComputeRunnable;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.openapi.editor.EditorContext;
@@ -26,7 +25,6 @@ import com.intellij.featureStatistics.FeatureUsageTracker;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.ide.platform.dialogs.choosers.NodeChooserDialog;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.AbstractIntroduceFieldRefactoring;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.IntroduceStaticFieldRefactoring;
@@ -48,15 +46,19 @@ public class IntroduceField_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    SNode nodeToRefactor = new ModelComputeRunnable<SNode>(new Computable<SNode>() {
-      public SNode compute() {
-        return SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.Expression$mB, true, false);
-      }
-    }).runRead(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess());
-    if (ReadOnlyUtil.isCellsReadOnlyInEditor(((EditorComponent) MapSequence.fromMap(_params).get("component")), Sequence.<EditorCell>singleton(((EditorComponent) MapSequence.fromMap(_params).get("component")).findNodeCell(nodeToRefactor)))) {
+    SNode nodeToRefactor = new ModelComputeRunnable<SNode>(() -> SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.Expression$mB, true, false)).runRead(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess());
+    if (nodeToRefactor != null && ReadOnlyUtil.isCellsReadOnlyInEditor(((EditorComponent) MapSequence.fromMap(_params).get("component")), Sequence.<EditorCell>singleton(((EditorComponent) MapSequence.fromMap(_params).get("component")).findNodeCell(nodeToRefactor)))) {
       return false;
     }
-    return IntroduceFieldRefactoring.isApplicable(nodeToRefactor);
+    boolean applicable = IntroduceFieldRefactoring.isApplicable(nodeToRefactor);
+    if (applicable) {
+      return applicable;
+    }
+    SNode varToRefactor = new ModelComputeRunnable<SNode>(() -> SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.LocalVariableDeclaration$41, true, false)).runRead(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess());
+    if (ReadOnlyUtil.isCellsReadOnlyInEditor(((EditorComponent) MapSequence.fromMap(_params).get("component")), Sequence.<EditorCell>singleton(((EditorComponent) MapSequence.fromMap(_params).get("component")).findNodeCell(varToRefactor)))) {
+      return false;
+    }
+    return IntroduceFieldRefactoring.isApplicable(varToRefactor);
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -106,54 +108,41 @@ public class IntroduceField_Action extends BaseAction {
     final Wrappers._boolean mustBeStatic = new Wrappers._boolean();
     final Wrappers._T<List<SNode>> candidateClasses = new Wrappers._T<List<SNode>>();
 
-    final SNode nodeToRefactor = new ModelComputeRunnable<SNode>(new Computable<SNode>() {
-      public SNode compute() {
-        return SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.Expression$mB, true, false);
-      }
-    }).runRead(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess());
-    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode current = SNodeOperations.getParent(nodeToRefactor);
-        while (current != null) {
-          if (SNodeOperations.isInstanceOf(current, CONCEPTS.StaticFieldDeclaration$jR) || SNodeOperations.isInstanceOf(current, CONCEPTS.StaticMethodDeclaration$FJ) || SNodeOperations.isInstanceOf(current, CONCEPTS.StaticInitializer$Ev)) {
-            mustBeStatic.value = true;
-            break;
-          }
-          if (SNodeOperations.isInstanceOf(current, CONCEPTS.FieldDeclaration$ie) || SNodeOperations.isInstanceOf(current, CONCEPTS.InstanceMethodDeclaration$39) || SNodeOperations.isInstanceOf(current, CONCEPTS.InstanceInitializer$4x)) {
-            mustBeStatic.value = false;
-            break;
-          }
-          current = SNodeOperations.getParent(current);
+    SNode exprToRefactor = new ModelComputeRunnable<SNode>(() -> SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.Expression$mB, true, false)).runRead(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess());
+    SNode varToRefactor = null;
+    if (exprToRefactor == null) {
+      varToRefactor = new ModelComputeRunnable<SNode>(() -> SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.LocalVariableDeclaration$41, true, false)).runRead(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess());
+    }
+    final SNode nodeToRefactor = (exprToRefactor != null ? exprToRefactor : varToRefactor);
+
+    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(() -> {
+      SNode current = SNodeOperations.getParent(nodeToRefactor);
+      while (current != null) {
+        if (SNodeOperations.isInstanceOf(current, CONCEPTS.StaticFieldDeclaration$jR) || SNodeOperations.isInstanceOf(current, CONCEPTS.StaticMethodDeclaration$FJ) || SNodeOperations.isInstanceOf(current, CONCEPTS.StaticInitializer$Ev)) {
+          mustBeStatic.value = true;
+          break;
         }
-        mustBeStatic.value = false;
-        candidateClasses.value = ListSequence.fromList(SNodeOperations.getNodeAncestors(nodeToRefactor, CONCEPTS.ClassConcept$bK, false)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return !(SNodeOperations.isInstanceOf(it, CONCEPTS.AnonymousClass$Bt));
-          }
-        }).toListSequence();
+        if (SNodeOperations.isInstanceOf(current, CONCEPTS.FieldDeclaration$ie) || SNodeOperations.isInstanceOf(current, CONCEPTS.InstanceMethodDeclaration$39) || SNodeOperations.isInstanceOf(current, CONCEPTS.InstanceInitializer$4x)) {
+          mustBeStatic.value = false;
+          break;
+        }
+        current = SNodeOperations.getParent(current);
       }
+      candidateClasses.value = ListSequence.fromList(SNodeOperations.getNodeAncestors(nodeToRefactor, CONCEPTS.ClassConcept$bK, false)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.AnonymousClass$Bt))).toList();
     });
 
     final Wrappers._T<SNode> desiredTargetClass = new Wrappers._T<SNode>();
     if (ListSequence.fromList(candidateClasses.value).count() > 1) {
       final NodeChooserDialog classChooser = new NodeChooserDialog(((Project) MapSequence.fromMap(_params).get("project")), candidateClasses.value);
       classChooser.show();
-      ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          desiredTargetClass.value = (classChooser.getResult() != null ? SNodeOperations.as(classChooser.getResult().resolve(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository()), CONCEPTS.ClassConcept$bK) : null);
-        }
-      });
+      ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(() -> desiredTargetClass.value = (classChooser.getResult() != null ? SNodeOperations.as(classChooser.getResult().resolve(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository()), CONCEPTS.ClassConcept$bK) : null));
     } else {
       desiredTargetClass.value = ListSequence.fromList(candidateClasses.value).getElement(0);
     }
 
     final AbstractIntroduceFieldRefactoring introducer = (mustBeStatic.value ? new IntroduceStaticFieldRefactoring(desiredTargetClass.value) : new IntroduceFieldRefactoring(desiredTargetClass.value));
     final Wrappers._T<String> error = new Wrappers._T<String>();
-    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runWriteAction(new Runnable() {
-      public void run() {
-        error.value = introducer.init(nodeToRefactor, ((EditorComponent) MapSequence.fromMap(_params).get("component")));
-      }
-    });
+    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().executeCommand(() -> error.value = introducer.init(nodeToRefactor, ((EditorComponent) MapSequence.fromMap(_params).get("component"))));
     if (error.value == null) {
       IntroduceFieldDialog dialog = new IntroduceFieldDialog(((Project) MapSequence.fromMap(_params).get("project")), introducer, ((EditorContext) MapSequence.fromMap(_params).get("editorContext")), mustBeStatic.value);
       dialog.show();
@@ -164,6 +153,7 @@ public class IntroduceField_Action extends BaseAction {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept LocalVariableDeclaration$41 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
     /*package*/ static final SConcept StaticFieldDeclaration$jR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
     /*package*/ static final SConcept StaticMethodDeclaration$FJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
     /*package*/ static final SConcept StaticInitializer$Ev = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, "jetbrains.mps.baseLanguage.structure.StaticInitializer");

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,13 +32,12 @@ import jetbrains.mps.make.IMakeService;
 import jetbrains.mps.make.MakeNotification;
 import jetbrains.mps.make.MakeServiceComponent;
 import jetbrains.mps.project.DevKit;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.StandaloneMPSProject;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.ModelReadRunnable;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -49,6 +48,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
+/**
+ * @deprecated obsolete component that uses MPSTree
+ */
+@Deprecated(forRemoval = true)
 public class ProjectTree extends MPSTree implements MPSTreeChildOrder {
   private Project myProject;
   private ProjectTreeNode myProjectTreeNode;
@@ -109,7 +112,7 @@ public class ProjectTree extends MPSTree implements MPSTreeChildOrder {
       }
     } else {
       // postpone the update until the make session ends
-      if (myMakeNotificationListener.compareAndSet(null, new Stub() {
+      if (myMakeNotificationListener.compareAndSet(null, new IMakeNotificationListener() {
         @Override
         public void sessionClosed(MakeNotification notification) {
           rebuildLater();
@@ -124,8 +127,7 @@ public class ProjectTree extends MPSTree implements MPSTreeChildOrder {
     return root;
   }
 
-  @Deprecated
-  @ToRemove(version = 2019.1)
+@Deprecated(since = "2019.1", forRemoval = true)
   public void expandProjectNode() {
     this.expandPath(new TreePath(myProjectTreeNode.getPath()));
   }
@@ -151,26 +153,21 @@ public class ProjectTree extends MPSTree implements MPSTreeChildOrder {
   }
 
   public static class ModulesNamespaceTreeBuilder extends DefaultNamespaceTreeBuilder {
-    private StandaloneMPSProject myProject;
+    private MPSProject myProject;
 
     public ModulesNamespaceTreeBuilder(Project project) {
-      myProject = (StandaloneMPSProject) project;
+      myProject = (MPSProject) project;
     }
 
     @Override
     protected String getNamespace(MPSTreeNode node) {
-      String folder = null;
+      String folder = "";
 
       if (node instanceof ProjectModuleTreeNode) {
         ProjectModuleTreeNode pmtn = (ProjectModuleTreeNode) node;
-        folder = myProject.getFolderFor(pmtn.getModule());
+        folder = myProject.getVirtualFolder(pmtn.getModule());
       }
-
-      if (folder != null) {
-        return folder;
-      }
-
-      return "";
+      return folder;
     }
   }
 }

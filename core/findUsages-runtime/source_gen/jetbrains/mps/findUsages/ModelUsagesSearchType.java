@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.util.SubProgressKind;
 /**
  * evgeny, 3/5/13
  */
-@GeneratedClass(node = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)/8568892084424436578", model = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)")
+@GeneratedClass(nodeId = "8568892084424436578", model = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)")
 /*package*/ class ModelUsagesSearchType extends SearchType<SModel, SModelReference> {
   /*package*/ ModelUsagesSearchType() {
   }
@@ -32,27 +32,13 @@ import org.jetbrains.mps.openapi.util.SubProgressKind;
       Collection<SModel> current = IterableUtil.asCollection(scope.getModels());
       for (FindUsagesParticipant participant : participants) {
         final Set<SModel> next = new HashSet<SModel>(current);
-        participant.findModelUsages(current, models, consumer, new Consumer<SModel>() {
-          public void consume(SModel m) {
-            next.remove(m);
-          }
-        });
+        participant.findModelUsages(current, models, consumer, (SModel m) -> next.remove(m));
         current = next;
         monitor.advance(1);
       }
       ProgressMonitor subMonitor = monitor.subTask(4, SubProgressKind.DEFAULT);
-      subMonitor.start("", current.size());
-      for (SModel m : current) {
-        subMonitor.step(m.getName().getSimpleName());
-        if (FindUsagesUtil.hasModelUsages(m, models)) {
-          consumer.consume(m);
-        }
-        if (monitor.isCanceled()) {
-          break;
-        }
-        subMonitor.advance(1);
-      }
-      subMonitor.done();
+      ModelImportLookup mil = new ModelImportLookup(models, consumer);
+      mil.withUses(current, subMonitor);
     } finally {
       monitor.done();
     }

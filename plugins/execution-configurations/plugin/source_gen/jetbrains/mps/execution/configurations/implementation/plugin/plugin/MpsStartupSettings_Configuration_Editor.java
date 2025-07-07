@@ -5,7 +5,6 @@ package jetbrains.mps.execution.configurations.implementation.plugin.plugin;
 import jetbrains.mps.execution.api.settings.SettingsEditorEx;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.options.ConfigurationException;
-import com.intellij.openapi.util.Factory;
 
 public class MpsStartupSettings_Configuration_Editor extends SettingsEditorEx<MpsStartupSettings_Configuration> {
   private MpsStartupSettingsEditorComponent myComponent = new MpsStartupSettingsEditorComponent();
@@ -25,10 +24,6 @@ public class MpsStartupSettings_Configuration_Editor extends SettingsEditorEx<Mp
     myComponent.resetFrom(configuration);
   }
   public MpsStartupSettings_Configuration_Editor() {
-    super(new Factory<MpsStartupSettings_Configuration>() {
-      public MpsStartupSettings_Configuration create() {
-        return new MpsStartupSettings_Configuration();
-      }
-    });
+    super(() -> new MpsStartupSettings_Configuration());
   }
 }

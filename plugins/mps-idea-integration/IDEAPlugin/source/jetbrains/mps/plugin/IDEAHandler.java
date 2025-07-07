@@ -26,7 +26,7 @@ import java.rmi.server.UnicastRemoteObject;
 public class IDEAHandler extends UnicastRemoteObject implements ApplicationComponent, IIDEAHandler {
   static {
     // has to be called before instantiation of IDEAHandler, MPSPluginImpl and ProjectHandler to make these instances available only at localhost
-    RemoteServer.setupRMI();
+    RemoteServer.setupRMI(true);
 
     RMIHandler.class.getClassLoader();
   }

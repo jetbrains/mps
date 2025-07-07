@@ -13,7 +13,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class PatternBuilderVariables {
   public static class NodeFactory_410791833644985013 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode variable = sampleNode;
         if (SNodeOperations.isInstanceOf(variable, CONCEPTS.PatternBuilderVariable$VU)) {

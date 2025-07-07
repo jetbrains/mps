@@ -14,13 +14,16 @@
         <property id="7004396676586011505" name="a" index="3WSmrr" />
       </concept>
     </language>
+    <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
+        <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
   </registry>
-  <node concept="3StRvD" id="64OBqEtPvHK">
-    <property role="3WSmrr" value="5" />
-  </node>
   <node concept="1rkvXK" id="48_ShgptqPm">
+    <property role="TrG5h" value="Sample" />
     <node concept="3StRvD" id="48_ShgptqPn" role="1rkvXN">
-      <property role="3WSmrr" value="1" />
+      <property role="3WSmrr" value="100" />
     </node>
     <node concept="3StRvD" id="48_ShgptqPp" role="1rkvXN">
       <property role="3WSmrr" value="44" />

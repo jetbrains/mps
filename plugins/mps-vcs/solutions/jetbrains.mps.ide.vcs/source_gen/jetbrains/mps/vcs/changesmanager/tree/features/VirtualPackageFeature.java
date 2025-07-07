@@ -5,30 +5,19 @@ package jetbrains.mps.vcs.changesmanager.tree.features;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.module.SRepository;
 
-@GeneratedClass(node = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)/8214059917935786316", model = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)")
+@GeneratedClass(nodeId = "8214059917935786316", model = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)")
 public class VirtualPackageFeature extends Feature {
-  private String myVirtualPackage;
+  private final String myVirtualPackage;
+
   public VirtualPackageFeature(@NotNull SModelReference modelReference, @NotNull String virtualPackage) {
     super(modelReference);
     myVirtualPackage = virtualPackage;
   }
+
   @NotNull
   @Override
   public String toString() {
     return "Virtual Package {" + getModelReference().toString() + "|" + myVirtualPackage + "}";
-  }
-  @Nullable
-  @Override
-  protected Feature getParent(SRepository repo) {
-    int lastIndexOf = myVirtualPackage.lastIndexOf('.');
-    if (lastIndexOf == -1) {
-      return null;
-    } else {
-      String parentPackage = myVirtualPackage.substring(0, lastIndexOf);
-      return new VirtualPackageFeature(getModelReference(), parentPackage);
-    }
   }
 }

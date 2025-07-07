@@ -14,7 +14,7 @@ import jetbrains.mps.plugins.actions.BaseKeymapChanges;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 
-@GeneratedClass(node = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/7162597690968188471", model = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)")
+@GeneratedClass(nodeId = "7162597690968188471", model = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)")
 public class Vcs_ApplicationPlugin extends BaseApplicationPlugin {
   private final PluginId myId = PluginId.getId("jetbrains.mps.ide.vcs");
 
@@ -27,7 +27,7 @@ public class Vcs_ApplicationPlugin extends BaseApplicationPlugin {
   }
 
   public void createGroups() {
-    // actions w/o parameters 
+    // actions w/o parameters
     addAction(new AddModuleToVcs_Action());
     addAction(new CompareTransientModels_Action());
     addAction(new IgnoreModuleInVcs_Action());
@@ -36,7 +36,7 @@ public class Vcs_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new ShowDiffererenceWithCurrentRevision_Action());
     addAction(new ShowNodeDifference_Action());
     addAction(new TestMergeAction_Action());
-    // groups 
+    // groups
     addGroup(new MakeFromChangesView_ActionGroup(this));
     addGroup(new ModuleVcsActions_ActionGroup(this));
     addGroup(new ShowDiffWithCurrRev_ActionGroup(this));

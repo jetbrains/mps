@@ -7,7 +7,7 @@ import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
 
 public class Size_MigrationUtils {
   public static int value(SEnumerationLiteral enummember) {
-    switch (enumSwitchIndex_abil6o_a0a0a.indexNullable(enummember)) {
+    switch (enumSwitchIndex.indexNullable(enummember)) {
       case 0:
         return 7;
       case 1:
@@ -18,5 +18,5 @@ public class Size_MigrationUtils {
         return 0;
     }
   }
-  private static final EnumerationLiteralsIndex enumSwitchIndex_abil6o_a0a0a = EnumerationLiteralsIndex.build(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x15d013b3c3eb278aL, 0x15d013b3c3eb278bL, 0x15d013b3c3eb278cL, 0x15d013b3c3eb278fL);
+  private static final EnumerationLiteralsIndex enumSwitchIndex = EnumerationLiteralsIndex.build(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x15d013b3c3eb278aL, 0x15d013b3c3eb278bL, 0x15d013b3c3eb278cL, 0x15d013b3c3eb278fL);
 }

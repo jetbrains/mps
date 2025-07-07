@@ -15,12 +15,9 @@
  */
 package jetbrains.mps.actions.runtime.impl;
 
-import jetbrains.mps.annotations.GeneratedClass;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SNodeUtil;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import org.jetbrains.mps.openapi.language.SInterfaceConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class ActionsUtil {
   private ActionsUtil() {

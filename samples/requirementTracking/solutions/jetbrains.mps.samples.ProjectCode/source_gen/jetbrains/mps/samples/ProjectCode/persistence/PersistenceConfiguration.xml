@@ -1,7 +1,5 @@
-<database>
-  
-  <table name="ENCRYPTION">
-    
+<database>  
+  <table name="ENCRYPTION">    
     <providers>
       <provider>RSA</provider>
       <provider>JB_ENC</provider>

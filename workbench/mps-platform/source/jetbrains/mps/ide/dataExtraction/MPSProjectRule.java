@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,74 +15,36 @@
  */
 package jetbrains.mps.ide.dataExtraction;
 
-import com.intellij.ide.impl.dataRules.GetDataRule;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
-import com.intellij.openapi.actionSystem.DataProvider;
+import com.intellij.openapi.actionSystem.DataMap;
+import com.intellij.openapi.actionSystem.DataSink;
+import com.intellij.openapi.actionSystem.DataSnapshot;
+import com.intellij.openapi.actionSystem.UiDataRule;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.wm.IdeFrame;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.project.ProjectManager;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.module.SModule;
 
-import javax.swing.FocusManager;
-import java.awt.Window;
-
-public class MPSProjectRule implements GetDataRule {
-  private static final Logger LOG = LogManager.getLogger(MPSProjectRule.class);
+/**
+ * Simple delegation to IJ project, nothing more.
+ * Did not agree with artem on whether we need this.
+ * To me it looks like something we could replace with a helper method/class.
+ */
+public class MPSProjectRule implements UiDataRule {
 
   @Override
-  @Nullable
-  public MPSProject getData(@NotNull DataProvider dataProvider) {
-    MPSProject p = deduceFromIJProject(dataProvider);
-    if (p != null) {
-      return p;
-    }
-
-    p = deduceFromModule(dataProvider);
-    if (p != null) {
-      return p;
-    }
-
-    return deduceFromActiveWindow();
+  public void uiDataSnapshot(@NotNull DataSink dataSink, @NotNull DataSnapshot dataSnapshot) {
+    // XXX fwiw, lazyValue didn't work out in FrameRule (didn't ever get into the method to get value), perhaps, need to change here as well.
+    dataSink.lazyValue(MPSCommonDataKeys.MPS_PROJECT, this::deduceFromIJProject);
   }
 
   @Nullable
-  private MPSProject deduceFromIJProject(@NotNull DataProvider dataProvider) {
-    Project project = CommonDataKeys.PROJECT.getData(dataProvider);
+  private MPSProject deduceFromIJProject(@NotNull DataMap dataProvider) {
+    Project project = dataProvider.get(CommonDataKeys.PROJECT);
     if (project != null) {
-      return project.getComponent(MPSProject.class);
-    }
-    return null;
-  }
-
-  @Nullable
-  private MPSProject deduceFromActiveWindow() {
-    Project project = null;
-    Window activeWindow = FocusManager.getCurrentManager().getActiveWindow();
-    if (activeWindow instanceof IdeFrame) {
-      project = ((IdeFrame) activeWindow).getProject();
-    } else {
-      LOG.debug("Active frames have not been found");
-    }
-    return project == null ? null : project.getComponent(MPSProject.class);
-  }
-
-  @Nullable
-  private MPSProject deduceFromModule(@NotNull DataProvider dataProvider) {
-    SModule module = MPSCommonDataKeys.CONTEXT_MODULE.getData(dataProvider);
-    if (module != null) {
-
-      for (jetbrains.mps.project.Project p : ProjectManager.getInstance().getOpenedProjects()) {
-        if (p.isProjectModule(module) && p instanceof MPSProject) {
-          return (MPSProject) p;
-        }
-      }
+      return ProjectHelper.fromIdeaProject(project);
     }
     return null;
   }

@@ -9,16 +9,14 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -31,35 +29,26 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class CustomMapCreator__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x15e2150d4bff8a67L, "jetbrains.mps.baseLanguage.collections.structure.CustomMapCreator");
 
-  public static final SMethod<SNode> createType_id1ny5gPbZSFj = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createType").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1ny5gPbZSFj").build();
-  public static final SMethod<Boolean> hasInitSize_id1653mnvAgqc = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasInitSize").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgqc").build();
-  public static final SMethod<String> getEntityName_id6LXz$urfgAS = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getEntityName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6LXz$urfgAS").build();
+  public static final SMethod<SNode> createType_id1ny5gPbZSFj = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1576845966386891475L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> hasInitSize_id1653mnvAgqc = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasInitSize").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741497996L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2();
+  public static final SMethod<String> getEntityName_id6LXz$urfgAS = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getEntityName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7817560966383339960L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(createType_id1ny5gPbZSFj, hasInitSize_id1653mnvAgqc, getEntityName_id6LXz$urfgAS);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static SNode createType_id1ny5gPbZSFj(@NotNull SNode __thisNode__) {
+  /*package*/ static SNode createType_id1ny5gPbZSFj(@NotNull SNode __thisNode__, final List<SNode> typeArguments) {
     SNode res = SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.containerDeclaration$QVZa), LINKS.containerType$WQze));
-    //  workaround an SModel's dumbness 
-    final List<SNode> params = ListSequence.fromList(new ArrayList<SNode>());
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.keyType$Uj4M) != null)) {
-      ListSequence.fromList(params).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.keyType$Uj4M));
-    }
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.valueType$2EUo) != null)) {
-      ListSequence.fromList(params).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.valueType$2EUo));
-    }
+
+    // substitute type arguments manually in the target type
     final List<SNode> tvars = SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.containerDeclaration$QVZa), LINKS.typeVariableDeclaration$Lipp);
-    ListSequence.fromList(SNodeOperations.getChildren(res)).toListSequence().visitAll(new IVisitor<SNode>() {
-      public void visit(SNode chld) {
-        if (SNodeOperations.isInstanceOf(chld, CONCEPTS.TypeVariableReference$WL)) {
-          int index = ListSequence.fromList(tvars).indexOf(SLinkOperations.getTarget(SNodeOperations.cast(chld, CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I));
-          SNode realType = ((index >= 0 && index < ListSequence.fromList(params).count()) ? SNodeOperations.copyNode(ListSequence.fromList(params).getElement(index)) : null);
-          SNodeOperations.replaceWithAnother(chld, realType);
-        }
-      }
+    Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(res), CONCEPTS.TypeVariableReference$WL)).visitAll((child) -> {
+      int index = ListSequence.fromList(tvars).indexOf(SLinkOperations.getTarget(child, LINKS.typeVariableDeclaration$Lz1I));
+      SNode realType = SNodeOperations.copyNode(ListSequence.fromList(typeArguments).getElement(index));
+      SNodeOperations.replaceWithAnother(child, realType);
     });
+
     return res;
   }
   /*package*/ static boolean hasInitSize_id1653mnvAgqc(@NotNull SAbstractConcept __thisConcept__) {
@@ -85,7 +74,7 @@ public final class CustomMapCreator__BehaviorDescriptor extends BaseBHDescriptor
     }
     switch (methodIndex) {
       case 0:
-        return (T) ((SNode) createType_id1ny5gPbZSFj(node));
+        return (T) ((SNode) createType_id1ny5gPbZSFj(node, (List<SNode>) parameters[0]));
       case 2:
         return (T) ((String) getEntityName_id6LXz$urfgAS(node));
       default:
@@ -122,8 +111,6 @@ public final class CustomMapCreator__BehaviorDescriptor extends BaseBHDescriptor
   private static final class LINKS {
     /*package*/ static final SReferenceLink containerDeclaration$QVZa = MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x15e2150d4bff8a67L, 0x15e2150d4bff8a6aL, "containerDeclaration");
     /*package*/ static final SContainmentLink containerType$WQze = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x54a5d587c1f3c7e0L, 0x54a5d587c1f3c83fL, "containerType");
-    /*package*/ static final SContainmentLink keyType$Uj4M = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5b4d0L, "keyType");
-    /*package*/ static final SContainmentLink valueType$2EUo = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5d76dL, "valueType");
     /*package*/ static final SContainmentLink typeVariableDeclaration$Lipp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
     /*package*/ static final SReferenceLink typeVariableDeclaration$Lz1I = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
   }

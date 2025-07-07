@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,22 +18,17 @@ package jetbrains.mps.persistence.java.library;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.java.stub.ClassStubRootConfiguration;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.reloading.CommonPaths;
-import jetbrains.mps.util.ClassPathReader;
 import jetbrains.mps.util.ClassType;
+import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.util.MacroHelper.MacroNoHelper;
-import jetbrains.mps.util.PathManager;
 import jetbrains.mps.vfs.IFileSystem;
-import jetbrains.mps.vfs.MacroProcessor;
 import jetbrains.mps.vfs.QualifiedPath;
-import jetbrains.mps.vfs.util.PathUtil;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.Memento;
-
-import java.util.Collections;
 
 /**
  * Supplier of MPS-own java class stub paths to populate stub solutions like JDK or MPS.Core.
@@ -75,7 +70,7 @@ final class PredefinedRootClassTypeConfig implements ClassStubRootConfiguration 
     final String rootKind = rootConfig.get("type");
     if (PersistenceRegistry.JDK_CLASSES_ROOT.equals(rootKind)) {
       // JDKStubsModelRoot doesn't have contentPath root, just list of paths
-      final MacroProcessor mp = new MacroNoHelper();
+      final MacroHelper mp = new MacroNoHelper();
       for (QualifiedPath path : CommonPaths.getPaths(ct)) {
         rootConfig.createChild("path").put("value", path.serialize(mp));
       }
@@ -86,7 +81,7 @@ final class PredefinedRootClassTypeConfig implements ClassStubRootConfiguration 
         rootConfig.createChild(SourceRootKinds.SOURCES.getName()).put("path", path.getPath());
       }
     } else {
-      Logger.getLogger(PredefinedRootClassTypeConfig.class).warn(String.format("Unsupported stub root type '%s' with ClassType identity '%s'", rootKind, ct));
+      Logger.getLogger(PredefinedRootClassTypeConfig.class).warning(String.format("Unsupported stub root type '%s' with ClassType identity '%s'", rootKind, ct));
     }
   }
 }

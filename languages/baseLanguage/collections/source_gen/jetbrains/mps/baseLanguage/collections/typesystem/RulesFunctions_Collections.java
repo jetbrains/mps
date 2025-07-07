@@ -12,7 +12,6 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.lang.typesystem.dependencies.InferenceMethod;
 import jetbrains.mps.typesystem.inference.EquationInfo;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -47,9 +46,9 @@ public class RulesFunctions_Collections {
   }
   @InferenceMethod
   public static void setInputSequenceType(final TypeCheckingContext typeCheckingContext, SNode op, SNode target) {
-    // 1. Take input expression 
-    // 2. Assert that it is coerceable to sequence 
-    // 3. Assign the sequence type to the target 
+    // 1. Take input expression
+    // 2. Assert that it is coerceable to sequence
+    // 3. Assign the sequence type to the target
     SNode input = getInput(typeCheckingContext, op);
     if ((input != null)) {
       final SNode elementType_typevar_1184784638219 = typeCheckingContext.createNewRuntimeTypesVariable();
@@ -67,9 +66,9 @@ public class RulesFunctions_Collections {
   }
   @InferenceMethod
   public static void setInputElementType(final TypeCheckingContext typeCheckingContext, SNode op, SNode target) {
-    // 1. Take input expression 
-    // 2. Assert that it is coerceable to sequence 
-    // 3. Assign the sequence element type to the target 
+    // 1. Take input expression
+    // 2. Assert that it is coerceable to sequence
+    // 3. Assign the sequence element type to the target
     SNode input = getInput(typeCheckingContext, op);
     if ((input != null)) {
       final SNode elementType_typevar_1184844804662 = typeCheckingContext.createNewRuntimeTypesVariable();
@@ -87,9 +86,9 @@ public class RulesFunctions_Collections {
   }
   @InferenceMethod
   public static void isInputElementType(final TypeCheckingContext typeCheckingContext, SNode op, SNode target) {
-    // 1. Take input expression 
-    // 2. Assert that it is coerceable to sequence 
-    // 3. Assert that target has sequence element type 
+    // 1. Take input expression
+    // 2. Assert that it is coerceable to sequence
+    // 3. Assert that target has sequence element type
     SNode input = getInput(typeCheckingContext, op);
     if ((input != null)) {
       final SNode elementType_typevar_1184850451264 = typeCheckingContext.createNewRuntimeTypesVariable();
@@ -106,10 +105,10 @@ public class RulesFunctions_Collections {
     }
   }
   private static SNode _quotation_createNode_m3rnkt_a1a0c0b0e0d(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10c260e9444L, "SequenceType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10c260e9444L, "SequenceType"));
+    quotedNode_2 = nb.getResult();
     quotedNode_3 = (SNode) parameter_1;
     if (quotedNode_3 != null) {
       quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType"), SNodeOperations.copyIfNecessary(quotedNode_3));
@@ -117,10 +116,10 @@ public class RulesFunctions_Collections {
     return quotedNode_2;
   }
   private static SNode _quotation_createNode_m3rnkt_a1a0c0c0e0d(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10c260e9444L, "SequenceType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10c260e9444L, "SequenceType"));
+    quotedNode_2 = nb.getResult();
     quotedNode_3 = (SNode) parameter_1;
     if (quotedNode_3 != null) {
       quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType"), SNodeOperations.copyIfNecessary(quotedNode_3));
@@ -128,10 +127,10 @@ public class RulesFunctions_Collections {
     return quotedNode_2;
   }
   private static SNode _quotation_createNode_m3rnkt_a0a0c0b0e0e(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10c260e9444L, "SequenceType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10c260e9444L, "SequenceType"));
+    quotedNode_2 = nb.getResult();
     quotedNode_3 = (SNode) parameter_1;
     if (quotedNode_3 != null) {
       quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType"), SNodeOperations.copyIfNecessary(quotedNode_3));
@@ -139,10 +138,10 @@ public class RulesFunctions_Collections {
     return quotedNode_2;
   }
   private static SNode _quotation_createNode_m3rnkt_a1a0c0b0e0f(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10c260e9444L, "SequenceType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10c260e9444L, "SequenceType"));
+    quotedNode_2 = nb.getResult();
     quotedNode_3 = (SNode) parameter_1;
     if (quotedNode_3 != null) {
       quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType"), SNodeOperations.copyIfNecessary(quotedNode_3));

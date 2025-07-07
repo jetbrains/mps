@@ -30,13 +30,13 @@ public class check_SuppressErrorsAnnotation_NonTypesystemRule extends AbstractNo
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(suppressErrorsAnnotation, "invalid suppressing predicate", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "3813199577742754157", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.DoNotSuppressError_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.DoNotSuppressError_QuickFix", "3813199577742770528", false);
           intentionProvider.putArgument("annotation", suppressErrorsAnnotation);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }
     }
-    // todo: message should be not empty, add migration if necessary 
+    // todo: message should be not empty, add migration if necessary
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.SuppressErrorsAnnotation$D1;

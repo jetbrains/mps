@@ -10,6 +10,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.AbstractCellProvider;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.editor.runtime.cells.BigCellUtil;
 
 /*package*/ class AbstractOperation_EditorBuilder_a extends AbstractEditorBuilder {
@@ -32,16 +33,14 @@ import jetbrains.mps.editor.runtime.cells.BigCellUtil;
   }
 
   private EditorCell createCustom_0() {
-    AbstractCellProvider provider = new _FunctionTypes._return_P0_E0<AbstractCellProvider>() {
-      public AbstractCellProvider invoke() {
-        return new AbstractCellProvider(myNode) {
-          @Override
-          public EditorCell createEditorCell(EditorContext context) {
-            return new EditorCell_Error(context, myNode, "<" + myNode.getRoleInParent() + ">");
-          }
-        };
-      }
-    }.invoke();
+    AbstractCellProvider provider = ((_FunctionTypes._return_P0_E0<AbstractCellProvider>) () -> {
+      return new AbstractCellProvider(myNode) {
+        @Override
+        public EditorCell createEditorCell(EditorContext context) {
+          return new EditorCell_Error(context, myNode, "<" + SNodeOperations.getContainingLink(myNode).getName() + ">");
+        }
+      };
+    }).invoke();
     EditorCell editorCell = provider.createEditorCell(getEditorContext());
     editorCell.setCellId("Custom_13zen7_a");
     EditorCell bigCell = BigCellUtil.findBigCell(editorCell, getNode());

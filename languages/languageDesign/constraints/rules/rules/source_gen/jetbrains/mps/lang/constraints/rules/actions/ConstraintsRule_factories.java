@@ -15,7 +15,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class ConstraintsRule_factories {
   public static class NodeFactory_5258059200640692079 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Rule$DP)) {
         SPropertyOperations.assign(newNode, PROPS.name$MnvL, SPropertyOperations.getString(SNodeOperations.cast(sampleNode, CONCEPTS.Rule$DP), PROPS.name$MnvL));
         SLinkOperations.setTarget(newNode, LINKS.expr$45_Z, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.Rule$DP), LINKS.expr$45_Z));
@@ -23,7 +23,7 @@ public class ConstraintsRule_factories {
     }
   }
   public static class NodeFactory_8973525032383070599 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.ExpressionWrapper$eu)) {
         SLinkOperations.setTarget(newNode, LINKS.expression$aVsE, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ExpressionWrapper$eu), LINKS.expression$aVsE));
       } else if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Expression$mB)) {

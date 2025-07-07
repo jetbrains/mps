@@ -13,7 +13,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ElementFactories {
   public static class NodeFactory_6567999678834696497 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode original = sampleNode;
         if (SNodeOperations.isInstanceOf(original, CONCEPTS.ElementRef$EZ)) {
@@ -23,7 +23,7 @@ public class ElementFactories {
     }
   }
   public static class NodeFactory_3123291046851857615 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode original = sampleNode;
         if (SNodeOperations.isInstanceOf(original, CONCEPTS.CompoundComponentWithCardinality$_V)) {
@@ -34,7 +34,7 @@ public class ElementFactories {
     }
   }
   public static class NodeFactory_6744317956898850832 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode original = sampleNode;
         if (SNodeOperations.isInstanceOf(original, CONCEPTS.Compound$vn)) {

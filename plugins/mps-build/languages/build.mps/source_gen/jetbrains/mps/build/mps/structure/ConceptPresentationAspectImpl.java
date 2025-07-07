@@ -14,6 +14,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_BuildMpsAspect;
   private ConceptPresentation props_BuildMpsLayout_AutoPluginLayoutType;
   private ConceptPresentation props_BuildMpsLayout_FolderWithSources;
+  private ConceptPresentation props_BuildMpsLayout_Manifest;
   private ConceptPresentation props_BuildMpsLayout_ManualPluginLayoutType;
   private ConceptPresentation props_BuildMpsLayout_ModuleJarContent;
   private ConceptPresentation props_BuildMpsLayout_ModuleJars;
@@ -30,6 +31,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_BuildMps_BrandingKeymap;
   private ConceptPresentation props_BuildMps_BrandingStats;
   private ConceptPresentation props_BuildMps_BrandingUpdateSite;
+  private ConceptPresentation props_BuildMps_BrandingVersion;
   private ConceptPresentation props_BuildMps_DevKit;
   private ConceptPresentation props_BuildMps_DevKitExport;
   private ConceptPresentation props_BuildMps_DevKitExportLanguage;
@@ -55,7 +57,9 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_BuildMps_ModuleDependencyOnDevKit;
   private ConceptPresentation props_BuildMps_ModuleDependencyOnJavaModule;
   private ConceptPresentation props_BuildMps_ModuleDependencyOnModule;
+  private ConceptPresentation props_BuildMps_ModuleDependencyTargetLanguage;
   private ConceptPresentation props_BuildMps_ModuleDependencyUseLanguage;
+  private ConceptPresentation props_BuildMps_ModuleDoc;
   private ConceptPresentation props_BuildMps_ModuleJavaSource;
   private ConceptPresentation props_BuildMps_ModuleModelRoot;
   private ConceptPresentation props_BuildMps_ModuleRef;
@@ -120,6 +124,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_BuildMpsLayout_FolderWithSources = cpb.create();
         }
         return props_BuildMpsLayout_FolderWithSources;
+      case LanguageConceptSwitch.BuildMpsLayout_Manifest:
+        if (props_BuildMpsLayout_Manifest == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("enumerates MPS modules of the layout");
+          cpb.rawPresentation("module manifest");
+          props_BuildMpsLayout_Manifest = cpb.create();
+        }
+        return props_BuildMpsLayout_Manifest;
       case LanguageConceptSwitch.BuildMpsLayout_ManualPluginLayoutType:
         if (props_BuildMpsLayout_ManualPluginLayoutType == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -145,7 +157,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_BuildMpsLayout_ModuleJars;
       case LanguageConceptSwitch.BuildMpsLayout_ModuleSources:
         if (props_BuildMpsLayout_ModuleSources == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x177c2feaf3463710L);
+          cpb.deprecateProperty(0x407004b11f167886L, "modelsOnly");
           cpb.rawPresentation("sources of");
           props_BuildMpsLayout_ModuleSources = cpb.create();
         }
@@ -193,7 +206,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.BuildMps_Branding:
         if (props_BuildMps_Branding == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL);
+          cpb.deprecateProperty(0x308857b584c74e44L, "major");
+          cpb.deprecateProperty(0x308857b584c74e45L, "minor");
+          cpb.deprecateProperty(0x3acf8ab06f017071L, "bugfixNr");
+          cpb.deprecateProperty(0x308857b584c74e46L, "eap");
+          cpb.deprecateAggregation(0x54c4eb89feb0001bL, "icon16");
+          cpb.deprecateAggregation(0x54c4eb89feb0001aL, "icon32");
           cpb.deprecateAggregation(0x54c4eb89feb0001cL, "icon32opaque");
+          cpb.deprecateAggregation(0xad72aee24a9cbfeL, "icon128");
           cpb.deprecateAggregation(0x5efec015d9c0dee8L, "iconToolWindow");
           cpb.deprecateAggregation(0x54a6365f080e9d69L, "editorBGUrl");
           cpb.deprecateAggregation(0x51cd30ffb584b4d4L, "thirdparty");
@@ -237,6 +257,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_BuildMps_BrandingUpdateSite = cpb.create();
         }
         return props_BuildMps_BrandingUpdateSite;
+      case LanguageConceptSwitch.BuildMps_BrandingVersion:
+        if (props_BuildMps_BrandingVersion == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("version");
+          props_BuildMps_BrandingVersion = cpb.create();
+        }
+        return props_BuildMps_BrandingVersion;
       case LanguageConceptSwitch.BuildMps_DevKit:
         if (props_BuildMps_DevKit == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -311,7 +338,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_BuildMps_IdeaPlugin == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a13b0pc);
+          cpb.icon(IconContainer.RESOURCE_0);
           props_BuildMps_IdeaPlugin = cpb.create();
         }
         return props_BuildMps_IdeaPlugin;
@@ -368,7 +395,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_BuildMps_Language;
       case LanguageConceptSwitch.BuildMps_Module:
         if (props_BuildMps_Module == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL);
+          cpb.deprecateProperty(0x14d3fb6fb84ac614L, "doNotCompile");
           props_BuildMps_Module = cpb.create();
         }
         return props_BuildMps_Module;
@@ -413,6 +441,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_BuildMps_ModuleDependencyOnModule = cpb.create();
         }
         return props_BuildMps_ModuleDependencyOnModule;
+      case LanguageConceptSwitch.BuildMps_ModuleDependencyTargetLanguage:
+        if (props_BuildMps_ModuleDependencyTargetLanguage == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x7c8000c54bad607cL, 0x2c4467914643d2d3L, "language", "target ", "");
+          props_BuildMps_ModuleDependencyTargetLanguage = cpb.create();
+        }
+        return props_BuildMps_ModuleDependencyTargetLanguage;
       case LanguageConceptSwitch.BuildMps_ModuleDependencyUseLanguage:
         if (props_BuildMps_ModuleDependencyUseLanguage == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -420,6 +455,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_BuildMps_ModuleDependencyUseLanguage = cpb.create();
         }
         return props_BuildMps_ModuleDependencyUseLanguage;
+      case LanguageConceptSwitch.BuildMps_ModuleDoc:
+        if (props_BuildMps_ModuleDoc == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("documentation files");
+          cpb.rawPresentation("documentation");
+          props_BuildMps_ModuleDoc = cpb.create();
+        }
+        return props_BuildMps_ModuleDoc;
       case LanguageConceptSwitch.BuildMps_ModuleJavaSource:
         if (props_BuildMps_ModuleJavaSource == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -446,7 +489,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_BuildMps_ModuleResources == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("auxiliary resource files to deploy with a module");
-          cpb.rawPresentation("BuildMps_ModuleResources");
+          cpb.rawPresentation("resources");
           props_BuildMps_ModuleResources = cpb.create();
         }
         return props_BuildMps_ModuleResources;

@@ -16,12 +16,12 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
   /*package*/ void putError(SNode nodeToReport, ErrorReportingItem item, MessageTypes type) {
     Pair newPair = new Pair(nodeToReport, type);
     if (!(MapSequence.fromMap(myHostPlusType2Msg).containsKey(newPair))) {
-      // not posting two errors for the same type twice 
+      // not posting two errors for the same type twice
       MapSequence.fromMap(myHostPlusType2Msg).put(newPair, item);
     }
   }
 
   /*package*/ List<ErrorReportingItem> getErrorList() {
-    return Sequence.fromIterable(MapSequence.fromMap(myHostPlusType2Msg).values()).toListSequence();
+    return Sequence.fromIterable(MapSequence.fromMap(myHostPlusType2Msg).values()).toList();
   }
 }

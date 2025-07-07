@@ -15,12 +15,11 @@ import java.io.File;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.tool.builder.WorkerBase;
 
-@GeneratedClass(node = "r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)/4263887295358465244", model = "r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)")
+@GeneratedClass(nodeId = "4263887295358465244", model = "r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)")
 public class GeneratorWorker extends BaseGeneratorWorker {
   public GeneratorWorker(Script whatToDo) {
     super(whatToDo);
@@ -39,13 +38,9 @@ public class GeneratorWorker extends BaseGeneratorWorker {
         modulePaths.add(new File(modulePath));
       }
       final SRepository repo = project.getRepository();
-      // FIXME modules in processModuleFiles are registered with some internal owner, while here we shall use project.addModule(SModule) instead to 
-      //        get module properly registered 
-      Set<SModule> modules = new ModelAccessHelper(repo).runWriteAction(new Computable<Set<SModule>>() {
-        public Set<SModule> compute() {
-          return processModuleFiles(repo, modulePaths);
-        }
-      });
+      // FIXME modules in processModuleFiles are registered with some internal owner, while here we shall use project.addModule(SModule) instead to
+      //        get module properly registered
+      Set<SModule> modules = new ModelAccessHelper(repo).runWriteAction(() -> processModuleFiles(repo, modulePaths));
       allModules.addAll(modules);
       Boolean bootstrap = chunk.value();
       if (bootstrap) {
@@ -61,14 +56,12 @@ public class GeneratorWorker extends BaseGeneratorWorker {
       error("Could not find anything to generate.");
     }
 
-    // Disposing "project" modules first 
-    // XXX OTOH, processModuleFile didn't register the modules right into the project, but here we sort of assume we did. 
+    // Disposing "project" modules first
+    // XXX OTOH, processModuleFile didn't register the modules right into the project, but here we sort of assume we did.
     final ModuleRepositoryFacade repositoryFacade = new ModuleRepositoryFacade(project);
-    project.getModelAccess().runWriteAction(new Runnable() {
-      public void run() {
-        for (SModule nextModule : SetSequence.fromSet(allModules)) {
-          repositoryFacade.unregisterModule(nextModule);
-        }
+    project.getModelAccess().runWriteAction(() -> {
+      for (SModule nextModule : SetSequence.fromSet(allModules)) {
+        repositoryFacade.unregisterModule(nextModule);
       }
     });
 

@@ -2,7 +2,7 @@
 <model ref="r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)">
   <persistence version="9" />
   <languages>
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="3" />
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
@@ -72,7 +72,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -748,10 +748,20 @@
     <property role="34LRSv" value="roots" />
     <property role="EcuMT" value="1171315804604" />
     <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
+    <node concept="1TJgyj" id="5QK5AMJ1t1p" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT" />
+      <property role="20kJfa" value="conceptArgument" />
+      <property role="IQ2ns" value="6750920497477046361" />
+      <ref role="20lvS9" node="hzMxujR" resolve="IRefConceptArg" />
+    </node>
     <node concept="1TJgyj" id="h2RRcAX" role="1TKVEi">
       <property role="20kJfa" value="concept" />
       <property role="IQ2ns" value="1171315804605" />
       <ref role="20lvS9" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
+      <node concept="asaX9" id="5QK5AMJ1t1s" role="lGtFl">
+        <property role="YLPcu" value="2021.1" />
+        <property role="YLQ7P" value="Use conceptArgument, instead" />
+      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="h2Smgyn">
@@ -768,15 +778,6 @@
       <property role="20kJfa" value="conceptArgument" />
       <property role="IQ2ns" value="1758937410080001570" />
       <ref role="20lvS9" node="hzMxujR" resolve="IRefConceptArg" />
-    </node>
-    <node concept="1TJgyj" id="h2Smgyo" role="1TKVEi">
-      <property role="20kJfa" value="concept" />
-      <property role="IQ2ns" value="1171323947160" />
-      <ref role="20lvS9" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
-      <node concept="asaX9" id="1xD045m1Wye" role="lGtFl">
-        <property role="YLPcu" value="3.3" />
-        <property role="YLQ7P" value="use conceptArgument" />
-      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="h2Xjw1B">
@@ -910,10 +911,20 @@
     <property role="34LRSv" value="rootsIncludingImported" />
     <property role="EcuMT" value="1176109685393" />
     <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
+    <node concept="1TJgyj" id="5QK5AMJ1OKV" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT" />
+      <property role="20kJfa" value="conceptArgument" />
+      <property role="IQ2ns" value="6750920497477143611" />
+      <ref role="20lvS9" node="hzMxujR" resolve="IRefConceptArg" />
+    </node>
     <node concept="1TJgyj" id="h7lApEi" role="1TKVEi">
       <property role="20kJfa" value="concept" />
       <property role="IQ2ns" value="1176109685394" />
       <ref role="20lvS9" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
+      <node concept="asaX9" id="5QK5AMJ1OLb" role="lGtFl">
+        <property role="YLQ7P" value="Use conceptArgument, instead" />
+        <property role="YLPcu" value="2021.1" />
+      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="h8chp0G">
@@ -1090,10 +1101,20 @@
     <property role="34LRSv" value="nodesIncludingImported" />
     <property role="EcuMT" value="1182511038748" />
     <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
+    <node concept="1TJgyj" id="5QK5AMJ1OL7" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT" />
+      <property role="20kJfa" value="conceptArgument" />
+      <property role="IQ2ns" value="6750920497477143623" />
+      <ref role="20lvS9" node="hzMxujR" resolve="IRefConceptArg" />
+    </node>
     <node concept="1TJgyj" id="hdj9C4u" role="1TKVEi">
       <property role="20kJfa" value="concept" />
       <property role="IQ2ns" value="1182511038750" />
       <ref role="20lvS9" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
+      <node concept="asaX9" id="5QK5AMJ1OLf" role="lGtFl">
+        <property role="YLQ7P" value="Use conceptArgument, instead" />
+        <property role="YLPcu" value="2021.1" />
+      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="hy5Kd_5">
@@ -1665,6 +1686,9 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="4WR1jK$23yk" role="PzmwI">
       <ref role="PrY4T" node="1lUJQtrPjRM" resolve="IReferenceOperation" />
+    </node>
+    <node concept="t5JxF" id="3TdPJoXEvic" role="lGtFl">
+      <property role="t5JxN" value="operation to retrieve resolve information recorded with a reference; doesn't construct new one if unknown" />
     </node>
   </node>
   <node concept="1TIwiD" id="1lvHLgR6tlS">
@@ -2290,16 +2314,13 @@
       <property role="20kJfa" value="languageId" />
       <property role="20lbJX" value="fLJekj4" />
       <property role="IQ2ns" value="3542851458883491298" />
-      <ref role="20lvS9" node="50fTm6QQzRL" resolve="AbstractLanguageIdentity" />
+      <ref role="20lvS9" node="34EJa6aIcco" resolve="LanguageIdentity" />
     </node>
   </node>
   <node concept="PlHQZ" id="34EJa6aIcco">
     <property role="TrG5h" value="LanguageIdentity" />
     <property role="3GE5qa" value="identity" />
     <property role="EcuMT" value="3542851458883437336" />
-    <node concept="PrWs8" id="50fTm6QQzRM" role="PrDN$">
-      <ref role="PrY4T" node="50fTm6QQzRL" resolve="AbstractLanguageIdentity" />
-    </node>
   </node>
   <node concept="1TIwiD" id="BpxLfMiwTr">
     <property role="TrG5h" value="ChildAttributeQualifier" />
@@ -2657,15 +2678,6 @@
       <ref role="PrY4T" node="1lUJQtrPjRM" resolve="IReferenceOperation" />
     </node>
   </node>
-  <node concept="PlHQZ" id="50fTm6QQzRL">
-    <property role="TrG5h" value="AbstractLanguageIdentity" />
-    <property role="3GE5qa" value="identity" />
-    <property role="EcuMT" value="5769081855527239153" />
-    <node concept="asaX9" id="5ZqXG2mB6OK" role="lGtFl">
-      <property role="YLPcu" value="2019.2" />
-      <property role="YLQ7P" value="This interface captures nothing and shall not be in use. Use LanguageIdentity instead" />
-    </node>
-  </node>
   <node concept="1TIwiD" id="296OPknU5z2">
     <property role="EcuMT" value="2469893808086079682" />
     <property role="3GE5qa" value="identity" />
@@ -2676,10 +2688,10 @@
       <property role="20lmBu" value="fLJjDmT" />
       <property role="20kJfa" value="moduleReference" />
       <property role="20lbJX" value="fLJekj4" />
-      <ref role="20lvS9" node="nJmxU5cSSu" resolve="ModuleIdentity" />
+      <ref role="20lvS9" to="dvox:_GDk1qZ2J9" resolve="ModuleIdentity" />
     </node>
-    <node concept="PrWs8" id="296OPknU5z3" role="PzmwI">
-      <ref role="PrY4T" node="50fTm6QQzRL" resolve="AbstractLanguageIdentity" />
+    <node concept="PrWs8" id="1g73YSPLQgB" role="PzmwI">
+      <ref role="PrY4T" node="34EJa6aIcco" resolve="LanguageIdentity" />
     </node>
   </node>
   <node concept="1TIwiD" id="6qMaajUPFau">
@@ -3133,6 +3145,84 @@
       <property role="20lbJX" value="fLJekj4" />
       <ref role="20lvS9" to="tpce:fKAxPRU" resolve="DataTypeDeclaration" />
     </node>
+  </node>
+  <node concept="1TIwiD" id="5hvwTWxpWvr">
+    <property role="EcuMT" value="6079722741456947163" />
+    <property role="3GE5qa" value="operation.reference" />
+    <property role="TrG5h" value="Reference_IsDynamic" />
+    <property role="34LRSv" value="isDynamic" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="5hvwTWxpWvs" role="PzmwI">
+      <ref role="PrY4T" node="1lUJQtrPjRM" resolve="IReferenceOperation" />
+    </node>
+    <node concept="t5JxF" id="5hvwTWxpX6m" role="lGtFl">
+      <property role="t5JxN" value="Tells if a reference resorts to scopes to find out its target (unlike 'static' reference that keeps complete target node identity)" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6hHGm9Z4eaj">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="TrG5h" value="Node_HasNextSiblingOperation" />
+    <property role="2_RsDV" value="4G1g3fIR8JG" />
+    <property role="3GE5qa" value="operation.node" />
+    <property role="34LRSv" value="has-next-sibling" />
+    <property role="EcuMT" value="7236635212850979475" />
+    <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
+  </node>
+  <node concept="1TIwiD" id="7k7QF7C2dVs">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="TrG5h" value="Node_HasPrevSiblingOperation" />
+    <property role="2_RsDV" value="4G1g3fIR8JG" />
+    <property role="3GE5qa" value="operation.node" />
+    <property role="34LRSv" value="has-prev-sibling" />
+    <property role="EcuMT" value="8432949284911505116" />
+    <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
+  </node>
+  <node concept="1TIwiD" id="1YRcO3NA_w5">
+    <property role="EcuMT" value="2285351689971718149" />
+    <property role="3GE5qa" value="type" />
+    <property role="TrG5h" value="AggregationLinkType" />
+    <property role="34LRSv" value="aggregation" />
+    <property role="R4oN_" value="SContainmentLink projection" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1H" resolve="Type" />
+  </node>
+  <node concept="1TIwiD" id="1YRcO3NA_wL">
+    <property role="EcuMT" value="2285351689971718193" />
+    <property role="3GE5qa" value="type" />
+    <property role="TrG5h" value="AssociationLinkType" />
+    <property role="R4oN_" value="SReferenceLink projection" />
+    <property role="34LRSv" value="association" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1H" resolve="Type" />
+  </node>
+  <node concept="1TIwiD" id="7eq243tT_Ux">
+    <property role="EcuMT" value="8329979535468945057" />
+    <property role="3GE5qa" value="operation.node" />
+    <property role="TrG5h" value="Node_PresentationOperation" />
+    <property role="34LRSv" value="presentation" />
+    <property role="R4oN_" value="string representation" />
+    <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
+  </node>
+  <node concept="1TIwiD" id="lhC5EIKrMB">
+    <property role="EcuMT" value="383263754642635943" />
+    <property role="3GE5qa" value="operation.node" />
+    <property role="TrG5h" value="Node_SetUID" />
+    <property role="34LRSv" value="set uid" />
+    <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
+    <node concept="1TJgyj" id="lhC5EIKs5I" role="1TKVEi">
+      <property role="IQ2ns" value="383263754642637166" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="value" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="lhC5EIKpoC">
+    <property role="EcuMT" value="383263754642626088" />
+    <property role="3GE5qa" value="operation.node" />
+    <property role="TrG5h" value="Node_GetUID" />
+    <property role="34LRSv" value="get uuid" />
+    <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
   </node>
 </model>
 

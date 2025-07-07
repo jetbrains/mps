@@ -14,6 +14,17 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_DefaultValueFunction;
   private ConceptPresentation props_DeserializeFunction;
   private ConceptPresentation props_HandleRequestFunction;
+  private ConceptPresentation props_HttpMethod;
+  private ConceptPresentation props_HttpMethod_ANY;
+  private ConceptPresentation props_HttpMethod_Connect;
+  private ConceptPresentation props_HttpMethod_Delete;
+  private ConceptPresentation props_HttpMethod_Get;
+  private ConceptPresentation props_HttpMethod_Head;
+  private ConceptPresentation props_HttpMethod_Options;
+  private ConceptPresentation props_HttpMethod_Patch;
+  private ConceptPresentation props_HttpMethod_Post;
+  private ConceptPresentation props_HttpMethod_Put;
+  private ConceptPresentation props_HttpMethod_Trace;
   private ConceptPresentation props_HttpRequestOperation;
   private ConceptPresentation props_HttpRequestParameter;
   private ConceptPresentation props_IDEAPlatformPortProvider;
@@ -81,6 +92,82 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_HandleRequestFunction = cpb.create();
         }
         return props_HandleRequestFunction;
+      case LanguageConceptSwitch.HttpMethod:
+        if (props_HttpMethod == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_HttpMethod = cpb.create();
+        }
+        return props_HttpMethod;
+      case LanguageConceptSwitch.HttpMethod_ANY:
+        if (props_HttpMethod_ANY == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("ANY HTTP METHOD");
+          props_HttpMethod_ANY = cpb.create();
+        }
+        return props_HttpMethod_ANY;
+      case LanguageConceptSwitch.HttpMethod_Connect:
+        if (props_HttpMethod_Connect == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("CONNECT");
+          props_HttpMethod_Connect = cpb.create();
+        }
+        return props_HttpMethod_Connect;
+      case LanguageConceptSwitch.HttpMethod_Delete:
+        if (props_HttpMethod_Delete == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("DELETE");
+          props_HttpMethod_Delete = cpb.create();
+        }
+        return props_HttpMethod_Delete;
+      case LanguageConceptSwitch.HttpMethod_Get:
+        if (props_HttpMethod_Get == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("GET");
+          props_HttpMethod_Get = cpb.create();
+        }
+        return props_HttpMethod_Get;
+      case LanguageConceptSwitch.HttpMethod_Head:
+        if (props_HttpMethod_Head == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("HEAD");
+          props_HttpMethod_Head = cpb.create();
+        }
+        return props_HttpMethod_Head;
+      case LanguageConceptSwitch.HttpMethod_Options:
+        if (props_HttpMethod_Options == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("OPTIONS");
+          props_HttpMethod_Options = cpb.create();
+        }
+        return props_HttpMethod_Options;
+      case LanguageConceptSwitch.HttpMethod_Patch:
+        if (props_HttpMethod_Patch == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("PATCH");
+          props_HttpMethod_Patch = cpb.create();
+        }
+        return props_HttpMethod_Patch;
+      case LanguageConceptSwitch.HttpMethod_Post:
+        if (props_HttpMethod_Post == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("POST");
+          props_HttpMethod_Post = cpb.create();
+        }
+        return props_HttpMethod_Post;
+      case LanguageConceptSwitch.HttpMethod_Put:
+        if (props_HttpMethod_Put == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("PUT");
+          props_HttpMethod_Put = cpb.create();
+        }
+        return props_HttpMethod_Put;
+      case LanguageConceptSwitch.HttpMethod_Trace:
+        if (props_HttpMethod_Trace == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("TRACE");
+          props_HttpMethod_Trace = cpb.create();
+        }
+        return props_HttpMethod_Trace;
       case LanguageConceptSwitch.HttpRequestOperation:
         if (props_HttpRequestOperation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

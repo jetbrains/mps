@@ -4,8 +4,7 @@ package jetbrains.mps.debugger.java.runtime.ui.evaluation;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import javax.swing.JPanel;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import com.intellij.openapi.actionSystem.DataKey;
 import jetbrains.mps.debugger.java.runtime.evaluation.container.IEvaluationContainer;
 import jetbrains.mps.debugger.java.runtime.state.DebugSession;
@@ -13,7 +12,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.debug.api.SessionChangeAdapter;
 import java.awt.BorderLayout;
 import com.sun.jdi.ThreadReference;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.debugger.java.api.evaluation.Evaluator;
 import jetbrains.mps.debugger.java.api.evaluation.proxies.IValueProxy;
 import jetbrains.mps.debugger.java.api.state.proxy.JavaValue;
@@ -26,9 +24,9 @@ import jetbrains.mps.debugger.java.api.state.proxy.JavaThread;
 import jetbrains.mps.debugger.java.api.state.proxy.JavaLocation;
 import jetbrains.mps.debugger.java.api.state.proxy.JavaStackFrame;
 
-@GeneratedClass(node = "r:b4456070-b665-4c03-b3d3-15a7362ba923(jetbrains.mps.debugger.java.runtime.ui.evaluation)/7406771907178600108", model = "r:b4456070-b665-4c03-b3d3-15a7362ba923(jetbrains.mps.debugger.java.runtime.ui.evaluation)")
+@GeneratedClass(nodeId = "7406771907178600108", model = "r:b4456070-b665-4c03-b3d3-15a7362ba923(jetbrains.mps.debugger.java.runtime.ui.evaluation)")
 public abstract class EvaluationUi extends JPanel {
-  private static final Logger LOG = LogManager.getLogger(EvaluationUi.class);
+  private static final Logger LOG = Logger.getLogger(EvaluationUi.class);
   public static final DataKey<IEvaluationContainer> EVALUATION_CONTAINER = DataKey.create("Evaluation Container");
   public static final DataKey<DebugSession> DEBUG_SESSION = DataKey.create("Debug Session");
   @NotNull
@@ -62,24 +60,22 @@ public abstract class EvaluationUi extends JPanel {
           final Class clazz = model.generateClass();
           setEvaluating(model);
           final ThreadReference thread = check_4q63yg_a0c0a0a0a0a1a21(myDebugSession.getUiState().getThread());
-          myDebugSession.getEventsProcessor().scheduleEvaluation(new _FunctionTypes._void_P0_E0() {
-            public void invoke() {
-              try {
-                Evaluator evaluator = model.createEvaluatorInstance(clazz);
-                IValueProxy evaluatedValue = evaluator.evaluate();
-                if (evaluatedValue != null) {
-                  JavaValue value = CustomViewersManager.getInstance().fromJdi(evaluatedValue.getJDIValue(), thread);
-                  value.initSubvalues();
-                  setSuccess(value, model);
-                } else {
-                  setFailure("Evaluation returned null.", model);
-                }
-              } catch (EvaluationException e) {
-                setFailure(e, model);
-              } catch (Throwable t) {
-                setFailure(t, model);
-                LOG.error("Debug evaluation failed", t);
+          myDebugSession.getEventsProcessor().scheduleEvaluation(() -> {
+            try {
+              Evaluator evaluator = model.createEvaluatorInstance(clazz);
+              IValueProxy evaluatedValue = evaluator.evaluate();
+              if (evaluatedValue != null) {
+                JavaValue value = CustomViewersManager.getInstance().fromJdi(evaluatedValue.getJDIValue(), thread);
+                value.initSubvalues();
+                setSuccess(value, model);
+              } else {
+                setFailure("Evaluation returned null.", model);
               }
+            } catch (EvaluationException e) {
+              setFailure(e, model);
+            } catch (Throwable t) {
+              setFailure(t, model);
+              LOG.error("Debug evaluation failed", t);
             }
           }, thread);
         } catch (EvaluationException e) {

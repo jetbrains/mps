@@ -57,7 +57,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.core.editor.alias");
     Style style = new StyleImpl();
-    new styleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new styleStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     return editorCell;
   }

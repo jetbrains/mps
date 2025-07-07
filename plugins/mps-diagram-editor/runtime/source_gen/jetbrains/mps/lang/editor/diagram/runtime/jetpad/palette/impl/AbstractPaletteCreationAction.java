@@ -28,14 +28,14 @@ public abstract class AbstractPaletteCreationAction implements PaletteToggleActi
   protected abstract SubstituteAction createSubstituteAction(SubstituteAction action);
   protected abstract ViewTrait getTrait();
   private Icon createIcon() {
-    // todo code is duplicated from the diagram cell 
+    // todo code is duplicated from the diagram cell
     Icon icon;
     SNode iconNode = mySubstituteAction.getIconNode("");
     if (iconNode != null) {
-      // todo should pass concept here, not concept node 
-      // FIXME the moment there's SConcept, not SNode, #init() down here doesn't need model read any more 
+      // todo should pass concept here, not concept node
+      // FIXME the moment there's SConcept, not SNode, #init() down here doesn't need model read any more
       SAbstractConcept concept = SNodeOperations.asSConcept(((SNode) iconNode));
-      icon = ((SNodeOperations.isInstanceOf(iconNode, CONCEPTS.AbstractConceptDeclaration$KA) && !((mySubstituteAction.isReferentPresentation()))) ? GlobalIconManager.getInstance().getIconFor(concept) : GlobalIconManager.getInstance().getIconFor(iconNode));
+      icon = ((SNodeOperations.isInstanceOf(iconNode, CONCEPTS.AbstractConceptDeclaration$KA) && !(mySubstituteAction.isReferentPresentation())) ? GlobalIconManager.getInstance().getIconFor(concept) : GlobalIconManager.getInstance().getIconFor(iconNode));
     } else {
       icon = IdeIcons.DEFAULT_ICON;
     }
@@ -45,11 +45,9 @@ public abstract class AbstractPaletteCreationAction implements PaletteToggleActi
    * FIXME protected method invoked from a cons is a bad pattern (e.g. subclasses may face uninitilized final fields if overide this method), please redesign!
    */
   protected void init() {
-    myDiagramCell.getContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        myIcon = createIcon();
-        myText = mySubstituteAction.getMatchingText("");
-      }
+    myDiagramCell.getContext().getRepository().getModelAccess().runReadAction(() -> {
+      myIcon = createIcon();
+      myText = mySubstituteAction.getMatchingText("");
     });
   }
   public Icon getIcon() {

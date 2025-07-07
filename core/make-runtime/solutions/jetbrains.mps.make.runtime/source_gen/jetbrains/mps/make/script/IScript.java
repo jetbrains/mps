@@ -8,7 +8,7 @@ import jetbrains.mps.make.facet.ITarget;
 import jetbrains.mps.make.resources.IResource;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
-@GeneratedClass(node = "r:9e5578e0-37f0-4c9b-a301-771bcb453678(jetbrains.mps.make.script)/6168415856807657227", model = "r:9e5578e0-37f0-4c9b-a301-771bcb453678(jetbrains.mps.make.script)")
+@GeneratedClass(nodeId = "6168415856807657227", model = "r:9e5578e0-37f0-4c9b-a301-771bcb453678(jetbrains.mps.make.script)")
 public interface IScript {
   boolean isValid();
   Iterable<IMessage> validationErrors();

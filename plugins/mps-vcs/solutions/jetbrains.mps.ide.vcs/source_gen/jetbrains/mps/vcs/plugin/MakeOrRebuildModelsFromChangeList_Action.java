@@ -19,8 +19,6 @@ import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.internal.collections.runtime.IListSequence;
 import jetbrains.mps.ide.generator.GenerationCheckHelper;
 import jetbrains.mps.smodel.resources.ModelsToResources;
 import jetbrains.mps.generator.ModelGenerationStatusManager;
@@ -31,12 +29,9 @@ import jetbrains.mps.ide.make.DefaultMakeMessageHandler;
 import jetbrains.mps.make.IMakeService;
 import jetbrains.mps.smodel.SModelFileTracker;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.generator.GenerationFacade;
 
-@GeneratedClass(node = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/1156564534683188476", model = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)")
+@GeneratedClass(nodeId = "1156564534683188476", model = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)")
 public class MakeOrRebuildModelsFromChangeList_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -46,6 +41,7 @@ public class MakeOrRebuildModelsFromChangeList_Action extends BaseAction {
     this.rebuild = rebuild_par;
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -89,22 +85,20 @@ public class MakeOrRebuildModelsFromChangeList_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
 
     final MPSProject project = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-    List<? extends IResource> resources = new ModelAccessHelper(project.getModelAccess()).runReadAction(new Computable<IListSequence<IResource>>() {
-      public IListSequence<IResource> compute() {
-        List<SModel> models = MakeOrRebuildModelsFromChangeList_Action.this.getModels2Build(event.getData(CommonDataKeys.VIRTUAL_FILE_ARRAY), event);
-        if (new GenerationCheckHelper().checkModelsBeforeGenerationIfNeeded(project, models)) {
-          ModelsToResources m2r;
+    List<? extends IResource> resources = new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> {
+      List<SModel> models = MakeOrRebuildModelsFromChangeList_Action.this.getModels2Build(event.getData(CommonDataKeys.VIRTUAL_FILE_ARRAY), event);
+      if (new GenerationCheckHelper().checkModelsBeforeGenerationIfNeeded(project, models)) {
+        ModelsToResources m2r;
 
-          if (!(MakeOrRebuildModelsFromChangeList_Action.this.rebuild)) {
-            ModelGenerationStatusManager statusManager = event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(ModelGenerationStatusManager.class);
-            m2r = new ModelsToResources(statusManager.getModifiedModels(models));
-          } else {
-            m2r = new ModelsToResources(models);
-          }
-          return Sequence.fromIterable(m2r.resources()).toListSequence();
+        if (!(MakeOrRebuildModelsFromChangeList_Action.this.rebuild)) {
+          ModelGenerationStatusManager statusManager = event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(ModelGenerationStatusManager.class);
+          m2r = new ModelsToResources(statusManager.getModifiedModels(models));
+        } else {
+          m2r = new ModelsToResources(models);
         }
-        return ListSequence.fromList(new ArrayList<IResource>());
+        return Sequence.fromIterable(m2r.resources()).toList();
       }
+      return ListSequence.fromList(new ArrayList<IResource>());
     });
     if (ListSequence.fromList(resources).isEmpty()) {
       return;
@@ -128,27 +122,7 @@ public class MakeOrRebuildModelsFromChangeList_Action extends BaseAction {
     if (virtualFiles != null) {
       final SModelFileTracker modelFileTracker = SModelFileTracker.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository());
       final IdeaFileSystem fs = event.getData(MPSCommonDataKeys.MPS_PROJECT).getFileSystem();
-      return Sequence.fromIterable(Sequence.fromArray(virtualFiles)).where(new IWhereFilter<VirtualFile>() {
-        public boolean accept(VirtualFile vf) {
-          return vf.isInLocalFileSystem() && vf.exists() && !(vf.isDirectory());
-        }
-      }).where(new IWhereFilter<VirtualFile>() {
-        public boolean accept(VirtualFile it) {
-          return fs.canConvert(it);
-        }
-      }).select(new ISelector<VirtualFile, IFile>() {
-        public IFile select(VirtualFile vf) {
-          return fs.fromVirtualFile(vf);
-        }
-      }).select(new ISelector<IFile, SModel>() {
-        public SModel select(IFile f) {
-          return modelFileTracker.findModel(f);
-        }
-      }).where(new IWhereFilter<SModel>() {
-        public boolean accept(SModel m) {
-          return m != null && GenerationFacade.canGenerate(m);
-        }
-      }).toListSequence();
+      return Sequence.fromIterable(Sequence.fromArray(virtualFiles)).where((vf) -> vf.isInLocalFileSystem() && vf.exists() && !(vf.isDirectory())).where((it) -> fs.canConvert(it)).select((vf) -> fs.fromVirtualFile(vf)).select((f) -> modelFileTracker.findModel(f)).where((m) -> m != null && GenerationFacade.canGenerate(m)).toList();
     } else {
       return ListSequence.fromList(new ArrayList<SModel>());
     }

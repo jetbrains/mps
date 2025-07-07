@@ -18,10 +18,16 @@ package jetbrains.mps.openapi.intentions;
 /**
  * User: shatalin
  * Date: 11.05.17
+ *
+ * Note that the enum members are sorted by severity
  */
 public enum Kind {
   ERROR,
   QUICKFIX,
   MIGRATION,
-  NORMAL
+  NORMAL;
+
+  public boolean IsTheMostSevere() {
+    return this == ERROR;
+  }
 }

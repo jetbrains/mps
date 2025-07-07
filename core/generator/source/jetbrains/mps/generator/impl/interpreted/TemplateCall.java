@@ -41,13 +41,15 @@ import java.util.Map;
  * Represents {@code node<ITemplateCall>}.
  * @author Artem Tikhomirov
  */
-public class TemplateCall {
+public final class TemplateCall {
   private final ArgumentExpression[] myArguments;
   private final String[] myParameters;
   // true to indicate no-op context, either no args/params, or their count doesn't match
   private final boolean myNoArgs;
+  private final boolean myCallSiteRequired;
 
   /**
+   * FIXME comment below from 2014 is likely outdated, there's been a change in 2018 to facilitate arguments in weaved templates
    * At the moment, we handle ITemplateCall only, the reference to TemplateDeclaration with accompanying arguments.
    * Elements with references to TemplateDeclaration without arguments (like WeaveEach) shall not get here (although it's not a big deal
    * to handle it here, just keep myArguments empty, and return outerContext unchanged). The reason it's not done here as this knowledge
@@ -63,9 +65,11 @@ public class TemplateCall {
     String[] paramNames = RuleUtil.getTemplateDeclarationParameterNames(template);
     myParameters = paramNames == null ? new String[0] : paramNames;
     myNoArgs = myArguments.length == 0 || myArguments.length != myParameters.length;
+    myCallSiteRequired = RuleUtil.getTemplateCall_TemplateNeedCallSite(templateCall);
   }
 
   /**
+   * FIXME drop this cons and its uses, there's no longer use for that (see 878de4a8e4ca2eda6d5950c5e8105b269c0c4a16)
    * Transition from TemplateDeclaration that knows its arguments at construction time to TD that evaluates argument
    * values prior to call and therefore can cache and reuse template runtime nodes (i.e. TemplateContainer)
    * @param parameterNames name of template parameter, if any
@@ -75,6 +79,7 @@ public class TemplateCall {
     myArguments = arguments == null ? new ArgumentExpression[0] : Arrays.stream(arguments).map(ConstantExpression::new).toArray(ArgumentExpression[]::new);
     myParameters = parameterNames == null ? new String[0] : parameterNames;
     myNoArgs = myArguments.length == 0 || myArguments.length != myParameters.length;
+    myCallSiteRequired = false;
   }
 
 
@@ -83,6 +88,10 @@ public class TemplateCall {
    */
   public boolean argumentsMismatch() {
     return myArguments.length != myParameters.length;
+  }
+
+  public boolean needCallSite() {
+    return myCallSiteRequired;
   }
 
   @NotNull
@@ -110,8 +119,6 @@ public class TemplateCall {
         ae.add(new PatternRefExpr(argExpr, i));
       } else if (argConcept.isSubConceptOf(RuleUtil.concept_TemplateArgumentQueryExpression)) {
         ae.add(new QueryExpr(argExpr));
-      } else if (argConcept.isSubConceptOf(RuleUtil.concept_TemplateArgumentVarRefExpression)) {
-        ae.add(new VarRefExpr(argExpr));
       } else if (argConcept.isSubConceptOf(RuleUtil.concept_TemplateArgumentVarRefExpression2)) {
         ae.add(new VarRefExpr2(argExpr));
       } else if(GeneratorUtilEx.shallGenerateFunctionToEvaluate(argExpr)) {
@@ -201,19 +208,6 @@ public class TemplateCall {
         q = myQuery = queryProvider.getTemplateCallArgumentQuery(myQueryKey);
       }
       return context.getEnvironment().getQueryExecutor().evaluate(q, new TemplateArgumentContext(context, myQueryKey.getTemplateNode()));
-    }
-  }
-
-  // TemplateArgumentVariableRefExpression
-  private static class VarRefExpr implements ArgumentExpression {
-    private final String myMacroVarName;
-    public VarRefExpr(SNode varRefExpression) {
-      SNode varmacro = RuleUtil.getTemplateArgumentVarRef_VarMacro(varRefExpression);
-      myMacroVarName = RuleUtil.getVarMacro_Name(varmacro);
-    }
-    @Override
-    public Object evaluate(TemplateContext context) throws GenerationFailureException {
-      return context.getVariable(myMacroVarName);
     }
   }
 

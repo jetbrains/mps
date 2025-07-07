@@ -14,7 +14,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.annotations.Nullable;
@@ -47,19 +46,15 @@ public class ConstructorUsages_Finder extends GeneratedFinder {
   protected void doFind0(@NotNull SNode node, SearchScope scope, IFinder.FindCallback callback, ProgressMonitor monitor) {
     monitor.start(getDescription(), 2);
     try {
-      // search for straight usages & search for SUPER calls 
-      // BUG IN BASE LANGUAGE -- AT THE TIME THIS THING DOES NOT FIND SUPER() CALLS 
+      // search for straight usages & search for SUPER calls
+      // BUG IN BASE LANGUAGE -- AT THE TIME THIS THING DOES NOT FIND SUPER() CALLS
       for (SNode nodeUsage : ListSequence.fromList(FindUtils.executeFinder("jetbrains.mps.lang.structure.findUsages.NodeUsages_Finder", node, scope, monitor.subTask(1)))) {
         callback.onUsageFound(createSingleResult(nodeUsage));
       }
-      // WORKAROUND - FIND SUPER() CALLS 
+      // WORKAROUND - FIND SUPER() CALLS
       for (SNode subclassResult : ListSequence.fromList(FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.StraightDerivedClasses_Finder", SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false), scope, monitor.subTask(1)))) {
         for (SNode constructorNode : Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.cast(subclassResult, CONCEPTS.ClassConcept$bK)))) {
-          for (SNode invocation : ListSequence.fromList(SNodeOperations.getNodeDescendants(constructorNode, null, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SNodeOperations.isInstanceOf(it, CONCEPTS.SuperConstructorInvocation$wU);
-            }
-          })) {
+          for (SNode invocation : ListSequence.fromList(SNodeOperations.getNodeDescendants(constructorNode, null, false, new SAbstractConcept[]{})).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.SuperConstructorInvocation$wU))) {
             boolean thisConstructor = true;
             SNode invocationNode = SNodeOperations.cast(invocation, CONCEPTS.SuperConstructorInvocation$wU);
             if (ListSequence.fromList(SLinkOperations.getChildren(invocationNode, LINKS.actualArgument$pzdx)).count() == ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$5xBj)).count()) {
@@ -77,7 +72,7 @@ public class ConstructorUsages_Finder extends GeneratedFinder {
           }
         }
       }
-      // search for enum constants creation 
+      // search for enum constants creation
       SNode enumNode = SNodeOperations.cast(SNodeOperations.getNodeAncestor(node, CONCEPTS.EnumClass$Vk, false, false), CONCEPTS.EnumClass$Vk);
       if (enumNode != null) {
         for (SNode enumConstant : ListSequence.fromList(SLinkOperations.getChildren(enumNode, LINKS.enumConstant$qtgW))) {

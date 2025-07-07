@@ -21,7 +21,7 @@ import com.intellij.openapi.vcs.merge.MergeProvider2;
 import com.intellij.openapi.progress.ProgressManager;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 
-@GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/8695149241388806063", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
+@GeneratedClass(nodeId = "8695149241388806063", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public class ResolveNonconflictingChanges_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -29,6 +29,7 @@ public class ResolveNonconflictingChanges_Action extends BaseAction {
     super("Try to resolve non-conflicting changes in MPS models", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -50,7 +51,7 @@ public class ResolveNonconflictingChanges_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     List<VirtualFile> conflictedModelFiles = ConflictingModelsUtil.getConflictingModelFiles(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject());
-    // merge with git provider 
+    // merge with git provider
     MergeProvider provider = GitVcs.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject()).getMergeProvider();
     boolean hasResolvableConflicts = ConflictingModelsUtil.hasResolvableConflicts(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject(), provider, conflictedModelFiles);
     if (!(hasResolvableConflicts)) {

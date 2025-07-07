@@ -8,7 +8,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
 import jetbrains.mps.kernel.language.ConceptAspectsHelper;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-@GeneratedClass(node = "r:8095f777-2745-40ce-ad34-6655ef50b7cc(jetbrains.mps.editor.runtime.impl)/1182113674817158574", model = "r:8095f777-2745-40ce-ad34-6655ef50b7cc(jetbrains.mps.editor.runtime.impl)")
+@GeneratedClass(nodeId = "1182113674817158574", model = "r:8095f777-2745-40ce-ad34-6655ef50b7cc(jetbrains.mps.editor.runtime.impl)")
 public class CellUtil {
   public CellUtil() {
   }
@@ -35,7 +35,7 @@ public class CellUtil {
     if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.IDeprecatable$2W))) {
       return false;
     }
-    return ((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.IDeprecatable$2W), CONCEPTS.IDeprecatable$2W, SMethodTrimmedId.create("isDeprecated", null, "hOwoPtR")));
+    return ((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.IDeprecatable$2W), CONCEPTS.IDeprecatable$2W, SMethodIdV2.create("isDeprecated", 1224609060727L, 0x553941aeb020c32eL)));
   }
   private static boolean isConceptDeprecated(SNode node) {
     ConceptPresentation cp = ConceptAspectsHelper.getPresentationAspect(node);

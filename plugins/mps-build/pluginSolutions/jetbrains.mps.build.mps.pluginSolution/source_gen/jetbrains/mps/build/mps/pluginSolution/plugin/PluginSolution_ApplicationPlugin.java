@@ -5,6 +5,7 @@ package jetbrains.mps.build.mps.pluginSolution.plugin;
 import jetbrains.mps.plugins.applicationplugins.BaseApplicationPlugin;
 import com.intellij.openapi.extensions.PluginId;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.ide.actions.NamespaceNewActions_ActionGroup;
 import jetbrains.mps.ide.actions.ProjectNewActions_ActionGroup;
 
 public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
@@ -19,15 +20,16 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
   }
 
   public void createGroups() {
-    // actions w/o parameters 
+    // actions w/o parameters
     addAction(new GenerateBuildForProjectAction_Action());
     addAction(new ImportAllModulesFromFolder_Action());
-    // groups 
+    // groups
     addGroup(new IntentionsEx_ActionGroup(this));
     addGroup(new ProjectPaneProjectAddition_ActionGroup(this));
   }
   public void adjustRegularGroups() {
     insertGroupIntoAnother(IntentionsEx_ActionGroup.ID, "jetbrains.mps.ide.editor.actions.ActionsAsIntentions_ActionGroup", null);
+    insertGroupIntoAnother(ProjectPaneProjectAddition_ActionGroup.ID, NamespaceNewActions_ActionGroup.ID, null);
     insertGroupIntoAnother(ProjectPaneProjectAddition_ActionGroup.ID, ProjectNewActions_ActionGroup.ID, null);
   }
 }

@@ -5,20 +5,25 @@ package jetbrains.mps.ide.actions;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.ide.dialogs.project.creation.NewModelDialogSettings;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
+import org.jetbrains.annotations.Nullable;
 import javax.swing.tree.TreeNode;
+import jetbrains.mps.ide.ui.tree.module.StereotypeProvider;
 import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.ide.dialogs.project.creation.NewModelDialogDefaultSettings;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.ide.dialogs.project.creation.NewModelDialog;
 import jetbrains.mps.project.AbstractModule;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.ide.ui.dialogs.properties.MPSPropertiesConfigurable;
 import jetbrains.mps.ide.ui.dialogs.properties.ModelPropertiesConfigurable;
 import com.intellij.openapi.options.ex.SingleConfigurableEditor;
-import jetbrains.mps.ide.dialogs.project.creation.NewModelDialogDefaultSettings;
 import jetbrains.mps.smodel.Generator;
-import jetbrains.mps.ide.ui.tree.module.StereotypeProvider;
 import jetbrains.mps.ide.ui.tree.module.NamespaceTextNode;
 import jetbrains.mps.ide.IdeBundle;
+import java.util.Set;
+import java.util.HashSet;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.ide.dialogs.project.creation.ModelCreateHelper;
 
@@ -30,20 +35,47 @@ import jetbrains.mps.ide.dialogs.project.creation.ModelCreateHelper;
  * 
  * @see jetbrains.mps.ide.actions.ModelCreationActionsBaseExecutor 
  */
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/7081154005681548338", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "7081154005681548338", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class NewModelActionExecutor extends ModelCreationActionsBaseExecutor {
 
   protected final NewModelDialogSettings.Factory myDialogSettingsFactory;
   protected final SModule myModule;
 
-  public NewModelActionExecutor(MPSProject project, SModule module, TreeNode treeNode) {
+  /**
+   * 
+   * @deprecated use the appropriate constructor that accepts StereotypeProvider instead
+   */
+  @Deprecated(forRemoval = true)
+  public NewModelActionExecutor(@NotNull MPSProject project, @NotNull SModule module, @Nullable TreeNode treeNode) {
     this(project, module, getDefaultSettingsFactory(module, treeNode));
   }
-  public NewModelActionExecutor(MPSProject project, SModule module, TreeNode treeNode, String namespace) {
-    this(project, module, getDefaultSettingsFactory(namespace, treeNode));
+
+  public NewModelActionExecutor(@NotNull MPSProject project, @NotNull SModule module, @Nullable StereotypeProvider stereotypeProvider) {
+    this(project, module, getDefaultSettingsFactory(module, stereotypeProvider));
   }
 
-  public NewModelActionExecutor(MPSProject project, SModule module, NewModelDialogSettings.Factory dialogSettingsFactory) {
+  /**
+   * 
+   * @deprecated use the appropriate constructor that accepts StereotypeProvider instead
+   */
+  @Deprecated(forRemoval = true)
+  public NewModelActionExecutor(@NotNull MPSProject project, @NotNull SModule module, @Nullable TreeNode treeNode, @NotNull String namespace) {
+    this(project, module, namespace, getDefaultStereotypeProvider(treeNode));
+  }
+
+  public NewModelActionExecutor(@NotNull MPSProject project, @NotNull SModule module, @Nullable StereotypeProvider stereotypeProvider, @NotNull String namespace) {
+    this(project, module, namespace, (stereotypeProvider != null ? stereotypeProvider : StereotypeProvider.NONE));
+  }
+
+  public NewModelActionExecutor(@NotNull MPSProject project, @NotNull SModule module, @NotNull SModel contextModel) {
+    this(project, module, contextModel.getName().getLongName(), StereotypeProvider.create(contextModel.getName().getStereotype(), true));
+  }
+
+  private NewModelActionExecutor(@NotNull MPSProject project, @NotNull final SModule module, String namespace, StereotypeProvider sp) {
+    this(project, module, NewModelDialogDefaultSettings.getFactory(suggestNewModelName(new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> existingModelNames(module)), namespace), sp));
+  }
+
+  public NewModelActionExecutor(@NotNull MPSProject project, @NotNull SModule module, @NotNull NewModelDialogSettings.Factory dialogSettingsFactory) {
     super(project);
     myModule = module;
     myDialogSettingsFactory = dialogSettingsFactory;
@@ -58,7 +90,7 @@ public class NewModelActionExecutor extends ModelCreationActionsBaseExecutor {
   protected final SModel showDialog(SModule module) {
     NewModelDialog dialog = new NewModelDialog(myProject, (AbstractModule) module, NewModelActionExecutor.getTitle(), myDialogSettingsFactory);
     dialog.show();
-    return check_e2o8ll_a2a11(dialog.getResultHelper());
+    return check_e2o8ll_a2a02(dialog.getResultHelper());
   }
 
   /**
@@ -68,12 +100,10 @@ public class NewModelActionExecutor extends ModelCreationActionsBaseExecutor {
    */
   @Override
   protected void onModelCreated(final SModel model) {
-    // Model creation will lead to indexes update, dialog and navigation should be performed after that 
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        showSettingsForCreatedModel(model);
-        showCreatedModelnProjectView(model);
-      }
+    // Model creation will lead to indexes update, dialog and navigation should be performed after that
+    ApplicationManager.getApplication().invokeLater(() -> {
+      showSettingsForCreatedModel(model);
+      showCreatedModelnProjectView(model);
     });
   }
 
@@ -92,19 +122,27 @@ public class NewModelActionExecutor extends ModelCreationActionsBaseExecutor {
   public static NewModelDialogSettings.Factory getDefaultSettingsFactory(SModule module, TreeNode treeNode) {
     return getDefaultSettingsFactory(getDefaultNamespaceFor(module), treeNode);
   }
+
+  public static NewModelDialogSettings.Factory getDefaultSettingsFactory(SModule module, @Nullable StereotypeProvider stereotypeProvider) {
+    return getDefaultSettingsFactory(getDefaultNamespaceFor(module), (stereotypeProvider != null ? stereotypeProvider : StereotypeProvider.NONE));
+  }
+
   public static NewModelDialogSettings.Factory getDefaultSettingsFactory(String namespace, TreeNode treeNode) {
     return NewModelDialogDefaultSettings.getFactory(namespace + ".", getDefaultStereotypeProvider(treeNode));
+  }
+
+  public static NewModelDialogSettings.Factory getDefaultSettingsFactory(String namespace, @Nullable StereotypeProvider stereotypeProvider) {
+    return NewModelDialogDefaultSettings.getFactory(namespace + ".", (stereotypeProvider != null ? stereotypeProvider : StereotypeProvider.NONE));
   }
 
   public static String getDefaultNamespaceFor(SModule module) {
     String namespace = module.getModuleName();
     if (module instanceof Generator) {
-      // in fact, we could check any module name for # char. Though, at the moment one may encounter # in generator modules only. 
+      // in fact, we could check any module name for # char. Though, at the moment one may encounter # in generator modules only.
       int sharpIndex = namespace.indexOf('#');
       if (sharpIndex != -1) {
-        namespace = namespace.substring(0, sharpIndex);
+        return namespace.substring(0, sharpIndex) + ".generator";
       }
-      return namespace + ".generator";
     }
     return namespace;
   }
@@ -132,7 +170,38 @@ public class NewModelActionExecutor extends ModelCreationActionsBaseExecutor {
   private static String getTitle() {
     return IdeBundle.message("actions.model.new.title");
   }
-  private static EditableSModel check_e2o8ll_a2a11(ModelCreateHelper checkedDotOperand) {
+
+  private static Set<String> existingModelNames(SModule where) {
+    HashSet<String> existingModels = new HashSet<String>();
+    for (SModel m : where.getModels()) {
+      existingModels.add(m.getName().getLongName());
+    }
+    return existingModels;
+  }
+
+  private static String suggestNewModelName(Set<String> inUse, String namespace) {
+    // would like to try a..z prefix, then aa..az, ba..bz and so on
+    final int SEQ_LEN = 26;
+    StringBuilder sb = new StringBuilder(namespace);
+    sb.append('.');
+    final int nsLen = sb.length();
+    String candidate;
+    int c = 0;
+    do {
+      int x = c++;
+      do {
+        int xx = x % SEQ_LEN;
+        sb.insert(nsLen, (char) ('a' + xx));
+        x /= SEQ_LEN;
+        x--;
+      } while (x >= 0);
+      sb.append("_model");
+      candidate = sb.toString();
+      sb.setLength(nsLen);
+    } while (inUse.contains(candidate));
+    return candidate;
+  }
+  private static EditableSModel check_e2o8ll_a2a02(ModelCreateHelper checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.createModelHandleExceptions();
     }

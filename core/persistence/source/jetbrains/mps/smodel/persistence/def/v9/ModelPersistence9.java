@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,9 @@ import jetbrains.mps.persistence.MetaModelInfoProvider;
 import jetbrains.mps.persistence.MetaModelInfoProvider.BaseMetaModelInfo;
 import jetbrains.mps.persistence.MetaModelInfoProvider.RegularMetaModelInfo;
 import jetbrains.mps.persistence.MetaModelInfoProvider.StuffedMetaModelInfo;
+import jetbrains.mps.persistence.UserObjectsPersistence;
 import jetbrains.mps.persistence.xml.XMLPersistence;
+import jetbrains.mps.smodel.DefaultSModel;
 import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
@@ -31,12 +33,13 @@ import jetbrains.mps.smodel.persistence.lines.LineContent;
 import jetbrains.mps.util.xml.XMLSAXHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.persistence.ModelSaveOption;
 
 import java.util.List;
 
 public class ModelPersistence9 implements IModelPersistence, XMLPersistence {
   // per-root
-  public static final String FILE_CONTENT = "content";
+  public static final String FILE_CONTENT = ModelPersistence.PER_ROOT_CONTENT;
 
   // elements
   public static final String MODEL = ModelPersistence.MODEL;
@@ -85,14 +88,9 @@ public class ModelPersistence9 implements IModelPersistence, XMLPersistence {
   }
 
   @Override
-  public IModelWriter getModelWriter(@Nullable SModelHeader header) {
-    final MetaModelInfoProvider mmiProvider;
-    if (header != null && header.getMetaInfoProvider() != null) {
-      mmiProvider = header.getMetaInfoProvider();
-    } else {
-      mmiProvider = new RegularMetaModelInfo();
-    }
-    return new ModelWriter9(mmiProvider);
+  public IModelWriter getModelWriter(@NotNull MetaModelInfoProvider mmi, @Nullable ModelSaveOption... options) {
+    final boolean keepUserObjects = UserObjectsPersistence.DESIRED.present(options) || UserObjectsPersistence.REQUIRED.present(options);
+    return new ModelWriter9(mmi, keepUserObjects);
   }
 
   @Override
@@ -104,7 +102,8 @@ public class ModelPersistence9 implements IModelPersistence, XMLPersistence {
       mmiProvider = new RegularMetaModelInfo();
     }
     IdInfoReadHelper readHelper = new IdInfoReadHelper(mmiProvider, interfaceOnly, stripImplementation);
-    return new ModelReader9Handler(header, readHelper);
+    DefaultSModel modelData = new DefaultSModel(header.getModelReference(), header);
+    return new ModelReader9Handler(header, modelData, readHelper);
   }
 
   @Override

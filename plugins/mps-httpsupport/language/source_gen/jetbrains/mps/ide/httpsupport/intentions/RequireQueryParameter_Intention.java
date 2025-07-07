@@ -19,21 +19,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class RequireQueryParameter_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public RequireQueryParameter_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:339408f7-5111-4f37-b678-ffec3b90a6b4(jetbrains.mps.ide.httpsupport.intentions)", "2332657309400373532"));
   }
+
   @Override
   public String getPresentation() {
     return "RequireQueryParameter";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -43,18 +43,29 @@ public final class RequireQueryParameter_Intention extends AbstractIntentionDesc
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Make Query Parameter " + ((SPropertyOperations.getBoolean(node, PROPS.required$LWmw) ? "Unrequired" : "Required"));
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SPropertyOperations.assign(node, PROPS.required$LWmw, !(SPropertyOperations.getBoolean(node, PROPS.required$LWmw)));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return RequireQueryParameter_Intention.this;
     }
+
   }
 
   private static final class PROPS {

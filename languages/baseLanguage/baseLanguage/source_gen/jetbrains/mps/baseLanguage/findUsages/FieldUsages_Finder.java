@@ -55,7 +55,7 @@ public class FieldUsages_Finder extends GeneratedFinder {
       if (SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false) != null) {
         ListSequence.fromList(fieldDeclarations).addSequence(ListSequence.fromList((List<SNode>) FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.OverridingFields_Finder", node, scope, monitor.subTask(1))));
       }
-      // 
+      //  
       for (SNode fieldDeclaration : ListSequence.fromList(fieldDeclarations)) {
         for (SNode fieldUsage : ListSequence.fromList(FindUtils.executeFinder("jetbrains.mps.lang.structure.findUsages.NodeUsages_Finder", fieldDeclaration, scope, monitor.subTask(1)))) {
           callback.onUsageFound(createSingleResult(fieldUsage));

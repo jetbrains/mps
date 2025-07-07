@@ -21,10 +21,8 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -85,7 +83,7 @@ public class check_GenericNewExpressionTypeParameters_NonTypesystemRule extends 
             if (!((boolean) Type__BehaviorDescriptor.isSupersetOf_id7PgshREdQKp.invoke(SLinkOperations.getTarget(typeVar_var, LINKS.bound$aZCB), typeArgument_var, substitutions))) {
               {
                 final MessageTarget errorTarget = new NodeMessageTarget();
-                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(typeArgument_var, "The type " + typeArgument_var + " is not a valid substitute for the bounded parameter " + typeVar_var, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4853049144095798837", null, errorTarget);
+                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(typeArgument_var, "The type " + SNodeOperations.present(typeArgument_var) + " is not a valid substitute for the bounded parameter " + typeVar_var, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4853049144095798837", null, errorTarget);
               }
             }
           }
@@ -110,10 +108,10 @@ public class check_GenericNewExpressionTypeParameters_NonTypesystemRule extends 
     return false;
   }
   private static SNode _quotation_createNode_nhxavr_a1a0a0a0i0b() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, "jetbrains.mps.baseLanguage.blTypes"), 0x10de9cbf8e8L, "PrimitiveTypeRef")).getResult();
-    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor"), SReference.create(MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor"), quotedNode_1, facade.createModelReference("r:00000000-0000-4000-0000-011c895902de(jetbrains.mps.baseLanguage.blTypes.primitiveDescriptors)"), facade.createNodeId("1196683941620")));
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, "jetbrains.mps.baseLanguage.blTypes"), 0x10de9cbf8e8L, "PrimitiveTypeRef"));
+    quotedNode_1 = nb.getResult();
+    nb.setReference(MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor"), "r:00000000-0000-4000-0000-011c895902de(jetbrains.mps.baseLanguage.blTypes.primitiveDescriptors)/1196683941620");
     return quotedNode_1;
   }
 

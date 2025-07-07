@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,9 +26,9 @@ import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService;
 import jetbrains.mps.library.LibraryInitializer;
 import jetbrains.mps.persistence.PersistenceRegistry;
-import jetbrains.mps.project.GlobalScope;
 import jetbrains.mps.project.ModelsAutoImportsManager;
 import jetbrains.mps.project.PathMacros;
+import jetbrains.mps.project.ProjectManager;
 import jetbrains.mps.project.io.DescriptorIOFacade;
 import jetbrains.mps.project.structure.DescriptorModelComponent;
 import jetbrains.mps.project.structure.GeneratorDescriptorModelProvider;
@@ -36,11 +36,11 @@ import jetbrains.mps.project.structure.GenericDescriptorModelProvider;
 import jetbrains.mps.project.structure.LanguageDescriptorModelProvider;
 import jetbrains.mps.resolve.ResolverComponent;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
-import jetbrains.mps.smodel.DebugRegistry;
 import jetbrains.mps.smodel.Generator.GeneratorModelsAutoImports;
 import jetbrains.mps.smodel.Language.LanguageModelsAutoImports;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
+import jetbrains.mps.smodel.NodeIdentityComponent;
 import jetbrains.mps.smodel.SModelFileTracker;
 import jetbrains.mps.smodel.SNodeAccessUtilImpl;
 import jetbrains.mps.smodel.adapter.structure.types.TypeRegistry;
@@ -77,6 +77,10 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
   private ModelsAutoImportsManager myAutoImportsManager;
   private DescriptorIOFacade myModuleDescriptorFacade;
   private VFSManager myVFSManager;
+  private NodeIdentityComponent myIdentitySupplier;
+  private ProjectManager myProjectManager;
+  private ResolverComponent myResolver;
+
 
   /**
    * made package-private
@@ -109,11 +113,13 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
     myPathMacros = null;
     myExtensionRegistry = null;
     myVFSManager = null;
+    myProjectManager = null;
     myInitialized = false;
   }
 
   private void doInit() {
     SNodeAccessUtil.setInstance(new SNodeAccessUtilImpl());
+    myIdentitySupplier = init(new NodeIdentityComponent());
     myVFSManager = init(new VFSManager());
     // in fact, could be part of PersistenceRegistry to minimize number of components. OTOH, complicates access
     // to the instance, findComponent(PersistenceRegistry.class).getDataSourceService() is longer than just findComponent(DataSourceFactoryRuleService.class)
@@ -125,35 +131,45 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
     myRepositoryRegistry = init(new SRepositoryRegistry());
     myModuleRepository = init(new MPSModuleRepository(myRepositoryRegistry));
     myClassLoaderManager = init(new ClassLoaderManager(myModuleRepository));
-    init(new DebugRegistry());
 
     init(new SModelFileTracker.Plug(myRepositoryRegistry));
     init(new ModuleRepositoryFacade(myModuleRepository));
     myPathMacros = init(new PathMacros());
     init(myModuleDescriptorFacade = new DescriptorIOFacade());
     myLibraryInitializer = init(new LibraryInitializer(myModuleRepository, myModuleDescriptorFacade));
-    init(new GlobalScope(myModuleRepository));
 
     // XXX. Sort of hack. There are LanguageRegistry listeners that expect extensions loaded (LDMP accesses LanguageAspectEP).
     //      Therefore, it's necessary for ExtensionRegistry to get notified by CLM about loaded classes prior to LanguageRegistry,
     //      so that ER could make extensions available to subsequent listeners of LR notifications.
     //      Note, as long as CLM supports both legacy and new DeployListener, both ER and LR have to use same mechanism to keep the notification order.
     myExtensionRegistry = init(new ExtensionRegistry(myClassLoaderManager));
-    myLanguageRegistry = init(new LanguageRegistry(myClassLoaderManager));
+    myLanguageRegistry = init(new LanguageRegistry(myClassLoaderManager, this::getComponentHostForDependants));
     myConceptRegistry = init(new ConceptRegistry(myLanguageRegistry));
-    init(new ConceptDescendantsCache(myModuleRepository, myLanguageRegistry));
+    init(new ConceptDescendantsCache(myConceptRegistry, myLanguageRegistry));
     init(new DescriptorModelComponent(myModuleRepository,
                                       new LanguageDescriptorModelProvider(myLanguageRegistry),
                                       new GeneratorDescriptorModelProvider(),
-                                      new GenericDescriptorModelProvider()));
+                                      new GenericDescriptorModelProvider(myLanguageRegistry)));
     init(new TypeRegistry());
 
-    init(new ResolverComponent());
+    myProjectManager = init(new ProjectManager());
+
+    myResolver = init(new ResolverComponent());
     init(new ValidationSettings());
 
     myAutoImportsManager = init(new ModelsAutoImportsManager());
     myAutoImportsManager.register(new LanguageModelsAutoImports());
     myAutoImportsManager.register(new GeneratorModelsAutoImports());
+  }
+
+  private ComponentHost myParentHost;
+
+  /*package*/ void setParentHost(ComponentHost parentHost) {
+    myParentHost = parentHost;
+  }
+
+  /*package*/ ComponentHost getComponentHostForDependants() {
+    return myParentHost == null ? this : myParentHost;
   }
 
   private void checkInitialized() {
@@ -238,6 +254,15 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
     }
     if (VFSManager.class.equals(componentClass)) {
       return componentClass.cast(myVFSManager);
+    }
+    if (ProjectManager.class == componentClass) {
+      return componentClass.cast(myProjectManager);
+    }
+    if (ResolverComponent.class == componentClass) {
+      return componentClass.cast(myResolver);
+    }
+    if (NodeIdentityComponent.class.equals(componentClass)) {
+      return componentClass.cast(myIdentitySupplier);
     }
     return null;
   }

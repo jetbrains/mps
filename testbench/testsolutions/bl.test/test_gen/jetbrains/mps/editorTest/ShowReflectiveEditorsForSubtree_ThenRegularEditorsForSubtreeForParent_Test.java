@@ -4,23 +4,22 @@ package jetbrains.mps.editorTest;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.nodeEditor.reflectiveEditor.ReflectiveHintsManager;
 
 @MPSLaunch
 public class ShowReflectiveEditorsForSubtree_ThenRegularEditorsForSubtreeForParent_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(ShowReflectiveEditorsForSubtree_ThenRegularEditorsForSubtreeForParent_Test.class, "${mps_home}", "r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ShowReflectiveEditorsForSubtree_ThenRegularEditorsForSubtreeForParent_Test.class).projectPath(null).modelRef("r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)").reopenProject(false).build());
 
   public ShowReflectiveEditorsForSubtree_ThenRegularEditorsForSubtreeForParent_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -37,26 +36,16 @@ public class ShowReflectiveEditorsForSubtree_ThenRegularEditorsForSubtreeForPare
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("8710742295992475517", "");
-      ReflectiveEditorActionsUtil.runReadInEDTAndWait(getEditorComponent(), new Runnable() {
-        public void run() {
-          getEditorComponent().selectNode(SNodeOperations.cast(getNodeById("8710742295992475520"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfaa4bf0f2fL, "WhileStatement"))));
-        }
-      });
+      ReflectiveEditorActionsUtil.runReadInEDTAndWait(getEditorComponent(), () -> getEditorComponent().selectNode(getAnnotatedNode("node")));
       invokeAction("jetbrains.mps.ide.editor.actions.ShowReflectiveEditorsForSubtree_Action");
 
-      ReflectiveEditorActionsUtil.runReadInEDTAndWait(getEditorComponent(), new Runnable() {
-        public void run() {
-          getEditorComponent().selectNode(SNodeOperations.cast(getNodeById("8710742295992475517"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b217L, "IfStatement"))));
-        }
-      });
+      ReflectiveEditorActionsUtil.runReadInEDTAndWait(getEditorComponent(), () -> getEditorComponent().selectNode(getAnnotatedNode("parent")));
       invokeAction("jetbrains.mps.ide.editor.actions.ShowRegularEditor_Action");
 
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          Assert.assertFalse(ReflectiveHintsManager.shouldShowReflectiveEditor(getEditorComponent().getBigValidCellForNode(SNodeOperations.cast(getNodeById("8710742295992475517"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b217L, "IfStatement")))).getCellContext()));
-          Assert.assertFalse(ReflectiveHintsManager.shouldShowReflectiveEditor(getEditorComponent().getBigValidCellForNode(SNodeOperations.cast(getNodeById("8710742295992475520"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfaa4bf0f2fL, "WhileStatement")))).getCellContext()));
-          Assert.assertFalse(ReflectiveHintsManager.shouldShowReflectiveEditor(getEditorComponent().getBigValidCellForNode(SNodeOperations.cast(getNodeById("8710742295992475522"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement")))).getCellContext()));
-        }
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> {
+        Assert.assertFalse(ReflectiveHintsManager.shouldShowReflectiveEditor(getEditorComponent().getBigValidCellForNode(getAnnotatedNode("parent")).getCellContext()));
+        Assert.assertFalse(ReflectiveHintsManager.shouldShowReflectiveEditor(getEditorComponent().getBigValidCellForNode(getAnnotatedNode("node")).getCellContext()));
+        Assert.assertFalse(ReflectiveHintsManager.shouldShowReflectiveEditor(getEditorComponent().getBigValidCellForNode(getAnnotatedNode("child")).getCellContext()));
       });
     }
   }

@@ -11,6 +11,8 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.ModelAccessor;
 import jetbrains.mps.baseLanguage.behavior.AbstractCreator__BehaviorDescriptor;
@@ -26,15 +28,12 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.KeyWordSty
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.editor.runtime.style.Padding;
 import jetbrains.mps.editor.runtime.style.Measure;
-import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
-import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.baseLanguage.collections.editor.Collections_Style_StyleSheet.LeftAngleBracketStyleClass;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
@@ -46,8 +45,10 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.baseLanguage.collections.editor.Collections_Style_StyleSheet.RightAngleBracketStyleClass;
 import jetbrains.mps.lang.editor.menus.transformation.DefaultTransformationMenuLookup;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.LeftParenAfterNameStyleClass;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParenStyleClass;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -84,7 +85,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_n2wc8f_a1a() {
-    return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(myNode, LINKS.keyType$Uj4M)).isNotEmpty() || Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(myNode, LINKS.valueType$2EUo)).isNotEmpty();
+    // Any set, or expected
+    return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(myNode, LINKS.keyType$Uj4M)).isNotEmpty() || Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(myNode, LINKS.valueType$2EUo)).isNotEmpty() || ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(myNode, LINKS.containerDeclaration$QVZa), LINKS.typeVariableDeclaration$Lipp)).isNotEmpty();
   }
   private boolean nodeCondition_n2wc8f_a3a() {
     return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(myNode, LINKS.initSize$f8Q)).isNotEmpty();
@@ -100,11 +102,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_HashMapCreator_cellMenu_n2wc8f_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
     editorCell.setCellId("ReadOnlyModelAccessor_n2wc8f_a0");
     Style style = new StyleImpl();
-    new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeyWordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.PADDING_RIGHT, new Padding(0.0, Measure.SPACES));
     style.set(StyleAttributes.EDITABLE, true);
     editorCell.getStyle().putAll(style);
-    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.HashMapCreator$mW, "jetbrains.mps.baseLanguage.collections.editor.HashMapCreator_add_keyType_valueType"));
     return editorCell;
   }
   public static class ReplaceWith_HashMapCreator_cellMenu_n2wc8f_a0a0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
@@ -138,19 +139,29 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_n2wc8f_a1b0() {
-    return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(myNode, LINKS.keyType$Uj4M)).isNotEmpty();
+    // This mimics use of a list while keeping legacy behavior (see inference rule for details)
+    // Only one case NOT to display it: value is set (not key) and we do not need more type arguments
+    boolean oneExpectedArgButValueTypeIsAlreadySet = (SLinkOperations.getTarget(myNode, LINKS.valueType$2EUo) != null) && (SLinkOperations.getTarget(myNode, LINKS.keyType$Uj4M) == null) && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(myNode, LINKS.containerDeclaration$QVZa), LINKS.typeVariableDeclaration$Lipp)).count() <= 1;
+
+    return !(oneExpectedArgButValueTypeIsAlreadySet);
   }
   private boolean nodeCondition_n2wc8f_a2b0() {
-    return (SLinkOperations.getTarget(myNode, LINKS.keyType$Uj4M) != null) && (SLinkOperations.getTarget(myNode, LINKS.valueType$2EUo) != null);
+    // This mimics use of a list while keeping legacy behavior (see inference rule for details)
+    // Display if both are set, or we expect 2+ and one is set
+    boolean keySet = (SLinkOperations.getTarget(myNode, LINKS.keyType$Uj4M) != null);
+    boolean valueSet = (SLinkOperations.getTarget(myNode, LINKS.valueType$2EUo) != null);
+    return (keySet && valueSet) || ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(myNode, LINKS.containerDeclaration$QVZa), LINKS.typeVariableDeclaration$Lipp)).count() >= 2 && (keySet || valueSet);
   }
   private boolean nodeCondition_n2wc8f_a3b0() {
-    return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(myNode, LINKS.valueType$2EUo)).isNotEmpty();
+    // This mimics use of a list while keeping legacy behavior (see inference rule for details)
+    // Display if set, or expect 2+ parameters + one set
+    return (SLinkOperations.getTarget(myNode, LINKS.valueType$2EUo) != null) || (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(myNode, LINKS.containerDeclaration$QVZa), LINKS.typeVariableDeclaration$Lipp)).count() >= 2 && (SLinkOperations.getTarget(myNode, LINKS.keyType$Uj4M) != null));
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "<");
     editorCell.setCellId("Constant_n2wc8f_a1a");
     Style style = new StyleImpl();
-    new LeftAngleBracketStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new LeftAngleBracketStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -207,7 +218,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
     }
     protected String getNoTargetText() {
-      return "<no keyType>";
+      return "";
     }
   }
   private EditorCell createConstant_1() {
@@ -278,7 +289,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ">");
     editorCell.setCellId("Constant_n2wc8f_e1a");
     Style style = new StyleImpl();
-    new RightAngleBracketStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new RightAngleBracketStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.SELECTABLE, true);
     editorCell.getStyle().putAll(style);
     editorCell.setTransformationMenuLookup(new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.CustomMapCreator$j2));
@@ -360,7 +371,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "(");
     editorCell.setCellId("Constant_n2wc8f_a3a");
     Style style = new StyleImpl();
-    new LeftParenAfterNameStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new LeftParenAfterNameStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -424,15 +435,17 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ")");
     editorCell.setCellId("Constant_n2wc8f_c3a");
     Style style = new StyleImpl();
-    new RightParenStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new RightParenStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink valueType$2EUo = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5d76dL, "valueType");
+    /*package*/ static final SReferenceLink containerDeclaration$QVZa = MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x15e2150d4bff8a67L, 0x15e2150d4bff8a6aL, "containerDeclaration");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$Lipp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
     /*package*/ static final SContainmentLink keyType$Uj4M = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5b4d0L, "keyType");
+    /*package*/ static final SContainmentLink valueType$2EUo = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5d76dL, "valueType");
     /*package*/ static final SContainmentLink initSize$f8Q = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x15ae66cec0613b7fL, "initSize");
     /*package*/ static final SContainmentLink initializer$hMbF = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x118f24c9eb0L, "initializer");
   }

@@ -23,6 +23,7 @@ import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 import jetbrains.mps.persistence.DefaultModelRoot;
 import java.awt.Insets;
+import com.intellij.openapi.ui.DialogWrapperPeer;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.List;
@@ -36,7 +37,7 @@ import javax.swing.JList;
 import javax.swing.JComponent;
 import jetbrains.mps.ide.IdeBundle;
 
-@GeneratedClass(node = "r:478bf62d-84fb-4fba-aeda-183fb2769e64(jetbrains.mps.ide.dialogs.project.creation)/7081154005682232171", model = "r:478bf62d-84fb-4fba-aeda-183fb2769e64(jetbrains.mps.ide.dialogs.project.creation)")
+@GeneratedClass(nodeId = "7081154005682232171", model = "r:478bf62d-84fb-4fba-aeda-183fb2769e64(jetbrains.mps.ide.dialogs.project.creation)")
 public class NewModelDialogDefaultSettings implements NewModelDialogSettings {
 
   @NotNull
@@ -87,7 +88,7 @@ public class NewModelDialogDefaultSettings implements NewModelDialogSettings {
       if (root.canCreateModels()) {
         model.addElement(root);
       } else if (myModule instanceof Language && root instanceof FileBasedModelRoot) {
-        // Can fix only FileBased model root (default for language) 
+        // Can fix only FileBased model root (default for language)
         model.addElement(root);
       }
     }
@@ -105,17 +106,28 @@ public class NewModelDialogDefaultSettings implements NewModelDialogSettings {
     });
     myModelRoots.setModel(model);
 
-    constraints.setRow(constraints.getRow() + 1);
-    mySettingsPanel.add(new JLabel(modelNameText()), constraints);
-
-    JPanel nameAndStereotype = new JPanel(new GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
+    JPanel nameAndStereotype = new JPanel(new GridLayoutManager(2, 3, new Insets(0, 0, 0, 0), -1, -1));
     GridConstraints nameConstraints = new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null);
+
+    nameAndStereotype.add(new JLabel(modelNameText()), nameConstraints);
+    nameConstraints.setColumn(2);
+    nameAndStereotype.add(new JLabel(modelStereotypeText()), nameConstraints);
+    nameConstraints.setColumn(0);
+    nameConstraints.setRow(1);
 
     nameAndStereotype.add(myModelName, nameConstraints);
     myModelName.setText(modelName);
+    if (modelName != null && modelName.lastIndexOf('.') != -1) {
+      // FIXME get two fields (namespace and simple name) instead of one!
+      myModelName.select(modelName.lastIndexOf('.') + 1, modelName.length());
+      // found in DialogWrapperPeerImpl.setupSelectionOnPreferredComponent
+      myModelName.putClientProperty(DialogWrapperPeer.HAVE_INITIAL_SELECTION, true);
+    }
     myModelName.addKeyListener(new KeyAdapter() {
       @Override
       public void keyReleased(KeyEvent event) {
+        // FIXME shall pass actual text field value rather than expect validator to invoke some settings method with
+        //      undefined state/contract.
         myValidator.validate();
       }
     });
@@ -211,6 +223,10 @@ public class NewModelDialogDefaultSettings implements NewModelDialogSettings {
 
   private static String modelNameText() {
     return IdeBundle.message("dialogs.model.new.settings.modelname");
+  }
+
+  private static String modelStereotypeText() {
+    return IdeBundle.message("dialogs.model.new.settings.stereotype");
   }
 
   private static String storageFormatText() {

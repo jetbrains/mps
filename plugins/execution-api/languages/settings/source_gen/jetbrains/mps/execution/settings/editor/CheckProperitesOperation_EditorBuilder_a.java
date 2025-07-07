@@ -55,7 +55,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "check");
     editorCell.setCellId("Constant_ti2jjv_a0");
     Style style = new StyleImpl();
-    new operationStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new operationStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.NAVIGATABLE_NODE, _StyleParameter_QueryFunction_ti2jjv_a0a0());
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");

@@ -48,9 +48,11 @@ public class SwitchStatement_TextGen extends TextGenDescriptorBase {
         tgs.appendNode(SLinkOperations.getTarget(sc, LINKS.expression$QQk6));
       }
       tgs.append(":");
-      ctx.getBuffer().area().increaseIndent();
-      tgs.appendNode(SLinkOperations.getTarget(sc, LINKS.body$5LhG));
-      ctx.getBuffer().area().decreaseIndent();
+      if ((SLinkOperations.getTarget(sc, LINKS.body$5LhG) != null)) {
+        ctx.getBuffer().area().increaseIndent();
+        tgs.appendNode(SLinkOperations.getTarget(sc, LINKS.body$5LhG));
+        ctx.getBuffer().area().decreaseIndent();
+      }
     }
     if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.defaultBlock$QOu8) != null)) {
       tgs.newLine();

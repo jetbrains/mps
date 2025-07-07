@@ -5,7 +5,6 @@ package jetbrains.mps.lang.editor.imageGen.testLanguage.generator.template.main;
 import jetbrains.mps.generator.runtime.Generated;
 import jetbrains.mps.generator.impl.query.QueryProviderBase;
 import jetbrains.mps.generator.template.BaseMappingRuleContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -30,7 +29,7 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
-    return AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExportAsImage$xS)) != null;
+    return new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExportAsImage$xS).get(_context.getNode()) != null;
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
@@ -46,11 +45,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public MapRootRuleCondition getMapRootRuleCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(mrrcMethods.containsKey(id))) {
-      return super.getMapRootRuleCondition(identity);
-    }
-    return mrrcMethods.get(id);
+    MapRootRuleCondition query = identity.forTemplateNode(mrrcMethods);
+    return (query != null ? query : super.getMapRootRuleCondition(identity));
   }
   private static class MRRC implements MapRootRuleCondition {
     private final int methodKey;
@@ -75,11 +71,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public PropertyValueQuery getPropertyValueQuery(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(pvqMethods.containsKey(id))) {
-      return super.getPropertyValueQuery(identity);
-    }
-    return pvqMethods.get(id);
+    PropertyValueQuery query = identity.forTemplateNode(pvqMethods);
+    return (query != null ? query : super.getPropertyValueQuery(identity));
   }
   private static class PVQ extends PropertyValueQuery.Base {
     private final int methodKey;
@@ -104,11 +97,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public ReferenceTargetQuery getReferenceTargetQuery(@NotNull QueryKey queryKey) {
-    final String id = queryKey.getTemplateNode().getNodeId().toString();
-    if (!(rtqMethods.containsKey(id))) {
-      return super.getReferenceTargetQuery(queryKey);
-    }
-    return rtqMethods.get(id);
+    ReferenceTargetQuery query = queryKey.forTemplateNode(rtqMethods);
+    return (query != null ? query : super.getReferenceTargetQuery(queryKey));
   }
   private static class RTQ extends ReferenceTargetQuery.Base {
     private final int methodKey;

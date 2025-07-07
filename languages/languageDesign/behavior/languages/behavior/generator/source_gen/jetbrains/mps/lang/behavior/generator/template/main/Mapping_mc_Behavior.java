@@ -21,6 +21,7 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.MapRootRuleBase;
 import jetbrains.mps.generator.runtime.CreateRootRuleBase;
 import jetbrains.mps.generator.template.CreateRootRuleContext;
+import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -30,7 +31,7 @@ public class Mapping_mc_Behavior extends MapConfigBase implements TemplateMappin
   private final Collection<TemplateCreateRootRule> createRules;
   private final Collection<TemplateRootMappingRule> rootRules;
   public Mapping_mc_Behavior(@NotNull TemplateModel model) {
-    super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1225195370950"), "mc_Behavior", model, false);
+    super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1225195370950"), "mc_Behavior", model, false, new MO());
     rules = TemplateUtil.<TemplateReductionRule>asCollection(new ReductionRule0(), new ReductionRule1(), new ReductionRule2(), new ReductionRule3(), new ReductionRule4());
     createRules = TemplateUtil.<TemplateCreateRootRule>asCollection(new CreateRootRule0());
     rootRules = TemplateUtil.<TemplateRootMappingRule>asCollection(new RootMappingRule0());
@@ -47,7 +48,7 @@ public class Mapping_mc_Behavior extends MapConfigBase implements TemplateMappin
   public Collection<TemplateRootMappingRule> getRootRules() {
     return rootRules;
   }
-  /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
       super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1225195370951"), CONCEPTS.ThisNodeExpression$v1, false);
     }
@@ -58,7 +59,7 @@ public class Mapping_mc_Behavior extends MapConfigBase implements TemplateMappin
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule1 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule1 extends ReductionRuleBase {
     public ReductionRule1() {
       super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1703835097132694820"), CONCEPTS.ThisConceptExpression$KM, false);
     }
@@ -69,7 +70,7 @@ public class Mapping_mc_Behavior extends MapConfigBase implements TemplateMappin
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule2 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule2 extends ReductionRuleBase {
     public ReductionRule2() {
       super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1225195370953"), CONCEPTS.SuperNodeExpression$tM, false);
     }
@@ -80,7 +81,7 @@ public class Mapping_mc_Behavior extends MapConfigBase implements TemplateMappin
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule3 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule3 extends ReductionRuleBase {
     public ReductionRule3() {
       super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7613853987897918223"), CONCEPTS.SuperConceptExpression$_4, false);
     }
@@ -91,7 +92,7 @@ public class Mapping_mc_Behavior extends MapConfigBase implements TemplateMappin
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule4 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule4 extends ReductionRuleBase {
     public ReductionRule4() {
       super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4731970554579986848"), CONCEPTS.LocalBehaviorMethodCall$Y1, false);
     }
@@ -102,7 +103,7 @@ public class Mapping_mc_Behavior extends MapConfigBase implements TemplateMappin
       return tlist1;
     }
   }
-  /*package*/ static final class RootMappingRule0 extends MapRootRuleBase implements TemplateRootMappingRule {
+  /*package*/ final class RootMappingRule0 extends MapRootRuleBase implements TemplateRootMappingRule {
     public RootMappingRule0() {
       super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1225195370955"), CONCEPTS.ConceptBehavior$2, false, false);
     }
@@ -113,19 +114,25 @@ public class Mapping_mc_Behavior extends MapConfigBase implements TemplateMappin
       return result;
     }
   }
-  /*package*/ static final class CreateRootRule0 extends CreateRootRuleBase implements TemplateCreateRootRule {
+  /*package*/ final class CreateRootRule0 extends CreateRootRuleBase implements TemplateCreateRootRule {
     public CreateRootRule0() {
       super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4881419546810727151"));
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.createRootRule_Condition_0_0(new CreateRootRuleContext(context, getRuleNode()));
     }
-    public Collection<SNode> apply(TemplateContext context) throws GenerationException {
+    public Collection<SNode> apply(@NotNull TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> result = environment.callSite(new Template_BehaviorAspectDescriptor(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4881419546810727151")).apply(context);
       return result;
     }
+  }
+
+  /*package*/ static final class MO implements MetaObjectContainer {
+
+
+
   }
 
   private static final class CONCEPTS {

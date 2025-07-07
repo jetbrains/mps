@@ -52,5 +52,9 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_NoFinalOverrides_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_PrivateMethodIsNotVirtual_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,10 +28,9 @@ import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
 import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuItem;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -53,8 +52,7 @@ public abstract class AbstractCellMenuPart_ReplaceChild_CustomChildConcept imple
     SNode currentChild = cellContext.getOpt(AggregationCellContext.CURRENT_CHILD_NODE);
 
 
-    IOperationContext context = editorContext.getOperationContext();
-    SNode childNodeConcept = getConceptOfChild(parentNode, currentChild, defaultConceptOfChild, context, editorContext);
+    SNode childNodeConcept = getConceptOfChild(parentNode, currentChild, defaultConceptOfChild, editorContext);
     if (childNodeConcept == null) {
       return Collections.emptyList();
     }
@@ -77,17 +75,8 @@ public abstract class AbstractCellMenuPart_ReplaceChild_CustomChildConcept imple
     }
   }
 
-  @Deprecated
-  @ToRemove(version = 3.5)
-  protected SNode getConceptOfChild(SNode node, SNode currentChild, SNode defaultConceptOfChild, IOperationContext context,
-                                    EditorContext editorContext) {
-    return getConceptOfChild(node, currentChild, MetaAdapterByDeclaration.getConcept(defaultConceptOfChild), context, editorContext);
-  }
-
-  protected SNode getConceptOfChild(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, IOperationContext context,
-                                    EditorContext editorContext) {
-    return getConceptOfChild(node, currentChild, defaultChildConcept.getDeclarationNode(), context, editorContext);
-  }
+  @Nullable
+  protected abstract SNode getConceptOfChild(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, EditorContext editorContext);
 
   protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
     return null;

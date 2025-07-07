@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -27,13 +27,13 @@ public class HidingByNameScope extends Scope {
   private final Set<String> names;
 
   public HidingByNameScope(SAbstractConcept hidingConcept, SAbstractConcept kind, @NotNull Scope scope, @NotNull Scope parentScope) {
-    // hiding root: all subconcepts of hidingRoot hide each other 
+    // hiding root: all subconcepts of hidingRoot hide each other
     this.scope = scope;
     this.parentScope = parentScope;
     this.hidingRootConcept = hidingConcept;
     this.kindConcept = kind;
-    // todo: maybe lazy in getAvailableElements? 
-    // todo: I need this micro optimizations? 
+    // todo: maybe lazy in getAvailableElements?
+    // todo: I need this micro optimizations?
     Iterable<SNode> tmpResult = scope.getAvailableElements(null);
     this.names = new HashSet<String>(Sequence.fromIterable(tmpResult).count());
     for (SNode node : Sequence.fromIterable(tmpResult)) {
@@ -46,33 +46,24 @@ public class HidingByNameScope extends Scope {
   @Override
   public Iterable<SNode> getAvailableElements(@Nullable String prefix) {
     List<SNode> result = new ArrayList<SNode>();
-    ListSequence.fromList(result).addSequence(Sequence.fromIterable(scope.getAvailableElements(prefix)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(kindConcept));
-      }
-    }));
-    ListSequence.fromList(result).addSequence(Sequence.fromIterable(parentScope.getAvailableElements(prefix)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(kindConcept));
-      }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(hidingRootConcept))) || !(SetSequence.fromSet(names).contains(it.getName()));
-      }
-    }));
+    ListSequence.fromList(result).addSequence(Sequence.fromIterable(scope.getAvailableElements(prefix)).where((it) -> SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(kindConcept))));
+    ListSequence.fromList(result).addSequence(Sequence.fromIterable(parentScope.getAvailableElements(prefix)).where((it) -> SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(kindConcept))).where((it) -> !(SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(hidingRootConcept))) || !(SetSequence.fromSet(names).contains(it.getName()))));
     return result;
   }
+
   @Nullable
   @Override
   public SNode resolve(SNode contextNode, @NotNull String refText) {
-    // todo: recheck this code 
+    // todo: recheck this code
     return (SetSequence.fromSet(names).contains(refText) ? scope.resolve(contextNode, refText) : parentScope.resolve(contextNode, refText));
   }
+
   @Nullable
   @Override
   public String getReferenceText(SNode contextNode, @NotNull SNode node) {
     return node.getName();
   }
+
   @Override
   public boolean contains(SNode node) {
     if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$Kd)) || !(SNodeOperations.isInstanceOf(node, SNodeOperations.asSConcept(kindConcept)))) {
@@ -85,6 +76,13 @@ public class HidingByNameScope extends Scope {
       return false;
     }
     return parentScope.contains(node);
+  }
+
+
+  @NotNull
+  @Override
+  public Collection<SNode> getAdditionalDependencies() {
+    return scope.getAdditionalDependencies();
   }
 
   private static final class CONCEPTS {

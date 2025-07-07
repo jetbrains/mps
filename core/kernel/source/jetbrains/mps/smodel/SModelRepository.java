@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,28 +15,20 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.extapi.persistence.DataSourceBase;
-import jetbrains.mps.smodel.SModelId.ModelNameSModelId;
-import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.model.SaveOptions;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
-import org.jetbrains.mps.openapi.persistence.DataSource;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Collectors;
 
 // not deprecated yet, despite access and methods are, as it might be reasonable to
 // keep a facility that gives access to all models of an SRepository (alternative to SRepository.getAllModels method). Or do it with SearchScope?
@@ -44,7 +36,7 @@ import java.util.stream.Collectors;
 // or to track changes (i.e. that would be too much for a search scope, hence need a separate class). The view, perhaps, could be filtered (e.g. by
 // Condition<SModel>). Non thread-safe
 public class SModelRepository {
-  private static final Logger LOG = LogManager.getLogger(SModelRepository.class);
+  private static final Logger LOG = Logger.getLogger(SModelRepository.class);
 
   private final Object myModelsLock = new Object();
   private final List<SModel> myAllModels = new ArrayList<>();
@@ -59,18 +51,7 @@ public class SModelRepository {
    */
   private final GlobalRepositoriesListener myRepositoriesListener = new GlobalRepositoriesListener();
 
-  private static SModelRepository INSTANCE;
   private final MPSModuleRepository myRepository;
-
-  /**
-   * @deprecated global collection of SModels doesn't allow us to move forward. Do not use.
-   */
-  @Deprecated
-  @ToRemove(version = 3.3)
-  public static SModelRepository getInstance() {
-    LOG.error("SModelRepository.getInstance() has been deprecated since MPS 3.3 (4 years ago!) and will be removed in MPS 2019.3. Please refactor your code!");
-    return INSTANCE;
-  }
 
   /*package*/ SModelRepository(@NotNull MPSModuleRepository moduleRepository) {
     myRepository = moduleRepository;
@@ -78,17 +59,11 @@ public class SModelRepository {
 
   // open to our MPSModuleRepository friend only, to mimic SModelRepository.getInstance behavior for legacy code. MPS SHALL NOT USE SINGLETON ANY MORE!
   /*package*/ void init() {
-    if (INSTANCE != null) {
-      throw new IllegalStateException("double initialization");
-    }
-
-    INSTANCE = this;
     new RepoListenerRegistrar(myRepository, myRepositoriesListener).attach();
   }
 
   /*package*/ void dispose() {
     new RepoListenerRegistrar(myRepository, myRepositoriesListener).detach();
-    INSTANCE = null;
   }
 
   //----------------------------get-----------------------------
@@ -101,96 +76,54 @@ public class SModelRepository {
   }
 
   /**
-   * @deprecated this method makes sense for {@link SModelId#isGloballyUnique() globally unique} model id only, but doesn't manifest this contract.
-   * Use {@link SModelReference#resolve(SRepository)} instead
+   * this method makes sense for {@link SModelId#isGloballyUnique() globally unique} model id only
    */
-  @Deprecated
-  @Nullable
-  public SModel getModelDescriptor(@NotNull SModelReference modelReference) {
-    return getModelDescriptor(modelReference.getModelId());
+  /*package*/ SModel getModelDescriptor(SModelId id) {
+    assert id.isGloballyUnique();
+    return myIdToModelDescriptorMap.get(id);
   }
 
-  /**
-   * @deprecated this method makes sense for {@link SModelId#isGloballyUnique() globally unique} model id only, but doesn't manifest this contract.
-   * Use {@link SModelReference#resolve(SRepository)} instead
-   */
-  @Deprecated
-  public SModel getModelDescriptor(SModelId id) {
-    SModel value = myIdToModelDescriptorMap.get(id);
-    if (value == null && id instanceof ModelNameSModelId) {
-      // inexact search...
-      value = getModelDescriptor(id.getModelName());
+
+  /*package*/ boolean hasModelsToSave() {
+    synchronized (myModelsLock) {
+      return myAllModels.stream().filter(EditableSModel.class::isInstance).map(EditableSModel.class::cast).anyMatch(EditableSModel::isChanged);
     }
-    return value;
   }
-
-
-  // XXX there are uses in mbeddr
-  @Deprecated
-  public List<SModel> getModelDescriptorsByModelName(String modelName) {
-    LOG.warn("Use of SModelRepository.getModelDescriptorsByModelName is ineffective, please refactor to use SModelReference");
-    return getModelDescriptors().stream().filter(m -> modelName.equals(m.getName().getLongName())).collect(Collectors.toList());
-  }
-
-  // there's 1 use in mbeddr
-  public List<SModel> getModelDescriptors(SModule module) {
-    return IterableUtil.asList(module.getModels());
-  }
-
-  //----------------------------stuff-----------------------------
-
 
   private List<EditableSModel> getModelsToSave() {
-    List<EditableSModel> modelsToSave = new ArrayList<>();
-    for (SModel md : getModelDescriptors()) {
-      if (!(md instanceof EditableSModel)) continue;
-
-      EditableSModel emd = ((EditableSModel) md);
-      // HOTFIX MPS-13326
-      if (emd.isChanged() && !emd.isReadOnly()) {
-        modelsToSave.add(emd);
+    var modelsToSave = new ArrayList<EditableSModel>();
+    for (SModel md : myAllModels) {
+      if (md instanceof EditableSModel) {
+        EditableSModel emd = ((EditableSModel) md);
+        if (emd.isChanged() && !emd.isReadOnly()) {
+          modelsToSave.add(emd);
+        }
       }
     }
     return modelsToSave;
   }
 
-  /**
-   * Requires write access to model
-   */
   public void saveAll() {
-    List<EditableSModel> modelsToRefresh;
     synchronized (myModelsLock) {
-      modelsToRefresh = getModelsToSave();
-    }
-
-    for (EditableSModel emd : modelsToRefresh) {
-      DataSource source = emd.getSource();
-      if (source instanceof DataSourceBase) {
-        ((DataSourceBase) source).refresh();
-      }
-    }
-
-    synchronized (myModelsLock) {
-      for (EditableSModel emd : getModelsToSave()) {
+      var modelsToRefresh = getModelsToSave();
+      for (EditableSModel emd : modelsToRefresh) {
         try {
-          emd.save();
+          emd.save(new SaveOptions() {
+            @Override
+            public boolean refreshDataSource() {
+              return true;
+            }
+
+            @Override
+            public boolean updateResolveInfoInRefs() {
+              return true;
+            }
+          });
         } catch (Throwable t) {
           LOG.error(t);
         }
       }
     }
-  }
-
-  //---------------------------events----------------------------
-
-  // FIXME Why this method is different in implementation from #getModelDescriptorsByModelName(String modelName)?
-  //       This one takes full name, including stereotype, while getModelDescriptorsByModelName() cares about fqn only
-  public SModel getModelDescriptor(String modelName) {
-    if (modelName == null) {
-      return null;
-    }
-    LOG.warn("Use of SModelRepository.getModelDescriptor(String) is ineffective, please refactor to use SModelReference");
-    return getModelDescriptors().stream().filter(m -> m.getName().getValue().equals(modelName)).findFirst().orElse(null);
   }
 
   private class GlobalRepositoriesListener extends SRepositoryContentAdapter {

@@ -9,10 +9,10 @@ import jetbrains.mps.ide.findusages.model.SearchQuery;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 
-@GeneratedClass(node = "r:1a2b3027-99d2-4946-917b-f185130ac75d(jetbrains.mps.ide.findusages.findalgorithm.finders)/8267733531687413176", model = "r:1a2b3027-99d2-4946-917b-f185130ac75d(jetbrains.mps.ide.findusages.findalgorithm.finders)")
+@GeneratedClass(nodeId = "8267733531687413176", model = "r:1a2b3027-99d2-4946-917b-f185130ac75d(jetbrains.mps.ide.findusages.findalgorithm.finders)")
 public interface IFinder {
   default String getDescription() {
-    // todo remove body. Was deprecated in 3.4, but still has one hand-written usage in mbeddr 
+    // todo remove body. Was deprecated in 3.4, but still has one hand-written usage in mbeddr
     return getClass().getSimpleName();
   }
 

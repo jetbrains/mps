@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@ import jetbrains.mps.generator.TransientModelsProvider;
 import jetbrains.mps.generator.cache.CacheGenerator;
 import jetbrains.mps.generator.generationTypes.StreamHandler;
 import jetbrains.mps.generator.impl.CloneUtil;
+import jetbrains.mps.generator.impl.MappingLabelExtractor;
 import jetbrains.mps.generator.impl.ModelStreamManager;
 import jetbrains.mps.generator.plan.CheckpointIdentity;
 import jetbrains.mps.generator.plan.PlanIdentity;
@@ -32,6 +33,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import java.util.ArrayDeque;
@@ -122,6 +124,10 @@ public class CrossModelEnvironment {
       assert exposed instanceof ModelWithAttributes;
       assert m instanceof ModelWithAttributes;
       ((ModelWithAttributes) m).forEachAttribute(((ModelWithAttributes) exposed)::setAttribute);
+      SNode debugNode = MappingLabelExtractor.findDebugNode(exposed);
+      if (debugNode != null) {
+        OriginalModelTag.installTo(debugNode, model.getReference());
+      }
       myModule.addModelToKeep(exposed.getReference(), true);
       CheckpointIdentity persistedCheckpoint = readIdentityAttributes((ModelWithAttributes) m, GENERATION_PLAN, CHECKPOINT);
       CheckpointIdentity prevCheckpoint = readIdentityAttributes((ModelWithAttributes) m, PREV_GENERATION_PLAN, PREV_CHECKPOINT);
@@ -134,7 +140,7 @@ public class CrossModelEnvironment {
   private ModelCheckpoints getTransientCheckpoints(SModelReference originModel) {
     ModelCheckpoints mcp = myTransientCheckpoints.get(originModel);
     if (mcp == null) {
-      mcp = loadFromTransientModule(originModel.getName());
+      mcp = loadFromTransientModule(originModel);
       if (mcp != null) {
         myTransientCheckpoints.put(originModel, mcp);
       }
@@ -149,7 +155,8 @@ public class CrossModelEnvironment {
    * <p>
    * both parameters are !null
    */
-  private ModelCheckpoints loadFromTransientModule(SModelName originalModelName) {
+  private ModelCheckpoints loadFromTransientModule(SModelReference originalModel) {
+    final SModelName originalModelName = originalModel.getName();
     // XXX getCheckpointModelsFor iterates models of the module, hence needs a model read
     //     OTOH, just a wrap with model read doesn't make sense here (models could get disposed right after the call),
     //     so likely we shall populate myCheckpoints in constructor/dedicated method. Still, what about checkpoint model disposed *after*
@@ -161,6 +168,12 @@ public class CrossModelEnvironment {
       ArrayList<CheckpointState> cpModels = new ArrayList<>(4);
       for (SModel m : myModule.getModels()) {
         if (!nameNoStereotype.equals(m.getName().getLongName()) || false == m instanceof ModelWithAttributes) {
+          continue;
+        }
+
+        OriginalModelTag omt;
+        if ((omt = OriginalModelTag.from(MappingLabelExtractor.findDebugNode(m))) == null || !omt.matches(originalModel)) {
+          // XXX not every CP model has debugNode (see CheckpointStateBuilder.addMappings()), perhaps, it's not wise to exclude model like that here?
           continue;
         }
         // we keep CP (both origin and actual) as model properties to facilitate scenario when CP models are not persisted.
@@ -226,8 +239,7 @@ public class CrossModelEnvironment {
     mid &= 0x0FFFFFFF;
     mid |= 0x0F000000;
     final SModelReference mr = PersistenceFacade.getInstance()
-                                                .createModelReference(myModule.getModuleReference(), new IntegerSModelId(mid),
-                                                                      transientModelName.getValue());
+                                                .createModelReference(myModule.getModuleReference(), new IntegerSModelId(mid), transientModelName);
     SModel existing = myModule.getModel(mr.getModelId());
     if (existing != null) {
       // Why it's important to forget existing model? E.g. if a model being generated has been already generated and exposed as checkpoint, and
@@ -298,7 +310,7 @@ public class CrossModelEnvironment {
     } while (!discarded.isEmpty());
   }
 
-  public static class CacheGen implements CacheGenerator {
+  public static class CacheGen implements CacheGenerator<GenerationStatus> {
     @Override
     public void generateCache(GenerationStatus status, StreamHandler handler) {
       CrossModelEnvironment cme = status.getCrossModelEnvironment();
@@ -316,6 +328,31 @@ public class CrossModelEnvironment {
       assert cpVault != null;
       cpVault.updateCheckpointsOf(mcp);
       cpVault.saveChanged(handler);
+    }
+  }
+
+  // user object we attach to debug node in a CP model to identify original model, to overcome limitations of name-based lookup
+  // can't use SModelReference UO directly as they get get serialized (see UserObjectEncoder), and I don't want to change existing CP models (to save
+  // some generation effort)
+  public static final class OriginalModelTag {
+    private final SModelReference myModelRef;
+
+    private OriginalModelTag(SModelReference originalModel) {
+      myModelRef = originalModel;
+    }
+
+    @Nullable
+    public static OriginalModelTag from(@Nullable SNode debugNode) {
+      Object mr = debugNode == null ? null : debugNode.getUserObject("original-model");
+      return mr instanceof OriginalModelTag ? (OriginalModelTag) mr : null;
+    }
+
+    public static void installTo(@NotNull SNode debugNode, @NotNull SModelReference originalModel) {
+      debugNode.putUserObject("original-model", new OriginalModelTag(originalModel));
+    }
+
+    public boolean matches(SModelReference mr) {
+      return myModelRef.equals(mr);
     }
   }
 }

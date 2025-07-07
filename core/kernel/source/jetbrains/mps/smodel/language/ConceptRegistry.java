@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,9 @@ package jetbrains.mps.smodel.language;
 
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.core.aspects.behaviour.BehaviorRegistryImpl;
+import jetbrains.mps.core.aspects.behaviour.SConceptC3StarMRO;
 import jetbrains.mps.core.aspects.behaviour.api.BehaviorRegistry;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
@@ -28,7 +30,6 @@ import jetbrains.mps.smodel.runtime.ConceptPresentation;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.DataTypeDescriptor;
 import jetbrains.mps.smodel.runtime.illegal.IllegalConceptDescriptor;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -46,14 +47,15 @@ public class ConceptRegistry implements CoreComponent, LanguageRegistryListener 
   private final ConceptPropertiesRegistry myConcPropsRegistry;
   private final BehaviorRegistry myBehaviorRegistry;
   private final ConstraintsRegistry myConstraintsRegistry;
+  private final SConceptC3StarMRO myMRO = new SConceptC3StarMRO(SNodeUtil.concept_BaseConcept);
 
   // fixme wrong naming
   public ConceptRegistry(@NotNull LanguageRegistry languageRegistry) {
     myLanguageRegistry = languageRegistry;
     myStructureRegistry = new StructureRegistry(languageRegistry);
     myConcPropsRegistry = new ConceptPropertiesRegistry(languageRegistry);
-    myBehaviorRegistry = new BehaviorRegistryImpl(languageRegistry);
-    myConstraintsRegistry = new ConstraintsRegistry(languageRegistry);
+    myBehaviorRegistry = new BehaviorRegistryImpl(languageRegistry, myMRO);
+    myConstraintsRegistry = new ConstraintsRegistry(languageRegistry, myMRO);
   }
 
   private static ConceptRegistry INSTANCE;
@@ -80,6 +82,11 @@ public class ConceptRegistry implements CoreComponent, LanguageRegistryListener 
   @NotNull
   public ConstraintsRegistry getConstraintsRegistry() {
     return myConstraintsRegistry;
+  }
+
+  @NotNull
+  public StructureRegistry getStructureRegistry() {
+    return myStructureRegistry;
   }
 
   @Override
@@ -146,8 +153,7 @@ public class ConceptRegistry implements CoreComponent, LanguageRegistryListener 
     return myConstraintsRegistry.getConstraintsDescriptor(concept);
   }
 
-  @Deprecated
-  @ToRemove(version = 3.4)
+  @Deprecated(since = "3.4", forRemoval = true)
   //this method is here for compatibility purposes.
   //remove as soon as there's no need in optimizing by-name stuff
   // which is unlikely to happen provided we have support for legacy persistence that needs by-name concepts.

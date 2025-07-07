@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<solution name="jetbrains.mps.generator.crossmodel.sandbox" uuid="381c65cf-580d-4518-a354-e370843af551" moduleVersion="0" compileInMPS="true">
+<solution name="jetbrains.mps.generator.crossmodel.sandbox" uuid="381c65cf-580d-4518-a354-e370843af551" moduleVersion="0">
   <models>
     <modelRoot contentPath="${module}" type="default">
       <sourceRoot location="models" />
     </modelRoot>
   </models>
   <facets>
-    <facet type="java">
+    <facet type="java" compile="mps" classes="mps" ext="no">
       <classes generated="true" path="${module}/classes_gen" />
     </facet>
   </facets>
-  <sourcePath />
   <dependencies>
     <dependency reexport="false">4d14758c-3ecb-486d-b8c8-ea5beb8ae408(jetbrains.mps.generator.test.crossmodel.entity)</dependency>
     <dependency reexport="false">dc1cc948-6f43-4687-90cb-17dd5cb27219(jetbrains.mps.generator.test.crossmodel.property)</dependency>
@@ -29,7 +28,6 @@
     <module reference="4d14758c-3ecb-486d-b8c8-ea5beb8ae408(jetbrains.mps.generator.test.crossmodel.entity)" version="0" />
     <module reference="dc1cc948-6f43-4687-90cb-17dd5cb27219(jetbrains.mps.generator.test.crossmodel.property)" version="0" />
     <module reference="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" version="0" />
-    <module reference="9e98f4e2-decf-4e97-bf80-9109e8b759aa(jetbrains.mps.lang.feedback.context)" version="0" />
   </dependencyVersions>
 </solution>
 

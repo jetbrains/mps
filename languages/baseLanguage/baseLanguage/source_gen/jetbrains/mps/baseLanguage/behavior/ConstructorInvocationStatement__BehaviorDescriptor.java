@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Map;
 import java.util.List;
@@ -24,7 +23,6 @@ import jetbrains.mps.baseLanguage.scopes.MethodResolveUtil;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -34,8 +32,8 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class ConstructorInvocationStatement__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x121119ae5ffL, "jetbrains.mps.baseLanguage.structure.ConstructorInvocationStatement");
 
-  public static final SMethod<SNode> getInstanceType_id6WzWPTX2vuB = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getInstanceType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6WzWPTX2vuB").build();
-  public static final SMethod<Map<SNode, SNode>> getTypesByTypeVars_idJfLh5LDMrj = new SMethodBuilder<Map<SNode, SNode>>(new SJavaCompoundTypeImpl(Map.class)).name("getTypesByTypeVars").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("JfLh5LDMrj").build();
+  public static final SMethod<SNode> getInstanceType_id6WzWPTX2vuB = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getInstanceType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8008512149545154471L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Map<SNode, SNode>> getTypesByTypeVars_idJfLh5LDMrj = new SMethodBuilder<Map<SNode, SNode>>(new SJavaCompoundTypeImpl(Map.class)).name("getTypesByTypeVars").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(851115533308208851L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInstanceType_id6WzWPTX2vuB, getTypesByTypeVars_idJfLh5LDMrj);
 
@@ -51,7 +49,7 @@ public final class ConstructorInvocationStatement__BehaviorDescriptor extends Ba
     return _quotation_createNode_teq92u_a3a0(typeVarRefs, concept);
   }
   /*package*/ static Map<SNode, SNode> getTypesByTypeVars_idJfLh5LDMrj(@NotNull SNode __thisNode__) {
-    SNode instanceType = IMethodCall__BehaviorDescriptor.getInstanceType_id6WzWPTX2vuB.invoke(__thisNode__);
+    SNode instanceType = IFixableMethodReference__BehaviorDescriptor.getInstanceType_id6WzWPTX2vuB.invoke(__thisNode__);
     if ((SLinkOperations.getTarget(instanceType, LINKS.classifier$cxMr) == null)) {
       return Collections.emptyMap();
     }
@@ -106,23 +104,20 @@ public final class ConstructorInvocationStatement__BehaviorDescriptor extends Ba
     return CONCEPT;
   }
   private static SNode _quotation_createNode_teq92u_a0a0a2a0(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x102467229d8L, "TypeVariableReference")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x102467229d8L, "TypeVariableReference"));
+    quotedNode_2 = nb.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration"), (SNode) parameter_1);
     return quotedNode_2;
   }
   private static SNode _quotation_createNode_teq92u_a3a0(Object parameter_1, Object parameter_2) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
-    quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+    quotedNode_3 = nb.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_3, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), (SNode) parameter_2);
-    {
-      List<SNode> nodes = (List<SNode>) parameter_1;
-      for (SNode child : nodes) {
-        quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"), SNodeOperations.copyIfNecessary(child));
-      }
+    for (SNode child : (List<SNode>) parameter_1) {
+      quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"), SNodeOperations.copyIfNecessary(child));
     }
     return quotedNode_3;
   }

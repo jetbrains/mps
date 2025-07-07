@@ -12,10 +12,8 @@ import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -23,7 +21,7 @@ public class any_type_supertypeof_wildcard_type_InequationReplacementRule extend
   public any_type_supertypeof_wildcard_type_InequationReplacementRule() {
   }
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
-    return !((SNodeOperations.isInstanceOf(supertype, CONCEPTS.PrimitiveType$sR) || TypecheckingFacade.getFromContext().isStrongSubtype(supertype, SLinkOperations.getTarget(_quotation_createNode_fu2yto_a1a0a0a0a1(), LINKS.descriptor$M2vT))));
+    return !(SNodeOperations.isInstanceOf(supertype, CONCEPTS.PrimitiveType$sR) || TypecheckingFacade.getFromContext().isStrongSubtype(supertype, SLinkOperations.getTarget(_quotation_createNode_fu2yto_a1a0a0a0a1(), LINKS.descriptor$M2vT)));
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
   }
@@ -48,10 +46,10 @@ public class any_type_supertypeof_wildcard_type_InequationReplacementRule extend
     return CONCEPTS.BaseConcept$gP;
   }
   private static SNode _quotation_createNode_fu2yto_a1a0a0a0a1() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, "jetbrains.mps.baseLanguage.blTypes"), 0x10de9cbf8e8L, "PrimitiveTypeRef")).getResult();
-    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor"), SReference.create(MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor"), quotedNode_1, facade.createModelReference("r:00000000-0000-4000-0000-011c895902de(jetbrains.mps.baseLanguage.blTypes.primitiveDescriptors)"), facade.createNodeId("1196683941620")));
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, "jetbrains.mps.baseLanguage.blTypes"), 0x10de9cbf8e8L, "PrimitiveTypeRef"));
+    quotedNode_1 = nb.getResult();
+    nb.setReference(MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor"), "r:00000000-0000-4000-0000-011c895902de(jetbrains.mps.baseLanguage.blTypes.primitiveDescriptors)/1196683941620");
     return quotedNode_1;
   }
 

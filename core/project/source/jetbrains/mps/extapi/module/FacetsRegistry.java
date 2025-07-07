@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,17 @@
  */
 package jetbrains.mps.extapi.module;
 
-import jetbrains.mps.classloading.DumbIdeaPluginFacet;
 import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.project.DevKit;
+import jetbrains.mps.project.Solution;
+import jetbrains.mps.project.facets.DocumentationFacet;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.facets.JavaModuleFacetImpl;
+import jetbrains.mps.project.facets.PlainTextTargetFacet;
 import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.project.facets.TestsFacetImpl;
 import jetbrains.mps.smodel.BootstrapLanguages;
-import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.smodel.Language;
 import jetbrains.mps.util.containers.MultiMap;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -32,11 +34,14 @@ import org.jetbrains.mps.openapi.module.FacetsFacade;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Consumer;
 
 /**
  * evgeny, 2/27/13
@@ -45,9 +50,7 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
   private final FacetFactory TESTS_FACET_FACTORY = new FacetFactory() {
     @Override
     public SModuleFacet create(@NotNull SModule module) {
-      final TestsFacetImpl rv = new TestsFacetImpl();
-      rv.setModule(module);
-      return rv;
+      return new TestsFacetImpl(module);
     }
 
     @NotNull
@@ -55,14 +58,17 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
     public String getPresentation() {
       return "Tests";
     }
+
+    @Override
+    public boolean isApplicable(@NotNull SModule module) {
+      return !(module instanceof DevKit);
+    }
   };
 
   private final FacetFactory JAVA_MODULE_FACET_FACTORY = new FacetFactory() {
     @Override
     public SModuleFacet create(@NotNull SModule module) {
-      final JavaModuleFacetImpl rv = new JavaModuleFacetImpl();
-      rv.setModule(module);
-      return rv;
+      return new JavaModuleFacetImpl(module);
     }
 
     @NotNull
@@ -70,17 +76,58 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
     public String getPresentation() {
       return "Java";
     }
+
+    @Override
+    public boolean isApplicable(@NotNull SModule module) {
+      return !(module instanceof DevKit);
+    }
   };
 
-  private FacetFactory DUMB_IDEA_PLUGIN_FACET_FACTORY;
+  private final FacetFactory myPlainTextFacetFactory = new FacetFactory() {
+    @Override
+    public SModuleFacet create(@NotNull SModule module) {
+       return new PlainTextTargetFacet(module);
+    }
 
-  private MultiMap<String, String> myLanguageToFacetTypes = new MultiMap<>();
+    @NotNull
+    @Override
+    public String getPresentation() {
+      return "Plain text output";
+    }
 
-  private Map<FacetFactory, String> myFactoryType = new HashMap<>();
-  private Map<String, FacetFactory> myFacetsByType = new HashMap<>();
+    @Override
+    public boolean isApplicable(@NotNull SModule module) {
+      return module instanceof Solution;
+    }
+  };
+
+  private final FacetFactory DOCUMENTATION_FACET_FACTORY = new FacetFactory() {
+    @Override
+    public SModuleFacet create(@NotNull SModule module) {
+      return new DocumentationFacet(module);
+    }
+
+    @NotNull
+    @Override
+    public String getPresentation() {
+      return "Documentation";
+    }
+
+    @Override
+    public boolean isApplicable(@NotNull SModule module) {
+      return module instanceof Language;
+    }
+  };
+
+  private final MultiMap<String, String> myLanguageToFacetTypes = new MultiMap<>();
+
+  private final Map<FacetFactory, String> myFactoryType = new HashMap<>();
+  private final Map<String, FacetFactory> myFacetsByType = new HashMap<>();
+
+  private final Map<String, List<Consumer<FacetFactory>>> myFacetType2Callback = new HashMap<>();
 
   @Override
-  public Set<String> getFacetTypes() {
+  public synchronized Set<String> getFacetTypes() {
     return myFacetsByType.keySet();
   }
 
@@ -108,24 +155,44 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
 
   @Nullable
   @Override
-  public FacetFactory getFacetFactory(String facetType) {
+  public synchronized FacetFactory getFacetFactory(String facetType) {
     return myFacetsByType.get(facetType);
   }
 
   @Override
-  public void addFactory(@NotNull String facetType, FacetFactory factory) {
+  public synchronized void addFactory(@NotNull String facetType, @NotNull FacetFactory factory) {
     if (myFactoryType.containsKey(factory)) {
       throw new IllegalStateException("factory is already registered");
     }
     myFactoryType.put(factory, facetType);
     myFacetsByType.put(facetType, factory);
+    goOverCallbacks(facetType, factory);
+  }
+
+  private void goOverCallbacks(@NotNull String facetType, @NotNull FacetFactory factory) {
+    List<Consumer<FacetFactory>> callbacksWeKnow = myFacetType2Callback.remove(facetType);
+    if (callbacksWeKnow != null) {
+      for (Consumer<FacetFactory> callback : callbacksWeKnow) {
+        callback.accept(factory);
+      }
+    }
   }
 
   @Override
-  public void removeFactory(FacetFactory factory) {
+  public synchronized void removeFactory(@NotNull FacetFactory factory) {
     String type = myFactoryType.remove(factory);
     if (type != null) {
       myFacetsByType.remove(type);
+    }
+  }
+
+  public synchronized void callWhenFacetFactoryAppears(@NotNull String facetFactoryType, @NotNull Consumer<FacetFactory> callback) {
+    boolean noSuchFactory = getFacetFactory(facetFactoryType) == null;
+    if (noSuchFactory) {
+      myFacetType2Callback.computeIfAbsent(facetFactoryType, k -> new ArrayList<>())
+                          .add(callback);
+    } else {
+      callback.accept(getFacetFactory(facetFactoryType));
     }
   }
 
@@ -138,40 +205,19 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
 
     addFactory(JavaModuleFacet.FACET_TYPE, JAVA_MODULE_FACET_FACTORY);
     addFactory(TestsFacet.FACET_TYPE, TESTS_FACET_FACTORY);
-    setUpDumbIdeaFacet();
+    addFactory(PlainTextTargetFacet.FACET_TYPE, myPlainTextFacetFactory);
+    addFactory(DocumentationFacet.FACET_TYPE, DOCUMENTATION_FACET_FACTORY);
 
     registerLanguageFacet(BootstrapLanguages.getBaseLang(), JavaModuleFacet.FACET_TYPE);
-  }
-
-  private void setUpDumbIdeaFacet() {
-    FacetFactory existingFactory = getFacetFactory(DumbIdeaPluginFacet.FACET_TYPE);
-    if (existingFactory == null) {
-      DUMB_IDEA_PLUGIN_FACET_FACTORY = new FacetFactory() {
-        @Override
-        public SModuleFacet create(@NotNull SModule module) {
-          final DumbIdeaPluginFacet rv = new DumbIdeaPluginFacet();
-          rv.setModule(module);
-          return rv;
-        }
-
-        @NotNull
-        @Override
-        public String getPresentation() {
-          return "Idea Plugin";
-        }
-      };
-      addFactory(DumbIdeaPluginFacet.FACET_TYPE, DUMB_IDEA_PLUGIN_FACET_FACTORY);
-    }
   }
 
   @Override
   public void dispose() {
     unregisterLanguageFacet(BootstrapLanguages.getBaseLang(), JavaModuleFacet.FACET_TYPE);
-    if (DUMB_IDEA_PLUGIN_FACET_FACTORY != null) {
-      removeFactory(DUMB_IDEA_PLUGIN_FACET_FACTORY);
-    }
+    removeFactory(myPlainTextFacetFactory);
     removeFactory(TESTS_FACET_FACTORY);
     removeFactory(JAVA_MODULE_FACET_FACTORY);
+    removeFactory(DOCUMENTATION_FACET_FACTORY);
     INSTANCE = null;
   }
 }

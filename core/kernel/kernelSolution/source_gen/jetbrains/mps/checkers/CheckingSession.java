@@ -8,7 +8,13 @@ import java.util.Map;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.util.Consumer;
 
-@GeneratedClass(node = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)/596238210753843643", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
+/**
+ * Used together with {@link jetbrains.mps.checkers.SuppressErrorsChecker } to help reduce clutter in the errors reported to the user. 
+ * <p>
+ * See {@link jetbrains.mps.checkers.SuppressErrorsChecker }<br>
+ * See {@link jetbrains.mps.checkers.AggregatingChecker }<br>
+ */
+@GeneratedClass(nodeId = "596238210753843643", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
 public interface CheckingSession<I extends IssueKindReportItem> {
   abstract class SuppressableError<T> {
     public SuppressableError(T error) {
@@ -20,6 +26,13 @@ public interface CheckingSession<I extends IssueKindReportItem> {
     }
     public abstract void suppress();
   }
+  /**
+   * Provides access to the errors collected so far.
+   * <p>
+   * NB! The returned map is not supposed to be modified by the caller. 
+   * <p>
+   * FIXME nowhere in the code are keys of the map accessed, nor is there any need to do so. 
+   */
   Map<IssueKindReportItem.PathObject, ? extends Collection<? extends SuppressableError<? extends IssueKindReportItem>>> getAllFoundErrors();
 
   Consumer<? super I> postprocessingConsumer();

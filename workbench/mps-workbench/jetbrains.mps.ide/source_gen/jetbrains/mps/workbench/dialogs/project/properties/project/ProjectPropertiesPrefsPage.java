@@ -9,7 +9,7 @@ import org.jetbrains.annotations.Nls;
 import javax.swing.JComponent;
 import com.intellij.openapi.options.ConfigurationException;
 
-@GeneratedClass(node = "r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)/3201642974933586123", model = "r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)")
+@GeneratedClass(nodeId = "3201642974933586123", model = "r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)")
 public final class ProjectPropertiesPrefsPage implements SearchableConfigurable {
   private Project myProject;
   private ProjectPropertiesComponent myComponent;

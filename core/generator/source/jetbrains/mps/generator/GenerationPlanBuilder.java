@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package jetbrains.mps.generator;
 import jetbrains.mps.generator.plan.CheckpointIdentity;
 import jetbrains.mps.generator.plan.PlanIdentity;
 import jetbrains.mps.generator.runtime.TemplateMappingConfiguration;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -56,23 +55,20 @@ import java.util.stream.Collectors;
 public interface GenerationPlanBuilder {
   /**
    * Apply generators of languages specified to reduce their concepts.
-   * FIXME It's unspecified at the moment what happens with generators that are extended or referenced from those involved (i.e. if they are part of the step).
+   * Only explicitly mentioned languages are consulted for generators.
+   * To include extended languages, or languages that generate into a specified one, use {@link #transform(boolean)}.
    * @param languages languages to reduce
    */
   void transformLanguage(@NotNull SLanguage ... languages);
 
   /**
-   * Specified generators (exact set, unlike {@link #applyGeneratorWithExtended(SModule...)} no extended relation between generators is taken into account)
-   * applied as a single transformation step.
-   * FIXME shall decide what happens if a generator references/extends another one, not mentioned.
-   * @deprecated use {@link #applyGenerators(Collection, BuilderOption...)} instead
-   * @param generators generator modules
+   * Get a builder to fill transformation step with languages and generators.
+   * Once over, complete the step with {@link TransformStepBuilder#complete()}
+   * @param individualStepsPerGenerator {@code true} to put each included generator into a distinct transformation step, {@code false} to keep all of them together
+   * @return builder to populate transformation step
+   * @since 2021.1
    */
-  @Deprecated
-  @ToRemove(version = 2018.3)
-  default void applyGenerator(@NotNull SModule ... generators) {
-    applyGenerators(Arrays.stream(generators).map(SModule::getModuleReference).collect(Collectors.toList()), BuilderOption.None);
-  }
+  TransformStepBuilder transform(boolean individualStepsPerGenerator);
 
   /**
    * Specified generators and those extending them AND visible from scope applied as a single transformation step.
@@ -139,6 +135,14 @@ public interface GenerationPlanBuilder {
   GenerationPlanBuilder fork();
 
   /**
+   * Sets the generation target of a {@link #fork()}. Has no effect otherwise.
+   * @param targetHint generation target
+   */
+  default void setGenerationTarget(String targetHint) {
+    // NOP by default
+  }
+
+  /**
    * Completes {@link ModelGenerationPlan} instance with any state information build is aware of (e.g. build extends relation between
    * generators for {@link #applyGeneratorWithExtended(SModule...) or respect priority rules of generators involved}
    *
@@ -157,7 +161,21 @@ public interface GenerationPlanBuilder {
    * {@link #WithPriorityRules} means priority rules of involved generators (those explicitly specified and extending) are respected.
    */
   enum BuilderOption {
-    None, WithExtendedGenerators, WithPriorityRules;
+    None, WithExtendedGenerators, WithPriorityRules,
+    /**
+     * Reduce languages that produce specified one, i.e. it's their generation 'target'.
+     * Note, this excludes the specified language. I expect scenarios where target language have to
+     * get processed later, not together with those targeting it.
+     * Note, it a language's generator targets the same language (a de-sugaring generator for a language with a TextGen, e.g. BaseLanguage)
+     * then this generator is not considered to be part of the 'target to' set, despite its
+     * {@link jetbrains.mps.generator.runtime.TemplateModule#getTargetLanguages()} manifest.
+     */
+    TargetTo,
+    /**
+     * Reduce languages that extend the one specified. Unlike {@link #WithExtendedGenerators},
+     * this option is intended to capture 'extends' relation between languages, not generators.
+     */
+    Extend;
 
     public boolean presentIn(BuilderOption... options) {
       for (BuilderOption o : options) {
@@ -167,5 +185,12 @@ public interface GenerationPlanBuilder {
       }
       return false;
     }
+  }
+
+  interface TransformStepBuilder {
+    // TODO include(SModuleReference generator, BuilderOption)
+    // XXX perhaps, includeAllOtherwiseUnhandledLanguages() as well.
+    TransformStepBuilder include(@NotNull SLanguage  language, BuilderOption option);
+    void complete();
   }
 }

@@ -7,17 +7,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.editor.runtime.selection.SelectionUtil;
-import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import java.util.Objects;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SConcept;
 
 public class Delete_BlockStatement {
 
@@ -30,12 +24,7 @@ public class Delete_BlockStatement {
         if (DeletionApproverUtil.approve(editorContext, node)) {
           return;
         }
-        if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.StatementList$m_)) {
-          UnwrapStatementsUtil.unwrapStatementListInContainer(node, SLinkOperations.getTarget(node, LINKS.statements$q65M));
-        } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.IfStatement$Q4) && SNodeOperations.hasRole(node, LINKS.ifFalseStatement$psZK)) {
-          SNode nodeToSelect = UnwrapStatementsUtil.unwrapElse(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.IfStatement$Q4));
-          SelectionUtil.selectCell(editorContext, nodeToSelect, SelectionManager.FIRST_CELL);
-        }
+        SNodeOperations.deleteNode(node);
       }
 
     };
@@ -45,11 +34,11 @@ public class Delete_BlockStatement {
     CellAction originalDelete = editorCell.getAction(CellActionType.DELETE);
     CellAction originalBackspace = editorCell.getAction(CellActionType.BACKSPACE);
 
-    // set actions that were actually defined 
+    // set actions that were actually defined
     setDefinedCellActions(editorCell, node, context);
 
-    // If we set a DELETE action but no BACKSPACE action, 
-    // use the DELETE action for BACKSPACE as well. 
+    // If we set a DELETE action but no BACKSPACE action,
+    // use the DELETE action for BACKSPACE as well.
     CellAction delete = editorCell.getAction(CellActionType.DELETE);
     CellAction backspace = editorCell.getAction(CellActionType.BACKSPACE);
     if (delete != originalDelete && backspace == originalBackspace) {
@@ -66,29 +55,19 @@ public class Delete_BlockStatement {
   private static final Object OB = new Object();
 
   public static void setDefinedCellActions(EditorCell editorCell, SNode node, EditorContext context) {
-    // set cell actions from all imported action maps 
+    // set cell actions from all imported action maps
 
-    // set cell actions defined directly in this action map 
+    // set cell actions defined directly in this action map
     editorCell.setAction(CellActionType.DELETE, createAction_DELETE(node));
   }
 
   public static void setDefinedCellActionsOfType(EditorCell editorCell, SNode node, EditorContext context, CellActionType actionType) {
 
-    // set cell action(s) of the given type from imported action maps 
+    // set cell action(s) of the given type from imported action maps
 
-    // set cell action of the given type defined directly in this action map 
+    // set cell action of the given type defined directly in this action map
     if (Objects.equals(actionType, CellActionType.DELETE)) {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink statements$q65M = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
-    /*package*/ static final SContainmentLink ifFalseStatement$psZK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
-    /*package*/ static final SConcept IfStatement$Q4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
   }
 }

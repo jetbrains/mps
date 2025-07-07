@@ -21,7 +21,6 @@ import java.io.IOException;
 import java.io.DataInput;
 import com.intellij.util.indexing.DataIndexer;
 import com.intellij.util.indexing.FileContent;
-import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.ide.MPSCoreComponents;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
@@ -36,7 +35,7 @@ import java.util.HashMap;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.ArrayList;
@@ -45,7 +44,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
-@GeneratedClass(node = "r:2ba45a7a-594f-4a4d-be5c-07edf2b58826(jetbrains.mps.java.platform.index)/4183391441819864496", model = "r:2ba45a7a-594f-4a4d-be5c-07edf2b58826(jetbrains.mps.java.platform.index)")
+@GeneratedClass(nodeId = "4183391441819864496", model = "r:2ba45a7a-594f-4a4d-be5c-07edf2b58826(jetbrains.mps.java.platform.index)")
 public class ClassifierSuccessorsIndexer extends FileBasedIndexExtension<SNodeEntry, List<SNodeEntry>> {
   private static final ID<SNodeEntry, List<SNodeEntry>> NAME = ID.create("mps.ClassifierSuccessors");
 
@@ -99,7 +98,7 @@ public class ClassifierSuccessorsIndexer extends FileBasedIndexExtension<SNodeEn
   @NotNull
   @Override
   public DataIndexer<SNodeEntry, List<SNodeEntry>, FileContent> getIndexer() {
-    return new Indexer(ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getPlatform());
+    return new Indexer(MPSCoreComponents.getInstance().getPlatform());
   }
 
   private static class InputFilter implements FileBasedIndex.InputFilter {
@@ -121,7 +120,7 @@ public class ClassifierSuccessorsIndexer extends FileBasedIndexExtension<SNodeEn
     public Map<SNodeEntry, List<SNodeEntry>> map(final FileContent inputData) {
       try {
         SModelData modelData = RootNodeNameIndex.doModelParsing(myPlatform, inputData);
-        // e.g. model with merge conflict 
+        // e.g. model with merge conflict
         if (modelData == null) {
           return Collections.emptyMap();
         }
@@ -170,7 +169,7 @@ public class ClassifierSuccessorsIndexer extends FileBasedIndexExtension<SNodeEn
         successors = new ArrayList<SNodeEntry>();
         MapSequence.fromMap(result).put(key, successors);
       }
-      // being careful with node.pointer because node is not in a model 
+      // being careful with node.pointer because node is not in a model
       successors.add(new SNodeEntry(modelReference, node.getNodeId()));
     }
   }

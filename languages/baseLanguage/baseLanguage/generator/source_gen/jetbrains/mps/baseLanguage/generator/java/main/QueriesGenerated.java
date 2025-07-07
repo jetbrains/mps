@@ -11,13 +11,13 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.project.SModuleOperations;
 import java.util.Collection;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.generator.template.IfMacroContext;
@@ -38,7 +38,6 @@ import jetbrains.mps.generator.impl.query.WeaveAnchorQuery;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.template.WeavingAnchorContext;
 import jetbrains.mps.generator.impl.query.SourceNodeQuery;
-import jetbrains.mps.generator.impl.query.QueryKeyImpl;
 import jetbrains.mps.generator.impl.query.SourceNodesQuery;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.generator.impl.query.PropertyValueQuery;
@@ -47,7 +46,6 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.generator.impl.query.IfMacroCondition;
 import jetbrains.mps.generator.impl.query.ReferenceTargetQuery;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
-import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -70,25 +68,20 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean rule_Condition_0_3(final BaseMappingRuleContext _context) {
     SModule originalModule = _context.getOriginalInputModel().getModule();
-    JavaModuleFacet javaFacet = originalModule.getFacet(JavaModuleFacet.class);
-    if (javaFacet == null || javaFacet.isCompileInMps()) {
+    if (!(SModuleOperations.isJavaModuleCompiledExternally(originalModule))) {
       return false;
     }
     Collection<SModule> visibleModules = new GlobalModuleDependenciesManager(originalModule).getModules(GlobalModuleDependenciesManager.Deptype.COMPILE);
-    if (!(CollectionSequence.fromCollection(visibleModules).select(new ISelector<SModule, SModuleReference>() {
-      public SModuleReference select(SModule it) {
-        return it.getModuleReference();
-      }
-    }).contains(PersistenceFacade.getInstance().createModuleReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)")))) {
+    if (!(CollectionSequence.fromCollection(visibleModules).select((it) -> it.getModuleReference()).contains(PersistenceFacade.getInstance().createModuleReference("3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)")))) {
       return false;
     }
-    return SNodeOperations.getParent(_context.getNode()) == null && !(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(_context.getNode(), LINKS.annotation$K49I), LINKS.annotation$12Ek)).contains(SNodeOperations.getNode("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.annotations(MPS.Core/)", "~GeneratedClass")));
+    return SNodeOperations.getParent(_context.getNode()) == null && !(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.annotation$K49I)).any((it) -> SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.annotations(Annotations/)", "~GeneratedClass"))));
   }
   public static Object propertyMacro_GetValue_0_0(final PropertyMacroContext _context) {
     return "resource_" + _context.getNode().getNodeId().toString();
   }
   public static Object propertyMacro_GetValue_2_0(final PropertyMacroContext _context) {
-    return _context.getOriginalCopiedInputNode(_context.getNode()).getReference().toString();
+    return PersistenceFacade.getInstance().asString(_context.getOriginalCopiedInputNode(_context.getNode()).getNodeId());
   }
   public static Object propertyMacro_GetValue_2_1(final PropertyMacroContext _context) {
     return _context.getOriginalInputModel().getReference().toString();
@@ -140,11 +133,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public ReductionRuleCondition getReductionRuleCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(rrcMethods.containsKey(id))) {
-      return super.getReductionRuleCondition(identity);
-    }
-    return rrcMethods.get(id);
+    ReductionRuleCondition query = identity.forTemplateNode(rrcMethods);
+    return (query != null ? query : super.getReductionRuleCondition(identity));
   }
   private static class RRC implements ReductionRuleCondition {
     private final int methodKey;
@@ -173,29 +163,20 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public WeaveRuleCondition getWeaveRuleCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(wrcnMethods.containsKey(id))) {
-      return super.getWeaveRuleCondition(identity);
-    }
-    return wrcnMethods.get(id);
+    WRQ query = identity.forTemplateNode(wrcnMethods);
+    return (query != null ? query : super.getWeaveRuleCondition(identity));
   }
   @Override
   @NotNull
   public WeaveRuleQuery getWeaveRuleQuery(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(wrcnMethods.containsKey(id))) {
-      return super.getWeaveRuleQuery(identity);
-    }
-    return wrcnMethods.get(id);
+    WRQ query = identity.forTemplateNode(wrcnMethods);
+    return (query != null ? query : super.getWeaveRuleQuery(identity));
   }
   @NotNull
   @Override
   public WeaveAnchorQuery getWeaveAnchorQuery(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(wrcnMethods.containsKey(id))) {
-      return super.getWeaveAnchorQuery(identity);
-    }
-    return wrcnMethods.get(id);
+    WRQ query = identity.forTemplateNode(wrcnMethods);
+    return (query != null ? query : super.getWeaveAnchorQuery(identity));
   }
   private static class WRQ implements WeaveRuleQuery, WeaveRuleCondition, WeaveAnchorQuery {
     private final int methodKey;
@@ -244,11 +225,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public SourceNodeQuery getSourceNodeQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snqMethods.containsKey(id))) {
-      return super.getSourceNodeQuery(identity);
-    }
-    return snqMethods.get(id);
+    SourceNodeQuery query = identity.forFunctionNode(snqMethods);
+    return (query != null ? query : super.getSourceNodeQuery(identity));
   }
   private static class SNQ implements SourceNodeQuery {
     private final int methodKey;
@@ -283,11 +261,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public SourceNodesQuery getSourceNodesQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snsqMethods.containsKey(id))) {
-      return super.getSourceNodesQuery(identity);
-    }
-    return snsqMethods.get(id);
+    SourceNodesQuery query = identity.forFunctionNode(snsqMethods);
+    return (query != null ? query : super.getSourceNodesQuery(identity));
   }
   private static class SNsQ implements SourceNodesQuery {
     private final int methodKey;
@@ -318,11 +293,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public PropertyValueQuery getPropertyValueQuery(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(pvqMethods.containsKey(id))) {
-      return super.getPropertyValueQuery(identity);
-    }
-    return pvqMethods.get(id);
+    PropertyValueQuery query = identity.forTemplateNode(pvqMethods);
+    return (query != null ? query : super.getPropertyValueQuery(identity));
   }
   private static class PVQ extends PropertyValueQuery.Base {
     private final int methodKey;
@@ -353,11 +325,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public IfMacroCondition getIfMacroCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(imcMethods.containsKey(id))) {
-      return super.getIfMacroCondition(identity);
-    }
-    return imcMethods.get(id);
+    IfMacroCondition query = identity.forTemplateNode(imcMethods);
+    return (query != null ? query : super.getIfMacroCondition(identity));
   }
   private static class IfMC implements IfMacroCondition {
     private final int methodKey;
@@ -383,11 +352,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public ReferenceTargetQuery getReferenceTargetQuery(@NotNull QueryKey queryKey) {
-    final String id = queryKey.getTemplateNode().getNodeId().toString();
-    if (!(rtqMethods.containsKey(id))) {
-      return super.getReferenceTargetQuery(queryKey);
-    }
-    return rtqMethods.get(id);
+    ReferenceTargetQuery query = queryKey.forTemplateNode(rtqMethods);
+    return (query != null ? query : super.getReferenceTargetQuery(queryKey));
   }
   private static class RTQ extends ReferenceTargetQuery.Base {
     private final int methodKey;
@@ -406,10 +372,10 @@ public class QueriesGenerated extends QueryProviderBase {
     }
   }
   private static SNode _quotation_createNode_x583g4_b0a0a0j() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
-    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)"), facade.createNodeId("~Closeable")));
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+    quotedNode_1 = nb.getResult();
+    nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)/~Closeable");
     return quotedNode_1;
   }
 

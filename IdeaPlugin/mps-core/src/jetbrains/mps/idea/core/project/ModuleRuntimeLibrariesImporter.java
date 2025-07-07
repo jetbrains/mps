@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,6 @@
  */
 package jetbrains.mps.idea.core.project;
 
-import com.intellij.facet.impl.ui.FacetEditorContextBase;
-import com.intellij.facet.ui.FacetEditorContext;
-import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ModifiableRootModel;
@@ -29,55 +26,41 @@ import jetbrains.mps.idea.core.library.ModuleLibrariesUtil;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager.Deptype;
-import jetbrains.mps.project.dependency.UsedModulesCollector;
 import jetbrains.mps.smodel.BootstrapLanguages;
-import jetbrains.mps.smodel.Language;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * User: shatalin
  * Date: 6/8/12
  */
 public abstract class ModuleRuntimeLibrariesImporter {
-  private static final Logger LOG = Logger.getInstance(ModuleRuntimeLibrariesImporter.class);
 
-  private Project myProject;
-  private final Collection<? extends SModuleReference> myAddedModules;
+  private final Project myProject;
   private final ModifiableRootModel myModifiableRootModel;
   private final LibrariesContainer myLibrariesContainer;
 
-  public ModuleRuntimeLibrariesImporter(FacetEditorContext context, Collection<? extends SModuleReference> addedModules) {
-    this(addedModules, context.getModifiableRootModel(), ((FacetEditorContextBase) context).getContainer());
-    myProject = context.getProject();
-  }
-
-  public ModuleRuntimeLibrariesImporter(Module ideaModule, Collection<? extends SModuleReference> addedModules, ModifiableRootModel modifiableModel) {
-    this(addedModules, modifiableModel, LibrariesContainerFactory.createContainer(ideaModule));
-    myProject = ideaModule.getProject();
-  }
-
-  private ModuleRuntimeLibrariesImporter(Collection<? extends SModuleReference> addedModules, ModifiableRootModel modifiableModel, LibrariesContainer container) {
-    myAddedModules = addedModules;
+  protected ModuleRuntimeLibrariesImporter(Module ideaModule, ModifiableRootModel modifiableModel) {
     myModifiableRootModel = modifiableModel;
-    myLibrariesContainer = container;
-  }
-
-  public static void importForUsedLanguages(FacetEditorContext context, Collection<? extends SModuleReference> addedModules) {
-    new UsedLanguagesImporter(context, addedModules).addMissingLibraries();
+    myLibrariesContainer = LibrariesContainerFactory.createContainer(ideaModule);
+    myProject = ideaModule.getProject();
   }
 
   // would grab model write for a project
   // generally, in most cases we are already inside write (IdeaModuleMPSSupport.fixImports() <-- new model action and model properties are inside command,
   //    only use language is not.
-  public static void importForUsedLanguages(Module ideaModule, Collection<SModuleReference> addedModules, ModifiableRootModel modifiableModel) {
-    new UsedLanguagesImporter(ideaModule, addedModules, modifiableModel).addMissingLibraries();
+  public static void importForUsedLanguages(Module ideaModule, Collection<SLanguage> addedLanguages, ModifiableRootModel modifiableModel) {
+    new UsedLanguagesImporter(ideaModule, addedLanguages, modifiableModel).addMissingLibraries();
   }
 
   // would grab model write for a project
@@ -95,7 +78,7 @@ public abstract class ModuleRuntimeLibrariesImporter {
       Collection<Library> projectLibs2Add = new HashSet<Library>();
       // FIXME the code doesn't look right for added used languages scenario, why don't we stick to SLanguage.getLanguageRuntimes()
       //       and stop bother with modules and their transitive dependencies (see UsedLanguagesImporter.collectRuntimeModules(), below)
-      for (SModule usedModule : collectRuntimeModules(projectRepository, myAddedModules)) {
+      for (SModule usedModule : collectRuntimeModules(projectRepository)) {
         if (BootstrapLanguages.jdkRef().equals(usedModule.getModuleReference())) {
           continue;
         }
@@ -128,79 +111,48 @@ public abstract class ModuleRuntimeLibrariesImporter {
     return myLibrariesContainer.getProject();
   }
 
-  protected abstract Set<SModule> collectRuntimeModules(SRepository repository, Collection<? extends SModuleReference> moduleReferences);
+  protected abstract Collection<SModule> collectRuntimeModules(SRepository repository);
 
   private static class UsedLanguagesImporter extends ModuleRuntimeLibrariesImporter {
+    private final Collection<SLanguage> myAddedLanguages;
 
-    public UsedLanguagesImporter(FacetEditorContext context, Collection<? extends SModuleReference> addedModules) {
-      super(context, addedModules);
-    }
-
-    public UsedLanguagesImporter(Module ideaModule, Collection<SModuleReference> addedModules, ModifiableRootModel modifiableModel) {
-      super(ideaModule, addedModules, modifiableModel);
+    public UsedLanguagesImporter(Module ideaModule, Collection<SLanguage> addedLanguages, ModifiableRootModel modifiableModel) {
+      super(ideaModule, modifiableModel);
+      myAddedLanguages = addedLanguages;
     }
 
     @Override
-    protected Set<SModule> collectRuntimeModules(SRepository repository, Collection<? extends SModuleReference> moduleReferences) {
-      Set<SModule> runtimeDependencies = new HashSet<SModule>();
-      UsedModulesCollector usedModulesCollector = new UsedModulesCollector();
-      for (SModuleReference moduleReference : moduleReferences) {
-        SModule module = moduleReference.resolve(repository);
-        if (module == null) {
-          // module is absent, e.g. its providing plugin is not enabled
-          continue;
-        }
-        LOG.assertTrue(module != null, "Can not find language by reference " + moduleReference);
-        if (false == module instanceof Language) {
-          continue;
-        }
-        Language language = (Language) module;
-        // XXX this code is suspicious, why do we use Language module to collect runtime dependencies. Why not SLanguage?
-        collectRuntimeModules(repository, runtimeDependencies, language, usedModulesCollector);
-      }
-      return runtimeDependencies;
-    }
+    protected Collection<SModule> collectRuntimeModules(SRepository repository) {
+      Set<SModuleReference> runtimeDependencies = new HashSet<>();
+      final LanguageRegistry languageRegistry = LanguageRegistry.getInstance(repository);
+      languageRegistry.withAvailableLanguages(myAddedLanguages.stream(), lr -> runtimeDependencies.addAll(lr.getRuntimeModules()));
 
-    private void collectRuntimeModules(SRepository repository, Set<SModule> runtimeDependencies, Language language, UsedModulesCollector usedModulesCollector) {
-      for (SModuleReference runtimeModuleReference : language.getRuntimeModulesReferences()) {
-        SModule runtimeModule = runtimeModuleReference.resolve(repository);
-        if (runtimeModule != null) {
-          collectRuntimeDependencies(runtimeModule, runtimeDependencies, usedModulesCollector);
-        }
-      }
-    }
-
-    private void collectRuntimeDependencies(SModule module, Set<SModule> result, UsedModulesCollector usedModulesCollector) {
-      // todo: extract some other methods in GlobalModuleDependenciesManager. Like getDependencies(Iterable<> addedModules, Iterable<> addedUsedModules, Deptype)
-      if (result.contains(module)) {
-        return;
-      }
-      result.add(module);
-      // XXX usedModulesCollector.directlyUsedModules relies on module.getRepository()
-      for (SModule usedModule : usedModulesCollector.directlyUsedModules(module, Deptype.EXECUTE.reexportAll, Deptype.EXECUTE.runtimes)) {
-        collectRuntimeDependencies(usedModule, result, usedModulesCollector);
-      }
+      final List<SModule> rtDeps = runtimeDependencies.stream().map(mr -> mr.resolve(repository)).filter(Objects::nonNull).collect(Collectors.toList());
+      // 1. GMDM.getModules/collectNeighbours return value includes starting set of modules
+      // 2. No idea why 'EXECUTE' here, while 'COMPILE' for imported models, below. XXX FWIW, I don't feel EXECUTE is right here.
+      // FWIW, I'm aware of Timur's dance with getModules/recursive directlyUsedModules here back
+      // in March 2013 (885b9cca48, 4cf17735504), but to me, getModules() does exactly what the code here tried to mimic.
+      return new GlobalModuleDependenciesManager(rtDeps).getModules(Deptype.EXECUTE);
     }
   }
 
   private static class UsedModulesImporter extends ModuleRuntimeLibrariesImporter {
+    private final Collection<? extends SModuleReference> myAddedModules;
+
     public UsedModulesImporter(Module ideaModule, Collection<? extends SModuleReference> addedModules, ModifiableRootModel modifiableModel) {
-      super(ideaModule, addedModules, modifiableModel);
+      super(ideaModule, modifiableModel);
+      myAddedModules = addedModules;
     }
 
     @Override
-    protected Set<SModule> collectRuntimeModules(SRepository repository, Collection<? extends SModuleReference> moduleReferences) {
-      Set<SModule> runtimeDependencies = new HashSet<SModule>();
-      for (SModuleReference moduleReference : moduleReferences) {
-        SModule module = moduleReference.resolve(repository);
-        collectRuntimeModules(runtimeDependencies, module);
+    protected Collection<SModule> collectRuntimeModules(SRepository repository) {
+      Set<SModule> runtimeDependencies = new HashSet<>();
+      for (SModuleReference moduleReference : myAddedModules) {
+        runtimeDependencies.add(moduleReference.resolve(repository));
       }
-      return runtimeDependencies;
-    }
-
-    private void collectRuntimeModules(Set<SModule> runtimeDependencies, SModule module) {
-      runtimeDependencies.add(module);
-      runtimeDependencies.addAll(new GlobalModuleDependenciesManager(Collections.singleton(module)).getModules(Deptype.COMPILE));
+      // 1. GMDM.getModules/collectNeighbours return value includes starting set of modules
+      // 2. No idea why 'COMPILE', while 'EXECUTE' for used language
+      return new GlobalModuleDependenciesManager(runtimeDependencies).getModules(Deptype.COMPILE);
     }
   }
 }

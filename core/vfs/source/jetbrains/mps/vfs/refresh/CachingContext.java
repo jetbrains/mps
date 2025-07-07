@@ -21,6 +21,9 @@ package jetbrains.mps.vfs.refresh;
  * Created by apyshkin on 6/19/16.
  */
 public interface CachingContext {
+  /**
+   * recursive refresh is discouraged, use with caution
+   */
   boolean isRecursive();
   boolean isSynchronous();
 }

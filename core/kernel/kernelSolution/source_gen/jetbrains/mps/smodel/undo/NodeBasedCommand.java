@@ -10,10 +10,10 @@ import jetbrains.mps.smodel.SNodeUndoableAction;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 
-@GeneratedClass(node = "r:79655025-bd36-445f-8b79-189312ab627e(jetbrains.mps.smodel.undo)/63618339873621017", model = "r:79655025-bd36-445f-8b79-189312ab627e(jetbrains.mps.smodel.undo)")
-public abstract class NodeBasedCommand extends DefaultCommand {
+@GeneratedClass(nodeId = "63618339873621017", model = "r:79655025-bd36-445f-8b79-189312ab627e(jetbrains.mps.smodel.undo)")
+public abstract class NodeBasedCommand extends DefaultUndoContext implements Runnable {
   @NotNull
-  private SNode myMainNode;
+  private final SNode myMainNode;
 
   public NodeBasedCommand(@NotNull SNode mainNode, @NotNull SRepository repository) {
     super(repository);

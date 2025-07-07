@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -20,7 +19,6 @@ import jetbrains.mps.smodel.adapter.ids.SPropertyId;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import org.jetbrains.mps.openapi.language.SEnumeration;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -32,10 +30,10 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class PropertyAttribute__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
 
-  public static final SMethod<SProperty> getProperty_id1avfQ4BBzOo = new SMethodBuilder<SProperty>(new SJavaCompoundTypeImpl(SProperty.class)).name("getProperty").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1avfQ4BBzOo").build();
-  public static final SMethod<Void> setProperty_id6Gg5Klvu8CV = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setProperty").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6Gg5Klvu8CV").build(SMethodBuilder.createJavaParameter(SProperty.class, ""));
-  public static final SMethod<SNode> getPropertyDeclaration_id121FNPYBLc9 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getPropertyDeclaration").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("121FNPYBLc9").build();
-  public static final SMethod<String> getNameForReporting_id5gACAVBzOt1 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getNameForReporting").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5gACAVBzOt1").build();
+  public static final SMethod<SProperty> getProperty_id1avfQ4BBzOo = new SMethodBuilder<SProperty>(new SJavaCompoundTypeImpl(SProperty.class)).name("getProperty").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1341860900488756504L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  public static final SMethod<Void> setProperty_id6Gg5Klvu8CV = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setProperty").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7714691473529670203L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter(SProperty.class, ""));
+  public static final SMethod<SNode> getPropertyDeclaration_id121FNPYBLc9 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getPropertyDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1189424455254741769L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  public static final SMethod<String> getNameForReporting_id5gACAVBzOt1 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getNameForReporting").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6063712545515980609L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getProperty_id1avfQ4BBzOo, setProperty_id6Gg5Klvu8CV, getPropertyDeclaration_id121FNPYBLc9, getNameForReporting_id5gACAVBzOt1);
 
@@ -61,8 +59,8 @@ public final class PropertyAttribute__BehaviorDescriptor extends BaseBHDescripto
     if (property.getType() instanceof SEnumeration) {
       if (SPropertyOperations.getBoolean(__thisNode__, PROPS.enumUsageMigrated$64YW) && SNodeOperations.hasRole(propertyDeclaration, LINKS.oldProperty$Vefi)) {
         propertyDeclaration = SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(propertyDeclaration)), CONCEPTS.PropertyDeclaration$1S);
-      } else if (!(SPropertyOperations.getBoolean(__thisNode__, PROPS.enumUsageMigrated$64YW)) && SNodeOperations.hasRole(propertyDeclaration, LINKS.propertyDeclaration$YUgg) && (AttributeOperations.getAttribute(propertyDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumPropertyMigrationInfo$O3)) != null)) {
-        propertyDeclaration = SLinkOperations.getTarget(AttributeOperations.getAttribute(propertyDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumPropertyMigrationInfo$O3)), LINKS.oldProperty$Vefi);
+      } else if (!(SPropertyOperations.getBoolean(__thisNode__, PROPS.enumUsageMigrated$64YW)) && SNodeOperations.hasRole(propertyDeclaration, LINKS.propertyDeclaration$YUgg) && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumPropertyMigrationInfo$O3).get(propertyDeclaration) != null)) {
+        propertyDeclaration = SLinkOperations.getTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumPropertyMigrationInfo$O3).get(propertyDeclaration), LINKS.oldProperty$Vefi);
       }
     }
     return propertyDeclaration;

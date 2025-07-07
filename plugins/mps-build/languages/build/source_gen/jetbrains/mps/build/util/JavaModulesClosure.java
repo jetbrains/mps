@@ -10,10 +10,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
-import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -51,7 +48,7 @@ public class JavaModulesClosure {
 
         if (modules.add(depModule)) {
           moduleClosure(depModule, true);
-          // re-add to move to the end of the list 
+          // re-add to move to the end of the list
           modules.remove(depModule);
           modules.add(depModule);
         }
@@ -90,31 +87,19 @@ public class JavaModulesClosure {
     }
   }
 
-  public Collection<SNode> getModules() {
+  public Iterable<SNode> getModules() {
     return modules;
   }
-  public Collection<SNode> getLibraries() {
+  public Iterable<SNode> getLibraries() {
     return libraries;
   }
-  public Collection<SNode> getJars() {
-    return Sequence.fromIterable(((Iterable<SNode>) jars)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.customLocation$T4ZX) == null);
-      }
-    }).toListSequence();
+  public Iterable<SNode> getJars() {
+    return Sequence.fromIterable(((Iterable<SNode>) jars)).where((it) -> (SLinkOperations.getTarget(it, LINKS.customLocation$T4ZX) == null)).toList();
   }
-  public Collection<SNode> getExternalJars() {
-    return Sequence.fromIterable(((Iterable<SNode>) jars)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.customLocation$T4ZX) != null);
-      }
-    }).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.customLocation$T4ZX), LINKS.jar$JLD3);
-      }
-    }).concat(SetSequence.fromSet(externalJars)).toListSequence();
+  public Iterable<SNode> getExternalJars() {
+    return Sequence.fromIterable(((Iterable<SNode>) jars)).where((it) -> (SLinkOperations.getTarget(it, LINKS.customLocation$T4ZX) != null)).select((it) -> SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.customLocation$T4ZX), LINKS.jar$JLD3)).concat(SetSequence.fromSet(externalJars)).toList();
   }
-  public Collection<Tuples._2<SNode, String>> getExternalJarsInFolder() {
+  public Iterable<Tuples._2<SNode, String>> getExternalJarsInFolder() {
     return externalJarsInFolder;
   }
   public SNode getInitial() {

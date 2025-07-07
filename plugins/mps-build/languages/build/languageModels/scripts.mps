@@ -7,6 +7,7 @@
   </languages>
   <imports>
     <import index="3ior" ref="r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)" />
+    <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -88,7 +89,7 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -159,6 +160,26 @@
                 </node>
                 <node concept="3TrEf2" id="35zoHQHRCvw" role="2OqNvi">
                   <ref role="3Tt5mk" to="3ior:4zlO3QT8$mq" resolve="path" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="2Wk1xJ4k_SK" role="3cqZAp">
+            <node concept="2OqwBi" id="2Wk1xJ4kBJw" role="3clFbG">
+              <node concept="2OqwBi" id="2Wk1xJ4kA7u" role="2Oq$k0">
+                <node concept="37vLTw" id="2Wk1xJ4k_SI" role="2Oq$k0">
+                  <ref role="3cqZAo" node="35zoHQHRCsG" resolve="file" />
+                </node>
+                <node concept="3Tsc0h" id="2Wk1xJ4kApQ" role="2OqNvi">
+                  <ref role="3TtcxE" to="tpck:4uZwTti3__2" resolve="smodelAttribute" />
+                </node>
+              </node>
+              <node concept="X8dFx" id="2Wk1xJ4kDl0" role="2OqNvi">
+                <node concept="2OqwBi" id="2Wk1xJ4kI8u" role="25WWJ7">
+                  <node concept="_YI3z" id="2Wk1xJ4kFI4" role="2Oq$k0" />
+                  <node concept="3Tsc0h" id="2Wk1xJ4kINU" role="2OqNvi">
+                    <ref role="3TtcxE" to="tpck:4uZwTti3__2" resolve="smodelAttribute" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -276,6 +297,26 @@
               </node>
             </node>
           </node>
+          <node concept="3clFbF" id="2Wk1xJ4ktGH" role="3cqZAp">
+            <node concept="2OqwBi" id="2Wk1xJ4kwd0" role="3clFbG">
+              <node concept="2OqwBi" id="2Wk1xJ4kusK" role="2Oq$k0">
+                <node concept="37vLTw" id="2Wk1xJ4ktGF" role="2Oq$k0">
+                  <ref role="3cqZAo" node="35zoHQHRCv_" resolve="files" />
+                </node>
+                <node concept="3Tsc0h" id="2Wk1xJ4kuAK" role="2OqNvi">
+                  <ref role="3TtcxE" to="tpck:4uZwTti3__2" resolve="smodelAttribute" />
+                </node>
+              </node>
+              <node concept="X8dFx" id="2Wk1xJ4kxOz" role="2OqNvi">
+                <node concept="2OqwBi" id="2Wk1xJ4k$X4" role="25WWJ7">
+                  <node concept="_YI3z" id="2Wk1xJ4k$6m" role="2Oq$k0" />
+                  <node concept="3Tsc0h" id="2Wk1xJ4k_sC" role="2OqNvi">
+                    <ref role="3TtcxE" to="tpck:4uZwTti3__2" resolve="smodelAttribute" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
         </node>
       </node>
       <node concept="_Y34e" id="35zoHQHRCvW" role="_XDHO">
@@ -374,6 +415,26 @@
                   <node concept="_YI3z" id="35zoHQHRCzV" role="2Oq$k0" />
                   <node concept="3Tsc0h" id="35zoHQHRC$m" role="2OqNvi">
                     <ref role="3TtcxE" to="3ior:7XQqoCTjyOu" resolve="handlers" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="2Wk1xJ4keV2" role="3cqZAp">
+            <node concept="2OqwBi" id="2Wk1xJ4khD9" role="3clFbG">
+              <node concept="2OqwBi" id="2Wk1xJ4kg5S" role="2Oq$k0">
+                <node concept="37vLTw" id="2Wk1xJ4keV0" role="2Oq$k0">
+                  <ref role="3cqZAo" node="35zoHQHRCyq" resolve="file" />
+                </node>
+                <node concept="3Tsc0h" id="2Wk1xJ4kghj" role="2OqNvi">
+                  <ref role="3TtcxE" to="tpck:4uZwTti3__2" resolve="smodelAttribute" />
+                </node>
+              </node>
+              <node concept="X8dFx" id="2Wk1xJ4kjeD" role="2OqNvi">
+                <node concept="2OqwBi" id="2Wk1xJ4klRy" role="25WWJ7">
+                  <node concept="_YI3z" id="2Wk1xJ4kkvC" role="2Oq$k0" />
+                  <node concept="3Tsc0h" id="2Wk1xJ4kpcP" role="2OqNvi">
+                    <ref role="3TtcxE" to="tpck:4uZwTti3__2" resolve="smodelAttribute" />
                   </node>
                 </node>
               </node>
@@ -507,6 +568,26 @@
                   <node concept="_YI3z" id="35zoHQHRC$v" role="2Oq$k0" />
                   <node concept="3Tsc0h" id="35zoHQHRC$w" role="2OqNvi">
                     <ref role="3TtcxE" to="3ior:7XQqoCTjyOu" resolve="handlers" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="2Wk1xJ4k1OT" role="3cqZAp">
+            <node concept="2OqwBi" id="2Wk1xJ4k5YC" role="3clFbG">
+              <node concept="2OqwBi" id="2Wk1xJ4k4ui" role="2Oq$k0">
+                <node concept="37vLTw" id="2Wk1xJ4k1OR" role="2Oq$k0">
+                  <ref role="3cqZAo" node="35zoHQHRCxE" resolve="files" />
+                </node>
+                <node concept="3Tsc0h" id="2Wk1xJ4k4CY" role="2OqNvi">
+                  <ref role="3TtcxE" to="tpck:4uZwTti3__2" resolve="smodelAttribute" />
+                </node>
+              </node>
+              <node concept="X8dFx" id="2Wk1xJ4k7$8" role="2OqNvi">
+                <node concept="2OqwBi" id="2Wk1xJ4k8W6" role="25WWJ7">
+                  <node concept="_YI3z" id="2Wk1xJ4k7$e" role="2Oq$k0" />
+                  <node concept="3Tsc0h" id="2Wk1xJ4kaw4" role="2OqNvi">
+                    <ref role="3TtcxE" to="tpck:4uZwTti3__2" resolve="smodelAttribute" />
                   </node>
                 </node>
               </node>

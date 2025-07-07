@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.project.Project;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -36,15 +35,16 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class ParameterDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
 
-  public static final SMethod<SNode> createReference_idhEwJfME = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createReference").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwJfME").build();
-  public static final SMethod<Boolean> isCanBeUnused_idhNVeX73 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isCanBeUnused").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hNVeX73").build();
-  public static final SMethod<String> getSuffix_id2Bet8mWh3pg = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSuffix").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2Bet8mWh3pg").build(SMethodBuilder.createJavaParameter(Project.class, ""));
-  public static final SMethod<String> getPrefix_id2Bet8mWh2lw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPrefix").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2Bet8mWh2lw").build(SMethodBuilder.createJavaParameter(Project.class, ""));
-  public static final SMethod<Boolean> hasAnnotation_id4LgT5De_n2I = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasAnnotation").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4LgT5De_n2I").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> hasAnnotation_id3WDGf12Eb7o = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasAnnotation").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3WDGf12Eb7o").build(SMethodBuilder.createJavaParameter((Class<SNodeReference>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getValue_idhOJcizo = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getValue").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hOJcizo").build();
+  public static final SMethod<SNode> createReference_idhEwJfME = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877517482L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> isCanBeUnused_idhNVeX73 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isCanBeUnused").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1223985713603L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<String> getSuffix_id2Bet8mWh3pg = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSuffix").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3012473318495499856L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(Project.class, ""));
+  public static final SMethod<String> getPrefix_id2Bet8mWh2lw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPrefix").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3012473318495495520L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(Project.class, ""));
+  public static final SMethod<Boolean> hasAnnotation_id4LgT5De_n2I = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasAnnotation").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5499146221535981742L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> hasAnnotation_id3WDGf12Eb7o = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasAnnotation").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4551363444391588312L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNodeReference>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getValue_idhOJcizo = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1224857430232L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> needInference_idQ$FjPqwIoN = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needInference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(983101097696749107L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(createReference_idhEwJfME, isCanBeUnused_idhNVeX73, getSuffix_id2Bet8mWh3pg, getPrefix_id2Bet8mWh2lw, hasAnnotation_id4LgT5De_n2I, hasAnnotation_id3WDGf12Eb7o, getValue_idhOJcizo);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(createReference_idhEwJfME, isCanBeUnused_idhNVeX73, getSuffix_id2Bet8mWh3pg, getPrefix_id2Bet8mWh2lw, hasAnnotation_id4LgT5De_n2I, hasAnnotation_id3WDGf12Eb7o, getValue_idhOJcizo, needInference_idQ$FjPqwIoN);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -63,14 +63,14 @@ public final class ParameterDeclaration__BehaviorDescriptor extends BaseBHDescri
     return false;
   }
   /*package*/ static String getSuffix_id2Bet8mWh3pg(@NotNull SNode __thisNode__, Project project) {
-    CodeStyleSettings settings = CodeStyleSettingsRegistry.getSettings(project);
+    CodeStyleSettings settings = CodeStyleSettingsRegistry.get(project);
     if (settings == null) {
       return "";
     }
     return (settings.getParameterSuffix() == null ? "" : settings.getParameterSuffix());
   }
   /*package*/ static String getPrefix_id2Bet8mWh2lw(@NotNull SNode __thisNode__, Project project) {
-    CodeStyleSettings settings = CodeStyleSettingsRegistry.getSettings(project);
+    CodeStyleSettings settings = CodeStyleSettingsRegistry.get(project);
     if (settings == null) {
       return "";
     }
@@ -94,6 +94,9 @@ public final class ParameterDeclaration__BehaviorDescriptor extends BaseBHDescri
   }
   /*package*/ static SNode getValue_idhOJcizo(@NotNull SNode __thisNode__) {
     throw new UnsupportedOperationException();
+  }
+  /*package*/ static boolean needInference_idQ$FjPqwIoN(@NotNull SNode __thisNode__) {
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.type$a1UY), CONCEPTS.UndefinedType$uv);
   }
 
   /*package*/ ParameterDeclaration__BehaviorDescriptor() {
@@ -125,6 +128,8 @@ public final class ParameterDeclaration__BehaviorDescriptor extends BaseBHDescri
         return (T) ((Boolean) hasAnnotation_id3WDGf12Eb7o(node, (SNodeReference) parameters[0]));
       case 6:
         return (T) ((SNode) getValue_idhOJcizo(node));
+      case 7:
+        return (T) ((Boolean) needInference_idQ$FjPqwIoN(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -159,12 +164,14 @@ public final class ParameterDeclaration__BehaviorDescriptor extends BaseBHDescri
     /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
     /*package*/ static final SReferenceLink annotation$12Ek = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
     /*package*/ static final SContainmentLink annotation$K49I = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
     /*package*/ static final SInterfaceConcept IVisible$zu = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible");
     /*package*/ static final SConcept PrivateVisibility$l0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
+    /*package*/ static final SConcept UndefinedType$uv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x431d52a5d09a4ea9L, "jetbrains.mps.baseLanguage.structure.UndefinedType");
   }
 
   private static final class PROPS {

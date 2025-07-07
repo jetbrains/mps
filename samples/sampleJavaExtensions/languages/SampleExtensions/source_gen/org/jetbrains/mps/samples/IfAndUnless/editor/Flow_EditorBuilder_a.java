@@ -18,9 +18,9 @@ import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
-import java.awt.Color;
 import jetbrains.mps.nodeEditor.MPSFonts;
+import java.awt.Color;
+import com.intellij.ui.JBColor;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandler;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -71,11 +71,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
     editorCell.setCellId("ReadOnlyModelAccessor_gc1fin_a0");
     Style style = new StyleImpl();
-    style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(16119260)));
+    style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_gc1fin_a0a0()));
     style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD_ITALIC);
     style.set(StyleAttributes.EDITABLE, false);
     editorCell.getStyle().putAll(style);
     return editorCell;
+  }
+  private Color _StyleParameter_QueryFunction_gc1fin_a0a0() {
+    return new JBColor(new Color(0xF5F5DC), new Color(0x5050AC));
   }
   private EditorCell createRefNodeList_0() {
     AbstractCellListHandler handler = new statementListHandler_gc1fin_b0(myNode, getEditorContext());

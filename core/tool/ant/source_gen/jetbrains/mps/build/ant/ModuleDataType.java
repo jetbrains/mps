@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.apache.tools.ant.types.DataType;
 import java.io.File;
 
-@GeneratedClass(node = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)/2194822006344542667", model = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)")
+@GeneratedClass(nodeId = "2194822006344542667", model = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)")
 public class ModuleDataType extends DataType {
   private File myFile;
   public ModuleDataType() {
@@ -15,7 +15,7 @@ public class ModuleDataType extends DataType {
     return myFile;
   }
   public void setFile(File file) {
-    // todo remove duplication here, note the classloader here doesn't contain MPSFileTypeFactory [use proposed inlineConstants language when it's implemented] 
+    // todo remove duplication here, note the classloader here doesn't contain MPSFileTypeFactory [use proposed inlineConstants language when it's implemented]
     String[] allowedExt = {"jar", "mpl", "msd", "devkit"};
     boolean extOk = true;
     for (String ext : allowedExt) {

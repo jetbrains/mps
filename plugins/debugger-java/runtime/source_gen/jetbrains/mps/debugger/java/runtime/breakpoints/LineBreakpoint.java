@@ -4,31 +4,30 @@ package jetbrains.mps.debugger.java.runtime.breakpoints;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.debug.api.breakpoints.ILocationBreakpoint;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.debug.api.breakpoints.BreakpointLocation;
+import jetbrains.mps.textgen.trace.NodeTraceInfo;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.debug.api.breakpoints.BreakpointLocation;
 import jetbrains.mps.debugger.java.runtime.engine.events.EventsProcessor;
 import com.sun.jdi.ReferenceType;
 import jetbrains.mps.debugger.java.runtime.engine.RequestManager;
+import jetbrains.mps.textgen.trace.TraceablePositionInfo;
 import java.util.List;
 import com.sun.jdi.Location;
 import com.sun.jdi.request.BreakpointRequest;
 import com.sun.jdi.ClassNotPreparedException;
 import com.sun.jdi.ObjectCollectedException;
-import com.sun.jdi.InvalidLineNumberException;
-import com.sun.jdi.InternalException;
 import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
 
-@GeneratedClass(node = "r:b4441af2-7d93-477f-8f98-ff1136374539(jetbrains.mps.debugger.java.runtime.breakpoints)/2891782949125168600", model = "r:b4441af2-7d93-477f-8f98-ff1136374539(jetbrains.mps.debugger.java.runtime.breakpoints)")
+@GeneratedClass(nodeId = "2891782949125168600", model = "r:b4441af2-7d93-477f-8f98-ff1136374539(jetbrains.mps.debugger.java.runtime.breakpoints)")
 public class LineBreakpoint extends JavaBreakpoint implements ILocationBreakpoint {
-  private static final Logger LOG = LogManager.getLogger(LineBreakpoint.class);
+  private static final Logger LOG = Logger.getLogger(LineBreakpoint.class);
   private final SNodeReference myNode;
-  private BreakpointLocation myLocation;
+  private NodeTraceInfo myTargetCodeLocation;
 
   public LineBreakpoint(@NotNull SNodeReference nodePointer, Project project) {
     super(project);
@@ -41,17 +40,26 @@ public class LineBreakpoint extends JavaBreakpoint implements ILocationBreakpoin
   @NotNull
   @Override
   public BreakpointLocation getLocation() {
-    if (myLocation == null) {
-      myLocation = new BreakpointLocationUpdate(myNode, getRepository()).get();
+    return new BreakpointLocation(myNode);
+  }
+
+  @NotNull
+  protected NodeTraceInfo getTargetCodeLocation() {
+    if (myTargetCodeLocation == null) {
+      myTargetCodeLocation = new BreakpointLocationUpdate(myNode, getRepository()).get();
     }
-    return myLocation;
+    return myTargetCodeLocation;
   }
 
   @Override
   protected void createRequestForPreparedClass(EventsProcessor debugProcess, final ReferenceType classType) {
     RequestManager requestManager = debugProcess.getRequestManager();
     try {
-      int lineIndex = getLocation().getLineIndexInFile();
+      TraceablePositionInfo targetCodePosition = getTargetCodeLocation().getPosition();
+      if (targetCodePosition == null) {
+        return;
+      }
+      int lineIndex = targetCodePosition.getStartLine() + 1;
       List<Location> locs = classType.locationsOfLine(lineIndex);
       if (locs.size() > 0) {
         for (final Location location : locs) {
@@ -59,41 +67,25 @@ public class LineBreakpoint extends JavaBreakpoint implements ILocationBreakpoin
           requestManager.enableRequest(request);
         }
       } else {
-        //  there's no executable code in this class 
+        //  there's no executable code in this class
         requestManager.setInvalid(this, "no executable code found");
         String message = "No locations of type " + classType.name() + " found at line " + lineIndex;
-        LOG.warn(message);
+        LOG.warning(message);
       }
     } catch (ClassNotPreparedException ex) {
-      LOG.warn("ClassNotPreparedException: " + ex.getMessage());
-      //  there's a chance to add a breakpoint when the class is prepared 
+      LOG.warning("ClassNotPreparedException: " + ex.getMessage());
+      //  there's a chance to add a breakpoint when the class is prepared
     } catch (ObjectCollectedException ex) {
-      LOG.warn("ObjectCollectedException: " + ex.getMessage());
-      //  there's a chance to add a breakpoint when the class is prepared 
-    } catch (InvalidLineNumberException ex) {
-      requestManager.setInvalid(this, "no executable code found");
-      LOG.warn("InvalidLineNumberException: " + ex.getMessage());
-    } catch (InternalException ex) {
-      LOG.error(null, ex);
+      LOG.warning("ObjectCollectedException: " + ex.getMessage());
+      //  there's a chance to add a breakpoint when the class is prepared
     } catch (Exception ex) {
-      LOG.error(null, ex);
+      LOG.error(ex);
     }
   }
   @Nullable
   @Override
   protected String getClassNameToPrepare() {
-    String className = getLocation().getTargetUnitName();
-    if (className == null) {
-      //  todo when this case does actually happen? 
-      String fileName = getLocation().getFileName();
-      if (fileName != null && fileName.endsWith(".java")) {
-        fileName = fileName.substring(0, fileName.length() - ".java".length());
-        className = myNode.getModelReference().getName().getLongName() + "." + fileName;
-      } else {
-        return null;
-      }
-    }
-    return className;
+    return getTargetCodeLocation().getUnitName();
   }
   @NotNull
   @Override
@@ -102,7 +94,7 @@ public class LineBreakpoint extends JavaBreakpoint implements ILocationBreakpoin
   }
   @Override
   public boolean isValid() {
-    return isNotEmptyString(getLocation().getTargetUnitName()) || isNotEmptyString(getLocation().getFileName());
+    return isNotEmptyString(getClassNameToPrepare());
   }
   @Override
   public String getPresentation() {

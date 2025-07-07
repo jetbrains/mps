@@ -22,8 +22,10 @@ import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.DotStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.editor.runtime.style.FocusPolicy;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 /*package*/ class CheckedDotExpression_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -113,12 +115,20 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ".?");
     editorCell.setCellId("Constant_6ihim1_b0");
     Style style = new StyleImpl();
-    new DotStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new DotStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.SELECTABLE, true);
+    style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, _StyleParameter_QueryFunction_6ihim1_a1b0());
+    style.set(StyleAttributes.INDENT_LAYOUT_INDENT, _StyleParameter_QueryFunction_6ihim1_a2b0());
     editorCell.getStyle().putAll(style);
     CheckedDot_Actions_MakeUnchecked.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
     return editorCell;
+  }
+  private boolean _StyleParameter_QueryFunction_6ihim1_a1b0() {
+    return SPropertyOperations.getBoolean(getNode(), PROPS.isMultiline$uBO0);
+  }
+  private boolean _StyleParameter_QueryFunction_6ihim1_a2b0() {
+    return SPropertyOperations.getBoolean(getNode(), PROPS.isMultiline$uBO0);
   }
   private EditorCell createRefNode_1() {
     SingleRoleCellProvider provider = new operationSingleRoleHandler_6ihim1_c0(myNode, LINKS.operation$gs9E, getEditorContext());
@@ -183,5 +193,9 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   private static final class LINKS {
     /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
     /*package*/ static final SContainmentLink operation$gs9E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty isMultiline$uBO0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x230699da32e7ae05L, "isMultiline");
   }
 }

@@ -9,14 +9,14 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -24,18 +24,19 @@ import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class NodeMacro__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro");
 
-  public static final SMethod<SNode> getInputNodeTypeInsideOfMacro_idhEwIosJ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getInputNodeTypeInsideOfMacro").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIosJ").build();
-  public static final SMethod<SNode> getPreviousNodeMacro_idhEwIot7 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getPreviousNodeMacro").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIot7").build();
-  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIMiw").build();
-  /*package*/ static final SMethod<SNode> getEnclosingMacro_idhEwIoti = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getEnclosingMacro").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("hEwIoti").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  /*package*/ static final SMethod<SNode> getInputNodeTypeFromEnvironment_idhEwIouc = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getInputNodeTypeFromEnvironment").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("hEwIouc").build();
-  public static final SMethod<Boolean> hasMappingLabel_id5KmckUrKj9u = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasMappingLabel").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5KmckUrKj9u").build();
+  public static final SMethod<SNode> getInputNodeTypeInsideOfMacro_idhEwIosJ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getInputNodeTypeInsideOfMacro").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877290799L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
+  public static final SMethod<SNode> getPreviousNodeMacro_idhEwIot7 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getPreviousNodeMacro").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877290823L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
+  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  /*package*/ static final SMethod<SNode> getEnclosingMacro_idhEwIoti = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getEnclosingMacro").modifiers(1, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1213877290834L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  /*package*/ static final SMethod<SNode> getInputNodeTypeFromEnvironment_idhEwIouc = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getInputNodeTypeFromEnvironment").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1213877290892L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
+  public static final SMethod<Boolean> hasMappingLabel_id5KmckUrKj9u = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasMappingLabel").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6635545314667344478L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInputNodeTypeInsideOfMacro_idhEwIosJ, getPreviousNodeMacro_idhEwIot7, getPresentation_idhEwIMiw, getEnclosingMacro_idhEwIoti, getInputNodeTypeFromEnvironment_idhEwIouc, hasMappingLabel_id5KmckUrKj9u);
 
@@ -43,6 +44,10 @@ public final class NodeMacro__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getInputNodeTypeInsideOfMacro_idhEwIosJ(@NotNull SNode __thisNode__) {
+    // Beware, this method is NOT intended for use during type calculation, as there are uses of .type operation
+    // in overriding methods, which expects known types of the nodes.
+    // However, it's ok to use it from check_ rules (although I hate code duplication, see getEnclosingMacro(). I wonder
+    // if we can avoid this method by using type of input node which seems to be evaluated correctly)
     SNode prevNodeMacro = NodeMacro__BehaviorDescriptor.getPreviousNodeMacro_idhEwIot7.invoke(__thisNode__);
     if (prevNodeMacro != null) {
       return NodeMacro__BehaviorDescriptor.getInputNodeTypeInsideOfMacro_idhEwIosJ.invoke(prevNodeMacro);
@@ -51,7 +56,7 @@ public final class NodeMacro__BehaviorDescriptor extends BaseBHDescriptor {
     }
   }
   /*package*/ static SNode getPreviousNodeMacro_idhEwIot7(@NotNull SNode __thisNode__) {
-    return NodeMacro__BehaviorDescriptor.getEnclosingMacro_idhEwIoti.invoke(__thisNode__, __thisNode__, SNodeOperations.getParent(__thisNode__));
+    return NodeMacro__BehaviorDescriptor.getEnclosingMacro_idhEwIoti.invokeSpecial(__thisNode__.getConcept(), __thisNode__, SNodeOperations.getParent(__thisNode__));
   }
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     StringBuilder builder = new StringBuilder();
@@ -70,23 +75,28 @@ public final class NodeMacro__BehaviorDescriptor extends BaseBHDescriptor {
     }
     return builder.toString();
   }
-  /*package*/ static SNode getEnclosingMacro_idhEwIoti(@NotNull SNode __thisNode__, SNode currentMacro, SNode currentNode) {
+  /*package*/ static SNode getEnclosingMacro_idhEwIoti(@NotNull SAbstractConcept __thisConcept__, SNode currentMacro, SNode currentNode) {
+    // inspired by typesystem.QueriesUtil#getEnclosing_SourceSubstituteMacro()
     if (currentNode == null) {
       return null;
     }
-    SNode result = null;
-    for (SNode currentAttribute : AttributeOperations.getAttributeList(currentNode, new IAttributeDescriptor.AllAttributes())) {
-      if (SNodeOperations.isInstanceOf(currentAttribute, CONCEPTS.NodeMacro$qU)) {
-        if (currentAttribute == currentMacro) {
-          break;
-        }
-        result = SNodeOperations.cast(currentAttribute, CONCEPTS.NodeMacro$qU);
-      }
+    final SNode result;
+    if (currentMacro != null) {
+      result = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getPrevSiblings(currentMacro, false), CONCEPTS.NodeMacro$qU)).last();
+    } else {
+      result = ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU).list(currentNode)).last();
     }
     if (result != null) {
       return result;
     }
-    return NodeMacro__BehaviorDescriptor.getEnclosingMacro_idhEwIoti.invoke(__thisNode__, null, SNodeOperations.getParent(currentNode));
+    SNode parentNode = SNodeOperations.getParent(currentNode);
+    if (SNodeOperations.hasRole(currentNode, LINKS.alternativeConsequence$5VBt) && SNodeOperations.isInstanceOf(parentNode, CONCEPTS.IfMacro$Xy)) {
+      // Inside ELSE branch, need to jump parent hierarchy.
+      // I assume currentMacro == null here and don't care what kind of rule consequence is currentNode,
+      // just don't see a reason for complicated check of QueriesUtil (fix 889c59866b9)
+      return SNodeOperations.cast(parentNode, CONCEPTS.IfMacro$Xy);
+    }
+    return NodeMacro__BehaviorDescriptor.getEnclosingMacro_idhEwIoti.invokeSpecial(__thisConcept__, null, parentNode);
   }
   /*package*/ static SNode getInputNodeTypeFromEnvironment_idhEwIouc(@NotNull SNode __thisNode__) {
     SNode ancestor = SNodeOperations.getNodeAncestorWhereConceptInList(__thisNode__, new SAbstractConcept[]{CONCEPTS.TemplateDeclaration$5G, CONCEPTS.BaseMappingRule$O5}, false, false);
@@ -96,11 +106,11 @@ public final class NodeMacro__BehaviorDescriptor extends BaseBHDescriptor {
     if (SNodeOperations.isInstanceOf(ancestor, CONCEPTS.BaseMappingRule$O5)) {
       return SLinkOperations.getTarget(SNodeOperations.cast(ancestor, CONCEPTS.BaseMappingRule$O5), LINKS.applicableConcept$Hpnk);
     }
-    SNode rootAnnotation = AttributeOperations.getAttribute(SNodeOperations.getContainingRoot(__thisNode__), new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O));
+    SNode rootAnnotation = new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(SNodeOperations.getContainingRoot(__thisNode__));
     return SLinkOperations.getTarget(SNodeOperations.cast(rootAnnotation, CONCEPTS.RootTemplateAnnotation$9O), LINKS.applicableConcept$LAIX);
   }
   /*package*/ static boolean hasMappingLabel_id5KmckUrKj9u(@NotNull SNode __thisNode__) {
-    // to avoid coding same code that check non-empty mapping label 
+    // to avoid coding same code that check non-empty mapping label
     return (SLinkOperations.getTarget(__thisNode__, LINKS.mappingLabel$jbOO) != null) && isNotEmptyString(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.mappingLabel$jbOO), PROPS.name$MnvL));
   }
 
@@ -125,8 +135,6 @@ public final class NodeMacro__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((SNode) getPreviousNodeMacro_idhEwIot7(node));
       case 2:
         return (T) ((String) getPresentation_idhEwIMiw(node));
-      case 3:
-        return (T) ((SNode) getEnclosingMacro_idhEwIoti(node, (SNode) parameters[0], (SNode) parameters[1]));
       case 4:
         return (T) ((SNode) getInputNodeTypeFromEnvironment_idhEwIouc(node));
       case 5:
@@ -143,6 +151,8 @@ public final class NodeMacro__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 3:
+        return (T) ((SNode) getEnclosingMacro_idhEwIoti(concept, (SNode) parameters[0], (SNode) parameters[1]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -165,12 +175,14 @@ public final class NodeMacro__BehaviorDescriptor extends BaseBHDescriptor {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept NodeMacro$qU = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro");
+    /*package*/ static final SConcept IfMacro$Xy = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047c1472deL, "jetbrains.mps.lang.generator.structure.IfMacro");
     /*package*/ static final SConcept TemplateDeclaration$5G = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration");
     /*package*/ static final SConcept BaseMappingRule$O5 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, "jetbrains.mps.lang.generator.structure.BaseMappingRule");
     /*package*/ static final SConcept RootTemplateAnnotation$9O = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation");
   }
 
   private static final class LINKS {
+    /*package*/ static final SContainmentLink alternativeConsequence$5VBt = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047c1472deL, 0x1163aea5803L, "alternativeConsequence");
     /*package*/ static final SReferenceLink applicableConcept$JSvx = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0x1100343ad9eL, "applicableConcept");
     /*package*/ static final SReferenceLink applicableConcept$Hpnk = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept");
     /*package*/ static final SReferenceLink applicableConcept$LAIX = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, 0x11017255ccfL, "applicableConcept");

@@ -10,12 +10,7 @@
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
-      <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
-      <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
-      <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
-        <child id="1197027771414" name="operand" index="2Oq$k0" />
-        <child id="1197027833540" name="operation" index="2OqNvi" />
-      </concept>
+      <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
       <concept id="1081236700938" name="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" flags="ig" index="2YIFZL" />
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
@@ -42,10 +37,12 @@
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
+      <concept id="1068580123140" name="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" flags="ig" index="3clFbW" />
       <concept id="1068581242878" name="jetbrains.mps.baseLanguage.structure.ReturnStatement" flags="nn" index="3cpWs6">
         <child id="1068581517676" name="expression" index="3cqZAk" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -53,19 +50,53 @@
         <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
       </concept>
       <concept id="7812454656619025412" name="jetbrains.mps.baseLanguage.structure.LocalMethodCall" flags="nn" index="1rXfSq" />
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
+      <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
+      </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
+      <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="nn" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
   <node concept="312cEu" id="7E9dkpktrgU">
     <property role="TrG5h" value="InternalUtil" />
+    <node concept="3clFbW" id="1UwIjPXDyPr" role="jymVt">
+      <node concept="3cqZAl" id="1UwIjPXDyPt" role="3clF45" />
+      <node concept="3Tm6S6" id="1UwIjPXDzq1" role="1B3o_S" />
+      <node concept="3clFbS" id="1UwIjPXDyPv" role="3clF47">
+        <node concept="3SKdUt" id="1UwIjPXDzqN" role="3cqZAp">
+          <node concept="1PaTwC" id="1UwIjPXDzqO" role="1aUNEU">
+            <node concept="3oM_SD" id="1UwIjPXDzrl" role="1PaTwD">
+              <property role="3oM_SC" value="runtime" />
+            </node>
+            <node concept="3oM_SD" id="1UwIjPXDzrn" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="1UwIjPXDzrr" role="1PaTwD">
+              <property role="3oM_SC" value="j.m.console.internalCommands.InternalMode" />
+            </node>
+            <node concept="3oM_SD" id="1UwIjPXDzrR" role="1PaTwD">
+              <property role="3oM_SC" value="expression" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="2tJIrI" id="7E9dkpktrib" role="jymVt" />
     <node concept="2YIFZL" id="7E9dkpktriX" role="jymVt">
       <property role="TrG5h" value="getInternalFlag" />
@@ -74,8 +105,8 @@
       <node concept="3clFbS" id="7E9dkpktrj0" role="3clF47">
         <node concept="3cpWs6" id="7E9dkpktrjh" role="3cqZAp">
           <node concept="2YIFZM" id="7E9dkpkts8V" role="3cqZAk">
-            <ref role="37wK5l" to="fyhk:~InternalFlag.isInternalMode()" resolve="isInternalMode" />
-            <ref role="1Pybhc" to="fyhk:~InternalFlag" resolve="InternalFlag" />
+            <ref role="37wK5l" to="fyhk:~RuntimeFlags.isInternalMode()" resolve="isInternalMode" />
+            <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
           </node>
         </node>
       </node>
@@ -88,17 +119,12 @@
       <property role="od$2w" value="false" />
       <property role="DiZV1" value="false" />
       <node concept="3clFbS" id="7E9dkpktsa_" role="3clF47">
-        <node concept="3clFbF" id="7E9dkpktsb$" role="3cqZAp">
-          <node concept="2OqwBi" id="7E9dkpktsga" role="3clFbG">
-            <node concept="2YIFZM" id="7E9dkpktsbL" role="2Oq$k0">
-              <ref role="37wK5l" to="fyhk:~InternalFlag.getInstance()" resolve="getInstance" />
-              <ref role="1Pybhc" to="fyhk:~InternalFlag" resolve="InternalFlag" />
-            </node>
-            <node concept="liA8E" id="7E9dkpktsW0" role="2OqNvi">
-              <ref role="37wK5l" to="fyhk:~InternalFlag.setInternalFlag(boolean)" resolve="setInternalFlag" />
-              <node concept="37vLTw" id="7E9dkpktsYv" role="37wK5m">
-                <ref role="3cqZAo" node="7E9dkpktsaX" resolve="flag" />
-              </node>
+        <node concept="3clFbF" id="1UwIjPXDyIZ" role="3cqZAp">
+          <node concept="2YIFZM" id="1UwIjPXDyKC" role="3clFbG">
+            <ref role="37wK5l" to="fyhk:~RuntimeFlags.setInternalMode(boolean)" resolve="setInternalMode" />
+            <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
+            <node concept="37vLTw" id="1UwIjPXDyMo" role="37wK5m">
+              <ref role="3cqZAo" node="7E9dkpktsaX" resolve="flag" />
             </node>
           </node>
         </node>

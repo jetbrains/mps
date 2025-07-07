@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.project;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.io.DescriptorIO;
 import jetbrains.mps.project.io.DescriptorIOFacade;
 import jetbrains.mps.project.structure.modules.DevkitDescriptor;
@@ -23,18 +24,18 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.util.ToStringComparator;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.Logger;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class DevKit extends AbstractModule {
   private DevkitDescriptor myDescriptor;
@@ -61,6 +62,7 @@ public class DevKit extends AbstractModule {
     }
   }
 
+  // XXX perhaps, deprecate and replace with {@link #getExportedLanguageIds())?
   public List<Language> getExportedLanguages() {
     SRepository repo = getRepository();
     if (repo == null) {
@@ -86,8 +88,7 @@ public class DevKit extends AbstractModule {
    * Once there are no uses, rename getAllExportedLanguageIds to this method and deprecate the former. And, please, stop using Iterable when there's Collection.
    * It's plain stupid to write for() just to add all elements of the iterable to another collection (and don't get me started about IterableUtil.asCollection)
    */
-  @Deprecated
-  @ToRemove(version = 3.4)
+@Deprecated(since = "3.4", forRemoval = true)
   public List<Language> getAllExportedLanguages() {
     List<Language> result = new ArrayList<>();
     for (DevKit dk : getAllExtendedDevkits()) {
@@ -98,6 +99,10 @@ public class DevKit extends AbstractModule {
       }
     }
     return result;
+  }
+
+  public Collection<SLanguage> getExportedLanguageIds() {
+    return myDescriptor.getExportedLanguages().stream().map(MetaAdapterFactory::getLanguage).collect(Collectors.toList());
   }
 
   public Iterable<SLanguage> getAllExportedLanguageIds() {
@@ -173,7 +178,7 @@ public class DevKit extends AbstractModule {
   @Override
   public void save() {
     super.save();
-    if (isReadOnly()) {
+    if (isReadOnly() || getDescriptorFile() == null) {
       return;
     }
 
@@ -182,7 +187,7 @@ public class DevKit extends AbstractModule {
       return;
     }
     try {
-      DescriptorIO<DevkitDescriptor> io = DescriptorIOFacade.getInstance().standardProvider().devkitDescriptorIO();
+      DescriptorIO<DevkitDescriptor> io = new DescriptorIOFacade().standardProvider().devkitDescriptorIO();
       io.writeToFile(getModuleDescriptor(), getDescriptorFile());
     } catch (Exception ex) {
       Logger.getLogger(getClass()).error("Save failed", ex);
@@ -195,10 +200,5 @@ public class DevKit extends AbstractModule {
 
   public boolean isHidden() {
     return false;
-  }
-
-  @Override
-  protected void collectMandatoryFacetTypes(Set<String> types) {
-    // no-op
   }
 }

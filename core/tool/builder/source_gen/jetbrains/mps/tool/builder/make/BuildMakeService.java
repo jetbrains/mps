@@ -13,33 +13,20 @@ import jetbrains.mps.make.script.IScript;
 import jetbrains.mps.make.script.IScriptController;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import jetbrains.mps.progress.EmptyProgressMonitor;
-import jetbrains.mps.make.facet.IFacet;
 import jetbrains.mps.make.IMakeNotificationListener;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.messages.Message;
-import jetbrains.mps.messages.MessageKind;
-import jetbrains.mps.internal.make.runtime.util.FutureValue;
 import jetbrains.mps.make.dependencies.MakeSequence;
 import jetbrains.mps.make.service.CoreMakeTask;
-import jetbrains.mps.make.script.ScriptBuilder;
-import jetbrains.mps.make.facet.FacetRegistry;
-import jetbrains.mps.make.facet.ITarget;
+import jetbrains.mps.internal.make.runtime.util.FutureValue;
 
-@GeneratedClass(node = "r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)/878521226301293123", model = "r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)")
+@GeneratedClass(nodeId = "878521226301293123", model = "r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)")
 public class BuildMakeService extends AbstractMakeService implements IMakeService {
   public BuildMakeService() {
+    // FIXME once we install it as IMakeService and use through CoreComponent, don't need to 
+    // re-export module dependencies for AMS and IMakeService (j.m.make and j.m.make.runtime)
   }
   @Override
   public Future<IResult> make(MakeSession session, Iterable<? extends IResource> resources, IScript script, IScriptController controller, @NotNull ProgressMonitor monitor) {
     return doMake(session, resources, script, controller, monitor);
-  }
-  @Override
-  public Future<IResult> make(MakeSession session, Iterable<? extends IResource> resources) {
-    return make(session, resources, session.toScript(defaultScript(session)), null, new EmptyProgressMonitor());
-  }
-  public Future<IResult> makeAndReload(MakeSession session, Iterable<? extends IResource> resources) {
-    return make(session, resources, session.toScript(defaultScript(session).withFacetNames(new IFacet.Name("jetbrains.mps.make.facets.ReloadClasses"))), null, new EmptyProgressMonitor());
   }
   @Override
   public boolean isSessionActive() {
@@ -61,36 +48,25 @@ public class BuildMakeService extends AbstractMakeService implements IMakeServic
     throw new UnsupportedOperationException();
   }
   private Future<IResult> doMake(MakeSession makeSession, Iterable<? extends IResource> inputRes, IScript defaultScript, IScriptController controller, @NotNull ProgressMonitor monitor) {
-    String scrName = "Build";
-
-    if (Sequence.fromIterable(inputRes).isEmpty()) {
-      String msg = scrName + " aborted: nothing to do";
-      makeSession.getMessageHandler().handle(new Message(MessageKind.ERROR, msg));
-      return new FutureValue<IResult>(new IResult.FAILURE(null));
-    }
     MakeSequence makeSeq = new MakeSequence(inputRes, defaultScript, makeSession);
 
     IScriptController ctl = this.completeController(makeSession, controller);
 
-    CoreMakeTask task = new CoreMakeTask(scrName, makeSeq, ctl, makeSession.getMessageHandler());
+    CoreMakeTask task = new CoreMakeTask(makeSeq, ctl, makeSession.getMessageHandler());
     task.run(monitor);
     return new FutureValue<IResult>(task.getResult());
   }
 
   private IScriptController completeController(MakeSession msess, final IScriptController ctl) {
-    // Assume if client supplied IScriptController, he knows what he's doing and bears full responsibility 
-    // to supply correct IConfigMonitor and IJobMonitor instances 
+    // Assume if client supplied IScriptController, he knows what he's doing and bears full responsibility
+    // to supply correct IConfigMonitor and IJobMonitor instances
     if (ctl != null) {
       return ctl;
     }
-    // Although there's knowledge about default make targets (see #defaultMakeScript(), below), 
-    // I don't want IMakeService to configure any target here explicitly. It's up to caller to configure 
-    // actual targets (yes, they are not necessarily the same as in default script) with desired values, not 
-    // service's to guess defaults. Id rather fail and see which targets were not configured. 
+    // Although there's knowledge about default make targets (see #defaultMakeScript(), below),
+    // I don't want IMakeService to configure any target here explicitly. It's up to caller to configure
+    // actual targets (yes, they are not necessarily the same as in default script) with desired values, not
+    // service's to guess defaults. Id rather fail and see which targets were not configured.
     return new IScriptController.Stub2(msess);
-  }
-
-  private ScriptBuilder defaultScript(MakeSession makeSession) {
-    return new ScriptBuilder(makeSession.getProject().getComponent(FacetRegistry.class)).withFacetNames(new IFacet.Name("jetbrains.mps.lang.resources.Binaries"), new IFacet.Name("jetbrains.mps.lang.core.Generate"), new IFacet.Name("jetbrains.mps.lang.core.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.JavaCompile"), new IFacet.Name("jetbrains.mps.make.facets.Make")).withFinalTarget(new ITarget.Name("jetbrains.mps.make.facets.Make.make"));
   }
 }

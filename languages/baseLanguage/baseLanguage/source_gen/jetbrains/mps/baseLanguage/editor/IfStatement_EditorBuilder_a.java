@@ -47,13 +47,11 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Item;
 import java.util.List;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
-import java.util.function.Function;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.action.NodeSubstituteActionWrapper;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.nodeEditor.menus.EditorMenuTraceInfoImpl;
-import java.util.stream.Collectors;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -105,10 +103,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "if");
     editorCell.setCellId("Constant_eb7h0d_a0");
     Style style = new StyleImpl();
-    new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeyWordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, true);
     editorCell.getStyle().putAll(style);
-    Delete_If.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
     editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_WhileStatement_cellMenu_eb7h0d_a0a0(), new ReplaceWith_DoWhileStatement_cellMenu_eb7h0d_b0a0(), new ReplaceWith_ForStatement_cellMenu_eb7h0d_c0a0(), new ReplaceWith_ForeachStatement_cellMenu_eb7h0d_d0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
@@ -161,7 +158,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "(");
     editorCell.setCellId("Constant_eb7h0d_b0");
     Style style = new StyleImpl();
-    new LeftParenStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new LeftParenStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     DeleteCondition.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
@@ -226,7 +223,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ")");
     editorCell.setCellId("Constant_eb7h0d_d0");
     Style style = new StyleImpl();
-    new RightParenStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new RightParenStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     DeleteCondition.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
@@ -248,10 +245,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "{");
     editorCell.setCellId("Constant_eb7h0d_a4a");
     Style style = new StyleImpl();
-    new LeftBraceStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new LeftBraceStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, _StyleParameter_QueryFunction_eb7h0d_a0a4a());
     editorCell.getStyle().putAll(style);
-    IfStatement_FirstBrace.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
     return editorCell;
   }
@@ -334,7 +330,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "}");
     editorCell.setCellId("Constant_eb7h0d_c4a");
     Style style = new StyleImpl();
-    new RightBraceStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new RightBraceStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.SELECTABLE, true);
     editorCell.getStyle().putAll(style);
     IfStatement_LastBrace.setCellActions(editorCell, myNode, getEditorContext());
@@ -431,7 +427,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "else");
     editorCell.setCellId("Constant_eb7h0d_a6a");
     Style style = new StyleImpl();
-    new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeyWordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, true);
     editorCell.getStyle().putAll(style);
     IfStatement_elseDelete_action.setCellActions(editorCell, myNode, getEditorContext());
@@ -444,23 +440,19 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     @Override
     public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-      List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-      Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-        public SubstituteAction apply(SubstituteAction action) {
-          return new NodeSubstituteActionWrapper(action) {
-            @Override
-            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-              result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1237468206393")));
-              return result;
-            }
-          };
-        }
-      };
-      return actions.stream().map(mapper).collect(Collectors.toList());
+      return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
+        return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
+          @Override
+          public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+            EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+            result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1237468206393")));
+            return result;
+          }
+        };
+      }).toList();
     }
 
-    public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
     }
     public String getMatchingText() {
       return "else";
@@ -471,23 +463,19 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     @Override
     public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-      List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-      Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-        public SubstituteAction apply(SubstituteAction action) {
-          return new NodeSubstituteActionWrapper(action) {
-            @Override
-            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-              result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1237468206396")));
-              return result;
-            }
-          };
-        }
-      };
-      return actions.stream().map(mapper).collect(Collectors.toList());
+      return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
+        return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
+          @Override
+          public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+            EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+            result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1237468206396")));
+            return result;
+          }
+        };
+      }).toList();
     }
 
-    public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
       IfStatement__BehaviorDescriptor.convertElseToElseIf_idhIdhuD7.invoke(node);
     }
     public String getMatchingText() {

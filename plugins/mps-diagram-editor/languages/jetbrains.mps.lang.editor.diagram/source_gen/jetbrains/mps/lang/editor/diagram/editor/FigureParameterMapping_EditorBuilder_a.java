@@ -21,10 +21,8 @@ import jetbrains.mps.lang.editor.cellProviders.PropertyCellContext;
 import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
@@ -32,7 +30,6 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
 import jetbrains.mps.lang.editor.diagram.behavior.FigureParameterMapping__BehaviorDescriptor;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.lang.editor.diagram.behavior.AbstractFigureReference__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -96,12 +93,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
       FigureParameterMappingName_Actions.setCellActions(editorCell, myNode, getEditorContext());
       editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new FigureParameterMapping_generic_cellMenu_3uf681_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
-      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-        }
-      });
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
+      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
       if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
         EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
         return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);
@@ -118,16 +111,17 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public FigureParameterMapping_generic_cellMenu_3uf681_a0a0() {
     }
 
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
       return (List<String>) AbstractFigureReference__BehaviorDescriptor.getFigureParameterNames_id1iN4mn3lWCq.invoke(SLinkOperations.getTarget(FigureParameterMapping__BehaviorDescriptor.getDiagramNodeCell_id1iN4mn3k5m3.invoke(node), LINKS.figure$dTb8));
+
     }
-    protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
+    protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      this.handleAction_impl((String) parameterObject, node, model, editorContext);
     }
-    public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
       SPropertyOperations.assign(node, PROPS.name$MnvL, parameterObject);
     }
-    public boolean isReferentPresentation() {
+    protected boolean isReferentPresentation() {
       return false;
     }
 

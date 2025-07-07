@@ -4,7 +4,7 @@ package jetbrains.mps.debugger.java.api.evaluation;
 
 import jetbrains.mps.annotations.GeneratedClass;
 
-@GeneratedClass(node = "r:f326a98e-32f7-47a0-ba29-239107a89ca4(jetbrains.mps.debugger.java.api.evaluation)/4727801710070563829", model = "r:f326a98e-32f7-47a0-ba29-239107a89ca4(jetbrains.mps.debugger.java.api.evaluation)")
+@GeneratedClass(nodeId = "4727801710070563829", model = "r:f326a98e-32f7-47a0-ba29-239107a89ca4(jetbrains.mps.debugger.java.api.evaluation)")
 public class EvaluationRuntimeException extends RuntimeException {
   public EvaluationRuntimeException() {
     super();

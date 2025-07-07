@@ -8,7 +8,7 @@ import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SRepository;
 
-@GeneratedClass(node = "r:f77c2bf1-6f5c-4cb2-b314-a84dd502542e(jetbrains.mps.resolve)/3671170675134061846", model = "r:f77c2bf1-6f5c-4cb2-b314-a84dd502542e(jetbrains.mps.resolve)")
+@GeneratedClass(nodeId = "3671170675134061846", model = "r:f77c2bf1-6f5c-4cb2-b314-a84dd502542e(jetbrains.mps.resolve)")
 public interface IResolver {
   /**
    * 

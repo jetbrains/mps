@@ -27,10 +27,13 @@ import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.typechecking.TypecheckingFacade;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConceptFeature;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.ModelAccess;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.List;
 
@@ -48,12 +51,28 @@ public class APICellAdapter {
     ((jetbrains.mps.nodeEditor.cells.EditorCell) cell).synchronizeViewWithModel();
   }
 
-  public static SNode getSNodeWRTReference(EditorCell cell) {
+  @Nullable
+  public static SNode getSNodeWRTReference(@NotNull EditorCell cell) {
+    return getSNodeWRTReference(cell, null);
+  }
+
+  @Nullable
+  public static SNode getSNodeWRTReference(@NotNull EditorCell cell, @Nullable SRepository repository) {
     SNode target = cell.getStyle().get(StyleAttributes.NAVIGATABLE_NODE);
     if (target != null) {
       return target;
     }
     SNode node = cell.getSNode();
+    if (node == null) {
+      return null;
+    }
+    if (repository != null) {
+      // TODO: Fixes MPS-36700 by checking the node is still valid. However proper way would be to keep SNodeReference in cells and resolve as necessary
+      node = node.getReference().resolve(repository);
+      if (node == null) {
+        return null;
+      }
+    }
     SConceptFeature role = cell.getSRole();
     SNode referentNode = role instanceof SReferenceLink ? node.getReferenceTarget(((SReferenceLink) role)) : null;
     return referentNode != null ? referentNode : node;

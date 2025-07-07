@@ -9,9 +9,9 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.util.OverridingMethodsCalculator;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import org.jetbrains.annotations.Nullable;
@@ -42,15 +42,13 @@ public final class AddMissingOverrideAnnotations_MigrationScript extends BaseMig
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        List<SNode> instanceMethods = Sequence.fromIterable(OverridingMethodsCalculator.getInstanceMethods(node)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return OverridingMethodsCalculator.canOverride(it) && ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$K49I)).all(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return !("java.lang.Override".equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(it, LINKS.annotation$12Ek))));
-              }
-            });
-          }
-        }).toListSequence();
+        List<SNode> instanceMethods = Sequence.fromIterable(OverridingMethodsCalculator.getInstanceMethods(node)).where((it) -> {
+          return OverridingMethodsCalculator.canOverride(it) && ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$K49I)).all(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+            public Boolean invoke(SNode it) {
+              return !("java.lang.Override".equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(it, LINKS.annotation$12Ek))));
+            }
+          });
+        }).toList();
         if (ListSequence.fromList(instanceMethods).isEmpty()) {
           return false;
         }
@@ -59,15 +57,13 @@ public final class AddMissingOverrideAnnotations_MigrationScript extends BaseMig
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        List<SNode> instanceMethods = Sequence.fromIterable(OverridingMethodsCalculator.getInstanceMethods(node)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return OverridingMethodsCalculator.canOverride(it) && ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$K49I)).all(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return !("java.lang.Override".equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(it, LINKS.annotation$12Ek))));
-              }
-            });
-          }
-        }).toListSequence();
+        List<SNode> instanceMethods = Sequence.fromIterable(OverridingMethodsCalculator.getInstanceMethods(node)).where((it) -> {
+          return OverridingMethodsCalculator.canOverride(it) && ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$K49I)).all(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+            public Boolean invoke(SNode it) {
+              return !("java.lang.Override".equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(it, LINKS.annotation$12Ek))));
+            }
+          });
+        }).toList();
         OverridingMethodsCalculator finder = new OverridingMethodsCalculator(node, instanceMethods);
         for (SNode meth : SetSequence.fromSet(finder.getOverridingMethods())) {
           ListSequence.fromList(SLinkOperations.getChildren(meth, LINKS.annotation$K49I)).addElement(createAnnotationInstance_eltaeh_a0a0a2a0a());

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SLanguage;
 
 public abstract class LanguageMissingProblem extends NodeReportItemBase {
-  private SLanguage myLanguage;
+  private final SLanguage myLanguage;
 
   public LanguageMissingProblem(SLanguage language, SNode instance, String message) {
     super(MessageStatus.ERROR, instance.getReference(), message);

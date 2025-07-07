@@ -5,25 +5,32 @@ package jetbrains.mps.vcs.changesmanager;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.vcs.diff.ChangeSetImpl;
+import com.intellij.openapi.project.Project;
+import java.util.concurrent.atomic.AtomicBoolean;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
+import com.intellij.openapi.vcs.FileStatus;
+import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.vcs.diff.ChangeSet;
 
-@GeneratedClass(node = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)/3161776655522572366", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
+/**
+ * a difference for a model
+ */
+@GeneratedClass(nodeId = "3161776655522572366", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
 public class CurrentDifference {
   private final SimpleCommandQueue myCommandQueue;
   private final EditableSModel myModelDescriptor;
   private final ChangesTracking myTracking;
   private ChangeSetImpl myChangeSet;
+  private final Project myProject;
   private final CurrentDifferenceBroadcaster myBroadcaster;
-  private boolean myEnabled = false;
+  private final AtomicBoolean myEnabled = new AtomicBoolean();
 
   public CurrentDifference(@NotNull CurrentDifferenceRegistry registry, @NotNull EditableSModel modelDescriptor) {
     myCommandQueue = registry.getCommandQueue();
     myModelDescriptor = modelDescriptor;
+    myProject = registry.getProject();
     myTracking = new ChangesTracking(registry, this);
     myBroadcaster = new CurrentDifferenceBroadcaster(myCommandQueue);
     myBroadcaster.addDifferenceListener(registry.getGlobalBroadcaster());
@@ -45,26 +52,18 @@ public class CurrentDifference {
     myCommandQueue.assertSoftlyIsCommandThread();
     if (myChangeSet != null) {
       myBroadcaster.changeUpdateStarted();
-      ListSequence.fromList(myChangeSet.getModelChanges()).visitAll(new IVisitor<ModelChange>() {
-        public void visit(ModelChange ch) {
-          myBroadcaster.changeRemoved(ch);
-        }
-      });
+      myBroadcaster.changesRemoved(myChangeSet.getModelChanges());
       myChangeSet = null;
       myBroadcaster.changeUpdateFinished();
     }
   }
 
-  /*package*/ void setChangeSet(@NotNull ChangeSetImpl changeSetImpl) {
+  /*package*/ void setChangeSet(ChangeSetImpl changeSetImpl) {
     myCommandQueue.assertSoftlyIsCommandThread();
     removeChangeSet();
     myBroadcaster.changeUpdateStarted();
     myChangeSet = changeSetImpl;
-    ListSequence.fromList(myChangeSet.getModelChanges()).visitAll(new IVisitor<ModelChange>() {
-      public void visit(ModelChange ch) {
-        myBroadcaster.changeAdded(ch);
-      }
-    });
+    myBroadcaster.changesAdded(myChangeSet.getModelChanges());
     myBroadcaster.changeUpdateFinished();
   }
 
@@ -86,33 +85,48 @@ public class CurrentDifference {
     }
   }
 
+  @Override
+  public String toString() {
+    return "curdif for " + myModelDescriptor;
+  }
+
   public EditableSModel getModelDescriptor() {
     return myModelDescriptor;
   }
 
-  public void setEnabled(boolean enabled) {
-    if (myEnabled != enabled) {
-      myEnabled = enabled;
+  public boolean setEnabled(boolean enabled) {
+    if (myEnabled.compareAndSet(!(enabled), enabled)) {
       if (enabled) {
         scheduleFullUpdate(true);
       } else {
-        myCommandQueue.addTask(new Runnable() {
-          public void run() {
-            setChangeSet(null);
-          }
-        });
+        myCommandQueue.addTask(() -> setChangeSet(null));
       }
+      return true;
     }
+    return false;
   }
 
   /*package*/ void scheduleFullUpdate(final boolean force) {
-    if (myEnabled) {
-      myCommandQueue.addTask(new Runnable() {
-        public void run() {
-          myTracking.update(force);
-        }
-      }, myModelDescriptor.getReference());
+    if (myEnabled.get()) {
+      myCommandQueue.addTask(() -> myTracking.update(force), myModelDescriptor.getReference());
     }
+  }
+
+  public boolean isConflicted() {
+    return myTracking.getStatus() == FileStatus.MERGED_WITH_BOTH_CONFLICTS || myTracking.getStatus() == FileStatus.MERGED_WITH_CONFLICTS;
+  }
+
+  public boolean isTracked() {
+    return myTracking.isTracked();
+  }
+
+  public FileStatus getStatus() {
+    return myTracking.getStatus();
+  }
+
+  public void onModelStatusChanged(@NotNull SModelReference mref) {
+    myBroadcaster.setEnabled(isTracked());
+    myBroadcaster.modelStatusChanged(mref);
   }
 
   @Nullable

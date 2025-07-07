@@ -2,20 +2,16 @@
 <model ref="r:d716148b-c6f9-495f-b5e7-22263b704aca(jetbrains.mps.debugger.java.runtime.engine.requests)">
   <persistence version="9" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
-    <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
-    <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
-    <import index="ieao" ref="r:171d7488-7735-44dd-8049-f905d8fca4b0(jetbrains.mps.debugger.java.runtime)" />
-    <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
     <import index="1l1h" ref="r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)" />
     <import index="xptu" ref="r:6c060161-192f-4aa3-a797-df89b30aa449(jetbrains.mps.debugger.java.runtime.engine.events)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="5qx8" ref="b387285c-3448-452c-b3bb-a3f8de8eaf08/java:com.sun.jdi.event(JDK-tools/)" />
     <import index="frkw" ref="b387285c-3448-452c-b3bb-a3f8de8eaf08/java:com.sun.jdi(JDK-tools/)" />
     <import index="rpq9" ref="b387285c-3448-452c-b3bb-a3f8de8eaf08/java:com.sun.jdi.request(JDK-tools/)" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
+    <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -35,7 +31,7 @@
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
@@ -110,7 +106,7 @@
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -130,13 +126,13 @@
         <child id="8276990574895933172" name="throwable" index="1zc67B" />
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615">
         <child id="1107797138135" name="extendedInterface" index="3HQHJm" />
       </concept>
-      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
+      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="nn" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
@@ -152,15 +148,15 @@
       <concept id="8064396509828172209" name="jetbrains.mps.baseLanguage.structure.UnaryMinus" flags="nn" index="1ZRNhn" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
     <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
-      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
         <property id="155656958578482949" name="value" index="3oM_SC" />
       </concept>
-      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="nn" index="1PaTwC">
         <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
@@ -256,15 +252,15 @@
       <property role="TrG5h" value="LOG" />
       <property role="3TUv4t" value="true" />
       <node concept="2YIFZM" id="Hn0$MvbYv2" role="33vP2m">
-        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-        <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
+        <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+        <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
         <node concept="3VsKOn" id="Hn0$MvbYv3" role="37wK5m">
           <ref role="3VsUkX" node="5ABJGODLc2W" resolve="StepRequestor" />
         </node>
       </node>
       <node concept="3Tm6S6" id="5ABJGODLc35" role="1B3o_S" />
       <node concept="3uibUv" id="Hn0$MvbYuU" role="1tU5fm">
-        <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
+        <ref role="3uigEE" to="wwqx:~Logger" resolve="Logger" />
       </node>
     </node>
     <node concept="312cEg" id="5ABJGODLc38" role="jymVt">
@@ -485,6 +481,9 @@
                 <node concept="3uibUv" id="5ABJGODLc3P" role="nSUat">
                   <ref role="3uigEE" to="frkw:~IncompatibleThreadStateException" resolve="IncompatibleThreadStateException" />
                 </node>
+                <node concept="3uibUv" id="2hdoiXP0ATL" role="nSUat">
+                  <ref role="3uigEE" to="frkw:~AbsentInformationException" resolve="AbsentInformationException" />
+                </node>
               </node>
             </node>
             <node concept="3clFbS" id="5ABJGODLc3I" role="1zc67A">
@@ -494,37 +493,9 @@
                     <ref role="3cqZAo" node="5ABJGODLc33" resolve="LOG" />
                   </node>
                   <node concept="liA8E" id="5ABJGODLc3M" role="2OqNvi">
-                    <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
-                    <node concept="10Nm6u" id="4t57iE9VMZg" role="37wK5m" />
+                    <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.Throwable)" resolve="error" />
                     <node concept="37vLTw" id="3GM_nagTw$z" role="37wK5m">
                       <ref role="3cqZAo" node="5ABJGODLc3O" resolve="e" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3uVAMA" id="5ABJGODLc3Q" role="1zxBo5">
-            <node concept="XOnhg" id="5ABJGODLc3X" role="1zc67B">
-              <property role="3TUv4t" value="false" />
-              <property role="TrG5h" value="e" />
-              <node concept="nSUau" id="xvs04dGZX$" role="1tU5fm">
-                <node concept="3uibUv" id="5ABJGODLc3Y" role="nSUat">
-                  <ref role="3uigEE" to="frkw:~AbsentInformationException" resolve="AbsentInformationException" />
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbS" id="5ABJGODLc3R" role="1zc67A">
-              <node concept="3clFbF" id="5ABJGODLc3S" role="3cqZAp">
-                <node concept="2OqwBi" id="5ABJGODLc3T" role="3clFbG">
-                  <node concept="37vLTw" id="2BHiRxeop2a" role="2Oq$k0">
-                    <ref role="3cqZAo" node="5ABJGODLc33" resolve="LOG" />
-                  </node>
-                  <node concept="liA8E" id="5ABJGODLc3V" role="2OqNvi">
-                    <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
-                    <node concept="10Nm6u" id="4t57iE9VNex" role="37wK5m" />
-                    <node concept="37vLTw" id="3GM_nagTt8W" role="37wK5m">
-                      <ref role="3cqZAo" node="5ABJGODLc3X" resolve="e" />
                     </node>
                   </node>
                 </node>
@@ -882,6 +853,9 @@
                     <node concept="3uibUv" id="5ABJGODLc63" role="nSUat">
                       <ref role="3uigEE" to="frkw:~IncompatibleThreadStateException" resolve="IncompatibleThreadStateException" />
                     </node>
+                    <node concept="3uibUv" id="2hdoiXP0HEF" role="nSUat">
+                      <ref role="3uigEE" to="frkw:~AbsentInformationException" resolve="AbsentInformationException" />
+                    </node>
                   </node>
                 </node>
                 <node concept="3clFbS" id="5ABJGODLc5W" role="1zc67A">
@@ -891,37 +865,9 @@
                         <ref role="3cqZAo" node="5ABJGODLc33" resolve="LOG" />
                       </node>
                       <node concept="liA8E" id="5ABJGODLc60" role="2OqNvi">
-                        <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
-                        <node concept="10Nm6u" id="4t57iE9VNV8" role="37wK5m" />
+                        <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.Throwable)" resolve="error" />
                         <node concept="37vLTw" id="3GM_nagTBat" role="37wK5m">
                           <ref role="3cqZAo" node="5ABJGODLc62" resolve="e" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="3uVAMA" id="5ABJGODLc64" role="1zxBo5">
-                <node concept="XOnhg" id="5ABJGODLc6b" role="1zc67B">
-                  <property role="3TUv4t" value="false" />
-                  <property role="TrG5h" value="e" />
-                  <node concept="nSUau" id="xvs04dGZWe" role="1tU5fm">
-                    <node concept="3uibUv" id="5ABJGODLc6c" role="nSUat">
-                      <ref role="3uigEE" to="frkw:~AbsentInformationException" resolve="AbsentInformationException" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="3clFbS" id="5ABJGODLc65" role="1zc67A">
-                  <node concept="3clFbF" id="5ABJGODLc66" role="3cqZAp">
-                    <node concept="2OqwBi" id="5ABJGODLc67" role="3clFbG">
-                      <node concept="37vLTw" id="2BHiRxeonLK" role="2Oq$k0">
-                        <ref role="3cqZAo" node="5ABJGODLc33" resolve="LOG" />
-                      </node>
-                      <node concept="liA8E" id="5ABJGODLc69" role="2OqNvi">
-                        <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
-                        <node concept="10Nm6u" id="4t57iE9VOob" role="37wK5m" />
-                        <node concept="37vLTw" id="3GM_nagTu5L" role="37wK5m">
-                          <ref role="3cqZAo" node="5ABJGODLc6b" resolve="e" />
                         </node>
                       </node>
                     </node>

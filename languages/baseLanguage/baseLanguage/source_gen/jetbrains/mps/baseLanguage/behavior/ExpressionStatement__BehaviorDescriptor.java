@@ -8,15 +8,15 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
+import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -28,9 +28,10 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class ExpressionStatement__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
 
-  public static final SMethod<Boolean> canServeAsReturn_idi2fkDTg = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canServeAsReturn").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i2fkDTg").build();
+  public static final SMethod<Boolean> canServeAsReturn_idi2fkDTg = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canServeAsReturn").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1239355137616L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<List<SNode>> getAllLocalVariableDeclarations_id3xYtul1v6S1 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getAllLocalVariableDeclarations").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4070820740696141313L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canServeAsReturn_idi2fkDTg);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canServeAsReturn_idi2fkDTg, getAllLocalVariableDeclarations_id3xYtul1v6S1);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -41,13 +42,13 @@ public final class ExpressionStatement__BehaviorDescriptor extends BaseBHDescrip
       return false;
     }
 
-    // no return inside void methods or constructors 
+    // no return inside void methods or constructors
     SNode retType = IMethodLike__BehaviorDescriptor.getExpectedRetType_idi2fhBNC.invoke(methodLike);
     if (retType == null || SNodeOperations.isInstanceOf(retType, CONCEPTS.VoidType$BF)) {
       return false;
     }
 
-    // statement 'a.b()' where b returns void can't produce return value 
+    // statement 'a.b()' where b returns void can't produce return value
     SNode methodCall = null;
     SNode expression = SLinkOperations.getTarget(__thisNode__, LINKS.expression$5L7M);
     if (SNodeOperations.isInstanceOf(expression, CONCEPTS.IMethodCall$M9)) {
@@ -59,13 +60,13 @@ public final class ExpressionStatement__BehaviorDescriptor extends BaseBHDescrip
       return false;
     }
 
-    // Check our position within IMethodLike 
+    // Check our position within IMethodLike
     SNode lastStatement = IMethodLike__BehaviorDescriptor.getLastStatement_idi2fhS7A.invoke(methodLike);
-    // trivial case: this statement is the last one 
+    // trivial case: this statement is the last one
     if (lastStatement == __thisNode__) {
       return true;
     }
-    // check if body ends with if and this statement completes this if 
+    // check if body ends with if and this statement completes this if
     if (SNodeOperations.isInstanceOf(lastStatement, CONCEPTS.IfStatement$Q4) && SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IfStatement$Q4, false, false) == lastStatement) {
       SNode ifStmt = SNodeOperations.cast(lastStatement, CONCEPTS.IfStatement$Q4);
       if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifStmt, LINKS.ifTrue$5Rg8), LINKS.statement$53DE)).last() == __thisNode__ || SLinkOperations.getTarget(ifStmt, LINKS.ifFalseStatement$psZK) == __thisNode__) {
@@ -85,6 +86,13 @@ public final class ExpressionStatement__BehaviorDescriptor extends BaseBHDescrip
     }
     return false;
   }
+  /*package*/ static List<SNode> getAllLocalVariableDeclarations_id3xYtul1v6S1(@NotNull SNode __thisNode__) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.expression$5L7M), CONCEPTS.ILocalVariableElement$nm)) {
+      return ILocalVariableElement__BehaviorDescriptor.getAllLocalVariableDeclarations_id3xYtul1v6S1.invoke(SNodeOperations.as(SLinkOperations.getTarget(__thisNode__, LINKS.expression$5L7M), CONCEPTS.ILocalVariableElement$nm));
+    } else {
+      return new ArrayList<SNode>();
+    }
+  }
 
   /*package*/ ExpressionStatement__BehaviorDescriptor() {
   }
@@ -103,6 +111,8 @@ public final class ExpressionStatement__BehaviorDescriptor extends BaseBHDescrip
     switch (methodIndex) {
       case 0:
         return (T) ((Boolean) canServeAsReturn_idi2fkDTg(node));
+      case 1:
+        return (T) ((List<SNode>) getAllLocalVariableDeclarations_id3xYtul1v6S1(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -140,6 +150,7 @@ public final class ExpressionStatement__BehaviorDescriptor extends BaseBHDescrip
     /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
     /*package*/ static final SConcept IfStatement$Q4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
     /*package*/ static final SConcept BlockStatement$u4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement");
+    /*package*/ static final SInterfaceConcept ILocalVariableElement$nm = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1206e6cc291L, "jetbrains.mps.baseLanguage.structure.ILocalVariableElement");
   }
 
   private static final class LINKS {

@@ -3,14 +3,14 @@
   <persistence version="9" />
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="0" />
     <use id="a936c42c-cb2c-4d64-a1dc-12986579a998" name="jetbrains.mps.lang.editor.styleTests" version="0" />
-    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="5" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="6" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="15" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="81f0abb8-d71e-4d13-a0c1-d2291fbb28b7" name="jetbrains.mps.lang.editor.editorTest" version="0" />
   </languages>
   <imports>
@@ -50,14 +50,12 @@
         <property id="1932269937152561478" name="useLabelSelection" index="OXtK3" />
         <property id="1229432188737" name="isLastPosition" index="ZRATv" />
       </concept>
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
-      </concept>
       <concept id="5773579205429866751" name="jetbrains.mps.lang.test.structure.EditorComponentExpression" flags="nn" index="369mXd" />
       <concept id="4239542196496927193" name="jetbrains.mps.lang.test.structure.MPSActionReference" flags="ng" index="1iFQzN">
         <reference id="4239542196496929559" name="action" index="1iFR8X" />
       </concept>
       <concept id="1216913645126" name="jetbrains.mps.lang.test.structure.NodesTestCase" flags="lg" index="1lH9Xt">
+        <property id="2616911529524314943" name="accessMode" index="3DII0k" />
         <child id="1217501822150" name="nodesToCheck" index="1SKRRt" />
       </concept>
       <concept id="1216989428737" name="jetbrains.mps.lang.test.structure.TestNode" flags="ng" index="1qefOq">
@@ -71,7 +69,7 @@
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
       <concept id="7418278005949660372" name="jetbrains.mps.lang.editor.structure.FontFamilyStyleClassItem" flags="ln" index="2biZxu" />
       <concept id="7228435049763037222" name="jetbrains.mps.lang.editor.structure.FontFamilyLiteral" flags="ng" index="1riQX7" />
-      <concept id="7228435049763093185" name="jetbrains.mps.lang.editor.structure.FontFamilyContainer" flags="ng" index="1rj3mw">
+      <concept id="7228435049763093185" name="jetbrains.mps.lang.editor.structure.FontFamilyContainer" flags="ngI" index="1rj3mw">
         <property id="7228435049763093186" name="family" index="1rj3mz" />
       </concept>
       <concept id="6029276237631252951" name="jetbrains.mps.lang.editor.structure.StyleAttributeReferenceExpression" flags="ng" index="1Z6Ecs">
@@ -130,7 +128,7 @@
       <concept id="1079359253375" name="jetbrains.mps.baseLanguage.structure.ParenthesizedExpression" flags="nn" index="1eOMI4">
         <child id="1079359253376" name="expression" index="1eOMHV" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -180,6 +178,7 @@
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -218,7 +217,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -227,9 +226,12 @@
       <concept id="6519503956375920379" name="jetbrains.mps.lang.editor.editorTest.structure.StyleParent" flags="ng" index="HWV2P">
         <child id="6519503956375920411" name="child" index="HWV5l" />
       </concept>
+      <concept id="521245079298167988" name="jetbrains.mps.lang.editor.editorTest.structure.TestInspectorParent" flags="ng" index="1nhK4n">
+        <child id="521245079298592336" name="children" index="1nI9JN" />
+      </concept>
+      <concept id="521245079298590677" name="jetbrains.mps.lang.editor.editorTest.structure.TestInspectorChild" flags="ng" index="1nI99Q" />
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1225711141656" name="jetbrains.mps.baseLanguage.collections.structure.ListElementAccessExpression" flags="nn" index="1y4W85">
         <child id="1225711182005" name="list" index="1y566C" />
         <child id="1225711191269" name="index" index="1y58nS" />
@@ -461,9 +463,6 @@
         </node>
       </node>
     </node>
-  </node>
-  <node concept="2XOHcx" id="5ISglseuas7">
-    <property role="2XOHcw" value="${mps_home}" />
   </node>
   <node concept="LiM7Y" id="1iKgLyhIPF">
     <property role="TrG5h" value="StyleAttributeNonInheritanceTest" />
@@ -2493,9 +2492,9 @@
             </node>
           </node>
           <node concept="1bVj0M" id="rhJBLcTQp5" role="37wK5m">
-            <node concept="Rh6nW" id="rhJBLcTQp6" role="1bW2Oz">
+            <node concept="gl6BB" id="5W7E4fV0Y3m" role="1bW2Oz">
               <property role="TrG5h" value="it" />
-              <node concept="2jxLKc" id="rhJBLcTQp7" role="1tU5fm" />
+              <node concept="2jxLKc" id="5W7E4fV0Y3n" role="1tU5fm" />
             </node>
             <node concept="3clFbS" id="rhJBLcTQp8" role="1bW5cS">
               <node concept="3clFbF" id="rhJBLcTQp9" role="3cqZAp">
@@ -2512,7 +2511,7 @@
                               <ref role="3uigEE" to="g51k:~EditorCell_Label" resolve="EditorCell_Label" />
                             </node>
                             <node concept="37vLTw" id="rhJBLcTQpi" role="10QFUP">
-                              <ref role="3cqZAo" node="rhJBLcTQp6" resolve="it" />
+                              <ref role="3cqZAo" node="5W7E4fV0Y3m" resolve="it" />
                             </node>
                           </node>
                         </node>
@@ -2532,7 +2531,7 @@
                     <node concept="liA8E" id="rhJBLcTQpn" role="2OqNvi">
                       <ref role="37wK5l" to="wyt6:~Class.isInstance(java.lang.Object)" resolve="isInstance" />
                       <node concept="37vLTw" id="rhJBLcTQpo" role="37wK5m">
-                        <ref role="3cqZAo" node="rhJBLcTQp6" resolve="it" />
+                        <ref role="3cqZAo" node="5W7E4fV0Y3m" resolve="it" />
                       </node>
                     </node>
                   </node>
@@ -2574,9 +2573,9 @@
             </node>
           </node>
           <node concept="1bVj0M" id="rhJBLcW1f4" role="37wK5m">
-            <node concept="Rh6nW" id="rhJBLcW1f5" role="1bW2Oz">
+            <node concept="gl6BB" id="5W7E4fV0Y3o" role="1bW2Oz">
               <property role="TrG5h" value="it" />
-              <node concept="2jxLKc" id="rhJBLcW1f6" role="1tU5fm" />
+              <node concept="2jxLKc" id="5W7E4fV0Y3p" role="1tU5fm" />
             </node>
             <node concept="3clFbS" id="rhJBLcW1f7" role="1bW5cS">
               <node concept="3clFbF" id="rhJBLcW1f8" role="3cqZAp">
@@ -2593,7 +2592,7 @@
                               <ref role="3uigEE" to="g51k:~EditorCell_Label" resolve="EditorCell_Label" />
                             </node>
                             <node concept="37vLTw" id="rhJBLcW1fh" role="10QFUP">
-                              <ref role="3cqZAo" node="rhJBLcW1f5" resolve="it" />
+                              <ref role="3cqZAo" node="5W7E4fV0Y3o" resolve="it" />
                             </node>
                           </node>
                         </node>
@@ -2613,7 +2612,7 @@
                     <node concept="liA8E" id="rhJBLcW1fm" role="2OqNvi">
                       <ref role="37wK5l" to="wyt6:~Class.isInstance(java.lang.Object)" resolve="isInstance" />
                       <node concept="37vLTw" id="rhJBLcW1fn" role="37wK5m">
-                        <ref role="3cqZAo" node="rhJBLcW1f5" resolve="it" />
+                        <ref role="3cqZAo" node="5W7E4fV0Y3o" resolve="it" />
                       </node>
                     </node>
                   </node>
@@ -2689,6 +2688,7 @@
   </node>
   <node concept="1lH9Xt" id="1vdXJDyFxEC">
     <property role="TrG5h" value="FontFamilyStyleClassItemWarningTest" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="1vdXJDyFxEG" role="1SKRRt">
       <node concept="2biZxu" id="1vdXJDyFxWK" role="1qenE9">
         <property role="1rj3mz" value="No Such Font" />
@@ -2700,6 +2700,7 @@
   </node>
   <node concept="1lH9Xt" id="1vdXJDyFPnW">
     <property role="TrG5h" value="FontFamilyLiteralWarningTest" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="1vdXJDyFPnX" role="1SKRRt">
       <node concept="1riQX7" id="1vdXJDyFPnZ" role="1qenE9">
         <property role="1rj3mz" value="No Such Font" />
@@ -2934,6 +2935,25 @@
           <property role="p6zMq" value="9" />
           <property role="p6zMs" value="9" />
           <property role="LIFWd" value="Constant_4mbnlq_e0" />
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="sVPqdg_Ypn">
+    <property role="TrG5h" value="ManualTestInspectorStyle" />
+    <property role="3YCmrE" value="Test propagation opf read-only style from parent editor to child inspector" />
+    <node concept="1qefOq" id="sVPqdg_YzS" role="25YQCW">
+      <node concept="1nhK4n" id="sVPqdg_YzQ" role="1qenE9">
+        <property role="TrG5h" value="ParentName" />
+        <node concept="1nI99Q" id="sVPqdg_YzR" role="1nI9JN">
+          <property role="TrG5h" value="ChildName" />
+        </node>
+        <node concept="LIFWc" id="63gIxqUGKw4" role="lGtFl">
+          <property role="LIFWa" value="0" />
+          <property role="OXtK3" value="true" />
+          <property role="p6zMq" value="0" />
+          <property role="p6zMs" value="0" />
+          <property role="LIFWd" value="Constant_wi20by_a0a" />
         </node>
       </node>
     </node>

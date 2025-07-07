@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,31 +15,41 @@
  */
 package jetbrains.mps.smodel.persistence.def.v9;
 
+import jetbrains.mps.RuntimeFlags;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.MetaModelInfoProvider;
 import jetbrains.mps.persistence.registry.ConceptInfo;
 import jetbrains.mps.persistence.registry.IdInfoRegistry;
 import jetbrains.mps.persistence.registry.LangInfo;
+import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.smodel.adapter.ids.SContainmentLinkId;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import jetbrains.mps.smodel.adapter.ids.SPropertyId;
 import jetbrains.mps.smodel.adapter.ids.SReferenceLinkId;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.smodel.persistence.def.v9.IdEncoder.EncodingException;
 import jetbrains.mps.smodel.runtime.ConceptKind;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.SNodeId;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Facility to read meta-model information persisted in a model file, to fill {@link jetbrains.mps.smodel.persistence.def.v9.IdInfoCollector} back from the
+ * Facility to read meta-model information persisted in a model file, to fill {@link IdInfoRegistry} back from the
  * serialized registry. Serves the task to parametrize ModelReader as well.
+ *
+ * {@link IdInfoCollector} counterpart, where this class represents "read instances from persistence format" side, and
+ * {@link IdInfoCollector} represents "write instances into persistence format".
  *
  * Although barely a mediator to few other facilities, grabs great portion of code one would otherwise write in ModelReaderHandler.
  *
@@ -52,10 +62,15 @@ class IdInfoReadHelper {
   private final MetaModelInfoProvider myMetaInfoProvider;
   private LangInfo myActualLang;
   private ConceptInfo myActualConcept;
+  private SAbstractConcept myConceptMO;
+  // We record SConcept/SInterfaceConcept separately. We may encounter references to InterfaceConcept in the registry
+  //       (e.g. INamedConcept/name) and shall use specific S* class to avoid issues like MPS-35421 or MPS-35503
   private final Map<String, SConcept> myConcepts = new HashMap<>();
+  private final Map<String, SInterfaceConcept> myInterfaceConcepts = new HashMap<>();
   private final Map<String, SProperty> myProperties = new HashMap<>();
   private final Map<String, SReferenceLink> myAssociations = new HashMap<>();
   private final Map<String, SContainmentLink> myAggregations = new HashMap<>();
+  private final Map<String, SNodeId> myModelNodes = new HashMap<>(200);
   private final boolean myInterfaceOnly;
   private final boolean myStripImplementation;
 
@@ -80,6 +95,15 @@ class IdInfoReadHelper {
     return myStripImplementation;
   }
 
+  // internXXX methods: provisional code, perhaps, worth adding distinct helper (like getIdEncoder()), responsible for unique values
+  public String internPropertyValue(String value) {
+    return value == null ? null : value.intern();
+  }
+
+  public String internResolveInfo(String value) {
+    return value == null ? null : value.intern();
+  }
+
   // Fill methods, populate myInfoCollector with persisted meta-model info
 
   public void withLanguage(String id, String name) {
@@ -94,7 +118,17 @@ class IdInfoReadHelper {
     SConceptId conceptId = myIdEncoder.parseConceptId(myActualLang.getLanguageId(), id);
     myActualConcept = myMetaRegistry.registerConcept(conceptId, name);
     myActualConcept.parseImplementationKind(nodeInfo);
-    myConcepts.put(index, MetaAdapterFactory.getConcept(conceptId, name));
+    if (myActualConcept.isInterfaceConcept()) {
+      // unlike ReadHelper in Binary persistence, no need for myActualConcept.markInterfaceConcept() as it's part of parseImplementationKind()
+      final SInterfaceConcept ccc = MetaAdapterFactory.getInterfaceConcept(conceptId, name);
+      myConceptMO = ccc;
+      myInterfaceConcepts.put(index,ccc);
+      myMetaInfoProvider.setInterfaceConcept(conceptId);
+    } else {
+      final SConcept ccc = MetaAdapterFactory.getConcept(conceptId, name);
+      myConceptMO = ccc;
+      myConcepts.put(index, ccc);
+    }
     myMetaInfoProvider.setConceptName(conceptId, name);
     myMetaInfoProvider.setKind(conceptId, myActualConcept.getKind());
     myMetaInfoProvider.setScope(conceptId, myActualConcept.getScope());
@@ -110,7 +144,7 @@ class IdInfoReadHelper {
     assert myActualConcept != null;
     SPropertyId propertyId = myIdEncoder.parsePropertyId(myActualConcept.getConceptId(), id);
     myActualConcept.addProperty(propertyId, name);
-    myProperties.put(index, MetaAdapterFactory.getProperty(propertyId, name));
+    myProperties.put(index, MetaAdapterFactory.getProperty(myConceptMO, propertyId.getIdValue(), name));
     myMetaInfoProvider.setPropertyName(propertyId, name);
   }
 
@@ -118,7 +152,7 @@ class IdInfoReadHelper {
     assert myActualConcept != null;
     SReferenceLinkId linkId = myIdEncoder.parseAssociation(myActualConcept.getConceptId(), id);
     myActualConcept.addLink(linkId, name);
-    myAssociations.put(index, MetaAdapterFactory.getReferenceLink(linkId, name));
+    myAssociations.put(index, MetaAdapterFactory.getReferenceLink(myConceptMO, linkId.getIdValue(), name));
     myMetaInfoProvider.setAssociationName(linkId, name);
   }
 
@@ -126,7 +160,7 @@ class IdInfoReadHelper {
     assert myActualConcept != null;
     SContainmentLinkId linkId = myIdEncoder.parseAggregation(myActualConcept.getConceptId(), id);
     myActualConcept.addLink(linkId, name, unordered);
-    myAggregations.put(index, MetaAdapterFactory.getContainmentLink(linkId, name));
+    myAggregations.put(index, MetaAdapterFactory.getContainmentLink(myConceptMO, linkId.getIdValue(), name));
     myMetaInfoProvider.setAggregationName(linkId, name);
     myMetaInfoProvider.setUnordered(linkId, unordered);
   }
@@ -134,6 +168,22 @@ class IdInfoReadHelper {
   // Query. De-serialize ids, resolve indexes and retrieve meta-objects according to myInfoCollector state
 
   public SConcept readConcept(@NotNull String index) {
+    if (myInterfaceConcepts.containsKey(index)) {
+      final String m1 = "Same index %s for concept/interface concept %s";
+      assert !myConcepts.containsKey(index) : String.format(m1, index, myInterfaceConcepts.get(index));
+      final String m2 = "Attempt to instantiate a node with an interface concept. index: %s, concept: %s";
+      // happens e.g. in templates, where macros produce legitimate nodes but are attached to a throw-away instance
+      // still, it's better not to do this
+      final String msg = String.format(m2, index, myInterfaceConcepts.get(index));
+      if (RuntimeFlags.isInternalMode()) {
+        Logger.getLogger(getClass()).warning(msg);
+      } else {
+        // As it's quite common MPS pattern is to use instances of abstract nodes in templates, no reason to nag LDs while
+        // reading model files. Instead, shall annoy them in the editor
+        Logger.getLogger(getClass()).info(msg);
+      }
+      return MetaAdapterByDeclaration.asInstanceConcept(myInterfaceConcepts.get(index));
+    }
     assert myConcepts.containsKey(index) : String.format("Bad concept index key: %s", index);
     return myConcepts.get(index);
   }
@@ -186,5 +236,30 @@ class IdInfoReadHelper {
     // proper read order (first registry, then used languages). It's even more complicated for per-root
     // persistence, where usedLanguages are kept in a header file only, while registry spans few.
     return MetaAdapterFactory.getLanguage(langId, langName);
+  }
+
+  public SNodeId readNodeId(String text) {
+    SNodeId rv = myModelNodes.get(text);
+    if (rv != null) {
+      return rv;
+    }
+    try {
+      myModelNodes.put(text, rv = myIdEncoder.parseNodeId(text));
+      return rv;
+    } catch (EncodingException ex) {
+      throw new IllegalArgumentException(text, ex.getCause());
+    }
+  }
+
+  public SNodeId readLocalRefTarget(String text) {
+    SNodeId rv = myModelNodes.get(text);
+    if (rv != null) {
+      return rv;
+    }
+    rv = myIdEncoder.parseLocalNodeReference(text);
+    if (rv != null) {
+      myModelNodes.put(text, rv);
+    }
+    return rv;
   }
 }

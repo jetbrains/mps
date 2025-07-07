@@ -14,7 +14,6 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.debug.api.breakpoints.IBreakpoint;
 import javax.swing.tree.TreePath;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import java.util.ArrayList;
 import javax.swing.JComponent;
 import org.jetbrains.annotations.NonNls;
@@ -28,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.platform.ui.CheckBoxNodeRenderer;
 
-@GeneratedClass(node = "r:e8d15a56-f89d-47fc-ac9f-8a35d3539ac3(jetbrains.mps.debugger.api.ui.breakpoints)/4474271214083119134", model = "r:e8d15a56-f89d-47fc-ac9f-8a35d3539ac3(jetbrains.mps.debugger.api.ui.breakpoints)")
+@GeneratedClass(nodeId = "4474271214083119134", model = "r:e8d15a56-f89d-47fc-ac9f-8a35d3539ac3(jetbrains.mps.debugger.api.ui.breakpoints)")
 /*package*/ abstract class AbstractBreakpointsTree extends BreakpointsView {
   protected final Project myProject;
   protected final GroupedTree<BreakpointNodeData> myTree;
@@ -109,11 +108,7 @@ import jetbrains.mps.ide.platform.ui.CheckBoxNodeRenderer;
   @Override
   public void selectBreakpoint(@Nullable final IBreakpoint breakpoint) {
     if (breakpoint != null) {
-      MPSTreeNode treeNode = new ModelAccessHelper(myProject.getModelAccess()).runReadAction(new Computable<MPSTreeNode>() {
-        public MPSTreeNode compute() {
-          return myTree.findNodeForData(new BreakpointNodeData(breakpoint));
-        }
-      });
+      MPSTreeNode treeNode = new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> myTree.findNodeForData(new BreakpointNodeData(breakpoint)));
       myTree.selectNode(treeNode);
     } else {
       myTree.clearSelection();

@@ -48,7 +48,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "@non thread safe");
     editorCell.setCellId("Constant_djoi4_a0");
     Style style = new StyleImpl();
-    new CommentStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new CommentStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;

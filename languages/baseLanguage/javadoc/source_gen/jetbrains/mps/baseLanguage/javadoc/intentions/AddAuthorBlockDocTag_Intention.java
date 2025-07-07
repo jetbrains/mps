@@ -22,21 +22,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class AddAuthorBlockDocTag_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddAuthorBlockDocTag_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:17a5547b-be2d-47de-9fc3-8304c9f5de67(jetbrains.mps.baseLanguage.javadoc.intentions)", "8465538089690783660"));
   }
+
   @Override
   public String getPresentation() {
     return "AddAuthorBlockDocTag";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -46,20 +46,31 @@ public final class AddAuthorBlockDocTag_Intention extends AbstractIntentionDescr
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Add @author Tag";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode authorTag = SNodeFactoryOperations.createNewNode(CONCEPTS.AuthorBlockDocTag$jR, null);
       ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tags$stUD)).addElement(authorTag);
       BlockDocTagHelper.setFocus(editorContext, authorTag);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddAuthorBlockDocTag_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

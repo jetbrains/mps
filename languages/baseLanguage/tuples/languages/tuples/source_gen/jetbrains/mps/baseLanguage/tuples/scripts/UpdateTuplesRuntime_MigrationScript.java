@@ -9,13 +9,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
@@ -28,7 +26,6 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
-import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -52,11 +49,7 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return "jetbrains.mps.baseLanguage.tuples.runtime.Tuples".equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(node)) && !(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SPropertyOperations.getString(it, PROPS.name$MnvL).matches("_[0-9]+");
-          }
-        }));
+        return "jetbrains.mps.baseLanguage.tuples.runtime.Tuples".equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(node)) && !(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).any((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).matches("_[0-9]+")));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
@@ -82,21 +75,13 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
 
           SNode extendIfc = null;
           if (ifc != null) {
-            extendIfc = _quotation_createNode_yti4yq_a0a0l0b0a0(ListSequence.fromList(typerefs).cut(1).toListSequence(), ifc);
+            extendIfc = _quotation_createNode_yti4yq_a0a0l0b0a0(ListSequence.fromList(typerefs).cut(1).toList(), ifc);
           }
 
           ifc = _quotation_createNode_yti4yq_a0n0b0a0(extendIfc, typedecls, "_" + i, methods);
 
-          List<SNode> extParams = ListSequence.fromList(typerefs).select(new ISelector<SNode, SNode>() {
-            public SNode select(SNode tr) {
-              return _quotation_createNode_yti4yq_a0a0a0a0p0b0a0(SNodeOperations.copyNode(tr));
-            }
-          }).toListSequence();
-          ListSequence.fromList(SLinkOperations.getChildren(ifc, LINKS.member$L_2d)).addElement(_quotation_createNode_yti4yq_a0a61a1a0a(extParams, ifc, ListSequence.fromList(typerefs).select(new ISelector<SNode, SNode>() {
-            public SNode select(SNode it) {
-              return SNodeOperations.copyNode(it);
-            }
-          }).toListSequence(), ifc));
+          List<SNode> extParams = ListSequence.fromList(typerefs).select((tr) -> _quotation_createNode_yti4yq_a0a0a0a0p0b0a0(SNodeOperations.copyNode(tr))).toList();
+          ListSequence.fromList(SLinkOperations.getChildren(ifc, LINKS.member$L_2d)).addElement(_quotation_createNode_yti4yq_a0a61a1a0a(extParams, ifc, ListSequence.fromList(typerefs).select((it) -> SNodeOperations.copyNode(it)).toList(), ifc));
 
           ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(ifc);
         }
@@ -125,7 +110,7 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        // in case there are classes, keep the nodes intact, just in case there are references to them (e.g. from templates) 
+        // in case there are classes, keep the nodes intact, just in case there are references to them (e.g. from templates)
         TreeMap<String, SNode> implClasses = new TreeMap<String, SNode>();
         for (SNode cc : Sequence.fromIterable(SNodeOperations.ofConcept(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node), CONCEPTS.ClassConcept$bK))) {
           if (SPropertyOperations.getBoolean(cc, PROPS.isStatic$3WAz) && SPropertyOperations.getString(cc, PROPS.name$MnvL).matches("_[0-9]+")) {
@@ -133,30 +118,26 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
           }
         }
         final int MAX_TUPLE_COMPONENTS = 10;
-        // Here I assume these updaters (aka refactoring scripts) are executed sequentially, and TupleInterface has been executed already 
+        // Here I assume these updaters (aka refactoring scripts) are executed sequentially, and TupleInterface has been executed already
         final SNode[] tupleIfaces = new SNode[MAX_TUPLE_COMPONENTS];
-        SNode tuplesCC = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(node), CONCEPTS.ClassConcept$bK)).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return "Tuples".equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-          }
-        });
+        SNode tuplesCC = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(node), CONCEPTS.ClassConcept$bK)).findFirst((it) -> "Tuples".equals(SPropertyOperations.getString(it, PROPS.name$MnvL)));
         for (SNode ti : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(tuplesCC, LINKS.member$L_2d), CONCEPTS.Interface$db))) {
           if (!(SPropertyOperations.getString(ti, PROPS.name$MnvL).matches("_[0-9]+"))) {
             continue;
           }
-          int tiIndex = Integer.parseUnsignedInt(SPropertyOperations.getString(ti, PROPS.name$MnvL), 1, SPropertyOperations.getString(ti, PROPS.name$MnvL).length(), 10);
+          int tiIndex = Integer.parseUnsignedInt(SPropertyOperations.getString(ti, PROPS.name$MnvL).substring(1), 10);
           assert tupleIfaces[tiIndex] == null;
           tupleIfaces[tiIndex] = ti;
         }
-        // sanity check 
+        // sanity check
         for (int i = 0; i < tupleIfaces.length; i++) {
           if (tupleIfaces[i] == null) {
             throw new IllegalStateException(String.format("No Tuples._%d interface declaration found", i));
           }
         }
-        // it is MultiTuple class concept that we are editing here, _0 extends MultiTuple, _1 extends _0 and so on 
+        // it is MultiTuple class concept that we are editing here, _0 extends MultiTuple, _1 extends _0 and so on
         SNode prevIC = node;
-        // XXX perhaps, shall utilize javax.annotation.Generated to denote members that could be safely re-generated 
+        // XXX perhaps, shall utilize javax.annotation.Generated to denote members that could be safely re-generated
         for (int i = 0; i < MAX_TUPLE_COMPONENTS; i++) {
           final String icname = "_" + i;
           SNode ic = implClasses.get(icname);
@@ -172,15 +153,15 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
               SNode td = SLinkOperations.addNewChild(ic, LINKS.typeVariableDeclaration$Lipp, null);
               SPropertyOperations.assign(td, PROPS.name$MnvL, "T" + j);
               if (j < i - 1) {
-                // all but the last one Type variable are shared with superclass 
+                // all but the last one Type variable are shared with superclass
                 SLinkOperations.setTarget(SLinkOperations.addNewChild(superclassType, LINKS.parameter$oqG$, CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I, td);
               }
               SLinkOperations.setTarget(SLinkOperations.addNewChild(implementedIface, LINKS.parameter$oqG$, CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I, td);
             }
           }
-          // first cons takes Object... 
-          // second cons is for subclasses, takes int and passes it up to MultiTuple to initialize array 
-          // third cons is no-arg cons for use in empty() 
+          // first cons takes Object...
+          // second cons is for subclasses, takes int and passes it up to MultiTuple to initialize array
+          // third cons is no-arg cons for use in empty()
           SNode c1 = SLinkOperations.addNewChild(ic, LINKS.member$L_2d, CONCEPTS.ConstructorDeclaration$yG);
           SNode c2 = SLinkOperations.addNewChild(ic, LINKS.member$L_2d, CONCEPTS.ConstructorDeclaration$yG);
           SNode c3 = SLinkOperations.addNewChild(ic, LINKS.member$L_2d, CONCEPTS.ConstructorDeclaration$yG);
@@ -190,8 +171,8 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
           SLinkOperations.setNewChild(c1, LINKS.returnType$5xoi, CONCEPTS.VoidType$BF);
           SLinkOperations.setNewChild(c2, LINKS.returnType$5xoi, CONCEPTS.VoidType$BF);
           SLinkOperations.setNewChild(c3, LINKS.returnType$5xoi, CONCEPTS.VoidType$BF);
-          // FIXME there used to be code (e.g.TResource) that did new MultiTuple._2 instead of MultiTuple.from() 
-          //      I fixed templates in 2020.1; can replace with 'protected' once 2020.1 is out 
+          // FIXME there used to be code (e.g.TResource) that did new MultiTuple._2 instead of MultiTuple.from()
+          //      I fixed templates in 2020.1; can replace with 'protected' once 2020.1 is out
           SLinkOperations.setNewChild(c1, LINKS.visibility$Yyua, CONCEPTS.PublicVisibility$R0);
           SLinkOperations.setNewChild(c2, LINKS.visibility$Yyua, CONCEPTS.ProtectedVisibility$hr);
           SLinkOperations.setNewChild(c3, LINKS.visibility$Yyua, CONCEPTS.ProtectedVisibility$hr);
@@ -210,7 +191,7 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
           SLinkOperations.setTarget(c3This, LINKS.baseMethodDeclaration$pyYw, c2);
 
           if (i > 0) {
-            // get(), set() 
+            // get(), set()
             SNode mSet = SLinkOperations.addNewChild(ic, LINKS.member$L_2d, CONCEPTS.InstanceMethodDeclaration$39);
             SNode mGet = SLinkOperations.addNewChild(ic, LINKS.member$L_2d, CONCEPTS.InstanceMethodDeclaration$39);
             SLinkOperations.setNewChild(mSet, LINKS.visibility$Yyua, CONCEPTS.PublicVisibility$R0);
@@ -235,16 +216,16 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
             SLinkOperations.setPointer(getCall, LINKS.baseMethodDeclaration$pyYw, new SNodePointer("r:33366a6f-09e8-45e7-ae7f-cb8cf0c7ed05(jetbrains.mps.baseLanguage.tuples.runtime)", "1238932917172"));
             SPropertyOperations.assign(SLinkOperations.addNewChild(getCall, LINKS.actualArgument$pzdx, CONCEPTS.IntegerConstant$Na), PROPS.value$jgCM, i - 1);
           }
-          // assign() 
+          // assign()
           SNode assignMethod = SLinkOperations.addNewChild(ic, LINKS.member$L_2d, CONCEPTS.InstanceMethodDeclaration$39);
           SLinkOperations.setNewChild(assignMethod, LINKS.visibility$Yyua, CONCEPTS.PublicVisibility$R0);
           SLinkOperations.setNewChild(assignMethod, LINKS.body$5xQk, null);
           SPropertyOperations.assign(assignMethod, PROPS.name$MnvL, "assign");
-          // aka tupleIfaces[i] with proper TypeVariableReference 
+          // aka tupleIfaces[i] with proper TypeVariableReference
           SLinkOperations.setTarget(assignMethod, LINKS.returnType$5xoi, SNodeOperations.copyNode(ListSequence.fromList(SLinkOperations.getChildren(ic, LINKS.implementedInterface$rujG)).first()));
           SNode assignMethodParam = SLinkOperations.addNewChild(assignMethod, LINKS.parameter$5xBj, null);
           SPropertyOperations.assign(assignMethodParam, PROPS.name$MnvL, "from");
-          // can't just copy return type, 'from' parameter needs 'extends' for each type variable reference 
+          // can't just copy return type, 'from' parameter needs 'extends' for each type variable reference
           SNode ampType = SLinkOperations.setNewChild(assignMethodParam, LINKS.type$a1UY, CONCEPTS.ClassifierType$bL);
           SLinkOperations.setTarget(ampType, LINKS.classifier$cxMr, tupleIfaces[i]);
           for (int j = 0; j < i; j++) {
@@ -261,28 +242,20 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
           SNode ifFalse = SLinkOperations.setNewChild(SLinkOperations.setNewChild(s1, LINKS.ifFalseStatement$psZK, CONCEPTS.BlockStatement$u4), LINKS.statements$q65M, null);
           SNode assignValuesCall = SLinkOperations.setNewChild(SLinkOperations.addNewChild(ifFalse, LINKS.statement$53DE, CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M, CONCEPTS.LocalMethodCall$zT);
           SLinkOperations.setPointer(assignValuesCall, LINKS.baseMethodDeclaration$pyYw, new SNodePointer("r:33366a6f-09e8-45e7-ae7f-cb8cf0c7ed05(jetbrains.mps.baseLanguage.tuples.runtime)", "3715638535252606646"));
-          List<SNode> tupleIfaceGetters = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(tupleIfaces[i], LINKS.member$L_2d), CONCEPTS.InstanceMethodDeclaration$39)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).isEmpty();
-            }
-          }).toListSequence();
+          List<SNode> tupleIfaceGetters = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(tupleIfaces[i], LINKS.member$L_2d), CONCEPTS.InstanceMethodDeclaration$39)).where((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).isEmpty()).toList();
           for (int j = 0; j < i; j++) {
             SNode arg = SLinkOperations.addNewChild(assignValuesCall, LINKS.actualArgument$pzdx, CONCEPTS.DotExpression$yW);
             SLinkOperations.setTarget(SLinkOperations.setNewChild(arg, LINKS.operand$w6IR, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG, assignMethodParam);
             final String getMethodName = "_" + j;
-            SLinkOperations.setTarget(SLinkOperations.setNewChild(arg, LINKS.operation$gs9E, CONCEPTS.InstanceMethodCallOperation$uu), LINKS.baseMethodDeclaration$pyYw, ListSequence.fromList(tupleIfaceGetters).findFirst(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return getMethodName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-              }
-            }));
+            SLinkOperations.setTarget(SLinkOperations.setNewChild(arg, LINKS.operation$gs9E, CONCEPTS.InstanceMethodCallOperation$uu), LINKS.baseMethodDeclaration$pyYw, ListSequence.fromList(tupleIfaceGetters).findFirst((it) -> getMethodName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL))));
           }
-          // uf, what a piece of code... 
+          // uf, what a piece of code...
 
           if (implClasses.get(icname) == null) {
-            // don't attach ic until all its children are ready to save some notifications 
-            // OTOH, I can face node id conflicts and broken references (e.g. if an id of TypeVariableDeclaration changes, all  
-            // TypeVariableReferences may get broken. I hope that they are not 'mature' by the time I insert the class into model, 
-            // and therefore would be updated properly) 
+            // don't attach ic until all its children are ready to save some notifications
+            // OTOH, I can face node id conflicts and broken references (e.g. if an id of TypeVariableDeclaration changes, all 
+            // TypeVariableReferences may get broken. I hope that they are not 'mature' by the time I insert the class into model,
+            // and therefore would be updated properly)
             implClasses.put(icname, ic);
             SLinkOperations.addNewChild(node, LINKS.member$L_2d, CONCEPTS.PlaceholderMember$s8);
             ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(ic);
@@ -290,8 +263,8 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
 
           prevIC = ic;
         }
-        //  
-        // from(...) methods 
+        // 
+        // from(...) methods
         for (int i = 0; i < MAX_TUPLE_COMPONENTS; i++) {
           SNode classCreator = createClassCreator_yti4yq_a0a0q0a1(Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(implClasses.get("_" + i))).first());
           SNode retType = createClassifierType_yti4yq_a0b0q0a1(tupleIfaces[i]);
@@ -309,10 +282,10 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
           }
           ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(fromMethod);
         }
-        //  
-        // emptyN() methods 
+        // 
+        // emptyN() methods
         for (int i = 0; i < MAX_TUPLE_COMPONENTS; i++) {
-          // it's third cons that takes no args 
+          // it's third cons that takes no args
           SNode classCreator = createClassCreator_yti4yq_a0b0t0a1(Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(implClasses.get("_" + i))).skip(2).first());
           SNode retType = createClassifierType_yti4yq_a0c0t0a1(tupleIfaces[i]);
           SNode ret = createReturnStatement_yti4yq_a0d0t0a1(classCreator);
@@ -333,7 +306,7 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
         return false;
       }
     });
-    // whitespace 
+    // whitespace
   }
 
   @Nullable
@@ -342,40 +315,43 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
     return PersistenceFacade.getInstance().createNodeReference("r:e1f907d4-9f20-482f-9ee2-2b580163f28a(jetbrains.mps.baseLanguage.tuples.scripts)/5684843424312914767");
   }
   private static SNode _quotation_createNode_yti4yq_a0a0a1a1a0a(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x1024639ed74L, "TypeVariableDeclaration")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x1024639ed74L, "TypeVariableDeclaration"));
+    quotedNode_2 = nb.getResult();
     SNodeAccessUtil.setPropertyValue(quotedNode_2, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), (String) parameter_1);
     return quotedNode_2;
   }
   private static SNode _quotation_createNode_yti4yq_a0a0a4a1a0a(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x102467229d8L, "TypeVariableReference")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x102467229d8L, "TypeVariableReference"));
+    quotedNode_2 = nb.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration"), (SNode) parameter_1);
     return quotedNode_2;
   }
   private static SNode _quotation_createNode_yti4yq_a0a0a7a1a0a(Object parameter_1, Object parameter_2, Object parameter_3) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_4 = null;
     SNode quotedNode_5 = null;
     SNode quotedNode_6 = null;
     SNode quotedNode_7 = null;
     SNode quotedNode_8 = null;
     SNode quotedNode_9 = null;
-    quotedNode_4 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b21dL, "InstanceMethodDeclaration")).getResult();
-    quotedNode_4.setProperty(MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract"), "true");
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b21dL, "InstanceMethodDeclaration"));
+    quotedNode_4 = nb.getResult();
+    nb.setProperty(MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract"), "true");
     SNodeAccessUtil.setPropertyValue(quotedNode_4, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), (String) parameter_2);
-    quotedNode_5 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e94L, "ParameterDeclaration")).getResult();
-    quotedNode_5.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "value");
+    SNodeBuilder nb1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e94L, "ParameterDeclaration"));
+    quotedNode_5 = nb1.getResult();
+    nb1.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "value");
     quotedNode_9 = (SNode) parameter_1;
     if (quotedNode_9 != null) {
       quotedNode_5.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), SNodeOperations.copyIfNecessary(quotedNode_9));
     }
     quotedNode_4.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"), quotedNode_5);
-    quotedNode_6 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10af9581ff1L, "PublicVisibility")).getResult();
+    SNodeBuilder nb2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10af9581ff1L, "PublicVisibility"));
+    quotedNode_6 = nb2.getResult();
     quotedNode_4.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"), quotedNode_6);
-    quotedNode_7 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b200L, "StatementList")).getResult();
+    SNodeBuilder nb3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b200L, "StatementList"));
+    quotedNode_7 = nb3.getResult();
     quotedNode_4.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body"), quotedNode_7);
     quotedNode_8 = (SNode) parameter_3;
     if (quotedNode_8 != null) {
@@ -384,17 +360,19 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
     return quotedNode_4;
   }
   private static SNode _quotation_createNode_yti4yq_a0a0a8a1a0a(Object parameter_1, Object parameter_2) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
     SNode quotedNode_5 = null;
     SNode quotedNode_6 = null;
-    quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b21dL, "InstanceMethodDeclaration")).getResult();
-    quotedNode_3.setProperty(MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract"), "true");
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b21dL, "InstanceMethodDeclaration"));
+    quotedNode_3 = nb.getResult();
+    nb.setProperty(MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract"), "true");
     SNodeAccessUtil.setPropertyValue(quotedNode_3, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), (String) parameter_1);
-    quotedNode_4 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10af9581ff1L, "PublicVisibility")).getResult();
+    SNodeBuilder nb1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10af9581ff1L, "PublicVisibility"));
+    quotedNode_4 = nb1.getResult();
     quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"), quotedNode_4);
-    quotedNode_5 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b200L, "StatementList")).getResult();
+    SNodeBuilder nb2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b200L, "StatementList"));
+    quotedNode_5 = nb2.getResult();
     quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body"), quotedNode_5);
     quotedNode_6 = (SNode) parameter_2;
     if (quotedNode_6 != null) {
@@ -403,21 +381,17 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
     return quotedNode_3;
   }
   private static SNode _quotation_createNode_yti4yq_a0a0l0b0a0(Object parameter_1, Object parameter_2) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
-    quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+    quotedNode_3 = nb.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_3, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), (SNode) parameter_2);
-    {
-      List<SNode> nodes = (List<SNode>) parameter_1;
-      for (SNode child : nodes) {
-        quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"), SNodeOperations.copyIfNecessary(child));
-      }
+    for (SNode child : (List<SNode>) parameter_1) {
+      quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"), SNodeOperations.copyIfNecessary(child));
     }
     return quotedNode_3;
   }
   private static SNode _quotation_createNode_yti4yq_a0n0b0a0(Object parameter_1, Object parameter_2, Object parameter_3, Object parameter_4) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_5 = null;
     SNode quotedNode_6 = null;
     SNode quotedNode_7 = null;
@@ -426,34 +400,30 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
     SNode quotedNode_10 = null;
     SNode quotedNode_11 = null;
     SNode quotedNode_12 = null;
-    quotedNode_5 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101edd46144L, "Interface")).getResult();
-    quotedNode_5.setProperty(MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x73c6d8a8c021f99L, "nonStatic"), "true");
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101edd46144L, "Interface"));
+    quotedNode_5 = nb.getResult();
+    nb.setProperty(MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x73c6d8a8c021f99L, "nonStatic"), "true");
     SNodeAccessUtil.setPropertyValue(quotedNode_5, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), (String) parameter_3);
     quotedNode_6 = (SNode) parameter_1;
     if (quotedNode_6 != null) {
       quotedNode_5.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface"), SNodeOperations.copyIfNecessary(quotedNode_6));
     }
-    quotedNode_7 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10af9581ff1L, "PublicVisibility")).getResult();
+    SNodeBuilder nb1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10af9581ff1L, "PublicVisibility"));
+    quotedNode_7 = nb1.getResult();
     quotedNode_5.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"), quotedNode_7);
-    {
-      List<SNode> nodes = (List<SNode>) parameter_2;
-      for (SNode child : nodes) {
-        quotedNode_5.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration"), SNodeOperations.copyIfNecessary(child));
-      }
+    for (SNode child : (List<SNode>) parameter_2) {
+      quotedNode_5.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration"), SNodeOperations.copyIfNecessary(child));
     }
-    {
-      List<SNode> nodes = (List<SNode>) parameter_4;
-      for (SNode child : nodes) {
-        quotedNode_5.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"), SNodeOperations.copyIfNecessary(child));
-      }
+    for (SNode child : (List<SNode>) parameter_4) {
+      quotedNode_5.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"), SNodeOperations.copyIfNecessary(child));
     }
     return quotedNode_5;
   }
   private static SNode _quotation_createNode_yti4yq_a0a0a0a0p0b0a0(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x110daeaa84aL, "UpperBoundType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x110daeaa84aL, "UpperBoundType"));
+    quotedNode_2 = nb.getResult();
     quotedNode_3 = (SNode) parameter_1;
     if (quotedNode_3 != null) {
       quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, 0x110daeaa84bL, "bound"), SNodeOperations.copyIfNecessary(quotedNode_3));
@@ -461,7 +431,6 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
     return quotedNode_2;
   }
   private static SNode _quotation_createNode_yti4yq_a0a61a1a0a(Object parameter_1, Object parameter_2, Object parameter_3, Object parameter_4) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_5 = null;
     SNode quotedNode_6 = null;
     SNode quotedNode_7 = null;
@@ -470,32 +439,32 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
     SNode quotedNode_10 = null;
     SNode quotedNode_11 = null;
     SNode quotedNode_12 = null;
-    quotedNode_5 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b21dL, "InstanceMethodDeclaration")).getResult();
-    quotedNode_5.setProperty(MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract"), "true");
-    quotedNode_5.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "assign");
-    quotedNode_6 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e94L, "ParameterDeclaration")).getResult();
-    quotedNode_6.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "from");
-    quotedNode_10 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b21dL, "InstanceMethodDeclaration"));
+    quotedNode_5 = nb.getResult();
+    nb.setProperty(MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract"), "true");
+    nb.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "assign");
+    SNodeBuilder nb1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e94L, "ParameterDeclaration"));
+    quotedNode_6 = nb1.getResult();
+    nb1.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "from");
+    SNodeBuilder nb2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+    quotedNode_10 = nb2.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_10, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), (SNode) parameter_2);
-    {
-      List<SNode> nodes = (List<SNode>) parameter_1;
-      for (SNode child : nodes) {
-        quotedNode_10.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"), SNodeOperations.copyIfNecessary(child));
-      }
+    for (SNode child : (List<SNode>) parameter_1) {
+      quotedNode_10.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"), SNodeOperations.copyIfNecessary(child));
     }
     quotedNode_6.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), quotedNode_10);
     quotedNode_5.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"), quotedNode_6);
-    quotedNode_7 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10af9581ff1L, "PublicVisibility")).getResult();
+    SNodeBuilder nb3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10af9581ff1L, "PublicVisibility"));
+    quotedNode_7 = nb3.getResult();
     quotedNode_5.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility"), quotedNode_7);
-    quotedNode_8 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b200L, "StatementList")).getResult();
+    SNodeBuilder nb4 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b200L, "StatementList"));
+    quotedNode_8 = nb4.getResult();
     quotedNode_5.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body"), quotedNode_8);
-    quotedNode_9 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
+    SNodeBuilder nb5 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+    quotedNode_9 = nb5.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_9, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), (SNode) parameter_4);
-    {
-      List<SNode> nodes = (List<SNode>) parameter_3;
-      for (SNode child : nodes) {
-        quotedNode_9.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"), SNodeOperations.copyIfNecessary(child));
-      }
+    for (SNode child : (List<SNode>) parameter_3) {
+      quotedNode_9.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"), SNodeOperations.copyIfNecessary(child));
     }
     quotedNode_5.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType"), quotedNode_9);
     return quotedNode_5;
@@ -506,26 +475,29 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
     return n0.getResult();
   }
   private static SNode _quotation_createNode_yti4yq_a0a0u0n0a1() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e94L, "ParameterDeclaration")).getResult();
-    quotedNode_1.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "objs");
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11c08f42e7bL, "VariableArityType")).getResult();
-    quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
-    quotedNode_3.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_3, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Object")));
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e94L, "ParameterDeclaration"));
+    quotedNode_1 = nb.getResult();
+    nb.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "objs");
+    SNodeBuilder nb1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11c08f42e7bL, "VariableArityType"));
+    quotedNode_2 = nb1.getResult();
+    SNodeBuilder nb2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+    quotedNode_3 = nb2.getResult();
+    nb2.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~Object");
     quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, 0x11c08f5f38cL, "componentType"), quotedNode_3);
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), quotedNode_2);
     return quotedNode_1;
   }
   private static SNode _quotation_createNode_yti4yq_a0a52a31a0b() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e94L, "ParameterDeclaration")).getResult();
-    quotedNode_1.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "c");
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d22479L, "IntegerType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e94L, "ParameterDeclaration"));
+    quotedNode_1 = nb.getResult();
+    nb.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "c");
+    SNodeBuilder nb1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d22479L, "IntegerType"));
+    quotedNode_2 = nb1.getResult();
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), quotedNode_2);
     return quotedNode_1;
   }

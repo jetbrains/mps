@@ -18,6 +18,7 @@ package jetbrains.mps.extapi.model;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.persistence.DataSource;
 
 /**
  * evgeny, 2/26/13
@@ -80,5 +81,12 @@ public class PersistenceProblem implements SModel.Problem {
   @Override
   public SNodeReference getAnchorNode() {
     return anchor;
+  }
+
+  /**
+   * shorhand for {@code new PersistenceProblem(Save, ...., true)}
+   */
+  public static PersistenceProblem errorSave(String text, DataSource location) {
+    return new PersistenceProblem(Kind.Save, text, location.getLocation(), true);
   }
 }

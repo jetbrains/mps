@@ -58,7 +58,7 @@ public interface ClassifierTraversalCallback {
     }
 
     /*package*/ static TraversalInfo create(SNode classifier, TraversalController controller) {
-      // no copy (sic) 
+      // no copy (sic)
       TraversalInfo info = new TraversalInfo();
       info.setCurrentClassifier(classifier);
       info.setController(controller);

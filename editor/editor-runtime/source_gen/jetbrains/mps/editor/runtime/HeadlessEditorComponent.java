@@ -17,7 +17,7 @@ import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
  * - call some editor-specific actions - e.g. substitute
  * - ...
  */
-@GeneratedClass(node = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)/7398401354080376432", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
+@GeneratedClass(nodeId = "7398401354080376432", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
 public class HeadlessEditorComponent extends EditorComponent {
 
   /**
@@ -46,8 +46,8 @@ public class HeadlessEditorComponent extends EditorComponent {
 
   @Override
   protected void assertInEDT() {
-    // empty method because we suppose HeadlessEditorComponent should be called from different threads. 
-    // in the future all EDT-specific stuff should be removed from this class & so this method will 
-    // present only inside EditorComponent with the UI attached to it. 
+    // empty method because we suppose HeadlessEditorComponent should be called from different threads.
+    // in the future all EDT-specific stuff should be removed from this class & so this method will
+    // present only inside EditorComponent with the UI attached to it.
   }
 }

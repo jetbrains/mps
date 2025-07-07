@@ -14,7 +14,7 @@ import jetbrains.mps.console.tool.MPSConsoleDataKeys;
 import jetbrains.mps.console.tool.DialogConsoleTab;
 import jetbrains.mps.console.tool.BaseConsoleTab;
 
-@GeneratedClass(node = "r:ab572aa6-6e4f-43f3-8bc9-ad4a8ae29372(jetbrains.mps.console.actions)/8233106957387140740", model = "r:ab572aa6-6e4f-43f3-8bc9-ad4a8ae29372(jetbrains.mps.console.actions)")
+@GeneratedClass(nodeId = "8233106957387140740", model = "r:ab572aa6-6e4f-43f3-8bc9-ad4a8ae29372(jetbrains.mps.console.actions)")
 public class ConsoleExecute_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -22,6 +22,7 @@ public class ConsoleExecute_Action extends BaseAction {
     super("Execute", "Execute last command", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

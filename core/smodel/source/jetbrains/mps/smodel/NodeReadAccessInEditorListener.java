@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,8 @@
  */
 package jetbrains.mps.smodel;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.Pair;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -33,7 +32,7 @@ public class NodeReadAccessInEditorListener implements INodesReadListener {
 
   private Set<Pair<SNodeReference, String>> myCleanlyReadAccessedProperties = new HashSet<>();
 
-  private static final Logger LOG = LogManager.getLogger(NodeReadAccessInEditorListener.class);
+  private static final Logger LOG = Logger.getLogger(NodeReadAccessInEditorListener.class);
 
   public Set<SNode> getNodesToDependOn() {
     return myNodesToDependOn;

@@ -9,63 +9,53 @@ import jetbrains.mps.make.script.IScriptController;
 import jetbrains.mps.messages.IMessageHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import org.apache.log4j.LogManager;
 import java.util.Map;
 import jetbrains.mps.make.facet.ITarget;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.make.script.IScript;
 import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.messages.IMessage;
-import jetbrains.mps.InternalFlag;
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.make.runtime.script.CompositeResult;
 import jetbrains.mps.internal.make.runtime.script.Script;
 import jetbrains.mps.internal.make.runtime.script.TimeStatisticResource;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 
-@GeneratedClass(node = "r:7cb72aee-d3e2-47e9-9964-3abda6a73a9a(jetbrains.mps.make.service)/7184932954667864779", model = "r:7cb72aee-d3e2-47e9-9964-3abda6a73a9a(jetbrains.mps.make.service)")
+@GeneratedClass(nodeId = "7184932954667864779", model = "r:7cb72aee-d3e2-47e9-9964-3abda6a73a9a(jetbrains.mps.make.service)")
 public class CoreMakeTask {
   private IResult myResult = null;
-  protected final String myScrName;
   private final MakeSequence myMakeSequence;
   private final IScriptController myController;
   private final IMessageHandler myMessageHandler;
 
-  public CoreMakeTask(@NotNull String scriptName, MakeSequence makeSeq, IScriptController ctl, IMessageHandler mh) {
-    myScrName = scriptName;
+  /**
+   * 
+   * @since 2023.2
+   */
+  public CoreMakeTask(MakeSequence makeSeq, IScriptController ctl, IMessageHandler mh) {
     myMakeSequence = makeSeq;
     myController = ctl;
     myMessageHandler = mh;
   }
 
   public void run(@NotNull ProgressMonitor monitor) {
-    try {
-      doRun(monitor);
-    } finally {
-      try {
-        reconcile();
-      } catch (RuntimeException ex) {
-        LogManager.getLogger(CoreMakeTask.class).debug("Unexpected exception", ex);
-      }
-    }
+    myResult = new IResult.FAILURE("not started", null);
+    doRun(monitor);
   }
 
   protected void doRun(final ProgressMonitor monitor) {
     final Map<ITarget.Name, Long> timeStatistic = MapSequence.fromMap(new HashMap<ITarget.Name, Long>());
 
-    aboutToStart();
     final int clsize = myMakeSequence.steps();
     if (clsize == 0) {
       return;
@@ -73,63 +63,49 @@ public class CoreMakeTask {
     monitor.start("", clsize);
     try {
       final Wrappers._int idx = new Wrappers._int(0);
-      myMakeSequence.iterate(new _FunctionTypes._return_P2_E0<Boolean, IScript, Iterable<IResource>>() {
-        public Boolean invoke(IScript scr, Iterable<IResource> cl) {
-          boolean isEmptySeq = Sequence.fromIterable(cl).isEmpty();
-          if (isEmptySeq || !(scr.isValid())) {
-            String msg = myScrName + ((isEmptySeq ? " not started: empty make sequence" : " not started: invalid make sequence"));
-            myMessageHandler.handle(new Message((isEmptySeq ? MessageKind.WARNING : MessageKind.ERROR), CoreMakeTask.class, msg));
-            displayInfo(msg);
-            for (IMessage err : scr.validationErrors()) {
-              myMessageHandler.handle(err);
-            }
-            CoreMakeTask.this.myResult = (isEmptySeq ? new IResult.SUCCESS(null) : new IResult.FAILURE(null));
-            return false;
-          }
-
-          if (InternalFlag.isInternalMode()) {
-            myMessageHandler.handle(new Message(MessageKind.INFORMATION, "Modules cluster " + (idx.value + 1) + "/" + clsize + " [" + IterableUtils.join(Sequence.fromIterable(cl).select(new ISelector<IResource, String>() {
-              public String select(IResource r) {
-                return (r).describe();
-              }
-            }), ", ") + "]"));
-          }
-
-          monitor.step((idx.value + 1) + "/" + clsize + " " + IterableUtils.join(Sequence.fromIterable(cl).select(new ISelector<IResource, String>() {
-            public String select(IResource r) {
-              return (r).describe();
-            }
-          }), ","));
-          myResult = scr.execute(CoreMakeTask.this.myController, cl, monitor.subTask(1));
-          if (CoreMakeTask.this.myResult instanceof CompositeResult) {
-            IResource timeStatResource = Sequence.fromIterable(((CompositeResult) CoreMakeTask.this.myResult).getResult(Script.TIME_STATISTIC_RESULT_NAME).output()).first();
-            Map<ITarget.Name, Long> currentStatistic = ((TimeStatisticResource) timeStatResource).getStatistic();
-            for (ITarget.Name targetName : SetSequence.fromSet(MapSequence.fromMap(currentStatistic).keySet())) {
-              MapSequence.fromMap(timeStatistic).put(targetName, ((MapSequence.fromMap(timeStatistic).containsKey(targetName) ? MapSequence.fromMap(timeStatistic).get(targetName) : 0)) + MapSequence.fromMap(currentStatistic).get(targetName));
-            }
-          }
-          if (!(CoreMakeTask.this.myResult.isSucessful()) || monitor.isCanceled()) {
-            return false;
-          }
-          idx.value++;
-          return true;
+      myMakeSequence.iterate((IScript scr, Iterable<IResource> cl) -> {
+        if (Sequence.fromIterable(cl).isEmpty()) {
+          String msg = "not started: empty make sequence";
+          myMessageHandler.handle(new Message(MessageKind.WARNING, CoreMakeTask.class, msg));
+          myResult = new IResult.SUCCESS(msg, null);
+          return false;
         }
+        if (!(scr.isValid())) {
+          String msg = "not started: invalid make sequence";
+          myMessageHandler.handle(new Message(MessageKind.ERROR, CoreMakeTask.class, msg));
+          for (IMessage err : scr.validationErrors()) {
+            myMessageHandler.handle(err);
+          }
+          CoreMakeTask.this.myResult = new IResult.FAILURE(msg, null);
+          return false;
+        }
+
+        if (RuntimeFlags.isInternalMode()) {
+          myMessageHandler.handle(new Message(MessageKind.INFORMATION, "Modules cluster " + (idx.value + 1) + "/" + clsize + " [" + IterableUtils.join(Sequence.fromIterable(cl).select((r) -> (r).describe()), ", ") + "]"));
+        }
+
+        monitor.step((idx.value + 1) + "/" + clsize + " " + IterableUtils.join(Sequence.fromIterable(cl).select((r) -> (r).describe()), ","));
+        myResult = scr.execute(CoreMakeTask.this.myController, cl, monitor.subTask(1));
+        if (CoreMakeTask.this.myResult instanceof CompositeResult) {
+          IResource timeStatResource = Sequence.fromIterable(((CompositeResult) CoreMakeTask.this.myResult).getResult(Script.TIME_STATISTIC_RESULT_NAME).output()).first();
+          Map<ITarget.Name, Long> currentStatistic = ((TimeStatisticResource) timeStatResource).getStatistic();
+          for (ITarget.Name targetName : SetSequence.fromSet(MapSequence.fromMap(currentStatistic).keySet())) {
+            MapSequence.fromMap(timeStatistic).put(targetName, ((MapSequence.fromMap(timeStatistic).containsKey(targetName) ? MapSequence.fromMap(timeStatistic).get(targetName) : 0)) + MapSequence.fromMap(currentStatistic).get(targetName));
+          }
+        }
+        if (!(CoreMakeTask.this.myResult.isSucessful()) || monitor.isCanceled()) {
+          return false;
+        }
+        idx.value++;
+        return true;
       });
     } finally {
-      long overallTime = Sequence.fromIterable(MapSequence.fromMap(timeStatistic).values()).foldLeft(0L, new ILeftCombinator<Long, Long>() {
-        public Long combine(Long s, Long it) {
-          return s + it;
-        }
-      });
+      long overallTime = Sequence.fromIterable(MapSequence.fromMap(timeStatistic).values()).foldLeft(0L, (Long s, Long it) -> s + it);
       List<ITarget.Name> otherTargets = ListSequence.fromList(new ArrayList<ITarget.Name>());
 
       long currentTime = 0;
-      // XXX if we don't need this stats for our users, may condition output with isInternalMode() 
-      for (IMapping<ITarget.Name, Long> stat : MapSequence.fromMap(timeStatistic).sort(new ISelector<IMapping<ITarget.Name, Long>, Long>() {
-        public Long select(IMapping<ITarget.Name, Long> it) {
-          return it.value();
-        }
-      }, false)) {
+      // XXX if we don't need this stats for our users, may condition output with isInternalMode()
+      for (IMapping<ITarget.Name, Long> stat : MapSequence.fromMap(timeStatistic).sort((it) -> it.value(), false)) {
         if (currentTime < overallTime * 0.95) {
           myMessageHandler.handle(new Message(MessageKind.INFORMATION, CoreMakeTask.class, String.format("\"%s\" target execution time: %d ms", stat.key().name(), stat.value())));
           currentTime += stat.value();
@@ -137,37 +113,9 @@ public class CoreMakeTask {
           ListSequence.fromList(otherTargets).addElement(stat.key());
         }
       }
-      myMessageHandler.handle(new Message(MessageKind.INFORMATION, CoreMakeTask.class, String.format("Other targets execution time: %d ms; %s", (overallTime - currentTime), IterableUtils.join(ListSequence.fromList(otherTargets).select(new ISelector<ITarget.Name, String>() {
-        public String select(ITarget.Name it) {
-          return it.name() + ": " + MapSequence.fromMap(timeStatistic).get(it) + " ms";
-        }
-      }), ", "))));
+      myMessageHandler.handle(new Message(MessageKind.INFORMATION, CoreMakeTask.class, String.format("Other targets execution time: %d ms; %s", (overallTime - currentTime), IterableUtils.join(ListSequence.fromList(otherTargets).select((it) -> it.name() + ": " + MapSequence.fromMap(timeStatistic).get(it) + " ms"), ", "))));
       monitor.done();
     }
-  }
-
-  protected void displayInfo(String info) {
-  }
-
-  protected void aboutToStart() {
-  }
-
-  protected void reconcile() {
-    if (this.myResult == null) {
-      String msg = this.myScrName + " aborted";
-      displayInfo(msg);
-    } else if (!(this.myResult.isSucessful())) {
-      String msg = this.myScrName + " failed";
-      myMessageHandler.handle(new Message(MessageKind.ERROR, msg + ". See previous messages for details."));
-      displayInfo(msg);
-    } else {
-      String msg = this.myScrName + " successful";
-      displayInfo(msg);
-    }
-  }
-
-  public IMessageHandler getMessageHandler() {
-    return myMessageHandler;
   }
 
   public IResult getResult() {

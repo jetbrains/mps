@@ -153,10 +153,7 @@ public class NodeHighlightManager implements EditorMessageOwner {
         result.add(message);
       }
     }
-    if (myEditor.getRootCell() != cell || !(myEditor instanceof InspectorEditorComponent)) {
-      // the condition above is because an inspector for the node
-      // does not have cells for some node's children (they are edited in main editor)
-      // but the cell should not be highlighted only because of this
+    if (myEditor.getRootCell() != cell) {
       if (cell.isBig()) {
         for (SNode child : node.getChildren()) {
           EditorCell cellForChild = myEditor.findNodeCell(child);
@@ -318,9 +315,9 @@ public class NodeHighlightManager implements EditorMessageOwner {
    * Should work even if NodeHighlightManager is disposed because it can be called by the Highlighter thread
    */
   public Set<SimpleEditorMessage> getMessages() {
-    Set<SimpleEditorMessage> result = new HashSet<>();
+    Set<SimpleEditorMessage> result;
     synchronized (myMessagesLock) {
-      result.addAll(myMessages);
+      result = new HashSet<>(myMessages);
     }
     return result;
   }

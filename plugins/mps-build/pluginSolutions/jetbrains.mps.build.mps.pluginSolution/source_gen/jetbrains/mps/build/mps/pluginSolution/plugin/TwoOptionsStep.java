@@ -57,11 +57,11 @@ public abstract class TwoOptionsStep<M> extends AbstractStep {
   @Override
   public JComponent createMainComponent() {
     JPanel panel = new JBPanel(new GridBagLayout());
-    // 
+    //  
     this.myOptionsCheckBox = this.createOptionsCheckBox();
     this.mySelectComboBox = this.createSelectComboBox();
     this.myTextField = this.createTextField();
-    // 
+    //  
     panel.add(this.myOptionsCheckBox, this.createConstraint(0, 0));
     panel.add(new JBLabel(this.getTextFieldName()), this.createConstraint(1, 0));
     panel.add(this.myTextField, this.createConstraint(2, 0));
@@ -130,7 +130,7 @@ public abstract class TwoOptionsStep<M> extends AbstractStep {
   }
   private ComboBoxModel updateComboBoxModel() {
     M[] newVariants = this.getVariants();
-    if (!((this.mySelectComboBox == null)) && Arrays.deepEquals(newVariants, this.myVariantsArray)) {
+    if (!(this.mySelectComboBox == null) && Arrays.deepEquals(newVariants, this.myVariantsArray)) {
       return this.mySelectComboBox.getModel();
     }
     this.myVariantsArray = newVariants;

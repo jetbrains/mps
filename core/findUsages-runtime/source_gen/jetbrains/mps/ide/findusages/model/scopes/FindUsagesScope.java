@@ -16,7 +16,7 @@ import jetbrains.mps.project.Project;
 import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 import jetbrains.mps.ide.findusages.CantSaveSomethingException;
 
-@GeneratedClass(node = "r:3189948c-a57a-415e-beba-405572f2d13c(jetbrains.mps.ide.findusages.model.scopes)/8568892084424440303", model = "r:3189948c-a57a-415e-beba-405572f2d13c(jetbrains.mps.ide.findusages.model.scopes)")
+@GeneratedClass(nodeId = "8568892084424440303", model = "r:3189948c-a57a-415e-beba-405572f2d13c(jetbrains.mps.ide.findusages.model.scopes)")
 public abstract class FindUsagesScope extends BaseScope implements SearchScope, IExternalizeable {
   private static final String SCOPE_CLASS_ATTR = "scope_class";
   private static final String SCOPE_TAG = "scope";
@@ -60,16 +60,16 @@ public abstract class FindUsagesScope extends BaseScope implements SearchScope, 
    * Subclasses shall override to react to scope change
    */
   protected void scopeChanged() {
-    // no-op 
+    // no-op
   }
   @Override
   public void read(Element element, Project project) throws CantLoadSomethingException {
-    // use constructor(Element, Project) instead! 
+    // use constructor(Element, Project) instead!
     throw new UnsupportedOperationException();
   }
   @Override
   public void write(Element element, Project project) throws CantSaveSomethingException {
-    // do nothing by default 
+    // do nothing by default
   }
   public static FindUsagesScope load(Element element, Project project) throws CantLoadSomethingException {
     Element scopeXml = element.getChild(SCOPE_TAG);

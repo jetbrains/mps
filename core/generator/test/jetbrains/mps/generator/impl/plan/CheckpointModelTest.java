@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,6 +34,7 @@ import jetbrains.mps.generator.plan.PlanIdentity;
 import jetbrains.mps.generator.runtime.TemplateMappingConfiguration;
 import jetbrains.mps.generator.runtime.TemplateModel;
 import jetbrains.mps.generator.runtime.TemplateModule;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.messages.LogHandler;
 import jetbrains.mps.progress.EmptyProgressMonitor;
@@ -47,7 +48,6 @@ import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.EnvironmentAware;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.PathManager;
-import org.apache.log4j.Logger;
 import org.hamcrest.CoreMatchers;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -391,8 +391,69 @@ public class CheckpointModelTest implements EnvironmentAware {
     // assert roots of the second model
   }
 
+  @Test
+  public void testNewTransformStatement() {
+    final SModuleReference collectionsGenerator = PersistenceFacade.getInstance().createModuleReference("5f9babc9-8d5d-4825-8e61-17b241ee6272()");
+    final SModuleReference closuresGenerator = PersistenceFacade.getInstance().createModuleReference("857d0a79-6f44-4f46-84ed-9c5b42632011()");
+    final SModuleReference blInternalGenerator = PersistenceFacade.getInstance().createModuleReference("46ef3033-ce72-4166-b19e-6ceed23b6844()");
+    final SModuleReference baselangGenerator = PersistenceFacade.getInstance().createModuleReference("985c8c6a-64b4-486d-a91e-7d4112742556()");
+    final PlanIdentity pi1 = new PlanIdentity("p1");
+    final PlanIdentity pi2 = new PlanIdentity("p2");
+
+    final ModelGenerationPlan[] plan = new ModelGenerationPlan[2];
+
+    mpsProject.getModelAccess().runReadAction(new Runnable() {
+      @Override
+      public void run() {
+        final LanguageRegistry languageRegistry = myLanguageRegistry;
+        Collection<TemplateModule> engagedGenerators = new ArrayList<>();
+        engagedGenerators.add(((TemplateModule) languageRegistry.getGenerator(closuresGenerator)));
+        engagedGenerators.add(((TemplateModule) languageRegistry.getGenerator(collectionsGenerator)));
+        engagedGenerators.add(((TemplateModule) languageRegistry.getGenerator(baselangGenerator)));
+        engagedGenerators.add(((TemplateModule) languageRegistry.getGenerator(blInternalGenerator)));
+        // first plan checks languages that extend one from another step
+        RegularPlanBuilder planBuilder1 = new RegularPlanBuilder(languageRegistry, engagedGenerators);
+        planBuilder1.transform(true).include(LANGUAGE_BL, BuilderOption.Extend).complete();
+        planBuilder1.transform(true).include(LANGUAGE_BL, BuilderOption.None).complete();
+        plan[0] = planBuilder1.wrapUp(pi1);
+        // pretty much the same, just use 'target language'
+        RegularPlanBuilder planBuilder2 = new RegularPlanBuilder(languageRegistry, engagedGenerators);
+        planBuilder2.transform(true).include(LANGUAGE_BL, BuilderOption.TargetTo).complete();
+        planBuilder2.transform(true).include(LANGUAGE_BL, BuilderOption.None).complete();
+        plan[1] = planBuilder2.wrapUp(pi2);
+      }
+    });
+    Assert.assertNotNull(plan[0]);
+    Assert.assertEquals(4, plan[0].getSteps().size());
+    myErrors.checkThat(plan[0].getSteps().get(0), CoreMatchers.instanceOf(Transform.class));
+    myErrors.checkThat(plan[0].getSteps().get(1), CoreMatchers.instanceOf(Transform.class));
+    myErrors.checkThat(plan[0].getSteps().get(2), CoreMatchers.instanceOf(Transform.class));
+    myErrors.checkThat(plan[0].getSteps().get(3), CoreMatchers.instanceOf(Transform.class));
+    //
+    Transform t1 = (Transform) plan[0].getSteps().get(0);
+    Transform t2 = (Transform) plan[0].getSteps().get(3);
+    Transform t1x = (Transform) plan[0].getSteps().get(1);
+    Transform t1y = (Transform) plan[0].getSteps().get(2);
+    myErrors.checkThat(t1.getTransformations().size() + t1x.getTransformations().size() + t1y.getTransformations().size(), CoreMatchers.equalTo(8)); // 2 from closures, 1 MC in blInternal, 5 in collections
+    myErrors.checkThat(t2.getTransformations().size(), CoreMatchers.equalTo(6)); // 6 from BL
+    //
+    Assert.assertNotNull(plan[1]);
+    Assert.assertEquals(4, plan[1].getSteps().size());
+    myErrors.checkThat(plan[1].getSteps().get(0), CoreMatchers.instanceOf(Transform.class));
+    myErrors.checkThat(plan[1].getSteps().get(1), CoreMatchers.instanceOf(Transform.class));
+    myErrors.checkThat(plan[1].getSteps().get(2), CoreMatchers.instanceOf(Transform.class));
+    myErrors.checkThat(plan[1].getSteps().get(3), CoreMatchers.instanceOf(Transform.class));
+    t1 = (Transform) plan[1].getSteps().get(0);
+    t2 = (Transform) plan[1].getSteps().get(3);
+    t1x = (Transform) plan[1].getSteps().get(1);
+    t1y = (Transform) plan[1].getSteps().get(2);
+    myErrors.checkThat(t1.getTransformations().size() + t1x.getTransformations().size() + t1y.getTransformations().size(), CoreMatchers.equalTo(8)); // 2 from closures, 1 MC in blInternal, 5 in collections
+    myErrors.checkThat(t2.getTransformations().size(), CoreMatchers.equalTo(6)); // 6 from BL
+  }
+
   final SLanguage LANGUAGE_ENTITY = MetaAdapterFactory.getLanguage(0x4d14758c3ecb486dL, 0xb8c8ea5beb8ae408L, "jetbrains.mps.generator.test.crossmodel.entity");
   final SLanguage LANGUAGE_PROPERTY = MetaAdapterFactory.getLanguage(0xdc1cc9486f434687L, 0x90cb17dd5cb27219L, "jetbrains.mps.generator.test.crossmodel.property");
+  final SLanguage LANGUAGE_BL = MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
 
   // utility to obtain generators of j.m.g.test.crossmodel.property language
   private List<TemplateMappingConfiguration> getCrossmodelPropertyGenerators() {
@@ -405,7 +466,7 @@ public class CheckpointModelTest implements EnvironmentAware {
   }
 
   private List<TemplateMappingConfiguration> getBaseLanguageGenerators() {
-    return getGenerators(findGenerator(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), null));
+    return getGenerators(findGenerator(LANGUAGE_BL, null));
   }
 
   // null for generatorAlias means take the first one

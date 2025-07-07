@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,27 +18,32 @@ package jetbrains.mps.persistence;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
-import jetbrains.mps.extapi.persistence.FolderDataSource;
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
 import jetbrains.mps.generator.ModelDigestUtil;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.logging.Logger;
+import jetbrains.mps.persistence.MetaModelInfoProvider.MetaInfoLoadingOption;
+import jetbrains.mps.persistence.MetaModelInfoProvider.RegularMetaModelInfo;
+import jetbrains.mps.persistence.MetaModelInfoProvider.StuffedMetaModelInfo;
 import jetbrains.mps.project.MPSExtentions;
+import jetbrains.mps.smodel.DefaultSModel;
 import jetbrains.mps.smodel.DefaultSModelDescriptor;
 import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.SModelId;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.persistence.def.FilePerRootFormatUtil;
 import jetbrains.mps.smodel.persistence.def.ModelPersistence;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.annotations.Internal;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.persistence.ContentOption;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.DataSourceNotSupportedProblem;
 import org.jetbrains.mps.openapi.persistence.MFProblem;
@@ -48,6 +53,7 @@ import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import org.jetbrains.mps.openapi.persistence.ModelLoadingOption;
 import org.jetbrains.mps.openapi.persistence.MultiStreamDataSource;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 import org.xml.sax.InputSource;
@@ -59,32 +65,21 @@ import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 import static org.jetbrains.mps.openapi.persistence.MFProblem.NO_PROBLEM;
 
 /**
  * evgeny, 6/3/13
  */
-public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFactory {
-  private static final Logger LOG = LogManager.getLogger(FilePerRootModelFactory.class);
+public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFactory, DataLocationAwareModelFactory {
+  private static final Logger LOG = Logger.getLogger(FilePerRootModelFactory.class);
 
-  @NotNull
-  private static PersistenceFacade FACADE() {
-    return PersistenceFacade.getInstance();
-  }
+  private final PersistenceFacade myPersistenceRegistry;
 
-  @Internal
-  public FilePerRootModelFactory() {
-    // do not delete, it is a java service
-  }
-
-  /**
-   * see BinaryModelPersistence#createFromHeader() for details, same motivation here
-   */
-  public static SModel createFromHeader(@NotNull SModelHeader header, @NotNull FilePerRootDataSource dataSource) {
-    final ModelFactory modelFactory = PersistenceFacade.getInstance().getModelFactory(MPSExtentions.MODEL_HEADER);
-    assert modelFactory instanceof FilePerRootModelFactory;
-    return new DefaultSModelDescriptor(new PersistenceFacility((FilePerRootModelFactory) modelFactory, dataSource), header.createCopy());
+  public FilePerRootModelFactory(@NotNull PersistenceFacade persistenceFacade) {
+    myPersistenceRegistry = persistenceFacade;
   }
 
   @NotNull
@@ -115,7 +110,7 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
       throw new UnsupportedDataSourceException(dataSource);
     }
 
-    SModelReference ref = FACADE().createModelReference(null, SModelId.generate(), modelName.getValue());
+    SModelReference ref = myPersistenceRegistry.createModelReference(null, SModelId.generate(), modelName);
     final SModelHeader header = SModelHeader.create(ModelPersistence.LAST_VERSION);
     header.setModelReference(ref);
     return new DefaultSModelDescriptor(new PersistenceFacility(this, (MultiStreamDataSource) dataSource), header);
@@ -126,6 +121,19 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
   public SModel load(@NotNull DataSource dataSource, @NotNull ModelLoadingOption... options) throws UnsupportedDataSourceException,
                                                                                                     ModelLoadException {
     if (!supports(dataSource)) {
+      if (dataSource instanceof StreamDataSource sds && ContentOption.CONTENT_ONLY.presentIn(options)) {
+        try (InputStream is = sds.openInputStream()) {
+          SModelData modelData = ModelPersistence.getModelData(is, MetaInfoLoadingOption.KEEP_READ.presentIn(options));
+          if (modelData instanceof DefaultSModel dsm) {
+            return new ContentOnlySModelDescriptor(dsm, this);
+          } else {
+            // no fall-through as the rest of the code needs MultiStreamDataSource
+            throw new ModelLoadException("Unexpected model data: " + modelData);
+          }
+        } catch (IOException | ModelReadException ex) {
+          throw new ModelLoadException(ex.getMessage());
+        }
+      }
       throw new UnsupportedDataSourceException(dataSource);
     }
 
@@ -134,13 +142,17 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
     SModelHeader header;
     try {
       header = pf.readHeader();
-    } catch (ModelReadException ignored) {
-      LOG.error("Can't read model: ", ignored);
-      throw new ModelLoadException("Can't read model: ", Collections.emptyList(), ignored);
+    } catch (ModelReadException mre) {
+      LOG.error("Can't read model: ", mre);
+      throw new ModelLoadException("Can't read model: ", Collections.emptyList(), mre);
     }
 
     if (header.getModelReference() == null) {
       throw new ModelLoadException("Could not find model reference in the model header while loading from the " + source);
+    }
+
+    if (MetaInfoLoadingOption.KEEP_READ.presentIn(options)) {
+      header.setMetaInfoProvider(new StuffedMetaModelInfo(new RegularMetaModelInfo()));
     }
 
     LOG.debug("Getting model " + header.getModelReference() + " from " + source.getLocation());
@@ -171,30 +183,6 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
                          PreinstalledDataSourceTypes.MODEL_ROOT);
   }
 
-  /*package*/ static String getModelHash(@NotNull MultiStreamDataSource source) {
-    BigInteger fileHash = BigInteger.ZERO;
-    for (String streamName : source.getAvailableStreams()) {
-      String streamHash = null;
-      if (source instanceof FolderDataSource) {
-        IFile file = ((FolderDataSource) source).getFile(streamName);
-        streamHash = file == null ? null : ModelDigestHelper.getInstance().getGenerationHash(file);
-      }
-      if (streamHash == null) {
-        try (InputStreamReader r = new InputStreamReader(source.openInputStream(streamName))) {
-          streamHash = ModelDigestUtil.hashText(r);
-        } catch (IOException ex) {
-          // ignore, that's what DefaultModelPersistence.getDigestMap used to do
-        }
-        if (streamHash == null) {
-          // no hash for stream
-          return null;
-        }
-      }
-      fileHash = fileHash.xor(new BigInteger(streamHash, Character.MAX_RADIX));
-    }
-    return fileHash.toString(Character.MAX_RADIX);
-  }
-
   @Override
   public void index(@NotNull InputStream input, @NotNull Callback callback) throws IOException {
     ModelPersistence.index(input, callback);
@@ -202,7 +190,7 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
 
   @Override
   public SModelData parseSingleStream(@NotNull String name, @NotNull InputStream input) throws IOException, ModelReadException {
-    return ModelPersistence.getModelData(input);
+    return ModelPersistence.getModelData(input, false);
   }
 
   @Override
@@ -213,7 +201,11 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
 
     InputStream in = null;
     try {
-      in = ((MultiStreamDataSource) dataSource).openInputStream(FilePerRootDataSource.HEADER_FILE);
+      final StreamDataSource dotModelStream = ((MultiStreamDataSource) dataSource).getStreamByName(MPSExtentions.DOT_MODEL_HEADER);
+      if (dotModelStream == null) {
+        throw new IOException(String.format("No model found at %s", dataSource.getLocation()));
+      }
+      in = dotModelStream.openInputStream();
       InputSource source = new InputSource(new InputStreamReader(in, FileUtil.DEFAULT_CHARSET));
 
       // FIXME replace with SingleStreamSource
@@ -224,6 +216,62 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
     } finally {
       FileUtil.closeFileSafe(in);
     }
+  }
+
+  @Nullable
+  @Override
+  public DataSource getNodeLocation(@NotNull SNode node) {
+    CorrectnessChecker correctnessChecker = new CorrectnessChecker(this);
+    SModel model = node.getModel();
+    if (model == null) return null;
+    correctnessChecker.checkAndWarn(model);
+    if (!correctnessChecker.doesMFSupportDS(model)) {
+      return null;
+    }
+    // FIXME seem that we don't handle nodes with the same name correctly. Check NodeHistoryUtil and its use of
+    //       FilePerRootFormatUtil.getStreamNames(). Here, all nodes with the same name would retrieve the same stream
+    MultiStreamDataSource source = (MultiStreamDataSource) model.getSource();
+    String fileName = SPropertyOperations.getString(node.getContainingRoot(), SNodeUtil.property_INamedConcept_name);
+    // FIXME FilePerRootFormatUtil.getStreamNames() handles fileName.isEmpty scenario (i.e. not INamedConcept as root), why not here?
+    return source.getStreamByName(FilePerRootFormatUtil.asFileName(fileName) + MPSExtentions.DOT_MODEL_ROOT);
+  }
+
+  @Nullable
+  @Override
+  public DataSource getMetaInfoLocation(@NotNull SModel model) {
+    MultiStreamDataSource source = getMSource(model);
+    if (source == null) {
+      return null;
+    }
+    return source.getStreamByName(MPSExtentions.DOT_MODEL_HEADER);
+  }
+
+  @Nullable
+  @Override
+  public DataSource getDataLocation(@NotNull SModel model) {
+    MultiStreamDataSource source = getMSource(model);
+    if (source == null) {
+      return null;
+    }
+
+    return new ReadOnlyMultiStreamDataSource(source.getLocation()) {
+      @NotNull
+      @Override
+      public Stream<StreamDataSource> getSubStreams() {
+        return source.getSubStreams()
+                     .filter(sds -> !sds.getStreamName().equals(MPSExtentions.DOT_MODEL_HEADER));
+      }
+    };
+  }
+
+  @Nullable
+  public MultiStreamDataSource getMSource(@NotNull SModel model) {
+    CorrectnessChecker correctnessChecker = new CorrectnessChecker(this);
+    correctnessChecker.checkAndWarn(model);
+    if (!correctnessChecker.doesMFSupportDS(model)) {
+      return null;
+    }
+    return (MultiStreamDataSource) model.getSource();
   }
 
   private static class PersistenceFacility extends LazyLoadFacility {
@@ -238,9 +286,10 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
 
     @Override
     public String getModelHash() {
-      // XXX unlike super.getModelHash(), doesn't consult DigestProvider, is it ok?
-      //     What's performance gain in using IDEA indexing for model hashes?
-      return FilePerRootModelFactory.getModelHash(getSource0());
+      return getSource0().getSubStreams().map(streamDataSource -> ModelDigestUtil.hash(streamDataSource, true)).filter(Objects::nonNull)
+                         .map(hash -> new BigInteger(hash, Character.MAX_RADIX))
+                         .reduce(BigInteger.ZERO, BigInteger::xor)
+                         .toString(Character.MAX_RADIX);
     }
 
     @NotNull
@@ -265,4 +314,5 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
       FilePerRootFormatUtil.saveModel((jetbrains.mps.smodel.SModel) modelData, getSource0(), header.getPersistenceVersion());
     }
   }
+
 }

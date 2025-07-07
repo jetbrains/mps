@@ -8,14 +8,11 @@ import jetbrains.mps.smodel.language.LanguageRuntime;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import org.jetbrains.mps.samples.Money.generator.template.generator.template.main.QueriesGenerated;
-import jetbrains.mps.generator.runtime.TemplateModuleBase;
+import org.jetbrains.mps.samples.Money.generator.main.QueriesGenerated;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Arrays;
-import jetbrains.mps.generator.runtime.TemplateMappingPriorityRule;
-import jetbrains.mps.generator.runtime.TemplateUtil;
 
 public class Generator extends TemplateModuleInterpreted2 {
 
@@ -34,10 +31,6 @@ public class Generator extends TemplateModuleInterpreted2 {
     models.templates("r:c68260e6-0a07-47e7-af7c-570ace5903cf", QueriesGenerated.class);
   }
 
-  @Override
-  protected void fillReferencedGenerators(TemplateModuleBase.ReferencedGenerators referencedGenerators) {
-    referencedGenerators.extended("985c8c6a-64b4-486d-a91e-7d4112742556(jetbrains.mps.baseLanguage#1129914002933)");
-  }
 
   @Override
   public Collection<SLanguage> getTargetLanguages() {
@@ -47,8 +40,4 @@ public class Generator extends TemplateModuleInterpreted2 {
     return Arrays.asList(rv);
   }
 
-  @Override
-  public Collection<TemplateMappingPriorityRule> getPriorities() {
-    return TemplateUtil.asCollection(TemplateUtil.createBeforeOrTogetherRule(TemplateUtil.createRefExternal("f5860f3e-6f54-465b-9172-8b2a11b1bb2e(org.jetbrains.mps.samples.Money#5447719361346496650)", TemplateUtil.createRefLocal()), TemplateUtil.createRefExternal("985c8c6a-64b4-486d-a91e-7d4112742556(jetbrains.mps.baseLanguage#1129914002933)", TemplateUtil.createRefLocal())));
-  }
 }

@@ -10,7 +10,7 @@ import jetbrains.mps.make.MakeSession;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.make.runtime.script.MessageFeedbackStrategy;
 
-@GeneratedClass(node = "r:9e5578e0-37f0-4c9b-a301-771bcb453678(jetbrains.mps.make.script)/4648565975300663454", model = "r:9e5578e0-37f0-4c9b-a301-771bcb453678(jetbrains.mps.make.script)")
+@GeneratedClass(nodeId = "4648565975300663454", model = "r:9e5578e0-37f0-4c9b-a301-771bcb453678(jetbrains.mps.make.script)")
 public interface IScriptController {
   void runConfigWithMonitor(_FunctionTypes._void_P1_E0<? super IConfigMonitor> code);
   void runJobWithMonitor(_FunctionTypes._void_P1_E0<? super IJobMonitor> code);
@@ -62,7 +62,7 @@ public interface IScriptController {
     public Stub2(@NotNull MakeSession makeSession, PropertyPoolInitializer... poolInitializers) {
       myMakeSession = makeSession;
       myPoolInitializers = poolInitializers;
-      // FIXME identical to AbstractMakeService.DefaultMonitor, but can't re-use here due to dependency direction. Refactor 
+      // FIXME identical to AbstractMakeService.DefaultMonitor, but can't re-use here due to dependency direction. Refactor
       myMonitor = new IConfigMonitor.Stub(myMakeSession) {
         @Override
         public void reportFeedback(IFeedback fdbk) {

@@ -24,7 +24,7 @@ public class check_AbstractDiagramCreation_NonTypesystemRule extends AbstractNon
   public check_AbstractDiagramCreation_NonTypesystemRule() {
   }
   public void applyRule(final SNode abstractDiagramCreation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(abstractDiagramCreation, LINKS.query$bVPk), CONCEPTS.DotExpression$yW) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(abstractDiagramCreation, LINKS.query$bVPk), CONCEPTS.DotExpression$yW), LINKS.operation$gs9E), CONCEPTS.SLinkListAccess$oO)))) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(abstractDiagramCreation, LINKS.query$bVPk), CONCEPTS.DotExpression$yW) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(abstractDiagramCreation, LINKS.query$bVPk), CONCEPTS.DotExpression$yW), LINKS.operation$gs9E), CONCEPTS.SLinkListAccess$oO))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(abstractDiagramCreation, LINKS.query$bVPk), "Use DotExpression to point to the containment LinkDeclaration", "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "8570854907291359968", null, errorTarget);
@@ -34,7 +34,7 @@ public class check_AbstractDiagramCreation_NonTypesystemRule extends AbstractNon
       if (SLinkOperations.getTarget(abstractDiagramCreation, LINKS.concept$c2aJ) != null && SLinkOperations.getTarget(containmentLink, LINKS.target$m40F) != null && !((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(abstractDiagramCreation, LINKS.concept$c2aJ), SLinkOperations.getTarget(containmentLink, LINKS.target$m40F)))) {
         {
           final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.concept$c2aJ);
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(abstractDiagramCreation, "Only subconcept of containment link target contept (" + SLinkOperations.getTarget(containmentLink, LINKS.target$m40F) + ") can be used here.", "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "1301388602725875172", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(abstractDiagramCreation, "Only sub-concept of containment link target concept (" + SNodeOperations.present(SLinkOperations.getTarget(containmentLink, LINKS.target$m40F)) + ") can be used here.", "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "1301388602725875172", null, errorTarget);
         }
       }
     }

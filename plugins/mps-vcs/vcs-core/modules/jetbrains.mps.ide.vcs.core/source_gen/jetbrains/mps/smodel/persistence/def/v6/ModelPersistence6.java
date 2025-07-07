@@ -12,7 +12,7 @@ import jetbrains.mps.smodel.SModelHeader;
 import java.util.List;
 import jetbrains.mps.smodel.persistence.lines.LineContent;
 
-@GeneratedClass(node = "r:83748538-cbc9-4e2d-b0e1-e282b3d0c13d(jetbrains.mps.smodel.persistence.def.v6)/453110257780685178", model = "r:83748538-cbc9-4e2d-b0e1-e282b3d0c13d(jetbrains.mps.smodel.persistence.def.v6)")
+@GeneratedClass(nodeId = "453110257780685178", model = "r:83748538-cbc9-4e2d-b0e1-e282b3d0c13d(jetbrains.mps.smodel.persistence.def.v6)")
 public class ModelPersistence6 extends ModelPersistence5 {
   @Override
   public int getVersion() {

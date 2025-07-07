@@ -9,68 +9,68 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private ConceptPresentation props_ABC;
-  private ConceptPresentation props_ABCDE;
-  private ConceptPresentation props_ABCDEF;
-  private ConceptPresentation props_ABCDEG;
-  private ConceptPresentation props_ABCEEG;
-  private ConceptPresentation props_BAC;
-  private ConceptPresentation props_BCA;
+  private ConceptPresentation props_TABC;
+  private ConceptPresentation props_TABCDE;
+  private ConceptPresentation props_TABCDEF;
+  private ConceptPresentation props_TABCDEG;
+  private ConceptPresentation props_TABCEEG;
+  private ConceptPresentation props_TBAC;
+  private ConceptPresentation props_TBCA;
 
   @Override
   @Nullable
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
-      case LanguageConceptSwitch.ABC:
-        if (props_ABC == null) {
+      case LanguageConceptSwitch.TABC:
+        if (props_TABC == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("abc");
-          props_ABC = cpb.create();
+          cpb.rawPresentation("tabc");
+          props_TABC = cpb.create();
         }
-        return props_ABC;
-      case LanguageConceptSwitch.ABCDE:
-        if (props_ABCDE == null) {
+        return props_TABC;
+      case LanguageConceptSwitch.TABCDE:
+        if (props_TABCDE == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("abc de");
-          props_ABCDE = cpb.create();
+          cpb.rawPresentation("tabc de");
+          props_TABCDE = cpb.create();
         }
-        return props_ABCDE;
-      case LanguageConceptSwitch.ABCDEF:
-        if (props_ABCDEF == null) {
+        return props_TABCDE;
+      case LanguageConceptSwitch.TABCDEF:
+        if (props_TABCDEF == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("abc de f");
-          props_ABCDEF = cpb.create();
+          cpb.rawPresentation("tabc de f");
+          props_TABCDEF = cpb.create();
         }
-        return props_ABCDEF;
-      case LanguageConceptSwitch.ABCDEG:
-        if (props_ABCDEG == null) {
+        return props_TABCDEF;
+      case LanguageConceptSwitch.TABCDEG:
+        if (props_TABCDEG == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("abc de g");
-          props_ABCDEG = cpb.create();
+          cpb.rawPresentation("tabc de g");
+          props_TABCDEG = cpb.create();
         }
-        return props_ABCDEG;
-      case LanguageConceptSwitch.ABCEEG:
-        if (props_ABCEEG == null) {
+        return props_TABCDEG;
+      case LanguageConceptSwitch.TABCEEG:
+        if (props_TABCEEG == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("abc Ee G");
-          props_ABCEEG = cpb.create();
+          cpb.rawPresentation("tabc Ee G");
+          props_TABCEEG = cpb.create();
         }
-        return props_ABCEEG;
-      case LanguageConceptSwitch.BAC:
-        if (props_BAC == null) {
+        return props_TABCEEG;
+      case LanguageConceptSwitch.TBAC:
+        if (props_TBAC == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("bac");
-          props_BAC = cpb.create();
+          cpb.rawPresentation("tbac");
+          props_TBAC = cpb.create();
         }
-        return props_BAC;
-      case LanguageConceptSwitch.BCA:
-        if (props_BCA == null) {
+        return props_TBAC;
+      case LanguageConceptSwitch.TBCA:
+        if (props_TBCA == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("bca");
-          props_BCA = cpb.create();
+          cpb.rawPresentation("tbca");
+          props_TBCA = cpb.create();
         }
-        return props_BCA;
+        return props_TBCA;
     }
     return null;
   }

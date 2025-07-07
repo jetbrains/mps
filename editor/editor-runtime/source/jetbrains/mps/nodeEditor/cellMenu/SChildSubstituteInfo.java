@@ -63,11 +63,6 @@ public class SChildSubstituteInfo extends TransformationMenuSubstituteInfo imple
   }
 
   @Override
-  protected InequalitySystem getInequalitiesSystem(EditorCell contextCell) {
-    return InequalitySystemFactory.getInequalitiesSystemForChildCell(getEditorCell(), getModelForTypechecking());
-  }
-
-  @Override
   protected SubstitutionTrial getSubstitutionTrial(EditorCell contextCell) {
     return SubstitutionTrial.forCell(contextCell, getModelForTypechecking());
   }

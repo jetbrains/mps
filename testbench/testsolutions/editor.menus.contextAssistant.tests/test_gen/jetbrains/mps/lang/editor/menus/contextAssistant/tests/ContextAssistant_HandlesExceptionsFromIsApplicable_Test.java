@@ -4,25 +4,25 @@ package jetbrains.mps.lang.editor.menus.contextAssistant.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import javax.swing.SwingUtilities;
 import jetbrains.mps.nodeEditor.EditorContext;
 import jetbrains.mps.openapi.editor.assist.ContextAssistantManager;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.testbench.util.CachingAppender;
-import org.apache.log4j.Priority;
 
 @MPSLaunch
 public class ContextAssistant_HandlesExceptionsFromIsApplicable_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(ContextAssistant_HandlesExceptionsFromIsApplicable_Test.class, "${mps_home}", "r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ContextAssistant_HandlesExceptionsFromIsApplicable_Test.class).projectPath(null).modelRef("r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)").reopenProject(false).build());
 
   public ContextAssistant_HandlesExceptionsFromIsApplicable_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -39,24 +39,20 @@ public class ContextAssistant_HandlesExceptionsFromIsApplicable_Test extends Bas
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("7140355682307235746", "");
-      SwingUtilities.invokeAndWait(new Runnable() {
-        public void run() {
-          final EditorContext editorContext = getEditorComponent().getEditorContext();
-          editorContext.getRepository().getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              ContextAssistantManager contextAssistantManager = editorContext.getContextAssistantManager();
-              contextAssistantManager.updateImmediately();
-              Assert.assertNotNull(contextAssistantManager.getActiveAssistant());
-              Assert.assertNotNull(contextAssistantManager.getActiveMenuItems());
-            }
-          });
-        }
+      SwingUtilities.invokeAndWait(() -> {
+        final EditorContext editorContext = getEditorComponent().getEditorContext();
+        editorContext.getRepository().getModelAccess().runReadAction(() -> {
+          ContextAssistantManager contextAssistantManager = editorContext.getContextAssistantManager();
+          contextAssistantManager.updateImmediately();
+          Assert.assertNotNull(contextAssistantManager.getActiveAssistant());
+          Assert.assertNotNull(contextAssistantManager.getActiveMenuItems());
+        });
       });
     }
 
     @Override
     protected void populateExpectedEvents(CachingAppender appender) {
-      appender.expectEvent(Priority.ERROR_INT, null);
+      appender.expectEvent(CachingAppender.Level.ERROR, null);
     }
   }
 }

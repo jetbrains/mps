@@ -33,7 +33,7 @@ public class check_EnumerationDeclaration_NonTypesystemRule extends AbstractNonT
 
     for (SNode member : ListSequence.fromList(SLinkOperations.getChildren(enumerationDeclaration, LINKS.members$wmsL))) {
       if (isEmptyString(SPropertyOperations.getString(member, PROPS.name$MnvL))) {
-        // already red due to name constraint 
+        // already red due to name constraint
       } else {
         names.putValue(SPropertyOperations.getString(member, PROPS.name$MnvL), member);
       }
@@ -79,7 +79,7 @@ public class check_EnumerationDeclaration_NonTypesystemRule extends AbstractNonT
     return false;
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;

@@ -4,27 +4,23 @@ package jetbrains.mps.baseLanguage.test;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
-import jetbrains.mps.project.ProjectBase;
 
 @MPSLaunch
 public class Cardinalities_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(Cardinalities_Test.class, "${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(Cardinalities_Test.class).projectPath(null).modelRef("r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)").reopenProject(null).build());
 
   public Cardinalities_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -46,21 +42,31 @@ public class Cardinalities_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1875480895987418964", "1875480895987419829", "1875480895987598121");
+    }
 
     public void test_NodeErrorCheck1875480895988114782() throws Exception {
-      SNode nodeToCheck = getRealNodeById("1875480895988095647");
-      SNode operation = getRealNodeById("1875480895988114782");
-      new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("1875480895988095647");
+        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
     public void test_NodeErrorCheck1875480895987852095() throws Exception {
-      SNode nodeToCheck = getRealNodeById("1875480895987852074");
-      SNode operation = getRealNodeById("1875480895987852095");
-      new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("1875480895987852074");
+        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
     public void test_NodeErrorCheck1875480895987615991() throws Exception {
-      SNode nodeToCheck = getRealNodeById("1875480895987615784");
-      SNode operation = getRealNodeById("1875480895987615991");
-      new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("1875480895987615784");
+        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
 
   }

@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright 2003-2017 JetBrains s.r.o.
+  ~ Copyright 2003-2022 JetBrains s.r.o.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -21,21 +21,15 @@
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
   <depends>com.intellij.modules.mps</depends>
 
-  <xi:include href="JavaWorkbenchActions.xml" xpointer="xpointer(/components/*)"/>
-  <xi:include href="JavaPlatform.xml" xpointer="xpointer(/components/*)"/>
-
-  <application-components>
-    <component>
-      <implementation-class>jetbrains.mps.java.core.sourceStubs.EmptyJavaSourceStubsFindUsages</implementation-class>
-    </component>
-  </application-components>
+  <xi:include href="JavaPlatform.xml"/>
 
   <extensions defaultExtensionNs="com.intellij">
-    <mps.LanguageLibrary dir=""/>
+    <mps.LanguageLibrary dir="/" hide="true"/>
     <mps.VisibleModuleMask mask="Ant"/>
     <mps.VisibleModuleMask mask="DiffUtils"/>
     <mps.VisibleModuleMask mask="Hamcrest"/>
     <mps.VisibleModuleMask mask="JUnit"/>
+    <mps.VisibleModuleMask mask="JAXB"/>
     <mps.VisibleModuleMask mask="closures.*"/>
     <mps.VisibleModuleMask mask="collections.*"/>
     <mps.VisibleModuleMask mask="JDK.*"/>
@@ -43,8 +37,5 @@
     <mps.VisibleModuleMask mask="jetbrains\.mps\.ant"/>
     <mps.VisibleModuleMask mask="jetbrains\.mps\.baseLanguage.*"/>
     <mps.VisibleModuleMask mask="jetbrains\.mps\.devkit\.general-purpose"/>
-    <mps.modelRootFactory rootType="java_source_stubs" className="jetbrains.mps.java.core.sourceStubs.JavaSourceStubModelRootFactory"/>
-    <mps.modelRootSettings rootType="java_source_stubs" className="jetbrains.mps.java.platform.sourceStubsUI.JavaSourceStubModelRootSettingsProvider"/>
-    <mps.modelRootEntry rootType="java_source_stubs" title="Java &amp;Sources" className="jetbrains.mps.java.workbench.extensions.JavaSourceStubsModelRootEntryFactory"/>
   </extensions>
 </idea-plugin>

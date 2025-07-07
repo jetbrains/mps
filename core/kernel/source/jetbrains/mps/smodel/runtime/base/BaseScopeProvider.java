@@ -15,8 +15,6 @@
  */
 package jetbrains.mps.smodel.runtime.base;
 
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.runtime.ReferencePresentationContext;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 

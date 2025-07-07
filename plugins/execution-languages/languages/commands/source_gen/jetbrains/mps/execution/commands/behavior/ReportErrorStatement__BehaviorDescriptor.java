@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Set;
 import java.util.List;
@@ -29,9 +28,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class ReportErrorStatement__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2c00L, "jetbrains.mps.execution.commands.structure.ReportErrorStatement");
 
-  public static final SMethod<SNode> getException_idJzCdmU6yQ5 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getException").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("JzCdmU6yQ5").build();
-  public static final SMethod<Void> collectUncaughtMethodThrowables_id4Gt7ANIVH8f = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectUncaughtMethodThrowables").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4Gt7ANIVH8f").build(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
-  public static final SMethod<Boolean> isGuardClauseStatement_idi0z$q7V = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isGuardClauseStatement").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i0z$q7V").build();
+  public static final SMethod<SNode> getException_idJzCdmU6yQ5 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getException").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(856705193941282181L).languageId(0x8ac91574f25c986fL, 0xf3347d8a0e794f35L).build2();
+  public static final SMethod<Void> collectUncaughtMethodThrowables_id4Gt7ANIVH8f = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectUncaughtMethodThrowables").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5412515780383134223L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
+  public static final SMethod<Boolean> isGuardClauseStatement_idi0z$q7V = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isGuardClauseStatement").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1237547327995L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getException_idJzCdmU6yQ5, collectUncaughtMethodThrowables_id4Gt7ANIVH8f, isGuardClauseStatement_idi0z$q7V);
 

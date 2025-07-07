@@ -29,8 +29,8 @@ import java.util.function.Function;
  *
  * The method {@link TypecheckingSessionHandler#requestNewSession(Flags)} can be called by clients wishing to
  * start a new typechecking session with specific features. The session will be managed by this component,
- * but the client is free to call {@link TypecheckingSessionImpl#release()} at any time to signal that the session
- * is no longer required.
+ * but the client is free to call {@link TypecheckingSession.Handle#release()} at any time to signal that the session
+ * is no longer in use.
  *
  * @author Fedor Isakov
  */
@@ -47,7 +47,7 @@ public abstract class TypecheckingSessionHandler implements TypecheckingComputat
    */
   @NotNull
   public final Handle requestNewSession(@NotNull Flags flags) {
-    return controller().requestSession(flags);
+    return activeController().requestSession(flags);
   }
 
   @Override
@@ -134,12 +134,12 @@ public abstract class TypecheckingSessionHandler implements TypecheckingComputat
    * Lazily initialized instance of {@link TypecheckingController} specific to this context.
    */
   @NotNull
-  protected abstract TypecheckingController controller();
+  protected abstract TypecheckingController activeController();
 
   /**
    * Eagerly initializes and installs an instance of {@link TypecheckingController} that is constructed
    * from the specified session, independently of the current context.
-   * Later calls to {@link TypecheckingSessionHandler#controller()} will return this
+   * Later calls to {@link TypecheckingSessionHandler#activeController()} will return this
    * newly constructed instance, until a call to {@link TypecheckingSessionHandler#resetOverride()}.
    */
   protected abstract void overrideSharedController(@NotNull TypecheckingSessionImpl session);

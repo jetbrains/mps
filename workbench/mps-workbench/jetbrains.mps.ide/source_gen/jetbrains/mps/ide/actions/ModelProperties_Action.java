@@ -24,7 +24,7 @@ import com.intellij.openapi.options.ex.SingleConfigurableEditor;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1235219887263", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1235219887263", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class ModelProperties_Action extends BaseAction {
   private static final Icon ICON = AllIcons.General.Settings;
 
@@ -87,7 +87,7 @@ public class ModelProperties_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    // see ModuleProperties_Action for reason to save all models prior to property change 
+    // see ModuleProperties_Action for reason to save all models prior to property change
     new SaveRepositoryCommand(((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository()).execute();
     MPSPropertiesConfigurable configurable = new ModelPropertiesConfigurable(((SModel) MapSequence.fromMap(_params).get("model")), ((MPSProject) MapSequence.fromMap(_params).get("project")));
     final SingleConfigurableEditor configurableEditor = new SingleConfigurableEditor(((Project) MapSequence.fromMap(_params).get("ideaProject")), configurable, "#MPSPropertiesConfigurable");

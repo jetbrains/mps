@@ -10,10 +10,9 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -21,27 +20,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class MarkAsNonThreadSafe_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public MarkAsNonThreadSafe_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:2614090b-4018-4457-8ad5-c503bc8936fb(org.jetbrains.mps.samples.ParallelFor.intentions)", "2975785153735230347"));
   }
+
   @Override
   public String getPresentation() {
     return "MarkAsNonThreadSafe";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NonThreadSafeClass$7D)) == null;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -51,19 +44,36 @@ public final class MarkAsNonThreadSafe_Intention extends AbstractIntentionDescri
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Mark as Non Thread Safe";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NonThreadSafeClass$7D), SNodeFactoryOperations.createNewNode(CONCEPTS.NonThreadSafeClass$7D, null));
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ), null);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.NonThreadSafeClass$7D).set(node, SNodeFactoryOperations.createNewNode(CONCEPTS.NonThreadSafeClass$7D, null));
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ).set(node, null);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return new IAttributeDescriptor.NodeAttribute(CONCEPTS.NonThreadSafeClass$7D).get(node) == null;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return MarkAsNonThreadSafe_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

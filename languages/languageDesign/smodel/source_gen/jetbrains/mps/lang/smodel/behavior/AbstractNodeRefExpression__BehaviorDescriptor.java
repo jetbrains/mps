@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -18,10 +17,7 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -30,8 +26,8 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class AbstractNodeRefExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x319fd776da5d8e3cL, "jetbrains.mps.lang.smodel.structure.AbstractNodeRefExpression");
 
-  public static final SMethod<SNode> getTargetNode_id36vPRrqnscn = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTargetNode").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("36vPRrqnscn").build();
-  public static final SMethod<Iterable<SNode>> getPossibleTargetNodes_id4x3U0fpSqvX = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getPossibleTargetNodes").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4x3U0fpSqvX").build();
+  public static final SMethod<SNode> getTargetNode_id36vPRrqnscn = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTargetNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3575813534625153815L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
+  public static final SMethod<Iterable<SNode>> getPossibleTargetNodes_id4x3U0fpSqvX = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getPossibleTargetNodes").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5207260697408415741L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTargetNode_id36vPRrqnscn, getPossibleTargetNodes_id4x3U0fpSqvX);
 
@@ -47,25 +43,9 @@ public final class AbstractNodeRefExpression__BehaviorDescriptor extends BaseBHD
     Iterable<SNode> children = thisList;
     Iterable<SNode> result = Sequence.fromIterable(Collections.<SNode>emptyList());
     while (Sequence.fromIterable(children).isNotEmpty()) {
-      children = Sequence.fromIterable(children).translate(new ITranslator2<SNode, SNode>() {
-        public Iterable<SNode> translate(SNode it) {
-          return SNodeOperations.getChildren(it);
-        }
-      });
-      result = Sequence.fromIterable(result).concat(Sequence.fromIterable(children).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.INamedConcept$Kd);
-        }
-      }).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.cast(it, CONCEPTS.INamedConcept$Kd);
-        }
-      }));
-      children = Sequence.fromIterable(children).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.INamedConcept$Kd));
-        }
-      });
+      children = Sequence.fromIterable(children).translate((it) -> SNodeOperations.getChildren(it));
+      result = Sequence.fromIterable(result).concat(Sequence.fromIterable(children).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.INamedConcept$Kd)).select((it) -> SNodeOperations.cast(it, CONCEPTS.INamedConcept$Kd)));
+      children = Sequence.fromIterable(children).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.INamedConcept$Kd)));
     }
     return result;
   }

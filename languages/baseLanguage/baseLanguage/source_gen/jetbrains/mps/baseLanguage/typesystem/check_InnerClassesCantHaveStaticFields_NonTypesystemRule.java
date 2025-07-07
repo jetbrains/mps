@@ -31,7 +31,7 @@ public class check_InnerClassesCantHaveStaticFields_NonTypesystemRule extends Ab
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(staticFieldDeclaration, "Inner classes cannot have static fields", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "498633765599992972", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MakeStaticFieldNotStatic_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MakeStaticFieldNotStatic_QuickFix", "498633765599992978", false);
             intentionProvider.putArgument("staticField", staticFieldDeclaration);
             intentionProvider.putArgument("containingClass", classConcept);
             _reporter_2309309498.addIntentionProvider(intentionProvider);

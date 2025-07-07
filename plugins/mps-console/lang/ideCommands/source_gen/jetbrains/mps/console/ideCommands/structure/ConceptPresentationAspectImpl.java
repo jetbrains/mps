@@ -16,8 +16,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_CallActionExpression;
   private ConceptPresentation props_Clean;
   private ConceptPresentation props_ClickableGenerator;
+  private ConceptPresentation props_ClickableNode;
   private ConceptPresentation props_GlobalScope;
-  private ConceptPresentation props_GlobalScope_old;
   private ConceptPresentation props_GlobalStatisticTarget;
   private ConceptPresentation props_INodeSetReference;
   private ConceptPresentation props_IStatisticsTarget;
@@ -27,7 +27,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ModelStatisticsTarget;
   private ConceptPresentation props_ModuleProperties;
   private ConceptPresentation props_NodeReference;
-  private ConceptPresentation props_OfAspectOperation_old;
   private ConceptPresentation props_ProjectStatisticsTarget;
   private ConceptPresentation props_RemoveGenSources;
   private ConceptPresentation props_ShowBrokenReferences;
@@ -92,6 +91,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ClickableGenerator = cpb.create();
         }
         return props_ClickableGenerator;
+      case LanguageConceptSwitch.ClickableNode:
+        if (props_ClickableNode == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("ClickableNode");
+          props_ClickableNode = cpb.create();
+        }
+        return props_ClickableNode;
       case LanguageConceptSwitch.GlobalScope:
         if (props_GlobalScope == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -100,13 +106,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_GlobalScope = cpb.create();
         }
         return props_GlobalScope;
-      case LanguageConceptSwitch.GlobalScope_old:
-        if (props_GlobalScope_old == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("global");
-          props_GlobalScope_old = cpb.create();
-        }
-        return props_GlobalScope_old;
       case LanguageConceptSwitch.GlobalStatisticTarget:
         if (props_GlobalStatisticTarget == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -171,15 +170,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_NodeReference = cpb.create();
         }
         return props_NodeReference;
-      case LanguageConceptSwitch.OfAspectOperation_old:
-        if (props_OfAspectOperation_old == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x5252d9021b8b45a8L);
-          cpb.deprecated(true);
-          cpb.deprecateAssociation(0x7cd422dbfa7b06f8L, "requestedAspect_old");
-          cpb.shortDesc("filter models by their aspect");
-          props_OfAspectOperation_old = cpb.create();
-        }
-        return props_OfAspectOperation_old;
       case LanguageConceptSwitch.ProjectStatisticsTarget:
         if (props_ProjectStatisticsTarget == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -213,8 +203,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_ShowExpression;
       case LanguageConceptSwitch.ShowGenPlan:
         if (props_ShowGenPlan == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L);
-          cpb.deprecateAggregation(0x61f2dd6de47f867aL, "targetModelOld");
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("show the generation plan");
           cpb.rawPresentation("#showGenPlan");
           props_ShowGenPlan = cpb.create();

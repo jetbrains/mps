@@ -9,34 +9,49 @@ import jetbrains.mps.workbench.action.ActionAccess;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
+import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.util.ModuleNameUtil;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.project.StandaloneMPSProject;
-import jetbrains.mps.project.AbstractModule;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import com.intellij.openapi.ui.Messages;
-import jetbrains.mps.ide.newModuleDialogs.AbstractModuleCreationDialog;
-import jetbrains.mps.ide.newModuleDialogs.CloneModuleDialog;
+import java.io.File;
+import jetbrains.mps.ide.ui.dialogs.modules.NewModuleDialog;
+import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.ide.ui.dialogs.modules.NameLocationPanel;
+import java.nio.file.Path;
+import jetbrains.mps.project.modules.NewModuleCheck;
+import jetbrains.mps.smodel.Language;
+import jetbrains.mps.smodel.Generator;
+import jetbrains.mps.project.DevKit;
+import jetbrains.mps.util.IStatus;
+import jetbrains.mps.extapi.persistence.CopyNotSupportedException;
+import jetbrains.mps.ide.newModuleDialogs.CopyModuleHelper;
 import com.intellij.openapi.application.ApplicationManager;
+import jetbrains.mps.util.StringUtil;
+import com.intellij.openapi.ui.MessageType;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 import com.intellij.openapi.application.ModalityState;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import java.util.HashMap;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.extapi.persistence.CopyableModelRoot;
-import jetbrains.mps.project.Solution;
-import jetbrains.mps.smodel.Language;
+import com.intellij.openapi.project.Project;
+import javax.swing.JComponent;
+import com.intellij.openapi.wm.WindowManager;
+import com.intellij.openapi.ui.popup.JBPopupFactory;
+import com.intellij.ui.awt.RelativePoint;
+import com.intellij.openapi.ui.popup.Balloon;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3138904107381036995", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "3138904107381036995", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class CloneModule_Action extends BaseAction {
   private static final Icon ICON = null;
 
   public CloneModule_Action() {
     super("Clone Module", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    this.setActionAccess(ActionAccess.READ_PROJECT);
   }
   @Override
   public boolean isDumbAware() {
@@ -44,8 +59,8 @@ public class CloneModule_Action extends BaseAction {
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    boolean isApplicable = event.getData(MPSCommonDataKeys.TREE_SELECTION_SIZE) == 1 && CloneModule_Action.this.supportsClonning(event.getData(MPSCommonDataKeys.MODULE), event);
-    event.getPresentation().setText("Clone " + ModuleNameUtil.getModuleType(event.getData(MPSCommonDataKeys.MODULE)));
+    boolean isApplicable = event.getData(MPSCommonDataKeys.TREE_SELECTION_SIZE) == 1 && CloneModule_Action.this.supportsClonning(((AbstractModule) event.getData(MPSCommonDataKeys.MODULE)), event);
+    event.getPresentation().setText("Clone " + ModuleNameUtil.getModuleType(((AbstractModule) event.getData(MPSCommonDataKeys.MODULE))));
     event.getPresentation().setEnabledAndVisible(isApplicable);
   }
   @Override
@@ -56,6 +71,9 @@ public class CloneModule_Action extends BaseAction {
     {
       SModule p = event.getData(MPSCommonDataKeys.MODULE);
       if (p == null) {
+        return false;
+      }
+      if (p != null && !(p instanceof AbstractModule)) {
         return false;
       }
     }
@@ -75,8 +93,7 @@ public class CloneModule_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final StandaloneMPSProject project = as_i0xx9i_a0a0a6(event.getData(MPSCommonDataKeys.MPS_PROJECT), StandaloneMPSProject.class);
-    final AbstractModule module = as_i0xx9i_a0a1a6(event.getData(MPSCommonDataKeys.MODULE), AbstractModule.class);
+    final AbstractModule module = as_i0xx9i_a0a0a6(((AbstractModule) event.getData(MPSCommonDataKeys.MODULE)), AbstractModule.class);
 
     Map<ModelRoot, String> nonCloneable = CloneModule_Action.this.collectCloneErrorMessages(module.getModelRoots(), event);
     if (!(MapSequence.fromMap(nonCloneable).isEmpty())) {
@@ -84,21 +101,67 @@ public class CloneModule_Action extends BaseAction {
       return;
     }
 
-    String virtualFolder = project.getFolderFor(module);
-    final AbstractModuleCreationDialog dialog = new CloneModuleDialog(project, virtualFolder, module);
+    final MPSProject mpsProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+    final String virtualFolder = mpsProject.getVirtualFolder(module);
+    File projectHome = NewModuleDialog.projectHome(mpsProject);
+    IFile moduleHome = module.getModuleSourceDir().getParent();
+    final NameLocationPanel cfg = new NameLocationPanel(projectHome, "Cloned Module name:", "Clone Module to:");
+    // XXX instead of relative path from project home, could have an option to specify File directly.
+    cfg.withDefaults(module.getModuleName() + ".clone", projectHome.toPath().relativize(Path.of(moduleHome.getPath())).toString());
 
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        dialog.show();
-
-        SModule result = dialog.getModule();
-        if (result == null) {
-          return;
-        }
-
-        ProjectPane projectPane = ProjectPane.getInstance(project);
-        projectPane.selectModule(result, false);
+    final NewModuleDialog<SModule> dialog = new NewModuleDialog<>(mpsProject, cfg);
+    dialog.setTitle(String.format("Clone %s %s", ModuleNameUtil.getModuleType(module), module.getModuleName()));
+    dialog.withDimensionKey(CloneModule_Action.this.getClass().getName());
+    final NewModuleCheck mc = new NewModuleCheck();
+    if (module instanceof Language) {
+      mc.forLanguage();
+    } else if (module instanceof Generator) {
+      mc.forGenerator();
+    } else if (module instanceof DevKit) {
+      mc.forDevkit();
+    } else {
+      mc.forSolution();
+    }
+    mc.withScope(mpsProject.getRepository());
+    dialog.withCheck(() -> {
+      mc.withName(cfg.getModuleName()).withHome(cfg.getModuleLocation());
+      IStatus s = mc.checkAll();
+      return (s.isOk() ? null : s.getMessage());
+    });
+    final CopyNotSupportedException[] error = new CopyNotSupportedException[]{null};
+    dialog.withFactory(() -> {
+      final String moduleName = cfg.getModuleName();
+      // FIXME it's not quite good to take module name from cfg but module file from check operation, need an uniform approach
+      IFile descriptorFile = mpsProject.getFileSystem().getFile(mc.getModuleFile());
+      CopyModuleHelper helper = new CopyModuleHelper(mpsProject, module, moduleName, descriptorFile, virtualFolder);
+      try {
+        // XXX why logic to add module to project is hidden under CopyModuleHelper? I'd say it shall create a module
+        //    and this action has to attach it to the project
+        AbstractModule result = helper.copy();
+        return result;
+      } catch (CopyNotSupportedException e) {
+        error[0] = e;
       }
+      return null;
+    });
+
+    ApplicationManager.getApplication().invokeLater(() -> {
+      dialog.show();
+      if (!(dialog.isOK())) {
+        return;
+      }
+      SModule result = dialog.getResult();
+      if (result == null) {
+        String errorDescription = (error[0] == null ? null : error[0].getMessage());
+        String header = String.format("Cloning of <i>%s</i> finished with error", module.getModuleName());
+        String separator = ((errorDescription == null || errorDescription.length() == 0) ? "\n" : ":\n");
+        CloneModule_Action.this.showPopup(mpsProject.getProject(), header + separator + StringUtil.emptyIfNull(errorDescription), MessageType.ERROR, event);
+        return;
+      }
+      CloneModule_Action.this.showPopup(mpsProject.getProject(), String.format("%s  <i>%s</i> has been cloned successfully", ModuleNameUtil.getModuleType(module), module.getModuleName()), MessageType.INFO, event);
+
+      ProjectPane projectPane = ProjectPane.getInstance(mpsProject);
+      projectPane.selectModule(result, false);
     }, ModalityState.current());
   }
   private String getErrorMessage(Map<ModelRoot, String> roots, final AnActionEvent event) {
@@ -127,12 +190,17 @@ public class CloneModule_Action extends BaseAction {
     return result;
   }
   private boolean supportsClonning(SModule module, final AnActionEvent event) {
-    return !(module.isPackaged()) && (module instanceof Solution || module instanceof Language);
+    return !(module.isPackaged()) && module instanceof AbstractModule && ((AbstractModule) module).getModuleDescriptor() != null;
+  }
+  private void showPopup(Project ideaProject, String htmlText, MessageType messageType, final AnActionEvent event) {
+    // XXX there's BaseAction.showNotification, can I merge these? There's no fadeout time in BA.showNotification
+    //     but is it that important?
+    final int POPUP_FADEOUT_TIME = 10000;
+
+    JComponent component = WindowManager.getInstance().getIdeFrame(ideaProject).getComponent();
+    JBPopupFactory.getInstance().createHtmlTextBalloonBuilder(htmlText, messageType, null).setFadeoutTime(POPUP_FADEOUT_TIME).createBalloon().show(RelativePoint.getSouthWestOf(component), Balloon.Position.above);
   }
   private static <T> T as_i0xx9i_a0a0a6(Object o, Class<T> type) {
-    return (type.isInstance(o) ? (T) o : null);
-  }
-  private static <T> T as_i0xx9i_a0a1a6(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

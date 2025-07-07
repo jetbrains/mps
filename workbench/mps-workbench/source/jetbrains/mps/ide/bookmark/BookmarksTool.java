@@ -15,54 +15,61 @@
  */
 package jetbrains.mps.ide.bookmark;
 
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.components.StoragePathMacros;
+import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.wm.ToolWindowAnchor;
+import com.intellij.openapi.wm.ToolWindow;
+import com.intellij.openapi.wm.ToolWindowFactory;
+import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.ui.ScrollPaneFactory;
+import com.intellij.ui.content.Content;
+import com.intellij.ui.content.ContentManager;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.tools.BaseProjectTool;
 import jetbrains.mps.ide.ui.tree.MPSTree;
 import jetbrains.mps.ide.ui.tree.MPSTree.TreeState;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 
 @State(
   name = "BookmarksTool",
   storages = @Storage(StoragePathMacros.WORKSPACE_FILE)
 )
-public class BookmarksTool extends BaseProjectTool implements PersistentStateComponent<BookmarksTool.MyState> {
-  JScrollPane myComponent;
-  private BookmarkManager myBookmarkManager;
+public class BookmarksTool implements PersistentStateComponent<BookmarksTool.MyState>, Disposable {
+  private static String ID = "Bookmarks tool"; // same as value in the xml
+  private final Project myProject;
+  private JScrollPane myComponent;
   private MPSTree myTree;
   private TreeState myTreeState;
 
+  public static BookmarksTool getInstance(Project project) {
+    return project.getService(BookmarksTool.class);
+  }
+
   public BookmarksTool(Project project) {
-    super(project, "Bookmarks", null, null, ToolWindowAnchor.BOTTOM, false, true);
+    myProject = project;
   }
 
   @Override
-  public void disposeComponent() {
-    super.disposeComponent();
+  public void dispose() {
     if (myTree != null) {
       myTree.dispose();
       myTree = null;
+      myComponent = null;
     }
   }
 
-  @Override
-  protected void createTool() {
-    // no-op, tool instantiated lazily
+  public void openTool() {
+    ToolWindowManager.getInstance(myProject).getToolWindow(ID).show();
   }
 
-  private void createToolLazy() {
-    myBookmarkManager = getProject().getComponent(BookmarkManager.class);
-    myTree = new BookmarksTree(ProjectHelper.toMPSProject(getProject()), myBookmarkManager);
+  private void initToolWindow(ToolWindow toolWindow) {
+    myTree = new BookmarksTree(ProjectHelper.toMPSProject(myProject), BookmarkManager.getInstance(myProject));
     myComponent = ScrollPaneFactory.createScrollPane(myTree);
     if (myTreeState != null) {
       ApplicationManager.getApplication().invokeLater(() -> {
@@ -70,14 +77,12 @@ public class BookmarksTool extends BaseProjectTool implements PersistentStateCom
         myTree.loadState(myTreeState);
       });
     }
-  }
-
-  @Override
-  public JComponent getComponent() {
-    if (myComponent == null) {
-      createToolLazy();
-    }
-    return myComponent;
+    ContentManager cm = toolWindow.getContentManager();
+    Content content = cm.getFactory().createContent(myComponent, "", false);
+    content.setPreferredFocusableComponent(myTree);
+    content.setIcon(toolWindow.getIcon());
+    cm.addContent(content);
+    cm.setSelectedContent(content);
   }
 
   @Override
@@ -105,4 +110,10 @@ public class BookmarksTool extends BaseProjectTool implements PersistentStateCom
     }
   }
 
+  public static class Factory implements ToolWindowFactory, DumbAware {
+    @Override
+    public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
+      BookmarksTool.getInstance(project).initToolWindow(toolWindow);
+    }
+  }
 }

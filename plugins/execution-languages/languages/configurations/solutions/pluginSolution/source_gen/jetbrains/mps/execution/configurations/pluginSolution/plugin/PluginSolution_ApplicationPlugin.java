@@ -18,10 +18,10 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
   }
 
   public void createGroups() {
-    // actions w/o parameters 
+    // actions w/o parameters
     addAction(new AddExecutor_Action());
     addAction(new AddProducer_Action());
-    // groups 
+    // groups
     addGroup(new ShowAsIntentions_ExecutionConfigurations_ActionGroup(this));
   }
   public void adjustRegularGroups() {

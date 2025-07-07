@@ -40,7 +40,7 @@ public class check_WeaveEach_RuleConsequence_NonTypesystemRule extends AbstractN
       if (!(MetaAdapterByDeclaration.getConcept(nodeConcept).isSubConceptOf(MetaAdapterByDeclaration.getConcept(templateApplicableConcept)))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(weaveEach, "template is not applicable to " + NT, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "546192990993046908", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(weaveEach, "template is not applicable to " + SNodeOperations.present(NT), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "546192990993046908", null, errorTarget);
         }
       }
     }

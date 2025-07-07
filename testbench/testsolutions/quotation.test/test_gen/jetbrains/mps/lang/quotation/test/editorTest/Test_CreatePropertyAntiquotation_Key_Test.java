@@ -4,19 +4,20 @@ package jetbrains.mps.lang.quotation.test.editorTest;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 
 @MPSLaunch
 public class Test_CreatePropertyAntiquotation_Key_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(Test_CreatePropertyAntiquotation_Key_Test.class, "${mps_home}", "r:05c4fa32-3688-4db6-b828-4373b1de41d9(jetbrains.mps.lang.quotation.test.editorTest@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(Test_CreatePropertyAntiquotation_Key_Test.class).projectPath(null).modelRef("r:05c4fa32-3688-4db6-b828-4373b1de41d9(jetbrains.mps.lang.quotation.test.editorTest@tests)").reopenProject(false).build());
 
   public Test_CreatePropertyAntiquotation_Key_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -34,8 +35,8 @@ public class Test_CreatePropertyAntiquotation_Key_Test extends BaseTransformatio
     public void testMethodImpl() throws Exception {
       initEditorComponent("7167051279291147218", "7167051279291147231");
       typeString("$");
-      // todo this is done because antiquotation "antisuppress" the errors and typesystem test is failing 
-      // todo remove it when it will be possible to have the antiquotation with an error under the test 
+      // todo this is done because antiquotation "antisuppress" the errors and typesystem test is failing
+      // todo remove it when it will be possible to have the antiquotation with an error under the test
       typeString("\"");
 
     }

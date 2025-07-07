@@ -25,10 +25,15 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.extapi.model.ModelWithDisposeInfo;
 import jetbrains.mps.extapi.model.GeneratableSModel;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)/2089287822043606602", model = "r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)")
+@GeneratedClass(nodeId = "2089287822043606602", model = "r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)")
 public class SNodeOperations {
   public SNodeOperations() {
   }
@@ -38,6 +43,7 @@ public class SNodeOperations {
    */
   @Deprecated
   public static boolean isAncestor(SNode ancestor, SNode node) {
+    // uses in mbeddr
     do {
       if (ancestor == node) {
         return true;
@@ -96,7 +102,7 @@ public class SNodeOperations {
   public static Set<String> getChildRoles(SNode n) {
     Set<String> res = SetSequence.fromSet(new HashSet<String>());
     for (SNode child : Sequence.fromIterable(n.getChildren())) {
-      SetSequence.fromSet(res).addElement(child.getRoleInParent());
+      SetSequence.fromSet(res).addElement(child.getContainmentLink().getName());
     }
     return res;
   }
@@ -125,23 +131,11 @@ public class SNodeOperations {
   /**
    * todo rewrite the code using this
    * 
-   * @deprecated use either SNode.getReference.select(it->it.role) or SNode.getConcept.getReferenceLinks depending on what you want to get
-   */
-  @Deprecated
-  public static Set<String> getReferenceRoles(SNode n) {
-    Set<String> res = SetSequence.fromSet(new HashSet<String>());
-    for (SReference ref : Sequence.fromIterable(n.getReferences())) {
-      SetSequence.fromSet(res).addElement(ref.getRole());
-    }
-    return res;
-  }
-  /**
-   * todo rewrite the code using this
-   * 
    * @deprecated SNode.getParent!=null mostly (if done in "user" code which operates with nodes inside models)
    */
   @Deprecated
   public static boolean isRoot(SNode n) {
+    // uses in mbeddr
     return n.getModel() != null && n.getParent() == null;
   }
   /**
@@ -151,6 +145,7 @@ public class SNodeOperations {
    */
   @Deprecated
   public static String getDebugText(SNode node) {
+    // a lot of uses
     String roleText = "";
     if (node.getModel() != null) {
       SNode parent = node.getParent();
@@ -189,9 +184,10 @@ public class SNodeOperations {
    */
   @Deprecated
   public static Set<SContainmentLink> getChildRoles(SNode n, boolean includeAttributeRoles) {
+    // uses in mbeddr
     final Set<SContainmentLink> augend = new HashSet<SContainmentLink>();
     for (SNode child : n.getChildren()) {
-      if (includeAttributeRoles || !((AttributeOperations.isAttribute(child)))) {
+      if (includeAttributeRoles || !(AttributeOperations.isAttribute(child))) {
         augend.add(child.getContainmentLink());
       }
     }
@@ -210,29 +206,17 @@ public class SNodeOperations {
     return children.iterator().next();
   }
   /**
-   * 
-   * @deprecated rewrite using SContainmentLink, don't use by-string roles
-   */
-  @Deprecated
-  public static SNode getChild(SNode node, String role) {
-    Iterable<? extends SNode> children = node.getChildren(role);
-    if (!(children.iterator().hasNext())) {
-      return null;
-    }
-    return children.iterator().next();
-  }
-  /**
    * This will be replaced by getting resolve info from a reference in a context containing it
+   * [artem] Well, I believe this one has to be replaced with Scope, with IResolveInfo being a default fallback. 
+   *   This method shall be used by MPS code as it makes an assumption scope impl complies with the way we build resolveInfo here.
+   *   Instead, it's Scope responsibility to build and process resolveInfo
    * 
-   * @deprecated use SNodeUtil.getResolveInfo (note it does not return name in case of !isInstanceOf(IResolveInfo))
+   * @deprecated use scopes to obtain actual resolveInfo; Use reference.resolveInfo to find out value stored with an association link instance.
    */
   @Deprecated
   public static String getResolveInfo(SNode n) {
-    String resolveInfo = SNodeUtil.getResolveInfo(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.as(n, CONCEPTS.IResolveInfo$$k));
-    if (resolveInfo != null) {
-      return resolveInfo;
-    }
-    return SPropertyOperations.getString(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.as(n, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL);
+    String resolveInfo = SPropertyOperations.getString(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.as(n, CONCEPTS.IResolveInfo$$k), PROPS.resolveInfo$lW9a);
+    return (resolveInfo != null ? resolveInfo : SPropertyOperations.getString(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.as(n, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL));
   }
   /**
    * 
@@ -256,19 +240,14 @@ public class SNodeOperations {
   }
 
   /**
-   * 
-   * @deprecated not supposed to be used not in MPS core. Use ref.getTargetNode
+   * Get reference target or fail silently if reference could not be resolved (no error is reported)
+   * Generally, ref.getTargetNode() shall be the one to use for almost every case out there; this one is intended for MPC Core uses.
    */
-  @Deprecated
   public static SNode getTargetNodeSilently(SReference ref) {
-    boolean needToEnableLogging = false;
-    try {
-      needToEnableLogging = jetbrains.mps.smodel.SReference.disableLogging();
+    if (ref instanceof jetbrains.mps.smodel.SReference) {
+      return ((jetbrains.mps.smodel.SReference) ref).getTargetNode(new jetbrains.mps.smodel.SReference.ProblemReporter() {});
+    } else {
       return ref.getTargetNode();
-    } finally {
-      if (needToEnableLogging) {
-        jetbrains.mps.smodel.SReference.enableLogging();
-      }
     }
   }
   /**
@@ -285,7 +264,8 @@ public class SNodeOperations {
    */
   @Deprecated
   public static String getModelLongName(SModel model) {
-    // replaced NameUtil.getModelLongName didn't expect null and returned a qualified name w/o stereotype 
+    // uses in mbeddr
+    // replaced NameUtil.getModelLongName didn't expect null and returned a qualified name w/o stereotype
     return model.getName().getLongName();
   }
 
@@ -322,8 +302,35 @@ public class SNodeOperations {
    */
   @Deprecated
   public static boolean isGeneratable(SModel model) {
-    // I wonder why this method doesn't reside in SModelOperations 
+    // uses in mbeddr
+    // I wonder why this method doesn't reside in SModelOperations
     return model instanceof GeneratableSModel && ((GeneratableSModel) model).isGeneratable();
+  }
+
+  /**
+   * There used to be a hack in DynamicReference cons (d9cf57727893) to augment resolveInfo with qualified name of a target model to help
+   * resolve references in stubs. Now it's responsibility of a caller code to create qualified resolve info explicitly, if needed, no more magic in
+   * DynamicReference cons. This method mimics what DR cons used to do, and prepends model name only when the link points to a Classifier.
+   * AFAIK, it's only ClassifiersScope that knows how to deal with qualified resolve info.
+   * 
+   * FWIW, with ResolveInfo in place, don't need to mangle resolveInfo string any longer, as we can pass necessary context information as part of
+   * ResolveInfo object. However, for transition purposes and as long as DR keeps String resolveInfo, use this method to construct RI.
+   */
+  public static ResolveInfo qualifiedResolveInfo(@NotNull SReferenceLink link, @Nullable SModelReference targetModel, String resolveInfo) {
+    // The placement of this method to SNodeOperations is bad, indeed. I just didn't find a better location, and don't want to delay the whole activity
+    // just for this subtle, yet important part. I hope to switch to RI objects soon, so that there would be no need in this code.
+    if (targetModel == null) {
+      return ResolveInfo.of(resolveInfo);
+    }
+    String modelName = targetModel.getName().getLongName();
+    if (resolveInfo == null || modelName.isEmpty() || resolveInfo.startsWith(modelName)) {
+      // startsWith is not sufficient, indeed (additionally, shall check for '.' right after); this is the way it was in DR cons
+      return ResolveInfo.of(resolveInfo);
+    }
+    if (link.getTargetConcept().isSubConceptOf(SNodeUtil.concept_Classifier)) {
+      return ResolveInfo.of(modelName + '.' + resolveInfo);
+    }
+    return ResolveInfo.of(resolveInfo);
   }
 
   private static final class CONCEPTS {
@@ -332,6 +339,7 @@ public class SNodeOperations {
   }
 
   private static final class PROPS {
+    /*package*/ static final SProperty resolveInfo$lW9a = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo");
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

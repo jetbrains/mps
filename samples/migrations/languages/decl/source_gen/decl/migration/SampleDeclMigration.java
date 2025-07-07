@@ -8,7 +8,6 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.scope.ConditionalScope;
 import jetbrains.mps.ide.findusages.model.scopes.ModulesScope;
-import org.jetbrains.mps.util.Condition;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
@@ -17,19 +16,15 @@ import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -50,44 +45,30 @@ public class SampleDeclMigration extends MigrationScriptBase {
     return null;
   }
   public void doExecute(final SModule m) {
-    // migrate everything except migration aspects 
-    SearchScope searchScope = new ConditionalScope(new ModulesScope(m), null, new Condition<SModel>() {
-      public boolean met(SModel it) {
-        return !(SModuleOperations.isAspect(it, "migration"));
-      }
-    });
+    // migrate everything except migration aspects
+    SearchScope searchScope = new ConditionalScope(new ModulesScope(m), null, (SModel it) -> !(SModuleOperations.isAspect(it, "migration")));
 
     {
       SearchScope scope_i4ro0d_d0e = CommandUtil.createScope(searchScope);
       final SearchScope scope_i4ro0d_d0e_0 = new EditableFilteringScope(scope_i4ro0d_d0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_i4ro0d_d0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_i4ro0d_d0e_0;
 
-      // get all old instances in all models of the module 
-      List<SNode> components = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.OldComponent$2b, true)).toListSequence();
+      // get all old instances in all models of the module
+      List<SNode> components = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.OldComponent$2b, true)).toList();
 
-      // for each old instance create a new one 
-      ListSequence.fromList(components).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode oldNode) {
-          SNode newNode = _quotation_createNode_i4ro0d_a0a0a0a5a3a5(SLinkOperations.getChildren(oldNode, LINKS.member$dqVz), SPropertyOperations.getString(oldNode, PROPS.name$MnvL));
-          // add it to the model 
-          SModelOperations.addRootNode(SNodeOperations.getModel(oldNode), newNode);
+      // for each old instance create a new one
+      ListSequence.fromList(components).visitAll((oldNode) -> {
+        SNode newNode = _quotation_createNode_i4ro0d_a0a0a0a5a3a5(SLinkOperations.getChildren(oldNode, LINKS.member$dqVz), SPropertyOperations.getString(oldNode, PROPS.name$MnvL));
+        // add it to the model
+        SModelOperations.addRootNode(SNodeOperations.getModel(oldNode), newNode);
 
-          // create the data annotation to hold mapping between old and new ids of the instances 
-          SPropertyOperations.set(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.setTarget(AttributeOperations.createAndAddAttribute(newNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MigrationDataAnnotation$Ct), CONCEPTS.MigrationDataAnnotation$Ct), LINKS.dataNode$lPK2, createDeclMigrationData_i4ro0d_a0f0a0a5a3a5(oldNode.getNodeId().toString(), newNode.getNodeId().toString()))), CONCEPTS.MigrationDataAnnotation$Ct), PROPS.createdByScript$dQMM, SampleDeclMigration.this.getReference().serialize());
+        // create the data annotation to hold mapping between old and new ids of the instances
+        SPropertyOperations.set(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.setTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.MigrationDataAnnotation$Ct).addNew(newNode, CONCEPTS.MigrationDataAnnotation$Ct), LINKS.dataNode$lPK2, createDeclMigrationData_i4ro0d_a0f0a0a5a3a5(oldNode.getNodeId().toString(), newNode.getNodeId().toString()))), CONCEPTS.MigrationDataAnnotation$Ct), PROPS.createdByScript$dQMM, SampleDeclMigration.this.getReference().serialize());
 
-        }
       });
 
-      // remove the old instances from their models 
-      ListSequence.fromList(components).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.deleteNode(it);
-        }
-      });
+      // remove the old instances from their models
+      ListSequence.fromList(components).visitAll((it) -> SNodeOperations.deleteNode(it));
     }
   }
   @Override
@@ -95,38 +76,29 @@ public class SampleDeclMigration extends MigrationScriptBase {
     {
       SearchScope scope_i4ro0d_a0f = CommandUtil.createScope(m);
       final SearchScope scope_i4ro0d_a0f_0 = new EditableFilteringScope(scope_i4ro0d_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_i4ro0d_a0f_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.OldComponent$2b, false)).select(new ISelector<SNode, NotMigratedNode>() {
-        public NotMigratedNode select(SNode it) {
-          return new NotMigratedNode(it) {
-            public String getMessage() {
-              return "old component should be replaced by a new one";
-            }
-          };
-        }
+      QueryExecutionContext context = () -> scope_i4ro0d_a0f_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.OldComponent$2b, false)).select((it) -> {
+        return new NotMigratedNode(it) {
+          public String getMessage() {
+            return "old component should be replaced by a new one";
+          }
+        };
       });
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, "decl"), 1);
   }
 
 
   private static SNode _quotation_createNode_i4ro0d_a0a0a0a5a3a5(Object parameter_1, Object parameter_2) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
-    quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, "decl"), 0x6aff2c1049329d71L, "NewComponent")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, "decl"), 0x6aff2c1049329d71L, "NewComponent"));
+    quotedNode_3 = nb.getResult();
     SNodeAccessUtil.setPropertyValue(quotedNode_3, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), (String) parameter_2);
-    {
-      List<SNode> nodes = (List<SNode>) parameter_1;
-      for (SNode child : nodes) {
-        quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x6aff2c1049329d71L, 0x6aff2c1049329d74L, "member"), SNodeOperations.copyIfNecessary(child));
-      }
+    for (SNode child : (List<SNode>) parameter_1) {
+      quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x6aff2c1049329d71L, 0x6aff2c1049329d74L, "member"), SNodeOperations.copyIfNecessary(child));
     }
     return quotedNode_3;
   }

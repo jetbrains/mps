@@ -12,7 +12,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
@@ -21,21 +20,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class AddOrRemoveReferenceAttribute_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddOrRemoveReferenceAttribute_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:1c12d022-dd1a-4314-bcc9-f6cffa796c03(jetbrains.mps.lang.editor.menus.substitute.testLanguage.intentions)", "4930188782568120127"));
   }
+
   @Override
   public String getPresentation() {
     return "AddOrRemoveReferenceAttribute";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -45,26 +44,37 @@ public final class AddOrRemoveReferenceAttribute_Intention extends AbstractInten
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_WithReference$2B)) == null)) {
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_WithReference$2B).get(node) == null)) {
         return "Add Reference Attribute";
       } else {
         return "Remove Reference Attribute";
       }
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_WithReference$2B)) == null)) {
-        AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_WithReference$2B), CONCEPTS.TestSubstituteAttribute_WithReference$2B);
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_WithReference$2B).get(node) == null)) {
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_WithReference$2B).setNew(node);
       } else {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_WithReference$2B)));
+        SNodeOperations.deleteNode(new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_WithReference$2B).get(node));
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddOrRemoveReferenceAttribute_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.execution.lib.PointerUtils;
@@ -29,8 +29,8 @@ public class TestUtils {
     if (strings == null) {
       return ListSequence.fromList(new ArrayList<ITestNodeWrapper>());
     }
-    return Sequence.fromIterable(Sequence.fromClosure(new ISequenceClosure<ITestNodeWrapper>() {
-      public Iterable<ITestNodeWrapper> iterable() {
+    return Sequence.fromIterable(Sequence.fromClosure(new _FunctionTypes._return_P0_E0<Iterable<ITestNodeWrapper>>() {
+      public Iterable<ITestNodeWrapper> invoke() {
         return new Iterable<ITestNodeWrapper>() {
           public Iterator<ITestNodeWrapper> iterator() {
             return new YieldingIterator<ITestNodeWrapper>() {
@@ -98,8 +98,9 @@ __switch__:
             };
           }
         };
+
       }
-    })).toListSequence();
+    })).toList();
   }
 
   private static SNode check_6qi07j_a0a0a0a0a0b0a(SNodeReference checkedDotOperand, Project mpsProject) {

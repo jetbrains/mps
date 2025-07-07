@@ -397,7 +397,7 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       return SNodeOperations.copyNode(MathTypeUtil.qBoolean);
     }
     public boolean isApplicable(SubtypingManager subtypingManager, SNode operation, SNode leftOperandType, SNode rightOperandType) {
-      return !((SNodeOperations.isInstanceOf(leftOperandType, CONCEPTS.NullType$Ea) || SNodeOperations.isInstanceOf(rightOperandType, CONCEPTS.NullType$Ea)));
+      return !(SNodeOperations.isInstanceOf(leftOperandType, CONCEPTS.NullType$Ea) || SNodeOperations.isInstanceOf(rightOperandType, CONCEPTS.NullType$Ea));
     }
     @Override
     public void reportConflict(IRuleConflictWarningProducer producer) {
@@ -420,7 +420,7 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       return SNodeOperations.copyNode(MathTypeUtil.qBoolean);
     }
     public boolean isApplicable(SubtypingManager subtypingManager, SNode operation, SNode leftOperandType, SNode rightOperandType) {
-      return !((SNodeOperations.isInstanceOf(leftOperandType, CONCEPTS.NullType$Ea) || SNodeOperations.isInstanceOf(rightOperandType, CONCEPTS.NullType$Ea)));
+      return !(SNodeOperations.isInstanceOf(leftOperandType, CONCEPTS.NullType$Ea) || SNodeOperations.isInstanceOf(rightOperandType, CONCEPTS.NullType$Ea));
     }
     @Override
     public void reportConflict(IRuleConflictWarningProducer producer) {
@@ -443,7 +443,7 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       return SNodeOperations.copyNode(MathTypeUtil.qBoolean);
     }
     public boolean isApplicable(SubtypingManager subtypingManager, SNode operation, SNode leftOperandType, SNode rightOperandType) {
-      return !((SNodeOperations.isInstanceOf(leftOperandType, CONCEPTS.NullType$Ea) || SNodeOperations.isInstanceOf(rightOperandType, CONCEPTS.NullType$Ea)));
+      return !(SNodeOperations.isInstanceOf(leftOperandType, CONCEPTS.NullType$Ea) || SNodeOperations.isInstanceOf(rightOperandType, CONCEPTS.NullType$Ea));
     }
     @Override
     public void reportConflict(IRuleConflictWarningProducer producer) {
@@ -466,7 +466,7 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       return SNodeOperations.copyNode(MathTypeUtil.qBoolean);
     }
     public boolean isApplicable(SubtypingManager subtypingManager, SNode operation, SNode leftOperandType, SNode rightOperandType) {
-      return !((SNodeOperations.isInstanceOf(leftOperandType, CONCEPTS.NullType$Ea) || SNodeOperations.isInstanceOf(rightOperandType, CONCEPTS.NullType$Ea)));
+      return !(SNodeOperations.isInstanceOf(leftOperandType, CONCEPTS.NullType$Ea) || SNodeOperations.isInstanceOf(rightOperandType, CONCEPTS.NullType$Ea));
     }
     @Override
     public void reportConflict(IRuleConflictWarningProducer producer) {

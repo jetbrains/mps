@@ -44,7 +44,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -267,25 +267,8 @@
       <property role="IQ2ns" value="1177590086595" />
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
-  </node>
-  <node concept="1TIwiD" id="htzuhxA">
-    <property role="TrG5h" value="TypeHintExpression" />
-    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
-    <property role="EcuMT" value="1199964756070" />
-    <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
-    <node concept="1TJgyj" id="htzuj6W" role="1TKVEi">
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="expression" />
-      <property role="20lbJX" value="fLJekj4/1" />
-      <property role="IQ2ns" value="1199964762556" />
-      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
-    </node>
-    <node concept="1TJgyj" id="htzukip" role="1TKVEi">
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="typeHint" />
-      <property role="20lbJX" value="fLJekj4/1" />
-      <property role="IQ2ns" value="1199964767385" />
-      <ref role="20lvS9" to="tpee:fz3vP1H" resolve="Type" />
+    <node concept="PrWs8" id="4YxXGhSATxH" role="PzmwI">
+      <ref role="PrY4T" to="tpee:hqOqG0K" resolve="IOperation" />
     </node>
   </node>
   <node concept="1TIwiD" id="hweJtmO">
@@ -660,6 +643,37 @@
       <property role="20kJfa" value="expression" />
       <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="2SO3lBM81WG">
+    <property role="EcuMT" value="3329300704499081004" />
+    <property role="TrG5h" value="InternalLambdaExpression" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
+    <node concept="1TJgyj" id="2SO3lBM826m" role="1TKVEi">
+      <property role="IQ2ns" value="3329300704499081622" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="returnType" />
+      <ref role="20lvS9" to="tpee:fz3vP1H" resolve="Type" />
+    </node>
+    <node concept="1TJgyj" id="htbW2KO" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="parameter" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
+      <property role="IQ2ns" value="1199569906740" />
+      <ref role="20lvS9" to="tpee:fz7vLUk" resolve="ParameterDeclaration" />
+    </node>
+    <node concept="1TJgyj" id="htbW58J" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="body" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="1199569916463" />
+      <ref role="20lvS9" to="tpee:fzclF80" resolve="StatementList" />
+    </node>
+    <node concept="PrWs8" id="3_DeNwNwfaW" role="PzmwI">
+      <ref role="PrY4T" to="tpee:i2fhoOR" resolve="IMethodLike" />
+    </node>
+    <node concept="PrWs8" id="52yXSKNkUaf" role="PzmwI">
+      <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
     </node>
   </node>
 </model>

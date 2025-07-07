@@ -17,11 +17,11 @@ package jetbrains.mps.ide.devkit.util;
 
 import jetbrains.mps.module.ModuleDeleteHelper;
 import jetbrains.mps.project.Project;
+import jetbrains.mps.project.ProjectBase;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.util.IStatus;
 import jetbrains.mps.util.Status;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import java.util.ArrayList;
@@ -35,8 +35,7 @@ import java.util.stream.Collectors;
  * Instead of {@link #delete(Generator)} method {@link jetbrains.mps.workbench.actions.module.DeleteModuleHelper#deleteModules(List, boolean, boolean)} can be used.
  * Method {@link #canDelete(Generator)} will be implemented either in {@link jetbrains.mps.workbench.actions.module.DeleteModuleHelper} or in some extension.
  */
-@Deprecated
-@ToRemove(version = 3.4)
+@Deprecated(since = "3.4", forRemoval = true)
 public class DeleteGeneratorHelper {
   private final Project myProject;
   private boolean myDeleteFiles;
@@ -85,6 +84,7 @@ public class DeleteGeneratorHelper {
       return canDelete;
     }
     new ModuleDeleteHelper(myProject).deleteModules(Collections.singletonList(generator), false, myDeleteFiles);
+    ((ProjectBase)myProject).save();
     return new Status.OK();
   }
 }

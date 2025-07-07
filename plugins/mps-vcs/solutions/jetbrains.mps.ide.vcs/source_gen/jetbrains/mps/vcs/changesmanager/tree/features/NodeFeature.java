@@ -5,42 +5,41 @@ package jetbrains.mps.vcs.changesmanager.tree.features;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.module.SRepository;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.language.SProperty;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.smodel.SNodePointer;
 
-@GeneratedClass(node = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)/5060092229902868493", model = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)")
+@GeneratedClass(nodeId = "5060092229902868493", model = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)")
 public class NodeFeature extends AbstractNodeFeature {
   public NodeFeature(SNodeReference nodePointer) {
-    super(nodePointer);
+    this(nodePointer, null);
   }
-  @Nullable
+
+  public NodeFeature(SNodeReference nodePointer, @Nullable SNodeId rootId) {
+    super(nodePointer, calcParentFeature(nodePointer, rootId));
+  }
+
+  @NotNull
+  private static Feature calcParentFeature(SNodeReference nodePointer, @Nullable SNodeId rootId) {
+    return ((rootId == null || rootId.equals(nodePointer.getNodeId())) ? new ModelFeature(nodePointer.getModelReference()) : new NodeFeature(new SNodePointer(nodePointer.getModelReference(), rootId), rootId));
+  }
+
   @Override
-  protected Feature getParent(SRepository repo) {
-    SNode node = getNodePointer().resolve(repo);
-    SNode parentNode = SNodeOperations.getParent(node);
-    if (parentNode == null) {
-      String virtualPackage = SPropertyOperations.getString(node, PROPS.virtualPackage$EkXl);
-      if ((virtualPackage == null || virtualPackage.length() == 0)) {
-        return null;
-      } else {
-        return new VirtualPackageFeature(getModelReference(), virtualPackage);
-      }
-    }
-    return new NodeFeature(new SNodePointer(parentNode));
+  public int hashCode() {
+    return getNodePointer().hashCode() * 13;
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj instanceof NodeFeature) {
+      return getNodePointer().equals(((NodeFeature) obj).getNodePointer());
+    }
+    return false;
+  }
+
   @Override
   @NotNull
   public String toString() {
     return "Node {" + getNodePointerString() + "}";
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty virtualPackage$EkXl = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
   }
 }

@@ -5,7 +5,6 @@ package jetbrains.mps.nodeEditor.cells.jetpad;
 import jetbrains.jetpad.model.property.ValueProperty;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.smodel.NodeReadAccessCasterInEditor;
 
 public abstract class ReadableModelProperty<T> extends ValueProperty<T> {
@@ -27,15 +26,7 @@ public abstract class ReadableModelProperty<T> extends ValueProperty<T> {
   }
 
   private T safeGetModelPropertyValue() {
-    return new ModelAccessHelper(myEditorContext.getRepository()).runReadAction(new Computable<T>() {
-      public T compute() {
-        return NodeReadAccessCasterInEditor.runCleanPropertyAccessAction(new Computable<T>() {
-          public T compute() {
-            return getModelPropertyValue();
-          }
-        });
-      }
-    });
+    return new ModelAccessHelper(myEditorContext.getRepository()).runReadAction(() -> NodeReadAccessCasterInEditor.runCleanPropertyAccessAction(() -> getModelPropertyValue()));
   }
 
   protected abstract T getModelPropertyValue();

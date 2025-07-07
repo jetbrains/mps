@@ -26,17 +26,14 @@ import jetbrains.mps.lang.editor.cellProviders.PropertyCellContext;
 import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.smodel.behavior.ModuleReferenceExpression__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -82,7 +79,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.core.editor.alias");
     Style style = new StyleImpl();
-    new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeyWordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.PADDING_RIGHT, new Padding(0.0, Measure.SPACES));
     style.set(StyleAttributes.STRIKE_OUT, true);
     editorCell.getStyle().putAll(style);
@@ -92,7 +89,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "/");
     editorCell.setCellId("Constant_c6z1wa_b0");
     Style style = new StyleImpl();
-    new LeftParenAfterNameStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new LeftParenAfterNameStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -107,12 +104,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setCellId("property_name");
       editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new ModuleReferenceExpression_generic_cellMenu_c6z1wa_a0c0(), new SChildSubstituteInfoPartEx(editorCell)}));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
-      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-        }
-      });
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
+      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
       if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
         EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
         return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);
@@ -126,23 +119,22 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public ModuleReferenceExpression_generic_cellMenu_c6z1wa_a0c0() {
     }
 
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
       return (List<SModule>) ModuleReferenceExpression__BehaviorDescriptor.getVisibleModules_id3wj3sjzSgF$.invoke(node);
+
     }
-    protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      this.handleAction_impl((SModule) parameterObject, node, model, operationContext, editorContext);
+    protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      this.handleAction_impl((SModule) parameterObject, node, model, editorContext);
     }
-    public void handleAction_impl(SModule parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    private void handleAction_impl(SModule parameterObject, SNode node, SModel model, EditorContext editorContext) {
       String mr = PersistenceFacade.getInstance().asString(parameterObject.getModuleReference().getModuleId());
       SPropertyOperations.set(node, PROPS.moduleId$cMi1, mr);
     }
-    public boolean isReferentPresentation() {
+    protected boolean isReferentPresentation() {
       return false;
     }
-    public String getMatchingText(Object parameterObject) {
-      return this.getMatchingText_internal((SModule) parameterObject);
-    }
-    public String getMatchingText_internal(SModule parameterObject) {
+    protected String getMatchingText(Object _parameterObject) {
+      final SModule parameterObject = (SModule) _parameterObject;
       return parameterObject.getModuleName();
     }
 
@@ -155,7 +147,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "/");
     editorCell.setCellId("Constant_c6z1wa_d0");
     Style style = new StyleImpl();
-    new RightParenStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new RightParenStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;

@@ -17,10 +17,8 @@ import jetbrains.mps.lang.typesystem.runtime.OverloadedOpsProvider_OneTypeSpecif
 import jetbrains.mps.errors.IRuleConflictWarningProducer;
 import jetbrains.mps.lang.typesystem.runtime.OverloadedOperationsTypesProvider;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.smodel.SReference;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -173,6 +171,14 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
+      InferenceRule_Runtime inferenceRule = new typeof_AbstractCreator_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      InferenceRule_Runtime inferenceRule = new typeof_AbstractLongLiteral_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
       InferenceRule_Runtime inferenceRule = new typeof_AbstractUnaryNumberOperation_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
@@ -301,11 +307,19 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
+      InferenceRule_Runtime inferenceRule = new typeof_FormatOperation_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
       InferenceRule_Runtime inferenceRule = new typeof_GenereicVarialeExpression_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
       InferenceRule_Runtime inferenceRule = new typeof_GetAccessor_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      InferenceRule_Runtime inferenceRule = new typeof_IInferredExpression_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
@@ -326,10 +340,6 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       InferenceRule_Runtime inferenceRule = new typeof_LocalPropertyReference_InferenceRule();
-      this.myInferenceRules.add(inferenceRule);
-    }
-    {
-      InferenceRule_Runtime inferenceRule = new typeof_LongLiteral_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
@@ -378,6 +388,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       InferenceRule_Runtime inferenceRule = new typeof_StaticMethodCall_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      InferenceRule_Runtime inferenceRule = new typeof_StaticMethodCallOperation_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
@@ -430,14 +444,6 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       NonTypesystemRule_Runtime nonTypesystemRule = new CheckExcessTypeCasts_NonTypesystemRule();
-      this.myNonTypesystemRules.add(nonTypesystemRule);
-    }
-    {
-      NonTypesystemRule_Runtime nonTypesystemRule = new CheckExtendedClassIsImported_NonTypesystemRule();
-      this.myNonTypesystemRules.add(nonTypesystemRule);
-    }
-    {
-      NonTypesystemRule_Runtime nonTypesystemRule = new CheckForReexportExtendedClassifier_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
@@ -597,6 +603,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_ClassConceptAbstractAndFinal_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_ClassCreator_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
@@ -617,6 +627,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_ClassifierMethodMemberVisibilityInInterfaces_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_ClassifierMethodsHierarchy_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
@@ -625,11 +639,11 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
-      NonTypesystemRule_Runtime nonTypesystemRule = new check_ClassifierOverridingMethods_NonTypesystemRule();
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_ClassifierType_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
-      NonTypesystemRule_Runtime nonTypesystemRule = new check_ClassifierType_NonTypesystemRule();
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_ClassifierType_UseOfRawType_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
@@ -685,6 +699,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_DuplicateCase_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_DuplicateClassifierNames_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
@@ -706,6 +724,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_DynamicReference_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_ElsifClause_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
@@ -746,6 +768,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_FieldIsNeverUsedOrAssigned_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_FieldReferenceOperationMustBeStatic_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
@@ -797,7 +823,15 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_HexLongLiteral_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_IMethodCallTypeArgs_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_IThrowCheckedExceptions_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
@@ -833,7 +867,19 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_InstanceMethodCallOperationMustBeStatic_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_InstanceMethodDeclarationForAbstractPrivateModifiers_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_InstanceMethodDeclarationNeedsBody_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_InstanceMethodDeclarationNeedsVisibility_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
@@ -917,6 +963,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_PlusExpression_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_PostfixDecrementExpression_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
@@ -965,6 +1015,14 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_StaticFieldReference_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_StaticFieldReferenceAccessOperation_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_StaticFinalFieldNotAssigned_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
@@ -986,6 +1044,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_StaticInterfaceMethodsHaveAllowedModifiers_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_StaticMethodCallOperationMustBeInstance_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
@@ -1014,6 +1076,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_ThisExpression_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_ThrowStatementInFinally_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
@@ -1097,10 +1163,6 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
-      NonTypesystemRule_Runtime nonTypesystemRule = new check_UnusedLocalVariableDeclaration_NonTypesystemRule();
-      this.myNonTypesystemRules.add(nonTypesystemRule);
-    }
-    {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_UnusedPackageClassifier_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
@@ -1134,6 +1196,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_VariableAssignedToItself_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_VariableReferenceToStaticField_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
@@ -1341,11 +1407,27 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myComparisonRules.add(comparisonRule);
     }
     {
+      ComparisonRule_Runtime comparisonRule = new bound_comparableWith_lbt_ComparisonRule();
+      this.myComparisonRules.add(comparisonRule);
+    }
+    {
+      ComparisonRule_Runtime comparisonRule = new bound_comparableWith_ubt_ComparisonRule();
+      this.myComparisonRules.add(comparisonRule);
+    }
+    {
       ComparisonRule_Runtime comparisonRule = new char_compatibleWith_byte_ComparisonRule();
       this.myComparisonRules.add(comparisonRule);
     }
     {
+      ComparisonRule_Runtime comparisonRule = new lbt_comparableWith_bound_ComparisonRule();
+      this.myComparisonRules.add(comparisonRule);
+    }
+    {
       ComparisonRule_Runtime comparisonRule = new typevar_comparable_with_classifier_type_ComparisonRule();
+      this.myComparisonRules.add(comparisonRule);
+    }
+    {
+      ComparisonRule_Runtime comparisonRule = new ubt_comparableWith_bound_ComparisonRule();
       this.myComparisonRules.add(comparisonRule);
     }
     {
@@ -1354,6 +1436,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       InequationReplacementRule_Runtime eliminationRule = new ClassifierType_NOT_subtypeOf_ClassifierType_InequationReplacementRule();
+      this.myInequationReplacementRules.add(eliminationRule);
+    }
+    {
+      InequationReplacementRule_Runtime eliminationRule = new InferredClassifierType_subtypeOf_ClassifierType_InequationReplacementRule();
       this.myInequationReplacementRules.add(eliminationRule);
     }
     {
@@ -1401,7 +1487,7 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
           return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(contextNode, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)).contains(variable);
         }
         public SNode convert(SNode contextNode, String role, SNode variable, boolean isAggregation) {
-          return _quotation_createNode_3ist9o_a0a1a0a0a0dn0a();
+          return _quotation_createNode_3ist9o_a0a1a0a0a0zn0a();
         }
       };
       this.myVariableConverters.add(converter);
@@ -1434,7 +1520,7 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     {
       OverloadedOpsProvider_OneTypeSpecified provider = new OverloadedOpsProvider_OneTypeSpecified() {
         {
-          this.myOperandType = _quotation_createNode_3ist9o_a0a0a0a0a0a0a943a0();
+          this.myOperandType = _quotation_createNode_3ist9o_a0a0a0a0a0a0a173a0();
           this.myOperationConcept = CONCEPTS.PlusExpression$k0;
           this.myTypeIsExact = false;
           this.myIsStrong = false;
@@ -1442,7 +1528,7 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
           this.myRuleNodeId = "1533154877881631948";
         }
         public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
-          return _quotation_createNode_3ist9o_a0a1a0a0a0a0ln0a();
+          return _quotation_createNode_3ist9o_a0a1a0a0a0a0ho0a();
         }
         @Override
         public void reportConflict(IRuleConflictWarningProducer producer) {
@@ -1476,17 +1562,17 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       producer.produceWarning(myRuleModelId, myRuleNodeId);
     }
     private static SNode _quotation_createNode_3ist9o_a0a0a0b() {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_1 = null;
-      quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, "jetbrains.mps.baseLanguage.blTypes"), 0x10de9cbf8e8L, "PrimitiveTypeRef")).getResult();
-      quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor"), SReference.create(MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor"), quotedNode_1, facade.createModelReference("r:00000000-0000-4000-0000-011c895902de(jetbrains.mps.baseLanguage.blTypes.primitiveDescriptors)"), facade.createNodeId("1196683729865")));
+      SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, "jetbrains.mps.baseLanguage.blTypes"), 0x10de9cbf8e8L, "PrimitiveTypeRef"));
+      quotedNode_1 = nb.getResult();
+      nb.setReference(MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor"), "r:00000000-0000-4000-0000-011c895902de(jetbrains.mps.baseLanguage.blTypes.primitiveDescriptors)/1196683729865");
       return quotedNode_1;
     }
     private static SNode _quotation_createNode_3ist9o_a0a1a0b() {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_1 = null;
-      quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, "jetbrains.mps.baseLanguage.blTypes"), 0x10de9cbf8e8L, "PrimitiveTypeRef")).getResult();
-      quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor"), SReference.create(MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor"), quotedNode_1, facade.createModelReference("r:00000000-0000-4000-0000-011c895902de(jetbrains.mps.baseLanguage.blTypes.primitiveDescriptors)"), facade.createNodeId("1196683729865")));
+      SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, "jetbrains.mps.baseLanguage.blTypes"), 0x10de9cbf8e8L, "PrimitiveTypeRef"));
+      quotedNode_1 = nb.getResult();
+      nb.setReference(MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor"), "r:00000000-0000-4000-0000-011c895902de(jetbrains.mps.baseLanguage.blTypes.primitiveDescriptors)/1196683729865");
       return quotedNode_1;
     }
   }
@@ -1510,23 +1596,23 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       producer.produceWarning(myRuleModelId, myRuleNodeId);
     }
     private static SNode _quotation_createNode_3ist9o_a0a0a0c() {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_1 = null;
-      quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, "jetbrains.mps.baseLanguage.blTypes"), 0x10de9cbf8e8L, "PrimitiveTypeRef")).getResult();
-      quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor"), SReference.create(MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor"), quotedNode_1, facade.createModelReference("r:00000000-0000-4000-0000-011c895902de(jetbrains.mps.baseLanguage.blTypes.primitiveDescriptors)"), facade.createNodeId("1196683729865")));
+      SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, "jetbrains.mps.baseLanguage.blTypes"), 0x10de9cbf8e8L, "PrimitiveTypeRef"));
+      quotedNode_1 = nb.getResult();
+      nb.setReference(MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor"), "r:00000000-0000-4000-0000-011c895902de(jetbrains.mps.baseLanguage.blTypes.primitiveDescriptors)/1196683729865");
       return quotedNode_1;
     }
     private static SNode _quotation_createNode_3ist9o_a0a1a0c() {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_1 = null;
-      quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, "jetbrains.mps.baseLanguage.blTypes"), 0x10de9cbf8e8L, "PrimitiveTypeRef")).getResult();
-      quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor"), SReference.create(MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor"), quotedNode_1, facade.createModelReference("r:00000000-0000-4000-0000-011c895902de(jetbrains.mps.baseLanguage.blTypes.primitiveDescriptors)"), facade.createNodeId("1196683729865")));
+      SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, "jetbrains.mps.baseLanguage.blTypes"), 0x10de9cbf8e8L, "PrimitiveTypeRef"));
+      quotedNode_1 = nb.getResult();
+      nb.setReference(MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor"), "r:00000000-0000-4000-0000-011c895902de(jetbrains.mps.baseLanguage.blTypes.primitiveDescriptors)/1196683729865");
       return quotedNode_1;
     }
     private static SNode _quotation_createNode_3ist9o_a0a1c() {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_1 = null;
-      quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d6513eL, "BooleanType")).getResult();
+      SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d6513eL, "BooleanType"));
+      quotedNode_1 = nb.getResult();
       return quotedNode_1;
     }
   }
@@ -1557,17 +1643,17 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       producer.produceWarning(myRuleModelId, myRuleNodeId);
     }
     private static SNode _quotation_createNode_3ist9o_a0a0a0d() {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_1 = null;
-      quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, "jetbrains.mps.baseLanguage.blTypes"), 0x10de9cbf8e8L, "PrimitiveTypeRef")).getResult();
-      quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor"), SReference.create(MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor"), quotedNode_1, facade.createModelReference("r:00000000-0000-4000-0000-011c895902de(jetbrains.mps.baseLanguage.blTypes.primitiveDescriptors)"), facade.createNodeId("1196683729865")));
+      SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, "jetbrains.mps.baseLanguage.blTypes"), 0x10de9cbf8e8L, "PrimitiveTypeRef"));
+      quotedNode_1 = nb.getResult();
+      nb.setReference(MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor"), "r:00000000-0000-4000-0000-011c895902de(jetbrains.mps.baseLanguage.blTypes.primitiveDescriptors)/1196683729865");
       return quotedNode_1;
     }
     private static SNode _quotation_createNode_3ist9o_a0b0a3() {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_1 = null;
-      quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
-      quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Object")));
+      SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+      quotedNode_1 = nb.getResult();
+      nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~Object");
       return quotedNode_1;
     }
   }
@@ -1595,17 +1681,17 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       producer.produceWarning(myRuleModelId, myRuleNodeId);
     }
     private static SNode _quotation_createNode_3ist9o_a0a0a0e() {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_1 = null;
-      quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, "jetbrains.mps.baseLanguage.blTypes"), 0x10de9cbf8e8L, "PrimitiveTypeRef")).getResult();
-      quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor"), SReference.create(MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor"), quotedNode_1, facade.createModelReference("r:00000000-0000-4000-0000-011c895902de(jetbrains.mps.baseLanguage.blTypes.primitiveDescriptors)"), facade.createNodeId("1196683729865")));
+      SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, "jetbrains.mps.baseLanguage.blTypes"), 0x10de9cbf8e8L, "PrimitiveTypeRef"));
+      quotedNode_1 = nb.getResult();
+      nb.setReference(MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor"), "r:00000000-0000-4000-0000-011c895902de(jetbrains.mps.baseLanguage.blTypes.primitiveDescriptors)/1196683729865");
       return quotedNode_1;
     }
     private static SNode _quotation_createNode_3ist9o_a0b0a4() {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_1 = null;
-      quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
-      quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Object")));
+      SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+      quotedNode_1 = nb.getResult();
+      nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~Object");
       return quotedNode_1;
     }
   }
@@ -1629,15 +1715,15 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       producer.produceWarning(myRuleModelId, myRuleNodeId);
     }
     private static SNode _quotation_createNode_3ist9o_a0a0a5() {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_1 = null;
-      quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d6513eL, "BooleanType")).getResult();
+      SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d6513eL, "BooleanType"));
+      quotedNode_1 = nb.getResult();
       return quotedNode_1;
     }
     private static SNode _quotation_createNode_3ist9o_a0b0a5() {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_1 = null;
-      quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d6513eL, "BooleanType")).getResult();
+      SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d6513eL, "BooleanType"));
+      quotedNode_1 = nb.getResult();
       return quotedNode_1;
     }
   }
@@ -1661,16 +1747,16 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       producer.produceWarning(myRuleModelId, myRuleNodeId);
     }
     private static SNode _quotation_createNode_3ist9o_a0a0a6() {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_1 = null;
-      quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType")).getResult();
+      SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"));
+      quotedNode_1 = nb.getResult();
       return quotedNode_1;
     }
     private static SNode _quotation_createNode_3ist9o_a0b0a6() {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_1 = null;
-      quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
-      quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Object")));
+      SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+      quotedNode_1 = nb.getResult();
+      nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~Object");
       return quotedNode_1;
     }
   }
@@ -1694,41 +1780,41 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       producer.produceWarning(myRuleModelId, myRuleNodeId);
     }
     private static SNode _quotation_createNode_3ist9o_a0a0a7() {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_1 = null;
-      quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d6513eL, "BooleanType")).getResult();
+      SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d6513eL, "BooleanType"));
+      quotedNode_1 = nb.getResult();
       return quotedNode_1;
     }
     private static SNode _quotation_createNode_3ist9o_a0b0a7() {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_1 = null;
-      quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d6513eL, "BooleanType")).getResult();
+      SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d6513eL, "BooleanType"));
+      quotedNode_1 = nb.getResult();
       return quotedNode_1;
     }
     private static SNode _quotation_createNode_3ist9o_a0a1h() {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_1 = null;
-      quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d6513eL, "BooleanType")).getResult();
+      SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d6513eL, "BooleanType"));
+      quotedNode_1 = nb.getResult();
       return quotedNode_1;
     }
   }
-  private static SNode _quotation_createNode_3ist9o_a0a1a0a0a0dn0a() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
+  private static SNode _quotation_createNode_3ist9o_a0a1a0a0a0zn0a() {
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
-    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Object")));
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+    quotedNode_1 = nb.getResult();
+    nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~Object");
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_3ist9o_a0a0a0a0a0a0a943a0() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
+  private static SNode _quotation_createNode_3ist9o_a0a0a0a0a0a0a173a0() {
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"));
+    quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_3ist9o_a0a1a0a0a0a0ln0a() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
+  private static SNode _quotation_createNode_3ist9o_a0a1a0a0a0a0ho0a() {
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"));
+    quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
 

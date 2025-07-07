@@ -4,26 +4,26 @@ package jetbrains.mps.lang.editor.menus.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import java.util.List;
 import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuItem;
 import jetbrains.mps.smodel.SNodePointer;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.openapi.editor.menus.transformation.ActionItem;
 
 @MPSLaunch
 public class LoadNamedMenu_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(LoadNamedMenu_Test.class, "${mps_home}", "r:4f8193a2-048e-4ddf-b505-dfca00e8c910(jetbrains.mps.lang.editor.menus.tests@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(LoadNamedMenu_Test.class).projectPath(null).modelRef("r:4f8193a2-048e-4ddf-b505-dfca00e8c910(jetbrains.mps.lang.editor.menus.tests@tests)").reopenProject(false).build());
 
   public LoadNamedMenu_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -42,11 +42,7 @@ public class LoadNamedMenu_Test extends BaseTransformationTest {
       initEditorComponent("6202297022023746489", "");
       List<TransformationMenuItem> items = MenuLoadingUtils.loadNamedMenu(getEditorComponent(), new SNodePointer("r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)", "6202297022023752048"), "test location");
 
-      Assert.assertTrue("named menu should contain an item labelled 'named menu item'", ListSequence.fromList(items).any(new IWhereFilter<TransformationMenuItem>() {
-        public boolean accept(TransformationMenuItem it) {
-          return it instanceof ActionItem && "named menu item".equals(((ActionItem) it).getLabelText(""));
-        }
-      }));
+      Assert.assertTrue("named menu should contain an item labelled 'named menu item'", ListSequence.fromList(items).any((it) -> it instanceof ActionItem && "named menu item".equals(((ActionItem) it).getLabelText(""))));
     }
   }
 }

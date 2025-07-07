@@ -73,11 +73,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public ReductionRuleCondition getReductionRuleCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(rrcMethods.containsKey(id))) {
-      return super.getReductionRuleCondition(identity);
-    }
-    return rrcMethods.get(id);
+    ReductionRuleCondition query = identity.forTemplateNode(rrcMethods);
+    return (query != null ? query : super.getReductionRuleCondition(identity));
   }
   private static class RRC implements ReductionRuleCondition {
     private final int methodKey;
@@ -101,18 +98,15 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
     rtqMethods.put("2186761456951199377", new RTQ(0, "ID"));
-    rtqMethods.put("2186761456951199389", new RTQ(1, "RuleClass"));
+    rtqMethods.put("2186761456951199389", new RTQ(1, "DescriptorClass.RuleClass"));
     rtqMethods.put("24399255755804125", new RTQ(2, "ID"));
-    rtqMethods.put("24399255755804135", new RTQ(3, "RuleClass"));
+    rtqMethods.put("24399255755804135", new RTQ(3, "DescriptorClass.RuleClass"));
   }
   @NotNull
   @Override
   public ReferenceTargetQuery getReferenceTargetQuery(@NotNull QueryKey queryKey) {
-    final String id = queryKey.getTemplateNode().getNodeId().toString();
-    if (!(rtqMethods.containsKey(id))) {
-      return super.getReferenceTargetQuery(queryKey);
-    }
-    return rtqMethods.get(id);
+    ReferenceTargetQuery query = queryKey.forTemplateNode(rtqMethods);
+    return (query != null ? query : super.getReferenceTargetQuery(queryKey));
   }
   private static class RTQ extends ReferenceTargetQuery.Base {
     private final int methodKey;

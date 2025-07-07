@@ -8,9 +8,7 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
@@ -35,11 +33,7 @@ public class _Interface_Extends_Delete_Last {
             return;
           }
           ListSequence.fromList(SLinkOperations.getChildren(clazz, LINKS.extendedInterface$PDVO)).clear();
-          ListSequence.fromList(AttributeOperations.getAttributeList(clazz, new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.extendedInterface$PDVO))).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode it) {
-              SNodeOperations.deleteNode(it);
-            }
-          });
+          ListSequence.fromList(new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.extendedInterface$PDVO).list(clazz)).visitAll((it) -> SNodeOperations.deleteNode(it));
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, clazz, "OpenBraceInterfaceCell", 0);
         } else {
           SNodeOperations.deleteNode(node);
@@ -53,11 +47,11 @@ public class _Interface_Extends_Delete_Last {
     CellAction originalDelete = editorCell.getAction(CellActionType.DELETE);
     CellAction originalBackspace = editorCell.getAction(CellActionType.BACKSPACE);
 
-    // set actions that were actually defined 
+    // set actions that were actually defined
     setDefinedCellActions(editorCell, node, context);
 
-    // If we set a DELETE action but no BACKSPACE action, 
-    // use the DELETE action for BACKSPACE as well. 
+    // If we set a DELETE action but no BACKSPACE action,
+    // use the DELETE action for BACKSPACE as well.
     CellAction delete = editorCell.getAction(CellActionType.DELETE);
     CellAction backspace = editorCell.getAction(CellActionType.BACKSPACE);
     if (delete != originalDelete && backspace == originalBackspace) {
@@ -74,17 +68,17 @@ public class _Interface_Extends_Delete_Last {
   private static final Object OB = new Object();
 
   public static void setDefinedCellActions(EditorCell editorCell, SNode node, EditorContext context) {
-    // set cell actions from all imported action maps 
+    // set cell actions from all imported action maps
 
-    // set cell actions defined directly in this action map 
+    // set cell actions defined directly in this action map
     editorCell.setAction(CellActionType.DELETE, createAction_DELETE(node));
   }
 
   public static void setDefinedCellActionsOfType(EditorCell editorCell, SNode node, EditorContext context, CellActionType actionType) {
 
-    // set cell action(s) of the given type from imported action maps 
+    // set cell action(s) of the given type from imported action maps
 
-    // set cell action of the given type defined directly in this action map 
+    // set cell action of the given type defined directly in this action map
     if (Objects.equals(actionType, CellActionType.DELETE)) {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }

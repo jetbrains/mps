@@ -50,7 +50,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.SemicolonS
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "stop");
     editorCell.setCellId("Constant_ukv9r_a0");
     Style style = new StyleImpl();
-    new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeyWordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.PADDING_RIGHT, new Padding(0.0, Measure.SPACES));
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
@@ -60,7 +60,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.SemicolonS
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ";");
     editorCell.setCellId("Constant_ukv9r_b0");
     Style style = new StyleImpl();
-    new SemicolonStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new SemicolonStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;

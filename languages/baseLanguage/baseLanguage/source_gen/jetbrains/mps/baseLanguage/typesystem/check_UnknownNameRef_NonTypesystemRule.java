@@ -23,7 +23,7 @@ public class check_UnknownNameRef_NonTypesystemRule extends AbstractNonTypesyste
   }
   public void applyRule(final SNode unkName, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(unkName)), CONCEPTS.UnknownNameRef$WL))) {
-      // it's subconcept, leave the work to them 
+      // it's subconcept, leave the work to them
       return;
     }
 
@@ -32,7 +32,7 @@ public class check_UnknownNameRef_NonTypesystemRule extends AbstractNonTypesyste
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(unkName, "Resolved qualified name reference", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8504030010050377272", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ResolvedUnknownNode_QuickFix", true);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ResolvedUnknownNode_QuickFix", "8504030010050377275", true);
           intentionProvider.putArgument("unknownNode", unkName);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }

@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.List;
@@ -19,7 +18,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.migration.util.NodeReferenceUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -33,7 +31,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class MoveContainmentLink__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741baL, "jetbrains.mps.lang.migration.structure.MoveContainmentLink");
 
-  public static final SMethod<Void> doDeprecateOldNode_id1NHZk5hiKRu = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("doDeprecateOldNode").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1NHZk5hiKRu").build(SMethodBuilder.createJavaParameter(SRepository.class, ""));
+  public static final SMethod<Void> doDeprecateOldNode_id1NHZk5hiKRu = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("doDeprecateOldNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2084600659520982494L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2(SMethodBuilder.createJavaParameter(SRepository.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(doDeprecateOldNode_id1NHZk5hiKRu);
 
@@ -45,7 +43,7 @@ public final class MoveContainmentLink__BehaviorDescriptor extends BaseBHDescrip
     SLinkOperations.setTarget(MoveNodeSpecialization__BehaviorDescriptor.getMyMoveNodeItem_id4yRsQKnq58F.invoke(__thisNode__), LINKS.fromNode$UG1d, NodeReferenceUtil.makeDirect(from));
     SNode to = SNodeOperations.cast(MoveNodeSpecialization__BehaviorDescriptor.getTo_id1NHZk5hj1ls.invoke(__thisNode__, repository), CONCEPTS.LinkDeclaration$1p);
     SPropertyOperations.plusAssignStringProp(from, PROPS.role$Nsjf, "_old");
-    AttributeOperations.setAttribute(from, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV), createDeprecatedNodeAnnotation_8j70jv_a0e0a("The link was moved to concept \"" + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.cast(SNodeOperations.getParent(to), CONCEPTS.AbstractConceptDeclaration$KA)) + "\""));
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV).set(from, createDeprecatedNodeAnnotation_8j70jv_a0e0a("The link was moved to concept \"" + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.cast(SNodeOperations.getParent(to), CONCEPTS.AbstractConceptDeclaration$KA)) + "\""));
   }
 
   /*package*/ MoveContainmentLink__BehaviorDescriptor() {

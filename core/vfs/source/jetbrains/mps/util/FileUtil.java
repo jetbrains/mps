@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,11 @@
  */
 package jetbrains.mps.util;
 
-import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.vfs.util.PathFormatChecker;
 import jetbrains.mps.vfs.util.PathUtil;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -47,7 +45,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 public class FileUtil {
-  private static final Logger LOG = LogManager.getLogger(FileUtil.class);
+  private static final Logger LOG = Logger.getLogger(FileUtil.class);
 
   private static final String[] IGNORED_DIRS = new String[]{".svn", ".git", "_svn"};
   public static final String DEFAULT_CHARSET_NAME = "UTF-8";
@@ -198,6 +196,7 @@ public class FileUtil {
 
   @NotNull
   //replaces /xx/.. with /. Use with already-normalized paths
+  // FIXME a/b//c/../../x gives a/b/x, not a/x, as // is treated as fs level, which is wrong, IMO.
   public static String resolveParentDirs(@NotNull String path) {
     new PathFormatChecker(path).absolute().osIndependentPath();
 
@@ -219,7 +218,7 @@ public class FileUtil {
         }
       }
       currentPath = currentPath.replaceFirst("/\\.\\./", "/");
-      LOG.warn("Unexpected path: can't get parent: " + path);
+      LOG.warning("Unexpected path: can't get parent: " + path);
     }
 
     if (currentPath.endsWith("/") && !PathUtil.isRoot(currentPath)) {
@@ -231,9 +230,15 @@ public class FileUtil {
   // poor version of normalization
   // does not consider '..'; will be provided in the future release within new vfs API
   private static String normalize0(@NotNull String path, @NotNull String separator) {
+    boolean isUNCPath = isUncPath(path);
     path = path.replaceAll("/+", "/").replaceAll("\\\\+", "\\\\");
     if (path.endsWith(separator + DOT)) {
       path = path.substring(0, path.length() - 1);
+    }
+    // fixme [apyshkin] awful consideration of UNC paths, normalization must be done via vfs.Path utilities
+    if (isUNCPath) {
+      assert (path.startsWith("\\") || path.startsWith("/"));
+      path = path.charAt(0) + path; // we just have cut it, lets return it
     }
     if (path.equals("" + DOT)) {
       return "";
@@ -245,6 +250,17 @@ public class FileUtil {
       path = oldPath.replace("\\.\\", "\\").replace("/./", "/");
     } while (oldPath.length() != path.length());
     return path;
+  }
+
+  /*
+   * Copied from {@code com.intellij.openapi.util.io.OSAgnosticPathUtil#isUncPath(String)} along with {@code isSlash(char)}
+   */
+  private static boolean isUncPath(@NotNull String path) {
+    return path.length() > 1 && isSlash(path.charAt(0)) && path.charAt(1) == path.charAt(0);
+  }
+
+  private static boolean isSlash(char c) {
+    return c == '/' || c == '\\';
   }
 
   public static boolean delete(File root) {
@@ -260,6 +276,8 @@ public class FileUtil {
   }
 
   /**
+   * FIXME how come this is the only method that brings IFile dependency here? I had an impression
+   *       this class is more about File, whereas IFileUtil is about IFile?
    * deletes the file and all its parents above which happen to be empty after this file's removal
    *
    * @return true iff the file has been removed
@@ -451,8 +469,7 @@ public class FileUtil {
     return false;
   }
 
-  @Deprecated
-  @ToRemove(version = 2019.1)
+@Deprecated(since = "2019.1", forRemoval = true)
   @NotNull
   public static String getUnixPath(@NotNull String path) {
     return path.replace(Path.WIN_SEPARATOR, Path.UNIX_SEPARATOR);
@@ -470,6 +487,8 @@ public class FileUtil {
    */
   @Deprecated
   public static String getRelativePath(@NotNull String targetPath, @NotNull String basePath, @NotNull String pathSeparator) {
+    // FTR, targetPath["/a/b/c"].startsWith(basePath["/"]) but getRelativePath() fails with exception
+    //      (split gives empty base[] in this case, while target has "" as first element)
     String[] base = basePath.split(Pattern.quote(pathSeparator));
     String[] target = targetPath.split(Pattern.quote(pathSeparator));
 
@@ -557,6 +576,9 @@ public class FileUtil {
     return name;
   }
 
+  /**
+   * without dot
+   */
   @Nullable
   public static String getExtension(@NotNull String name) {
     int i = name.lastIndexOf(DOT);

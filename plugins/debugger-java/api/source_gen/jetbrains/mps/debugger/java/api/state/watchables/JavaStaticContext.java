@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.ArrayList;
 import com.sun.jdi.Field;
 
-@GeneratedClass(node = "r:6ed9d174-6cbf-4569-b2b8-259c43efcbd9(jetbrains.mps.debugger.java.api.state.watchables)/3432969378036015904", model = "r:6ed9d174-6cbf-4569-b2b8-259c43efcbd9(jetbrains.mps.debugger.java.api.state.watchables)")
+@GeneratedClass(nodeId = "3432969378036015904", model = "r:6ed9d174-6cbf-4569-b2b8-259c43efcbd9(jetbrains.mps.debugger.java.api.state.watchables)")
 public class JavaStaticContext extends JavaWatchable implements IWatchable {
   private final ReferenceType myStaticType;
   private final StaticContextValue myValue;

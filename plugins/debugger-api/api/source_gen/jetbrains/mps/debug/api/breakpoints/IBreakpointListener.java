@@ -4,7 +4,7 @@ package jetbrains.mps.debug.api.breakpoints;
 
 import jetbrains.mps.annotations.GeneratedClass;
 
-@GeneratedClass(node = "r:d910d08e-4a00-41f9-ac8b-b7c374586874(jetbrains.mps.debug.api.breakpoints)/4474271214082913209", model = "r:d910d08e-4a00-41f9-ac8b-b7c374586874(jetbrains.mps.debug.api.breakpoints)")
+@GeneratedClass(nodeId = "4474271214082913209", model = "r:d910d08e-4a00-41f9-ac8b-b7c374586874(jetbrains.mps.debug.api.breakpoints)")
 public interface IBreakpointListener {
   void breakpointEnabledStateToggled(IBreakpoint breakpoint, boolean enabled);
 }

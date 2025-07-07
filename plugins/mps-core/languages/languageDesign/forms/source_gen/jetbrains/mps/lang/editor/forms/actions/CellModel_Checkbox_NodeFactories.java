@@ -15,12 +15,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class CellModel_Checkbox_NodeFactories {
   public static class NodeFactory_5347446703373799065 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SLinkOperations.setTarget(newNode, LINKS.ui$innv, SNodeFactoryOperations.createNewNode(CONCEPTS.CheckboxUI_Text$kO, null));
     }
   }
   public static class NodeFactory_5347446703373814501 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SPropertyOperations.assign(newNode, PROPS.falseText$JZn5, "[ ]");
       SPropertyOperations.assign(newNode, PROPS.trueText$JTXI, "[x]");
     }

@@ -81,17 +81,18 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, true);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:469ff9d9-5a2e-4029-9891-ce478377a661(testmaterial.moveConcept.SourceLanguage.structure)/6006982468244407213");
-    b.version(2);
+    b.version(3);
     b.property("prop", 0x535d16ba7fbdf83fL).type(PrimitiveTypeId.STRING).origin("6006982468244994111").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForMoveConcept_B() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testmaterial.moveConcept.SourceLanguage", "MoveConcept_B", 0x3e00419d48014badL, 0xbf2a50479218fb53L, 0x44717f871a8a9L);
     b.class_(false, false, true);
-    b.super_("testmaterial.moveConcept.SourceLanguage.structure.MoveConcept_A", 0x3e00419d48014badL, 0xbf2a50479218fb53L, 0x535d16ba7fb503adL);
+    // extends: testmaterial.moveConcept.SourceLanguage.structure.MoveConcept_A
+    b.super_(0x3e00419d48014badL, 0xbf2a50479218fb53L, 0x535d16ba7fb503adL);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:469ff9d9-5a2e-4029-9891-ce478377a661(testmaterial.moveConcept.SourceLanguage.structure)/1204068184860841");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForMoveConcept_CompletionSuperconcept() {
@@ -99,16 +100,17 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, true, false);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:469ff9d9-5a2e-4029-9891-ce478377a661(testmaterial.moveConcept.SourceLanguage.structure)/689957216393587396");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForMoveConcept_CompletionTest() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testmaterial.moveConcept.SourceLanguage", "MoveConcept_CompletionTest", 0x3e00419d48014badL, 0xbf2a50479218fb53L, 0x40b30fd75e3f0f6fL);
     b.class_(false, false, true);
-    b.super_("testmaterial.moveConcept.SourceLanguage.structure.MoveConcept_CompletionSuperconcept", 0x3e00419d48014badL, 0xbf2a50479218fb53L, 0x993386ec95b6ac4L);
+    // extends: testmaterial.moveConcept.SourceLanguage.structure.MoveConcept_CompletionSuperconcept
+    b.super_(0x3e00419d48014badL, 0xbf2a50479218fb53L, 0x993386ec95b6ac4L);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:469ff9d9-5a2e-4029-9891-ce478377a661(testmaterial.moveConcept.SourceLanguage.structure)/4662087456932171631");
-    b.version(2);
+    b.version(3);
     b.aggregate("child", 0x40b30fd75e3f0f70L).target(0x3e00419d48014badL, 0xbf2a50479218fb53L, 0x993386ec95b6ac4L).optional(true).ordered(true).multiple(true).origin("4662087456932171632").done();
     b.alias("concept239");
     return b.create();
@@ -118,7 +120,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, true);
     b.parent(0x3e00419d48014badL, 0xbf2a50479218fb53L, 0x6d8b1cefdb1b2c3L);
     b.origin("r:469ff9d9-5a2e-4029-9891-ce478377a661(testmaterial.moveConcept.SourceLanguage.structure)/8831258047753184794");
-    b.version(2);
+    b.version(3);
     b.property("moveEnumProperty", 0x7a8eee678820ad27L).type(MetaIdFactory.dataTypeId(0x3e00419d48014badL, 0xbf2a50479218fb53L, 0x7a8eee67881ee9caL)).origin("8831258047753006375").done();
     return b.create();
   }
@@ -127,7 +129,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.interface_();
     b.parent(0x3e00419d48014badL, 0xbf2a50479218fb53L, 0x6d8b1cefdb1b2c3L);
     b.origin("r:469ff9d9-5a2e-4029-9891-ce478377a661(testmaterial.moveConcept.SourceLanguage.structure)/493339661774729917");
-    b.version(2);
+    b.version(3);
     b.property("moveProperty", 0x6d8b1cefdb1b2beL).type(PrimitiveTypeId.STRING).origin("493339661774729918").done();
     return b.create();
   }
@@ -137,14 +139,14 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0x3e00419d48014badL, 0xbf2a50479218fb53L, 0x6d8b1cefdb1b2bdL);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:469ff9d9-5a2e-4029-9891-ce478377a661(testmaterial.moveConcept.SourceLanguage.structure)/493339661774729920");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForMovePropertySupercontainer() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testmaterial.moveConcept.SourceLanguage", "MovePropertySupercontainer", 0x3e00419d48014badL, 0xbf2a50479218fb53L, 0x6d8b1cefdb1b2c3L);
     b.interface_();
     b.origin("r:469ff9d9-5a2e-4029-9891-ce478377a661(testmaterial.moveConcept.SourceLanguage.structure)/493339661774729923");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
 }

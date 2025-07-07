@@ -13,8 +13,6 @@ import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
 public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor {
   private final BHDescriptor myLanguageAspectDescriptor__BehaviorDescriptor = new LanguageAspectDescriptor__BehaviorDescriptor();
-  private final BHDescriptor mySimpleLanguageAspectDescriptor__BehaviorDescriptor = new SimpleLanguageAspectDescriptor__BehaviorDescriptor();
-  private final BHDescriptor myGenerationDescriptor_ByInterface__BehaviorDescriptor = new GenerationDescriptor_ByInterface__BehaviorDescriptor();
   private final BHDescriptor myIAspectConcept__BehaviorDescriptor = new IAspectConcept__BehaviorDescriptor();
 
   public BehaviorAspectDescriptor() {
@@ -25,16 +23,12 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return myGenerationDescriptor_ByInterface__BehaviorDescriptor;
-      case 1:
         return myIAspectConcept__BehaviorDescriptor;
-      case 2:
+      case 1:
         return myLanguageAspectDescriptor__BehaviorDescriptor;
-      case 3:
-        return mySimpleLanguageAspectDescriptor__BehaviorDescriptor;
       default:
     }
     return null;
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x4ac0e6949ea3f2abL), MetaIdFactory.conceptId(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x7bcf8452e0dac0c9L), MetaIdFactory.conceptId(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x2d72cdccef70b086L), MetaIdFactory.conceptId(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x2fa4a8cdf0c9b076L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x7bcf8452e0dac0c9L), MetaIdFactory.conceptId(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x2d72cdccef70b086L)).seal();
 }

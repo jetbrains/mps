@@ -19,7 +19,7 @@ import java.util.Collection;
 import java.io.OutputStream;
 import java.io.InputStream;
 
-@GeneratedClass(node = "r:6bc4612e-813e-4efa-8244-77b9a4da8b36(jetbrains.mps.internal.make.runtime.java)/4328738523548225887", model = "r:6bc4612e-813e-4efa-8244-77b9a4da8b36(jetbrains.mps.internal.make.runtime.java)")
+@GeneratedClass(nodeId = "4328738523548225887", model = "r:6bc4612e-813e-4efa-8244-77b9a4da8b36(jetbrains.mps.internal.make.runtime.java)")
 public class FileProcessor {
   private final List<FileContent> myFilesAndContents = new ArrayList<FileContent>();
   private final List<IFile> myFilesToDelete = new ArrayList<IFile>();
@@ -58,10 +58,10 @@ public class FileProcessor {
   }
 
   private boolean saveContent(FileContent fileContent) {
-    // XXX though it seems more honest to collect all fileContent 
-    //     and make decision whether isChanged right before the write operation 
-    //     I need to tell written/touch at this moment, therefore isChanged is here 
-    //     and no reason to keep the data we aren't going to write anyway 
+    // XXX though it seems more honest to collect all fileContent
+    //     and make decision whether isChanged right before the write operation
+    //     I need to tell written/touch at this moment, therefore isChanged is here
+    //     and no reason to keep the data we aren't going to write anyway
     if (fileContent.isChanged()) {
       myFilesAndContents.add(fileContent);
       return true;
@@ -70,7 +70,7 @@ public class FileProcessor {
   }
 
   public void filesToDelete(Collection<IFile> files) {
-    // FIXME remove? 
+    // FIXME remove?
     myFilesToDelete.addAll(files);
   }
 
@@ -124,7 +124,7 @@ public class FileProcessor {
         return false;
       }
 
-      // stream.read(byte[0]) never gives -1 
+      // stream.read(byte[0]) never gives -1
       assert myContent.length > 0;
 
       byte[] res = new byte[Math.min(1 << 13, myContent.length)];

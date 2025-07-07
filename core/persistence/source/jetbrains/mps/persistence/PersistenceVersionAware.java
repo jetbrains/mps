@@ -15,9 +15,7 @@
  */
 package jetbrains.mps.persistence;
 
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.persistence.ModelFactory;
 
 /**
  * PROVISIONAL API
@@ -37,7 +35,7 @@ import org.jetbrains.mps.openapi.persistence.ModelFactory;
  * free-floating models) or default (for regular SModel with associated DataSource) persistence mechanism.
  * @author Artem Tikhomirov
  */
-public interface PersistenceVersionAware extends SModel {
+public interface PersistenceVersionAware extends SModel, LoadedStrategyAware {
   /**
    * Indicated persistence version for model serialization
    * @param version persistence version number, or <code>-1</code> for undefined/unknown
@@ -49,17 +47,4 @@ public interface PersistenceVersionAware extends SModel {
    * @return persistence version number, or <code>-1</code> when undefined
    */
   int getPersistenceVersion();
-
-  /**
-   * Actual {@link org.jetbrains.mps.openapi.persistence.ModelFactory} which is currently responsible for model load/save,
-   * or <code>null</code> if model knowns nothing about persistence at the moment.
-   * @return model load/save facility or <code>null</code> if undefined
-   *
-   * fixme: kind of strange method considering that the design implies that model and modelfactory are isolated concepts. we have MF#save(SModel, DataSource),
-   * fixme: meaning that any ModelFactory can save any model to the data source it supports [AP]
-   *  [artem] Disagree it's strange and contradicts the model/modelfactory separation. The method doesn't imply one can't save the model using any other suitable
-   *          MF, it just helps to discover MF that served as last known 'proved' model source, the one we read model from.
-   */
-  @Nullable
-  ModelFactory getModelFactory();
 }

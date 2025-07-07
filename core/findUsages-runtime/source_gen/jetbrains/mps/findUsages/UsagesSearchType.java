@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.model.EditableSModel;
 import java.util.HashSet;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
 
-@GeneratedClass(node = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)/8568892084424439650", model = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)")
+@GeneratedClass(nodeId = "8568892084424439650", model = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)")
 /*package*/ class UsagesSearchType extends SearchType<SReference, SNode> {
   /*package*/ UsagesSearchType() {
   }
@@ -46,17 +46,15 @@ import org.jetbrains.mps.openapi.util.SubProgressKind;
         if (monitor.isCanceled()) {
           return;
         }
-        participant.findUsages(current, nodes, consumer, new Consumer<SModel>() {
-          public void consume(SModel sModel) {
-            assert !((sModel instanceof EditableSModel && ((EditableSModel) sModel).isChanged()));
-            next.remove(sModel);
-          }
+        participant.findUsages(current, nodes, consumer, (SModel sModel) -> {
+          assert !(sModel instanceof EditableSModel && ((EditableSModel) sModel).isChanged());
+          next.remove(sModel);
         }, monitor.subTask(1));
         current = next;
       }
       ProgressMonitor subMonitor = monitor.subTask(4, SubProgressKind.DEFAULT);
       subMonitor.start("", current.size() + simpleSearch.size());
-      NodeUsageFinder nf = new NodeUsageFinder(nodes, consumer);
+      NodeUsageLookup nf = new NodeUsageLookup(nodes, consumer);
       showNoFastFindTipIfNeeded(current);
       current.addAll(simpleSearch);
       for (SModel m : current) {

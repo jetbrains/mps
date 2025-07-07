@@ -17,8 +17,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
+import jetbrains.mps.internal.collections.runtime.IterableUtils;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/5033107305426684804", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "5033107305426684804", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class CopyNode_Action extends BaseAction {
   private static final Icon ICON = AllIcons.Actions.Copy;
 
@@ -26,6 +27,7 @@ public class CopyNode_Action extends BaseAction {
     super("Copy", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -68,6 +70,9 @@ public class CopyNode_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    CopyPasteUtil.copyNodesToClipboard(((List<SNode>) MapSequence.fromMap(_params).get("nodes")));
+    CopyPasteUtil.putToClipboard(((List<SNode>) MapSequence.fromMap(_params).get("nodes")), null, CopyNode_Action.this.asText(((List<SNode>) MapSequence.fromMap(_params).get("nodes")), _params), false);
+  }
+  private String asText(List<SNode> nodes, final Map<String, Object> _params) {
+    return IterableUtils.join(ListSequence.fromList(nodes).select((it) -> SNodeOperations.present(it)), "\n");
   }
 }

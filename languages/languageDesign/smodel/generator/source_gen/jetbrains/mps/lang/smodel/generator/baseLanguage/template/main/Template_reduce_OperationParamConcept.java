@@ -14,13 +14,12 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.TemplateVarContext;
+import java.util.Collections;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
-import java.util.Collections;
 import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
-import jetbrains.mps.generator.runtime.NodeWeaveFacility;
-import java.util.ArrayList;
+import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -29,6 +28,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class Template_reduce_OperationParamConcept extends TemplateDeclarationBase {
 
   public Template_reduce_OperationParamConcept() {
+    super(new MO());
   }
 
   public SNodeReference getTemplateNode() {
@@ -40,35 +40,27 @@ public class Template_reduce_OperationParamConcept extends TemplateDeclarationBa
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
     TemplateContext context1 = context;
-    context1 = context1.withVariable("var:conceptArg", QueriesGenerated.varMacro_Value_62_0(new TemplateVarContext(context, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2409421742521904783"))));
-    Collection<SNode> tlist2 = null;
-    if (QueriesGenerated.ifMacro_Condition_62_0(new IfMacroContext(context1, ifMacroRef_t65l13_b0a0f0g))) {
+    context1 = context1.withVariable("var:conceptArg", QueriesGenerated.varMacro_Value_61_0(new TemplateVarContext(context1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2409421742521904783"))));
+    Collection<SNode> tlist2 = Collections.emptyList();
+    if (QueriesGenerated.ifMacro_Condition_61_0(new IfMacroContext(context1, ifMacroRef))) {
       Collection<SNode> tlist3 = null;
       {
-        final SNode switchInput3 = QueriesGenerated.sourceNodeQuery_62_0(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_t65l13_b0a0a0a1a5a6));
+        final SNode switchInput3 = QueriesGenerated.sourceNodeQuery_61_0(new SourceSubstituteMacroNodeContext(context1, switchMacroRef));
         if (switchInput3 == null) {
           tlist3 = Collections.emptyList();
         } else {
-          TemplateContext switchContext3;
-          switchContext3 = context1.subContext(null, switchInput3);
-          tlist3 = environment.trySwitch(templateSwitchNode_t65l13_a0a0c0a1a1a5a6, switchContext3);
+          TemplateContext switchContext3 = context1;
+          switchContext3 = switchContext3.subContext(null, switchInput3);
+          tlist3 = environment.trySwitch(templateSwitchNode, switchContext3);
           if (tlist3 == null) {
             final SNode tnode4 = environment.createOutputNode(myConcepts[0]);
-            try {
-            } finally {
-            }
-            if (tnode4 != null) {
-              tlist3 = TemplateUtil.singletonList(tnode4);
-            }
+            tlist3 = TemplateUtil.singletonList(tnode4);
           }
         }
       }
       tlist2 = tlist3;
     } else {
       final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
-      try {
-      } finally {
-      }
       tlist2 = TemplateUtil.singletonList(tnode5);
     }
     tlist1 = tlist2;
@@ -80,25 +72,25 @@ public class Template_reduce_OperationParamConcept extends TemplateDeclarationBa
     applyPart0(context).reportTo(sink);
   }
 
-  public Collection<SNode> weave(@NotNull NodeWeaveFacility weaveSupport) throws GenerationException {
-    ArrayList<SNode> rv = new ArrayList<SNode>();
-    applyPart0(weaveSupport.getTemplateContext()).weaveWith(weaveSupport).reportTo(rv);
-    return rv;
+  /*package*/ static final class MO implements MetaObjectContainer {
+    @Override
+    public SConcept[] concepts() {
+      SConcept[] rv = new SConcept[2];
+      rv[0] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf93d565d10L, "StringLiteral");
+      rv[1] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940cd6167L, "NullLiteral");
+      return rv;
+    }
+
+
+
+    @Override
+    public SContainmentLink[] aggregations() {
+      SContainmentLink[] rv = new SContainmentLink[1];
+      rv[0] = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
+      return rv;
+    }
   }
-  @Override
-  protected SConcept[] initConcepts() {
-    SConcept[] rv = new SConcept[2];
-    rv[0] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf93d565d10L, "StringLiteral");
-    rv[1] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940cd6167L, "NullLiteral");
-    return rv;
-  }
-  @Override
-  protected SContainmentLink[] initAggregationLinks() {
-    SContainmentLink[] rv = new SContainmentLink[1];
-    rv[0] = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
-    return rv;
-  }
-  private static final SNodePointer switchMacroRef_t65l13_b0a0a0a1a5a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2837022116960293314");
-  private static final SNodePointer templateSwitchNode_t65l13_a0a0c0a1a1a5a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3902354333653355606");
-  private static final SNodePointer ifMacroRef_t65l13_b0a0f0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2837022116960116095");
+  private static final SNodePointer switchMacroRef = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2837022116960293314");
+  private static final SNodePointer templateSwitchNode = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3902354333653355606");
+  private static final SNodePointer ifMacroRef = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2837022116960116095");
 }

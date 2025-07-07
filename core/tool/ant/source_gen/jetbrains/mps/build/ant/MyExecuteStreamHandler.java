@@ -11,7 +11,7 @@ import java.io.InputStream;
 import java.util.Scanner;
 import org.apache.tools.ant.Project;
 
-@GeneratedClass(node = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)/4003657351907889245", model = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)")
+@GeneratedClass(nodeId = "4003657351907889245", model = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)")
 public class MyExecuteStreamHandler implements ExecuteStreamHandler {
   private Thread myOutputReadingThread;
   private Thread myErrorReadingThread;
@@ -62,12 +62,12 @@ public class MyExecuteStreamHandler implements ExecuteStreamHandler {
     try {
       myOutputReadingThread.join();
     } catch (InterruptedException e) {
-      //  ignore 
+      //  ignore
     }
     try {
       myErrorReadingThread.join();
     } catch (InterruptedException e) {
-      //  ignore 
+      //  ignore
     }
   }
 }

@@ -44,12 +44,12 @@ public class check_UnqualifiedStaticCall_NonTypesystemRule extends AbstractNonTy
       return;
     }
 
-    // it's out of scope, let's make it StaticMethodCall 
+    // it's out of scope, let's make it StaticMethodCall
     {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(localCall, "unqualified non-local static call", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3151797052703996720", null, errorTarget);
       {
-        BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MakeStaticCall_QuickFix", true);
+        BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MakeStaticCall_QuickFix", "3151797052704010863", true);
         intentionProvider.putArgument("replacee", localCall);
         intentionProvider.putArgument("staticMethod", SNodeOperations.cast(target, CONCEPTS.StaticMethodDeclaration$FJ));
         _reporter_2309309498.addIntentionProvider(intentionProvider);

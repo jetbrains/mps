@@ -4,18 +4,16 @@ package jetbrains.mps.debugger.java.customViewers.plugin.plugin;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.part.ApplicationPluginPart;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import java.util.List;
 import jetbrains.mps.debugger.java.api.state.proxy.ValueWrapperFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.debugger.java.api.state.customViewers.CustomViewersManager;
-import org.apache.log4j.Level;
 
 @GeneratedClass(model = "r:9d33947d-45a8-4aa4-b61a-9c874e4614d7(jetbrains.mps.debugger.java.customViewers.plugin.plugin)")
 public class CustomViewersInitializer_AppPluginPart extends ApplicationPluginPart {
-  private static final Logger LOG = LogManager.getLogger(CustomViewersInitializer_AppPluginPart.class);
+  private static final Logger LOG = Logger.getLogger(CustomViewersInitializer_AppPluginPart.class);
   private List<ValueWrapperFactory> myFactories = ListSequence.fromList(new ArrayList<ValueWrapperFactory>());
   public CustomViewersInitializer_AppPluginPart() {
   }
@@ -63,7 +61,7 @@ public class CustomViewersInitializer_AppPluginPart extends ApplicationPluginPar
         manager.removeFactory(factory);
       }
     } else if (ListSequence.fromList(CustomViewersInitializer_AppPluginPart.this.myFactories).isNotEmpty()) {
-      if (LOG.isEnabledFor(Level.ERROR)) {
+      if (LOG.isErrorLevel()) {
         LOG.error("Cant find custom viewers manager while myFactories nonempty: " + CustomViewersInitializer_AppPluginPart.this.myFactories);
       }
     }

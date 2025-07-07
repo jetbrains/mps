@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,14 +16,11 @@
 package jetbrains.mps.ide.ui.tree;
 
 import com.intellij.icons.AllIcons;
-import com.intellij.openapi.editor.colors.ColorKey;
-import com.intellij.openapi.editor.colors.EditorColorsManager;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.intellij.lang.annotations.MagicConstant;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.annotations.Internal;
 
 import javax.swing.Icon;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -32,22 +29,26 @@ import javax.swing.tree.TreeNode;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.font.TextAttribute;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Stream;
 
 /**
  * @author Kostik
  */
 //todo[MM]: unimplement iterable after 2019.1, use getChildren()
 public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPSTreeNode> {
-  private static final Logger LOG = LogManager.getLogger(MPSTreeNode.class);
+  private static final Logger LOG = Logger.getLogger(MPSTreeNode.class);
 
   private MPSTree myTree;
   private boolean myAdded;
@@ -55,22 +56,8 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
   private Icon myIcon = AllIcons.Nodes.Folder;
   private String myNodeIdentifier;
   private String myText;
-  private String myAdditionalText = null;
-  private String myTooltipText;
-  private Color myColor = EditorColorsManager.getInstance().getGlobalScheme().getColor(ColorKey.createColorKey("FILESTATUS_NOT_CHANGED"));
-  // initialized once with the value of myColor the moment node is created, to facilitate nodes with pre-defined colors (initialized in cons)
-  // which sometimes is overridden with colors coming from extra messages (we need to revert to 'normal' color the moment all messages that have
-  // altered the color are gone).
-  private Color myDefaultColor;
-  private int myFontStyle = Font.PLAIN;
-  private boolean myAutoExpandable = true;
-  private ErrorState myErrorState = ErrorState.NONE;
-  private ErrorState myCombinedErrorState = ErrorState.NONE;
-  // it seems cheaper to use copy-on-write list than to keep distinct synchronization object in all nodes (most of which don't use extra messages)
-  // Once initialized, doesn't ever become null
-  private CopyOnWriteArrayList<TreeMessage> myTreeMessages = null;
-  private Map<TextAttribute, Object> myFontAttributes;
-  private int myToggleClickCount = 2;
+  private Color myColor = null; // frequent change target, don't bother to keep in optional attributes. NULL indicates use of defaults from cell renderer
+  private AttributeStorage myOptionalAttributes;
 
   public MPSTreeNode() {
     super(null);
@@ -83,8 +70,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
   @NotNull
   @Override
   @SuppressWarnings("unchecked")
-  @Deprecated
-  @ToRemove(version = 2019.1)
+@Deprecated(since = "2019.1", forRemoval = true)
   public Iterator<MPSTreeNode> iterator() {
     if (children == null) {
       return Collections.<MPSTreeNode>emptySet().iterator();
@@ -94,6 +80,28 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
 
   public List<? extends MPSTreeNode> getChildren() {
     return children == null ? Collections.emptyList() : ((List) children);
+  }
+
+  /**
+   * Unlike {@link #getChildren()}, doesn't give access to underlying collection of children
+   * but rather takes a copy to avoid potential concurrent modification exception when walking children
+   * from non-EDT thread. This method is intended for some MPS intimate implementation peculiarities,
+   * and in general shall not be of use outside of MPS.
+   * <p>
+   *   AVOID USING THIS METHOD UNLESS YOU UNDERSTAND THE CONSEQUENCES.
+   *   The method creates a copy of a child list, which is unnecessary in most scenarios.
+   * </p>
+   * @return unmodifiable copy of a child collection through {@link Stream} API.
+   */
+  @Internal
+  public Stream<MPSTreeNode> getChildrenSnapshot() {
+    if (children == null) {
+      return Stream.empty();
+    } else {
+      @SuppressWarnings("SuspiciousToArrayCall")
+      final MPSTreeNode[] snapshot = children.toArray(new MPSTreeNode[0]);
+      return Arrays.stream(snapshot);
+    }
   }
 
   public MPSTree getTree() {
@@ -155,6 +163,8 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
    */
   public void init() {
     if (isInitialized()) {
+      // account for colors set in cons
+      recordDefaultColorIfSet();
       return;
     }
     MPSTree tree = getTree();
@@ -163,12 +173,21 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
     } else {
       doInit();
     }
-    if (myDefaultColor == null) {
-      // in case subclasses have specified color during construction or in their doInit(), record it as default value to reset to at each visual update
-      // see #doUpdatePresentation()
-      myDefaultColor = myColor;
+    recordDefaultColorIfSet(); // account for colors set in doInit()
+  }
+
+  // MPSTreeNode doesn't keep color unless explicitly set, to keep default color value in a single place, CellRenderer.
+  // In rare cases when subclasses specify color during construction or in their doInit(), have to record it as default value to reset
+  // to at each visual update, see #doUpdatePresentation().
+  // Default color is initialized once with the value of myColor, if present, the moment node is created.
+  // Node's color might get overridden with colors coming from extra messages; we need to revert to 'normal' color the moment
+  // all messages that have altered the color are gone.
+  private void recordDefaultColorIfSet() {
+    if (myColor != null) {
+      initOptionalAttributes().set("color.default", myColor);
     }
   }
+
 
   /**
    * This method shall not be invoked by code outside of MPSTree framework.
@@ -189,7 +208,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
    */
   public void update() {
     doUpdate();
-    getTree().getModel().nodeStructureChanged(this);
+    getTree().getDFTreeModel().nodeStructureChanged(this);
   }
 
   protected void doUpdate() {
@@ -212,6 +231,12 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
       ((MPSTreeNode) getChildAt(childIndex)).addThisAndChildren();
     }
     updateErrorState();
+  }
+
+  @Override
+  public Object getUserObject() {
+    final Object uo = super.getUserObject();
+    return uo != null ? uo : getText();
   }
 
   public boolean hasChild(MutableTreeNode node) {
@@ -246,6 +271,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
     for (MPSTreeNode node : getChildren()) {
       node.removeThisAndChildren();
     }
+    myTree = null;
   }
 
   /**
@@ -306,11 +332,11 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
    * Default value is: 2
    */
   public int getToggleClickCount() {
-    return myToggleClickCount;
+    return getOptionalAttribute("toggle.clicks", 2);
   }
 
-  public void setToggleClickCount(int clickCount) {
-    myToggleClickCount = clickCount;
+  public final void setToggleClickCount(int clickCount) {
+    setOrDropOptionalAttribute("toggle.clicks", clickCount, 2);
   }
 
   //updates and refreshes tree
@@ -335,34 +361,18 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
     if (myTree != null) {
       myTree.fireTreeNodeUpdated(this);
     }
-    if (myTreeMessages != null) {
-      myTreeMessages.stream()
+    List<TreeMessage> treeMessages = getOptionalAttribute("messages.tree", null);
+    if (treeMessages != null) {
+      treeMessages.stream()
                     .filter(TreeMessage::alternatesColor)
                     .max(Comparator.comparingInt(TreeMessage::getPriority))
                     .map(TreeMessage::getColor)
                     .ifPresent(this::setColor);
-      myTreeMessages.stream()
+      treeMessages.stream()
                     .filter(TreeMessage::hasAdditionalText)
                     .max(Comparator.comparingInt(TreeMessage::getPriority))
                     .map(TreeMessage::getAdditionalText)
                     .ifPresent(this::setAdditionalText);
-    }
-  }
-
-  /**
-   * @deprecated odd and unclear contract (e.g. {@link #update()} and {@link #updateSubTree()} imply structure refresh, while this one does not),
-   * parameters that merely control invocation of other public methods.
-   * Use respective methods directly, instead.
-   */
-  @Deprecated
-  public void updatePresentation(final boolean reloadSubTree, final boolean updateAncestors) {
-    renewPresentation();
-    if (reloadSubTree) {
-      updateSubTree();
-    }
-
-    if (updateAncestors) {
-      updateAncestorsPresentationInTree();
     }
   }
 
@@ -372,32 +382,45 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
    * if needed (e.g. if messages are attached the moment tree is being constructed, there's no reason to renew each node individually,
    * they get a chance to update them once tree becomes visible)
    *
+   * Note, this method doesn't trigger UI refresh, it merely changes recorded state of this tree element.
+   * To reflect the state in UI, use {@link #renewPresentation()}
+   *
    * @param message message to attach
    */
-  public void addTreeMessage(@NotNull TreeMessage message) {
-    List<TreeMessage> treeMessages = myTreeMessages;
+  public boolean addTreeMessage(@NotNull TreeMessage message) {
+    List<TreeMessage> treeMessages = getOptionalAttribute("messages.tree", null);
     if (treeMessages == null) {
       synchronized (this) {
-        if (myTreeMessages == null) {
-          myTreeMessages = new CopyOnWriteArrayList<>();
-        }
-        treeMessages = myTreeMessages;
+        // it seems cheaper to use copy-on-write list than to keep distinct synchronization object in all nodes (most of which don't use extra messages)
+        treeMessages = initOptionalAttributes().get("messages.tree", CopyOnWriteArrayList::new);
       }
     }
-    treeMessages.add(message);
+    return treeMessages.add(message);
   }
 
   /**
-   * Detach all messages of the specified owner.
-   * This method can be invoked from any thread.
-   * To trigger UI update, use {@link #renewPresentation()} from correct (EDT/UI) thread.
-   *
-   * @param owner identifies messages to remove
-   * @return set of detached messages, or empty collection if none found
+   * Remove a message from the node.
+   * @return {@code true} if the node listed the message and had removed it successfully.
    */
+  public boolean removeTreeMessage(@NotNull TreeMessage message) {
+    List<TreeMessage> treeMessages = getOptionalAttribute("messages.tree", null);
+    if (treeMessages == null) {
+      return false;
+    }
+    return treeMessages.remove(message);
+  }
+
+    /**
+     * Detach all messages of the specified owner.
+     * This method can be invoked from any thread.
+     * To trigger UI update, use {@link #renewPresentation()} from correct (EDT/UI) thread.
+     *
+     * @param owner identifies messages to remove. No messages are removed if {@code null} despite the fact messages could have null owner (at the moment, see TreeMessage cons)
+     * @return set of detached messages, or empty collection if none found
+     */
   @NotNull
-  public Set<TreeMessage> removeTreeMessages(TreeMessageOwner owner) {
-    List<TreeMessage> treeMessages = myTreeMessages;
+  public Set<TreeMessage> removeTreeMessages(@Nullable TreeMessageOwner owner) {
+    List<TreeMessage> treeMessages = getOptionalAttribute("messages.tree", null);
     if (owner == null || treeMessages == null) {
       return Collections.emptySet();
     }
@@ -411,18 +434,38 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
     return result;
   }
 
-  protected void doUpdatePresentation() {
-    if (myDefaultColor != null) {
-      // reset color to default in case there were messages that affected color of the node
-      setColor(myDefaultColor);
+  @NotNull
+  public <M extends TreeMessage> Collection<M> findMessages(@NotNull Class<M> kind) {
+    List<TreeMessage> treeMessages = getOptionalAttribute("messages.tree", null);
+    if (treeMessages == null) {
+      return Collections.emptyList();
     }
+    ArrayList<M> result = new ArrayList<>(4);
+    for (TreeMessage message : treeMessages) {
+      if (kind.isInstance(message)) {
+        result.add(kind.cast(message));
+      }
+    }
+    return result;
+  }
+
+  /**
+   * default implementation resets node's color to a default value (e.g. the one specified in cons
+   * or the one from cell renderer).
+   */
+  protected void doUpdatePresentation() {
+    // reset color to default in case there were messages that affected color of the node
+    // Note, this code is not part of final updatePresentation() (which is likely a better place) as
+    // I'd like to give subclasses a chance to turn this logic off, if needed (e.g. to keep color value).
+    // However, it's purely speculative scenario, no idea if there's a true need for that.
+    Color defaultColor = getOptionalAttribute("color.default", null);
+    setColor(defaultColor);
   }
 
   /**
    * @deprecated use {@link MPSTreeNode#getIcon()} instead
    */
-  @Deprecated
-  @ToRemove(version = 2019.1)
+@Deprecated(since = "2019.1", forRemoval = true)
   public final Icon getIcon(boolean expanded) {
     return getIcon();
   }
@@ -434,8 +477,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
   /**
    * @deprecated use {@link MPSTreeNode#setIcon(javax.swing.Icon)} instead
    */
-  @Deprecated
-  @ToRemove(version = 2019.1)
+@Deprecated(since = "2019.1", forRemoval = true)
   public final void setIcon(Icon newIcon, boolean expanded) {
     setIcon(newIcon);
   }
@@ -444,33 +486,66 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
     myIcon = newIcon;
   }
 
+  @Nullable
   public final Color getColor() {
     return myColor;
   }
 
-  public final void setColor(Color color) {
+  /**
+   *
+   * @param color use {@code null} to use defaults from {@link javax.swing.tree.TreeCellRenderer}
+   */
+  public final void setColor(@Nullable Color color) {
     myColor = color;
   }
 
+  /**
+   * @deprecated Using {@link TextAttribute} gives much more control over font
+   */
+  @Deprecated(since = "2020.3", forRemoval = true)
   @MagicConstant(flags = {Font.PLAIN, Font.BOLD, Font.ITALIC})
   public final int getFontStyle() {
-    return myFontStyle;
+    int fontStyle = Font.PLAIN;
+    final Map fa = getFontAttributes();
+    final Object w = fa.get(TextAttribute.WEIGHT);
+    if (TextAttribute.WEIGHT_BOLD.equals(w) || TextAttribute.WEIGHT_HEAVY.equals(w)) {
+      fontStyle |= Font.BOLD;
+    }
+    if (TextAttribute.POSTURE_OBLIQUE.equals(fa.get(TextAttribute.POSTURE))) {
+      fontStyle |= Font.ITALIC;
+    }
+    return fontStyle;
   }
 
+  /**
+   * @deprecated use {@link #addFontAttribute(TextAttribute, Object)} with {@link TextAttribute#WEIGHT_BOLD} or {@link TextAttribute#POSTURE_OBLIQUE} values
+   */
+  @Deprecated(since = "2020.3", forRemoval = true)
   @MagicConstant(flags = {Font.PLAIN, Font.BOLD, Font.ITALIC})
   public final void setFontStyle(int fontStyle) {
-    myFontStyle = fontStyle;
+    if ((fontStyle & Font.BOLD) == Font.BOLD) {
+      addFontAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD);
+    }
+    if ((fontStyle & Font.ITALIC) == Font.ITALIC) {
+      addFontAttribute(TextAttribute.POSTURE, TextAttribute.POSTURE_OBLIQUE);
+    }
+    if (fontStyle == Font.PLAIN) {
+      final WithFontAttributes fontAttributes = getOptionalAttribute("mps.tree.font", null);
+      if (fontAttributes != null) {
+        fontAttributes.setFontAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_REGULAR);
+        fontAttributes.setFontAttribute(TextAttribute.POSTURE, TextAttribute.POSTURE_REGULAR);
+      }
+    }
   }
 
   public final void addFontAttribute(TextAttribute key, Object value) {
-    if (myFontAttributes == null) {
-      myFontAttributes = new HashMap<>(4);
-    }
-    myFontAttributes.put(key, value);
+    initOptionalAttributes().get("mps.tree.font", WithFontAttributes::newDelegate).setFontAttribute(key, value);
   }
 
-  public final Map getFontAttributes() {
-    return myFontAttributes == null ? Collections.emptyMap() : myFontAttributes;
+  @NotNull
+  public final Map<TextAttribute, Object> getFontAttributes() {
+    final WithFontAttributes fontAttributes = getOptionalAttribute("mps.tree.font", null);
+    return fontAttributes == null ? Collections.emptyMap() : fontAttributes.getFontAttributes();
   }
 
   @NotNull
@@ -493,11 +568,11 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
   }
 
   public final String getAdditionalText() {
-    return myAdditionalText;
+    return getOptionalAttribute("text.aux.tree", null);
   }
 
   public final void setAdditionalText(String newAdditionalText) {
-    myAdditionalText = newAdditionalText;
+    setOrDropOptionalAttribute("text.aux.tree", newAdditionalText, null);
   }
 
   public final String getText() {
@@ -513,28 +588,52 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
   }
 
   public final String getTooltipText() {
-    return myTooltipText;
+    return getOptionalAttribute("tooltip.tree", null);
   }
 
   public final void setTooltipText(String tooltipText) {
-    myTooltipText = tooltipText;
+    setOrDropOptionalAttribute("tooltip.tree", tooltipText, null);
   }
 
+  /**
+   * @deprecated see {@link #setErrorState(ErrorState)} for reasons ErrorState ain't no good
+   */
+  @Deprecated(since = "2020.3", forRemoval = true)
   public final boolean isErrorState() {
-    return myErrorState == ErrorState.ERROR;
+    return getErrorState() == ErrorState.ERROR;
   }
 
+  /**
+   * @deprecated Error state without a message makes little sense. Tooltips as a way to communicate error messages suck.
+   *             Use {@link #addTreeMessage(TreeMessage)} and {@link TreeErrorMessage} instead.
+   */
+  @Deprecated(since = "2020.3", forRemoval = true)
   public final void setErrorState(ErrorState state) {
-    myErrorState = state;
-    updateErrorState();
+    if (state == null) {
+      state = ErrorState.NONE;
+    }
+    boolean needUpdate = !state.equals(getErrorState());
+    setOrDropOptionalAttribute("error.tree", state, ErrorState.NONE);
+    if (needUpdate) {
+      updateErrorState();
+    }
   }
 
+  /**
+   * @deprecated see {@link #setErrorState(ErrorState)} for reasons ErrorState ain't no good
+   */
+  @Deprecated(since = "2020.3", forRemoval = true)
   public final ErrorState getErrorState() {
-    return myErrorState;
+    return getOptionalAttribute("error.tree", ErrorState.NONE);
   }
 
+  /**
+   * @deprecated node's error state has been replaced with {@link TreeErrorMessage}
+   * @return doesn't give anything meaningful unless one also uses {@link #setErrorState(ErrorState)}
+   */
+  @Deprecated(since = "2020.3", forRemoval = true)
   public final ErrorState getAggregatedErrorState() {
-    return myCombinedErrorState;
+    return getOptionalAttribute("merged.error.tree", ErrorState.NONE);
   }
 
   protected void updateErrorState() {
@@ -544,12 +643,19 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
         state = state.combine(node.getAggregatedErrorState());
       }
     }
-    myCombinedErrorState = state.combine(myErrorState);
+    ErrorState combinedErrorState = state.combine(getErrorState());
+    setOrDropOptionalAttribute("merged.error.tree", combinedErrorState, ErrorState.NONE);
     if (getParent() != null) {
       ((MPSTreeNode) getParent()).updateErrorState();
     }
   }
 
+  /**
+   * error propAgation is controlled by external code (and there's not too much use of this anyway - just
+   * ProjectModulesPoolTreeNode, which btw doesn't get aggregated errors in the new approach as it's not a namespace node,
+   * or any other node subject to 'parent update')
+   */
+  @Deprecated(since = "2020.3", forRemoval = true)
   protected boolean propogateErrorUpwards() {
     return true;
   }
@@ -559,11 +665,11 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
   }
 
   public final boolean isAutoExpandable() {
-    return myAutoExpandable;
+    return getOptionalAttribute("expand.auto.tree", Boolean.TRUE);
   }
 
   public final void setAutoExpandable(boolean autoExpandable) {
-    myAutoExpandable = autoExpandable;
+    setOrDropOptionalAttribute("expand.auto.tree", Boolean.valueOf(autoExpandable), Boolean.TRUE);
   }
 
   /**
@@ -571,7 +677,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
    */
   public final void updateNodePresentationInTree() {
     if (getTree() != null) {
-      getTree().getModel().nodeChanged(this);
+      getTree().getDFTreeModel().nodeChanged(this);
     }
   }
 
@@ -592,5 +698,35 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
 
   public boolean isLoadingEnabled() {
     return false;
+  }
+
+  private <V> V getOptionalAttribute(String key, V value) {
+    if (myOptionalAttributes == null) {
+      return value;
+    }
+    return myOptionalAttributes.get(key, value);
+  }
+
+  // set new value unless it's equal to the {@code dropValue}; doesn't initialize myOptionalAttributes unless necessary
+  private void setOrDropOptionalAttribute(String key, Object value, Object dropValue) {
+    if (Objects.equals(value, dropValue)) {
+      if (myOptionalAttributes == null) {
+        return;
+      }
+      myOptionalAttributes.drop(key);
+    } else {
+      initOptionalAttributes().set(key, value);
+    }
+  }
+
+  private AttributeStorage initOptionalAttributes() {
+    if (myOptionalAttributes == null) {
+      synchronized (this) {
+        if (myOptionalAttributes == null) {
+          myOptionalAttributes = new AttributeStorage();
+        }
+      }
+    }
+    return myOptionalAttributes;
   }
 }

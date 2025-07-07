@@ -4,24 +4,19 @@ package jetbrains.mps.vcs.core.mergedriver;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.project.MPSExtentions;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import java.io.File;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.util.FileUtil;
+import org.jetbrains.annotations.Nullable;
 import java.io.InputStream;
 import java.io.FileInputStream;
 import jetbrains.mps.util.JDOMUtil;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import jetbrains.mps.util.xml.BreakParseSAXException;
 
-@GeneratedClass(node = "r:a178d3c3-970e-4352-b61c-4e55abc3bc24(jetbrains.mps.vcs.core.mergedriver)/3342666646761725454", model = "r:a178d3c3-970e-4352-b61c-4e55abc3bc24(jetbrains.mps.vcs.core.mergedriver)")
+@GeneratedClass(nodeId = "3342666646761725454", model = "r:a178d3c3-970e-4352-b61c-4e55abc3bc24(jetbrains.mps.vcs.core.mergedriver)")
 public enum FileType {
   MODEL(MPSExtentions.MODEL, "model"),
   MODEL_ROOT(MPSExtentions.MODEL_ROOT, "model"),
@@ -33,15 +28,16 @@ public enum FileType {
   TRACE_CACHE("trace.info", "debug-info"),
   GENERATOR_DEPENDENCIES("generated", "dependencies"),
   GENERATOR_DEPENDENCIES_V3("generated", "product"),
-  JAVA_DEPENDENCIES("dependencies", "dependenciesRoot");
-
+  JAVA_DEPENDENCIES("dependencies", "dependenciesRoot"),
+  UNKNOWN("", "");
 
   public static final FileType[] BY_NAME = {FileType.TRACE_CACHE, FileType.GENERATOR_DEPENDENCIES, FileType.JAVA_DEPENDENCIES};
   public static final FileType[] BY_EXT = {FileType.LANGUAGE, FileType.SOLUTION, FileType.DEVKIT, FileType.PROJECT, FileType.MODEL_ROOT, FileType.MODEL_HEADER, FileType.MODEL};
-  private static final String SVN_BASE = ".svn-base";
+  /*package*/ static final String SVN_BASE = ".svn-base";
 
-  private String mySuffix;
-  private String myXmlRoot;
+  private final String mySuffix;
+  private final String myXmlRoot;
+
   private FileType(String suffix, String xmlRoot) {
     mySuffix = suffix;
     myXmlRoot = xmlRoot;
@@ -51,64 +47,31 @@ public enum FileType {
     return mySuffix;
   }
 
-  @Nullable
-  public static FileType get(@NotNull ModelFactoryService service, @Nullable final String filetype, File file) {
-    // try to recognize by filetype 
-    if (filetype != null) {
-      FileType type = Sequence.fromIterable(Sequence.fromArray(FileType.values())).findFirst(new IWhereFilter<FileType>() {
-        public boolean accept(FileType t) {
-          return filetype.equals(t.mySuffix);
-        }
-      });
-      if (type != null) {
-        return type;
-      }
-      if (service.getDefaultModelFactory(FileExtensionDataSourceType.of(filetype)) != null) {
-        return FileType.MODEL;
-      }
-    }
-    // try to get file type from SVN filename 
-    final Wrappers._T<String> fileName = new Wrappers._T<String>(file.getName());
-    if (fileName.value.endsWith(SVN_BASE)) {
-      fileName.value = fileName.value.substring(0, fileName.value.length() - FileType.SVN_BASE.length());
-      FileType type = Sequence.fromIterable(Sequence.fromArray(FileType.values())).findFirst(new IWhereFilter<FileType>() {
-        public boolean accept(FileType t) {
-          return fileName.value.endsWith(t.mySuffix);
-        }
-      });
-      if (type != null) {
-        return type;
-      }
-      if (service.getDefaultModelFactory(FileExtensionDataSourceType.of(FileUtil.getExtension(fileName.value))) != null) {
-        return FileType.MODEL;
-      }
-    }
-    // try to get file type by file content 
-    return getTypeByXmlRoot(file);
+  /*package*/ boolean hasExtension(String suffix) {
+    return mySuffix.equals(suffix);
+  }
+
+  @NotNull
+  public static FileType get(File file) {
+    // try to get file type by file content
+    FileType rv = getTypeByXmlRoot(file);
+    return (rv == null ? FileType.UNKNOWN : rv);
   }
 
   @Nullable
   private static FileType getTypeByXmlRoot(File file) {
     final XMLRootHandler handler = new XMLRootHandler();
-    InputStream is = null;
-    try {
-      is = new FileInputStream(file);
+    try (InputStream is = new FileInputStream(file)) {
       JDOMUtil.createSAXParser().parse(is, handler);
-    } catch (Exception e) {
-    } finally {
-      FileUtil.closeFileSafe(is);
+    } catch (Exception ex) {
     }
-    // return null if no XML root was found by parser 
+    // return null if no XML root was found by parser
     if (handler.rootName == null) {
       return null;
     }
 
-    FileType res = Sequence.fromIterable(Sequence.fromArray(FileType.values())).findFirst(new IWhereFilter<FileType>() {
-      public boolean accept(FileType t) {
-        return t.myXmlRoot.equals(handler.rootName);
-      }
-    });
-    // manually check per-root persistence 
+    FileType res = Sequence.fromIterable(Sequence.fromArray(FileType.values())).findFirst((t) -> t.myXmlRoot.equals(handler.rootName));
+    // manually check per-root persistence
     if (res == FileType.MODEL) {
       if ("root".equals(handler.contentAttr)) {
         res = FileType.MODEL_ROOT;

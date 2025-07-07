@@ -20,6 +20,7 @@
         <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
         <child id="1071489727084" name="propertyDeclaration" index="1TKVEl" />
       </concept>
+      <concept id="1169125989551" name="jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration" flags="ig" index="PlHQZ" />
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
         <reference id="1169127628841" name="intfc" index="PrY4T" />
       </concept>
@@ -46,7 +47,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -180,6 +181,9 @@
       <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="1199711344856" />
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+    </node>
+    <node concept="PrWs8" id="7uACA5S6UFg" role="PzmwI">
+      <ref role="PrY4T" node="7uACA5S6Tbz" resolve="IIncompatibleWithJavaLambda" />
     </node>
   </node>
   <node concept="1TIwiD" id="hun63U2">
@@ -387,6 +391,32 @@
     <node concept="PrWs8" id="U7sbC7HC1n" role="PzmwI">
       <ref role="PrY4T" to="tpee:hzdmp1d" resolve="IInternalType" />
     </node>
+    <node concept="PrWs8" id="6WTbe$Jz79f" role="PzmwI">
+      <ref role="PrY4T" to="tpee:6WTbe$Jz777" resolve="IInferredType" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="2c8ypONne1U">
+    <property role="EcuMT" value="2524418899405758586" />
+    <property role="TrG5h" value="InferredClosureParameterDeclaration" />
+    <property role="34LRSv" value="var &lt;name&gt;" />
+    <property role="R4oN_" value="generic inferred parameter" />
+    <property role="3GE5qa" value="parameter" />
+    <ref role="1TJDcQ" node="hwBqR26" resolve="UnboundClosureParameterDeclaration" />
+    <node concept="PrWs8" id="5B8En1STmbl" role="PzmwI">
+      <ref role="PrY4T" to="tpee:5B8En1ST6Bm" resolve="IInferredExpression" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="7NbpLe7cVk0">
+    <property role="EcuMT" value="8992394414545679616" />
+    <property role="3GE5qa" value="parameter" />
+    <property role="TrG5h" value="ClosureVarType" />
+    <property role="34LRSv" value="var" />
+    <property role="R4oN_" value="inferred type" />
+    <ref role="1TJDcQ" to="tpee:4ctkEngA$UD" resolve="UndefinedType" />
+  </node>
+  <node concept="PlHQZ" id="7uACA5S6Tbz">
+    <property role="EcuMT" value="8621757076157993699" />
+    <property role="TrG5h" value="IIncompatibleWithJavaLambda" />
   </node>
 </model>
 

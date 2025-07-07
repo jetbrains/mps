@@ -4,22 +4,23 @@ package jetbrains.mps.editorTest;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.lang.test.runtime.EditorTestUtil;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 
 @MPSLaunch
 public class DeleteIfStatementNonEmptyFromIfTwoStep_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(DeleteIfStatementNonEmptyFromIfTwoStep_Test.class, "${mps_home}", "r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(DeleteIfStatementNonEmptyFromIfTwoStep_Test.class).projectPath(null).modelRef("r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)").reopenProject(false).build());
 
   public DeleteIfStatementNonEmptyFromIfTwoStep_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -35,15 +36,13 @@ public class DeleteIfStatementNonEmptyFromIfTwoStep_Test extends BaseTransformat
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("8979250711594102876", "4258541826869288151");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-          Assert.assertTrue(DeletionApproverUtil.isApprovedForDeletion(getEditorComponent().getEditorContext(), getEditorComponent().getSelectedNode()));
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-        }
+      initEditorComponent("8979250711594102876", "563261338091817598");
+      EditorTestUtil.runWithTwoStepDeletion(() -> {
+        invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
+        Assert.assertTrue(DeletionApproverUtil.isApprovedForDeletion(getEditorComponent().getEditorContext(), getEditorComponent().getSelectedNode()));
+        invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
       }, true);
     }
   }

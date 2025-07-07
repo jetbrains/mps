@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -21,9 +20,7 @@ import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
-import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -31,13 +28,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class AttributeAccess__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045a3b2L, "jetbrains.mps.lang.smodel.structure.AttributeAccess");
 
-  public static final SMethod<Boolean> isLValue_idhEwIP$w = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLValue").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIP$w").build();
-  public static final SMethod<Boolean> isSingularCardinality_id3vpu_siOTrf = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSingularCardinality").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3vpu_siOTrf").build();
-  public static final SMethod<Boolean> isAggregation_id3vpu_siOTrm = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAggregation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3vpu_siOTrm").build();
-  public static final SMethod<SNode> getTargetConcept_id3vpu_siOTrr = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTargetConcept").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3vpu_siOTrr").build();
-  public static final SMethod<SNode> getAttributeContainerType_id62qhzb6UOqI = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getAttributeContainerType").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("62qhzb6UOqI").build();
-  public static final SMethod<Boolean> applicableToNode_id1653mnvAgrs = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("applicableToNode").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgrs").build();
-  public static final SMethod<Boolean> applicableToConcept_id1653mnvAgvQ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("applicableToConcept").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgvQ").build();
+  public static final SMethod<Boolean> isLValue_idhEwIP$w = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877410080L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> isSingularCardinality_id3vpu_siOTrf = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSingularCardinality").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4024382256428848847L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
+  public static final SMethod<Boolean> isAggregation_id3vpu_siOTrm = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAggregation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4024382256428848854L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
+  public static final SMethod<SNode> getTargetConcept_id3vpu_siOTrr = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTargetConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4024382256428848859L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
+  public static final SMethod<SNode> getAttributeContainerType_id62qhzb6UOqI = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getAttributeContainerType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6960953357954139822L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
+  public static final SMethod<Boolean> applicableToNode_id1653mnvAgrs = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("applicableToNode").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498076L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
+  public static final SMethod<Boolean> applicableToConcept_id1653mnvAgvQ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("applicableToConcept").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498358L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLValue_idhEwIP$w, isSingularCardinality_id3vpu_siOTrf, isAggregation_id3vpu_siOTrm, getTargetConcept_id3vpu_siOTrr, getAttributeContainerType_id62qhzb6UOqI, applicableToNode_id1653mnvAgrs, applicableToConcept_id1653mnvAgvQ);
 
@@ -48,7 +45,7 @@ public final class AttributeAccess__BehaviorDescriptor extends BaseBHDescriptor 
     return true;
   }
   /*package*/ static boolean isSingularCardinality_id3vpu_siOTrf(@NotNull SNode __thisNode__) {
-    return !((AttributeDesignTimeOperations.isMultipleAttribute(AttributeQualifier__BehaviorDescriptor.getTargetConcept_id5zEkxuKhyRq.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.qualifier$eL3m))) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.qualifier$eL3m), CONCEPTS.AllAttributeQualifier$la)));
+    return !(AttributeDesignTimeOperations.isMultipleAttribute(AttributeQualifier__BehaviorDescriptor.getTargetConcept_id5zEkxuKhyRq.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.qualifier$eL3m))) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.qualifier$eL3m), CONCEPTS.AllAttributeQualifier$la));
   }
   /*package*/ static boolean isAggregation_id3vpu_siOTrm(@NotNull SNode __thisNode__) {
     return true;
@@ -125,10 +122,10 @@ public final class AttributeAccess__BehaviorDescriptor extends BaseBHDescriptor 
     return CONCEPT;
   }
   private static SNode _quotation_createNode_q663c8_a0b0e() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType")).getResult();
-    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"), SReference.create(MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"), quotedNode_1, facade.createModelReference("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)"), facade.createNodeId("1133920641626")));
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"));
+    quotedNode_1 = nb.getResult();
+    nb.setReference(MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"), "r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)/1133920641626");
     return quotedNode_1;
   }
 

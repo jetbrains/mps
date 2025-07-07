@@ -4,13 +4,10 @@ package jetbrains.mps.execution.configurations.generator.template.main;
 
 import jetbrains.mps.generator.runtime.Generated;
 import jetbrains.mps.generator.impl.query.QueryProviderBase;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.generator.template.CreateRootRuleContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.execution.configurations.behavior.RunConfiguration__BehaviorDescriptor;
 import jetbrains.mps.generator.template.BaseMappingRuleContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -28,6 +25,7 @@ import jetbrains.mps.util.NodeNameUtil;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.execution.api.configurations.BaseMpsBeforeTaskProvider;
 import jetbrains.mps.execution.settings.behavior.PersistentConfiguration__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.execution.configurations.behavior.ConfigurationFromExecutorReference__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -41,7 +39,6 @@ import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.generator.template.WeavingMappingRuleContext;
 import jetbrains.mps.generator.template.MappingScriptContext;
-import org.apache.log4j.Level;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.ReductionRuleCondition;
 import java.util.HashMap;
@@ -57,7 +54,6 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.template.WeavingAnchorContext;
 import jetbrains.mps.generator.impl.query.ScriptCodeBlock;
 import jetbrains.mps.generator.impl.query.SourceNodeQuery;
-import jetbrains.mps.generator.impl.query.QueryKeyImpl;
 import jetbrains.mps.generator.impl.query.SourceNodesQuery;
 import java.util.Collection;
 import jetbrains.mps.util.IterableUtil;
@@ -66,25 +62,19 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.generator.impl.query.IfMacroCondition;
 import jetbrains.mps.generator.impl.query.ReferenceTargetQuery;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
-import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 @Generated
 public class QueriesGenerated extends QueryProviderBase {
-  private static final Logger LOG = LogManager.getLogger(QueriesGenerated.class);
+  private static final Logger LOG = Logger.getLogger(QueriesGenerated.class);
   public QueriesGenerated() {
     super(1);
   }
   public static boolean createRootRule_Condition_0_0(final CreateRootRuleContext _context) {
-    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfigurationKind$C3)).isNotEmpty() || ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfigurationProducer$AW)).isNotEmpty() || ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfiguration$B$)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) RunConfiguration__BehaviorDescriptor.isForeign_id3wpI_WC06mf.invoke(it);
-      }
-    }).isNotEmpty();
+    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfigurationKind$C3)).isNotEmpty() || ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfigurationProducer$AW)).isNotEmpty() || ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfiguration$B$)).where((it) -> (boolean) RunConfiguration__BehaviorDescriptor.isForeign_id3wpI_WC06mf.invoke(it)).isNotEmpty();
   }
   public static boolean createRootRule_Condition_0_1(final CreateRootRuleContext _context) {
     return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.BeforeTask$oR)).isNotEmpty();
@@ -102,26 +92,21 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BeforeTaskCall$iu, false, false) != null);
   }
   public static boolean rule_Condition_0_4(final BaseMappingRuleContext _context) {
-    // FIXME RunConfigurationKind doesn't use this rule any more, and COPY-SRC in RunConfiguration has to 
-    //       be replaced with SWITCH switch_FileIcon along with explicit field declaration 
-    return SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.RunConfiguration$B$) || SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.RunConfigurationKind$C3);
-  }
-  public static boolean rule_Condition_0_5(final BaseMappingRuleContext _context) {
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.persistentConfiguration$QL_P), CONCEPTS.RunConfiguration$B$);
   }
-  public static boolean rule_Condition_0_6(final BaseMappingRuleContext _context) {
+  public static boolean rule_Condition_0_5(final BaseMappingRuleContext _context) {
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$BsHW), CONCEPTS.RunConfigurationCreator$WE);
   }
-  public static boolean rule_Condition_0_7(final BaseMappingRuleContext _context) {
+  public static boolean rule_Condition_0_6(final BaseMappingRuleContext _context) {
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$BsHW), CONCEPTS.ConsoleCreator$mj);
   }
-  public static boolean rule_Condition_0_8(final BaseMappingRuleContext _context) {
+  public static boolean rule_Condition_0_7(final BaseMappingRuleContext _context) {
     return (SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.ExecuteBeforeTask_ConceptFunction$u, true, false) != null);
   }
-  public static boolean rule_Condition_0_9(final BaseMappingRuleContext _context) {
+  public static boolean rule_Condition_0_8(final BaseMappingRuleContext _context) {
     return (SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.ExecuteConfiguration_Function$Bl, true, false) != null);
   }
-  public static boolean rule_Condition_0_10(final BaseMappingRuleContext _context) {
+  public static boolean rule_Condition_0_9(final BaseMappingRuleContext _context) {
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$BsHW), CONCEPTS.DummyRunConfigurationInitializer$KX);
   }
   public static boolean rule_Condition_21_0(final BaseMappingRuleContext _context) {
@@ -197,7 +182,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SPropertyOperations.getString(_context.getNode(), PROPS.displayName$GPvP) != null ? SPropertyOperations.getString(_context.getNode(), PROPS.displayName$GPvP) : SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL));
   }
   public static Object propertyMacro_GetValue_9_2(final PropertyMacroContext _context) {
-    // I'd like tolerate empty description value and generate "" in this case. 
+    // I'd like tolerate empty description value and generate "" in this case.
     if (SPropertyOperations.getString(_context.getNode(), PROPS.description$GPXR) != null) {
       return SPropertyOperations.getString(_context.getNode(), PROPS.description$GPXR);
     }
@@ -320,10 +305,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(configurationType, LINKS.persistentConfiguration$QL_P), "ConfigurationToClass");
   }
   public static Object referenceMacro_GetReferent_12_0(final ReferenceMacroContext _context) {
-    return (SLinkOperations.getTarget(_context.getNode(), LINKS.concept$A$QI) == null ? SLinkOperations.getTarget(_quotation_createNode_x583g4_a0a0a77(), LINKS.concept$WQBy) : SLinkOperations.getTarget(_context.getNode(), LINKS.concept$A$QI));
+    return (SLinkOperations.getTarget(_context.getNode(), LINKS.concept$A$QI) == null ? SLinkOperations.getTarget(_quotation_createNode_x583g4_a0a0a67(), LINKS.concept$WQBy) : SLinkOperations.getTarget(_context.getNode(), LINKS.concept$A$QI));
   }
   public static Object referenceMacro_GetReferent_12_1(final ReferenceMacroContext _context) {
-    return (SLinkOperations.getTarget(_context.getNode(), LINKS.concept$AngM) == null ? SLinkOperations.getTarget(_quotation_createNode_x583g4_a0a0a87(), LINKS.concept$WQBy) : SLinkOperations.getTarget(_context.getNode(), LINKS.concept$AngM));
+    return (SLinkOperations.getTarget(_context.getNode(), LINKS.concept$AngM) == null ? SLinkOperations.getTarget(_quotation_createNode_x583g4_a0a0a77(), LINKS.concept$WQBy) : SLinkOperations.getTarget(_context.getNode(), LINKS.concept$AngM));
   }
   public static Object referenceMacro_GetReferent_13_0(final ReferenceMacroContext _context) {
     return Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(_context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "RunConfigurationProducerPartToClass"))).first();
@@ -461,14 +446,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.execute$95i7), LINKS.body$e68K), LINKS.statement$53DE);
   }
   public static Iterable<SNode> sourceNodesQuery_3_0(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.persistentProperty$YKAP)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) PersistentPropertyDeclaration__BehaviorDescriptor.isTemplate_idO$iR4J$g8G.invoke(it);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.persistentProperty$YKAP)).where((it) -> (boolean) PersistentPropertyDeclaration__BehaviorDescriptor.isTemplate_idO$iR4J$g8G.invoke(it));
   }
   public static Iterable<SNode> sourceNodesQuery_3_1(final SourceSubstituteMacroNodesContext _context) {
-    List<SNode> beforeTaskCalls = check_x583g4_a0a0ve(RunConfiguration__BehaviorDescriptor.getExecutor_id3gs394eDyIj.invoke(_context.getNode()));
+    List<SNode> beforeTaskCalls = check_x583g4_a0a0ue(RunConfiguration__BehaviorDescriptor.getExecutor_id3gs394eDyIj.invoke(_context.getNode()));
     if (beforeTaskCalls == null) {
       return new ArrayList<SNode>();
     }
@@ -478,7 +459,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.parameter$wCAy);
   }
   public static Iterable<SNode> sourceNodesQuery_3_3(final SourceSubstituteMacroNodesContext _context) {
-    List<SNode> beforeTaskCalls = check_x583g4_a0a0xe(RunConfiguration__BehaviorDescriptor.getExecutor_id3gs394eDyIj.invoke(_context.getNode()));
+    List<SNode> beforeTaskCalls = check_x583g4_a0a0we(RunConfiguration__BehaviorDescriptor.getExecutor_id3gs394eDyIj.invoke(_context.getNode()));
     if (beforeTaskCalls == null) {
       return new ArrayList<SNode>();
     }
@@ -491,32 +472,20 @@ public class QueriesGenerated extends QueryProviderBase {
     return (List<SNode>) PersistentConfiguration__BehaviorDescriptor.getTemplateProperties_idO$iR4J$g3e.invoke(_context.getNode());
   }
   public static Iterable<SNode> sourceNodesQuery_9_0(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfiguration$B$)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.configurationKind$$GNc) == _context.getNode();
-      }
-    });
+    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfiguration$B$)).where((it) -> SLinkOperations.getTarget(it, LINKS.configurationKind$$GNc) == _context.getNode());
   }
   public static Iterable<SNode> sourceNodesQuery_9_1(final SourceSubstituteMacroNodesContext _context) {
     return SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfigurationKind$C3);
   }
   public static Iterable<SNode> sourceNodesQuery_9_2(final SourceSubstituteMacroNodesContext _context) {
-    // XXX in fact, with generic addFactoryFor(), there's no sense to distinguish 'foreign' factories, 
-    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfiguration$B$)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) RunConfiguration__BehaviorDescriptor.isForeign_id3wpI_WC06mf.invoke(it);
-      }
-    });
+    // XXX in fact, with generic addFactoryFor(), there's no sense to distinguish 'foreign' factories,
+    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfiguration$B$)).where((it) -> (boolean) RunConfiguration__BehaviorDescriptor.isForeign_id3wpI_WC06mf.invoke(it));
   }
   public static Iterable<SNode> sourceNodesQuery_9_3(final SourceSubstituteMacroNodesContext _context) {
     return SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfigurationProducer$AW);
   }
   public static Iterable<SNode> sourceNodesQuery_9_4(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfiguration$B$)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) RunConfiguration__BehaviorDescriptor.isForeign_id3wpI_WC06mf.invoke(it);
-      }
-    });
+    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.RunConfiguration$B$)).where((it) -> (boolean) RunConfiguration__BehaviorDescriptor.isForeign_id3wpI_WC06mf.invoke(it));
   }
   public static Iterable<SNode> sourceNodesQuery_13_0(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.produce$hvdx);
@@ -560,7 +529,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static void mappingScript_CodeBlock_18(final MappingScriptContext _context) {
     for (SNode runConfiguration : ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.RunConfiguration$B$))) {
       if ((RunConfiguration__BehaviorDescriptor.getExecutor_id3gs394eDyIj.invoke(runConfiguration) == null)) {
-        if (LOG.isEnabledFor(Level.ERROR)) {
+        if (LOG.isErrorLevel()) {
           LOG.error("Configuration " + SPropertyOperations.getString(runConfiguration, PROPS.name$MnvL) + " does not have any executors.");
         }
       }
@@ -573,7 +542,6 @@ public class QueriesGenerated extends QueryProviderBase {
     rrcMethods.put("5812151570929690815", new RRC(i++));
     rrcMethods.put("7806358006983771918", new RRC(i++));
     rrcMethods.put("5475888311765592535", new RRC(i++));
-    rrcMethods.put("7244675116808105166", new RRC(i++));
     rrcMethods.put("529406319400452326", new RRC(i++));
     rrcMethods.put("2572811016744697055", new RRC(i++));
     rrcMethods.put("1594211126127774368", new RRC(i++));
@@ -586,11 +554,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public ReductionRuleCondition getReductionRuleCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(rrcMethods.containsKey(id))) {
-      return super.getReductionRuleCondition(identity);
-    }
-    return rrcMethods.get(id);
+    ReductionRuleCondition query = identity.forTemplateNode(rrcMethods);
+    return (query != null ? query : super.getReductionRuleCondition(identity));
   }
   private static class RRC implements ReductionRuleCondition {
     private final int methodKey;
@@ -621,10 +586,8 @@ public class QueriesGenerated extends QueryProviderBase {
         case 9:
           return QueriesGenerated.rule_Condition_0_9(ctx);
         case 10:
-          return QueriesGenerated.rule_Condition_0_10(ctx);
-        case 11:
           return QueriesGenerated.rule_Condition_21_0(ctx);
-        case 12:
+        case 11:
           return QueriesGenerated.rule_Condition_21_1(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for rule %s (key: #%d)", ctx.getTemplateReference(), methodKey));
@@ -640,11 +603,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public CreateRootCondition getCreateRootRuleCondition(@NotNull QueryKey identity) {
-    String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(crcMethods.containsKey(id))) {
-      return super.getCreateRootRuleCondition(identity);
-    }
-    return crcMethods.get(id);
+    CreateRootCondition query = identity.forTemplateNode(crcMethods);
+    return (query != null ? query : super.getCreateRootRuleCondition(identity));
   }
   private static class CRC implements CreateRootCondition {
     private final int methodKey;
@@ -674,29 +634,20 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public WeaveRuleCondition getWeaveRuleCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(wrcnMethods.containsKey(id))) {
-      return super.getWeaveRuleCondition(identity);
-    }
-    return wrcnMethods.get(id);
+    WRQ query = identity.forTemplateNode(wrcnMethods);
+    return (query != null ? query : super.getWeaveRuleCondition(identity));
   }
   @Override
   @NotNull
   public WeaveRuleQuery getWeaveRuleQuery(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(wrcnMethods.containsKey(id))) {
-      return super.getWeaveRuleQuery(identity);
-    }
-    return wrcnMethods.get(id);
+    WRQ query = identity.forTemplateNode(wrcnMethods);
+    return (query != null ? query : super.getWeaveRuleQuery(identity));
   }
   @NotNull
   @Override
   public WeaveAnchorQuery getWeaveAnchorQuery(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(wrcnMethods.containsKey(id))) {
-      return super.getWeaveAnchorQuery(identity);
-    }
-    return wrcnMethods.get(id);
+    WRQ query = identity.forTemplateNode(wrcnMethods);
+    return (query != null ? query : super.getWeaveAnchorQuery(identity));
   }
   private static class WRQ implements WeaveRuleQuery, WeaveRuleCondition, WeaveAnchorQuery {
     private final int methodKey;
@@ -759,11 +710,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public ScriptCodeBlock getScriptCodeBlock(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(mscbMethods.containsKey(id))) {
-      return super.getScriptCodeBlock(identity);
-    }
-    return mscbMethods.get(id);
+    ScriptCodeBlock query = identity.forTemplateNode(mscbMethods);
+    return (query != null ? query : super.getScriptCodeBlock(identity));
   }
   private static class SCB implements ScriptCodeBlock {
     private final int methodKey;
@@ -796,7 +744,7 @@ public class QueriesGenerated extends QueryProviderBase {
     snqMethods.put("1594211126127708908", new SNQ(i++));
     snqMethods.put("7236226861153318862", new SNQ(i++));
     snqMethods.put("7236226861153318943", new SNQ(i++));
-    snqMethods.put("7699828872023729556", new SNQ(i++));
+    snqMethods.put("6565560734627549315", new SNQ(i++));
     snqMethods.put("7952658987872141374", new SNQ(i++));
     snqMethods.put("5703615523638509647", new SNQ(i++));
     snqMethods.put("2572811016744673860", new SNQ(i++));
@@ -815,11 +763,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public SourceNodeQuery getSourceNodeQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snqMethods.containsKey(id))) {
-      return super.getSourceNodeQuery(identity);
-    }
-    return snqMethods.get(id);
+    SourceNodeQuery query = identity.forFunctionNode(snqMethods);
+    return (query != null ? query : super.getSourceNodeQuery(identity));
   }
   private static class SNQ implements SourceNodeQuery {
     private final int methodKey;
@@ -916,11 +861,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public SourceNodesQuery getSourceNodesQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snsqMethods.containsKey(id))) {
-      return super.getSourceNodesQuery(identity);
-    }
-    return snsqMethods.get(id);
+    SourceNodesQuery query = identity.forFunctionNode(snsqMethods);
+    return (query != null ? query : super.getSourceNodesQuery(identity));
   }
   private static class SNsQ implements SourceNodesQuery {
     private final int methodKey;
@@ -1026,11 +968,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public PropertyValueQuery getPropertyValueQuery(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(pvqMethods.containsKey(id))) {
-      return super.getPropertyValueQuery(identity);
-    }
-    return pvqMethods.get(id);
+    PropertyValueQuery query = identity.forTemplateNode(pvqMethods);
+    return (query != null ? query : super.getPropertyValueQuery(identity));
   }
   private static class PVQ extends PropertyValueQuery.Base {
     private final int methodKey;
@@ -1149,11 +1088,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public IfMacroCondition getIfMacroCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(imcMethods.containsKey(id))) {
-      return super.getIfMacroCondition(identity);
-    }
-    return imcMethods.get(id);
+    IfMacroCondition query = identity.forTemplateNode(imcMethods);
+    return (query != null ? query : super.getIfMacroCondition(identity));
   }
   private static class IfMC implements IfMacroCondition {
     private final int methodKey;
@@ -1215,7 +1151,7 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("8147019390234496483", new RTQ(18, "IPersistentConfiguration"));
     rtqMethods.put("4013739085301446322", new RTQ(19, "BaseConcept"));
     rtqMethods.put("4013739085301455089", new RTQ(20, "BaseConcept"));
-    rtqMethods.put("4013739085301519675", new RTQ(21, "RunConfigurationProducerPart_Template"));
+    rtqMethods.put("4013739085301519675", new RTQ(21, "RunConfigurationProducer_Template.RunConfigurationProducerPart_Template"));
     rtqMethods.put("5703615523638516677", new RTQ(22, "BaseConcept"));
     rtqMethods.put("5703615523638516691", new RTQ(23, "BaseConcept"));
     rtqMethods.put("2137130439060046369", new RTQ(24, "myField"));
@@ -1224,11 +1160,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public ReferenceTargetQuery getReferenceTargetQuery(@NotNull QueryKey queryKey) {
-    final String id = queryKey.getTemplateNode().getNodeId().toString();
-    if (!(rtqMethods.containsKey(id))) {
-      return super.getReferenceTargetQuery(queryKey);
-    }
-    return rtqMethods.get(id);
+    ReferenceTargetQuery query = queryKey.forTemplateNode(rtqMethods);
+    return (query != null ? query : super.getReferenceTargetQuery(queryKey));
   }
   private static class RTQ extends ReferenceTargetQuery.Base {
     private final int methodKey;
@@ -1296,27 +1229,27 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
+  private static SNode _quotation_createNode_x583g4_a0a0a67() {
+    SNode quotedNode_1 = null;
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x10cd05c601dL, "ConceptReference"));
+    quotedNode_1 = nb.getResult();
+    nb.setReference(MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05c601dL, 0x10cd05d18efL, "concept"), "r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)/1133920641626");
+    return quotedNode_1;
+  }
   private static SNode _quotation_createNode_x583g4_a0a0a77() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x10cd05c601dL, "ConceptReference")).getResult();
-    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05c601dL, 0x10cd05d18efL, "concept"), SReference.create(MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05c601dL, 0x10cd05d18efL, "concept"), quotedNode_1, facade.createModelReference("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)"), facade.createNodeId("1133920641626")));
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x10cd05c601dL, "ConceptReference"));
+    quotedNode_1 = nb.getResult();
+    nb.setReference(MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05c601dL, 0x10cd05d18efL, "concept"), "r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)/1133920641626");
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_x583g4_a0a0a87() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x10cd05c601dL, "ConceptReference")).getResult();
-    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05c601dL, 0x10cd05d18efL, "concept"), SReference.create(MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05c601dL, 0x10cd05d18efL, "concept"), quotedNode_1, facade.createModelReference("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)"), facade.createNodeId("1133920641626")));
-    return quotedNode_1;
-  }
-  private static List<SNode> check_x583g4_a0a0ve(SNode checkedDotOperand) {
+  private static List<SNode> check_x583g4_a0a0ue(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return SLinkOperations.getChildren(checkedDotOperand, LINKS.beforeTask$gYe_);
     }
     return null;
   }
-  private static List<SNode> check_x583g4_a0a0xe(SNode checkedDotOperand) {
+  private static List<SNode> check_x583g4_a0a0we(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return SLinkOperations.getChildren(checkedDotOperand, LINKS.beforeTask$gYe_);
     }
@@ -1326,7 +1259,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return str != null && str.length() > 0;
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
 
   private static final class CONCEPTS {

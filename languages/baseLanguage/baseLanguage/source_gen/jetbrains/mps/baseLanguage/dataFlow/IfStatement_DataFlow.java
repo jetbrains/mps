@@ -6,27 +6,17 @@ import jetbrains.mps.lang.dataFlow.DataFlowBuilder;
 import jetbrains.mps.lang.dataFlow.DataFlowBuilderContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.language.SProperty;
 
 public class IfStatement_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
     _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.condition$5R17));
-    if (!((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.condition$5R17), CONCEPTS.BooleanConstant$n4) && SPropertyOperations.getBoolean(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.condition$5R17), CONCEPTS.BooleanConstant$n4), PROPS.value$5y_M)))) {
-      _context.getBuilder().emitIfJump(_context.getBuilder().label(_context.getNode(), "endOfTrue"), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1235407894378");
-    }
+    _context.getBuilder().emitIfJump(_context.getBuilder().label(_context.getNode(), "endOfTrue"), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1894172621088425982");
     _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.ifTrue$5Rg8));
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$psZK) != null) || SLinkOperations.getChildren(_context.getNode(), LINKS.elsifClauses$EVJW) != null && ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.elsifClauses$EVJW)).isNotEmpty()) {
-      _context.getBuilder().emitMayBeUnreachable(new Runnable() {
-        public void run() {
-          _context.getBuilder().emitJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1217868921099");
-        }
-      });
+      _context.getBuilder().emitMayBeUnreachable(() -> _context.getBuilder().emitJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1217868921099"));
     }
     _context.getBuilder().emitLabel("endOfTrue");
     for (SNode elseIf : SLinkOperations.getChildren(_context.getNode(), LINKS.elsifClauses$EVJW)) {
@@ -42,13 +32,5 @@ public class IfStatement_DataFlow extends DataFlowBuilder {
     /*package*/ static final SContainmentLink ifTrue$5Rg8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
     /*package*/ static final SContainmentLink ifFalseStatement$psZK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
     /*package*/ static final SContainmentLink elsifClauses$EVJW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0x118cecf1287L, "elsifClauses");
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept BooleanConstant$n4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant");
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty value$5y_M = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
   }
 }

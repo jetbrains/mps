@@ -4,25 +4,19 @@ package jetbrains.mps.smodel.persistence.def.v7;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.smodel.persistence.def.v6.ModelPersistence6;
-import jetbrains.mps.smodel.persistence.def.IModelWriter;
-import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.persistence.def.v4.IModelReader;
 import jetbrains.mps.util.xml.XMLSAXHandler;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
+import jetbrains.mps.smodel.SModelHeader;
 import java.util.List;
 import jetbrains.mps.smodel.persistence.lines.LineContent;
 
-@GeneratedClass(node = "r:b11ed8aa-3bfd-4e32-9f42-fbe92f0be58c(jetbrains.mps.smodel.persistence.def.v7)/453110257780658559", model = "r:b11ed8aa-3bfd-4e32-9f42-fbe92f0be58c(jetbrains.mps.smodel.persistence.def.v7)")
+@GeneratedClass(nodeId = "453110257780658559", model = "r:b11ed8aa-3bfd-4e32-9f42-fbe92f0be58c(jetbrains.mps.smodel.persistence.def.v7)")
 public class ModelPersistence7 extends ModelPersistence6 {
   @Override
   public int getVersion() {
     return 7;
-  }
-  @Override
-  public IModelWriter getModelWriter(@Nullable SModelHeader header) {
-    return null;
   }
   @Override
   public IModelReader getModelReader() {

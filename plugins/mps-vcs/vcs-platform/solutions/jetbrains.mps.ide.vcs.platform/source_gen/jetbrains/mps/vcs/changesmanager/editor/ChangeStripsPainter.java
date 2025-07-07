@@ -4,7 +4,6 @@ package jetbrains.mps.vcs.changesmanager.editor;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.nodeEditor.leftHighlighter.AbstractFoldingAreaPainter;
-import java.awt.Color;
 import jetbrains.mps.vcs.diff.ui.common.ChangeGroupLayout;
 import jetbrains.mps.vcs.diff.ui.common.ChangeGroup;
 import jetbrains.mps.vcs.diff.ui.common.ChangeGroupMessages;
@@ -23,22 +22,18 @@ import jetbrains.mps.vcs.diff.changes.SetPropertyChange;
 import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
 import jetbrains.mps.vcs.diff.changes.NodeGroupChange;
 import jetbrains.mps.vcs.diff.changes.SetConceptChange;
+import jetbrains.mps.vcs.diff.changes.NodeIdChange;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.Nullable;
 import java.awt.Point;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessage;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.awt.event.MouseEvent;
 import java.awt.Cursor;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 
-@GeneratedClass(node = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)/867367425399189430", model = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)")
+@GeneratedClass(nodeId = "867367425399189430", model = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)")
 public class ChangeStripsPainter extends AbstractFoldingAreaPainter {
-  private static final int AREA_WIDTH = 6;
+  private static final int AREA_WIDTH = 4;
   private static final int ARROW_HEIGHT = 8;
-  private static final Color AREA_FRAME_COLOR = Color.GRAY;
   private EditorHighlighter myEditorHighlighter;
   private ChangeGroupLayout myChangeGroupLayout;
   private ChangeGroup myGroupUnderMouse;
@@ -49,7 +44,6 @@ public class ChangeStripsPainter extends AbstractFoldingAreaPainter {
     myEditorHighlighter = editorHighlighter;
     myChangeGroupLayout = new StripsChangeGroupLayout(myEditorHighlighter);
     myGroupMessages = new ChangeGroupMessages(myChangeGroupLayout, true);
-    myGroupMessages.startMaintaining();
   }
   @NotNull
   @Override
@@ -69,17 +63,14 @@ public class ChangeStripsPainter extends AbstractFoldingAreaPainter {
     for (ChangeGroup changeGroup : ListSequence.fromList(myChangeGroupLayout.getChangeGroups())) {
       Bounds bounds = changeGroup.getBounds(true);
       int y = (int) bounds.start();
-      g.setColor(ChangeColors.get(changeGroup.getChangeType()));
+      g.setColor(ChangeColors.getInstance().getGutterColor(changeGroup.getChangeType()));
       if (bounds.length() <= 1) {
         Graphics2D g2d = ((Graphics2D) g);
         Object oldAntialiasing = g2d.getRenderingHint(RenderingHints.KEY_ANTIALIASING);
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        int[] xPoints = new int[]{-AREA_WIDTH, -AREA_WIDTH, -1};
+        int[] xPoints = new int[]{-AREA_WIDTH, -AREA_WIDTH, 0};
         int[] yPoints = new int[]{y, y + ChangeStripsPainter.ARROW_HEIGHT, y + ChangeStripsPainter.ARROW_HEIGHT / 2};
         g.fillPolygon(xPoints, yPoints, 3);
-
-        g.setColor(AREA_FRAME_COLOR);
-        g.drawPolygon(xPoints, yPoints, 3);
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, oldAntialiasing);
         continue;
       }
@@ -91,11 +82,6 @@ public class ChangeStripsPainter extends AbstractFoldingAreaPainter {
         break;
       }
       g.fillRect(-AREA_WIDTH, y, AREA_WIDTH, height);
-
-      g.setColor(AREA_FRAME_COLOR);
-      g.drawLine(-AREA_WIDTH, y, 0, y);
-      g.drawLine(-AREA_WIDTH, y + height, 0, y + height);
-      g.drawLine(-AREA_WIDTH, y, -AREA_WIDTH, y + height);
     }
   }
   @Override
@@ -122,6 +108,8 @@ public class ChangeStripsPainter extends AbstractFoldingAreaPainter {
           return ((NodeGroupChange) change).getDescription(false);
         } else if (change instanceof SetConceptChange) {
           return ((SetConceptChange) change).getDescription();
+        } else if (change instanceof NodeIdChange) {
+          return ((NodeIdChange) change).getDescription(false);
         }
       }
       return NameUtil.formatNumericalString(ListSequence.fromList(changes).count(), "change");
@@ -131,11 +119,9 @@ public class ChangeStripsPainter extends AbstractFoldingAreaPainter {
   private ChangeGroup findMessageGroupUnder(@NotNull final Point p) {
     double localX = p.getX() - getLeftHighlighter().getFoldingLineX();
     if (localX >= -AREA_WIDTH && localX < 0) {
-      return ListSequence.fromList(myChangeGroupLayout.getChangeGroups()).findFirst(new IWhereFilter<ChangeGroup>() {
-        public boolean accept(ChangeGroup cg) {
-          Bounds b = cg.getBounds(true);
-          return (int) b.start() <= p.getY() && p.getY() <= (int) b.end() || b.length() <= 1 && (int) b.start() - ARROW_HEIGHT / 2 <= p.getY() && p.getY() <= (int) b.end() + ARROW_HEIGHT / 2;
-        }
+      return ListSequence.fromList(myChangeGroupLayout.getChangeGroups()).findFirst((cg) -> {
+        Bounds b = cg.getBounds(true);
+        return (int) b.start() <= p.getY() && p.getY() <= (int) b.end() || b.length() <= 1 && (int) b.start() - ARROW_HEIGHT / 2 <= p.getY() && p.getY() <= (int) b.end() + ARROW_HEIGHT / 2;
       });
     } else {
       return null;
@@ -143,15 +129,7 @@ public class ChangeStripsPainter extends AbstractFoldingAreaPainter {
   }
   /*package*/ void setGroupHighlighted(@Nullable ChangeGroup group, final boolean highlighted) {
     if (group != null) {
-      ListSequence.fromList(group.getChanges()).translate(new ITranslator2<ModelChange, ChangeEditorMessage>() {
-        public Iterable<ChangeEditorMessage> translate(ModelChange ch) {
-          return myEditorHighlighter.getMessages(ch);
-        }
-      }).visitAll(new IVisitor<ChangeEditorMessage>() {
-        public void visit(ChangeEditorMessage m) {
-          m.setHighlighted(highlighted);
-        }
-      });
+      ListSequence.fromList(group.getChanges()).translate((ch) -> myEditorHighlighter.getMessages(ch)).visitAll((m) -> m.setHighlighted(highlighted));
     }
   }
   private void setGroupUnderMouse(@Nullable ChangeGroup group) {
@@ -190,7 +168,7 @@ public class ChangeStripsPainter extends AbstractFoldingAreaPainter {
     if (event.getID() != MouseEvent.MOUSE_CLICKED) {
       return;
     }
-    check_h84zmo_a1a02(myPopupToolbar);
+    check_h84zmo_a1a91(myPopupToolbar);
     getEditorComponent().requestFocus();
     if (event.getButton() == MouseEvent.BUTTON1) {
       ChangeGroup changeGroup = findMessageGroupUnder(event.getPoint());
@@ -220,26 +198,18 @@ public class ChangeStripsPainter extends AbstractFoldingAreaPainter {
     }
     if (next) {
       final int bottomY = contextCell.getY() + contextCell.getHeight();
-      return ListSequence.fromList(myChangeGroupLayout.getChangeGroups()).findFirst(new IWhereFilter<ChangeGroup>() {
-        public boolean accept(ChangeGroup g) {
-          return bottomY < (int) g.getBounds(true).start();
-        }
-      });
+      return ListSequence.fromList(myChangeGroupLayout.getChangeGroups()).findFirst((g) -> bottomY < (int) g.getBounds(true).start());
     } else {
       final int topY = contextCell.getY();
-      return ListSequence.fromList(myChangeGroupLayout.getChangeGroups()).findLast(new IWhereFilter<ChangeGroup>() {
-        public boolean accept(ChangeGroup g) {
-          return topY > (int) g.getBounds(true).end();
-        }
-      });
+      return ListSequence.fromList(myChangeGroupLayout.getChangeGroups()).findLast((g) -> topY > (int) g.getBounds(true).end());
     }
   }
   @Nullable
   /*package*/ ChangeGroup getCurrentChangeGroup() {
-    return check_h84zmo_a0a42(myPopupToolbar);
+    return check_h84zmo_a0a32(myPopupToolbar);
   }
   /*package*/ void showPopupForGroup(@Nullable ChangeGroup group) {
-    check_h84zmo_a0a52(myPopupToolbar);
+    check_h84zmo_a0a42(myPopupToolbar);
     if (group != null) {
       showPopupForGroup(group, (int) group.getBounds(true).start());
     }
@@ -249,19 +219,19 @@ public class ChangeStripsPainter extends AbstractFoldingAreaPainter {
     myGroupMessages.dispose();
     super.dispose();
   }
-  private static void check_h84zmo_a1a02(PopupPanel checkedDotOperand) {
+  private static void check_h84zmo_a1a91(PopupPanel checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.dispose();
     }
 
   }
-  private static ChangeGroup check_h84zmo_a0a42(PopupPanel checkedDotOperand) {
+  private static ChangeGroup check_h84zmo_a0a32(PopupPanel checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getChangeGroup();
     }
     return null;
   }
-  private static void check_h84zmo_a0a52(PopupPanel checkedDotOperand) {
+  private static void check_h84zmo_a0a42(PopupPanel checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.dispose();
     }

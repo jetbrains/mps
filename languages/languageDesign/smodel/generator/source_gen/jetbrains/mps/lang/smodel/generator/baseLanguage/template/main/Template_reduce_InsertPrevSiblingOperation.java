@@ -12,14 +12,11 @@ import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.SReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import java.util.Collection;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
-import jetbrains.mps.generator.runtime.NodeWeaveFacility;
-import java.util.ArrayList;
+import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -29,6 +26,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class Template_reduce_InsertPrevSiblingOperation extends TemplateDeclarationBase {
 
   public Template_reduce_InsertPrevSiblingOperation() {
+    super(new MO());
   }
 
   public SNodeReference getTemplateNode() {
@@ -39,29 +37,22 @@ public class Template_reduce_InsertPrevSiblingOperation extends TemplateDeclarat
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
-      tnode1.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode1, PersistenceFacade.getInstance().createModelReference("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)"), PersistenceFacade.getInstance().createNodeId("6599163591527286941")));
-      tnode1.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode1, PersistenceFacade.getInstance().createModelReference("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)"), PersistenceFacade.getInstance().createNodeId("6599163591527294618")));
+    {
+      environment.associate(tnode1, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527286941");
+      environment.associate(tnode1, myAssociationLinks[1], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527294618");
       TemplateContext context1 = context.subContext();
       {
         Collection<SNode> tlist2 = null;
-        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_9_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_cik7gy_b0a0c0d0c0g));
-        tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_cik7gy_b0a0c0d0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/1143225530640", context1);
-        for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-          tnode1.addChild(myAggregationLinks[0], child3);
-        }
-        // TODO validate child 
+        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_9_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro));
+        tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro, "tpl/r:00000000-0000-4000-0000-011c89590303/1143225530640", context1);
+        environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
       }
       {
-        Collection<SNode> tlist4 = null;
-        final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_9_1(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_cik7gy_b0a0c0e0c0g));
-        tlist4 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput4), copySrcMacro_cik7gy_b0a0c0e0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/1143225530642", context1);
-        for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
-          tnode1.addChild(myAggregationLinks[0], child5);
-        }
-        // TODO validate child 
+        Collection<SNode> tlist3 = null;
+        final SNode copySrcInput3 = QueriesGenerated.sourceNodeQuery_9_1(new SourceSubstituteMacroNodeContext(context1, copySrcMacro1));
+        tlist3 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput3), copySrcMacro1, "tpl/r:00000000-0000-4000-0000-011c89590303/1143225530642", context1);
+        environment.aggregate(tnode1, myAggregationLinks[0], tlist3);
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(1, tnode1);
     return rv;
@@ -71,31 +62,31 @@ public class Template_reduce_InsertPrevSiblingOperation extends TemplateDeclarat
     applyPart0(context).reportTo(sink);
   }
 
-  public Collection<SNode> weave(@NotNull NodeWeaveFacility weaveSupport) throws GenerationException {
-    ArrayList<SNode> rv = new ArrayList<SNode>();
-    applyPart0(weaveSupport.getTemplateContext()).weaveWith(weaveSupport).reportTo(rv);
-    return rv;
+  /*package*/ static final class MO implements MetaObjectContainer {
+    @Override
+    public SConcept[] concepts() {
+      SConcept[] rv = new SConcept[1];
+      rv[0] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbbebabf09L, "StaticMethodCall");
+      return rv;
+    }
+
+
+    @Override
+    public SReferenceLink[] associations() {
+      SReferenceLink[] rv = new SReferenceLink[2];
+      rv[0] = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
+      rv[1] = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+      return rv;
+    }
+
+    @Override
+    public SContainmentLink[] aggregations() {
+      SContainmentLink[] rv = new SContainmentLink[2];
+      rv[0] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+      rv[1] = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
+      return rv;
+    }
   }
-  @Override
-  protected SConcept[] initConcepts() {
-    SConcept[] rv = new SConcept[1];
-    rv[0] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbbebabf09L, "StaticMethodCall");
-    return rv;
-  }
-  @Override
-  protected SReferenceLink[] initAssociationLinks() {
-    SReferenceLink[] rv = new SReferenceLink[2];
-    rv[0] = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
-    rv[1] = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    return rv;
-  }
-  @Override
-  protected SContainmentLink[] initAggregationLinks() {
-    SContainmentLink[] rv = new SContainmentLink[2];
-    rv[0] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    rv[1] = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
-    return rv;
-  }
-  private static final SNodePointer copySrcMacro_cik7gy_b0a0c0d0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1143225530641");
-  private static final SNodePointer copySrcMacro_cik7gy_b0a0c0e0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1143225530643");
+  private static final SNodePointer copySrcMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1143225530641");
+  private static final SNodePointer copySrcMacro1 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1143225530643");
 }

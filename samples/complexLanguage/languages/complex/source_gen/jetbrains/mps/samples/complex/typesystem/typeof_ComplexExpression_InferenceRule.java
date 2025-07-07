@@ -10,10 +10,9 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_ComplexExpression_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
@@ -23,7 +22,7 @@ public class typeof_ComplexExpression_InferenceRule extends AbstractInferenceRul
     {
       SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(nodeToCheck, LINKS.complexExpression$ieG0);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590424(jetbrains.mps.samples.complex.typesystem)", "1196268989250", 0, null);
-      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590424(jetbrains.mps.samples.complex.typesystem)", "1196268989252", true), (SNode) _quotation_createNode_l75no8_a1a0c0a0b(), false, false, _info_12389875345);
+      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590424(jetbrains.mps.samples.complex.typesystem)", "1196268989252", true), (SNode) createComplexType_l75no8_a1a0c0a0b(), false, false, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -35,11 +34,9 @@ public class typeof_ComplexExpression_InferenceRule extends AbstractInferenceRul
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_l75no8_a1a0c0a0b() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, "jetbrains.mps.samples.complex"), 0x11686a0422aL, "ComplexType")).getResult();
-    return quotedNode_1;
+  private static SNode createComplexType_l75no8_a1a0c0a0b() {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ComplexType$zx);
+    return n0.getResult();
   }
 
   private static final class LINKS {
@@ -48,5 +45,6 @@ public class typeof_ComplexExpression_InferenceRule extends AbstractInferenceRul
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept SingleComplexExpression$8b = MetaAdapterFactory.getConcept(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686b3b49dL, "jetbrains.mps.samples.complex.structure.SingleComplexExpression");
+    /*package*/ static final SConcept ComplexType$zx = MetaAdapterFactory.getConcept(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686a0422aL, "jetbrains.mps.samples.complex.structure.ComplexType");
   }
 }

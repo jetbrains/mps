@@ -20,7 +20,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.baseLanguage.behavior.ElsifClause__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -83,7 +82,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "else if");
     editorCell.setCellId("Constant_m61dlm_a0");
     Style style = new StyleImpl();
-    new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeyWordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
@@ -94,10 +93,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     public ElsifClause_generic_cellMenu_m61dlm_a0a0() {
     }
 
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-      // todo: this is quite a hackish stuff but we need it 
-      // todo: but we need it since we can't enable/disable 
-      // todo: menu items by condition 
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
+      // todo: this is quite a hackish stuff but we need it
+      // todo: but we need it since we can't enable/disable
+      // todo: menu items by condition
       SNode ifStatement = ElsifClause__BehaviorDescriptor.getIfStatement_idhEwIDu9.invoke(node);
       List<String> result = ListSequence.fromList(new ArrayList<String>());
       if ((SLinkOperations.getTarget(ifStatement, LINKS.ifFalseStatement$psZK) == null)) {
@@ -105,16 +104,17 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       }
       ListSequence.fromList(result).addElement("else if");
       return result;
+
     }
-    protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
+    protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      this.handleAction_impl((String) parameterObject, node, model, editorContext);
     }
-    public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
       if ("else".equals(parameterObject)) {
         ElsifClause__BehaviorDescriptor.convertToElseClause_idhIdko9K.invoke(node);
       }
     }
-    public boolean isReferentPresentation() {
+    protected boolean isReferentPresentation() {
       return false;
     }
 
@@ -127,7 +127,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "(");
     editorCell.setCellId("Constant_m61dlm_b0");
     Style style = new StyleImpl();
-    new LeftParenStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new LeftParenStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -191,7 +191,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ")");
     editorCell.setCellId("Constant_m61dlm_d0");
     Style style = new StyleImpl();
-    new RightParenStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new RightParenStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -200,7 +200,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "{");
     editorCell.setCellId("Constant_m61dlm_e0");
     Style style = new StyleImpl();
-    new LeftBraceStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new LeftBraceStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
@@ -269,9 +269,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "}");
     editorCell.setCellId("Constant_m61dlm_g0");
     Style style = new StyleImpl();
-    new RightBraceStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new RightBraceStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.SELECTABLE, true);
     editorCell.getStyle().putAll(style);
+    ElseIfEnterOnEndingBrace.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
     return editorCell;
   }

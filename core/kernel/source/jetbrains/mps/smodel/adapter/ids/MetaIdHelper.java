@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,15 +18,13 @@ package jetbrains.mps.smodel.adapter.ids;
 import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
 import jetbrains.mps.smodel.adapter.structure.concept.SInterfaceConceptAdapterById;
 import jetbrains.mps.smodel.adapter.structure.language.SLanguageAdapterById;
-import jetbrains.mps.smodel.adapter.structure.link.SContainmentLinkAdapterById;
-import jetbrains.mps.smodel.adapter.structure.property.SPropertyAdapterById;
-import jetbrains.mps.smodel.adapter.structure.ref.SReferenceLinkAdapterById;
-import jetbrains.mps.smodel.adapter.structure.types.SConstrainedStringDatatypeAdapter;
+import jetbrains.mps.smodel.adapter.structure.link.SContainmentLinkAdapter;
+import jetbrains.mps.smodel.adapter.structure.property.SPropertyAdapter;
+import jetbrains.mps.smodel.adapter.structure.ref.SReferenceLinkAdapter;
 import jetbrains.mps.smodel.adapter.structure.types.SEnumerationAdapter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import org.jetbrains.mps.openapi.language.SDataType;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -63,31 +61,45 @@ public final class MetaIdHelper {
     return MetaIdFactory.INVALID_CONCEPT_ID;
   }
 
+  /**
+   * @see #unrecognized(SProperty)
+   */
+  public static boolean unrecognized(SAbstractConcept c) {
+    return MetaIdFactory.INVALID_CONCEPT_ID.equals(getConcept(c));
+  }
+
   @NotNull
   public static SPropertyId getProperty(SProperty p) {
     //todo make serialization via serialize method
-    if (!(p instanceof SPropertyAdapterById)) {
-      return MetaIdFactory.INVALID_PROP_ID;
+    if (p instanceof SPropertyAdapter) {
+      return ((SPropertyAdapter) p).getId();
     }
-    return ((SPropertyAdapterById) p).getId();
+    return MetaIdFactory.INVALID_PROP_ID;
+  }
+
+  /**
+   * Unlike {@link org.jetbrains.mps.openapi.language.SConceptFeature#isValid()}, this method checks id value only
+   */
+  public static boolean unrecognized(SProperty c) {
+    return MetaIdFactory.INVALID_PROP_ID.equals(getProperty(c));
   }
 
   @NotNull
   public static SReferenceLinkId getAssociation(SReferenceLink r) {
     //todo make serialization via serialize method
-    if (!(r instanceof SReferenceLinkAdapterById)) {
-      return MetaIdFactory.INVALID_REF_ID;
+    if (r instanceof SReferenceLinkAdapter) {
+      return ((SReferenceLinkAdapter) r).getId();
     }
-    return ((SReferenceLinkAdapterById) r).getId();
+    return MetaIdFactory.INVALID_REF_ID;
   }
 
   @NotNull
   public static SContainmentLinkId getAggregation(SContainmentLink l) {
     //todo make serialization via serialize method
-    if (!(l instanceof SContainmentLinkAdapterById)) {
-      return MetaIdFactory.INVALID_LINK_ID;
+    if (l instanceof SContainmentLinkAdapter) {
+      return ((SContainmentLinkAdapter) l).getId();
     }
-    return ((SContainmentLinkAdapterById) l).getId();
+    return MetaIdFactory.INVALID_LINK_ID;
   }
 
   @NotNull

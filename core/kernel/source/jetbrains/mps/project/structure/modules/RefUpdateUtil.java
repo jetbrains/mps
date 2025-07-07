@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,6 +34,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.function.Consumer;
 
 import static jetbrains.mps.smodel.SModelReference.differs;
 
@@ -118,7 +119,21 @@ public final class RefUpdateUtil {
     return !remove.isEmpty();
   }
 
-  // Perhaps, RUU could be kept generic, and ModuleDescriptor would take care of the owner class (Dependency) then?
+  // invokes set function in case reference has been updated.
+  // null input treated as 'no update'
+  public boolean updateModuleRef(@Nullable SModuleReference ref, @NotNull Consumer<SModuleReference> setter) {
+    if (ref == null) {
+      return false;
+    }
+    SModuleReference newRef = update(ref);
+    if (ModuleReference.differs(ref, newRef)) {
+      setter.accept(newRef);
+      return true;
+    }
+    return false;
+  }
+
+    // Perhaps, RUU could be kept generic, and ModuleDescriptor would take care of the owner class (Dependency) then?
   public boolean updateDependencies(Collection<Dependency> deps) {
     boolean changed = false;
     for (Dependency dep : deps) {
@@ -152,6 +167,9 @@ public final class RefUpdateUtil {
   // could be public if we decide this class shall be generic and do not deal with Dependency (@see #updateDependencies())
   private SModuleReference update(SModuleReference reference) {
     SModule module = reference.resolve(myRepository);
+    // XXX if there's outdated module reference recorded, next logic doesn't allow us to tell non-existent from unmodified,
+    //     see j.m.baseLanguage.mpl, where incorrect j.m.bl.references.runtime module reference happily lived for 2+ years!
+    //     OTOH, perhaps, it was Migration's Re-save All Modules responsibility?
     return module == null ? reference : module.getModuleReference();
   }
 

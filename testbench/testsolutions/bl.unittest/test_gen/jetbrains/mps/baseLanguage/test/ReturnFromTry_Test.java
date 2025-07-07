@@ -4,29 +4,24 @@ package jetbrains.mps.baseLanguage.test;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
-import jetbrains.mps.project.ProjectBase;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
+import java.util.Arrays;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 
 @MPSLaunch
 public class ReturnFromTry_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(ReturnFromTry_Test.class, "${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ReturnFromTry_Test.class).projectPath(null).modelRef("r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)").reopenProject(null).build());
 
   public ReturnFromTry_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -44,16 +39,24 @@ public class ReturnFromTry_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ReturnFromTry() throws Exception {
-      addNodeById("7209837885461546653");
-      // Check statement was moved to node annotation 
-      // check <node>error messages 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7209837885461546653");
     }
 
+    public void test_ReturnFromTry() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        // Check statement was moved to node annotation
+        // check getAnnotatedNode(string):node<> error messages
+      });
+    }
     public void test_ErrorMessagesCheck2501421320959199550() throws Exception {
-      SNode nodeToCheck = getRealNodeById("7209837885461546654");
-      SNode operation = getRealNodeById("2501421320959199550");
-      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7209837885461546654");
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(false).exclude(Arrays.<CheckExpectedMessageRunnable>asList()).run();
+      });
     }
 
   }

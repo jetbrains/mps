@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,58 +15,62 @@
  */
 package jetbrains.mps.vfs;
 
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URL;
-import java.net.URLDecoder;
-import java.nio.charset.Charset;
-import java.util.Locale;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 
-@Deprecated
-@ToRemove(version = 2019.1)
-//this should go away since we will operate only path-urls
 public final class Files {
-  private static final Logger LOG = LogManager.getLogger(Files.class);
+  private static final Logger LOG = Logger.getLogger(Files.class);
 
   private Files() {
   }
 
-  /**
-   * Usually when one calls URL#getPath he expects the result to be without scheme.
-   * However in the case of the 'jar' scheme it is not true (nicely done, JDK!)
-   * Hence the hack to resolve 'jar:file://a.jar!/a.txt' like URI is to resolve two times.
-   * <p>
-   * see <code>jetbrains.mps.workbench.index.RootNodeNameIndex</code> for a long and boring explanation
-   * <p>
-   * fixme it is better to parse on our own [apyshkin]
-   */
-  @NotNull
-  public static IFile fromURL(@NotNull URL url) {
-    String path = url.getPath();
-    try {
-      path = URLDecoder.decode(path, Charset.defaultCharset().name());
-    } catch (UnsupportedEncodingException e) {
-      LOG.error("Exception when trying to convert url to path: ", e);
-      return null;
+  public static boolean isJarOrZipFile(@NotNull File file) throws IOException {
+    boolean result = isJarOrZipFile0(file);
+    String absolutePath = file.getAbsolutePath();
+    if (!result && (absolutePath.endsWith(".zip") || absolutePath.endsWith(".jar"))) {
+      LOG.warning(String.format("The path '%s' ends with '.jar' or '.zip' but the contents are not recognized as a zip archive", absolutePath));
+      printDebugOnSuspiciousArchive(file);
     }
-    if (!path.startsWith("/")) { //strangely not absolute
-      if ("jar".equals(url.getProtocol())) {
-        if (path.startsWith("file:")) {
-          path = path.substring(7); // skip "file://"
+    return result;
+  }
 
-          //this is a fix for MPS-28009
-          //to get more clear code, we could use our own "path" objects instead of generic
-          //URL objects in model factories code.
-          if (System.getProperty("os.name").toLowerCase(Locale.US).startsWith("windows") && path.startsWith("/")) {
-            path = path.substring(1);
-          }
-        }
-      }
+  private static void printDebugOnSuspiciousArchive(@NotNull File file) throws IOException {
+    if (!file.exists()) {
+      LOG.warning(" the file does not exist");
+      return;
     }
-    return FileSystemExtPoint.getFS().getFile(path);
+    if (file.isDirectory()) {
+      LOG.warning(" the file is a directory");
+      return;
+    }
+    if (file.length() < 4) { // less than 4 bytes
+      LOG.warning(" the file length is less than 4 bytes");
+      return;
+    }
+    try (var dis = new DataInputStream(new FileInputStream(file))) {
+      int fileSignature = dis.readInt();
+      LOG.warning(" the file signature is " + fileSignature);
+    }
+  }
+
+  private static boolean isJarOrZipFile0(@NotNull File file) throws IOException {
+    if (!file.exists()) {
+      return false;
+    }
+    if (file.isDirectory()) {
+      return false;
+    }
+    if (file.length() < 4) { // less than 4 bytes
+      return false;
+    }
+    try (var dis = new DataInputStream(new FileInputStream(file))) {
+      int fileSignature = dis.readInt();
+      return fileSignature == 0x504B0304 || fileSignature == 0x504B0506 || fileSignature == 0x504B0708;
+    }
   }
 }

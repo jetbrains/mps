@@ -4,17 +4,15 @@ package jetbrains.mps.core.tool.environment.util;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.project.PathMacrosProvider;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import java.util.Map;
 import org.jetbrains.annotations.NotNull;
 import java.util.Set;
 import java.util.Collections;
-import org.apache.log4j.Level;
 
-@GeneratedClass(node = "r:a139668a-5a0e-46e2-a802-102190e497e5(jetbrains.mps.core.tool.environment.util)/5900076103425047615", model = "r:a139668a-5a0e-46e2-a802-102190e497e5(jetbrains.mps.core.tool.environment.util)")
+@GeneratedClass(nodeId = "5900076103425047615", model = "r:a139668a-5a0e-46e2-a802-102190e497e5(jetbrains.mps.core.tool.environment.util)")
 public class MapPathMacrosProvider implements PathMacrosProvider {
-  private static final Logger LOG = LogManager.getLogger(MapPathMacrosProvider.class);
+  private static final Logger LOG = Logger.getLogger(MapPathMacrosProvider.class);
   private static final String MSG = "Please define the path variable '%s' in the settings section 'Path variables'";
 
   private final Map<String, String> myMacros;
@@ -42,8 +40,8 @@ public class MapPathMacrosProvider implements PathMacrosProvider {
 
   @Override
   public void reportUnknownMacro(@NotNull String macro) {
-    if (LOG.isEnabledFor(Level.WARN)) {
-      LOG.warn("Undefined macro: " + macro + ". " + String.format(MSG, macro));
+    if (LOG.isWarningLevel()) {
+      LOG.warning("Undefined macro: " + macro + ". " + String.format(MSG, macro));
     }
   }
 }

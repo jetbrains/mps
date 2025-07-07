@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,7 +52,6 @@ import jetbrains.mps.typesystem.inference.util.StructuralNodeSet;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.containers.ManyToManyMap;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -71,7 +70,7 @@ import java.util.Set;
 import java.util.Stack;
 
 public class State {
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(State.class));
+  private static final Logger LOG = Logger.getLogger(State.class);
 
   private final TypeCheckingContext myTypeCheckingContext;
 
@@ -388,8 +387,16 @@ public class State {
             SConcept concept = node.getConcept();
             boolean isRuntime = concept.equals(SNodeUtil.concept_RuntimeTypeVariable);
             if (!concept.isAbstract() && !isRuntime) {
-              myTypeCheckingContext.reportWarning(node, "argument of WHEN CONCRETE block is never concrete",
-                  wCBlock.getNodeModel(), wCBlock.getNodeId(), null, new NodeMessageTarget());
+              String warnString = wCBlock.getWarningMessage();
+              if (warnString == null) {
+                warnString = "argument of WHEN CONCRETE block is never concrete";
+              }
+              myTypeCheckingContext.reportWarning(node,
+                                                  warnString,
+                                                  wCBlock.getNodeModel(),
+                                                  wCBlock.getNodeId(),
+                                                  null,
+                                                  new NodeMessageTarget());
             }
           }
         }

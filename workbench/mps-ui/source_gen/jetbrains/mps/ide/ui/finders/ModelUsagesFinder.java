@@ -22,7 +22,7 @@ import jetbrains.mps.ide.findusages.model.SearchResult;
  * Look up particular nodes in scope models with reference target pointing to SModelReference.
  * Search results are of type SNode
  */
-@GeneratedClass(node = "r:50589489-29e2-47e3-84bb-6bbe4094b4ce(jetbrains.mps.ide.ui.finders)/4132059805486521473", model = "r:50589489-29e2-47e3-84bb-6bbe4094b4ce(jetbrains.mps.ide.ui.finders)")
+@GeneratedClass(nodeId = "4132059805486521473", model = "r:50589489-29e2-47e3-84bb-6bbe4094b4ce(jetbrains.mps.ide.ui.finders)")
 public class ModelUsagesFinder implements IFinder {
   public ModelUsagesFinder() {
   }
@@ -46,7 +46,7 @@ public class ModelUsagesFinder implements IFinder {
   }
 
   /*package*/ void doFind(SModelReference what, Collection<SModel> where, @NotNull IFinder.FindCallback callback, ProgressMonitor monitor) {
-    // arguments != null 
+    // arguments != null
     monitor.start("Looking up references to a model", where.size());
     try {
       for (SModel modelDescriptor : where) {

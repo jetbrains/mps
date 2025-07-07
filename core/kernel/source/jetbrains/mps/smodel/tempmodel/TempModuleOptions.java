@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,13 +16,13 @@
 package jetbrains.mps.smodel.tempmodel;
 
 import jetbrains.mps.extapi.module.SRepositoryExt;
-import jetbrains.mps.project.structure.model.ModelRootDescriptor;
+import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.smodel.MPSModuleRepository;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
-
-import java.util.Collections;
-import java.util.Set;
+import org.jetbrains.mps.openapi.module.SModuleFacet;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 public abstract class TempModuleOptions {
   public abstract SModule createModule();
@@ -33,59 +33,74 @@ public abstract class TempModuleOptions {
     return new ExistingModuleOptions(m);
   }
 
-  public static TempModuleOptions forNewModule(Set<ModelRootDescriptor> modelRoots, boolean withSourceGen, boolean withJavaFacet) {
-    return new NewModuleOptions(modelRoots, withSourceGen, withJavaFacet);
-  }
-
-  public static TempModuleOptions forNewModule(Set<ModelRootDescriptor> modelRoots) {
-    return forNewModule(modelRoots, false, false);
-  }
-
   public static TempModuleOptions forDefaultModule() {
-    return forNewModule(Collections.emptySet());
+    return new NewModuleOptions(MPSModuleRepository.getInstance());
   }
 
   /**
-   * PROVISIONAL CODE, DO NOT USE OUTSIDE OF MPS
-   * @return options to instantiate {@link jetbrains.mps.module.ReloadableModule non-reloadable} temp module.
-   * Module has no Java Module facet nor model roots.
+   * Module has no Java Module facet nor model roots. Doesn't participate in class-loading, doesn't affect graph of module classloaders.
+   *
+   * @param repository where to register the new temporary module
+   * @return options to instantiate {@link ReloadableModule non-reloadable} temp module.
    */
+  public static TempModuleOptions nonReloadableModule(@NotNull SRepository repository) {
+    assert repository instanceof SRepositoryExt : "Only SRepositoryExt is supported";
+    return new NonReloadableNewModuleOptions((SRepositoryExt) repository);
+  }
+
+  /**
+   * @deprecated Use {@link #nonReloadableModule(SRepository)} instead. This method was intended for internal use and no external uses are expected.
+   *             Remove once 2025.1 is out.
+   */
+  @Deprecated(since = "2025.1", forRemoval = true)
   public static TempModuleOptions nonReloadableModule() {
-    return new NonReloadableNewModuleOptions(MPSModuleRepository.getInstance());
+    return nonReloadableModule(MPSModuleRepository.getInstance());
   }
 
-
-    public static TempModuleOptions forDefaultModuleWithSourceAndClassesGen() {
-    // todo: builder here
-    return new NewModuleOptions(Collections.emptySet(), true, true);
+  /**
+   * @since 2025.1
+   */
+  public static TempModuleOptions forNewModule(@NotNull SRepository repository, SModuleFacet... facets ) {
+    assert repository instanceof SRepositoryExt;
+    // XXX I wonder if there are enough options for temp module to have a builder (to configure TempModuleOptions).
+    return new NewModuleOptions((SRepositoryExt) repository, facets);
   }
 
-  private static class NewModuleOptions extends TempModuleOptions {
-    private final Set<ModelRootDescriptor> myModelRoots;
-    private final boolean myWithSourceGen;
-    private final boolean myWithJavaFacet;
+  /**
+   * Use to construct a {@link jetbrains.mps.project.facets.JavaModuleFacet JMF} instance to use in temporary module
+   * @since 2025.1
+   */
+  @NotNull
+  public static JavaModuleFacetBuilder javaFacet() {
+    return new JavaModuleFacetBuilder();
+  }
+
+  private static class NewModuleOptions extends TempModuleOptions implements MPSModuleOwner {
     private final SRepositoryExt myRepository;
+    private final TempModule myCreatedModule;
 
-    private TempModule myCreatedModule;
-
-    public NewModuleOptions(Set<ModelRootDescriptor> modelRoots, boolean withSourceGen, boolean withJavaFacet) {
-      myModelRoots = modelRoots;
-      myWithSourceGen = withSourceGen;
-      myWithJavaFacet = withJavaFacet;
-      myRepository = MPSModuleRepository.getInstance();
+    /*package*/ NewModuleOptions(SRepositoryExt repository, SModuleFacet... facets) {
+      myRepository = repository;
+      // Note, before this change, each #createModule() call resulted in a new module.
+      // Now that legacy cons is gone, can get back to that semantics (don't believe clients rely on it, though)
+      myCreatedModule = new TempModule(facets);
     }
 
     @Override
     public SModule createModule() {
-      myCreatedModule = new TempModule(myModelRoots, myWithSourceGen, myWithJavaFacet);
-      TempModule regModule = myRepository.registerModule(myCreatedModule, myCreatedModule);
+      TempModule regModule = myRepository.registerModule(myCreatedModule, this);
       assert myCreatedModule == regModule : "Temporary module with same id already registered";
       return myCreatedModule;
     }
 
     @Override
     public void disposeModule() {
-      myRepository.unregisterModule(myCreatedModule, myCreatedModule);
+      myRepository.unregisterModule(myCreatedModule, this);
+    }
+
+    @Override
+    public boolean isHidden() {
+      return true;
     }
   }
 

@@ -11,19 +11,11 @@ import java.util.Map;
 import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import java.util.Objects;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
-import org.jetbrains.mps.openapi.language.SInterfaceConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/5238877291854194705", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
+@GeneratedClass(nodeId = "5238877291854194705", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
 public class Comment_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -45,11 +37,7 @@ public class Comment_Action extends BaseAction {
     if (Objects.equals(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode(), event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getSelectedNode())) {
       return false;
     }
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNodeAncestors(((SNode) event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getSelectedNode()), null, true), CONCEPTS.IOldCommentContainer$6s)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(it, CONCEPTS.IOldCommentContainer$6s, SMethodTrimmedId.create("getCommentedNodes", null, "3$Sh7m_tmZE")))).isNotEmpty();
-      }
-    }).isEmpty();
+    return true;
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -74,9 +62,5 @@ public class Comment_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getSelectionManager().getSelection().executeAction(CellActionType.COMMENT);
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IOldCommentContainer$6s = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x39384475a5756fb0L, "jetbrains.mps.lang.core.structure.IOldCommentContainer");
   }
 }

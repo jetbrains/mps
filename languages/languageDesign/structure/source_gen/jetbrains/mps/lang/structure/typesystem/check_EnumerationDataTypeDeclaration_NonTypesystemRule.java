@@ -13,12 +13,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.BaseQuickFixProvider;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.structure.behavior.EnumerationMemberDeclaration_Old__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -33,66 +31,48 @@ public class check_EnumerationDataTypeDeclaration_NonTypesystemRule extends Abst
     final boolean deriveFromExternal = Objects.equals(SPropertyOperations.getEnum(enumerationDataTypeDeclaration, PROPS.memberIdentifierPolicy$Joen), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x116d5fab105L, "jetbrains.mps.lang.structure.structure.EnumerationMemberIdentifierPolicy"), 0x116d5fab106L, "derive_from_presentation"));
     final boolean deriveFromInternal = Objects.equals(SPropertyOperations.getEnum(enumerationDataTypeDeclaration, PROPS.memberIdentifierPolicy$Joen), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x116d5fab105L, "jetbrains.mps.lang.structure.structure.EnumerationMemberIdentifierPolicy"), 0x116d5fd31b6L, "derive_from_internal_value"));
 
-    // Suggest using internal values, if they are present in all members 
-    if (deriveFromExternal && ListSequence.fromList(SLinkOperations.getChildren(enumerationDataTypeDeclaration, LINKS.member$tmHO)).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.internalValue$1ost) != null;
-      }
-    })) {
+    // Suggest using internal values, if they are present in all members
+    if (deriveFromExternal && ListSequence.fromList(SLinkOperations.getChildren(enumerationDataTypeDeclaration, LINKS.member$tmHO)).all((it) -> SPropertyOperations.getString(it, PROPS.internalValue$1ost) != null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(enumerationDataTypeDeclaration, "Member identifiers could be derived from internal values, since they are specified for all enumeration members", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1447401809585273479", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.EnableDeriveFromInternalValues_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.EnableDeriveFromInternalValues_QuickFix", "1447401809585300068", false);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }
     }
 
-    ListSequence.fromList(SLinkOperations.getChildren(enumerationDataTypeDeclaration, LINKS.member$tmHO)).visitAll(new IVisitor<SNode>() {
-      public void visit(final SNode member) {
-        // Warn about duplication in presentation 
-        if (!(deriveFromExternal) && ListSequence.fromList(SNodeOperations.getAllSiblings(member, false)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.EnumerationMemberDeclaration_Old$la), PROPS.externalValue$1oFu), SPropertyOperations.getString(member, PROPS.externalValue$1oFu));
-          }
-        }).isNotEmpty()) {
-          {
-            final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(member, "Duplicate value of a presentation value", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1447401809584866838", null, errorTarget);
-          }
+    ListSequence.fromList(SLinkOperations.getChildren(enumerationDataTypeDeclaration, LINKS.member$tmHO)).visitAll((final SNode member) -> {
+      // Warn about duplication in presentation
+      if (!(deriveFromExternal) && ListSequence.fromList(SNodeOperations.getAllSiblings(member, false)).where((it) -> Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.EnumerationMemberDeclaration_Old$la), PROPS.externalValue$1oFu), SPropertyOperations.getString(member, PROPS.externalValue$1oFu))).isNotEmpty()) {
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(member, "Duplicate value of a presentation value", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1447401809584866838", null, errorTarget);
         }
+      }
 
-        // Report duplicate values 
-        if (!(deriveFromInternal) && SPropertyOperations.getString(member, PROPS.internalValue$1ost) != null && ListSequence.fromList(SNodeOperations.getAllSiblings(member, false)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.EnumerationMemberDeclaration_Old$la), PROPS.internalValue$1ost), SPropertyOperations.getString(member, PROPS.internalValue$1ost));
-          }
-        }).isNotEmpty()) {
-          {
-            final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(member, "Duplicate value of an internal value", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1447401809584872588", null, errorTarget);
-          }
+      // Report duplicate values
+      if (!(deriveFromInternal) && SPropertyOperations.getString(member, PROPS.internalValue$1ost) != null && ListSequence.fromList(SNodeOperations.getAllSiblings(member, false)).where((it) -> Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.EnumerationMemberDeclaration_Old$la), PROPS.internalValue$1ost), SPropertyOperations.getString(member, PROPS.internalValue$1ost))).isNotEmpty()) {
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(member, "Duplicate value of an internal value", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1447401809584872588", null, errorTarget);
         }
+      }
 
-        // Report duplicate derived identifiers, be it presentation, internal value or java identifiers 
-        final String memberValidId = EnumerationMemberDeclaration_Old__BehaviorDescriptor.getConstantName_idi2Z$rBf.invoke(member);
-        if (memberValidId == null) {
+      // Report duplicate derived identifiers, be it presentation, internal value or java identifiers
+      final String memberValidId = EnumerationMemberDeclaration_Old__BehaviorDescriptor.getConstantName_idi2Z$rBf.invoke(member);
+      if (memberValidId == null) {
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(member, "A derived identifier is null", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1447401809585113262", null, errorTarget);
+        }
+      } else {
+        if (ListSequence.fromList(SNodeOperations.getAllSiblings(member, false)).where((it) -> Objects.equals(EnumerationMemberDeclaration_Old__BehaviorDescriptor.getConstantName_idi2Z$rBf.invoke(SNodeOperations.cast(it, CONCEPTS.EnumerationMemberDeclaration_Old$la)), memberValidId)).isNotEmpty()) {
+          String msg = (deriveFromExternal ? "presentation value" : (deriveFromInternal ? "internal value" : "java identifier"));
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(member, "A derived identifier is null", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1447401809585113262", null, errorTarget);
-          }
-        } else {
-          if (ListSequence.fromList(SNodeOperations.getAllSiblings(member, false)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return Objects.equals(EnumerationMemberDeclaration_Old__BehaviorDescriptor.getConstantName_idi2Z$rBf.invoke(SNodeOperations.cast(it, CONCEPTS.EnumerationMemberDeclaration_Old$la)), memberValidId);
-            }
-          }).isNotEmpty()) {
-            String msg = (deriveFromExternal ? "presentation value" : (deriveFromInternal ? "internal value" : "java identifier"));
-            {
-              final MessageTarget errorTarget = new NodeMessageTarget();
-              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(member, "Cannot derive unique member identifier from the " + msg + ". Duplicate derived value of an identifier - " + memberValidId + ". You may consider using a different strategy for 'member identifier'", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1447401809583290065", null, errorTarget);
-            }
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(member, "Cannot derive unique member identifier from the " + msg + ". Duplicate derived value of an identifier - " + memberValidId + ". You may consider using a different strategy for 'member identifier'", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1447401809583290065", null, errorTarget);
           }
         }
       }

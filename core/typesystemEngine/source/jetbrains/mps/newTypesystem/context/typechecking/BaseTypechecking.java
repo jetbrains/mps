@@ -20,6 +20,7 @@ import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.newTypesystem.context.component.SimpleTypecheckingComponent;
 import jetbrains.mps.newTypesystem.state.State;
+import jetbrains.mps.typechecking.TypecheckingObservable;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.util.Cancellable;
 import jetbrains.mps.util.Pair;
@@ -137,7 +138,11 @@ public abstract class BaseTypechecking<STATE extends State, COMP extends SimpleT
   /**
    * Should return true iff the operation has succeeded and was not cancelled.
    */
-  public abstract boolean applyNonTypesystemRulesToRoot(TypeCheckingContext typeCheckingContext, Cancellable c);
+  public boolean applyNonTypesystemRulesToRoot(TypeCheckingContext typeCheckingContext, Cancellable c) {
+    return applyNonTypesystemRulesToRoot(typeCheckingContext, c, null);
+  }
+
+  public abstract boolean applyNonTypesystemRulesToRoot(TypeCheckingContext typeCheckingContext, Cancellable c, TypecheckingObservable observable);
 
   /**
    * Returns the list of all node attributes with the attributedNode added as the last.

@@ -26,7 +26,7 @@ import jetbrains.mps.vcs.changesmanager.tree.features.VirtualPackageFeature;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
 import jetbrains.mps.vcs.changesmanager.tree.features.ModelFeature;
 
-@GeneratedClass(node = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)/4106919528499190854", model = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)")
+@GeneratedClass(nodeId = "4106919528499190854", model = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)")
 public class ProjectTreeFeatureExtractor implements TreeNodeFeatureExtractor {
   public ProjectTreeFeatureExtractor() {
   }
@@ -37,25 +37,26 @@ public class ProjectTreeFeatureExtractor implements TreeNodeFeatureExtractor {
     if (treeNode instanceof MPSTreeNodeEx) {
       nodePointer = ((MPSTreeNodeEx) treeNode).getNodePointer();
     } else if (treeNode.getParent() instanceof MPSTreeNodeEx) {
-      nodePointer = ((MPSTreeNodeEx) treeNode.getParent()).getNodePointer();
+      // I want to know why we had parent here
+      nodePointer = null;
     }
     if (nodePointer != null && nodePointer.getModelReference() != null) {
       if (treeNode instanceof SNodeTreeNode || treeNode instanceof ConceptTreeNode) {
-        return new NodeFeature(nodePointer);
+        return new NodeFeature(nodePointer, null);
       } else if (treeNode instanceof PropertyTreeNode && treeNode.getParent() instanceof MPSTreeNodeEx) {
-        return new PropertyFeature(nodePointer, ((PropertyTreeNode) treeNode).getProperty());
+        return new PropertyFeature(nodePointer, ((PropertyTreeNode) treeNode).getProperty(), null);
       } else if (treeNode instanceof PropertiesTreeNode) {
-        return new PropertiesFeature(nodePointer);
+        return new PropertiesFeature(nodePointer, null);
       } else if (treeNode instanceof ReferencesTreeNode) {
-        return new ReferencesFeature(nodePointer);
+        return new ReferencesFeature(nodePointer, null);
       }
     }
 
     if (treeNode instanceof ReferenceTreeNode) {
       SReference ref = ((ReferenceTreeNode) treeNode).getRef();
-      //  assume node.getReference is not null/null even for deleted nodes  
+      //  assume node.getReference is not null/null even for deleted nodes 
       if (ref.getSourceNode() != null) {
-        return new ReferenceFeature(ref.getSourceNode().getReference(), ref.getLink());
+        return new ReferenceFeature(ref.getSourceNode().getReference(), ref.getLink(), null);
       }
       return null;
     }

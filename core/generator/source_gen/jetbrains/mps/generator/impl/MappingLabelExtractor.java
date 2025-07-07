@@ -12,9 +12,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import java.util.List;
 import java.util.ArrayList;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -23,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-@GeneratedClass(node = "r:ab837574-aa54-4b18-9762-b783ef089263(jetbrains.mps.generator.impl)/404112845802897353", model = "r:ab837574-aa54-4b18-9762-b783ef089263(jetbrains.mps.generator.impl)")
+@GeneratedClass(nodeId = "404112845802897353", model = "r:ab837574-aa54-4b18-9762-b783ef089263(jetbrains.mps.generator.impl)")
 public class MappingLabelExtractor {
   /**
    * Reverse operation to {@link jetbrains.mps.generator.impl.DebugMappingsBuilder#build(SModel, GeneratorMappings) }, restore mappings information from debug node.
@@ -39,19 +41,19 @@ public class MappingLabelExtractor {
           rv.addNewOutputNode(labelName, SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(entry, LINKS.outputNode$JC9e)).first(), LINKS.node$JBUG).getNodeId());
           continue;
         }
-        // reference to input node may not necessarily exist or resolve, 
-        // for inputs from transient models we don't keep nodePtr, just NodeIdentity 
+        // reference to input node may not necessarily exist or resolve,
+        // for inputs from transient models we don't keep nodePtr, just NodeIdentity
         final SNodeId inputNodeId;
         if ((SLinkOperations.getTarget(SLinkOperations.getTarget(entry, LINKS.inputNode$NcgX), LINKS.nodePtr$Fm07) != null)) {
-          // FIXME in fact, nodePtr likely to point to external model (either CP or completely 
-          //       independent one). MappingsMemento, however, is limited to SNodeId only, implying 
-          //       all ML's inputs come from the same model (node GeneratorMappings does not imply that). 
+          // FIXME in fact, nodePtr likely to point to external model (either CP or completely
+          //       independent one). MappingsMemento, however, is limited to SNodeId only, implying
+          //       all ML's inputs come from the same model (node GeneratorMappings does not imply that).
           SReference ref = SLinkOperations.getTarget(entry, LINKS.inputNode$NcgX).getReference(LINKS.nodePtr$Fm07);
           inputNodeId = ref.getTargetNodeId();
         } else {
-          inputNodeId = ((SNodeId) BHReflection.invoke0(SLinkOperations.getTarget(SLinkOperations.getTarget(entry, LINKS.inputNode$NcgX), LINKS.node$CLNB), CONCEPTS.NodeIdentity$rN, SMethodTrimmedId.create("getNodeId", null, "39TODbGsIdf")));
+          inputNodeId = ((SNodeId) BHReflection.invoke0(SLinkOperations.getTarget(SLinkOperations.getTarget(entry, LINKS.inputNode$NcgX), LINKS.node$CLNB), CONCEPTS.NodeIdentity$rN, SMethodIdV2.create("getNodeId", 3637169702552396623L, 0x3bd222b39cd71affL)));
         }
-        // output node shall resolve as it's from the same node as debugNode, it's checkpoint model, after all. 
+        // output node shall resolve as it's from the same node as debugNode, it's checkpoint model, after all.
         if (ListSequence.fromList(SLinkOperations.getChildren(entry, LINKS.outputNode$JC9e)).count() == 1) {
           rv.addOutputNodeByInputNodeAndMappingName(inputNodeId, labelName, SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(entry, LINKS.outputNode$JC9e)).first(), LINKS.node$JBUG));
         } else {
@@ -63,7 +65,24 @@ public class MappingLabelExtractor {
         }
       }
     }
+    for (SNode lr : ListSequence.fromList(SLinkOperations.getChildren(debugNode, LINKS.records$1M3v))) {
+      String l = SPropertyOperations.getString(lr, PROPS.label$dc7G);
+      InputKeyIdentity k1 = identify(SLinkOperations.getTarget(lr, LINKS.input1$dqcC));
+      InputKeyIdentity k2 = identify(SLinkOperations.getTarget(lr, LINKS.input2$dvP0));
+      for (SNode o : ListSequence.fromList(SLinkOperations.getChildren(lr, LINKS.output$dhZ5))) {
+        rv.addRecord(l, k1, k2, SLinkOperations.getTarget(o, LINKS.node$JBUG));
+      }
+    }
     return rv;
+  }
+
+  private InputKeyIdentity identify(SNode key) {
+    if (key == null || !(SNodeOperations.isInstanceOf(key, CONCEPTS.CP_InputNode$p_))) {
+      return null;
+    }
+    SNode keyNode = SNodeOperations.cast(key, CONCEPTS.CP_InputNode$p_);
+    SNodeId nid = PersistenceFacade.getInstance().createNodeId(SPropertyOperations.getString(keyNode, PROPS.nodeId$wvdy));
+    return InputKeyIdentity.byId(nid, SPropertyOperations.getString(keyNode, PROPS.modelName$PRat));
   }
 
   public static SNode findDebugNode(SModel cpModel) {
@@ -73,6 +92,9 @@ public class MappingLabelExtractor {
   private static final class PROPS {
     /*package*/ static final SProperty label$uXjG = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c4L, 0x35a02f6bfc9810e9L, "label");
     /*package*/ static final SProperty isNewRoot$pwOY = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, 0x511a0d44c7f45537L, "isNewRoot");
+    /*package*/ static final SProperty label$dc7G = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x224e3a1db5ba5ff2L, 0x224e3a1db5ba5ff3L, "label");
+    /*package*/ static final SProperty nodeId$wvdy = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x224e3a1db5ba5ffcL, 0x224e3a1db5bbf950L, "nodeId");
+    /*package*/ static final SProperty modelName$PRat = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x224e3a1db5ba5ffcL, 0x224e3a1db5bb3a20L, "modelName");
   }
 
   private static final class LINKS {
@@ -83,10 +105,15 @@ public class MappingLabelExtractor {
     /*package*/ static final SContainmentLink node$CLNB = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x509c00a998897534L, 0x509c00a99889f0aeL, "node");
     /*package*/ static final SContainmentLink entries$uXLI = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c4L, 0x35a02f6bfc9810ebL, "entries");
     /*package*/ static final SContainmentLink labels$gYNG = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc97f1c1L, 0x35a02f6bfc9806c5L, "labels");
+    /*package*/ static final SContainmentLink input1$dqcC = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x224e3a1db5ba5ff2L, 0x224e3a1db5ba6005L, "input1");
+    /*package*/ static final SContainmentLink input2$dvP0 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x224e3a1db5ba5ff2L, 0x224e3a1db5ba6008L, "input2");
+    /*package*/ static final SContainmentLink output$dhZ5 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x224e3a1db5ba5ff2L, 0x224e3a1db5ba5ff7L, "output");
+    /*package*/ static final SContainmentLink records$1M3v = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc97f1c1L, 0x224e3a1db5baeb0aL, "records");
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept NodeIdentity$rN = MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b5e358L, "jetbrains.mps.lang.generator.structure.NodeIdentity");
+    /*package*/ static final SConcept CP_InputNode$p_ = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x224e3a1db5ba5ffcL, "jetbrains.mps.lang.generator.structure.CP_InputNode");
     /*package*/ static final SConcept GeneratorDebug_Mappings$42 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc97f1c1L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_Mappings");
   }
 }

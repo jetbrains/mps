@@ -4,13 +4,11 @@ package jetbrains.mps.execution.api.configurations;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.execution.configurations.ConfigurationFactory;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.configurations.RunConfiguration;
 import com.intellij.openapi.project.Project;
 import java.lang.reflect.Constructor;
-import org.apache.log4j.Level;
 import com.intellij.execution.configurations.UnknownRunConfiguration;
 import com.intellij.openapi.util.Key;
 import com.intellij.execution.BeforeRunTask;
@@ -22,9 +20,9 @@ import java.lang.reflect.InvocationTargetException;
  * MPS module that contributed them (with a help of app plugin part) has been disposed - IDEA's RunnerAndConfigurationSettingsImpl holds
  * run configuration instance and accesses its factory.
  */
-@GeneratedClass(node = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)/897795129551183473", model = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)")
+@GeneratedClass(nodeId = "897795129551183473", model = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)")
 /*package*/ final class ConfigFactoryEnvoy extends ConfigurationFactory {
-  private static final Logger LOG = LogManager.getLogger(ConfigFactoryEnvoy.class);
+  private static final Logger LOG = Logger.getLogger(ConfigFactoryEnvoy.class);
   private boolean myIsIvalid;
   private final Class<? extends BaseMpsRunConfiguration> myDelegateClass;
   private final String myName;
@@ -43,16 +41,16 @@ import java.lang.reflect.InvocationTargetException;
    * Factory may get invalidated independent from ConfigurationType (i.e. if the latter is defined in another, non-reloaded plugin)
    */
   /*package*/ void invalidate() {
-    // package-local, perhaps, with ConfigType.invalidateFactory(Class<RunConfiguration>) 
+    // package-local, perhaps, with ConfigType.invalidateFactory(Class<RunConfiguration>)
     myIsIvalid = true;
-    //  perhaps, shall nullify myDelegateClass to release any reference to stale class? 
+    //  perhaps, shall nullify myDelegateClass to release any reference to stale class?
   }
 
   @NotNull
   @Override
   public String getId() {
-    // though javadoc in superclass suggests to use getType().getId(), it doesn't allow to distinguish multiple factories for the same type 
-    // However, would be better to distinguish id from user-friendly name 
+    // though javadoc in superclass suggests to use getType().getId(), it doesn't allow to distinguish multiple factories for the same type
+    // However, would be better to distinguish id from user-friendly name
     return myName;
   }
 
@@ -66,11 +64,11 @@ import java.lang.reflect.InvocationTargetException;
   @Override
   public RunConfiguration createTemplateConfiguration(@NotNull Project project) {
     try {
-      // Constructor signature to match one in weave_RunConfigurationConstructor 
+      // Constructor signature to match one in weave_RunConfigurationConstructor
       Constructor<? extends BaseMpsRunConfiguration> c = myDelegateClass.getConstructor(Project.class, ConfigurationFactory.class, String.class);
       return c.newInstance(project, this, "");
     } catch (Exception ex) {
-      if (LOG.isEnabledFor(Level.ERROR)) {
+      if (LOG.isErrorLevel()) {
         LOG.error(String.format("Failed to instantiate run configuration %s of type %s", myDelegateClass.getName(), getId()), ex);
       }
       return new UnknownRunConfiguration(this, project);

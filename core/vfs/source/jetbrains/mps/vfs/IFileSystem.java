@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,17 @@
  */
 package jetbrains.mps.vfs;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.FileUtil;
+import jetbrains.mps.vfs.openapi.FileSystem;
 import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
 import jetbrains.mps.vfs.util.PathUtil;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 
-public interface IFileSystem {
+public interface IFileSystem extends FileSystem {
   char SEPARATOR_CHAR = '/';
   String SEPARATOR = "/";
 
@@ -58,6 +59,7 @@ public interface IFileSystem {
       IFile f = getFile(path);
       return f.exists() ? f : null;
     } catch (PathFormatException e) {
+      // fixme apyshkin
       return null;
     }
   }
@@ -72,6 +74,7 @@ public interface IFileSystem {
    *
    * @param r code to execute within platform write lock
    * @return <code>false</code> if an exception was encountered
+   * @see WriteTransaction
    */
   default boolean runWriteTransaction(@NotNull Runnable r) {
     try {

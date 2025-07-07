@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.workbench.findusages;
 
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.search.GlobalSearchScope;
@@ -31,13 +30,13 @@ import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
 import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.IndexAwareModelFactory;
 import jetbrains.mps.persistence.IndexAwareModelFactory.Callback;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.workbench.findusages.UsageEntry.ConceptInstance;
 import jetbrains.mps.workbench.findusages.UsageEntry.ModelUse;
 import jetbrains.mps.workbench.findusages.UsageEntry.NodeUse;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNodeId;
@@ -65,7 +64,13 @@ public class MPSModelsIndexer extends ScalarIndexExtension<UsageEntry> {
   }
 
   public MPSModelsIndexer() {
-    final Platform mpsPlatform = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getPlatform();
+    final Platform mpsPlatform = MPSCoreComponents.getInstance().getPlatform();
+    // FTR, (a) there's duplicated code in PropertyValueIndex,
+    //      (b) RootNodeNameIndex.doModeParsing() approaches MF detection in a different way (likely, less hacky)
+    //      (c)  MPSFileTypeFactory.findByExtension("model") == null, therefore not FilePerRootModelFactory for MPSFileTypeFactory.MPS_HEADER_FILE_TYPE,
+    //           which is added with extra code, below. Note, that code overwrites IAMF for .mpsr files (which is detected by findByExtension)
+    //      I suppose using logic like in RootNodeNameIndex (if we don't get our own MPS-aware indexer that doesn't look into files) would help to
+    //      get rid of deprecated MF.getPreferredDataSourceTypes()
     for (ModelFactory mf : mpsPlatform.findComponent(ModelFactoryService.class).getFactories()) {
       if (mf instanceof IndexAwareModelFactory) {
         for (DataSourceType type : mf.getPreferredDataSourceTypes()) {
@@ -163,7 +168,7 @@ public class MPSModelsIndexer extends ScalarIndexExtension<UsageEntry> {
       try {
         mf.index(new ByteArrayInputStream(content), cb);
       } catch (IOException ex) {
-        Logger.getLogger(MPSModelsIndexer.class).warn(String.format("Indexing failed: %s", ex), ex);
+        Logger.getLogger(MPSModelsIndexer.class).warning(String.format("Indexing failed: %s", ex), ex);
       }
       return cb.getResult();
     }

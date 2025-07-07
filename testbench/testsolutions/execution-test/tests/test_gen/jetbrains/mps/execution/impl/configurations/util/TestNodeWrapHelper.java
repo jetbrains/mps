@@ -7,7 +7,6 @@ import java.util.List;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -21,18 +20,16 @@ public final class TestNodeWrapHelper {
   }
 
   public List<ITestNodeWrapper> discover(final SNodeReference... testNodes) {
-    return new ModelAccessHelper(myRepo).runReadAction(new Computable<List<ITestNodeWrapper>>() {
-      public List<ITestNodeWrapper> compute() {
-        List<ITestNodeWrapper> result = ListSequence.fromList(new ArrayList<ITestNodeWrapper>());
-        for (SNodeReference nodeRef : testNodes) {
-          SNode resolved = nodeRef.resolve(myRepo);
-          ITestNodeWrapper wrap = TestNodeWrapperFactory.tryToWrap(resolved);
-          if (wrap != null) {
-            ListSequence.fromList(result).addElement(wrap);
-          }
+    return new ModelAccessHelper(myRepo).runReadAction(() -> {
+      List<ITestNodeWrapper> result = ListSequence.fromList(new ArrayList<ITestNodeWrapper>());
+      for (SNodeReference nodeRef : testNodes) {
+        SNode resolved = nodeRef.resolve(myRepo);
+        ITestNodeWrapper wrap = TestNodeWrapperFactory.tryToWrap(resolved);
+        if (wrap != null) {
+          ListSequence.fromList(result).addElement(wrap);
         }
-        return result;
       }
+      return result;
     });
   }
 }

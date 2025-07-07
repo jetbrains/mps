@@ -21,12 +21,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.Language;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
-import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -38,6 +36,7 @@ public class CreateReferenceConcept_Action extends BaseAction {
     super("Create Reference Concept", "Adds a new concept with single reference to the current", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -67,7 +66,7 @@ public class CreateReferenceConcept_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    // structure 
+    // structure
     SNode concept = _quotation_createNode_vn7eng_a0b0a(NameUtil.decapitalize(SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.name$MnvL)), event.getData(MPSCommonDataKeys.NODE), SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.name$MnvL) + "Reference");
     SModelOperations.addRootNode(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)), concept);
     SPropertyOperations.assign(concept, PROPS.conceptId$rrGe, ConceptIdHelper.generateConceptId(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)), concept) + "");
@@ -75,46 +74,50 @@ public class CreateReferenceConcept_Action extends BaseAction {
     SPropertyOperations.assign(link, PROPS.linkId$mi9g, ConceptIdHelper.generateLinkId(concept, link) + "");
     SPropertyOperations.set(concept, PROPS.virtualPackage$EkXl, SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.virtualPackage$EkXl));
 
-    // find editor model 
+    // find editor model
     Language language = Language.getLanguageFor(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)));
     SModel editorModel = SModuleOperations.getAspect(language, "editor");
 
-    // editor 
+    // editor
     SNode editor = _quotation_createNode_vn7eng_a0n0a(concept, link);
     SModelOperations.addRootNode(editorModel, editor);
     SPropertyOperations.set(editor, PROPS.virtualPackage$EkXl, SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.virtualPackage$EkXl));
 
-    NavigationSupport.getInstance().openNode(event.getData(MPSCommonDataKeys.MPS_PROJECT), concept, true, true);
+    new EditorNavigator(event.getData(MPSCommonDataKeys.MPS_PROJECT)).shallFocus(true).shallSelect(true).open(SNodeOperations.getPointer(concept));
   }
   private static SNode _quotation_createNode_vn7eng_a0b0a(Object parameter_1, Object parameter_2, Object parameter_3) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_4 = null;
     SNode quotedNode_5 = null;
-    quotedNode_4 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure"), 0xf979ba0450L, "ConceptDeclaration")).getResult();
-    quotedNode_4.setProperty(MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId"), "6895093993902318243");
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure"), 0xf979ba0450L, "ConceptDeclaration"));
+    quotedNode_4 = nb.getResult();
+    nb.setProperty(MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId"), "6895093993902318243");
     SNodeAccessUtil.setPropertyValue(quotedNode_4, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), (String) parameter_3);
-    quotedNode_5 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure"), 0xf979bd086aL, "LinkDeclaration")).getResult();
-    quotedNode_5.setProperty(MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality"), "fLJekj4/1");
-    quotedNode_5.setProperty(MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x35a81382d82a4e4L, "linkId"), "6895093993902318253");
+    SNodeBuilder nb1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure"), 0xf979bd086aL, "LinkDeclaration"));
+    quotedNode_5 = nb1.getResult();
+    nb1.setProperty(MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality"), "fLJekj4/1");
+    nb1.setProperty(MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x35a81382d82a4e4L, "linkId"), "6895093993902318253");
     SNodeAccessUtil.setPropertyValue(quotedNode_5, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role"), (String) parameter_1);
     SNodeAccessUtil.setReferenceTarget(quotedNode_5, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target"), (SNode) parameter_2);
     quotedNode_4.addChild(MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration"), quotedNode_5);
     return quotedNode_4;
   }
   private static SNode _quotation_createNode_vn7eng_a0n0a(Object parameter_1, Object parameter_2) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
     SNode quotedNode_5 = null;
     SNode quotedNode_6 = null;
-    quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 0xf9845363abL, "ConceptEditorDeclaration")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 0xf9845363abL, "ConceptEditorDeclaration"));
+    quotedNode_3 = nb.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_3, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration"), (SNode) parameter_1);
-    quotedNode_4 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 0xfd52a2c922L, "CellModel_RefCell")).getResult();
+    SNodeBuilder nb1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 0xfd52a2c922L, "CellModel_RefCell"));
+    quotedNode_4 = nb1.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_4, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration"), (SNode) parameter_2);
-    quotedNode_5 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 0xfd5cee772bL, "InlineEditorComponent")).getResult();
-    quotedNode_6 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 0xf9eb02612eL, "CellModel_Property")).getResult();
-    quotedNode_6.setProperty(MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x1096e5dd9abL, "readOnly"), "true");
-    quotedNode_6.setReference(MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration"), SReference.create(MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration"), quotedNode_6, facade.createModelReference("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)"), facade.createNodeId("1169194664001")));
+    SNodeBuilder nb2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 0xfd5cee772bL, "InlineEditorComponent"));
+    quotedNode_5 = nb2.getResult();
+    SNodeBuilder nb3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 0xf9eb02612eL, "CellModel_Property"));
+    quotedNode_6 = nb3.getResult();
+    nb3.setProperty(MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x1096e5dd9abL, "readOnly"), "true");
+    nb3.setReference(MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration"), "r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)/1169194664001");
     quotedNode_5.addChild(MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, 0xfba0ec5415L, "cellModel"), quotedNode_6);
     quotedNode_4.addChild(MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, 0xfd5cf2df2aL, "editorComponent"), quotedNode_5);
     quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, 0xfba0ec5415L, "cellModel"), quotedNode_4);

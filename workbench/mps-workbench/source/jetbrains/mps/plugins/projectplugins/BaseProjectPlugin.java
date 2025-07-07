@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,13 +21,12 @@ import com.intellij.util.xmlb.annotations.Tag;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.tools.BaseTool;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.plugins.part.ProjectPluginPart;
 import jetbrains.mps.plugins.prefs.BaseProjectPrefsComponent;
 import jetbrains.mps.plugins.projectplugins.BaseProjectPlugin.PluginState;
 import jetbrains.mps.plugins.relations.RelationDescriptor;
 import jetbrains.mps.project.MPSProject;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 
@@ -37,19 +36,19 @@ import java.util.HashMap;
 import java.util.List;
 
 public abstract class BaseProjectPlugin implements PersistentStateComponent<PluginState> {
-  private static final Logger LOG = LogManager.getLogger(BaseProjectPlugin.class);
+  private static final Logger LOG = Logger.getLogger(BaseProjectPlugin.class);
 
-  private Project myProject;
+  private Project myIJProject;
   private MPSProject myMPSProject;
 
-  private List<BaseTool> myTools = new ArrayList<>();
-  private EDTAccessor<List<BaseTool>> myInitializedTools = new EDTAccessor<>(new ArrayList<>());
-  private List<ProjectPluginPart> myCustomParts = new ArrayList<>();
-  private List<BaseProjectPrefsComponent> myPrefsComponents = new ArrayList<>();
-  private List<RelationDescriptor> myTabDescriptors = new ArrayList<>();
+  private final List<BaseTool> myTools = new ArrayList<>(4);
+  private final EDTAccessor<List<BaseTool>> myInitializedTools = new EDTAccessor<>(new ArrayList<>(4));
+  private final List<ProjectPluginPart> myCustomParts = new ArrayList<>(4);
+  private final List<BaseProjectPrefsComponent> myPrefsComponents = new ArrayList<>(4);
+  private final List<RelationDescriptor> myTabDescriptors = new ArrayList<>(4);
 
   public Project getProject() {
-    return myProject;
+    return myIJProject;
   }
 
   //------------------stuff to generate-----------------------
@@ -67,16 +66,20 @@ public abstract class BaseProjectPlugin implements PersistentStateComponent<Plug
   }
 
   private void initCustomParts() {
-    List<ProjectPluginPart> rv = new ArrayList<>();
-    fillCustomParts(rv);
-    for (ProjectPluginPart part : rv) {
-      try {
-        part.init(myMPSProject);
-      } catch (Throwable th) {
-        LOG.error(String.format("Failed to initialize part %s of project plugin %s", part.getClass(), getClass()), th);
+    try {
+      List<ProjectPluginPart> rv = new ArrayList<>();
+      fillCustomParts(rv);
+      for (ProjectPluginPart part : rv) {
+        try {
+          part.init(myMPSProject);
+        } catch (Throwable th) {
+          LOG.error(String.format("Failed to initialize part %s of project plugin %s", part.getClass(), getClass()), th);
+        }
       }
+      myCustomParts.addAll(rv);
+    } catch (Throwable th) {
+      LOG.error(String.format("Failed to initialize project parts of plugin %s", getClass()), th);
     }
-    myCustomParts = rv;
   }
 
   protected void fillCustomParts(List<ProjectPluginPart> parts) {
@@ -84,8 +87,8 @@ public abstract class BaseProjectPlugin implements PersistentStateComponent<Plug
   }
 
   public final void init(@NotNull final Project project) {
-    myProject = project;
-    myMPSProject = ProjectHelper.fromIdeaProject(myProject);
+    myIJProject = project;
+    myMPSProject = ProjectHelper.fromIdeaProject(myIJProject);
 
     initTabbedEditors1(project);
     initCustomParts();
@@ -96,7 +99,7 @@ public abstract class BaseProjectPlugin implements PersistentStateComponent<Plug
 
   private void createPrefComponents1() {
     try {
-      myPrefsComponents = createPreferencesComponents(myProject);
+      myPrefsComponents.addAll(createPreferencesComponents(myIJProject));
     } catch (Throwable t) {
       LOG.error("Exception on project preference components init:", t);
     }
@@ -104,7 +107,7 @@ public abstract class BaseProjectPlugin implements PersistentStateComponent<Plug
 
   protected void initTools1() {
     try {
-      myTools.addAll(initAllTools1(myProject));
+      myTools.addAll(initAllTools1(myIJProject));
     } catch (Throwable t) {
       LOG.error("Exception on tools init:", t);
     }
@@ -112,7 +115,7 @@ public abstract class BaseProjectPlugin implements PersistentStateComponent<Plug
 
   protected void initTabbedEditors1(Project project) {
     try {
-      myTabDescriptors = initTabbedEditors(project);
+      myTabDescriptors.addAll(initTabbedEditors(project));
     } catch (Throwable t) {
       LOG.error("Exception on tabbed editors init:", t);
     }
@@ -124,8 +127,8 @@ public abstract class BaseProjectPlugin implements PersistentStateComponent<Plug
 
     for (BaseTool tool : toolsToInit) {
       try {
-        tool.init(myProject);
-        tool.register();
+        tool.init(myIJProject);
+        tool.registerLater();
       } catch (Throwable t) {
         LOG.error("Exception on a tool init: " + tool, t);
       }
@@ -260,7 +263,7 @@ public abstract class BaseProjectPlugin implements PersistentStateComponent<Plug
   }
 
   private static class EDTAccessor<T> {
-    private T myT;
+    private final T myT;
 
     public EDTAccessor(T t) {
       myT = t;

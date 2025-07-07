@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,28 +15,15 @@
  */
 package jetbrains.mps.generator;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.model.SModel;
 
 import java.util.Collection;
 
 public interface ModelGenerationStatusListener {
   /**
-   * @deprecated override {@link #generatedFilesChanged(Collection)} instead
-   * @param sm model which generation status has changed
-   */
-  @Deprecated
-  @ToRemove(version = 2017.2)
-  default void generatedFilesChanged(SModel sm) {
-    // no-op
-  }
-
-  /**
    * @since 2017.2
    * @param models non-empty set of models with affected status
    */
   default void generatedFilesChanged(Collection<SModel> models) {
-    // compatibility
-    models.forEach(this::generatedFilesChanged);
   }
 }

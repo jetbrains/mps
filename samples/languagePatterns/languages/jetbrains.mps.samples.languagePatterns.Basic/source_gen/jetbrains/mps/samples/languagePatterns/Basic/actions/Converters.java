@@ -13,7 +13,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class Converters {
   public static class NodeFactory_6918512748467367934 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode original = sampleNode;
         if (SNodeOperations.isInstanceOf(original, CONCEPTS.StringDescription$Qu)) {
@@ -31,7 +31,7 @@ public class Converters {
     }
   }
   public static class NodeFactory_6918512748467409696 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode original = sampleNode;
         if (SNodeOperations.isInstanceOf(original, CONCEPTS.StringDescription$Qu)) {
@@ -49,7 +49,7 @@ public class Converters {
     }
   }
   public static class NodeFactory_6918512748467539647 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode original = sampleNode;
         if (SNodeOperations.isInstanceOf(original, CONCEPTS.SimplifiedFormDescription$$0)) {

@@ -10,13 +10,13 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.SModelStereotype;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -32,7 +32,7 @@ public class check_FinalFieldWasAssigned_NonTypesystemRule extends AbstractNonTy
   }
   public void applyRule(final SNode field, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode classifier = SNodeOperations.getNodeAncestor(field, CONCEPTS.ClassConcept$bK, false, false);
-    if (!(SPropertyOperations.getBoolean(field, PROPS.isFinal$gvTP)) || SLinkOperations.getTarget(field, LINKS.initializer$2twD) != null || classifier == null) {
+    if (!(SPropertyOperations.getBoolean(field, PROPS.isFinal$gvTP)) || SLinkOperations.getTarget(field, LINKS.initializer$2twD) != null || classifier == null || SModelStereotype.isStubModel(SNodeOperations.getModel(classifier))) {
       return;
     }
 
@@ -49,11 +49,7 @@ public class check_FinalFieldWasAssigned_NonTypesystemRule extends AbstractNonTy
           ListSequence.fromList(doNotInitialize).removeElement(member);
           continue;
         }
-        for (SNode reference : ListSequence.fromList(SNodeOperations.getNodeDescendants(member, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.FieldDeclaration$ie);
-          }
-        }).toListSequence()) {
+        for (SNode reference : ListSequence.fromList(SNodeOperations.getNodeDescendants(member, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.FieldDeclaration$ie)).toList()) {
           if (SLinkOperations.getTarget(reference, LINKS.variableDeclaration$N1XG) == field && CheckingUtil.isAssigned(reference)) {
             ListSequence.fromList(doNotInitialize).removeElement(member);
             if (SNodeOperations.isInstanceOf(member, CONCEPTS.InstanceInitializer$4x)) {
@@ -78,7 +74,7 @@ public class check_FinalFieldWasAssigned_NonTypesystemRule extends AbstractNonTy
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(field, "Variable '" + SPropertyOperations.getString(field, PROPS.name$MnvL) + "' might not have been initialized", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "843236768047887576", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.InitializeVariable_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.InitializeVariable_QuickFix", "6911873060795846509", false);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }

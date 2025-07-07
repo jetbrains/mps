@@ -17,7 +17,6 @@ import java.util.List;
 import jetbrains.mps.refactoring.participant.RefactoringParticipant;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor;
@@ -39,7 +38,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class MoveContainmentLinkSpecialization extends MoveConceptMemberSpecialization<SContainmentLink> {
   public Tuples._2<SContainmentLink, SNodeReference> fetchState(SNode movingNode, boolean filterOutInvalid) {
-    if (!((SNodeOperations.isInstanceOf(movingNode, CONCEPTS.LinkDeclaration$1p) && SNodeOperations.hasRole(movingNode, LINKS.linkDeclaration$YU1f) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(movingNode, CONCEPTS.LinkDeclaration$1p), PROPS.metaClass$PeKc), 0xfc6f4e95b9L) && (SLinkOperations.getTarget(SNodeOperations.cast(movingNode, CONCEPTS.LinkDeclaration$1p), LINKS.specializedLink$7ZCN) == null) && SNodeOperations.getModel(movingNode).getModule() instanceof Language))) {
+    if (!(SNodeOperations.isInstanceOf(movingNode, CONCEPTS.LinkDeclaration$1p) && SNodeOperations.hasRole(movingNode, LINKS.linkDeclaration$YU1f) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(movingNode, CONCEPTS.LinkDeclaration$1p), PROPS.metaClass$PeKc), 0xfc6f4e95b9L) && (SLinkOperations.getTarget(SNodeOperations.cast(movingNode, CONCEPTS.LinkDeclaration$1p), LINKS.specializedLink$7ZCN) == null) && SNodeOperations.getModel(movingNode).getModule() instanceof Language)) {
       return null;
     }
     SContainmentLink deployedContainmentLink = MetaAdapterByDeclaration.getContainmentLink(movingNode);
@@ -61,7 +60,7 @@ public class MoveContainmentLinkSpecialization extends MoveConceptMemberSpeciali
     SNode to = SNodeOperations.cast(SPointerOperations.resolveNode(finalState, repository), CONCEPTS.LinkDeclaration$1p);
     SNode targetConcept = SNodeOperations.cast(SNodeOperations.getParent(to), CONCEPTS.AbstractConceptDeclaration$KA);
     SPropertyOperations.plusAssignStringProp(from, PROPS.role$Nsjf, "_old");
-    AttributeOperations.setAttribute(from, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV), createDeprecatedNodeAnnotation_mzlq6b_a0e0d("The link was moved to concept \"" + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(targetConcept) + "\""));
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV).set(from, createDeprecatedNodeAnnotation_mzlq6b_a0e0d("The link was moved to concept \"" + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(targetConcept) + "\""));
     if ((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(from)) {
       SPropertyOperations.setEnum(from, PROPS.sourceCardinality$cxYK, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f3944c2L, "jetbrains.mps.lang.structure.structure.Cardinality"), 0xfc6f3944c3L, "_0__1"));
     } else {
@@ -79,12 +78,8 @@ public class MoveContainmentLinkSpecialization extends MoveConceptMemberSpeciali
     {
       SearchScope scope_mzlq6b_a0e = CommandUtil.createScope(searchScope);
       final SearchScope scope_mzlq6b_a0e_0 = new EditableFilteringScope(scope_mzlq6b_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_mzlq6b_a0e_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(oldLink.getOwner()), false)).toListSequence();
+      QueryExecutionContext context = () -> scope_mzlq6b_a0e_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(oldLink.getOwner()), false)).toList();
     }
   }
   public void doReplaceInstance(SNode instance, SContainmentLink oldLink, SContainmentLink newLink) {

@@ -39,7 +39,7 @@ import jetbrains.mps.lang.typesystem.editor.TypesystemStyles_StyleSheet.Inequati
       setCellContext(bigCell);
     }
     Style style = new StyleImpl();
-    new InequationsGroupsLabelStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new InequationsGroupsLabelStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     return editorCell;
   }

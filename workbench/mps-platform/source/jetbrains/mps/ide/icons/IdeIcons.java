@@ -24,7 +24,6 @@ import jetbrains.mps.fileTypes.FileIcons;
 import jetbrains.mps.icons.MPSIcons;
 import jetbrains.mps.icons.MPSIcons.Nodes;
 import jetbrains.mps.icons.MPSIcons.ToolWindows;
-import jetbrains.mps.util.annotation.ToRemove;
 
 import javax.swing.Icon;
 
@@ -53,6 +52,8 @@ public class IdeIcons {
 
   public static final Icon PROPERTIES_ICON = General.Settings;
   public static final Icon INSPECTOR_ICON = Toolwindows.ToolWindowInspection;
+  public static final Icon GEAR_PLAIN_ICON=General.GearPlain;
+  public static final Icon SYNC_SCROLLING=AllIcons.Actions.SynchronizeScrolling;
 
   public static final Icon APPLY = Diff.Arrow;
   public static final Icon APPLY_RIGHT= Diff.ArrowRight;

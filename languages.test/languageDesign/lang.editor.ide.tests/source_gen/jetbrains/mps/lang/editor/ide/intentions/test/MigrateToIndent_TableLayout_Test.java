@@ -4,20 +4,21 @@ package jetbrains.mps.lang.editor.ide.intentions.test;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 @MPSLaunch
 public class MigrateToIndent_TableLayout_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(MigrateToIndent_TableLayout_Test.class, "${mps_home}", "r:ac7fc8d2-009b-4709-96f8-5178c2bb268c(jetbrains.mps.lang.editor.ide.intentions.test)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(MigrateToIndent_TableLayout_Test.class).projectPath(null).modelRef("r:ac7fc8d2-009b-4709-96f8-5178c2bb268c(jetbrains.mps.lang.editor.ide.intentions.test)").reopenProject(false).build());
 
   public MigrateToIndent_TableLayout_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test

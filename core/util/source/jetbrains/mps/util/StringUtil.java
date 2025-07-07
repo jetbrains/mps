@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,8 +51,9 @@ public final class StringUtil {
     return left.compareTo(right);
   }
 
+  // null-safe String.isEmpty()
   public static boolean isEmpty(String s) {
-    return s == null || s.length() == 0;
+    return s == null || s.isEmpty();
   }
 
   @NotNull

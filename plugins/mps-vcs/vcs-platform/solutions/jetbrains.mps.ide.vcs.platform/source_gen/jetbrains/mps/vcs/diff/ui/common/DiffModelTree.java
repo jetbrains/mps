@@ -9,32 +9,29 @@ import com.intellij.openapi.actionSystem.DataKey;
 import com.intellij.openapi.util.Ref;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import java.util.List;
-import jetbrains.mps.workbench.action.BaseAction;
 import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import com.intellij.ui.ColoredTreeCellRenderer;
 import javax.swing.JTree;
-import jetbrains.mps.workbench.action.ActionUtils;
-import com.intellij.openapi.actionSystem.ActionPlaces;
+import com.intellij.ui.SimpleTextAttributes;
+import java.awt.Color;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.event.TreeSelectionEvent;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.workbench.action.BaseAction;
+import jetbrains.mps.workbench.action.ActionUtils;
+import com.intellij.openapi.actionSystem.ActionPlaces;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Collections;
-import java.util.Enumeration;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.tree.TreePath;
 import java.util.Objects;
-import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import javax.swing.tree.DefaultTreeModel;
 import com.intellij.util.ui.tree.TreeUtil;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NonNls;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.ide.icons.IdeIcons;
 import javax.swing.Icon;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -42,46 +39,34 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import javax.swing.tree.DefaultMutableTreeNode;
-import com.intellij.ui.SimpleTextAttributes;
-import java.awt.Color;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/4652592318748339080", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
+@GeneratedClass(nodeId = "4652592318748339080", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   public static DataKey<Ref<SNodeId>> NODE_ID_DATAKEY = DataKey.create("MPS_SNodeId");
   private List<RootTreeNode> myRootNodes;
-  private Iterable<BaseAction> myActions;
   private final SRepository myRepo;
+  private String myModelName;
 
   public DiffModelTree(SRepository repo) {
-    // FIXME This code deserves a refactoring much like MergeModelsPanel, as there's unlikely need for repository lock when we diff detached models. 
-    // Besides, it's ugly to build a tree during construction time! 
+    // FIXME This code deserves a refactoring much like MergeModelsPanel, as there's unlikely need for repository lock when we diff detached models.
     myRepo = repo;
-    rebuildNow();
-    // FIXME oh, no, abstract method called from a constructor! 
-    myActions = getRootActions();
-    Sequence.fromIterable(myActions).visitAll(new IVisitor<BaseAction>() {
-      public void visit(BaseAction a) {
-        a.registerCustomShortcutSet(a.getShortcutSet(), DiffModelTree.this);
-      }
-    });
     setCellRenderer(new ColoredTreeCellRenderer() {
       @Override
-      public void customizeCellRenderer(JTree p0, final Object value, boolean p2, boolean p3, boolean p4, int p5, boolean p6) {
+      public void customizeCellRenderer(JTree p0, Object value, boolean p2, boolean p3, boolean p4, int p5, boolean p6) {
         if (value instanceof TreeNode) {
-          // FIXME this code is poor, need to check TreeNode subclasses if they really care to have model access 
-          myRepo.getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              ((TreeNode) value).doUpdatePresentation();
-            }
-          });
-          ((TreeNode) value).renderTreeNode(this);
+          final TreeNode tn = (TreeNode) value;
+          append(tn.getText(), new SimpleTextAttributes(tn.getTextStyle(), tn.getColor()));
+          if (isNotEmptyString(tn.getAdditionalText())) {
+            append(String.format(" (%s)", tn.getAdditionalText()), new SimpleTextAttributes(SimpleTextAttributes.STYLE_PLAIN, Color.GRAY));
+          }
+          setToolTipText(tn.getTooltipText());
+          setIcon(tn.getIcon());
         }
       }
     });
-    setPopupGroup(ActionUtils.groupFromActions(Sequence.fromIterable(myActions).toGenericArray(BaseAction.class)), ActionPlaces.CHANGES_VIEW_POPUP);
-    // listen for selection changes 
+    // listen for selection changes
     getSelectionModel().addTreeSelectionListener(new TreeSelectionListener() {
       public void valueChanged(TreeSelectionEvent e) {
         RootTreeNode[] node = getSelectedNodes(RootTreeNode.class, null);
@@ -94,36 +79,44 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
     });
   }
 
+  /**
+   * Text to represent model in the tree, likely to become mandatory cons argument
+   */
+  public void withModelName(String modelName) {
+    myModelName = modelName;
+  }
+
+  /**
+   * handy alternative when there's
+   */
+  public void withModelName(Iterable<SModel> models) {
+    withModelName(SModelOperations.getModelName(Sequence.fromIterable(models).findFirst((it) -> isNotEmptyString(SModelOperations.getModelName(it)))));
+  }
+
+  protected void setActions(Iterable<BaseAction> actions) {
+    Sequence.fromIterable(actions).visitAll((a) -> a.registerCustomShortcutSet(a.getShortcutSet(), DiffModelTree.this));
+    setPopupGroup(ActionUtils.groupFromActions(Sequence.fromIterable(actions).toGenericArray(BaseAction.class)), ActionPlaces.CHANGES_VIEW_POPUP);
+  }
+
   public void dispose() {
-    // Workaround for MPS-31166 and similar issues where tree cell is about to be repainted but the model is already disposed 
+    // Workaround for MPS-31166 and similar issues where tree cell is about to be repainted but the model is already disposed
     setCellRenderer(null);
   }
 
   protected TreeNode rebuild() {
-    ModelTreeNode modelNode = new ModelTreeNode();
-    myRootNodes = Sequence.fromIterable(getAffectedRoots()).where(new IWhereFilter<SNodeId>() {
-      public boolean accept(SNodeId r) {
-        return r != null;
-      }
-    }).select(new ISelector<SNodeId, RootTreeNode>() {
-      public RootTreeNode select(SNodeId r) {
-        return new RootTreeNode(r);
-      }
-    }).sort(new ISelector<RootTreeNode, String>() {
-      public String select(RootTreeNode rtn) {
-        return rtn.myVirtualPackage + "|" + rtn.myPresentation;
-      }
-    }, true).toListSequence();
+    ModelTreeNode modelNode = new ModelTreeNode((myModelName == null ? "" : myModelName));
+    Iterable<RootTreeNode> rtnodes = Sequence.fromIterable(getAffectedRoots()).where(new NotNullWhereFilter()).select((r) -> new RootTreeNode(r)).toList();
+    Sequence.fromIterable(rtnodes).visitAll((it) -> {
+      it.doUpdatePresentation(getModels(), isMultipleRootNames());
+      updateRootCustomPresentation(it);
+    });
+    myRootNodes = Sequence.fromIterable(rtnodes).sort((rtn) -> rtn.myVirtualPackage + "|" + rtn.getText(), true).toList();
     for (RootTreeNode rtn : ListSequence.fromList(myRootNodes)) {
       TreeNode parentNode = modelNode;
       if (isNotEmptyString(rtn.myVirtualPackage)) {
         for (final String sub : Sequence.fromArray(rtn.myVirtualPackage.split("\\."))) {
-          Iterable<TreeNode> children = Collections.list(((Enumeration) parentNode.children()));
-          TreeNode child = Sequence.fromIterable(children).findFirst(new IWhereFilter<TreeNode>() {
-            public boolean accept(TreeNode c) {
-              return c instanceof PackageTreeNode && sub.equals(c.getText());
-            }
-          });
+          Iterable<? extends javax.swing.tree.TreeNode> children = Collections.list(parentNode.children());
+          PackageTreeNode child = Sequence.fromIterable(children).ofType(PackageTreeNode.class).findFirst((c) -> sub.equals(c.getText()));
           if (child == null) {
             child = new PackageTreeNode(sub);
             parentNode.add(child);
@@ -133,12 +126,10 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
       }
       parentNode.add(rtn);
     }
-    if (Sequence.fromIterable(getAffectedRoots()).any(new IWhereFilter<SNodeId>() {
-      public boolean accept(SNodeId r) {
-        return r == null;
-      }
-    })) {
+    // TODO replace this condition with explicit configuration method #needsModelPropertiesNode(boolean)
+    if (Sequence.fromIterable(getAffectedRoots()).any((r) -> r == null)) {
       RootTreeNode metadataNode = new MetadataTreeNode();
+      updateRootCustomPresentation(metadataNode);
       ListSequence.fromList(myRootNodes).addElement(metadataNode);
       modelNode.add(metadataNode);
     }
@@ -146,10 +137,12 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   }
 
   public void setSelected(@Nullable SNodeId rootId) {
-    // todo: find path by rootId 
+    // FIXME there's hidden assumption that null rootId means 'select model properties changes'
+    //      because MetadataTeeeNode is RootTreeNode with null rootId
+    // todo: find path by rootId
     TreePath path = null;
     for (int i = 0; i < getRowCount(); ++i) {
-      RootTreeNode node = as_5x0uld_a0a0a2a11(getPathForRow(i).getLastPathComponent(), RootTreeNode.class);
+      RootTreeNode node = as_5x0uld_a0a0a4a71(getPathForRow(i).getLastPathComponent(), RootTreeNode.class);
       if (node != null && Objects.equals(node.getRootId(), rootId)) {
         path = getPathForRow(i);
         break;
@@ -168,21 +161,20 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   }
 
   public void rebuildNow() {
-    TreeNode root = new ModelAccessHelper(myRepo).runReadAction(new Computable<TreeNode>() {
-      public TreeNode compute() {
-        return rebuild();
-      }
-    });
+    TreeNode root = myRepo.getModelAccess().computeReadAction(() -> rebuild());
     setModel(new DefaultTreeModel(root));
     setRootVisible(true);
     TreeUtil.expandAll(this);
-    setSelectionRow(0);
+    if (!(ListSequence.fromList(myRootNodes).isEmpty())) {
+      setSelected(ListSequence.fromList(myRootNodes).getElement(0).getRootId());
+    } else {
+      setSelectionRow(0);
+    }
   }
 
   protected abstract Iterable<SNodeId> getAffectedRoots();
   protected abstract Iterable<SModel> getModels();
   protected abstract void updateRootCustomPresentation(@NotNull RootTreeNode rootTreeNode);
-  protected abstract Iterable<BaseAction> getRootActions();
   protected boolean isMultipleRootNames() {
     return false;
   }
@@ -191,11 +183,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   protected void onSelectRoot(@Nullable SNodeId rootId) {
   }
   private RootTreeNode findRootNode(@Nullable final SNodeId nodeId) {
-    return ListSequence.fromList(myRootNodes).findFirst(new IWhereFilter<RootTreeNode>() {
-      public boolean accept(RootTreeNode r) {
-        return Objects.equals(nodeId, r.myRootId);
-      }
-    });
+    return ListSequence.fromList(myRootNodes).findFirst((r) -> Objects.equals(nodeId, r.myRootId));
   }
   private int advanceIndex(int index, boolean next) {
     return (next ? index + 1 : index - 1);
@@ -211,7 +199,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
     return ListSequence.fromList(myRootNodes).getElement(index).myRootId;
   }
   public String getNameForRoot(@Nullable SNodeId nodeId) {
-    return check_5x0uld_a0a82(findRootNode(nodeId), this);
+    return check_5x0uld_a0a33(findRootNode(nodeId), this);
   }
   @Nullable
   @Override
@@ -224,53 +212,48 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
     }
     return null;
   }
-  public class ModelTreeNode extends TreeNode {
-    public ModelTreeNode() {
-      super("model");
-      String modelName = SModelOperations.getModelName(Sequence.fromIterable(getModels()).findFirst(new IWhereFilter<SModel>() {
-        public boolean accept(SModel it) {
-          return isNotEmptyString(SModelOperations.getModelName(it));
-        }
-      }));
-      if (!((modelName == null || modelName.length() == 0))) {
-        setText(modelName);
-      }
+
+  public static class ModelTreeNode extends TreeNode {
+    public ModelTreeNode(String text) {
+      super(text);
+      // there's little value in dedicated subclass except for exact tree node class check for some weird scenarios (worth revisiting)
       setIcon(IdeIcons.MODEL_ICON);
     }
   }
-  private class PackageTreeNode extends TreeNode {
+
+  private static class PackageTreeNode extends TreeNode {
     private PackageTreeNode(@NotNull String packageName) {
       super(packageName);
     }
   }
-  public class RootTreeNode extends TreeNode {
+
+  public static class RootTreeNode extends TreeNode {
     private SNodeId myRootId;
-    private String myPresentation = null;
     private String myVirtualPackage = null;
 
     public RootTreeNode(SNodeId rootId) {
       super("" + rootId);
       myRootId = rootId;
-      doUpdatePresentation();
     }
-    @Override
-    protected void doUpdatePresentation() {
-      myPresentation = null;
+
+    /*package*/ final void doUpdatePresentation(Iterable<SModel> models, boolean multipleRootNames) {
+      String text = null;
       Icon icon = null;
-      for (SModel model : Sequence.fromIterable(getModels())) {
-        SNode root = model.getNode(myRootId);
+      for (SModel model : Sequence.fromIterable(models)) {
+        SNode root = (model != null ? model.getNode(myRootId) : null);
         if (root != null && SNodeOperations.getParent(root) == null) {
           String presentation = root.getPresentation();
-          if (myPresentation == null) {
-            myPresentation = presentation;
-          } else if (isMultipleRootNames()) {
-            if (("/ " + myPresentation + " /").contains("/ " + presentation + " /")) {
+          if (text == null) {
+            text = presentation;
+          } else if (multipleRootNames) {
+            if (("/ " + text + " /").contains("/ " + presentation + " /")) {
             } else {
-              myPresentation += " / " + presentation;
+              text += " / " + presentation;
             }
           }
 
           if (myVirtualPackage == null) {
+            // XXX unlike icon, we take the first available VP here
             myVirtualPackage = (SPropertyOperations.getString(root, PROPS.virtualPackage$EkXl) == null ? "" : SPropertyOperations.getString(root, PROPS.virtualPackage$EkXl));
           }
           if (icon == null) {
@@ -278,36 +261,22 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
           }
         }
       }
-      setText("" + myPresentation);
+      setText(String.valueOf(text));
       setIcon(icon);
-      updateRootCustomPresentation(this);
     }
     @Nullable
     public SNodeId getRootId() {
       return myRootId;
-    }
-    public String getPresentation() {
-      return myPresentation;
     }
   }
   public class MetadataTreeNode extends RootTreeNode {
     public MetadataTreeNode() {
       super(null);
       setText("Model Properties");
-      doUpdatePresentation();
-    }
-    @Override
-    protected void doUpdatePresentation() {
       setIcon(IdeIcons.PROPERTIES_ICON);
-      updateRootCustomPresentation(this);
-    }
-    @Override
-    public String getPresentation() {
-      return "Model Properties";
     }
   }
-  public abstract class TreeNode extends DefaultMutableTreeNode {
-    @NotNull
+  public static abstract class TreeNode extends DefaultMutableTreeNode {
     private String myText;
     private int myTextStyle = SimpleTextAttributes.STYLE_PLAIN;
     private String myAdditionalText;
@@ -318,16 +287,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
     public TreeNode(@NotNull String text) {
       myText = text;
     }
-    public void renderTreeNode(ColoredTreeCellRenderer coloredRenderer) {
-      coloredRenderer.append(getText(), new SimpleTextAttributes(myTextStyle, getColor()));
-      if ((myAdditionalText != null && myAdditionalText.length() > 0)) {
-        coloredRenderer.append(" (" + myAdditionalText + ")", new SimpleTextAttributes(SimpleTextAttributes.STYLE_PLAIN, Color.GRAY));
-      }
-      coloredRenderer.setToolTipText(myTooltipText);
-      coloredRenderer.setIcon(getIcon());
-    }
-    protected void doUpdatePresentation() {
-    }
+
     @NotNull
     public String getText() {
       return myText;
@@ -362,17 +322,20 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
     public void setTextStyle(int textStyle) {
       myTextStyle = textStyle;
     }
+    /*package*/ int getTextStyle() {
+      return myTextStyle;
+    }
   }
-  private static String check_5x0uld_a0a82(RootTreeNode checkedDotOperand, DiffModelTree checkedDotThisExpression) {
+  private static String check_5x0uld_a0a33(RootTreeNode checkedDotOperand, DiffModelTree checkedDotThisExpression) {
     if (null != checkedDotOperand) {
-      return checkedDotOperand.getPresentation();
+      return checkedDotOperand.getText();
     }
     return null;
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
   }
-  private static <T> T as_5x0uld_a0a0a2a11(Object o, Class<T> type) {
+  private static <T> T as_5x0uld_a0a0a4a71(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 

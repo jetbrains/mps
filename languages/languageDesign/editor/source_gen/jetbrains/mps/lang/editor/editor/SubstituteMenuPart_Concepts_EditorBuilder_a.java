@@ -158,7 +158,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
     editorCell.setCellId("ReadOnlyModelAccessor_mv9as7_b0a");
     Style style = new StyleImpl();
-    new FoldedCellStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new FoldedCellStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, false);
     editorCell.getStyle().putAll(style);
     return editorCell;

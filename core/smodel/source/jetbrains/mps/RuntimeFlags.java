@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,6 @@
  */
 package jetbrains.mps;
 
-import jetbrains.mps.util.annotation.ToRemove;
-
 /**
  * Replacement for MPSCore#isMergeDriverMode and MPSCore#isTestMode as these flags has nothing to do with
  * component initialization that occurs in MPSCore class, nor with dependencies of mps core component.
@@ -27,9 +25,13 @@ import jetbrains.mps.util.annotation.ToRemove;
 public final class RuntimeFlags {
   private static TestMode ourTestMode = TestMode.NONE;
   private static Boolean ourInternalMode = null;
-  private static Boolean ourUseInterpretedLanguages = null;
   private static boolean ourMergeDriverMode = false;
   private static Boolean ourCastException = null;
+  private static Boolean ourEclipseJavaCompiler = null;
+  private static Boolean ourLegacyLoadModels = null;
+  private static Boolean ourCustomNodeIdentitySupport;
+
+  private static Boolean ourLegacyCLDeps = null;
 
   private RuntimeFlags() {
   }
@@ -72,27 +74,6 @@ public final class RuntimeFlags {
   }
 
   /**
-   * @return true if we would like to get rudimentary LanguageRuntime instance for non-deployed (source-only) language modules.
-   *         These days, MPS doesn't need these, the option is left for compatibility in case there's legacy code that depends on presence
-   *         of LanguageRuntime instances for every language module.
-   */
-  public static boolean isUseInterpretedLanguages() {
-    if (ourUseInterpretedLanguages == null) {
-      ourUseInterpretedLanguages = Boolean.getBoolean("mps.useInterpretedLanguages");
-    }
-    return ourUseInterpretedLanguages;
-  }
-
-  /**
-   * @deprecated MPS runs without interpreted languages by default now, no reason to set this mode explicitly with {@code false} (the only use in MPS)
-   */
-  @Deprecated
-  @ToRemove(version = 2019.2)
-  public static void setUseInterpretedLanguages(boolean useInterpretedLanguages) {
-    ourUseInterpretedLanguages = useInterpretedLanguages;
-  }
-
-  /**
    * Default value: system property <code>"mps.disableNodeCastExceptions"</code>
    *
    * @return <code>true</code> if node cast shall throw an exception. if <code>false</code>, bad cast results in a log warning only.
@@ -102,5 +83,50 @@ public final class RuntimeFlags {
       ourCastException = !Boolean.getBoolean("mps.disableNodeCastExceptions");
     }
     return ourCastException;
+  }
+
+  /**
+   * For a long time, MPS relied on ECJ to compile generated classes. In 2021.1, support
+   * for {@link javax.tools.JavaCompiler} API has been added, and it's default compilation option now.
+   * One can either use system-default java compiler (the one of `javac` command-line tool) or
+   * use ECJ through the same API. Note, if ECJ is not installed, MPS falls back to default compiler.
+   * Set {@code "mps.compiler.java=ecj"} system property to ask MPS to use Eclipse Java Compiler.
+   * @return true to use ECJ for compilation
+   */
+  public static boolean useEclipseJavaCompiler() {
+    if (ourEclipseJavaCompiler == null) {
+      ourEclipseJavaCompiler = "ecj".equalsIgnoreCase(System.getProperty("mps.compiler.java"));
+    }
+    return ourEclipseJavaCompiler;
+  }
+
+  /**
+   * experimental support not to load complete model set when module is attached to a repository
+   * (rather loaded on demand, when ModelReference.resolve() needs it)
+   */
+  public static boolean modelsLoadedOnModuleAttach() {
+    if (ourLegacyLoadModels == null) {
+      final String val = System.getProperty("mps.models.force");
+      // default false for testing purposes
+      ourLegacyLoadModels = Boolean.parseBoolean(val);
+      // if I don't want to enable it in release, uncomment the next line
+      // ourLegacyLoadModels = val == null || Boolean.parseBoolean(val);
+    }
+    return ourLegacyLoadModels;
+  }
+
+  public static boolean legacyCLDependencies() {
+    if (ourLegacyCLDeps == null) {
+      // we're good with new approach unless forced to use the old one
+      ourLegacyCLDeps = Boolean.getBoolean("mps.clm.deps.legacy");
+    }
+    return ourLegacyCLDeps;
+  }
+
+  public static boolean customNodeIdentitySupport() {
+    if (ourCustomNodeIdentitySupport == null) {
+      ourCustomNodeIdentitySupport = Boolean.getBoolean("mps.nodeuid");
+    }
+    return ourCustomNodeIdentitySupport;
   }
 }

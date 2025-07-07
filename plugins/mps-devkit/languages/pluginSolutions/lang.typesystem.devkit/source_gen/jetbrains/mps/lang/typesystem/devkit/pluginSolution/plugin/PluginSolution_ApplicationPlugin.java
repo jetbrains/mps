@@ -24,12 +24,12 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
   }
 
   public void createGroups() {
-    // actions w/o parameters 
+    // actions w/o parameters
     addAction(new GoToTypeErrorRule_Action());
     addAction(new HighlightSuppressor_Action());
     addAction(new ShowExpectedType_Action());
     addAction(new ShowRulesWhichAffectNodeType_Action());
-    // groups 
+    // groups
     addGroup(new GoToTypeErrorGroup_ActionGroup(this));
     addGroup(new InternalTypeSystemActions_ActionGroup(this));
     addGroup(new TypesystemActions_Devkit_ActionGroup(this));

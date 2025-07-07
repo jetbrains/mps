@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,8 +20,8 @@ import jetbrains.mps.extapi.model.GeneratableSModel;
 import jetbrains.mps.extapi.module.SRepositoryRegistry;
 import jetbrains.mps.generator.impl.dependencies.GenerationDependencies;
 import jetbrains.mps.generator.impl.dependencies.GenerationDependenciesCache;
+import jetbrains.mps.persistence.ModelDigestHelper;
 import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -39,40 +39,34 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * At the moment, combines 3 sources of model digest/hash to guess whether a model needs a re-generation.
+ * First comes from 'generated' files ({@code GenerationDependenciesCache}), digest value recorded at the time of M2M, M2T transformation.
+ * Second is {@code ModelDigestHelper}, which answers actual model digest, if known.
+ * Third is a model itself (in fact, {@code GeneratableSModel}, which knows how to calculate its actual digest value.
+ */
 public class ModelGenerationStatusManager implements CoreComponent {
-  private static ModelGenerationStatusManager INSTANCE;
   private final SRepositoryRegistry myRepositoryRegistry;
-
-  /**
-   * @return Use {@link CoreComponent} instance available through respective {@link jetbrains.mps.components.ComponentHost}.
-   *         It's {@link MPSGenerator generator component plugin} that supplies instance, and one can use {@code MPSCoreComponents}
-   *         from IDEA project/application components, or {@code MPSProject#getComponent(Class)} to access it.
-   *         XXX there's single use in MPS left, MPSMakeMediator in idea plugin, which needs to be refactored with respect to
-   *             GenerationPathsController (which changes location of 'generated' files, and the question is what location we shall use
-   *             in MPSMakeMediator.collectResources() then).
-   *         There are uses in mbeddr.
-   */
-  @Deprecated
-  @ToRemove(version = 2017.2)
-  public static ModelGenerationStatusManager getInstance() {
-    return INSTANCE;
-  }
 
   private final List<ModelGenerationStatusListener> myListeners = new ArrayList<>();
 
-  // XXX with multiple projects and independent project repositories, would need distnct GDC per repository
+  // XXX with multiple projects and independent project repositories, would need distinct GDC per repository
   //     to avoid stale cache information, like in https://youtrack.jetbrains.com/issue/MPS-26346
   private final GenerationDependenciesCache myModelHashCache;
+
+  private final ModelDigestHelper myDigestHelper;
 
   private final SRepositoryContentAdapter myModelReloadListener = new SRepositoryContentAdapter() {
     @Override
     protected boolean isIncluded(SModule module) {
-      return !module.isPackaged() && !module.isReadOnly();
+      return !module.isReadOnly();
     }
 
     @Override
     public void beforeModuleRemoved(@NotNull SModule module) {
-      ModelGenerationStatusManager.this.invalidateData(module.getModels());
+      ArrayList<SModel> models = new ArrayList<>();
+      module.forEachRegisteredModel(models::add);
+      ModelGenerationStatusManager.this.invalidateData(models);
       super.beforeModuleRemoved(module);
     }
 
@@ -116,8 +110,8 @@ public class ModelGenerationStatusManager implements CoreComponent {
     }
   };
 
-  // neither arg is null
-  public ModelGenerationStatusManager(SRepositoryRegistry repositoryRegistry, GenerationDependenciesCache depsCache) {
+  // no argument is null
+  public ModelGenerationStatusManager(SRepositoryRegistry repositoryRegistry, GenerationDependenciesCache depsCache, ModelDigestHelper modelDigest) {
     // FIXME MGSM could take ModelStreamManager.Provider so that (a) we don't need to cache IFile (b) clients like JPS build in IDEA plugin could
     // FIXME   control where cache files are read from (at least, the use of GenerationDependenciesCache.CachePathRedirect recently removed from MPSMakeMediator
     // FIXME   suggests there are/were scenarios when it's needed.
@@ -125,32 +119,32 @@ public class ModelGenerationStatusManager implements CoreComponent {
     //         or a workspace-wide mechanism that dispatches smth like SModelListener#modelStreamsChanged() event, I have no idea yet.
     myRepositoryRegistry = repositoryRegistry;
     myModelHashCache = depsCache;
+    myDigestHelper = modelDigest;
   }
 
   @Override
   public void init() {
-    if (INSTANCE != null) {
-      throw new IllegalStateException("double initialization");
-    }
-
-    INSTANCE = this;
     myRepositoryRegistry.addGlobalListener(myModelReloadListener);
   }
 
   @Override
   public void dispose() {
     myRepositoryRegistry.removeGlobalListener(myModelReloadListener);
-    INSTANCE = null;
   }
 
-  /*package*/ String currentHash(SModel md) {
-    if (md instanceof EditableSModel && ((EditableSModel)md).isChanged()) {
-      return null;
-    }
-    if (md instanceof GeneratableSModel) {
-      return ((GeneratableSModel) md).getModelHash();
-    }
-    return null;
+  // 'current' here means actual state of the model (precisely, of its persisted state as we look at DataSource)
+  //  see getLastKnownHash() for access to a value stored in 'generated' file
+  @Nullable
+  private String currentHash(GeneratableSModel md) {
+    String value = myDigestHelper.getModelHash(md);
+    // XXX why fall-back to md.getModelHash()? null and deal outside?
+    //     the idea of the method, as I see it now, is to try to get hash value w/o accessing the model itself, rather
+    //     through the MDH index, based on the knowledge of DS kind. If fails, then resort to the model itself, where it calculates
+    //     the actual value (usually through its persistence, which is well aware of text/binary distinction).
+    // Perhaps, we need 2 modes of ModelDigestHelper, one is to use cached value, another to forcefully calculate actual one
+    // With a single method, we sort of imply we use it in a scenario where cached values are ok.
+    // Eventually, the logic whether to use [Some]SModel.getModelHash() or not shall be part of MDH.
+    return value == null ? md.getModelHash() : value;
   }
 
   public boolean generationRequired(SModel md) {
@@ -165,14 +159,15 @@ public class ModelGenerationStatusManager implements CoreComponent {
       return true;
     }
 
-    String currentHash = sm.getModelHash();
+    // null indicates unlikely scenario we can not tell actual value,
+    // rather treat as 'generation required'
+    String currentHash = currentHash(sm);
     if (currentHash == null) {
       return true;
     }
 
     String generatedHash = getLastKnownHash(sm);
     return !currentHash.equals(generatedHash);
-
   }
 
   // @param sm != null

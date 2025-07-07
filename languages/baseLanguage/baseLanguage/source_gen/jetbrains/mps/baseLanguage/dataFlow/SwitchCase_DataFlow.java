@@ -4,14 +4,16 @@ package jetbrains.mps.baseLanguage.dataFlow;
 
 import jetbrains.mps.lang.dataFlow.DataFlowBuilder;
 import jetbrains.mps.lang.dataFlow.DataFlowBuilderContext;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SwitchCase_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.body$5LhG));
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.body$5LhG) != null)) {
+      _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.body$5LhG));
+    }
   }
 
   private static final class LINKS {

@@ -25,7 +25,7 @@ import jetbrains.mps.debugger.api.ui.tool.DebuggerToolContentBuilder;
 import com.intellij.openapi.options.SettingsEditor;
 import com.intellij.execution.configurations.RunConfiguration;
 
-@GeneratedClass(node = "r:2a614e43-21e7-49b5-9503-c8251b638b89(jetbrains.mps.debugger.api.runner)/4474271214083126640", model = "r:2a614e43-21e7-49b5-9503-c8251b638b89(jetbrains.mps.debugger.api.runner)")
+@GeneratedClass(nodeId = "4474271214083126640", model = "r:2a614e43-21e7-49b5-9503-c8251b638b89(jetbrains.mps.debugger.api.runner)")
 public class MPSDebugRunner extends GenericProgramRunner {
   public MPSDebugRunner() {
   }
@@ -42,13 +42,13 @@ public class MPSDebugRunner extends GenericProgramRunner {
   }
   @Override
   protected RunContentDescriptor doExecute(final RunProfileState state, final ExecutionEnvironment enviroment) throws ExecutionException {
-    //  FileDocumentManager.getInstance().saveAllDocuments(); 
+    //  FileDocumentManager.getInstance().saveAllDocuments();
     return createContentDescriptor(enviroment.getProject(), enviroment.getExecutor(), state, enviroment.getContentToReuse(), enviroment);
   }
   @Nullable
   protected RunContentDescriptor createContentDescriptor(Project project, Executor executor, RunProfileState state, RunContentDescriptor contentToReuse, ExecutionEnvironment env) throws ExecutionException {
     IDebugger debugger;
-    // todo get connection settings 
+    // todo get connection settings
     if (state instanceof DebuggerRunProfileState) {
       debugger = ((DebuggerRunProfileState) state).getDebuggerConfiguration().getDebugger();
     } else {

@@ -7,7 +7,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.ListIterator;
-import jetbrains.mps.baseLanguage.closures.runtime.AdapterClass;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Collections;
 
@@ -90,7 +89,7 @@ public abstract class AbstractListSequence<T> extends AbstractCollectionSequence
   }
   @Override
   public boolean isNotEmpty() {
-    return !((getList().isEmpty()));
+    return !(getList().isEmpty());
   }
   @Override
   public T removeElementAt(int idx) {
@@ -153,7 +152,7 @@ public abstract class AbstractListSequence<T> extends AbstractCollectionSequence
     return (IListSequence<T>) super.removeSequence(seq);
   }
   @Override
-  public IListSequence<T> removeWhere(@AdapterClass(value = "IWhereFilter") _FunctionTypes._return_P1_E0<? extends Boolean, ? super T> filter) {
+  public IListSequence<T> removeWhere(_FunctionTypes._return_P1_E0<? extends Boolean, ? super T> filter) {
     return (IListSequence<T>) super.removeWhere(filter);
   }
   @SuppressWarnings(value = "unchecked")
@@ -169,11 +168,8 @@ public abstract class AbstractListSequence<T> extends AbstractCollectionSequence
   }
   @Override
   public List<T> toList() {
-    return this;
-  }
-  @Override
-  public IListSequence<T> toListSequence() {
-    return this;
+    // copy of the list
+    return new ArrayList<>(this.list);
   }
   /*package*/ void _reverse() {
     Collections.reverse(getList());

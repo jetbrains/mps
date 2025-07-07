@@ -209,10 +209,6 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
-      NonTypesystemRule_Runtime nonTypesystemRule = new check_ContributionIsNotInConceptLanguage_NonTypesystemRule();
-      this.myNonTypesystemRules.add(nonTypesystemRule);
-    }
-    {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_DefaultMenu_inConceptLanguage_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
@@ -278,6 +274,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_ReferenceToNonexistentDefaultTransformationMenu_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_SeparatorRightStyleClassItem_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {

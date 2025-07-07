@@ -11,13 +11,12 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.openapi.editor.Editor;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.openapi.editor.EditorPanelManager;
 import jetbrains.mps.lang.structure.util.ConceptIdSetter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -58,9 +57,9 @@ public class CreateConceptFromUsageHelper {
       return false;
     }
 
-    // check err cell 
+    // check err cell
     EditorCell cell = myEditorContext.getContextCell();
-    if (!((cell instanceof EditorCell_Label))) {
+    if (!(cell instanceof EditorCell_Label)) {
       return false;
     }
 
@@ -75,66 +74,56 @@ public class CreateConceptFromUsageHelper {
 
     Executor ex = (dryRun ? Executor.NoOp : Executor.Normal);
 
-    // created is different from "method!=null", differs in case ex does not execute passed closure 
+    // created is different from "method!=null", differs in case ex does not execute passed closure
     boolean created = false;
     final Wrappers._T<SNode> createdConcept = new Wrappers._T<SNode>(null);
-    if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.LinkDeclaration$1p) && cell.isErrorState() && cell.getSRole().equals(LINKS.target$m40F)) {
+    if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.LinkDeclaration$1p) && cell.isErrorState() && LINKS.target$m40F.equals(cell.getSRole())) {
       created = true;
-      ex.exec(new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          SNode cncpt = createConcept(conceptName);
-          SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.LinkDeclaration$1p), LINKS.target$m40F, cncpt);
-          createdConcept.value = cncpt;
-        }
+      ex.exec(() -> {
+        SNode cncpt = createConcept(conceptName);
+        SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.LinkDeclaration$1p), LINKS.target$m40F, cncpt);
+        createdConcept.value = cncpt;
       });
     } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.InterfaceConceptReference$O4)) {
-      // ref concept already created, but no reference is set 
+      // ref concept already created, but no reference is set
       created = true;
-      ex.exec(new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          SNode intfc = createConceptInterface(conceptName);
-          SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.InterfaceConceptReference$O4), LINKS.intfc$zM4e, intfc);
-          createdConcept.value = intfc;
-        }
+      ex.exec(() -> {
+        SNode intfc = createConceptInterface(conceptName);
+        SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.InterfaceConceptReference$O4), LINKS.intfc$zM4e, intfc);
+        createdConcept.value = intfc;
       });
-    } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.ConceptDeclaration$gH) && cell.isErrorState() && cell.getSRole().equals(LINKS.implements$u_P2)) {
-      // ref concept not yet created, but no reference is set 
+    } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.ConceptDeclaration$gH) && cell.isErrorState() && LINKS.implements$u_P2.equals(cell.getSRole())) {
+      // ref concept not yet created, but no reference is set
       created = true;
-      ex.exec(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
-        public SNode invoke() {
-          SNode intfc = createConceptInterface(conceptName);
-          ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myNode, CONCEPTS.ConceptDeclaration$gH), LINKS.implements$u_P2)).addElement(createInterfaceConceptReference_yye2ek_a0a1a0a0c0b81a11(intfc));
-          return createdConcept.value = intfc;
-        }
-      }));
-    } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.ConceptDeclaration$gH) && cell.isErrorState() && cell.getSRole().equals(LINKS.extends$_Isg)) {
-      created = true;
-      ex.exec(new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          SNode cncpt = createConcept(conceptName);
-          SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.ConceptDeclaration$gH), LINKS.extends$_Isg, cncpt);
-          createdConcept.value = cncpt;
-        }
+      ex.exec(() -> {
+        SNode intfc = createConceptInterface(conceptName);
+        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myNode, CONCEPTS.ConceptDeclaration$gH), LINKS.implements$u_P2)).addElement(createInterfaceConceptReference_yye2ek_a0a1a0a0c0b81a11(intfc));
+        createdConcept.value = intfc;
       });
-    } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.InterfaceConceptDeclaration$CG) && cell.isErrorState() && cell.getSRole().equals(LINKS.extends$nawU)) {
-      // ref concept not yet created, but no reference is set 
+    } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.ConceptDeclaration$gH) && cell.isErrorState() && LINKS.extends$_Isg.equals(cell.getSRole())) {
       created = true;
-      ex.exec(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
-        public SNode invoke() {
-          SNode intfc = createConceptInterface(conceptName);
-          ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myNode, CONCEPTS.InterfaceConceptDeclaration$CG), LINKS.extends$nawU)).addElement(createInterfaceConceptReference_yye2ek_a0a1a0a0c0d81a11(intfc));
-          return createdConcept.value = intfc;
-        }
-      }));
+      ex.exec(() -> {
+        SNode cncpt = createConcept(conceptName);
+        SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.ConceptDeclaration$gH), LINKS.extends$_Isg, cncpt);
+        createdConcept.value = cncpt;
+      });
+    } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.InterfaceConceptDeclaration$CG) && cell.isErrorState() && LINKS.extends$nawU.equals(cell.getSRole())) {
+      // ref concept not yet created, but no reference is set
+      created = true;
+      ex.exec(() -> {
+        SNode intfc = createConceptInterface(conceptName);
+        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myNode, CONCEPTS.InterfaceConceptDeclaration$CG), LINKS.extends$nawU)).addElement(createInterfaceConceptReference_yye2ek_a0a1a0a0c0d81a11(intfc));
+        createdConcept.value = intfc;
+      });
     }
     if (!(created)) {
       return false;
     }
 
-    ex.exec(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        Editor editor = NavigationSupport.getInstance().openNode(myEditorContext.getOperationContext().getProject(), createdConcept.value, true, false);
-        editor.getEditorContext().selectWRTFocusPolicy(createdConcept.value);
+    ex.exec(() -> {
+      EditorPanelManager epm = myEditorContext.getEditorPanelManager();
+      if (epm != null) {
+        epm.openAndSelect(createdConcept.value);
       }
     });
 

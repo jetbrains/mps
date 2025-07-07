@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,9 +19,12 @@ import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.util.PathFormatChecker;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.function.Predicate;
+
 class MacroHelperImpl implements MacroHelper {
   @Nullable
-  private final IFile anchorFile; // what is null anchorFile??
+  private final IFile anchorFile; // null anchorFile is generally a 'global' helper, but could also happen for modules w/o descriptor in a file
   private final Macros macros;
 
   MacroHelperImpl(@Nullable IFile anchorFile, Macros macros) {
@@ -40,7 +43,7 @@ class MacroHelperImpl implements MacroHelper {
   }
 
   @Override
-  public String shrinkPath(@Nullable String absolutePath) {
+  public String shrinkPath(@Nullable String absolutePath, @Nullable String hintOriginalPath) {
     if (absolutePath == null) {
       return null;
     }
@@ -52,6 +55,25 @@ class MacroHelperImpl implements MacroHelper {
 
     new PathFormatChecker(absolutePath).osIndependentPath().noDots().absolute();
 
-    return macros.shrink(absolutePath, anchorFile);
+    ArrayList<String> alternatives = new ArrayList<>();
+    macros.shrink(absolutePath, anchorFile, alternatives);
+    if (alternatives.isEmpty()) {
+      return absolutePath;
+    }
+    if (hintOriginalPath == null || alternatives.size() == 1) {
+      return alternatives.get(0);
+    }
+    // size > 1 && got a hint
+    if (MacrosFactory.containsMacro(hintOriginalPath)) {
+      final String hintMacro = hintOriginalPath.substring(2, hintOriginalPath.indexOf('}'));
+      Predicate<String> isSameMacro = (s -> s.regionMatches(2, hintMacro, 0, hintMacro.length()));
+      final String sameMacro = alternatives.stream().filter(MacrosFactory::containsMacro).filter(isSameMacro).findFirst().orElse(null);
+      if (sameMacro != null) {
+        return sameMacro;
+      }
+      // no matching macro while there's one in the original value, can't get close to the hint, just fall through to get the top alternative
+    }
+    // XXX perhaps, shall find alternative with the longest common prefix with the hint value?
+    return alternatives.get(0);
   }
 }

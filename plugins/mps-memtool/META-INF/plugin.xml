@@ -19,10 +19,14 @@
   <name>Memory Tool</name>
   <description>Adds loaded models indicator, enables model unloading process, logs related stats</description>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
+  <dependencies>
+    <plugin id="jetbrains.mps.core"/>
+  </dependencies>
 
   <extensions defaultExtensionNs="com.intellij">
     <registryKey key="ide.memory.cleanup.interval" defaultValue="-1" description="Unload all models each N seconds. Non-positive value disables models unloading" restartRequired="false"/>
     <statusBarWidgetFactory implementation="jetbrains.mps.ide.memtool.LoadedModelsPanel$WidgetFactory" id="LoadedModels" order="before notificationsWidget"/>
     <backgroundPostStartupActivity implementation="jetbrains.mps.ide.memtool.MemManager" />
+    <notificationGroup id="MPS Memory Stats" displayType="BALLOON" isLogByDefault="false"/>
   </extensions>
 </idea-plugin>

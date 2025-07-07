@@ -11,7 +11,6 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.baseLanguage.behavior.IClassifierMember__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
@@ -42,11 +41,7 @@ public class check_GenericNewExpression_PointingToNonStaticFromStatic_NonTypesys
     if (target.value == null) {
       return;
     }
-    SNode method = ListSequence.fromList(SNodeOperations.getNodeAncestors(genericNewExpression, CONCEPTS.IClassifierMember$Na, false)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode member) {
-        return Objects.equals(SNodeOperations.getParent(member), SNodeOperations.getParent(target.value));
-      }
-    });
+    SNode method = ListSequence.fromList(SNodeOperations.getNodeAncestors(genericNewExpression, CONCEPTS.IClassifierMember$Na, false)).findFirst((member) -> Objects.equals(SNodeOperations.getParent(member), SNodeOperations.getParent(target.value)));
     if ((method == null) || !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(method))) {
       return;
     }
@@ -54,7 +49,7 @@ public class check_GenericNewExpression_PointingToNonStaticFromStatic_NonTypesys
     if ((boolean) Classifier__BehaviorDescriptor.isInner_idsWroEc0xXl.invoke(target.value) && !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(target.value))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(genericNewExpression, LINKS.creator$BsHW), "No enclosing instance of type " + SNodeOperations.getParent(target.value) + " is accessible", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "966837649713150029", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(genericNewExpression, LINKS.creator$BsHW), "No enclosing instance of type " + SNodeOperations.present(SNodeOperations.getParent(target.value)) + " is accessible", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "966837649713150029", null, errorTarget);
       }
     }
   }

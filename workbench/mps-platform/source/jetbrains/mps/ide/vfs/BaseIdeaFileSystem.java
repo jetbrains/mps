@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,72 +15,25 @@
  */
 package jetbrains.mps.ide.vfs;
 
-import com.intellij.openapi.Disposable;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.application.ModalityState;
-import com.intellij.openapi.fileTypes.FileTypeManager;
-import com.intellij.openapi.util.io.StreamUtil;
-import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.openapi.vfs.VirtualFileSystem;
-import com.intellij.openapi.vfs.newvfs.RefreshQueue;
-import jetbrains.mps.ide.MPSCoreComponents;
-import jetbrains.mps.ide.platform.watching.FileSystemListenersContainer;
-import jetbrains.mps.ide.platform.watching.ReloadManager;
-import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
-import jetbrains.mps.vfs.VFSManager;
-import jetbrains.mps.vfs.refresh.CachingContext;
-import jetbrains.mps.vfs.refresh.CachingFile;
-import jetbrains.mps.vfs.refresh.CachingFileSystem;
-import jetbrains.mps.vfs.refresh.DefaultCachingContext;
-import jetbrains.mps.vfs.refresh.FileListener;
-import jetbrains.mps.vfs.refresh.FileListenerAdapter;
-import jetbrains.mps.vfs.refresh.FileSystemListener;
 import jetbrains.mps.vfs.util.PathFormatChecker;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
+/**
+ * This is a per-protocol, IDEA-backed VFS implementation base class
+ */
+@SuppressWarnings("removal")
+public abstract class BaseIdeaFileSystem implements IFileSystem {
 
-public abstract class BaseIdeaFileSystem implements IFileSystem, CachingFileSystem, Disposable {
-  private static final Logger LOG = LogManager.getLogger(IdeaFileSystem.class);
-
-  private final MPSCoreComponents myCoreComponents;
-  private FileSystemListenersContainer myListenersContainer;
   private final String myIdeaProtocol;
+  private final IdeaFileSystem myUmbrellaFileSystem;
 
-  protected BaseIdeaFileSystem(MPSCoreComponents mpsCore, FileSystemListenersContainer listenerContainer) {
-    myCoreComponents = mpsCore;
-    myListenersContainer = listenerContainer;
-    myIdeaProtocol = null;
-  }
-
-  public BaseIdeaFileSystem(@NotNull MPSCoreComponents mpsCore, @NotNull FileSystemListenersContainer listenerContainer, @NotNull String ideaProtocolIdentity) {
-    // XXX would be nice to get VirtualFileManager instance as well (see #getUnderlyingFS()), but the parameter list gets too long
-    //     Perhaps, if this class and subclasses stop being app component, we could have a single one that takes
-    //     MPSCoreComponent, FileSystemListenersContainer and VirtualFileManager, and registers appropriate protocol
-    //     implementations (jar, local, jrt and idea) as needed. Is there any value in distinct app components per protocol?
-    myCoreComponents = mpsCore;
-    myListenersContainer = listenerContainer;
+  public BaseIdeaFileSystem(@NotNull String ideaProtocolIdentity, @NotNull IdeaFileSystem fsUmbrella) {
     myIdeaProtocol = ideaProtocolIdentity;
-    vfsManager().registerFS(getProtocol(), this);
-  }
-
-  protected final VFSManager vfsManager() {
-    // perhaps, could be public, if needed
-    return myCoreComponents.getPlatform().findComponent(VFSManager.class);
+    myUmbrellaFileSystem = fsUmbrella;
   }
 
   @NotNull
@@ -90,114 +43,32 @@ public abstract class BaseIdeaFileSystem implements IFileSystem, CachingFileSyst
     return new IdeaFile(this, path);
   }
 
-  @Nullable
-  @Override
-  public IFile findExistingFile(@NotNull String path) {
-    return IFileSystem.super.findExistingFile(path);
-  }
-
-  @Override
-  public void addListener(@NotNull FileSystemListener listener) {
-    addListener1(listener.getFileToListen(), listener);
-  }
-
-  @Override
-  public void removeListener(@NotNull FileSystemListener listener) {
-    removeListener1(listener.getFileToListen(), listener);
-  }
-
-  private void addListener1(@NotNull IFile file, @NotNull FileListener listener) {
-    FileListenerAdapter listener1 = new FileListenerAdapter(file, listener);
-    ApplicationManager.getApplication().runReadAction(() -> myListenersContainer.addListener(listener1));
-  }
-
-  private void removeListener1(@NotNull IFile file, @NotNull FileListener listener) {
-    myListenersContainer.removeListener(new FileListenerAdapter(file, listener));
-  }
-
-  public FileSystemListenersContainer getListenersContainer() {
-    return myListenersContainer;
-  }
-
   @Override
   public boolean isFileIgnored(@NotNull String name) {
-    return FileTypeManager.getInstance().isFileIgnored(name);
-  }
-
-
-  public void scheduleUpdateForWrittenFiles(Iterable<IFile> writtenFiles) {
-    final List<IFile> newFiles = new ArrayList<>();
-    final List<IFile> updatedFiles = new ArrayList<>();
-    for (IFile file : writtenFiles) {
-      if (file.exists()) {
-        updatedFiles.add(file);
-      } else {
-        newFiles.add(file);
-      }
-    }
-    ApplicationManager.getApplication().invokeLater(
-        new IdeaWriteAction(() -> {
-          // Recreate files using VFS
-          for (IFile file : newFiles) {
-            OutputStream out = null;
-            try {
-              // No need to close InputStream: it will be closed by loadFromStream()
-              byte[] content = StreamUtil.loadFromStream(new FileInputStream(file.getPath()));
-
-              out = file.openOutputStream();
-              out.write(content);
-            } catch (IOException e) {
-              LOG.error(String.format("Failed to re-create file '%s'", file), e);
-            } finally {
-              FileUtil.closeFileSafe(out);
-            }
-          }
-
-          // Refresh added files
-          Set<CachingFile> ideaFiles = updatedFiles.stream()
-                                                   .filter(file -> file instanceof IdeaFile)
-                                                   .map(file -> ((IdeaFile) file)).collect(Collectors.toSet());
-          refresh(new DefaultCachingContext(true, false), ideaFiles);
-        })
-    );
+    // FIXME do I need this one for IFileSystem API at all (i.e. not only for "umbrella" IdeaFileSystem)? What are the uses?
+    return myUmbrellaFileSystem.isFileIgnored(name);
   }
 
   @Override
   public boolean runWriteTransaction(@NotNull Runnable r) {
-    final IdeaWriteAction action = new IdeaWriteAction(r);
-    ApplicationManager.getApplication().invokeAndWait(action, ModalityState.defaultModalityState());
-    return action.getFailure() == null;
-  }
-
-  @Override
-  public void refresh(@NotNull CachingContext context, Collection<CachingFile> files) {
-    Set<VirtualFile> virtualFiles = files.stream()
-                                         .map(file -> ((IdeaFile) file).getVirtualFile())
-                                         .filter(Objects::nonNull)
-                                         .collect(Collectors.toSet());
-    virtualFiles.forEach(VirtualFile::getChildren); // to enforce refresh for this file
-    RefreshQueue.getInstance().refresh(!context.isSynchronous(), context.isRecursive(), null, virtualFiles);
-  }
-
-  @Override
-  public void dispose() {
-    vfsManager().unregisterFS(getProtocol(), this);
+    return myUmbrellaFileSystem.runWriteTransaction(r);
   }
 
   @Nullable
-  VirtualFileSystem getUnderlyingFS() {
+  /*package*/ VirtualFileSystem getUnderlyingFS() {
     return VirtualFileManager.getInstance().getFileSystem(getProtocol());
   }
 
   @NotNull
   /*package*/ String getProtocol() {
-    if (myIdeaProtocol == null) {
-      throw new IllegalStateException("Should not be invoked on IdeaFileSystem");
-    }
     return myIdeaProtocol;
   }
 
-  /*package*/ BaseIdeaFileSystem getLocalFS() {
-    return (BaseIdeaFileSystem) vfsManager().getFileSystem(VFSManager.FILE_FS);
+  /**
+   * @since 2024.2
+   */
+  @NotNull
+  /*package*/ IdeaFileSystem getUmbrellaFileSystem() {
+    return myUmbrellaFileSystem;
   }
 }

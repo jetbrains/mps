@@ -10,7 +10,6 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -20,10 +19,12 @@ public class typeof_FoundErrorOperation_InferenceRule extends AbstractInferenceR
   public typeof_FoundErrorOperation_InferenceRule() {
   }
   public void applyRule(final SNode foundError, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(foundError, LINKS.text$tQp8);
-      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:f568ac81-f20d-491c-8e81-330fbdff24e6(jetbrains.mps.lang.textGen.typesystem)", "1237483146833", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:f568ac81-f20d-491c-8e81-330fbdff24e6(jetbrains.mps.lang.textGen.typesystem)", "1237483102053", true), (SNode) _quotation_createNode_qfrptg_a1a0c0a0b(), _info_12389875345);
+    if (!(typeCheckingContext.isSingleTypeComputation())) {
+      {
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(foundError, LINKS.text$tQp8);
+        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:f568ac81-f20d-491c-8e81-330fbdff24e6(jetbrains.mps.lang.textGen.typesystem)", "6642338866061705473", 0, null);
+        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:f568ac81-f20d-491c-8e81-330fbdff24e6(jetbrains.mps.lang.textGen.typesystem)", "6642338866061706560", true), (SNode) _quotation_createNode_qfrptg_a1a0c0a0a0b(), true, true, _info_12389875345);
+      }
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -35,10 +36,10 @@ public class typeof_FoundErrorOperation_InferenceRule extends AbstractInferenceR
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_qfrptg_a1a0c0a0b() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
+  private static SNode _quotation_createNode_qfrptg_a1a0c0a0a0b() {
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"));
+    quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
 

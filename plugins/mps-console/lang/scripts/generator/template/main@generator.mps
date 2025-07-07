@@ -2,9 +2,9 @@
 <model ref="r:d126bb78-add4-48f5-8d7d-bb3111805e2a(jetbrains.mps.console.scripts.generator.main@generator)">
   <persistence version="9" />
   <languages>
-    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="3" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="4" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
     <import index="z2sp" ref="r:e712f353-5c3c-4288-adce-87c956a52ffb(jetbrains.mps.console.scripts.structure)" />
@@ -50,7 +50,7 @@
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -61,7 +61,7 @@
       <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
         <reference id="1107535924139" name="classifier" index="3uigEE" />
       </concept>
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
@@ -79,7 +79,7 @@
       </concept>
       <concept id="1168559333462" name="jetbrains.mps.lang.generator.structure.TemplateDeclarationReference" flags="ln" index="j$656" />
       <concept id="1095672379244" name="jetbrains.mps.lang.generator.structure.TemplateFragment" flags="ng" index="raruj" />
-      <concept id="1722980698497626400" name="jetbrains.mps.lang.generator.structure.ITemplateCall" flags="ng" index="v9R3L">
+      <concept id="1722980698497626400" name="jetbrains.mps.lang.generator.structure.ITemplateCall" flags="ngI" index="v9R3L">
         <reference id="1722980698497626483" name="template" index="v9R2y" />
       </concept>
       <concept id="1167168920554" name="jetbrains.mps.lang.generator.structure.BaseMappingRule_Condition" flags="in" index="30G5F_" />
@@ -139,7 +139,7 @@
         <property id="1757699476691236116" name="role_DebugInfo" index="2qtEX8" />
         <property id="1341860900488019036" name="linkId" index="P3scX" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -186,13 +186,13 @@
       <node concept="2YIFZL" id="1whNchEKZ9p" role="jymVt">
         <property role="TrG5h" value="execute" />
         <node concept="37vLTG" id="1whNchEKZ9q" role="3clF46">
-          <property role="TrG5h" value="context" />
+          <property role="TrG5h" value="consoleContext" />
           <node concept="3uibUv" id="1whNchEKZ9r" role="1tU5fm">
             <ref role="3uigEE" to="qgo0:jysm2GDsTL" resolve="ConsoleContext" />
           </node>
         </node>
         <node concept="37vLTG" id="1whNchEKZ9s" role="3clF46">
-          <property role="TrG5h" value="console" />
+          <property role="TrG5h" value="consoleStream" />
           <node concept="3uibUv" id="1whNchEKZ9t" role="1tU5fm">
             <ref role="3uigEE" to="qgo0:5WpmwkrQPPk" resolve="ConsoleStream" />
           </node>
@@ -205,7 +205,7 @@
               <ref role="1Pybhc" to="8wae:1whNchEH953" resolve="ScriptsUtil" />
               <ref role="37wK5l" to="8wae:1U0jI2qTL76" resolve="executeScript" />
               <node concept="37vLTw" id="1whNchEKZ9z" role="37wK5m">
-                <ref role="3cqZAo" node="1whNchEKZ9q" resolve="context" />
+                <ref role="3cqZAo" node="1whNchEKZ9q" resolve="consoleContext" />
               </node>
               <node concept="10QFUN" id="3ZgZ1njMIa1" role="37wK5m">
                 <node concept="3B5_sB" id="1whNchEKZ9$" role="10QFUP">
@@ -248,13 +248,13 @@
         <property role="TrG5h" value="execute" />
         <node concept="3cqZAl" id="23X86fnVai1" role="3clF45" />
         <node concept="37vLTG" id="23X86fnVai2" role="3clF46">
-          <property role="TrG5h" value="context" />
+          <property role="TrG5h" value="consoleContext" />
           <node concept="3uibUv" id="23X86fnVai3" role="1tU5fm">
             <ref role="3uigEE" to="qgo0:jysm2GDsTL" resolve="ConsoleContext" />
           </node>
         </node>
         <node concept="37vLTG" id="23X86fnVai4" role="3clF46">
-          <property role="TrG5h" value="console" />
+          <property role="TrG5h" value="consoleStream" />
           <node concept="3uibUv" id="23X86fnVai5" role="1tU5fm">
             <ref role="3uigEE" to="qgo0:5WpmwkrQPPk" resolve="ConsoleStream" />
           </node>
@@ -266,7 +266,7 @@
               <ref role="1Pybhc" to="8wae:1whNchEH953" resolve="ScriptsUtil" />
               <ref role="37wK5l" to="8wae:23X86fnS_$6" resolve="refactor" />
               <node concept="37vLTw" id="23X86fnVb5G" role="37wK5m">
-                <ref role="3cqZAo" node="23X86fnVai2" resolve="context" />
+                <ref role="3cqZAo" node="23X86fnVai2" resolve="consoleContext" />
               </node>
               <node concept="10Nm6u" id="23X86fnVCLP" role="37wK5m">
                 <node concept="29HgVG" id="23X86fnVCQt" role="lGtFl">

@@ -17,14 +17,12 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.List;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
-@GeneratedClass(node = "r:ae9ec0c8-644a-4abb-bd37-ca2f4eb2d3d9(jetbrains.mps.ide.editor.suppresserrors)/7348309840067517697", model = "r:ae9ec0c8-644a-4abb-bd37-ca2f4eb2d3d9(jetbrains.mps.ide.editor.suppresserrors)")
+@GeneratedClass(nodeId = "7348309840067517697", model = "r:ae9ec0c8-644a-4abb-bd37-ca2f4eb2d3d9(jetbrains.mps.ide.editor.suppresserrors)")
 public class SuppressErrorsChecker extends BaseEventProcessingEditorChecker {
 
   @NotNull
@@ -33,12 +31,8 @@ public class SuppressErrorsChecker extends BaseEventProcessingEditorChecker {
     Set<EditorMessage> messages = SetSequence.fromSet(new LinkedHashSet<EditorMessage>());
     SNode node = editorComponent.getEditedNode();
     for (SNode n : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.ICanSuppressErrors$q8, true, new SAbstractConcept[]{}))) {
-      List<SNode> suppresses = AttributeOperations.getAttributeList(n, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1));
-      if (ListSequence.fromList(suppresses).all(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SuppressErrorsMessage.getOwnCell(editorComponent, it) != null;
-        }
-      })) {
+      List<SNode> suppresses = new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1).list(n);
+      if (ListSequence.fromList(suppresses).all((it) -> SuppressErrorsMessage.getOwnCell(editorComponent, it) != null)) {
         for (SNode s : ListSequence.fromList(suppresses)) {
           SetSequence.fromSet(messages).addElement(new SuppressErrorsMessage(s, this, "Errors suppressed"));
         }

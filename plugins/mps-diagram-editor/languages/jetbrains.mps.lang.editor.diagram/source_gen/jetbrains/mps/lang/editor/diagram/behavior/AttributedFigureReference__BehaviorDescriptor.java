@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.List;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Arrays;
@@ -17,11 +16,9 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.editor.figures.behavior.FigureAttribute__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.editor.figures.behavior.FigureParameterAttribute__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -33,8 +30,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class AttributedFigureReference__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x4b412569a095b4ceL, "jetbrains.mps.lang.editor.diagram.structure.AttributedFigureReference");
 
-  public static final SMethod<List<String>> getFigureParameterNames_id1iN4mn3lWCq = new SMethodBuilder<List<String>>(new SJavaCompoundTypeImpl((Class<List<String>>) ((Class) Object.class))).name("getFigureParameterNames").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1iN4mn3lWCq").build();
-  public static final SMethod<SNode> getFigureParameter_id1iN4mn3oxt8 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getFigureParameter").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1iN4mn3oxt8").build(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<List<String>> getFigureParameterNames_id1iN4mn3lWCq = new SMethodBuilder<List<String>>(new SJavaCompoundTypeImpl((Class<List<String>>) ((Class) Object.class))).name("getFigureParameterNames").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1491555030356445722L).languageId(0x80deedc5c602bfd1L, 0x6106f6117a7442d1L).build2();
+  public static final SMethod<SNode> getFigureParameter_id1iN4mn3oxt8 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getFigureParameter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1491555030357120840L).languageId(0x80deedc5c602bfd1L, 0x6106f6117a7442d1L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFigureParameterNames_id1iN4mn3lWCq, getFigureParameter_id1iN4mn3oxt8);
 
@@ -42,18 +39,10 @@ public final class AttributedFigureReference__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static List<String> getFigureParameterNames_id1iN4mn3lWCq(@NotNull SNode __thisNode__) {
-    return Sequence.fromIterable(FigureAttribute__BehaviorDescriptor.getPrameterAttributes_id4H19mAwT3wD.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.figureAttribute$EOJr))).select(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(SNodeOperations.cast(FigureParameterAttribute__BehaviorDescriptor.getParameterMember_id4H19mAwT7Py.invoke(it), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL);
-      }
-    }).toListSequence();
+    return Sequence.fromIterable(FigureAttribute__BehaviorDescriptor.getPrameterAttributes_id4H19mAwT3wD.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.figureAttribute$EOJr))).select((it) -> SPropertyOperations.getString(SNodeOperations.cast(FigureParameterAttribute__BehaviorDescriptor.getParameterMember_id4H19mAwT7Py.invoke(it), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL)).toList();
   }
   /*package*/ static SNode getFigureParameter_id1iN4mn3oxt8(@NotNull SNode __thisNode__, final String name) {
-    return Sequence.fromIterable(FigureAttribute__BehaviorDescriptor.getPrameterAttributes_id4H19mAwT3wD.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.figureAttribute$EOJr))).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(FigureParameterAttribute__BehaviorDescriptor.getParameterMember_id4H19mAwT7Py.invoke(it), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL), name);
-      }
-    });
+    return Sequence.fromIterable(FigureAttribute__BehaviorDescriptor.getPrameterAttributes_id4H19mAwT3wD.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.figureAttribute$EOJr))).findFirst((it) -> Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(FigureParameterAttribute__BehaviorDescriptor.getParameterMember_id4H19mAwT7Py.invoke(it), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL), name));
   }
 
   /*package*/ AttributedFigureReference__BehaviorDescriptor() {

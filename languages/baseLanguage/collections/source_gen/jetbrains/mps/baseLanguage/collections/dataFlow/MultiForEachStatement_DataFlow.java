@@ -19,11 +19,7 @@ public class MultiForEachStatement_DataFlow extends DataFlowBuilder {
     _context.getBuilder().emitLabel("foreach");
     _context.getBuilder().emitIfJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c89590329(jetbrains.mps.baseLanguage.collections.dataFlow)/8293956702610517981");
     _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.body$c1sm));
-    _context.getBuilder().emitMayBeUnreachable(new Runnable() {
-      public void run() {
-        _context.getBuilder().emitJump(_context.getBuilder().label(_context.getNode(), "foreach"), "r:00000000-0000-4000-0000-011c89590329(jetbrains.mps.baseLanguage.collections.dataFlow)/8293956702610518013");
-      }
-    });
+    _context.getBuilder().emitMayBeUnreachable(() -> _context.getBuilder().emitJump(_context.getBuilder().label(_context.getNode(), "foreach"), "r:00000000-0000-4000-0000-011c89590329(jetbrains.mps.baseLanguage.collections.dataFlow)/8293956702610518013"));
   }
 
   private static final class LINKS {

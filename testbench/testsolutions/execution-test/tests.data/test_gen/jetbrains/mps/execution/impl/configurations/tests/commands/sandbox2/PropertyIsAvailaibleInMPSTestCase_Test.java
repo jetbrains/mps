@@ -4,24 +4,21 @@ package jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 @MPSLaunch
 public class PropertyIsAvailaibleInMPSTestCase_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(PropertyIsAvailaibleInMPSTestCase_Test.class, "${mps_home}", "r:bbc844ac-dcda-4460-9717-8eb5d64b4778(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(PropertyIsAvailaibleInMPSTestCase_Test.class).projectPath(null).modelRef("r:bbc844ac-dcda-4460-9717-8eb5d64b4778(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2@tests)").reopenProject(null).build());
 
   public PropertyIsAvailaibleInMPSTestCase_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -35,10 +32,15 @@ public class PropertyIsAvailaibleInMPSTestCase_Test extends BaseTransformationTe
       super(owner);
     }
 
-    public void test_test1() throws Exception {
-      Assert.assertEquals("TRUE", System.getProperty("MyProp"));
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
     }
 
+    public void test_test1() throws Exception {
+      initTestNodes();
+      Assert.assertEquals("TRUE", System.getProperty("MyProp"));
+    }
 
   }
 }

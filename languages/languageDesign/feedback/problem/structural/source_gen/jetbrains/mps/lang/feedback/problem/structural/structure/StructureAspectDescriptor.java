@@ -75,86 +75,94 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.interface_();
     b.parent(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x573ae5b8b8caf72cL);
     b.origin("r:270d7173-b5a9-45a3-a074-68571d20064c(jetbrains.mps.lang.feedback.problem.structural.structure)/1135569809051362833");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForMissingChildInConceptProblem() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.feedback.problem.structural", "MissingChildInConceptProblem", 0x7127d40929f043e8L, 0x917ff016ea288944L, 0x2372fa56cc4ea3f4L);
     b.class_(true, false, false);
-    b.super_("jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot", 0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL);
+    // extends: jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot
+    b.super_(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL);
     b.parent(0x7127d40929f043e8L, 0x917ff016ea288944L, 0xfc25ab98e2a2611L);
     b.origin("r:270d7173-b5a9-45a3-a074-68571d20064c(jetbrains.mps.lang.feedback.problem.structural.structure)/2554379189374329844");
-    b.version(2);
+    b.version(3);
     b.alias("when child is not defined in concept");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForMissingPropertyInConceptProblem() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.feedback.problem.structural", "MissingPropertyInConceptProblem", 0x7127d40929f043e8L, 0x917ff016ea288944L, 0x4f7007d340049b31L);
     b.class_(true, false, false);
-    b.super_("jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot", 0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL);
+    // extends: jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot
+    b.super_(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL);
     b.parent(0x7127d40929f043e8L, 0x917ff016ea288944L, 0xfc25ab98e2a2611L);
     b.origin("r:270d7173-b5a9-45a3-a074-68571d20064c(jetbrains.mps.lang.feedback.problem.structural.structure)/5724083730281438001");
-    b.version(2);
+    b.version(3);
     b.alias("when property is not defined in concept");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForMissingRefInConceptProblem() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.feedback.problem.structural", "MissingRefInConceptProblem", 0x7127d40929f043e8L, 0x917ff016ea288944L, 0x16c287efa3fb8a38L);
     b.class_(true, false, false);
-    b.super_("jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot", 0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL);
+    // extends: jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot
+    b.super_(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL);
     b.parent(0x7127d40929f043e8L, 0x917ff016ea288944L, 0xfc25ab98e2a2611L);
     b.origin("r:270d7173-b5a9-45a3-a074-68571d20064c(jetbrains.mps.lang.feedback.problem.structural.structure)/1640022677634386488");
-    b.version(2);
+    b.version(3);
     b.alias("when reference is not defined in concept");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForMultipleChildrenInSingleRoleProblem() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.feedback.problem.structural", "MultipleChildrenInSingleRoleProblem", 0x7127d40929f043e8L, 0x917ff016ea288944L, 0x4faf3e05c39d7504L);
     b.class_(true, false, false);
-    b.super_("jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot", 0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL);
+    // extends: jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot
+    b.super_(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL);
     b.parent(0x7127d40929f043e8L, 0x917ff016ea288944L, 0xfc25ab98e2a2611L);
     b.origin("r:270d7173-b5a9-45a3-a074-68571d20064c(jetbrains.mps.lang.feedback.problem.structural.structure)/5741876244398306564");
-    b.version(2);
+    b.version(3);
     b.alias("when there are multiple children in role with single cardinality");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForNoChildInObligatoryRoleProblem() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.feedback.problem.structural", "NoChildInObligatoryRoleProblem", 0x7127d40929f043e8L, 0x917ff016ea288944L, 0x23839b3ea764df7aL);
     b.class_(true, false, false);
-    b.super_("jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot", 0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL);
+    // extends: jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot
+    b.super_(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL);
     b.parent(0x7127d40929f043e8L, 0x917ff016ea288944L, 0xfc25ab98e2a2611L);
     b.origin("r:270d7173-b5a9-45a3-a074-68571d20064c(jetbrains.mps.lang.feedback.problem.structural.structure)/2559059706675257210");
-    b.version(2);
+    b.version(3);
     b.alias("when there is no child in role with nonzero cardinality");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForNoRefInObligatoryRoleProblem() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.feedback.problem.structural", "NoRefInObligatoryRoleProblem", 0x7127d40929f043e8L, 0x917ff016ea288944L, 0x4faf3e05c39d7503L);
     b.class_(true, false, false);
-    b.super_("jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot", 0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL);
+    // extends: jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot
+    b.super_(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL);
     b.parent(0x7127d40929f043e8L, 0x917ff016ea288944L, 0xfc25ab98e2a2611L);
     b.origin("r:270d7173-b5a9-45a3-a074-68571d20064c(jetbrains.mps.lang.feedback.problem.structural.structure)/5741876244398306563");
-    b.version(2);
+    b.version(3);
     b.alias("when there is no ref in role with nonzero cardinality");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTargetConceptIncorrectChild() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.feedback.problem.structural", "TargetConceptIncorrectChild", 0x7127d40929f043e8L, 0x917ff016ea288944L, 0x691edaf2d1aa95ebL);
     b.class_(true, false, false);
-    b.super_("jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot", 0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL);
+    // extends: jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot
+    b.super_(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL);
     b.parent(0x7127d40929f043e8L, 0x917ff016ea288944L, 0xfc25ab98e2a2611L);
     b.origin("r:270d7173-b5a9-45a3-a074-68571d20064c(jetbrains.mps.lang.feedback.problem.structural.structure)/7574732359718311403");
-    b.version(2);
+    b.version(3);
     b.alias("when child role has incompatible target concept");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTargetConceptIncorrectRef() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.feedback.problem.structural", "TargetConceptIncorrectRef", 0x7127d40929f043e8L, 0x917ff016ea288944L, 0x691edaf2d1aa98adL);
     b.class_(true, false, false);
-    b.super_("jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot", 0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL);
+    // extends: jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot
+    b.super_(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL);
     b.parent(0x7127d40929f043e8L, 0x917ff016ea288944L, 0xfc25ab98e2a2611L);
     b.origin("r:270d7173-b5a9-45a3-a074-68571d20064c(jetbrains.mps.lang.feedback.problem.structural.structure)/7574732359718312109");
-    b.version(2);
+    b.version(3);
     b.alias("when reference role has incompatible target concept");
     return b.create();
   }

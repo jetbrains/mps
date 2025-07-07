@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,7 +47,7 @@ class TopLevelButtonCreatingVisitor implements TransformationMenuItemVisitor<JBu
   }
 
   private static <T> void executeFinalChoice(ListPopupStep<T> step, T value) {
-    PopupStep<T> popupStep = step.onChosen(value, true);
+    PopupStep<?> popupStep = step.onChosen(value, true);
     if (popupStep != PopupStep.FINAL_CHOICE) {
       return;
     }

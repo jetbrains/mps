@@ -23,6 +23,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
+    deps.employedLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure");
   }
 
   @Override
@@ -54,7 +56,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.parent(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x24614259e94f0c84L);
     b.origin("r:2ac18004-8536-478a-bf05-03a0f407633f(jetbrains.mps.lang.feedback.skeleton.structure)/7291380803381892615");
-    b.version(2);
+    b.version(3);
     b.associate("concept", 0x63c2f3669ce56d5dL).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL).optional(false).origin("7188575577281228125").done();
     b.aggregate("feedbacks", 0x6530303593ae9cf2L).target(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x573ae5b8b8cc650eL).optional(true).ordered(true).multiple(true).origin("7291380803381927154").done();
     b.alias("Feedback Root");
@@ -64,7 +66,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.feedback.skeleton", "FeedbackRootMember", 0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x573ae5b8b8cc650eL);
     b.interface_();
     b.origin("r:2ac18004-8536-478a-bf05-03a0f407633f(jetbrains.mps.lang.feedback.skeleton.structure)/6285588811486094606");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
 }

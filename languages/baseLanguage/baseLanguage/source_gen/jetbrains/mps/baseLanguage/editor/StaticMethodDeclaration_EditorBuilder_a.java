@@ -12,12 +12,12 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.KeyWordStyleClass;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
@@ -72,7 +72,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createComponent_0());
     editorCell.addEditorCell(createComponent_1());
-    editorCell.addEditorCell(createComponent_2());
+    if (nodeCondition_j4vm40_a2a()) {
+      editorCell.addEditorCell(createComponent_2());
+    }
     if (nodeCondition_j4vm40_a3a()) {
       editorCell.addEditorCell(createConstant_0());
     }
@@ -102,6 +104,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.addEditorCell(createComponent_7());
     }
     return editorCell;
+  }
+  private boolean nodeCondition_j4vm40_a2a() {
+    return (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasVisibility_id1X7GQqyPHmE.invoke(myNode);
   }
   private boolean nodeCondition_j4vm40_a3a() {
     return SPropertyOperations.getBoolean(myNode, PROPS.isFinal$eVPk);
@@ -143,7 +148,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "final");
     editorCell.setCellId("finalModifier");
     Style style = new StyleImpl();
-    new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeyWordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, true);
     editorCell.getStyle().putAll(style);
     DeleteFinalInBaseMethod.setCellActions(editorCell, myNode, getEditorContext());
@@ -156,7 +161,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "static");
     editorCell.setCellId("staticModifier");
     Style style = new StyleImpl();
-    new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeyWordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, true);
     editorCell.getStyle().putAll(style);
     DeleteStaticInMethodDeclaration.setCellActions(editorCell, myNode, getEditorContext());
@@ -169,7 +174,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "synchronized");
     editorCell.setCellId("synchronizedModifier");
     Style style = new StyleImpl();
-    new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeyWordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, true);
     editorCell.getStyle().putAll(style);
     DeleteSynchronizedInBaseMethod.setCellActions(editorCell, myNode, getEditorContext());
@@ -182,7 +187,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "native");
     editorCell.setCellId("nativeModifier");
     Style style = new StyleImpl();
-    new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeyWordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, true);
     editorCell.getStyle().putAll(style);
     DeleteNativeInMethod.setCellActions(editorCell, myNode, getEditorContext());
@@ -266,7 +271,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "(");
     editorCell.setCellId("leftParen");
     Style style = new StyleImpl();
-    new LeftParenAfterNameStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new LeftParenAfterNameStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -372,7 +377,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ")");
     editorCell.setCellId("rightParen");
     Style style = new StyleImpl();
-    new RightParenStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new RightParenStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.SELECTABLE, true);
     editorCell.getStyle().putAll(style);
     editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.StaticMethodDeclaration$FJ, "jetbrains.mps.baseLanguage.editor.StaticMethodDeclaration_ApplySideTransforms"));
@@ -388,7 +393,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ";");
     editorCell.setCellId("Constant_j4vm40_p0");
     Style style = new StyleImpl();
-    new SemicolonStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new SemicolonStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");

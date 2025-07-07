@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -17,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -27,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class RequestURLBuilderExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5ce93L, "jetbrains.mps.ide.httpsupport.structure.RequestURLBuilderExpression");
 
-  public static final SMethod<Iterable<SNode>> getInitializedParameters_id40BYgt09_iZ = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getInitializedParameters").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("40BYgt09_iZ").build();
+  public static final SMethod<Iterable<SNode>> getInitializedParameters_id40BYgt09_iZ = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getInitializedParameters").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4622937352055444671L).languageId(0x98a115e9f32231f1L, 0x817e4e70961e4a95L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInitializedParameters_id40BYgt09_iZ);
 
@@ -36,11 +34,7 @@ public final class RequestURLBuilderExpression__BehaviorDescriptor extends BaseB
   }
 
   /*package*/ static Iterable<SNode> getInitializedParameters_id40BYgt09_iZ(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.initializer$Xe8)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.parameter$DxS8);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.initializer$Xe8)).select((it) -> SLinkOperations.getTarget(it, LINKS.parameter$DxS8));
   }
 
   /*package*/ RequestURLBuilderExpression__BehaviorDescriptor() {

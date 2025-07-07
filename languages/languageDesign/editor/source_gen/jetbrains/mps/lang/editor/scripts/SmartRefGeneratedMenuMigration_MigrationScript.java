@@ -15,8 +15,6 @@ import java.util.List;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.editor.behavior.IMenuPartWithOutputConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.editor.behavior.IMenu__BehaviorDescriptor;
@@ -78,39 +76,29 @@ public final class SmartRefGeneratedMenuMigration_MigrationScript extends BaseMi
       @Override
       public void doUpdateInstanceNode(SNode node) {
         final SNode parent = SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.SubstituteMenu_Named$cm);
-        // we need a scope with project modules (the script deals with modules in a project). 
-        // I assume the node comes from a project module here. Since there's no RepositoryScope, 
-        // I resort to GlobalScope that takes SRepository. I don't need to persist/re-run these find results 
-        // therefore I'm ok with a non-FindUsagesScope subclass. 
-        // FIXME introduce a ProjectRepository, decide where to place if (tough part), use it here. 
+        // we need a scope with project modules (the script deals with modules in a project).
+        // I assume the node comes from a project module here. Since there's no RepositoryScope,
+        // I resort to GlobalScope that takes SRepository. I don't need to persist/re-run these find results
+        // therefore I'm ok with a non-FindUsagesScope subclass.
+        // FIXME introduce a ProjectRepository, decide where to place if (tough part), use it here.
         GlobalScope projectRepository = new GlobalScope(SNodeOperations.getModel(node).getRepository());
         SearchResults<SNode> results = FindUtils.getSearchResults(new EmptyProgressMonitor(), parent, projectRepository, "jetbrains.mps.lang.structure.findUsages.NodeUsages_Finder");
         List<SearchResult<SNode>> usages = results.getSearchResults();
-        Sequence.fromIterable(SNodeOperations.ofConcept(Sequence.fromIterable(SNodeOperations.ofConcept(ListSequence.fromList(usages).select(new ISelector<SearchResult<SNode>, SNode>() {
-          public SNode select(SearchResult<SNode> it) {
-            return it.getObject();
-          }
-        }), CONCEPTS.SubstituteMenuReference_Named$5O)).select(new ISelector<SNode, SNode>() {
-          public SNode select(SNode it) {
-            return SNodeOperations.getParent(it);
-          }
-        }), CONCEPTS.SubstituteMenuPart_IncludeMenu$kn)).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode includeMenu) {
+        Sequence.fromIterable(SNodeOperations.ofConcept(Sequence.fromIterable(SNodeOperations.ofConcept(ListSequence.fromList(usages).select((it) -> it.getObject()), CONCEPTS.SubstituteMenuReference_Named$5O)).select((it) -> SNodeOperations.getParent(it)), CONCEPTS.SubstituteMenuPart_IncludeMenu$kn)).visitAll((includeMenu) -> {
 
-            Iterable<SNode> parts = SLinkOperations.getChildren(parent, LINKS.parts$yGO4);
-            for (SNode part : Sequence.fromIterable(parts)) {
-              {
-                final SNode aPart = part;
-                if (SNodeOperations.isInstanceOf(aPart, CONCEPTS.AbstractOutputConceptContainerSubstituteMenuPart$lB)) {
-                  if (SLinkOperations.getTarget(aPart, LINKS.outputConcept$Srk5) == null && IMenuPartWithOutputConcept__BehaviorDescriptor.getOutputConcept_id3mnwiBI8ZE2.invoke(aPart) != IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(SNodeOperations.getNodeAncestor(includeMenu, CONCEPTS.ISubstituteMenu$Jl, false, false))) {
-                    SLinkOperations.setTarget(aPart, LINKS.outputConcept$Srk5, IMenuPartWithOutputConcept__BehaviorDescriptor.getOutputConcept_id3mnwiBI8ZE2.invoke(aPart));
-                  }
+          Iterable<SNode> parts = SLinkOperations.getChildren(parent, LINKS.parts$yGO4);
+          for (SNode part : Sequence.fromIterable(parts)) {
+            {
+              final SNode aPart = part;
+              if (SNodeOperations.isInstanceOf(aPart, CONCEPTS.AbstractOutputConceptContainerSubstituteMenuPart$lB)) {
+                if (SLinkOperations.getTarget(aPart, LINKS.outputConcept$Srk5) == null && IMenuPartWithOutputConcept__BehaviorDescriptor.getOutputConcept_id3mnwiBI8ZE2.invoke(aPart) != IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(SNodeOperations.getNodeAncestor(includeMenu, CONCEPTS.ISubstituteMenu$Jl, false, false))) {
+                  SLinkOperations.setTarget(aPart, LINKS.outputConcept$Srk5, IMenuPartWithOutputConcept__BehaviorDescriptor.getOutputConcept_id3mnwiBI8ZE2.invoke(aPart));
                 }
               }
-              SNodeOperations.insertPrevSiblingChild(includeMenu, part);
             }
-            SNodeOperations.deleteNode(includeMenu);
+            SNodeOperations.insertPrevSiblingChild(includeMenu, part);
           }
+          SNodeOperations.deleteNode(includeMenu);
         });
         SNodeOperations.deleteNode(parent);
       }

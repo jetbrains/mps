@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import java.util.List;
@@ -25,22 +24,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class ModuleReference__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb5210cL, "jetbrains.mps.lang.project.structure.ModuleReference");
 
-  public static final SMethod<String> getModuleReference_id15qhGW3fE3K = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getModuleReference").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("15qhGW3fE3K").build();
-  public static final SMethod<SModuleReference> toModuleReference_id2BHFktfnkjF = new SMethodBuilder<SModuleReference>(new SJavaCompoundTypeImpl(SModuleReference.class)).name("toModuleReference").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2BHFktfnkjF").build();
-  public static final SMethod<Void> populateFrom_id2BHFktfnlSL = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateFrom").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2BHFktfnlSL").build(SMethodBuilder.createJavaParameter(SModuleReference.class, ""));
+  public static final SMethod<String> moduleReferenceAsString_id15qhGW3fE3K = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("moduleReferenceAsString").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1250389701475344624L).languageId(0x947f093788f263a9L, 0x86ef829012bb4ca7L).build2();
+  public static final SMethod<SModuleReference> toModuleReference_id2BHFktfnkjF = new SMethodBuilder<SModuleReference>(new SJavaCompoundTypeImpl(SModuleReference.class)).name("toModuleReference").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3021261446821266667L).languageId(0x947f093788f263a9L, 0x86ef829012bb4ca7L).build2();
+  public static final SMethod<Void> populateFrom_id2BHFktfnlSL = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateFrom").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3021261446821273137L).languageId(0x947f093788f263a9L, 0x86ef829012bb4ca7L).build2(SMethodBuilder.createJavaParameter(SModuleReference.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getModuleReference_id15qhGW3fE3K, toModuleReference_id2BHFktfnkjF, populateFrom_id2BHFktfnlSL);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(moduleReferenceAsString_id15qhGW3fE3K, toModuleReference_id2BHFktfnkjF, populateFrom_id2BHFktfnlSL);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  @Deprecated
-  /*package*/ static String getModuleReference_id15qhGW3fE3K(@NotNull SNode __thisNode__) {
+  /*package*/ static String moduleReferenceAsString_id15qhGW3fE3K(@NotNull SNode __thisNode__) {
     return PersistenceFacade.getInstance().asString(ModuleReference__BehaviorDescriptor.toModuleReference_id2BHFktfnkjF.invoke(__thisNode__));
   }
   /*package*/ static SModuleReference toModuleReference_id2BHFktfnkjF(@NotNull SNode __thisNode__) {
-    //  FIXME consider deprecating ModuleReference in favor of lang.smodel.ModuleIdentity/ModulePointer. 
-    // Why does not lang.project use lang.smodel is unclear to me 
+    //  FIXME consider deprecating ModuleReference in favor of lang.smodel.ModuleIdentity/ModulePointer.
+    // Why does not lang.project use lang.smodel is unclear to me
     PersistenceFacade pf = PersistenceFacade.getInstance();
     return pf.createModuleReference(pf.createModuleId(SPropertyOperations.getString(__thisNode__, PROPS.uuid$YZ7o)), SPropertyOperations.getString(__thisNode__, PROPS.qualifiedName$Z4hI));
   }
@@ -65,7 +63,7 @@ public final class ModuleReference__BehaviorDescriptor extends BaseBHDescriptor 
     }
     switch (methodIndex) {
       case 0:
-        return (T) ((String) getModuleReference_id15qhGW3fE3K(node));
+        return (T) ((String) moduleReferenceAsString_id15qhGW3fE3K(node));
       case 1:
         return (T) ((SModuleReference) toModuleReference_id2BHFktfnkjF(node));
       case 2:

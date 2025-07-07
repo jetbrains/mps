@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -32,8 +31,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class SwitchStatement__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, "jetbrains.mps.baseLanguage.structure.SwitchStatement");
 
-  public static final SMethod<Void> collectUncaughtMethodThrowables_id4Gt7ANIVH8f = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectUncaughtMethodThrowables").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4Gt7ANIVH8f").build(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
-  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Void> collectUncaughtMethodThrowables_id4Gt7ANIVH8f = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectUncaughtMethodThrowables").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5412515780383134223L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
+  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(collectUncaughtMethodThrowables_id4Gt7ANIVH8f, getScope_id52_Geb4QDV$);
 
@@ -64,7 +63,7 @@ public final class SwitchStatement__BehaviorDescriptor extends BaseBHDescriptor 
 
       List<SNode> variables = new ArrayList<SNode>();
       for (SNode caseNode : SLinkOperations.getChildren(__thisNode__, LINKS.case$8PWE)) {
-        if (caseNode == childStatement) {
+        if (caseNode == childStatement || (SLinkOperations.getTarget(caseNode, LINKS.body$5LhG) == null)) {
           break;
         }
         ListSequence.fromList(variables).addSequence(ListSequence.fromList(StatementList__BehaviorDescriptor.getLocalVariableDeclarations_id3tkxRydYUUs.invoke(SLinkOperations.getTarget(caseNode, LINKS.body$5LhG), null)));
@@ -82,7 +81,7 @@ public final class SwitchStatement__BehaviorDescriptor extends BaseBHDescriptor 
       }
       nodesInScope[nodesInScope.length - 1] = SLinkOperations.getTarget(__thisNode__, LINKS.defaultBlock$QOu8);
 
-      // todo: how to generialize? 
+      // todo: how to generialize?
       if (Arrays.asList(nodesInScope).contains(child)) {
         return Scopes.forLoopLabels(parameter, ScopeUtils.lazyParentScope(__thisNode__, kind));
       }

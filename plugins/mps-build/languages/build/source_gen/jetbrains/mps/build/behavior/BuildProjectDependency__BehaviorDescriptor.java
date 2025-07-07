@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.build.util.UnpackHelper;
 import jetbrains.mps.build.util.DependenciesHelper;
@@ -27,9 +26,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class BuildProjectDependency__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, "jetbrains.mps.build.structure.BuildProjectDependency");
 
-  public static final SMethod<Void> unpack_id6IqTD4bJTWZ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("unpack").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6IqTD4bJTWZ").build(SMethodBuilder.createJavaParameter(UnpackHelper.class, ""));
-  public static final SMethod<String> location_id6b4RkXS8sT2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("location").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6b4RkXS8sT2").build(SMethodBuilder.createJavaParameter(DependenciesHelper.class, ""), SMethodBuilder.createJavaParameter(Object.class, ""));
-  public static final SMethod<Void> appendName_id1bWeed$ownT = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("appendName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1bWeed$ownT").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(StringBuilder.class, ""));
+  public static final SMethod<Void> unpack_id6IqTD4bJTWZ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("unpack").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7753763219113484095L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(UnpackHelper.class, ""));
+  public static final SMethod<String> location_id6b4RkXS8sT2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("location").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7117056644539862594L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(DependenciesHelper.class, ""), SMethodBuilder.createJavaParameter(Object.class, ""));
+  public static final SMethod<Void> appendName_id1bWeed$ownT = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("appendName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1368030936106665465L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(StringBuilder.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(unpack_id6IqTD4bJTWZ, location_id6b4RkXS8sT2, appendName_id1bWeed$ownT);
 
@@ -41,8 +40,8 @@ public final class BuildProjectDependency__BehaviorDescriptor extends BaseBHDesc
     helper.putContentLocation(__thisNode__, location);
   }
   /*package*/ static String location_id6b4RkXS8sT2(@NotNull SNode __thisNode__, DependenciesHelper helper, Object artifactId) {
-    // it's unexpected for anyone to call location for this BL_PathElement, 
-    // as its location makes sense only as a content holder, but doesn't hurt to have this method implemented anyway 
+    // it's unexpected for anyone to call location for this BL_PathElement,
+    // as its location makes sense only as a content holder, but doesn't hurt to have this method implemented anyway
     return helper.getContentLocation(__thisNode__);
   }
   /*package*/ static void appendName_id1bWeed$ownT(@NotNull SNode __thisNode__, SNode parent, StringBuilder sb) {

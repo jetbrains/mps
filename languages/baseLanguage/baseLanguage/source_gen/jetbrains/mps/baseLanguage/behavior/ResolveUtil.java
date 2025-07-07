@@ -10,6 +10,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.ArrayList;
+import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Set;
@@ -18,9 +19,7 @@ import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Iterator;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
-import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -47,7 +46,7 @@ public class ResolveUtil {
     if (concreteMethodClassifierType == null) {
       return result;
     }
-    List<SNode> typeParameters = ListSequence.fromList(SLinkOperations.getChildren(concreteMethodClassifierType, LINKS.parameter$oqG$)).toListSequence();
+    List<SNode> typeParameters = ListSequence.fromList(SLinkOperations.getChildren(concreteMethodClassifierType, LINKS.parameter$oqG$)).toList();
     for (SNode paramType : ListSequence.fromListWithValues(new ArrayList<SNode>(), result)) {
       for (SNode typeVar : SNodeOperations.getNodeDescendants(paramType, CONCEPTS.TypeVariableReference$WL, true, new SAbstractConcept[]{})) {
         SNode variableDeclaration = SLinkOperations.getTarget(typeVar, LINKS.typeVariableDeclaration$Lz1I);
@@ -68,7 +67,7 @@ public class ResolveUtil {
   public static SNode getConcreteClassifierType(SNode typeWithVars, SNode classifierSubtype) {
     SNode result = SNodeOperations.copyNode(typeWithVars);
     List<SNode> varRefs = SNodeOperations.getNodeDescendants(result, CONCEPTS.TypeVariableReference$WL, false, new SAbstractConcept[]{});
-    List<SNode> params = ListSequence.fromList(SLinkOperations.getChildren(classifierSubtype, LINKS.parameter$oqG$)).toListSequence();
+    List<SNode> params = ListSequence.fromList(SLinkOperations.getChildren(classifierSubtype, LINKS.parameter$oqG$)).toList();
     for (SNode varRef : varRefs) {
       int index = SNodeOperations.getIndexInParent(SLinkOperations.getTarget(varRef, LINKS.typeVariableDeclaration$Lz1I));
       if (index < ListSequence.fromList(params).count()) {
@@ -112,7 +111,10 @@ public class ResolveUtil {
   public static SNode processMethodToImplement(SNode enclosingClassifier, SNode method) {
     SNode declaringClassifier = SNodeOperations.getNodeAncestor(method, CONCEPTS.Classifier$Ix, false, false);
     SNode result = SNodeOperations.copyNode(method);
+
     ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.modifiers$F5MM)).clear();
+    ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.annotation$K49I)).where((it) -> (SLinkOperations.getTarget(it, LINKS.annotation$12Ek) == null) && (Objects.equals((SLinkOperations.getResolveInfo(SNodeOperations.getReference(it, LINKS.annotation$12Ek))), "HotSpotIntrinsicCandidate") || Objects.equals((SLinkOperations.getResolveInfo(SNodeOperations.getReference(it, LINKS.annotation$12Ek))), "IntrinsicCandidate"))).visitAll((it) -> SNodeOperations.deleteNode(it));
+
     List<SNode> initialClassifierTypes = ListSequence.fromList(new ArrayList<SNode>());
     if (SNodeOperations.isInstanceOf(enclosingClassifier, CONCEPTS.ClassConcept$bK)) {
       SNode classConcept = SNodeOperations.cast(enclosingClassifier, CONCEPTS.ClassConcept$bK);
@@ -120,7 +122,7 @@ public class ResolveUtil {
       if (SNodeOperations.isInstanceOf(classConcept, CONCEPTS.AnonymousClass$Bt)) {
         superclass = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
         SLinkOperations.setTarget(superclass, LINKS.classifier$cxMr, SLinkOperations.getTarget(SNodeOperations.cast(classConcept, CONCEPTS.AnonymousClass$Bt), LINKS.classifier$q_Y$));
-        for (SNode type : SLinkOperations.getChildren(SNodeOperations.cast(classConcept, CONCEPTS.AnonymousClass$Bt), LINKS.typeParameter$F9H8)) {
+        for (SNode type : AnonymousClass__BehaviorDescriptor.getConcreteTypeParameter_id4H6sh0LUNF7.invoke(SNodeOperations.cast(classConcept, CONCEPTS.AnonymousClass$Bt))) {
           ListSequence.fromList(SLinkOperations.getChildren(superclass, LINKS.parameter$oqG$)).addElement(SNodeOperations.copyNode(type));
         }
       } else {
@@ -147,14 +149,14 @@ public class ResolveUtil {
     List<SNode> params = SLinkOperations.getChildren(concreteSuperClassifierType, LINKS.parameter$oqG$);
     for (SNode typeToModify : types) {
       for (SNode varRef : SNodeOperations.getNodeDescendants(typeToModify, CONCEPTS.TypeVariableReference$WL, true, new SAbstractConcept[]{})) {
-        // maybe a var from method 
+        // maybe a var from method
         SNode typeVariableDeclaration = SLinkOperations.getTarget(varRef, LINKS.typeVariableDeclaration$Lz1I);
         if (SNodeOperations.getParent(typeVariableDeclaration) != result) {
           int index = SNodeOperations.getIndexInParent(typeVariableDeclaration);
           if (0 <= index && index < ListSequence.fromList(params).count()) {
             SNodeOperations.replaceWithAnother(varRef, SNodeOperations.copyNode(ListSequence.fromList(params).getElement(index)));
           } else {
-            SNodeOperations.replaceWithAnother(varRef, _quotation_createNode_txu8l3_a0a0a0b0c0a0k0i());
+            SNodeOperations.replaceWithAnother(varRef, _quotation_createNode_txu8l3_a0a0a0b0c0a0n0i());
           }
         }
       }
@@ -178,15 +180,15 @@ public class ResolveUtil {
         SNode argument = (argumentsItr.hasNext() ? argumentsItr.next() : null);
 
         if (parameterType == varArgType) {
-          // vararg reached 
+          // vararg reached
           if (argument == null) {
-            // zero varargs 
+            // zero varargs
             return true;
           }
           SNode mayBeLastArgumentType = TypecheckingFacade.getFromContext().getTypeOf(argument);
           SNode varArgComponentType = SLinkOperations.getTarget(varArgType, LINKS.componentType$ypmi);
           if ((lastArgument == argument) && SNodeOperations.isInstanceOf(mayBeLastArgumentType, CONCEPTS.ArrayType$rh) && TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(SNodeOperations.cast(mayBeLastArgumentType, CONCEPTS.ArrayType$rh), LINKS.componentType$F$Gi), varArgComponentType)) {
-            // array type as vararg 
+            // array type as vararg
             return true;
           } else {
             while (argument != null) {
@@ -221,11 +223,11 @@ public class ResolveUtil {
       return false;
     }
   }
-  private static SNode _quotation_createNode_txu8l3_a0a0a0b0c0a0k0i() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
+  private static SNode _quotation_createNode_txu8l3_a0a0a0b0c0a0n0i() {
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
-    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Object")));
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+    quotedNode_1 = nb.getResult();
+    nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~Object");
     return quotedNode_1;
   }
 
@@ -239,8 +241,9 @@ public class ResolveUtil {
     /*package*/ static final SContainmentLink implementedInterface$rujG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
     /*package*/ static final SContainmentLink extendedInterface$PDVO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
     /*package*/ static final SContainmentLink modifiers$F5MM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
+    /*package*/ static final SContainmentLink annotation$K49I = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SReferenceLink annotation$12Ek = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
     /*package*/ static final SReferenceLink classifier$q_Y$ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
-    /*package*/ static final SContainmentLink typeParameter$F9H8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x117ac45a693L, "typeParameter");
     /*package*/ static final SContainmentLink returnType$5xoi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
     /*package*/ static final SContainmentLink componentType$ypmi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, 0x11c08f5f38cL, "componentType");
     /*package*/ static final SContainmentLink componentType$F$Gi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");

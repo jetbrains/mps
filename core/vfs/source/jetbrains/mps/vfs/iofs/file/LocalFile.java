@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,18 +15,19 @@
  */
 package jetbrains.mps.vfs.iofs.file;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.vfs.Files;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.vfs.VFSManager;
-import jetbrains.mps.vfs.impl.IoFileSystem;
+import jetbrains.mps.vfs.path.Path;
+import jetbrains.mps.vfs.path.PathFormats;
 import jetbrains.mps.vfs.util.PathFormatChecker;
 import jetbrains.mps.vfs.util.PathUtil;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.annotations.Internal;
@@ -48,15 +49,15 @@ import java.util.List;
  */
 @Immutable
 class LocalFile implements IFile {
-  private static final Logger LOG = LogManager.getLogger(LocalFile.class);
+  private static final Logger LOG = Logger.getLogger(LocalFile.class);
 
-  private final IFileSystem myFileSystem;
+  private final LocalIoFileSystem myFileSystem;
   private final String myPath;
   @NotNull private final File myFile;
 
   //must be used only by filesystems
   @Internal
-  LocalFile(@NotNull String path, IFileSystem fileSystem) {
+  LocalFile(@NotNull String path, LocalIoFileSystem fileSystem) {
     myPath = path;
     myFileSystem = fileSystem;
     myFile = new File(PathUtil.toSystemDependent(path));
@@ -71,7 +72,7 @@ class LocalFile implements IFile {
   @NotNull
   @Override
   public FileSystem getFileSystem() {
-    return IoFileSystem.INSTANCE;
+    return myFileSystem.getUmbrellaFileSystem();
   }
 
   @NotNull
@@ -98,6 +99,23 @@ class LocalFile implements IFile {
   @Override
   public String getPath() {
     return myPath;
+  }
+
+  @NotNull
+  @Override
+  public Path toPath() {
+    return PathFormats.getCurrentSystemFormat().fromString(myPath).toUnixPathFormat();
+  }
+
+  @NotNull
+  @Override
+  public String toRealPath() {
+    try {
+      return myFile.getCanonicalPath();
+    } catch (IOException e) {
+      LOG.warning("Got while accessing the canonical path of " + this, e);
+      return getPath();
+    }
   }
 
   @Override
@@ -173,13 +191,15 @@ class LocalFile implements IFile {
   @Override
   public IFile copy(@NotNull IFile newParent, @NotNull String newName) {
     if (!(newParent instanceof LocalFile)) {
-      LOG.warn("Copying the file to the new parent '" + newParent + "' which is not an instance of IoFile");
+      LOG.warning("Copying the file to the new parent '" + newParent + "' which is not an instance of IoFile");
     }
     if (!newParent.isDirectory()) {
       throw new IllegalArgumentException("Cannot copy: '" + newParent + " is not a directory");
     }
     File to = new File(newParent.getPath(), newName);
-    if (FileUtil.copyFile(myFile, to)) return new LocalFile(to.getAbsolutePath(), myFileSystem);
+    if (FileUtil.copyFile(myFile, to)) {
+      return new LocalFile(to.getAbsolutePath(), myFileSystem);
+    }
     else return null;
   }
 
@@ -215,13 +235,33 @@ class LocalFile implements IFile {
   }
 
   @Override
-  public boolean isArchive() {
-    return myPath.endsWith(".jar");
+  public boolean isZipArchive() throws IOException {
+    return Files.isJarOrZipFile(myFile);
   }
 
   @Override
-  public boolean isInArchive() {
+  public @NotNull IFile stepIntoArchive() {
+    try {
+      if (isZipArchive()) {
+        return myFileSystem.getUmbrellaFileSystem().getFile(myPath + Path.ARCHIVE_SEPARATOR);
+      } else {
+        return this;
+      }
+    } catch (IOException ex) {
+      // ignore, treat as a regular file
+      return this;
+    }
+  }
+
+  @Override
+  public boolean isInZipArchive() {
     return false;
+  }
+
+  @Override
+  @NotNull
+  public IFile stepUpToArchive() {
+    return this;
   }
 
   @Override

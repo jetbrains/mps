@@ -14,15 +14,13 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ModifiersInsertHandler {
 
@@ -74,19 +72,11 @@ public class ModifiersInsertHandler {
         SNode contextNode = contextCell.getSNode();
         if (SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Modifier$jW)) {
           if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$F5MM)).count() <= 1) {
-            // here I calculate whether there are some modifier concepts to insert at all. 
-            // if yes then we allow to add a child into node.modifiers collection 
+            // here I calculate whether there are some modifier concepts to insert at all.
+            // if yes then we allow to add a child into node.modifiers collection
             SModel model = SNodeOperations.getModel(node);
             List<SNode> modifiers = SLinkOperations.getChildren(node, LINKS.modifiers$F5MM);
-            return !(ListSequence.fromList(modifiers).select(new ISelector<SNode, SConcept>() {
-              public SConcept select(SNode it) {
-                return SNodeOperations.getConcept(it);
-              }
-            }).containsSequence(ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.Modifier$jW, model)).where(new IWhereFilter<SConcept>() {
-              public boolean accept(SConcept it) {
-                return !(it.isAbstract());
-              }
-            })));
+            return !(ListSequence.fromList(modifiers).select((it) -> SNodeOperations.getConcept(it)).containsSequence(ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.Modifier$jW, model)).where((it) -> !(it.isAbstract()))));
           } else if (Objects.equals(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$F5MM)).last(), contextNode)) {
             return false;
           }
@@ -101,11 +91,11 @@ public class ModifiersInsertHandler {
     CellAction originalDelete = editorCell.getAction(CellActionType.DELETE);
     CellAction originalBackspace = editorCell.getAction(CellActionType.BACKSPACE);
 
-    // set actions that were actually defined 
+    // set actions that were actually defined
     setDefinedCellActions(editorCell, node, context);
 
-    // If we set a DELETE action but no BACKSPACE action, 
-    // use the DELETE action for BACKSPACE as well. 
+    // If we set a DELETE action but no BACKSPACE action,
+    // use the DELETE action for BACKSPACE as well.
     CellAction delete = editorCell.getAction(CellActionType.DELETE);
     CellAction backspace = editorCell.getAction(CellActionType.BACKSPACE);
     if (delete != originalDelete && backspace == originalBackspace) {
@@ -122,18 +112,18 @@ public class ModifiersInsertHandler {
   private static final Object OB = new Object();
 
   public static void setDefinedCellActions(EditorCell editorCell, SNode node, EditorContext context) {
-    // set cell actions from all imported action maps 
+    // set cell actions from all imported action maps
 
-    // set cell actions defined directly in this action map 
+    // set cell actions defined directly in this action map
     editorCell.setAction(CellActionType.INSERT_BEFORE, createAction_INSERT_BEFORE(node));
     editorCell.setAction(CellActionType.INSERT, createAction_INSERT(node));
   }
 
   public static void setDefinedCellActionsOfType(EditorCell editorCell, SNode node, EditorContext context, CellActionType actionType) {
 
-    // set cell action(s) of the given type from imported action maps 
+    // set cell action(s) of the given type from imported action maps
 
-    // set cell action of the given type defined directly in this action map 
+    // set cell action of the given type defined directly in this action map
     if (Objects.equals(actionType, CellActionType.INSERT_BEFORE)) {
       editorCell.setAction(actionType, createAction_INSERT_BEFORE(node));
     }

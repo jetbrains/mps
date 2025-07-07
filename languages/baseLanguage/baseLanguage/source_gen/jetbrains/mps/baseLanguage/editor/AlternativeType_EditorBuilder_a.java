@@ -137,7 +137,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       Style style = new StyleImpl();
       style.set(StyleAttributes.LAYOUT_CONSTRAINT, "");
       style.set(StyleAttributes.PUNCTUATION_LEFT, true);
-      new OperatorStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      new OperatorStyleClass(this).apply(style, editorCell);
       style.set(StyleAttributes.PUNCTUATION_LEFT, false);
       style.set(StyleAttributes.SELECTABLE, true);
       editorCell.getStyle().putAll(style);

@@ -5,21 +5,22 @@ package jetbrains.mps.lang.constraints.msg.specification.intentions;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import org.jetbrains.mps.openapi.module.SModuleReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.lang.project.behavior.Module__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
 import jetbrains.mps.smodel.language.LanguageAspectSupport;
-import com.intellij.openapi.ui.Messages;
+import com.intellij.openapi.actionSystem.DataContext;
+import com.intellij.ide.DataManager;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.mps.openapi.model.SModel;
-import java.util.Objects;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
+import jetbrains.mps.smodel.language.CreateAspectContext;
 import java.util.List;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
@@ -40,51 +41,59 @@ public class MessageIntentionHelper {
 
   @Nullable
   public SNode addProblemCustomization(SNode nodeInConstraintsRoot, EditorContext context) {
-    SNode language = SNodeOperations.cast(SModelOperations.getModuleStub(SNodeOperations.getModel(nodeInConstraintsRoot)), CONCEPTS.Language$yT);
-    SModuleReference ref = PersistenceFacade.getInstance().createModuleReference(Module__BehaviorDescriptor.getModuleReference_id7OJukvJ5PmG.invoke(language));
-    SModule lang = ref.resolve(context.getRepository());
+    SModule lang = SNodeOperations.getModel(nodeInConstraintsRoot).getModule();
     if (false == lang instanceof Language) {
       return null;
     }
     LanguageAspectDescriptor feedbackAspect = LanguageAspectSupport.getAspectDescriptorById("feedback");
     if (feedbackAspect == null) {
-      Messages.showErrorDialog("Feedback aspect is not found", "Aspect Not Deployed");
+      // we're inside command here, can't show UI!
       return null;
     }
-    SModel feedbackModel = Objects.requireNonNull(feedbackAspect).getAspectModels(lang).stream().findAny().orElse(null);
-    if (feedbackModel == null) {
-      feedbackAspect.create(lang);
-      feedbackModel = feedbackAspect.getAspectModels(lang).stream().findAny().orElse(null);
-    }
-    assert feedbackModel != null;
-    List<SNode> roots = SModelOperations.roots(feedbackModel, CONCEPTS.FeedbackPerConceptRoot$Vm);
-    SNode newFeedbackRoot = ListSequence.fromList(roots).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getTarget(it, LINKS.concept$NMNv), myConcept);
+    try {
+      // FIXME perhaps, can use MPSCoreComponents.getInstance() to access ComponentHost, not MPSProject
+      //      but as long as there's already IDEA dependency here, decided to keep this unorthodox hack
+      DataContext dataContext = DataManager.getInstance().getDataContextFromFocusAsync().blockingGet(2000);
+      if (dataContext == null) {
+        return null;
       }
-    });
-    if (newFeedbackRoot == null) {
-      newFeedbackRoot = SModelOperations.createNewRootNode(feedbackModel, MetaAdapterFactory.getConcept(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, "jetbrains.mps.lang.feedback.skeleton.structure.FeedbackPerConceptRoot"));
-      SLinkOperations.setTarget(newFeedbackRoot, LINKS.concept$NMNv, myConcept);
+      MPSProject mpsProject = MPSCommonDataKeys.MPS_PROJECT.getData(dataContext);
+      if (mpsProject == null) {
+        return null;
+      }
+
+      SModel feedbackModel = SModuleOperations.getAspect(lang, "feedback");
+      if (feedbackModel == null) {
+        feedbackAspect.create(CreateAspectContext.create(lang, mpsProject.getPlatform(), null));
+        feedbackModel = SModuleOperations.getAspect(lang, "feedback");
+      }
+      assert feedbackModel != null;
+      List<SNode> roots = SModelOperations.roots(feedbackModel, CONCEPTS.FeedbackPerConceptRoot$Vm);
+      SNode newFeedbackRoot = ListSequence.fromList(roots).findFirst((it) -> Objects.equals(SLinkOperations.getTarget(it, LINKS.concept$NMNv), myConcept));
+      if (newFeedbackRoot == null) {
+        newFeedbackRoot = SModelOperations.createNewRootNode(feedbackModel, MetaAdapterFactory.getConcept(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, "jetbrains.mps.lang.feedback.skeleton.structure.FeedbackPerConceptRoot"));
+        SLinkOperations.setTarget(newFeedbackRoot, LINKS.concept$NMNv, myConcept);
+      }
+      assert newFeedbackRoot != null;
+      SNode newMessage = SNodeFactoryOperations.addNewChild(newFeedbackRoot, LINKS.feedbacks$E$KJ, CONCEPTS.ShowMessage$2L);
+      SLinkOperations.setTarget(newMessage, LINKS.problem$CvIq, myProblem);
+      SLinkOperations.setTarget(newMessage, LINKS.message$imTD, SNodeFactoryOperations.createNewNode(CONCEPTS.CombinedMessageExpression$6z, null));
+      EditorPanelManager editorPanelManager = context.getEditorPanelManager();
+      if (editorPanelManager != null) {
+        editorPanelManager.openEditor(newFeedbackRoot);
+        context.selectWRTFocusPolicy(SLinkOperations.getTarget(newMessage, LINKS.message$imTD));
+      }
+      SModel structureModel = SNodeOperations.getModel(myConcept);
+      ModelImporter importer = new ModelImporter(SNodeOperations.getModel(newMessage));
+      importer.prepare(SModelOperations.getPointer(structureModel));
+      importer.execute();
+      return newMessage;
+    } catch (Exception ex) {
+      return null;
     }
-    assert newFeedbackRoot != null;
-    SNode newMessage = SNodeFactoryOperations.addNewChild(newFeedbackRoot, LINKS.feedbacks$E$KJ, CONCEPTS.ShowMessage$2L);
-    SLinkOperations.setTarget(newMessage, LINKS.problem$CvIq, myProblem);
-    SLinkOperations.setTarget(newMessage, LINKS.message$imTD, SNodeFactoryOperations.createNewNode(CONCEPTS.CombinedMessageExpression$6z, null));
-    EditorPanelManager editorPanelManager = context.getEditorPanelManager();
-    if (editorPanelManager != null) {
-      editorPanelManager.openEditor(newFeedbackRoot);
-      context.selectWRTFocusPolicy(SLinkOperations.getTarget(newMessage, LINKS.message$imTD));
-    }
-    SModel structureModel = SNodeOperations.getModel(myConcept);
-    ModelImporter importer = new ModelImporter(SNodeOperations.getModel(newMessage));
-    importer.prepare(SModelOperations.getPointer(structureModel));
-    importer.execute();
-    return newMessage;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Language$yT = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, "jetbrains.mps.lang.project.structure.Language");
     /*package*/ static final SConcept FeedbackPerConceptRoot$Vm = MetaAdapterFactory.getConcept(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, "jetbrains.mps.lang.feedback.skeleton.structure.FeedbackPerConceptRoot");
     /*package*/ static final SConcept ShowMessage$2L = MetaAdapterFactory.getConcept(0x16e76fe395344defL, 0xafb7925a169a7c0bL, 0x6530303593ae1651L, "jetbrains.mps.lang.feedback.messages.structure.ShowMessage");
     /*package*/ static final SConcept CombinedMessageExpression$6z = MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, "jetbrains.mps.lang.messages.structure.CombinedMessageExpression");

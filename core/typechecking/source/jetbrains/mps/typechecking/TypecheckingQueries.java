@@ -44,14 +44,11 @@ public interface TypecheckingQueries {
   SNode getTypeOf(SNode expression);
 
   /**
-   * Provided for compatibility with the legacy system. Is essentially the same as {@code getType()}.
+   * Tries to infer the type for the supplied node.
    * To support the legacy contract, nullable parameter is accepted, in which case null is returned.
    */
   @Nullable
-  default SNode getInferredType(SNode expression) {
-    if (expression == null) return null;
-    return getTypeOf(expression);
-  }
+  SNode getInferredType(SNode expression);
 
   /**
    * Returns true iff the type represented by {@code typeA} can be converted to the type represented by {@code typeB}.
@@ -148,7 +145,24 @@ public interface TypecheckingQueries {
    * Returns true iff the root doesn't need to be "re-checked", that is all the pending changes to the root have been processed
    * and the cached types and errors are up-to-date.
    * This method only makes sense if the session has been created with "incremental" flag.
+   * @deprecated Please switch to {@link #getCacheState(SNode)}. This API is no longer supported.
    */
+  @Deprecated(forRemoval = true)
   boolean isCacheUpToDate(SNode root);
+
+  /**
+   * Provides access to {@code CacheState} describing the current state of the cache.
+   */
+  default CacheState getCacheState(SNode root) {
+    return CacheState.DIRTY;
+  }
+
+  /**
+   * Returns the object to be used for managing listeners that are notified during
+   * typechecking.
+   * This method is optional, if listeners are not supported, null is returned.
+   */
+  @Nullable
+  default TypecheckingObservable getObservable() { return null; }
 
 }

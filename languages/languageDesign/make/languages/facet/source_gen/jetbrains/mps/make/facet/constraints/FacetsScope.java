@@ -5,16 +5,13 @@ package jetbrains.mps.make.facet.constraints;
 import jetbrains.mps.lang.scopes.runtime.SimpleScope;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.module.ReloadableModule;
-import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.structure.modules.SolutionKind;
+import jetbrains.mps.project.SModuleOperations;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
@@ -35,13 +32,7 @@ public class FacetsScope extends SimpleScope {
    * probably it makes sense to declare all facets only in languages
    */
   private static boolean hackCondition(SModule module) {
-    if (module instanceof ReloadableModule) {
-      if (!((module instanceof Solution))) {
-        return true;
-      }
-      return ((Solution) module).getKind() != SolutionKind.NONE;
-    }
-    return false;
+    return SModuleOperations.canSupplyExtensionsForMPS(module);
   }
 
   public static Iterable<SNode> getAvailableFacets(SNode contextNode) {
@@ -55,19 +46,11 @@ public class FacetsScope extends SimpleScope {
     }
     SetSequence.fromSet(contextModules).addElement(contextModule);
 
-    // collect models 
-    Iterable<SModel> models = SetSequence.fromSet(contextModules).translate(new ITranslator2<SModule, SModel>() {
-      public Iterable<SModel> translate(SModule it) {
-        return it.getModels();
-      }
-    });
+    // collect models
+    Iterable<SModel> models = SetSequence.fromSet(contextModules).translate((it) -> it.getModels());
 
-    // collect facets 
-    return SNodeOperations.ofConcept(Sequence.fromIterable(models).where(new NotNullWhereFilter<SModel>()).translate(new ITranslator2<SModel, SNode>() {
-      public Iterable<SNode> translate(SModel it) {
-        return it.getRootNodes();
-      }
-    }), CONCEPTS.FacetDeclaration$Nd);
+    // collect facets
+    return SNodeOperations.ofConcept(Sequence.fromIterable(models).where(new NotNullWhereFilter()).translate((it) -> it.getRootNodes()), CONCEPTS.FacetDeclaration$Nd);
   }
 
   @Nullable

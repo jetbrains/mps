@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.smodel.persistence.def.v9;
 
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModelReference;
 
@@ -79,7 +79,7 @@ class ImportsHelper {
   // algorithm copied from StorageIndexHelper9.addInternalObject
   /**
    * Return value shall not use symbols other than [0-9][a-z] as the index is serialized as part of node identification,
-   * with {@link jetbrains.mps.smodel.persistence.def.v9.IdEncoder#REF_TARGET_IMPORT_SEPARATOR} as separator
+   * with {@code jetbrains.mps.smodel.persistence.def.v9.IdEncoder#REF_TARGET_IMPORT_SEPARATOR} as separator
    */
   private String createIndexFor(int initialHash, Set<String> usedIndex) {
     int hash = (initialHash % HASH_SIZE + HASH_SIZE) % HASH_SIZE;
@@ -94,7 +94,7 @@ class ImportsHelper {
   private void register(String index, SModelReference modelReference) {
     if (myModelRef.equals(modelReference)) {
 //      assert !myModelRef.equals(modelReference) : String.format("Model %s: no reason to keep imports to self", myModelRef);
-      Logger.getLogger(ImportsHelper.class).warn(String.format("Model %s: no reason to keep imports to self", myModelRef));
+      Logger.getLogger(ImportsHelper.class).warning(String.format("Model %s: no reason to keep imports to self", myModelRef));
     }
     myIndex2Model.put(index, modelReference);
     myModel2Index.put(modelReference, index);

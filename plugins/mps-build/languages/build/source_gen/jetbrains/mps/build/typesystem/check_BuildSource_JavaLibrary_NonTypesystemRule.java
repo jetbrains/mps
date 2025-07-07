@@ -10,7 +10,6 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -24,11 +23,7 @@ public class check_BuildSource_JavaLibrary_NonTypesystemRule extends AbstractNon
   }
   public void applyRule(final SNode jl, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode project = SNodeOperations.as(SNodeOperations.getParent(jl), CONCEPTS.BuildProject$ae);
-    if (project != null && !(ListSequence.fromList(SLinkOperations.getChildren(project, LINKS.plugins$AsCR)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildJavaPlugin$hn);
-      }
-    }))) {
+    if (project != null && !(ListSequence.fromList(SLinkOperations.getChildren(project, LINKS.plugins$AsCR)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BuildJavaPlugin$hn)))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(jl, "java library cannot be used in project without java plugin", "r:2349e4dd-6518-4a4c-9022-c7887bed8b52(jetbrains.mps.build.typesystem)", "6647099934206924827", null, errorTarget);

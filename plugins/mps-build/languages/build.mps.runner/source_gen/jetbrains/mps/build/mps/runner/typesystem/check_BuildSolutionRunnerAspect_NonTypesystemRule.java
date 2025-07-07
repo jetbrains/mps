@@ -22,7 +22,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -41,7 +40,7 @@ public class check_BuildSolutionRunnerAspect_NonTypesystemRule extends AbstractN
     final SRepository repo = SNodeOperations.getModel(buildSolutionRunner).getRepository();
     SNode solution = SLinkOperations.getTarget(buildSolutionRunner, LINKS.solution$MOiH);
     if (solution == null) {
-      // solution is still not filled => error in constraints 
+      // solution is still not filled => error in constraints
       return;
     }
     SModuleReference moduleReference = ModuleReference.parseReference(BuildMps_AbstractModule__BehaviorDescriptor.getModuleReference_id41K1b4v5ZCB.invoke(solution));
@@ -55,19 +54,11 @@ public class check_BuildSolutionRunnerAspect_NonTypesystemRule extends AbstractN
     }
     for (SModel m : module.getModels()) {
       if (SModelOperations.getModelName(m).equals(module.getModuleName())) {
-        SNode classToRun = ListSequence.fromList(SModelOperations.roots(m, CONCEPTS.ClassConcept$bK)).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SPropertyOperations.getString(it, PROPS.name$MnvL).equals(className);
-          }
-        });
+        SNode classToRun = ListSequence.fromList(SModelOperations.roots(m, CONCEPTS.ClassConcept$bK)).findFirst((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals(className));
         if ((classToRun == null)) {
           continue;
         }
-        SNode methodToRun = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.staticMethods_id4_LVZ3pCeXr.invoke(classToRun)).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SPropertyOperations.getString(it, PROPS.name$MnvL).equals(methodName) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$Yyua), CONCEPTS.PublicVisibility$R0) && ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).count() < 2;
-          }
-        });
+        SNode methodToRun = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.staticMethods_id4_LVZ3pCeXr.invoke(classToRun)).findFirst((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals(methodName) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$Yyua), CONCEPTS.PublicVisibility$R0) && ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).count() < 2);
         if ((methodToRun != null)) {
           return;
         }

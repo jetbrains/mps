@@ -26,32 +26,92 @@ import org.junit.Test;
  */
 public class FileUtilTest {
   @Test
-  public void normalizeIsUnixStyle() {
-    String normalized = FileUtil.normalize("\\\\\\a\\b\\c\\g.jar");
+  public void normalizeWorksWithArchives() {
+    String normalized = FileUtil.normalize("a/b/c.jar!/d/e/f.txt");
+    Assert.assertEquals("a/b/c.jar!/d/e/f.txt", normalized);
+  }
+
+  @Test
+  public void normalizeIsUnixStyle1() {
+    String normalized = FileUtil.normalize("\\a\\b\\c\\g.jar");
     Assert.assertEquals("/a/b/c/g.jar", normalized);
   }
 
   @Test
-  public void testResolveParentDirs() {
-    String normalized = FileUtil.resolveParentDirs("/a/b/c/..");
+  public void normalizeStripsSlashesAtBeginTo2() {
+    String normalized = FileUtil.normalize("\\\\\\a\\b\\c\\g.jar");
+    Assert.assertEquals("//a/b/c/g.jar", normalized);
+  }
+
+  @Test
+  public void normalizeDoesNotBreakUNCWin() {
+    String normalized = FileUtil.normalize("\\\\a\\b\\c\\g.jar");
+    Assert.assertEquals("//a/b/c/g.jar", normalized);
+  }
+
+  @Test
+  public void normalizeDoesNotBreakUNCUnix() {
+    String normalized = FileUtil.normalize("//wls$/ubuntu/a/b/c");
+    Assert.assertEquals("//wls$/ubuntu/a/b/c", normalized);
+  }
+
+  @Test
+  public void testResolveParentDirs1() {
+    var normalized = FileUtil.resolveParentDirs("/a/b/c/..");
     Assert.assertEquals("/a/b", normalized);
-    normalized = FileUtil.resolveParentDirs("/a/b/c/../");
+  }
+
+  @Test
+  public void testResolveParentDirs2() {
+    var normalized = FileUtil.resolveParentDirs("/a/b/c/../");
     Assert.assertEquals("/a/b", normalized);
-    normalized = FileUtil.resolveParentDirs("/a/b/c/../d");
+  }
+
+  @Test
+  public void testResolveParentDirs3() {
+    var normalized = FileUtil.resolveParentDirs("/a/b/c/../d");
     Assert.assertEquals("/a/b/d", normalized);
-    normalized = FileUtil.resolveParentDirs("/a/b/c/../d/../e");
+  }
+
+  @Test
+  public void testResolveParentDirs4() {
+    var normalized = FileUtil.resolveParentDirs("/a/b/c/../d/../e");
     Assert.assertEquals("/a/b/e", normalized);
-    normalized = FileUtil.resolveParentDirs("c:/a/..");
+  }
+
+  @Test
+  public void testResolveParentDirs5() {
+    var normalized = FileUtil.resolveParentDirs("c:/a/..");
     Assert.assertEquals("c:/", normalized);
-    normalized = FileUtil.resolveParentDirs("/a/..");
+  }
+
+  @Test
+  public void testResolveParentDirs6() {
+    var normalized = FileUtil.resolveParentDirs("/a/..");
     Assert.assertEquals("/", normalized);
-    normalized = FileUtil.resolveParentDirs("c:/");
+  }
+
+  @Test
+  public void testResolveParentDirs7() {
+    var normalized = FileUtil.resolveParentDirs("c:/");
     Assert.assertEquals("c:/", normalized);
-    normalized = FileUtil.resolveParentDirs("/");
+  }
+
+  @Test
+  public void testResolveParentDirs8() {
+    var normalized = FileUtil.resolveParentDirs("/");
     Assert.assertEquals("/", normalized);
-    normalized = FileUtil.resolveParentDirs("c:/..");
+  }
+
+  @Test
+  public void testResolveParentDirs9() {
+    var normalized = FileUtil.resolveParentDirs("c:/..");
     Assert.assertEquals("c:/", normalized);
-    normalized = FileUtil.resolveParentDirs("/..");
+  }
+
+  @Test
+  public void testResolveParentDirs10() {
+    var normalized = FileUtil.resolveParentDirs("/..");
     Assert.assertEquals("/", normalized);
   }
 

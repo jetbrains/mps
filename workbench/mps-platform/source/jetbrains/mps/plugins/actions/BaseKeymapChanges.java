@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,34 +15,32 @@
  */
 package jetbrains.mps.plugins.actions;
 
+import com.intellij.openapi.actionSystem.KeyboardShortcut;
 import com.intellij.openapi.actionSystem.Shortcut;
 import com.intellij.openapi.keymap.Keymap;
 import com.intellij.openapi.keymap.KeymapManager;
 import gnu.trove.THashMap;
-import gnu.trove.THashSet;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 
-import java.util.Arrays;
+import javax.swing.KeyStroke;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.Objects;
 
 /**
  * The basic logic is to replace the default shortcuts with MPS provided during #init, and to revert the changes on #dispose
  */
 public abstract class BaseKeymapChanges {
-  private static final Logger LOG = LogManager.getLogger(BaseKeymapChanges.class);
+  // shortcut assignment for regular actions (no parameters)
+  private final List<SW> mySimpleShortcuts = new ArrayList<>();
+  // shortcut assignment for parameterized actions. Parameterized action has unique id, we group them by their class name
+  private final List<SW> myShortcutTemplates = new ArrayList<>();
 
-  private static final Map<Keymap, Set<String>> ourClearedActions = new THashMap<>();
-  private final Map<String, Set<Shortcut>> myRemovedShortcuts = new THashMap<>();
+  // tracks actual shortcut assigned to parameterized actions
+  private final List<SW> myAppliedTemplates = new ArrayList<>();
 
-  private final Map<String, Set<ShortcutWrapper>> mySimpleShortcuts = new THashMap<>();
-
-  private final Map<String, Set<ComplexShortcut>> myComplexShortcuts = new THashMap<>();
-  private final Map<String, Set<Shortcut>> myAddedComplexShortcuts = new THashMap<>();
+  private final Map<String, CustomChange> myCustomTemplates = new THashMap<>();
 
   private Keymap myKeymap;
 
@@ -55,22 +53,26 @@ public abstract class BaseKeymapChanges {
       return;
     }
 
-    Set<ComplexShortcut> complexShortcuts = myComplexShortcuts.get(shortId);
-    if (complexShortcuts == null) {
+    for (SW st : myShortcutTemplates) {
+      // linear search doesn't look nice, indeed, but I don't expect this list to grow notably big
+      if (!st.matches(shortId)) {
+        continue;
+      }
+      SW sw = st.withId(longId);
+      sw.apply(this);
+      myAppliedTemplates.add(sw);
+    }
+
+    CustomChange customChange = myCustomTemplates.get(shortId);
+    if (customChange == null) {
       return;
     }
 
-    for (ComplexShortcut cs : complexShortcuts) {
-      for (ShortcutWrapper wrapper : cs.getShortcutWrappersFor(params)) {
-        addShortcutToKeymap(longId, keymap, wrapper.myShortcut, wrapper.myRemove, wrapper.myReplaceAll);
-
-        Set<Shortcut> added = myAddedComplexShortcuts.get(longId);
-        if (added == null) {
-          added = new THashSet<>();
-          myAddedComplexShortcuts.put(longId, added);
-        }
-        added.add(wrapper.myShortcut);
-      }
+    for (SW sw : customChange.build(longId, params)) {
+      // since we get new set of SW each time we get params, I decided it's ok to pass longId there and do not bother with SW.withId() here,
+      // although one might reconsider later if deemed suitable (e.g. if I decide to unite myShortcutTemplates with myCustomTemplates)
+      sw.apply(this);
+      myAppliedTemplates.add(sw);
     }
   }
 
@@ -80,11 +82,8 @@ public abstract class BaseKeymapChanges {
       return;
     }
 
-    for (Entry<String, Set<ShortcutWrapper>> e : mySimpleShortcuts.entrySet()) {
-      String key = e.getKey();
-      for (ShortcutWrapper s : e.getValue()) {
-        addShortcutToKeymap(key, keymap, s.myShortcut, s.myRemove, s.myReplaceAll);
-      }
+    for (SW e : mySimpleShortcuts) {
+      e.apply(this);
     }
   }
 
@@ -95,91 +94,73 @@ public abstract class BaseKeymapChanges {
     }
 
     //complex
-    for (Entry<String, Set<Shortcut>> e : myAddedComplexShortcuts.entrySet()) {
-      String key = e.getKey();
-      for (Shortcut s : e.getValue()) {
-        keymap.removeShortcut(key, s);
-      }
+    for (ListIterator<SW> it = myAppliedTemplates.listIterator(myAppliedTemplates.size()); it.hasPrevious(); ) {
+      it.previous().revert(this);
     }
-    myAddedComplexShortcuts.clear();
+    myAppliedTemplates.clear();
 
     //simple
-    for (Entry<String, Set<ShortcutWrapper>> e : mySimpleShortcuts.entrySet()) {
-      String key = e.getKey();
-      for (ShortcutWrapper s : e.getValue()) {
-        keymap.removeShortcut(key, s.myShortcut);
-      }
+    for (ListIterator<SW> it = mySimpleShortcuts.listIterator(mySimpleShortcuts.size()); it.hasPrevious(); ) {
+      it.previous().revert(this);
     }
     mySimpleShortcuts.clear();
 
-    //register old
-    for (Entry<String, Set<Shortcut>> e : myRemovedShortcuts.entrySet()) {
-      String key = e.getKey();
-      for (Shortcut s : e.getValue()) {
-        keymap.addShortcut(key, s);
-      }
-    }
-    myRemovedShortcuts.clear();
-
-    ourClearedActions.clear();
+    myCustomTemplates.clear();
+    myShortcutTemplates.clear();
+    myKeymap = null;
   }
 
-  protected void addSimpleShortcut(String id, ShortcutWrapper... s) {
-    Set<ShortcutWrapper> shortcuts = mySimpleShortcuts.get(id);
-    if (shortcuts == null) {
-      shortcuts = new THashSet<>();
-      mySimpleShortcuts.put(id, shortcuts);
-    }
-    shortcuts.addAll(Arrays.asList(s));
+  /**
+   * @since 2022.1
+   */
+  protected final void add(String id, String keystroke) {
+    mySimpleShortcuts.add(new Add(id, kbShortcut(keystroke)));
   }
 
-  protected void addSimpleShortcut(String id, Shortcut... s) {
-    ShortcutWrapper[] sw = new ShortcutWrapper[s.length];
-    for (int i = 0; i < s.length; i++) {
-      sw[i] = new ShortcutWrapper(s[i]);
-    }
-    addSimpleShortcut(id, sw);
+  /**
+   * @since 2022.1
+   */
+  protected final void remove(String id, String keystroke) {
+    mySimpleShortcuts.add(new Remove(id, kbShortcut(keystroke)));
   }
 
-  protected void addComplexShortcut(String id, ComplexShortcut... s) {
-    Set<ComplexShortcut> shortcuts = myComplexShortcuts.get(id);
-    if (shortcuts == null) {
-      shortcuts = new THashSet<>();
-      myComplexShortcuts.put(id, shortcuts);
-    }
-    shortcuts.addAll(Arrays.asList(s));
+  /**
+   * @since 2022.1
+   */
+  protected final void replace(String id, String keystroke) {
+    mySimpleShortcuts.add(new Replace(id, kbShortcut(keystroke)));
   }
 
-  private void addShortcutToKeymap(String longId, Keymap keymap, Shortcut s) {
-    addShortcutToKeymap(longId, keymap, s, false, false);
+  /**
+   * @since 2022.1
+   */
+  protected final void addTemplate(String id, String keystroke) {
+    myShortcutTemplates.add(new Add(id, kbShortcut(keystroke)));
   }
 
-  private void addShortcutToKeymap(String longId, Keymap keymap, Shortcut s, boolean remove, boolean replaceAll) {
-    Shortcut[] oldShortcuts = keymap.getShortcuts(longId);
+  /**
+   * @since 2022.1
+   */
+  protected final void removeTemplate(String id, String keystroke) {
+    myShortcutTemplates.add(new Remove(id, kbShortcut(keystroke)));
+  }
 
-    boolean isClear = oldShortcuts.length == 0 || ourClearedActions.values().stream().anyMatch(it -> it.contains(longId));
+  /**
+   * @since 2022.1
+   */
+  protected final void replaceTemplate(String id, String keystroke) {
+    myShortcutTemplates.add(new Replace(id, kbShortcut(keystroke)));
+  }
 
-    if (!isClear) {
-      myRemovedShortcuts.put(longId, new THashSet<>(Arrays.asList(oldShortcuts)));
-      keymap.removeAllActionShortcuts(longId);
-    }
-
-    Set<String> actions = ourClearedActions.get(keymap);
-    if (actions == null) {
-      actions = new THashSet<>();
-      ourClearedActions.put(keymap, actions);
-    }
-    actions.add(longId);
-
-    // Proceed as in class ActionManagerImpl in method processKeyboardShortcutNode
-    if (remove) {
-      keymap.removeShortcut(longId, s);
-    }
-    if (replaceAll) {
-      keymap.removeAllActionShortcuts(longId);
-    }
-    if (!remove) {
-      keymap.addShortcut(longId, s);
+  /**
+   * @since 2022.1
+   */
+  protected final void customTemplate(String id, BaseKeymapChanges.CustomChange userCode) {
+    CustomChange oldValue = myCustomTemplates.put(id, userCode);
+    if (oldValue != null) {
+      // I see no reason to support more than 1 custom handling per action, per plugin
+      String m = "Duplicated custom keymap change handler %s for action %s (was: %s)";
+      throw new IllegalStateException(String.format(m, userCode.getClass().getName(), id, oldValue.getClass().getName()));
     }
   }
 
@@ -190,70 +171,172 @@ public abstract class BaseKeymapChanges {
     return myKeymap;
   }
 
-  protected static abstract class ComplexShortcut {
-    public abstract List<Shortcut> getShortcutsFor(Object... params);
-    List<ShortcutWrapper> getShortcutWrappersFor(Object... params) {
-      return this.getShortcutsFor(params).stream().map(ShortcutWrapper::new).collect(Collectors.toList());
+  /*package*/ static Shortcut kbShortcut(String stroke) {
+    return new KeyboardShortcut(KeyStroke.getKeyStroke(stroke), null);
+  }
+
+  /**
+   * For a keymap change backed up with a concept function (when a shortcut depends on action parameters)
+   * @since 2022.1
+   */
+  protected static abstract class CustomChange {
+    private final boolean myRemove;
+    private final boolean myReplaceAll;
+    private String myActionId;
+    private Object[] myParams;
+    private List<SW> myResult;
+
+    protected CustomChange(boolean remove, boolean replaceAll) {
+      // XXX I don't like this approach, but it's the easiest way to move forward right now.
+      // Proper fix requires: ParameterizedShortcutChange.change:KeyMapChange shall be part of AddKeystrokeStatement
+      // (or a new one, RegisterKeystrokeStatement), which is translated(generated) into appropriate method call in this class (add/remove/replace).
+      myRemove = remove;
+      myReplaceAll = replaceAll;
     }
 
-    public static final class ParameterizedSimpleShortcut extends ComplexShortcut {
-      private final List<ShortcutWrapper> myShortcutWrappers;
+    /**
+     * this is entry point for implementation code
+     */
+    /*package*/ final List<SW> build(String mangledActionId, Object... params) {
+      myActionId = mangledActionId;
+      myParams = params;
+      final ArrayList<SW> rv;
+      myResult = rv = new ArrayList<>();
+      fill();
+      myParams = null;
+      myResult = null;
+      myActionId = null;
+      return rv;
+    }
 
-      public ParameterizedSimpleShortcut(Shortcut... shortcuts) {
-        myShortcutWrappers = Arrays.stream(shortcuts).map(ShortcutWrapper::new).collect(Collectors.toList());
-      }
+    /**
+     * user code access parameters through this method
+     */
+    protected final Object[] getParameters() {
+      return myParams;
+    }
 
-      public ParameterizedSimpleShortcut(ShortcutWrapper... shortcutWrappers) {
-        myShortcutWrappers = Arrays.asList(shortcutWrappers);
-      }
+    /**
+     * user code provides shortcuts using this method
+     */
+    protected final void registerKeystroke(String keystroke) {
+      Shortcut sc = kbShortcut(keystroke);
+      __doRegister(sc);
+    }
 
-      @Override
-      public List<Shortcut> getShortcutsFor(Object... params) {
-        return myShortcutWrappers.stream().map(wrapper -> wrapper.myShortcut).collect(Collectors.toList());
-      }
-
-      @Override
-      List<ShortcutWrapper> getShortcutWrappersFor(Object... params) {
-        return myShortcutWrappers;
+    // need this for LegacyBridge; delete once legacy code gone
+    /*package*/ final void __doRegister(Shortcut sc) {
+      if (myRemove) {
+        myResult.add(new Remove(myActionId, sc));
+      } else if (myReplaceAll) {
+        myResult.add(new Replace(myActionId, sc));
+      } else {
+        myResult.add(new Add(myActionId, sc));
       }
     }
 
-    public static final class ComplexShortcutWrapper extends ComplexShortcut {
-      private final ComplexShortcut myComplexShortcut;
-      private final boolean myRemove;
-      private final boolean myReplaceAll;
+    /**
+     * custom keymap change code goes into this method
+     */
+    protected abstract void fill();
+  }
 
-      public ComplexShortcutWrapper(ComplexShortcut complexShortcut, boolean remove, boolean replaceAll) {
-        myComplexShortcut = complexShortcut;
-        myRemove = remove;
-        myReplaceAll = replaceAll;
-      }
+  private static abstract class SW {
+    protected final String myActionId;
+    protected final Shortcut myShortcut;
 
-      @Override
-      public List<Shortcut> getShortcutsFor(Object... params) {
-        return myComplexShortcut.getShortcutsFor(params);
-      }
+    /*package*/ SW(String actionId, Shortcut s) {
+      myActionId = actionId;
+      myShortcut = s;
+    }
 
-      @Override
-      List<ShortcutWrapper> getShortcutWrappersFor(Object... params) {
-        return this.getShortcutsFor(params).stream().map(shortcut -> new ShortcutWrapper(shortcut, myRemove, myReplaceAll)).collect(Collectors.toList());
-      }
+    boolean matches(String actionId) {
+      return Objects.equals(myActionId, actionId);
+    }
+
+    abstract void apply(BaseKeymapChanges bkm);
+
+    abstract void revert(BaseKeymapChanges bkm);
+
+    // factory method to create duplicate with another action id.
+    abstract SW withId(String actionId);
+  }
+
+  /**
+   * Corresponds to "remove" attribute of &lt;keyboard-shortcut&gt;
+   * see https://plugins.jetbrains.com/docs/intellij/basic-action-system.html#registering-actions-from-code
+   */
+  private static class Remove extends SW {
+    /*package*/ Remove(String actionId, Shortcut s) {
+      super(actionId, s);
+    }
+
+    void apply(BaseKeymapChanges bkm) {
+      bkm.getKeymap().removeShortcut(myActionId, myShortcut);
+    }
+
+    void revert(BaseKeymapChanges bkm) {
+      bkm.getKeymap().addShortcut(myActionId, myShortcut);
+    }
+
+    SW withId(String actionId) {
+      return new Remove(actionId, myShortcut);
     }
   }
 
-  protected static class ShortcutWrapper {
-    public final Shortcut myShortcut;
-    public final boolean myRemove;
-    public final boolean myReplaceAll;
-
-    public ShortcutWrapper(Shortcut shortcut) {
-      this(shortcut, false, false);
+  private static class Add extends SW {
+    /*package*/ Add(String actionId, Shortcut s) {
+      super(actionId, s);
     }
 
-    public ShortcutWrapper(Shortcut shortcut, boolean remove, boolean replaceAll) {
-      myShortcut = shortcut;
-      myRemove = remove;
-      myReplaceAll = replaceAll;
+    void apply(BaseKeymapChanges bkm) {
+      bkm.getKeymap().addShortcut(myActionId, myShortcut);
+    }
+
+    void revert(BaseKeymapChanges bkm) {
+      bkm.getKeymap().removeShortcut(myActionId, myShortcut);
+    }
+
+    SW withId(String actionId) {
+      return new Add(actionId, myShortcut);
+    }
+  }
+
+  /**
+   * Corresponds to "replace-all" attribute of &lt;keyboard-shortcut&gt;
+   */
+  private static class Replace extends SW {
+    private Shortcut[] myOldShortcuts;
+
+    /*package*/ Replace(String actionId, Shortcut s) {
+      super(actionId, s);
+    }
+
+    void apply(BaseKeymapChanges bkm) {
+      myOldShortcuts = bkm.getKeymap().getShortcuts(myActionId);
+      if (myOldShortcuts.length > 0) {
+        bkm.getKeymap().removeAllActionShortcuts(myActionId);
+      }
+      bkm.getKeymap().addShortcut(myActionId, myShortcut);
+    }
+
+    void revert(BaseKeymapChanges bkm) {
+      if (myOldShortcuts == null) {
+        return;
+      }
+      if (myOldShortcuts.length == 0) {
+        bkm.getKeymap().removeShortcut(myActionId, myShortcut);
+      } else {
+        bkm.getKeymap().removeAllActionShortcuts(myActionId);
+        for (Shortcut s : myOldShortcuts) {
+          bkm.getKeymap().addShortcut(myActionId, s);
+        }
+      }
+      myOldShortcuts = null;
+    }
+
+    SW withId(String actionId) {
+      return new Replace(actionId, myShortcut);
     }
   }
 }

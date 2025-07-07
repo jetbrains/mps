@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Map;
 import java.util.List;
@@ -25,8 +24,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class BuildLayout_ToBinaryCopyProcessor__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x127671bd5d8bb460L, "jetbrains.mps.build.mps.structure.BuildLayout_ToBinaryCopyProcessor");
 
-  public static final SMethod<String> getTaskName_id19QsrPtc4wK = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTaskName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("19QsrPtc4wK").build();
-  public static final SMethod<Map<String, String>> getTaskArguments_id6R_3WZ31H2E = new SMethodBuilder<Map<String, String>>(new SJavaCompoundTypeImpl(Map.class)).name("getTaskArguments").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6R_3WZ31H2E").build();
+  public static final SMethod<String> getTaskName_id19QsrPtc4wK = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTaskName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1330375798060763184L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
+  public static final SMethod<Map<String, String>> getTaskArguments_id6R_3WZ31H2E = new SMethodBuilder<Map<String, String>>(new SJavaCompoundTypeImpl(Map.class)).name("getTaskArguments").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7918752904805535914L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTaskName_id19QsrPtc4wK, getTaskArguments_id6R_3WZ31H2E);
 
@@ -34,7 +33,7 @@ public final class BuildLayout_ToBinaryCopyProcessor__BehaviorDescriptor extends
   }
 
   /*package*/ static String getTaskName_id19QsrPtc4wK(@NotNull SNode __thisNode__) {
-    // Note: task is declared in generator/weave_Tasks 
+    // Note: task is declared in generator/weave_Tasks
     return "copyModels";
   }
   /*package*/ static Map<String, String> getTaskArguments_id6R_3WZ31H2E(@NotNull SNode __thisNode__) {

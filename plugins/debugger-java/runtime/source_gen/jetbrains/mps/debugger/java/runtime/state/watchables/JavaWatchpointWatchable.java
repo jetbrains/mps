@@ -16,7 +16,7 @@ import jetbrains.mps.debug.api.programState.IValue;
 import javax.swing.Icon;
 import jetbrains.mps.debugger.java.api.ui.Icons;
 
-@GeneratedClass(node = "r:50efd6f2-8d02-4682-b313-bd69c46e78df(jetbrains.mps.debugger.java.runtime.state.watchables)/3187167456722649969", model = "r:50efd6f2-8d02-4682-b313-bd69c46e78df(jetbrains.mps.debugger.java.runtime.state.watchables)")
+@GeneratedClass(nodeId = "3187167456722649969", model = "r:50efd6f2-8d02-4682-b313-bd69c46e78df(jetbrains.mps.debugger.java.runtime.state.watchables)")
 /*package*/ class JavaWatchpointWatchable extends JavaWatchable {
   private final FieldWatchpointValue myValue;
   public JavaWatchpointWatchable(Field field, Value currentValue, Value newValue, ThreadReference threadReference) {

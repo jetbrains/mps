@@ -4,14 +4,13 @@ package mps.test.findusages;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import jetbrains.mps.ide.findusages.model.holders.ModuleRefHolder;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
@@ -24,6 +23,8 @@ import java.util.Set;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.ui.finders.ModuleUsagesFinder;
 import jetbrains.mps.ide.ui.finders.LanguageImportFinder;
+import java.util.List;
+import jetbrains.mps.ide.findusages.model.SearchResult;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import org.jetbrains.mps.openapi.module.SearchScope;
@@ -34,13 +35,11 @@ import java.util.Collections;
 
 @MPSLaunch
 public class FindUsages_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(FindUsages_Test.class, "${mps_home}", "r:0fc0617b-a58c-4b18-af63-dc67be77023b(mps.test.findusages@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(FindUsages_Test.class).projectPath(null).modelRef("r:0fc0617b-a58c-4b18-af63-dc67be77023b(mps.test.findusages@tests)").reopenProject(null).build());
 
   public FindUsages_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -58,32 +57,49 @@ public class FindUsages_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_FindLanguageConceptNodes() throws Exception {
-      // LanguageScopeUsageFinder looks up references to concept declaration nodes of a language, this is what FindLanguageConceptsUsages_Action does 
-      Assert.assertNotNull(this.m1());
-      // m1 shall keep a node reference to some of BL concepts. SHALL NOT USE BL (i.e. instanceof), just a node reference. 
-      SearchQuery query = new SearchQuery(new ModuleRefHolder(PersistenceFacade.getInstance().createModuleReference("f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)")), new SearchObjectResolver.BasicResolver(myProject.getRepository()), this.getTestModuleScope());
-      final SearchResults sr = FindUtils.getSearchResults(new EmptyProgressMonitor(), query, new LanguageConceptsUsagesFinder());
-      Set<Object> results = sr.getResultObjects();
-      // there's 1 reference to BL concept inside m1.JustToHoldNodePtr and it's a node. 
-      Assert.assertEquals(1, results.size());
-      Object r = results.iterator().next();
-      Assert.assertTrue(r instanceof SNode);
-      Assert.assertTrue(((SNode) r).getModel() == this.m1());
-    }
-    public void test_FindLanguageModuleUsage() throws Exception {
-      // look up usages of a module (up to model imports) AND module as used language (again, up to imports), this is what FindModuleUsage_Action does for a Language module 
-      Assert.assertNotNull(this.m2());
-      // m2 shall USE BL 
-      SearchQuery query = new SearchQuery(new ModuleRefHolder(PersistenceFacade.getInstance().createModuleReference("f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)")), new SearchObjectResolver.BasicResolver(myProject.getRepository()), this.getTestModuleScope());
-      final SearchResults sr = FindUtils.getSearchResults(new EmptyProgressMonitor(), query, new ModuleUsagesFinder(), new LanguageImportFinder());
-      Set<Object> results = sr.getResultObjects();
-      // there are 2 results:  model m2 with used language and test solution with dependency to BL module 
-      // @tests model itself is not discovered as of this writing, as we use lang.test and lang.smodel here, not BL explicitly 
-      Assert.assertEquals(2, results.size());
-      Assert.assertTrue(results.contains(this.m2()));
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
     }
 
+    public void test_FindLanguageConceptNodes() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        // LanguageScopeUsageFinder looks up references to concept declaration nodes of a language, this is what FindLanguageConceptsUsages_Action does
+        Assert.assertNotNull(TestBody.this.m1());
+        // m1 shall keep a node reference to some of BL concepts. SHALL NOT USE BL (i.e. instanceof), just a node reference.
+        SearchQuery query = new SearchQuery(new ModuleRefHolder(PersistenceFacade.getInstance().createModuleReference("f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)")), new SearchObjectResolver.BasicResolver(myProject.getRepository()), TestBody.this.getTestModuleScope());
+        final SearchResults sr = FindUtils.getSearchResults(new EmptyProgressMonitor(), query, new LanguageConceptsUsagesFinder());
+        Set<Object> results = sr.getResultObjects();
+        // there's 1 reference to BL concept inside m1.JustToHoldNodePtr and it's a node.
+        Assert.assertEquals(Integer.valueOf(1), Integer.valueOf(results.size()));
+        Object r = results.iterator().next();
+        Assert.assertTrue(r instanceof SNode);
+        Assert.assertTrue(((SNode) r).getModel() == TestBody.this.m1());
+      });
+    }
+    public void test_FindLanguageModuleUsage() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        // look up usages of a module (up to model imports) AND module as used language (again, up to imports), this is what FindModuleUsage_Action does for a Language module
+        Assert.assertNotNull(TestBody.this.m2());
+        // m2 shall USE BL
+        SearchQuery query = new SearchQuery(new ModuleRefHolder(PersistenceFacade.getInstance().createModuleReference("f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)")), new SearchObjectResolver.BasicResolver(myProject.getRepository()), TestBody.this.getTestModuleScope());
+        final SearchResults sr = FindUtils.getSearchResults(new EmptyProgressMonitor(), query, new ModuleUsagesFinder(), new LanguageImportFinder());
+        List<SearchResult<Object>> results = sr.getSearchResults2();
+        // there are 4 results:
+        //   solution itself with an explicit BL module dependency
+        //   m1 with a dependency to BL.structure
+        //   solution itself as 'uses BL'
+        //   m2 as 'written in BL'
+        // @tests model itself is not discovered as of this writing, as we use lang.test and lang.smodel here, not BL explicitly
+        Assert.assertEquals(Integer.valueOf(4), Integer.valueOf(results.size()));
+        Set<Object> resultObjects = sr.getResultObjects();
+        // there are 3 distinct result objects, solution and its two models
+        Assert.assertTrue(resultObjects.contains(TestBody.this.m1()));
+        Assert.assertTrue(resultObjects.contains(TestBody.this.m2()));
+      });
+    }
 
     public SModel m1() {
       return SPointerOperations.resolveModel(PersistenceFacade.getInstance().createModelReference("r:f0b2a91b-3c1d-49c2-b104-70549000f428(mps.test.findusages.m1)"), myProject.getRepository());

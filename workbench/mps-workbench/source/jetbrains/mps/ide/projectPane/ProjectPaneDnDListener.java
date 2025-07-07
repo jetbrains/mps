@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@ import jetbrains.mps.ide.ui.tree.smodel.PackageNode;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.SNodeGroupTreeNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
 import jetbrains.mps.plugins.relations.RelationDescriptor;
 import jetbrains.mps.project.MPSProject;
@@ -29,8 +30,6 @@ import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.workbench.MPSDataKeys;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -57,8 +56,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+@Deprecated
 public class ProjectPaneDnDListener implements DropTargetListener {
-  private static final Logger LOG = LogManager.getLogger(ProjectPaneDnDListener.class);
+  private static final Logger LOG = Logger.getLogger(ProjectPaneDnDListener.class);
 
   private final JTree myTree;
   private final DataFlavor myDataFlavor;
@@ -124,7 +124,7 @@ public class ProjectPaneDnDListener implements DropTargetListener {
 
       for (Pair<SNode, String> sourceNode : getNodesToMove(targetModel, targetPackage, sourceNodes)) {
         String fullTargetPack = getFullTargetPack(targetPackage, sourceNode.o2);
-        SNodeAccessUtil.setProperty(sourceNode.o1, SNodeUtil.property_BaseConcept_virtualPackage, fullTargetPack);
+        SNodeAccessUtil.setPropertyValue(sourceNode.o1, SNodeUtil.property_BaseConcept_virtualPackage, fullTargetPack);
         if (SNodeOperations.isInstanceOf(sourceNode.o1, SNodeUtil.concept_AbstractConceptDeclaration)) {
           SNode baseNode = sourceNode.o1;
           List<RelationDescriptor> tabs = ProjectPluginManager.getApplicableTabs(project.getProject(), baseNode);
@@ -134,7 +134,7 @@ public class ProjectPaneDnDListener implements DropTargetListener {
 
               for (SNode aspect : tab.getNodes(baseNode)) {
                 if (tab.getBaseNode(aspect) != baseNode) continue;
-                SNodeAccessUtil.setProperty(aspect, SNodeUtil.property_BaseConcept_virtualPackage, fullTargetPack);
+                SNodeAccessUtil.setPropertyValue(aspect, SNodeUtil.property_BaseConcept_virtualPackage, fullTargetPack);
               }
             } catch (Throwable t) {
               LOG.error("Exception in extension code: ", t);

@@ -16,7 +16,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class add_parameter_to_closure {
   public static class NodeFactory_485694842828664421 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SNode disposeTabClosure = SLinkOperations.getTarget(newNode, LINKS.disposeTabClosure$MxY4);
       if ((disposeTabClosure == null)) {
         disposeTabClosure = SNodeFactoryOperations.setNewChild(newNode, LINKS.disposeTabClosure$MxY4, CONCEPTS.ClosureLiteral$rp);

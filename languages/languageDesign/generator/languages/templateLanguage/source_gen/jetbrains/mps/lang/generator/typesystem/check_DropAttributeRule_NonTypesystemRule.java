@@ -9,7 +9,6 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -22,10 +21,10 @@ public class check_DropAttributeRule_NonTypesystemRule extends AbstractNonTypesy
   public check_DropAttributeRule_NonTypesystemRule() {
   }
   public void applyRule(final SNode rule, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(rule, LINKS.applicableConcept$7iCe), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "5169995583184591161")))) {
+    if (!((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id4UTtJHK9fEJ.invoke(SLinkOperations.getTarget(rule, LINKS.applicableConcept$7iCe), CONCEPTS.Attribute$g1))) {
       {
         final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.applicableConcept$7iCe);
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(rule, "Rule shall specify Attribute subconcept", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "7473026166162321613", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(rule, "Rule shall specify Attribute sub-concept", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "7473026166162321613", null, errorTarget);
       }
     }
   }
@@ -44,6 +43,7 @@ public class check_DropAttributeRule_NonTypesystemRule extends AbstractNonTypesy
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept Attribute$g1 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x47bf8397520e5939L, "jetbrains.mps.lang.core.structure.Attribute");
     /*package*/ static final SConcept DropAttributeRule$mD = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x67b585b44f4d943bL, "jetbrains.mps.lang.generator.structure.DropAttributeRule");
   }
 }

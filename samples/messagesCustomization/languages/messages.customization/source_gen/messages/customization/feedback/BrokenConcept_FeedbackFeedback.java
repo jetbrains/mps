@@ -25,22 +25,22 @@ public final class BrokenConcept_FeedbackFeedback extends BaseFeedbackDescriptor
   private static final FeedbackProvider<MissingPropertyContext> MSGPROVIDER_WhenPropertyIsNotDefinedInConcept_tbtsff_a = new BaseMessageProvider<MissingPropertyContext>(new ProblemKindId(PredefinedStructureProblemKind.MISSING_PROPERTY)) {
     @NotNull
     @Override
-    public MessageProvider.StringMsg yieldMessage(MissingPropertyContext context) {
-      return new MessageProvider.StringMsg("Property '" + context.getProperty() + "' does not belong to the concept!!!");
+    public MessageProvider.Msg yieldMessage(MissingPropertyContext context) {
+      return format("Property '%s' does not belong to the concept!!!", context.getProperty());
     }
   };
   private static final FeedbackProvider<MissingChildContext> MSGPROVIDER_WhenChildIsNotDefinedInConcept_tbtsff_b = new BaseMessageProvider<MissingChildContext>(new ProblemKindId(PredefinedStructureProblemKind.MISSING_CHILD)) {
     @NotNull
     @Override
-    public MessageProvider.StringMsg yieldMessage(MissingChildContext context) {
-      return new MessageProvider.StringMsg("Child '" + context.getChild() + "' does not belong to the concept!!!");
+    public MessageProvider.Msg yieldMessage(MissingChildContext context) {
+      return format("Child '%s' does not belong to the concept!!!", context.getChild());
     }
   };
   private static final FeedbackProvider<MissingRefContext> MSGPROVIDER_WhenReferenceIsNotDefinedInConcept_tbtsff_c = new BaseMessageProvider<MissingRefContext>(new ProblemKindId(PredefinedStructureProblemKind.MISSING_REF)) {
     @NotNull
     @Override
-    public MessageProvider.StringMsg yieldMessage(MissingRefContext context) {
-      return new MessageProvider.StringMsg("Reference '" + context.getLink() + "' does not belong to the concept!!!");
+    public MessageProvider.Msg yieldMessage(MissingRefContext context) {
+      return format("Reference '%s' does not belong to the concept!!!", context.getLink());
     }
   };
 

@@ -16,7 +16,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Map;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 
-@GeneratedClass(node = "r:86d21248-3bf4-41d8-8375-ab68885d035f(jetbrains.mps.debugger.java.runtime.evaluation.model)/7757449281563189172", model = "r:86d21248-3bf4-41d8-8375-ab68885d035f(jetbrains.mps.debugger.java.runtime.evaluation.model)")
+@GeneratedClass(nodeId = "7757449281563189172", model = "r:86d21248-3bf4-41d8-8375-ab68885d035f(jetbrains.mps.debugger.java.runtime.evaluation.model)")
 /*package*/ abstract class EvaluationContext {
   protected JavaUiState myUiState;
   public EvaluationContext(JavaUiState state) {

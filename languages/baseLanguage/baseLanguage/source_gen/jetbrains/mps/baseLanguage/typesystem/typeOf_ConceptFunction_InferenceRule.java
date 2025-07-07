@@ -19,7 +19,6 @@ import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.baseLanguage.behavior.IMethodLike__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -29,14 +28,14 @@ public class typeOf_ConceptFunction_InferenceRule extends AbstractInferenceRule_
   public typeOf_ConceptFunction_InferenceRule() {
   }
   public void applyRule(final SNode func, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    // function is expected to return value of any type 
+    // function is expected to return value of any type
     final SNode expectedRetType = (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(ConceptFunction__BehaviorDescriptor.getExpectedReturnType_idhEwIGRD.invoke(func))), CONCEPTS.WildCardType$uV) ? null : ConceptFunction__BehaviorDescriptor.getExpectedReturnType_idhEwIGRD.invoke(func));
     boolean noReturnExpected = ((expectedRetType == null) || TypecheckingFacade.getFromContext().isSubtype(expectedRetType, _quotation_createNode_bbraw4_b0a0a0c0b()));
     if (!(noReturnExpected)) {
       final SNode LCS_typevar_1186052624152 = typeCheckingContext.createNewRuntimeTypesVariable();
       Iterable<SNode> returnStatements = RulesFunctions_BaseLanguage.collectReturnStatements(SLinkOperations.getTarget(func, LINKS.body$e68K));
-      // should return subtypes of the 'expected type' 
-      // if 'expected type' is null - should still return some value (of any type) 
+      // should return subtypes of the 'expected type'
+      // if 'expected type' is null - should still return some value (of any type)
       for (SNode returnStatement : Sequence.fromIterable(returnStatements)) {
         if ((SLinkOperations.getTarget(returnStatement, LINKS.expression$eJ92) == null)) {
           {
@@ -60,7 +59,7 @@ public class typeOf_ConceptFunction_InferenceRule extends AbstractInferenceRule_
           }
         }
       }
-      // last expression statement can serve as return statement 
+      // last expression statement can serve as return statement
       SNode lastStatement = IMethodLike__BehaviorDescriptor.getLastStatement_idi2fhS7A.invoke(func);
       if (SNodeOperations.isInstanceOf(lastStatement, CONCEPTS.ExpressionStatement$O8)) {
         final SNode expression = SLinkOperations.getTarget(SNodeOperations.cast(lastStatement, CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M);
@@ -105,9 +104,9 @@ public class typeOf_ConceptFunction_InferenceRule extends AbstractInferenceRule_
     return false;
   }
   private static SNode _quotation_createNode_bbraw4_b0a0a0c0b() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType"));
+    quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
 

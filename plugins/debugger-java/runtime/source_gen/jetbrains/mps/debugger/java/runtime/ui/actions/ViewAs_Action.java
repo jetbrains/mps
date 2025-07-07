@@ -20,7 +20,7 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.debugger.java.runtime.state.customViewers.CustomViewersManagerImpl;
 import jetbrains.mps.debugger.java.runtime.state.DebugSession;
 
-@GeneratedClass(node = "r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)/4225554808929945133", model = "r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)")
+@GeneratedClass(nodeId = "4225554808929945133", model = "r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)")
 public class ViewAs_Action extends BaseAction {
   private static final Icon ICON = null;
 

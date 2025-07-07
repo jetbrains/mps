@@ -18,10 +18,7 @@ import jetbrains.mps.nodeEditor.selection.SelectionInfoImpl;
 import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.openapi.editor.selection.SelectionInfo;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import com.intellij.ide.CopyPasteManagerEx;
-import jetbrains.mps.ide.datatransfer.SNodeTransferable;
-import java.util.Collections;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.editor.runtime.TextBuilderImpl;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
@@ -74,17 +71,9 @@ public class TableColumnSelection extends AbstractMultipleSelection {
     setSelectedCells(myTableCell.getColumnCells(myColumnNumber));
   }
   private void initActionMap() {
-    MapSequence.fromMap(actionMap).put(CellActionType.SELECT_UP, new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        selectUp();
-      }
-    });
+    MapSequence.fromMap(actionMap).put(CellActionType.SELECT_UP, () -> selectUp());
     MapSequence.fromMap(actionMap).put(CellActionType.CUT, null);
-    MapSequence.fromMap(actionMap).put(CellActionType.COPY, new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        copyNodes();
-      }
-    });
+    MapSequence.fromMap(actionMap).put(CellActionType.COPY, () -> copyNodes());
     MapSequence.fromMap(actionMap).put(CellActionType.PASTE, null);
   }
   @Override
@@ -127,7 +116,7 @@ public class TableColumnSelection extends AbstractMultipleSelection {
     return false;
   }
   private void copyNodes() {
-    CopyPasteManagerEx.getInstanceEx().setContents(new SNodeTransferable(Collections.<SNode>emptyList(), renderText().getText()));
+    CopyPasteUtil.copyTextToClipboard(renderText().getText());
   }
   private TextBuilder renderText() {
     TextBuilder result = new TextBuilderImpl();

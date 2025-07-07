@@ -6,30 +6,31 @@ import jetbrains.mps.annotations.GeneratedClass;
 import javax.swing.JPanel;
 import jetbrains.mps.vcs.diff.ui.common.ChangeGroup;
 import jetbrains.mps.nodeEditor.EditorComponent;
+import javax.swing.JLayeredPane;
 import com.intellij.openapi.actionSystem.ActionToolbar;
 import java.awt.BorderLayout;
 import com.intellij.openapi.actionSystem.ActionManager;
-import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.ui.ColoredSideBorder;
 import java.awt.Color;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
-import javax.swing.JLayeredPane;
 import javax.swing.SwingUtilities;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
-@GeneratedClass(node = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)/2881457021876857496", model = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)")
+@GeneratedClass(nodeId = "2881457021876857496", model = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)")
 /*package*/ class PopupPanel extends JPanel {
   private ChangeStripsPainter myPainter;
   private ChangeGroup myChangeGroup;
   private MyMouseListener myMouseListener = new MyMouseListener();
   private MyFocusListener myFocusListener = new MyFocusListener();
   private EditorComponent myEditor;
+  private JLayeredPane myLayeredPane;
   private BaseVersionEditorComponent myBaseEditor;
   private ActionToolbar myToolbar;
+
   public PopupPanel(ChangeStripsPainter painter, ChangeGroup group) {
     myChangeGroup = group;
     myPainter = painter;
@@ -39,7 +40,7 @@ import java.awt.event.FocusEvent;
 
     JPanel toolbarPanel = new JPanel(new BorderLayout());
     toolbarPanel.setOpaque(false);
-    myToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, ((ActionGroup) ActionManager.getInstance().getAction("jetbrains.mps.vcs.platform.actions.ChangesStrip_ActionGroup")), true);
+    myToolbar = ActionManager.getInstance().createActionToolbar("popup panel toolbar", ((ActionGroup) ActionManager.getInstance().getAction("jetbrains.mps.vcs.platform.actions.ChangesStrip_ActionGroup")), true);
     myToolbar.setTargetComponent(myPainter.getEditorComponent());
     toolbarPanel.add(myToolbar.getComponent(), BorderLayout.WEST);
     add(toolbarPanel, BorderLayout.NORTH);
@@ -47,47 +48,54 @@ import java.awt.event.FocusEvent;
 
     if (myChangeGroup.getChangeType() != ChangeType.ADD) {
       myBaseEditor = new BaseVersionEditorComponent(myEditor.getEditorContext().getRepository(), myChangeGroup);
-      // Do not extend this editor with extensions: the project is tricky to get from this point, 
-      // and this editor doesn't seem to be that important to extend. 
+      // Do not extend this editor with extensions: the project is tricky to get from this point,
+      // and this editor doesn't seem to be that important to extend.
       add(myBaseEditor.getScrollPane(), BorderLayout.CENTER);
     }
   }
+
   /*package*/ ChangeGroup getChangeGroup() {
     return myChangeGroup;
   }
+
   public void show(int x, int y) {
-    JLayeredPane layeredPane = myEditor.getRootPane().getLayeredPane();
-    setLocation(SwingUtilities.convertPoint(myEditor, x, y, layeredPane));
+    myLayeredPane = myEditor.getRootPane().getLayeredPane();
+    setLocation(SwingUtilities.convertPoint(myEditor, x, y, myLayeredPane));
     setVisible(true);
-    layeredPane.add(this, JLayeredPane.POPUP_LAYER);
+    myLayeredPane.add(this, JLayeredPane.POPUP_LAYER);
 
     myPainter.setGroupHighlighted(myChangeGroup, true);
     myToolbar.updateActionsImmediately();
     setSize(getPreferredSize());
-    int overflow = ((int) getBounds().getMaxX()) - layeredPane.getWidth();
+    int overflow = ((int) getBounds().getMaxX()) - myLayeredPane.getWidth();
     if (overflow > 0) {
-      // panel is too wide, need to move it 
+      // panel is too wide, need to move it
       setLocation(Math.max(0, getX() - overflow), getY());
     }
-    layeredPane.validate();
-    layeredPane.repaint(getBounds());
+    myLayeredPane.validate();
+    myLayeredPane.repaint(getBounds());
 
     addListeners();
   }
+
   private void addListeners() {
     myEditor.addMouseListener(myMouseListener);
     myEditor.addFocusListener(myFocusListener);
   }
+
   private void removeListeners() {
     myEditor.removeFocusListener(myFocusListener);
     myEditor.removeMouseListener(myMouseListener);
   }
+
   /*package*/ void dispose() {
+    if (myLayeredPane == null) {
+      return;
+    }
     removeListeners();
-    JLayeredPane layeredPane = myEditor.getRootPane().getLayeredPane();
-    layeredPane.remove(this);
-    layeredPane.validate();
-    layeredPane.repaint(getBounds());
+    myLayeredPane.remove(this);
+    myLayeredPane.validate();
+    myLayeredPane.repaint(getBounds());
 
     myPainter.setGroupHighlighted(myChangeGroup, false);
     myPainter.popupClosed();
@@ -96,6 +104,7 @@ import java.awt.event.FocusEvent;
       myBaseEditor.dispose();
       myBaseEditor = null;
     }
+    myLayeredPane = null;
   }
   private class MyMouseListener extends MouseAdapter {
     public MyMouseListener() {

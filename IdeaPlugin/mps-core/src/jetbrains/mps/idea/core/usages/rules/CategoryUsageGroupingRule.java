@@ -55,7 +55,7 @@ public class CategoryUsageGroupingRule extends SingleParentUsageGroupingRule {
 
     @Override
     public Icon getIcon(boolean b) {
-      return PlatformIcons.DIRECTORY_CLOSED_ICON;
+      return PlatformIcons.FOLDER_ICON;
     }
 
     @NotNull

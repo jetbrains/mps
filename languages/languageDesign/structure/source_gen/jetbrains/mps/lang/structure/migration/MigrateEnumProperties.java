@@ -11,16 +11,13 @@ import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.UsageOfMigrateNodeNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -44,11 +41,7 @@ public class MigrateEnumProperties extends MigrationScriptBase {
     {
       SearchScope scope_tfrsu7_a0e = CommandUtil.createScope(m);
       final SearchScope scope_tfrsu7_a0e_0 = new EditableFilteringScope(scope_tfrsu7_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_tfrsu7_a0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_tfrsu7_a0e_0;
       for (SNode propertyDeclaration : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyDeclaration$1S, false))) {
         updateProperty(propertyDeclaration);
       }
@@ -59,23 +52,11 @@ public class MigrateEnumProperties extends MigrationScriptBase {
     {
       SearchScope scope_tfrsu7_a0f = CommandUtil.createScope(m);
       final SearchScope scope_tfrsu7_a0f_0 = new EditableFilteringScope(scope_tfrsu7_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_tfrsu7_a0f_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyDeclaration$1S, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.EnumPropertyMigrationInfo$O3)) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.dataType$5j5Y), CONCEPTS.EnumerationDataTypeDeclaration_Old$B8);
-        }
-      }).select(new ISelector<SNode, UsageOfMigrateNodeNotMigratedProblem>() {
-        public UsageOfMigrateNodeNotMigratedProblem select(SNode it) {
-          return new UsageOfMigrateNodeNotMigratedProblem(it, SLinkOperations.getTarget(it, LINKS.dataType$5j5Y));
-        }
-      });
+      QueryExecutionContext context = () -> scope_tfrsu7_a0f_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyDeclaration$1S, false)).where((it) -> !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.EnumPropertyMigrationInfo$O3)) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.dataType$5j5Y), CONCEPTS.EnumerationDataTypeDeclaration_Old$B8)).select((it) -> new UsageOfMigrateNodeNotMigratedProblem(it, SLinkOperations.getTarget(it, LINKS.dataType$5j5Y)));
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure"), 8);
   }
 
@@ -94,7 +75,7 @@ public class MigrateEnumProperties extends MigrationScriptBase {
       SPropertyOperations.assign(newPropertyDeclaration, PROPS.propertyId$m5HU, SPropertyOperations.getString(propertyDeclaration, PROPS.propertyId$m5HU));
       SLinkOperations.setTarget(newPropertyDeclaration, LINKS.dataType$5j5Y, SNodeOperations.cast(SNodeOperations.getParent(enumMigrationInfo), CONCEPTS.EnumerationDeclaration$hv));
       SNodeOperations.replaceWithAnother(propertyDeclaration, newPropertyDeclaration);
-      SLinkOperations.setTarget(AttributeOperations.createAndSetAttrbiute(newPropertyDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumPropertyMigrationInfo$O3), CONCEPTS.EnumPropertyMigrationInfo$O3), LINKS.oldProperty$Vefi, propertyDeclaration);
+      SLinkOperations.setTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumPropertyMigrationInfo$O3).setNew(newPropertyDeclaration), LINKS.oldProperty$Vefi, propertyDeclaration);
     }
   }
 

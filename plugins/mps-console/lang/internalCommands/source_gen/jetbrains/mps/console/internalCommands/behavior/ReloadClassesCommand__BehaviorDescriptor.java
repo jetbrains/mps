@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.console.tool.ConsoleContext;
 import jetbrains.mps.console.tool.ConsoleStream;
@@ -25,8 +24,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class ReloadClassesCommand__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x995a73947f764b8bL, 0xa929c53448708106L, 0x75bb0160f191dd31L, "jetbrains.mps.console.internalCommands.structure.ReloadClassesCommand");
 
-  public static final SMethod<Void> doExecute_id2SpVAIqougW = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("doExecute").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2SpVAIqougW").build(SMethodBuilder.createJavaParameter(ConsoleContext.class, ""), SMethodBuilder.createJavaParameter(ConsoleStream.class, ""));
-  public static final SMethod<String> getShortHelp_idqgIopNa9Hb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getShortHelp").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("qgIopNa9Hb").build();
+  public static final SMethod<Void> doExecute_id2SpVAIqougW = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("doExecute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3321948346081469500L).languageId(0xb306d4d17f64c375L, 0xde1ad86d6e504a02L).build2(SMethodBuilder.createJavaParameter(ConsoleContext.class, ""), SMethodBuilder.createJavaParameter(ConsoleStream.class, ""));
+  public static final SMethod<String> getShortHelp_idqgIopNa9Hb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getShortHelp").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(473081947982699339L).languageId(0x8c346f0d90c6e75aL, 0x1a8554c4eb8443baL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(doExecute_id2SpVAIqougW, getShortHelp_idqgIopNa9Hb);
 
@@ -34,7 +33,7 @@ public final class ReloadClassesCommand__BehaviorDescriptor extends BaseBHDescri
   }
 
   /*package*/ static void doExecute_id2SpVAIqougW(@NotNull SNode __thisNode__, ConsoleContext context, ConsoleStream console) {
-    ClassLoaderManager.getInstance().reloadAll(new EmptyProgressMonitor());
+    context.getProject().getComponent(ClassLoaderManager.class).reloadAll(new EmptyProgressMonitor());
     console.addText("Classes reloaded");
   }
   /*package*/ static String getShortHelp_idqgIopNa9Hb(@NotNull SAbstractConcept __thisConcept__) {

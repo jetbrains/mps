@@ -7,14 +7,13 @@ import org.apache.tools.ant.types.DataType;
 import java.io.File;
 
 /**
- * 
- * @deprecated use <repo><module jar="smth"></module jar="smth"></repo> instead
+ * Alternatively, use <repo><module jar="smth"></module jar="smth"></repo> instead
  */
-@Deprecated
-@GeneratedClass(node = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)/4003657351907893424", model = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)")
+@GeneratedClass(nodeId = "4003657351907893424", model = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)")
 public class ModuleJarDataType extends DataType {
   private File myJar;
-  @Deprecated
+  private File myModuleManifest;
+
   public ModuleJarDataType() {
   }
   public File getFile() {
@@ -23,5 +22,12 @@ public class ModuleJarDataType extends DataType {
   public void setFile(File dir) {
     assert dir.getName().endsWith(".jar") : "Only jar files are supported";
     myJar = dir;
+  }
+
+  public void setManifest(File moduleManifest) {
+    myModuleManifest = moduleManifest;
+  }
+  public File getManifest() {
+    return myModuleManifest;
   }
 }

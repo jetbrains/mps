@@ -5,8 +5,16 @@ package jetbrains.mps.ide.migration;
 import jetbrains.mps.annotations.GeneratedClass;
 import java.util.function.Consumer;
 import org.jetbrains.mps.openapi.module.SModuleReference;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.migration.component.MigrationAccess;
 
-@GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/5351393548967582699", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
+@GeneratedClass(nodeId = "5351393548967582699", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 public interface IStartupMigrationExecutor {
+  void setProblemHandler(MigrationProblemHandler problemHandler);
   void setRebuildHandler(Consumer<Iterable<SModuleReference>> rebuildHandler);
+
+  static IStartupMigrationExecutor getInstance(MPSProject mpsProject) {
+    MigrationAccess mac = mpsProject.getPlatform().findComponent(MigrationAccess.class);
+    return (mac == null ? null : mac.get(mpsProject));
+  }
 }

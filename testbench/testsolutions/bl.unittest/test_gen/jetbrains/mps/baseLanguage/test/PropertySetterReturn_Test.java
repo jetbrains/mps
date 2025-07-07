@@ -4,31 +4,26 @@ package jetbrains.mps.baseLanguage.test;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.project.ProjectBase;
 import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
+import java.util.Arrays;
 
 @MPSLaunch
 public class PropertySetterReturn_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(PropertySetterReturn_Test.class, "${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(PropertySetterReturn_Test.class).projectPath(null).modelRef("r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)").reopenProject(null).build());
 
   public PropertySetterReturn_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -36,12 +31,8 @@ public class PropertySetterReturn_Test extends BaseTransformationTest {
     new TestBody(this).test_NodeNotLegalStatementTheExpressionCheck6401638465588611410();
   }
   @Test
-  public void test_NodeTheConditionIsAlwaysCheck2857825852305744070() throws Throwable {
-    new TestBody(this).test_NodeTheConditionIsAlwaysCheck2857825852305744070();
-  }
-  @Test
-  public void test_NodeNoReturnValueExpectedCheck6696611297029670760() throws Throwable {
-    new TestBody(this).test_NodeNoReturnValueExpectedCheck6696611297029670760();
+  public void test_NodeNoReturnValueExpectedCheck1500881288847656430() throws Throwable {
+    new TestBody(this).test_NodeNoReturnValueExpectedCheck1500881288847656430();
   }
   @Test
   public void test_ErrorMessagesCheck5772383102105107061() throws Throwable {
@@ -54,26 +45,31 @@ public class PropertySetterReturn_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("5772383102104987800");
+    }
 
     public void test_NodeNotLegalStatementTheExpressionCheck6401638465588611410() throws Exception {
-      SNode nodeToCheck = getRealNodeById("5772383102105101132");
-      SNode operation = getRealNodeById("6401638465588611410");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2453008993620467766"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("5772383102105101132");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2453008993620467766"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
-    public void test_NodeTheConditionIsAlwaysCheck2857825852305744070() throws Exception {
-      SNode nodeToCheck = getRealNodeById("5772383102105103385");
-      SNode operation = getRealNodeById("2857825852305744070");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
-    }
-    public void test_NodeNoReturnValueExpectedCheck6696611297029670760() throws Exception {
-      SNode nodeToCheck = getRealNodeById("5772383102105106045");
-      SNode operation = getRealNodeById("6696611297029670760");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4285773203933690649"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    public void test_NodeNoReturnValueExpectedCheck1500881288847656430() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("5772383102105106045");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4285773203933690649"), "Error: no return value expected", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
     public void test_ErrorMessagesCheck5772383102105107061() throws Exception {
-      SNode nodeToCheck = getRealNodeById("5772383102104987802");
-      SNode operation = getRealNodeById("5772383102105107061");
-      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("5772383102105101132"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2453008993620467766"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("5772383102105103385"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("5772383102105106045"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4285773203933690649"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("5772383102104987802");
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(false).exclude(Arrays.<CheckExpectedMessageRunnable>asList(new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("5772383102105101132"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2453008993620467766"), "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("5772383102105106045"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4285773203933690649"), "Error: no return value expected", myProject.getRepository(), myProject.getPlatform()))).run();
+      });
     }
 
   }

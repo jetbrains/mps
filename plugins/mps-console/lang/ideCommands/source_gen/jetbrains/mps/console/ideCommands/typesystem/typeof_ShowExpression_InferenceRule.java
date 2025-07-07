@@ -14,9 +14,7 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -33,16 +31,10 @@ public class typeof_ShowExpression_InferenceRule extends AbstractInferenceRule_R
     }
     {
       final SNode argType = typeCheckingContext.typeOf(SLinkOperations.getTarget(showExpression, LINKS.object$A1S4), "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "7989807750029968337", true);
-      typeCheckingContext.whenConcrete(argType, new Runnable() {
-        public void run() {
-          if (!(ShowingKind.getKind(typeCheckingContext.getExpandedNode(argType)) != null)) {
-            final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(showExpression, LINKS.object$A1S4), "#show is applicable only to sequences of " + Sequence.fromIterable(Sequence.fromArray(ShowingKind.values())).select(new ISelector<ShowingKind, String>() {
-              public String select(ShowingKind it) {
-                return it.getKindLabel();
-              }
-            }), "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "7989807750030123140", null, errorTarget);
-          }
+      typeCheckingContext.whenConcrete(argType, () -> {
+        if (!(ShowingKind.getKind(typeCheckingContext.getExpandedNode(argType)) != null)) {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(showExpression, LINKS.object$A1S4), "#show is applicable only to sequences of " + Sequence.fromIterable(Sequence.fromArray(ShowingKind.values())).select((it) -> it.getKindLabel()), "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "7989807750030123140", null, errorTarget);
         }
       }, "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "7989807750029968262", false, false);
     }
@@ -57,9 +49,9 @@ public class typeof_ShowExpression_InferenceRule extends AbstractInferenceRule_R
     return false;
   }
   private static SNode _quotation_createNode_jy8svg_a1a0c0a0b() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType"));
+    quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
 

@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import jetbrains.mps.vfs.IFile;
@@ -22,7 +21,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.vfs.FileSystem;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -34,11 +32,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class BuildCompositePath__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, "jetbrains.mps.build.structure.BuildCompositePath");
 
-  public static final SMethod<String> getPath_id7usrAn05okK = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPath").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7usrAn05okK").build();
-  public static final SMethod<String> getLastSegment_id1bWeed$oUbg = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLastSegment").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1bWeed$oUbg").build();
-  public static final SMethod<String> getPathToHead_id3skBIrUiCOV = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPathToHead").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3skBIrUiCOV").build();
-  public static final SMethod<List<String>> getHeadSuggestions_id4jjtc7X04td = new SMethodBuilder<List<String>>(new SJavaCompoundTypeImpl((Class<List<String>>) ((Class) Object.class))).name("getHeadSuggestions").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4jjtc7X04td").build(SMethodBuilder.createJavaParameter(String.class, ""));
-  public static final SMethod<IFile> getFile_idIG8oXsODon = new SMethodBuilder<IFile>(new SJavaCompoundTypeImpl(IFile.class)).name("getFile").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("IG8oXsODon").build(SMethodBuilder.createJavaParameter(Context.class, ""));
+  public static final SMethod<String> getPath_id7usrAn05okK = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPath").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8618885170173674800L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
+  public static final SMethod<String> getLastSegment_id1bWeed$oUbg = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLastSegment").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1368030936106771152L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
+  public static final SMethod<String> getPathToHead_id3skBIrUiCOV = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPathToHead").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3968971886499106107L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
+  public static final SMethod<List<String>> getHeadSuggestions_id4jjtc7X04td = new SMethodBuilder<List<String>>(new SJavaCompoundTypeImpl((Class<List<String>>) ((Class) Object.class))).name("getHeadSuggestions").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4959435991187212109L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<IFile> getFile_idIG8oXsODon = new SMethodBuilder<IFile>(new SJavaCompoundTypeImpl(IFile.class)).name("getFile").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(841084130032784919L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Context.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPath_id7usrAn05okK, getLastSegment_id1bWeed$oUbg, getPathToHead_id3skBIrUiCOV, getHeadSuggestions_id4jjtc7X04td, getFile_idIG8oXsODon);
 
@@ -80,19 +78,11 @@ public final class BuildCompositePath__BehaviorDescriptor extends BaseBHDescript
       return ListSequence.fromList(new ArrayList<String>());
     }
     List<IFile> children = file.getChildren();
-    Iterable<String> names = ListSequence.fromList(children).select(new ISelector<IFile, String>() {
-      public String select(IFile it) {
-        return it.getName();
-      }
-    });
+    Iterable<String> names = ListSequence.fromList(children).select((it) -> it.getName());
     if (file.getParent() != null) {
       names = Sequence.fromIterable(names).union(Sequence.fromIterable(Sequence.<String>singleton("..")));
     }
-    return Sequence.fromIterable(names).sort(new ISelector<String, String>() {
-      public String select(String it) {
-        return it;
-      }
-    }, true).toListSequence();
+    return Sequence.fromIterable(names).sort((it) -> it, true).toList();
   }
   /*package*/ static IFile getFile_idIG8oXsODon(@NotNull SNode __thisNode__, Context context) {
     String basePath = BuildRelativePath__BehaviorDescriptor.getBasePath_id4jjtc7WZMYz.invoke(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.BuildRelativePath$Kc, false, false), context);

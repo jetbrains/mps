@@ -10,7 +10,6 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -43,10 +42,10 @@ public class typeof_IntervalContainsExpression_InferenceRule extends AbstractInf
     return true;
   }
   private static SNode _quotation_createNode_4gr5io_a0a0c0b0b(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, "jetbrains.mps.baseLanguage.math"), 0x11fb8483972L, "IntervalType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, "jetbrains.mps.baseLanguage.math"), 0x11fb8483972L, "IntervalType"));
+    quotedNode_2 = nb.getResult();
     quotedNode_3 = (SNode) parameter_1;
     if (quotedNode_3 != null) {
       quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fb8483972L, 0x11fb8483973L, "elementType"), SNodeOperations.copyIfNecessary(quotedNode_3));

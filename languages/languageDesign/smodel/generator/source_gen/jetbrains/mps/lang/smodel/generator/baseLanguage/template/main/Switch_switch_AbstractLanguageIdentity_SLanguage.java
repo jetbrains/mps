@@ -18,6 +18,8 @@ import jetbrains.mps.generator.impl.DismissTopMappingRuleException;
 import jetbrains.mps.generator.runtime.ReductionRuleBase;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
+import java.util.Collections;
+import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -25,6 +27,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class Switch_switch_AbstractLanguageIdentity_SLanguage extends TemplateSwitchBase implements TemplateSwitchMapping {
   private final Iterable<TemplateReductionRule> rules;
   public Switch_switch_AbstractLanguageIdentity_SLanguage() {
+    super(new MO());
     rules = TemplateUtil.<TemplateReductionRule>asIterable(new ReductionRule0(), new ReductionRule1());
   }
   public SNodeReference getSwitchNode() {
@@ -46,7 +49,7 @@ public class Switch_switch_AbstractLanguageIdentity_SLanguage extends TemplateSw
   public void processNull(TemplateExecutionEnvironment environment) {
     environment.getLogger().error(getSwitchNode(), "\"Need an instance of AbstractLanguageIdentity\"");
   }
-  /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2944629966652298604"), CONCEPTS.LanguageId$UR, true);
     }
@@ -57,7 +60,7 @@ public class Switch_switch_AbstractLanguageIdentity_SLanguage extends TemplateSw
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule1 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule1 extends ReductionRuleBase {
     public ReductionRule1() {
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5769081855527316890"), CONCEPTS.LanguageIdentityBySourceModule$T8, true);
     }
@@ -65,16 +68,24 @@ public class Switch_switch_AbstractLanguageIdentity_SLanguage extends TemplateSw
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_88_0(new SourceSubstituteMacroNodeContext(context, callMacro_9oew2a_b0a0a2a1i));
-      TemplateContext context1;
-      context1 = context.subContext(null, callInputNode1);
+      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_87_0(new SourceSubstituteMacroNodeContext(context, callMacro));
+      TemplateContext context1 = context;
+      context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
         tlist1 = environment.callSite(new Template_reduce_ModuleIdentity_SLanguage(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2469893808086103396")).apply(context1);
+      } else {
+        tlist1 = Collections.emptyList();
       }
       return tlist1;
     }
   }
-  private static final SNodePointer callMacro_9oew2a_b0a0a2a1i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2469893808086103396");
+
+  /*package*/ static final class MO implements MetaObjectContainer {
+
+
+
+  }
+  private static final SNodePointer callMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2469893808086103396");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept LanguageId$UR = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, "jetbrains.mps.lang.smodel.structure.LanguageId");

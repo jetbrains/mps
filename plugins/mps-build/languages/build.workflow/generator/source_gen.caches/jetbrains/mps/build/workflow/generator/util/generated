@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-a4c54yox2pvml5zfl2y9qhr1qqg69yi">
-  <files names="CycleHelper.java:SubTaskOrderHelper.java:TaskLibrariesHelper.java" />
+<product version="3" modelHash="bfq0fub8b2zt5voveijku61nlhzhizy">
+  <files names="CompilerHelper.java:CycleHelper.java:SubTaskOrderHelper.java:TaskLibrariesHelper.java" />
 </product>
 

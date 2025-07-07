@@ -15,8 +15,10 @@ import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
+import java.util.Collections;
 import jetbrains.mps.generator.runtime.ReductionRuleBase;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -24,6 +26,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class Switch_switch_ConceptMethodCall extends TemplateSwitchBase implements TemplateSwitchMapping {
   private final Iterable<TemplateReductionRule> rules;
   public Switch_switch_ConceptMethodCall() {
+    super(new MO());
     rules = TemplateUtil.<TemplateReductionRule>asIterable(new ReductionRule0(), new ReductionRule1(), new ReductionRule2(), new ReductionRule3());
   }
   public SNodeReference getSwitchNode() {
@@ -38,15 +41,17 @@ public class Switch_switch_ConceptMethodCall extends TemplateSwitchBase implemen
   public Collection<SNode> applyDefault(final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
-    SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_83_4(new SourceSubstituteMacroNodeContext(context, callMacro_vddlfn_b0a0a2a5));
-    TemplateContext context1;
-    context1 = context.subContext(null, callInputNode1);
+    SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_82_4(new SourceSubstituteMacroNodeContext(context, callMacro));
+    TemplateContext context1 = context;
+    context1 = context1.subContext(null, callInputNode1);
     if (callInputNode1 != null) {
       tlist1 = environment.callSite(new Template_reduce_ConceptMethodCallCommon(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525743283")).apply(context1);
+    } else {
+      tlist1 = Collections.emptyList();
     }
     return tlist1;
   }
-  /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525735840"), CONCEPTS.ThisNodeExpression$v1, true);
     }
@@ -54,16 +59,18 @@ public class Switch_switch_ConceptMethodCall extends TemplateSwitchBase implemen
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_83_0(new SourceSubstituteMacroNodeContext(context, callMacro_vddlfn_b0a0a2a1g));
-      TemplateContext context1;
-      context1 = context.subContext(null, callInputNode1);
+      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_82_0(new SourceSubstituteMacroNodeContext(context, callMacro1));
+      TemplateContext context1 = context;
+      context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
         tlist1 = environment.callSite(new Template_reduce_ConceptMethodCallWithThis(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525741554")).apply(context1);
+      } else {
+        tlist1 = Collections.emptyList();
       }
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule1 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule1 extends ReductionRuleBase {
     public ReductionRule1() {
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2926695023080033602"), CONCEPTS.ThisConceptExpression$KM, true);
     }
@@ -71,16 +78,18 @@ public class Switch_switch_ConceptMethodCall extends TemplateSwitchBase implemen
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_83_1(new SourceSubstituteMacroNodeContext(context, callMacro_vddlfn_b0a0a2a1h));
-      TemplateContext context1;
-      context1 = context.subContext(null, callInputNode1);
+      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_82_1(new SourceSubstituteMacroNodeContext(context, callMacro2));
+      TemplateContext context1 = context;
+      context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
         tlist1 = environment.callSite(new Template_reduce_ConceptMethodCallWithThis(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2926695023080033605")).apply(context1);
+      } else {
+        tlist1 = Collections.emptyList();
       }
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule2 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule2 extends ReductionRuleBase {
     public ReductionRule2() {
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525735844"), CONCEPTS.SuperNodeExpression$tM, true);
     }
@@ -88,16 +97,18 @@ public class Switch_switch_ConceptMethodCall extends TemplateSwitchBase implemen
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_83_2(new SourceSubstituteMacroNodeContext(context, callMacro_vddlfn_b0a0a2a1i));
-      TemplateContext context1;
-      context1 = context.subContext(null, callInputNode1);
+      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_82_2(new SourceSubstituteMacroNodeContext(context, callMacro3));
+      TemplateContext context1 = context;
+      context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
         tlist1 = environment.callSite(new Template_reduce_ConceptMethodCallWithSuper(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525743045")).apply(context1);
+      } else {
+        tlist1 = Collections.emptyList();
       }
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule3 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule3 extends ReductionRuleBase {
     public ReductionRule3() {
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2926695023080034663"), CONCEPTS.SuperConceptExpression$_4, true);
     }
@@ -105,20 +116,28 @@ public class Switch_switch_ConceptMethodCall extends TemplateSwitchBase implemen
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_83_3(new SourceSubstituteMacroNodeContext(context, callMacro_vddlfn_b0a0a2a1j));
-      TemplateContext context1;
-      context1 = context.subContext(null, callInputNode1);
+      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_82_3(new SourceSubstituteMacroNodeContext(context, callMacro4));
+      TemplateContext context1 = context;
+      context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
         tlist1 = environment.callSite(new Template_reduce_ConceptMethodCallWithSuper(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2926695023080034666")).apply(context1);
+      } else {
+        tlist1 = Collections.emptyList();
       }
       return tlist1;
     }
   }
-  private static final SNodePointer callMacro_vddlfn_b0a0a2a5 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525743283");
-  private static final SNodePointer callMacro_vddlfn_b0a0a2a1g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525741554");
-  private static final SNodePointer callMacro_vddlfn_b0a0a2a1h = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2926695023080033605");
-  private static final SNodePointer callMacro_vddlfn_b0a0a2a1i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525743045");
-  private static final SNodePointer callMacro_vddlfn_b0a0a2a1j = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2926695023080034666");
+
+  /*package*/ static final class MO implements MetaObjectContainer {
+
+
+
+  }
+  private static final SNodePointer callMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525743283");
+  private static final SNodePointer callMacro1 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525741554");
+  private static final SNodePointer callMacro2 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2926695023080033605");
+  private static final SNodePointer callMacro3 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525743045");
+  private static final SNodePointer callMacro4 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2926695023080034666");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ThisNodeExpression$v1 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434b5be1L, "jetbrains.mps.lang.behavior.structure.ThisNodeExpression");

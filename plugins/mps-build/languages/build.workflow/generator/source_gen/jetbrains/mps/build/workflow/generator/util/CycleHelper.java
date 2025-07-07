@@ -10,22 +10,18 @@ import java.util.Set;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.build.workflow.util.XmlSignature;
 import java.util.List;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.make.dependencies.graph.Graph;
 import jetbrains.mps.make.dependencies.graph.Graphs;
 import java.util.Collections;
-import java.util.Comparator;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import java.util.function.Predicate;
 import java.util.LinkedHashSet;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.make.dependencies.graph.IVertex;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -44,29 +40,19 @@ public class CycleHelper {
   }
   public void optimizeDependencies(SNode m) {
     final Set<String> seenDependencies = new HashSet<String>();
-    ListSequence.fromList(SLinkOperations.getChildren(m, LINKS.dependencies$_S_Y)).removeWhere(new IWhereFilter<SNode>() {
-      public boolean accept(SNode dep) {
-        if (!(SNodeOperations.isInstanceOf(dep, CONCEPTS.BwfJavaClassPath$at))) {
-          return false;
-        }
-        SNode cp = SLinkOperations.getTarget(SNodeOperations.cast(dep, CONCEPTS.BwfJavaClassPath$at), LINKS.classpath$Bst8);
-        XmlSignature s = new XmlSignature().add(cp);
-        String id = (s.hasErrors() ? "dep." + cp.getNodeId().toString() : s.getResult());
-        return !(seenDependencies.add(id));
+    ListSequence.fromList(SLinkOperations.getChildren(m, LINKS.dependencies$_S_Y)).removeWhere((dep) -> {
+      if (!(SNodeOperations.isInstanceOf(dep, CONCEPTS.BwfJavaClassPath$at))) {
+        return false;
       }
+      SNode cp = SLinkOperations.getTarget(SNodeOperations.cast(dep, CONCEPTS.BwfJavaClassPath$at), LINKS.classpath$Bst8);
+      XmlSignature s = new XmlSignature().add(cp);
+      String id = (s.hasErrors() ? "dep." + cp.getNodeId().toString() : s.getResult());
+      return !(seenDependencies.add(id));
     });
   }
   public void processCycles() {
     List<SNode> modules = new ArrayList<SNode>();
-    ListSequence.fromList(modules).addSequence(ListSequence.fromList(SLinkOperations.getChildren(project, LINKS.parts$$VTL)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BwfJavaModule$gv);
-      }
-    }).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SNodeOperations.cast(it, CONCEPTS.BwfJavaModule$gv);
-      }
-    }));
+    ListSequence.fromList(modules).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.parts$$VTL), CONCEPTS.BwfJavaModule$gv)));
     for (SNode m : ListSequence.fromList(modules)) {
       optimizeDependencies(m);
     }
@@ -84,6 +70,7 @@ public class CycleHelper {
       graph.add(module);
     }
     List<List<Module>> cycles = Graphs.findStronglyConnectedComponents(graph);
+    // XXX replace with graph.scc()
     Collections.reverse(cycles);
     List<SNode> cyclesToName = new ArrayList<SNode>();
     for (List<Module> cycle : cycles) {
@@ -95,24 +82,17 @@ public class CycleHelper {
         cycleModules.add(m.getModule());
       }
 
-      Collections.sort(cycle, new Comparator<Module>() {
-        public int compare(Module m1, Module m2) {
-          return Integer.compare(SNodeOperations.getIndexInParent(m1.getModule()), SNodeOperations.getIndexInParent(m2.getModule()));
-        }
-      });
+      Collections.sort(cycle, (Module m1, Module m2) -> Integer.compare(SNodeOperations.getIndexInParent(m1.getModule()), SNodeOperations.getIndexInParent(m2.getModule())));
       SNode first = cycle.get(0).getModule();
       SModel model = SNodeOperations.getModel(first);
       SNode cycleX = SModelOperations.createNewNode(model, null, CONCEPTS.BwfJavaModule$gv);
       cyclesToName.add(cycleX);
       SNodeOperations.insertPrevSiblingChild(first, cycleX);
       SPropertyOperations.assign(cycleX, PROPS.noWarnings$LEpn, true);
-      SPropertyOperations.assign(cycleX, PROPS.fork$H$9A, cycle.stream().anyMatch(new Predicate<Module>() {
-        public boolean test(Module mod) {
-          return SPropertyOperations.getBoolean(mod.getModule(), PROPS.fork$H$9A);
-        }
-      }));
+      SPropertyOperations.assign(cycleX, PROPS.fork$H$9A, Sequence.fromIterable(((Iterable<SNode>) cycleModules)).any((it) -> SPropertyOperations.getBoolean(it, PROPS.fork$H$9A)));
+      SPropertyOperations.assign(cycleX, PROPS.conditionalCompile$z2HS, Sequence.fromIterable(((Iterable<SNode>) cycleModules)).all((it) -> SPropertyOperations.getBoolean(it, PROPS.conditionalCompile$z2HS)));
 
-      // build cycle sources & dependencies; trying to avoid duplication (which is not critical) 
+      // build cycle sources & dependencies; trying to avoid duplication (which is not critical)
       Set<String> seenSources = new HashSet<String>();
       List<SNode> sources = new ArrayList<SNode>();
       Set<String> seenDependencies = new HashSet<String>();
@@ -120,16 +100,13 @@ public class CycleHelper {
       Set<SNode> seenModules = new LinkedHashSet<SNode>();
       Set<SNode> seenLibraries = new LinkedHashSet<SNode>();
       Set<SNode> taskDependency = new LinkedHashSet<SNode>();
+      boolean withKotlin = false;
 
       int heapSize = 0;
       for (Module m : cycle) {
         SNode module = m.getModule();
         heapSize = Math.max(heapSize, SPropertyOperations.getInteger(module, PROPS.heapSize$LySR));
-        ListSequence.fromList(SLinkOperations.getChildren(module, LINKS.dependencies$_S_Y)).removeWhere(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(it, CONCEPTS.BwfJavaModuleReference$v1) && cycleModules.contains(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.BwfJavaModuleReference$v1), LINKS.target$_Nc8));
-          }
-        });
+        ListSequence.fromList(SLinkOperations.getChildren(module, LINKS.dependencies$_S_Y)).removeWhere((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BwfJavaModuleReference$v1) && cycleModules.contains(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.BwfJavaModuleReference$v1), LINKS.target$_Nc8)));
         for (SNode dep : SLinkOperations.getChildren(module, LINKS.dependencies$_S_Y)) {
           if (SNodeOperations.isInstanceOf(dep, CONCEPTS.BwfJavaModuleReference$v1)) {
             seenModules.add(SLinkOperations.getTarget(SNodeOperations.cast(dep, CONCEPTS.BwfJavaModuleReference$v1), LINKS.target$_Nc8));
@@ -148,11 +125,7 @@ public class CycleHelper {
 
         }
 
-        for (SNode task : ListSequence.fromList(SLinkOperations.getChildren(module, LINKS.taskDeps$_zcK)).select(new ISelector<SNode, SNode>() {
-          public SNode select(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.target$y_c8);
-          }
-        })) {
+        for (SNode task : ListSequence.fromList(SLinkOperations.getChildren(module, LINKS.taskDeps$_zcK)).select((it) -> SLinkOperations.getTarget(it, LINKS.target$y_c8))) {
           if ((task != null)) {
             taskDependency.add(task);
           }
@@ -169,14 +142,13 @@ public class CycleHelper {
             sources.add(n);
           }
         }
+
+        withKotlin = withKotlin || SPropertyOperations.getBoolean(module, PROPS.withKotlin$2$Am);
       }
+      SPropertyOperations.assign(cycleX, PROPS.withKotlin$2$Am, withKotlin);
       SPropertyOperations.assign(cycleX, PROPS.heapSize$LySR, heapSize);
       SLinkOperations.setNewChild(cycleX, LINKS.sources$L7Yt, null);
-      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(cycleX, LINKS.sources$L7Yt), LINKS.elements$5C58)).addSequence(Sequence.fromIterable(((Iterable<SNode>) sources)).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return CopyUtil.copy(it);
-        }
-      }));
+      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(cycleX, LINKS.sources$L7Yt), LINKS.elements$5C58)).addSequence(Sequence.fromIterable(((Iterable<SNode>) sources)).select((it) -> CopyUtil.copy(it)));
       for (SNode dep : deps) {
         SNode cp = SModelOperations.createNewNode(model, null, CONCEPTS.BwfJavaClassPath$at);
         SLinkOperations.setTarget(cp, LINKS.classpath$Bst8, CopyUtil.copy(dep));
@@ -199,11 +171,7 @@ public class CycleHelper {
       }
     }
     int cycleCounter = 0;
-    Collections.sort(cyclesToName, new Comparator<SNode>() {
-      public int compare(SNode n1, SNode n2) {
-        return Integer.compare(SNodeOperations.getIndexInParent(n1), SNodeOperations.getIndexInParent(n2));
-      }
-    });
+    Collections.sort(cyclesToName, (SNode n1, SNode n2) -> Integer.compare(SNodeOperations.getIndexInParent(n1), SNodeOperations.getIndexInParent(n2)));
     for (SNode cycleX : cyclesToName) {
       SPropertyOperations.assign(cycleX, PROPS.name$MnvL, "java.modules.cycle." + ++cycleCounter);
       SPropertyOperations.assign(cycleX, PROPS.outputFolder$CFP_, SPropertyOperations.getString(project, PROPS.temporaryFolder$kyMK) + "/" + SPropertyOperations.getString(cycleX, PROPS.name$MnvL));
@@ -221,12 +189,8 @@ public class CycleHelper {
           targets = Collections.emptySet();
         } else {
           targets = new HashSet<Module>();
-          for (SNode ref : ListSequence.fromList(SLinkOperations.getChildren(module, LINKS.dependencies$_S_Y)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SNodeOperations.isInstanceOf(it, CONCEPTS.BwfJavaModuleReference$v1);
-            }
-          })) {
-            Module tm = map.get(SLinkOperations.getTarget(SNodeOperations.cast(ref, CONCEPTS.BwfJavaModuleReference$v1), LINKS.target$_Nc8));
+          for (SNode ref : SNodeOperations.ofConcept(SLinkOperations.getChildren(module, LINKS.dependencies$_S_Y), CONCEPTS.BwfJavaModuleReference$v1)) {
+            Module tm = map.get(SLinkOperations.getTarget(ref, LINKS.target$_Nc8));
             if (tm == null) {
               genContext.showErrorMessage(ref, "internal problem: unsatisfied local dependency");
             } else {
@@ -242,7 +206,7 @@ public class CycleHelper {
     }
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
 
   private static final class LINKS {
@@ -269,7 +233,9 @@ public class CycleHelper {
     /*package*/ static final SProperty outputFolder$CFP_ = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x667edfe4171f2fb7L, "outputFolder");
     /*package*/ static final SProperty noWarnings$LEpn = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0xcdff0e1a96ccbeeL, "noWarnings");
     /*package*/ static final SProperty fork$H$9A = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x3d4a6c597112f405L, "fork");
+    /*package*/ static final SProperty conditionalCompile$z2HS = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x71e3a5e19d971200L, "conditionalCompile");
     /*package*/ static final SProperty heapSize$LySR = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0xcdff0e1a96ccbe3L, "heapSize");
+    /*package*/ static final SProperty withKotlin$2$Am = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x6ab0965855d6fac1L, "withKotlin");
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
     /*package*/ static final SProperty temporaryFolder$kyMK = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6271L, 0x667edfe41720f53eL, "temporaryFolder");
   }

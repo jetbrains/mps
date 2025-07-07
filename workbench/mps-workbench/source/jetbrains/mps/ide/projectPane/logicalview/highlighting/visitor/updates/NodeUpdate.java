@@ -17,6 +17,7 @@ package jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.updates;
 
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 
+@Deprecated(forRemoval = true)
 public abstract class NodeUpdate {
   public abstract boolean needed(MPSTreeNode node);
   

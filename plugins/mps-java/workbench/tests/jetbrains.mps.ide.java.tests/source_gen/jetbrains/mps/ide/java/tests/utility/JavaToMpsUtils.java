@@ -9,9 +9,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.text.TextGeneratorEngine;
 import jetbrains.mps.java.core.newparser.JavaParser;
 import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import jetbrains.mps.java.core.newparser.FeatureKind;
 import java.util.List;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
@@ -19,13 +20,9 @@ import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.java.core.newparser.YetUnknownResolver;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.progress.EmptyProgressMonitor;
-import java.util.Map;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
-import java.util.HashMap;
+import jetbrains.mps.lang.test.matcher.NodeDifference;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;
-import jetbrains.mps.lang.test.matcher.NodeDifference;
-import java.util.function.Supplier;
 import jetbrains.mps.java.core.newparser.JavaParseException;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.java.core.sourceStubs.JavaSourceStubModelRoot;
@@ -35,27 +32,25 @@ import jetbrains.mps.extapi.persistence.DefaultSourceRoot;
 import java.util.Iterator;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import jetbrains.mps.util.FileUtil;
-import org.jetbrains.mps.openapi.persistence.Memento;
-import jetbrains.mps.persistence.MementoImpl;
-import jetbrains.mps.persistence.PersistenceRegistry;
-import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
-import jetbrains.mps.project.structure.model.ModelRootDescriptor;
+import jetbrains.mps.extapi.module.ModelDiscoveryDelta;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.persistence.ModelRoot;
+import jetbrains.mps.extapi.model.SModelBase;
+import jetbrains.mps.smodel.tempmodel.TemporaryModels;
 import jetbrains.mps.smodel.tempmodel.TempModuleOptions;
-import java.util.Collections;
-import jetbrains.mps.java.core.newparser.DirParser;
-import java.io.IOException;
+import jetbrains.mps.java.core.newparser.JavaToMpsConverter;
+import jetbrains.mps.messages.LogHandler;
+import jetbrains.mps.logging.Logger;
+import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.persistence.java.library.JavaClassStubsModelRoot;
+import java.util.Map;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
+import java.util.HashMap;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class JavaToMpsUtils {
   private final SRepository myRepo;
@@ -80,7 +75,7 @@ public class JavaToMpsUtils {
     try {
       JavaParser parser = new JavaParser();
       SModel mdl;
-      mdl = PersistenceFacade.getInstance().createModelReference("r:3b854700-e92a-453d-8d33-ea563b87dd15(jetbrains.mps.ide.java.testMaterial.placeholder)").resolve(myRepo);
+      mdl = SPointerOperations.resolveModel(PersistenceFacade.getInstance().createModelReference("r:3b854700-e92a-453d-8d33-ea563b87dd15(jetbrains.mps.ide.java.testMaterial.placeholder)"), myRepo);
       FeatureKind howToParse = (onlyStubs ? FeatureKind.CLASS_STUB : FeatureKind.CLASS);
       List<SNode> res = parser.parse(code, howToParse, null, true).getNodes();
       Assert.assertSame(ListSequence.fromList(res).count(), 1);
@@ -99,22 +94,9 @@ public class JavaToMpsUtils {
           yur.updateWithImportsOfResolved();
         }
       }
-      NodePatcher.fixNonStatic(expected);
-      NodePatcher.fixNonStatic(result);
       NodePatcher.copyImportAttrs(result, expected);
 
-      final Map<SNode, SNode> nodeMap = MapSequence.fromMap(new HashMap<SNode, SNode>());
-      buildClassifierNodeMap(result, expected, nodeMap);
-      TypecheckingFacade.getFromContext().runIsolated(new Runnable() {
-        public void run() {
-          new NodesMatcher(result, expected).diff(nodeMap);
-        }
-      });
-      List<NodeDifference> diff = TypecheckingFacade.getFromContext().computeIsolated(new Supplier<List<NodeDifference>>() {
-        public List<NodeDifference> get() {
-          return new NodesMatcher(result, expected).diff(nodeMap);
-        }
-      });
+      List<NodeDifference> diff = TypecheckingFacade.getFromContext().computeIsolated(() -> new NodesMatcher(result, expected).diff());
 
       Assert.assertTrue(diff.toString(), diff.isEmpty());
 
@@ -139,8 +121,6 @@ public class JavaToMpsUtils {
     expected = SNodeOperations.copyNode(expected);
 
     NodePatcher.removeStatements(expected);
-    NodePatcher.fixNonStatic(expected);
-    NodePatcher.fixNonStatic(result);
     NodePatcher.copyImportAttrs(result, expected);
 
     mr.dispose();
@@ -154,86 +134,72 @@ public class JavaToMpsUtils {
 
   public void checkStubModels(IFile dirPath, SModelReference... expected) {
     JavaSourceStubModelRoot mr = new JavaSourceStubModelRoot();
-    mr.setModule((SModuleBase) getModule());
+    final SModuleBase moduleBase = (SModuleBase) getModule();
+    mr.setModule(moduleBase);
     mr.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(dirPath));
     mr.attach();
+    // would love to use SModuleBase.updateModelsSet() but with MR not contributed through
+    // as module descriptor, updateModelsSet() could not pick it up. Perhaps, it's worth to change 
+    // this code to modify ModuleDescriptor instead?
+    mr.doLoadModels(new ModelDiscoveryDelta() {
+      @Override
+      public SModule module() {
+        return moduleBase;
+      }
+      @Override
+      public void unload(SModel p1) {
+        throw new UnsupportedOperationException();
+      }
+      @Override
+      public void registerModel(SModel model, @Nullable ModelRoot root) {
+        // mr.getModels(), below, requires model root to be set
+        ((SModelBase) model).setModelRoot(root);
+        moduleBase.registerModel((SModelBase) model);
+      }
+      @Override
+      public void unregisterModel(SModel p1) {
+        throw new UnsupportedOperationException();
+      }
+    });
 
     List<SModel> models = ListSequence.fromList(new ArrayList<SModel>());
     for (SModel md : ListSequence.fromList(mr.getModels())) {
       ListSequence.fromList(models).addElement(md);
     }
 
-    // normalizing 
+    // normalizing
     List<SModel> expectedModels = ListSequence.fromList(new ArrayList<SModel>());
     for (SModelReference expmr : expected) {
-      SModel m = expmr.resolve(myRepo);
+      SModel m = SPointerOperations.resolveModel(expmr, myRepo);
       ListSequence.fromList(expectedModels).addElement(m);
       for (SNode root : ListSequence.fromList(SModelOperations.roots(m, null))) {
         NodePatcher.removeStatements(SNodeOperations.cast(root, CONCEPTS.Classifier$Ix));
-        NodePatcher.fixNonStatic(SNodeOperations.cast(root, CONCEPTS.Classifier$Ix));
       }
     }
     compare(models, expectedModels);
   }
 
   public void checkSourceModel(IFile dirPath, SModelReference expectedRef) {
-    try {
-      SModule testMaterials;
+    // XXX not sure using myRepo for temp module/model is entirely correct, perhaps, distinct repository won't hurt
+    final SModel resultModel = TemporaryModels.getInstance().createReadOnly(TempModuleOptions.nonReloadableModule(myRepo));
 
-      String tmpDir = FileUtil.createTmpDir().getAbsolutePath();
+    JavaToMpsConverter dirParser = new JavaToMpsConverter(resultModel, myRepo, new LogHandler(Logger.getLogger(getClass())));
+    dirParser.convertToMps(IFileUtil.getAllFiles(dirPath), new EmptyProgressMonitor());
+    // It looks like dirParser and its use of YetUnknownResolver needs a model from a module attached to a
+    // repository (to get references resolved). The best we can do here is to have own repository for the
+    // testMaterials module which is capable to delegate to another (one supplied at construction).
 
-      Memento mem = new MementoImpl();
-      mem.put("contentPath", tmpDir);
-      mem.put("type", PersistenceRegistry.DEFAULT_MODEL_ROOT);
 
-      Memento memIn = mem.createChild(FileBasedModelRoot.SOURCE_ROOTS);
-      memIn.put("path", tmpDir);
+    SModel expected = SPointerOperations.resolveModel(expectedRef, myRepo);
 
-      ModelRootDescriptor mrDesc = new ModelRootDescriptor(PersistenceRegistry.DEFAULT_MODEL_ROOT, mem);
-
-      // DirParser uses API to create models through ModelRoot, therefore we've got root descriptor here 
-      // OTOH, it seems Utils is the only client of DirParser now, and we don't need to keep it generic, 
-      //       and could use whatever we like for model creation, e.g. explicit new RegularModelDescriptor 
-      //       along with SModuleBase.registerModel(). 
-      TempModuleOptions tempModOpts = TempModuleOptions.forNewModule(Collections.singleton(mrDesc));
-      testMaterials = tempModOpts.createModule();
-
-      // It looks like dirParser and its use of YetUnknownResolver needs a model from a module attached to a 
-      // repository (to get references resolved). The best we can do here is to have own repository for the 
-      // testMaterials module which is capable to delegate to another (one supplied at construction). 
-      DirParser dirParser = new DirParser(testMaterials, myRepo.getModelAccess(), dirPath);
-      // XXX the use of model access in DirParser looks odd. Here, we are inside a command already (test setting), 
-      // and DirParser assumes it can execute command, so we can not be in model read here. As long as it's the 
-      // only use of DirParser, perhaps, we shall not use ModelAccess at all, as we ensure we're inside command. 
-
-      dirParser.parseDirs();
-
-      List<SModel> parsedModels = dirParser.getAffectedModels();
-      assert ListSequence.fromList(parsedModels).count() == 1;
-      final SModel resultModel = ListSequence.fromList(parsedModels).getElement(0);
-
-      SModel expected = expectedRef.resolve(myRepo);
-      for (SNode root : ListSequence.fromList(SModelOperations.roots(expected, CONCEPTS.Classifier$Ix))) {
-        NodePatcher.fixNonStatic(root);
-      }
-
-      Map<SNode, SNode> referentMap = MapSequence.fromMap(new HashMap<SNode, SNode>());
-      buildModelNodeMap(resultModel, expected, referentMap);
-
-      boolean wereErrors = compare2models(resultModel, expected, referentMap);
-      Assert.assertFalse(wereErrors);
-
-    } catch (JavaParseException e) {
-      throw new RuntimeException(e);
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+    boolean wereErrors = compare2models(resultModel, expected);
+    Assert.assertFalse(wereErrors);
   }
 
   public void compareBinAndSrcStubs(IFile binPath, IFile sourcePath) {
     JavaSourceStubModelRoot src2 = new JavaSourceStubModelRoot();
 
-    // just 2 distinct modules 
+    // just 2 distinct modules
     SModule mod1 = PersistenceFacade.getInstance().createModuleReference("c3786d2b-aba2-45e5-8de0-1124fd14259b(jetbrains.mps.ide.java.tests)").resolve(myRepo);
     SModule mod2 = PersistenceFacade.getInstance().createModuleReference("49166c31-952a-46f6-8970-ea45964379d0(jetbrains.mps.ide.java.testMaterial)").resolve(myRepo);
 
@@ -247,14 +213,13 @@ public class JavaToMpsUtils {
       ListSequence.fromList(binModels).addElement(m);
 
       for (SNode binRoot : ListSequence.fromList(SModelOperations.roots(m, null))) {
-        NodePatcher.fixNonStatic(binRoot);
         NodePatcher.removeConstructorName(binRoot);
         NodePatcher.removeExtendsObject(binRoot);
         NodePatcher.removeInitializers(binRoot);
 
         NodePatcher.sortNestedClass(SNodeOperations.cast(binRoot, CONCEPTS.Classifier$Ix));
 
-        // FIXME should be fixed in java source stubs 
+        // FIXME should be fixed in java source stubs
         NodePatcher.removeStatements(binRoot);
       }
     }
@@ -267,12 +232,10 @@ public class JavaToMpsUtils {
     srcModels = src2.loadModels();
 
     for (SModel m : Sequence.fromIterable(srcModels)) {
-
       SModel zzz = m;
       ListSequence.fromList(srcModelsX).addElement(zzz);
 
       for (SNode srcRoot : ListSequence.fromList(SModelOperations.roots(zzz, null))) {
-        NodePatcher.fixNonStatic(srcRoot);
         NodePatcher.removeSourceLevelAnnotations(srcRoot, myRepo);
 
         NodePatcher.sortNestedClass(SNodeOperations.cast(srcRoot, CONCEPTS.Classifier$Ix));
@@ -296,13 +259,14 @@ public class JavaToMpsUtils {
 
     Assert.assertTrue(SetSequence.fromSet(MapSequence.fromMap(leftModelMap).keySet()).containsSequence(SetSequence.fromSet(MapSequence.fromMap(rightModelMap).keySet())) && SetSequence.fromSet(MapSequence.fromMap(rightModelMap).keySet()).containsSequence(SetSequence.fromSet(MapSequence.fromMap(leftModelMap).keySet())));
 
-    // constructing the map of corresponding nodes 
-    Map<SNode, SNode> classMap = MapSequence.fromMap(new HashMap<SNode, SNode>());
+    // constructing the map of corresponding nodes
     for (String name : MapSequence.fromMap(leftModelMap).keySet()) {
       SModel binModel = MapSequence.fromMap(leftModelMap).get(name);
       SModel srcModel = MapSequence.fromMap(rightModelMap).get(name);
 
-      buildModelNodeMap(binModel, srcModel, classMap);
+      // FIXME copy of JavaImports from result model TO expected is very suspicious!!!
+      //      FWIW, I removed one from checkSourceModel() and it's fine
+      copyModelClassImports(binModel, srcModel);
     }
 
 
@@ -312,28 +276,20 @@ public class JavaToMpsUtils {
       SModel binModel = MapSequence.fromMap(leftModelMap).get(name);
       SModel srcModel = MapSequence.fromMap(rightModelMap).get(name);
 
-      errors = compare2models(binModel, srcModel, classMap) || errors;
+      errors = compare2models(binModel, srcModel) || errors;
     }
 
     Assert.assertFalse("Models differ", errors);
   }
 
-  public static boolean compare2models(SModel left, SModel right, Map<SNode, SNode> nodeMap) {
+  public static boolean compare2models(SModel left, SModel right) {
     List<SNode> binRoots = SModelOperations.roots(left, CONCEPTS.Classifier$Ix);
     List<SNode> srcRoots = SModelOperations.roots(right, CONCEPTS.Classifier$Ix);
 
-    binRoots = ListSequence.fromList(binRoots).sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }, true).toListSequence();
-    srcRoots = ListSequence.fromList(srcRoots).sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }, true).toListSequence();
+    binRoots = ListSequence.fromList(binRoots).sort((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL), true).toList();
+    srcRoots = ListSequence.fromList(srcRoots).sort((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL), true).toList();
 
-    List<NodeDifference> diff = new NodesMatcher(binRoots, srcRoots).diff(nodeMap);
+    List<NodeDifference> diff = new NodesMatcher(binRoots, srcRoots).diff();
     if (ListSequence.fromList(diff).isEmpty()) {
       return false;
     }
@@ -343,7 +299,7 @@ public class JavaToMpsUtils {
     return true;
   }
 
-  public static void buildModelNodeMap(SModel left, SModel right, Map<SNode, SNode> nodeMap) {
+  public static void copyModelClassImports(SModel left, SModel right) {
     Map<String, SNode> rightRootIndex = MapSequence.fromMap(new HashMap<String, SNode>());
     for (SNode rightRoot : ListSequence.fromList(SModelOperations.roots(right, CONCEPTS.Classifier$Ix))) {
       MapSequence.fromMap(rightRootIndex).put(SPropertyOperations.getString(rightRoot, PROPS.name$MnvL), rightRoot);
@@ -354,103 +310,14 @@ public class JavaToMpsUtils {
       if ((rightBrother != null)) {
         NodePatcher.copyImportAttrs(leftRoot, rightBrother);
       }
-      buildClassifierNodeMap(leftRoot, rightBrother, nodeMap);
-    }
-  }
-
-  public static void buildClassifierNodeMap(SNode left, SNode right, Map<SNode, SNode> nodeMap) {
-    // handling this class and nested classes 
-    Map<String, SNode> rightNestedIndex = MapSequence.fromMap(new HashMap<String, SNode>());
-    for (SNode cl : ListSequence.fromList(SNodeOperations.getNodeDescendants(right, CONCEPTS.Classifier$Ix, true, new SAbstractConcept[]{}))) {
-      MapSequence.fromMap(rightNestedIndex).put(SPropertyOperations.getString(cl, PROPS.name$MnvL), cl);
-    }
-
-    for (SNode cl : ListSequence.fromList(SNodeOperations.getNodeDescendants(left, CONCEPTS.Classifier$Ix, true, new SAbstractConcept[]{}))) {
-      SNode rightBrother = MapSequence.fromMap(rightNestedIndex).get(SPropertyOperations.getString(cl, PROPS.name$MnvL));
-
-
-      Assert.assertNull(MapSequence.fromMap(nodeMap).get(cl));
-      MapSequence.fromMap(nodeMap).put(cl, rightBrother);
-
-      buildJustNodeMap(SLinkOperations.getChildren(left, LINKS.typeVariableDeclaration$Lipp), SLinkOperations.getChildren(right, LINKS.typeVariableDeclaration$Lipp), nodeMap);
-      buildMethodsNodeMap(left, right, nodeMap);
-
-    }
-
-    if (SNodeOperations.isInstanceOf(left, CONCEPTS.Annotation$he) && SNodeOperations.isInstanceOf(right, CONCEPTS.Annotation$he)) {
-      Map<String, SNode> rightMethodIndex = MapSequence.fromMap(new HashMap<String, SNode>());
-      for (SNode mthd : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(right, CONCEPTS.Annotation$he), LINKS.method$_DCK))) {
-        MapSequence.fromMap(rightMethodIndex).put(SPropertyOperations.getString(mthd, PROPS.name$MnvL), mthd);
-      }
-
-      for (SNode mthd : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(left, CONCEPTS.Annotation$he), LINKS.method$_DCK))) {
-        Assert.assertNull(MapSequence.fromMap(nodeMap).get(mthd));
-        MapSequence.fromMap(nodeMap).put(mthd, MapSequence.fromMap(rightMethodIndex).get(SPropertyOperations.getString(mthd, PROPS.name$MnvL)));
-      }
-    }
-  }
-
-  public static void buildMethodsNodeMap(SNode left, SNode right, Map<SNode, SNode> nodeMap) {
-    List<SNode> leftMethods = new ArrayList<SNode>();
-    List<SNode> rightMethods = new ArrayList<SNode>();
-    ListSequence.fromList(leftMethods).addSequence(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(left)));
-    ListSequence.fromList(rightMethods).addSequence(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(right)));
-
-    Map<String, SNode> rightIndex = MapSequence.fromMap(new HashMap<String, SNode>());
-    for (SNode rightMthd : ListSequence.fromList(rightMethods)) {
-      MapSequence.fromMap(rightIndex).put(SPropertyOperations.getString(rightMthd, PROPS.name$MnvL), rightMthd);
-    }
-
-    for (SNode leftMthd : ListSequence.fromList(leftMethods)) {
-      MapSequence.fromMap(nodeMap).put(leftMthd, MapSequence.fromMap(rightIndex).get(SPropertyOperations.getString(leftMthd, PROPS.name$MnvL)));
-      buildMethodBodyNodeMap(leftMthd, MapSequence.fromMap(rightIndex).get(SPropertyOperations.getString(leftMthd, PROPS.name$MnvL)), nodeMap);
-    }
-  }
-
-  public static void buildMethodBodyNodeMap(SNode left, SNode right, Map<SNode, SNode> nodeMap) {
-
-    //  type vars 
-    buildJustNodeMap(SLinkOperations.getChildren(left, LINKS.typeVariableDeclaration$Lipp), SLinkOperations.getChildren(right, LINKS.typeVariableDeclaration$Lipp), nodeMap);
-
-    // local vars and params 
-    List<SNode> leftVars = new ArrayList<SNode>();
-    ListSequence.fromList(leftVars).addSequence(ListSequence.fromList(SLinkOperations.getChildren(left, LINKS.parameter$5xBj)));
-    ListSequence.fromList(leftVars).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(left, CONCEPTS.LocalVariableDeclaration$41, false, new SAbstractConcept[]{CONCEPTS.AnonymousClass$Bt})));
-
-    List<SNode> rightVars = new ArrayList<SNode>();
-    ListSequence.fromList(rightVars).addSequence(ListSequence.fromList(SLinkOperations.getChildren(right, LINKS.parameter$5xBj)));
-    ListSequence.fromList(rightVars).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(right, CONCEPTS.LocalVariableDeclaration$41, false, new SAbstractConcept[]{CONCEPTS.AnonymousClass$Bt})));
-
-    buildJustNodeMap(leftVars, rightVars, nodeMap);
-
-    // anonymous classes and their insides 
-  }
-
-  public static void buildJustNodeMap(List<SNode> left, List<SNode> right, Map<SNode, SNode> nodeMap) {
-    Map<String, SNode> rightIndex = MapSequence.fromMap(new HashMap<String, SNode>());
-    for (SNode rightNode : ListSequence.fromList(right)) {
-      MapSequence.fromMap(rightIndex).put(SPropertyOperations.getString(rightNode, PROPS.name$MnvL), rightNode);
-    }
-
-    for (SNode leftNode : ListSequence.fromList(left)) {
-      MapSequence.fromMap(nodeMap).put(leftNode, MapSequence.fromMap(rightIndex).get(SPropertyOperations.getString(leftNode, PROPS.name$MnvL)));
     }
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept Annotation$he = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation");
-    /*package*/ static final SConcept LocalVariableDeclaration$41 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
-    /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink typeVariableDeclaration$Lipp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SContainmentLink method$_DCK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x101f2cc410bL, "method");
-    /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
   }
 }

@@ -12,7 +12,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
@@ -21,21 +20,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class AddPlaceholderChildAttribute_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddPlaceholderChildAttribute_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:aaff0f7f-e57d-4430-aea6-ff86ed5c75ae(jetbrains.mps.lang.editor.editorTest.intentions)", "3766420342434505259"));
   }
+
   @Override
   public String getPresentation() {
     return "AddPlaceholderChildAttribute";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -45,26 +44,37 @@ public final class AddPlaceholderChildAttribute_Intention extends AbstractIntent
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.PlaceholderChildAttribute$pu)) == null)) {
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.PlaceholderChildAttribute$pu).get(node) == null)) {
         return "Add Attribute";
       } else {
         return "Remove Attribute";
       }
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.PlaceholderChildAttribute$pu)) == null)) {
-        AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.PlaceholderChildAttribute$pu), CONCEPTS.PlaceholderChildAttribute$pu);
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.PlaceholderChildAttribute$pu).get(node) == null)) {
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.PlaceholderChildAttribute$pu).setNew(node);
       } else {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.PlaceholderChildAttribute$pu)));
+        SNodeOperations.deleteNode(new IAttributeDescriptor.NodeAttribute(CONCEPTS.PlaceholderChildAttribute$pu).get(node));
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddPlaceholderChildAttribute_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

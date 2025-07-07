@@ -10,8 +10,6 @@ import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -48,19 +46,11 @@ public final class PasteOverridingForDefaultMethodsAsWell_PasteWrapper_0 impleme
         SNodeFactoryOperations.addNewChild(method, LINKS.modifiers$F5MM, CONCEPTS.DefaultModifier$rO);
       }
     }
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(method, LINKS.body$5xQk), CONCEPTS.ThisNodeExpression$v1, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNodeOperations.replaceWithNewChild(it, CONCEPTS.ThisExpression$$o);
-      }
-    });
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(method, LINKS.body$5xQk), CONCEPTS.ThisConceptExpression$KM, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNodeOperations.replaceWithNewChild(it, CONCEPTS.ThisExpression$$o);
-      }
-    });
-    // [MM] how about supers? 
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(method, LINKS.body$5xQk), CONCEPTS.ThisNodeExpression$v1, false, new SAbstractConcept[]{})).visitAll((it) -> SNodeOperations.replaceWithNewChild(it, CONCEPTS.ThisExpression$$o));
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(method, LINKS.body$5xQk), CONCEPTS.ThisConceptExpression$KM, false, new SAbstractConcept[]{})).visitAll((it) -> SNodeOperations.replaceWithNewChild(it, CONCEPTS.ThisExpression$$o));
+    // [MM] how about supers?
 
-    AttributeOperations.setAttribute(method, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI), AttributeOperations.getAttribute(sourceNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)));
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).set(method, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(sourceNode));
     return SNodeOperations.cast(method, CONCEPTS.ClassifierMember$At);
   }
 

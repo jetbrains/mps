@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,30 +16,35 @@
 package jetbrains.mps.workbench.action;
 
 import com.intellij.openapi.actionSystem.ActionGroup;
+import com.intellij.openapi.actionSystem.ActionManager;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.Presentation;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.DumbAware;
-import com.intellij.openapi.project.Project;
-import jetbrains.mps.InternalFlag;
-import jetbrains.mps.ide.MPSCoreComponents;
-import jetbrains.mps.ide.project.ProjectHelper;
+import com.intellij.openapi.util.NlsActions.ActionText;
+import com.intellij.openapi.util.registry.Registry;
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.workbench.ActionPlace;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.ModelAccess;
+import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.util.Condition;
 
 import javax.swing.Icon;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Supplier;
 
 public class BaseGroup extends DefaultActionGroup implements DumbAware {
   private final String myId;
   private boolean myIsInternal = false;
   private boolean myIsAlwaysVisible = true;
+
+  private ActionUpdateThread myUpdateThread = ActionUpdateThread.EDT;
 
   public BaseGroup(String name) {
     this(name, name);
@@ -51,6 +56,16 @@ public class BaseGroup extends DefaultActionGroup implements DumbAware {
 
   public BaseGroup(String text, String id, Icon icon) {
     super(text, false);
+    myId = id;
+    getTemplatePresentation().setIcon(icon);
+  }
+
+  public BaseGroup(@NotNull Supplier<@ActionText String> text, String id, boolean popup){
+    this(text, id, null, popup);
+  }
+
+  public BaseGroup(@NotNull Supplier<@ActionText String> text, String id, Icon icon, boolean popup){
+    super(text, popup);
     myId = id;
     getTemplatePresentation().setIcon(icon);
   }
@@ -94,15 +109,16 @@ public class BaseGroup extends DefaultActionGroup implements DumbAware {
   @Override
   public void update(final AnActionEvent e) {
     super.update(e);
-    if (myIsInternal && !InternalFlag.isInternalMode()) {
+    if (myIsInternal && !RuntimeFlags.isInternalMode()) {
       e.getPresentation().setEnabled(false);
       e.getPresentation().setVisible(false);
     } else {
-      getModelAccess(e).runReadAction(() -> {
+      final SRepository repo = BaseAction.getRepository(e);
+      repo.getModelAccess().runReadAction(() -> {
         try {
           e.getPresentation().setEnabled(true);
           e.getPresentation().setVisible(true);
-          doUpdate(e);
+          doUpdate(e.withDataContext(BaseAction.legacyWrap(repo, e.getDataContext())));
         } catch (Throwable ex) {
           Logger.getLogger(BaseGroup.this.getClass()).error("Action group update failed", ex);
         }
@@ -111,7 +127,7 @@ public class BaseGroup extends DefaultActionGroup implements DumbAware {
   }
 
   public void addPlace(ActionPlace place, @Nullable Condition<BaseAction> condition) {
-    List<AnAction> actionList = Arrays.asList(getChildren(null));
+    List<AnAction> actionList = Arrays.asList(getChildren(ActionManager.getInstance()));
     addPlaceToActionList(actionList, place, condition);
   }
 
@@ -122,10 +138,9 @@ public class BaseGroup extends DefaultActionGroup implements DumbAware {
   public static void addPlaceToActionList(List<? extends AnAction> actions, ActionPlace place, @Nullable Condition<BaseAction> condition) {
     for (AnAction child : actions) {
       if (child instanceof ActionGroup) {
-        List<AnAction> children = Arrays.asList(((ActionGroup) child).getChildren(null));
+        List<AnAction> children = ActionUtils.getChildren((ActionGroup) child);
         addPlaceToActionList(children,place,condition);
-      } else if (child instanceof BaseAction) {
-        BaseAction action = (BaseAction) child;
+      } else if (child instanceof BaseAction action) {
         if (condition == null || condition.met(action)) {
           action.addPlace(place);
         }
@@ -133,13 +148,15 @@ public class BaseGroup extends DefaultActionGroup implements DumbAware {
     }
   }
 
-  // copied from BaseAction.getModelAccess()
-  protected final ModelAccess getModelAccess(AnActionEvent event) {
-    Project project = getEventProject(event);
-    if (project != null) {
-      return ProjectHelper.getModelAccess(project);
-    } else {
-      return ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getModuleRepository().getModelAccess();
-    }
+  /**
+   * @param updateInBackground when {@code false}, update of the action runs in EDT thread
+   */
+  public final void updateInBackground(boolean updateInBackground) {
+    myUpdateThread = updateInBackground ? ActionUpdateThread.BGT : ActionUpdateThread.EDT;
+  }
+
+  @Override
+  public @NotNull ActionUpdateThread getActionUpdateThread() {
+    return myUpdateThread;
   }
 }

@@ -5,33 +5,26 @@ package jetbrains.mps.plugin;
 import jetbrains.mps.annotations.GeneratedClass;
 import java.rmi.server.UnicastRemoteObject;
 import com.intellij.openapi.components.ProjectComponent;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import com.intellij.openapi.project.Project;
 import com.intellij.execution.rmi.RemoteServer;
 import java.rmi.RemoteException;
 import jetbrains.mps.RuntimeFlags;
+import com.intellij.openapi.application.ApplicationManager;
 import java.rmi.NoSuchObjectException;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.project.ProjectHelper;
 import java.io.File;
-import java.util.List;
+import java.util.ArrayDeque;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
-import org.jetbrains.mps.openapi.module.SearchScope;
-import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
-import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.internal.collections.runtime.QueueSequence;
 import jetbrains.mps.textgen.trace.DebugInfo;
 import jetbrains.mps.textgen.trace.TraceInfo;
-import org.apache.log4j.Level;
 import jetbrains.mps.smodel.SNodePointer;
 import com.intellij.openapi.wm.IdeFrame;
 import com.intellij.openapi.wm.WindowManager;
@@ -39,15 +32,19 @@ import com.intellij.openapi.wm.ex.StatusBarEx;
 import com.intellij.openapi.ui.MessageType;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import com.intellij.ide.impl.ProjectUtil;
+import java.util.List;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.textgen.trace.TraceablePositionInfo;
 import jetbrains.mps.textgen.trace.DebugInfoRoot;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
+import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.project.GlobalScope;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.specific.AspectMethodsFinder;
@@ -66,19 +63,18 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 /**
- * This is a callback for mps-idea integraion plugin, responsible for actions in MPS Project. There's IProjectHandler in the IDEA instance, remote object we can ask for activities in IDEA project.
+ * This is a callback for mps-idea integration plugin, responsible for actions in MPS Project. There's IProjectHandler in the IDEA instance, remote object we can ask for activities in IDEA project.
  * There are few actions available from IDEA project that navigate to MPS project counterparts, and to support these, this MPSProjectIDEHandler is registered in IProjectHandler for each started MPS project
  * so that IDEA project actions could navigate to MPS nodes from source files.
  */
-@GeneratedClass(node = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)/8632185942131071134", model = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)")
+@GeneratedClass(nodeId = "8632185942131071134", model = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)")
 public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDEHandler, ProjectComponent {
-  private static final Logger LOG_1373119566 = LogManager.getLogger(MPSProjectIDEHandler.class);
-  private static final Logger LOG = LogManager.getLogger(MPSProjectIDEHandler.class);
+  private static final Logger LOG = Logger.getLogger(MPSProjectIDEHandler.class);
   private Project myProject;
 
   static {
-    // has to be called before instantiation of MPSProjectIDEHandler to make the instance available only at localhost 
-    RemoteServer.setupRMI();
+    // has to be called before instantiation of MPSProjectIDEHandler to make the instance available only at localhost
+    RemoteServer.setupRMI(true);
   }
 
   public MPSProjectIDEHandler(Project project) throws RemoteException {
@@ -86,7 +82,7 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
   }
   @Override
   public void projectOpened() {
-    if (RuntimeFlags.isTestMode()) {
+    if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
       return;
     }
     new Thread() {
@@ -106,7 +102,7 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
   }
   @Override
   public void projectClosed() {
-    if (RuntimeFlags.isTestMode()) {
+    if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
       return;
     }
     new Thread() {
@@ -117,7 +113,9 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
           try {
             handler.removeIdeHandler(MPSProjectIDEHandler.this);
           } catch (RemoteException e) {
-            MPSProjectIDEHandler.LOG.error(null, e);
+            if (LOG.isErrorLevel()) {
+              LOG.error("", e);
+            }
           }
         }
         try {
@@ -143,61 +141,47 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
   @Override
   public void showSource(final String filePath, final String modelHint, final int line, int column) throws RemoteException {
     final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(myProject);
-    mpsProject.getModelAccess().runReadInEDT(new Runnable() {
-      public void run() {
-        String fileName = new File(filePath).getName();
+    mpsProject.getModelAccess().runReadInEDT(() -> {
+      String fileName = new File(filePath).getName();
 
-        List<SModel> modelsByName = ListSequence.fromList(new ArrayList<SModel>());
+      ArrayDeque<SModel> modelsByName = new ArrayDeque<>();
 
-        {
-          SearchScope scope_xnj2f8_e0a0a1a11 = CommandUtil.createScope(mpsProject);
-          final SearchScope scope_xnj2f8_e0a0a1a11_0 = new EditableFilteringScope(scope_xnj2f8_e0a0a1a11);
-          QueryExecutionContext context = new QueryExecutionContext() {
-            public SearchScope getDefaultSearchScope() {
-              return scope_xnj2f8_e0a0a1a11_0;
-            }
-          };
-          // we first look up in models with the given name (better chance to succeed), then in all other models 
-          ListSequence.fromList(modelsByName).addSequence(Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SModel>() {
-            public boolean accept(SModel it) {
-              return Objects.equals(SModelOperations.getModelName(it), modelHint);
-            }
-          }));
-          ListSequence.fromList(modelsByName).addSequence(Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SModel>() {
-            public boolean accept(SModel it) {
-              return !(Objects.equals(SModelOperations.getModelName(it), modelHint));
-            }
-          }));
-        }
-
-        SNode bestNode = null;
-        for (SModel model : ListSequence.fromList(modelsByName)) {
-          DebugInfo di = new TraceInfo().getDebugInfo(model);
-          if (di == null) {
-            if (LOG_1373119566.isEnabledFor(Level.WARN)) {
-              LOG_1373119566.warn("Debug info not found for model " + SModelOperations.getModelName(model));
-            }
-            continue;
-          }
-          // IMPORTANT: line+1 because the line parameter means "line, starting with 0", while in debug info it starts from 1 
-          SNodePointer np = getBestNodeForPosition(di, fileName, line + 1);
-          bestNode = np.resolve(mpsProject.getRepository());
-          if (bestNode != null) {
-            break;
-          }
-        }
-
-        if ((bestNode == null)) {
-          final IdeFrame ideFrame = WindowManager.getInstance().getIdeFrame(myProject);
-          if (ideFrame != null) {
-            StatusBarEx statusBar = (StatusBarEx) ideFrame.getStatusBar();
-            statusBar.notifyProgressByBalloon(MessageType.WARNING, "No source found for " + fileName + ":" + line, null, null);
-          }
+      for (SModel it : new EditableFilteringScope(mpsProject.getScope()).getModels()) {
+        // we first look up in models with the given name (better chance to succeed), then in all other models
+        if (Objects.equals(SModelOperations.getModelName(it), modelHint)) {
+          modelsByName.addFirst(it);
         } else {
-          new EditorNavigator(mpsProject).shallFocus(true).selectIfChild().open(bestNode.getReference());
+          modelsByName.addLast(it);
         }
-        ProjectUtil.focusProjectWindow(myProject, true);
       }
+
+      SNode bestNode = null;
+      for (SModel model : QueueSequence.fromQueue(modelsByName)) {
+        DebugInfo di = new TraceInfo().getDebugInfo(model);
+        if (di == null) {
+          if (LOG.isWarningLevel()) {
+            LOG.warning("Debug info not found for model " + SModelOperations.getModelName(model));
+          }
+          continue;
+        }
+        // IMPORTANT: line+1 because the line parameter means "line, starting with 0", while in debug info it starts from 1
+        SNodePointer np = getBestNodeForPosition(di, fileName, line + 1);
+        bestNode = np.resolve(mpsProject.getRepository());
+        if (bestNode != null) {
+          break;
+        }
+      }
+
+      if ((bestNode == null)) {
+        final IdeFrame ideFrame = WindowManager.getInstance().getIdeFrame(myProject);
+        if (ideFrame != null) {
+          StatusBarEx statusBar = (StatusBarEx) ideFrame.getStatusBar();
+          statusBar.notifyProgressByBalloon(MessageType.WARNING, "No source found for " + fileName + ":" + line, null, null);
+        }
+      } else {
+        new EditorNavigator(mpsProject).shallFocus(true).selectIfChild().open(bestNode.getReference());
+      }
+      ProjectUtil.focusProjectWindow(myProject, true);
     });
   }
 
@@ -205,26 +189,10 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
   private SNodePointer getBestNodeForPosition(DebugInfo debugInfo, @NotNull final String fileName, final int line) {
     List<Pair<TraceablePositionInfo, DebugInfoRoot>> nicePositions = ListSequence.fromList(new ArrayList<Pair<TraceablePositionInfo, DebugInfoRoot>>());
     Iterable<DebugInfoRoot> roots = debugInfo.getRoots();
-    for (DebugInfoRoot root : Sequence.fromIterable(roots).where(new IWhereFilter<DebugInfoRoot>() {
-      public boolean accept(DebugInfoRoot it) {
-        return it.getFileNames().contains(fileName);
-      }
-    })) {
+    for (DebugInfoRoot root : Sequence.fromIterable(roots).where((it) -> it.getFileNames().contains(fileName))) {
       Collection<TraceablePositionInfo> positions = root.getPositions();
-      // for each root we get the nearest position that contains the given line 
-      TraceablePositionInfo info = CollectionSequence.fromCollection(positions).where(new IWhereFilter<TraceablePositionInfo>() {
-        public boolean accept(TraceablePositionInfo it) {
-          return it.contains(fileName, line);
-        }
-      }).sort(new ISelector<TraceablePositionInfo, Integer>() {
-        public Integer select(TraceablePositionInfo it) {
-          return it.getStartLine();
-        }
-      }, true).findLast(new IWhereFilter<TraceablePositionInfo>() {
-        public boolean accept(TraceablePositionInfo it) {
-          return it.getStartLine() <= line;
-        }
-      });
+      // for each root we get the nearest position that contains the given line
+      TraceablePositionInfo info = CollectionSequence.fromCollection(positions).where((it) -> it.contains(fileName, line)).sort((it) -> it.getStartLine(), true).findLast((it) -> it.getStartLine() <= line);
       if (info != null) {
         ListSequence.fromList(nicePositions).addElement(new Pair(info, root));
       }
@@ -233,16 +201,8 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
       return new SNodePointer(null);
     }
 
-    // now, between all those "best local" positions, we select the global best one 
-    Pair<TraceablePositionInfo, DebugInfoRoot> bestPosition = ListSequence.fromList(nicePositions).sort(new ISelector<Pair<TraceablePositionInfo, DebugInfoRoot>, Integer>() {
-      public Integer select(Pair<TraceablePositionInfo, DebugInfoRoot> it) {
-        return it.o1.getStartLine();
-      }
-    }, true).findLast(new IWhereFilter<Pair<TraceablePositionInfo, DebugInfoRoot>>() {
-      public boolean accept(Pair<TraceablePositionInfo, DebugInfoRoot> it) {
-        return it.o1.getStartLine() <= line;
-      }
-    });
+    // now, between all those "best local" positions, we select the global best one
+    Pair<TraceablePositionInfo, DebugInfoRoot> bestPosition = ListSequence.fromList(nicePositions).sort((it) -> it.o1.getStartLine(), true).findLast((it) -> it.o1.getStartLine() <= line);
 
     return new SNodePointer(bestPosition.o2.getNodeRef().getModelReference(), PersistenceFacade.getInstance().createNodeId(bestPosition.o1.getNodeId()));
   }
@@ -251,19 +211,17 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
   public void showNode(final String namespace, final String id) throws RemoteException {
     final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(myProject);
     final SNodeId nodeId = PersistenceFacade.getInstance().createNodeId(id);
-    mpsProject.getModelAccess().runReadInEDT(new Runnable() {
-      public void run() {
-        for (SModel descriptor : new ModuleRepositoryFacade(mpsProject).getAllModels()) {
-          if (!(namespace.equals(descriptor.getName().getValue()))) {
-            continue;
-          }
-          SNode node = descriptor.getNode(nodeId);
-          if (node != null) {
-            new EditorNavigator(mpsProject).shallFocus(true).selectIfChild().open(node.getReference());
-          }
+    mpsProject.getModelAccess().runReadInEDT(() -> {
+      for (SModel descriptor : new ModuleRepositoryFacade(mpsProject).getAllModels()) {
+        if (!(namespace.equals(descriptor.getName().getValue()))) {
+          continue;
         }
-        ProjectUtil.focusProjectWindow(myProject, true);
+        SNode node = descriptor.getNode(nodeId);
+        if (node != null) {
+          new EditorNavigator(mpsProject).shallFocus(true).selectIfChild().open(node.getReference());
+        }
       }
+      ProjectUtil.focusProjectWindow(myProject, true);
     });
   }
   @Override
@@ -282,7 +240,9 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
         SearchScope scope = new GlobalScope(mpsProject.getRepository());
         SNode cls = findClassByName(scope, fqName);
         if (cls == null) {
-          MPSProjectIDEHandler.LOG.error("Can't find a class " + fqName);
+          if (LOG.isErrorLevel()) {
+            LOG.error("Can't find a class " + fqName);
+          }
           return;
         }
         ProjectUtil.focusProjectWindow(myProject, true);
@@ -297,24 +257,26 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
       @Override
       public void run() {
         if (classFqName == null || methodName == null) {
-          MPSProjectIDEHandler.LOG.error("Can't find a method " + classFqName + "." + methodName);
+          if (LOG.isErrorLevel()) {
+            LOG.error(String.format("Can't find a method %s.%s", classFqName, methodName));
+          }
           return;
 
         }
         SearchScope scope = new GlobalScope(mpsProject.getRepository());
         SNode cls = findClassByName(scope, classFqName);
         if (cls == null) {
-          MPSProjectIDEHandler.LOG.error("Can't find a class " + classFqName);
+          if (LOG.isErrorLevel()) {
+            LOG.error("Can't find a class " + classFqName);
+          }
           return;
         }
         Iterable<SNode> allMethods = SNodeOperations.ofConcept(SNodeOperations.getChildren(cls), CONCEPTS.BaseMethodDeclaration$kD);
-        SNode method = Sequence.fromIterable(allMethods).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return methodName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL)) && ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).count() == parameterCount;
-          }
-        });
+        SNode method = Sequence.fromIterable(allMethods).findFirst((it) -> methodName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL)) && ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).count() == parameterCount);
         if (method == null) {
-          MPSProjectIDEHandler.LOG.error("Can't find a method " + classFqName + "." + methodName);
+          if (LOG.isErrorLevel()) {
+            LOG.error(String.format("Can't find a method %s.%s", classFqName, methodName));
+          }
           return;
         }
         ProjectUtil.focusProjectWindow(myProject, true);
@@ -328,8 +290,8 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
     UsagesViewTool.showUsages(myProject, provider, new SearchQuery(node, scope), opt);
   }
   private static SNode findClassByName(SearchScope scope, String classFqName) {
-    // This is slightly updated SModelUtil.findNodeByFQName, which moved here as it's the only place we use it 
-    // FIXME however, it's ugly and needs rework 
+    // This is slightly updated SModelUtil.findNodeByFQName, which moved here as it's the only place we use it
+    // FIXME however, it's ugly and needs rework
     String modelName = NameUtil.namespaceFromLongName(classFqName);
     String name = NameUtil.shortNameFromLongName(classFqName);
     for (SModel m : Sequence.fromIterable(scope.getModels())) {

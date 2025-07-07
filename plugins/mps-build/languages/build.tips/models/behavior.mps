@@ -7,11 +7,10 @@
   </languages>
   <imports>
     <import index="iuxj" ref="r:64db3a92-5968-4a73-b456-34504a2d97a6(jetbrains.mps.core.xml.structure)" />
-    <import index="3ju5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs(MPS.Core/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
-    <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
     <import index="dxuu" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing(JDK/)" />
+    <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" />
     <import index="brwy" ref="r:6d672fff-19ac-419c-b29d-e20cdd951b7d(jetbrains.mps.build.tips.structure)" implicit="true" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
@@ -54,10 +53,6 @@
       <concept id="4952749571008284462" name="jetbrains.mps.baseLanguage.structure.CatchVariable" flags="ng" index="XOnhg" />
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
-      </concept>
-      <concept id="1081256982272" name="jetbrains.mps.baseLanguage.structure.InstanceOfExpression" flags="nn" index="2ZW3vV">
-        <child id="1081256993305" name="classType" index="2ZW6by" />
-        <child id="1081256993304" name="leftExpression" index="2ZW6bz" />
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
@@ -106,7 +101,7 @@
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -122,10 +117,10 @@
         <child id="8276990574895933173" name="catchBody" index="1zc67A" />
         <child id="8276990574895933172" name="throwable" index="1zc67B" />
       </concept>
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
-      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
+      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="nn" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
@@ -153,7 +148,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -309,25 +304,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbJ" id="Ib_Fk7zRL2" role="3cqZAp">
-          <node concept="3fqX7Q" id="Ib_Fk7zRL3" role="3clFbw">
-            <node concept="2ZW3vV" id="Ib_Fk7zRL4" role="3fr31v">
-              <node concept="3uibUv" id="Ib_Fk7zRL5" role="2ZW6by">
-                <ref role="3uigEE" to="z1c3:~AbstractModule" resolve="AbstractModule" />
-              </node>
-              <node concept="37vLTw" id="Ib_Fk7zRL6" role="2ZW6bz">
-                <ref role="3cqZAo" node="Ib_Fk7zRKU" resolve="module" />
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbS" id="Ib_Fk7zRL7" role="3clFbx">
-            <node concept="3cpWs6" id="Ib_Fk7zRL8" role="3cqZAp">
-              <node concept="3clFbT" id="Ib_Fk7zRL9" role="3cqZAk">
-                <property role="3clFbU" value="false" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbH" id="1luvpNwSvnB" role="3cqZAp" />
         <node concept="3cpWs8" id="Ib_Fk7zRLa" role="3cqZAp">
           <node concept="3cpWsn" id="Ib_Fk7zRLb" role="3cpWs9">
@@ -383,17 +359,13 @@
         <node concept="3cpWs8" id="1dRlja0X0xt" role="3cqZAp">
           <node concept="3cpWsn" id="1dRlja0X0xu" role="3cpWs9">
             <property role="TrG5h" value="file" />
-            <node concept="3uibUv" id="1dRlja0X0xv" role="1tU5fm">
-              <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
+            <node concept="3uibUv" id="4shTNYINTmu" role="1tU5fm">
+              <ref role="3uigEE" to="guwi:~File" resolve="File" />
             </node>
-            <node concept="2OqwBi" id="1luvpNwStYa" role="33vP2m">
-              <node concept="2YIFZM" id="1luvpNwStP7" role="2Oq$k0">
-                <ref role="1Pybhc" to="3ju5:~FileSystems" resolve="FileSystems" />
-                <ref role="37wK5l" to="3ju5:~FileSystems.getDefault()" resolve="getDefault" />
-              </node>
-              <node concept="liA8E" id="1luvpNwSunD" role="2OqNvi">
-                <ref role="37wK5l" to="3ju5:~FileSystem.getFile(java.lang.String)" resolve="getFile" />
-                <node concept="37vLTw" id="1luvpNwSuBk" role="37wK5m">
+            <node concept="2ShNRf" id="4shTNYINTQa" role="33vP2m">
+              <node concept="1pGfFk" id="4shTNYINYgu" role="2ShVmc">
+                <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String)" resolve="File" />
+                <node concept="37vLTw" id="4shTNYINYBj" role="37wK5m">
                   <ref role="3cqZAo" node="1dRlja0X0xe" resolve="path" />
                 </node>
               </node>
@@ -414,7 +386,7 @@
                 <ref role="3cqZAo" node="1dRlja0X0xu" resolve="file" />
               </node>
               <node concept="liA8E" id="1dRlja0X0xE" role="2OqNvi">
-                <ref role="37wK5l" to="3ju5:~IFile.exists()" resolve="exists" />
+                <ref role="37wK5l" to="guwi:~File.exists()" resolve="exists" />
               </node>
             </node>
           </node>

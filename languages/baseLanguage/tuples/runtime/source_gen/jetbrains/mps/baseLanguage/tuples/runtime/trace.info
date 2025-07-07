@@ -14,6 +14,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1178893518978:jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
   <root nodeRef="r:33366a6f-09e8-45e7-ae7f-cb8cf0c7ed05(jetbrains.mps.baseLanguage.tuples.runtime)/1238932916942">
     <file name="MultiTuple.java">
       <node id="1238932916943" at="8,0,9,0" concept="10" trace="EMPTY" />
@@ -35,14 +36,14 @@
       <node id="1238932917164" at="48,38,49,29" concept="2" />
       <node id="1162681029791919936" at="49,29,50,17" concept="8" />
       <node id="1238932917175" at="52,30,53,28" concept="8" />
-      <node id="1162681029792636317" at="56,40,57,60" concept="9" />
-      <node id="3715638535252607576" at="57,60,58,25" concept="2" />
+      <node id="1162681029792636317" at="56,40,57,59" concept="9" />
+      <node id="3715638535252607576" at="57,59,58,25" concept="2" />
       <node id="1162681029792654593" at="61,25,62,14" concept="2" />
       <node id="1238944435314" at="63,12,64,65" concept="2" />
       <node id="6944106884487713483" at="65,5,66,16" concept="8" />
       <node id="1162681029792651667" at="68,26,69,35" concept="2" />
-      <node id="1162681029792636012" at="72,48,73,92" concept="9" />
-      <node id="1238932916964" at="73,92,74,59" concept="8" />
+      <node id="1162681029792636012" at="72,48,73,91" concept="9" />
+      <node id="1238932916964" at="73,91,74,59" concept="8" />
       <node id="574925412489015201" at="78,31,79,18" concept="12" />
       <node id="574925412489015205" at="81,25,82,15" concept="12" />
       <node id="574925412489015207" at="84,20,85,14" concept="13" />
@@ -636,8 +637,8 @@
   </root>
   <root nodeRef="r:33366a6f-09e8-45e7-ae7f-cb8cf0c7ed05(jetbrains.mps.baseLanguage.tuples.runtime)/1238932923132">
     <file name="Tuples.java">
-      <node id="2413168484686775067" at="10,42,11,58" concept="9" />
-      <node id="6543581031674033992" at="11,58,12,14" concept="8" />
+      <node id="2413168484686775067" at="10,42,11,57" concept="9" />
+      <node id="6543581031674033992" at="11,57,12,14" concept="8" />
       <node id="4690171080784600068" at="16,0,17,0" concept="6" trace="assign#(Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_0;)Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_0;" />
       <node id="4690171080784600078" at="19,0,20,0" concept="6" trace="_0#(null)null" />
       <node id="4690171080784600083" at="20,0,21,0" concept="6" trace="_0#()null" />
@@ -967,6 +968,63 @@
       <unit id="4690171080784600654" at="95,0,114,0" name="jetbrains.mps.baseLanguage.tuples.runtime.Tuples$_8" />
       <unit id="4690171080784600795" at="114,0,135,0" name="jetbrains.mps.baseLanguage.tuples.runtime.Tuples$_9" />
       <unit id="1238932923132" at="6,0,136,0" name="jetbrains.mps.baseLanguage.tuples.runtime.Tuples" />
+    </file>
+  </root>
+  <root nodeRef="r:33366a6f-09e8-45e7-ae7f-cb8cf0c7ed05(jetbrains.mps.baseLanguage.tuples.runtime)/302106367899830731">
+    <file name="Dictionary.java">
+      <node id="3278462162391640771" at="16,38,17,17" concept="8" />
+      <node id="3278462162391651780" at="20,38,21,39" concept="14" />
+      <node id="3278462162391654084" at="24,50,25,46" concept="14" />
+      <node id="302106367899852604" at="32,0,33,0" concept="6" trace="valueOf#(Ljava/lang/Object;)null" />
+      <node id="302106367899831712" at="16,0,19,0" concept="6" trace="hasKey#(Ljetbrains/mps/baseLanguage/tuples/runtime/Dictionary/Key;)Z" />
+      <node id="302106367899837212" at="20,0,23,0" concept="6" trace="getValue#(Ljetbrains/mps/baseLanguage/tuples/runtime/Dictionary/Key;)null" />
+      <node id="302106367899840394" at="24,0,27,0" concept="6" trace="setValue#(Ljetbrains/mps/baseLanguage/tuples/runtime/Dictionary/Key;null)V" />
+      <scope id="302106367899831716" at="16,38,17,17" />
+      <scope id="302106367899837215" at="20,38,21,39" />
+      <scope id="302106367899840397" at="24,50,25,46" />
+      <scope id="302106367899852604" at="32,0,33,0">
+        <var name="value" id="302106367899854779" />
+      </scope>
+      <scope id="302106367899831712" at="16,0,19,0">
+        <var name="key" id="302106367899832974" />
+      </scope>
+      <scope id="302106367899837212" at="20,0,23,0">
+        <var name="key" id="302106367899839692" />
+      </scope>
+      <scope id="302106367899840394" at="24,0,27,0">
+        <var name="key" id="302106367899840702" />
+        <var name="value" id="302106367899841135" />
+      </scope>
+      <unit id="302106367899831175" at="31,0,34,0" name="jetbrains.mps.baseLanguage.tuples.runtime.Dictionary$Key" />
+      <unit id="302106367899830731" at="14,0,35,0" name="jetbrains.mps.baseLanguage.tuples.runtime.Dictionary" />
+    </file>
+  </root>
+  <root nodeRef="r:33366a6f-09e8-45e7-ae7f-cb8cf0c7ed05(jetbrains.mps.baseLanguage.tuples.runtime)/302106367900051520">
+    <file name="HashMapDictionary.java">
+      <node id="302106367900055931" at="11,0,12,0" concept="3" trace="myStorage" />
+      <node id="302106367900052639" at="14,48,15,38" concept="8" />
+      <node id="302106367900097854" at="20,40,21,41" concept="14" />
+      <node id="302106367900106374" at="22,5,23,43" concept="8" />
+      <node id="302106367900132409" at="27,60,28,30" concept="2" />
+      <node id="302106367900081305" at="19,48,22,5" concept="5" />
+      <node id="302106367900052629" at="13,0,17,0" concept="6" trace="hasKey#(Ljetbrains/mps/baseLanguage/tuples/runtime/Dictionary/Key;)Z" />
+      <node id="302106367900052650" at="26,0,30,0" concept="6" trace="setValue#(Ljetbrains/mps/baseLanguage/tuples/runtime/Dictionary/Key;null)V" />
+      <node id="302106367900052640" at="18,0,25,0" concept="6" trace="getValue#(Ljetbrains/mps/baseLanguage/tuples/runtime/Dictionary/Key;)null" />
+      <scope id="302106367900052636" at="14,48,15,38" />
+      <scope id="302106367900081307" at="20,40,21,41" />
+      <scope id="302106367900052660" at="27,60,28,30" />
+      <scope id="302106367900052629" at="13,0,17,0">
+        <var name="key" id="302106367900052630" />
+      </scope>
+      <scope id="302106367900052648" at="19,48,23,43" />
+      <scope id="302106367900052650" at="26,0,30,0">
+        <var name="key" id="302106367900052654" />
+        <var name="value" id="302106367900052657" />
+      </scope>
+      <scope id="302106367900052640" at="18,0,25,0">
+        <var name="key" id="302106367900052644" />
+      </scope>
+      <unit id="302106367900051520" at="9,0,32,0" name="jetbrains.mps.baseLanguage.tuples.runtime.HashMapDictionary" />
     </file>
   </root>
 </debug-info>

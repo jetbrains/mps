@@ -20,7 +20,7 @@ import jetbrains.mps.ide.findusages.model.SearchResult;
  * Search results are of type SModel
  * FIXME I've got  no idea why it resides in UI package, nor why it's in BL when it's plain Java
  */
-@GeneratedClass(node = "r:50589489-29e2-47e3-84bb-6bbe4094b4ce(jetbrains.mps.ide.ui.finders)/6355759290342865490", model = "r:50589489-29e2-47e3-84bb-6bbe4094b4ce(jetbrains.mps.ide.ui.finders)")
+@GeneratedClass(nodeId = "6355759290342865490", model = "r:50589489-29e2-47e3-84bb-6bbe4094b4ce(jetbrains.mps.ide.ui.finders)")
 public class ModelImportsUsagesFinder implements IFinder {
   public ModelImportsUsagesFinder() {
   }

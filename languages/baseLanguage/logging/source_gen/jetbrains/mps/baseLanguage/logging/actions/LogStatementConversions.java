@@ -15,7 +15,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class LogStatementConversions {
   public static class NodeFactory_6057591418743042050 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode msg = sampleNode;
         if (SNodeOperations.isInstanceOf(msg, CONCEPTS.MsgStatement$Pu)) {
@@ -35,13 +35,14 @@ public class LogStatementConversions {
     }
   }
   public static class NodeFactory_6057591418743066490 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode msg = sampleNode;
         if (SNodeOperations.isInstanceOf(msg, CONCEPTS.MsgStatement$Pu)) {
           SLinkOperations.setTarget(newNode, LINKS.message$I3Bb, SLinkOperations.getTarget(msg, LINKS.message$I3Bb));
           SPropertyOperations.assignEnum(newNode, PROPS.severity$lcf9, SPropertyOperations.getEnum(msg, PROPS.severity$lcf9));
           SLinkOperations.setTarget(newNode, LINKS.throwable$I3Qc, SLinkOperations.getTarget(msg, LINKS.throwable$I3Qc));
+          SLinkOperations.setTarget(newNode, LINKS.hint$bvDr, SLinkOperations.getTarget(msg, LINKS.hint$bvDr));
         }
       }
       {
@@ -65,6 +66,7 @@ public class LogStatementConversions {
     /*package*/ static final SContainmentLink message$I3Bb = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25eL, "message");
     /*package*/ static final SContainmentLink throwable$TgqN = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1bbL, "throwable");
     /*package*/ static final SContainmentLink throwable$I3Qc = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25fL, "throwable");
+    /*package*/ static final SContainmentLink hint$bvDr = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x1d19c0e87d9d67c2L, "hint");
   }
 
   private static final class PROPS {

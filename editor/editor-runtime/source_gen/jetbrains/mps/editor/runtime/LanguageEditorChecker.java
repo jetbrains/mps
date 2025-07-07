@@ -5,8 +5,7 @@ package jetbrains.mps.editor.runtime;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.nodeEditor.checking.BaseEditorChecker;
 import jetbrains.mps.nodeEditor.checking.DisposableEditorChecker;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import java.util.Set;
 import jetbrains.mps.checkers.AbstractNodeCheckerInEditor;
 import org.jetbrains.annotations.NotNull;
@@ -14,6 +13,8 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.LinkedHashSet;
 import jetbrains.mps.nodeEditor.checking.EditorChecker;
+import java.util.List;
+import jetbrains.mps.smodel.event.SModelEvent;
 import jetbrains.mps.nodeEditor.checking.UpdateResult;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.util.Cancellable;
@@ -27,12 +28,9 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import jetbrains.mps.typesystem.LegacyTypecheckingQueries;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
-import org.apache.log4j.Level;
 import java.util.Collections;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.checkers.LanguageErrorsComponent;
 import java.util.HashSet;
-import java.util.List;
 import jetbrains.mps.errors.item.QuickFixBase;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -46,9 +44,19 @@ import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.extapi.model.TransientSModel;
 import jetbrains.mps.nodeEditor.EditorSettings;
 
-@GeneratedClass(node = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)/7390982340086719450", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
+/**
+ * A composite editor checker (see {@link jetbrains.mps.nodeEditor.checking.EditorChecker }) that delegates all 
+ * work to instances of {@link jetbrains.mps.checkers.AbstractNodeCheckerInEditor } that are passed as a parameter
+ * to the only constructor of this class.
+ * <p>
+ * Also applies quickfixes.
+ * <p>
+ * See {@link jetbrains.mps.errors.item.QuickFixReportItem }<br>
+ * See {@code jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerViewer}<br>
+ */
+@GeneratedClass(nodeId = "7390982340086719450", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
 public class LanguageEditorChecker extends BaseEditorChecker implements DisposableEditorChecker {
-  private static final Logger LOG = LogManager.getLogger(LanguageEditorChecker.class);
+  private static final Logger LOG = Logger.getLogger(LanguageEditorChecker.class);
   private boolean myMessagesChanged = false;
   private boolean myForceRunQuickFixes = false;
   private Set<AbstractNodeCheckerInEditor> myRules;
@@ -67,8 +75,8 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
 
   @Override
   public boolean isLaterThan(EditorChecker checker) {
-    // since this is default editor checker, 
-    // every other checker knows whether it should be later or earlier than this one 
+    // since this is default editor checker,
+    // every other checker knows whether it should be later or earlier than this one
     if (checker instanceof LanguageEditorChecker) {
       return false;
     }
@@ -76,6 +84,12 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
       return false;
     }
     return true;
+  }
+
+
+  @Override
+  public void processEvents(List<SModelEvent> events) {
+    myErrorComponents.processEvents(events);
   }
 
   @NotNull
@@ -105,7 +119,7 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
     EditorComponent editorComponent = (EditorComponent) editorContext.getEditorComponent();
     boolean inspector = editorComponent instanceof InspectorEditorComponent;
 
-    // FIXME assuming it's safe to access legacy session 
+    // FIXME assuming it's safe to access legacy session
     LegacyTypecheckingQueries ltq = editorComponent.getTypecheckingSession().getQueries(LegacyTypecheckingQueries.class);
     TypeCheckingContext typeCheckingContext = ltq.getTypeCheckingContext();
 
@@ -114,14 +128,14 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
     SNode editedNode = editorComponent.getEditedNode();
 
     if (editedNode == null) {
-      if (LOG.isEnabledFor(Level.ERROR)) {
+      if (LOG.isErrorLevel()) {
         LOG.error("edited node is null");
       }
       return Collections.emptySet();
     }
     if (node.getModel() == null || SNodeOperations.getModel(editedNode) == null) {
-      // descriptor is null for a replaced model 
-      // after model is replaced but before it is disposed (this can happen asyncronously) 
+      // descriptor is null for a replaced model
+      // after model is replaced but before it is disposed (this can happen asyncronously)
       return Collections.emptySet();
     }
 
@@ -137,26 +151,26 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
     myMessagesChanged = runChecks(inspector, errorsComponent, typeCheckingContext, node, editorContext, cancellable);
 
     if (!(myMessagesChanged)) {
-      // skipping further processing if nothing was changed 
+      // skipping further processing if nothing was changed
       return Collections.emptySet();
     }
 
     return createMessages(editorContext, inspector, errorsComponent, editedNode);
   }
 
-  private boolean runChecks(boolean inspector, LanguageErrorsComponent errorsComponent, TypeCheckingContext typeCheckingContext, SNode node, EditorContext editorContext, Cancellable cancellable) {
+  private boolean runChecks(boolean inspector, LanguageErrorsComponent errorsComponent, TypeCheckingContext context, SNode node, EditorContext editorContext, Cancellable cancellable) {
     if (inspector) {
       return true;
     }
 
     try {
-      if (typeCheckingContext != null) {
-        typeCheckingContext.setIsNonTypesystemComputation();
+      if (context != null) {
+        context.setNonTypesystemComputationMode(TypeCheckingContext.NonTypesystemComputationMode.ON_THE_FLY);
       }
       return errorsComponent.check(SNodeOperations.getContainingRoot(((SNode) node)), myRules, editorContext.getRepository(), cancellable);
     } finally {
-      if (typeCheckingContext != null) {
-        typeCheckingContext.resetIsNonTypesystemComputation();
+      if (context != null) {
+        context.setNonTypesystemComputationMode(TypeCheckingContext.NonTypesystemComputationMode.OFF);
       }
     }
   }
@@ -166,11 +180,11 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
     boolean runQuickFixes = shouldRunQuickFixs(editorContext.getModel(), inspector);
     final List<QuickFixBase> quickFixesToExecute = ListSequence.fromList(new ArrayList<QuickFixBase>());
     for (NodeReportItem errorReporter : errorsComponent.getErrors()) {
-      // todo here should be processor-based architecture, like in other checkers 
+      // todo here should be processor-based architecture, like in other checkers
       SNode nodeWithError = errorReporter.getNode().resolve(editorContext.getRepository());
 
       if (!(ListSequence.fromList(SNodeOperations.getNodeAncestors(nodeWithError, null, true)).contains(editedNode))) {
-        // in inspector skipping all messages for invisible nodes 
+        // in inspector skipping all messages for invisible nodes
         continue;
       }
       HighlighterMessage message = new HighlighterMessage(this, errorReporter, errorReporter.getNode().resolve(editorContext.getRepository()));
@@ -186,27 +200,21 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
     if (inspector) {
       return result;
     }
-    // running quick fixes in main editor only 
+    // running quick fixes in main editor only
     final boolean wasForceRunQuickFixes = myForceRunQuickFixes;
     myForceRunQuickFixes = false;
     if (ListSequence.fromList(quickFixesToExecute).isNotEmpty()) {
-      ApplicationManager.getApplication().invokeLater(new Runnable() {
-        public void run() {
-          editorContext.getRepository().getModelAccess().executeUndoTransparentCommand(new Runnable() {
-            public void run() {
-              for (QuickFixBase fix : quickFixesToExecute) {
-                if (fix.isAlive(editorContext.getRepository())) {
-                  QuickFixRuntimeEditorWrapper.getInstance(fix).execute(editorContext, false);
-                  if (wasForceRunQuickFixes) {
-                    // forcing to execute quickFixes for all errors reported on the modified model 
-                    myForceRunQuickFixes = true;
-                  }
-                }
-              }
+      ApplicationManager.getApplication().invokeLater(() -> editorContext.getRepository().getModelAccess().executeUndoTransparentCommand(() -> {
+        for (QuickFixBase fix : quickFixesToExecute) {
+          if (fix.isAlive(editorContext.getRepository())) {
+            QuickFixRuntimeEditorWrapper.getInstance(fix).execute(editorContext, false);
+            if (wasForceRunQuickFixes) {
+              // forcing to execute quickFixes for all errors reported on the modified model
+              myForceRunQuickFixes = true;
             }
-          });
+          }
         }
-      });
+      }));
     }
     return result;
   }

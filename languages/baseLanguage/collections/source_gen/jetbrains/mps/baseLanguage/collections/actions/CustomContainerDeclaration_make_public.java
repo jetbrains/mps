@@ -13,7 +13,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class CustomContainerDeclaration_make_public {
   public static class NodeFactory_1279588871815312987 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SLinkOperations.setTarget(newNode, LINKS.visibility$Yyua, SNodeFactoryOperations.createNewNode(CONCEPTS.PublicVisibility$R0, null));
     }
   }

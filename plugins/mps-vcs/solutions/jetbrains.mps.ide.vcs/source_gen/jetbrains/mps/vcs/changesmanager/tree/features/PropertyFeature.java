@@ -6,34 +6,41 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.model.SNodeId;
 
-@GeneratedClass(node = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)/5060092229902868568", model = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)")
+@GeneratedClass(nodeId = "5060092229902868568", model = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)")
 public class PropertyFeature extends AbstractNodeFeature {
-  private SProperty myProperty;
-  public PropertyFeature(@NotNull SNodeReference nodePointer, @NotNull SProperty p) {
-    super(nodePointer);
+  private final SProperty myProperty;
+
+  public PropertyFeature(@NotNull SNodeReference nodePointer, @NotNull SProperty p, SNodeId rootId) {
+    super(nodePointer, new NodeFeature(nodePointer, rootId));
     myProperty = p;
   }
+
   @NotNull
   @Deprecated
   public String getPropertyName() {
     return myProperty.getName();
   }
+
   @NotNull
   public SProperty getProperty() {
     return myProperty;
   }
-  @Nullable
-  @Override
-  protected Feature getParent(SRepository repo) {
-    return new PropertiesFeature(getNodePointer());
-  }
+
   @Override
   public boolean equals(Object object) {
-    return super.equals(object) && this.myProperty.equals(((PropertyFeature) object).myProperty);
+    if (object instanceof PropertyFeature) {
+      return getNodePointer().equals(((PropertyFeature) object).getNodePointer()) && myProperty.equals(((PropertyFeature) object).myProperty);
+    }
+    return false;
   }
+
+  @Override
+  public int hashCode() {
+    return getNodePointer().hashCode() * 37 + myProperty.hashCode();
+  }
+
   @Override
   @NotNull
   public String toString() {

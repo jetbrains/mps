@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,18 @@
  */
 package jetbrains.mps.workbench.action;
 
+import com.intellij.openapi.extensions.PluginId;
 import org.jetbrains.mps.annotations.Internal;
 
 @Internal
 public interface ApplicationPlugin {
+  /**
+   * Makes action known to the plugin (and outside world, like IDEA's {@code ActionManager.registerAction()}.
+   * Doesn't associate the action with any group or menu.
+   * In fact, proper name would be {@code registerAction} not to confuse with {@code DefaultActionGroup.addAction},
+   * but there's a long history of MPS app plugin and addAction method there.
+   * @param action not null
+   */
+  void addAction(BaseAction action);
   void addParameterizedAction(BaseAction action, Object... params);
 }

@@ -10,7 +10,6 @@ import java.util.Set;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -20,8 +19,6 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -32,8 +29,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class DecisionTable__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x65c13e6709b64695L, 0xaf8852024b7d2027L, 0x1b942309931b1581L, "org.jetbrains.mps.samples.DecisionTable.structure.DecisionTable");
 
-  public static final SMethod<Set<SNode>> referencedLVDs_id3mtcPBWFCmw = new SMethodBuilder<Set<SNode>>(new SJavaCompoundTypeImpl((Class<Set<SNode>>) ((Class) Object.class))).name("referencedLVDs").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3mtcPBWFCmw").build();
-  public static final SMethod<Set<SNode>> referencedParams_id3mtcPBWFDo3 = new SMethodBuilder<Set<SNode>>(new SJavaCompoundTypeImpl((Class<Set<SNode>>) ((Class) Object.class))).name("referencedParams").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3mtcPBWFDo3").build();
+  public static final SMethod<Set<SNode>> referencedLVDs_id3mtcPBWFCmw = new SMethodBuilder<Set<SNode>>(new SJavaCompoundTypeImpl((Class<Set<SNode>>) ((Class) Object.class))).name("referencedLVDs").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3863300516938155424L).languageId(0xaf8852024b7d2027L, 0x65c13e6709b64695L).build2();
+  public static final SMethod<Set<SNode>> referencedParams_id3mtcPBWFDo3 = new SMethodBuilder<Set<SNode>>(new SJavaCompoundTypeImpl((Class<Set<SNode>>) ((Class) Object.class))).name("referencedParams").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3863300516938159619L).languageId(0xaf8852024b7d2027L, 0x65c13e6709b64695L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(referencedLVDs_id3mtcPBWFCmw, referencedParams_id3mtcPBWFDo3);
 
@@ -50,28 +47,12 @@ public final class DecisionTable__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static Set<SNode> referencedLVDs_id3mtcPBWFCmw(@NotNull SNode __thisNode__) {
     Set<SNode> res = SetSequence.fromSet(new HashSet<SNode>());
-    SetSequence.fromSet(res).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41);
-      }
-    }).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41);
-      }
-    }));
+    SetSequence.fromSet(res).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41)).select((it) -> SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41)));
     return res;
   }
   /*package*/ static Set<SNode> referencedParams_id3mtcPBWFDo3(@NotNull SNode __thisNode__) {
     Set<SNode> params = SetSequence.fromSet(new HashSet<SNode>());
-    SetSequence.fromSet(params).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), CONCEPTS.ParameterDeclaration$RG);
-      }
-    }).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), CONCEPTS.ParameterDeclaration$RG);
-      }
-    }));
+    SetSequence.fromSet(params).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), CONCEPTS.ParameterDeclaration$RG)).select((it) -> SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), CONCEPTS.ParameterDeclaration$RG)));
     return params;
   }
 

@@ -9,8 +9,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.generator.template.BaseMappingRuleContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
@@ -18,6 +16,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.quotation.behavior.NodeBuilderInitLink__BehaviorDescriptor;
 import jetbrains.mps.lang.quotation.behavior.NodeBuilderInitProperty__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.lang.pattern.behavior.PatternVarsUtil;
 import jetbrains.mps.util.NameUtil;
@@ -28,7 +27,6 @@ import jetbrains.mps.lang.structure.behavior.PropertyDeclaration__BehaviorDescri
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.quotation.behavior.NodeBuilderNode__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.pattern.behavior.PatternBuilder__BehaviorDescriptor;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.typechecking.TypecheckingFacade;
@@ -55,7 +53,6 @@ import jetbrains.mps.generator.impl.query.MapRootRuleCondition;
 import jetbrains.mps.generator.template.MapRootRuleContext;
 import jetbrains.mps.generator.impl.query.DropAttributeRuleCondition;
 import jetbrains.mps.generator.impl.query.SourceNodeQuery;
-import jetbrains.mps.generator.impl.query.QueryKeyImpl;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.impl.query.SourceNodesQuery;
 import java.util.Collection;
@@ -92,29 +89,21 @@ public class QueriesGenerated extends QueryProviderBase {
     return SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Quotation$Vl, false, false) != null;
   }
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
-    // hence inheritors == false not to handle OrPatternClause which is 
-    // handled inside the template for top-most PatternExpression 
-    // If there are reasonable subconcepts, might need to check 
-    // !node.isInstanceOf(OrPatternClause) instead 
-    // 
+    // hence inheritors == false not to handle OrPatternClause which is
+    // handled inside the template for top-most PatternExpression
+    // If there are reasonable subconcepts, might need to check
+    // !node.isInstanceOf(OrPatternClause) instead
+    //  
     return true;
   }
   public static boolean rule_Condition_0_1(final BaseMappingRuleContext _context) {
     return !(SNodeOperations.isAttribute(_context.getNode())) && SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Quotation$Vl, false, false) != null;
   }
   public static boolean rule_Condition_0_2(final BaseMappingRuleContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.case$rs5g)).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.PatternSwitchCase$ZP);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.case$rs5g)).all((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.PatternSwitchCase$ZP));
   }
   public static boolean rule_Condition_0_3(final BaseMappingRuleContext _context) {
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(_context.getNode(), LINKS.declaration$vkQ_), CONCEPTS.PatternBuilder$2H, false, false), CONCEPTS.PatternBuilderVariableReference$5T, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.declaration$vkQ_) == SLinkOperations.getTarget(_context.getNode(), LINKS.declaration$vkQ_);
-      }
-    }).isEmpty();
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(_context.getNode(), LINKS.declaration$vkQ_), CONCEPTS.PatternBuilder$2H, false, false), CONCEPTS.PatternBuilderVariableReference$5T, false, new SAbstractConcept[]{})).where((it) -> SLinkOperations.getTarget(it, LINKS.declaration$vkQ_) == SLinkOperations.getTarget(_context.getNode(), LINKS.declaration$vkQ_)).isEmpty();
   }
   public static boolean rule_Condition_0_4(final BaseMappingRuleContext _context) {
     return !(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), null, false)).contains(SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(_context.getNode(), LINKS.declaration$vkQ_), CONCEPTS.PatternBuilder$2H, false, false)));
@@ -126,7 +115,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SNodeOperations.hasRole(SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(_context.getNode(), LINKS.declaration$vkQ_), CONCEPTS.PatternBuilder$2H, false, false), LINKS.pattern$JWe5);
   }
   public static boolean rule_Condition_8_0(final BaseMappingRuleContext _context) {
-    // under OrPattern, OrPatternVariableReference are reduced to capture() 
+    // under OrPattern, OrPatternVariableReference are reduced to capture()
     return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.OrPattern$Lk));
   }
   public static boolean rule_Condition_15_0(final BaseMappingRuleContext _context) {
@@ -190,15 +179,15 @@ public class QueriesGenerated extends QueryProviderBase {
     return PatternVarsUtil.getFieldName(SLinkOperations.getTarget(_context.getNode(), LINKS.variable$AVd3));
   }
   public static Object propertyMacro_GetValue_6_0(final PropertyMacroContext _context) {
-    // there's only one dubious use of hasAntiquotations() method, in TS, where 
-    // it refuses to coerce types matched against patterns with antiquotations. Nobody knows why. 
+    // there's only one dubious use of hasAntiquotations() method, in TS, where
+    // it refuses to coerce types matched against patterns with antiquotations. Nobody knows why.
     return ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.pattern$GuFI), LINKS.quotedNode$ip4), CONCEPTS.AbstractAntiquotation$TS, false, new SAbstractConcept[]{})).isNotEmpty();
   }
   public static Object propertyMacro_GetValue_6_1(final PropertyMacroContext _context) {
-    return _context.getTemplateValue() + ((Integer) _context.getVariable("cv:c"));
+    return _context.getTemplateValue() + (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_6_2(final PropertyMacroContext _context) {
-    return _context.getTemplateValue() + ((Integer) _context.getVariable("cv:x"));
+    return _context.getTemplateValue() + (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_6_3(final PropertyMacroContext _context) {
     return _context.createUniqueName("Pattern_", SNodeOperations.getContainingRoot(_context.getNode()));
@@ -228,7 +217,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.createIndexedName("n", SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.INodeBuilderContainer$ds, false, false), false);
   }
   public static Object propertyMacro_GetValue_18_0(final PropertyMacroContext _context) {
-    return "p" + ((Integer) _context.getVariable("cv:c"));
+    return "p" + (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_18_1(final PropertyMacroContext _context) {
     return (String) PatternBuilderClassifierMember__BehaviorDescriptor.getGeneratedName_id6SIgReParNN.invoke(((SNode) _context.getVariable("var:classMember")));
@@ -237,7 +226,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return ((Optional<Boolean>) _context.getVariable("allowNull")).get();
   }
   public static Object propertyMacro_GetValue_20_0(final PropertyMacroContext _context) {
-    return "p" + ((Integer) _context.getVariable("cv:c"));
+    return "p" + (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_20_1(final PropertyMacroContext _context) {
     return _context.createUniqueName("Pattern", ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.Classifier$Ix, false)).last());
@@ -421,13 +410,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getNode() != ((SNode) _context.getVariable("topNode"));
   }
   public static boolean ifMacro_Condition_7_1(final IfMacroContext _context) {
-    // OrPatternClause is distinct case of PatternExpression, 
-    // nested inside of the latter, and there's local variable we shall reference. 
-    // PatternExpression owns Quotation, which in turn supplies quoted node == topNode, hence parent.parent 
+    // OrPatternClause is distinct case of PatternExpression,
+    // nested inside of the latter, and there's local variable we shall reference.
+    // PatternExpression owns Quotation, which in turn supplies quoted node == topNode, hence parent.parent
     return _context.getNode() == ((SNode) _context.getVariable("topNode")) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(_context.getNode())), CONCEPTS.OrPatternClause$9B);
   }
   public static boolean ifMacro_Condition_7_2(final IfMacroContext _context) {
-    // (PatternExpression|OrPatternClause)->Quotation->topNode 
+    // (PatternExpression|OrPatternClause)->Quotation->topNode
     return _context.getNode() == ((SNode) _context.getVariable("topNode")) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(_context.getNode())), CONCEPTS.OrPatternClause$9B));
   }
   public static boolean ifMacro_Condition_9_0(final IfMacroContext _context) {
@@ -440,40 +429,16 @@ public class QueriesGenerated extends QueryProviderBase {
     return ListSequence.fromList(SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.NodeBuilderRef$b7, false, new SAbstractConcept[]{})).isNotEmpty();
   }
   public static boolean ifMacro_Condition_18_0(final IfMacroContext _context) {
-    return Sequence.fromIterable(NodeBuilderNode__BehaviorDescriptor.getExternalExpressions_idRRzwLnBxZy.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.builder$fTO2))).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SNodeOperations.getNodeDescendants(it, CONCEPTS.PatternBuilderVariableReference$5T, true, new SAbstractConcept[]{});
-      }
-    }).isNotEmpty();
+    return Sequence.fromIterable(NodeBuilderNode__BehaviorDescriptor.getExternalExpressions_idRRzwLnBxZy.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.builder$fTO2))).translate((it) -> SNodeOperations.getNodeDescendants(it, CONCEPTS.PatternBuilderVariableReference$5T, true, new SAbstractConcept[]{})).isNotEmpty();
   }
   public static boolean ifMacro_Condition_18_1(final IfMacroContext _context) {
-    return ListSequence.fromList(PatternBuilder__BehaviorDescriptor.getVariables_idPFUECvO1RN.invoke(_context.getNode())).where(new IWhereFilter<SNode>() {
-      public boolean accept(final SNode var) {
-        return ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(var, CONCEPTS.PatternBuilder$2H, false, false), CONCEPTS.PatternBuilderVariableReference$5T, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.declaration$vkQ_) == var;
-          }
-        }).isNotEmpty();
-      }
-    }).isNotEmpty();
+    return ListSequence.fromList(PatternBuilder__BehaviorDescriptor.getVariables_idPFUECvO1RN.invoke(_context.getNode())).where((final SNode var) -> ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(var, CONCEPTS.PatternBuilder$2H, false, false), CONCEPTS.PatternBuilderVariableReference$5T, false, new SAbstractConcept[]{})).where((it) -> SLinkOperations.getTarget(it, LINKS.declaration$vkQ_) == var).isNotEmpty()).isNotEmpty();
   }
   public static boolean ifMacro_Condition_20_0(final IfMacroContext _context) {
-    return Sequence.fromIterable(NodeBuilderNode__BehaviorDescriptor.getExternalExpressions_idRRzwLnBxZy.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.builder$fTO2))).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SNodeOperations.getNodeDescendants(it, CONCEPTS.PatternBuilderVariableReference$5T, true, new SAbstractConcept[]{});
-      }
-    }).isNotEmpty();
+    return Sequence.fromIterable(NodeBuilderNode__BehaviorDescriptor.getExternalExpressions_idRRzwLnBxZy.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.builder$fTO2))).translate((it) -> SNodeOperations.getNodeDescendants(it, CONCEPTS.PatternBuilderVariableReference$5T, true, new SAbstractConcept[]{})).isNotEmpty();
   }
   public static boolean ifMacro_Condition_20_1(final IfMacroContext _context) {
-    return ListSequence.fromList(PatternBuilder__BehaviorDescriptor.getVariables_idPFUECvO1RN.invoke(_context.getNode())).where(new IWhereFilter<SNode>() {
-      public boolean accept(final SNode var) {
-        return ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(var, CONCEPTS.PatternBuilder$2H, false, false), CONCEPTS.PatternBuilderVariableReference$5T, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.declaration$vkQ_) == var;
-          }
-        }).isNotEmpty();
-      }
-    }).isNotEmpty();
+    return ListSequence.fromList(PatternBuilder__BehaviorDescriptor.getVariables_idPFUECvO1RN.invoke(_context.getNode())).where((final SNode var) -> ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(var, CONCEPTS.PatternBuilder$2H, false, false), CONCEPTS.PatternBuilderVariableReference$5T, false, new SAbstractConcept[]{})).where((it) -> SLinkOperations.getTarget(it, LINKS.declaration$vkQ_) == var).isNotEmpty()).isNotEmpty();
   }
   public static boolean ifMacro_Condition_22_0(final IfMacroContext _context) {
     return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.defaultBlock$nf_M), LINKS.statement$53DE)).isNotEmpty();
@@ -503,12 +468,9 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.pattern$GuFI);
   }
   public static SNode sourceNodeQuery_0_1(final SourceSubstituteMacroNodeContext _context) {
-    return _context.getNode();
-  }
-  public static SNode sourceNodeQuery_0_2(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.declaration$vkQ_);
   }
-  public static SNode sourceNodeQuery_0_3(final SourceSubstituteMacroNodeContext _context) {
+  public static SNode sourceNodeQuery_0_2(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.declaration$vkQ_);
   }
   public static SNode sourceNodeQuery_5_0(final SourceSubstituteMacroNodeContext _context) {
@@ -549,29 +511,29 @@ public class QueriesGenerated extends QueryProviderBase {
     return SNodeOperations.getParent(_context.getNode());
   }
   public static SNode sourceNodeQuery_8_7(final SourceSubstituteMacroNodeContext _context) {
-    // OrPatternVariableReference is an Expression, not a NodeAttribute, 
-    // thus we need accessor to this node, not its parent (as we do for Attributes) 
+    // OrPatternVariableReference is an Expression, not a NodeAttribute,
+    // thus we need accessor to this node, not its parent (as we do for Attributes)
     return _context.getNode();
   }
   public static SNode sourceNodeQuery_8_8(final SourceSubstituteMacroNodeContext _context) {
     return ListSequence.fromList(((List<SNode>) _context.getVariable("var:disjunctClause"))).first();
   }
   public static SNode sourceNodeQuery_9_0(final SourceSubstituteMacroNodeContext _context) {
-    // OrPattern is parent of OrPatternClause being processed, 
-    // and is the one we shall navigate matcher to, if it's used in place for a node. 
-    // however, the right way is to use it as attribute, thus we account for both cases 
+    // OrPattern is parent of OrPatternClause being processed,
+    // and is the one we shall navigate matcher to, if it's used in place for a node.
+    // however, the right way is to use it as attribute, thus we account for both cases
     SNode orPattern = SNodeOperations.getParent(_context.getNode());
     return (SNodeOperations.isAttribute(orPattern) ? SNodeOperations.getParent(orPattern) : orPattern);
   }
   public static SNode sourceNodeQuery_9_1(final SourceSubstituteMacroNodeContext _context) {
-    // handle next clause, pass the tail stripped of this value to the next level 
+    // handle next clause, pass the tail stripped of this value to the next level
     return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("tail"))).first();
   }
   public static SNode sourceNodeQuery_11_0(final SourceSubstituteMacroNodeContext _context) {
     return SNodeOperations.getParent(_context.getNode());
   }
   public static SNode sourceNodeQuery_11_1(final SourceSubstituteMacroNodeContext _context) {
-    // Here we assume ListPattern could not be applied to top-most node (as it needs a list of children, while quotation is single node) 
+    // Here we assume ListPattern could not be applied to top-most node (as it needs a list of children, while quotation is single node)
     SNode id = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6e7L, "jetbrains.mps.lang.smodel.structure.ContainmentLinkId"));
     ContainmentLinkId__BehaviorDescriptor.setLink_id7jb4LXp8VsD.invoke(id, SNodeOperations.getContainingLink(_context.getNode()));
     return id;
@@ -727,8 +689,8 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.collect(SLinkOperations.collectMany(SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.OrPattern$Lk, false, new SAbstractConcept[]{}), LINKS.clause$z7ps), LINKS.pattern$GuFI);
   }
   public static Iterable<SNode> sourceNodesQuery_6_0(final SourceSubstituteMacroNodesContext _context) {
-    // NOTE: DO NOT TRY TO SET MappingLabel here, leave it at nested, as we need 
-    // LocalVariableDeclaration, not LVDStatement as 
+    // NOTE: DO NOT TRY TO SET MappingLabel here, leave it at nested, as we need
+    // LocalVariableDeclaration, not LVDStatement as
     return ((Iterable<SNode>) _context.getVariable("var:disjunctionPatterns"));
   }
   public static Iterable<SNode> sourceNodesQuery_6_1(final SourceSubstituteMacroNodesContext _context) {
@@ -741,11 +703,11 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.collect(SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.ActionAsPattern$7o, false, new SAbstractConcept[]{}), LINKS.action$_Q47);
   }
   public static Iterable<SNode> sourceNodesQuery_10_0(final SourceSubstituteMacroNodesContext _context) {
-    // under OrPattern, they use OrPatternVariableReference to capture values instead of PatternVariableDeclaration used elsewhere 
-    // (declarations are owned by OrPattern instance). Don't blame me, this is the way someone else think is smart 
+    // under OrPattern, they use OrPatternVariableReference to capture values instead of PatternVariableDeclaration used elsewhere
+    // (declarations are owned by OrPattern instance). Don't blame me, this is the way someone else think is smart
 
-    // We don't go deeper than OrPattern as there's distinct handling for OrPatternClause (which effectively excludes PVD under OrPattern) 
-    // Since it ends here, in this template, we look for OrPatternVariableReference right away. 
+    // We don't go deeper than OrPattern as there's distinct handling for OrPatternClause (which effectively excludes PVD under OrPattern)
+    // Since it ends here, in this template, we look for OrPatternVariableReference right away.
     List<SNode> d = SNodeOperations.getNodeDescendantsWhereConceptInList(((SNode) _context.getVariable("var:quotedNode")), new SAbstractConcept[]{CONCEPTS.Pattern$XL, CONCEPTS.PropertyPatternVariableDeclaration$aQ, CONCEPTS.LinkPatternVariableDeclaration$8a, CONCEPTS.OrPatternVariableReference$O0}, false, new SAbstractConcept[]{CONCEPTS.OrPattern$Lk});
     Iterable<SNode> orPattern = SNodeOperations.getNodeDescendants(((SNode) _context.getVariable("var:quotedNode")), CONCEPTS.OrPattern$Lk, false, new SAbstractConcept[]{});
     return ListSequence.fromList(d).union(Sequence.fromIterable(orPattern));
@@ -760,21 +722,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return (Iterable<SNode>) NodeBuilderNode__BehaviorDescriptor.getExternalExpressions_idRRzwLnBxZy.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.builder$fTO2));
   }
   public static Iterable<SNode> sourceNodesQuery_18_1(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(NodeBuilderNode__BehaviorDescriptor.getExternalExpressions_idRRzwLnBxZy.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.builder$fTO2))).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SNodeOperations.getNodeDescendants(it, CONCEPTS.PatternBuilderVariableReference$5T, true, new SAbstractConcept[]{});
-      }
-    });
+    return Sequence.fromIterable(NodeBuilderNode__BehaviorDescriptor.getExternalExpressions_idRRzwLnBxZy.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.builder$fTO2))).translate((it) -> SNodeOperations.getNodeDescendants(it, CONCEPTS.PatternBuilderVariableReference$5T, true, new SAbstractConcept[]{}));
   }
   public static Iterable<SNode> sourceNodesQuery_20_0(final SourceSubstituteMacroNodesContext _context) {
     return (Iterable<SNode>) NodeBuilderNode__BehaviorDescriptor.getExternalExpressions_idRRzwLnBxZy.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.builder$fTO2));
   }
   public static Iterable<SNode> sourceNodesQuery_20_1(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(NodeBuilderNode__BehaviorDescriptor.getExternalExpressions_idRRzwLnBxZy.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.builder$fTO2))).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SNodeOperations.getNodeDescendants(it, CONCEPTS.PatternBuilderVariableReference$5T, true, new SAbstractConcept[]{});
-      }
-    });
+    return Sequence.fromIterable(NodeBuilderNode__BehaviorDescriptor.getExternalExpressions_idRRzwLnBxZy.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.builder$fTO2))).translate((it) -> SNodeOperations.getNodeDescendants(it, CONCEPTS.PatternBuilderVariableReference$5T, true, new SAbstractConcept[]{}));
   }
   public static Iterable<SNode> sourceNodesQuery_20_2(final SourceSubstituteMacroNodesContext _context) {
     return (Iterable<SNode>) NodeBuilderNode__BehaviorDescriptor.getExternalExpressions_idRRzwLnBxZy.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.pattern$Uu4), LINKS.builder$fTO2));
@@ -789,19 +743,15 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.collectMany(SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.OrPattern$Lk, false, new SAbstractConcept[]{}), LINKS.clause$z7ps);
   }
   public static Object varMacro_Value_8_0(final TemplateVarContext _context) {
-    // nature of template language dictates generation from right to left 
-    // while order of disjunct registration shall match that in the model 
+    // nature of template language dictates generation from right to left
+    // while order of disjunct registration shall match that in the model
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.clause$z7ps)).reversedList();
   }
   public static Object varMacro_Value_10_0(final TemplateVarContext _context) {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.pattern$GuFI), LINKS.quotedNode$ip4);
   }
   public static Object varMacro_Value_12_0(final TemplateVarContext _context) {
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.PatternBuilder$2H, false, false), CONCEPTS.PatternBuilderVariableReference$5T, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.declaration$vkQ_) == _context.getNode();
-      }
-    }).isNotEmpty();
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.PatternBuilder$2H, false, false), CONCEPTS.PatternBuilderVariableReference$5T, false, new SAbstractConcept[]{})).where((it) -> SLinkOperations.getTarget(it, LINKS.declaration$vkQ_) == _context.getNode()).isNotEmpty();
   }
   public static Object varMacro_Value_18_0(final TemplateVarContext _context) {
     return _context.getNode();
@@ -839,11 +789,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public ReductionRuleCondition getReductionRuleCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(rrcMethods.containsKey(id))) {
-      return super.getReductionRuleCondition(identity);
-    }
-    return rrcMethods.get(id);
+    ReductionRuleCondition query = identity.forTemplateNode(rrcMethods);
+    return (query != null ? query : super.getReductionRuleCondition(identity));
   }
   private static class RRC implements ReductionRuleCondition {
     private final int methodKey;
@@ -918,11 +865,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public MapRootRuleCondition getMapRootRuleCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(mrrcMethods.containsKey(id))) {
-      return super.getMapRootRuleCondition(identity);
-    }
-    return mrrcMethods.get(id);
+    MapRootRuleCondition query = identity.forTemplateNode(mrrcMethods);
+    return (query != null ? query : super.getMapRootRuleCondition(identity));
   }
   private static class MRRC implements MapRootRuleCondition {
     private final int methodKey;
@@ -951,11 +895,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public DropAttributeRuleCondition getDropAttributeRuleCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(darcMethods.containsKey(id))) {
-      return super.getDropAttributeRuleCondition(identity);
-    }
-    return darcMethods.get(id);
+    DropAttributeRuleCondition query = identity.forTemplateNode(darcMethods);
+    return (query != null ? query : super.getDropAttributeRuleCondition(identity));
   }
   private static class DARC implements DropAttributeRuleCondition {
     private final int methodKey;
@@ -984,7 +925,6 @@ public class QueriesGenerated extends QueryProviderBase {
   {
     int i = 0;
     snqMethods.put("6930688547477853548", new SNQ(i++));
-    snqMethods.put("3741790230811385340", new SNQ(i++));
     snqMethods.put("6996663776883383583", new SNQ(i++));
     snqMethods.put("5451446290069379535", new SNQ(i++));
     snqMethods.put("7236394192440107561", new SNQ(i++));
@@ -1041,11 +981,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public SourceNodeQuery getSourceNodeQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snqMethods.containsKey(id))) {
-      return super.getSourceNodeQuery(identity);
-    }
-    return snqMethods.get(id);
+    SourceNodeQuery query = identity.forFunctionNode(snqMethods);
+    return (query != null ? query : super.getSourceNodeQuery(identity));
   }
   private static class SNQ implements SourceNodeQuery {
     private final int methodKey;
@@ -1062,106 +999,104 @@ public class QueriesGenerated extends QueryProviderBase {
         case 2:
           return QueriesGenerated.sourceNodeQuery_0_2(ctx);
         case 3:
-          return QueriesGenerated.sourceNodeQuery_0_3(ctx);
-        case 4:
           return QueriesGenerated.sourceNodeQuery_5_0(ctx);
-        case 5:
+        case 4:
           return QueriesGenerated.sourceNodeQuery_7_0(ctx);
-        case 6:
+        case 5:
           return QueriesGenerated.sourceNodeQuery_7_1(ctx);
-        case 7:
+        case 6:
           return QueriesGenerated.sourceNodeQuery_8_0(ctx);
-        case 8:
+        case 7:
           return QueriesGenerated.sourceNodeQuery_8_1(ctx);
-        case 9:
+        case 8:
           return QueriesGenerated.sourceNodeQuery_8_2(ctx);
-        case 10:
+        case 9:
           return QueriesGenerated.sourceNodeQuery_8_3(ctx);
-        case 11:
+        case 10:
           return QueriesGenerated.sourceNodeQuery_8_4(ctx);
-        case 12:
+        case 11:
           return QueriesGenerated.sourceNodeQuery_8_5(ctx);
-        case 13:
+        case 12:
           return QueriesGenerated.sourceNodeQuery_8_6(ctx);
-        case 14:
+        case 13:
           return QueriesGenerated.sourceNodeQuery_8_7(ctx);
-        case 15:
+        case 14:
           return QueriesGenerated.sourceNodeQuery_8_8(ctx);
-        case 16:
+        case 15:
           return QueriesGenerated.sourceNodeQuery_9_0(ctx);
-        case 17:
+        case 16:
           return QueriesGenerated.sourceNodeQuery_9_1(ctx);
-        case 18:
+        case 17:
           return QueriesGenerated.sourceNodeQuery_11_0(ctx);
-        case 19:
+        case 18:
           return QueriesGenerated.sourceNodeQuery_11_1(ctx);
-        case 20:
+        case 19:
           return QueriesGenerated.sourceNodeQuery_12_0(ctx);
-        case 21:
+        case 20:
           return QueriesGenerated.sourceNodeQuery_12_1(ctx);
-        case 22:
+        case 21:
           return QueriesGenerated.sourceNodeQuery_12_2(ctx);
-        case 23:
+        case 22:
           return QueriesGenerated.sourceNodeQuery_13_0(ctx);
-        case 24:
+        case 23:
           return QueriesGenerated.sourceNodeQuery_13_1(ctx);
-        case 25:
+        case 24:
           return QueriesGenerated.sourceNodeQuery_16_0(ctx);
-        case 26:
+        case 25:
           return QueriesGenerated.sourceNodeQuery_17_0(ctx);
-        case 27:
+        case 26:
           return QueriesGenerated.sourceNodeQuery_18_0(ctx);
-        case 28:
+        case 27:
           return QueriesGenerated.sourceNodeQuery_18_1(ctx);
-        case 29:
+        case 28:
           return QueriesGenerated.sourceNodeQuery_18_2(ctx);
-        case 30:
+        case 29:
           return QueriesGenerated.sourceNodeQuery_18_3(ctx);
-        case 31:
+        case 30:
           return QueriesGenerated.sourceNodeQuery_20_0(ctx);
-        case 32:
+        case 31:
           return QueriesGenerated.sourceNodeQuery_20_1(ctx);
-        case 33:
+        case 32:
           return QueriesGenerated.sourceNodeQuery_20_2(ctx);
-        case 34:
+        case 33:
           return QueriesGenerated.sourceNodeQuery_20_3(ctx);
-        case 35:
+        case 34:
           return QueriesGenerated.sourceNodeQuery_21_0(ctx);
-        case 36:
+        case 35:
           return QueriesGenerated.sourceNodeQuery_21_1(ctx);
-        case 37:
+        case 36:
           return QueriesGenerated.sourceNodeQuery_21_2(ctx);
-        case 38:
+        case 37:
           return QueriesGenerated.sourceNodeQuery_22_0(ctx);
-        case 39:
+        case 38:
           return QueriesGenerated.sourceNodeQuery_22_1(ctx);
-        case 40:
+        case 39:
           return QueriesGenerated.sourceNodeQuery_22_2(ctx);
-        case 41:
+        case 40:
           return QueriesGenerated.sourceNodeQuery_22_3(ctx);
-        case 42:
+        case 41:
           return QueriesGenerated.sourceNodeQuery_22_4(ctx);
-        case 43:
+        case 42:
           return QueriesGenerated.sourceNodeQuery_22_5(ctx);
-        case 44:
+        case 43:
           return QueriesGenerated.sourceNodeQuery_22_6(ctx);
-        case 45:
+        case 44:
           return QueriesGenerated.sourceNodeQuery_23_0(ctx);
-        case 46:
+        case 45:
           return QueriesGenerated.sourceNodeQuery_23_1(ctx);
-        case 47:
+        case 46:
           return QueriesGenerated.sourceNodeQuery_23_2(ctx);
-        case 48:
+        case 47:
           return QueriesGenerated.sourceNodeQuery_23_3(ctx);
-        case 49:
+        case 48:
           return QueriesGenerated.sourceNodeQuery_23_4(ctx);
-        case 50:
+        case 49:
           return QueriesGenerated.sourceNodeQuery_23_5(ctx);
-        case 51:
+        case 50:
           return QueriesGenerated.sourceNodeQuery_23_6(ctx);
-        case 52:
+        case 51:
           return QueriesGenerated.sourceNodeQuery_23_7(ctx);
-        case 53:
+        case 52:
           return QueriesGenerated.sourceNodeQuery_23_8(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
@@ -1190,11 +1125,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public SourceNodesQuery getSourceNodesQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snsqMethods.containsKey(id))) {
-      return super.getSourceNodesQuery(identity);
-    }
-    return snsqMethods.get(id);
+    SourceNodesQuery query = identity.forFunctionNode(snsqMethods);
+    return (query != null ? query : super.getSourceNodesQuery(identity));
   }
   private static class SNsQ implements SourceNodesQuery {
     private final int methodKey;
@@ -1269,11 +1201,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public PropertyValueQuery getPropertyValueQuery(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(pvqMethods.containsKey(id))) {
-      return super.getPropertyValueQuery(identity);
-    }
-    return pvqMethods.get(id);
+    PropertyValueQuery query = identity.forTemplateNode(pvqMethods);
+    return (query != null ? query : super.getPropertyValueQuery(identity));
   }
   private static class PVQ extends PropertyValueQuery.Base {
     private final int methodKey;
@@ -1361,11 +1290,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public IfMacroCondition getIfMacroCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(imcMethods.containsKey(id))) {
-      return super.getIfMacroCondition(identity);
-    }
-    return imcMethods.get(id);
+    IfMacroCondition query = identity.forTemplateNode(imcMethods);
+    return (query != null ? query : super.getIfMacroCondition(identity));
   }
   private static class IfMC implements IfMacroCondition {
     private final int methodKey;
@@ -1475,11 +1401,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public ReferenceTargetQuery getReferenceTargetQuery(@NotNull QueryKey queryKey) {
-    final String id = queryKey.getTemplateNode().getNodeId().toString();
-    if (!(rtqMethods.containsKey(id))) {
-      return super.getReferenceTargetQuery(queryKey);
-    }
-    return rtqMethods.get(id);
+    ReferenceTargetQuery query = queryKey.forTemplateNode(rtqMethods);
+    return (query != null ? query : super.getReferenceTargetQuery(queryKey));
   }
   private static class RTQ extends ReferenceTargetQuery.Base {
     private final int methodKey;
@@ -1608,11 +1531,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public VariableValueQuery getVariableValueQuery(@NotNull QueryKey queryKey) {
-    final String id = queryKey.getTemplateNode().getNodeId().toString();
-    if (!(vvqMethods.containsKey(id))) {
-      return super.getVariableValueQuery(queryKey);
-    }
-    return vvqMethods.get(id);
+    VariableValueQuery query = queryKey.forTemplateNode(vvqMethods);
+    return (query != null ? query : super.getVariableValueQuery(queryKey));
   }
   private static class VVQ implements VariableValueQuery {
     private final int methodKey;
@@ -1658,11 +1578,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public CallArgumentQuery getTemplateCallArgumentQuery(@NotNull QueryKey queryKey) {
-    final String id = queryKey.getTemplateNode().getNodeId().toString();
-    if (!(caqMethods.containsKey(id))) {
-      return super.getTemplateCallArgumentQuery(queryKey);
-    }
-    return caqMethods.get(id);
+    CallArgumentQuery query = queryKey.forTemplateNode(caqMethods);
+    return (query != null ? query : super.getTemplateCallArgumentQuery(queryKey));
   }
   private static class CAQ implements CallArgumentQuery {
     private final int methodKey;

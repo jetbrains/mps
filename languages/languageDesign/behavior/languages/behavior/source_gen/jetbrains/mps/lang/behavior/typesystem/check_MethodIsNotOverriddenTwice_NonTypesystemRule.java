@@ -9,7 +9,6 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -26,11 +25,7 @@ public class check_MethodIsNotOverriddenTwice_NonTypesystemRule extends Abstract
   public check_MethodIsNotOverriddenTwice_NonTypesystemRule() {
   }
   public void applyRule(final SNode conceptBehavior, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    Iterable<SNode> overridingMethods = ListSequence.fromList(SLinkOperations.getChildren(conceptBehavior, LINKS.method$w_in)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.overriddenMethod$quKH) != null;
-      }
-    });
+    Iterable<SNode> overridingMethods = ListSequence.fromList(SLinkOperations.getChildren(conceptBehavior, LINKS.method$w_in)).where((it) -> SLinkOperations.getTarget(it, LINKS.overriddenMethod$quKH) != null);
     for (SNode method : Sequence.fromIterable(overridingMethods)) {
       for (SNode anotherMethod : Sequence.fromIterable(overridingMethods)) {
         if (anotherMethod != method && SLinkOperations.getTarget(anotherMethod, LINKS.overriddenMethod$quKH) == SLinkOperations.getTarget(method, LINKS.overriddenMethod$quKH)) {

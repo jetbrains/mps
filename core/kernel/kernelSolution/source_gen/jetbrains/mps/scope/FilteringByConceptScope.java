@@ -7,9 +7,8 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 
-@GeneratedClass(node = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)/5811526266707006878", model = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)")
+@GeneratedClass(nodeId = "5811526266707006878", model = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)")
 public final class FilteringByConceptScope extends FilteringScope {
-
   private final SAbstractConcept myConcept;
 
   public FilteringByConceptScope(Scope scope, SAbstractConcept concept) {

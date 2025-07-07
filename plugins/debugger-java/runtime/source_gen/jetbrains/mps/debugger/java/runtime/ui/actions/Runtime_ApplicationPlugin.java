@@ -8,7 +8,7 @@ import com.intellij.openapi.extensions.PluginId;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.debugger.api.ui.actions.AbstractWatchableNodeActions_ActionGroup;
 
-@GeneratedClass(node = "r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)/7162597690968011948", model = "r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)")
+@GeneratedClass(nodeId = "7162597690968011948", model = "r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)")
 public class Runtime_ApplicationPlugin extends BaseApplicationPlugin {
   private final PluginId myId = PluginId.getId("jetbrains.mps.debugger.java.runtime");
 
@@ -21,13 +21,13 @@ public class Runtime_ApplicationPlugin extends BaseApplicationPlugin {
   }
 
   public void createGroups() {
-    // actions w/o parameters 
+    // actions w/o parameters
     addAction(new AddWatchAction_Action());
     addAction(new CopyStackTraceToClipboard_Action());
     addAction(new CopyValueAction_Action());
     addAction(new EditWatchAction_Action());
     addAction(new RemoveWatchAction_Action());
-    // groups 
+    // groups
     addGroup(new JavaWatchableNodeActions_ActionGroup(this));
     addGroup(new ViewAs_Group_ActionGroup(this));
     addGroup(new WatchesToolbarActions_ActionGroup(this));

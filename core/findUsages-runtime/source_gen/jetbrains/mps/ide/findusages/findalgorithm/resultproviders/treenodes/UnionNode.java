@@ -8,7 +8,7 @@ import jetbrains.mps.ide.findusages.model.SearchQuery;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
-@GeneratedClass(node = "r:266e1124-850c-4d14-97a9-eecae558e700(jetbrains.mps.ide.findusages.findalgorithm.resultproviders.treenodes)/8568892084424436240", model = "r:266e1124-850c-4d14-97a9-eecae558e700(jetbrains.mps.ide.findusages.findalgorithm.resultproviders.treenodes)")
+@GeneratedClass(nodeId = "8568892084424436240", model = "r:266e1124-850c-4d14-97a9-eecae558e700(jetbrains.mps.ide.findusages.findalgorithm.resultproviders.treenodes)")
 public class UnionNode extends BaseNode {
   @Override
   public void doFindResults(@NotNull SearchQuery query, @NotNull IFinder.FindCallback callback, @NotNull ProgressMonitor monitor) {

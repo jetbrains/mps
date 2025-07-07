@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NonNls;
 import jetbrains.mps.util.FileUtil;
 import java.io.File;
 
-@GeneratedClass(node = "r:a139668a-5a0e-46e2-a802-102190e497e5(jetbrains.mps.core.tool.environment.util)/8638838189258348895", model = "r:a139668a-5a0e-46e2-a802-102190e497e5(jetbrains.mps.core.tool.environment.util)")
+@GeneratedClass(nodeId = "8638838189258348895", model = "r:a139668a-5a0e-46e2-a802-102190e497e5(jetbrains.mps.core.tool.environment.util)")
 public final class CanonicalPath {
   @NotNull
   private final String myCanonicalPath;

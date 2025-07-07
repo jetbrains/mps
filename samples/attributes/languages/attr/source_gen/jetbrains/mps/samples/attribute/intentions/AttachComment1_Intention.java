@@ -12,7 +12,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -20,21 +19,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class AttachComment1_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AttachComment1_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:72e47166-8f77-453a-8c51-48d556a5cc3b(jetbrains.mps.samples.attribute.intentions)", "7205391946760650912"));
   }
+
   @Override
   public String getPresentation() {
     return "AttachComment1";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -44,18 +43,29 @@ public final class AttachComment1_Intention extends AbstractIntentionDescriptor 
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Attach Comment Attribute 1";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      AttributeOperations.createAndAddAttribute(node, new IAttributeDescriptor.AllAttributes(), CONCEPTS.CommentAttribute$4r);
+      new IAttributeDescriptor.AllAttributes().addNew(node, CONCEPTS.CommentAttribute$4r);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AttachComment1_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

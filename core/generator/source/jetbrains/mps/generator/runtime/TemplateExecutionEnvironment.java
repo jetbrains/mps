@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,10 +23,10 @@ import jetbrains.mps.generator.impl.TemplateGenerator;
 import jetbrains.mps.generator.impl.query.GeneratorQueryProvider;
 import jetbrains.mps.generator.template.ITemplateProcessor;
 import jetbrains.mps.generator.template.QueryExecutionContext;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -47,7 +47,7 @@ import java.util.List;
  * Unlike {@link jetbrains.mps.generator.runtime.TemplateContext}, which is call stack for particular template/rule, this class is of broader scope/life-cycle.
  * <p/>
  * This interface is not deemed to be implemented by clients. Generator subsystem provides implementation of this interface, which is an API to generator
- * facilities. New API methods may be added as needed, depecation of existing methods shall respect generated code out there.
+ * facilities. New API methods may be added as needed, deprecation of existing methods shall respect generated code out there.
  *
  * @see jetbrains.mps.generator.runtime.TemplateContext
  * Evgeny Gryaznov, 10/22/10
@@ -69,8 +69,7 @@ public interface TemplateExecutionEnvironment extends GeneratorQueryProvider.Sou
    * TemplateGenerator is implementation class and there's no apparent reason why TEE clients might need access to it.
    * @return
    */
-  @Deprecated
-  @ToRemove(version = 2020.1)
+@Deprecated(since = "2020.1", forRemoval = true)
   @NotNull
   TemplateGenerator getGenerator();
 
@@ -103,8 +102,33 @@ public interface TemplateExecutionEnvironment extends GeneratorQueryProvider.Sou
 
   /**
    * Support for $INSERT$ macro, adopt a node, prepare it to get inserted into output model
+   * Doesn't tolerate {@code null} for node
+   * @return not {@code null} value, either the supplied {@code node}, or its copy.
    */
   SNode insertNode(SNode node, SNodeReference templateNode, TemplateContext templateContext) throws GenerationCanceledException, GenerationFailureException;
+
+  /**
+   * Support for $CALL-SITE$ macro, provides a node that has been produced by template processor earlier.
+   * XXX Not sure I need this, could get the value right from TC, but generally a level of indirection doesn't hurt
+   * FIXME why do I stick to SNodeReference to identify template location, just for the sake of navigation? Can I use smth like TemplateDeclarationKey instead?
+   * @return empty list if no call site node is available
+   *         Though we support single node as a call site at the moment, use Collection here for uniformity in generated templates.
+   *         XXX Perhaps, later I'd reconsider and provide list of call site nodes to consume by clients
+   * @since 2020.3
+   */
+  Collection<SNode> callSiteNode(SNodeReference templateNode, TemplateContext templateContext) throws GenerationCanceledException, GenerationFailureException;
+
+  /**
+   * Support for $CALL-SITE$ macro, installs a node from template call site into a {@link TemplateContext} for later use from
+   * within a {@code IParameterizedTemplate} with {@code needCallSite == true}.
+   * Invoke only when target template does need call site.
+   *
+   * @param templateNode identifies template invocation (CALL/SWITCH) location, not null
+   * @param templateContext context to argument, not null
+   * @param callSiteNode call site nodes, not null
+   * @return context that has call site node recorded (or cleared, if no call site node could be recovered from the argument)
+   */
+  TemplateContext withCallSiteNode(SNodeReference templateNode, TemplateContext templateContext, Collection<SNode> callSiteNode);
 
   /**
    * FIXME provisional API just to get rid of TemplateGenerator:getGenerator exposure. Would be great to use smth like TemplateDeclarationKey, just the name is unfortunate
@@ -121,22 +145,6 @@ public interface TemplateExecutionEnvironment extends GeneratorQueryProvider.Sou
 
   @Nullable
   Collection<SNode> trySwitch(SNodeReference _switch, TemplateContext context) throws GenerationException;
-
-  /**
-   * Retrieve reusable runtime instance that represents TemplateDeclaration. Clients may keep an instance for subsequent reuse during the
-   * same transformation session.
-   * This is low-level mechanism for sophisticated use, generated templates (unless they keep instances obtained this way) shall resort to other methods to
-   * invoke templates, namely {@link #callSite(TemplateDeclarationKey,SNodeReference)}.
-   * @deprecated not bad per se, just no need to expose, shall become private
-   * @param templateDeclaration identifies template to load
-   * @param callSite identifies location where invocation happens
-   * @return never {@code null}, non necessarily exact generated class, might be a decorator that traces uses or reports errors.
-   * @since 2018.3
-   */
-  @NotNull
-  @Deprecated
-  @ToRemove(version = 2020.1)
-  TemplateDeclaration findTemplate(@NotNull TemplateDeclarationKey templateDeclaration, @NotNull SNodeReference callSite);
 
   /**
    * Intended for use from generated code when invoking compiled templates from the same model/module (those we can instantiate directly)
@@ -161,7 +169,7 @@ public interface TemplateExecutionEnvironment extends GeneratorQueryProvider.Sou
   TemplateCallSite callSite(@NotNull TemplateDeclarationKey templateIdentityKey, @NotNull SNodeReference callSite);
 
   /**
-   * Intended for use from generated templates to obtain key for {@link #findTemplate(TemplateDeclarationKey, SNodeReference)}
+   * Intended for use from generated templates to obtain key for {@link #callSite(TemplateDeclarationKey, SNodeReference)}
    * FIXME PROVISIONAL CODE, PLEASE CONSIDER ANOTHER APPROACH
    *  see method impl for details
    * @since 2018.3
@@ -172,7 +180,44 @@ public interface TemplateExecutionEnvironment extends GeneratorQueryProvider.Sou
 
   void registerLabel(SNode inputNode, SNode outputNode, String mappingLabel);
 
+  /**
+   * Map output nodes to a composite key.
+   * FIXME unclear if I shall allow for null key2, and, if yes, treat that as regular registerLabel then?
+   * @since 2020.3
+   */
+  void registerCompositeLabel(/*NotNull*/Object key1, /*???*/ Object key2, /*NotNull*/ Collection<SNode> outputNode, /*NotNull*/ String mappingLabel);
+
+  // XXX can I switch to collection instead of Iterable?
   void registerLabel(SNode inputNode, Iterable<SNode> outputNodes, String mappingLabel);
+
+  /**
+   * A handy replacement for direct sNode.setReference(MAF.getRefLink(), SReference.create(MAF.getRefLink), PF.getInstance().createModelRef, PF.getInstance.createNodeId) call
+   * @param outputNode not null
+   * @param role not null
+   * @param targetModelRef not null
+   * @param targetNodeId not null
+   */
+  void associate(SNode outputNode, SReferenceLink role, String targetModelRef, String targetNodeId);
+
+  /**
+   * Replacement for direct {@code node.addChild()} call to facilitate additional operations
+   * template processing environment may want to impose for added children
+   * @since 2021.1
+   * @param outputNode parent, not null
+   * @param role aggregation, not null
+   * @param child child to add to the role into the parent, not null
+   */
+  void aggregate(SNode outputNode, SContainmentLink role, SNode child);
+
+  /**
+   * Replacement for direct {@code node.addChild()} call, much like
+   * {@link #aggregate(SNode, SContainmentLink, SNode)}, just for a sequence of children from the same role
+   * @since 2021.1
+   * @param outputNode parent, not null
+   * @param role aggregation, not null
+   * @param children list of child nodes to add to the role into the parent, may be null
+   */
+  void aggregate(SNode outputNode, SContainmentLink role, @Nullable Iterable<SNode> children);
 
   /**
    * Support for references between template nodes

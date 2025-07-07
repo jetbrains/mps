@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -24,7 +23,6 @@ import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -33,17 +31,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class TryCatchStatement__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement");
 
-  public static final SMethod<Void> collectUncaughtMethodThrowables_id4Gt7ANIVH8f = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectUncaughtMethodThrowables").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4Gt7ANIVH8f").build(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
-  public static final SMethod<List<SNode>> getCatchClauses_id3eptmOG0XgA = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getCatchClauses").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3eptmOG0XgA").build();
-  public static final SMethod<Void> collectUncatchedThrowables_id3JrbGEZ7vt$ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectUncatchedThrowables").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3JrbGEZ7vt$").build(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
+  public static final SMethod<Void> collectUncaughtMethodThrowables_id4Gt7ANIVH8f = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectUncaughtMethodThrowables").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5412515780383134223L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
+  public static final SMethod<SNode> getFinallyClause_id7LX8cXzsyj1 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getFinallyClause").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8970362107890640065L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<List<SNode>> getCatchClauses_id3eptmOG0XgA = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getCatchClauses").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3718132079121388582L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Void> collectUncatchedThrowables_id3JrbGEZ7vt$ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectUncatchedThrowables").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4313092516462065508L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(collectUncaughtMethodThrowables_id4Gt7ANIVH8f, getCatchClauses_id3eptmOG0XgA, collectUncatchedThrowables_id3JrbGEZ7vt$);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(collectUncaughtMethodThrowables_id4Gt7ANIVH8f, getFinallyClause_id7LX8cXzsyj1, getCatchClauses_id3eptmOG0XgA, collectUncatchedThrowables_id3JrbGEZ7vt$);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
   /*package*/ static void collectUncaughtMethodThrowables_id4Gt7ANIVH8f(@NotNull SNode __thisNode__, Set<SNode> throwables, boolean ignoreMayBeThrowables) {
     TryCatchStatement__BehaviorDescriptor.collectUncatchedThrowables_id3JrbGEZ7vt$.invoke(SNodeOperations.asSConcept(CONCEPTS.TryCatchStatement$XR), throwables, SLinkOperations.getTarget(__thisNode__, LINKS.body$pDF2), SLinkOperations.getChildren(__thisNode__, LINKS.catchClause$dMnP), ((boolean) ignoreMayBeThrowables));
+  }
+  /*package*/ static SNode getFinallyClause_id7LX8cXzsyj1(@NotNull SNode __thisNode__) {
+    return null;
   }
   /*package*/ static List<SNode> getCatchClauses_id3eptmOG0XgA(@NotNull SNode __thisNode__) {
     return SLinkOperations.getChildren(__thisNode__, LINKS.catchClause$dMnP);
@@ -52,13 +54,13 @@ public final class TryCatchStatement__BehaviorDescriptor extends BaseBHDescripto
     Set<SNode> thrownsFromBody = SetSequence.fromSet(new HashSet<SNode>());
     StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(body, thrownsFromBody, ((boolean) ignoreMayBeThrowables));
 
-    // remove what we have catched 
+    // remove what we have catched
     for (SNode caatch : ListSequence.fromList(catchClause)) {
       Set<SNode> toRemove = SetSequence.fromSet(new HashSet<SNode>());
       for (SNode thrownFromBody : SetSequence.fromSet(thrownsFromBody)) {
         List<SNode> caughtTypes = AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(caatch);
         for (SNode caughtType : ListSequence.fromList(caughtTypes)) {
-          if (TypecheckingFacade.getFromContext().isSubtype(_quotation_createNode_1bi1ep_a0a0a1a1a4a2(thrownFromBody), caughtType)) {
+          if (TypecheckingFacade.getFromContext().isSubtype(_quotation_createNode_1bi1ep_a0a0a1a1a4a3(thrownFromBody), caughtType)) {
             SetSequence.fromSet(toRemove).addElement(thrownFromBody);
           }
         }
@@ -67,7 +69,7 @@ public final class TryCatchStatement__BehaviorDescriptor extends BaseBHDescripto
     }
     SetSequence.fromSet(throwables).addSequence(SetSequence.fromSet(thrownsFromBody));
 
-    // now collect what was thrown in catch blocks 
+    // now collect what was thrown in catch blocks
     for (SNode caatch : ListSequence.fromList(catchClause)) {
       StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(AbstractCatchClause__BehaviorDescriptor.getCatchBody_id4iVGRTTf1R5.invoke(caatch), throwables, ((boolean) ignoreMayBeThrowables));
     }
@@ -92,6 +94,8 @@ public final class TryCatchStatement__BehaviorDescriptor extends BaseBHDescripto
         collectUncaughtMethodThrowables_id4Gt7ANIVH8f(node, (Set<SNode>) parameters[0], ((boolean) (Boolean) parameters[1]));
         return null;
       case 1:
+        return (T) ((SNode) getFinallyClause_id7LX8cXzsyj1(node));
+      case 2:
         return (T) ((List<SNode>) getCatchClauses_id3eptmOG0XgA(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -105,7 +109,7 @@ public final class TryCatchStatement__BehaviorDescriptor extends BaseBHDescripto
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
-      case 2:
+      case 3:
         collectUncatchedThrowables_id3JrbGEZ7vt$(concept, (Set<SNode>) parameters[0], (SNode) parameters[1], (List<SNode>) parameters[2], ((boolean) (Boolean) parameters[3]));
         return null;
       default:
@@ -124,10 +128,10 @@ public final class TryCatchStatement__BehaviorDescriptor extends BaseBHDescripto
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  private static SNode _quotation_createNode_1bi1ep_a0a0a1a1a4a2(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
+  private static SNode _quotation_createNode_1bi1ep_a0a0a1a1a4a3(Object parameter_1) {
     SNode quotedNode_2 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+    quotedNode_2 = nb.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), (SNode) parameter_1);
     return quotedNode_2;
   }

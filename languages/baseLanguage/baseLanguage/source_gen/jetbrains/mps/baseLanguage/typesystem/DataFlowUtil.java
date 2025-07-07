@@ -7,7 +7,7 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.generator.TransientModelsModule;
+import jetbrains.mps.extapi.module.TransientSModule;
 import jetbrains.mps.lang.dataFlow.framework.Program;
 import jetbrains.mps.lang.dataFlow.DataFlow;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -17,6 +17,8 @@ import jetbrains.mps.lang.dataFlow.DataflowBuilderException;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.dataFlow.framework.instructions.Instruction;
+import java.util.HashSet;
 import jetbrains.mps.baseLanguage.behavior.ILocalDeclaration__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.ILocalReference__BehaviorDescriptor;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
@@ -48,7 +50,13 @@ public class DataFlowUtil {
       return;
     }
     SModel m = SNodeOperations.getModel(statementList);
-    if (m != null && (m.getModule() instanceof TransientModelsModule)) {
+    // XXX I don't quite get the idea to exclude transient modules here; the marker is kind of
+    // overloaded/unclearly defined. Generally, we use transients for modules users don't intend to 
+    // work with or care to get properly analyzed/checked (e.g. intermediate model transformations),
+    // however, don't quite understand why can't we allow users to perform the check on any model they like.
+    // Besides, there's also unclear distinction between transient model and transient module; I wonder
+    // if we have to respect former in addition/instead of latter.
+    if (m != null && (m.getModule() instanceof TransientSModule)) {
       return;
     }
     try {
@@ -61,12 +69,12 @@ public class DataFlowUtil {
         return;
       }
       checkUnreachable(typeCheckingContext, program);
-      checkUninitializedReads(typeCheckingContext, program);
-      checkUnusedAssignments(typeCheckingContext, program);
       checkUnusedVariables(typeCheckingContext, statementList, program);
       if (checkReturns) {
         checkReturns(typeCheckingContext, program);
       }
+      checkUninitializedReads(typeCheckingContext, program);
+      checkUnusedAssignments(typeCheckingContext, program);
     } catch (DataflowBuilderException e) {
       throw new RuntimeException("Building dataflow for node: " + statementList.getNodeId().toString() + " model: " + statementList.getModel(), e);
     }
@@ -90,9 +98,17 @@ public class DataFlowUtil {
         if (SNodeOperations.isInstanceOf(nodeToSelect, CONCEPTS.LocalVariableDeclarationStatement$4w)) {
           nodeToSelect = SLinkOperations.getTarget(SNodeOperations.cast(nodeToSelect, CONCEPTS.LocalVariableDeclarationStatement$4w), LINKS.localVariableDeclaration$RpjM);
         }
-        {
-          final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(nodeToSelect, "Return expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1223640343628", null, errorTarget);
+        SNode m = SNodeOperations.getNodeAncestor(nodeToSelect, CONCEPTS.BaseMethodDeclaration$kD, true, false);
+        if ((m != null) && !(SNodeOperations.isInstanceOf(nodeToSelect, CONCEPTS.StatementList$m_))) {
+          {
+            final MessageTarget errorTarget = new NodeMessageTarget();
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(m, "Missing return statement", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7854334384276069765", null, errorTarget);
+          }
+        } else {
+          {
+            final MessageTarget errorTarget = new NodeMessageTarget();
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(nodeToSelect, "Return expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1223640343628", null, errorTarget);
+          }
         }
       }
     }
@@ -105,15 +121,39 @@ public class DataFlowUtil {
 
   @CheckingMethod
   private static void checkUnreachable(final TypeCheckingContext typeCheckingContext, Program program) {
-    Set<SNode> unreachable = DataFlow.getUnreachableNodes(program);
+    Set<SNode> unreachable = DataFlowUtil.getUnreachableNodes(program);
     for (SNode n : unreachable) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(n, "Unreachable node ", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1597542831870510169", null, errorTarget);
       }
-      return;
     }
   }
+  public static Set<SNode> getUnreachableNodes(Program program) {
+    Set<Instruction> unreachable = program.getUnreachableInstructions();
+    Set<SNode> unreachableNodes = new HashSet<SNode>();
+    for (Instruction i : unreachable) {
+      if (!(DataFlowUtil.mayBeUnreachable(i)) && i.getSource() != null) {
+        SNode unreachableNode = (SNode) i.getSource();
+        if (SNodeOperations.isInstanceOf(unreachableNode, CONCEPTS.Statement$P6)) {
+          unreachableNodes.add((SNode) i.getSource());
+        } else {
+          if (SNodeOperations.isInstanceOf(unreachableNode, CONCEPTS.StatementList$m_)) {
+            if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(unreachableNode), CONCEPTS.Statement$P6))) {
+              unreachableNodes.add((SNode) i.getSource());
+            }
+          } else {
+            unreachableNodes.add(SNodeOperations.getNodeAncestor(unreachableNode, CONCEPTS.Statement$P6, true, false));
+          }
+        }
+      }
+    }
+    return unreachableNodes;
+  }
+  private static boolean mayBeUnreachable(Instruction instruction) {
+    return Boolean.TRUE.equals(instruction.getUserObject(DataFlow.MAY_BE_UNREACHABLE));
+  }
+
 
   @CheckingMethod
   private static void checkUninitializedReads(final TypeCheckingContext typeCheckingContext, Program program) {
@@ -153,7 +193,7 @@ public class DataFlowUtil {
                 final MessageTarget errorTarget = new NodeMessageTarget();
                 IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(assignment, "Unused assignment", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7567158975344997930", null, errorTarget);
                 {
-                  BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveUnusedAssignment_QuickFix", false);
+                  BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveUnusedAssignment_QuickFix", "7567158975344997933", false);
                   _reporter_2309309498.addIntentionProvider(intentionProvider);
                 }
               }
@@ -184,16 +224,34 @@ public class DataFlowUtil {
               final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(SLinkOperations.getTarget(decl, LINKS.initializer$2twD), "Variable '" + SPropertyOperations.getString(decl, PROPS.name$MnvL) + "' initializer is redundant", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "963887337804010668", null, errorTarget);
               {
-                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveUnusedAssignment_QuickFix", false);
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveUnusedAssignment_QuickFix", "963887337804010669", false);
+                _reporter_2309309498.addIntentionProvider(intentionProvider);
+              }
+            }
+          } else if (SNodeOperations.isInstanceOf(write, CONCEPTS.BaseAssignmentExpression$PA)) {
+            {
+              final MessageTarget errorTarget = new NodeMessageTarget();
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(write, "Unused assignment", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5885571348732287789", null, errorTarget);
+              {
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveUnusedAssignment_QuickFix", "5885571348732287793", false);
+                _reporter_2309309498.addIntentionProvider(intentionProvider);
+              }
+            }
+          } else if (SNodeOperations.isInstanceOf(write, CONCEPTS.IVariableAssignment$mo)) {
+            {
+              final MessageTarget errorTarget = new NodeMessageTarget();
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(write, "Unused variable", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5885571348733373087", null, errorTarget);
+              {
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveUnusedAssignment_QuickFix", "5885571348733373091", false);
                 _reporter_2309309498.addIntentionProvider(intentionProvider);
               }
             }
           } else {
             {
               final MessageTarget errorTarget = new NodeMessageTarget();
-              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(write, "Unused assignment", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1225278681706", null, errorTarget);
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(write, "Unused declaration", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1225278681706", null, errorTarget);
               {
-                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveUnusedAssignment_QuickFix", false);
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveUnusedAssignment_QuickFix", "1829647324192782278", false);
                 _reporter_2309309498.addIntentionProvider(intentionProvider);
               }
             }
@@ -211,10 +269,21 @@ public class DataFlowUtil {
         continue;
       }
       if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(var), CONCEPTS.CatchClause$Ig)) && SNodeOperations.getNodeAncestor(var, CONCEPTS.Quotation$Vl, false, false) == null) {
-        if ((!(SNodeOperations.isInstanceOf(var, CONCEPTS.LocalVariableDeclaration$41)) || SLinkOperations.getTarget(SNodeOperations.cast(var, CONCEPTS.LocalVariableDeclaration$41), LINKS.initializer$2twD) == null) && !(SetSequence.fromSet(usedVariables).contains(var))) {
-          {
-            final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(var, "Unused variable", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8937659523942275424", null, errorTarget);
+        if (!(SetSequence.fromSet(usedVariables).contains(var))) {
+          if (!(SNodeOperations.isInstanceOf(var, CONCEPTS.LocalVariableDeclaration$41))) {
+            {
+              final MessageTarget errorTarget = new NodeMessageTarget();
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(var, "Unused variable", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8937659523942275424", null, errorTarget);
+            }
+          } else {
+            {
+              final MessageTarget errorTarget = new NodeMessageTarget();
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(var, "Unused variable", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4056233746948448436", null, errorTarget);
+              {
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveUnusedLocalVariable_QuickFix", "4056233746948450889", false);
+                _reporter_2309309498.addIntentionProvider(intentionProvider);
+              }
+            }
           }
         }
       }
@@ -231,6 +300,7 @@ public class DataFlowUtil {
     /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
     /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
     /*package*/ static final SConcept LocalVariableDeclarationStatement$4w = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
     /*package*/ static final SInterfaceConcept ILocalReference$Us = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2d45f01afccba89dL, "jetbrains.mps.baseLanguage.structure.ILocalReference");
     /*package*/ static final SConcept BaseAssignmentExpression$PA = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, "jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression");
     /*package*/ static final SInterfaceConcept IControlFlowInterrupter$Ra = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x7c8556154508e980L, "jetbrains.mps.baseLanguage.structure.IControlFlowInterrupter");

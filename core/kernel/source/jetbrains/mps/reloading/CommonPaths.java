@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,19 +15,10 @@
  */
 package jetbrains.mps.reloading;
 
-import jetbrains.mps.util.ClassPathReader;
 import jetbrains.mps.util.ClassType;
-import jetbrains.mps.util.PathManager;
-import jetbrains.mps.util.annotation.ToRemove;
-import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.QualifiedPath;
-import jetbrains.mps.vfs.VFSManager;
-import jetbrains.mps.vfs.util.PathUtil;
+import org.jetbrains.mps.annotations.Internal;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -54,15 +45,18 @@ public final class CommonPaths {
 //    }
   }
 
-  @Deprecated
-  @ToRemove(version = 2019.1)
-  //use getPaths
-  public static List<String> getMPSPaths(ClassType type) {
-    // there's only 1 use in Ant_Command with ClassType.JDK_TOOLS
-    return getPaths(type).stream().map(qualifiedPath -> qualifiedPath.getPath()).collect(Collectors.toList());
+  /**
+   * Don't use outside of MPS
+   */
+  @Internal
+  public static List<String> getJDKToolsPath() {
+    // FIXME is there true need for the method?
+    return getPaths(ClassType.JDK_TOOLS).stream().map(QualifiedPath::getPath).collect(Collectors.toList());
   }
 
+  @Deprecated(since = "2021.3", forRemoval = true)
   public static List<String> getJDKPath() {
+    // XXX there's only 1 use of the method, does it justify its existence?
     return getJDKPathInternal().stream()
                                .map(QualifiedPath::getPath)
                                .collect(Collectors.toList());
@@ -70,14 +64,5 @@ public final class CommonPaths {
 
   private static List<QualifiedPath> getJDKPathInternal() {
     return SDKDiscovery.discover();
-  }
-
-  private static void addIfExists(Collection<QualifiedPath> item, String path) {
-    for (String basePath : PathManager.getHomePaths()) {
-      String fullPath = PathUtil.toSystemIndependent(basePath) + IFileSystem.SEPARATOR + path;
-      if (new File(fullPath).exists()) {
-        item.add(new QualifiedPath(path.endsWith(".jar") ? VFSManager.JAR_FS : VFSManager.FILE_FS, fullPath));
-      }
-    }
   }
 }

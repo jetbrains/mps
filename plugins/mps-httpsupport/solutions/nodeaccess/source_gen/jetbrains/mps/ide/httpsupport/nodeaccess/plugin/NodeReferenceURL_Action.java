@@ -30,6 +30,7 @@ public class NodeReferenceURL_Action extends BaseAction {
     super("Copy Node Reference as URL", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -38,7 +39,7 @@ public class NodeReferenceURL_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     SModel model = SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE));
-    return !(TemporaryModels.isTemporary(model)) && !((model instanceof TransientSModel));
+    return !(TemporaryModels.isTemporary(model)) && !(model instanceof TransientSModel);
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {

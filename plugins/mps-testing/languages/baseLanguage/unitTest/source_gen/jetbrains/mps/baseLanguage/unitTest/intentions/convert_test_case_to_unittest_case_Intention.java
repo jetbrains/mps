@@ -10,51 +10,42 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.smodel.SReference;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
-import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class convert_test_case_to_unittest_case_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public convert_test_case_to_unittest_case_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:ae5a3427-e70c-4b57-99b6-7ec8fc28a394(jetbrains.mps.baseLanguage.unitTest.intentions)", "2230548360390192818"));
   }
+
   @Override
   public String getPresentation() {
     return "convert_test_case_to_unittest_case";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), CONCEPTS.ClassConcept$bK) && TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(node, LINKS.superclass$Mp9$), _quotation_createNode_g240td_b0a0a0a());
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -64,10 +55,12 @@ public final class convert_test_case_to_unittest_case_Intention extends Abstract
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Convert to UnitTest Case";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode testCase = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.BTestCase$_a);
@@ -78,7 +71,7 @@ public final class convert_test_case_to_unittest_case_Intention extends Abstract
       }
       for (SNode m : Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(node))) {
         if (SPropertyOperations.getString(m, PROPS.name$MnvL).startsWith("test")) {
-          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(testCase, LINKS.testMethodList$EShx), LINKS.testMethod$eMP1)).addElement(_quotation_createNode_g240td_a0a0a0a4a0(SNodeOperations.deleteNode(SLinkOperations.getTarget(m, LINKS.body$5xQk)), SPropertyOperations.getString(m, PROPS.name$MnvL).substring("test".length())));
+          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(testCase, LINKS.testMethodList$EShx), LINKS.testMethod$eMP1)).addElement(createTestMethod_g240td_a0a0a0a4a0(SPropertyOperations.getString(m, PROPS.name$MnvL).substring("test".length()), SNodeOperations.deleteNode(SLinkOperations.getTarget(m, LINKS.body$5xQk))));
         } else {
           ListSequence.fromList(SLinkOperations.getChildren(testCase, LINKS.member$L_2d)).addElement(SNodeOperations.deleteNode(m));
         }
@@ -87,37 +80,53 @@ public final class convert_test_case_to_unittest_case_Intention extends Abstract
         ListSequence.fromList(SLinkOperations.getChildren(testCase, LINKS.member$L_2d)).addElement(SNodeOperations.deleteNode(f));
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), CONCEPTS.ClassConcept$bK) && TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(node, LINKS.superclass$Mp9$), _quotation_createNode_g240td_b0a0a0a());
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return convert_test_case_to_unittest_case_Intention.this;
     }
+
+  }
+  private static SNode createTestMethod_g240td_a0a0a0a4a0(String p0, SNode p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TestMethod$FX);
+    n0.setProperty(PROPS.methodName$OVU2, p0);
+    n0.forChild(LINKS.body$5xQk).initNode(p1, CONCEPTS.StatementList$m_, true);
+    n0.forChild(LINKS.returnType$5xoi).init(CONCEPTS.VoidType$BF);
+    return n0.getResult();
   }
   private static SNode _quotation_createNode_g240td_b0a0a0a() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
-    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("49808fad-9d41-4b96-83fa-9231640f6b2b/java:junit.framework(JUnit/)"), facade.createNodeId("~TestCase")));
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+    quotedNode_1 = nb.getResult();
+    nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "49808fad-9d41-4b96-83fa-9231640f6b2b/java:junit.framework(JUnit/)/~TestCase");
     return quotedNode_1;
-  }
-  private static SNode _quotation_createNode_g240td_a0a0a0a4a0(Object parameter_1, Object parameter_2) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode quotedNode_3 = null;
-    SNode quotedNode_4 = null;
-    SNode quotedNode_5 = null;
-    quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, "jetbrains.mps.baseLanguage.unitTest"), 0x110dc92748eL, "TestMethod")).getResult();
-    SNodeAccessUtil.setPropertyValue(quotedNode_3, MetaAdapterFactory.getProperty(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dc92748eL, 0x110dc927490L, "methodName"), (String) parameter_2);
-    quotedNode_4 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType")).getResult();
-    quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType"), quotedNode_4);
-    quotedNode_5 = (SNode) parameter_1;
-    if (quotedNode_5 != null) {
-      quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body"), SNodeOperations.copyIfNecessary(quotedNode_5));
-    }
-    return quotedNode_3;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
     /*package*/ static final SConcept BTestCase$_a = MetaAdapterFactory.getConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dc94e923L, "jetbrains.mps.baseLanguage.unitTest.structure.BTestCase");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept TestMethod$FX = MetaAdapterFactory.getConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dc92748eL, "jetbrains.mps.baseLanguage.unitTest.structure.TestMethod");
+    /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
+    /*package*/ static final SConcept VoidType$BF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty testCaseName$ESwy = MetaAdapterFactory.getProperty(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dc94e923L, 0x110dc94e925L, "testCaseName");
+    /*package*/ static final SProperty methodName$OVU2 = MetaAdapterFactory.getProperty(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dc92748eL, 0x110dc927490L, "methodName");
   }
 
   private static final class LINKS {
@@ -127,10 +136,6 @@ public final class convert_test_case_to_unittest_case_Intention extends Abstract
     /*package*/ static final SContainmentLink testMethod$eMP1 = MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dc95061dL, 0x110dc95061eL, "testMethod");
     /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
     /*package*/ static final SContainmentLink member$L_2d = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty testCaseName$ESwy = MetaAdapterFactory.getProperty(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dc94e923L, 0x110dc94e925L, "testCaseName");
+    /*package*/ static final SContainmentLink returnType$5xoi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
   }
 }

@@ -15,8 +15,7 @@ import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.generator.runtime.ApplySink;
-import jetbrains.mps.generator.runtime.NodeWeaveFacility;
-import java.util.ArrayList;
+import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -24,6 +23,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class Template_reduce_CommandList extends TemplateDeclarationBase {
 
   public Template_reduce_CommandList() {
+    super(new MO());
   }
 
   public SNodeReference getTemplateNode() {
@@ -34,8 +34,8 @@ public class Template_reduce_CommandList extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
-    final Iterable<SNode> copyListInput1 = QueriesGenerated.sourceNodesQuery_18_0(new SourceSubstituteMacroNodesContext(context, copySrcListMacro_n3juy2_b0a0a2a6));
-    tlist1 = environment.copyNodes(copyListInput1, copySrcListMacro_n3juy2_b0a0a2a6, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039928814", context);
+    final Iterable<SNode> copyListInput1 = QueriesGenerated.sourceNodesQuery_18_0(new SourceSubstituteMacroNodesContext(context, copySrcListMacro));
+    tlist1 = environment.copyNodes(copyListInput1, copySrcListMacro, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039928814", context);
     FragmentResult rv = listFragment(0, tlist1);
     return rv;
   }
@@ -44,16 +44,16 @@ public class Template_reduce_CommandList extends TemplateDeclarationBase {
     applyPart0(context).reportTo(sink);
   }
 
-  public Collection<SNode> weave(@NotNull NodeWeaveFacility weaveSupport) throws GenerationException {
-    ArrayList<SNode> rv = new ArrayList<SNode>();
-    applyPart0(weaveSupport.getTemplateContext()).weaveWith(weaveSupport).reportTo(rv);
-    return rv;
+  /*package*/ static final class MO implements MetaObjectContainer {
+
+
+
+    @Override
+    public SContainmentLink[] aggregations() {
+      SContainmentLink[] rv = new SContainmentLink[1];
+      rv[0] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+      return rv;
+    }
   }
-  @Override
-  protected SContainmentLink[] initAggregationLinks() {
-    SContainmentLink[] rv = new SContainmentLink[1];
-    rv[0] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    return rv;
-  }
-  private static final SNodePointer copySrcListMacro_n3juy2_b0a0a2a6 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039928822");
+  private static final SNodePointer copySrcListMacro = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039928822");
 }

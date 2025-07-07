@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,12 +20,14 @@ import com.intellij.util.xmlb.annotations.Attribute;
 import com.intellij.util.xmlb.annotations.MapAnnotation;
 import com.intellij.util.xmlb.annotations.Tag;
 import com.intellij.util.xmlb.annotations.Transient;
-import jetbrains.mps.classloading.IdeaPluginModuleFacet;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.persistence.MementoUtil;
 import jetbrains.mps.project.ModuleId;
+import jetbrains.mps.project.facets.JavaModuleFacet.Compile;
+import jetbrains.mps.project.facets.JavaModuleFacet.LoadClasses;
+import jetbrains.mps.project.facets.JavaModuleFacet.LoadExtensions;
+import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
-import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import org.jdom.Element;
@@ -69,17 +71,22 @@ public final class MPSConfigurationBean {
     // build descriptor that reflects actual state
     SolutionDescriptor sd = new SolutionDescriptor();
     sd.setId(ModuleId.fromString(myState.UUID));
-    sd.setOutputPath(myState.generatorOutputPath);
-    sd.setCompileInMPS(false);
-    sd.getModuleFacetDescriptors().add(new ModuleFacetDescriptor(IdeaPluginModuleFacet.FACET_TYPE, new MementoImpl()));
+    sd.setOutputRoot(myState.generatorOutputPath);
+    // XXX there's SingleModuleMPSSupport which constructs SolutionDescriptor for SolutionIdea, too, and it doesn't add any module facets?!
+    // XXX Here we used to add IdeaPluginModuleFacet (ecde62c5), which I don't quite understand the reason for.
+    //     to my best knowledge, we use MPS to write code IDEA can use like any other hand-written code, and we
+    //     don't care for MPS to load it. Compile - yes, but we don't need CustomClassLoadingFacet for that, IMO.
+    //     There's a new change in MPS, where we treat modules with CL capability (including that of CCLF) as
+    //     "capable to provide extensions into MPS", which I don't believe is the case for IDEA modules with MPS facet.
+    // Now, I just tell there's compiled code but instruct MPS not to attempt to load classes (let alone extensions). Perhaps, Compile.None or
+    // another GenerationTargetFacet would be better way to go.
+    sd.getModuleFacetDescriptors().add(JavaModuleFacetImpl.forJavaCodeModule(Compile.External, LoadClasses.NotAvailable, LoadExtensions.NotAvailable));
     Map<SLanguage, Integer> languageVersions = sd.getLanguageVersions();
     final PersistenceFacade pf = PersistenceFacade.getInstance();
     if (myState.languageVersions != null) {
       for (Entry<String, Integer> lv : myState.languageVersions.entrySet()) {
         languageVersions.put(pf.createLanguage(lv.getKey()), lv.getValue());
       }
-    } else {
-      sd.setHasLanguageVersions(false);
     }
 
     Map<SModuleReference, Integer> depVersions = sd.getDependencyVersions();
@@ -87,8 +94,6 @@ public final class MPSConfigurationBean {
       for (Entry<String, Integer> lv : myState.dependencyVersions.entrySet()) {
         depVersions.put(ModuleReference.parseReference(lv.getKey()), lv.getValue());
       }
-    } else {
-      sd.setHasDependencyVersions(false);
     }
     List<ModelRootDescriptor> roots = new ArrayList<>();
     fromPersistableState(roots);
@@ -165,7 +170,7 @@ public final class MPSConfigurationBean {
   /*package*/ State toState(SolutionDescriptor actualDescriptor) {
     State result = new State();
     result.UUID = actualDescriptor.getId().toString();
-    result.generatorOutputPath = actualDescriptor.getOutputPath();
+    result.generatorOutputPath = actualDescriptor.getOutputRoot();
     result.useModuleSourceFolder = myState.useModuleSourceFolder;
     result.useTransientOutputFolder = myState.useTransientOutputFolder;
     Map<SLanguage, Integer> lVersions = actualDescriptor.getLanguageVersions();

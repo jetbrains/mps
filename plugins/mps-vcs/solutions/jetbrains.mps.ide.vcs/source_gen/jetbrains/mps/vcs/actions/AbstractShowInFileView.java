@@ -4,6 +4,8 @@ package jetbrains.mps.vcs.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.vcs.actions.AbstractVcsAction;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.vcs.actions.VcsContext;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -12,11 +14,16 @@ import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.actionSystem.Presentation;
 import java.util.List;
-import org.jetbrains.annotations.NotNull;
 
-@GeneratedClass(node = "r:b2d164a2-987a-4229-af85-1f4f7d3ef996(jetbrains.mps.vcs.actions)/7705742079275757770", model = "r:b2d164a2-987a-4229-af85-1f4f7d3ef996(jetbrains.mps.vcs.actions)")
+@GeneratedClass(nodeId = "7705742079275757770", model = "r:b2d164a2-987a-4229-af85-1f4f7d3ef996(jetbrains.mps.vcs.actions)")
 /*package*/ abstract class AbstractShowInFileView extends AbstractVcsAction {
   /*package*/ AbstractShowInFileView() {
+  }
+
+  @NotNull
+  @Override
+  public ActionUpdateThread getActionUpdateThread() {
+    return ActionUpdateThread.BGT;
   }
   @Override
   protected void actionPerformed(VcsContext e) {

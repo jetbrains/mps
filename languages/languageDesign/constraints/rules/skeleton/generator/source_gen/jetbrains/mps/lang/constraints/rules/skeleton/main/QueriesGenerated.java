@@ -21,7 +21,6 @@ import jetbrains.mps.generator.template.WeavingAnchorContext;
 import jetbrains.mps.baseLanguage.behavior.StatementList__BehaviorDescriptor;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.project.behavior.ModelReference__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import java.util.Map;
@@ -35,7 +34,6 @@ import jetbrains.mps.generator.impl.query.WeaveRuleQuery;
 import jetbrains.mps.generator.impl.query.WeaveAnchorQuery;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.impl.query.SourceNodesQuery;
-import jetbrains.mps.generator.impl.query.QueryKeyImpl;
 import java.util.Collection;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.generator.impl.query.PropertyValueQuery;
@@ -91,15 +89,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SNode) StatementList__BehaviorDescriptor.getFirstStatement_id4GU1DgEHJ2u.invoke(SNodeOperations.cast(_context.getMainContextNode(), CONCEPTS.StatementList$m_));
   }
   public static Object varMacro_Value_3_0(final TemplateVarContext _context) {
-    // rather we generate in lang.descriptor refs to all ILanguageAspect instances in all of the models in the module, 
-    // then we use weaves/reductions to use this references in order to restore the ref to the <GeneratedAspectDescriptor>. 
-    //  
+    // rather we generate in lang.descriptor refs to all ILanguageAspect instances in all of the models in the module,
+    // then we use weaves/reductions to use this references in order to restore the ref to the <GeneratedAspectDescriptor>.
+    // 
     final SRepository repository = _context.getOriginalInputModel().getRepository();
-    SNode constraintsRef = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.language$rnIG), LINKS.model$2Sf4)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        SModel resolved = ModelReference__BehaviorDescriptor.toModelReference_id2BHFktfnfdc.invoke(it).resolve(repository);
-        return isEmptyString(SPropertyOperations.getString(it, PROPS.stereotype$h2Bb)) && SModuleOperations.isAspect(resolved, "constraints");
-      }
+    SNode constraintsRef = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.language$rnIG), LINKS.model$2Sf4)).findFirst((it) -> {
+      SModel resolved = ModelReference__BehaviorDescriptor.toModelReference_id2BHFktfnfdc.invoke(it).resolve(repository);
+      return isEmptyString(SPropertyOperations.getString(it, PROPS.stereotype$h2Bb)) && SModuleOperations.isAspect(resolved, "constraints");
     });
     if (constraintsRef == null) {
       return null;
@@ -114,11 +110,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public CreateRootCondition getCreateRootRuleCondition(@NotNull QueryKey identity) {
-    String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(crcMethods.containsKey(id))) {
-      return super.getCreateRootRuleCondition(identity);
-    }
-    return crcMethods.get(id);
+    CreateRootCondition query = identity.forTemplateNode(crcMethods);
+    return (query != null ? query : super.getCreateRootRuleCondition(identity));
   }
   private static class CRC implements CreateRootCondition {
     private final int methodKey;
@@ -143,29 +136,20 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public WeaveRuleCondition getWeaveRuleCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(wrcnMethods.containsKey(id))) {
-      return super.getWeaveRuleCondition(identity);
-    }
-    return wrcnMethods.get(id);
+    WRQ query = identity.forTemplateNode(wrcnMethods);
+    return (query != null ? query : super.getWeaveRuleCondition(identity));
   }
   @Override
   @NotNull
   public WeaveRuleQuery getWeaveRuleQuery(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(wrcnMethods.containsKey(id))) {
-      return super.getWeaveRuleQuery(identity);
-    }
-    return wrcnMethods.get(id);
+    WRQ query = identity.forTemplateNode(wrcnMethods);
+    return (query != null ? query : super.getWeaveRuleQuery(identity));
   }
   @NotNull
   @Override
   public WeaveAnchorQuery getWeaveAnchorQuery(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(wrcnMethods.containsKey(id))) {
-      return super.getWeaveAnchorQuery(identity);
-    }
-    return wrcnMethods.get(id);
+    WRQ query = identity.forTemplateNode(wrcnMethods);
+    return (query != null ? query : super.getWeaveAnchorQuery(identity));
   }
   private static class WRQ implements WeaveRuleQuery, WeaveRuleCondition, WeaveAnchorQuery {
     private final int methodKey;
@@ -210,11 +194,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public SourceNodesQuery getSourceNodesQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snsqMethods.containsKey(id))) {
-      return super.getSourceNodesQuery(identity);
-    }
-    return snsqMethods.get(id);
+    SourceNodesQuery query = identity.forFunctionNode(snsqMethods);
+    return (query != null ? query : super.getSourceNodesQuery(identity));
   }
   private static class SNsQ implements SourceNodesQuery {
     private final int methodKey;
@@ -239,11 +220,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public PropertyValueQuery getPropertyValueQuery(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(pvqMethods.containsKey(id))) {
-      return super.getPropertyValueQuery(identity);
-    }
-    return pvqMethods.get(id);
+    PropertyValueQuery query = identity.forTemplateNode(pvqMethods);
+    return (query != null ? query : super.getPropertyValueQuery(identity));
   }
   private static class PVQ extends PropertyValueQuery.Base {
     private final int methodKey;
@@ -269,11 +247,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public IfMacroCondition getIfMacroCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(imcMethods.containsKey(id))) {
-      return super.getIfMacroCondition(identity);
-    }
-    return imcMethods.get(id);
+    IfMacroCondition query = identity.forTemplateNode(imcMethods);
+    return (query != null ? query : super.getIfMacroCondition(identity));
   }
   private static class IfMC implements IfMacroCondition {
     private final int methodKey;
@@ -300,11 +275,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public ReferenceTargetQuery getReferenceTargetQuery(@NotNull QueryKey queryKey) {
-    final String id = queryKey.getTemplateNode().getNodeId().toString();
-    if (!(rtqMethods.containsKey(id))) {
-      return super.getReferenceTargetQuery(queryKey);
-    }
-    return rtqMethods.get(id);
+    ReferenceTargetQuery query = queryKey.forTemplateNode(rtqMethods);
+    return (query != null ? query : super.getReferenceTargetQuery(queryKey));
   }
   private static class RTQ extends ReferenceTargetQuery.Base {
     private final int methodKey;
@@ -335,11 +307,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public VariableValueQuery getVariableValueQuery(@NotNull QueryKey queryKey) {
-    final String id = queryKey.getTemplateNode().getNodeId().toString();
-    if (!(vvqMethods.containsKey(id))) {
-      return super.getVariableValueQuery(queryKey);
-    }
-    return vvqMethods.get(id);
+    VariableValueQuery query = queryKey.forTemplateNode(vvqMethods);
+    return (query != null ? query : super.getVariableValueQuery(queryKey));
   }
   private static class VVQ implements VariableValueQuery {
     private final int methodKey;
@@ -357,7 +326,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
 
   private static final class CONCEPTS {

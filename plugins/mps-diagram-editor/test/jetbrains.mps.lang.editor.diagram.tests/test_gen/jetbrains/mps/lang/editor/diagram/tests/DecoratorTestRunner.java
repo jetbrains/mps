@@ -25,21 +25,15 @@ public class DecoratorTestRunner {
   public static Mapper prepareAndGetMapper(final SNode node, final EditorComponent editorComponent, Class cellClass) {
     editorComponent.getHighlightManager().mark(ListSequence.fromListAndArray(new ArrayList<SimpleEditorMessage>(), new ModelProblemMessage(node, MessageStatus.ERROR, null, "error", new EditorMessageOwner() {})));
     final SRepository editorRepo = editorComponent.getEditorContext().getRepository();
-    // next code is to make sure EDT model read to update editor, postponed from mark(), above, has been completed 
-    ThreadUtils.runInUIThreadAndWait(new Runnable() {
-      public void run() {
-        editorRepo.getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            // intentionally left empty 
-          }
-        });
-      }
-    });
+    // next code is to make sure EDT model read to update editor, postponed from mark(), above, has been completed
+    ThreadUtils.runInUIThreadAndWait(() -> editorRepo.getModelAccess().runReadAction(() -> {
+      // intentionally left empty
+    }));
     EditorCell cell = CellFinderUtil.findChildByClass(editorComponent.getRootCell(), cellClass, true);
     if (cell instanceof AbstractJetpadCell) {
       ((AbstractJetpadCell) cell).paint(new BufferedImage(cell.getWidth(), cell.getHeight(), BufferedImage.TYPE_INT_RGB).getGraphics());
     }
-    // see getMapper(), below, for reasons to have model read here 
+    // see getMapper(), below, for reasons to have model read here
     return new ModelAccessHelper(editorRepo).runReadAction(new Computable<Mapper>() {
       public Mapper compute() {
         return getMapper(node, editorComponent);
@@ -52,9 +46,9 @@ public class DecoratorTestRunner {
     if (diagramCell == null) {
       return null;
     }
-    // There are 3 invocations of the method from within a model read, and 1 from prepareAndGetMapper, above, which is invoked 3 times outside of model read. 
-    // XXX   Please explain what's expected thread for the calling code, whether there's any need to have model read around getMapper, and if yes, what's the reason 
-    //       for prepareAndGetMapper to live outside of model read. I'd rather keep all model read access control external to this utility class 
+    // There are 3 invocations of the method from within a model read, and 1 from prepareAndGetMapper, above, which is invoked 3 times outside of model read.
+    // XXX   Please explain what's expected thread for the calling code, whether there's any need to have model read around getMapper, and if yes, what's the reason
+    //       for prepareAndGetMapper to live outside of model read. I'd rather keep all model read access control external to this utility class
     return diagramCell.getDecorationRootMapper().getDescendantMapper(node);
   }
 }

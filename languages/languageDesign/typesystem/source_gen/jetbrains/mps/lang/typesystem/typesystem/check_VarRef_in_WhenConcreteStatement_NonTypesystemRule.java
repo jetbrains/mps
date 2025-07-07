@@ -28,9 +28,10 @@ public class check_VarRef_in_WhenConcreteStatement_NonTypesystemRule extends Abs
     SNode ancestor = SNodeOperations.getNodeAncestor(variableReference, CONCEPTS.WhenConcreteStatement$1P, false, false);
     if (ancestor != null) {
       SNode argument = SLinkOperations.getTarget(ancestor, LINKS.argument$GyjL);
+      SNode warnMessage = SLinkOperations.getTarget(ancestor, LINKS.warning$lLiT);
       SNode parent = variableReference;
       while (parent != null && parent != ancestor) {
-        if (parent == argument) {
+        if (parent == argument || parent == warnMessage) {
           return;
         } else {
           parent = SNodeOperations.getParent(parent);
@@ -67,6 +68,7 @@ public class check_VarRef_in_WhenConcreteStatement_NonTypesystemRule extends Abs
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink argument$GyjL = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114177ce6cdL, 0x114177d39c2L, "argument");
+    /*package*/ static final SContainmentLink warning$lLiT = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114177ce6cdL, 0x79802d04811913beL, "warning");
     /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 

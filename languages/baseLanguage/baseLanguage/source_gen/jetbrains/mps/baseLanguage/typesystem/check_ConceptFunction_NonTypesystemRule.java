@@ -10,10 +10,21 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.behavior.ConceptFunction__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import java.util.Objects;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.errors.messageTargets.MessageTarget;
+import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
+import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class check_ConceptFunction_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ConceptFunction_NonTypesystemRule() {
@@ -25,6 +36,18 @@ public class check_ConceptFunction_NonTypesystemRule extends AbstractNonTypesyst
         checkReturns = true;
       }
       DataFlowUtil.checkDataFlow(typeCheckingContext, SLinkOperations.getTarget(nodeToCheck, LINKS.body$e68K), checkReturns);
+
+      Iterable<SConcept> params = ListSequence.fromList(ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke(nodeToCheck)).where((paramConcept) -> !((boolean) ConceptFunction__BehaviorDescriptor.usesParameterObjectFor_idhEwIGRw.invoke(nodeToCheck, SNodeFactoryOperations.createNewNode(paramConcept, null))));
+
+      final Iterable<String> paramNames = Sequence.fromIterable(params).select((param) -> SConceptOperations.conceptAlias(param));
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(nodeToCheck, LINKS.body$e68K), CONCEPTS.VariableDeclaration$Y0, false, new SAbstractConcept[]{})).where((var) -> Objects.equals(SNodeOperations.getNodeAncestor(var, CONCEPTS.IMethodLike$L7, false, false), nodeToCheck)).visitAll((var) -> {
+        if (Sequence.fromIterable(paramNames).contains(SPropertyOperations.getString(var, PROPS.name$MnvL))) {
+          {
+            final MessageTarget errorTarget = new NodeMessageTarget();
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(var, "Name of the variable collides with an implicitly provided concept function's parameter", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4891895388938924027", null, errorTarget);
+          }
+        }
+      });
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -39,10 +62,16 @@ public class check_ConceptFunction_NonTypesystemRule extends AbstractNonTypesyst
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept VoidType$BF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
+    /*package*/ static final SConcept VariableDeclaration$Y0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+    /*package*/ static final SInterfaceConcept IMethodLike$L7 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1208f458d37L, "jetbrains.mps.baseLanguage.structure.IMethodLike");
     /*package*/ static final SConcept ConceptFunction$mf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink body$e68K = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

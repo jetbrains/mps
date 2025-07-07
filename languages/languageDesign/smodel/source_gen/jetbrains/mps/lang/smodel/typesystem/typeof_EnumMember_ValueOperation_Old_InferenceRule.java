@@ -11,7 +11,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
@@ -32,13 +31,11 @@ public class typeof_EnumMember_ValueOperation_Old_InferenceRule extends Abstract
       }
       {
         final SNode enumDecl = typeCheckingContext.getRepresentative(Enum_typevar_1240331870095);
-        typeCheckingContext.whenConcrete(enumDecl, new Runnable() {
-          public void run() {
-            {
-              SNode _nodeToCheck_1029348928467 = operation;
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1240577344535", 0, null);
-              typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1240577344539", true), (SNode) RulesUtil.datatypeBLType(SLinkOperations.getTarget(SNodeOperations.cast(typeCheckingContext.getExpandedNode(enumDecl), CONCEPTS.EnumerationDataTypeDeclaration_Old$B8), LINKS.memberDataType$ahxG)), _info_12389875345);
-            }
+        typeCheckingContext.whenConcrete(enumDecl, () -> {
+          {
+            SNode _nodeToCheck_1029348928467 = operation;
+            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1240577344535", 0, null);
+            typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1240577344539", true), (SNode) RulesUtil.datatypeBLType(SLinkOperations.getTarget(SNodeOperations.cast(typeCheckingContext.getExpandedNode(enumDecl), CONCEPTS.EnumerationDataTypeDeclaration_Old$B8), LINKS.memberDataType$ahxG)), _info_12389875345);
           }
         }, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1240577305543", false, false);
       }
@@ -54,9 +51,9 @@ public class typeof_EnumMember_ValueOperation_Old_InferenceRule extends Abstract
     return false;
   }
   private static SNode _quotation_createNode_xv2p4l_a1a0c0a0b0b(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x120bfe51421L, "SEnumerationMemberType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x120bfe51421L, "SEnumerationMemberType"));
+    quotedNode_2 = nb.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120bfe51421L, 0x120bff1303bL, "enum"), (SNode) parameter_1);
     return quotedNode_2;
   }

@@ -12,6 +12,8 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import com.intellij.openapi.project.Project;
+import com.intellij.execution.configurations.RunConfiguration;
+import com.intellij.execution.Executor;
 import com.intellij.execution.ui.ConsoleView;
 import java.awt.BorderLayout;
 import jetbrains.mps.ide.project.ProjectHelper;
@@ -43,6 +45,7 @@ import java.awt.LayoutManager;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NonNls;
 import jetbrains.mps.workbench.MPSDataKeys;
+import jetbrains.mps.ide.actions.SNodeActionData;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper;
 
@@ -60,7 +63,7 @@ public class UnitTestViewComponent extends JPanel implements Disposable {
   private final StatisticsTableModel myStatisticsModel;
   private final List<_FunctionTypes._void_P0_E0> myListeners = ListSequence.fromList(new ArrayList<_FunctionTypes._void_P0_E0>());
 
-  public UnitTestViewComponent(Project project, ConsoleView console, TestRunState testRunState, _FunctionTypes._void_P0_E0 closeListener) {
+  public UnitTestViewComponent(Project project, RunConfiguration rc, Executor executor, ConsoleView console, TestRunState testRunState, _FunctionTypes._void_P0_E0 closeListener) {
     super(new BorderLayout());
     myProject = ProjectHelper.fromIdeaProject(project);
     myTestState = testRunState;
@@ -69,7 +72,7 @@ public class UnitTestViewComponent extends JPanel implements Disposable {
     myTreeComponent = new TestTree(myTestState, myProject, this);
     myTreeComponent.setBorder(BorderFactory.createEmptyBorder(0, 3, 0, 0));
     myTestNavigator = new FailedTestOccurrenceNavigator(myTreeComponent);
-    myToolbarPanel = new TestToolbarPanel(myTreeComponent, myTestNavigator);
+    myToolbarPanel = new TestToolbarPanel(myTreeComponent, myTestState, myTestNavigator, rc, executor, myProject.getProject());
 
     JComponent leftPanel = createTreePanel(myToolbarPanel, myTreeComponent);
     myProgressLineComponent = new TestProgressLine();
@@ -117,7 +120,7 @@ public class UnitTestViewComponent extends JPanel implements Disposable {
   @Override
   public void addNotify() {
     super.addNotify();
-    // progress line goes until the text output bar with actions 
+    // progress line goes until the text output bar with actions
     myProgressLineComponent.setBorder(BorderFactory.createEmptyBorder(3, 0, 0, myOutputToolbarComponent.getPreferredSize().width));
   }
 
@@ -125,6 +128,7 @@ public class UnitTestViewComponent extends JPanel implements Disposable {
     DefaultActionGroup group = new DefaultActionGroup(console.createConsoleActions());
     ActionManager manager = ActionManager.getInstance();
     ActionToolbar toolbar = manager.createActionToolbar("TestRunnerResults", group, false);
+    toolbar.setTargetComponent(console.getComponent());
     toolbar.setLayoutPolicy(ActionToolbar.WRAP_LAYOUT_POLICY);
     return toolbar.getComponent();
   }
@@ -198,18 +202,21 @@ public class UnitTestViewComponent extends JPanel implements Disposable {
     @Nullable
     @Override
     public Object getData(@NonNls String dataId) {
+      // FIXME don't quite understand why would anyone need this intermediate JPanel as a DataProvider
+      // TestTree could answer with ITestNodeWrapper information, 
+      // and UnitTestViewComponent may answer with MPS_PROJECT (if necessary, although I doubt it is)
       if (MPSDataKeys.MPS_PROJECT.is(dataId)) {
         return myProject;
       }
-      if (MPSDataKeys.NODE.is(dataId)) {
+      if (SNodeActionData.KEY.is(dataId)) {
         MPSTreeNode currentNode = myTreeComponent.getCurrentNode();
         if (currentNode == null) {
           return null;
         }
-        ITestNodeWrapper testWrapper = (ITestNodeWrapper) currentNode.getUserObject();
-        // XXX it's unclear whether we shall assume model read lock here, or obtain it ourselves 
-        // I didn't get the lock here as it's stupid to ask for SNode not inside a lock already. 
-        return testWrapper.getNodePointer().resolve(myProject.getRepository());
+        if (currentNode.getUserObject() instanceof ITestNodeWrapper) {
+          return SNodeActionData.from(((ITestNodeWrapper) currentNode.getUserObject()).getNodePointer());
+        }
+        return null;
       }
       return null;
     }

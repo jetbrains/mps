@@ -4,30 +4,23 @@ package jetbrains.mps.internalCollections.test.typechecking;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.lang.test.runtime.NodeCheckerUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.checkers.SuppressErrorsChecker;
 
 @MPSLaunch
 public class TypeCheckingErrors_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(TypeCheckingErrors_Test.class, "${mps_home}", "r:ea0833ca-e474-4ae3-b6d3-3f8d18af5a89(jetbrains.mps.internalCollections.test.typechecking@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TypeCheckingErrors_Test.class).projectPath(null).modelRef("r:ea0833ca-e474-4ae3-b6d3-3f8d18af5a89(jetbrains.mps.internalCollections.test.typechecking@tests)").reopenProject(null).build());
 
   public TypeCheckingErrors_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -53,44 +46,36 @@ public class TypeCheckingErrors_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1301553664999174765", "3441689827373214227", "1089557578627272135", "360223900466871399", "5532302989585163343");
+    }
+
     public void test_mps18720() throws Exception {
-      addNodeById("1301553664999174765");
-      addNodeById("3441689827373214227");
-      addNodeById("1089557578627272135");
-      addNodeById("360223900466871399");
-      addNodeById("5532302989585163343");
-      assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(SNodeOperations.cast(getNodeById("1301553664997476018"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement"))), null)).isEmpty();
-      assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(SNodeOperations.cast(getNodeById("3441689827373215907"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement"))), null)).isEmpty();
+      initTestNodes();
+      runWithinCommand(() -> {
+        assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(getAnnotatedNode("mps18720"), myProject.getPlatform())).isEmpty();
+        assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(getAnnotatedNode("mps18720_2"), myProject.getPlatform())).isEmpty();
+      });
     }
     public void test_varar_raw() throws Exception {
-      addNodeById("1301553664999174765");
-      addNodeById("3441689827373214227");
-      addNodeById("1089557578627272135");
-      addNodeById("360223900466871399");
-      addNodeById("5532302989585163343");
-      assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(SNodeOperations.cast(getNodeById("1089557578627275112"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b21dL, "InstanceMethodDeclaration"))), null)).all(new IWhereFilter<NodeReportItem>() {
-        public boolean accept(NodeReportItem it) {
-          return SuppressErrorsChecker.FLAVOUR_ACTIVE_SUPPRESSOR.canGet(it);
-        }
+      initTestNodes();
+      runWithinCommand(() -> {
+        assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(getAnnotatedNode("varar_raw"), myProject.getPlatform())).all((it) -> SuppressErrorsChecker.FLAVOUR_ACTIVE_SUPPRESSOR.canGet(it));
       });
     }
     public void test_lbt_subtypeof_param() throws Exception {
-      addNodeById("1301553664999174765");
-      addNodeById("3441689827373214227");
-      addNodeById("1089557578627272135");
-      addNodeById("360223900466871399");
-      addNodeById("5532302989585163343");
-      assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(SNodeOperations.cast(getNodeById("360223900466887047"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b21dL, "InstanceMethodDeclaration"))), null)).isEmpty();
+      initTestNodes();
+      runWithinCommand(() -> {
+        assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(getAnnotatedNode("lbt_subtype"), myProject.getPlatform())).isEmpty();
+      });
     }
     public void test_meet_with_variable_excluded_from_lcs() throws Exception {
-      addNodeById("1301553664999174765");
-      addNodeById("3441689827373214227");
-      addNodeById("1089557578627272135");
-      addNodeById("360223900466871399");
-      addNodeById("5532302989585163343");
-      assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(SNodeOperations.cast(getNodeById("6368058149914761648"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b21dL, "InstanceMethodDeclaration"))), null)).isEmpty();
+      initTestNodes();
+      runWithinCommand(() -> {
+        assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(getAnnotatedNode("meet_var"), myProject.getPlatform())).isEmpty();
+      });
     }
-
 
   }
 }

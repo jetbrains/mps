@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -18,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -31,8 +29,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class Slot__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4f786d85fe288176L, "jetbrains.mps.samples.heating.structure.Slot");
 
-  public static final SMethod<SNode> getCustomizedSlot_idNU25Mr18Am = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getCustomizedSlot").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("NU25Mr18Am").build();
-  public static final SMethod<Boolean> isCustomizing_idNU25Mr1t4q = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isCustomizing").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("NU25Mr1t4q").build();
+  public static final SMethod<SNode> getCustomizedSlot_idNU25Mr18Am = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getCustomizedSlot").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(935069066463578518L).languageId(0x98ce995a7aa66941L, 0xa7d67633e8d9473bL).build2();
+  public static final SMethod<Boolean> isCustomizing_idNU25Mr1t4q = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isCustomizing").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(935069066463662362L).languageId(0x98ce995a7aa66941L, 0xa7d67633e8d9473bL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCustomizedSlot_idNU25Mr18Am, isCustomizing_idNU25Mr1t4q);
 
@@ -53,11 +51,7 @@ public final class Slot__BehaviorDescriptor extends BaseBHDescriptor {
       if (ListSequence.fromList(visitedPlans).contains(dailyPlan)) {
         return null;
       }
-      found = ListSequence.fromList(SLinkOperations.getChildren(dailyPlan, LINKS.items$4wAy)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SPropertyOperations.getInteger(it, PROPS.start$f2z3) == SPropertyOperations.getInteger(__thisNode__, PROPS.start$f2z3);
-        }
-      });
+      found = ListSequence.fromList(SLinkOperations.getChildren(dailyPlan, LINKS.items$4wAy)).findFirst((it) -> SPropertyOperations.getInteger(it, PROPS.start$f2z3) == SPropertyOperations.getInteger(__thisNode__, PROPS.start$f2z3));
     }
     return found;
   }

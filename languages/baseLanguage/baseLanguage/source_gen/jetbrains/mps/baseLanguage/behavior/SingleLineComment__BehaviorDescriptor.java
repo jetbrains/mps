@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -17,11 +16,11 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -33,28 +32,27 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class SingleLineComment__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment");
 
-  public static final SMethod<Void> collectUncaughtMethodThrowables_id4Gt7ANIVH8f = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectUncaughtMethodThrowables").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4Gt7ANIVH8f").build(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
-  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Iterable<SNode>> getCommentedNodes_id3$Sh7m_tmZE = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getCommentedNode").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3$Sh7m_tmZE").build();
-  public static final SMethod<Void> parseAndAddWordsIntoLines_id45vN3dBFprj = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("parseAndAddWordsIntoLines").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("45vN3dBFprj").build(SMethodBuilder.createJavaParameter(String.class, ""));
-  public static final SMethod<Void> parseAndAddWords_id13gAna0o0W6 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("parseAndAddWords").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("13gAna0o0W6").build(SMethodBuilder.createJavaParameter(String.class, ""));
-  public static final SMethod<List<SNode>> getLines_id6GJhO0n1Xys = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getLines").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6GJhO0n1Xys").build();
+  public static final SMethod<Void> collectUncaughtMethodThrowables_id4Gt7ANIVH8f = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectUncaughtMethodThrowables").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5412515780383134223L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
+  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Iterable<SNode>> getCommentedNodes_id3$Sh7m_tmZE = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getCommentedNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4123120730935488490L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  public static final SMethod<Void> parseAndAddWordsIntoLines_id45vN3dBFprj = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("parseAndAddWordsIntoLines").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4710708256407656147L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<Void> parseAndAddWords_id13gAna0o0W6 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("parseAndAddWords").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1211637016821763846L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<List<SNode>> getLines_id6GJhO0n1Xys = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getLines").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7723470226553559196L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
+  public static final SMethod<Void> addLine_id7q4YwcerggR = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8540225684435174455L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(collectUncaughtMethodThrowables_id4Gt7ANIVH8f, getScope_id52_Geb4QDV$, getCommentedNodes_id3$Sh7m_tmZE, parseAndAddWordsIntoLines_id45vN3dBFprj, parseAndAddWords_id13gAna0o0W6, getLines_id6GJhO0n1Xys);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(collectUncaughtMethodThrowables_id4Gt7ANIVH8f, getScope_id52_Geb4QDV$, getCommentedNodes_id3$Sh7m_tmZE, parseAndAddWordsIntoLines_id45vN3dBFprj, parseAndAddWords_id13gAna0o0W6, getLines_id6GJhO0n1Xys, addLine_id7q4YwcerggR);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SNode l = SNodeFactoryOperations.setNewChild(__thisNode__, LINKS.line$9eiT, null);
-    ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).removeElementAt(0);
-    SNodeFactoryOperations.addNewChild(l, LINKS.elements$_j45, CONCEPTS.Word$Dn);
+    SNodeFactoryOperations.setNewChild(__thisNode__, LINKS.line$9eiT, null);
   }
 
   /*package*/ static void collectUncaughtMethodThrowables_id4Gt7ANIVH8f(@NotNull SNode __thisNode__, Set<SNode> throwables, boolean ignoreMayBeThrowables) {
-    // doing nothing 
+    // doing nothing
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.LocalVariableDeclaration$41)) {
       if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.StatementList$m_)) {
-        // TODO use LazyParentScope instead 
+        // TODO use LazyParentScope instead
         return Scope.getScope(SNodeOperations.getParent(__thisNode__), ListSequence.fromList(SNodeOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.StatementList$m_))).last(), kind);
       } else {
         return null;
@@ -65,9 +63,6 @@ public final class SingleLineComment__BehaviorDescriptor extends BaseBHDescripto
   }
   @Deprecated
   /*package*/ static Iterable<SNode> getCommentedNodes_id3$Sh7m_tmZE(@NotNull SNode __thisNode__) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.commentPart$Ib1g)).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.commentPart$Ib1g)).first(), CONCEPTS.StatementCommentPart$$y)) {
-      return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.commentPart$Ib1g)).first(), CONCEPTS.StatementCommentPart$$y), LINKS.commentedStatement$H9kM));
-    }
     return ListSequence.fromList(new ArrayList<SNode>());
   }
   @Deprecated
@@ -103,7 +98,14 @@ public final class SingleLineComment__BehaviorDescriptor extends BaseBHDescripto
     }
   }
   /*package*/ static List<SNode> getLines_id6GJhO0n1Xys(@NotNull SNode __thisNode__) {
-    return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(__thisNode__, LINKS.line$9eiT));
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.line$9eiT) != null)) {
+      return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(__thisNode__, LINKS.line$9eiT));
+    } else {
+      return ListSequence.fromList(new ArrayList<SNode>());
+    }
+  }
+  /*package*/ static void addLine_id7q4YwcerggR(@NotNull SNode __thisNode__, SNode l) {
+    SLinkOperations.setTarget(__thisNode__, LINKS.line$9eiT, l);
   }
 
   /*package*/ SingleLineComment__BehaviorDescriptor() {
@@ -136,6 +138,9 @@ public final class SingleLineComment__BehaviorDescriptor extends BaseBHDescripto
         return null;
       case 5:
         return (T) ((List<SNode>) getLines_id6GJhO0n1Xys(node));
+      case 6:
+        addLine_id7q4YwcerggR(node, (SNode) parameters[0]);
+        return null;
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -165,23 +170,20 @@ public final class SingleLineComment__BehaviorDescriptor extends BaseBHDescripto
     return CONCEPT;
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink line$9eiT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x73f69d82391da738L, "line");
-    /*package*/ static final SContainmentLink elements$_j45 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
-    /*package*/ static final SContainmentLink commentPart$Ib1g = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart");
-    /*package*/ static final SContainmentLink commentedStatement$H9kM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af16ff67L, 0x57d533a7af16ff68L, "commentedStatement");
     /*package*/ static final SContainmentLink text$XpYF = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x12bc996bc5882f24L, "text");
+    /*package*/ static final SContainmentLink elements$_j45 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
     /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
     /*package*/ static final SConcept LocalVariableDeclaration$41 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
-    /*package*/ static final SConcept StatementCommentPart$$y = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af16ff67L, "jetbrains.mps.baseLanguage.structure.StatementCommentPart");
     /*package*/ static final SConcept Line$yC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
+    /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
   }
 
   private static final class PROPS {

@@ -15,19 +15,15 @@ import jetbrains.mps.lang.editor.editor.Styles_StyleSheet.rootCellModelStyleStyl
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.lang.editor.cellProviders.SReferenceCellProvider;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.editor.runtime.impl.CellUtil;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.cellMenu.SReferenceSubstituteInfoSmartReferenceDecorator;
 import jetbrains.mps.nodeEditor.cellMenu.SReferenceSubstituteInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.LinkAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
@@ -68,7 +64,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setBig(true);
     setCellContext(editorCell);
     Style style = new StyleImpl();
-    new rootCellModelStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new rootCellModelStyleStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createComponent_0());
     editorCell.addEditorCell(createRefCell_0());
@@ -83,14 +79,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefCell_0() {
-    final SReferenceLink referenceLink = LINKS.property$cqCy;
+    final SReferenceLink referenceLink = LINKS.relationDeclaration$E2hc;
     SReferenceCellProvider provider = new SReferenceCellProvider(getNode(), referenceLink, getEditorContext()) {
       protected EditorCell createReferenceCell(final SNode targetNode) {
-        EditorCell cell = getUpdateSession().updateReferencedNodeCell(new Computable<EditorCell>() {
-          public EditorCell compute() {
-            return new Inline_Builder0(getEditorContext(), getNode(), targetNode).createCell();
-          }
-        }, targetNode, LINKS.property$cqCy);
+        EditorCell cell = getUpdateSession().updateReferencedNodeCell(() -> new Inline_Builder0(getEditorContext(), getNode(), targetNode).createCell(), targetNode, LINKS.propertyDeclaration$ueEI);
         CellUtil.setupIDeprecatableStyles(targetNode, cell);
         setSemanticNodeToCells(cell, getNode());
         installDeleteActions_notnull_smartReference(cell);
@@ -106,29 +98,26 @@ import org.jetbrains.mps.openapi.language.SConcept;
     };
 
     provider.setNoTargetText("<no property>");
+    provider.setEmptyCellId("empty_" + "propertyDeclaration");
     EditorCell editorCell = provider.createCell();
 
     if (editorCell.getSRole() == null) {
       editorCell.setReferenceCell(true);
-      editorCell.setSRole(LINKS.property$cqCy);
+      editorCell.setSRole(LINKS.relationDeclaration$E2hc);
     }
     Style style = new StyleImpl();
     style.set(StyleAttributes.DRAW_BORDER, true);
-    style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_hop3er_a1b0()));
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_hop3er_a2b0()));
-    style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_hop3er_a3b0()));
-    style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_hop3er_a4b0()));
+    style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_hop3er_a1b0()));
+    style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_hop3er_a2b0()));
+    style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_hop3er_a3b0()));
+    style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_hop3er_a4b0()));
     style.set(StyleAttributes.FONT_STYLE, _StyleParameter_QueryFunction_hop3er_a5b0());
     style.set(StyleAttributes.UNDERLINED, _StyleParameter_QueryFunction_hop3er_a6b0());
     style.set(StyleAttributes.STRIKE_OUT, _StyleParameter_QueryFunction_hop3er_a7b0());
     editorCell.getStyle().putAll(style);
-    editorCell.setSubstituteInfo(new SReferenceSubstituteInfoSmartReferenceDecorator(new SReferenceSubstituteInfo(editorCell, referenceLink)));
-    Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.LinkAttribute$v_);
-    Iterable<SNode> currentReferenceAttributes = Sequence.fromIterable(referenceAttributes).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(it), referenceLink);
-      }
-    });
+    editorCell.setSubstituteInfo(new SReferenceSubstituteInfoSmartReferenceDecorator(new SReferenceSubstituteInfo(editorCell, referenceLink, CONCEPTS.PropertyDeclaration$1S)));
+    Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.LinkAttribute$v_);
+    Iterable<SNode> currentReferenceAttributes = Sequence.fromIterable(referenceAttributes).where((it) -> Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(it), referenceLink));
     if (Sequence.fromIterable(currentReferenceAttributes).isNotEmpty()) {
       EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
       return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentReferenceAttributes).first(), AttributeKind.REFERENCE, editorCell);
@@ -169,12 +158,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.getStyle().putAll(style);
         editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
         setCellContext(editorCell);
-        Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
-        Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-          }
-        });
+        Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
+        Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
         if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
           EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
           return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);
@@ -186,7 +171,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
   }
   private Color _StyleParameter_QueryFunction_hop3er_a1b0() {
-    return _EditorUtil.grayIfNotSelectable(getNode());
+    return _EditorUtil.grayIfNotSelectable(getNode(), getEditorContext());
   }
   private Color _StyleParameter_QueryFunction_hop3er_a2b0() {
     return EditorCellModel__BehaviorDescriptor.getForegroundColor_idhL6TA5F.invoke(getNode());
@@ -215,10 +200,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink property$cqCy = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, 0x11b35f87187L, "property");
+    /*package*/ static final SReferenceLink relationDeclaration$E2hc = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
+    /*package*/ static final SReferenceLink propertyDeclaration$ueEI = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, 0x4bb6ad00ff1d1839L, "propertyDeclaration");
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept PropertyDeclaration$1S = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
     /*package*/ static final SConcept LinkAttribute$v_ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");
     /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
   }

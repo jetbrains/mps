@@ -17,7 +17,7 @@ import java.util.List;
 import jetbrains.mps.debug.api.programState.IWatchable;
 import java.util.Collections;
 
-@GeneratedClass(node = "r:50efd6f2-8d02-4682-b313-bd69c46e78df(jetbrains.mps.debugger.java.runtime.state.watchables)/3187167456722650243", model = "r:50efd6f2-8d02-4682-b313-bd69c46e78df(jetbrains.mps.debugger.java.runtime.state.watchables)")
+@GeneratedClass(nodeId = "3187167456722650243", model = "r:50efd6f2-8d02-4682-b313-bd69c46e78df(jetbrains.mps.debugger.java.runtime.state.watchables)")
 /*package*/ class JavaMethodWatchable extends JavaWatchable {
   private final Method myMethod;
   private final boolean myIsEnter;
@@ -48,7 +48,7 @@ import java.util.Collections;
   @Nullable
   @Override
   public SNodeReference getSourceNode() {
-    //  todo from location??? 
+    //  todo from location???
     return null;
   }
 

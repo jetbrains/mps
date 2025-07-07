@@ -4,18 +4,16 @@ package messages.sandbox.mA;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.project.ProjectBase;
 import jetbrains.mps.lang.test.runtime.CheckScopesAction;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
@@ -23,17 +21,15 @@ import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.Arrays;
 
 @MPSLaunch
 public class FeedbackPropConstraintsAreBroken_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(FeedbackPropConstraintsAreBroken_Test.class, "${mps_home}", "r:eb16dd70-ac3a-40ca-8c61-d7f237615dbf(messages.sandbox.mA@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(FeedbackPropConstraintsAreBroken_Test.class).projectPath(null).modelRef("r:eb16dd70-ac3a-40ca-8c61-d7f237615dbf(messages.sandbox.mA@tests)").reopenProject(null).build());
 
   public FeedbackPropConstraintsAreBroken_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -55,21 +51,31 @@ public class FeedbackPropConstraintsAreBroken_Test extends BaseTransformationTes
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("4739004755180691832");
+    }
 
     public void test_NodeUnknownRuleCheck2884486869351401623() throws Exception {
-      SNode nodeToCheck = getRealNodeById("3071492597344664119");
-      SNode operation = getRealNodeById("2884486869351401623");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)", "3071492597344701404"), "Property constraints are broken for the property prop  ", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("3071492597344664119");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)", "3071492597344701404"), "Property constraints are broken for the property prop  ", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
     public void test_ScopeOf_TestConcept_link_3071492597344664119() throws Exception {
-      SNode nodeToCheck = getRealNodeById("3071492597344664119");
-      SNode operation = getRealNodeById("3071492597344740107");
-      new CheckScopesAction(nodeToCheck, MetaAdapterFactory.getReferenceLink(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x161a25d497067a9eL, "link"), CollectionSequence.fromCollectionAndArray(new ArrayList<SNodeReference>(), SNodeOperations.getPointer(getRealNodeById("2884486869351398329")), SNodeOperations.getPointer(getRealNodeById("2802122285522027685")), SNodeOperations.getPointer(getRealNodeById("7019192671317902494")), SNodeOperations.getPointer(getRealNodeById("3071492597344664119")), SNodeOperations.getPointer(getRealNodeById("116705030628902880")), SNodeOperations.getPointer(getRealNodeById("116705030628940281")))).check();
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getRealNodeById("3071492597344664119");
+        new CheckScopesAction(nodeToCheck, MetaAdapterFactory.getReferenceLink(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x161a25d497067a9eL, "link"), CollectionSequence.fromCollectionAndArray(new ArrayList<SNodeReference>(), SNodeOperations.getPointer(getRealNodeById("2884486869351398329")), SNodeOperations.getPointer(getRealNodeById("2802122285522027685")), SNodeOperations.getPointer(getRealNodeById("7019192671317902494")), SNodeOperations.getPointer(getRealNodeById("3071492597344664119")), SNodeOperations.getPointer(getRealNodeById("116705030628902880")), SNodeOperations.getPointer(getRealNodeById("116705030628940281")))).check();
+      });
     }
     public void test_ErrorMessagesCheck2884486869351400430() throws Exception {
-      SNode nodeToCheck = getRealNodeById("2884486869351398329");
-      SNode operation = getRealNodeById("2884486869351400430");
-      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("2884486869351398329");
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(true).exclude(Arrays.<CheckExpectedMessageRunnable>asList()).run();
+      });
     }
 
   }

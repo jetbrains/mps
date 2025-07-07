@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
     <import index="qgwr" ref="r:f326a98e-32f7-47a0-ba29-239107a89ca4(jetbrains.mps.debugger.java.api.evaluation)" />
@@ -11,6 +11,8 @@
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="frkw" ref="b387285c-3448-452c-b3bb-a3f8de8eaf08/java:com.sun.jdi(JDK-tools/)" />
+    <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
+    <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -26,13 +28,14 @@
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
         <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
+      <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
       <concept id="1239714755177" name="jetbrains.mps.baseLanguage.structure.AbstractUnaryNumberOperation" flags="nn" index="2$Kvd9">
         <child id="1239714902950" name="expression" index="2$L3a6" />
       </concept>
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
@@ -42,7 +45,6 @@
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
       </concept>
-      <concept id="1070462154015" name="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" flags="ig" index="Wx3nA" />
       <concept id="1070475587102" name="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" flags="nn" index="XkiVB" />
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
@@ -138,7 +140,7 @@
         <child id="1079359253376" name="expression" index="1eOMHV" />
       </concept>
       <concept id="1081506773034" name="jetbrains.mps.baseLanguage.structure.LessThanExpression" flags="nn" index="3eOVzh" />
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -160,23 +162,22 @@
         <child id="8276990574895933173" name="catchBody" index="1zc67A" />
         <child id="8276990574895933172" name="throwable" index="1zc67B" />
       </concept>
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615">
         <child id="1107797138135" name="extendedInterface" index="3HQHJm" />
       </concept>
-      <concept id="1170075670744" name="jetbrains.mps.baseLanguage.structure.SynchronizedStatement" flags="nn" index="1HWtB8">
-        <child id="1170075728144" name="expression" index="1HWFw0" />
-        <child id="1170075736412" name="block" index="1HWHxc" />
-      </concept>
-      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
+      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="nn" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
       <concept id="1146644641414" name="jetbrains.mps.baseLanguage.structure.ProtectedVisibility" flags="nn" index="3Tmbuc" />
+      <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
+        <reference id="1116615189566" name="classifier" index="3VsUkX" />
+      </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
@@ -194,7 +195,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -1447,26 +1448,6 @@
     <property role="TrG5h" value="MirrorUtil" />
     <property role="1sVAO0" value="true" />
     <node concept="3Tm1VV" id="6dm0XGkqAkK" role="1B3o_S" />
-    <node concept="Wx3nA" id="6dm0XGkqAqt" role="jymVt">
-      <property role="TrG5h" value="INSTANCE" />
-      <node concept="3Tmbuc" id="6dm0XGkqAq$" role="1B3o_S" />
-      <node concept="3uibUv" id="6dm0XGkqAqw" role="1tU5fm">
-        <ref role="3uigEE" node="6dm0XGkqAkJ" resolve="MirrorUtil" />
-      </node>
-    </node>
-    <node concept="Wx3nA" id="6w0uxLH27wC" role="jymVt">
-      <property role="TrG5h" value="LOCK" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tmbuc" id="6w0uxLH27wF" role="1B3o_S" />
-      <node concept="3uibUv" id="6w0uxLH27wG" role="1tU5fm">
-        <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
-      </node>
-      <node concept="2ShNRf" id="6w0uxLH27wI" role="33vP2m">
-        <node concept="1pGfFk" id="6w0uxLH27wK" role="2ShVmc">
-          <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-        </node>
-      </node>
-    </node>
     <node concept="3clFbW" id="6dm0XGkqAkL" role="jymVt">
       <node concept="3cqZAl" id="6dm0XGkqAkM" role="3clF45" />
       <node concept="3Tm1VV" id="6dm0XGkqAkN" role="1B3o_S" />
@@ -1580,32 +1561,21 @@
         <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
       </node>
     </node>
-    <node concept="3clFb_" id="6dm0XGkqArN" role="jymVt">
-      <property role="1EzhhJ" value="true" />
-      <property role="TrG5h" value="init" />
-      <node concept="3cqZAl" id="6dm0XGkqArO" role="3clF45" />
-      <node concept="3Tm1VV" id="6dm0XGkqArP" role="1B3o_S" />
-      <node concept="3clFbS" id="6dm0XGkqArQ" role="3clF47" />
-    </node>
-    <node concept="3clFb_" id="6dm0XGkqArR" role="jymVt">
-      <property role="1EzhhJ" value="true" />
-      <property role="TrG5h" value="dispose" />
-      <node concept="3cqZAl" id="6dm0XGkqArS" role="3clF45" />
-      <node concept="3Tm1VV" id="6dm0XGkqArT" role="1B3o_S" />
-      <node concept="3clFbS" id="6dm0XGkqArU" role="3clF47" />
-    </node>
+    <node concept="2tJIrI" id="1MgGTZ28woa" role="jymVt" />
     <node concept="2YIFZL" id="6dm0XGkqAq_" role="jymVt">
       <property role="TrG5h" value="getInstance" />
       <node concept="3Tm1VV" id="6dm0XGkqAqB" role="1B3o_S" />
       <node concept="3clFbS" id="6dm0XGkqAqC" role="3clF47">
-        <node concept="1HWtB8" id="6w0uxLH2hK0" role="3cqZAp">
-          <node concept="37vLTw" id="2BHiRxeooZs" role="1HWFw0">
-            <ref role="3cqZAo" node="6w0uxLH27wC" resolve="LOCK" />
-          </node>
-          <node concept="3clFbS" id="6w0uxLH2hK2" role="1HWHxc">
-            <node concept="3cpWs6" id="6w0uxLH2hK5" role="3cqZAp">
-              <node concept="37vLTw" id="2BHiRxeop1c" role="3cqZAk">
-                <ref role="3cqZAo" node="6dm0XGkqAqt" resolve="INSTANCE" />
+        <node concept="3clFbF" id="1MgGTZ28vvW" role="3cqZAp">
+          <node concept="2OqwBi" id="1MgGTZ28vVQ" role="3clFbG">
+            <node concept="2YIFZM" id="1MgGTZ28vz8" role="2Oq$k0">
+              <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+              <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+            </node>
+            <node concept="liA8E" id="1MgGTZ28wbJ" role="2OqNvi">
+              <ref role="37wK5l" to="1m72:~ComponentManager.getService(java.lang.Class)" resolve="getService" />
+              <node concept="3VsKOn" id="1MgGTZ28wjF" role="37wK5m">
+                <ref role="3VsUkX" node="6dm0XGkqAkJ" resolve="MirrorUtil" />
               </node>
             </node>
           </node>

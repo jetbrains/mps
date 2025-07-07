@@ -9,7 +9,6 @@ import jetbrains.mps.project.Project;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import com.intellij.openapi.ui.popup.ComponentPopupBuilder;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
-import com.intellij.openapi.util.Computable;
 import com.intellij.openapi.ui.popup.JBPopupListener;
 import com.intellij.openapi.ui.popup.LightweightWindowEvent;
 
@@ -18,18 +17,16 @@ import com.intellij.openapi.ui.popup.LightweightWindowEvent;
  * 
  * @see jetbrains.mps.ide.actions.PopupWithNodeEditorUI 
  */
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2265788403135016386", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "2265788403135016386", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public abstract class PopupWithNodeEditor {
   protected final PopupWithNodeEditorUI myUI;
   protected final JBPopup myPopup;
 
   public PopupWithNodeEditor(@NotNull final Project project, @NotNull final EditorComponent editorComponent) {
     myUI = new PopupWithNodeEditorUI(project, editorComponent);
-    final ComponentPopupBuilder pb = JBPopupFactory.getInstance().createComponentPopupBuilder(myUI.getPanel(), myUI.getPreferredFocusableComponent()).setRequestFocus(true).setMovable(true).setResizable(true).setCancelCallback(new Computable<Boolean>() {
-      public Boolean compute() {
-        myUI.dispose();
-        return true;
-      }
+    final ComponentPopupBuilder pb = JBPopupFactory.getInstance().createComponentPopupBuilder(myUI.getPanel(), myUI.getPreferredFocusableComponent()).setRequestFocus(true).setMovable(true).setResizable(true).setCancelCallback(() -> {
+      myUI.dispose();
+      return true;
     }).addListener(new JBPopupListener() {
       @Override
       public void beforeShown(@NotNull LightweightWindowEvent event) {

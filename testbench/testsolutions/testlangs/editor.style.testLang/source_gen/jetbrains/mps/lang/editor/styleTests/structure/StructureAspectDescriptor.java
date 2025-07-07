@@ -86,9 +86,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForCustomFontContainer() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.styleTests", "CustomFontContainer", 0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x7697714d0d49e230L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.editor.styleTests.structure.NodeContainer", 0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL);
+    // extends: jetbrains.mps.lang.editor.styleTests.structure.NodeContainer
+    b.super_(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL);
     b.origin("r:710d1207-58b1-4fe3-ba47-f417dc16c10c(jetbrains.mps.lang.editor.styleTests.structure)/8545423393708171824");
-    b.version(2);
+    b.version(3);
     b.property("fontFamily", 0x7697714d0d4a3399L).type(PrimitiveTypeId.STRING).origin("8545423393708192665").done();
     b.property("fontSize", 0x7697714d0d4e935bL).type(PrimitiveTypeId.INTEGER).origin("8545423393708479323").done();
     b.alias("customFontContainer");
@@ -97,18 +98,20 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForHugePriorityStyle() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.styleTests", "HugePriorityStyle", 0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x7bc02723c1a36a0aL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.editor.styleTests.structure.NodeContainer", 0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL);
+    // extends: jetbrains.mps.lang.editor.styleTests.structure.NodeContainer
+    b.super_(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL);
     b.origin("r:710d1207-58b1-4fe3-ba47-f417dc16c10c(jetbrains.mps.lang.editor.styleTests.structure)/8917170296719632906");
-    b.version(2);
+    b.version(3);
     b.alias("hugePriorityStyle");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForLeafNode() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.styleTests", "LeafNode", 0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x38990895c164873aL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.editor.styleTests.structure.NodeContainer", 0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL);
+    // extends: jetbrains.mps.lang.editor.styleTests.structure.NodeContainer
+    b.super_(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL);
     b.origin("r:710d1207-58b1-4fe3-ba47-f417dc16c10c(jetbrains.mps.lang.editor.styleTests.structure)/4078300376848435002");
-    b.version(2);
+    b.version(3);
     b.alias("leaf");
     return b.create();
   }
@@ -116,7 +119,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.styleTests", "NodeContainer", 0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL);
     b.class_(false, true, false);
     b.origin("r:710d1207-58b1-4fe3-ba47-f417dc16c10c(jetbrains.mps.lang.editor.styleTests.structure)/8422442021223268684");
-    b.version(2);
+    b.version(3);
     b.aggregate("node", 0x74e28664f05605aeL).target(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL).optional(true).ordered(true).multiple(true).origin("8422442021223269806").done();
     b.alias("node container");
     return b.create();
@@ -124,18 +127,20 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForPriorityStyle() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.styleTests", "PriorityStyle", 0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x7bc02723c1a34c76L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.editor.styleTests.structure.NodeContainer", 0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL);
+    // extends: jetbrains.mps.lang.editor.styleTests.structure.NodeContainer
+    b.super_(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL);
     b.origin("r:710d1207-58b1-4fe3-ba47-f417dc16c10c(jetbrains.mps.lang.editor.styleTests.structure)/8917170296719625334");
-    b.version(2);
+    b.version(3);
     b.alias("priorityStyle");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForPriorityStyleCopy() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.styleTests", "PriorityStyleCopy", 0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x7bc02723c1a3689eL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.editor.styleTests.structure.NodeContainer", 0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL);
+    // extends: jetbrains.mps.lang.editor.styleTests.structure.NodeContainer
+    b.super_(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL);
     b.origin("r:710d1207-58b1-4fe3-ba47-f417dc16c10c(jetbrains.mps.lang.editor.styleTests.structure)/8917170296719632542");
-    b.version(2);
+    b.version(3);
     b.alias("priorityStyleCopy");
     return b.create();
   }
@@ -143,7 +148,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.styleTests", "SerifFromQueryNode", 0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x6d1be7c4cdf956fL);
     b.class_(false, false, false);
     b.origin("r:710d1207-58b1-4fe3-ba47-f417dc16c10c(jetbrains.mps.lang.editor.styleTests.structure)/491383275435038063");
-    b.version(2);
+    b.version(3);
     b.alias("serifFromQueryNode");
     return b.create();
   }
@@ -151,7 +156,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.styleTests", "SerifNode", 0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x6d1be7c4cdf954fL);
     b.class_(false, false, false);
     b.origin("r:710d1207-58b1-4fe3-ba47-f417dc16c10c(jetbrains.mps.lang.editor.styleTests.structure)/491383275435038031");
-    b.version(2);
+    b.version(3);
     b.alias("serifNode");
     return b.create();
   }
@@ -159,15 +164,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.styleTests", "TestConceptWithStyleAttributes", 0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x5bb841570e741168L);
     b.class_(false, false, false);
     b.origin("r:710d1207-58b1-4fe3-ba47-f417dc16c10c(jetbrains.mps.lang.editor.styleTests.structure)/6609104295326650728");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTestInheritedAttribute() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.styleTests", "TestInheritedAttribute", 0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x7bc02723c1a35eddL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.editor.styleTests.structure.NodeContainer", 0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL);
+    // extends: jetbrains.mps.lang.editor.styleTests.structure.NodeContainer
+    b.super_(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL);
     b.origin("r:710d1207-58b1-4fe3-ba47-f417dc16c10c(jetbrains.mps.lang.editor.styleTests.structure)/8917170296719630045");
-    b.version(2);
+    b.version(3);
     b.property("value", 0x7bc02723c1a35edeL).type(PrimitiveTypeId.STRING).origin("8917170296719630046").done();
     b.alias("test-inherited-attribute");
     return b.create();
@@ -175,9 +181,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForTestSimpleAttribute() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.styleTests", "TestSimpleAttribute", 0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x7bc02723c1a3595dL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.editor.styleTests.structure.NodeContainer", 0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL);
+    // extends: jetbrains.mps.lang.editor.styleTests.structure.NodeContainer
+    b.super_(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL);
     b.origin("r:710d1207-58b1-4fe3-ba47-f417dc16c10c(jetbrains.mps.lang.editor.styleTests.structure)/8917170296719628637");
-    b.version(2);
+    b.version(3);
     b.property("value", 0x7bc02723c1a35ed3L).type(PrimitiveTypeId.BOOLEAN).origin("8917170296719630035").done();
     b.alias("test-simple-attribute");
     return b.create();
@@ -186,16 +193,17 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.styleTests", "URLCellContainer", 0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x692a1b3ce85cd977L);
     b.class_(false, false, false);
     b.origin("r:710d1207-58b1-4fe3-ba47-f417dc16c10c(jetbrains.mps.lang.editor.styleTests.structure)/7577899271414667639");
-    b.version(2);
+    b.version(3);
     b.property("customUrl", 0x2349ec7bddecf3dbL).type(PrimitiveTypeId.STRING).origin("2542823481375781851").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForUnapplyPriorityStyleCopy() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.styleTests", "UnapplyPriorityStyleCopy", 0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x7bc02723c1a36a0fL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.editor.styleTests.structure.NodeContainer", 0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL);
+    // extends: jetbrains.mps.lang.editor.styleTests.structure.NodeContainer
+    b.super_(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL);
     b.origin("r:710d1207-58b1-4fe3-ba47-f417dc16c10c(jetbrains.mps.lang.editor.styleTests.structure)/8917170296719632911");
-    b.version(2);
+    b.version(3);
     b.alias("unapplyPriorityStyleCopy");
     return b.create();
   }

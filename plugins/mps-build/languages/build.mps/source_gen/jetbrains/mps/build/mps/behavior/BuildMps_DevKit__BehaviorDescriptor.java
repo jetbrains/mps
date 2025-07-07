@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -17,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -28,7 +26,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class BuildMps_DevKit__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2060eL, "jetbrains.mps.build.mps.structure.BuildMps_DevKit");
 
-  public static final SMethod<Iterable<SNode>> getExportedModules_id6qlcPcvboVF = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getExportedModules").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6qlcPcvboVF").build();
+  public static final SMethod<Iterable<SNode>> getExportedModules_id6qlcPcvboVF = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getExportedModules").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7391870795496918763L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExportedModules_id6qlcPcvboVF);
 
@@ -36,15 +34,7 @@ public final class BuildMps_DevKit__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static Iterable<SNode> getExportedModules_id6qlcPcvboVF(@NotNull SNode __thisNode__) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.exports$Qvxv), CONCEPTS.BuildMps_DevKitExportLanguage$EV)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.language$qqxl);
-      }
-    }).concat(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.exports$Qvxv), CONCEPTS.BuildMps_DevKitExportSolution$71)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.solution$qxKS);
-      }
-    }));
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.exports$Qvxv), CONCEPTS.BuildMps_DevKitExportLanguage$EV)).select((it) -> SLinkOperations.getTarget(it, LINKS.language$qqxl)).concat(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.exports$Qvxv), CONCEPTS.BuildMps_DevKitExportSolution$71)).select((it) -> SLinkOperations.getTarget(it, LINKS.solution$qxKS)));
   }
 
   /*package*/ BuildMps_DevKit__BehaviorDescriptor() {

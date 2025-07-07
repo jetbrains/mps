@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1144226303539:jetbrains.mps.baseLanguage.structure.ForeachStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root nodeRef="r:a38561e9-bfc2-4847-919a-67ab6c77c895(jetbrains.mps.lang.editor.doc.runtime)/9185659875393127863">
+    <file name="EditorCell_HtmlTag.java">
+      <node id="9185659875393128308" at="22,381,23,67" concept="8" />
+      <node id="2931767408855040103" at="23,67,24,0" concept="7" />
+      <node id="2931767408854719751" at="24,0,25,32" concept="1" />
+      <node id="3721399317859033460" at="25,32,26,27" concept="1" />
+      <node id="2931767408854819570" at="26,27,27,33" concept="1" />
+      <node id="9185659875393136892" at="27,33,28,27" concept="1" />
+      <node id="2931767408854825957" at="28,27,29,32" concept="1" />
+      <node id="3721399317859760866" at="29,32,30,29" concept="1" />
+      <node id="2931767408854831012" at="30,29,31,33" concept="1" />
+      <node id="4748358093452185315" at="35,0,36,0" concept="2" trace="myTagNameCell" />
+      <node id="4748358093452198831" at="36,0,37,0" concept="2" trace="myContentCell" />
+      <node id="2931767408853382373" at="38,88,39,14" concept="8" />
+      <node id="4748358093452218155" at="39,14,40,34" concept="1" />
+      <node id="4748358093452235580" at="40,34,41,34" concept="1" />
+      <node id="2931767408850607856" at="45,75,46,69" concept="5" />
+      <node id="2931767408850955579" at="47,72,48,40" concept="1" />
+      <node id="2931767408851221656" at="49,7,50,47" concept="5" />
+      <node id="2931767408851145264" at="50,47,51,57" concept="5" />
+      <node id="2931767408851283584" at="51,57,52,79" concept="1" />
+      <node id="2931767408851490509" at="52,79,53,65" concept="1" />
+      <node id="2931767408851633192" at="53,65,54,80" concept="1" />
+      <node id="2931767408851654451" at="54,80,55,20" concept="6" />
+      <node id="2931767408850920522" at="46,69,49,7" concept="3" />
+      <node id="2931767408853371229" at="38,0,43,0" concept="0" trace="CellLayout_HtmlTag#(Ljetbrains/mps/nodeEditor/cells/EditorCell_Property;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="9185659875393128090" at="22,0,33,0" concept="0" trace="EditorCell_HtmlTag#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Ljetbrains/mps/nodeEditor/cells/EditorCell_Property;Ljetbrains/mps/openapi/editor/cells/EditorCell;Ljetbrains/mps/openapi/editor/cells/EditorCell;Ljetbrains/mps/openapi/editor/cells/EditorCell;Ljetbrains/mps/nodeEditor/cells/EditorCell_Property;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="2931767408850570633" at="44,0,57,0" concept="4" trace="doLayoutHtml#(Ljava/lang/Iterable;)Ljetbrains/mps/openapi/editor/HtmlTextBuilder;" />
+      <scope id="2931767408850920528" at="47,72,48,40" />
+      <scope id="2931767408853371232" at="38,88,41,34" />
+      <scope id="2931767408850920522" at="46,69,49,7">
+        <var name="editorCell" id="2931767408850920524" />
+      </scope>
+      <scope id="2931767408853371229" at="38,0,43,0">
+        <var name="contentCell" id="4748358093452208706" />
+        <var name="tagNameCell" id="4748358093452204785" />
+      </scope>
+      <scope id="9185659875393128094" at="22,381,31,33" />
+      <scope id="2931767408850570636" at="45,75,55,20">
+        <var name="editorCellsList" id="2931767408850607859" />
+        <var name="result" id="2931767408851145265" />
+        <var name="tagName" id="2931767408851221657" />
+      </scope>
+      <scope id="9185659875393128090" at="22,0,33,0">
+        <var name="closeBracket1" id="4710646077660602840" />
+        <var name="closeBracket2" id="4710646077655992463" />
+        <var name="closedTag" id="2931767408856740388" />
+        <var name="content" id="9185659875393130551" />
+        <var name="context" id="9185659875393128324" />
+        <var name="node" id="9185659875393128362" />
+        <var name="openBracket1" id="8744622371126122012" />
+        <var name="openBracket2" id="4710646077660578545" />
+        <var name="openTag" id="4710646077660599900" />
+      </scope>
+      <scope id="2931767408850570633" at="44,0,57,0">
+        <var name="editorCells" id="2931767408850573453" />
+      </scope>
+      <unit id="2931767408850543428" at="34,0,58,0" name="jetbrains.mps.lang.editor.doc.runtime.EditorCell_HtmlTag$CellLayout_HtmlTag" />
+      <unit id="9185659875393127863" at="19,0,59,0" name="jetbrains.mps.lang.editor.doc.runtime.EditorCell_HtmlTag" />
+    </file>
+  </root>
+</debug-info>
+

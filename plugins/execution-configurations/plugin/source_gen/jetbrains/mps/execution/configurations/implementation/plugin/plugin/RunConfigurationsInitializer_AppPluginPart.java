@@ -13,8 +13,6 @@ import java.util.ArrayList;
 import com.intellij.openapi.extensions.ExtensionPoint;
 import com.intellij.execution.configurations.ConfigurationType;
 import com.intellij.openapi.extensions.Extensions;
-import com.intellij.icons.AllIcons;
-import jetbrains.mps.icons.MPSIcons;
 import java.util.Iterator;
 
 public class RunConfigurationsInitializer_AppPluginPart extends ApplicationPluginPart {
@@ -24,37 +22,37 @@ public class RunConfigurationsInitializer_AppPluginPart extends ApplicationPlugi
   }
   @Override
   public void init() {
-    // register kinds 
+    // register kinds
     ExtensionPoint<ConfigurationType> configurationExtensionPoint = Extensions.getRootArea().getExtensionPoint(ConfigurationType.CONFIGURATION_TYPE_EP);
     {
-      ConfigTypeEnvoy runConfigurationKind = new ConfigTypeEnvoy("Java Application", AllIcons.RunConfigurations.Application, "Java Application", "Java Application");
+      ConfigTypeEnvoy runConfigurationKind = new ConfigTypeEnvoy("Java Application", IconContainer.ICON0, "Java Application", "Java Application");
       runConfigurationKind.addFactoryFor("Java", Java_Configuration.class);
       RunConfigurationsInitializer_AppPluginPart.this.myRegisteredKinds.add(runConfigurationKind);
       configurationExtensionPoint.registerExtension(runConfigurationKind);
     }
     {
-      ConfigTypeEnvoy runConfigurationKind = new ConfigTypeEnvoy("JUnit Tests", AllIcons.RunConfigurations.Junit, "JUnit Tests", "JUnit Tests");
+      ConfigTypeEnvoy runConfigurationKind = new ConfigTypeEnvoy("JUnit Tests", IconContainer.ICON1, "JUnit Tests", "JUnit Tests");
       runConfigurationKind.addFactoryFor("JUnit Tests", JUnitTests_Configuration.class);
       RunConfigurationsInitializer_AppPluginPart.this.myRegisteredKinds.add(runConfigurationKind);
       configurationExtensionPoint.registerExtension(runConfigurationKind);
     }
     {
-      ConfigTypeEnvoy runConfigurationKind = new ConfigTypeEnvoy("MPS", MPSIcons.MPS16x16, "MPS", "MPS");
+      ConfigTypeEnvoy runConfigurationKind = new ConfigTypeEnvoy("MPS", IconContainer.ICON2, "MPS", "MPS");
       runConfigurationKind.addFactoryFor("MPS Instance", MPSInstance_Configuration.class);
       runConfigurationKind.addFactoryFor("Deploy Plugins", DeployPlugins_Configuration.class);
       RunConfigurationsInitializer_AppPluginPart.this.myRegisteredKinds.add(runConfigurationKind);
       configurationExtensionPoint.registerExtension(runConfigurationKind);
     }
     {
-      ConfigTypeEnvoy runConfigurationKind = new ConfigTypeEnvoy("Remote", AllIcons.RunConfigurations.Remote, "Remote", "Remote");
+      ConfigTypeEnvoy runConfigurationKind = new ConfigTypeEnvoy("Remote", IconContainer.ICON3, "Remote", "Remote");
       runConfigurationKind.addFactoryFor("Remote", Remote_Configuration.class);
       RunConfigurationsInitializer_AppPluginPart.this.myRegisteredKinds.add(runConfigurationKind);
       configurationExtensionPoint.registerExtension(runConfigurationKind);
     }
 
-    // add foreign factories 
+    // add foreign factories
 
-    // register creators 
+    // register creators
     ExtensionPoint<RuntimeConfigurationProducer> producerExtensionPoint = Extensions.getArea(null).getExtensionPoint(RuntimeConfigurationProducer.RUNTIME_CONFIGURATION_PRODUCER);
     for (ConfigurationType ext : configurationExtensionPoint.getExtensions()) {
       if ("Java Application".equals(ext.getId())) {
@@ -81,9 +79,9 @@ public class RunConfigurationsInitializer_AppPluginPart extends ApplicationPlugi
   public void dispose() {
     ExtensionPoint<ConfigurationType> configurationExtensionPoint = Extensions.getRootArea().getExtensionPoint(ConfigurationType.CONFIGURATION_TYPE_EP);
 
-    // invalidate factories from this plugin for types declared elsewhere (we have no idea whether that plugins would be reloaded/invalidated as well) 
+    // invalidate factories from this plugin for types declared elsewhere (we have no idea whether that plugins would be reloaded/invalidated as well)
 
-    // factories from this plugin would get invalidated along with configuration types, no need to do that explicitly (although it wouldn't hurt either) 
+    // factories from this plugin would get invalidated along with configuration types, no need to do that explicitly (although it wouldn't hurt either)
     for (Iterator<ConfigTypeEnvoy> it = RunConfigurationsInitializer_AppPluginPart.this.myRegisteredKinds.descendingIterator(); it.hasNext();) {
       ConfigTypeEnvoy configKind = it.next();
       configKind.invalidate();

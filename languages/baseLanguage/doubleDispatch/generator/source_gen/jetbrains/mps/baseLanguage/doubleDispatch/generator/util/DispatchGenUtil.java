@@ -12,14 +12,10 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.doubleDispatch.typesystem.DispatchGroupDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -42,54 +38,42 @@ public class DispatchGenUtil {
     _FunctionTypes._return_P1_E0<? extends Iterable<SNode>, ? super SNode> methods;
 
     if (SNodeOperations.isInstanceOf(dispatchMethod, CONCEPTS.StaticMethodDeclaration$FJ)) {
-      // if it's a static method declaration then we don't look into ancestors 
-      // otherwise we scan all the way up 
+      // if it's a static method declaration then we don't look into ancestors
+      // otherwise we scan all the way up
       classesToConsider = Sequence.<SNode>singleton(parentClass);
-      methods = new _FunctionTypes._return_P1_E0<Iterable<SNode>, SNode>() {
-        public Iterable<SNode> invoke(SNode cls) {
-          return (Iterable<SNode>) Classifier__BehaviorDescriptor.staticMethods_id7fFTwQrQPHW.invoke(cls);
-        }
-      };
+      methods = (SNode cls) -> (Iterable<SNode>) Classifier__BehaviorDescriptor.staticMethods_id7fFTwQrQPHW.invoke(cls);
 
     } else {
       classesToConsider = DispatchUtil.ancestors(SNodeOperations.cast(parentClass, CONCEPTS.ClassConcept$bK), true);
-      methods = new _FunctionTypes._return_P1_E0<Iterable<SNode>, SNode>() {
-        public Iterable<SNode> invoke(SNode cls) {
-          return (Iterable<SNode>) Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SNodeOperations.cast(cls, CONCEPTS.ClassConcept$bK));
-        }
-      };
+      methods = (SNode cls) -> (Iterable<SNode>) Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SNodeOperations.cast(cls, CONCEPTS.ClassConcept$bK));
     }
     final DispatchGroupDescriptor desc = new DispatchGroupDescriptor(dispatchMethod);
 
-    // traversing from the holder to the top of the hierarchy 
+    // traversing from the holder to the top of the hierarchy
     for (SNode h : Sequence.fromIterable(classesToConsider)) {
-      // all matching methods in this class 
-      Iterable<SNode> matchingLocalMethods = Sequence.fromIterable(methods.invoke(h)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return DispatchUtil.isReadyMethod(it) && desc.equals(new DispatchGroupDescriptor(it));
-        }
-      });
+      // all matching methods in this class
+      Iterable<SNode> matchingLocalMethods = Sequence.fromIterable(methods.invoke(h)).where((it) -> DispatchUtil.isReadyMethod(it) && desc.equals(new DispatchGroupDescriptor(it)));
 
       for (SNode method : Sequence.fromIterable(matchingLocalMethods)) {
         SNode paramClass = DispatchUtil.getParamClass(method);
-        // it's our original method, skip 
+        // it's our original method, skip
         if (method == dispatchMethod) {
           continue;
         }
-        // already overridden down the hierarchy 
+        // already overridden down the hierarchy
         if (MapSequence.fromMap(classesToMethods).containsKey(paramClass) || paramClass == origParamClass) {
           continue;
         }
-        // not an ancenstor of our param class, (thus, must be a super class) 
+        // not an ancenstor of our param class, (thus, must be a super class)
         if (!(DispatchUtil.isParent(SNodeOperations.cast(origParamClass, CONCEPTS.ClassConcept$bK), SNodeOperations.cast(paramClass, CONCEPTS.ClassConcept$bK)))) {
           continue;
         }
-        // not overridden in classes down the hierarchy 
+        // not overridden in classes down the hierarchy
         MapSequence.fromMap(classesToMethods).put(paramClass, method);
       }
     }
 
-    // remove those which correspond not to the nearest ancestor of our parameter class 
+    // remove those which correspond not to the nearest ancestor of our parameter class
     Set<SNode> toRemove = SetSequence.fromSet(new HashSet<SNode>());
 
     for (SNode clas : SetSequence.fromSet(MapSequence.fromMap(classesToMethods).keySet())) {
@@ -97,29 +81,17 @@ public class DispatchGenUtil {
       SNode superCls = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(cls, CONCEPTS.ClassConcept$bK), LINKS.superclass$Mp9$), LINKS.classifier$cxMr);
       while (superCls != origParamClass && (superCls != null)) {
         if (MapSequence.fromMap(classesToMethods).containsKey(superCls)) {
-          // we only take the nearest ancestors 
+          // we only take the nearest ancestors
           SetSequence.fromSet(toRemove).addElement(cls);
           cls = superCls;
         }
         superCls = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(superCls, CONCEPTS.ClassConcept$bK), LINKS.superclass$Mp9$), LINKS.classifier$cxMr);
       }
     }
-    SetSequence.fromSet(toRemove).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        MapSequence.fromMap(classesToMethods).removeKey(it);
-      }
-    });
+    SetSequence.fromSet(toRemove).visitAll((it) -> MapSequence.fromMap(classesToMethods).removeKey(it));
 
-    // take method declarations sorted by their parameter classes names alphabetically 
-    return MapSequence.fromMap(classesToMethods).sort(new ISelector<IMapping<SNode, SNode>, String>() {
-      public String select(IMapping<SNode, SNode> it) {
-        return SPropertyOperations.getString(it.key(), PROPS.name$MnvL);
-      }
-    }, true).select(new ISelector<IMapping<SNode, SNode>, SNode>() {
-      public SNode select(IMapping<SNode, SNode> it) {
-        return it.value();
-      }
-    });
+    // take method declarations sorted by their parameter classes names alphabetically
+    return MapSequence.fromMap(classesToMethods).sort((it) -> SPropertyOperations.getString(it.key(), PROPS.name$MnvL), true).select((it) -> it.value());
   }
 
   private static final class CONCEPTS {

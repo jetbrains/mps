@@ -12,7 +12,6 @@ import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -21,7 +20,6 @@ import jetbrains.mps.generator.impl.query.SourceNodesQuery;
 import java.util.HashMap;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.generator.impl.query.QueryKey;
-import jetbrains.mps.generator.impl.query.QueryKeyImpl;
 import java.util.Collection;
 import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.util.IterableUtil;
@@ -54,11 +52,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return ((SNodeId.Regular) ((SNode) _context.getNode()).getNodeId()).getId() + "";
   }
   public static Object referenceMacro_GetReferent_1_0(final ReferenceMacroContext _context) {
-    return ListSequence.fromList(SModelOperations.nodes(_context.getOriginalInputModel(), CONCEPTS.SimpleConceptDeclaration$Do)).findFirst(new IWhereFilter<org.jetbrains.mps.openapi.model.SNode>() {
-      public boolean accept(org.jetbrains.mps.openapi.model.SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL));
-      }
-    });
+    return ListSequence.fromList(SModelOperations.nodes(_context.getOriginalInputModel(), CONCEPTS.SimpleConceptDeclaration$Do)).findFirst((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL)));
   }
   public static Iterable<org.jetbrains.mps.openapi.model.SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.properties$IJ1F);
@@ -71,11 +65,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public SourceNodesQuery getSourceNodesQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snsqMethods.containsKey(id))) {
-      return super.getSourceNodesQuery(identity);
-    }
-    return snsqMethods.get(id);
+    SourceNodesQuery query = identity.forFunctionNode(snsqMethods);
+    return (query != null ? query : super.getSourceNodesQuery(identity));
   }
   private static class SNsQ implements SourceNodesQuery {
     private final int methodKey;
@@ -104,11 +95,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public PropertyValueQuery getPropertyValueQuery(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(pvqMethods.containsKey(id))) {
-      return super.getPropertyValueQuery(identity);
-    }
-    return pvqMethods.get(id);
+    PropertyValueQuery query = identity.forTemplateNode(pvqMethods);
+    return (query != null ? query : super.getPropertyValueQuery(identity));
   }
   private static class PVQ extends PropertyValueQuery.Base {
     private final int methodKey;
@@ -141,11 +129,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public ReferenceTargetQuery getReferenceTargetQuery(@NotNull QueryKey queryKey) {
-    final String id = queryKey.getTemplateNode().getNodeId().toString();
-    if (!(rtqMethods.containsKey(id))) {
-      return super.getReferenceTargetQuery(queryKey);
-    }
-    return rtqMethods.get(id);
+    ReferenceTargetQuery query = queryKey.forTemplateNode(rtqMethods);
+    return (query != null ? query : super.getReferenceTargetQuery(queryKey));
   }
   private static class RTQ extends ReferenceTargetQuery.Base {
     private final int methodKey;

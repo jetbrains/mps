@@ -14,13 +14,14 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.MapRootRuleBase;
 import jetbrains.mps.generator.runtime.TemplateContext;
-import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.template.MapRootRuleContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.WeaveRuleBase;
 import jetbrains.mps.generator.template.WeavingMappingRuleContext;
 import jetbrains.mps.generator.runtime.TemplateCallSite;
+import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -29,7 +30,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   private final Collection<TemplateRootMappingRule> rootRules;
   private final Collection<TemplateWeavingRule> weavings;
   public Mapping_main(@NotNull TemplateModel model) {
-    super(new SNodePointer("r:00000000-0000-4000-0000-011c895905fa(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_weaveManyToSingularChild@generator)", "1218738629621"), "main", model, false);
+    super(new SNodePointer("r:00000000-0000-4000-0000-011c895905fa(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_weaveManyToSingularChild@generator)", "1218738629621"), "main", model, false, new MO());
     rootRules = TemplateUtil.<TemplateRootMappingRule>asCollection(new RootMappingRule0());
     weavings = TemplateUtil.<TemplateWeavingRule>asCollection(new WeavingRule0());
   }
@@ -41,12 +42,12 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   public Collection<TemplateWeavingRule> getWeavingRules() {
     return weavings;
   }
-  /*package*/ static final class RootMappingRule0 extends MapRootRuleBase implements TemplateRootMappingRule {
+  /*package*/ final class RootMappingRule0 extends MapRootRuleBase implements TemplateRootMappingRule {
     public RootMappingRule0() {
       super(new SNodePointer("r:00000000-0000-4000-0000-011c895905fa(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_weaveManyToSingularChild@generator)", "1218738658950"), CONCEPTS.InputRoot$nY, false, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_0_0(new MapRootRuleContext(context, getRuleNode()));
     }
     @Override
@@ -61,19 +62,25 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       super(new SNodePointer("r:00000000-0000-4000-0000-011c895905fa(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_weaveManyToSingularChild@generator)", "1218738863683"), CONCEPTS.InputNode_A$Jt, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_0_1(new WeavingMappingRuleContext(context, getRuleNode()));
     }
-    @NotNull
     @Override
-    public SNode getContextNode(TemplateExecutionEnvironment environment, TemplateContext context) {
-      return QueriesGenerated.weavingRule_ContextQuery_0_0(new WeavingMappingRuleContext(context, getRuleNode()));
-    }
-    @Override
-    public boolean apply(final TemplateExecutionEnvironment environment, final TemplateContext context, final SNode outputContextNode) throws GenerationException {
+    public boolean apply(@NotNull final TemplateContext context) throws GenerationException {
+      final SNode outputContextNode = QueriesGenerated.weavingRule_ContextQuery_0_0(new WeavingMappingRuleContext(context, getRuleNode()));
+      if (!(checkContextNode(context, outputContextNode))) {
+        return false;
+      }
+      final TemplateExecutionEnvironment environment = context.getEnvironment();
       final TemplateCallSite callSite = environment.callSite(new Template_weave_InputNode_A(), new SNodePointer("r:00000000-0000-4000-0000-011c895905fa(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_weaveManyToSingularChild@generator)", "1218738992786"));
       return callSite.weave(context, outputContextNode, WeavingRule0.this);
     }
+  }
+
+  /*package*/ static final class MO implements MetaObjectContainer {
+
+
+
   }
 
   private static final class CONCEPTS {

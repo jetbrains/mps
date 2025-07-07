@@ -11,24 +11,24 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class replace_sequence_type {
   public static class NodeFactory_7246115176735615123 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SNodeFactoryOperations.setNewChild(newNode, LINKS.elementType$KpjL, null);
       CollectionTypeCreationUtil.extractSequenceElementType(newNode, sampleNode);
     }
   }
   public static class NodeFactory_7886927014685056895 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SNodeFactoryOperations.setNewChild(newNode, LINKS.elementType$_rAN, null);
       CollectionTypeCreationUtil.extractAbstractContainerElementType(newNode, sampleNode);
     }
   }
   public static class NodeFactory_7246115176735618985 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       CollectionTypeCreationUtil.extractListElementType(newNode, sampleNode);
     }
   }
   public static class NodeFactory_7246115176735619032 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       CollectionTypeCreationUtil.extractSetElementType(newNode, sampleNode);
     }
   }

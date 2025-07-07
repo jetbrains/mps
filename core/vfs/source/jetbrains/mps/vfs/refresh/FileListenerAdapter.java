@@ -24,13 +24,17 @@ import java.util.Objects;
 /**
  * Adapts {@link FileListener} to {@link FileSystemListener}
  *
+ * You can use it as a key in map
+ *
  * Created by apyshkin on 6/23/16.
  */
 public final class FileListenerAdapter implements FileSystemListener {
-  @NotNull private final IFile myFile;
-  @NotNull private final FileListener myFileListener;
+  @NotNull
+  private final IFile myFile;
+  @NotNull
+  private final FileListener myFileListener;
 
-  public FileListenerAdapter(@NotNull IFile file, @NotNull FileListener fileListener) {
+  private FileListenerAdapter(@NotNull IFile file, @NotNull FileListener fileListener) {
     myFile = file;
     myFileListener = fileListener;
   }
@@ -63,6 +67,19 @@ public final class FileListenerAdapter implements FileSystemListener {
   @Override
   public void update(@NotNull ProgressMonitor monitor, @NotNull FileSystemEvent event) {
     myFileListener.update(monitor, event);
+  }
+
+  @NotNull
+  public FileListener getListener() {
+    return myFileListener;
+  }
+
+  @NotNull
+  public static FileListenerAdapter adapt(@NotNull IFile file, @NotNull FileListener listener) {
+    if (listener instanceof FileListenerAdapter) {
+      return (FileListenerAdapter) listener;
+    }
+    return new FileListenerAdapter(file, listener);
   }
 
   @Override

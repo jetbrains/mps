@@ -17,6 +17,7 @@ public class IndexedTupleLiteral_DataFlow extends DataFlowBuilder {
     if (_context.getNode() == SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.BaseAssignmentExpression$PA), LINKS.lValue$splI)) {
       for (SNode mbr : SLinkOperations.getChildren(_context.getNode(), LINKS.component$uznI)) {
         _context.getBuilder().emitWrite(SLinkOperations.getTarget(SNodeOperations.as(mbr, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), "r:584f574a-ff70-48d8-8e32-f847d7f18b78(jetbrains.mps.baseLanguage.tuples.dataFlow)/1238857003685");
+        _context.getBuilder().emitWrite(SLinkOperations.getTarget(SNodeOperations.as(mbr, CONCEPTS.LocalVariableDeclarationInTuple$Gg), LINKS.variable$GATe), "r:584f574a-ff70-48d8-8e32-f847d7f18b78(jetbrains.mps.baseLanguage.tuples.dataFlow)/4070820740702462264");
       }
     } else {
       for (SNode mbr : SLinkOperations.getChildren(_context.getNode(), LINKS.component$uznI)) {
@@ -27,11 +28,13 @@ public class IndexedTupleLiteral_DataFlow extends DataFlowBuilder {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept LocalVariableDeclarationInTuple$Gg = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x387e75e5416d26cbL, "jetbrains.mps.baseLanguage.tuples.structure.LocalVariableDeclarationInTuple");
     /*package*/ static final SConcept BaseAssignmentExpression$PA = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, "jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression");
   }
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink variable$GATe = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x387e75e5416d26cbL, 0x387e75e5416d2758L, "variable");
     /*package*/ static final SContainmentLink component$uznI = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071708c13L, 0x1207171832eL, "component");
     /*package*/ static final SContainmentLink lValue$splI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
   }

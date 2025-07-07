@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,18 +23,21 @@ import jetbrains.mps.persistence.MetaModelInfoProvider.MetaInfoLoadingOption;
 import jetbrains.mps.persistence.MetaModelInfoProvider.RegularMetaModelInfo;
 import jetbrains.mps.persistence.MetaModelInfoProvider.StuffedMetaModelInfo;
 import jetbrains.mps.persistence.binary.BinaryPersistence;
-import jetbrains.mps.project.MPSExtentions;
+import jetbrains.mps.smodel.DefaultSModel;
 import jetbrains.mps.smodel.DefaultSModelDescriptor;
 import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.SModelId;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
+import jetbrains.mps.util.io.ModelOutputStream;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.annotations.Internal;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.persistence.ContentOption;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.DataSourceNotSupportedProblem;
 import org.jetbrains.mps.openapi.persistence.MFProblem;
@@ -42,6 +45,8 @@ import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.ModelFactoryType;
 import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import org.jetbrains.mps.openapi.persistence.ModelLoadingOption;
+import org.jetbrains.mps.openapi.persistence.ModelSaveException;
+import org.jetbrains.mps.openapi.persistence.ModelSaveOption;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
@@ -58,15 +63,11 @@ import static org.jetbrains.mps.openapi.persistence.MFProblem.NO_PROBLEM;
 /**
  * evgeny, 11/20/12
  */
-public class BinaryModelFactory implements ModelFactory, IndexAwareModelFactory {
-  @NotNull
-  private static PersistenceFacade FACADE() {
-    return PersistenceFacade.getInstance();
-  }
+public class BinaryModelFactory implements ModelFactory, IndexAwareModelFactory, DataLocationAwareModelFactory {
+  private final PersistenceFacade myPersistenceRegistry;
 
-  @Internal
-  public BinaryModelFactory() {
-    // do not delete, it is a java service
+  public BinaryModelFactory(@NotNull PersistenceFacade persistenceFacade) {
+    myPersistenceRegistry = persistenceFacade;
   }
 
   @NotNull
@@ -99,7 +100,7 @@ public class BinaryModelFactory implements ModelFactory, IndexAwareModelFactory 
 
     StreamDataSource source = (StreamDataSource) dataSource;
     final SModelHeader header = new SModelHeader();
-    SModelReference newModelRef = FACADE().createModelReference(null, SModelId.generate(), modelName.getValue());
+    SModelReference newModelRef = myPersistenceRegistry.createModelReference(null, SModelId.generate(), modelName);
     header.setModelReference(newModelRef);
     return new DefaultSModelDescriptor(new PersistenceFacility(this, source), header);
   }
@@ -112,7 +113,21 @@ public class BinaryModelFactory implements ModelFactory, IndexAwareModelFactory 
       throw new UnsupportedDataSourceException(dataSource);
     }
 
-    StreamDataSource source = (StreamDataSource) dataSource;
+    final StreamDataSource source = (StreamDataSource) dataSource;
+
+    if (ContentOption.CONTENT_ONLY.presentIn(options)) {
+      try (InputStream is = source.openInputStream()) {
+        SModelData modelData = BinaryPersistence.getModelData(is, MetaInfoLoadingOption.KEEP_READ.presentIn(options));
+        if (modelData instanceof DefaultSModel dsm) {
+          return new ContentOnlySModelDescriptor(dsm, this);
+        }
+        // fall-through, try regular path
+      } catch (IOException ex) {
+        // if it fails to read, why bother with another attempt
+        throw new ModelLoadException(ex.getMessage());
+      }
+    }
+
     SModelHeader binaryModelHeader;
     try {
       binaryModelHeader = BinaryPersistence.readHeader(source);
@@ -120,7 +135,7 @@ public class BinaryModelFactory implements ModelFactory, IndexAwareModelFactory 
       throw new ModelLoadException("Could not read the model header while loading from the '" + dataSource + "'", Collections.emptyList(),
                                    getCause(e));
     }
-    if (Arrays.asList(options).contains(MetaInfoLoadingOption.KEEP_READ)) {
+    if (MetaInfoLoadingOption.KEEP_READ.presentIn(options)) {
       binaryModelHeader.setMetaInfoProvider(new StuffedMetaModelInfo(new RegularMetaModelInfo()));
     }
     return new DefaultSModelDescriptor(new PersistenceFacility(this, source), binaryModelHeader);
@@ -144,6 +159,18 @@ public class BinaryModelFactory implements ModelFactory, IndexAwareModelFactory 
     BinaryPersistence.writeModel(((SModelBase) model).getSModel(), (StreamDataSource) dataSource);
   }
 
+  @Override
+  public void save(@NotNull SModel model, @NotNull DataSource dataSource, @Nullable ModelSaveOption... options) throws ModelSaveException {
+    DefaultModelPersistence.checkSaveStreamDataSource(dataSource, model.getReference());
+    DefaultModelPersistence.checkSaveReadOnlyDataSource(dataSource);
+
+    try (ModelOutputStream mos = new ModelOutputStream(((StreamDataSource) dataSource).openOutputStream())) {
+      BinaryPersistence.writeModel(model, mos, options);
+    } catch (IOException ex) {
+      throw new ModelSaveException(ex.getMessage(), Collections.emptySet(), ex);
+    }
+  }
+
   @NotNull
   @Override
   public ModelFactoryType getType() {
@@ -163,22 +190,37 @@ public class BinaryModelFactory implements ModelFactory, IndexAwareModelFactory 
 
   @Override
   public SModelData parseSingleStream(@NotNull String name, @NotNull InputStream input) throws IOException {
-    return BinaryPersistence.getModelData(input);
+    return BinaryPersistence.getModelData(input, false);
   }
 
-  /**
-   * This is provisional workaround to deal with performance tuning in jps/plugin (see CachedRepositoryData, CachedModelData)
-   * where header is serialized to get passed to another process, where model is instantiated without need to read model file.
-   *
-   * If there's real benefit in this optimization (commit comment suggests it's 0.5 second in process startup time, which doesn't look too much, imo)
-   * this serialization shall be addressed with an object supplied by descriptor itself, rather than by external means, so that full control over
-   * serialize/restore is inside implementation, and all the internal stuff (like model header) doesn't get exposed.
-   * FIXME revisit, reconsider approach
-   */
-  public static SModel createFromHeader(@NotNull SModelHeader header, @NotNull StreamDataSource dataSource) {
-    final ModelFactory modelFactory = FACADE().getModelFactory(MPSExtentions.MODEL_BINARY);
-    assert modelFactory instanceof BinaryModelFactory;
-    return new DefaultSModelDescriptor(new PersistenceFacility((BinaryModelFactory) modelFactory, dataSource), header.createCopy());
+  @Nullable
+  @Override
+  public DataSource getNodeLocation(@NotNull SNode node) {
+    CorrectnessChecker correctnessChecker = new CorrectnessChecker(this);
+    SModel model = node.getModel();
+    if (model == null) return null;
+    correctnessChecker.checkAndWarn(model);
+    if (!correctnessChecker.doesMFSupportDS(model)) {
+      return null;
+    }
+    return model.getSource();
+  }
+
+  @Nullable
+  @Override
+  public DataSource getMetaInfoLocation(@NotNull SModel model) {
+    return getDataLocation(model);
+  }
+
+  @Nullable
+  @Override
+  public DataSource getDataLocation(@NotNull SModel model) {
+    CorrectnessChecker correctnessChecker = new CorrectnessChecker(this);
+    correctnessChecker.checkAndWarn(model);
+    if (!correctnessChecker.doesMFSupportDS(model)) {
+      return null;
+    }
+    return model.getSource();
   }
 
   private static class PersistenceFacility extends LazyLoadFacility {

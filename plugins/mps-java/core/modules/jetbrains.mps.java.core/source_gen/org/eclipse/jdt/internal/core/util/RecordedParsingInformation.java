@@ -21,7 +21,7 @@ import org.eclipse.jdt.internal.compiler.CompilationResult;
  * Use to keep track of recorded information during the parsing like comment positions,
  * line ends or problems.
  */
-@GeneratedClass(node = "r:40e27d97-dea1-422b-91e0-3b9f3271a7f1(org.eclipse.jdt.internal.core.util)/1218034168005183012", model = "r:40e27d97-dea1-422b-91e0-3b9f3271a7f1(org.eclipse.jdt.internal.core.util)")
+@GeneratedClass(nodeId = "1218034168005183012", model = "r:40e27d97-dea1-422b-91e0-3b9f3271a7f1(org.eclipse.jdt.internal.core.util)")
 public class RecordedParsingInformation {
   public CategorizedProblem[] problems;
   public int problemsCount;

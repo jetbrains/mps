@@ -17,11 +17,11 @@ import jetbrains.mps.debugger.api.ui.icons.Icons;
 import com.intellij.execution.ui.layout.PlaceInGrid;
 import javax.swing.JComponent;
 import jetbrains.mps.debug.api.evaluation.IEvaluationProvider;
-import com.intellij.openapi.actionSystem.DataProvider;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.NonNls;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.actionSystem.UiDataProvider;
 import java.awt.LayoutManager;
+import com.intellij.util.concurrency.annotations.RequiresEdt;
+import com.intellij.openapi.actionSystem.DataSink;
+import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.ui.components.JBScrollPane;
 import com.intellij.openapi.ui.ComboBox;
 import com.intellij.ui.ListCellRendererWrapper;
@@ -42,7 +42,7 @@ import javax.swing.AbstractListModel;
 import javax.swing.ComboBoxModel;
 import java.util.List;
 
-@GeneratedClass(node = "r:891e5016-c8e3-4b89-90ed-01a5f21e6fc3(jetbrains.mps.debugger.api.ui.tool)/4474271214083120661", model = "r:891e5016-c8e3-4b89-90ed-01a5f21e6fc3(jetbrains.mps.debugger.api.ui.tool)")
+@GeneratedClass(nodeId = "4474271214083120661", model = "r:891e5016-c8e3-4b89-90ed-01a5f21e6fc3(jetbrains.mps.debugger.api.ui.tool)")
 public class DebuggerToolPanel {
   @NotNull
   private final AbstractDebugSession myDebugSession;
@@ -78,17 +78,15 @@ public class DebuggerToolPanel {
     }
   }
 
-  public class DebuggerPanel extends JPanel implements DataProvider {
+  public class DebuggerPanel extends JPanel implements UiDataProvider {
 
-    @Nullable
-    public Object getData(@NonNls String id) {
-      if (PlatformDataKeys.HELP_ID.is(id)) {
-        return "ideaInterface.debuggerView";
-      }
-      return null;
-    }
     public DebuggerPanel(LayoutManager p0) {
       super(p0);
+    }
+    @RequiresEdt
+    @Override
+    public void uiDataSnapshot(@NotNull DataSink sink) {
+      sink.set(PlatformDataKeys.HELP_ID, "debugging.DebugWindow");
     }
   }
 
@@ -157,7 +155,7 @@ public class DebuggerToolPanel {
         myThreadsComboBoxModel.updateThreads();
         myStackFramesListModel.updateFrames();
         myFramesList.setSelectedValue(myUiState.getStackFrame(), true);
-        //  TODO not good 
+        //  TODO not good
         myVariablesTree.setUiState(myUiState);
         myVariablesTree.rebuildNow();
       }

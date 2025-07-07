@@ -36,7 +36,7 @@ public class ProjectSolutionTreeNode extends ProjectModuleTreeNode {
   private boolean myInitialized;
 
   protected ProjectSolutionTreeNode(@NotNull AbstractModule solution, Project project, boolean shortNameOnly) {
-    super(solution);
+    super(solution, project);
     myShortNameOnly = shortNameOnly;
     setNodeIdentifier(solution.getModuleId().toString());
     setIcon(IdeIcons.SOLUTION_ICON);

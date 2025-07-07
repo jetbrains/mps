@@ -58,7 +58,7 @@ public class GenerationTestBase {
 
   @BeforeClass
   public static void init() throws Exception {
-    CREATED_ENV = new MpsEnvironment(EnvironmentConfig.defaultConfig());
+    CREATED_ENV = new MpsEnvironment(EnvironmentConfig.defaultConfig().withTestModeOn());
     CREATED_ENV.init();
   }
 

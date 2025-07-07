@@ -4,30 +4,25 @@ package jetbrains.mps.refactoringTest;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ExtractMethodRefactoringAnalyzer;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 @MPSLaunch
 public class ConceptFunctioParameterTest_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(ConceptFunctioParameterTest_Test.class, "${mps_home}", "r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ConceptFunctioParameterTest_Test.class).projectPath(null).modelRef("r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)").reopenProject(null).build());
 
   public ConceptFunctioParameterTest_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -41,12 +36,18 @@ public class ConceptFunctioParameterTest_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ConceptFunctioParameterTest() throws Exception {
-      addNodeById("1230052406742");
-      ExtractMethodRefactoringAnalyzer analyzer = new ExtractMethodRefactoringAnalyzer(ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("1230052406746"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement"))), SNodeOperations.cast(getNodeById("1230052406751"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b217L, "IfStatement")))));
-      Assert.assertEquals(1, ListSequence.fromList(analyzer.getInputVariables()).count());
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052406742");
     }
 
+    public void test_ConceptFunctioParameterTest() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        ExtractMethodRefactoringAnalyzer analyzer = new ExtractMethodRefactoringAnalyzer(ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("l1"), getAnnotatedNode("l2")));
+        Assert.assertEquals(Integer.valueOf(1), Integer.valueOf(ListSequence.fromList(analyzer.getInputVariables()).count()));
+      });
+    }
 
   }
 }

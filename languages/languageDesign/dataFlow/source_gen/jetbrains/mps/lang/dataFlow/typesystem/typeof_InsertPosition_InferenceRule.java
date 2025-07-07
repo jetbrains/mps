@@ -10,7 +10,6 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -36,9 +35,9 @@ public class typeof_InsertPosition_InferenceRule extends AbstractInferenceRule_R
     return false;
   }
   private static SNode _quotation_createNode_src0b7_a1a0c0a0b() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, "jetbrains.mps.lang.dataFlow"), 0x44f5e79f9e613080L, "InstructionType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, "jetbrains.mps.lang.dataFlow"), 0x44f5e79f9e613080L, "InstructionType"));
+    quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
 

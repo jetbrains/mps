@@ -12,7 +12,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class Notes {
   public static class NodeFactory_8908453262579903201 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SNodeFactoryOperations.addNewChild(newNode, LINKS.parts$Wb1E, CONCEPTS.TextNotePart$bv);
     }
   }

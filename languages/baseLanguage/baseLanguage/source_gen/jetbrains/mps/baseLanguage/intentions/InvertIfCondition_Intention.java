@@ -24,21 +24,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class InvertIfCondition_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public InvertIfCondition_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "1195647359405"));
   }
+
   @Override
   public String getPresentation() {
     return "InvertIfCondition";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -48,10 +48,12 @@ public final class InvertIfCondition_Intention extends AbstractIntentionDescript
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Invert If Condition";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elsifClauses$EVJW)).isNotEmpty()) {
@@ -65,7 +67,7 @@ public final class InvertIfCondition_Intention extends AbstractIntentionDescript
       }
 
 
-      // Invert condition 
+      // Invert condition
       SNode condition = SLinkOperations.getTarget(node, LINKS.condition$5R17);
       if ((condition != null)) {
         if (SNodeOperations.isInstanceOf(condition, CONCEPTS.NotExpression$Pc)) {
@@ -99,12 +101,12 @@ public final class InvertIfCondition_Intention extends AbstractIntentionDescript
           }
         }
       }
-      // Flip ifTrue and ifFalse 
+      // Flip ifTrue and ifFalse
       SNode ifTrue = SLinkOperations.getTarget(node, LINKS.ifTrue$5Rg8);
       SNode ifFalse = SLinkOperations.getTarget(node, LINKS.ifFalseStatement$psZK);
       SNode newIfTrue;
       SNode newIfFalse;
-      // Set new ifFalse 
+      // Set new ifFalse
       if (ListSequence.fromList(SLinkOperations.getChildren(ifTrue, LINKS.statement$53DE)).isEmpty()) {
         newIfFalse = null;
       } else
@@ -114,7 +116,7 @@ public final class InvertIfCondition_Intention extends AbstractIntentionDescript
         newIfFalse = SNodeFactoryOperations.createNewNode(CONCEPTS.BlockStatement$u4, null);
         SLinkOperations.setTarget(SNodeOperations.cast(newIfFalse, CONCEPTS.BlockStatement$u4), LINKS.statements$q65M, ifTrue);
       }
-      // Set new ifTrue 
+      // Set new ifTrue
       if (SNodeOperations.isInstanceOf(ifFalse, CONCEPTS.BlockStatement$u4)) {
         newIfTrue = SLinkOperations.getTarget(SNodeOperations.cast(ifFalse, CONCEPTS.BlockStatement$u4), LINKS.statements$q65M);
       } else {
@@ -126,10 +128,19 @@ public final class InvertIfCondition_Intention extends AbstractIntentionDescript
       SLinkOperations.setTarget(node, LINKS.ifTrue$5Rg8, newIfTrue);
       SLinkOperations.setTarget(node, LINKS.ifFalseStatement$psZK, newIfFalse);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return InvertIfCondition_Intention.this;
     }
+
   }
 
   private static final class LINKS {

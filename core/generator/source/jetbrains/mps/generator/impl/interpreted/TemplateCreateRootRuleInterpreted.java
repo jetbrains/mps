@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,8 +20,8 @@ import jetbrains.mps.generator.impl.DismissTopMappingRuleException;
 import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.impl.RuleUtil;
 import jetbrains.mps.generator.impl.query.CreateRootCondition;
+import jetbrains.mps.generator.impl.query.QueryKey;
 import jetbrains.mps.generator.impl.query.QueryKeyImpl;
-import jetbrains.mps.generator.impl.query.QueryProviderBase;
 import jetbrains.mps.generator.runtime.CreateRootRuleBase;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.TemplateCreateRootRule;
@@ -46,18 +46,14 @@ public class TemplateCreateRootRuleInterpreted extends CreateRootRuleBase implem
   public boolean isApplicable(@NotNull TemplateContext context) throws GenerationFailureException {
     if (myCondition == null) {
       SNode conditionFunction = RuleUtil.getCreateRootRuleCondition(myRuleNode);
-      if (conditionFunction != null) {
-        QueryKeyImpl identity = new QueryKeyImpl(getRuleNode(), conditionFunction.getNodeId());
-        myCondition = context.getEnvironment().getQueryProvider(getRuleNode()).getCreateRootRuleCondition(identity);
-      } else {
-        myCondition = new QueryProviderBase.Defaults();
-      }
+      QueryKey identity = conditionFunction == null ? QueryKeyImpl.invalid() : new QueryKeyImpl(getRuleNode(), conditionFunction.getNodeId());
+      myCondition = context.getEnvironment().getQueryProvider(getRuleNode()).getCreateRootRuleCondition(identity);
     }
     return myCondition.check(new CreateRootRuleContext(context, getRuleNode()));
   }
 
   @Override
-  public Collection<SNode> apply(TemplateContext context) throws GenerationCanceledException, GenerationFailureException, DismissTopMappingRuleException {
+  public Collection<SNode> apply(@NotNull TemplateContext context) throws GenerationCanceledException, GenerationFailureException, DismissTopMappingRuleException {
     SNode templateNode = RuleUtil.getCreateRootRuleTemplateNode(myRuleNode);
     if (templateNode != null) {
       return context.getEnvironment().getTemplateProcessor().apply(templateNode, context.subContext(myMappingName));

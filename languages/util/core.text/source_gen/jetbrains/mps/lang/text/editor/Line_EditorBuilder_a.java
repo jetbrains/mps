@@ -25,8 +25,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
-import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandlerElementKeyMap;
-import jetbrains.mps.nodeEditor.EditorSettings;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class Line_EditorBuilder_a extends AbstractEditorBuilder {
@@ -53,6 +51,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setCellId("Collection_78ent8_a");
     editorCell.setBig(true);
     setCellContext(editorCell);
+    CopyPasteLine.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.addEditorCell(createConstant_0());
     editorCell.addEditorCell(createRefNodeList_0());
     editorCell.addEditorCell(createConstant_2());
@@ -63,6 +62,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setCellId("Constant_78ent8_a0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, false);
+    style.set(StyleAttributes.READ_ONLY, true);
     style.set(StyleAttributes.PUNCTUATION_LEFT, true);
     style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
     editorCell.getStyle().putAll(style);
@@ -74,7 +74,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_elements");
     Style style = new StyleImpl();
-    style.set(StyleAttributes.INDENT_LAYOUT_WRAP_ANCHOR, false);
+    style.set(StyleAttributes.INDENT_LAYOUT_WRAP_ANCHOR, true);
     style.set(StyleAttributes.INDENT_LAYOUT_INDENT_ANCHOR, true);
     editorCell.getStyle().putAll(style);
     Line_Actions.setCellActions(editorCell, myNode, getEditorContext());
@@ -100,11 +100,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.TextElement$WN;
     }
-    public SNode createNodeToInsert(EditorContext editorContext) {
-      return nodeFactory();
+    public SNode createNodeToInsert(EditorContext editorContext, SNode prevNode, SNode nextNode, int index) {
+      return nodeFactory(prevNode, nextNode, index);
     }
 
-    public SNode nodeFactory() {
+    public SNode nodeFactory(SNode prevNode, SNode nextNode, int index) {
       return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word"));
     }
     public EditorCell createNodeCell(SNode elementNode) {
@@ -150,22 +150,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
       if (elementCell.getUserObject(AbstractCellListHandler.ELEMENT_CELL_ACTIONS_SET) == null) {
         if (elementNode != null) {
           elementCell.putUserObject(AbstractCellListHandler.ELEMENT_CELL_ACTIONS_SET, OBJ);
-          elementCell.addKeyMap(new RefNodeListHandlerElementKeyMap(this, " "));
         }
       }
-    }
-    @Override
-    public EditorCell createSeparatorCell(SNode prevNode, SNode nextNode) {
-      EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), getNode(), " ");
-      editorCell.setSelectable(false);
-      Style style = new StyleImpl();
-      style.set(StyleAttributes.LAYOUT_CONSTRAINT, "punctuation");
-      style.set(StyleAttributes.PUNCTUATION_LEFT, true);
-      style.set(StyleAttributes.FONT_SIZE, _StyleParameter_QueryFunction_78ent8_a0a1a(prevNode, nextNode));
-      editorCell.getStyle().putAll(style);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteNode(prevNode, CellAction_DeleteNode.DeleteDirection.FORWARD));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteNode(prevNode, CellAction_DeleteNode.DeleteDirection.BACKWARD));
-      return editorCell;
     }
     private EditorCell createConstant_1() {
       EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
@@ -173,13 +159,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
       EmptyLineActions.setCellActions(editorCell, myNode, getEditorContext());
       editorCell.setDefaultText("");
       return editorCell;
-    }
-    private int _StyleParameter_QueryFunction_78ent8_a0a1a(SNode prevNode, SNode nextNode) {
-      if (EditorSettings.getInstance().getFontSize() > 9) {
-        return EditorSettings.getInstance().getFontSize() - 9;
-      } else {
-        return EditorSettings.getInstance().getFontSize() / 2;
-      }
     }
   }
   private EditorCell createConstant_2() {

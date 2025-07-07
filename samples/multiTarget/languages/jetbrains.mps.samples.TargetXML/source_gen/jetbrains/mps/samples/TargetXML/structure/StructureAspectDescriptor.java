@@ -50,7 +50,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.TargetXML", "IncludeXMLTarget", 0x804719785b5c4b34L, 0xa272816c5dc96e2aL, 0x6e7027ecccdf1fdbL);
     b.class_(false, false, true);
     b.origin("r:c007818e-6d3d-4bf8-aa69-0bb9c47bb73e(jetbrains.mps.samples.TargetXML.structure)/7957904439566606299");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
 }

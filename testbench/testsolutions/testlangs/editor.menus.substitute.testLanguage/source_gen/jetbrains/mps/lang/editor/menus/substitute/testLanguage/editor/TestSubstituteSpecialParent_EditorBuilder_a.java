@@ -40,13 +40,11 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceChild_Item;
 import java.util.List;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
-import java.util.function.Function;
 import jetbrains.mps.smodel.action.NodeSubstituteActionWrapper;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.nodeEditor.menus.EditorMenuTraceInfoImpl;
 import java.util.stream.Collectors;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -736,33 +734,26 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       @Override
       public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-        List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-        Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-          public SubstituteAction apply(SubstituteAction action) {
-            return new NodeSubstituteActionWrapper(action) {
-              @Override
-              public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-                EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-                result.setDescriptor(new EditorMenuDescriptorBase("replace child item: " + TestSubstituteSpecialParent_singleSpecialChildWithPrimaryReplaceGroup_cellMenu_6as8ui_b0r2a.this.getMatchingText(), new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "7688582785734923417")));
-                return result;
-              }
-            };
-          }
-        };
-        return actions.stream().map(mapper).collect(Collectors.toList());
+        return super.createActions(cellContext, editorContext).stream().map((action) -> {
+          return new NodeSubstituteActionWrapper(action) {
+            @Override
+            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+              result.setDescriptor(new EditorMenuDescriptorBase("replace child item: " + TestSubstituteSpecialParent_singleSpecialChildWithPrimaryReplaceGroup_cellMenu_6as8ui_b0r2a.this.getMatchingText(), new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "7688582785734923417")));
+              return result;
+            }
+          };
+        }).collect(Collectors.toList());
       }
 
 
       public String getMatchingText() {
         return "some action";
       }
-      public boolean isCustomCreateChildNode() {
+      protected boolean isCustomCreateChildNode() {
         return true;
       }
-      public SNode customCreateChildNode(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        return customCreateChildNode_impl(node, currentChild, defaultChildConcept.getDeclarationNode(), defaultChildConcept, model, operationContext, editorContext);
-      }
-      private SNode customCreateChildNode_impl(SNode node, SNode currentChild, SNode defaultConceptOfChild, SAbstractConcept defaultChildConcept, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      protected SNode customCreateChildNode(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model, EditorContext editorContext) {
         return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x38b257ae54d85a98L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteSpecialChild"));
       }
     }
@@ -875,33 +866,26 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     @Override
     public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-      List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-      Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-        public SubstituteAction apply(SubstituteAction action) {
-          return new NodeSubstituteActionWrapper(action) {
-            @Override
-            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-              result.setDescriptor(new EditorMenuDescriptorBase("replace child item: " + TestSubstituteSpecialParent_multipleSpecialChildWithPrimaryReplaceGroup_cellMenu_6as8ui_b0u2a.this.getMatchingText(), new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "7688582785734929304")));
-              return result;
-            }
-          };
-        }
-      };
-      return actions.stream().map(mapper).collect(Collectors.toList());
+      return super.createActions(cellContext, editorContext).stream().map((action) -> {
+        return new NodeSubstituteActionWrapper(action) {
+          @Override
+          public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+            EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+            result.setDescriptor(new EditorMenuDescriptorBase("replace child item: " + TestSubstituteSpecialParent_multipleSpecialChildWithPrimaryReplaceGroup_cellMenu_6as8ui_b0u2a.this.getMatchingText(), new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "7688582785734929304")));
+            return result;
+          }
+        };
+      }).collect(Collectors.toList());
     }
 
 
     public String getMatchingText() {
       return "some action";
     }
-    public boolean isCustomCreateChildNode() {
+    protected boolean isCustomCreateChildNode() {
       return true;
     }
-    public SNode customCreateChildNode(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      return customCreateChildNode_impl(node, currentChild, defaultChildConcept.getDeclarationNode(), defaultChildConcept, model, operationContext, editorContext);
-    }
-    private SNode customCreateChildNode_impl(SNode node, SNode currentChild, SNode defaultConceptOfChild, SAbstractConcept defaultChildConcept, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected SNode customCreateChildNode(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model, EditorContext editorContext) {
       return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x38b257ae54d85a98L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteSpecialChild"));
     }
   }

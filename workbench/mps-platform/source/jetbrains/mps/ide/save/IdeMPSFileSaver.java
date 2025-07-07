@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,69 +15,52 @@
  */
 package jetbrains.mps.ide.save;
 
-import com.intellij.AppTopics;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ApplicationComponent;
-import com.intellij.openapi.fileEditor.FileDocumentManagerAdapter;
-import com.intellij.openapi.project.ProjectManager;
-import com.intellij.util.messages.MessageBusConnection;
+import com.intellij.openapi.fileEditor.FileDocumentManagerListener;
+import jetbrains.mps.extapi.module.EditableSModule;
+import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.make.MakeServiceComponent;
-import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.project.Project;
+import jetbrains.mps.project.ProjectManager;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 /**
- * Idea platform has the same mechanism in {@link com.intellij.ide.SaveAndSyncHandlerImpl}
+ * Idea platform has the same mechanism in {@link com.intellij.ide.SaveAndSyncHandler}
  * however it does not work for us (poor editor subsystem platform integration?)
  * <p>
  * SO this class is a delegate: it saves everything whenever the platform saves everything.
  */
-public class IdeMPSFileSaver implements ApplicationComponent {
-  private MessageBusConnection myMessageBusConnection;
-  private final SRepository myRepository;
-  private final MakeServiceComponent myMakeComponent;
+public class IdeMPSFileSaver implements FileDocumentManagerListener {
 
-  public IdeMPSFileSaver(MPSCoreComponents coreComponents) {
-    myRepository = coreComponents.getModuleRepository();
-    myMakeComponent = coreComponents.getPlatform().findComponent(MakeServiceComponent.class);
+  public IdeMPSFileSaver() {
   }
 
   @Override
-  @NotNull
-  public String getComponentName() {
-    return "Models Saver";
-  }
+  public void beforeAllDocumentsSaving() {
+    ThreadUtils.assertEDT();
 
-  @Override
-  public void initComponent() {
-    myMessageBusConnection = ApplicationManager.getApplication().getMessageBus().connect();
-    subscribeToDocumentSync();
-  }
+    // FIXME consider IMakeService check to move into SaveRepositoryCommand - whether other clients of repo save might
+    // be interested as well.
+    final MPSCoreComponents coreComponents = MPSCoreComponents.getInstance();
 
-  protected void subscribeToDocumentSync() {
-    myMessageBusConnection.subscribe(AppTopics.FILE_DOCUMENT_SYNC, new FileDocumentManagerAdapter() {
-      @Override
-      public void beforeAllDocumentsSaving() {
-        ThreadUtils.assertEDT();
-
-        SaveRepositoryCommand saveCommand = new SaveRepositoryCommand(myRepository);
-        // FIXME consider IMakeService check to move into SaveRepositoryCommand - whether other clients of repo save might
-        // be interested as well.
-
-        if (ProjectManager.getInstance().getOpenProjects().length > 0) {
-          if (myMakeComponent.isSessionActive()) {
-            ApplicationManager.getApplication().invokeLater(saveCommand::execute);
-          } else {
-            saveCommand.execute();
+    final ProjectManager mpsPM = coreComponents.getPlatform().findComponent(ProjectManager.class);
+    if (!mpsPM.getOpenedProjects().isEmpty()) {
+      Runnable saveRepo = () -> {
+        for (Project p : mpsPM.getOpenedProjects()) {
+          if (p.getRepository() instanceof SRepositoryExt ? ((SRepositoryExt) p.getRepository()).needsSave() : true) {
+            // runWriteInEDT, not invokeLater+runWriteAction() as former supports attempts/re-scheduling of the action to prevent EDT blocking
+            p.getModelAccess().runWriteInEDT(new SaveRepositoryCommand(p.getRepository()));
           }
         }
+      };
+      final MakeServiceComponent makeService = coreComponents.getPlatform().findComponent(MakeServiceComponent.class);
+      if (makeService != null && makeService.isSessionActive()) {
+        ApplicationManager.getApplication().executeOnPooledThread(saveRepo);
+      } else {
+        saveRepo.run();
       }
-    });
-  }
-
-  @Override
-  public void disposeComponent() {
-    myMessageBusConnection.disconnect();
+    }
   }
 }

@@ -23,27 +23,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class ReplaceForLoopWithWhileLoop_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ReplaceForLoopWithWhileLoop_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "1199623693658"));
   }
+
   @Override
   public String getPresentation() {
     return "ReplaceForLoopWithWhileLoop";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -53,35 +47,52 @@ public final class ReplaceForLoopWithWhileLoop_Intention extends AbstractIntenti
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Replace For with While";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      // replace for loop with while 
+      // replace for loop with while
       SNode whileStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.WhileStatement$Ay, null);
       SNodeOperations.replaceWithAnother(node, whileStatement);
-      // adjust while body 
+      // adjust while body
       SLinkOperations.setTarget(whileStatement, LINKS.body$c1sm, SLinkOperations.getTarget(node, LINKS.body$c1sm));
-      // adjust precondition 
-      // todo: multiple vars 
+      // adjust precondition
+      // todo: multiple vars
       SNode preStatement = SNodeFactoryOperations.insertNewPrevSiblingChild(whileStatement, CONCEPTS.LocalVariableDeclarationStatement$4w);
       SLinkOperations.setTarget(preStatement, LINKS.localVariableDeclaration$RpjM, SLinkOperations.getTarget(node, LINKS.variable$JNH6));
-      // adjust iteration 
-      // todo: multiple iterations 
+      // adjust iteration
+      // todo: multiple iterations
       for (SNode iteration : SLinkOperations.getChildren(node, LINKS.iteration$nuP3)) {
         SNode iterStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.ExpressionStatement$O8, null);
         SLinkOperations.setTarget(iterStatement, LINKS.expression$5L7M, iteration);
         ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(whileStatement, LINKS.body$c1sm), LINKS.statement$53DE)).addElement(iterStatement);
       }
-      // adjust exit condition 
+      // adjust exit condition
       SLinkOperations.setTarget(whileStatement, LINKS.condition$KEkM, SLinkOperations.getTarget(node, LINKS.condition$wARE));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ReplaceForLoopWithWhileLoop_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

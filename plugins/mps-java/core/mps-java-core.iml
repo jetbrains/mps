@@ -12,11 +12,11 @@
     <orderEntry type="module" module-name="logging" />
     <orderEntry type="module" module-name="openapi" />
     <orderEntry type="module" module-name="collections-runtime" />
-    <orderEntry type="library" name="Eclipse-compiler" level="project" />
     <orderEntry type="module" module-name="kernel" />
     <orderEntry type="module" module-name="typesystemEngine" />
     <orderEntry type="module" module-name="java-stub" />
     <orderEntry type="library" name="Idea-platform" level="project" />
     <orderEntry type="module" module-name="typechecking" />
+    <orderEntry type="library" name="eclipse.ecj" level="project" />
   </component>
 </module>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,10 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.module.ReloadableModuleBase;
+import jetbrains.mps.logging.Logger;
+import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.module.SDependencyImpl;
+import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.ModelsAutoImportsManager.AutoImportsContributor;
 import jetbrains.mps.project.io.DescriptorIO;
 import jetbrains.mps.project.io.DescriptorIOFacade;
@@ -25,10 +27,7 @@ import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -43,11 +42,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Generator extends ReloadableModuleBase {
-  public static final Logger LOG = LogManager.getLogger(Generator.class);
+public class Generator extends AbstractModule implements ReloadableModule {
+  public static final Logger LOG = Logger.getLogger(Generator.class);
 
   /**
    * @deprecated have to use SLanguage to facilitate standalone generator modules
@@ -81,6 +81,15 @@ public class Generator extends ReloadableModuleBase {
   @Override
   public void attach(@NotNull SRepository repository) {
     super.attach(repository);
+    if (mySourceLanguage == null) {
+      // This is to address scenario when Language and itw owned Generator modules get instantiated separately
+      // and later registered with a repository (e.g. module rename). There's no mySourceLanguage during construction
+      // time, and if language is registered first, no chance for setSourceLanguageInstance() either.
+      // Perhaps, improved setSourceLanguageInstance() approach would be better, with explicit Generator->Language bond moment,
+      // but this would require extra thought (need the story of modules registration clean and precise, don't want extra hussle
+      // of instanceof Language/Generator and special handling outside these classes)
+      mySourceLanguage = (Language) mySourceLanguage0.getSourceModuleReference().resolve(getRepository());
+    }
     if (mySourceLanguage != null) {
       mySourceLanguage.register(this);
     }
@@ -88,6 +97,10 @@ public class Generator extends ReloadableModuleBase {
 
   @Override
   public void dispose() {
+    if (mySourceLanguage == null && getRepository() != null) {
+      // XXX not sure I need to keep this value in the field in dispose(), OTOH don't see how could it hurt
+      mySourceLanguage = (Language) mySourceLanguage0.getSourceModuleReference().resolve(getRepository());
+    }
     if (mySourceLanguage != null) {
       mySourceLanguage.unregister(this);
     }
@@ -95,6 +108,9 @@ public class Generator extends ReloadableModuleBase {
   }
 
   /*package*/ void setSourceLanguageInstance(@Nullable Language language) {
+    if (mySourceLanguage == language) {
+      return;
+    }
     if (language == null && mySourceLanguage != null) {
       // XXX perhaps, shall unregister regardless of language == null.
       //     Is it possible that Generator instance had mySourceLanguage module set != null, and then re-set to another != null, without null in between?
@@ -130,6 +146,7 @@ public class Generator extends ReloadableModuleBase {
     if (false == moduleDescriptor instanceof GeneratorDescriptor) {
       return;
     }
+    final GeneratorDescriptor oldGD = myGeneratorDescriptor;
     final GeneratorDescriptor generatorDescriptor = (GeneratorDescriptor) moduleDescriptor;
     myGeneratorDescriptor = generatorDescriptor;
     if (generatorDescriptor.isStandaloneModule()) {
@@ -141,7 +158,7 @@ public class Generator extends ReloadableModuleBase {
       return;
     }
     LanguageDescriptor languageDescriptor = mySourceLanguage.getModuleDescriptor();
-    int index = languageDescriptor.getGenerators().indexOf(getModuleDescriptor());
+    int index = languageDescriptor.getGenerators().indexOf(oldGD);
     if (index != -1) {
       languageDescriptor.getGenerators().remove(index);
       languageDescriptor.getGenerators().add(index, generatorDescriptor);
@@ -172,8 +189,7 @@ public class Generator extends ReloadableModuleBase {
    *             XXX what's the contract of the method, is it supposed to give source language of a generator that is part of a language or
    *             for it shall give Language for standalone generator as well?
    */
-  @Deprecated
-  @ToRemove(version = 2019.1)
+@Deprecated(since = "2019.1", forRemoval = true)
   @Nullable
   public Language getSourceLanguage() {
     return mySourceLanguage;
@@ -202,7 +218,7 @@ public class Generator extends ReloadableModuleBase {
         return;
       }
       try {
-        DescriptorIO<GeneratorDescriptor> io = DescriptorIOFacade.getInstance().standardProvider().generatorDescriptorIO();
+        DescriptorIO<GeneratorDescriptor> io = new DescriptorIOFacade().standardProvider().generatorDescriptorIO();
         io.writeToFile(getModuleDescriptor(), getDescriptorFile());
       } catch (Exception ex) {
         Logger.getLogger(getClass()).error("Save failed", ex);
@@ -222,7 +238,15 @@ public class Generator extends ReloadableModuleBase {
 
     // generator sees its source language
     rv.add(new SDependencyImpl(mySourceLanguage0.getSourceModuleReference(), repo, SDependencyScope.DEFAULT, false));
-    for (SModuleReference rt : mySourceLanguage0.getLanguageRuntimes()) {
+    // mySourceLanguage0.getLanguageRuntimes() gives RTs for deployed languages only, but I don't care. Not sure I need these
+    // RT dependencies here at all.
+    // XXX The idea is to move RT dependencies into Generator, as various generators may need different runtime, but for the
+    // time being we have to deal with RT modules specified for a Language.
+    final LinkedHashSet<SModuleReference> languageRuntimes = new LinkedHashSet<>();
+    if (mySourceLanguage != null) {
+      languageRuntimes.addAll(mySourceLanguage.getRuntimeModulesReferences());
+    }
+    for (SModuleReference rt : languageRuntimes) {
       rv.add(new SDependencyImpl(rt, repo, SDependencyScope.RUNTIME, false));
     }
 

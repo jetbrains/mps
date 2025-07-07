@@ -7,9 +7,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.build.mps.util.MPSModulesPartitioner;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -37,22 +35,10 @@ public class BuildJavaVersionMigration extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     Iterable<SModel> models = m.getModels();
-    Iterable<SNode> projects = Sequence.fromIterable(models).translate(new ITranslator2<SModel, SNode>() {
-      public Iterable<SNode> translate(SModel model) {
-        return SModelOperations.nodes(((SModel) model), CONCEPTS.BuildProject$ae);
-      }
-    });
-    Iterable<SNode> javaProjects = Sequence.fromIterable(projects).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Sequence.fromIterable(MPSModulesPartitioner.getModules(it)).isNotEmpty();
-      }
-    });
+    Iterable<SNode> projects = Sequence.fromIterable(models).translate((model) -> SModelOperations.nodes(((SModel) model), CONCEPTS.BuildProject$ae));
+    Iterable<SNode> javaProjects = Sequence.fromIterable(projects).where((it) -> Sequence.fromIterable(MPSModulesPartitioner.getModules(it)).isNotEmpty());
     for (SNode project : Sequence.fromIterable(javaProjects)) {
-      SNode javaOptions = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.parts$mGDj), CONCEPTS.BuildSource_JavaOptions$D)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return isEmptyString(SPropertyOperations.getString(it, PROPS.optionsName$Rr_z));
-        }
-      });
+      SNode javaOptions = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.parts$mGDj), CONCEPTS.BuildSource_JavaOptions$D)).findFirst((it) -> isEmptyString(SPropertyOperations.getString(it, PROPS.optionsName$Rr_z)));
       if ((javaOptions == null)) {
         if (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.plugins$AsCR), CONCEPTS.BuildJavaPlugin$hn)).isEmpty()) {
           ListSequence.fromList(SLinkOperations.getChildren(project, LINKS.plugins$AsCR)).addElement(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5c3f3e2c1ce9ac67L, "jetbrains.mps.build.structure.BuildJavaPlugin")));
@@ -73,12 +59,12 @@ public class BuildJavaVersionMigration extends MigrationScriptBase {
       }
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xcf935df46994e9cL, 0xa132fa109541cba3L, "jetbrains.mps.build.mps"), 0);
   }
 
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
 
   private static final class CONCEPTS {

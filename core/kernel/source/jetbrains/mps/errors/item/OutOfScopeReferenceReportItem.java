@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,19 +30,15 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+// XXX shall I move this class to [project-check] module?
 public class OutOfScopeReferenceReportItem extends ReferenceReportItem implements RuleIdFlavouredItem, EditorQuickfixReportItem {
   private final TypesystemRuleId myRuleNode;
   private final EditorQuickFix myQuickfix;
   private final EditorQuickFix myAddImportQuickfix;
 
-  @Deprecated
-  public OutOfScopeReferenceReportItem(@NotNull SReference ref, @Nullable SNodeReference ruleNode, @NotNull EditorQuickFix quickfix) {
-    this(ref, ruleNode, quickfix, null, "");
-  }
-
   public OutOfScopeReferenceReportItem(@NotNull SReference ref,
                                        @Nullable SNodeReference ruleNode,
-                                       @NotNull EditorQuickFix quickfix,
+                                       @Nullable EditorQuickFix quickfix,
                                        @Nullable EditorQuickFix addImportQuickfix,
                                        @NotNull String message) {
     super(MessageStatus.ERROR, ref, message);
@@ -67,8 +63,13 @@ public class OutOfScopeReferenceReportItem extends ReferenceReportItem implement
 
   @Override
   public Collection<EditorQuickFix> getQuickFix() {
-    ArrayList<EditorQuickFix> result = new ArrayList<>();
-    result.add(myQuickfix);
+    if (myQuickfix == null && myAddImportQuickfix == null) {
+      return Collections.emptyList();
+    }
+    ArrayList<EditorQuickFix> result = new ArrayList<>(4);
+    if (myQuickfix != null) {
+      result.add(myQuickfix);
+    }
     if (myAddImportQuickfix != null) {
       result.add(myAddImportQuickfix);
     }

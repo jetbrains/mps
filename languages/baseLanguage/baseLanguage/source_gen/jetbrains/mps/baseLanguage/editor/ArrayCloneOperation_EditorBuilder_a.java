@@ -52,7 +52,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "clone");
     editorCell.setCellId("Constant_l0mk2c_a0");
     Style style = new StyleImpl();
-    new InstanceMethodStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new InstanceMethodStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
     style.set(StyleAttributes.EDITABLE, true);
     editorCell.getStyle().putAll(style);
@@ -63,7 +63,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "(");
     editorCell.setCellId("Constant_l0mk2c_b0");
     Style style = new StyleImpl();
-    new LeftParenAfterNameStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new LeftParenAfterNameStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -82,7 +82,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParen
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ")");
     editorCell.setCellId("Constant_l0mk2c_d0");
     Style style = new StyleImpl();
-    new RightParenStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new RightParenStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.SELECTABLE, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");

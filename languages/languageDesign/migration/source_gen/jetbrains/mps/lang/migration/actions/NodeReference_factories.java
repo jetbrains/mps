@@ -18,7 +18,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class NodeReference_factories {
   public static class NodeFactory_2864063292004380727 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.DirectNodeReference$fk)) {
         SPropertyOperations.assign(newNode, PROPS.nodeId$HCGf, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.DirectNodeReference$fk), LINKS.target$8vSJ).getNodeId().toString());
         SPropertyOperations.assign(newNode, PROPS.modelRef$HwWI, PersistenceFacade.getInstance().asString(SModelOperations.getPointer(SNodeOperations.getModel(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.DirectNodeReference$fk), LINKS.target$8vSJ)))));

@@ -11,14 +11,12 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.build.behavior.BuildProject__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -49,11 +47,7 @@ public class ProjectDependency {
     }
     final RelativePathHelper helper = new RelativePathHelper(basePath);
 
-    ListSequence.fromList(myDependency).addSequence(ListSequence.fromList(dependencies).select(new ISelector<SNode, Tuples._2<SNode, String>>() {
-      public Tuples._2<SNode, String> select(SNode it) {
-        return MultiTuple.<SNode,String>from(SLinkOperations.getTarget(it, LINKS.script$6Ehy), calculatePath(it, helper));
-      }
-    }));
+    ListSequence.fromList(myDependency).addSequence(ListSequence.fromList(dependencies).select((it) -> MultiTuple.<SNode,String>from(SLinkOperations.getTarget(it, LINKS.script$6Ehy), calculatePath(it, helper))));
 
     return this;
   }
@@ -92,11 +86,7 @@ public class ProjectDependency {
     }
   }
   private Iterable<SNode> getLocalDependencies(SNode project) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.dependencies$redY), CONCEPTS.BuildProjectDependency$sN)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.artifacts$MVTa) == null) && isProjectLocal(it);
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.dependencies$redY), CONCEPTS.BuildProjectDependency$sN)).where((it) -> (SLinkOperations.getTarget(it, LINKS.artifacts$MVTa) == null) && isProjectLocal(it));
   }
 
   /**
@@ -116,19 +106,19 @@ public class ProjectDependency {
   private boolean isProjectLocal(SNode dep) {
     SModel targetScriptModel = SNodeOperations.getModel(SLinkOperations.getTarget(dep, LINKS.script$6Ehy));
     if (targetScriptModel == null || SNodeOperations.getModel(myProject) == null) {
-      // "local" doesn't make sense unless there's location (i.e. my BP's model) to check againts 
+      // "local" doesn't make sense unless there's location (i.e. my BP's model) to check againts
       return false;
     }
     if (targetScriptModel == SNodeOperations.getModel(myProject)) {
-      // XXX what if we introduce per-root transformation, when one root (BuildProject) comes from transient model, while 
-      // target comes from source? Guess, would need to rely on module.isPackaged check below 
+      // XXX what if we introduce per-root transformation, when one root (BuildProject) comes from transient model, while
+      // target comes from source? Guess, would need to rely on module.isPackaged check below
       return true;
     }
     SModule targetScriptModule = targetScriptModel.getModule();
     if (targetScriptModule == SNodeOperations.getModel(myProject).getModule()) {
       return true;
     }
-    // FIXME add an option Module.isPackaged (to access it like node.model.module.isPackaged) 
+    // FIXME add an option Module.isPackaged (to access it like node.model.module.isPackaged)
     return !(targetScriptModule.isPackaged());
   }
 

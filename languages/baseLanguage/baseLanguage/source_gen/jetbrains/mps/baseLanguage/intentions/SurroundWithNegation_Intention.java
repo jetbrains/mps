@@ -10,10 +10,10 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -24,27 +24,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class SurroundWithNegation_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public SurroundWithNegation_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "418779379562176548"));
   }
+
   @Override
   public String getPresentation() {
     return "SurroundWithNegation";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return !(SNodeOperations.isInstanceOf(node, CONCEPTS.NotExpression$Pc));
-  }
+
   @Override
   public boolean isSurroundWith() {
     return true;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -54,10 +48,12 @@ public final class SurroundWithNegation_Intention extends AbstractIntentionDescr
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "!(expr)";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode replacement = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.NotExpression$Pc);
@@ -68,7 +64,7 @@ public final class SurroundWithNegation_Intention extends AbstractIntentionDescr
           SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(replacement, LINKS.expression$sv_H), CONCEPTS.ParenthesizedExpression$Ws), LINKS.expression$TlhM, node);
         } else {
           if (!(SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(node), CONCEPTS.BooleanType$_u))) {
-            // It seems to be convenient to wrap non-boolean expressions in parens since the user is likely to edit the negated expression further 
+            // It seems to be convenient to wrap non-boolean expressions in parens since the user is likely to edit the negated expression further
             SNode parens = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression"));
             SLinkOperations.setTarget(parens, LINKS.expression$TlhM, node);
             SLinkOperations.setTarget(replacement, LINKS.expression$sv_H, parens);
@@ -78,10 +74,25 @@ public final class SurroundWithNegation_Intention extends AbstractIntentionDescr
         }
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return !(SNodeOperations.isInstanceOf(node, CONCEPTS.NotExpression$Pc));
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return SurroundWithNegation_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

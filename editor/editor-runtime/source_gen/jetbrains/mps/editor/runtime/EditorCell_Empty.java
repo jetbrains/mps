@@ -19,20 +19,20 @@ import jetbrains.mps.editor.runtime.commands.EditorCommand;
 import jetbrains.mps.nodeEditor.sidetransform.EditorCell_STHint;
 import jetbrains.mps.editor.runtime.style.StyleAttributesUtil;
 
-@GeneratedClass(node = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)/8313721352726362528", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
+@GeneratedClass(nodeId = "8313721352726362528", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
 public class EditorCell_Empty extends EditorCell_Basic implements WithCaret {
-  private CaretState myCaretState = new CaretState();
+  private final CaretState myCaretState = new CaretState();
   protected TextLine myTextLine;
 
   public EditorCell_Empty(EditorContext c, SNode node) {
     super(c, node);
-    myTextLine = new TextLine("", getStyle(), false, c);
+    myTextLine = new TextLine("", getStyle(), false, c.getEditorComponent().getEditorComponentSettings());
     myTextLine.setCaretEnabled(true);
   }
 
   @Override
   protected void paintContent(Graphics g, ParentSettings parentSettings) {
-    myTextLine.setShowCaret(myCaretState.isVisible() && isWithinSelection() && getEditor().hasFocus());
+    myTextLine.setShowCaret(myCaretState.isVisible() && isWithinSelection() && getEditor().isFocusOwner());
     myTextLine.paint(g, myX + myGapLeft, myY);
   }
 
@@ -88,10 +88,10 @@ public class EditorCell_Empty extends EditorCell_Basic implements WithCaret {
     myCaretState.touch();
     repaintCaret();
     final CellActionType actionType;
-    // As it is specified in a constraints of First/LastPositionAllowedStyleClassItem, 
-    // they can only be appliedto a sub-concepts of CellModel_AbstractLabel 
-    // so, if the editor model was created without mistakes, both following conditions 
-    // should be evaluated to false 
+    // As it is specified in a constraints of First/LastPositionAllowedStyleClassItem,
+    // they can only be appliedto a sub-concepts of CellModel_AbstractLabel
+    // so, if the editor model was created without mistakes, both following conditions
+    // should be evaluated to false
     if (isFirstCaretPosition()) {
       actionType = CellActionType.LEFT_TRANSFORM;
     } else if (isLastCaretPosition()) {

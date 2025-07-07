@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,7 @@
 package jetbrains.mps.extapi.persistence;
 
 import jetbrains.mps.components.CoreComponent;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Internal;
@@ -50,7 +48,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 @Singleton
 @Mutable
 public final class ModelFactoryService implements ModelFactoryRegistry, CoreComponent {
-  private static final Logger LOG = LogManager.getLogger(ModelFactoryService.class);
+  private static final Logger LOG = Logger.getLogger(ModelFactoryService.class);
 
   private static ModelFactoryService ourInstance;
 
@@ -73,9 +71,9 @@ public final class ModelFactoryService implements ModelFactoryRegistry, CoreComp
    * @deprecated access through {@link jetbrains.mps.components.ComponentHost#findComponent(Class)}
    */
   @NotNull
-  @Deprecated
-  @ToRemove(version = 2018.3)
+@Deprecated(since = "2018.3", forRemoval = true)
   public static synchronized ModelFactoryService getInstance() {
+    // there are no uses in mbeddr, 1 use in DBModelFactory, ModelFactoryRegistrar doesn't give any context to instaniated MF
     return ourInstance;
   }
 

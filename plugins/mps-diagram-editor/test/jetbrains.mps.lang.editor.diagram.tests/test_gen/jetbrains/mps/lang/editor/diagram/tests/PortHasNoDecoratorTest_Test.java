@@ -4,25 +4,24 @@ package jetbrains.mps.lang.editor.diagram.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.jetpad.mapper.Mapper;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.PortDecoratorView;
 
 @MPSLaunch
 public class PortHasNoDecoratorTest_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(PortHasNoDecoratorTest_Test.class, "${mps_home}", "r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(PortHasNoDecoratorTest_Test.class).projectPath(null).modelRef("r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)").reopenProject(false).build());
 
   public PortHasNoDecoratorTest_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -40,11 +39,7 @@ public class PortHasNoDecoratorTest_Test extends BaseTransformationTest {
     public void testMethodImpl() throws Exception {
       initEditorComponent("1560508619094462935", "1560508619094462940");
       final Wrappers._T<Mapper> descendantMapper = new Wrappers._T<Mapper>();
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          descendantMapper.value = DecoratorTestRunner.getMapper(SNodeOperations.cast(getNodeById("1560508619094462938"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, "jetbrains.mps.lang.editor.diagram.testLanguage"), 0x4ce40ecaf41f71f2L, "InputPort"))), getEditorComponent());
-        }
-      });
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> descendantMapper.value = DecoratorTestRunner.getMapper(getAnnotatedNode("port"), getEditorComponent()));
       Assert.assertTrue(descendantMapper.value != null);
       Assert.assertTrue(descendantMapper.value.getTarget() != null);
       Assert.assertTrue(descendantMapper.value.getTarget() instanceof PortDecoratorView);

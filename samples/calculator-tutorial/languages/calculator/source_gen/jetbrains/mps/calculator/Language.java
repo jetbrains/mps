@@ -12,11 +12,11 @@ import jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.calculator.editor.EditorAspectDescriptorImpl;
+import jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor;
+import jetbrains.mps.calculator.typesystem.TypesystemDescriptor;
 import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
 import jetbrains.mps.calculator.structure.ConceptPresentationAspectImpl;
-import jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor;
-import jetbrains.mps.calculator.typesystem.TypesystemDescriptor;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.language.LanguageExtensions;
 
@@ -49,9 +49,6 @@ public class Language extends LanguageRuntime {
 
   @Override
   protected <T extends ILanguageAspect> T createAspect(Class<T> aspectClass) {
-
-
-    // AP: legacy part, must be migrated from switch: please use lang.descriptor mapping label 
     if (aspectClass == BehaviorAspectDescriptor.class) {
       return aspectClass.cast(new jetbrains.mps.calculator.behavior.BehaviorAspectDescriptor());
     }
@@ -61,14 +58,14 @@ public class Language extends LanguageRuntime {
     if (aspectClass == EditorAspectDescriptor.class) {
       return aspectClass.cast(new EditorAspectDescriptorImpl());
     }
+    if (aspectClass == IHelginsDescriptor.class) {
+      return aspectClass.cast(new TypesystemDescriptor());
+    }
     if (aspectClass == StructureAspectDescriptor.class) {
       return aspectClass.cast(new jetbrains.mps.calculator.structure.StructureAspectDescriptor());
     }
     if (aspectClass == ConceptPresentationAspect.class) {
       return aspectClass.cast(new ConceptPresentationAspectImpl());
-    }
-    if (aspectClass == IHelginsDescriptor.class) {
-      return aspectClass.cast(new TypesystemDescriptor());
     }
     return null;
   }

@@ -5,45 +5,48 @@ package jetbrains.mps.lang.descriptor.generator.template.main;
 import jetbrains.mps.generator.runtime.Generated;
 import jetbrains.mps.generator.runtime.TemplateDeclarationBase;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.generator.runtime.TemplateContext;
+import jetbrains.mps.generator.runtime.ApplySink;
+import jetbrains.mps.generator.runtime.GenerationException;
+import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
-import jetbrains.mps.generator.runtime.TemplateContext;
-import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.generator.runtime.ApplySink;
+import java.util.Collections;
+import jetbrains.mps.generator.runtime.MetaObjectContainer;
 
 @Generated
 public class Template_GDClass extends TemplateDeclarationBase {
 
   public Template_GDClass() {
+    super(new MO());
   }
 
   public SNodeReference getTemplateNode() {
-    return template_in8ni3_a0a3;
-  }
-  public Collection<SNode> apply(@NotNull final TemplateExecutionEnvironment environment, @NotNull final TemplateContext context) throws GenerationException {
-    Collection<SNode> tlist1 = null;
-    SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_5_0(new SourceSubstituteMacroNodeContext(context, callMacro_in8ni3_b0a0a1a4));
-    TemplateContext context1;
-    context1 = context.subContext(null, callInputNode1);
-    if (callInputNode1 != null) {
-      tlist1 = environment.callSite(new Template_GeneratorRuntime(), new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "263208052639693915")).apply(context1);
-    }
-    return tlist1;
+    return template;
   }
 
   @Override
   public void apply(TemplateContext context, ApplySink sink) throws GenerationException {
-    Collection<SNode> rv = apply(context.getEnvironment(), context);
-    if (rv == null) {
-      return;
+    final TemplateExecutionEnvironment environment = context.getEnvironment();
+    Collection<SNode> tlist1 = null;
+    SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_5_0(new SourceSubstituteMacroNodeContext(context, callMacro));
+    TemplateContext context1 = context;
+    context1 = context1.subContext(null, callInputNode1);
+    if (callInputNode1 != null) {
+      tlist1 = environment.callSite(new Template_GeneratorRuntime(), new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "263208052639693915")).apply(context1);
+    } else {
+      tlist1 = Collections.emptyList();
     }
-    sink.add(null, rv);
+    sink.add(null, tlist1);
   }
 
-  private static final SNodePointer template_in8ni3_a0a3 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "263208052639692929");
-  private static final SNodePointer callMacro_in8ni3_b0a0a1a4 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "263208052639693915");
+  /*package*/ static final class MO implements MetaObjectContainer {
+
+
+
+  }
+  private static final SNodePointer template = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "263208052639692929");
+  private static final SNodePointer callMacro = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "263208052639693915");
 }

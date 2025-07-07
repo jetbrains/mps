@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,10 +17,8 @@ package jetbrains.mps.ide.projectPane.fileSystem.nodes;
 
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.ui.tree.module.MPSModuleTreeNode;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.project.StandaloneMPSProject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 
@@ -31,7 +29,7 @@ public class ModuleTreeNode extends AbstractFileTreeNode implements MPSModuleTre
     super(project, moduleDir);
     myModule = m;
 
-    VirtualFile file = m.getDescriptorFile() == null ? null : VirtualFileUtils.getProjectVirtualFile(m.getDescriptorFile());
+    VirtualFile file = m.getDescriptorFile() == null ? null : project.getFileSystem().asVirtualFile(m.getDescriptorFile());
     if (file != null) {
       setIcon(file.getFileType().getIcon());
     }
@@ -56,10 +54,8 @@ public class ModuleTreeNode extends AbstractFileTreeNode implements MPSModuleTre
     return getText();
   }
 
+  @NotNull
   /*package*/ String getProjectFolder() {
-    if (myProject instanceof StandaloneMPSProject) {
-      return ((StandaloneMPSProject) myProject).getFolderFor(getModule());
-    }
-    return null;
+    return myProject.getVirtualFolder(getModule());
   }
 }

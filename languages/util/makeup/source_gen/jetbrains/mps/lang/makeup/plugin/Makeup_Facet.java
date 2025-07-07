@@ -21,7 +21,8 @@ import jetbrains.mps.lang.core.plugin.TextGenOutcomeResource;
 import java.util.stream.IntStream;
 import jetbrains.mps.internal.make.runtime.java.FileProcessor;
 import jetbrains.mps.make.delta.IDelta;
-import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.text.TextUnit;
 import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.util.MacrosFactory;
@@ -29,12 +30,12 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.internal.make.runtime.util.FilesDelta;
 import jetbrains.mps.internal.make.runtime.util.DeltaKey;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.make.script.IFeedback;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.smodel.resources.DResource;
+import jetbrains.mps.vfs.WriteTransaction;
 import jetbrains.mps.make.script.IConfig;
 import java.util.Map;
 import jetbrains.mps.make.script.IPropertiesPool;
@@ -55,7 +56,7 @@ public class Makeup_Facet extends IFacet.Stub {
     return null;
   }
   public Iterable<IFacet.Name> required() {
-    return Sequence.fromArray(new IFacet.Name[]{new IFacet.Name("jetbrains.mps.lang.core.TextGen")});
+    return Sequence.fromArray(new IFacet.Name[]{new IFacet.Name("jetbrains.mps.make.facets.TextGen")});
   }
   public Iterable<IFacet.Name> extended() {
     return null;
@@ -85,8 +86,8 @@ public class Makeup_Facet extends IFacet.Stub {
               final FileProcessor fp = new FileProcessor(monitor.getSession().getMessageHandler());
               List<IDelta> deltas = ListSequence.fromList(new ArrayList<IDelta>());
 
-              // XXX can I ask e.g. project for its FS? 
-              final FileSystem localFileSystem = FileSystem.getInstance();
+              // XXX can I ask e.g. project for its FS?
+              final IFileSystem localFileSystem = monitor.getSession().getProject().getComponent(VFSManager.class).getFileSystem(VFSManager.FILE_FS);
 
               for (TextGenOutcomeResource res : Sequence.fromIterable(input)) {
                 final ArrayList<TextUnit> generatedTextUnits = new ArrayList<TextUnit>();
@@ -99,39 +100,37 @@ public class Makeup_Facet extends IFacet.Stub {
                   continue;
                 }
                 final MacroHelper moduleMacros = MacrosFactory.forModule(res.getModule());
-                //  FIXME would be nice to have output repository in TextGenOutcomeResource, much like for generator outcome 
-                // inspired by TextGen facet approach 
+                //  FIXME would be nice to have output repository in TextGenOutcomeResource, much like for generator outcome
+                // inspired by TextGen facet approach
                 SRepository outputModelRepo = res.getTextGenResult().getModel().getRepository();
                 if (outputModelRepo == null) {
                   outputModelRepo = monitor.getSession().getProject().getRepository();
                 }
                 final FilesDelta d = new FilesDelta(new DeltaKey(res.getModule(), res.getModel()));
-                outputModelRepo.getModelAccess().runReadAction(new Runnable() {
-                  public void run() {
-                    for (TextUnit tu : generatedTextUnits) {
-                      SNode startNode = tu.getStartNode();
-                      SNode annotationCopy = AttributeOperations.getAttribute(startNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us));
-                      if ((annotationCopy == null)) {
-                        continue;
-                      }
-                      // TODO process macro/property values in the location, but assume it's absolute path for now 
-                      String destination = SPropertyOperations.getString(annotationCopy, PROPS.location$Jy3A);
-                      if ((destination == null || destination.length() == 0)) {
-                        continue;
-                      }
-                      if (MacrosFactory.containsMacro(destination)) {
-                        destination = moduleMacros.expandPath(destination);
-                      }
-                      monitor.reportFeedback(new IFeedback.INFORMATION(String.valueOf(String.format("copy textgen outcome: %s --> %s", tu.getFileName(), destination))));
+                outputModelRepo.getModelAccess().runReadAction(() -> {
+                  for (TextUnit tu : generatedTextUnits) {
+                    SNode startNode = tu.getStartNode();
+                    SNode annotationCopy = new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us).get(startNode);
+                    if ((annotationCopy == null)) {
+                      continue;
+                    }
+                    // TODO process macro/property values in the location, but assume it's absolute path for now
+                    String destination = SPropertyOperations.getString(annotationCopy, PROPS.location$Jy3A);
+                    if ((destination == null || destination.length() == 0)) {
+                      continue;
+                    }
+                    if (MacrosFactory.containsMacro(destination)) {
+                      destination = moduleMacros.expandPath(destination);
+                    }
+                    monitor.reportFeedback(new IFeedback.INFORMATION(String.valueOf(String.format("copy textgen outcome: %s --> %s", tu.getFileName(), destination))));
 
-                      // next code could be outside of model read 
-                      IFile destFile = localFileSystem.getFile(destination);
-                      boolean changed = fp.saveContent(destFile, tu.getBytes());
-                      if (changed) {
-                        d.written(destFile);
-                      } else {
-                        d.kept(destFile);
-                      }
+                    // next code could be outside of model read
+                    IFile destFile = localFileSystem.getFile(destination);
+                    boolean changed = fp.saveContent(destFile, tu.getBytes());
+                    if (changed) {
+                      d.written(destFile);
+                    } else {
+                      d.kept(destFile);
                     }
                   }
                 });
@@ -146,11 +145,7 @@ public class Makeup_Facet extends IFacet.Stub {
 
               subProgress_a0a0a.advance(1);
 
-              localFileSystem.runWriteTransaction(new Runnable() {
-                public void run() {
-                  fp.flushChanges();
-                }
-              });
+              new WriteTransaction(localFileSystem, () -> fp.flushChanges()).executeAndWait();
 
               subProgress_a0a0a.done();
             default:
@@ -167,7 +162,7 @@ public class Makeup_Facet extends IFacet.Stub {
       return null;
     }
     public Iterable<ITarget.Name> after() {
-      return Sequence.fromArray(new ITarget.Name[]{new ITarget.Name("jetbrains.mps.lang.core.TextGen.textGen")});
+      return Sequence.fromArray(new ITarget.Name[]{new ITarget.Name("jetbrains.mps.make.facets.TextGen.textGen")});
     }
     public Iterable<ITarget.Name> notBefore() {
       return null;

@@ -26,7 +26,7 @@ public class check_FinalMethodIsVirtual_NonTypesystemRule extends AbstractNonTyp
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(conceptMethodDeclaration, "The 'final' modifier does not make sense on the non-virtual method", "r:f7f8a091-d98d-402d-85c4-5f05cb2b8c61(jetbrains.mps.lang.behavior.typesystem)", "8014340958386891767", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.behavior.typesystem.RemoveFinalFromTheMethod_QuickFix", true);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.behavior.typesystem.RemoveFinalFromTheMethod_QuickFix", "8014340958386891768", true);
           intentionProvider.putArgument("conceptMethod", conceptMethodDeclaration);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }

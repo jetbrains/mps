@@ -16,27 +16,21 @@ import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 
 public final class CreateQFixFromUsageInTSIntention_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public CreateQFixFromUsageInTSIntention_Intention() {
     super(Kind.ERROR, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902b2(jetbrains.mps.lang.typesystem.intentions)", "7502898531680007396"));
   }
+
   @Override
   public String getPresentation() {
     return "CreateQFixFromUsageInTSIntention";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return new CreateQFixFromUsageHelper(node, editorContext).dryRun();
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -46,18 +40,35 @@ public final class CreateQFixFromUsageInTSIntention_Intention extends AbstractIn
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       CreateQFixFromUsageHelper helper = new CreateQFixFromUsageHelper(node, editorContext);
       return "Create Quick Fix " + helper.getQFixName();
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       new CreateQFixFromUsageHelper(node, editorContext).run();
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return new CreateQFixFromUsageHelper(node, editorContext).dryRun();
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return CreateQFixFromUsageInTSIntention_Intention.this;
     }
+
   }
 }

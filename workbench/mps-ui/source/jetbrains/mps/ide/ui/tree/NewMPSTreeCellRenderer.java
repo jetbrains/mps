@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,9 @@
  */
 package jetbrains.mps.ide.ui.tree;
 
-import com.intellij.openapi.editor.colors.CodeInsightColors;
-import com.intellij.openapi.editor.colors.EditorColorsManager;
-import com.intellij.ui.JBColor;
 import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.components.JBPanel;
-import com.intellij.util.ui.UIUtil;
-import jetbrains.mps.ide.util.ColorAndGraphicsUtil;
+import jetbrains.mps.ide.ui.WaveBorder;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -31,46 +27,34 @@ import javax.swing.JPanel;
 import javax.swing.JTree;
 import javax.swing.UIManager;
 import javax.swing.tree.TreeCellRenderer;
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
+import java.awt.FontMetrics;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
-public class NewMPSTreeCellRenderer implements TreeCellRenderer {
+public class NewMPSTreeCellRenderer implements TreeCellRenderer, RebuildAwareTreeCellRenderer {
   private final JPanel myPanel;
   private final JLabel myMainTextLabel;
+  private final WaveBorder myLabelBorder;
   private final JLabel myAdditionalTextLabel;
-  private MPSTreeNode myNode;
+  protected final TreeRendererColors myColors;
+  private boolean myErrorOnly = false;
 
   public NewMPSTreeCellRenderer() {
-    myPanel = new JBPanel() {
-      @Override
-      public void paint(Graphics g) {
-        super.paint(g);
-
-        int imageOffset;
-        Icon icon = myMainTextLabel.getIcon();
-        if (icon != null) {
-          imageOffset = icon.getIconWidth() + Math.max(0, myMainTextLabel.getIconTextGap() - 1);
-        } else {
-          imageOffset = 0;
-        }
-
-        if (myNode != null && myNode.getAggregatedErrorState() != ErrorState.NONE) {
-          if (myNode.getAggregatedErrorState() == ErrorState.ERROR) {
-            g.setColor(EditorColorsManager.getInstance().getGlobalScheme().getAttributes(CodeInsightColors.ERRORS_ATTRIBUTES).getErrorStripeColor());
-          } else {
-            g.setColor(EditorColorsManager.getInstance().getGlobalScheme().getAttributes(CodeInsightColors.WARNINGS_ATTRIBUTES).getErrorStripeColor());
-          }
-          ColorAndGraphicsUtil.drawWave(g, imageOffset, myMainTextLabel.getWidth(), getHeight() - ColorAndGraphicsUtil.WAVE_HEIGHT - 1);
-        }
-      }
-    };
+    myColors = new TreeRendererColors();
+    myPanel = new JBPanel<>().andTransparent();
     myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.X_AXIS));
-    myPanel.setOpaque(false);
 
     myMainTextLabel = new JBLabel();
+    myLabelBorder = new WaveBorder();
+    // unless explicitly turned off, label get underline for errors
+    myMainTextLabel.setBorder(myLabelBorder);
     myPanel.add(myMainTextLabel);
 
     myPanel.add(Box.createRigidArea(new Dimension(5, 0)));
@@ -81,35 +65,53 @@ public class NewMPSTreeCellRenderer implements TreeCellRenderer {
 
   @Override
   public Component getTreeCellRendererComponent(JTree tree, Object value, boolean selected, boolean expanded, boolean leaf, int row, boolean hasFocus) {
-    myPanel.setOpaque(false);
-
-    myMainTextLabel.setForeground(selected ? UIUtil.getTreeSelectionForeground(tree.hasFocus()) : UIUtil.getTreeForeground());
-    myAdditionalTextLabel.setForeground(selected ? myMainTextLabel.getForeground() : JBColor.GRAY);
-
     Icon icon = null;
     String text = value.toString();
     String additionalText = null;
+    // null color to use default tree element color from TreeRendererColors
+    Color nodeColor = null;
+    final Font treeFont = tree.getFont();
     if (value instanceof MPSTreeNode) {
       MPSTreeNode treeNode = (MPSTreeNode) value;
       icon = treeNode.getIcon();
       text = treeNode.getText();
       additionalText = treeNode.getAdditionalText();
+      configureAuxComponents(treeNode, myMainTextLabel.getFontMetrics(treeFont));
 
-      Font newFont = tree.getFont().deriveFont(treeNode.getFontStyle());
-      newFont = newFont.deriveFont(treeNode.getFontAttributes());
-      myMainTextLabel.setFont(newFont);
-      myAdditionalTextLabel.setFont(tree.getFont());
+      // XXX I feel that having a context with cached font for a given set of attributes could be beneficial here
+      final Font mlFont = treeFont.deriveFont(treeNode.getFontAttributes());
+      myMainTextLabel.setFont(mlFont);
+      myAdditionalTextLabel.setFont(treeFont);
 
-      if (!selected) {
-        myMainTextLabel.setForeground(treeNode.getColor());
+      nodeColor = treeNode.getColor();
+      if (checkTreeMessages()) {
+        myPanel.setToolTipText(null);
+        final Collection<TreeErrorMessage> messages = treeNode.findMessages(TreeErrorMessage.class);
+        if (messages.stream().anyMatch(TreeErrorMessage::isError)) {
+          myLabelBorder.setWaveColor(myColors.getErrorStripeColor());
+          final List<TreeErrorMessage> errors = messages.stream().filter(TreeErrorMessage::isOriginalError).collect(Collectors.toList());
+          if (!errors.isEmpty()) {
+            myPanel.setToolTipText(errors.stream().map(TreeErrorMessage::getMessage).collect(Collectors.joining("<br/>")));
+          }
+        } else if (!errorsOnly() && messages.stream().anyMatch(TreeErrorMessage::isWarning)) {
+          myLabelBorder.setWaveColor(myColors.getWarningStripeColor());
+          final List<TreeErrorMessage> warnings = messages.stream().filter(TreeErrorMessage::isOriginalWarning).collect(Collectors.toList());
+          if (!warnings.isEmpty()) {
+            myPanel.setToolTipText(warnings.stream().map(TreeErrorMessage::getMessage).collect(Collectors.joining("<br/>")));
+          }
+        } else {
+          myLabelBorder.setWaveColor(null);
+        }
       }
-      myNode = treeNode;
     } else {
-      myMainTextLabel.setFont(tree.getFont());
-      myAdditionalTextLabel.setFont(tree.getFont());
-      myNode = null;
+      myMainTextLabel.setFont(treeFont);
+      myAdditionalTextLabel.setFont(treeFont);
+      myLabelBorder.setWaveColor(null);
     }
 
+    final boolean focused = tree.hasFocus();
+    myMainTextLabel.setForeground(myColors.getMainLabelForeground(selected, focused, nodeColor));
+    myAdditionalTextLabel.setForeground(myColors.getAdditionalLabelForeground(selected, focused));
     myMainTextLabel.setText(text);
     if (additionalText != null) {
       myAdditionalTextLabel.setText(" (" + additionalText + ") ");
@@ -127,7 +129,47 @@ public class NewMPSTreeCellRenderer implements TreeCellRenderer {
       }
     }
     myMainTextLabel.setIcon(icon);
+    if (icon != null) {
+      myLabelBorder.setOffset(icon.getIconWidth() + Math.max(0, myMainTextLabel.getIconTextGap() - 1));
+    } else {
+      myLabelBorder.setOffset(0);
+    }
 
+    return myPanel;
+  }
+
+  @Override
+  public void rebuildStarted() {
+    myColors.reset();
+  }
+
+  public final void underlineMainLabel(boolean needLine) {
+    if (needLine && myMainTextLabel.getBorder() != myLabelBorder) {
+      myMainTextLabel.setBorder(myLabelBorder);
+    } else if (!needLine && myMainTextLabel.getBorder() != null) {
+      // XXX border with different insets means invalidation, is it ok?
+      myMainTextLabel.setBorder(null);
+    }
+  }
+
+  protected final boolean checkTreeMessages() {
+    return myMainTextLabel.getBorder() != null;
+  }
+
+  // doesn't affect underlineMainLabel state
+  public final void underlineErrorsOnly(boolean errorOnly) {
+    myErrorOnly = errorOnly;
+  }
+
+  protected final boolean errorsOnly() {
+    return myErrorOnly;
+  }
+
+  protected void configureAuxComponents(MPSTreeNode treeNode, FontMetrics mainLabelFont) {
+    // no-op
+  }
+
+  protected final Container getPanel() {
     return myPanel;
   }
 }

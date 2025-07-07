@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
  * @deprecated 
  */
 @Deprecated
-@GeneratedClass(node = "r:b9f36c08-4a75-4513-9277-a390d3426e0f(jetbrains.mps.editor.runtime.impl.cellActions)/3078666699043208145", model = "r:b9f36c08-4a75-4513-9277-a390d3426e0f(jetbrains.mps.editor.runtime.impl.cellActions)")
+@GeneratedClass(nodeId = "3078666699043208145", model = "r:b9f36c08-4a75-4513-9277-a390d3426e0f(jetbrains.mps.editor.runtime.impl.cellActions)")
 public class CellAction_Comment extends AbstractCommentAction {
   private final SNode myNode;
 

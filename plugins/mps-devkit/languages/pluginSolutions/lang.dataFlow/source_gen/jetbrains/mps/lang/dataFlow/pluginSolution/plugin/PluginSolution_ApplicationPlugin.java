@@ -19,16 +19,17 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
   }
 
   public void createGroups() {
-    // actions w/o parameters 
+    // actions w/o parameters
     addAction(new PrintDFAResult_Action());
     addAction(new PrintInitializationInformation_Action());
     addAction(new PrintReachingDefinintionsInformation_Action());
     addAction(new ShowDFA_Action());
-    // groups 
+    // groups
     addGroup(new DFAActions_ActionGroup(this));
     addGroup(new DataFlowInternal_ActionGroup(this));
   }
   public void adjustRegularGroups() {
+    insertGroupIntoAnother(DataFlowInternal_ActionGroup.ID, DebugActions_ActionGroup.ID, DebugActions_ActionGroup.LABEL_ID_dataFlow);
     insertGroupIntoAnother(DFAActions_ActionGroup.ID, DebugActions_ActionGroup.ID, DebugActions_ActionGroup.LABEL_ID_dataFlow);
   }
 }

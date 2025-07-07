@@ -12,7 +12,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
@@ -24,21 +23,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class AddFieldDocComment_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddFieldDocComment_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:17a5547b-be2d-47de-9fc3-8304c9f5de67(jetbrains.mps.baseLanguage.javadoc.intentions)", "6832197706140958200"));
   }
+
   @Override
   public String getPresentation() {
     return "AddFieldDocComment";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -48,27 +47,38 @@ public final class AddFieldDocComment_Intention extends AbstractIntentionDescrip
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl)) == null) ? "Add Documentation Comment" : "Remove Documentation Comment");
+      return ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl).get(node) == null) ? "Add Documentation Comment" : "Remove Documentation Comment");
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       DocCommentHelper.addJavadocLangIfMissing(node);
 
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl)) == null)) {
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl).get(node) == null)) {
         SNodeFactoryOperations.setNewAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl), CONCEPTS.FieldDocComment$wl);
-        SNode line = SNodeFactoryOperations.addNewChild(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl)), LINKS.body$OAGp, CONCEPTS.CommentLine$hJ);
+        SNode line = SNodeFactoryOperations.addNewChild(new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl).get(node), LINKS.body$OAGp, CONCEPTS.CommentLine$hJ);
         SNode firstPart = SNodeFactoryOperations.addNewChild(line, LINKS.part$QuzQ, CONCEPTS.TextCommentLinePart$Eb);
         SelectionUtil.selectCell(editorContext, firstPart, SelectionManager.FIRST_CELL);
       } else {
-        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl), null);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl).set(node, null);
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddFieldDocComment_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

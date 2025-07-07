@@ -40,13 +40,6 @@ public abstract class CreateRootRuleBase implements TemplateCreateRootRule {
     return myRuleNode;
   }
 
-  @Nullable
-  @Override
-  public Collection<SNode> apply(@NotNull TemplateContext context) throws GenerationException {
-    // drop the method once 2020.1 is out
-    return apply(context.getEnvironment());
-  }
-
   /**
    * Subclasses can rely on default implementation to return <code>true</code>.
    */

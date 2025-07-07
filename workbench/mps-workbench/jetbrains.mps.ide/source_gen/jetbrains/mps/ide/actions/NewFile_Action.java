@@ -10,7 +10,6 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.ui.InputValidator;
@@ -21,7 +20,7 @@ import com.intellij.ide.IdeBundle;
 import com.intellij.ide.projectView.ProjectView;
 import jetbrains.mps.ide.projectPane.fileSystem.FileViewProjectPane;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3858094006307618579", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "3858094006307618579", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class NewFile_Action extends BaseAction {
   private static final Icon ICON = AllIcons.FileTypes.Any_type;
 
@@ -29,6 +28,7 @@ public class NewFile_Action extends BaseAction {
     super("File", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -41,14 +41,12 @@ public class NewFile_Action extends BaseAction {
     }
     {
       VirtualFile p = event.getData(CommonDataKeys.VIRTUAL_FILE);
-      MapSequence.fromMap(_params).put("selectedFile", p);
       if (p == null) {
         return false;
       }
     }
     {
       Project p = event.getData(CommonDataKeys.PROJECT);
-      MapSequence.fromMap(_params).put("project", p);
       if (p == null) {
         return false;
       }
@@ -57,7 +55,7 @@ public class NewFile_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final VirtualFile dir = (((VirtualFile) MapSequence.fromMap(_params).get("selectedFile")).isDirectory() ? ((VirtualFile) MapSequence.fromMap(_params).get("selectedFile")) : ((VirtualFile) MapSequence.fromMap(_params).get("selectedFile")).getParent());
+    final VirtualFile dir = (event.getData(CommonDataKeys.VIRTUAL_FILE).isDirectory() ? event.getData(CommonDataKeys.VIRTUAL_FILE) : event.getData(CommonDataKeys.VIRTUAL_FILE).getParent());
     final VirtualFile[] result = new VirtualFile[1];
     InputValidator validator = new InputValidator() {
       @Override
@@ -73,25 +71,19 @@ public class NewFile_Action extends BaseAction {
           return false;
         }
 
-        ApplicationManager.getApplication().runWriteAction(new Runnable() {
-          public void run() {
-            try {
-              result[0] = dir.createChildData(null, p);
-            } catch (IOException e) {
-            }
+        ApplicationManager.getApplication().runWriteAction(() -> {
+          try {
+            result[0] = dir.createChildData(null, p);
+          } catch (IOException e) {
           }
         });
         return true;
       }
     };
-    Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("project")), IdeBundle.message("prompt.enter.new.file.name"), IdeBundle.message("title.new.file"), Messages.getQuestionIcon(), "", validator);
+    Messages.showInputDialog(event.getData(CommonDataKeys.PROJECT), IdeBundle.message("prompt.enter.new.file.name"), IdeBundle.message("title.new.file"), Messages.getQuestionIcon(), "", validator);
     if (result[0] != null) {
-      ProjectView.getInstance(((Project) MapSequence.fromMap(_params).get("project"))).refresh();
-      ApplicationManager.getApplication().invokeLater(new Runnable() {
-        public void run() {
-          ProjectView.getInstance(((Project) MapSequence.fromMap(_params).get("project"))).getProjectViewPaneById(FileViewProjectPane.ID).select(null, result[0], true);
-        }
-      });
+      ProjectView.getInstance(event.getData(CommonDataKeys.PROJECT)).refresh();
+      ApplicationManager.getApplication().invokeLater(() -> ProjectView.getInstance(event.getData(CommonDataKeys.PROJECT)).getProjectViewPaneById(FileViewProjectPane.ID).select(null, result[0], true));
     }
   }
 }

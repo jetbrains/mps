@@ -22,7 +22,6 @@ import jetbrains.mps.generator.impl.query.QueryKey;
 import jetbrains.mps.generator.template.ReductionRuleQueryContext;
 import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.impl.query.SourceNodeQuery;
-import jetbrains.mps.generator.impl.query.QueryKeyImpl;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.impl.query.ReferenceTargetQuery;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -39,7 +38,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.PropertyPointerValueOperation$xq);
   }
   public static Object referenceMacro_GetReferent_1_0(final ReferenceMacroContext _context) {
-    // shall return pointer to a method with 2 arguments 
+    // shall return pointer to a method with 2 arguments
     SNode datatype = SLinkOperations.getTarget(SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(_context.getNode())), CONCEPTS.PropertyPointerType$Jt), LINKS.dataType$ciaU);
     if ((boolean) DataTypeDeclaration__BehaviorDescriptor.isSimpleIntegerOrEnumOfInteger_idhKtGTZR.invoke(datatype)) {
       return new SNodePointer("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527298601");
@@ -61,7 +60,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return new SNodePointer("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "8569306558189563143");
   }
   public static Object referenceMacro_GetReferent_1_2(final ReferenceMacroContext _context) {
-    // shall return pointer to a method with 2 arguments 
+    // shall return pointer to a method with 2 arguments
     SNode datatype = SLinkOperations.getTarget(SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(_context.getNode())), CONCEPTS.PropertyPointerType$Jt), LINKS.dataType$ciaU);
     if ((boolean) DataTypeDeclaration__BehaviorDescriptor.isSimpleIntegerOrEnumOfInteger_idhKtGTZR.invoke(datatype)) {
       return new SNodePointer("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "7019756663678718264");
@@ -110,11 +109,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public ReductionRuleCondition getReductionRuleCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(rrcMethods.containsKey(id))) {
-      return super.getReductionRuleCondition(identity);
-    }
-    return rrcMethods.get(id);
+    ReductionRuleCondition query = identity.forTemplateNode(rrcMethods);
+    return (query != null ? query : super.getReductionRuleCondition(identity));
   }
   private static class RRC implements ReductionRuleCondition {
     private final int methodKey;
@@ -148,11 +144,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public SourceNodeQuery getSourceNodeQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snqMethods.containsKey(id))) {
-      return super.getSourceNodeQuery(identity);
-    }
-    return snqMethods.get(id);
+    SourceNodeQuery query = identity.forFunctionNode(snqMethods);
+    return (query != null ? query : super.getSourceNodeQuery(identity));
   }
   private static class SNQ implements SourceNodeQuery {
     private final int methodKey;
@@ -196,11 +189,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public ReferenceTargetQuery getReferenceTargetQuery(@NotNull QueryKey queryKey) {
-    final String id = queryKey.getTemplateNode().getNodeId().toString();
-    if (!(rtqMethods.containsKey(id))) {
-      return super.getReferenceTargetQuery(queryKey);
-    }
-    return rtqMethods.get(id);
+    ReferenceTargetQuery query = queryKey.forTemplateNode(rtqMethods);
+    return (query != null ? query : super.getReferenceTargetQuery(queryKey));
   }
   private static class RTQ extends ReferenceTargetQuery.Base {
     private final int methodKey;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,18 +15,18 @@
  */
 package jetbrains.mps.nodeEditor.cellLayout;
 
+import jetbrains.mps.editor.runtime.HtmlTextBuilderImpl;
 import jetbrains.mps.editor.runtime.TextBuilderImpl;
 import jetbrains.mps.editor.runtime.impl.LayoutConstraints;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.nodeEditor.cells.APICellAdapter;
 import jetbrains.mps.nodeEditor.cells.GeometryUtil;
+import jetbrains.mps.openapi.editor.HtmlTextBuilder;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
-import org.apache.log4j.LogManager;
 
 import java.awt.Rectangle;
 import java.util.ArrayList;
@@ -41,7 +41,7 @@ import java.util.Set;
  */
 public class CellLayout_Flow extends AbstractCellLayout {
 
-  private static Logger LOG = Logger.wrap(LogManager.getLogger(CellLayout_Flow.class));
+  private static final Logger LOG = Logger.getLogger(CellLayout_Flow.class);
 
   /*
          wStart
@@ -95,15 +95,11 @@ public class CellLayout_Flow extends AbstractCellLayout {
   }
 
 
-  private int getMaxX() {
-    return EditorSettings.getInstance().getVerticalBoundWidth();
-  }
-
-
   @Override
   public void doLayout(EditorCell_Collection editorCells) {
     if (myBossLayout == null) init();
-    new FlowLayouter(editorCells).doLayout();
+    int rightMargin = editorCells.getEditorComponent().getEditorComponentSettings().getRightMargin();
+    new FlowLayouter(editorCells, rightMargin).doLayout();
   }
 
   private void setMaxDescent(int maxDescent) {
@@ -150,7 +146,7 @@ public class CellLayout_Flow extends AbstractCellLayout {
     private boolean myToSkip;
     private int myMaxX;
 
-    public FlowLayouter(EditorCell_Collection editorCells) {
+    public FlowLayouter(EditorCell_Collection editorCells, int rightMargin) {
       this.myEditorCells = editorCells;
       myX = editorCells.getX() + myWStart;
       myY = editorCells.getY();
@@ -158,7 +154,7 @@ public class CellLayout_Flow extends AbstractCellLayout {
       if (editorCells.getStyle().isSpecified(StyleAttributes.MAX_WIDTH)) {
         myMaxX = editorCells.getX() + editorCells.getStyle().get(StyleAttributes.MAX_WIDTH);
       } else {
-        myMaxX = getMaxX();
+        myMaxX = rightMargin;
       }
     }
 
@@ -320,6 +316,16 @@ public class CellLayout_Flow extends AbstractCellLayout {
   @Override
   public TextBuilder doLayoutText(Iterable<EditorCell> editorCells) {
     TextBuilder result = new TextBuilderImpl();
+    Iterator<EditorCell> it = editorCells.iterator();
+    while (it.hasNext()) {
+      result.appendToTheBottom(doLayoutRow(it));
+    }
+    return result;
+  }
+
+  @Override
+  public HtmlTextBuilder doLayoutHtml(Iterable<EditorCell> editorCells) {
+    HtmlTextBuilder result = new HtmlTextBuilderImpl();
     Iterator<EditorCell> it = editorCells.iterator();
     while (it.hasNext()) {
       result.appendToTheBottom(doLayoutRow(it));

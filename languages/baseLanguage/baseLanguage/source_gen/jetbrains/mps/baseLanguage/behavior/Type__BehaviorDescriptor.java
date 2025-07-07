@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.List;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -25,13 +24,10 @@ import java.util.Collections;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -40,29 +36,29 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
 
-  public static final SMethod<List<String>> getVariableSuffixes_idhEwIzNo = new SMethodBuilder<List<String>>(new SJavaCompoundTypeImpl((Class<List<String>>) ((Class) Object.class))).name("getVariableSuffixes").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIzNo").build();
-  public static final SMethod<Boolean> hasPluralVariableSuffixes_id1gn9ujF3bz3 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasPluralVariableSuffixes").modifiers(SModifiersImpl.create(8, AccessPrivileges.PROTECTED)).concept(CONCEPT).id("1gn9ujF3bz3").build();
-  public static final SMethod<List<SNode>> getSupertypes_id4w2h6RLlygH = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getSupertypes").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4w2h6RLlygH").build();
-  public static final SMethod<String> getErasureSignature_idhEwIzNx = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getErasureSignature").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIzNx").build();
-  public static final SMethod<SNode> getErasure_idB1mAlA38Mq = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getErasure").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("B1mAlA38Mq").build();
-  public static final SMethod<Boolean> isReifiable_id2soW6EObTNQ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isReifiable").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2soW6EObTNQ").build();
-  public static final SMethod<Boolean> isValueType_id4ctkEngAqej = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValueType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4ctkEngAqej").build();
-  public static final SMethod<SNode> getBoxedType_idhEwIzNC = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getBoxedType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIzNC").build();
-  public static final SMethod<SNode> getAbstractCreator_idhEwIzNW = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getAbstractCreator").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIzNW").build();
-  public static final SMethod<List<SNode>> getAbstractCreators_idhQFCQT0 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getAbstractCreators").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hQFCQT0").build();
-  public static final SMethod<List<SNode>> getAbstractCreators_id6A07P3f4z36 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getAbstractCreators").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6A07P3f4z36").build(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getJavaType_idhEwIzO1 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getJavaType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIzO1").build();
-  public static final SMethod<Boolean> selectOnVariableCreation_idhEwIzO8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("selectOnVariableCreation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIzO8").build();
-  public static final SMethod<SNode> getClassExpression_idhEwIzOd = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClassExpression").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIzOd").build();
-  public static final SMethod<Boolean> isSupersetOf_idhKBOZqh = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSupersetOf").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hKBOZqh").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> isSupersetOf_id7PgshREdQKp = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSupersetOf").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7PgshREdQKp").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Map<SNode, SNode>>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> createDefaultTypeExpression_id2UvJdVpqUA4 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createDefaultTypeExpression").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2UvJdVpqUA4").build();
-  public static final SMethod<Boolean> hasMissingParameters_id32KZwowVoMu = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasMissingParameters").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("32KZwowVoMu").build();
-  public static final SMethod<SNode> getLooseType_id4YTQtEKnnzf = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLooseType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4YTQtEKnnzf").build(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""));
-  public static final SMethod<String> jniSignature_id7F81Cd2C7e3 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("jniSignature").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7F81Cd2C7e3").build();
-  public static final SMethod<Boolean> canBeCoerced_id5uUZ$FUUb6B = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeCoerced").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5uUZ$FUUb6B").build(SMethodBuilder.createJavaParameter(String.class, ""));
-  public static final SMethod<Boolean> canBeCoerced_id476YRQvP9l3 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeCoerced").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("476YRQvP9l3").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> isValueType_id4bFkYVCcmm2 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValueType").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4bFkYVCcmm2").build();
+  public static final SMethod<List<String>> getVariableSuffixes_idhEwIzNo = new SMethodBuilder<List<String>>(new SJavaCompoundTypeImpl((Class<List<String>>) ((Class) Object.class))).name("getVariableSuffixes").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877337304L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> hasPluralVariableSuffixes_id1gn9ujF3bz3 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasPluralVariableSuffixes").modifiers(8, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(1447667470349154499L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<List<SNode>> getSupertypes_id4w2h6RLlygH = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getSupertypes").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5188784959675311149L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<String> getErasureSignature_idhEwIzNx = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getErasureSignature").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877337313L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> getErasure_idB1mAlA38Mq = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getErasure").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(702942408396803226L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> isReifiable_id2soW6EObTNQ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isReifiable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2817265908000464118L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> isValueType_id4ctkEngAqej = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValueType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4836112446988592019L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> getBoxedType_idhEwIzNC = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getBoxedType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877337320L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> getAbstractCreator_idhEwIzNW = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getAbstractCreator").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877337340L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<List<SNode>> getAbstractCreators_idhQFCQT0 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getAbstractCreators").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1226945293888L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<List<SNode>> getAbstractCreators_id6A07P3f4z36 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getAbstractCreators").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7602110602933317830L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getJavaType_idhEwIzO1 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getJavaType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877337345L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> selectOnVariableCreation_idhEwIzO8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("selectOnVariableCreation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877337352L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> getClassExpression_idhEwIzOd = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClassExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877337357L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> isSupersetOf_idhKBOZqh = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSupersetOf").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1220438914705L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> isSupersetOf_id7PgshREdQKp = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSupersetOf").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9029841626175335449L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Map<SNode, SNode>>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> createDefaultTypeExpression_id2UvJdVpqUA4 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createDefaultTypeExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3359611512358152580L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> hasMissingParameters_id32KZwowVoMu = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasMissingParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3508583411997314206L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> getLooseType_id4YTQtEKnnzf = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLooseType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5744862332972792015L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""));
+  public static final SMethod<String> jniSignature_id7F81Cd2C7e3 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("jniSignature").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8847328628797633411L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> canBeCoerced_id5uUZ$FUUb6B = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeCoerced").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6321644624958501287L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<Boolean> canBeCoerced_id476YRQvP9l3 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeCoerced").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4739752174825018691L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> isValueType_id4bFkYVCcmm2 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValueType").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4822040111593121154L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableSuffixes_idhEwIzNo, hasPluralVariableSuffixes_id1gn9ujF3bz3, getSupertypes_id4w2h6RLlygH, getErasureSignature_idhEwIzNx, getErasure_idB1mAlA38Mq, isReifiable_id2soW6EObTNQ, isValueType_id4ctkEngAqej, getBoxedType_idhEwIzNC, getAbstractCreator_idhEwIzNW, getAbstractCreators_idhQFCQT0, getAbstractCreators_id6A07P3f4z36, getJavaType_idhEwIzO1, selectOnVariableCreation_idhEwIzO8, getClassExpression_idhEwIzOd, isSupersetOf_idhKBOZqh, isSupersetOf_id7PgshREdQKp, createDefaultTypeExpression_id2UvJdVpqUA4, hasMissingParameters_id32KZwowVoMu, getLooseType_id4YTQtEKnnzf, jniSignature_id7F81Cd2C7e3, canBeCoerced_id5uUZ$FUUb6B, canBeCoerced_id476YRQvP9l3, isValueType_id4bFkYVCcmm2);
 
@@ -72,7 +68,7 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static List<String> getVariableSuffixes_idhEwIzNo(@NotNull SNode __thisNode__) {
     List<String> result = ListSequence.fromList(new ArrayList<String>());
     for (String s : NameUtil.splitByCamels(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(__thisNode__))) {
-      // strip trailing underscores 
+      // strip trailing underscores
       String validIdentifier = NameUtil.toValidIdentifier(s);
       while (validIdentifier.length() > 1 && validIdentifier.endsWith("_")) {
         validIdentifier = NameUtil.stripQuotes(validIdentifier, "", "_");
@@ -98,7 +94,7 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
     return Type__BehaviorDescriptor.getErasureSignature_idhEwIzNx.invoke(javaType);
   }
   /*package*/ static SNode getErasure_idB1mAlA38Mq(@NotNull SNode __thisNode__) {
-    // all 'JavaType's should have getErasure() implemented 
+    // all 'JavaType's should have getErasure() implemented
     SNode javaType = Type__BehaviorDescriptor.getJavaType_idhEwIzO1.invoke(__thisNode__);
     return ((javaType == null) ? null : Type__BehaviorDescriptor.getErasure_idB1mAlA38Mq.invoke(javaType));
   }
@@ -143,15 +139,7 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
     }
   }
   /*package*/ static boolean isSupersetOf_idhKBOZqh(@NotNull SNode __thisNode__, SNode t) {
-    {
-      GeneratedMatchingPattern pattern_smb55n_a0o = new Pattern_smb55n_a0a0a0o(_quotation_createNode_smb55n_a0a0a0a0o(__thisNode__));
-      SNode coercedNode_smb55n_a0o = TypecheckingFacade.getFromContext().coerceType(t, pattern_smb55n_a0o);
-      if (coercedNode_smb55n_a0o != null) {
-        return true;
-      } else {
-      }
-    }
-    return false;
+    return TypecheckingFacade.getFromContext().isSubtype(t, __thisNode__);
   }
   /*package*/ static boolean isSupersetOf_id7PgshREdQKp(@NotNull SNode __thisNode__, SNode t, Map<SNode, SNode> substitutions) {
     if (SNodeOperations.isInstanceOf(t, CONCEPTS.TypeVariableReference$WL)) {
@@ -179,13 +167,12 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static String jniSignature_id7F81Cd2C7e3(@NotNull SNode __thisNode__) {
     return null;
   }
-  @Deprecated
-  @ToRemove(version = 3.5)
+  @Deprecated(since = "3.5", forRemoval = true)
   /*package*/ static boolean canBeCoerced_id5uUZ$FUUb6B(@NotNull SNode __thisNode__, String conceptFqName) {
     return true;
   }
   /*package*/ static boolean canBeCoerced_id476YRQvP9l3(@NotNull SNode __thisNode__, SAbstractConcept c) {
-    // todo remove body after 3.5 
+    // todo remove body after 3.5
     return ((boolean) Type__BehaviorDescriptor.canBeCoerced_id5uUZ$FUUb6B.invoke(__thisNode__, c.getQualifiedName()));
   }
   /*package*/ static boolean isValueType_id4bFkYVCcmm2(@NotNull SAbstractConcept __thisConcept__) {
@@ -282,18 +269,10 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
     return CONCEPT;
   }
   private static SNode _quotation_createNode_smb55n_a0a1a0a31(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x103fb730c14L, "ClassifierClassExpression")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x103fb730c14L, "ClassifierClassExpression"));
+    quotedNode_2 = nb.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x103fb730c14L, 0x103fb73a43eL, "classifier"), (SNode) parameter_1);
-    return quotedNode_2;
-  }
-  private static SNode _quotation_createNode_smb55n_a0a0a0a0o(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode quotedNode_2 = null;
-    quotedNode_2 = (SNode) parameter_1;
-    if (quotedNode_2 != null) {
-    }
     return quotedNode_2;
   }
 

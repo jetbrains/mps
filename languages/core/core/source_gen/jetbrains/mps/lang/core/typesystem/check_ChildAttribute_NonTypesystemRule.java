@@ -15,7 +15,6 @@ import jetbrains.mps.errors.BaseQuickFixProvider;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.ChildAttribute__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -32,24 +31,20 @@ public class check_ChildAttribute_NonTypesystemRule extends AbstractNonTypesyste
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(childAttribute, "Child attribute should have link id", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "6063712545515824603", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.add_ChildAttribute_id_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.add_ChildAttribute_id_QuickFix", "6063712545515824607", false);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }
     } else {
       Iterable<SContainmentLink> links = SNodeOperations.getConcept(SNodeOperations.getParent(childAttribute)).getContainmentLinks();
-      SContainmentLink existingLink = Sequence.fromIterable(links).findFirst(new IWhereFilter<SContainmentLink>() {
-        public boolean accept(SContainmentLink it) {
-          return Objects.equals(it, ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(childAttribute));
-        }
-      });
+      SContainmentLink existingLink = Sequence.fromIterable(links).findFirst((it) -> Objects.equals(it, ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(childAttribute)));
       String reportName = ChildAttribute__BehaviorDescriptor.getNameForReporting_id5gACAVBz6xW.invoke(childAttribute);
       if (existingLink == null) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(childAttribute, "Child Attribute is attached to not existing aggregation link: " + SPropertyOperations.getString(childAttribute, PROPS.linkId$eRkA) + "(" + reportName + ")", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "709746936026611133", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.RemoveUndeclaredLinkAttribute_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.RemoveUndeclaredLinkAttribute_QuickFix", "709746936026611158", false);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }
@@ -58,7 +53,7 @@ public class check_ChildAttribute_NonTypesystemRule extends AbstractNonTypesyste
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(childAttribute, "Incorrect aggregation link name: " + reportName, "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "6063712545516066366", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.fix_ChildAttribute_name_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.fix_ChildAttribute_name_QuickFix", "6063712545516066372", false);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,17 +22,18 @@ import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
 import com.intellij.openapi.extensions.PluginId;
 import jetbrains.mps.core.platform.Platform;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.plugins.actions.BaseKeymapChanges;
 import jetbrains.mps.plugins.part.ApplicationPluginPart;
 import jetbrains.mps.util.Pair;
+import jetbrains.mps.workbench.action.ApplicationPlugin;
 import jetbrains.mps.workbench.action.BaseAction;
 import jetbrains.mps.workbench.action.BaseGroup;
-import jetbrains.mps.workbench.action.ApplicationPlugin;
 import jetbrains.mps.workbench.action.MPSActions;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -40,30 +41,47 @@ import java.util.Map;
 import java.util.Set;
 
 public abstract class BaseApplicationPlugin implements ApplicationPlugin {
-  private static final Logger LOG = org.apache.log4j.LogManager.getLogger(BaseApplicationPlugin.class);
+  private static final Logger LOG = Logger.getLogger(BaseApplicationPlugin.class);
 
   private List<ApplicationPluginPart> myCustomParts;
-  private List<BaseGroup> myGroups = new ArrayList<>();
-  private List<BaseKeymapChanges> myKeymapChanges = new ArrayList<>();
-  private Set<Pair<DefaultActionGroup, DefaultActionGroup>> myXmlGroups = new HashSet<>();
+  private final List<BaseGroup> myGroups = new ArrayList<>(4);
+  private List<BaseKeymapChanges> myKeymapChanges;
+  private final Set<Pair<DefaultActionGroup, DefaultActionGroup>> myXmlGroups = new HashSet<>();
 
-  private Map<DefaultActionGroup, DefaultActionGroup> myAdjustedGroups = new HashMap<>();
+  private final Map<DefaultActionGroup, DefaultActionGroup> myAdjustedGroups = new HashMap<>();
   private Platform myPlatform;
 
   //----------plugin id------------
 
+  // FIXME the only place we use (and abuse) PluginId is MPSAction.unregisterActions(), where we pass
+  //       this non-IDEA identity to IDEA's ActionManagerEx. Once/if IDEA starts to expect proper PluginId
+  //       there (e.g. the one for known/installed plugin), we are screwed as this getId() here reflects
+  //       name of the MPS module, and not necessarily match distribution plugin id (let alone not all
+  //       MPS modules get distributed as IDEA plugins)
   @NotNull
   protected abstract PluginId getId();
 
   //------actions and groups-------
 
-  public void createGroups() {
-
+  /*package*/ final void createGroups1() {
+    try {
+      createGroups();
+    } catch (Throwable th) {
+      LOG.error(String.format("Failed to create groups of plugin %s", getId()), th);
+    }
   }
 
-  public final void adjustGroups() {
-    adjustInterfaceGroups();
-    adjustRegularGroups();
+  public void createGroups() {
+    // intended for override in subclasses
+  }
+
+  /*package*/ final void adjustGroups() {
+    try {
+      adjustInterfaceGroups();
+      adjustRegularGroups();
+    } catch (Throwable th) {
+      LOG.error(String.format("Failed to adjust groups of plugin %s", getId()), th);
+    }
   }
 
   public void adjustInterfaceGroups() {
@@ -78,11 +96,11 @@ public abstract class BaseApplicationPlugin implements ApplicationPlugin {
     DefaultActionGroup gTo = (DefaultActionGroup) ActionManager.getInstance().getAction(toId);
     DefaultActionGroup gWhat = (DefaultActionGroup) ActionManager.getInstance().getAction(whatId);
     if (gTo == null) {
-      LOG.warn("Destination group was not found id: " + toId + ". Trying to insert " + whatId);
+      LOG.warning("Destination group was not found id: " + toId + ". Trying to insert " + whatId);
       return;
     }
     if (gWhat == null) {
-      LOG.warn("Group to insert was not found id: " + whatId + ". Trying to insert into " + toId);
+      LOG.warning("Group to insert was not found id: " + whatId + ". Trying to insert into " + toId);
       return;
     }
     if (!(gTo instanceof BaseGroup) && !(gWhat instanceof BaseGroup)) {
@@ -123,8 +141,18 @@ public abstract class BaseApplicationPlugin implements ApplicationPlugin {
     }
   }
 
-  protected void addAction(BaseAction action) {
+  @Override
+  public final void addAction(BaseAction action) {
+    // It's essential to use pluginId for any action registered from this app plugin
+    // as it's the mechanism we use in dispose() to unregister all actions (to facilitate
+    // re-adding actions with the same id after plugin class reload.
+    // Note, plugin id here is name of the module, not id of IDEA plugin (they may match, but
+    // not necessarily do). Seems that IDEA doesn't care and just use it as a key
     ActionManagerEx.getInstanceEx().registerAction(action.getActionId(), action, getId());
+  }
+
+  protected void replaceAction(BaseAction action) {
+    ActionManagerEx.getInstanceEx().replaceAction(action.getActionId(), action);
   }
 
   protected void addGroup(BaseGroup group) {
@@ -134,18 +162,26 @@ public abstract class BaseApplicationPlugin implements ApplicationPlugin {
 
   //----------custom parts----------
 
-  public final void createCustomParts() {
-    List<ApplicationPluginPart> rv = new ArrayList<>();
-    fillCustomParts(rv);
-    for (ApplicationPluginPart part : rv) {
-      try {
-        part.setPlatform(myPlatform);
-        part.init();
-      } catch (Throwable th) {
-        LOG.error(String.format("Failed to initialize part %s of plugin %s", part.getClass(), getId()), th);
+  /*package*/ final void createCustomParts() {
+    try {
+      List<ApplicationPluginPart> rv = new ArrayList<>();
+      fillCustomParts(rv);
+      for (ApplicationPluginPart part : rv) {
+        try {
+          part.setPlatform(myPlatform);
+          part.init();
+        } catch (Throwable th) {
+          LOG.error(String.format("Failed to initialize part %s of plugin %s", part.getClass(), getId()), th);
+        }
       }
+      myCustomParts = rv;
+    } catch (Throwable th) {
+      // some methods of this class, like #createGroups(), are overridden and their error handling happens
+      // in ApplicationPluginManager. Here, we need to maintain inner state (myCustomParts != null) for the
+      // sake of proper #dispose() execution, hence we do error handling here.
+      LOG.error(String.format("Failed to initialize app parts of plugin %s", getId()), th);
+      myCustomParts = Collections.emptyList();
     }
-    myCustomParts = rv;
   }
 
   protected void fillCustomParts(List<ApplicationPluginPart> parts) {
@@ -154,10 +190,15 @@ public abstract class BaseApplicationPlugin implements ApplicationPlugin {
 
   //-------------keymaps------------
 
-  public void createKeymaps() {
-    myKeymapChanges = initKeymaps();
-    for (BaseKeymapChanges change : myKeymapChanges) {
-      change.init();
+  /*package*/ final void createKeymaps() {
+    try {
+      myKeymapChanges = initKeymaps();
+      for (BaseKeymapChanges change : myKeymapChanges) {
+        change.init();
+      }
+    } catch (Throwable th) {
+      LOG.error(String.format("Failed to initialize keymaps of plugin %s", getId()), th);
+      myKeymapChanges = Collections.emptyList();
     }
   }
 
@@ -175,7 +216,7 @@ public abstract class BaseApplicationPlugin implements ApplicationPlugin {
     myPlatform = mpsPlatform;
   }
 
-  public final void dispose() {
+  public void dispose() {
     //groups are disposed in ActionFactory
     //keymaps are unregistered in ActionFactory
     for (ApplicationPluginPart part : myCustomParts) {

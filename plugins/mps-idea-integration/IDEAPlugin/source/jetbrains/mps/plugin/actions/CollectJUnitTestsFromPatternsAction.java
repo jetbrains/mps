@@ -21,7 +21,6 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.application.Result;
 import com.intellij.openapi.application.WriteAction;
 import com.intellij.openapi.command.CommandProcessor;
 import com.intellij.openapi.editor.Editor;
@@ -32,6 +31,7 @@ import com.intellij.openapi.roots.ModuleRootManager;
 import com.intellij.openapi.ui.InputValidator;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.Pair;
+import com.intellij.openapi.util.ThrowableComputable;
 import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.*;
@@ -152,44 +152,41 @@ public class CollectJUnitTestsFromPatternsAction extends AnAction {
       }
     }
 
-    final WriteAction<String> action = new WriteAction<String>() {
-      @Override
-      protected void run(Result<String> stringResult){
-        stringResult.setResult(null);
-
-        StringBuilder sb = new StringBuilder("@SuiteClassSymbols({");
-        String sep = "";
-        for (String sc : suiteClasses) {
-          sb.append(sep).append('\"').append(sc).append('\"');
-          sep = ",\n";
-        }
-        sb.append("})");
-
-        try {
-          PsiJavaParserFacade javaParserFacade = JavaPsiFacade.getInstance(project).getParserFacade();
-          PsiAnnotation newann = javaParserFacade.createAnnotationFromText(sb.toString(), pc.getParent());
-
-          PsiAnnotation oldann = null;
-          for (PsiAnnotation ann : pc.getModifierList().getAnnotations()) {
-            if (String.valueOf(ann.getQualifiedName()).contains("SuiteClassSymbols")) {
-              oldann = ann;
-              break;
-            }
-          }
-          if (oldann != null) {
-            oldann.replace(newann);
-          } else {
-            pc.getParent().addBefore(newann, pc);
-          }
-        } catch (Exception ex) {
-          stringResult.setResult(ex.toString());
-        }
+    ThrowableComputable<String, RuntimeException> computable = () -> {
+      StringBuilder sb = new StringBuilder("@SuiteClassSymbols({");
+      String sep = "";
+      for (String sc : suiteClasses) {
+        sb.append(sep).append('\"').append(sc).append('\"');
+        sep = ",\n";
       }
+      sb.append("})");
+
+      try {
+        PsiJavaParserFacade javaParserFacade = JavaPsiFacade.getInstance(project).getParserFacade();
+        PsiAnnotation newann = javaParserFacade.createAnnotationFromText(sb.toString(), pc.getParent());
+
+        PsiAnnotation oldann = null;
+        for (PsiAnnotation ann : pc.getModifierList().getAnnotations()) {
+          if (String.valueOf(ann.getQualifiedName()).contains("SuiteClassSymbols")) {
+            oldann = ann;
+            break;
+          }
+        }
+        if (oldann != null) {
+          oldann.replace(newann);
+        } else {
+          pc.getParent().addBefore(newann, pc);
+        }
+      } catch (Exception ex) {
+        return ex.toString();
+      }
+
+      return null;
     };
 
     if (!suiteClasses.isEmpty()) {
       CommandProcessor.getInstance().executeCommand(project, () -> {
-        String error = action.execute().getResultObject();
+        String error = WriteAction.compute(computable);
         if (error != null) {
           errors.add(error);
         }

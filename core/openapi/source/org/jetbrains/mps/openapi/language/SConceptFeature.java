@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,5 +31,21 @@ public interface SConceptFeature extends SNamedElement {
   @NotNull
   SAbstractConcept getOwner();
 
+  /**
+   * This is a bit vague attribute of a concept feature, basically indicating there's a corresponding runtime descriptor and MPS
+   * knows everything it needs about this meta-model element.
+   * However, there are cases, when there's no runtime descriptor, but the information in this instance is still sufficient for
+   * some MPS purposes (like limited persistence). It's impossible to find out whether this is the case using this method, though.
+   * @return false when MPS doesn't have full runtime descriptor for this element and therefore this element may be of limited use in MPS
+   */
   boolean isValid();
+
+  /**
+   * Indicates that model persistence shall ignore certain features (i.e. properties, association and aggregation links) when
+   * serialising node instance
+   * @return {@code} false for regular features that shall get persisted
+   */
+  default boolean isTransient() {
+    return false;
+  }
 }

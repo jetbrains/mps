@@ -19,9 +19,9 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
   }
 
   public void createGroups() {
-    // actions w/o parameters 
+    // actions w/o parameters
     addAction(new ShowMetaLevel_Action());
-    // groups 
+    // groups
     addGroup(new MetaLevelActions_ActionGroup(this));
   }
   public void adjustRegularGroups() {

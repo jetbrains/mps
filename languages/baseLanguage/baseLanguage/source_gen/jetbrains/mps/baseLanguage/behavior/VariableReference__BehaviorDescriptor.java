@@ -9,9 +9,9 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.baseLanguage.actions.PrecedenceUtil;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
@@ -20,6 +20,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.baseLanguage.util.ReflectionUtil;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -33,17 +34,18 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class VariableReference__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
 
-  public static final SMethod<SNode> getTypeAnnotation_idhXbqSv6 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTypeAnnotation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PACKAGE)).concept(CONCEPT).id("hXbqSv6").build();
-  public static final SMethod<SNode> getVariable_idSORzhOpB6t = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getVariable").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("SORzhOpB6t").build();
-  public static final SMethod<Object> getCompileTimeConstantValue_idi1LP2xI = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("getCompileTimeConstantValue").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i1LP2xI").build(SMethodBuilder.createJavaParameter(SModule.class, ""));
-  public static final SMethod<Boolean> isCompileTimeConstant_idi1LOPRp = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isCompileTimeConstant").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i1LOPRp").build();
-  public static final SMethod<Boolean> isParameterOfThisMethod_idi3dhek3 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isParameterOfThisMethod").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i3dhek3").build();
-  public static final SMethod<Boolean> isVariableDefinedInThisMethod_idhPiSGi6 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVariableDefinedInThisMethod").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hPiSGi6").build();
-  public static final SMethod<SNode> getDeclaration_id2P5W1FWMYZ5 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getDeclaration").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2P5W1FWMYZ5").build();
-  public static final SMethod<Boolean> lvalue_id1653mnvAgpj = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("lvalue").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgpj").build();
-  public static final SMethod<Boolean> singleValue_id1o8Ht9sES3u = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("singleValue").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1o8Ht9sES3u").build();
+  public static final SMethod<SNode> getTypeAnnotation_idhXbqSv6 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTypeAnnotation").modifiers(8, AccessPrivileges.PACKAGE).concept(CONCEPT).baseMethodId(1233920952262L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> getVariable_idSORzhOpB6t = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getVariable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1023687332192481693L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Object> getCompileTimeConstantValue_idi1LP2xI = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("getCompileTimeConstantValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1238860310638L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(SModule.class, ""));
+  public static final SMethod<Boolean> isCompileTimeConstant_idi1LOPRp = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isCompileTimeConstant").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1238860258777L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> isParameterOfThisMethod_idi3dhek3 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isParameterOfThisMethod").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1240394425603L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> isVariableDefinedInThisMethod_idhPiSGi6 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVariableDefinedInThisMethod").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1225456272518L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> getDeclaration_id2P5W1FWMYZ5 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getDeclaration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3262277503800831941L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> lvalue_id1653mnvAgpj = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("lvalue").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741497939L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> singleValue_id1o8Ht9sES3u = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("singleValue").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1587718783750602974L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<PrecedenceUtil.Precedence> getPrecedenceLevel_id1O90zDONSxM = new SMethodBuilder<PrecedenceUtil.Precedence>(new SJavaCompoundTypeImpl(PrecedenceUtil.Precedence.class)).name("getPrecedenceLevel").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2092205951981422706L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeAnnotation_idhXbqSv6, getVariable_idSORzhOpB6t, getCompileTimeConstantValue_idi1LP2xI, isCompileTimeConstant_idi1LOPRp, isParameterOfThisMethod_idi3dhek3, isVariableDefinedInThisMethod_idhPiSGi6, getDeclaration_id2P5W1FWMYZ5, lvalue_id1653mnvAgpj, singleValue_id1o8Ht9sES3u);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeAnnotation_idhXbqSv6, getVariable_idSORzhOpB6t, getCompileTimeConstantValue_idi1LP2xI, isCompileTimeConstant_idi1LOPRp, isParameterOfThisMethod_idi3dhek3, isVariableDefinedInThisMethod_idhPiSGi6, getDeclaration_id2P5W1FWMYZ5, lvalue_id1653mnvAgpj, singleValue_id1o8Ht9sES3u, getPrecedenceLevel_id1O90zDONSxM);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -71,7 +73,7 @@ public final class VariableReference__BehaviorDescriptor extends BaseBHDescripto
               return c;
             }
           } catch (Throwable t) {
-            // do nothing 
+            // do nothing
           }
         }
         if (module == null) {
@@ -95,15 +97,15 @@ public final class VariableReference__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ static boolean isCompileTimeConstant_idi1LOPRp(@NotNull SNode __thisNode__) {
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.StaticFieldDeclaration$jR)) {
       SNode declaration = SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.StaticFieldDeclaration$jR);
-      return SPropertyOperations.getBoolean(declaration, PROPS.isFinal$gvTP) && (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(declaration, LINKS.initializer$2twD));
+      return SPropertyOperations.getBoolean(declaration, PROPS.isFinal$gvTP) && !(ListSequence.fromList(SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.Expression$mB, true)).contains(SLinkOperations.getTarget(declaration, LINKS.initializer$2twD))) && (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(declaration, LINKS.initializer$2twD));
     } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41)) {
-      return SPropertyOperations.getBoolean(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41), PROPS.isFinal$gvTP) && (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41), LINKS.initializer$2twD));
+      return SPropertyOperations.getBoolean(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41), PROPS.isFinal$gvTP) && !(ListSequence.fromList(SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.Expression$mB, true)).contains(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41), LINKS.initializer$2twD))) && (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41), LINKS.initializer$2twD));
     }
 
     return ((boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invokeSuper(__thisNode__, CONCEPTS.VariableReference$TC));
   }
   /*package*/ static boolean isParameterOfThisMethod_idi3dhek3(@NotNull SNode __thisNode__) {
-    // todo: method from ParameterReference. Remove. 
+    // todo: method from ParameterReference. Remove.
     if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.ParameterDeclaration$RG))) {
       throw new IllegalArgumentException();
     }
@@ -115,7 +117,7 @@ public final class VariableReference__BehaviorDescriptor extends BaseBHDescripto
     return false;
   }
   /*package*/ static boolean isVariableDefinedInThisMethod_idhPiSGi6(@NotNull SNode __thisNode__) {
-    // todo: method from LocalVariableReference. Remove 
+    // todo: method from LocalVariableReference. Remove
     if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41))) {
       throw new IllegalArgumentException();
     }
@@ -131,7 +133,7 @@ public final class VariableReference__BehaviorDescriptor extends BaseBHDescripto
     return false;
   }
   /*package*/ static SNode getDeclaration_id2P5W1FWMYZ5(@NotNull SNode __thisNode__) {
-    // todo: method from LocalVariableReference. Remove 
+    // todo: method from LocalVariableReference. Remove
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41)) {
       return SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41);
     } else {
@@ -143,6 +145,9 @@ public final class VariableReference__BehaviorDescriptor extends BaseBHDescripto
   }
   /*package*/ static boolean singleValue_id1o8Ht9sES3u(@NotNull SAbstractConcept __thisConcept__) {
     return true;
+  }
+  /*package*/ static PrecedenceUtil.Precedence getPrecedenceLevel_id1O90zDONSxM(@NotNull SAbstractConcept __thisConcept__) {
+    return PrecedenceUtil.Precedence.ARRAY_OPERATIONS_AND_METHOD_CALLS;
   }
 
   /*package*/ VariableReference__BehaviorDescriptor() {
@@ -190,6 +195,8 @@ public final class VariableReference__BehaviorDescriptor extends BaseBHDescripto
         return (T) ((Boolean) lvalue_id1653mnvAgpj(concept));
       case 8:
         return (T) ((Boolean) singleValue_id1o8Ht9sES3u(concept));
+      case 9:
+        return (T) ((PrecedenceUtil.Precedence) getPrecedenceLevel_id1O90zDONSxM(concept));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -223,6 +230,7 @@ public final class VariableReference__BehaviorDescriptor extends BaseBHDescripto
     /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
     /*package*/ static final SConcept LocalVariableDeclaration$41 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
     /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
     /*package*/ static final SConcept ParameterDeclaration$RG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
     /*package*/ static final SInterfaceConcept Closureoid$kl = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1192e7dfdd1L, "jetbrains.mps.baseLanguage.structure.Closureoid");
     /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");

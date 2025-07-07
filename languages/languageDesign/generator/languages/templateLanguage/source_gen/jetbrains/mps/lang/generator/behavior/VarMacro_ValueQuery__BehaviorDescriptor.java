@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -31,8 +30,8 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class VarMacro_ValueQuery__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x45991daad6a5c71aL, "jetbrains.mps.lang.generator.structure.VarMacro_ValueQuery");
 
-  public static final SMethod<SNode> getExpectedReturnType_idhEwIGRD = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpectedReturnType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIGRD").build();
-  public static final SMethod<List<SConcept>> getParameterConcepts_id2xELmDxyi2v = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getParameterConcepts").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2xELmDxyi2v").build();
+  public static final SMethod<SNode> getExpectedReturnType_idhEwIGRD = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpectedReturnType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877374441L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<List<SConcept>> getParameterConcepts_id2xELmDxyi2v = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getParameterConcepts").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2912357169742028959L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExpectedReturnType_idhEwIGRD, getParameterConcepts_id2xELmDxyi2v);
 
@@ -40,12 +39,7 @@ public final class VarMacro_ValueQuery__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.VarMacro$3u)) {
-      SNode node = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.VarMacro$3u), LINKS.type$ocXd);
-      if ((node != null)) {
-        return node;
-      }
-    } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.VarDeclaration$$D)) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.VarDeclaration$$D)) {
       SNode node = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.VarDeclaration$$D), LINKS.type$EpCe);
       if ((node != null)) {
         return node;
@@ -115,7 +109,6 @@ public final class VarMacro_ValueQuery__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VarMacro$3u = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x45991daad6a3d34eL, "jetbrains.mps.lang.generator.structure.VarMacro");
     /*package*/ static final SConcept VarDeclaration$$D = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, "jetbrains.mps.lang.generator.structure.VarDeclaration");
     /*package*/ static final SConcept TemplateQueryBase$zY = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11b4d0ca830L, "jetbrains.mps.lang.generator.structure.TemplateQueryBase");
     /*package*/ static final SConcept TemplateFunctionParameter_generationContext$Yo = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5282d0e3L, "jetbrains.mps.lang.generator.generationContext.structure.TemplateFunctionParameter_generationContext");
@@ -124,7 +117,6 @@ public final class VarMacro_ValueQuery__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$ocXd = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x45991daad6a3d34eL, 0x45991daad6a644fbL, "type");
     /*package*/ static final SContainmentLink type$EpCe = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, 0xe8e73f957fc2b89L, "type");
     /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }

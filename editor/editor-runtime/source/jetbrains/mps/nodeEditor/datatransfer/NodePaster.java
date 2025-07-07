@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ import jetbrains.mps.nodeEditor.SNodeEditorUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import jetbrains.mps.smodel.SNodeUtil;
-import jetbrains.mps.smodel.search.LinkDeclarationLookup;
+import jetbrains.mps.smodel.language.ConceptRegistryUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -197,7 +197,7 @@ public class NodePaster {
       }
     }
 
-    SAbstractConcept linkTargetConcept = link.getTargetConcept();
+    final SAbstractConcept linkTargetConcept = getSpecifiedConcept(pasteTarget, link);
     return myPasteNodes.stream()
                        .allMatch(n -> n.isInstanceOfConcept(linkTargetConcept) || DataTransferManager.getInstance().canWrapInto(n, linkTargetConcept));
   }
@@ -214,10 +214,11 @@ public class NodePaster {
       role = matchLink.get();
     }
 
+    final SAbstractConcept linkTargetConcept = getSpecifiedConcept(pasteTarget, role);
     // unique child?
     if (!role.isMultiple()) {
       assert myPasteNodes.size() == 1 : "cannot paste multiple children for role '" + role.getName() + "'";
-      SNode node = normalizeForLink(myPasteNodes.get(0), role);
+      SNode node = normalizeForLink(myPasteNodes.get(0), linkTargetConcept);
       SNodeEditorUtil.setSingleChild(pasteTarget, role, node);
       DataTransferManager.getInstance().postProcessNode(node);
       return;
@@ -226,7 +227,7 @@ public class NodePaster {
     SNode currentAnchorNode = anchorNode;
     boolean insertBefore = placeHint == PastePlaceHint.BEFORE_ANCHOR;
     for (SNode pasteNode : myPasteNodes) {
-      SNode nodeToPaste = normalizeForLink(pasteNode, role);
+      SNode nodeToPaste = normalizeForLink(pasteNode, linkTargetConcept);
       SNode realAnchor = insertBefore ? currentAnchorNode : currentAnchorNode == null ? pasteTarget.getFirstChild() : currentAnchorNode.getNextSibling();
       pasteTarget.insertChildBefore(role, nodeToPaste, realAnchor);
       DataTransferManager.getInstance().postProcessNode(nodeToPaste);
@@ -240,19 +241,7 @@ public class NodePaster {
     }
   }
 
-  private SNode normalizeForLink(SNode pasteNode, SContainmentLink link) {
-    //todo get rid of concept nodes here
-    SAbstractConcept specified = getSpecifiedConcept(pasteNode, link);
-    SAbstractConcept targetConcept = link.getTargetConcept();
-
-    //we first try to wrap to get the specified concept
-    if (specified != null) {
-      if (!pasteNode.isInstanceOfConcept(specified) && DataTransferManager.getInstance().canWrapInto(pasteNode, specified)) {
-        return DataTransferManager.getInstance().wrapInto(pasteNode, targetConcept);
-      }
-    }
-
-    //now, we try wrapping at least to compatible concept
+  private SNode normalizeForLink(SNode pasteNode, SAbstractConcept targetConcept) {
     if (pasteNode.isInstanceOfConcept(targetConcept)) {
       return pasteNode;
     }
@@ -260,13 +249,18 @@ public class NodePaster {
     if (DataTransferManager.getInstance().canWrapInto(pasteNode, targetConcept)) {
       return DataTransferManager.getInstance().wrapInto(pasteNode, targetConcept);
     } else {
-      throw new RuntimeException("node " + pasteNode + " can't be normalized for link " + link);
+      final String m = "Can't normalize node %s(%s) to link-accepted %s";
+      // XXX is it ok to throw RE here?
+      throw new RuntimeException(String.format(m, pasteNode.getPresentation(), pasteNode.getConcept().getName(), targetConcept.getName()));
     }
   }
 
+  /**
+   * @return most specific link target with respect to concept of the context node; link.getTargetConcept() if no specialization found.
+   */
   @NotNull
-  private SAbstractConcept getSpecifiedConcept(@NotNull SNode pasteNode, @NotNull SContainmentLink link) {
-    return new LinkDeclarationLookup(pasteNode.getConcept()).getMostSpecificLinkTarget(link);
+  private SAbstractConcept getSpecifiedConcept(@NotNull SNode owner, @NotNull SContainmentLink link) {
+    return ConceptRegistryUtil.getMostSpecificLinkTarget(owner, link);
   }
 
   private boolean canPasteToParent(SNode anchorNode, SContainmentLink link, boolean exactly) {

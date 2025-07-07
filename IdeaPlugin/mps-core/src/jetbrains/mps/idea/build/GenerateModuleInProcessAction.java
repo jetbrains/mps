@@ -16,6 +16,7 @@
 
 package jetbrains.mps.idea.build;
 
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.LangDataKeys;
@@ -26,6 +27,8 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.project.module.ModuleMPSSupport;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.Computable;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -39,6 +42,11 @@ public class GenerateModuleInProcessAction extends AnAction {
 
   public GenerateModuleInProcessAction() {
     super("Generate module", null, FileIcons.MODEL_ICON);
+  }
+
+  @Override
+  public @NotNull ActionUpdateThread getActionUpdateThread() {
+    return ActionUpdateThread.BGT;
   }
 
   @Override
@@ -67,7 +75,8 @@ public class GenerateModuleInProcessAction extends AnAction {
   public void actionPerformed(AnActionEvent anActionEvent) {
     Module module = LangDataKeys.MODULE.getData(anActionEvent.getDataContext());
     Solution solution = ModuleMPSSupport.getInstance().getSolution(module);
-    List<SModel> models = new ModelAccessHelper(solution.getRepository().getModelAccess()).runReadAction((solution::getModels));
+    ModelAccessHelper mah = new ModelAccessHelper(solution.getRepository());
+    List<SModel> models = mah.runReadAction((Computable<List<SModel>>) solution::getModels);
     new GenerateModelsInProcess(module.getProject(), models).generate(getMakeConfigurator());
   }
 

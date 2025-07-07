@@ -6,13 +6,12 @@ import jetbrains.mps.lang.typesystem.runtime.AbstractInequationReplacementRule_R
 import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicable2Status;
-import jetbrains.mps.lang.pattern.util.MatchingUtil;
+import jetbrains.mps.smodel.SNodeMatcher;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -21,14 +20,14 @@ public class LowerBoundType_subtypeOf_bound_InequationReplacementRule extends Ab
   public LowerBoundType_subtypeOf_bound_InequationReplacementRule() {
   }
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
-    return MatchingUtil.matchNodes(status.getPattern1().getMatchedNode("TYPE"), supertype);
+    return new SNodeMatcher().match(status.getPattern1().getMatchedNode("TYPE"), supertype);
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
-    // 'nuff said 
+    // 'nuff said
   }
   public boolean checkInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     boolean result_14532009 = true;
-    // 'nuff said 
+    // 'nuff said
     return result_14532009;
   }
   public boolean isWeak() {
@@ -53,11 +52,12 @@ public class LowerBoundType_subtypeOf_bound_InequationReplacementRule extends Ab
     return CONCEPTS.Type$bu;
   }
   private static SNode _quotation_createNode_ap69b7_a0a0a0a0g() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x110dae9d53dL, "LowerBoundType")).getResult();
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c37f506dL, "Type")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x110dae9d53dL, "LowerBoundType"));
+    quotedNode_1 = nb.getResult();
+    SNodeBuilder nb1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c37f506dL, "Type"));
+    quotedNode_2 = nb1.getResult();
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, 0x110dae9f25bL, "bound"), quotedNode_2);
     return quotedNode_1;
   }

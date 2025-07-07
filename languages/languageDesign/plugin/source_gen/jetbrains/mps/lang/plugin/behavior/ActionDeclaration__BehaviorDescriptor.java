@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.checkedName.PropertyReference;
@@ -16,8 +15,8 @@ import jetbrains.mps.scope.Scope;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -38,16 +37,17 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class ActionDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, "jetbrains.mps.lang.plugin.structure.ActionDeclaration");
 
-  public static final SMethod<String> getGeneratedName_idhEwIGgA = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIGgA").build();
-  public static final SMethod<String> getGeneratedClassFQName_idhEwIGgK = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedClassFQName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIGgK").build();
-  public static final SMethod<String> getActionId_id2JiSCAPXEb8 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getActionId").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2JiSCAPXEb8").build();
-  public static final SMethod<SNode> createType_idhEwJimy = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwJimy").build();
-  public static final SMethod<PropertyReference> getPropertyToCheck_id4cWf37B8oYh = new SMethodBuilder<PropertyReference>(new SJavaCompoundTypeImpl((Class<PropertyReference>) ((Class) Object.class))).name("getPropertyToCheck").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4cWf37B8oYh").build();
-  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<String> getGeneratedName_idhEwIGgA = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877371942L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
+  public static final SMethod<String> getGeneratedClassFQName_idhEwIGgK = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedClassFQName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877371952L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
+  public static final SMethod<String> getActionId_id2JiSCAPXEb8 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getActionId").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3157835369831375560L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
+  public static final SMethod<SNode> createType_idhEwJimy = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877527970L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
+  public static final SMethod<PropertyReference> getPropertyToCheck_id4cWf37B8oYh = new SMethodBuilder<PropertyReference>(new SJavaCompoundTypeImpl((Class<PropertyReference>) ((Class) Object.class))).name("getPropertyToCheck").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4844813484172611473L).languageId(0xae28a40915b4d6ffL, 0xfe9d76d7580945c9L).build2();
+  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGeneratedName_idhEwIGgA, getGeneratedClassFQName_idhEwIGgK, getActionId_id2JiSCAPXEb8, createType_idhEwJimy, getPropertyToCheck_id4cWf37B8oYh, getScope_id52_Geb4QDV$);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
+    SPropertyOperations.assign(__thisNode__, PROPS.updateInBackground$6cga, true);
   }
 
   /*package*/ static String getGeneratedName_idhEwIGgA(@NotNull SNode __thisNode__) {
@@ -136,6 +136,7 @@ public final class ActionDeclaration__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class PROPS {
+    /*package*/ static final SProperty updateInBackground$6cga = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x411f75eb1a80b5d1L, "updateInBackground");
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
     /*package*/ static final SProperty ID$U3VJ = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x374ac263e13f4abeL, "ID");
     /*package*/ static final SProperty caption$k5xp = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x1189e8d9a59L, "caption");

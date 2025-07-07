@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,16 @@
  */
 package jetbrains.mps.workbench.editors;
 
+import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.editor.NodeEditorFactoryBase;
 import jetbrains.mps.ide.editor.tabs.TabbedEditor;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
 import jetbrains.mps.plugins.relations.RelationDescriptor;
 import jetbrains.mps.project.MPSProject;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -32,20 +33,16 @@ import java.util.List;
 import java.util.Set;
 
 public class TabsMPSEditorFactory extends NodeEditorFactoryBase {
-  private static final Logger LOG = LogManager.getLogger(TabsMPSEditorFactory.class);
+  private static final Logger LOG = Logger.getLogger(TabsMPSEditorFactory.class);
 
   private final MPSProject myProject;
-  private final ProjectPluginManager myManager;
-  private final EditorSettings myEditorSettings;
 
-  public TabsMPSEditorFactory(MPSProject mpsProject, ProjectPluginManager manager, EditorSettings editorSettings) {
-    myProject = mpsProject;
-    myManager = manager;
-    myEditorSettings = editorSettings;
+  public TabsMPSEditorFactory(Project ideaProject) {
+    myProject = ProjectHelper.fromIdeaProjectOrFail(ideaProject);
   }
 
   private boolean isUseTabs() {
-    return myEditorSettings.isShow();
+    return EditorSettings.getInstance().isShow();
   }
 
   @Override
@@ -104,6 +101,6 @@ public class TabsMPSEditorFactory extends NodeEditorFactoryBase {
   }
 
   private List<RelationDescriptor> getTabDescriptors() {
-    return myManager.getTabDescriptors();
+    return ProjectPluginManager.getInstance(myProject.getProject()).getTabDescriptors();
   }
 }

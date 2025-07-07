@@ -4,9 +4,10 @@ package jetbrains.mps.lang.editor.diagram.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import java.awt.Component;
@@ -14,11 +15,11 @@ import java.awt.event.MouseEvent;
 
 @MPSLaunch
 public class CreateLink_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(CreateLink_Test.class, "${mps_home}", "r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(CreateLink_Test.class).projectPath(null).modelRef("r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)").reopenProject(false).build());
 
   public CreateLink_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -39,10 +40,10 @@ public class CreateLink_Test extends BaseTransformationTest {
         int x_rsydnf_a0 = 105;
         int y_rsydnf_a0 = 60;
         Component eventTargetComponent_rsydnf_a0 = processMouseEvent(x_rsydnf_a0, y_rsydnf_a0, MouseEvent.MOUSE_PRESSED);
-        // This is a work-around for existing problem with connection creation: 
-        // for now connection source will be selected on receiving first mouse drag event 
-        // in general connection source should be selected on mouse-pressed event 
-        // TODO: remove first drag mouse statement. 
+        // This is a work-around for existing problem with connection creation:
+        // for now connection source will be selected on receiving first mouse drag event
+        // in general connection source should be selected on mouse-pressed event
+        // TODO: remove first drag mouse statement.
         processSecondaryMouseEvent(eventTargetComponent_rsydnf_a0, x_rsydnf_a0 = 106, y_rsydnf_a0 = 60, MouseEvent.MOUSE_DRAGGED);
         processSecondaryMouseEvent(eventTargetComponent_rsydnf_a0, x_rsydnf_a0 = 195, y_rsydnf_a0 = 240, MouseEvent.MOUSE_DRAGGED);
         processSecondaryMouseEvent(eventTargetComponent_rsydnf_a0, x_rsydnf_a0, y_rsydnf_a0, MouseEvent.MOUSE_RELEASED);

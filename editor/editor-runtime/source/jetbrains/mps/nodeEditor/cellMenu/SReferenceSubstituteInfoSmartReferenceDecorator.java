@@ -56,15 +56,6 @@ public class SReferenceSubstituteInfoSmartReferenceDecorator extends AbstractNod
   }
 
   @Override
-  protected InequalitySystem getInequalitiesSystem(EditorCell contextCell) {
-    if (shouldUseChildActions()) {
-      return myChildSubstituteInfo.getInequalitiesSystem(contextCell);
-    } else {
-      return myReferenceSubstituteInfo.getInequalitiesSystem(contextCell);
-    }
-  }
-
-  @Override
   protected SubstitutionTrial getSubstitutionTrial(EditorCell contextCell) {
     if (shouldUseChildActions()) {
       return myChildSubstituteInfo.getSubstitutionTrial(contextCell);

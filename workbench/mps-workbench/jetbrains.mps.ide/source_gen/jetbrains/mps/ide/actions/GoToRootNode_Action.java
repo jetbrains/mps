@@ -8,17 +8,14 @@ import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.featureStatistics.FeatureUsageTracker;
 import jetbrains.mps.workbench.choose.ChooseByNameData;
 import org.jetbrains.mps.openapi.persistence.NavigationParticipant;
-import jetbrains.mps.workbench.choose.NavigationTargetPresentation;
+import jetbrains.mps.workbench.choose.NavigationTargetPresentationWithIconForNode;
 import jetbrains.mps.scope.ConditionalScope;
-import org.jetbrains.mps.util.Condition;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.SModelStereotype;
-import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.project.GlobalScope;
 import jetbrains.mps.workbench.choose.NavigationTargetScopeIterable;
@@ -28,7 +25,7 @@ import com.intellij.ide.util.gotoByName.ChooseByNamePopupComponent;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import com.intellij.openapi.application.ModalityState;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3906874221886742303", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "3906874221886742303", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class GoToRootNode_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -38,6 +35,7 @@ public class GoToRootNode_Action extends BaseAction {
     this.savedText = savedText_par;
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -50,7 +48,6 @@ public class GoToRootNode_Action extends BaseAction {
     }
     {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      MapSequence.fromMap(_params).put("mpsProject", p);
       if (p == null) {
         return false;
       }
@@ -61,23 +58,19 @@ public class GoToRootNode_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("navigation.goto.rootNode");
 
-    final ChooseByNameData<NavigationParticipant.NavigationTarget> gotoData = new ChooseByNameData<NavigationParticipant.NavigationTarget>(new NavigationTargetPresentation());
+    final ChooseByNameData<NavigationParticipant.NavigationTarget> gotoData = new ChooseByNameData<NavigationParticipant.NavigationTarget>(new NavigationTargetPresentationWithIconForNode(event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository()));
     gotoData.derivePrompts("node").setCheckBoxName("Include stub and non-project models");
 
-    final ConditionalScope localScope = new ConditionalScope(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getScope(), null, new Condition<SModel>() {
-      public boolean met(SModel m) {
-        return !(SModelStereotype.isStubModel(m));
-      }
-    });
+    MPSProject project = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+    final ConditionalScope localScope = new ConditionalScope(project.getScope(), null, (SModel m) -> !(SModelStereotype.isStubModel(m)));
 
-    final SRepository repo = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository();
-    // XXX I suppose the moment we get to project own repo, ProjectScope.getModels/getModules would result in *project* modules only,  
-    //      while project repository would give access to modules from dependant repositories as well 
-    final SearchScope globalScope = new GlobalScope(repo);
+    // XXX I suppose the moment we get to project own repo, ProjectScope.getModels/getModules would result in *project* modules only, 
+    //      while project repository would give access to modules from dependant repositories as well
+    final SearchScope globalScope = new GlobalScope(project.getRepository());
 
-    gotoData.setScope(new NavigationTargetScopeIterable(localScope, repo), new NavigationTargetScopeIterable(globalScope, repo));
+    gotoData.setScope(new NavigationTargetScopeIterable(localScope, project), new NavigationTargetScopeIterable(globalScope, project));
 
-    final ChooseByNamePopup popup = MpsPopupFactory.createNodePopup(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getProject(), gotoData, GoToRootNode_Action.this.savedText, GoToRootNode_Action.this);
+    final ChooseByNamePopup popup = MpsPopupFactory.createNodePopup(project.getProject(), gotoData, GoToRootNode_Action.this.savedText, GoToRootNode_Action.this);
 
     popup.invoke(new ChooseByNamePopupComponent.Callback() {
       @Override
@@ -88,7 +81,7 @@ public class GoToRootNode_Action extends BaseAction {
       public void elementChosen(Object element) {
         if (element instanceof NavigationParticipant.NavigationTarget) {
           NavigationParticipant.NavigationTarget nt = (NavigationParticipant.NavigationTarget) element;
-          new EditorNavigator(((MPSProject) MapSequence.fromMap(_params).get("mpsProject"))).shallFocus(true).selectIfChild().open(nt.getNodeReference());
+          new EditorNavigator(event.getData(MPSCommonDataKeys.MPS_PROJECT)).shallFocus(true).selectIfChild().open(nt.getNodeReference());
         }
       }
     }, ModalityState.current(), true);

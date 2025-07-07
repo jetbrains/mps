@@ -8,14 +8,15 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.baseLanguage.actions.PrecedenceUtil;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.baseLanguage.dataFlow.ConditionUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -25,15 +26,16 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class TernaryOperatorExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression");
 
-  public static final SMethod<Void> setSyntacticallyLeftSideExpression_id1wHCnsn58ZK = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setSyntacticallyLeftSideExpression").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1wHCnsn58ZK").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Void> setSyntacticallyRightSideExpression_id1wHCnsn58ZY = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setSyntacticallyRightSideExpression").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1wHCnsn58ZY").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getSyntacticallyLeftSideExpression_id1wHCnsn590c = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSyntacticallyLeftSideExpression").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1wHCnsn590c").build();
-  public static final SMethod<SNode> getSyntacticallyRightSideExpression_id1wHCnsn590i = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSyntacticallyRightSideExpression").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1wHCnsn590i").build();
-  public static final SMethod<NextProgramPoint> getNextProgramPoint_id3F8BxGibk8h = new SMethodBuilder<NextProgramPoint>(new SJavaCompoundTypeImpl(NextProgramPoint.class)).name("getNextProgramPoint").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3F8BxGibk8h").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
-  public static final SMethod<Boolean> isCompileTimeConstant_idi1LOPRp = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isCompileTimeConstant").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i1LOPRp").build();
-  public static final SMethod<Object> getCompileTimeConstantValue_idi1LP2xI = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("getCompileTimeConstantValue").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i1LP2xI").build(SMethodBuilder.createJavaParameter(SModule.class, ""));
+  public static final SMethod<Void> setSyntacticallyLeftSideExpression_id1wHCnsn58ZK = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setSyntacticallyLeftSideExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1742226163722653680L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Void> setSyntacticallyRightSideExpression_id1wHCnsn58ZY = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setSyntacticallyRightSideExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1742226163722653694L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getSyntacticallyLeftSideExpression_id1wHCnsn590c = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSyntacticallyLeftSideExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1742226163722653708L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> getSyntacticallyRightSideExpression_id1wHCnsn590i = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSyntacticallyRightSideExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1742226163722653714L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<NextProgramPoint> getNextProgramPoint_id3F8BxGibk8h = new SMethodBuilder<NextProgramPoint>(new SJavaCompoundTypeImpl(NextProgramPoint.class)).name("getNextProgramPoint").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4235809288648213009L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
+  public static final SMethod<Boolean> isCompileTimeConstant_idi1LOPRp = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isCompileTimeConstant").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1238860258777L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Object> getCompileTimeConstantValue_idi1LP2xI = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("getCompileTimeConstantValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1238860310638L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(SModule.class, ""));
+  public static final SMethod<PrecedenceUtil.Precedence> getPrecedenceLevel_id1O90zDONSxM = new SMethodBuilder<PrecedenceUtil.Precedence>(new SJavaCompoundTypeImpl(PrecedenceUtil.Precedence.class)).name("getPrecedenceLevel").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2092205951981422706L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(setSyntacticallyLeftSideExpression_id1wHCnsn58ZK, setSyntacticallyRightSideExpression_id1wHCnsn58ZY, getSyntacticallyLeftSideExpression_id1wHCnsn590c, getSyntacticallyRightSideExpression_id1wHCnsn590i, getNextProgramPoint_id3F8BxGibk8h, isCompileTimeConstant_idi1LOPRp, getCompileTimeConstantValue_idi1LP2xI);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(setSyntacticallyLeftSideExpression_id1wHCnsn58ZK, setSyntacticallyRightSideExpression_id1wHCnsn58ZY, getSyntacticallyLeftSideExpression_id1wHCnsn590c, getSyntacticallyRightSideExpression_id1wHCnsn590i, getNextProgramPoint_id3F8BxGibk8h, isCompileTimeConstant_idi1LOPRp, getCompileTimeConstantValue_idi1LP2xI, getPrecedenceLevel_id1O90zDONSxM);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -54,6 +56,11 @@ public final class TernaryOperatorExpression__BehaviorDescriptor extends BaseBHD
     if (child != SLinkOperations.getTarget(__thisNode__, LINKS.condition$nwNI)) {
       return null;
     }
+    Boolean conditionConstant = ConditionUtil.getConditionConstant(SLinkOperations.getTarget(__thisNode__, LINKS.condition$nwNI));
+    if (conditionConstant != null && conditionConstant.booleanValue() != value) {
+      return null;
+    }
+
     if (value) {
       if (SLinkOperations.getTarget(__thisNode__, LINKS.ifTrue$Tg0R) != null) {
         return NextProgramPoint.continueAt(SLinkOperations.getTarget(__thisNode__, LINKS.ifTrue$Tg0R), false);
@@ -92,6 +99,9 @@ public final class TernaryOperatorExpression__BehaviorDescriptor extends BaseBHD
       }
     }
     return null;
+  }
+  /*package*/ static PrecedenceUtil.Precedence getPrecedenceLevel_id1O90zDONSxM(@NotNull SAbstractConcept __thisConcept__) {
+    return PrecedenceUtil.Precedence.J_14;
   }
 
   /*package*/ TernaryOperatorExpression__BehaviorDescriptor() {
@@ -137,6 +147,8 @@ public final class TernaryOperatorExpression__BehaviorDescriptor extends BaseBHD
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 7:
+        return (T) ((PrecedenceUtil.Precedence) getPrecedenceLevel_id1O90zDONSxM(concept));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

@@ -17,25 +17,22 @@ import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import java.util.List;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.editor.behavior.AbstractComponent__BehaviorDescriptor;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.ide.findusages.model.scopes.ModulesScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor;
@@ -62,37 +59,29 @@ public class AnnotateRefPresentationQueriesAsMigrated extends MigrationScriptBas
     {
       SearchScope scope_lpnriw_b0e = CommandUtil.createScope(m);
       final SearchScope scope_lpnriw_b0e_0 = new EditableFilteringScope(scope_lpnriw_b0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_lpnriw_b0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_lpnriw_b0e_0;
       Collection<SNode> conceptConstraints = CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptConstraints$Yt, false);
 
       Set<SNode> engagedConcepts = SetSequence.fromSet(new HashSet<SNode>());
       for (SNode conceptConstraint : CollectionSequence.fromCollection(conceptConstraints)) {
         for (SNode refConstraint : ListSequence.fromList(SLinkOperations.getChildren(conceptConstraint, LINKS.referent$k0ZK))) {
           SNode presentation = SLinkOperations.getTarget(refConstraint, LINKS.presentation$VLnP);
-          if ((presentation != null) && (AttributeOperations.getAttribute(presentation, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$T3)) == null)) {
+          if ((presentation != null) && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$T3).get(presentation) == null)) {
             SetSequence.fromSet(engagedConcepts).addSequence(Sequence.fromIterable(getConceptStack(SLinkOperations.getTarget(conceptConstraint, LINKS.concept$EVpZ), SLinkOperations.getTarget(refConstraint, LINKS.applicableLink$7IrX))));
           }
         }
       }
 
-      editorComponents = extractEditorComponents(dmu.count(SetSequence.fromSet(engagedConcepts).select(new ISelector<SNode, SModule>() {
-        public SModule select(SNode it) {
-          return SNodeOperations.getModel(it).getModule();
-        }
-      }).distinct()));
+      editorComponents = extractEditorComponents(dmu.count(SetSequence.fromSet(engagedConcepts).select((it) -> SNodeOperations.getModel(it).getModule()).distinct()));
 
       for (SNode conceptConstraint : CollectionSequence.fromCollection(conceptConstraints)) {
         for (SNode refConstraint : ListSequence.fromList(SLinkOperations.getChildren(conceptConstraint, LINKS.referent$k0ZK))) {
           SNode presentation = SLinkOperations.getTarget(refConstraint, LINKS.presentation$VLnP);
-          if ((presentation != null) && (AttributeOperations.getAttribute(presentation, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$T3)) == null)) {
-            AttributeOperations.setAttribute(presentation, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$T3), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x583cd121d513aabeL, "jetbrains.mps.lang.constraints.structure.RefPresentationMigrated")));
+          if ((presentation != null) && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$T3).get(presentation) == null)) {
+            new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$T3).set(presentation, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x583cd121d513aabeL, "jetbrains.mps.lang.constraints.structure.RefPresentationMigrated")));
             Iterable<SNode> superEditorComponents = findSuperEditorComponentsUsingReference(SLinkOperations.getTarget(conceptConstraint, LINKS.concept$EVpZ), SLinkOperations.getTarget(refConstraint, LINKS.applicableLink$7IrX));
             for (SNode editorComponent : Sequence.fromIterable(superEditorComponents)) {
-              ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(presentation, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$T3)), LINKS.problems$4CuI)).addElement(createRefPresentationMigratedProblem_lpnriw_a0a0a2a1a0a7a1a6(editorComponent));
+              ListSequence.fromList(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$T3).get(presentation), LINKS.problems$4CuI)).addElement(createRefPresentationMigratedProblem_lpnriw_a0a0a2a1a0a7a1a6(editorComponent));
             }
           }
         }
@@ -105,32 +94,16 @@ public class AnnotateRefPresentationQueriesAsMigrated extends MigrationScriptBas
     {
       SearchScope scope_lpnriw_b0f = CommandUtil.createScope(m);
       final SearchScope scope_lpnriw_b0f_0 = new EditableFilteringScope(scope_lpnriw_b0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_lpnriw_b0f_0;
-        }
-      };
-      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConstraintFunction_ReferentSearchScope_Presentation$uU, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$T3)), LINKS.problems$4CuI)).isNotEmpty();
-        }
-      }).select(new ISelector<SNode, PresentationQueryMigratedWithProblems>() {
-        public PresentationQueryMigratedWithProblems select(SNode it) {
-          return new PresentationQueryMigratedWithProblems(it);
-        }
-      }));
-      ListSequence.fromList(problems).addSequence(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.collect(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptConstraints$Yt, false), LINKS.defaultScope$PVUG), LINKS.presentation$Vpxl)).select(new ISelector<SNode, DefaultPresentationQueryNotMigrated>() {
-        public DefaultPresentationQueryNotMigrated select(SNode it) {
-          return new DefaultPresentationQueryNotMigrated(it);
-        }
-      }));
+      QueryExecutionContext context = () -> scope_lpnriw_b0f_0;
+      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConstraintFunction_ReferentSearchScope_Presentation$uU, false)).where((it) -> ListSequence.fromList(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$T3).get(it), LINKS.problems$4CuI)).isNotEmpty()).select((it) -> new PresentationQueryMigratedWithProblems(it)));
+      ListSequence.fromList(problems).addSequence(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.collect(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptConstraints$Yt, false), LINKS.defaultScope$PVUG), LINKS.presentation$Vpxl)).select((it) -> new DefaultPresentationQueryNotMigrated(it)));
       return problems;
     }
   }
   public Iterable<MigrationScriptReference> executeAfter() {
     return ListSequence.fromListAndArray(new ArrayList<MigrationScriptReference>(), new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 10));
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, "jetbrains.mps.lang.constraints"), 2);
   }
 
@@ -141,62 +114,38 @@ public class AnnotateRefPresentationQueriesAsMigrated extends MigrationScriptBas
     final Iterable<SNode> supers = AnnotateRefPresentationQueriesAsMigrated.getConceptStack(concept, reference);
 
     final Map<Iterable<SNode>, SNode> hintToMostSpecificDeclaration = MapSequence.fromMap(new HashMap<Iterable<SNode>, SNode>());
-    Sequence.fromIterable(editorComponents).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        if (Sequence.fromIterable(supers).contains(AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(it)) && SNodeOperations.isInstanceOf(it, CONCEPTS.ConceptEditorDeclaration$BH)) {
-          SNode ced = SNodeOperations.as(it, CONCEPTS.ConceptEditorDeclaration$BH);
-          Iterable<SNode> hints = SLinkOperations.collect(SLinkOperations.getChildren(ced, LINKS.contextHints$kxOz), LINKS.hint$Facj);
-          SNode oldCed = MapSequence.fromMap(hintToMostSpecificDeclaration).get(hints);
-          if ((oldCed == null) || (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(ced, LINKS.conceptDeclaration$HJmJ), SLinkOperations.getTarget(oldCed, LINKS.conceptDeclaration$HJmJ))) {
-            MapSequence.fromMap(hintToMostSpecificDeclaration).put(hints, ced);
-          }
+    Sequence.fromIterable(editorComponents).visitAll((it) -> {
+      if (Sequence.fromIterable(supers).contains(AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(it)) && SNodeOperations.isInstanceOf(it, CONCEPTS.ConceptEditorDeclaration$BH)) {
+        SNode ced = SNodeOperations.as(it, CONCEPTS.ConceptEditorDeclaration$BH);
+        Iterable<SNode> hints = SLinkOperations.collect(SLinkOperations.getChildren(ced, LINKS.contextHints$kxOz), LINKS.hint$Facj);
+        SNode oldCed = MapSequence.fromMap(hintToMostSpecificDeclaration).get(hints);
+        if ((oldCed == null) || (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(ced, LINKS.conceptDeclaration$HJmJ), SLinkOperations.getTarget(oldCed, LINKS.conceptDeclaration$HJmJ))) {
+          MapSequence.fromMap(hintToMostSpecificDeclaration).put(hints, ced);
         }
       }
     });
 
     List<SNode> interstingEditorComponents = ListSequence.fromList(new ArrayList<SNode>());
     ListSequence.fromList(interstingEditorComponents).addSequence(Sequence.fromIterable(MapSequence.fromMap(hintToMostSpecificDeclaration).values()));
-    ListSequence.fromList(interstingEditorComponents).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(editorComponents, CONCEPTS.InlineEditorComponent$Op)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Sequence.fromIterable(supers).contains(AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(it));
-      }
-    }));
-    ListSequence.fromList(interstingEditorComponents).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(editorComponents, CONCEPTS.EditorComponentDeclaration$WM)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Sequence.fromIterable(supers).contains(SLinkOperations.getTarget(it, LINKS.conceptDeclaration$HJmJ));
-      }
-    }));
-    ListSequence.fromList(interstingEditorComponents).removeWhere(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(it) == concept;
-      }
-    });
+    ListSequence.fromList(interstingEditorComponents).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(editorComponents, CONCEPTS.InlineEditorComponent$Op)).where((it) -> Sequence.fromIterable(supers).contains(AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(it))));
+    ListSequence.fromList(interstingEditorComponents).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(editorComponents, CONCEPTS.EditorComponentDeclaration$WM)).where((it) -> Sequence.fromIterable(supers).contains(SLinkOperations.getTarget(it, LINKS.conceptDeclaration$HJmJ))));
+    ListSequence.fromList(interstingEditorComponents).removeWhere((it) -> AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(it) == concept);
 
-    return ListSequence.fromList(interstingEditorComponents).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ListSequence.fromList(SNodeOperations.getNodeDescendants(it, CONCEPTS.CellModel_RefCell$7g, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.relationDeclaration$E2hc) == reference;
-          }
-        }).isNotEmpty();
-      }
+    return ListSequence.fromList(interstingEditorComponents).where((it) -> {
+      return ListSequence.fromList(SNodeOperations.getNodeDescendants(it, CONCEPTS.CellModel_RefCell$7g, false, new SAbstractConcept[]{})).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+        public Boolean invoke(SNode it) {
+          return SLinkOperations.getTarget(it, LINKS.relationDeclaration$E2hc) == reference;
+        }
+      }).isNotEmpty();
     });
   }
 
   private static Iterable<SNode> extractEditorComponents(Iterable<SModule> modules) {
-    return SNodeOperations.ofConcept(CollectionSequence.fromCollection(CommandUtil.instances(new ModulesScope(modules), CONCEPTS.BaseEditorComponent$49, false)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SModuleOperations.isAspect(SNodeOperations.getModel(it), "editor");
-      }
-    }), CONCEPTS.BaseEditorComponent$49);
+    return SNodeOperations.ofConcept(CollectionSequence.fromCollection(CommandUtil.instances(new ModulesScope(modules), CONCEPTS.BaseEditorComponent$49, false)).where((it) -> SModuleOperations.isAspect(SNodeOperations.getModel(it), "editor")), CONCEPTS.BaseEditorComponent$49);
   }
 
   private static Iterable<SNode> getConceptStack(SNode concept, final SNode reference) {
-    return Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(concept, ((boolean) true))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(it)).contains(LinkDeclaration__BehaviorDescriptor.getGenuineLink_idhEwIf_V.invoke(reference));
-      }
-    });
+    return Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(concept, ((boolean) true))).where((it) -> ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(it)).contains(LinkDeclaration__BehaviorDescriptor.getGenuineLink_idhEwIf_V.invoke(reference)));
   }
 
   private static SNode createRefPresentationMigratedProblem_lpnriw_a0a0a2a1a0a7a1a6(SNode p0) {

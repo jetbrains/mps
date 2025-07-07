@@ -5,65 +5,27 @@ package jetbrains.mps.baseLanguage.javadoc.editor;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public class DocTagHelper {
   public static void organizeTags(final SNode comment) {
-    Iterable<SNode> author = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.AuthorBlockDocTag$jR);
-      }
-    });
-    Iterable<SNode> since = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.SinceBlockDocTag$KR);
-      }
-    });
-    Iterable<SNode> version = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.VersionBlockDocTag$wp);
-      }
-    });
-    Iterable<SNode> see = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.SeeBlockDocTag$fI);
-      }
-    });
-    Iterable<SNode> param = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.ParameterBlockDocTag$ie);
-      }
-    });
-    Iterable<SNode> thr = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.ThrowsBlockDocTag$bu);
-      }
-    });
-    Iterable<SNode> deprecated = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.DeprecatedBlockDocTag$8n);
-      }
-    });
-    Iterable<SNode> returns = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.ReturnBlockDocTag$KD);
-      }
-    });
-    // converting sequence toList to "calculate" the sequence and prevent it from being modified by the next tags.clean operation 
-    List<SNode> sortedTags = Sequence.fromIterable(author).concat(Sequence.fromIterable(since)).concat(Sequence.fromIterable(version)).concat(Sequence.fromIterable(see)).concat(Sequence.fromIterable(param)).concat(Sequence.fromIterable(thr)).concat(Sequence.fromIterable(deprecated)).concat(Sequence.fromIterable(returns)).toListSequence();
+    Iterable<SNode> author = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.AuthorBlockDocTag$jR));
+    Iterable<SNode> since = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.SinceBlockDocTag$KR));
+    Iterable<SNode> version = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.VersionBlockDocTag$wp));
+    Iterable<SNode> see = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.SeeBlockDocTag$fI));
+    Iterable<SNode> param = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.ParameterBlockDocTag$ie));
+    Iterable<SNode> thr = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.ThrowsBlockDocTag$bu));
+    Iterable<SNode> deprecated = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.DeprecatedBlockDocTag$8n));
+    Iterable<SNode> returns = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.ReturnBlockDocTag$KD));
+    // converting sequence toList to "calculate" the sequence and prevent it from being modified by the next tags.clean operation
+    List<SNode> sortedTags = Sequence.fromIterable(author).concat(Sequence.fromIterable(since)).concat(Sequence.fromIterable(version)).concat(Sequence.fromIterable(see)).concat(Sequence.fromIterable(param)).concat(Sequence.fromIterable(thr)).concat(Sequence.fromIterable(deprecated)).concat(Sequence.fromIterable(returns)).toList();
     ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).clear();
-    ListSequence.fromList(sortedTags).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(it);
-      }
-    });
+    ListSequence.fromList(sortedTags).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(it));
   }
 
   private static final class LINKS {

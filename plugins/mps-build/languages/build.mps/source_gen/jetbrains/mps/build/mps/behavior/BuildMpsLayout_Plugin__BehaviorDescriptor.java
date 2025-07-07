@@ -8,12 +8,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.build.util.UnpackHelper;
 import jetbrains.mps.build.util.DependenciesHelper;
 import jetbrains.mps.build.util.Context;
+import jetbrains.mps.build.util.MacroHelper;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
@@ -24,12 +24,15 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.build.behavior.BuildLayout_PathElement__BehaviorDescriptor;
+import jetbrains.mps.build.util.LocalSourcePathArtifact;
+import java.util.Objects;
+import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
 import jetbrains.mps.build.behavior.BuildLayout_Node__BehaviorDescriptor;
 import jetbrains.mps.build.behavior.BuildLayout_Container__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -40,19 +43,23 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, "jetbrains.mps.build.mps.structure.BuildMpsLayout_Plugin");
 
-  public static final SMethod<Void> appendName_id1bWeed$ownT = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("appendName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1bWeed$ownT").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(StringBuilder.class, ""));
-  public static final SMethod<Void> unpack_id6IqTD4bJTWZ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("unpack").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6IqTD4bJTWZ").build(SMethodBuilder.createJavaParameter(UnpackHelper.class, ""));
-  public static final SMethod<String> location_id6b4RkXS8sT2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("location").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6b4RkXS8sT2").build(SMethodBuilder.createJavaParameter(DependenciesHelper.class, ""), SMethodBuilder.createJavaParameter(Object.class, ""));
-  public static final SMethod<Boolean> exports_id5FtnUVJQES1 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("exports").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5FtnUVJQES1").build(SMethodBuilder.createJavaParameter(Object.class, ""));
-  public static final SMethod<String> getChildrenOutputDir_WithMacro_id450ejGzh8bb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getChildrenOutputDir_WithMacro").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("450ejGzh8bb").build(SMethodBuilder.createJavaParameter(Context.class, ""));
-  public static final SMethod<String> getOutputPath_WithMacro_idfzIHCHip1Q = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getOutputPath_WithMacro").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("fzIHCHip1Q").build(SMethodBuilder.createJavaParameter(Context.class, ""));
-  public static final SMethod<String> getApproximateName_id4RsV8qJH_Br = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getApproximateName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4RsV8qJH_Br").build();
-  public static final SMethod<Boolean> isFolder_id1bWeed$oPYW = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFolder").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1bWeed$oPYW").build();
-  /*package*/ static final SMethod<SNode> findGroup_id7cOEBlPT2gC = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("findGroup").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("7cOEBlPT2gC").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  /*package*/ static final SMethod<Boolean> isPackagedAutomatically_id36cV00CxaOW = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isPackagedAutomatically").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("36cV00CxaOW").build();
-  /*package*/ static final SMethod<Void> unpackPluginModules_id6ZIjmBZXud7 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("unpackPluginModules").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("6ZIjmBZXud7").build(SMethodBuilder.createJavaParameter((Class<Iterable<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(UnpackHelper.class, ""), SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<Void> appendName_id1bWeed$ownT = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("appendName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1368030936106665465L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(StringBuilder.class, ""));
+  public static final SMethod<Void> unpack_id6IqTD4bJTWZ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("unpack").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7753763219113484095L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(UnpackHelper.class, ""));
+  public static final SMethod<String> location_id6b4RkXS8sT2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("location").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7117056644539862594L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(DependenciesHelper.class, ""), SMethodBuilder.createJavaParameter(Object.class, ""));
+  public static final SMethod<Boolean> exports_id5FtnUVJQES1 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("exports").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6547494638219603457L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Object.class, ""));
+  public static final SMethod<String> getChildrenOutputDir_WithMacro_id450ejGzh8bb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getChildrenOutputDir_WithMacro").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4701820937132344011L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Context.class, ""));
+  public static final SMethod<String> getOutputPath_WithMacro_idfzIHCHip1Q = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getOutputPath_WithMacro").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(280273048052535414L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter(Context.class, ""));
+  public static final SMethod<String> getApproximateName_id4RsV8qJH_Br = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getApproximateName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5610619299014531547L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
+  public static final SMethod<Boolean> isFolder_id1bWeed$oPYW = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFolder").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1368030936106753980L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
+  public static final SMethod<Boolean> isAutoLayoutForPluginDescriptorNeeded_id1RsDREuQnlU = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAutoLayoutForPluginDescriptorNeeded").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2151778867069154682L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter(MacroHelper.class, ""));
+  public static final SMethod<Boolean> isPluginDescriptorPossiblyMissingInLayout_id1RsDREvCrek = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isPluginDescriptorPossiblyMissingInLayout").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2151778867082277780L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
+  public static final SMethod<SNode> conflictingJar_id1RsDREvPMQ$ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("conflictingJar").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2151778867085782436L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter(MacroHelper.class, ""));
+  /*package*/ static final SMethod<Boolean> confictingJarNameExists_id1RsDREvQK61 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("confictingJarNameExists").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(2151778867086033281L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter(MacroHelper.class, ""));
+  /*package*/ static final SMethod<SNode> findGroup_id7cOEBlPT2gC = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("findGroup").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(8301447434616448040L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  /*package*/ static final SMethod<Boolean> isPackagedAutomatically_id36cV00CxaOW = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isPackagedAutomatically").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(3570488090021899580L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
+  /*package*/ static final SMethod<Void> unpackPluginModules_id6ZIjmBZXud7 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("unpackPluginModules").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(8065469100328346439L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter((Class<Iterable<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(UnpackHelper.class, ""), SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(String.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(appendName_id1bWeed$ownT, unpack_id6IqTD4bJTWZ, location_id6b4RkXS8sT2, exports_id5FtnUVJQES1, getChildrenOutputDir_WithMacro_id450ejGzh8bb, getOutputPath_WithMacro_idfzIHCHip1Q, getApproximateName_id4RsV8qJH_Br, isFolder_id1bWeed$oPYW, findGroup_id7cOEBlPT2gC, isPackagedAutomatically_id36cV00CxaOW, unpackPluginModules_id6ZIjmBZXud7);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(appendName_id1bWeed$ownT, unpack_id6IqTD4bJTWZ, location_id6b4RkXS8sT2, exports_id5FtnUVJQES1, getChildrenOutputDir_WithMacro_id450ejGzh8bb, getOutputPath_WithMacro_idfzIHCHip1Q, getApproximateName_id4RsV8qJH_Br, isFolder_id1bWeed$oPYW, isAutoLayoutForPluginDescriptorNeeded_id1RsDREuQnlU, isPluginDescriptorPossiblyMissingInLayout_id1RsDREvCrek, conflictingJar_id1RsDREvPMQ$, confictingJarNameExists_id1RsDREvQK61, findGroup_id7cOEBlPT2gC, isPackagedAutomatically_id36cV00CxaOW, unpackPluginModules_id6ZIjmBZXud7);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -64,7 +71,7 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
     sb.append(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC), LINKS.containerName$xQbG), null));
   }
   /*package*/ static void unpack_id6IqTD4bJTWZ(@NotNull SNode __thisNode__, UnpackHelper helper) {
-    // TODO extract! (it is a copy of Folder behavior) 
+    // TODO extract! (it is a copy of Folder behavior)
     SNode parent = helper.parent(__thisNode__);
     String parentLocation = helper.getContentLocation(parent);
     String folderLocation = parentLocation + "/" + BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC), LINKS.containerName$xQbG), helper.getMacroHelper());
@@ -73,7 +80,7 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
     for (SNode ic : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.children$aMRO), CONCEPTS.BuildLayout_ImportContent$wC))) {
       SNode node = SNodeOperations.as(SLinkOperations.getTarget(ic, LINKS.target$HFO4), CONCEPTS.BuildLayout_PathElement$ei);
       if ((node != null)) {
-        // note: if node is imported directly - do not override its original location 
+        // note: if node is imported directly - do not override its original location
         if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildLayout_Node$Rb) && helper.getLocation(SNodeOperations.as(node, CONCEPTS.BuildLayout_Node$Rb)) == null) {
           helper.putLocation(SNodeOperations.as(node, CONCEPTS.BuildLayout_Node$Rb), folderLocation);
         }
@@ -82,19 +89,19 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
         }
       }
     }
-    // Next is a solution not to calculate location paths for modules exposed from this plugin at 
-    // a later step through location() call. fetchDependencies() and unpack run at a given transformation 
-    // step, while location() is queried few steps later. SNode, used as artifactId, comes from the latter step, 
-    // and this.plugin.content.first(it.exports(artifactId)) fails to match as 'this' artifact was recorded (and retrieved from DH) 
-    // with the value of the former step (e.g. plugin@2_0.location(module@4_1)) 
-    // Here we collect all modules known at this time, and record their location to avoid its calculation later at location() method. 
-    // As long as modules are not artifacts (this concept, plugin layout node is), we use dedicated DH methods to record locations. 
-    // In fact, this is the same code as location() below (if SNode branch), done at once. 
+    // Next is a solution not to calculate location paths for modules exposed from this plugin at
+    // a later step through location() call. fetchDependencies() and unpack run at a given transformation
+    // step, while location() is queried few steps later. SNode, used as artifactId, comes from the latter step,
+    // and this.plugin.content.first(it.exports(artifactId)) fails to match as 'this' artifact was recorded (and retrieved from DH)
+    // with the value of the former step (e.g. plugin@2_0.location(module@4_1))
+    // Here we collect all modules known at this time, and record their location to avoid its calculation later at location() method.
+    // As long as modules are not artifacts (this concept, plugin layout node is), we use dedicated DH methods to record locations.
+    // In fact, this is the same code as location() below (if SNode branch), done at once.
     final String baseLocation = folderLocation + "/languages/";
     for (SNode ipc : SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC), LINKS.content$9T6D)) {
       Iterable<SNode> modules = null;
       String groupSuffix = "";
-      if (((boolean) BuildMpsLayout_Plugin__BehaviorDescriptor.isPackagedAutomatically_id36cV00CxaOW.invoke(__thisNode__))) {
+      if (((boolean) BuildMpsLayout_Plugin__BehaviorDescriptor.isPackagedAutomatically_id36cV00CxaOW.invokeSpecial(__thisNode__))) {
         if (SNodeOperations.isInstanceOf(ipc, CONCEPTS.BuildMps_IdeaPluginGroup$_R)) {
           SNode group = SNodeOperations.as(ipc, CONCEPTS.BuildMps_IdeaPluginGroup$_R);
           modules = SLinkOperations.getChildren(SLinkOperations.getTarget(group, LINKS.group$qLbS), LINKS.modules$JlQo);
@@ -102,7 +109,7 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
         } else if (SNodeOperations.isInstanceOf(ipc, CONCEPTS.BuildMps_IdeaPluginModule$rY)) {
           modules = Sequence.<SNode>singleton(SLinkOperations.getTarget(SNodeOperations.as(ipc, CONCEPTS.BuildMps_IdeaPluginModule$rY), LINKS.target$ccfo));
         }
-        BuildMpsLayout_Plugin__BehaviorDescriptor.unpackPluginModules_id6ZIjmBZXud7.invoke(__thisNode__, modules, helper, baseLocation, groupSuffix);
+        BuildMpsLayout_Plugin__BehaviorDescriptor.unpackPluginModules_id6ZIjmBZXud7.invokeSpecial(__thisNode__, modules, helper, baseLocation, groupSuffix);
       }
     }
   }
@@ -110,30 +117,26 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
     if (artifactId instanceof SNode) {
       SNode node = (SNode) artifactId;
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildMps_AbstractModule$FZ)) {
-        // try pre-calculated location 
+        // try pre-calculated location
         String layoutRelativePath = helper.getLayoutRelativePath(__thisNode__, node);
         if ((layoutRelativePath != null && layoutRelativePath.length() > 0)) {
           return layoutRelativePath;
         }
-        // fallback to default path calculation 
+        // fallback to default path calculation
         final Wrappers._T<SNode> module = new Wrappers._T<SNode>(SNodeOperations.cast(node, CONCEPTS.BuildMps_AbstractModule$FZ));
         boolean isGenerator = SNodeOperations.isInstanceOf(module.value, CONCEPTS.BuildMps_Generator$RQ);
         if (isGenerator) {
           module.value = BuildMps_Generator__BehaviorDescriptor.getSourceLanguage_id7YI57w6ZMdZ.invoke(SNodeOperations.cast(module.value, CONCEPTS.BuildMps_Generator$RQ));
         }
-        SNode container = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC), LINKS.content$9T6D)).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return (boolean) BuildMps_IdeaPluginContent__BehaviorDescriptor.exports_id5FtnUVJQES1.invoke(it, module.value);
-          }
-        });
+        SNode container = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC), LINKS.content$9T6D)).findFirst((it) -> (boolean) BuildMps_IdeaPluginContent__BehaviorDescriptor.exports_id5FtnUVJQES1.invoke(it, module.value));
         if ((container != null)) {
-          // todo: seems to be rather messy 
+          // todo: seems to be rather messy
           SNode group = SNodeOperations.as(container, CONCEPTS.BuildMps_IdeaPluginGroup$_R);
           if ((SLinkOperations.getTarget(__thisNode__, LINKS.packagingType$WOvS) != null)) {
-            if ((group != null) && !(((boolean) BuildMpsLayout_Plugin__BehaviorDescriptor.isPackagedAutomatically_id36cV00CxaOW.invoke(__thisNode__)))) {
+            if ((group != null) && !((boolean) BuildMpsLayout_Plugin__BehaviorDescriptor.isPackagedAutomatically_id36cV00CxaOW.invokeSpecial(__thisNode__))) {
               return null;
             }
-            if (SNodeOperations.isInstanceOf(container, CONCEPTS.BuildMps_IdeaPluginModule$rY) && !(((boolean) BuildMpsLayout_Plugin__BehaviorDescriptor.isPackagedAutomatically_id36cV00CxaOW.invoke(__thisNode__)))) {
+            if (SNodeOperations.isInstanceOf(container, CONCEPTS.BuildMps_IdeaPluginModule$rY) && !((boolean) BuildMpsLayout_Plugin__BehaviorDescriptor.isPackagedAutomatically_id36cV00CxaOW.invokeSpecial(__thisNode__))) {
               return null;
             }
           }
@@ -153,41 +156,58 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
     return ((String) BuildLayout_PathElement__BehaviorDescriptor.location_id6b4RkXS8sT2.invokeSuper(__thisNode__, CONCEPTS.BuildMpsLayout_Plugin$cj, helper, artifactId));
   }
   /*package*/ static boolean exports_id5FtnUVJQES1(@NotNull SNode __thisNode__, Object artifactId) {
-    // TODO extract! (it is a copy of Folder behavior) 
+    // TODO extract! (it is a copy of Folder behavior)
     if (artifactId instanceof SNode) {
       final SNode node = (SNode) artifactId;
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildMps_IdeaPlugin$po)) {
         return SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC) == node;
       }
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildLayout_Node$Rb)) {
-        return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.children$aMRO), CONCEPTS.BuildLayout_ImportContent$wC)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.target$HFO4) == node;
-          }
-        });
+        return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.children$aMRO), CONCEPTS.BuildLayout_ImportContent$wC)).any((it) -> SLinkOperations.getTarget(it, LINKS.target$HFO4) == node);
       }
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildMps_AbstractModule$FZ)) {
         final Wrappers._T<SNode> module = new Wrappers._T<SNode>(SNodeOperations.cast(node, CONCEPTS.BuildMps_AbstractModule$FZ));
         if (SNodeOperations.isInstanceOf(module.value, CONCEPTS.BuildMps_Generator$RQ)) {
           module.value = BuildMps_Generator__BehaviorDescriptor.getSourceLanguage_id7YI57w6ZMdZ.invoke(SNodeOperations.cast(module.value, CONCEPTS.BuildMps_Generator$RQ));
         }
-        SNode container = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC), LINKS.content$9T6D)).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return (boolean) BuildMps_IdeaPluginContent__BehaviorDescriptor.exports_id5FtnUVJQES1.invoke(it, module.value);
-          }
-        });
+        SNode container = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC), LINKS.content$9T6D)).findFirst((it) -> (boolean) BuildMps_IdeaPluginContent__BehaviorDescriptor.exports_id5FtnUVJQES1.invoke(it, module.value));
         SNode group = SNodeOperations.as(container, CONCEPTS.BuildMps_IdeaPluginGroup$_R);
         if ((SLinkOperations.getTarget(__thisNode__, LINKS.packagingType$WOvS) != null)) {
-          if ((group != null) && !(((boolean) BuildMpsLayout_Plugin__BehaviorDescriptor.isPackagedAutomatically_id36cV00CxaOW.invoke(__thisNode__)))) {
+          if ((group != null) && !((boolean) BuildMpsLayout_Plugin__BehaviorDescriptor.isPackagedAutomatically_id36cV00CxaOW.invokeSpecial(__thisNode__))) {
             return false;
           }
-          if (SNodeOperations.isInstanceOf(container, CONCEPTS.BuildMps_IdeaPluginModule$rY) && !(((boolean) BuildMpsLayout_Plugin__BehaviorDescriptor.isPackagedAutomatically_id36cV00CxaOW.invoke(__thisNode__)))) {
+          if (SNodeOperations.isInstanceOf(container, CONCEPTS.BuildMps_IdeaPluginModule$rY) && !((boolean) BuildMpsLayout_Plugin__BehaviorDescriptor.isPackagedAutomatically_id36cV00CxaOW.invokeSpecial(__thisNode__))) {
             return false;
           }
         }
 
         return container != null;
       }
+    } else if (artifactId instanceof LocalSourcePathArtifact) {
+      // FIXME copied from BuildLayout_Folder.exports to support 'files from' under 'plugin' layout
+      LocalSourcePathArtifact art = (LocalSourcePathArtifact) artifactId;
+      if (art.getRoot() != SNodeOperations.getContainingRoot(__thisNode__)) {
+        return false;
+      }
+
+      for (SNode c : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.children$aMRO))) {
+        if (SNodeOperations.isInstanceOf(c, CONCEPTS.BuildLayout_Files$Oo)) {
+          SNode files = SNodeOperations.as(c, CONCEPTS.BuildLayout_Files$Oo);
+          if (ListSequence.fromList(SLinkOperations.getChildren(files, LINKS.parameters$WlG4)).isEmpty() && Objects.equals(art.getSourcePath(), BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(files, LINKS.path$Wlt3)))) {
+            return true;
+          }
+        } else if (SNodeOperations.isInstanceOf(c, CONCEPTS.BuildLayout_AbstractCopy$Ss)) {
+          SNode copy = SNodeOperations.as(c, CONCEPTS.BuildLayout_Copy$E8);
+          if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(copy, LINKS.fileset$tUzn), CONCEPTS.BuildInputFiles$lR)) {
+            SNode inputSet = SNodeOperations.cast(SLinkOperations.getTarget(copy, LINKS.fileset$tUzn), CONCEPTS.BuildInputFiles$lR);
+            if (ListSequence.fromList(SLinkOperations.getChildren(inputSet, LINKS.selectors$hp_C)).isEmpty() && Objects.equals(art.getSourcePath(), BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(inputSet, LINKS.dir$e6r$)))) {
+              return true;
+            }
+          }
+        }
+      }
+
+
     }
     return ((boolean) BuildLayout_Node__BehaviorDescriptor.exports_id5FtnUVJQES1.invokeSuper(__thisNode__, CONCEPTS.BuildMpsLayout_Plugin$cj, artifactId));
   }
@@ -207,12 +227,69 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
   /*package*/ static boolean isFolder_id1bWeed$oPYW(@NotNull SNode __thisNode__) {
     return true;
   }
+  /*package*/ static boolean isAutoLayoutForPluginDescriptorNeeded_id1RsDREuQnlU(@NotNull final SNode __thisNode__, @Nullable final MacroHelper macrosHelper) {
+    if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC), PROPS.pluginXmlProvided$f2I)) {
+      return false;
+    }
+
+    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.children$aMRO)).isEmpty()) {
+      return true;
+    }
+
+    if (((boolean) BuildMpsLayout_Plugin__BehaviorDescriptor.confictingJarNameExists_id1RsDREvQK61.invokeSpecial(__thisNode__, macrosHelper))) {
+      return false;
+    }
+
+    return !(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.children$aMRO), CONCEPTS.BuildLayout_Folder$AH)).any((it) -> {
+      return "lib".equals(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(it, LINKS.containerName$ES_Y), macrosHelper)) && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(it, LINKS.children$aMRO), CONCEPTS.BuildLayout_Jar$bd)).any(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+        public Boolean invoke(SNode it) {
+          return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(it, LINKS.children$aMRO), CONCEPTS.BuildLayout_Folder$AH)).any(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+            public Boolean invoke(SNode it) {
+              return "META-INF".equals(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(it, LINKS.containerName$ES_Y), macrosHelper)) && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(it, LINKS.children$aMRO), CONCEPTS.BuildMpsLayout_PluginDescriptor$on)).any(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+                public Boolean invoke(SNode it) {
+                  return SLinkOperations.getTarget(it, LINKS.plugin$ZarS) == SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC);
+                }
+              });
+            }
+          });
+        }
+      });
+    }));
+  }
+  /*package*/ static boolean isPluginDescriptorPossiblyMissingInLayout_id1RsDREvCrek(@NotNull final SNode __thisNode__) {
+    SNode conflictingJar = BuildMpsLayout_Plugin__BehaviorDescriptor.conflictingJar_id1RsDREvPMQ$.invoke(__thisNode__, null);
+    if ((conflictingJar == null)) {
+      return false;
+    }
+    if (ListSequence.fromList(SLinkOperations.getChildren(conflictingJar, LINKS.children$aMRO)).isEmpty()) {
+      return true;
+    }
+    SNode metaInfFolder = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(conflictingJar, LINKS.children$aMRO), CONCEPTS.BuildLayout_Folder$AH)).findFirst((it) -> "META-INF".equals(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(it, LINKS.containerName$ES_Y), null)));
+    if ((metaInfFolder == null) || ListSequence.fromList(SLinkOperations.getChildren(metaInfFolder, LINKS.children$aMRO)).isEmpty()) {
+      return true;
+    }
+    if (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(metaInfFolder, LINKS.children$aMRO), CONCEPTS.BuildMpsLayout_PluginDescriptor$on)).any((it) -> SLinkOperations.getTarget(it, LINKS.plugin$ZarS) == SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC))) {
+      return false;
+    }
+    return !(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(metaInfFolder, LINKS.children$aMRO), CONCEPTS.BuildLayout_File$Kk)).any((it) -> {
+      String lastSegment = BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(it, LINKS.path$xmoo));
+      return (lastSegment != null && lastSegment.length() > 0) && (lastSegment.toLowerCase().endsWith(".xml"));
+    }) || Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(metaInfFolder, LINKS.children$aMRO), CONCEPTS.BuildLayout_Files$Oo), LINKS.path$Wlt3), CONCEPTS.BuildRelativePath$Kc)).any((it) -> "META-INF".equals(BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(it))));
+  }
+  @Nullable
+  /*package*/ static SNode conflictingJar_id1RsDREvPMQ$(@NotNull final SNode __thisNode__, @Nullable final MacroHelper macros) {
+    Iterable<SNode> libFolders = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.children$aMRO), CONCEPTS.BuildLayout_Folder$AH)).where((it) -> "lib".equals(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(it, LINKS.containerName$ES_Y), macros)));
+    if (Sequence.fromIterable(libFolders).isEmpty()) {
+      return null;
+    }
+
+    return Sequence.fromIterable(libFolders).translate((it) -> SNodeOperations.ofConcept(SLinkOperations.getChildren(it, LINKS.children$aMRO), CONCEPTS.BuildLayout_Jar$bd)).findFirst((it) -> Objects.equals(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(it, LINKS.containerName$ES_Y), macros), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC), LINKS.containerName$xQbG), macros) + ".jar"));
+  }
+  /*package*/ static boolean confictingJarNameExists_id1RsDREvQK61(@NotNull SNode __thisNode__, @Nullable MacroHelper macros) {
+    return (BuildMpsLayout_Plugin__BehaviorDescriptor.conflictingJar_id1RsDREvPMQ$.invoke(__thisNode__, macros) != null);
+  }
   /*package*/ static SNode findGroup_id7cOEBlPT2gC(@NotNull SNode __thisNode__, final SNode module) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC), LINKS.content$9T6D), CONCEPTS.BuildMps_IdeaPluginGroup$_R)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.group$qLbS), LINKS.modules$JlQo)).contains(module);
-      }
-    }).first();
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC), LINKS.content$9T6D), CONCEPTS.BuildMps_IdeaPluginGroup$_R)).where((it) -> ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.group$qLbS), LINKS.modules$JlQo)).contains(module)).first();
   }
   /*package*/ static boolean isPackagedAutomatically_id36cV00CxaOW(@NotNull SNode __thisNode__) {
     return (SLinkOperations.getTarget(__thisNode__, LINKS.packagingType$WOvS) != null) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.packagingType$WOvS), CONCEPTS.BuildMpsLayout_AutoPluginLayoutType$JU);
@@ -220,7 +297,7 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
   /*package*/ static void unpackPluginModules_id6ZIjmBZXud7(@NotNull SNode __thisNode__, Iterable<SNode> modules, UnpackHelper helper, final String baseLocation, String groupSuffix) {
     for (SNode m : Sequence.fromIterable(modules)) {
       if (SNodeOperations.isInstanceOf(m, CONCEPTS.BuildMps_Generator$RQ)) {
-        // j.m.build.mps, loadMods moves generator modules out of their languages, expect them to be among group.modules 
+        // j.m.build.mps, loadMods moves generator modules out of their languages, expect them to be among group.modules
         helper.putLayoutRelativePath(__thisNode__, m, baseLocation + groupSuffix + SPropertyOperations.getString(BuildMps_Generator__BehaviorDescriptor.getSourceLanguage_id7YI57w6ZMdZ.invoke(SNodeOperations.cast(m, CONCEPTS.BuildMps_Generator$RQ)), PROPS.name$MnvL) + "-generator.jar");
       } else {
         helper.putLayoutRelativePath(__thisNode__, m, baseLocation + groupSuffix + SPropertyOperations.getString(m, PROPS.name$MnvL) + ".jar");
@@ -265,10 +342,18 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
       case 7:
         return (T) ((Boolean) isFolder_id1bWeed$oPYW(node));
       case 8:
-        return (T) ((SNode) findGroup_id7cOEBlPT2gC(node, (SNode) parameters[0]));
+        return (T) ((Boolean) isAutoLayoutForPluginDescriptorNeeded_id1RsDREuQnlU(node, (MacroHelper) parameters[0]));
       case 9:
-        return (T) ((Boolean) isPackagedAutomatically_id36cV00CxaOW(node));
+        return (T) ((Boolean) isPluginDescriptorPossiblyMissingInLayout_id1RsDREvCrek(node));
       case 10:
+        return (T) ((SNode) conflictingJar_id1RsDREvPMQ$(node, (MacroHelper) parameters[0]));
+      case 11:
+        return (T) ((Boolean) confictingJarNameExists_id1RsDREvQK61(node, (MacroHelper) parameters[0]));
+      case 12:
+        return (T) ((SNode) findGroup_id7cOEBlPT2gC(node, (SNode) parameters[0]));
+      case 13:
+        return (T) ((Boolean) isPackagedAutomatically_id36cV00CxaOW(node));
+      case 14:
         unpackPluginModules_id6ZIjmBZXud7(node, (Iterable<SNode>) parameters[0], (UnpackHelper) parameters[1], (String) parameters[2], (String) parameters[3]);
         return null;
       default:
@@ -311,6 +396,15 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
     /*package*/ static final SConcept BuildMps_Generator$RQ = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, "jetbrains.mps.build.mps.structure.BuildMps_Generator");
     /*package*/ static final SConcept BuildMps_IdeaPlugin$po = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPlugin");
     /*package*/ static final SConcept BuildMpsLayout_Plugin$cj = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, "jetbrains.mps.build.mps.structure.BuildMpsLayout_Plugin");
+    /*package*/ static final SConcept BuildLayout_Files$Oo = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x262a04c08b56faffL, "jetbrains.mps.build.structure.BuildLayout_Files");
+    /*package*/ static final SConcept BuildLayout_AbstractCopy$Ss = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, "jetbrains.mps.build.structure.BuildLayout_AbstractCopy");
+    /*package*/ static final SConcept BuildLayout_Copy$E8 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92339b9L, "jetbrains.mps.build.structure.BuildLayout_Copy");
+    /*package*/ static final SConcept BuildInputFiles$lR = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, "jetbrains.mps.build.structure.BuildInputFiles");
+    /*package*/ static final SConcept BuildLayout_Folder$AH = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c78L, "jetbrains.mps.build.structure.BuildLayout_Folder");
+    /*package*/ static final SConcept BuildLayout_Jar$bd = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f9aL, "jetbrains.mps.build.structure.BuildLayout_Jar");
+    /*package*/ static final SConcept BuildMpsLayout_PluginDescriptor$on = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4dee437cL, "jetbrains.mps.build.mps.structure.BuildMpsLayout_PluginDescriptor");
+    /*package*/ static final SConcept BuildLayout_File$Kk = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7ea63ceef6e8c0edL, "jetbrains.mps.build.structure.BuildLayout_File");
+    /*package*/ static final SConcept BuildRelativePath$Kc = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, "jetbrains.mps.build.structure.BuildRelativePath");
     /*package*/ static final SConcept BuildMpsLayout_AutoPluginLayoutType$JU = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x318cec002865ada1L, "jetbrains.mps.build.mps.structure.BuildMpsLayout_AutoPluginLayoutType");
     /*package*/ static final SConcept BuildMps_Language$RA = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, "jetbrains.mps.build.mps.structure.BuildMps_Language");
   }
@@ -325,10 +419,19 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
     /*package*/ static final SReferenceLink target$ccfo = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, 0x5b7be37b4de9bbddL, "target");
     /*package*/ static final SContainmentLink content$9T6D = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bbeaL, "content");
     /*package*/ static final SContainmentLink packagingType$WOvS = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x318cec002865ade0L, "packagingType");
+    /*package*/ static final SContainmentLink parameters$WlG4 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x262a04c08b56faffL, 0x262a04c08b56fb01L, "parameters");
+    /*package*/ static final SContainmentLink path$Wlt3 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x262a04c08b56faffL, 0x262a04c08b56fb00L, "path");
+    /*package*/ static final SContainmentLink fileset$tUzn = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset");
+    /*package*/ static final SContainmentLink dir$e6r$ = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245a6L, "dir");
+    /*package*/ static final SContainmentLink selectors$hp_C = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245f7L, "selectors");
+    /*package*/ static final SReferenceLink plugin$ZarS = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4dee437cL, 0x5b7be37b4dee437dL, "plugin");
+    /*package*/ static final SContainmentLink containerName$ES_Y = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, 0x3cca41cd0fe75496L, "containerName");
+    /*package*/ static final SContainmentLink path$xmoo = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7ea63ceef6e8c0edL, 0x7ea63ceef6e8c11aL, "path");
     /*package*/ static final SContainmentLink generator$OCOG = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x7fae147806433827L, "generator");
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty pluginXmlProvided$f2I = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x450018b736351dc3L, "pluginXmlProvided");
   }
 }

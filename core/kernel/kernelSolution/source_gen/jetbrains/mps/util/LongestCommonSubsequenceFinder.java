@@ -11,11 +11,9 @@ import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 
-@GeneratedClass(node = "r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)/4972886494893373483", model = "r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)")
+@GeneratedClass(nodeId = "4972886494893373483", model = "r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)")
 public class LongestCommonSubsequenceFinder<E> {
   private List<E> myA;
   private List<E> myB;
@@ -29,9 +27,9 @@ public class LongestCommonSubsequenceFinder<E> {
   }
   @NotNull
   public int[][] getCommonLengths() {
-    // This method finds lengths of longest common subsequence for each 
-    // i first elements of a and j first elements of b. This lengths are in result 
-    // two-dimensional array at [i][j] position 
+    // This method finds lengths of longest common subsequence for each
+    // i first elements of a and j first elements of b. This lengths are in result
+    // two-dimensional array at [i][j] position
     if (myCommonLengths == null) {
       myCommonLengths = new int[ListSequence.fromList(myA).count() + 1][ListSequence.fromList(myB).count() + 1];
 
@@ -49,8 +47,8 @@ public class LongestCommonSubsequenceFinder<E> {
   }
   @NotNull
   public List<Tuples._2<Integer, Integer>> getCommonIndices() {
-    // This method finds pairs of indices in a and b lists which are 
-    // elements of longest common subsequence 
+    // This method finds pairs of indices in a and b lists which are
+    // elements of longest common subsequence
     if (myCommonIndices == null) {
       getCommonLengths();
 
@@ -76,45 +74,41 @@ public class LongestCommonSubsequenceFinder<E> {
   }
   @NotNull
   public List<Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>>> getDifferentIndices() {
-    // This methods finds pairs of begin-end pairs of original lists a and b 
-    // which are not included into longest common subsequence 
+    // This methods finds pairs of begin-end pairs of original lists a and b
+    // which are not included into longest common subsequence
     if (myDifferentIndices == null) {
       myDifferentIndices = ListSequence.fromList(new ArrayList<Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>>>());
       int i = 0;
       int j = 0;
-      for (Tuples._2<Integer, Integer> f : ListSequence.fromList(getCommonIndices()).concat(Sequence.fromIterable(new _FunctionTypes._return_P0_E0<Iterable<Tuples._2<Integer, Integer>>>() {
-        public Iterable<Tuples._2<Integer, Integer>> invoke() {
-          return new Iterable<Tuples._2<Integer, Integer>>() {
-            public Iterator<Tuples._2<Integer, Integer>> iterator() {
-              return new YieldingIterator<Tuples._2<Integer, Integer>>() {
-                private int __CP__ = 0;
-                protected boolean moveToNext() {
+      for (Tuples._2<Integer, Integer> f : ListSequence.fromList(getCommonIndices()).concat(Sequence.fromIterable(((_FunctionTypes._return_P0_E0<Iterable<Tuples._2<Integer, Integer>>>) () -> {
+        return (Iterable<Tuples._2<Integer, Integer>>) () -> {
+          return new YieldingIterator<Tuples._2<Integer, Integer>>() {
+            private int __CP__ = 0;
+            protected boolean moveToNext() {
 __loop__:
-                  do {
+              do {
 __switch__:
-                    switch (this.__CP__) {
-                      case -1:
-                        assert false : "Internal error";
-                        return false;
-                      case 2:
-                        this.__CP__ = 1;
-                        this.yield(MultiTuple.<Integer,Integer>from(ListSequence.fromList(myA).count(), ListSequence.fromList(myB).count()));
-                        return true;
-                      case 0:
-                        this.__CP__ = 2;
-                        break;
-                      default:
-                        break __loop__;
-                    }
-                  } while (true);
-                  return false;
+                switch (this.__CP__) {
+                  case -1:
+                    assert false : "Internal error";
+                    return false;
+                  case 2:
+                    this.__CP__ = 1;
+                    this.yield(MultiTuple.<Integer,Integer>from(ListSequence.fromList(myA).count(), ListSequence.fromList(myB).count()));
+                    return true;
+                  case 0:
+                    this.__CP__ = 2;
+                    break;
+                  default:
+                    break __loop__;
                 }
-              };
+              } while (true);
+              return false;
             }
           };
-        }
-      }.invoke()))) {
-        if (!((i == (int) f._0() && j == (int) f._1()))) {
+        };
+      }).invoke()))) {
+        if (!(i == (int) f._0() && j == (int) f._1())) {
           ListSequence.fromList(myDifferentIndices).addElement(MultiTuple.<Tuples._2<Integer, Integer>,Tuples._2<Integer, Integer>>from(MultiTuple.<Integer,Integer>from(i, (int) f._0()), MultiTuple.<Integer,Integer>from(j, (int) f._1())));
         }
         i = (int) f._0() + 1;
@@ -125,14 +119,10 @@ __switch__:
   }
   @NotNull
   public List<Tuples._2<Iterable<E>, Iterable<E>>> getDifferentSubsequences() {
-    // This methods finds pairs of subsequences of original lists a and b 
-    // which are not included into longest common subsequence 
+    // This methods finds pairs of subsequences of original lists a and b
+    // which are not included into longest common subsequence
     if (myDifferentSubsequences == null) {
-      myDifferentSubsequences = ListSequence.fromList(getDifferentIndices()).select(new ISelector<Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>>, Tuples._2<Iterable<E>, Iterable<E>>>() {
-        public Tuples._2<Iterable<E>, Iterable<E>> select(Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>> pair) {
-          return MultiTuple.<Iterable<E>,Iterable<E>>from(ListSequence.fromList(myA).page((int) pair._0()._0(), (int) pair._0()._1()), ListSequence.fromList(myB).page((int) pair._1()._0(), (int) pair._1()._1()));
-        }
-      }).toListSequence();
+      myDifferentSubsequences = ListSequence.fromList(getDifferentIndices()).select((pair) -> MultiTuple.<Iterable<E>,Iterable<E>>from(ListSequence.fromList(myA).page((int) pair._0()._0(), (int) pair._0()._1()), ListSequence.fromList(myB).page((int) pair._1()._0(), (int) pair._1()._1()))).toList();
     }
     return myDifferentSubsequences;
   }

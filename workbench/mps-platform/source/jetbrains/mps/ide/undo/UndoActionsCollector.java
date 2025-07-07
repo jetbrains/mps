@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,15 +20,18 @@ import com.intellij.openapi.command.undo.UndoManager;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.nodefs.MPSModelVirtualFile;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Project;
+import jetbrains.mps.smodel.ModelRenameUndoableAction;
 import jetbrains.mps.smodel.SNodeUndoableAction;
 import jetbrains.mps.smodel.SNodeUndoableAction.VFSChange;
 import jetbrains.mps.smodel.UndoItem;
 import jetbrains.mps.smodel.undo.UndoContext;
-import org.jetbrains.mps.openapi.model.SModelId;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.ArrayList;
@@ -40,21 +43,47 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 /**
- * User: shatalin
- * Date: 19.09.17
+ * Integrates MPS undo actions with IDEA undo mechanism (by injecting {@code SNodeIdeaUndoableAction})
  */
 public class UndoActionsCollector {
   private final UndoContext myUndoContext;
-  private List<UndoItem> myActions = new ArrayList<>();
-  private List<MPSNodeVirtualFile> myDeletedFiles = new ArrayList<>();
-  private List<MPSNodeVirtualFile> myCreatedFiles = new ArrayList<>();
+  private final List<UndoItem> myActions = new ArrayList<>();
+  private final List<MPSNodeVirtualFile> myDeletedFiles = new ArrayList<>();
+  private final List<MPSNodeVirtualFile> myCreatedFiles = new ArrayList<>();
   private boolean myIsGlobal = false;
-  private Set<DocumentReference> myDocumentReferences = new LinkedHashSet<>();
-  private Map<SModelId, List<VirtualFile>> myChangedFiles = new HashMap<>();
+  private final Set<DocumentReference> myDocumentReferences = new LinkedHashSet<>();
+  private final Map<SModelReference, List<VirtualFile>> myChangedFiles = new HashMap<>();
   private boolean myDisposed = false;
 
   UndoActionsCollector(UndoContext undoContext) {
     myUndoContext = undoContext;
+  }
+
+  void addAction(ModelRenameUndoableAction action) {
+    assert !myDisposed;
+    myActions.add(action);
+    myIsGlobal = true;
+
+    SModel model = action.getAffectedModel();
+    if (model != null) {
+      MPSModelVirtualFile file = NodeVirtualFileSystem.getInstance().getFileFor(myUndoContext.getRepository(), model.getReference());
+      assert file.isValid() :
+          "Invalid file was returned by VFS node is not available: " + model + ".";
+
+      myChangedFiles.computeIfAbsent(model.getReference(), k -> new ArrayList<>()).add(file);
+
+      for (SNode rootNode : model.getRootNodes()) {
+        MPSNodeVirtualFile nodeFile = NodeVirtualFileSystem.getInstance().getFileFor(myUndoContext.getRepository(), rootNode);
+        assert nodeFile.hasValidMPSNode() :
+            "Invalid file was returned by VFS node is not available: " + rootNode + ", deleted = " + (rootNode.getModel() == null);
+
+        myChangedFiles.computeIfAbsent(model.getReference(), k -> new ArrayList<>()).add(nodeFile);
+        Document document = MPSUndoUtil.getDoc(nodeFile);
+        if (document != null) {
+          myDocumentReferences.add(MPSUndoUtil.getRefForDoc(document));
+        }
+      }
+    }
   }
 
   void addAction(SNodeUndoableAction action) {
@@ -63,6 +92,8 @@ public class UndoActionsCollector {
     myIsGlobal |= action.getAssociatedVfsChange() != VFSChange.NOT_CHANGED;
 
     MPSNodeVirtualFile fileToUpdate = null;
+    // UndoContext may change virtualFileNode, e.g. like EditorCommand does (which ignores affected node of e.g. AddRootUndoableAction), while
+    // respecting action's getAssociatedVfsChange(). It's odd. I suppose MPS-31758 is about this.
     for (SNode virtualFileNode : myUndoContext.getVirtualFileNodes(action)) {
       if (virtualFileNode.getModel() == null) {
         continue;
@@ -81,9 +112,8 @@ public class UndoActionsCollector {
         continue;
       }
       myDocumentReferences.add(MPSUndoUtil.getRefForDoc(document));
-      myChangedFiles.computeIfAbsent(virtualFileNode.getModel().getModelId(), k -> new ArrayList<>()).add(file);
+      myChangedFiles.computeIfAbsent(virtualFileNode.getModel().getReference(), k -> new ArrayList<>()).add(file);
     }
-
     if (fileToUpdate != null && action.getAssociatedVfsChange() != VFSChange.NOT_CHANGED) {
       // recording deleted &  created files, using this information later for restoring vFiles in VFS cache
       // keeping track of files which was deleted & then re-created
@@ -132,8 +162,8 @@ public class UndoActionsCollector {
     SNodeIdeaUndoableAction undoableAction = new SNodeIdeaUndoableAction(allItems, myUndoContext.getRepository(), myIsGlobal, myDocumentReferences);
     undoManager.undoableActionPerformed(undoableAction);
 
-    OnReloadingUndoCleaner undoCleaner = ideaProject.getComponent(OnReloadingUndoCleaner.class);
-    for (Entry<SModelId, List<VirtualFile>> modelAndDocuments : myChangedFiles.entrySet()) {
+    OnReloadingUndoCleaner undoCleaner = OnReloadingUndoCleaner.getInstance(ideaProject);
+    for (Entry<SModelReference, List<VirtualFile>> modelAndDocuments : myChangedFiles.entrySet()) {
       undoCleaner.registerUndo(modelAndDocuments.getKey(), modelAndDocuments.getValue());
     }
   }

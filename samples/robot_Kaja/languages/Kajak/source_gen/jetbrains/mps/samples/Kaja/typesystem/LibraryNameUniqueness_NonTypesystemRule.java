@@ -10,12 +10,10 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -28,23 +26,11 @@ public class LibraryNameUniqueness_NonTypesystemRule extends AbstractNonTypesyst
   public LibraryNameUniqueness_NonTypesystemRule() {
   }
   public void applyRule(final SNode library, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    Iterable<String> scriptNames = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(library), CONCEPTS.Script$FS)).select(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    });
-    Iterable<String> libraryNames = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(library), CONCEPTS.Library$oJ)).select(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    });
+    Iterable<String> scriptNames = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(library), CONCEPTS.Script$FS)).select((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL));
+    Iterable<String> libraryNames = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(library), CONCEPTS.Library$oJ)).select((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL));
     List<String> allNames = ListSequence.fromListWithValues(new ArrayList<String>(), scriptNames);
     ListSequence.fromList(allNames).addSequence(Sequence.fromIterable(libraryNames));
-    if (ListSequence.fromList(allNames).where(new IWhereFilter<String>() {
-      public boolean accept(String it) {
-        return it != null && it.equals(SPropertyOperations.getString(library, PROPS.name$MnvL));
-      }
-    }).count() > 1) {
+    if (ListSequence.fromList(allNames).where((it) -> it != null && it.equals(SPropertyOperations.getString(library, PROPS.name$MnvL))).count() > 1) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(library, "Script and Library names must be unique", "r:af5f8eb9-49c0-4279-87d3-3c80b1a56988(jetbrains.mps.samples.Kaja.typesystem)", "1904811872814168242", null, errorTarget);

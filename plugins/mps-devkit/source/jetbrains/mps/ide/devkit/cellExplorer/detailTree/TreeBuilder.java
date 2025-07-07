@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.Icon;
-import java.awt.Font;
+import java.awt.font.TextAttribute;
 
 public class TreeBuilder {
   private final MPSTreeNode myRoot;
@@ -43,14 +43,14 @@ public class TreeBuilder {
     return this;
   }
 
-  private TreeBuilder fontStyle(int fontStyle) {
-    myRoot.setFontStyle(fontStyle);
+  private TreeBuilder fontStyle(TextAttribute ta, Object value) {
+    myRoot.addFontAttribute(ta, value);
     return this;
   }
 
   public TreeBuilder subtree() {
     TreeBuilder subtreeBuilder = new TreeBuilder();
-    subtreeBuilder.fontStyle(Font.BOLD);
+    subtreeBuilder.fontStyle(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD);
     myRoot.add(subtreeBuilder.build());
     return subtreeBuilder;
   }
@@ -72,6 +72,6 @@ public class TreeBuilder {
 
   @NotNull
   private static String propertyText(String name, String value) {
-    return "<html>" + name + " = <b>" + StringUtil.escapeXml(value) + "</b>";
+    return String.format("<html>%s = <b>%s</b>", name, StringUtil.escapeXml(value));
   }
 }

@@ -10,12 +10,12 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
+import java.util.Collections;
+import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Objects;
-import java.util.Collections;
-import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -23,38 +23,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ConvertToItems_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ConvertToItems_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:611f7e3f-ffc4-4896-a805-c9fe694989ca(jetbrains.mps.execution.commands.intentions)", "2168104298250372811"));
   }
+
   @Override
   public String getPresentation() {
     return "ConvertToItems";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    if (editorContext.getSelectedNode() != node && !(isVisibleInChild(node, editorContext.getSelectedNode(), editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    SNode list = SLinkOperations.getTarget(node, LINKS.list$l1dd);
-    if ((list == null) || !(SNodeOperations.isInstanceOf(list, CONCEPTS.GenericNewExpression$Fh))) {
-      return false;
-    }
-    SNode creator = SLinkOperations.getTarget(SNodeOperations.cast(list, CONCEPTS.GenericNewExpression$Fh), LINKS.creator$BsHW);
-    return SNodeOperations.isInstanceOf(creator, CONCEPTS.AbstractContainerCreator$cz) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(creator, CONCEPTS.AbstractContainerCreator$cz), LINKS.initValue$Wx_W)).isNotEmpty();
-  }
-  private boolean isVisibleInChild(final SNode node, final SNode childNode, final EditorContext editorContext) {
-    return Objects.equals(SNodeOperations.getContainingLink(childNode), LINKS.list$l1dd);
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -64,27 +47,55 @@ public final class ConvertToItems_Intention extends AbstractIntentionDescriptor 
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Convert Explicit List Creation to Items";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode list = SLinkOperations.getTarget(node, LINKS.list$l1dd);
       SNodeOperations.deleteNode(list);
       ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.items$5OzF)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(list, CONCEPTS.GenericNewExpression$Fh), LINKS.creator$BsHW), CONCEPTS.AbstractContainerCreator$cz), LINKS.initValue$Wx_W)));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      if (editorContext.getSelectedNode() != node && !(isVisibleInChild(node, editorContext.getSelectedNode(), editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      SNode list = SLinkOperations.getTarget(node, LINKS.list$l1dd);
+      if ((list == null) || !(SNodeOperations.isInstanceOf(list, CONCEPTS.GenericNewExpression$Fh))) {
+        return false;
+      }
+      SNode creator = SLinkOperations.getTarget(SNodeOperations.cast(list, CONCEPTS.GenericNewExpression$Fh), LINKS.creator$BsHW);
+      return SNodeOperations.isInstanceOf(creator, CONCEPTS.AbstractContainerCreator$cz) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(creator, CONCEPTS.AbstractContainerCreator$cz), LINKS.initValue$Wx_W)).isNotEmpty();
+    }
+
+    private boolean isVisibleInChild(final SNode node, final SNode childNode, final EditorContext editorContext) {
+      return Objects.equals(SNodeOperations.getContainingLink(childNode), LINKS.list$l1dd);
+    }
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ConvertToItems_Intention.this;
     }
+
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink list$l1dd = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x5f50ed14026999c9L, 0x5f50ed14026999cbL, "list");
+    /*package*/ static final SContainmentLink items$5OzF = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x5f50ed14026999c9L, 0x1e16a75f45341377L, "items");
     /*package*/ static final SContainmentLink creator$BsHW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
     /*package*/ static final SContainmentLink initValue$Wx_W = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24ea0L, "initValue");
-    /*package*/ static final SContainmentLink items$5OzF = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x5f50ed14026999c9L, 0x1e16a75f45341377L, "items");
   }
 
   private static final class CONCEPTS {

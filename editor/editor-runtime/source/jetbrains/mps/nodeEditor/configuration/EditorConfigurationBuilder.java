@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,13 +25,18 @@ import org.jetbrains.annotations.NotNull;
  */
 public class EditorConfigurationBuilder {
   private boolean myRightToLeft;
+  private boolean myShowLightBulb = true;
   private boolean myShowErrorsGutter;
   private boolean myShowLeftHighlighter = true;
   private boolean myWithUI = true;
   private boolean myReadOnly;
   private boolean myHasContextMenu = true;
+  private boolean myShowSelectionLine = true;
   private EditorPanelManager myEditorPanelManager;
   private CaretManager myCaretManager = CaretManager.getInstance();
+
+  // true to tell EC it needs to dispatch EditorComponentCreateListener events; by default false
+  private boolean myNotify = false;
 
   public static EditorConfiguration buildDefault() {
     return new EditorConfigurationBuilder().build();
@@ -39,6 +44,11 @@ public class EditorConfigurationBuilder {
 
   public EditorConfigurationBuilder rightToLeft(boolean rightToLeft) {
     myRightToLeft = rightToLeft;
+    return this;
+  }
+
+  public EditorConfigurationBuilder showLightBulb(boolean showLightBulb) {
+    myShowLightBulb = showLightBulb;
     return this;
   }
 
@@ -67,6 +77,11 @@ public class EditorConfigurationBuilder {
     return this;
   }
 
+  public EditorConfigurationBuilder showSelectionLine(boolean showSelectionLine){
+    myShowSelectionLine = showSelectionLine;
+    return this;
+  }
+
   public EditorConfigurationBuilder editorPanelManager(EditorPanelManager editorPanelManager) {
     myEditorPanelManager = editorPanelManager;
     return this;
@@ -77,15 +92,23 @@ public class EditorConfigurationBuilder {
     return this;
   }
 
+  public EditorConfigurationBuilder notifies(boolean notifyCreateDispose) {
+    myNotify = notifyCreateDispose;
+    return this;
+  }
+
   public EditorConfiguration build() {
     return new EditorConfiguration(
         myRightToLeft,
+        myShowLightBulb,
         myShowErrorsGutter,
         myShowLeftHighlighter,
         myWithUI,
         myReadOnly,
         myHasContextMenu,
+        myShowSelectionLine,
         myEditorPanelManager,
-        myCaretManager);
+        myCaretManager,
+        myNotify);
   }
 }

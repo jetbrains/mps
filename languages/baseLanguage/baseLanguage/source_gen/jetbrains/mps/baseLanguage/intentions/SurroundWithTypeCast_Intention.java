@@ -21,34 +21,27 @@ import jetbrains.mps.baseLanguage.actions.PrecedenceUtil;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class SurroundWithTypeCast_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public SurroundWithTypeCast_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "418779379561917490"));
   }
+
   @Override
   public String getPresentation() {
     return "SurroundWithTypeCast";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return editorContext.getSelectedNodes().size() == 1;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return true;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -58,16 +51,18 @@ public final class SurroundWithTypeCast_Intention extends AbstractIntentionDescr
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "(Type) expr";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode expectedType = ExpectedType_FactoryUtil.createExpectedType(node);
       SNode castExpression = _quotation_createNode_3zfq0u_a0b0a(SNodeOperations.copyNode(node), expectedType);
 
-      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Expression$mB) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.ParenthesizedExpression$Ws))) {
+      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Expression$mB) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.ParenthesizedExpression$Ws)) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.BinaryOperation$W1))) {
         SNode paren = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression"));
         SLinkOperations.setTarget(paren, LINKS.expression$TlhM, castExpression);
         SNodeOperations.replaceWithAnother(node, paren);
@@ -88,17 +83,32 @@ public final class SurroundWithTypeCast_Intention extends AbstractIntentionDescr
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, castExpression, "leftParen", -1);
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return editorContext.getSelectedNodes().size() == 1;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return SurroundWithTypeCast_Intention.this;
     }
+
   }
   private static SNode _quotation_createNode_3zfq0u_a0b0a(Object parameter_1, Object parameter_2) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
     SNode quotedNode_5 = null;
-    quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940dabe4aL, "CastExpression")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940dabe4aL, "CastExpression"));
+    quotedNode_3 = nb.getResult();
     quotedNode_4 = (SNode) parameter_1;
     if (quotedNode_4 != null) {
       quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression"), SNodeOperations.copyIfNecessary(quotedNode_4));
@@ -118,5 +128,6 @@ public final class SurroundWithTypeCast_Intention extends AbstractIntentionDescr
   private static final class CONCEPTS {
     /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
     /*package*/ static final SConcept ParenthesizedExpression$Ws = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
+    /*package*/ static final SConcept BinaryOperation$W1 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
   }
 }

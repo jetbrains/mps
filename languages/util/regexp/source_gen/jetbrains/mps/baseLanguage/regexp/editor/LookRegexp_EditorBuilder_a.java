@@ -12,7 +12,6 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.nodeEditor.cellMenu.CompositeSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.BasicCellContext;
@@ -26,7 +25,6 @@ import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.LinkedList;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -76,7 +74,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.core.editor.alias");
     Style style = new StyleImpl();
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_MAGENTA));
+    style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_MAGENTA));
     editorCell.getStyle().putAll(style);
     LookRegexp_Actions.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_LookRegexp_cellMenu_vwuy6a_a0a0(), new LookRegexp_customReplace_cellMenu_vwuy6a_b0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
@@ -96,20 +94,15 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   public static class LookRegexp_customReplace_cellMenu_vwuy6a_b0a0 extends AbstractCellMenuPart_ReplaceNode_Group {
     public LookRegexp_customReplace_cellMenu_vwuy6a_b0a0() {
     }
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
       List<SAbstractConcept> res = ListSequence.fromList(new LinkedList<SAbstractConcept>());
       ListSequence.fromList(res).addElement(CONCEPTS.ParensRegexp$KC);
       ListSequence.fromList(res).addElement(CONCEPTS.MatchParensRegexp$Ea);
       return res;
     }
-    public SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      return createReplacementNode_impl((SAbstractConcept) parameterObject, node, model, operationContext, editorContext);
-    }
-    public SNode createReplacementNode_impl(SAbstractConcept parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected SNode createReplacementNode(Object _parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      final SAbstractConcept parameterObject = (SAbstractConcept) _parameterObject;
       return SNodeFactoryOperations.createNewNode(parameterObject, node);
-    }
-    public boolean isReferentPresentation() {
-      return false;
     }
     @Override
     protected EditorMenuDescriptor getEditorMenuDescriptor(Object parameterObject) {
@@ -176,7 +169,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ")");
     editorCell.setCellId("Constant_vwuy6a_c0");
     Style style = new StyleImpl();
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_MAGENTA));
+    style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_MAGENTA));
     style.set(StyleAttributes.PUNCTUATION_LEFT, true);
     editorCell.getStyle().putAll(style);
     LookRegexp_Actions.setCellActions(editorCell, myNode, getEditorContext());

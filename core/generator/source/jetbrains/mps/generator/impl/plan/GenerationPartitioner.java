@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import jetbrains.mps.generator.runtime.TemplateMappingConfiguration;
 import jetbrains.mps.generator.runtime.TemplateMappingPriorityRule;
 import jetbrains.mps.generator.runtime.TemplateModel;
 import jetbrains.mps.generator.runtime.TemplateModule;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.structure.modules.mappingpriorities.MappingConfig_AbstractRef;
 import jetbrains.mps.project.structure.modules.mappingpriorities.MappingConfig_ExternalRef;
 import jetbrains.mps.project.structure.modules.mappingpriorities.MappingConfig_RefAllGlobal;
@@ -30,8 +31,6 @@ import jetbrains.mps.project.structure.modules.mappingpriorities.RuleType;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.containers.MultiMap;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -53,7 +52,7 @@ import java.util.stream.Collectors;
  * Date: Mar 27, 2007
  */
 public class GenerationPartitioner {
-  private static final Logger LOG = LogManager.getLogger(GenerationPlan.class);
+  private static final Logger LOG = Logger.getLogger(GenerationPlan.class);
 
   // generators
   private final Collection<TemplateModule> myGenerators;
@@ -100,7 +99,7 @@ public class GenerationPartitioner {
 
     // solve
     final List<GenerationPhase> generationPhases = mySolver.solve();
-    if (LOG.isDebugEnabled()) {
+    if (LOG.isDebugLevel()) {
       dump(generationPhases);
     }
 //    return phaseAsPlainList(generationPhases);
@@ -166,7 +165,7 @@ public class GenerationPartitioner {
       if (targetGenerators.isEmpty()) {
         continue;
       }
-      if (LOG.isDebugEnabled()) {
+      if (LOG.isDebugLevel()) {
         List<String> l = targetGenerators.stream().map(g -> g.getModuleReference().getModuleName()).collect(Collectors.toList());
         LOG.debug(String.format("Generator %s targets languages with generators %s", generator.getModuleReference().getModuleName(), l));
       }
@@ -199,7 +198,7 @@ public class GenerationPartitioner {
     rule.setLeft(createRefs(generator1, lhs));
     rule.setRight(createRefs(generator2, rhs));
     rule.setType(RuleType.BEFORE_OR_TOGETHER);
-    if (LOG.isDebugEnabled()) {
+    if (LOG.isDebugLevel()) {
       LOG.debug(String.format("  Implicit rule added between %s and %s:", generator1.getAlias(), generator2.getAlias()));
       List<String> lhString = lhs.stream().map(TemplateMappingConfiguration::getName).collect(Collectors.toList());
       List<String> rhString = rhs.stream().map(TemplateMappingConfiguration::getName).collect(Collectors.toList());
@@ -369,11 +368,11 @@ public class GenerationPartitioner {
                   return Collections.singletonList(m);
                 }
               }
-              LOG.warn(
+              LOG.warning(
                   "couldn't get node by id: '" + nodeID + "' in model " + modelUID + " while loading priority rules for generator: " + myGenerator.getAlias());
             }
           } else {
-            LOG.warn(
+            LOG.warning(
                 "couldn't get model by uid: '" + modelUID + "' in generator " + refGenerator.getAlias() + " while loading priority rules for generator: " +
                     myGenerator.getAlias());
           }

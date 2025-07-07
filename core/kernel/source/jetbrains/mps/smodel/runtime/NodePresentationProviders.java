@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel.runtime;
 
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
@@ -49,8 +50,8 @@ public final class NodePresentationProviders {
   public static NodePresentationProvider byReference(SReferenceLink link, String prefix, String suffix) {
     return node -> {
       SReference ref = node.getReference(link);
-      if (ref instanceof DynamicReference) {
-        return prefix + ((DynamicReference) ref).getResolveInfo() + suffix;
+      if (SLinkOperations.isDynamic(ref)) {
+        return prefix + SLinkOperations.getResolveInfo(ref) + suffix;
       }
       SNode referent = node.getReferenceTarget(link);
       String refPresentation;

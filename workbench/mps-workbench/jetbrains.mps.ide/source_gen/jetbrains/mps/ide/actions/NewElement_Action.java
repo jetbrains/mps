@@ -7,23 +7,20 @@ import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import javax.swing.tree.TreeNode;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import com.intellij.openapi.ui.popup.ListPopup;
 import jetbrains.mps.ide.projectPane.ProjectPaneActionGroups;
-import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.ActionManager;
 import jetbrains.mps.workbench.action.ActionUtils;
+import com.intellij.openapi.ui.popup.ListPopup;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/7918601149636191506", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "7918601149636191506", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class NewElement_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -39,7 +36,7 @@ public class NewElement_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return ((TreeNode) MapSequence.fromMap(_params).get("node")) != null || ((ActionGroup) MapSequence.fromMap(_params).get("group")) != null;
+    return ((Object) MapSequence.fromMap(_params).get("value")) != null || ((ActionGroup) MapSequence.fromMap(_params).get("group")) != null;
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -58,8 +55,11 @@ public class NewElement_Action extends BaseAction {
       }
     }
     {
-      TreeNode p = event.getData(MPSCommonDataKeys.TREE_NODE);
-      MapSequence.fromMap(_params).put("node", p);
+      Object p = event.getData(MPSCommonDataKeys.VALUE);
+      MapSequence.fromMap(_params).put("value", p);
+      if (p == null) {
+        return false;
+      }
     }
     {
       ActionGroup p = event.getData(MPSEditorDataKeys.EDITOR_CREATE_GROUP);
@@ -69,22 +69,14 @@ public class NewElement_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final Wrappers._T<ListPopup> popup = new Wrappers._T<ListPopup>(null);
-    ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        ActionGroup group = (((TreeNode) MapSequence.fromMap(_params).get("node")) != null ? ProjectPaneActionGroups.getQuickCreateGroup((MPSTreeNode) ((TreeNode) MapSequence.fromMap(_params).get("node"))) : ((ActionGroup) MapSequence.fromMap(_params).get("group")));
+    ActionGroup group = (((Object) MapSequence.fromMap(_params).get("value")) != null ? ProjectPaneActionGroups.getQuickCreateGroup(((Object) MapSequence.fromMap(_params).get("value"))) : ((ActionGroup) MapSequence.fromMap(_params).get("group")));
 
-        if (group != null) {
-          Presentation pres = new Presentation();
-          AnActionEvent e = new AnActionEvent(event.getInputEvent(), event.getDataContext(), ActionPlaces.UNKNOWN, pres, ActionManager.getInstance(), 0);
-          ActionUtils.updateGroup(group, e);
-          popup.value = JBPopupFactory.getInstance().createActionGroupPopup("New", group, event.getDataContext(), JBPopupFactory.ActionSelectionAid.SPEEDSEARCH, false);
-        }
-      }
-    });
-    if (popup.value == null) {
-      return;
+    if (group != null) {
+      Presentation pres = new Presentation();
+      AnActionEvent e = new AnActionEvent(event.getInputEvent(), event.getDataContext(), ActionPlaces.UNKNOWN, pres, ActionManager.getInstance(), 0);
+      ActionUtils.updateGroup(group, e);
+      ListPopup popup = JBPopupFactory.getInstance().createActionGroupPopup("New", group, event.getDataContext(), JBPopupFactory.ActionSelectionAid.SPEEDSEARCH, false);
+      popup.showInBestPositionFor(event.getDataContext());
     }
-    popup.value.showInBestPositionFor(event.getDataContext());
   }
 }

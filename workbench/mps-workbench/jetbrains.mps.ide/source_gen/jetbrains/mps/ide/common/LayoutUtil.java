@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a5(jetbrains.mps.ide.common)/8606486054003576517", model = "r:00000000-0000-4000-0000-011c895904a5(jetbrains.mps.ide.common)")
+@GeneratedClass(nodeId = "8606486054003576517", model = "r:00000000-0000-4000-0000-011c895904a5(jetbrains.mps.ide.common)")
 public class LayoutUtil {
   public LayoutUtil() {
   }

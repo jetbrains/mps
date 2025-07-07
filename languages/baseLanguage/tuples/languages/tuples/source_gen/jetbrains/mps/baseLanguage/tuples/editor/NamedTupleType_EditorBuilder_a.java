@@ -23,21 +23,18 @@ import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.LeftBracketStyleClass;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.lang.editor.cellProviders.SReferenceCellProvider;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.editor.runtime.impl.CellUtil;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.nodeEditor.cellMenu.SReferenceSubstituteInfoSmartReferenceDecorator;
 import jetbrains.mps.nodeEditor.cellMenu.SReferenceSubstituteInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.LinkAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.tuples.behavior.NamedTupleDeclaration__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
@@ -133,7 +130,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
     editorCell.setCellId("ReadOnlyModelAccessor_2ojjgh_a0a");
     Style style = new StyleImpl();
-    new LeftBracketStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new LeftBracketStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, false);
     editorCell.getStyle().putAll(style);
     return editorCell;
@@ -142,11 +139,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     final SReferenceLink referenceLink = LINKS.classifier$cxMr;
     SReferenceCellProvider provider = new SReferenceCellProvider(getNode(), referenceLink, getEditorContext()) {
       protected EditorCell createReferenceCell(final SNode targetNode) {
-        EditorCell cell = getUpdateSession().updateReferencedNodeCell(new Computable<EditorCell>() {
-          public EditorCell compute() {
-            return new Inline_Builder0(getEditorContext(), getNode(), targetNode).createCell();
-          }
-        }, targetNode, LINKS.tupleDeclaration$czlU);
+        EditorCell cell = getUpdateSession().updateReferencedNodeCell(() -> new Inline_Builder0(getEditorContext(), getNode(), targetNode).createCell(), targetNode, LINKS.tupleDeclaration$czlU);
         CellUtil.setupIDeprecatableStyles(targetNode, cell);
         setSemanticNodeToCells(cell, getNode());
         installDeleteActions_notnull_smartReference(cell);
@@ -170,12 +163,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
       editorCell.setSRole(LINKS.classifier$cxMr);
     }
     editorCell.setSubstituteInfo(new SReferenceSubstituteInfoSmartReferenceDecorator(new SReferenceSubstituteInfo(editorCell, referenceLink, CONCEPTS.NamedTupleDeclaration$aM)));
-    Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.LinkAttribute$v_);
-    Iterable<SNode> currentReferenceAttributes = Sequence.fromIterable(referenceAttributes).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(it), referenceLink);
-      }
-    });
+    Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.LinkAttribute$v_);
+    Iterable<SNode> currentReferenceAttributes = Sequence.fromIterable(referenceAttributes).where((it) -> Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(it), referenceLink));
     if (Sequence.fromIterable(currentReferenceAttributes).isNotEmpty()) {
       EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
       return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentReferenceAttributes).first(), AttributeKind.REFERENCE, editorCell);
@@ -208,11 +197,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
         public String getText() {
           StringBuilder sb = new StringBuilder();
           String sep = "";
-          for (SNode ntcd : ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(myNode)).reversedList().translate(new ITranslator2<SNode, SNode>() {
-            public Iterable<SNode> translate(SNode ntd) {
-              return SLinkOperations.getChildren(ntd, LINKS.component$wCHx);
-            }
-          })) {
+          for (SNode ntcd : ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(myNode)).reversedList().translate((ntd) -> SLinkOperations.getChildren(ntd, LINKS.component$wCHx))) {
             sb.append(sep).append(SPropertyOperations.getString(ntcd, PROPS.name$MnvL));
             sep = ", ";
           }
@@ -239,7 +224,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     editorCell.setCellId("ReadOnlyModelAccessor_2ojjgh_c0a");
     Style style = new StyleImpl();
-    new RightBracketStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new RightBracketStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, false);
     editorCell.getStyle().putAll(style);
     editorCell.setTransformationMenuLookup(new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.NamedTupleType$DW));
@@ -296,7 +281,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "<");
     editorCell.setCellId("Constant_2ojjgh_a2a");
     Style style = new StyleImpl();
-    new BaseAngleBracketStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new BaseAngleBracketStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
     style.set(StyleAttributes.PUNCTUATION_LEFT, true);
     editorCell.getStyle().putAll(style);
@@ -394,7 +379,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ">");
     editorCell.setCellId("Constant_2ojjgh_c2a");
     Style style = new StyleImpl();
-    new BaseAngleBracketStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new BaseAngleBracketStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.PUNCTUATION_LEFT, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");

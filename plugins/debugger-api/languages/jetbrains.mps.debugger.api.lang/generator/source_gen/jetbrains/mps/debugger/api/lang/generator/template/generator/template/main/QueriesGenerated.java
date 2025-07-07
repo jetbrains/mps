@@ -11,10 +11,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.generator.template.IfMacroContext;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.baseLanguage.behavior.StatementList__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
@@ -26,7 +22,6 @@ import jetbrains.mps.generator.impl.query.QueryKey;
 import jetbrains.mps.generator.template.ReductionRuleQueryContext;
 import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.impl.query.SourceNodeQuery;
-import jetbrains.mps.generator.impl.query.QueryKeyImpl;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.impl.query.SourceNodesQuery;
 import java.util.Collection;
@@ -66,9 +61,6 @@ public class QueriesGenerated extends QueryProviderBase {
   public static boolean ifMacro_Condition_1_0(final IfMacroContext _context) {
     return SPropertyOperations.getBoolean(_context.getNode(), PROPS.isComplex$g0M0) && (SLinkOperations.getTarget(_context.getNode(), LINKS.isApplicableBreakpoint$vi1A) != null);
   }
-  public static boolean ifMacro_Condition_1_1(final IfMacroContext _context) {
-    return SetSequence.fromSet(StatementList__BehaviorDescriptor.uncaughtThrowables_id2SVUfbZ9Qq1.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.createBreakpoint$Li6P), LINKS.body$e68K), ((boolean) false))).isNotEmpty() || ListSequence.fromList(SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.DebuggerReference$vJ, false, new SAbstractConcept[]{})).isNotEmpty();
-  }
   public static SNode sourceNodeQuery_0_0(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.nodeExpression$yOFs);
   }
@@ -79,9 +71,6 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.isApplicableBreakpoint$vi1A), LINKS.body$e68K);
   }
   public static SNode sourceNodeQuery_1_1(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.createBreakpoint$Li6P), LINKS.body$e68K);
-  }
-  public static SNode sourceNodeQuery_1_2(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.createBreakpoint$Li6P), LINKS.body$e68K);
   }
   public static SNode sourceNodeQuery_2_0(final SourceSubstituteMacroNodeContext _context) {
@@ -105,11 +94,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public ReductionRuleCondition getReductionRuleCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(rrcMethods.containsKey(id))) {
-      return super.getReductionRuleCondition(identity);
-    }
-    return rrcMethods.get(id);
+    ReductionRuleCondition query = identity.forTemplateNode(rrcMethods);
+    return (query != null ? query : super.getReductionRuleCondition(identity));
   }
   private static class RRC implements ReductionRuleCondition {
     private final int methodKey;
@@ -133,19 +119,15 @@ public class QueriesGenerated extends QueryProviderBase {
     int i = 0;
     snqMethods.put("2526721715665232360", new SNQ(i++));
     snqMethods.put("2526721715665281990", new SNQ(i++));
-    snqMethods.put("6407279111254472484", new SNQ(i++));
-    snqMethods.put("6407279111254472506", new SNQ(i++));
-    snqMethods.put("6407279111254472550", new SNQ(i++));
+    snqMethods.put("7117654425395242745", new SNQ(i++));
+    snqMethods.put("7117654425394677815", new SNQ(i++));
     snqMethods.put("4675583320452247498", new SNQ(i++));
   }
   @NotNull
   @Override
   public SourceNodeQuery getSourceNodeQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snqMethods.containsKey(id))) {
-      return super.getSourceNodeQuery(identity);
-    }
-    return snqMethods.get(id);
+    SourceNodeQuery query = identity.forFunctionNode(snqMethods);
+    return (query != null ? query : super.getSourceNodeQuery(identity));
   }
   private static class SNQ implements SourceNodeQuery {
     private final int methodKey;
@@ -164,8 +146,6 @@ public class QueriesGenerated extends QueryProviderBase {
         case 3:
           return QueriesGenerated.sourceNodeQuery_1_1(ctx);
         case 4:
-          return QueriesGenerated.sourceNodeQuery_1_2(ctx);
-        case 5:
           return QueriesGenerated.sourceNodeQuery_2_0(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
@@ -175,18 +155,15 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, SourceNodesQuery> snsqMethods = new HashMap<String, SourceNodesQuery>();
   {
     int i = 0;
-    snsqMethods.put("6407279111254472474", new SNsQ(i++));
+    snsqMethods.put("7117654425395242735", new SNsQ(i++));
     snsqMethods.put("6407279111254466097", new SNsQ(i++));
     snsqMethods.put("4675583320452253263", new SNsQ(i++));
   }
   @NotNull
   @Override
   public SourceNodesQuery getSourceNodesQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snsqMethods.containsKey(id))) {
-      return super.getSourceNodesQuery(identity);
-    }
-    return snsqMethods.get(id);
+    SourceNodesQuery query = identity.forFunctionNode(snsqMethods);
+    return (query != null ? query : super.getSourceNodesQuery(identity));
   }
   private static class SNsQ implements SourceNodesQuery {
     private final int methodKey;
@@ -217,11 +194,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public PropertyValueQuery getPropertyValueQuery(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(pvqMethods.containsKey(id))) {
-      return super.getPropertyValueQuery(identity);
-    }
-    return pvqMethods.get(id);
+    PropertyValueQuery query = identity.forTemplateNode(pvqMethods);
+    return (query != null ? query : super.getPropertyValueQuery(identity));
   }
   private static class PVQ extends PropertyValueQuery.Base {
     private final int methodKey;
@@ -246,17 +220,13 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, IfMacroCondition> imcMethods = new HashMap<String, IfMacroCondition>();
   {
     int i = 0;
-    imcMethods.put("6407279111254472443", new IfMC(i++));
-    imcMethods.put("6407279111254472525", new IfMC(i++));
+    imcMethods.put("7117654425395242704", new IfMC(i++));
   }
   @NotNull
   @Override
   public IfMacroCondition getIfMacroCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(imcMethods.containsKey(id))) {
-      return super.getIfMacroCondition(identity);
-    }
-    return imcMethods.get(id);
+    IfMacroCondition query = identity.forTemplateNode(imcMethods);
+    return (query != null ? query : super.getIfMacroCondition(identity));
   }
   private static class IfMC implements IfMacroCondition {
     private final int methodKey;
@@ -268,8 +238,6 @@ public class QueriesGenerated extends QueryProviderBase {
       switch (methodKey) {
         case 0:
           return QueriesGenerated.ifMacro_Condition_1_0(ctx);
-        case 1:
-          return QueriesGenerated.ifMacro_Condition_1_1(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for if macro %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -277,16 +245,13 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
-    rtqMethods.put("6407279111254472466", new RTQ(0, "BaseConcept"));
+    rtqMethods.put("7117654425395242727", new RTQ(0, "BaseConcept"));
   }
   @NotNull
   @Override
   public ReferenceTargetQuery getReferenceTargetQuery(@NotNull QueryKey queryKey) {
-    final String id = queryKey.getTemplateNode().getNodeId().toString();
-    if (!(rtqMethods.containsKey(id))) {
-      return super.getReferenceTargetQuery(queryKey);
-    }
-    return rtqMethods.get(id);
+    ReferenceTargetQuery query = queryKey.forTemplateNode(rtqMethods);
+    return (query != null ? query : super.getReferenceTargetQuery(queryKey));
   }
   private static class RTQ extends ReferenceTargetQuery.Base {
     private final int methodKey;
@@ -307,7 +272,6 @@ public class QueriesGenerated extends QueryProviderBase {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept BreakpointCreator$cm = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x2bd07aa080dfb3a4L, "jetbrains.mps.debugger.api.lang.structure.BreakpointCreator");
-    /*package*/ static final SConcept DebuggerReference$vJ = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912d151L, "jetbrains.mps.debugger.api.lang.structure.DebuggerReference");
   }
 
   private static final class PROPS {
@@ -319,10 +283,10 @@ public class QueriesGenerated extends QueryProviderBase {
   private static final class LINKS {
     /*package*/ static final SReferenceLink conceptDeclaration$BrMw = MetaAdapterFactory.getReferenceLink(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x5058b4b262ffd5deL, 0x5058b4b262ffd5dfL, "conceptDeclaration");
     /*package*/ static final SContainmentLink isApplicableBreakpoint$vi1A = MetaAdapterFactory.getContainmentLink(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x2bd07aa080dfb937L, 0x2b1681328a5d11f6L, "isApplicableBreakpoint");
-    /*package*/ static final SContainmentLink createBreakpoint$Li6P = MetaAdapterFactory.getContainmentLink(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x2bd07aa080dfb937L, 0x2bd07aa080dfb938L, "createBreakpoint");
-    /*package*/ static final SContainmentLink body$e68K = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
     /*package*/ static final SContainmentLink nodeExpression$yOFs = MetaAdapterFactory.getContainmentLink(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x23a852e9c43bcae9L, 0x23a852e9c43bcafcL, "nodeExpression");
     /*package*/ static final SContainmentLink projectExpression$yOUt = MetaAdapterFactory.getContainmentLink(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x23a852e9c43bcae9L, 0x23a852e9c43bcafdL, "projectExpression");
+    /*package*/ static final SContainmentLink body$e68K = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
+    /*package*/ static final SContainmentLink createBreakpoint$Li6P = MetaAdapterFactory.getContainmentLink(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x2bd07aa080dfb937L, 0x2bd07aa080dfb938L, "createBreakpoint");
     /*package*/ static final SContainmentLink debugger$wxrA = MetaAdapterFactory.getContainmentLink(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x5d457621242d16f5L, 0x5d457621242d18e0L, "debugger");
     /*package*/ static final SContainmentLink conceptsToCreateBreakpoint$bJ$j = MetaAdapterFactory.getContainmentLink(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x2bd07aa080dfb937L, 0x5058b4b262ffd5e0L, "conceptsToCreateBreakpoint");
     /*package*/ static final SContainmentLink breakpointableConcepts$apNn = MetaAdapterFactory.getContainmentLink(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x2bd07aa080dfb3a4L, 0x11a2c8c0148e6233L, "breakpointableConcepts");

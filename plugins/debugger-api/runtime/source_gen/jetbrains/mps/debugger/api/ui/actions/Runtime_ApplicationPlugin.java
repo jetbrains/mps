@@ -11,7 +11,7 @@ import jetbrains.mps.plugins.actions.BaseKeymapChanges;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 
-@GeneratedClass(node = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)/7162597690968011921", model = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)")
+@GeneratedClass(nodeId = "7162597690968011921", model = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)")
 public class Runtime_ApplicationPlugin extends BaseApplicationPlugin {
   private final PluginId myId = PluginId.getId("jetbrains.mps.debugger.api.runtime");
 
@@ -24,7 +24,7 @@ public class Runtime_ApplicationPlugin extends BaseApplicationPlugin {
   }
 
   public void createGroups() {
-    // actions w/o parameters 
+    // actions w/o parameters
     addAction(new DeleteBreakpointAction_Action());
     addAction(new EvaluateExpression_Action());
     addAction(new ExportThreads_Action());
@@ -38,7 +38,7 @@ public class Runtime_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new ToggleBreakpoint_Action());
     addAction(new ViewBreakpointSourceAction_Action());
     addAction(new ViewBreakpoints_Action());
-    // groups 
+    // groups
     addGroup(new AbstractWatchableNodeActions_ActionGroup(this));
     addGroup(new DebugRunMenu_ActionGroup(this));
     addGroup(new DebugStepsMenu_ActionGroup(this));

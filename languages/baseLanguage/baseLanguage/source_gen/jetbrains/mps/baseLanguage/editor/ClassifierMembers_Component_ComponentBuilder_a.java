@@ -85,11 +85,11 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.ClassifierMember$At;
     }
-    public SNode createNodeToInsert(EditorContext editorContext) {
-      return nodeFactory();
+    public SNode createNodeToInsert(EditorContext editorContext, SNode prevNode, SNode nextNode, int index) {
+      return nodeFactory(prevNode, nextNode, index);
     }
 
-    public SNode nodeFactory() {
+    public SNode nodeFactory(SNode prevNode, SNode nextNode, int index) {
       return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember"));
     }
     public EditorCell createNodeCell(SNode elementNode) {

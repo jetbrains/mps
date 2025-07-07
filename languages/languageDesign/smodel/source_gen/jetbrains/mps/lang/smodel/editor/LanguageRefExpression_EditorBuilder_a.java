@@ -21,7 +21,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.ModelAccessor;
-import jetbrains.mps.lang.smodel.behavior.ModuleIdentity__BehaviorDescriptor;
+import jetbrains.mps.lang.modelapi.behavior.ModuleIdentity__BehaviorDescriptor;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
@@ -71,7 +71,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.core.editor.alias");
     Style style = new StyleImpl();
-    new KeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeywordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.PADDING_RIGHT, new Padding(0, Measure.SPACES));
     editorCell.getStyle().putAll(style);
     return editorCell;
@@ -80,7 +80,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "/");
     editorCell.setCellId("Constant_9pn6lo_b0");
     Style style = new StyleImpl();
-    new LeftParenAfterNameStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new LeftParenAfterNameStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -97,13 +97,13 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     return editorCell;
   }
   private boolean nodeCondition_9pn6lo_a2a() {
-    // todo: this hack is here due to poor substitute menu language, remove it when possible 
+    // todo: this hack is here due to poor substitute menu language, remove it when possible
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(myNode, LINKS.languageId$xSH1), CONCEPTS.LanguageIdentityBySourceModule$T8);
   }
   private EditorCell createReadOnlyModelAccessor_0() {
     EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
       public String getText() {
-        return ModuleIdentity__BehaviorDescriptor.getModuleReference_idnJmxU5cSSU.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(myNode, LINKS.languageId$xSH1), CONCEPTS.LanguageIdentityBySourceModule$T8), LINKS.moduleReference$Jac_)).getModuleName();
+        return ModuleIdentity__BehaviorDescriptor.toModuleReference_id1Bs_61$mqDd.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(myNode, LINKS.languageId$xSH1), CONCEPTS.LanguageIdentityBySourceModule$T8), LINKS.moduleReference$Jac_)).getModuleName();
       }
     }, myNode);
     editorCell.setAction(CellActionType.DELETE, EmptyCellAction.getInstance());
@@ -154,7 +154,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       if (editorCell.getSRole() == null) {
         editorCell.setSRole(LINKS.languageId$xSH1);
       }
-      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.AbstractLanguageIdentity$x4, "jetbrains.mps.lang.smodel.editor.AbstractLanguageIdentity_Transformation"));
+      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.LanguageIdentity$cN, "jetbrains.mps.lang.smodel.editor.LanguageIdentity_Transformation"));
     }
     @Override
     protected EditorCell createEmptyCell() {
@@ -178,7 +178,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "/");
     editorCell.setCellId("Constant_9pn6lo_d0");
     Style style = new StyleImpl();
-    new RightParenStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new RightParenStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -192,6 +192,6 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   private static final class CONCEPTS {
     /*package*/ static final SConcept LanguageIdentityBySourceModule$T8 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2246d35517e858c2L, "jetbrains.mps.lang.smodel.structure.LanguageIdentityBySourceModule");
     /*package*/ static final SConcept LanguageRefExpression$PI = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x3e6a40ba27dd70f3L, "jetbrains.mps.lang.smodel.structure.LanguageRefExpression");
-    /*package*/ static final SInterfaceConcept AbstractLanguageIdentity$x4 = MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x500fe561b6da3df1L, "jetbrains.mps.lang.smodel.structure.AbstractLanguageIdentity");
+    /*package*/ static final SInterfaceConcept LanguageIdentity$cN = MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c318L, "jetbrains.mps.lang.smodel.structure.LanguageIdentity");
   }
 }

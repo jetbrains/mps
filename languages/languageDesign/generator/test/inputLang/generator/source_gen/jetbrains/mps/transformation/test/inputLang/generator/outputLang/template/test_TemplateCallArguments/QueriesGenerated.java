@@ -14,7 +14,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.generator.template.TemplateQueryContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -25,7 +24,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 @Generated
 public class QueriesGenerated {
   public static Object propertyMacro_GetValue_4_0(final PropertyMacroContext _context) {
-    // here we demonstrate use of TemplateArgumentParameterExpression instead of GenerationContextOp_ParameterRef 
+    // here we demonstrate use of TemplateArgumentParameterExpression instead of GenerationContextOp_ParameterRef
     return ((String) _context.getVariable("text"));
   }
   public static Object templateArgumentQuery_0_0(final TemplateArgumentContext _context) {
@@ -50,11 +49,7 @@ public class QueriesGenerated {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.inputChild$4qxF);
   }
   public static boolean mc_Condition_0(final TemplateQueryContext _context) {
-    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.InputRoot$nY)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.useInTest$1LnL), 0x2e16062328916bbL);
-      }
-    }).isNotEmpty();
+    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.InputRoot$nY)).where((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.useInTest$1LnL), 0x2e16062328916bbL)).isNotEmpty();
   }
   public static Object varMacro_Value_3_0(final TemplateVarContext _context) {
     return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(((SNode) _context.getVariable("element"))) + "- as VarMacro";

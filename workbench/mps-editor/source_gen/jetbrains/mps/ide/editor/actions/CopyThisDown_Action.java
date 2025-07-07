@@ -14,7 +14,6 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
@@ -22,9 +21,10 @@ import java.util.ArrayList;
 import com.intellij.featureStatistics.FeatureUsageTracker;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.datatransfer.DataTransferManager;
 import jetbrains.mps.openapi.editor.EditorContext;
 
-@GeneratedClass(node = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/4362199797783345393", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
+@GeneratedClass(nodeId = "4362199797783345393", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
 public class CopyThisDown_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -40,11 +40,7 @@ public class CopyThisDown_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     Iterable<EditorCell> seq;
-    return EditorActionUtils.isWriteActionEnabled(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")), ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("inputNodes"))).select(new ISelector<SNode, EditorCell>() {
-      public EditorCell select(SNode it) {
-        return (EditorCell) ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).findNodeCell(it);
-      }
-    }));
+    return EditorActionUtils.isWriteActionEnabled(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")), ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("inputNodes"))).select((it) -> (EditorCell) ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).findNodeCell(it)));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -93,6 +89,7 @@ public class CopyThisDown_Action extends BaseAction {
         if (link.isMultiple()) {
           SNode copy = SNodeOperations.copyNode(nodeToCopy);
           parent.insertChildAfter(link, copy, nodeToCopy);
+          DataTransferManager.getInstance().postProcessNode(copy);
           EditorContext editorContext = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getEditorContext();
           editorContext.selectWRTFocusPolicy(copy);
           ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).selectNode(copy);
@@ -106,7 +103,9 @@ public class CopyThisDown_Action extends BaseAction {
       SContainmentLink role = firstNode.getContainmentLink();
       SNode parent = SNodeOperations.getParent(firstNode);
       for (SNode node : ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("inputNodes"))).reversedList()) {
-        parent.insertChildAfter(role, SNodeOperations.copyNode(node), lastNode);
+        SNode copy = SNodeOperations.copyNode(node);
+        parent.insertChildAfter(role, copy, lastNode);
+        DataTransferManager.getInstance().postProcessNode(copy);
       }
       EditorContext editorContext = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getEditorContext();
       editorContext.selectRange(firstNode, lastNode);

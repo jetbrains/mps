@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,8 +19,6 @@ import com.intellij.ide.FileIconProvider;
 import com.intellij.openapi.components.NamedComponent;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.ui.DefaultIconDeferrer;
-import com.intellij.ui.IconDeferrer;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
 import jetbrains.mps.ide.editor.MPSEditorUtil;
 import jetbrains.mps.ide.icons.GlobalIconManager;
@@ -52,16 +50,17 @@ public class NodeFileIconProvider implements FileIconProvider, NamedComponent {
       return null;
     }
     if (file instanceof MPSNodeVirtualFile) {
+      // FIXME isn't it odd to require editor to provide an icon for an MPSNodeVirtualFile?
+      //       I understand our tabbed editors confuse IDEA (few MPSNodeVirtualFile per editor, with only 'main' one being known to IDEA)
+      //       but this code implies we get an icon here for an editor (e.g. not for a project pane entry)
       final MPSNodeVirtualFile nodeFile = (MPSNodeVirtualFile) file;
       return new ModelComputeRunnable<>(() -> {
-        if (IconDeferrer.getInstance() instanceof DefaultIconDeferrer) {
-          SNode node = MPSEditorUtil.getCurrentEditedNode(project, nodeFile);
-          if (node != null) {
-            return GlobalIconManager.getInstance().getIconFor(node);
-          }
-          // TODO: get current empty tab component in MPSEditorUtil by using ((TabbedEditor) nodeEditor).myTabsComponent.getCurrentTabAspect()[.getIcon]
+        SNode node = MPSEditorUtil.getCurrentEditedNodeFromTabbedEditor(project, nodeFile);
+        if (node != null) {
+          return GlobalIconManager.getInstance().getIconFor(node);
         }
-        SNode node = nodeFile.getNode();
+        // TODO: get current empty tab component in MPSEditorUtil by using ((TabbedEditor) nodeEditor).myTabsComponent.getCurrentTabAspect()[.getIcon]
+        node = nodeFile.getNode();
         if (node != null) {
           return GlobalIconManager.getInstance().getIconFor(node);
         }

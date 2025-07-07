@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.smodel.language;
 
 import gnu.trove.THashSet;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.smodel.adapter.ids.SDataTypeId;
@@ -23,8 +24,6 @@ import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import jetbrains.mps.smodel.runtime.ConceptDescriptor;
 import jetbrains.mps.smodel.runtime.DataTypeDescriptor;
 import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -43,7 +42,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * Created by apyshkin on 7/15/15.
  */
 public class StructureRegistry implements CoreAspectRegistry {
-  private static final Logger LOG = LogManager.getLogger(StructureRegistry.class);
+  private static final Logger LOG = Logger.getLogger(StructureRegistry.class);
   private final LanguageRegistry myLanguageRegistry;
   private final ConceptInLoadingStorage<SConceptId> myStorage = new ConceptInLoadingStorage<>();
   private final Set<SLanguageId> myLanguagesWithoutAspect = Collections.synchronizedSet(new THashSet<>());

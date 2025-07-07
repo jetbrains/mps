@@ -33,16 +33,13 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.SPropertyAccessor;
 import jetbrains.mps.lang.editor.cellProviders.PropertyCellContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
@@ -103,7 +100,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "font-style");
     editorCell.setCellId("Constant_n0gj60_a0");
     Style style = new StyleImpl();
-    new itemStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new itemStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_StyleClassItem_cellMenu_n0gj60_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
@@ -136,12 +133,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setCellId("property_style");
       editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new FontStyleStyleClassItem_generic_cellMenu_n0gj60_a0c0(), new SChildSubstituteInfoPartEx(editorCell)}));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
-      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-        }
-      });
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
+      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
       if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
         EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
         return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);
@@ -155,19 +148,20 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public FontStyleStyleClassItem_generic_cellMenu_n0gj60_a0c0() {
     }
 
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-      return ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1006551b180L, "jetbrains.mps.lang.editor.structure._FontStyle_Enum"))).toListSequence();
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
+      return ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1006551b180L, "jetbrains.mps.lang.editor.structure._FontStyle_Enum"))).toList();
+
     }
-    protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      this.handleAction_impl((SEnumerationLiteral) parameterObject, node, model, operationContext, editorContext);
+    protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      this.handleAction_impl((SEnumerationLiteral) parameterObject, node, model, editorContext);
     }
-    public void handleAction_impl(SEnumerationLiteral parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    private void handleAction_impl(SEnumerationLiteral parameterObject, SNode node, SModel model, EditorContext editorContext) {
       SPropertyOperations.setEnum(node, PROPS.style$RebA, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1006551b180L, "jetbrains.mps.lang.editor.structure._FontStyle_Enum"), SEnumOperations.getMemberName0(parameterObject)));
       if (Objects.equals(parameterObject, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1006551b180L, "jetbrains.mps.lang.editor.structure._FontStyle_Enum"), 0x11c47b3e786L, "QUERY"))) {
         SLinkOperations.setTarget(node, LINKS.query$VyI6, SNodeFactoryOperations.createNewNode(CONCEPTS.QueryFunction_FontStyle$Hm, null));
       }
     }
-    public boolean isReferentPresentation() {
+    protected boolean isReferentPresentation() {
       return false;
     }
 
@@ -237,17 +231,18 @@ import org.jetbrains.mps.openapi.language.SConcept;
       public FontStyleStyleClassItem_generic_cellMenu_n0gj60_a0d0() {
       }
 
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-        return ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1006551b180L, "jetbrains.mps.lang.editor.structure._FontStyle_Enum"))).toListSequence();
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
+        return ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1006551b180L, "jetbrains.mps.lang.editor.structure._FontStyle_Enum"))).toList();
+
       }
-      protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        this.handleAction_impl((SEnumerationLiteral) parameterObject, node, model, operationContext, editorContext);
+      protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        this.handleAction_impl((SEnumerationLiteral) parameterObject, node, model, editorContext);
       }
-      public void handleAction_impl(SEnumerationLiteral parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      private void handleAction_impl(SEnumerationLiteral parameterObject, SNode node, SModel model, EditorContext editorContext) {
         SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.query$VyI6));
         SPropertyOperations.setEnum(node, PROPS.style$RebA, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1006551b180L, "jetbrains.mps.lang.editor.structure._FontStyle_Enum"), SEnumOperations.getMemberName0(parameterObject)));
       }
-      public boolean isReferentPresentation() {
+      protected boolean isReferentPresentation() {
         return false;
       }
 

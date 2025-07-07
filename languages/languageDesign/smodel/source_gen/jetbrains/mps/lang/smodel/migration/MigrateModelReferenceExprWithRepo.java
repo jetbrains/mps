@@ -11,11 +11,9 @@ import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.model.SModelName;
 import jetbrains.mps.lang.smodel.behavior.ModelReferenceExpression__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
@@ -45,35 +43,25 @@ public class MigrateModelReferenceExprWithRepo extends MigrationScriptBase {
     {
       SearchScope scope_lc3hzh_a0e = CommandUtil.createScope(m);
       final SearchScope scope_lc3hzh_a0e_0 = new EditableFilteringScope(scope_lc3hzh_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_lc3hzh_a0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_lc3hzh_a0e_0;
       final ModuleRepositoryFacade mrf = new ModuleRepositoryFacade(m.getRepository());
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ModelReferenceExpression$vc, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.repo$cK2X) != null) && !(mrf.getModelsByName(new SModelName(ModelReferenceExpression__BehaviorDescriptor.getFQName_id7K4mn_BeEzv.invoke(it))).isEmpty());
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          final SModel where = SNodeOperations.getModel(it);
-          SNode newRef = SModelOperations.createNewNode(where, null, CONCEPTS.ModelPointerExpression$R5);
-          SLinkOperations.setTarget(newRef, LINKS.modelRef$l8tE, ModelPointer__BehaviorDescriptor.create_id_GDk1qZ2JP.invoke(SNodeOperations.asSConcept(CONCEPTS.ModelPointer$6N), where, mrf.getModelsByName(new SModelName(ModelReferenceExpression__BehaviorDescriptor.getFQName_id7K4mn_BeEzv.invoke(it))).iterator().next()));
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ModelReferenceExpression$vc, false)).where((it) -> (SLinkOperations.getTarget(it, LINKS.repo$cK2X) != null) && !(mrf.getModelsByName(new SModelName(ModelReferenceExpression__BehaviorDescriptor.getFQName_id7K4mn_BeEzv.invoke(it))).isEmpty())).visitAll((it) -> {
+        final SModel where = SNodeOperations.getModel(it);
+        SNode newRef = SModelOperations.createNewNode(where, null, CONCEPTS.ModelPointerExpression$R5);
+        SLinkOperations.setTarget(newRef, LINKS.modelRef$l8tE, ModelPointer__BehaviorDescriptor.create_id_GDk1qZ2JP.invoke(SNodeOperations.asSConcept(CONCEPTS.ModelPointer$6N), where, mrf.getModelsByName(new SModelName(ModelReferenceExpression__BehaviorDescriptor.getFQName_id7K4mn_BeEzv.invoke(it))).iterator().next()));
 
-          final SNode repoAccessExpr = SLinkOperations.getTarget(it, LINKS.repo$cK2X);
-          SNode imco = SModelOperations.createNewNode(where, null, CONCEPTS.InstanceMethodCallOperation$uu);
-          // FIXME node// here awaits when node.reference.set(nodePointer) operation is added to get replaced with the one. 
-          SLinkOperations.setPointer(imco, LINKS.baseMethodDeclaration$pyYw, new SNodePointer("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SModelReference.resolve(org.jetbrains.mps.openapi.module.SRepository)"));
-          SNode dotExp = SNodeOperations.replaceWithNewChild(it, CONCEPTS.DotExpression$yW);
-          SLinkOperations.setTarget(dotExp, LINKS.operand$w6IR, newRef);
-          SLinkOperations.setTarget(dotExp, LINKS.operation$gs9E, imco);
-          ListSequence.fromList(SLinkOperations.getChildren(imco, LINKS.actualArgument$pzdx)).addElement(repoAccessExpr);
-        }
+        final SNode repoAccessExpr = SLinkOperations.getTarget(it, LINKS.repo$cK2X);
+        SNode imco = SModelOperations.createNewNode(where, null, CONCEPTS.InstanceMethodCallOperation$uu);
+        // FIXME node// here awaits when node.reference.set(nodePointer) operation is added to get replaced with the one.
+        SLinkOperations.setPointer(imco, LINKS.baseMethodDeclaration$pyYw, new SNodePointer("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SModelReference.resolve(org.jetbrains.mps.openapi.module.SRepository)"));
+        SNode dotExp = SNodeOperations.replaceWithNewChild(it, CONCEPTS.DotExpression$yW);
+        SLinkOperations.setTarget(dotExp, LINKS.operand$w6IR, newRef);
+        SLinkOperations.setTarget(dotExp, LINKS.operation$gs9E, imco);
+        ListSequence.fromList(SLinkOperations.getChildren(imco, LINKS.actualArgument$pzdx)).addElement(repoAccessExpr);
       });
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 8);
   }
 

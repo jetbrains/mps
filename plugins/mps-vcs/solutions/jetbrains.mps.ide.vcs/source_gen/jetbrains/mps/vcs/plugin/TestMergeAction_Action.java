@@ -4,26 +4,22 @@ package jetbrains.mps.vcs.plugin;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.workbench.action.BaseAction;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileChooser.FileChooser;
-import jetbrains.mps.vcs.platform.util.MergeBackupUtil;
 import java.io.File;
+import jetbrains.mps.vcs.platform.util.MergeBackupUtil;
 import jetbrains.mps.vcs.util.MergeVersion;
 import jetbrains.mps.project.MPSExtentions;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import com.intellij.openapi.vfs.LocalFileSystem;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -33,17 +29,17 @@ import jetbrains.mps.fileTypes.MPSFileTypeFactory;
 import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.diff.DiffManager;
 import com.intellij.diff.InvalidDiffRequestException;
-import org.apache.log4j.Level;
 
-@GeneratedClass(node = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/5047908084943665620", model = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)")
+@GeneratedClass(nodeId = "5047908084943665620", model = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)")
 public class TestMergeAction_Action extends BaseAction {
-  private static final Logger LOG = LogManager.getLogger(TestMergeAction_Action.class);
+  private static final Logger LOG = Logger.getLogger(TestMergeAction_Action.class);
   private static final Icon ICON = null;
 
   public TestMergeAction_Action() {
     super("Merge test data from ZIP", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -56,14 +52,6 @@ public class TestMergeAction_Action extends BaseAction {
     }
     {
       Project p = event.getData(CommonDataKeys.PROJECT);
-      MapSequence.fromMap(_params).put("project", p);
-      if (p == null) {
-        return false;
-      }
-    }
-    {
-      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      MapSequence.fromMap(_params).put("mpsProject", p);
       if (p == null) {
         return false;
       }
@@ -75,36 +63,34 @@ public class TestMergeAction_Action extends BaseAction {
     final FileChooserDescriptor descriptor = new FileChooserDescriptor(true, true, true, true, false, false) {
       @Override
       public boolean isFileSelectable(VirtualFile file) {
-        return !((file.isDirectory())) && file.getName().toLowerCase().endsWith(".zip");
+        return !(file.isDirectory()) && file.getName().toLowerCase().endsWith(".zip");
       }
     };
 
     descriptor.setTitle("select archive with merge files");
     descriptor.setDescription("Zip files (*.zip) ");
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        VirtualFile vFile = FileChooser.chooseFile(descriptor, ((Project) MapSequence.fromMap(_params).get("project")), null);
+    ApplicationManager.getApplication().invokeLater(() -> {
+      VirtualFile vFile = FileChooser.chooseFile(descriptor, event.getData(CommonDataKeys.PROJECT), null);
 
-        final String resFilePath;
-        String[] zipped;
-        try {
-          zipped = MergeBackupUtil.loadZippedModelsAsText(new File(vFile.getCanonicalPath()), new MergeVersion[]{MergeVersion.BASE, MergeVersion.MINE, MergeVersion.REPOSITORY});
-          resFilePath = File.createTempFile("mpstmp", MPSExtentions.DOT_MODEL).getAbsolutePath();
-        } catch (Exception e) {
-          e.printStackTrace();
-          return;
-        }
+      final File resFilePath;
+      String[] zipped;
+      try {
+        zipped = MergeBackupUtil.loadZippedModelsAsText(new File(vFile.getCanonicalPath()), new MergeVersion[]{MergeVersion.BASE, MergeVersion.MINE, MergeVersion.REPOSITORY});
+        resFilePath = File.createTempFile("mpstmp", MPSExtentions.DOT_MODEL);
+      } catch (Exception e) {
+        e.printStackTrace();
+        return;
+      }
 
-        VirtualFile resFile = VirtualFileUtils.getVirtualFile(resFilePath);
-        List<String> contents = ListSequence.fromListAndArray(new ArrayList<String>(), zipped);
-        List<String> titles = ListSequence.fromListAndArray(new ArrayList<String>(), "Local Version", "Merge Result", "Remote Version");
-        try {
-          MergeRequest request = DiffRequestFactory.getInstance().createMergeRequest(((Project) MapSequence.fromMap(_params).get("project")), MPSFileTypeFactory.MPS_FILE_TYPE, FileDocumentManager.getInstance().getDocument(resFile), contents, "Merge files from " + vFile + " and save result to " + resFilePath, titles, null);
-          DiffManager.getInstance().showMerge(((Project) MapSequence.fromMap(_params).get("project")), request);
-        } catch (InvalidDiffRequestException e) {
-          if (LOG.isEnabledFor(Level.ERROR)) {
-            LOG.error("", e);
-          }
+      VirtualFile resFile = LocalFileSystem.getInstance().findFileByIoFile(resFilePath);
+      List<String> contents = ListSequence.fromListAndArray(new ArrayList<String>(), zipped);
+      List<String> titles = ListSequence.fromListAndArray(new ArrayList<String>(), "Local Version", "Merge Result", "Remote Version");
+      try {
+        MergeRequest request = DiffRequestFactory.getInstance().createMergeRequest(event.getData(CommonDataKeys.PROJECT), MPSFileTypeFactory.MPS_FILE_TYPE, FileDocumentManager.getInstance().getDocument(resFile), contents, "Merge files from " + vFile + " and save result to " + resFilePath, titles, null);
+        DiffManager.getInstance().showMerge(event.getData(CommonDataKeys.PROJECT), request);
+      } catch (InvalidDiffRequestException e) {
+        if (LOG.isErrorLevel()) {
+          LOG.error("", e);
         }
       }
     });

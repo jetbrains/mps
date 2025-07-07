@@ -22,15 +22,15 @@ public class check_InlineTemplateWithContext_RuleConsequence_NonTypesystemRule e
   public check_InlineTemplateWithContext_RuleConsequence_NonTypesystemRule() {
   }
   public void applyRule(final SNode consequence, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    // FIXME there's identical code in check_TemplateDeclaration 
-    // see TemplateContainer#checkAdjacentFragments 
+    // FIXME there's identical code in check_TemplateDeclaration
+    // see TemplateContainer#checkAdjacentFragments
     SNode commonParent = null;
     SContainmentLink commonAggregationLink = null;
     for (SNode tf : SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(consequence, LINKS.contentNode$QgS3), CONCEPTS.TemplateFragment$eq, false, new SAbstractConcept[]{})) {
       SNode fragmentParent = SNodeOperations.getParent(tf);
       SContainmentLink containmentLink = fragmentParent.getContainmentLink();
       if (commonParent == null) {
-        // first fragment - remember its parent and role to use as reference value 
+        // first fragment - remember its parent and role to use as reference value
         commonParent = SNodeOperations.getParent(fragmentParent);
         commonAggregationLink = containmentLink;
       } else {
@@ -43,7 +43,7 @@ public class check_InlineTemplateWithContext_RuleConsequence_NonTypesystemRule e
         if (!(Objects.equals(commonAggregationLink, fragmentParent.getContainmentLink()))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(tf, String.format("Template Fragments shall use same same containment link"), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "4888628500252448664", null, errorTarget);
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(tf, String.format("Template Fragments shall use same containment link"), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "4888628500252448664", null, errorTarget);
           }
         }
       }

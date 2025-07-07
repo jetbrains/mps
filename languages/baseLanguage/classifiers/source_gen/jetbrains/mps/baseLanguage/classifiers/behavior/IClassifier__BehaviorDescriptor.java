@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.IExtractMethodRefactoringProcessor;
@@ -34,15 +33,17 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class IClassifier__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc6b2af5L, "jetbrains.mps.baseLanguage.classifiers.structure.IClassifier");
 
-  public static final SMethod<SNode> createType_idhEwJimy = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwJimy").build();
-  public static final SMethod<SNode> createSuperType_idhHOGPWW = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createSuperType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hHOGPWW").build();
-  public static final SMethod<List<SNode>> getParts_idhEwJimO = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getParts").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwJimO").build();
-  public static final SMethod<List<SNode>> getMembers_idhEwJink = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMembers").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwJink").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<List<SNode>> getMembers_idhEwJioW = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMembers").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwJioW").build();
-  public static final SMethod<IExtractMethodRefactoringProcessor> getExtractMethodRefactoringProcessor_idhLwHWdT = new SMethodBuilder<IExtractMethodRefactoringProcessor>(new SJavaCompoundTypeImpl(IExtractMethodRefactoringProcessor.class)).name("getExtractMethodRefactoringProcessor").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hLwHWdT").build(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getContextClassifier_idhEwJim4 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getContextClassifier").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwJim4").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> createType_idhEwJimy = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877527970L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
+  public static final SMethod<SNode> createSuperType_idhHOGPWW = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createSuperType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1217433657148L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
+  public static final SMethod<List<SNode>> getParts_idhEwJimO = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getParts").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877527988L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
+  public static final SMethod<List<SNode>> getMembers_idhEwJink = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMembers").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877528020L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<List<SNode>> getMembers_idhEwJioW = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMembers").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877528124L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
+  public static final SMethod<IExtractMethodRefactoringProcessor> getExtractMethodRefactoringProcessor_idhLwHWdT = new SMethodBuilder<IExtractMethodRefactoringProcessor>(new SJavaCompoundTypeImpl(IExtractMethodRefactoringProcessor.class)).name("getExtractMethodRefactoringProcessor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1221393367929L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getContextClassifier_idhEwJim4 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getContextClassifier").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877527940L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> requiresAllFieldMembersPrivate_id441vB8LNFML = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("requiresAllFieldMembersPrivate").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4684164116369030321L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
+  public static final SMethod<Boolean> requiresAllMethodMembersPrivate_id441vB8LJxAr = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("requiresAllMethodMembersPrivate").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4684164116367939995L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(createType_idhEwJimy, createSuperType_idhHOGPWW, getParts_idhEwJimO, getMembers_idhEwJink, getMembers_idhEwJioW, getExtractMethodRefactoringProcessor_idhLwHWdT, getContextClassifier_idhEwJim4);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(createType_idhEwJimy, createSuperType_idhHOGPWW, getParts_idhEwJimO, getMembers_idhEwJink, getMembers_idhEwJioW, getExtractMethodRefactoringProcessor_idhLwHWdT, getContextClassifier_idhEwJim4, requiresAllFieldMembersPrivate_id441vB8LNFML, requiresAllMethodMembersPrivate_id441vB8LJxAr);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -122,6 +123,12 @@ public final class IClassifier__BehaviorDescriptor extends BaseBHDescriptor {
     }
     return IClassifierPart__BehaviorDescriptor.getMainClassifier_idhEwIfO4.invoke(SNodeOperations.getNodeAncestor(contextNode, CONCEPTS.IClassifierPart$TX, true, false));
   }
+  /*package*/ static boolean requiresAllFieldMembersPrivate_id441vB8LNFML(@NotNull SNode __thisNode__) {
+    return false;
+  }
+  /*package*/ static boolean requiresAllMethodMembersPrivate_id441vB8LJxAr(@NotNull SNode __thisNode__) {
+    return false;
+  }
 
   /*package*/ IClassifier__BehaviorDescriptor() {
   }
@@ -150,6 +157,10 @@ public final class IClassifier__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((List<SNode>) getMembers_idhEwJioW(node));
       case 5:
         return (T) ((IExtractMethodRefactoringProcessor) getExtractMethodRefactoringProcessor_idhLwHWdT(node, (List<SNode>) parameters[0]));
+      case 7:
+        return (T) ((Boolean) requiresAllFieldMembersPrivate_id441vB8LNFML(node));
+      case 8:
+        return (T) ((Boolean) requiresAllMethodMembersPrivate_id441vB8LJxAr(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

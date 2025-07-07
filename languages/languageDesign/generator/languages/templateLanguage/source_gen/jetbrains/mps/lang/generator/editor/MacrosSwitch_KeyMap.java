@@ -12,7 +12,6 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.generator.helper.EditingUtil;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
@@ -65,11 +64,7 @@ public class MacrosSwitch_KeyMap extends KeyMapImpl {
       if (SNodeOperations.getNodeAncestorWhereConceptInList(node, new SAbstractConcept[]{CONCEPTS.TemplateDeclaration$5G, CONCEPTS.InlineTemplateWithContext_RuleConsequence$9i}, false, false) == null) {
         return false;
       }
-      if (ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isAttribute(it);
-        }
-      }).isNotEmpty()) {
+      if (ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, false)).where((it) -> SNodeOperations.isAttribute(it)).isNotEmpty()) {
         return false;
       }
       if (EditingUtil.isInsideTemplateFragment(node)) {
@@ -78,12 +73,8 @@ public class MacrosSwitch_KeyMap extends KeyMapImpl {
       return true;
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      // do not hang <TF> on other attributes 
-      SNode applyToNode = ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.isAttribute(it));
-        }
-      }).first();
+      // do not hang <TF> on other attributes
+      SNode applyToNode = ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).where((it) -> !(SNodeOperations.isAttribute(it))).first();
       EditingUtil.createTemplateFragment(applyToNode);
     }
     public String getKeyStroke() {
@@ -123,7 +114,7 @@ public class MacrosSwitch_KeyMap extends KeyMapImpl {
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       SNode nodeMacro = EditingUtil.addNodeMacro(node);
-      // set caret 
+      // set caret
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, nodeMacro, SelectionManager.FIRST_CELL, 1);
     }
     public String getKeyStroke() {
@@ -163,7 +154,7 @@ public class MacrosSwitch_KeyMap extends KeyMapImpl {
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       SNode propertyMacro = EditingUtil.addPropertyMacro(node, editorContext.getSelectedCell());
-      // set caret 
+      // set caret
       SelectionUtil.selectCell(editorContext, propertyMacro, SelectionManager.FIRST_CELL);
       EditorInspector inspector = editorContext.getInspector();
       assert inspector != null;
@@ -206,7 +197,7 @@ public class MacrosSwitch_KeyMap extends KeyMapImpl {
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       SNode referenceMacro = EditingUtil.addReferenceMacro(node, editorContext.getSelectedCell());
-      // set caret 
+      // set caret
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, referenceMacro, SelectionManager.FIRST_CELL, 2);
       EditorInspector inspector = editorContext.getInspector();
       assert inspector != null;

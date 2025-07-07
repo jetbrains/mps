@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ import org.jetbrains.mps.openapi.model.SNodeChangeListener;
  * This class serves as a convenient implementation of all repository listeners at once.
  * In addition it tracks all objects (modules, models and nodes) as they come and leave the repository.
  */
-public class SRepositoryContentAdapter extends SModuleListenerBase implements
+public class SRepositoryContentAdapter implements
     SModelListener, SModuleListener, SRepositoryListener, SRepositoryAttachListener, SNodeChangeListener, SNodeAccessListener {
 
   protected SRepositoryContentAdapter() {
@@ -68,16 +68,12 @@ public class SRepositoryContentAdapter extends SModuleListenerBase implements
   protected void startListening(SModule module) {
     if (!isIncluded(module)) return;
     module.addModuleListener(this);
-    for (SModel model : module.getModels()) {
-      startListening(model);
-    }
+    module.forEachRegisteredModel(this::startListening);
   }
 
   protected void stopListening(SModule module) {
     // it's not very nice to stop listening models of any module, even the one we didn't include this module in startListening(SModule), but who cares
-    for (SModel model : module.getModels()) {
-      stopListening(model);
-    }
+    module.forEachRegisteredModel(this::stopListening);
     module.removeModuleListener(this);
   }
 
@@ -86,13 +82,13 @@ public class SRepositoryContentAdapter extends SModuleListenerBase implements
    * Subclasses that wish to get model/node change/access events, shall add appropriate listeners here. These listeners
    * are implemented by this class only for convenience, events are not dispatched unless proper listener is explicitly attached.
    */
-  protected void startListening(SModel model) {
+  protected void startListening(@NotNull SModel model) {
   }
 
   /**
    * no-op by default
    */
-  protected void stopListening(SModel model) {
+  protected void stopListening(@NotNull SModel model) {
   }
 
   /**
@@ -125,22 +121,6 @@ public class SRepositoryContentAdapter extends SModuleListenerBase implements
 
   @Override
   public void commandFinished(SRepository repository) {
-  }
-
-  @Override
-  public void updateStarted(SRepository repository) {
-  }
-
-  @Override
-  public void updateFinished(SRepository repository) {
-  }
-
-  @Override
-  public void repositoryCommandStarted(SRepository repository) {
-  }
-
-  @Override
-  public void repositoryCommandFinished(SRepository repository) {
   }
 
   // SModuleListener methods

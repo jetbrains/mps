@@ -17,7 +17,6 @@ import org.jdom.Namespace;
 import org.jdom.Content;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jdom.Comment;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jdom.ProcessingInstruction;
 import org.jdom.CDATA;
 import org.jdom.Text;
@@ -32,7 +31,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class XmlConverter {
 
   public static SNode convertDocument(String name, Document document) {
-    // TODO replace dom-based implementation with a good XML parser 
+    // TODO replace dom-based implementation with a good XML parser
     SNode file = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54c94c0L, "jetbrains.mps.core.xml.structure.XmlFile"));
     SPropertyOperations.assign(file, PROPS.name$MnvL, name);
     SLinkOperations.setNewChild(file, LINKS.document$qHEv, null);
@@ -71,11 +70,7 @@ public class XmlConverter {
     } else if (c instanceof Comment) {
       String commentText = ((Comment) c).getText();
       SNode res = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494878L, "jetbrains.mps.core.xml.structure.XmlComment"));
-      ListSequence.fromList(SLinkOperations.getChildren(res, LINKS.lines$4_OD)).addSequence(Sequence.fromIterable(Sequence.fromArray(commentText.split("\r?\n"))).select(new ISelector<String, SNode>() {
-        public SNode select(String it) {
-          return createXmlCommentLine_h7fa2c_a0a0a0a0c0a0a4(it);
-        }
-      }));
+      ListSequence.fromList(SLinkOperations.getChildren(res, LINKS.lines$4_OD)).addSequence(Sequence.fromIterable(Sequence.fromArray(commentText.split("\r?\n"))).select((it) -> createXmlCommentLine_h7fa2c_a0a0a0a0c0a0a4(it)));
       return Sequence.<SNode>singleton(res);
 
     } else if (c instanceof ProcessingInstruction) {
@@ -88,7 +83,7 @@ public class XmlConverter {
     } else if (c instanceof Text) {
       String text = ((Text) c).getText();
       int index = 0;
-      boolean nlSeen = !((prev == null || prev instanceof Element));
+      boolean nlSeen = !(prev == null || prev instanceof Element);
       for (; index < text.length(); index++) {
         char ch = text.charAt(index);
         if (ch == '\n') {
@@ -116,11 +111,7 @@ public class XmlConverter {
       if (text.endsWith("\n") && (next == null || next instanceof Element)) {
         text = text.substring(0, text.length() - 1);
       }
-      return convertText(Sequence.fromIterable(Sequence.fromArray((" " + text + " ").split("\n"))).select(new ISelector<String, String>() {
-        public String select(String it) {
-          return ((it == null ? null : it.trim()));
-        }
-      }).toGenericArray(String.class));
+      return convertText(Sequence.fromIterable(Sequence.fromArray((" " + text + " ").split("\n"))).select((it) -> ((it == null ? null : it.trim()))).toGenericArray(String.class));
     } else if (c instanceof EntityRef) {
       String name = ((EntityRef) c).getName();
       return Sequence.<SNode>singleton(createXmlEntityRef_h7fa2c_a0a1a4a0e(name));

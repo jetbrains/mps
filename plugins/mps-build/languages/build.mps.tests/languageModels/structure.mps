@@ -11,6 +11,10 @@
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
+      <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
+        <property id="1225118929411" name="build" index="YLPcu" />
+        <property id="1225118933224" name="comment" index="YLQ7P" />
+      </concept>
       <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
         <property id="7862711839422615217" name="text" index="t5JxN" />
       </concept>
@@ -43,16 +47,16 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
   </registry>
   <node concept="1TIwiD" id="3X9rC2XzJdF">
-    <property role="TrG5h" value="BuildMpsLayout_TestModuleGroup" />
+    <property role="TrG5h" value="BuildMps_TestModuleGroup" />
     <property role="3GE5qa" value="Project.Testing" />
     <property role="EcuMT" value="4560297596904469355" />
-    <ref role="1TJDcQ" node="3X9rC2XzJdL" resolve="BuildMpsLayout_TestModules_Content" />
+    <ref role="1TJDcQ" node="3X9rC2XzJdL" resolve="BuildMps_TestModules_Content" />
     <node concept="1TJgyj" id="3X9rC2XzJdG" role="1TKVEi">
       <property role="20kJfa" value="group" />
       <property role="20lbJX" value="fLJekj4/1" />
@@ -61,7 +65,7 @@
     </node>
   </node>
   <node concept="1TIwiD" id="3X9rC2XzJdH">
-    <property role="TrG5h" value="BuildMpsLayout_TestModules" />
+    <property role="TrG5h" value="BuildAspect_MpsTestModules" />
     <property role="3GE5qa" value="Project.Testing" />
     <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="34LRSv" value="test modules" />
@@ -71,7 +75,7 @@
       <property role="IQ2ns" value="6593674873639474544" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="options" />
-      <ref role="20lvS9" node="5I1s5NvGLjw" resolve="BuildMpsLayout_TestModules_Options" />
+      <ref role="20lvS9" node="5I1s5NvGLjw" resolve="BuildMps_TestModules_Options" />
     </node>
     <node concept="PrWs8" id="3X9rC2XzJdI" role="PzmwI">
       <ref role="PrY4T" to="3ior:IFRVVI6zqz" resolve="BuildExternalDependency" />
@@ -87,24 +91,24 @@
       <property role="20kJfa" value="modules" />
       <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="4560297596904469360" />
-      <ref role="20lvS9" node="3X9rC2XzJdL" resolve="BuildMpsLayout_TestModules_Content" />
+      <ref role="20lvS9" node="3X9rC2XzJdL" resolve="BuildMps_TestModules_Content" />
     </node>
   </node>
   <node concept="1TIwiD" id="3X9rC2XzJdL">
     <property role="R5$K7" value="true" />
     <property role="R5$K2" value="false" />
-    <property role="TrG5h" value="BuildMpsLayout_TestModules_Content" />
+    <property role="TrG5h" value="BuildMps_TestModules_Content" />
     <property role="3GE5qa" value="Project.Testing" />
     <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="EcuMT" value="4560297596904469361" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
   </node>
   <node concept="1TIwiD" id="3X9rC2XzJdM">
-    <property role="TrG5h" value="BuildMpsLayout_TestModule" />
+    <property role="TrG5h" value="BuildMps_TestModule" />
     <property role="3GE5qa" value="Project.Testing" />
     <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="EcuMT" value="4560297596904469362" />
-    <ref role="1TJDcQ" node="3X9rC2XzJdL" resolve="BuildMpsLayout_TestModules_Content" />
+    <ref role="1TJDcQ" node="3X9rC2XzJdL" resolve="BuildMps_TestModules_Content" />
     <node concept="1TJgyj" id="3X9rC2XzJdN" role="1TKVEi">
       <property role="20kJfa" value="module" />
       <property role="20lbJX" value="fLJekj4/1" />
@@ -138,7 +142,7 @@
   <node concept="1TIwiD" id="5I1s5NvGLjw">
     <property role="EcuMT" value="6593674873639474400" />
     <property role="3GE5qa" value="Project.Testing" />
-    <property role="TrG5h" value="BuildMpsLayout_TestModules_Options" />
+    <property role="TrG5h" value="BuildMps_TestModules_Options" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="5I1s5NvGMfd" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -154,6 +158,25 @@
       <node concept="t5JxF" id="1tJmw8EAXUg" role="lGtFl">
         <property role="t5JxN" value="using JAVA_TOOL_OPTIONS variable to prevent issues like https://youtrack.jetbrains.com/issue/MPS-24137" />
       </node>
+      <node concept="asaX9" id="1_zhZIMQOMj" role="lGtFl">
+        <property role="YLQ7P" value="Not in use since introduction of MPS-own &lt;launchtest&gt; task" />
+        <property role="YLPcu" value="2023.1" />
+      </node>
+    </node>
+    <node concept="1TJgyj" id="7wBXNqHfd9m" role="1TKVEi">
+      <property role="IQ2ns" value="8658160622849806934" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="reportsDir" />
+      <ref role="20lvS9" to="3ior:6qcrfIJFdKY" resolve="BuildSourcePath" />
+    </node>
+    <node concept="1TJgyj" id="51DD0tdLLzh" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="openTestReport" />
+      <property role="IQ2ns" value="5794342746865473745" />
+      <ref role="20lvS9" to="3ior:3NagsOfThPf" resolve="BuildString" />
+      <node concept="t5JxF" id="51DD0tdLLzi" role="lGtFl">
+        <property role="t5JxN" value="generate reports in the Open Test Report format" />
+      </node>
     </node>
     <node concept="1TJgyj" id="5I1s5NvuWcr" role="1TKVEi">
       <property role="IQ2ns" value="6593674873635848987" />
@@ -167,6 +190,12 @@
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="jvmArgs" />
       <ref role="20lvS9" to="3ior:3NagsOfThPf" resolve="BuildString" />
+    </node>
+    <node concept="1TJgyj" id="6US8dKph52U" role="1TKVEi">
+      <property role="IQ2ns" value="7978162869575635130" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="projectPath" />
+      <ref role="20lvS9" to="3ior:6qcrfIJFdKY" resolve="BuildSourcePath" />
     </node>
   </node>
 </model>

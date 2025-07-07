@@ -8,14 +8,10 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.actions.PrecedenceUtil;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.util.Computable;
@@ -26,10 +22,10 @@ import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -49,41 +45,19 @@ public class AddNecessaryParenthsToNotExpressions extends MigrationScriptBase {
   public void doExecute(final SModule m) {
     {
       final GeneratedMatchingPattern pattern = new Pattern_fbexqr_a0a5(_quotation_createNode_fbexqr_a0a0a5());
-      Sequence.fromIterable(((Iterable<SModel>) m.getModels())).translate(new ITranslator2<SModel, SNode>() {
-        public Iterable<SNode> translate(SModel it) {
-          return SModelOperations.nodes(it, SNodeOperations.asSConcept(pattern.getConcept()));
+      Sequence.fromIterable(((Iterable<SModel>) m.getModels())).translate((it) -> SModelOperations.nodes(it, SNodeOperations.asSConcept(pattern.getConcept()))).where((it) -> pattern.match(it)).where((it) -> !(isInTransformPattern(it))).where((SNode node) -> PrecedenceUtil.needsParensAroundNotExpression(node)).sort((it) -> ListSequence.fromList(SNodeOperations.getNodeAncestors(it, null, false)).count(), false).visitAll((final SNode nodeToMigrate) -> {
+        pattern.match(nodeToMigrate);
+        List<SNode> attributes = SNodeOperations.getNodeDescendants(nodeToMigrate, CONCEPTS.Attribute$g1, false, new SAbstractConcept[]{});
+        ListSequence.fromList(attributes).removeSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(pattern.getMatchedNode("expr"), CONCEPTS.Attribute$g1, true, new SAbstractConcept[]{})));
+        if (ListSequence.fromList(attributes).isNotEmpty()) {
+          markAnnotatedNodeForReview(nodeToMigrate, attributes);
+          return;
         }
-      }).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return pattern.match(it);
-        }
-      }).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(isInTransformPattern(it));
-        }
-      }).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode node) {
-          return PrecedenceUtil.needsParensAroundNotExpression(node);
-        }
-      }).sort(new ISelector<SNode, Integer>() {
-        public Integer select(SNode it) {
-          return ListSequence.fromList(SNodeOperations.getNodeAncestors(it, null, false)).count();
-        }
-      }, false).visitAll(new IVisitor<SNode>() {
-        public void visit(final SNode nodeToMigrate) {
-          pattern.match(nodeToMigrate);
-          List<SNode> attributes = SNodeOperations.getNodeDescendants(nodeToMigrate, CONCEPTS.Attribute$g1, false, new SAbstractConcept[]{});
-          ListSequence.fromList(attributes).removeSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(pattern.getMatchedNode("expr"), CONCEPTS.Attribute$g1, true, new SAbstractConcept[]{})));
-          if (ListSequence.fromList(attributes).isNotEmpty()) {
-            markAnnotatedNodeForReview(nodeToMigrate, attributes);
-            return;
+        applyTransormMigration(nodeToMigrate, new Computable<SNode>() {
+          public SNode compute() {
+            return _quotation_createNode_fbexqr_a0a0f(MigrationScriptBase.detachNodePatternVariable(pattern.getMatchedNode("expr")));
           }
-          applyTransormMigration(nodeToMigrate, new Computable<SNode>() {
-            public SNode compute() {
-              return _quotation_createNode_fbexqr_a0a0f(MigrationScriptBase.detachNodePatternVariable(pattern.getMatchedNode("expr")));
-            }
-          }, null);
-        }
+        }, null);
       });
     }
   }
@@ -92,21 +66,9 @@ public class AddNecessaryParenthsToNotExpressions extends MigrationScriptBase {
     {
       SearchScope scope_fbexqr_a0f = CommandUtil.createScope(m);
       final SearchScope scope_fbexqr_a0f_0 = new EditableFilteringScope(scope_fbexqr_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_fbexqr_a0f_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NotExpression$Pc, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SNodeOperations.is(SNodeOperations.getContainingRoot(it), new SNodePointer("r:1dca72a1-44ae-4339-a783-4859610b0285(jetbrains.mps.baseLanguage.migration)", "4787009421625770137")));
-        }
-      }).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return PrecedenceUtil.needsParensAroundNotExpression(it);
-        }
-      }).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
+      QueryExecutionContext context = () -> scope_fbexqr_a0f_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NotExpression$Pc, false)).where((it) -> !(SNodeOperations.is(SNodeOperations.getContainingRoot(it), new SNodePointer("r:1dca72a1-44ae-4339-a783-4859610b0285(jetbrains.mps.baseLanguage.migration)", "4787009421625770137")))).where((it) -> PrecedenceUtil.needsParensAroundNotExpression(it)).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+        public Problem invoke(SNode it) {
           return ((Problem) new NotMigratedNode(it) {
             public String getMessage() {
               return "Missing parenths around NotExpression";
@@ -116,27 +78,29 @@ public class AddNecessaryParenthsToNotExpressions extends MigrationScriptBase {
       });
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0);
   }
 
   private static SNode _quotation_createNode_fbexqr_a0a0a5() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbcf6bd10dL, "NotExpression")).getResult();
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b201L, "BooleanConstant")).getResult();
-    quotedNode_2.setProperty(MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"), "true");
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbcf6bd10dL, "NotExpression"));
+    quotedNode_1 = nb.getResult();
+    SNodeBuilder nb1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b201L, "BooleanConstant"));
+    quotedNode_2 = nb1.getResult();
+    nb1.setProperty(MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"), "true");
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression"), quotedNode_2);
     return quotedNode_1;
   }
   private static SNode _quotation_createNode_fbexqr_a0a0f(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbcf6bd10dL, "NotExpression")).getResult();
-    quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfb4ed32b7fL, "ParenthesizedExpression")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbcf6bd10dL, "NotExpression"));
+    quotedNode_2 = nb.getResult();
+    SNodeBuilder nb1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfb4ed32b7fL, "ParenthesizedExpression"));
+    quotedNode_3 = nb1.getResult();
     quotedNode_4 = (SNode) parameter_1;
     if (quotedNode_4 != null) {
       quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression"), SNodeOperations.copyIfNecessary(quotedNode_4));

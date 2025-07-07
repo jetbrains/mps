@@ -10,7 +10,7 @@ import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.ide.hierarchy.HierarchyTreeNode;
 import jetbrains.mps.vcs.changesmanager.tree.features.NodeFeature;
 
-@GeneratedClass(node = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)/6426754448685220027", model = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)")
+@GeneratedClass(nodeId = "6426754448685220027", model = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)")
 public class HierarchyFeatureExtractor implements TreeNodeFeatureExtractor {
   public HierarchyFeatureExtractor() {
   }
@@ -18,7 +18,7 @@ public class HierarchyFeatureExtractor implements TreeNodeFeatureExtractor {
   @Override
   public Feature getFeature(@NotNull MPSTreeNode treeNode) {
     if (treeNode instanceof HierarchyTreeNode) {
-      return new NodeFeature(((HierarchyTreeNode) treeNode).getNodeReference());
+      return new NodeFeature(((HierarchyTreeNode) treeNode).getNodeReference(), null);
     }
     return null;
   }

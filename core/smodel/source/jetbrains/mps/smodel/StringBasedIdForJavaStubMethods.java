@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,8 @@
  */
 package jetbrains.mps.smodel;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.SNodeId.StringBasedId;
-import jetbrains.mps.util.InternUtil;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.annotations.Internal;
@@ -28,6 +25,10 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade.IncorrectNodeIdFo
 import java.util.Objects;
 
 /**
+ * [2025] I WONDER IF THERE'S A REASON TO KEEP THIS CLASS.
+ * Indeed, we may face old models in v9, that still use these nodeId, however, perhaps we can move this code into VCS legacy persistence support
+ * (e.g. by adding respective NodeIdFactory to PF around 'history' activity)
+ *
  * Foreign (string-based) snode id for java method stubs.
  * It is a temporary class to provide a smooth migration from the with-return-type (with-ret) java stub method ids to
  * no-return-type java stub method ids (no-ret).
@@ -61,7 +62,7 @@ import java.util.Objects;
  * Thus instead of (:#println:void) the toString method returns (:~println).
  * By the way the foreign* id did not change the #equals and #hashcode methods, only the method #toString.
  *
- * Furthermore, we created a special {@link jetbrains.mps.smodel.nodeidmap.MigratingJavaStubRefsNodeIdMap} in the JavaClassStubModelDescriptor
+ * Furthermore, we created a special {@code jetbrains.mps.smodel.nodeidmap.MigratingJavaStubRefsNodeIdMap} in the JavaClassStubModelDescriptor
  * which essentially for each stub java method node creates two different mappings: for a string id with return type and for a string id without return type.
  *
  * State 2: (191.eap8).
@@ -71,7 +72,7 @@ import java.util.Objects;
  * ref b has a foreign without-ret id, ver>=191.eap8; (after the migration)
  * ref c has a foreign* with-ret id, ver=191.eap7;
  * ref d has a foreign* with-ret id, ver>=191.eap8;
- * all resolve fine, see the {@link jetbrains.mps.smodel.nodeidmap.MigratingJavaStubRefsNodeIdMap} javadoc.
+ * all resolve fine, see the {@code jetbrains.mps.smodel.nodeidmap.MigratingJavaStubRefsNodeIdMap} javadoc.
  *
  * The next problem was that find usages stopped working since the node access is not done via the model but via the node id directly.
  * The problem evolves only after we migrate all the java stub method references.
@@ -93,7 +94,7 @@ import java.util.Objects;
  *
  * Change 3: we changed the foreign* id #getId, #hashcode and #equals methods in such a way that the foreign* id instance
  * is associated solely with no-ret string.
- * The map {@link jetbrains.mps.smodel.nodeidmap.MigratingJavaStubRefsNodeIdMap} in the JavaClassStubModelDescriptor did not change its contents.
+ * The map {@code jetbrains.mps.smodel.nodeidmap.MigratingJavaStubRefsNodeIdMap} in the JavaClassStubModelDescriptor did not change its contents.
  *
  * State 3: (191.1). [WE ARE HERE]
  * stub models have foreign* id (persisted to :~println()).
@@ -103,7 +104,7 @@ import java.util.Objects;
  * ref b has a foreign without-ret id, ver>=191.eap8; (after the migration)
  * ref c has a foreign* with-ret id, ver=191.eap7;
  * ref d has a foreign* with-ret id, ver>=191.eap8;
- * all resolve fine, see the {@link jetbrains.mps.smodel.nodeidmap.MigratingJavaStubRefsNodeIdMap} javadoc.
+ * all resolve fine, see the {@code jetbrains.mps.smodel.nodeidmap.MigratingJavaStubRefsNodeIdMap} javadoc.
  * If accessed via SModel, with-ret and without-ret ids resolve fine because of the hack in the node id map;
  * otherwise _before the migration_ with-ret node ids are not present in the model, so some places will fail to find the nodes by the with-ret id
  * (like find usages with index which tracks back the references to the java stub methods), however _after the migration_ such places must work as
@@ -133,11 +134,11 @@ import java.util.Objects;
  * FUTURE:
  * (2xx release) Change 4: removing this class and the migrating map, all java stub method are resolved by no-return-signatures now.
  */
-@ToRemove(version = 201)
+@Deprecated(since = "201", forRemoval = true)
 @Internal
 @Immutable
 public final class StringBasedIdForJavaStubMethods extends SNodeId implements StringBasedId {
-  private static final Logger LOG = LogManager.getLogger(StringBasedIdForJavaStubMethods.class);
+  private static final Logger LOG = Logger.getLogger(StringBasedIdForJavaStubMethods.class);
   /**
    * it was a mistake breaking the persistence compatibility.
    * see the plan
@@ -147,9 +148,6 @@ public final class StringBasedIdForJavaStubMethods extends SNodeId implements St
   private static final String SEPARATOR = ":";
 
   @NotNull
-  private final String myStubMethodIdWithReturnTypeNoPrefix;
-
-  @NotNull
   private final String myStubMethodIdWithoutReturnTypeNoPrefix;
 
   /**
@@ -157,19 +155,13 @@ public final class StringBasedIdForJavaStubMethods extends SNodeId implements St
    */
   public StringBasedIdForJavaStubMethods(@NotNull String idWithReturnType) {
     checkStartsWithPrefix(idWithReturnType);
-    myStubMethodIdWithReturnTypeNoPrefix = InternUtil.intern(idWithReturnType.substring(1));
-    myStubMethodIdWithoutReturnTypeNoPrefix = calcWithoutRetType(myStubMethodIdWithReturnTypeNoPrefix);
+    myStubMethodIdWithoutReturnTypeNoPrefix = calcWithoutRetType(idWithReturnType.substring(1));
   }
 
   private void checkStartsWithPrefix(@NotNull String idWithReturnType) {
     if (!idWithReturnType.startsWith(ID_PREFIX)) {
       throw new IncorrectNodeIdFormatException(String.format("Node id must begin with '%s'", ID_PREFIX), null);
     }
-  }
-
-  @NotNull
-  public String getIdWithReturnTypeNoPrefix() {
-    return myStubMethodIdWithReturnTypeNoPrefix;
   }
 
   @NotNull
@@ -183,7 +175,7 @@ public final class StringBasedIdForJavaStubMethods extends SNodeId implements St
     if (lastIndex < 0) {
       LOG.error("The string id '" + stubMethodIdWithReturnTypeNoPrefix + "' does not contain the separator '" + SEPARATOR + "'");
     }
-    return stubMethodIdWithReturnTypeNoPrefix.substring(0, lastIndex);
+    return stubMethodIdWithReturnTypeNoPrefix.substring(0, lastIndex).intern();
   }
 
   @Override
@@ -195,11 +187,6 @@ public final class StringBasedIdForJavaStubMethods extends SNodeId implements St
     if (o instanceof StringBasedIdForJavaStubMethods) {
       StringBasedIdForJavaStubMethods otherId = (StringBasedIdForJavaStubMethods) o;
       return Objects.equals(myStubMethodIdWithoutReturnTypeNoPrefix, otherId.myStubMethodIdWithoutReturnTypeNoPrefix);
-    }
-    if (o instanceof Foreign) {
-      Foreign foreign = (Foreign) o;
-      String idNoPrefix = foreign.getIdNoPrefix();
-      return idNoPrefix.equals(getIdWithoutReturnTypeNoPrefix());
     }
     return false;
   }

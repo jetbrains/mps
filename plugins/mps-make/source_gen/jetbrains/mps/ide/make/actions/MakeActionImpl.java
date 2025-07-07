@@ -6,7 +6,10 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.ide.save.SaveRepositoryCommand;
 import jetbrains.mps.make.MakeSession;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.make.DefaultMakeMessageHandler;
+import jetbrains.mps.make.script.IScript;
+import jetbrains.mps.make.script.ScriptBuilder;
 import jetbrains.mps.make.IMakeService;
 import jetbrains.mps.make.MakeServiceComponent;
 import java.util.List;
@@ -14,10 +17,7 @@ import jetbrains.mps.make.resources.IResource;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.smodel.resources.MResource;
 import jetbrains.mps.ide.generator.GenerationCheckHelper;
 
@@ -36,39 +36,42 @@ public class MakeActionImpl {
     if (project.getModelAccess().isCommandAction()) {
       throw new IllegalStateException("should be called outside of command");
     }
-    // save all before launching make 
-    new SaveRepositoryCommand(project.getRepository()).execute();
+    // save all before launching make
+    new SaveRepositoryCommand(project.getRepository()).executeAndWait();
 
 
-    MakeSession session = new MakeSession(project, new DefaultMakeMessageHandler(project), myParams.isCleanMake());
+    MakeSession session;
+    if (ListSequence.fromList(myParams.additionalFacets()).isEmpty()) {
+      session = new MakeSession(project, new DefaultMakeMessageHandler(project), myParams.isCleanMake());
+    } else {
+      session = new MakeSession(project, new DefaultMakeMessageHandler(project), myParams.isCleanMake()) {
+        @Override
+        public IScript toScript(ScriptBuilder scriptBuilder) {
+          scriptBuilder.withFacetNames(myParams.additionalFacets());
+          return super.toScript(scriptBuilder);
+        }
+      };
+    }
     final IMakeService makeService = project.getComponent(MakeServiceComponent.class).get();
     if (makeService.openNewSession(session)) {
-      // empty collection is fine, it's up to make service to report there's nothing to do (odd, but fine for now. Action could have do that instead) 
-      // 
-      // ModelValidatorAdapter needs to be refactored not to mix model checking code with UI, which might request 
-      // write access e.g. on focus lost and eventually lead to 'write from read' issue like 
-      // FIXME https://youtrack.jetbrains.com/issue/MPS-24020. Proper fix is to split model check into read, and results reporting into EDT. 
-      // For 3.4 RC, we decided to go with a hack and let SModel instances cross model read boundary 
+      // empty collection is fine, it's up to make service to report there's nothing to do (odd, but fine for now. Action could have do that instead)
+      //  
+      // ModelValidatorAdapter needs to be refactored not to mix model checking code with UI, which might request
+      // write access e.g. on focus lost and eventually lead to 'write from read' issue like
+      // FIXME https://youtrack.jetbrains.com/issue/MPS-24020. Proper fix is to split model check into read, and results reporting into EDT.
+      // For 3.4 RC, we decided to go with a hack and let SModel instances cross model read boundary
       List<IResource> inputRes = null;
       final ArrayList<SModel> models = new ArrayList<SModel>();
       try {
-        inputRes = new ModelAccessHelper(project.getModelAccess()).runReadAction(new Computable<List<IResource>>() {
-          public List<IResource> compute() {
-            List<IResource> rv = Sequence.fromIterable(myParams.collectInput()).toListSequence();
-            models.addAll(ListSequence.fromList(rv).translate(new ITranslator2<IResource, SModel>() {
-              public Iterable<SModel> translate(IResource it) {
-                return ((MResource) it).models();
-              }
-            }).toListSequence());
-            return rv;
-          }
+        inputRes = new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> {
+          List<IResource> rv = Sequence.fromIterable(myParams.collectInput()).toList();
+          models.addAll(ListSequence.fromList(rv).translate((it) -> ((MResource) it).models()).toList());
+          return rv;
         });
         if (!(new GenerationCheckHelper().checkModelsBeforeGenerationIfNeeded(project, models))) {
           inputRes = null;
-          // fall-through to close make session 
+          // fall-through to close make session
         }
-
-
       } catch (RuntimeException e) {
         makeService.closeSession(session);
         throw e;
@@ -76,7 +79,6 @@ public class MakeActionImpl {
 
       if (inputRes != null) {
         makeService.make(session, inputRes);
-
       } else {
         makeService.closeSession(session);
       }

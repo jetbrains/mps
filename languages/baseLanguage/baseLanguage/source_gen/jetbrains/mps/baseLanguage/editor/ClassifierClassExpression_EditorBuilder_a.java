@@ -11,7 +11,6 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.lang.editor.cellProviders.SReferenceCellProvider;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.editor.runtime.impl.CellUtil;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -23,10 +22,8 @@ import jetbrains.mps.lang.editor.cellProviders.ReferenceCellContext;
 import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.LinkAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
@@ -35,7 +32,6 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.EditorCell_RefPresentation;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopes;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -87,11 +83,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     final SReferenceLink referenceLink = LINKS.classifier$7Ex9;
     SReferenceCellProvider provider = new SReferenceCellProvider(getNode(), referenceLink, getEditorContext()) {
       protected EditorCell createReferenceCell(final SNode targetNode) {
-        EditorCell cell = getUpdateSession().updateReferencedNodeCell(new Computable<EditorCell>() {
-          public EditorCell compute() {
-            return new Inline_Builder0(getEditorContext(), getNode(), targetNode).createCell();
-          }
-        }, targetNode, LINKS.classifier$7Ex9);
+        EditorCell cell = getUpdateSession().updateReferencedNodeCell(() -> new Inline_Builder0(getEditorContext(), getNode(), targetNode).createCell(), targetNode, LINKS.classifier$7Ex9);
         CellUtil.setupIDeprecatableStyles(targetNode, cell);
         setSemanticNodeToCells(cell, getNode());
         installDeleteActions_notnull_smartReference(cell);
@@ -115,12 +107,8 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     }
     editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.ClassifierClassExpression$lN, "jetbrains.mps.baseLanguage.editor.ClassifierClassExpressionToArray"));
     editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new ReferenceCellContext(getNode(), getNode(), referenceLink), new SubstituteInfoPartExt[]{new ClassifierClassExpression_generic_cellMenu_ejwutq_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
-    Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.LinkAttribute$v_);
-    Iterable<SNode> currentReferenceAttributes = Sequence.fromIterable(referenceAttributes).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(it), referenceLink);
-      }
-    });
+    Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.LinkAttribute$v_);
+    Iterable<SNode> currentReferenceAttributes = Sequence.fromIterable(referenceAttributes).where((it) -> Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(it), referenceLink));
     if (Sequence.fromIterable(currentReferenceAttributes).isNotEmpty()) {
       EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
       return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentReferenceAttributes).first(), AttributeKind.REFERENCE, editorCell);
@@ -158,16 +146,17 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     public ClassifierClassExpression_generic_cellMenu_ejwutq_a0a0() {
     }
 
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-      return Sequence.fromIterable(ClassifierScopes.getWithClassExpressionClassifiers(node).getAvailableElements("")).toListSequence();
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
+      return Sequence.fromIterable(ClassifierScopes.getWithClassExpressionClassifiers(node).getAvailableElements("")).toList();
+
     }
-    protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      this.handleAction_impl((SNode) parameterObject, node, model, operationContext, editorContext);
+    protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      this.handleAction_impl((SNode) parameterObject, node, model, editorContext);
     }
-    public void handleAction_impl(SNode parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    private void handleAction_impl(SNode parameterObject, SNode node, SModel model, EditorContext editorContext) {
       SLinkOperations.setTarget(node, LINKS.classifier$7Ex9, SNodeOperations.cast(parameterObject, CONCEPTS.Classifier$Ix));
     }
-    public boolean isReferentPresentation() {
+    protected boolean isReferentPresentation() {
       return false;
     }
 
@@ -180,7 +169,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ".");
     editorCell.setCellId("Constant_ejwutq_b0");
     Style style = new StyleImpl();
-    new DotStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new DotStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -189,7 +178,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "class");
     editorCell.setCellId("Constant_ejwutq_c0");
     Style style = new StyleImpl();
-    new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeyWordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, true);
     style.set(StyleAttributes.AUTO_DELETABLE, true);
     editorCell.getStyle().putAll(style);

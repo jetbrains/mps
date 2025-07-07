@@ -10,7 +10,6 @@ import java.util.List;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.project.Project;
 import java.util.Arrays;
@@ -19,10 +18,12 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import jetbrains.mps.lang.modelapi.behavior.ModuleIdentity__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.lang.smodel.behavior.ModuleReferenceExpression__BehaviorDescriptor;
-import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.smodel.Language;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -33,8 +34,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class TestModuleManifest__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x9f846aef4e4a4a84L, 0x828e7e83fe2697f2L, 0x2dc6844997876882L, "jetbrains.mps.build.mps.testManifest.structure.TestModuleManifest");
 
-  public static final SMethod<List<Tuples._3<String, String, String>>> languagesToInclude_id2R6x4AnylYu = new SMethodBuilder<List<Tuples._3<String, String, String>>>(new SJavaCompoundTypeImpl((Class<List<Tuples._3<String, String, String>>>) ((Class) Object.class))).name("languagesToInclude").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2R6x4AnylYu").build(SMethodBuilder.createJavaParameter(Project.class, ""));
-  public static final SMethod<List<Tuples._3<String, String, String>>> testModulesToInclude_id7vU6U5026IG = new SMethodBuilder<List<Tuples._3<String, String, String>>>(new SJavaCompoundTypeImpl((Class<List<Tuples._3<String, String, String>>>) ((Class) Object.class))).name("testModulesToInclude").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7vU6U5026IG").build(SMethodBuilder.createJavaParameter(Project.class, ""));
+  public static final SMethod<List<Tuples._3<String, String, String>>> languagesToInclude_id2R6x4AnylYu = new SMethodBuilder<List<Tuples._3<String, String, String>>>(new SJavaCompoundTypeImpl((Class<List<Tuples._3<String, String, String>>>) ((Class) Object.class))).name("languagesToInclude").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3298469228705308574L).languageId(0x828e7e83fe2697f2L, 0x9f846aef4e4a4a84L).build2(SMethodBuilder.createJavaParameter(Project.class, ""));
+  public static final SMethod<List<Tuples._3<String, String, String>>> testModulesToInclude_id7vU6U5026IG = new SMethodBuilder<List<Tuples._3<String, String, String>>>(new SJavaCompoundTypeImpl((Class<List<Tuples._3<String, String, String>>>) ((Class) Object.class))).name("testModulesToInclude").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8645252814069066668L).languageId(0x828e7e83fe2697f2L, 0x9f846aef4e4a4a84L).build2(SMethodBuilder.createJavaParameter(Project.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(languagesToInclude_id2R6x4AnylYu, testModulesToInclude_id7vU6U5026IG);
 
@@ -43,10 +44,15 @@ public final class TestModuleManifest__BehaviorDescriptor extends BaseBHDescript
 
   /*package*/ static List<Tuples._3<String, String, String>> languagesToInclude_id2R6x4AnylYu(@NotNull SNode __thisNode__, Project project) {
     List<Tuples._3<String, String, String>> result = ListSequence.fromList(new ArrayList<Tuples._3<String, String, String>>());
-    for (SNode ref : SLinkOperations.getChildren(__thisNode__, LINKS.language$tWhW)) {
-      SModule sModule = ModuleReferenceExpression__BehaviorDescriptor.getModule_id3wj3sjzQUV1.invoke(ref);
+    for (SNode mid : SLinkOperations.getChildren(__thisNode__, LINKS.language$tWhW)) {
+      SModuleReference ref = ModuleIdentity__BehaviorDescriptor.toModuleReference_id1Bs_61$mqDd.invoke(mid);
+      if (ref == null) {
+        continue;
+      }
+      // I assume we're in read here, we are in a behavior of a node
+      SModule sModule = ref.resolve(project.getRepository());
 
-      if (sModule != null && project.isProjectModule(sModule) && sModule instanceof AbstractModule) {
+      if (sModule instanceof Language && project.isProjectModule(sModule)) {
         IFile descriptorIFile = ((AbstractModule) sModule).getDescriptorFile();
         ListSequence.fromList(result).addElement(MultiTuple.<String,String,String>from(sModule.getModuleName(), descriptorIFile.getPath(), sModule.getModuleId().toString()));
       }

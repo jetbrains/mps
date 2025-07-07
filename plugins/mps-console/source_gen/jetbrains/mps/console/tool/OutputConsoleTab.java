@@ -4,6 +4,7 @@ package jetbrains.mps.console.tool;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.console.actions.IConsoleTool;
 import org.jetbrains.annotations.Nullable;
 import org.jdom.Element;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -22,29 +23,25 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-@GeneratedClass(node = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)/2893936025727763809", model = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)")
+@GeneratedClass(nodeId = "2893936025727763809", model = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)")
 public class OutputConsoleTab extends BaseConsoleTab {
 
-  public OutputConsoleTab(MPSProject mpsProject, ConsoleTool tool, String title, @Nullable Element history) {
+  public OutputConsoleTab(MPSProject mpsProject, IConsoleTool tool, String title, @Nullable Element history) {
     super(mpsProject, tool, title, history);
   }
 
-  protected void loadHistory(final Element state) {
-    getProject().getRepository().getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        SModel loadedModel = loadHistoryModel(state);
-        myRoot = SModelOperations.createNewRootNode(getConsoleModel(), MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x131ec6f2097ff75fL, "jetbrains.mps.console.base.structure.OutputConsoleRoot"));
-        if (loadedModel == null || ListSequence.fromList(SModelOperations.roots(loadedModel, CONCEPTS.OutputConsoleRoot$kd)).isEmpty()) {
-          SLinkOperations.setTarget(myRoot, LINKS.history$LSLq, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0xa835f28c1aa02beL, "jetbrains.mps.console.base.structure.History")));
-        } else {
-          SLinkOperations.setTarget(myRoot, LINKS.history$LSLq, SLinkOperations.getTarget(ListSequence.fromList(SModelOperations.roots(loadedModel, CONCEPTS.OutputConsoleRoot$kd)).first(), LINKS.history$LSLq));
-        }
-        SLinkOperations.setTarget(myRoot, LINKS.commandHolder$LTfs, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e27160acb4484bL, "jetbrains.mps.console.base.structure.CommandHolder")));
-        SLinkOperations.setTarget(myRoot, LINKS.cursor$hQXw, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4fe9275cea077231L, "jetbrains.mps.console.base.structure.CommandHolderRef")));
-        SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.cursor$hQXw), LINKS.target$kCjp, SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs));
-        TemporaryModels.getInstance().addMissingImports(getConsoleModel());
-      }
-    });
+  protected void loadHistory(Element state) {
+    SModel loadedModel = loadHistoryModel(state);
+    myRoot = SModelOperations.createNewRootNode(getConsoleModel(), MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x131ec6f2097ff75fL, "jetbrains.mps.console.base.structure.OutputConsoleRoot"));
+    if (loadedModel == null || ListSequence.fromList(SModelOperations.roots(loadedModel, CONCEPTS.OutputConsoleRoot$kd)).isEmpty()) {
+      SLinkOperations.setTarget(myRoot, LINKS.history$LSLq, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0xa835f28c1aa02beL, "jetbrains.mps.console.base.structure.History")));
+    } else {
+      SLinkOperations.setTarget(myRoot, LINKS.history$LSLq, SLinkOperations.getTarget(ListSequence.fromList(SModelOperations.roots(loadedModel, CONCEPTS.OutputConsoleRoot$kd)).first(), LINKS.history$LSLq));
+    }
+    SLinkOperations.setTarget(myRoot, LINKS.commandHolder$LTfs, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e27160acb4484bL, "jetbrains.mps.console.base.structure.CommandHolder")));
+    SLinkOperations.setTarget(myRoot, LINKS.cursor$hQXw, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4fe9275cea077231L, "jetbrains.mps.console.base.structure.CommandHolderRef")));
+    SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.cursor$hQXw), LINKS.target$kCjp, SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs));
+    TemporaryModels.getInstance().addMissingImports(getConsoleModel());
   }
 
   protected void registerActions(DefaultActionGroup group) {

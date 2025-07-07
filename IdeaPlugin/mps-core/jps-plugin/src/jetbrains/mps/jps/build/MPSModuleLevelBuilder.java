@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,9 +24,8 @@ import jetbrains.mps.jps.model.JpsMPSModuleExtension;
 import jetbrains.mps.jps.model.JpsMPSRepositoryFacade;
 import jetbrains.mps.jps.project.JpsMPSProject;
 import jetbrains.mps.jps.project.JpsSolutionIdea;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import org.apache.log4j.Logger;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.jps.ModuleChunk;
 import org.jetbrains.jps.builders.BuildRootDescriptor;
@@ -70,14 +69,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static jetbrains.mps.project.MPSExtentions.*;
+import static jetbrains.mps.project.MPSExtentions.MODEL;
+import static jetbrains.mps.project.MPSExtentions.MODEL_HEADER;
+import static jetbrains.mps.project.MPSExtentions.MODEL_ROOT;
 
 /**
  * evgeny, 11/30/12
  */
 public class MPSModuleLevelBuilder extends ModuleLevelBuilder {
-  @NonNls
-  private static final Logger LOG = org.apache.log4j.LogManager.getLogger(MPSModuleLevelBuilder.class);
+  private static final Logger LOG = Logger.getLogger(MPSModuleLevelBuilder.class);
 
   private MPSIdeaRefreshComponent refreshComponent = new MPSIdeaRefreshComponent();
   // keep track of what sources we cleared, in case of full rebuild
@@ -177,7 +177,7 @@ public class MPSModuleLevelBuilder extends ModuleLevelBuilder {
       }
 
       if (!okToDelete) {
-        LOG.warn("Not cleaning generator output path "
+        LOG.warning("Not cleaning generator output path "
           + outputDir.getPath()
           + " because user files may be there. Either mark it as generated or exclude from module");
         synchronized (this) {

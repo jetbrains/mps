@@ -4,7 +4,6 @@ package smodelLanguage.samples;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -16,34 +15,34 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class Attributes {
   public void accessToNodeAttribute_1(SNode node) {
-    List<SNode> macros = AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU));
-    SNode firstMacro = ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU))).first();
+    List<SNode> macros = new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU).list(node);
+    SNode firstMacro = ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU).list(node)).first();
   }
   public void accessToPropertyAttribute_1(SNode node) {
-    SNode propertyMacro = AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.name$MnvL));
-    SAbstractConcept concept = SNodeOperations.getConcept(AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.name$MnvL)));
-    SNode propertyMacro1 = AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.name$MnvL));
+    SNode propertyMacro = new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.name$MnvL).get(node);
+    SAbstractConcept concept = SNodeOperations.getConcept(new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.name$MnvL).get(node));
+    SNode propertyMacro1 = new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.name$MnvL).get(node);
   }
   public void accessToPropertyAttribute_2(SNode node) {
     SNode propMacro = null;
-    AttributeOperations.setAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.name$MnvL), propMacro);
-    AttributeOperations.setAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.name$MnvL), propMacro);
-    AttributeOperations.setAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.name$MnvL), propMacro);
+    new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.name$MnvL).set(node, propMacro);
+    new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.name$MnvL).set(node, propMacro);
+    new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.name$MnvL).set(node, propMacro);
   }
   public void accessToReferenceAttribute_1(SNode node) {
-    SNode referenceMacro = AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, LINKS.variableDeclaration$N1XG));
-    SNode referenceMacro1 = AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, LINKS.variableDeclaration$N1XG));
+    SNode referenceMacro = new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, LINKS.variableDeclaration$N1XG).get(node);
+    SNode referenceMacro1 = new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, LINKS.variableDeclaration$N1XG).get(node);
   }
   public void accessToReferenceAttribute_2(SNode node) {
     SNode refMacro = null;
-    AttributeOperations.setAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, LINKS.variableDeclaration$N1XG), refMacro);
-    AttributeOperations.setAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, LINKS.variableDeclaration$N1XG), refMacro);
-    AttributeOperations.setAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, LINKS.variableDeclaration$N1XG), refMacro);
+    new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, LINKS.variableDeclaration$N1XG).set(node, refMacro);
+    new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, LINKS.variableDeclaration$N1XG).set(node, refMacro);
+    new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, LINKS.variableDeclaration$N1XG).set(node, refMacro);
   }
   public void other(SNode node) {
     SNodeOperations.isAttribute(node);
-    List<SNode> nodes = AttributeOperations.getAttributeList(node, new IAttributeDescriptor.AllAttributes());
-    SNode firstNode = ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.AllAttributes())).first();
+    List<SNode> nodes = new IAttributeDescriptor.AllAttributes().list(node);
+    SNode firstNode = ListSequence.fromList(new IAttributeDescriptor.AllAttributes().list(node)).first();
   }
 
   private static final class CONCEPTS {

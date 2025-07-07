@@ -6,12 +6,13 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnAction;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
+import com.intellij.openapi.actionSystem.ActionPlaces;
+import org.jetbrains.annotations.NotNull;
 import com.intellij.featureStatistics.FeatureUsageTracker;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/5014390439885403930", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "5014390439885403930", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class GoToFile_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -21,14 +22,25 @@ public class GoToFile_Action extends BaseAction {
     this.action = action_par;
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
     return true;
   }
   @Override
-  public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
+  public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
+    // Quick fix for MPS-21683, see GoToAction
+    if (!(ActionPlaces.MAIN_MENU.equals(event.getPlace()))) {
+      return false;
+    }
+
     GoToFile_Action.this.action.update(event);
+    return GoToFile_Action.this.action.getTemplatePresentation().isEnabledAndVisible();
+  }
+  @Override
+  public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
+    this.setEnabledState(event.getPresentation(), this.isApplicable(event, _params));
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {

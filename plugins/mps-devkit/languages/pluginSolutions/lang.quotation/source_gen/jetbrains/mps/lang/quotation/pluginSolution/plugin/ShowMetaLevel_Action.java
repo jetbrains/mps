@@ -11,7 +11,7 @@ import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.awt.Component;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.actionSystem.PlatformCoreDataKeys;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
@@ -27,6 +27,7 @@ public class ShowMetaLevel_Action extends BaseAction {
     super("Show Quotation Metalevel", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -53,7 +54,7 @@ public class ShowMetaLevel_Action extends BaseAction {
       }
     }
     {
-      Component p = event.getData(PlatformDataKeys.CONTEXT_COMPONENT);
+      Component p = event.getData(PlatformCoreDataKeys.CONTEXT_COMPONENT);
       if (p == null) {
         return false;
       }
@@ -63,16 +64,8 @@ public class ShowMetaLevel_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._int metaLevel = new Wrappers._int();
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        metaLevel.value = (int) BaseConcept__BehaviorDescriptor.getMetaLevel_id3t0v3yFOD1A.invoke(event.getData(MPSCommonDataKeys.NODE));
-      }
-    });
-    SwingUtilities.invokeLater(new Runnable() {
-      public void run() {
-        JOptionPane.showMessageDialog(event.getData(PlatformDataKeys.CONTEXT_COMPONENT), metaLevel.value);
-      }
-    });
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(() -> metaLevel.value = (int) BaseConcept__BehaviorDescriptor.getMetaLevel_id3t0v3yFOD1A.invoke(event.getData(MPSCommonDataKeys.NODE)));
+    SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(event.getData(PlatformCoreDataKeys.CONTEXT_COMPONENT), metaLevel.value));
   }
 
   private static final class CONCEPTS {

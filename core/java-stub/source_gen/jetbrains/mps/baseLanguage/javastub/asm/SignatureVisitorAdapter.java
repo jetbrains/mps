@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.org.objectweb.asm.signature.SignatureVisitor;
 import org.jetbrains.org.objectweb.asm.Opcodes;
 
-@GeneratedClass(node = "r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860001929", model = "r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)")
+@GeneratedClass(nodeId = "7241381882860001929", model = "r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)")
 public class SignatureVisitorAdapter extends SignatureVisitor {
   public SignatureVisitorAdapter() {
     super(Opcodes.ASM4);

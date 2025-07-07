@@ -25,8 +25,8 @@ import jetbrains.jetpad.projectional.view.View;
 import jetbrains.mps.nodeEditor.cells.jetpad.PortCell;
 import jetbrains.mps.lang.editor.figures.sandbox.BlockContentView;
 import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.MovableContentView;
-import jetbrains.jetpad.model.property.WritableProperty;
 import jetbrains.jetpad.geometry.Rectangle;
+import jetbrains.jetpad.model.property.WritableProperty;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.nodeEditor.cells.jetpad.JetpadUtils;
@@ -146,21 +146,11 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
                 @Override
                 protected void registerSynchronizers(Mapper.SynchronizersConfiguration configuration) {
                   super.registerSynchronizers(configuration);
-                  configuration.add(Synchronizers.forProperty(getTarget().prop(MovableContentView.POSITION_X), new Runnable() {
-                    public void run() {
-                      updatePositionsFromModel(getTarget(), diagramNodeView);
-                    }
-                  }));
-                  configuration.add(Synchronizers.forProperty(getTarget().prop(MovableContentView.POSITION_Y), new Runnable() {
-                    public void run() {
-                      updatePositionsFromModel(getTarget(), diagramNodeView);
-                    }
-                  }));
-                  configuration.add(Synchronizers.forProperty(getTarget().bounds(), new WritableProperty<Rectangle>() {
-                    public void set(Rectangle bounds) {
-                      getTarget().prop(MovableContentView.POSITION_X).set(bounds.origin.x);
-                      getTarget().prop(MovableContentView.POSITION_Y).set(bounds.origin.y);
-                    }
+                  configuration.add(Synchronizers.forProperty(getTarget().prop(MovableContentView.POSITION_X), () -> updatePositionsFromModel(getTarget(), diagramNodeView)));
+                  configuration.add(Synchronizers.forProperty(getTarget().prop(MovableContentView.POSITION_Y), () -> updatePositionsFromModel(getTarget(), diagramNodeView)));
+                  configuration.add(Synchronizers.forProperty(getTarget().bounds(), (Rectangle bounds) -> {
+                    getTarget().prop(MovableContentView.POSITION_X).set(bounds.origin.x);
+                    getTarget().prop(MovableContentView.POSITION_Y).set(bounds.origin.y);
                   }));
                   myPropertyCell_pj4dhh_a0a.registerSynchronizers(configuration, getTarget().text());
                   myPropertyCell_pj4dhh_a1a.registerSynchronizers(configuration, getTarget().isClicked);

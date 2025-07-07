@@ -4,54 +4,122 @@ package jetbrains.mps.build.ant.generation;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.build.ant.MpsLoadTask;
+import jetbrains.mps.build.ant.GeneratorSettings;
+import jetbrains.mps.build.ant.ModuleJarDataType;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.File;
+import org.apache.tools.ant.Project;
+import jetbrains.mps.tool.common.Script;
 import jetbrains.mps.tool.common.GeneratorProperties;
 import jetbrains.mps.tool.common.JavaCompilerProperties;
-import jetbrains.mps.build.ant.ModuleJarDataType;
-import java.io.File;
 
-@GeneratedClass(node = "r:f80180a9-2bac-487b-83fc-3ef65f97aea3(jetbrains.mps.build.ant.generation)/4263887295358464059", model = "r:f80180a9-2bac-487b-83fc-3ef65f97aea3(jetbrains.mps.build.ant.generation)")
+@GeneratedClass(nodeId = "4263887295358464059", model = "r:f80180a9-2bac-487b-83fc-3ef65f97aea3(jetbrains.mps.build.ant.generation)")
 public class GenerateTask extends MpsLoadTask {
-  private final GeneratorProperties myGenProps;
-  private final JavaCompilerProperties myJavaCompilerProperties;
+  private String myTargetJavaVersion = null;
+  private GeneratorSettings mySettings;
+  private int myParallelThreads = 4;
+
   public GenerateTask() {
     super("jetbrains.mps.tool.builder.make.GeneratorWorker");
-    myGenProps = new GeneratorProperties(myWhatToDo);
-    myGenProps.setStrictMode(true).setParallelMode(false).setInplaceTransform(false).setHideWarnings(false).setCreateStaticRefs(true);
-    myJavaCompilerProperties = new JavaCompilerProperties(myWhatToDo);
+    // FIXME remove all setXXX methods related to GeneratorSettings once approach with nested <settings> element is in use for at least a year,
+    //   just in case there are old <generate> tasks with settings as attributes.
   }
 
   public void addConfiguredChunk(Chunk chunk) {
     myWhatToDo.addChunk(chunk.getModules(), chunk.getBootstrap());
   }
   public void addConfiguredLibrary(ModuleJarDataType jar) {
-    File file = jar.getFile();
-    if (file == null) {
-      return;
+    // FIXME decide whether I care to evolve manifest story. With reliable <plugin>s, don't think there's much value in 
+    //      distinct <library> elements (grouped into manifest). Rather shall spend effort to make more plugins?
+    if (jar.getManifest() != null) {
+      // FIXME same in MpsRunnerTask; have to be xml parsing
+      // perhaps, shall pass module manifest file right into Script, and parse there?
+      try (BufferedReader br = new BufferedReader(new FileReader(jar.getManifest()))) {
+        String f;
+        while ((f = br.readLine()) != null) {
+          int x = f.indexOf(" file=\"");
+          if (x > 0) {
+            myWhatToDo.addLibraryJar(f.substring(x + 7, f.lastIndexOf('"')));
+          }
+        }
+      } catch (Exception ex) {
+        ex.printStackTrace();
+      }
     }
-    addLibraryJar(file);
+    File file = jar.getFile();
+    if (file != null) {
+      addLibraryJar(file);
+    }
   }
+
+  public void addConfiguredSettings(GeneratorSettings settings) {
+    // since 2021.3
+    if (mySettings != null) {
+      log("Nested <settings> element overrides m2m settings already specified for the task", Project.MSG_WARN);
+    }
+    mySettings = settings;
+  }
+
+  public void addConfigured(GeneratorSettings settings) {
+    // this one is to let use both <settings> (name derived from #addConfiguredSettings) 
+    // and <generator-settings> (as of antlib.xml typedef) as a nested element
+    addConfiguredSettings(settings);
+  }
+
+  protected GeneratorSettings getSettings() {
+    if (mySettings == null) {
+      mySettings = new GeneratorSettings();
+      // XXX may want to specify some defaults that used to be in cons, as those in GS are different from that in this task
+      // parallel: off, in-place: off
+    }
+    return mySettings;
+  }
+
+  @Override
+  protected void finalizeScriptSettings(Script whatToDo) {
+    super.finalizeScriptSettings(whatToDo);
+    GeneratorProperties gp = new GeneratorProperties(whatToDo);
+    getSettings().feedInto(gp);
+    // keep JCP out of if just in case it sets some defaults in constructor
+    JavaCompilerProperties jcp = new JavaCompilerProperties(whatToDo);
+    if (myTargetJavaVersion != null) {
+      jcp.setTargetJavaVersion(myTargetJavaVersion);
+    }
+  }
+
   public void setStrictMode(boolean strictMode) {
-    myGenProps.setStrictMode(strictMode);
+    getSettings().setStrictMode(strictMode);
   }
   public void setParallelMode(boolean parallelMode) {
-    myGenProps.setParallelMode(parallelMode);
+    if (parallelMode == false) {
+      getSettings().setParallelThreads(1);
+    } else {
+      getSettings().setParallelThreads(myParallelThreads);
+    }
   }
   public void setUseInplaceTransform(boolean inplaceEnabled) {
-    myGenProps.setInplaceTransform(inplaceEnabled);
+    getSettings().setInplaceTransform(inplaceEnabled);
   }
   public void setParallelThreads(int threadCount) {
-    myGenProps.setParallelThreads(threadCount);
+    // keep the value in case setParallelMode(true) comes *after* setParallelThreads(8)
+    myParallelThreads = threadCount;
+    getSettings().setParallelThreads(threadCount);
   }
   public void setHideWarnings(boolean hideWarnings) {
-    myGenProps.setHideWarnings(hideWarnings);
+    getSettings().setWarnWrongChild(!(hideWarnings));
   }
   public void setCreateStaticRefs(boolean useStaticRefs) {
-    myGenProps.setCreateStaticRefs(useStaticRefs);
+    getSettings().setCreateStaticRefs(useStaticRefs);
   }
   public void setSkipUnmodifiedModels(boolean skipUnmodifiedModels) {
-    myGenProps.setSkipUnmodifiedModels(skipUnmodifiedModels);
+    getSettings().setSkipUnmodifiedModels(skipUnmodifiedModels);
   }
   public void setTargetJavaVersion(String targetJavaVersion) {
-    myJavaCompilerProperties.setTargetJavaVersion(targetJavaVersion);
+    // FIXME shall follow GeneratorSettings approach and extract a distinct compile settings typedef
+    myTargetJavaVersion = targetJavaVersion;
+  }
+  public void setMessageLevel(String level) {
+    getSettings().setMessageLevel(level);
   }
 }

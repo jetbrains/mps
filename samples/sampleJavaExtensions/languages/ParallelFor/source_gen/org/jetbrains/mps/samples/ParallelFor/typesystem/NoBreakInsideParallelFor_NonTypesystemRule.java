@@ -10,9 +10,7 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.behavior.BreakStatement__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -23,16 +21,10 @@ public class NoBreakInsideParallelFor_NonTypesystemRule extends AbstractNonTypes
   public NoBreakInsideParallelFor_NonTypesystemRule() {
   }
   public void applyRule(final SNode parallelFor, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(parallelFor, CONCEPTS.BreakStatement$WM, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return BreakStatement__BehaviorDescriptor.getLoop_idhEwIHvD.invoke(it) == parallelFor;
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        {
-          final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it, "Hush! Can't break from within a concurrently run branch of the computation.", "r:4c36f4b4-7816-4067-aa6e-a49c547265ed(org.jetbrains.mps.samples.ParallelFor.typesystem)", "4697196167065941903", null, errorTarget);
-        }
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(parallelFor, CONCEPTS.BreakStatement$WM, false, new SAbstractConcept[]{})).where((it) -> BreakStatement__BehaviorDescriptor.getLoop_idhEwIHvD.invoke(it) == parallelFor).visitAll((it) -> {
+      {
+        final MessageTarget errorTarget = new NodeMessageTarget();
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it, "Hush! Can't break from within a concurrently run branch of the computation.", "r:4c36f4b4-7816-4067-aa6e-a49c547265ed(org.jetbrains.mps.samples.ParallelFor.typesystem)", "4697196167065941903", null, errorTarget);
       }
     });
   }

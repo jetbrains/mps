@@ -33,7 +33,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[6];
           intentions[0] = new AddAuthorBlockDocTag_Intention();
           intentions[1] = new AddSinceBlockDocTag_Intention();
@@ -45,35 +45,35 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 1:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new AddMethodDocComment_Intention();
         }
         break;
       case 2:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new AddClassifierDocComment_Intention();
         }
         break;
       case 3:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new AddFieldDocComment_Intention();
         }
         break;
       case 4:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new FoldHTMLElement_Intention();
         }
         break;
       case 5:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[3];
           intentions[0] = new AddParameterBlockDocTag_Intention();
           intentions[1] = new AddReturnBlockTag_Intention();
@@ -82,7 +82,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 6:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new AddStaticFieldDocComment_Intention();
         }

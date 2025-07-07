@@ -10,14 +10,12 @@ import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -32,12 +30,12 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class MappingConfiguration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration");
 
-  public static final SMethod<List<SNode>> getMembers_idhEwJjl2 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMembers").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwJjl2").build();
-  public static final SMethod<Void> addMember_id2JKPiG_HmQX = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addMember").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2JKPiG_HmQX").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<List<SNode>> getBaseConceptCollection_id4$$3zrO3UBG = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getBaseConceptCollection").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4$$3zrO3UBG").build();
-  public static final SMethod<Boolean> isApplicable_id6NcFj35FbEV = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isApplicable").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6NcFj35FbEV").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<List<SNode>> getMembers_idhEwJjl2 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMembers").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877531970L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Void> addMember_id2JKPiG_HmQX = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addMember").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3166264919334415805L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<List<SNode>> getBaseConceptCollection_id4$$3zrO3UBG = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getBaseConceptCollection").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5270353093116013036L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
+  public static final SMethod<Boolean> canBeAppliedToNode_id7IH442d05tK = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeAppliedToNode").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8911797107065640816L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMembers_idhEwJjl2, addMember_id2JKPiG_HmQX, getBaseConceptCollection_id4$$3zrO3UBG, isApplicable_id6NcFj35FbEV);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMembers_idhEwJjl2, addMember_id2JKPiG_HmQX, getBaseConceptCollection_id4$$3zrO3UBG, canBeAppliedToNode_id7IH442d05tK);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -55,9 +53,9 @@ public final class MappingConfiguration__BehaviorDescriptor extends BaseBHDescri
     return members;
   }
   /*package*/ static void addMember_id2JKPiG_HmQX(@NotNull SNode __thisNode__, SNode newMember) {
-    if ((AttributeOperations.getAttribute(newMember, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O)) != null)) {
+    if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(newMember) != null)) {
       SNode ruleNode = SLinkOperations.addNewChild(__thisNode__, LINKS.rootMappingRule$edB6, CONCEPTS.Root_MappingRule$NH);
-      SLinkOperations.setTarget(ruleNode, LINKS.applicableConcept$Hpnk, SLinkOperations.getTarget(AttributeOperations.getAttribute(newMember, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O)), LINKS.applicableConcept$LAIX));
+      SLinkOperations.setTarget(ruleNode, LINKS.applicableConcept$Hpnk, SLinkOperations.getTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(newMember), LINKS.applicableConcept$LAIX));
       SLinkOperations.setTarget(ruleNode, LINKS.template$n_Qy, SNodeOperations.cast(newMember, CONCEPTS.INamedConcept$Kd));
     } else if (SNodeOperations.isInstanceOf(newMember, CONCEPTS.TemplateDeclaration$5G)) {
       SNode mappingRule = SLinkOperations.addNewChild(__thisNode__, LINKS.reductionMappingRule$epW2, CONCEPTS.Reduction_MappingRule$9X);
@@ -78,7 +76,7 @@ public final class MappingConfiguration__BehaviorDescriptor extends BaseBHDescri
     }
     return result;
   }
-  /*package*/ static boolean isApplicable_id6NcFj35FbEV(@NotNull SNode __thisNode__, SNode candidate) {
+  /*package*/ static boolean canBeAppliedToNode_id7IH442d05tK(@NotNull SAbstractConcept __thisConcept__, SNode candidate) {
     return false;
   }
 
@@ -104,8 +102,6 @@ public final class MappingConfiguration__BehaviorDescriptor extends BaseBHDescri
         return null;
       case 2:
         return (T) ((List<SNode>) getBaseConceptCollection_id4$$3zrO3UBG(node));
-      case 3:
-        return (T) ((Boolean) isApplicable_id6NcFj35FbEV(node, (SNode) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -118,6 +114,8 @@ public final class MappingConfiguration__BehaviorDescriptor extends BaseBHDescri
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 3:
+        return (T) ((Boolean) canBeAppliedToNode_id7IH442d05tK(concept, (SNode) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

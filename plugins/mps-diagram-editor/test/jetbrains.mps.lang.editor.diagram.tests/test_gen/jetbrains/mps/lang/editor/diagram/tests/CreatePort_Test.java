@@ -4,25 +4,25 @@ package jetbrains.mps.lang.editor.diagram.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class CreatePort_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(CreatePort_Test.class, "${mps_home}", "r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(CreatePort_Test.class).projectPath(null).modelRef("r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)").reopenProject(false).build());
 
   public CreatePort_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -39,13 +39,9 @@ public class CreatePort_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("2278461409093572745", "2278461409093572838");
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().executeCommandInEDT(new Runnable() {
-        public void run() {
-          SNodeFactoryOperations.addNewChild(SNodeOperations.cast(getNodeById("2278461409093572746"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, "jetbrains.mps.lang.editor.diagram.testLanguage"), 0x4ce40ecaf41f71d1L, "NodeWithPorts"))), LINKS.outputs$oKtu, null);
-        }
-      });
-      // Here used to be MA.flushEventQueue, which seems useless here, press mouse would post its own events to EDT, so that 
-      // by the time events are processed, the command to add a new node is over for sure. 
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().executeCommandInEDT(() -> SNodeFactoryOperations.addNewChild(getAnnotatedNode("node"), LINKS.outputs$oKtu, null));
+      // Here used to be MA.flushEventQueue, which seems useless here, press mouse would post its own events to EDT, so that
+      // by the time events are processed, the command to add a new node is over for sure.
       {
         int x_rszpwe_d0 = 87;
         int y_rszpwe_d0 = 42;

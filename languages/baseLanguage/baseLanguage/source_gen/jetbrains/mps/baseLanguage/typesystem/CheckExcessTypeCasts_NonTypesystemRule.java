@@ -10,7 +10,7 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
-import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
+import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.BaseQuickFixProvider;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -22,13 +22,14 @@ public class CheckExcessTypeCasts_NonTypesystemRule extends AbstractNonTypesyste
   public CheckExcessTypeCasts_NonTypesystemRule() {
   }
   public void applyRule(final SNode expr, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (TypecheckingFacade.getFromContext().isStrongSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(expr, LINKS.expression$XDmN)), SLinkOperations.getTarget(expr, LINKS.type$XD7M))) {
-      // TODO: typecase may not be superfluous in a type inference context (MPS-15011) 
+    SNode exprType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(expr, LINKS.expression$XDmN));
+    if (!(InferenceHelper.isInferredFromContext(exprType)) && TypecheckingFacade.getFromContext().isStrongSubtype(exprType, SLinkOperations.getTarget(expr, LINKS.type$XD7M))) {
+      // TODO: typecast may not be superfluous in a type inference context (MPS-15011)
       {
-        final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(expr, "Typecast expression is superfluous", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3637195266923171603", null, errorTarget);
+        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.type$XD7M);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(expr, "Superfluous typecast expression", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3637195266923171603", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveExcessTypeCast_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveExcessTypeCast_QuickFix", "3637195266923171609", false);
           intentionProvider.putArgument("castExpr", expr);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }

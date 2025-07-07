@@ -22,7 +22,6 @@ import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.typesystem.RulesFunctions_BaseLanguage;
 import jetbrains.mps.baseLanguage.behavior.IMethodLike__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -64,7 +63,7 @@ public final class NodePointerMigrations {
 
   public static SNode extractNodeFromQuotation(SNode quotation, SNode linkDeclaration) {
     SReferenceLink link = MetaAdapterByDeclaration.getReferenceLink(linkDeclaration);
-    // FIXME Error suppressed. Fix typing rules for `reference< >` operation. See MPS-27616 
+    // FIXME Error suppressed. Fix typing rules for `reference< >` operation. See MPS-27616
     SReference reference = SNodeOperations.getReference(SLinkOperations.getTarget(quotation, LINKS.quotedNode$ip4), link);
     if (reference == null) {
       return null;
@@ -130,11 +129,7 @@ public final class NodePointerMigrations {
 
   public static boolean isReturnExpression(SNode node) {
     SNode method = SNodeOperations.getNodeAncestorWhereConceptInList(node, new SAbstractConcept[]{CONCEPTS.ConceptFunction$mf, CONCEPTS.BaseMethodDeclaration$kD}, false, false);
-    Iterable<SNode> returns = Sequence.fromIterable(RulesFunctions_BaseLanguage.collectReturnStatements(IMethodLike__BehaviorDescriptor.getBody_idi2fhZ_m.invoke(method))).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.expression$eJ92);
-      }
-    });
+    Iterable<SNode> returns = Sequence.fromIterable(RulesFunctions_BaseLanguage.collectReturnStatements(IMethodLike__BehaviorDescriptor.getBody_idi2fhZ_m.invoke(method))).select((it) -> SLinkOperations.getTarget(it, LINKS.expression$eJ92));
     if (Sequence.fromIterable(returns).contains(node)) {
       return true;
     }

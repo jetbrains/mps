@@ -23,8 +23,8 @@ public final class IncorrectTargetTestConcept_FeedbackFeedback extends BaseFeedb
   private static final FeedbackProvider<IncorrectTargetChildRoleContext> MSGPROVIDER_WhenChildRoleHasIncompatibleTargetConcept_cxdcuc_a = new BaseMessageProvider<IncorrectTargetChildRoleContext>(new ProblemKindId(PredefinedStructureProblemKind.TARGET_CONCEPT_INCORRECT_CHILD)) {
     @NotNull
     @Override
-    public MessageProvider.StringMsg yieldMessage(IncorrectTargetChildRoleContext context) {
-      return new MessageProvider.StringMsg("CHILD ROLE IS of CONCEPT " + context.getChildConcept() + " which is not subconcept of " + context.getTargetConcept());
+    public MessageProvider.Msg yieldMessage(IncorrectTargetChildRoleContext context) {
+      return format("CHILD ROLE IS of CONCEPT %s which is not subconcept of %s", context.getChildConcept(), context.getTargetConcept());
     }
   };
 

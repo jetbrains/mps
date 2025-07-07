@@ -7,7 +7,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.annotations.NotNull;
 
-@GeneratedClass(node = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)/6599163591527171838", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
+@GeneratedClass(nodeId = "6599163591527171838", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
 /*package*/ class MutableChildrenList extends AbstractMutableChildrenList {
   protected final SNode myNode;
   protected final SContainmentLink myRole;
@@ -28,7 +28,7 @@ import org.jetbrains.annotations.NotNull;
 
   @Override
   public boolean remove(Object o) {
-    if (!((o instanceof SNode))) {
+    if (!(o instanceof SNode)) {
       return false;
     }
     SNode n = (SNode) o;
@@ -53,7 +53,7 @@ import org.jetbrains.annotations.NotNull;
   }
 
   @Override
-  protected void addFirst(SNode node) {
+  public void addFirst(SNode node) {
     insertBefore(node, myNode.getFirstChild());
   }
 

@@ -8,10 +8,10 @@ import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
 import jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor;
-import jetbrains.mps.samples.customAspect.documentation.runtime.DocumentationAspectDescriptor;
-import jetbrains.mps.samples.customAspect.sampleLanguage.documentation.DocumentationDescriptor;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.samples.customAspect.sampleLanguage.editor.EditorAspectDescriptorImpl;
+import jetbrains.mps.samples.customAspect.documentation.runtime.DocumentationAspectDescriptor;
+import jetbrains.mps.samples.customAspect.sampleLanguage.documentation.DocumentationDescriptor;
 import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
 import jetbrains.mps.samples.customAspect.sampleLanguage.structure.ConceptPresentationAspectImpl;
@@ -45,19 +45,14 @@ public class Language extends LanguageRuntime {
 
   @Override
   protected <T extends ILanguageAspect> T createAspect(Class<T> aspectClass) {
-
-
-    // AP: legacy part, must be migrated from switch: please use lang.descriptor mapping label 
     if (aspectClass == ConstraintsAspectDescriptor.class) {
       return aspectClass.cast(new jetbrains.mps.samples.customAspect.sampleLanguage.constraints.ConstraintsAspectDescriptor());
     }
-    if (aspectClass.getName().equals("jetbrains.mps.samples.customAspect.documentation.runtime.DocumentationAspectDescriptor")) {
-      if (aspectClass == DocumentationAspectDescriptor.class) {
-        return (T) new DocumentationDescriptor();
-      }
-    }
     if (aspectClass == EditorAspectDescriptor.class) {
       return aspectClass.cast(new EditorAspectDescriptorImpl());
+    }
+    if (aspectClass == DocumentationAspectDescriptor.class) {
+      return aspectClass.cast(new DocumentationDescriptor());
     }
     if (aspectClass == StructureAspectDescriptor.class) {
       return aspectClass.cast(new jetbrains.mps.samples.customAspect.sampleLanguage.structure.StructureAspectDescriptor());

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,17 @@
  */
 package jetbrains.mps.vfs.util;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.vfs.IFileSystem;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.util.Locale;
 
 //this is an internal class with assertions usable for checking formats of file paths in File/Jar/Jrt FSes
 public final class PathFormatChecker {
+  private static final Logger LOG = Logger.getLogger(PathFormatChecker.class);
+
   private final String myPath;
 
   public PathFormatChecker(@NotNull String path) {
@@ -29,29 +33,70 @@ public final class PathFormatChecker {
   }
 
   public PathFormatChecker osIndependentPath() {
+    // the backslash is valid on linux, for example
+    // we have faced such a file https://github.com/systemd/systemd/blob/main/units/system-systemd%5Cx2dcryptsetup.slice
+    // obviously it does not do much, still we are not able to work with project file a\b.class on linux,
+    // but at least now, when just traversing some tree with such file names, we do not crash
     if (myPath.contains("\\")) {
-      throw new PathFormatException("Not os-independent path: " + myPath, myPath);
+      LOG.warning("Possibly not os-independent path: " + myPath, new PathFormatException("", myPath));
     }
     return this;
   }
 
-  /*
-    Michael, by the way some filesystems can create paths with '\'
-   */
   public PathFormatChecker osDependentPath() {
-    String badSeparator = File.separator.equals("/") ? "\\" : "/";
+    String badSeparator = "/".equals(File.separator) ? "\\" : "/";
+
     if (myPath.contains(badSeparator)) {
-      throw new PathFormatException("Not os-dependent path: " + myPath, myPath);
+      LOG.warning("Possibly not os-dependent path: " + myPath, new PathFormatException("", myPath));
     }
     return this;
   }
 
   public PathFormatChecker absolute() {
-    if (!(new File(myPath).isAbsolute())) {
-      throw new PathFormatException("Path should be absolute: " + myPath, myPath);
+    if (!isAbsolute(myPath)) {
+      throw new PathFormatException(String.format("Path should be absolute: %s, os %s",
+                                                  myPath,
+                                                  System.getProperty("os.name")), myPath);
     }
     return this;
   }
+
+  // com.intellij.openapi.util.io.OSAgnosticPathUtil.isAbsolute
+  private static boolean isAbsolute(@NotNull String path) {
+    return path.startsWith("/") || isAbsoluteDosPath(path) || isUncRootPath(path);
+  }
+
+  private static boolean isAbsoluteDosPath(@NotNull String path) {
+    if (path.length() > 2 && path.charAt(1) == ':' && isSeparator(path.charAt(2))) {
+      char ch = path.charAt(0);
+      return 'A' <= ch && ch <= 'Z' || 'a' <= ch && ch <= 'z';
+    }
+    return false;
+  }
+
+  private static boolean isUncRootPath(@NotNull String path) {
+    if (path.length() > 1 && isSeparator(path.charAt(0)) && path.charAt(1) == path.charAt(0)) {
+      final boolean isWindows = System.getProperty("os.name").toLowerCase(Locale.ENGLISH).startsWith("windows");
+      // PathUtilRt.isWindowsUNCRoot
+      if (!isWindows) {
+        return false;
+      }
+      // !PathUtilRt.hasFileSeparatorsOrNavigatableDots
+      if (path.length() > 2 && path.charAt(2) == '.') {
+        // "//.", "//./", "//.." or "//../"
+        return path.length() == 3 || isSeparator(path.charAt(3)) || (path.charAt(3) == '.' && (path.length() == 4 || isSeparator(path.charAt(4))));
+      }
+      return true;
+    }
+    return false;
+  }
+
+  private static boolean isSeparator(char c) {
+    return c == '/' || c == '\\';
+  }
+
+
+
 
   public PathFormatChecker noDots() {
     for (String part : myPath.split(IFileSystem.SEPARATOR)) {
@@ -87,8 +132,7 @@ public final class PathFormatChecker {
   }
 
   /**
-   * Control flow exception for now
-   * MM, please rewrite this hell
+   * fixme control flow exception for now
    */
   public static final class PathFormatException extends RuntimeException {
     @NotNull

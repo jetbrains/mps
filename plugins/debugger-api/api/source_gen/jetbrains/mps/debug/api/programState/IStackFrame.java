@@ -5,7 +5,7 @@ package jetbrains.mps.debug.api.programState;
 import jetbrains.mps.annotations.GeneratedClass;
 import java.util.List;
 
-@GeneratedClass(node = "r:0a0d7eec-6e5a-412b-8e16-e3ee5ed7fb95(jetbrains.mps.debug.api.programState)/4474271214082914121", model = "r:0a0d7eec-6e5a-412b-8e16-e3ee5ed7fb95(jetbrains.mps.debug.api.programState)")
+@GeneratedClass(nodeId = "4474271214082914121", model = "r:0a0d7eec-6e5a-412b-8e16-e3ee5ed7fb95(jetbrains.mps.debug.api.programState)")
 public interface IStackFrame {
   ILocation getLocation();
   IThread getThread();

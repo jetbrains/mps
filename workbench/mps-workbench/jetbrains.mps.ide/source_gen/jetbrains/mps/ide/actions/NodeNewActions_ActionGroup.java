@@ -4,26 +4,18 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
-import jetbrains.mps.plugins.actions.LabelledAnchor;
-import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
-import com.intellij.openapi.extensions.PluginId;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/7612244991328876743", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "7612244991328876743", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class NodeNewActions_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.actions.NodeNewActions_ActionGroup";
   public static final String LABEL_ID_newRoot = ID + "newRoot";
 
-  public NodeNewActions_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public NodeNewActions_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("New", ID, plugin);
     setIsInternal(false);
     setPopup(true);
-    {
-      LabelledAnchor action = new LabelledAnchor(NodeNewActions_ActionGroup.LABEL_ID_newRoot);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      NodeNewActions_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_newRoot);
   }
 }

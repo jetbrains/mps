@@ -12,7 +12,7 @@ import com.intellij.openapi.actionSystem.CommonDataKeys;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 
-@GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/3531370237490077704", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
+@GeneratedClass(nodeId = "3531370237490077704", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public class InstalVcsAddons_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -20,6 +20,7 @@ public class InstalVcsAddons_Action extends BaseAction {
     super("Install MPS VCS Add-ons...", "Install custom merge driver for Git and custom diff3 for Subversion", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

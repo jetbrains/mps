@@ -13,7 +13,7 @@ import jetbrains.mps.make.facet.ITarget;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 
-@GeneratedClass(node = "r:8e0d2787-667a-41b8-9f98-9bb45c087fba(jetbrains.mps.internal.make.runtime.script)/6168415856807657427", model = "r:8e0d2787-667a-41b8-9f98-9bb45c087fba(jetbrains.mps.internal.make.runtime.script)")
+@GeneratedClass(nodeId = "6168415856807657427", model = "r:8e0d2787-667a-41b8-9f98-9bb45c087fba(jetbrains.mps.internal.make.runtime.script)")
 public class InvalidScript implements IScript {
   private Iterable<ValidationError> errors;
   public InvalidScript(Iterable<ValidationError> errors) {

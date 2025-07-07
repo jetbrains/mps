@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Optional;
-import java.util.function.Consumer;
+import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -20,21 +20,21 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-@GeneratedClass(node = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/5556712693571726627", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
+@GeneratedClass(nodeId = "5556712693571726627", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
 /*package*/ class DeleteLineAction {
   /*package*/ static boolean canExecute(EditorCell currentSelectedCell) {
     return findCellToDelete(currentSelectedCell).isPresent();
   }
   /*package*/ static void execute(final EditorContext editorContext, EditorCell currentSelectedCell) {
     Optional<EditorCell> cellToDeleteOptional = findCellToDelete(currentSelectedCell);
-    cellToDeleteOptional.ifPresent(new Consumer<EditorCell>() {
-      public void accept(EditorCell cellToDelete) {
-        editorContext.getEditorComponent().getActionHandler().executeAction(cellToDelete, CellActionType.DELETE);
-      }
+    cellToDeleteOptional.ifPresent((EditorCell cellToDelete) -> {
+      editorContext.getDeletionApprover().approveForDeletion(cellToDelete);
+      EditorComponent editorComponent = editorContext.getEditorComponent();
+      editorComponent.getActionHandler().executeAction(cellToDelete, CellActionType.DELETE);
     });
   }
 
@@ -76,7 +76,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static SContainmentLink getContainmentLink(SNode node) {
-    return (SNodeOperations.isInstanceOf(node, CONCEPTS.ChildAttribute$m8) ? ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzf"))) : node.getContainmentLink());
+    return (SNodeOperations.isInstanceOf(node, CONCEPTS.ChildAttribute$m8) ? ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodIdV2.create("getLink", 709746936026609871L, 0x553941aeb020c32eL))) : node.getContainmentLink());
   }
 
   private static final class LINKS {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,16 @@
  */
 package jetbrains.mps.smodel.persistence.def;
 
+import jetbrains.mps.RuntimeFlags;
+import jetbrains.mps.extapi.model.PersistenceProblem;
 import jetbrains.mps.extapi.model.SModelData;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.IndexAwareModelFactory.Callback;
+import jetbrains.mps.persistence.MPSPersistence;
+import jetbrains.mps.persistence.MetaModelInfoProvider;
+import jetbrains.mps.persistence.MetaModelInfoProvider.RegularMetaModelInfo;
+import jetbrains.mps.persistence.MetaModelInfoProvider.StuffedMetaModelInfo;
+import jetbrains.mps.persistence.UserObjectsPersistence;
 import jetbrains.mps.persistence.xml.XMLPersistence;
 import jetbrains.mps.persistence.xml.XMLPersistence.Indexer;
 import jetbrains.mps.smodel.DefaultSModel;
@@ -31,12 +39,13 @@ import jetbrains.mps.util.JDOMUtil;
 import jetbrains.mps.util.StringUtil;
 import jetbrains.mps.util.xml.BreakParseSAXException;
 import jetbrains.mps.util.xml.XMLSAXHandler;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jdom.Document;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel.Problem.Kind;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.persistence.ModelSaveException;
+import org.jetbrains.mps.openapi.persistence.ModelSaveOption;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 import org.xml.sax.Attributes;
@@ -48,6 +57,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -75,7 +85,7 @@ import java.util.List;
  * See VCSPersistenceSupport for an example.
  */
 public class ModelPersistence {
-  private static final Logger LOG = LogManager.getLogger(ModelPersistence.class);
+  private static final Logger LOG = Logger.getLogger(ModelPersistence.class);
 
   public static final String MODEL = "model";
   public static final String REF = "ref";
@@ -85,6 +95,11 @@ public class ModelPersistence {
 
   public static final String PERSISTENCE = "persistence";
   public static final String PERSISTENCE_VERSION = "version";
+
+  // attribute for <model> tag we use to denote type of per-root content (header or a root).
+  // have to process individually not to get the value into header's properties (i.e. until we keep the code to
+  // copy <model> attributes as header's properties)
+  public static final String PER_ROOT_CONTENT = "content";
 
   public static final int FIRST_SUPPORTED_VERSION = 9;
   public static final int LAST_VERSION = 9;
@@ -203,11 +218,12 @@ public class ModelPersistence {
    * FIXME why does this method do silent update? Would be better to update explicitly, and fail from the method if can't save with specified version
    *  returns upgraded model, or null if the model doesn't require update
    */
-  public static DefaultSModel saveModel(@NotNull SModel model, @NotNull StreamDataSource source, int persistenceVersion) throws IOException {
+  public static DefaultSModel saveModel(@NotNull SModel model, @NotNull StreamDataSource source, int persistenceVersion) throws ModelSaveException {
     LOG.debug("Saving model " + model.getReference() + " to " + source.getLocation());
 
     if (source.isReadOnly()) {
-      throw new IOException("`" + source.getLocation() + "' is read-only");
+      final PersistenceProblem p = new PersistenceProblem(Kind.Save, String.format("`%s' is read-only", source.getLocation()), source.getLocation(), true);
+      throw new ModelSaveException(p.getText(), Collections.singleton(p));
     }
 
     // upgrade?
@@ -222,22 +238,32 @@ public class ModelPersistence {
     }
 
     // save model
-    Document document = modelToXml(model, persistenceVersion);
-    JDOMUtil.writeDocument(document, source);
+    try {
+      Document document = modelToXml(model, persistenceVersion);
+      JDOMUtil.writeDocument(document, source);
 
-    if (oldVersion != persistenceVersion) {
-      LOG.info("persistence upgraded: " + oldVersion + "->" + persistenceVersion + " " + model.getReference());
-      return (DefaultSModel) model;
+      if (oldVersion != persistenceVersion) {
+        LOG.info("persistence upgraded: " + oldVersion + "->" + persistenceVersion + " " + model.getReference());
+        return (DefaultSModel) model;
+      }
+      return null;
+    } catch (IOException ex) {
+      PersistenceProblem p = new PersistenceProblem(Kind.Save, "Failed to serialize XML document into stream", source.getLocation(), true);
+      throw new ModelSaveException(p.getText(), Collections.singleton(p), ex);
     }
-    return null;
   }
 
   /**
    * Serialize model into xml, conformant to actual model's persistence version, if any, or current persistence version otherwise.
    * The method doesn't update persistence version of the model (as it used to do)
+   * @deprecated fate of the method is uncertain. Does anyone need it? What for? If you care to keep it, stand up, otherwise
+   *             we remove it in coming releases
    */
   @NotNull
+  @Deprecated(since = "2021.2", forRemoval = true)
   public static Document saveModel(@NotNull SModel sourceModel) {
+    // XXX is there need for the method? Who might care to get XML Document for a model except our own
+    //     implementation code (addressed by modelToXml() method)?
     int persistenceVersion = -1;
     if (sourceModel instanceof DefaultSModel) {
       persistenceVersion = ((DefaultSModel) sourceModel).getSModelHeader().getPersistenceVersion();
@@ -245,22 +271,61 @@ public class ModelPersistence {
     if (persistenceVersion == -1 || !isSupported(persistenceVersion) || getPersistence(persistenceVersion) == null) {
       persistenceVersion = ModelPersistence.LAST_VERSION;
     }
-    return modelToXml(sourceModel, persistenceVersion);
+    try {
+      return modelToXml(sourceModel, persistenceVersion);
+    } catch (ModelSaveException ex) {
+      // XXX oh, really? Replace checked, openapi Exception with undocumented ISE?
+      LOG.error(ex.getMessage(), ex);
+      throw new IllegalStateException(ex);
+    }
+  }
+
+  /**
+   * DO NOT USE THIS METHOD OUTSIDE OF MPS
+   *
+   * This is internal contract how we pass {@link MetaModelInfoProvider} instances around
+   */
+  @NotNull
+  public static MetaModelInfoProvider mmiProviderFor(SModelData model) {
+    final SModelHeader header = model instanceof DefaultSModel ? ((DefaultSModel) model).getSModelHeader() : null;
+    if (header != null && header.getMetaInfoProvider() != null) {
+      return header.getMetaInfoProvider();
+    } else {
+      return new RegularMetaModelInfo();
+    }
+  }
+
+  private static ModelSaveOption[] saveOptionsFor(SModelData model) {
+    final SModelHeader header = model instanceof DefaultSModel ? ((DefaultSModel) model).getSModelHeader() : null;
+    if (header != null) {
+      if (RuntimeFlags.customNodeIdentitySupport()) {
+        return new UserObjectsPersistence[]{UserObjectsPersistence.DESIRED};
+      }
+      String value = header.getOptionalProperty(MPSPersistence.UO_MODEL_ATTRIBUTE);
+      return value != null ? new UserObjectsPersistence[]{UserObjectsPersistence.valueOf(value)} : null;
+    }
+    return null;
   }
 
   /**
    * Serialize model to xml in conformance with given persistence version.
    *
-   * @throws java.lang.IllegalArgumentException if persistenceVersion is invalid (use {@link #LAST_VERSION} if uncertain
+   * @throws ModelSaveException if persistenceVersion is invalid (use {@link #LAST_VERSION} if uncertain
    */
-  private static Document modelToXml(@NotNull SModel model, int persistenceVersion) {
+  private static Document modelToXml(@NotNull SModel model, int persistenceVersion) throws ModelSaveException {
     IModelPersistence modelPersistence = getPersistence(persistenceVersion);
     if (modelPersistence == null) {
-      throw new IllegalArgumentException(String.format("Unknown persistence version %d", persistenceVersion));
+      final String m = String.format("Unknown persistence version %d", persistenceVersion);
+      PersistenceProblem p = new PersistenceProblem(Kind.Save, m, String.valueOf(model.getReference()), true);
+      throw new ModelSaveException(p);
     }
-    IModelWriter writer = modelPersistence.getModelWriter(model instanceof DefaultSModel ? ((DefaultSModel) model).getSModelHeader() : null);
+    final MetaModelInfoProvider mmiProvider = mmiProviderFor(model);
+    final ModelSaveOption[] opts = saveOptionsFor(model);
+    IModelWriter writer = modelPersistence.getModelWriter(mmiProvider, opts);
     if (writer == null) {
-      throw new IllegalArgumentException(String.format("Persistence has no writer. Version %d", persistenceVersion));
+      final String m = String.format("Persistence has no writer. Version %d", persistenceVersion);
+      PersistenceProblem p = new PersistenceProblem(Kind.Save, m, String.valueOf(model.getReference()), true);
+      throw new ModelSaveException(m, Collections.singleton(p));
     }
     return writer.saveModel(model);
   }
@@ -279,10 +344,6 @@ public class ModelPersistence {
     return (DefaultSModel) readModel(header, new InputSource(new StringReader(content)), state).getModel();
   }
 
-  @NotNull
-  public static String modelToString(@NotNull final SModel model) {
-    return JDOMUtil.asString(saveModel(model));
-  }
 
   // propagates exceptions that had happened during read, except for special case when we deliberately stop parsing process
   // wrap certain errors as exceptions to facilitate broken model instead of broken MPS
@@ -312,7 +373,7 @@ public class ModelPersistence {
       parseAndHandleExceptions(source, new HeaderOnlyHandler(header));
       IModelPersistence mp = getPersistence(header.getPersistenceVersion());
       if (!(mp instanceof XMLPersistence)) {
-        LOG.warn("Can't index old persistence. Please update persistence of old models.\n" +
+        LOG.warning("Can't index old persistence. Please update persistence of old models.\n" +
                  "Persistence version: " + header.getPersistenceVersion() + "\n" +
                  "Model: " + header.getModelReference().getModelName());
         return;
@@ -329,11 +390,14 @@ public class ModelPersistence {
     }
   }
 
-  public static SModelData getModelData(@NotNull InputStream input) throws IOException, ModelReadException {
+  public static SModelData getModelData(@NotNull InputStream input, boolean keepMetaModelInfo) throws IOException, ModelReadException {
     assertMarkSupported(input);
     input.mark(HEADER_READ_LIMIT);
     SModelHeader header = loadDescriptor(new InputSource(new InputStreamReader(input, FileUtil.DEFAULT_CHARSET)));
     input.reset();
+    if (keepMetaModelInfo) {
+      header.setMetaInfoProvider(new StuffedMetaModelInfo(new RegularMetaModelInfo()));
+    }
     ModelLoadResult result = readModel(header, new InputSource(new InputStreamReader(input, FileUtil.DEFAULT_CHARSET)), ModelLoadingState.FULLY_LOADED);
     return result.getModel();
   }
@@ -355,13 +419,13 @@ public class ModelPersistence {
           if (MODEL_UID.equals(name) || ModelPersistence9.REF.equals(name)) {
             final SModelReference mr = value == null ? null : PersistenceFacade.getInstance().createModelReference(value);
             myResult.setModelReference(mr);
-          } else if (SModelHeader.DO_NOT_GENERATE.equals(name)) {
-            myResult.setOptionalProperty(name, value);
-          } else if ("version".equals(name)) {
-            // old model version
-            // [AP] copied as is from the VCSPersistenceSupport: I have know idea whether this branch is necessary
-            // nop
+          } else if (PER_ROOT_CONTENT.equals(name)) {
+            // ignore the value; this is our implementation tag, we don't want to have it in header's properties
+            // Complete reader uses the value to setContentKind of ModelLoadResult.
+            continue;
           } else {
+            // XXX in fact, with dedicated <attribute> child support since 2018, we may drop
+            //     this fallback here. Perhaps, shall keep one for legacy persistence versions (in VCS)?
             myResult.setOptionalProperty(name, StringUtil.unescapeXml(value));
           }
         }

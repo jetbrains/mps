@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,6 @@
 package jetbrains.mps.extapi.persistence;
 
 import jetbrains.mps.util.IterableUtil;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -29,42 +27,34 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
  * A cosy model factory registry wrapper for iterable of model factories
- * NB: reverses the given iterable in the constructor
  */
 @Immutable
 final class ModelFactoryRegistryInt implements ModelFactoryRegistry {
-  private static final Logger LOG = LogManager.getLogger(ModelFactoryRegistryInt.class);
 
   private final List<ModelFactory> myFactories;
 
   ModelFactoryRegistryInt(Iterable<ModelFactory> factories) {
     myFactories = IterableUtil.copyToList(factories);
-    Collections.reverse(myFactories);
   }
 
   @NotNull
   @Override
   @Immutable
   public List<ModelFactory> getFactories() {
-    List<ModelFactory> result = new ArrayList<>(myFactories);
-    return Collections.unmodifiableList(result);
+    return Collections.unmodifiableList(myFactories);
   }
 
   @Nullable
   @Override
   public ModelFactory getFactoryByType(@NotNull ModelFactoryType factoryType) {
-    Optional<ModelFactory> first = myFactories.stream()
-                                              .filter(factory -> Objects.equals(factoryType, factory.getType()))
-                                              .findFirst();
-    if (first.isPresent()) {
-      return first.get();
-    }
-    return null;
+    final List<ModelFactory> fbt = myFactories.stream()
+                                                  .filter(factory -> Objects.equals(factoryType, factory.getType()))
+                                                  .collect(Collectors.toList());
+    return fbt.isEmpty() ? null : fbt.get(fbt.size()-1);
   }
 
   @Nullable
@@ -80,9 +70,12 @@ final class ModelFactoryRegistryInt implements ModelFactoryRegistry {
   @NotNull
   @Override
   public List<ModelFactory> getModelFactories(@NotNull DataSourceType dataSourceType) {
-    return myFactories.stream()
-                      .filter(factory -> getPreferredDataSourceTypes0(factory).contains(dataSourceType))
-                      .collect(Collectors.toList());
+    ArrayList<ModelFactory> rv = new ArrayList<>(myFactories.size());
+    myFactories.stream()
+               .filter(factory -> getPreferredDataSourceTypes0(factory).contains(dataSourceType))
+               .forEach(rv::add);
+    Collections.reverse(rv);
+    return rv;
   }
 
   @NotNull
@@ -90,9 +83,9 @@ final class ModelFactoryRegistryInt implements ModelFactoryRegistry {
     return factory.getPreferredDataSourceTypes();
   }
 
+  @NotNull
   @Override
   public List<ModelFactoryType> getFactoryTypes() {
-    List<ModelFactoryType> result = myFactories.stream().map(ModelFactory::getType).distinct().collect(Collectors.toList());
-    return Collections.unmodifiableList(new ArrayList<>(result));
+    return myFactories.stream().map(ModelFactory::getType).distinct().collect(Collectors.toUnmodifiableList());
   }
 }

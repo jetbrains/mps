@@ -14,10 +14,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -29,23 +27,15 @@ public class DeployScriptCreator {
     SNode deployProject = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"));
     SPropertyOperations.set(deployProject, PROPS.name$MnvL, "deploy");
     SPropertyOperations.set(deployProject, PROPS.fileName$VjWd, "deploy.xml");
-    // FIXME figure out what's expected format of internalBaseDirectory (absolute/relative, separators) 
-    //       and if/how shall we use baseDir value for it (DeployScript passes some temp location, is it what we need?) 
-    // deployProject.internalBaseDirectory.set(baseDir)? 
+    // FIXME figure out what's expected format of internalBaseDirectory (absolute/relative, separators)
+    //       and if/how shall we use baseDir value for it (DeployScript passes some temp location, is it what we need?)
+    // deployProject.internalBaseDirectory.set(baseDir)?
 
     SLinkOperations.getChildren(deployProject, LINKS.plugins$AsCR).add(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5c3f3e2c1ce9ac67L, "jetbrains.mps.build.structure.BuildJavaPlugin")));
     SLinkOperations.getChildren(deployProject, LINKS.plugins$AsCR).add(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xc0bde9fc71699d9L, "jetbrains.mps.build.mps.structure.BuildMPSPlugin")));
 
-    Iterable<SNode> pluginNodes = ListSequence.fromList(plugins).select(new ISelector<SNodeReference, SNode>() {
-      public SNode select(SNodeReference it) {
-        return it.resolve(project.getRepository());
-      }
-    }).ofType(SNode.class);
-    Iterable<SNode> projects = Sequence.fromIterable(pluginNodes).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SNodeOperations.getContainingRoot(it);
-      }
-    }).ofType(SNode.class).distinct();
+    Iterable<SNode> pluginNodes = ListSequence.fromList(plugins).select((it) -> it.resolve(project.getRepository())).ofType(SNode.class);
+    Iterable<SNode> projects = Sequence.fromIterable(pluginNodes).select((it) -> SNodeOperations.getContainingRoot(it)).ofType(SNode.class).distinct();
 
     for (SNode projectNode : Sequence.fromIterable(projects)) {
       ListSequence.fromList(SLinkOperations.getChildren(deployProject, LINKS.dependencies$redY)).addElement(_quotation_createNode_ppcj9p_a0a0a41a0(projectNode));
@@ -59,16 +49,16 @@ public class DeployScriptCreator {
     return deployProject;
   }
   private static SNode _quotation_createNode_ppcj9p_a0a0a41a0(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x454b730dd908c220L, "BuildProjectDependency")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x454b730dd908c220L, "BuildProjectDependency"));
+    quotedNode_2 = nb.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x4df58c6f18f84a24L, "script"), (SNode) parameter_1);
     return quotedNode_2;
   }
   private static SNode _quotation_createNode_ppcj9p_a0a0a71a0(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0xbabdfbeee1350f2L, "BuildLayout_Import")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0xbabdfbeee1350f2L, "BuildLayout_Import"));
+    quotedNode_2 = nb.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xbabdfbeee1350f2L, 0xbabdfbeee1350f4L, "target"), (SNode) parameter_1);
     return quotedNode_2;
   }

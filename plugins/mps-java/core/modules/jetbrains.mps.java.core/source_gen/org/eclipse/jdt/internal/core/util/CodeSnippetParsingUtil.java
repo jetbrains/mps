@@ -33,7 +33,7 @@ import org.eclipse.jdt.internal.compiler.ast.ConstructorDeclaration;
  * 
  * Utility class to parse different code snippets
  */
-@GeneratedClass(node = "r:40e27d97-dea1-422b-91e0-3b9f3271a7f1(org.eclipse.jdt.internal.core.util)/1218034168005183146", model = "r:40e27d97-dea1-422b-91e0-3b9f3271a7f1(org.eclipse.jdt.internal.core.util)")
+@GeneratedClass(nodeId = "1218034168005183146", model = "r:40e27d97-dea1-422b-91e0-3b9f3271a7f1(org.eclipse.jdt.internal.core.util)")
 public class CodeSnippetParsingUtil {
   public RecordedParsingInformation recordedParsingInformation;
   public boolean ignoreMethodBodies;
@@ -70,7 +70,7 @@ public class CodeSnippetParsingUtil {
     parser.setMethodsFullRecovery(false);
     parser.setStatementsRecovery(enabledStatementRecovery);
     ICompilationUnit sourceUnit = new CompilationUnit(source, "", compilerOptions.defaultEncoding);
-    // $NON-NLS-1$ 
+    // $NON-NLS-1$
     CompilationResult compilationResult = new CompilationResult(sourceUnit, 0, 0, compilerOptions.maxProblemsPerUnit);
     final CompilationUnitDeclaration compilationUnitDeclaration = new CompilationUnitDeclaration(problemReporter, compilationResult, source.length);
     ASTNode[] result = parser.parseClassBodyDeclarations(source, offset, length, compilationUnitDeclaration);
@@ -87,7 +87,7 @@ public class CodeSnippetParsingUtil {
     compilerOptions.ignoreMethodBodies = this.ignoreMethodBodies;
     CommentRecorderParser parser = new CommentRecorderParser(new ProblemReporter(DefaultErrorHandlingPolicies.proceedWithAllProblems(), compilerOptions, new DefaultProblemFactory(Locale.getDefault())), false);
     ICompilationUnit sourceUnit = new CompilationUnit(source, "", compilerOptions.defaultEncoding);
-    // $NON-NLS-1$ 
+    // $NON-NLS-1$
     final CompilationResult compilationResult = new CompilationResult(sourceUnit, 0, 0, compilerOptions.maxProblemsPerUnit);
     CompilationUnitDeclaration compilationUnitDeclaration = parser.dietParse(sourceUnit, compilationResult);
     if (recordParsingInformation) {
@@ -95,11 +95,11 @@ public class CodeSnippetParsingUtil {
     }
     if (compilationUnitDeclaration.ignoreMethodBodies) {
       compilationUnitDeclaration.ignoreFurtherInvestigation = true;
-      // if initial diet parse did not work, no need to dig into method bodies. 
+      // if initial diet parse did not work, no need to dig into method bodies.
       return compilationUnitDeclaration;
     }
-    // fill the methods bodies in order for the code to be generated 
-    // real parse of the method.... 
+    // fill the methods bodies in order for the code to be generated
+    // real parse of the method....
     parser.scanner.setSource(compilationResult);
     TypeDeclaration[] types = compilationUnitDeclaration.types;
     if (types != null) {
@@ -120,11 +120,11 @@ public class CodeSnippetParsingUtil {
       throw new IllegalArgumentException();
     }
     CompilerOptions compilerOptions = new CompilerOptions(settings);
-    // in this case we don't want to ignore method bodies since we are parsing only an expression 
+    // in this case we don't want to ignore method bodies since we are parsing only an expression
     final ProblemReporter problemReporter = new ProblemReporter(DefaultErrorHandlingPolicies.proceedWithAllProblems(), compilerOptions, new DefaultProblemFactory(Locale.getDefault()));
     CommentRecorderParser parser = new CommentRecorderParser(problemReporter, false);
     ICompilationUnit sourceUnit = new CompilationUnit(source, "", compilerOptions.defaultEncoding);
-    // $NON-NLS-1$ 
+    // $NON-NLS-1$
     CompilationResult compilationResult = new CompilationResult(sourceUnit, 0, 0, compilerOptions.maxProblemsPerUnit);
     CompilationUnitDeclaration unit = new CompilationUnitDeclaration(problemReporter, compilationResult, source.length);
     Expression result = parser.parseExpression(source, offset, length, unit, false);
@@ -141,13 +141,13 @@ public class CodeSnippetParsingUtil {
       throw new IllegalArgumentException();
     }
     CompilerOptions compilerOptions = new CompilerOptions(settings);
-    // in this case we don't want to ignore method bodies since we are parsing only statements 
+    // in this case we don't want to ignore method bodies since we are parsing only statements
     final ProblemReporter problemReporter = new ProblemReporter(DefaultErrorHandlingPolicies.proceedWithAllProblems(), compilerOptions, new DefaultProblemFactory(Locale.getDefault()));
     CommentRecorderParser parser = new CommentRecorderParser(problemReporter, false);
     parser.setMethodsFullRecovery(false);
     parser.setStatementsRecovery(enabledStatementRecovery);
     ICompilationUnit sourceUnit = new CompilationUnit(source, "", compilerOptions.defaultEncoding);
-    // $NON-NLS-1$ 
+    // $NON-NLS-1$
     final CompilationResult compilationResult = new CompilationResult(sourceUnit, 0, 0, compilerOptions.maxProblemsPerUnit);
     CompilationUnitDeclaration compilationUnitDeclaration = new CompilationUnitDeclaration(problemReporter, compilationResult, length);
     ConstructorDeclaration constructorDeclaration = new ConstructorDeclaration(compilationResult);

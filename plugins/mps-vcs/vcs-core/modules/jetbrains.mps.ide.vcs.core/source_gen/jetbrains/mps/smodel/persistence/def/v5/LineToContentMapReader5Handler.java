@@ -14,7 +14,7 @@ import org.xml.sax.SAXParseException;
 import jetbrains.mps.smodel.SNodeId;
 import jetbrains.mps.smodel.persistence.def.v4.VersionUtil;
 
-@GeneratedClass(node = "r:2cdd9596-2ed5-4152-b387-8144a1963c4c(jetbrains.mps.smodel.persistence.def.v5)/651246788329828609", model = "r:2cdd9596-2ed5-4152-b387-8144a1963c4c(jetbrains.mps.smodel.persistence.def.v5)")
+@GeneratedClass(nodeId = "651246788329828609", model = "r:2cdd9596-2ed5-4152-b387-8144a1963c4c(jetbrains.mps.smodel.persistence.def.v5)")
 public class LineToContentMapReader5Handler extends XMLSAXHandler<List<LineContent>> {
   private ModelElementHandler modelHandler = new ModelElementHandler();
   private NodeElementHandler nodeHandler = new NodeElementHandler();
@@ -62,13 +62,13 @@ public class LineToContentMapReader5Handler extends XMLSAXHandler<List<LineConte
   public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
     ElementHandler current = (myHandlersStack.empty() ? (ElementHandler) null : myHandlersStack.peek());
     if (current == null) {
-      // root 
+      // root
       current = modelHandler;
     } else {
       current = current.createChild(myValues.peek(), qName, attributes);
     }
 
-    // check required 
+    // check required
     for (String attr : current.requiredAttributes()) {
       if (attributes.getValue(attr) == null) {
         throw new SAXParseException("attribute " + attr + " is absent", null);
@@ -80,7 +80,7 @@ public class LineToContentMapReader5Handler extends XMLSAXHandler<List<LineConte
       myResult = (List<LineContent>) result;
     }
 
-    // handle attributes 
+    // handle attributes
     for (int i = 0; i < attributes.getLength(); i++) {
       String name = attributes.getQName(i);
       String value = attributes.getValue(i);

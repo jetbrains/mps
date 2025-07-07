@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,12 @@
  */
 package jetbrains.mps.errors;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.util.NameUtil;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.HashMap;
@@ -29,17 +29,31 @@ import java.util.Map;
 public class BaseQuickFixProvider implements QuickFixProvider {
   private QuickFix_Runtime myQuickFix;
   private final String myClassFQName;
+  private final String myIntentionId;
   private boolean myExecuteImmediately = false;
   private Map<String, Object> myMap = new HashMap<>();
 
   public BaseQuickFixProvider(String classFQName) {
     myClassFQName = classFQName;
     myQuickFix = null;
+    this.myIntentionId = null;
+  }
+
+  public BaseQuickFixProvider(String classFQName, String intentionId, boolean executeImmediately) {
+    myClassFQName = classFQName;
+    this.myIntentionId = intentionId;
+    this.myExecuteImmediately = executeImmediately;
   }
 
   public BaseQuickFixProvider(String classFQName, boolean executeImmediately) {
     this(classFQName);
     myExecuteImmediately = executeImmediately;
+  }
+
+  @Override
+  @Nullable
+  public String getIntentionId() {
+    return myIntentionId;
   }
 
   public void putArgument(String key, Object argument) {
@@ -62,7 +76,7 @@ public class BaseQuickFixProvider implements QuickFixProvider {
       LanguageRuntime languageRuntime = languageRegistry.getLanguage(languageNamespace);
       if (languageRuntime == null) {
         String msg = String.format("could not load module %s for quickfix %s", languageNamespace, myClassFQName);
-        LogManager.getLogger(getClass()).error(msg);
+        Logger.getLogger(getClass()).error(msg);
         myQuickFix = new BadQuickFix(msg);
         return myQuickFix;
       }
@@ -76,11 +90,11 @@ public class BaseQuickFixProvider implements QuickFixProvider {
       myQuickFix = quickFix;
     } catch (ClassNotFoundException ex) {
       String msg = String.format("class %s not found in a module %s", myClassFQName, languageNamespace);
-      LogManager.getLogger(getClass()).error(msg);
+      Logger.getLogger(getClass()).error(msg);
       myQuickFix = new BadQuickFix(msg);
     } catch (Throwable t) {
       String msg = String.format("Failed to instantiate quick fix %s", myClassFQName);
-      LogManager.getLogger(getClass()).error(msg, t);
+      Logger.getLogger(getClass()).error(msg, t);
     }
     return myQuickFix;
   }

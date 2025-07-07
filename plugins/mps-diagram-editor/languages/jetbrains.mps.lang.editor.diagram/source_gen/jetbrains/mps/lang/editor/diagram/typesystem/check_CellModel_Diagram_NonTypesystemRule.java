@@ -10,7 +10,6 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -28,11 +27,7 @@ public class check_CellModel_Diagram_NonTypesystemRule extends AbstractNonTypesy
       topLevelCell = SNodeOperations.cast(SNodeOperations.getParent(topLevelCell), CONCEPTS.EditorCellModel$gN);
     }
 
-    for (SNode nonSynchronizeableCellModel : ListSequence.fromList(SNodeOperations.getNodeDescendants(topLevelCell, CONCEPTS.EditorCellModel$gN, true, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)), CONCEPTS.Synchronizeable$kF));
-      }
-    })) {
+    for (SNode nonSynchronizeableCellModel : ListSequence.fromList(SNodeOperations.getNodeDescendants(topLevelCell, CONCEPTS.EditorCellModel$gN, true, new SAbstractConcept[]{})).where((it) -> !(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)), CONCEPTS.Synchronizeable$kF)))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(nonSynchronizeableCellModel, "Usage of this cell in the editor will prevent diagram cell from being incrementally synchronized", "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "4052492221165343667", null, errorTarget);

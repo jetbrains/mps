@@ -10,19 +10,16 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SReference;
-import jetbrains.mps.smodel.DynamicReference;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.scopes.Members;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.BaseQuickFixProvider;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.baseLanguage.behavior.JavaImports__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.Tokens__BehaviorDescriptor;
@@ -36,30 +33,26 @@ public class check_UnqualifiedEnumConstant_NonTypesystemRule extends AbstractNon
   public check_UnqualifiedEnumConstant_NonTypesystemRule() {
   }
   public void applyRule(final SNode varRef, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    // Q: is there a better way for this? 
+    // Q: is there a better way for this?
     if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(varRef)), CONCEPTS.VariableReference$TC))) {
       return;
     }
 
-    // FIXME: duplicate code with JavaToMpsConverter 
+    // FIXME: duplicate code with JavaToMpsConverter
 
     SReference ref = SNodeOperations.getReference(varRef, LINKS.variableDeclaration$N1XG);
-    if (!(ref instanceof DynamicReference)) {
+    if (!(SLinkOperations.isDynamic(ref))) {
       return;
     }
-    if (ref.getTargetNode() != null) {
+    if (SLinkOperations.getTargetNode(ref) != null) {
       return;
     }
 
-    // now we can try to search 
-    final String enumConstName = ((DynamicReference) ref).getResolveInfo();
+    // now we can try to search
+    final String enumConstName = SLinkOperations.getResolveInfo(ref);
 
     for (SNode enclosingEnum : ListSequence.fromList(SNodeOperations.getNodeAncestors(varRef, CONCEPTS.EnumClass$Vk, false))) {
-      SNode enumConst = Sequence.fromIterable(Members.visibleEnumConstants(enclosingEnum)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return enumConstName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-        }
-      });
+      SNode enumConst = Sequence.fromIterable(Members.visibleEnumConstants(enclosingEnum)).findFirst((it) -> enumConstName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL)));
       if ((enumConst == null)) {
         continue;
       }
@@ -72,7 +65,7 @@ public class check_UnqualifiedEnumConstant_NonTypesystemRule extends AbstractNon
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(varRef, "Unqualified enum constant reference", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "502936544108889529", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.replaceNode_QuickFix", true);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.replaceNode_QuickFix", "502936544108889532", true);
           intentionProvider.putArgument("newNode", result);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
@@ -83,7 +76,7 @@ public class check_UnqualifiedEnumConstant_NonTypesystemRule extends AbstractNon
     if (!(SNodeOperations.isInstanceOf(root, CONCEPTS.Classifier$Ix))) {
       return;
     }
-    SNode javaImports = AttributeOperations.getAttribute(SNodeOperations.cast(root, CONCEPTS.Classifier$Ix), new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_));
+    SNode javaImports = new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).get(SNodeOperations.cast(root, CONCEPTS.Classifier$Ix));
     if ((javaImports == null)) {
       return;
     }
@@ -96,27 +89,23 @@ public class check_UnqualifiedEnumConstant_NonTypesystemRule extends AbstractNon
       String enumClassCandidateName = Tokens__BehaviorDescriptor.withoutLastToken_id5ll4uk6512$.invoke(singleNameImport);
       SNode enumClassCandidate = ResolveUnknownUtil.findClass(varRef, enumClassCandidateName);
       if ((enumClassCandidate == null)) {
-        // seems like there is no need to continue 
-        // we had import of the form: import static <class>.<ourName> 
-        // if we meet <ourName> in java code then it must strictly reference this import, not any other 
+        // seems like there is no need to continue
+        // we had import of the form: import static <class>.<ourName>
+        // if we meet <ourName> in java code then it must strictly reference this import, not any other
         return;
       }
       if (!(SNodeOperations.isInstanceOf(enumClassCandidate, CONCEPTS.EnumClass$Vk))) {
         return;
       }
 
-      // Q: maybe not findFirst, but rather fail if there are more than one... 
-      SNode enumConst = Sequence.fromIterable(Members.visibleEnumConstants(SNodeOperations.cast(enumClassCandidate, CONCEPTS.EnumClass$Vk))).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return enumConstName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-        }
-      });
+      // Q: maybe not findFirst, but rather fail if there are more than one...
+      SNode enumConst = Sequence.fromIterable(Members.visibleEnumConstants(SNodeOperations.cast(enumClassCandidate, CONCEPTS.EnumClass$Vk))).findFirst((it) -> enumConstName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL)));
 
       if ((enumConst == null)) {
         return;
       }
 
-      // success 
+      // success
       SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference"));
       SLinkOperations.setTarget(result, LINKS.enumClass$bGAj, SNodeOperations.cast(enumClassCandidate, CONCEPTS.EnumClass$Vk));
       SLinkOperations.setTarget(result, LINKS.enumConstantDeclaration$f1_N, enumConst);
@@ -125,7 +114,7 @@ public class check_UnqualifiedEnumConstant_NonTypesystemRule extends AbstractNon
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(varRef, "Unqualified enum constant reference", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5230012391904188150", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.replaceNode_QuickFix", true);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.replaceNode_QuickFix", "5230012391904202476", true);
           intentionProvider.putArgument("newNode", result);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
@@ -142,11 +131,7 @@ public class check_UnqualifiedEnumConstant_NonTypesystemRule extends AbstractNon
         continue;
       }
 
-      SNode enumConst = Sequence.fromIterable(Members.visibleEnumConstants(SNodeOperations.cast(claz, CONCEPTS.EnumClass$Vk))).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return enumConstName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-        }
-      });
+      SNode enumConst = Sequence.fromIterable(Members.visibleEnumConstants(SNodeOperations.cast(claz, CONCEPTS.EnumClass$Vk))).findFirst((it) -> enumConstName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL)));
       if ((enumConst == null)) {
         continue;
       }
@@ -159,7 +144,7 @@ public class check_UnqualifiedEnumConstant_NonTypesystemRule extends AbstractNon
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(varRef, "Unqualified enum constant reference", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3151797052697040971", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.replaceNode_QuickFix", true);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.replaceNode_QuickFix", "3151797052697116360", true);
           intentionProvider.putArgument("newNode", result);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }

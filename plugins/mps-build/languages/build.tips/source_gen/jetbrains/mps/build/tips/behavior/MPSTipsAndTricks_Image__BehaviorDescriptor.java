@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -16,12 +15,10 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.FileSystems;
+import java.io.File;
 import javax.swing.ImageIcon;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -31,7 +28,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class MPSTipsAndTricks_Image__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x1377553280f03b1dL, "jetbrains.mps.build.tips.structure.MPSTipsAndTricks_Image");
 
-  public static final SMethod<Boolean> isValid_idIb_Fk7zRKP = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValid").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("Ib_Fk7zRKP").build();
+  public static final SMethod<Boolean> isValid_idIb_Fk7zRKP = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValid").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(831924260440079413L).languageId(0x804f8987b652fceaL, 0xfeee615f9f2b486fL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isValid_idIb_Fk7zRKP);
 
@@ -40,9 +37,6 @@ public final class MPSTipsAndTricks_Image__BehaviorDescriptor extends BaseBHDesc
 
   /*package*/ static boolean isValid_idIb_Fk7zRKP(@NotNull SNode __thisNode__) {
     SModule module = SNodeOperations.getModel(__thisNode__).getModule();
-    if (!(module instanceof AbstractModule)) {
-      return false;
-    }
 
     MacroHelper macroHelper = MacrosFactory.forModule(module);
     String path = macroHelper.expandPath(SPropertyOperations.getString(__thisNode__, PROPS.file$Q7$W));
@@ -50,7 +44,7 @@ public final class MPSTipsAndTricks_Image__BehaviorDescriptor extends BaseBHDesc
       return false;
     }
 
-    IFile file = FileSystems.getDefault().getFile(path);
+    File file = new File(path);
     if (!(file.exists())) {
       return false;
     }

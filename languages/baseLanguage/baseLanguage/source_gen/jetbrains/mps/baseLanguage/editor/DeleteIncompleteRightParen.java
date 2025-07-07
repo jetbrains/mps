@@ -5,9 +5,8 @@ package jetbrains.mps.baseLanguage.editor;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.IIncompleteParen__BehaviorDescriptor;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
@@ -25,9 +24,9 @@ public class DeleteIncompleteRightParen {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode paren = AttributeOperations.getAttribute(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.Expression$mB), new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc));
+        SNode paren = new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.Expression$mB));
         if ((boolean) IIncompleteParen__BehaviorDescriptor.isSingleParen_idVufYxgmHsD.invoke(paren)) {
-          AttributeOperations.setAttribute(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.Expression$mB), new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc), null);
+          new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).set(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.Expression$mB), null);
         } else {
           IIncompleteParen__BehaviorDescriptor.decreaseCount_idVufYxgmFtR.invoke(paren);
         }
@@ -40,11 +39,11 @@ public class DeleteIncompleteRightParen {
     CellAction originalDelete = editorCell.getAction(CellActionType.DELETE);
     CellAction originalBackspace = editorCell.getAction(CellActionType.BACKSPACE);
 
-    // set actions that were actually defined 
+    // set actions that were actually defined
     setDefinedCellActions(editorCell, node, context);
 
-    // If we set a DELETE action but no BACKSPACE action, 
-    // use the DELETE action for BACKSPACE as well. 
+    // If we set a DELETE action but no BACKSPACE action,
+    // use the DELETE action for BACKSPACE as well.
     CellAction delete = editorCell.getAction(CellActionType.DELETE);
     CellAction backspace = editorCell.getAction(CellActionType.BACKSPACE);
     if (delete != originalDelete && backspace == originalBackspace) {
@@ -61,24 +60,24 @@ public class DeleteIncompleteRightParen {
   private static final Object OB = new Object();
 
   public static void setDefinedCellActions(EditorCell editorCell, SNode node, EditorContext context) {
-    // set cell actions from all imported action maps 
+    // set cell actions from all imported action maps
 
-    // set cell actions defined directly in this action map 
+    // set cell actions defined directly in this action map
     editorCell.setAction(CellActionType.DELETE, createAction_DELETE(node));
   }
 
   public static void setDefinedCellActionsOfType(EditorCell editorCell, SNode node, EditorContext context, CellActionType actionType) {
 
-    // set cell action(s) of the given type from imported action maps 
+    // set cell action(s) of the given type from imported action maps
 
-    // set cell action of the given type defined directly in this action map 
+    // set cell action of the given type defined directly in this action map
     if (Objects.equals(actionType, CellActionType.DELETE)) {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
     /*package*/ static final SConcept IncompleteRightParen$Sc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2052c4520af308e1L, "jetbrains.mps.baseLanguage.structure.IncompleteRightParen");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 }

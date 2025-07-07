@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-c72jpmfedjkbxozr5e02zp7vj9j1cs4">
-  <files names="ProjectPrefsExtraPanel.java:ProjectProperties.java:ProjectPropertiesComponent.java:ProjectPropertiesDialog.java:ProjectPropertiesPrefsPage.java" />
+<product version="3" modelHash="3diiz1pnnfcpzpbxa47iukzxtrk0s54">
+  <files names="PathRenderer.java:ProjectFilesModel.java:ProjectPrefsExtraPanel.java:ProjectPropertiesComponent.java:ProjectPropertiesDialog.java:ProjectPropertiesPrefsPage.java" />
 </product>
 

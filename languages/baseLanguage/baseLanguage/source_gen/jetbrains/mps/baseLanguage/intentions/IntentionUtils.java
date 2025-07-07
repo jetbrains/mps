@@ -105,7 +105,7 @@ public class IntentionUtils {
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(diff._0()), CONCEPTS.ExpressionStatement$O8)) {
       return false;
     }
-    // todo[Timur]: I don't think that this code is true 
+    // todo[Timur]: I don't think that this code is true
     SContainmentLink l = diff._0().getContainmentLink();
     return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(CONCEPTS.TernaryOperatorExpression$aq), SNodeOperations.asSConcept(l.getTargetConcept()));
   }
@@ -132,7 +132,7 @@ public class IntentionUtils {
         continue;
       }
 
-      // now both are not null 
+      // now both are not null
       if (r1.getTargetNode() != r2.getTargetNode()) {
         return MultiTuple.<SNode,SNode>from(node1, node2);
       }

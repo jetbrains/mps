@@ -9,7 +9,6 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -27,16 +26,8 @@ public class check_MpsTips_NonTypesystemRule extends AbstractNonTypesystemRule_R
   public check_MpsTips_NonTypesystemRule() {
   }
   public void applyRule(final SNode mpsTips, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!(Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(mpsTips, false), CONCEPTS.BuildMps_Tips$B3)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return isEmptyString(SPropertyOperations.getString(it, PROPS.name$MnvL));
-      }
-    }))) {
-      if (Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(mpsTips, false), CONCEPTS.BuildMps_Tips$B3)).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SPropertyOperations.getString(it, PROPS.name$MnvL).equals(SPropertyOperations.getString(mpsTips, PROPS.name$MnvL));
-        }
-      })) {
+    if (!(Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(mpsTips, false), CONCEPTS.BuildMps_Tips$B3)).any((it) -> isEmptyString(SPropertyOperations.getString(it, PROPS.name$MnvL))))) {
+      if (Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(mpsTips, false), CONCEPTS.BuildMps_Tips$B3)).any((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals(SPropertyOperations.getString(mpsTips, PROPS.name$MnvL)))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(mpsTips, "Duplicate names of Tips & Tricks", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "7323166234199735666", null, errorTarget);
@@ -49,11 +40,7 @@ public class check_MpsTips_NonTypesystemRule extends AbstractNonTypesystemRule_R
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(mpsTips, "No tips & tricks imported", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "6437930869738031200", null, errorTarget);
       }
     }
-    if (!(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(mpsTips, CONCEPTS.BuildProject$ae, false, false), LINKS.layout$r7bw), CONCEPTS.BuildMps_TipsPackage$uN, false, new SAbstractConcept[]{})).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.tips$MAEw) == mpsTips;
-      }
-    }))) {
+    if (!(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(mpsTips, CONCEPTS.BuildProject$ae, false, false), LINKS.layout$r7bw), CONCEPTS.BuildMps_TipsPackage$uN, false, new SAbstractConcept[]{})).any((it) -> SLinkOperations.getTarget(it, LINKS.tips$MAEw) == mpsTips))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(mpsTips, "Tips should be packaged to build layout", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "6929652819252847712", null, errorTarget);
@@ -70,7 +57,7 @@ public class check_MpsTips_NonTypesystemRule extends AbstractNonTypesystemRule_R
     return false;
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
 
   private static final class CONCEPTS {

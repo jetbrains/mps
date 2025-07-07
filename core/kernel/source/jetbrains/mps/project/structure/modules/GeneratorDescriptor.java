@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -100,20 +100,24 @@ public class GeneratorDescriptor extends ModuleDescriptor {
     return RefUpdateUtil.composeUpdates(
       super.updateModuleRefs(repository),
       uu.updateModuleRefs(myDepGenerators),
-      uu.updateMappingPriorityRules(myPriorityRules));
+      uu.updateMappingPriorityRules(myPriorityRules),
+      uu.updateModuleRef(mySourceLanguage, this::setSourceLanguage));
   }
 
   /**
-   * FIXME Likely, {@link SolutionDescriptor#getOutputPath()}, {@link LanguageDescriptor#getGenPath()} and this one need to move to
-   *       ModuleDescriptor. I would do that once there's clear idea whether to use IFile, java.io.File or Path for these locations,
-   *       and whether to keep these as module descriptor attributes or inside relevant {@link jetbrains.mps.project.facets.GenerationTargetFacet facets}.
+   * @deprecated use {@link ModuleDescriptor#getOutputRoot()}, instead
    * @return filesystem location where generated files for the generator go, or null if this module doesn't support output
    */
+  @Deprecated(since = "2023.3", forRemoval = true)
   @Nullable
   public String getOutputPath() {
     return myGenOutputPath;
   }
 
+  /**
+   * @deprecated use {@link ModuleDescriptor#setOutputRoot(String)}, instead
+   */
+  @Deprecated(since = "2023.3", forRemoval = true)
   public void setOutputPath(@Nullable String path) {
     myGenOutputPath = path;
   }
@@ -150,7 +154,6 @@ public class GeneratorDescriptor extends ModuleDescriptor {
     super.save(stream);
     stream.writeString(myAlias);
     stream.writeBoolean(myGenerateTemplates);
-    stream.writeString(myGenOutputPath);
     stream.writeModuleReference(mySourceLanguage);
 
     stream.writeInt(myDepGenerators.size());
@@ -169,7 +172,6 @@ public class GeneratorDescriptor extends ModuleDescriptor {
     super.load(stream);
     myAlias = stream.readString();
     myGenerateTemplates = stream.readBoolean();
-    myGenOutputPath = stream.readString();
     mySourceLanguage = stream.readModuleReference();
 
     myDepGenerators.clear();

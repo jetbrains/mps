@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,16 +18,12 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.library.ModulesMiner.ModuleHandle;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.ComputeRunnable;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -43,6 +39,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
@@ -55,7 +52,7 @@ import java.util.stream.StreamSupport;
  * changes made to a repository.
  */
 public final class ModuleRepositoryFacade implements CoreComponent, ModuleInstanceFactory {
-  private static final Logger LOG = LogManager.getLogger(ModuleRepositoryFacade.class);
+  private static final Logger LOG = Logger.getLogger(ModuleRepositoryFacade.class);
   private static ModuleRepositoryFacade INSTANCE;
 
   // never null, use for all SRepository API methods.
@@ -130,13 +127,11 @@ public final class ModuleRepositoryFacade implements CoreComponent, ModuleInstan
   }
 
   public SModule getModule(@NotNull final SModuleReference ref) {
-    Computable<SModule> c = () -> myRepo.getModule(ref.getModuleId());
+    Supplier<SModule> c = () -> myRepo.getModule(ref.getModuleId());
     if (myRepo.getModelAccess().canRead()) {
-      return c.compute();
+      return c.get();
     }
-    ComputeRunnable<SModule> r = new ComputeRunnable<>(c);
-    myRepo.getModelAccess().runReadAction(r);
-    return r.getResult();
+    return myRepo.getModelAccess().computeReadAction(c);
   }
 
   public <T extends SModule> T getModule(SModuleReference ref, Class<T> cls) {
@@ -179,8 +174,7 @@ public final class ModuleRepositoryFacade implements CoreComponent, ModuleInstan
    * @return named model
    */
   @Nullable
-  @Deprecated
-  @ToRemove(version = 2017.3)
+@Deprecated(since = "2017.3", forRemoval = true)
   public SModel getModelByName(@Nullable String modelQualifiedName) {
     if (modelQualifiedName == null) {
       return null;
@@ -262,8 +256,7 @@ public final class ModuleRepositoryFacade implements CoreComponent, ModuleInstan
    * @deprecated If there's need for extending language, shall add <code>Language.getDirectlyExtendingLanguage</code>.
    * There's single use in mbeddr.
    */
-  @Deprecated
-  @ToRemove(version = 3.4)
+@Deprecated(since = "3.4", forRemoval = true)
   public Collection<Language> getAllExtendingLanguages(Language l) {
     final SModuleReference lRef = l.getModuleReference();
     List<Language> result = new LinkedList<>();
@@ -363,7 +356,7 @@ public final class ModuleRepositoryFacade implements CoreComponent, ModuleInstan
       // XXX FWIW, MPSModuleRepository.unregisterModule and unregisterModules keep symmetric knowledge what generator modules to remove along with the language
       //     i.e. here we assume there could be no generator module w/o source language, there we remove all generators with the given source language (not
       //     'directly owned' only).
-      if (LOG.isInfoEnabled()) {
+      if (LOG.isInfoLevel()) {
         String msg =
             String.format("Register generator %s for not yet known language module %s", descriptor.getNamespace(), descriptor.getSourceLanguage());
         LOG.info(msg);

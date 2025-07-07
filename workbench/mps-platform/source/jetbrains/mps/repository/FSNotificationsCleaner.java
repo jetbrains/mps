@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,12 @@
 package jetbrains.mps.repository;
 
 import com.intellij.ide.AppLifecycleListener;
-import com.intellij.openapi.components.ServiceManager;
+import com.intellij.openapi.application.ApplicationManager;
 
 public class FSNotificationsCleaner implements AppLifecycleListener {
   @Override
   public void appWillBeClosed(boolean isRestart) {
-    final FSNotificationsImprover improver = ServiceManager.getServiceIfCreated(FSNotificationsImprover.class);
+    final FSNotificationsImprover improver = ApplicationManager.getApplication().getServiceIfCreated(FSNotificationsImprover.class);
     if (improver != null) {
       improver.stopWatchingRoots();
     }

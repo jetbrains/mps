@@ -4,44 +4,57 @@ package jetbrains.mps.java.core.sourceStubs;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.extapi.persistence.FolderDataSource;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.vfs.IFile;
-import org.jetbrains.mps.openapi.persistence.ModelRoot;
+import java.util.function.Predicate;
 import org.jetbrains.annotations.Nullable;
+import java.util.List;
+import org.jetbrains.mps.openapi.persistence.StreamDataSource;
+import java.util.stream.Collectors;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.java.core.newparser.JavaParser;
 import java.io.IOException;
+import jetbrains.mps.logging.Logger;
 
-@GeneratedClass(node = "r:39747a8f-4d04-48b7-83c5-4b4f5e43330c(jetbrains.mps.java.core.sourceStubs)/4423331261408331046", model = "r:39747a8f-4d04-48b7-83c5-4b4f5e43330c(jetbrains.mps.java.core.sourceStubs)")
+@GeneratedClass(nodeId = "4423331261408331046", model = "r:39747a8f-4d04-48b7-83c5-4b4f5e43330c(jetbrains.mps.java.core.sourceStubs)")
 public class MPSJavaSrcDataSource extends FolderDataSource {
-  private static final Logger LOG = Logger.getLogger(MPSJavaSrcDataSource.class);
 
-  public MPSJavaSrcDataSource(@NotNull IFile dir, ModelRoot modelRoot) {
-    super(dir, modelRoot);
+  public MPSJavaSrcDataSource(@NotNull IFile dir) {
+    super(dir, new Predicate<IFile>() {
+      @Override
+      public boolean test(IFile p1) {
+        return isIncluded(p1);
+      }
+    });
   }
 
-  @Override
-  public boolean isIncluded(IFile file) {
-    return super.isIncluded(file) && file.getPath().endsWith(".java");
+  private static boolean isIncluded(IFile file) {
+    return file.getPath().endsWith(".java");
   }
 
   public boolean hasJavaFiles() {
-    return getAvailableStreams().iterator().hasNext();
+    return getSubStreams().findAny().isPresent();
   }
 
   @Nullable
   public String guessPackage() {
-    String pkg = null;
-    try {
-      for (String stream : getAvailableStreams()) {
-        IFile file = getFile(stream);
-        String code = IFileUtil.getTextContents(file);
-        pkg = JavaParser.peekPackage(code);
+    List<StreamDataSource> dsources = (List<StreamDataSource>) getSubStreams().collect(Collectors.toList());
+    for (StreamDataSource source : ListSequence.fromList(dsources)) {
+      if (source instanceof FileDataSource) {
+        String pkg = null;
+        try {
+          IFile file = ((FileDataSource) source).getFile();
+          // fixme probably it is better not to read the whole file?
+          String code = IFileUtil.getTextContents(file);
+          pkg = JavaParser.peekPackage(code);
+        } catch (IOException e) {
+          Logger.getLogger(MPSJavaSrcDataSource.class).warning("Failed to guess package name for java source stub model", e);
+        }
+        return pkg;
       }
-    } catch (IOException e) {
-      LOG.warn("Failed to guess package name for java source stub model", e);
     }
-    return pkg;
+    return null;
   }
 }

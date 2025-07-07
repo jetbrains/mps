@@ -21,7 +21,7 @@ public class EnumerationDescriptor_EnumCustomMethodReplacementKind extends Enume
   private final EnumerationDescriptor.MemberDescriptor myMember_nameToMember_0 = new EnumerationDescriptor.MemberDescriptor("nameToMember", "member -> name", 0x2e9237b686f1e93eL, "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/3355805929432017214");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e935L, 0x2e9237b686f1e936L, 0x2e9237b686f1e937L, 0x2e9237b686f1e93aL, 0x2e9237b686f1e93eL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_memberToValue_0, myMember_valueToMember_0, myMember_memberToName_0, myMember_nameToMember_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_memberToValue_0, myMember_valueToMember_0, myMember_memberToName_0, myMember_nameToMember_0);
 
   @Nullable
   @Override

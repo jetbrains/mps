@@ -17,7 +17,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class EDTL_node_factories {
   public static class NodeFactory_1158947460472 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SNode parentRefCell = SNodeOperations.getNodeAncestor(enclosingNode, CONCEPTS.CellModel_RefCell$7g, true, false);
       if (parentRefCell != null) {
         SPropertyOperations.set(newNode, PROPS.readOnly$vff7, true);
@@ -25,7 +25,7 @@ public class EDTL_node_factories {
     }
   }
   public static class NodeFactory_1159287296418 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(enclosingNode, CONCEPTS.CellModel_Collection$Og)) {
         EditorCellModel__BehaviorDescriptor.setSelectable_idi4bRWUe.invoke(newNode, ((boolean) false));
         if (SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.CellModel_Collection$Og), LINKS.cellLayout$Of4I) != null) {
@@ -42,7 +42,7 @@ public class EDTL_node_factories {
     }
   }
   public static class NodeFactory_1165441265075 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SPropertyOperations.set(newNode, PROPS.vertical$WXft, true);
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.EditorCellModel$gN)) {
         SLinkOperations.setTarget(newNode, LINKS.ifTrueCellModel$tpU2, SNodeOperations.copyNode(SNodeOperations.cast(sampleNode, CONCEPTS.EditorCellModel$gN)));
@@ -50,7 +50,7 @@ public class EDTL_node_factories {
     }
   }
   public static class NodeFactory_1239813377368 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(enclosingNode, CONCEPTS.CellModel_Collection$Og)) {
         if (SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.CellModel_Collection$Og), LINKS.cellLayout$Of4I) != null) {
           SLinkOperations.setTarget(newNode, LINKS.cellLayout$ZXkU, SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.CellModel_Collection$Og), LINKS.cellLayout$Of4I)));
@@ -59,8 +59,9 @@ public class EDTL_node_factories {
     }
   }
   public static class NodeFactory_5571273656752866301 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       EditorCellModel__BehaviorDescriptor.setSelectable_idi4bRWUe.invoke(newNode, ((boolean) false));
+      EditorCellModel__BehaviorDescriptor.setTransparent_id3uCw42NPV2V.invoke(newNode, ((boolean) true));
     }
   }
 

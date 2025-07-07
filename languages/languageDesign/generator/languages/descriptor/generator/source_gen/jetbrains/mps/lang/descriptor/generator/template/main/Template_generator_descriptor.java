@@ -5,16 +5,16 @@ package jetbrains.mps.lang.descriptor.generator.template.main;
 import jetbrains.mps.generator.runtime.Generated;
 import jetbrains.mps.generator.runtime.TemplateDeclarationBase;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import java.util.Collection;
-import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.TemplateContext;
+import jetbrains.mps.generator.runtime.ApplySink;
 import jetbrains.mps.generator.runtime.GenerationException;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
+import org.jetbrains.mps.openapi.model.SNode;
+import java.util.Collection;
+import java.util.Collections;
 import jetbrains.mps.generator.template.InsertMacroContext;
 import jetbrains.mps.generator.runtime.TemplateUtil;
-import jetbrains.mps.generator.runtime.ApplySink;
+import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -25,60 +25,56 @@ import jetbrains.mps.smodel.SNodePointer;
 public class Template_generator_descriptor extends TemplateDeclarationBase {
 
   public Template_generator_descriptor() {
+    super(new MO());
   }
 
   public SNodeReference getTemplateNode() {
-    return template_s14ods_a0a3;
-  }
-  public Collection<SNode> apply(@NotNull final TemplateExecutionEnvironment environment, @NotNull final TemplateContext context) throws GenerationException {
-    final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
-      environment.nodeCopied(context, tnode1, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/7568285956000709565");
-      SNodeAccessUtil.setProperty(tnode1, myProperties[0], "generator descriptor");
-      TemplateContext context1 = context.subContext();
-      {
-        SNode tnode2 = null;
-        final SNode insertInput2 = QueriesGenerated.insertMacro_Query_8_0(new InsertMacroContext(context1, insertMacro_s14ods_b0a0a1a3a1a4));
-        if (insertInput2 != null) {
-          tnode2 = environment.insertNode(insertInput2, insertMacro_s14ods_b0a0a1a3a1a4, context1);
-        }
-        if (tnode2 != null) {
-          tnode1.addChild(myAggregationLinks[0], tnode2);
-        }
-        // TODO validate child 
-      }
-    } finally {
-    }
-    return TemplateUtil.singletonList(tnode1);
+    return template;
   }
 
   @Override
   public void apply(TemplateContext context, ApplySink sink) throws GenerationException {
-    Collection<SNode> rv = apply(context.getEnvironment(), context);
-    if (rv == null) {
-      return;
+    final TemplateExecutionEnvironment environment = context.getEnvironment();
+    final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
+    {
+      environment.nodeCopied(context, tnode1, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/7568285956000709565");
+      tnode1.setProperty(myProperties[0], "generator descriptor");
+      TemplateContext context1 = context.subContext();
+      {
+        Collection<SNode> tlist2 = Collections.emptyList();
+        final SNode insertInput2 = QueriesGenerated.insertMacro_Query_8_0(new InsertMacroContext(context1, insertMacro));
+        if (insertInput2 != null) {
+          tlist2 = Collections.singletonList(environment.insertNode(insertInput2, insertMacro, context1));
+        }
+        environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
+      }
     }
-    sink.add(null, rv);
+    sink.add(null, TemplateUtil.singletonList(tnode1));
   }
 
-  @Override
-  protected SConcept[] initConcepts() {
-    SConcept[] rv = new SConcept[1];
-    rv[0] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf4ad079dbc714ffbL, 0x96009328705cf998L, "jetbrains.mps.lang.descriptor"), 0x3663ebbd1bf10683L, "GeneratorDescriptor");
-    return rv;
+  /*package*/ static final class MO implements MetaObjectContainer {
+    @Override
+    public SConcept[] concepts() {
+      SConcept[] rv = new SConcept[1];
+      rv[0] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf4ad079dbc714ffbL, 0x96009328705cf998L, "jetbrains.mps.lang.descriptor"), 0x3663ebbd1bf10683L, "GeneratorDescriptor");
+      return rv;
+    }
+
+    @Override
+    public SProperty[] properties() {
+      SProperty[] rv = new SProperty[1];
+      rv[0] = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+      return rv;
+    }
+
+
+    @Override
+    public SContainmentLink[] aggregations() {
+      SContainmentLink[] rv = new SContainmentLink[1];
+      rv[0] = MetaAdapterFactory.getContainmentLink(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x3663ebbd1bf10683L, 0x6907f3fa7dfc783cL, "generator");
+      return rv;
+    }
   }
-  @Override
-  protected SProperty[] initProperties() {
-    SProperty[] rv = new SProperty[1];
-    rv[0] = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    return rv;
-  }
-  @Override
-  protected SContainmentLink[] initAggregationLinks() {
-    SContainmentLink[] rv = new SContainmentLink[1];
-    rv[0] = MetaAdapterFactory.getContainmentLink(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x3663ebbd1bf10683L, 0x6907f3fa7dfc783cL, "generator");
-    return rv;
-  }
-  private static final SNodePointer template_s14ods_a0a3 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "7568285956000709565");
-  private static final SNodePointer insertMacro_s14ods_b0a0a1a3a1a4 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "7568285956000796496");
+  private static final SNodePointer template = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "7568285956000709565");
+  private static final SNodePointer insertMacro = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "7568285956000796496");
 }

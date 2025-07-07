@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,9 @@ import com.intellij.openapi.extensions.ExtensionPointName;
 import jetbrains.mps.openapi.intentions.IntentionExecutable;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Mechanism to supply additional actions for an intention, like navigation to intention declaration
+ */
 public interface IntentionActionsProvider {
   ExtensionPointName<IntentionActionsProvider> EP_NAME = new ExtensionPointName<>("com.intellij.mps.IntentionActionsProvider");
 

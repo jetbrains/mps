@@ -12,14 +12,15 @@ import java.util.ArrayList;
 import jetbrains.mps.plugins.prefs.BaseProjectPrefsComponent;
 import jetbrains.mps.plugins.part.ProjectPluginPart;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/7162597690968192621", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "7162597690968192621", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class Ide_ProjectPlugin extends BaseProjectPlugin {
   public Ide_ProjectPlugin() {
   }
   public List<BaseTool> initAllTools1(Project project) {
     List<BaseTool> tools = ListSequence.fromList(new ArrayList<BaseTool>());
-    ListSequence.fromList(tools).addElement(new ModuleDependenies_Tool(project));
-    ListSequence.fromList(tools).addElement(new TodoViewer_Tool(project));
+    ListSequence.fromList(tools).addElement(new BaseLanguageHierarchyViewTool_Tool(project));
+    ListSequence.fromList(tools).addElement(new HierarchyViewTool_Tool(project));
+    ListSequence.fromList(tools).addElement(new Inspector_Tool(project));
     return tools;
   }
   public List<BaseProjectPrefsComponent> createPreferencesComponents(Project project) {

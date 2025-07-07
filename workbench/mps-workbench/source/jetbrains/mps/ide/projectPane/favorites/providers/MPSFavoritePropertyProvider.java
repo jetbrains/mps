@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +29,7 @@ import jetbrains.mps.ide.ui.smodel.PropertyTreeNode;
 import jetbrains.mps.smodel.adapter.structure.property.SPropertyAdapter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 import javax.swing.tree.TreeNode;
 import java.util.ArrayList;
@@ -40,27 +41,31 @@ public class MPSFavoritePropertyProvider extends FavoriteNodeProvider {
   @Nullable
   @Override
   public Collection<AbstractTreeNode<?>> getFavoriteNodes(DataContext context, @NotNull ViewSettings viewSettings) {
-    Collection<AbstractTreeNode<?>> result = new ArrayList<>();
     Project project = CommonDataKeys.PROJECT.getData(context);
     List<TreeNode> properties = MPSCommonDataKeys.TREE_NODES.getData(context);
 
     if (properties == null) {
-      return result;
+      return null;
     }
+    Collection<AbstractTreeNode<?>> result = new ArrayList<>();
 
     for (TreeNode propertyObject : properties) {
       if (!(propertyObject instanceof PropertyTreeNode)) {
         continue;
       }
-
       PropertyTreeNode treeNode = (PropertyTreeNode) propertyObject;
-
-      MPSFavoriteProperty favoriteProperty =
-          new MPSFavoriteProperty(project, treeNode.getProperty(), ViewSettings.DEFAULT);
-
-      result.add(favoriteProperty);
+      result.add(new MPSFavoriteProperty(project, treeNode.getProperty(), viewSettings));
     }
     return result.isEmpty() ? null : result;
+  }
+
+  @Nullable
+  @Override
+  public AbstractTreeNode<?> createNode(Project project, Object element, @NotNull ViewSettings viewSettings) {
+    if (element instanceof SProperty) {
+      return new MPSFavoriteProperty(project, (SProperty) element, viewSettings);
+    }
+    return null;
   }
 
   @Override

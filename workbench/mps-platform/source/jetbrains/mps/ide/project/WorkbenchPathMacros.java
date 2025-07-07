@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,12 @@
  */
 package jetbrains.mps.ide.project;
 
+import com.intellij.configurationStore.UnknownMacroNotification;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationType;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.impl.stores.UnknownMacroNotification;
 import com.intellij.openapi.options.ShowSettingsUtil;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectBundle;
@@ -29,7 +29,6 @@ import com.intellij.openapi.project.ProjectManagerListener;
 import com.intellij.openapi.project.impl.UndefinedMacrosConfigurable;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.text.StringUtil;
-import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.project.PathMacros;
 import jetbrains.mps.project.PathMacrosProvider;
@@ -49,45 +48,41 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import static com.intellij.notification.Notifications.SYSTEM_MESSAGES_GROUP_ID;
 
+// app service, initialized from MPSCoreComponents.
 public class WorkbenchPathMacros implements Disposable, PathMacrosProvider {
-  private final MPSCoreComponents myCoreComponents;
-  private final com.intellij.openapi.application.PathMacros myPathMacrosIdea;
+  public WorkbenchPathMacros() {
+    ApplicationManager.getApplication().getMessageBus().connect(this).subscribe(ProjectManager.TOPIC, new MyProjectManagerListener());
+  }
 
-  private final MessageBusConnection myConnection;
-
-  public WorkbenchPathMacros(MPSCoreComponents coreComponents, com.intellij.openapi.application.PathMacros ideaPathMacros) {
-    myCoreComponents = coreComponents;
-    myPathMacrosIdea = ideaPathMacros;
-    myConnection = ApplicationManager.getApplication().getMessageBus().connect();
-    myConnection.subscribe(ProjectManager.TOPIC, new MyProjectManagerListener());
-    getMPSCounterpart().addMacrosProvider(this);
+  private com.intellij.openapi.application.PathMacros getIDEACounterpart() {
+    // app service
+    return com.intellij.openapi.application.PathMacros.getInstance();
   }
 
   private PathMacros getMPSCounterpart() {
-    return myCoreComponents.getPlatform().findComponent(PathMacros.class);
+    return MPSCoreComponents.getInstance().getPlatform().findComponent(PathMacros.class);
   }
 
   @Override
   public void dispose() {
-    getMPSCounterpart().removeMacrosProvider(this);
-    myConnection.disconnect();
+    // Disposable just to serve as parent for MB connection
   }
 
   @NotNull
   @Override
   public Set<String> getNames() {
-    return myPathMacrosIdea.getAllMacroNames();
+    return getIDEACounterpart().getAllMacroNames();
   }
 
   @NotNull
   @Override
   public Set<String> getUserNames() {
-    return myPathMacrosIdea.getUserMacroNames();
+    return getIDEACounterpart().getUserMacroNames();
   }
 
   @Override
   public String getValue(@NotNull String name) {
-    return myPathMacrosIdea.getValue(name);
+    return getIDEACounterpart().getValue(name);
   }
 
   @Override
@@ -152,8 +147,9 @@ public class WorkbenchPathMacros implements Disposable, PathMacrosProvider {
   @NotNull
   private Map<String, String> collectMacros() {
     HashMap<String, String> res = new HashMap<>();
-    for (String name : myPathMacrosIdea.getUserMacroNames()) {
-      res.put(name, myPathMacrosIdea.getValue(name));
+    final com.intellij.openapi.application.PathMacros pathMacrosIdea = getIDEACounterpart();
+    for (String name : pathMacrosIdea.getUserMacroNames()) {
+      res.put(name, pathMacrosIdea.getValue(name));
     }
     return res;
   }
@@ -175,6 +171,7 @@ public class WorkbenchPathMacros implements Disposable, PathMacrosProvider {
     public void projectClosed(@NotNull Project project) {
       myMacroLock.lock();
       try {
+        // clear() of app component on project close looks suspicious, but it's just about reported macro, so we can report them again.
         getMPSCounterpart().clear();
         myReportedUnknown.clear();
       } finally {

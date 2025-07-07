@@ -21,7 +21,7 @@ import org.jetbrains.mps.annotations.Internal;
 
 /**
  * IMPORTANT: this is internal mediator to get behavior subsystem initialized, don't use outside of behavior implementation
- * The idea is not to expose implementation methid BHReflection#setRegistry from API class BHReflection.
+ * The idea is not to expose implementation method BHReflection#setRegistry from API class BHReflection.
  * In fact, I'd rather keep BHReflection inside runtime module, as I don't quite get the difference/separation idea between api and runtime modules.
  */
 @Internal

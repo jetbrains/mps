@@ -4,38 +4,36 @@ package analyzers.test.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import jetbrains.mps.lang.dataFlow.MPSProgramBuilder;
-import jetbrains.mps.lang.dataFlow.framework.instructions.InstructionBuilder;
-import jetbrains.mps.lang.dataFlow.framework.ProgramBuilderContextImpl;
+import jetbrains.mps.lang.dataFlow.MPSProgramFactory;
 import java.util.Collections;
+import jetbrains.mps.lang.dataFlow.framework.IDataFlowModeId;
 import jetbrains.mps.lang.dataFlow.framework.ConceptDataFlowModeId;
 import jetbrains.mps.lang.dataFlow.framework.Program;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import java.util.List;
 import java.util.Arrays;
-import jetbrains.mps.lang.dataFlow.framework.IDataFlowModeId;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicReference;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.smodel.runtime.ModuleRuntime;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class TestProgramWithModeSpecified_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(TestProgramWithModeSpecified_Test.class, "${mps_home}", "r:5c887230-cdf3-4722-bd6c-5a7e20ee92a1(analyzers.test.tests@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestProgramWithModeSpecified_Test.class).projectPath(null).modelRef("r:5c887230-cdf3-4722-bd6c-5a7e20ee92a1(analyzers.test.tests@tests)").reopenProject(null).build());
 
   public TestProgramWithModeSpecified_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -57,26 +55,40 @@ public class TestProgramWithModeSpecified_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2955426575105884967");
+    }
+
     public void test_testNonEmptyInstructionsWithModeSpecified() throws Exception {
-      addNodeById("2955426575105884967");
-      MPSProgramBuilder builder = new MPSProgramBuilder(null, new InstructionBuilder(), new ProgramBuilderContextImpl(Collections.singletonList(new ConceptDataFlowModeId("jetbrains.mps.lang.dataFlow.structure.IntraProcedural_BuilderMode"))));
-      Program program = builder.buildProgram(SNodeOperations.cast(getNodeById("2955426575105884969"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, "testCustomAnalyzer"), 0x73a316f7f5468ed4L, "Root"))));
-      Assert.assertTrue(program.getInstructions().size() == ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(getNodeById("2955426575105884969"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, "testCustomAnalyzer"), 0x73a316f7f5468ed4L, "Root"))), LINKS.child$G3Ei)).count() + 1);
+      initTestNodes();
+      runWithinCommand(() -> {
+        MPSProgramFactory pf = TestBody.this.factory().newFactory(Collections.<IDataFlowModeId>singletonList(new ConceptDataFlowModeId("jetbrains.mps.lang.dataFlow.structure.IntraProcedural_BuilderMode")));
+        Program program = pf.createProgram(getAnnotatedNode("root"));
+        Assert.assertTrue(program.getInstructions().size() == ListSequence.fromList(SLinkOperations.getChildren(getAnnotatedNode("root"), LINKS.child$G3Ei)).count() + 1);
+      });
     }
     public void test_testNonEmptyInstructionsWithMoreSpecificModeSpecified() throws Exception {
-      addNodeById("2955426575105884967");
-      MPSProgramBuilder builder = new MPSProgramBuilder(null, new InstructionBuilder(), new ProgramBuilderContextImpl(Arrays.asList(new ConceptDataFlowModeId("jetbrains.mps.testCustomDataFlow.structure.IntraProceduralSpecific_BuilderMode"), new ConceptDataFlowModeId("jetbrains.mps.lang.dataFlow.structure.IntraProcedural_BuilderMode"))));
-      Program program = builder.buildProgram(SNodeOperations.cast(getNodeById("2955426575105884969"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, "testCustomAnalyzer"), 0x73a316f7f5468ed4L, "Root"))));
-      Assert.assertTrue(program.getInstructions().size() == ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(getNodeById("2955426575105884969"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, "testCustomAnalyzer"), 0x73a316f7f5468ed4L, "Root"))), LINKS.child$G3Ei)).count() * 2 + 1);
+      initTestNodes();
+      runWithinCommand(() -> {
+        List<IDataFlowModeId> modes = Arrays.<IDataFlowModeId>asList(new ConceptDataFlowModeId("jetbrains.mps.testCustomDataFlow.structure.IntraProceduralSpecific_BuilderMode"), new ConceptDataFlowModeId("jetbrains.mps.lang.dataFlow.structure.IntraProcedural_BuilderMode"));
+        Program program = TestBody.this.factory().newFactory(modes).createProgram(getAnnotatedNode("root"));
+        Assert.assertTrue(program.getInstructions().size() == ListSequence.fromList(SLinkOperations.getChildren(getAnnotatedNode("root"), LINKS.child$G3Ei)).count() * 2 + 1);
+      });
     }
     public void test_testEmptyInstructionsWithModeSpecified() throws Exception {
-      addNodeById("2955426575105884967");
-      MPSProgramBuilder builder = new MPSProgramBuilder(null, new InstructionBuilder(), new ProgramBuilderContextImpl(Collections.<IDataFlowModeId>emptyList()));
-      Program program = builder.buildProgram(SNodeOperations.cast(getNodeById("2955426575105884969"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, "testCustomAnalyzer"), 0x73a316f7f5468ed4L, "Root"))));
-      Assert.assertTrue(program.getInstructions().size() == 1 && Objects.equals(program.getEnd(), program.getInstructions().get(0)));
+      initTestNodes();
+      runWithinCommand(() -> {
+        Program program = TestBody.this.factory().createProgram(getAnnotatedNode("root"));
+        Assert.assertTrue(program.getInstructions().size() == 1 && Objects.equals(program.getEnd(), program.getInstructions().get(0)));
+      });
     }
 
-
+    public MPSProgramFactory factory() {
+      final AtomicReference<MPSProgramFactory> rv = new AtomicReference<>(null);
+      myProject.getComponent(LanguageRegistry.class).withAvailableExtensions(MPSProgramFactory.class, new ModuleRuntime.Extension.MatchRequest() {}, (f) -> rv.set(f));
+      return rv.get();
+    }
   }
 
   private static final class LINKS {

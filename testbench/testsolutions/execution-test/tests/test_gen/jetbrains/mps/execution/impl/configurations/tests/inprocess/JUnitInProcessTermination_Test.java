@@ -4,11 +4,11 @@ package jetbrains.mps.execution.impl.configurations.tests.inprocess;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import jetbrains.mps.logging.Logger;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.execution.impl.configurations.util.TestNodeWrapHelper;
@@ -19,9 +19,8 @@ import jetbrains.mps.baseLanguage.unitTest.execution.client.TestRunState;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.execution.configurations.implementation.plugin.plugin.JUnitTests_Configuration;
-import jetbrains.mps.execution.configurations.implementation.plugin.plugin.JUnitProcessStarter;
 import jetbrains.mps.execution.configurations.implementation.plugin.plugin.JUnitInProcessRunStarter;
-import jetbrains.mps.lang.test.util.TestInProcessRunState;
+import jetbrains.mps.execution.configurations.implementation.plugin.plugin.TestInProcessRunState;
 import com.intellij.execution.process.ProcessHandler;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.execution.impl.configurations.tests.commands.CheckTestStateListener;
@@ -31,7 +30,7 @@ import jetbrains.mps.baseLanguage.unitTest.execution.client.UnitTestProcessListe
 import java.util.concurrent.CountDownLatch;
 import com.intellij.execution.process.ProcessAdapter;
 import com.intellij.execution.process.ProcessEvent;
-import junit.framework.Assert;
+import org.junit.Assert;
 import java.util.concurrent.TimeUnit;
 import jetbrains.mps.execution.configurations.implementation.plugin.plugin.FakeProcess;
 import com.intellij.execution.ExecutionException;
@@ -39,12 +38,12 @@ import com.intellij.util.WaitFor;
 
 @MPSLaunch
 public class JUnitInProcessTermination_Test extends BaseTransformationTest {
-  private static final Logger LOG = LogManager.getLogger(JUnitInProcessTermination_Test.class);
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(JUnitInProcessTermination_Test.class, "${mps_home}", "r:ff98d12f-bc65-4639-94c3-dee022b33791(jetbrains.mps.execution.impl.configurations.tests.inprocess@tests)", false);
+  private static final Logger LOG = Logger.getLogger(JUnitInProcessTermination_Test.class);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(JUnitInProcessTermination_Test.class).projectPath(null).modelRef("r:ff98d12f-bc65-4639-94c3-dee022b33791(jetbrains.mps.execution.impl.configurations.tests.inprocess@tests)").reopenProject(null).build());
 
   public JUnitInProcessTermination_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -58,28 +57,31 @@ public class JUnitInProcessTermination_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_terminate() throws Exception {
-      this.startAndTerminate(new TestNodeWrapHelper(myProject.getRepository()).discover(new SNodePointer("r:bbc844ac-dcda-4460-9717-8eb5d64b4778(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2@tests)", "6339244025082972090")));
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
     }
 
+    public void test_terminate() throws Exception {
+      initTestNodes();
+      this.startAndTerminate(new TestNodeWrapHelper(myProject.getRepository()).discover(new SNodePointer("r:bbc844ac-dcda-4460-9717-8eb5d64b4778(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2@tests)", "6339244025082972090")));
+    }
 
     public void startAndTerminate(final List<ITestNodeWrapper> testNodes) {
       try {
         final TestRunState runState = new TestRunState(testNodes);
         Project ideaProject = ((MPSProject) myProject).getProject();
         JUnitTests_Configuration junitRC = new JUnitTests_Configuration(ideaProject, null, "dummyRCInitializer");
-        JUnitProcessStarter processExecutor = new JUnitInProcessRunStarter(myProject, junitRC, testNodes);
-        final TestInProcessRunState lightState = TestInProcessRunState.getInstance();
-        if (LOG.isInfoEnabled()) {
+        JUnitInProcessRunStarter processExecutor = new JUnitInProcessRunStarter(myProject, junitRC, testNodes);
+        final TestInProcessRunState lightState = processExecutor.getRunState();
+        if (LOG.isInfoLevel()) {
           LOG.info("Starting in-process-execution");
         }
         ProcessHandler process = processExecutor.execute();
         final Wrappers._T<CheckTestStateListener> checkListener = new Wrappers._T<CheckTestStateListener>();
-        myProject.getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            checkListener.value = new CheckTestStateListener(testNodes, ListSequence.fromList(new ArrayList<ITestNodeWrapper>()));
-            runState.addListener(checkListener.value);
-          }
+        myProject.getModelAccess().runReadAction(() -> {
+          checkListener.value = new CheckTestStateListener(testNodes, ListSequence.fromList(new ArrayList<ITestNodeWrapper>()));
+          runState.addListener(checkListener.value);
         });
         process.addProcessListener(new UnitTestProcessListener(runState));
 

@@ -39,7 +39,6 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.template.WeavingAnchorContext;
 import jetbrains.mps.generator.impl.query.MapConfigurationCondition;
 import jetbrains.mps.generator.impl.query.SourceNodeQuery;
-import jetbrains.mps.generator.impl.query.QueryKeyImpl;
 import jetbrains.mps.generator.impl.query.SourceNodesQuery;
 import java.util.Collection;
 import jetbrains.mps.util.IterableUtil;
@@ -78,7 +77,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean rule_Condition_0_4(final BaseMappingRuleContext _context) {
     SNode var = SLinkOperations.getTarget(_context.getNode(), LINKS.variableDeclaration$N1XG);
-    if (!((SNodeOperations.isInstanceOf(var, CONCEPTS.LocalVariableDeclaration$41) || SNodeOperations.isInstanceOf(var, CONCEPTS.ParameterDeclaration$RG)))) {
+    if (!(SNodeOperations.isInstanceOf(var, CONCEPTS.LocalVariableDeclaration$41) || SNodeOperations.isInstanceOf(var, CONCEPTS.ParameterDeclaration$RG))) {
       return false;
     }
     SNode contextOwner = ClosuresUtil.findEnclosingClosureContextOwner(var);
@@ -101,7 +100,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.createUniqueName("zClosureContext", null);
   }
   public static Object propertyMacro_GetValue_1_1(final PropertyMacroContext _context) {
-    // XXX in fact, template's input node is contextOwner 
+    // XXX in fact, template's input node is contextOwner
     SNode contextOwner = ClosuresUtil.findEnclosingClosureContextOwner(_context.getNode());
     return ClosuresUtil.getVariableNameInClosureContext(contextOwner, _context.getNode(), _context);
   }
@@ -118,13 +117,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.ClassConcept$bK, false, false);
   }
   public static Object referenceMacro_GetReferent_3_1(final ReferenceMacroContext _context) {
-    //  alternatively, could have used MAP-SRC to findEnclosingClosureContextOwner and template reference 
+    //  alternatively, could have used MAP-SRC to findEnclosingClosureContextOwner and template reference
     SNode generatedClass = _context.getOutputNodeByInputNodeAndMappingLabel(ClosuresUtil.findEnclosingClosureContextOwner(_context.getNode()), "contextOwner_closureContext_class");
     if (generatedClass == null) {
       return new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object");
     } else {
-      // for whatever reason, can't mix node-ptr<Classifier> and node<Classifier> for join return type, 
-      // return generatedClass; complains with "type j.l.Object is not subtype of node<Classifier>", hence .pointer 
+      // for whatever reason, can't mix node-ptr<Classifier> and node<Classifier> for join return type,
+      // return generatedClass; complains with "type j.l.Object is not subtype of node<Classifier>", hence .pointer
       return SNodeOperations.getPointer(generatedClass);
     }
   }
@@ -132,10 +131,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.ClassConcept$bK, false, false);
   }
   public static Object referenceMacro_GetReferent_3_3(final ReferenceMacroContext _context) {
-    // XXX Why not type of argument but cast? 
+    // XXX Why not type of argument but cast?
     SNode generatedClass = _context.getOutputNodeByInputNodeAndMappingLabel(ClosuresUtil.findEnclosingClosureContextOwner(_context.getNode()), "contextOwner_closureContext_class");
     if (generatedClass != null) {
-      //  see field declaration for reasons we resort to .pointer here 
+      //  see field declaration for reasons we resort to .pointer here
       return SNodeOperations.getPointer(generatedClass);
     } else {
       return new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object");
@@ -215,11 +214,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public ReductionRuleCondition getReductionRuleCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(rrcMethods.containsKey(id))) {
-      return super.getReductionRuleCondition(identity);
-    }
-    return rrcMethods.get(id);
+    ReductionRuleCondition query = identity.forTemplateNode(rrcMethods);
+    return (query != null ? query : super.getReductionRuleCondition(identity));
   }
   private static class RRC implements ReductionRuleCondition {
     private final int methodKey;
@@ -251,11 +247,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public MapRootRuleCondition getMapRootRuleCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(mrrcMethods.containsKey(id))) {
-      return super.getMapRootRuleCondition(identity);
-    }
-    return mrrcMethods.get(id);
+    MapRootRuleCondition query = identity.forTemplateNode(mrrcMethods);
+    return (query != null ? query : super.getMapRootRuleCondition(identity));
   }
   private static class MRRC implements MapRootRuleCondition {
     private final int methodKey;
@@ -282,29 +275,20 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public WeaveRuleCondition getWeaveRuleCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(wrcnMethods.containsKey(id))) {
-      return super.getWeaveRuleCondition(identity);
-    }
-    return wrcnMethods.get(id);
+    WRQ query = identity.forTemplateNode(wrcnMethods);
+    return (query != null ? query : super.getWeaveRuleCondition(identity));
   }
   @Override
   @NotNull
   public WeaveRuleQuery getWeaveRuleQuery(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(wrcnMethods.containsKey(id))) {
-      return super.getWeaveRuleQuery(identity);
-    }
-    return wrcnMethods.get(id);
+    WRQ query = identity.forTemplateNode(wrcnMethods);
+    return (query != null ? query : super.getWeaveRuleQuery(identity));
   }
   @NotNull
   @Override
   public WeaveAnchorQuery getWeaveAnchorQuery(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(wrcnMethods.containsKey(id))) {
-      return super.getWeaveAnchorQuery(identity);
-    }
-    return wrcnMethods.get(id);
+    WRQ query = identity.forTemplateNode(wrcnMethods);
+    return (query != null ? query : super.getWeaveAnchorQuery(identity));
   }
   private static class WRQ implements WeaveRuleQuery, WeaveRuleCondition, WeaveAnchorQuery {
     private final int methodKey;
@@ -349,11 +333,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public MapConfigurationCondition getMapConfigurationCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(mccMethods.containsKey(id))) {
-      return super.getMapConfigurationCondition(identity);
-    }
-    return mccMethods.get(id);
+    MapConfigurationCondition query = identity.forTemplateNode(mccMethods);
+    return (query != null ? query : super.getMapConfigurationCondition(identity));
   }
   private static class MCC implements MapConfigurationCondition {
     private final int methodKey;
@@ -381,11 +362,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public SourceNodeQuery getSourceNodeQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snqMethods.containsKey(id))) {
-      return super.getSourceNodeQuery(identity);
-    }
-    return snqMethods.get(id);
+    SourceNodeQuery query = identity.forFunctionNode(snqMethods);
+    return (query != null ? query : super.getSourceNodeQuery(identity));
   }
   private static class SNQ implements SourceNodeQuery {
     private final int methodKey;
@@ -421,11 +399,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public SourceNodesQuery getSourceNodesQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snsqMethods.containsKey(id))) {
-      return super.getSourceNodesQuery(identity);
-    }
-    return snsqMethods.get(id);
+    SourceNodesQuery query = identity.forFunctionNode(snsqMethods);
+    return (query != null ? query : super.getSourceNodesQuery(identity));
   }
   private static class SNsQ implements SourceNodesQuery {
     private final int methodKey;
@@ -463,11 +438,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public PropertyValueQuery getPropertyValueQuery(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(pvqMethods.containsKey(id))) {
-      return super.getPropertyValueQuery(identity);
-    }
-    return pvqMethods.get(id);
+    PropertyValueQuery query = identity.forTemplateNode(pvqMethods);
+    return (query != null ? query : super.getPropertyValueQuery(identity));
   }
   private static class PVQ extends PropertyValueQuery.Base {
     private final int methodKey;
@@ -499,11 +471,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public IfMacroCondition getIfMacroCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(imcMethods.containsKey(id))) {
-      return super.getIfMacroCondition(identity);
-    }
-    return imcMethods.get(id);
+    IfMacroCondition query = identity.forTemplateNode(imcMethods);
+    return (query != null ? query : super.getIfMacroCondition(identity));
   }
   private static class IfMC implements IfMacroCondition {
     private final int methodKey;
@@ -539,11 +508,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public ReferenceTargetQuery getReferenceTargetQuery(@NotNull QueryKey queryKey) {
-    final String id = queryKey.getTemplateNode().getNodeId().toString();
-    if (!(rtqMethods.containsKey(id))) {
-      return super.getReferenceTargetQuery(queryKey);
-    }
-    return rtqMethods.get(id);
+    ReferenceTargetQuery query = queryKey.forTemplateNode(rtqMethods);
+    return (query != null ? query : super.getReferenceTargetQuery(queryKey));
   }
   private static class RTQ extends ReferenceTargetQuery.Base {
     private final int methodKey;

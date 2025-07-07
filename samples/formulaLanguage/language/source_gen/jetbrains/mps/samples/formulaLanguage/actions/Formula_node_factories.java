@@ -13,7 +13,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class Formula_node_factories {
   public static class NodeFactory_1162840292118 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Operation$Dj)) {
         SLinkOperations.setTarget(newNode, LINKS.leftOperand$mKQu, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.Operation$Dj), LINKS.leftOperand$mKQu));
         SLinkOperations.setTarget(newNode, LINKS.rightOperand$KkZz, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.Operation$Dj), LINKS.rightOperand$KkZz));

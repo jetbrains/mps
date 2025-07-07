@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,6 +30,12 @@ import org.jetbrains.mps.openapi.repository.WriteActionListener;
  * Created by Alex Pyshkin on 9/3/14.
  */
 public abstract class ModelAccessBase implements org.jetbrains.mps.openapi.module.ModelAccess, ModelCommandContext.Provider {
+
+  private final org.jetbrains.mps.openapi.module.ModelAccess myDelegate;
+
+  protected ModelAccessBase(@NotNull org.jetbrains.mps.openapi.module.ModelAccess delegate) {
+    myDelegate = delegate;
+  }
 
   @Override
   public boolean canRead() {
@@ -101,9 +107,24 @@ public abstract class ModelAccessBase implements org.jetbrains.mps.openapi.modul
   }
 
   // not null
-  public /*protected*/ final ModelAccess getDelegate() {
-    // Can't be cons argument as subclasses might get instantiated BEFORE WorkbenchModelAccess had a chance to register itself as a global MA.
-    return ModelAccess.instance();
+  protected final org.jetbrains.mps.openapi.module.ModelAccess getDelegate() {
+    return myDelegate;
+  }
+
+  // provisional code. as long as there are 2 "real" smodel.MA implementations, DMA and WMA, and few "frontend" openapi.MA, we
+  // need to reach "real" MA in certain scenarios.
+  protected final ModelAccess delegateImpl() {
+    org.jetbrains.mps.openapi.module.ModelAccess d = myDelegate;
+    do {
+      if (d instanceof ModelAccess) {
+        return (ModelAccess) d;
+      } else if (d instanceof ModelAccessBase) {
+        d = ((ModelAccessBase) d).getDelegate();
+      } else {
+        break;
+      }
+    } while (d != null);
+    return null;
   }
 
   /**
@@ -113,12 +134,16 @@ public abstract class ModelAccessBase implements org.jetbrains.mps.openapi.modul
    */
   public SharedReadModelAccess shareRead() throws IllegalModelAccessError {
     checkReadAccess();
+    ModelAccess actualImpl = delegateImpl();
+    if (actualImpl == null) {
+      throw new IllegalModelAccessError(String.format("MA instance (%s) doesn't support shared reads", myDelegate));
+    }
     // FIXME shall prevent using this method from within a thread that canRead with the help of readEnabledFlag,
     //       to allow only 'true' owners of the read lock to share it. However, once legacy implementation with readEnabledFlag gone,
     //       there'd be no need in the code, therefore I opted not to bother (except this note).
-    // FIXME LegacySharedReadAccess violates SharedReadModelAccess contract as it keeps 'read access' regardless of read lock in original thread
-    //       Shall deal with that once proper implementation is in place.
-    return new LegacySharedReadAccess(getDelegate());
+    //       Check MA.shareRead() implementation for further considerations. Shall move the call here and make a decision whether
+    //       to give SRMA or throw an error.
+    return new SharedReadImpl(actualImpl);
   }
 
   @Nullable
@@ -127,16 +152,16 @@ public abstract class ModelAccessBase implements org.jetbrains.mps.openapi.modul
     return getDelegate() instanceof ModelCommandContext.Provider ? ((ModelCommandContext.Provider) getDelegate()).getCommandContext(model) : null;
   }
 
-  private static class LegacySharedReadAccess implements SharedReadModelAccess {
-    private final ModelAccess myDelegate;
+  private static class SharedReadImpl implements SharedReadModelAccess {
+    private final ReadAccessToken myAccessControl;
 
-    public LegacySharedReadAccess(ModelAccess delegate) {
-      myDelegate = delegate;
+    public SharedReadImpl(ModelAccess delegate) {
+      myAccessControl = delegate.shareRead();
     }
 
     @Override
     public boolean canRead() {
-      return false;
+      return myAccessControl.isAlive();
     }
 
     @Override
@@ -145,25 +170,17 @@ public abstract class ModelAccessBase implements org.jetbrains.mps.openapi.modul
     }
 
     @Override
-    public void execute(@NotNull Runnable command) {
-      /*
-       * readEnabledFlag is a workaround to deal with implementation peculiarities of non-fair ReentrantReadWriteLock.
-       * IDEA uses non-fair RRWL for its read/write actions, which we use for our model read-write actions.
-       * Generator starts with a read action, and grabs platform read lock. GenerationTaskPool#waitForCompletion
-       * blocks read, and spawns few other threads which try to grab read lock. Unless there's a platform write action,
-       * everything is fine. If, however, there's a write action (e.g. focus lost event and document save action), platform
-       * tries to lock write lock of RRWL, which, in its non-fair state, put write requestee to the top of waiting queue,
-       * effectively preventing any further read attempts. Threads of GenerationTaskPool has no chance to complete,
-       * and read lock of primary generator thread is never released. Deadlock.
-       *
-       * Note, readEnabledFlag (or any other 'lightweight' model read alternative) doesn't look as a decent solution,
-       * as the read lock of primary thread still blocks platform write actions.
-       */
-      final boolean flag = myDelegate.setReadEnabledFlag(true);
-      try {
-        command.run();
-      } finally {
-        myDelegate.setReadEnabledFlag(flag);
+    public void execute(@NotNull final Runnable command) {
+      if (command instanceof CancellableReadAction) {
+        myAccessControl.runRead((CancellableReadAction) command);
+      } else {
+        // this is not perfect, yet still gives some cancellation support (won't start if cancellation comes before 'execute')
+        myAccessControl.runRead(new CancellableReadAction() {
+          @Override
+          protected void execute() {
+            command.run();
+          }
+        });
       }
     }
   }

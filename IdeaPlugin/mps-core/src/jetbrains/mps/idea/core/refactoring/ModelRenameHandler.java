@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -223,7 +223,7 @@ public class ModelRenameHandler implements RenameHandler {
   private static class ModelRenamer {
     private final EditableSModel myModelDescriptor;
     private final String myNewName;
-    private boolean myLazy;
+    private final boolean myLazy;
 
     public ModelRenamer(EditableSModel modelDescriptor, String fqName, boolean lazy) {
       myModelDescriptor = modelDescriptor;
@@ -237,7 +237,7 @@ public class ModelRenameHandler implements RenameHandler {
 
     public void updateReferencesIfNeeded(Project project) {
       if (!myLazy) {
-        Renamer.updateModelAndModuleReferences(ProjectHelper.fromIdeaProject(project).getRepository());
+        Renamer.updateModelAndModuleReferences(ProjectHelper.fromIdeaProject(project));
       }
     }
   }

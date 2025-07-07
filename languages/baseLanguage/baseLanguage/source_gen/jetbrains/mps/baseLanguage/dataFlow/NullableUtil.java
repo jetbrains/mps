@@ -13,15 +13,14 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Iterator;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.dataFlow.framework.instructions.Instruction;
 import jetbrains.mps.lang.dataFlow.framework.instructions.ReadInstruction;
+import java.util.List;
 import jetbrains.mps.lang.dataFlow.framework.instructions.WriteInstruction;
 import jetbrains.mps.lang.dataFlow.framework.AnalysisResult;
 import java.util.Map;
-import java.util.List;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -74,11 +73,7 @@ public class NullableUtil {
             arg_var = arg_it.next();
             param_var = param_it.next();
             if (Objects.equals(arg_var, source)) {
-              if (Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(param_var, LINKS.annotation$K49I), LINKS.annotation$12Ek)).any(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  return SNodeOperations.is(it, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~NotNull"));
-                }
-              }) && NullableState.canBeNull(state)) {
+              if (Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(param_var, LINKS.annotation$K49I), LINKS.annotation$12Ek)).any((it) -> SNodeOperations.is(it, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~NotNull"))) && NullableState.canBeNull(state)) {
                 String warning;
                 if (SNodeOperations.isInstanceOf(source, CONCEPTS.INamedConcept$Kd)) {
                   warning = "Argument " + SPropertyOperations.getString(SNodeOperations.cast(source, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL) + " might be null";
@@ -105,11 +100,25 @@ public class NullableUtil {
       boolean isNull = NullableState.NULL.equals(state);
       boolean isNotNull = NullableState.NOTNULL.equals(state);
       if (getOtherThanNull(SNodeOperations.cast(parent, CONCEPTS.BinaryOperation$W1)) != null) {
-        if (SNodeOperations.getNodeAncestor(source, CONCEPTS.IfStatement$Q4, false, false) != null && ListSequence.fromList(SNodeOperations.getNodeAncestors(source, null, false)).contains(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(source, CONCEPTS.IfStatement$Q4, false, false), LINKS.condition$5R17))) {
+        final SNode ifAncestor = SNodeOperations.getNodeAncestor(source, CONCEPTS.IfStatement$Q4, false, false);
+        final List<SNode> currentAncestors = SNodeOperations.getNodeAncestors(source, null, false);
+        if (ifAncestor != null && ListSequence.fromList(currentAncestors).contains(SLinkOperations.getTarget(ifAncestor, LINKS.condition$5R17))) {
           inCondition = true;
-        }
-        if (SNodeOperations.getNodeAncestor(source, CONCEPTS.WhileStatement$Ay, false, false) != null && ListSequence.fromList(SNodeOperations.getNodeAncestors(source, null, false)).contains(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(source, CONCEPTS.WhileStatement$Ay, false, false), LINKS.condition$KEkM))) {
-          inCondition = true;
+        } else {
+          final SNode whileAncestor = SNodeOperations.getNodeAncestor(source, CONCEPTS.WhileStatement$Ay, false, false);
+          if (whileAncestor != null && ListSequence.fromList(currentAncestors).contains(SLinkOperations.getTarget(whileAncestor, LINKS.condition$KEkM))) {
+            inCondition = true;
+          } else {
+            final SNode doWhileAncestor = SNodeOperations.getNodeAncestor(source, CONCEPTS.DoWhileStatement$9p, false, false);
+            if (doWhileAncestor != null && ListSequence.fromList(currentAncestors).contains(SLinkOperations.getTarget(doWhileAncestor, LINKS.condition$UPf8))) {
+              inCondition = true;
+            } else {
+              final SNode forAncestor = SNodeOperations.getNodeAncestor(source, CONCEPTS.ForStatement$qV, false, false);
+              if (forAncestor != null && ListSequence.fromList(currentAncestors).contains(SLinkOperations.getTarget(forAncestor, LINKS.condition$wARE))) {
+                inCondition = true;
+              }
+            }
+          }
         }
         if (inCondition) {
           if (equals && isNotNull || !(equals) && isNull) {
@@ -126,11 +135,7 @@ public class NullableUtil {
   }
   public static Tuples._2<String, SNode> checkNullableAssignment(WriteInstruction writeInstruction, AnalysisResult<Map<SNode, NullableState>> result) {
     List<SNode> annotation = SLinkOperations.getChildren(((SNode) writeInstruction.getVariable()), LINKS.annotation$K49I);
-    if (annotation != null && Sequence.fromIterable(SLinkOperations.collect(annotation, LINKS.annotation$12Ek)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.is(it, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~NotNull"));
-      }
-    })) {
+    if (annotation != null && Sequence.fromIterable(SLinkOperations.collect(annotation, LINKS.annotation$12Ek)).any((it) -> SNodeOperations.is(it, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~NotNull")))) {
       SNode value = (SNode) writeInstruction.getValue();
       if (SNodeOperations.isInstanceOf(value, CONCEPTS.VariableReference$TC)) {
         value = SLinkOperations.getTarget(SNodeOperations.cast(value, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG);
@@ -155,6 +160,8 @@ public class NullableUtil {
     /*package*/ static final SReferenceLink annotation$12Ek = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
     /*package*/ static final SContainmentLink condition$5R17 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
     /*package*/ static final SContainmentLink condition$KEkM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfaa4bf0f2fL, 0xfaa4bf0f30L, "condition");
+    /*package*/ static final SContainmentLink condition$UPf8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11232674988L, 0x11232679422L, "condition");
+    /*package*/ static final SContainmentLink condition$wARE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0x10a69819132L, "condition");
     /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 
@@ -168,6 +175,8 @@ public class NullableUtil {
     /*package*/ static final SConcept EqualsExpression$MF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b210L, "jetbrains.mps.baseLanguage.structure.EqualsExpression");
     /*package*/ static final SConcept IfStatement$Q4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
     /*package*/ static final SConcept WhileStatement$Ay = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfaa4bf0f2fL, "jetbrains.mps.baseLanguage.structure.WhileStatement");
+    /*package*/ static final SConcept DoWhileStatement$9p = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11232674988L, "jetbrains.mps.baseLanguage.structure.DoWhileStatement");
+    /*package*/ static final SConcept ForStatement$qV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, "jetbrains.mps.baseLanguage.structure.ForStatement");
     /*package*/ static final SConcept BinaryOperation$W1 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
     /*package*/ static final SConcept NotEqualsExpression$aX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf9e20e303fL, "jetbrains.mps.baseLanguage.structure.NotEqualsExpression");
     /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");

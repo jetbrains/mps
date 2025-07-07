@@ -8,9 +8,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.baseLanguage.behavior.Expression__BehaviorDescriptor;
+import jetbrains.mps.baseLanguage.dataFlow.ConditionUtil;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -28,22 +26,19 @@ public class check_TernaryOperationCanBeSimplified_NonTypesystemRule extends Abs
     SNode right = SLinkOperations.getTarget(ternaryOperatorExpression, LINKS.ifFalse$Wbma);
     SNode condition = SLinkOperations.getTarget(ternaryOperatorExpression, LINKS.condition$nwNI);
     SNode remainingNode;
-    Boolean value;
-    SModule module = SNodeOperations.getModel(ternaryOperatorExpression).getModule();
-    if ((boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(condition)) {
-      Object conditionValue = Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(condition, module);
-      if (conditionValue != null && conditionValue instanceof Boolean) {
-        value = (Boolean) conditionValue;
-        remainingNode = (value ? left : right);
+
+    Boolean conditionConstant = ConditionUtil.getConditionEffectivelyConstantValue(condition);
+    if (conditionConstant != null) {
+      final Boolean value = conditionConstant.booleanValue();
+      remainingNode = (value ? left : right);
+      {
+        final MessageTarget errorTarget = new NodeMessageTarget();
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(SLinkOperations.getTarget(ternaryOperatorExpression, LINKS.condition$nwNI), "The ternary operator condition is always " + value, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3026370834469612898", null, errorTarget);
         {
-          final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(SLinkOperations.getTarget(ternaryOperatorExpression, LINKS.condition$nwNI), "The ternary operator condition is always " + value, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2857825852308875366", null, errorTarget);
-          {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SimplifyBinaryLogicalExpressionWithBooleanConstant_QuickFix", false);
-            intentionProvider.putArgument("remainingNode", remainingNode);
-            intentionProvider.putArgument("operation", ternaryOperatorExpression);
-            _reporter_2309309498.addIntentionProvider(intentionProvider);
-          }
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SimplifyBinaryLogicalExpressionWithBooleanConstant_QuickFix", "3026370834469612905", false);
+          intentionProvider.putArgument("remainingNode", remainingNode);
+          intentionProvider.putArgument("operation", ternaryOperatorExpression);
+          _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }
     }

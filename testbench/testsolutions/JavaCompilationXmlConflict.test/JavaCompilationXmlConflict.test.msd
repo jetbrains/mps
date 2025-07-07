@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<solution name="JavaCompilationXmlConflict.test" uuid="b0a89157-db40-4955-b2ac-edf8fcc90dde" moduleVersion="0" compileInMPS="true">
+<solution name="JavaCompilationXmlConflict.test" uuid="b0a89157-db40-4955-b2ac-edf8fcc90dde" moduleVersion="0">
   <models>
     <modelRoot contentPath="${module}" type="default">
       <sourceRoot location="models" />
     </modelRoot>
   </models>
   <facets>
-    <facet type="java">
+    <facet type="java" compile="mps" classes="mps" ext="no">
       <classes generated="true" path="${module}/classes_gen" />
     </facet>
     <facet type="tests" />
   </facets>
-  <sourcePath />
   <dependencies>
     <dependency reexport="false">6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)</dependency>
     <dependency reexport="false">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>
     <dependency reexport="false">920eaa0e-ecca-46bc-bee7-4e5c59213dd6(Testbench)</dependency>
     <dependency reexport="false">49808fad-9d41-4b96-83fa-9231640f6b2b(JUnit)</dependency>
+    <dependency reexport="false">63b449db-0918-4a4a-a891-2c430ab133e4(org.junit.junit5)</dependency>
+    <dependency reexport="false">6ef0db41-d3b2-47fe-82ac-d55a42cb6b13(jetbrains.mps.baseLanguage.unitTest.runtime)</dependency>
   </dependencies>
   <languageVersions>
-    <language slang="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" version="11" />
+    <language slang="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" version="12" />
     <language slang="l:fd392034-7849-419d-9071-12563d152375:jetbrains.mps.baseLanguage.closures" version="0" />
     <language slang="l:f61473f9-130f-42f6-b98d-6c438812c2f6:jetbrains.mps.baseLanguage.unitTest" version="1" />
     <language slang="l:9f846aef-4e4a-4a84-828e-7e83fe2697f2:jetbrains.mps.build.mps.testManifest" version="0" />
@@ -40,8 +41,9 @@
     <module reference="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" version="0" />
     <module reference="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61(MPS.Platform)" version="0" />
     <module reference="920eaa0e-ecca-46bc-bee7-4e5c59213dd6(Testbench)" version="0" />
+    <module reference="6ef0db41-d3b2-47fe-82ac-d55a42cb6b13(jetbrains.mps.baseLanguage.unitTest.runtime)" version="0" />
     <module reference="fdaaf35f-8ee3-4c37-b09d-9efaeaaa7a41(jetbrains.mps.core.tool.environment)" version="0" />
-    <module reference="9e98f4e2-decf-4e97-bf80-9109e8b759aa(jetbrains.mps.lang.feedback.context)" version="0" />
+    <module reference="63b449db-0918-4a4a-a891-2c430ab133e4(org.junit.junit5)" version="0" />
   </dependencyVersions>
 </solution>
 

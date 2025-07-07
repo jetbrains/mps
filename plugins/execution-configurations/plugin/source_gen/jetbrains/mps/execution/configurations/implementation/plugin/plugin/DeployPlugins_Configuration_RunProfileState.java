@@ -31,7 +31,6 @@ import com.intellij.openapi.application.ex.ApplicationEx;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.execution.api.configurations.DefaultExecutionResult;
 import jetbrains.mps.execution.api.configurations.DefaultExecutionConsole;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import com.intellij.execution.executors.DefaultRunExecutor;
 
 public class DeployPlugins_Configuration_RunProfileState implements RunProfileState {
@@ -83,9 +82,9 @@ public class DeployPlugins_Configuration_RunProfileState implements RunProfileSt
             File artifacts = new File(script.getArtifactsPath());
 
             if (myRunConfiguration.getSkipModulesLoading()) {
-              // using the same "advanced" technique we use for copying current project in mps command 
-              // configuration supports only plugin construction 
-              // which implies that plugin.xml can be only in PLUGIN_HOME/META-INF 
+              // using the same "advanced" technique we use for copying current project in mps command
+              // configuration supports only plugin construction
+              // which implies that plugin.xml can be only in PLUGIN_HOME/META-INF
               for (File pluginDir : artifacts.listFiles()) {
                 File pluginXml = new File(new File(pluginDir, "META-INF"), "plugin.xml");
                 if (!(pluginXml.exists())) {
@@ -96,9 +95,9 @@ public class DeployPlugins_Configuration_RunProfileState implements RunProfileSt
                   myRunConfiguration.removeLanguageLibraries(document.getRootElement(), projectFinal);
                   JDOMUtil.writeDocument(document, pluginXml);
                 } catch (JDOMException e) {
-                  // ignore and hope for the best 
+                  // ignore and hope for the best
                 } catch (IOException e) {
-                  // same as previous 
+                  // same as previous
                 }
               }
             }
@@ -123,11 +122,7 @@ public class DeployPlugins_Configuration_RunProfileState implements RunProfileSt
       ProcessHandler _processHandler = process;
       final ConsoleView _consoleView = console;
       _consoleView.attachToProcess(_processHandler);
-      return new DefaultExecutionResult(_processHandler, new DefaultExecutionConsole(_consoleView.getComponent(), new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          _consoleView.dispose();
-        }
-      }));
+      return new DefaultExecutionResult(_processHandler, new DefaultExecutionConsole(_consoleView.getComponent(), () -> _consoleView.dispose()));
     }
   }
 

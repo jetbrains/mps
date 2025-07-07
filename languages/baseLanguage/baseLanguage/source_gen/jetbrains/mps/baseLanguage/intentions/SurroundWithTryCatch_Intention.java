@@ -17,16 +17,13 @@ import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.baseLanguage.behavior.ITryCatchStatement__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.AbstractCatchClause__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.baseLanguage.behavior.IMethodLike__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Set;
 import jetbrains.mps.baseLanguage.behavior.StatementList__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -41,21 +38,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class SurroundWithTryCatch_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public SurroundWithTryCatch_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "3366354716707825944"));
   }
+
   @Override
   public String getPresentation() {
     return "SurroundWithTryCatch";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return true;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -65,10 +62,12 @@ public final class SurroundWithTryCatch_Intention extends AbstractIntentionDescr
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Try / Catch";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       final SNode tryCatchStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.TryUniversalStatement$$M, null);
@@ -77,52 +76,43 @@ public final class SurroundWithTryCatch_Intention extends AbstractIntentionDescr
       for (SNode selectedNode : ListSequence.fromList(selectedNodes)) {
         ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(tryCatchStatement, LINKS.body$KFk), LINKS.statement$53DE)).addElement(SNodeOperations.getNodeAncestor(selectedNode, CONCEPTS.Statement$P6, true, false));
       }
-      Iterable<SNode> caughtExceptions = ListSequence.fromList(SNodeOperations.getNodeAncestors(tryCatchStatement, CONCEPTS.ITryCatchStatement$pH, false)).translate(new ITranslator2<SNode, SNode>() {
-        public Iterable<SNode> translate(SNode it) {
-          return (List<SNode>) ITryCatchStatement__BehaviorDescriptor.getCatchClauses_id3eptmOG0XgA.invoke(it);
-        }
-      }).translate(new ITranslator2<SNode, SNode>() {
-        public Iterable<SNode> translate(SNode it) {
-          return (List<SNode>) AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(it);
-        }
-      }).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr);
-        }
-      });
+      Iterable<SNode> caughtExceptions = ListSequence.fromList(SNodeOperations.getNodeAncestors(tryCatchStatement, CONCEPTS.ITryCatchStatement$pH, false)).translate((it) -> (List<SNode>) ITryCatchStatement__BehaviorDescriptor.getCatchClauses_id3eptmOG0XgA.invoke(it)).translate((it) -> (List<SNode>) AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(it)).select((it) -> SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr));
 
-      Iterable<SNode> thrownExceptions = ListSequence.fromList(IMethodLike__BehaviorDescriptor.getThrowableTypes_id5op8ooRkkc7.invoke(SNodeOperations.getNodeAncestor(tryCatchStatement, CONCEPTS.IMethodLike$L7, false, false))).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr);
-        }
-      });
+      Iterable<SNode> thrownExceptions = ListSequence.fromList(IMethodLike__BehaviorDescriptor.getThrowableTypes_id5op8ooRkkc7.invoke(SNodeOperations.getNodeAncestor(tryCatchStatement, CONCEPTS.IMethodLike$L7, false, false))).select((it) -> SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr));
 
       final Iterable<SNode> handledExceptions = Sequence.fromIterable(caughtExceptions).concat(Sequence.fromIterable(thrownExceptions));
 
       Set<SNode> uncaughtThrowables = StatementList__BehaviorDescriptor.uncaughtThrowables_id2SVUfbZ9Qq1.invoke(SLinkOperations.getTarget(tryCatchStatement, LINKS.body$KFk), ((boolean) false));
-      SetSequence.fromSet(uncaughtThrowables).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          if (Sequence.fromIterable(handledExceptions).contains(it)) {
-            return;
-          }
-          SNode type = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
-          SLinkOperations.setTarget(type, LINKS.classifier$cxMr, it);
-          SNode clause = SNodeFactoryOperations.createNewNode(CONCEPTS.MultipleCatchClause$mR, null);
-          SLinkOperations.setTarget(clause, LINKS.throwable$UWM1, SNodeFactoryOperations.createNewNode(CONCEPTS.CatchVariable$zI, null));
-          ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(clause, LINKS.throwable$UWM1), LINKS.type$a1UY), CONCEPTS.AlternativeType$B$), LINKS.alternative$IEPM)).addElement(type);
-          SPropertyOperations.assign(SLinkOperations.getTarget(clause, LINKS.throwable$UWM1), PROPS.name$MnvL, "e");
-          ListSequence.fromList(SLinkOperations.getChildren(tryCatchStatement, LINKS.catchClause$Q4F)).addElement(clause);
+      SetSequence.fromSet(uncaughtThrowables).visitAll((it) -> {
+        if (Sequence.fromIterable(handledExceptions).contains(it)) {
+          return;
         }
+        SNode type = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
+        SLinkOperations.setTarget(type, LINKS.classifier$cxMr, it);
+        SNode clause = SNodeFactoryOperations.createNewNode(CONCEPTS.MultipleCatchClause$mR, null);
+        SLinkOperations.setTarget(clause, LINKS.throwable$UWM1, SNodeFactoryOperations.createNewNode(CONCEPTS.CatchVariable$zI, null));
+        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(clause, LINKS.throwable$UWM1), LINKS.type$a1UY), CONCEPTS.AlternativeType$B$), LINKS.alternative$IEPM)).addElement(type);
+        SPropertyOperations.assign(SLinkOperations.getTarget(clause, LINKS.throwable$UWM1), PROPS.name$MnvL, "e");
+        ListSequence.fromList(SLinkOperations.getChildren(tryCatchStatement, LINKS.catchClause$Q4F)).addElement(clause);
       });
       if (ListSequence.fromList(SLinkOperations.getChildren(tryCatchStatement, LINKS.catchClause$Q4F)).isEmpty()) {
         SNodeFactoryOperations.addNewChild(tryCatchStatement, LINKS.catchClause$Q4F, CONCEPTS.MultipleCatchClause$mR);
       }
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, SLinkOperations.getTarget(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(tryCatchStatement, LINKS.catchClause$Q4F)).first(), LINKS.throwable$UWM1), LINKS.type$a1UY), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return SurroundWithTryCatch_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

@@ -42,7 +42,7 @@ public class ProjectLanguageTreeNode extends ProjectModuleTreeNode {
   private boolean myInitialized;
 
   protected ProjectLanguageTreeNode(@NotNull Language language, Project project, boolean shortNameOnly) {
-    super(language);
+    super(language, project);
     myShortNameOnly = shortNameOnly;
     myProject = project;
     setNodeIdentifier(language.getModuleReference().toString());

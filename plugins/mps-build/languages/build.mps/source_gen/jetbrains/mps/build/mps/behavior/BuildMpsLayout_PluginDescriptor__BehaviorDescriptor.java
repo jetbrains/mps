@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.build.util.DependenciesHelper;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -30,12 +29,12 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class BuildMpsLayout_PluginDescriptor__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4dee437cL, "jetbrains.mps.build.mps.structure.BuildMpsLayout_PluginDescriptor");
 
-  public static final SMethod<Boolean> exports_id5FtnUVJQES1 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("exports").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5FtnUVJQES1").build(SMethodBuilder.createJavaParameter(Object.class, ""));
-  public static final SMethod<Boolean> reexportsFromJar_id5bqm540K$Gb = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("reexportsFromJar").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5bqm540K$Gb").build(SMethodBuilder.createJavaParameter(Object.class, ""));
-  public static final SMethod<String> location_id6b4RkXS8sT2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("location").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6b4RkXS8sT2").build(SMethodBuilder.createJavaParameter(DependenciesHelper.class, ""), SMethodBuilder.createJavaParameter(Object.class, ""));
-  public static final SMethod<Void> appendName_id1bWeed$ownT = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("appendName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1bWeed$ownT").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(StringBuilder.class, ""));
-  public static final SMethod<Void> unpack_id6IqTD4bJTWZ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("unpack").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6IqTD4bJTWZ").build(SMethodBuilder.createJavaParameter(UnpackHelper.class, ""));
-  public static final SMethod<String> pluginXml_idQkG2t1cwfm = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("pluginXml").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("QkG2t1cwfm").build();
+  public static final SMethod<Boolean> exports_id5FtnUVJQES1 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("exports").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6547494638219603457L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Object.class, ""));
+  public static final SMethod<Boolean> reexportsFromJar_id5bqm540K$Gb = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("reexportsFromJar").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5970181360961342219L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Object.class, ""));
+  public static final SMethod<String> location_id6b4RkXS8sT2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("location").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7117056644539862594L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(DependenciesHelper.class, ""), SMethodBuilder.createJavaParameter(Object.class, ""));
+  public static final SMethod<Void> appendName_id1bWeed$ownT = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("appendName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1368030936106665465L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(StringBuilder.class, ""));
+  public static final SMethod<Void> unpack_id6IqTD4bJTWZ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("unpack").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7753763219113484095L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(UnpackHelper.class, ""));
+  public static final SMethod<String> pluginXml_idQkG2t1cwfm = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("pluginXml").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(978600701690250198L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(exports_id5FtnUVJQES1, reexportsFromJar_id5bqm540K$Gb, location_id6b4RkXS8sT2, appendName_id1bWeed$ownT, unpack_id6IqTD4bJTWZ, pluginXml_idQkG2t1cwfm);
 
@@ -45,8 +44,8 @@ public final class BuildMpsLayout_PluginDescriptor__BehaviorDescriptor extends B
   /*package*/ static boolean exports_id5FtnUVJQES1(@NotNull SNode __thisNode__, Object artifactId) {
     if (artifactId instanceof jetbrains.mps.smodel.SNode) {
       SNode node = (SNode) artifactId;
-      // todo (in 3.0+) plugin should be exported by folder, not by xml 
-      // weeeeell? 
+      // todo (in 3.0+) plugin should be exported by folder, not by xml
+      // weeeeell?
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildMps_IdeaPlugin$po)) {
         return SLinkOperations.getTarget(__thisNode__, LINKS.plugin$ZarS) == node;
       }
@@ -54,9 +53,9 @@ public final class BuildMpsLayout_PluginDescriptor__BehaviorDescriptor extends B
     return ((boolean) BuildLayout_Node__BehaviorDescriptor.exports_id5FtnUVJQES1.invokeSuper(__thisNode__, CONCEPTS.BuildMpsLayout_PluginDescriptor$on, artifactId));
   }
   /*package*/ static boolean reexportsFromJar_id5bqm540K$Gb(@NotNull SNode __thisNode__, Object o) {
-    // XXX We imply here parent node is BuildLayout_Jar as it's the only place to use InJarNode.reexportsFromJar 
-    //     For folder with BML_PD, #exports shall work, and I don't care yet to remove that as (a) for folder, no unneccesary unzip (in dependants) happens 
-    //     (b) no idea how to let BL_Folder know about BML_PD without introducing something like BL_InFolderNode similar to BL_InJarNode 
+    // XXX We imply here parent node is BuildLayout_Jar as it's the only place to use InJarNode.reexportsFromJar
+    //     For folder with BML_PD, #exports shall work, and I don't care yet to remove that as (a) for folder, no unneccesary unzip (in dependants) happens
+    //     (b) no idea how to let BL_Folder know about BML_PD without introducing something like BL_InFolderNode similar to BL_InJarNode
     return o == SLinkOperations.getTarget(__thisNode__, LINKS.plugin$ZarS);
   }
   /*package*/ static String location_id6b4RkXS8sT2(@NotNull SNode __thisNode__, DependenciesHelper helper, Object artifactId) {

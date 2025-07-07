@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.build.util.VisibleArtifacts;
 import jetbrains.mps.build.util.RequiredDependenciesBuilder;
@@ -18,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -27,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class BuildSource_JavaDependencyExternalJar__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5f32ae3ef3770dd4L, "jetbrains.mps.build.structure.BuildSource_JavaDependencyExternalJar");
 
-  public static final SMethod<Void> fetchDependencies_id57YmpYyL8F1 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("fetchDependencies").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("57YmpYyL8F1").build(SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""), SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, ""));
+  public static final SMethod<Void> fetchDependencies_id57YmpYyL8F1 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("fetchDependencies").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5908258303322131137L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""), SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(fetchDependencies_id57YmpYyL8F1);
 
@@ -37,7 +35,6 @@ public final class BuildSource_JavaDependencyExternalJar__BehaviorDescriptor ext
   /*package*/ static void fetchDependencies_id57YmpYyL8F1(@NotNull SNode __thisNode__, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
     Tuples._2<SNode, Boolean> artifact = BuildSource_JavaExternalJarRef__BehaviorDescriptor.getDependencyTarget_id4RsV8qJGJqY.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.extJar$wAfT), artifacts);
     if (artifact != null) {
-      builder.needsFetch(SNodeOperations.getParent(__thisNode__));
       if ((boolean) artifact._1()) {
         builder.addWithContent(artifact._0());
       } else {

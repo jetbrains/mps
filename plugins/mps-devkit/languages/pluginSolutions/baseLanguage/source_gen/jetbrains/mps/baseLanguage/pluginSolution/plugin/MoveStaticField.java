@@ -15,10 +15,11 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.refactoring.participant.plugin.MoveNodesUtil;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.ArrayList;
 import jetbrains.mps.ide.platform.refactoring.NodeLocation;
 import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.baseLanguage.util.plugin.refactorings.MemberInsertingUtils;
+import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -40,11 +41,7 @@ public class MoveStaticField implements MoveNodesAction {
   }
   public boolean isApplicable(MPSProject project, final List<SNode> nodes) {
     final Wrappers._boolean result = new Wrappers._boolean();
-    project.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        result.value = ListSequence.fromList(nodes).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(nodes).first(), CONCEPTS.StaticFieldDeclaration$jR);
-      }
-    });
+    project.getRepository().getModelAccess().runReadAction(() -> result.value = ListSequence.fromList(nodes).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(nodes).first(), CONCEPTS.StaticFieldDeclaration$jR));
     return result.value;
   }
   public void execute(MPSProject project, List<SNode> nodes) {
@@ -60,7 +57,7 @@ public class MoveStaticField implements MoveNodesAction {
       return;
     }
 
-    MoveNodesUtil.moveTo(project, getName(), MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), new MoveNodesUtil.NodeCreatingProcessor(new NodeLocationClassifierMember(SNodeOperations.cast(whereToMove, CONCEPTS.Classifier$Ix)), project)).withValues(ListSequence.fromListAndArray(new ArrayList<SNode>(), target)));
+    MoveNodesUtil.moveTo(project, getName(), MapSequence.fromMapAndEntryArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), Map.entry(new MoveNodesUtil.NodeCreatingProcessor(new NodeLocationClassifierMember(SNodeOperations.cast(whereToMove, CONCEPTS.Classifier$Ix)), project), ListSequence.fromListAndArray(new ArrayList<SNode>(), target))));
   }
 
   public static class NodeLocationClassifierMember extends NodeLocation.NodeLocationChild {
@@ -73,7 +70,8 @@ public class MoveStaticField implements MoveNodesAction {
       if (oldParent != null) {
         oldParent.removeChild(nodeToMove);
       }
-      MemberInsertingUtils.insertClassifierMemberInBestPlace(SNodeOperations.cast(getNode().resolve(repository), CONCEPTS.Classifier$Ix), SNodeOperations.cast(nodeToMove, CONCEPTS.ClassifierMember$At));
+      SNode csf = SNodeOperations.cast(getNode().resolve(repository), CONCEPTS.Classifier$Ix);
+      Classifier__BehaviorDescriptor.insertInBestPlace_id7exmRT6rEUA.invoke(csf, SNodeOperations.cast(nodeToMove, CONCEPTS.ClassifierMember$At));
     }
   }
 

@@ -6,24 +6,28 @@ import jetbrains.mps.project.Project;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.make.facet.IFacet;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import java.util.Collections;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.Generator;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.make.resources.IResource;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import java.util.Collections;
 import jetbrains.mps.generator.ModelGenerationStatusManager;
 import jetbrains.mps.smodel.resources.ModelsToResources;
+import java.util.Set;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
+import java.util.HashSet;
+import jetbrains.mps.smodel.resources.MResource;
+import com.intellij.openapi.options.advanced.AdvancedSettings;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.smodel.ModelImports;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.smodel.Language;
 
@@ -32,6 +36,7 @@ public class MakeActionParameters {
   private List<SModel> myModels;
   private List<SModule> myModules;
   private boolean myCleanBuild = false;
+  private List<IFacet.Name> myAdditionalFacets;
 
   public MakeActionParameters(@NotNull Project project) {
     myProject = project;
@@ -44,6 +49,18 @@ public class MakeActionParameters {
     myModules = (modules != null ? ListSequence.fromListWithValues(new ArrayList<SModule>(), modules) : null);
     return this;
   }
+  public MakeActionParameters additionalFacet(IFacet.Name makeFacet) {
+    if (myAdditionalFacets == null) {
+      myAdditionalFacets = Collections.singletonList(makeFacet);
+    } else {
+      myAdditionalFacets = ListSequence.fromListWithValues(new ArrayList<>(), myAdditionalFacets);
+      ListSequence.fromList(myAdditionalFacets).addElement(makeFacet);
+    }
+    return this;
+  }
+  public List<IFacet.Name> additionalFacets() {
+    return myAdditionalFacets;
+  }
 
   public MakeActionParameters modules(@Nullable SModule contextModule, @Nullable Iterable<SModule> otherModules) {
     if (contextModule == null && otherModules == null) {
@@ -51,14 +68,23 @@ public class MakeActionParameters {
       return this;
     }
     List<SModule> list = ListSequence.fromList(new ArrayList<SModule>());
+    if (contextModule != null && (otherModules == null || !(Sequence.fromIterable(otherModules).contains(contextModule)))) {
+      // in case of generator context module, we used to include generator's language only, 
+      // which doesn't work well for standalone generators; include context module as the first one.
+      ListSequence.fromList(list).addElement(contextModule);
+    }
     if (otherModules != null) {
       ListSequence.fromList(list).addSequence(Sequence.fromIterable(otherModules));
     }
     if (contextModule instanceof Generator) {
-      contextModule = ((Generator) contextModule).getSourceLanguage();
-    }
-    if (contextModule != null && !(ListSequence.fromList(list).contains(contextModule))) {
-      ListSequence.fromList(list).addElement(contextModule);
+      // what I want here is to include generator's language if it's part of the project. I.e. don't need
+      // to care about deployed language in case of standalone generator. Hope ProjectScope is the proper helper 
+      // for the scenario
+      SModuleReference langSrcModuleRef = ((Generator) contextModule).sourceLanguage().getSourceModuleReference();
+      SModule langSrcModule = myProject.getScope().resolve(langSrcModuleRef);
+      if (langSrcModule != null && !(ListSequence.fromList(list).contains(langSrcModule))) {
+        ListSequence.fromList(list).addElement(langSrcModule);
+      }
     }
     myModules = (ListSequence.fromList(list).isEmpty() ? null : list);
     return this;
@@ -84,11 +110,7 @@ public class MakeActionParameters {
   public String actionText() {
     String fmt = (myCleanBuild ? "Rebuild %s" : "Make %s");
     if (myModels != null && ListSequence.fromList(myModels).isNotEmpty()) {
-      if (!(ListSequence.fromList(myModels).any(new IWhereFilter<SModel>() {
-        public boolean accept(SModel md) {
-          return GenerationFacade.canGenerate(md);
-        }
-      }))) {
+      if (!(ListSequence.fromList(myModels).any((md) -> GenerationFacade.canGenerate(md)))) {
         return null;
       }
       if (ListSequence.fromList(myModels).count() > 1) {
@@ -98,15 +120,7 @@ public class MakeActionParameters {
       return String.format(fmt, String.format("Model '%s'", modelName));
     }
     if (myModules != null && ListSequence.fromList(myModules).isNotEmpty()) {
-      if (ListSequence.fromList(myModules).any(new IWhereFilter<SModule>() {
-        public boolean accept(SModule m) {
-          return m == null;
-        }
-      }) || ListSequence.fromList(myModules).all(new IWhereFilter<SModule>() {
-        public boolean accept(SModule m) {
-          return m.isReadOnly();
-        }
-      })) {
+      if (ListSequence.fromList(myModules).any((m) -> m == null) || ListSequence.fromList(myModules).all((m) -> m.isReadOnly())) {
         return null;
       }
       if (ListSequence.fromList(myModules).count() > 1) {
@@ -121,30 +135,31 @@ public class MakeActionParameters {
     return null;
   }
   public Iterable<IResource> collectInput() {
-    Iterable<SModel> smds;
+    Iterable<SModel> selectedModels;
     if (myModels != null && ListSequence.fromList(myModels).isNotEmpty()) {
-      smds = myModels;
+      selectedModels = myModels;
     } else if (myModules != null && ListSequence.fromList(myModules).isNotEmpty()) {
-      smds = ListSequence.fromList(myModules).translate(new ITranslator2<SModule, SModel>() {
-        public Iterable<SModel> translate(SModule it) {
-          return allModelsOf(it);
-        }
-      });
+      selectedModels = ListSequence.fromList(myModules).translate((it) -> allModelsOf(it));
     } else {
-      smds = Sequence.fromIterable(Collections.<SModel>emptyList());
+      selectedModels = Sequence.fromIterable(Collections.<SModel>emptyList());
     }
-    if (!(myCleanBuild)) {
-      // assume user specified exact set of models if !isClean 
-      smds = Sequence.fromIterable(smds).translate(new ITranslator2<SModel, SModel>() {
-        public Iterable<SModel> translate(SModel it) {
-          return withImports(it);
-        }
-      }).distinct();
-      // filter dirty only 
-      ModelGenerationStatusManager statusManager = myProject.getComponent(ModelGenerationStatusManager.class);
-      smds = statusManager.getModifiedModels(Sequence.fromIterable(smds).toListSequence());
+    // dirty models from all the models/modules selected by user
+    final ModelGenerationStatusManager statusManager = myProject.getComponent(ModelGenerationStatusManager.class);
+    // FIXME: this effectively aborts make if changes were made only to upstream dependencies
+    List<SModel> dirtySelectedModels = ListSequence.fromList(Sequence.fromIterable(selectedModels).where((md) -> statusManager.generationRequired(md)).toList()).asUnmodifiable();
+    // only the selected elements are to be rebuilt if myCleanBuild
+    Iterable<IResource> selectedResources = new ModelsToResources((myCleanBuild ? selectedModels : dirtySelectedModels), myCleanBuild).resources();
+    Set<SModule> selectedModules = SetSequence.fromSet(SetSequence.fromSetWithValues(new HashSet<SModule>(), Sequence.fromIterable(selectedResources).ofType(MResource.class).select((mr) -> mr.module()))).asUnmodifiable();
+
+    Iterable<IResource> requiredResources = null;
+    boolean includeDependencies = AdvancedSettings.getInstance().getBoolean("mps.make.include.dependencies");
+    if (includeDependencies) {
+      // add all "dirty" models from modules required for this build
+      BuildDependencies buildDeps = new BuildDependencies(myProject, selectedModules);
+      requiredResources = new ModelsToResources(buildDeps.dirtyModelsFromRequiredModules(), false).resources();
     }
-    return new ModelsToResources(smds).resources();
+
+    return Sequence.fromIterable(selectedResources).concat(Sequence.fromIterable(requiredResources));
   }
 
   /**
@@ -158,28 +173,18 @@ public class MakeActionParameters {
       return Sequence.<SModel>singleton(m);
     }
     Iterable<SModelReference> importedModels = new ModelImports(m).getImportedModels();
-    // imported models are not necessarily from the project, they may belong to a global repository (and yet be visible through project's), 
-    // don't try to make them (MGSM doesn't track 'generation' status for these and may report them as dirty) 
-    return Sequence.fromIterable(importedModels).select(new ISelector<SModelReference, SModel>() {
-      public SModel select(SModelReference it) {
-        return it.resolve(repo);
-      }
-    }).where(new NotNullWhereFilter<SModel>()).where(new IWhereFilter<SModel>() {
-      public boolean accept(SModel it) {
-        return !(it.isReadOnly());
-      }
-    }).union(Sequence.fromIterable(Sequence.<SModel>singleton(m)));
+    // imported models are not necessarily from the project, they may belong to a global repository (and yet be visible through project's),
+    // don't try to make them (MGSM doesn't track 'generation' status for these and may report them as dirty)
+    return Sequence.fromIterable(importedModels).select((it) -> it.resolve(repo)).where(new NotNullWhereFilter()).where((it) -> !(it.isReadOnly())).union(Sequence.fromIterable(Sequence.<SModel>singleton(m)));
   }
 
   private Iterable<SModel> allModelsOf(SModule module) {
     Iterable<SModel> models = ((Iterable<SModel>) module.getModels());
     if (module instanceof Language) {
+      // we don't care about all known generators for the language - if it's a standalone generator module,
+      // it would be processed directly (as a context module in #modules(), above)
       Iterable<Generator> generators = ((Language) module).getOwnedGenerators();
-      return Sequence.fromIterable(models).concat(Sequence.fromIterable(generators).translate(new ITranslator2<Generator, SModel>() {
-        public Iterable<SModel> translate(Generator gen) {
-          return allModelsOf(gen);
-        }
-      }));
+      return Sequence.fromIterable(models).concat(Sequence.fromIterable(generators).translate((gen) -> allModelsOf(gen)));
     }
     return models;
   }

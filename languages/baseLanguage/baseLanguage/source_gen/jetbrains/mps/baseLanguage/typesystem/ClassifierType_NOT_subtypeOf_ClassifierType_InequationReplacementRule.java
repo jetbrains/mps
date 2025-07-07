@@ -14,10 +14,11 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
+import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
-import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.typesystem.runtime.HUtil;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -30,38 +31,52 @@ public class ClassifierType_NOT_subtypeOf_ClassifierType_InequationReplacementRu
   public ClassifierType_NOT_subtypeOf_ClassifierType_InequationReplacementRule() {
   }
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
-    // this rule exists to help reduce exhaustive search, so it should apply when no other rules do 
+    // this rule exists to help reduce exhaustive search, so it should apply when no other rules do
 
     if (Objects.equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(subtype, LINKS.classifier$cxMr)), INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr))) && SLinkOperations.getTarget(subtype, LINKS.classifier$cxMr) != SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr)) {
-      // not applicable if it is the same classifier 
-      // (see classifierTypeWithSameClassifier rule) 
+      // not applicable if it is the same classifier
+      // (see classifierTypeWithSameClassifier rule)
       return false;
     }
 
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(subtype, LINKS.classifier$cxMr), CONCEPTS.Interface$db) && SLinkOperations.hasPointer(supertype, LINKS.classifier$cxMr, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object"))) {
-      // not applicable to interface subtype-of Object (always true) 
+      // not applicable to interface subtype-of Object (always true)
       return false;
     }
 
     boolean subRaw = ListSequence.fromList(SLinkOperations.getChildren(subtype, LINKS.parameter$oqG$)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(subtype, LINKS.classifier$cxMr), LINKS.typeVariableDeclaration$Lipp)).isNotEmpty();
     boolean superRaw = ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.parameter$oqG$)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr), LINKS.typeVariableDeclaration$Lipp)).isNotEmpty();
     if (subRaw || superRaw) {
-      // not applicable to raw types 
+      // not applicable to raw types
       return false;
     }
 
     return !((boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SLinkOperations.getTarget(subtype, LINKS.classifier$cxMr), SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr)));
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
+    String p1 = BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(subtype);
+    String p2 = BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(supertype);
+    if (Objects.equals(p1, p2)) {
+      p1 = SModelOperations.getModelName(SNodeOperations.getModel(SLinkOperations.getTarget(subtype, LINKS.classifier$cxMr))) + "." + p1;
+      p2 = SModelOperations.getModelName(SNodeOperations.getModel(SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr))) + "." + p2;
+    }
     {
       final MessageTarget errorTarget = new NodeMessageTarget();
-      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(equationInfo.getNodeWithError(), BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(subtype) + " is not a subtype of " + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(supertype), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487", null, errorTarget);
+      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(equationInfo.getNodeWithError(), p1 + " is not a subtype of " + p2, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487", null, errorTarget);
       HUtil.addAdditionalRuleIdsFromInfo(_reporter_2309309498, equationInfo);
     }
   }
   public boolean checkInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     boolean result_14532009 = true;
-    result_14532009 = false;
+    {
+      String p1 = BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(subtype);
+      String p2 = BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(supertype);
+      if (Objects.equals(p1, p2)) {
+        p1 = SModelOperations.getModelName(SNodeOperations.getModel(SLinkOperations.getTarget(subtype, LINKS.classifier$cxMr))) + "." + p1;
+        p2 = SModelOperations.getModelName(SNodeOperations.getModel(SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr))) + "." + p2;
+      }
+      result_14532009 = false;
+    }
     return result_14532009;
   }
   public boolean isWeak() {

@@ -20,7 +20,7 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import jetbrains.mps.errors.item.IssueKindReportItem;
-import jetbrains.mps.checkers.LanguageErrorsComponent;
+import jetbrains.mps.editor.runtime.LanguageErrorsComponent;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.model.SReference;
@@ -34,32 +34,32 @@ import jetbrains.mps.typesystem.checking.HighlightUtil;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.checkers.CheckingSession;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.nodeEditor.cells.EditorCell;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.HashSet;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.openapi.editor.EditorComponentState;
+import jetbrains.mps.editor.runtime.ReferenceResolveInEditor;
 import jetbrains.mps.resolve.ResolverComponent;
-import jetbrains.mps.resolve.ReferenceResolverUtils;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.project.dependency.VisibilityUtil;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
-import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.extapi.model.TransientSModel;
+import jetbrains.mps.resolve.ReferenceResolverUtils;
 import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.nodeEditor.checking.EditorChecker;
 import jetbrains.mps.typesystem.checking.TypesEditorChecker;
 import jetbrains.mps.smodel.event.SModelPropertyEvent;
+import jetbrains.mps.smodel.event.SModelEvent;
+import jetbrains.mps.smodel.event.SModelImportEvent;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:74808b88-3d1c-4dc8-8642-164154f3f3a7(typesystemIntegration.languageChecker)/5031859272495377247", model = "r:74808b88-3d1c-4dc8-8642-164154f3f3a7(typesystemIntegration.languageChecker)")
+@GeneratedClass(nodeId = "5031859272495377247", model = "r:74808b88-3d1c-4dc8-8642-164154f3f3a7(typesystemIntegration.languageChecker)")
 public class AutoResolver extends BaseEventProcessingEditorChecker {
   private boolean myForceAutofix = false;
   private final MPSProject myProject;
@@ -78,7 +78,7 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
     }
 
     final Set<EditorMessage> messages = SetSequence.fromSet(new LinkedHashSet<EditorMessage>());
-    // TODO: use same settings as in LanguageEditorChecker 
+    // TODO: use same settings as in LanguageEditorChecker
     BadReferences badReferences = collectBadReferences(rootNode);
 
     final Map<IssueKindReportItem.PathObject, Collection<LanguageErrorsComponent.ApprovableError>> nodesToErrors = MapSequence.fromMap(new HashMap<IssueKindReportItem.PathObject, Collection<LanguageErrorsComponent.ApprovableError>>());
@@ -92,11 +92,7 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
       NodeReportItem reportItem = new TargetModuleNotImportedReportItem(ref, targetModuleRef, new ModuleImportQuickFix(ref));
       report(nodesToErrors, reportItem);
     }
-    final Consumer<NodeReportItem> consumer = new Consumer<NodeReportItem>() {
-      public void consume(NodeReportItem report) {
-        SetSequence.fromSet(messages).addElement(HighlightUtil.createHighlighterMessage(report, AutoResolver.this, myProject.getRepository()));
-      }
-    };
+    final Consumer<NodeReportItem> consumer = (NodeReportItem report) -> SetSequence.fromSet(messages).addElement(HighlightUtil.createHighlighterMessage(report, AutoResolver.this, myProject.getRepository()));
     for (ICheckingPostprocessor<NodeReportItem> postprocessor : myPostprocessors) {
       postprocessor.postProcess(myProject.getRepository(), new EmptyProgressMonitor(), new CheckingSession<NodeReportItem>() {
         @Override
@@ -109,11 +105,7 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
         }
       });
     }
-    for (LanguageErrorsComponent.ApprovableError error : Sequence.fromIterable(MapSequence.fromMap(nodesToErrors).values()).translate(new ITranslator2<Collection<LanguageErrorsComponent.ApprovableError>, LanguageErrorsComponent.ApprovableError>() {
-      public Iterable<LanguageErrorsComponent.ApprovableError> translate(Collection<LanguageErrorsComponent.ApprovableError> it) {
-        return it;
-      }
-    })) {
+    for (LanguageErrorsComponent.ApprovableError error : Sequence.fromIterable(MapSequence.fromMap(nodesToErrors).values()).translate((it) -> it)) {
       if (error.myApproved) {
         consumer.consume(error.getError());
       }
@@ -122,7 +114,7 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
     Set<EditorCell> editorErrorCells = editorComponent.getCellTracker().getErrorCells();
     boolean hasWork = SetSequence.fromSet(badReferences.brokenReferences()).isNotEmpty() || !(editorErrorCells.isEmpty());
     if (hasWork && isAutofix(SNodeOperations.getModel(rootNode), editorComponent.getEditorContext().getRepository())) {
-      runAutofix(badReferences.brokenReferences(), editorComponent.getEditorContext());
+      runAutofix(badReferences.brokenReferences(), editorComponent);
     } else {
       myForceAutofix = false;
     }
@@ -135,85 +127,74 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
     }
     MapSequence.fromMap(nodesToErrors).get(key).add(new LanguageErrorsComponent.ApprovableError(reportItem, true));
   }
-  private void runAutofix(final Set<SReference> badReferences, final EditorContext editorContext) {
-    final EditorComponent editorComponent = (EditorComponent) editorContext.getEditorComponent();
+  private void runAutofix(final Set<SReference> badReferences, final EditorComponent editorComponent) {
     Set<EditorCell> editorErrorCells = editorComponent.getCellTracker().getErrorCells();
-    final Set<EditorCell> errorCells = SetSequence.fromSetWithValues(new HashSet<EditorCell>(), editorErrorCells);
+    final Set<jetbrains.mps.openapi.editor.cells.EditorCell> errorCells = SetSequence.fromSetWithValues(new HashSet<jetbrains.mps.openapi.editor.cells.EditorCell>(), SetSequence.fromSet(editorErrorCells).ofType(jetbrains.mps.openapi.editor.cells.EditorCell.class));
 
     final boolean wasForceAutofix = myForceAutofix;
     myForceAutofix = false;
 
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        myProject.getModelAccess().executeUndoTransparentCommand(new Runnable() {
-          @Override
-          public void run() {
-            if (editorContext.getEditorComponent().isDisposed()) {
-              return;
-            }
-            EditorComponentState state = editorContext.getEditorComponentState();
+    ApplicationManager.getApplication().invokeLater(() -> {
+      myProject.getModelAccess().executeUndoTransparentCommand(new Runnable() {
+        @Override
+        public void run() {
+          if (editorComponent.isDisposed()) {
+            return;
+          }
+          EditorComponentState state = editorComponent.captureState();
 
-            // in case this becomes a performance bottleneck, consider reusing the editor's typechecking context 
-            boolean doRecheckEditor = false;
-            // Trying to resolve all broken references using scope and then using substitute actions. 
-            for (SReference brokenRef : SetSequence.fromSet(badReferences)) {
-              boolean resolvedByScope = ResolverComponent.getInstance().resolveScopesOnly(brokenRef, editorContext.getRepository());
+          ReferenceResolveInEditor refResolve = new ReferenceResolveInEditor(editorComponent);
 
-              if (resolvedByScope) {
+          // in case this becomes a performance bottleneck, consider reusing the editor's typechecking context
+          boolean doRecheckEditor = false;
+          final ResolverComponent resolver = myProject.getComponent(ResolverComponent.class);
+          // Trying to resolve all broken references using scope and then using substitute actions.
+          for (SReference brokenRef : SetSequence.fromSet(badReferences)) {
+            boolean resolvedByScope = resolver.resolveScopesOnly(brokenRef, editorComponent.getEditorContext().getRepository());
+
+            final jetbrains.mps.openapi.editor.cells.EditorCell cellWithRole;
+            if (resolvedByScope) {
+              doRecheckEditor = true;
+              cellWithRole = editorComponent.findNodeCellWithRole(brokenRef.getSourceNode(), brokenRef.getLink());
+            } else {
+              if (refResolve.substitute(brokenRef)) {
                 doRecheckEditor = true;
               }
-
-              SNode sourceNode = brokenRef.getSourceNode();
-              if (sourceNode == null) {
-                continue;
-              }
-              String referenceRole = brokenRef.getRole();
-              EditorCell cellWithRole = editorComponent.findNodeCellWithRole(sourceNode, referenceRole);
-              if (!(resolvedByScope)) {
-                if (cellWithRole == null) {
-                  continue;
-                }
-                String resolveInfo = ReferenceResolverUtils.getResolveInfo(brokenRef, sourceNode);
-                if (resolveInfo == null) {
-                  continue;
-                }
-
-                if (EditorBasedReferenceResolverUtils.substituteCell(cellWithRole, resolveInfo, editorContext)) {
-                  doRecheckEditor = true;
-                }
-              }
-              // excluding reference cell which was substituted from the set of error cells 
+              cellWithRole = refResolve.lastSubstitutedCell();
+            }
+            if (cellWithRole != null) {
+              // excluding reference cell which was substituted from the set of error cells
               SetSequence.fromSet(errorCells).removeElement(cellWithRole);
             }
+          }
 
-            // Trying to substitute all other error cells by using substitute actions. 
-            for (EditorCell errorCell : SetSequence.fromSet(errorCells)) {
-              if (!(errorCell instanceof EditorCell_Label)) {
-                continue;
-              }
-              EditorCell_Label labelErrorCell = (EditorCell_Label) errorCell;
-              String errorText = labelErrorCell.getText();
-              if ((errorText == null || errorText.length() == 0)) {
-                continue;
-              }
-
-              if (EditorBasedReferenceResolverUtils.substituteCell(labelErrorCell, errorText, editorContext)) {
-                doRecheckEditor = true;
-              }
+          // Trying to substitute all other error cells by using substitute actions.
+          for (jetbrains.mps.openapi.editor.cells.EditorCell errorCell : SetSequence.fromSet(errorCells)) {
+            if (!(errorCell instanceof EditorCell_Label)) {
+              continue;
+            }
+            EditorCell_Label labelErrorCell = (EditorCell_Label) errorCell;
+            String errorText = labelErrorCell.getText();
+            if ((errorText == null || errorText.length() == 0)) {
+              continue;
             }
 
-            if (doRecheckEditor) {
-              // Something has changed in the editor, restore the previous state to avoid selection jump if possible 
-              editorContext.restoreEditorComponentState(state);
-
-              if (wasForceAutofix) {
-                // re-running next checker in force autofix mode 
-                myForceAutofix = true;
-              }
+            if (refResolve.substitute(labelErrorCell, errorText)) {
+              doRecheckEditor = true;
             }
           }
-        });
-      }
+
+          if (doRecheckEditor) {
+            // Something has changed in the editor, restore the previous state to avoid selection jump if possible
+            editorComponent.restoreState(state);
+
+            if (wasForceAutofix) {
+              // re-running next checker in force auto-fix mode
+              myForceAutofix = true;
+            }
+          }
+        }
+      });
     });
   }
   public static class BadReferences extends MultiTuple._2<Set<SReference>, Set<SReference>> {
@@ -237,37 +218,41 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
     }
   }
   private BadReferences collectBadReferences(SNode cellNode) {
-    boolean needToEnableLogging = jetbrains.mps.smodel.SReference.disableLogging();
-    try {
-      SModel model = SNodeOperations.getModel(cellNode);
-      VisibilityUtil visibilityHelper = VisibilityUtil.forModel(model);
-      BadReferences result = new BadReferences(SetSequence.fromSet(new HashSet<SReference>()), SetSequence.fromSet(new HashSet<SReference>()));
-      for (SNode node : SNodeUtil.getDescendants(cellNode)) {
-        for (SReference ref : SNodeOperations.getReferences(node)) {
-          if (jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(ref) == null) {
-            SetSequence.fromSet(result.brokenReferences()).addElement(ref);
+    SModel model = SNodeOperations.getModel(cellNode);
+    final VisibilityUtil visibilityHelper = VisibilityUtil.forModel(model);
+    final BadReferences result = new BadReferences(SetSequence.fromSet(new HashSet<SReference>()), SetSequence.fromSet(new HashSet<SReference>()));
+    final jetbrains.mps.smodel.SReference.ResolveProcess h = new jetbrains.mps.smodel.SReference.ResolveProcess() {
+      @Override
+      public void unresolved(@NotNull SReference ref) {
+        SetSequence.fromSet(result.brokenReferences()).addElement(ref);
+      }
+      @Override
+      public void resolved(@NotNull SReference ref, @NotNull SNode target) {
+        SModel m = target.getModel();
+        if (m == null) {
+          return;
+        }
+        if (visibilityHelper.isVisible(m)) {
+          return;
+        }
+        SetSequence.fromSet(result.outOfModuleScope()).addElement(ref);
+      }
+    };
+    for (SNode node : SNodeUtil.getDescendants(cellNode)) {
+      for (SReference ref : SNodeOperations.getReferences(node)) {
+        if (ref instanceof jetbrains.mps.smodel.SReference) {
+          ((jetbrains.mps.smodel.SReference) ref).getTargetNode(h);
+        } else {
+          SNode tn = ref.getTargetNode();
+          if (tn == null) {
+            h.unresolved(ref);
           } else {
-            SModelReference mref = ref.getTargetSModelReference();
-            if (mref == null) {
-              continue;
-            }
-            SModel m = mref.resolve(myProject.getRepository());
-            if (m == null) {
-              continue;
-            }
-            if (visibilityHelper.isVisible(m)) {
-              continue;
-            }
-            SetSequence.fromSet(result.outOfModuleScope()).addElement(ref);
+            h.resolved(ref, tn);
           }
         }
       }
-      return result;
-    } finally {
-      if (needToEnableLogging) {
-        jetbrains.mps.smodel.SReference.enableLogging();
-      }
     }
+    return result;
   }
   private boolean isAutofix(SModel model, SRepository repository) {
     return model instanceof EditableSModel && !(model instanceof TransientSModel) && ReferenceResolverUtils.canExecuteImmediately(model, repository) && (EditorSettings.getInstance().isAutoQuickFix() || myForceAutofix);
@@ -284,6 +269,11 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
   @Override
   public boolean needsUpdateAfterPropertyEvent(SModelPropertyEvent event) {
     return EditorSettings.getInstance().isAutoQuickFix() && PROPS.name$MnvL.getName().equals(event.getPropertyName());
+  }
+
+  @Override
+  protected boolean needsUpdateAfterEvent(SModelEvent event) {
+    return event instanceof SModelImportEvent || super.needsUpdateAfterEvent(event);
   }
 
   private static final class PROPS {

@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -24,8 +23,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class NodeSetupFunction__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x10dc7f89eecL, "jetbrains.mps.lang.actions.structure.NodeSetupFunction");
 
-  public static final SMethod<Boolean> usesParameterObject_id1653mnvAgq0 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("usesParameterObject").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgq0").build();
-  public static final SMethod<List<SConcept>> getParameterConcepts_id2xELmDxyi2v = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getParameterConcepts").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2xELmDxyi2v").build();
+  public static final SMethod<Boolean> usesParameterObject_id1653mnvAgq0 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("usesParameterObject").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741497984L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<List<SConcept>> getParameterConcepts_id2xELmDxyi2v = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getParameterConcepts").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2912357169742028959L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(usesParameterObject_id1653mnvAgq0, getParameterConcepts_id2xELmDxyi2v);
 
@@ -40,6 +39,7 @@ public final class NodeSetupFunction__BehaviorDescriptor extends BaseBHDescripto
     ListSequence.fromList(result).addElement(CONCEPTS.NodeSetupFunction_NewNode$zG);
     ListSequence.fromList(result).addElement(CONCEPTS.NodeSetupFunction_SampleNode$$H);
     ListSequence.fromList(result).addElement(CONCEPTS.NodeSetupFunction_EnclosingNode$wk);
+    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_index$h5);
     ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_model$jw);
     return result;
   }
@@ -97,6 +97,7 @@ public final class NodeSetupFunction__BehaviorDescriptor extends BaseBHDescripto
     /*package*/ static final SConcept NodeSetupFunction_NewNode$zG = MetaAdapterFactory.getConcept(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x4d7fc32c166cd43fL, "jetbrains.mps.lang.actions.structure.NodeSetupFunction_NewNode");
     /*package*/ static final SConcept NodeSetupFunction_SampleNode$$H = MetaAdapterFactory.getConcept(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x4d7fc32c166cf25dL, "jetbrains.mps.lang.actions.structure.NodeSetupFunction_SampleNode");
     /*package*/ static final SConcept NodeSetupFunction_EnclosingNode$wk = MetaAdapterFactory.getConcept(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x4d7fc32c166cf35eL, "jetbrains.mps.lang.actions.structure.NodeSetupFunction_EnclosingNode");
+    /*package*/ static final SConcept ConceptFunctionParameter_index$h5 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7b816160a669d1f1L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_index");
     /*package*/ static final SConcept ConceptFunctionParameter_model$jw = MetaAdapterFactory.getConcept(0x13744753c81f424aL, 0x9c1bcf8943bf4e86L, 0x10e761b3745L, "jetbrains.mps.lang.sharedConcepts.structure.ConceptFunctionParameter_model");
   }
 }

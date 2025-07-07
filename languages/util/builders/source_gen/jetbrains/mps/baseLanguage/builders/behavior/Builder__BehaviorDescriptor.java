@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -17,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -28,14 +26,14 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class Builder__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x61f1de4171d2bf0bL, "jetbrains.mps.baseLanguage.builders.structure.Builder");
 
-  public static final SMethod<SNode> getContextBuilder_id67LR$5LPgSh = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getContextBuilder").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("67LR$5LPgSh").build();
-  public static final SMethod<Boolean> isLeaf_id67LR$5LQnln = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLeaf").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("67LR$5LQnln").build();
-  public static final SMethod<SNode> getResultType_id67LR$5LQPoF = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getResultType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("67LR$5LQPoF").build();
-  public static final SMethod<SNode> getCreatorExpression_id67LR$5LQRIR = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getCreatorExpression").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("67LR$5LQRIR").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getAttachStatement_id6k$kQGI5UZ7 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getAttachStatement").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6k$kQGI5UZ7").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getAttachStatementChild_id4ak9ytIaIgr = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getAttachStatementChild").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4ak9ytIaIgr").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> leaf_id1653mnvAgw2 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("leaf").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgw2").build();
-  public static final SMethod<SNode> getContextBuilder_id67LR$5LPv$c = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getContextBuilder").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("67LR$5LPv$c").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getContextBuilder_id67LR$5LPgSh = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getContextBuilder").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7057666463730306577L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2();
+  public static final SMethod<Boolean> isLeaf_id67LR$5LQnln = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLeaf").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7057666463730595159L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2();
+  public static final SMethod<SNode> getResultType_id67LR$5LQPoF = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getResultType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7057666463730718251L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2();
+  public static final SMethod<SNode> getCreatorExpression_id67LR$5LQRIR = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getCreatorExpression").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7057666463730727863L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getAttachStatement_id6k$kQGI5UZ7 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getAttachStatement").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7288041816792215495L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getAttachStatementChild_id4ak9ytIaIgr = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getAttachStatementChild").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4797501453850305563L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> leaf_id1653mnvAgw2 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("leaf").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498370L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2();
+  public static final SMethod<SNode> getContextBuilder_id67LR$5LPv$c = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getContextBuilder").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7057666463730366732L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getContextBuilder_id67LR$5LPgSh, isLeaf_id67LR$5LQnln, getResultType_id67LR$5LQPoF, getCreatorExpression_id67LR$5LQRIR, getAttachStatement_id6k$kQGI5UZ7, getAttachStatementChild_id4ak9ytIaIgr, leaf_id1653mnvAgw2, getContextBuilder_id67LR$5LPv$c);
 
@@ -61,11 +59,7 @@ public final class Builder__BehaviorDescriptor extends BaseBHDescriptor {
     return false;
   }
   /*package*/ static SNode getContextBuilder_id67LR$5LPv$c(@NotNull SAbstractConcept __thisConcept__, SNode context) {
-    return SLinkOperations.getTarget(ListSequence.fromList(SNodeOperations.getNodeAncestors(context, CONCEPTS.BuilderContainer$fr, false)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !((boolean) BuilderContainer__BehaviorDescriptor.isLeaf_idNLqHO$EE0f.invoke(it));
-      }
-    }), LINKS.builder$HP0i);
+    return SLinkOperations.getTarget(ListSequence.fromList(SNodeOperations.getNodeAncestors(context, CONCEPTS.BuilderContainer$fr, false)).findFirst((it) -> !((boolean) BuilderContainer__BehaviorDescriptor.isLeaf_idNLqHO$EE0f.invoke(it))), LINKS.builder$HP0i);
   }
 
   /*package*/ Builder__BehaviorDescriptor() {

@@ -4,12 +4,10 @@ package jetbrains.mps.smodel.persistence.def.v4;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.logging.Logger;
-import org.apache.log4j.LogManager;
 import org.jdom.Element;
 import jetbrains.mps.smodel.DefaultSModel;
 import org.jdom.Document;
 import jetbrains.mps.smodel.SModelHeader;
-import jetbrains.mps.smodel.SModelVersionsInfo;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import jetbrains.mps.vcspersistence.VCSPersistenceSupport;
@@ -24,12 +22,12 @@ import jetbrains.mps.smodel.persistence.def.VisibleModelElements;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.vcspersistence.SNodeFactory;
 import org.jetbrains.mps.openapi.model.SNodeId;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import jetbrains.mps.smodel.SNodeLegacy;
 import jetbrains.mps.util.SNodeOperations;
 
-@GeneratedClass(node = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)/453110257780704229", model = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)")
+@GeneratedClass(nodeId = "453110257780704229", model = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)")
 public class ModelReader4 implements IModelReader {
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(ModelReader4.class));
+  private static final Logger LOG = Logger.getLogger(ModelReader4.class);
   protected String getLegacyImportedModelUIDString(Element element) {
     return null;
   }
@@ -38,38 +36,37 @@ public class ModelReader4 implements IModelReader {
   }
   @Override
   public DefaultSModel readModel(Document document, SModelHeader header) {
-    SModelVersionsInfo versionsInfo = new SModelVersionsInfo();
     Element rootElement = document.getRootElement();
     SModelReference modelReference = VCSPersistenceUtil.createModelReference(rootElement.getAttributeValue(VCSPersistenceSupport.MODEL_UID));
     DefaultSModel model = new DefaultSModel(modelReference, header);
-    // languages 
+    // languages
     List languages = rootElement.getChildren(VCSPersistenceSupport.LANGUAGE);
     for (Object language : languages) {
       Element element = (Element) language;
       String languageNamespace = element.getAttributeValue(VCSPersistenceSupport.NAMESPACE);
       new SModelLegacy(model).addLanguage(PersistenceFacade.getInstance().createModuleReference(languageNamespace));
       List<Element> aspectElements = element.getChildren(VCSPersistenceSupport.LANGUAGE_ASPECT);
-      // aspect models versions 
+      // aspect models versions
       readLanguageAspects(model, aspectElements);
     }
-    // additional aspects 
+    // additional aspects
     List<Element> aspectElements = rootElement.getChildren(VCSPersistenceSupport.LANGUAGE_ASPECT);
     readLanguageAspects(model, aspectElements);
-    // languages engaged on generation 
+    // languages engaged on generation
     List languagesEOG = rootElement.getChildren(VCSPersistenceSupport.LANGUAGE_ENGAGED_ON_GENERATION);
     for (Object languageEOG : languagesEOG) {
       Element element = (Element) languageEOG;
       String languageNamespace = element.getAttributeValue(VCSPersistenceSupport.NAMESPACE);
       new SModelLegacy(model).addEngagedOnGenerationLanguage(PersistenceFacade.getInstance().createModuleReference(languageNamespace));
     }
-    // devkits 
+    // devkits
     List devkits = rootElement.getChildren(VCSPersistenceSupport.DEVKIT);
     for (Object devkit : devkits) {
       Element element = (Element) devkit;
       String devkitNamespace = element.getAttributeValue(VCSPersistenceSupport.NAMESPACE);
       model.addDevKit(PersistenceFacade.getInstance().createModuleReference(devkitNamespace));
     }
-    // imports 
+    // imports
     List imports = rootElement.getChildren(VCSPersistenceSupport.IMPORT_ELEMENT);
     for (Object anImport : imports) {
       Element element = (Element) anImport;
@@ -77,7 +74,7 @@ public class ModelReader4 implements IModelReader {
       int importIndex = Integer.parseInt(indexValue);
       String importedModelUIDString = element.getAttributeValue(VCSPersistenceSupport.MODEL_UID);
       if (importedModelUIDString == null) {
-        // read in old manner... 
+        // read in old manner...
         importedModelUIDString = getLegacyImportedModelUIDString(element);
       }
       if (importedModelUIDString == null) {
@@ -87,13 +84,13 @@ public class ModelReader4 implements IModelReader {
       SModelReference importedModelReference = VCSPersistenceUtil.createModelReference(importedModelUIDString);
       model.addModelImport(new SModel.ImportElement(importedModelReference, importIndex, -1));
     }
-    ArrayList<IReferencePersister> referenceDescriptors = new ArrayList<IReferencePersister>();
+    ArrayList<IReferencePersister> referenceDescriptors = new ArrayList<>();
     readRefactorings(rootElement, model);
-    // nodes 
+    // nodes
     List children = rootElement.getChildren(VCSPersistenceSupport.NODE);
     for (Object child : children) {
       Element element = (Element) child;
-      SNode snode = readNode(element, model, referenceDescriptors, false, versionsInfo);
+      SNode snode = readNode(element, referenceDescriptors, false);
       if (snode != null) {
         model.addRootNode(snode);
       }
@@ -106,7 +103,7 @@ public class ModelReader4 implements IModelReader {
   }
   protected void readRefactorings(Element rootElement, DefaultSModel model) {
     rootElement.getChild("refactoringHistory");
-    // no-op, we do not care about refactorings in that old persistence versions 
+    // no-op, we do not care about refactorings in that old persistence versions
   }
   protected void readLanguageAspects(DefaultSModel model, List<Element> aspectElements) {
     for (Element aspectElement : aspectElements) {
@@ -121,28 +118,15 @@ public class ModelReader4 implements IModelReader {
         }
       }
       if (aspectModelUID != null) {
-        model.getImplicitImportsSupport().addAdditionalModelVersion(VCSPersistenceUtil.createModelReference(aspectModelUID), version);
+        model.addModelImport(new SModel.ImportElement(VCSPersistenceUtil.createModelReference(aspectModelUID), -1, version));
       }
     }
   }
-  public SNode readNode(Element nodeElement, SModel model) {
-    return readNode(nodeElement, model, true, null, new SModelVersionsInfo());
-  }
   @Nullable
-  protected SNode readNode(Element nodeElement, SModel model, boolean useUIDs, VisibleModelElements visibleModelElements, SModelVersionsInfo versionsInfo) {
-    List<IReferencePersister> referenceDescriptors = new ArrayList<IReferencePersister>();
-    SNode result = readNode(nodeElement, model, referenceDescriptors, useUIDs, versionsInfo);
-    for (IReferencePersister referencePersister : referenceDescriptors) {
-      referencePersister.createReferenceInModel(model, visibleModelElements);
-    }
-    return result;
-  }
-  @Nullable
-  protected SNode readNode(Element nodeElement, SModel model, List<IReferencePersister> referenceDescriptors, boolean useUIDs, SModelVersionsInfo versionsInfo) {
+  protected SNode readNode(Element nodeElement, List<IReferencePersister> referenceDescriptors, boolean useUIDs) {
     String rawFqName = nodeElement.getAttributeValue(VCSPersistenceSupport.TYPE);
     String conceptFqName = VersionUtil.getConceptFQName(rawFqName);
     jetbrains.mps.smodel.SNode node = SNodeFactory.newRegular(conceptFqName);
-    VersionUtil.fetchConceptVersion(rawFqName, node, versionsInfo);
     String idValue = nodeElement.getAttributeValue(VCSPersistenceSupport.ID);
     if (idValue != null) {
       SNodeId id = jetbrains.mps.smodel.SNodeId.fromString(idValue);
@@ -156,17 +140,17 @@ public class ModelReader4 implements IModelReader {
     for (Object property : properties) {
       Element propertyElement = (Element) property;
       String raw = propertyElement.getAttributeValue(VCSPersistenceSupport.NAME);
-      String propertyName = VersionUtil.getPropertyName(raw, node, versionsInfo);
+      String propertyName = VersionUtil.getPropertyName(raw);
       String propertyValue = propertyElement.getAttributeValue(VCSPersistenceSupport.VALUE);
       if (propertyValue != null) {
-        SNodeAccessUtil.setProperty(node, propertyName, propertyValue);
+        new SNodeLegacy(node).setProperty(propertyName, propertyValue);
       }
     }
     List links = nodeElement.getChildren(VCSPersistenceSupport.LINK);
     for (Object link : links) {
       Element linkElement = (Element) link;
       ReferencePersister4 referencePersister = createReferencePersister();
-      referencePersister.fillFields(linkElement, node, useUIDs, versionsInfo);
+      referencePersister.fillFields(linkElement, node, useUIDs);
       referenceDescriptors.add(referencePersister);
     }
     List childNodes = nodeElement.getChildren(VCSPersistenceSupport.NODE);
@@ -174,12 +158,11 @@ public class ModelReader4 implements IModelReader {
       Element childNodeElement = (Element) childNode1;
       String rawRole = childNodeElement.getAttributeValue(VCSPersistenceSupport.ROLE);
       String role = VersionUtil.getRole(rawRole);
-      SNode childNode = readNode(childNodeElement, model, referenceDescriptors, useUIDs, versionsInfo);
+      SNode childNode = readNode(childNodeElement, referenceDescriptors, useUIDs);
       if (role == null || childNode == null) {
         LOG.errorWithTrace("Error reading child node in node " + SNodeOperations.getDebugText(node));
       } else {
-        node.addChild(role, childNode);
-        VersionUtil.fetchChildNodeRoleVersion(rawRole, childNode, versionsInfo);
+        new SNodeLegacy(node).insertChildBefore(role, childNode, null);
       }
     }
     return node;

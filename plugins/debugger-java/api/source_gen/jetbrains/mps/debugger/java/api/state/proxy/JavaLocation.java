@@ -9,7 +9,7 @@ import com.sun.jdi.Location;
 import com.sun.jdi.AbsentInformationException;
 import jetbrains.mps.ide.ThreadUtils;
 
-@GeneratedClass(node = "r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)/4209988649465089935", model = "r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)")
+@GeneratedClass(nodeId = "4209988649465089935", model = "r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)")
 public class JavaLocation implements ILocation {
   private final String myFileName;
   private final String myUnitName;

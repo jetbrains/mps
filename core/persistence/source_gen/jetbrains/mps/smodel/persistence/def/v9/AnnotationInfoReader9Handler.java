@@ -13,7 +13,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXParseException;
 
-@GeneratedClass(node = "r:469db833-fce3-4137-9319-1d2a980eddc8(jetbrains.mps.smodel.persistence.def.v9)/7167172773708891006", model = "r:469db833-fce3-4137-9319-1d2a980eddc8(jetbrains.mps.smodel.persistence.def.v9)")
+@GeneratedClass(nodeId = "7167172773708891006", model = "r:469db833-fce3-4137-9319-1d2a980eddc8(jetbrains.mps.smodel.persistence.def.v9)")
 public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent>> {
   private ModelElementHandler modelHandler = new ModelElementHandler();
   private RegistryElementHandler registryHandler = new RegistryElementHandler();
@@ -72,13 +72,13 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
   public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
     ElementHandler current = (myHandlersStack.empty() ? (ElementHandler) null : myHandlersStack.peek());
     if (current == null) {
-      // root 
+      // root
       current = modelHandler;
     } else {
       current = current.createChild(myValues.peek(), qName, attributes);
     }
 
-    // check required 
+    // check required
     for (String attr : current.requiredAttributes()) {
       if (attributes.getValue(attr) == null) {
         throw new SAXParseException("attribute " + attr + " is absent", null);
@@ -90,7 +90,7 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
       myResult = (List<LineContent>) result;
     }
 
-    // handle attributes 
+    // handle attributes
     for (int i = 0; i < attributes.getLength(); i++) {
       String name = attributes.getQName(i);
       String value = attributes.getValue(i);
@@ -246,11 +246,7 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
     protected void handleAttribute(Object resultObject, String name, String value) throws SAXException {
       Void result = (Void) resultObject;
       if ("id".equals(name)) {
-        try {
-          my_accumulatorField.pushNode(my_readHelperParam.getIdEncoder().parseNodeId(value));
-        } catch (IdEncoder.EncodingException e) {
-          throw new IllegalArgumentException(e);
-        }
+        my_accumulatorField.pushNode(my_readHelperParam.readNodeId(value));
         return;
       }
       super.handleAttribute(resultObject, name, value);
@@ -274,7 +270,11 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
         });
         return nodeHandler;
       }
-      return super.createChild(resultObject, tagName, attrs);
+      myChildHandlersStack.push(null);
+      // Here I handle (in fact, just ignore) any other tag, including <uo> (user object), and tags that present in some MPS models that
+      // were saved in a non-release v9 persistence back in Nov 2014 (e.g. check rev 19209b72) to avoid exceptions like in MPS-30616 (also see MPS-21246).
+      // this handler here is just to hold this comment.
+      return defaultHandler;
     }
     private void handleChild_7167172773708891066(Object resultObject, Object value) throws SAXException {
       Void child = (Void) value;
@@ -305,6 +305,7 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
   public class DefaultElementHandler extends ElementHandler {
     @Override
     protected ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
+      myChildHandlersStack.push(null);
       return this;
     }
     @Override

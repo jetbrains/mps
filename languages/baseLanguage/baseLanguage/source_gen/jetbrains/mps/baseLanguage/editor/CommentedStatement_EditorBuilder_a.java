@@ -21,7 +21,6 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
 import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -58,7 +57,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "//");
     editorCell.setCellId("Constant_oq95n1_a0");
     Style style = new StyleImpl();
-    new CommentStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new CommentStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
     editorCell.getStyle().putAll(style);
     CommentedStatement_Actions.setCellActions(editorCell, myNode, getEditorContext());
@@ -102,7 +101,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
         editorCell.setSRole(LINKS.statement$FRUr);
       }
       Style style = new StyleImpl();
-      style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.lightGray));
+      style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.lightGray));
       editorCell.getStyle().putAll(style);
     }
     @Override

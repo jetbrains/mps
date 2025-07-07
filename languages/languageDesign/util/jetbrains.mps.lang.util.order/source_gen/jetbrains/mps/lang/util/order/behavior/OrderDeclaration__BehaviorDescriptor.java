@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -19,7 +18,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -31,9 +29,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class OrderDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x22035699bdd78147L, "jetbrains.mps.lang.util.order.structure.OrderDeclaration");
 
-  public static final SMethod<String> getGeneratedClassName_id2CFL3ni7zCY = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedClassName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2CFL3ni7zCY").build();
-  public static final SMethod<Boolean> presents_id1jgMklchcXk = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("presents").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1jgMklchcXk").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getOrderDeclaration_id2CFL3ni7A9T = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getOrderDeclaration").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2CFL3ni7A9T").build();
+  public static final SMethod<String> getGeneratedClassName_id2CFL3ni7zCY = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedClassName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3038738109029038654L).languageId(0x80ff33ab2b506ee4L, 0xc9d137c4325944f8L).build2();
+  public static final SMethod<Boolean> presents_id1jgMklchcXk = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("presents").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1499919975383879508L).languageId(0x80ff33ab2b506ee4L, 0xc9d137c4325944f8L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getOrderDeclaration_id2CFL3ni7A9T = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getOrderDeclaration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3038738109029048953L).languageId(0x80ff33ab2b506ee4L, 0xc9d137c4325944f8L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGeneratedClassName_id2CFL3ni7zCY, presents_id1jgMklchcXk, getOrderDeclaration_id2CFL3ni7A9T);
 
@@ -50,11 +48,7 @@ public final class OrderDeclaration__BehaviorDescriptor extends BaseBHDescriptor
     return NameUtil.toValidCamelIdentifier(n) + "_Order";
   }
   /*package*/ static boolean presents_id1jgMklchcXk(@NotNull SNode __thisNode__, final SNode elem) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.seq$cXFU)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.target$d3me) == elem;
-      }
-    }).isNotEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.seq$cXFU)).where((it) -> SLinkOperations.getTarget(it, LINKS.target$d3me) == elem).isNotEmpty();
   }
   /*package*/ static SNode getOrderDeclaration_id2CFL3ni7A9T(@NotNull SNode __thisNode__) {
     return __thisNode__;
@@ -110,7 +104,7 @@ public final class OrderDeclaration__BehaviorDescriptor extends BaseBHDescriptor
     return CONCEPT;
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
 
   private static final class PROPS {

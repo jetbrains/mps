@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,11 +18,12 @@ package jetbrains.mps.generator.impl;
 import jetbrains.mps.generator.IGeneratorLogger;
 import jetbrains.mps.generator.IGeneratorLogger.ProblemDescription;
 import jetbrains.mps.generator.impl.cache.MappingsMemento;
+import jetbrains.mps.generator.runtime.LabelDeclaration;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
 import jetbrains.mps.smodel.runtime.StaticScope;
 import jetbrains.mps.textgen.trace.TracingUtil;
-import jetbrains.mps.util.Pair;
+import jetbrains.mps.util.CollectConsumer;
 import jetbrains.mps.util.ToStringComparator;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -35,15 +36,14 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.LinkedHashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 /**
@@ -53,10 +53,8 @@ import java.util.stream.Collectors;
  * Evgeny Gryaznov, Feb 16, 2010
  */
 public final class GeneratorMappings {
+  private final List<LabelDeclaration> myPrivateLabels;
   private final IGeneratorLogger myLog;
-
-  /* mapping,input -> output */
-  private final ConcurrentMap<String, Map<SNode, Object>> myMappingNameAndInputNodeToOutputNodeMap = new ConcurrentHashMap<>();
 
   /* input -> output */
   private final ConcurrentMap<SNode, Object> myCopiedOutputNodeForInputNode = new ConcurrentHashMap<>();
@@ -64,59 +62,35 @@ public final class GeneratorMappings {
   /* templateId -> [input -> output,generation] */
   private final ConcurrentMap<String, NodeTagCabinet> myTemplateNodeIdAndInputNodeToOutputNodeMap = new ConcurrentHashMap<>();
 
+  private final LMCollector myLabeledMappings = new LMCollector();
 
-  /*
-   * there might be few conditional roots, and we can't prevent them from using same ML (not too much sense, however)
-   */
-  private final CopyOnWriteArrayList<Pair<String, SNode>> myConditionalRoots = new CopyOnWriteArrayList<>();
-
-  public GeneratorMappings(IGeneratorLogger log) {
+  public GeneratorMappings(@NotNull List<LabelDeclaration> privateLabels, IGeneratorLogger log) {
+    myPrivateLabels = privateLabels;
     myLog = log;
   }
 
   // add methods
 
-  void addOutputNodeByInputNodeAndMappingName(SNode inputNode, String mappingName, SNode outputNode) {
-    if (mappingName == null) {
-      return;
-    }
-    Map<SNode, Object> currentMapping = myMappingNameAndInputNodeToOutputNodeMap.get(mappingName);
-    if (currentMapping == null) {
-      // we save labeled transformations, and chances are we get similar input/output nodes with the same ML
+  void fillFrom(Collection<LMCollector> lmCollectors) {
+    for (LMCollector lmCollector : lmCollectors) {
+      if (lmCollector.isEmpty()) {
+        continue;
+      }
+      // JFTR, #expose(), below, is sort of reverse operation
+      lmCollector.forEachNoInput(myLabeledMappings::add);
+      lmCollector.forEachWithInput(myLabeledMappings::add);
+      // Bit of history:
+      // Here, we record labeled transformations, and chances are we get similar input/output nodes with the same ML
       // (e.g. multipleLoopVarDecl rmt -> rmt_var) more than once - e.g. typesystem makes a copy of some rules
       // to generate two methods, and if there's an MultiForLoop in the original code, we get two almost identical
       // ML entries (presentation of output and key's original nodes are the same, see comparator in #getSortedMappingKeys(),
-      // below. Therefore, for nodes that are 'equal' that way, would like to keep an order they were registered at, hence LinkedHashMap
-      myMappingNameAndInputNodeToOutputNodeMap.putIfAbsent(mappingName, new LinkedHashMap<>());
-      currentMapping = myMappingNameAndInputNodeToOutputNodeMap.get(mappingName);
+      // below. Therefore, for nodes that are 'equal' that way, we need to keep an order they were registered at, and
+      // ut used to be LinkedHashMap here. Now, with output nodes coming from LMCollector in uncontrolled order (there's hash by SNode),
+      // I've introduced an extra condition into key comparator, that treats nodes with id matching one of their origin as preceding those with
+      // completely arbitrary node id. Indeed, this works only in scenarios when master node is not far from original model and still keeps its id.
+      // I don't think it's a drawback as I'd rather avoid template code that duplicates fragments of input models during transformation at all.
+      lmCollector.forEachComposite(myLabeledMappings::addComposite);
     }
-    synchronized (currentMapping) {
-      Object o = currentMapping.get(inputNode);
-      if (o == null) {
-        currentMapping.put(inputNode, outputNode);
-      } else if (o instanceof List) {
-        ((List<SNode>) o).add(outputNode);
-      } else if (o != outputNode) {
-        List<SNode> list = new ArrayList<>(4);
-        list.add((SNode) o);
-        list.add(outputNode);
-        currentMapping.put(inputNode, list);
-      } else {
-        // TODO warning
-      }
-    }
-  }
-
-  /**
-   * record a newly created node (generally, conditional root rule - no input node)
-   * @param mappingLabel label
-   * @param outputNode new node
-   */
-  void addNewOutputNode(String mappingLabel, SNode outputNode) {
-    if (mappingLabel == null || outputNode == null) {
-      return;
-    }
-    myConditionalRoots.add(new Pair<>(mappingLabel, outputNode));
   }
 
   void addCopiedOutputNodeForInputNode(SNode inputNode, SNode outputNode) {
@@ -182,13 +156,16 @@ public final class GeneratorMappings {
     if (mappingName == null) {
       return null;
     }
-    Map<SNode, Object> currentMapping = myMappingNameAndInputNodeToOutputNodeMap.get(mappingName);
-    if (currentMapping == null) {
+    if (inputNode == null) {
+      // don't see a reason to account for null input node in scenarios where input node is expected.
       return null;
     }
-    Object o = currentMapping.get(inputNode);
-    if (o instanceof List) {
-      List<SNode> list = (List<SNode>) o;
+    NodeMapRecord o = myLabeledMappings.record(mappingName, inputNode);
+    if (o == null || o.count() == 0) {
+      return null;
+    }
+    if (o.count() > 1) {
+      final List<SNode> list = o.valueStream().collect(Collectors.toList());
       ProblemDescription[] descr = new ProblemDescription[list.size() + 1];
       for (int i = 0; i < list.size(); i++) {
         descr[i] = GeneratorUtil.describe(list.get(i), "output");
@@ -199,25 +176,22 @@ public final class GeneratorMappings {
       return list.get(0);
     }
 
-    return (SNode) o;
+    return o.soleValue();
   }
 
   public List<SNode> findAllOutputNodesByInputNodeAndMappingName(SNode inputNode, String mappingName) {
     if (mappingName == null) {
       return null;
     }
-    Map<SNode, Object> currentMapping = myMappingNameAndInputNodeToOutputNodeMap.get(mappingName);
-    if (currentMapping == null) {
+    if (inputNode == null) {
+      // don't see a reason to account for null input node in scenarios where input node is expected.
       return null;
     }
-    Object o = currentMapping.get(inputNode);
-    if (o == null) {
+    NodeMapRecord o = myLabeledMappings.record(mappingName, inputNode);
+    if (o == null || o.count() == 0) {
       return Collections.emptyList();
     }
-    if (o instanceof List) {
-      return ((List<SNode>) o);
-    }
-    return Collections.singletonList((SNode) o);
+    return o.valuesInto(new ArrayList<>(o.count()));
   }
 
   public SNode findCopiedOutputNodeForInputNode(@NotNull SNode inputNode) {
@@ -268,7 +242,19 @@ public final class GeneratorMappings {
       }
     }
 
-    return null;
+    // XXX getInputHistory() ignores null input node, which is a legitimate case e.g. for a Create Root template
+    //     If we generate node "A" without any inputNode and then references to "A" with some inputNode set
+    //     (e.g. in lang.generator, for each reduction rule with condition, we generate instantiation of
+    //     a respective query class, which is not generated unless there are rules with conditions.)
+    //     To restore such reference, we have to check 'l.withoutInput()' case (see addOutputNodeForContext(), above).
+    //     I don't want to modify getInputHistory() yet to give null input (I suppose almost any TC would end up
+    //     with null in its input history then, and I don't want to record excessive values). Therefore, I check
+    //     here explicitly for null input just in case the one has been recorded.
+    if (templateContext.getInput() != null) {
+      // if it's null, we've checked this scenario already
+      outputTargetNode = l.get(null, tag);
+    }
+    return outputTargetNode;
   }
 
   public boolean isInputNodeHasUniqueCopiedOutputNode(SNode inputNode) {
@@ -282,68 +268,141 @@ public final class GeneratorMappings {
       // all other methods tolerate null parameters, why this one would not?
       return null;
     }
-    return myConditionalRoots.stream().filter(p -> mappingLabel.equals(p.o1)).findFirst().map(p -> p.o2).orElse(null);
+    return myLabeledMappings.streamNoInput(mappingLabel).findFirst().orElse(null);
   }
 
   // expose internal structure, to build GeneratorDebug_Mappings with MPS-coded DebugMappingsBuilder
   /*package*/ Collection<String> getAvailableLabels() {
-    return myMappingNameAndInputNodeToOutputNodeMap.keySet();
+    HashSet<String> rv = new HashSet<>();
+    myLabeledMappings.forEachWithInput((l, m) -> rv.add(l));
+    return rv;
   }
 
-  // FIXME please, no Object, no Map<SNode,Object>. PLEASE!!!
-  /*package*/Map<SNode,Object> getMappings(String label) {
-    return myMappingNameAndInputNodeToOutputNodeMap.get(label);
-  }
-  /*package*/List<SNode> getSortedMappingKeys(String label) {
-    ArrayList<Map.Entry<SNode, Object>> l = new ArrayList<>(myMappingNameAndInputNodeToOutputNodeMap.get(label).entrySet());
-    Collections.sort(l, new Comparator<Entry<SNode, Object>>() {
-      private final ToStringComparator myToStringComparator = new ToStringComparator();
-      @Override
-      public int compare(Entry<SNode, Object> o1, Entry<SNode, Object> o2) {
-        int v = compareKeys(o1.getKey(), o2.getKey());
-        if (v == 0) {
-          // input node is the same (or indistinguishable), have to respect values to keep order consistent.
-          // E.g. a pattern in a typesystem rule is copied to to different methods, there are two output classes
-          // Pattern_nn7be_a0a0a0b0d and Pattern_nn7be_a0a0a0c, and label entry order is inconsistent
-          return String.valueOf(o1.getValue()).compareTo(String.valueOf(o2.getValue()));
-        }
-        return v;
+  @Nullable
+  /*package*/ NodeMap getMappingsForLabel(String label) {
+    AtomicReference<NodeMap> rv = new AtomicReference<>();
+    myLabeledMappings.forEachWithInput((ml, map) -> {
+      if (ml.equals(label)) {
+        assert rv.get() == null;
+        rv.compareAndSet(null, map);
       }
+    });
+    return rv.get();
+  }
 
-      private int compareKeys(SNode n1, SNode n2) {
-        int v = n1.getPresentation().compareTo(n2.getPresentation());
+  /*package*/List<SNode> getSortedMappingKeys(final String label) {
+    ArrayList<NodeMapRecord> l = new ArrayList<>();
+    CollectConsumer<NodeMapRecord> cc = new CollectConsumer<>(l);
+    myLabeledMappings.forEachWithInput((ml, map) -> {
+      if (ml.equals(label)) {
+        map.forEachRecord(cc);
+      }
+    });
+    try {
+      l.sort(new Comparator<>() {
+        private final SNodeComparator myNodeComparator = new SNodeComparator();
+
+        @Override
+        public int compare(NodeMapRecord o1, NodeMapRecord o2) {
+          int v = myNodeComparator.compare(o1.key(), o2.key());
+          if (v == 0) {
+            // input node is the same (or indistinguishable), have to respect values to keep order consistent.
+            // E.g. a pattern in a typesystem rule is copied to to different methods, there are two output classes
+            // Pattern_nn7be_a0a0a0b0d and Pattern_nn7be_a0a0a0c, and label entry order is inconsistent
+            v = String.valueOf(o1.value()).compareTo(String.valueOf(o2.value()));
+            if (v == 0) {
+              // last resort, address scenario when input nodes were copied, and processed individually. Treat the one
+              // that served as a master one 'first', its copies 'subsequent'. Guess the master by node id matching the one
+              // of the original node.
+              final boolean b1 = SNodeComparator.nodeIdSameAsOriginal(o1.key());
+              final boolean b2 = SNodeComparator.nodeIdSameAsOriginal(o2.key());
+              if (b1 ^ b2) {
+                v = b1 ? -1 : 1;
+              }
+              // fall-through
+            }
+          }
+          return v;
+        }
+
+      });
+    } catch (Exception ex) {
+      ProblemDescription[] dd = l.stream().map(e -> String.format("Key: %s, id: %s. Value: %s", e.key().getPresentation(), e.key().getNodeId(), e.value())).map(ProblemDescription::new).toArray(ProblemDescription[]::new);
+      myLog.warning(null, String.format("Can't arrange keys for '%s' mappings: %s. Consider overriding getPresentation() to facilitate sorting.", label, ex.getMessage()), dd);
+    }
+    return l.stream().map(NodeMapRecord::key).collect(Collectors.toList());
+  }
+
+  private static class SNodeComparator implements Comparator<SNode> {
+    private final ToStringComparator myToStringComparator = new ToStringComparator();
+
+    @Override
+    public int compare(SNode n1, SNode n2) {
+      int v = n1.getPresentation().compareTo(n2.getPresentation());
+      if (v == 0) {
+        // just in case presentation is the same (e.g. enumeration literals with the same name in different enums)
+        // Hope, there could be no two nodes with the same presentation and same node id.
+        SNodeReference o1, o2;
+        do {
+          o1 = TracingUtil.getInput(n1);
+          o2 = TracingUtil.getInput(n2);
+          n1 = n1.getParent();
+          n2 = n2.getParent();
+          // original input node is recorded for a top template node only, if a child template node serves as a ML key, we can't
+          // find its input here unless traverse to parent.
+          // highlevel sample: 'Car' is transformed with map_EditorDeclaration to ConceptEditorDeclaration with child CellModel_Collection, that
+          // later serves as a key for 'cellFactory.factoryMethod' ML. Presentation for any CellModel_Collection is 'collection', and as long as it's
+          // child template node of map_EditorDeclaration template, it doesn't get original input value (map_EditorDeclaration does).
+        } while (o1 == null && o2 == null && n1 != null && n2 != null);
+
+        if (o1 != null && o2 != null) {
+          // use original input, if possible - actual input is from transient model
+          v = myToStringComparator.compare(o1.getNodeId(), o2.getNodeId());
+        }
+      }
+      return v;
+    }
+
+    /*package*/ static boolean nodeIdSameAsOriginal(SNode n) {
+      final SNodeReference original = TracingUtil.getInput(n);
+      return original != null && Objects.equals(original.getNodeId(), n.getNodeId());
+    }
+  }
+
+  /*package*/Set<String> getConditionalRootLabels() {
+    HashSet<String> rv = new HashSet<>();
+    myLabeledMappings.forEachNoInput((l, v) -> rv.add(l));
+    return rv;
+  }
+  /*package*/List<SNode> getConditionalRoots(String label) {
+    return myLabeledMappings.streamNoInput(label).collect(Collectors.toList());
+  }
+
+  // for the time being, just mappings with composite keys
+  // TODO transition all MLs to LabelRecord
+  /*package*/ List<LabelRecord> getOrderedRecords() {
+    LabelRecord[] a = myLabeledMappings.compositeLabelsToArray();
+    Arrays.sort(a, new Comparator<LabelRecord>() {
+      private final SNodeComparator myNodeComparator = new SNodeComparator();
+      @Override
+      public int compare(LabelRecord o1, LabelRecord o2) {
+        int v = o1.label.compareTo(o2.label);
         if (v == 0) {
-          // just in case presentation is the same (e.g. enumeration literals with the same name in different enums)
-          // Hope, there could be no two nodes with the same presentation and same node id.
-          SNodeReference o1, o2;
-          do {
-            o1 = TracingUtil.getInput(n1);
-            o2 = TracingUtil.getInput(n2);
-            n1 = n1.getParent();
-            n2 = n2.getParent();
-            // original input node is recorded for a top template node only, if a child template node serves as a ML key, we can't
-            // find its input here unless traverse to parent.
-            // highlevel sample: 'Car' is transformed with map_EditorDeclaration to ConceptEditorDeclaration with child CellModel_Collection, that
-            // later serves as a key for 'cellFactory.factoryMethod' ML. Presentation for any CellModel_Collection is 'collection', and as long as it's
-            // child template node of map_EditorDeclaration template, it doesn't get original input value (map_EditorDeclaration does).
-          } while (o1 == null && o2 == null && n1 != null && n2 != null);
-
-          if (o1 != null && o2 != null) {
-            // use original input, if possible - actual input is from transient model
-            v = myToStringComparator.compare(o1.getNodeId(), o2.getNodeId());
+          v = myNodeComparator.compare(o1.key1, o2.key1);
+          if (v == 0) {
+            v = myNodeComparator.compare(o1.key2, o2.key2);
+            // I don't care to compare outputs as I do for regular MLs, I'd like to notice
+            // duplicating key pairs ASAP.
           }
         }
         return v;
       }
     });
-    return l.stream().map(Entry::getKey).collect(Collectors.toList());
+    return Arrays.asList(a);
   }
 
-  /*package*/Set<String> getConditionalRootLabels() {
-    return myConditionalRoots.stream().map(p -> p.o1).collect(Collectors.toSet());
-  }
-  /*package*/List<SNode> getConditionalRoots(String label) {
-    return myConditionalRoots.stream().filter(p -> label.equals(p.o1)).map(p -> p.o2).collect(Collectors.toList());
+  /*package*/ LMLookup getCompositeLabelsLookup(final String label) {
+    return myLabeledMappings.getLookup(label);
   }
 
   // serialization
@@ -353,29 +412,61 @@ public final class GeneratorMappings {
    * and input nodes being traced with transitionTrace
    */
   public void export(CheckpointStateBuilder cp) {
-    for (Entry<String, Map<SNode, Object>> o : myMappingNameAndInputNodeToOutputNodeMap.entrySet()) {
-      String label = o.getKey();
-      for (Entry<SNode, Object> i : o.getValue().entrySet()) {
-        SNode inputNode = i.getKey();
+    myLabeledMappings.forEachWithInput((label, map) -> {
+      map.forEachRecord(i -> {
+        SNode inputNode = i.key();
         if (inputNode == null) {
           // FIXME shall I track nodes newly introduced at the given checkpoint step? Yes.
           //       However, for newly introduced nodes we keep separate collection, and there should be no
           //       null input nodes in this map. The check left just in case there's one (no check for null input in addOutput.. yet).
-          continue;
+          return;
         }
         // perhaps, would be useful to record mappings even without original node (marked as 'useless')
         // to ease debug (once there's mechanism to show mapping labels as part of transient model/module)
-        Object value = i.getValue();
-        if (value instanceof SNode) {
-          cp.record(inputNode, label, (SNode) value);
-        } else if (value instanceof Collection) {
+        if (i.count() == 1) {
+          cp.record(inputNode, label, i.soleValue());
+        } else if (i.count() > 1) {
           @SuppressWarnings("unchecked")
-          Collection<SNode> collection = (Collection<SNode>) value;
+          Collection<SNode> collection = (Collection<SNode>) i.value();
           cp.record(inputNode, label, collection);
         }
+      });
+    });
+    myLabeledMappings.forEachNoInput(cp::record);
+  }
+
+  /**
+   * We don't need to keep complete GeneratorMappings, just a subset with labeled input->output
+   * and conditional roots, LMCollector is enough.
+   *
+   * @return set of labeled records to get exposed in checkpoint models (excluding MLs considered 'private')
+   */
+  /*package*/ LMCollector exposed() {
+    // this is a third iteration I believe to make "persistence snapshot" of GM,
+    // first one being MappingMemento, the next one unused GM#export(). Now GenerationSession
+    // needs to keep tack of LMs from few steps, that's why we expose state as an object, rather than
+    // encapsulate LM record processing in here. Besides, the way CheckpointStateBuilder+DebugMappingsBuilder
+    // work doesn't leave me too much room for creativity here.
+    // What is beneficial is that we now keep only labels we gonna need (i.e. not complete GM with
+    // copied/template nodes)
+    final LMCollector exposed = new LMCollector();
+    final Set<String> privateLabels = myPrivateLabels.stream().map(LabelDeclaration::getName).collect(Collectors.toUnmodifiableSet());
+    myLabeledMappings.forEachNoInput((l, n) -> {
+      if (!privateLabels.contains(l)) {
+        exposed.add(l, n);
       }
-    }
-    myConditionalRoots.forEach(p -> cp.record(p.o1, p.o2));
+    });
+    myLabeledMappings.forEachWithInput((l, nm) -> {
+      if (!privateLabels.contains(l)) {
+        exposed.add(l, nm);
+      }
+    });
+    myLabeledMappings.forEachComposite(lr -> {
+      if (!privateLabels.contains(lr.label)) {
+        exposed.addComposite(lr);
+      }
+    });
+    return exposed;
   }
 
   private static final class TagNodeList {

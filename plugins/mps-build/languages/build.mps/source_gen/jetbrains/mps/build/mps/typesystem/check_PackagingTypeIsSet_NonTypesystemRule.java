@@ -26,7 +26,7 @@ public class check_PackagingTypeIsSet_NonTypesystemRule extends AbstractNonTypes
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(pluginLayout, "Packaging type is not set, please change it to auto", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "685435297876952739", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.build.mps.typesystem.SetPackagingTypeToAuto_QuickFix", true);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.build.mps.typesystem.SetPackagingTypeToAuto_QuickFix", "685435297876970834", true);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }

@@ -5,12 +5,17 @@ package jetbrains.mps.java.platform.index;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.baseLanguage.search.ClassifierSuccessors;
 import com.intellij.openapi.Disposable;
-import jetbrains.mps.ide.MPSCoreComponents;
-import jetbrains.mps.project.Project;
-import com.intellij.openapi.project.DumbService;
+import jetbrains.mps.project.MPSProject;
+import com.intellij.openapi.startup.StartupActivity;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.MPSCoreComponents;
+import com.intellij.openapi.util.Disposer;
+import com.intellij.openapi.project.DumbService;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.ide.vfs.FileSystemBridge;
 import java.util.Set;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -18,12 +23,13 @@ import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.workbench.ProjectModelFilter;
+import jetbrains.mps.util.IterableUtil;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import java.util.Queue;
 import jetbrains.mps.internal.collections.runtime.QueueSequence;
 import java.util.LinkedList;
@@ -36,32 +42,64 @@ import com.intellij.util.indexing.FileBasedIndex;
 import jetbrains.mps.workbench.index.SNodeEntry;
 import org.jetbrains.mps.openapi.module.SRepository;
 import com.intellij.psi.search.GlobalSearchScope;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.module.Module;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
-@GeneratedClass(node = "r:2ba45a7a-594f-4a4d-be5c-07edf2b58826(jetbrains.mps.java.platform.index)/4183391441819863852", model = "r:2ba45a7a-594f-4a4d-be5c-07edf2b58826(jetbrains.mps.java.platform.index)")
-public class ClassifierSuccessorsFinder implements ClassifierSuccessors.Finder, Disposable {
+@GeneratedClass(nodeId = "4183391441819863852", model = "r:2ba45a7a-594f-4a4d-be5c-07edf2b58826(jetbrains.mps.java.platform.index)")
+public final class ClassifierSuccessorsFinder implements ClassifierSuccessors.Finder, Disposable {
+  private final MPSProject myProject;
 
-  public ClassifierSuccessorsFinder(MPSCoreComponents coreComponents) {
-    ClassifierSuccessors.getInstance().setFinder(this);
+  public static final class Plug implements StartupActivity.Background {
+
+    @Override
+    public void runActivity(@NotNull Project project) {
+      MPSProject mpsProject = ProjectHelper.fromIdeaProjectOrFail(project);
+      ClassifierSuccessors cc = MPSCoreComponents.getInstance().getPlatform().findComponent(ClassifierSuccessors.class);
+      if (cc != null) {
+        ClassifierSuccessorsFinder ccf = new ClassifierSuccessorsFinder(mpsProject);
+        cc.addFinder(mpsProject, ccf);
+        Disposer.register(project, ccf);
+      }
+    }
+  }
+
+
+  private ClassifierSuccessorsFinder(MPSProject mpsProject) {
+    // I've got several options here how to approach IDEA's component->service transition and to address indexer need for project:
+    //  - follow MPSModelsFastFindSupport$Plug approach with postStartupActivity (or some projectListener) and keep Project
+    //    right inside Finder instance. This would require change in ClassifierSuccessor to support multiple Finders; besides,
+    //    there was already Project exposed in CS API (isIndexReady(Project)), that's why I decided not to follow 'per-project' 
+    //    instance trail.
+    //  - Keep single Finder (CS.setFinder()), and use AppLifecycleListener. For our purpose here, just to setFinder(), I see
+    //    no apparent benefit in replacing AppComponent with an AppLifecycleListener.
+    // [2022] Now it seems that we can no longer afford 'no project' scenario (guessing project from VF).
+    myProject = mpsProject;
   }
 
   @Override
-  public boolean isIndexReady(Project project) {
-    return !(DumbService.getInstance(ProjectHelper.toIdeaProject(project)).isDumb());
+  public boolean isIndexReady() {
+    return !(DumbService.getInstance(myProject.getProject()).isDumb());
   }
 
   @Override
   public List<SNode> getDerivedClassifiers(SNode classifier, org.jetbrains.mps.openapi.module.SearchScope scope) {
+    Project ideaProject = myProject.getProject();
+
+    final FileSystemBridge fsBridge = myProject.getFileSystem();
+    // FIXME In fact, I don't see any reason to pass VFs into indexing at all. The idea of the index, as I see
+    //      it, is not to keep per-file key-value Map, but to answer 'key' queries fast without the need
+    //      to pass specific files. We should do it other way round, get all possible values for a key,
+    //      and then filter out those matching MPS search scope, rather than constructing IDEA's
+    //      scope with VFs and Project we don't have anyway.
+    //      However, it's a bigger activity and I can not afford addressing this right now.
     Set<VirtualFile> unModifiedModelFiles = SetSequence.fromSet(new HashSet<VirtualFile>());
     List<SNode> modifiedClasses = ListSequence.fromList(new ArrayList<SNode>());
     List<SNode> modifiedInterfaces = ListSequence.fromList(new ArrayList<SNode>());
-    for (SModel md : scope.getModels()) {
-      if (!((md instanceof EditableSModel))) {
+    for (SModel md : new ProjectModelFilter(myProject).projectModelsOnly(IterableUtil.asCollection(scope.getModels()))) {
+      if (!(md instanceof EditableSModel)) {
         continue;
       }
       EditableSModel emd = (EditableSModel) md;
@@ -74,7 +112,10 @@ public class ClassifierSuccessorsFinder implements ClassifierSuccessors.Finder, 
         ListSequence.fromList(modifiedClasses).addSequence(ListSequence.fromList(SModelOperations.nodes(md, CONCEPTS.ClassConcept$bK)));
         ListSequence.fromList(modifiedInterfaces).addSequence(ListSequence.fromList(SModelOperations.nodes(md, CONCEPTS.Interface$db)));
       } else {
-        SetSequence.fromSet(unModifiedModelFiles).addElement(VirtualFileUtils.getOrCreateVirtualFile(modelFile));
+        VirtualFile vf = fsBridge.asVirtualFile(modelFile);
+        if (vf != null) {
+          SetSequence.fromSet(unModifiedModelFiles).addElement(vf);
+        }
       }
     }
     List<SNode> result = new ArrayList<SNode>();
@@ -82,7 +123,7 @@ public class ClassifierSuccessorsFinder implements ClassifierSuccessors.Finder, 
     QueueSequence.fromQueue(queue).addLastElement(classifier);
     ValueProcessor valueProcessor = new ValueProcessor(result, queue, SNodeOperations.getModel(classifier).getRepository());
     ModifiedSuccessorFinder modifiedSuccessorFinder = new ModifiedSuccessorFinder(modifiedClasses, modifiedInterfaces, result, queue);
-    SearchScope unModifiedFilesSearchScope = new SearchScope(unModifiedModelFiles);
+    SearchScope unModifiedFilesSearchScope = new SearchScope(ideaProject, unModifiedModelFiles);
     while (!(QueueSequence.fromQueue(queue).isEmpty())) {
       SNode nextClassifier = QueueSequence.fromQueue(queue).removeFirstElement();
       ClassifierSuccessorsIndexer.processValues(nextClassifier, valueProcessor, unModifiedFilesSearchScope);
@@ -93,7 +134,10 @@ public class ClassifierSuccessorsFinder implements ClassifierSuccessors.Finder, 
 
   @Override
   public void dispose() {
-    ClassifierSuccessors.getInstance().setFinder(null);
+    ClassifierSuccessors cc = MPSCoreComponents.getInstance().getPlatform().findComponent(ClassifierSuccessors.class);
+    if (cc != null) {
+      cc.removeFinder(myProject, this);
+    }
   }
 
   private static class ModifiedSuccessorFinder {
@@ -212,8 +256,8 @@ public class ClassifierSuccessorsFinder implements ClassifierSuccessors.Finder, 
   private static class SearchScope extends GlobalSearchScope {
     private Set<VirtualFile> myFilesInScope;
 
-    /*package*/ SearchScope(Set<VirtualFile> notModifiedModelFiles) {
-      super(null);
+    /*package*/ SearchScope(Project ideaProject, Set<VirtualFile> notModifiedModelFiles) {
+      super(ideaProject);
       myFilesInScope = notModifiedModelFiles;
     }
 

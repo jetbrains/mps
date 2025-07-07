@@ -59,18 +59,7 @@ public class DefaultSChildSubstituteInfo extends AbstractNodeSubstituteInfo impl
   public List<SubstituteAction> createActions() {
     return ModelActions.createChildNodeSubstituteActions(myParentNode, myCurrentChild, myLink, myTargetConcept, createDefaultNodeSetter(), getEditorContext());
   }
-
-
-  @Override
-  protected InequalitySystem getInequalitiesSystem(EditorCell contextCell) {
-    return InequalitySystemFactory.getInequalitiesSystemForChildCell(contextCell, AbstractNodeSubstituteInfo.getModelForTypechecking());
-  }
-
-  @Override
-  protected SubstitutionTrial getSubstitutionTrial(EditorCell contextCell) {
-    return SubstitutionTrial.forCell(contextCell, getModelForTypechecking());
-  }
-
+  
   protected DefaultSChildSetter createDefaultNodeSetter() {
     return new DefaultSChildSetter(myLink);
   }

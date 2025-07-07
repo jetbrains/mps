@@ -14,13 +14,13 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class set_ascending_order {
   public static class NodeFactory_1225119783187 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SNode sd = SNodeFactoryOperations.setNewChild(newNode, LINKS.ascending$pRjl, CONCEPTS.SortDirection$n7);
       SPropertyOperations.set(sd, PROPS.value$5y_M, true);
     }
   }
   public static class NodeFactory_1225119833430 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SNode sd = SNodeFactoryOperations.setNewChild(newNode, LINKS.ascending$hOpK, CONCEPTS.SortDirection$n7);
       SPropertyOperations.set(sd, PROPS.value$5y_M, true);
     }

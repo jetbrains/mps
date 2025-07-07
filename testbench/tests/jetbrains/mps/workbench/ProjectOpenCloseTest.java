@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,8 +23,9 @@ import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.EnvironmentAware;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.PathManager;
-import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.junit.Assert;
@@ -39,7 +40,6 @@ import java.io.File;
  * Is supposed to work with both bare MPS and full-fledged IDEA Environment instances
  */
 public class ProjectOpenCloseTest implements EnvironmentAware {
-  private static final FileSystem FS = FileSystem.getInstance();
 
   private Environment myEnvironment;
   private TestModuleFactoryBase myTestModuleFactory;
@@ -57,35 +57,37 @@ public class ProjectOpenCloseTest implements EnvironmentAware {
   public void addModule() {
     Project project = getEnvironment().createEmptyProject();
     myTestModuleFactory = new TestModuleFactoryBase(myEnvironment, (SRepositoryExt) project.getRepository());
-    IFile descriptorFile = FS.getFile(FileUtil.createTmpFile().getPath());
+    IFileSystem fs = myEnvironment.getPlatform().findComponent(VFSManager.class).getFileSystem(VFSManager.FILE_FS);
+    IFile descriptorFile = fs.getFile(FileUtil.createTmpFile().getPath());
     SModule newModule = myTestModuleFactory.createSolution(descriptorFile);
     // though addModule is capable to grab proper model write lock, have to keep this one outside as ProjectModuleLoader.fireModuleLoaded()
     // ends up in WatchingFileSystemListenersContainer.addListener() -> WatchedRoots.addWatchRequest, where IDEA expects its own read lock (or EDT), neither
     // holds true for the test run.
     project.getModelAccess().runWriteAction(() -> project.addModule(newModule));
     Assert.assertTrue(project.getProjectModules().contains(newModule));
-    project.dispose();
+    getEnvironment().closeProject(project);
   }
 
   @Test
   public void removeModule() {
     Project project = getEnvironment().createEmptyProject();
     myTestModuleFactory = new TestModuleFactoryBase(myEnvironment, (SRepositoryExt) project.getRepository());
-    IFile descriptorFile = FS.getFile(FileUtil.createTmpFile().getPath());
+    IFileSystem fs = myEnvironment.getPlatform().findComponent(VFSManager.class).getFileSystem(VFSManager.FILE_FS);
+    IFile descriptorFile = fs.getFile(FileUtil.createTmpFile()); // it's odd to have IFileUtil capable of temp dir, and use FileUtil when need temp file
     SModule newModule = myTestModuleFactory.createSolution(descriptorFile);
     project.getModelAccess().runWriteAction(() -> project.addModule(newModule));
     project.getModelAccess().runWriteAction(() -> project.removeModule(newModule));
     Assert.assertFalse(project.getProjectModules().contains(newModule));
-    project.dispose();
+    getEnvironment().closeProject(project);
   }
 
   @Test
   public void reopenProject() {
     Project project = getEnvironment().createEmptyProject();
-    project.dispose();
+    getEnvironment().closeProject(project);
     project = getEnvironment().createEmptyProject();
     Assert.assertFalse(project.isDisposed());
-    project.dispose();
+    getEnvironment().closeProject(project);
     Assert.assertTrue(project.isDisposed());
   }
 
@@ -93,15 +95,15 @@ public class ProjectOpenCloseTest implements EnvironmentAware {
   public void openTwoProjects() {
     Project project1 = getEnvironment().createEmptyProject();
     Project project2 = getEnvironment().createEmptyProject();
-    project1.dispose();
-    project2.dispose();
+    getEnvironment().closeProject(project1);
+    getEnvironment().closeProject(project2);
   }
 
   @Test
   public void reopenMPSProject() {
     Project mpsProject = getEnvironment().openProject(new File(PathManager.getHomePath()));
     testWait();
-    mpsProject.dispose();
+    getEnvironment().closeProject(mpsProject);
   }
 
   @Test //turn off test
@@ -113,7 +115,7 @@ public class ProjectOpenCloseTest implements EnvironmentAware {
 
     testWait();
 
-    mpsProject.dispose();
+    getEnvironment().closeProject(mpsProject);
 
     testWait();
 
@@ -122,7 +124,7 @@ public class ProjectOpenCloseTest implements EnvironmentAware {
 
     testWait();
 
-    mpsProject.dispose();
+    getEnvironment().closeProject(mpsProject);
 
     testWait();
     getEnvironment().closeProject(emptyProject1);

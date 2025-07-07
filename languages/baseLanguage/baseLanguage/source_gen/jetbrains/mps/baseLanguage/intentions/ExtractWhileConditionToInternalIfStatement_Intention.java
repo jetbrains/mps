@@ -24,27 +24,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class ExtractWhileConditionToInternalIfStatement_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ExtractWhileConditionToInternalIfStatement_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "1199621296757"));
   }
+
   @Override
   public String getPresentation() {
     return "ExtractWhileConditionToInternalIfStatement";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -54,15 +48,17 @@ public final class ExtractWhileConditionToInternalIfStatement_Intention extends 
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Extract While Condition to Internal If Statement";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      // produce break statement 
+      // produce break statement
       SNode breakStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.BreakStatement$WM, null);
-      // produce if statement 
+      // produce if statement
       SNode ifStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.IfStatement$Q4, null);
       SNode conditionExpr = SNodeFactoryOperations.setNewChild(ifStatement, LINKS.condition$5R17, CONCEPTS.NotExpression$Pc);
       SLinkOperations.setTarget(conditionExpr, LINKS.expression$sv_H, SLinkOperations.getTarget(node, LINKS.condition$KEkM));
@@ -70,15 +66,30 @@ public final class ExtractWhileConditionToInternalIfStatement_Intention extends 
 
       SNodeFactoryOperations.setNewChild(ifStatement, LINKS.ifTrue$5Rg8, null);
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifStatement, LINKS.ifTrue$5Rg8), LINKS.statement$53DE)).insertElement(0, breakStatement);
-      // insert if statement and replace condition with true 
+      // insert if statement and replace condition with true
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.body$c1sm), LINKS.statement$53DE)).insertElement(0, ifStatement);
       SNode condition = SNodeFactoryOperations.setNewChild(node, LINKS.condition$KEkM, CONCEPTS.BooleanConstant$n4);
       SPropertyOperations.set(condition, PROPS.value$5y_M, true);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ExtractWhileConditionToInternalIfStatement_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

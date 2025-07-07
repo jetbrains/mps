@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Map;
@@ -18,19 +17,15 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.behavior.IGenericType__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.Iterator;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
-import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -40,11 +35,11 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class NamedTupleType__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12099dc1365L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleType");
 
-  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIMiw").build();
-  public static final SMethod<SNode> expandGenerics_id3$PgO9fYTB5 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("expandGenerics").modifiers(SModifiersImpl.create(8, AccessPrivileges.PROTECTED)).concept(CONCEPT).id("3$PgO9fYTB5").build(SMethodBuilder.createJavaParameter((Class<Map<SNode, SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""));
-  public static final SMethod<Void> collectGenericSubstitutions_id3zZky3wF74h = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectGenericSubstitutions").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3zZky3wF74h").build(SMethodBuilder.createJavaParameter((Class<Map<SNode, SNode>>) ((Class) Object.class), ""));
-  public static final SMethod<String> getLeftBracket_id1653mnvAgn0 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLeftBracket").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgn0").build();
-  public static final SMethod<String> getRightBracket_id1653mnvAgq6 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getRightBracket").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgq6").build();
+  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  public static final SMethod<SNode> expandGenerics_id3$PgO9fYTB5 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("expandGenerics").modifiers(8, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(4122274986016348613L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<Map<SNode, SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""));
+  public static final SMethod<Void> collectGenericSubstitutions_id3zZky3wF74h = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectGenericSubstitutions").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4107091686347010321L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<Map<SNode, SNode>>) ((Class) Object.class), ""));
+  public static final SMethod<String> getLeftBracket_id1653mnvAgn0 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLeftBracket").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741497792L).languageId(0xb8d207e93feba96aL, 0xa247e09e243545baL).build2();
+  public static final SMethod<String> getRightBracket_id1653mnvAgq6 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getRightBracket").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741497990L).languageId(0xb8d207e93feba96aL, 0xa247e09e243545baL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, expandGenerics_id3$PgO9fYTB5, collectGenericSubstitutions_id3zZky3wF74h, getLeftBracket_id1653mnvAgn0, getRightBracket_id1653mnvAgq6);
 
@@ -54,11 +49,7 @@ public final class NamedTupleType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     StringBuilder sb = new StringBuilder(NamedTupleType__BehaviorDescriptor.getLeftBracket_id1653mnvAgn0.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__))));
     String sep = "";
-    for (SNode ntcd : ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr))).reversedList().translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode ntd) {
-        return SLinkOperations.getChildren(ntd, LINKS.component$wCHx);
-      }
-    })) {
+    for (SNode ntcd : ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr))).reversedList().translate((ntd) -> SLinkOperations.getChildren(ntd, LINKS.component$wCHx))) {
       sb.append(sep).append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(ntcd, LINKS.type$q$C9))).append(" ").append(SPropertyOperations.getString(ntcd, PROPS.name$MnvL));
       sep = ", ";
     }
@@ -82,16 +73,12 @@ public final class NamedTupleType__BehaviorDescriptor extends BaseBHDescriptor {
     return IGenericType__BehaviorDescriptor.expandGenericDescendants_id3zZky3wIhhm.invoke(__thisNode__, SNodeOperations.copyNode(__thisNode__), substitutions, expTrace);
   }
   /*package*/ static void collectGenericSubstitutions_id3zZky3wF74h(@NotNull SNode __thisNode__, final Map<SNode, SNode> substitutions) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr), LINKS.typeVariableDeclaration$Lipp)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return MapSequence.fromMap(substitutions).containsKey(it);
-      }
-    })) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr), LINKS.typeVariableDeclaration$Lipp)).any((it) -> MapSequence.fromMap(substitutions).containsKey(it))) {
       return;
     }
 
     if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$oqG$)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr), LINKS.typeVariableDeclaration$Lipp)).isNotEmpty()) {
-      // treat raw type as if all params were Object or the appropriate bound 
+      // treat raw type as if all params were Object or the appropriate bound
       for (SNode tvd : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr), LINKS.typeVariableDeclaration$Lipp))) {
         MapSequence.fromMap(substitutions).put(tvd, ((SLinkOperations.getTarget(tvd, LINKS.bound$aZCB) == null) ? _quotation_createNode_ja7850_a0a0a1a2a2() : SNodeOperations.copyNode(SLinkOperations.getTarget(tvd, LINKS.bound$aZCB))));
       }
@@ -105,14 +92,14 @@ public final class NamedTupleType__BehaviorDescriptor extends BaseBHDescriptor {
           tvd_var = tvd_it.next();
           tval_var = tval_it.next();
           MapSequence.fromMap(substitutions).put(tvd_var, SNodeOperations.copyNode(tval_var));
-          // iterate recursively into each parameter type if generic 
+          // iterate recursively into each parameter type if generic
           if (SNodeOperations.isInstanceOf(tval_var, CONCEPTS.IGenericType$13)) {
             IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(tval_var, CONCEPTS.IGenericType$13), substitutions);
           }
         }
       }
     }
-    // traverse all extended/implemented classifiers 
+    // traverse all extended/implemented classifiers
     IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr), LINKS.extended$2Fzf), substitutions);
     for (SNode ifc : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr), LINKS.implements$1gsv))) {
       IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(ifc, substitutions);
@@ -180,10 +167,10 @@ public final class NamedTupleType__BehaviorDescriptor extends BaseBHDescriptor {
     return CONCEPT;
   }
   private static SNode _quotation_createNode_ja7850_a0a0a1a2a2() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
-    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Object")));
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+    quotedNode_1 = nb.getResult();
+    nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~Object");
     return quotedNode_1;
   }
 

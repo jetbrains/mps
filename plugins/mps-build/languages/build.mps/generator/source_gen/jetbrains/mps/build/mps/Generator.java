@@ -41,16 +41,17 @@ public class Generator extends TemplateModuleInterpreted2 {
 
   @Override
   public Collection<SLanguage> getTargetLanguages() {
-    SLanguage[] rv = new SLanguage[4];
+    SLanguage[] rv = new SLanguage[5];
     rv[0] = MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build");
     rv[1] = MetaAdapterFactory.getLanguage(0xcf935df46994e9cL, 0xa132fa109541cba3L, "jetbrains.mps.build.mps");
     rv[2] = MetaAdapterFactory.getLanguage(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, "jetbrains.mps.build.workflow");
     rv[3] = MetaAdapterFactory.getLanguage(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, "jetbrains.mps.core.xml");
+    rv[4] = MetaAdapterFactory.getLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
     return Arrays.asList(rv);
   }
 
   @Override
   public Collection<TemplateMappingPriorityRule> getPriorities() {
-    return TemplateUtil.asCollection(TemplateUtil.createStrictlyBeforeRule(TemplateUtil.createRefExternal("9b03dd0d-f0d2-42fc-8909-d7710e678ca3(jetbrains.mps.build.mps#3189788309732033979)", TemplateUtil.createRefNormal("r:54537613-52b5-40a8-b223-e87f0960b04f(jetbrains.mps.build.mps.generator.template.main@generator)", "3189788309732033980", "main")), TemplateUtil.createRefExternal("14663b86-7294-4d82-bdbf-e858bd3af9b1(jetbrains.mps.build#3595702787188034882)", TemplateUtil.createRefSet(TemplateUtil.createRefNormal("r:fdebfc98-bbd7-4c50-8a8d-eda16da9406e(jetbrains.mps.build.generator.template.main@generator)", "3595702787188034883", "main"), TemplateUtil.createRefNormal("r:fdebfc98-bbd7-4c50-8a8d-eda16da9406e(jetbrains.mps.build.generator.template.main@generator)", "8847838005406041498", "aliases")))), TemplateUtil.createStrictlyBeforeRule(TemplateUtil.createRefExternal("9b03dd0d-f0d2-42fc-8909-d7710e678ca3(jetbrains.mps.build.mps#3189788309732033979)", TemplateUtil.createRefNormal("r:54537613-52b5-40a8-b223-e87f0960b04f(jetbrains.mps.build.mps.generator.template.main@generator)", "8252715012761682620", "loadMods")), TemplateUtil.createRefExternal("14663b86-7294-4d82-bdbf-e858bd3af9b1(jetbrains.mps.build#3595702787188034882)", TemplateUtil.createRefNormal("r:fdebfc98-bbd7-4c50-8a8d-eda16da9406e(jetbrains.mps.build.generator.template.main@generator)", "2569834391840003270", "load_deps"))), TemplateUtil.createStrictlyBeforeRule(TemplateUtil.createRefExternal("9b03dd0d-f0d2-42fc-8909-d7710e678ca3(jetbrains.mps.build.mps#3189788309732033979)", TemplateUtil.createRefNormal("r:54537613-52b5-40a8-b223-e87f0960b04f(jetbrains.mps.build.mps.generator.template.main@generator)", "7655580649838775665", "aliases")), TemplateUtil.createRefExternal("9b03dd0d-f0d2-42fc-8909-d7710e678ca3(jetbrains.mps.build.mps#3189788309732033979)", TemplateUtil.createRefNormal("r:54537613-52b5-40a8-b223-e87f0960b04f(jetbrains.mps.build.mps.generator.template.main@generator)", "3189788309732033980", "main"))));
+    return TemplateUtil.asCollection(TemplateUtil.createStrictlyBeforeRule(TemplateUtil.createRefExternal("9b03dd0d-f0d2-42fc-8909-d7710e678ca3(jetbrains.mps.build.mps#3189788309732033979)", TemplateUtil.createRefNormal("r:54537613-52b5-40a8-b223-e87f0960b04f(jetbrains.mps.build.mps.generator.template.main@generator)", "7655580649838775665", "aliases")), TemplateUtil.createRefExternal("9b03dd0d-f0d2-42fc-8909-d7710e678ca3(jetbrains.mps.build.mps#3189788309732033979)", TemplateUtil.createRefNormal("r:54537613-52b5-40a8-b223-e87f0960b04f(jetbrains.mps.build.mps.generator.template.main@generator)", "3189788309732033980", "main"))));
   }
 }

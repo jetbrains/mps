@@ -16,8 +16,8 @@ public final class LanguageConceptSwitch {
   public static final int CallActionExpression = 4;
   public static final int Clean = 5;
   public static final int ClickableGenerator = 6;
-  public static final int GlobalScope = 7;
-  public static final int GlobalScope_old = 8;
+  public static final int ClickableNode = 7;
+  public static final int GlobalScope = 8;
   public static final int GlobalStatisticTarget = 9;
   public static final int INodeSetReference = 10;
   public static final int IStatisticsTarget = 11;
@@ -27,16 +27,15 @@ public final class LanguageConceptSwitch {
   public static final int ModelStatisticsTarget = 15;
   public static final int ModuleProperties = 16;
   public static final int NodeReference = 17;
-  public static final int OfAspectOperation_old = 18;
-  public static final int ProjectStatisticsTarget = 19;
-  public static final int RemoveGenSources = 20;
-  public static final int ShowBrokenReferences = 21;
-  public static final int ShowExpression = 22;
-  public static final int ShowGenPlan = 23;
-  public static final int StatCommand = 24;
-  public static final int SubtreeStatisticsTarget = 25;
-  public static final int VisibleModulesScope = 26;
-  public static final int WithDependencies = 27;
+  public static final int ProjectStatisticsTarget = 18;
+  public static final int RemoveGenSources = 19;
+  public static final int ShowBrokenReferences = 20;
+  public static final int ShowExpression = 21;
+  public static final int ShowGenPlan = 22;
+  public static final int StatCommand = 23;
+  public static final int SubtreeStatisticsTarget = 24;
+  public static final int VisibleModulesScope = 25;
+  public static final int WithDependencies = 26;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L);
@@ -47,8 +46,8 @@ public final class LanguageConceptSwitch {
     builder.put(0x4d7759afce9587adL, CallActionExpression);
     builder.put(0x276b371e74f88509L, Clean);
     builder.put(0x360b134fc0467d73L, ClickableGenerator);
+    builder.put(0x72ed699ef9552c28L, ClickableNode);
     builder.put(0x20c897bb39d91633L, GlobalScope);
-    builder.put(0x3bc64421763add42L, GlobalScope_old);
     builder.put(0x67f2bafb7a579cb8L, GlobalStatisticTarget);
     builder.put(0x4843e803da101441L, INodeSetReference);
     builder.put(0x67f2bafb7a579cb2L, IStatisticsTarget);
@@ -58,7 +57,6 @@ public final class LanguageConceptSwitch {
     builder.put(0x67f2bafb7a5cad96L, ModelStatisticsTarget);
     builder.put(0x4d7759afce9587b3L, ModuleProperties);
     builder.put(0x6c8954f4699443afL, NodeReference);
-    builder.put(0x5252d9021b8b45a8L, OfAspectOperation_old);
     builder.put(0x67f2bafb7a579e36L, ProjectStatisticsTarget);
     builder.put(0x276b371e77c0a11bL, RemoveGenSources);
     builder.put(0x1cf75b72b0ac828cL, ShowBrokenReferences);

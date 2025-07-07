@@ -4,20 +4,21 @@ package jetbrains.mps.lang.quotation.test.editorTest;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.lang.test.runtime.EditorTestUtil;
 
 @MPSLaunch
 public class Test_NodeBuilder_Delete_Model_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(Test_NodeBuilder_Delete_Model_Test.class, "${mps_home}", "r:05c4fa32-3688-4db6-b828-4373b1de41d9(jetbrains.mps.lang.quotation.test.editorTest@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(Test_NodeBuilder_Delete_Model_Test.class).projectPath(null).modelRef("r:05c4fa32-3688-4db6-b828-4373b1de41d9(jetbrains.mps.lang.quotation.test.editorTest@tests)").reopenProject(false).build());
 
   public Test_NodeBuilder_Delete_Model_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -34,11 +35,7 @@ public class Test_NodeBuilder_Delete_Model_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("7191184120224220681", "7191184120224220688");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-        }
-      }, false);
+      EditorTestUtil.runWithTwoStepDeletion(() -> invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action"), false);
     }
   }
 }

@@ -5,59 +5,41 @@ package jetbrains.mps.baseLanguage.typesystem;
 import jetbrains.mps.errors.QuickFix_Runtime;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.baseLanguage.scopes.ClassifierScopes;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class QuickFixForClassCreator_QuickFix extends QuickFix_Runtime {
   public QuickFixForClassCreator_QuickFix() {
     super(new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8899076737759282444"));
   }
   public void execute(SNode node) {
-    if (SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.ClassCreator$ZG), LINKS.baseMethodDeclaration$pyYw) == null && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.ClassCreator$ZG), LINKS.actualArgument$pzdx)).isEmpty()) {
-      String refText = SLinkOperations.getResolveInfo(SNodeOperations.getReference(SNodeOperations.cast(node, CONCEPTS.ClassCreator$ZG), LINKS.baseMethodDeclaration$pyYw));
-
-      if ((refText != null && refText.length() > 0)) {
-        SNode clazz = SNodeOperations.cast(ClassifierScopes.getVisibleClassifiersWithDefaultConstructors(node).resolve(node, refText), CONCEPTS.ClassConcept$bK);
-        if ((clazz != null)) {
-          SNode newCreator = _quotation_createNode_k3yd95_a0a0b0c0a0b(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.ClassCreator$ZG), LINKS.typeParameter$uYiw), clazz);
-          SNodeOperations.replaceWithAnother(node, newCreator);
-        }
-      }
-    }
+    SNode creator = SNodeOperations.cast(node, CONCEPTS.ClassCreator$ZG);
+    SNode newCreator = _quotation_createNode_k3yd95_a0b0b(SLinkOperations.getChildren(creator, LINKS.typeParameter$uYiw), ((SNode) QuickFixForClassCreator_QuickFix.this.getField("targetClass")[0]));
+    SNodeOperations.replaceWithAnother(node, newCreator);
   }
-  private static SNode _quotation_createNode_k3yd95_a0a0b0c0a0b(Object parameter_1, Object parameter_2) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
+  private static SNode _quotation_createNode_k3yd95_a0b0b(Object parameter_1, Object parameter_2) {
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
-    quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x2724644c0ac833a5L, "DefaultClassCreator")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x2724644c0ac833a5L, "DefaultClassCreator"));
+    quotedNode_3 = nb.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_3, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier"), (SNode) parameter_2);
-    {
-      List<SNode> nodes = (List<SNode>) parameter_1;
-      for (SNode child : nodes) {
-        quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0accfdb3L, "typeParameter"), SNodeOperations.copyIfNecessary(child));
-      }
+    for (SNode child : (List<SNode>) parameter_1) {
+      quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0accfdb3L, "typeParameter"), SNodeOperations.copyIfNecessary(child));
     }
     return quotedNode_3;
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ClassCreator$ZG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, "jetbrains.mps.baseLanguage.structure.ClassCreator");
-    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
     /*package*/ static final SContainmentLink typeParameter$uYiw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter");
   }
 }

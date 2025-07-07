@@ -13,7 +13,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
-@GeneratedClass(node = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)/8838506468326707862", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
+@GeneratedClass(nodeId = "8838506468326707862", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
 public class OverrideMethodsAsIntention_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -37,7 +37,7 @@ public class OverrideMethodsAsIntention_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return SNodeOperations.isInstanceOf(event.getData(MPSCommonDataKeys.NODE), CONCEPTS.Classifier$Ix) && ListSequence.fromList(((List<SNode>) BHReflection.invoke0(SNodeOperations.cast(event.getData(MPSCommonDataKeys.NODE), CONCEPTS.Classifier$Ix), CONCEPTS.IMemberContainer$yM, SMethodTrimmedId.create("getMethodsToOverride", null, "4GM03FJm3zL")))).isNotEmpty();
+    return SNodeOperations.isInstanceOf(event.getData(MPSCommonDataKeys.NODE), CONCEPTS.Classifier$Ix) && ListSequence.fromList(((List<SNode>) BHReflection.invoke0(SNodeOperations.cast(event.getData(MPSCommonDataKeys.NODE), CONCEPTS.Classifier$Ix), CONCEPTS.IMemberContainer$yM, SMethodIdV2.create("getMethodsToOverride", 5418393554803767537L, 0x5745e3015c8914d3L)))).isNotEmpty();
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {

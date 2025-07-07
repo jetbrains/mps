@@ -15,11 +15,12 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.refactoring.participant.plugin.MoveNodesUtil;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import java.util.ArrayList;
 import java.util.Map;
+import java.util.ArrayList;
 import jetbrains.mps.refactoring.participant.RefactoringParticipant;
 import jetbrains.mps.refactoring.participant.RefactoringSession;
 import jetbrains.mps.refactoring.participant.NodeCopyTracker;
+import jetbrains.mps.smodel.NodeIdentityComponent;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.MoveStaticMethodRefactoring;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -41,11 +42,7 @@ public class MoveStaticMethod implements MoveNodesAction {
 
   public boolean isApplicable(MPSProject project, final List<SNode> nodes) {
     final Wrappers._boolean result = new Wrappers._boolean();
-    project.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        result.value = ListSequence.fromList(nodes).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(nodes).first(), CONCEPTS.StaticMethodDeclaration$FJ);
-      }
-    });
+    project.getRepository().getModelAccess().runReadAction(() -> result.value = ListSequence.fromList(nodes).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(nodes).first(), CONCEPTS.StaticMethodDeclaration$FJ));
     return result.value;
   }
 
@@ -62,7 +59,7 @@ public class MoveStaticMethod implements MoveNodesAction {
       return;
     }
 
-    MoveNodesUtil.moveTo(project, getName(), MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), new MoveNodesUtil.NodeCreatingProcessor(new MoveStaticField.NodeLocationClassifierMember(SNodeOperations.cast(whereToMove, CONCEPTS.Classifier$Ix)), project) {
+    MoveNodesUtil.moveTo(project, getName(), MapSequence.fromMapAndEntryArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), Map.entry(new MoveNodesUtil.NodeCreatingProcessor(new MoveStaticField.NodeLocationClassifierMember(SNodeOperations.cast(whereToMove, CONCEPTS.Classifier$Ix)), project) {
       @Override
       public List<SNode> getNodesToSearch(SNode nodeToMove) {
         return ListSequence.fromListAndArray(new ArrayList<SNode>(), nodeToMove);
@@ -76,6 +73,7 @@ public class MoveStaticMethod implements MoveNodesAction {
         for (SNode oldNode : ListSequence.fromList(nodesRootsToMove)) {
           MapSequence.fromMap(oldMembersToClasses).put(oldNode, SNodeOperations.getNodeAncestor(oldNode, CONCEPTS.ClassConcept$bK, false, false));
         }
+        final NodeIdentityComponent nic = myProject.getComponent(NodeIdentityComponent.class);
         for (SNode oldNode : ListSequence.fromList(nodesRootsToMove)) {
           SNode newNode = MapSequence.fromMap(copyMap.getCopyMap()).get(oldNode);
           if (!(SNodeOperations.isInstanceOf(newNode, CONCEPTS.StaticMethodDeclaration$FJ))) {
@@ -86,11 +84,14 @@ public class MoveStaticMethod implements MoveNodesAction {
           MoveStaticMethodRefactoring.replaceMethods(newNode, originalClass);
           if (MapSequence.fromMap(ifKeepOldNodes).get(oldNode) == RefactoringParticipant.KeepOldNodes.REMOVE) {
             SNodeOperations.deleteNode(oldNode);
+            if (nic != null) {
+              nic.moved(oldNode, copyMap.getCopyMap());
+            }
           }
           myNodeLocation.insertNode(myProject.getRepository(), newNode);
         }
       }
-    }).withValues(ListSequence.fromListAndArray(new ArrayList<SNode>(), target)));
+    }, ListSequence.fromListAndArray(new ArrayList<SNode>(), target))));
   }
 
   private static final class CONCEPTS {

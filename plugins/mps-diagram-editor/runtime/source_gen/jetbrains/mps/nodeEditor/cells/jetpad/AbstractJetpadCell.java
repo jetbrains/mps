@@ -10,7 +10,6 @@ import jetbrains.jetpad.model.property.ValueProperty;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
-import org.jetbrains.mps.util.Condition;
 import java.awt.Graphics;
 import jetbrains.mps.nodeEditor.cells.ParentSettings;
 import jetbrains.mps.openapi.editor.cells.CellMessagesUtil;
@@ -44,16 +43,12 @@ public abstract class AbstractJetpadCell extends EditorCell_Collection implement
     return false;
   }
   protected DiagramCell getDiagramCell() {
-    return (DiagramCell) CellFinderUtil.findParent(this, new Condition<jetbrains.mps.openapi.editor.cells.EditorCell_Collection>() {
-      public boolean met(jetbrains.mps.openapi.editor.cells.EditorCell_Collection parent) {
-        return parent instanceof DiagramCell;
-      }
-    });
+    return (DiagramCell) CellFinderUtil.findParent(this, (jetbrains.mps.openapi.editor.cells.EditorCell_Collection parent) -> parent instanceof DiagramCell);
   }
 
   @Override
   public void paintCell(Graphics graphics, ParentSettings settings) {
-    // just blocking child cell painting here 
+    // just blocking child cell painting here
     paintChildCells(graphics, settings);
   }
 
@@ -86,7 +81,7 @@ public abstract class AbstractJetpadCell extends EditorCell_Collection implement
     }
   }
   protected AbstractJetpadCell getDirectChildCell(SNode node) {
-    // TODO: use more effitient way of getting port cell (by ID) 
+    // TODO: use more effitient way of getting port cell (by ID)
     for (EditorCell nextCell : Sequence.fromIterable(getContentCells())) {
       if (nextCell.getSNode() == node) {
         return (AbstractJetpadCell) nextCell;
@@ -123,7 +118,7 @@ public abstract class AbstractJetpadCell extends EditorCell_Collection implement
     view.focusable().set(true);
     view.prop(RootTrait.DELETE_HANDLER).set(new DeleteHandler() {
       public boolean canDelete() {
-        // TODO: do we need it? it always return true.. 
+        // TODO: do we need it? it always return true..
         return canDelete.invoke();
       }
       public void delete() {

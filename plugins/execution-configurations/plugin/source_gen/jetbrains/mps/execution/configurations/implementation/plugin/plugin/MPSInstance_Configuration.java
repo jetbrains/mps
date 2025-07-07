@@ -4,8 +4,7 @@ package jetbrains.mps.execution.configurations.implementation.plugin.plugin;
 
 import jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration;
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.project.structure.modules.Copyable;
 import jetbrains.mps.execution.api.settings.PersistentConfigurationContext;
 import com.intellij.execution.configurations.RuntimeConfigurationException;
 import org.jdom.Element;
@@ -29,8 +28,7 @@ import com.intellij.openapi.util.Key;
 import com.intellij.execution.BeforeRunTask;
 import java.io.File;
 
-public class MPSInstance_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
-  private static final Logger LOG = LogManager.getLogger(MPSInstance_Configuration.class);
+public final class MPSInstance_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration, Copyable<MPSInstance_Configuration> {
   private MpsStartupSettings_Configuration myMpsSettings = new MpsStartupSettings_Configuration();
   private DeployPluginsSettings_Configuration myPluginsSettings = new DeployPluginsSettings_Configuration(this.getProject());
 
@@ -58,34 +56,28 @@ public class MPSInstance_Configuration extends BaseMpsRunConfiguration implement
     if (element == null) {
       throw new InvalidDataException("Cant read " + this + ": element is null.");
     }
-    {
-      Element fieldElement = element.getChild("myMpsSettings");
-      if (fieldElement != null) {
-        myMpsSettings.readExternal(fieldElement);
-      } else {
-        if (LOG.isDebugEnabled()) {
-          LOG.debug("Element " + "myMpsSettings" + " in " + this.getClass().getName() + " was null.");
-        }
-      }
+    if (element.getChild("myMpsSettings") != null) {
+      myMpsSettings.readExternal(element.getChild("myMpsSettings"));
     }
-    {
-      Element fieldElement = element.getChild("myPluginsSettings");
-      if (fieldElement != null) {
-        myPluginsSettings.readExternal(fieldElement);
-      } else {
-        if (LOG.isDebugEnabled()) {
-          LOG.debug("Element " + "myPluginsSettings" + " in " + this.getClass().getName() + " was null.");
-        }
-      }
+    if (element.getChild("myPluginsSettings") != null) {
+      myPluginsSettings.readExternal(element.getChild("myPluginsSettings"));
     }
   }
 
   @Override
+  @Deprecated
   public MPSInstance_Configuration clone() {
-    MPSInstance_Configuration clone = createCloneTemplate();
-    clone.myMpsSettings = (MpsStartupSettings_Configuration) myMpsSettings.clone();
-    clone.myPluginsSettings = (DeployPluginsSettings_Configuration) myPluginsSettings.clone();
-    return clone;
+    return copy();
+  }
+
+  @Override
+  public MPSInstance_Configuration copy() {
+    MPSInstance_Configuration cloneTemplate = createCloneTemplate();
+    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
+    // the value of myState, and != clone as regular Java passer-by would expect.
+    cloneTemplate.myMpsSettings = ((Copyable<MpsStartupSettings_Configuration>) myMpsSettings).copy();
+    cloneTemplate.myPluginsSettings = ((Copyable<DeployPluginsSettings_Configuration>) myPluginsSettings).copy();
+    return cloneTemplate;
   }
 
   public MpsStartupSettings_Configuration getMpsSettings() {
@@ -128,11 +120,7 @@ public class MPSInstance_Configuration extends BaseMpsRunConfiguration implement
   @Override
   public void checkConfiguration() throws RuntimeConfigurationException {
     final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
-    checkConfiguration(new PersistentConfigurationContext() {
-      public jetbrains.mps.project.Project getProject() {
-        return mpsProject;
-      }
-    });
+    checkConfiguration(() -> mpsProject);
   }
   @Override
   public boolean canExecute(String executorId) {
@@ -140,7 +128,7 @@ public class MPSInstance_Configuration extends BaseMpsRunConfiguration implement
   }
   public static void configureBeforeTaskDefaults(Key<? extends BeforeRunTask> providerID, BeforeRunTask task) {
     if (providerID == ClearSettingsDirectoryBeforeRunTask_BeforeTask.KEY) {
-      task.setEnabled(true);
+      task.setEnabled(false);
     }
     if (providerID == AssemblePluginsBeforeTask_BeforeTask.KEY) {
       task.setEnabled(true);

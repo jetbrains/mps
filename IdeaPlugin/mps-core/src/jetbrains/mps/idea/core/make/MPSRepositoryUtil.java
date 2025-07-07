@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,8 +27,10 @@ import jetbrains.mps.idea.core.module.CachedRepositoryData;
 import jetbrains.mps.idea.core.module.CachedRepositoryUtil;
 import jetbrains.mps.idea.core.module.JavaStubModelHeader;
 import jetbrains.mps.library.ModulesMiner.ModuleHandle;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.persistence.FilePerRootDataSource;
+import jetbrains.mps.persistence.LoadedStrategyAware;
 import jetbrains.mps.persistence.PersistenceVersionAware;
 import jetbrains.mps.persistence.PreinstalledModelFactoryTypes;
 import jetbrains.mps.persistence.java.library.JavaClassStubModelDescriptor;
@@ -37,7 +39,6 @@ import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.smodel.DefaultSModelDescriptor;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.DataSource;
@@ -128,9 +129,9 @@ public class MPSRepositoryUtil {
       Object header = null;
       CachedModelData.Kind cacheKind = CachedModelData.Kind.Unknown;
       if (model instanceof PersistenceVersionAware) {
-        ModelFactory mf = ((PersistenceVersionAware) model).getModelFactory();
+        ModelFactory mf = ((LoadedStrategyAware) model).getModelFactory();
         if (mf == null) {
-          LogManager.getLogger(MPSRepositoryUtil.class).warn("The model factory is null for the model " + model);
+          Logger.getLogger(MPSRepositoryUtil.class).warning("The model factory is null for the model " + model);
           return null;
         }
         ModelFactoryType type = mf.getType();

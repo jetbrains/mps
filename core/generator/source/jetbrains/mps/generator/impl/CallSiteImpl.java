@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,18 +17,19 @@ package jetbrains.mps.generator.impl;
 
 import jetbrains.mps.generator.GenerationTracerUtil;
 import jetbrains.mps.generator.runtime.GenerationException;
-import jetbrains.mps.generator.runtime.NodeWeaveFacility;
 import jetbrains.mps.generator.runtime.TemplateCallSite;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.TemplateDeclaration;
 import jetbrains.mps.generator.runtime.WeavingWithAnchor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * @author Artem Tikhomirov
@@ -48,6 +49,7 @@ final class CallSiteImpl implements TemplateCallSite {
   @Override
   public Collection<SNode> apply(@NotNull TemplateContext context) throws GenerationException {
     // don't change the kind of return value collection, there are casts in the code (until I unify all return value)
+    // AFAIK, it's only RuleConsequenceProcessor now that does the cast; TemplateProcessor does a check, and generated code sticks to Collection
     final ArrayList<SNode> rv = new ArrayList<>();
     myTemplateDeclaration.apply(context.withNewExecutionPath(), new CollectorSink(rv));
     final SNode input = context.getInput();
@@ -58,14 +60,11 @@ final class CallSiteImpl implements TemplateCallSite {
 
   @Override
   public boolean weave(@NotNull TemplateContext context, @NotNull SNode outputContextNode, @Nullable WeavingWithAnchor anchorQuery) throws GenerationException {
-    // FIXME have to use WeaveContext+NodeWeaveFacility as long as TemplateDeclarationWeavingAware2.weave requires these
-    WeaveContextImpl wc = new WeaveContextImpl(outputContextNode, context, anchorQuery);
-    // as long as we need WC instance to invoke old weave(wc, nwf), use it for NWS, too. Once 2020.1 is out, pass WC stuff right into NWS cons
-    final NodeWeaveFacility nwf = new NodeWeaveSupport(wc, myCallSite, myGenerator);
-    // FIXME with code generated in 2020.1, we can use apply(TC, AS) with a sink that would respect anchor function and outputContextNode
-    //       however, to support templates generated with 2019.3, we stick to old API (would need to keep TemplateDeclarationWeavingAware2 past 2020.2)
-    final Collection<SNode> weaved = myTemplateDeclaration.weave(wc, nwf);
-    if (weaved != null && !weaved.isEmpty()) {
+    final NodeWeaveSupport nwf = new NodeWeaveSupport(context, outputContextNode, anchorQuery, myCallSite, myGenerator);
+
+    myTemplateDeclaration.apply(context, nwf); // XXX perhaps, context.withNewExecutionPath(), as in apply, above, would be better?
+    final List<SNode> weaved = nwf.weavedNodes();
+    if (!weaved.isEmpty()) {
       if (context.getInputName() != null) {
         // this is to replace code that used to be in generated WeavingRule classes (took td.weave() result and associated ML with it)
         // XXX seems that I could introduce tc.registerLabel(outputNodes) that would interally look into inputName!= null and use internal env to do the same.

@@ -15,7 +15,6 @@ import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.BaseQuickFixProvider;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.LinkAttribute__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -28,7 +27,7 @@ public class check_LinkAttribute_NonTypesystemRule extends AbstractNonTypesystem
   public check_LinkAttribute_NonTypesystemRule() {
   }
   public void applyRule(final SNode linkAttribute, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    // todo: why we allow using attributes outside smodelAttribute role? It doesn't look quite sound such usage in quotations and generator templates 
+    // todo: why we allow using attributes outside smodelAttribute role? It doesn't look quite sound such usage in quotations and generator templates
     if ((SNodeOperations.getParent(linkAttribute) == null) || !(SNodeOperations.hasRole(linkAttribute, LINKS.smodelAttribute$KJ43))) {
       return;
     }
@@ -37,24 +36,20 @@ public class check_LinkAttribute_NonTypesystemRule extends AbstractNonTypesystem
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(linkAttribute, "Link attribute should have link id", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "6063712545515033463", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.add_LinkAttribute_id_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.add_LinkAttribute_id_QuickFix", "6063712545515033467", false);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }
     } else {
       Iterable<SReferenceLink> links = SNodeOperations.getConcept(SNodeOperations.getParent(linkAttribute)).getReferenceLinks();
-      SReferenceLink existingLink = Sequence.fromIterable(links).findFirst(new IWhereFilter<SReferenceLink>() {
-        public boolean accept(SReferenceLink it) {
-          return Objects.equals(it, LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(linkAttribute));
-        }
-      });
+      SReferenceLink existingLink = Sequence.fromIterable(links).findFirst((it) -> Objects.equals(it, LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(linkAttribute)));
       String reportName = LinkAttribute__BehaviorDescriptor.getNameForReporting_id5gACAVBuLQd.invoke(linkAttribute);
       if (existingLink == null) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(linkAttribute, "Reference Attribute is attached to not existing reference link: " + SPropertyOperations.getString(linkAttribute, PROPS.linkId$P9Fc) + "(" + reportName + ")", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "5394253938404265823", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.RemoveUndeclaredLinkAttribute_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.RemoveUndeclaredLinkAttribute_QuickFix", "5394253938404473531", false);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }
@@ -63,7 +58,7 @@ public class check_LinkAttribute_NonTypesystemRule extends AbstractNonTypesystem
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(linkAttribute, "Incorrect reference link name: " + reportName, "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "6063712545515037085", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.fix_LinkAttribute_name_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.fix_LinkAttribute_name_QuickFix", "6063712545515037091", false);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }

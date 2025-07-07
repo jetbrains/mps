@@ -4,11 +4,10 @@ package jetbrains.mps.execution.impl.configurations.tests.commands;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
@@ -18,7 +17,6 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.execution.impl.configurations.tests.commands.sandbox.Main;
@@ -34,13 +32,11 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 @MPSLaunch
 public class JavaCommand_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(JavaCommand_Test.class, "${mps_home}", "r:e2bad6d6-3029-4bc3-b44d-49863f32d863(jetbrains.mps.execution.impl.configurations.tests.commands@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(JavaCommand_Test.class).projectPath(null).modelRef("r:e2bad6d6-3029-4bc3-b44d-49863f32d863(jetbrains.mps.execution.impl.configurations.tests.commands@tests)").reopenProject(null).build());
 
   public JavaCommand_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -54,25 +50,26 @@ public class JavaCommand_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_startJavaByNode() throws Exception {
-      final Wrappers._T<SNodeReference> pointer = new Wrappers._T<SNodeReference>();
-      myProject.getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          SModel model = PersistenceFacade.getInstance().createModelReference("r:c2c670fc-188b-4168-9559-68c718816e1a(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox@tests)").resolve(myProject.getRepository());
-          SNode mainNode = ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.INamedConcept$Kd)).findFirst(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), Main.class.getSimpleName());
-            }
-          });
-          pointer.value = new SNodePointer(mainNode);
-        }
-      });
-
-      ProcessHandler process = new Java_Command().createProcess(pointer.value, myProject.getRepository());
-      ProcessRunnerForConfigurationTests processRunner = new ProcessRunnerForConfigurationTests.Builder(process).addExpectedPaterns(Collections.singletonList(Pattern.compile(Main.MESSAGE + "\n*"))).addAllowedErrorPaterns(Collections.singletonList(Pattern.compile("Picked up JAVA_TOOL_OPTIONS.*\n*"))).build();
-      processRunner.startAndCheckProcess();
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
     }
 
+    public void test_startJavaByNode() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        final Wrappers._T<SNodeReference> pointer = new Wrappers._T<SNodeReference>();
+        myProject.getModelAccess().runReadAction(() -> {
+          SModel model = PersistenceFacade.getInstance().createModelReference("r:c2c670fc-188b-4168-9559-68c718816e1a(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox@tests)").resolve(myProject.getRepository());
+          SNode mainNode = ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.INamedConcept$Kd)).findFirst((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), Main.class.getSimpleName()));
+          pointer.value = new SNodePointer(mainNode);
+        });
+
+        ProcessHandler process = new Java_Command().createProcess(pointer.value, myProject.getRepository());
+        ProcessRunnerForConfigurationTests processRunner = new ProcessRunnerForConfigurationTests.Builder(process).addExpectedPaterns(Collections.singletonList(Pattern.compile(Main.MESSAGE + "\n*"))).addAllowedErrorPaterns(Collections.singletonList(Pattern.compile("Picked up JAVA_TOOL_OPTIONS.*\n*"))).build();
+        processRunner.startAndCheckProcess();
+      });
+    }
 
   }
 

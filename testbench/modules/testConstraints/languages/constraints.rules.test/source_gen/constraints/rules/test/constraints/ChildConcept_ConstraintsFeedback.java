@@ -22,14 +22,14 @@ public final class ChildConcept_ConstraintsFeedback extends BaseFeedbackDescript
   private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_v9r23o_a = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(ChildConcept_ConstraintRules.Rule_toleranceNotTooHigh.ID_toleranceNotTooHigh)) {
     @NotNull
     @Override
-    public MessageProvider.StringMsg yieldMessage(ContainmentContext context) {
+    public MessageProvider.Msg yieldMessage(ContainmentContext context) {
       return new MessageProvider.StringMsg("The tolerance is too high");
     }
   };
   private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_v9r23o_b = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(ChildConcept_ConstraintRules.Rule_toleranceNotTooLow.ID_toleranceNotTooLow)) {
     @NotNull
     @Override
-    public MessageProvider.StringMsg yieldMessage(ContainmentContext context) {
+    public MessageProvider.Msg yieldMessage(ContainmentContext context) {
       return new MessageProvider.StringMsg("The tolerance is too low");
     }
   };

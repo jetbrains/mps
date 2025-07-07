@@ -4,7 +4,7 @@ package jetbrains.mps.baseLanguage.tuples.runtime;
 
 import java.util.Arrays;
 
-public class MultiTuple {
+public class MultiTuple extends HashMapDictionary {
   private static final Object[] EMPTY = new Object[0];
   private final Object[] values;
   protected MultiTuple(Object... objs) {
@@ -54,7 +54,7 @@ public class MultiTuple {
   }
   @Deprecated
   public void assign(Object... values) {
-    // still uses in templates (?), e.g. see TResource code 
+    // still uses in templates (?), e.g. see TResource code
     assignValues(values);
   }
   public MultiTuple assignValues(Object... values) {
@@ -70,7 +70,7 @@ public class MultiTuple {
   }
   @Deprecated
   public static boolean eq(Object a, Object b) {
-    // uses were replaced with regular Objects.equals(); keep for one release and drop then 
+    // uses were replaced with regular Objects.equals(); keep for one release and drop then
     return (a == b) || ((a != null ? a.equals(b) : false));
   }
 

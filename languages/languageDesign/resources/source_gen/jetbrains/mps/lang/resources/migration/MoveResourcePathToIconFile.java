@@ -22,9 +22,9 @@ public class MoveResourcePathToIconFile extends MigrationScriptBase {
     return null;
   }
   public void doExecute(final SModule m) {
-    // path property was completely removed 
+    // path property was completely removed
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources"), 0);
   }
 

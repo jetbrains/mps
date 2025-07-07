@@ -23,56 +23,62 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
       case 0:
         return Collections.<ConceptEditor>singletonList(new DefaultParameterConverter_Editor());
       case 1:
-        return Collections.<ConceptEditor>singletonList(new ParameterConverterDeclaration_Editor());
+        return Collections.<ConceptEditor>singletonList(new HttpMethod_Editor());
       case 2:
-        return Collections.<ConceptEditor>singletonList(new ParameterConverterReference_Editor());
+        return Collections.<ConceptEditor>singletonList(new HttpMethod_ANY_Editor());
       case 3:
-        return Collections.<ConceptEditor>singletonList(new ParameterInitializer_Editor());
+        return Collections.<ConceptEditor>singletonList(new ParameterConverterDeclaration_Editor());
       case 4:
-        return Collections.<ConceptEditor>singletonList(new Port_Editor());
+        return Collections.<ConceptEditor>singletonList(new ParameterConverterReference_Editor());
       case 5:
-        return Collections.<ConceptEditor>singletonList(new PortProvider_Editor());
+        return Collections.<ConceptEditor>singletonList(new ParameterInitializer_Editor());
       case 6:
-        return Collections.<ConceptEditor>singletonList(new QueryParameter_Editor());
+        return Collections.<ConceptEditor>singletonList(new Port_Editor());
       case 7:
-        return Collections.<ConceptEditor>singletonList(new QueryParameterReference_Editor());
+        return Collections.<ConceptEditor>singletonList(new PortProvider_Editor());
       case 8:
-        return Collections.<ConceptEditor>singletonList(new QueryPath_Editor());
+        return Collections.<ConceptEditor>singletonList(new QueryParameter_Editor());
       case 9:
-        return Collections.<ConceptEditor>singletonList(new QuerySegment_Editor());
+        return Collections.<ConceptEditor>singletonList(new QueryParameterReference_Editor());
       case 10:
-        return Collections.<ConceptEditor>singletonList(new RequestHandler_Editor());
+        return Collections.<ConceptEditor>singletonList(new QueryPath_Editor());
       case 11:
-        return Collections.<ConceptEditor>singletonList(new RequestURLBuilderExpression_Editor());
+        return Collections.<ConceptEditor>singletonList(new QuerySegment_Editor());
       case 12:
+        return Collections.<ConceptEditor>singletonList(new RequestHandler_Editor());
+      case 13:
+        return Collections.<ConceptEditor>singletonList(new RequestURLBuilderExpression_Editor());
+      case 14:
         return Collections.<ConceptEditor>singletonList(new ResponseSendOperation_Editor());
       default:
     }
     return Collections.<ConceptEditor>emptyList();
   }
-
+  private Collection<ConceptEditorComponent> getDeclaredEC_0(String editorComponentId) {
+    if ("jetbrains.mps.ide.httpsupport.editor.PortProvider_currentPort".equals(editorComponentId)) {
+      return Collections.singletonList(new PortProvider_currentPort());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_1(String editorComponentId) {
+    if ("jetbrains.mps.ide.httpsupport.editor.RequestHandlerDescription".equals(editorComponentId)) {
+      return Collections.singletonList(new RequestHandlerDescription());
+    }
+    return Collections.emptyList();
+  }
   @NotNull
   public Collection<ConceptEditorComponent> getDeclaredEditorComponents(SAbstractConcept concept, String editorComponentId) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
     switch (conceptIndex1.index(cncpt)) {
       case 0:
-        if (true) {
-          if ("jetbrains.mps.ide.httpsupport.editor.PortProvider_currentPort".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new PortProvider_currentPort());
-          }
-        }
-        break;
+        return getDeclaredEC_0(editorComponentId);
       case 1:
-        if (true) {
-          if ("jetbrains.mps.ide.httpsupport.editor.RequestHandlerDescription".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new RequestHandlerDescription());
-          }
-        }
-        break;
+        return getDeclaredEC_1(editorComponentId);
       default:
     }
-    return Collections.<ConceptEditorComponent>emptyList();
+    return Collections.emptyList();
   }
+
 
   @NotNull
   @Override
@@ -103,7 +109,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     return Collections.<SubstituteMenu>emptyList();
   }
 
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x46f064803fbdcb2eL), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe8385046L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x46f064803fbdb465L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5cf17L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x6f2759b7139c32c2L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x6f2759b713980586L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x205f4376c585b439L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x205f4376c5884e95L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x53d29f104fa64ed7L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x53d29f104fa64ed8L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4d5ac72154f4d780L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5ce93L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x5f91294323b64fc1L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x46f064803fbdcb2eL), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x30dc5ccbfece894cL), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3019ad6e5265f8c0L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe8385046L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x46f064803fbdb465L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5cf17L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x6f2759b7139c32c2L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x6f2759b713980586L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x205f4376c585b439L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x205f4376c5884e95L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x53d29f104fa64ed7L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x53d29f104fa64ed8L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4d5ac72154f4d780L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5ce93L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x5f91294323b64fc1L)).seal();
   private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x6f2759b713980586L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4d5ac72154f4d780L)).seal();
   private static final ConceptSwitchIndex conceptIndex2 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x46f064803fbdb3f3L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x53d29f104fa64ed8L)).seal();
   private static final ConceptSwitchIndex conceptIndex3 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x46f064803fbdb465L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5cf17L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x205f4376c5884e95L)).seal();

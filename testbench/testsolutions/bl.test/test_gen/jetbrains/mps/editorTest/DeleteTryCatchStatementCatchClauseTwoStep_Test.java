@@ -4,24 +4,23 @@ package jetbrains.mps.editorTest;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.lang.test.runtime.EditorTestUtil;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class DeleteTryCatchStatementCatchClauseTwoStep_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(DeleteTryCatchStatementCatchClauseTwoStep_Test.class, "${mps_home}", "r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(DeleteTryCatchStatementCatchClauseTwoStep_Test.class).projectPath(null).modelRef("r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)").reopenProject(false).build());
 
   public DeleteTryCatchStatementCatchClauseTwoStep_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -38,16 +37,10 @@ public class DeleteTryCatchStatementCatchClauseTwoStep_Test extends BaseTransfor
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("5758795789001077038", "5758795789001081677");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-          getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              Assert.assertTrue(DeletionApproverUtil.isApprovedForDeletion(getEditorComponent().getEditorContext(), SNodeOperations.cast(getNodeById("2640093672105151080"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x2aefd560f401b9c6L, "MultipleCatchClause")))));
-            }
-          });
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-        }
+      EditorTestUtil.runWithTwoStepDeletion(() -> {
+        invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
+        getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> Assert.assertTrue(DeletionApproverUtil.isApprovedForDeletion(getEditorComponent().getEditorContext(), getAnnotatedNode("catch"))));
+        invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
       }, true);
     }
   }

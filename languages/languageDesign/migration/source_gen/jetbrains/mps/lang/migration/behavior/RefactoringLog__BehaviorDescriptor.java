@@ -9,13 +9,13 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.Language;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class RefactoringLog__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, "jetbrains.mps.lang.migration.structure.RefactoringLog");
 
-  public static final SMethod<RefactoringScriptReference> getDescriptor_id4uVwhQyPQ_Z = new SMethodBuilder<RefactoringScriptReference>(new SJavaCompoundTypeImpl(RefactoringScriptReference.class)).name("getDescriptor").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4uVwhQyPQ_Z").build();
+  public static final SMethod<RefactoringScriptReference> getDescriptor_id4uVwhQyPQ_Z = new SMethodBuilder<RefactoringScriptReference>(new SJavaCompoundTypeImpl(RefactoringScriptReference.class)).name("getDescriptor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5168866961623837055L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDescriptor_id4uVwhQyPQ_Z);
 
@@ -33,7 +33,7 @@ public final class RefactoringLog__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static RefactoringScriptReference getDescriptor_id4uVwhQyPQ_Z(@NotNull SNode __thisNode__) {
-    return new RefactoringScriptReference(SNodeOperations.getModel(__thisNode__).getModule(), SPropertyOperations.getInteger(__thisNode__, PROPS.fromVersion$clQh));
+    return new RefactoringScriptReference(as_1gq0f6_a0a0a0i(SNodeOperations.getModel(__thisNode__).getModule(), Language.class), SPropertyOperations.getInteger(__thisNode__, PROPS.fromVersion$clQh));
   }
 
   /*package*/ RefactoringLog__BehaviorDescriptor() {
@@ -80,6 +80,9 @@ public final class RefactoringLog__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+  private static <T> T as_1gq0f6_a0a0a0i(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 
   private static final class PROPS {

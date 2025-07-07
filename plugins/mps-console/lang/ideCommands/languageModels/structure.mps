@@ -10,8 +10,6 @@
     <import index="tp4k" ref="r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="3xdn" ref="r:935ba0ee-7291-4caa-a807-d76e8fc69391(jetbrains.mps.lang.smodel.query.structure)" />
-    <import index="tp2q" ref="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)" />
-    <import index="hfbu" ref="r:2ea71bfd-fe13-4525-9346-023b05757b39(jetbrains.mps.lang.aspect.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
     <import index="dvox" ref="r:9dfd3567-3b1f-4edb-85a0-3981ca2bfd8c(jetbrains.mps.lang.modelapi.structure)" implicit="true" />
   </imports>
@@ -20,6 +18,9 @@
       <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
         <property id="1225118929411" name="build" index="YLPcu" />
         <property id="1225118933224" name="comment" index="YLQ7P" />
+      </concept>
+      <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
+        <property id="7862711839422615217" name="text" index="t5JxN" />
       </concept>
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
@@ -55,7 +56,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -199,16 +200,6 @@
     <property role="R4oN_" value="show the generation plan" />
     <property role="EcuMT" value="7057947030097724900" />
     <ref role="1TJDcQ" to="eynw:1yfzJNJq9L_" resolve="InterpretedCommand" />
-    <node concept="1TJgyj" id="67MRmR$vSpU" role="1TKVEi">
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="targetModelOld" />
-      <property role="IQ2ns" value="7057947030097725050" />
-      <ref role="20lvS9" node="6M9lfhD$0$C" resolve="ModelReference" />
-      <node concept="asaX9" id="73IzULxmLje" role="lGtFl">
-        <property role="YLPcu" value="2018.2" />
-        <property role="YLQ7P" value="ModelReference is faulty, deprecated and about to cease existence. Set targetModel[1] once old is gone" />
-      </node>
-    </node>
     <node concept="1TJgyj" id="73IzULxmOWN" role="1TKVEi">
       <property role="IQ2ns" value="8137599547235585843" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -371,30 +362,6 @@
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
   </node>
-  <node concept="1TIwiD" id="59iQg8ryOmC">
-    <property role="TrG5h" value="OfAspectOperation_old" />
-    <property role="34LRSv" value="ofAspect" />
-    <property role="3GE5qa" value="expression" />
-    <property role="R4oN_" value="filter models by their aspect" />
-    <property role="EcuMT" value="5932042262275638696" />
-    <property role="R5$K7" value="true" />
-    <property role="R5$K2" value="false" />
-    <ref role="1TJDcQ" to="tp2q:gKAMqbp" resolve="SequenceOperation" />
-    <node concept="1TJgyj" id="7Nk8HJUuKrS" role="1TKVEi">
-      <property role="IQ2ns" value="8994852683961272056" />
-      <property role="20kJfa" value="requestedAspect_old" />
-      <ref role="20lvS9" to="hfbu:2Y$EcRKMr1Q" resolve="SimpleLanguageAspectDescriptor" />
-      <node concept="asaX9" id="q_ruBBvOei" role="lGtFl">
-        <property role="YLQ7P" value="The link was moved to concept &quot;jetbrains.mps.lang.slanguage.structure.OfAspectOperation&quot;" />
-      </node>
-    </node>
-    <node concept="PrWs8" id="59iQg8ryZAl" role="PzmwI">
-      <ref role="PrY4T" to="3xdn:59iQg8ryQK3" resolve="OperationHelpProvider" />
-    </node>
-    <node concept="asaX9" id="q_ruBBvOe7" role="lGtFl">
-      <property role="YLQ7P" value="The concept was moved to language &quot;jetbrains.mps.lang.slanguage&quot;" />
-    </node>
-  </node>
   <node concept="1TIwiD" id="7mV0m3L$tuv">
     <property role="3GE5qa" value="" />
     <property role="TrG5h" value="ShowExpression" />
@@ -413,13 +380,6 @@
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
   </node>
-  <node concept="1TIwiD" id="3J6h25QeHP2">
-    <property role="3GE5qa" value="query.parameter.old" />
-    <property role="TrG5h" value="GlobalScope_old" />
-    <property role="34LRSv" value="global" />
-    <property role="EcuMT" value="4307205004134636866" />
-    <ref role="1TJDcQ" to="3xdn:3J6h25QeHPb" resolve="ScopeParameter_old" />
-  </node>
   <node concept="1TIwiD" id="238_VGTQhoN">
     <property role="3GE5qa" value="query.parameter" />
     <property role="TrG5h" value="GlobalScope" />
@@ -435,6 +395,25 @@
     <property role="EcuMT" value="2362304834941041875" />
     <property role="R4oN_" value="visible modules in repository" />
     <ref role="1TJDcQ" to="3xdn:238_VGTIKuy" resolve="ScopeParameter" />
+  </node>
+  <node concept="1TIwiD" id="7bHqpVTliKC">
+    <property role="EcuMT" value="8281391421313068072" />
+    <property role="3GE5qa" value="response" />
+    <property role="TrG5h" value="ClickableNode" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="7bHqpVTliKH" role="1TKVEi">
+      <property role="IQ2ns" value="8281391421313068077" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="target" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="dvox:k2ZBl8CwzR" resolve="NodeIdentity" />
+    </node>
+    <node concept="t5JxF" id="7bHqpVTliKD" role="lGtFl">
+      <property role="t5JxN" value="Navigation to a node" />
+    </node>
+    <node concept="PrWs8" id="7bHqpVTliKF" role="PzmwI">
+      <ref role="PrY4T" to="eynw:22lVekVIvmK" resolve="IClickable" />
+    </node>
   </node>
 </model>
 

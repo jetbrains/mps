@@ -13,26 +13,28 @@ import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.references.UnregisteredNodes;
+import java.util.List;
+import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.SNodeUtil;
+import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.internal.collections.runtime.IMapping;
+import org.jetbrains.annotations.Nullable;
 
-@GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/7082523601896465910", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
+@GeneratedClass(nodeId = "7082523601896465910", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class NodeCopier {
   private Map<SNodeId, SNodeId> myIdReplacementCache = MapSequence.fromMap(new HashMap<SNodeId, SNodeId>());
   private SModel myModel;
+  private Map<SNodeId, SNodeId> myRenamedNodes = MapSequence.fromMap(new HashMap<SNodeId, SNodeId>());
+
 
   public NodeCopier(SModel model) {
     myModel = model;
   }
+
   public SNodeId getReplacementId(SNodeId originalId) {
     return MapSequence.fromMap(myIdReplacementCache).get(originalId);
   }
+
   public SNode copyNode(SNode sourceNode) {
     SNode copy = CopyUtil.copyAndPreserveId(sourceNode);
     for (SNode node : ListSequence.fromList(SNodeOperations.getNodeDescendants(copy, null, true, new SAbstractConcept[]{}))) {
@@ -44,6 +46,8 @@ public class NodeCopier {
       do {
         replacedId = jetbrains.mps.smodel.SModel.generateUniqueId();
       } while (myModel.getNode(replacedId) != null);
+      // FWIW, 'node' here is a detached copy. It's intended to be injected into myModel, hence we make sure (above) this new node and its children don't get nodeId changed once injected
+      //      However, I don't feel this is the best possible approach
       ((jetbrains.mps.smodel.SNode) node).setId(replacedId);
       if (!(MapSequence.fromMap(myIdReplacementCache).containsKey(nodeId))) {
         MapSequence.fromMap(myIdReplacementCache).put(nodeId, replacedId);
@@ -51,47 +55,58 @@ public class NodeCopier {
     }
     return copy;
   }
+
+  public void deleteNode(SNode nodeToDelete) {
+    for (final SNode node : ListSequence.fromList(SNodeOperations.getNodeDescendants(nodeToDelete, null, true, new SAbstractConcept[]{}))) {
+      List<SNodeId> sourceIds = MapSequence.fromMap(myIdReplacementCache).where((it) -> Objects.equals(it.value(), node.getNodeId())).select((it) -> it.key()).toList();
+      ListSequence.fromList(sourceIds).visitAll((id) -> MapSequence.fromMap(myIdReplacementCache).removeKey(id));
+    }
+    SNodeOperations.deleteNode(nodeToDelete);
+  }
+
+  public void replaceNodeId(SNode node, SNodeId newNodeId) {
+    SNodeId oldNodeId = node.getNodeId();
+    MapSequence.fromMap(myRenamedNodes).put(oldNodeId, newNodeId);
+    if (myModel.getNode(newNodeId) == null) {
+      setId(node, newNodeId);
+      return;
+    }
+    SNodeId replacedId;
+    do {
+      replacedId = jetbrains.mps.smodel.SModel.generateUniqueId();
+    } while (myModel.getNode(replacedId) != null);
+    setId(node, replacedId);
+    if (!(MapSequence.fromMap(myIdReplacementCache).containsKey(oldNodeId))) {
+      MapSequence.fromMap(myIdReplacementCache).put(newNodeId, replacedId);
+    }
+  }
+
   public void restoreIds(boolean affectOthers) {
-    // no idea if the reasons that lead to this code still hold  
-    // With UN being tracked for repository-attached models and within command only, do we still get errors here? 
-    UnregisteredNodes.WarningLevel oldWarningLevel = UnregisteredNodes.setWarningLevel(UnregisteredNodes.WarningLevel.WARNING);
-    try {
+    // XXX perhaps, would be smart to use model's UPDATE mode to perform these changes? 
+    softRestoreIds();
+    if (affectOthers) {
+      evictOtherDuplicates();
       softRestoreIds();
-      if (affectOthers) {
-        evictOtherDuplicates();
-        softRestoreIds();
-        assert Sequence.fromIterable(MapSequence.fromMap(myIdReplacementCache).values()).all(new IWhereFilter<SNodeId>() {
-          public boolean accept(SNodeId id) {
-            return id == null;
-          }
-        });
-      }
-    } finally {
-      UnregisteredNodes.setWarningLevel(oldWarningLevel);
+      assert Sequence.fromIterable(MapSequence.fromMap(myIdReplacementCache).values()).all((id) -> id == null);
     }
   }
+
   private void setId(SNode node, SNodeId id) {
-    if (SNodeOperations.getParent(node) == null) {
-      SNodeOperations.deleteNode(node);
-      ((jetbrains.mps.smodel.SNode) node).setId(id);
-      SModelOperations.addRootNode(myModel, node);
-    } else {
-      SNode stubNode = new jetbrains.mps.smodel.SNode(SNodeUtil.concept_BaseConcept);
-      SNodeOperations.replaceWithAnother(node, stubNode);
-      ((jetbrains.mps.smodel.SNode) node).setId(id);
-      SNodeOperations.replaceWithAnother(stubNode, node);
-    }
+    SModelInternal smi = (SModelInternal) myModel;
+    smi.changeNodeId(node.getNodeId(), id);
   }
+
   private void softRestoreIds() {
     for (SNodeId id : SetSequence.fromSet(MapSequence.fromMap(myIdReplacementCache).keySet())) {
       if (MapSequence.fromMap(myIdReplacementCache).get(id) != null && myModel.getNode(id) == null) {
-        // node id is free now! 
+        // node id is free now!
         setId(myModel.getNode(MapSequence.fromMap(myIdReplacementCache).get(id)), id);
 
         MapSequence.fromMap(myIdReplacementCache).put(id, null);
       }
     }
   }
+
   private void evictOtherDuplicates() {
     for (SNodeId id : SetSequence.fromSet(MapSequence.fromMap(myIdReplacementCache).keySet())) {
       SNode toBeEvicted = myModel.getNode(id);
@@ -99,24 +114,35 @@ public class NodeCopier {
       setId(toBeEvicted, jetbrains.mps.smodel.SModel.generateUniqueId());
     }
   }
+
   public Map<SNodeId, SNodeId> getState() {
     final Map<SNodeId, SNodeId> state = MapSequence.fromMap(new HashMap<SNodeId, SNodeId>(MapSequence.fromMap(myIdReplacementCache).count()));
-    MapSequence.fromMap(myIdReplacementCache).visitAll(new IVisitor<IMapping<SNodeId, SNodeId>>() {
-      public void visit(IMapping<SNodeId, SNodeId> m) {
-        MapSequence.fromMap(state).put(m.key(), m.value());
-      }
-    });
+    MapSequence.fromMap(myIdReplacementCache).visitAll((m) -> MapSequence.fromMap(state).put(m.key(), m.value()));
     return state;
   }
+
   public void setState(Map<SNodeId, SNodeId> state, SModel model) {
     myIdReplacementCache = state;
     myModel = model;
   }
+
   public boolean hasIdsToRestore() {
-    return Sequence.fromIterable(MapSequence.fromMap(myIdReplacementCache).values()).any(new IWhereFilter<SNodeId>() {
-      public boolean accept(SNodeId id) {
-        return id != null;
-      }
-    });
+    return Sequence.fromIterable(MapSequence.fromMap(myIdReplacementCache).values()).any((id) -> id != null);
+  }
+
+  @Nullable
+  public SNode getNode(SModel model, SNodeId nodeId) {
+    // In case the node ID does not have a corresponding NodeIdChange which has been already applied,
+    // we don't have to check myIdReplacementCache. This is an old behaviour which existed before 
+    // introducing new changes of {@link NodeIdChange} type.
+    if (!(MapSequence.fromMap(myRenamedNodes).containsKey(nodeId))) {
+      return (nodeId == null ? null : model.getNode(nodeId));
+    }
+
+    SNodeId renamedId = MapSequence.fromMap(myRenamedNodes).get(nodeId);
+    // It can happen that a NodeIdChange has new ID which is already present in the model.
+    //  In this case the renamed node will have a new generated ID and thus we have to check myIdReplacementCache.
+    SNodeId renamedOrGeneratedId = (MapSequence.fromMap(myIdReplacementCache).containsKey(renamedId) ? MapSequence.fromMap(myIdReplacementCache).get(renamedId) : renamedId);
+    return model.getNode(renamedOrGeneratedId);
   }
 }

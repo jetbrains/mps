@@ -8,11 +8,9 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
-import jetbrains.mps.errors.BaseQuickFixProvider;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -23,23 +21,11 @@ public class check_ConstructorInvocationStatementHasConstructor_NonTypesystemRul
   }
   public void applyRule(final SNode constructorInvocation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if ((SLinkOperations.getTarget(constructorInvocation, LINKS.baseMethodDeclaration$pyYw) == null)) {
-      SNode referent = constructorInvocation.getReferenceTarget("constructorDeclaration");
-      if (SNodeOperations.isInstanceOf(referent, CONCEPTS.ConstructorDeclaration$yG)) {
-        {
-          final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(constructorInvocation, "no reference to constructor", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1241543946857", null, errorTarget);
-          {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SetConstructorDeclaration_QuickFix", true);
-            intentionProvider.putArgument("constructorInvocation", constructorInvocation);
-            intentionProvider.putArgument("constructorDeclaration", SNodeOperations.cast(referent, CONCEPTS.ConstructorDeclaration$yG));
-            _reporter_2309309498.addIntentionProvider(intentionProvider);
-          }
-        }
-      } else {
-        {
-          final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(constructorInvocation, "no reference to constructor", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1241543921898", null, errorTarget);
-        }
+      // FIXME do we truly need this checking rule for a mandatory link? Although it's specialization, 
+      //      the base one is [1], too
+      {
+        final MessageTarget errorTarget = new NodeMessageTarget();
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(constructorInvocation, "no reference to constructor", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1241543921898", null, errorTarget);
       }
     }
   }
@@ -58,7 +44,6 @@ public class check_ConstructorInvocationStatementHasConstructor_NonTypesystemRul
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConstructorDeclaration$yG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
     /*package*/ static final SConcept ConstructorInvocationStatement$yY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x121119ae5ffL, "jetbrains.mps.baseLanguage.structure.ConstructorInvocationStatement");
   }
 }

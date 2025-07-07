@@ -46,7 +46,7 @@ public class NodeAndDescendantsUsages_Finder extends GeneratedFinder {
       for (SNode child : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, null, false, new SAbstractConcept[]{}))) {
         SetSequence.fromSet(nodes).addElement(child);
       }
-      // 
+      //  
       Set<SReference> resRefs = FindUsagesFacade.getInstance().findUsages(scope, nodes, monitor);
       for (SReference reference : resRefs) {
         SNode snode = ((SNode) reference.getSourceNode());

@@ -21,12 +21,14 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 
 import java.util.Collection;
+import java.util.stream.Stream;
 
 /**
  * This kind of data source describes a location within physical file system.
  * For example it can be a folder or a single file or a set of folders.
  * <p>
- * TODO I would rather have a single implementor of this
+ * TODO I would rather have a single implementor of this, model factory is the point of polymorphism why location is also
+ *        affected (PerRootDataSource for instance)?
  *
  * @author evgeny, apyshkin
  * @since 11/4/12
@@ -49,6 +51,24 @@ public interface FileSystemBasedDataSource extends DataSource, DisposableDataSou
     return getAffectedFiles().stream()
                              .anyMatch(IFile::exists);
   }
+
+  /**
+   * while {@link #getAffectedFiles()} might contain dirs, this method returns all their contents
+   */
+  default Stream<IFile> getAffectedFilesWithDirsExtracted() {
+    return withDirsExtracted(getAffectedFiles().stream());
+  }
+
+  static Stream<IFile> withDirsExtracted(Stream<IFile> files) {
+    return files.flatMap(file -> {
+      if (file.isDirectory()) {
+        return withDirsExtracted(file.getChildren().stream());
+      } else {
+        return Stream.of(file);
+      }
+    });
+  }
+
 
   /**
    * parentFolder must be a directory

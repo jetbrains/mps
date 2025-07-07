@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,24 +17,14 @@ package jetbrains.mps.generator;
 
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.generator.IModifiableGenerationSettings.Listener;
-import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.annotations.Nullable;
 
 public class GenerationSettingsProvider implements CoreComponent {
 
-  private static GenerationSettingsProvider INSTANCE;
-
   private IModifiableGenerationSettings myGenerationSettings;
 
-  /**
-   * @deprecated it's a CoreComponent, use {@link jetbrains.mps.components.ComponentHost#findComponent(Class)} to access proper instance
-   */
-  @Deprecated
-  @ToRemove(version = 2018.2)
-  public static GenerationSettingsProvider getInstance () {
-    return INSTANCE;
-  }
-
-  public void setGenerationSettings(IModifiableGenerationSettings generationSettings) {
+  public void setGenerationSettings(@Nullable IModifiableGenerationSettings generationSettings) {
+    // in fact, no idea why would anyone care to clear settings to null, why not to replace with defaults?
     myGenerationSettings = generationSettings;
   }
 
@@ -65,11 +55,13 @@ public class GenerationSettingsProvider implements CoreComponent {
 
   @Override
   public void init() {
-    INSTANCE = this;
+    // MPS projects that don't have luxury of GenerationSettings persistent component (e.g. those from MPSEnvironment or JPS build)
+    // shall nevertheless access default settings without need to populate this provider first.
+    myGenerationSettings = new DefaultModifiableGenerationSettings();
   }
 
   @Override
   public void dispose() {
-    INSTANCE = null;
+    myGenerationSettings = null;
   }
 }

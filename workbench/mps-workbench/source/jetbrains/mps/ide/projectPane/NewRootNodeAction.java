@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,9 @@ import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.nodefs.NodeVirtualFileSystem;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.SModelInternal;
@@ -52,6 +54,7 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import javax.swing.Icon;
 import java.util.Map;
 
+// FIXME is there true need to extend BaseAction here?
 public class NewRootNodeAction extends BaseAction implements DumbAware {
   private final String myVirtualPackage;
   private final SAbstractConcept myNodeConcept;
@@ -103,7 +106,7 @@ public class NewRootNodeAction extends BaseAction implements DumbAware {
         ((SModelInternal) myModel).addLanguage(l);
       }
       final SNode node = NodeFactoryManager.createNode(myNodeConcept, null, null, myModel);
-      SNodeAccessUtil.setProperty(node, SNodeUtil.property_BaseConcept_virtualPackage, myVirtualPackage);
+      SNodeAccessUtil.setPropertyValue(node, SNodeUtil.property_BaseConcept_virtualPackage, myVirtualPackage);
       myModel.addRootNode(node);
       for (CreateNodeExtension ext : CreateRootFilterEP.getInstance().getCreateNodeExtensions()) {
         if (ext.isApplicable(myModel)) {
@@ -113,10 +116,9 @@ public class NewRootNodeAction extends BaseAction implements DumbAware {
 
       modelAccess.runWriteInEDT(() -> {
         if (!trySelectInCurrentPane(myProject, node)) {
-          NavigationSupport.getInstance().selectInTree(myProject, node, false);
+          new ProjectPaneNavigator(myProject).shallFocus(false).select(node.getReference());
         }
-
-        NavigationSupport.getInstance().openNode(myProject, node, true, false);
+        new EditorNavigator(myProject).shallFocus(true).open(node.getReference());
       });
     });
   }

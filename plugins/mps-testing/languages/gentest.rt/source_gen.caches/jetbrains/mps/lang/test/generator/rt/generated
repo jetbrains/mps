@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="7zhwaj0lh5vnmrykufxwol4spfloodp">
-  <files names="BaseGeneratorTest.java:TransformHelper.java" />
+<product version="3" modelHash="4gpai0hhfsawi75gvj1tmvvdfjvxvdv">
+  <files names="BaseGeneratorTest.java:GeneratorTestDiscoveryParticipants.java:MatchOptions.java:ModelAssert.java:ModelMatcher.java:ModuleActivator.java:TransformHelper.java" />
 </product>
 

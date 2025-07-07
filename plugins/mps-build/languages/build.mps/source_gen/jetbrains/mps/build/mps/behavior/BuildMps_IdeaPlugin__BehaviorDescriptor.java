@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -24,8 +23,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class BuildMps_IdeaPlugin__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPlugin");
 
-  public static final SMethod<Boolean> isValidPart_id7XQqoCTkVIS = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValidPart").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7XQqoCTkVIS").build(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(SContainmentLink.class, ""));
-  /*package*/ static final SMethod<SNode> getProject_id13YBgBBSCja = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getProject").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("13YBgBBSCja").build();
+  public static final SMethod<Boolean> isValidPart_id7XQqoCTkVIS = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValidPart").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9184644532456897464L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(SContainmentLink.class, ""));
+  /*package*/ static final SMethod<SNode> getProject_id13YBgBBSCja = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getProject").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1224588814562002122L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isValidPart_id7XQqoCTkVIS, getProject_id13YBgBBSCja);
 
@@ -33,11 +32,11 @@ public final class BuildMps_IdeaPlugin__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static boolean isValidPart_id7XQqoCTkVIS(@NotNull SNode __thisNode__, String propertyValue, SContainmentLink role) {
-    // todo [MM] remove after 3.5. This check is needed as there was a string here and I'm not sure the 
-    // BuildLayout_NC.containerName wasn't expected here 
+    // todo [MM] remove after 3.5. This check is needed as there was a string here and I'm not sure the
+    // BuildLayout_NC.containerName wasn't expected here
     assert !(LINKS.containerName$ES_Y.equals(role)) : "If this exception happens, change BuildMps_IdeaPlugin.isValidPart()-considered concepts";
     if (LINKS.containerName$xQbG.equals(role)) {
-      return !((propertyValue.contains("$") || propertyValue.contains("/") || propertyValue.contains("\\")));
+      return !(propertyValue.contains("$") || propertyValue.contains("/") || propertyValue.contains("\\"));
     }
     return !(propertyValue.contains("$"));
   }

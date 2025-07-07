@@ -9,6 +9,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.project.AbstractModule;
@@ -33,11 +34,12 @@ public class Migration_Queries {
       lang.setLanguageVersion(currentVersion + 1);
     }
 
-    // XXX this reference is vital only at design time, to facilitate code like this.getReference() inside Migration code (see fea36a37).  
-    // Migration classes get generated with extends to MigrationScriptBase (which has own getReference() method, unrelated to one in HasMigrationScriptReference) 
-    // Therefore, it's ok to keep this class in accessory model with no code generated for it. 
-    //  OTOH, no idea why not honest MigrationScriptBase as superclass here 
-    SLinkOperations.setPointer(SLinkOperations.setNewChild(c, LINKS.superclass$Mp9$, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("90746344-04fd-4286-97d5-b46ae6a81709/r:52a3d974-bd4f-4651-ba6e-a2de5e336d95(jetbrains.mps.lang.migration/jetbrains.mps.lang.migration.methods)", "6807933448469658100"));
+    // XXX this reference is vital only at design time, to facilitate code like this.getReference() inside Migration code (see fea36a37). 
+    // Migration classes get generated with extends to MigrationScriptBase (which has own getReference() method, unrelated to one in HasMigrationScriptReference)
+    // Therefore, it's ok to keep this class in accessory model with no code generated for it.
+    //  OTOH, no idea why not honest MigrationScriptBase as superclass here
+    SNode setNew = SLinkOperations.setNewChild(c, LINKS.superclass$Mp9$, CONCEPTS.ClassifierType$bL);
+    SLinkOperations.setTarget(setNew, LINKS.classifier$cxMr, SPointerOperations.resolveNode(new SNodePointer("90746344-04fd-4286-97d5-b46ae6a81709/r:52a3d974-bd4f-4651-ba6e-a2de5e336d95(jetbrains.mps.lang.migration/jetbrains.mps.lang.migration.methods)", "6807933448469658100"), futureModel.getRepository()));
 
     ModelImports m = new ModelImports(futureModel);
     AbstractModule mod = (AbstractModule) module;
@@ -51,8 +53,8 @@ public class Migration_Queries {
   }
   public static SNode execute_ret(SNode point) {
     SNode typeNode = IMigrationUnit__BehaviorDescriptor.getProducedData_id7s$_UJMVDH8.invoke(SNodeOperations.getNodeAncestor(point, CONCEPTS.MigrationScript$KN, false, false));
-    // XXX can not use quotations here as the class is generated through reference from another model and therefore no proper generation plan could 
-    // get created for the model with reference origin; lang.quotation jumps in sooner than the reference is unwind, generation fails due to quotations not being transformed.  
+    // XXX can not use quotations here as the class is generated through reference from another model and therefore no proper generation plan could
+    // get created for the model with reference origin; lang.quotation jumps in sooner than the reference is unwind, generation fails due to quotations not being transformed. 
     if (typeNode == null) {
       return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType"));
     }

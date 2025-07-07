@@ -2,9 +2,9 @@
 <model ref="r:714e1a8b-f5ef-43ca-864f-d3aa5fa2e53e(jetbrains.mps.idea.java.fastFind)">
   <persistence version="9" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
   </languages>
   <imports>
@@ -13,24 +13,21 @@
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" />
     <import index="mies" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.persistence.java.library(MPS.Core/)" />
-    <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
-    <import index="mhbf" ref="~mps-openapi/java:org.jetbrains.mps.openapi.model(mps-openapi/)" />
-    <import index="dush" ref="~mps-openapi/java:org.jetbrains.mps.openapi.persistence(mps-openapi/)" />
-    <import index="yyf4" ref="~mps-openapi/java:org.jetbrains.mps.openapi.util(mps-openapi/)" />
+    <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
+    <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
+    <import index="yyf4" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.util(MPS.OpenAPI/)" />
     <import index="alof" ref="~mps-platform/java:jetbrains.mps.ide.project(mps-platform/)" />
-    <import index="lui2" ref="~mps-openapi/java:org.jetbrains.mps.openapi.module(mps-openapi/)" />
-    <import index="pa15" ref="~mps-core/java:jetbrains.mps.persistence(mps-core/)" />
+    <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="dj18" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.psi(MPS.IDEA/)" />
     <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
     <import index="dj19" ref="~ideaJavaPlugin/java:com.intellij.psi(ideaJavaPlugin/)" />
     <import index="fpru" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.psi.search(MPS.IDEA/)" />
-    <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" />
-    <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="3a50" ref="~mps-platform/java:jetbrains.mps.ide(mps-platform/)" />
     <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" />
-    <import index="wyuk" ref="~mps-core/java:jetbrains.mps.components(mps-core/)" implicit="true" />
+    <import index="pa15" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.persistence(MPS.Core/)" />
+    <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)"/>
     <import index="pj7v" ref="~ideaJavaPlugin/java:com.intellij.lang.jvm(ideaJavaPlugin/)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
     <import index="tci" ref="c1969cf6-0de2-4f84-9a6b-4019c52c438c/java:jetbrains.mps.idea.core.refactoring(mps-core/)" implicit="true" />
@@ -47,7 +44,7 @@
         <child id="1068498886295" name="lValue" index="37vLTJ" />
       </concept>
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
-      <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
+      <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
@@ -241,10 +238,10 @@
       </concept>
     </language>
     <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
-      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
         <property id="155656958578482949" name="value" index="3oM_SC" />
       </concept>
-      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="nn" index="1PaTwC">
         <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
@@ -261,66 +258,21 @@
   </registry>
   <node concept="312cEu" id="2Ta7012aTYd">
     <property role="TrG5h" value="JavaPsiStubsNavigationContributor" />
-    <node concept="312cEg" id="1dTqVP$EzC8" role="jymVt">
-      <property role="TrG5h" value="myRegistry" />
-      <node concept="3Tm6S6" id="1dTqVP$EzC9" role="1B3o_S" />
-      <node concept="3uibUv" id="1dTqVP$EzCa" role="1tU5fm">
-        <ref role="3uigEE" to="pa15:~PersistenceRegistry" resolve="PersistenceRegistry" />
-      </node>
-    </node>
     <node concept="2tJIrI" id="1dTqVP$EzCb" role="jymVt" />
     <node concept="3clFbW" id="1dTqVP$EzCc" role="jymVt">
       <node concept="3cqZAl" id="1dTqVP$EzCd" role="3clF45" />
       <node concept="3Tm1VV" id="1dTqVP$EzCe" role="1B3o_S" />
-      <node concept="3clFbS" id="1dTqVP$EzCf" role="3clF47">
-        <node concept="3clFbF" id="1dTqVP$EzCg" role="3cqZAp">
-          <node concept="37vLTI" id="1dTqVP$EzCh" role="3clFbG">
-            <node concept="2OqwBi" id="1dTqVP$EzCi" role="37vLTx">
-              <node concept="2OqwBi" id="1dTqVP$EzCj" role="2Oq$k0">
-                <node concept="37vLTw" id="1dTqVP$EzCk" role="2Oq$k0">
-                  <ref role="3cqZAo" node="1dTqVP$EzCp" resolve="mpsCore" />
-                </node>
-                <node concept="liA8E" id="1dTqVP$EzCl" role="2OqNvi">
-                  <ref role="37wK5l" to="3a50:~MPSCoreComponents.getPlatform()" resolve="getPlatform" />
-                </node>
-              </node>
-              <node concept="liA8E" id="1dTqVP$EzCm" role="2OqNvi">
-                <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
-                <node concept="3VsKOn" id="1dTqVP$EzCn" role="37wK5m">
-                  <ref role="3VsUkX" to="pa15:~PersistenceRegistry" resolve="PersistenceRegistry" />
-                </node>
-              </node>
-            </node>
-            <node concept="37vLTw" id="1dTqVP$EzCo" role="37vLTJ">
-              <ref role="3cqZAo" node="1dTqVP$EzC8" resolve="myRegistry" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="76R7UQw_goz" role="3cqZAp">
-          <node concept="2OqwBi" id="76R7UQw_gzQ" role="3clFbG">
-            <node concept="37vLTw" id="1dTqVP$E$HV" role="2Oq$k0">
-              <ref role="3cqZAo" node="1dTqVP$EzC8" resolve="myRegistry" />
-            </node>
-            <node concept="liA8E" id="76R7UQw_gJ$" role="2OqNvi">
-              <ref role="37wK5l" to="pa15:~PersistenceRegistry.addNavigationParticipant(org.jetbrains.mps.openapi.persistence.NavigationParticipant)" resolve="addNavigationParticipant" />
-              <node concept="Xjq3P" id="2Ta70126ykG" role="37wK5m" />
-            </node>
-          </node>
-        </node>
-      </node>
+      <node concept="3clFbS" id="1dTqVP$EzCf" role="3clF47" />
       <node concept="37vLTG" id="1dTqVP$EzCp" role="3clF46">
-        <property role="TrG5h" value="mpsCore" />
+        <property role="TrG5h" value="ideaProject" />
         <node concept="3uibUv" id="1dTqVP$EzCq" role="1tU5fm">
-          <ref role="3uigEE" to="3a50:~MPSCoreComponents" resolve="MPSCoreComponents" />
+          <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
         </node>
       </node>
     </node>
     <node concept="2tJIrI" id="1dTqVP$ExJl" role="jymVt" />
     <node concept="3uibUv" id="3if7C7H0amQ" role="EKbjA">
       <ref role="3uigEE" to="dush:~NavigationParticipant" resolve="NavigationParticipant" />
-    </node>
-    <node concept="3uibUv" id="5R7QTjJnOZo" role="EKbjA">
-      <ref role="3uigEE" to="v23q:~Disposable" resolve="Disposable" />
     </node>
     <node concept="3Tm1VV" id="2Ta7012aTYe" role="1B3o_S" />
     <node concept="3clFb_" id="1Vl7VfkwdcO" role="jymVt">
@@ -661,28 +613,6 @@
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="70axKu6v6El" role="jymVt" />
-    <node concept="3clFb_" id="70axKu6v7cA" role="jymVt">
-      <property role="TrG5h" value="dispose" />
-      <node concept="3Tm1VV" id="70axKu6v7cB" role="1B3o_S" />
-      <node concept="3cqZAl" id="70axKu6v7cD" role="3clF45" />
-      <node concept="3clFbS" id="70axKu6v7cE" role="3clF47">
-        <node concept="3clFbF" id="76R7UQw_h1J" role="3cqZAp">
-          <node concept="2OqwBi" id="76R7UQw_hdj" role="3clFbG">
-            <node concept="37vLTw" id="1dTqVP$E$Xc" role="2Oq$k0">
-              <ref role="3cqZAo" node="1dTqVP$EzC8" resolve="myRegistry" />
-            </node>
-            <node concept="liA8E" id="76R7UQw_hz2" role="2OqNvi">
-              <ref role="37wK5l" to="pa15:~PersistenceRegistry.removeNavigationParticipant(org.jetbrains.mps.openapi.persistence.NavigationParticipant)" resolve="removeNavigationParticipant" />
-              <node concept="Xjq3P" id="7QMmk2IQxri" role="37wK5m" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="70axKu6v7cF" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
   </node>
   <node concept="312cEu" id="16bZt0jec8P">
     <property role="TrG5h" value="ClassStubPsiMapper" />
@@ -982,7 +912,7 @@
                         <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object):boolean" resolve="equals" />
                         <node concept="2OqwBi" id="1AYiyvlqDEj" role="37wK5m">
                           <node concept="liA8E" id="7SLi_qlLXnI" role="2OqNvi">
-                            <ref role="37wK5l" to="pj7v:~JvmMember.getName()" resolve="getName" />
+                            <ref role="37wK5l" to="dj19:~PsiField.getName()" resolve="getName" />
                           </node>
                           <node concept="2GrUjf" id="1AYiyvlqCY0" role="2Oq$k0">
                             <ref role="2Gs0qQ" node="1AYiyvlqwj1" resolve="field" />
@@ -1195,8 +1125,9 @@
           <node concept="37vLTI" id="2ZTHkJGLX98" role="3clFbG">
             <node concept="2OqwBi" id="2ZTHkJGLXXI" role="37vLTx">
               <node concept="2OqwBi" id="2ZTHkJGLXxx" role="2Oq$k0">
-                <node concept="37vLTw" id="2ZTHkJGLXor" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2ZTHkJGLSBb" resolve="mpsCore" />
+                <node concept="2YIFZM" id="2ZTHkJGLXor" role="2Oq$k0">
+                  <ref role="37wK5l" to="3a50:~MPSCoreComponents.getInstance()" resolve="getInstance" />
+                  <ref role="1Pybhc" to="3a50:~MPSCoreComponents" resolve="MPSCoreComponents" />
                 </node>
                 <node concept="liA8E" id="2ZTHkJGLXL9" role="2OqNvi">
                   <ref role="37wK5l" to="3a50:~MPSCoreComponents.getPlatform()" resolve="getPlatform" />
@@ -1226,15 +1157,9 @@
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="2ZTHkJGLSBb" role="3clF46">
-        <property role="TrG5h" value="mpsCore" />
-        <node concept="3uibUv" id="2ZTHkJGLSBa" role="1tU5fm">
-          <ref role="3uigEE" to="3a50:~MPSCoreComponents" resolve="MPSCoreComponents" />
-        </node>
-      </node>
     </node>
     <node concept="2tJIrI" id="2ZTHkJGLPwd" role="jymVt" />
-    <node concept="3uibUv" id="2gqezBWa_2l" role="EKbjA">
+    <node concept="3uibUv" id="5$4I2RcLBIy" role="EKbjA">
       <ref role="3uigEE" to="dush:~FindUsagesParticipant" resolve="FindUsagesParticipant" />
     </node>
     <node concept="3uibUv" id="5R7QTjJnPhY" role="EKbjA">
@@ -1577,7 +1502,7 @@
               <ref role="3cqZAo" node="2ZTHkJGLVHw" resolve="myRegistry" />
             </node>
             <node concept="liA8E" id="77V35QMLte5" role="2OqNvi">
-              <ref role="37wK5l" to="pa15:~PersistenceRegistry.removeFindUsagesParticipant(org.jetbrains.mps.openapi.persistence.FindUsagesParticipant):void" resolve="removeFindUsagesParticipant" />
+              <ref role="37wK5l" to="pa15:~PersistenceRegistry.removeFindUsagesParticipant(org.jetbrains.mps.openapi.persistence.FindUsagesParticipant)" resolve="removeFindUsagesParticipant" />
               <node concept="Xjq3P" id="77V35QMLte6" role="37wK5m" />
             </node>
           </node>

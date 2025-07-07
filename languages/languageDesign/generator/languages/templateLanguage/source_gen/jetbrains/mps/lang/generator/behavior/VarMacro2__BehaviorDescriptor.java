@@ -9,12 +9,14 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
 import jetbrains.mps.scope.CompositeScope;
 import jetbrains.mps.lang.scopes.runtime.ScopeUtils;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
@@ -22,12 +24,14 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class VarMacro2__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b7eL, "jetbrains.mps.lang.generator.structure.VarMacro2");
 
-  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$);
 
@@ -35,6 +39,11 @@ public final class VarMacro2__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
+    // FWIW, there's a hole in TemplateQueryBase scope boundary to facilitate var references from within queries
+    if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.VarDeclaration$$D))) {
+      return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$aq, kind, child);
+    }
+    // FIXME can't use compose with as GenPlan for behaviors doesn't respect lang.scope language!!
     return new CompositeScope(ScopeUtils.parentScope(__thisNode__, kind), new NamedElementsScope(SLinkOperations.getChildren(__thisNode__, LINKS.variables$Eqmf)));
   }
 
@@ -82,6 +91,11 @@ public final class VarMacro2__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept ScopeProvider$aq = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L, "jetbrains.mps.lang.core.structure.ScopeProvider");
+    /*package*/ static final SConcept VarDeclaration$$D = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, "jetbrains.mps.lang.generator.structure.VarDeclaration");
   }
 
   private static final class LINKS {

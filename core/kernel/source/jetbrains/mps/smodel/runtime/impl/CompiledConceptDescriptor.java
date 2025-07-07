@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import jetbrains.mps.smodel.adapter.ids.SContainmentLinkId;
 import jetbrains.mps.smodel.adapter.ids.SPropertyId;
 import jetbrains.mps.smodel.adapter.ids.SReferenceLinkId;
 import jetbrains.mps.smodel.language.ConceptRegistry;
+import jetbrains.mps.smodel.language.StructureRegistry;
 import jetbrains.mps.smodel.runtime.ConceptDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptKind;
 import jetbrains.mps.smodel.runtime.LinkDescriptor;
@@ -166,8 +167,8 @@ public final class CompiledConceptDescriptor implements ConceptDescriptor {
 
       initAncestors(parentDescriptors);
       initPropertyNames(parentDescriptors);
-      initReferenceNames(parentDescriptors);
-      initChildNames(parentDescriptors);
+      initAssociations(parentDescriptors);
+      initAggregations(parentDescriptors);
       myInitialized = true;
     }
   }
@@ -197,11 +198,15 @@ public final class CompiledConceptDescriptor implements ConceptDescriptor {
     properties = Collections.unmodifiableMap(propsMap);
   }
 
-  private void initReferenceNames(List<ConceptDescriptor> parentDescriptors) {
+  private void initAssociations(List<ConceptDescriptor> parentDescriptors) {
     assert !myInitialized;
 
     Map<SReferenceLinkId, ReferenceDescriptor> refsMap = new LinkedHashMap<>();
     for (ReferenceDescriptor r : myOwnReferences) {
+      if (r.getSpecializedLink() != null) {
+        // ignore specialized links for now
+        continue;
+      }
       refsMap.put(r.getId(), r);
     }
     for (ConceptDescriptor parentDescriptor : parentDescriptors) {
@@ -212,12 +217,16 @@ public final class CompiledConceptDescriptor implements ConceptDescriptor {
     references = Collections.unmodifiableMap(refsMap);
   }
 
-  private void initChildNames(List<ConceptDescriptor> parentDescriptors) {
+  private void initAggregations(List<ConceptDescriptor> parentDescriptors) {
     assert !myInitialized;
 
     //ids
     Map<SContainmentLinkId, LinkDescriptor> linksMap = new LinkedHashMap<>();
     for (LinkDescriptor r : myOwnLinks) {
+      if (r.getSpecializedLink() != null) {
+        // ignore specialized links for now
+        continue;
+      }
       linksMap.put(r.getId(), r);
     }
     for (ConceptDescriptor parentDescriptor : parentDescriptors) {
@@ -354,5 +363,93 @@ public final class CompiledConceptDescriptor implements ConceptDescriptor {
   @Override
   public boolean isAssignableTo(SConceptId conceptId) {
     return getAncestorsIds().contains(conceptId);
+  }
+
+  /*
+   * Three concepts, each with a link declaration. C3 extends C2, C2 extends C1. (C1.ld1), (C2.ld2) and (C3.ld3)
+   * Case 1, transitive:
+   *   ld3 specializes ld2, ld2 specialize ld1.
+   * Case 2, two overrides for same base link:
+   *   ld3 specializes ld1, ld2 specializes ld1.
+   * Case 3, super-concept specialize, sub-concept shall respect the one of super-concept
+   *  ld2 specialize ld1, targetOf(C3.ld1) shall give targetOf(ld2)
+   */
+  @Override
+  public SConceptId getMostSpecificLinkTarget(StructureRegistry registry, @NotNull SReferenceLinkId genuine) {
+    assert getRefDescriptor(genuine) != null : "association link not from concept hierarchy";
+    for (ReferenceDescriptor rd : myOwnReferences) {
+      if (rd.getSpecializedLink() == null) {
+        continue;
+      }
+      if (genuine.equals(rd.getSpecializedLink())) {
+        return rd.getTargetConcept();
+      }
+      final SConceptId ancestor = rd.getSpecializedLink().getConceptId();
+      assert getAncestorsIds().contains(ancestor) : "specialized link belongs to a concept not from my hierarchy";
+      final ConceptDescriptor acd = registry.getConceptDescriptor(ancestor);
+      if (acd.getRefDescriptor(genuine) == null) {
+        // rd specifies some other link than submitted 'genuine'
+        continue;
+      }
+      final SConceptId transitive = acd.getMostSpecificLinkTarget(registry, genuine);
+      if (transitive != null) {
+        // Assumption is there could be no 2 specifications for the same link, if we find any link in hierarchy that specialize
+        // supplied 'genuine', use it right away
+        return transitive;
+      }
+      // try next link specification, if any.
+    }
+    for (SConceptId p : getParentsIds()) {
+      final ConceptDescriptor pcd = registry.getConceptDescriptor(p);
+      if (pcd.getRefDescriptor(genuine) == null) {
+        // this particular parent doesn't come with the link
+        continue;
+      }
+      final SConceptId cid = pcd.getMostSpecificLinkTarget(registry, genuine);
+      if (cid != null) {
+        return cid;
+      }
+    }
+    // well, neither we nor our parents know anything about specifications for the link
+    return null;
+  }
+
+  @Override
+  public SConceptId getMostSpecificLinkTarget(StructureRegistry registry, @NotNull SContainmentLinkId genuine) {
+    assert getLinkDescriptor(genuine) != null : "aggregation link not from concept hierarchy";
+    for (LinkDescriptor rd : myOwnLinks) {
+      if (rd.getSpecializedLink() == null) {
+        continue;
+      }
+      if (genuine.equals(rd.getSpecializedLink())) {
+        return rd.getTargetConcept();
+      }
+      final SConceptId ancestor = rd.getSpecializedLink().getConceptId();
+      assert getAncestorsIds().contains(ancestor) : "specialized link belongs to a concept not from my hierarchy";
+      final ConceptDescriptor acd = registry.getConceptDescriptor(ancestor);
+      if (acd.getLinkDescriptor(genuine) == null) {
+        // rd specifies some other link than submitted 'genuine'
+        continue;
+      }
+      final SConceptId transitive = acd.getMostSpecificLinkTarget(registry, genuine);
+      if (transitive != null) {
+        // Assumption is there could be no 2 specifications for the same link, if we find any link in hierarchy that specialize
+        // supplied 'genuine', use it right away
+        return transitive;
+      }
+      // try next link specification, if any.
+    }
+    for (SConceptId p : getParentsIds()) {
+      final ConceptDescriptor pcd = registry.getConceptDescriptor(p);
+      if (pcd.getLinkDescriptor(genuine) == null) {
+        // this particular parent doesn't come with the link
+        continue;
+      }
+      final SConceptId cid = registry.getConceptDescriptor(p).getMostSpecificLinkTarget(registry, genuine);
+      if (cid != null) {
+        return cid;
+      }
+    }
+    return null;
   }
 }

@@ -4,30 +4,25 @@ package jetbrains.mps.refactoringTest;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ExtractMethodFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class BreakStatement_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(BreakStatement_Test.class, "${mps_home}", "r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(BreakStatement_Test.class).projectPath(null).modelRef("r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)").reopenProject(null).build());
 
   public BreakStatement_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -53,23 +48,27 @@ public class BreakStatement_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_noBreaks() throws Exception {
-      addNodeById("1230052480264");
-      Assert.assertNull(ExtractMethodFactory.getErrors(ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("1230052480270"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfaa4bf0f2fL, "WhileStatement"))))));
-    }
-    public void test_oneBreak() throws Exception {
-      addNodeById("1230052480264");
-      Assert.assertNull(ExtractMethodFactory.getErrors(ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("1230052480275"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b217L, "IfStatement"))))));
-    }
-    public void test_oneContionue() throws Exception {
-      addNodeById("1230052480264");
-      Assert.assertNull(ExtractMethodFactory.getErrors(ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("1230052480282"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b217L, "IfStatement"))))));
-    }
-    public void test_breakAndContinue() throws Exception {
-      addNodeById("1230052480264");
-      Assert.assertTrue(ExtractMethodFactory.getErrors(ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("1230052480275"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b217L, "IfStatement"))), SNodeOperations.cast(getNodeById("1230052480282"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b217L, "IfStatement"))))) != null);
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052480264");
     }
 
+    public void test_noBreaks() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> Assert.assertNull(ExtractMethodFactory.getErrors(ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("l1")))));
+    }
+    public void test_oneBreak() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> Assert.assertNull(ExtractMethodFactory.getErrors(ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("l2")))));
+    }
+    public void test_oneContionue() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> Assert.assertNull(ExtractMethodFactory.getErrors(ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("l3")))));
+    }
+    public void test_breakAndContinue() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> Assert.assertTrue(ExtractMethodFactory.getErrors(ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("l2"), getAnnotatedNode("l3"))) != null));
+    }
 
   }
 }

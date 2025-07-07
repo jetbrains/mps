@@ -7,13 +7,13 @@ import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.modelapi.behavior.ModelIdentity__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.lang.modelapi.behavior.ModelIdentity__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -23,23 +23,16 @@ public class check_ShowGenPlan_NonTypesystemRule extends AbstractNonTypesystemRu
   public check_ShowGenPlan_NonTypesystemRule() {
   }
   public void applyRule(final SNode showGenPlan, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(showGenPlan, LINKS.targetModelOld$vCw2) != null)) {
-      {
-        final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(showGenPlan, LINKS.targetModelOld$vCw2), "Use of deprecated model specification", "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "5213660723432954034", null, errorTarget);
-      }
+    final SModel model;
+    if (SLinkOperations.getTarget(showGenPlan, LINKS.targetModel$AZJC) != null && ModelIdentity__BehaviorDescriptor.toModelReference_id1Bs_61$mvvu.invoke(SLinkOperations.getTarget(showGenPlan, LINKS.targetModel$AZJC)) != null) {
+      model = ModelIdentity__BehaviorDescriptor.toModelReference_id1Bs_61$mvvu.invoke(SLinkOperations.getTarget(showGenPlan, LINKS.targetModel$AZJC)).resolve(SNodeOperations.getModel(showGenPlan).getRepository());
     } else {
-      final SModel model;
-      if (SLinkOperations.getTarget(showGenPlan, LINKS.targetModel$AZJC) != null && ModelIdentity__BehaviorDescriptor.toModelReference_id1Bs_61$mvvu.invoke(SLinkOperations.getTarget(showGenPlan, LINKS.targetModel$AZJC)) != null) {
-        model = ModelIdentity__BehaviorDescriptor.toModelReference_id1Bs_61$mvvu.invoke(SLinkOperations.getTarget(showGenPlan, LINKS.targetModel$AZJC)).resolve(SNodeOperations.getModel(showGenPlan).getRepository());
-      } else {
-        model = null;
-      }
-      if (model != null) {
-        if (!(jetbrains.mps.util.SNodeOperations.isGeneratable(model))) {
-          final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(showGenPlan, LINKS.targetModel$AZJC), "model should be generatable", "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "9053534423438583802", null, errorTarget);
-        }
+      model = null;
+    }
+    if (model != null) {
+      if (!(jetbrains.mps.util.SNodeOperations.isGeneratable(model))) {
+        final MessageTarget errorTarget = new NodeMessageTarget();
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(showGenPlan, LINKS.targetModel$AZJC), "model should be generatable", "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "9053534423438583802", null, errorTarget);
       }
     }
   }
@@ -54,7 +47,6 @@ public class check_ShowGenPlan_NonTypesystemRule extends AbstractNonTypesystemRu
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink targetModelOld$vCw2 = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, 0x61f2dd6de47f867aL, "targetModelOld");
     /*package*/ static final SContainmentLink targetModel$AZJC = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, 0x70ee8fac615b4f33L, "targetModel");
   }
 

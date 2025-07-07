@@ -52,9 +52,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForDecisionTable() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("org.jetbrains.mps.samples.DecisionTable", "DecisionTable", 0x65c13e6709b64695L, 0xaf8852024b7d2027L, 0x1b942309931b1581L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.Expression", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL);
+    // extends: jetbrains.mps.baseLanguage.structure.Expression
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL);
     b.origin("r:885978b0-baca-4eda-8c29-d1384945a64e(org.jetbrains.mps.samples.DecisionTable.structure)/1987251859606934913");
-    b.version(2);
+    b.version(3);
     b.aggregate("expectedType", 0x1b942309931b1582L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL).optional(false).ordered(true).multiple(false).origin("1987251859606934914").done();
     b.aggregate("defaultValue", 0x1b942309931b1583L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1987251859606934915").done();
     b.aggregate("colHeaders", 0x1b942309931b1584L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(true).origin("1987251859606934916").done();

@@ -27,7 +27,7 @@ public class check_PrimitiveClassExpression_NonTypesystemRule extends AbstractNo
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(primitiveClassExpression, "Primitive type expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1587149463190641827", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.FixPrimitiveClassExpressionNotOnPrimitiveType_QuickFix", true);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.FixPrimitiveClassExpressionNotOnPrimitiveType_QuickFix", "1587149463190800046", true);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }

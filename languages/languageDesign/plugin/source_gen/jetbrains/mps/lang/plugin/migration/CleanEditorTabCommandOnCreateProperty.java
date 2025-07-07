@@ -10,7 +10,6 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -34,19 +33,11 @@ public class CleanEditorTabCommandOnCreateProperty extends MigrationScriptBase {
     {
       SearchScope scope_khohta_a0e = CommandUtil.createScope(m);
       final SearchScope scope_khohta_a0e_0 = new EditableFilteringScope(scope_khohta_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_khohta_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EditorTab$zO, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SPropertyOperations.remove(it, PROPS.commandOnCreate$B0K$);
-        }
-      });
+      QueryExecutionContext context = () -> scope_khohta_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EditorTab$zO, false)).visitAll((it) -> SPropertyOperations.remove(it, PROPS.commandOnCreate$B0K$));
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, "jetbrains.mps.lang.plugin"), 3);
   }
 

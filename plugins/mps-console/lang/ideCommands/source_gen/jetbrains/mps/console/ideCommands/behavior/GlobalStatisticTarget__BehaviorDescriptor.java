@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.console.tool.ConsoleContext;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -24,8 +23,6 @@ import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -34,8 +31,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class GlobalStatisticTarget__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x67f2bafb7a579cb8L, "jetbrains.mps.console.ideCommands.structure.GlobalStatisticTarget");
 
-  public static final SMethod<Iterable<Tuples._2<String, Integer>>> getStat_id6vMIJHUBlVT = new SMethodBuilder<Iterable<Tuples._2<String, Integer>>>(new SJavaCompoundTypeImpl((Class<Iterable<Tuples._2<String, Integer>>>) ((Class) Object.class))).name("getStat").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6vMIJHUBlVT").build(SMethodBuilder.createJavaParameter(ConsoleContext.class, ""));
-  public static final SMethod<Iterable<SNode>> getNodes_id4x3U0fq41hN = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getNodes").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4x3U0fq41hN").build(SMethodBuilder.createJavaParameter(ConsoleContext.class, ""));
+  public static final SMethod<Iterable<Tuples._2<String, Integer>>> getStat_id6vMIJHUBlVT = new SMethodBuilder<Iterable<Tuples._2<String, Integer>>>(new SJavaCompoundTypeImpl((Class<Iterable<Tuples._2<String, Integer>>>) ((Class) Object.class))).name("getStat").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7490254719527247609L).languageId(0xaab368fdf1c34ed0L, 0xa5e4de5346a344daL).build2(SMethodBuilder.createJavaParameter(ConsoleContext.class, ""));
+  public static final SMethod<Iterable<SNode>> getNodes_id4x3U0fq41hN = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getNodes").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5207260697411458163L).languageId(0xaab368fdf1c34ed0L, 0xa5e4de5346a344daL).build2(SMethodBuilder.createJavaParameter(ConsoleContext.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getStat_id6vMIJHUBlVT, getNodes_id4x3U0fq41hN);
 
@@ -53,15 +50,7 @@ public final class GlobalStatisticTarget__BehaviorDescriptor extends BaseBHDescr
   }
   /*package*/ static Iterable<SNode> getNodes_id4x3U0fq41hN(@NotNull SNode __thisNode__, ConsoleContext c) {
     Iterable<SModule> modules = c.getProject().getRepository().getModules();
-    return Sequence.fromIterable(modules).translate(new ITranslator2<SModule, SModel>() {
-      public Iterable<SModel> translate(SModule it) {
-        return it.getModels();
-      }
-    }).translate(new ITranslator2<SModel, SNode>() {
-      public Iterable<SNode> translate(SModel it) {
-        return SNodeUtil.getDescendants(it);
-      }
-    });
+    return Sequence.fromIterable(modules).translate((it) -> it.getModels()).translate((it) -> SNodeUtil.getDescendants(it));
   }
 
   /*package*/ GlobalStatisticTarget__BehaviorDescriptor() {

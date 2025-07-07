@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import javax.swing.JComponent;
 
-@GeneratedClass(node = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)/3908032508224771217", model = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)")
+@GeneratedClass(nodeId = "3908032508224771217", model = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)")
 public class DefaultExecutionConsole implements ExecutionConsole {
   @Nullable
   private final _FunctionTypes._void_P0_E0 myDispose;

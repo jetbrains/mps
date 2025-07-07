@@ -12,8 +12,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -42,23 +40,11 @@ public final class wrappers_PasteWrapper_15 implements PasteWrapper {
     ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.throwsItem$CdW$)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(sourceNode, LINKS.throwsItem$CdW$)));
     ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.typeVariableDeclaration$Lipp)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(sourceNode, LINKS.typeVariableDeclaration$Lipp)));
     SLinkOperations.setTarget(SNodeOperations.cast(method, CONCEPTS.IVisible$zu), LINKS.visibility$Yyua, (SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.IVisible$zu) ? SLinkOperations.getTarget(SNodeOperations.cast(sourceNode, CONCEPTS.IVisible$zu), LINKS.visibility$Yyua) : SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility"))));
-    // [MM] what about supers? 
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(method, LINKS.body$5xQk), CONCEPTS.ThisNodeExpression$v1, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNodeOperations.replaceWithNewChild(it, CONCEPTS.ThisClassifierExpression$xB);
-      }
-    });
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(method, LINKS.body$5xQk), CONCEPTS.ThisConceptExpression$KM, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNodeOperations.replaceWithNewChild(it, CONCEPTS.ThisClassifierExpression$xB);
-      }
-    });
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(method, LINKS.body$5xQk), CONCEPTS.ThisExpression$$o, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNodeOperations.replaceWithNewChild(it, CONCEPTS.ThisClassifierExpression$xB);
-      }
-    });
-    AttributeOperations.setAttribute(method, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI), AttributeOperations.getAttribute(sourceNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)));
+    // [MM] what about supers?
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(method, LINKS.body$5xQk), CONCEPTS.ThisNodeExpression$v1, false, new SAbstractConcept[]{})).visitAll((it) -> SNodeOperations.replaceWithNewChild(it, CONCEPTS.ThisClassifierExpression$xB));
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(method, LINKS.body$5xQk), CONCEPTS.ThisConceptExpression$KM, false, new SAbstractConcept[]{})).visitAll((it) -> SNodeOperations.replaceWithNewChild(it, CONCEPTS.ThisClassifierExpression$xB));
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(method, LINKS.body$5xQk), CONCEPTS.ThisExpression$$o, false, new SAbstractConcept[]{})).visitAll((it) -> SNodeOperations.replaceWithNewChild(it, CONCEPTS.ThisClassifierExpression$xB));
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).set(method, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(sourceNode));
     return method;
   }
 

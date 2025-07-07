@@ -4,35 +4,31 @@ package jetbrains.mps.refactoringTest;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ChangeMethodSignatureParameters;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ChangeMethodSignatureRefactoring;
 import java.util.List;
 import java.util.ArrayList;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class ChangeParametersOrder_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(ChangeParametersOrder_Test.class, "${mps_home}", "r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ChangeParametersOrder_Test.class).projectPath(null).modelRef("r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)").reopenProject(null).build());
 
   public ChangeParametersOrder_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -46,27 +42,32 @@ public class ChangeParametersOrder_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ChangeParametersOrder() throws Exception {
-      addNodeById("1230052943947");
-      addNodeById("1230052943971");
-      ChangeMethodSignatureParameters params = new ChangeMethodSignatureParameters(SNodeOperations.cast(getNodeById("1230052943949"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b21dL, "InstanceMethodDeclaration"))));
-      SNode p1 = ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$5xBj)).first();
-      SNode p0 = ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$5xBj)).getElement(1);
-      ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$5xBj)).clear();
-      ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$5xBj)).addElement(p0);
-      ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$5xBj)).addElement(p1);
-      ChangeMethodSignatureRefactoring ref = new ChangeMethodSignatureRefactoring(params, SNodeOperations.cast(getNodeById("1230052943949"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b21dL, "InstanceMethodDeclaration"))));
-      List<SNode> ussages = ListSequence.fromList(new ArrayList<SNode>());
-      ListSequence.fromList(ussages).addElement(SNodeOperations.cast(getNodeById("1230052943965"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x118154a6332L, "InstanceMethodCallOperation"))));
-      ref.setUsages(ussages);
-      ref.doRefactoring();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("1230052943948"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("1230052943972"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
-        Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-      }
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052943947", "1230052943971");
     }
 
+    public void test_ChangeParametersOrder() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        ChangeMethodSignatureParameters params = new ChangeMethodSignatureParameters(getAnnotatedNode("method"));
+        SNode p1 = ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$5xBj)).first();
+        SNode p0 = ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$5xBj)).getElement(1);
+        ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$5xBj)).clear();
+        ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$5xBj)).addElement(p0);
+        ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$5xBj)).addElement(p1);
+        ChangeMethodSignatureRefactoring ref = new ChangeMethodSignatureRefactoring(params, getAnnotatedNode("method"));
+        List<SNode> ussages = ListSequence.fromList(new ArrayList<SNode>());
+        ListSequence.fromList(ussages).addElement(getAnnotatedNode("ussage"));
+        ref.setUsages(ussages);
+        ref.doRefactoring();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("before"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("after"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+      });
+    }
 
   }
 

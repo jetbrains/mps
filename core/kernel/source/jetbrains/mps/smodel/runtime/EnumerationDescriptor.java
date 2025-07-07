@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -95,6 +95,9 @@ public interface EnumerationDescriptor extends DataTypeDescriptor {
       this(name, presentation, null);
     }
 
+    /**
+     * @deprecated Support for legacy enums has been removed from MPS templates in 2025.2. Keep for 1-2 releases and drop
+     */
     @Deprecated
     public MemberDescriptor(@NotNull String name, @NotNull String presentation, long idValue, @Nullable String sourceNode, @Nullable String identifier,
                             @Nullable String legacyRawValue) {

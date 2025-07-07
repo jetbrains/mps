@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -19,9 +18,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import java.util.Collections;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -36,15 +33,15 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class PureMigrationScript__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, "jetbrains.mps.lang.migration.structure.PureMigrationScript");
 
-  public static final SMethod<Integer> fromVersion_id4uVwhQyFcnl = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("fromVersion").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4uVwhQyFcnl").build();
-  public static final SMethod<Boolean> isVersionSet_id4uVwhQyFpOe = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVersionSet").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4uVwhQyFpOe").build();
-  public static final SMethod<String> getDescription_id1RqXnPV415t = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDescription").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1RqXnPV415t").build();
-  public static final SMethod<Iterable<SNode>> getExecuteAfter_id2bWK$jI6RRp = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getExecuteAfter").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2bWK$jI6RRp").build();
-  public static final SMethod<Iterable<SNode>> getRequiredData_id7s$_UJMVosT = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getRequiredData").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7s$_UJMVosT").build();
-  public static final SMethod<Iterable<SNode>> getRequiredAnnotationData_id5TUCQr2Pzjk = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getRequiredAnnotationData").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5TUCQr2Pzjk").build();
-  public static final SMethod<SNode> getProducedData_id7s$_UJMVDH8 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getProducedData").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7s$_UJMVDH8").build();
-  public static final SMethod<SNode> getProducedAnnotationData_id5TUCQr2CN0$ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getProducedAnnotationData").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5TUCQr2CN0$").build();
-  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIMiw").build();
+  public static final SMethod<Integer> fromVersion_id4uVwhQyFcnl = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("fromVersion").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5168866961621042645L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2();
+  public static final SMethod<Boolean> isVersionSet_id4uVwhQyFpOe = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVersionSet").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5168866961621097742L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2();
+  public static final SMethod<String> getDescription_id1RqXnPV415t = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDescription").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2151301691307200861L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2();
+  public static final SMethod<Iterable<SNode>> getExecuteAfter_id2bWK$jI6RRp = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getExecuteAfter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2521103492728978905L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2();
+  public static final SMethod<Iterable<SNode>> getRequiredData_id7s$_UJMVosT = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getRequiredData").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8585153554445862713L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2();
+  public static final SMethod<Iterable<SNode>> getRequiredAnnotationData_id5TUCQr2Pzjk = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getRequiredAnnotationData").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6807933448474735828L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2();
+  public static final SMethod<SNode> getProducedData_id7s$_UJMVDH8 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getProducedData").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8585153554445933384L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2();
+  public static final SMethod<SNode> getProducedAnnotationData_id5TUCQr2CN0$ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getProducedAnnotationData").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6807933448471392292L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2();
+  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(fromVersion_id4uVwhQyFcnl, isVersionSet_id4uVwhQyFpOe, getDescription_id1RqXnPV415t, getExecuteAfter_id2bWK$jI6RRp, getRequiredData_id7s$_UJMVosT, getRequiredAnnotationData_id5TUCQr2Pzjk, getProducedData_id7s$_UJMVDH8, getProducedAnnotationData_id5TUCQr2CN0$, getPresentation_idhEwIMiw);
 
@@ -61,22 +58,14 @@ public final class PureMigrationScript__BehaviorDescriptor extends BaseBHDescrip
     if (isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.description$l$Pt))) {
       return SPropertyOperations.getString(__thisNode__, PROPS.description$l$Pt);
     }
-    // todo: make description property mandatory and remove this heuristic 
+    // todo: make description property mandatory and remove this heuristic
     StringBuilder result = new StringBuilder();
     if (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.part$ITsP), CONCEPTS.IncludeMigrationPart$Qj)).count() == 1 && (SLinkOperations.getTarget(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.part$ITsP), CONCEPTS.IncludeMigrationPart$Qj)).first(), LINKS.target$yqIO) != null)) {
       result.append("Addition to: ").append(IMigrationUnit__BehaviorDescriptor.getDescription_id1RqXnPV415t.invoke(SLinkOperations.getTarget(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.part$ITsP), CONCEPTS.IncludeMigrationPart$Qj)).first(), LINKS.target$yqIO)));
       return result.toString();
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$ITsP)).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.MoveNodeMigrationPart$zn);
-      }
-    })) {
-      List<Tuples._2<SNode, SNode>> movedNodes = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$ITsP)).select(new ISelector<SNode, Tuples._2<SNode, SNode>>() {
-        public Tuples._2<SNode, SNode> select(SNode it) {
-          return MultiTuple.<SNode,SNode>from(((SNode) AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.MoveNodeMigrationPart$zn), LINKS.fromNode$UG1d)).resolve(SNodeOperations.getModel(it).getRepository())), ((SNode) AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.MoveNodeMigrationPart$zn), LINKS.toNode$UGvf)).resolve(SNodeOperations.getModel(it).getRepository())));
-        }
-      }).toListSequence();
+    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$ITsP)).all((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.MoveNodeMigrationPart$zn))) {
+      List<Tuples._2<SNode, SNode>> movedNodes = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$ITsP)).select((it) -> MultiTuple.<SNode,SNode>from(((SNode) AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.MoveNodeMigrationPart$zn), LINKS.fromNode$UG1d)).resolve(SNodeOperations.getModel(it).getRepository())), ((SNode) AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.MoveNodeMigrationPart$zn), LINKS.toNode$UGvf)).resolve(SNodeOperations.getModel(it).getRepository())))).toList();
       if (ListSequence.fromList(movedNodes).isNotEmpty() && SNodeOperations.isInstanceOf(ListSequence.fromList(movedNodes).first()._0(), CONCEPTS.INamedConcept$Kd) && ListSequence.fromList(movedNodes).isNotEmpty() && SNodeOperations.isInstanceOf(ListSequence.fromList(movedNodes).first()._1(), CONCEPTS.INamedConcept$Kd)) {
         result.append("Automatic migration");
         result.append(": move node `").append(SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(movedNodes).first()._1(), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL)).append("`");

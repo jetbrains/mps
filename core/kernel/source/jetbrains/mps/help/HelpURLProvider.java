@@ -15,11 +15,13 @@
  */
 package jetbrains.mps.help;
 
+import jetbrains.mps.smodel.LanguageAspect;
+
 public abstract class HelpURLProvider {
   private static HelpURLProvider ourInstance = new HelpURLProvider() {
     @Override
     public String getURL() {
-      return null;
+      return LanguageAspect.HELP_CENTER_BASE;
     }
   };
 

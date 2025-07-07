@@ -31,7 +31,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import java.awt.Color;
 import jetbrains.mps.editor.runtime.style.Padding;
 import jetbrains.mps.editor.runtime.style.Measure;
@@ -98,7 +97,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Vertical());
     editorCell.setCellId("Collection_cvgoyj_a0a");
     Style style = new StyleImpl();
-    new rootCellModelStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new rootCellModelStyleStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setGridLayout(true);
     editorCell.addEditorCell(createCollection_1());
@@ -116,7 +115,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
     editorCell.setCellId("Collection_cvgoyj_a0a0");
     Style style = new StyleImpl();
-    new borderedCollectionStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new borderedCollectionStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createComponent_0());
     return editorCell;
@@ -124,7 +123,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.editor.editor._OpenTag");
     Style style = new StyleImpl();
-    new tagStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new tagStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     CellModel_Collection_Actions.setCellActions(editorCell, myNode, getEditorContext());
     return editorCell;
@@ -133,7 +132,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
     editorCell.setCellId("Collection_cvgoyj_b0a0");
     Style style = new StyleImpl();
-    new borderedCollectionStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new borderedCollectionStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createConstant_0());
     editorCell.addEditorCell(createRefNodeList_0());
@@ -177,11 +176,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.EditorCellModel$gN;
     }
-    public SNode createNodeToInsert(EditorContext editorContext) {
-      return nodeFactory();
+    public SNode createNodeToInsert(EditorContext editorContext, SNode prevNode, SNode nextNode, int index) {
+      return nodeFactory(prevNode, nextNode, index);
     }
 
-    public SNode nodeFactory() {
+    public SNode nodeFactory(SNode prevNode, SNode nextNode, int index) {
       return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb01232eL, "jetbrains.mps.lang.editor.structure.CellModel_Constant"));
     }
     public EditorCell createNodeCell(SNode elementNode) {
@@ -235,7 +234,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
     editorCell.setCellId("Collection_cvgoyj_c0a0");
     Style style = new StyleImpl();
-    new borderedCollectionStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new borderedCollectionStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createConstant_1());
     editorCell.addEditorCell(createComponent_1());
@@ -258,19 +257,19 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
     editorCell.setCellId("Collection_cvgoyj_d0a0");
     Style style = new StyleImpl();
-    new borderedCollectionStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
-    style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_cvgoyj_a0d0a0()));
+    new borderedCollectionStyleClass(this).apply(style, editorCell);
+    style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_cvgoyj_a0d0a0()));
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createComponent_2());
     return editorCell;
   }
   private Color _StyleParameter_QueryFunction_cvgoyj_a0d0a0() {
-    return _EditorUtil.grayIfNotSelectable(getNode());
+    return _EditorUtil.grayIfNotSelectable(getNode(), getEditorContext());
   }
   private EditorCell createComponent_2() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.editor.editor._CloseTag");
     Style style = new StyleImpl();
-    new tagStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new tagStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     CellModel_Collection_Actions.setCellActions(editorCell, myNode, getEditorContext());
     return editorCell;
@@ -279,7 +278,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
     editorCell.setCellId("Collection_cvgoyj_a0a_0");
     Style style = new StyleImpl();
-    new rootCellModelStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new rootCellModelStyleStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createComponent_3());
     editorCell.addEditorCell(createRefNodeList_1());
@@ -295,7 +294,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createComponent_3() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.editor.editor._OpenTag");
     Style style = new StyleImpl();
-    new tagStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new tagStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     CellModel_Collection_Actions.setCellActions(editorCell, myNode, getEditorContext());
     return editorCell;
@@ -385,7 +384,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createComponent_5() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.editor.editor._CloseTag");
     Style style = new StyleImpl();
-    new tagStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new tagStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     CellModel_Collection_Actions.setCellActions(editorCell, myNode, getEditorContext());
     return editorCell;
@@ -394,7 +393,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
     editorCell.setCellId("Collection_cvgoyj_a0");
     Style style = new StyleImpl();
-    new rootCellModelStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new rootCellModelStyleStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new SChildSubstituteInfoPartEx(editorCell)}));
     editorCell.addEditorCell(createComponent_6());
@@ -411,7 +410,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createComponent_6() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.editor.editor._OpenTag");
     Style style = new StyleImpl();
-    new tagStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new tagStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, _StyleParameter_QueryFunction_cvgoyj_a0a0a());
     editorCell.getStyle().putAll(style);
     CellModel_Collection_Actions.setCellActions(editorCell, myNode, getEditorContext());
@@ -501,7 +500,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createComponent_8() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.editor.editor._CloseTag");
     Style style = new StyleImpl();
-    new tagStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new tagStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, _StyleParameter_QueryFunction_cvgoyj_a0d0a());
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, _StyleParameter_QueryFunction_cvgoyj_a1d0a());
     editorCell.getStyle().putAll(style);

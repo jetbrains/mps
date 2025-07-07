@@ -5,8 +5,6 @@ package jetbrains.mps.vcs.platform.mergedriver;
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.project.Project;
 import com.intellij.notification.Notification;
-import jetbrains.mps.util.annotation.ToRemove;
-import com.intellij.ide.util.PropertiesComponent;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
@@ -14,8 +12,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
 import com.intellij.openapi.vcs.VcsDirectoryMapping;
 import com.intellij.openapi.vcs.ProjectLevelVcsManager;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import com.intellij.openapi.vcs.impl.projectlevelman.AllVcses;
@@ -26,7 +22,7 @@ import javax.swing.event.HyperlinkEvent;
 import com.intellij.ide.BrowserUtil;
 import com.intellij.notification.Notifications;
 
-@GeneratedClass(node = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)/6989360587247930283", model = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)")
+@GeneratedClass(nodeId = "6989360587247930283", model = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)")
 public class MergeDriverNotification {
   private static final String SUPPRESSED_PROPERTY_NAME = "merge.driver.suppressed.notification";
   private Project myProject;
@@ -34,13 +30,8 @@ public class MergeDriverNotification {
   private Notification myLastNotification;
   private MergeDriverNotification(Project project) {
     myProject = project;
-    unsetObsoleteProperty();
   }
-  @ToRemove(version = 2020.1)
-  private static void unsetObsoleteProperty() {
-    // this property removed in 2019.2, we wait for two releases till it will be cleared from config file 
-    PropertiesComponent.getInstance().unsetValue(SUPPRESSED_PROPERTY_NAME);
-  }
+
   private void calculateCompositeState() {
     myCompositeState = MergeDriverInstaller.getCompositeState(myProject, false);
   }
@@ -55,43 +46,29 @@ public class MergeDriverNotification {
     showNotifications();
   }
   private void showNotifications() {
-    final Set<String> vcsNames = SetSequence.fromSetWithValues(new HashSet<String>(), ListSequence.fromList(((List<VcsDirectoryMapping>) ProjectLevelVcsManager.getInstance(myProject).getDirectoryMappings())).select(new ISelector<VcsDirectoryMapping, String>() {
-      public String select(VcsDirectoryMapping dm) {
-        return dm.getVcs();
-      }
-    }).where(new IWhereFilter<String>() {
-      public boolean accept(String vn) {
-        return (vn != null && vn.length() > 0);
-      }
-    }));
-    ThreadUtils.runInUIThreadNoWait(new Runnable() {
-      public void run() {
-        String whichVcses = IterableUtils.join(SetSequence.fromSet(vcsNames).select(new ISelector<String, String>() {
-          public String select(String vn) {
-            return AllVcses.getInstance(myProject).getByName(vn).getDisplayName();
+    final Set<String> vcsNames = SetSequence.fromSetWithValues(new HashSet<String>(), ListSequence.fromList(((List<VcsDirectoryMapping>) ProjectLevelVcsManager.getInstance(myProject).getDirectoryMappings())).select((dm) -> dm.getVcs()).where((vn) -> (vn != null && vn.length() > 0)));
+    ThreadUtils.runInUIThreadNoWait(() -> {
+      String whichVcses = IterableUtils.join(SetSequence.fromSet(vcsNames).select((vn) -> AllVcses.getInstance(myProject).getByName(vn).getDisplayName()), "and");
+      String message = "<p>This project uses " + whichVcses + ". For better integration with MPS, it is necessary to update VCS settings (<a href=\"https://www.jetbrains.com/help/mps/version-control-integration.html#vcsadd-ons\"" + ">More info</a>).<p><a href=\"install\">Update</a></p>";
+      myLastNotification = new Notification("MergeDriver", "VCS Addons", message, NotificationType.WARNING, new NotificationListener() {
+        @Override
+        public void hyperlinkUpdate(@NotNull Notification notification, @NotNull HyperlinkEvent e) {
+          if (e.getEventType() != HyperlinkEvent.EventType.ACTIVATED) {
+            return;
           }
-        }), "and");
-        String message = "<p>This project uses " + whichVcses + ". For better integration with MPS, it is necessary to update VCS settings (<a href=\"https://www.jetbrains.com/help/mps/version-control-integration.html#vcsadd-ons\"" + ">More info</a>).<p><a href=\"install\">Update</a></p>";
-        myLastNotification = new Notification("MergeDriver", "VCS Addons", message, NotificationType.WARNING, new NotificationListener() {
-          @Override
-          public void hyperlinkUpdate(@NotNull Notification notification, @NotNull HyperlinkEvent e) {
-            if (e.getEventType() != HyperlinkEvent.EventType.ACTIVATED) {
-              return;
-            }
-            if (e.getURL() != null) {
-              BrowserUtil.launchBrowser(e.getURL().toExternalForm());
-              return;
-            } else
-            if ("install".equals(e.getDescription())) {
-              MergeDriverInstaller.installWhereNeeded(myProject);
-            } else {
-              assert false;
-            }
-            notification.expire();
+          if (e.getURL() != null) {
+            BrowserUtil.launchBrowser(e.getURL().toExternalForm());
+            return;
+          } else
+          if ("install".equals(e.getDescription())) {
+            MergeDriverInstaller.installWhereNeeded(myProject);
+          } else {
+            assert false;
           }
-        });
-        Notifications.Bus.notify(myLastNotification, myProject);
-      }
+          notification.expire();
+        }
+      });
+      Notifications.Bus.notify(myLastNotification, myProject);
     });
   }
   public static MergeDriverNotification getInstance(Project project) {

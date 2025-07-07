@@ -11,7 +11,6 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vcs.merge.MergeProvider;
 import com.intellij.openapi.vcs.merge.MergeDialogCustomizer;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import com.intellij.openapi.ui.Messages;
 import java.util.Collections;
@@ -19,7 +18,7 @@ import com.intellij.openapi.vcs.merge.MergeSession;
 import com.intellij.openapi.vcs.merge.MergeProvider2;
 import com.intellij.openapi.progress.ProgressManager;
 
-@GeneratedClass(node = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)/3906168775482822123", model = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)")
+@GeneratedClass(nodeId = "3906168775482822123", model = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)")
 public class MPSVcsHelper extends AbstractVcsHelperImpl {
   public MPSVcsHelper(Project project) {
     super(project);
@@ -29,11 +28,7 @@ public class MPSVcsHelper extends AbstractVcsHelperImpl {
   @Override
   public List<VirtualFile> showMergeDialog(List<? extends VirtualFile> files, MergeProvider provider, @NotNull MergeDialogCustomizer customizer) {
 
-    if (ConflictingModelsUtil.hasResolvableConflicts(myProject, provider, ListSequence.fromList(((List<VirtualFile>) files)).where(new IWhereFilter<VirtualFile>() {
-      public boolean accept(VirtualFile f) {
-        return SetSequence.fromSet(ModelMergeTool.SUPPORTED_TYPES).contains(f.getFileType());
-      }
-    }))) {
+    if (ConflictingModelsUtil.hasResolvableConflicts(myProject, provider, ListSequence.fromList(((List<VirtualFile>) files)).where((f) -> SetSequence.fromSet(ModelMergeTool.SUPPORTED_TYPES).contains(f.getFileType())))) {
 
       int answer = Messages.showYesNoCancelDialog(myProject, "Conflicting changes have been detected. Some conflicts in the models can be autoresolved.\nResolve these conflicts automatically?", "Conflict Resolver", Messages.getQuestionIcon());
       if (answer == Messages.CANCEL) {
@@ -43,7 +38,7 @@ public class MPSVcsHelper extends AbstractVcsHelperImpl {
         MergeSession session = (provider instanceof MergeProvider2 ? ((MergeProvider2) provider).createMergeSession((List<VirtualFile>) files) : null);
         ConflictingModelsUtil.ModelConflictResolver modelConflictResolverTask = ConflictingModelsUtil.getModelConflictResolverTask(myProject, provider, session, files);
         ProgressManager.getInstance().run(modelConflictResolverTask);
-        // update list of files 
+        // update list of files
         List<VirtualFile> autoResolvedFiles = modelConflictResolverTask.getResolvedFiles();
         List<VirtualFile> unresolvedFiles = modelConflictResolverTask.getUnresolvedFiles();
         if (ListSequence.fromList(unresolvedFiles).isNotEmpty()) {
@@ -57,7 +52,7 @@ public class MPSVcsHelper extends AbstractVcsHelperImpl {
             return autoResolvedFiles;
           }
         }
-        List<VirtualFile> toResolve = ListSequence.fromList(((List<VirtualFile>) files)).subtract(ListSequence.fromList(autoResolvedFiles)).toListSequence();
+        List<VirtualFile> toResolve = ListSequence.fromList(((List<VirtualFile>) files)).subtract(ListSequence.fromList(autoResolvedFiles)).toList();
         List<VirtualFile> resolvedFiles = super.showMergeDialog(toResolve, provider, customizer);
         return ListSequence.fromList(autoResolvedFiles).addSequence(ListSequence.fromList(resolvedFiles));
       }

@@ -11,7 +11,7 @@ import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.make.resources.IPropertiesIO;
 import jetbrains.mps.project.AbstractModule;
 
-@GeneratedClass(node = "r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)/2257725414731981680", model = "r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)")
+@GeneratedClass(nodeId = "2257725414731981680", model = "r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)")
 public class MResource extends MultiTuple._2<SModule, Iterable<SModel>> implements IMResource, IResourceWithProperties {
   public MResource() {
     super();

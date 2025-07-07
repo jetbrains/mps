@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="bf14wju5rhes6ihnr0oppj729l5nb7p" />
+<product version="3" modelHash="-8ac7nivdkxwi8sgh36zzurwt4qdm9lf">
+  <files names="DeleteRunConfigurationIcon.java:MigrationDescriptor.java" />
+</product>
 

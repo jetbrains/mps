@@ -10,7 +10,6 @@ import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.scope.Scope;
 import java.util.Arrays;
@@ -23,6 +22,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.scopes.runtime.ScopeUtils;
 import jetbrains.mps.baseLanguage.scopes.Scopes;
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
+import jetbrains.mps.baseLanguage.dataFlow.ConditionUtil;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -32,9 +32,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class ForStatement__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, "jetbrains.mps.baseLanguage.structure.ForStatement");
 
-  public static final SMethod<List<SNode>> getScopeVariables_id4pl5GY7LKmA = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getScopeVariables").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4pl5GY7LKmA").build();
-  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<NextProgramPoint> getNextProgramPoint_id3F8BxGibk8h = new SMethodBuilder<NextProgramPoint>(new SJavaCompoundTypeImpl(NextProgramPoint.class)).name("getNextProgramPoint").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3F8BxGibk8h").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
+  public static final SMethod<List<SNode>> getScopeVariables_id4pl5GY7LKmA = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getScopeVariables").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5067982036267369894L).languageId(0xbfd948636cfe8bc3L, 0x9ded098bad6a4657L).build2();
+  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<NextProgramPoint> getNextProgramPoint_id3F8BxGibk8h = new SMethodBuilder<NextProgramPoint>(new SJavaCompoundTypeImpl(NextProgramPoint.class)).name("getNextProgramPoint").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4235809288648213009L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScopeVariables_id4pl5GY7LKmA, getScope_id52_Geb4QDV$, getNextProgramPoint_id3F8BxGibk8h);
 
@@ -68,6 +68,11 @@ public final class ForStatement__BehaviorDescriptor extends BaseBHDescriptor {
     if (child != SLinkOperations.getTarget(__thisNode__, LINKS.condition$wARE)) {
       return null;
     }
+    Boolean conditionConstant = ConditionUtil.getConditionConstant(SLinkOperations.getTarget(__thisNode__, LINKS.condition$wARE));
+    if (conditionConstant != null && conditionConstant.booleanValue() != value) {
+      return null;
+    }
+
     if (value) {
       if (SLinkOperations.getTarget(__thisNode__, LINKS.body$c1sm) != null) {
         return NextProgramPoint.continueAt(SLinkOperations.getTarget(__thisNode__, LINKS.body$c1sm), false);

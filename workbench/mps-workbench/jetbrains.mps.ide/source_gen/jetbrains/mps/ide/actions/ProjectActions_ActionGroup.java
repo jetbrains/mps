@@ -4,14 +4,13 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
-import jetbrains.mps.plugins.actions.LabelledAnchor;
 import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
-import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.actionSystem.AnAction;
+import com.intellij.openapi.extensions.PluginId;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1204991220529", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1204991220529", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class ProjectActions_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.actions.ProjectActions_ActionGroup";
   public static final String LABEL_ID_projectNew = ID + "projectNew";
@@ -20,23 +19,13 @@ public class ProjectActions_ActionGroup extends GeneratedActionGroup {
   public static final String LABEL_ID_compileJava = ID + "compileJava";
   public static final String LABEL_ID_runConfig = ID + "runConfig";
 
-  public ProjectActions_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public ProjectActions_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("ProjectActions", ID, plugin);
     setIsInternal(false);
     setPopup(false);
-    {
-      LabelledAnchor action = new LabelledAnchor(ProjectActions_ActionGroup.LABEL_ID_projectNew);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      ProjectActions_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_projectNew);
     ProjectActions_ActionGroup.this.addSeparator();
-    {
-      LabelledAnchor action = new LabelledAnchor(ProjectActions_ActionGroup.LABEL_ID_make);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      ProjectActions_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_make);
     ProjectActions_ActionGroup.this.addSeparator();
     {
       GeneratedActionGroup newAction = new ProjectActionsRenameProjectContainer_ActionGroup(getApplicationPlugin());
@@ -49,28 +38,13 @@ public class ProjectActions_ActionGroup extends GeneratedActionGroup {
       ProjectActions_ActionGroup.this.addAction(oldAction);
     }
     ProjectActions_ActionGroup.this.addSeparator();
-    {
-      LabelledAnchor action = new LabelledAnchor(ProjectActions_ActionGroup.LABEL_ID_check);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      ProjectActions_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_check);
     ProjectActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.OptimizeProjectImports_Action");
     ProjectActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.FixModuleImportsInProject_Action");
     ProjectActions_ActionGroup.this.addSeparator();
-    {
-      LabelledAnchor action = new LabelledAnchor(ProjectActions_ActionGroup.LABEL_ID_compileJava);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      ProjectActions_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_compileJava);
     ProjectActions_ActionGroup.this.addSeparator();
-    {
-      LabelledAnchor action = new LabelledAnchor(ProjectActions_ActionGroup.LABEL_ID_runConfig);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      ProjectActions_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_runConfig);
     ProjectActions_ActionGroup.this.addSeparator();
     ProjectActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.MPSProjectPaths_Action");
   }

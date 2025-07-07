@@ -1,123 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
-  <dependency className="jetbrains.mps.java.core.sourceStubs.EmptyJavaSourceStubsFindUsages">
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.util.Collection" />
-    <classNode dependClassName="java.util.Set" />
-    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.java.core.sourceStubs.JavaSourceStubModelDescriptor" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModelReference" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SReference" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.util.Consumer" />
-    <classNode extendsClassName="com.intellij.openapi.Disposable" />
-    <classNode extendsClassName="org.jetbrains.mps.openapi.persistence.FindUsagesParticipant" />
-  </dependency>
-  <dependency className="jetbrains.mps.java.core.sourceStubs.JavaSourceStubModelDescriptor">
-    <classNode dependClassName="java.io.IOException" />
-    <classNode dependClassName="java.io.InputStream" />
-    <classNode dependClassName="java.lang.Iterable" />
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.lang.System" />
-    <classNode dependClassName="java.util.Collection" />
-    <classNode dependClassName="java.util.Collections" />
-    <classNode dependClassName="java.util.HashMap" />
-    <classNode dependClassName="java.util.HashSet" />
-    <classNode dependClassName="java.util.LinkedList" />
-    <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="java.util.Map" />
-    <classNode dependClassName="java.util.Set" />
-    <classNode dependClassName="java.util.function.Consumer" />
-    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.extapi.model.SModelData" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.CollectionSequence" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IVisitor" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.MapSequence" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
-    <classNode dependClassName="jetbrains.mps.java.core.newparser.FeatureKind" />
-    <classNode dependClassName="jetbrains.mps.java.core.newparser.JavaParseException" />
-    <classNode dependClassName="jetbrains.mps.java.core.newparser.JavaParser" />
-    <classNode dependClassName="jetbrains.mps.java.core.newparser.YetUnknownResolver" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
-    <classNode dependClassName="jetbrains.mps.logging.Logger" />
-    <classNode dependClassName="jetbrains.mps.progress.EmptyProgressMonitor" />
-    <classNode dependClassName="jetbrains.mps.smodel.ModelLoadResult" />
-    <classNode dependClassName="jetbrains.mps.smodel.SModel" />
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
-    <classNode dependClassName="jetbrains.mps.smodel.loading.ModelLoadingState" />
-    <classNode dependClassName="org.apache.log4j.LogManager" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.language.SLanguage" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModelReference" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeId" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.module.SModuleReference" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.module.SRepository" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.persistence.DataSource" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.persistence.MultiStreamDataSource" />
-    <classNode extendsClassName="jetbrains.mps.smodel.RegularModelDescriptor" />
-    <classNode extendsClassName="org.jetbrains.mps.openapi.persistence.MultiStreamDataSourceListener" />
-  </dependency>
-  <dependency className="jetbrains.mps.java.core.sourceStubs.JavaSourceStubModelRoot">
-    <classNode dependClassName="java.lang.Iterable" />
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.util.ArrayList" />
-    <classNode dependClassName="java.util.Collections" />
-    <classNode dependClassName="java.util.HashSet" />
-    <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="java.util.Set" />
-    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.extapi.persistence.CopyNotSupportedException" />
-    <classNode dependClassName="jetbrains.mps.extapi.persistence.DefaultSourceRoot" />
-    <classNode dependClassName="jetbrains.mps.extapi.persistence.SourceRoot" />
-    <classNode dependClassName="jetbrains.mps.extapi.persistence.SourceRootKind" />
-    <classNode dependClassName="jetbrains.mps.extapi.persistence.SourceRootKinds" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
-    <classNode dependClassName="jetbrains.mps.java.core.sourceStubs.JavaSourceStubModelDescriptor" />
-    <classNode dependClassName="jetbrains.mps.java.core.sourceStubs.MPSJavaSrcDataSource" />
-    <classNode dependClassName="jetbrains.mps.java.stub.JavaPackageNameStub" />
-    <classNode dependClassName="jetbrains.mps.persistence.CopyFileBasedModelRootHelper" />
-    <classNode dependClassName="jetbrains.mps.util.FileUtil" />
-    <classNode dependClassName="jetbrains.mps.vfs.IFile" />
-    <classNode dependClassName="org.apache.log4j.Logger" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModelId" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.persistence.Memento" />
-    <classNode extendsClassName="jetbrains.mps.extapi.persistence.CopyableModelRoot" />
-    <classNode extendsClassName="jetbrains.mps.extapi.persistence.FileBasedModelRoot" />
-  </dependency>
-  <dependency className="jetbrains.mps.java.core.sourceStubs.JavaSourceStubModelRootFactory">
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.java.core.sourceStubs.JavaSourceStubModelRoot" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.persistence.ModelRoot" />
-    <classNode extendsClassName="org.jetbrains.mps.openapi.persistence.ModelRootFactory" />
-  </dependency>
-  <dependency className="jetbrains.mps.java.core.sourceStubs.MPSJavaSrcDataSource">
-    <classNode dependClassName="java.io.IOException" />
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.java.core.newparser.JavaParser" />
-    <classNode dependClassName="jetbrains.mps.util.IFileUtil" />
-    <classNode dependClassName="jetbrains.mps.vfs.IFile" />
-    <classNode dependClassName="org.apache.log4j.Logger" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.persistence.ModelRoot" />
-    <classNode extendsClassName="jetbrains.mps.extapi.persistence.FolderDataSource" />
-  </dependency>
+  <uses language="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />
+  <uses language="l:fd392034-7849-419d-9071-12563d152375:jetbrains.mps.baseLanguage.closures" />
+  <uses language="l:83888646-71ce-4f1c-9c53-c54016f6ad4f:jetbrains.mps.baseLanguage.collections" />
+  <uses language="l:f2801650-65d5-424e-bb1b-463a8781b786:jetbrains.mps.baseLanguage.javadoc" />
+  <uses language="l:df345b11-b8c7-4213-ac66-48d2a9b75d88:jetbrains.mps.baseLanguageInternal" />
+  <uses language="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" />
+  <uses language="l:c7fb639f-be78-4307-89b0-b5959c3fa8c8:jetbrains.mps.lang.text" />
+  <uses module="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="dp" />
+  <uses module="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="rt+dp" />
+  <uses module="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="rt+dp" />
+  <uses module="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="dp" />
+  <uses module="4c6a28d1-2c60-478d-b36e-db9b3cbb21fb(closures.runtime)" kind="rt" />
+  <uses module="9b80526e-f0bf-4992-bdf5-cee39c1833f3(collections.runtime)" kind="rt+dp" />
+  <uses module="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
+  <uses module="65557aaa-5381-435d-b705-3f8d546e0f40(jetbrains.mps.java.core)" kind="dp" />
+  <uses module="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt+dp" />
+  <uses module="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />
+  <uses module="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt+dp" />
 </dependenciesRoot>
 

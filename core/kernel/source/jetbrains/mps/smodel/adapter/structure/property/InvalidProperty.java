@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel.adapter.structure.property;
 
+import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import jetbrains.mps.smodel.adapter.structure.FormatException;
 import jetbrains.mps.smodel.adapter.structure.concept.InvalidConcept;
 import jetbrains.mps.smodel.runtime.PropertyDescriptor;
@@ -30,17 +31,23 @@ import org.jetbrains.mps.openapi.model.SNode;
 public final class InvalidProperty extends SPropertyAdapter {
   public static final java.lang.String INVALID_PREFIX = "i";
 
-  @NotNull
+  // not null
   private final String myConcept;
 
   public InvalidProperty(@Nullable String concept, @NotNull String name) {
-    super(name);
+    super(MetaIdFactory.INVALID_PROP_ID, name);
     if (concept != null) {
       myConcept = concept;
     } else {
       //name is better to be a valid id. May be important on serialization
       myConcept = "UnknownConceptWithProperty" + NameUtil.capitalize(name);
     }
+  }
+
+  @Nullable
+  @Override
+  protected PropertyDescriptor getPropertyDescriptor() {
+    return null;
   }
 
   @Override
@@ -57,22 +64,10 @@ public final class InvalidProperty extends SPropertyAdapter {
     return myPropertyName.hashCode();
   }
 
-  @Nullable
-  @Override
-  public PropertyDescriptor getPropertyDescriptor() {
-    return null;
-  }
-
   @NotNull
   @Override
   public String getName() {
     return myPropertyName;
-  }
-
-  @Nullable
-  @Override
-  public SNode getDeclarationNode() {
-    return null;
   }
 
   @NotNull

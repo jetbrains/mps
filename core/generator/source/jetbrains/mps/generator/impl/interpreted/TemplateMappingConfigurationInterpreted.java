@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ import jetbrains.mps.generator.impl.TemplateQueryException;
 import jetbrains.mps.generator.impl.query.MapConfigurationCondition;
 import jetbrains.mps.generator.impl.query.QueryKey;
 import jetbrains.mps.generator.impl.query.QueryKeyImpl;
-import jetbrains.mps.generator.impl.query.QueryProviderBase;
+import jetbrains.mps.generator.runtime.LabelDeclaration;
 import jetbrains.mps.generator.runtime.ReferenceReductionRule;
 import jetbrains.mps.generator.runtime.TemplateCreateRootRule;
 import jetbrains.mps.generator.runtime.TemplateDropAttributeRule;
@@ -60,6 +60,7 @@ public class TemplateMappingConfigurationInterpreted implements TemplateMappingC
   private List<TemplateMappingScript> myPostScripts;
   private List<TemplateDropAttributeRule> myDropAttributeRules;
   private List<ReferenceReductionRule> myReferenceReductionRules;
+  private List<LabelDeclaration> myLabels;
 
   private MapConfigurationCondition myCondition;
   private volatile boolean myInitialized = false;
@@ -82,6 +83,7 @@ public class TemplateMappingConfigurationInterpreted implements TemplateMappingC
       myReferenceReductionRules = new ArrayList<>(5);
       myPreScripts = new ArrayList<>(5);
       myPostScripts = new ArrayList<>(5);
+      myLabels = new ArrayList<>(5);
       ArrayList<TemplateReductionRule> reductionRules = new ArrayList<>(20);
       ArrayList<TemplateReductionRule> patternRules = new ArrayList<>(5);
 
@@ -122,6 +124,9 @@ public class TemplateMappingConfigurationInterpreted implements TemplateMappingC
         myReductionRules.addAll(patternRules);
         myReductionRules.addAll(reductionRules);
       }
+      for (SNode ld : RuleUtil.getMappingConfiguration_LabelDeclarations(myMappingConfiguration)) {
+        myLabels.add(new LabelDeclarationImpl(ld, this));
+      }
       myInitialized = true;
     }
   }
@@ -141,12 +146,8 @@ public class TemplateMappingConfigurationInterpreted implements TemplateMappingC
     try {
       if (myCondition == null) {
         SNode condition = RuleUtil.getMappingConfiguration_IsApplicable(myMappingConfiguration);
-        if (condition != null) {
-          QueryKey identity = new QueryKeyImpl(getMappingNode(), condition.getNodeId());
-          myCondition = generator.getQueryProvider(getMappingNode()).getMapConfigurationCondition(identity);
-        } else {
-          myCondition = new QueryProviderBase.Defaults();
-        }
+        QueryKey identity = condition == null ? QueryKeyImpl.invalid() : new QueryKeyImpl(getMappingNode(), condition.getNodeId());
+        myCondition = generator.getQueryProvider(getMappingNode()).getMapConfigurationCondition(identity);
       }
       return myCondition.check(new TemplateQueryContext(getMappingNode(), generator));
     } catch (GenerationFailureException ex) {
@@ -218,6 +219,13 @@ public class TemplateMappingConfigurationInterpreted implements TemplateMappingC
   public Collection<ReferenceReductionRule> getReferenceReductionRules() {
     init();
     return myReferenceReductionRules;
+  }
+
+  @NotNull
+  @Override
+  public Collection<LabelDeclaration> getLabels() {
+    init();
+    return myLabels;
   }
 
   @Override

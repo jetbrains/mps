@@ -7,8 +7,6 @@ import jetbrains.mps.generator.impl.query.QueryProviderBase;
 import jetbrains.mps.generator.template.CreateRootRuleContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.generator.template.BaseMappingRuleContext;
@@ -17,11 +15,13 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.behavior.IOperation__BehaviorDescriptor;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
+import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.generator.template.TemplateVarContext;
-import jetbrains.mps.baseLanguage.behavior.IClassifierMember__BehaviorDescriptor;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
+import jetbrains.mps.baseLanguage.behavior.IClassifierMember__BehaviorDescriptor;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.ReductionRuleCondition;
 import java.util.HashMap;
@@ -31,8 +31,10 @@ import jetbrains.mps.generator.template.ReductionRuleQueryContext;
 import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.impl.query.CreateRootCondition;
 import jetbrains.mps.generator.impl.query.SourceNodeQuery;
-import jetbrains.mps.generator.impl.query.QueryKeyImpl;
 import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.generator.impl.query.SourceNodesQuery;
+import java.util.Collection;
+import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.generator.impl.query.PropertyValueQuery;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -51,11 +53,7 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean createRootRule_Condition_6_0(final CreateRootRuleContext _context) {
-    return !(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.SubstringExpression$uY).isEmpty()) || ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.TrimOperation$$f)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.trimKind$5DDk), 0x11d47df9507L));
-      }
-    });
+    return !(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.SubstringExpression$uY).isEmpty()) || ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.TrimOperation$$f)).any((it) -> !(SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.trimKind$5DDk), 0x11d47df9507L)));
   }
   public static boolean rule_Condition_6_0(final BaseMappingRuleContext _context) {
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.BaseStringOperation$Ae);
@@ -98,8 +96,8 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getOutputNodeByInputNodeAndMappingLabel(firstOp, "IsNotEmptyExtractExpr"), LINKS.method$yoGN);
   }
   public static Object referenceMacro_GetReferent_11_0(final ReferenceMacroContext _context) {
-    // To destinguish generated isEmpty of the same session in different classes, need an object we've replaced 
-    // with extract statement. With it, can get output by label and input 
+    // To distinguish generated isEmpty of the same session in different classes, need an object we've replaced
+    // with extract statement. With it, can get output by label and input
     SNode firstOp = (SNode) _context.getSessionObject(((String) _context.getVariable("var:methodNameKey")));
     return SLinkOperations.getTarget(_context.getOutputNodeByInputNodeAndMappingLabel(firstOp, "IsEmptyExtractExpr"), LINKS.method$yoGN);
   }
@@ -114,18 +112,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.startIndex$vALN) != null;
   }
   public static boolean ifMacro_Condition_9_0(final IfMacroContext _context) {
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.TrimOperation$$f)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.trimKind$5DDk), 0x11d47df9508L);
-      }
-    });
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.TrimOperation$$f)).any((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.trimKind$5DDk), 0x11d47df9508L));
   }
   public static boolean ifMacro_Condition_9_1(final IfMacroContext _context) {
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.TrimOperation$$f)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.trimKind$5DDk), 0x11d47df9509L);
-      }
-    });
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.TrimOperation$$f)).any((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.trimKind$5DDk), 0x11d47df9509L));
   }
   public static boolean ifMacro_Condition_9_2(final IfMacroContext _context) {
     return !(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.SubstringExpression$uY).isEmpty());
@@ -206,22 +196,20 @@ public class QueriesGenerated extends QueryProviderBase {
   public static SNode sourceNodeQuery_11_1(final SourceSubstituteMacroNodeContext _context) {
     return (SNode) IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(_context.getNode());
   }
+  public static SNode sourceNodeQuery_12_0(final SourceSubstituteMacroNodeContext _context) {
+    return (SNode) IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(_context.getNode());
+  }
+  public static Iterable<SNode> sourceNodesQuery_12_0(final SourceSubstituteMacroNodesContext _context) {
+    return SLinkOperations.getChildren(_context.getNode(), LINKS.arguments$3huj);
+  }
   public static Object varMacro_Value_0_0(final TemplateVarContext _context) {
-    return SPropertyOperations.getString(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.ClassConcept$bK, false)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it);
-      }
-    }).first(), PROPS.name$MnvL) + ".IsNotEmptyStringMethod";
+    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.ClassConcept$bK, false)).where((it) -> (boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it)).first()) + ".IsNotEmptyStringMethod";
   }
   public static Object varMacro_Value_11_0(final TemplateVarContext _context) {
-    // ExtractStaticMethodExpression looks for first non static class 
-    // and as long as there's no alternative to ESME, this code shall 
-    // respect the way ContextUtil.getContextForMethod works 
-    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.ClassConcept$bK, false)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it);
-      }
-    }).first()) + ".IsEmptyStringMethod";
+    // ExtractStaticMethodExpression looks for first non static class
+    // and as long as there's no alternative to ESME, this code shall
+    // respect the way ContextUtil.getContextForMethod works
+    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.ClassConcept$bK, false)).where((it) -> (boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it)).first()) + ".IsEmptyStringMethod";
   }
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {
@@ -235,11 +223,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public ReductionRuleCondition getReductionRuleCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(rrcMethods.containsKey(id))) {
-      return super.getReductionRuleCondition(identity);
-    }
-    return rrcMethods.get(id);
+    ReductionRuleCondition query = identity.forTemplateNode(rrcMethods);
+    return (query != null ? query : super.getReductionRuleCondition(identity));
   }
   private static class RRC implements ReductionRuleCondition {
     private final int methodKey;
@@ -272,11 +257,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public CreateRootCondition getCreateRootRuleCondition(@NotNull QueryKey identity) {
-    String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(crcMethods.containsKey(id))) {
-      return super.getCreateRootRuleCondition(identity);
-    }
-    return crcMethods.get(id);
+    CreateRootCondition query = identity.forTemplateNode(crcMethods);
+    return (query != null ? query : super.getCreateRootRuleCondition(identity));
   }
   private static class CRC implements CreateRootCondition {
     private final int methodKey;
@@ -318,15 +300,13 @@ public class QueriesGenerated extends QueryProviderBase {
     snqMethods.put("2696770507970463573", new SNQ(i++));
     snqMethods.put("4592826945244850077", new SNQ(i++));
     snqMethods.put("3505562578125797802", new SNQ(i++));
+    snqMethods.put("7485977462274913539", new SNQ(i++));
   }
   @NotNull
   @Override
   public SourceNodeQuery getSourceNodeQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snqMethods.containsKey(id))) {
-      return super.getSourceNodeQuery(identity);
-    }
-    return snqMethods.get(id);
+    SourceNodeQuery query = identity.forFunctionNode(snqMethods);
+    return (query != null ? query : super.getSourceNodeQuery(identity));
   }
   private static class SNQ implements SourceNodeQuery {
     private final int methodKey;
@@ -380,6 +360,34 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.sourceNodeQuery_11_0(ctx);
         case 21:
           return QueriesGenerated.sourceNodeQuery_11_1(ctx);
+        case 22:
+          return QueriesGenerated.sourceNodeQuery_12_0(ctx);
+        default:
+          throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
+      }
+    }
+  }
+  private final Map<String, SourceNodesQuery> snsqMethods = new HashMap<String, SourceNodesQuery>();
+  {
+    int i = 0;
+    snsqMethods.put("7485977462274915658", new SNsQ(i++));
+  }
+  @NotNull
+  @Override
+  public SourceNodesQuery getSourceNodesQuery(@NotNull QueryKey identity) {
+    SourceNodesQuery query = identity.forFunctionNode(snsqMethods);
+    return (query != null ? query : super.getSourceNodesQuery(identity));
+  }
+  private static class SNsQ implements SourceNodesQuery {
+    private final int methodKey;
+    public SNsQ(int methodKey) {
+      this.methodKey = methodKey;
+    }
+    @NotNull
+    public Collection<SNode> evaluate(@NotNull SourceSubstituteMacroNodesContext ctx) throws GenerationFailureException {
+      switch (methodKey) {
+        case 0:
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_12_0(ctx));
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -396,11 +404,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public PropertyValueQuery getPropertyValueQuery(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(pvqMethods.containsKey(id))) {
-      return super.getPropertyValueQuery(identity);
-    }
-    return pvqMethods.get(id);
+    PropertyValueQuery query = identity.forTemplateNode(pvqMethods);
+    return (query != null ? query : super.getPropertyValueQuery(identity));
   }
   private static class PVQ extends PropertyValueQuery.Base {
     private final int methodKey;
@@ -438,11 +443,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public IfMacroCondition getIfMacroCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(imcMethods.containsKey(id))) {
-      return super.getIfMacroCondition(identity);
-    }
-    return imcMethods.get(id);
+    IfMacroCondition query = identity.forTemplateNode(imcMethods);
+    return (query != null ? query : super.getIfMacroCondition(identity));
   }
   private static class IfMC implements IfMacroCondition {
     private final int methodKey;
@@ -481,11 +483,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public InlineSwitchCaseCondition getInlineSwitchCaseCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(isccMethods.containsKey(id))) {
-      return super.getInlineSwitchCaseCondition(identity);
-    }
-    return isccMethods.get(id);
+    InlineSwitchCaseCondition query = identity.forTemplateNode(isccMethods);
+    return (query != null ? query : super.getInlineSwitchCaseCondition(identity));
   }
   private static class ISCC implements InlineSwitchCaseCondition {
     private final int methodKey;
@@ -514,11 +513,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public ReferenceTargetQuery getReferenceTargetQuery(@NotNull QueryKey queryKey) {
-    final String id = queryKey.getTemplateNode().getNodeId().toString();
-    if (!(rtqMethods.containsKey(id))) {
-      return super.getReferenceTargetQuery(queryKey);
-    }
-    return rtqMethods.get(id);
+    ReferenceTargetQuery query = queryKey.forTemplateNode(rtqMethods);
+    return (query != null ? query : super.getReferenceTargetQuery(queryKey));
   }
   private static class RTQ extends ReferenceTargetQuery.Base {
     private final int methodKey;
@@ -546,11 +542,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public VariableValueQuery getVariableValueQuery(@NotNull QueryKey queryKey) {
-    final String id = queryKey.getTemplateNode().getNodeId().toString();
-    if (!(vvqMethods.containsKey(id))) {
-      return super.getVariableValueQuery(queryKey);
-    }
-    return vvqMethods.get(id);
+    VariableValueQuery query = queryKey.forTemplateNode(vvqMethods);
+    return (query != null ? query : super.getVariableValueQuery(queryKey));
   }
   private static class VVQ implements VariableValueQuery {
     private final int methodKey;
@@ -580,7 +573,6 @@ public class QueriesGenerated extends QueryProviderBase {
 
   private static final class PROPS {
     /*package*/ static final SProperty trimKind$5DDk = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47e0122aL, 0x11d47e0122dL, "trimKind");
-    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
@@ -591,5 +583,6 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SContainmentLink rightExpression$nvX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
     /*package*/ static final SContainmentLink operand$vAyM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47df21f3L, 0x11d47df21f4L, "operand");
     /*package*/ static final SContainmentLink endIndex$vB0O = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47df21f3L, 0x11d47df21f6L, "endIndex");
+    /*package*/ static final SContainmentLink arguments$3huj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x67e388d6eb788475L, 0x67e388d6eb788650L, "arguments");
   }
 }

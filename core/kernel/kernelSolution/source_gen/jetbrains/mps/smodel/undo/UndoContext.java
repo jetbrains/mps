@@ -8,7 +8,14 @@ import jetbrains.mps.smodel.SNodeUndoableAction;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SRepository;
 
-@GeneratedClass(node = "r:79655025-bd36-445f-8b79-189312ab627e(jetbrains.mps.smodel.undo)/63618339873669826", model = "r:79655025-bd36-445f-8b79-189312ab627e(jetbrains.mps.smodel.undo)")
+/**
+ * Mechanism to supply custom logic to deduce nodes that correspond to IDE's virtual files 
+ * for platform to facilitate undo/redo mechanism. Generally, DefaultUndoContext does decent job,
+ * you need to provide custom implementation (or to care about implementation at all as default one 
+ * is in use behind the scene) is cases when default logic doesn't detect proper nodes (i.e. those 
+ * that correspond to an IDE's file).
+ */
+@GeneratedClass(nodeId = "63618339873669826", model = "r:79655025-bd36-445f-8b79-189312ab627e(jetbrains.mps.smodel.undo)")
 public interface UndoContext {
 
   Iterable<SNode> getVirtualFileNodes(SNodeUndoableAction action);

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<components>
+<idea-plugin>
+
+  <applicationListeners>
+    <listener class="jetbrains.mps.nodeEditor.EditorSettingsUISettingsListener" topic="com.intellij.ide.ui.UISettingsListener"/>
+  </applicationListeners>
 
   <extensionPoints>
     <extensionPoint qualifiedName="jetbrains.mps.NodeEditorFactory"
@@ -11,84 +15,49 @@
                     interface="jetbrains.mps.ide.editor.warningPanel.EditorWarningsProvider"/>
     <extensionPoint qualifiedName="com.intellij.mps.IntentionActionsProvider"
                     interface="jetbrains.mps.nodeEditor.IntentionActionsProvider"/>
+    <extensionPoint qualifiedName="jetbrains.mps.editor.highlighter.contributor"
+                    interface="jetbrains.mps.nodeEditor.HighlighterContribution"
+                    area="IDEA_PROJECT"/>
   </extensionPoints>
 
-  <application-components>
-    <component>
-      <implementation-class>jetbrains.mps.ide.editor.IdeaCaretManager</implementation-class>
-    </component>
+  <projectListeners>
+    <listener class="jetbrains.mps.ide.editor.icons.NodeIconUpdater"
+              topic="jetbrains.mps.nodefs.NodeFileEventListener"
+              activeInHeadlessMode="false"/>
 
-    <component>
-      <implementation-class>jetbrains.mps.nodeEditor.EditorSettings</implementation-class>
-    </component>
-
-    <component>
-      <implementation-class>jetbrains.mps.nodeEditor.cells.contextAssistant.ContextAssistantSettings</implementation-class>
-    </component>
-
-    <component>
-      <implementation-class>jetbrains.mps.editor.runtime.impl.LanguagesKeymapManager</implementation-class>
-    </component>
-
-    <component>
-      <implementation-class>jetbrains.mps.intentions.IntentionsManager</implementation-class>
-    </component>
-
-    <component>
-      <implementation-class>jetbrains.mps.ide.editor.resolver.EditorResolverComponent</implementation-class>
-    </component>
-
-    <component>
-      <implementation-class>jetbrains.mps.typesystem.checking.EditorCheckerComponent</implementation-class>
-    </component>
-  </application-components>
-
-  <project-components>
-    <component>
-      <implementation-class>jetbrains.mps.ide.editor.icons.NodeIconUpdater</implementation-class>
-    </component>
-
-    <component>
-      <interface-class>jetbrains.mps.nodeEditor.Highlighter</interface-class>
-      <implementation-class>jetbrains.mps.nodeEditor.Highlighter</implementation-class>
-      <headless-implementation-class>jetbrains.mps.nodeEditor.EmptyHighlighter</headless-implementation-class>
-    </component>
-
-    <component>
-      <interface-class>jetbrains.mps.openapi.editor.extensions.EditorExtensionRegistry</interface-class>
-      <implementation-class>jetbrains.mps.ide.editor.EditorExtensionRegistryImpl</implementation-class>
-    </component>
-
-    <component>
-      <implementation-class>jetbrains.mps.ide.editor.MPSValidationComponent</implementation-class>
-    </component>
-
-    <component>
-      <implementation-class>jetbrains.mps.nodeEditor.SearchHistoryComponent</implementation-class>
-    </component>
-
-    <component>
-      <implementation-class>jetbrains.mps.nodeEditor.InspectorTool</implementation-class>
-    </component>
-
-    <component>
-      <implementation-class>jetbrains.mps.ide.editor.warningPanel.MPSEditorWarningsManager</implementation-class>
-    </component>
-
-    <component>
-      <implementation-class>com.intellij.openapi.fileEditor.FileEditorDataProviderManager</implementation-class>
-    </component>
-
-    <component>
-      <implementation-class>jetbrains.mps.ide.editor.StyleRegistryIdeaImpl</implementation-class>
-    </component>
-
-    <component>
-      <implementation-class>jetbrains.mps.nodeEditor.hintsSettings.ConceptEditorHintSettingsComponent</implementation-class>
-    </component>
-  </project-components>
+    <!-- next 2 listeners work together with MPSEditorWarningsManager project service, registered below -->
+    <listener class="jetbrains.mps.ide.editor.warningPanel.MPSEditorWarningsManager$EditorManagerListener"
+              topic="com.intellij.openapi.fileEditor.FileEditorManagerListener"
+              activeInHeadlessMode="false" activeInTestMode="false" />
+    <listener class="jetbrains.mps.ide.editor.warningPanel.MPSEditorWarningsManager$FileStatusListener"
+              topic="com.intellij.openapi.vcs.FileStatusListener"
+              activeInHeadlessMode="false" activeInTestMode="false" />
+  </projectListeners>
 
   <extensions defaultExtensionNs="com.intellij">
+    <!-- requested by FileBasedIndexImpl, so, to make start-up more flat, also preload -->
+    <applicationService serviceInterface="com.intellij.openapi.fileEditor.FileDocumentManager" overrides="true" preload="true"
+                        serviceImplementation="jetbrains.mps.ide.editor.MPSFileDocumentManagerImpl"/>
+    <applicationService serviceImplementation="jetbrains.mps.nodeEditor.EditorSettings"/>
+    <applicationService serviceImplementation="jetbrains.mps.intentions.IntentionsManager"/>
+    <applicationService serviceImplementation="jetbrains.mps.nodeEditor.documentation.MPSDocumentationManager"/>
+    <applicationService serviceImplementation="jetbrains.mps.nodeEditor.cells.contextAssistant.ContextAssistantSettings"/>
+
+    <projectService serviceImplementation="jetbrains.mps.nodeEditor.hintsSettings.ConceptEditorHintSettingsComponent" />
+    <projectService serviceImplementation="jetbrains.mps.ide.editor.EditorTrackService" />
+    <projectService serviceImplementation="jetbrains.mps.nodeEditor.documentation.MPSDocumentationToolWindowManager"/>
+    <projectService serviceImplementation="jetbrains.mps.ide.editor.NodeEditorSModelChangeListener" preload="true"/>
+
+    <projectService serviceInterface="jetbrains.mps.ide.search.SearchHistoryStorage" serviceImplementation="jetbrains.mps.nodeEditor.SearchHistoryComponent"/>
+
+    <!-- works in conjunction with project listeners, above. -->
+    <projectService serviceImplementation="jetbrains.mps.ide.editor.warningPanel.MPSEditorWarningsManager" />
+
+    <projectService serviceInterface="jetbrains.mps.nodeEditor.Highlighter"
+                    serviceImplementation="jetbrains.mps.nodeEditor.Highlighter"
+                    headlessImplementation="jetbrains.mps.nodeEditor.EmptyHighlighter"/>
+    <!-- No idea if there's any reason to keep serviceInterface == serviceImplementation, just leave it as it was with project component -->
+
     <fileEditorProvider implementation="jetbrains.mps.ide.editor.MPSFileNodeEditorProvider"/>
 
     <fileIconProvider implementation="jetbrains.mps.ide.editor.icons.NodeFileIconProvider"/>
@@ -98,5 +67,24 @@
     <mps.editorWarningsProvider implementation="jetbrains.mps.ide.editor.warningPanel.UnresolvedModelImportsProvider"/>
 
     <customizableActionGroupProvider implementation="jetbrains.mps.ide.editor.MPSEditorCustomizableActionGroupProvider"/>
+    <!--Editor-->
+    <applicationConfigurable groupId="editor" groupWeight="200" instance="jetbrains.mps.nodeEditor.EditorSettingsConfigurable"
+                             bundle="jetbrains.mps.nodeEditor.resources.EditorSettingsBundle" key="title.editor.settings"
+                             id="mps.editor.settings" order="before preferences.editor"/>
+    <!--Editor Hints-->
+    <projectConfigurable groupId="editor" groupWeight="180" dynamic="true"
+                         instance="jetbrains.mps.nodeEditor.hintsSettings.ConceptEditorHintConfigurable"
+                         displayName="MPS Editor Hints" order="after preferences.sourceCode" nonDefaultProject="true"/>
   </extensions>
-</components>
+
+  <extensions defaultExtensionNs="jetbrains.mps">
+    <componentPluginFactory implementation="jetbrains.mps.ide.editor.MPSEditorPlugin$Factory"/>
+    <editor.highlighter.contributor implementation="jetbrains.mps.ide.editor.MPSValidationComponent" />
+  </extensions>
+
+  <actions>
+    <action id="MPS.Editor.ShowIntentionMenu" class="com.intellij.openapi.actionSystem.EmptyAction" text="Show Intention Popup">
+      <keyboard-shortcut first-keystroke="alt ENTER" keymap="$default"/>
+    </action>
+  </actions>
+</idea-plugin>

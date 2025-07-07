@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,10 +26,8 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.action.AbstractNodeSubstituteAction;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -55,8 +53,7 @@ public abstract class AbstractCellMenuPart_ReplaceNode_Group implements Substitu
       return Collections.emptyList();
     }
 
-    final IOperationContext context = editorContext.getOperationContext();
-    List parameterObjects = createParameterObjects(node, context, editorContext);
+    List parameterObjects = createParameterObjects(node, editorContext);
     if (parameterObjects == null) {
       return Collections.emptyList();
     }
@@ -76,7 +73,7 @@ public abstract class AbstractCellMenuPart_ReplaceNode_Group implements Substitu
 
         @Override
         public SNode doSubstitute(@Nullable final EditorContext editorContext, String pattern) {
-          SNode newNode = createReplacementNode(parameterObject, node, node.getModel(), context, editorContext);
+          SNode newNode = createReplacementNode(parameterObject, node, node.getModel(), editorContext);
           if (newNode != node) {
             SNodeUtil.replaceWithAnother(node, newNode);
             node.delete();
@@ -136,20 +133,10 @@ public abstract class AbstractCellMenuPart_ReplaceNode_Group implements Substitu
     return "";
   }
 
-  protected abstract List createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext);
+  @Nullable
+  protected abstract List<?> createParameterObjects(SNode node, EditorContext editorContext);
 
-  protected abstract SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext,
-      EditorContext editorContext);
-
-  /**
-   * @deprecated This method was used only to distinct concept declaration reference and concept that is given as node.
-   *             Now we should use truly concepts in parameter objects, not concept nodes.
-   */
-  @Deprecated
-  @ToRemove(version = 3.5)
-  protected boolean isReferentPresentation() {
-    return true;
-  }
+  protected abstract SNode createReplacementNode(Object parameterObject, SNode node, SModel model, EditorContext editorContext);
 
   protected EditorMenuDescriptor getEditorMenuDescriptor(Object parameterObject) {
     return null;

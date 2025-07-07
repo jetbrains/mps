@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,9 +18,10 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.extapi.model.EditableSModelBase;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.loading.PartialModelDataSupport;
-import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.smodel.loading.PartialModelDataSupport.ModelLoader;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 
 /**
@@ -32,17 +33,35 @@ public abstract class LazyEditableSModelBase extends EditableSModelBase {
 
   public LazyEditableSModelBase(@NotNull SModelReference modelReference, @NotNull DataSource source) {
     super(modelReference, source);
-    myLoadSupport = new PartialModelDataSupport<>(this, state -> {
-      ModelLoadResult<SModel> result = loadSModel(state);
-      if (result.getModelData() != null) {
-        result.getModelData().setModelDescriptor(LazyEditableSModelBase.this, getNodeEventDispatch());
+    myLoadSupport = new PartialModelDataSupport<>(this, new ModelLoader<SModel>() {
+      @Override
+      public @NotNull ModelLoadResult<SModel> doLoad(ModelLoadingState state) {
+        ModelLoadResult<SModel> result = LazyEditableSModelBase.this.loadSModel(state);
+        if (result.getModelData() != null) {
+          result.getModelData().setModelDescriptor(LazyEditableSModelBase.this, LazyEditableSModelBase.this.getNodeEventDispatch());
+        }
+        return result;
       }
-      return result;
+
+      @Override
+      public void completeUpdate(SModel modelData) {
+        // XXX still not sure if it's the best idea to update references on load, it's legacy approach and
+        //     I don't see proper justification. Doing this on 'save' might be enough (for MPS-22440 scenario,
+        //     'generation required' won't show up as the model won't be marked as changed on 'full load').
+        final SRepository repo = LazyEditableSModelBase.this.getRepository();
+        if (repo != null) {
+          boolean needToSave = modelData.updateExternalReferences(repo);
+
+          if (needToSave && !getSource().isReadOnly()) {
+            LazyEditableSModelBase.this.setChanged(true);
+          }
+        }
+      }
     });
   }
 
   @Override
-  public final SModel getSModelInternal() {
+  public final SModel getSModel() {
     ModelLoadingState oldState = getLoadingState();
     SModel res = myLoadSupport.getModel(ModelLoadingState.INTERFACE_LOADED);
     if (res == null) {
@@ -54,11 +73,15 @@ public abstract class LazyEditableSModelBase extends EditableSModelBase {
 
   @Override
   public final void load() {
+    ModelLoadingState oldState = getLoadingState();
     myLoadSupport.getModel(ModelLoadingState.FULLY_LOADED);
+    // e.g. could transition from INTERFACE_LOADED to FULLY_LOADED
+    fireModelStateChanged(oldState, getLoadingState());
   }
 
   @Override
   protected final SModel getCurrentModelInternal() {
+    // getModel(null) is not expected to change loading state, hence no fireModeStateChanged here
     return myLoadSupport.getModel(null);
   }
 
@@ -91,7 +114,7 @@ public abstract class LazyEditableSModelBase extends EditableSModelBase {
     }
   }
 
-  @ToRemove(version = 0)
+  @Deprecated(since = "0", forRemoval = true)
   private static boolean needToChangeReference(SModelReference oldRef, SModelReference newRef) {
     return !(oldRef.getModelId().equals(newRef.getModelId()) && oldRef.getName().equals(newRef.getName()));
   }

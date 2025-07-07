@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ import jetbrains.mps.core.aspects.behaviour.api.BehaviorRegistry;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.api.SMethodId;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Internal;
@@ -45,24 +44,6 @@ public final class BHReflection {
   public static void initNode(@NotNull SNode node) {
     BHDescriptor bhDescriptor = getBHDescriptor(node.getConcept());
     bhDescriptor.initNode(node);
-  }
-
-  /**
-   * @deprecated operand is not null actually, use #invoke0 below instead
-   */
-  @Deprecated
-  @ToRemove(version = 2018.1)
-  public static Object invoke(@Nullable SNode operand, @NotNull SMethodId methodId, Object... parameters) {
-    return invoke0(operand, operand.getConcept(), methodId, parameters);
-  }
-
-  /**
-   * @deprecated operand is not null actually, use #invoke0 below instead
-   */
-  @Deprecated
-  @ToRemove(version = 2018.1)
-  public static Object invoke(@Nullable SAbstractConcept operand, @NotNull SMethodId methodId, Object... parameters) {
-    return invoke0(operand, operand, methodId, parameters);
   }
 
   /**

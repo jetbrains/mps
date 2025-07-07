@@ -10,9 +10,9 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.baseLanguage.behavior.ExpressionStatement__BehaviorDescriptor;
@@ -25,27 +25,21 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public final class ReplaceConditionalWithIf_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ReplaceConditionalWithIf_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "1199561300578"));
   }
+
   @Override
   public String getPresentation() {
     return "ReplaceConditionalWithIf";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (SNodeOperations.cast(SNodeOperations.getNodeAncestor(node, CONCEPTS.Statement$P6, false, false), CONCEPTS.Statement$P6) != null);
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -55,13 +49,15 @@ public final class ReplaceConditionalWithIf_Intention extends AbstractIntentionD
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Replace Conditional with If";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      // variable initialization case - split or you'll loose this var from scope 
+      // variable initialization case - split or you'll loose this var from scope
       SNode stmtNode = SNodeOperations.cast(SNodeOperations.getNodeAncestor(node, CONCEPTS.Statement$P6, false, false), CONCEPTS.Statement$P6);
       if (SNodeOperations.isInstanceOf(stmtNode, CONCEPTS.LocalVariableDeclarationStatement$4w)) {
         SNode variableDeclaration = SLinkOperations.getTarget(SNodeOperations.cast(stmtNode, CONCEPTS.LocalVariableDeclarationStatement$4w), LINKS.localVariableDeclaration$RpjM);
@@ -77,20 +73,20 @@ public final class ReplaceConditionalWithIf_Intention extends AbstractIntentionD
         stmtNode = SNodeOperations.replaceWithNewChild(stmtNode, CONCEPTS.ReturnStatement$lt);
         SLinkOperations.setTarget(SNodeOperations.cast(stmtNode, CONCEPTS.ReturnStatement$lt), LINKS.expression$eJ92, originalExpression);
       }
-      // Get used nodes 
+      // Get used nodes
       SNode nodeParent = SNodeOperations.getParent(node);
       int nodeIndex = ListSequence.fromList(SNodeOperations.getChildren(nodeParent)).indexOf(node);
       SNode nodeCopy = SNodeOperations.copyNode(node);
-      // make + node 
+      // make + node
       SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(nodeCopy, LINKS.ifTrue$Tg0R));
       SNode trueStmt = SNodeOperations.copyNode(stmtNode);
-      // make - node 
+      // make - node
       SNodeOperations.replaceWithAnother(ListSequence.fromList(SNodeOperations.getChildren(nodeParent)).getElement(nodeIndex), SLinkOperations.getTarget(nodeCopy, LINKS.ifFalse$Wbma));
-      // make the best - block ever 
+      // make the best - block ever
       SNode falseBlockStmt = SNodeFactoryOperations.createNewNode(CONCEPTS.BlockStatement$u4, null);
       SNodeFactoryOperations.setNewChild(falseBlockStmt, LINKS.statements$q65M, null);
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(falseBlockStmt, LINKS.statements$q65M), LINKS.statement$53DE)).insertElement(0, SNodeOperations.copyNode(stmtNode));
-      // make if-statement and replace 
+      // make if-statement and replace
       SNode ifNode = SNodeFactoryOperations.createNewNode(CONCEPTS.IfStatement$Q4, null);
       SLinkOperations.setTarget(ifNode, LINKS.condition$5R17, SLinkOperations.getTarget(node, LINKS.condition$nwNI));
       SNodeFactoryOperations.setNewChild(ifNode, LINKS.ifTrue$5Rg8, null);
@@ -98,10 +94,25 @@ public final class ReplaceConditionalWithIf_Intention extends AbstractIntentionD
       SLinkOperations.setTarget(ifNode, LINKS.ifFalseStatement$psZK, falseBlockStmt);
       SNodeOperations.replaceWithAnother(stmtNode, ifNode);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return (SNodeOperations.cast(SNodeOperations.getNodeAncestor(node, CONCEPTS.Statement$P6, false, false), CONCEPTS.Statement$P6) != null);
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ReplaceConditionalWithIf_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

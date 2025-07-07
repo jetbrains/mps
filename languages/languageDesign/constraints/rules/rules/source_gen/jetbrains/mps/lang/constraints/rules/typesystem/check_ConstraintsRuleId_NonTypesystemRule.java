@@ -15,7 +15,6 @@ import jetbrains.mps.errors.BaseQuickFixProvider;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.structure.util.ConceptIdHelper;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -33,22 +32,18 @@ public class check_ConstraintsRuleId_NonTypesystemRule extends AbstractNonTypesy
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(rule, "Rule id is not defined", "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "1587916991969781666", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.constraints.rules.typesystem.correct_RuleId_QuickFix", true);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.constraints.rules.typesystem.correct_RuleId_QuickFix", "315923949160367227", true);
           intentionProvider.putArgument("rule", rule);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }
     } else {
-      if (ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(rule), CONCEPTS.Rule$DP)).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return it != rule && Objects.equals(SPropertyOperations.getString(it, PROPS.ruleId$WGdw), SPropertyOperations.getString(rule, PROPS.ruleId$WGdw));
-        }
-      })) {
+      if (ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(rule), CONCEPTS.Rule$DP)).any((it) -> it != rule && Objects.equals(SPropertyOperations.getString(it, PROPS.ruleId$WGdw), SPropertyOperations.getString(rule, PROPS.ruleId$WGdw)))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(rule, "Duplicate rule id", "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "5424895381998262898", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.constraints.rules.typesystem.correct_RuleId_QuickFix", true);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.constraints.rules.typesystem.correct_RuleId_QuickFix", "315923949160367525", true);
             intentionProvider.putArgument("rule", rule);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
@@ -58,7 +53,7 @@ public class check_ConstraintsRuleId_NonTypesystemRule extends AbstractNonTypesy
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(rule, "Node id and rule id differ", "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "2819660830273583910", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.constraints.rules.typesystem.correct_RuleId_QuickFix", true);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.constraints.rules.typesystem.correct_RuleId_QuickFix", "315923949160351508", true);
             intentionProvider.putArgument("rule", rule);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
@@ -76,7 +71,7 @@ public class check_ConstraintsRuleId_NonTypesystemRule extends AbstractNonTypesy
     return false;
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
 
   private static final class PROPS {

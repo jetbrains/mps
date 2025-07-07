@@ -19,8 +19,6 @@ import jetbrains.mps.lang.migration.runtime.base.Problem;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.UsageOfMigrateNodeNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
@@ -48,11 +46,7 @@ public class MigrateEnumPropertyUsagesAndPropertyAntiquotation extends Migration
     {
       SearchScope scope_pk3j60_b0e = CommandUtil.createScope(m);
       final SearchScope scope_pk3j60_b0e_0 = new EditableFilteringScope(scope_pk3j60_b0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_pk3j60_b0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_pk3j60_b0e_0;
       for (SNode propertyInit : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilderInitProperty$xv, false))) {
         SNode newProperty = migration.migratePropertyReference(propertyInit, LINKS.property$Y_u4);
         if (newProperty != null) {
@@ -80,48 +74,22 @@ public class MigrateEnumPropertyUsagesAndPropertyAntiquotation extends Migration
     {
       SearchScope scope_pk3j60_a0f = CommandUtil.createScope(m);
       final SearchScope scope_pk3j60_a0f_0 = new EditableFilteringScope(scope_pk3j60_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_pk3j60_a0f_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_pk3j60_a0f_0;
       List<Problem> problems = ListSequence.fromList(new ArrayList<Problem>());
-      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilderInitProperty$xv, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SLinkOperations.getTarget(it, LINKS.property$Y_u4)), CONCEPTS.EnumPropertyMigrationInfo$O3);
-        }
-      }).select(new ISelector<SNode, UsageOfMigrateNodeNotMigratedProblem>() {
-        public UsageOfMigrateNodeNotMigratedProblem select(SNode it) {
-          return new UsageOfMigrateNodeNotMigratedProblem(it, SLinkOperations.getTarget(it, LINKS.property$Y_u4));
-        }
+      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilderInitProperty$xv, false)).where((it) -> SNodeOperations.isInstanceOf(SNodeOperations.getParent(SLinkOperations.getTarget(it, LINKS.property$Y_u4)), CONCEPTS.EnumPropertyMigrationInfo$O3)).select((it) -> new UsageOfMigrateNodeNotMigratedProblem(it, SLinkOperations.getTarget(it, LINKS.property$Y_u4))));
+      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyAntiquotation$13, false)).where((it) -> !(SPropertyOperations.getBoolean(it, PROPS.stringValueMigrated$2KQs))).select((it) -> {
+        return new NotMigratedNode(it) {
+          @Override
+          public String getMessage() {
+            return "Property antiquotation uses raw property value";
+          }
+        };
       }));
-      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyAntiquotation$13, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SPropertyOperations.getBoolean(it, PROPS.stringValueMigrated$2KQs));
-        }
-      }).select(new ISelector<SNode, NotMigratedNode>() {
-        public NotMigratedNode select(SNode it) {
-          return new NotMigratedNode(it) {
-            @Override
-            public String getMessage() {
-              return "Property antiquotation uses raw property value";
-            }
-          };
-        }
-      }));
-      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyAntiquotation$13, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SNodeOperations.getParent(PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(it)), CONCEPTS.EnumPropertyMigrationInfo$O3);
-        }
-      }).select(new ISelector<SNode, UsageOfMigrateNodeNotMigratedProblem>() {
-        public UsageOfMigrateNodeNotMigratedProblem select(SNode it) {
-          return new UsageOfMigrateNodeNotMigratedProblem(it, PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(it));
-        }
-      }));
+      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyAntiquotation$13, false)).where((it) -> SNodeOperations.isInstanceOf(SNodeOperations.getParent(PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(it)), CONCEPTS.EnumPropertyMigrationInfo$O3)).select((it) -> new UsageOfMigrateNodeNotMigratedProblem(it, PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(it))));
       return problems;
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, "jetbrains.mps.lang.quotation"), 1);
   }
 

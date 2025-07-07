@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,6 @@ package jetbrains.mps.idea.build;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.core.platform.Platform;
-import jetbrains.mps.generator.DefaultModifiableGenerationSettings;
-import jetbrains.mps.generator.GenerationSettingsProvider;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.messages.MessagesViewTool;
 import jetbrains.mps.ide.project.ProjectHelper;
@@ -52,9 +50,8 @@ public class GenerateModelsInProcess {
   }
 
   public void generate(@Nullable final MPSMakeConfigurator makeConfigurator) {
-    GenerationSettingsProvider.getInstance().setGenerationSettings(new DefaultModifiableGenerationSettings());
     Iterable<IResource> resources = new ModelsToResources(myModels).resources();
-    MessagesViewTool messagesView = myProject.getComponent(MessagesViewTool.class);
+    MessagesViewTool messagesView = myProject.getService(MessagesViewTool.class);
     IMessageHandler msgHandler = messagesView.newHandler("MPS generator");
 
     final MakeSession makeSession = new MakeSession(ProjectHelper.fromIdeaProject(myProject), msgHandler, true);

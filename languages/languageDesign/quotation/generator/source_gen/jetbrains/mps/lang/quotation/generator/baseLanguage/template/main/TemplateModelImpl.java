@@ -57,6 +57,9 @@ public class TemplateModelImpl extends TemplateModelBase {
     if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1006429225401295242"))) {
       return new Template_NodeBuilder_to_methodCall();
     }
+    if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730598998073"))) {
+      return new Template_nodeBuilder();
+    }
     return null;
   }
 }

@@ -9,14 +9,12 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -27,8 +25,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class JavaImports__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, "jetbrains.mps.baseLanguage.structure.JavaImports");
 
-  public static final SMethod<Iterable<SNode>> staticOnDemand_id4ykJ8Y6iCVz = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("staticOnDemand").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4ykJ8Y6iCVz").build();
-  public static final SMethod<Iterable<SNode>> staticSingleName_id4ykJ8Y6iJRa = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("staticSingleName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4ykJ8Y6iJRa").build();
+  public static final SMethod<Iterable<SNode>> staticOnDemand_id4ykJ8Y6iCVz = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("staticOnDemand").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5230012391903366883L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Iterable<SNode>> staticSingleName_id4ykJ8Y6iJRa = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("staticSingleName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5230012391903395274L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(staticOnDemand_id4ykJ8Y6iCVz, staticSingleName_id4ykJ8Y6iJRa);
 
@@ -36,18 +34,10 @@ public final class JavaImports__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Iterable<SNode> staticOnDemand_id4ykJ8Y6iCVz(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.entries$neZo)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getBoolean(it, PROPS.static$JAuQ) && SPropertyOperations.getBoolean(it, PROPS.onDemand$Gmdi);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.entries$neZo)).where((it) -> SPropertyOperations.getBoolean(it, PROPS.static$JAuQ) && SPropertyOperations.getBoolean(it, PROPS.onDemand$Gmdi));
   }
   /*package*/ static Iterable<SNode> staticSingleName_id4ykJ8Y6iJRa(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.entries$neZo)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getBoolean(it, PROPS.static$JAuQ) && !(SPropertyOperations.getBoolean(it, PROPS.onDemand$Gmdi));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.entries$neZo)).where((it) -> SPropertyOperations.getBoolean(it, PROPS.static$JAuQ) && !(SPropertyOperations.getBoolean(it, PROPS.onDemand$Gmdi)));
   }
 
   /*package*/ JavaImports__BehaviorDescriptor() {

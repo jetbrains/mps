@@ -8,13 +8,13 @@ import javax.swing.Icon;
 import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import javax.swing.tree.TreeNode;
+import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.ide.ui.smodel.ReferenceTreeNode;
-import jetbrains.mps.ide.ui.smodel.ReferencesTreeNode;
+import jetbrains.mps.ide.ui.tree.ContextValueProvider;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1229264031275", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1229264031275", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class DeleteReferenceAction_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -29,11 +29,13 @@ public class DeleteReferenceAction_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    if (!(((TreeNode) MapSequence.fromMap(_params).get("node")) instanceof ReferenceTreeNode)) {
+    if (!(((SReference) MapSequence.fromMap(_params).get("selectedValue")) instanceof SReference)) {
       return false;
     }
-    TreeNode parent = ((TreeNode) MapSequence.fromMap(_params).get("node")).getParent();
-    return parent instanceof ReferencesTreeNode;
+    if (((Object) MapSequence.fromMap(_params).get("selectedObject")) instanceof ContextValueProvider) {
+      return ((ContextValueProvider) ((Object) MapSequence.fromMap(_params).get("selectedObject"))).contextValueOfType(SNode.class).isPresent();
+    }
+    return false;
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -45,9 +47,19 @@ public class DeleteReferenceAction_Action extends BaseAction {
       return false;
     }
     {
-      TreeNode p = event.getData(MPSCommonDataKeys.TREE_NODE);
-      MapSequence.fromMap(_params).put("node", p);
+      Object p = event.getData(MPSCommonDataKeys.USER_OBJECT);
+      MapSequence.fromMap(_params).put("selectedObject", p);
       if (p == null) {
+        return false;
+      }
+    }
+    {
+      Object p = event.getData(MPSCommonDataKeys.VALUE);
+      MapSequence.fromMap(_params).put("selectedValue", p);
+      if (p == null) {
+        return false;
+      }
+      if (p != null && !(p instanceof SReference)) {
         return false;
       }
     }
@@ -55,9 +67,7 @@ public class DeleteReferenceAction_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    TreeNode parent = ((TreeNode) MapSequence.fromMap(_params).get("node")).getParent();
-    ReferencesTreeNode refsNode = (ReferencesTreeNode) parent;
-    ReferenceTreeNode refNode = (ReferenceTreeNode) ((TreeNode) MapSequence.fromMap(_params).get("node"));
-    refsNode.getSNode().setReference(refNode.getRef().getLink(), null);
+    SNode snode = ((ContextValueProvider) ((Object) MapSequence.fromMap(_params).get("selectedObject"))).contextValueOfType(SNode.class).get();
+    snode.dropReference(((SReference) MapSequence.fromMap(_params).get("selectedValue")).getLink());
   }
 }

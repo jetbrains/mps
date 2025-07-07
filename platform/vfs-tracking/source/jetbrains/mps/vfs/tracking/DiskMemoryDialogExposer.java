@@ -15,16 +15,21 @@
  */
 package jetbrains.mps.vfs.tracking;
 
-import jetbrains.mps.vfs.tracking.ModelMemoryDiskConflictResolver.UserChoice;
+import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
+import jetbrains.mps.vfs.tracking.ConflictResolverImpl.UserChoice;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.EditableSModel;
+import org.jetbrains.mps.openapi.persistence.DataSource;
 
 import java.awt.Component;
 import java.io.File;
 
 @FunctionalInterface
 public interface DiskMemoryDialogExposer {
-  @NotNull UserChoice askUser(@Nullable Component parentComponent, @NotNull EditableSModel model, @NotNull File backupFile);
+  @NotNull UserChoice askUser(@Nullable Component parentComponent,
+                              @NotNull EditableSModel model,
+                              @NotNull FileSystemBasedDataSource source,
+                              @NotNull File backupFile);
 }
 

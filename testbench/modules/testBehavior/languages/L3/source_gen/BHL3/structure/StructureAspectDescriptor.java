@@ -53,15 +53,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("BHL3", "A", 0x9dabd0d4b67a4eefL, 0xb645d5534ca67594L, 0x6ab2e61d35e47365L);
     b.class_(false, false, false);
     b.origin("r:550e598c-d156-49bb-9397-c8a08d52175e(BHL3.structure)/7688460527007462245");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForB() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("BHL3", "B", 0x9dabd0d4b67a4eefL, 0xb645d5534ca67594L, 0x6ab2e61d35e475ecL);
     b.class_(false, false, false);
-    b.super_("BHL3.structure.A", 0x9dabd0d4b67a4eefL, 0xb645d5534ca67594L, 0x6ab2e61d35e47365L);
+    // extends: BHL3.structure.A
+    b.super_(0x9dabd0d4b67a4eefL, 0xb645d5534ca67594L, 0x6ab2e61d35e47365L);
     b.origin("r:550e598c-d156-49bb-9397-c8a08d52175e(BHL3.structure)/7688460527007462892");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
 }

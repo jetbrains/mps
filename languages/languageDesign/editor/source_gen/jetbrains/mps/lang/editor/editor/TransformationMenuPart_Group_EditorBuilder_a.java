@@ -88,7 +88,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "variables");
     editorCell.setCellId("Constant_x4c5fc_a1a");
     Style style = new StyleImpl();
-    new EditorKeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new EditorKeyWordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, true);
     style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
     editorCell.getStyle().putAll(style);
@@ -187,7 +187,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "condition");
     editorCell.setCellId("Constant_x4c5fc_c1a");
     Style style = new StyleImpl();
-    new EditorKeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new EditorKeyWordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, true);
     style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
     editorCell.getStyle().putAll(style);
@@ -266,7 +266,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
     editorCell.setCellId("ReadOnlyModelAccessor_x4c5fc_a1a");
     Style style = new StyleImpl();
-    new FoldedCellStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new FoldedCellStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, false);
     editorCell.getStyle().putAll(style);
     return editorCell;
@@ -302,11 +302,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.TransformationMenuPart$N$;
     }
-    public SNode createNodeToInsert(EditorContext editorContext) {
-      return nodeFactory();
+    public SNode createNodeToInsert(EditorContext editorContext, SNode prevNode, SNode nextNode, int index) {
+      return nodeFactory(prevNode, nextNode, index);
     }
 
-    public SNode nodeFactory() {
+    public SNode nodeFactory(SNode prevNode, SNode nextNode, int index) {
       return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ed0e5fc004ba432L, "jetbrains.mps.lang.editor.structure.TransformationMenuPart_Placeholder"));
     }
     public EditorCell createNodeCell(SNode elementNode) {

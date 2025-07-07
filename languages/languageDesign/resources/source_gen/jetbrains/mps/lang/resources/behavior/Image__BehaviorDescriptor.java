@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -19,11 +18,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.FileSystem;
+import java.io.File;
 import javax.swing.ImageIcon;
 import jetbrains.mps.util.IconCreationUtil;
-import org.jetbrains.mps.openapi.util.Consumer;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -32,8 +29,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class Image__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0xb8b96b5078f3367L, "jetbrains.mps.lang.resources.structure.Image");
 
-  public static final SMethod<Boolean> isValid_idIb_Fk7zRKP = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValid").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("Ib_Fk7zRKP").build();
-  public static final SMethod<byte[]> getImageForGeneration_id2p1v3tObywX = new SMethodBuilder<byte[]>(new SJavaCompoundTypeImpl(byte[].class)).name("getImageForGeneration").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2p1v3tObywX").build();
+  public static final SMethod<Boolean> isValid_idIb_Fk7zRKP = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValid").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(831924260440079413L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
+  public static final SMethod<byte[]> getImageForGeneration_id2p1v3tObywX = new SMethodBuilder<byte[]>(new SJavaCompoundTypeImpl(byte[].class)).name("getImageForGeneration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2756621024541681725L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isValid_idIb_Fk7zRKP, getImageForGeneration_id2p1v3tObywX);
 
@@ -46,14 +43,11 @@ public final class Image__BehaviorDescriptor extends BaseBHDescriptor {
       return false;
     }
     MacroHelper macroHelper = MacrosFactory.forModule(module);
-    if (macroHelper == null) {
-      return false;
-    }
     String path = macroHelper.expandPath(SPropertyOperations.getString(__thisNode__, PROPS.file$He6o));
     if (path == null) {
       return false;
     }
-    IFile file = FileSystem.getInstance().getFile(path);
+    File file = new File(path);
     if (!(file.exists())) {
       return false;
     }
@@ -65,10 +59,9 @@ public final class Image__BehaviorDescriptor extends BaseBHDescriptor {
     }
   }
   /*package*/ static byte[] getImageForGeneration_id2p1v3tObywX(@NotNull final SNode __thisNode__) {
-    return IconCreationUtil.drawIcon(new Consumer<IconCreationUtil.DrawContext>() {
-      public void consume(IconCreationUtil.DrawContext dc) {
-        new ImageIcon(SPropertyOperations.getString(__thisNode__, PROPS.file$He6o)).paintIcon(null, dc.g, 0, 0);
-      }
+    return IconCreationUtil.drawIcon((IconCreationUtil.DrawContext dc) -> {
+      // XXX why this.file goes w/o MacroHelper.expandPath(), like in isValid, above?
+      new ImageIcon(SPropertyOperations.getString(__thisNode__, PROPS.file$He6o)).paintIcon(null, dc.g, 0, 0);
     });
   }
 

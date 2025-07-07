@@ -134,7 +134,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.core.editor.alias");
     Style style = new StyleImpl();
-    new OperatorStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new OperatorStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.BaseAssignmentExpression$PA, "jetbrains.mps.baseLanguage.editor.BaseAssignmentExpression_Alias_TransformationMenu"));
     editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_BaseAssignmentExpression_cellMenu_89tgy3_a0b0(), new SChildSubstituteInfoPartEx(editorCell)}));

@@ -8,25 +8,25 @@ import jetbrains.mps.nodeEditor.EditorMessageIconRenderer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import javax.swing.Icon;
-import jetbrains.mps.ide.editor.popup.IconResourceBundle_OverrideImplements;
+import jetbrains.mps.ide.editor.popup.OverrideImplementsIcons;
 import com.intellij.openapi.actionSystem.AnAction;
 import jetbrains.mps.workbench.action.BaseAction;
 import com.intellij.openapi.actionSystem.ActionManager;
 
-@GeneratedClass(node = "r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)/8432634623182579833", model = "r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)")
+@GeneratedClass(nodeId = "8432634623182579833", model = "r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)")
 public class OverriddenMethodEditorMessage extends AbstractOverrideEditorMessage {
   private static final EditorMessageIconRenderer.IconRendererType TYPE = new EditorMessageIconRenderer.IconRendererType(2);
 
-  private final boolean isOverriden;
+  private final boolean myOverridenFlag;
 
   public OverriddenMethodEditorMessage(SNode node, EditorMessageOwner owner, String tooltip, boolean overriden) {
     super(node, owner, tooltip);
-    this.isOverriden = overriden;
+    myOverridenFlag = overriden;
   }
 
   @Override
   public Icon getIcon() {
-    return (this.isOverriden ? IconResourceBundle_OverrideImplements.getInstance().getResource("OVERRIDDEN") : IconResourceBundle_OverrideImplements.getInstance().getResource("IMPLEMENTED"));
+    return (myOverridenFlag ? OverrideImplementsIcons.OVERRIDDEN : OverrideImplementsIcons.IMPLEMENTED);
   }
 
   @Override

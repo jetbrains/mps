@@ -10,7 +10,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.smodel.SModelInternal;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import java.util.function.Predicate;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
@@ -38,12 +37,8 @@ public class UseDevkit extends MigrationScriptBase {
     if (mi.importedDevkits().contains(constraintsDevkit)) {
       return;
     }
-    if (mi.importedLanguageIds().stream().anyMatch(new Predicate<SLanguage>() {
-      public boolean test(SLanguage l) {
-        return !(l.getQualifiedName().startsWith("jetbrains.mps."));
-      }
-    })) {
-      // Transition code, in case aspect uses custom extensions, do not turn GP on for it yet. 
+    if (mi.importedLanguageIds().stream().anyMatch((SLanguage l) -> !(l.getQualifiedName().startsWith("jetbrains.mps.")))) {
+      // Transition code, in case aspect uses custom extensions, do not turn GP on for it yet.
       return;
     }
     mi.deleteLanguageId(MetaAdapterFactory.getLanguage(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, "jetbrains.mps.lang.constraints"));
@@ -54,7 +49,7 @@ public class UseDevkit extends MigrationScriptBase {
     mi.deleteDevKit(PersistenceFacade.getInstance().createModuleReference("fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)"));
     mi.addDevKit(constraintsDevkit);
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, "jetbrains.mps.lang.constraints"), 3);
   }
 

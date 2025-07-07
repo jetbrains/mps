@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SModel;
 import java.util.List;
@@ -22,11 +21,9 @@ import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -36,8 +33,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class PropertyDescriptor__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a0447fbb31L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.PropertyDescriptor");
 
-  public static final SMethod<SNode> create_id7ay_HjIOVVe = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("create").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7ay_HjIOVVe").build(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
-  public static final SMethod<Iterable<SNode>> find_id2gzehMfi1$l = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("find").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2gzehMfi1$l").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> create_id7ay_HjIOVVe = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("create").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8260330507834998478L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
+  public static final SMethod<Iterable<SNode>> find_id2gzehMfi1$l = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("find").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2603987804376013077L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(create_id7ay_HjIOVVe, find_id2gzehMfi1$l);
 
@@ -68,11 +65,7 @@ public final class PropertyDescriptor__BehaviorDescriptor extends BaseBHDescript
     return res;
   }
   /*package*/ static Iterable<SNode> find_id2gzehMfi1$l(@NotNull final SNode __thisNode__, SNode cls) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(cls, LINKS.member$L_2d), CONCEPTS.PropertyInstance$7w)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.decl$RIl) == __thisNode__;
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(cls, LINKS.member$L_2d), CONCEPTS.PropertyInstance$7w)).where((it) -> SLinkOperations.getTarget(it, LINKS.decl$RIl) == __thisNode__);
   }
 
   /*package*/ PropertyDescriptor__BehaviorDescriptor() {
@@ -123,21 +116,21 @@ public final class PropertyDescriptor__BehaviorDescriptor extends BaseBHDescript
     return CONCEPT;
   }
   private static SNode _quotation_createNode_j9hr46_a0b0b0a() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"));
+    quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
   private static SNode _quotation_createNode_j9hr46_a0b0a1a0() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d6513eL, "BooleanType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d6513eL, "BooleanType"));
+    quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
   private static SNode _quotation_createNode_j9hr46_a0b0b1a0() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d22479L, "IntegerType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d22479L, "IntegerType"));
+    quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
 

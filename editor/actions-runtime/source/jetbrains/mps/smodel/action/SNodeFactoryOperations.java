@@ -20,7 +20,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.nodeEditor.SNodeEditorUtil;
 import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -85,7 +84,7 @@ public class SNodeFactoryOperations {
   public static SNode addNewAttribute(SNode node, IAttributeDescriptor descriptor, SAbstractConcept childConcept) {
     if (node != null) {
       SNode newChild = NodeFactoryManager.createNode(childConcept, null, node, node.getModel());
-      AttributeOperations.addAttribute(node, descriptor, newChild);
+      descriptor.add(node, newChild);
       return newChild;
     }
     return null;
@@ -110,9 +109,9 @@ public class SNodeFactoryOperations {
 
   public static SNode setNewAttribute(SNode node, IAttributeDescriptor descriptor, SAbstractConcept childConcept) {
     if (node != null) {
-      SNode prototypeNode = AttributeOperations.getAttribute(node, descriptor);
+      SNode prototypeNode = descriptor.get(node);
       SNode newChild = NodeFactoryManager.createNode(childConcept, prototypeNode, node, node.getModel());
-      AttributeOperations.setAttribute(node, descriptor, newChild);
+      descriptor.set(node, newChild);
       return newChild;
     }
     return null;

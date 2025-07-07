@@ -4,7 +4,7 @@
   <languages>
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
     <import index="y3sp" ref="r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)" />
@@ -14,7 +14,9 @@
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="frkw" ref="b387285c-3448-452c-b3bb-a3f8de8eaf08/java:com.sun.jdi(JDK-tools/)" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
+    <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
+    <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
+    <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -32,6 +34,7 @@
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
         <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
+      <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
       <concept id="1239714755177" name="jetbrains.mps.baseLanguage.structure.AbstractUnaryNumberOperation" flags="nn" index="2$Kvd9">
         <child id="1239714902950" name="expression" index="2$L3a6" />
       </concept>
@@ -42,7 +45,7 @@
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
@@ -154,7 +157,7 @@
         <child id="1079359253376" name="expression" index="1eOMHV" />
       </concept>
       <concept id="1081506773034" name="jetbrains.mps.baseLanguage.structure.LessThanExpression" flags="nn" index="3eOVzh" />
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -185,7 +188,7 @@
       <concept id="1184952934362" name="jetbrains.mps.baseLanguage.structure.DimensionExpression" flags="nn" index="3$GHV9">
         <child id="1184953288404" name="expression" index="3$I4v7" />
       </concept>
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
@@ -196,11 +199,7 @@
         <child id="1144231408325" name="iteration" index="1Dwrff" />
       </concept>
       <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615" />
-      <concept id="1170075670744" name="jetbrains.mps.baseLanguage.structure.SynchronizedStatement" flags="nn" index="1HWtB8">
-        <child id="1170075728144" name="expression" index="1HWFw0" />
-        <child id="1170075736412" name="block" index="1HWHxc" />
-      </concept>
-      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
+      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="nn" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
@@ -253,7 +252,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -263,26 +262,6 @@
     <property role="1sVAO0" value="true" />
     <property role="1EXbeo" value="false" />
     <node concept="3Tm1VV" id="46sxDGTfnGk" role="1B3o_S" />
-    <node concept="Wx3nA" id="6w0uxLH27vW" role="jymVt">
-      <property role="TrG5h" value="INSTANCE" />
-      <node concept="3Tmbuc" id="6w0uxLH27vZ" role="1B3o_S" />
-      <node concept="3uibUv" id="6w0uxLH27w0" role="1tU5fm">
-        <ref role="3uigEE" node="46sxDGTfnGj" resolve="EvaluationUtils" />
-      </node>
-    </node>
-    <node concept="Wx3nA" id="6w0uxLH27wC" role="jymVt">
-      <property role="TrG5h" value="LOCK" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tmbuc" id="6w0uxLH27wF" role="1B3o_S" />
-      <node concept="3uibUv" id="6w0uxLH27wG" role="1tU5fm">
-        <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
-      </node>
-      <node concept="2ShNRf" id="6w0uxLH27wI" role="33vP2m">
-        <node concept="1pGfFk" id="6w0uxLH27wK" role="2ShVmc">
-          <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-        </node>
-      </node>
-    </node>
     <node concept="Wx3nA" id="5j5ipK2ftOy" role="jymVt">
       <property role="3TUv4t" value="true" />
       <property role="TrG5h" value="JAVA_LANG_OBJECT" />
@@ -296,22 +275,6 @@
       <node concept="3Tm1VV" id="46sxDGTfnGE" role="1B3o_S" />
       <node concept="3cqZAl" id="46sxDGTfnGF" role="3clF45" />
       <node concept="3clFbS" id="46sxDGTfnGG" role="3clF47" />
-    </node>
-    <node concept="3clFb_" id="6w0uxLH27w1" role="jymVt">
-      <property role="1EzhhJ" value="true" />
-      <property role="TrG5h" value="init" />
-      <property role="od$2w" value="false" />
-      <node concept="3cqZAl" id="6w0uxLH27w2" role="3clF45" />
-      <node concept="3Tm1VV" id="6w0uxLH27w3" role="1B3o_S" />
-      <node concept="3clFbS" id="6w0uxLH27w4" role="3clF47" />
-    </node>
-    <node concept="3clFb_" id="6w0uxLH27w5" role="jymVt">
-      <property role="1EzhhJ" value="true" />
-      <property role="TrG5h" value="dispose" />
-      <property role="od$2w" value="false" />
-      <node concept="3cqZAl" id="6w0uxLH27w6" role="3clF45" />
-      <node concept="3Tm1VV" id="6w0uxLH27w7" role="1B3o_S" />
-      <node concept="3clFbS" id="6w0uxLH27w8" role="3clF47" />
     </node>
     <node concept="3clFb_" id="6w0uxLH2nqo" role="jymVt">
       <property role="1EzhhJ" value="true" />
@@ -942,19 +905,22 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="1MgGTZ278we" role="jymVt" />
     <node concept="2YIFZL" id="6w0uxLH27wx" role="jymVt">
       <property role="TrG5h" value="getInstance" />
       <property role="od$2w" value="false" />
       <node concept="3Tm1VV" id="6w0uxLH27wz" role="1B3o_S" />
       <node concept="3clFbS" id="6w0uxLH27w$" role="3clF47">
-        <node concept="1HWtB8" id="6w0uxLH27wL" role="3cqZAp">
-          <node concept="37vLTw" id="2BHiRxeonLT" role="1HWFw0">
-            <ref role="3cqZAo" node="6w0uxLH27wC" resolve="LOCK" />
-          </node>
-          <node concept="3clFbS" id="6w0uxLH27wN" role="1HWHxc">
-            <node concept="3cpWs6" id="6w0uxLH27wP" role="3cqZAp">
-              <node concept="37vLTw" id="2BHiRxeoryW" role="3cqZAk">
-                <ref role="3cqZAo" node="6w0uxLH27vW" resolve="INSTANCE" />
+        <node concept="3clFbF" id="1MgGTZ279Ne" role="3cqZAp">
+          <node concept="2OqwBi" id="1MgGTZ27b1a" role="3clFbG">
+            <node concept="2YIFZM" id="1MgGTZ27aAe" role="2Oq$k0">
+              <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+              <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+            </node>
+            <node concept="liA8E" id="1MgGTZ27bCV" role="2OqNvi">
+              <ref role="37wK5l" to="1m72:~ComponentManager.getService(java.lang.Class)" resolve="getService" />
+              <node concept="3VsKOn" id="1MgGTZ27di2" role="37wK5m">
+                <ref role="3VsUkX" node="46sxDGTfnGj" resolve="EvaluationUtils" />
               </node>
             </node>
           </node>
@@ -964,6 +930,7 @@
         <ref role="3uigEE" node="46sxDGTfnGj" resolve="EvaluationUtils" />
       </node>
     </node>
+    <node concept="2tJIrI" id="1MgGTZ27dLG" role="jymVt" />
     <node concept="2YIFZL" id="46sxDGTfnXC" role="jymVt">
       <property role="TrG5h" value="handleInvocationExceptions" />
       <property role="DiZV1" value="false" />
@@ -2152,21 +2119,6 @@
         </node>
       </node>
     </node>
-    <node concept="Wx3nA" id="46sxDGTfoic" role="jymVt">
-      <property role="TrG5h" value="LOG" />
-      <property role="3TUv4t" value="true" />
-      <node concept="2YIFZM" id="3AvZeSkP3lS" role="33vP2m">
-        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-        <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-        <node concept="3VsKOn" id="3AvZeSkP3lT" role="37wK5m">
-          <ref role="3VsUkX" node="46sxDGTfoi9" resolve="TargetVMEvaluationException" />
-        </node>
-      </node>
-      <node concept="3Tm6S6" id="46sxDGTfoie" role="1B3o_S" />
-      <node concept="3uibUv" id="3AvZeSkP3lK" role="1tU5fm">
-        <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
-      </node>
-    </node>
     <node concept="3clFbW" id="46sxDGTfoih" role="jymVt">
       <node concept="3Tm1VV" id="46sxDGTfoii" role="1B3o_S" />
       <node concept="3cqZAl" id="46sxDGTfoij" role="3clF45" />
@@ -2509,16 +2461,19 @@
                 <node concept="3uibUv" id="46sxDGTfoiZ" role="nSUat">
                   <ref role="3uigEE" to="wyt6:~ClassCastException" resolve="ClassCastException" />
                 </node>
+                <node concept="3uibUv" id="2hdoiXP3m6B" role="nSUat">
+                  <ref role="3uigEE" node="46sxDGTfogQ" resolve="EvaluationException" />
+                </node>
               </node>
             </node>
             <node concept="3clFbS" id="46sxDGTfoiP" role="1zc67A">
               <node concept="3clFbF" id="46sxDGTfoiQ" role="3cqZAp">
                 <node concept="2OqwBi" id="3AvZeSkP3m1" role="3clFbG">
                   <node concept="liA8E" id="3AvZeSkP3m2" role="2OqNvi">
-                    <ref role="37wK5l" to="q7tw:~Category.warn(java.lang.Object,java.lang.Throwable)" resolve="warn" />
+                    <ref role="37wK5l" to="wwqx:~Logger.warning(java.lang.String,java.lang.Throwable)" resolve="warning" />
                     <node concept="3cpWs3" id="46sxDGTfoiU" role="37wK5m">
                       <node concept="Xl_RD" id="46sxDGTfoiV" role="3uHU7B">
-                        <property role="Xl_RC" value="Cant create TargetVMEvaluationException for " />
+                        <property role="Xl_RC" value="Can't create TargetVMEvaluationException for " />
                       </node>
                       <node concept="37vLTw" id="2BHiRxglKXL" role="3uHU7w">
                         <ref role="3cqZAo" node="46sxDGTfoiu" resolve="e" />
@@ -2528,42 +2483,12 @@
                       <ref role="3cqZAo" node="46sxDGTfoiY" resolve="exception" />
                     </node>
                   </node>
-                  <node concept="37vLTw" id="2BHiRxeoie4" role="2Oq$k0">
-                    <ref role="3cqZAo" node="46sxDGTfoic" resolve="LOG" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3uVAMA" id="46sxDGTfoj0" role="1zxBo5">
-            <node concept="XOnhg" id="46sxDGTfoja" role="1zc67B">
-              <property role="3TUv4t" value="false" />
-              <property role="TrG5h" value="exception" />
-              <node concept="nSUau" id="xvs04dGZbQ" role="1tU5fm">
-                <node concept="3uibUv" id="46sxDGTfojb" role="nSUat">
-                  <ref role="3uigEE" node="46sxDGTfogQ" resolve="EvaluationException" />
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbS" id="46sxDGTfoj1" role="1zc67A">
-              <node concept="3clFbF" id="46sxDGTfoj2" role="3cqZAp">
-                <node concept="2OqwBi" id="3AvZeSkP3mf" role="3clFbG">
-                  <node concept="liA8E" id="3AvZeSkP3mg" role="2OqNvi">
-                    <ref role="37wK5l" to="q7tw:~Category.warn(java.lang.Object,java.lang.Throwable)" resolve="warn" />
-                    <node concept="3cpWs3" id="46sxDGTfoj6" role="37wK5m">
-                      <node concept="Xl_RD" id="46sxDGTfoj7" role="3uHU7B">
-                        <property role="Xl_RC" value="Cant create TargetVMEvaluationException for " />
-                      </node>
-                      <node concept="37vLTw" id="2BHiRxgm6Pn" role="3uHU7w">
-                        <ref role="3cqZAo" node="46sxDGTfoiu" resolve="e" />
-                      </node>
+                  <node concept="2YIFZM" id="2hdoiXP3r_C" role="2Oq$k0">
+                    <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
+                    <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+                    <node concept="3VsKOn" id="3AvZeSkP3lT" role="37wK5m">
+                      <ref role="3VsUkX" node="46sxDGTfoi9" resolve="TargetVMEvaluationException" />
                     </node>
-                    <node concept="37vLTw" id="3GM_nagTzOW" role="37wK5m">
-                      <ref role="3cqZAo" node="46sxDGTfoja" resolve="exception" />
-                    </node>
-                  </node>
-                  <node concept="37vLTw" id="2BHiRxeoqzY" role="2Oq$k0">
-                    <ref role="3cqZAo" node="46sxDGTfoic" resolve="LOG" />
                   </node>
                 </node>
               </node>

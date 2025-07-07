@@ -20,21 +20,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class AddModifiers_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddModifiers_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "3166734731684557381"));
   }
+
   @Override
   public String getPresentation() {
     return "AddModifiers";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -44,18 +44,29 @@ public final class AddModifiers_Intention extends AbstractIntentionDescriptor im
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Add Generic Modifiers";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNodeFactoryOperations.addNewChild(node, LINKS.modifiers$F5MM, CONCEPTS.Modifier$jW);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddModifiers_Intention.this;
     }
+
   }
 
   private static final class LINKS {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,8 +35,8 @@ import org.junit.runners.model.RunnerBuilder;
     jetbrains.mps.smodel.EDTExecutorInternalTest.class,
     jetbrains.mps.environment.IdeaEnvironmentTest.class,
     jetbrains.mps.classloading.DeploymentConcurrencyTest.class,
-    jetbrains.mps.workbench.ProjectCreationTest.class,
     jetbrains.mps.vfs.tracking.DiskMemoryConflictTest.class,
+    jetbrains.mps.vcs.test.LegacyJavaStubModelRefTest.class,
     jetbrains.mps.ide.vcs.test.merge.ChangesCalculationTest.class,
     jetbrains.mps.ide.vcs.test.merge.StructuredChangesCalculationTest.class,
     jetbrains.mps.ide.vcs.test.merge.RootStatusTest.class,
@@ -44,6 +44,9 @@ import org.junit.runners.model.RunnerBuilder;
     jetbrains.mps.ide.vcs.test.merge.IncrementalChangeUpdateTest_Model.class,
     jetbrains.mps.ide.vcs.test.merge.ChangesRollbackTest.class,
     jetbrains.mps.ide.vcs.test.merge.MergeTest.class,
+    jetbrains.mps.ide.vcs.test.merge.NotMoveChangeConflictsTest.class,
+    jetbrains.mps.ide.vcs.test.merge.MoveChangeConflictsTest.class,
+    jetbrains.mps.ide.vcs.test.merge.WrapChangeConflictsTest.class,
     jetbrains.mps.vfs.VfsTest.class,
     jetbrains.mps.vfs.FSListeningTest.class,
     jetbrains.mps.generator.impl.plan.CheckpointModelTest.class,
@@ -52,6 +55,7 @@ import org.junit.runners.model.RunnerBuilder;
     jetbrains.mps.ide.ModuleIDETests2.class,
     jetbrains.mps.ide.FSTests.class,
     jetbrains.mps.migration.MigrationsTest.class,
+    jetbrains.mps.workbench.ProjectCreationTest.class,
 })
 public class PlatformTestSuite extends OutputWatchingTestSuite {
   private static IdeaEnvironment ourEnvironment;
@@ -60,11 +64,13 @@ public class PlatformTestSuite extends OutputWatchingTestSuite {
   static {
     // j.m.ide.test.merge tests need VCS plugin
     // MigrationsTest needs "migration" plugin
+    // modules loading tests need kotlin plugin (kotlin stubs loading)
     EnvironmentConfig cfg = EnvironmentConfig.defaultConfig()
-                                             .setCreatePluginClassLoaders(false)
                                              .withVcsPlugin()
                                              .withBuildPlugin()
-                                             .withMigrationPlugin();
+                                             .withMigrationPlugin()
+                                             .withKotlinPlugin()
+                                             .withTestModeOn();
     ourEnvironment = new IdeaEnvironment(cfg);
     ourEnvironment.init();
   }

@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 
-@GeneratedClass(node = "r:b9f36c08-4a75-4513-9277-a390d3426e0f(jetbrains.mps.editor.runtime.impl.cellActions)/9104856620005167717", model = "r:b9f36c08-4a75-4513-9277-a390d3426e0f(jetbrains.mps.editor.runtime.impl.cellActions)")
+@GeneratedClass(nodeId = "9104856620005167717", model = "r:b9f36c08-4a75-4513-9277-a390d3426e0f(jetbrains.mps.editor.runtime.impl.cellActions)")
 public class CellAction_CommentOrUncommentCurrentSelectedNode extends CellAction_CommentOrUncomment {
 
   protected SNode getNodeToProcess(EditorContext editorContext) {

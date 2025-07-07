@@ -12,7 +12,7 @@ import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.textgen.trace.TraceInfo;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/738639550409927657", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "738639550409927657", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class PrintNodePosition_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -20,6 +20,7 @@ public class PrintNodePosition_Action extends BaseAction {
     super("Print Node Line", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -46,10 +47,6 @@ public class PrintNodePosition_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        System.out.println(new TraceInfo().getPosition(event.getData(MPSCommonDataKeys.NODE)));
-      }
-    });
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(() -> System.out.println(new TraceInfo().getPosition(event.getData(MPSCommonDataKeys.NODE))));
   }
 }

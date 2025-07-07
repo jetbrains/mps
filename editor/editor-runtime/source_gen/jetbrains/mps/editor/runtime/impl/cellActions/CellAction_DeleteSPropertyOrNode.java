@@ -10,7 +10,7 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 
-@GeneratedClass(node = "r:b9f36c08-4a75-4513-9277-a390d3426e0f(jetbrains.mps.editor.runtime.impl.cellActions)/3766068586453539585", model = "r:b9f36c08-4a75-4513-9277-a390d3426e0f(jetbrains.mps.editor.runtime.impl.cellActions)")
+@GeneratedClass(nodeId = "3766068586453539585", model = "r:b9f36c08-4a75-4513-9277-a390d3426e0f(jetbrains.mps.editor.runtime.impl.cellActions)")
 public class CellAction_DeleteSPropertyOrNode extends AbstractCellAction {
   private final SNode mySemanticNode;
   private final SProperty myProperty;

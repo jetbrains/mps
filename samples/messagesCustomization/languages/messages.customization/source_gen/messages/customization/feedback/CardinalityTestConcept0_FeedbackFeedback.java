@@ -23,8 +23,8 @@ public final class CardinalityTestConcept0_FeedbackFeedback extends BaseFeedback
   private static final FeedbackProvider<ChildCardinalityContext> MSGPROVIDER_WhenThereAreMultipleChildrenInRoleWithSingleCardinality_570te8_a = new BaseMessageProvider<ChildCardinalityContext>(new ProblemKindId(PredefinedStructureProblemKind.ONLY_ONE_CHILD_CAN_BE_IN_ROLE)) {
     @NotNull
     @Override
-    public MessageProvider.StringMsg yieldMessage(ChildCardinalityContext context) {
-      return new MessageProvider.StringMsg("Multiple children in the single role '" + context.getLink() + "':  " + context.getChildren() + "!!!");
+    public MessageProvider.Msg yieldMessage(ChildCardinalityContext context) {
+      return format("Multiple children in the single role '%s':  %s!!!", context.getLink(), context.getChildren());
     }
   };
 

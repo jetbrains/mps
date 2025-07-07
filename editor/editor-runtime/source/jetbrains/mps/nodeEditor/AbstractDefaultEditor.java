@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,11 +29,11 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCellFactory;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.style.StyleAttribute;
-import jetbrains.mps.openapi.editor.update.UpdateSession;
+import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
+import jetbrains.mps.openapi.editor.update.UpdateSession;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.adapter.structure.types.SPrimitiveTypes;
-import jetbrains.mps.util.EqualUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -56,7 +56,6 @@ public abstract class AbstractDefaultEditor extends DefaultNodeEditor implements
   private static final int NAME_ADD_PRIORITY = 1000;
   private static final String QUALIFIED_NAME = "qualified";
   private static final int QUALIFIED_PRIORITY = 200;
-  private static final Color FIRST_LABEL_BACKGROUND_COLOR = new Color(107, 142, 20, 100);
 
   private SNode mySNode;
   private SConcept myConcept;
@@ -89,7 +88,8 @@ public abstract class AbstractDefaultEditor extends DefaultNodeEditor implements
     mainCellCollection.setBig(true);
     mainCellCollection.setCellContext(getCellFactory().getCellContext());
     addLabel(camelToLabel(myConcept.getName()));
-    addStyle(StyleAttributes.TEXT_BACKGROUND_COLOR, FIRST_LABEL_BACKGROUND_COLOR);
+    final Color firstLabelBackgroundColor = editorContext.getEditorComponent().getStyleRegistry().getStyle("REFLECTIVE_EDITOR_FIRST_LABEL").get(StyleAttributes.TEXT_BACKGROUND_COLOR);
+    addStyle(StyleAttributes.TEXT_BACKGROUND_COLOR, firstLabelBackgroundColor);
     if (nameProperty != null) {
       getProperties().remove(nameProperty);
       addPropertyCell(nameProperty);
@@ -112,7 +112,6 @@ public abstract class AbstractDefaultEditor extends DefaultNodeEditor implements
 
     for (SReference sReference : mySNode.getReferences()) {
       SReferenceLink link = sReference.getLink();
-      assert link != null : "Null meta-link from node: " + this.mySNode + ", role: " + sReference.getRole();
       if (!link.getOwner().equals(SNodeUtil.concept_BaseConcept)) {
         myReferenceLinks.add(link);
       }
@@ -411,5 +410,10 @@ public abstract class AbstractDefaultEditor extends DefaultNodeEditor implements
   @Override
   public UpdateSession getUpdateSession() {
     return getEditorContext().getEditorComponent().getUpdater().getCurrentUpdateSession();
+  }
+
+  @Override
+  public StyleRegistry getStyleRegistry() {
+    return getEditorContext().getEditorComponent().getStyleRegistry();
   }
 }

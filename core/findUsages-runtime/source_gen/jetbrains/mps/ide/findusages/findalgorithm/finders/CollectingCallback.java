@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 
-@GeneratedClass(node = "r:1a2b3027-99d2-4946-917b-f185130ac75d(jetbrains.mps.ide.findusages.findalgorithm.finders)/7241723264100158065", model = "r:1a2b3027-99d2-4946-917b-f185130ac75d(jetbrains.mps.ide.findusages.findalgorithm.finders)")
+@GeneratedClass(nodeId = "7241723264100158065", model = "r:1a2b3027-99d2-4946-917b-f185130ac75d(jetbrains.mps.ide.findusages.findalgorithm.finders)")
 public class CollectingCallback implements IFinder.FindCallback {
   private final List<SearchResult<?>> myResultList = new ArrayList<SearchResult<?>>();
   private final List<SearchedObjects<?>> mySearchedObjectsList = new ArrayList<SearchedObjects<?>>();

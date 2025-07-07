@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,11 @@
  */
 package jetbrains.mps.nodefs;
 
+import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.openapi.vfs.VirtualFileManager;
+import jetbrains.mps.ide.vfs.FileSystemBridge;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -28,6 +31,7 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicMarkableReference;
 
@@ -40,14 +44,23 @@ import java.util.concurrent.atomic.AtomicMarkableReference;
 final class RepositoryVirtualFiles {
   private final NodeVirtualFileSystem myFileSystem;
   private final SRepository myRepository;
-  private Map<SNodeReference, MPSNodeVirtualFile> myVirtualFiles = new ConcurrentHashMap<>();
-  private Map<SModelReference, MPSModelVirtualFile> myModelVirtualFiles = new ConcurrentHashMap<>();
+  private final Map<SNodeReference, MPSNodeVirtualFile> myVirtualFiles = new ConcurrentHashMap<>();
+  private final Map<SModelReference, MPSModelVirtualFile> myModelVirtualFiles = new ConcurrentHashMap<>();
   private final NiceReferenceSerializer myPathFacility;
+  private final FileSystemBridge myFileBridge;
 
   /*package*/ RepositoryVirtualFiles(@NotNull NodeVirtualFileSystem mpsFileSystem, @NotNull SRepository repository) {
     myFileSystem = mpsFileSystem;
     myRepository = repository;
     myPathFacility = new NiceReferenceSerializer(repository);
+    myFileBridge = new LocalFSOnly();
+  }
+
+  /*package*/ RepositoryVirtualFiles(@NotNull NodeVirtualFileSystem mpsFileSystem, @NotNull MPSProject mpsProject) {
+    myFileSystem = mpsFileSystem;
+    myRepository = mpsProject.getRepository();
+    myPathFacility = new NiceReferenceSerializer(myRepository);
+    myFileBridge = mpsProject.getFileSystem();
   }
 
   /**
@@ -81,6 +94,13 @@ final class RepositoryVirtualFiles {
 
   /*package*/ NiceReferenceSerializer getPathFacility() {
     return myPathFacility;
+  }
+
+  public Optional<MPSNodeVirtualFile> lookupFileFor(@NotNull final SNodeReference nodePointer) {
+    if (hasVirtualFileFor(nodePointer)) {
+      return Optional.of(getVirtualFile(nodePointer));
+    }
+    return Optional.empty();
   }
 
   public MPSNodeVirtualFile getFileFor(@NotNull final SNodeReference nodePointer) {
@@ -190,6 +210,34 @@ final class RepositoryVirtualFiles {
     } else if (notifier != myNotifier.getReference()) {
       // fallback, just in case there's untracked notifier, run it anyway not to loose any notification
       myRepository.getModelAccess().runReadInEDT(notifier);
+    }
+  }
+
+  @Nullable
+  /*package*/ VirtualFile asVirtualFile(@Nullable IFile file) {
+    if (file == null) {
+      return null;
+    }
+    return myFileBridge.asVirtualFile(file);
+  }
+
+  private static class LocalFSOnly implements FileSystemBridge {
+    @Override
+    public boolean canConvert(@NotNull VirtualFile virtualFile) {
+      return false;
+    }
+
+    @NotNull
+    @Override
+    public IFile fromVirtualFile(@NotNull VirtualFile virtualFile) {
+      throw new IllegalStateException();
+    }
+
+    @Nullable
+    @Override
+    public VirtualFile asVirtualFile(@NotNull IFile file) {
+      // XXX perhaps, shall resort to VirtualFileManager.findFileByNioPath(Path.of(file.getPath()))?
+      return LocalFileSystem.getInstance().findFileByPath(file.getPath());
     }
   }
 }

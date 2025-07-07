@@ -25,7 +25,6 @@ import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.LinkedList;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -76,7 +75,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "(");
     editorCell.setCellId("Constant_igyl5p_a0");
     Style style = new StyleImpl();
-    new LeftRegexpBraceStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new LeftRegexpBraceStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     ParensRegexp_Actions.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
@@ -97,7 +96,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   public static class ParensRegexp_customReplace_cellMenu_igyl5p_b0a0 extends AbstractCellMenuPart_ReplaceNode_Group {
     public ParensRegexp_customReplace_cellMenu_igyl5p_b0a0() {
     }
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
       List<SAbstractConcept> res = ListSequence.fromList(new LinkedList<SAbstractConcept>());
       ListSequence.fromList(res).addElement(CONCEPTS.NegativeLookAheadRegexp$PS);
       ListSequence.fromList(res).addElement(CONCEPTS.NegativeLookBehindRegexp$f6);
@@ -106,14 +105,9 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       ListSequence.fromList(res).addElement(CONCEPTS.MatchParensRegexp$Ea);
       return res;
     }
-    public SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      return createReplacementNode_impl((SAbstractConcept) parameterObject, node, model, operationContext, editorContext);
-    }
-    public SNode createReplacementNode_impl(SAbstractConcept parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected SNode createReplacementNode(Object _parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      final SAbstractConcept parameterObject = (SAbstractConcept) _parameterObject;
       return SNodeFactoryOperations.createNewNode(parameterObject, node);
-    }
-    public boolean isReferentPresentation() {
-      return false;
     }
     @Override
     protected EditorMenuDescriptor getEditorMenuDescriptor(Object parameterObject) {
@@ -180,7 +174,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ")");
     editorCell.setCellId("Constant_igyl5p_c0");
     Style style = new StyleImpl();
-    new RightRegexpBraceStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new RightRegexpBraceStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     ParensRegexp_Actions.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");

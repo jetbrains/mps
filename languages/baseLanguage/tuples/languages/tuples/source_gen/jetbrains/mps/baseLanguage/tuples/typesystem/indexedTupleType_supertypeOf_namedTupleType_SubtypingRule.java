@@ -11,12 +11,10 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.LinkedList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -28,28 +26,26 @@ public class indexedTupleType_supertypeOf_namedTupleType_SubtypingRule extends S
   public SNode getSubOrSuperType(SNode ntt, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     final List<SNode> queue = ListSequence.fromList(new LinkedList<SNode>());
     final List<SNode> pts = SLinkOperations.getChildren(ntt, LINKS.parameter$oqG$);
-    return _quotation_createNode_pquv4f_a2a1(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ntt, LINKS.classifier$cxMr), LINKS.component$wCHx)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode cmp) {
-        SNode tmp = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType"));
-        SLinkOperations.setTarget(tmp, LINKS.componentType$F$Gi, SNodeOperations.copyNode(SLinkOperations.getTarget(cmp, LINKS.type$q$C9)));
-        ListSequence.fromList(queue).clear();
-        ListSequence.fromList(queue).addElement(SLinkOperations.getTarget(tmp, LINKS.componentType$F$Gi));
-        while (ListSequence.fromList(queue).isNotEmpty()) {
-          SNode t = ListSequence.fromList(queue).removeElementAt(0);
-          if (SNodeOperations.isInstanceOf(t, CONCEPTS.TypeVariableReference$WL)) {
-            int idx = SNodeOperations.getIndexInParent(SLinkOperations.getTarget(SNodeOperations.cast(t, CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I));
-            if (idx < ListSequence.fromList(pts).count()) {
-              SNodeOperations.replaceWithAnother(t, SNodeOperations.copyNode(ListSequence.fromList(pts).getElement(idx)));
-            }
-          } else {
-            for (SNode c : ListSequence.fromList(SNodeOperations.getChildren(t))) {
-              ListSequence.fromList(queue).addElement(c);
-            }
+    return _quotation_createNode_pquv4f_a2a1(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ntt, LINKS.classifier$cxMr), LINKS.component$wCHx)).select((cmp) -> {
+      SNode tmp = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType"));
+      SLinkOperations.setTarget(tmp, LINKS.componentType$F$Gi, SNodeOperations.copyNode(SLinkOperations.getTarget(cmp, LINKS.type$q$C9)));
+      ListSequence.fromList(queue).clear();
+      ListSequence.fromList(queue).addElement(SLinkOperations.getTarget(tmp, LINKS.componentType$F$Gi));
+      while (ListSequence.fromList(queue).isNotEmpty()) {
+        SNode t = ListSequence.fromList(queue).removeElementAt(0);
+        if (SNodeOperations.isInstanceOf(t, CONCEPTS.TypeVariableReference$WL)) {
+          int idx = SNodeOperations.getIndexInParent(SLinkOperations.getTarget(SNodeOperations.cast(t, CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I));
+          if (idx < ListSequence.fromList(pts).count()) {
+            SNodeOperations.replaceWithAnother(t, SNodeOperations.copyNode(ListSequence.fromList(pts).getElement(idx)));
+          }
+        } else {
+          for (SNode c : ListSequence.fromList(SNodeOperations.getChildren(t))) {
+            ListSequence.fromList(queue).addElement(c);
           }
         }
-        return SLinkOperations.getTarget(tmp, LINKS.componentType$F$Gi);
       }
-    }).toListSequence());
+      return SLinkOperations.getTarget(tmp, LINKS.componentType$F$Gi);
+    }).toList());
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.NamedTupleType$DW;
@@ -61,15 +57,12 @@ public class indexedTupleType_supertypeOf_namedTupleType_SubtypingRule extends S
     return true;
   }
   private static SNode _quotation_createNode_pquv4f_a2a1(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xa247e09e243545baL, 0xb8d207e93feba96aL, "jetbrains.mps.baseLanguage.tuples"), 0x1207157a8dcL, "IndexedTupleType")).getResult();
-    {
-      List<SNode> nodes = (List<SNode>) parameter_1;
-      for (SNode child : nodes) {
-        quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, 0x1207158795cL, "componentType"), SNodeOperations.copyIfNecessary(child));
-      }
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xa247e09e243545baL, 0xb8d207e93feba96aL, "jetbrains.mps.baseLanguage.tuples"), 0x1207157a8dcL, "IndexedTupleType"));
+    quotedNode_2 = nb.getResult();
+    for (SNode child : (List<SNode>) parameter_1) {
+      quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, 0x1207158795cL, "componentType"), SNodeOperations.copyIfNecessary(child));
     }
     return quotedNode_2;
   }

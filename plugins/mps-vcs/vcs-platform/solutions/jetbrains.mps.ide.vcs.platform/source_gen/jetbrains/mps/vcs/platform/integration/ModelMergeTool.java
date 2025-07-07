@@ -16,21 +16,21 @@ import com.intellij.diff.contents.FileContent;
 import com.intellij.diff.contents.DiffContent;
 import com.intellij.diff.merge.TextMergeTool;
 
-@GeneratedClass(node = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)/5085852630254807374", model = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)")
+@GeneratedClass(nodeId = "5085852630254807374", model = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)")
 public class ModelMergeTool implements MergeTool {
   public static final Set<FileType> SUPPORTED_TYPES = SetSequence.fromSetAndArray(new HashSet<FileType>(), ModelDiffTool.DIFF_SUPPORTED_TYPES);
 
   public static final ModelMergeTool INSTANCE = new ModelMergeTool();
 
   public boolean canShow(@NotNull MergeContext context, @NotNull MergeRequest request) {
-    // all SUPPORTED_TYPES are text files, so we can work with text requests ony. 
-    // this will also allow us to fallback to default text merge tool 
-    if (!((request instanceof TextMergeRequest))) {
+    // all SUPPORTED_TYPES are text files, so we can work with text requests ony.
+    // this will also allow us to fallback to default text merge tool
+    if (!(request instanceof TextMergeRequest)) {
       return false;
     }
     TextMergeRequest textRequest = (TextMergeRequest) request;
-    // required to save model 
-    if (!((textRequest.getOutputContent() instanceof FileContent))) {
+    // required to save model
+    if (!(textRequest.getOutputContent() instanceof FileContent)) {
       return false;
     }
     FileType commonType = textRequest.getOutputContent().getContentType();
@@ -49,7 +49,7 @@ public class ModelMergeTool implements MergeTool {
     if (viewer != null) {
       return viewer;
     } else if (TextMergeTool.INSTANCE.canShow(context, request)) {
-      // fallback to text merge 
+      // fallback to text merge
       return TextMergeTool.INSTANCE.createComponent(context, request);
     } else {
       throw new IllegalArgumentException("Can't show merge");

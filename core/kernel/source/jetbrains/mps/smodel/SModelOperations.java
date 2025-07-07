@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,11 @@
  */
 package jetbrains.mps.smodel;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.dependency.ModelDependenciesManager;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -28,10 +28,10 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -46,12 +46,19 @@ public class SModelOperations {
    * PROVISIONAL CODE. Needed for transition from cumbersome {@link jetbrains.mps.generator.fileGenerator.FileGenerationUtil} to facet-backed output
    * locations. Doesn't support facets other than {@link JavaModuleFacet} and {@link TestsFacet}
    *
+   * @deprecated This method knows about 2 module facets only. Consider using
+   *             {@link jetbrains.mps.project.facets.GenerationTargetFacet#find(SModel)}  or
+   *             {@link jetbrains.mps.project.facets.GenerationTargetFacet#stream(SModel)} for general scenario or
+   *             iterate {@link SModule#getFacets() module facets} directly in case you need more sophisticated logic
+   *
    * @return {@code null} if model is not capable to produce output for a model (e.g. deployed/packaged module)
    * @see jetbrains.mps.project.facets.JavaModuleFacet
    * @see jetbrains.mps.project.facets.TestsFacet
    */
   @Nullable
+  @Deprecated(since = "2023.1", forRemoval = true)
   public static IFile getOutputLocation(@NotNull SModel model) {
+    // there are 15 uses in mbeddr
     assert model.getModule() != null;
     if (SModelStereotype.isTestModel(model)) {
       TestsFacet facet = model.getModule().getFacet(TestsFacet.class);
@@ -68,21 +75,32 @@ public class SModelOperations {
    * Pair method to {@link #getOutputLocation(SModel)}, responsible for
    * {@linkplain jetbrains.mps.project.facets.GenerationTargetFacet#getOutputCacheLocation(SModel) model cache file location}.
    *
+   * @deprecated This method knows about 2 module facets only. Consider using
+   *             {@link jetbrains.mps.project.facets.GenerationTargetFacet#find(SModel)}  or
+   *             {@link jetbrains.mps.project.facets.GenerationTargetFacet#stream(SModel)} for general scenario or
+   *             iterate {@link SModule#getFacets() module facets} ddirectly in case you need more sophisticated logic
+   *
    * PROVISIONAL CODE. Same considerations as for {@link #getOutputLocation(SModel)} apply.
    */
   @Nullable
+  @Deprecated(since = "2023.1", forRemoval = true)
   public static IFile getOutputCacheLocation(@NotNull SModel model) {
+    // there are no uses in MPS, nor in mps-extensions/mbeddr
     assert model.getModule() != null;
+    Logger.getLogger(SModelOperations.class).warnDeprecatedUse("Stop using SModelOperations.getOutputCacheLocation() as it doesn't look into generic GenerationTargetFacet");
     if (SModelStereotype.isTestModel(model)) {
+      // XXX TestsFacet is GTF, but due to legacy, have to give it priority.
       TestsFacet facet = model.getModule().getFacet(TestsFacet.class);
       if (facet != null) {
         return facet.getOutputCacheLocation(model);
       }
       // fall-through
     }
+    // FIXME decided to keep this method with JMF and gradually deprecate/remove its usages,
+    //       instead of switching to GenerationTargetFacet.find(), which is more suited for scenarios where few facets are available.
+    //       (e.g. tests + java or tests + plaintext)
     JavaModuleFacet jmf = model.getModule().getFacet(JavaModuleFacet.class);
     return jmf == null ? null : jmf.getOutputCacheLocation(model);
-
   }
 
   @Nullable
@@ -124,8 +142,7 @@ public class SModelOperations {
    * @return set of languages imported by the model, either directly or through devkit
    * @since 3.3
    */
-  @Deprecated
-  @ToRemove(version = 2018.3)
+@Deprecated(since = "2018.3", forRemoval = true)
   @NotNull
   public static Set<SLanguage> getAllLanguageImports(@NotNull SModel model) {
     // there are ~10 uses in mbeddr
@@ -138,8 +155,7 @@ public class SModelOperations {
   /**
    * @deprecated use {@link ModelDependencyResolver} instead
    */
-  @Deprecated
-  @ToRemove(version = 2018.3)
+@Deprecated(since = "2018.3", forRemoval = true)
   public static List<SModel> allImportedModels(@NotNull SModel model) {
     // no uses in mbeddr
     SRepository repo = model.getRepository();

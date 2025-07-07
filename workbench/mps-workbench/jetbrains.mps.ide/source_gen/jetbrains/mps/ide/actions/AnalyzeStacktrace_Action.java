@@ -17,7 +17,7 @@ import java.io.StringWriter;
 import java.io.PrintWriter;
 import com.intellij.unscramble.AnalyzeStacktraceAction;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/4221956679900513437", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "4221956679900513437", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class AnalyzeStacktrace_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -26,6 +26,7 @@ public class AnalyzeStacktrace_Action extends BaseAction {
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
     this.setMnemonic("S".charAt(0));
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -33,12 +34,12 @@ public class AnalyzeStacktrace_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    // In messages tool window show action only on lines with exception 
+    // In messages tool window show action only on lines with exception
     if (MPSActionPlaces.MPS_MESSAGES_POPUP.equals(event.getPlace())) {
       return ((Throwable) MapSequence.fromMap(_params).get("exception")) != null;
     }
-    // project is required for platform AnalyzeStacktraceAction action, 
-    // so we leave it in parameters and use it to avoid warning 
+    // project is required for platform AnalyzeStacktraceAction action,
+    // so we leave it in parameters and use it to avoid warning
     return ((Project) MapSequence.fromMap(_params).get("project")) != null;
   }
   @Override
@@ -67,16 +68,16 @@ public class AnalyzeStacktrace_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     String message = event.getData(IdeErrorsDialog.CURRENT_TRACE_KEY);
     if (message != null) {
-      // In case we are in IDE Fatal Errors dialog just show trace from dialog in console. 
-      // Copy/Paste from com.intellij.unscramble.UnscrambleAction#actionPerformed 
+      // In case we are in IDE Fatal Errors dialog just show trace from dialog in console.
+      // Copy/Paste from com.intellij.unscramble.UnscrambleAction#actionPerformed
       AnalyzeStacktraceUtil.addConsole(((Project) MapSequence.fromMap(_params).get("project")), null, "<Stacktrace>", message);
     } else if (((Throwable) MapSequence.fromMap(_params).get("exception")) != null) {
       StringWriter writer = new StringWriter();
       ((Throwable) MapSequence.fromMap(_params).get("exception")).printStackTrace(new PrintWriter(writer));
-      // In case Throwable was provided just show it in console 
+      // In case Throwable was provided just show it in console
       AnalyzeStacktraceUtil.addConsole(((Project) MapSequence.fromMap(_params).get("project")), null, "<Stacktrace>", writer.toString());
     } else {
-      // Reuse platform action 
+      // Reuse platform action
       new AnalyzeStacktraceAction().actionPerformed(event);
     }
   }

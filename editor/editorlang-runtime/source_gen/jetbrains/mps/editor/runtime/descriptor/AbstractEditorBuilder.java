@@ -7,14 +7,15 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCellFactory;
 import jetbrains.mps.openapi.editor.update.UpdateSession;
+import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 
-@GeneratedClass(node = "r:8ff33705-85bf-4855-805c-06d68fbe233c(jetbrains.mps.editor.runtime.descriptor)/4302900529822367990", model = "r:8ff33705-85bf-4855-805c-06d68fbe233c(jetbrains.mps.editor.runtime.descriptor)")
+@GeneratedClass(nodeId = "4302900529822367990", model = "r:8ff33705-85bf-4855-805c-06d68fbe233c(jetbrains.mps.editor.runtime.descriptor)")
 public abstract class AbstractEditorBuilder implements EditorBuilderEnvironment {
   @NotNull
-  private EditorContext myEditorContext;
+  private final EditorContext myEditorContext;
 
   public AbstractEditorBuilder(@NotNull EditorContext editorContext) {
     myEditorContext = editorContext;
@@ -32,6 +33,11 @@ public abstract class AbstractEditorBuilder implements EditorBuilderEnvironment 
   @Override
   public UpdateSession getUpdateSession() {
     return myEditorContext.getEditorComponent().getUpdater().getCurrentUpdateSession();
+  }
+
+  @Override
+  public StyleRegistry getStyleRegistry() {
+    return myEditorContext.getEditorComponent().getStyleRegistry();
   }
 
   protected void setInnerCellsContext(EditorCell_Collection cells) {

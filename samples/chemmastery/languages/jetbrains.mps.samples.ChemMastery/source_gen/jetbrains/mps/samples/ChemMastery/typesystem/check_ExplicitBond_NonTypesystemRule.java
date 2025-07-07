@@ -25,7 +25,7 @@ public class check_ExplicitBond_NonTypesystemRule extends AbstractNonTypesystemR
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(dash, "A bond (-) must be connecting two elements.", "r:b14d3745-fcf7-4a51-93f8-ba2328d28877(jetbrains.mps.samples.ChemMastery.typesystem)", "3123291046851157167", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.samples.ChemMastery.typesystem.RemoveMisplacedDash_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.samples.ChemMastery.typesystem.RemoveMisplacedDash_QuickFix", "3123291046851203355", false);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }

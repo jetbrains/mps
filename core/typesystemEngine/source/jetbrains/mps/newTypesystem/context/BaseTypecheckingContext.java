@@ -26,7 +26,7 @@ import jetbrains.mps.newTypesystem.operation.TraceMessageOperation;
 import jetbrains.mps.newTypesystem.state.blocks.MultipleWhenConcreteBlock;
 import jetbrains.mps.newTypesystem.state.blocks.WhenConcreteBlock;
 import jetbrains.mps.typesystem.inference.EquationInfo;
-import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -43,11 +43,16 @@ public abstract class BaseTypecheckingContext extends TypeCheckingContext {
 
   protected SNode myNode;
 
-  protected TypeChecker myTypeChecker;
+  protected TypeCheckerHelper myTypeCheckerHelper;
 
-  public BaseTypecheckingContext(SNode node, TypeChecker typeChecker) {
+  public BaseTypecheckingContext(SNode node, TypeCheckerHelper typeCheckerHelper) {
     myNode = node;
-    myTypeChecker = typeChecker;
+    myTypeCheckerHelper = typeCheckerHelper;
+  }
+
+  @Override
+  public TypeCheckerHelper getTypeCheckerHelper() {
+    return myTypeCheckerHelper;
   }
 
   @Override
@@ -140,7 +145,7 @@ public abstract class BaseTypecheckingContext extends TypeCheckingContext {
       IRuleConflictWarningProducer warningProducer) {
     SNode left = getState().expand(leftOperandType);
     SNode right = getState().expand(rightOperandType);
-    return myTypeChecker.getRulesManager().getOperationType(operation, left, right, warningProducer);
+    return myTypeCheckerHelper.getOperationType(operation, left, right, warningProducer);
   }
 
   @Override
@@ -149,7 +154,8 @@ public abstract class BaseTypecheckingContext extends TypeCheckingContext {
   }
 
   @Override
-  public void whenConcrete(SNode argument, Runnable r, String nodeModel, String nodeId, boolean isShallow) {
+  @Deprecated(forRemoval = true)
+  public final void whenConcrete(SNode argument, Runnable r, String nodeModel, String nodeId, boolean isShallow) {
     //todo
   }
 
@@ -159,12 +165,19 @@ public abstract class BaseTypecheckingContext extends TypeCheckingContext {
   }
 
   @Override
+  public void whenConcrete(SNode argument, Runnable r, String nodeModel, String nodeId, boolean isShallow, boolean skipError, String warningMessage) {
+    getState().addBlock(new WhenConcreteBlock(getState(), r, nodeModel, nodeId, argument, isShallow, skipError, warningMessage));
+  }
+
+  @Override
+  @Deprecated(forRemoval = true)
   public void whenConcrete(List<SNode> argument, Runnable r, String nodeModel, String nodeId, boolean isShallow, boolean skipError) {
     getState().addBlock(new MultipleWhenConcreteBlock(getState(), r, nodeModel, nodeId, argument, isShallow, skipError));
   }
 
   @Override
-  public void whenConcrete(List<NodeInfo> arguments, Runnable r) {
+  @Deprecated(forRemoval = true)
+  public final void whenConcrete(List<NodeInfo> arguments, Runnable r) {
     //todo
   }
 

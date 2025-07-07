@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -19,11 +18,10 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.plugin.enumMigration.Keymap_MigrationUtils;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.util.NameUtil;
@@ -41,7 +39,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class SimpleShortcutChange__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb076L, "jetbrains.mps.lang.plugin.structure.SimpleShortcutChange");
 
-  public static final SMethod<Void> addToKeymapChanges_id1adAGAvXyr3 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addToKeymapChanges").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1adAGAvXyr3").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Iterable<SEnumerationLiteral>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(EditorContext.class, ""));
+  public static final SMethod<Void> addToKeymapChanges_id1adAGAvXyr3 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addToKeymapChanges").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1336894855161718467L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Iterable<SEnumerationLiteral>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(EditorContext.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(addToKeymapChanges_id1adAGAvXyr3);
 
@@ -50,51 +48,49 @@ public final class SimpleShortcutChange__BehaviorDescriptor extends BaseBHDescri
 
   /*package*/ static void addToKeymapChanges_id1adAGAvXyr3(@NotNull SAbstractConcept __thisConcept__, SNode shortcutChange, final SModel model, Iterable<SEnumerationLiteral> keymaps, final EditorContext editorContext) {
     final Wrappers._T<SNode> _shortcutChange = new Wrappers._T<SNode>(shortcutChange);
-    Sequence.fromIterable(keymaps).visitAll(new IVisitor<SEnumerationLiteral>() {
-      public void visit(SEnumerationLiteral it) {
-        {
-          final String currentEnum = Keymap_MigrationUtils.value(it);
-          final Wrappers._T<SNode> keyMap = new Wrappers._T<SNode>(ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.KeymapChangesDeclaration$QD)).findFirst(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return Keymap_MigrationUtils.value(SPropertyOperations.getEnum(it, PROPS.keymap$Oqju)).equals(currentEnum);
-            }
-          }));
-          if ((keyMap.value == null)) {
-            keyMap.value = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, "jetbrains.mps.lang.plugin.structure.KeymapChangesDeclaration"));
-            // Enum value has not got any constraint, so it needs to be converted to valid identifier 
-            SPropertyOperations.set(keyMap.value, PROPS.name$MnvL, NameUtil.toValidCamelIdentifier(Keymap_MigrationUtils.value(it)));
-            SPropertyOperations.setEnum(keyMap.value, PROPS.keymap$Oqju, it);
-            // If IdeaConfigurationXml exists, take it in account 
-            SPropertyOperations.set(keyMap.value, PROPS.isPluginXmlKeymap$OQ3Q, ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.IdeaConfigurationXml$o_)).isNotEmpty());
-            if (ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.IdeaConfigurationXml$o_)).isNotEmpty()) {
-              ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.IdeaConfigurationXml$o_)).where(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  return (SLinkOperations.getTarget(it, LINKS.actions$aiX4) != null);
+    Sequence.fromIterable(keymaps).visitAll((it) -> {
+      {
+        final String currentEnum = Keymap_MigrationUtils.value(it);
+        final Wrappers._T<SNode> keyMap = new Wrappers._T<SNode>(ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.KeymapChangesDeclaration$QD)).findFirst(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+          public Boolean invoke(SNode it) {
+            return Keymap_MigrationUtils.value(SPropertyOperations.getEnum(it, PROPS.keymap$Oqju)).equals(currentEnum);
+          }
+        }));
+        if ((keyMap.value == null)) {
+          keyMap.value = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, "jetbrains.mps.lang.plugin.structure.KeymapChangesDeclaration"));
+          // Enum value has not got any constraint, so it needs to be converted to valid identifier
+          SPropertyOperations.set(keyMap.value, PROPS.name$MnvL, NameUtil.toValidCamelIdentifier(Keymap_MigrationUtils.value(it)));
+          SPropertyOperations.setEnum(keyMap.value, PROPS.keymap$Oqju, it);
+          // If IdeaConfigurationXml exists, take it in account
+          SPropertyOperations.set(keyMap.value, PROPS.isPluginXmlKeymap$OQ3Q, ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.IdeaConfigurationXml$o_)).isNotEmpty());
+          if (ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.IdeaConfigurationXml$o_)).isNotEmpty()) {
+            ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.IdeaConfigurationXml$o_)).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+              public Boolean invoke(SNode it) {
+                return (SLinkOperations.getTarget(it, LINKS.actions$aiX4) != null);
+              }
+            }).visitAll(new _FunctionTypes._void_P1_E0<SNode>() {
+              public void invoke(SNode it) {
+                {
+                  SNode keymapRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa87eL, "jetbrains.mps.lang.plugin.structure.KeymapRef"));
+                  SLinkOperations.setTarget(keymapRef, LINKS.keymap$F_03, keyMap.value);
+                  ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.actions$aiX4), LINKS.keymapsRef$CPvp)).addElement(keymapRef);
                 }
-              }).visitAll(new IVisitor<SNode>() {
-                public void visit(SNode it) {
-                  {
-                    SNode keymapRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa87eL, "jetbrains.mps.lang.plugin.structure.KeymapRef"));
-                    SLinkOperations.setTarget(keymapRef, LINKS.keymap$F_03, keyMap.value);
-                    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.actions$aiX4), LINKS.keymapsRef$CPvp)).addElement(keymapRef);
-                  }
-                }
-              });
+              }
+            });
 
-            }
-
-            SModelOperations.addRootNode(model, keyMap.value);
           }
 
-          // Have to copy node, because can't add same node to several concepts as child 
-          _shortcutChange.value = SNodeOperations.copyNode(_shortcutChange.value);
-          ListSequence.fromList(SLinkOperations.getChildren(keyMap.value, LINKS.shortcutChange$L1Z4)).addElement(_shortcutChange.value);
+          SModelOperations.addRootNode(model, keyMap.value);
+        }
 
-          EditorPanelManager editorPanelManager = editorContext.getEditorPanelManager();
-          if (editorPanelManager != null) {
-            // Focus on last keystroke as newly added will be last 
-            editorPanelManager.openEditor(ListSequence.fromList(SLinkOperations.getChildren(_shortcutChange.value, LINKS.keystroke$Nxja)).last());
-          }
+        // Have to copy node, because can't add same node to several concepts as child
+        _shortcutChange.value = SNodeOperations.copyNode(_shortcutChange.value);
+        ListSequence.fromList(SLinkOperations.getChildren(keyMap.value, LINKS.shortcutChange$L1Z4)).addElement(_shortcutChange.value);
+
+        EditorPanelManager editorPanelManager = editorContext.getEditorPanelManager();
+        if (editorPanelManager != null) {
+          // Focus on last keystroke as newly added will be last
+          editorPanelManager.openEditor(ListSequence.fromList(SLinkOperations.getChildren(_shortcutChange.value, LINKS.keystroke$Nxja)).last());
         }
       }
     });

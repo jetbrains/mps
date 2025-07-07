@@ -10,17 +10,17 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
 import jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor;
-import jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptor;
-import jetbrains.mps.execution.settings.dataFlow.DataFlowAspectDescriptorImpl;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.execution.settings.editor.EditorAspectDescriptorImpl;
 import jetbrains.mps.openapi.intentions.IntentionAspectDescriptor;
 import jetbrains.mps.execution.settings.intentions.IntentionsDescriptor;
+import jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor;
+import jetbrains.mps.execution.settings.typesystem.TypesystemDescriptor;
 import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
 import jetbrains.mps.execution.settings.structure.ConceptPresentationAspectImpl;
-import jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor;
-import jetbrains.mps.execution.settings.typesystem.TypesystemDescriptor;
+import jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptor;
+import jetbrains.mps.execution.settings.dataFlow.DataFlowAspectDescriptorImpl;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.language.LanguageExtensions;
 
@@ -54,17 +54,11 @@ public class Language extends LanguageRuntime {
 
   @Override
   protected <T extends ILanguageAspect> T createAspect(Class<T> aspectClass) {
-
-
-    // AP: legacy part, must be migrated from switch: please use lang.descriptor mapping label 
     if (aspectClass == BehaviorAspectDescriptor.class) {
       return aspectClass.cast(new jetbrains.mps.execution.settings.behavior.BehaviorAspectDescriptor());
     }
     if (aspectClass == ConstraintsAspectDescriptor.class) {
       return aspectClass.cast(new jetbrains.mps.execution.settings.constraints.ConstraintsAspectDescriptor());
-    }
-    if (aspectClass == DataFlowAspectDescriptor.class) {
-      return aspectClass.cast(new DataFlowAspectDescriptorImpl());
     }
     if (aspectClass == EditorAspectDescriptor.class) {
       return aspectClass.cast(new EditorAspectDescriptorImpl());
@@ -72,14 +66,17 @@ public class Language extends LanguageRuntime {
     if (aspectClass == IntentionAspectDescriptor.class) {
       return aspectClass.cast(new IntentionsDescriptor());
     }
+    if (aspectClass == IHelginsDescriptor.class) {
+      return aspectClass.cast(new TypesystemDescriptor());
+    }
     if (aspectClass == StructureAspectDescriptor.class) {
       return aspectClass.cast(new jetbrains.mps.execution.settings.structure.StructureAspectDescriptor());
     }
     if (aspectClass == ConceptPresentationAspect.class) {
       return aspectClass.cast(new ConceptPresentationAspectImpl());
     }
-    if (aspectClass == IHelginsDescriptor.class) {
-      return aspectClass.cast(new TypesystemDescriptor());
+    if (aspectClass == DataFlowAspectDescriptor.class) {
+      return aspectClass.cast(new DataFlowAspectDescriptorImpl());
     }
     return null;
   }

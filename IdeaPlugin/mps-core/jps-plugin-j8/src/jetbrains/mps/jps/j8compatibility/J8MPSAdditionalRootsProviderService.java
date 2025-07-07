@@ -16,7 +16,7 @@
 
 package jetbrains.mps.jps.j8compatibility;
 
-import com.intellij.openapi.util.SystemInfo;
+import com.intellij.util.lang.JavaVersion;
 import jetbrains.mps.jps.build.MPSAdditionalRootsProviderService;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.jps.builders.AdditionalRootsProviderService;
@@ -40,7 +40,7 @@ public class J8MPSAdditionalRootsProviderService extends AdditionalRootsProvider
   @NotNull
   @Override
   public List<JavaSourceRootDescriptor> getAdditionalRoots(@NotNull BuildTarget<JavaSourceRootDescriptor> buildTarget, BuildDataPaths dataPaths) {
-    if (!SystemInfo.isJavaVersionAtLeast(11)) {
+    if (!JavaVersion.current().isAtLeast(11)) {
       return Collections.emptyList();
     }
 

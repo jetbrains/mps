@@ -10,11 +10,11 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -23,27 +23,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class IntroduceConstant_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public IntroduceConstant_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:42e1ac37-7eb5-465e-8f7a-fef5bc98a099(org.jetbrains.mps.samples.Constants.intentions)", "3986994675334574125"));
   }
+
   @Override
   public String getPresentation() {
     return "IntroduceConstant";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.getNodeAncestor(node, CONCEPTS.Constant$Ym, false, false) != null;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -53,10 +47,12 @@ public final class IntroduceConstant_Intention extends AbstractIntentionDescript
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Introduce Constant";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode constant = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd40d465dded40d0L, 0x8d4c2c6d177f60d7L, 0x14be6cdec1861419L, "org.jetbrains.mps.samples.Constants.structure.Constant"));
@@ -67,10 +63,25 @@ public final class IntroduceConstant_Intention extends AbstractIntentionDescript
       SLinkOperations.setTarget(constant, LINKS.initializer$uNcK, node);
       editorContext.selectWRTFocusPolicy(constant);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return SNodeOperations.getNodeAncestor(node, CONCEPTS.Constant$Ym, false, false) != null;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return IntroduceConstant_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

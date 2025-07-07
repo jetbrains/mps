@@ -5,8 +5,7 @@ package jetbrains.mps.smodel.persistence.def.v6;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.util.xml.XMLSAXHandler;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import java.util.Stack;
 import org.xml.sax.Locator;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
@@ -23,13 +22,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.util.xml.BreakParseSAXException;
 import jetbrains.mps.vcspersistence.SNodeFactory;
 import org.jetbrains.mps.openapi.model.SNodeId;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
-import org.apache.log4j.Level;
-import org.jetbrains.mps.openapi.model.SReference;
+import jetbrains.mps.smodel.SNodeLegacy;
 
-@GeneratedClass(node = "r:83748538-cbc9-4e2d-b0e1-e282b3d0c13d(jetbrains.mps.smodel.persistence.def.v6)/7319439566871678351", model = "r:83748538-cbc9-4e2d-b0e1-e282b3d0c13d(jetbrains.mps.smodel.persistence.def.v6)")
+@GeneratedClass(nodeId = "7319439566871678351", model = "r:83748538-cbc9-4e2d-b0e1-e282b3d0c13d(jetbrains.mps.smodel.persistence.def.v6)")
 public class ModelReader6Handler extends XMLSAXHandler<ModelLoadResult> {
-  private static final Logger LOG = LogManager.getLogger(ModelReader6Handler.class);
+  private static final Logger LOG = Logger.getLogger(ModelReader6Handler.class);
   private ModelElementHandler modelHandler = new ModelElementHandler();
   private PersistenceElementHandler persistenceHandler = new PersistenceElementHandler();
   private Tag_with_namespaceElementHandler tag_with_namespaceHandler = new Tag_with_namespaceElementHandler();
@@ -83,13 +80,13 @@ public class ModelReader6Handler extends XMLSAXHandler<ModelLoadResult> {
   public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
     ElementHandler current = (myHandlersStack.empty() ? (ElementHandler) null : myHandlersStack.peek());
     if (current == null) {
-      // root 
+      // root
       current = modelHandler;
     } else {
       current = current.createChild(myValues.peek(), qName, attributes);
     }
 
-    // check required 
+    // check required
     for (String attr : current.requiredAttributes()) {
       if (attributes.getValue(attr) == null) {
         throw new SAXParseException("attribute " + attr + " is absent", null);
@@ -101,7 +98,7 @@ public class ModelReader6Handler extends XMLSAXHandler<ModelLoadResult> {
       myResult = (ModelLoadResult) result;
     }
 
-    // handle attributes 
+    // handle attributes
     for (int i = 0; i < attributes.getLength(); i++) {
       String name = attributes.getQName(i);
       String value = attributes.getValue(i);
@@ -373,27 +370,24 @@ public class ModelReader6Handler extends XMLSAXHandler<ModelLoadResult> {
       SNode result = (SNode) resultObject;
       String[] child = (String[]) value;
       if (child[1] != null) {
-        SNodeAccessUtil.setProperty(result, my_helperField.readName(child[0]), child[1]);
+        new SNodeLegacy(result).setProperty(my_helperField.readName(child[0]), child[1]);
       }
     }
     private void handleChild_7319439566871678608(Object resultObject, Object value) throws SAXException {
       SNode result = (SNode) resultObject;
       String[] child = (String[]) value;
       if (child[2] == null) {
-        if (LOG.isEnabledFor(Level.ERROR)) {
+        if (LOG.isErrorLevel()) {
           LOG.error("couldn't create reference '" + child[0] + "' : traget node id is null");
         }
         return;
       }
-      SReference ref = my_helperField.readLink(result, child[0], child[2], child[1]);
-      if (ref != null) {
-        result.setReference(ref.getRole(), ref);
-      }
+      my_helperField.readLink(result, child[0], child[2], child[1]);
     }
     private void handleChild_7319439566871678637(Object resultObject, Object value) throws SAXException {
       SNode result = (SNode) resultObject;
       SNode child = (SNode) value;
-      result.addChild(((String) child.getUserObject("role")), child);
+      new SNodeLegacy(result).insertChildBefore(((String) child.getUserObject("role")), child, null);
       child.putUserObject("role", null);
     }
   }

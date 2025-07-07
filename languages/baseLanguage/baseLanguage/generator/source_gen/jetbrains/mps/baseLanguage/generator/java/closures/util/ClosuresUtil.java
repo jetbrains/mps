@@ -5,7 +5,6 @@ package jetbrains.mps.baseLanguage.generator.java.closures.util;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.List;
 import jetbrains.mps.generator.template.TemplateQueryContext;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -36,11 +35,7 @@ public class ClosuresUtil {
     return SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptFunction$mf) && !(SNodeOperations.isInstanceOf(node, CONCEPTS.Closure$yC));
   }
   public static SNode findEnclosingClosureContextOwner(SNode node) {
-    return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, false)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ClosuresUtil.isClosureContextOwner(it);
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, false)).findFirst((it) -> ClosuresUtil.isClosureContextOwner(it));
   }
   public static List<SNode> getVariablesUsedInClosure(SNode contextOwner, TemplateQueryContext genContext) {
     ensureClosureContextOwnerProcessed(contextOwner, genContext);
@@ -74,7 +69,7 @@ public class ClosuresUtil {
     }
   }
   private static Map<SNode, ClosureContextData> getClosureContext(TemplateQueryContext genContext) {
-    // init ClosureContextData 
+    // init ClosureContextData
     synchronized (CLOSURE_CONTEXT_DATA) {
       Map<SNode, ClosureContextData> closureContexts = ((Map<SNode, ClosureContextData>) genContext.getTransientObject(CLOSURE_CONTEXT_DATA));
       if (closureContexts == null) {
@@ -128,7 +123,7 @@ public class ClosuresUtil {
   private static boolean processClosureNode(SNode contextOwner, SNode node, Set<SNode> localVars, TemplateQueryContext genContext) {
     boolean outerVarsFound = false;
     for (SNode child : ListSequence.fromList(SNodeOperations.getChildren(node))) {
-      // skip inner closure 
+      // skip inner closure
       if (SNodeOperations.isInstanceOf(child, CONCEPTS.Closure$yC)) {
         continue;
       }

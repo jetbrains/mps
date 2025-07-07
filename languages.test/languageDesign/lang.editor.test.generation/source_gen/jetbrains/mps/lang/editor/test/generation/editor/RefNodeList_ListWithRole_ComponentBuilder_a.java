@@ -27,7 +27,6 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.lang.editor.test.generation.editor.TestTargetStyleSheet_StyleSheet.testParentStyleStyleClass;
 import jetbrains.mps.lang.editor.test.generation.editor.TestTargetStyleSheet_StyleSheet.testStyleStyleClass;
 import jetbrains.mps.lang.editor.test.generation.editor.TestTargetStyleKeyPack_KeyPack.testKey_StyleKey;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
 import java.awt.Color;
 import jetbrains.mps.editor.runtime.style.CaretPosition;
@@ -46,7 +45,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
@@ -55,11 +53,10 @@ import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Replace
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Item;
-import java.util.function.Function;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.action.NodeSubstituteActionWrapper;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.nodeEditor.menus.EditorMenuTraceInfoImpl;
-import java.util.stream.Collectors;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
@@ -76,10 +73,8 @@ import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.nodeEditor.cells.SPropertyAccessor;
 import jetbrains.mps.lang.editor.cellProviders.PropertyCellContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
@@ -90,6 +85,7 @@ import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Replace
 import jetbrains.mps.lang.editor.generator.internal.PrimaryReplaceChildMenuCellMenuPart;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceChild_CustomChildConcept;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceChild_Item;
+import java.util.stream.Collectors;
 import jetbrains.mps.editor.runtime.style.DefaultBaseLine;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Superscript;
 import jetbrains.mps.editor.runtime.style.ScriptKind;
@@ -162,11 +158,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.RefNodeList$pg;
     }
-    public SNode createNodeToInsert(EditorContext editorContext) {
-      return nodeFactory();
+    public SNode createNodeToInsert(EditorContext editorContext, SNode prevNode, SNode nextNode, int index) {
+      return nodeFactory(prevNode, nextNode, index);
     }
 
-    public SNode nodeFactory() {
+    public SNode nodeFactory(SNode prevNode, SNode nextNode, int index) {
       return myNode;
     }
     public EditorCell createNodeCell(SNode elementNode) {
@@ -222,14 +218,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
       Style style = new StyleImpl();
       style.set(StyleAttributes.LAYOUT_CONSTRAINT, "noflow");
       style.set(StyleAttributes.PUNCTUATION_LEFT, true);
-      new testParentStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
-      new testStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
-      new testKey_StyleKey().apply(style);
+      new testParentStyleStyleClass(this).apply(style, editorCell);
+      new testStyleStyleClass(this).apply(style, editorCell);
+      new testKey_StyleKey().apply(this, style);
       if (_StyleParameter_QueryFunction_i8r80j_a2a0a(prevNode, nextNode)) {
-        new testStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+        new testStyleStyleClass(this).apply(style, editorCell);
       }
       if (_StyleParameter_QueryFunction_i8r80j_a3a0a(prevNode, nextNode)) {
-        new testStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+        new testStyleStyleClass(this).apply(style, editorCell);
       }
       style.set(StyleAttributes.getInstance().<String>getAttribute("jetbrains.mps.lang.editor.test.generation", "testStringAttribute"), _StyleParameter_QueryFunction_i8r80j_a4a0a(prevNode, nextNode));
       style.set(StyleAttributes.AUTO_DELETABLE, true);
@@ -264,30 +260,30 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.SELECTABLE, _StyleParameter_QueryFunction_i8r80j_a43a0a(prevNode, nextNode));
       style.set(StyleAttributes.STRIKE_OUT, true);
       style.set(StyleAttributes.STRIKE_OUT, _StyleParameter_QueryFunction_i8r80j_a63a0a(prevNode, nextNode));
-      style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.blue));
-      style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a83a0a(prevNode, nextNode)));
-      style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.BACKGROUND_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a04a0a(prevNode, nextNode).o1 : _StyleParameter_QueryFunction_i8r80j_a04a0a(prevNode, nextNode).o2));
-      style.set(StyleAttributes.BRACKETS_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_BLUE));
-      style.set(StyleAttributes.BRACKETS_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a24a0a(prevNode, nextNode)));
-      style.set(StyleAttributes.BRACKETS_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.BRACKETS_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a44a0a(prevNode, nextNode).o1 : _StyleParameter_QueryFunction_i8r80j_a44a0a(prevNode, nextNode).o2));
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN, StyleRegistry.getInstance().getSimpleColor(MPSColors.cyan)));
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a64a0a(prevNode, nextNode)));
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.TEXT_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a84a0a(prevNode, nextNode).o1 : _StyleParameter_QueryFunction_i8r80j_a84a0a(prevNode, nextNode).o2));
-      style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-      style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a05a0a(prevNode, nextNode)));
-      style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.NULL_TEXT_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a25a0a(prevNode, nextNode).o1 : _StyleParameter_QueryFunction_i8r80j_a25a0a(prevNode, nextNode).o2));
-      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a45a0a(prevNode, nextNode)));
-      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a65a0a(prevNode, nextNode).o1 : _StyleParameter_QueryFunction_i8r80j_a65a0a(prevNode, nextNode).o2));
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.cyan));
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a85a0a(prevNode, nextNode)));
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a06a0a(prevNode, nextNode).o1 : _StyleParameter_QueryFunction_i8r80j_a06a0a(prevNode, nextNode).o2));
+      style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.blue));
+      style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a83a0a(prevNode, nextNode)));
+      style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a04a0a(prevNode, nextNode).o1 : _StyleParameter_QueryFunction_i8r80j_a04a0a(prevNode, nextNode).o2));
+      style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_BLUE));
+      style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a24a0a(prevNode, nextNode)));
+      style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.BRACKETS_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a44a0a(prevNode, nextNode).o1 : _StyleParameter_QueryFunction_i8r80j_a44a0a(prevNode, nextNode).o2));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_GREEN, getStyleRegistry().getSimpleColor(MPSColors.cyan)));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a64a0a(prevNode, nextNode)));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.TEXT_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a84a0a(prevNode, nextNode).o1 : _StyleParameter_QueryFunction_i8r80j_a84a0a(prevNode, nextNode).o2));
+      style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_GREEN));
+      style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a05a0a(prevNode, nextNode)));
+      style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.NULL_TEXT_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a25a0a(prevNode, nextNode).o1 : _StyleParameter_QueryFunction_i8r80j_a25a0a(prevNode, nextNode).o2));
+      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_GREEN));
+      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a45a0a(prevNode, nextNode)));
+      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a65a0a(prevNode, nextNode).o1 : _StyleParameter_QueryFunction_i8r80j_a65a0a(prevNode, nextNode).o2));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.cyan));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a85a0a(prevNode, nextNode)));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a06a0a(prevNode, nextNode).o1 : _StyleParameter_QueryFunction_i8r80j_a06a0a(prevNode, nextNode).o2));
       style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.LAST);
       style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.FIRST);
       style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.LAST);
@@ -314,8 +310,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.POSITION, "indented");
       style.set(StyleAttributes.SHOW_BOUNDARIES_IN, ShowBoundariesArea.GUTTER_AND_EDITOR);
       style.set(StyleAttributes.TABLE_COMPONENT, TableComponent.VERTICAL_COLLECTION);
-      new testStyleStyleClass(getEditorContext(), getNode()).unapply(style, editorCell);
-      new testKey_StyleKey().unapply(style);
+      new testStyleStyleClass(this).unapply(style, editorCell);
+      new testKey_StyleKey().unapply(this, style);
       style.set(StyleAttributes.UNDERLINED, false);
       style.set(StyleAttributes.UNDERLINED, _StyleParameter_QueryFunction_i8r80j_a09a0a(prevNode, nextNode));
       editorCell.getStyle().putAll(style);
@@ -408,20 +404,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
       public RefNodeList_generic_cellMenu_i8r80j_a0c1a0a() {
       }
 
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = operationContext != null || node != null || editorContext != null;
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
+        boolean var = node != null || editorContext != null;
         return (var ? null : null);
+
       }
-      protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
+      protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        this.handleAction_impl((String) parameterObject, node, model, editorContext);
       }
-      public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = parameterObject != null || node != null || model != null || editorContext != null || operationContext != null;
+      private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        boolean var = parameterObject != null || node != null || model != null || editorContext != null;
         if (var) {
-          // just usage of var 
+          // just usage of var
         }
       }
-      public boolean isReferentPresentation() {
+      protected boolean isReferentPresentation() {
         return false;
       }
 
@@ -434,27 +431,24 @@ import org.jetbrains.mps.openapi.language.SConcept;
       public RefNodeList_generic_cellMenu_i8r80j_b0c1a0a() {
       }
 
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
         return null;
+
       }
-      protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
+      protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        this.handleAction_impl((String) parameterObject, node, model, editorContext);
       }
-      public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
       }
-      public boolean isReferentPresentation() {
+      protected boolean isReferentPresentation() {
         return false;
       }
-      public String getMatchingText(Object parameterObject) {
-        return this.getMatchingText_internal((String) parameterObject);
-      }
-      public String getMatchingText_internal(String parameterObject) {
+      protected String getMatchingText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return String.valueOf(parameterObject);
       }
-      public String getDescriptionText(Object parameterObject) {
-        return this.getDescriptionText_internal((String) parameterObject);
-      }
-      public String getDescriptionText_internal(String parameterObject) {
+      protected String getDescriptionText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return String.valueOf(parameterObject);
       }
 
@@ -466,19 +460,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public static class RefNodeList_customReplace_cellMenu_i8r80j_c0c1a0a extends AbstractCellMenuPart_ReplaceNode_Group {
       public RefNodeList_customReplace_cellMenu_i8r80j_c0c1a0a() {
       }
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = operationContext != null || node != null || editorContext != null;
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
+        boolean var = node != null || editorContext != null;
         return (var ? null : null);
       }
-      public SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        return createReplacementNode_impl((String) parameterObject, node, model, operationContext, editorContext);
-      }
-      public SNode createReplacementNode_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = parameterObject != null || node != null || model != null || editorContext != null || operationContext != null;
+      protected SNode createReplacementNode(Object _parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        final String parameterObject = (String) _parameterObject;
+        boolean var = parameterObject != null || node != null || model != null || editorContext != null;
         return (var ? null : null);
-      }
-      public boolean isReferentPresentation() {
-        return false;
       }
       @Override
       protected EditorMenuDescriptor getEditorMenuDescriptor(Object parameterObject) {
@@ -489,28 +478,19 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public static class RefNodeList_customReplace_cellMenu_i8r80j_d0c1a0a extends AbstractCellMenuPart_ReplaceNode_Group {
       public RefNodeList_customReplace_cellMenu_i8r80j_d0c1a0a() {
       }
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
         return null;
       }
-      public SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        return createReplacementNode_impl((String) parameterObject, node, model, operationContext, editorContext);
-      }
-      public SNode createReplacementNode_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      protected SNode createReplacementNode(Object _parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        final String parameterObject = (String) _parameterObject;
         return null;
       }
-      public boolean isReferentPresentation() {
-        return false;
-      }
-      public String getMatchingText(Object parameterObject) {
-        return this.getMatchingText_internal((String) parameterObject);
-      }
-      public String getMatchingText_internal(String parameterObject) {
+      protected String getMatchingText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return String.valueOf(parameterObject);
       }
-      public String getDescriptionText(Object parameterObject) {
-        return this.getDescriptionText_internal((String) parameterObject);
-      }
-      public String getDescriptionText_internal(String parameterObject) {
+      protected String getDescriptionText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return String.valueOf(parameterObject);
       }
       @Override
@@ -533,26 +513,22 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       @Override
       public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-        List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-        Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-          public SubstituteAction apply(SubstituteAction action) {
-            return new NodeSubstituteActionWrapper(action) {
-              @Override
-              public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-                EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-                result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308604400608")));
-                return result;
-              }
-            };
-          }
-        };
-        return actions.stream().map(mapper).collect(Collectors.toList());
+        return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
+          return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
+            @Override
+            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+              result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308604400608")));
+              return result;
+            }
+          };
+        }).toList();
       }
 
-      public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = node != null || model != null || editorContext != null || operationContext != null;
+      protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
+        boolean var = node != null || model != null || editorContext != null;
         if (var) {
-          // just usage of var 
+          // just usage of var
         }
       }
       public String getMatchingText() {
@@ -574,7 +550,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "parentStyleClass");
       editorCell.setCellId("Constant_i8r80j_d1a0a");
       Style style = new StyleImpl();
-      new testParentStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      new testParentStyleStyleClass(this).apply(style, editorCell);
       editorCell.getStyle().putAll(style);
       editorCell.setDefaultText("");
       return editorCell;
@@ -583,13 +559,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
       EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "AllStyleClassItems");
       editorCell.setCellId("Constant_i8r80j_e1a0a");
       Style style = new StyleImpl();
-      new testStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
-      new testKey_StyleKey().apply(style);
+      new testStyleStyleClass(this).apply(style, editorCell);
+      new testKey_StyleKey().apply(this, style);
       if (_StyleParameter_QueryFunction_i8r80j_a2e1a0a()) {
-        new testStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+        new testStyleStyleClass(this).apply(style, editorCell);
       }
       if (_StyleParameter_QueryFunction_i8r80j_a3e1a0a()) {
-        new testStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+        new testStyleStyleClass(this).apply(style, editorCell);
       }
       style.set(StyleAttributes.getInstance().<String>getAttribute("jetbrains.mps.lang.editor.test.generation", "testStringAttribute"), _StyleParameter_QueryFunction_i8r80j_a4e1a0a());
       style.set(StyleAttributes.AUTO_DELETABLE, true);
@@ -624,30 +600,30 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.SELECTABLE, _StyleParameter_QueryFunction_i8r80j_a43e1a0a());
       style.set(StyleAttributes.STRIKE_OUT, true);
       style.set(StyleAttributes.STRIKE_OUT, _StyleParameter_QueryFunction_i8r80j_a63e1a0a());
-      style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.blue));
-      style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a83e1a0a()));
-      style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.BACKGROUND_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a04e1a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a04e1a0a().o2));
-      style.set(StyleAttributes.BRACKETS_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_BLUE));
-      style.set(StyleAttributes.BRACKETS_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a24e1a0a()));
-      style.set(StyleAttributes.BRACKETS_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.BRACKETS_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a44e1a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a44e1a0a().o2));
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN, StyleRegistry.getInstance().getSimpleColor(MPSColors.cyan)));
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a64e1a0a()));
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.TEXT_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a84e1a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a84e1a0a().o2));
-      style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-      style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a05e1a0a()));
-      style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.NULL_TEXT_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a25e1a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a25e1a0a().o2));
-      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a45e1a0a()));
-      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a65e1a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a65e1a0a().o2));
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.cyan));
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a85e1a0a()));
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a06e1a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a06e1a0a().o2));
+      style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.blue));
+      style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a83e1a0a()));
+      style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a04e1a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a04e1a0a().o2));
+      style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_BLUE));
+      style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a24e1a0a()));
+      style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.BRACKETS_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a44e1a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a44e1a0a().o2));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_GREEN, getStyleRegistry().getSimpleColor(MPSColors.cyan)));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a64e1a0a()));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.TEXT_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a84e1a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a84e1a0a().o2));
+      style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_GREEN));
+      style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a05e1a0a()));
+      style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.NULL_TEXT_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a25e1a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a25e1a0a().o2));
+      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_GREEN));
+      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a45e1a0a()));
+      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a65e1a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a65e1a0a().o2));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.cyan));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a85e1a0a()));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a06e1a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a06e1a0a().o2));
       style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.LAST);
       style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.FIRST);
       style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.LAST);
@@ -674,8 +650,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.POSITION, "indented");
       style.set(StyleAttributes.SHOW_BOUNDARIES_IN, ShowBoundariesArea.GUTTER_AND_EDITOR);
       style.set(StyleAttributes.TABLE_COMPONENT, TableComponent.VERTICAL_COLLECTION);
-      new testStyleStyleClass(getEditorContext(), getNode()).unapply(style, editorCell);
-      new testKey_StyleKey().unapply(style);
+      new testStyleStyleClass(this).unapply(style, editorCell);
+      new testKey_StyleKey().unapply(this, style);
       style.set(StyleAttributes.UNDERLINED, false);
       style.set(StyleAttributes.UNDERLINED, _StyleParameter_QueryFunction_i8r80j_a09e1a0a());
       editorCell.getStyle().putAll(style);
@@ -890,20 +866,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
       public RefNodeList_generic_cellMenu_i8r80j_a0c4a0a() {
       }
 
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = operationContext != null || node != null || editorContext != null;
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
+        boolean var = node != null || editorContext != null;
         return (var ? null : null);
+
       }
-      protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
+      protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        this.handleAction_impl((String) parameterObject, node, model, editorContext);
       }
-      public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = parameterObject != null || node != null || model != null || editorContext != null || operationContext != null;
+      private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        boolean var = parameterObject != null || node != null || model != null || editorContext != null;
         if (var) {
-          // just usage of var 
+          // just usage of var
         }
       }
-      public boolean isReferentPresentation() {
+      protected boolean isReferentPresentation() {
         return false;
       }
 
@@ -916,27 +893,24 @@ import org.jetbrains.mps.openapi.language.SConcept;
       public RefNodeList_generic_cellMenu_i8r80j_b0c4a0a() {
       }
 
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
         return null;
+
       }
-      protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
+      protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        this.handleAction_impl((String) parameterObject, node, model, editorContext);
       }
-      public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
       }
-      public boolean isReferentPresentation() {
+      protected boolean isReferentPresentation() {
         return false;
       }
-      public String getMatchingText(Object parameterObject) {
-        return this.getMatchingText_internal((String) parameterObject);
-      }
-      public String getMatchingText_internal(String parameterObject) {
+      protected String getMatchingText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return String.valueOf(parameterObject);
       }
-      public String getDescriptionText(Object parameterObject) {
-        return this.getDescriptionText_internal((String) parameterObject);
-      }
-      public String getDescriptionText_internal(String parameterObject) {
+      protected String getDescriptionText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return String.valueOf(parameterObject);
       }
 
@@ -948,19 +922,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public static class RefNodeList_customReplace_cellMenu_i8r80j_c0c4a0a extends AbstractCellMenuPart_ReplaceNode_Group {
       public RefNodeList_customReplace_cellMenu_i8r80j_c0c4a0a() {
       }
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = operationContext != null || node != null || editorContext != null;
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
+        boolean var = node != null || editorContext != null;
         return (var ? null : null);
       }
-      public SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        return createReplacementNode_impl((String) parameterObject, node, model, operationContext, editorContext);
-      }
-      public SNode createReplacementNode_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = parameterObject != null || node != null || model != null || editorContext != null || operationContext != null;
+      protected SNode createReplacementNode(Object _parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        final String parameterObject = (String) _parameterObject;
+        boolean var = parameterObject != null || node != null || model != null || editorContext != null;
         return (var ? null : null);
-      }
-      public boolean isReferentPresentation() {
-        return false;
       }
       @Override
       protected EditorMenuDescriptor getEditorMenuDescriptor(Object parameterObject) {
@@ -971,28 +940,19 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public static class RefNodeList_customReplace_cellMenu_i8r80j_d0c4a0a extends AbstractCellMenuPart_ReplaceNode_Group {
       public RefNodeList_customReplace_cellMenu_i8r80j_d0c4a0a() {
       }
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
         return null;
       }
-      public SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        return createReplacementNode_impl((String) parameterObject, node, model, operationContext, editorContext);
-      }
-      public SNode createReplacementNode_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      protected SNode createReplacementNode(Object _parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        final String parameterObject = (String) _parameterObject;
         return null;
       }
-      public boolean isReferentPresentation() {
-        return false;
-      }
-      public String getMatchingText(Object parameterObject) {
-        return this.getMatchingText_internal((String) parameterObject);
-      }
-      public String getMatchingText_internal(String parameterObject) {
+      protected String getMatchingText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return String.valueOf(parameterObject);
       }
-      public String getDescriptionText(Object parameterObject) {
-        return this.getDescriptionText_internal((String) parameterObject);
-      }
-      public String getDescriptionText_internal(String parameterObject) {
+      protected String getDescriptionText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return String.valueOf(parameterObject);
       }
       @Override
@@ -1015,26 +975,22 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       @Override
       public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-        List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-        Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-          public SubstituteAction apply(SubstituteAction action) {
-            return new NodeSubstituteActionWrapper(action) {
-              @Override
-              public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-                EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-                result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308604513042")));
-                return result;
-              }
-            };
-          }
-        };
-        return actions.stream().map(mapper).collect(Collectors.toList());
+        return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
+          return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
+            @Override
+            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+              result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308604513042")));
+              return result;
+            }
+          };
+        }).toList();
       }
 
-      public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = node != null || model != null || editorContext != null || operationContext != null;
+      protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
+        boolean var = node != null || model != null || editorContext != null;
         if (var) {
-          // just usage of var 
+          // just usage of var
         }
       }
       public String getMatchingText() {
@@ -1056,7 +1012,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       EditorCell_Error editorCell = new EditorCell_Error(getEditorContext(), myNode, "");
       editorCell.setCellId("Error_i8r80j_d4a0a");
       Style style = new StyleImpl();
-      new testParentStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      new testParentStyleStyleClass(this).apply(style, editorCell);
       editorCell.getStyle().putAll(style);
       return editorCell;
     }
@@ -1064,13 +1020,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
       EditorCell_Error editorCell = new EditorCell_Error(getEditorContext(), myNode, "");
       editorCell.setCellId("Error_i8r80j_e4a0a");
       Style style = new StyleImpl();
-      new testStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
-      new testKey_StyleKey().apply(style);
+      new testStyleStyleClass(this).apply(style, editorCell);
+      new testKey_StyleKey().apply(this, style);
       if (_StyleParameter_QueryFunction_i8r80j_a2e4a0a()) {
-        new testStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+        new testStyleStyleClass(this).apply(style, editorCell);
       }
       if (_StyleParameter_QueryFunction_i8r80j_a3e4a0a()) {
-        new testStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+        new testStyleStyleClass(this).apply(style, editorCell);
       }
       style.set(StyleAttributes.getInstance().<String>getAttribute("jetbrains.mps.lang.editor.test.generation", "testStringAttribute"), _StyleParameter_QueryFunction_i8r80j_a4e4a0a());
       style.set(StyleAttributes.AUTO_DELETABLE, true);
@@ -1105,30 +1061,30 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.SELECTABLE, _StyleParameter_QueryFunction_i8r80j_a43e4a0a());
       style.set(StyleAttributes.STRIKE_OUT, true);
       style.set(StyleAttributes.STRIKE_OUT, _StyleParameter_QueryFunction_i8r80j_a63e4a0a());
-      style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.blue));
-      style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a83e4a0a()));
-      style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.BACKGROUND_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a04e4a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a04e4a0a().o2));
-      style.set(StyleAttributes.BRACKETS_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_BLUE));
-      style.set(StyleAttributes.BRACKETS_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a24e4a0a()));
-      style.set(StyleAttributes.BRACKETS_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.BRACKETS_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a44e4a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a44e4a0a().o2));
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN, StyleRegistry.getInstance().getSimpleColor(MPSColors.cyan)));
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a64e4a0a()));
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.TEXT_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a84e4a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a84e4a0a().o2));
-      style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-      style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a05e4a0a()));
-      style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.NULL_TEXT_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a25e4a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a25e4a0a().o2));
-      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a45e4a0a()));
-      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a65e4a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a65e4a0a().o2));
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.cyan));
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a85e4a0a()));
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a06e4a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a06e4a0a().o2));
+      style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.blue));
+      style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a83e4a0a()));
+      style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a04e4a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a04e4a0a().o2));
+      style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_BLUE));
+      style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a24e4a0a()));
+      style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.BRACKETS_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a44e4a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a44e4a0a().o2));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_GREEN, getStyleRegistry().getSimpleColor(MPSColors.cyan)));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a64e4a0a()));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.TEXT_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a84e4a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a84e4a0a().o2));
+      style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_GREEN));
+      style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a05e4a0a()));
+      style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.NULL_TEXT_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a25e4a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a25e4a0a().o2));
+      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_GREEN));
+      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a45e4a0a()));
+      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a65e4a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a65e4a0a().o2));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.cyan));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a85e4a0a()));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a06e4a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a06e4a0a().o2));
       style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.LAST);
       style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.FIRST);
       style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.LAST);
@@ -1155,8 +1111,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.POSITION, "indented");
       style.set(StyleAttributes.SHOW_BOUNDARIES_IN, ShowBoundariesArea.GUTTER_AND_EDITOR);
       style.set(StyleAttributes.TABLE_COMPONENT, TableComponent.VERTICAL_COLLECTION);
-      new testStyleStyleClass(getEditorContext(), getNode()).unapply(style, editorCell);
-      new testKey_StyleKey().unapply(style);
+      new testStyleStyleClass(this).unapply(style, editorCell);
+      new testKey_StyleKey().unapply(this, style);
       style.set(StyleAttributes.UNDERLINED, false);
       style.set(StyleAttributes.UNDERLINED, _StyleParameter_QueryFunction_i8r80j_a09e4a0a());
       editorCell.getStyle().putAll(style);
@@ -1421,20 +1377,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
       public RefNodeList_generic_cellMenu_i8r80j_a0c7a0a() {
       }
 
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = operationContext != null || node != null || editorContext != null;
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
+        boolean var = node != null || editorContext != null;
         return (var ? null : null);
+
       }
-      protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
+      protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        this.handleAction_impl((String) parameterObject, node, model, editorContext);
       }
-      public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = parameterObject != null || node != null || model != null || editorContext != null || operationContext != null;
+      private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        boolean var = parameterObject != null || node != null || model != null || editorContext != null;
         if (var) {
-          // just usage of var 
+          // just usage of var
         }
       }
-      public boolean isReferentPresentation() {
+      protected boolean isReferentPresentation() {
         return false;
       }
 
@@ -1447,27 +1404,24 @@ import org.jetbrains.mps.openapi.language.SConcept;
       public RefNodeList_generic_cellMenu_i8r80j_b0c7a0a() {
       }
 
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
         return null;
+
       }
-      protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
+      protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        this.handleAction_impl((String) parameterObject, node, model, editorContext);
       }
-      public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
       }
-      public boolean isReferentPresentation() {
+      protected boolean isReferentPresentation() {
         return false;
       }
-      public String getMatchingText(Object parameterObject) {
-        return this.getMatchingText_internal((String) parameterObject);
-      }
-      public String getMatchingText_internal(String parameterObject) {
+      protected String getMatchingText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return String.valueOf(parameterObject);
       }
-      public String getDescriptionText(Object parameterObject) {
-        return this.getDescriptionText_internal((String) parameterObject);
-      }
-      public String getDescriptionText_internal(String parameterObject) {
+      protected String getDescriptionText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return String.valueOf(parameterObject);
       }
 
@@ -1479,19 +1433,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public static class RefNodeList_customReplace_cellMenu_i8r80j_c0c7a0a extends AbstractCellMenuPart_ReplaceNode_Group {
       public RefNodeList_customReplace_cellMenu_i8r80j_c0c7a0a() {
       }
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = operationContext != null || node != null || editorContext != null;
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
+        boolean var = node != null || editorContext != null;
         return (var ? null : null);
       }
-      public SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        return createReplacementNode_impl((String) parameterObject, node, model, operationContext, editorContext);
-      }
-      public SNode createReplacementNode_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = parameterObject != null || node != null || model != null || editorContext != null || operationContext != null;
+      protected SNode createReplacementNode(Object _parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        final String parameterObject = (String) _parameterObject;
+        boolean var = parameterObject != null || node != null || model != null || editorContext != null;
         return (var ? null : null);
-      }
-      public boolean isReferentPresentation() {
-        return false;
       }
       @Override
       protected EditorMenuDescriptor getEditorMenuDescriptor(Object parameterObject) {
@@ -1502,28 +1451,19 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public static class RefNodeList_customReplace_cellMenu_i8r80j_d0c7a0a extends AbstractCellMenuPart_ReplaceNode_Group {
       public RefNodeList_customReplace_cellMenu_i8r80j_d0c7a0a() {
       }
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
         return null;
       }
-      public SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        return createReplacementNode_impl((String) parameterObject, node, model, operationContext, editorContext);
-      }
-      public SNode createReplacementNode_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      protected SNode createReplacementNode(Object _parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        final String parameterObject = (String) _parameterObject;
         return null;
       }
-      public boolean isReferentPresentation() {
-        return false;
-      }
-      public String getMatchingText(Object parameterObject) {
-        return this.getMatchingText_internal((String) parameterObject);
-      }
-      public String getMatchingText_internal(String parameterObject) {
+      protected String getMatchingText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return String.valueOf(parameterObject);
       }
-      public String getDescriptionText(Object parameterObject) {
-        return this.getDescriptionText_internal((String) parameterObject);
-      }
-      public String getDescriptionText_internal(String parameterObject) {
+      protected String getDescriptionText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return String.valueOf(parameterObject);
       }
       @Override
@@ -1546,26 +1486,22 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       @Override
       public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-        List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-        Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-          public SubstituteAction apply(SubstituteAction action) {
-            return new NodeSubstituteActionWrapper(action) {
-              @Override
-              public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-                EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-                result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308604719354")));
-                return result;
-              }
-            };
-          }
-        };
-        return actions.stream().map(mapper).collect(Collectors.toList());
+        return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
+          return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
+            @Override
+            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+              result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308604719354")));
+              return result;
+            }
+          };
+        }).toList();
       }
 
-      public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = node != null || model != null || editorContext != null || operationContext != null;
+      protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
+        boolean var = node != null || model != null || editorContext != null;
         if (var) {
-          // just usage of var 
+          // just usage of var
         }
       }
       public String getMatchingText() {
@@ -1599,7 +1535,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
       editorCell.setCellId("ModelAccess_i8r80j_d7a0a");
       Style style = new StyleImpl();
-      new testParentStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      new testParentStyleStyleClass(this).apply(style, editorCell);
       editorCell.getStyle().putAll(style);
       editorCell.setDefaultText("");
       return editorCell;
@@ -1620,13 +1556,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
       editorCell.setCellId("ModelAccess_i8r80j_e7a0a");
       Style style = new StyleImpl();
-      new testStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
-      new testKey_StyleKey().apply(style);
+      new testStyleStyleClass(this).apply(style, editorCell);
+      new testKey_StyleKey().apply(this, style);
       if (_StyleParameter_QueryFunction_i8r80j_a2e7a0a()) {
-        new testStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+        new testStyleStyleClass(this).apply(style, editorCell);
       }
       if (_StyleParameter_QueryFunction_i8r80j_a3e7a0a()) {
-        new testStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+        new testStyleStyleClass(this).apply(style, editorCell);
       }
       style.set(StyleAttributes.getInstance().<String>getAttribute("jetbrains.mps.lang.editor.test.generation", "testStringAttribute"), _StyleParameter_QueryFunction_i8r80j_a4e7a0a());
       style.set(StyleAttributes.AUTO_DELETABLE, true);
@@ -1661,30 +1597,30 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.SELECTABLE, _StyleParameter_QueryFunction_i8r80j_a43e7a0a());
       style.set(StyleAttributes.STRIKE_OUT, true);
       style.set(StyleAttributes.STRIKE_OUT, _StyleParameter_QueryFunction_i8r80j_a63e7a0a());
-      style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.blue));
-      style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a83e7a0a()));
-      style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.BACKGROUND_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a04e7a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a04e7a0a().o2));
-      style.set(StyleAttributes.BRACKETS_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_BLUE));
-      style.set(StyleAttributes.BRACKETS_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a24e7a0a()));
-      style.set(StyleAttributes.BRACKETS_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.BRACKETS_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a44e7a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a44e7a0a().o2));
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN, StyleRegistry.getInstance().getSimpleColor(MPSColors.cyan)));
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a64e7a0a()));
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.TEXT_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a84e7a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a84e7a0a().o2));
-      style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-      style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a05e7a0a()));
-      style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.NULL_TEXT_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a25e7a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a25e7a0a().o2));
-      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a45e7a0a()));
-      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a65e7a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a65e7a0a().o2));
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.cyan));
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a85e7a0a()));
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a06e7a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a06e7a0a().o2));
+      style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.blue));
+      style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a83e7a0a()));
+      style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a04e7a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a04e7a0a().o2));
+      style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_BLUE));
+      style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a24e7a0a()));
+      style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.BRACKETS_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a44e7a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a44e7a0a().o2));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_GREEN, getStyleRegistry().getSimpleColor(MPSColors.cyan)));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a64e7a0a()));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.TEXT_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a84e7a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a84e7a0a().o2));
+      style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_GREEN));
+      style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a05e7a0a()));
+      style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.NULL_TEXT_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a25e7a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a25e7a0a().o2));
+      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_GREEN));
+      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a45e7a0a()));
+      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a65e7a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a65e7a0a().o2));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.cyan));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a85e7a0a()));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a06e7a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a06e7a0a().o2));
       style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.LAST);
       style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.FIRST);
       style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.LAST);
@@ -1711,8 +1647,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.POSITION, "indented");
       style.set(StyleAttributes.SHOW_BOUNDARIES_IN, ShowBoundariesArea.GUTTER_AND_EDITOR);
       style.set(StyleAttributes.TABLE_COMPONENT, TableComponent.VERTICAL_COLLECTION);
-      new testStyleStyleClass(getEditorContext(), getNode()).unapply(style, editorCell);
-      new testKey_StyleKey().unapply(style);
+      new testStyleStyleClass(this).unapply(style, editorCell);
+      new testKey_StyleKey().unapply(this, style);
       style.set(StyleAttributes.UNDERLINED, false);
       style.set(StyleAttributes.UNDERLINED, _StyleParameter_QueryFunction_i8r80j_a09e7a0a());
       editorCell.getStyle().putAll(style);
@@ -1940,20 +1876,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
       public RefNodeList_generic_cellMenu_i8r80j_a0b01a0a() {
       }
 
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = operationContext != null || node != null || editorContext != null;
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
+        boolean var = node != null || editorContext != null;
         return (var ? null : null);
+
       }
-      protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
+      protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        this.handleAction_impl((String) parameterObject, node, model, editorContext);
       }
-      public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = parameterObject != null || node != null || model != null || editorContext != null || operationContext != null;
+      private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        boolean var = parameterObject != null || node != null || model != null || editorContext != null;
         if (var) {
-          // just usage of var 
+          // just usage of var
         }
       }
-      public boolean isReferentPresentation() {
+      protected boolean isReferentPresentation() {
         return false;
       }
 
@@ -1966,27 +1903,24 @@ import org.jetbrains.mps.openapi.language.SConcept;
       public RefNodeList_generic_cellMenu_i8r80j_b0b01a0a() {
       }
 
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
         return null;
+
       }
-      protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
+      protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        this.handleAction_impl((String) parameterObject, node, model, editorContext);
       }
-      public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
       }
-      public boolean isReferentPresentation() {
+      protected boolean isReferentPresentation() {
         return false;
       }
-      public String getMatchingText(Object parameterObject) {
-        return this.getMatchingText_internal((String) parameterObject);
-      }
-      public String getMatchingText_internal(String parameterObject) {
+      protected String getMatchingText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return String.valueOf(parameterObject);
       }
-      public String getDescriptionText(Object parameterObject) {
-        return this.getDescriptionText_internal((String) parameterObject);
-      }
-      public String getDescriptionText_internal(String parameterObject) {
+      protected String getDescriptionText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return String.valueOf(parameterObject);
       }
 
@@ -1998,19 +1932,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public static class RefNodeList_customReplace_cellMenu_i8r80j_c0b01a0a extends AbstractCellMenuPart_ReplaceNode_Group {
       public RefNodeList_customReplace_cellMenu_i8r80j_c0b01a0a() {
       }
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = operationContext != null || node != null || editorContext != null;
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
+        boolean var = node != null || editorContext != null;
         return (var ? null : null);
       }
-      public SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        return createReplacementNode_impl((String) parameterObject, node, model, operationContext, editorContext);
-      }
-      public SNode createReplacementNode_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = parameterObject != null || node != null || model != null || editorContext != null || operationContext != null;
+      protected SNode createReplacementNode(Object _parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        final String parameterObject = (String) _parameterObject;
+        boolean var = parameterObject != null || node != null || model != null || editorContext != null;
         return (var ? null : null);
-      }
-      public boolean isReferentPresentation() {
-        return false;
       }
       @Override
       protected EditorMenuDescriptor getEditorMenuDescriptor(Object parameterObject) {
@@ -2021,28 +1950,19 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public static class RefNodeList_customReplace_cellMenu_i8r80j_d0b01a0a extends AbstractCellMenuPart_ReplaceNode_Group {
       public RefNodeList_customReplace_cellMenu_i8r80j_d0b01a0a() {
       }
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
         return null;
       }
-      public SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        return createReplacementNode_impl((String) parameterObject, node, model, operationContext, editorContext);
-      }
-      public SNode createReplacementNode_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      protected SNode createReplacementNode(Object _parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        final String parameterObject = (String) _parameterObject;
         return null;
       }
-      public boolean isReferentPresentation() {
-        return false;
-      }
-      public String getMatchingText(Object parameterObject) {
-        return this.getMatchingText_internal((String) parameterObject);
-      }
-      public String getMatchingText_internal(String parameterObject) {
+      protected String getMatchingText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return String.valueOf(parameterObject);
       }
-      public String getDescriptionText(Object parameterObject) {
-        return this.getDescriptionText_internal((String) parameterObject);
-      }
-      public String getDescriptionText_internal(String parameterObject) {
+      protected String getDescriptionText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return String.valueOf(parameterObject);
       }
       @Override
@@ -2065,26 +1985,22 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       @Override
       public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-        List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-        Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-          public SubstituteAction apply(SubstituteAction action) {
-            return new NodeSubstituteActionWrapper(action) {
-              @Override
-              public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-                EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-                result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308604913935")));
-                return result;
-              }
-            };
-          }
-        };
-        return actions.stream().map(mapper).collect(Collectors.toList());
+        return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
+          return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
+            @Override
+            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+              result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308604913935")));
+              return result;
+            }
+          };
+        }).toList();
       }
 
-      public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = node != null || model != null || editorContext != null || operationContext != null;
+      protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
+        boolean var = node != null || model != null || editorContext != null;
         if (var) {
-          // just usage of var 
+          // just usage of var
         }
       }
       public String getMatchingText() {
@@ -2112,7 +2028,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
       editorCell.setCellId("ReadOnlyModelAccessor_i8r80j_c01a0a");
       Style style = new StyleImpl();
-      new testParentStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      new testParentStyleStyleClass(this).apply(style, editorCell);
       style.set(StyleAttributes.EDITABLE, false);
       editorCell.getStyle().putAll(style);
       return editorCell;
@@ -2127,13 +2043,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
       editorCell.setCellId("ReadOnlyModelAccessor_i8r80j_d01a0a");
       Style style = new StyleImpl();
-      new testStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
-      new testKey_StyleKey().apply(style);
+      new testStyleStyleClass(this).apply(style, editorCell);
+      new testKey_StyleKey().apply(this, style);
       if (_StyleParameter_QueryFunction_i8r80j_a2d01a0a()) {
-        new testStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+        new testStyleStyleClass(this).apply(style, editorCell);
       }
       if (_StyleParameter_QueryFunction_i8r80j_a3d01a0a()) {
-        new testStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+        new testStyleStyleClass(this).apply(style, editorCell);
       }
       style.set(StyleAttributes.getInstance().<String>getAttribute("jetbrains.mps.lang.editor.test.generation", "testStringAttribute"), _StyleParameter_QueryFunction_i8r80j_a4d01a0a());
       style.set(StyleAttributes.AUTO_DELETABLE, true);
@@ -2168,30 +2084,30 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.SELECTABLE, _StyleParameter_QueryFunction_i8r80j_a43d01a0a());
       style.set(StyleAttributes.STRIKE_OUT, true);
       style.set(StyleAttributes.STRIKE_OUT, _StyleParameter_QueryFunction_i8r80j_a63d01a0a());
-      style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.blue));
-      style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a83d01a0a()));
-      style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.BACKGROUND_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a04d01a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a04d01a0a().o2));
-      style.set(StyleAttributes.BRACKETS_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_BLUE));
-      style.set(StyleAttributes.BRACKETS_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a24d01a0a()));
-      style.set(StyleAttributes.BRACKETS_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.BRACKETS_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a44d01a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a44d01a0a().o2));
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN, StyleRegistry.getInstance().getSimpleColor(MPSColors.cyan)));
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a64d01a0a()));
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.TEXT_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a84d01a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a84d01a0a().o2));
-      style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-      style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a05d01a0a()));
-      style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.NULL_TEXT_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a25d01a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a25d01a0a().o2));
-      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a45d01a0a()));
-      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a65d01a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a65d01a0a().o2));
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.cyan));
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a85d01a0a()));
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a06d01a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a06d01a0a().o2));
+      style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.blue));
+      style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a83d01a0a()));
+      style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a04d01a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a04d01a0a().o2));
+      style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_BLUE));
+      style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a24d01a0a()));
+      style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.BRACKETS_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a44d01a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a44d01a0a().o2));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_GREEN, getStyleRegistry().getSimpleColor(MPSColors.cyan)));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a64d01a0a()));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.TEXT_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a84d01a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a84d01a0a().o2));
+      style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_GREEN));
+      style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a05d01a0a()));
+      style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.NULL_TEXT_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a25d01a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a25d01a0a().o2));
+      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_GREEN));
+      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a45d01a0a()));
+      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a65d01a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a65d01a0a().o2));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.cyan));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a85d01a0a()));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a06d01a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a06d01a0a().o2));
       style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.LAST);
       style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.FIRST);
       style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.LAST);
@@ -2218,8 +2134,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.POSITION, "indented");
       style.set(StyleAttributes.SHOW_BOUNDARIES_IN, ShowBoundariesArea.GUTTER_AND_EDITOR);
       style.set(StyleAttributes.TABLE_COMPONENT, TableComponent.VERTICAL_COLLECTION);
-      new testStyleStyleClass(getEditorContext(), getNode()).unapply(style, editorCell);
-      new testKey_StyleKey().unapply(style);
+      new testStyleStyleClass(this).unapply(style, editorCell);
+      new testKey_StyleKey().unapply(this, style);
       style.set(StyleAttributes.UNDERLINED, false);
       style.set(StyleAttributes.UNDERLINED, _StyleParameter_QueryFunction_i8r80j_a09d01a0a());
       editorCell.getStyle().putAll(style);
@@ -2423,6 +2339,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
           editorCell = EditorCell_Property.create(getEditorContext(), modelAccessor, myNode);
           editorCell.setCellId("TransactionalProperty_i8r80j_a31a0a");
           editorCell.setDefaultText("<no theProperty>");
+
           setCellContext(editorCell);
           editorCell.setCommitInCommand(false);
         }
@@ -2459,6 +2376,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
           editorCell = EditorCell_Property.create(getEditorContext(), modelAccessor, myNode);
           editorCell.setCellId("TransactionalProperty_i8r80j_b31a0a");
           editorCell.setDefaultText("<no theProperty>");
+
           setCellContext(editorCell);
           editorCell.setCommitInCommand(true);
         }
@@ -2489,12 +2407,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.AbstractCellTest$Pr, "jetbrains.mps.lang.editor.test.generation.editor.TestTargetTransformationMenu"));
         editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new RefNodeList_generic_cellMenu_i8r80j_a0c31a0a(), new RefNodeList_generic_cellMenu_i8r80j_b0c31a0a(), new RefNodeList_customReplace_cellMenu_i8r80j_c0c31a0a(), new RefNodeList_customReplace_cellMenu_i8r80j_d0c31a0a(), new RefNodeList_component_cellMenu_i8r80j_e0c31a0a(), new RefNodeList_generic_cellMenu_i8r80j_f0c31a0a(), new RefNodeList_theProperty_postfixCellMenu_i8r80j_g0c31a0a(), new RefNodeList_theProperty_cellMenu_i8r80j_h0c31a0a(), new ReplaceWith_Constant_cellMenu_i8r80j_i0c31a0a(), new SChildSubstituteInfoPartEx(editorCell)}));
         setCellContext(editorCell);
-        Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
-        Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-          }
-        });
+        Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
+        Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
         if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
           EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
           return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);
@@ -2512,20 +2426,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
       public RefNodeList_generic_cellMenu_i8r80j_a0c31a0a() {
       }
 
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = operationContext != null || node != null || editorContext != null;
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
+        boolean var = node != null || editorContext != null;
         return (var ? null : null);
+
       }
-      protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
+      protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        this.handleAction_impl((String) parameterObject, node, model, editorContext);
       }
-      public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = parameterObject != null || node != null || model != null || editorContext != null || operationContext != null;
+      private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        boolean var = parameterObject != null || node != null || model != null || editorContext != null;
         if (var) {
-          // just usage of var 
+          // just usage of var
         }
       }
-      public boolean isReferentPresentation() {
+      protected boolean isReferentPresentation() {
         return false;
       }
 
@@ -2538,27 +2453,24 @@ import org.jetbrains.mps.openapi.language.SConcept;
       public RefNodeList_generic_cellMenu_i8r80j_b0c31a0a() {
       }
 
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
         return null;
+
       }
-      protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
+      protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        this.handleAction_impl((String) parameterObject, node, model, editorContext);
       }
-      public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
       }
-      public boolean isReferentPresentation() {
+      protected boolean isReferentPresentation() {
         return false;
       }
-      public String getMatchingText(Object parameterObject) {
-        return this.getMatchingText_internal((String) parameterObject);
-      }
-      public String getMatchingText_internal(String parameterObject) {
+      protected String getMatchingText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return String.valueOf(parameterObject);
       }
-      public String getDescriptionText(Object parameterObject) {
-        return this.getDescriptionText_internal((String) parameterObject);
-      }
-      public String getDescriptionText_internal(String parameterObject) {
+      protected String getDescriptionText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return String.valueOf(parameterObject);
       }
 
@@ -2570,19 +2482,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public static class RefNodeList_customReplace_cellMenu_i8r80j_c0c31a0a extends AbstractCellMenuPart_ReplaceNode_Group {
       public RefNodeList_customReplace_cellMenu_i8r80j_c0c31a0a() {
       }
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = operationContext != null || node != null || editorContext != null;
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
+        boolean var = node != null || editorContext != null;
         return (var ? null : null);
       }
-      public SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        return createReplacementNode_impl((String) parameterObject, node, model, operationContext, editorContext);
-      }
-      public SNode createReplacementNode_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = parameterObject != null || node != null || model != null || editorContext != null || operationContext != null;
+      protected SNode createReplacementNode(Object _parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        final String parameterObject = (String) _parameterObject;
+        boolean var = parameterObject != null || node != null || model != null || editorContext != null;
         return (var ? null : null);
-      }
-      public boolean isReferentPresentation() {
-        return false;
       }
       @Override
       protected EditorMenuDescriptor getEditorMenuDescriptor(Object parameterObject) {
@@ -2593,28 +2500,19 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public static class RefNodeList_customReplace_cellMenu_i8r80j_d0c31a0a extends AbstractCellMenuPart_ReplaceNode_Group {
       public RefNodeList_customReplace_cellMenu_i8r80j_d0c31a0a() {
       }
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
         return null;
       }
-      public SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        return createReplacementNode_impl((String) parameterObject, node, model, operationContext, editorContext);
-      }
-      public SNode createReplacementNode_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      protected SNode createReplacementNode(Object _parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        final String parameterObject = (String) _parameterObject;
         return null;
       }
-      public boolean isReferentPresentation() {
-        return false;
-      }
-      public String getMatchingText(Object parameterObject) {
-        return this.getMatchingText_internal((String) parameterObject);
-      }
-      public String getMatchingText_internal(String parameterObject) {
+      protected String getMatchingText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return String.valueOf(parameterObject);
       }
-      public String getDescriptionText(Object parameterObject) {
-        return this.getDescriptionText_internal((String) parameterObject);
-      }
-      public String getDescriptionText_internal(String parameterObject) {
+      protected String getDescriptionText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return String.valueOf(parameterObject);
       }
       @Override
@@ -2637,26 +2535,22 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       @Override
       public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-        List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-        Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-          public SubstituteAction apply(SubstituteAction action) {
-            return new NodeSubstituteActionWrapper(action) {
-              @Override
-              public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-                EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-                result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308605114194")));
-                return result;
-              }
-            };
-          }
-        };
-        return actions.stream().map(mapper).collect(Collectors.toList());
+        return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
+          return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
+            @Override
+            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+              result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308605114194")));
+              return result;
+            }
+          };
+        }).toList();
       }
 
-      public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = node != null || model != null || editorContext != null || operationContext != null;
+      protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
+        boolean var = node != null || model != null || editorContext != null;
         if (var) {
-          // just usage of var 
+          // just usage of var
         }
       }
       public String getMatchingText() {
@@ -2668,24 +2562,20 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       @Override
       public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-        List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-        Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-          public SubstituteAction apply(SubstituteAction action) {
-            return new NodeSubstituteActionWrapper(action) {
-              @Override
-              public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-                EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-                result.setDescriptor(new EditorMenuDescriptorBase("property postfix hints", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308605114220")));
-                return result;
-              }
-            };
-          }
-        };
-        return actions.stream().map(mapper).collect(Collectors.toList());
+        return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
+          return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
+            @Override
+            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+              result.setDescriptor(new EditorMenuDescriptorBase("property postfix hints", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308605114220")));
+              return result;
+            }
+          };
+        }).toList();
       }
 
-      public List<String> getPostfixes(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = node != null || operationContext != null;
+      protected List<String> getPostfixes(SNode node, EditorContext editorContext) {
+        boolean var = node != null;
         return (var ? null : null);
       }
     }
@@ -2694,24 +2584,20 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       @Override
       public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-        List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-        Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-          public SubstituteAction apply(SubstituteAction action) {
-            return new NodeSubstituteActionWrapper(action) {
-              @Override
-              public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-                EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-                result.setDescriptor(new EditorMenuDescriptorBase("property postfix values", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308605114238")));
-                return result;
-              }
-            };
-          }
-        };
-        return actions.stream().map(mapper).collect(Collectors.toList());
+        return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
+          return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
+            @Override
+            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+              result.setDescriptor(new EditorMenuDescriptorBase("property postfix values", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308605114238")));
+              return result;
+            }
+          };
+        }).toList();
       }
 
-      public List<String> getPropertyValues(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = operationContext != null || node != null;
+      protected List<String> getPropertyValues(SNode node, EditorContext editorContext) {
+        boolean var = node != null;
         return (var ? null : null);
       }
     }
@@ -2744,9 +2630,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
           editorCell = EditorCell_Property.create(getEditorContext(), modelAccessor, myNode);
           editorCell.setCellId("TransactionalProperty_i8r80j_d31a0a");
           Style style = new StyleImpl();
-          new testParentStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+          new testParentStyleStyleClass(this).apply(style, editorCell);
           editorCell.getStyle().putAll(style);
           editorCell.setDefaultText("<no theProperty>");
+
           setCellContext(editorCell);
           editorCell.setCommitInCommand(false);
         }
@@ -2779,13 +2666,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
           editorCell = EditorCell_Property.create(getEditorContext(), modelAccessor, myNode);
           editorCell.setCellId("TransactionalProperty_i8r80j_e31a0a");
           Style style = new StyleImpl();
-          new testStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
-          new testKey_StyleKey().apply(style);
+          new testStyleStyleClass(this).apply(style, editorCell);
+          new testKey_StyleKey().apply(this, style);
           if (_StyleParameter_QueryFunction_i8r80j_a2e31a0a()) {
-            new testStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+            new testStyleStyleClass(this).apply(style, editorCell);
           }
           if (_StyleParameter_QueryFunction_i8r80j_a3e31a0a()) {
-            new testStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+            new testStyleStyleClass(this).apply(style, editorCell);
           }
           style.set(StyleAttributes.getInstance().<String>getAttribute("jetbrains.mps.lang.editor.test.generation", "testStringAttribute"), _StyleParameter_QueryFunction_i8r80j_a4e31a0a());
           style.set(StyleAttributes.AUTO_DELETABLE, true);
@@ -2820,30 +2707,30 @@ import org.jetbrains.mps.openapi.language.SConcept;
           style.set(StyleAttributes.SELECTABLE, _StyleParameter_QueryFunction_i8r80j_a43e31a0a());
           style.set(StyleAttributes.STRIKE_OUT, true);
           style.set(StyleAttributes.STRIKE_OUT, _StyleParameter_QueryFunction_i8r80j_a63e31a0a());
-          style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.blue));
-          style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a83e31a0a()));
-          style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-          style.set(StyleAttributes.BACKGROUND_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a04e31a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a04e31a0a().o2));
-          style.set(StyleAttributes.BRACKETS_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_BLUE));
-          style.set(StyleAttributes.BRACKETS_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a24e31a0a()));
-          style.set(StyleAttributes.BRACKETS_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-          style.set(StyleAttributes.BRACKETS_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a44e31a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a44e31a0a().o2));
-          style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN, StyleRegistry.getInstance().getSimpleColor(MPSColors.cyan)));
-          style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a64e31a0a()));
-          style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-          style.set(StyleAttributes.TEXT_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a84e31a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a84e31a0a().o2));
-          style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-          style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a05e31a0a()));
-          style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-          style.set(StyleAttributes.NULL_TEXT_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a25e31a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a25e31a0a().o2));
-          style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-          style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a45e31a0a()));
-          style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-          style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a65e31a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a65e31a0a().o2));
-          style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.cyan));
-          style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a85e31a0a()));
-          style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-          style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a06e31a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a06e31a0a().o2));
+          style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.blue));
+          style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a83e31a0a()));
+          style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+          style.set(StyleAttributes.BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a04e31a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a04e31a0a().o2));
+          style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_BLUE));
+          style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a24e31a0a()));
+          style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+          style.set(StyleAttributes.BRACKETS_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a44e31a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a44e31a0a().o2));
+          style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_GREEN, getStyleRegistry().getSimpleColor(MPSColors.cyan)));
+          style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a64e31a0a()));
+          style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+          style.set(StyleAttributes.TEXT_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a84e31a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a84e31a0a().o2));
+          style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_GREEN));
+          style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a05e31a0a()));
+          style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+          style.set(StyleAttributes.NULL_TEXT_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a25e31a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a25e31a0a().o2));
+          style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_GREEN));
+          style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a45e31a0a()));
+          style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+          style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a65e31a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a65e31a0a().o2));
+          style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.cyan));
+          style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a85e31a0a()));
+          style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+          style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a06e31a0a().o1 : _StyleParameter_QueryFunction_i8r80j_a06e31a0a().o2));
           style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.LAST);
           style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.FIRST);
           style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.LAST);
@@ -2870,12 +2757,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
           style.set(StyleAttributes.POSITION, "indented");
           style.set(StyleAttributes.SHOW_BOUNDARIES_IN, ShowBoundariesArea.GUTTER_AND_EDITOR);
           style.set(StyleAttributes.TABLE_COMPONENT, TableComponent.VERTICAL_COLLECTION);
-          new testStyleStyleClass(getEditorContext(), getNode()).unapply(style, editorCell);
-          new testKey_StyleKey().unapply(style);
+          new testStyleStyleClass(this).unapply(style, editorCell);
+          new testKey_StyleKey().unapply(this, style);
           style.set(StyleAttributes.UNDERLINED, false);
           style.set(StyleAttributes.UNDERLINED, _StyleParameter_QueryFunction_i8r80j_a09e31a0a());
           editorCell.getStyle().putAll(style);
           editorCell.setDefaultText("<no theProperty>");
+
           setCellContext(editorCell);
           editorCell.setCommitInCommand(false);
         }
@@ -3218,20 +3106,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
       public RefNodeList_generic_cellMenu_i8r80j_a0b61a0a() {
       }
 
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = operationContext != null || node != null || editorContext != null;
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
+        boolean var = node != null || editorContext != null;
         return (var ? null : null);
+
       }
-      protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
+      protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        this.handleAction_impl((String) parameterObject, node, model, editorContext);
       }
-      public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = parameterObject != null || node != null || model != null || editorContext != null || operationContext != null;
+      private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        boolean var = parameterObject != null || node != null || model != null || editorContext != null;
         if (var) {
-          // just usage of var 
+          // just usage of var
         }
       }
-      public boolean isReferentPresentation() {
+      protected boolean isReferentPresentation() {
         return false;
       }
 
@@ -3244,27 +3133,24 @@ import org.jetbrains.mps.openapi.language.SConcept;
       public RefNodeList_generic_cellMenu_i8r80j_b0b61a0a() {
       }
 
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
         return null;
+
       }
-      protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
+      protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        this.handleAction_impl((String) parameterObject, node, model, editorContext);
       }
-      public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
       }
-      public boolean isReferentPresentation() {
+      protected boolean isReferentPresentation() {
         return false;
       }
-      public String getMatchingText(Object parameterObject) {
-        return this.getMatchingText_internal((String) parameterObject);
-      }
-      public String getMatchingText_internal(String parameterObject) {
+      protected String getMatchingText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return String.valueOf(parameterObject);
       }
-      public String getDescriptionText(Object parameterObject) {
-        return this.getDescriptionText_internal((String) parameterObject);
-      }
-      public String getDescriptionText_internal(String parameterObject) {
+      protected String getDescriptionText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return String.valueOf(parameterObject);
       }
 
@@ -3276,27 +3162,17 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public static class RefNodeList_children_cellMenu_i8r80j_c0b61a0a extends AbstractCellMenuPart_ReplaceChild_Group {
       public RefNodeList_children_cellMenu_i8r80j_c0b61a0a() {
       }
-      public List<?> createParameterObjects(SNode node, SNode currentChild, SAbstractConcept defaultConceptOfChild, IOperationContext operationContext, EditorContext editorContext) {
-        return createParameterObjects_impl(node, currentChild, defaultConceptOfChild.getDeclarationNode(), defaultConceptOfChild, operationContext, editorContext);
-      }
-
-      private List<?> createParameterObjects_impl(SNode node, SNode currentChild, SNode defaultConceptOfChild, SAbstractConcept defaultChildConcept, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = operationContext != null || node != null || currentChild != null || defaultChildConcept.getDeclarationNode() != null;
+      protected List<?> createParameterObjects(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, EditorContext editorContext) {
+        boolean var = node != null || currentChild != null || defaultChildConcept != null;
         return (var ? null : null);
       }
-
-      public boolean isCustomCreateChildNode() {
+      protected boolean isCustomCreateChildNode() {
         return true;
       }
-      public SNode customCreateChildNode(Object parameterObject, SNode node, SNode currentChild, SAbstractConcept defaultConceptOfChild, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        return this.customCreateChildNode_impl((String) parameterObject, node, currentChild, defaultConceptOfChild.getDeclarationNode(), defaultConceptOfChild, model, operationContext, editorContext);
-      }
-      public SNode customCreateChildNode_impl(String parameterObject, SNode node, SNode currentChild, SNode defaultConceptOfChild, SAbstractConcept defaultChildConcept, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = operationContext != null || defaultChildConcept.getDeclarationNode() != null || model != null || node != null || currentChild != null || parameterObject != null;
+      protected SNode customCreateChildNode(Object _parameterObject, SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model, EditorContext editorContext) {
+        String parameterObject = (String) _parameterObject;
+        boolean var = defaultChildConcept != null || model != null || node != null || currentChild != null || parameterObject != null;
         return (var ? null : null);
-      }
-      public boolean isReferentPresentation() {
-        return false;
       }
 
       @Override
@@ -3307,27 +3183,15 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public static class RefNodeList_children_cellMenu_i8r80j_d0b61a0a extends AbstractCellMenuPart_ReplaceChild_Group {
       public RefNodeList_children_cellMenu_i8r80j_d0b61a0a() {
       }
-      public List<?> createParameterObjects(SNode node, SNode currentChild, SAbstractConcept defaultConceptOfChild, IOperationContext operationContext, EditorContext editorContext) {
-        return createParameterObjects_impl(node, currentChild, defaultConceptOfChild.getDeclarationNode(), defaultConceptOfChild, operationContext, editorContext);
-      }
-
-      private List<?> createParameterObjects_impl(SNode node, SNode currentChild, SNode defaultConceptOfChild, SAbstractConcept defaultChildConcept, IOperationContext operationContext, EditorContext editorContext) {
+      protected List<?> createParameterObjects(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, EditorContext editorContext) {
         return null;
       }
-
-      public boolean isReferentPresentation() {
-        return false;
-      }
-      public String getMatchingText(Object parameterObject) {
-        return this.getMatchingText_internal((String) parameterObject);
-      }
-      public String getMatchingText_internal(String parameterObject) {
+      protected String getMatchingText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return String.valueOf(parameterObject);
       }
-      public String getDescriptionText(Object parameterObject) {
-        return this.getDescriptionText_internal((String) parameterObject);
-      }
-      public String getDescriptionText_internal(String parameterObject) {
+      protected String getDescriptionText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return String.valueOf(parameterObject);
       }
 
@@ -3339,19 +3203,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public static class RefNodeList_customReplace_cellMenu_i8r80j_e0b61a0a extends AbstractCellMenuPart_ReplaceNode_Group {
       public RefNodeList_customReplace_cellMenu_i8r80j_e0b61a0a() {
       }
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = operationContext != null || node != null || editorContext != null;
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
+        boolean var = node != null || editorContext != null;
         return (var ? null : null);
       }
-      public SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        return createReplacementNode_impl((String) parameterObject, node, model, operationContext, editorContext);
-      }
-      public SNode createReplacementNode_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = parameterObject != null || node != null || model != null || editorContext != null || operationContext != null;
+      protected SNode createReplacementNode(Object _parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        final String parameterObject = (String) _parameterObject;
+        boolean var = parameterObject != null || node != null || model != null || editorContext != null;
         return (var ? null : null);
-      }
-      public boolean isReferentPresentation() {
-        return false;
       }
       @Override
       protected EditorMenuDescriptor getEditorMenuDescriptor(Object parameterObject) {
@@ -3362,28 +3221,19 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public static class RefNodeList_customReplace_cellMenu_i8r80j_f0b61a0a extends AbstractCellMenuPart_ReplaceNode_Group {
       public RefNodeList_customReplace_cellMenu_i8r80j_f0b61a0a() {
       }
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
         return null;
       }
-      public SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        return createReplacementNode_impl((String) parameterObject, node, model, operationContext, editorContext);
-      }
-      public SNode createReplacementNode_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      protected SNode createReplacementNode(Object _parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        final String parameterObject = (String) _parameterObject;
         return null;
       }
-      public boolean isReferentPresentation() {
-        return false;
-      }
-      public String getMatchingText(Object parameterObject) {
-        return this.getMatchingText_internal((String) parameterObject);
-      }
-      public String getMatchingText_internal(String parameterObject) {
+      protected String getMatchingText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return String.valueOf(parameterObject);
       }
-      public String getDescriptionText(Object parameterObject) {
-        return this.getDescriptionText_internal((String) parameterObject);
-      }
-      public String getDescriptionText_internal(String parameterObject) {
+      protected String getDescriptionText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return String.valueOf(parameterObject);
       }
       @Override
@@ -3406,26 +3256,22 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       @Override
       public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-        List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-        Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-          public SubstituteAction apply(SubstituteAction action) {
-            return new NodeSubstituteActionWrapper(action) {
-              @Override
-              public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-                EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-                result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308605473925")));
-                return result;
-              }
-            };
-          }
-        };
-        return actions.stream().map(mapper).collect(Collectors.toList());
+        return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
+          return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
+            @Override
+            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+              result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308605473925")));
+              return result;
+            }
+          };
+        }).toList();
       }
 
-      public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = node != null || model != null || editorContext != null || operationContext != null;
+      protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
+        boolean var = node != null || model != null || editorContext != null;
         if (var) {
-          // just usage of var 
+          // just usage of var
         }
       }
       public String getMatchingText() {
@@ -3444,11 +3290,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public static class RefNodeList_children_cellMenu_i8r80j_j0b61a0a extends AbstractCellMenuPart_ReplaceChild_CustomChildConcept {
       public RefNodeList_children_cellMenu_i8r80j_j0b61a0a() {
       }
-      public SNode getConceptOfChild(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, IOperationContext operationContext, EditorContext editorContext) {
-        return getConceptOfChild_impl(node, currentChild, defaultChildConcept.getDeclarationNode(), defaultChildConcept, operationContext, editorContext);
-      }
-      private SNode getConceptOfChild_impl(SNode node, SNode currentChild, SNode defaultConceptOfChild, SAbstractConcept defaultChildConcept, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = currentChild != null || defaultChildConcept.getDeclarationNode() != null || node != null || operationContext != null;
+      protected SNode getConceptOfChild(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, EditorContext editorContext) {
+        boolean var = currentChild != null || defaultChildConcept != null || node != null;
         return (var ? null : null);
       }
       @Override
@@ -3461,20 +3304,16 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       @Override
       public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-        List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-        Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-          public SubstituteAction apply(SubstituteAction action) {
-            return new NodeSubstituteActionWrapper(action) {
-              @Override
-              public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-                EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-                result.setDescriptor(new EditorMenuDescriptorBase("replace child item: " + RefNodeList_children_cellMenu_i8r80j_k0b61a0a.this.getMatchingText(), new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308605473978")));
-                return result;
-              }
-            };
-          }
-        };
-        return actions.stream().map(mapper).collect(Collectors.toList());
+        return super.createActions(cellContext, editorContext).stream().map((action) -> {
+          return new NodeSubstituteActionWrapper(action) {
+            @Override
+            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+              result.setDescriptor(new EditorMenuDescriptorBase("replace child item: " + RefNodeList_children_cellMenu_i8r80j_k0b61a0a.this.getMatchingText(), new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "8964452308605473978")));
+              return result;
+            }
+          };
+        }).collect(Collectors.toList());
       }
 
 
@@ -3484,14 +3323,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
       public String getDescriptionText() {
         return "text";
       }
-      public boolean isCustomCreateChildNode() {
+      protected boolean isCustomCreateChildNode() {
         return true;
       }
-      public SNode customCreateChildNode(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        return customCreateChildNode_impl(node, currentChild, defaultChildConcept.getDeclarationNode(), defaultChildConcept, model, operationContext, editorContext);
-      }
-      private SNode customCreateChildNode_impl(SNode node, SNode currentChild, SNode defaultConceptOfChild, SAbstractConcept defaultChildConcept, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        boolean var = currentChild != null || defaultChildConcept.getDeclarationNode() != null || operationContext != null || model != null || node != null;
+      protected SNode customCreateChildNode(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model, EditorContext editorContext) {
+        boolean var = currentChild != null || defaultChildConcept != null || model != null || node != null;
         return (var ? null : null);
       }
     }
@@ -3511,7 +3347,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       EditorCell_Collection editorCell = handler.createCells(new CellLayout_Horizontal(), false);
       editorCell.setCellId("RNLLWR_refNodeList_children2");
       Style style = new StyleImpl();
-      new testParentStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      new testParentStyleStyleClass(this).apply(style, editorCell);
       editorCell.getStyle().putAll(style);
       editorCell.setSRole(handler.getElementSRole());
       return editorCell;
@@ -3599,13 +3435,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
       EditorCell_Collection editorCell = handler.createCells(new CellLayout_Horizontal(), false);
       editorCell.setCellId("RNLLWR_refNodeList_children3");
       Style style = new StyleImpl();
-      new testStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
-      new testKey_StyleKey().apply(style);
+      new testStyleStyleClass(this).apply(style, editorCell);
+      new testKey_StyleKey().apply(this, style);
       if (_StyleParameter_QueryFunction_i8r80j_a2a3q0a0()) {
-        new testStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+        new testStyleStyleClass(this).apply(style, editorCell);
       }
       if (_StyleParameter_QueryFunction_i8r80j_a3a3q0a0()) {
-        new testStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+        new testStyleStyleClass(this).apply(style, editorCell);
       }
       style.set(StyleAttributes.getInstance().<String>getAttribute("jetbrains.mps.lang.editor.test.generation", "testStringAttribute"), _StyleParameter_QueryFunction_i8r80j_a4a3q0a0());
       style.set(StyleAttributes.AUTO_DELETABLE, true);
@@ -3640,30 +3476,30 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.SELECTABLE, _StyleParameter_QueryFunction_i8r80j_a43a3q0a0());
       style.set(StyleAttributes.STRIKE_OUT, true);
       style.set(StyleAttributes.STRIKE_OUT, _StyleParameter_QueryFunction_i8r80j_a63a3q0a0());
-      style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.blue));
-      style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a83a3q0a0()));
-      style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.BACKGROUND_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a04a3q0a0().o1 : _StyleParameter_QueryFunction_i8r80j_a04a3q0a0().o2));
-      style.set(StyleAttributes.BRACKETS_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_BLUE));
-      style.set(StyleAttributes.BRACKETS_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a24a3q0a0()));
-      style.set(StyleAttributes.BRACKETS_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.BRACKETS_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a44a3q0a0().o1 : _StyleParameter_QueryFunction_i8r80j_a44a3q0a0().o2));
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN, StyleRegistry.getInstance().getSimpleColor(MPSColors.cyan)));
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a64a3q0a0()));
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.TEXT_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a84a3q0a0().o1 : _StyleParameter_QueryFunction_i8r80j_a84a3q0a0().o2));
-      style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-      style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a05a3q0a0()));
-      style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.NULL_TEXT_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a25a3q0a0().o1 : _StyleParameter_QueryFunction_i8r80j_a25a3q0a0().o2));
-      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a45a3q0a0()));
-      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a65a3q0a0().o1 : _StyleParameter_QueryFunction_i8r80j_a65a3q0a0().o2));
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.cyan));
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a85a3q0a0()));
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a06a3q0a0().o1 : _StyleParameter_QueryFunction_i8r80j_a06a3q0a0().o2));
+      style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.blue));
+      style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a83a3q0a0()));
+      style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a04a3q0a0().o1 : _StyleParameter_QueryFunction_i8r80j_a04a3q0a0().o2));
+      style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_BLUE));
+      style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a24a3q0a0()));
+      style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.BRACKETS_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a44a3q0a0().o1 : _StyleParameter_QueryFunction_i8r80j_a44a3q0a0().o2));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_GREEN, getStyleRegistry().getSimpleColor(MPSColors.cyan)));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a64a3q0a0()));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.TEXT_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a84a3q0a0().o1 : _StyleParameter_QueryFunction_i8r80j_a84a3q0a0().o2));
+      style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_GREEN));
+      style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a05a3q0a0()));
+      style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.NULL_TEXT_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a25a3q0a0().o1 : _StyleParameter_QueryFunction_i8r80j_a25a3q0a0().o2));
+      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_GREEN));
+      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a45a3q0a0()));
+      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a65a3q0a0().o1 : _StyleParameter_QueryFunction_i8r80j_a65a3q0a0().o2));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.cyan));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_i8r80j_a85a3q0a0()));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_i8r80j_a06a3q0a0().o1 : _StyleParameter_QueryFunction_i8r80j_a06a3q0a0().o2));
       style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.LAST);
       style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.FIRST);
       style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.LAST);
@@ -3690,8 +3526,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.POSITION, "indented");
       style.set(StyleAttributes.SHOW_BOUNDARIES_IN, ShowBoundariesArea.GUTTER_AND_EDITOR);
       style.set(StyleAttributes.TABLE_COMPONENT, TableComponent.VERTICAL_COLLECTION);
-      new testStyleStyleClass(getEditorContext(), getNode()).unapply(style, editorCell);
-      new testKey_StyleKey().unapply(style);
+      new testStyleStyleClass(this).unapply(style, editorCell);
+      new testKey_StyleKey().unapply(this, style);
       style.set(StyleAttributes.UNDERLINED, false);
       style.set(StyleAttributes.UNDERLINED, _StyleParameter_QueryFunction_i8r80j_a09a3q0a0());
       editorCell.getStyle().putAll(style);

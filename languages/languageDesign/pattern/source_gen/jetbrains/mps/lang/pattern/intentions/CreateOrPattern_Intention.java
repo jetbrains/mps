@@ -10,15 +10,14 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -26,28 +25,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class CreateOrPattern_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public CreateOrPattern_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:00000000-0000-4000-0000-011c89590344(jetbrains.mps.lang.pattern.intentions)", "8263735385373627208"));
   }
+
   @Override
   public String getPresentation() {
     return "CreateOrPattern";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    SNode currentNode = editorContext.getSelectedNode();
-    return SNodeOperations.getNodeAncestor(currentNode, CONCEPTS.PatternExpression$YJ, false, false) != null;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -57,26 +49,44 @@ public final class CreateOrPattern_Intention extends AbstractIntentionDescriptor
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Create OrPattern";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode currentNode = editorContext.getSelectedNode();
       SNode orPattern = SNodeFactoryOperations.createNewNode(CONCEPTS.OrPattern$Lk, null);
-      ListSequence.fromList(AttributeOperations.getAttributeList(currentNode, new IAttributeDescriptor.AllAttributes())).addElement(orPattern);
+      ListSequence.fromList(new IAttributeDescriptor.AllAttributes().list(currentNode)).addElement(orPattern);
       SLinkOperations.setTarget(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(orPattern, LINKS.clause$z7ps)).first(), LINKS.pattern$GuFI), LINKS.quotedNode$ip4, SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(SNodeOperations.getConcept(currentNode))));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      SNode currentNode = editorContext.getSelectedNode();
+      return SNodeOperations.getNodeAncestor(currentNode, CONCEPTS.PatternExpression$YJ, false, false) != null;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return CreateOrPattern_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PatternExpression$YJ = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L, "jetbrains.mps.lang.pattern.structure.PatternExpression");
     /*package*/ static final SConcept OrPattern$Lk = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x27f758f8bc6aaa84L, "jetbrains.mps.lang.pattern.structure.OrPattern");
+    /*package*/ static final SConcept PatternExpression$YJ = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L, "jetbrains.mps.lang.pattern.structure.PatternExpression");
   }
 
   private static final class LINKS {

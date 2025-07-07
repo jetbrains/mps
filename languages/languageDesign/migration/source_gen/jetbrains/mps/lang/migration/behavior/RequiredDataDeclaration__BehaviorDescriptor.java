@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.baseLanguage.scopes.MembersPopulatingContext;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -17,7 +16,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -27,8 +25,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class RequiredDataDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x3d90e8d384845a8fL, "jetbrains.mps.lang.migration.structure.RequiredDataDeclaration");
 
-  public static final SMethod<Void> populateMember_id6r77ob2UW9O = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateMember").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6r77ob2UW9O").build(SMethodBuilder.createJavaParameter(MembersPopulatingContext.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getDeclaration_id7T23sO8vZuR = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getDeclaration").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7T23sO8vZuR").build();
+  public static final SMethod<Void> populateMember_id6r77ob2UW9O = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateMember").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7405920559687254644L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(MembersPopulatingContext.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getDeclaration_id7T23sO8vZuR = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getDeclaration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9097849371503884215L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateMember_id6r77ob2UW9O, getDeclaration_id7T23sO8vZuR);
 
@@ -36,11 +34,7 @@ public final class RequiredDataDeclaration__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static void populateMember_id6r77ob2UW9O(@NotNull SNode __thisNode__, final MembersPopulatingContext context, SNode classifier) {
-    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.dependencies$u92h)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        context.exposeMember(it, null);
-      }
-    });
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.dependencies$u92h)).visitAll((it) -> context.exposeMember(it, null));
   }
   /*package*/ static SNode getDeclaration_id7T23sO8vZuR(@NotNull SNode __thisNode__) {
     return SNodeOperations.getNode("90746344-04fd-4286-97d5-b46ae6a81709/r:52a3d974-bd4f-4651-ba6e-a2de5e336d95(jetbrains.mps.lang.migration/jetbrains.mps.lang.migration.methods)", "4144229974054260078");

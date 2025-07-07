@@ -24,6 +24,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   @Override
   public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
     deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
+    deps.extendedLanguage(0x4caf0310491e41f5L, 0x8a9b2006b3a94898L, "jetbrains.mps.execution.util");
   }
 
   @Override
@@ -53,7 +54,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.parent(0x4caf0310491e41f5L, 0x8a9b2006b3a94898L, 0x40c1a7cb987d20d5L);
     b.origin("r:7621c011-92d8-4afe-81d5-6da125ff596f(jetbrains.mps.samples.theSimplestLanguage.structure)/1222954937628");
-    b.version(2);
+    b.version(3);
     b.property("text", 0x11cbdcb8a3bL).type(PrimitiveTypeId.STRING).origin("1222954945083").done();
     return b.create();
   }

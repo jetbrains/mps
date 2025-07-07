@@ -4,9 +4,10 @@ package jetbrains.mps.lang.editor.menus.extras.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.lang.editor.menus.tests.UsedLanguagesUtils;
@@ -21,15 +22,15 @@ import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuConte
 import jetbrains.mps.openapi.intentions.IntentionExecutable;
 import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.nodeEditor.menus.transformation.DefaultTransformationMenuContext;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 @MPSLaunch
 public class InapplicableIntention_NotIncludedInMenu_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(InapplicableIntention_NotIncludedInMenu_Test.class, "${mps_home}", "r:a1e8c439-e997-416b-a5dc-df7c3fd41b00(jetbrains.mps.lang.editor.menus.extras.tests@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(InapplicableIntention_NotIncludedInMenu_Test.class).projectPath(null).modelRef("r:a1e8c439-e997-416b-a5dc-df7c3fd41b00(jetbrains.mps.lang.editor.menus.extras.tests@tests)").reopenProject(false).build());
 
   public InapplicableIntention_NotIncludedInMenu_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -49,20 +50,18 @@ public class InapplicableIntention_NotIncludedInMenu_Test extends BaseTransforma
       UsedLanguagesUtils.assertLanguageUsed(getEditorComponent(), MetaAdapterFactory.getLanguage(0xf015c5f872054441L, 0x9cc7dc7ef28ea903L, "jetbrains.mps.lang.editor.menus.extras.testLanguage"));
 
       final SRepository repository = getEditorComponent().getEditorContext().getRepository();
-      repository.getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          AbstractIntentionMenuPart part = new AbstractIntentionMenuPart(ActionLookupUtils.getIntentionId(repository, new SNodePointer("r:8d2a217a-f2d0-4d4a-b867-e2dd2ddb731c(jetbrains.mps.lang.editor.menus.extras.testLanguage.intentions)", "6820996345401618935"))) {
-            @Nullable
-            @Override
-            protected TransformationMenuItem createItem(@NotNull TransformationMenuContext context, @NotNull IntentionExecutable executable) {
-              return new ActionItemBase();
-            }
-          };
+      repository.getModelAccess().runReadAction(() -> {
+        AbstractIntentionMenuPart part = new AbstractIntentionMenuPart(ActionLookupUtils.getIntentionId(repository, new SNodePointer("r:8d2a217a-f2d0-4d4a-b867-e2dd2ddb731c(jetbrains.mps.lang.editor.menus.extras.testLanguage.intentions)", "6820996345401618935"))) {
+          @Nullable
+          @Override
+          protected TransformationMenuItem createItem(@NotNull TransformationMenuContext context, @NotNull IntentionExecutable executable) {
+            return new ActionItemBase();
+          }
+        };
 
-          DefaultTransformationMenuContext context = DefaultTransformationMenuContext.createInitialContextForCell(getEditorComponent().getSelectedCell(), "irrelevant location");
+        DefaultTransformationMenuContext context = DefaultTransformationMenuContext.createInitialContextForCell(getEditorComponent().getSelectedCell(), "irrelevant location");
 
-          Assert.assertEquals(0, part.createItems(context).size());
-        }
+        Assert.assertEquals(Integer.valueOf(0), Integer.valueOf(part.createItems(context).size()));
       });
     }
   }

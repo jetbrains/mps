@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,6 @@
  */
 package jetbrains.mps.ide.memtool;
 
-import com.intellij.notification.Notification;
-import com.intellij.notification.NotificationDisplayType;
-import com.intellij.notification.NotificationGroup;
-import com.intellij.notification.Notifications;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.startup.StartupActivity;
 import com.intellij.openapi.util.registry.Registry;
@@ -30,21 +25,16 @@ import com.intellij.util.Alarm.ThreadToUse;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.make.MakeServiceComponent;
 import jetbrains.mps.project.MPSProject;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 public class MemManager implements StartupActivity.Background {
   public static final int DELAY = 5;
-  private static final Logger LOG = LogManager.getLogger(MemManager.class);
+  private static final Logger LOG = Logger.getLogger(MemManager.class);
   private static final int DELAY2 = DELAY * 2;
-
-  // a) I hate static final fields, but using NotificationsConfiguration.register from ProjectComponent is troublesome (with multiple project in mind)
-  // b) Perhaps, shall use NotificationsConfiguration.LIGHTWEIGHT_PREFIX for a group id?
-  private static final NotificationGroup ourNotificationGroup = new NotificationGroup("MPS Memory Stats", NotificationDisplayType.BALLOON, false);
 
   private Project myProject;
   private ComponentHost myComponentHost;
@@ -58,7 +48,7 @@ public class MemManager implements StartupActivity.Background {
   @Override
   public void runActivity(@NotNull Project project) {
     myProject = project;
-    final MPSCoreComponents mpsCore = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class);
+    final MPSCoreComponents mpsCore = MPSCoreComponents.getInstance();
     myComponentHost = mpsCore.getPlatform();
     myAlarm = new Alarm(ThreadToUse.POOLED_THREAD, myProject);
     final RegistryValue rv = Registry.get("ide.memory.cleanup.interval");
@@ -80,16 +70,6 @@ public class MemManager implements StartupActivity.Background {
       myCleanupAlarm = new Alarm(ThreadToUse.POOLED_THREAD, myProject);
       new MyRepeatingCleanup(Math.round(sec * 1000)).run();
     }
-  }
-
-
-  public void cleanupFromAction() {
-    if (myComponentHost.findComponent(MakeServiceComponent.class).isSessionActive()) {
-      final Notification n = ourNotificationGroup.createNotification().setContent("Can not perform cleanup while Make is in progress");
-      Notifications.Bus.notify(n, myProject);
-      return;
-    }
-    cleanup();
   }
 
   private void cleanup() {

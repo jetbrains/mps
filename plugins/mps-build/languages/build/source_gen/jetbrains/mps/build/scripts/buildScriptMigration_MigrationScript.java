@@ -42,6 +42,7 @@ public final class buildScriptMigration_MigrationScript extends BaseMigrationScr
         SNode file = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.BuildLayout_File$Kk);
         SNodeOperations.replaceWithAnother(node, file);
         SLinkOperations.setTarget(file, LINKS.path$xmoo, SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.fileset$tUzn), CONCEPTS.BuildInputSingleFile$4U), LINKS.path$dYr6));
+        ListSequence.fromList(SLinkOperations.getChildren(file, LINKS.smodelAttribute$KJ43)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43)));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -71,6 +72,7 @@ public final class buildScriptMigration_MigrationScript extends BaseMigrationScr
         SNodeOperations.replaceWithAnother(node, files);
         SLinkOperations.setTarget(files, LINKS.path$Wlt3, SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.fileset$tUzn), CONCEPTS.BuildInputFiles$lR), LINKS.dir$e6r$));
         ListSequence.fromList(SLinkOperations.getChildren(files, LINKS.parameters$WlG4)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.fileset$tUzn), CONCEPTS.BuildInputFiles$lR), LINKS.selectors$hp_C)));
+        ListSequence.fromList(SLinkOperations.getChildren(files, LINKS.smodelAttribute$KJ43)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43)));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -100,6 +102,7 @@ public final class buildScriptMigration_MigrationScript extends BaseMigrationScr
         SNodeOperations.replaceWithAnother(node, file);
         SLinkOperations.setTarget(file, LINKS.path$xmoo, SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.fileset$tUzn), CONCEPTS.BuildInputSingleFile$4U), LINKS.path$dYr6));
         ListSequence.fromList(SLinkOperations.getChildren(file, LINKS.parameters$xu7T)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.handlers$AdkY)));
+        ListSequence.fromList(SLinkOperations.getChildren(file, LINKS.smodelAttribute$KJ43)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43)));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -130,6 +133,7 @@ public final class buildScriptMigration_MigrationScript extends BaseMigrationScr
         SLinkOperations.setTarget(files, LINKS.path$Wlt3, SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.fileset$tUzn), CONCEPTS.BuildInputFiles$lR), LINKS.dir$e6r$));
         ListSequence.fromList(SLinkOperations.getChildren(files, LINKS.parameters$WlG4)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.fileset$tUzn), CONCEPTS.BuildInputFiles$lR), LINKS.selectors$hp_C)));
         ListSequence.fromList(SLinkOperations.getChildren(files, LINKS.parameters$WlG4)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.handlers$AdkY)));
+        ListSequence.fromList(SLinkOperations.getChildren(files, LINKS.smodelAttribute$KJ43)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43)));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -157,6 +161,7 @@ public final class buildScriptMigration_MigrationScript extends BaseMigrationScr
     /*package*/ static final SContainmentLink fileset$tUzn = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset");
     /*package*/ static final SContainmentLink path$xmoo = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7ea63ceef6e8c0edL, 0x7ea63ceef6e8c11aL, "path");
     /*package*/ static final SContainmentLink path$dYr6 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, 0x48d5d03db922459aL, "path");
+    /*package*/ static final SContainmentLink smodelAttribute$KJ43 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
     /*package*/ static final SContainmentLink path$Wlt3 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x262a04c08b56faffL, 0x262a04c08b56fb00L, "path");
     /*package*/ static final SContainmentLink dir$e6r$ = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245a6L, "dir");
     /*package*/ static final SContainmentLink parameters$WlG4 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x262a04c08b56faffL, 0x262a04c08b56fb01L, "parameters");

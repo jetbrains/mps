@@ -17,7 +17,6 @@ import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -77,7 +76,7 @@ public class BooleanLocalVariable implements EditorMenuItemCustomizer {
     }
     private boolean isBooleanVariable(SNode node) {
       SNode type = SLinkOperations.getTarget(node, LINKS.type$a1UY);
-      return SNodeOperations.isInstanceOf(type, CONCEPTS.BooleanType$_u) || SNodeOperations.isInstanceOf(type, CONCEPTS.ClassifierType$bL) && Objects.equals(SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr), SPointerOperations.resolveNode(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Boolean"), SNodeOperations.getModel(node).getRepository()));
+      return SNodeOperations.isInstanceOf(type, CONCEPTS.BooleanType$_u) || SNodeOperations.isInstanceOf(type, CONCEPTS.ClassifierType$bL) && SLinkOperations.hasPointer(SNodeOperations.cast(type, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Boolean"));
     }
 
   }

@@ -13,7 +13,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.module.SModule;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.project.DevKit;
@@ -22,13 +21,11 @@ import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.util.ui.UIUtil;
-import com.intellij.util.PairFunction;
 import javax.swing.JCheckBox;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.module.ModuleDeleteHelper;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1241020613337", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1241020613337", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class DeleteModules_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -36,6 +33,7 @@ public class DeleteModules_Action extends BaseAction {
     super("Delete Module...", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -45,18 +43,14 @@ public class DeleteModules_Action extends BaseAction {
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
     Presentation presentation = event.getPresentation();
 
-    boolean isApplicable = !(Sequence.fromIterable(((Iterable<SModule>) ((List<SModule>) MapSequence.fromMap(_params).get("modules")))).any(new IWhereFilter<SModule>() {
-      public boolean accept(SModule it) {
-        return it.isPackaged() || it.isReadOnly() || !((it instanceof Solution || it instanceof Language || it instanceof DevKit));
-      }
-    }));
+    boolean isApplicable = !(Sequence.fromIterable(((Iterable<SModule>) ((List<SModule>) MapSequence.fromMap(_params).get("modules")))).any((it) -> it.isReadOnly() || !(it instanceof Solution || it instanceof Language || it instanceof DevKit)));
     presentation.setEnabledAndVisible(isApplicable);
 
     if (isApplicable) {
       if (((List<SModule>) MapSequence.fromMap(_params).get("modules")).size() > 1) {
         presentation.setText(IdeBundle.message("actions.module.delete.text.modules"), true);
       } else {
-        // If isApplicable and !(modules > 1) => modules == 1 
+        // If isApplicable and !(modules > 1) => modules == 1
         SModule module = ((List<SModule>) MapSequence.fromMap(_params).get("modules")).get(0);
         if (module instanceof Solution) {
           presentation.setText(IdeBundle.message("actions.module.delete.text.solution"), true);
@@ -65,7 +59,7 @@ public class DeleteModules_Action extends BaseAction {
         } else if (module instanceof DevKit) {
           presentation.setText(IdeBundle.message("actions.module.delete.text.devkit"), true);
         } else if (module instanceof Generator) {
-          // For future implementation 
+          // For future implementation
           presentation.setText(IdeBundle.message("actions.module.delete.text.generator"), true);
         } else {
           presentation.setText(IdeBundle.message("actions.module.delete.text.module"), true);
@@ -99,11 +93,7 @@ public class DeleteModules_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final int result = Messages.showCheckboxMessageDialog(IdeBundle.message("actions.module.delete.message"), IdeBundle.message("actions.module.delete.title"), new String[]{IdeBundle.message("actions.module.delete.ok.button.text"), Messages.getCancelButton()}, UIUtil.replaceMnemonicAmpersand(IdeBundle.message("actions.module.delete.option.files")), false, 0, 0, Messages.getQuestionIcon(), new PairFunction<Integer, JCheckBox, Integer>() {
-      public Integer fun(Integer exitCode, JCheckBox checkBox) {
-        return (exitCode == -1 || exitCode == 1 ? Messages.CANCEL : Boolean.compare(true, checkBox.isSelected()));
-      }
-    });
+    final int result = Messages.showCheckboxMessageDialog(IdeBundle.message("actions.module.delete.message"), IdeBundle.message("actions.module.delete.title"), new String[]{IdeBundle.message("actions.module.delete.ok.button.text"), Messages.getCancelButton()}, UIUtil.replaceMnemonicAmpersand(IdeBundle.message("actions.module.delete.option.files")), false, 0, 0, Messages.getQuestionIcon(), (Integer exitCode, JCheckBox checkBox) -> (exitCode == -1 || exitCode == 1 ? Messages.CANCEL : Boolean.compare(true, checkBox.isSelected())));
 
     if (result == Messages.CANCEL) {
       return;
@@ -111,31 +101,16 @@ public class DeleteModules_Action extends BaseAction {
 
     final boolean deleteFiles = result == Messages.YES;
 
-    if (!(deleteFiles) && Sequence.fromIterable(((Iterable<SModule>) ((List<SModule>) MapSequence.fromMap(_params).get("modules")))).any(new IWhereFilter<SModule>() {
-      public boolean accept(SModule it) {
-        return !(((MPSProject) MapSequence.fromMap(_params).get("project")).isProjectModule(it));
-      }
-    })) {
+    if (!(deleteFiles) && Sequence.fromIterable(((Iterable<SModule>) ((List<SModule>) MapSequence.fromMap(_params).get("modules")))).any((it) -> !(((MPSProject) MapSequence.fromMap(_params).get("project")).isProjectModule(it)))) {
       final StringBuilder builder = new StringBuilder();
-      Sequence.fromIterable(((Iterable<SModule>) ((List<SModule>) MapSequence.fromMap(_params).get("modules")))).where(new IWhereFilter<SModule>() {
-        public boolean accept(SModule it) {
-          return !(((MPSProject) MapSequence.fromMap(_params).get("project")).isProjectModule(it));
-        }
-      }).visitAll(new IVisitor<SModule>() {
-        public void visit(SModule it) {
-          builder.append("\n").append(it.getModuleName());
-        }
-      });
+      Sequence.fromIterable(((Iterable<SModule>) ((List<SModule>) MapSequence.fromMap(_params).get("modules")))).where((it) -> !(((MPSProject) MapSequence.fromMap(_params).get("project")).isProjectModule(it))).visitAll((it) -> builder.append("\n").append(it.getModuleName()));
       Messages.showWarningDialog(((MPSProject) MapSequence.fromMap(_params).get("project")).getProject(), IdeBundle.message("actions.module.delete.unable.message", builder), IdeBundle.message("actions.module.delete.unable.title"));
       return;
     }
 
     ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
-    // While don't support undo no need for command here 
-    modelAccess.runWriteAction(new Runnable() {
-      public void run() {
-        new ModuleDeleteHelper(((MPSProject) MapSequence.fromMap(_params).get("project"))).deleteModules(((List<SModule>) MapSequence.fromMap(_params).get("modules")), false, deleteFiles);
-      }
-    });
+    // While don't support undo no need for command here
+    modelAccess.runWriteAction(() -> new ModuleDeleteHelper(((MPSProject) MapSequence.fromMap(_params).get("project"))).deleteModules(((List<SModule>) MapSequence.fromMap(_params).get("modules")), false, deleteFiles));
+    ((MPSProject) MapSequence.fromMap(_params).get("project")).save();
   }
 }

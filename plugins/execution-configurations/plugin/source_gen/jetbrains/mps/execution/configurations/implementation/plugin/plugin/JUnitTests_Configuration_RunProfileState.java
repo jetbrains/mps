@@ -75,13 +75,9 @@ public class JUnitTests_Configuration_RunProfileState extends DebuggerRunProfile
       processExecutor = new JUnitOutOfProcessStarter(mpsProject, testNodes, configuration, executor.getId(), myDebuggerSettings);
     }
     ProcessHandler process = processExecutor.execute();
-    final UnitTestViewComponent testViewComponent = myRunConfiguration.createTestViewComponent(runState, process);
+    final UnitTestViewComponent testViewComponent = myRunConfiguration.createTestViewComponent(runState, process, executor, myRunConfiguration);
     ProcessListener listener = new UnitTestProcessListener(runState);
-    _FunctionTypes._void_P0_E0 disposeHandler = new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        testViewComponent.dispose();
-      }
-    };
+    _FunctionTypes._void_P0_E0 disposeHandler = () -> testViewComponent.dispose();
     {
       ProcessHandler _processHandler = process;
       _processHandler.addProcessListener(listener);

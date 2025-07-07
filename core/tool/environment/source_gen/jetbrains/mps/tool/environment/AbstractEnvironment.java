@@ -11,7 +11,7 @@ import java.io.File;
 /**
  * Base implementation class for {@link jetbrains.mps.tool.environment.Environment } without project handling or reference count, with mostly no-op or {@link java.lang.UnsupportedOperationException } implementations.
  */
-@GeneratedClass(node = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)/1831019415300225349", model = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)")
+@GeneratedClass(nodeId = "1831019415300225349", model = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)")
 public abstract class AbstractEnvironment implements Environment {
   private final Platform myPlatform;
 
@@ -49,11 +49,11 @@ public abstract class AbstractEnvironment implements Environment {
 
   @Override
   public void dispose() {
-    // no-op, nothing to do here as we didn't allocate anything 
+    // no-op, nothing to do here as we didn't allocate anything
   }
 
   @Override
   public void flushAllEvents() {
-    // no-op, (a) no idea what this method is supposed to do anyway (b) this environment can't do anything about whatever events. 
+    // no-op, (a) no idea what this method is supposed to do anyway (b) this environment can't do anything about whatever events.
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,22 +15,19 @@
  */
 package jetbrains.mps.smodel;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.references.ImmatureReferences;
 import jetbrains.mps.smodel.references.UnregisteredNodes;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.ComputeRunnable;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
-import org.jetbrains.mps.openapi.model.SReference;
 
 import java.util.IdentityHashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -52,15 +49,19 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  *
  * @see org.jetbrains.mps.openapi.module.ModelAccess
  */
-public abstract class ModelAccess extends AbstractModelAccess implements ModelCommandExecutor, org.jetbrains.mps.openapi.module.ModelAccess, ModelCommandContext.Provider {
-  protected static final Logger LOG = LogManager.getLogger(ModelAccess.class);
+public abstract class ModelAccess extends AbstractModelAccess implements org.jetbrains.mps.openapi.module.ModelAccess, ModelCommandContext.Provider {
+  protected static final Logger LOG = Logger.getLogger(ModelAccess.class);
 
-  protected static ModelAccess ourInstance = new DefaultModelAccess();
+  protected static ModelAccess ourInstance = newInstance();
+
+  /**
+   * INTERNAL, TRANSITION CODE, DON'T USE!
+   */
+  public static ModelAccess newInstance() {
+    return new DefaultModelAccess();
+  }
 
   private final ReentrantReadWriteLockEx myReadWriteLock = new ReentrantReadWriteLockEx();
-
-  //ModelAccess is a singleton, so we can omit remove() here though the field is not static
-  private ThreadLocal<Boolean> myReadEnabledFlag = ThreadLocal.withInitial(() -> Boolean.FALSE);
 
   private final CommandContextProvider myCommandContextProvider = new CommandContextProvider();
 
@@ -73,8 +74,7 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
    * @deprecated
    * @since 3.1
    */
-  @Deprecated
-  @ToRemove(version = 3.3)
+@Deprecated(since = "3.3", forRemoval = true)
   public static ModelAccess instance() {
     return ourInstance;
   }
@@ -89,26 +89,6 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
 
   protected Lock getWriteLock() {
     return myReadWriteLock.writeLock();
-  }
-
-  @Override
-  public final <T> T runReadAction(final Computable<T> c) {
-    if (canRead()) {
-      return c.compute();
-    }
-    ComputeRunnable<T> r = new ComputeRunnable<>(c);
-    runReadAction(r);
-    return r.getResult();
-  }
-
-  @Override
-  public final <T> T runWriteAction(final Computable<T> c) {
-    if (canWrite()) {
-      return c.compute();
-    }
-    ComputeRunnable<T> r = new ComputeRunnable<>(c);
-    runWriteAction(r);
-    return r.getResult();
   }
 
   protected final void assertNotWriteFromRead() {
@@ -172,25 +152,41 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
   @Nullable
   protected abstract UndoHandler getUndoHandler(/*NotNull*/ SModel model);
 
-  /**
-   * Enables canRead() without actually acquiring the read lock (screw you, ReadWriteLock!).
-   * Requires read lock in the "parent" thread.
-   * Thread local. Returns previous value, to which it must be reset after use (in finally{}).
-   *
-   * @deprecated Shall get replaced with full-fledged 'token' object
-   *
-   * @return previous value
-   */
-  @Deprecated
-  /*package*/ boolean setReadEnabledFlag(boolean flag) {
-    Boolean oldValue = myReadEnabledFlag.get();
-    myReadEnabledFlag.set(flag);
-    return oldValue;
+  protected final void sharedReadIsOver() {
+    ReadAccessToken token = myReadFlagTokens.get();
+    if (token != null) {
+      token.revoke();
+      myReadFlagTokens.remove();
+      myAllReadFlagTokens.remove(token);
+    }
   }
 
-  private boolean isReadEnabledFlag() {
-    return Boolean.TRUE == myReadEnabledFlag.get();
+  /*package*/ ReadAccessToken shareRead() {
+    if (!canRead()) {
+      throw new IllegalModelAccessException("Can share a read in progress only!");
+    }
+    ReadAccessToken token = myReadFlagTokens.get();
+    // XXX not sure about sharing original read, need to give it more thought/investigation
+    //     e.g. what happens if/when 'nested' read reports sharedReadIsOver(). If this is the case, perhaps, need "usage counter" for the token?
+    //     Keep in mind, token is bound to the current thread, another thread (running under 'read enabled') would get another instance.
+    //     ^^^ sounds like we can get into a state when original thread releases platform read, but there are 2 threads with 'read enabled' state.
+    //     (thread0 shared its read for thread1, thread1 was in 'read enabled' and shared its state for thread2, thread0 ends, platform lock gone)
+    if (token == null) {
+      token = new ReadAccessToken();
+      myReadFlagTokens.set(token);
+      myAllReadFlagTokens.add(token);
+    }
+    return token;
   }
+
+  private final ConcurrentLinkedQueue<ReadAccessToken> myAllReadFlagTokens = new ConcurrentLinkedQueue<>();
+  private final ThreadLocal<ReadAccessToken> myReadFlagTokens = new ThreadLocal<>();
+
+  private boolean isReadEnabledFlag() {
+    // FIXME I wonder if we shall filter isActive (or make it part of isReadInProgressCurrentThread)
+    return myAllReadFlagTokens.stream().anyMatch(ReadAccessToken::isReadInProgressCurrentThread);
+  }
+
 
   private static class ReentrantReadWriteLockEx extends ReentrantReadWriteLock {
 
@@ -238,7 +234,7 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
     private ImmatureReferences myIR;
 
     public CommandContextImpl(@Nullable UndoHandler undoHandler, /*NotNull*/ SModel m) {
-      myUndoHandler = undoHandler == null ? a -> {} : undoHandler;
+      myUndoHandler = undoHandler == null ? new DefaultUndoHandler() : undoHandler;
       myModel = m;
       myUN = new UnregisteredNodes(myModel.getReference());
     }
@@ -254,12 +250,12 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
     }
 
     @Override
-    public void associationSet(SReference association) {
-      if (association instanceof StaticReference && ((StaticReference) association).isDirect()) {
+    public void associationSet(SNode node, SReferenceLink link, AssociationData association) {
+      if (association != null && association.isDirectNode()) {
         if (myIR == null) {
           myIR = new ImmatureReferences();
         }
-        myIR.add((StaticReference) association);
+        myIR.add(node, link);
       }
     }
 
@@ -271,6 +267,11 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
 
     @Override
     public void registerActionWithUndo(SNodeUndoableAction action) {
+      myUndoHandler.addUndoableAction(action);
+    }
+
+    @Override
+    public void registerActionWithUndo(ModelRenameUndoableAction action) {
       myUndoHandler.addUndoableAction(action);
     }
 

@@ -52,7 +52,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.SemicolonS
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ";");
     editorCell.setCellId("Constant_d47jc_b0");
     Style style = new StyleImpl();
-    new SemicolonStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new SemicolonStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;

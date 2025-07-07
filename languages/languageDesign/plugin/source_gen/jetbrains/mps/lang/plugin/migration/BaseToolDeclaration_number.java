@@ -10,13 +10,10 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.plugin.behavior.BaseToolDeclaration__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -42,20 +39,10 @@ public class BaseToolDeclaration_number extends MigrationScriptBase {
     {
       SearchScope scope_p58wrf_a0e = CommandUtil.createScope(m);
       final SearchScope scope_p58wrf_a0e_0 = new EditableFilteringScope(scope_p58wrf_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_p58wrf_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BaseToolDeclaration$cK, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (boolean) BaseToolDeclaration__BehaviorDescriptor.hasNumber_id5FstybB4d8v.invoke(it);
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode tool) {
-          SLinkOperations.setTarget(tool, LINKS.shortcut$Z0O7, createNumberToolShortcut_p58wrf_a0a0a0a0a0a6(SPropertyOperations.getString(tool, PROPS.number$DT6H)));
-          SPropertyOperations.set(tool, PROPS.number$DT6H, null);
-        }
+      QueryExecutionContext context = () -> scope_p58wrf_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BaseToolDeclaration$cK, false)).where((it) -> (boolean) BaseToolDeclaration__BehaviorDescriptor.hasNumber_id5FstybB4d8v.invoke(it)).visitAll((tool) -> {
+        SLinkOperations.setTarget(tool, LINKS.shortcut$Z0O7, createNumberToolShortcut_p58wrf_a0a0a0a0a0a6(SPropertyOperations.getString(tool, PROPS.number$DT6H)));
+        SPropertyOperations.set(tool, PROPS.number$DT6H, null);
       });
     }
   }
@@ -64,27 +51,17 @@ public class BaseToolDeclaration_number extends MigrationScriptBase {
     {
       SearchScope scope_p58wrf_a0f = CommandUtil.createScope(m);
       final SearchScope scope_p58wrf_a0f_0 = new EditableFilteringScope(scope_p58wrf_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_p58wrf_a0f_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BaseToolDeclaration$cK, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (boolean) BaseToolDeclaration__BehaviorDescriptor.hasNumber_id5FstybB4d8v.invoke(it);
-        }
-      }).select(new ISelector<SNode, NotMigratedNode>() {
-        public NotMigratedNode select(SNode it) {
-          return new NotMigratedNode(it) {
-            public String getMessage() {
-              return "'number' property should be replaced with 'shortcut' child";
-            }
-          };
-        }
+      QueryExecutionContext context = () -> scope_p58wrf_a0f_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BaseToolDeclaration$cK, false)).where((it) -> (boolean) BaseToolDeclaration__BehaviorDescriptor.hasNumber_id5FstybB4d8v.invoke(it)).select((it) -> {
+        return new NotMigratedNode(it) {
+          public String getMessage() {
+            return "'number' property should be replaced with 'shortcut' child";
+          }
+        };
       });
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, "jetbrains.mps.lang.plugin"), 1);
   }
 

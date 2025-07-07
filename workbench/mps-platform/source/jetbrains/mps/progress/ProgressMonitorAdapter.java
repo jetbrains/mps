@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@ package jetbrains.mps.progress;
 
 import com.intellij.openapi.progress.ProgressIndicator;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.util.Objects;
 
@@ -25,6 +27,11 @@ import java.util.Objects;
  */
 public class ProgressMonitorAdapter extends ProgressMonitorBase {
   private final ProgressIndicator myIndicator;
+
+  @NotNull
+  public static ProgressMonitor wrap(@Nullable ProgressIndicator progressIndicator) {
+    return progressIndicator == null ? new EmptyProgressMonitor() : new ProgressMonitorAdapter(progressIndicator);
+  }
 
   public ProgressMonitorAdapter(@NotNull ProgressIndicator indicator) {
     myIndicator = indicator;
@@ -42,7 +49,11 @@ public class ProgressMonitorAdapter extends ProgressMonitorBase {
   @Override
   protected void setTitleInternal(String name) {
     if (name != null && name.startsWith("__")) {
-      name = null;
+      name = "";
+    }
+    if (name == null) {
+      // see #setStepInternal(String), below, for the reason.
+      name = "";
     }
     final String oldText = myIndicator.getText();
     if (!Objects.equals(name, oldText)) {
@@ -53,7 +64,14 @@ public class ProgressMonitorAdapter extends ProgressMonitorBase {
   @Override
   protected void setStepInternal(String description) {
     if (description != null && description.startsWith("__")) {
-      description = null;
+      description = "";
+    }
+    if (description == null) {
+      // there's no clear contract on ProgressIndicator.setText2(); I assume it could get invoked from any thread.
+      // However, there's code in IDEA's InlineProgressIndicator.updateProgressNow() that calls getText2() twice, and
+      // expects its value not to change between the calls. To prevent NPE due to this assumption (see MPS-33332),
+      // use empty string, not null here.
+      description = "";
     }
     final String oldText = myIndicator.getText2();
     if (!Objects.equals(description, oldText)) {

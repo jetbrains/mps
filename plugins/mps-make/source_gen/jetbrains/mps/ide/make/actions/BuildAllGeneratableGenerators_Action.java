@@ -16,7 +16,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.Generator;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 
 public class BuildAllGeneratableGenerators_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -25,6 +24,7 @@ public class BuildAllGeneratableGenerators_Action extends BaseAction {
     super("Rebuild All 'Generatable' Generators", "Rebuild generators that generate templates", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -46,15 +46,9 @@ public class BuildAllGeneratableGenerators_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._T<List<SModule>> m = new Wrappers._T<List<SModule>>();
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        Iterable<SModule> projectModules = event.getData(MPSCommonDataKeys.MPS_PROJECT).getProjectModulesWithGenerators();
-        m.value = ListSequence.fromListWithValues(new ArrayList<SModule>(), Sequence.fromIterable(projectModules).ofType(Generator.class).where(new IWhereFilter<Generator>() {
-          public boolean accept(Generator it) {
-            return it.generateTemplates();
-          }
-        }));
-      }
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(() -> {
+      Iterable<SModule> projectModules = event.getData(MPSCommonDataKeys.MPS_PROJECT).getProjectModulesWithGenerators();
+      m.value = ListSequence.fromListWithValues(new ArrayList<SModule>(), Sequence.fromIterable(projectModules).ofType(Generator.class).where((it) -> it.generateTemplates()));
     });
     new MakeActionImpl(new MakeActionParameters(event.getData(MPSCommonDataKeys.MPS_PROJECT)).modules(m.value).cleanMake(true)).executeAction();
   }

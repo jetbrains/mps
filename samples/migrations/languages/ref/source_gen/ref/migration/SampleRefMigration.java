@@ -8,7 +8,6 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.scope.ConditionalScope;
 import jetbrains.mps.ide.findusages.model.scopes.ModulesScope;
-import org.jetbrains.mps.util.Condition;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
@@ -20,7 +19,6 @@ import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SReference;
@@ -29,11 +27,9 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -54,61 +50,51 @@ public class SampleRefMigration extends MigrationScriptBase {
     return null;
   }
   public void doExecute(final SModule m) {
-    // migrate everything except migration aspects 
-    SearchScope searchScope = new ConditionalScope(new ModulesScope(m), null, new Condition<SModel>() {
-      public boolean met(SModel it) {
-        return !(SModuleOperations.isAspect(it, "migration"));
-      }
-    });
+    // migrate everything except migration aspects
+    SearchScope searchScope = new ConditionalScope(new ModulesScope(m), null, (SModel it) -> !(SModuleOperations.isAspect(it, "migration")));
 
     {
       SearchScope scope_u457zm_d0e = CommandUtil.createScope(searchScope);
       final SearchScope scope_u457zm_d0e_0 = new EditableFilteringScope(scope_u457zm_d0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_u457zm_d0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_u457zm_d0e_0;
 
-      // get all old references in all models of this module 
-      List<SNode> references = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.OldComponentRef$jA, true)).toListSequence();
+      // get all old references in all models of this module
+      List<SNode> references = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.OldComponentRef$jA, true)).toList();
 
-      // cache for reading data annotations 
+      // cache for reading data annotations
       final Map<SModule, Map<String, String>> idMaps = MapSequence.fromMap(new HashMap<SModule, Map<String, String>>());
 
-      // for each found old reference 
-      ListSequence.fromList(references).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode oldNode) {
-          // create a new one, leave the reference target empty 
-          SNode newNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd3d2b6e3a4b343d5L, 0xbb29420d39fa86abL, 0x6aff2c104932a6c9L, "ref.structure.NewComponentRef"));
+      // for each found old reference
+      ListSequence.fromList(references).visitAll((oldNode) -> {
+        // create a new one, leave the reference target empty
+        SNode newNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd3d2b6e3a4b343d5L, 0xbb29420d39fa86abL, 0x6aff2c104932a6c9L, "ref.structure.NewComponentRef"));
 
-          // find the target of the old reference and its containing model 
-          SReference oldRef = oldNode.getReference(LINKS.target$f69e);
-          SModel targetModel = oldRef.getTargetSModelReference().resolve(m.getRepository());
-          SModule targetModule = targetModel.getModule();
+        // find the target of the old reference and its containing model
+        SReference oldRef = oldNode.getReference(LINKS.target$f69e);
+        SModel targetModel = oldRef.getTargetSModelReference().resolve(m.getRepository());
+        SModule targetModule = targetModel.getModule();
 
-          // get the id of the component that the old component has been migrated into 
-          if (MapSequence.fromMap(idMaps).get(targetModule) == null) {
-            Map<String, String> idMap = MapSequence.fromMap(new HashMap<String, String>());
-            for (SNode dataAnnotation : ListSequence.fromList(getDeclData(targetModule))) {
-              MapSequence.fromMap(idMap).put(SPropertyOperations.getString(dataAnnotation, PROPS.oldId$bq$n), SPropertyOperations.getString(dataAnnotation, PROPS.newId$bqNo));
-            }
-            MapSequence.fromMap(idMaps).put(targetModule, idMap);
+        // get the id of the component that the old component has been migrated into
+        if (MapSequence.fromMap(idMaps).get(targetModule) == null) {
+          Map<String, String> idMap = MapSequence.fromMap(new HashMap<String, String>());
+          for (SNode dataAnnotation : ListSequence.fromList(getDeclData(targetModule))) {
+            MapSequence.fromMap(idMap).put(SPropertyOperations.getString(dataAnnotation, PROPS.oldId$bq$n), SPropertyOperations.getString(dataAnnotation, PROPS.newId$bqNo));
           }
-          String newId = MapSequence.fromMap(MapSequence.fromMap(idMaps).get(targetModule)).get(oldRef.getTargetNodeId().toString());
-          if (newId == null) {
-            return;
-          }
-
-          // get the new component instance 
-          SNode newTarget = targetModel.getNode(PersistenceFacade.getInstance().createNodeId(newId));
-
-          // set the reference to point to it 
-          SLinkOperations.setTarget(newNode, LINKS.target$gbwQ, (SNode) newTarget);
-
-          // replace the old reference in the model with the newly created one 
-          SNodeOperations.replaceWithAnother(oldNode, newNode);
+          MapSequence.fromMap(idMaps).put(targetModule, idMap);
         }
+        String newId = MapSequence.fromMap(MapSequence.fromMap(idMaps).get(targetModule)).get(oldRef.getTargetNodeId().toString());
+        if (newId == null) {
+          return;
+        }
+
+        // get the new component instance
+        SNode newTarget = targetModel.getNode(PersistenceFacade.getInstance().createNodeId(newId));
+
+        // set the reference to point to it
+        SLinkOperations.setTarget(newNode, LINKS.target$gbwQ, (SNode) newTarget);
+
+        // replace the old reference in the model with the newly created one
+        SNodeOperations.replaceWithAnother(oldNode, newNode);
       });
     }
   }
@@ -117,19 +103,13 @@ public class SampleRefMigration extends MigrationScriptBase {
     {
       SearchScope scope_u457zm_a0f = CommandUtil.createScope(m);
       final SearchScope scope_u457zm_a0f_0 = new EditableFilteringScope(scope_u457zm_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_u457zm_a0f_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.OldComponentRef$jA, false)).select(new ISelector<SNode, NotMigratedNode>() {
-        public NotMigratedNode select(SNode it) {
-          return new NotMigratedNode(it) {
-            public String getMessage() {
-              return "old references should be replaced by a new one";
-            }
-          };
-        }
+      QueryExecutionContext context = () -> scope_u457zm_a0f_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.OldComponentRef$jA, false)).select((it) -> {
+        return new NotMigratedNode(it) {
+          public String getMessage() {
+            return "old references should be replaced by a new one";
+          }
+        };
       });
     }
   }
@@ -140,23 +120,11 @@ public class SampleRefMigration extends MigrationScriptBase {
     {
       SearchScope scope_u457zm_a0h = CommandUtil.createScope(m);
       final SearchScope scope_u457zm_a0h_0 = scope_u457zm_a0h;
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_u457zm_a0h_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MigrationDataAnnotation$Ct, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(MigrationScriptReference.deserialize(SPropertyOperations.getString(it, PROPS.createdByScript$dQMM)), new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, "decl"), 1));
-        }
-      }).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.dataNode$lPK2);
-        }
-      }).toListSequence();
+      QueryExecutionContext context = () -> scope_u457zm_a0h_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MigrationDataAnnotation$Ct, false)).where((it) -> Objects.equals(MigrationScriptReference.deserialize(SPropertyOperations.getString(it, PROPS.createdByScript$dQMM)), new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, "decl"), 1))).select((it) -> SLinkOperations.getTarget(it, LINKS.dataNode$lPK2)).toList();
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xd3d2b6e3a4b343d5L, 0xbb29420d39fa86abL, "ref"), 1);
   }
 

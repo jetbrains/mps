@@ -5,17 +5,14 @@ package jetbrains.mps.baseLanguage.lightweightdsl.intentions;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.lightweightdsl.behavior.DSLDescriptor__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.baseLanguage.lightweightdsl.behavior.DSLClassMember__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -24,44 +21,32 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class ClassLikeInitHelper {
   public static void init(final SNode node, SNode descriptor, final SModel futureModel) {
     if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.AutoInitDSLClass$Ms))) {
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLAnnotation")));
-      SLinkOperations.setTarget(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv)), LINKS.descriptor$aNbO, descriptor);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv).set(node, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLAnnotation")));
+      SLinkOperations.setTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv).get(node), LINKS.descriptor$aNbO, descriptor);
     }
-    Sequence.fromIterable(DSLDescriptor__BehaviorDescriptor.getClassLikeMembers_id2iCqkkxuhoj.invoke(descriptor)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNode newMember = DSLClassMember__BehaviorDescriptor.createForClass_id5BD$AU437jJ.invoke(it, node, futureModel);
-        if ((newMember == null)) {
-          return;
-        }
-        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(newMember);
+    Sequence.fromIterable(DSLDescriptor__BehaviorDescriptor.getClassLikeMembers_id2iCqkkxuhoj.invoke(descriptor)).visitAll((it) -> {
+      SNode newMember = DSLClassMember__BehaviorDescriptor.createForClass_id5BD$AU437jJ.invoke(it, node, futureModel);
+      if ((newMember == null)) {
+        return;
       }
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(newMember);
     });
     DSLDescriptor__BehaviorDescriptor.initializeInstance_id2VRROcY8CaS.invoke(descriptor, node, futureModel);
   }
 
   public static void renew(final SNode node, SNode descriptor) {
-    Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.member$L_2d), CONCEPTS.MemberPlaceholder$hW)).toListSequence().visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNodeOperations.deleteNode(it);
-      }
-    });
+    ListSequence.fromList(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.member$L_2d), CONCEPTS.MemberPlaceholder$hW)).toList()).visitAll((it) -> SNodeOperations.deleteNode(it));
     final SNode first = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).first();
-    Sequence.fromIterable(DSLDescriptor__BehaviorDescriptor.getClassLikeMembers_id2iCqkkxuhoj.invoke(descriptor)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.EmptyMemberDescriptor$3q));
+    Sequence.fromIterable(DSLDescriptor__BehaviorDescriptor.getClassLikeMembers_id2iCqkkxuhoj.invoke(descriptor)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.EmptyMemberDescriptor$3q))).visitAll((it) -> {
+      SNode newMember = DSLClassMember__BehaviorDescriptor.createForClass_id5BD$AU437jJ.invoke(it, node, SNodeOperations.getModel(node));
+      if ((newMember == null)) {
+        return;
       }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNode newMember = DSLClassMember__BehaviorDescriptor.createForClass_id5BD$AU437jJ.invoke(it, node, SNodeOperations.getModel(node));
-        if ((newMember == null)) {
-          return;
-        }
 
-        if ((first == null)) {
-          ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(newMember);
-        } else {
-          SNodeOperations.insertPrevSiblingChild(first, newMember);
-        }
+      if ((first == null)) {
+        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(newMember);
+      } else {
+        SNodeOperations.insertPrevSiblingChild(first, newMember);
       }
     });
   }

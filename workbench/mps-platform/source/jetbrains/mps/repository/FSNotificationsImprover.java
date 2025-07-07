@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ import java.util.List;
  * here idea is the same as in {@code ProjectRootListenerComponent}
  */
 public class FSNotificationsImprover {
-  private List<String> myRootsToAdd = new ArrayList<>();
+  private final List<String> myRootsToAdd = new ArrayList<>();
 
   /**
    * On initialization service adds MPS distribution path and plugins path to watching roots.

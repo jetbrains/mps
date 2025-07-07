@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -18,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -32,15 +30,15 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class DSLClassMember__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a0447fe4c7L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLClassMember");
 
-  public static final SMethod<Boolean> isMultiple_id1QReUKIGS9B = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isMultiple").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1QReUKIGS9B").build();
-  public static final SMethod<Boolean> isRequired_id2WSWNq1VhVM = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isRequired").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2WSWNq1VhVM").build();
-  public static final SMethod<SNode> getPlaceholder_id7T23sO8tlHe = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getPlaceholder").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7T23sO8tlHe").build();
-  public static final SMethod<SNode> getDefault_id7DN9hucqR$0 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getDefault").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7DN9hucqR$0").build();
-  public static final SMethod<SNode> createForClass_id5BD$AU437jJ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createForClass").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5BD$AU437jJ").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
-  public static final SMethod<Iterable<SNode>> find_id2gzehMfi1$l = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("find").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2gzehMfi1$l").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Iterable<SNode>> findPlaceholders_id5ZzANK5B6wZ = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("findPlaceholders").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5ZzANK5B6wZ").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> create_id7ay_HjIOVVe = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("create").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7ay_HjIOVVe").build(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
-  public static final SMethod<String> getMatchingText_id2nUiI4k7qhh = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMatchingText").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2nUiI4k7qhh").build();
+  public static final SMethod<Boolean> isMultiple_id1QReUKIGS9B = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isMultiple").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2141245758541890151L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2();
+  public static final SMethod<Boolean> isRequired_id2WSWNq1VhVM = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isRequired").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3402736933911994098L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2();
+  public static final SMethod<SNode> getPlaceholder_id7T23sO8tlHe = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getPlaceholder").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9097849371503188814L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2();
+  public static final SMethod<SNode> getDefault_id7DN9hucqR$0 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getDefault").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8823436878019262720L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2();
+  public static final SMethod<SNode> createForClass_id5BD$AU437jJ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createForClass").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6478870542308635887L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
+  public static final SMethod<Iterable<SNode>> find_id2gzehMfi1$l = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("find").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2603987804376013077L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Iterable<SNode>> findPlaceholders_id5ZzANK5B6wZ = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("findPlaceholders").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6909536935410952255L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> create_id7ay_HjIOVVe = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("create").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8260330507834998478L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
+  public static final SMethod<String> getMatchingText_id2nUiI4k7qhh = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMatchingText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2736582054146581585L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isMultiple_id1QReUKIGS9B, isRequired_id2WSWNq1VhVM, getPlaceholder_id7T23sO8tlHe, getDefault_id7DN9hucqR$0, createForClass_id5BD$AU437jJ, find_id2gzehMfi1$l, findPlaceholders_id5ZzANK5B6wZ, create_id7ay_HjIOVVe, getMatchingText_id2nUiI4k7qhh);
 
@@ -75,11 +73,7 @@ public final class DSLClassMember__BehaviorDescriptor extends BaseBHDescriptor {
     }
   }
   /*package*/ static Iterable<SNode> findPlaceholders_id5ZzANK5B6wZ(@NotNull final SNode __thisNode__, SNode cls) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(cls, LINKS.member$L_2d), CONCEPTS.MemberPlaceholder$hW)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.decl$GtTj) == __thisNode__;
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(cls, LINKS.member$L_2d), CONCEPTS.MemberPlaceholder$hW)).where((it) -> SLinkOperations.getTarget(it, LINKS.decl$GtTj) == __thisNode__);
   }
   /*package*/ static String getMatchingText_id2nUiI4k7qhh(@NotNull SNode __thisNode__) {
     if (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.INamedConcept$Kd)) {

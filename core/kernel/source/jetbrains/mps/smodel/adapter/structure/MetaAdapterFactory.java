@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,13 +26,16 @@ import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import jetbrains.mps.smodel.adapter.ids.SPropertyId;
 import jetbrains.mps.smodel.adapter.ids.SReferenceLinkId;
 import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
-import jetbrains.mps.smodel.adapter.structure.types.SConstrainedStringDatatypeAdapter;
-import jetbrains.mps.smodel.adapter.structure.types.SEnumerationAdapter;
 import jetbrains.mps.smodel.adapter.structure.concept.SInterfaceConceptAdapterById;
 import jetbrains.mps.smodel.adapter.structure.language.SLanguageAdapterById;
+import jetbrains.mps.smodel.adapter.structure.link.SContainmentLinkAdapter3;
 import jetbrains.mps.smodel.adapter.structure.link.SContainmentLinkAdapterById;
+import jetbrains.mps.smodel.adapter.structure.property.SPropertyAdapter3;
 import jetbrains.mps.smodel.adapter.structure.property.SPropertyAdapterById;
+import jetbrains.mps.smodel.adapter.structure.ref.SReferenceLinkAdapter3;
 import jetbrains.mps.smodel.adapter.structure.ref.SReferenceLinkAdapterById;
+import jetbrains.mps.smodel.adapter.structure.types.SConstrainedStringDatatypeAdapter;
+import jetbrains.mps.smodel.adapter.structure.types.SEnumerationAdapter;
 import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.smodel.runtime.ConceptDescriptor;
 import jetbrains.mps.util.NameUtil;
@@ -50,6 +53,7 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
 /**
  * {@implNote} This class shall stay pure FACTORY of SXAdapter objects (i.e. instantiate them only), and shall not contradict with
@@ -203,6 +207,10 @@ public abstract class MetaAdapterFactory {
 
   @NotNull
   public static SProperty getProperty(long uuidHigh, long uuidLow, long concept, long prop, String propName) {
+    return property(uuidHigh, uuidLow, concept, prop, () -> new PropertyBucket(uuidHigh, uuidLow, concept, prop, propName));
+  }
+
+  private static SProperty property(long uuidHigh, long uuidLow, long concept, long prop, Supplier<PropertyBucket> factory) {
     List<PropertyBucket> bucketList = getBucketList(ourProperties, bucketKey(uuidHigh, uuidLow, concept, prop));
     //noinspection SynchronizationOnLocalVariableOrMethodParameter
     synchronized (bucketList) {
@@ -211,7 +219,7 @@ public abstract class MetaAdapterFactory {
           return rv.get();
         }
       }
-      PropertyBucket b = new PropertyBucket(uuidHigh, uuidLow, concept, prop, propName);
+      PropertyBucket b = factory.get();
       bucketList.add(b);
       return b.get();
     }
@@ -220,7 +228,7 @@ public abstract class MetaAdapterFactory {
   public static SProperty getProperty(@NotNull SAbstractConcept concept, long prop, String propName) {
     final SConceptId cid = MetaIdHelper.getConcept(concept);
     SLanguageId langId = cid.getLanguageId();
-    return getProperty(langId.getHighBits(), langId.getLowBits(), cid.getIdValue(), prop, propName);
+    return property(langId.getHighBits(), langId.getLowBits(), cid.getIdValue(), prop, () -> new PropertyBucket(concept, cid, prop, propName));
   }
 
   @NotNull
@@ -232,6 +240,10 @@ public abstract class MetaAdapterFactory {
 
   @NotNull
   public static SReferenceLink getReferenceLink(long uuidHigh, long uuidLow, long concept, long link, String refName) {
+    return association(uuidHigh, uuidLow, concept, link, () -> new AssociationLinkBucket(uuidHigh, uuidLow, concept, link, refName));
+  }
+
+  private static SReferenceLink association(long uuidHigh, long uuidLow, long concept, long link, Supplier<AssociationLinkBucket> factory) {
     List<AssociationLinkBucket> bucketList = getBucketList(ourAssociations, bucketKey(uuidHigh, uuidLow, concept, link));
     //noinspection SynchronizationOnLocalVariableOrMethodParameter
     synchronized (bucketList) {
@@ -240,7 +252,7 @@ public abstract class MetaAdapterFactory {
           return rv.get();
         }
       }
-      AssociationLinkBucket b = new AssociationLinkBucket(uuidHigh, uuidLow, concept, link, refName);
+      AssociationLinkBucket b = factory.get();
       bucketList.add(b);
       return b.get();
     }
@@ -249,7 +261,7 @@ public abstract class MetaAdapterFactory {
   public static SReferenceLink getReferenceLink(@NotNull SAbstractConcept concept, long link, String linkName) {
     final SConceptId cid = MetaIdHelper.getConcept(concept);
     SLanguageId langId = cid.getLanguageId();
-    return getReferenceLink(langId.getHighBits(), langId.getLowBits(), cid.getIdValue(), link, linkName);
+    return association(langId.getHighBits(), langId.getLowBits(), cid.getIdValue(), link, () -> new AssociationLinkBucket(concept, cid, link, linkName));
   }
 
   @NotNull
@@ -261,6 +273,11 @@ public abstract class MetaAdapterFactory {
 
   @NotNull
   public static SContainmentLink getContainmentLink(long uuidHigh, long uuidLow, long concept, long link, String linkName) {
+    // XXX I wonder if I can check RuntimeFlags.isMergeDriverMode() here or inside AggregationLinkBucket to create xAdapter2 when needed?
+    return aggregation(uuidHigh, uuidLow, concept, link, () -> new AggregationLinkBucket(uuidHigh, uuidLow, concept, link, linkName));
+  }
+
+  private static SContainmentLink aggregation(long uuidHigh, long uuidLow, long concept, long link, Supplier<AggregationLinkBucket> factory) {
     List<AggregationLinkBucket> bucketList = getBucketList(ourAggregations, bucketKey(uuidHigh, uuidLow, concept, link));
     //noinspection SynchronizationOnLocalVariableOrMethodParameter
     synchronized (bucketList) {
@@ -269,16 +286,16 @@ public abstract class MetaAdapterFactory {
           return rv.get();
         }
       }
-      AggregationLinkBucket b = new AggregationLinkBucket(uuidHigh, uuidLow, concept, link, linkName);
+      AggregationLinkBucket b = factory.get();
       bucketList.add(b);
       return b.get();
     }
   }
 
-    public static SContainmentLink getContainmentLink(@NotNull SAbstractConcept concept, long link, String linkName) {
+  public static SContainmentLink getContainmentLink(@NotNull SAbstractConcept concept, long link, String linkName) {
     final SConceptId cid = MetaIdHelper.getConcept(concept);
       SLanguageId langId = cid.getLanguageId();
-    return getContainmentLink(langId.getHighBits(), langId.getLowBits(), cid.getIdValue(), link, linkName);
+    return aggregation(langId.getHighBits(), langId.getLowBits(), cid.getIdValue(), link, () -> new AggregationLinkBucket(concept, cid, link, linkName));
   }
 
   @NotNull
@@ -428,6 +445,14 @@ public abstract class MetaAdapterFactory {
       myFeatureId = feature;
     }
 
+    /*package*/ StructuralFeatureBucket(SConceptId cid, long feature) {
+      final SLanguageId languageId = cid.getLanguageId();
+      myLanguageHighBits = languageId.getHighBits();
+      myLanguageLowBits = languageId.getLowBits();
+      myConceptId = cid.getIdValue();
+      myFeatureId = feature;
+    }
+
     /*package*/ final boolean isBucketFor(long highBits, long lowBits, long concept, long feature) {
       return myLanguageHighBits == highBits && myLanguageLowBits == lowBits && myConceptId == concept && myFeatureId == feature;
     }
@@ -440,6 +465,12 @@ public abstract class MetaAdapterFactory {
       super(highBits, lowBits, concept, prop);
       myProperty = new SPropertyAdapterById(MetaIdFactory.propId(highBits, lowBits, concept, prop), name);
     }
+
+    /*package*/ PropertyBucket(SAbstractConcept concept, SConceptId cid, long prop, String propName) {
+      super(cid, prop);
+      myProperty = new SPropertyAdapter3(concept, MetaIdFactory.propId(cid, prop), propName);
+    }
+
 
     /*package*/ SProperty get() {
       return myProperty;
@@ -454,6 +485,11 @@ public abstract class MetaAdapterFactory {
       myLink = new SReferenceLinkAdapterById(MetaIdFactory.refId(highBits, lowBits, concept, link), name);
     }
 
+    /*package*/ AssociationLinkBucket(SAbstractConcept concept, SConceptId cid, long link, String name) {
+      super(cid, link);
+      myLink = new SReferenceLinkAdapter3(concept, MetaIdFactory.refId(cid, link), name);
+    }
+
     /*package*/ SReferenceLink get() {
       return myLink;
     }
@@ -465,6 +501,11 @@ public abstract class MetaAdapterFactory {
     /*package*/ AggregationLinkBucket(long highBits, long lowBits, long concept, long link, String name) {
       super(highBits, lowBits, concept, link);
       myLink = new SContainmentLinkAdapterById(MetaIdFactory.linkId(highBits, lowBits, concept, link), name);
+    }
+
+    /*package*/ AggregationLinkBucket(SAbstractConcept concept, SConceptId cid, long link, String name) {
+      super(cid,link);
+      myLink = new SContainmentLinkAdapter3(concept, MetaIdFactory.linkId(cid, link), name);
     }
 
     /*package*/ SContainmentLinkAdapterById get() {

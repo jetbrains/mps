@@ -49,7 +49,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.KeyWordSty
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "${");
     editorCell.setCellId("Constant_x8rx6f_a0");
     Style style = new StyleImpl();
-    new AppendPartStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new AppendPartStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, false);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
@@ -59,7 +59,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.KeyWordSty
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "attributed node");
     editorCell.setCellId("Constant_x8rx6f_b0");
     Style style = new StyleImpl();
-    new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeyWordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, false);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
@@ -69,7 +69,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.KeyWordSty
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "}$");
     editorCell.setCellId("Constant_x8rx6f_c0");
     Style style = new StyleImpl();
-    new AppendPartStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new AppendPartStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, false);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");

@@ -16,6 +16,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
@@ -41,12 +42,15 @@ public class check_ExtendedConceptsAreInExtendedLanguages_NonTypesystemRule exte
     List<SNode> superConcepts = new ArrayList<SNode>();
     if (SNodeOperations.isInstanceOf(cd, CONCEPTS.ConceptDeclaration$gH)) {
       ListSequence.fromList(superConcepts).addElement(SLinkOperations.getTarget(SNodeOperations.as(cd, CONCEPTS.ConceptDeclaration$gH), LINKS.extends$_Isg));
-      // for implemented interfaces, we do not require extends between languages. 
-      // I'm not quite sure we shall demand extends between languages even for super-concepts, but it's just too much to lift this restriction now ;) 
-      // Generally, however, it seems reasonable to demand extends in super-concepts case, as it means re-use of functionality, and absence of this 
-      // constraint would encourage people to have bad design and extend concepts they shall not extend. OTOH, each language extending lang.core look odd. 
+      // for implemented interfaces, we do not require extends between languages.
+      // I'm not quite sure we shall demand extends between languages even for super-concepts, but it's just too much to lift this restriction now ;)
+      // Generally, however, it seems reasonable to demand extends in super-concepts case, as it means re-use of functionality, and absence of this
+      // constraint would encourage people to have bad design and extend concepts they shall not extend. OTOH, each language extending lang.core look odd.
     } else if (SNodeOperations.isInstanceOf(cd, CONCEPTS.InterfaceConceptDeclaration$CG)) {
-      ListSequence.fromList(superConcepts).addSequence(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.as(cd, CONCEPTS.InterfaceConceptDeclaration$CG), LINKS.extends$nawU), LINKS.intfc$zM4e)));
+      // we exclude 'marker' interfaces here.
+      // FIXME use ConceptDeclarationScanner, instead, to be consistent what we treat as a requirement for 'extends'
+      //     just need to refactor CDS a bit to deal with 1 concept declaration, not a whole model 
+      ListSequence.fromList(superConcepts).addSequence(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.as(cd, CONCEPTS.InterfaceConceptDeclaration$CG), LINKS.extends$nawU), LINKS.intfc$zM4e)).where((it) -> (new IAttributeDescriptor.NodeAttribute(CONCEPTS.MarkerInterfaceAttribute$8S).get(it) == null)));
     }
     for (SNode superConcept : superConcepts) {
       Language conceptLanguage = SModelUtil.getDeclaringLanguage(superConcept);
@@ -58,7 +62,7 @@ public class check_ExtendedConceptsAreInExtendedLanguages_NonTypesystemRule exte
           final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$MnvL);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(cd, "language " + conceptLanguage.getModuleName() + " of concept " + SPropertyOperations.getString(superConcept, PROPS.name$MnvL) + " is not extended by " + language.getModuleName(), "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1235136520823", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.AddExtendedLanguage_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.AddExtendedLanguage_QuickFix", "3013258720419439306", false);
             intentionProvider.putArgument("extLang", conceptLanguage);
             intentionProvider.putArgument("lang", language);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
@@ -81,6 +85,7 @@ public class check_ExtendedConceptsAreInExtendedLanguages_NonTypesystemRule exte
   private static final class CONCEPTS {
     /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
     /*package*/ static final SConcept InterfaceConceptDeclaration$CG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
+    /*package*/ static final SConcept MarkerInterfaceAttribute$8S = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x4d7dcbe8bf135fd0L, "jetbrains.mps.lang.structure.structure.MarkerInterfaceAttribute");
     /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 

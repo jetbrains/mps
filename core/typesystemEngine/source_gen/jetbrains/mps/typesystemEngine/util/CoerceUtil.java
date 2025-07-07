@@ -10,9 +10,9 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 
-@GeneratedClass(node = "r:36914d45-fd5c-434f-84d0-429a0b615f32(jetbrains.mps.typesystemEngine.util)/6321644624958548836", model = "r:36914d45-fd5c-434f-84d0-429a0b615f32(jetbrains.mps.typesystemEngine.util)")
+@GeneratedClass(nodeId = "6321644624958548836", model = "r:36914d45-fd5c-434f-84d0-429a0b615f32(jetbrains.mps.typesystemEngine.util)")
 public final class CoerceUtil {
   public static SConcept concept_MeetType = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, "jetbrains.mps.lang.typesystem.structure.MeetType");
   public static SContainmentLink link_MeetType_argument = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument");
@@ -26,7 +26,7 @@ public final class CoerceUtil {
     if (concept == null) {
       return true;
     }
-    return (SNodeOperations.isInstanceOf(type, CONCEPTS.Type$bu) ? ((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.cast(type, CONCEPTS.Type$bu), CONCEPTS.Type$bu, SMethodTrimmedId.create("canBeCoerced", null, "476YRQvP9l3"), concept)) : true);
+    return (SNodeOperations.isInstanceOf(type, CONCEPTS.Type$bu) ? ((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.cast(type, CONCEPTS.Type$bu), CONCEPTS.Type$bu, SMethodIdV2.create("canBeCoerced", 4739752174825018691L, 0x5745e3015c8914d3L), concept)) : true);
   }
 
   private static final class CONCEPTS {

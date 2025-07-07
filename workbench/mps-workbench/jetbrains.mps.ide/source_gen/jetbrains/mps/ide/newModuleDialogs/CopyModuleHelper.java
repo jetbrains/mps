@@ -14,10 +14,8 @@ import java.util.Collection;
 import jetbrains.mps.smodel.Generator;
 import java.util.Iterator;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.project.StandaloneMPSProject;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.util.ReferenceUpdater;
 import java.util.List;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
@@ -25,11 +23,13 @@ import java.util.ArrayList;
 import jetbrains.mps.extapi.persistence.CopyableModelRoot;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.extapi.persistence.ModelRootBase;
+import org.jetbrains.mps.openapi.persistence.ModulePersistenceContext;
+import jetbrains.mps.module.PersistenceContextImpl;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import jetbrains.mps.persistence.MementoImpl;
 
-@GeneratedClass(node = "r:8bdc9cf5-28de-48ab-8b85-36b2d96bc635(jetbrains.mps.ide.newModuleDialogs)/8450492655320932710", model = "r:8bdc9cf5-28de-48ab-8b85-36b2d96bc635(jetbrains.mps.ide.newModuleDialogs)")
+@GeneratedClass(nodeId = "8450492655320932710", model = "r:8bdc9cf5-28de-48ab-8b85-36b2d96bc635(jetbrains.mps.ide.newModuleDialogs)")
 public final class CopyModuleHelper {
   private final MPSProject myProject;
   private final AbstractModule myOriginal;
@@ -48,7 +48,7 @@ public final class CopyModuleHelper {
   @Nullable
   public AbstractModule copy() throws CopyNotSupportedException {
     if (myOriginal.isPackaged()) {
-      // Do not handle this case since packaged module may not contain it sources 
+      // Do not handle this case since packaged module may not contain it sources
       throw new CopyNotSupportedException("Cloning has not supported for packaged modules");
     }
     ModuleDescriptor moduleDescriptor = myOriginal.getModuleDescriptor();
@@ -56,11 +56,11 @@ public final class CopyModuleHelper {
       throw new IllegalArgumentException("The module descriptor is null for the " + myOriginal);
     }
     AbstractModule copy;
-    ModuleDescriptor copyDescriptor = new DescriptorCopyOrganizer(myOriginal, myCopyName, myCopyLocation).copyDescriptor();
+    ModuleDescriptor copyDescriptor = new DescriptorCopyOrganizer(myOriginal, myCopyName).copyDescriptor();
     copy = createModule(myCopyLocation, copyDescriptor);
     try {
-      copyModelsAndFacets(copy);
       addModuleToProject(copy);
+      copyModelRoots(copy);
       adjustReferences(copy);
     } catch (CopyNotSupportedException e) {
       return recover(e, copy);
@@ -71,9 +71,8 @@ public final class CopyModuleHelper {
     return copy;
   }
 
-  private void copyModelsAndFacets(AbstractModule copy) throws CopyNotSupportedException {
+  private void copyModelRoots(AbstractModule copy) throws CopyNotSupportedException {
     copyModelRoots(myOriginal, copy);
-    copyFacets(myOriginal, copy);
     if (myOriginal instanceof Language) {
       Collection<Generator> copyGenerators = ((Language) copy).getOwnedGenerators();
       Collection<Generator> originalGenerators = ((Language) myOriginal).getOwnedGenerators();
@@ -89,7 +88,6 @@ public final class CopyModuleHelper {
           newGen_var = newGen_it.next();
           oldGen_var = oldGen_it.next();
           copyModelRoots(oldGen_var, newGen_var);
-          copyFacets(oldGen_var, newGen_var);
         }
       }
     }
@@ -102,9 +100,7 @@ public final class CopyModuleHelper {
 
   private void addModuleToProject(AbstractModule result) {
     myProject.addModule(result);
-    if (myProject instanceof StandaloneMPSProject) {
-      ((StandaloneMPSProject) myProject).setFolderFor(result, myVirtualFolder);
-    }
+    myProject.setVirtualFolder(result, myVirtualFolder);
   }
 
   /**
@@ -116,7 +112,7 @@ public final class CopyModuleHelper {
    */
   private AbstractModule createModule(IFile resultFile, ModuleDescriptor copyDescriptor) {
     ModuleRepositoryFacade facade = new ModuleRepositoryFacade(myProject);
-    SModule result = facade.instantiateModule(new ModulesMiner.ModuleHandle(resultFile, copyDescriptor), myProject);
+    SModule result = facade.instantiate(copyDescriptor, resultFile);
     return (AbstractModule) result;
   }
 
@@ -126,6 +122,7 @@ public final class CopyModuleHelper {
     referenceUpdater.adjust();
   }
 
+  @SuppressWarnings("rawtypes")
   private static void copyModelRoots(AbstractModule source, AbstractModule target) throws CopyNotSupportedException {
     List<ModelRoot> targetModelRoots = new ArrayList<ModelRoot>();
     for (ModelRoot sourceModelRoot : source.getModelRoots()) {
@@ -136,28 +133,20 @@ public final class CopyModuleHelper {
       if (targetModelRoot instanceof ModelRootBase) {
         ((ModelRootBase) targetModelRoot).setModule(target);
       }
-      // noinspection unchecked 
       ((CopyableModelRoot) sourceModelRoot).copyTo((CopyableModelRoot) targetModelRoot);
       targetModelRoots.add(targetModelRoot);
     }
 
     ModuleDescriptor targetDescriptor = target.getModuleDescriptor();
     if (targetDescriptor != null) {
+      ModulePersistenceContext mpc = PersistenceContextImpl.forModule(target);
       Collection<ModelRootDescriptor> modelRootDescriptors = targetDescriptor.getModelRootDescriptors();
       for (ModelRoot targetModelRoot : targetModelRoots) {
         Memento targetMemento = new MementoImpl();
-        targetModelRoot.save(targetMemento);
+        targetModelRoot.save(targetMemento, mpc);
         modelRootDescriptors.add(new ModelRootDescriptor(targetModelRoot.getType(), targetMemento));
       }
       target.setModuleDescriptor(targetDescriptor);
     }
-  }
-
-  /**
-   * TODO formally facets need to be copied in the same way model roots are now.
-   * However facets are going to become totally independent from the module
-   */
-  public static void copyFacets(AbstractModule source, AbstractModule target) throws CopyNotSupportedException {
-    // nop 
   }
 }

@@ -8,8 +8,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopes;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -25,9 +25,8 @@ public class check_ClassCreator_NonTypesystemRule extends AbstractNonTypesystemR
   public check_ClassCreator_NonTypesystemRule() {
   }
   public void applyRule(final SNode classCreator, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SLinkOperations.getTarget(classCreator, LINKS.baseMethodDeclaration$pyYw) == null && ListSequence.fromList(SLinkOperations.getChildren(classCreator, LINKS.actualArgument$pzdx)).isEmpty()) {
+    if ((SLinkOperations.getTarget(classCreator, LINKS.baseMethodDeclaration$pyYw) == null || SNodeOperations.isInstanceOf(SNodeOperations.getParent(SLinkOperations.getTarget(classCreator, LINKS.baseMethodDeclaration$pyYw)), CONCEPTS.BaseCommentAttribute$nv)) && ListSequence.fromList(SLinkOperations.getChildren(classCreator, LINKS.actualArgument$pzdx)).isEmpty()) {
       String refText = SLinkOperations.getResolveInfo(SNodeOperations.getReference(classCreator, LINKS.baseMethodDeclaration$pyYw));
-
       if ((refText != null && refText.length() > 0)) {
         SNode clazz = SNodeOperations.cast(ClassifierScopes.getVisibleClassifiersWithDefaultConstructors(classCreator).resolve(classCreator, refText), CONCEPTS.ClassConcept$bK);
         if ((clazz != null)) {
@@ -35,7 +34,8 @@ public class check_ClassCreator_NonTypesystemRule extends AbstractNonTypesystemR
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classCreator, "Default constructor is available", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8899076737759409542", null, errorTarget);
             {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.QuickFixForClassCreator_QuickFix", true);
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.QuickFixForClassCreator_QuickFix", "8899076737759409663", true);
+              intentionProvider.putArgument("targetClass", clazz);
               _reporter_2309309498.addIntentionProvider(intentionProvider);
             }
           }
@@ -59,6 +59,7 @@ public class check_ClassCreator_NonTypesystemRule extends AbstractNonTypesystemR
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept BaseCommentAttribute$nv = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
     /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
     /*package*/ static final SConcept ClassCreator$ZG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, "jetbrains.mps.baseLanguage.structure.ClassCreator");
   }

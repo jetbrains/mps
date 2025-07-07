@@ -34,7 +34,6 @@ import java.util.HashSet;
 import java.util.ListIterator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.jetpad.projectional.diagram.view.ConnectionRoutingView;
 import jetbrains.jetpad.projectional.diagram.layout.OrthogonalRouter;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -101,12 +100,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
     }
 
     protected SubstituteInfoPartExt[] createPaletteBlockSubstituteInfoPartExts() {
-      return new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), CONCEPTS.Component$8s, LINKS.component$l$9M, new _FunctionTypes._void_P3_E0<SNode, Integer, Integer>() {
-        public void invoke(SNode node, Integer x, Integer y) {
-          SPropertyOperations.assign(node, PROPS.name$MnvL, "New component");
-          SPropertyOperations.assign(node, PROPS.x$8CBf, x);
-          SPropertyOperations.assign(node, PROPS.y$8D5h, y);
-        }
+      return new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), CONCEPTS.Component$8s, LINKS.component$l$9M, (SNode node, Integer x, Integer y) -> {
+        SPropertyOperations.assign(node, PROPS.name$MnvL, "New component");
+        SPropertyOperations.assign(node, PROPS.x$8CBf, x);
+        SPropertyOperations.assign(node, PROPS.y$8D5h, y);
       })};
     }
     protected SubstituteInfoPartExt[] createPaletteConnectorSubstituteInfoPartExts() {
@@ -176,11 +173,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
       Set<SNode> existingConnectors = new HashSet<SNode>(myConnectors);
       ListIterator<SNode> connectorsIterator = myConnectors.listIterator();
       syncDiagramElements(SLinkOperations.getChildren(getSNode(), LINKS.component$l$9M), blocksIterator, existingBlocks, connectorsIterator, existingConnectors);
-      syncDiagramElements(ListSequence.fromList(SLinkOperations.getChildren(getSNode(), LINKS.component$l$9M)).translate(new ITranslator2<SNode, SNode>() {
-        public Iterable<SNode> translate(SNode it) {
-          return SLinkOperations.getChildren(it, LINKS.dep$WgPG);
-        }
-      }), blocksIterator, existingBlocks, connectorsIterator, existingConnectors);
+      syncDiagramElements(ListSequence.fromList(SLinkOperations.getChildren(getSNode(), LINKS.component$l$9M)).translate((it) -> SLinkOperations.getChildren(it, LINKS.dep$WgPG)), blocksIterator, existingBlocks, connectorsIterator, existingConnectors);
       purgeTailNodes(blocksIterator);
       purgeTailNodes(connectorsIterator);
     }

@@ -7,7 +7,6 @@ import java.net.URI;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.io.File;
 import java.util.jar.Manifest;
 import java.util.jar.Attributes;
@@ -48,11 +47,7 @@ import java.io.FileOutputStream;
    * @param paths augments class path
    */
   public JarManifestBuilder withFilenameClassPath(Iterable<String> paths) {
-    withFilesClassPath(Sequence.fromIterable(paths).select(new ISelector<String, File>() {
-      public File select(String it) {
-        return new File(it);
-      }
-    }));
+    withFilesClassPath(Sequence.fromIterable(paths).select((it) -> new File(it)));
     return this;
   }
 
@@ -62,11 +57,7 @@ import java.io.FileOutputStream;
    * @param paths augments class path
    */
   public JarManifestBuilder withFilesClassPath(Iterable<File> paths) {
-    withClassPath(Sequence.fromIterable(paths).select(new ISelector<File, URI>() {
-      public URI select(File it) {
-        return it.toURI();
-      }
-    }));
+    withClassPath(Sequence.fromIterable(paths).select((it) -> it.toURI()));
     return this;
   }
 
@@ -81,15 +72,11 @@ import java.io.FileOutputStream;
 
   private Manifest createManifest() {
     Manifest m = new Manifest();
-    // Manfest-Version is a mandatory attribute, though I didn't find this in the jar/manifest documentation 
-    // I believe it's a defect in Attributes.writeMain, which doesn't save anything unless version has been specified. 
+    // Manfest-Version is a mandatory attribute, though I didn't find this in the jar/manifest documentation
+    // I believe it's a defect in Attributes.writeMain, which doesn't save anything unless version has been specified.
     m.getMainAttributes().put(Attributes.Name.MANIFEST_VERSION, "1.0");
     m.getMainAttributes().put(Attributes.Name.MAIN_CLASS, myMainClass);
-    m.getMainAttributes().put(Attributes.Name.CLASS_PATH, IterableUtils.join(ListSequence.fromList(myClassPath).select(new ISelector<URI, String>() {
-      public String select(URI it) {
-        return it.toString();
-      }
-    }), " "));
+    m.getMainAttributes().put(Attributes.Name.CLASS_PATH, IterableUtils.join(ListSequence.fromList(myClassPath).select((it) -> it.toString()), " "));
     return m;
   }
 

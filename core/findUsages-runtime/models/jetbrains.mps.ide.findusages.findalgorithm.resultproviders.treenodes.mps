@@ -2,7 +2,7 @@
 <model ref="r:266e1124-850c-4d14-97a9-eecae558e700(jetbrains.mps.ide.findusages.findalgorithm.resultproviders.treenodes)">
   <persistence version="9" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
   </languages>
   <imports>
@@ -10,14 +10,14 @@
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="6268" ref="r:78f1dc30-d9c6-41ba-bc9c-1e73f8bda079(jetbrains.mps.ide.findusages)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
-    <import index="mmaq" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.jdom(MPS.Core/)" />
     <import index="b2d5" ref="r:1a2b3027-99d2-4946-917b-f185130ac75d(jetbrains.mps.ide.findusages.findalgorithm.finders)" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="yyf4" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.util(MPS.OpenAPI/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="mk8z" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.progress(MPS.Core/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
+    <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
+    <import index="mmaq" ref="f647e48e-4568-4f4c-b48a-1546492c6a2e/java:org.jdom(org.jdom/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -32,11 +32,11 @@
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
         <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
-      <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
+      <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
@@ -136,7 +136,7 @@
       <concept id="1160998861373" name="jetbrains.mps.baseLanguage.structure.AssertStatement" flags="nn" index="1gVbGN">
         <child id="1160998896846" name="condition" index="1gVkn0" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -167,7 +167,7 @@
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1081855346303" name="jetbrains.mps.baseLanguage.structure.BreakStatement" flags="nn" index="3zACq4" />
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1144226303539" name="jetbrains.mps.baseLanguage.structure.ForeachStatement" flags="nn" index="1DcWWT">
@@ -176,7 +176,7 @@
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
         <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
-      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
+      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="nn" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
         <child id="8276990574886367509" name="finallyClause" index="1zxBo6" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
@@ -210,15 +210,15 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
     <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
-      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
         <property id="155656958578482949" name="value" index="3oM_SC" />
       </concept>
-      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="nn" index="1PaTwC">
         <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
@@ -353,11 +353,11 @@
       <property role="TrG5h" value="LOG" />
       <property role="3TUv4t" value="true" />
       <node concept="3uibUv" id="7rEOvdELARS" role="1tU5fm">
-        <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
+        <ref role="3uigEE" to="wwqx:~Logger" resolve="Logger" />
       </node>
       <node concept="2YIFZM" id="7rEOvdELJiV" role="33vP2m">
-        <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
+        <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+        <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
         <node concept="3VsKOn" id="7rEOvdELJiW" role="37wK5m">
           <ref role="3VsUkX" node="7rEOvdELARO" resolve="BaseNode" />
         </node>
@@ -713,7 +713,7 @@
                                 <ref role="3cqZAo" node="7rEOvdELARR" resolve="LOG" />
                               </node>
                               <node concept="liA8E" id="7rEOvdELJoS" role="2OqNvi">
-                                <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object)" resolve="error" />
+                                <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.String)" resolve="error" />
                                 <node concept="Xl_RD" id="7rEOvdELJoT" role="37wK5m">
                                   <property role="Xl_RC" value="#getSearchResults returned results containing null, which means that some of your filters and finders is incorrect" />
                                 </node>
@@ -777,7 +777,7 @@
                                 <ref role="3cqZAo" node="7rEOvdELARR" resolve="LOG" />
                               </node>
                               <node concept="liA8E" id="7rEOvdELJpj" role="2OqNvi">
-                                <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object)" resolve="error" />
+                                <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.String)" resolve="error" />
                                 <node concept="Xl_RD" id="7rEOvdELJpk" role="37wK5m">
                                   <property role="Xl_RC" value="#getSearchedObjects returned nodes containing null, which means that some of your filters and finders is incorrect" />
                                 </node>
@@ -1395,21 +1395,6 @@
     <node concept="3uibUv" id="7rEOvdELAv_" role="1zkMxy">
       <ref role="3uigEE" node="7rEOvdELB4a" resolve="BaseLeaf" />
     </node>
-    <node concept="Wx3nA" id="7rEOvdELAvA" role="jymVt">
-      <property role="TrG5h" value="LOG" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3uibUv" id="7rEOvdELAvB" role="1tU5fm">
-        <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
-      </node>
-      <node concept="2YIFZM" id="7rEOvdELJwe" role="33vP2m">
-        <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-        <node concept="3VsKOn" id="7rEOvdELJwf" role="37wK5m">
-          <ref role="3VsUkX" node="7rEOvdELAvz" resolve="FinderNode" />
-        </node>
-      </node>
-      <node concept="3Tm6S6" id="7rEOvdELAvF" role="1B3o_S" />
-    </node>
     <node concept="Wx3nA" id="7rEOvdELAvG" role="jymVt">
       <property role="TrG5h" value="FINDER" />
       <property role="3TUv4t" value="true" />
@@ -1638,14 +1623,14 @@
               <node concept="3clFbF" id="7rEOvdELAwJ" role="3cqZAp">
                 <node concept="2OqwBi" id="7rEOvdELAwK" role="3clFbG">
                   <node concept="2YIFZM" id="7rEOvdELJwn" role="2Oq$k0">
-                    <ref role="1Pybhc" to="q7tw:~Logger" resolve="Logger" />
-                    <ref role="37wK5l" to="q7tw:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
+                    <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+                    <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
                     <node concept="1rXfSq" id="7rEOvdELJwo" role="37wK5m">
                       <ref role="37wK5l" to="wyt6:~Object.getClass()" resolve="getClass" />
                     </node>
                   </node>
                   <node concept="liA8E" id="7rEOvdELAwN" role="2OqNvi">
-                    <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
+                    <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.String,java.lang.Throwable)" resolve="error" />
                     <node concept="2OqwBi" id="7rEOvdELJwx" role="37wK5m">
                       <node concept="37vLTw" id="7rEOvdELJww" role="2Oq$k0">
                         <ref role="3cqZAo" node="7rEOvdELAwA" resolve="t" />

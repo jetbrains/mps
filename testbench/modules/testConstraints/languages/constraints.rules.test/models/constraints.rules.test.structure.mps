@@ -36,7 +36,7 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -64,7 +64,7 @@
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="children" />
       <property role="20lbJX" value="fLJekj5/_0__n" />
-      <ref role="20lvS9" node="7w_sh_iHHi0" resolve="ChildConcept" />
+      <ref role="20lvS9" node="7iO_FEKkt_x" resolve="ChildConceptBase" />
     </node>
     <node concept="1TJgyi" id="6ijHUgUSyYU" role="1TKVEl">
       <property role="IQ2nx" value="7247338141359681466" />

@@ -14,20 +14,19 @@ import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.baseLanguage.behavior.IMethodCall__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.IGenericType__BehaviorDescriptor;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import java.util.Iterator;
 import jetbrains.mps.baseLanguage.behavior.ITypeApplicable__BehaviorDescriptor;
 import jetbrains.mps.errors.BaseQuickFixProvider;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import java.util.concurrent.atomic.AtomicInteger;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -43,7 +42,7 @@ public class TypeVariableMatchUtil {
         if (!((boolean) Type__BehaviorDescriptor.isSupersetOf_id7PgshREdQKp.invoke(SLinkOperations.getTarget(decl, LINKS.bound$aZCB), typeArg, substitutions))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(typeArg, "The type " + typeArg + " is not a valid substitute for the bounded parameter " + decl, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5977092449931173580", null, errorTarget);
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(typeArg, "The type " + SNodeOperations.present(typeArg) + " is not a valid substitute for the bounded parameter " + decl, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5977092449931173580", null, errorTarget);
           }
         }
       }
@@ -51,24 +50,14 @@ public class TypeVariableMatchUtil {
   }
 
   @InferenceMethod
-  public static void calculateTypesForStaticMethod(final TypeCheckingContext typeCheckingContext, final SNode staticMethodCall) {
+  private static void calculateTypesForStaticMethodUponConcrete(final TypeCheckingContext typeCheckingContext, final SNode staticMethodCall, List<SNode> argTypes) {
     final SNode mdecl = SLinkOperations.getTarget(staticMethodCall, LINKS.baseMethodDeclaration$pyYw);
-    if (mdecl == null) {
-      return;
-    }
-
-    // extract typeof's of arguments outside the when_concrete block 
-    final List<SNode> argTypes = new ArrayList<SNode>();
-    for (SNode a : ListSequence.fromList(SLinkOperations.getChildren(staticMethodCall, LINKS.actualArgument$pzdx))) {
-      ListSequence.fromList(argTypes).addElement(typeCheckingContext.typeOf(a, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5977092449933510612", true));
-    }
-
     final Map<SNode, SNode> subs = MapSequence.fromMap(new HashMap<SNode, SNode>());
-    // check the inference context 
+    // check the inference context
     if (!((boolean) IMethodCall__BehaviorDescriptor.isInTypeInferenceContext_id4cxv$9$kw67.invoke(staticMethodCall))) {
       for (SNode tvd : ListSequence.fromList(BaseMethodDeclaration__BehaviorDescriptor.getInferrableTypeVars_id5W9RYt5baxk.invoke(mdecl))) {
-        // assume all unbound type vars outside an inference context are Object or its bound 
-        MapSequence.fromMap(subs).put(tvd, ((SLinkOperations.getTarget(tvd, LINKS.bound$aZCB) == null) ? _quotation_createNode_hh0s94_a0a1a0a9a2() : SNodeOperations.copyNode(SLinkOperations.getTarget(tvd, LINKS.bound$aZCB))));
+        // assume all unbound type vars outside an inference context are Object or its bound
+        MapSequence.fromMap(subs).put(tvd, ((SLinkOperations.getTarget(tvd, LINKS.bound$aZCB) == null) ? _quotation_createNode_hh0s94_a0a1a0a3a2() : SNodeOperations.copyNode(SLinkOperations.getTarget(tvd, LINKS.bound$aZCB))));
       }
     }
     if (ListSequence.fromList(SLinkOperations.getChildren(staticMethodCall, LINKS.typeArgument$jaIN)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(mdecl, LINKS.typeVariableDeclaration$Lipp)).isNotEmpty()) {
@@ -139,22 +128,43 @@ public class TypeVariableMatchUtil {
         if (SNodeOperations.isInstanceOf(_type, CONCEPTS.IGenericType$13)) {
           {
             final SNode A = argt_var;
-            typeCheckingContext.whenConcrete(A, new Runnable() {
-              public void run() {
+            typeCheckingContext.whenConcrete(A, () -> {
+              final SNode expanded = IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.cast(_type, CONCEPTS.IGenericType$13), subs);
+              if (InferenceHelper.isInferredFromContext(typeCheckingContext.getExpandedNode(A))) {
+                // Infer type directly
                 {
                   SNode _nodeToCheck_1029348928467 = staticMethodCall;
-                  EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5977092449933510825", 0, null);
+                  EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8014486391927722643", 0, null);
                   {
                     BaseQuickFixProvider intentionProvider = null;
-                    intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", false);
+                    intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "8014486391927777624", false);
                     intentionProvider.putArgument("desiredType", _type);
                     intentionProvider.putArgument("expression", actualArgument);
                     _info_12389875345.addIntentionProvider(intentionProvider);
                   }
-                  typeCheckingContext.createGreaterThanInequality((SNode) IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.cast(_type, CONCEPTS.IGenericType$13), subs), (SNode) typeCheckingContext.getExpandedNode(A), false, true, _info_12389875345);
+                  typeCheckingContext.createGreaterThanInequality((SNode) InferenceHelper.getTypeToInfer(expanded), (SNode) typeCheckingContext.getExpandedNode(A), false, true, _info_12389875345);
+                }
+              } else {
+                // Otherwise do regular type checking with concrete type
+                {
+                  final SNode concreteDeep = typeCheckingContext.getExpandedNode(A);
+                  typeCheckingContext.whenConcrete(concreteDeep, () -> {
+                    {
+                      SNode _nodeToCheck_1029348928467 = staticMethodCall;
+                      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5977092449933510825", 0, null);
+                      {
+                        BaseQuickFixProvider intentionProvider = null;
+                        intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "5977092449933510826", false);
+                        intentionProvider.putArgument("desiredType", _type);
+                        intentionProvider.putArgument("expression", actualArgument);
+                        _info_12389875345.addIntentionProvider(intentionProvider);
+                      }
+                      typeCheckingContext.createGreaterThanInequality((SNode) expanded, (SNode) typeCheckingContext.getExpandedNode(concreteDeep), false, true, _info_12389875345);
+                    }
+                  }, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8014486391927728375", false, false);
                 }
               }
-            }, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5977092449933510823", false, false);
+            }, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5977092449933510823", true, false);
           }
         } else {
           if (!(typeCheckingContext.isSingleTypeComputation())) {
@@ -163,7 +173,7 @@ public class TypeVariableMatchUtil {
               EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5977092449933510848", 0, null);
               {
                 BaseQuickFixProvider intentionProvider = null;
-                intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", false);
+                intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "5977092449933510849", false);
                 intentionProvider.putArgument("desiredType", _type);
                 intentionProvider.putArgument("expression", actualArgument);
                 _info_12389875345.addIntentionProvider(intentionProvider);
@@ -177,11 +187,44 @@ public class TypeVariableMatchUtil {
 
     TypeVariableMatchUtil.checkTypeParametersMatchingTypeArguments(typeCheckingContext, mdecl, staticMethodCall, subs);
   }
-  private static SNode _quotation_createNode_hh0s94_a0a1a0a9a2() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
+
+  @InferenceMethod
+  public static void calculateTypesForStaticMethod(final TypeCheckingContext typeCheckingContext, final SNode staticMethodCall) {
+    final SNode mdecl = SLinkOperations.getTarget(staticMethodCall, LINKS.baseMethodDeclaration$pyYw);
+    if (mdecl == null) {
+      return;
+    }
+
+    // extract typeof's of arguments outside the when_concrete block
+    final List<SNode> argTypes = new ArrayList<SNode>();
+    final AtomicInteger remaining = new AtomicInteger(ListSequence.fromList(SLinkOperations.getChildren(staticMethodCall, LINKS.actualArgument$pzdx)).count());
+    for (SNode a : ListSequence.fromList(SLinkOperations.getChildren(staticMethodCall, LINKS.actualArgument$pzdx))) {
+      // Not expected to have a type
+      if (SNodeOperations.getConcept(a).isAbstract()) {
+        continue;
+      }
+
+      ListSequence.fromList(argTypes).addElement(typeCheckingContext.typeOf(a, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5977092449933510612", true));
+      {
+        final SNode _concrete = typeCheckingContext.typeOf(a, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4893465700734744955", true);
+        typeCheckingContext.whenConcrete(_concrete, () -> {
+          if (remaining.decrementAndGet() == 0) {
+            calculateTypesForStaticMethodUponConcrete(typeCheckingContext, staticMethodCall, argTypes);
+          }
+        }, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4893465700734743903", true, false);
+      }
+    }
+
+    if (ListSequence.fromList(SLinkOperations.getChildren(staticMethodCall, LINKS.actualArgument$pzdx)).isEmpty()) {
+      calculateTypesForStaticMethodUponConcrete(typeCheckingContext, staticMethodCall, argTypes);
+    }
+
+  }
+  private static SNode _quotation_createNode_hh0s94_a0a1a0a3a2() {
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
-    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Object")));
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+    quotedNode_1 = nb.getResult();
+    nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~Object");
     return quotedNode_1;
   }
 

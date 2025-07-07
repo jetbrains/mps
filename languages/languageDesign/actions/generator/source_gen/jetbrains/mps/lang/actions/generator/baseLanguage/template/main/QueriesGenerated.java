@@ -28,9 +28,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.lang.smodel.behavior.ILinkAccess__BehaviorDescriptor;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.generator.template.TemplateVarContext;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.ReductionRuleCondition;
 import java.util.HashMap;
@@ -40,7 +38,6 @@ import jetbrains.mps.generator.template.ReductionRuleQueryContext;
 import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.impl.query.CreateRootCondition;
 import jetbrains.mps.generator.impl.query.SourceNodeQuery;
-import jetbrains.mps.generator.impl.query.QueryKeyImpl;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.impl.query.SourceNodesQuery;
 import java.util.Collection;
@@ -62,14 +59,14 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean createRootRule_Condition_0_0(final CreateRootRuleContext _context) {
-    // see MPS-24613 
+    // see MPS-24613
     return SModuleOperations.isAspect(_context.getOriginalInputModel(), "actions");
   }
   public static boolean rule_Condition_10_0(final BaseMappingRuleContext _context) {
     return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$BsHW))), CONCEPTS.SNodeCreatorAndInitializer$1K);
   }
   public static boolean rule_Condition_14_0(final BaseMappingRuleContext _context) {
-    // see MPS-24613 
+    // see MPS-24613
     return SModuleOperations.isAspect(((SModel) _context.getVariable("model")), "actions");
   }
   public static Object propertyMacro_GetValue_11_0(final PropertyMacroContext _context) {
@@ -124,7 +121,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (String) PasteWrapper__BehaviorDescriptor.getClassName_id5CTPYn2wJN2.invoke(_context.getNode());
   }
   public static Object referenceMacro_GetReferent_14_0(final ReferenceMacroContext _context) {
-    // TODO genContext.get output ActionAspectDescriptorClass for model model; 
+    // TODO genContext.get output ActionAspectDescriptorClass for model model;
     return SModelOperations.getModelName(((SModel) _context.getVariable("model"))) + ".ActionAspectDescriptorImpl";
   }
   public static Object referenceMacro_GetReferent_15_0(final ReferenceMacroContext _context) {
@@ -219,7 +216,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.prototype$ljQ4);
   }
   public static SNode sourceNodeQuery_5_0(final SourceSubstituteMacroNodeContext _context) {
-    // <expr-to-copy> . linklist-access . add-new-child-op 
+    // <expr-to-copy> . linklist-access . add-new-child-op
     return (SNode) SNodeOperation__BehaviorDescriptor.getLeftExpressionLeftExpression_idhEwJdGS.invoke(_context.getNode());
   }
   public static SNode sourceNodeQuery_5_1(final SourceSubstituteMacroNodeContext _context) {
@@ -229,7 +226,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.concept$79ZG);
   }
   public static SNode sourceNodeQuery_5_3(final SourceSubstituteMacroNodeContext _context) {
-    // <expr-to-copy> . link-access . set-new-child-op 
+    // <expr-to-copy> . link-access . set-new-child-op
     return (SNode) SNodeOperation__BehaviorDescriptor.getLeftExpressionLeftExpression_idhEwJdGS.invoke(_context.getNode());
   }
   public static SNode sourceNodeQuery_5_4(final SourceSubstituteMacroNodeContext _context) {
@@ -244,7 +241,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return parmConcept;
   }
   public static SNode sourceNodeQuery_6_0(final SourceSubstituteMacroNodeContext _context) {
-    // <expr-to-copy> . link-access . set-new-child-op 
+    // <expr-to-copy> . link-access . set-new-child-op
     return (SNode) SNodeOperation__BehaviorDescriptor.getLeftExpressionLeftExpression_idhEwJdGS.invoke(_context.getNode());
   }
   public static SNode sourceNodeQuery_6_1(final SourceSubstituteMacroNodeContext _context) {
@@ -254,7 +251,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.concept$KLIK);
   }
   public static SNode sourceNodeQuery_6_3(final SourceSubstituteMacroNodeContext _context) {
-    // <expr-to-copy> . link-access . set-new-child-op 
+    // <expr-to-copy> . link-access . set-new-child-op
     return (SNode) SNodeOperation__BehaviorDescriptor.getLeftExpressionLeftExpression_idhEwJdGS.invoke(_context.getNode());
   }
   public static SNode sourceNodeQuery_6_4(final SourceSubstituteMacroNodeContext _context) {
@@ -299,15 +296,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return ((Iterable<SNode>) _context.getVariable("var:nodeFactories"));
   }
   public static Iterable<SNode> sourceNodesQuery_11_1(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(SLinkOperations.collectMany(SModelOperations.roots(_context.getInputModel(), CONCEPTS.NodeFactories$I1), LINKS.nodeFactory$8pyJ)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.applicableConcept$8F1V);
-      }
-    }).distinct().sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }, true);
+    return Sequence.fromIterable(SLinkOperations.collectMany(SModelOperations.roots(_context.getInputModel(), CONCEPTS.NodeFactories$I1), LINKS.nodeFactory$8pyJ)).select((it) -> SLinkOperations.getTarget(it, LINKS.applicableConcept$8F1V)).distinct().sort((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL), true);
   }
   public static Iterable<SNode> sourceNodesQuery_11_2(final SourceSubstituteMacroNodesContext _context) {
     return SModelOperations.nodes(_context.getInputModel(), CONCEPTS.CopyPreProcessor$Gv);
@@ -325,15 +314,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.setupFunction$K0T6), LINKS.body$e68K), LINKS.statement$53DE);
   }
   public static Object varMacro_Value_11_0(final TemplateVarContext _context) {
-    return Sequence.fromIterable(SLinkOperations.collectMany(SModelOperations.roots(_context.getInputModel(), CONCEPTS.NodeFactories$I1), LINKS.nodeFactory$8pyJ)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.applicableConcept$8F1V) == _context.getNode();
-      }
-    }).sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return it.getNodeId().toString();
-      }
-    }, true);
+    return Sequence.fromIterable(SLinkOperations.collectMany(SModelOperations.roots(_context.getInputModel(), CONCEPTS.NodeFactories$I1), LINKS.nodeFactory$8pyJ)).where((it) -> SLinkOperations.getTarget(it, LINKS.applicableConcept$8F1V) == _context.getNode()).sort((it) -> it.getNodeId().toString(), true);
   }
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {
@@ -344,11 +325,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public ReductionRuleCondition getReductionRuleCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(rrcMethods.containsKey(id))) {
-      return super.getReductionRuleCondition(identity);
-    }
-    return rrcMethods.get(id);
+    ReductionRuleCondition query = identity.forTemplateNode(rrcMethods);
+    return (query != null ? query : super.getReductionRuleCondition(identity));
   }
   private static class RRC implements ReductionRuleCondition {
     private final int methodKey;
@@ -375,11 +353,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public CreateRootCondition getCreateRootRuleCondition(@NotNull QueryKey identity) {
-    String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(crcMethods.containsKey(id))) {
-      return super.getCreateRootRuleCondition(identity);
-    }
-    return crcMethods.get(id);
+    CreateRootCondition query = identity.forTemplateNode(crcMethods);
+    return (query != null ? query : super.getCreateRootRuleCondition(identity));
   }
   private static class CRC implements CreateRootCondition {
     private final int methodKey;
@@ -414,13 +389,13 @@ public class QueriesGenerated extends QueryProviderBase {
     snqMethods.put("81088748287319619", new SNQ(i++));
     snqMethods.put("81088748287319627", new SNQ(i++));
     snqMethods.put("81088748287322280", new SNQ(i++));
-    snqMethods.put("81088748287322290", new SNQ(i++));
+    snqMethods.put("5568608715974558880", new SNQ(i++));
     snqMethods.put("81088748287322301", new SNQ(i++));
     snqMethods.put("81088748287343973", new SNQ(i++));
     snqMethods.put("81088748287343983", new SNQ(i++));
     snqMethods.put("81088748287343991", new SNQ(i++));
     snqMethods.put("81088748287344035", new SNQ(i++));
-    snqMethods.put("81088748287344045", new SNQ(i++));
+    snqMethods.put("5568608715974563761", new SNQ(i++));
     snqMethods.put("81088748287344056", new SNQ(i++));
     snqMethods.put("81088748287373644", new SNQ(i++));
     snqMethods.put("81088748287373652", new SNQ(i++));
@@ -435,11 +410,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public SourceNodeQuery getSourceNodeQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snqMethods.containsKey(id))) {
-      return super.getSourceNodeQuery(identity);
-    }
-    return snqMethods.get(id);
+    SourceNodeQuery query = identity.forFunctionNode(snqMethods);
+    return (query != null ? query : super.getSourceNodeQuery(identity));
   }
   private static class SNQ implements SourceNodeQuery {
     private final int methodKey;
@@ -532,11 +504,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public SourceNodesQuery getSourceNodesQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snsqMethods.containsKey(id))) {
-      return super.getSourceNodesQuery(identity);
-    }
-    return snsqMethods.get(id);
+    SourceNodesQuery query = identity.forFunctionNode(snsqMethods);
+    return (query != null ? query : super.getSourceNodesQuery(identity));
   }
   private static class SNsQ implements SourceNodesQuery {
     private final int methodKey;
@@ -583,11 +552,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public PropertyValueQuery getPropertyValueQuery(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(pvqMethods.containsKey(id))) {
-      return super.getPropertyValueQuery(identity);
-    }
-    return pvqMethods.get(id);
+    PropertyValueQuery query = identity.forTemplateNode(pvqMethods);
+    return (query != null ? query : super.getPropertyValueQuery(identity));
   }
   private static class PVQ extends PropertyValueQuery.Base {
     private final int methodKey;
@@ -647,11 +613,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public IfMacroCondition getIfMacroCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(imcMethods.containsKey(id))) {
-      return super.getIfMacroCondition(identity);
-    }
-    return imcMethods.get(id);
+    IfMacroCondition query = identity.forTemplateNode(imcMethods);
+    return (query != null ? query : super.getIfMacroCondition(identity));
   }
   private static class IfMC implements IfMacroCondition {
     private final int methodKey;
@@ -698,8 +661,8 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
-    rtqMethods.put("3845357643093404661", new RTQ(0, "NodeFacotryImpl"));
-    rtqMethods.put("3845357643093404699", new RTQ(1, "NodeFacotryImpl"));
+    rtqMethods.put("3845357643093404661", new RTQ(0, "container.NodeFacotryImpl"));
+    rtqMethods.put("3845357643093404699", new RTQ(1, "container.NodeFacotryImpl"));
     rtqMethods.put("6501464918897326700", new RTQ(2, "CopyPreProcessor"));
     rtqMethods.put("6884701713556955694", new RTQ(3, "PastePostProcessor"));
     rtqMethods.put("6501464918897418014", new RTQ(4, "PasteWrapper"));
@@ -712,11 +675,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public ReferenceTargetQuery getReferenceTargetQuery(@NotNull QueryKey queryKey) {
-    final String id = queryKey.getTemplateNode().getNodeId().toString();
-    if (!(rtqMethods.containsKey(id))) {
-      return super.getReferenceTargetQuery(queryKey);
-    }
-    return rtqMethods.get(id);
+    ReferenceTargetQuery query = queryKey.forTemplateNode(rtqMethods);
+    return (query != null ? query : super.getReferenceTargetQuery(queryKey));
   }
   private static class RTQ extends ReferenceTargetQuery.Base {
     private final int methodKey;
@@ -759,11 +719,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public VariableValueQuery getVariableValueQuery(@NotNull QueryKey queryKey) {
-    final String id = queryKey.getTemplateNode().getNodeId().toString();
-    if (!(vvqMethods.containsKey(id))) {
-      return super.getVariableValueQuery(queryKey);
-    }
-    return vvqMethods.get(id);
+    VariableValueQuery query = queryKey.forTemplateNode(vvqMethods);
+    return (query != null ? query : super.getVariableValueQuery(queryKey));
   }
   private static class VVQ implements VariableValueQuery {
     private final int methodKey;

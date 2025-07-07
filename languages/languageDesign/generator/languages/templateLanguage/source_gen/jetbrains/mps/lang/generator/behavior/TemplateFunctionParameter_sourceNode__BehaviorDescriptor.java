@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -23,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class TemplateFunctionParameter_sourceNode__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b471fcL, "jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_sourceNode");
 
-  public static final SMethod<Boolean> needConceptFunction_idhZKliUO = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needConceptFunction").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hZKliUO").build();
+  public static final SMethod<Boolean> needConceptFunction_idhZKliUO = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needConceptFunction").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1236687728308L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(needConceptFunction_idhZKliUO);
 
@@ -31,7 +30,7 @@ public final class TemplateFunctionParameter_sourceNode__BehaviorDescriptor exte
   }
 
   /*package*/ static boolean needConceptFunction_idhZKliUO(@NotNull SNode __thisNode__) {
-    // we could use this cf parameter in ITemplateCall argument expressions 
+    // we could use this cf parameter in ITemplateCall argument expressions
     return (SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ITemplateCall$ab, false, false) == null);
   }
 

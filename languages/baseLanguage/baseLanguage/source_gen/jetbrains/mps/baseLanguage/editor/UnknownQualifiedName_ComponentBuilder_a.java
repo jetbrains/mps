@@ -15,27 +15,22 @@ import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.MPSFonts;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.nodeEditor.cellMenu.CompositeSubstituteInfo;
 import jetbrains.mps.lang.editor.cellProviders.PropertyCellContext;
 import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopes;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -75,16 +70,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setCellId("UQN_property_tokens");
       Style style = new StyleImpl();
       style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.red));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.red));
       editorCell.getStyle().putAll(style);
       editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new UnknownNameRef_generic_cellMenu_rqmr32_a0a(), new SChildSubstituteInfoPartEx(editorCell)}));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
-      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-        }
-      });
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
+      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
       if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
         EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
         return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);
@@ -98,20 +89,17 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public UnknownNameRef_generic_cellMenu_rqmr32_a0a() {
     }
 
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
 
       Scope moduleScope = ClassifierScopes.getVisibleClassifiersScope(node, false);
-      return Sequence.fromIterable(moduleScope.getAvailableElements("")).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.cast(it, CONCEPTS.Classifier$Ix);
-        }
-      }).toListSequence();
+      return Sequence.fromIterable(moduleScope.getAvailableElements("")).select((it) -> SNodeOperations.cast(it, CONCEPTS.Classifier$Ix)).toList();
+
 
     }
-    protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      this.handleAction_impl((SNode) parameterObject, node, model, operationContext, editorContext);
+    protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      this.handleAction_impl((SNode) parameterObject, node, model, editorContext);
     }
-    public void handleAction_impl(SNode parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    private void handleAction_impl(SNode parameterObject, SNode node, SModel model, EditorContext editorContext) {
       SNode chosen = parameterObject;
       String className = Classifier__BehaviorDescriptor.getNestedName_id7q4lzBFjvIX.invoke(chosen);
 
@@ -125,17 +113,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
         final String memberCandidateName = (nextDot > 0 ? tokens.substring(i + 1, nextDot) : remaining);
 
-        if (Sequence.fromIterable(Members.visibleStaticFields(chosen, node)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return memberCandidateName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-          }
-        }).isNotEmpty() || Sequence.fromIterable(Members.visibleEnumConstants(chosen)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return memberCandidateName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-          }
-        }).isNotEmpty()) {
+        if (Sequence.fromIterable(Members.visibleStaticFields(chosen, node)).where((it) -> memberCandidateName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL))).isNotEmpty() || Sequence.fromIterable(Members.visibleEnumConstants(chosen)).where((it) -> memberCandidateName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL))).isNotEmpty()) {
 
-          // found 
+          // found
           SPropertyOperations.assign(node, PROPS.tokens$J1uk, className + "." + remaining);
           return;
         }
@@ -146,7 +126,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       SPropertyOperations.assign(node, PROPS.tokens$J1uk, className);
 
     }
-    public boolean isReferentPresentation() {
+    protected boolean isReferentPresentation() {
       return false;
     }
 

@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SModel;
 import java.util.List;
@@ -32,10 +31,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class CustomMemberDescriptor__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a044805d9cL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.CustomMemberDescriptor");
 
-  public static final SMethod<SNode> create_id7ay_HjIOVVe = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("create").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7ay_HjIOVVe").build(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
-  public static final SMethod<Iterable<SNode>> find_id2gzehMfi1$l = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("find").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2gzehMfi1$l").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIMiw").build();
-  public static final SMethod<String> getMatchingText_id2nUiI4k7qhh = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMatchingText").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2nUiI4k7qhh").build();
+  public static final SMethod<SNode> create_id7ay_HjIOVVe = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("create").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8260330507834998478L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
+  public static final SMethod<Iterable<SNode>> find_id2gzehMfi1$l = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("find").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2603987804376013077L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  public static final SMethod<String> getMatchingText_id2nUiI4k7qhh = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMatchingText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2736582054146581585L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(create_id7ay_HjIOVVe, find_id2gzehMfi1$l, getPresentation_idhEwIMiw, getMatchingText_id2nUiI4k7qhh);
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="7japjwigutnj2ou0qfc3nz0y4kq9ljq">
+<product version="3" modelHash="-9p20ovmupnr1gn6cqwnmi6z4uxem4pe">
   <files names="MigrationDescriptor.java:RemoveMigrationScriptDeprecatedProperties.java" />
 </product>
 

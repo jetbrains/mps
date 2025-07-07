@@ -76,7 +76,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "insert");
     editorCell.setCellId("Constant_bs8xw7_a0");
     Style style = new StyleImpl();
-    new InsertPositionStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new InsertPositionStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -84,7 +84,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.core.editor.alias");
     Style style = new StyleImpl();
-    new InstructionStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new InstructionStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_BaseEmitJumpStatement_cellMenu_bs8xw7_a0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;

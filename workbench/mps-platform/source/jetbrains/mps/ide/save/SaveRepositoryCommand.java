@@ -30,6 +30,8 @@ import jetbrains.mps.ide.ThreadUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SRepository;
 
+import java.util.concurrent.CompletionStage;
+
 /**
  * Keep knowledge about required lock level for a repository save in a single place.
  * At the moment, there are uses both of write action and command to perform save, and I'm in doubt which one is correct.
@@ -62,5 +64,10 @@ public class SaveRepositoryCommand implements Runnable {
 //      I am not sure whether I can change to this with non-modal ModalityState:
 //      application.invokeLater(() -> myRepository.getModelAccess().runWriteAction(this), ModalityState.NON_MODAL, o -> application.isDisposed());
     }
+  }
+
+  public void executeAndWait() {
+    Application application = ApplicationManager.getApplication();
+    application.invokeAndWait(() -> myRepository.getModelAccess().runWriteAction(myRepository::saveAll));
   }
 }

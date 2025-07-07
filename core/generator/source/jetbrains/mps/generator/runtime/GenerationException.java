@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -65,7 +65,7 @@ public abstract class GenerationException extends Exception {
    * @param location identifies origin of the exception in template model
    * @since 3.3
    */
-  public void setTemplateModelLocation(@Nullable SNodeReference location) {
+  public final void setTemplateModelLocation(@Nullable SNodeReference location) {
     myLocation = location;
   }
 

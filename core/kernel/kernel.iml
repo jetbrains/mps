@@ -17,21 +17,21 @@
     <orderEntry type="module" module-name="tuples-runtime" exported="" />
     <orderEntry type="module" module-name="closures-runtime" exported="" />
     <orderEntry type="module" module-name="collections-runtime" exported="" />
-    <orderEntry type="library" exported="" name="JDOM" level="project" />
-    <orderEntry type="library" name="Trove" level="project" />
-    <orderEntry type="module" module-name="testbench" scope="TEST" />
-    <orderEntry type="library" scope="TEST" name="JMock" level="project" />
-    <orderEntry type="library" scope="TEST" name="JUnit4" level="project" />
     <orderEntry type="module" module-name="project" exported="" />
     <orderEntry type="module" module-name="components" exported="" />
     <orderEntry type="module" module-name="behavior-api" exported="" />
     <orderEntry type="module" module-name="behavior-runtime" exported="" />
     <orderEntry type="module" module-name="mps-messaging" exported="" />
-    <orderEntry type="module" module-name="startup-util" />
-    <orderEntry type="module" module-name="environment" scope="TEST" />
+    <orderEntry type="library" name="org.jdom" level="project" />
+    <orderEntry type="library" name="gnu.trove" level="project" />
     <orderEntry type="module" module-name="baseLanguage-runtime" exported="" />
     <orderEntry type="module" module-name="constraints-runtime" exported="" />
     <orderEntry type="module" module-name="context" exported="" />
     <orderEntry type="module" module-name="messages-for-legacy-constraints" />
+    <orderEntry type="module" module-name="vfs" exported="" />
+    <orderEntry type="module" module-name="testbench" scope="TEST" />
+    <orderEntry type="library" scope="TEST" name="JMock" level="project" />
+    <orderEntry type="library" scope="TEST" name="JUnit4" level="project" />
+    <orderEntry type="module" module-name="environment" scope="TEST" />
   </component>
 </module>

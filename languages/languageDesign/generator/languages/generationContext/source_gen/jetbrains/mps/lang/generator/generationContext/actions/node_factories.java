@@ -14,7 +14,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class node_factories {
   public static class NodeFactory_1216861604197 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.GenerationContextOp_GetOutputByLabelAndInput$Kl)) {
         SLinkOperations.setTarget(newNode, LINKS.label$V_zA, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.GenerationContextOp_GetOutputByLabelAndInput$Kl), LINKS.label$VAL6));
       }
@@ -24,7 +24,7 @@ public class node_factories {
     }
   }
   public static class NodeFactory_1216861604215 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.GenerationContextOp_GetOutputByLabel$HU)) {
         SLinkOperations.setTarget(newNode, LINKS.label$VAL6, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.GenerationContextOp_GetOutputByLabel$HU), LINKS.label$V_zA));
       }
@@ -34,7 +34,7 @@ public class node_factories {
     }
   }
   public static class NodeFactory_1221157578225 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.GenerationContextOp_GetOutputByLabel$HU)) {
         SLinkOperations.setTarget(newNode, LINKS.label$hDc7, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.GenerationContextOp_GetOutputByLabel$HU), LINKS.label$V_zA));
       }
@@ -44,28 +44,28 @@ public class node_factories {
     }
   }
   public static class NodeFactory_1217895102248 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.GenerationContextOp_UserObjectAccessBase$EM)) {
         SLinkOperations.setTarget(newNode, LINKS.userKey$ElHR, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.GenerationContextOp_UserObjectAccessBase$EM), LINKS.userKey$ElHR));
       }
     }
   }
   public static class NodeFactory_1217895169604 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.GenerationContextOp_UserObjectAccessBase$EM)) {
         SLinkOperations.setTarget(newNode, LINKS.userKey$ElHR, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.GenerationContextOp_UserObjectAccessBase$EM), LINKS.userKey$ElHR));
       }
     }
   }
   public static class NodeFactory_1217895187934 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.GenerationContextOp_UserObjectAccessBase$EM)) {
         SLinkOperations.setTarget(newNode, LINKS.userKey$ElHR, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.GenerationContextOp_UserObjectAccessBase$EM), LINKS.userKey$ElHR));
       }
     }
   }
   public static class NodeFactory_6601781453102013447 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode base = sampleNode;
         if (SNodeOperations.isInstanceOf(base, CONCEPTS.GenerationContextOp_ShowMessageBase$2u)) {

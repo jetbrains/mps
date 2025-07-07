@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,9 @@
  */
 package jetbrains.mps.generator.impl;
 
+import jetbrains.mps.generator.runtime.PatternMatch;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
-import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -36,7 +36,7 @@ public class DefaultTemplateContext implements TemplateContext {
   private final String myInputName;
   private final int myExecutionPathId;
 
-  private final GeneratedMatchingPattern myPattern;
+  private final PatternMatch myPattern;
   private final Map<String, Object> myVars;
 
   // FWIW, there's no uses of this cons in generated code since 2020.1 (2019.3 instantiates it in CreateRootRule)
@@ -64,7 +64,7 @@ public class DefaultTemplateContext implements TemplateContext {
     this(parent, null, parent.getInput(), null, variables);
   }
 
-  private DefaultTemplateContext(DefaultTemplateContext parent, String inputName, SNode inputNode, GeneratedMatchingPattern pattern, Map<String,Object> vars) {
+  private DefaultTemplateContext(DefaultTemplateContext parent, String inputName, SNode inputNode, PatternMatch pattern, Map<String,Object> vars) {
     myParent = parent;
     myEnv = parent.myEnv;
     myInputName = inputName;
@@ -118,7 +118,7 @@ public class DefaultTemplateContext implements TemplateContext {
   public Object getPatternVariable(String id) {
     for (DefaultTemplateContext current = this; current != null; current = current.myParent) {
       if (current.myPattern != null) {
-        return current.myPattern.getFieldValue(id);
+        return current.myPattern.getValue(id);
       }
     }
     return null;
@@ -232,7 +232,17 @@ public class DefaultTemplateContext implements TemplateContext {
   }
 
   @Override
-  public TemplateContext subContext(GeneratedMatchingPattern pattern) {
+  public TemplateContext withCallSiteNode(SNode callSiteNode) {
+    return withVariable("::callsite", callSiteNode);
+  }
+
+  @Override
+  public SNode getCallSiteNode() {
+    return (SNode) getVariable("::callsite");
+  }
+
+  @Override
+  public TemplateContext subContext(PatternMatch pattern) {
     return new DefaultTemplateContext(this, null, getInput(), pattern, null);
   }
 

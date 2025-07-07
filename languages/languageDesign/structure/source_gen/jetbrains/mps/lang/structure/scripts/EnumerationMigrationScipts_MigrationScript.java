@@ -6,7 +6,6 @@ import jetbrains.mps.lang.script.runtime.BaseMigrationScript;
 import jetbrains.mps.lang.script.runtime.AbstractMigrationRefactoring;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -32,11 +31,11 @@ public final class EnumerationMigrationScipts_MigrationScript extends BaseMigrat
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$)) != null);
+        return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$).get(node) != null);
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        // no-op 
+        // no-op
       }
       @Override
       public boolean isShowAsIntention() {
@@ -58,11 +57,11 @@ public final class EnumerationMigrationScipts_MigrationScript extends BaseMigrat
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumPropertyMigrationInfo$O3)) != null);
+        return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumPropertyMigrationInfo$O3).get(node) != null);
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        // no-op 
+        // no-op
       }
       @Override
       public boolean isShowAsIntention() {

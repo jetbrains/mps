@@ -30,29 +30,27 @@ public class typeof_ArithmSymbol_InferenceRule extends AbstractInferenceRule_Run
     }
     {
       final SNode t = typeCheckingContext.typeOf(symbol, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1418611629042132166", true);
-      typeCheckingContext.whenConcrete(t, new Runnable() {
-        public void run() {
-          if (TypecheckingFacade.getFromContext().isSubtype(typeCheckingContext.getExpandedNode(t), MathTypeUtil.qBigComplex)) {
-            if (!(typeCheckingContext.isSingleTypeComputation())) {
-              {
-                SNode _nodeToCheck_1029348928467 = symbol;
-                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1418611629042133318", 0, null);
-                typeCheckingContext.createLessThanInequality((SNode) SNodeOperations.copyNode(MathTypeUtil.qInt), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1418611629042133323", true), true, true, _info_12389875345);
-              }
-            }
-          } else if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(t), CONCEPTS.MatrixType$cY) || SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(t), CONCEPTS.VectorType$cv)) {
-          } else {
-            String s = "";
-            if (SNodeOperations.isInstanceOf(symbol, CONCEPTS.BigProdExpression$Ir)) {
-              s = "Multiplicand's ";
-            }
-            if (SNodeOperations.isInstanceOf(symbol, CONCEPTS.BigSumExpression$8o)) {
-              s = "Summand's ";
-            }
+      typeCheckingContext.whenConcrete(t, () -> {
+        if (TypecheckingFacade.getFromContext().isSubtype(typeCheckingContext.getExpandedNode(t), MathTypeUtil.qBigComplex)) {
+          if (!(typeCheckingContext.isSingleTypeComputation())) {
             {
-              final MessageTarget errorTarget = new NodeMessageTarget();
-              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(symbol, s + "type should be subtype of numeral type or matrix type", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1418611629042133341", null, errorTarget);
+              SNode _nodeToCheck_1029348928467 = symbol;
+              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1418611629042133318", 0, null);
+              typeCheckingContext.createLessThanInequality((SNode) SNodeOperations.copyNode(MathTypeUtil.qInt), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1418611629042133323", true), true, true, _info_12389875345);
             }
+          }
+        } else if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(t), CONCEPTS.MatrixType$cY) || SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(t), CONCEPTS.VectorType$cv)) {
+        } else {
+          String s = "";
+          if (SNodeOperations.isInstanceOf(symbol, CONCEPTS.BigProdExpression$Ir)) {
+            s = "Multiplicand's ";
+          }
+          if (SNodeOperations.isInstanceOf(symbol, CONCEPTS.BigSumExpression$8o)) {
+            s = "Summand's ";
+          }
+          {
+            final MessageTarget errorTarget = new NodeMessageTarget();
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(symbol, s + "type should be subtype of numeral type or matrix type", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1418611629042133341", null, errorTarget);
           }
         }
       }, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1418611629042132163", false, false);

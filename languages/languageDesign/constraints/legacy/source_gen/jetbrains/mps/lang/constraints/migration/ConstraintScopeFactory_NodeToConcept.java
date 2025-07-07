@@ -14,7 +14,6 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -35,7 +34,7 @@ public class ConstraintScopeFactory_NodeToConcept extends MigrationScriptBase {
     return null;
   }
   public void doExecute(final SModule m) {
-    // Migrated in 2017.1 
+    // Migrated in 2017.1
   }
   @Override
   public Iterable<Problem> check(SModule m) {
@@ -43,26 +42,16 @@ public class ConstraintScopeFactory_NodeToConcept extends MigrationScriptBase {
     {
       SearchScope scope_djohgv_b0f = CommandUtil.createScope(m);
       final SearchScope scope_djohgv_b0f_0 = new EditableFilteringScope(scope_djohgv_b0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_djohgv_b0f_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptConstraints$Yt, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode node) {
-          ConstraintsMigrationUtil.findProblems(SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.defaultScope$PVUG), LINKS.searchScopeFactory$V1G0), problems);
+      QueryExecutionContext context = () -> scope_djohgv_b0f_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptConstraints$Yt, false)).visitAll((node) -> {
+        ConstraintsMigrationUtil.findProblems(SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.defaultScope$PVUG), LINKS.searchScopeFactory$V1G0), problems);
 
-          ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.referent$k0ZK)).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode referent) {
-              ConstraintsMigrationUtil.findProblems(SLinkOperations.getTarget(referent, LINKS.searchScopeFactory$DUm1), problems);
-            }
-          });
-        }
+        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.referent$k0ZK)).visitAll((referent) -> ConstraintsMigrationUtil.findProblems(SLinkOperations.getTarget(referent, LINKS.searchScopeFactory$DUm1), problems));
       });
     }
     return problems;
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, "jetbrains.mps.lang.constraints"), 1);
   }
 

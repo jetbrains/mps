@@ -4,9 +4,10 @@ package jetbrains.mps.lang.editor.label.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import java.awt.Component;
@@ -14,11 +15,11 @@ import java.awt.event.MouseEvent;
 
 @MPSLaunch
 public class LabelWithBrackets_Click_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(LabelWithBrackets_Click_Test.class, "${mps_home}", "r:40a702b4-7737-42f4-8412-0355208396f3(jetbrains.mps.lang.editor.label.tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(LabelWithBrackets_Click_Test.class).projectPath(null).modelRef("r:40a702b4-7737-42f4-8412-0355208396f3(jetbrains.mps.lang.editor.label.tests)").reopenProject(false).build());
 
   public LabelWithBrackets_Click_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -35,7 +36,7 @@ public class LabelWithBrackets_Click_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("1070136247797346641", "1070136247797346643");
-      // TODO: modify press mouse statement in order to support expressions as x,y prameters 
+      // TODO: modify press mouse statement in order to support expressions as x,y prameters
       {
         int x_l63k4n_b0 = 100;
         int y_l63k4n_b0 = 10;

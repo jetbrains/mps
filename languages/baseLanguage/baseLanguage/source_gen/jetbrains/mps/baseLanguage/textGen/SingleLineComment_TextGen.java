@@ -5,18 +5,14 @@ package jetbrains.mps.baseLanguage.textGen;
 import jetbrains.mps.text.rt.TextGenDescriptorBase;
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.model.SNode;
-import java.util.ArrayList;
 import jetbrains.mps.lang.traceable.behavior.TraceableConcept__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
-import org.jetbrains.mps.openapi.language.SProperty;
 
 public class SingleLineComment_TextGen extends TextGenDescriptorBase {
   @Override
@@ -26,43 +22,23 @@ public class SingleLineComment_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
     tgs.indent();
     tgs.append("// ");
-    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentPart$Ib1g)).isEmpty() || (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentPart$Ib1g)).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentPart$Ib1g)).first(), CONCEPTS.TextCommentPart$LX) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentPart$Ib1g)).first(), CONCEPTS.TextCommentPart$LX), PROPS.text$ag2i)))) {
-
-      for (SNode line : (((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.line$9eiT) != null) ? ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.line$9eiT)) : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.text$XpYF)))) {
-        Comments.commentLine(line, ctx);
-        if ((SNodeOperations.getNextSibling(line) != null)) {
-          tgs.newLine();
-          tgs.indent();
-          tgs.append("// ");
-        }
-      }
-
+    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.line$9eiT) != null) && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.line$9eiT), LINKS.elements$_j45)).isNotEmpty()) {
+      SNode line = SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.line$9eiT);
+      Comments.commentLine(line, ctx);
     } else {
-      for (SNode commentPart : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentPart$Ib1g)) {
-        tgs.appendNode(commentPart);
-        tgs.append(" ");
-      }
+      tgs.append(" ");
     }
     if (tgs.needPositions()) {
       tgs.fillPositionInfo(TraceableConcept__BehaviorDescriptor.getTraceableProperty_id4pl5GY7LKmH.invoke(SNodeOperations.cast(ctx.getPrimaryInput(), CONCEPTS.TraceableConcept$L)));
     }
   }
-  private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
-  }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink line$9eiT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x73f69d82391da738L, "line");
-    /*package*/ static final SContainmentLink text$XpYF = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x12bc996bc5882f24L, "text");
-    /*package*/ static final SContainmentLink commentPart$Ib1g = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart");
+    /*package*/ static final SContainmentLink elements$_j45 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TextCommentPart$LX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart");
     /*package*/ static final SInterfaceConcept TraceableConcept$L = MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a3L, "jetbrains.mps.lang.traceable.structure.TraceableConcept");
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty text$ag2i = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
   }
 }

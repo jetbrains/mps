@@ -13,12 +13,12 @@ import jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.samples.notesOrganizer.editor.EditorAspectDescriptorImpl;
-import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
-import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
-import jetbrains.mps.samples.notesOrganizer.structure.ConceptPresentationAspectImpl;
 import jetbrains.mps.text.rt.TextGenAspectDescriptor;
 import jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor;
 import jetbrains.mps.samples.notesOrganizer.typesystem.TypesystemDescriptor;
+import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
+import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
+import jetbrains.mps.samples.notesOrganizer.structure.ConceptPresentationAspectImpl;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.language.LanguageExtensions;
 
@@ -49,9 +49,6 @@ public class Language extends LanguageRuntime {
 
   @Override
   protected <T extends ILanguageAspect> T createAspect(Class<T> aspectClass) {
-
-
-    // AP: legacy part, must be migrated from switch: please use lang.descriptor mapping label 
     if (aspectClass == ActionAspectDescriptor.class) {
       return aspectClass.cast(new ActionAspectDescriptorImpl());
     }
@@ -64,17 +61,17 @@ public class Language extends LanguageRuntime {
     if (aspectClass == EditorAspectDescriptor.class) {
       return aspectClass.cast(new EditorAspectDescriptorImpl());
     }
-    if (aspectClass == StructureAspectDescriptor.class) {
-      return aspectClass.cast(new jetbrains.mps.samples.notesOrganizer.structure.StructureAspectDescriptor());
-    }
-    if (aspectClass == ConceptPresentationAspect.class) {
-      return aspectClass.cast(new ConceptPresentationAspectImpl());
-    }
     if (aspectClass == TextGenAspectDescriptor.class) {
       return aspectClass.cast(new jetbrains.mps.samples.notesOrganizer.textGen.TextGenAspectDescriptor());
     }
     if (aspectClass == IHelginsDescriptor.class) {
       return aspectClass.cast(new TypesystemDescriptor());
+    }
+    if (aspectClass == StructureAspectDescriptor.class) {
+      return aspectClass.cast(new jetbrains.mps.samples.notesOrganizer.structure.StructureAspectDescriptor());
+    }
+    if (aspectClass == ConceptPresentationAspect.class) {
+      return aspectClass.cast(new ConceptPresentationAspectImpl());
     }
     return null;
   }

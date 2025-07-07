@@ -9,11 +9,29 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
+  private ConceptPresentation props_BulletLine;
+  private ConceptPresentation props_BulletPoint;
+  private ConceptPresentation props_EmptyParagraphLetter;
+  private ConceptPresentation props_Header;
+  private ConceptPresentation props_HtmlTag;
+  private ConceptPresentation props_IHoldComment;
+  private ConceptPresentation props_IHoldDocumentation;
   private ConceptPresentation props_IHoldLines;
+  private ConceptPresentation props_IHoldParagraphs;
+  private ConceptPresentation props_IParagraph;
+  private ConceptPresentation props_IndentedPoint;
+  private ConceptPresentation props_Letter;
   private ConceptPresentation props_Line;
   private ConceptPresentation props_NodeWrapperElement;
+  private ConceptPresentation props_NodeWrapperTextualElement;
+  private ConceptPresentation props_NumberedLine;
+  private ConceptPresentation props_NumberedPoint;
+  private ConceptPresentation props_Paragraph;
   private ConceptPresentation props_Text;
   private ConceptPresentation props_TextElement;
+  private ConceptPresentation props_TextNodeReference;
+  private ConceptPresentation props_TextualElement;
+  private ConceptPresentation props_UrlTextualElement;
   private ConceptPresentation props_Word;
 
   @Override
@@ -21,12 +39,85 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
+      case LanguageConceptSwitch.BulletLine:
+        if (props_BulletLine == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("bullet line");
+          props_BulletLine = cpb.create();
+        }
+        return props_BulletLine;
+      case LanguageConceptSwitch.BulletPoint:
+        if (props_BulletPoint == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("bullet point");
+          props_BulletPoint = cpb.create();
+        }
+        return props_BulletPoint;
+      case LanguageConceptSwitch.EmptyParagraphLetter:
+        if (props_EmptyParagraphLetter == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("EmptyParagraphLetter");
+          props_EmptyParagraphLetter = cpb.create();
+        }
+        return props_EmptyParagraphLetter;
+      case LanguageConceptSwitch.Header:
+        if (props_Header == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("Header");
+          props_Header = cpb.create();
+        }
+        return props_Header;
+      case LanguageConceptSwitch.HtmlTag:
+        if (props_HtmlTag == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("html tag");
+          cpb.rawPresentation("tag");
+          props_HtmlTag = cpb.create();
+        }
+        return props_HtmlTag;
+      case LanguageConceptSwitch.IHoldComment:
+        if (props_IHoldComment == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_IHoldComment = cpb.create();
+        }
+        return props_IHoldComment;
+      case LanguageConceptSwitch.IHoldDocumentation:
+        if (props_IHoldDocumentation == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_IHoldDocumentation = cpb.create();
+        }
+        return props_IHoldDocumentation;
       case LanguageConceptSwitch.IHoldLines:
         if (props_IHoldLines == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           props_IHoldLines = cpb.create();
         }
         return props_IHoldLines;
+      case LanguageConceptSwitch.IHoldParagraphs:
+        if (props_IHoldParagraphs == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_IHoldParagraphs = cpb.create();
+        }
+        return props_IHoldParagraphs;
+      case LanguageConceptSwitch.IParagraph:
+        if (props_IParagraph == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_IParagraph = cpb.create();
+        }
+        return props_IParagraph;
+      case LanguageConceptSwitch.IndentedPoint:
+        if (props_IndentedPoint == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_IndentedPoint = cpb.create();
+        }
+        return props_IndentedPoint;
+      case LanguageConceptSwitch.Letter:
+        if (props_Letter == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("letter");
+          props_Letter = cpb.create();
+        }
+        return props_Letter;
       case LanguageConceptSwitch.Line:
         if (props_Line == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -42,6 +133,35 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_NodeWrapperElement = cpb.create();
         }
         return props_NodeWrapperElement;
+      case LanguageConceptSwitch.NodeWrapperTextualElement:
+        if (props_NodeWrapperTextualElement == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("element which wraps any node");
+          cpb.rawPresentation("wrapped node");
+          props_NodeWrapperTextualElement = cpb.create();
+        }
+        return props_NodeWrapperTextualElement;
+      case LanguageConceptSwitch.NumberedLine:
+        if (props_NumberedLine == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("numbered line");
+          props_NumberedLine = cpb.create();
+        }
+        return props_NumberedLine;
+      case LanguageConceptSwitch.NumberedPoint:
+        if (props_NumberedPoint == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("numbered point");
+          props_NumberedPoint = cpb.create();
+        }
+        return props_NumberedPoint;
+      case LanguageConceptSwitch.Paragraph:
+        if (props_Paragraph == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("Paragraph");
+          props_Paragraph = cpb.create();
+        }
+        return props_Paragraph;
       case LanguageConceptSwitch.Text:
         if (props_Text == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -55,6 +175,27 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_TextElement = cpb.create();
         }
         return props_TextElement;
+      case LanguageConceptSwitch.TextNodeReference:
+        if (props_TextNodeReference == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("reference");
+          props_TextNodeReference = cpb.create();
+        }
+        return props_TextNodeReference;
+      case LanguageConceptSwitch.TextualElement:
+        if (props_TextualElement == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_TextualElement = cpb.create();
+        }
+        return props_TextualElement;
+      case LanguageConceptSwitch.UrlTextualElement:
+        if (props_UrlTextualElement == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("element that holds a url");
+          cpb.rawPresentation("url");
+          props_UrlTextualElement = cpb.create();
+        }
+        return props_UrlTextualElement;
       case LanguageConceptSwitch.Word:
         if (props_Word == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -24,7 +23,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class ConceptFunctionParameter_node__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10a195cc7c5L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_node");
 
-  public static final SMethod<Boolean> useGenericAccessor_id6E2BWlDjAuB = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("useGenericAccessor").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6E2BWlDjAuB").build();
+  public static final SMethod<Boolean> useGenericAccessor_id6E2BWlDjAuB = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("useGenericAccessor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7674872385216866215L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(useGenericAccessor_id6E2BWlDjAuB);
 
@@ -33,7 +32,7 @@ public final class ConceptFunctionParameter_node__BehaviorDescriptor extends Bas
 
   /*package*/ static boolean useGenericAccessor_id6E2BWlDjAuB(@NotNull SNode __thisNode__) {
     SNode conceptFunction = ConceptFunctionParameter__BehaviorDescriptor.findConceptFunction_idhEwJh7Q.invoke(__thisNode__);
-    // TODO: remove conceptFunction != null check. It is here only for the compatibility with mbeddr generator 
+    // TODO: remove conceptFunction != null check. It is here only for the compatibility with mbeddr generator
     return conceptFunction != null && (boolean) IContextNodeAccessQualifier__BehaviorDescriptor.useNodeGetter_id6E2BWlDjMQu.invoke(SNodeOperations.as(conceptFunction, CONCEPTS.IContextNodeAccessQualifier$wp));
   }
 

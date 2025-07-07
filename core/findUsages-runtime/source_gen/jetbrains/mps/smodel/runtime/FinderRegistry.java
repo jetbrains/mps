@@ -11,7 +11,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
  * @author Artem Tikhomirov
  * @since 3.5
  */
-@GeneratedClass(node = "r:478541e9-a70f-4455-91cd-49e76de44a51(jetbrains.mps.smodel.runtime)/8568892084424436722", model = "r:478541e9-a70f-4455-91cd-49e76de44a51(jetbrains.mps.smodel.runtime)")
+@GeneratedClass(nodeId = "8568892084424436722", model = "r:478541e9-a70f-4455-91cd-49e76de44a51(jetbrains.mps.smodel.runtime)")
 public interface FinderRegistry {
   /**
    * Tell there's a finder for the given concept, which is identified by supplied value, and {@link FindUsageAspectDescriptor}

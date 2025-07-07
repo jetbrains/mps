@@ -25,7 +25,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
@@ -34,11 +33,10 @@ import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Replace
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Item;
-import java.util.function.Function;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.action.NodeSubstituteActionWrapper;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.nodeEditor.menus.EditorMenuTraceInfoImpl;
-import java.util.stream.Collectors;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -109,20 +107,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     public ModelAccess_generic_cellMenu_c4hqyc_a0a0() {
     }
 
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-      boolean var = operationContext != null || node != null || editorContext != null;
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
+      boolean var = node != null || editorContext != null;
       return (var ? null : null);
+
     }
-    protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
+    protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      this.handleAction_impl((String) parameterObject, node, model, editorContext);
     }
-    public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      boolean var = parameterObject != null || node != null || model != null || editorContext != null || operationContext != null;
+    private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      boolean var = parameterObject != null || node != null || model != null || editorContext != null;
       if (var) {
-        // just usage of var 
+        // just usage of var
       }
     }
-    public boolean isReferentPresentation() {
+    protected boolean isReferentPresentation() {
       return false;
     }
 
@@ -135,27 +134,24 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     public ModelAccess_generic_cellMenu_c4hqyc_b0a0() {
     }
 
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
       return null;
+
     }
-    protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
+    protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      this.handleAction_impl((String) parameterObject, node, model, editorContext);
     }
-    public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
     }
-    public boolean isReferentPresentation() {
+    protected boolean isReferentPresentation() {
       return false;
     }
-    public String getMatchingText(Object parameterObject) {
-      return this.getMatchingText_internal((String) parameterObject);
-    }
-    public String getMatchingText_internal(String parameterObject) {
+    protected String getMatchingText(Object _parameterObject) {
+      final String parameterObject = (String) _parameterObject;
       return String.valueOf(parameterObject);
     }
-    public String getDescriptionText(Object parameterObject) {
-      return this.getDescriptionText_internal((String) parameterObject);
-    }
-    public String getDescriptionText_internal(String parameterObject) {
+    protected String getDescriptionText(Object _parameterObject) {
+      final String parameterObject = (String) _parameterObject;
       return String.valueOf(parameterObject);
     }
 
@@ -167,19 +163,14 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   public static class ModelAccess_customReplace_cellMenu_c4hqyc_c0a0 extends AbstractCellMenuPart_ReplaceNode_Group {
     public ModelAccess_customReplace_cellMenu_c4hqyc_c0a0() {
     }
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-      boolean var = operationContext != null || node != null || editorContext != null;
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
+      boolean var = node != null || editorContext != null;
       return (var ? null : null);
     }
-    public SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      return createReplacementNode_impl((String) parameterObject, node, model, operationContext, editorContext);
-    }
-    public SNode createReplacementNode_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      boolean var = parameterObject != null || node != null || model != null || editorContext != null || operationContext != null;
+    protected SNode createReplacementNode(Object _parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      final String parameterObject = (String) _parameterObject;
+      boolean var = parameterObject != null || node != null || model != null || editorContext != null;
       return (var ? null : null);
-    }
-    public boolean isReferentPresentation() {
-      return false;
     }
     @Override
     protected EditorMenuDescriptor getEditorMenuDescriptor(Object parameterObject) {
@@ -190,28 +181,19 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   public static class ModelAccess_customReplace_cellMenu_c4hqyc_d0a0 extends AbstractCellMenuPart_ReplaceNode_Group {
     public ModelAccess_customReplace_cellMenu_c4hqyc_d0a0() {
     }
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
       return null;
     }
-    public SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      return createReplacementNode_impl((String) parameterObject, node, model, operationContext, editorContext);
-    }
-    public SNode createReplacementNode_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected SNode createReplacementNode(Object _parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      final String parameterObject = (String) _parameterObject;
       return null;
     }
-    public boolean isReferentPresentation() {
-      return false;
-    }
-    public String getMatchingText(Object parameterObject) {
-      return this.getMatchingText_internal((String) parameterObject);
-    }
-    public String getMatchingText_internal(String parameterObject) {
+    protected String getMatchingText(Object _parameterObject) {
+      final String parameterObject = (String) _parameterObject;
       return String.valueOf(parameterObject);
     }
-    public String getDescriptionText(Object parameterObject) {
-      return this.getDescriptionText_internal((String) parameterObject);
-    }
-    public String getDescriptionText_internal(String parameterObject) {
+    protected String getDescriptionText(Object _parameterObject) {
+      final String parameterObject = (String) _parameterObject;
       return String.valueOf(parameterObject);
     }
     @Override
@@ -234,26 +216,22 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
     @Override
     public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-      List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
-      Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
-        public SubstituteAction apply(SubstituteAction action) {
-          return new NodeSubstituteActionWrapper(action) {
-            @Override
-            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-              result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "53454498079314123")));
-              return result;
-            }
-          };
-        }
-      };
-      return actions.stream().map(mapper).collect(Collectors.toList());
+      return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
+        return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
+          @Override
+          public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+            EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+            result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)", "53454498079314123")));
+            return result;
+          }
+        };
+      }).toList();
     }
 
-    public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      boolean var = node != null || model != null || editorContext != null || operationContext != null;
+    protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
+      boolean var = node != null || model != null || editorContext != null;
       if (var) {
-        // just usage of var 
+        // just usage of var
       }
     }
     public String getMatchingText() {

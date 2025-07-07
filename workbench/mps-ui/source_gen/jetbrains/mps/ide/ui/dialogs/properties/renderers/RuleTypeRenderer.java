@@ -15,7 +15,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.border.EmptyBorder;
 
-@GeneratedClass(node = "r:ebb14179-d192-43be-86ee-73001bbf35b0(jetbrains.mps.ide.ui.dialogs.properties.renderers)/3995997045458515690", model = "r:ebb14179-d192-43be-86ee-73001bbf35b0(jetbrains.mps.ide.ui.dialogs.properties.renderers)")
+@GeneratedClass(nodeId = "3995997045458515690", model = "r:ebb14179-d192-43be-86ee-73001bbf35b0(jetbrains.mps.ide.ui.dialogs.properties.renderers)")
 public class RuleTypeRenderer extends DefaultTableCellRenderer {
   public RuleTypeRenderer() {
   }

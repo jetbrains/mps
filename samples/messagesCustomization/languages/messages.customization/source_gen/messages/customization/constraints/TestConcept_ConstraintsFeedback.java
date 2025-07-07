@@ -24,29 +24,29 @@ public final class TestConcept_ConstraintsFeedback extends BaseFeedbackDescripto
   private static final FeedbackProvider<CanBeRootContext> MSGPROVIDER_WhenConstraintRuleFails_rhl8yx_a = new BaseMessageProvider<CanBeRootContext>(new FailingRuleProblemId(TestConcept_ConstraintRules.Rule_NAME.ID_NAME)) {
     @NotNull
     @Override
-    public MessageProvider.StringMsg yieldMessage(CanBeRootContext context) {
-      return new MessageProvider.StringMsg("The model " + context.getModel() + " contains an instance of the concept 'AuxConcept'");
+    public MessageProvider.Msg yieldMessage(CanBeRootContext context) {
+      return format("The model %s contains an instance of the concept 'AuxConcept'", context.getModel());
     }
   };
   private static final FeedbackProvider<CanBeAncestorContext> MSGPROVIDER_WhenConstraintRuleFails_rhl8yx_b = new BaseMessageProvider<CanBeAncestorContext>(new FailingRuleProblemId(TestConcept_ConstraintRules.Rule_unnamed_6y4avc_b1.ID_unnamed_6y4avc_b1)) {
     @NotNull
     @Override
-    public MessageProvider.StringMsg yieldMessage(CanBeAncestorContext context) {
-      return new MessageProvider.StringMsg("The maximal allowed depth is exceeded (" + TestConcept_ConstraintRules.Def_Depth2802122285522081733.getValue(context) + " >= 3" + "), so the node " + context.getAncestorNode() + "" + "cannot be an ancestor of " + context.getDescendantNode());
+    public MessageProvider.Msg yieldMessage(CanBeAncestorContext context) {
+      return format("The maximal allowed depth is exceeded (%s >= 3), so the node %scannot be an ancestor of %s", TestConcept_ConstraintRules.Def_Depth2802122285522081733.getValue(context), context.getAncestorNode(), context.getDescendantNode());
     }
   };
   private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_rhl8yx_c = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(TestConcept_ConstraintRules.Rule_unnamed_6y4avc_b2.ID_unnamed_6y4avc_b2)) {
     @NotNull
     @Override
-    public MessageProvider.StringMsg yieldMessage(ContainmentContext context) {
-      return new MessageProvider.StringMsg("children of the node " + context.getParentNode() + " are not allowed to contain 'ABACABA' in their names");
+    public MessageProvider.Msg yieldMessage(ContainmentContext context) {
+      return format("children of the node %s are not allowed to contain 'ABACABA' in their names", context.getParentNode());
     }
   };
   private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_rhl8yx_d = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(TestConcept_ConstraintRules.Rule_unnamed_6y4avc_b3.ID_unnamed_6y4avc_b3)) {
     @NotNull
     @Override
-    public MessageProvider.StringMsg yieldMessage(ContainmentContext context) {
-      return new MessageProvider.StringMsg("The root name " + TestConcept_ConstraintRules.Def_Root3071492597344669935.getValue(context) + " must start with 'Rules' or 'Feedback'");
+    public MessageProvider.Msg yieldMessage(ContainmentContext context) {
+      return format("The root name %s must start with 'Rules' or 'Feedback'", TestConcept_ConstraintRules.Def_Root3071492597344669935.getValue(context));
     }
   };
 

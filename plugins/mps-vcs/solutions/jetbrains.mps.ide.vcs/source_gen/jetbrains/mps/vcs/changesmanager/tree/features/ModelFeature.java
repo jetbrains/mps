@@ -5,19 +5,26 @@ package jetbrains.mps.vcs.changesmanager.tree.features;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.module.SRepository;
 
-@GeneratedClass(node = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)/3201398707754971881", model = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)")
+@GeneratedClass(nodeId = "3201398707754971881", model = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)")
 public class ModelFeature extends Feature {
   public ModelFeature(@NotNull SModelReference modelReference) {
     super(modelReference);
   }
-  @Nullable
+
   @Override
-  protected Feature getParent(SRepository repo) {
-    return null;
+  public int hashCode() {
+    return getModelReference().hashCode();
   }
+
+  @Override
+  public boolean equals(Object object) {
+    if (object instanceof ModelFeature) {
+      return getModelReference().equals(((ModelFeature) object).getModelReference());
+    }
+    return false;
+  }
+
   @NotNull
   @Override
   public String toString() {

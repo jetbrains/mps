@@ -18,7 +18,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -28,21 +27,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class ConvertForeachStatementToForEach_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ConvertForeachStatementToForEach_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c8959032c(jetbrains.mps.baseLanguage.collections.intentions)", "2442451895696290638"));
   }
+
   @Override
   public String getPresentation() {
     return "ConvertForeachStatementToForEach";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -52,10 +51,12 @@ public final class ConvertForeachStatementToForEach_Intention extends AbstractIn
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Convert to 'for (var in iterable)'";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       final SNode oldVariable = SLinkOperations.getTarget(node, LINKS.variable$JNH6);
@@ -66,18 +67,23 @@ public final class ConvertForeachStatementToForEach_Intention extends AbstractIn
       SLinkOperations.setTarget(forEachStatement, LINKS.loopLabel$sgvV, SLinkOperations.getTarget(node, LINKS.loopLabel$sgvV));
       SNode newVariable = SNodeFactoryOperations.setNewChild(forEachStatement, LINKS.variable$8Haf, null);
       SPropertyOperations.set(newVariable, PROPS.name$MnvL, SPropertyOperations.getString(oldVariable, PROPS.name$MnvL));
-      for (SNode oldRef : ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(forEachStatement, LINKS.body$c1sm), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == oldVariable;
-        }
-      })) {
+      for (SNode oldRef : ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(forEachStatement, LINKS.body$c1sm), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where((it) -> SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == oldVariable)) {
         SLinkOperations.setTarget(SNodeFactoryOperations.replaceWithNewChild(oldRef, CONCEPTS.ForEachVariableReference$CR), LINKS.variable$j6kA, newVariable);
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ConvertForeachStatementToForEach_Intention.this;
     }
+
   }
 
   private static final class LINKS {

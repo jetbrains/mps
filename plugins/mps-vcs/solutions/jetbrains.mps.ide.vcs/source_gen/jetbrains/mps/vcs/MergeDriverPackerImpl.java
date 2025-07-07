@@ -9,7 +9,7 @@ import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManagerCore;
 import com.intellij.openapi.extensions.PluginId;
 
-@GeneratedClass(node = "r:cd7c9d90-25b3-4a54-a510-a0bcc7072c1d(jetbrains.mps.vcs)/8298649587588696257", model = "r:cd7c9d90-25b3-4a54-a510-a0bcc7072c1d(jetbrains.mps.vcs)")
+@GeneratedClass(nodeId = "8298649587588696257", model = "r:cd7c9d90-25b3-4a54-a510-a0bcc7072c1d(jetbrains.mps.vcs)")
 public class MergeDriverPackerImpl extends MergeDriverPacker {
   public MergeDriverPackerImpl() {
   }
@@ -22,7 +22,7 @@ public class MergeDriverPackerImpl extends MergeDriverPacker {
   protected String getVCSCorePluginPath() {
     IdeaPluginDescriptor vcsCorePlugin = PluginManagerCore.getPlugin(PluginId.getId("jetbrains.mps.vcs"));
     assert vcsCorePlugin != null;
-    return vcsCorePlugin.getPath().getPath();
+    return vcsCorePlugin.getPluginPath().toString();
   }
 
   @Override

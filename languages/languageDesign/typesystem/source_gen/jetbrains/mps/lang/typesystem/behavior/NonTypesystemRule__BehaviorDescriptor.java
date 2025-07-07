@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.scope.Scope;
@@ -24,10 +23,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
+import java.util.Collections;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -38,9 +36,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class NonTypesystemRule__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164853e0faL, "jetbrains.mps.lang.typesystem.structure.NonTypesystemRule");
 
-  public static final SMethod<Void> setBaseConcept_id5r_35Ihc58c = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setBaseConcept").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5r_35Ihc58c").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Iterable<SNode>> findSuperRules_id21kJG8Hh$W9 = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("findSuperRules").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("21kJG8Hh$W9").build();
+  public static final SMethod<Void> setBaseConcept_id5r_35Ihc58c = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setBaseConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6261424444345963020L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Iterable<SNode>> findSuperRules_id21kJG8Hh$W9 = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("findSuperRules").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2329696648449904393L).languageId(0xab76d5ed1746f2b2L, 0x7a5dda6291404668L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(setBaseConcept_id5r_35Ihc58c, getScope_id52_Geb4QDV$, findSuperRules_id21kJG8Hh$W9);
 
@@ -60,16 +58,12 @@ public final class NonTypesystemRule__BehaviorDescriptor extends BaseBHDescripto
   }
   /*package*/ static Iterable<SNode> findSuperRules_id21kJG8Hh$W9(@NotNull SNode __thisNode__) {
     SNode applicableConcept = ApplicableNodeCondition__BehaviorDescriptor.getApplicableConcept_idhEwIszL.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.applicableNode$Ro4C));
-    List<SNode> allSuperConcepts = Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(applicableConcept, ((boolean) false))).toListSequence();
-    return ListSequence.fromList(allSuperConcepts).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode superConcept) {
-        Iterable<SModel> models = SNodeOperations.getModel(superConcept).getModule().getModels();
-        return SNodeOperations.ofConcept(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspects_id4G9PD8$NvPM.invoke(superConcept, Sequence.fromIterable(models).where(new IWhereFilter<SModel>() {
-          public boolean accept(SModel it) {
-            return SModuleOperations.isAspect(it, "typesystem");
-          }
-        }).first()), CONCEPTS.NonTypesystemRule$um);
-      }
+    List<SNode> allSuperConcepts = Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(applicableConcept, ((boolean) false))).toList();
+    return ListSequence.fromList(allSuperConcepts).translate((superConcept) -> {
+      Iterable<SModel> models = SNodeOperations.getModel(superConcept).getModule().getModels();
+      SModel typesystemModel = Sequence.fromIterable(models).where((it) -> SModuleOperations.isAspect(it, "typesystem")).first();
+      // typesystem aspect model is not mandatory for a language!
+      return (typesystemModel != null ? SNodeOperations.ofConcept(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspects_id4G9PD8$NvPM.invoke(superConcept, typesystemModel), CONCEPTS.NonTypesystemRule$um) : Sequence.fromIterable(Collections.<SNode>emptyList()));
     });
   }
 

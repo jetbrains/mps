@@ -9,9 +9,7 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -30,20 +28,14 @@ public class delComponent {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, final SNode node) {
-        List<SNode> list = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(node, CONCEPTS.ComponentSet$2N, false, false), LINKS.component$l$9M)).translate(new ITranslator2<SNode, SNode>() {
-          public Iterable<SNode> translate(SNode it) {
-            return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.dep$WgPG)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return SLinkOperations.getTarget(it, LINKS.to$GB6T) == node;
-              }
-            });
-          }
-        }).toListSequence();
-        ListSequence.fromList(list).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            SNodeOperations.deleteNode(it);
-          }
-        });
+        List<SNode> list = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(node, CONCEPTS.ComponentSet$2N, false, false), LINKS.component$l$9M)).translate((it) -> {
+          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.dep$WgPG)).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+            public Boolean invoke(SNode it) {
+              return SLinkOperations.getTarget(it, LINKS.to$GB6T) == node;
+            }
+          });
+        }).toList();
+        ListSequence.fromList(list).visitAll((it) -> SNodeOperations.deleteNode(it));
         SNodeOperations.deleteNode(node);
       }
 
@@ -54,11 +46,11 @@ public class delComponent {
     CellAction originalDelete = editorCell.getAction(CellActionType.DELETE);
     CellAction originalBackspace = editorCell.getAction(CellActionType.BACKSPACE);
 
-    // set actions that were actually defined 
+    // set actions that were actually defined
     setDefinedCellActions(editorCell, node, context);
 
-    // If we set a DELETE action but no BACKSPACE action, 
-    // use the DELETE action for BACKSPACE as well. 
+    // If we set a DELETE action but no BACKSPACE action,
+    // use the DELETE action for BACKSPACE as well.
     CellAction delete = editorCell.getAction(CellActionType.DELETE);
     CellAction backspace = editorCell.getAction(CellActionType.BACKSPACE);
     if (delete != originalDelete && backspace == originalBackspace) {
@@ -75,17 +67,17 @@ public class delComponent {
   private static final Object OB = new Object();
 
   public static void setDefinedCellActions(EditorCell editorCell, SNode node, EditorContext context) {
-    // set cell actions from all imported action maps 
+    // set cell actions from all imported action maps
 
-    // set cell actions defined directly in this action map 
+    // set cell actions defined directly in this action map
     editorCell.setAction(CellActionType.DELETE, createAction_DELETE(node));
   }
 
   public static void setDefinedCellActionsOfType(EditorCell editorCell, SNode node, EditorContext context, CellActionType actionType) {
 
-    // set cell action(s) of the given type from imported action maps 
+    // set cell action(s) of the given type from imported action maps
 
-    // set cell action of the given type defined directly in this action map 
+    // set cell action of the given type defined directly in this action map
     if (Objects.equals(actionType, CellActionType.DELETE)) {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }

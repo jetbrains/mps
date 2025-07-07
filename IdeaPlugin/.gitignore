@@ -13,6 +13,7 @@ mps-java/META-INF/JavaPlatformActions.xml
 mps-vcs/lib
 mps-vcs/languages
 mps-vcs/META-INF/MPSVcs.xml
+mps-vcs/META-INF/MPSVcsGit.xml
 mps-migration/lib
 mps-migration/META-INF
 sandbox

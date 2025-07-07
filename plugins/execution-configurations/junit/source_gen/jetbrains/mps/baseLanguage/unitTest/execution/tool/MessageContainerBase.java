@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.ImmutableReturn;
 import jetbrains.mps.baseLanguage.unitTest.execution.TextTestEvent;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 
 /**
  * A message which also has children and defines a recursive logic of text printing
@@ -103,11 +102,7 @@ public abstract class MessageContainerBase<MSG extends TestMessage> implements M
 
   public int size() {
     if (myCachedSize < 0) {
-      myCachedSize = ListSequence.fromList(myChildren).foldLeft(0, new ILeftCombinator<MSG, Integer>() {
-        public Integer combine(Integer s, MSG it) {
-          return ((it instanceof MessageContainerBase) ? s + ((MessageContainerBase) it).size() : s + 1);
-        }
-      });
+      myCachedSize = ListSequence.fromList(myChildren).foldLeft(0, (Integer s, MSG it) -> ((it instanceof MessageContainerBase) ? s + ((MessageContainerBase) it).size() : s + 1));
     }
     return myCachedSize;
   }

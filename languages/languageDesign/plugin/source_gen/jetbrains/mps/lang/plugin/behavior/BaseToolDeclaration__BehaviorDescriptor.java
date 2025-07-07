@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.checkedName.PropertyReference;
@@ -19,28 +18,26 @@ import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
-import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public final class BaseToolDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, "jetbrains.mps.lang.plugin.structure.BaseToolDeclaration");
 
-  public static final SMethod<String> getGeneratedName_id5FstybB4d83 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5FstybB4d83").build();
-  public static final SMethod<String> getGeneratedClassFQName_id5FstybB4d8e = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedClassFQName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5FstybB4d8e").build();
-  public static final SMethod<Boolean> hasNumber_id5FstybB4d8v = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasNumber").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5FstybB4d8v").build();
-  public static final SMethod<SNode> createType_idhEwJimy = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwJimy").build();
-  public static final SMethod<SNode> createSuperType_idhHOGPWW = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createSuperType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hHOGPWW").build();
-  public static final SMethod<String> getExpandedIconPath_id5FstybB4d94 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getExpandedIconPath").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5FstybB4d94").build();
-  public static final SMethod<PropertyReference> getPropertyToCheck_id4cWf37B8oYh = new SMethodBuilder<PropertyReference>(new SJavaCompoundTypeImpl((Class<PropertyReference>) ((Class) Object.class))).name("getPropertyToCheck").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4cWf37B8oYh").build();
+  public static final SMethod<String> getGeneratedName_id5FstybB4d83 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6547237850567463427L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
+  public static final SMethod<String> getGeneratedClassFQName_id5FstybB4d8e = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedClassFQName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6547237850567463438L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
+  public static final SMethod<Boolean> hasNumber_id5FstybB4d8v = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasNumber").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6547237850567463455L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
+  public static final SMethod<SNode> createType_idhEwJimy = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877527970L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
+  public static final SMethod<SNode> createSuperType_idhHOGPWW = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createSuperType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1217433657148L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
+  public static final SMethod<String> getExpandedIconPath_id5FstybB4d94 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getExpandedIconPath").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6547237850567463492L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
+  public static final SMethod<PropertyReference> getPropertyToCheck_id4cWf37B8oYh = new SMethodBuilder<PropertyReference>(new SJavaCompoundTypeImpl((Class<PropertyReference>) ((Class) Object.class))).name("getPropertyToCheck").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4844813484172611473L).languageId(0xae28a40915b4d6ffL, 0xfe9d76d7580945c9L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGeneratedName_id5FstybB4d83, getGeneratedClassFQName_id5FstybB4d8e, hasNumber_id5FstybB4d8v, createType_idhEwJimy, createSuperType_idhHOGPWW, getExpandedIconPath_id5FstybB4d94, getPropertyToCheck_id4cWf37B8oYh);
 
@@ -53,13 +50,12 @@ public final class BaseToolDeclaration__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ static String getGeneratedClassFQName_id5FstybB4d8e(@NotNull SNode __thisNode__) {
     return NameUtil.longNameFromNamespaceAndShortName(SModelOperations.getModelName(SNodeOperations.getModel(__thisNode__)), BaseToolDeclaration__BehaviorDescriptor.getGeneratedName_id5FstybB4d83.invoke(__thisNode__));
   }
-  @Deprecated
-  @ToRemove(version = 3.5)
+  @Deprecated(since = "3.5", forRemoval = true)
   /*package*/ static boolean hasNumber_id5FstybB4d8v(@NotNull SNode __thisNode__) {
-    return !(isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.number$DT6H)));
+    return isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.number$DT6H));
   }
   /*package*/ static SNode createType_idhEwJimy(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_7ol7e8_a0a3(__thisNode__);
+    return createToolType_7ol7e8_a0a3(__thisNode__);
   }
   /*package*/ static SNode createSuperType_idhHOGPWW(@NotNull SNode __thisNode__) {
     return _quotation_createNode_7ol7e8_a0a4();
@@ -132,18 +128,16 @@ public final class BaseToolDeclaration__BehaviorDescriptor extends BaseBHDescrip
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  private static SNode _quotation_createNode_7ol7e8_a0a3(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode quotedNode_2 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, "jetbrains.mps.lang.plugin"), 0x11961ebbf24L, "ToolType")).getResult();
-    SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11961ebbf24L, 0x11961f94babL, "tool"), (SNode) parameter_1);
-    return quotedNode_2;
+  private static SNode createToolType_7ol7e8_a0a3(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ToolType$CP);
+    n0.setReferenceTarget(LINKS.tool$pL83, p0);
+    return n0.getResult();
   }
   private static SNode _quotation_createNode_7ol7e8_a0a4() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
-    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.tools(MPS.Platform/)"), facade.createNodeId("~BaseTool")));
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+    quotedNode_1 = nb.getResult();
+    nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.tools(MPS.Platform/)/~BaseTool");
     return quotedNode_1;
   }
   private static boolean isNotEmptyString(String str) {
@@ -155,5 +149,13 @@ public final class BaseToolDeclaration__BehaviorDescriptor extends BaseBHDescrip
     /*package*/ static final SProperty number$DT6H = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, 0x5adc7622e710cf2dL, "number");
     /*package*/ static final SProperty icon$E_UG = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, 0x5adc7622e710cf6eL, "icon");
     /*package*/ static final SProperty caption$A_WD = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, 0x5adc7622e710cedcL, "caption");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept ToolType$CP = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11961ebbf24L, "jetbrains.mps.lang.plugin.structure.ToolType");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SReferenceLink tool$pL83 = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11961ebbf24L, 0x11961f94babL, "tool");
   }
 }

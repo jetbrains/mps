@@ -1,39 +1,55 @@
 <project name="mps" default="build">
   <property name="idea_home" location=".."/>
   <property name="resources" location="${basedir}/resources"/>
-
+famila
   <target name="platform">
     <ant antfile="getDependencies.xml" target="install" inheritAll="true" useNativeBasedir="true"/>
   </target>
-
-  <target name="getResourcesAndBuildAll">
+famila
+  <target name="getOpenjdkWin">
     <ant antfile="getResources.xml" inheritall="true" usenativebasedir="true" target="getOpenjdkWin" />
+  </target>
+famila
+  <target name="getOpenjdkMac">
+    <ant antfile="getResources.xml" inheritall="true" usenativebasedir="true" target="getOpenjdkMac" />
+  </target>
+famila
+  <target name="getOpenjdkMacM1">
+    <ant antfile="getResources.xml" inheritall="true" usenativebasedir="true" target="getOpenjdkMacM1" />
+  </target>
+famila
+  <target name="getOpenjdkLinux">
+    <ant antfile="getResources.xml" inheritall="true" usenativebasedir="true" target="getOpenjdkLinux" />
+  </target>
+famila
+  <target name="getResourcesAndBuildAll" depends="getOpenjdkWin">
     <ant antfile="mpsDistribution.xml" inheritAll="true" useNativeBasedir="true" target="buildDependents"/>
   </target>
-
+famila
   <target name="assemble">
     <ant antfile="mpsDistribution.xml" inheritAll="true" useNativeBasedir="true" target="assemble"/>
     <ant antfile="mpsDistribution.xml" inheritAll="true" useNativeBasedir="true" target="publishTCArtifacts"/>
     <ant antfile="mpsMaven.xml" inheritAll="true" useNativeBasedir="true" target="assemble"/>
     <ant antfile="mpsMaven.xml" inheritAll="true" useNativeBasedir="true" target="publishTCArtifact"/>
   </target>
-
+famila
   <target name="base" depends="platform, getResourcesAndBuildAll, assemble">
   </target>
-
+famila
   <target name="build" depends="platform, base"/>
-
+famila
   <target name="exe" depends="base">
     <property name="build.distribution" value="${basedir}/artifacts/mpsDistribution"/>
     <ant antfile="buildExe.xml" inheritAll="true" useNativeBasedir="true"/>
   </target>
-
+famila
   <target name="clean">
     <delete dir="tmp"/>
     <delete dir="artifacts"/>
   </target>
-
+famila
   <target name="cleanResources">
     <delete dir="${resources}/openJDK"/>
   </target>
 </project>
+famila

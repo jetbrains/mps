@@ -24,21 +24,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ColorQuery_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ColorQuery_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c8959029b(jetbrains.mps.lang.editor.intentions)", "1221475845846"));
   }
+
   @Override
   public String getPresentation() {
     return "ColorQuery";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -48,6 +48,7 @@ public final class ColorQuery_Intention extends AbstractIntentionDescriptor impl
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       if ((SLinkOperations.getTarget(node, LINKS.query$J8Xh) == null)) {
@@ -56,6 +57,7 @@ public final class ColorQuery_Intention extends AbstractIntentionDescriptor impl
         return "Remove Query";
       }
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SPropertyOperations.setEnum(node, PROPS.color$cOQW, 0xfc609b3d56L, "none");
@@ -65,10 +67,19 @@ public final class ColorQuery_Intention extends AbstractIntentionDescriptor impl
         SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.query$J8Xh));
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ColorQuery_Intention.this;
     }
+
   }
 
   private static final class LINKS {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,9 @@
  */
 package jetbrains.mps.generator.impl.cache;
 
+import jetbrains.mps.generator.impl.InputKeyIdentity;
+import jetbrains.mps.generator.impl.LMLookup;
+import jetbrains.mps.generator.impl.LabelRecordBase;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.io.ModelInputStream;
 import jetbrains.mps.util.io.ModelOutputStream;
@@ -74,8 +77,16 @@ public class MappingsMemento {
     myCopiedOutputNodeForInputNode.put(inputNode, isUnique ? outputNode : Collections.singletonList(outputNode));
   }
 
+  // FIXME why do I stick to SNodeId here, not SNode? After all, I read CP model where output nodes
+  // are present - see CheckpointState, where MM is populated from checkpointModel, and the same model is
+  // employed to resolve() these nodeIds
   public void addNewOutputNode(String mappingLabel, SNodeId outputNode) {
     myConditionalRoots.add(new Pair<>(mappingLabel, outputNode));
+  }
+
+  private final ArrayList<LabelRecordBase<InputKeyIdentity, SNode>> myCompositeLabels = new ArrayList<>();
+  public void addRecord(String label, InputKeyIdentity k1, InputKeyIdentity k2, SNode output) {
+    myCompositeLabels.add(new LabelRecordBase<>(label, k1, k2, output));
   }
 
   // getters
@@ -90,6 +101,14 @@ public class MappingsMemento {
 
   public Collection<SNodeId> getNewOutputNodes(String mappingLabel) {
     return myConditionalRoots.stream().filter(p -> p.o1.equals(mappingLabel)).map(p -> p.o2).collect(Collectors.toList());
+  }
+
+  public LMLookup getCompositeLabelsLookup(String label) {
+    return LMLookup.forPersisted(label, myCompositeLabels);
+  }
+
+  public boolean hasCompositeLM(final String label) {
+    return LMLookup.hasCompositeLM(label, myCompositeLabels);
   }
 
   // serialization

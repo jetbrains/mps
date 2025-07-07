@@ -5,6 +5,7 @@ package jetbrains.mps.ide.modelchecker.platform.actions;
 import jetbrains.mps.annotations.GeneratedClass;
 import javax.swing.JPanel;
 import com.intellij.openapi.project.Project;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.findusages.view.UsagesView;
 import javax.swing.JButton;
 import jetbrains.mps.ide.project.ProjectHelper;
@@ -23,7 +24,6 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.util.List;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.openapi.ui.Messages;
 import java.util.ArrayList;
@@ -35,10 +35,8 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.ide.findusages.model.SearchResult;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.errors.item.NodeFlavouredItem;
 import jetbrains.mps.errors.item.ModelFlavouredItem;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.ide.findusages.model.IResultProvider;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
@@ -58,10 +56,10 @@ import org.jdom.Element;
 import jetbrains.mps.ide.findusages.CantSaveSomethingException;
 import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 
-@GeneratedClass(node = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)/3719390199795365573", model = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)")
+@GeneratedClass(nodeId = "3719390199795365573", model = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)")
 public class ModelCheckerViewer extends JPanel {
   private final Project myIdeaProject;
-  private final jetbrains.mps.project.Project myProject;
+  private final MPSProject myProject;
   private UsagesView myUsagesView;
   private JButton myFixButton;
   private UsagesView.RerunAction myCheckAction;
@@ -71,7 +69,7 @@ public class ModelCheckerViewer extends JPanel {
 
   public ModelCheckerViewer(Project project, boolean canFix) {
     myIdeaProject = project;
-    myProject = ProjectHelper.toMPSProject(project);
+    myProject = ProjectHelper.fromIdeaProject(project);
 
     setLayout(new BorderLayout());
     ViewOptions viewOptions = new ViewOptions(true, false, false, false, false);
@@ -88,7 +86,7 @@ public class ModelCheckerViewer extends JPanel {
     add(myUsagesView.getComponent(), BorderLayout.CENTER);
 
     JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-    // XXX fix button might be an action along with others above (i.e. button in the left pane) 
+    // XXX fix button might be an action along with others above (i.e. button in the left pane)
     if (canFix) {
       myFixButton = new JButton("Perform Quick Fixes");
       myFixButton.addActionListener(new ActionListener() {
@@ -102,19 +100,15 @@ public class ModelCheckerViewer extends JPanel {
     add(buttonPanel, BorderLayout.SOUTH);
   }
   protected void close() {
-    // no-op, override to react on view close action 
+    // no-op, override to react on view close action
   }
   public void performQuickFixes() {
-    // Ask if need to fix 
+    // Ask if need to fix
 
-    // Perform quick fixes 
+    // Perform quick fixes
     final Wrappers._int fixedTotal = new Wrappers._int(0);
-    // Select all fixable issues 
-    final List<IssueKindReportItem> issuesToFix = new ModelAccessHelper(myProject.getModelAccess()).runReadAction(new Computable<List<IssueKindReportItem>>() {
-      public List<IssueKindReportItem> compute() {
-        return getIssuesToFix();
-      }
-    });
+    // Select all fixable issues
+    final List<IssueKindReportItem> issuesToFix = new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> getIssuesToFix());
     if (ListSequence.fromList(issuesToFix).isEmpty()) {
       Messages.showInfoMessage("There are no quick fixes for current problems", "No Quick Fixes");
       return;
@@ -124,27 +118,25 @@ public class ModelCheckerViewer extends JPanel {
       return;
     }
 
-    myProject.getModelAccess().executeCommandInEDT(new Runnable() {
-      public void run() {
-        while (true) {
-          int fixedBefore = fixedTotal.value;
-          for (IssueKindReportItem issue : ListSequence.fromListWithValues(new ArrayList<IssueKindReportItem>(), issuesToFix)) {
-            QuickFixBase quickFix = QuickFixReportItem.FLAVOUR_QUICKFIX.getAutoApplicable(issue);
-            boolean alive = IssueKindReportItem.PATH_OBJECT.get(issue).resolve(myProject.getRepository()) != null && quickFix.isAlive(myProject.getRepository());
-            if (alive) {
-              quickFix.execute(myProject.getRepository());
-              fixedTotal.value++;
-              ListSequence.fromList(issuesToFix).removeElement(issue);
-            }
+    myProject.getModelAccess().executeCommandInEDT(() -> {
+      while (true) {
+        int fixedBefore = fixedTotal.value;
+        for (IssueKindReportItem issue : ListSequence.fromListWithValues(new ArrayList<IssueKindReportItem>(), issuesToFix)) {
+          QuickFixBase quickFix = QuickFixReportItem.FLAVOUR_QUICKFIX.getAutoApplicable(issue);
+          boolean alive = IssueKindReportItem.PATH_OBJECT.get(issue).resolve(myProject.getRepository()) != null && quickFix.isAlive(myProject.getRepository());
+          if (alive) {
+            quickFix.execute(myProject.getRepository());
+            fixedTotal.value++;
+            ListSequence.fromList(issuesToFix).removeElement(issue);
           }
-          if (fixedBefore == fixedTotal.value) {
-            break;
-          }
+        }
+        if (fixedBefore == fixedTotal.value) {
+          break;
         }
       }
     });
 
-    // Perform recheck if needed 
+    // Perform recheck if needed
     if (fixedTotal.value != 0) {
       int dialogAnswer1 = Messages.showYesNoDialog(myIdeaProject, "Model checker fixed " + fixedTotal.value + " issues. Do you wish to recheck?", "Recheck", null);
       if (dialogAnswer1 != 0) {
@@ -158,20 +150,14 @@ public class ModelCheckerViewer extends JPanel {
     final Set<SNodeReference> includedResultNodes = SetSequence.fromSetWithValues(new HashSet<SNodeReference>(), myUsagesView.getIncludedResultNodes());
     final Set<SModel> includedResultModels = SetSequence.fromSetWithValues(new HashSet<SModel>(), myUsagesView.getIncludedModels());
     List<SearchResult<IssueKindReportItem>> searchResults = getSearchResults().getSearchResults();
-    return ListSequence.fromList(searchResults).where(new IWhereFilter<SearchResult<IssueKindReportItem>>() {
-      public boolean accept(SearchResult<IssueKindReportItem> sr) {
-        IssueKindReportItem reportItem = sr.getObject();
-        QuickFixBase quickFix = QuickFixReportItem.FLAVOUR_QUICKFIX.getAutoApplicable(reportItem);
-        boolean fixable = quickFix != null;
-        boolean isNodeIssueAndFixable = NodeFlavouredItem.FLAVOUR_NODE.canGet(reportItem) && SetSequence.fromSet(includedResultNodes).contains(NodeFlavouredItem.FLAVOUR_NODE.tryToGet(reportItem)) && fixable;
-        boolean isModelIssueAndFixable = ModelFlavouredItem.FLAVOUR_MODEL.canGet(reportItem) && SetSequence.fromSet(includedResultModels).contains((SModel) sr.getPathObject()) && fixable;
-        return isNodeIssueAndFixable || isModelIssueAndFixable;
-      }
-    }).select(new ISelector<SearchResult<IssueKindReportItem>, IssueKindReportItem>() {
-      public IssueKindReportItem select(SearchResult<IssueKindReportItem> it) {
-        return it.getObject();
-      }
-    }).toListSequence();
+    return ListSequence.fromList(searchResults).where((sr) -> {
+      IssueKindReportItem reportItem = sr.getObject();
+      QuickFixBase quickFix = QuickFixReportItem.FLAVOUR_QUICKFIX.getAutoApplicable(reportItem);
+      boolean fixable = quickFix != null;
+      boolean isNodeIssueAndFixable = NodeFlavouredItem.FLAVOUR_NODE.canGet(reportItem) && SetSequence.fromSet(includedResultNodes).contains(NodeFlavouredItem.FLAVOUR_NODE.tryToGet(reportItem)) && fixable;
+      boolean isModelIssueAndFixable = ModelFlavouredItem.FLAVOUR_MODEL.canGet(reportItem) && SetSequence.fromSet(includedResultModels).contains((SModel) sr.getPathObject()) && fixable;
+      return isNodeIssueAndFixable || isModelIssueAndFixable;
+    }).select((it) -> it.getObject()).toList();
 
   }
   /*package*/ void checkModules(List<SModule> modules, String taskTargetTitle) {
@@ -209,7 +195,7 @@ public class ModelCheckerViewer extends JPanel {
     myUsagesView.setContents(issues);
   }
   private ModelCheckerIssueFinder newModelChecker() {
-    return new ModelCheckerIssueFinder(myProject.getRepository(), ModelCheckerSettings.getInstance().getSpecificCheckers(myProject));
+    return new ModelCheckerIssueFinder(myProject, ModelCheckerSettings.getInstance().getSpecificCheckers(myProject));
   }
   public static class MyNodeRepresentator extends NodeRepresentatorBase<IssueKindReportItem> {
     public MyNodeRepresentator() {

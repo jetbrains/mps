@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,9 @@
  */
 package jetbrains.mps.openapi.editor;
 
+import jetbrains.mps.openapi.editor.DeletionApprover.DummyDeletionApprover;
 import jetbrains.mps.openapi.editor.assist.ContextAssistantManager;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import jetbrains.mps.openapi.editor.cells.EditorFontMetricsProvider;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.util.Computable;
@@ -30,9 +30,9 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.List;
 
 /**
- * evgeny, 11/17/11
+ * Interface for client interaction with node editor.
  */
-public interface EditorContext extends EditorFontMetricsProvider {
+public interface EditorContext {
 
   @NotNull
   SRepository getRepository();
@@ -83,8 +83,16 @@ public interface EditorContext extends EditorFontMetricsProvider {
 
   boolean isEditable();
 
+  /**
+   * @deprecated use {@link EditorComponent#captureState()}
+   */
+  @Deprecated(since = "2022.3", forRemoval = true)
   EditorComponentState getEditorComponentState();
 
+  /**
+   * @deprecated use {@link EditorComponent#restoreState(EditorComponentState)}
+   */
+  @Deprecated(since = "2022.3", forRemoval = true)
   void restoreEditorComponentState(EditorComponentState state);
 
   void runWithContextCell(EditorCell contextCell, Runnable r);
@@ -105,4 +113,10 @@ public interface EditorContext extends EditorFontMetricsProvider {
    */
   @Nullable
   EditorPanelManager getEditorPanelManager();
+
+  default DeletionApprover getDeletionApprover() {
+    return new DummyDeletionApprover();
+  }
+
+  Clipboard getClipboard();
 }

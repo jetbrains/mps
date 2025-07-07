@@ -4,7 +4,7 @@ package jetbrains.mps.tool.common;
 
 import jetbrains.mps.annotations.GeneratedClass;
 
-@GeneratedClass(node = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)/3919148072087678241", model = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)")
+@GeneratedClass(nodeId = "3919148072087678241", model = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)")
 public class JavaCompilerProperties {
   private static final String TARGET_JAVA_VERSION = "target";
   private static final String SKIP_COMPILATION = "skipCompilation";

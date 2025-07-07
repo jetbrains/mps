@@ -22,8 +22,6 @@ import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
 import jetbrains.mps.smodel.adapter.structure.concept.SInterfaceConceptAdapterById;
-import jetbrains.mps.util.NameUtil;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -43,7 +41,7 @@ import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
  * todo usage of this class is rather node-level information usage and should be rewritten
  */
 public class MetaAdapterByDeclaration {
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(MetaAdapterByDeclaration.class));
+  private static final Logger LOG = Logger.getLogger(MetaAdapterByDeclaration.class);
 
   public static SLanguage getLanguage(Language l) {
     return MetaAdapterFactory.getLanguage(MetaIdByDeclaration.getLanguageId(l), l.getModuleName());
@@ -59,7 +57,7 @@ public class MetaAdapterByDeclaration {
     boolean icd = concept.equals(SNodeUtil.concept_InterfaceConceptDeclaration);
     if (!cd && !icd) return null;
 
-    String name = NameUtil.getModelLongName(model) + "." + getNormalizedName(conceptNode);
+    String name = model.getName().getLongName() + '.' + getNormalizedName(conceptNode);
     if (cd) {
       return MetaAdapterFactory.getConcept(MetaIdByDeclaration.getConceptId(conceptNode), name);
     } else {

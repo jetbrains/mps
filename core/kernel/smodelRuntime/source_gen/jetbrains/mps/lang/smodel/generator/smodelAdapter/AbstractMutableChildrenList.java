@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import java.util.ListIterator;
 
-@GeneratedClass(node = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)/6135675736569312103", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
+@GeneratedClass(nodeId = "6135675736569312103", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
 public abstract class AbstractMutableChildrenList extends AbstractList<SNode> {
   @Override
   public int size() {
@@ -29,8 +29,8 @@ public abstract class AbstractMutableChildrenList extends AbstractList<SNode> {
 
   @Override
   public Iterator<SNode> iterator() {
-    // TODO this is not fair, since there's no guarantee any iterator will work after we remove an element already returned by next() 
-    // TODO it's better to somehow provide "remove" method for the result of SNode.getChildren(role), e.g. removing the "non-modifiable" contract 
+    // TODO this is not fair, since there's no guarantee any iterator will work after we remove an element already returned by next()
+    // TODO it's better to somehow provide "remove" method for the result of SNode.getChildren(role), e.g. removing the "non-modifiable" contract
     return new Iterator<SNode>() {
       private SNode last = null;
       private Iterator<SNode> ci = childrenIterator();
@@ -142,7 +142,7 @@ public abstract class AbstractMutableChildrenList extends AbstractList<SNode> {
 
   @Override
   public int lastIndexOf(Object o) {
-    if (!((o instanceof SNode))) {
+    if (!(o instanceof SNode)) {
       return -1;
     }
     SNode n = (SNode) o;
@@ -237,5 +237,5 @@ public abstract class AbstractMutableChildrenList extends AbstractList<SNode> {
 
   protected abstract void insertBefore(SNode node, SNode anchor);
 
-  protected abstract void addFirst(SNode node);
+  public abstract void addFirst(SNode node);
 }

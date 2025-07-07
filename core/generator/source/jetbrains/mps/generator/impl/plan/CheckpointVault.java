@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,16 @@
  */
 package jetbrains.mps.generator.impl.plan;
 
-import jetbrains.mps.extapi.model.SModelBase;
-import jetbrains.mps.extapi.persistence.ModelFactoryService;
+import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
 import jetbrains.mps.generator.generationTypes.StreamHandler;
 import jetbrains.mps.generator.impl.ModelStreamManager;
-import jetbrains.mps.generator.impl.SingleStreamSource;
 import jetbrains.mps.generator.plan.CheckpointIdentity;
 import jetbrains.mps.generator.plan.PlanIdentity;
-import jetbrains.mps.smodel.persistence.def.ModelPersistence;
+import jetbrains.mps.logging.Logger;
+import jetbrains.mps.persistence.PersistenceUtil.InMemoryStreamDataSource;
+import jetbrains.mps.persistence.UserObjectsPersistence;
+import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.JDOMUtil;
-import org.apache.log4j.Logger;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -34,8 +34,9 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import org.jetbrains.mps.openapi.persistence.StreamDataSource;
+import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -75,6 +76,8 @@ import java.util.stream.StreamSupport;
  * @since 3.4
  */
 public class CheckpointVault {
+  // true to indicate persistence is not capable to serialize user objects and we shall convert them into attributes
+  public static final boolean CONVERT_USER_OBJECTS = Boolean.FALSE;
   private final ModelStreamManager myStreams;
   private final List<Entry> myKnownCheckpoints;
   private ModelCheckpoints myCheckpoints;
@@ -139,6 +142,13 @@ public class CheckpointVault {
       existing.myChangedState = mcp.find(next);
     }
     myKnownCheckpoints.addAll(newEntries);
+    // if we happen to update *all* checkpoints of a model, and all cp models are empty, no reason to keep records.
+    // perhaps, can just collect 'stale' while iterating over mcp.getKnownCheckpoints() (in addition to newEntries),
+    // but what if there's theoretical scenario when we have CP1 (non-empty) --> CP2 (empty) --> CP3 (non-empty), and we need
+    // CP2 for consistent transition. I don't believe the scenario is feasible, however; just don't want to deal with non-trivial cases now.
+    if (myKnownCheckpoints.stream().allMatch(e -> e.myChangedState != null && e.myChangedState.isEmptyCheckpoint())) {
+      myKnownCheckpoints.clear();
+    }
     myCheckpoints = null;
   }
 
@@ -147,9 +157,14 @@ public class CheckpointVault {
    * read xml that lists all checkpoint models from all generation plans for the given model
    */
   /*package*/ void readCheckpointRegistry() {
-    try {
-      myKnownCheckpoints.clear();
-      try (InputStream is = myStreams.getOutputLocation().openInputStream("checkpoints")) {
+    myKnownCheckpoints.clear();
+    StreamDataSource source = myStreams.getOutputLocation().getStreamByNameOrCreate("checkpoints");
+    if (!source.exists()) {
+      // XXX revert SingleStreamDataSource(myStreams.getOutputLocation(), "checkpoints") with explicit subclass and don't use StreamDataSource.exists()
+      //     or don't bother to check exists() at all and just go ahead with exception handling
+      Logger.getLogger(GenerationPlan.class).info("No checkpoint registry file found");
+    } else {
+      try (InputStream is = source.openInputStream()) {
         Document cpDoc = JDOMUtil.loadDocument(is);
         for (Element planElement : cpDoc.getRootElement().getChildren("plan")) {
           PlanIdentity pi = new PlanIdentity(planElement.getAttributeValue("id"));
@@ -162,11 +177,9 @@ public class CheckpointVault {
             myKnownCheckpoints.add(new Entry(cpId, file));
           }
         }
+      } catch(IOException | JDOMException ex){
+        Logger.getLogger(GenerationPlan.class).warning("Failed to read checkpoint registry", ex);
       }
-    } catch (FileNotFoundException ex) {
-      Logger.getLogger(GenerationPlan.class).debug("No checkpoint registry file found");
-    } catch (IOException | JDOMException ex) {
-      Logger.getLogger(GenerationPlan.class).warn("Failed to read checkpoint registry", ex);
     }
   }
 
@@ -187,8 +200,8 @@ public class CheckpointVault {
   }
 
   private SModel loadModel(Entry entry) throws IOException, ModelLoadException {
-    final ModelFactory modelFactory = PersistenceFacade.getInstance().getDefaultModelFactory();
-    final SingleStreamSource source = new SingleStreamSource(myStreams.getOutputLocation(), entry.getFilename());
+    final StreamDataSource source = myStreams.getOutputLocation().getStreamByNameOrCreate(entry.getFilename());
+    final ModelFactory modelFactory = entry.modelFactory();
     return modelFactory.load(source);
   }
 
@@ -196,6 +209,10 @@ public class CheckpointVault {
   // XXX is it possible to get more than 1 Entry changed?
   /*package*/ void saveChanged(StreamHandler handler) {
     if (StreamSupport.stream(myKnownCheckpoints.spliterator(), false).noneMatch(e -> e.myChangedState != null)) {
+      return;
+    }
+    if (myKnownCheckpoints.isEmpty()) {
+      // don't touch any file, let Make/reconcile remove stale
       return;
     }
     Element cpRegistry = buildCheckpointRegistry();
@@ -209,13 +226,22 @@ public class CheckpointVault {
       }
       // buildCheckpointRegistry() above ensures we've got all file names;
       CheckpointState cpState = entry.myChangedState;
-      // FIXME use ModelFactory.save(cpState.getCheckpointModel(), InMemoryDataSource) instead
-      Document d = ModelPersistence.saveModel(((SModelBase) cpState.getCheckpointModel()).getSModel());
-      handler.saveStream(entry.getFilename(), d.getRootElement());
+      final ModelFactory modelFactory = entry.modelFactory();
+      InMemoryStreamDataSource ds = new InMemoryStreamDataSource();
+      try {
+        SModel checkpointModel = cpState.getCheckpointModel();
+        modelFactory.save(checkpointModel, ds, CONVERT_USER_OBJECTS ? UserObjectsPersistence.IGNORED : UserObjectsPersistence.REQUIRED);
+        handler.saveStream(entry.getFilename(), ds.getContentBytes());
+      } catch (Exception ex) {
+        // FIXME what can I do here?
+        Logger.getLogger(CheckpointVault.class).error("Failed to save checkpoint state " + cpState.getCheckpoint(), ex);
+        // ignore
+      }
     }
   }
 
   private static class Entry {
+    private static final FileExtensionDataSourceType CP_MODEL_DATASOURCE_TYPE = PreinstalledDataSourceTypes.MPS; // PreinstalledDataSourceTypes.BINARY
     /*package*/ final CheckpointIdentity myCheckpoint;
     private String myFile;
     /*package*/ CheckpointState myChangedState; // non-null value indicates checkpoint model was updated and need save
@@ -227,10 +253,21 @@ public class CheckpointVault {
 
     private String getFilename() {
       if (myFile == null) {
-        String fname = myCheckpoint.getPlan().getPersistenceValue() + '-' + myCheckpoint.getPersistenceValue() + ".mps";
+        FileExtensionDataSourceType dst = CP_MODEL_DATASOURCE_TYPE;
+        String fname = myCheckpoint.getPlan().getPersistenceValue() + '-' + myCheckpoint.getPersistenceValue() + '.' + dst.getFileExtension();
         myFile = fname;
       }
       return myFile;
+    }
+
+    /*package*/ ModelFactory modelFactory() {
+      final String ext = FileUtil.getExtension(getFilename());
+      if (ext == null) {
+        return PersistenceFacade.getInstance().getModelFactory(PreinstalledDataSourceTypes.MPS);
+      } else {
+        return PersistenceFacade.getInstance().getModelFactory(FileExtensionDataSourceType.of(ext));
+      }
+
     }
   }
 }

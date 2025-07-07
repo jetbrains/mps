@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,24 +15,71 @@
  */
 package jetbrains.mps.ide.dataExtraction;
 
-import com.intellij.ide.impl.dataRules.GetDataRule;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
-import com.intellij.openapi.actionSystem.DataProvider;
+import com.intellij.openapi.actionSystem.DataMap;
+import com.intellij.openapi.actionSystem.DataSink;
+import com.intellij.openapi.actionSystem.DataSnapshot;
+import com.intellij.openapi.actionSystem.UiDataRule;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.wm.IdeFrame;
 import com.intellij.openapi.wm.WindowManager;
+import com.intellij.openapi.wm.ex.WindowManagerEx;
+import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import javax.swing.FocusManager;
 import javax.swing.JFrame;
+import java.awt.Window;
 
-public class FrameRule implements GetDataRule {
+public class FrameRule implements UiDataRule {
+  private static final Logger LOG = Logger.getLogger(FrameRule.class);
+
   @Override
+  public void uiDataSnapshot(@NotNull DataSink dataSink, @NotNull DataSnapshot dataSnapshot) {
+    dataSink.set(MPSCommonDataKeys.FRAME, deduceFrame(dataSnapshot));
+  }
+
   @Nullable
-  public JFrame getData(@NotNull DataProvider dataProvider) {
-    Project project = CommonDataKeys.PROJECT.getData(dataProvider);
+  private JFrame deduceFrame(@NotNull DataMap dataProvider) {
+    Project project = determineProject(dataProvider);
     if (project == null) {
-      return WindowManager.getInstance().findVisibleFrame();
+      LOG.debug("could not determine the current project");
+      return null;
     }
     return WindowManager.getInstance().getFrame(project);
+  }
+
+  @Nullable
+  private Project deduceFromFrameHelper() {
+    var frameHelper = WindowManagerEx.getInstanceEx().findFirstVisibleFrameHelper();
+    if (frameHelper != null) {
+      return frameHelper.getProject();
+    }
+    return null;
+  }
+
+  @Nullable
+  private Project determineProject(@NotNull DataMap dataProvider) {
+    Project project = dataProvider.get(CommonDataKeys.PROJECT);
+    if (project != null) {
+      return project;
+    }
+    project = deduceFromActiveWindow();
+    if (project != null) {
+      return project;
+    }
+    return deduceFromFrameHelper();
+  }
+
+  @Nullable
+  private Project deduceFromActiveWindow() {
+    Project project = null;
+    Window activeWindow = FocusManager.getCurrentManager().getActiveWindow();
+    if (activeWindow instanceof IdeFrame) {
+      project = ((IdeFrame) activeWindow).getProject();
+    }
+    return project;
   }
 }

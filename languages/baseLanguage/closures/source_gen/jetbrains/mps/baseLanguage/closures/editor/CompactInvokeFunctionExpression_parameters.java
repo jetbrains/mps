@@ -10,7 +10,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.editor.runtime.style.StyledTextPrinter;
-import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -22,7 +21,7 @@ public class CompactInvokeFunctionExpression_parameters implements ParametersInf
     return Sequence.<SNode>singleton(SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(node, LINKS.function$NebJ)), CONCEPTS.FunctionType$9U));
   }
   public void getStyledMethodPresentation(SNode node, EditorContext editorContext, SNode parameterObject, StyledTextPrinter styledText) {
-    styledText.append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(parameterObject));
+    ClosureParamsTooltip.createAndHighlight(styledText, node, parameterObject, LINKS.parameter$phiR, editorContext);
   }
   public boolean isMethodCurrent(SNode node, EditorContext editorContext, SNode parameterObject) {
     return true;
@@ -30,6 +29,7 @@ public class CompactInvokeFunctionExpression_parameters implements ParametersInf
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink function$NebJ = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x11fb8425aa8L, 0x11fb842c1adL, "function");
+    /*package*/ static final SContainmentLink parameter$phiR = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x11fb8425aa8L, 0x11fb842da3eL, "parameter");
   }
 
   private static final class CONCEPTS {

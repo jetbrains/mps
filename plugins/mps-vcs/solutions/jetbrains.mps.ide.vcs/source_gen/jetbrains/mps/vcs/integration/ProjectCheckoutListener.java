@@ -4,35 +4,34 @@ package jetbrains.mps.vcs.integration;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.vcs.checkout.CheckoutListener;
+import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
+import java.nio.file.Path;
 import java.io.File;
 import java.io.FilenameFilter;
 import jetbrains.mps.project.MPSExtentions;
-import com.intellij.openapi.ui.Messages;
+import jetbrains.mps.workbench.actions.OpenMPSProjectTrustProjectHelper;
 import com.intellij.ide.impl.ProjectUtil;
+import com.intellij.ide.impl.OpenProjectTask;
 
-@GeneratedClass(node = "r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)/3521790172251160903", model = "r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)")
+@GeneratedClass(nodeId = "3521790172251160903", model = "r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)")
 public class ProjectCheckoutListener implements CheckoutListener {
-  public ProjectCheckoutListener() {
-  }
   @Override
-  public boolean processCheckedOutDirectory(Project project, File directory) {
-    File[] files = directory.listFiles(new FilenameFilter() {
+  public boolean processCheckedOutDirectory(@NotNull Project project, @NotNull Path directory) {
+    File[] files = directory.toFile().listFiles(new FilenameFilter() {
       @Override
       public boolean accept(File dir, String name) {
-        return name.endsWith(MPSExtentions.DOT_MPS_PROJECT);
+        return dir.isFile() && name.endsWith(MPSExtentions.DOT_MPS_PROJECT);
       }
     });
     if (files != null && files.length > 0) {
-      int rc = Messages.showYesNoDialog(project, "You have checked out an MPS project file:\n" + files[0].getAbsolutePath() + "\nWould you like to open it?", "Checkout from Version Control", Messages.getQuestionIcon());
-      if (rc == Messages.YES) {
-        ProjectUtil.openProject(files[0].getAbsolutePath(), project, false);
+      final Path virtualFile = files[0].toPath();
+      if (OpenMPSProjectTrustProjectHelper.checkTrust(virtualFile)) {
+        ProjectUtil.openProject(virtualFile, OpenProjectTask.build().withProjectToClose(project));
+
       }
       return true;
     }
     return false;
-  }
-  @Override
-  public void processOpenedProject(Project lastOpenedProject) {
   }
 }

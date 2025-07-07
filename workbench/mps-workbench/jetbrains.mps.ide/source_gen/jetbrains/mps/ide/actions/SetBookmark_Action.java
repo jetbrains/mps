@@ -15,7 +15,7 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.bookmark.BookmarkManager;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/8131292300541727034", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "8131292300541727034", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class SetBookmark_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -25,6 +25,7 @@ public class SetBookmark_Action extends BaseAction {
     this.num = num_par;
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -57,7 +58,7 @@ public class SetBookmark_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    ((Project) MapSequence.fromMap(_params).get("project")).getComponent(BookmarkManager.class).setBookmark(((SNode) MapSequence.fromMap(_params).get("node")), SetBookmark_Action.this.num);
+    BookmarkManager.getInstance(((Project) MapSequence.fromMap(_params).get("project"))).setBookmark(((SNode) MapSequence.fromMap(_params).get("node")), SetBookmark_Action.this.num);
   }
   @NotNull
   public String getActionId() {

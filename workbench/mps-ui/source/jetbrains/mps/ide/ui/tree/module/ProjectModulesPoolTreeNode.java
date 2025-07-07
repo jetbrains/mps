@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@ import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.GlobalScope;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.structure.ProjectStructureModule;
 import jetbrains.mps.scope.ConditionalScope;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
@@ -76,7 +75,7 @@ public class ProjectModulesPoolTreeNode extends TextTreeNode {
       ModulePoolNamespaceBuilder builder = new ModulePoolNamespaceBuilder();
       TextTreeNode solutions = new TextTreeNode("Solutions");
       for (SModule s : modules) {
-        if (s instanceof Solution || s instanceof ProjectStructureModule) {
+        if (s instanceof Solution) {
           builder.addNode(ProjectModuleTreeNode.createFor(myProject, s, true));
         }
       }

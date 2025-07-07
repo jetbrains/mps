@@ -18,13 +18,10 @@ import jetbrains.mps.baseLanguage.checkedDots.behavior.CheckedDotExpression__Beh
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import java.util.Iterator;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.generator.template.MapSrcMacroContext;
 import jetbrains.mps.generator.template.TemplateQueryContext;
@@ -38,7 +35,6 @@ import jetbrains.mps.generator.template.ReductionRuleQueryContext;
 import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.impl.query.MapConfigurationCondition;
 import jetbrains.mps.generator.impl.query.SourceNodeQuery;
-import jetbrains.mps.generator.impl.query.QueryKeyImpl;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.impl.query.SourceNodesQuery;
 import java.util.Collection;
@@ -49,7 +45,6 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.generator.impl.query.IfMacroCondition;
 import jetbrains.mps.generator.impl.query.ReferenceTargetQuery;
 import jetbrains.mps.generator.impl.query.MapNodeQuery;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -121,14 +116,14 @@ public class QueriesGenerated extends QueryProviderBase {
   public static SNode sourceNodeQuery_1_3(final SourceSubstituteMacroNodeContext _context) {
     SNode operationType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E));
     if (SNodeOperations.isInstanceOf(operationType, CONCEPTS.PrimitiveType$sR)) {
-      // I don't want void return type to become java.lang.Void, nor do I need extra boxing for boolean/int values 
-      // I don't do the same for method arguments, however, as expect a lot of primitives as operand or variable references. 
+      // I don't want void return type to become java.lang.Void, nor do I need extra boxing for boolean/int values
+      // I don't do the same for method arguments, however, as expect a lot of primitives as operand or variable references.
       return operationType;
     }
     if (SNodeOperations.isInstanceOf(operationType, CONCEPTS.ArrayType$rh)) {
-      // coerce(AnAction[] as ClassifierType) gives Serializable. 
-      // This gonna fail once we face array of smth that is not ClassifierType (e.g. concept<>[]) 
-      // and our only hope is that proper generator shows up afterwards. 
+      // coerce(AnAction[] as ClassifierType) gives Serializable.
+      // This gonna fail once we face array of smth that is not ClassifierType (e.g. concept<>[])
+      // and our only hope is that proper generator shows up afterwards.
       return operationType;
     }
     return TypecheckingFacade.getFromContext().coerceType(operationType, CONCEPTS.ClassifierType$bL);
@@ -136,7 +131,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static SNode sourceNodeQuery_1_4(final SourceSubstituteMacroNodeContext _context) {
     SNode operandType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.operand$w6IR));
     if (SNodeOperations.isInstanceOf(operandType, CONCEPTS.ArrayType$rh)) {
-      //  see similar code and corresponding comment of return value 
+      //  see similar code and corresponding comment of return value
       return operandType;
     }
     SNode result = TypecheckingFacade.getFromContext().coerceType(operandType, CONCEPTS.ClassifierType$bL);
@@ -148,7 +143,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static SNode sourceNodeQuery_1_5(final SourceSubstituteMacroNodeContext _context) {
     SNode nodeType = TypecheckingFacade.getFromContext().getTypeOf(_context.getNode());
     if (SNodeOperations.isInstanceOf(nodeType, CONCEPTS.ArrayType$rh)) {
-      //  see similar code and corresponding comment of return value 
+      //  see similar code and corresponding comment of return value
       return nodeType;
     }
     return TypecheckingFacade.getFromContext().coerceType(nodeType, CONCEPTS.ClassifierType$bL);
@@ -164,16 +159,8 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
     Iterable<SNode> refs = ReferenceConversionHelper.retrieveDescendentRefsAndConceptFunctionParams(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E));
-    if (Sequence.fromIterable(refs).select(new ISelector<SNode, String>() {
-      public String select(SNode ref) {
-        return ReferenceConversionHelper.getRefOrConceptFunctionParamName(ref);
-      }
-    }).distinct().count() != Sequence.fromIterable(refs).count()) {
-      Sequence.fromIterable(refs).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          it.putUserObject("needsUniqueName", true);
-        }
-      });
+    if (Sequence.fromIterable(refs).select((SNode ref) -> ReferenceConversionHelper.getRefOrConceptFunctionParamName(ref)).distinct().count() != Sequence.fromIterable(refs).count()) {
+      Sequence.fromIterable(refs).visitAll((it) -> it.putUserObject("needsUniqueName", true));
     }
     return refs;
   }
@@ -181,23 +168,17 @@ public class QueriesGenerated extends QueryProviderBase {
     Iterable<SNode> callsToConsider = ReferenceConversionHelper.retrieveDescendentMethodCalls(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E));
 
     final List<SNode> throwns = ListSequence.fromList(new ArrayList<SNode>());
-    Sequence.fromIterable(callsToConsider).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode call) {
-        SNode declaration;
-        declaration = SLinkOperations.getTarget(call, LINKS.baseMethodDeclaration$pyYw);
-        ListSequence.fromList(throwns).addSequence(ListSequence.fromList(SLinkOperations.getChildren(declaration, LINKS.throwsItem$CdW$)));
-      }
+    Sequence.fromIterable(callsToConsider).visitAll((call) -> {
+      SNode declaration;
+      declaration = SLinkOperations.getTarget(call, LINKS.baseMethodDeclaration$pyYw);
+      ListSequence.fromList(throwns).addSequence(ListSequence.fromList(SLinkOperations.getChildren(declaration, LINKS.throwsItem$CdW$)));
     });
 
     List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
     Iterator<SNode> iter = ListSequence.fromList(throwns).iterator();
     while (iter.hasNext()) {
       final SNode next = iter.next();
-      if (SNodeOperations.isInstanceOf(next, CONCEPTS.ClassifierType$bL) && ListSequence.fromList(result).all(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(Objects.equals(SLinkOperations.getTarget(it, LINKS.classifier$cxMr), SLinkOperations.getTarget(SNodeOperations.cast(next, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr)));
-        }
-      })) {
+      if (SNodeOperations.isInstanceOf(next, CONCEPTS.ClassifierType$bL) && ListSequence.fromList(result).all((it) -> !(Objects.equals(SLinkOperations.getTarget(it, LINKS.classifier$cxMr), SLinkOperations.getTarget(SNodeOperations.cast(next, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr))))) {
         ListSequence.fromList(result).addElement(SNodeOperations.cast(next, CONCEPTS.ClassifierType$bL));
       }
     }
@@ -213,6 +194,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.actualArgument$pzdx);
   }
   public static SNode mapSrcMacro_map_1_0(final MapSrcMacroContext _context) {
+    // Here comes speciality of MAP_SRC macro. Despite the fact we iterate over input model, we can't replace it
+    // COPY_SRCL, as there's another rule that updates the references, and idea behind this seemingly no-op `return node`
+    //  is to give node as it was the moment method was extracted, not transformed with a reference to parameter as if from within
+    //  the generated checkXXX method. Perhaps, could have accomplished the same with LOOP + INSERT, didn't check.
     return _context.getNode();
   }
   public static boolean mc_Condition_0(final TemplateQueryContext _context) {
@@ -228,11 +213,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public ReductionRuleCondition getReductionRuleCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(rrcMethods.containsKey(id))) {
-      return super.getReductionRuleCondition(identity);
-    }
-    return rrcMethods.get(id);
+    ReductionRuleCondition query = identity.forTemplateNode(rrcMethods);
+    return (query != null ? query : super.getReductionRuleCondition(identity));
   }
   private static class RRC implements ReductionRuleCondition {
     private final int methodKey;
@@ -261,11 +243,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public MapConfigurationCondition getMapConfigurationCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(mccMethods.containsKey(id))) {
-      return super.getMapConfigurationCondition(identity);
-    }
-    return mccMethods.get(id);
+    MapConfigurationCondition query = identity.forTemplateNode(mccMethods);
+    return (query != null ? query : super.getMapConfigurationCondition(identity));
   }
   private static class MCC implements MapConfigurationCondition {
     private final int methodKey;
@@ -298,11 +277,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public SourceNodeQuery getSourceNodeQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snqMethods.containsKey(id))) {
-      return super.getSourceNodeQuery(identity);
-    }
-    return snqMethods.get(id);
+    SourceNodeQuery query = identity.forFunctionNode(snqMethods);
+    return (query != null ? query : super.getSourceNodeQuery(identity));
   }
   private static class SNQ implements SourceNodeQuery {
     private final int methodKey;
@@ -341,17 +317,14 @@ public class QueriesGenerated extends QueryProviderBase {
     snsqMethods.put("629557350449693433", new SNsQ(i++));
     snsqMethods.put("5837079428841717746", new SNsQ(i++));
     snsqMethods.put("131924539844672796", new SNsQ(i++));
-    snsqMethods.put("4726684212254314052", new SNsQ(i++));
+    snsqMethods.put("19720371281058797", new SNsQ(i++));
     snsqMethods.put("4741735385321357379", new SNsQ(i++));
   }
   @NotNull
   @Override
   public SourceNodesQuery getSourceNodesQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snsqMethods.containsKey(id))) {
-      return super.getSourceNodesQuery(identity);
-    }
-    return snsqMethods.get(id);
+    SourceNodesQuery query = identity.forFunctionNode(snsqMethods);
+    return (query != null ? query : super.getSourceNodesQuery(identity));
   }
   private static class SNsQ implements SourceNodesQuery {
     private final int methodKey;
@@ -385,11 +358,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public PropertyValueQuery getPropertyValueQuery(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(pvqMethods.containsKey(id))) {
-      return super.getPropertyValueQuery(identity);
-    }
-    return pvqMethods.get(id);
+    PropertyValueQuery query = identity.forTemplateNode(pvqMethods);
+    return (query != null ? query : super.getPropertyValueQuery(identity));
   }
   private static class PVQ extends PropertyValueQuery.Base {
     private final int methodKey;
@@ -420,11 +390,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public IfMacroCondition getIfMacroCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(imcMethods.containsKey(id))) {
-      return super.getIfMacroCondition(identity);
-    }
-    return imcMethods.get(id);
+    IfMacroCondition query = identity.forTemplateNode(imcMethods);
+    return (query != null ? query : super.getIfMacroCondition(identity));
   }
   private static class IfMC implements IfMacroCondition {
     private final int methodKey;
@@ -456,11 +423,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public ReferenceTargetQuery getReferenceTargetQuery(@NotNull QueryKey queryKey) {
-    final String id = queryKey.getTemplateNode().getNodeId().toString();
-    if (!(rtqMethods.containsKey(id))) {
-      return super.getReferenceTargetQuery(queryKey);
-    }
-    return rtqMethods.get(id);
+    ReferenceTargetQuery query = queryKey.forTemplateNode(rtqMethods);
+    return (query != null ? query : super.getReferenceTargetQuery(queryKey));
   }
   private static class RTQ extends ReferenceTargetQuery.Base {
     private final int methodKey;
@@ -484,16 +448,13 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, MapNodeQuery> mnqMethods = new HashMap<String, MapNodeQuery>();
   {
-    mnqMethods.put("4726684212254314050", new MNQ(0));
+    mnqMethods.put("19720371281058796", new MNQ(0));
   }
   @NotNull
   @Override
   public MapNodeQuery getMapNodeQuery(@NotNull QueryKey queryKey) {
-    final String id = queryKey.getTemplateNode().getNodeId().toString();
-    if (!(mnqMethods.containsKey(id))) {
-      return super.getMapNodeQuery(queryKey);
-    }
-    return mnqMethods.get(id);
+    MapNodeQuery query = queryKey.forTemplateNode(mnqMethods);
+    return (query != null ? query : super.getMapNodeQuery(queryKey));
   }
   private static class MNQ implements MapNodeQuery {
     private final int methodKey;
@@ -511,9 +472,9 @@ public class QueriesGenerated extends QueryProviderBase {
     }
   }
   private static SNode _quotation_createNode_x583g4_a0a12() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf93d4da00cL, "ThisExpression")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf93d4da00cL, "ThisExpression"));
+    quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
 

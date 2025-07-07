@@ -10,9 +10,7 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -35,23 +33,11 @@ public class AddReturnTypeToConstructorDeclaration extends MigrationScriptBase {
     {
       SearchScope scope_kg2ekj_a0e = CommandUtil.createScope(m);
       final SearchScope scope_kg2ekj_a0e_0 = new EditableFilteringScope(scope_kg2ekj_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_kg2ekj_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConstructorDeclaration$yG, true)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.returnType$5xoi) == null;
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SLinkOperations.setNewChild(it, LINKS.returnType$5xoi, CONCEPTS.VoidType$BF);
-        }
-      });
+      QueryExecutionContext context = () -> scope_kg2ekj_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConstructorDeclaration$yG, true)).where((it) -> SLinkOperations.getTarget(it, LINKS.returnType$5xoi) == null).visitAll((it) -> SLinkOperations.setNewChild(it, LINKS.returnType$5xoi, CONCEPTS.VoidType$BF));
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 5);
   }
 

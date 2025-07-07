@@ -12,7 +12,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.behavior.Expression__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.baseLanguage.behavior.BinaryOperation__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.ParenthesisUtil;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -25,20 +24,20 @@ public class PrecedenceUtil {
     SNode targetNode = contextNode;
     for (SNode parentNode = SNodeOperations.getParent(targetNode); parentNode != null && SNodeOperations.isInstanceOf(parentNode, CONCEPTS.Expression$mB); parentNode = SNodeOperations.getParent(targetNode)) {
       if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.IMethodCall$M9) || SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ParenthesizedExpression$Ws)) {
-        // if parent expression is IMethodCall then targetNode is either actualArgument 
-        // or typeArgument (parameters of method call), so we should not go upper 
-        // same with ParenthesizedExpression 
+        // if parent expression is IMethodCall then targetNode is either actualArgument
+        // or typeArgument (parameters of method call), so we should not go upper
+        // same with ParenthesizedExpression
         break;
       }
       SContainmentLink targetContainingLink = SNodeOperations.getContainingLink(targetNode);
       if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BinaryOperation$W1) && Objects.equals(targetContainingLink, LINKS.leftExpression$sEj)) {
-        // if parent expression is BinaryOperation and target is left child of it 
-        // then we should rather transform current target 
+        // if parent expression is BinaryOperation and target is left child of it
+        // then we should rather transform current target
         break;
       }
       if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.DotExpression$yW) && Objects.equals(targetContainingLink, LINKS.operand$w6IR)) {
-        // if parent expression is DotExpression and target is operand ("left" part of the expression) 
-        // then we should rather transform current target 
+        // if parent expression is DotExpression and target is operand ("left" part of the expression)
+        // then we should rather transform current target
         break;
       }
       targetNode = SNodeOperations.cast(parentNode, CONCEPTS.Expression$mB);
@@ -51,14 +50,14 @@ public class PrecedenceUtil {
     SNode targetNode = contextNode;
     for (SNode parentNode = SNodeOperations.getParent(targetNode); parentNode != null && SNodeOperations.isInstanceOf(parentNode, CONCEPTS.Expression$mB) && getPriority(SNodeOperations.castConcept(SNodeOperations.getConcept(parentNode), CONCEPTS.Expression$mB)).ordinal() < resultingExpressionPriority; parentNode = SNodeOperations.getParent(targetNode)) {
       if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.IMethodCall$M9) || SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ParenthesizedExpression$Ws)) {
-        // if parent expression is IMethodCall then targetNode is either actualArgument 
-        // or typeArgument (parameters of method call), so we should not go upper 
-        // same with ParenthesizedExpression 
+        // if parent expression is IMethodCall then targetNode is either actualArgument
+        // or typeArgument (parameters of method call), so we should not go upper
+        // same with ParenthesizedExpression
         break;
       }
       if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BinaryOperation$W1) && Objects.equals(SNodeOperations.getContainingLink(targetNode), LINKS.rightExpression$nvX)) {
-        // if parent expression is BinaryOperation having higher priority and target is right child of it 
-        // then we should rather transform current target and add additional parenthesis around resulting expression 
+        // if parent expression is BinaryOperation having higher priority and target is right child of it
+        // then we should rather transform current target and add additional parenthesis around resulting expression
         break;
       }
       targetNode = SNodeOperations.cast(parentNode, CONCEPTS.Expression$mB);
@@ -89,12 +88,12 @@ public class PrecedenceUtil {
 
   public static boolean needsParensInsideCastExpression(SNode castExpression) {
     SNode targetExpr = SLinkOperations.getTarget(castExpression, LINKS.expression$XDmN);
-    return !(((targetExpr == null) || (boolean) Expression__BehaviorDescriptor.constant_id1653mnvAgr2.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(targetExpr))) || SNodeOperations.isInstanceOf(targetExpr, CONCEPTS.GenericNewExpression$Fh) || (!(SNodeOperations.isInstanceOf(targetExpr, CONCEPTS.TernaryOperatorExpression$aq)) && !(SNodeOperations.isInstanceOf(targetExpr, CONCEPTS.BinaryOperation$W1))) || PrecedenceUtil.isHigherPriority(targetExpr, castExpression)));
+    return !((targetExpr == null) || (boolean) Expression__BehaviorDescriptor.constant_id1653mnvAgr2.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(targetExpr))) || SNodeOperations.isInstanceOf(targetExpr, CONCEPTS.GenericNewExpression$Fh) || (!(SNodeOperations.isInstanceOf(targetExpr, CONCEPTS.TernaryOperatorExpression$aq)) && !(SNodeOperations.isInstanceOf(targetExpr, CONCEPTS.BinaryOperation$W1))) || PrecedenceUtil.isHigherPriority(targetExpr, castExpression));
 
   }
 
   public static boolean needsParensAroundNotExpression(SNode notExpression) {
-    return !(((SLinkOperations.getTarget(notExpression, LINKS.expression$sv_H) == null) || (boolean) Expression__BehaviorDescriptor.constant_id1653mnvAgr2.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(notExpression, LINKS.expression$sv_H)))) || (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(notExpression, LINKS.expression$sv_H), CONCEPTS.TernaryOperatorExpression$aq)) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(notExpression, LINKS.expression$sv_H), CONCEPTS.BinaryOperation$W1))) || PrecedenceUtil.isHigherPriority(SLinkOperations.getTarget(notExpression, LINKS.expression$sv_H), notExpression)));
+    return !((SLinkOperations.getTarget(notExpression, LINKS.expression$sv_H) == null) || (boolean) Expression__BehaviorDescriptor.constant_id1653mnvAgr2.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(notExpression, LINKS.expression$sv_H)))) || (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(notExpression, LINKS.expression$sv_H), CONCEPTS.TernaryOperatorExpression$aq)) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(notExpression, LINKS.expression$sv_H), CONCEPTS.BinaryOperation$W1))) || PrecedenceUtil.isHigherPriority(SLinkOperations.getTarget(notExpression, LINKS.expression$sv_H), notExpression));
 
   }
 
@@ -114,82 +113,19 @@ public class PrecedenceUtil {
   private static boolean isHigherPriority(SNode firstExpression, SNode secondExpression) {
     return getPriority(SNodeOperations.getConcept(firstExpression)).ordinal() < getPriority(SNodeOperations.getConcept(secondExpression)).ordinal();
   }
-  private static Precedence getPriority(SConcept expression) {
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.BinaryOperation$W1)) {
-      switch ((int) BinaryOperation__BehaviorDescriptor.getPriority_id1653mnvAgo2.invoke(SNodeOperations.asSConcept(SNodeOperations.castConcept(expression, CONCEPTS.BinaryOperation$W1)))) {
-        case 2:
-          // || 
-          return Precedence.J_13;
-        case 3:
-          // && 
-          return Precedence.J_12;
-        case 4:
-          // | 
-          return Precedence.J_11;
-        case 5:
-          // ^ 
-          return Precedence.J_10;
-        case 6:
-          // & 
-          return Precedence.J_9;
-        case 7:
-          // ==, != 
-          return Precedence.J_8;
-        case 8:
-          // <, <=, >, >= 
-          return Precedence.J_7;
-        case 9:
-          // >>, << 
-          return Precedence.J_6;
-        case 10:
-          // +, - 
-          return Precedence.J_5;
-        case 11:
-          // *, /, % 
-          return Precedence.J_4;
-        default:
-      }
-    }
 
-    // TODO: not sure concerning ParenthesizedExpression priorities.. 
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.ParenthesizedExpression$Ws)) {
-      return Precedence.PARENTHESES;
+  private static Precedence getPriority(SConcept expression) {
+    Precedence precedenceLevel = Expression__BehaviorDescriptor.getPrecedenceLevel_id1O90zDONSxM.invoke(SNodeOperations.asSConcept(expression));
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.IMethodCall$M9) && precedenceLevel == Precedence.DEFAULT) {
+      return Precedence.ARRAY_OPERATIONS_AND_METHOD_CALLS;
     }
-    // TODO: m.b. we should make "Default" precenence higher then all the user extensions 
-    // TODO: will be recognized as high-priority expressions 
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.ArrayAccessExpression$Eu) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.IMethodCall$M9) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.VariableReference$TC) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.LocalPropertyReference$x2) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.MapElement$NJ) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.ListElementAccessExpression$rS) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.SNodeTypeCastExpression$TK)) {
-      return Precedence.ARRAY_OPARATIONS_AND_METHOD_CALLS;
-    }
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.DotExpression$yW)) {
-      return Precedence.DOT_EXPRESSION;
-    }
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.SemanticDowncastExpression$vW)) {
-      return Precedence.DOT_EXPRESSION;
-    }
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.PostfixIncrementExpression$wn) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.PostfixDecrementExpression$GY)) {
-      return Precedence.POSTFIX_EXPRESSIONS;
-    }
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.PrefixIncrementExpression$xI) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.PrefixDecrementExpression$En) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.UnaryMinus$na) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.NotExpression$Pc) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.BitwiseNotExpression$2A)) {
-      return Precedence.J_2;
-    }
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.CastExpression$$8) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.GenericNewExpression$Fh)) {
-      return Precedence.J_3;
-    }
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.InstanceOfExpression$cu)) {
-      return Precedence.J_7;
-    }
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.TernaryOperatorExpression$aq)) {
-      return Precedence.J_14;
-    }
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.BaseAssignmentExpression$PA)) {
-      return Precedence.J_15;
-    }
-    return Precedence.DEFAULT;
+    return precedenceLevel;
   }
+
   public static SNode processLeftTransform(SNode sourceNode, SNode result) {
     SNode nodeToProcess = PrecedenceUtil.getTargetForLeftTransform(sourceNode, result);
-    // since BinaryOperations are left-associative we should perform complex LT then 
-    // BinaryOperations is "rightExpression" child of another BinaryOperations with same priority 
+    // since BinaryOperations are left-associative we should perform complex LT then
+    // BinaryOperations is "rightExpression" child of another BinaryOperations with same priority
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(nodeToProcess), CONCEPTS.BinaryOperation$W1) && Objects.equals(SNodeOperations.getContainingLink(nodeToProcess), LINKS.rightExpression$nvX)) {
       SNode parentBinaryOperation = SNodeOperations.cast(SNodeOperations.getParent(nodeToProcess), CONCEPTS.BinaryOperation$W1);
       if (PrecedenceUtil.isSamePriority(parentBinaryOperation, result)) {
@@ -210,9 +146,9 @@ public class PrecedenceUtil {
     ParenthesisUtil.checkOperationWRTPriority(result);
     return result;
   }
-  private enum Precedence {
+  public enum Precedence {
     PARENTHESES(),
-    ARRAY_OPARATIONS_AND_METHOD_CALLS(),
+    ARRAY_OPERATIONS_AND_METHOD_CALLS(),
     DOT_EXPRESSION(),
     POSTFIX_EXPRESSIONS(),
     J_2(),
@@ -232,13 +168,13 @@ public class PrecedenceUtil {
     DEFAULT();
 
     Precedence() {
-      // All J_ constants corresponds to the levels "defined" in java - see 
-      // http://www.cs.princeton.edu/introcs/11precedence/ 
+      // All J_ constants corresponds to the levels "defined" in java - see
+      // http://www.cs.princeton.edu/introcs/11precedence/
 
-      // All MPS_ constants were introduced in MPS languages 
+      // All MPS_ constants were introduced in MPS languages
 
-      // Actual priority of Expression is determined by ordinal of corresponding 
-      // enumeration constant upper constants has higher priority then lower 
+      // Actual priority of Expression is determined by ordinal of corresponding
+      // enumeration constant upper constants has higher priority then lower
     }
   }
 
@@ -251,22 +187,6 @@ public class PrecedenceUtil {
     /*package*/ static final SConcept CastExpression$$8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, "jetbrains.mps.baseLanguage.structure.CastExpression");
     /*package*/ static final SConcept TernaryOperatorExpression$aq = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression");
     /*package*/ static final SConcept GenericNewExpression$Fh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, "jetbrains.mps.baseLanguage.structure.GenericNewExpression");
-    /*package*/ static final SConcept SNodeTypeCastExpression$TK = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10975850da7L, "jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression");
-    /*package*/ static final SConcept ListElementAccessExpression$rS = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d6213c318L, "jetbrains.mps.baseLanguage.collections.structure.ListElementAccessExpression");
-    /*package*/ static final SConcept ArrayAccessExpression$Eu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11126b40c25L, "jetbrains.mps.baseLanguage.structure.ArrayAccessExpression");
-    /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
-    /*package*/ static final SConcept LocalPropertyReference$x2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x515d7a8d927e9fb3L, "jetbrains.mps.baseLanguage.structure.LocalPropertyReference");
-    /*package*/ static final SConcept MapElement$NJ = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116ea555a25L, "jetbrains.mps.baseLanguage.collections.structure.MapElement");
-    /*package*/ static final SConcept SemanticDowncastExpression$vW = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aaf6d7435L, "jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression");
-    /*package*/ static final SConcept PostfixIncrementExpression$wn = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11adecdb4f0L, "jetbrains.mps.baseLanguage.structure.PostfixIncrementExpression");
-    /*package*/ static final SConcept PostfixDecrementExpression$GY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11aded05fe6L, "jetbrains.mps.baseLanguage.structure.PostfixDecrementExpression");
-    /*package*/ static final SConcept BitwiseNotExpression$2A = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d6d026f5fL, "jetbrains.mps.baseLanguage.structure.BitwiseNotExpression");
-    /*package*/ static final SConcept UnaryMinus$na = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6fea7de6103549b1L, "jetbrains.mps.baseLanguage.structure.UnaryMinus");
-    /*package*/ static final SConcept PrefixDecrementExpression$En = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a472f0e8L, "jetbrains.mps.baseLanguage.structure.PrefixDecrementExpression");
-    /*package*/ static final SConcept PrefixIncrementExpression$xI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a46df580L, "jetbrains.mps.baseLanguage.structure.PrefixIncrementExpression");
-    /*package*/ static final SConcept NotExpression$Pc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, "jetbrains.mps.baseLanguage.structure.NotExpression");
-    /*package*/ static final SConcept InstanceOfExpression$cu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, "jetbrains.mps.baseLanguage.structure.InstanceOfExpression");
-    /*package*/ static final SConcept BaseAssignmentExpression$PA = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, "jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression");
   }
 
   private static final class LINKS {

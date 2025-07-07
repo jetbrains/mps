@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.build.util.MacroHelper;
 import java.util.List;
@@ -28,9 +27,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class BuildVarRefStringPart__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d01L, "jetbrains.mps.build.structure.BuildVarRefStringPart");
 
-  public static final SMethod<String> getText_id3NagsOfTq4Y = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getText").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3NagsOfTq4Y").build(SMethodBuilder.createJavaParameter(MacroHelper.class, ""));
-  public static final SMethod<Boolean> isLastPositionAllowed_idyEtdY40wNH = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLastPositionAllowed").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("yEtdY40wNH").build();
-  public static final SMethod<Boolean> isFirstPositionAllowed_idyEtdY40p7m = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFirstPositionAllowed").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("yEtdY40p7m").build();
+  public static final SMethod<String> getText_id3NagsOfTq4Y = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4380385936562037054L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(MacroHelper.class, ""));
+  public static final SMethod<Boolean> isLastPositionAllowed_idyEtdY40wNH = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLastPositionAllowed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(624440001685490925L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
+  public static final SMethod<Boolean> isFirstPositionAllowed_idyEtdY40p7m = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFirstPositionAllowed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(624440001685459414L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getText_id3NagsOfTq4Y, isLastPositionAllowed_idyEtdY40wNH, isFirstPositionAllowed_idyEtdY40p7m);
 
@@ -42,8 +41,7 @@ public final class BuildVarRefStringPart__BehaviorDescriptor extends BaseBHDescr
     if (helper != null) {
       macroName = helper.getName(SLinkOperations.getTarget(__thisNode__, LINKS.macro$zsHz));
       if (macroName == null) {
-        helper.report("macro " + SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.macro$zsHz), PROPS.name$MnvL) + " is not available in " + helper.getProjectName() + ", make it exportable", __thisNode__);
-        macroName = "???";
+        helper.report(String.format("macro %s is not available in %s, make it exportable", SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.macro$zsHz), PROPS.name$MnvL), helper.getProjectName()), __thisNode__);
       }
     }
     return "${" + macroName + "}";

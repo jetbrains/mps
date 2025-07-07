@@ -13,13 +13,9 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.SLanguageHierarchy;
 import jetbrains.mps.smodel.ModelDependencyResolver;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -41,32 +37,14 @@ public abstract class SubconceptsScope extends Scope {
     SRepository repository = model.getRepository();
     LanguageRegistry languageRegistry = LanguageRegistry.getInstance(repository);
     Collection<SLanguage> usedLanguages = new SLanguageHierarchy(languageRegistry, new ModelDependencyResolver(languageRegistry, repository).usedLanguages(model)).getExtended();
-    Iterable<SNode> allConcepts = CollectionSequence.fromCollection(usedLanguages).select(new ISelector<SLanguage, SModule>() {
-      public SModule select(SLanguage it) {
-        return it.getSourceModule();
-      }
-    }).select(new ISelector<SModule, SModel>() {
-      public SModel select(SModule it) {
-        return SModuleOperations.getAspect(it, "structure");
-      }
-    }).translate(new ITranslator2<SModel, SNode>() {
-      public Iterable<SNode> translate(SModel it) {
-        return SModelOperations.roots(it, CONCEPTS.AbstractConceptDeclaration$KA);
-      }
-    });
-    Iterable<SNode> subConcepts = Sequence.fromIterable(allConcepts).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(it, concept);
-      }
-    });
+    Iterable<SNode> allConcepts = CollectionSequence.fromCollection(usedLanguages).select((it) -> it.getSourceModule()).select((it) -> SModuleOperations.getAspect(it, "structure")).translate((it) -> SModelOperations.roots(it, CONCEPTS.AbstractConceptDeclaration$KA));
+    Iterable<SNode> subConcepts = Sequence.fromIterable(allConcepts).where((it) -> (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(it, concept));
     if (prefix == null || prefix.isEmpty()) {
       return subConcepts;
     }
-    return Sequence.fromIterable(subConcepts).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        String name = getName(it);
-        return name != null && name.startsWith(prefix);
-      }
+    return Sequence.fromIterable(subConcepts).where((it) -> {
+      String name = getName(it);
+      return name != null && name.startsWith(prefix);
     });
   }
   @Nullable
@@ -96,7 +74,7 @@ public abstract class SubconceptsScope extends Scope {
       }
       String name = getName(n);
       if (name.equals(result)) {
-        // ambiguity 
+        // ambiguity
         return null;
       }
     }

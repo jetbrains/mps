@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.module.SModule;
 import java.util.List;
@@ -25,9 +24,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class NotEqualsExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf9e20e303fL, "jetbrains.mps.baseLanguage.structure.NotEqualsExpression");
 
-  public static final SMethod<Integer> getPriority_id1653mnvAgo2 = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getPriority").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgo2").build();
-  public static final SMethod<Object> calculateCompileTimeConstantValue_id1o8Ht9sN5Hn = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("calculateCompileTimeConstantValue").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1o8Ht9sN5Hn").build(SMethodBuilder.createJavaParameter(Object.class, ""), SMethodBuilder.createJavaParameter(Object.class, ""));
-  public static final SMethod<Object> getCompileTimeConstantValue_idi1LP2xI = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("getCompileTimeConstantValue").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i1LP2xI").build(SMethodBuilder.createJavaParameter(SModule.class, ""));
+  public static final SMethod<Integer> getPriority_id1653mnvAgo2 = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getPriority").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741497858L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Object> calculateCompileTimeConstantValue_id1o8Ht9sN5Hn = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("calculateCompileTimeConstantValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1587718783752756055L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(Object.class, ""), SMethodBuilder.createJavaParameter(Object.class, ""));
+  public static final SMethod<Object> getCompileTimeConstantValue_idi1LP2xI = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("getCompileTimeConstantValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1238860310638L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(SModule.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPriority_id1653mnvAgo2, calculateCompileTimeConstantValue_id1o8Ht9sN5Hn, getCompileTimeConstantValue_idi1LP2xI);
 
@@ -61,7 +60,7 @@ public final class NotEqualsExpression__BehaviorDescriptor extends BaseBHDescrip
     return (leftValue != null && rightValue != null ? leftValue != rightValue : null);
   }
   /*package*/ static Object getCompileTimeConstantValue_idi1LP2xI(@NotNull SNode __thisNode__, SModule module) {
-    if (VariableReferenceUtil.referencesPointToSameVariableDeclaration(SLinkOperations.getTarget(__thisNode__, LINKS.leftExpression$sEj), SLinkOperations.getTarget(__thisNode__, LINKS.rightExpression$nvX))) {
+    if ((boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.leftExpression$sEj)) && (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.rightExpression$nvX)) && VariableReferenceUtil.referencesPointToSameVariableDeclaration(SLinkOperations.getTarget(__thisNode__, LINKS.leftExpression$sEj), SLinkOperations.getTarget(__thisNode__, LINKS.rightExpression$nvX))) {
       return false;
     }
     return ((Object) Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invokeSuper(__thisNode__, CONCEPTS.NotEqualsExpression$aX, module));

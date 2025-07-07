@@ -9,7 +9,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.debugger.java.api.evaluation.transform.TransformatorBuilder;
+import jetbrains.mps.debugger.java.runtime.evaluation.transform.TransformationUtil;
 import jetbrains.mps.debugger.java.customViewers.behavior.HighLevelCustomViewer__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
@@ -20,14 +20,12 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.generator.template.MapSrcMacroPostProcContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.generator.template.MappingScriptContext;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.debugger.java.runtime.evaluation.transform.TransformatorImpl;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.CreateRootCondition;
 import java.util.HashMap;
@@ -36,7 +34,6 @@ import jetbrains.mps.generator.impl.query.QueryKey;
 import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.impl.query.ScriptCodeBlock;
 import jetbrains.mps.generator.impl.query.SourceNodeQuery;
-import jetbrains.mps.generator.impl.query.QueryKeyImpl;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.impl.query.SourceNodesQuery;
 import java.util.Collection;
@@ -69,10 +66,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_3_0(final PropertyMacroContext _context) {
-    return TransformatorBuilder.getInstance().getJniSignatureFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
+    return TransformationUtil.getJniSignatureFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
   }
   public static Object propertyMacro_GetValue_3_1(final PropertyMacroContext _context) {
-    return TransformatorBuilder.getInstance().getJniSignatureFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
+    return TransformationUtil.getJniSignatureFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
   }
   public static Object propertyMacro_GetValue_3_2(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL) + "Wrapper";
@@ -120,31 +117,31 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.getPresentation$wMV3) != null);
   }
   public static SNode sourceNodeQuery_3_0(final SourceSubstituteMacroNodeContext _context) {
-    return TransformatorBuilder.getInstance().getProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
+    return TransformationUtil.getValueProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
   }
   public static SNode sourceNodeQuery_3_1(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.canWrap$tqnC), LINKS.body$e68K);
   }
   public static SNode sourceNodeQuery_3_2(final SourceSubstituteMacroNodeContext _context) {
-    return TransformatorBuilder.getInstance().getProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
+    return TransformationUtil.getValueProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
   }
   public static SNode sourceNodeQuery_3_3(final SourceSubstituteMacroNodeContext _context) {
-    return TransformatorBuilder.getInstance().getProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
+    return TransformationUtil.getValueProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
   }
   public static SNode sourceNodeQuery_3_4(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.getWatchables$wNa4), LINKS.body$e68K);
   }
   public static SNode sourceNodeQuery_3_5(final SourceSubstituteMacroNodeContext _context) {
-    return TransformatorBuilder.getInstance().getProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
+    return TransformationUtil.getValueProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
   }
   public static SNode sourceNodeQuery_3_6(final SourceSubstituteMacroNodeContext _context) {
-    return TransformatorBuilder.getInstance().getProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
+    return TransformationUtil.getValueProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
   }
   public static SNode sourceNodeQuery_3_7(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.getPresentation$wMV3), LINKS.body$e68K);
   }
   public static SNode sourceNodeQuery_3_8(final SourceSubstituteMacroNodeContext _context) {
-    return TransformatorBuilder.getInstance().getProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
+    return TransformationUtil.getValueProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
   }
   public static SNode sourceNodeQuery_5_0(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.valueProxyType$DzNl);
@@ -159,62 +156,54 @@ public class QueriesGenerated extends QueryProviderBase {
     return SModelOperations.roots(_context.getInputModel(), CONCEPTS.HighLevelCustomViewer$Bb);
   }
   public static void mapSrcMacro_post_3_0(final MapSrcMacroPostProcContext _context) {
-    AttributeOperations.createAndSetAttrbiute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.ToProcessMethod$O5), CONCEPTS.ToProcessMethod$O5);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.ToProcessMethod$O5).setNew(_context.getOutputNode());
   }
   public static void mapSrcMacro_post_3_1(final MapSrcMacroPostProcContext _context) {
-    AttributeOperations.createAndSetAttrbiute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.ToProcessMethod$O5), CONCEPTS.ToProcessMethod$O5);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.ToProcessMethod$O5).setNew(_context.getOutputNode());
   }
   public static void mapSrcMacro_post_3_2(final MapSrcMacroPostProcContext _context) {
-    AttributeOperations.createAndSetAttrbiute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.ToProcessMethod$O5), CONCEPTS.ToProcessMethod$O5);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.ToProcessMethod$O5).setNew(_context.getOutputNode());
   }
   public static void mapSrcMacro_post_5_0(final MapSrcMacroPostProcContext _context) {
-    AttributeOperations.createAndSetAttrbiute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw), CONCEPTS.DoNotTransformAnnotation$kw);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw).setNew(_context.getOutputNode());
   }
   public static void mapSrcMacro_post_6_0(final MapSrcMacroPostProcContext _context) {
-    AttributeOperations.createAndSetAttrbiute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw), CONCEPTS.DoNotTransformAnnotation$kw);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw).setNew(_context.getOutputNode());
   }
   public static void mapSrcMacro_post_6_1(final MapSrcMacroPostProcContext _context) {
-    AttributeOperations.createAndSetAttrbiute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw), CONCEPTS.DoNotTransformAnnotation$kw);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw).setNew(_context.getOutputNode());
   }
   public static void mapSrcMacro_post_6_2(final MapSrcMacroPostProcContext _context) {
-    AttributeOperations.createAndSetAttrbiute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw), CONCEPTS.DoNotTransformAnnotation$kw);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw).setNew(_context.getOutputNode());
   }
   public static void mapSrcMacro_post_6_3(final MapSrcMacroPostProcContext _context) {
-    AttributeOperations.createAndSetAttrbiute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw), CONCEPTS.DoNotTransformAnnotation$kw);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw).setNew(_context.getOutputNode());
   }
   public static void mapSrcMacro_post_6_4(final MapSrcMacroPostProcContext _context) {
-    AttributeOperations.createAndSetAttrbiute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw), CONCEPTS.DoNotTransformAnnotation$kw);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw).setNew(_context.getOutputNode());
   }
   public static void mapSrcMacro_post_7_0(final MapSrcMacroPostProcContext _context) {
-    AttributeOperations.createAndSetAttrbiute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw), CONCEPTS.DoNotTransformAnnotation$kw);
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(_context.getOutputNode(), null, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        AttributeOperations.createAndSetAttrbiute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw), CONCEPTS.DoNotTransformAnnotation$kw);
-      }
-    });
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw).setNew(_context.getOutputNode());
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(_context.getOutputNode(), null, false, new SAbstractConcept[]{})).visitAll((it) -> new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw).setNew(it));
   }
   public static void mapSrcMacro_post_8_0(final MapSrcMacroPostProcContext _context) {
-    AttributeOperations.createAndSetAttrbiute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw), CONCEPTS.DoNotTransformAnnotation$kw);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw).setNew(_context.getOutputNode());
   }
   public static void mappingScript_CodeBlock_4(final MappingScriptContext _context) {
     for (SNode classConcept : ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.ClassConcept$bK))) {
       if (SLinkOperations.hasPointer(SLinkOperations.getTarget(classConcept, LINKS.superclass$Mp9$), LINKS.classifier$cxMr, new SNodePointer("r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)", "3432969378036017270")) && SPropertyOperations.getString(classConcept, PROPS.name$MnvL).endsWith("_WrapperFactory")) {
-        for (SNode method : ListSequence.fromList(SNodeOperations.getNodeDescendants(classConcept, CONCEPTS.InstanceMethodDeclaration$39, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ToProcessMethod$O5)) != null);
-          }
-        })) {
-          if ((method == null)) {
-            continue;
-          }
-          TransformatorBuilder.getInstance().build(method, false).transform();
+        for (SNode method : ListSequence.fromList(SNodeOperations.getNodeDescendants(classConcept, CONCEPTS.InstanceMethodDeclaration$39, false, new SAbstractConcept[]{})).where((it) -> (new IAttributeDescriptor.NodeAttribute(CONCEPTS.ToProcessMethod$O5).get(it) != null))) {
+          // This code is executed w/o IDE running (e.g. command-line <generate>, and no chances to get TransformatorBuilder service initialized)
+          // DotExpression
+          new TransformatorImpl(method).transform();
         }
       }
     }
   }
   public static void mappingScript_CodeBlock_9(final MappingScriptContext _context) {
     for (SNode viewer : ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.HighLevelCustomViewer$Bb))) {
-      SNode valueProxyType = TransformatorBuilder.getInstance().getProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(viewer));
+      // see applyTransformationUtil for explanation about TransformatorBuilder.getInstance and use of TransformatorImpl
+      SNode valueProxyType = TransformationUtil.getValueProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(viewer));
       for (SNode valueParameter : ListSequence.fromList(SNodeOperations.getNodeDescendants(viewer, CONCEPTS.HighLevelValue_ConceptFunctionParameter$O5, false, new SAbstractConcept[]{}))) {
         SLinkOperations.setTarget(valueParameter, LINKS.valueProxyType$DzNl, SNodeOperations.copyNode(valueProxyType));
       }
@@ -228,11 +217,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public CreateRootCondition getCreateRootRuleCondition(@NotNull QueryKey identity) {
-    String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(crcMethods.containsKey(id))) {
-      return super.getCreateRootRuleCondition(identity);
-    }
-    return crcMethods.get(id);
+    CreateRootCondition query = identity.forTemplateNode(crcMethods);
+    return (query != null ? query : super.getCreateRootRuleCondition(identity));
   }
   private static class CRC implements CreateRootCondition {
     private final int methodKey;
@@ -258,11 +244,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @Override
   @NotNull
   public ScriptCodeBlock getScriptCodeBlock(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(mscbMethods.containsKey(id))) {
-      return super.getScriptCodeBlock(identity);
-    }
-    return mscbMethods.get(id);
+    ScriptCodeBlock query = identity.forTemplateNode(mscbMethods);
+    return (query != null ? query : super.getScriptCodeBlock(identity));
   }
   private static class SCB implements ScriptCodeBlock {
     private final int methodKey;
@@ -301,11 +284,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public SourceNodeQuery getSourceNodeQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snqMethods.containsKey(id))) {
-      return super.getSourceNodeQuery(identity);
-    }
-    return snqMethods.get(id);
+    SourceNodeQuery query = identity.forFunctionNode(snqMethods);
+    return (query != null ? query : super.getSourceNodeQuery(identity));
   }
   private static class SNQ implements SourceNodeQuery {
     private final int methodKey;
@@ -351,11 +331,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public SourceNodesQuery getSourceNodesQuery(@NotNull QueryKey identity) {
-    final String id = ((QueryKeyImpl) identity).getQueryNodeId().toString();
-    if (!(snsqMethods.containsKey(id))) {
-      return super.getSourceNodesQuery(identity);
-    }
-    return snsqMethods.get(id);
+    SourceNodesQuery query = identity.forFunctionNode(snsqMethods);
+    return (query != null ? query : super.getSourceNodesQuery(identity));
   }
   private static class SNsQ implements SourceNodesQuery {
     private final int methodKey;
@@ -391,11 +368,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public PropertyValueQuery getPropertyValueQuery(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(pvqMethods.containsKey(id))) {
-      return super.getPropertyValueQuery(identity);
-    }
-    return pvqMethods.get(id);
+    PropertyValueQuery query = identity.forTemplateNode(pvqMethods);
+    return (query != null ? query : super.getPropertyValueQuery(identity));
   }
   private static class PVQ extends PropertyValueQuery.Base {
     private final int methodKey;
@@ -446,11 +420,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public IfMacroCondition getIfMacroCondition(@NotNull QueryKey identity) {
-    final String id = identity.getTemplateNode().getNodeId().toString();
-    if (!(imcMethods.containsKey(id))) {
-      return super.getIfMacroCondition(identity);
-    }
-    return imcMethods.get(id);
+    IfMacroCondition query = identity.forTemplateNode(imcMethods);
+    return (query != null ? query : super.getIfMacroCondition(identity));
   }
   private static class IfMC implements IfMacroCondition {
     private final int methodKey;
@@ -483,16 +454,13 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
-    rtqMethods.put("8275758777999533504", new RTQ(0, "MyWatchable"));
+    rtqMethods.put("8275758777999533504", new RTQ(0, "map_CustomWatchablesContainer.MyWatchable"));
   }
   @NotNull
   @Override
   public ReferenceTargetQuery getReferenceTargetQuery(@NotNull QueryKey queryKey) {
-    final String id = queryKey.getTemplateNode().getNodeId().toString();
-    if (!(rtqMethods.containsKey(id))) {
-      return super.getReferenceTargetQuery(queryKey);
-    }
-    return rtqMethods.get(id);
+    ReferenceTargetQuery query = queryKey.forTemplateNode(rtqMethods);
+    return (query != null ? query : super.getReferenceTargetQuery(queryKey));
   }
   private static class RTQ extends ReferenceTargetQuery.Base {
     private final int methodKey;
@@ -527,11 +495,8 @@ public class QueriesGenerated extends QueryProviderBase {
   @NotNull
   @Override
   public MapPostProcessor getMapPostProcessor(@NotNull QueryKey queryKey) {
-    final String id = queryKey.getTemplateNode().getNodeId().toString();
-    if (!(mppMethods.containsKey(id))) {
-      return super.getMapPostProcessor(queryKey);
-    }
-    return mppMethods.get(id);
+    MapPostProcessor query = queryKey.forTemplateNode(mppMethods);
+    return (query != null ? query : super.getMapPostProcessor(queryKey));
   }
   private static class PPQ implements MapPostProcessor {
     private final int methodKey;

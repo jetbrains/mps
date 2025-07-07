@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.project.IndexNotReadyException;
 import jetbrains.mps.checkers.CheckingSession;
 import jetbrains.mps.checkers.ICheckingPostprocessor;
-import jetbrains.mps.checkers.LanguageErrorsComponent.ApprovableError;
+import jetbrains.mps.editor.runtime.LanguageErrorsComponent.ApprovableError;
 import jetbrains.mps.errors.item.EditorQuickFix;
 import jetbrains.mps.errors.item.FlavouredItem.ReportItemFlavour;
 import jetbrains.mps.errors.item.IssueKindReportItem;
@@ -28,6 +28,7 @@ import jetbrains.mps.errors.item.IssueKindReportItem.PathObject;
 import jetbrains.mps.errors.item.IssueKindReportItem.PathObject.NodePathObject;
 import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.errors.item.TypesystemReportItemAdapter;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.EditorMessage;
 import jetbrains.mps.nodeEditor.HighlighterMessage;
@@ -49,6 +50,7 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.util.Consumer;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -71,14 +73,21 @@ public abstract class AbstractTypesystemEditorChecker extends BaseEditorChecker 
   private final SRepository myRepository;
   private final Collection<ICheckingPostprocessor<NodeReportItem>> myPostprocessors;
 
+  private static Logger LOG = Logger.getLogger(AbstractTypesystemEditorChecker.class);
+
   public AbstractTypesystemEditorChecker(SRepository repository, Collection<ICheckingPostprocessor<NodeReportItem>> postprocessors) {
     myRepository = repository;
     myPostprocessors = postprocessors;
   }
 
   @NotNull
-  protected abstract UpdateResult doCreateMessages(TypecheckingSession session, boolean wasCheckedOnce, EditorContext editorContext,
-                                                   SNode rootNode, Cancellable cancellable, boolean applyQuickFixes);
+  protected abstract UpdateResult doCreateMessages(TypecheckingSession session,
+                                                   boolean incremental,
+                                                   Instant wasLastChecked,
+                                                   EditorContext editorContext,
+                                                   SNode rootNode,
+                                                   Cancellable cancellable,
+                                                   boolean applyQuickFixes);
 
   @Override
   public void processEvents(List<SModelEvent> events) {
@@ -97,7 +106,10 @@ public abstract class AbstractTypesystemEditorChecker extends BaseEditorChecker 
 
   @NotNull
   @Override
-  public UpdateResult update(final EditorComponent editorComponent, final boolean wasCheckedOnce, final boolean applyQuickFixes,
+  public UpdateResult update(final EditorComponent editorComponent,
+                             final boolean incremental,
+                             final Instant wasLastChecked,
+                             final boolean applyQuickFixes,
                              final Cancellable cancellable) {
     try {
       if (editorComponent.getTypecheckingSession() == null) return UpdateResult.CANCELLED;
@@ -107,7 +119,8 @@ public abstract class AbstractTypesystemEditorChecker extends BaseEditorChecker 
                  .computeWithSession(editorComponent.getTypecheckingSession(),
                                      (session) ->
                                          doCreateMessages(session,
-                                                          wasCheckedOnce,
+                                                          incremental,
+                                                          wasLastChecked,
                                                           editorComponent.getEditorContext(),
                                                           editorComponent.getEditedNode(),
                                                           cancellable,
@@ -138,7 +151,16 @@ public abstract class AbstractTypesystemEditorChecker extends BaseEditorChecker 
       postprocessMap.get(nodeReportItem.getNode()).add(nodeReportItem);
     };
     for (Pair<SNodeReference, List<NodeReportItem>> nodeErrors : nodeErrorPairs) {
-      List<ApprovableError> nodeErrorList = nodeErrors.o2.stream().map(nri -> new ApprovableError(nri, true)).collect(Collectors.toList());
+      // FIXME: this only hides the problem, must find out why the node has been removed
+      List<ApprovableError> nodeErrorList = nodeErrors.o2.stream()
+                                              .filter(nri -> nri.getNode().resolve(myRepository) != null) 
+                                              .map(nri -> new ApprovableError(nri, true)).collect(Collectors.toList());
+      nodeErrors.o2.stream()
+                   .filter(nri -> nri.getNode().resolve(myRepository) == null)
+                   .forEach(nri ->
+                                LOG.debug("Node used to report an error cannot be resolved. Error will be ignored. "+
+                                          nri.getNode() + " " + nri.toPredicate(nri.getIdFlavours()).serialize(), new Throwable()));
+      
       errorMap.put(new NodePathObject(nodeErrors.o1), nodeErrorList);
     }
     for (ICheckingPostprocessor<NodeReportItem> postprocessor : myPostprocessors) {

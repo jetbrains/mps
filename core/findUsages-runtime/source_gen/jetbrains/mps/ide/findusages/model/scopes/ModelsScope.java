@@ -13,13 +13,12 @@ import org.jetbrains.mps.openapi.module.SModule;
 import java.util.List;
 import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.ArrayList;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.ide.findusages.CantSaveSomethingException;
 
-@GeneratedClass(node = "r:3189948c-a57a-415e-beba-405572f2d13c(jetbrains.mps.ide.findusages.model.scopes)/8568892084424437778", model = "r:3189948c-a57a-415e-beba-405572f2d13c(jetbrains.mps.ide.findusages.model.scopes)")
+@GeneratedClass(nodeId = "8568892084424437778", model = "r:3189948c-a57a-415e-beba-405572f2d13c(jetbrains.mps.ide.findusages.model.scopes)")
 public class ModelsScope extends FindUsagesScope {
   private static final String MODEL_ID = "ref";
   private static final String MODEL_TAG = "model";
@@ -39,13 +38,13 @@ public class ModelsScope extends FindUsagesScope {
   @NotNull
   @Override
   public Iterable<SModule> getModules() {
-    // FIXME shall return modules of the models it was initialized with 
-    // we've already collected required modules in the superclass, and it's safe to return scope here as nobody has been using this method anyway 
+    // FIXME shall return modules of the models it was initialized with
+    // we've already collected required modules in the superclass, and it's safe to return scope here as nobody has been using this method anyway
     throw new UnsupportedOperationException();
   }
   private static List<SModel> resolveModels(Element element, SRepository repo) throws CantLoadSomethingException {
     List<SModel> result = new ArrayList<SModel>();
-    final Logger log = LogManager.getLogger(ModelsScope.class);
+    final Logger log = Logger.getLogger(ModelsScope.class);
     for (Element modelXml : element.getChildren(MODEL_TAG)) {
       try {
         final String modelRef = modelXml.getAttributeValue(MODEL_ID);
@@ -57,7 +56,7 @@ public class ModelsScope extends FindUsagesScope {
         if (model != null) {
           result.add(model);
         } else {
-          log.warn("model not found " + modelRef);
+          log.warning("model not found " + modelRef);
         }
       } catch (IllegalArgumentException e) {
         throw new CantLoadSomethingException(e);

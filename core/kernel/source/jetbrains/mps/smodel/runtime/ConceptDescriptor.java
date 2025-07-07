@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.smodel.adapter.ids.SContainmentLinkId;
 import jetbrains.mps.smodel.adapter.ids.SPropertyId;
 import jetbrains.mps.smodel.adapter.ids.SReferenceLinkId;
+import jetbrains.mps.smodel.language.StructureRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -109,4 +110,29 @@ public interface ConceptDescriptor extends NamedElementDescriptor {
    * version == 2 denotes addition of #getStubConceptId()
    */
   int getVersion();
+
+  /**
+   * look up if there's any specifications of the 'genuine' link in the hierarchy of this concept
+   * @return null if no specific link has been found
+   * @since 2021.3
+   */
+  @Nullable
+  default SConceptId getMostSpecificLinkTarget(StructureRegistry registry, @NotNull SReferenceLinkId genuine) {
+    // XXX Use of explicit StructureRegistry as argument is an attempt to investigate alternative approach
+    //     - rather than implementation silently assumes access to ConceptRegistry.getInstance(), request one explicitly
+    //     - OTOH, may follow behavior approach and pass StructureRegistry into CompiledConceptDeclaration.init()
+    //     - What I don't like about explicit arg is that code registry.getDescriptor().doWork(registry) looks stupid.
+    return null;
+  }
+
+  /**
+   * look up if there's any specifications of the 'genuine' link in the hierarchy of this concept
+   * @return null if no specific link has been found
+   * @since 2021.3
+   */
+  @Nullable
+  default SConceptId getMostSpecificLinkTarget(StructureRegistry registry, @NotNull SContainmentLinkId genuine) {
+    // see rant, above, regarding explicit StructureRegistry parameter
+    return null;
+  }
 }

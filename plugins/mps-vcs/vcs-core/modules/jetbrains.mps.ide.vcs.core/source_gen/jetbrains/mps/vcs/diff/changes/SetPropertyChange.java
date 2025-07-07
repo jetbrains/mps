@@ -13,17 +13,35 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.vcs.mergehints.runtime.VCSAspectUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SModel;
+import java.util.List;
+import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
+import jetbrains.mps.errors.messageTargets.MessageTarget;
+import jetbrains.mps.internal.collections.runtime.LinkedListSequence;
+import java.util.LinkedList;
+import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
+import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
+import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SConcept;
 
-@GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/2729259761016168456", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
+@GeneratedClass(nodeId = "2729259761016168456", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class SetPropertyChange extends NodeChange {
   private SProperty myProperty;
   private String myNewValue;
+  private final String myDescription;
+  private final String myShortDescription;
 
   public SetPropertyChange(@NotNull ChangeSet changeSet, @NotNull SNodeId nodeId, SProperty property, String newValue) {
-    super(changeSet, nodeId);
+    this(changeSet, nodeId, nodeId, property, newValue);
+  }
+
+  public SetPropertyChange(@NotNull ChangeSet changeSet, @NotNull SNodeId nodeId, SNodeId oppositeNodeId, SProperty property, String newValue) {
+    super(changeSet, nodeId, oppositeNodeId);
     myProperty = property;
     myNewValue = newValue;
+    myDescription = createDescription(true);
+    myShortDescription = createDescription(false);
   }
+
   @NotNull
   public String getPropertyName() {
     return myProperty.getName();
@@ -37,7 +55,7 @@ public class SetPropertyChange extends NodeChange {
   @Nullable
   @Override
   public MergeStrategy getMergeHint() {
-    // get "nonconflicting" attribute in metamodel 
+    // get "nonconflicting" attribute in metamodel
     SNode n = getChangeSet().getOldModel().getNode(getAffectedNodeId(false));
     MergeStrategy hint = VCSAspectUtil.getDefaultMergeStrategy(myProperty);
     if (hint != null) {
@@ -50,7 +68,7 @@ public class SetPropertyChange extends NodeChange {
   }
   @Override
   public void apply(@NotNull SModel model, @NotNull NodeCopier nodeCopier) {
-    SNode node = model.getNode(getAffectedNodeId());
+    SNode node = nodeCopier.getNode(model, getAffectedNodeId());
     assert node != null;
     node.setProperty(myProperty, myNewValue);
   }
@@ -59,14 +77,80 @@ public class SetPropertyChange extends NodeChange {
   protected ModelChange createOppositeChange() {
     SNode node = getChangeSet().getOldModel().getNode(getAffectedNodeId(false));
     assert node != null;
-    return new SetPropertyChange(getChangeSet().getOppositeChangeSet(), getAffectedNodeId(true), myProperty, node.getProperty(myProperty));
+    return new SetPropertyChange(getChangeSet().getOppositeChangeSet(), getAffectedNodeId(true), getAffectedNodeId(false), myProperty, node.getProperty(myProperty));
   }
   @Override
   public String toString() {
     return String.format("Set property %s to %s in node %s", myProperty, myNewValue, getAffectedNodeId(false));
   }
+  private String createDescription(boolean verbose) {
+    if (verbose) {
+      String oldValue = check_2yh8ir_a0a0a0r(getChangeSet().getOldModel().getNode(getAffectedNodeId(false)), myProperty, this);
+      String newValue = check_2yh8ir_a0b0a0r(getChangeSet().getNewModel().getNode(getAffectedNodeId(true)), myProperty, this);
+      return String.format("Changed %s of #%s from '%s' to '%s'", myProperty, getAffectedNodeId(false), oldValue, newValue);
+    } else {
+      String conceptName = check_2yh8ir_a0a0a0a71(check_2yh8ir_a0a0a0a0r(getChangeSet().getOldModel().getNode(getAffectedNodeId(false)), this), this);
+      return String.format("Changed %s's %s", conceptName, myProperty);
+    }
+  }
   @Override
   public String getDescription() {
-    return String.format("Changed %s of #%s from '%s' to '%s'", myProperty, getAffectedNodeId(false), getChangeSet().getOldModel().getNode(getAffectedNodeId(false)).getProperty(myProperty), getChangeSet().getNewModel().getNode(getAffectedNodeId(true)).getProperty(myProperty));
+    return myDescription;
+  }
+
+  @Override
+  public String getShortDescription() {
+    return myShortDescription;
+  }
+
+  @Override
+  public List<Tuples._2<SNodeId, MessageTarget>> createMessageTargetsWithIds(boolean isNewModel) {
+    return LinkedListSequence.fromListAndArray(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getAffectedNodeId(isNewModel), ((MessageTarget) new PropertyMessageTarget(getProperty()))));
+  }
+
+  @Override
+  public boolean conflictsWith(@NotNull ModelChange otherChange) {
+    if (super.conflictsWith(otherChange)) {
+      return true;
+    }
+    return otherChange instanceof SetPropertyChange && Objects.equals(this.getAffectedNodeId(false), (as_2yh8ir_a0a1a0a1a42(otherChange, SetPropertyChange.class)).getAffectedNodeId(false)) && Objects.equals(this.getPropertyName(), (as_2yh8ir_a0a1a0b0y(otherChange, SetPropertyChange.class)).getPropertyName());
+  }
+
+  @Override
+  public boolean isSymmetricWith(@NotNull ModelChange otherChange) {
+    return otherChange instanceof SetPropertyChange && Objects.equals(this.getNewValue(), (as_2yh8ir_a0a1a0a0ab(otherChange, SetPropertyChange.class)).getNewValue());
+  }
+  private static String check_2yh8ir_a0a0a0r(SNode checkedDotOperand, SProperty myProperty, SetPropertyChange checkedDotThisExpression) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getProperty(myProperty);
+    }
+    return null;
+  }
+  private static String check_2yh8ir_a0b0a0r(SNode checkedDotOperand, SProperty myProperty, SetPropertyChange checkedDotThisExpression) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getProperty(myProperty);
+    }
+    return null;
+  }
+  private static String check_2yh8ir_a0a0a0a71(SConcept checkedDotOperand, SetPropertyChange checkedDotThisExpression) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getName();
+    }
+    return null;
+  }
+  private static SConcept check_2yh8ir_a0a0a0a0r(SNode checkedDotOperand, SetPropertyChange checkedDotThisExpression) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getConcept();
+    }
+    return null;
+  }
+  private static <T> T as_2yh8ir_a0a1a0a1a42(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_2yh8ir_a0a1a0b0y(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_2yh8ir_a0a1a0a0ab(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 }

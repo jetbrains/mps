@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,21 +17,17 @@ package jetbrains.mps.nodefs;
 
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileSystem;
-import com.intellij.testFramework.LightVirtualFileBase;
+import com.intellij.openapi.vfs.VirtualFileWithoutContent;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.extapi.persistence.FolderDataSource;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
@@ -39,8 +35,8 @@ import java.io.OutputStream;
  * User: fyodor
  * Date: 3/6/13
  */
-public final class MPSModelVirtualFile extends LightVirtualFileBase {
-  private static final Logger LOG = LogManager.getLogger(MPSModelVirtualFile.class);
+public final class MPSModelVirtualFile extends VirtualFile implements VirtualFileWithoutContent {
+  private static final Logger LOG = Logger.getLogger(MPSModelVirtualFile.class);
   private static final byte[] ZERO_BYTES = new byte[0];
   public static final String MODEL_PREFIX = "model://";
 
@@ -51,7 +47,6 @@ public final class MPSModelVirtualFile extends LightVirtualFileBase {
   private String myPath;
 
   MPSModelVirtualFile(@NotNull SModelReference modelReference, @NotNull RepositoryVirtualFiles vfs) {
-    super("", null, 0);
     myModelReference = modelReference;
     myRepoFiles = vfs;
     updateFields();
@@ -61,7 +56,7 @@ public final class MPSModelVirtualFile extends LightVirtualFileBase {
     myRepoFiles.getRepository().getModelAccess().runReadAction(() -> {
       SModel model = myModelReference.resolve(myRepoFiles.getRepository());
       if (model == null) {
-        LOG.error("Model resolve failed for SModelReference: " + myModelReference.toString(), new Throwable());
+        LOG.error("Model resolve failed for SModelReference: " + myModelReference, new Throwable());
         myName = "";
         myPath = "";
       } else {
@@ -94,7 +89,17 @@ public final class MPSModelVirtualFile extends LightVirtualFileBase {
   }
 
   @Override
+  public boolean isWritable() {
+    return true;
+  }
+
+  @Override
   public boolean isDirectory() {
+    return true;
+  }
+
+  @Override
+  public boolean isValid() {
     return true;
   }
 
@@ -108,13 +113,18 @@ public final class MPSModelVirtualFile extends LightVirtualFileBase {
       }
       DataSource ds = model.getSource();
       if (ds instanceof FileDataSource) {
-        return VirtualFileUtils.getOrCreateVirtualFile(((FileDataSource) ds).getFile());
+        return myRepoFiles.asVirtualFile(((FileDataSource) ds).getFile());
       } else if (ds instanceof FolderDataSource) {
-        return VirtualFileUtils.getOrCreateVirtualFile(((FolderDataSource) ds).getFolder());
+        return myRepoFiles.asVirtualFile(((FolderDataSource) ds).getFolder());
       } else {
         return null;
       }
     });
+  }
+
+  @Override
+  public VirtualFile[] getChildren() {
+    return new VirtualFile[0];
   }
 
   @NotNull
@@ -130,9 +140,20 @@ public final class MPSModelVirtualFile extends LightVirtualFileBase {
   }
 
   @Override
+  public long getTimeStamp() {
+    return 0;
+  }
+
+  @Override
+  public long getLength() {
+    return 0;
+  }
+
+  @Override
   public void refresh(boolean asynchronous, boolean recursive, @Nullable Runnable postRunnable) {
   }
 
+  @NotNull
   @Override
   public InputStream getInputStream() {
     throw new UnsupportedOperationException();

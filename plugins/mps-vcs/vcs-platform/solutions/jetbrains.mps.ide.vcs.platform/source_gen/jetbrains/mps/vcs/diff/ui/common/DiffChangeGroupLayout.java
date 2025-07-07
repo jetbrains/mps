@@ -12,16 +12,20 @@ import jetbrains.mps.openapi.editor.EditorComponent;
 import java.util.List;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 
-@GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/6402272430682108518", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
+@GeneratedClass(nodeId = "6402272430682108518", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 public class DiffChangeGroupLayout extends ChangeGroupLayout {
   private DiffEditor myLeftEditor;
   private DiffEditor myRightEditor;
   private ChangeSet myChangeSet;
-  public DiffChangeGroupLayout(@Nullable ChangeEditorMessage.ConflictChecker conflictChecker, @NotNull ChangeSet changeSet, @NotNull DiffEditor leftEditor, @NotNull DiffEditor rightEditor, boolean inspector) {
+  private SplitterRepainter mySplitterRepainter;
+
+
+  public DiffChangeGroupLayout(@Nullable ChangeEditorMessage.ConflictChecker conflictChecker, @NotNull ChangeSet changeSet, @NotNull DiffEditor leftEditor, @NotNull DiffEditor rightEditor, SplitterRepainter splitterRepainter, boolean inspector) {
     super(conflictChecker, inspector, false);
     myLeftEditor = leftEditor;
     myRightEditor = rightEditor;
     myChangeSet = changeSet;
+    mySplitterRepainter = splitterRepainter;
     if (inspector) {
       UpdaterListener updaterListener = new UpdaterListenerAdapter() {
         @Override
@@ -33,6 +37,7 @@ public class DiffChangeGroupLayout extends ChangeGroupLayout {
       myRightEditor.getInspector().getUpdater().addListener(updaterListener);
     }
   }
+
   @NotNull
   @Override
   public jetbrains.mps.nodeEditor.EditorComponent getLeftComponent() {
@@ -58,5 +63,19 @@ public class DiffChangeGroupLayout extends ChangeGroupLayout {
   }
   public void setChangeSet(ChangeSet changeSet) {
     myChangeSet = changeSet;
+  }
+
+  public void repaintSplitter() {
+    if (mySplitterRepainter != null) {
+      mySplitterRepainter.repaintSplitter();
+    }
+  }
+
+  public interface SplitterRepainter {
+    void repaintSplitter();
+  }
+
+  public DiffEditor getDiffEditor(boolean left) {
+    return (left ? myLeftEditor : myRightEditor);
   }
 }

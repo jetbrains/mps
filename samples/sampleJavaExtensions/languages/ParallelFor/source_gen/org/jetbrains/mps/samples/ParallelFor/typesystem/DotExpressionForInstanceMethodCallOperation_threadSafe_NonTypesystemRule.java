@@ -8,7 +8,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
@@ -17,7 +16,6 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -32,17 +30,17 @@ public class DotExpressionForInstanceMethodCallOperation_threadSafe_NonTypesyste
     SNode directAncestor = SNodeOperations.getNodeAncestor(dotExpression, CONCEPTS.ParallelFor$2i, false, false);
 
     if (directAncestor != null) {
-      if (AttributeOperations.getAttribute(dotExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ)) != null) {
+      if (new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ).get(dotExpression) != null) {
         return;
       }
       if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(dotExpression, LINKS.operand$w6IR), CONCEPTS.ThisExpression$$o)) {
         SNode type = TypecheckingFacade.getFromContext().getTypeOf(SNodeOperations.cast(SLinkOperations.getTarget(dotExpression, LINKS.operand$w6IR), CONCEPTS.ThisExpression$$o));
         if (SNodeOperations.isInstanceOf(type, CONCEPTS.ClassifierType$bL)) {
           final SNode clazz = SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK);
-          if (AttributeOperations.getAttribute(clazz, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ)) != null && SPropertyOperations.getBoolean(clazz, PROPS.isFinal$f7C_)) {
+          if (new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ).get(clazz) != null && SPropertyOperations.getBoolean(clazz, PROPS.isFinal$f7C_)) {
             return;
           }
-          if (AttributeOperations.getAttribute(clazz, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NonThreadSafeClass$7D)) != null) {
+          if (new IAttributeDescriptor.NodeAttribute(CONCEPTS.NonThreadSafeClass$7D).get(clazz) != null) {
             {
               final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(dotExpression, LINKS.operation$gs9E), "Calling a method on a non-thread-safe shared object", "r:4c36f4b4-7816-4067-aa6e-a49c547265ed(org.jetbrains.mps.samples.ParallelFor.typesystem)", "3540747636396645537", null, errorTarget);
@@ -50,11 +48,7 @@ public class DotExpressionForInstanceMethodCallOperation_threadSafe_NonTypesyste
             return;
           }
 
-          if (!(ListSequence.fromList(CheckingRuleHelper.allowedClasses()).any(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SLinkOperations.getTarget(it, LINKS.classifier$cxMr) == clazz;
-            }
-          }))) {
+          if (!(ListSequence.fromList(CheckingRuleHelper.allowedClasses()).any((it) -> SLinkOperations.getTarget(it, LINKS.classifier$cxMr) == clazz))) {
             {
               final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(SLinkOperations.getTarget(dotExpression, LINKS.operation$gs9E), "Calling a method on a potentially non-thread-safe shared object", "r:4c36f4b4-7816-4067-aa6e-a49c547265ed(org.jetbrains.mps.samples.ParallelFor.typesystem)", "3540747636396649371", null, errorTarget);
@@ -66,17 +60,17 @@ public class DotExpressionForInstanceMethodCallOperation_threadSafe_NonTypesyste
         SNode variableDeclaration = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(dotExpression, LINKS.operand$w6IR), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG);
         SNode declarationsAncestor = SNodeOperations.getNodeAncestor(variableDeclaration, CONCEPTS.ParallelFor$2i, false, false);
         if (directAncestor != declarationsAncestor) {
-          if (AttributeOperations.getAttribute(variableDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ)) != null) {
+          if (new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ).get(variableDeclaration) != null) {
             return;
           }
 
           final SNode targetClassifier = check_ttr84v_a0c0c0c0c0b(SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(dotExpression, LINKS.operand$w6IR)), CONCEPTS.ClassifierType$bL));
           if (SNodeOperations.isInstanceOf(targetClassifier, CONCEPTS.ClassConcept$bK)) {
             SNode clazz = SNodeOperations.cast(targetClassifier, CONCEPTS.ClassConcept$bK);
-            if (AttributeOperations.getAttribute(clazz, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ)) != null && SPropertyOperations.getBoolean(clazz, PROPS.isFinal$f7C_)) {
+            if (new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ).get(clazz) != null && SPropertyOperations.getBoolean(clazz, PROPS.isFinal$f7C_)) {
               return;
             }
-            if (AttributeOperations.getAttribute(clazz, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NonThreadSafeClass$7D)) != null) {
+            if (new IAttributeDescriptor.NodeAttribute(CONCEPTS.NonThreadSafeClass$7D).get(clazz) != null) {
               {
                 final MessageTarget errorTarget = new NodeMessageTarget();
                 IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(dotExpression, LINKS.operation$gs9E), "Calling a method on a non-thread-safe shared object", "r:4c36f4b4-7816-4067-aa6e-a49c547265ed(org.jetbrains.mps.samples.ParallelFor.typesystem)", "3540747636396547859", null, errorTarget);
@@ -85,11 +79,7 @@ public class DotExpressionForInstanceMethodCallOperation_threadSafe_NonTypesyste
             }
           }
 
-          if (targetClassifier == null || !(ListSequence.fromList(CheckingRuleHelper.allowedClasses()).any(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SLinkOperations.getTarget(it, LINKS.classifier$cxMr) == targetClassifier;
-            }
-          }))) {
+          if (targetClassifier == null || !(ListSequence.fromList(CheckingRuleHelper.allowedClasses()).any((it) -> SLinkOperations.getTarget(it, LINKS.classifier$cxMr) == targetClassifier))) {
             {
               final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(SLinkOperations.getTarget(dotExpression, LINKS.operation$gs9E), "Calling a method on a potentially non-thread-safe shared object", "r:4c36f4b4-7816-4067-aa6e-a49c547265ed(org.jetbrains.mps.samples.ParallelFor.typesystem)", "3540747636396547907", null, errorTarget);

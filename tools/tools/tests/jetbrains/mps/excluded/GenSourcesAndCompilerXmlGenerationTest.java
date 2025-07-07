@@ -1,5 +1,5 @@
 /*
-* Copyright 2003-2019 JetBrains s.r.o.
+* Copyright 2003-2022 JetBrains s.r.o.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -172,7 +172,7 @@ public class GenSourcesAndCompilerXmlGenerationTest {
       if (isUnder(cp, "/samples/agreement/frameworktest/test/")) continue;
 
       // this is a test for build language. Needs to be somehow distinguishable as test
-      if (isUnder(cp, "/plugins/mps-build/languages/solutions/jetbrains.mps.build.sandbox/samples/")) continue;
+      if (isUnder(cp, "/plugins/mps-build/solutions/jetbrains.mps.build.sandbox/samples/")) continue;
 
       // Models in the plugin project are generated into an excluded source_gen folder
       if (isUnder(cp, "/IdeaPlugin/mps-java/source_gen/")) continue;
@@ -200,9 +200,10 @@ public class GenSourcesAndCompilerXmlGenerationTest {
     names.add("collections-runtime");
     // j.m.references.Reference is in use from [kernel]SPropertyOperations
     names.add("baseLanguage-runtime"); // this one I'd like get rid of
-    // ClassPathReader, ClasssType, SystemInfo from [startup-util] are in use from [kernel].
-    // No idea why the module is not under core/
-    names.add("startup-util");
+    // ClassPathReader, ClasssType, SystemInfo from [boot-util] are in use from [kernel].
+    // modules are not in core, they essentially are allowed to be used by any code which starts MPS, particularly
+    // lightweight implementation like we have in ant integration
+    names.add("boot-util");
     for (IDEAModule m : coreModules) {
       if (names.containsAll(m.compileDependencies())) {
         continue;

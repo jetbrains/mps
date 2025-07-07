@@ -9,10 +9,9 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class typeof_AbsExpression_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_AbsExpression_InferenceRule() {
@@ -21,7 +20,7 @@ public class typeof_AbsExpression_InferenceRule extends AbstractInferenceRule_Ru
     {
       SNode _nodeToCheck_1029348928467 = absExpression;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590424(jetbrains.mps.samples.complex.typesystem)", "5584396657092302817", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590424(jetbrains.mps.samples.complex.typesystem)", "5584396657092302141", true), (SNode) _quotation_createNode_rj5chl_a1a0c0a0b(), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590424(jetbrains.mps.samples.complex.typesystem)", "5584396657092302141", true), (SNode) createDoubleType_rj5chl_a1a0c0a0b(), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -33,14 +32,13 @@ public class typeof_AbsExpression_InferenceRule extends AbstractInferenceRule_Ru
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_rj5chl_a1a0c0a0b() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d451a6L, "DoubleType")).getResult();
-    return quotedNode_1;
+  private static SNode createDoubleType_rj5chl_a1a0c0a0b() {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DoubleType$x0);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept AbsExpression$TY = MetaAdapterFactory.getConcept(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686e48f9fL, "jetbrains.mps.samples.complex.structure.AbsExpression");
+    /*package*/ static final SConcept DoubleType$x0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d451a6L, "jetbrains.mps.baseLanguage.structure.DoubleType");
   }
 }

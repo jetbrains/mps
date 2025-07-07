@@ -3,8 +3,8 @@
   <persistence version="9" />
   <languages>
     <use id="df8799e7-254a-406f-bd67-f4cc27337152" name="jetbrains.mps.lang.editor.tableTests" version="0" />
-    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="5" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="6" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
     <import index="ekwn" ref="r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)" />
@@ -26,9 +26,6 @@
         <property id="1229194968595" name="cellId" index="LIFWd" />
         <property id="1932269937152561478" name="useLabelSelection" index="OXtK3" />
         <property id="1229432188737" name="isLastPosition" index="ZRATv" />
-      </concept>
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
       </concept>
       <concept id="4239542196496927193" name="jetbrains.mps.lang.test.structure.MPSActionReference" flags="ng" index="1iFQzN">
         <reference id="4239542196496929559" name="action" index="1iFR8X" />
@@ -59,14 +56,11 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
   </registry>
-  <node concept="2XOHcx" id="3N6JpByfQdy">
-    <property role="2XOHcw" value="${mps_home}" />
-  </node>
   <node concept="LiM7Y" id="3N6JpByfQdz">
     <property role="TrG5h" value="Create" />
     <node concept="3clFbS" id="3N6JpByfQdH" role="LjaKd">

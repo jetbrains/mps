@@ -10,16 +10,15 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.baseLanguage.editor.MemberDeclarationRefactoringUtil;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -28,31 +27,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class RemoveStaticFieldModifier_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public RemoveStaticFieldModifier_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "1809470990894798934"));
   }
+
   @Override
   public String getPresentation() {
     return "RemoveStaticFieldModifier";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    if (SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false) == null) {
-      return false;
-    }
-    return true;
 
-  }
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -62,10 +51,12 @@ public final class RemoveStaticFieldModifier_Intention extends AbstractIntention
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Remove 'static' Modifier";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       final SNode field = SNodeFactoryOperations.insertNewNextSiblingChild(node, CONCEPTS.FieldDeclaration$ie);
@@ -75,21 +66,40 @@ public final class RemoveStaticFieldModifier_Intention extends AbstractIntention
       SPropertyOperations.set(field, PROPS.name$MnvL, SPropertyOperations.getString(node, PROPS.name$MnvL));
       SPropertyOperations.set(field, PROPS.isFinal$gvTP, SPropertyOperations.getBoolean(node, PROPS.isFinal$gvTP));
       ListSequence.fromList(SLinkOperations.getChildren(field, LINKS.annotation$K49I)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.annotation$K49I)));
-      AttributeOperations.setAttribute(field, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl), AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl)));
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl).set(field, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl).get(node));
       MemberDeclarationRefactoringUtil.rewireFieldReferences(node, field);
       SNodeOperations.deleteNode(node);
       editorContext.selectWRTFocusPolicy(field);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      if (SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false) == null) {
+        return false;
+      }
+      return true;
+
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return RemoveStaticFieldModifier_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
     /*package*/ static final SConcept FieldDeclaration$ie = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
     /*package*/ static final SConcept FieldDocComment$wl = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dc44bf2L, "jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
   private static final class LINKS {

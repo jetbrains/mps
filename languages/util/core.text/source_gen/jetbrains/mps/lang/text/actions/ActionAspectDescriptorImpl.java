@@ -12,9 +12,23 @@ import jetbrains.mps.openapi.actions.descriptor.PastePostProcessor;
 import java.util.Arrays;
 
 public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor implements ActionAspectDescriptor {
+  private static final String LANGUAGE_FQ_NAME = "jetbrains.mps.lang.text";
 
   @Override
   public Collection<NodeFactory> getFactories(SAbstractConcept concept) {
+    if (LANGUAGE_FQ_NAME.equals(concept.getLanguage().getQualifiedName())) {
+      switch (concept.getName()) {
+        case "IndentedPoint":
+          return Collections.<NodeFactory>singletonList(new TextualFactories.NodeFactory_6746006958027564752());
+        case "Letter":
+          return Collections.<NodeFactory>singletonList(new TextualFactories.NodeFactory_9189109070801858976());
+        case "Line":
+          return Collections.<NodeFactory>singletonList(new TextualFactories.NodeFactory_1094247804558658408());
+        case "Paragraph":
+          return Collections.<NodeFactory>singletonList(new TextualFactories.NodeFactory_3129707072769713286());
+        default:
+      }
+    }
     return Collections.<NodeFactory>emptyList();
   }
 

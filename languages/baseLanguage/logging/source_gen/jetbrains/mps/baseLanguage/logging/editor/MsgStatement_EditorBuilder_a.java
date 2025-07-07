@@ -14,7 +14,6 @@ import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.MPSFonts;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
@@ -25,10 +24,8 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.SPropertyAccessor;
 import jetbrains.mps.nodeEditor.cellMenu.SPropertySubstituteInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
@@ -73,7 +70,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     editorCell.addEditorCell(createRefNode_0());
     editorCell.addEditorCell(createCollection_1());
     editorCell.addEditorCell(createCollection_2());
-    editorCell.addEditorCell(createConstant_3());
+    editorCell.addEditorCell(createCollection_3());
+    editorCell.addEditorCell(createConstant_4());
     return editorCell;
   }
   private EditorCell createConstant_0() {
@@ -81,7 +79,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     editorCell.setCellId("Constant_tetib3_a0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_MAGENTA));
+    style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_MAGENTA));
     style.set(StyleAttributes.EDITABLE, true);
     editorCell.getStyle().putAll(style);
     editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.MsgStatement$Pu, "jetbrains.mps.baseLanguage.logging.editor.MsgFirstCell"));
@@ -99,16 +97,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       editorCell.setCellId("property_severity");
       Style style = new StyleImpl();
       style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_MAGENTA));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_MAGENTA));
       editorCell.getStyle().putAll(style);
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
-      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-        }
-      });
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
+      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
       if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
         EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
         return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);
@@ -191,14 +185,86 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new projectSingleRoleHandler_tetib3_b3a(myNode, LINKS.project$OYlE, getEditorContext());
+    SingleRoleCellProvider provider = new hintSingleRoleHandler_tetib3_b3a(myNode, LINKS.hint$bvDr, getEditorContext());
     return provider.createCell();
   }
-  private static class projectSingleRoleHandler_tetib3_b3a extends SingleRoleCellProvider {
+  private static class hintSingleRoleHandler_tetib3_b3a extends SingleRoleCellProvider {
     @NotNull
     private SNode myNode;
 
-    public projectSingleRoleHandler_tetib3_b3a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+    public hintSingleRoleHandler_tetib3_b3a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+      super(containmentLink, context);
+      myNode = ownerNode;
+    }
+
+    @Override
+    @NotNull
+    public SNode getNode() {
+      return myNode;
+    }
+
+    protected EditorCell createChildCell(SNode child) {
+      EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.hint$bvDr, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.hint$bvDr, child));
+      installCellInfo(child, editorCell, false);
+      return editorCell;
+    }
+
+
+
+    private void installCellInfo(SNode child, EditorCell editorCell, boolean isEmpty) {
+      if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
+        editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
+      }
+      if (editorCell.getSRole() == null) {
+        editorCell.setSRole(LINKS.hint$bvDr);
+      }
+    }
+    @Override
+    protected EditorCell createEmptyCell() {
+      getCellFactory().pushCellContext();
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.hint$bvDr));
+      try {
+        EditorCell editorCell = super.createEmptyCell();
+        editorCell.setCellId("empty_hint");
+        installCellInfo(null, editorCell, true);
+        setCellContext(editorCell);
+        return editorCell;
+      } finally {
+        getCellFactory().popCellContext();
+      }
+    }
+    protected String getNoTargetText() {
+      return "<no hint>";
+    }
+  }
+  private EditorCell createCollection_2() {
+    EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
+    editorCell.setCellId("Collection_tetib3_e0");
+    editorCell.addEditorCell(createConstant_2());
+    editorCell.addEditorCell(createRefNode_2());
+    return editorCell;
+  }
+  private EditorCell createConstant_2() {
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ",");
+    editorCell.setCellId("Constant_tetib3_a4a");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.SELECTABLE, false);
+    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
+    editorCell.getStyle().putAll(style);
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createRefNode_2() {
+    SingleRoleCellProvider provider = new projectSingleRoleHandler_tetib3_b4a(myNode, LINKS.project$OYlE, getEditorContext());
+    return provider.createCell();
+  }
+  private static class projectSingleRoleHandler_tetib3_b4a extends SingleRoleCellProvider {
+    @NotNull
+    private SNode myNode;
+
+    public projectSingleRoleHandler_tetib3_b4a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
       super(containmentLink, context);
       myNode = ownerNode;
     }
@@ -245,19 +311,19 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       return "<no project>";
     }
   }
-  private EditorCell createCollection_2() {
+  private EditorCell createCollection_3() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
-    editorCell.setCellId("Collection_tetib3_e0");
+    editorCell.setCellId("Collection_tetib3_f0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
-    editorCell.addEditorCell(createConstant_2());
-    editorCell.addEditorCell(createRefNode_2());
+    editorCell.addEditorCell(createConstant_3());
+    editorCell.addEditorCell(createRefNode_3());
     return editorCell;
   }
-  private EditorCell createConstant_2() {
+  private EditorCell createConstant_3() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ",");
-    editorCell.setCellId("Constant_tetib3_a4a");
+    editorCell.setCellId("Constant_tetib3_a5a");
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, false);
     style.set(StyleAttributes.PUNCTUATION_LEFT, true);
@@ -265,15 +331,15 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new throwableSingleRoleHandler_tetib3_b4a(myNode, LINKS.throwable$I3Qc, getEditorContext());
+  private EditorCell createRefNode_3() {
+    SingleRoleCellProvider provider = new throwableSingleRoleHandler_tetib3_b5a(myNode, LINKS.throwable$I3Qc, getEditorContext());
     return provider.createCell();
   }
-  private static class throwableSingleRoleHandler_tetib3_b4a extends SingleRoleCellProvider {
+  private static class throwableSingleRoleHandler_tetib3_b5a extends SingleRoleCellProvider {
     @NotNull
     private SNode myNode;
 
-    public throwableSingleRoleHandler_tetib3_b4a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+    public throwableSingleRoleHandler_tetib3_b5a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
       super(containmentLink, context);
       myNode = ownerNode;
     }
@@ -320,11 +386,11 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       return "<no throwable>";
     }
   }
-  private EditorCell createConstant_3() {
+  private EditorCell createConstant_4() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ";");
-    editorCell.setCellId("Constant_tetib3_f0");
+    editorCell.setCellId("Constant_tetib3_g0");
     Style style = new StyleImpl();
-    new SemicolonStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new SemicolonStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -341,6 +407,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink message$I3Bb = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25eL, "message");
+    /*package*/ static final SContainmentLink hint$bvDr = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x1d19c0e87d9d67c2L, "hint");
     /*package*/ static final SContainmentLink project$OYlE = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c318L, "project");
     /*package*/ static final SContainmentLink throwable$I3Qc = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25fL, "throwable");
   }

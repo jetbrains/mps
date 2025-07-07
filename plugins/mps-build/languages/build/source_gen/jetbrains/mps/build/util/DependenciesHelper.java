@@ -4,12 +4,12 @@ package jetbrains.mps.build.util;
 
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
-import java.util.Set;
-import jetbrains.mps.generator.template.TemplateQueryContext;
-import org.jetbrains.annotations.NotNull;
+import java.util.HashMap;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.generator.template.TemplateQueryContext;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.extapi.model.TransientSModel;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -19,29 +19,39 @@ public class DependenciesHelper {
   private final Map<SNode, String> locationMap;
   private final Map<SNode, String> contentLocationMap;
   private final Map<Object, SNode> idToArtifactMap;
-  private final Set<SNode> requiresFetch;
-  protected final MacroHelper macros;
-  private final TemplateQueryContext myGenContext;
+  private final MacroHelper macros;
   private final SNode myProject;
   private final String myLocationKey;
   private final String myContentLocationKey;
-  private String myLayoutRelativeKey;
+  private final String myLayoutRelativeKey;
+  private final String myArtifactIdKey;
 
-  public DependenciesHelper(@NotNull TemplateQueryContext genContext, SNode project) {
-    this.locationMap = GenerationUtil.<SNode,String>getSessionMap(project, genContext, "location");
-    this.contentLocationMap = GenerationUtil.<SNode,String>getSessionMap(project, genContext, "contentLocation");
-    this.idToArtifactMap = GenerationUtil.<Object,SNode>getSessionMap(project, genContext, "IDToArtifact");
-    this.macros = new MacroHelper.MacroContext(project, genContext).getMacros(project);
-    this.requiresFetch = GenerationUtil.getSessionSet(project, genContext, "requiresFetch");
-    myGenContext = genContext;
+  protected DependenciesHelper(Context buildContext, SNode project) {
+    // given the usage pattern of DH, with fill from preprocessing script, and reads from rules (that can be run in parallel), 
+    // I feel regular, non-concurrent map is enough;
+    locationMap = new HashMap<SNode, String>(100);
+    contentLocationMap = new HashMap<SNode, String>(100);
+    idToArtifactMap = new HashMap<Object, SNode>(100);
+    this.macros = buildContext.getMacros(project);
     myProject = project;
-    myLocationKey = "location:" + SModelOperations.getModelName(SNodeOperations.getModel(project)) + '/' + SPropertyOperations.getString(project, PROPS.name$MnvL);
-    myContentLocationKey = "contentLocation:" + SModelOperations.getModelName(SNodeOperations.getModel(project)) + '/' + SPropertyOperations.getString(project, PROPS.name$MnvL);
-    myLayoutRelativeKey = "layout-relative:" + SModelOperations.getModelName(SNodeOperations.getModel(project)) + '/' + SPropertyOperations.getString(project, PROPS.name$MnvL);
+    final String qualifiedProjectName = SModelOperations.getModelName(SNodeOperations.getModel(project)) + '/' + SPropertyOperations.getString(project, PROPS.name$MnvL);
+    myLocationKey = "location:" + qualifiedProjectName;
+    myContentLocationKey = "contentLocation:" + qualifiedProjectName;
+    myLayoutRelativeKey = "layout-relative:" + qualifiedProjectName;
+    myArtifactIdKey = "artifact-key:" + qualifiedProjectName;
   }
 
-  public TemplateQueryContext getGenContext() {
-    return myGenContext;
+  /*package*/ static void put(TemplateQueryContext genContext, DependenciesHelper dh, String token) {
+    final String key = token + "::" + SModelOperations.getModelName(SNodeOperations.getModel(dh.myProject)) + "/" + SPropertyOperations.getString(dh.myProject, PROPS.name$MnvL);
+    // FIXME eventually (if DH persists), could at least become 'step' object;
+    //      now need to span several steps (build.mps: load modules, aliases, main), hence session
+    assert genContext.getSessionObject(key) == null : "just to notice if anything wrong with our assumptions";
+    genContext.putSessionObject(key, dh);
+  }
+
+  public static DependenciesHelper get(TemplateQueryContext genContext, SNode project, String token) {
+    final String key = token + "::" + SModelOperations.getModelName(SNodeOperations.getModel(project)) + "/" + SPropertyOperations.getString(project, PROPS.name$MnvL);
+    return (DependenciesHelper) genContext.getSessionObject(key);
   }
 
   public void putLocation(SNode layoutNode, String location) {
@@ -54,8 +64,8 @@ public class DependenciesHelper {
   public String getLocation(@NotNull SNode layoutNode) {
     String rv = locationMap.get(layoutNode);
     if (rv == null) {
-      // See aliases MC, where BuildLayout_File, recorded in locations, is wrapped with BuildLayout_Copy 
-      // MAP-SRC in BuildLayout_File's rule, default case. 
+      // See aliases MC, where BuildLayout_File, recorded in locations, is wrapped with BuildLayout_Copy
+      // MAP-SRC in BuildLayout_File's rule, default case.
       rv = (String) layoutNode.getUserObject(myLocationKey);
     }
     return rv;
@@ -77,8 +87,8 @@ public class DependenciesHelper {
   }
 
   public void preserveLocations(SNode from, SNode to) {
-    // this method is invoked from generation for specific usecases (wrap of a File wuth Copy), 
-    // hence we expect nodes to be free-floating/transient, never from a regular model 
+    // this method is invoked from generation for specific usecases (wrap of a File with Copy),
+    // hence we expect nodes to be free-floating/transient, never from a regular model
     assert SNodeOperations.getModel(to) == null || SNodeOperations.getModel(to) instanceof TransientSModel;
     to.putUserObject(myLocationKey, from.getUserObject(myLocationKey));
     to.putUserObject(myContentLocationKey, from.getUserObject(myContentLocationKey));
@@ -92,8 +102,8 @@ public class DependenciesHelper {
    * @param location path for the key node
    */
   public void putLayoutRelativePath(SNode layoutNode, SNode key, String location) {
-    // FIXME shall respect layoutNode as there are chances to have same 'key' (e.g. BuildMps_AbstractModule) exposed through 
-    // different layout nodes, just left simplest possible variant to test and get further 
+    // FIXME shall respect layoutNode as there are chances to have same 'key' (e.g. BuildMps_AbstractModule) exposed through
+    // different layout nodes, just left simplest possible variant to test and get further
     key.putUserObject(myLayoutRelativeKey, location);
   }
 
@@ -104,7 +114,7 @@ public class DependenciesHelper {
    * @return location path for the key node, if any
    */
   public String getLayoutRelativePath(SNode layoutNode, SNode key) {
-    // FIXME see putLayoutRelativePath for details 
+    // FIXME see putLayoutRelativePath for details
     return (String) key.getUserObject(myLayoutRelativeKey);
   }
 
@@ -113,26 +123,28 @@ public class DependenciesHelper {
   }
 
   public SNode getArtifact(String id) {
+    // it seems that the only use of this method is to access our own 'labeled' jars (those we record in fetchDependencies of mps/mps-testing build plugins).
+    // these 'labeled' dependencies are in fact just 'implicit' dependencies that are not present in a build project but are necessary for its parts to function
     return SNodeOperations.as(idToArtifactMap.get(id), CONCEPTS.BuildLayout_Node$Rb);
   }
 
   public SNode getArtifact(SNode id) {
-    return SNodeOperations.as(idToArtifactMap.get(getOriginalNode(id)), CONCEPTS.BuildLayout_Node$Rb);
+    return SNodeOperations.as(idToArtifactMap.get(artifactIdKey(id, false)), CONCEPTS.BuildLayout_Node$Rb);
   }
 
   public SNode getArtifact(LocalSourcePathArtifact id) {
     return SNodeOperations.as(idToArtifactMap.get(id), CONCEPTS.BuildLayout_Node$Rb);
   }
 
-  public void putArtifact(String id, SNode artifact) {
+  /*package*/ void putArtifact(String id, SNode artifact) {
     putArtifact0(id, artifact);
   }
 
-  public void putArtifact(SNode id, SNode artifact) {
-    putArtifact0(getOriginalNode(id), artifact);
+  /*package*/ void putArtifact(SNode id, SNode artifact) {
+    putArtifact0(artifactIdKey(id, true), artifact);
   }
 
-  public void putArtifact(LocalSourcePathArtifact id, SNode artifact) {
+  /*package*/ void putArtifact(LocalSourcePathArtifact id, SNode artifact) {
     putArtifact0(id, artifact);
   }
 
@@ -140,13 +152,22 @@ public class DependenciesHelper {
     idToArtifactMap.put(id, artifact);
   }
 
-  public boolean requiresFetch(SNode node) {
-    return requiresFetch.contains(node);
+  private Object artifactIdKey(SNode id, boolean create) {
+    // as we no longer resort to original node, we may record artifact for module@1_0 and query it with module@4_4
+    // XXX could use anything, like integer counter, although for debug purposes would be handy to have name of project part here
+    if (create && isFromTransformedModel(id)) {
+      // note, isFromTransformedModel() would answer NO for id that has been recorded at step @1_0 but instance comes from @4_4,
+      //  nevertheless, I don't want to reduce the check to just `id.model isInstanceOf TransientSModel`, and stick to the assumption
+      //  putArtifact() happens at the same step as new DH (FDP.alternativeProcess()), and check isFromTransformedModel() only at creation time.
+      Object key = id.getNodeId();
+      assert key != null;
+      id.putUserObject(myArtifactIdKey, key);
+      return key;
+    }
+    Object key = id.getUserObject(myArtifactIdKey);
+    return (key == null ? id : key);
   }
 
-  /*package*/ void doFetch(SNode node) {
-    requiresFetch.add(node);
-  }
   public MacroHelper getMacroHelper() {
     return macros;
   }
@@ -154,7 +175,7 @@ public class DependenciesHelper {
   /**
    * Check if layout node comes from build project being transformed, or the one being transformed along with it, i.e. if we CAN and NEED to associate
    * location values with it. Layout nodes are not necessarily belong to the generated project, an import from external
-   * ayout brings foreign nodes, which can't get changed if they come from another model, non-transient, and the value associated would affect 
+   * layout brings foreign nodes, which can't get changed if they come from another model, non-transient, and the value associated would affect 
    * any dependant project until the model is unloaded.
    * If an external node comes from another project from the same model (few projects may get transformed simultaneously), we need to record location
    * that is specific to each project (given projects A, B and C in a single model, where B and C re-use artifacts declared in A, layout nodes of A shall
@@ -162,21 +183,18 @@ public class DependenciesHelper {
    */
   private boolean isFromTransformedModel(SNode n) {
     SNode ancestorProject = SNodeOperations.getNodeAncestor(n, CONCEPTS.BuildProject$ae, false, false);
-    // ancestorProject could be null for a layout node from external layout root 
+    // ancestorProject could be null for a layout node from external layout root
     return ancestorProject == myProject || (SNodeOperations.getModel(n) == SNodeOperations.getModel(myProject) && SNodeOperations.getModel(n) instanceof TransientSModel);
   }
 
-  public SNode getOriginalNode(SNode node) {
-    return getOriginalNode(node, myGenContext);
-  }
 
   public static SNode getOriginalNode(SNode node, TemplateQueryContext genContext) {
-    // node.model could be legitimately == null for a node from transient model which is already disposed. 
-    // however, we need to answer its original node anyway, or the whole build process would fail: 
-    // RequiredPlugins records transient nodes and getArtifact(node<>) needs to find out original node of that node. 
-    // If generation doesn't keep transient models (or uses in-place transformation), check for node.model==null here 
-    // would effectively prevent from using getArtifacts(recordedTransientNode). 
-    if (SNodeOperations.getModel(node) != null && !((SNodeOperations.getModel(node) instanceof TransientSModel))) {
+    // node.model could be legitimately == null for a node from transient model which is already disposed.
+    // however, we need to answer its original node anyway, or the whole build process would fail:
+    // RequiredPlugins records transient nodes and getArtifact(node<>) needs to find out original node of that node.
+    // If generation doesn't keep transient models (or uses in-place transformation), check for node.model==null here
+    // would effectively prevent from using getArtifacts(recordedTransientNode).
+    if (SNodeOperations.getModel(node) != null && !(SNodeOperations.getModel(node) instanceof TransientSModel)) {
       return node;
     }
 

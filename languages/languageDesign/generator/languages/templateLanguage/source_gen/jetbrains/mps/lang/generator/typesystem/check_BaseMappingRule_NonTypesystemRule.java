@@ -9,7 +9,6 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -18,8 +17,8 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class check_BaseMappingRule_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_BaseMappingRule_NonTypesystemRule() {
@@ -28,7 +27,7 @@ public class check_BaseMappingRule_NonTypesystemRule extends AbstractNonTypesyst
     if ((SLinkOperations.getTarget(bmr, LINKS.applicableConcept$Hpnk) == null)) {
       return;
     }
-    if ((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(bmr, LINKS.applicableConcept$Hpnk), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "5169995583184591161"))) {
+    if ((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id4UTtJHK9fEJ.invoke(SLinkOperations.getTarget(bmr, LINKS.applicableConcept$Hpnk), CONCEPTS.Attribute$g1)) {
       {
         final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.applicableConcept$Hpnk);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(bmr, "Transformation of an attribute may end up with hard to explain outcome", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "2826485732397637989", null, errorTarget);
@@ -55,12 +54,13 @@ public class check_BaseMappingRule_NonTypesystemRule extends AbstractNonTypesyst
     /*package*/ static final SReferenceLink applicableConcept$Hpnk = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept");
   }
 
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept Attribute$g1 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x47bf8397520e5939L, "jetbrains.mps.lang.core.structure.Attribute");
+    /*package*/ static final SConcept BaseMappingRule$O5 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, "jetbrains.mps.lang.generator.structure.BaseMappingRule");
+  }
+
   private static final class PROPS {
     /*package*/ static final SProperty abstract$ibpT = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
     /*package*/ static final SProperty applyToConceptInheritors$PfLi = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc6d8f674L, "applyToConceptInheritors");
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseMappingRule$O5 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, "jetbrains.mps.lang.generator.structure.BaseMappingRule");
   }
 }

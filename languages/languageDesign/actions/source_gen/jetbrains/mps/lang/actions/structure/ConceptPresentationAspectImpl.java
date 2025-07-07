@@ -32,6 +32,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_NodeFactory;
   private ConceptPresentation props_NodeSetupFunction;
   private ConceptPresentation props_NodeSetupFunction_EnclosingNode;
+  private ConceptPresentation props_NodeSetupFunction_Index;
   private ConceptPresentation props_NodeSetupFunction_NewNode;
   private ConceptPresentation props_NodeSetupFunction_SampleNode;
   private ConceptPresentation props_PastePostProcessFunction;
@@ -78,7 +79,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_CopyPasteHandlers == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a4b0fb);
+          cpb.helpUrl(HELP_URL);
           props_CopyPasteHandlers = cpb.create();
         }
         return props_CopyPasteHandlers;
@@ -182,8 +183,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_NodeFactories == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a81b0fb);
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a81b0fb);
+          cpb.helpUrl(HELP_URL1);
+          cpb.icon(IconContainer.RESOURCE_0);
           props_NodeFactories = cpb.create();
         }
         return props_NodeFactories;
@@ -210,6 +211,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_NodeSetupFunction_EnclosingNode = cpb.create();
         }
         return props_NodeSetupFunction_EnclosingNode;
+      case LanguageConceptSwitch.NodeSetupFunction_Index:
+        if (props_NodeSetupFunction_Index == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("Position of the new node in its parent collection or 0 if it is not part of a collection");
+          cpb.rawPresentation("index");
+          props_NodeSetupFunction_Index = cpb.create();
+        }
+        return props_NodeSetupFunction_Index;
       case LanguageConceptSwitch.NodeSetupFunction_NewNode:
         if (props_NodeSetupFunction_NewNode == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -251,8 +260,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_PasteWrappers == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a72b0fb);
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a72b0fb);
+          cpb.helpUrl(HELP_URL2);
+          cpb.icon(IconContainer.RESOURCE_1);
           props_PasteWrappers = cpb.create();
         }
         return props_PasteWrappers;
@@ -274,7 +283,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     }
     return null;
   }
-  private static final String HELP_URL_lpa09p_a0a2a0a4b0fb = URLFunction_HelpCenterDocUrl.getUrl() + "editor-actions.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a81b0fb = URLFunction_HelpCenterDocUrl.getUrl() + "editor-actions.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a72b0fb = URLFunction_HelpCenterDocUrl.getUrl() + "editor-actions.html";
+  private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "editor-actions.html#copy-pastehandlers";
+  private static final String HELP_URL1 = URLFunction_HelpCenterDocUrl.getUrl() + "editor-actions.html#node_factories";
+  private static final String HELP_URL2 = URLFunction_HelpCenterDocUrl.getUrl() + "editor-actions.html#pastewrappers";
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="3aagycqe2ywq3cbmyxxi4s74kquuuhw">
+<product version="3" modelHash="-8ywgo923v2pg0tn5lt2yagk7bq69k85">
   <files names="IntentionsDescriptor.java:MakeDirect_Intention.java:MakeUndirect_Intention.java:RefactoringIdHelper.java:SetIdsInMoveMigrations_Intention.java" />
 </product>
 

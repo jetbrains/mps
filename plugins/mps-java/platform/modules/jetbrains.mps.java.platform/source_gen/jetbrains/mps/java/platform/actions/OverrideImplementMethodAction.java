@@ -5,59 +5,61 @@ package jetbrains.mps.java.platform.actions;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.project.Project;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.List;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.ide.project.ProjectHelper;
+import java.util.ArrayList;
+import jetbrains.mps.ide.datatransfer.ModelImportsCheck;
+import jetbrains.mps.smodel.undo.NamedCommand;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
+import jetbrains.mps.smodel.ModelDependencyScanner;
+import org.jetbrains.mps.openapi.model.SNodeUtil;
+import java.util.Set;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import jetbrains.mps.ide.datatransfer.AddRequiredImportsDialog;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-@GeneratedClass(node = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)/8838506468326692836", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
+@GeneratedClass(nodeId = "8838506468326692836", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
 public class OverrideImplementMethodAction {
   private final Project myProject;
   private final SNode mySelectedNode;
+  private final SModel myTargetModel;
   private final EditorContext myEditorContext;
   private final boolean myIsOverride;
 
   public OverrideImplementMethodAction(Project project, SNode selectedNode, EditorContext editorContext, boolean isOverride) {
     myProject = project;
     mySelectedNode = selectedNode;
+    myTargetModel = SNodeOperations.getModel(selectedNode);
     myEditorContext = editorContext;
     myIsOverride = isOverride;
   }
 
   public void run() {
-    ModelAccessHelper mah = new ModelAccessHelper(myProject.getModelAccess());
-    final SNode contextClassifier = mah.runReadAction(new Computable<SNode>() {
-      public SNode compute() {
-        return SNodeOperations.getNodeAncestor(mySelectedNode, CONCEPTS.Classifier$Ix, true, false);
+    ModelAccess mah = myEditorContext.getRepository().getModelAccess();
+    // FIXME bad model access approach - individual reads, really?!
+    final SNode contextClassifier = mah.computeReadAction(() -> SNodeOperations.getNodeAncestor(mySelectedNode, CONCEPTS.Classifier$Ix, true, false));
+    final SNode contextMember = mah.computeReadAction(() -> SNodeOperations.getNodeAncestor(mySelectedNode, CONCEPTS.ClassifierMember$At, true, false));
+    final SNodeReference[] methods = mah.computeReadAction(() -> {
+      List<SNode> methodsToImplementAndOverride = ((List<SNode>) BHReflection.invoke0(contextClassifier, CONCEPTS.IMemberContainer$yM, SMethodIdV2.create("getMethodsToImplement", 5418393554803775106L, 0x5745e3015c8914d3L)));
+      if (myIsOverride) {
+        ListSequence.fromList(methodsToImplementAndOverride).addSequence(ListSequence.fromList(((List<SNode>) BHReflection.invoke0(contextClassifier, CONCEPTS.IMemberContainer$yM, SMethodIdV2.create("getMethodsToOverride", 5418393554803767537L, 0x5745e3015c8914d3L)))));
       }
-    });
-    final SNode contextMember = mah.runReadAction(new Computable<SNode>() {
-      public SNode compute() {
-        return SNodeOperations.getNodeAncestor(mySelectedNode, CONCEPTS.ClassifierMember$At, true, false);
-      }
-    });
-    final SNodeReference[] methods = mah.runReadAction(new Computable<SNodeReference[]>() {
-      @Override
-      public SNodeReference[] compute() {
-        List<SNode> methodsToImplementAndOverride = ((List<SNode>) BHReflection.invoke0(contextClassifier, CONCEPTS.IMemberContainer$yM, SMethodTrimmedId.create("getMethodsToImplement", null, "4GM03FJm5q2")));
-        if (myIsOverride) {
-          ListSequence.fromList(methodsToImplementAndOverride).addSequence(ListSequence.fromList(((List<SNode>) BHReflection.invoke0(contextClassifier, CONCEPTS.IMemberContainer$yM, SMethodTrimmedId.create("getMethodsToOverride", null, "4GM03FJm3zL")))));
-        }
-        return OverrideImplementMethodsDialog.toNodePointers(OverrideImplementMethodsDialog.sortMethods(contextClassifier, methodsToImplementAndOverride));
-      }
+      return Sequence.fromIterable(OverrideImplementMethodsDialog.sortMethods(contextClassifier, methodsToImplementAndOverride)).select((it) -> SNodeOperations.getPointer(it)).toGenericArray(SNodeReference.class);
     });
 
     final OverrideImplementMethodsDialog dialog = new OverrideImplementMethodsDialog(methods, ProjectHelper.toIdeaProject(myProject));
@@ -68,20 +70,42 @@ public class OverrideImplementMethodAction {
     if (dialog.isOK()) {
       final Iterable<SNodeReference> selectedElements = (Iterable<SNodeReference>) dialog.getSelectedElements();
 
-      myProject.getModelAccess().executeCommandInEDT(new Runnable() {
+      final List<SNode> insertedMethods = new ArrayList<SNode>();
+
+      final ModelImportsCheck miCheck = new ModelImportsCheck(myProject, myTargetModel);
+
+      myProject.getModelAccess().executeCommand(new NamedCommand("Override Methods", true) {
         @Override
         public void run() {
-          List<SNode> selection = Sequence.fromIterable(selectedElements).select(new ISelector<SNodeReference, SNode>() {
-            public SNode select(SNodeReference it) {
-              return SNodeOperations.cast(it.resolve(myProject.getRepository()), CONCEPTS.BaseMethodDeclaration$kD);
-            }
-          }).toListSequence();
+          List<SNode> selection = Sequence.fromIterable(selectedElements).select((it) -> SPointerOperations.resolveNode(it, myEditorContext.getRepository())).toList();
 
           OverrideImplementMethodsHelper helper = new OverrideImplementMethodsHelper(myProject, contextClassifier, contextMember, dialog.isRemoveAttributes(), dialog.isInsertOverrideAnnotation(), dialog.isAddReturn());
-          List<SNode> insertedMethods = helper.insertMethods(selection, SNodeOperations.isInstanceOf(contextClassifier, CONCEPTS.Interface$db) && myIsOverride);
+          ListSequence.fromList(insertedMethods).addSequence(ListSequence.fromList(helper.insertMethods(selection, SNodeOperations.isInstanceOf(contextClassifier, CONCEPTS.Interface$db) && myIsOverride)));
           if (insertedMethods.isEmpty()) {
             return;
           }
+
+          final ModelDependencyScanner depScan = new ModelDependencyScanner();
+          List<SNode> toScan = insertedMethods;
+          depScan.walk(SNodeUtil.getDescendants(toScan));
+          Set<SModelReference> necessaryModels = depScan.getCrossModelReferences();
+          Set<SLanguage> necessaryLanguages = depScan.getUsedLanguages();
+          miCheck.checkSatisfied(necessaryLanguages, necessaryModels);
+        }
+      });
+
+      if (!(miCheck.isSatisfied())) {
+        AddRequiredImportsDialog addImportsDialog = miCheck.configuredDialog();
+        addImportsDialog.show();
+        if (addImportsDialog.isOK()) {
+          Runnable imports = addImportsDialog.asUpdateCommand(myTargetModel);
+          myProject.getModelAccess().executeCommand(NamedCommand.wrap("Add Imports", imports));
+        }
+      }
+
+      mah.runReadInEDT(new Runnable() {
+        @Override
+        public void run() {
           SNode firstMethod = ListSequence.fromList(insertedMethods).first();
           SNode nodeToSelect;
           if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(firstMethod, LINKS.body$5xQk), LINKS.statement$53DE)).isNotEmpty()) {
@@ -91,6 +115,8 @@ public class OverrideImplementMethodAction {
           }
           myEditorContext.flushEvents();
           myEditorContext.getSelectionManager().setSelection(nodeToSelect);
+          EditorCell cell = myEditorContext.getEditorComponent().findNodeCell(SNodeOperations.getParent(firstMethod));
+          cell.getEditorComponent().update();
         }
       });
     }
@@ -100,7 +126,6 @@ public class OverrideImplementMethodAction {
     /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
     /*package*/ static final SInterfaceConcept ClassifierMember$At = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember");
     /*package*/ static final SInterfaceConcept IMemberContainer$yM = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11638b31955L, "jetbrains.mps.baseLanguage.structure.IMemberContainer");
-    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
     /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
   }
 

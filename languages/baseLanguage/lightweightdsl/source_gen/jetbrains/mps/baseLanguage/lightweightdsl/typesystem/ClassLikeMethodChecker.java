@@ -8,9 +8,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.lightweightdsl.behavior.MethodDescriptor__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.baseLanguage.lightweightdsl.behavior.DependentTypeDescriptor__BehaviorDescriptor;
-import jetbrains.mps.lang.pattern.util.MatchingUtil;
+import jetbrains.mps.smodel.SNodeMatcher;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.lightweightdsl.behavior.ParameterDescriptor__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -24,71 +23,55 @@ public class ClassLikeMethodChecker {
     try {
       doCheck(method, visitor);
     } catch (StopMethodCheckerException s) {
-      // do nothing, this just stops processing 
+      // do nothing, this just stops processing
     }
   }
 
   private boolean doCheck(final SNode method, ClassLikeMethodProblemVisitor visitor) throws StopMethodCheckerException {
-    // name 
+    // name
     if (!(Objects.equals(SPropertyOperations.getString(method, PROPS.name$MnvL), SPropertyOperations.getString(SLinkOperations.getTarget(method, LINKS.decl$QvLv), PROPS.name$MnvL)))) {
       visitor.visitName(method, SPropertyOperations.getString(SLinkOperations.getTarget(method, LINKS.decl$QvLv), PROPS.name$MnvL));
     }
 
-    // ret type 
+    // ret type
     final SNode retType = MethodDescriptor__BehaviorDescriptor.getReturnType_id3m06Jgso0l8.invoke(SLinkOperations.getTarget(method, LINKS.decl$QvLv));
     if (SNodeOperations.isInstanceOf(retType, CONCEPTS.DependentTypeDescriptor$ny)) {
       if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), CONCEPTS.DependentTypeInstance$N9)) || SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), CONCEPTS.DependentTypeInstance$N9), LINKS.decl$HI1L) != retType) {
-        visitor.visitReturnType(method, new _FunctionTypes._return_P0_E0<SNode>() {
-          public SNode invoke() {
-            return (SNode) DependentTypeDescriptor__BehaviorDescriptor.create_id2h59CdJp8nr.invoke(SNodeOperations.cast(retType, CONCEPTS.DependentTypeDescriptor$ny), method);
-          }
-        });
+        visitor.visitReturnType(method, () -> (SNode) DependentTypeDescriptor__BehaviorDescriptor.create_id2h59CdJp8nr.invoke(SNodeOperations.cast(retType, CONCEPTS.DependentTypeDescriptor$ny), method));
       }
     } else {
-      if (!((MatchingUtil.matchNodes(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), retType)))) {
-        visitor.visitReturnType(method, new _FunctionTypes._return_P0_E0<SNode>() {
-          public SNode invoke() {
-            return SNodeOperations.copyNode(retType);
-          }
-        });
+      if (!(new SNodeMatcher().match(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), retType))) {
+        visitor.visitReturnType(method, () -> SNodeOperations.copyNode(retType));
       }
     }
 
-    // parameters 
+    // parameters
     for (int i = 0, cur = 0; i < ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.decl$QvLv), LINKS.param$HGTA)).count(); i++) {
       final SNode formalPar = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.decl$QvLv), LINKS.param$HGTA)).getElement(i);
       if (cur == ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count()) {
         if (SLinkOperations.getTarget(formalPar, LINKS.condition$uzGY) == null || (boolean) ParameterDescriptor__BehaviorDescriptor.isNeeded_id7GXvAHO1j1d.invoke(formalPar, method)) {
-          visitor.visitMissingParam(method, cur++, new _FunctionTypes._return_P0_E0<SNode>() {
-            public SNode invoke() {
-              return (SNode) ParameterDescriptor__BehaviorDescriptor.create_id2h59CdJp99Y.invoke(formalPar, method);
-            }
-          });
+          visitor.visitMissingParam(method, cur++, () -> (SNode) ParameterDescriptor__BehaviorDescriptor.create_id2h59CdJp99Y.invoke(formalPar, method));
         }
         continue;
       }
 
       SNode actualPar = ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).getElement(cur);
 
-      // todo this condition should be removed after migration to our params 
+      // todo this condition should be removed after migration to our params
       if (SNodeOperations.isInstanceOf(actualPar, CONCEPTS.MethodParameterInstance$SI)) {
-        // conditional? need to check presence conforms with condition 
+        // conditional? need to check presence conforms with condition
         if (SLinkOperations.getTarget(formalPar, LINKS.condition$uzGY) != null) {
-          // needed, but not present 
+          // needed, but not present
           if ((boolean) ParameterDescriptor__BehaviorDescriptor.isNeeded_id7GXvAHO1j1d.invoke(formalPar, method) && SLinkOperations.getTarget(SNodeOperations.cast(actualPar, CONCEPTS.MethodParameterInstance$SI), LINKS.decl$JKxQ) != formalPar) {
-            visitor.visitMissingParam(method, cur++, new _FunctionTypes._return_P0_E0<SNode>() {
-              public SNode invoke() {
-                return (SNode) ParameterDescriptor__BehaviorDescriptor.create_id2h59CdJp99Y.invoke(formalPar, method);
-              }
-            });
+            visitor.visitMissingParam(method, cur++, () -> (SNode) ParameterDescriptor__BehaviorDescriptor.create_id2h59CdJp99Y.invoke(formalPar, method));
             continue;
           }
-          // not needed, but present 
+          // not needed, but present
           if (!((boolean) ParameterDescriptor__BehaviorDescriptor.isNeeded_id7GXvAHO1j1d.invoke(formalPar, method)) && SLinkOperations.getTarget(SNodeOperations.cast(actualPar, CONCEPTS.MethodParameterInstance$SI), LINKS.decl$JKxQ) == formalPar) {
             visitor.visitOddParam(actualPar);
             continue;
           }
-          // otherwise, check as a regular parameter 
+          // otherwise, check as a regular parameter
         }
 
         if (SLinkOperations.getTarget(SNodeOperations.cast(actualPar, CONCEPTS.MethodParameterInstance$SI), LINKS.decl$JKxQ) != formalPar) {
@@ -102,19 +85,11 @@ public class ClassLikeMethodChecker {
 
       if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(formalPar, LINKS.type$HBuM), CONCEPTS.DependentTypeDescriptor$ny)) {
         if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(actualPar, LINKS.type$a1UY), CONCEPTS.DependentTypeInstance$N9))) {
-          visitor.visitParamType(actualPar, new _FunctionTypes._return_P0_E0<SNode>() {
-            public SNode invoke() {
-              return (SNode) DependentTypeDescriptor__BehaviorDescriptor.create_id2h59CdJp8nr.invoke(SNodeOperations.cast(SLinkOperations.getTarget(formalPar, LINKS.type$HBuM), CONCEPTS.DependentTypeDescriptor$ny), method);
-            }
-          });
+          visitor.visitParamType(actualPar, () -> (SNode) DependentTypeDescriptor__BehaviorDescriptor.create_id2h59CdJp8nr.invoke(SNodeOperations.cast(SLinkOperations.getTarget(formalPar, LINKS.type$HBuM), CONCEPTS.DependentTypeDescriptor$ny), method));
         }
       } else {
-        if (!((MatchingUtil.matchNodes(SLinkOperations.getTarget(actualPar, LINKS.type$a1UY), SLinkOperations.getTarget(formalPar, LINKS.type$HBuM))))) {
-          visitor.visitParamType(actualPar, new _FunctionTypes._return_P0_E0<SNode>() {
-            public SNode invoke() {
-              return SNodeOperations.copyNode(SLinkOperations.getTarget(formalPar, LINKS.type$HBuM));
-            }
-          });
+        if (!(new SNodeMatcher().match(SLinkOperations.getTarget(actualPar, LINKS.type$a1UY), SLinkOperations.getTarget(formalPar, LINKS.type$HBuM)))) {
+          visitor.visitParamType(actualPar, () -> SNodeOperations.copyNode(SLinkOperations.getTarget(formalPar, LINKS.type$HBuM)));
         }
       }
       cur++;

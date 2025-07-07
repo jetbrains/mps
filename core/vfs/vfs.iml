@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/source" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/deprecated" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/source/jetbrains/mps/vfs/impl" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -16,7 +17,7 @@
     <orderEntry type="module" module-name="logging" />
     <orderEntry type="module" module-name="util-core" />
     <orderEntry type="module" module-name="components" />
-    <orderEntry type="library" name="Trove" level="project" />
+    <orderEntry type="library" name="gnu.trove" level="project" />
     <orderEntry type="library" scope="TEST" name="JUnit4" level="project" />
   </component>
 </module>

@@ -4,21 +4,19 @@ package jetbrains.mps.console.performance;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import java.time.Duration;
-import junit.framework.Assert;
+import org.junit.Assert;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.checkers.IChecker;
 import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.project.validation.StructureChecker;
@@ -31,17 +29,16 @@ import jetbrains.mps.util.CollectConsumer;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 @MPSLaunch
 public class SuppressErrorsPerformanceTest_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(SuppressErrorsPerformanceTest_Test.class, "${mps_home}", "r:331d12a3-ff36-4324-a0a5-3624fa05f749(jetbrains.mps.console.performance@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SuppressErrorsPerformanceTest_Test.class).projectPath(null).modelRef("r:331d12a3-ff36-4324-a0a5-3624fa05f749(jetbrains.mps.console.performance@tests)").reopenProject(null).build());
 
   public SuppressErrorsPerformanceTest_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -55,32 +52,38 @@ public class SuppressErrorsPerformanceTest_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_testPerformance() throws Exception {
-      addNodeById("5968606277575949800");
-      // the goal of that test is to ensure more efficient than quadratic complexity 
-      Duration durationA = this.measureSuppressPerformance(4 * 1000);
-      Duration durationB = this.measureSuppressPerformance(40 * 1000);
-      Assert.assertTrue(String.format("%d expected to be approximately 10 times greater that %d", durationB.toMillis(), durationA.toMillis()), durationA.multipliedBy(15).compareTo(durationB) > 0);
-      Assert.assertTrue(String.format("%d expected to be greater than 5 ms", durationA.toMillis()), durationA.compareTo(Duration.ofMillis(5)) > 0);
-      Assert.assertTrue(String.format("%d expected to be less than 10000 ms", durationB.toMillis()), durationB.compareTo(Duration.ofMillis(10000)) < 0);
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("5968606277575949800");
     }
 
+    public void test_testPerformance() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        // the goal of that test is to ensure more efficient than quadratic complexity
+        Duration durationA = TestBody.this.measureSuppressPerformance(4 * 1000);
+        Duration durationB = TestBody.this.measureSuppressPerformance(40 * 1000);
+        Assert.assertTrue(String.format("%d expected to be approximately 10 times greater that %d", durationB.toMillis(), durationA.toMillis()), durationA.multipliedBy(15).compareTo(durationB) > 0);
+        Assert.assertTrue(String.format("%d expected to be greater than 5 ms", durationA.toMillis()), durationA.compareTo(Duration.ofMillis(5)) > 0);
+        Assert.assertTrue(String.format("%d expected to be less than 10000 ms", durationB.toMillis()), durationB.compareTo(Duration.ofMillis(10000)) < 0);
+      });
+    }
 
     public Duration measureSuppressPerformance(int modelSize) {
       SNode var5968606277576107105 = getNodeById("5968606277576107085");
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(getNodeById("5968606277576107085"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, "jetbrains.mps.console.base"), 0x4e3b035171a5ba02L, "Response"))), LINKS.item$upGD)).clear();
+      ListSequence.fromList(SLinkOperations.getChildren(getAnnotatedNode("response"), LINKS.item$upGD)).clear();
       for (int i = 0; i < modelSize; i++) {
-        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(getNodeById("5968606277576107085"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, "jetbrains.mps.console.base"), 0x4e3b035171a5ba02L, "Response"))), LINKS.item$upGD)).addElement(createNodeResponseItem_wxn1w7_a0a0a2a6h());
+        ListSequence.fromList(SLinkOperations.getChildren(getAnnotatedNode("response"), LINKS.item$upGD)).addElement(createNodeResponseItem_wxn1w7_a0a0a2a7g());
       }
-      SModel modelToCheck = SNodeOperations.getModel(SNodeOperations.cast(getNodeById("5968606277576107085"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, "jetbrains.mps.console.base"), 0x4e3b035171a5ba02L, "Response"))));
+      SModel modelToCheck = SNodeOperations.getModel(getAnnotatedNode("response"));
       IChecker<SNode, NodeReportItem> structureChecker = new StructureChecker();
       long startTime = System.nanoTime();
-      IAbstractChecker<ModelCheckerBuilder.ItemsToCheck, IssueKindReportItem> checker = new ModelCheckerBuilder(false).createChecker(ListSequence.fromListAndArray(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>(), structureChecker, new SuppressErrorsChecker()));
+      IAbstractChecker<ModelCheckerBuilder.ItemsToCheck, IssueKindReportItem> checker = new ModelCheckerBuilder(new ModelCheckerBuilder.ModelsExtractorImpl().includeStubs(false)).createChecker(ListSequence.fromListAndArray(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>(), structureChecker, new SuppressErrorsChecker()));
       checker.check(ModelCheckerBuilder.ItemsToCheck.forSingleModel(modelToCheck), modelToCheck.getRepository(), new CollectConsumer<IssueKindReportItem>(), new EmptyProgressMonitor());
       long stopTime = System.nanoTime();
       return Duration.ofNanos(stopTime - startTime);
     }
-    private static SNode createNodeResponseItem_wxn1w7_a0a0a2a6h() {
+    private static SNode createNodeResponseItem_wxn1w7_a0a0a2a7g() {
       SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodeResponseItem$Xr);
       n0.forChild(LINKS.node$X2qT).initNull();
       return n0.getResult();

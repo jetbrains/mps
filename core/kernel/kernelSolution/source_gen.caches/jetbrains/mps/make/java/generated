@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-6u0ud1rky1qnubz8dt9yetoq860f3mo">
-  <files names="BLDependenciesHandler.java:ModelDependencies.java:RootDependencies.java" />
+<product version="3" modelHash="-d3gvqi31oq6068ouoljmf8lnhvsyviw">
+  <files names="ModelDependencies.java:RootDependencies.java" />
 </product>
 

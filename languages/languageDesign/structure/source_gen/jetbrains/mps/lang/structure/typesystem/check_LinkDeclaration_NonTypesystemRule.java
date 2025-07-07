@@ -12,10 +12,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import java.util.Iterator;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -34,61 +33,57 @@ public class check_LinkDeclaration_NonTypesystemRule extends AbstractNonTypesyst
   public check_LinkDeclaration_NonTypesystemRule() {
   }
   public void applyRule(final SNode linkToCheck, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    // link role shouldn't hide roles in super-concepts 
+    // link role shouldn't hide roles in super-concepts
     if (SPropertyOperations.getString(linkToCheck, PROPS.role$Nsjf) == null) {
       return;
     }
     SNode declaringConcept = SNodeOperations.getNodeAncestor(linkToCheck, CONCEPTS.AbstractConceptDeclaration$KA, false, false);
     List<SNode> supers = AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(declaringConcept);
     ListSequence.fromList(supers).addElement(declaringConcept);
-    Iterable<SNode> linksInSupers = ListSequence.fromList(supers).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(final SNode concept) {
-        return new Iterable<SNode>() {
-          public Iterator<SNode> iterator() {
-            return new YieldingIterator<SNode>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
+    Iterable<SNode> linksInSupers = ListSequence.fromList(supers).translate((concept) -> {
+      return (Iterable<SNode>) () -> {
+        return new YieldingIterator<SNode>() {
+          private int __CP__ = 0;
+          protected boolean moveToNext() {
 __loop__:
-                do {
+            do {
 __switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 4:
-                      this._4_link_it = ListSequence.fromList(_3_links).iterator();
-                    case 5:
-                      if (!(this._4_link_it.hasNext())) {
-                        this.__CP__ = 1;
-                        break;
-                      }
-                      this._4_link = this._4_link_it.next();
-                      this.__CP__ = 6;
-                      break;
-                    case 7:
-                      this.__CP__ = 5;
-                      this.yield(_4_link);
-                      return true;
-                    case 0:
-                      this._3_links = SLinkOperations.getChildren(concept, LINKS.linkDeclaration$YU1f);
-                      this.__CP__ = 4;
-                      break;
-                    case 6:
-                      this.__CP__ = 7;
-                      break;
-                    default:
-                      break __loop__;
+              switch (this.__CP__) {
+                case -1:
+                  assert false : "Internal error";
+                  return false;
+                case 4:
+                  this._4_link_it = ListSequence.fromList(_3_links).iterator();
+                case 5:
+                  if (!(this._4_link_it.hasNext())) {
+                    this.__CP__ = 1;
+                    break;
                   }
-                } while (true);
-                return false;
+                  this._4_link = this._4_link_it.next();
+                  this.__CP__ = 6;
+                  break;
+                case 7:
+                  this.__CP__ = 5;
+                  this.yield(_4_link);
+                  return true;
+                case 0:
+                  this._3_links = SLinkOperations.getChildren(concept, LINKS.linkDeclaration$YU1f);
+                  this.__CP__ = 4;
+                  break;
+                case 6:
+                  this.__CP__ = 7;
+                  break;
+                default:
+                  break __loop__;
               }
-              private List<SNode> _3_links;
-              private SNode _4_link;
-              private Iterator<SNode> _4_link_it;
-            };
+            } while (true);
+            return false;
           }
+          private List<SNode> _3_links;
+          private SNode _4_link;
+          private Iterator<SNode> _4_link_it;
         };
-      }
+      };
     });
     for (SNode link : Sequence.fromIterable(linksInSupers)) {
       if (linkToCheck != link && SPropertyOperations.getString(linkToCheck, PROPS.role$Nsjf).equals(SPropertyOperations.getString(link, PROPS.role$Nsjf)) && SLinkOperations.getTarget(linkToCheck, LINKS.specializedLink$7ZCN) != link) {

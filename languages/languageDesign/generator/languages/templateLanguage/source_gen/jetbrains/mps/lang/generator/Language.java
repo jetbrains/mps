@@ -8,6 +8,10 @@ import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
+import jetbrains.mps.core.aspects.feedback.api.FeedbackAspect;
+import jetbrains.mps.lang.generator.constraints.GeneratedFeedbackAspectConstraints;
+import jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsAspect;
+import jetbrains.mps.lang.generator.constraints.GeneratedRulesConstraintsAspect;
 import jetbrains.mps.openapi.actions.descriptor.ActionAspectDescriptor;
 import jetbrains.mps.lang.generator.actions.ActionAspectDescriptorImpl;
 import jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor;
@@ -22,11 +26,11 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationAspectDescriptor;
 import jetbrains.mps.lang.generator.migration.MigrationDescriptor;
 import jetbrains.mps.lang.script.runtime.ScriptAspectDescriptor;
 import jetbrains.mps.lang.generator.scripts.ScriptsDescriptor;
+import jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor;
+import jetbrains.mps.lang.generator.typesystem.TypesystemDescriptor;
 import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
 import jetbrains.mps.lang.generator.structure.ConceptPresentationAspectImpl;
-import jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor;
-import jetbrains.mps.lang.generator.typesystem.TypesystemDescriptor;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.language.LanguageExtensions;
 
@@ -44,7 +48,7 @@ public class Language extends LanguageRuntime {
 
   @Override
   public int getVersion() {
-    return 3;
+    return 4;
   }
 
   public SLanguageId getId() {
@@ -58,9 +62,12 @@ public class Language extends LanguageRuntime {
 
   @Override
   protected <T extends ILanguageAspect> T createAspect(Class<T> aspectClass) {
-
-
-    // AP: legacy part, must be migrated from switch: please use lang.descriptor mapping label 
+    if (aspectClass.isAssignableFrom(FeedbackAspect.class)) {
+      return aspectClass.cast(FeedbackAspect.combine(new GeneratedFeedbackAspectConstraints()));
+    }
+    if (aspectClass.isAssignableFrom(RulesConstraintsAspect.class)) {
+      return aspectClass.cast(new GeneratedRulesConstraintsAspect());
+    }
     if (aspectClass == ActionAspectDescriptor.class) {
       return aspectClass.cast(new ActionAspectDescriptorImpl());
     }
@@ -85,14 +92,14 @@ public class Language extends LanguageRuntime {
     if (aspectClass == ScriptAspectDescriptor.class) {
       return aspectClass.cast(new ScriptsDescriptor());
     }
+    if (aspectClass == IHelginsDescriptor.class) {
+      return aspectClass.cast(new TypesystemDescriptor());
+    }
     if (aspectClass == StructureAspectDescriptor.class) {
       return aspectClass.cast(new jetbrains.mps.lang.generator.structure.StructureAspectDescriptor());
     }
     if (aspectClass == ConceptPresentationAspect.class) {
       return aspectClass.cast(new ConceptPresentationAspectImpl());
-    }
-    if (aspectClass == IHelginsDescriptor.class) {
-      return aspectClass.cast(new TypesystemDescriptor());
     }
     return null;
   }

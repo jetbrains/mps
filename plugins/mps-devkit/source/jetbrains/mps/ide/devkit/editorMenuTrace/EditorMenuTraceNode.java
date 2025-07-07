@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,14 +27,14 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import javax.swing.Icon;
-import java.awt.Font;
+import java.awt.font.TextAttribute;
 
 class EditorMenuTraceNode extends MPSTreeNode implements NodeTargetProvider {
 
   private final EditorMenuTraceInfo myEditorMenuTraceInfo;
   private boolean myInitialized;
-  private EditorMenuTraceNodeInitializer myInitializer;
-  private Project myProject;
+  private final EditorMenuTraceNodeInitializer myInitializer;
+  private final Project myProject;
 
 
   EditorMenuTraceNode(EditorMenuTraceInfo traceInfo, EditorMenuTraceNodeInitializer initializer, Project project) {
@@ -57,7 +57,6 @@ class EditorMenuTraceNode extends MPSTreeNode implements NodeTargetProvider {
     SNode sourceNode = null;
 
     Icon icon = null;
-    int font;
 
     SNodeReference source = menuDescriptor.getSource();
     if (source != null) {
@@ -65,18 +64,16 @@ class EditorMenuTraceNode extends MPSTreeNode implements NodeTargetProvider {
     }
     if (sourceNode != null) {
       icon = GlobalIconManager.getInstance().getIconFor(sourceNode);
-      if (!menuDescriptor.isImplicit()) {
-        font = Font.BOLD;
-      } else {
-        font = Font.BOLD | Font.ITALIC;
+      addFontAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD);
+      if (menuDescriptor.isImplicit()) {
+        addFontAttribute(TextAttribute.POSTURE, TextAttribute.POSTURE_OBLIQUE);
       }
     } else {
-      font = Font.ITALIC;
+      addFontAttribute(TextAttribute.POSTURE, TextAttribute.POSTURE_OBLIQUE);
     }
     if (icon == null) {
       icon = IdeIcons.DEFAULT_NODE_ICON;
     }
-    setFontStyle(font);
     setIcon(icon);
   }
 

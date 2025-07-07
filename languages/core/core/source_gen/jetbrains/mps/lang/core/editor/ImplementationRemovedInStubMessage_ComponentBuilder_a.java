@@ -35,7 +35,7 @@ import jetbrains.mps.lang.core.editor.BaseStyles_StyleSheet.StubImplementationSt
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "/* compiled code */");
     editorCell.setCellId("Constant_a0me9v_a");
     Style style = new StyleImpl();
-    new StubImplementationStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new StubImplementationStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;

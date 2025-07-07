@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.action.SPropertySubstituteAction;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -37,8 +36,7 @@ public abstract class AbstractCellMenuPart_PropertyValues implements SubstituteI
   public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
     SNode node = cellContext.get(PropertyCellContext.EDITED_NODE);
     SProperty property = cellContext.get(PropertyCellContext.PROPERTY_DECLARATION);
-    IOperationContext context = editorContext.getOperationContext();
-    List<String> values = getPropertyValues(node, context, editorContext);
+    List<String> values = getPropertyValues(node, editorContext);
     List<SubstituteAction> actions = new ArrayList<>(values.size());
     for (String value : values) {
       actions.add(new SPropertySubstituteAction(node, property, value));
@@ -46,5 +44,5 @@ public abstract class AbstractCellMenuPart_PropertyValues implements SubstituteI
     return actions;
   }
 
-  protected abstract List<String> getPropertyValues(SNode node, IOperationContext operationContext, EditorContext editorContext);
+  protected abstract List<String> getPropertyValues(SNode node, EditorContext editorContext);
 }

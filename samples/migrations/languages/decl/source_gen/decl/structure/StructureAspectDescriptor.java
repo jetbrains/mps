@@ -63,7 +63,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("decl", "DeclMigrationData", 0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x2274019e61e234c9L);
     b.class_(false, false, false);
     b.origin("r:56f66470-c4a8-46fa-8473-a0079c000cbf(decl.structure)/2482611074346661065");
-    b.version(2);
+    b.version(3);
     b.property("oldId", 0x3abe707a89857bdeL).type(PrimitiveTypeId.STRING).origin("4232944371370392542").done();
     b.property("newId", 0x3abe707a89857bdfL).type(PrimitiveTypeId.STRING).origin("4232944371370392543").done();
     return b.create();
@@ -73,7 +73,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, true);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:56f66470-c4a8-46fa-8473-a0079c000cbf(decl.structure)/7709929535540731249");
-    b.version(2);
+    b.version(3);
     b.aggregate("member", 0x6aff2c1049329d74L).target(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x6aff2c104932a602L).optional(true).ordered(true).multiple(true).origin("7709929535540731252").done();
     b.alias("new component");
     return b.create();
@@ -82,7 +82,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("decl", "NewComponentMember", 0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x6aff2c104932a602L);
     b.interface_();
     b.origin("r:56f66470-c4a8-46fa-8473-a0079c000cbf(decl.structure)/7709929535540733442");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForOldComponent() {
@@ -90,7 +90,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, true);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:56f66470-c4a8-46fa-8473-a0079c000cbf(decl.structure)/7709929535540653274");
-    b.version(2);
+    b.version(3);
     b.aggregate("member", 0x6aff2c104931bb27L).target(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x6aff2c104931bb26L).optional(true).ordered(true).multiple(true).origin("7709929535540673319").done();
     b.alias("old component");
     return b.create();
@@ -99,7 +99,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("decl", "OldComponentMember", 0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x6aff2c104931bb26L);
     b.interface_();
     b.origin("r:56f66470-c4a8-46fa-8473-a0079c000cbf(decl.structure)/7709929535540673318");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
 }

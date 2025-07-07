@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -20,6 +19,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.baseLanguage.dataFlow.ConditionUtil;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -30,11 +30,11 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class IfStatement__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
 
-  public static final SMethod<Void> convertElseToElseIf_idhIdhuD7 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("convertElseToElseIf").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hIdhuD7").build();
-  public static final SMethod<Boolean> isGuardIf_idi0z$SHa = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isGuardIf").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i0z$SHa").build();
-  public static final SMethod<Boolean> isStatementListCompactable_idi0zvp2S = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isStatementListCompactable").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i0zvp2S").build();
-  public static final SMethod<Void> collectUncaughtMethodThrowables_id4Gt7ANIVH8f = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectUncaughtMethodThrowables").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4Gt7ANIVH8f").build(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
-  public static final SMethod<NextProgramPoint> getNextProgramPoint_id3F8BxGibk8h = new SMethodBuilder<NextProgramPoint>(new SJavaCompoundTypeImpl(NextProgramPoint.class)).name("getNextProgramPoint").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3F8BxGibk8h").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
+  public static final SMethod<Void> convertElseToElseIf_idhIdhuD7 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("convertElseToElseIf").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1217845914183L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> isGuardIf_idi0z$SHa = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isGuardIf").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1237547453258L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> isStatementListCompactable_idi0zvp2S = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isStatementListCompactable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1237546012856L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Void> collectUncaughtMethodThrowables_id4Gt7ANIVH8f = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectUncaughtMethodThrowables").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5412515780383134223L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
+  public static final SMethod<NextProgramPoint> getNextProgramPoint_id3F8BxGibk8h = new SMethodBuilder<NextProgramPoint>(new SJavaCompoundTypeImpl(NextProgramPoint.class)).name("getNextProgramPoint").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4235809288648213009L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(convertElseToElseIf_idhIdhuD7, isGuardIf_idi0z$SHa, isStatementListCompactable_idi0zvp2S, collectUncaughtMethodThrowables_id4Gt7ANIVH8f, getNextProgramPoint_id3F8BxGibk8h);
 
@@ -94,6 +94,11 @@ public final class IfStatement__BehaviorDescriptor extends BaseBHDescriptor {
     if (child != SLinkOperations.getTarget(__thisNode__, LINKS.condition$5R17)) {
       return null;
     }
+    Boolean conditionConstant = ConditionUtil.getConditionConstant(SLinkOperations.getTarget(__thisNode__, LINKS.condition$5R17));
+    if (conditionConstant != null && conditionConstant.booleanValue() != value) {
+      return null;
+    }
+
     if (value) {
       if (SLinkOperations.getTarget(__thisNode__, LINKS.ifTrue$5Rg8) != null) {
         return NextProgramPoint.continueAt(SLinkOperations.getTarget(__thisNode__, LINKS.ifTrue$5Rg8), false);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@ import com.intellij.openapi.util.SystemInfo;
 import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.Pair;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.Font;
@@ -44,7 +43,7 @@ import static java.util.Locale.ENGLISH;
  * Date: 06/08/14
  */
 public class FontRegistry {
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(FontRegistry.class));
+  private static final Logger LOG = Logger.getLogger(FontRegistry.class);
 
   private static FontRegistry ourInstance;
 

@@ -28,14 +28,12 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.editor.runtime.style.FocusPolicy;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.build.behavior.BuildRelativePath__BehaviorDescriptor;
 import jetbrains.mps.build.util.Context;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -212,37 +210,30 @@ import org.jetbrains.mps.openapi.language.SProperty;
       public BuildSourceArchiveRelativePath_generic_cellMenu_4z471d_a0c0() {
       }
 
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
         IFile file = FileSystem.getInstance().getFile(BuildRelativePath__BehaviorDescriptor.getBasePath_id4jjtc7WZMYz.invoke(node, Context.defaultContext()));
         if (!(file.exists())) {
           return ListSequence.fromList(new ArrayList<String>());
         }
         List<IFile> children = file.getChildren();
-        Iterable<String> names = ListSequence.fromList(children).select(new ISelector<IFile, String>() {
-          public String select(IFile it) {
-            return it.getName();
-          }
-        });
+        Iterable<String> names = ListSequence.fromList(children).select((it) -> it.getName());
         if (file.getParent() != null) {
           names = Sequence.fromIterable(names).union(Sequence.fromIterable(Sequence.<String>singleton("..")));
         }
-        return Sequence.fromIterable(names).sort(new ISelector<String, String>() {
-          public String select(String it) {
-            return it;
-          }
-        }, true).toListSequence();
+        return Sequence.fromIterable(names).sort((it) -> it, true).toList();
+
       }
-      protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
+      protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        this.handleAction_impl((String) parameterObject, node, model, editorContext);
       }
-      public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
         if ((SLinkOperations.getTarget(node, LINKS.compositePart$blMW) == null)) {
           SNodeFactoryOperations.setNewChild(node, LINKS.compositePart$blMW, null);
         }
         SPropertyOperations.set(SLinkOperations.getTarget(node, LINKS.compositePart$blMW), PROPS.head$$gC$, parameterObject);
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, SLinkOperations.getTarget(node, LINKS.compositePart$blMW), "*" + CellIdManager.createPropertyId("head"), -1);
       }
-      public boolean isReferentPresentation() {
+      protected boolean isReferentPresentation() {
         return false;
       }
 

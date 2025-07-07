@@ -18,7 +18,7 @@ public class RelativePathHelper {
    */
   @Nullable
   public static RelativePathHelper forModule(SModule module) {
-    if (module == null || ((AbstractModule) module).getDescriptorFile() == null || module.isPackaged()) {
+    if (module.isPackaged() || module instanceof AbstractModule == false || ((AbstractModule) module).getDescriptorFile() == null) {
       return null;
     }
     String basePath = ((AbstractModule) module).getDescriptorFile().getParent().getPath();
@@ -36,23 +36,23 @@ public class RelativePathHelper {
     final String normalized = normalizePath(fullPath, false);
     if (normalized.startsWith(myBasePath)) {
       return normalized.substring(myBasePath.length());
-      // XXX should I check for myBasePath == fullPath + '/'? 
+      // XXX should I check for myBasePath == fullPath + '/'?
     }
-    // The purpose of the code below is to keep this class purely string/Path-based, without need to access FS or care about file existence. 
+    // The purpose of the code below is to keep this class purely string/Path-based, without need to access FS or care about file existence.
     try {
-      String[] base = myBasePath.split("/");
-      String[] target = normalized.split("/");
+      String[] base = removeDots(myBasePath.split("/"));
+      String[] target = removeDots(normalized.split("/"));
       int commonLength = 0;
       while (commonLength < target.length && commonLength < base.length && target[commonLength].equals(base[commonLength])) {
         commonLength++;
       }
-      // XXX why not return normalized, but exception? 
+      // XXX why not return normalized, but exception?
       if (commonLength == 0) {
         throw new PathException(String.format("No common path element found for '%s' and '%s'", myBasePath, normalized));
       }
       if (base.length == target.length && target.length == commonLength) {
-        // though there's a check, above, that covers equal paths scenario, we may face normalizedPath that is the same as base path but technically not 
-        // equal due to trailing slash, e.g. RPH("base/").makeRelative("base") 
+        // though there's a check, above, that covers equal paths scenario, we may face normalizedPath that is the same as base path but technically not
+        // equal due to trailing slash, e.g. RPH("base/").makeRelative("base")
         return "";
       }
 
@@ -65,7 +65,7 @@ public class RelativePathHelper {
       for (int i = commonLength; i < target.length; i++) {
         relative.append(target[i]).append('/');
       }
-      // if original requested path didn't end with slash, keep relative without slash as well 
+      // if original requested path didn't end with slash, keep relative without slash as well
       if (normalized.charAt(normalized.length() - 1) != '/' && relative.charAt(relative.length() - 1) == '/') {
         relative.setLength(relative.length() - 1);
       }
@@ -74,6 +74,43 @@ public class RelativePathHelper {
     } catch (Exception ex) {
       throw new PathException(ex, ex.getMessage());
     }
+  }
+
+  /**
+   * Normalize segments to resolve '.' and '..' according to standard rules.
+   */
+  public static String[] removeDots(String[] segments) {
+    // An array of boolean indicating whether a segment is excluded from the final result
+    boolean[] ignore = new boolean[segments.length];
+    int remainingCount = segments.length;
+
+    for (int i = 0; i < segments.length; i++) {
+      // Ignore each '.'.
+      // In case of '..', ignore it only if it is preceded by a non-ignored segment, ignore that segment as well.
+      if (".".equals(segments[i])) {
+        ignore[i] = true;
+        remainingCount--;
+      } else if ("..".equals(segments[i])) {
+        for (int j = i - 1; j >= 0; j--) {
+          if (!(ignore[j])) {
+            ignore[j] = true;
+            ignore[i] = true;
+            remainingCount -= 2;
+            break;
+          }
+        }
+      }
+    }
+
+    // Return an array of all non-ignored segments.
+    String[] result = new String[remainingCount];
+    int out = 0;
+    for (int in = 0; in < segments.length; in++) {
+      if (!(ignore[in])) {
+        result[out++] = segments[in];
+      }
+    }
+    return result;
   }
 
   public String makeAbsolute(String shortPath) throws PathException {
@@ -97,7 +134,6 @@ public class RelativePathHelper {
   public String getBasePath() {
     return myBasePath;
   }
-
 
   /**
    * Translates backslashes in the path, if any, to regular slashed, and appends a trailing one if requested.

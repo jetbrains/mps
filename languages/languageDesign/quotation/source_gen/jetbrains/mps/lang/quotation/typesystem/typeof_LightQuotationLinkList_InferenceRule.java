@@ -10,10 +10,8 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
@@ -26,14 +24,12 @@ public class typeof_LightQuotationLinkList_InferenceRule extends AbstractInferen
   }
   public void applyRule(final SNode list, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     final SNode lval = SNodeOperations.as(SNodeOperations.getParent(list), CONCEPTS.NodeBuilderInitLink$XR);
-    ListSequence.fromList(SLinkOperations.getChildren(list, LINKS.nodes$MvP4)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        if (!(typeCheckingContext.isSingleTypeComputation())) {
-          {
-            SNode _nodeToCheck_1029348928467 = it;
-            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "8182547171709952709", 0, null);
-            typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "8182547171709952688", true), (SNode) _quotation_createNode_ttlvyh_a1a0c0a0a0a0a1a1(SLinkOperations.getTarget(SLinkOperations.getTarget(lval, LINKS.link$VNT5), LINKS.target$m40F)), true, true, _info_12389875345);
-          }
+    ListSequence.fromList(SLinkOperations.getChildren(list, LINKS.nodes$MvP4)).visitAll((it) -> {
+      if (!(typeCheckingContext.isSingleTypeComputation())) {
+        {
+          SNode _nodeToCheck_1029348928467 = it;
+          EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "8182547171709952709", 0, null);
+          typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "8182547171709952688", true), (SNode) _quotation_createNode_ttlvyh_a1a0c0a0a0a0a1a1(SLinkOperations.getTarget(SLinkOperations.getTarget(lval, LINKS.link$VNT5), LINKS.target$m40F)), true, true, _info_12389875345);
         }
       }
     });
@@ -48,9 +44,9 @@ public class typeof_LightQuotationLinkList_InferenceRule extends AbstractInferen
     return false;
   }
   private static SNode _quotation_createNode_ttlvyh_a1a0c0a0a0a0a1a1(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType")).getResult();
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"));
+    quotedNode_2 = nb.getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"), (SNode) parameter_1);
     return quotedNode_2;
   }

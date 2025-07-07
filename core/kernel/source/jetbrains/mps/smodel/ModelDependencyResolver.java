@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,7 +58,7 @@ public final class ModelDependencyResolver {
    *                   and therefore we can not rely on model's repository, hence need to supply one explicitly.
    *                   The proper fix is to ensure a model is always inside a repository, even during m2m phase.
    *                   FIXME besides, we need to resolve devkit references to find out used languages, and as long
-   *                   as LR keeps RT presentation for lanuages only (not solutions nor devkits), we still rely on
+   *                   as LR keeps RT presentation for languages only (not solutions nor devkits), we still rely on
    *                   a repository to find out this essentially RT information
    */
   public ModelDependencyResolver(@NotNull LanguageRegistry languageRegistry, @NotNull SRepository repository) {
@@ -107,7 +107,7 @@ public final class ModelDependencyResolver {
    * @return languages both listed directly as used, and available through employed devkits,
    *                   including extended devkits but not languages (use {@link SLanguageHierarchy} to build
    *                   complete set. Values are unique.
-   *                   XXX I am not sure this approach to build up a set of 'used' languages is 100% right,
+   *                   XXX I am not sure if this approach to build up a set of 'used' languages is 100% right,
    *                   e.g. why do we respect extended devkits but not extended languages.  Just kept the logic
    *                   the way it was for years.
    */

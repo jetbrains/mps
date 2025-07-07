@@ -6,7 +6,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.make.dependencies.graph.Graph;
 import java.util.Map;
@@ -18,10 +17,8 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.Set;
 import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.LinkedHashSet;
 import jetbrains.mps.build.mps.behavior.BuildMps_DevKit__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -38,11 +35,7 @@ public class MPSModulesPartitioner {
   private Iterable<SNode> external;
 
   public MPSModulesPartitioner(SNode project) {
-    this(project, ListSequence.fromList(Sequence.fromIterable(getModules(project)).sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }, true).toListSequence()).asUnmodifiable());
+    this(project, ListSequence.fromList(Sequence.fromIterable(getModules(project)).sort((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL), true).toList()).asUnmodifiable());
   }
 
   public MPSModulesPartitioner(SNode project, List<SNode> modules) {
@@ -85,11 +78,7 @@ public class MPSModulesPartitioner {
       }
     }
     for (Chunk c : chunks) {
-      Set<Node> chunkNodes = SetSequence.fromSetWithValues(new HashSet<Node>(), SetSequence.fromSet(c.getModules()).select(new ISelector<SNode, Node>() {
-        public Node select(SNode it) {
-          return map.get(it);
-        }
-      }));
+      Set<Node> chunkNodes = SetSequence.fromSetWithValues(new HashSet<Node>(), SetSequence.fromSet(c.getModules()).select((it) -> map.get(it)));
       for (SNode confl : ListSequence.fromListWithValues(new ArrayList<SNode>(), c.getConflicting())) {
         if (SetSequence.fromSet(map.get(confl).metaDependencies).intersect(SetSequence.fromSet(chunkNodes)).isEmpty()) {
           c.setBootstrap(confl, false);
@@ -99,15 +88,13 @@ public class MPSModulesPartitioner {
   }
 
   public void buildExternalDependencies() {
-    // Though we don't care about RT dependencies to generate a module, we need runtimeClosure() here due to 
-    // module compilation/reload Generate task does in addition to M2M, M2T transformations. 
-    this.external = Sequence.fromIterable(new MPSModulesClosure(modules, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits()).generationDependenciesClosure().runtimeClosure().getAllModules()).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        // FIXME exclusion of generator modules here is due to the fact ModuleMiner (which eventually takes whatever we specify in <library file>) 
-        //       is not ready yet to read generator modules (it's JavaModuleFacet of Language-loaded Generator that discovers -generator.jar) 
-        //       However, the way forward is to be explicit about generator modules (need to produce META-INF/module.xml first, though) 
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMps_Generator$RQ)) && SNodeOperations.getContainingRoot(it) != SNodeOperations.getContainingRoot(MPSModulesPartitioner.this.project);
-      }
+    // Though we don't care about RT dependencies to generate a module, we need runtimeClosure() here due to
+    // module compilation/reload Generate task does in addition to M2M, M2T transformations.
+    this.external = Sequence.fromIterable(new MPSModulesClosure(modules, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits()).generationDependenciesClosure().runtimeClosure().getAllModules()).where((it) -> {
+      // FIXME exclusion of generator modules here is due to the fact ModuleMiner (which eventually takes whatever we specify in <library file>)
+      //       is not ready yet to read generator modules (it's JavaModuleFacet of Language-loaded Generator that discovers -generator.jar)
+      //       However, the way forward is to be explicit about generator modules (need to produce META-INF/module.xml first, though)
+      return !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMps_Generator$RQ)) && SNodeOperations.getContainingRoot(it) != SNodeOperations.getContainingRoot(MPSModulesPartitioner.this.project);
     });
   }
 
@@ -120,11 +107,7 @@ public class MPSModulesPartitioner {
   }
 
   public static Iterable<SNode> getModules(SNode project) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.parts$mGDj), CONCEPTS.BuildMps_Group$Jc)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.getChildren(it, LINKS.modules$JlQo);
-      }
-    }).concat(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.parts$mGDj), CONCEPTS.BuildMps_AbstractModule$FZ)));
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.parts$mGDj), CONCEPTS.BuildMps_Group$Jc)).translate((it) -> SLinkOperations.getChildren(it, LINKS.modules$JlQo)).concat(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.parts$mGDj), CONCEPTS.BuildMps_AbstractModule$FZ)));
   }
 
   private class Node implements IVertex {

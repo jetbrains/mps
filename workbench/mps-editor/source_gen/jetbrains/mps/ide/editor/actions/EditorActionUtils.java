@@ -23,7 +23,7 @@ import jetbrains.mps.util.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
 
-@GeneratedClass(node = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/7791284463049113795", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
+@GeneratedClass(nodeId = "7791284463049113795", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
 public class EditorActionUtils {
   public EditorActionUtils() {
   }
@@ -41,7 +41,7 @@ public class EditorActionUtils {
   }
   /*package*/ static EditorCell getEditorCellToInsert(EditorComponent editorComponent) {
     Selection selection = editorComponent.getSelectionManager().getSelection();
-    // TODO: remove this limitation 
+    // TODO: remove this limitation
     if (!(selection instanceof SingularSelection)) {
       return null;
     }
@@ -56,11 +56,11 @@ public class EditorActionUtils {
    * Expects model read lock
    */
   public static EditorCell getSiblingCollectionForInsert(@NotNull EditorCell cell, boolean forward) {
-    // TODO FIXME rewrite without hasSingleRolesAtLeftBoundary, cleanup ChildrenCollectionFinder 
+    // TODO FIXME rewrite without hasSingleRolesAtLeftBoundary, cleanup ChildrenCollectionFinder
     EditorCell nextLeaf = (forward ? CellTraversalUtil.getNextLeaf(cell) : CellTraversalUtil.getPrevLeaf(cell));
 
     if ((cell.isBig() || GeometryUtil.isLastPositionInBigCell(cell)) && ((forward ? hasSingleRolesAtRightBoundary(cell) : hasSingleRolesAtLeftBoundary(cell))) && nextLeaf != null) {
-      // Looking for the next child collection in parents 
+      // Looking for the next child collection in parents
       return new ChildrenCollectionFinder(nextLeaf, cell, forward, true).find();
     }
     return null;
@@ -104,10 +104,10 @@ public class EditorActionUtils {
   private static void callAction(EditorCell cell, CellActionType cellAction, boolean after) {
     ActionHandler actionHandler = cell.getEditorComponent().getActionHandler();
     if (cell instanceof EditorCell_Label && !(isLinkCollection(cell))) {
-      // Looking for the next child collection to the right from this cell 
+      // Looking for the next child collection to the right from this cell
       EditorCell cellWithRole = new ChildrenCollectionFinder(cell, after, false).find();
       if (cellWithRole == null) {
-        // Looking for the next child collection in parents 
+        // Looking for the next child collection in parents
         cellWithRole = getSiblingCollectionForInsert(cell, after);
       }
       if (cellWithRole != null && actionHandler.executeAction(cellWithRole, cellAction)) {
