@@ -21,7 +21,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class ModelIdentity__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x7d58bd9fd9c8b6d3L, "jetbrains.mps.lang.modelapi.structure.ModelIdentity");
 
-  public static final SMethod<SModelReference> toModelReference_id1Bs_61$mvvu = new SMethodBuilder<SModelReference>(new SJavaCompoundTypeImpl(SModelReference.class)).name("toModelReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1Bs_61$mvvu").build();
+  public static final SMethod<SModelReference> toModelReference_id1Bs_61$mvvu = new SMethodBuilder<SModelReference>(new SJavaCompoundTypeImpl(SModelReference.class)).name("toModelReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1863527487545931742L).languageId(0x9b35f83fa582753eL, 0x446c26eb2b7b4bf0L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(toModelReference_id1Bs_61$mvvu);
 

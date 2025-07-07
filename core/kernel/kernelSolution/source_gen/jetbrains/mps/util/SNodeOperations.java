@@ -33,7 +33,7 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)/2089287822043606602", model = "r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)")
+@GeneratedClass(nodeId = "2089287822043606602", model = "r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)")
 public class SNodeOperations {
   public SNodeOperations() {
   }
@@ -43,6 +43,7 @@ public class SNodeOperations {
    */
   @Deprecated
   public static boolean isAncestor(SNode ancestor, SNode node) {
+    // uses in mbeddr
     do {
       if (ancestor == node) {
         return true;
@@ -101,7 +102,7 @@ public class SNodeOperations {
   public static Set<String> getChildRoles(SNode n) {
     Set<String> res = SetSequence.fromSet(new HashSet<String>());
     for (SNode child : Sequence.fromIterable(n.getChildren())) {
-      SetSequence.fromSet(res).addElement(child.getRoleInParent());
+      SetSequence.fromSet(res).addElement(child.getContainmentLink().getName());
     }
     return res;
   }
@@ -134,6 +135,7 @@ public class SNodeOperations {
    */
   @Deprecated
   public static boolean isRoot(SNode n) {
+    // uses in mbeddr
     return n.getModel() != null && n.getParent() == null;
   }
   /**
@@ -143,6 +145,7 @@ public class SNodeOperations {
    */
   @Deprecated
   public static String getDebugText(SNode node) {
+    // a lot of uses
     String roleText = "";
     if (node.getModel() != null) {
       SNode parent = node.getParent();
@@ -181,9 +184,10 @@ public class SNodeOperations {
    */
   @Deprecated
   public static Set<SContainmentLink> getChildRoles(SNode n, boolean includeAttributeRoles) {
+    // uses in mbeddr
     final Set<SContainmentLink> augend = new HashSet<SContainmentLink>();
     for (SNode child : n.getChildren()) {
-      if (includeAttributeRoles || !((AttributeOperations.isAttribute(child)))) {
+      if (includeAttributeRoles || !(AttributeOperations.isAttribute(child))) {
         augend.add(child.getContainmentLink());
       }
     }
@@ -202,29 +206,17 @@ public class SNodeOperations {
     return children.iterator().next();
   }
   /**
-   * 
-   * @deprecated rewrite using SContainmentLink, don't use by-string roles
-   */
-  @Deprecated
-  public static SNode getChild(SNode node, String role) {
-    Iterable<? extends SNode> children = node.getChildren(role);
-    if (!(children.iterator().hasNext())) {
-      return null;
-    }
-    return children.iterator().next();
-  }
-  /**
    * This will be replaced by getting resolve info from a reference in a context containing it
+   * [artem] Well, I believe this one has to be replaced with Scope, with IResolveInfo being a default fallback. 
+   *   This method shall be used by MPS code as it makes an assumption scope impl complies with the way we build resolveInfo here.
+   *   Instead, it's Scope responsibility to build and process resolveInfo
    * 
-   * @deprecated use SNodeUtil.getResolveInfo (note it does not return name in case of !isInstanceOf(IResolveInfo))
+   * @deprecated use scopes to obtain actual resolveInfo; Use reference.resolveInfo to find out value stored with an association link instance.
    */
   @Deprecated
   public static String getResolveInfo(SNode n) {
-    String resolveInfo = SNodeUtil.getResolveInfo(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.as(n, CONCEPTS.IResolveInfo$$k));
-    if (resolveInfo != null) {
-      return resolveInfo;
-    }
-    return SPropertyOperations.getString(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.as(n, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL);
+    String resolveInfo = SPropertyOperations.getString(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.as(n, CONCEPTS.IResolveInfo$$k), PROPS.resolveInfo$lW9a);
+    return (resolveInfo != null ? resolveInfo : SPropertyOperations.getString(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.as(n, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL));
   }
   /**
    * 
@@ -272,6 +264,7 @@ public class SNodeOperations {
    */
   @Deprecated
   public static String getModelLongName(SModel model) {
+    // uses in mbeddr
     // replaced NameUtil.getModelLongName didn't expect null and returned a qualified name w/o stereotype
     return model.getName().getLongName();
   }
@@ -309,6 +302,7 @@ public class SNodeOperations {
    */
   @Deprecated
   public static boolean isGeneratable(SModel model) {
+    // uses in mbeddr
     // I wonder why this method doesn't reside in SModelOperations
     return model instanceof GeneratableSModel && ((GeneratableSModel) model).isGeneratable();
   }
@@ -345,6 +339,7 @@ public class SNodeOperations {
   }
 
   private static final class PROPS {
+    /*package*/ static final SProperty resolveInfo$lW9a = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo");
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

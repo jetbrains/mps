@@ -45,13 +45,10 @@
       <concept id="7953996722066252915" name="jetbrains.mps.lang.refactoring.structure.NodeOperation" flags="nn" index="50M6j" />
       <concept id="7953996722066252923" name="jetbrains.mps.lang.refactoring.structure.ScopeOperation" flags="nn" index="50M6r" />
       <concept id="7953996722066256458" name="jetbrains.mps.lang.refactoring.structure.RefactoringContext_ConceptFunctionParameter" flags="nn" index="50NuE" />
-      <concept id="4347648036456711197" name="jetbrains.mps.lang.refactoring.structure.ModelsToGenerateByDefault" flags="nn" index="29ebr7" />
       <concept id="1200932465350" name="jetbrains.mps.lang.refactoring.structure.AffectedNodesClause" flags="in" index="2t9MJh" />
-      <concept id="1682834381185132063" name="jetbrains.mps.lang.refactoring.structure.ModelsToGenerateClause" flags="in" index="P00rF" />
       <concept id="5497648299878741970" name="jetbrains.mps.lang.refactoring.structure.InitClause" flags="in" index="1M1Ini" />
       <concept id="6895093993902236229" name="jetbrains.mps.lang.refactoring.structure.Refactoring" flags="ig" index="3SMa$L">
         <property id="6895093993902236371" name="userFriendlyName" index="3SMaAB" />
-        <child id="616550569928923871" name="modelsToGenerateBlock" index="28Zu_" />
         <child id="1347577327951503399" name="affectedNodesBlock" index="2LmeTn" />
         <child id="5497648299878741976" name="initBlock" index="1M1Ino" />
         <child id="6895093993902236381" name="doRefactorBlock" index="3SMaAD" />
@@ -82,7 +79,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -152,13 +149,6 @@
               <node concept="50M6r" id="1KbO_aWRtEw" role="2OqNvi" />
             </node>
           </node>
-        </node>
-      </node>
-    </node>
-    <node concept="P00rF" id="5r8cKKQV$ox" role="28Zu_">
-      <node concept="3clFbS" id="5r8cKKQV$oy" role="2VODD2">
-        <node concept="3clFbF" id="5r8cKKQV_oG" role="3cqZAp">
-          <node concept="29ebr7" id="5r8cKKQV_oH" role="3clFbG" />
         </node>
       </node>
     </node>

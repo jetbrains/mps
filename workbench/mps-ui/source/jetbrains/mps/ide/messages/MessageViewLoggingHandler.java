@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,73 +15,69 @@
  */
 package jetbrains.mps.ide.messages;
 
-import jetbrains.mps.logging.MPSAppenderBase;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
-import org.apache.log4j.Level;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Priority;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.project.Project;
 
-/**
- * Special handler for messages view employing the log4j mechanism
- * Created by apyshkin on 3/28/17.
- */
-final class MessageViewLoggingHandler extends MPSAppenderBase {
-  private static final org.apache.log4j.Logger MESSAGE_VIEW_LOG = LogManager.getLogger("###MESSAGES_VIEW_TOKEN###");
+import java.util.logging.Filter;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
 
-  private MessagesViewTool myMessagesView;
-  @NotNull private final Project myProject;
+/**
+ * Special handler for messages view employing the JUL mechanism and custom category.
+ * Responsible to handle log messages reported by bl.logging.MsgStatement.
+ * Note, we intentionally use {@code j.u.l.Filter} instead of {@code j.u.l.Handler} to prevent messages
+ * reported to this special category to show up in a parent logger.
+ */
+final class MessageViewLoggingHandler implements Filter {
+  private static final Logger MESSAGE_VIEW_LOG = Logger.getLogger("###MESSAGES_VIEW_TOKEN###");
+
+  private final MessagesViewTool myMessagesView;
+  private final Project myProject;
 
   MessageViewLoggingHandler(@NotNull MessagesViewTool messagesView, @NotNull Project project) {
     myMessagesView = messagesView;
     myProject = project;
-    setUpApacheLogger();
-  }
-
-  private void setUpApacheLogger() {
-    MESSAGE_VIEW_LOG.setAdditivity(false);
-    MESSAGE_VIEW_LOG.setLevel(Level.ALL);
   }
 
   @Override
-  protected void append(@Nullable Project project,
-                        @NotNull Priority level,
-                        @NotNull String categoryName,
-                        @NotNull String messageText,
-                        @Nullable Throwable t,
-                        @Nullable Object hintObject) {
+  public boolean isLoggable(LogRecord logRecord) {
+    // see bl.logging.rt.LogCtx#_log
+    Object p1 = null, p2 = null;
+    if (logRecord.getParameters() != null && logRecord.getParameters().length > 0) {
+      p1 = logRecord.getParameters()[0];
+      if (logRecord.getParameters().length > 1) {
+        p2 = logRecord.getParameters()[1];
+      }
+    }
+    final Project project = p2 instanceof Project ? (Project) p2 : null;
     if (projectMatches(project)) {
-      MessageKind kind = MessageKind.fromPriority(level);
-      Message message = new Message(kind, categoryName, messageText);
-      message.setHintObject(hintObject);
-      message.setException(t);
+      final String sender = p1 != null ? p1.toString() : logRecord.getSourceClassName();
+      MessageKind kind = MessageKind.fromPriority(logRecord.getLevel());
+      Message message = new Message(kind, sender, logRecord.getMessage());
+      if (logRecord.getParameters().length > 2) {
+        message.setHintObject(logRecord.getParameters()[2]);
+      }
+      message.setException(logRecord.getThrown());
       myMessagesView.add(message);
     }
+    // prevent parent logger from processing this record
+    return false;
   }
 
   private boolean projectMatches(@Nullable Project project) {
     return project == null || project.equals(myProject);
   }
 
-  @Override
-  public void register() {
-    super.register(MESSAGE_VIEW_LOG);
+  /*package*/ void register() {
+    MESSAGE_VIEW_LOG.setLevel(Level.ALL);
+    MESSAGE_VIEW_LOG.setFilter(this);
   }
 
-  @Override
-  public void unregister() {
-    super.unregister(MESSAGE_VIEW_LOG);
-  }
-
-  @Override
-  protected void append(@NotNull Priority level,
-                        @NotNull String categoryName,
-                        @NotNull String message,
-                        @Nullable Throwable t,
-                        @Nullable Object hintObject) {
-    append(null, level, categoryName, message, t, hintObject);
+  /*package*/ void unregister() {
+    MESSAGE_VIEW_LOG.setFilter(null);
   }
 }

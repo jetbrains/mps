@@ -17,12 +17,11 @@ import jetbrains.mps.smodel.Language;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import javax.swing.AbstractAction;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import javax.swing.Icon;
@@ -33,7 +32,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
-@GeneratedClass(node = "r:80bd416f-3ae2-40ea-8a6b-f0c4572f9ff8(jetbrains.mps.ide.actions.nodes)/4832363360995121627", model = "r:80bd416f-3ae2-40ea-8a6b-f0c4572f9ff8(jetbrains.mps.ide.actions.nodes)")
+@GeneratedClass(nodeId = "4832363360995121627", model = "r:80bd416f-3ae2-40ea-8a6b-f0c4572f9ff8(jetbrains.mps.ide.actions.nodes)")
 public final class GoToRulesHelper {
   private GoToRulesHelper() {
   }
@@ -71,11 +70,7 @@ public final class GoToRulesHelper {
     }
 
     // todo: populate rules from other typesystem models!
-    List<SNode> rules = ListSequence.fromList(SModelOperations.roots(typesystem, CONCEPTS.AbstractRule$o9)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode node) {
-        return isApplicable(node, concept, exactConcept);
-      }
-    }).toListSequence();
+    List<SNode> rules = ListSequence.fromList(SModelOperations.roots(typesystem, CONCEPTS.AbstractRule$o9)).where((node) -> isApplicable(node, concept, exactConcept)).toList();
 
     return rules;
   }
@@ -99,14 +94,14 @@ public final class GoToRulesHelper {
     if (exactConcept) {
       return concept == applicableConcept;
     }
-    return ((boolean) (Boolean) BHReflection.invoke0(concept, CONCEPTS.AbstractConceptDeclaration$KA, SMethodTrimmedId.create("isSubconceptOf", CONCEPTS.AbstractConceptDeclaration$KA, "73yVtVlWOga"), applicableConcept));
+    return ((boolean) (Boolean) BHReflection.invoke0(concept, CONCEPTS.AbstractConceptDeclaration$KA, SMethodIdV2.create("isSubconceptOf", 8134325418312549386L, 0x44a456bea0df1cf0L), applicableConcept));
   }
   private static SNode getApplicableConcept(SNode applicableNode) {
     if (SNodeOperations.isInstanceOf(applicableNode, CONCEPTS.ConceptReference$14)) {
       return SLinkOperations.getTarget(SNodeOperations.cast(applicableNode, CONCEPTS.ConceptReference$14), LINKS.concept$zIbV);
     } else
     if (SNodeOperations.isInstanceOf(applicableNode, CONCEPTS.PatternCondition$zC)) {
-      return ((SNode) BHReflection.invoke0(SNodeOperations.cast(applicableNode, CONCEPTS.PatternCondition$zC), CONCEPTS.ApplicableNodeCondition$I7, SMethodTrimmedId.create("getApplicableConcept", null, "hEwIszL")));
+      return ((SNode) BHReflection.invoke0(SNodeOperations.cast(applicableNode, CONCEPTS.PatternCondition$zC), CONCEPTS.ApplicableNodeCondition$I7, SMethodIdV2.create("getApplicableConcept", 1213877307633L, 0xd12b0f8f8606b4daL)));
     } else {
       return null;
     }

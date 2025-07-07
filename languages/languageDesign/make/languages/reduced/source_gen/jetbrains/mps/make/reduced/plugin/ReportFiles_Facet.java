@@ -42,7 +42,7 @@ public class ReportFiles_Facet extends IFacet.Stub {
     return null;
   }
   public Iterable<IFacet.Name> required() {
-    return Sequence.fromArray(new IFacet.Name[]{new IFacet.Name("jetbrains.mps.lang.core.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.Make")});
+    return Sequence.fromArray(new IFacet.Name[]{new IFacet.Name("jetbrains.mps.make.facets.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.Make")});
   }
   public Iterable<IFacet.Name> extended() {
     return Sequence.fromArray(new IFacet.Name[]{new IFacet.Name("jetbrains.mps.make.facets.Make")});
@@ -65,31 +65,29 @@ public class ReportFiles_Facet extends IFacet.Stub {
           final Iterable<TResource> input = (Iterable<TResource>) (Iterable) rawInput;
           switch (0) {
             case 0:
-              monitor.getSession().getProject().getModelAccess().runWriteAction(new Runnable() {
-                public void run() {
-                  for (TResource itr : Sequence.fromIterable(input)) {
-                    final SModel md = itr.modelDescriptor();
-                    new DeltaReconciler(itr.delta()).visitAll(new FilesDelta.Visitor() {
-                      @Override
-                      public boolean acceptWritten(IFile file) {
-                        ListSequence.fromList(vars(pa.global()).writtenFiles()).addElement(file.getPath());
-                        MapSequence.fromMap(vars(pa.global()).sourceModels()).put(file.getPath(), md);
-                        return true;
-                      }
-                      @Override
-                      public boolean acceptKept(IFile file) {
-                        ListSequence.fromList(vars(pa.global()).keptFiles()).addElement(file.getPath());
-                        MapSequence.fromMap(vars(pa.global()).sourceModels()).put(file.getPath(), md);
-                        return true;
-                      }
-                      @Override
-                      public boolean acceptDeleted(IFile file) {
-                        ListSequence.fromList(vars(pa.global()).deletedFiles()).addElement(file.getPath());
-                        MapSequence.fromMap(vars(pa.global()).sourceModels()).put(file.getPath(), md);
-                        return true;
-                      }
-                    });
-                  }
+              monitor.getSession().getProject().getModelAccess().runWriteAction(() -> {
+                for (TResource itr : Sequence.fromIterable(input)) {
+                  final SModel md = itr.modelDescriptor();
+                  new DeltaReconciler(itr.delta()).visitAll(new FilesDelta.Visitor() {
+                    @Override
+                    public boolean acceptWritten(IFile file) {
+                      ListSequence.fromList(vars(pa.global()).writtenFiles()).addElement(file.getPath());
+                      MapSequence.fromMap(vars(pa.global()).sourceModels()).put(file.getPath(), md);
+                      return true;
+                    }
+                    @Override
+                    public boolean acceptKept(IFile file) {
+                      ListSequence.fromList(vars(pa.global()).keptFiles()).addElement(file.getPath());
+                      MapSequence.fromMap(vars(pa.global()).sourceModels()).put(file.getPath(), md);
+                      return true;
+                    }
+                    @Override
+                    public boolean acceptDeleted(IFile file) {
+                      ListSequence.fromList(vars(pa.global()).deletedFiles()).addElement(file.getPath());
+                      MapSequence.fromMap(vars(pa.global()).sourceModels()).put(file.getPath(), md);
+                      return true;
+                    }
+                  });
                 }
               });
               _output_bk4wqp_a0a = Sequence.fromIterable(_output_bk4wqp_a0a).concat(Sequence.fromIterable(input));
@@ -107,7 +105,7 @@ public class ReportFiles_Facet extends IFacet.Stub {
       return null;
     }
     public Iterable<ITarget.Name> after() {
-      return Sequence.fromArray(new ITarget.Name[]{new ITarget.Name("jetbrains.mps.lang.core.TextGen.textGen")});
+      return Sequence.fromArray(new ITarget.Name[]{new ITarget.Name("jetbrains.mps.make.facets.TextGen.textGen")});
     }
     public Iterable<ITarget.Name> notBefore() {
       return null;

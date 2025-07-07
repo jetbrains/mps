@@ -13,19 +13,24 @@ import com.intellij.openapi.actionSystem.CommonDataKeys;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.progress.PerformInBackgroundOption;
-import jetbrains.mps.ide.findusages.model.SearchResults;
+import java.util.List;
+import jetbrains.mps.ide.findusages.model.SearchResult;
 import org.jetbrains.mps.openapi.model.SNode;
+import java.util.ArrayList;
 import com.intellij.openapi.progress.ProgressIndicator;
 import java.util.Set;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.ide.migration.util.DeprecatedNodeProperties;
-import jetbrains.mps.ide.migration.util.DeprecatedUtil;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.migration.workbench.util.DeprecatedNodeProperties;
+import jetbrains.mps.migration.workbench.util.DeprecatedUtil;
 import jetbrains.mps.ide.findusages.model.scopes.ModulesScope;
 import jetbrains.mps.ide.findusages.model.CategoryKind;
 import jetbrains.mps.util.Pair;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.ide.findusages.model.SearchResults;
+import java.util.Collections;
 import jetbrains.mps.ide.findusages.view.UsagesViewTool;
 
 public class FindUsagesOfDeprecated_Action extends BaseAction {
@@ -36,6 +41,7 @@ public class FindUsagesOfDeprecated_Action extends BaseAction {
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
     this.setMnemonic("d".charAt(0));
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -63,26 +69,28 @@ public class FindUsagesOfDeprecated_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     new Task.Backgroundable(event.getData(CommonDataKeys.PROJECT), "Searching", true, PerformInBackgroundOption.DEAF) {
-      private SearchResults<SNode> searchResults = new SearchResults<SNode>();
+      private final List<SearchResult<SNode>> myResults = new ArrayList<>();
+
       @Override
       public void run(@NotNull final ProgressIndicator indicator) {
         indicator.setIndeterminate(true);
-        event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            Set<SModule> theirModules = SetSequence.fromSetWithValues(new HashSet<SModule>(), event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModules());
-            SetSequence.fromSet(theirModules).removeSequence(Sequence.fromIterable(event.getData(MPSCommonDataKeys.MPS_PROJECT).getModulesWithGenerators()));
-            Map<SNode, DeprecatedNodeProperties> depLibs = DeprecatedUtil.usagesOfDeprecated(new ModulesScope(theirModules), event.getData(MPSCommonDataKeys.MPS_PROJECT).getScope());
-            Map<SNode, DeprecatedNodeProperties> depProj = DeprecatedUtil.usagesOfDeprecated(event.getData(MPSCommonDataKeys.MPS_PROJECT).getScope(), event.getData(MPSCommonDataKeys.MPS_PROJECT).getScope());
+        event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(() -> {
+          Set<SModule> theirModules = SetSequence.fromSetWithValues(new HashSet<SModule>(), event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModules());
+          SetSequence.fromSet(theirModules).removeSequence(ListSequence.fromList(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProjectModulesWithGenerators()));
+          Map<SNode, DeprecatedNodeProperties> depLibs = DeprecatedUtil.usagesOfDeprecated(new ModulesScope(theirModules), event.getData(MPSCommonDataKeys.MPS_PROJECT).getScope());
+          Map<SNode, DeprecatedNodeProperties> depProj = DeprecatedUtil.usagesOfDeprecated(event.getData(MPSCommonDataKeys.MPS_PROJECT).getScope(), event.getData(MPSCommonDataKeys.MPS_PROJECT).getScope());
 
-            CategoryKind locationCategoryKind = CategoryKind.DEFAULT_CATEGORY_KIND;
-            UsagesFormattingUtil.addResults(searchResults, new Pair(locationCategoryKind, "Deprecated Library Code"), depLibs);
-            UsagesFormattingUtil.addResults(searchResults, new Pair(locationCategoryKind, "Deprecated Project Code"), depProj);
-          }
+          CategoryKind locationCategoryKind = CategoryKind.DEFAULT_CATEGORY_KIND;
+          Pair c1 = new Pair(locationCategoryKind, "Deprecated Library Code");
+          myResults.addAll(Sequence.fromIterable(UsagesFormattingUtil.prepare(depLibs, c1)).toList());
+          Pair c2 = new Pair(locationCategoryKind, "Deprecated Project Code");
+          myResults.addAll(Sequence.fromIterable(UsagesFormattingUtil.prepare(depProj, c2)).toList());
         });
       }
       @Override
       public void onSuccess() {
-        event.getData(CommonDataKeys.PROJECT).getComponent(UsagesViewTool.class).show(searchResults, "No usages found");
+        SearchResults<SNode> sr = (myResults.isEmpty() ? SearchResults.<SNode>empty() : new SearchResults<>(Collections.emptyList(), myResults));
+        UsagesViewTool.getInstance(event.getData(CommonDataKeys.PROJECT)).show(sr, "No usages found");
       }
     }.queue();
   }

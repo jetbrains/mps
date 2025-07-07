@@ -8,18 +8,15 @@ import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/5033107305426668800", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "5033107305426668800", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class CopyNodeReference_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -27,6 +24,7 @@ public class CopyNodeReference_Action extends BaseAction {
     super("Copy Reference", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -39,18 +37,12 @@ public class CopyNodeReference_Action extends BaseAction {
     }
     {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      MapSequence.fromMap(_params).put("project", p);
       if (p == null) {
         return false;
       }
     }
     {
       List<SNode> nodes = event.getData(MPSCommonDataKeys.NODES);
-      if (nodes == null) {
-        MapSequence.fromMap(_params).put("nodes", null);
-      } else {
-        MapSequence.fromMap(_params).put("nodes", ListSequence.fromListWithValues(new ArrayList<SNode>(), nodes));
-      }
       if (nodes == null) {
         return false;
       }
@@ -63,15 +55,13 @@ public class CopyNodeReference_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    String text = new ModelAccessHelper(((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess()).runReadAction(new Computable<String>() {
-      public String compute() {
-        StringBuilder builder = new StringBuilder();
-        for (SNode node : ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes")))) {
-          builder.append(NameUtil.nodeFQName(node)).append("\n");
-        }
-        builder.deleteCharAt(builder.length() - 1);
-        return builder.toString();
+    String text = new ModelAccessHelper(event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess()).runReadAction(() -> {
+      StringBuilder builder = new StringBuilder();
+      for (SNode node : ListSequence.fromList(event.getData(MPSCommonDataKeys.NODES))) {
+        builder.append(NameUtil.nodeFQName(node)).append("\n");
       }
+      builder.deleteCharAt(builder.length() - 1);
+      return builder.toString();
     });
     CopyPasteUtil.copyTextToClipboard(text);
   }

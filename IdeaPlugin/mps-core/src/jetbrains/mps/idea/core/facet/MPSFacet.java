@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,18 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.core.facet;
 
-import com.intellij.ProjectTopics;
 import com.intellij.facet.Facet;
 import com.intellij.facet.FacetType;
-import com.intellij.ide.plugins.IdeaPluginDescriptor;
-import com.intellij.ide.plugins.PluginManager;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.module.Module;
-import com.intellij.openapi.project.ModuleListener;
-import com.intellij.openapi.project.Project;
+import com.intellij.openapi.startup.StartupManager;
 import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.ide.messages.MessagesViewTool;
 import jetbrains.mps.ide.project.ProjectHelper;
@@ -34,9 +29,11 @@ import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
+import jetbrains.mps.smodel.ModelWriteRunnable;
 import jetbrains.mps.smodel.ModuleDependencyVersions;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -54,25 +51,35 @@ public class MPSFacet extends Facet<MPSFacetConfiguration> {
     myMpsProject = ProjectHelper.fromIdeaProject(module.getProject());
     configuration.setFacet(this);
     MessageBusConnection busConnection = module.getProject().getMessageBus().connect(this);
-    busConnection.subscribe(ProjectTopics.MODULES, new ModuleListener() {
-      @Override
-      public void moduleAdded(@NotNull Project project, @NotNull Module module) {
-        if (!wasInitialized()) {
-          initFacet();
-        }
-      }
-    });
+    // FIXME bad smell: according to MPS-34809 stacktrace, IDEA does initFacet() without the need
+    //       for this hack!
+//    busConnection.subscribe(ProjectTopics.MODULES, new ModuleListener() {
+//      @Override
+//      public void moduleAdded(@NotNull Project project, @NotNull Module module) {
+//        if (!wasInitialized()) {
+//          initFacet();
+//        }
+//      }
+//    });
   }
 
   @Override
   public void initFacet() {
-    myMpsProject.getModelAccess().runWriteAction(() -> {
+    StartupManager.getInstance(getModule().getProject()).runWhenProjectIsInitialized(new ModelWriteRunnable(myMpsProject.getModelAccess(), () -> {
       SolutionDescriptor solutionDescriptor = getConfiguration().createSolutionDescriptor();
-      Solution solution = new SolutionIdea(getModule(), solutionDescriptor);
+      // I don't know the reason why getModule().getModuleFile() == null here, nor am I sure about the need for descriptor file at all,
+      // see SolutionIdea cons comments. Just want to avoid NPE in the log
+      final IFile df = myMpsProject.getFileSystem().getFile(getModule().getModuleFilePath());
+      // for whatever reason, getConfiguration().createSolutionDescriptor() doesn't set module namespace.
+      //     It seems SolutionIdea relied on explicit setMD() call and Solution.doSetModuleDescriptor() to
+      //     update module reference. Now, for module reference constructed properly right away, set namespace here,
+      //     although there's definitely better place, I just don't know the one.
+      solutionDescriptor.setNamespace(getModule().getName());
+      Solution solution = new SolutionIdea(getModule(), solutionDescriptor, df);
 
-      com.intellij.openapi.project.Project project = getModule().getProject();
+      final com.intellij.openapi.project.Project project = getModule().getProject();
 
-      SRepository repository = myMpsProject.getRepository();
+      final SRepository repository = myMpsProject.getRepository();
       ModuleRepositoryFacade facade = new ModuleRepositoryFacade(repository);
       SModule previousModule = facade.getModule(solutionDescriptor.getModuleReference());
       if (previousModule != null) {
@@ -91,11 +98,11 @@ public class MPSFacet extends Facet<MPSFacetConfiguration> {
 
       myMpsProject.addModule(mySolution = solution);
 
-      new ModuleDependencyVersions(myMpsProject.getComponent(LanguageRegistry.class), myMpsProject.getRepository()).update(mySolution);
+      // ModuleDependencyVersions.update triggers model loading, which may access directory index.
+      new ModuleDependencyVersions(myMpsProject.getComponent(LanguageRegistry.class), repository).update(mySolution);
 
       LOG.info(MPSBundle.message("facet.module.loaded", MPSFacet.this.mySolution.getModuleName()));
-      IdeaPluginDescriptor descriptor = PluginManager.getPlugin(PluginManager.getPluginByClassName(MPSFacet.class.getName()));
-    });
+    }));
   }
 
   @Override
@@ -141,7 +148,7 @@ public class MPSFacet extends Facet<MPSFacetConfiguration> {
     return mySolution;
   }
 
-  /*package*/ MPSProject getProject() {
+  public MPSProject getProject() {
     return myMpsProject;
   }
 }

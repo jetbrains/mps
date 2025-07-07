@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,7 +52,7 @@ public class ProjectPaneNavigator {
     myProject.getModelAccess().runReadInEDT(() -> {
       SNode n = node.resolve(myProject.getRepository());
       if (n != null) {
-        NavigationSupport.getInstance().selectInTree(myProject, n, myFocus);
+        NavigationSupport.getInstance(myProject).selectInTree(myProject, n, myFocus);
       }
     });
   }
@@ -61,7 +61,7 @@ public class ProjectPaneNavigator {
     myProject.getModelAccess().runReadInEDT(() -> {
       SModel m = model.resolve(myProject.getRepository());
       if (m != null) {
-        NavigationSupport.getInstance().selectInTree(myProject, m, myFocus);
+        NavigationSupport.getInstance(myProject).selectInTree(myProject, m, myFocus);
       }
     });
   }
@@ -70,7 +70,7 @@ public class ProjectPaneNavigator {
     myProject.getModelAccess().runReadInEDT(() -> {
       SModule m = module.resolve(myProject.getRepository());
       if (m != null) {
-        NavigationSupport.getInstance().selectInTree(myProject, m, myFocus);
+        NavigationSupport.getInstance(myProject).selectInTree(myProject, m, myFocus);
       }
     });
   }

@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -24,10 +23,10 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class ContextVariable__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x794cf8ea9e119f99L, "jetbrains.mps.lang.editor.structure.ContextVariable");
 
-  public static final SMethod<Boolean> usesParameterObject_idhEwJh7s = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("usesParameterObject").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwJh7s").build();
-  public static final SMethod<SNode> findProvider_idhEwJh7Q = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("findProvider").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwJh7Q").build();
-  public static final SMethod<SAbstractConcept> getProviderConcept_idaxxf7pcCKs = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl(SAbstractConcept.class)).name("getProviderConcept").modifiers(13, AccessPrivileges.PUBLIC).concept(CONCEPT).id("axxf7pcCKs").build();
-  public static final SMethod<SNode> getType_id27DJnJtIQ9C = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getType").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("27DJnJtIQ9C").build();
+  public static final SMethod<Boolean> usesParameterObject_idhEwJh7s = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("usesParameterObject").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877522908L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<SNode> findProvider_idhEwJh7Q = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("findProvider").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877522934L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<SAbstractConcept> getProviderConcept_idaxxf7pcCKs = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl(SAbstractConcept.class)).name("getProviderConcept").modifiers(13, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(189578833592224796L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<SNode> getType_id27DJnJtIQ9C = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getType").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2443692612523876968L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(usesParameterObject_idhEwJh7s, findProvider_idhEwJh7Q, getProviderConcept_idaxxf7pcCKs, getType_id27DJnJtIQ9C);
 
@@ -39,11 +38,7 @@ public final class ContextVariable__BehaviorDescriptor extends BaseBHDescriptor 
   }
   /*package*/ static SNode findProvider_idhEwJh7Q(@NotNull SNode __thisNode__) {
     final SAbstractConcept providerConcept = ContextVariable__BehaviorDescriptor.getProviderConcept_idaxxf7pcCKs.invoke(__thisNode__.getConcept());
-    return ListSequence.fromList(SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.IContextVariableProvider$$H, true)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.getConcept(it).isSubConceptOf(providerConcept);
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.IContextVariableProvider$$H, true)).findFirst((it) -> SNodeOperations.getConcept(it).isSubConceptOf(providerConcept));
   }
 
   /*package*/ ContextVariable__BehaviorDescriptor() {

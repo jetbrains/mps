@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package jetbrains.mps.project;
 
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.smodel.ModelImports;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -32,20 +31,7 @@ import java.util.Set;
 public final class ModelsAutoImportsManager implements CoreComponent {
   // todo: should be application component ?
   // todo: is auto imports workbench functionality?
-  private Set<AutoImportsContributor> contributors = new HashSet<>();
-
-  @ToRemove(version = 2018.3)
-  private static ModelsAutoImportsManager ourInstance;
-
-  @Override
-  public void init() {
-    ourInstance = this;
-  }
-
-  @Override
-  public void dispose() {
-    ourInstance = null;
-  }
+  private final Set<AutoImportsContributor> contributors = new HashSet<>();
 
   public void register(AutoImportsContributor contributor) {
     contributors.add(contributor);
@@ -84,16 +70,6 @@ public final class ModelsAutoImportsManager implements CoreComponent {
       }
     }
     return result;
-  }
-
-  /**
-   * In use in the single place, SModuleOperations.createModelWithAdjustments(), which is extensively used throughout MPS code (26 uses to date) and in mbeddr (6 uses)
-   * @deprecated use {@link jetbrains.mps.components.ComponentHost#findComponent(Class)} and instance method {@link #performImports(SModule, SModel)} instead
-   */
-  @Deprecated
-  @ToRemove(version = 2018.3)
-  public static void doAutoImport(SModule module, SModel model) {
-    ourInstance.performImports(module, model);
   }
 
   public void performImports(SModule module, SModel model) {

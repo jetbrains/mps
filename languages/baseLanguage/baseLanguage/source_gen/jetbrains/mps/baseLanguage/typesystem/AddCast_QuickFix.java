@@ -34,7 +34,7 @@ public class AddCast_QuickFix extends QuickFix_Runtime {
     } else {
       text = "expression";
     }
-    return "Cast the " + text + " to " + ((SNodeOperations.isInstanceOf(((SNode) AddCast_QuickFix.this.getField("desiredType")[0]), CONCEPTS.Type$bu) ? ((SNode) AddCast_QuickFix.this.getField("desiredType")[0]) : BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(TypecheckingFacade.getFromContext().getTypeOf(((SNode) AddCast_QuickFix.this.getField("desiredType")[0])))));
+    return "Cast the " + text + " to " + ((SNodeOperations.isInstanceOf(((SNode) AddCast_QuickFix.this.getField("desiredType")[0]), CONCEPTS.Type$bu) ? BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(((SNode) AddCast_QuickFix.this.getField("desiredType")[0])) : BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(TypecheckingFacade.getFromContext().getTypeOf(((SNode) AddCast_QuickFix.this.getField("desiredType")[0])))));
   }
   public void execute(SNode node) {
     if (!(SNodeOperations.isInstanceOf(((SNode) AddCast_QuickFix.this.getField("expression")[0]), CONCEPTS.Expression$mB))) {

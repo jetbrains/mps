@@ -6,15 +6,16 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcs.diff.merge.MergeTemporaryModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.vcs.diff.ui.common.DiffModelUtil;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import jetbrains.mps.smodel.ModelImports;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.extapi.model.SModelBase;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.extapi.model.ModelWithAttributes;
-import jetbrains.mps.smodel.SModelHeader;
+import jetbrains.mps.extapi.model.GeneratableSModel;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -22,12 +23,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.EditableSModel;
-import jetbrains.mps.extapi.model.GeneratableSModel;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.LinkedHashSet;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
@@ -35,7 +33,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-@GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/4685150495576934666", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
+@GeneratedClass(nodeId = "4685150495576934666", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
 public class MetadataUtil {
   private final SModel myMetadataModel;
 
@@ -45,14 +43,21 @@ public class MetadataUtil {
 
   public static SModel createMetadataModel(SModel model, String version, boolean editable) {
     MergeTemporaryModel metadataModel = new MergeTemporaryModel(SModelOperations.getPointer(model), !(editable));
-    metadataModel.addLanguage(MetaAdapterFactory.getLanguage(0x6df0089f32884998L, 0x9d57e698e7c8e145L, "jetbrains.mps.ide.vcs.modelmetadata"));
-    metadataModel.addLanguage(MetaAdapterFactory.getLanguage(0x86ef829012bb4ca7L, 0x947f093788f263a9L, "jetbrains.mps.lang.project"));
-    new MetadataUtil(metadataModel).createModelRoot(model);
+    MetadataUtil util = new MetadataUtil(metadataModel);
+    util.addUsedLanguages();
+    util.createModelRoot(model);
     DiffModelUtil.renameModelAndRegister(metadataModel, version);
     // XXX it looks isChanged used as indication whether there's anything in the model to apply.
     // If yes, why not use dedicated flag in MergeTemporaryModel, and cease being EditableSModel?
     metadataModel.setChanged(false);
     return metadataModel;
+  }
+
+  public static void populate(MergeTemporaryModel mm, SModel origin) {
+    MetadataUtil util = new MetadataUtil(mm);
+    util.addUsedLanguages();
+    util.createModelRoot(origin);
+    mm.setChanged(false);
   }
 
   public static void dispose(SModel model) {
@@ -63,13 +68,19 @@ public class MetadataUtil {
     return PersistenceFacade.getInstance().createNodeId("~root");
   }
 
+  private void addUsedLanguages() {
+    ModelImports mi = new ModelImports(myMetadataModel);
+    mi.addUsedLanguage(MetaAdapterFactory.getLanguage(0x6df0089f32884998L, 0x9d57e698e7c8e145L, "jetbrains.mps.ide.vcs.modelmetadata"));
+    mi.addUsedLanguage(MetaAdapterFactory.getLanguage(0x86ef829012bb4ca7L, 0x947f093788f263a9L, "jetbrains.mps.lang.project"));
+  }
+
   private void createModelRoot(SModel origin) {
     SModelBase modelBase = (SModelBase) origin;
     // create root with fixed Id (see inspector)
     SNode root = SModelOperations.createNewNode(myMetadataModel, getMetadataRootId(), CONCEPTS.Model$fS);
     SPropertyOperations.assign(root, PROPS.longname$LR$t, SModelOperations.getModelName(origin));
     if (origin instanceof ModelWithAttributes) {
-      String doNotGenerateValue = ((ModelWithAttributes) origin).getAttribute(SModelHeader.DO_NOT_GENERATE);
+      String doNotGenerateValue = ((ModelWithAttributes) origin).getAttribute(GeneratableSModel.DO_NOT_GENERATE);
       SPropertyOperations.assign(root, PROPS.donotgenerate$LZM0, Boolean.parseBoolean(doNotGenerateValue));
     }
     for (SLanguage language : CollectionSequence.fromCollection(modelBase.importedLanguageIds())) {
@@ -149,75 +160,29 @@ public class MetadataUtil {
     }
 
     Set<SLanguage> oldImpLang = SetSequence.fromSetWithValues(new LinkedHashSet<SLanguage>(), modelBase.importedLanguageIds());
-    Set<SLanguage> impLang = SetSequence.fromSetWithValues(new LinkedHashSet<SLanguage>(), ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.language$CU26)).select(new ISelector<SNode, SLanguage>() {
-      public SLanguage select(SNode it) {
-        return getLanguage(it);
-      }
-    }));
-    SetSequence.fromSet(oldImpLang).subtract(SetSequence.fromSet(impLang)).visitAll(new IVisitor<SLanguage>() {
-      public void visit(SLanguage it) {
-        modelBase.deleteLanguageId(it);
-      }
-    });
-    SetSequence.fromSet(impLang).subtract(SetSequence.fromSet(oldImpLang)).visitAll(new IVisitor<SLanguage>() {
-      public void visit(SLanguage it) {
-        modelBase.addLanguage(it);
-        // Each time after add language we should call:
-        // but now we don't know what version to take.
-        // It is hacked for Merge in fixLanguageImportVersionsAfterMerge() but not for Diff.
-      }
+    Set<SLanguage> impLang = SetSequence.fromSetWithValues(new LinkedHashSet<SLanguage>(), ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.language$CU26)).select((it) -> getLanguage(it)));
+    SetSequence.fromSet(oldImpLang).subtract(SetSequence.fromSet(impLang)).visitAll((it) -> modelBase.deleteLanguageId(it));
+    SetSequence.fromSet(impLang).subtract(SetSequence.fromSet(oldImpLang)).visitAll((it) -> {
+      modelBase.addLanguage(it);
+      // Each time after add language we should call:
+      // but now we don't know what version to take.
+      // It is hacked for Merge in fixLanguageImportVersionsAfterMerge() but not for Diff.
     });
 
     Set<SLanguage> oldGenLang = SetSequence.fromSetWithValues(new LinkedHashSet<SLanguage>(), modelBase.getLanguagesEngagedOnGeneration());
-    Set<SLanguage> genLang = SetSequence.fromSetWithValues(new LinkedHashSet<SLanguage>(), ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.languageEngagedOnGeneration$CUw8)).select(new ISelector<SNode, SLanguage>() {
-      public SLanguage select(SNode it) {
-        return getLanguage(it);
-      }
-    }));
-    SetSequence.fromSet(oldGenLang).subtract(SetSequence.fromSet(genLang)).visitAll(new IVisitor<SLanguage>() {
-      public void visit(SLanguage it) {
-        modelBase.removeEngagedOnGenerationLanguage(it);
-      }
-    });
-    SetSequence.fromSet(genLang).subtract(SetSequence.fromSet(oldGenLang)).visitAll(new IVisitor<SLanguage>() {
-      public void visit(SLanguage it) {
-        modelBase.addEngagedOnGenerationLanguage(it);
-      }
-    });
+    Set<SLanguage> genLang = SetSequence.fromSetWithValues(new LinkedHashSet<SLanguage>(), ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.languageEngagedOnGeneration$CUw8)).select((it) -> getLanguage(it)));
+    SetSequence.fromSet(oldGenLang).subtract(SetSequence.fromSet(genLang)).visitAll((it) -> modelBase.removeEngagedOnGenerationLanguage(it));
+    SetSequence.fromSet(genLang).subtract(SetSequence.fromSet(oldGenLang)).visitAll((it) -> modelBase.addEngagedOnGenerationLanguage(it));
 
     Set<SModuleReference> oldDevkit = SetSequence.fromSetWithValues(new LinkedHashSet<SModuleReference>(), modelBase.importedDevkits());
-    Set<SModuleReference> devkit = SetSequence.fromSetWithValues(new LinkedHashSet<SModuleReference>(), ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.devkit$CVdb)).select(new ISelector<SNode, SModuleReference>() {
-      public SModuleReference select(SNode it) {
-        return getModuleReference(it);
-      }
-    }));
-    SetSequence.fromSet(oldDevkit).subtract(SetSequence.fromSet(devkit)).visitAll(new IVisitor<SModuleReference>() {
-      public void visit(SModuleReference it) {
-        modelBase.deleteDevKit(it);
-      }
-    });
-    SetSequence.fromSet(devkit).subtract(SetSequence.fromSet(oldDevkit)).visitAll(new IVisitor<SModuleReference>() {
-      public void visit(SModuleReference it) {
-        modelBase.addDevKit(it);
-      }
-    });
+    Set<SModuleReference> devkit = SetSequence.fromSetWithValues(new LinkedHashSet<SModuleReference>(), ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.devkit$CVdb)).select((it) -> getModuleReference(it)));
+    SetSequence.fromSet(oldDevkit).subtract(SetSequence.fromSet(devkit)).visitAll((it) -> modelBase.deleteDevKit(it));
+    SetSequence.fromSet(devkit).subtract(SetSequence.fromSet(oldDevkit)).visitAll((it) -> modelBase.addDevKit(it));
 
     Set<SModelReference> oldImports = SetSequence.fromSetWithValues(new LinkedHashSet<SModelReference>(), jetbrains.mps.smodel.SModelOperations.getImportedModelUIDs(model));
-    Set<SModelReference> imports = SetSequence.fromSetWithValues(new LinkedHashSet<SModelReference>(), ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.import$CW9f)).select(new ISelector<SNode, SModelReference>() {
-      public SModelReference select(SNode it) {
-        return getModelReference(it);
-      }
-    }));
-    SetSequence.fromSet(oldImports).subtract(SetSequence.fromSet(imports)).visitAll(new IVisitor<SModelReference>() {
-      public void visit(SModelReference it) {
-        modelBase.deleteModelImport(it);
-      }
-    });
-    SetSequence.fromSet(imports).subtract(SetSequence.fromSet(oldImports)).visitAll(new IVisitor<SModelReference>() {
-      public void visit(SModelReference it) {
-        modelBase.addModelImport(it);
-      }
-    });
+    Set<SModelReference> imports = SetSequence.fromSetWithValues(new LinkedHashSet<SModelReference>(), ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.import$CW9f)).select((it) -> getModelReference(it)));
+    SetSequence.fromSet(oldImports).subtract(SetSequence.fromSet(imports)).visitAll((it) -> modelBase.deleteModelImport(it));
+    SetSequence.fromSet(imports).subtract(SetSequence.fromSet(oldImports)).visitAll((it) -> modelBase.addModelImport(it));
 
     ((EditableSModel) metadataModel).setChanged(false);
   }

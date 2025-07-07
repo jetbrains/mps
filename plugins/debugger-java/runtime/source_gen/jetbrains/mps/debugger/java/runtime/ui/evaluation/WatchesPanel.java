@@ -14,7 +14,7 @@ import com.intellij.openapi.actionSystem.ActionPlaces;
 import java.awt.BorderLayout;
 import com.intellij.ui.components.JBScrollPane;
 
-@GeneratedClass(node = "r:b4456070-b665-4c03-b3d3-15a7362ba923(jetbrains.mps.debugger.java.runtime.ui.evaluation)/5600062460044309378", model = "r:b4456070-b665-4c03-b3d3-15a7362ba923(jetbrains.mps.debugger.java.runtime.ui.evaluation)")
+@GeneratedClass(nodeId = "5600062460044309378", model = "r:b4456070-b665-4c03-b3d3-15a7362ba923(jetbrains.mps.debugger.java.runtime.ui.evaluation)")
 public class WatchesPanel extends EvaluationUi {
   private final SessionStopDisposer mySessionStopDisposer;
   private final EvaluationProvider myProvider;
@@ -50,7 +50,8 @@ public class WatchesPanel extends EvaluationUi {
         });
       }
     };
-    ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, ((BaseGroup) ActionManager.getInstance().getAction("jetbrains.mps.debugger.java.runtime.ui.actions.WatchesToolbarActions_ActionGroup")), false);
+    ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, ((BaseGroup) ActionManager.getInstance().getAction("jetbrains.mps.debugger.java.runtime.ui.actions.WatchesToolbarActions_ActionGroup")), false);
+    toolbar.setTargetComponent(this.myTree);
     toolbar.setLayoutPolicy(ActionToolbar.WRAP_LAYOUT_POLICY);
 
     add(toolbar.getComponent(), BorderLayout.WEST);

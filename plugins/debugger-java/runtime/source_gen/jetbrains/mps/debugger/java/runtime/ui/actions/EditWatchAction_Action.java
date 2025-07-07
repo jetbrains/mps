@@ -15,7 +15,7 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.debugger.java.runtime.evaluation.container.IEvaluationContainer;
 import jetbrains.mps.debugger.java.runtime.state.DebugSession;
 
-@GeneratedClass(node = "r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)/8643693251546861757", model = "r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)")
+@GeneratedClass(nodeId = "8643693251546861757", model = "r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)")
 public class EditWatchAction_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -23,6 +23,7 @@ public class EditWatchAction_Action extends BaseAction {
     super("Edit Watch", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

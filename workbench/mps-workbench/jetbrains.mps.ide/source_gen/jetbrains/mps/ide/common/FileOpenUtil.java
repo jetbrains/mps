@@ -6,24 +6,29 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.ThrowableComputable;
+import com.intellij.openapi.util.Computable;
+import java.util.Collection;
 import com.intellij.psi.search.FilenameIndex;
 import com.intellij.psi.search.GlobalSearchScope;
+import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import com.intellij.openapi.progress.ProcessCanceledException;
+import com.intellij.openapi.project.IndexNotReadyException;
+import com.intellij.util.SlowOperations;
 import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.fileEditor.TextEditor;
 import com.intellij.openapi.editor.LogicalPosition;
 import com.intellij.openapi.editor.ScrollType;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a5(jetbrains.mps.ide.common)/4221956679901042757", model = "r:00000000-0000-4000-0000-011c895904a5(jetbrains.mps.ide.common)")
-public class FileOpenUtil {
-  public FileOpenUtil() {
+@GeneratedClass(nodeId = "4221956679901042757", model = "r:00000000-0000-4000-0000-011c895904a5(jetbrains.mps.ide.common)")
+public final class FileOpenUtil {
+  private FileOpenUtil() {
   }
 
   @Nullable
-  public static VirtualFile findFile(Project project, String unitName, String fileName) {
+  public static VirtualFile findFile(final Project project, String unitName, final String fileName) {
     final String fullFileName;
     if (!(unitName.endsWith(fileName))) {
       int lastDot = unitName.lastIndexOf('.');
@@ -36,17 +41,17 @@ public class FileOpenUtil {
     } else {
       fullFileName = unitName.replace('.', '/');
     }
-    try {
-      Iterable<VirtualFile> vfByName = FilenameIndex.getVirtualFilesByName(project, fileName, GlobalSearchScope.allScope(project));
-      return Sequence.fromIterable(vfByName).where(new IWhereFilter<VirtualFile>() {
-        public boolean accept(VirtualFile it) {
-          return it.getPath().endsWith(fullFileName);
-        }
-      }).first();
-    } catch (ProcessCanceledException ex) {
-      //  ignore, can not report anything,pretend we didn't find any
-      return null;
-    }
+    ThrowableComputable<VirtualFile, RuntimeException> f = () -> {
+      try {
+        Computable<Collection<VirtualFile>> computable = () -> FilenameIndex.getVirtualFilesByName(fileName, GlobalSearchScope.allScope(project));
+        Iterable<VirtualFile> vfByName = ApplicationManager.getApplication().runReadAction(computable);
+        return Sequence.fromIterable(vfByName).where((it) -> it.getPath().endsWith(fullFileName)).first();
+      } catch (ProcessCanceledException | IndexNotReadyException ex) {
+        //  ignore, can not report anything,pretend we didn't find any
+        return null;
+      }
+    };
+    return SlowOperations.allowSlowOperations(f);
   }
 
   public static void openFile(Project project, VirtualFile file, int lineNumber) {

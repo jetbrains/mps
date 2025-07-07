@@ -8,7 +8,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="JDOM" level="project" />
     <orderEntry type="library" name="Idea-platform" level="project" />
     <orderEntry type="library" name="Annotations" level="project" />
     <orderEntry type="module" module-name="kernel" />
@@ -22,10 +21,7 @@
     <orderEntry type="module" module-name="mps-workbench" />
     <orderEntry type="module" module-name="editor-api" />
     <orderEntry type="module" module-name="mps-icons" />
-    <orderEntry type="library" name="Log4j" level="project" />
     <orderEntry type="module" module-name="components" />
     <orderEntry type="module" module-name="debuginfo-impl" />
-    <orderEntry type="module" module-name="smodelquery-runtime" />
-    <orderEntry type="module" module-name="ideaIntegrationCommon" />
   </component>
 </module>

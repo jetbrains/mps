@@ -526,6 +526,10 @@ public class ModelUndoTest {
       }
     }
 
+    @Override
+    public void addUndoableAction(ModelRenameUndoableAction action) {
+    }
+
     public void flushCommand() {
       if (myActions.isEmpty()) {
         return;

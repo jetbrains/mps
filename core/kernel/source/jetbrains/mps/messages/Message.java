@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,7 @@
  */
 package jetbrains.mps.messages;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -25,11 +24,8 @@ import org.jetbrains.mps.openapi.module.SModule;
 
 import java.time.Instant;
 
-/**
- * @author Kostik
- */
 public class Message implements IMessage {
-  private static final Logger LOG = LogManager.getLogger(Message.class);
+  private static final Logger LOG = Logger.getLogger(Message.class);
 
   private final String mySender;
   private final MessageKind myKind;
@@ -147,5 +143,9 @@ public class Message implements IMessage {
 
   public static IMessage info(@NotNull Class<?> sender, @NotNull String text, @Nullable Object hint, @Nullable Throwable ex) {
     return new Message(MessageKind.INFORMATION, sender, text).setHintObject(hint).setException(ex);
+  }
+
+  public static IMessage error(@NotNull Class<?> sender, @NotNull String text, @Nullable Object hint, @Nullable Throwable ex) {
+    return new Message(MessageKind.ERROR, sender, text).setHintObject(hint).setException(ex);
   }
 }

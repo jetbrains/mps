@@ -14,25 +14,23 @@ import java.util.ArrayList;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
+import java.util.Collection;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.vcs.diff.changes.StructureChange;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.errors.messageTargets.DeletedNodeMessageTarget;
-import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
+import java.util.Collections;
 import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
-import jetbrains.mps.vcs.diff.changes.ModifiedNode;
+import jetbrains.mps.vcs.diff.changes.NodeGroupWrapChange;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
 import java.util.Objects;
 import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
 
-@GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/5555299221747429994", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
+@GeneratedClass(nodeId = "5555299221747429994", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 /*package*/ class RevisionNodeChange {
 
   @NotNull
@@ -48,59 +46,77 @@ import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
   private final Set<SNodeId> myNodeIds = SetSequence.fromSet(new HashSet<SNodeId>());
 
 
-  /*package*/ RevisionNodeChange(@NotNull final CommitsGraphNode graphNode, @NotNull final StructureChange modelChange, @NotNull final Set<SNodeId> movedNodesIds) {
+  private RevisionNodeChange(@NotNull final CommitsGraphNode graphNode, @NotNull ChangeType changeType, String description, final MessageTarget messageTarget, Collection<SNodeId> nodeIds, final SModel model, @NotNull final Set<SNodeId> movedNodesIds) {
 
-    myMessage = modelChange.getShortDescription();
-    myChangeType = modelChange.getType();
+    myMessage = description;
+    myChangeType = changeType;
     myRevisionGraphNode = graphNode;
-    List<Tuples._2<SNodeId, MessageTarget>> targetIds = modelChange.createMessageTargetsWithIds(true);
+    myMessageTarget = messageTarget;
 
-
-    final SModel newModel = modelChange.getChangeSet().getNewModel();
-
-    Iterable<MessageTarget> messageTargets = ListSequence.fromList(targetIds).select(new ISelector<Tuples._2<SNodeId, MessageTarget>, MessageTarget>() {
-      public MessageTarget select(Tuples._2<SNodeId, MessageTarget> it) {
-        return it._1();
-      }
-    });
-
-    if (Sequence.fromIterable(messageTargets).all(new IWhereFilter<MessageTarget>() {
-      public boolean accept(MessageTarget it) {
-        return it instanceof DeletedNodeMessageTarget;
-      }
-    })) {
-      myMessageTarget = Sequence.fromIterable(messageTargets).first();
-    } else if (Sequence.fromIterable(messageTargets).any(new IWhereFilter<MessageTarget>() {
-      public boolean accept(MessageTarget it) {
-        return it instanceof NodeMessageTarget;
-      }
-    })) {
-      myMessageTarget = Sequence.fromIterable(messageTargets).where(new IWhereFilter<MessageTarget>() {
-        public boolean accept(MessageTarget it) {
-          return it instanceof NodeMessageTarget;
-        }
-      }).first();
-    } else {
-      myMessageTarget = ListSequence.fromList(targetIds).first()._1();
-    }
-    ListSequence.fromList(targetIds).visitAll(new IVisitor<Tuples._2<SNodeId, MessageTarget>>() {
-      public void visit(Tuples._2<SNodeId, MessageTarget> it) {
-        SNodeId id = it._0();
-        MessageTarget messageTarget = it._1();
-        if (messageTarget instanceof DeletedNodeMessageTarget) {
-          return;
-        }
-        SetSequence.fromSet(myNodeIds).addSequence(SetSequence.fromSet(graphNode.getCurrentNodeIds(id)));
-        if (messageTarget instanceof NodeMessageTarget) {
-          if (modelChange instanceof NodeGroupMoveChange) {
-            collectMovedChildIds(as_uhcuom_a0a0a0a4a0a0a0a21a9(modelChange, NodeGroupMoveChange.class), newModel);
-          } else {
-            collectChildNodeIds(newModel.getNode(id), movedNodesIds);
-          }
-        }
+    CollectionSequence.fromCollection(nodeIds).visitAll((id) -> {
+      SetSequence.fromSet(myNodeIds).addSequence(SetSequence.fromSet(graphNode.getCurrentNodeIds(id)));
+      if (messageTarget instanceof NodeMessageTarget) {
+        collectChildNodeIds(model.getNode(id), movedNodesIds);
       }
     });
   }
+
+  private RevisionNodeChange(@NotNull final CommitsGraphNode graphNode, ChangeType changeType, String description, MessageTarget messageTarget, Collection<SNodeId> nodesIds, SModel model) {
+
+    myMessage = description;
+    myChangeType = changeType;
+    myRevisionGraphNode = graphNode;
+    myMessageTarget = messageTarget;
+
+    CollectionSequence.fromCollection(nodesIds).visitAll((id) -> SetSequence.fromSet(myNodeIds).addSequence(SetSequence.fromSet(graphNode.getCurrentNodeIds(id))));
+    // this constructor is for move changes and for move parts of wrap changes
+    collectMovedChildIds(nodesIds, model);
+  }
+
+  private static RevisionNodeChange createMoveNodeChange(@NotNull CommitsGraphNode graphNode, ChangeType changeType, String description, MessageTarget messageTarget, Collection<SNodeId> nodesIds, SModel model) {
+    return new RevisionNodeChange(graphNode, changeType, description, messageTarget, nodesIds, model);
+  }
+
+  private static RevisionNodeChange createNotMoveNodeChange(@NotNull CommitsGraphNode graphNode, @NotNull ChangeType changeType, String description, MessageTarget messageTarget, Collection<SNodeId> nodeIds, SModel model, @NotNull Set<SNodeId> movedNodesIds) {
+    return new RevisionNodeChange(graphNode, changeType, description, messageTarget, nodeIds, model, movedNodesIds);
+  }
+
+
+  @NotNull
+  /*package*/ static Collection<RevisionNodeChange> createRevisionNodeChanges(@NotNull final CommitsGraphNode graphNode, @NotNull StructureChange modelChange, @NotNull Set<SNodeId> movedNodesIds) {
+
+    List<Tuples._2<SNodeId, MessageTarget>> targetIds = modelChange.createMessageTargetsWithIds(true);
+    final MessageTarget messageTarget = ListSequence.fromList(targetIds).first()._1();
+
+    if (messageTarget instanceof DeletedNodeMessageTarget) {
+      return Collections.emptyList();
+    }
+
+    List<SNodeId> nodeIds = ListSequence.fromList(targetIds).select((it) -> it._0()).toList();
+    final SModel model = modelChange.getChangeSet().getNewModel();
+    final String description = modelChange.getShortDescription();
+    final ChangeType changeType = modelChange.getType();
+
+    if (modelChange instanceof NodeGroupMoveChange) {
+      return Collections.singletonList(createMoveNodeChange(graphNode, changeType, description, messageTarget, ((NodeGroupMoveChange) modelChange).getIds(true), model));
+    }
+
+    if (!(modelChange instanceof NodeGroupWrapChange)) {
+      return Collections.singletonList(createNotMoveNodeChange(graphNode, changeType, description, messageTarget, nodeIds, model, movedNodesIds));
+    }
+
+    NodeGroupWrapChange wrapChange = as_uhcuom_a0a51a81(modelChange, NodeGroupWrapChange.class);
+    final List<RevisionNodeChange> changes = ListSequence.fromList(new ArrayList<RevisionNodeChange>());
+
+    if (wrapChange.isWrap()) {
+      Collection<SNodeId> wrappingIds = Collections.singletonList(wrapChange.getWrappingGroup().getWrappingNodeId());
+      ListSequence.fromList(changes).addElement(createNotMoveNodeChange(graphNode, changeType, description, messageTarget, wrappingIds, model, movedNodesIds));
+    } else {
+      ListSequence.fromList(wrapChange.getWrappingGroup().getWrappedGroups()).where((it) -> it.isWrappedMove()).visitAll((it) -> ListSequence.fromList(changes).addElement(createMoveNodeChange(graphNode, changeType, description, messageTarget, it.getIds(), model)));
+    }
+    return changes;
+  }
+
 
   @NotNull
   /*package*/ MessageTarget getMessageTarget() {
@@ -131,20 +147,8 @@ import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
     return myChangeType;
   }
 
-  private void collectMovedChildIds(NodeGroupMoveChange moveChange, final SModel model) {
-    ListSequence.fromList(moveChange.getGroup(true).getModifiedNodes()).select(new ISelector<ModifiedNode, SNode>() {
-      public SNode select(ModifiedNode it) {
-        return (SNode) model.getNode(it.getNodeId());
-      }
-    }).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode movedNode) {
-        return SNodeOperations.getChildren(movedNode);
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode child) {
-        ListSequence.fromList(myMovedChildIds).addSequence(SetSequence.fromSet(myRevisionGraphNode.getCurrentNodeIds(child.getNodeId())));
-      }
-    });
+  private void collectMovedChildIds(Collection<SNodeId> movedNodeIds, final SModel model) {
+    CollectionSequence.fromCollection(movedNodeIds).select((it) -> (SNode) model.getNode(it)).translate((movedNode) -> SNodeOperations.getChildren(movedNode)).visitAll((child) -> ListSequence.fromList(myMovedChildIds).addSequence(SetSequence.fromSet(myRevisionGraphNode.getCurrentNodeIds(child.getNodeId()))));
   }
 
   private void collectChildNodeIds(SNode node, Set<SNodeId> movedNodesIds) {
@@ -172,7 +176,7 @@ import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
     }
     return false;
   }
-  private static <T> T as_uhcuom_a0a0a0a4a0a0a0a21a9(Object o, Class<T> type) {
+  private static <T> T as_uhcuom_a0a51a81(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

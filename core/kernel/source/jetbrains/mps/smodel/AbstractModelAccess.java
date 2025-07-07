@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.smodel.ActionDispatcher.DispatchController;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.repository.CommandListener;
@@ -48,14 +47,14 @@ public abstract class AbstractModelAccess implements ModelAccess {
 
   public AbstractModelAccess() {
     myReadActionDispatcher = new ActionDispatcher<>(ReadActionListener::readStarted, ReadActionListener::readFinished);
-    myCommandActionDispatcher = new ActionDispatcher<>(new DispatchController() {
+    myCommandActionDispatcher = new ActionDispatcher<>(new CommandListener() {
       @Override
-      public void onActionStart() {
+      public void commandStarted() {
         onCommandStarted();
       }
 
       @Override
-      public void onActionFinish() {
+      public void commandFinished() {
         onCommandFinished();
       }
     }, CommandListener::commandStarted, CommandListener::commandFinished);

@@ -20,9 +20,10 @@ import jetbrains.mps.internal.collections.runtime.LinkedListSequence;
 import java.util.LinkedList;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
+import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-@GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/2729259761016168456", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
+@GeneratedClass(nodeId = "2729259761016168456", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class SetPropertyChange extends NodeChange {
   private SProperty myProperty;
   private String myNewValue;
@@ -104,7 +105,20 @@ public class SetPropertyChange extends NodeChange {
 
   @Override
   public List<Tuples._2<SNodeId, MessageTarget>> createMessageTargetsWithIds(boolean isNewModel) {
-    return LinkedListSequence.fromListAndArrayNew(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getAffectedNodeId(isNewModel), ((MessageTarget) new PropertyMessageTarget(getProperty()))));
+    return LinkedListSequence.fromListAndArray(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getAffectedNodeId(isNewModel), ((MessageTarget) new PropertyMessageTarget(getProperty()))));
+  }
+
+  @Override
+  public boolean conflictsWith(@NotNull ModelChange otherChange) {
+    if (super.conflictsWith(otherChange)) {
+      return true;
+    }
+    return otherChange instanceof SetPropertyChange && Objects.equals(this.getAffectedNodeId(false), (as_2yh8ir_a0a1a0a1a42(otherChange, SetPropertyChange.class)).getAffectedNodeId(false)) && Objects.equals(this.getPropertyName(), (as_2yh8ir_a0a1a0b0y(otherChange, SetPropertyChange.class)).getPropertyName());
+  }
+
+  @Override
+  public boolean isSymmetricWith(@NotNull ModelChange otherChange) {
+    return otherChange instanceof SetPropertyChange && Objects.equals(this.getNewValue(), (as_2yh8ir_a0a1a0a0ab(otherChange, SetPropertyChange.class)).getNewValue());
   }
   private static String check_2yh8ir_a0a0a0r(SNode checkedDotOperand, SProperty myProperty, SetPropertyChange checkedDotThisExpression) {
     if (null != checkedDotOperand) {
@@ -129,5 +143,14 @@ public class SetPropertyChange extends NodeChange {
       return checkedDotOperand.getConcept();
     }
     return null;
+  }
+  private static <T> T as_2yh8ir_a0a1a0a1a42(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_2yh8ir_a0a1a0b0y(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_2yh8ir_a0a1a0a0ab(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 }

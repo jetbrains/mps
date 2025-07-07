@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,12 +20,12 @@ import jetbrains.mps.generator.ModelGenerationPlan.Checkpoint;
 import jetbrains.mps.generator.ModelGenerationPlan.Fork;
 import jetbrains.mps.generator.ModelGenerationPlan.Step;
 import jetbrains.mps.generator.ModelGenerationPlan.Transform;
+import jetbrains.mps.generator.runtime.LabelDeclaration;
 import jetbrains.mps.generator.runtime.TemplateMappingConfiguration;
 import jetbrains.mps.generator.runtime.TemplateModel;
 import jetbrains.mps.generator.runtime.TemplateModule;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -38,8 +38,10 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 /**
  * Holds information about active step of generation plan, like MCs selected for the step,
@@ -54,6 +56,7 @@ final class GenPlanActiveStep {
   private final LanguageRegistry myLanguageRegistry;
   private final RuleManager myActiveTransformations;
   private final Map<SModelReference, TemplateModel> myModelMap;
+  private final List<LabelDeclaration> myPrivateLabels;
 
   public GenPlanActiveStep(@NotNull ModelGenerationPlan plan, @NotNull Transform step, List<TemplateMappingConfiguration> applicableConfigurations,
                            LanguageRegistry languageRegistry) throws GenerationFailureException {
@@ -70,17 +73,39 @@ final class GenPlanActiveStep {
     //
     // For switches, however (allTemplateModels going into RuleManager), it seems reasonable to consider all models anyway (or collect
     // models from *extending* generators only)
-    for (TemplateModule tm : myPlan.getGenerators()) {
+    myPlan.getGenerators().stream().map(TemplateModule::getModels).forEach(allTemplateModels::addAll);
+    //
+    // one can invoke templates from extended/employed generators, need to know their TM for template discovery
+    LinkedHashSet<TemplateModule> modules = new LinkedHashSet<>();
+    ArrayDeque<TemplateModule> q = new ArrayDeque<>(plan.getGenerators());
+    while (!q.isEmpty()) {
+      TemplateModule templateModule = q.removeFirst();
+      if (modules.add(templateModule)) {
+        q.addAll(templateModule.getEmployedGenerators());
+        q.addAll(templateModule.getExtendedGenerators());
+      }
+    }
+    for (TemplateModule tm : modules) {
       for (TemplateModel m : tm.getModels()) {
-        allTemplateModels.add(m);
         myModelMap.put(m.getSModelReference(), m);
       }
     }
     myActiveTransformations = new RuleManager(applicableConfigurations, allTemplateModels);
+    myPrivateLabels = new ArrayList<>();
+    final Stream<LabelDeclaration> ldStream = applicableConfigurations.stream().map(TemplateMappingConfiguration::getLabels).flatMap(Collection::stream);
+    ldStream.filter(LabelDeclaration::isPrivate).forEach(myPrivateLabels::add);
   }
 
   public RuleManager getRuleManager() {
     return myActiveTransformations;
+  }
+
+  /**
+   * @return labels considered private (not deemed for export) at this transformation step (based on active MCs)
+   */
+  @NotNull
+  /*package*/ List<LabelDeclaration> getPrivateLabels() {
+    return myPrivateLabels;
   }
 
   /**
@@ -117,8 +142,7 @@ final class GenPlanActiveStep {
    * @deprecated unused, just drop it
    */
   @Nullable
-  @Deprecated
-  @ToRemove(version = 0)
+@Deprecated(since = "0", forRemoval = true)
   public Checkpoint getLastCheckpoint() {
     Checkpoint lastSeen = null;
     for (Step p : myPlan.getSteps()) {

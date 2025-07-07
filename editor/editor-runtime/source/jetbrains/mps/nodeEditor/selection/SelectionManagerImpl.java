@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.nodeEditor.selection;
 
 import jetbrains.mps.editor.runtime.style.StyleAttributesUtil;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.FocusPolicyUtil;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
@@ -28,9 +29,8 @@ import jetbrains.mps.openapi.editor.selection.SelectionInfo;
 import jetbrains.mps.openapi.editor.selection.SelectionListener;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.selection.SelectionStoreException;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class SelectionManagerImpl implements SelectionManager {
-  private static final Logger LOG = LogManager.getLogger(SelectionManagerImpl.class);
+  private static final Logger LOG = Logger.getLogger(SelectionManagerImpl.class);
 
   @NotNull
   private EditorComponent myEditorComponent;
@@ -60,10 +60,12 @@ public class SelectionManagerImpl implements SelectionManager {
     doChangeSelection(oldSelection, null);
   }
 
+  @Nullable
   public Selection getSelection() {
     return mySelectionStack.isEmpty() ? null : mySelectionStack.getLast();
   }
 
+  @Nullable
   public Selection getDeepestSelection() {
     return mySelectionStack.isEmpty() ? null : mySelectionStack.getFirst();
   }
@@ -147,7 +149,7 @@ public class SelectionManagerImpl implements SelectionManager {
         result.add(nextSelection.getSelectionInfo());
       }
     } catch (SelectionStoreException e) {
-      LOG.error(null, e);
+      LOG.error(e);
       // unable to store selection - cleaning selection stack
       result.clear();
     }
@@ -216,7 +218,7 @@ public class SelectionManagerImpl implements SelectionManager {
       try {
         nextListener.selectionChanged(myEditorComponent, oldSelection, newSelection);
       } catch (Exception e) {
-        LOG.error(null, e);
+        LOG.error(e);
       }
     }
   }
@@ -302,11 +304,12 @@ public class SelectionManagerImpl implements SelectionManager {
     EditorCell cell = findCell(node, cellId);
     if (cell instanceof EditorCell_Label) {
       EditorCell_Label label = (EditorCell_Label) cell;
-      if (selectionStart == -1) {
-        selectionStart = label.getText().length();
+      // Interpret negative values as indexes from the back, stop at 0, if necessary
+      if (selectionStart < 0) {
+        selectionStart = Math.max(label.getText().length() + 1 + selectionStart, 0);
       }
-      if (selectionEnd == -1) {
-        selectionEnd = label.getText().length();
+      if (selectionEnd < 0) {
+        selectionEnd = Math.max(label.getText().length() + 1 + selectionEnd, 0);
       }
 
       setSelection(label, selectionEnd, selectionStart, selectionEnd);

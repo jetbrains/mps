@@ -57,7 +57,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "@deprecated");
     editorCell.setCellId("Constant_y08oko_a0");
     Style style = new StyleImpl();
-    new CommentTagStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new CommentTagStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     DeleteTagsAndHandleDeprecationOnAttributedNode.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");

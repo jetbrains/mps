@@ -24,21 +24,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class SurroundWithDoWhile_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public SurroundWithDoWhile_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "3366354716707819213"));
   }
+
   @Override
   public String getPresentation() {
     return "SurroundWithDoWhile";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return true;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -48,10 +48,12 @@ public final class SurroundWithDoWhile_Intention extends AbstractIntentionDescri
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Do / While";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode whileStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.DoWhileStatement$9p, null);
@@ -62,10 +64,19 @@ public final class SurroundWithDoWhile_Intention extends AbstractIntentionDescri
       }
       editorContext.select(SLinkOperations.getTarget(whileStatement, LINKS.condition$UPf8));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return SurroundWithDoWhile_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

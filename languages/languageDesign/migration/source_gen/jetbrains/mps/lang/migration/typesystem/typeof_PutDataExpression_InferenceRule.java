@@ -40,7 +40,7 @@ public class typeof_PutDataExpression_InferenceRule extends AbstractInferenceRul
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "6807933448471600726", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "6807933448471600728", true), (SNode) _quotation_createNode_6hxs6k_a1a0c0c0b(), false, true, _info_12389875345);
     }
-    if (!((IMigrationUnit__BehaviorDescriptor.getProducedAnnotationData_id5TUCQr2CN0$.invoke(SNodeOperations.getNodeAncestor(putDataExpression, CONCEPTS.MigrationScript$KN, false, false)) != null))) {
+    if (!(IMigrationUnit__BehaviorDescriptor.getProducedAnnotationData_id5TUCQr2CN0$.invoke(SNodeOperations.getNodeAncestor(putDataExpression, CONCEPTS.MigrationScript$KN, false, false)) != null)) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(putDataExpression, "Produced data should be declared", "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "6807933448472915817", null, errorTarget);
     }

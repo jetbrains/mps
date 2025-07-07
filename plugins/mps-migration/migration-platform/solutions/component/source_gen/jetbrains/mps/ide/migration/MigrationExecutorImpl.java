@@ -13,7 +13,6 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.ide.migration.util.MigrationDataUtil;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference;
 import jetbrains.mps.migration.global.ProjectMigration;
@@ -35,19 +34,17 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.List;
 import java.util.ArrayList;
 
-@GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/4815078419490673773", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
+@GeneratedClass(nodeId = "4815078419490673773", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 public class MigrationExecutorImpl implements MigrationExecutor {
-  private Project myProject;
+  protected Project myProject;
 
   private DataCollector myDataCollector = new DataCollector() {
     public Map<SModule, SNode> collectData(SModule module, final MigrationScriptReference scriptReference) {
       final Map<SModule, SNode> requiredData = MapSequence.fromMap(new HashMap<SModule, SNode>());
-      SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(module)).visitAll(new IVisitor<SModule>() {
-        public void visit(SModule it) {
-          SNode dataString = MigrationDataUtil.readData(it, scriptReference);
-          if (dataString != null) {
-            MapSequence.fromMap(requiredData).put(it, dataString);
-          }
+      SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(module)).visitAll((it) -> {
+        SNode dataString = MigrationDataUtil.readData(it, scriptReference);
+        if (dataString != null) {
+          MapSequence.fromMap(requiredData).put(it, dataString);
         }
       });
       return requiredData;
@@ -58,11 +55,8 @@ public class MigrationExecutorImpl implements MigrationExecutor {
     myProject = project;
   }
 
-  public void dispose() {
-  }
-
   @Override
-  public void executeModuleMigration(ScriptApplied s) {
+  public void execute(ScriptApplied s) {
     // todo remove explicit class mention (map<ref->script>?)
     if (s.getScriptReference() instanceof MigrationScriptReference) {
       executeMigrationScript(s);
@@ -73,16 +67,15 @@ public class MigrationExecutorImpl implements MigrationExecutor {
     }
   }
   @Override
-  public void executeProjectMigration(ProjectMigration pm) {
+  public void execute(ProjectMigration pm) {
     pm.execute(myProject);
   }
 
   private void executeMigrationScript(ScriptApplied<MigrationScriptReference> sa) {
-    MigrationScript script = sa.getScriptReference().resolve(myProject, true);
+    MigrationScript script = (MigrationScript) sa.getScriptInstance();
     AbstractModule module = ((AbstractModule) sa.getModule(myProject.getRepository()));
     SLanguage fromLanguage = script.getReference().getLanguage();
-    Integer usedVersion = module.getModuleDescriptor().getLanguageVersions().get(fromLanguage);
-    usedVersion = Math.max(usedVersion, 0);
+    final int usedVersion = MigrationModuleUtil.getUsedLanguageVersion(module, fromLanguage);
     assert usedVersion == script.getReference().getFromVersion();
 
     script.setDataCollector(myDataCollector);
@@ -91,15 +84,14 @@ public class MigrationExecutorImpl implements MigrationExecutor {
       MigrationDataUtil.addData(module, script.getReference(), data);
     }
 
-    int toVersion = script.getReference().getFromVersion() + 1;
-    module.getModuleDescriptor().getLanguageVersions().put(fromLanguage, toVersion);
-    module.setChanged();
+    int toVersion = usedVersion + 1;
+    MigrationModuleUtil.putUsedLanguageVersion(module, fromLanguage, toVersion);
 
     for (SModel model : ListSequence.fromList(module.getModels())) {
       if (model.isReadOnly()) {
         continue;
       }
-      if (!((model instanceof SModelInternal))) {
+      if (!(model instanceof SModelInternal)) {
         continue;
       }
       if (!(((SModelInternal) model).importedLanguageIds().contains(fromLanguage))) {
@@ -108,6 +100,7 @@ public class MigrationExecutorImpl implements MigrationExecutor {
 
       ((SModelInternal) model).setLanguageImportVersion(fromLanguage, toVersion);
     }
+    module.setChanged();
   }
 
   private void executeRefactoringScript(ScriptApplied<RefactoringScriptReference> sa) {
@@ -119,19 +112,15 @@ public class MigrationExecutorImpl implements MigrationExecutor {
     assert importedVersion == rLog.getFromVersion();
 
     final RefactoringSessionImpl refactoringSession = new RefactoringSessionImpl("Apply Logged Refactoring");
-    RefactoringScript ref = rLog.resolve(myProject, true);
-    ref.setSession(refactoringSession);
-    ref.setTaskExecutor(new _FunctionTypes._void_P1_E0<Runnable>() {
-      public void invoke(Runnable task) {
-        RefactoringSessionTaskQueue.getInstance(refactoringSession).putTask(task);
-      }
-    });
-    ref.setRefactoringProcessor(new _FunctionTypes._void_P4_E0<RefactoringUI, RefactoringParticipant.PersistentRefactoringParticipant, Iterable<SNode>, Map<SNode, SNode>>() {
+    RefactoringScript script = (RefactoringScript) sa.getScriptInstance();
+    script.setSession(refactoringSession);
+    script.setTaskExecutor((Runnable task) -> RefactoringSessionTaskQueue.getInstance(refactoringSession).putTask(task));
+    script.setRefactoringProcessor(new _FunctionTypes._void_P4_E0<RefactoringUI, RefactoringParticipant.PersistentRefactoringParticipant, Iterable<SNode>, Map<SNode, SNode>>() {
       public void invoke(RefactoringUI ui, RefactoringParticipant.PersistentRefactoringParticipant p, Iterable<SNode> initialState, Map<SNode, SNode> initialToFinal) {
         doRun(module, p, ui, initialState, initialToFinal, refactoringSession);
       }
     });
-    ref.execute(module);
+    script.execute(module);
     RefactoringSessionTaskQueue.getInstance(refactoringSession).runAll();
     refactoringSession.performAllRegistered();
 
@@ -142,11 +131,7 @@ public class MigrationExecutorImpl implements MigrationExecutor {
   }
 
   private <IP, FP> void doRun(AbstractModule module, RefactoringParticipant.PersistentRefactoringParticipant<?, ?, IP, FP> participant, RefactoringUI ui, Iterable<SNode> initialState, final Map<SNode, SNode> initialToFinal, RefactoringSession refactoringSession) {
-    RefactoringProcessor.<IP,FP,SNode,SNode>performRefactoring(new RefactoringParticipant.DeserializingParticipantStateFactory<IP, FP>(), ui, refactoringSession, MigrationExecutorImpl.this.myProject.getRepository(), new ModulesScope(module), ((Iterable<? extends RefactoringParticipant<?, ?, IP, FP>>) Sequence.<RefactoringParticipant<?, ?, IP, FP>>singleton(participant)), Sequence.fromIterable(initialState).toListSequence(), null, new _FunctionTypes._return_P1_E0<Map<SNode, SNode>, Iterable<RefactoringParticipant.ParticipantApplied<?, ?, IP, FP, SNode, SNode>>>() {
-      public Map<SNode, SNode> invoke(Iterable<RefactoringParticipant.ParticipantApplied<?, ?, IP, FP, SNode, SNode>> changes) {
-        return initialToFinal;
-      }
-    }, null);
+    RefactoringProcessor.<IP,FP,SNode,SNode>performRefactoring(new RefactoringParticipant.DeserializingParticipantStateFactory<IP, FP>(), ui, refactoringSession, MigrationExecutorImpl.this.myProject.getRepository(), new ModulesScope(module), Sequence.singleton(participant), Sequence.fromIterable(initialState).toList(), null, (Iterable<RefactoringParticipant.ParticipantApplied<?, ?, IP, FP, SNode, SNode>> changes) -> initialToFinal, null);
   }
 
   private static class RefactoringSessionTaskQueue {

@@ -15,9 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.util.annotation.ToRemove;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -25,13 +22,12 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class IConceptAspect__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x24614259e94f0c84L, "jetbrains.mps.lang.structure.structure.IConceptAspect");
 
-  public static final SMethod<SNode> getBaseConcept_id2hxg_BDjKM8 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getBaseConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2hxg_BDjKM8").build();
-  public static final SMethod<List<SNode>> getBaseConceptCollection_id4$$3zrO3UBG = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getBaseConceptCollection").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4$$3zrO3UBG").build();
-  public static final SMethod<Void> setBaseConcept_id5r_35Ihc58c = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setBaseConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5r_35Ihc58c").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> isApplicable_id6NcFj35FbEV = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isApplicable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6NcFj35FbEV").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> canBeAppliedToNode_id7IH442d05tK = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeAppliedToNode").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7IH442d05tK").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getBaseConcept_id2hxg_BDjKM8 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getBaseConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2621449412040133768L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
+  public static final SMethod<List<SNode>> getBaseConceptCollection_id4$$3zrO3UBG = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getBaseConceptCollection").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5270353093116013036L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
+  public static final SMethod<Void> setBaseConcept_id5r_35Ihc58c = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setBaseConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6261424444345963020L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> canBeAppliedToNode_id7IH442d05tK = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeAppliedToNode").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8911797107065640816L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getBaseConcept_id2hxg_BDjKM8, getBaseConceptCollection_id4$$3zrO3UBG, setBaseConcept_id5r_35Ihc58c, isApplicable_id6NcFj35FbEV, canBeAppliedToNode_id7IH442d05tK);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getBaseConcept_id2hxg_BDjKM8, getBaseConceptCollection_id4$$3zrO3UBG, setBaseConcept_id5r_35Ihc58c, canBeAppliedToNode_id7IH442d05tK);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -49,13 +45,8 @@ public final class IConceptAspect__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static void setBaseConcept_id5r_35Ihc58c(@NotNull SNode __thisNode__, SNode baseConcept) {
   }
-  @Deprecated
-  @ToRemove(version = 3.3)
-  /*package*/ static boolean isApplicable_id6NcFj35FbEV(@NotNull SNode __thisNode__, SNode candidate) {
-    return true;
-  }
   /*package*/ static boolean canBeAppliedToNode_id7IH442d05tK(@NotNull SAbstractConcept __thisConcept__, SNode candidate) {
-    return (boolean) IConceptAspect__BehaviorDescriptor.isApplicable_id6NcFj35FbEV.invoke(SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(__thisConcept__)), candidate);
+    return true;
   }
 
   /*package*/ IConceptAspect__BehaviorDescriptor() {
@@ -80,8 +71,6 @@ public final class IConceptAspect__BehaviorDescriptor extends BaseBHDescriptor {
       case 2:
         setBaseConcept_id5r_35Ihc58c(node, (SNode) parameters[0]);
         return null;
-      case 3:
-        return (T) ((Boolean) isApplicable_id6NcFj35FbEV(node, (SNode) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -94,7 +83,7 @@ public final class IConceptAspect__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
-      case 4:
+      case 3:
         return (T) ((Boolean) canBeAppliedToNode_id7IH442d05tK(concept, (SNode) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);

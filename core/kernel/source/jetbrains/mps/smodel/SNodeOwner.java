@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -79,7 +79,7 @@ abstract class SNodeOwner {
   void firePropertyRead(SNode node, SProperty p, String value, boolean hasProperty) {}
   void fireReferenceRead(SNode node, SReferenceLink link, SNode target) {}
   void firePropertyChange(SNode node, SProperty property, String oldValue, String newValue) {}
-  void fireReferenceChange(SNode node, SReferenceLink l, org.jetbrains.mps.openapi.model.SReference oldRef, org.jetbrains.mps.openapi.model.SReference newRef) {}
+  void fireReferenceChange(SNode node, SReferenceLink l, AssociationData oldRef, AssociationData newRef) {}
   void fireNodeAdd(SNode node, SContainmentLink role, SNode child, SNode anchor) {}
   void fireBeforeNodeRemove(SNode node, SContainmentLink role, SNode child, SNode anchor) {}
   void fireNodeRemove(SNode node, SContainmentLink role, SNode child, SNode anchor) {}

@@ -13,6 +13,11 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_DefForRule;
   private ConceptPresentation props_EditorListOfDefs;
   private ConceptPresentation props_ExpressionWrapper;
+  private ConceptPresentation props_MessageTarget;
+  private ConceptPresentation props_PropertyMessageTarget;
+  private ConceptPresentation props_PropertyNameTarget;
+  private ConceptPresentation props_ReferenceMessageTarget;
+  private ConceptPresentation props_ReferenceRoleTarget;
   private ConceptPresentation props_Rule;
   private ConceptPresentation props_RuleBlockMemberWithApplicability;
   private ConceptPresentation props_RuleIdHolder;
@@ -51,6 +56,40 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ExpressionWrapper = cpb.create();
         }
         return props_ExpressionWrapper;
+      case LanguageConceptSwitch.MessageTarget:
+        if (props_MessageTarget == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_MessageTarget = cpb.create();
+        }
+        return props_MessageTarget;
+      case LanguageConceptSwitch.PropertyMessageTarget:
+        if (props_PropertyMessageTarget == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x11db4a6a000L, 0x11db4a6fbeeL, "propertyDeclaration", "", "");
+          props_PropertyMessageTarget = cpb.create();
+        }
+        return props_PropertyMessageTarget;
+      case LanguageConceptSwitch.PropertyNameTarget:
+        if (props_PropertyNameTarget == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("property specification");
+          props_PropertyNameTarget = cpb.create();
+        }
+        return props_PropertyNameTarget;
+      case LanguageConceptSwitch.ReferenceMessageTarget:
+        if (props_ReferenceMessageTarget == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x11db4a87c94L, 0x11db4a8e070L, "linkDeclaration", "", "");
+          props_ReferenceMessageTarget = cpb.create();
+        }
+        return props_ReferenceMessageTarget;
+      case LanguageConceptSwitch.ReferenceRoleTarget:
+        if (props_ReferenceRoleTarget == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("reference role");
+          props_ReferenceRoleTarget = cpb.create();
+        }
+        return props_ReferenceRoleTarget;
       case LanguageConceptSwitch.Rule:
         if (props_Rule == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

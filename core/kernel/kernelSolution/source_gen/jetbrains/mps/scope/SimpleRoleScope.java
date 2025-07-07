@@ -17,21 +17,24 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-@GeneratedClass(node = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)/8401916545537277014", model = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)")
+@GeneratedClass(nodeId = "8401916545537277014", model = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)")
 public abstract class SimpleRoleScope extends Scope {
   private final SNode myNode;
   private final SContainmentLink myLink;
   private final SAbstractConcept concept;
+
   public SimpleRoleScope(SNode node, SContainmentLink link, SAbstractConcept concept) {
     this.myNode = node;
     this.myLink = link;
     this.concept = concept;
   }
+
   public SimpleRoleScope(SNode node, SContainmentLink link) {
     this.myNode = node;
     this.myLink = link;
     this.concept = null;
   }
+
   @Override
   public SNode resolve(SNode contextNode, @NotNull String refText) {
     SNode result = null;
@@ -48,6 +51,7 @@ public abstract class SimpleRoleScope extends Scope {
     }
     return result;
   }
+
   @Override
   public Iterable<SNode> getAvailableElements(@Nullable String prefix) {
     List<SNode> result = new ArrayList<SNode>();
@@ -62,6 +66,7 @@ public abstract class SimpleRoleScope extends Scope {
     }
     return result;
   }
+
   @Override
   public String getReferenceText(SNode contextNode, SNode node) {
     if (node == null || SNodeOperations.getParent(node) != myNode) {
@@ -87,7 +92,9 @@ public abstract class SimpleRoleScope extends Scope {
     }
     return result;
   }
+
   public abstract String getName(SNode child);
+
   public static SimpleRoleScope forNamedElements(SNode node, SContainmentLink linkDeclaration) {
     return new SimpleRoleScope(node, linkDeclaration) {
       @Override

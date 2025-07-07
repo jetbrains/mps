@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,20 +17,16 @@ package jetbrains.mps.smodel;
 
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.application.ModalityInvokator;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.application.TransactionGuard;
 import com.intellij.openapi.application.TransactionGuardImpl;
 import com.intellij.util.ConcurrencyUtil;
 import com.intellij.util.ReflectionUtil;
 import jetbrains.mps.ide.ThreadUtils;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.EDTExecutor.Task;
 import jetbrains.mps.smodel.EDTExecutor.TaskIsOutdated;
-import jetbrains.mps.util.NamedThreadFactory;
 import jetbrains.mps.util.annotation.Hack;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.TestOnly;
@@ -38,10 +34,8 @@ import org.jetbrains.mps.annotations.Internal;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
@@ -62,7 +56,7 @@ import static jetbrains.mps.smodel.EDTExecutor.MAX_SINGLE_EXECUTION_TIME_MS;
  * @author apyshkin
  */
 final class EDTExecutorInternal implements Disposable {
-  private static final Logger LOG = LogManager.getLogger(EDTExecutorInternal.class);
+  private static final Logger LOG = Logger.getLogger(EDTExecutorInternal.class);
   private static final String EXECUTOR_NAME = "MPS EDT Executor";
 
   private final ScheduledExecutorService EXECUTOR_SERVICE = ConcurrencyUtil.newSingleScheduledThreadExecutor(EXECUTOR_NAME);
@@ -126,7 +120,7 @@ final class EDTExecutorInternal implements Disposable {
   }
 
   private void traceTheCaller() {
-    if (LOG.isTraceEnabled()) {
+    if (LOG.isTraceLevel()) {
       LOG.trace("schedule task:" + callersString());
     }
   }
@@ -154,31 +148,41 @@ final class EDTExecutorInternal implements Disposable {
   }
 
   @Internal
-  @ToRemove(version = 201)
+  @Deprecated(since = "201", forRemoval = true)
   public void forceScheduleFlushEDT() {
-    if (LOG.isTraceEnabled()) {
+    if (LOG.isTraceLevel()) {
       LOG.trace("flushing the queue: " + callersString() + " : context transaction " + TransactionGuard.getInstance().getContextTransaction());
     }
     // here we are tricking IJ modality policy
+    // Application.invokeLater() does 2 basic steps: myTransactionGuard.wrapLaterInvocation() and LaterInvocator.invokeLater,
+    // both with the same modality. Runnable wrap of LI.invokeLater grabs write (well, write intent), but wrap of transaction guard
+    // doesn't set myWritingAllowed unless it already had 'write' mode when active modality started (see TGI.enterModality).
+    // Implementation of TGI suggests that NON_MODAL facilitates myWritingAllowed, therefore we tick it to think our runnable code
+    // always goes as NON-MODAL for myWritingAllowed, but force LI to run it regardless of actual modality state with MS.any()
+    // (i.e. to run it in EDT ASAP)
+    // XXX I wonder if I could use TransactionGuard.submitTransaction or directly
+    //     AppUiExecutor.onUiThread().later().expireWith(myExpiredCondition).execute(wrapped);
     TransactionGuardImpl guard = (TransactionGuardImpl) TransactionGuard.getInstance();
     Runnable wrapped = guaranteeWriteSafetyViaHack(guard);
-    ModalityInvokator invokator = ApplicationManager.getApplication().getInvokator();
-    invokator.invokeLater(wrapped, ModalityState.any(), myExpiredCondition)
-             .doWhenRejected(() -> LOG.error("Execution has been rejected"))
-             .doWhenProcessed(() -> {
-               LOG.trace("doing when processed");
-               if (myDisposed) return;
-               try (CloseableLock ignored = myLock.lock()) {
-                 if (myTaskQueue.isEmpty()) {
-                   LOG.debug("FlushIsScheduled is OFF");
-                   myFlushIsScheduled = false;
-                   signalQueueWasEmpty();
-                   return;
-                 }
-               }
-               LOG.trace("flushing the queue again");
-               scheduleFlushInEDT(); // because the flag is still on
-             });
+    Runnable edtRunnable = () -> {
+      wrapped.run();
+      LOG.trace("doing when processed");
+      if (myDisposed) return;
+      try (CloseableLock ignored = myLock.lock()) {
+        if (myTaskQueue.isEmpty()) {
+          LOG.debug("FlushIsScheduled is OFF");
+          myFlushIsScheduled = false;
+          signalQueueWasEmpty();
+          return;
+        }
+      }
+      LOG.trace("flushing the queue again");
+      scheduleFlushInEDT(); // because the flag is still on
+    };
+    ApplicationManager.getApplication().invokeLater(edtRunnable, ModalityState.any(), myExpiredCondition);
+//             .doWhenRejected(() -> LOG.error("Execution has been rejected"))
+//             .doWhenProcessed(() -> {
+//             });
   }
 
   /**
@@ -241,7 +245,7 @@ final class EDTExecutorInternal implements Disposable {
         LOG.trace("exiting by timer");
         return;
       }
-      if (LOG.isTraceEnabled()) {
+      if (LOG.isTraceLevel()) {
         LOG.trace(String.format("flush tasks: %d ms left", timer.getDelay(TimeUnit.MILLISECONDS)));
       }
       tryToRunTopTask();
@@ -266,7 +270,7 @@ final class EDTExecutorInternal implements Disposable {
     try (CloseableLock ignored = myLock.lock()) {
       int queueSize = myTaskQueue.size();
       if (queueSize > EDTExecutor.QUEUE_MAX_EXPECTED_VALUE) {
-        LOG.warn("Tasks queue size is " + queueSize + " which is above the expected");
+        LOG.warning("Tasks queue size is " + queueSize + " which is above the expected");
       } else {
         LOG.trace("flushing the queue with " + queueSize + " tasks in it");
       }
@@ -294,7 +298,7 @@ final class EDTExecutorInternal implements Disposable {
         LOG.debug("refused in the task execution: " + task);
       }
     } catch (TaskIsOutdated ex) {
-      LOG.warn(ex.getMessage());
+      LOG.warning(ex.getMessage());
     } catch (LinkageError | AssertionError | RuntimeException e) {
       LOG.error("run in EDT failure", e);
       taskFailedWithError = true;
@@ -336,7 +340,7 @@ final class EDTExecutorInternal implements Disposable {
         try {
           myQueueWasEmptyCondition.await(200, TimeUnit.MILLISECONDS);
         } catch (InterruptedException ie) {
-          LOG.warn("Interrupted while waiting for flush", ie);
+          LOG.warning("Interrupted while waiting for flush", ie);
           Thread.currentThread().interrupt();
           return;
         }

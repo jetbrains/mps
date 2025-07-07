@@ -25,13 +25,11 @@ import jetbrains.mps.smodel.builder.SNodeBuilder;
 public final class QueryFunction_StyleParameter__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11c4cd1c73aL, "jetbrains.mps.lang.editor.structure.QueryFunction_StyleParameter");
 
-  public static final SMethod<List<SConcept>> getParameterConcepts_id2xELmDxyi2v = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getParameterConcepts").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2xELmDxyi2v").build();
-  public static final SMethod<Boolean> isSeparatorStyleQuery_id6VCLXpKP7HP = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSeparatorStyleQuery").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6VCLXpKP7HP").build();
-  public static final SMethod<SNode> getContainingCellModelRefNodeList_id3Jh9EXLN9Lo = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getContainingCellModelRefNodeList").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3Jh9EXLN9Lo").build();
-  public static final SMethod<SNode> getStyleClassItem_id6VCLXpKPLfS = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getStyleClassItem").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6VCLXpKPLfS").build();
-  public static final SMethod<SNode> getExpectedReturnType_idhEwIGRD = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpectedReturnType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIGRD").build();
+  public static final SMethod<List<SConcept>> getParameterConcepts_id2xELmDxyi2v = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getParameterConcepts").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2912357169742028959L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> isSeparatorStyleQuery_id6VCLXpKP7HP = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSeparatorStyleQuery").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7991857262598847349L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<SNode> getExpectedReturnType_idhEwIGRD = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpectedReturnType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877374441L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameterConcepts_id2xELmDxyi2v, isSeparatorStyleQuery_id6VCLXpKP7HP, getContainingCellModelRefNodeList_id3Jh9EXLN9Lo, getStyleClassItem_id6VCLXpKPLfS, getExpectedReturnType_idhEwIGRD);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameterConcepts_id2xELmDxyi2v, isSeparatorStyleQuery_id6VCLXpKP7HP, getExpectedReturnType_idhEwIGRD);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -47,20 +45,11 @@ public final class QueryFunction_StyleParameter__BehaviorDescriptor extends Base
     return result;
   }
   /*package*/ static boolean isSeparatorStyleQuery_id6VCLXpKP7HP(@NotNull SNode __thisNode__) {
-    return QueryFunction_StyleParameter__BehaviorDescriptor.getContainingCellModelRefNodeList_id3Jh9EXLN9Lo.invoke(__thisNode__) != null;
-  }
-  /*package*/ static SNode getContainingCellModelRefNodeList_id3Jh9EXLN9Lo(@NotNull SNode __thisNode__) {
-    SNode styleContainer = StyleClassItem__BehaviorDescriptor.getStyleContainer_id6VCLXpKS8DC.invoke(QueryFunction_StyleParameter__BehaviorDescriptor.getStyleClassItem_id6VCLXpKPLfS.invoke(__thisNode__));
-    if (styleContainer == null) {
-      return null;
-    }
-    return SNodeOperations.as(SNodeOperations.getParent(styleContainer), CONCEPTS.CellModel_RefNodeList$Uo);
-  }
-  /*package*/ static SNode getStyleClassItem_id6VCLXpKPLfS(@NotNull SNode __thisNode__) {
-    return SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.StyleClassItem$5M);
+    SNode ancestor = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.InlineStyleDeclaration$bn, false, false);
+    return ancestor != null;
   }
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_evejyl_a0a4();
+    return _quotation_createNode_evejyl_a0a2();
   }
 
   /*package*/ QueryFunction_StyleParameter__BehaviorDescriptor() {
@@ -83,10 +72,6 @@ public final class QueryFunction_StyleParameter__BehaviorDescriptor extends Base
       case 1:
         return (T) ((Boolean) isSeparatorStyleQuery_id6VCLXpKP7HP(node));
       case 2:
-        return (T) ((SNode) getContainingCellModelRefNodeList_id3Jh9EXLN9Lo(node));
-      case 3:
-        return (T) ((SNode) getStyleClassItem_id6VCLXpKPLfS(node));
-      case 4:
         return (T) ((SNode) getExpectedReturnType_idhEwIGRD(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -116,7 +101,7 @@ public final class QueryFunction_StyleParameter__BehaviorDescriptor extends Base
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  private static SNode _quotation_createNode_evejyl_a0a4() {
+  private static SNode _quotation_createNode_evejyl_a0a2() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
     quotedNode_1 = nb.getResult();
@@ -129,7 +114,6 @@ public final class QueryFunction_StyleParameter__BehaviorDescriptor extends Base
     /*package*/ static final SConcept ConceptFunctionParameter_node$zM = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10a195cc7c5L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_node");
     /*package*/ static final SConcept ConceptFunctionParameter_prevNode$qw = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ee8c7d6704ae9f2L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_prevNode");
     /*package*/ static final SConcept ConceptFunctionParameter_nextNode$9F = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ee8c7d6704ae262L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_nextNode");
-    /*package*/ static final SConcept CellModel_RefNodeList$Uo = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb0ad38eL, "jetbrains.mps.lang.editor.structure.CellModel_RefNodeList");
-    /*package*/ static final SConcept StyleClassItem$5M = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b191dc6L, "jetbrains.mps.lang.editor.structure.StyleClassItem");
+    /*package*/ static final SConcept InlineStyleDeclaration$bn = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11f1d6594edL, "jetbrains.mps.lang.editor.structure.InlineStyleDeclaration");
   }
 }

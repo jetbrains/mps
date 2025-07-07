@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.editor.runtime.deletionApprover;
 
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
+import jetbrains.mps.openapi.editor.DeletionApprover;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -40,9 +41,10 @@ public class DeletionApproverUtil {
     if (nodeCell == null) {
       return false;
     }
-    if (!context.getEditorComponent().getDeletionApprover().isApprovedForDeletion(nodeCell) &&
+    final DeletionApprover deletionOfficer = context.getDeletionApprover();
+    if (!deletionOfficer.isApprovedForDeletion(nodeCell) &&
         !context.getSelectionManager().getSelection().isExactlyCoveringCell(nodeCell)) {
-      context.getEditorComponent().getDeletionApprover().approveForDeletion(nodeCell);
+      deletionOfficer.approveForDeletion(nodeCell);
       return true;
     }
     return false;
@@ -57,7 +59,7 @@ public class DeletionApproverUtil {
       return false;
     }
     EditorCell nodeCell = getNodeCell(context, node, cellId);
-    return nodeCell != null && context.getEditorComponent().getDeletionApprover().isApprovedForDeletion(nodeCell);
+    return nodeCell != null && context.getDeletionApprover().isApprovedForDeletion(nodeCell);
   }
 
   //todo this logic is partially copied from SelectionManagerImpl, find the way to share the code

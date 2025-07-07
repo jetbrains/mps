@@ -4,12 +4,28 @@ package jetbrains.mps.ide.datatransfer;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import java.awt.datatransfer.DataFlavor;
-import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.datatransfer.SNodeClip;
 
-@GeneratedClass(node = "r:84719e1a-99f6-4297-90ba-8ad2a947fa4a(jetbrains.mps.ide.datatransfer)/6299533519672649753", model = "r:84719e1a-99f6-4297-90ba-8ad2a947fa4a(jetbrains.mps.ide.datatransfer)")
+/**
+ * 
+ * @deprecated see individual fields. 
+ */
+@Deprecated
+@GeneratedClass(nodeId = "6299533519672649753", model = "r:84719e1a-99f6-4297-90ba-8ad2a947fa4a(jetbrains.mps.ide.datatransfer)")
 public class SModelDataFlavor extends DataFlavor {
+  /**
+   * 
+   * @deprecated use {@link jetbrains.mps.datatransfer.SNodeClip#NODE } directly, although note change in representative class ({@code PasteNodeData} for the new one right away)
+   */
+  @Deprecated(forRemoval = true, since = "2025.1")
   public static DataFlavor sNode = new DataFlavor(SNodeTransferable.class, "SNode");
-  public static DataFlavor sNodeReference = new DataFlavor(SNodeReference.class, "SNodeReference");
+  /**
+   * 
+   * @deprecated Use {@link jetbrains.mps.datatransfer.SNodeClip#NODEREF } directly
+   */
+  @Deprecated(forRemoval = true, since = "2025.1")
+  public static DataFlavor sNodeReference = SNodeClip.NODEREF;
+  @Deprecated
   public SModelDataFlavor() {
   }
 }

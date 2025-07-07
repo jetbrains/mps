@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="2kl1601xfmryr2sps2lrjkvreop5xhn">
-  <files names="TypesystemDescriptor.java:URLCheckUtil.java:check_HelpURL_NonTypesystemRule.java:check_TextIcon_NonTypesystemRule.java:check_URLLiteral_NonTypesystemRule.java:typeof_BaseURLFunction_InferenceRule.java:typeof_ConceptIconResourceExpression_InferenceRule.java:typeof_IconExpression_InferenceRule.java:typeof_IconResourceDeclaration_InferenceRule.java:typeof_IconResourceExpression_InferenceRule.java:typeof_IconResourceReference_InferenceRule.java:typeof_NodeIconResourceExpression_InferenceRule.java" />
+<product version="3" modelHash="-7k6ny0z46sxmyskr3xyd0w26ug1105a">
+  <files names="TypesystemDescriptor.java:URLCheckUtil.java:check_FileIcon_NonTypesystemRule.java:check_HelpURL_NonTypesystemRule.java:check_TextIcon_NonTypesystemRule.java:check_URLLiteral_NonTypesystemRule.java:typeof_BaseURLFunction_InferenceRule.java:typeof_ConceptIconResourceExpression_InferenceRule.java:typeof_ConstantFieldIcon_InferenceRule.java:typeof_IconExpression_InferenceRule.java:typeof_IconResourceExpression_InferenceRule.java:typeof_NodeIconResourceExpression_InferenceRule.java" />
 </product>
 

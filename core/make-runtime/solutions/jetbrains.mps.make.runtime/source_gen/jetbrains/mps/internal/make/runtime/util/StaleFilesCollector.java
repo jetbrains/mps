@@ -4,16 +4,12 @@ package jetbrains.mps.internal.make.runtime.util;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.vfs.IFile;
-import java.util.Map;
-import java.util.List;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
-import java.util.HashMap;
 import java.util.Set;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import java.util.List;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
 import java.util.Queue;
 import jetbrains.mps.internal.collections.runtime.QueueSequence;
 import java.util.LinkedList;
@@ -21,11 +17,6 @@ import java.util.Arrays;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
-import jetbrains.mps.generator.impl.dependencies.GenerationDependenciesCache;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.generator.impl.dependencies.GenerationDependencies;
-import java.util.Collections;
-import jetbrains.mps.generator.info.GeneratorPathsComponent;
 
 /**
  * IMPORTANT Use of this class is discouraged.
@@ -34,28 +25,18 @@ import jetbrains.mps.generator.info.GeneratorPathsComponent;
  * As a drawback, need an external mechanism to tell non-generated files under generated location.
  * MPS doesn't use it for TextGen as we record names of generated files and don't need to walk FS any more
  */
-@GeneratedClass(node = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)/3251655328352589723", model = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)")
+@GeneratedClass(nodeId = "3251655328352589723", model = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)")
 public class StaleFilesCollector {
-  private IFile rootDir;
-  private Map<IFile, List<IFile>> generatedChildren = MapSequence.fromMap(new HashMap<IFile, List<IFile>>());
+  private final IFile rootDir;
   private final Set<IFile> filesToKeep;
 
   public StaleFilesCollector(IFile rootDir) {
     this.rootDir = rootDir;
-    MapSequence.fromMap(generatedChildren).put(rootDir, ListSequence.fromList(new ArrayList<IFile>()));
     filesToKeep = SetSequence.fromSet(new HashSet<IFile>());
   }
 
   private List<IFile> collectFilesToDelete() {
-    String[] pathsToKeep = SetSequence.fromSet(filesToKeep).select(new ISelector<IFile, String>() {
-      public String select(IFile f) {
-        return (f.isDirectory() ? DirUtil.normalizeAsDir(f.getPath()) : DirUtil.normalize(f.getPath()));
-      }
-    }).sort(new ISelector<String, String>() {
-      public String select(String p) {
-        return p;
-      }
-    }, true).toListSequence().toGenericArray(String.class);
+    String[] pathsToKeep = ListSequence.fromList(SetSequence.fromSet(filesToKeep).select((f) -> (f.isDirectory() ? DirUtil.normalizeAsDir(f.getPath()) : DirUtil.normalize(f.getPath()))).sort((p) -> p, true).toList()).toGenericArray(String.class);
 
     List<IFile> filesToDelete = ListSequence.fromList(new ArrayList<IFile>());
 
@@ -65,15 +46,7 @@ public class StaleFilesCollector {
       String dirpath = DirUtil.normalizeAsDir(dir.getPath());
       int diridx = Arrays.binarySearch(pathsToKeep, dirpath);
 
-      for (Tuples._2<IFile, String> fileAndPath : Sequence.fromIterable(getChildren(dir)).select(new ISelector<IFile, Tuples._2<IFile, String>>() {
-        public Tuples._2<IFile, String> select(IFile f) {
-          return MultiTuple.<IFile,String>from(f, DirUtil.normalize(f.getPath()));
-        }
-      }).sort(new ISelector<Tuples._2<IFile, String>, String>() {
-        public String select(Tuples._2<IFile, String> t) {
-          return t._1();
-        }
-      }, true)) {
+      for (Tuples._2<IFile, String> fileAndPath : Sequence.fromIterable(getChildren(dir)).select((f) -> MultiTuple.<IFile,String>from(f, DirUtil.normalize(f.getPath()))).sort((t) -> t._1(), true)) {
         if (fileAndPath._0().isDirectory()) {
           int fidx = Arrays.binarySearch(pathsToKeep, DirUtil.normalizeAsDir(fileAndPath._1()));
           fidx = (fidx < 0 ? -1 - fidx : fidx);
@@ -95,24 +68,6 @@ public class StaleFilesCollector {
     }
 
     return filesToDelete;
-  }
-
-  /**
-   * Read cached state of generated files, if any, assuming files were generated under rootDir.
-   * 
-   * The code is intended to handle case when we generate into a root with foreign files we shall keep.
-   * Generally, all the files under rootDir might need deletion (except those explicitly written/kept).
-   * Files left after excluding those touched are additionally filtered through 'foreign' roots in a way
-   * that we consider only generated files under output root (intersect in getChildren).
-   */
-  public void recordGeneratedChildren(GenerationDependenciesCache genDeps, SModel model) {
-    List<IFile> genChildren = knownGeneratedChildren(genDeps.get(model));
-    ListSequence.fromList(MapSequence.fromMap(generatedChildren).get(rootDir)).addSequence(ListSequence.fromList(genChildren));
-  }
-
-  private List<IFile> knownGeneratedChildren(GenerationDependencies gd) {
-    // XXX shall report generated children from GD, but as long as there's no use and the class likely to cease, decided to left unimplemented.
-    return Collections.emptyList();
   }
 
   /**
@@ -153,12 +108,6 @@ public class StaleFilesCollector {
   }
 
   private Iterable<IFile> getChildren(IFile dir) {
-    Iterable<IFile> realChilren = (Iterable<IFile>) dir.getChildren();
-    if (GeneratorPathsComponent.getInstance().isForeign(dir)) {
-      List<IFile> genChildren = MapSequence.fromMap(generatedChildren).get(dir);
-      return ListSequence.fromList(genChildren).intersect(Sequence.fromIterable(realChilren));
-    }
-    return realChilren;
+    return dir.getChildren();
   }
-
 }

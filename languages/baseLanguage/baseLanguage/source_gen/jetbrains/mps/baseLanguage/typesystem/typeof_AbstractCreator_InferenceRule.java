@@ -30,11 +30,7 @@ public class typeof_AbstractCreator_InferenceRule extends AbstractInferenceRule_
   }
   public IsApplicableStatus isApplicableAndPattern(final SNode argument) {
     if (argument.getConcept().isSubConceptOf(getApplicableConcept())) {
-      return new IsApplicableStatus(new IsApplicableStatus.Probe() {
-        public boolean eval() {
-          return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(argument)), CONCEPTS.AbstractCreator$5K);
-        }
-      }, null);
+      return new IsApplicableStatus(() -> SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(argument)), CONCEPTS.AbstractCreator$5K), null);
     } else {
       return new IsApplicableStatus(false, null);
     }

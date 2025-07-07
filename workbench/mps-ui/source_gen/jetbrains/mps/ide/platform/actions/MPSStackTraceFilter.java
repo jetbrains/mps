@@ -18,9 +18,10 @@ import com.intellij.execution.filters.HyperlinkInfo;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.navigation.NodeNavigatable;
 
-@GeneratedClass(node = "r:de82dfab-9448-49ba-813e-2b0579f7fb15(jetbrains.mps.ide.platform.actions)/4221956679900716104", model = "r:de82dfab-9448-49ba-813e-2b0579f7fb15(jetbrains.mps.ide.platform.actions)")
+@GeneratedClass(nodeId = "4221956679900716104", model = "r:de82dfab-9448-49ba-813e-2b0579f7fb15(jetbrains.mps.ide.platform.actions)")
 public class MPSStackTraceFilter implements Filter {
   private static String STRING_START = "at ";
+  private static String SEPARATOR = "/";
   protected final Project myProject;
 
   public MPSStackTraceFilter(Project project) {
@@ -39,6 +40,23 @@ public class MPSStackTraceFilter implements Filter {
 
     int start = line.indexOf(STRING_START) + STRING_START.length();
     String tmpStr = line.substring(start);
+
+    String clname = null;
+    int firstSep = tmpStr.indexOf(SEPARATOR);
+    if (firstSep >= 0) {
+      clname = tmpStr.substring(0, firstSep);
+      tmpStr = tmpStr.substring(firstSep + 1);
+      start += firstSep + 1;
+    }
+
+    String mname = null;
+    int secondSep = tmpStr.indexOf(SEPARATOR);
+    if (secondSep >= 0) {
+      mname = tmpStr.substring(0, secondSep);
+      tmpStr = tmpStr.substring(secondSep + 1);
+      start += secondSep + 1;
+    }
+
     int parenIndex = tmpStr.indexOf("(");
     if (parenIndex == -1) {
       return null;

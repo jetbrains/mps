@@ -16,15 +16,13 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -35,79 +33,79 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class Line__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
 
-  public static final SMethod<Void> initializeFromParagraphs_id2iG$EWuZbnH = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("initializeFromParagraphs").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2iG$EWuZbnH").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Void> merge_id1YnOZxALrLu = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("merge").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1YnOZxALrLu").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Void> merge_id1YnOZxAMHtO = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("merge").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1YnOZxAMHtO").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> split_id1YnOZxANc9P = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("split").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1YnOZxANc9P").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> createParagraphInstance_id7q4Ywce6rMl = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createParagraphInstance").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7q4Ywce6rMl").build();
-  public static final SMethod<Void> addTextElement_idWJz9iAYdP6 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addTextElement").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("WJz9iAYdP6").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Void> addAllTextElements_idWJz9iAYdPl = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addAllTextElements").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("WJz9iAYdPl").build(SMethodBuilder.createJavaParameter((Class<Iterable<SNode>>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> isEmptyLine_id1YnOZxAO76B = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isEmptyLine").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1YnOZxAO76B").build();
-  public static final SMethod<Iterable<SNode>> getTextElements_idWJz9iATjyN = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getTextElements").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("WJz9iATjyN").build();
-  public static final SMethod<Void> removeTextElementAt_idWJz9iAXbMU = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("removeTextElementAt").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("WJz9iAXbMU").build(SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
-  public static final SMethod<String> wrapTextForClipboard_id2iG$EWuTXuU = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("wrapTextForClipboard").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2iG$EWuTXuU").build(SMethodBuilder.createJavaParameter(String.class, ""));
-  public static final SMethod<String> representAsText_id2iG$EWuTXv2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("representAsText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2iG$EWuTXv2").build();
+  public static final SMethod<Void> initializeFromParagraphs_id2iG$EWuZbnH = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("initializeFromParagraphs").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2642648362196448749L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Void> merge_id1YnOZxALrLu = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("merge").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2276521200488660062L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Void> merge_id1YnOZxAMHtO = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("merge").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2276521200488994676L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> split_id1YnOZxANc9P = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("split").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2276521200489120373L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> createParagraphInstance_id7q4Ywce6rMl = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createParagraphInstance").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8540225684429716629L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
+  public static final SMethod<Void> addTextElement_idWJz9iAYdP6 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addTextElement").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1094247804558695750L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Void> addAllTextElements_idWJz9iAYdPl = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addAllTextElements").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1094247804558695765L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<Iterable<SNode>>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> isEmptyLine_id1YnOZxAO76B = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isEmptyLine").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2276521200489361831L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
+  public static final SMethod<Iterable<SNode>> getTextElements_idWJz9iATjyN = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getTextElements").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1094247804557408435L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
+  public static final SMethod<Void> removeTextElementAt_idWJz9iAXbMU = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("removeTextElementAt").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1094247804558425274L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
+  public static final SMethod<String> wrapTextForClipboard_id2iG$EWuTXuU = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("wrapTextForClipboard").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2642648362195081146L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<String> representAsText_id2iG$EWuTXv2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("representAsText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2642648362195081154L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
+  public static final SMethod<Boolean> isFirstLine_id647WjQal7cZ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFirstLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6991822193132073791L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
+  public static final SMethod<Boolean> isLastLine_id647WjQalOgm = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLastLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6991822193132258326L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(initializeFromParagraphs_id2iG$EWuZbnH, merge_id1YnOZxALrLu, merge_id1YnOZxAMHtO, split_id1YnOZxANc9P, createParagraphInstance_id7q4Ywce6rMl, addTextElement_idWJz9iAYdP6, addAllTextElements_idWJz9iAYdPl, isEmptyLine_id1YnOZxAO76B, getTextElements_idWJz9iATjyN, removeTextElementAt_idWJz9iAXbMU, wrapTextForClipboard_id2iG$EWuTXuU, representAsText_id2iG$EWuTXv2);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(initializeFromParagraphs_id2iG$EWuZbnH, merge_id1YnOZxALrLu, merge_id1YnOZxAMHtO, split_id1YnOZxANc9P, createParagraphInstance_id7q4Ywce6rMl, addTextElement_idWJz9iAYdP6, addAllTextElements_idWJz9iAYdPl, isEmptyLine_id1YnOZxAO76B, getTextElements_idWJz9iATjyN, removeTextElementAt_idWJz9iAXbMU, wrapTextForClipboard_id2iG$EWuTXuU, representAsText_id2iG$EWuTXv2, isFirstLine_id647WjQal7cZ, isLastLine_id647WjQalOgm);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
   /*package*/ static void initializeFromParagraphs_id2iG$EWuZbnH(@NotNull final SNode __thisNode__, SNode l) {
     final Wrappers._T<SNode> currentWord = new Wrappers._T<SNode>(null);
-    ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.letters$rNyA)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        if (SNodeOperations.isInstanceOf(it, CONCEPTS.Letter$kd)) {
-          SNode letter = SNodeOperations.as(it, CONCEPTS.Letter$kd);
-          String value = SPropertyOperations.getString(letter, PROPS.value$X7Tp);
-          if (Objects.equals(value, " ")) {
-            if (currentWord.value != null) {
-              Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(__thisNode__, currentWord.value);
-              currentWord.value = null;
-            }
-            return;
-          } else {
-            if (currentWord.value == null) {
-              currentWord.value = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word"));
-              SPropertyOperations.assign(currentWord.value, PROPS.bold$SBR1, SPropertyOperations.getBoolean(letter, PROPS.bold$Xqbk));
-              SPropertyOperations.assign(currentWord.value, PROPS.italic$SC$4, SPropertyOperations.getBoolean(letter, PROPS.italic$Xqql));
-              SPropertyOperations.assign(currentWord.value, PROPS.underlined$SQS1, SPropertyOperations.getBoolean(letter, PROPS.underlined$XqDm));
-            }
-            SPropertyOperations.plusAssignStringProp(currentWord.value, PROPS.value$zQr_, SPropertyOperations.getString(letter, PROPS.value$X7Tp));
-          }
-
-        } else {
+    ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.letters$rNyA)).visitAll((it) -> {
+      if (SNodeOperations.isInstanceOf(it, CONCEPTS.Letter$kd)) {
+        SNode letter = SNodeOperations.as(it, CONCEPTS.Letter$kd);
+        String value = SPropertyOperations.getString(letter, PROPS.value$X7Tp);
+        if (Objects.equals(value, " ")) {
           if (currentWord.value != null) {
             Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(__thisNode__, currentWord.value);
             currentWord.value = null;
           }
+          return;
+        } else {
+          if (currentWord.value == null) {
+            currentWord.value = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word"));
+            SPropertyOperations.assign(currentWord.value, PROPS.bold$SBR1, SPropertyOperations.getBoolean(letter, PROPS.bold$Xqbk));
+            SPropertyOperations.assign(currentWord.value, PROPS.italic$SC$4, SPropertyOperations.getBoolean(letter, PROPS.italic$Xqql));
+            SPropertyOperations.assign(currentWord.value, PROPS.underlined$SQS1, SPropertyOperations.getBoolean(letter, PROPS.underlined$XqDm));
+          }
+          SPropertyOperations.plusAssignStringProp(currentWord.value, PROPS.value$zQr_, SPropertyOperations.getString(letter, PROPS.value$X7Tp));
+        }
 
-          if (SNodeOperations.isInstanceOf(it, CONCEPTS.NodeWrapperTextualElement$vh)) {
-            SNode w = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, "jetbrains.mps.lang.text.structure.NodeWrapperElement"));
-            SLinkOperations.setTarget(w, LINKS.node$KGJq, SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.NodeWrapperTextualElement$vh), LINKS.node$pn2z));
-            Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(__thisNode__, w);
-          }
-          if (SNodeOperations.isInstanceOf(it, CONCEPTS.EmptyParagraphLetter$W6)) {
-            Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(__thisNode__, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")));
-            return;
-          }
-          if (SNodeOperations.isInstanceOf(it, CONCEPTS.UrlTextualElement$cU)) {
-            String address = SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.UrlTextualElement$cU), PROPS.address$M$I6);
-            SNode p = SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.UrlTextualElement$cU), LINKS.text$A10X);
-            String text = IterableUtils.join(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(p, LINKS.letters$rNyA), CONCEPTS.Letter$kd)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return !(Objects.equals(SPropertyOperations.getString(it, PROPS.value$X7Tp), " "));
-              }
-            }).select(new ISelector<SNode, String>() {
-              public String select(SNode it) {
-                return SPropertyOperations.getString(it, PROPS.value$X7Tp);
-              }
-            }), " ").replaceAll(" ", "");
-            SNode w = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word"));
-            SPropertyOperations.assign(w, PROPS.value$zQr_, text);
-            SPropertyOperations.assign(w, PROPS.url$SIrt, address);
-            Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(__thisNode__, w);
-          }
+      } else {
+        if (currentWord.value != null) {
+          Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(__thisNode__, currentWord.value);
+          currentWord.value = null;
+        }
+
+        if (SNodeOperations.isInstanceOf(it, CONCEPTS.NodeWrapperTextualElement$vh)) {
+          SNode w = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, "jetbrains.mps.lang.text.structure.NodeWrapperElement"));
+          SLinkOperations.setTarget(w, LINKS.node$KGJq, SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.NodeWrapperTextualElement$vh), LINKS.node$pn2z));
+          Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(__thisNode__, w);
+        }
+        if (SNodeOperations.isInstanceOf(it, CONCEPTS.EmptyParagraphLetter$W6)) {
+          Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(__thisNode__, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")));
+          return;
+        }
+        if (SNodeOperations.isInstanceOf(it, CONCEPTS.UrlTextualElement$cU)) {
+          String address = SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.UrlTextualElement$cU), PROPS.address$M$I6);
+          SNode p = SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.UrlTextualElement$cU), LINKS.text$A10X);
+          String text = IterableUtils.join(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(p, LINKS.letters$rNyA), CONCEPTS.Letter$kd)).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+            public Boolean invoke(SNode it) {
+              return !(Objects.equals(SPropertyOperations.getString(it, PROPS.value$X7Tp), " "));
+            }
+          }).select(new _FunctionTypes._return_P1_E0<String, SNode>() {
+            public String invoke(SNode it) {
+              return SPropertyOperations.getString(it, PROPS.value$X7Tp);
+            }
+          }), " ").replaceAll(" ", "");
+          SNode w = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word"));
+          SPropertyOperations.assign(w, PROPS.value$zQr_, text);
+          SPropertyOperations.assign(w, PROPS.url$SIrt, address);
+          Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(__thisNode__, w);
         }
       }
     });
@@ -124,12 +122,8 @@ public final class Line__BehaviorDescriptor extends BaseBHDescriptor {
     }
 
     final Wrappers._T<SNode> currentPosition = new Wrappers._T<SNode>(position);
-    ListSequence.fromList(SLinkOperations.getChildren(other, LINKS.elements$_j45)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode element) {
-        currentPosition.value = SNodeOperations.insertNextSiblingChild(currentPosition.value, element);
-      }
-    });
-    if (ListSequence.fromList(SLinkOperations.getChildren(other, LINKS.elements$_j45)).isNotEmpty() && isEmptyString(trim_chdj22_a0a0e0v(SPropertyOperations.getString(SNodeOperations.as(position, CONCEPTS.Word$Dn), PROPS.value$zQr_)))) {
+    ListSequence.fromList(SLinkOperations.getChildren(other, LINKS.elements$_j45)).visitAll((element) -> currentPosition.value = SNodeOperations.insertNextSiblingChild(currentPosition.value, element));
+    if (ListSequence.fromList(SLinkOperations.getChildren(other, LINKS.elements$_j45)).isNotEmpty() && isEmptyString(trim_chdj22_a0a0e0x(SPropertyOperations.getString(SNodeOperations.as(position, CONCEPTS.Word$Dn), PROPS.value$zQr_)))) {
       SNodeOperations.deleteNode(position);
     }
   }
@@ -153,11 +147,7 @@ public final class Line__BehaviorDescriptor extends BaseBHDescriptor {
     ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$_j45)).addSequence(Sequence.fromIterable(elements));
   }
   /*package*/ static boolean isEmptyLine_id1YnOZxAO76B(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$_j45)).isEmpty() || ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$_j45)).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.Word$Dn) && isEmptyString(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Word$Dn), PROPS.value$zQr_));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$_j45)).isEmpty() || ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$_j45)).all((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.Word$Dn) && isEmptyString(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Word$Dn), PROPS.value$zQr_)));
   }
   /*package*/ static Iterable<SNode> getTextElements_idWJz9iATjyN(@NotNull SNode __thisNode__) {
     return SLinkOperations.getChildren(__thisNode__, LINKS.elements$_j45);
@@ -183,6 +173,26 @@ public final class Line__BehaviorDescriptor extends BaseBHDescriptor {
       }
     }
     return ((String) Line__BehaviorDescriptor.wrapTextForClipboard_id2iG$EWuTXuU.invoke(__thisNode__, builder.toString()));
+  }
+  /*package*/ static boolean isFirstLine_id647WjQal7cZ(@NotNull SNode __thisNode__) {
+    if ((SNodeOperations.getPrevSibling(__thisNode__) == null)) {
+      return true;
+    } else if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.getPrevSibling(__thisNode__))), SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__))))) {
+      return true;
+    } else if ((boolean) Line__BehaviorDescriptor.isEmptyLine_id1YnOZxAO76B.invoke(SNodeOperations.as(SNodeOperations.getPrevSibling(__thisNode__), CONCEPTS.Line$yC))) {
+      return true;
+    }
+    return false;
+  }
+  /*package*/ static boolean isLastLine_id647WjQalOgm(@NotNull SNode __thisNode__) {
+    if ((SNodeOperations.getNextSibling(__thisNode__) == null)) {
+      return true;
+    } else if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.getNextSibling(__thisNode__))), SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__))))) {
+      return true;
+    } else if ((boolean) Line__BehaviorDescriptor.isEmptyLine_id1YnOZxAO76B.invoke(SNodeOperations.as(SNodeOperations.getNextSibling(__thisNode__), CONCEPTS.Line$yC))) {
+      return true;
+    }
+    return false;
   }
 
   /*package*/ Line__BehaviorDescriptor() {
@@ -230,6 +240,10 @@ public final class Line__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((String) wrapTextForClipboard_id2iG$EWuTXuU(node, (String) parameters[0]));
       case 11:
         return (T) ((String) representAsText_id2iG$EWuTXv2(node));
+      case 12:
+        return (T) ((Boolean) isFirstLine_id647WjQal7cZ(node));
+      case 13:
+        return (T) ((Boolean) isLastLine_id647WjQalOgm(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -261,7 +275,7 @@ public final class Line__BehaviorDescriptor extends BaseBHDescriptor {
   private static boolean isEmptyString(String str) {
     return str == null || str.isEmpty();
   }
-  public static String trim_chdj22_a0a0e0v(String str) {
+  public static String trim_chdj22_a0a0e0x(String str) {
     return (str == null ? null : str.trim());
   }
 
@@ -280,6 +294,7 @@ public final class Line__BehaviorDescriptor extends BaseBHDescriptor {
     /*package*/ static final SConcept UrlTextualElement$cU = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x739f6249ff2c0691L, "jetbrains.mps.lang.text.structure.UrlTextualElement");
     /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
     /*package*/ static final SConcept TextElement$WN = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement");
+    /*package*/ static final SConcept Line$yC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
   }
 
   private static final class PROPS {

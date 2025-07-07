@@ -7,16 +7,23 @@ import jetbrains.mps.lang.typesystem.runtime.ISubtypingRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public class Typeof_ToolType_Instanceof_BaseTool_SubtypingRule extends SubtypingRule_Runtime implements ISubtypingRule_Runtime {
   public Typeof_ToolType_Instanceof_BaseTool_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode toolType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    return _quotation_createNode_dttelk_a0a1();
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(toolType, LINKS.tool$pL83), CONCEPTS.TabbedToolDeclaration$ug)) {
+      return _quotation_createNode_dttelk_a0a0a1();
+    } else {
+      return _quotation_createNode_dttelk_a0a0a0b();
+    }
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.ToolType$CP;
@@ -27,7 +34,14 @@ public class Typeof_ToolType_Instanceof_BaseTool_SubtypingRule extends Subtyping
   public boolean isWeak() {
     return false;
   }
-  private static SNode _quotation_createNode_dttelk_a0a1() {
+  private static SNode _quotation_createNode_dttelk_a0a0a1() {
+    SNode quotedNode_1 = null;
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
+    quotedNode_1 = nb.getResult();
+    nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.tools(MPS.Platform/)/~BaseTabbedProjectTool");
+    return quotedNode_1;
+  }
+  private static SNode _quotation_createNode_dttelk_a0a0a0b() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
     quotedNode_1 = nb.getResult();
@@ -35,7 +49,12 @@ public class Typeof_ToolType_Instanceof_BaseTool_SubtypingRule extends Subtyping
     return quotedNode_1;
   }
 
+  private static final class LINKS {
+    /*package*/ static final SReferenceLink tool$pL83 = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11961ebbf24L, 0x11961f94babL, "tool");
+  }
+
   private static final class CONCEPTS {
+    /*package*/ static final SConcept TabbedToolDeclaration$ug = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x51d51510f17223c5L, "jetbrains.mps.lang.plugin.structure.TabbedToolDeclaration");
     /*package*/ static final SConcept ToolType$CP = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11961ebbf24L, "jetbrains.mps.lang.plugin.structure.ToolType");
   }
 }

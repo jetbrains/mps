@@ -1,122 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
-  <dependency className="jetbrains.mps.vcs.MPSVcsManager">
-    <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
-    <classNode dependClassName="com.intellij.openapi.progress.EmptyProgressIndicator" />
-    <classNode dependClassName="com.intellij.openapi.project.Project" />
-    <classNode dependClassName="com.intellij.openapi.ui.Messages" />
-    <classNode dependClassName="com.intellij.openapi.vcs.AbstractVcs" />
-    <classNode dependClassName="com.intellij.openapi.vcs.AbstractVcsHelper" />
-    <classNode dependClassName="com.intellij.openapi.vcs.FilePath" />
-    <classNode dependClassName="com.intellij.openapi.vcs.FileStatus" />
-    <classNode dependClassName="com.intellij.openapi.vcs.FileStatusListener" />
-    <classNode dependClassName="com.intellij.openapi.vcs.FileStatusManager" />
-    <classNode dependClassName="com.intellij.openapi.vcs.ProjectLevelVcsManager" />
-    <classNode dependClassName="com.intellij.openapi.vcs.VcsException" />
-    <classNode dependClassName="com.intellij.openapi.vcs.VcsKey" />
-    <classNode dependClassName="com.intellij.openapi.vcs.VcsListener" />
-    <classNode dependClassName="com.intellij.openapi.vcs.actions.VcsContextFactory" />
-    <classNode dependClassName="com.intellij.openapi.vcs.changes.Change" />
-    <classNode dependClassName="com.intellij.openapi.vcs.changes.ChangeList" />
-    <classNode dependClassName="com.intellij.openapi.vcs.changes.ChangeListAdapter" />
-    <classNode dependClassName="com.intellij.openapi.vcs.changes.ChangeListManager" />
-    <classNode dependClassName="com.intellij.openapi.vcs.changes.ChangeListManagerGate" />
-    <classNode dependClassName="com.intellij.openapi.vcs.changes.ChangeListManagerImpl" />
-    <classNode dependClassName="com.intellij.openapi.vcs.changes.ChangeProvider" />
-    <classNode dependClassName="com.intellij.openapi.vcs.changes.ContentRevision" />
-    <classNode dependClassName="com.intellij.openapi.vcs.changes.EmptyChangelistBuilder" />
-    <classNode dependClassName="com.intellij.openapi.vcs.changes.LocalChangeList" />
-    <classNode dependClassName="com.intellij.openapi.vcs.changes.VcsDirtyScopeImpl" />
-    <classNode dependClassName="com.intellij.openapi.vfs.VirtualFile" />
-    <classNode dependClassName="com.intellij.util.messages.MessageBusConnection" />
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.util.Arrays" />
-    <classNode dependClassName="java.util.Collection" />
-    <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.vcs.platform.mergedriver.MergeDriverNotification" />
-    <classNode dependClassName="org.apache.log4j.LogManager" />
-    <classNode dependClassName="org.apache.log4j.Logger" />
-    <classNode dependClassName="org.jetbrains.annotations.NonNls" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
-    <classNode extendsClassName="com.intellij.openapi.components.ProjectComponent" />
-  </dependency>
-  <dependency className="jetbrains.mps.vcs.MergeDriverPackerImpl">
-    <classNode dependClassName="com.intellij.ide.plugins.IdeaPluginDescriptor" />
-    <classNode dependClassName="com.intellij.ide.plugins.PluginManagerCore" />
-    <classNode dependClassName="com.intellij.openapi.application.PathManager" />
-    <classNode dependClassName="com.intellij.openapi.extensions.PluginId" />
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode extendsClassName="jetbrains.mps.vcs.platform.mergedriver.MergeDriverPacker" />
-  </dependency>
-  <dependency className="jetbrains.mps.vcs.ModelMergeConflictTracker">
-    <classNode dependClassName="com.intellij.openapi.Disposable" />
-    <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
-    <classNode dependClassName="com.intellij.openapi.application.ModalityState" />
-    <classNode dependClassName="com.intellij.openapi.project.Project" />
-    <classNode dependClassName="com.intellij.openapi.util.Disposer" />
-    <classNode dependClassName="com.intellij.openapi.vcs.AbstractVcsHelper" />
-    <classNode dependClassName="com.intellij.openapi.vfs.VirtualFile" />
-    <classNode dependClassName="java.lang.Iterable" />
-    <classNode dependClassName="java.lang.Object" />
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.Runnable" />
-    <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.ide.platform.watching.ReloadManager" />
-    <classNode dependClassName="jetbrains.mps.ide.project.ProjectHelper" />
-    <classNode dependClassName="jetbrains.mps.ide.save.SaveRepositoryCommand" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
-    <classNode dependClassName="jetbrains.mps.project.MPSProject" />
-    <classNode dependClassName="jetbrains.mps.smodel.RepoListenerRegistrar" />
-    <classNode dependClassName="jetbrains.mps.smodel.SModelStereotype" />
-    <classNode dependClassName="jetbrains.mps.util.Computable" />
-    <classNode dependClassName="jetbrains.mps.vcs.platform.util.ConflictsUtil" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.EditableSModel" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModelReference" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.module.SRepository" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.module.SRepositoryContentAdapter" />
-    <classNode extendsClassName="com.intellij.openapi.startup.StartupActivity" />
-  </dependency>
-  <dependency className="jetbrains.mps.vcs.TestMergeDialog">
-    <classNode dependClassName="com.intellij.diff.DiffManager" />
-    <classNode dependClassName="com.intellij.diff.DiffRequestFactory" />
-    <classNode dependClassName="com.intellij.diff.InvalidDiffRequestException" />
-    <classNode dependClassName="com.intellij.diff.merge.MergeRequest" />
-    <classNode dependClassName="com.intellij.openapi.fileEditor.FileDocumentManager" />
-    <classNode dependClassName="com.intellij.openapi.project.Project" />
-    <classNode dependClassName="com.intellij.openapi.util.IconLoader" />
-    <classNode dependClassName="com.intellij.openapi.util.io.FileUtil" />
-    <classNode dependClassName="com.intellij.openapi.vfs.VirtualFile" />
-    <classNode dependClassName="java.io.File" />
-    <classNode dependClassName="java.io.IOException" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.lang.System" />
-    <classNode dependClassName="java.util.ArrayList" />
-    <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="java.util.Scanner" />
-    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.fileTypes.MPSFileTypeFactory" />
-    <classNode dependClassName="jetbrains.mps.ide.vfs.VirtualFileUtils" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
-    <classNode dependClassName="jetbrains.mps.project.MPSExtentions" />
-    <classNode dependClassName="jetbrains.mps.project.MPSProject" />
-    <classNode dependClassName="jetbrains.mps.project.Project" />
-    <classNode dependClassName="jetbrains.mps.smodel.persistence.def.ModelReadException" />
-    <classNode dependClassName="jetbrains.mps.tool.environment.EnvironmentConfig" />
-    <classNode dependClassName="jetbrains.mps.tool.environment.IdeaEnvironment" />
-    <classNode dependClassName="jetbrains.mps.vcs.platform.util.MergeBackupUtil" />
-    <classNode dependClassName="jetbrains.mps.vcs.util.MergeVersion" />
-    <classNode dependClassName="org.apache.log4j.Level" />
-    <classNode dependClassName="org.apache.log4j.LogManager" />
-    <classNode dependClassName="org.apache.log4j.Logger" />
-    <classNode dependClassName="org.jdom.JDOMException" />
-  </dependency>
+  <uses language="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />
+  <uses language="l:fd392034-7849-419d-9071-12563d152375:jetbrains.mps.baseLanguage.closures" />
+  <uses language="l:83888646-71ce-4f1c-9c53-c54016f6ad4f:jetbrains.mps.baseLanguage.collections" />
+  <uses language="l:f2801650-65d5-424e-bb1b-463a8781b786:jetbrains.mps.baseLanguage.javadoc" />
+  <uses language="l:760a0a8c-eabb-4521-8bfd-65db761a9ba3:jetbrains.mps.baseLanguage.logging" />
+  <uses language="l:df345b11-b8c7-4213-ac66-48d2a9b75d88:jetbrains.mps.baseLanguageInternal" />
+  <uses language="l:ceab5195-25ea-4f22-9b92-103b95ca8c0c:jetbrains.mps.lang.core" />
+  <uses language="l:c7fb639f-be78-4307-89b0-b5959c3fa8c8:jetbrains.mps.lang.text" />
+  <uses module="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="dp" />
+  <uses module="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="rt+dp" />
+  <uses module="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="dp" />
+  <uses module="1ed103c3-3aa6-49b7-9c21-6765ee11f224(MPS.Editor)" kind="dp" />
+  <uses module="498d89d2-c2e9-11e2-ad49-6cf049e62fe5(MPS.IDEA)" kind="dp" />
+  <uses module="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="dp" />
+  <uses module="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61(MPS.Platform)" kind="dp" />
+  <uses module="4c6a28d1-2c60-478d-b36e-db9b3cbb21fb(closures.runtime)" kind="rt" />
+  <uses module="9b80526e-f0bf-4992-bdf5-cee39c1833f3(collections.runtime)" kind="rt+dp" />
+  <uses module="a3e4657f-a76c-45bb-bbda-c764596ecc65(jetbrains.mps.baseLanguage.logging.runtime)" kind="rt" />
+  <uses module="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
+  <uses module="fdaaf35f-8ee3-4c37-b09d-9efaeaaa7a41(jetbrains.mps.core.tool.environment)" kind="dp" />
+  <uses module="8d29d73f-ed99-4652-ae0a-083cdfe53c34(jetbrains.mps.ide.platform)" kind="dp" />
+  <uses module="85836058-a162-41d7-bb1d-52e99d873f28(jetbrains.mps.ide.vcs.core)" kind="dp" />
+  <uses module="6fd1293f-7f65-4ffd-99dc-4719eca7c171(jetbrains.mps.ide.vcs.platform)" kind="dp" />
+  <uses module="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b(jetbrains.mps.vcs.idea.stubs)" kind="dp" />
+  <uses module="f647e48e-4568-4f4c-b48a-1546492c6a2e(org.jdom)" kind="dp" />
 </dependenciesRoot>
 

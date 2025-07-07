@@ -4,9 +4,10 @@ package jetbrains.mps.lang.editor.menus.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import java.util.List;
@@ -18,11 +19,11 @@ import jetbrains.mps.openapi.editor.menus.transformation.ActionItem;
 
 @MPSLaunch
 public class IncludingSubstituteMenuForEmptyCell_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(IncludingSubstituteMenuForEmptyCell_Test.class, "${mps_home}", "r:4f8193a2-048e-4ddf-b505-dfca00e8c910(jetbrains.mps.lang.editor.menus.tests@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(IncludingSubstituteMenuForEmptyCell_Test.class).projectPath(null).modelRef("r:4f8193a2-048e-4ddf-b505-dfca00e8c910(jetbrains.mps.lang.editor.menus.tests@tests)").reopenProject(false).build());
 
   public IncludingSubstituteMenuForEmptyCell_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -41,7 +42,7 @@ public class IncludingSubstituteMenuForEmptyCell_Test extends BaseTransformation
       initEditorComponent("8991930073416032210", "");
       List<TransformationMenuItem> items = MenuLoadingUtils.loadNamedMenu(getEditorComponent(), new SNodePointer("r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)", "8991930073415901008"), "test location");
 
-      Assert.assertEquals(1, ListSequence.fromList(items).count());
+      Assert.assertEquals(Integer.valueOf(1), Integer.valueOf(ListSequence.fromList(items).count()));
       ActionItem item = (ActionItem) ListSequence.fromList(items).getElement(0);
       Assert.assertEquals("substitute child", item.getLabelText(""));
     }

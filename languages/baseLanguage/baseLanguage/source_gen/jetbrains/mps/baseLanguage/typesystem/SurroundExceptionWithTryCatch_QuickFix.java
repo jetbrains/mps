@@ -9,7 +9,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -38,21 +37,15 @@ public class SurroundExceptionWithTryCatch_QuickFix extends QuickFix_Runtime {
 
     SNode parentTryStatement = (((Boolean) SurroundExceptionWithTryCatch_QuickFix.this.getField("createNew")[0]) ? null : SNodeOperations.getNodeAncestor(ancestorStatement, CONCEPTS.ITryCatchStatement$pH, true, false));
 
-    List<SNode> oldClauses = Sequence.fromIterable(SNodeOperations.ofConcept(((List<SNode>) SurroundExceptionWithTryCatch_QuickFix.this.getField("throwableTypes")[0]), CONCEPTS.ClassifierType$bL)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        SNode catchClause = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, "jetbrains.mps.baseLanguage.structure.CatchClause"));
-        SLinkOperations.setTarget(catchClause, LINKS.catchBody$$61I, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        SLinkOperations.setTarget(catchClause, LINKS.throwable$$5MH, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration")));
-        SLinkOperations.setTarget(SLinkOperations.getTarget(catchClause, LINKS.throwable$$5MH), LINKS.type$a1UY, SNodeOperations.cast(SNodeOperations.copyNode(it), CONCEPTS.Type$bu));
-        SPropertyOperations.assign(SLinkOperations.getTarget(catchClause, LINKS.throwable$$5MH), PROPS.name$MnvL, "e");
-        return catchClause;
-      }
-    }).toListSequence();
-    Iterable<SNode> clauses = Sequence.fromIterable(SNodeOperations.ofConcept(((List<SNode>) SurroundExceptionWithTryCatch_QuickFix.this.getField("throwableTypes")[0]), CONCEPTS.ClassifierType$bL)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return createMultipleCatchClause_fo535k_a0a0a0a7a2(SNodeOperations.copyNode(it));
-      }
-    });
+    List<SNode> oldClauses = Sequence.fromIterable(SNodeOperations.ofConcept(((List<SNode>) SurroundExceptionWithTryCatch_QuickFix.this.getField("throwableTypes")[0]), CONCEPTS.ClassifierType$bL)).select((it) -> {
+      SNode catchClause = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, "jetbrains.mps.baseLanguage.structure.CatchClause"));
+      SLinkOperations.setTarget(catchClause, LINKS.catchBody$$61I, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
+      SLinkOperations.setTarget(catchClause, LINKS.throwable$$5MH, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration")));
+      SLinkOperations.setTarget(SLinkOperations.getTarget(catchClause, LINKS.throwable$$5MH), LINKS.type$a1UY, SNodeOperations.cast(SNodeOperations.copyNode(it), CONCEPTS.Type$bu));
+      SPropertyOperations.assign(SLinkOperations.getTarget(catchClause, LINKS.throwable$$5MH), PROPS.name$MnvL, "e");
+      return catchClause;
+    }).toList();
+    Iterable<SNode> clauses = Sequence.fromIterable(SNodeOperations.ofConcept(((List<SNode>) SurroundExceptionWithTryCatch_QuickFix.this.getField("throwableTypes")[0]), CONCEPTS.ClassifierType$bL)).select((it) -> createMultipleCatchClause_fo535k_a0a0a0a7a2(SNodeOperations.copyNode(it)));
 
     if (parentTryStatement != null) {
       if (SNodeOperations.isInstanceOf(parentTryStatement, CONCEPTS.TryCatchStatement$XR)) {

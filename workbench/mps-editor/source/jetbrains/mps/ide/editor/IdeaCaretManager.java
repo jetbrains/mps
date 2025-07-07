@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,34 +16,31 @@
 package jetbrains.mps.ide.editor;
 
 import com.intellij.concurrency.JobScheduler;
-import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.editor.ex.EditorSettingsExternalizable;
-import jetbrains.mps.nodeEditor.EditorSettingsListener;
 import jetbrains.mps.nodeEditor.caret.CaretManager;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * IDEA Platform -specific MPS caret manager
  * User: shatalin
  * Date: 29/07/16
  */
-public class IdeaCaretManager extends CaretManager implements ApplicationComponent, EditorSettingsListener {
+public class IdeaCaretManager extends CaretManager {
+  public IdeaCaretManager() {
+  }
 
   @Override
-  public void initComponent() {
+  public void init() {
     CaretManager.ourInstance = this;
   }
 
   @Override
-  public void disposeComponent() {
-  }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "IDEA Platform -specific MPS caret manager";
+  public void dispose() {
+    // XXX shall I cancel scheduled "blink" or pass this disposable as parent somewhere?
+    ourInstance = null;
   }
 
   @Override
@@ -56,10 +53,5 @@ public class IdeaCaretManager extends CaretManager implements ApplicationCompone
     int blinkPeriod = settingsExternalizable.getBlinkPeriod();
     return JobScheduler.getScheduler().scheduleWithFixedDelay(new Blink(), blinkPeriod, blinkPeriod,
         TimeUnit.MILLISECONDS);
-  }
-
-  @Override
-  public void settingsChanged() {
-    restart();
   }
 }

@@ -39,11 +39,7 @@ public class Migrate_InlineReferencePresentations extends MigrationScriptBase {
     {
       SearchScope scope_5nvoa5_a0e = CommandUtil.createScope(m);
       final SearchScope scope_5nvoa5_a0e_0 = new EditableFilteringScope(scope_5nvoa5_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_5nvoa5_a0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_5nvoa5_a0e_0;
       Iterable<SNode> refCells = CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.CellModel_RefCell$7g, false);
       for (SNode refCell : Sequence.fromIterable(refCells)) {
         SNode concept = AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(SNodeOperations.getNodeAncestor(refCell, CONCEPTS.BaseEditorComponent$49, false, false));
@@ -88,7 +84,7 @@ public class Migrate_InlineReferencePresentations extends MigrationScriptBase {
       }
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 10);
   }
 

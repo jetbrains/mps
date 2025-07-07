@@ -14,20 +14,18 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.smodel.SReference;
+import org.jetbrains.mps.openapi.model.SReference;
 import java.util.Objects;
 import java.util.List;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 
 /**
  * Runtime for various operations generally from smodel language
  */
-@GeneratedClass(node = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)/6599163591527286349", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
+@GeneratedClass(nodeId = "6599163591527286349", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
 public final class SLinkOperations {
   private SLinkOperations() {
   }
@@ -100,13 +98,13 @@ public final class SLinkOperations {
 
   public static SNodeReference setPointer(SNode node, SReferenceLink role, SNodeReference targetPointer) {
     if (node != null && targetPointer != null) {
-      SNodeAccessUtil.setReference(node, role, SReference.create(role, node, targetPointer, null));
+      SNodeAccessUtil.setAssociation(node, role, targetPointer);
     }
     return targetPointer;
   }
   public static SNodeReference getPointer(SNode node, SReferenceLink role) {
     if (node != null) {
-      org.jetbrains.mps.openapi.model.SReference reference = node.getReference(role);
+      SReference reference = node.getReference(role);
       if (reference != null) {
         return reference.getTargetNodeReference();
       }
@@ -115,7 +113,7 @@ public final class SLinkOperations {
   }
   public static boolean hasPointer(SNode node, SReferenceLink role, SNodeReference targetPointer) {
     if (node != null) {
-      org.jetbrains.mps.openapi.model.SReference reference = node.getReference(role);
+      SReference reference = node.getReference(role);
       if (reference != null) {
         return Objects.equals(targetPointer, reference.getTargetNodeReference());
       } else {
@@ -181,42 +179,46 @@ public final class SLinkOperations {
     }
     return IterableUtil.asList(children);
   }
-  public static SNode findLinkDeclaration(org.jetbrains.mps.openapi.model.SReference reference) {
+  public static SNode findLinkDeclaration(SReference reference) {
     if (reference == null) {
       return null;
     }
     return findLinkDeclaration(reference.getLink());
   }
-  public static SNode getTargetNode(org.jetbrains.mps.openapi.model.SReference reference) {
+  public static SNode getTargetNode(SReference reference) {
     if (reference == null) {
       return null;
     }
     return reference.getTargetNode();
   }
-  public static String getRole(org.jetbrains.mps.openapi.model.SReference reference) {
+  public static String getRole(SReference reference) {
     if (reference == null) {
       return null;
     }
     return reference.getLink().getName();
   }
-  public static SReferenceLink getRefLink(org.jetbrains.mps.openapi.model.SReference reference) {
+  public static SReferenceLink getRefLink(SReference reference) {
     if (reference == null) {
       return null;
     }
     return reference.getLink();
   }
-  public static String getResolveInfo(org.jetbrains.mps.openapi.model.SReference reference) {
+  /**
+   * Runtime for ref.resolveInfo operation, retrieves stored information, if any.
+   * Unlike SNodeOperations.getResolveInfo() or SNodeUtil.getResolveInfo(), this method doesn't construct any.
+   */
+  public static String getResolveInfo(SReference reference) {
     if (reference == null) {
       return null;
     }
-    return ((SReference) reference).getResolveInfo();
+    return ((jetbrains.mps.smodel.SReference) reference).getResolveInfo();
   }
   /**
    * Tells if a reference resorts to scopes to find out its target (unlike 'static' reference that keeps complete target node identity)
    * This is provisional code to get rid of DynamicReference class uses, as it exposes MPS implementation detail.
    * There's no counterpart in smodel language as I hope to get rid of this check eventually
    */
-  public static boolean isDynamic(org.jetbrains.mps.openapi.model.SReference reference) {
+  public static boolean isDynamic(SReference reference) {
     return reference instanceof DynamicReference;
   }
 
@@ -225,11 +227,7 @@ public final class SLinkOperations {
    * Null elements in the source collections are tolerated (and ignored)
    */
   public static Iterable<SNode> collect(Iterable<SNode> collection, final SReferenceLink l) {
-    return Sequence.fromIterable(collection).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return getTarget(it, l);
-      }
-    }).where(new NotNullWhereFilter<SNode>());
+    return Sequence.fromIterable(collection).select((it) -> getTarget(it, l)).where(new NotNullWhereFilter());
   }
 
   /**
@@ -238,11 +236,7 @@ public final class SLinkOperations {
    * Null elements in the source collections are tolerated (and ignored)
    */
   public static Iterable<SNode> collect(Iterable<SNode> collection, final SContainmentLink l) {
-    return Sequence.fromIterable(collection).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return getTarget(it, l);
-      }
-    }).where(new NotNullWhereFilter<SNode>());
+    return Sequence.fromIterable(collection).select((it) -> getTarget(it, l)).where(new NotNullWhereFilter());
   }
 
   /**
@@ -251,10 +245,6 @@ public final class SLinkOperations {
    * Null elements in the source collections are tolerated (and ignored)
    */
   public static Iterable<SNode> collectMany(Iterable<SNode> collection, final SContainmentLink l) {
-    return Sequence.fromIterable(collection).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return getChildren(it, l);
-      }
-    });
+    return Sequence.fromIterable(collection).translate((it) -> getChildren(it, l));
   }
 }

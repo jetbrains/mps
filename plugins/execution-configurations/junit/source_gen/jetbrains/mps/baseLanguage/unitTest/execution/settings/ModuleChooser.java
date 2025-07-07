@@ -55,14 +55,12 @@ public final class ModuleChooser extends TextFieldWithBrowseButton.NoPathComplet
       return Collections.<SModuleReference>emptyList();
     }
     final Collection<SModuleReference> moduleRefs = new LinkedHashSet<SModuleReference>();
-    myMpsProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SAbstractConcept concept = CONCEPTS.ITestCase$Fp;
-        Set<SNode> usages = getFindUsagesManager().findInstances(new ProjectScope(myMpsProject), Collections.singleton(concept), false, new EmptyProgressMonitor());
-        for (SNode node : usages) {
-          SModuleReference module = SNodeOperations.getModel(node).getModule().getModuleReference();
-          moduleRefs.add(module);
-        }
+    myMpsProject.getModelAccess().runReadAction(() -> {
+      SAbstractConcept concept = CONCEPTS.ITestCase$Fp;
+      Set<SNode> usages = getFindUsagesManager().findInstances(new ProjectScope(myMpsProject), Collections.singleton(concept), false, new EmptyProgressMonitor());
+      for (SNode node : usages) {
+        SModuleReference module = SNodeOperations.getModel(node).getModule().getModuleReference();
+        moduleRefs.add(module);
       }
     });
     return Collections.unmodifiableList(new ArrayList<SModuleReference>(moduleRefs));

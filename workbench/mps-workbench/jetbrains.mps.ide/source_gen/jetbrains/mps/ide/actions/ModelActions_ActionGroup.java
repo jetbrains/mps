@@ -7,22 +7,23 @@ import jetbrains.mps.plugins.actions.GeneratedActionGroup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1204991218714", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1204991218714", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class ModelActions_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.actions.ModelActions_ActionGroup";
   public static final String LABEL_ID_newActions = ID + "newActions";
   public static final String LABEL_ID_make = ID + "make";
   public static final String LABEL_ID_paste = ID + "paste";
-  public static final String LABEL_ID_modelUsages = ID + "modelUsages";
   public static final String LABEL_ID_check = ID + "check";
+  public static final String LABEL_ID_analyze = ID + "analyze";
   public static final String LABEL_ID_refactoring = ID + "refactoring";
   public static final String LABEL_ID_favorites = ID + "favorites";
-  public static final String LABEL_ID_run = ID + "run";
+  public static final String LABEL_ID_scripts = ID + "scripts";
   public static final String LABEL_ID_mpsvcs = ID + "mpsvcs";
   public static final String LABEL_ID_idealocalhistory = ID + "idealocalhistory";
   public static final String LABEL_ID_ideavcs = ID + "ideavcs";
-  public static final String LABEL_ID_scripts = ID + "scripts";
+  public static final String LABEL_ID_run = ID + "run";
   public static final String LABEL_ID_showHelp = ID + "showHelp";
+  public static final String LABEL_ID_modelUsages = ID + "modelUsages";
 
   public ModelActions_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("ModelActions", ID, plugin);
@@ -32,35 +33,37 @@ public class ModelActions_ActionGroup extends GeneratedActionGroup {
     ModelActions_ActionGroup.this.addSeparator();
     addNamedAnchor(LABEL_ID_make);
     ModelActions_ActionGroup.this.addSeparator();
-    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.CloneModel_Action");
     ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.CopyModelName_Action");
     addNamedAnchor(LABEL_ID_paste);
     ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.PasteNode_Action");
     ModelActions_ActionGroup.this.addSeparator();
-    addNamedAnchor(LABEL_ID_modelUsages);
-    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.platform.actions.AnalyzeDependencies_Action");
     addNamedAnchor(LABEL_ID_check);
+    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.OptimizeModelImports_Action");
+    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.FixModuleImports_Action");
+    addNamedAnchor(LABEL_ID_analyze);
     ModelActions_ActionGroup.this.addSeparator();
     addNamedAnchor(LABEL_ID_refactoring);
     ModelActions_ActionGroup.this.addSeparator();
     addNamedAnchor(LABEL_ID_favorites);
     ModelActions_ActionGroup.this.addSeparator();
-    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.OptimizeModelImports_Action");
-    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.FixModuleImports_Action");
-    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ConvertToFilePerRootPersistence_Action");
+    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.CloneModel_Action");
     ModelActions_ActionGroup.this.addParameterizedAction(new DeleteModels_Action(false), false);
     ModelActions_ActionGroup.this.addParameterizedAction(new DeleteModels_Action(true), true);
+    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ConvertToFilePerRootPersistence_Action");
+    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ConvertToDefaultPersistence_Action");
     ModelActions_ActionGroup.this.addSeparator();
-    addNamedAnchor(LABEL_ID_run);
+    addNamedAnchor(LABEL_ID_scripts);
     ModelActions_ActionGroup.this.addSeparator();
     ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.RevertMemoryChanges_Action");
     addNamedAnchor(LABEL_ID_mpsvcs);
     addNamedAnchor(LABEL_ID_idealocalhistory);
     addNamedAnchor(LABEL_ID_ideavcs);
     ModelActions_ActionGroup.this.addSeparator();
-    addNamedAnchor(LABEL_ID_scripts);
+    addNamedAnchor(LABEL_ID_run);
     ModelActions_ActionGroup.this.addSeparator();
     addNamedAnchor(LABEL_ID_showHelp);
+    ModelActions_ActionGroup.this.addSeparator();
+    addNamedAnchor(LABEL_ID_modelUsages);
     ModelActions_ActionGroup.this.addSeparator();
     ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ModelProperties_Action");
   }

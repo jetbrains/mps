@@ -19,7 +19,7 @@ import jetbrains.mps.vcs.annotate.AnnotatedCellMessage;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.vcs.annotate.AnnotationColumn;
 
-@GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/4521758580853870668", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
+@GeneratedClass(nodeId = "4521758580853870668", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public class GitShowCommitInLog_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -77,8 +77,11 @@ public class GitShowCommitInLog_Action extends BaseAction {
   private AnnotatedCellMessage getCellMessage(final AnActionEvent event) {
     return VcsActionsUtil.getMessageForCell(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT), event.getData(MPSEditorDataKeys.EDITOR_CELL));
   }
-  /*package*/ boolean isApplicable(final AnActionEvent event) {
+  private boolean isApplicable(final AnActionEvent event) {
     if (GitShowCommitInLog_Action.this.getCellMessage(event) == null) {
+      return false;
+    }
+    if (GitShowCommitInLog_Action.this.getCellMessage(event).getCommitsGraphNode().isLocalRevision()) {
       return false;
     }
     AnnotationColumn annotationColumn = VcsActionsUtil.getAnnotationColumn(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT));

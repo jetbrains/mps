@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package jetbrains.mps.nodeEditor.selection;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
 import jetbrains.mps.editor.runtime.impl.cellActions.CommentMultipleNodesAction;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.EditorContext;
@@ -32,7 +33,6 @@ import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.selection.SelectionStoreException;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -62,6 +62,7 @@ public class NodeRangeSelection extends AbstractMultipleSelection implements Mul
   private final SNode myFirstNode;
   private final SNode myLastNode;
   private final SNode myParentNode;
+  private final List<SNode> mySelectedNodes = new ArrayList<>();
   private final SContainmentLink myRole;
   private final String myModelReference;
   private final RangeSelectionFilter myFilter;
@@ -155,10 +156,12 @@ public class NodeRangeSelection extends AbstractMultipleSelection implements Mul
         }
       }
       if (withinSelection) {
+        mySelectedNodes.add(child);
         EditorCell editorCell = getEditorComponent().findNodeCell(child);
         if (editorCell == null) {
           throw new CellNotFoundException(child);
         }
+        editorCell = jetbrains.mps.nodeEditor.NodeEditorActions.findTopmostAttributeCell(editorCell, child);
         selectedCells.add(editorCell);
       }
       if (breakLoop) {
@@ -289,9 +292,10 @@ public class NodeRangeSelection extends AbstractMultipleSelection implements Mul
       throw new IllegalStateException("Cannot load classes from the module " + module);
     }
     try {
+      // FIXME see SelectionInfoImpl#createSelection for refactoring considerations
       return (Class<? extends RangeSelectionFilter>) ((ReloadableModule) module).getOwnClass(className);
     } catch (ClassNotFoundException e) {
-      LogManager.getLogger(NodeRangeSelection.class).debug("Class not found:" + className + " from " + module, e);
+      Logger.getLogger(NodeRangeSelection.class).debug("Class not found:" + className + " from " + module, e);
       return null;
     }
   }
@@ -309,6 +313,15 @@ public class NodeRangeSelection extends AbstractMultipleSelection implements Mul
       throw new SelectionRestoreException();
     }
     return sNode;
+  }
+
+  /**
+   * List of selected cells cannot be used to compute list of selected nodes (the default behavior) in case a node has attributes.
+   * In this case list of selected cells contains the cell of an attribute, but we want its parent node to be in list of selected nodes (not the attribute node).
+   */
+  @Override
+  public @NotNull List<SNode> getSelectedNodes() {
+    return mySelectedNodes;
   }
 
   private void performDeleteAction(final CellActionType type) {

@@ -4,9 +4,10 @@ package jetbrains.mps.lang.editor.menus.contextAssistant.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import javax.swing.SwingUtilities;
@@ -19,11 +20,11 @@ import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 
 @MPSLaunch
 public class ContextAssistant_CollapseAndShowSecondAssistant_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(ContextAssistant_CollapseAndShowSecondAssistant_Test.class, "${mps_home}", "r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ContextAssistant_CollapseAndShowSecondAssistant_Test.class).projectPath(null).modelRef("r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)").reopenProject(false).build());
 
   public ContextAssistant_CollapseAndShowSecondAssistant_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -41,17 +42,15 @@ public class ContextAssistant_CollapseAndShowSecondAssistant_Test extends BaseTr
     public void testMethodImpl() throws Exception {
       initEditorComponent("379023083996833851", "379023083996833853");
       invokeAction("jetbrains.mps.ide.editor.actions.Collapse_Action");
-      SwingUtilities.invokeAndWait(new Runnable() {
-        public void run() {
-          ContextAssistantManager contextAssistantManager = getEditorComponent().getEditorContext().getContextAssistantManager();
-          contextAssistantManager.updateImmediately();
-          Assert.assertNotNull(contextAssistantManager.getActiveAssistant());
-          List<TransformationMenuItem> activeItems = contextAssistantManager.getActiveMenuItems();
-          Assert.assertNotNull(activeItems);
-          Assert.assertTrue(activeItems.size() > 0);
-          EditorCell_ContextAssistantComponent contextAssistantCell = CellFinderUtil.findChildByClass(getEditorComponent().getRootCell(), EditorCell_ContextAssistantComponent.class, true);
-          Assert.assertTrue(contextAssistantCell.getComponent().isVisible());
-        }
+      SwingUtilities.invokeAndWait(() -> {
+        ContextAssistantManager contextAssistantManager = getEditorComponent().getEditorContext().getContextAssistantManager();
+        contextAssistantManager.updateImmediately();
+        Assert.assertNotNull(contextAssistantManager.getActiveAssistant());
+        List<TransformationMenuItem> activeItems = contextAssistantManager.getActiveMenuItems();
+        Assert.assertNotNull(activeItems);
+        Assert.assertTrue(activeItems.size() > 0);
+        EditorCell_ContextAssistantComponent contextAssistantCell = CellFinderUtil.findChildByClass(getEditorComponent().getRootCell(), EditorCell_ContextAssistantComponent.class, true);
+        Assert.assertTrue(contextAssistantCell.getComponent().isVisible());
       });
     }
   }

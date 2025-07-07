@@ -25,7 +25,6 @@ import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import java.util.List;
 import jetbrains.mps.generator.template.TemplateVarContext;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.ReductionRuleCondition;
 import java.util.HashMap;
@@ -116,11 +115,21 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object referenceMacro_GetReferent_1_0(final ReferenceMacroContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.forConcept$tZey);
   }
+  public static Object referenceMacro_GetReferent_1_1(final ReferenceMacroContext _context) {
+    return _context.getOutputNodeByMappingLabel("AspectDescriptorClass", null);
+  }
+  public static Object referenceMacro_GetReferent_1_2(final ReferenceMacroContext _context) {
+    return _context.getOutputNodeByMappingLabel("DeclaringModelField", null);
+  }
   public static Object referenceMacro_GetReferent_6_0(final ReferenceMacroContext _context) {
+    return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "map_FinderConstructor");
+  }
+  public static Object referenceMacro_GetReferent_6_1(final ReferenceMacroContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.forConcept$tZey);
   }
   public static Object referenceMacro_GetReferent_7_0(final ReferenceMacroContext _context) {
-    // TODO genContext.get output FindUsagesDescriptorCons for model model;
+    // TODO genContext.get output AspectDesctiptorConstructor for model model;
+    //     ONCE there's devkit for findUsages!
     return SModelOperations.getModelName(((SModel) _context.getVariable("model"))) + ".FindUsagesDescriptor";
   }
   public static boolean ifMacro_Condition_0_0(final IfMacroContext _context) {
@@ -258,11 +267,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.finders$fx_5);
   }
   public static Object varMacro_Value_6_0(final TemplateVarContext _context) {
-    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.FinderDeclaration$R8)).sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }, true).toListSequence();
+    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.FinderDeclaration$R8)).sort((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL), true).toList();
   }
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {
@@ -592,8 +597,11 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
     rtqMethods.put("8928180329700848723", new RTQ(0, "BaseConcept"));
-    rtqMethods.put("5697304327501162559", new RTQ(1, "BaseConcept"));
-    rtqMethods.put("4147950839246952263", new RTQ(2, "FindUsagesDescriptor"));
+    rtqMethods.put("3435289394585991959", new RTQ(1, "FindUsagesDescriptor"));
+    rtqMethods.put("3435289394586040449", new RTQ(2, "DECLARING_MODEL"));
+    rtqMethods.put("3435289394586050747", new RTQ(3, "FinderClass"));
+    rtqMethods.put("5697304327501162559", new RTQ(4, "BaseConcept"));
+    rtqMethods.put("4147950839246952263", new RTQ(5, "FindUsagesDescriptor"));
   }
   @NotNull
   @Override
@@ -613,8 +621,14 @@ public class QueriesGenerated extends QueryProviderBase {
         case 0:
           return QueriesGenerated.referenceMacro_GetReferent_1_0(ctx);
         case 1:
-          return QueriesGenerated.referenceMacro_GetReferent_6_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_1_1(ctx);
         case 2:
+          return QueriesGenerated.referenceMacro_GetReferent_1_2(ctx);
+        case 3:
+          return QueriesGenerated.referenceMacro_GetReferent_6_0(ctx);
+        case 4:
+          return QueriesGenerated.referenceMacro_GetReferent_6_1(ctx);
+        case 5:
           return QueriesGenerated.referenceMacro_GetReferent_7_0(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));

@@ -10,12 +10,11 @@ import com.intellij.openapi.application.ApplicationManager;
 import java.util.Objects;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.vcsUtil.VcsUtil;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.vcs.VcsBundle;
 import com.intellij.openapi.vcs.actions.ShortNameType;
 
-@GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/839470717526615907", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
+@GeneratedClass(nodeId = "839470717526615907", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 public class AnnotationOptions {
 
   private static final String HIGHLIGHT_CELLS_MODE_KEY = "annotations.highlight.cells.mode";
@@ -23,7 +22,7 @@ public class AnnotationOptions {
   private static final String HIGHLIGHT_COMMIT_CELLS_KEY = "annotations.highlight.commit.cells";
   private static final String HIGHLIGHT_NONE_CELLS_KEY = "annotations.highlight.none.cells";
   private static final String SHOW_TOOLTIP_KEY = "annotations.show.tooltip";
-  private static final boolean SHOW_TOOLTIP_DEFAULT = false;
+  private static final boolean SHOW_TOOLTIP_DEFAULT = true;
   private static final String HIGHLIGHT_CELLS_DEFAULT = HIGHLIGHT_NONE_CELLS_KEY;
 
 
@@ -122,27 +121,17 @@ public class AnnotationOptions {
   }
 
   private void repaintColumns() {
-    SetSequence.fromSet(myUpdateListeners).visitAll(new IVisitor<UpdateListener>() {
-      public void visit(UpdateListener it) {
-        it.repaintColumn();
-      }
-    });
+    SetSequence.fromSet(myUpdateListeners).visitAll((it) -> it.repaintColumn());
   }
 
   private void repaintEditors() {
-    SetSequence.fromSet(myUpdateListeners).visitAll(new IVisitor<UpdateListener>() {
-      public void visit(UpdateListener it) {
-        it.repaintEditor();
-      }
-    });
+    SetSequence.fromSet(myUpdateListeners).visitAll((it) -> it.repaintEditor());
   }
 
   private void repaintAll() {
-    SetSequence.fromSet(myUpdateListeners).visitAll(new IVisitor<UpdateListener>() {
-      public void visit(UpdateListener it) {
-        it.repaintEditor();
-        it.repaintColumn();
-      }
+    SetSequence.fromSet(myUpdateListeners).visitAll((it) -> {
+      it.repaintEditor();
+      it.repaintColumn();
     });
   }
 

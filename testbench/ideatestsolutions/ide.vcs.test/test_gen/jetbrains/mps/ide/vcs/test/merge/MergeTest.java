@@ -15,10 +15,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.editor.runtime.impl.cellActions.CommentUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
@@ -30,12 +30,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.vcs.diff.merge.MergeSession;
 import org.junit.Assert;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.vcs.diff.ModelChangeSet;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
 import jetbrains.mps.vcs.diff.ChangeSet;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -44,7 +42,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 /**
  * Tests merge algorithm
  */
-@GeneratedClass(node = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)/445606167100192267", model = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)")
+@GeneratedClass(nodeId = "445606167100192267", model = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)")
 public class MergeTest extends ChangesTestBase {
   private static boolean ourMergeDriverModeWas;
 
@@ -62,11 +60,7 @@ public class MergeTest extends ChangesTestBase {
   public void init() {
     super.init();
     // it's only test model we need read access for, then, we deal with a detached model and shall not care about model access any longer.
-    getProject().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        myBaseModel = MergeTemporaryModel.readonlyCloneOf(getTestModel());
-      }
-    });
+    getProject().getModelAccess().runReadAction(() -> myBaseModel = MergeTemporaryModel.readonlyCloneOf(getTestModel()));
     myMineModel = MergeTemporaryModel.writableCloneOf(myBaseModel);
     myTheirsModel = MergeTemporaryModel.writableCloneOf(myBaseModel);
   }
@@ -74,7 +68,6 @@ public class MergeTest extends ChangesTestBase {
   @BeforeClass
   public static void setUpClass() {
     MergeTest.ourMergeDriverModeWas = RuntimeFlags.isMergeDriverMode();
-    RuntimeFlags.setMergeDriverMode(true);
   }
 
   @AfterClass
@@ -84,259 +77,217 @@ public class MergeTest extends ChangesTestBase {
 
   @Test
   public void testOnlyMineChanges() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
-      public SModel createModel() {
-        SPropertyOperations.assign(getMineClassRoot(), PROPS.name$MnvL, "ChangedName");
-        return myMineModel;
-      }
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(() -> {
+      SPropertyOperations.assign(getMineClassRoot(), PROPS.name$MnvL, "ChangedName");
+      return myMineModel;
     });
   }
 
   @Test
   public void testOnlyTheirsChanges() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
-      public SModel createModel() {
-        SPropertyOperations.assign(getTheirsClassRoot(), PROPS.name$MnvL, "ChangedName");
-        return myTheirsModel;
-      }
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(() -> {
+      SPropertyOperations.assign(getTheirsClassRoot(), PROPS.name$MnvL, "ChangedName");
+      return myTheirsModel;
     });
   }
 
   @Test
   public void testSymmetricChanges_AddRoot() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
-      public SModel createModel() {
-        SNode newRoot = createClassConcept_u0wfvp_a0a0a0a0u();
-        SModelOperations.addRootNode(myTheirsModel, newRoot);
-        SModelOperations.addRootNode(myMineModel, CopyUtil.copyAndPreserveId(newRoot));
-        return myMineModel;
-      }
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(() -> {
+      SNode newRoot = createClassConcept_u0wfvp_a0a0a0a0u();
+      SModelOperations.addRootNode(myTheirsModel, newRoot);
+      SModelOperations.addRootNode(myMineModel, CopyUtil.copyAndPreserveId(newRoot));
+      return myMineModel;
     });
   }
 
   @Test
   public void testSymmetricChanges_DeleteRoot() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
-      public SModel createModel() {
-        SNodeOperations.deleteNode(getMineClassRoot());
-        SNodeOperations.deleteNode(getTheirsClassRoot());
-        return myMineModel;
-      }
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(() -> {
+      SNodeOperations.deleteNode(getMineClassRoot());
+      SNodeOperations.deleteNode(getTheirsClassRoot());
+      return myMineModel;
     });
   }
 
   @Test
   public void testSymmetricChanges_AddChild() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
-      public SModel createModel() {
-        SNode newChild = createInstanceMethodDeclaration_u0wfvp_a0a0a0a0y();
-        insertMemberPreservingId(getMineClassRoot(), newChild, -1);
-        insertMemberPreservingId(getTheirsClassRoot(), newChild, -1);
-        return myMineModel;
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(() -> {
+      SNode newChild = createInstanceMethodDeclaration_u0wfvp_a0a0a0a0y();
+      insertMemberPreservingId(getMineClassRoot(), newChild, -1);
+      insertMemberPreservingId(getTheirsClassRoot(), newChild, -1);
+      return myMineModel;
 
-      }
     });
   }
   @Test
   public void testSymmetricChanges_Comment() {
-    testMergeNumberOfConflictingChanges(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        CommentUtil.commentOut(ListSequence.fromList(SLinkOperations.getChildren(getMineClassRoot(), LINKS.member$L_2d)).first());
-        CommentUtil.commentOut(ListSequence.fromList(SLinkOperations.getChildren(getTheirsClassRoot(), LINKS.member$L_2d)).first());
-      }
+    testMergeNumberOfConflictingChanges(() -> {
+      CommentUtil.commentOut(ListSequence.fromList(SLinkOperations.getChildren(getMineClassRoot(), LINKS.member$L_2d)).first());
+      CommentUtil.commentOut(ListSequence.fromList(SLinkOperations.getChildren(getTheirsClassRoot(), LINKS.member$L_2d)).first());
     }, 2);
   }
   @Test
   public void testSymmetricChanges_AddComment() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
-      public SModel createModel() {
-        SNode commentedMethod = ChangesTestUtil.createCommentedMethod();
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(() -> {
+      SNode commentedMethod = ChangesTestUtil.createCommentedMethod();
 
-        insertCommentPreservingId(getMineClassRoot(), commentedMethod, -1);
-        insertCommentPreservingId(getTheirsClassRoot(), commentedMethod, -1);
-        return myMineModel;
-      }
+      insertCommentPreservingId(getMineClassRoot(), commentedMethod, -1);
+      insertCommentPreservingId(getTheirsClassRoot(), commentedMethod, -1);
+      return myMineModel;
     });
   }
 
   @Test
   public void testSymmetricChanges_AddChidlrenWithDifferentIds() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
-      public SModel createModel() {
-        ChangesTestUtil.addBlockStatementToMethod2(getMineClassRoot(), null, false);
-        ChangesTestUtil.addBlockStatementToMethod2(getTheirsClassRoot(), null, false);
-        return myMineModel;
-      }
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(() -> {
+      ChangesTestUtil.addBlockStatementToMethod2(getMineClassRoot(), null, false);
+      ChangesTestUtil.addBlockStatementToMethod2(getTheirsClassRoot(), null, false);
+      return myMineModel;
     });
   }
 
   @Test
   public void testConflictingChanges_AddChidlrenWithDifferentIds() {
-    testMergeNumberOfConflictingChanges(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(new _FunctionTypes._return_P0_E0<SModel>() {
-      public SModel invoke() {
-        ChangesTestUtil.addBlockStatementToMethod2(getMineClassRoot(), null, false);
-        ChangesTestUtil.addBlockStatementToMethod2(getTheirsClassRoot(), null, true);
-        return myMineModel;
-      }
-    }), 2);
+    testMergeNumberOfConflictingChanges(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(((_FunctionTypes._return_P0_E0<SModel>) () -> {
+      ChangesTestUtil.addBlockStatementToMethod2(getMineClassRoot(), null, false);
+      ChangesTestUtil.addBlockStatementToMethod2(getTheirsClassRoot(), null, true);
+      return myMineModel;
+    })), 2);
   }
 
 
   @Test
   public void testSymmetricChanges_Uncomment() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
-      public SModel createModel() {
-        ChangesTestUtil.uncommentFirstCommentedMethod(getMineClassRoot());
-        ChangesTestUtil.uncommentFirstCommentedMethod(getTheirsClassRoot());
-        return myMineModel;
-      }
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(() -> {
+      ChangesTestUtil.uncommentFirstCommentedMethod(getMineClassRoot());
+      ChangesTestUtil.uncommentFirstCommentedMethod(getTheirsClassRoot());
+      return myMineModel;
     });
   }
 
   @Test
   public void testSymmetricChanges_RemoveChildAttribute() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
-      public SModel createModel() {
-        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.member$L_2d).list(getMineClassRoot())).first()));
-        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.member$L_2d).list(getTheirsClassRoot())).first()));
-        return myMineModel;
-      }
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(() -> {
+      SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.member$L_2d).list(getMineClassRoot())).first()));
+      SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.member$L_2d).list(getTheirsClassRoot())).first()));
+      return myMineModel;
     });
   }
 
 
   @Test
   public void testSymmetricChanges_Property() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
-      public SModel createModel() {
-        SPropertyOperations.assign(getMineClassRoot(), PROPS.name$MnvL, "ChangedName");
-        SPropertyOperations.assign(getTheirsClassRoot(), PROPS.name$MnvL, "ChangedName");
-        return myMineModel;
-      }
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(() -> {
+      SPropertyOperations.assign(getMineClassRoot(), PROPS.name$MnvL, "ChangedName");
+      SPropertyOperations.assign(getTheirsClassRoot(), PROPS.name$MnvL, "ChangedName");
+      return myMineModel;
     });
   }
 
   @Test
   public void testSymmetricChanges_Link() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
-      public SModel createModel() {
-        SNodeReference method1Decl = new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "8885850892994216610");
-        SNodeId method1NodeId = method1Decl.getNodeId();
-        SLinkOperations.setPointer(SNodeOperations.cast(SLinkOperations.getTarget(((SNode) myMineModel.getNode(method1NodeId)), LINKS.returnType$5xoi), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"));
-        SLinkOperations.setPointer(SNodeOperations.cast(SLinkOperations.getTarget(((SNode) myTheirsModel.getNode(method1NodeId)), LINKS.returnType$5xoi), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"));
-        return myMineModel;
-      }
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(() -> {
+      SNodeReference method1Decl = new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "8885850892994216610");
+      SNodeId method1NodeId = method1Decl.getNodeId();
+      SLinkOperations.setPointer(SNodeOperations.cast(SLinkOperations.getTarget(((SNode) myMineModel.getNode(method1NodeId)), LINKS.returnType$5xoi), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"));
+      SLinkOperations.setPointer(SNodeOperations.cast(SLinkOperations.getTarget(((SNode) myTheirsModel.getNode(method1NodeId)), LINKS.returnType$5xoi), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"));
+      return myMineModel;
     });
   }
 
 
   @Test
   public void testAddChildAndAddChildAttributeOnDifferentPositionsDontConflict() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelChanger() {
-      public void changeModel(SModel expectedModel) {
-        SNode placeholder = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember"));
-        SNode commentedMethod = ChangesTestUtil.createCommentedMethod();
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel((SModel expectedModel) -> {
+      SNode placeholder = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember"));
+      SNode commentedMethod = ChangesTestUtil.createCommentedMethod();
 
-        insertMemberPreservingId(getMineClassRoot(), placeholder, 1);
-        insertCommentPreservingId(getTheirsClassRoot(), commentedMethod, 0);
+      insertMemberPreservingId(getMineClassRoot(), placeholder, 1);
+      insertCommentPreservingId(getTheirsClassRoot(), commentedMethod, 0);
 
 
-        insertMemberPreservingId(getClassRoot(expectedModel), placeholder, 1);
-        insertCommentPreservingId(getClassRoot(expectedModel), commentedMethod, 0);
-      }
+      insertMemberPreservingId(getClassRoot(expectedModel), placeholder, 1);
+      insertCommentPreservingId(getClassRoot(expectedModel), commentedMethod, 0);
     });
   }
   @Test
   public void testAddTwoChildAttributeOnDifferentPositionsDontConflict() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelChanger() {
-      public void changeModel(SModel expectedModel) {
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel((SModel expectedModel) -> {
 
-        SNode mineCommentedMethod = ChangesTestUtil.createCommentedMethod();
-        SNode theirsCommentedMethod = ChangesTestUtil.createCommentedMethod();
+      SNode mineCommentedMethod = ChangesTestUtil.createCommentedMethod();
+      SNode theirsCommentedMethod = ChangesTestUtil.createCommentedMethod();
 
-        insertCommentPreservingId(getMineClassRoot(), mineCommentedMethod, -1);
-        insertCommentPreservingId(getTheirsClassRoot(), theirsCommentedMethod, 0);
+      insertCommentPreservingId(getMineClassRoot(), mineCommentedMethod, -1);
+      insertCommentPreservingId(getTheirsClassRoot(), theirsCommentedMethod, 0);
 
-        insertCommentPreservingId(getClassRoot(expectedModel), mineCommentedMethod, -1);
-        insertCommentPreservingId(getClassRoot(expectedModel), theirsCommentedMethod, 0);
-      }
+      insertCommentPreservingId(getClassRoot(expectedModel), mineCommentedMethod, -1);
+      insertCommentPreservingId(getClassRoot(expectedModel), theirsCommentedMethod, 0);
     });
   }
 
   @Test
   public void testAddChildAttributeAndNodeAttribute() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelChanger() {
-      public void changeModel(SModel expectedModel) {
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel((SModel expectedModel) -> {
 
-        SNode reviewMigration = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, "jetbrains.mps.lang.core.structure.ReviewMigration"));
-        SNode commentedMethod = ChangesTestUtil.createCommentedMethod();
+      SNode reviewMigration = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, "jetbrains.mps.lang.core.structure.ReviewMigration"));
+      SNode commentedMethod = ChangesTestUtil.createCommentedMethod();
 
-        new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u).set(getMineClassRoot(), reviewMigration);
-        insertCommentPreservingId(getTheirsClassRoot(), commentedMethod, 0);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u).set(getMineClassRoot(), reviewMigration);
+      insertCommentPreservingId(getTheirsClassRoot(), commentedMethod, 0);
 
-        new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).set(getClassRoot(expectedModel), (SNode) CopyUtil.copyAndPreserveId(reviewMigration));
-        insertCommentPreservingId(getClassRoot(expectedModel), commentedMethod, 0);
-      }
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).set(getClassRoot(expectedModel), (SNode) CopyUtil.copyAndPreserveId(reviewMigration));
+      insertCommentPreservingId(getClassRoot(expectedModel), commentedMethod, 0);
     });
   }
   @Test
   public void testRemoveChildAndRemoveChildAttribute() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelChanger() {
-      public void changeModel(SModel expectedModel) {
-        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(SLinkOperations.getChildren(getMineClassRoot(), LINKS.member$L_2d)).first()));
-        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.member$L_2d).list(getTheirsClassRoot())).first()));
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel((SModel expectedModel) -> {
+      SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(SLinkOperations.getChildren(getMineClassRoot(), LINKS.member$L_2d)).first()));
+      SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.member$L_2d).list(getTheirsClassRoot())).first()));
 
 
-        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.member$L_2d).list(getClassRoot(expectedModel))).first()));
-        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(SLinkOperations.getChildren(getClassRoot(expectedModel), LINKS.member$L_2d)).first()));
-      }
+      SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.member$L_2d).list(getClassRoot(expectedModel))).first()));
+      SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(SLinkOperations.getChildren(getClassRoot(expectedModel), LINKS.member$L_2d)).first()));
     });
   }
 
   @Test
   public void testAddChildAndChildAttributeAtSamePositionConflict() {
-    testMergeNumberOfConflictingChanges(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        ListSequence.fromList(SLinkOperations.getChildren(getMineClassRoot(), LINKS.member$L_2d)).insertElement(0, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember")));
-        ChangesTestUtil.addCommentedMethod(getTheirsClassRoot(), null);
-      }
+    testMergeNumberOfConflictingChanges(() -> {
+      ListSequence.fromList(SLinkOperations.getChildren(getMineClassRoot(), LINKS.member$L_2d)).insertElement(0, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember")));
+      ChangesTestUtil.addCommentedMethod(getTheirsClassRoot(), null);
     }, 2);
   }
   @Test
   public void testAddTwoDifferentChildAttributeAtSamePositionConflict() {
-    testMergeNumberOfConflictingChanges(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        ChangesTestUtil.addCommentedMethod(getMineClassRoot(), null);
-        ChangesTestUtil.addCommentedMethod(getTheirsClassRoot(), null);
-      }
+    testMergeNumberOfConflictingChanges(() -> {
+      ChangesTestUtil.addCommentedMethod(getMineClassRoot(), null);
+      ChangesTestUtil.addCommentedMethod(getTheirsClassRoot(), null);
     }, 2);
   }
 
 
   @Test
   public void testAddChildAndCommentChildDontConflict() {
-    testMergeNoConflictingChanges(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
+    testMergeNoConflictingChanges(() -> {
 
-        ListSequence.fromList(SLinkOperations.getChildren(getMineClassRoot(), LINKS.member$L_2d)).addElement(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember")));
-        CommentUtil.commentOut(ListSequence.fromList(SLinkOperations.getChildren(getTheirsClassRoot(), LINKS.member$L_2d)).first());
+      ListSequence.fromList(SLinkOperations.getChildren(getMineClassRoot(), LINKS.member$L_2d)).addElement(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember")));
+      CommentUtil.commentOut(ListSequence.fromList(SLinkOperations.getChildren(getTheirsClassRoot(), LINKS.member$L_2d)).first());
 
-      }
     });
   }
   @Test
   public void testAddChildAndUncommentChildDontConflict() {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelChanger() {
-      public void changeModel(SModel expectedModel) {
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel((SModel expectedModel) -> {
 
-        SNode placeholderMember = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember"));
+      SNode placeholderMember = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember"));
 
-        insertMemberPreservingId(getMineClassRoot(), placeholderMember, 0);
-        ChangesTestUtil.uncommentFirstCommentedMethod(getTheirsClassRoot());
+      insertMemberPreservingId(getMineClassRoot(), placeholderMember, 0);
+      ChangesTestUtil.uncommentFirstCommentedMethod(getTheirsClassRoot());
 
-        insertMemberPreservingId(getClassRoot(expectedModel), placeholderMember, 0);
-        ChangesTestUtil.uncommentFirstCommentedMethod(getClassRoot(expectedModel));
-      }
+      insertMemberPreservingId(getClassRoot(expectedModel), placeholderMember, 0);
+      ChangesTestUtil.uncommentFirstCommentedMethod(getClassRoot(expectedModel));
     });
   }
 
@@ -384,20 +335,18 @@ public class MergeTest extends ChangesTestBase {
     change.invoke();
     final MergeSession session = MergeSession.createMergeSession(myBaseModel, myMineModel, myTheirsModel);
 
-    Assert.assertSame(Sequence.fromIterable(session.getAllChanges()).where(new IWhereFilter<ModelChange>() {
-      public boolean accept(ModelChange change) {
+    Assert.assertSame(Sequence.fromIterable(session.getAllChanges()).where(new _FunctionTypes._return_P1_E0<Boolean, ModelChange>() {
+      public Boolean invoke(ModelChange change) {
         return Sequence.fromIterable(session.getConflictedWith(change)).isNotEmpty();
       }
     }).count(), numberOfConflictingChanges);
   }
 
   private void testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(final ModelChanger changer) {
-    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
-      public SModel createModel() {
-        SModel expectedModel = MergeTemporaryModel.writableCloneOf(myBaseModel);
-        changer.changeModel(expectedModel);
-        return expectedModel;
-      }
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(() -> {
+      SModel expectedModel = MergeTemporaryModel.writableCloneOf(myBaseModel);
+      changer.changeModel(expectedModel);
+      return expectedModel;
     });
   }
   private void testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(ModelCreator creator) {
@@ -405,13 +354,9 @@ public class MergeTest extends ChangesTestBase {
 
     final MergeSession session = MergeSession.createMergeSession(myBaseModel, myMineModel, myTheirsModel);
 
-    Assert.assertTrue(Sequence.fromIterable(session.getAllChanges()).all(new IWhereFilter<ModelChange>() {
-      public boolean accept(ModelChange c) {
-        return Sequence.fromIterable(session.getConflictedWith(c)).isEmpty();
-      }
-    }));
+    Assert.assertTrue(Sequence.fromIterable(session.getAllChanges()).all((c) -> Sequence.fromIterable(session.getConflictedWith(c)).isEmpty()));
 
-    session.applyChanges(Sequence.fromIterable(session.getAllChanges()).toListSequence());
+    session.applyChanges(Sequence.fromIterable(session.getAllChanges()).toList());
     ModelChangeSet changes = ChangeSetBuilder.buildChangeSet(expectedModel, session.getResultModel());
 
     Assert.assertTrue(dumpChangeSet(changes, session), ListSequence.fromList(changes.getModelChanges()).isEmpty());
@@ -435,17 +380,9 @@ public class MergeTest extends ChangesTestBase {
 
   private static String dumpChangeSet(ChangeSet changeSet, MergeSession session) {
     StringBuffer buf = new StringBuffer();
-    for (ModelChange change : ListSequence.fromList(changeSet.getModelChanges()).sort(new ISelector<ModelChange, String>() {
-      public String select(ModelChange c) {
-        return c.toString();
-      }
-    }, true)) {
+    for (ModelChange change : ListSequence.fromList(changeSet.getModelChanges()).sort((c) -> c.toString(), true)) {
       buf.append(change).append("\n");
-      for (ModelChange conflicting : Sequence.fromIterable(session.getConflictedWith(change)).sort(new ISelector<ModelChange, String>() {
-        public String select(ModelChange c) {
-          return c.toString();
-        }
-      }, true)) {
+      for (ModelChange conflicting : Sequence.fromIterable(session.getConflictedWith(change)).sort((c) -> c.toString(), true)) {
         buf.append("    ").append(conflicting).append("\n");
       }
     }

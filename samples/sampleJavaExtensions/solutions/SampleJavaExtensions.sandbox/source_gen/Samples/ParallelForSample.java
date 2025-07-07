@@ -34,21 +34,18 @@ public class ParallelForSample {
       for (final int a : numbers) {
 
         final int localA = a;
-
-        final Runnable runnable = new Runnable() {
-          public void run() {
-            try {
-              log("Starting calculation for number " + localA + " in thread " + Thread.currentThread());
-              Thread.sleep(localA * 1000);
-              // External (compiled) method calls can be annotated as thread-safe to indicate that they are safe to call
-              log("Finished calculation for number " + localA + " in thread " + Thread.currentThread());
-            } catch (RuntimeException e) {
-              ListSequence.fromList(exceptions_i0d).addElement(e);
-            } catch (InterruptedException e) {
-              ListSequence.fromList(exceptions_i0d).addElement(e);
-            } finally {
-              latch_i0d.countDown();
-            }
+        final Runnable runnable = () -> {
+          try {
+            log("Starting calculation for number " + localA + " in thread " + Thread.currentThread());
+            Thread.sleep(localA * 1000);
+            // External (compiled) method calls can be annotated as thread-safe to indicate that they are safe to call
+            log("Finished calculation for number " + localA + " in thread " + Thread.currentThread());
+          } catch (RuntimeException e) {
+            ListSequence.fromList(exceptions_i0d).addElement(e);
+          } catch (InterruptedException e) {
+            ListSequence.fromList(exceptions_i0d).addElement(e);
+          } finally {
+            latch_i0d.countDown();
           }
         };
 
@@ -85,34 +82,31 @@ public class ParallelForSample {
       for (final int b : numbers) {
 
         final int localA = b;
+        final Runnable runnable = () -> {
+          try {
+            log("Touching " + doNotMessupWith);
 
-        final Runnable runnable = new Runnable() {
-          public void run() {
-            try {
-              log("Touching " + doNotMessupWith);
+            int messupWithMeSinceImlocal = 1;
+            messupWithMeSinceImlocal += 10;
+            log("Local variables can be used without restrictions " + messupWithMeSinceImlocal);
 
-              int messupWithMeSinceImlocal = 1;
-              messupWithMeSinceImlocal += 10;
-              log("Local variables can be used without restrictions " + messupWithMeSinceImlocal);
+            // Warning since we are accessing a non-local non-thread-safe object
+            ListSequence.fromList(names).removeElement("Joe");
 
-              // Warning since we are accessing a non-local non-thread-safe object
-              ListSequence.fromList(names).removeElement("Joe");
+            List<String> localNames = ListSequence.fromList(new ArrayList<String>());
+            // Local references can be called without restrictions
+            ListSequence.fromList(localNames).addElement("Susan");
 
-              List<String> localNames = ListSequence.fromList(new ArrayList<String>());
-              // Local references can be called without restrictions
-              ListSequence.fromList(localNames).addElement("Susan");
+            // Thread-safe objects are safe to use as well
+            log("Counter: " + counter.incrementAndGet());
 
-              // Thread-safe objects are safe to use as well
-              log("Counter: " + counter.incrementAndGet());
-
-              Thread.sleep(localA);
-            } catch (RuntimeException e) {
-              ListSequence.fromList(exceptions_w0d).addElement(e);
-            } catch (InterruptedException e) {
-              ListSequence.fromList(exceptions_w0d).addElement(e);
-            } finally {
-              latch_w0d.countDown();
-            }
+            Thread.sleep(localA);
+          } catch (RuntimeException e) {
+            ListSequence.fromList(exceptions_w0d).addElement(e);
+          } catch (InterruptedException e) {
+            ListSequence.fromList(exceptions_w0d).addElement(e);
+          } finally {
+            latch_w0d.countDown();
           }
         };
 
@@ -139,19 +133,16 @@ public class ParallelForSample {
       for (final String c : names) {
 
         final String localA = c;
-
-        final Runnable runnable = new Runnable() {
-          public void run() {
-            try {
-              log("Name: " + localA);
-              if (localA == "Joe") {
-                throw new RuntimeException("test");
-              }
-            } catch (RuntimeException e) {
-              ListSequence.fromList(exceptions_ab0d).addElement(e);
-            } finally {
-              latch_ab0d.countDown();
+        final Runnable runnable = () -> {
+          try {
+            log("Name: " + localA);
+            if (localA == "Joe") {
+              throw new RuntimeException("test");
             }
+          } catch (RuntimeException e) {
+            ListSequence.fromList(exceptions_ab0d).addElement(e);
+          } finally {
+            latch_ab0d.countDown();
           }
         };
 

@@ -4,25 +4,24 @@ package jetbrains.mps.lang.editor.style.test;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.junit.Assert;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
-import org.jetbrains.mps.util.Condition;
-import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import java.util.Objects;
 
 @MPSLaunch
 public class FontFamilyLiteralPreviewTest_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(FontFamilyLiteralPreviewTest_Test.class, "${mps_home}", "r:e796bc79-24a8-4433-8903-c71c59526bf7(jetbrains.mps.lang.editor.style.test)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(FontFamilyLiteralPreviewTest_Test.class).projectPath(null).modelRef("r:e796bc79-24a8-4433-8903-c71c59526bf7(jetbrains.mps.lang.editor.style.test)").reopenProject(false).build());
 
   public FontFamilyLiteralPreviewTest_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -39,11 +38,7 @@ public class FontFamilyLiteralPreviewTest_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("491383275436120141", "");
-      Assert.assertNotNull(CellFinderUtil.findChildByCondition(getEditorComponent().getRootCell(), new Condition<EditorCell>() {
-        public boolean met(EditorCell it) {
-          return EditorCell_Label.class.isInstance(it) && Objects.equals(((EditorCell_Label) it).getFont().getFamily(), "Serif");
-        }
-      }, true, true));
+      Assert.assertNotNull(CellFinderUtil.findChildByCondition(getEditorComponent().getRootCell(), (it) -> EditorCell_Label.class.isInstance(it) && Objects.equals(((EditorCell_Label) it).getFont().getFamily(), "Serif"), true, true));
     }
   }
 }

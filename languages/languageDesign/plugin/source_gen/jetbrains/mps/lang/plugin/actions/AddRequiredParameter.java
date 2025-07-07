@@ -12,7 +12,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class AddRequiredParameter {
   public static class NodeFactory_315309404903965693 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SLinkOperations.addNewChild(newNode, LINKS.condition$wuLH, CONCEPTS.RequiredCondition$Nh);
     }
   }

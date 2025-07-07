@@ -14,7 +14,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class MessageFactories {
   public static class NodeFactory_1005490780641997347 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode original = sampleNode;
         if (SNodeOperations.isInstanceOf(original, CONCEPTS.AbstractReportStatement$8d)) {
@@ -27,7 +27,7 @@ public class MessageFactories {
     }
   }
   public static class NodeFactory_1005490780642123875 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode original = sampleNode;
         if (SNodeOperations.isInstanceOf(original, CONCEPTS.ReportErrorStatement$v1)) {
@@ -49,7 +49,7 @@ public class MessageFactories {
     }
   }
   public static class NodeFactory_1005490780642148227 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode original = sampleNode;
         if (SNodeOperations.isInstanceOf(original, CONCEPTS.ReportErrorStatement$v1)) {
@@ -71,7 +71,7 @@ public class MessageFactories {
     }
   }
   public static class NodeFactory_1005490780642154321 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode original = sampleNode;
         if (SNodeOperations.isInstanceOf(original, CONCEPTS.ReportErrorStatement$v1)) {

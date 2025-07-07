@@ -10,15 +10,14 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import com.intellij.openapi.actionSystem.Presentation;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.vcs.platform.actions.VcsActionsUtil;
-import com.intellij.openapi.actionSystem.CommonDataKeys;
 import java.util.List;
 import org.jetbrains.mps.openapi.module.SModule;
-import com.intellij.openapi.project.Project;
+import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.vfs.VirtualFile;
 
-@GeneratedClass(node = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/7545884443035924713", model = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)")
+@GeneratedClass(nodeId = "7545884443035924713", model = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)")
 public class IgnoreModuleInVcs_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -26,6 +25,7 @@ public class IgnoreModuleInVcs_Action extends BaseAction {
     super("Ignore Module...", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -35,7 +35,7 @@ public class IgnoreModuleInVcs_Action extends BaseAction {
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
     Presentation presentation = event.getPresentation();
     presentation.setText(String.format("Ignore %s...", (event.getData(MPSCommonDataKeys.MODULES).size() == 1 ? "Module" : "Modules")));
-    boolean enabled = ListSequence.fromList(VcsActionsUtil.getUnversionedFilesForModules(event.getData(CommonDataKeys.PROJECT), event.getData(MPSCommonDataKeys.MODULES))).isNotEmpty();
+    boolean enabled = Sequence.fromIterable(VcsActionsUtil.getUnversionedFilesForModules(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.MODULES))).isNotEmpty();
     presentation.setEnabled(enabled);
     presentation.setVisible(enabled);
   }
@@ -54,7 +54,7 @@ public class IgnoreModuleInVcs_Action extends BaseAction {
       }
     }
     {
-      Project p = event.getData(CommonDataKeys.PROJECT);
+      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
       if (p == null) {
         return false;
       }
@@ -64,6 +64,7 @@ public class IgnoreModuleInVcs_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     // TODO: investigate and remove
-    List<VirtualFile> unversionedFiles = VcsActionsUtil.getUnversionedFilesForModules(event.getData(CommonDataKeys.PROJECT), event.getData(MPSCommonDataKeys.MODULES));
+    List<VirtualFile> unversionedFiles = Sequence.fromIterable(VcsActionsUtil.getUnversionedFilesForModules(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.MODULES))).toList();
+    // IgnoreUnversionedDialog.ignoreSelectedFiles(project, unversionedFiles);
   }
 }

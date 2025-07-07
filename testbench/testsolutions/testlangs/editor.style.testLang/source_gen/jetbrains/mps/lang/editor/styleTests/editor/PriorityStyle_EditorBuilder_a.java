@@ -39,7 +39,7 @@ import jetbrains.mps.lang.editor.styleTests.editor.TestStylesheet_StyleSheet.pri
       setCellContext(bigCell);
     }
     Style style = new StyleImpl();
-    new priorityStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new priorityStyleStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     return editorCell;
   }

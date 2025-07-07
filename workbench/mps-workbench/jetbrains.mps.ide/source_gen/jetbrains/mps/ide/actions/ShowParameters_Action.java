@@ -41,7 +41,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/7889360268649608396", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "7889360268649608396", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class ShowParameters_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -99,26 +99,24 @@ public class ShowParameters_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("editing.showParameters");
-    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        // Try to show tooltip over caret or in case of active selection - over the middle of the cell
-        int caretRelativePosition = ((EditorCell) MapSequence.fromMap(_params).get("cell")).getCaretX() - ((EditorCell) MapSequence.fromMap(_params).get("cell")).getX();
-        boolean isCaretInsideCell = caretRelativePosition >= 0 && caretRelativePosition <= ((EditorCell) MapSequence.fromMap(_params).get("cell")).getWidth();
-        Point point = new Point((isCaretInsideCell ? ((EditorCell) MapSequence.fromMap(_params).get("cell")).getCaretX() : ((EditorCell) MapSequence.fromMap(_params).get("cell")).getX() + ((EditorCell) MapSequence.fromMap(_params).get("cell")).getWidth() / 2), ((EditorCell) MapSequence.fromMap(_params).get("cell")).getY());
-        EditorCell currentCell = ((EditorCell) MapSequence.fromMap(_params).get("cell"));
-        while (currentCell != null) {
-          ParametersInformation parametersInformation = currentCell.getStyle().get(StyleAttributes.PARAMETERS_INFORMATION);
-          if (parametersInformation != null) {
-            JComponent component = ShowParameters_Action.this.createComponent(parametersInformation, currentCell.getSNode(), _params);
-            IdeTooltipManager.getInstance().show(new IdeTooltip(((EditorComponent) MapSequence.fromMap(_params).get("editor")), point, component), true);
-            return;
-          }
-          currentCell = currentCell.getParent();
+    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(() -> {
+      // Try to show tooltip over caret or in case of active selection - over the middle of the cell
+      int caretRelativePosition = ((EditorCell) MapSequence.fromMap(_params).get("cell")).getCaretX() - ((EditorCell) MapSequence.fromMap(_params).get("cell")).getX();
+      boolean isCaretInsideCell = caretRelativePosition >= 0 && caretRelativePosition <= ((EditorCell) MapSequence.fromMap(_params).get("cell")).getWidth();
+      Point point = new Point((isCaretInsideCell ? ((EditorCell) MapSequence.fromMap(_params).get("cell")).getCaretX() : ((EditorCell) MapSequence.fromMap(_params).get("cell")).getX() + ((EditorCell) MapSequence.fromMap(_params).get("cell")).getWidth() / 2), ((EditorCell) MapSequence.fromMap(_params).get("cell")).getY());
+      EditorCell currentCell = ((EditorCell) MapSequence.fromMap(_params).get("cell"));
+      while (currentCell != null) {
+        ParametersInformation parametersInformation = currentCell.getStyle().get(StyleAttributes.PARAMETERS_INFORMATION);
+        if (parametersInformation != null) {
+          JComponent component = ShowParameters_Action.this.createComponent(parametersInformation, currentCell.getSNode(), _params);
+          IdeTooltipManager.getInstance().show(new IdeTooltip(((EditorComponent) MapSequence.fromMap(_params).get("editor")), point, component), true);
+          return;
         }
+        currentCell = currentCell.getParent();
       }
     });
   }
-  /*package*/ SNode getCellNode(final Map<String, Object> _params) {
+  private SNode getCellNode(final Map<String, Object> _params) {
     return ((EditorCell) MapSequence.fromMap(_params).get("cell")).getSNode();
   }
   private <T> JComponent createComponent(ParametersInformation<T> parametersInformation, SNode node, final Map<String, Object> _params) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,11 +19,11 @@ import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCellContext;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
-import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation.FromNode;
@@ -31,8 +31,6 @@ import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -51,7 +49,7 @@ import java.util.Set;
 import java.util.function.Function;
 
 class CompletionCustomizationManager {
-  private static final Logger LOG = LogManager.getLogger(CompletionCustomizationManager.class);
+  private static final Logger LOG = Logger.getLogger(CompletionCustomizationManager.class);
   public static final EditorMenuItemStyleImpl EMPTY_STYLE = new EditorMenuItemStyleImpl();
 
   private Map<String, Map<SubstituteAction, EditorMenuItemStyleImpl>> myPatternAndActionToCustomization = new HashMap<>();
@@ -76,12 +74,8 @@ class CompletionCustomizationManager {
     myCustomizers = new HashSet<>();
     if (myShouldApplyCustomStyle) {
       initContext(contextCell);
-      LanguageRegistry.getInstance(contextCell.getEditorComponent().getEditorContext().getRepository()).withAvailableLanguages(languageRuntime -> {
-        EditorAspectDescriptor aspect = languageRuntime.getAspect(EditorAspectDescriptor.class);
-        if (aspect != null) {
-          myCustomizers.addAll(aspect.getEditorMenuItemCustomizers());
-        }
-      });
+      final LanguageRegistry lr = LanguageRegistry.getInstance(contextCell.getEditorComponent().getEditorContext().getRepository());
+      CompletionItemCustomizationUtil.apply(lr, myCustomizers::add);
     }
   }
 

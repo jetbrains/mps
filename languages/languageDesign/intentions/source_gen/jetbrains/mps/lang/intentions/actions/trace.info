@@ -13,7 +13,7 @@
   </root>
   <root nodeRef="r:503e670b-4b3c-40d2-84e3-fcdece65438f(jetbrains.mps.lang.intentions.actions)/4958616572666533618">
     <file name="ParameterFactory.java">
-      <node id="7388353295030918559" at="19,91,20,72" concept="0" />
+      <node id="7388353295030918559" at="19,102,20,72" concept="0" />
       <node id="4958616572666368311" at="20,72,21,149" concept="0" />
       <node id="7388353295030984648" at="21,149,22,139" concept="0" />
       <node id="7388353295031036494" at="22,139,23,103" concept="0" />
@@ -46,16 +46,17 @@
       <node id="4958616572666533618" at="63,0,64,0" concept="4" trace="type$a1UY" />
       <node id="4958616572666533618" at="67,0,68,0" concept="4" trace="ForConceptMethodParameter$q0" />
       <node id="4958616572666533618" at="68,0,69,0" concept="4" trace="SNodeType$hR" />
-      <node id="4958616572666533619" at="19,0,25,0" concept="1" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <node id="4958616572666533619" at="19,0,25,0" concept="1" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;ILorg/jetbrains/mps/openapi/model/SModel;)V" />
       <node id="4958616572666407200" at="25,0,31,0" concept="5" trace="createForConceptMethodParameter_3abd0g_a0a1a0a#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="6490020717318784856" at="43,0,54,0" concept="5" trace="_quotation_createNode_3abd0g_a0d0a0#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="7388353295031024538" at="31,0,43,0" concept="5" trace="_quotation_createNode_3abd0g_a0a2a0a#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <scope id="4958616572666533619" at="19,91,23,103" />
+      <scope id="4958616572666533619" at="19,102,23,103" />
       <scope id="4958616572666407200" at="25,75,29,28">
         <var name="n0" id="4958616572666407200" />
       </scope>
       <scope id="4958616572666533619" at="19,0,25,0">
         <var name="enclosingNode" id="4958616572666533619" />
+        <var name="index" id="4958616572666533619" />
         <var name="model" id="4958616572666533619" />
         <var name="newNode" id="4958616572666533619" />
         <var name="sampleNode" id="4958616572666533619" />

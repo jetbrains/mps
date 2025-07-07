@@ -28,9 +28,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.lang.smodel.behavior.ILinkAccess__BehaviorDescriptor;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.generator.template.TemplateVarContext;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.ReductionRuleCondition;
 import java.util.HashMap;
@@ -298,15 +296,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return ((Iterable<SNode>) _context.getVariable("var:nodeFactories"));
   }
   public static Iterable<SNode> sourceNodesQuery_11_1(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(SLinkOperations.collectMany(SModelOperations.roots(_context.getInputModel(), CONCEPTS.NodeFactories$I1), LINKS.nodeFactory$8pyJ)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.applicableConcept$8F1V);
-      }
-    }).distinct().sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }, true);
+    return Sequence.fromIterable(SLinkOperations.collectMany(SModelOperations.roots(_context.getInputModel(), CONCEPTS.NodeFactories$I1), LINKS.nodeFactory$8pyJ)).select((it) -> SLinkOperations.getTarget(it, LINKS.applicableConcept$8F1V)).distinct().sort((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL), true);
   }
   public static Iterable<SNode> sourceNodesQuery_11_2(final SourceSubstituteMacroNodesContext _context) {
     return SModelOperations.nodes(_context.getInputModel(), CONCEPTS.CopyPreProcessor$Gv);
@@ -324,15 +314,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.setupFunction$K0T6), LINKS.body$e68K), LINKS.statement$53DE);
   }
   public static Object varMacro_Value_11_0(final TemplateVarContext _context) {
-    return Sequence.fromIterable(SLinkOperations.collectMany(SModelOperations.roots(_context.getInputModel(), CONCEPTS.NodeFactories$I1), LINKS.nodeFactory$8pyJ)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.applicableConcept$8F1V) == _context.getNode();
-      }
-    }).sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return it.getNodeId().toString();
-      }
-    }, true);
+    return Sequence.fromIterable(SLinkOperations.collectMany(SModelOperations.roots(_context.getInputModel(), CONCEPTS.NodeFactories$I1), LINKS.nodeFactory$8pyJ)).where((it) -> SLinkOperations.getTarget(it, LINKS.applicableConcept$8F1V) == _context.getNode()).sort((it) -> it.getNodeId().toString(), true);
   }
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {
@@ -679,8 +661,8 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
-    rtqMethods.put("3845357643093404661", new RTQ(0, "NodeFacotryImpl"));
-    rtqMethods.put("3845357643093404699", new RTQ(1, "NodeFacotryImpl"));
+    rtqMethods.put("3845357643093404661", new RTQ(0, "container.NodeFacotryImpl"));
+    rtqMethods.put("3845357643093404699", new RTQ(1, "container.NodeFacotryImpl"));
     rtqMethods.put("6501464918897326700", new RTQ(2, "CopyPreProcessor"));
     rtqMethods.put("6884701713556955694", new RTQ(3, "PastePostProcessor"));
     rtqMethods.put("6501464918897418014", new RTQ(4, "PasteWrapper"));

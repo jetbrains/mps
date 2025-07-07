@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@ package jetbrains.mps.openapi.editor.menus.transformation;
 
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTrace;
-import jetbrains.mps.openapi.editor.menus.EditorMenuTrace.EmptyEditorMenuTrace;
+import jetbrains.mps.openapi.editor.menus.TraceMenuContext;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -29,7 +29,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.function.Predicate;
 
-public interface TransformationMenuContext {
+public interface TransformationMenuContext extends TraceMenuContext {
   @NotNull
   String getMenuLocation();
 
@@ -87,7 +87,9 @@ public interface TransformationMenuContext {
   List<TransformationMenuItem> createItems(@Nullable TransformationMenuLookup menuLookup);
 
   @NotNull
+  @Override
   default EditorMenuTrace getEditorMenuTrace() {
-    return new EmptyEditorMenuTrace();
+    // need to keep this method until no more references from templates (I believe mbeddr might be referencing this method)
+    return TraceMenuContext.super.getEditorMenuTrace();
   }
 }

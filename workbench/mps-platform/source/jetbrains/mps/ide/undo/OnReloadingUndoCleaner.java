@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,19 +15,20 @@
  */
 package jetbrains.mps.ide.undo;
 
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.command.impl.UndoManagerImpl;
 import com.intellij.openapi.command.undo.UndoManager;
-import com.intellij.openapi.components.ProjectComponent;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.containers.WeakList;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.nodefs.FileSystemProjectBridge;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SModelId;
+import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 
@@ -37,10 +38,10 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
-// XXX This non-public class is loaded due to ComponentConfigComponentAdapter (instantiated by ComponentManagerImpl, both from
-//     from com.intellij.openapi.components.impl) that defaults to allowNonPublicClasses == true.
-class OnReloadingUndoCleaner implements ProjectComponent {
-  private final UndoManagerImpl myUndoManager;
+/**
+ * clears IDEA undo information (affected virtual files) collected on a per-model basis according to project repository changes.
+ */
+public final class OnReloadingUndoCleaner implements Disposable {
   private final MPSProject myProject;
   private RepoListenerRegistrar myListenerRegistrar;
 
@@ -49,27 +50,24 @@ class OnReloadingUndoCleaner implements ProjectComponent {
    * <p>
    * All references to a Document may be removed from all other places. In this case a document should be
    * garbage-collected. Weak container was used here to NOT prevent it from being garbage-collected.
-   * Same logic (weak container) you can found in {@link com.intellij.openapi.fileEditor.impl.FileDocumentManagerImpl#myDocumentCache}
+   * Same logic (weak container) you can found in {@code com.intellij.openapi.fileEditor.impl.FileDocumentManagerImpl#myDocumentCache}
    */
-  private Map<SModelId, WeakList<VirtualFile>> myUndoForModel = new HashMap<>();
+  private final Map<SModelReference, WeakList<VirtualFile>> myUndoForModel = new HashMap<>();
+
+
+  public static OnReloadingUndoCleaner getInstance(Project ideaProject) {
+    return ideaProject.getService(OnReloadingUndoCleaner.class);
+  }
 
   /**
-   * Dependency on {@link FileSystemProjectBridge} was introduced here just to reflect the fact that this
-   * functionality will not work without another component.
+   * This class depends on {@link FileSystemProjectBridge} which is now essential part of MPSProject (used to be an independent ProjectComponent)
    */
-  OnReloadingUndoCleaner(MPSProject project, UndoManager undoManager, FileSystemProjectBridge fsPB) {
-    myProject = project;
-    myUndoManager = (UndoManagerImpl) undoManager;
+  public OnReloadingUndoCleaner(Project ideaProject) {
+    myProject = ProjectHelper.fromIdeaProjectOrFail(ideaProject);
+    init();
   }
 
-  @Override
-  @NotNull
-  public String getComponentName() {
-    return "Undo Cleaner";
-  }
-
-  @Override
-  public void initComponent() {
+  private void init() {
     // Looks like we are working only with one repository of the currently open project.
     //
     // Nevertheless, registered listener  should receive events from the current
@@ -83,16 +81,16 @@ class OnReloadingUndoCleaner implements ProjectComponent {
   }
 
   @Override
-  public void disposeComponent() {
+  public void dispose() {
     myListenerRegistrar.detach();
     myListenerRegistrar = null;
   }
 
-  boolean isDisposed() {
+  private boolean isDisposed() {
     return myListenerRegistrar == null;
   }
 
-  void registerUndo(SModelId modelId, Collection<VirtualFile> files) {
+  void registerUndo(SModelReference modelId, Collection<VirtualFile> files) {
     Set<VirtualFile> additionalFiles = new LinkedHashSet<>(files);
     WeakList<VirtualFile> trackedFiles = myUndoForModel.computeIfAbsent(modelId, k -> new WeakList<>());
     for (VirtualFile file : trackedFiles) {
@@ -113,34 +111,44 @@ class OnReloadingUndoCleaner implements ProjectComponent {
 
     @Override
     protected boolean isIncluded(SModule module) {
-      return !module.isPackaged() && !module.isReadOnly();
+      return !module.isReadOnly();
     }
 
     @Override
     protected void startListening(SModel model) {
+      if (model.isReadOnly()) {
+        return;
+      }
       model.addModelListener(this);
     }
 
     @Override
     protected void stopListening(SModel model) {
+      if (model.isReadOnly()) {
+        return;
+      }
       model.removeModelListener(this);
       clearUndoStack(model);
     }
+  }
 
-    private void clearUndoStack(SModel model) {
-      WeakList<VirtualFile> registeredFiles = myUndoForModel.remove(model.getModelId());
-      if (registeredFiles == null || registeredFiles.isEmpty()) {
+  private void clearUndoStack(SModel model) {
+    WeakList<VirtualFile> registeredFiles = myUndoForModel.remove(model.getReference());
+    if (registeredFiles == null || registeredFiles.isEmpty()) {
+      return;
+    }
+
+    ApplicationManager.getApplication().invokeLater(() -> {
+      if (isDisposed() || myProject.isDisposed()) {
         return;
       }
-
-      ApplicationManager.getApplication().invokeLater(() -> {
-        if (isDisposed()) {
-          return;
-        }
-        for (VirtualFile file : registeredFiles) {
-          myUndoManager.clearUndoRedoQueueInTests(file);
-        }
-      }, ModalityState.NON_MODAL);
-    }
+      UndoManager undoManager = UndoManager.getInstance(myProject.getProject());
+      if (false == undoManager instanceof UndoManagerImpl) {
+        return;
+      }
+      for (VirtualFile file : registeredFiles) {
+        ((UndoManagerImpl) undoManager).clearUndoRedoQueueInTests(file);
+      }
+    }, ModalityState.nonModal());
   }
 }

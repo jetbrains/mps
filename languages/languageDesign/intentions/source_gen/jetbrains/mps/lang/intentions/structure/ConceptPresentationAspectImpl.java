@@ -97,8 +97,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_Intention == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a8b0u);
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a8b0u);
+          cpb.helpUrl(HELP_URL);
+          cpb.icon(IconContainer.RESOURCE_0);
           props_Intention = cpb.create();
         }
         return props_Intention;
@@ -106,7 +106,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_IntentionDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a9b0u);
+          cpb.helpUrl(HELP_URL1);
+          cpb.icon(IconContainer.RESOURCE_1);
           props_IntentionDeclaration = cpb.create();
         }
         return props_IntentionDeclaration;
@@ -172,14 +173,15 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_SurroundWithIntentionDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a81b0u);
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a81b0u);
+          cpb.helpUrl(HELP_URL2);
+          cpb.icon(IconContainer.RESOURCE_2);
           props_SurroundWithIntentionDeclaration = cpb.create();
         }
         return props_SurroundWithIntentionDeclaration;
     }
     return null;
   }
-  private static final String HELP_URL_lpa09p_a0a2a0a8b0u = URLFunction_HelpCenterDocUrl.getUrl() + "mps-intentions.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a81b0u = URLFunction_HelpCenterDocUrl.getUrl() + "mps-intentions.html";
+  private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "mps-intentions.html#intentiontypes";
+  private static final String HELP_URL1 = URLFunction_HelpCenterDocUrl.getUrl() + "mps-intentions.html#intentiontypes";
+  private static final String HELP_URL2 = URLFunction_HelpCenterDocUrl.getUrl() + "mps-intentions.html#intentiontypes";
 }

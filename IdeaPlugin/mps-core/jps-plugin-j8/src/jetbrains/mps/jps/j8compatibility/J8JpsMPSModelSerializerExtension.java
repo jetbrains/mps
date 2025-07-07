@@ -16,7 +16,7 @@
 
 package jetbrains.mps.jps.j8compatibility;
 
-import com.intellij.openapi.util.SystemInfo;
+import com.intellij.util.lang.JavaVersion;
 import jetbrains.mps.jps.model.impl.JpsMPSModelSerializerExtension;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.jps.model.serialization.JpsModelSerializerExtension;
@@ -33,7 +33,7 @@ public class J8JpsMPSModelSerializerExtension extends JpsModelSerializerExtensio
   @NotNull
   @Override
   public List<? extends JpsFacetConfigurationSerializer<?>> getFacetConfigurationSerializers() {
-    if (!SystemInfo.isJavaVersionAtLeast(11)) {
+    if (!JavaVersion.current().isAtLeast(11)) {
       return Collections.emptyList();
     }
 

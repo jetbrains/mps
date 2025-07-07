@@ -17,7 +17,7 @@ import java.io.StringWriter;
 import java.io.PrintWriter;
 import com.intellij.unscramble.AnalyzeStacktraceAction;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/4221956679900513437", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "4221956679900513437", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class AnalyzeStacktrace_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -26,6 +26,7 @@ public class AnalyzeStacktrace_Action extends BaseAction {
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
     this.setMnemonic("S".charAt(0));
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

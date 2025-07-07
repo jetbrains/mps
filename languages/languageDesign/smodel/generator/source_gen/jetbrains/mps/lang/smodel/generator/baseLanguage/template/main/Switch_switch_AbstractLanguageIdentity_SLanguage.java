@@ -68,7 +68,7 @@ public class Switch_switch_AbstractLanguageIdentity_SLanguage extends TemplateSw
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_87_0(new SourceSubstituteMacroNodeContext(context, callMacro_9oew2a_b0a0a2a1i));
+      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_87_0(new SourceSubstituteMacroNodeContext(context, callMacro));
       TemplateContext context1 = context;
       context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
@@ -85,7 +85,7 @@ public class Switch_switch_AbstractLanguageIdentity_SLanguage extends TemplateSw
 
 
   }
-  private static final SNodePointer callMacro_9oew2a_b0a0a2a1i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2469893808086103396");
+  private static final SNodePointer callMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2469893808086103396");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept LanguageId$UR = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, "jetbrains.mps.lang.smodel.structure.LanguageId");

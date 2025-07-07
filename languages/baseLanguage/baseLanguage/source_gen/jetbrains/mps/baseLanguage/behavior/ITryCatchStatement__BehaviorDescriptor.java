@@ -20,9 +20,10 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class ITryCatchStatement__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3399756d2c03d422L, "jetbrains.mps.baseLanguage.structure.ITryCatchStatement");
 
-  public static final SMethod<List<SNode>> getCatchClauses_id3eptmOG0XgA = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getCatchClauses").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3eptmOG0XgA").build();
+  public static final SMethod<List<SNode>> getCatchClauses_id3eptmOG0XgA = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getCatchClauses").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3718132079121388582L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> getFinallyClause_id7LX8cXzsyj1 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getFinallyClause").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8970362107890640065L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCatchClauses_id3eptmOG0XgA);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCatchClauses_id3eptmOG0XgA, getFinallyClause_id7LX8cXzsyj1);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }

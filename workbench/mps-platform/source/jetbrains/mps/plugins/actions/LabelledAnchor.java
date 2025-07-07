@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,16 +16,20 @@
 package jetbrains.mps.plugins.actions;
 
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import jetbrains.mps.workbench.action.ActionAccess;
 import jetbrains.mps.workbench.action.BaseAction;
 
 import java.util.Map;
 
+// likely has to extend BaseAction, not AnAction, as BaseApplicationPlugin is picky about actions.
 public class LabelledAnchor extends BaseAction {
   private final String myId;
 
   public LabelledAnchor(String id) {
     super(() -> id.substring(id.lastIndexOf('.') + 1));
     myId = id;
+    setActionAccess(ActionAccess.NONE);
+    updateInBackground(true);
   }
 
   @Override
@@ -35,7 +39,7 @@ public class LabelledAnchor extends BaseAction {
   }
 
   @Override
-  protected void doUpdate(AnActionEvent e, Map<String, Object> _params) {
+  public void update(AnActionEvent e) {
     e.getPresentation().setEnabled(false);
     e.getPresentation().setVisible(false);
   }

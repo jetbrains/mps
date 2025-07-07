@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,41 +25,57 @@ import jetbrains.mps.generator.IGenerationSettings.GenTraceSettings;
 import jetbrains.mps.generator.IModifiableGenerationSettings;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.generator.GenerationSettings.MyState;
+import jetbrains.mps.text.TextGenSettings;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-import javax.swing.Icon;
+import java.time.Duration;
 
 
+/**
+ * IDEA app service with persistent state, registered into MPS by means of app part in j.m.ide module.
+ * No {@code #getInstance()} method as we don't expect client code to access this service, it's merely an implementation detail to
+ * initialize {@code GenerationSettingsProvider}, which is the right starting point for client code.
+ */
 @State(
   name = "GenerationSettings",
   storages = @Storage("generationSettings.xml"),
     reportStatistic = true
 )
-public final class GenerationSettings implements PersistentStateComponent<MyState>, Disposable {
+public final class GenerationSettings implements PersistentStateComponent<MyState> {
 
   private final DefaultModifiableGenerationSettings myState = new DefaultModifiableGenerationSettings();
+  // unlike myState which we push down to GenerationSettingsProvider, myState2 is a copy we populate with
+  // CoreComponent counterpart, if any. Would like to understand which one is better.
+  private final TextGenSettings myState2 = new TextGenSettings();
+
+  private IModifiableGenerationSettings myOldGenerationSettings;
 
   public GenerationSettings() {
-    GenerationSettingsProvider settingsProvider = MPSCoreComponents.getInstance().getPlatform().findComponent(GenerationSettingsProvider.class);
-    if (settingsProvider != null) {
-      settingsProvider.setGenerationSettings(getModifiableSettings());
-    }
   }
 
-  @Override
-  public void dispose() {
-    // XXX what's the idea behind setGenerationSettings(null), anyone?
-    GenerationSettingsProvider settingsProvider = MPSCoreComponents.getInstance().getPlatform().findComponent(GenerationSettingsProvider.class);
-    if (settingsProvider != null && getModifiableSettings() == settingsProvider.getGenerationSettings()) {
-      settingsProvider.setGenerationSettings(null);
+  public void install(@NotNull GenerationSettingsProvider settingsProvider) {
+    myOldGenerationSettings = settingsProvider.getGenerationSettings();
+    settingsProvider.setGenerationSettings(getModifiableSettings());
+  }
+
+  public void uninstall(@NotNull GenerationSettingsProvider settingsProvider) {
+    if (getModifiableSettings() == settingsProvider.getGenerationSettings()) {
+      // used to be setGenerationSettings(null), and I don't understand the reason for it.
+      // Indeed, myOldGenerationSettings == null in most (all?) scenarios, yet it's a bit better, imo.
+      settingsProvider.setGenerationSettings(myOldGenerationSettings);
+      myOldGenerationSettings = null;
     }
   }
 
   @Override
   public MyState getState() {
     MyState persistentState = new MyState();
-    persistentState.fromSettings(myState);
+    final TextGenSettings tgs = MPSCoreComponents.getInstance().getPlatform().findComponent(TextGenSettings.class);
+    if (tgs != null) {
+      // XXX don't need to keep myState2, could be local var?
+      myState2.fillFrom(tgs);
+    }
+    persistentState.fromSettings(myState, myState2);
     return persistentState;
   }
 
@@ -75,7 +91,6 @@ public final class GenerationSettings implements PersistentStateComponent<MyStat
     myState.setShowInfo(state.myShowInfo);
     myState.setShowWarnings(state.myShowWarnings);
     myState.setKeepModelsWithWarnings(state.myKeepModelsWithWarnings);
-    myState.setGenerateDebugInfo(state.myGenerateDebugInfo);
     myState.setShowBadChildWarning(state.myShowBadChildWarning);
     myState.enableInplaceTransformations(state.myActiveInplaceTransform);
     myState.setCreateStaticReferences(state.myUseStaticRefs);
@@ -85,11 +100,14 @@ public final class GenerationSettings implements PersistentStateComponent<MyStat
     gts.setShowEmptySteps(state.myTraceShowEmptySteps);
     gts.setGroupByChange(state.myTraceGroupByChange);
     myState.setTraceSettings(gts);
-  }
-
-  @Nullable
-  public Icon getIcon() {
-    return null;
+    // TextGen
+    myState.setGenerateDebugInfo(state.myGenerateDebugInfo); // keep
+    myState2.setGenerateDebugInfo(state.myGenerateDebugInfo);
+    myState2.setPerModelTimeout(Duration.ofSeconds(state.myPerModelTimeout));
+    final TextGenSettings tgs = MPSCoreComponents.getInstance().getPlatform().findComponent(TextGenSettings.class);
+    if (tgs != null) {
+      tgs.fillFrom(myState2);
+    }
   }
 
   private IModifiableGenerationSettings getModifiableSettings() {
@@ -107,7 +125,6 @@ public final class GenerationSettings implements PersistentStateComponent<MyStat
     public boolean myShowInfo;
     public boolean myShowWarnings;
     public boolean myKeepModelsWithWarnings;
-    public boolean myGenerateDebugInfo;
     public boolean myShowBadChildWarning;
     public boolean myActiveInplaceTransform;
     public boolean myUseStaticRefs;
@@ -116,13 +133,20 @@ public final class GenerationSettings implements PersistentStateComponent<MyStat
     public boolean myTraceShowEmptySteps;
     public boolean myTraceGroupByChange;
 
+    // TextGen settings
+    public boolean myGenerateDebugInfo;
+    /**
+     * duration in seconds
+     */
+    public long myPerModelTimeout;
+
     public MyState() {
       // use defaults from a single place. PersistentStateComponent demands no-arg cons with default values set (case: no xml file yet)
-      fromSettings(new DefaultModifiableGenerationSettings());
+      fromSettings(new DefaultModifiableGenerationSettings(), new TextGenSettings());
     }
 
     // IModifiableGenerationSettings, not IGenerationSettins as #isCheckModelsBeforeGeneration and #isGenerateDebugInfo are located improperly
-    /*package*/ void fromSettings(IModifiableGenerationSettings s) {
+    /*package*/ void fromSettings(IModifiableGenerationSettings s, TextGenSettings s2) {
       mySaveTransientModels = s.isSaveTransientModels();
       myCheckModelsBeforeGeneration = s.isCheckModelsBeforeGeneration();
       myParallelGenerator = s.isParallelGenerator();
@@ -133,7 +157,6 @@ public final class GenerationSettings implements PersistentStateComponent<MyStat
       myShowInfo = s.isShowInfo();
       myShowWarnings = s.isShowWarnings();
       myKeepModelsWithWarnings = s.isKeepModelsWithWarnings();
-      myGenerateDebugInfo = s.isGenerateDebugInfo();
       myShowBadChildWarning = s.isShowBadChildWarning();
       myActiveInplaceTransform = s.useInplaceTransformations();
       myUseStaticRefs = s.createStaticReferences();
@@ -142,6 +165,9 @@ public final class GenerationSettings implements PersistentStateComponent<MyStat
       myTraceGroupSteps = gts.isGroupByStep();
       myTraceShowEmptySteps = gts.isShowEmptySteps();
       myTraceGroupByChange = gts.isGroupByChange();
+      //
+      myGenerateDebugInfo = s2.isGenerateDebugInfo();
+      myPerModelTimeout = s2.getPerModelTimeout().toSeconds();
     }
   }
 }

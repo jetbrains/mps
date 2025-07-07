@@ -16,7 +16,7 @@ import com.intellij.diff.contents.FileContent;
 import com.intellij.diff.contents.DiffContent;
 import com.intellij.diff.merge.TextMergeTool;
 
-@GeneratedClass(node = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)/5085852630254807374", model = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)")
+@GeneratedClass(nodeId = "5085852630254807374", model = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)")
 public class ModelMergeTool implements MergeTool {
   public static final Set<FileType> SUPPORTED_TYPES = SetSequence.fromSetAndArray(new HashSet<FileType>(), ModelDiffTool.DIFF_SUPPORTED_TYPES);
 
@@ -25,12 +25,12 @@ public class ModelMergeTool implements MergeTool {
   public boolean canShow(@NotNull MergeContext context, @NotNull MergeRequest request) {
     // all SUPPORTED_TYPES are text files, so we can work with text requests ony.
     // this will also allow us to fallback to default text merge tool
-    if (!((request instanceof TextMergeRequest))) {
+    if (!(request instanceof TextMergeRequest)) {
       return false;
     }
     TextMergeRequest textRequest = (TextMergeRequest) request;
     // required to save model
-    if (!((textRequest.getOutputContent() instanceof FileContent))) {
+    if (!(textRequest.getOutputContent() instanceof FileContent)) {
       return false;
     }
     FileType commonType = textRequest.getOutputContent().getContentType();

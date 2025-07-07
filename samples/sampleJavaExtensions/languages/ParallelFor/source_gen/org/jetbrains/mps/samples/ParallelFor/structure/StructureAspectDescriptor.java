@@ -66,19 +66,21 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForNonThreadSafeClass() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("org.jetbrains.mps.samples.ParallelFor", "NonThreadSafeClass", 0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x294c1cd4b8450380L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.core.structure.NodeAttribute", 0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da54L);
+    // extends: jetbrains.mps.lang.core.structure.NodeAttribute
+    b.super_(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da54L);
     b.origin("r:10e9da27-7113-45e6-9477-92c95760f135(org.jetbrains.mps.samples.ParallelFor.structure)/2975785153735230336");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForParallelFor() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("org.jetbrains.mps.samples.ParallelFor", "ParallelFor", 0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.AbstractLoopStatement", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL);
+    // extends: jetbrains.mps.baseLanguage.structure.AbstractLoopStatement
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL);
     b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1208f458d37L);
     b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11750ef8265L);
     b.origin("r:10e9da27-7113-45e6-9477-92c95760f135(org.jetbrains.mps.samples.ParallelFor.structure)/8923957828369477802");
-    b.version(2);
+    b.version(3);
     b.property("nowait", 0x74391c966b0f1304L).type(PrimitiveTypeId.BOOLEAN).origin("8374756414438970116").done();
     b.aggregate("loopVariable", 0x7bd8445d1e8810c2L).target(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770abL).optional(false).ordered(true).multiple(false).origin("8923957828369518786").done();
     b.aggregate("inputSequence", 0x7bd8445d1e888c7eL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("8923957828369550462").done();
@@ -90,17 +92,19 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForParallelLoopVariable() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("org.jetbrains.mps.samples.ParallelFor", "ParallelLoopVariable", 0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770abL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL);
+    // extends: jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL);
     b.origin("r:10e9da27-7113-45e6-9477-92c95760f135(org.jetbrains.mps.samples.ParallelFor.structure)/8923957828369477803");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForThreadPool() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("org.jetbrains.mps.samples.ParallelFor", "ThreadPool", 0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x8c9905a80efd03cL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.Expression", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL);
+    // extends: jetbrains.mps.baseLanguage.structure.Expression
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL);
     b.origin("r:10e9da27-7113-45e6-9477-92c95760f135(org.jetbrains.mps.samples.ParallelFor.structure)/633195941006921788");
-    b.version(2);
+    b.version(3);
     b.property("numberOfThreads", 0x8c9905a80efd045L).type(PrimitiveTypeId.INTEGER).origin("633195941006921797").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("thread pool");
@@ -109,9 +113,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForThreadSafe() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("org.jetbrains.mps.samples.ParallelFor", "ThreadSafe", 0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x294c1cd4b84332e6L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.core.structure.NodeAttribute", 0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da54L);
+    // extends: jetbrains.mps.lang.core.structure.NodeAttribute
+    b.super_(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da54L);
     b.origin("r:10e9da27-7113-45e6-9477-92c95760f135(org.jetbrains.mps.samples.ParallelFor.structure)/2975785153735111398");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
 }

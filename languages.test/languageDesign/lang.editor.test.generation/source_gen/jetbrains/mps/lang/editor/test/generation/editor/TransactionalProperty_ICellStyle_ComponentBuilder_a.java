@@ -57,9 +57,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
         editorCell = EditorCell_Property.create(getEditorContext(), modelAccessor, myNode);
         editorCell.setCellId("TransactionalProperty_b29fir_a");
         Style style = new StyleImpl();
-        new testParentStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+        new testParentStyleStyleClass(this).apply(style, editorCell);
         editorCell.getStyle().putAll(style);
         editorCell.setDefaultText("<no theProperty>");
+
         setCellContext(editorCell);
         editorCell.setCommitInCommand(false);
       }

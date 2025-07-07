@@ -7,10 +7,11 @@ import jetbrains.mps.plugins.actions.GeneratedActionGroup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1226495932324", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1226495932324", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class PackageActions_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.actions.PackageActions_ActionGroup";
   public static final String LABEL_ID_newActions = ID + "newActions";
+  public static final String LABEL_ID_deletion = ID + "deletion";
 
   public PackageActions_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("PackageActions", ID, plugin);
@@ -19,7 +20,7 @@ public class PackageActions_ActionGroup extends GeneratedActionGroup {
     addNamedAnchor(LABEL_ID_newActions);
     PackageActions_ActionGroup.this.addSeparator();
     PackageActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.PasteNode_Action");
-    PackageActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.DeleteNode_Action");
+    addNamedAnchor(LABEL_ID_deletion);
     PackageActions_ActionGroup.this.addSeparator();
     PackageActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.RenamePackage_Action");
   }

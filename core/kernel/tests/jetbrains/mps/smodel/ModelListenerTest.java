@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -484,42 +484,42 @@ public class ModelListenerTest {
     myErrors.checkThat(cl1.myAddedRef.size(), equalTo(1));
     myErrors.checkThat(cl1.myRemovedRef.size(), equalTo(0));
     myErrors.checkThat(cl2.myChangedReferences.size(), equalTo(1));
-    myErrors.checkThat(cl2.myChangedReferences.contains(ourRef.getRoleName()), equalTo(true));
+    myErrors.checkThat(cl2.myChangedReferences.contains(ourRef.getName()), equalTo(true));
     // create, with setReference()
     cl1.reset(); cl2.reset();
-    r2c1.setReference(ourRef, jetbrains.mps.smodel.SReference.create(ourRef, r2c1, r3c2));
+    r2c1.setReference(ourRef, r3c2.getReference());
     myErrors.checkThat(cl1.myAddedRef.size(), equalTo(1));
     myErrors.checkThat(cl1.myRemovedRef.size(), equalTo(0));
     myErrors.checkThat(cl2.myChangedReferences.size(), equalTo(1));
-    myErrors.checkThat(cl2.myChangedReferences.contains(ourRef.getRoleName()), equalTo(true));
+    myErrors.checkThat(cl2.myChangedReferences.contains(ourRef.getName()), equalTo(true));
     // change, with setReference
     cl1.reset(); cl2.reset();
-    r1.setReference(ourRef, jetbrains.mps.smodel.SReference.create(ourRef, r1, r3c2));
+    r1.setReference(ourRef, r3c2.getReference());
     myErrors.checkThat(cl1.myAddedRef.size(), equalTo(1));
     myErrors.checkThat(cl1.myRemovedRef.size(), equalTo(1));
     myErrors.checkThat(cl2.myChangedReferences.size(), equalTo(1));
-    myErrors.checkThat(cl2.myChangedReferences.contains(ourRef.getRoleName()), equalTo(true));
+    myErrors.checkThat(cl2.myChangedReferences.contains(ourRef.getName()), equalTo(true));
     // change, with setReferenceTarget
     cl1.reset(); cl2.reset();
     r2c1.setReferenceTarget(ourRef, r1);
     myErrors.checkThat(cl1.myAddedRef.size(), equalTo(1));
     myErrors.checkThat(cl1.myRemovedRef.size(), equalTo(1));
     myErrors.checkThat(cl2.myChangedReferences.size(), equalTo(1));
-    myErrors.checkThat(cl2.myChangedReferences.contains(ourRef.getRoleName()), equalTo(true));
+    myErrors.checkThat(cl2.myChangedReferences.contains(ourRef.getName()), equalTo(true));
     // delete, with setReference()
     cl1.reset(); cl2.reset();
-    r2c1.setReference(ourRef, (SReference) null);
+    r2c1.dropReference(ourRef);
     myErrors.checkThat(cl1.myAddedRef.size(), equalTo(0));
     myErrors.checkThat(cl1.myRemovedRef.size(), equalTo(1));
     myErrors.checkThat(cl2.myChangedReferences.size(), equalTo(1));
-    myErrors.checkThat(cl2.myChangedReferences.contains(ourRef.getRoleName()), equalTo(true));
+    myErrors.checkThat(cl2.myChangedReferences.contains(ourRef.getName()), equalTo(true));
     // delete, with setReferenceTarget()
     cl1.reset(); cl2.reset();
     r1.setReferenceTarget(ourRef, null);
     myErrors.checkThat(cl1.myAddedRef.size(), equalTo(0));
     myErrors.checkThat(cl1.myRemovedRef.size(), equalTo(1));
     myErrors.checkThat(cl2.myChangedReferences.size(), equalTo(1));
-    myErrors.checkThat(cl2.myChangedReferences.contains(ourRef.getRoleName()), equalTo(true));
+    myErrors.checkThat(cl2.myChangedReferences.contains(ourRef.getName()), equalTo(true));
     m1f.detachChangeListeners(cl1, cl2);
   }
 
@@ -835,6 +835,7 @@ public class ModelListenerTest {
     }
   }
 
+  // XXX likely, shall become NodeChangeBridge + event visitor once we get to SModelAdapter removal
   private static class ChangeListener1 extends SModelAdapter {
     public final List<SNode> myAdded = new ArrayList<SNode>();
     public final List<SNode> myAddedRoots = new ArrayList<SNode>();

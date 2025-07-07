@@ -1,17 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2000-2024 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.ide.ui.dialogs.properties.roots.editors;
 
@@ -33,7 +21,6 @@ import com.intellij.openapi.ui.popup.JBPopupFactory;
 import com.intellij.openapi.ui.popup.PopupStep;
 import com.intellij.openapi.ui.popup.util.BaseListPopupStep;
 import com.intellij.openapi.util.Disposer;
-import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.ScrollPaneFactory;
 import com.intellij.ui.awt.RelativePoint;
@@ -43,27 +30,26 @@ import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.extapi.persistence.DefaultSourceRoot;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
+import jetbrains.mps.extapi.persistence.ModelRootBase;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
+import jetbrains.mps.ide.actions.MPSActionPlaces;
 import jetbrains.mps.ide.ui.dialogs.properties.PropertiesBundle;
 import jetbrains.mps.ide.ui.dialogs.properties.roots.editors.ModelRootEntryContainer.ContentEntryEditorListener;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.logging.Logger;
+import jetbrains.mps.module.PersistenceContextImpl;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.persistence.java.library.JavaClassStubsModelRoot;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
-import jetbrains.mps.project.structure.modules.ModuleDescriptor;
-import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.PathManager;
+import jetbrains.mps.util.IStatus;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
+import org.jetbrains.mps.openapi.persistence.ModulePersistenceContext;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.ui.persistence.ModelRootEntry;
 
@@ -77,7 +63,6 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Point;
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
@@ -86,18 +71,16 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import static com.intellij.openapi.vfs.VfsUtilCore.isAncestor;
-
 /**
  * UIComponent which contains all the module roots.
  * It is located in the module properties dialog.
  */
 public class ModelRootContentEntriesEditor implements Disposable {
 
-  private final static Logger LOG = LogManager.getLogger(ModelRootContentEntriesEditor.class);
+  private final static Logger LOG = Logger.getLogger(ModelRootContentEntriesEditor.class);
 
   @Nullable
-  private ModuleDescriptor myModuleDescriptor;
+  private AbstractModule myModule;
   private final MPSProject myProject;
   private final Collection<ModelRootDescriptor> myInitialModelRoots;
   private final ModelRootEntryPersistence myRootEntryPersistence;
@@ -110,35 +93,54 @@ public class ModelRootContentEntriesEditor implements Disposable {
   private JBPanel myMainPanel;
   private IFile myDefaultFolder;
 
-  public ModelRootContentEntriesEditor(@NotNull ModuleDescriptor moduleDescriptor, @NotNull MPSProject p) {
-    this(moduleDescriptor.getModelRootDescriptors(), moduleDescriptor.getNamespace(), p);
-    myModuleDescriptor = moduleDescriptor;
+  public ModelRootContentEntriesEditor(@NotNull AbstractModule module, @NotNull MPSProject p) {
+    // FIXME grab model read?
+    this(modelRootDetachedInstances(module), module.getModuleName(), p);
+    myModule = module;
   }
 
-  /**
-   * IMPORTANT, {@code modelRoots} argument is by-reference, it's the collection being modified as a result of this editor, see {@link #apply()}.
-   *   This is done for the sake of bugfix simplicity, otherwise {@code apply()} calls from outside has to be modified to take actual collection and feed it
-   *   into appropriate consumer (whether it's ModuleDescriptor or MPSConfigurationBean)
-   */
-  public ModelRootContentEntriesEditor(@NotNull Collection<ModelRootDescriptor> modelRoots, String moduleName, @NotNull MPSProject p) {
-    myInitialModelRoots = modelRoots;
+  private static Iterable<ModelRoot> modelRootDetachedInstances(@NotNull AbstractModule module) {
+    // XXX I wonder if we can go with an empty/custom MPC here. Using the one for module as it mimics present behavior, although perhaps could come up with
+    //     a custom MPC not to involve SModule/AbstractModule here.
+    ModulePersistenceContext mpc = PersistenceContextImpl.forModule(module);
+    ArrayList<ModelRoot> rv = new ArrayList<>();
+    for (ModelRoot mr : module.getModelRoots()) {
+      MementoImpl mm = new MementoImpl();
+      mr.save(mm, mpc);
+      final ModelRoot detachedRoot = PersistenceFacade.getInstance().getModelRootFactory(mr.getType()).create();
+      rv.add(detachedRoot);
+      detachedRoot.load(mm, mpc);
+      if (detachedRoot instanceof ModelRootBase) {
+        // just for the sake of getModule() later from some file chooser dialog.
+        ((ModelRootBase) detachedRoot).setModule(module);
+      }
+    }
+    return rv;
+  }
+
+  public ModelRootContentEntriesEditor(@NotNull Iterable<ModelRoot> modelRoots, String moduleName, @NotNull MPSProject p) {
     myProject = p;
     // XXX I'm puzzled with mix of ModelRoot and ModelRootDescriptor in ModelRootEntryPersistence, shall stick to one
     //     i.e. basically have to decide whether we edit SModule or ModuleDescriptor.
-    myRootEntryPersistence = new ModelRootEntryPersistence(PersistenceFacade.getInstance());
-    for (ModelRootDescriptor descriptor : modelRoots) {
-      ModelRootEntry entry = myRootEntryPersistence.getModelRootEntry(descriptor);
+    //     Provided ModuleDescriptor holds ModelRootDescriptor, which is basically a persistence element (IMemento + type), I feel
+    //     editing ModuleDescriptor and ModelRootDescriptor is a bad idea.
+    //     However, there's scenario when we edit MPS configuration w/o MPS SModule (MPSFacet in MPS-as-IDEA-plugin), and it's not quite
+    //     clear how to get properly initialized ModelRoot instance then
+    myRootEntryPersistence = new ModelRootEntryPersistence(p);
+    for (ModelRoot modelRoot : modelRoots) {
+      ModelRootEntry<?> entry = myRootEntryPersistence.getModelRootEntry(modelRoot);
       if (entry != null) {
         Disposer.register(this, entry);
         ModelRootEntryContainer container = new ModelRootEntryContainer(entry);
         container.addContentEntryEditorListener(myEditorListener);
         myModelRootEntries.add(container);
       } else {
-        LOG.warn(
+        LOG.warning(
             String.format("Can't create editor for '%s' model root type in module %s. Check that plugin, where this model root type is registered, is enabled.",
-                          descriptor.getType(), moduleName));
+                          modelRoot.getPresentation(), moduleName));
       }
     }
+    myInitialModelRoots = getDescriptors();
     initUI();
   }
 
@@ -160,7 +162,7 @@ public class ModelRootContentEntriesEditor implements Disposable {
           return;
         }
         final JBPopup popup = JBPopupFactory.getInstance().createListPopup(
-            new BaseListPopupStep<AddContentEntryAction>(null, list) {
+            new BaseListPopupStep<>(null, list) {
               @Override
               public Icon getIconFor(AddContentEntryAction aValue) {
                 return aValue.getTemplatePresentation().getIcon();
@@ -215,7 +217,7 @@ public class ModelRootContentEntriesEditor implements Disposable {
     myEditorsListPanel.setBackground(UIUtil.getListBackground());
     JScrollPane scrollPane = ScrollPaneFactory.createScrollPane(myEditorsListPanel);
     scrollPane.setPreferredSize(new Dimension(250, 300));
-    entriesPanel.add(new ToolbarPanel(scrollPane, group), BorderLayout.CENTER);
+    entriesPanel.add(new ToolbarPanel(scrollPane, group, MPSActionPlaces.MODEL_ROOT_SETTINGS, myMainPanel), BorderLayout.CENTER);
 
     Splitter splitter = new Splitter(false);
     splitter.setHonorComponentsMinimumSize(true);
@@ -284,16 +286,16 @@ public class ModelRootContentEntriesEditor implements Disposable {
     return !(myInitialModelRoots.containsAll(newSet) && newSet.containsAll(myInitialModelRoots));
   }
 
-  public void apply() {
-    myInitialModelRoots.clear();
-    myInitialModelRoots.addAll(getDescriptors());
+  public void apply(Collection<ModelRootDescriptor> result) {
+    result.addAll(getDescriptors());
   }
 
   private List<ModelRootDescriptor> getDescriptors() {
     List<ModelRootDescriptor> descriptors = new LinkedList<>();
+    ModulePersistenceContext mpc = myModule != null ? PersistenceContextImpl.forModule(myModule) : PersistenceContextImpl.empty();
     for (ModelRootEntryContainer container : myModelRootEntries) {
       Memento memento = new MementoImpl();
-      container.getModelRoot().save(memento);
+      container.getModelRoot().save(memento, mpc);
       descriptors.add(new ModelRootDescriptor(container.getModelRoot().getType(), memento));
     }
     return descriptors;
@@ -345,6 +347,8 @@ public class ModelRootContentEntriesEditor implements Disposable {
       ModelRootEntry entry = myRootEntryPersistence.getModelRootEntry(modelRoot);
       Disposer.register(ModelRootContentEntriesEditor.this, entry);
       if (entry.getModelRoot() instanceof FileBasedModelRoot) {
+        // fwiw, modelRoot aka entry.getModelRoot() can be FileBasedModelRoot, but entry
+        // is not necessarily FileBasedModelRootEntry, see delegation pattern in ModelRootEntry subclasses
         if (!checkAndAddFBModelRoot(entry)) {
           return;
         }
@@ -359,16 +363,11 @@ public class ModelRootContentEntriesEditor implements Disposable {
     }
 
     private boolean checkAndAddFBModelRoot(ModelRootEntry entry) {
-      Set<VirtualFile> candidatesForIntersection = new HashSet<>();
+      assert entry.getModelRoot() instanceof FileBasedModelRoot;
+      Set<ModelRootEntry<?>> candidatesForIntersection = new HashSet<>();
       for (ModelRootEntryContainer existingEntryContainer : myModelRootEntries) {
         if (entry.getClass().equals(existingEntryContainer.getModelRootEntry().getClass())) {
-          FileBasedModelRoot existingModelRoot = (FileBasedModelRoot) existingEntryContainer.getModelRootEntry().getModelRoot();
-          VirtualFile vFile = VirtualFileUtils.getVirtualFile(existingModelRoot.getContentRoot());
-          if (vFile == null){
-            LOG.error("Can't find file for model root. This root will not be checked for intersection with others. Path: " + existingModelRoot.getContentRoot());
-            continue;
-          }
-          candidatesForIntersection.add(vFile);
+          candidatesForIntersection.add(existingEntryContainer.getModelRootEntry());
         }
       }
       FileChooserDescriptor fileChooserDescriptor = new FileChooserDescriptor(false, true, true, false, true, false);
@@ -377,45 +376,43 @@ public class ModelRootContentEntriesEditor implements Disposable {
       IFile contentRoot = getInitialPath();
       VirtualFile chosen = null;
       do {
-        VirtualFile contentRootVFile = VirtualFileUtils.getProjectVirtualFile(contentRoot);
-        VirtualFile[] files = FileChooser.chooseFiles(fileChooserDescriptor, null, null, contentRootVFile);
-        if (files.length == 0) {
+        @SuppressWarnings("removal")
+        VirtualFile contentRootVFile = myProject.getFileSystem().asVirtualFile(contentRoot);
+        chosen = FileChooser.chooseFile(fileChooserDescriptor, null, null, contentRootVFile);
+        if (chosen == null) {
           return false;
         } else {
-          assert files.length == 1; // internal contract of the <code>FileChooser</code>
-          chosen = files[0];
-          for (VirtualFile candidate : candidatesForIntersection) {
-            if (doIntersect(chosen, candidate)) {
-              Messages.showWarningDialog(myMainPanel,
-                                         MessageFormat.format(
-                                             "<html>Can''t create new model root, it intersects with the existing model root:<br><b>{0}</b><br><br>Please, choose another folder.</html>",
-                                             StringUtil.escapeXml(String.valueOf(candidate))),
-                                         "Model Roots Intersection");
+          //noinspection removal
+          if (!myProject.getFileSystem().canConvert(chosen)) {
+            final String m = "Can use local filesystem location only. Actual FS is %s";
+            Messages.showWarningDialog(myMainPanel, String.format(m, chosen.getFileSystem().getProtocol()), "Bad model root location");
+            chosen = null;
+            continue;
+          }
+          //noinspection removal
+          contentRoot = myProject.getFileSystem().fromVirtualFile(chosen);
+          FileBasedModelRoot modelRoot = (FileBasedModelRoot) entry.getModelRoot();
+          modelRoot.setContentDirectory(contentRoot);
+          if (modelRoot instanceof JavaClassStubsModelRoot) {
+            // entry/modelRoot is a new blank value, can modify as I see fit; keep in mind we can get
+            // here several times (provided there are conflicts with other roots), keep single SOURCES root.
+            new ArrayList<>(modelRoot.getSourceRoots(SourceRootKinds.SOURCES)).forEach(modelRoot::removeSourceRoot);
+            // adding by default allows to prevent the misunderstandings like in MPS-33058
+            modelRoot.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(".", modelRoot.getContentDirectory()));
+            // TODO [artem] I don't like this instanceof check, perhaps, it's better to supply defaults in ModelRootFactory#create()?
+          }
+          for (ModelRootEntry<?> existingMRE : candidatesForIntersection) {
+            final IStatus conflictCheck = existingMRE.conflictsWith(entry);
+            if (conflictCheck.isError()) {
+              Messages.showWarningDialog(myMainPanel, conflictCheck.getMessage(), "Model Roots Conflict");
               chosen = null;
               break;
             }
           }
-          if (chosen != null && !myProject.getFileSystem().canConvert(chosen)) {
-            final String m = "Can use local filesystem location only. Actual FS is %s";
-            Messages.showWarningDialog(myMainPanel, String.format(m, chosen.getFileSystem().getProtocol()), "Bad model root location");
-            chosen = null;
-          }
         }
       } while (chosen == null);
 
-      contentRoot = myProject.getFileSystem().fromVirtualFile(chosen);
-      FileBasedModelRoot modelRoot = (FileBasedModelRoot) entry.getModelRoot();
-      modelRoot.setContentDirectory(contentRoot);
-      if (modelRoot instanceof JavaClassStubsModelRoot) {
-        // adding by default allows to prevent the misunderstandings like in MPS-33058
-        modelRoot.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(".", modelRoot.getContentDirectory()));
-      }
-
       return true;
-    }
-
-    private boolean doIntersect(VirtualFile chosen, VirtualFile candidate) {
-      return isAncestor(candidate, chosen, true) || isAncestor(candidate, chosen, false);
     }
   }
 
@@ -423,19 +420,9 @@ public class ModelRootContentEntriesEditor implements Disposable {
     if (myDefaultFolder != null) {
       return myDefaultFolder;
     }
-    // FIXME next code needs a refactoring, it's odd to resolve a module just to figure out possible content root location. This information has to be supplied
-    //       from outside. Left for now to keep bugfix confined.
-    assert myModuleDescriptor != null : "MPS as IDEA plugin has to specify default folder for a module";
-    SModule module = new ModelAccessHelper(myProject.getRepository()).runReadAction(() -> myProject.getRepository().getModule(myModuleDescriptor.getId()));
-    assert module != null : "Trying to edit settings of a module " + myModuleDescriptor.getNamespace() + ", which is not in repository";
-
-    if (module instanceof AbstractModule) {
-      AbstractModule am = (AbstractModule) module;
-      IFile sourceDir = am.getModuleSourceDir();
-      return sourceDir != null ? sourceDir : am.getDescriptorFile().getParent();
-    }
-
-    return myProject.getFileSystem().getFile(PathManager.getUserDir());
+    assert myModule != null : "MPS as IDEA plugin has to specify default folder for a module";
+    IFile sourceDir = myModule.getModuleSourceDir();
+    return sourceDir != null ? sourceDir : myModule.getDescriptorFile().getParent();
   }
 
   private final class MyContentEntryEditorListener implements ContentEntryEditorListener {

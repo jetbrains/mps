@@ -31,7 +31,7 @@ public class typeof_Property_SetOperation_InferenceRule extends AbstractInferenc
     }
     SNode propertyAccessOp = SNodeOperations.cast(leftOperation, CONCEPTS.SPropertyAccess$d9);
     SNode dataType = SLinkOperations.getTarget(SLinkOperations.getTarget(propertyAccessOp, LINKS.property$UiOu), LINKS.dataType$5j5Y);
-    if (!((dataType != null))) {
+    if (!(dataType != null)) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(op, "couldn't define accessed property datatype", "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1186059295963", null, errorTarget);
     }

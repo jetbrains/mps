@@ -6,7 +6,6 @@ import jetbrains.mps.project.Project;
 import javax.swing.JComponent;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.Comparator;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.Language;
@@ -23,7 +22,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.EmptyBorder;
 import jetbrains.mps.ide.common.LayoutUtil;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
-import jetbrains.mps.project.StandaloneMPSProject;
+import jetbrains.mps.project.MPSProject;
 
 public class LanguagesStep extends AbstractStep {
   private final AbstractBuildGenerator myGenerator;
@@ -56,21 +55,19 @@ public class LanguagesStep extends AbstractStep {
   public CheckBoxTree createCheckTree() {
     ModulesListData data = new ModulesListData(this.myProject.getProjectModules());
     List<ModuleData> children = data.getModules();
-    ListSequence.fromList(children).sort(new Comparator<ModuleData>() {
-      public int compare(ModuleData data1, ModuleData data2) {
-        SModule module1 = data1.getModule();
-        SModule module2 = data2.getModule();
-        if (module1.getClass().getName().equals(module2.getClass().getName())) {
-          return data1.getText().compareToIgnoreCase(data2.getText());
-        } else if (module1 instanceof Solution) {
-          return -1;
-        } else if (module2 instanceof Solution) {
-          return 1;
-        } else if (module1 instanceof Language) {
-          return -1;
-        }
+    ListSequence.fromList(children).sort((data1, data2) -> {
+      SModule module1 = data1.getModule();
+      SModule module2 = data2.getModule();
+      if (module1.getClass().getName().equals(module2.getClass().getName())) {
+        return data1.getText().compareToIgnoreCase(data2.getText());
+      } else if (module1 instanceof Solution) {
+        return -1;
+      } else if (module2 instanceof Solution) {
         return 1;
+      } else if (module1 instanceof Language) {
+        return -1;
       }
+      return 1;
     }, true);
     NamespaceTreeBuilder builder = new MyTreeBuilder(this.myProject);
     for (ModuleData moduleData : ListSequence.fromList(children)) {
@@ -109,15 +106,13 @@ public class LanguagesStep extends AbstractStep {
       this.fillWithParents(item, modules);
     }
     List<NodeData> toSort = ListSequence.fromListWithValues(new LinkedList<NodeData>(), modules);
-    ListSequence.fromList(toSort).sort(new Comparator<NodeData>() {
-      public int compare(NodeData a, NodeData b) {
-        if ((a instanceof NamespaceData) && (b instanceof ModuleData)) {
-          return -1;
-        } else if ((a instanceof ModuleData) && (b instanceof NamespaceData)) {
-          return 1;
-        }
-        return a.getText().compareToIgnoreCase(b.getText());
+    ListSequence.fromList(toSort).sort((a, b) -> {
+      if ((a instanceof NamespaceData) && (b instanceof ModuleData)) {
+        return -1;
+      } else if ((a instanceof ModuleData) && (b instanceof NamespaceData)) {
+        return 1;
       }
+      return a.getText().compareToIgnoreCase(b.getText());
     }, true);
     this.myGenerator.setModules(toSort);
   }
@@ -173,10 +168,7 @@ public class LanguagesStep extends AbstractStep {
       String namespace = "";
       if (data instanceof ModuleData) {
         ModuleData moduleData = (ModuleData) data;
-        namespace = ((StandaloneMPSProject) this.myProject).getFolderFor(moduleData.getModule());
-      }
-      if (namespace == null) {
-        return "";
+        namespace = ((MPSProject) this.myProject).getVirtualFolder(moduleData.getModule());
       }
       return namespace;
     }

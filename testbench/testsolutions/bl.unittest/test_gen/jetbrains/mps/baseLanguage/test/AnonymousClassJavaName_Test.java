@@ -4,11 +4,10 @@ package jetbrains.mps.baseLanguage.test;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.baseLanguage.behavior.AnonymousClass__BehaviorDescriptor;
@@ -18,13 +17,11 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class AnonymousClassJavaName_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(AnonymousClassJavaName_Test.class, "${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(AnonymousClassJavaName_Test.class).projectPath(null).modelRef("r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)").reopenProject(null).build());
 
   public AnonymousClassJavaName_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -38,13 +35,20 @@ public class AnonymousClassJavaName_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("6649467621789725811");
+    }
+
     public void test_testJavaNames() throws Exception {
-      addNodeById("6649467621789725811");
-      assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(getNodeById("6649467621789782586"), LINKS.cls$Saf6)).endsWith("Foo$Bar$1");
-      assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(getNodeById("6649467621789787135"), LINKS.cls$Saf6)).endsWith("Foo$Bar$2");
-      assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(getNodeById("6649467621789793415"), LINKS.cls$Saf6)).endsWith("Foo$Bar$2$1");
-      assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(getNodeById("6649467621789799984"), LINKS.cls$Saf6)).endsWith("Foo$Bar$2$2");
-      assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(getNodeById("7102466869931833255"), LINKS.cls$Saf6)).endsWith("Foo$Bar$3$Baz$1");
+      initTestNodes();
+      runWithinCommand(() -> {
+        assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(getAnnotatedNode("r1"), LINKS.cls$Saf6)).endsWith("Foo$Bar$1");
+        assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(getAnnotatedNode("r2"), LINKS.cls$Saf6)).endsWith("Foo$Bar$2");
+        assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(getAnnotatedNode("r3"), LINKS.cls$Saf6)).endsWith("Foo$Bar$2$1");
+        assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(getAnnotatedNode("r4"), LINKS.cls$Saf6)).endsWith("Foo$Bar$2$2");
+        assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(getAnnotatedNode("r5"), LINKS.cls$Saf6)).endsWith("Foo$Bar$3$Baz$1");
+      });
     }
 
   }

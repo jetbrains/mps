@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,44 +15,60 @@
  */
 package jetbrains.mps.classloading;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
-import jetbrains.mps.util.SystemInfo;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
-
-import java.util.Locale;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Any MPS module which has a java facet is a subject to MPS custom class loading.
+ *
+ * If necessary, may provide access to original {@code SModule} (to justify name/existence)
  *
  * @see ReloadableModule#getClassLoader()
  *
  * @author apyshkin
  */
 public abstract class MPSModuleClassLoader extends ClassLoader {
-  private static final Logger LOG = LogManager.getLogger(ModuleClassLoader.class);
+  private static final Logger LOG = Logger.getLogger(ModuleClassLoader.class);
 
   public MPSModuleClassLoader(ClassLoader parent) {
     super(parent);
   }
 
+  protected MPSModuleClassLoader(String name, ClassLoader parent) {
+    super(name, parent);
+  }
+
+  @Override
+  public String toString() {
+    if (getName() != null) {
+      return String.format("MPS Module CL %s@%x", getName(), hashCode());
+    } else {
+      return super.toString();
+    }
+  }
+
   /**
-   * @return true if the class loader is managed by MPS
-   * for instance, it might be a non-reloadable classloader
-   * which delegates directly to IDEA class loading subsystem (which is non-reloadable)
+   * does its best to load class without traversing dependencies or parent classloader
+   * @param name
+   * @return
+   * @throws ClassNotFoundException
    */
-  public abstract boolean isReloadableClassLoader();
+  @NotNull
+  public abstract Class<?> loadOwnClass(String name) throws ClassNotFoundException;
 
   static {
     registerAsParallelCapable0();
+    // XXX I wonder if we do it here, in the base abstract class, do we need to have the same
+    //     in subclasses?
   }
 
   /**
    * MPS has a cyclic delegation classloading model (module A.a1 triggers class B.b which in turn triggers the loading of
    * the class A.a2 in the case when A depends on B and vice versa; the implicit class loading is triggered in the #defineClass invocation
-   * in the {@link ModuleClassLoader#loadFromSelf(String)} method).
+   * in the {@code ModuleClassLoader#loadFromSelf(String)} method).
    *
-   * Thus according to jls we declare ModuleClassLoader and all its ancestors as a parallel capable.
+   * Thus, according to jls we declare ModuleClassLoader and all its ancestors as a parallel capable.
    * Without this registration the threading model of the MPS classloading is flawed.
    * @since 3.4
    */

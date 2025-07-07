@@ -10,7 +10,6 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -25,11 +24,7 @@ public class check_CellKeyMapDeclarationUsed_NonTypesystemRule extends AbstractN
   public check_CellKeyMapDeclarationUsed_NonTypesystemRule() {
   }
   public void applyRule(final SNode cellKeyMapDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(cellKeyMapDeclaration), CONCEPTS.EditorCellModel$gN)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getTarget(it, LINKS.keyMap$nhDK), cellKeyMapDeclaration);
-      }
-    }) == null)) {
+    if ((ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(cellKeyMapDeclaration), CONCEPTS.EditorCellModel$gN)).findFirst((it) -> Objects.equals(SLinkOperations.getTarget(it, LINKS.keyMap$nhDK), cellKeyMapDeclaration)) == null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(cellKeyMapDeclaration, "Unused key map", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "7942833282342538573", null, errorTarget);

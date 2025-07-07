@@ -23,6 +23,7 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandler;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
@@ -88,99 +89,96 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createCustom_0() {
-    AbstractCellProvider provider = new _FunctionTypes._return_P0_E0<AbstractCellProvider>() {
-      public AbstractCellProvider invoke() {
-        return new AbstractCellProvider(myNode) {
-          @Override
-          public EditorCell createEditorCell(EditorContext editorContext) {
-            RefNodeListHandler handler = new RefNodeListHandler(editorContext) {
-              @Override
-              @NotNull
-              public SNode getNode() {
-                return myNode;
-              }
+    AbstractCellProvider provider = ((_FunctionTypes._return_P0_E0<AbstractCellProvider>) () -> {
+      return new AbstractCellProvider(myNode) {
+        @Override
+        public EditorCell createEditorCell(EditorContext editorContext) {
+          RefNodeListHandler handler = new RefNodeListHandler(editorContext) {
+            @Override
+            @NotNull
+            public SNode getNode() {
+              return myNode;
+            }
 
-              @Override
-              public SAbstractConcept getChildSConcept() {
-                return CONCEPTS.Expression$mB;
-              }
+            @Override
+            public SAbstractConcept getChildSConcept() {
+              return CONCEPTS.Expression$mB;
+            }
 
-              @Override
-              public SContainmentLink getSLink() {
-                return LINKS.element$6GqD;
-              }
+            @Override
+            public SContainmentLink getSLink() {
+              return LINKS.element$6GqD;
+            }
+            @Override
+            public SNode createNodeToInsert(EditorContext editorContext, @Nullable SNode prevNode, @Nullable SNode nextNode, int index) {
+              return SNodeFactoryOperations.createNewNode(CONCEPTS.Expression$mB, null);
+            }
 
-              @Override
-              public SNode createNodeToInsert(EditorContext p0) {
-                return SNodeFactoryOperations.createNewNode(CONCEPTS.Expression$mB, null);
+            @Override
+            public EditorCell createNodeCell(SNode elementNode) {
+              getCellFactory().pushCellContext();
+              getCellFactory().setNodeLocation(new SNodeLocation.FromNode(elementNode));
+              try {
+                EditorCell elementCell = super.createNodeCell(elementNode);
+                this.installElementCellActions(this.getNode(), elementNode, elementCell);
+                return elementCell;
+              } finally {
+                getCellFactory().popCellContext();
               }
+            }
 
-              @Override
-              public EditorCell createNodeCell(SNode elementNode) {
-                getCellFactory().pushCellContext();
-                getCellFactory().setNodeLocation(new SNodeLocation.FromNode(elementNode));
-                try {
-                  EditorCell elementCell = super.createNodeCell(elementNode);
-                  this.installElementCellActions(this.getNode(), elementNode, elementCell);
-                  return elementCell;
-                } finally {
-                  getCellFactory().popCellContext();
+            @Override
+            public EditorCell createEmptyCell() {
+              getCellFactory().pushCellContext();
+              getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.element$6GqD));
+              try {
+                EditorCell emptyCell = super.createEmptyCell();
+                this.installElementCellActions(getNode(), null, emptyCell);
+                return emptyCell;
+              } finally {
+                getCellFactory().popCellContext();
+              }
+            }
+
+            private final Object OBJ = new Object();
+
+            public void installElementCellActions(SNode listOwner, SNode elementNode, EditorCell elementCell) {
+              if (elementNode != null) {
+                if (elementCell.getUserObject(ELEMENT_CELL_BACKSPACE_SET) == null) {
+                  elementCell.putUserObject(ELEMENT_CELL_BACKSPACE_SET, OBJ);
+                  elementCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteNode(elementNode, CellAction_DeleteNode.DeleteDirection.BACKWARD));
+                }
+                if (elementCell.getUserObject(ELEMENT_CELL_DELETE_SET) == null) {
+                  elementCell.putUserObject(ELEMENT_CELL_DELETE_SET, OBJ);
+                  elementCell.setAction(CellActionType.DELETE, new CellAction_DeleteNode(elementNode, CellAction_DeleteNode.DeleteDirection.FORWARD));
+                }
+                if (elementCell.getUserObject(ELEMENT_CELL_ACTIONS_SET) == null) {
+                  elementCell.putUserObject(ELEMENT_CELL_ACTIONS_SET, OBJ);
+                  elementCell.addKeyMap(new RefNodeListHandlerElementKeyMap(this, SPropertyOperations.getString(SLinkOperations.getTarget(myNode, LINKS.customConstructor$6$s7), PROPS.separator$pgpv)));
                 }
               }
-
-              @Override
-              public EditorCell createEmptyCell() {
-                getCellFactory().pushCellContext();
-                getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.element$6GqD));
-                try {
-                  EditorCell emptyCell = super.createEmptyCell();
-                  this.installElementCellActions(getNode(), null, emptyCell);
-                  return emptyCell;
-                } finally {
-                  getCellFactory().popCellContext();
+              if (elementCell.getUserObject(AbstractCellListHandler.ELEMENT_CELL_COMPLETE_SET) == null) {
+                if (elementCell.getSubstituteInfo() == null || elementCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
+                  elementCell.putUserObject(AbstractCellListHandler.ELEMENT_CELL_COMPLETE_SET, OBJ);
+                  elementCell.setSubstituteInfo(new SChildSubstituteInfo(elementCell));
                 }
               }
+            }
 
-              private final Object OBJ = new Object();
+            public EditorCell createSeparatorCell() {
+              EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), getNode(), SPropertyOperations.getString(SLinkOperations.getTarget(myNode, LINKS.customConstructor$6$s7), PROPS.separator$pgpv));
+              editorCell.setSelectable(false);
+              editorCell.getStyle().set(StyleAttributes.LAYOUT_CONSTRAINT, "");
+              editorCell.getStyle().set(StyleAttributes.PUNCTUATION_LEFT, true);
+              return editorCell;
+            }
+          };
 
-              public void installElementCellActions(SNode listOwner, SNode elementNode, EditorCell elementCell) {
-                if (elementNode != null) {
-                  if (elementCell.getUserObject(ELEMENT_CELL_BACKSPACE_SET) == null) {
-                    elementCell.putUserObject(ELEMENT_CELL_BACKSPACE_SET, OBJ);
-                    elementCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteNode(elementNode, CellAction_DeleteNode.DeleteDirection.BACKWARD));
-                  }
-                  if (elementCell.getUserObject(ELEMENT_CELL_DELETE_SET) == null) {
-                    elementCell.putUserObject(ELEMENT_CELL_DELETE_SET, OBJ);
-                    elementCell.setAction(CellActionType.DELETE, new CellAction_DeleteNode(elementNode, CellAction_DeleteNode.DeleteDirection.FORWARD));
-                  }
-                  if (elementCell.getUserObject(ELEMENT_CELL_ACTIONS_SET) == null) {
-                    elementCell.putUserObject(ELEMENT_CELL_ACTIONS_SET, OBJ);
-                    elementCell.addKeyMap(new RefNodeListHandlerElementKeyMap(this, SPropertyOperations.getString(SLinkOperations.getTarget(myNode, LINKS.customConstructor$6$s7), PROPS.separator$pgpv)));
-                  }
-                }
-                if (elementCell.getUserObject(AbstractCellListHandler.ELEMENT_CELL_COMPLETE_SET) == null) {
-                  if (elementCell.getSubstituteInfo() == null || elementCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
-                    elementCell.putUserObject(AbstractCellListHandler.ELEMENT_CELL_COMPLETE_SET, OBJ);
-                    elementCell.setSubstituteInfo(new SChildSubstituteInfo(elementCell));
-                  }
-                }
-              }
+          return handler.createCells(new CellLayout_Indent());
+        }
 
-              public EditorCell createSeparatorCell() {
-                EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), getNode(), SPropertyOperations.getString(SLinkOperations.getTarget(myNode, LINKS.customConstructor$6$s7), PROPS.separator$pgpv));
-                editorCell.setSelectable(false);
-                editorCell.getStyle().set(StyleAttributes.LAYOUT_CONSTRAINT, "");
-                editorCell.getStyle().set(StyleAttributes.PUNCTUATION_LEFT, true);
-                return editorCell;
-              }
-            };
-
-            return handler.createCells(new CellLayout_Indent());
-          }
-
-        };
-      }
-    }.invoke();
+      };
+    }).invoke();
     EditorCell editorCell = provider.createEditorCell(getEditorContext());
     editorCell.setCellId("Custom_pubti2_b0");
     return editorCell;

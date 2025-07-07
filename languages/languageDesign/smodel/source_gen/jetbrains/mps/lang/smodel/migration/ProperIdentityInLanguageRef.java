@@ -10,7 +10,6 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -20,7 +19,6 @@ import jetbrains.mps.lang.modelapi.behavior.ModuleIdentity__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.behavior.LanguageIdentity__BehaviorDescriptor;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -43,16 +41,8 @@ public class ProperIdentityInLanguageRef extends MigrationScriptBase {
     {
       SearchScope scope_4t4wzo_a0e = CommandUtil.createScope(m);
       final SearchScope scope_4t4wzo_a0e_0 = new EditableFilteringScope(scope_4t4wzo_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_4t4wzo_a0e_0;
-        }
-      };
-      for (SNode lre : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LanguageRefExpression$PI, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.languageId$xSH1), CONCEPTS.LanguageIdentityBySourceModule$T8);
-        }
-      })) {
+      QueryExecutionContext context = () -> scope_4t4wzo_a0e_0;
+      for (SNode lre : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LanguageRefExpression$PI, false)).where((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.languageId$xSH1), CONCEPTS.LanguageIdentityBySourceModule$T8))) {
         SNode moduleId = SNodeOperations.cast(SLinkOperations.getTarget(lre, LINKS.languageId$xSH1), CONCEPTS.LanguageIdentityBySourceModule$T8);
         if (ListSequence.fromList(new IAttributeDescriptor.AllAttributes().list(moduleId)).isNotEmpty() || ListSequence.fromList(new IAttributeDescriptor.AllAttributes().list(SLinkOperations.getTarget(moduleId, LINKS.moduleReference$Jac_))).isNotEmpty()) {
           // likely, some generator macros that require human intervention to get them fixed properly
@@ -69,23 +59,11 @@ public class ProperIdentityInLanguageRef extends MigrationScriptBase {
     {
       SearchScope scope_4t4wzo_a0f = CommandUtil.createScope(m);
       final SearchScope scope_4t4wzo_a0f_0 = new EditableFilteringScope(scope_4t4wzo_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_4t4wzo_a0f_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LanguageRefExpression$PI, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.languageId$xSH1), CONCEPTS.LanguageIdentityBySourceModule$T8);
-        }
-      }).select(new ISelector<SNode, DeprecatedConceptNotMigratedProblem>() {
-        public DeprecatedConceptNotMigratedProblem select(SNode it) {
-          return new DeprecatedConceptNotMigratedProblem(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.languageId$xSH1), CONCEPTS.LanguageIdentityBySourceModule$T8), LINKS.moduleReference$Jac_));
-        }
-      });
+      QueryExecutionContext context = () -> scope_4t4wzo_a0f_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LanguageRefExpression$PI, false)).where((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.languageId$xSH1), CONCEPTS.LanguageIdentityBySourceModule$T8)).select((it) -> new DeprecatedConceptNotMigratedProblem(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.languageId$xSH1), CONCEPTS.LanguageIdentityBySourceModule$T8), LINKS.moduleReference$Jac_)));
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 13);
   }
 

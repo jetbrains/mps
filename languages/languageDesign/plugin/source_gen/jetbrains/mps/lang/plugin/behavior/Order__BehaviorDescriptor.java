@@ -18,7 +18,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -30,9 +29,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class Order__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x22035699bdd78147L, "jetbrains.mps.lang.plugin.structure.Order");
 
-  public static final SMethod<String> getGeneratedClassName_id2CFL3ni7zCY = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedClassName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2CFL3ni7zCY").build();
-  public static final SMethod<Boolean> presents_id1jgMklchcXk = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("presents").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1jgMklchcXk").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getOrder_id2CFL3ni7A9T = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getOrder").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2CFL3ni7A9T").build();
+  public static final SMethod<String> getGeneratedClassName_id2CFL3ni7zCY = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedClassName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3038738109029038654L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
+  public static final SMethod<Boolean> presents_id1jgMklchcXk = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("presents").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1499919975383879508L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getOrder_id2CFL3ni7A9T = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getOrder").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3038738109029048953L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGeneratedClassName_id2CFL3ni7zCY, presents_id1jgMklchcXk, getOrder_id2CFL3ni7A9T);
 
@@ -49,11 +48,7 @@ public final class Order__BehaviorDescriptor extends BaseBHDescriptor {
     return NameUtil.toValidCamelIdentifier(n) + "_Order";
   }
   /*package*/ static boolean presents_id1jgMklchcXk(@NotNull SNode __thisNode__, final SNode tab) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.tab$IZW4)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.editorTab$J5Ao) == tab;
-      }
-    }).isNotEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.tab$IZW4)).where((it) -> SLinkOperations.getTarget(it, LINKS.editorTab$J5Ao) == tab).isNotEmpty();
   }
   /*package*/ static SNode getOrder_id2CFL3ni7A9T(@NotNull SNode __thisNode__) {
     return __thisNode__;

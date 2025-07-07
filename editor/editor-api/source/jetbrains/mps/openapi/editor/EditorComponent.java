@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,12 @@
 package jetbrains.mps.openapi.editor;
 
 import jetbrains.mps.messages.IMessageHandler;
-import jetbrains.mps.openapi.editor.DeletionApprover.DummyDeletionApprover;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.commands.CommandContext;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
+import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.openapi.editor.update.Updater;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -33,7 +33,8 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.List;
 
 /**
- * evgeny, 11/17/11
+ * This is a platform-agnostic UI (Swing, SWT) component to host node editing.
+ * Note, clients generally shall interact with {@code EditorComponent} and {@link Editor} through {@link EditorContext}
  */
 public interface EditorComponent {
   SNode getEditedNode();
@@ -62,13 +63,6 @@ public interface EditorComponent {
   EditorCell findCellWithId(SNode node, @NotNull String id);
 
   /**
-   * @deprecated use {@link #findNodeCellWithRole(SNode, SReferenceLink)} or {@link #findNodeCellWithRole(SNode, SContainmentLink)} instead
-   */
-  @Deprecated
-  @Nullable
-  EditorCell findNodeCellWithRole(SNode node, String role);
-
-  /**
    * Look up a cell for given node which represents specified association.
    *
    * NOTE, default implementation is just for smooth transition, subclasses shall implement this method, default implementation would be removed later.
@@ -78,9 +72,7 @@ public interface EditorComponent {
    * @since 2020.2
    */
   @Nullable
-  default EditorCell findNodeCellWithRole(SNode node, @Nullable SReferenceLink link) {
-    return link == null ? null : findNodeCellWithRole(node, link.getName());
-  }
+  EditorCell findNodeCellWithRole(SNode node, @Nullable SReferenceLink link);
 
   /**
    * Look up a cell for given node in a given aggregation link.
@@ -92,13 +84,23 @@ public interface EditorComponent {
    * @since 2020.2
    */
   @Nullable
-  default EditorCell findNodeCellWithRole(SNode node, @Nullable SContainmentLink link) {
-    return link == null ? null : findNodeCellWithRole(node, link.getName());
-  }
+  EditorCell findNodeCellWithRole(SNode node, @Nullable SContainmentLink link);
 
   void scrollToNode(SNode node);
 
   void scrollToCell(@NotNull EditorCell cell);
+
+  /**
+   * Position component so that its head/start is visible
+   * @since 2022.3
+   */
+  default void scrollToTop() {}
+
+  /**
+   * Position component so that its tail/end is visible
+   * @since 2022.3
+   */
+  default void scrollToBottom() {}
 
   /**
    * Can be called update editor in accordance with actual state of the currently
@@ -137,13 +139,54 @@ public interface EditorComponent {
    */
   void touch();
 
+  /**
+   * @deprecated not part of EditorComponent (swing/ui), rather EditorContext (interaction with user),
+   *             use {@link EditorContext#getDeletionApprover()} instead
+   */
+  @Deprecated(since = "2022.3", forRemoval = true)
   default DeletionApprover getDeletionApprover() {
-    return new DummyDeletionApprover();
+    return getEditorContext().getDeletionApprover();
   }
 
   /**
    * Shows error/warning messages inside the editor pane.
    */
   @NotNull
-  IMessageHandler getMessageHandler();
+  IMessageHandler getMessageHandler(); // XXX perhaps, part of EditorContext, too?
+
+  boolean isAutomaticSubstitutionEnabled();
+
+  /**
+   * @return Description of this {@code EditorComponent} state one can use to {@link #restoreState(EditorComponentState) restore} later.
+   * @since 2022.3
+   */
+  @NotNull
+  default EditorComponentState captureState() {
+    // default implementation provided for transition period, remove once all subclasses get a chance to implement (mbeddr?)
+    return new EditorComponentState() {
+      @Override
+      public void clearSessionState() {
+        // no-op
+      }
+
+      @Override
+      public boolean hasErrors() {
+        return false;
+      }
+    };
+  }
+
+  /**
+   * Bring this {@code EditorComponent} to the state {@link #captureState() captured} earlier
+   * @since 2022.3
+   */
+  default void restoreState(@NotNull EditorComponentState state) {
+    // no-op, default impl just for smooth transition
+  }
+
+  /**
+   * Gives access to actual styling settings for the editor
+   * @since 2022.3
+   */
+  StyleRegistry getStyleRegistry();
 }

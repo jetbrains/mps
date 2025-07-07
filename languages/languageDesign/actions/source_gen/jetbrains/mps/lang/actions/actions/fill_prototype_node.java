@@ -13,7 +13,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class fill_prototype_node {
   public static class NodeFactory_3757480014665236945 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.SNodeCreatorAndInitializer$1K)) {
         SLinkOperations.setTarget(newNode, LINKS.prototype$Xaot, ((SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.SNodeCreatorAndInitializer$1K), LINKS.prototypeNode$BNqv) != null) ? SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.SNodeCreatorAndInitializer$1K), LINKS.prototypeNode$BNqv) : SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.SNodeCreatorAndInitializer$1K), LINKS.prototype$Xaot)));
       } else if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.SNodeCreator$dS)) {
@@ -22,7 +22,7 @@ public class fill_prototype_node {
     }
   }
   public static class NodeFactory_3757480014665236933 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.NF_Concept_NewInstance$o4)) {
         SLinkOperations.setTarget(newNode, LINKS.prototype$riug, ((SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NF_Concept_NewInstance$o4), LINKS.prototypeNode$IlF$) != null) ? SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NF_Concept_NewInstance$o4), LINKS.prototypeNode$IlF$) : SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NF_Concept_NewInstance$o4), LINKS.prototype$riug)));
       } else if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Concept_NewInstance$S_)) {
@@ -31,7 +31,7 @@ public class fill_prototype_node {
     }
   }
   public static class NodeFactory_3757480014665236936 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.NF_Model_CreateNewNodeOperation$AE)) {
         SLinkOperations.setTarget(newNode, LINKS.prototype$T2sQ, ((SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NF_Model_CreateNewNodeOperation$AE), LINKS.prototypeNode$zsuq) != null) ? SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NF_Model_CreateNewNodeOperation$AE), LINKS.prototypeNode$zsuq) : SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NF_Model_CreateNewNodeOperation$AE), LINKS.prototype$T2sQ)));
       } else if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Model_CreateNewNodeOperation$s$)) {
@@ -40,7 +40,7 @@ public class fill_prototype_node {
     }
   }
   public static class NodeFactory_3757480014665236942 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.NF_Model_CreateNewRootNodeOperation$tU)) {
         SLinkOperations.setTarget(newNode, LINKS.prototype$ljQ4, ((SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NF_Model_CreateNewRootNodeOperation$tU), LINKS.prototypeNode$zsuq) != null) ? SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NF_Model_CreateNewRootNodeOperation$tU), LINKS.prototypeNode$zsuq) : SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NF_Model_CreateNewRootNodeOperation$tU), LINKS.prototype$ljQ4)));
       } else if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Model_CreateNewRootNodeOperation$v6)) {

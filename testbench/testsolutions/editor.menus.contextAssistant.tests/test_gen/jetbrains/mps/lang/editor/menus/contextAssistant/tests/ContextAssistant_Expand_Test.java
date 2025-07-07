@@ -4,9 +4,10 @@ package jetbrains.mps.lang.editor.menus.contextAssistant.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import javax.swing.SwingUtilities;
@@ -20,11 +21,11 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 
 @MPSLaunch
 public class ContextAssistant_Expand_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(ContextAssistant_Expand_Test.class, "${mps_home}", "r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ContextAssistant_Expand_Test.class).projectPath(null).modelRef("r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)").reopenProject(false).build());
 
   public ContextAssistant_Expand_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -42,19 +43,17 @@ public class ContextAssistant_Expand_Test extends BaseTransformationTest {
     public void testMethodImpl() throws Exception {
       initEditorComponent("379023083996770358", "379023083996779889");
       invokeAction("jetbrains.mps.ide.editor.actions.ExpandAll_Action");
-      SwingUtilities.invokeAndWait(new Runnable() {
-        public void run() {
-          ContextAssistantManager contextAssistantManager = getEditorComponent().getEditorContext().getContextAssistantManager();
-          contextAssistantManager.updateImmediately();
-          Assert.assertNotNull(contextAssistantManager.getActiveAssistant());
-          List<TransformationMenuItem> activeItems = contextAssistantManager.getActiveMenuItems();
-          Assert.assertNotNull(activeItems);
-          Assert.assertTrue(activeItems.size() > 0);
-          Set<EditorCell_WithComponent> componentCells = getEditorComponent().getCellTracker().getComponentCells();
-          Assert.assertFalse(componentCells.isEmpty());
-          for (EditorCell_WithComponent cell : SetSequence.fromSet(componentCells)) {
-            Assert.assertTrue(cell.getComponent().isVisible());
-          }
+      SwingUtilities.invokeAndWait(() -> {
+        ContextAssistantManager contextAssistantManager = getEditorComponent().getEditorContext().getContextAssistantManager();
+        contextAssistantManager.updateImmediately();
+        Assert.assertNotNull(contextAssistantManager.getActiveAssistant());
+        List<TransformationMenuItem> activeItems = contextAssistantManager.getActiveMenuItems();
+        Assert.assertNotNull(activeItems);
+        Assert.assertTrue(activeItems.size() > 0);
+        Set<EditorCell_WithComponent> componentCells = getEditorComponent().getCellTracker().getComponentCells();
+        Assert.assertFalse(componentCells.isEmpty());
+        for (EditorCell_WithComponent cell : SetSequence.fromSet(componentCells)) {
+          Assert.assertTrue(cell.getComponent().isVisible());
         }
       });
 

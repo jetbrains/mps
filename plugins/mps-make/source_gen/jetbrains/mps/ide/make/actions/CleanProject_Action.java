@@ -29,6 +29,7 @@ public class CleanProject_Action extends BaseAction {
     super("Clean Compiled Java Files", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -60,11 +61,9 @@ public class CleanProject_Action extends BaseAction {
     ProgressManager.getInstance().run(new Task.Modal(event.getData(CommonDataKeys.PROJECT), "Cleaning", true) {
       @Override
       public void run(@NotNull final ProgressIndicator indicator) {
-        event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            ModuleMaker maker = new ModuleMaker();
-            maker.clean(modulesToBuild, new ProgressMonitorAdapter(indicator));
-          }
+        event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(() -> {
+          ModuleMaker maker = new ModuleMaker();
+          maker.clean(modulesToBuild, new ProgressMonitorAdapter(indicator));
         });
       }
     });

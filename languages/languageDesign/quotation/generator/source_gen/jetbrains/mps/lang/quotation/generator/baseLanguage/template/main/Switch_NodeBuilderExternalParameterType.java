@@ -13,10 +13,10 @@ import jetbrains.mps.generator.runtime.ReductionRuleBase;
 import jetbrains.mps.generator.runtime.TemplateRuleWithCondition;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.generator.runtime.TemplateContext;
-import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.template.ReductionRuleQueryContext;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.runtime.MetaObjectContainer;
@@ -46,15 +46,15 @@ public class Switch_NodeBuilderExternalParameterType extends TemplateSwitchBase 
       super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8021365306016165577"), CONCEPTS.Expression$mB, true);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_8_0(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_8_0(new SourceSubstituteMacroNodeContext(context, copySrcMacro_z6su2d_b0a0d0c5));
-      tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro_z6su2d_b0a0d0c5, "tpl/r:00000000-0000-4000-0000-011c8959034c/8021365306016168901", context);
+      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_8_0(new SourceSubstituteMacroNodeContext(context, copySrcMacro));
+      tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro, "tpl/r:00000000-0000-4000-0000-011c8959034c/8021365306016168901", context);
       return tlist1;
     }
   }
@@ -63,7 +63,7 @@ public class Switch_NodeBuilderExternalParameterType extends TemplateSwitchBase 
       super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8021365306016171124"), CONCEPTS.Expression$mB, true);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_8_1(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -94,7 +94,7 @@ public class Switch_NodeBuilderExternalParameterType extends TemplateSwitchBase 
       super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8021365306016174162"), CONCEPTS.Expression$mB, true);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_8_2(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -131,7 +131,7 @@ public class Switch_NodeBuilderExternalParameterType extends TemplateSwitchBase 
       return rv;
     }
   }
-  private static final SNodePointer copySrcMacro_z6su2d_b0a0d0c5 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1010197743173143128");
+  private static final SNodePointer copySrcMacro = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1010197743173143128");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");

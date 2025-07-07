@@ -13,7 +13,6 @@ import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
-import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.LeftBracketStyleClass;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -23,7 +22,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.SemicolonStyleClass;
-import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBracketStyleClass;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /*package*/ class ModelNodeInitializer_EditorBuilder_a extends AbstractEditorBuilder {
@@ -55,45 +53,34 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createConstant_0());
     editorCell.addEditorCell(createConstant_1());
-    editorCell.addEditorCell(createConstant_2());
     editorCell.addEditorCell(createRefNode_0());
+    editorCell.addEditorCell(createConstant_2());
     editorCell.addEditorCell(createConstant_3());
     editorCell.addEditorCell(createConstant_4());
-    editorCell.addEditorCell(createConstant_5());
     editorCell.addEditorCell(createRefNode_1());
-    editorCell.addEditorCell(createConstant_6());
     return editorCell;
   }
   private EditorCell createConstant_0() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "[");
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "model");
     editorCell.setCellId("Constant_1dc1qi_a0");
-    Style style = new StyleImpl();
-    new LeftBracketStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
-    editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
   }
   private EditorCell createConstant_1() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "model");
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "=");
     editorCell.setCellId("Constant_1dc1qi_b0");
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createConstant_2() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "=");
-    editorCell.setCellId("Constant_1dc1qi_c0");
-    editorCell.setDefaultText("");
-    return editorCell;
-  }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new modelToCreateSingleRoleHandler_1dc1qi_d0(myNode, LINKS.modelToCreate$HXc4, getEditorContext());
+    SingleRoleCellProvider provider = new modelToCreateSingleRoleHandler_1dc1qi_c0(myNode, LINKS.modelToCreate$HXc4, getEditorContext());
     return provider.createCell();
   }
-  private static class modelToCreateSingleRoleHandler_1dc1qi_d0 extends SingleRoleCellProvider {
+  private static class modelToCreateSingleRoleHandler_1dc1qi_c0 extends SingleRoleCellProvider {
     @NotNull
     private SNode myNode;
 
-    public modelToCreateSingleRoleHandler_1dc1qi_d0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+    public modelToCreateSingleRoleHandler_1dc1qi_c0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
       super(containmentLink, context);
       myNode = ownerNode;
     }
@@ -140,36 +127,36 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       return "<no modelToCreate>";
     }
   }
-  private EditorCell createConstant_3() {
+  private EditorCell createConstant_2() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ";");
-    editorCell.setCellId("Constant_1dc1qi_e0");
+    editorCell.setCellId("Constant_1dc1qi_d0");
     Style style = new StyleImpl();
-    new SemicolonStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new SemicolonStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createConstant_4() {
+  private EditorCell createConstant_3() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "id");
+    editorCell.setCellId("Constant_1dc1qi_e0");
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_4() {
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "=");
     editorCell.setCellId("Constant_1dc1qi_f0");
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createConstant_5() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "=");
-    editorCell.setCellId("Constant_1dc1qi_g0");
-    editorCell.setDefaultText("");
-    return editorCell;
-  }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new nodeIdSingleRoleHandler_1dc1qi_h0(myNode, LINKS.nodeId$HXr5, getEditorContext());
+    SingleRoleCellProvider provider = new nodeIdSingleRoleHandler_1dc1qi_g0(myNode, LINKS.nodeId$HXr5, getEditorContext());
     return provider.createCell();
   }
-  private static class nodeIdSingleRoleHandler_1dc1qi_h0 extends SingleRoleCellProvider {
+  private static class nodeIdSingleRoleHandler_1dc1qi_g0 extends SingleRoleCellProvider {
     @NotNull
     private SNode myNode;
 
-    public nodeIdSingleRoleHandler_1dc1qi_h0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+    public nodeIdSingleRoleHandler_1dc1qi_g0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
       super(containmentLink, context);
       myNode = ownerNode;
     }
@@ -215,15 +202,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     protected String getNoTargetText() {
       return "<default>";
     }
-  }
-  private EditorCell createConstant_6() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "]");
-    editorCell.setCellId("Constant_1dc1qi_i0");
-    Style style = new StyleImpl();
-    new RightBracketStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
-    editorCell.getStyle().putAll(style);
-    editorCell.setDefaultText("");
-    return editorCell;
   }
 
   private static final class LINKS {

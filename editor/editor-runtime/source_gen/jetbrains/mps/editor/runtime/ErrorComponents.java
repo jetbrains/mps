@@ -7,22 +7,18 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
 import java.util.Map;
 import jetbrains.mps.nodeEditor.EditorComponent;
-import jetbrains.mps.checkers.LanguageErrorsComponent;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.model.SModel;
 import java.util.Set;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.smodel.event.SModelListener;
-import jetbrains.mps.smodel.SModelAdapter;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.smodel.SModelInternal;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import java.util.ArrayList;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -30,8 +26,20 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.HashSet;
 import com.intellij.openapi.application.ApplicationManager;
+import jetbrains.mps.smodel.event.SModelEvent;
+import jetbrains.mps.smodel.event.SModelImportEvent;
+import jetbrains.mps.smodel.event.SModelLanguageEvent;
+import jetbrains.mps.smodel.event.SModelDevKitEvent;
 
-@GeneratedClass(node = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)/8288306652661982667", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
+/**
+ * A part of {@link jetbrains.mps.editor.runtime.LanguageEditorChecker }.
+ * <p>
+ * Aggregates several instances of {@link jetbrains.mps.editor.runtime.LanguageErrorsComponent } by maintaining a map
+ * from {@link org.jetbrains.mps.openapi.model.SModel } to a set of {@link jetbrains.mps.nodeEditor.EditorComponent },
+ * and for each editor component a map to the corresponding instance of 
+ * {@link jetbrains.mps.editor.runtime.LanguageErrorsComponent }.
+ */
+@GeneratedClass(nodeId = "8288306652661982667", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
 /*package*/ class ErrorComponents {
   private final SRepository myRepository;
 
@@ -48,7 +56,7 @@ import com.intellij.openapi.application.ApplicationManager;
   private Map<EditorComponent, LanguageErrorsComponent> myEditorComponentToErrorMap = MapSequence.fromMap(new HashMap<EditorComponent, LanguageErrorsComponent>());
   private Map<SModel, Set<EditorComponent>> myModelToEditorComponentsMap = MapSequence.fromMap(new HashMap<SModel, Set<EditorComponent>>());
 
-  private EditorComponent.EditorDisposeListener myDisposeListener = new EditorComponent.EditorDisposeListener() {
+  private final EditorComponent.EditorDisposeListener myDisposeListener = new EditorComponent.EditorDisposeListener() {
     @Override
     public void editorWillBeDisposed(@NotNull EditorComponent editorComponent) {
       synchronized (myMapsLock) {
@@ -59,20 +67,10 @@ import com.intellij.openapi.application.ApplicationManager;
           if (SetSequence.fromSet(editorComponents).removeElement(editorComponent) != null) {
             if (SetSequence.fromSet(editorComponents).isEmpty()) {
               MapSequence.fromMap(myModelToEditorComponentsMap).removeKey(model);
-              removeModelListener(model);
             }
             break;
           }
         }
-      }
-    }
-  };
-
-  private SModelListener myModelListener = new SModelAdapter() {
-    @Override
-    public void beforeModelDisposed(SModel model) {
-      synchronized (myMapsLock) {
-        removeByModel(model);
       }
     }
   };
@@ -84,11 +82,15 @@ import com.intellij.openapi.application.ApplicationManager;
       return !(module.isReadOnly());
     }
     @Override
-    protected void stopListening(SModel model) {
+    protected void stopListening(final SModel model) {
+      final Wrappers._T<ArrayList<LanguageErrorsComponent>> cc = new Wrappers._T<ArrayList<LanguageErrorsComponent>>();
       synchronized (myMapsLock) {
         removeByModel(model);
+        cc.value = new ArrayList<>(MapSequence.fromMap(myEditorComponentToErrorMap).count());
+        Sequence.fromIterable(MapSequence.fromMap(myEditorComponentToErrorMap).values()).visitAll((e) -> cc.value.add(e));
       }
-      removeModelListener(model);
+      // intentionally outside of the lock, don't care if there's an outdated LEC instance to process detached model event
+      cc.value.forEach((it) -> it.processModelGone(model, myRepository));
     }
   };
 
@@ -101,6 +103,18 @@ import com.intellij.openapi.application.ApplicationManager;
     }
   }
 
+  private void clearByModel(SModel model) {
+    // when model's imports has been changed, tell all EC to re-highlight as imports may affect broken references
+    synchronized (myMapsLock) {
+      Set<EditorComponent> editorComponents = MapSequence.fromMap(myModelToEditorComponentsMap).get(model);
+      if (editorComponents != null) {
+        for (EditorComponent editorComponent : editorComponents) {
+          check_gbukv_a0a0a1a1a41(MapSequence.fromMap(myEditorComponentToErrorMap).get(editorComponent));
+        }
+      }
+    }
+  }
+
   private void removeByEditorComponent(@NotNull EditorComponent editorComponent) {
     LanguageErrorsComponent component = MapSequence.fromMap(myEditorComponentToErrorMap).removeKey(editorComponent);
     if (component != null) {
@@ -109,32 +123,12 @@ import com.intellij.openapi.application.ApplicationManager;
     editorComponent.removeDisposeListener(myDisposeListener);
   }
 
-  private void removeModelListener(SModel model) {
-    ((SModelInternal) model).removeModelListener(myModelListener);
-  }
-  private void addModelListener(SModel modelDescriptor) {
-    ((SModelInternal) modelDescriptor).addModelListener(myModelListener);
-  }
-
   /*package*/ void dispose() {
     synchronized (myMapsLock) {
       new RepoListenerRegistrar(myRepository, myRepositoryListener).detach();
-      Sequence.fromIterable(MapSequence.fromMap(myEditorComponentToErrorMap).values()).visitAll(new IVisitor<LanguageErrorsComponent>() {
-        public void visit(LanguageErrorsComponent it) {
-          it.dispose();
-        }
-      });
-      SetSequence.fromSet(MapSequence.fromMap(myEditorComponentToErrorMap).keySet()).visitAll(new IVisitor<EditorComponent>() {
-        public void visit(EditorComponent it) {
-          it.removeDisposeListener(myDisposeListener);
-        }
-      });
+      Sequence.fromIterable(MapSequence.fromMap(myEditorComponentToErrorMap).values()).visitAll((it) -> it.dispose());
+      SetSequence.fromSet(MapSequence.fromMap(myEditorComponentToErrorMap).keySet()).visitAll((it) -> it.removeDisposeListener(myDisposeListener));
       myEditorComponentToErrorMap = null;
-      SetSequence.fromSet(MapSequence.fromMap(myModelToEditorComponentsMap).keySet()).visitAll(new IVisitor<SModel>() {
-        public void visit(SModel it) {
-          removeModelListener(it);
-        }
-      });
       myModelToEditorComponentsMap = null;
     }
   }
@@ -173,16 +167,13 @@ import com.intellij.openapi.application.ApplicationManager;
         if (mappedEditorComponent == null) {
           mappedEditorComponent = SetSequence.fromSet(new HashSet<EditorComponent>());
           MapSequence.fromMap(myModelToEditorComponentsMap).put(model, mappedEditorComponent);
-          addModelListener(model);
         }
         SetSequence.fromSet(mappedEditorComponent).addElement(mainEditorComponent.value);
 
-        ApplicationManager.getApplication().invokeLater(new Runnable() {
-          public void run() {
-            mainEditorComponent.value.addDisposeListener(myDisposeListener);
-            if (mainEditorComponent.value.isDisposed()) {
-              myDisposeListener.editorWillBeDisposed(mainEditorComponent.value);
-            }
+        ApplicationManager.getApplication().invokeLater(() -> {
+          mainEditorComponent.value.addDisposeListener(myDisposeListener);
+          if (mainEditorComponent.value.isDisposed()) {
+            myDisposeListener.editorWillBeDisposed(mainEditorComponent.value);
           }
         });
       }
@@ -195,4 +186,23 @@ import com.intellij.openapi.application.ApplicationManager;
     }
   }
 
+  /*package*/ void processEvents(List<SModelEvent> events) {
+    for (SModelEvent evt : events) {
+      if (evt instanceof SModelImportEvent || evt instanceof SModelLanguageEvent || evt instanceof SModelDevKitEvent) {
+        final SModel model = evt.getModel();
+        synchronized (myMapsLock) {
+          if (MapSequence.fromMap(myModelToEditorComponentsMap).containsKey(model)) {
+            clearByModel(model);
+            return;
+          }
+        }
+      }
+    }
+  }
+  private static void check_gbukv_a0a0a1a1a41(LanguageErrorsComponent checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      checkedDotOperand.clear();
+    }
+
+  }
 }

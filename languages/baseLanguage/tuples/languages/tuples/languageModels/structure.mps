@@ -58,7 +58,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -98,6 +98,9 @@
       <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="1238853845806" />
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+    </node>
+    <node concept="PrWs8" id="3xYtul1xe0z" role="PzmwI">
+      <ref role="PrY4T" to="tpee:i1Ircah" resolve="ILocalVariableElement" />
     </node>
   </node>
   <node concept="1TIwiD" id="i1LFfHg">
@@ -292,6 +295,18 @@
       <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="1239576542472" />
       <ref role="20lvS9" node="i2lGYlf" resolve="NamedTupleComponentDeclaration" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="3xYtul1rirb">
+    <property role="EcuMT" value="4070820740695140043" />
+    <property role="TrG5h" value="LocalVariableDeclarationInTuple" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
+    <node concept="1TJgyj" id="3xYtul1rito" role="1TKVEi">
+      <property role="IQ2ns" value="4070820740695140184" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="variable" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpee:fzcpWvJ" resolve="LocalVariableDeclaration" />
     </node>
   </node>
 </model>

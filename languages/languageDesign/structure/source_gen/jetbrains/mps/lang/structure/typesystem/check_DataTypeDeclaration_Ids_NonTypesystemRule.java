@@ -16,7 +16,6 @@ import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.BaseQuickFixProvider;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -45,11 +44,7 @@ public class check_DataTypeDeclaration_Ids_NonTypesystemRule extends AbstractNon
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }
-    } else if (ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(dtd), CONCEPTS.EnumerationDeclaration$hv)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return it != dtd && Objects.equals(SPropertyOperations.getString(it, PROPS.datatypeId$$gBg), SPropertyOperations.getString(dtd, PROPS.datatypeId$$gBg));
-      }
-    })) {
+    } else if (ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(dtd), CONCEPTS.EnumerationDeclaration$hv)).any((it) -> it != dtd && Objects.equals(SPropertyOperations.getString(it, PROPS.datatypeId$$gBg), SPropertyOperations.getString(dtd, PROPS.datatypeId$$gBg)))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(dtd, "Duplicate member id.\n" + "Please invoke the \"Correct ID\" intention on it", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "7791109065627029312", null, errorTarget);

@@ -15,7 +15,7 @@ import jetbrains.mps.debug.api.evaluation.IEvaluationProvider;
 import jetbrains.mps.debugger.api.ui.DebugActionsUtil;
 import jetbrains.mps.debugger.java.runtime.evaluation.EvaluationProvider;
 
-@GeneratedClass(node = "r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)/8643693251546861699", model = "r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)")
+@GeneratedClass(nodeId = "8643693251546861699", model = "r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)")
 public class RemoveWatchAction_Action extends BaseAction {
   private static final Icon ICON = AllIcons.General.Remove;
 
@@ -23,6 +23,7 @@ public class RemoveWatchAction_Action extends BaseAction {
     super("Remove Watch", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

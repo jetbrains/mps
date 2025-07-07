@@ -7,14 +7,14 @@
   <languages />
   <imports>
     <import index="nmbs" ref="r:af5f8eb9-49c0-4279-87d3-3c80b1a56988(jetbrains.mps.samples.Kaja.typesystem)" />
+    <import index="9fia" ref="r:48cf50db-7ea3-4b1e-ab16-c3d84cbcf0df(jetbrains.mps.lang.dataFlow.framework.instructions)" />
     <import index="2gg1" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.errors(MPS.Core/)" />
-    <import index="1fjm" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework(MPS.Core/)" />
     <import index="c2kz" ref="r:b567205c-7e17-4168-b413-945a6e17f37d(jetbrains.mps.samples.Kaja.structure)" />
-    <import index="dau9" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework.instructions(MPS.Core/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="zavc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.errors.messageTargets(MPS.Core/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
+    <import index="8qxk" ref="r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)" />
     <import index="qurh" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.typesystem.runtime(MPS.Core/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="u78q" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typesystem.inference(MPS.Core/)" />
@@ -126,7 +126,7 @@
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -148,7 +148,7 @@
         <child id="8276990574895933172" name="throwable" index="1zc67B" />
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1144226303539" name="jetbrains.mps.baseLanguage.structure.ForeachStatement" flags="nn" index="1DcWWT">
@@ -191,6 +191,7 @@
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -270,7 +271,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -291,7 +292,6 @@
         <child id="1237721435807" name="elementType" index="HW$YZ" />
         <child id="1237731803878" name="copyFrom" index="I$8f6" />
       </concept>
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1160600644654" name="jetbrains.mps.baseLanguage.collections.structure.ListCreatorWithInit" flags="nn" index="Tc6Ow" />
       <concept id="1160612413312" name="jetbrains.mps.baseLanguage.collections.structure.AddElementOperation" flags="nn" index="TSZUe" />
       <concept id="1160666733551" name="jetbrains.mps.baseLanguage.collections.structure.AddAllElementsOperation" flags="nn" index="X8dFx" />
@@ -617,11 +617,11 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="Rh6nW" id="1J" role="1bW2Oz">
+                  <node concept="gl6BB" id="1J" role="1bW2Oz">
                     <property role="TrG5h" value="it" />
-                    <uo k="s:originTrace" v="n:1904811872814168219" />
+                    <uo k="s:originTrace" v="n:6847626768367734868" />
                     <node concept="2jxLKc" id="1O" role="1tU5fm">
-                      <uo k="s:originTrace" v="n:1904811872814168220" />
+                      <uo k="s:originTrace" v="n:6847626768367734869" />
                     </node>
                   </node>
                 </node>
@@ -683,11 +683,11 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="Rh6nW" id="22" role="1bW2Oz">
+                  <node concept="gl6BB" id="22" role="1bW2Oz">
                     <property role="TrG5h" value="it" />
-                    <uo k="s:originTrace" v="n:1904811872814168238" />
+                    <uo k="s:originTrace" v="n:6847626768367734870" />
                     <node concept="2jxLKc" id="27" role="1tU5fm">
-                      <uo k="s:originTrace" v="n:1904811872814168239" />
+                      <uo k="s:originTrace" v="n:6847626768367734871" />
                     </node>
                   </node>
                 </node>
@@ -862,11 +862,11 @@
                         </node>
                       </node>
                     </node>
-                    <node concept="Rh6nW" id="2M" role="1bW2Oz">
+                    <node concept="gl6BB" id="2M" role="1bW2Oz">
                       <property role="TrG5h" value="it" />
-                      <uo k="s:originTrace" v="n:1904811872814168263" />
+                      <uo k="s:originTrace" v="n:6847626768367734872" />
                       <node concept="2jxLKc" id="2Y" role="1tU5fm">
-                        <uo k="s:originTrace" v="n:1904811872814168264" />
+                        <uo k="s:originTrace" v="n:6847626768367734873" />
                       </node>
                     </node>
                   </node>
@@ -1882,11 +1882,11 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="Rh6nW" id="7D" role="1bW2Oz">
+                      <node concept="gl6BB" id="7D" role="1bW2Oz">
                         <property role="TrG5h" value="it" />
-                        <uo k="s:originTrace" v="n:4394627182935027345" />
+                        <uo k="s:originTrace" v="n:6847626768367734858" />
                         <node concept="2jxLKc" id="7N" role="1tU5fm">
-                          <uo k="s:originTrace" v="n:4394627182935027346" />
+                          <uo k="s:originTrace" v="n:6847626768367734859" />
                         </node>
                       </node>
                     </node>
@@ -1982,11 +1982,11 @@
                             </node>
                           </node>
                         </node>
-                        <node concept="Rh6nW" id="85" role="1bW2Oz">
+                        <node concept="gl6BB" id="85" role="1bW2Oz">
                           <property role="TrG5h" value="it" />
-                          <uo k="s:originTrace" v="n:4394627182935027545" />
+                          <uo k="s:originTrace" v="n:6847626768367734860" />
                           <node concept="2jxLKc" id="8f" role="1tU5fm">
-                            <uo k="s:originTrace" v="n:4394627182935027546" />
+                            <uo k="s:originTrace" v="n:6847626768367734861" />
                           </node>
                         </node>
                       </node>
@@ -2303,11 +2303,11 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="Rh6nW" id="9J" role="1bW2Oz">
+                  <node concept="gl6BB" id="9J" role="1bW2Oz">
                     <property role="TrG5h" value="it" />
-                    <uo k="s:originTrace" v="n:1904811872814167991" />
+                    <uo k="s:originTrace" v="n:6847626768367734862" />
                     <node concept="2jxLKc" id="9O" role="1tU5fm">
-                      <uo k="s:originTrace" v="n:1904811872814167992" />
+                      <uo k="s:originTrace" v="n:6847626768367734863" />
                     </node>
                   </node>
                 </node>
@@ -2369,11 +2369,11 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="Rh6nW" id="a2" role="1bW2Oz">
+                  <node concept="gl6BB" id="a2" role="1bW2Oz">
                     <property role="TrG5h" value="it" />
-                    <uo k="s:originTrace" v="n:1904811872814168011" />
+                    <uo k="s:originTrace" v="n:6847626768367734864" />
                     <node concept="2jxLKc" id="a7" role="1tU5fm">
-                      <uo k="s:originTrace" v="n:1904811872814168012" />
+                      <uo k="s:originTrace" v="n:6847626768367734865" />
                     </node>
                   </node>
                 </node>
@@ -2551,11 +2551,11 @@
                         </node>
                       </node>
                     </node>
-                    <node concept="Rh6nW" id="aM" role="1bW2Oz">
+                    <node concept="gl6BB" id="aM" role="1bW2Oz">
                       <property role="TrG5h" value="it" />
-                      <uo k="s:originTrace" v="n:1904811872814168073" />
+                      <uo k="s:originTrace" v="n:6847626768367734866" />
                       <node concept="2jxLKc" id="aY" role="1tU5fm">
-                        <uo k="s:originTrace" v="n:1904811872814168074" />
+                        <uo k="s:originTrace" v="n:6847626768367734867" />
                       </node>
                     </node>
                   </node>
@@ -2943,7 +2943,7 @@
                 <property role="TrG5h" value="program" />
                 <uo k="s:originTrace" v="n:6630310702470719666" />
                 <node concept="3uibUv" id="dd" role="1tU5fm">
-                  <ref role="3uigEE" to="1fjm:~Program" resolve="Program" />
+                  <ref role="3uigEE" to="8qxk:3yaa4ph8tzc" resolve="Program" />
                   <uo k="s:originTrace" v="n:6630310702470719662" />
                 </node>
                 <node concept="2YIFZM" id="de" role="33vP2m">
@@ -3004,7 +3004,7 @@
                               </node>
                             </node>
                             <node concept="Xl_RD" id="dz" role="37wK5m">
-                              <property role="Xl_RC" value="This node is too complex too analyze by data flow algorithm" />
+                              <property role="Xl_RC" value="This node is too complex to analyze by the data flow algorithm" />
                               <uo k="s:originTrace" v="n:6067900799350600200" />
                             </node>
                             <node concept="Xl_RD" id="d$" role="37wK5m">
@@ -3044,7 +3044,7 @@
                     <uo k="s:originTrace" v="n:6630310702470796745" />
                   </node>
                   <node concept="liA8E" id="dH" role="2OqNvi">
-                    <ref role="37wK5l" to="1fjm:~Program.size()" resolve="size" />
+                    <ref role="37wK5l" to="8qxk:3yaa4ph8t_v" resolve="size" />
                     <uo k="s:originTrace" v="n:6067900799350600170" />
                   </node>
                 </node>
@@ -3059,7 +3059,7 @@
                   <ref role="3uigEE" to="33ny:~Set" resolve="Set" />
                   <uo k="s:originTrace" v="n:6630310702471993738" />
                   <node concept="3uibUv" id="dL" role="11_B2D">
-                    <ref role="3uigEE" to="dau9:~Instruction" resolve="Instruction" />
+                    <ref role="3uigEE" to="9fia:3yaa4ph8tQC" resolve="Instruction" />
                     <uo k="s:originTrace" v="n:6630310702471993741" />
                   </node>
                 </node>
@@ -3070,7 +3070,7 @@
                     <uo k="s:originTrace" v="n:6630310702471993753" />
                   </node>
                   <node concept="liA8E" id="dN" role="2OqNvi">
-                    <ref role="37wK5l" to="1fjm:~Program.getUnreachableInstructions()" resolve="getUnreachableInstructions" />
+                    <ref role="37wK5l" to="8qxk:3yaa4ph8tHU" resolve="getUnreachableInstructions" />
                     <uo k="s:originTrace" v="n:6630310702471993754" />
                   </node>
                 </node>
@@ -3089,7 +3089,7 @@
                 <property role="TrG5h" value="n" />
                 <uo k="s:originTrace" v="n:1223640538238" />
                 <node concept="3uibUv" id="dR" role="1tU5fm">
-                  <ref role="3uigEE" to="dau9:~Instruction" resolve="Instruction" />
+                  <ref role="3uigEE" to="9fia:3yaa4ph8tQC" resolve="Instruction" />
                   <uo k="s:originTrace" v="n:6630310702472120719" />
                 </node>
               </node>
@@ -3108,7 +3108,7 @@
                       <node concept="2OqwBi" id="dZ" role="10QFUP">
                         <uo k="s:originTrace" v="n:6630310702472129897" />
                         <node concept="liA8E" id="e0" role="2OqNvi">
-                          <ref role="37wK5l" to="dau9:~Instruction.getSource()" resolve="getSource" />
+                          <ref role="37wK5l" to="9fia:3yaa4ph8tRD" resolve="getSource" />
                           <uo k="s:originTrace" v="n:6630310702472129898" />
                         </node>
                         <node concept="37vLTw" id="e1" role="2Oq$k0">

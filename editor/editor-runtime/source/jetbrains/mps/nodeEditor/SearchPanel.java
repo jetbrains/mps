@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,15 @@
 package jetbrains.mps.nodeEditor;
 
 import com.intellij.ide.DataManager;
+import com.intellij.ide.lightEdit.LightEditCompatible;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
+import com.intellij.openapi.actionSystem.IdeActions;
 import com.intellij.openapi.editor.colors.EditorColors;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
+import com.intellij.openapi.keymap.KeymapUtil;
+import com.intellij.openapi.project.DumbAwareAction;
+import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.search.AbstractSearchPanel;
 import jetbrains.mps.ide.search.SearchHistoryStorage;
@@ -57,14 +63,26 @@ public class SearchPanel extends AbstractSearchPanel {
   public SearchPanel(EditorComponent editor) {
     super();
     myEditor = editor;
+    new CloseAction() {
+      @Override
+      public void actionPerformed(@NotNull AnActionEvent e) {
+        deactivate();
+      }
+    }.registerCustomShortcutSet(KeymapUtil.getActiveKeymapShortcuts(IdeActions.ACTION_EDITOR_ESCAPE), this);
+  }
+
+  /**
+   * Copied from {@link com.intellij.find.SearchReplaceComponent.CloseAction}
+   */
+  private abstract static class CloseAction extends DumbAwareAction implements LightEditCompatible {
   }
 
   @Override
   protected SearchHistoryStorage getSearchHistory() {
     if (mySearchHistory == null) {
-      final MPSProject p = MPSCommonDataKeys.MPS_PROJECT.getData(DataManager.getInstance().getDataContext(myEditor));
+      final Project p = CommonDataKeys.PROJECT.getData(DataManager.getInstance().getDataContext(myEditor));
       if (p != null) {
-        mySearchHistory = p.getComponent(SearchHistoryComponent.class);
+        mySearchHistory = SearchHistoryComponent.getInstance(p);
       }
       if (mySearchHistory == null) {
         mySearchHistory = new SearchHistoryComponent();
@@ -84,14 +102,13 @@ public class SearchPanel extends AbstractSearchPanel {
     }
     if (rootCell instanceof EditorCell_Collection) {
       EditorCell_Collection collection = (EditorCell_Collection) rootCell;
-      List<EditorCell_Label> editorCell_labelList = CollectionUtil.filter(EditorCell_Label.class, collection.dfsCells());
-      for (EditorCell_Label label : editorCell_labelList) {
+      collection.dfsCells().stream().filter(EditorCell_Label.class::isInstance).map(EditorCell_Label.class::cast).forEach(label -> {
         if (PunctuationUtil.hasLeftGap(label)) {
           sb.append(' ');
         }
         sb.append(label.getRenderedText());
-      }
-      cells.addAll(editorCell_labelList);
+        cells.add(label);
+      });
     }
     return new Pair<>(cells, sb.toString());
   }
@@ -397,8 +414,8 @@ public class SearchPanel extends AbstractSearchPanel {
 
     public SearchPanelEditorMessage(@NotNull EditorCell_Label cell, @NotNull List<Pair> positions) {
       super(cell.getSNode(),
-          EditorColorsManager.getInstance().getGlobalScheme().getAttributes(EditorColors.SEARCH_RESULT_ATTRIBUTES).getBackgroundColor(),
-          "", SearchPanel.this.myOwner);
+            EditorColorsManager.getInstance().getGlobalScheme().getAttributes(EditorColors.SEARCH_RESULT_ATTRIBUTES).getBackgroundColor(),
+            "", SearchPanel.this.myOwner);
       myCell = cell;
       myPositions = positions;
     }
@@ -426,9 +443,9 @@ public class SearchPanel extends AbstractSearchPanel {
           FontMetrics metrics = g.getFontMetrics();
           String text = editorCell.getRenderedText().substring(startPosition, endPosition);
           int prevStringWidth = metrics.stringWidth(editorCell.getRenderedText().
-              substring(0, startPosition));
+                                                              substring(0, startPosition));
           int x = editorCell.getX() + editorCell.getLeftInset()
-              + prevStringWidth;
+                  + prevStringWidth;
           int y = editorCell.getY();
           int height = editorCell.getHeight();
           int width = metrics.stringWidth(text);

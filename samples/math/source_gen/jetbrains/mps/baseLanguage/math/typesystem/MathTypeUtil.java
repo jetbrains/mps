@@ -4,7 +4,7 @@ package jetbrains.mps.baseLanguage.math.typesystem;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.pattern.util.MatchingUtil;
+import jetbrains.mps.smodel.SNodeMatcher;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.baseLanguage.math.behavior.MathUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -51,7 +51,7 @@ public class MathTypeUtil {
     return SNodeOperations.isInstanceOf(t, CONCEPTS.ComplexType$oF) || SNodeOperations.isInstanceOf(t, CONCEPTS.BigComplexType$yA);
   }
   public static boolean floatType(SNode t) {
-    return SNodeOperations.isInstanceOf(t, CONCEPTS.FloatType$up) || SNodeOperations.isInstanceOf(t, CONCEPTS.DoubleType$x0) || SNodeOperations.isInstanceOf(t, CONCEPTS.ComplexType$oF) || SNodeOperations.isInstanceOf(t, CONCEPTS.BigDecimalType$6N) || SNodeOperations.isInstanceOf(t, CONCEPTS.BigComplexType$yA) || MatchingUtil.matchNodes(t, _quotation_createNode_i9t80i_a0a0a0t()) || MatchingUtil.matchNodes(t, _quotation_createNode_i9t80i_a0a0a91());
+    return SNodeOperations.isInstanceOf(t, CONCEPTS.FloatType$up) || SNodeOperations.isInstanceOf(t, CONCEPTS.DoubleType$x0) || SNodeOperations.isInstanceOf(t, CONCEPTS.ComplexType$oF) || SNodeOperations.isInstanceOf(t, CONCEPTS.BigDecimalType$6N) || SNodeOperations.isInstanceOf(t, CONCEPTS.BigComplexType$yA) || new SNodeMatcher().match(t, _quotation_createNode_i9t80i_a0a0a0t()) || new SNodeMatcher().match(t, _quotation_createNode_i9t80i_a0a0a91());
   }
   public static SNode join(SNode t1, SNode t2) {
     if (TypecheckingFacade.getFromContext().isSubtype(t1, t2)) {
@@ -160,17 +160,17 @@ public class MathTypeUtil {
     if (SNodeOperations.isInstanceOf(narrower, CONCEPTS.NullType$Ea)) {
       return 0;
     }
-    if (TypecheckingFacade.getFromContext().isSubtype(wider, qBCMatrix) && TypecheckingFacade.getFromContext().isSubtype(narrower, qBCMatrix) && !((MatchingUtil.matchNodes(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(getElementType(wider)), Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(getElementType(narrower)))))) {
-      if (MatchingUtil.matchNodes(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(getElementType(wider)), bInt)) {
+    if (TypecheckingFacade.getFromContext().isSubtype(wider, qBCMatrix) && TypecheckingFacade.getFromContext().isSubtype(narrower, qBCMatrix) && !(new SNodeMatcher().match(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(getElementType(wider)), Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(getElementType(narrower))))) {
+      if (new SNodeMatcher().match(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(getElementType(wider)), bInt)) {
         return 9;
       }
-      if (MatchingUtil.matchNodes(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(getElementType(wider)), bLong)) {
+      if (new SNodeMatcher().match(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(getElementType(wider)), bLong)) {
         return 10;
       }
-      if (MatchingUtil.matchNodes(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(getElementType(wider)), bFloat)) {
+      if (new SNodeMatcher().match(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(getElementType(wider)), bFloat)) {
         return 11;
       }
-      if (MatchingUtil.matchNodes(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(getElementType(wider)), bDouble)) {
+      if (new SNodeMatcher().match(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(getElementType(wider)), bDouble)) {
         return 12;
       }
       if (SNodeOperations.isInstanceOf(getElementType(wider), CONCEPTS.BigIntegerType$8r)) {
@@ -299,16 +299,16 @@ public class MathTypeUtil {
     return true;
   }
   public static SNode typeCast(SNode type, SNode parentType) {
-    if (MatchingUtil.matchNodes(parentType, bDouble) && !((MatchingUtil.matchNodes(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(type), bDouble)))) {
+    if (new SNodeMatcher().match(parentType, bDouble) && !(new SNodeMatcher().match(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(type), bDouble))) {
       return _quotation_createNode_i9t80i_a0a0a82();
     }
-    if (MatchingUtil.matchNodes(parentType, bFloat) && !((MatchingUtil.matchNodes(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(type), bFloat)))) {
+    if (new SNodeMatcher().match(parentType, bFloat) && !(new SNodeMatcher().match(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(type), bFloat))) {
       return _quotation_createNode_i9t80i_a0a1a82();
     }
-    if (MatchingUtil.matchNodes(parentType, bInt) && !((MatchingUtil.matchNodes(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(type), bInt)))) {
+    if (new SNodeMatcher().match(parentType, bInt) && !(new SNodeMatcher().match(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(type), bInt))) {
       return _quotation_createNode_i9t80i_a0a2a82();
     }
-    if (MatchingUtil.matchNodes(parentType, bLong) && !((MatchingUtil.matchNodes(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(type), bLong)))) {
+    if (new SNodeMatcher().match(parentType, bLong) && !(new SNodeMatcher().match(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(type), bLong))) {
       return _quotation_createNode_i9t80i_a0a3a82();
     }
     return null;

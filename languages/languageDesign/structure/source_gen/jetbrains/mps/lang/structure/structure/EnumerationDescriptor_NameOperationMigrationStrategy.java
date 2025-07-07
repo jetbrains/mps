@@ -20,7 +20,7 @@ public class EnumerationDescriptor_NameOperationMigrationStrategy extends Enumer
   private final EnumerationDescriptor.MemberDescriptor myMember_by_custom_methods_0 = new EnumerationDescriptor.MemberDescriptor("by_custom_methods", "by_custom_methods", 0x5a14f10359640645L, "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/6491077959634650693");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f10359640640L, 0x5a14f10359640641L, 0x5a14f10359640642L, 0x5a14f10359640645L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_by_name_0, myMember_by_presentation_0, myMember_by_custom_methods_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_by_name_0, myMember_by_presentation_0, myMember_by_custom_methods_0);
 
   @Nullable
   @Override

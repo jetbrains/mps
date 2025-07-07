@@ -6,14 +6,14 @@ import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import org.jetbrains.annotations.NotNull;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.actionSystem.CommonDataKeys;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.project.SModuleOperations;
+import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.project.MPSProject;
+import java.util.List;
 import java.util.Set;
-import java.util.Collections;
+import java.util.stream.Collectors;
 import com.intellij.openapi.progress.ProgressManager;
 
 public class MakeModule_Action extends BaseAction {
@@ -23,6 +23,7 @@ public class MakeModule_Action extends BaseAction {
     super("Compile Java Files", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -30,7 +31,7 @@ public class MakeModule_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return SModuleOperations.isCompileInMps(event.getData(MPSCommonDataKeys.MODULE));
+    return event.getData(MPSCommonDataKeys.MODULES).stream().anyMatch((SModule m) -> SModuleOperations.isCompileInMps(m) && !(m.isReadOnly()));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -42,14 +43,17 @@ public class MakeModule_Action extends BaseAction {
       return false;
     }
     {
-      Project p = event.getData(CommonDataKeys.PROJECT);
+      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
       if (p == null) {
         return false;
       }
     }
     {
-      SModule p = event.getData(MPSCommonDataKeys.MODULE);
+      List<SModule> p = event.getData(MPSCommonDataKeys.MODULES);
       if (p == null) {
+        return false;
+      }
+      if (p.isEmpty()) {
         return false;
       }
     }
@@ -57,7 +61,7 @@ public class MakeModule_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    Set<SModule> modules = Collections.<SModule>singleton(event.getData(MPSCommonDataKeys.MODULE));
-    ProgressManager.getInstance().run(new DefaultMakeTask(event.getData(CommonDataKeys.PROJECT), "Compiling", modules, false));
+    Set<SModule> modules = event.getData(MPSCommonDataKeys.MODULES).stream().filter((SModule m) -> SModuleOperations.isCompileInMps(m) && !(m.isReadOnly())).collect(Collectors.<SModule>toSet());
+    ProgressManager.getInstance().run(new DefaultMakeTask(event.getData(MPSCommonDataKeys.MPS_PROJECT), "Compiling", modules, false));
   }
 }

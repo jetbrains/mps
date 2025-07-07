@@ -10,7 +10,7 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SModule;
 import java.io.File;
 
-@GeneratedClass(node = "r:73cef602-d8a6-459c-91ff-d4e129d1a7c5(jetbrains.mps.tool.builder)/8514960456944541507", model = "r:73cef602-d8a6-459c-91ff-d4e129d1a7c5(jetbrains.mps.tool.builder)")
+@GeneratedClass(nodeId = "8514960456944541507", model = "r:73cef602-d8a6-459c-91ff-d4e129d1a7c5(jetbrains.mps.tool.builder)")
 public class MpsWorkerTest extends CoreWorker {
   private String myModuleRef;
   private boolean myIsPresent;
@@ -29,16 +29,14 @@ public class MpsWorkerTest extends CoreWorker {
     final MPSModuleRepository repo = myEnvironment.getPlatform().findComponent(MPSModuleRepository.class);
     PersistenceRegistry pf = myEnvironment.getPlatform().findComponent(PersistenceRegistry.class);
     final SModuleReference moduleRef = pf.createModuleReference(myModuleRef);
-    repo.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        try {
-          SModule module = moduleRef.resolve(repo);
-          if (module == null ^ myIsPresent) {
-            new File("result.txt").createNewFile();
-          }
-        } catch (Exception e) {
-          e.printStackTrace();
+    repo.getModelAccess().runReadAction(() -> {
+      try {
+        SModule module = moduleRef.resolve(repo);
+        if (module == null ^ myIsPresent) {
+          new File("result.txt").createNewFile();
         }
+      } catch (Exception e) {
+        e.printStackTrace();
       }
     });
   }

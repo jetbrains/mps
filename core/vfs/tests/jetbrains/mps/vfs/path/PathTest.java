@@ -37,37 +37,50 @@ public abstract class PathTest {
   public abstract Path fromString(@NotNull String path, @NotNull PathFormat format);
 
   @Test
-  public void nameTestUnix1() {
+  public void partsTestUnix0() {
     Path path = fromString("a////", PathFormats.UNIX);
     Assert.assertEquals(Collections.singletonList("a"), path.getNonRootParts());
+    Assert.assertNull(path.getRootPart());
   }
 
   @Test
-  public void nameTest2() {
+  public void partsTestUnix1() {
     Path path = fromString("//////a/b/c/d/", PathFormats.UNIX);
     Assert.assertEquals(Arrays.asList("/", "a", "b", "c", "d"), path.getAllParts());
+    Assert.assertEquals(Arrays.asList("a", "b", "c", "d"), path.getNonRootParts());
   }
 
   @Test
-  public void nameTest21() {
+  public void partsTestUnix2() {
     Path path = fromString("/a/b/c/d/", PathFormats.UNIX);
     Assert.assertEquals(Arrays.asList("/", "a", "b", "c", "d"), path.getAllParts());
+    Assert.assertEquals(Arrays.asList("a", "b", "c", "d"), path.getNonRootParts());
   }
 
   @Test
-  public void nameTestWin0() {
+  public void partsTestUnix3() {
+    Path path = fromString("/", PathFormats.UNIX);
+    Assert.assertEquals(Collections.emptyList(), path.getNonRootParts());
+    Assert.assertEquals(List.of("/"), path.getAllParts());
+  }
+
+  @Test
+  public void partsTestWin0() {
     Path path = fromString("a////", PathFormats.WIN);
-    Assert.assertEquals(Collections.singletonList("a////"), path.getNonRootParts());
+    Assert.assertTrue(path.isRelative());
+    Assert.assertEquals(List.of("a////"), path.getNonRootParts());
+    Assert.assertEquals(Arrays.asList(null, "a////"), path.getAllParts());
   }
 
   @Test
-  public void nameTestWin1() {
+  public void partsTestWin1() {
     Path path = fromString("C:\\a\\b\\c", PathFormats.WIN);
     Assert.assertEquals(Arrays.asList("C:", "a", "b", "c"), path.getAllParts());
+    Assert.assertEquals(Arrays.asList("a", "b", "c"), path.getNonRootParts());
   }
 
   @Test
-  public void nameTestWin2() {
+  public void partsTestWin2() {
     Path path = fromString("a\\b\\c", PathFormats.WIN);
     Assert.assertTrue(path.isRelative());
     Assert.assertNull(path.getRootPart());
@@ -77,7 +90,7 @@ public abstract class PathTest {
   }
 
   @Test
-  public void nameTestWin3() {
+  public void partsTestWin3() {
     Path path = fromString("a\\b\\c\\..\\.", PathFormats.WIN);
     Assert.assertEquals(Arrays.asList(null, "a", "b", "c", "..", "."), path.getAllParts());
   }
@@ -121,7 +134,7 @@ public abstract class PathTest {
 
   @Test
   public void startsWithTest1() {
-    Path path = fromString("//////a/b/c/d/", PathFormats.UNIX);
+    Path path = fromString("/a/b/c/d/", PathFormats.UNIX);
     Assert.assertTrue(path.startsWith("/a"));
   }
 
@@ -133,8 +146,14 @@ public abstract class PathTest {
 
   @Test
   public void startsWithTest3() {
-    Path path = fromString("//////a/b/c/d/", PathFormats.UNIX);
+    Path path = fromString("/a/b/c/d/", PathFormats.UNIX);
     Assert.assertTrue(path.startsWith("/a/b/"));
+  }
+
+  @Test
+  public void startsWithTest5() {
+    Path path = fromString("//a/b//c/d/", PathFormats.UNIX);
+    Assert.assertTrue(path.startsWith("//a/b/c"));
   }
 
   @Test
@@ -159,6 +178,35 @@ public abstract class PathTest {
   public void rootParentIsNull() {
     Path path = fromString("/", PathFormats.UNIX);
     Assert.assertNull(path.getParent());
+  }
+
+  @Test
+  public void uncWslUnix() {
+    Path path = fromString("//wsl$/ubuntu", PathFormats.UNIX);
+    Assert.assertEquals("//wsl$/ubuntu", path.getRootPart());
+    Assert.assertEquals("//wsl$/ubuntu", path.toText());
+    Assert.assertEquals(Collections.emptyList(), path.getNonRootParts());
+  }
+
+  @Test
+  public void almostUncUnix() {
+    Path path = fromString("//wsl$", PathFormats.UNIX);
+    Assert.assertEquals("/", path.getRootPart());
+    Assert.assertEquals("/wsl$", path.toText());
+    Assert.assertEquals(List.of("wsl$"), path.getNonRootParts());
+  }
+
+  @Test(expected = PathParseException.class)
+  public void almostUncWin() {
+    fromString("\\\\wsl$", PathFormats.WIN);
+  }
+
+  @Test
+  public void uncWslWin() {
+    Path path = fromString("\\\\wsl$\\ubuntu", PathFormats.WIN);
+    Assert.assertEquals("\\\\wsl$\\ubuntu", path.getRootPart());
+    Assert.assertEquals("\\\\wsl$\\ubuntu", path.toText());
+    Assert.assertEquals(Collections.emptyList(), path.getNonRootParts());
   }
 
   @Test
@@ -217,7 +265,7 @@ public abstract class PathTest {
   public void getRootTestWin() {
     Path path = fromString("C:\\System\\A", PathFormats.WIN);
     Assert.assertEquals(fromString("C:\\", PathFormats.WIN), path.getRoot());
-    Assert.assertEquals("C:\\", path.getRoot().toText());
+    Assert.assertEquals("C:", path.getRoot().toText());
   }
 
   @Test
@@ -228,14 +276,104 @@ public abstract class PathTest {
   }
 
   @Test
+  public void toTextUnix1() {
+    Path path = fromString("/a/b/c", PathFormats.UNIX);
+    Assert.assertEquals("/a/b/c", path.toText());
+  }
+
+  @Test
+  public void toTextUnix2() {
+    Path path = fromString("a/b/c", PathFormats.UNIX);
+    Assert.assertEquals("a/b/c", path.toText());
+  }
+
+  @Test
+  public void toTextUnix3() {
+    Path path = fromString("a//b//c", PathFormats.UNIX);
+    Assert.assertEquals("a/b/c", path.toText());
+  }
+
+  @Test
+  public void toTextWin1() {
+    Path path = fromString("a\\b\\c", PathFormats.WIN);
+    Assert.assertEquals("a\\b\\c", path.toText());
+  }
+
+  @Test
+  public void toTextWin2() {
+    Path path = fromString("a\\b\\c", PathFormats.WIN);
+    Assert.assertEquals("a\\b\\c", path.toText());
+  }
+
+  @Test
+  public void toTextWin3() {
+    Path path = fromString("C:\\a\\b\\c", PathFormats.WIN);
+    Assert.assertEquals("C:\\a\\b\\c", path.toText());
+  }
+
+  @Test
+  public void toTextWin4() {
+    Path path = fromString("C:\\a\\b\\c", PathFormats.WIN);
+    Assert.assertEquals("C:\\a\\b\\c", path.toText());
+  }
+
+  @Test
+  public void uncToTextWin() {
+    Path path = fromString("\\\\a\\b\\c\\", PathFormats.WIN);
+    Assert.assertEquals("\\\\a\\b\\c", path.toText());
+  }
+
+  @Test
+  public void rootPartUncUnix1() {
+    Path path = fromString("//a/b//c", PathFormats.UNIX);
+    Assert.assertEquals("//a/b", path.getRootPart());
+  }
+
+  @Test
+  public void rootPartUncUnix2() {
+    Path path = fromString("//a/b/c", PathFormats.UNIX);
+    Assert.assertEquals("//a/b", path.getRootPart());
+  }
+
+  @Test
+  public void rootPartUncUnix3() {
+    Path path = fromString("//a/b", PathFormats.UNIX);
+    Assert.assertEquals("//a/b", path.getRootPart());
+  }
+
+  @Test
+  public void rootPartUncWin() {
+    Path path = fromString("\\\\a\\b\\c", PathFormats.WIN);
+    Assert.assertEquals("\\\\a\\b", path.getRootPart());
+  }
+
+  @Test
+  public void uncToTextUnix() {
+    Path path = fromString("//a/b//c", PathFormats.UNIX);
+    Assert.assertEquals("//a/b/c", path.toText());
+  }
+
+  @Test
+  public void uncWithNoVolumeIsNotUncUnix() {
+    Path path = fromString("//a//b", PathFormats.UNIX);
+    Assert.assertEquals("/a/b", path.toText());
+  }
+
+  @Test(expected = PathParseException.class)
+  public void uncWithNoVolumeIsNotUncWin() {
+    fromString("\\\\a\\\\b", PathFormats.WIN);
+  }
+
+  @Test
   public void rootTestUnix1() {
     Path path = fromString("///", PathFormats.UNIX);
-    Assert.assertEquals(Arrays.asList("/"), path.getAllParts());
+    Assert.assertEquals(List.of("/"), path.getAllParts());
   }
+
   @Test
   public void rootTestUnix2() {
     Path path = fromParts("/", Collections.singletonList(""), PathFormats.UNIX);
-    Assert.assertEquals(Arrays.asList("/"), path.getAllParts());
+    Assert.assertEquals(List.of("/"), path.getAllParts());
   }
 
   @Test
@@ -244,16 +382,21 @@ public abstract class PathTest {
     Assert.assertEquals(fromParts("/", Collections.emptyList(), PathFormats.UNIX), path);
   }
 
-  @Test(expected= PathParseException.class)
+  @Test(expected = PathParseException.class)
   public void rootTestUnix4() {
     fromParts("", Collections.emptyList(), PathFormats.UNIX);
   }
-
 
   @Test
   public void normalizeTestUni() {
     Path path = fromString("./././a/../a", PathFormats.UNIX);
     Assert.assertEquals(fromString("a", PathFormats.UNIX), path.normalize());
+  }
+
+  @Test
+  public void normalizeTestUni1() {
+    Path path = fromString("///a///", PathFormats.UNIX);
+    Assert.assertEquals(fromString("/a", PathFormats.UNIX), path.normalize());
   }
 
   @Test
@@ -319,13 +462,49 @@ public abstract class PathTest {
   @Test
   public void rootTestWin3() {
     Path path = fromString("A:\\", PathFormats.WIN);
-    Assert.assertEquals(Arrays.asList("A:"), path.getAllParts());
+    Assert.assertEquals(List.of("A:"), path.getAllParts());
   }
 
   @Test
   public void rootTestWin4() {
     Path path = fromParts("A:", Collections.singletonList(""), PathFormats.WIN);
-    Assert.assertEquals(Arrays.asList("A:"), path.getAllParts());
+    Assert.assertEquals(List.of("A:"), path.getAllParts());
+  }
+
+  @Test
+  public void relativeTest1() {
+    Path a = fromString("a/b", PathFormats.UNIX);
+    Assert.assertTrue(a.isRelative());
+  }
+
+  @Test
+  public void relativeTest2() {
+    Path a = fromString("a\\b", PathFormats.WIN);
+    Assert.assertTrue(a.isRelative());
+  }
+
+  @Test
+  public void relativeTest3() {
+    Path a = fromString("/a/b", PathFormats.UNIX);
+    Assert.assertFalse(a.isRelative());
+  }
+
+  @Test
+  public void relativeTest4() {
+    Path a = fromString("C:\\a\\b", PathFormats.WIN);
+    Assert.assertFalse(a.isRelative());
+  }
+
+  @Test
+  public void uncIsAbsoluteWin() {
+    Path a = fromString("\\\\a\\b", PathFormats.WIN);
+    Assert.assertFalse(a.isRelative());
+  }
+
+  @Test
+  public void uncIsAbsoluteUnix() {
+    Path a = fromString("//a/b", PathFormats.UNIX);
+    Assert.assertFalse(a.isRelative());
   }
 
   @Test

@@ -9,7 +9,6 @@ import jetbrains.mps.debugger.java.runtime.evaluation.EvaluationProvider;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.debugger.java.runtime.engine.events.Context;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.debug.api.DebugSessionManagerComponent;
 import jetbrains.mps.debugger.java.runtime.engine.VMEventsProcessorManagerComponent;
 import java.util.Set;
@@ -18,7 +17,7 @@ import jetbrains.mps.debugger.java.runtime.engine.RequestManager;
 import jetbrains.mps.debugger.java.runtime.breakpoints.JavaBreakpoint;
 import jetbrains.mps.debugger.java.runtime.engine.DebugProcessAdapter;
 
-@GeneratedClass(node = "r:63e7a653-1334-49d4-8e81-fd72b84fb4ff(jetbrains.mps.debugger.java.runtime.state)/4352118152439824931", model = "r:63e7a653-1334-49d4-8e81-fd72b84fb4ff(jetbrains.mps.debugger.java.runtime.state)")
+@GeneratedClass(nodeId = "4352118152439824931", model = "r:63e7a653-1334-49d4-8e81-fd72b84fb4ff(jetbrains.mps.debugger.java.runtime.state)")
 public class DebugSession extends AbstractDebugSession<JavaUiStateImpl> {
   private final EventsProcessor myEventsProcessor;
   private volatile boolean myIsMute = false;
@@ -80,12 +79,10 @@ public class DebugSession extends AbstractDebugSession<JavaUiStateImpl> {
     setState(state, state.paused(suspendContext), false);
   }
   public void refresh() {
-    myEventsProcessor.schedule(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        JavaUiStateImpl state = getUiState();
-        JavaUiStateImpl newState = state.paused(state.getContext());
-        setState(state, newState);
-      }
+    myEventsProcessor.schedule(() -> {
+      JavaUiStateImpl state = getUiState();
+      JavaUiStateImpl newState = state.paused(state.getContext());
+      setState(state, newState);
     });
   }
   private void resume(Context suspendContext) {
@@ -94,7 +91,7 @@ public class DebugSession extends AbstractDebugSession<JavaUiStateImpl> {
   }
   @Override
   public void sessionRegistered(DebugSessionManagerComponent manager) {
-    VMEventsProcessorManagerComponent vmManager = manager.getProject().getComponent(VMEventsProcessorManagerComponent.class);
+    VMEventsProcessorManagerComponent vmManager = VMEventsProcessorManagerComponent.getInstance(manager.getProject());
     vmManager.addDebugSession(this);
   }
   @Override
@@ -107,27 +104,25 @@ public class DebugSession extends AbstractDebugSession<JavaUiStateImpl> {
   @Override
   public void muteBreakpoints(final boolean mute) {
     if (myEventsProcessor.isAttached()) {
-      myEventsProcessor.schedule(new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          if (myIsMute != mute) {
-            Set<IBreakpoint> breakpoints = myEventsProcessor.getBreakpointManager().getAllIBreakpoints();
-            RequestManager requestManager = myEventsProcessor.getRequestManager();
-            for (IBreakpoint bp : breakpoints) {
-              if (bp instanceof JavaBreakpoint) {
-                JavaBreakpoint breakpoint = (JavaBreakpoint) bp;
-                if (mute) {
-                  requestManager.deleteRequests(breakpoint);
-                  //  todo enabling and disabling breakpoints should be symmetrical
-                } else {
-                  if (breakpoint.isValid()) {
-                    breakpoint.createOrWaitPrepare(myEventsProcessor);
-                  }
+      myEventsProcessor.schedule(() -> {
+        if (myIsMute != mute) {
+          Set<IBreakpoint> breakpoints = myEventsProcessor.getBreakpointManager().getAllIBreakpoints();
+          RequestManager requestManager = myEventsProcessor.getRequestManager();
+          for (IBreakpoint bp : breakpoints) {
+            if (bp instanceof JavaBreakpoint) {
+              JavaBreakpoint breakpoint = (JavaBreakpoint) bp;
+              if (mute) {
+                requestManager.deleteRequests(breakpoint);
+                //  todo enabling and disabling breakpoints should be symmetrical
+              } else {
+                if (breakpoint.isValid()) {
+                  breakpoint.createOrWaitPrepare(myEventsProcessor);
                 }
               }
             }
-            myIsMute = mute;
-            fireSessionMuted(DebugSession.this);
           }
+          myIsMute = mute;
+          fireSessionMuted(DebugSession.this);
         }
       });
     } else {

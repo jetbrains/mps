@@ -7,9 +7,7 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -22,15 +20,7 @@ public class RemoveDefaultModifier_QuickFix extends QuickFix_Runtime {
     return "Remove the 'default' modifier";
   }
   public void execute(SNode node) {
-    ListSequence.fromList(SLinkOperations.getChildren(((SNode) RemoveDefaultModifier_QuickFix.this.getField("member")[0]), LINKS.modifiers$F5MM)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.DefaultModifier$rO);
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNodeOperations.deleteNode(it);
-      }
-    });
+    ListSequence.fromList(SLinkOperations.getChildren(((SNode) RemoveDefaultModifier_QuickFix.this.getField("member")[0]), LINKS.modifiers$F5MM)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.DefaultModifier$rO)).visitAll((it) -> SNodeOperations.deleteNode(it));
   }
 
   private static final class LINKS {

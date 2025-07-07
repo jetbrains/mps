@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ import jetbrains.mps.ide.ui.tree.module.ModuleTreeNodeComparator;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 
@@ -51,7 +51,7 @@ public class ProjectTreeNode extends AbstractFileTreeNode {
           // this is an attempt to find out true cause for https://youtrack.jetbrains.com/issue/MPS-26261
           // it looks like project has modules loaded from files that are not IdeaFile instances.
           String msg = "Project module %s loaded from location %s (%s) without virtual file counterpart";
-          Logger.getLogger(ProjectTreeNode.class).warn(String.format(msg, m.getModuleName(), moduleDir.getPath(), moduleDir.getClass().getName()));
+          Logger.getLogger(ProjectTreeNode.class).warning(String.format(msg, m.getModuleName(), moduleDir.getPath(), moduleDir.getClass().getName()));
         }
       }
     }
@@ -78,11 +78,7 @@ public class ProjectTreeNode extends AbstractFileTreeNode {
   private static class MyNamespaceTreeBuilder extends DefaultNamespaceTreeBuilder<MPSTreeNode> {
     @Override
     protected String getNamespace(@NotNull MPSTreeNode node) {
-      String folder = "";
-      if (node instanceof ModuleTreeNode) {
-        folder = ((ModuleTreeNode) node).getProjectFolder();
-      }
-      return folder == null ? "" : folder;
+      return node instanceof ModuleTreeNode ? ((ModuleTreeNode) node).getProjectFolder() : "";
     }
   }
 

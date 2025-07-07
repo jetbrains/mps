@@ -10,12 +10,9 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.extapi.persistence.FolderSetDataSource;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SRepository;
-import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.SModel;
 import jetbrains.mps.baseLanguage.javastub.ASMModelLoader;
-import jetbrains.mps.smodel.nodeidmap.MigratingJavaStubRefsNodeIdMap;
 import java.util.function.Function;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMClass;
 import jetbrains.mps.baseLanguage.javastub.Documentation;
@@ -30,10 +27,9 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import java.util.Collections;
-import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.extapi.module.SModuleBase;
 
-@GeneratedClass(node = "r:adc783db-1c21-4910-9cf7-6a22bf949a4a(jetbrains.mps.persistence.java.library)/6619269785060746048", model = "r:adc783db-1c21-4910-9cf7-6a22bf949a4a(jetbrains.mps.persistence.java.library)")
+@GeneratedClass(nodeId = "6619269785060746048", model = "r:adc783db-1c21-4910-9cf7-6a22bf949a4a(jetbrains.mps.persistence.java.library)")
 public class JavaClassStubModelDescriptor extends RegularModelDescriptor implements ModelSourceChangeTracker.ReloadCallback {
   private final ModelSourceChangeTracker myTimestampTracker;
   private boolean mySkipPrivate;
@@ -78,12 +74,6 @@ public class JavaClassStubModelDescriptor extends RegularModelDescriptor impleme
     return (FolderSetDataSource) super.getSource();
   }
 
-  @Nullable
-  @Override
-  public AbstractModule getModule() {
-    return (AbstractModule) super.getModule();
-  }
-
   @Override
   public void load() {
     if (getLoadingState() != ModelLoadingState.FULLY_LOADED) {
@@ -105,7 +95,7 @@ public class JavaClassStubModelDescriptor extends RegularModelDescriptor impleme
         try {
           ASMModelLoader loader = new ASMModelLoader(getModule(), getSource().getAffectedFiles());
           loader.skipPrivateMembers(mySkipPrivate);
-          SModel completeModelData = new SModel(getReference(), new MigratingJavaStubRefsNodeIdMap());
+          SModel completeModelData = new SModel(getReference());
           Function<ASMClass, Documentation> docSupplier;
           if (myDocSupplier != null) {
             myDocSupplier.acquire();
@@ -143,7 +133,7 @@ public class JavaClassStubModelDescriptor extends RegularModelDescriptor impleme
   @Override
   @NotNull
   protected ModelLoadResult<SModel> createModel() {
-    SModel model = new SModel(getReference(), new MigratingJavaStubRefsNodeIdMap());
+    SModel model = new SModel(getReference());
     for (SLanguage l : getLanguagesToImport()) {
       model.addLanguage(l);
     }
@@ -181,18 +171,14 @@ public class JavaClassStubModelDescriptor extends RegularModelDescriptor impleme
       // XXX same code is in EitableSModelBase, could I refactor to avoid that?
       return;
     }
-    repo.getModelAccess().runWriteAction(new Runnable() {
-      public void run() {
-        if (getSource().getPaths().isEmpty()) {
-          SModule module = getModule();
-          if (module instanceof SModuleBase) {
-            ((SModuleBase) module).unregisterModel(JavaClassStubModelDescriptor.this);
-          }
-          return;
-        }
-        reload();
-        myTimestampTracker.updateTimestamp(getSource());
+    repo.getModelAccess().runWriteAction(() -> {
+      if (getSource().getPaths().isEmpty()) {
+        SModuleBase module = (SModuleBase) getModule();
+        module.unregisterModel(JavaClassStubModelDescriptor.this);
+        return;
       }
+      reload();
+      myTimestampTracker.updateTimestamp(getSource());
     });
   }
 
@@ -203,6 +189,12 @@ public class JavaClassStubModelDescriptor extends RegularModelDescriptor impleme
     }
     // XXX shall I synchronize(myLoadLock) so that unload and subsequent partial load are from the same thread? I'm in the write anyway.
     replace(createModel());
+  }
+
+
+  @Override
+  public boolean isReadOnly() {
+    return true;
   }
 
   @Override

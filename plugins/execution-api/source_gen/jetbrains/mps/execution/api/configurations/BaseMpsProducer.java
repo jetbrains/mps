@@ -31,7 +31,7 @@ import jetbrains.mps.util.EqualUtil;
  * 
  * @param <T> denotes the MpsPsiElement's item which is the 'key' of the subclassing producer
  */
-@GeneratedClass(node = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)/8536479618435048503", model = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)")
+@GeneratedClass(nodeId = "8536479618435048503", model = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)")
 public abstract class BaseMpsProducer<T> extends RuntimeConfigurationProducer {
   private PsiElement mySourceElement;
   @Nullable
@@ -101,7 +101,7 @@ public abstract class BaseMpsProducer<T> extends RuntimeConfigurationProducer {
   @Override
   protected RunnerAndConfigurationSettings createConfigurationByElement(Location location, ConfigurationContext context) {
     myContext = context;
-    if (!((location instanceof MPSLocation))) {
+    if (!(location instanceof MPSLocation)) {
       return null;
     }
     MPSLocation mpsLocation = (MPSLocation) location;
@@ -150,7 +150,7 @@ public abstract class BaseMpsProducer<T> extends RuntimeConfigurationProducer {
 
   @Override
   public boolean equals(Object obj) {
-    if (obj == null || !((obj instanceof BaseMpsProducer))) {
+    if (obj == null || !(obj instanceof BaseMpsProducer)) {
       return false;
     }
     BaseMpsProducer configCreator = (BaseMpsProducer) obj;

@@ -7,19 +7,34 @@ import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import jetbrains.mps.ide.IdeBundle;
 import java.util.List;
-import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.project.structure.project.ModulePath;
+import jetbrains.mps.ide.ui.tree.ContextValueProvider;
+import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
+import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import java.util.stream.Collectors;
+import com.intellij.openapi.ui.InputValidator;
+import com.intellij.openapi.ui.InputValidatorEx;
+import com.intellij.openapi.util.NlsContexts;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NonNls;
+import java.util.Arrays;
+import com.intellij.openapi.util.NlsSafe;
 import com.intellij.openapi.ui.Messages;
+import jetbrains.mps.ide.IdeBundle;
+import jetbrains.mps.smodel.undo.NamedCommand;
+import java.util.HashMap;
+import com.intellij.openapi.command.undo.DocumentReference;
+import com.intellij.openapi.command.undo.UndoManager;
+import com.intellij.openapi.command.undo.UndoableAction;
+import com.intellij.openapi.command.undo.UnexpectedUndoException;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1216128015035", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1216128015035", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class SetVirtualFolder_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -35,11 +50,22 @@ public class SetVirtualFolder_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     // project.isProjectModule would say true for a generator under a language, and we don't want to set VF for it
-    event.getPresentation().setText(IdeBundle.message("actions.module.set.virtual.folder.text"));
-    boolean isApplicable = !(((List<SModule>) MapSequence.fromMap(_params).get("modules")).isEmpty());
-    for (SModule module : ((List<SModule>) MapSequence.fromMap(_params).get("modules"))) {
-      ModulePath path = ((MPSProject) MapSequence.fromMap(_params).get("project")).getPath(module);
-      if (path == null) {
+    boolean isApplicable = !(((List<Object>) MapSequence.fromMap(_params).get("selectedValues")).isEmpty());
+    for (Object selectedObject : ((List<Object>) MapSequence.fromMap(_params).get("selectedObjects"))) {
+      if (selectedObject instanceof ContextValueProvider && ((ContextValueProvider) selectedObject).parentContextValueOfType(SModule.class).isPresent()) {
+        // see RemoveVirtualFolder action for explanation of the check
+        isApplicable = false;
+        break;
+      }
+    }
+    for (Object selectedValue : ((List<Object>) MapSequence.fromMap(_params).get("selectedValues"))) {
+      if (!(selectedValue instanceof SModule)) {
+        isApplicable = false;
+        break;
+      }
+
+      SModule module = (SModule) selectedValue;
+      if (!(((MPSProject) MapSequence.fromMap(_params).get("project")).isProjectModule(module))) {
         isApplicable = false;
         break;
       }
@@ -70,8 +96,8 @@ public class SetVirtualFolder_Action extends BaseAction {
       }
     }
     {
-      List<SModule> p = event.getData(MPSCommonDataKeys.MODULES);
-      MapSequence.fromMap(_params).put("modules", p);
+      List<Object> p = event.getData(MPSCommonDataKeys.VALUES);
+      MapSequence.fromMap(_params).put("selectedValues", p);
       if (p == null) {
         return false;
       }
@@ -79,33 +105,108 @@ public class SetVirtualFolder_Action extends BaseAction {
         return false;
       }
     }
+    {
+      List<Object> p = event.getData(MPSCommonDataKeys.USER_OBJECTS);
+      MapSequence.fromMap(_params).put("selectedObjects", p);
+      if (p == null) {
+        return false;
+      }
+      if (p.isEmpty()) {
+        return false;
+      }
+    }
+    {
+      String p = event.getData(PlatformDataKeys.PREDEFINED_TEXT);
+      MapSequence.fromMap(_params).put("targetName", p);
+    }
     return true;
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    String oldFolder = SetVirtualFolder_Action.this.extractCommonVirtualFolder(_params);
-    final String newFolder = Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), IdeBundle.message("dialogs.module.set.virtual.folder.text"), IdeBundle.message("dialogs.module.set.virtual.folder.title"), Messages.getQuestionIcon(), oldFolder, null);
-    // Only do something on OK or input is different from original string 
-    if (newFolder == null || oldFolder.equals(newFolder)) {
+    final List<SModule> modules = ((List<Object>) MapSequence.fromMap(_params).get("selectedValues")).stream().map(SModule.class::cast).collect(Collectors.<SModule>toList());
+    final MPSProject mpsProject = ((MPSProject) MapSequence.fromMap(_params).get("project"));
+    List<String> allVFs = modules.stream().map((SModule m) -> mpsProject.getVirtualFolder(m)).distinct().collect(Collectors.<String>toList());
+    // used to take VF common for all modules, but I don't see any reason not to take just any, we ask user for input anyway
+    // if necessary, however, we can tell if there's common VF by allVFs.size() == 1
+    String nameHint = (((String) MapSequence.fromMap(_params).get("targetName")) != null ? ((String) MapSequence.fromMap(_params).get("targetName")) : allVFs.stream().findAny().orElse(""));
+    nameHint = (nameHint.startsWith(".") ? nameHint.substring(1) : nameHint);
+    InputValidator validator = new InputValidatorEx() {
+      @NlsContexts.DetailedDescription
+      @Nullable
+      @Override
+      public String getErrorText(@NonNls String virtualFolder) {
+        String normalized = (virtualFolder == null ? "" : virtualFolder);
+        normalized = String.join(".", Arrays.asList(normalized.split("\\.+")));
+        if (!(normalized.equals(virtualFolder))) {
+          return "Invalid virtual folder format";
+        }
+        normalized = (normalized.startsWith(".") ? normalized.substring(1) : normalized);
+        if (!(normalized.equals(virtualFolder))) {
+          return "Virtual folder cannot start with a '.'";
+        }
+        return null;
+      }
+      @Override
+      public boolean canClose(@NlsSafe String virtualFolder) {
+        return getErrorText(virtualFolder) == null;
+      }
+    };
+
+    final String inputValue = trim_5evjxr_a0a9a7(Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), IdeBundle.message("dialogs.module.set.virtual.folder.text"), IdeBundle.message("dialogs.module.set.virtual.folder.title"), Messages.getQuestionIcon(), nameHint, validator));
+    // Only do something on OK ...
+    if (inputValue == null) {
+      return;
+    }
+    // ... and the user input is different from what we have already 
+    if (nameHint.equals(inputValue) && allVFs.size() == 1 && nameHint.equals(allVFs.get(0))) {
       return;
     }
 
-    ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().executeCommand(new Runnable() {
+    final String newValue = (inputValue.isEmpty() ? null : inputValue);
+    NamedCommand command = new NamedCommand("Set virtual folder to " + newValue, true) {
+      @Override
       public void run() {
-        for (SModule m : ((List<SModule>) MapSequence.fromMap(_params).get("modules"))) {
-          ((MPSProject) MapSequence.fromMap(_params).get("project")).setVirtualFolder(m, (newFolder.isEmpty() ? null : newFolder));
+        final Map<SModule, String> oldModuleNames = MapSequence.fromMap(new HashMap<SModule, String>());
+        final DocumentReference[] myDocumentReferences = NamespaceInternalActionsUtil.obtainDocumentReferences(modules, mpsProject);
+        for (SModule m : modules) {
+          MapSequence.fromMap(oldModuleNames).put(m, mpsProject.getVirtualFolder(m));
+          mpsProject.setVirtualFolder(m, newValue);
         }
+
+        UndoManager um = UndoManager.getInstance(mpsProject.getProject());
+        um.undoableActionPerformed(new UndoableAction() {
+          @Override
+          public void undo() throws UnexpectedUndoException {
+            for (SModule m : modules) {
+              mpsProject.setVirtualFolder(m, MapSequence.fromMap(oldModuleNames).get(m));
+            }
+            ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).rebuild();
+          }
+
+          @Override
+          public void redo() throws UnexpectedUndoException {
+            for (SModule m : modules) {
+              mpsProject.setVirtualFolder(m, newValue);
+            }
+            ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).rebuild();
+          }
+
+          @Override
+          public DocumentReference[] getAffectedDocuments() {
+            return myDocumentReferences;
+          }
+
+          @Override
+          public boolean isGlobal() {
+            return true;
+          }
+        });
       }
-    });
+    };
+    mpsProject.getRepository().getModelAccess().executeCommand(command);
     ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).rebuild();
   }
-  private String extractCommonVirtualFolder(final Map<String, Object> _params) {
-    String commonVirtualFolder = ((MPSProject) MapSequence.fromMap(_params).get("project")).getPath(((List<SModule>) MapSequence.fromMap(_params).get("modules")).get(0)).getVirtualFolder();
-    for (int i = 1; i < ((List<SModule>) MapSequence.fromMap(_params).get("modules")).size(); i++) {
-      if (!(commonVirtualFolder.equals(((MPSProject) MapSequence.fromMap(_params).get("project")).getPath(((List<SModule>) MapSequence.fromMap(_params).get("modules")).get(i)).getVirtualFolder()))) {
-        return "";
-      }
-    }
-    return commonVirtualFolder;
+  public static String trim_5evjxr_a0a9a7(String str) {
+    return (str == null ? null : str.trim());
   }
 }

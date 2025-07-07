@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.project;
 
+import jetbrains.mps.smodel.ModelAccess;
 import jetbrains.mps.smodel.ModelAccessBase;
 
 import javax.swing.SwingUtilities;
@@ -33,8 +34,14 @@ public class ProjectModelAccess extends ModelAccessBase {
   private final Project myProject;
 
   public ProjectModelAccess(Project project) {
+    this(project, ModelAccess.newInstance());
+  }
+
+  public ProjectModelAccess(Project project, org.jetbrains.mps.openapi.module.ModelAccess delegate) {
+    super(delegate);
     myProject = project;
   }
+
 
   @Override
   public void executeCommand(Runnable r) {
@@ -48,7 +55,7 @@ public class ProjectModelAccess extends ModelAccessBase {
     // DMA.executeCommand() would be here.
     // Another aspect that prevents me from implementing DMA's executeCommand here is the need to access commandActionDispatcher, which is protected to
     // hierarchy of 'true' MA (unlike this one, delegation-based, 'true' have locks and record/notify listeners)
-    getDelegate().executeCommand(r);
+    delegateImpl().executeCommand(r);
   }
 
   @Override
@@ -56,7 +63,7 @@ public class ProjectModelAccess extends ModelAccessBase {
     // we can get here either with p.getModelAccess() or through MA.instance().runCommandInEDT re-dispatch.
     // see #executeCommand(Runnable) above why we don't use myProject
     // Since this method have not been used through MA.instance(), we are free to implement it the way DMA would implement it, right here
-    SwingUtilities.invokeLater(() -> getDelegate().executeCommand(r));
+    SwingUtilities.invokeLater(() -> delegateImpl().executeCommand(r));
   }
 
   @Override
@@ -67,6 +74,6 @@ public class ProjectModelAccess extends ModelAccessBase {
 
   @Override
   public boolean isCommandAction() {
-    return getDelegate().isCommandAction();
+    return delegateImpl().isCommandAction();
   }
 }

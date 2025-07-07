@@ -24,7 +24,7 @@ import jetbrains.mps.project.ModelsAutoImportsManager;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.classloading.ClassLoaderManager;
 
-@GeneratedClass(node = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)/4326588611400152009", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
+@GeneratedClass(nodeId = "4326588611400152009", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
 public class ResolveStubReferencesToMPSGlobal_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -32,6 +32,7 @@ public class ResolveStubReferencesToMPSGlobal_Action extends BaseAction {
     super("Resolve Stub References to MPS Code in the Whole Project", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

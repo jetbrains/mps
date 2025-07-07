@@ -17,11 +17,11 @@ package jetbrains.mps.openapi.editor.cells;
 
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.HtmlTextBuilder;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuLookup;
 import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 import jetbrains.mps.openapi.editor.style.Style;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConceptFeature;
@@ -125,8 +125,7 @@ public interface EditorCell {
   String getCellId();
 
   //use getSRole
-  @Deprecated
-  @ToRemove(version = 2018.3)
+@Deprecated(since = "2018.3", forRemoval = true)
   String getRole();
 
   //it would be better to have typing here, however introducing generics may lead to compilation incompatibility
@@ -213,6 +212,7 @@ public interface EditorCell {
 
   boolean isSingleNodeCell();
 
+  @Nullable
   SNode getSNode();
 
   void putUserObject(Object key, Object value);
@@ -255,6 +255,8 @@ public interface EditorCell {
    * @return a {@link TextBuilder} with the cell contents.
    */
   TextBuilder renderText();
+
+  HtmlTextBuilder renderHtml();
 
   /**
    * Marking current cell as "big" cell - the top-most cell available in the editor for associated node.

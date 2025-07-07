@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,29 +17,25 @@ package jetbrains.mps.core.aspects.constraints.rules;
 
 import jetbrains.mps.core.aspects.behaviour.SConceptC3StarMRO;
 import jetbrains.mps.core.aspects.behaviour._SAbstractConcept;
+import jetbrains.mps.core.aspects.behaviour.api.AbstractConceptLike;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeAncestorContext;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootContext;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.PredefinedRuleKinds;
 import jetbrains.mps.core.context.Context;
-import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.smodel.language.ConceptRegistry;
+import jetbrains.mps.smodel.language.ConstraintsRegistry;
 import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeAncestor;
 import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeChild;
 import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeParent;
 import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeRoot;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.impl.CheckingNodeContextImpl;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Mutable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.HashSet;
@@ -61,32 +57,23 @@ import java.util.stream.Stream;
  *
  * @author apyshkin
  */
-@ToRemove(version = 223)
+@Deprecated(since = "223", forRemoval = true)
 public final class LegacyAndRulesConstraintsDescriptor implements RulesConstraintsDescriptor {
-  private static final Logger LOG = LogManager.getLogger(LegacyAndRulesConstraintsDescriptor.class);
 
   @NotNull private final SAbstractConcept myConcept;
   @NotNull private final RulesConstraintsDescriptor myRulesDescriptor;
   private final SConceptC3StarMRO myMro;
+  private final ConstraintsRegistry myLegacyConstraintsRegistry;
 
-  public LegacyAndRulesConstraintsDescriptor(SConceptC3StarMRO mro, @NotNull SAbstractConcept concept, @NotNull RulesConstraintsDescriptor rulesDescriptor) {
+  public LegacyAndRulesConstraintsDescriptor(SConceptC3StarMRO mro, @NotNull SAbstractConcept concept, @NotNull RulesConstraintsDescriptor rulesDescriptor,
+                                             @NotNull ConstraintsRegistry legacyConstraintsRegistry) {
     myMro = mro;
     if (rulesDescriptor instanceof LegacyAndRulesConstraintsDescriptor) {
       throw new IllegalArgumentException("Cannot construct a legacy wrapper over a legacy wrapper, " + concept);
     }
     myConcept = concept;
     myRulesDescriptor = rulesDescriptor;
-  }
-
-  @Deprecated
-  @ToRemove(version = 301)
-  public LegacyAndRulesConstraintsDescriptor(@NotNull SAbstractConcept concept, @NotNull RulesConstraintsDescriptor rulesDescriptor) {
-    if (rulesDescriptor instanceof LegacyAndRulesConstraintsDescriptor) {
-      throw new IllegalArgumentException("Cannot construct a legacy wrapper over a legacy wrapper, " + concept);
-    }
-    myConcept = concept;
-    myRulesDescriptor = rulesDescriptor;
-    myMro = new SConceptC3StarMRO();
+    myLegacyConstraintsRegistry = legacyConstraintsRegistry;
   }
 
   @Override
@@ -236,7 +223,7 @@ public final class LegacyAndRulesConstraintsDescriptor implements RulesConstrain
     List<Rule<?>> result = new ArrayList<>();
     List<_SAbstractConcept> linearization = myMro.calcLinearization(_SAbstractConcept.wrap(myConcept));
     Deque<_SAbstractConcept> legacyAdded = new LinkedList<>();
-    Set<_SAbstractConcept> woLegacyParents = new HashSet<>();
+    Set<AbstractConceptLike> woLegacyParents = new HashSet<>();
     for (_SAbstractConcept _concept : linearization) {
       if (legacyAdded.stream()
                      .anyMatch(was -> was.isSubConceptOf(_concept))) {
@@ -274,12 +261,12 @@ public final class LegacyAndRulesConstraintsDescriptor implements RulesConstrain
     if (rulesDescriptor instanceof LegacyAndRulesConstraintsDescriptor) {
       return (LegacyAndRulesConstraintsDescriptor) rulesDescriptor;
     }
-    return new LegacyAndRulesConstraintsDescriptor(myMro, concept, rulesDescriptor);
+    return new LegacyAndRulesConstraintsDescriptor(myMro, concept, rulesDescriptor, myLegacyConstraintsRegistry);
   }
 
   @NotNull
   private ConstraintsDescriptor getLegacyDescriptor(@NotNull SAbstractConcept concept) {
-    return ConceptRegistry.getInstance().getConstraintsDescriptor(concept);
+    return myLegacyConstraintsRegistry.getConstraintsDescriptor(concept);
   }
 
   @Override

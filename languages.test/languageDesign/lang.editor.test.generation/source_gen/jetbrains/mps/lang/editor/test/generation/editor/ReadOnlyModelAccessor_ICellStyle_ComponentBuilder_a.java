@@ -45,7 +45,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
     editorCell.setCellId("ReadOnlyModelAccessor_isas8b_a");
     Style style = new StyleImpl();
-    new testParentStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new testParentStyleStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, false);
     editorCell.getStyle().putAll(style);
     return editorCell;

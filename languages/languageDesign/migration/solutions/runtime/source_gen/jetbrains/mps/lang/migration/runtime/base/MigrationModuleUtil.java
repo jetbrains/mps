@@ -6,9 +6,9 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.smodel.tempmodel.TempModule;
+import jetbrains.mps.smodel.tempmodel.TempModule2;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
@@ -21,23 +21,19 @@ import jetbrains.mps.project.AbstractModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 
-@GeneratedClass(node = "528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)/5464540062512236006", model = "528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)")
+@GeneratedClass(nodeId = "5464540062512236006", model = "528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)")
 public class MigrationModuleUtil {
   public static Iterable<SModule> getMigrateableModulesFromProject(Project p) {
     Iterable<SModule> modules = p.getProjectModulesWithGenerators();
-    return Sequence.fromIterable(modules).where(new IWhereFilter<SModule>() {
-      public boolean accept(SModule it) {
-        return isModuleMigrateable(it);
-      }
-    });
+    return Sequence.fromIterable(modules).where((it) -> isModuleMigrateable(it));
   }
 
   public static boolean isModuleMigrateable(SModule m) {
-    return !((m.isReadOnly())) && MigrationModuleUtil.wouldBeMigrateableWhenNotPacked(m);
+    return !(m.isReadOnly()) && MigrationModuleUtil.wouldBeMigrateableWhenNotPacked(m);
   }
 
   public static boolean wouldBeMigrateableWhenNotPacked(SModule m) {
-    return !((m instanceof DevKit)) && !((m instanceof TempModule));
+    return !(m instanceof DevKit) && !(m instanceof TempModule || m instanceof TempModule2);
   }
 
   public static Set<SModule> getModuleDependencies(SModule module) {
@@ -57,11 +53,27 @@ public class MigrationModuleUtil {
     throw new IllegalArgumentException("We are able to work only with AbstractModule instances");
   }
 
+  /**
+   * 
+   * @return version >= 0
+   */
   public static int getUsedLanguageVersion(@NotNull SModule module, @NotNull SLanguage usedLang) {
-    if (module instanceof AbstractModule) {
-      return ((AbstractModule) module).getUsedLanguageVersion(usedLang, false);
+    int ver = module.getUsedLanguageVersion(usedLang);
+    // we shall process -1, legal value from the method, here as there are r/o stub solutions where we don't
+    // keep versions of used languages but still report these languages as used. If we answer with 0=max (0,-1)
+    // we face all migrations up to current language versions for our stub models. This likely affects MPS only, and
+    // FIXME shall be approached in a different way as it's wrong to access version through SLanguage
+    if (ver == -1) {
+      return usedLang.getLanguageVersion();
     }
-    throw new IllegalArgumentException("We are able to work only with AbstractModule instances");
+    return Math.max(0, ver);
+  }
+  public static void putUsedLanguageVersion(@NotNull SModule module, @NotNull SLanguage usedLang, int version) {
+    if (module instanceof AbstractModule) {
+      ((AbstractModule) module).getModuleDescriptor().getLanguageVersions().put(usedLang, version);
+    } else {
+      throw new IllegalArgumentException("We are able to work only with AbstractModule instances");
+    }
   }
 
   public static void setDepVersion(SModule module, SModuleReference dependency, int version) {

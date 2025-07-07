@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,33 +15,62 @@
  */
 package jetbrains.mps.vfs;
 
-import jetbrains.mps.vfs.path.Path;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 
-import java.net.URI;
-import java.net.URL;
-import java.util.Locale;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 public final class Files {
-  private static final Logger LOG = LogManager.getLogger(Files.class);
+  private static final Logger LOG = Logger.getLogger(Files.class);
 
   private Files() {
   }
 
-  @NotNull
-  @Deprecated
-  public static IFile fromURL(@NotNull URL url) {
-    String path = URI.create(url.getPath()).getPath();
-    // fixme HOTFIX for 203.1, will be gone
-    if (System.getProperty("os.name").toLowerCase(Locale.US).startsWith("windows") && path.startsWith("/")) {
-      path = path.substring(1);
+  public static boolean isJarOrZipFile(@NotNull File file) throws IOException {
+    boolean result = isJarOrZipFile0(file);
+    String absolutePath = file.getAbsolutePath();
+    if (!result && (absolutePath.endsWith(".zip") || absolutePath.endsWith(".jar"))) {
+      LOG.warning(String.format("The path '%s' ends with '.jar' or '.zip' but the contents are not recognized as a zip archive", absolutePath));
+      printDebugOnSuspiciousArchive(file);
     }
-    return FileSystemExtPoint.getFS().getFile(path);
+    return result;
   }
 
-  public static IFile fromPath(@NotNull Path path) {
-    return FileSystemExtPoint.getFS().getFile(path);
+  private static void printDebugOnSuspiciousArchive(@NotNull File file) throws IOException {
+    if (!file.exists()) {
+      LOG.warning(" the file does not exist");
+      return;
+    }
+    if (file.isDirectory()) {
+      LOG.warning(" the file is a directory");
+      return;
+    }
+    if (file.length() < 4) { // less than 4 bytes
+      LOG.warning(" the file length is less than 4 bytes");
+      return;
+    }
+    try (var dis = new DataInputStream(new FileInputStream(file))) {
+      int fileSignature = dis.readInt();
+      LOG.warning(" the file signature is " + fileSignature);
+    }
+  }
+
+  private static boolean isJarOrZipFile0(@NotNull File file) throws IOException {
+    if (!file.exists()) {
+      return false;
+    }
+    if (file.isDirectory()) {
+      return false;
+    }
+    if (file.length() < 4) { // less than 4 bytes
+      return false;
+    }
+    try (var dis = new DataInputStream(new FileInputStream(file))) {
+      int fileSignature = dis.readInt();
+      return fileSignature == 0x504B0304 || fileSignature == 0x504B0506 || fileSignature == 0x504B0708;
+    }
   }
 }

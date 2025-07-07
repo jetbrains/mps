@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.ide.bookmark;
 
 import com.intellij.ide.bookmarks.Bookmark;
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.components.State;
@@ -23,6 +24,7 @@ import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.components.StoragePathMacros;
 import com.intellij.openapi.editor.colors.EditorColors;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
+import com.intellij.openapi.project.Project;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.RetrievableIcon;
@@ -30,13 +32,14 @@ import com.intellij.util.IconUtil;
 import com.intellij.util.PlatformIcons;
 import com.intellij.util.ui.JBCachingScalableIcon;
 import jetbrains.mps.ide.bookmark.BookmarkManager.MyState;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.util.MPSProjectActivity;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.Highlighter;
+import jetbrains.mps.nodeEditor.HighlighterContribution;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.util.Pair;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -67,50 +70,38 @@ import static java.lang.Math.ceil;
     name = "MPSBookmarkManager",
     storages = @Storage(StoragePathMacros.WORKSPACE_FILE)
 )
-public class BookmarkManager implements ProjectComponent, PersistentStateComponent<MyState> {
-  private static final Logger LOG = LogManager.getLogger(BookmarkManager.class);
+public class BookmarkManager implements PersistentStateComponent<MyState>, HighlighterContribution {
+  private static final Logger LOG = Logger.getLogger(BookmarkManager.class);
 
   private static final Icon DEFAULT_ICON = new MyCheckedIcon();
 
-  private List<BookmarkListener> myBookmarkListeners = new ArrayList<>();
+  private final List<BookmarkListener> myBookmarkListeners = new ArrayList<>();
 
-  private SNodeReference[] myBookmarks = new SNodeReference[10];
+  private final SNodeReference[] myBookmarks = new SNodeReference[10];
 
-  private List<SNodeReference> myUnnumberedBookmarks = new ArrayList<>();
+  private final List<SNodeReference> myUnnumberedBookmarks = new ArrayList<>();
 
   private final MPSProject myProject;
-  private Highlighter myHighlighter;
   private BookmarksHighlighter myChecker;
 
-  public BookmarkManager(MPSProject project, Highlighter highlighter) {
-    myProject = project;
-    myHighlighter = highlighter;
+  public static BookmarkManager getInstance(Project ideaProject) {
+    return ideaProject.getService(BookmarkManager.class);
+  }
+
+  public BookmarkManager(Project ideaProject) {
+    myProject = ProjectHelper.fromIdeaProjectOrFail(ideaProject);
   }
 
   @Override
-  public void projectOpened() {
+  public void install(@NotNull Highlighter highlighter) {
+//    myChecker = new BookmarksHighlighter(this);
+    myChecker = new BookmarksHighlighter(getInstance(ProjectHelper.toIdeaProject(myProject)));
+    highlighter.addChecker(myChecker);
   }
 
   @Override
-  public void projectClosed() {
-  }
-
-  @Override
-  @NonNls
-  @NotNull
-  public String getComponentName() {
-    return getClass().getName();
-  }
-
-  @Override
-  public void initComponent() {
-    myChecker = new BookmarksHighlighter(this);
-    myHighlighter.addChecker(myChecker);
-  }
-
-  @Override
-  public void disposeComponent() {
-    myHighlighter.removeChecker(myChecker);
+  public void uninstall(@NotNull Highlighter highlighter) {
+    highlighter.removeChecker(myChecker);
     myChecker.dispose();
   }
 

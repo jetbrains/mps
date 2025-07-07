@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,20 @@
  */
 package jetbrains.mps.openapi.editor.style;
 
+import jetbrains.mps.components.CoreComponent;
 import org.jetbrains.annotations.Nullable;
 
 import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StyleRegistry {
+public class StyleRegistry implements CoreComponent {
   protected static StyleRegistry ourInstance;
 
+  /**
+   * @deprecated it's a CoreComponent, access through ComponentHost
+   */
+  @Deprecated(since = "2023.3", forRemoval = true)
   public static StyleRegistry getInstance() {
     if (ourInstance == null) {
       ourInstance = new StyleRegistry();

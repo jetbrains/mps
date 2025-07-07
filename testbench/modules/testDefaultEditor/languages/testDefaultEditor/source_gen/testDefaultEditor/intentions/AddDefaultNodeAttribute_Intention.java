@@ -22,21 +22,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class AddDefaultNodeAttribute_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddDefaultNodeAttribute_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:be519384-ff73-407d-8bb6-1d18a1417684(testDefaultEditor.intentions)", "2870455723671212067"));
   }
+
   @Override
   public String getPresentation() {
     return "AddDefaultNodeAttribute";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -46,6 +46,7 @@ public final class AddDefaultNodeAttribute_Intention extends AbstractIntentionDe
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$_u).get(node) != null)) {
@@ -54,6 +55,7 @@ public final class AddDefaultNodeAttribute_Intention extends AbstractIntentionDe
         return "add default node attribute";
       }
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$_u).get(node) != null)) {
@@ -63,10 +65,19 @@ public final class AddDefaultNodeAttribute_Intention extends AbstractIntentionDe
         SelectionUtil.selectCell(editorContext, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$_u).get(node), "const");
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddDefaultNodeAttribute_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

@@ -13,7 +13,6 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.intentions.IntentionsManager;
 
 public class IntentionTester {
@@ -31,38 +30,30 @@ public class IntentionTester {
 
   public boolean isIntentionApplicable(final String id, final SNode node) throws InterruptedException, InvocationTargetException {
     final Wrappers._boolean result = new Wrappers._boolean(false);
-    myEditorTest.runUndoableCommandInEDTAndWait(new Runnable() {
-      public void run() {
-        result.value = Sequence.fromIterable(getMatchingIntentions(node, new MatchIntentionById(id))).isNotEmpty();
-      }
-    });
+    myEditorTest.runUndoableCommandInEDTAndWait(() -> result.value = Sequence.fromIterable(getMatchingIntentions(node, new MatchIntentionById(id))).isNotEmpty());
     return result.value;
   }
 
   public void invokeMatchingIntention(final SNode node, final Condition<IntentionExecutable> intentionCondition) throws InterruptedException, InvocationTargetException {
-    myEditorTest.runUndoableCommandInEDTAndWait(new Runnable() {
-      public void run() {
-        Pair<IntentionExecutable, SNode> singleMatch = getSingleMatchingIntention(node, intentionCondition);
-        singleMatch.o1.execute(singleMatch.o2, myEditorTest.getEditorContext());
-      }
+    myEditorTest.runUndoableCommandInEDTAndWait(() -> {
+      Pair<IntentionExecutable, SNode> singleMatch = getSingleMatchingIntention(node, intentionCondition);
+      singleMatch.o1.execute(singleMatch.o2, myEditorTest.getEditorContext());
     });
   }
 
   public void invokeMatchingIntention(final Condition<IntentionExecutable> intentionCondition) throws InterruptedException, InvocationTargetException {
-    myEditorTest.runUndoableCommandInEDTAndWait(new Runnable() {
-      public void run() {
-        List<SNode> selectedNodes = myEditorTest.getEditorContext().getSelectedNodes();
-        if (selectedNodes == null || selectedNodes.isEmpty()) {
-          return;
-        }
-        Pair<IntentionExecutable, SNode> singleMatch = getSingleMatchingIntention(selectedNodes.get(0), intentionCondition);
-        singleMatch.o1.execute(singleMatch.o2, myEditorTest.getEditorContext());
+    myEditorTest.runUndoableCommandInEDTAndWait(() -> {
+      List<SNode> selectedNodes = myEditorTest.getEditorContext().getSelectedNodes();
+      if (selectedNodes == null || selectedNodes.isEmpty()) {
+        return;
       }
+      Pair<IntentionExecutable, SNode> singleMatch = getSingleMatchingIntention(selectedNodes.get(0), intentionCondition);
+      singleMatch.o1.execute(singleMatch.o2, myEditorTest.getEditorContext());
     });
   }
 
   private Pair<IntentionExecutable, SNode> getSingleMatchingIntention(final SNode node, Condition<IntentionExecutable> intentionCondition) {
-    List<Pair<IntentionExecutable, SNode>> matches = Sequence.fromIterable(getMatchingIntentions(node, intentionCondition)).toListSequence();
+    List<Pair<IntentionExecutable, SNode>> matches = Sequence.fromIterable(getMatchingIntentions(node, intentionCondition)).toList();
 
     if (ListSequence.fromList(matches).count() != 1) {
       throw new RuntimeException("Expected one, found " + ListSequence.fromList(matches).count() + " intentions matching " + intentionCondition);
@@ -73,11 +64,7 @@ public class IntentionTester {
 
   private Iterable<Pair<IntentionExecutable, SNode>> getMatchingIntentions(SNode node, final Condition<IntentionExecutable> condition) {
     Collection<Pair<IntentionExecutable, SNode>> intentions = getAvailableIntentions(node);
-    return CollectionSequence.fromCollection(intentions).where(new IWhereFilter<Pair<IntentionExecutable, SNode>>() {
-      public boolean accept(Pair<IntentionExecutable, SNode> it) {
-        return condition.met(it.o1);
-      }
-    });
+    return CollectionSequence.fromCollection(intentions).where((it) -> condition.met(it.o1));
   }
 
   private Collection<Pair<IntentionExecutable, SNode>> getAvailableIntentions(final SNode node) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,8 @@ package jetbrains.mps.extapi.persistence.datasource;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.persistence.FilePerRootDataSource;
 import jetbrains.mps.project.MPSExtentions;
-import jetbrains.mps.vfs.Files;
+import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.vfs.FileSystemExtPoint;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.path.Path;
 import org.jetbrains.annotations.NotNull;
@@ -30,17 +31,12 @@ import org.jetbrains.mps.openapi.persistence.DataSource;
  *
  * @author apyshkin
  * @since 29/12/16
+ * @deprecated implementation class, shall not be part of `extapi` nor referenced directly by clients
  */
+@Deprecated(forRemoval = true, since = "2025.2")
 @Immutable
-public enum PreinstalledPathDataSourceFactories implements DataSourceFactoryFromPath {
+public enum PreinstalledPathDataSourceFactories {
   FILE_OR_FOLDER;
-
-  @NotNull
-  @Override
-  public DataSource create(@NotNull Path path) {
-    IFile file = Files.fromPath(path);
-    return createFromFile(file);
-  }
 
   @NotNull
   public DataSource createFromFile(@NotNull IFile file) {

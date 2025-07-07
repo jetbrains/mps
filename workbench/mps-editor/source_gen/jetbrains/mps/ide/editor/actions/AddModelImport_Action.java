@@ -10,13 +10,12 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.ModelImportHelper;
 
-@GeneratedClass(node = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/3467203700125709779", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
+@GeneratedClass(nodeId = "3467203700125709779", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
 public class AddModelImport_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -24,6 +23,7 @@ public class AddModelImport_Action extends BaseAction {
     super("Add Model Import", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -36,14 +36,12 @@ public class AddModelImport_Action extends BaseAction {
     }
     {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      MapSequence.fromMap(_params).put("project", p);
       if (p == null) {
         return false;
       }
     }
     {
       SModel p = event.getData(MPSCommonDataKeys.CONTEXT_MODEL);
-      MapSequence.fromMap(_params).put("model", p);
       if (p == null) {
         return false;
       }
@@ -55,6 +53,6 @@ public class AddModelImport_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    new ModelImportHelper(((MPSProject) MapSequence.fromMap(_params).get("project"))).setShortcut(getShortcutSet()).addImport(((SModel) MapSequence.fromMap(_params).get("model")));
+    new ModelImportHelper(event.getData(MPSCommonDataKeys.MPS_PROJECT)).setShortcut(getShortcutSet()).addImport(event.getData(MPSCommonDataKeys.CONTEXT_MODEL));
   }
 }

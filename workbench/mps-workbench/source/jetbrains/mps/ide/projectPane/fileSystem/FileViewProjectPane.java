@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@ import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.DataProvider;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.application.AccessToken;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
@@ -34,6 +35,7 @@ import com.intellij.openapi.util.ActionCallback;
 import com.intellij.openapi.vcs.FileStatusListener;
 import com.intellij.openapi.vcs.FileStatusManager;
 import com.intellij.openapi.vcs.ProjectLevelVcsManager;
+import com.intellij.openapi.vcs.VcsMappingListener;
 import com.intellij.openapi.vcs.changes.ChangeListAdapter;
 import com.intellij.openapi.vcs.changes.ChangeListListener;
 import com.intellij.openapi.vcs.changes.ChangeListManager;
@@ -47,6 +49,7 @@ import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowId;
 import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.ui.ScrollPaneFactory;
+import com.intellij.util.SlowOperations;
 import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.ide.ThreadUtils;
@@ -63,13 +66,12 @@ import jetbrains.mps.ide.projectPane.fileSystem.nodes.ProjectTreeNode;
 import jetbrains.mps.ide.ui.tree.MPSTree;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.ide.ui.tree.TextTreeNode;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.workbench.ActionPlace;
 import jetbrains.mps.workbench.MPSDataKeys;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -83,7 +85,6 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.KeyStroke;
-import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 import java.awt.event.ActionEvent;
@@ -92,7 +93,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class FileViewProjectPane extends AbstractProjectViewPane implements DataProvider {
-  private static final Logger LOG = LogManager.getLogger(FileViewProjectPane.class);
+  private static final Logger LOG = Logger.getLogger(FileViewProjectPane.class);
   @NonNls
   public static final String ID = "FileSystem";
   public static final String TITLE = "File System";
@@ -125,7 +126,9 @@ public class FileViewProjectPane extends AbstractProjectViewPane implements Data
   }
 
   public void rebuildTreeLater() {
-    getTree().rebuildLater();
+    if (isInitialized()) {
+      getTree().rebuildLater();
+    }
   }
 
   @NotNull
@@ -156,6 +159,7 @@ public class FileViewProjectPane extends AbstractProjectViewPane implements Data
         getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), openEditorAction);
         getActionMap().put(openEditorAction, openEditorAction);
       }
+
       @Override
       protected ActionGroup createPopupActionGroup(final MPSTreeNode node) {
         return ProjectPaneActionGroups.getActionGroup(node);
@@ -168,13 +172,15 @@ public class FileViewProjectPane extends AbstractProjectViewPane implements Data
 
       @Override
       protected MPSTreeNode rebuild() {
-        MPSTreeNode node;
-        if (!myProject.isDisposed() && ProjectUtil.guessProjectDir(myProject) != null && ProjectHelper.fromIdeaProject(myProject) != null) {
-          node = new ProjectTreeNode(ProjectHelper.fromIdeaProject(myProject));
-        } else {
-          node = new TextTreeNode("No Project");
+        try (AccessToken ignored = SlowOperations.allowSlowOperations(SlowOperations.GENERIC)) { // MPS-36709
+          MPSTreeNode node;
+          if (!myProject.isDisposed() && ProjectUtil.guessProjectDir(myProject) != null && ProjectHelper.fromIdeaProject(myProject) != null) {
+            node = new ProjectTreeNode(ProjectHelper.fromIdeaProject(myProject));
+          } else {
+            node = new TextTreeNode("No Project");
+          }
+          return node;
         }
-        return node;
       }
 
       @Override
@@ -192,12 +198,13 @@ public class FileViewProjectPane extends AbstractProjectViewPane implements Data
   }
 
   private void installListeners() {
+    // TODO: Verify correct Disposable used
     FileStatusManager.getInstance(myProject).addFileStatusListener(myFileStatusListener = new FileStatusChangeListener(), this);
-    VirtualFileManager.getInstance().addVirtualFileManagerListener(myVirtualFileManagerListener = new RefreshListener());
+    VirtualFileManager.getInstance().addVirtualFileManagerListener(myVirtualFileManagerListener = new RefreshListener(), this);
     ChangeListManager.getInstance(myProject).addChangeListListener(myChangeListListener = new ChangeListUpdateListener());
     myMessageBusConnection = myProject.getMessageBus().connect(this);
     myMessageBusConnection.subscribe(VirtualFileManager.VFS_CHANGES, new FileChangesListener());
-    myMessageBusConnection.subscribe(ProjectLevelVcsManager.VCS_CONFIGURATION_CHANGED, this::rebuildTreeLater);
+    myMessageBusConnection.subscribe(ProjectLevelVcsManager.VCS_CONFIGURATION_CHANGED, (VcsMappingListener) this::rebuildTreeLater);
     myMessageBusConnection.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new FileEditorManagerListener() {
       @Override
       public void fileOpened(@NotNull FileEditorManager source, @NotNull VirtualFile file) {
@@ -219,7 +226,6 @@ public class FileViewProjectPane extends AbstractProjectViewPane implements Data
   }
 
   private void disposeListeners() {
-    FileStatusManager.getInstance(myProject).removeFileStatusListener(myFileStatusListener);
     VirtualFileManager.getInstance().removeVirtualFileManagerListener(myVirtualFileManagerListener);
     ChangeListManager.getInstance(myProject).removeChangeListListener(myChangeListListener);
     myMessageBusConnection.disconnect();
@@ -293,11 +299,20 @@ public class FileViewProjectPane extends AbstractProjectViewPane implements Data
   }
 
   //todo eliminate code duplication in BaseLogicalViewProjectPane
+  @Nullable
   private <T extends TreeNode> T getSelectedTreeNode(Class<T> nodeClass) {
-    TreePath selectionPath = getTree().getSelectionPath();
-    if (selectionPath == null) return null;
+    MPSTree tree = getTree();
+    if (tree == null) {
+      return null;
+    }
+    TreePath selectionPath = tree.getSelectionPath();
+    if (selectionPath == null) {
+      return null;
+    }
     Object selectedNode = selectionPath.getLastPathComponent();
-    if (!(nodeClass.isInstance(selectedNode))) return null;
+    if (!(nodeClass.isInstance(selectedNode))) {
+      return null;
+    }
     return (T) selectedNode;
   }
 
@@ -327,7 +342,7 @@ public class FileViewProjectPane extends AbstractProjectViewPane implements Data
     };
     if (changeView) {
       projectViewToolWindow.activate(() -> ProjectView.getInstance(myProject).changeViewCB(getId(), null)
-                                                        .doWhenDone(selectionRunnable), true);
+                                                      .doWhenDone(selectionRunnable), true);
     } else {
       selectionRunnable.run();
     }
@@ -335,8 +350,11 @@ public class FileViewProjectPane extends AbstractProjectViewPane implements Data
 
   @Nullable
   protected MPSTreeNode getNode(VirtualFile file) {
-    DefaultTreeModel treeModel = getTree().getModel();
-    MPSTreeNode rootTreeNode = (MPSTreeNode) treeModel.getRoot();
+    MPSTree tree = getTree();
+    if (tree == null) {
+      return null;
+    }
+    MPSTreeNode rootTreeNode = (MPSTreeNode) tree.getModel().getRoot();
     return getNode(rootTreeNode, file);
   }
 

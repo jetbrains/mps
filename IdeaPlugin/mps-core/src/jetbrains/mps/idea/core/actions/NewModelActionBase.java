@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.core.actions;
 
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.LangDataKeys;
@@ -31,10 +31,11 @@ import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
 import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.idea.core.project.module.ModuleMPSSupport;
 import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.vfs.IFile;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.Icon;
 
@@ -47,6 +48,11 @@ public abstract class NewModelActionBase extends AnAction {
 
   protected NewModelActionBase(String text, String description, Icon icon) {
     super(text, description, icon);
+  }
+
+  @Override
+  public @NotNull ActionUpdateThread getActionUpdateThread() {
+    return ActionUpdateThread.BGT;
   }
 
   @Override
@@ -91,13 +97,13 @@ public abstract class NewModelActionBase extends AnAction {
       }
       myModelRoot = location.first;
       mySourceRoot = location.second;
-      myModelPrefix = packagePrefix(mySourceRoot, targetDir);
+      myModelPrefix = packagePrefix(mySourceRoot.getAbsolutePath(), targetDir);
 //      myDataSourceFactory = createDataSourceFactory(targetDir);
     });
   }
   
-  private String packagePrefix(SourceRoot sourceRoot, VirtualFile dir) {
-    final VirtualFile sourceRootPath = VirtualFileUtils.getProjectVirtualFile(sourceRoot.getAbsolutePath());
+  private String packagePrefix(IFile sourceRoot, VirtualFile dir) {
+    final VirtualFile sourceRootPath = LocalFileSystem.getInstance().findFileByPath(sourceRoot.getPath());
     assert sourceRootPath != null : "Can't find root directory for model";
     String prefix = VfsUtilCore.getRelativePath(dir, sourceRootPath);
     assert prefix != null : "Can't find relative path between input path and root path for model";
@@ -107,7 +113,7 @@ public abstract class NewModelActionBase extends AnAction {
       prefix = prefix.substring(1);
     }
     while (prefix.endsWith(".")) {
-      prefix = prefix.substring(0, prefix.length());
+      prefix = prefix.substring(0, prefix.length()-1);
     }
     return prefix;
   }
@@ -116,7 +122,7 @@ public abstract class NewModelActionBase extends AnAction {
 
   protected boolean isEnabled(AnActionEvent e) {
     PsiElement psiElement = e.getData(LangDataKeys.PSI_ELEMENT);
-    if (psiElement == null || !(psiElement instanceof PsiDirectory)) {
+    if (!(psiElement instanceof PsiDirectory)) {
       return false;
     }
 

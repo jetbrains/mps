@@ -16,6 +16,5 @@ public class GenerateOptions_ActionGroup extends GeneratedActionGroup {
     setPopup(false);
     GenerateOptions_ActionGroup.this.addAction("jetbrains.mps.ide.make.actions.Options_Action");
     addNamedAnchor(LABEL_ID_saveTransientModels);
-    GenerateOptions_ActionGroup.this.addAction("jetbrains.mps.ide.make.actions.CheckModelsBeforeGeneration_Action");
   }
 }

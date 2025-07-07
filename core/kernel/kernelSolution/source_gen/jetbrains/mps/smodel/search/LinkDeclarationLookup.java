@@ -10,8 +10,7 @@ import org.jetbrains.mps.openapi.language.SAbstractLink;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -26,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
  * This code used to be part of ConceptAndSuperConceptsCache, which is quite outdated to keep going.
  * Note, this code doesn't check if supplied link in fact belongs to the hierarchy of the concept
  */
-@GeneratedClass(node = "r:22db907b-8239-4180-8797-e91cea0b9573(jetbrains.mps.smodel.search)/7813081600365639852", model = "r:22db907b-8239-4180-8797-e91cea0b9573(jetbrains.mps.smodel.search)")
+@GeneratedClass(nodeId = "7813081600365639852", model = "r:22db907b-8239-4180-8797-e91cea0b9573(jetbrains.mps.smodel.search)")
 public final class LinkDeclarationLookup {
   private final SNode myConcept;
 
@@ -50,11 +49,7 @@ public final class LinkDeclarationLookup {
     }
     final String linkName = link.getName();
     // with findOverride() we have checked links with specializedLink!=null, only plain LD left to check
-    return ListSequence.fromList(((List<SNode>) BHReflection.invoke0(myConcept, CONCEPTS.AbstractConceptDeclaration$KA, SMethodTrimmedId.create("getLinkDeclarations", CONCEPTS.AbstractConceptDeclaration$KA, "hEwILKK")))).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.specializedLink$7ZCN) == null) && Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), linkName);
-      }
-    });
+    return ListSequence.fromList(((List<SNode>) BHReflection.invoke0(myConcept, CONCEPTS.AbstractConceptDeclaration$KA, SMethodIdV2.create("getLinkDeclarations", 1213877394480L, 0x44a456bea0df1cf0L)))).findFirst((it) -> (SLinkOperations.getTarget(it, LINKS.specializedLink$7ZCN) == null) && Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), linkName));
   }
 
   /**
@@ -88,11 +83,7 @@ public final class LinkDeclarationLookup {
     // SAbstractLink is always the "base"/persistence one; the one that could be specialized in a subconcept
     // getLinkDeclarations gives most specific LD instance if there are few specialization, that's why the first one to match is fine (assuming no unrelated links with the same name)
     final String linkName = link.getName();
-    for (SNode ld : ListSequence.fromList(((List<SNode>) BHReflection.invoke0(myConcept, CONCEPTS.AbstractConceptDeclaration$KA, SMethodTrimmedId.create("getLinkDeclarations", CONCEPTS.AbstractConceptDeclaration$KA, "hEwILKK")))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.specializedLink$7ZCN) != null;
-      }
-    })) {
+    for (SNode ld : ListSequence.fromList(((List<SNode>) BHReflection.invoke0(myConcept, CONCEPTS.AbstractConceptDeclaration$KA, SMethodIdV2.create("getLinkDeclarations", 1213877394480L, 0x44a456bea0df1cf0L)))).where((it) -> SLinkOperations.getTarget(it, LINKS.specializedLink$7ZCN) != null)) {
       // specializedLink may point to another LD with specializedLink
       SNode sl = SLinkOperations.getTarget(ld, LINKS.specializedLink$7ZCN);
       while (SLinkOperations.getTarget(sl, LINKS.specializedLink$7ZCN) != null) {

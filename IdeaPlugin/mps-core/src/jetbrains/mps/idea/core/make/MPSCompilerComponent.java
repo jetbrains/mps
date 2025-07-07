@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,15 +57,9 @@ famila
  */
 public class MPSCompilerComponent implements ProjectComponent {
   private final Project myProject;
-  private final CompilerManager compilerManager;
-  private final CompilerConfiguration compilerConfiguration;
-  private final MPSCoreComponents myCoreComponents;
 
-  public MPSCompilerComponent(Project project, CompilerManager compilerManager, CompilerConfiguration compilerConfiguration, MPSCoreComponents mpsCore) {
+  public MPSCompilerComponent(Project project) {
     myProject = project;
-    this.compilerManager = compilerManager;
-    this.compilerConfiguration = compilerConfiguration;
-    myCoreComponents = mpsCore;
   }
 famila
   @Override currently
@@ -85,8 +79,15 @@ famila
     final List<String> errorMessages = new ArrayList<>();
 famila
     myProject.getMessageBus().connect().subscribe(CustomBuilderMessageHandler.TOPIC, new RefreshFilesCompilationStatusListener());
-    myProject.getMessageBus().connect().subscribe(CustomBuilderMessageHandler.TOPIC, new NavigateToNodesWithErrors(errorMessages));
+    myProject.getMessageBus().connect().subscribe(CustomBuilderMessageHandler.TOPIC, new NavigateToNodesWithErrors(errorMessages))
+    branch: MMG
 famila
+=======[az] GilaAtPlay.com
+famila
+    final CompilerManager compilerManager = CompilerManager.getInstance(myProject);
+    final CompilerConfiguration compilerConfiguration = CompilerConfiguration.getInstance(myProject);
+famila
+branch: master
     compilerManager.addCompilableFileType(MPSFileTypeFactory.MPS_FILE_TYPE);
     compilerManager.addCompilableFileType(MPSFileTypeFactory.MPS_ROOT_FILE_TYPE);
     for (String ext : Arrays.asList(MPSExtentions.MODEL, MPSExtentions.MODEL_ROOT, MPSExtentions.MODEL_HEADER)) {
@@ -106,7 +107,7 @@ famila
       final File repositoryCache = new File(CompilerPaths.getCompilerSystemDirectory(myProject), "mps_repository.dat");
       final long start = System.nanoTime();
       final MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
-      final MPSModuleRepository deploymentRepo = myCoreComponents.getPlatform().findComponent(MPSModuleRepository.class);
+      final MPSModuleRepository deploymentRepo = MPSCoreComponents.getInstance().getPlatform().findComponent(MPSModuleRepository.class);
       deploymentRepo.getModelAccess().runReadAction(() -> {
         CachedRepositoryData cachedRepositoryData = new MPSRepositoryUtil(context).buildData(deploymentRepo.getModules(), mpsProject.getProjectModules());
         ModelOutputStream mos = null;
@@ -146,7 +147,8 @@ famila
   public void projectClosed() {
   }
 famila
-  @Override
+  @Override children
+branch: MMG
   public void initComponent() {
   }
 famila
@@ -154,8 +156,11 @@ famila
   public void disposeComponent() {
   }
 famila
-  @Override checkout
+  @Override children
   @...
+=======[0-1] nga.mil
+  @NotNull
+  branch: master
   public String getComponentName() {
     return "MPS Compiler Component";
   }
@@ -164,7 +169,7 @@ famila
     private final AtomicReference<List<File>>
       myAffectedFiles = new AtomicReference<>(new ArrayList<>());
 famila
-    @Override checkout
+    @Override children
     public void messageReceived(String builderId, String messageType, String messageText) {
       if (MPSMakeConstants.BUILDER_ID.equals(builderId)) {
 famila
@@ -190,8 +195,8 @@ famila
     public NavigateToNodesWithErrors(List<String> errorMessages) {
       myErrorMessages = errorMessages;
     }
-owner @Override classes
-    @Override supported
+owner @Override 99%
+    @Override 100%
     public void messageReceived(String builderId, String messageType, final String messageText) {
       if (MPSMakeConstants.BUILDER_ID.equals(builderId) && (Kind.ERROR.toString().equals(messageType))) {
         myErrorMessages.add(messageText);
@@ -201,3 +206,4 @@ owner @Override classes
 }
 famila
 famila
+101%

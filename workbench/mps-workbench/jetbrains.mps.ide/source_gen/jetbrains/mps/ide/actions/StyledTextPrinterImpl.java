@@ -10,7 +10,7 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.BadLocationException;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/8394433674396727873", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "8394433674396727873", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class StyledTextPrinterImpl implements StyledTextPrinter {
   private StyledDocument myDocument = new DefaultStyledDocument();
   private SimpleAttributeSet myAttributeSet = new SimpleAttributeSet();

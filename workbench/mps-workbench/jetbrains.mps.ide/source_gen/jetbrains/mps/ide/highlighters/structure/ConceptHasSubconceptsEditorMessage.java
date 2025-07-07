@@ -16,9 +16,9 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.ide.MPSCodeInsightBundle;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import javax.swing.Icon;
-import jetbrains.mps.ide.editor.popup.IconResourceBundle_OverrideImplements;
+import jetbrains.mps.ide.editor.popup.OverrideImplementsIcons;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import com.intellij.openapi.actionSystem.AnAction;
@@ -28,7 +28,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
-@GeneratedClass(node = "r:8da2312b-c61c-4a7c-bb90-3ea3623b8abe(jetbrains.mps.ide.highlighters.structure)/8432634623182579978", model = "r:8da2312b-c61c-4a7c-bb90-3ea3623b8abe(jetbrains.mps.ide.highlighters.structure)")
+@GeneratedClass(nodeId = "8432634623182579978", model = "r:8da2312b-c61c-4a7c-bb90-3ea3623b8abe(jetbrains.mps.ide.highlighters.structure)")
 public class ConceptHasSubconceptsEditorMessage extends AbstractLeftEditorHighlighterMessage {
   private static final String INDENT = "     ";
   private static final EditorMessageIconRenderer.IconRendererType TYPE = new EditorMessageIconRenderer.IconRendererType(1);
@@ -67,12 +67,12 @@ public class ConceptHasSubconceptsEditorMessage extends AbstractLeftEditorHighli
     return tooltip;
   }
   private static String getTextFromOverride(SNode override) {
-    return ((String) BHReflection.invoke0(override, CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+    return ((String) BHReflection.invoke0(override, CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL)));
   }
 
   @Override
   public Icon getIcon() {
-    return (myIsInterface ? IconResourceBundle_OverrideImplements.getInstance().getResource("IMPLEMENTED") : IconResourceBundle_OverrideImplements.getInstance().getResource("OVERRIDDEN"));
+    return (myIsInterface ? OverrideImplementsIcons.IMPLEMENTED : OverrideImplementsIcons.OVERRIDDEN);
   }
 
   @Override

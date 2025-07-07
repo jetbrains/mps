@@ -15,10 +15,8 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.ArrayList;
 import jetbrains.mps.execution.common.behavior.IGeneratedToClass__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -35,13 +33,13 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class ExecuteCommandPart__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x550ea9458ea107acL, "jetbrains.mps.execution.commands.structure.ExecuteCommandPart");
 
-  public static final SMethod<List<SNode>> getParameters_id5keEkmeCqHW = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getParameters").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5keEkmeCqHW").build();
-  public static final SMethod<List<SNode>> getRequiredParameters_id5keEkmeCqJD = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getRequiredParameters").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5keEkmeCqJD").build();
-  public static final SMethod<SNode> getCommandDeclaration_id5keEkmeCqIg = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getCommandDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5keEkmeCqIg").build();
-  public static final SMethod<List<SNode>> getThrowableTypes_id5op8ooRkkc7 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getThrowableTypes").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5op8ooRkkc7").build();
-  public static final SMethod<SNode> getBody_idi2fhZ_m = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getBody").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("i2fhZ_m").build();
-  public static final SMethod<SNode> getExpectedRetType_idi2fhBNC = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpectedRetType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("i2fhBNC").build();
-  public static final SMethod<String> getSuffix_id3gpm$NHlLhJ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSuffix").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3gpm$NHlLhJ").build();
+  public static final SMethod<List<SNode>> getParameters_id5keEkmeCqHW = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getParameters").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6129022259108621180L).languageId(0x8ac91574f25c986fL, 0xf3347d8a0e794f35L).build2();
+  public static final SMethod<List<SNode>> getRequiredParameters_id5keEkmeCqJD = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getRequiredParameters").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6129022259108621289L).languageId(0x8ac91574f25c986fL, 0xf3347d8a0e794f35L).build2();
+  public static final SMethod<SNode> getCommandDeclaration_id5keEkmeCqIg = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getCommandDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6129022259108621200L).languageId(0x8ac91574f25c986fL, 0xf3347d8a0e794f35L).build2();
+  public static final SMethod<List<SNode>> getThrowableTypes_id5op8ooRkkc7 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getThrowableTypes").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6204026822016975623L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> getBody_idi2fhZ_m = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getBody").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1239354440022L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> getExpectedRetType_idi2fhBNC = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpectedRetType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1239354342632L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<String> getSuffix_id3gpm$NHlLhJ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSuffix").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3754131050835940463L).languageId(0x8ac91574f25c986fL, 0xf3347d8a0e794f35L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameters_id5keEkmeCqHW, getRequiredParameters_id5keEkmeCqJD, getCommandDeclaration_id5keEkmeCqIg, getThrowableTypes_id5op8ooRkkc7, getBody_idi2fhZ_m, getExpectedRetType_idi2fhBNC, getSuffix_id3gpm$NHlLhJ);
 
@@ -50,20 +48,12 @@ public final class ExecuteCommandPart__BehaviorDescriptor extends BaseBHDescript
 
   /*package*/ static List<SNode> getParameters_id5keEkmeCqHW(@NotNull SNode __thisNode__) {
     if ((boolean) CommandDeclaration__BehaviorDescriptor.isDebuggable_idJzCdmU6yOQ.invoke(ExecuteCommandPart__BehaviorDescriptor.getCommandDeclaration_id5keEkmeCqIg.invoke(__thisNode__))) {
-      return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameterDeclaration$lr1c)).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SNodeOperations.cast(it, CONCEPTS.CommandParameterDeclaration$BK);
-        }
-      }).union(Sequence.fromIterable(Sequence.<SNode>singleton(SLinkOperations.getTarget(ExecuteCommandPart__BehaviorDescriptor.getCommandDeclaration_id5keEkmeCqIg.invoke(__thisNode__), LINKS.debuggerParameter$d8Sj)))).toListSequence();
+      return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameterDeclaration$lr1c)).select((it) -> SNodeOperations.cast(it, CONCEPTS.CommandParameterDeclaration$BK)).union(Sequence.fromIterable(Sequence.<SNode>singleton(SLinkOperations.getTarget(ExecuteCommandPart__BehaviorDescriptor.getCommandDeclaration_id5keEkmeCqIg.invoke(__thisNode__), LINKS.debuggerParameter$d8Sj)))).toList();
     }
     return SLinkOperations.getChildren(__thisNode__, LINKS.parameterDeclaration$lr1c);
   }
   /*package*/ static List<SNode> getRequiredParameters_id5keEkmeCqJD(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(ExecuteCommandPart__BehaviorDescriptor.getParameters_id5keEkmeCqHW.invoke(__thisNode__)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) CommandParameterDeclaration__BehaviorDescriptor.isRequired_id7c4O8d8q0tV.invoke(it);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(ExecuteCommandPart__BehaviorDescriptor.getParameters_id5keEkmeCqHW.invoke(__thisNode__)).where((it) -> (boolean) CommandParameterDeclaration__BehaviorDescriptor.isRequired_id7c4O8d8q0tV.invoke(it)).toList();
   }
   /*package*/ static SNode getCommandDeclaration_id5keEkmeCqIg(@NotNull SNode __thisNode__) {
     return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.CommandDeclaration$1L, false, false);

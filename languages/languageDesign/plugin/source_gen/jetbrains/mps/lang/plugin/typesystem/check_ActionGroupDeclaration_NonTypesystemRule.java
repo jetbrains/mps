@@ -10,7 +10,7 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -28,8 +28,7 @@ public class check_ActionGroupDeclaration_NonTypesystemRule extends AbstractNonT
     if (!(module instanceof Solution)) {
       return;
     }
-    Solution solution = (Solution) module;
-    if (check_77ohot_a0d0b(solution.getFacet(JavaModuleFacet.class)) && SPropertyOperations.getBoolean(group, PROPS.isPluginXmlGroup$KLjg)) {
+    if (SModuleOperations.isCompileInMps(module) && SPropertyOperations.getBoolean(group, PROPS.isPluginXmlGroup$KLjg)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(group, "Action group is declared to be registered via plugin.xml, so will not be loaded instantly.", "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "1252437031490683496", null, errorTarget);
@@ -43,12 +42,6 @@ public class check_ActionGroupDeclaration_NonTypesystemRule extends AbstractNonT
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
-    return false;
-  }
-  private static boolean check_77ohot_a0d0b(JavaModuleFacet checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.isCompileInMps();
-    }
     return false;
   }
 

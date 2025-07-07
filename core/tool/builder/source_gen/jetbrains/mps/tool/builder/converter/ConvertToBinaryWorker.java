@@ -29,7 +29,7 @@ import java.io.FileInputStream;
 import java.io.OutputStream;
 import java.io.FileOutputStream;
 
-@GeneratedClass(node = "r:39e596a9-ed2d-4e2f-b055-9544a1f3a151(jetbrains.mps.tool.builder.converter)/7841036633975757760", model = "r:39e596a9-ed2d-4e2f-b055-9544a1f3a151(jetbrains.mps.tool.builder.converter)")
+@GeneratedClass(nodeId = "7841036633975757760", model = "r:39e596a9-ed2d-4e2f-b055-9544a1f3a151(jetbrains.mps.tool.builder.converter)")
 public final class ConvertToBinaryWorker {
   private final Map<File, File> myMap;
   private final Boolean myStripImplementation;
@@ -84,6 +84,7 @@ public final class ConvertToBinaryWorker {
     private final File myFile;
 
     /*package*/ FileDataSource(File file) {
+      // don't bother with DisposableDataSource.delete() as it's beyond the scope of the task
       myFile = file;
     }
 
@@ -123,11 +124,6 @@ public final class ConvertToBinaryWorker {
     @Override
     public boolean exists() {
       return myFile.exists();
-    }
-
-    @Override
-    public boolean delete() {
-      return myFile.delete();
     }
   }
 }

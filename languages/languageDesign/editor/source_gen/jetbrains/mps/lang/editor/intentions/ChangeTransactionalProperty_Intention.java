@@ -29,21 +29,21 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public final class ChangeTransactionalProperty_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ChangeTransactionalProperty_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c8959029b(jetbrains.mps.lang.editor.intentions)", "1235490923121"));
   }
+
   @Override
   public String getPresentation() {
     return "ChangeTransactionalProperty";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -53,15 +53,17 @@ public final class ChangeTransactionalProperty_Intention extends AbstractIntenti
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Replace Transactional Property by Concept Property";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode transactional = SNodeFactoryOperations.createNewNode(CONCEPTS.CellModel_Property$uh, null);
-      SLinkOperations.setTarget(transactional, LINKS.relationDeclaration$E2hc, SLinkOperations.getTarget(node, LINKS.property$cqCy));
-      SLinkOperations.setTarget(node, LINKS.property$cqCy, null);
+      SLinkOperations.setTarget(transactional, LINKS.relationDeclaration$E2hc, SLinkOperations.getTarget(node, LINKS.relationDeclaration$E2hc));
+      SLinkOperations.setTarget(node, LINKS.relationDeclaration$E2hc, null);
       SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.handlerBlock$RPvD));
       List<SNode> copy = ListSequence.fromListWithValues(new ArrayList<SNode>(), SNodeOperations.getChildren(node));
       for (SNode child : ListSequence.fromList(copy)) {
@@ -77,10 +79,19 @@ public final class ChangeTransactionalProperty_Intention extends AbstractIntenti
       }
       SNodeOperations.replaceWithAnother(node, transactional);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ChangeTransactionalProperty_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {
@@ -89,7 +100,6 @@ public final class ChangeTransactionalProperty_Intention extends AbstractIntenti
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink relationDeclaration$E2hc = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
-    /*package*/ static final SReferenceLink property$cqCy = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, 0x11b35f87187L, "property");
     /*package*/ static final SContainmentLink handlerBlock$RPvD = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, 0x11b35f85498L, "handlerBlock");
   }
 }

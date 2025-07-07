@@ -25,7 +25,6 @@ import javax.swing.JCheckBox;
 import javax.swing.JScrollPane;
 import com.intellij.ui.ScrollPaneFactory;
 import javax.swing.border.LineBorder;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.workbench.action.BaseGroup;
 import jetbrains.mps.workbench.action.ActionUtils;
 import jetbrains.mps.ide.projectPane.ProjectPaneActionGroups;
@@ -35,6 +34,7 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Language;
 import org.jetbrains.mps.openapi.model.SModel;
 import java.util.Map;
+import org.jetbrains.mps.openapi.model.SNode;
 import java.util.HashMap;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -48,7 +48,7 @@ import java.awt.Graphics;
 import javax.swing.SwingConstants;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NonNls;
-import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import jetbrains.mps.ide.actions.SNodeActionData;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.ide.util.ColorAndGraphicsUtil;
 import java.awt.Font;
@@ -62,8 +62,6 @@ import java.awt.Graphics2D;
 import java.awt.Stroke;
 import java.awt.BasicStroke;
 import java.awt.FontMetrics;
-import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import java.util.Collections;
 import java.util.Comparator;
 import java.awt.Point;
@@ -72,7 +70,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-@GeneratedClass(node = "r:8a82b7a4-1180-4262-8f18-8c96a5d3ac16(jetbrains.mps.ide.hierarchy)/5797068448049411821", model = "r:8a82b7a4-1180-4262-8f18-8c96a5d3ac16(jetbrains.mps.ide.hierarchy)")
+@GeneratedClass(nodeId = "5797068448049411821", model = "r:8a82b7a4-1180-4262-8f18-8c96a5d3ac16(jetbrains.mps.ide.hierarchy)")
 public class LanguageHierarchiesComponent extends JComponent implements Scrollable, DataProvider {
   private static final int SPACING = 10;
   private static final int PADDING_X = 5;
@@ -203,12 +201,6 @@ public class LanguageHierarchiesComponent extends JComponent implements Scrollab
   private void select(ConceptContainer conceptContainer) {
     mySelectedConceptContainer = conceptContainer;
   }
-  private SNode getSelectedConcept() {
-    if (mySelectedConceptContainer == null) {
-      return null;
-    }
-    return mySelectedConceptContainer.getNode();
-  }
   private void processPopupMenu(MouseEvent e) {
     BaseGroup group = ActionUtils.getGroup(ProjectPaneActionGroups.NODE_ACTIONS);
     ActionManager.getInstance().createActionPopupMenu(ActionPlaces.UNKNOWN, group).getComponent().show(this, e.getX(), e.getY());
@@ -230,7 +222,7 @@ outer:
     for (SNode concept : SModelOperations.roots(structureModel, CONCEPTS.ConceptDeclaration$gH)) {
       SNode parentConcept = concept;
       ConceptContainer prevConceptContainer = null;
-      while (parentConcept != null && !(SNodeOperations.is(parentConcept, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"))) && !((mySkipAncestors && SNodeOperations.getModel(parentConcept) != structureModel))) {
+      while (parentConcept != null && !(SNodeOperations.is(parentConcept, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"))) && !(mySkipAncestors && SNodeOperations.getModel(parentConcept) != structureModel)) {
         ConceptContainer newConceptContainer = processed.get(parentConcept);
         if (newConceptContainer == null) {
           newConceptContainer = new ConceptContainer(parentConcept, this, SNodeOperations.getModel(parentConcept) != structureModel);
@@ -341,8 +333,11 @@ outer:
   @Nullable
   @Override
   public Object getData(@NonNls String dataId) {
-    if (MPSCommonDataKeys.NODE.is(dataId)) {
-      return getSelectedConcept();
+    if (SNodeActionData.KEY.is(dataId)) {
+      if (mySelectedConceptContainer != null) {
+        return SNodeActionData.from(mySelectedConceptContainer.myNodePointer);
+      }
+      return null;
     }
     return null;
   }
@@ -363,6 +358,8 @@ outer:
     private boolean myIsAbstract = false;
     private String myNamespace;
     private boolean myIsOtherLanguage = false;
+    private final String myText;
+
     public ConceptContainer(@NotNull SNode conceptDeclaration, LanguageHierarchiesComponent component, boolean otherLanguage) {
       myComponent = component;
       myIsOtherLanguage = otherLanguage;
@@ -372,7 +369,9 @@ outer:
       myRootable = SPropertyOperations.getBoolean(conceptDeclaration, PROPS.rootable$_9pz);
       myIsAbstract = SPropertyOperations.getBoolean(conceptDeclaration, PROPS.abstract$ibpT);
       myNamespace = SModelUtil.getDeclaringLanguage(conceptDeclaration).getModuleName();
-      myNodePointer = new SNodePointer(conceptDeclaration);
+      myNodePointer = SNodeOperations.getPointer(conceptDeclaration);
+      String cdn = SPropertyOperations.getString(conceptDeclaration, PROPS.name$MnvL);
+      myText = (cdn == null ? "" : cdn);
       addMouseListener(new MouseAdapter() {
         @Override
         public void mousePressed(final MouseEvent e) {
@@ -391,9 +390,7 @@ outer:
         }
       });
     }
-    public SNode getNode() {
-      return SNodeOperations.cast(myNodePointer.resolve(myComponent.myProject.getRepository()), CONCEPTS.ConceptDeclaration$gH);
-    }
+
     public void paint(Graphics graphics) {
       Graphics2D g = (Graphics2D) graphics;
       Color color = myColor;
@@ -423,19 +420,10 @@ outer:
       g.setFont(oldfont);
       g.setStroke(oldStroke);
     }
+
     @NotNull
     public String getText() {
-      return new ModelAccessHelper(myComponent.myProject.getModelAccess()).runReadAction(new Computable<String>() {
-        @Override
-        public String compute() {
-          SNode conceptDeclaration = getNode();
-          if (conceptDeclaration == null) {
-            return "";
-          }
-          String name = SPropertyOperations.getString(conceptDeclaration, PROPS.name$MnvL);
-          return (name != null ? name : "");
-        }
-      });
+      return myText;
     }
     public List<ConceptContainer> getChildren() {
       return new ArrayList<ConceptContainer>(myChildren);

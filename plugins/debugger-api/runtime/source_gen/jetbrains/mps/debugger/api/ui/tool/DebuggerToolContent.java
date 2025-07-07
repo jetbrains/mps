@@ -4,7 +4,7 @@ package jetbrains.mps.debugger.api.ui.tool;
 
 import jetbrains.mps.annotations.GeneratedClass;
 
-@GeneratedClass(node = "r:891e5016-c8e3-4b89-90ed-01a5f21e6fc3(jetbrains.mps.debugger.api.ui.tool)/4474271214083118614", model = "r:891e5016-c8e3-4b89-90ed-01a5f21e6fc3(jetbrains.mps.debugger.api.ui.tool)")
+@GeneratedClass(nodeId = "4474271214083118614", model = "r:891e5016-c8e3-4b89-90ed-01a5f21e6fc3(jetbrains.mps.debugger.api.ui.tool)")
 public class DebuggerToolContent {
   public static final String FRAMES = "Frames";
   public static final String VARIABLES = "Variables";

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,7 @@
 package jetbrains.mps.ide.ui.tree;
 
 import com.intellij.icons.AllIcons;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.intellij.lang.annotations.MagicConstant;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -50,7 +48,7 @@ import java.util.stream.Stream;
  */
 //todo[MM]: unimplement iterable after 2019.1, use getChildren()
 public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPSTreeNode> {
-  private static final Logger LOG = LogManager.getLogger(MPSTreeNode.class);
+  private static final Logger LOG = Logger.getLogger(MPSTreeNode.class);
 
   private MPSTree myTree;
   private boolean myAdded;
@@ -72,8 +70,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
   @NotNull
   @Override
   @SuppressWarnings("unchecked")
-  @Deprecated
-  @ToRemove(version = 2019.1)
+@Deprecated(since = "2019.1", forRemoval = true)
   public Iterator<MPSTreeNode> iterator() {
     if (children == null) {
       return Collections.<MPSTreeNode>emptySet().iterator();
@@ -211,7 +208,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
    */
   public void update() {
     doUpdate();
-    getTree().getModel().nodeStructureChanged(this);
+    getTree().getDFTreeModel().nodeStructureChanged(this);
   }
 
   protected void doUpdate() {
@@ -234,6 +231,12 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
       ((MPSTreeNode) getChildAt(childIndex)).addThisAndChildren();
     }
     updateErrorState();
+  }
+
+  @Override
+  public Object getUserObject() {
+    final Object uo = super.getUserObject();
+    return uo != null ? uo : getText();
   }
 
   public boolean hasChild(MutableTreeNode node) {
@@ -268,6 +271,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
     for (MPSTreeNode node : getChildren()) {
       node.removeThisAndChildren();
     }
+    myTree = null;
   }
 
   /**
@@ -461,8 +465,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
   /**
    * @deprecated use {@link MPSTreeNode#getIcon()} instead
    */
-  @Deprecated
-  @ToRemove(version = 2019.1)
+@Deprecated(since = "2019.1", forRemoval = true)
   public final Icon getIcon(boolean expanded) {
     return getIcon();
   }
@@ -474,8 +477,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
   /**
    * @deprecated use {@link MPSTreeNode#setIcon(javax.swing.Icon)} instead
    */
-  @Deprecated
-  @ToRemove(version = 2019.1)
+@Deprecated(since = "2019.1", forRemoval = true)
   public final void setIcon(Icon newIcon, boolean expanded) {
     setIcon(newIcon);
   }
@@ -500,8 +502,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
   /**
    * @deprecated Using {@link TextAttribute} gives much more control over font
    */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
+  @Deprecated(since = "2020.3", forRemoval = true)
   @MagicConstant(flags = {Font.PLAIN, Font.BOLD, Font.ITALIC})
   public final int getFontStyle() {
     int fontStyle = Font.PLAIN;
@@ -519,8 +520,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
   /**
    * @deprecated use {@link #addFontAttribute(TextAttribute, Object)} with {@link TextAttribute#WEIGHT_BOLD} or {@link TextAttribute#POSTURE_OBLIQUE} values
    */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
+  @Deprecated(since = "2020.3", forRemoval = true)
   @MagicConstant(flags = {Font.PLAIN, Font.BOLD, Font.ITALIC})
   public final void setFontStyle(int fontStyle) {
     if ((fontStyle & Font.BOLD) == Font.BOLD) {
@@ -598,8 +598,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
   /**
    * @deprecated see {@link #setErrorState(ErrorState)} for reasons ErrorState ain't no good
    */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
+  @Deprecated(since = "2020.3", forRemoval = true)
   public final boolean isErrorState() {
     return getErrorState() == ErrorState.ERROR;
   }
@@ -608,8 +607,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
    * @deprecated Error state without a message makes little sense. Tooltips as a way to communicate error messages suck.
    *             Use {@link #addTreeMessage(TreeMessage)} and {@link TreeErrorMessage} instead.
    */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
+  @Deprecated(since = "2020.3", forRemoval = true)
   public final void setErrorState(ErrorState state) {
     if (state == null) {
       state = ErrorState.NONE;
@@ -624,8 +622,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
   /**
    * @deprecated see {@link #setErrorState(ErrorState)} for reasons ErrorState ain't no good
    */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
+  @Deprecated(since = "2020.3", forRemoval = true)
   public final ErrorState getErrorState() {
     return getOptionalAttribute("error.tree", ErrorState.NONE);
   }
@@ -634,8 +631,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
    * @deprecated node's error state has been replaced with {@link TreeErrorMessage}
    * @return doesn't give anything meaningful unless one also uses {@link #setErrorState(ErrorState)}
    */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
+  @Deprecated(since = "2020.3", forRemoval = true)
   public final ErrorState getAggregatedErrorState() {
     return getOptionalAttribute("merged.error.tree", ErrorState.NONE);
   }
@@ -659,8 +655,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
    * ProjectModulesPoolTreeNode, which btw doesn't get aggregated errors in the new approach as it's not a namespace node,
    * or any other node subject to 'parent update')
    */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
+  @Deprecated(since = "2020.3", forRemoval = true)
   protected boolean propogateErrorUpwards() {
     return true;
   }
@@ -682,7 +677,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
    */
   public final void updateNodePresentationInTree() {
     if (getTree() != null) {
-      getTree().getModel().nodeChanged(this);
+      getTree().getDFTreeModel().nodeChanged(this);
     }
   }
 

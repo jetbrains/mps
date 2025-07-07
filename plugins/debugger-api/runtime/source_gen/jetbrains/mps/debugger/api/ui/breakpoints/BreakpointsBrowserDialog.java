@@ -33,6 +33,8 @@ import com.intellij.openapi.actionSystem.Separator;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import jetbrains.mps.debugger.api.ui.icons.Icons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
@@ -46,10 +48,9 @@ import jetbrains.mps.openapi.navigation.EditorNavigator;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 import javax.swing.Action;
 
-@GeneratedClass(node = "r:e8d15a56-f89d-47fc-ac9f-8a35d3539ac3(jetbrains.mps.debugger.api.ui.breakpoints)/4474271214083122178", model = "r:e8d15a56-f89d-47fc-ac9f-8a35d3539ac3(jetbrains.mps.debugger.api.ui.breakpoints)")
+@GeneratedClass(nodeId = "4474271214083122178", model = "r:e8d15a56-f89d-47fc-ac9f-8a35d3539ac3(jetbrains.mps.debugger.api.ui.breakpoints)")
 public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvider {
   private static final String COMMAND_SHOW_NODE = "COMMAND_SHOW_NODE";
   private final JPanel myMainPanel;
@@ -84,7 +85,7 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
     myBreakpointsScrollPane = ScrollPaneFactory.createScrollPane(myViews[myCurrentViewIndex].getMainComponent());
     myBreakpointsScrollPane.getViewport().setBackground(UIManager.getColor("Table.background"));
     myMainPanel.add(myBreakpointsScrollPane, BorderLayout.CENTER);
-    ActionToolbar actionToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, createActionGroup(), true);
+    ActionToolbar actionToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, createActionGroup(), true);
     myMainPanel.add(actionToolbar.getComponent(), BorderLayout.NORTH);
     myMainPanel.setMinimumSize(new Dimension(500, 500));
     //  register keyboard/mouse actions on all views
@@ -163,6 +164,11 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
         switchView();
         e.getPresentation().setText(myViews[1 - myCurrentViewIndex].getTitle());
       }
+      @NotNull
+      @Override
+      public ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.EDT;
+      }
     });
     group.add(new ToggleAction("Group By Module", "Group By Module", Icons.BREAKPOINTS_DIALOG_GROUP_BY_MODULE) {
       @Override
@@ -183,6 +189,11 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
         BreakpointsTree tree = (BreakpointsTree) myViews[myCurrentViewIndex];
         tree.toggleModuleGroup(state);
         tree.update();
+      }
+      @NotNull
+      @Override
+      public ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.EDT;
       }
     });
     group.add(new ToggleAction("Group By Model", "Group By Model", Icons.BREAKPOINTS_DIALOG_GROUP_BY_MODEL) {
@@ -205,6 +216,11 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
         tree.toggleModelGroup(state);
         tree.update();
       }
+      @NotNull
+      @Override
+      public ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.EDT;
+      }
     });
     group.add(new ToggleAction("Group By Root", "Group By Root", Icons.BREAKPOINTS_DIALOG_GROUP_BY_ROOT) {
       @Override
@@ -226,6 +242,11 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
         tree.toggleRootGroup(state);
         tree.update();
       }
+      @NotNull
+      @Override
+      public ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.EDT;
+      }
     });
     group.add(new AnAction("Expand All", "Expand All", jetbrains.mps.ide.findusages.view.icons.Icons.EXPAND_ICON) {
       @Override
@@ -241,6 +262,11 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
         BreakpointsTree tree = (BreakpointsTree) myViews[myCurrentViewIndex];
         tree.expandAll();
       }
+      @NotNull
+      @Override
+      public ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.EDT;
+      }
     });
     group.add(new AnAction("Collapse All", "Collapse All", jetbrains.mps.ide.findusages.view.icons.Icons.COLLAPSE_ICON) {
       @Override
@@ -255,6 +281,11 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
         BreakpointsTree tree = (BreakpointsTree) myViews[myCurrentViewIndex];
         tree.collapseAll();
       }
+      @NotNull
+      @Override
+      public ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.EDT;
+      }
     });
     return group;
   }
@@ -264,6 +295,11 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
       public void update(AnActionEvent e) {
         super.update(e);
         e.getPresentation().setIcon(Icons.BREAKPOINTS_DIALOG_ADD);
+      }
+      @NotNull
+      @Override
+      public ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.EDT;
       }
     };
     for (final IBreakpointKind kind : myProvidersManager.getAllKinds()) {
@@ -329,7 +365,7 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
     return new AnActionEvent(null, DataManager.getInstance().getDataContext(this.getContentPane()), ActionPlaces.UNKNOWN, action.getTemplatePresentation(), ActionManager.getInstance(), 0);
   }
   private void openNode(IBreakpoint breakpoint, boolean focus, boolean select) {
-    if (!((breakpoint instanceof ILocationBreakpoint))) {
+    if (!(breakpoint instanceof ILocationBreakpoint)) {
       return;
     }
     new EditorNavigator(myProject).shallFocus(focus).shallSelect(select).open(((ILocationBreakpoint) breakpoint).getLocation().getNodePointer());

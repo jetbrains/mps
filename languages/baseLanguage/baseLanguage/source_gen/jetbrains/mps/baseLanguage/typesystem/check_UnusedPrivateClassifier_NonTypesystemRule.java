@@ -11,10 +11,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import org.jetbrains.mps.openapi.model.SReference;
 import java.util.Objects;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -28,22 +26,12 @@ public class check_UnusedPrivateClassifier_NonTypesystemRule extends AbstractNon
   }
   public void applyRule(final SNode classifier, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classifier, LINKS.visibility$Yyua), CONCEPTS.PrivateVisibility$l0)) {
-      if (!(ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(classifier), CONCEPTS.BaseConcept$gP, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return ListSequence.fromList(SNodeOperations.getNodeAncestors(it, CONCEPTS.SingleLineComment$Kw, false)).isEmpty();
-        }
-      }).translate(new ITranslator2<SNode, SReference>() {
-        public Iterable<SReference> translate(SNode it) {
-          return SNodeOperations.getReferences(it);
-        }
-      }).any(new IWhereFilter<SReference>() {
-        public boolean accept(SReference it) {
-          return Objects.equals(SLinkOperations.getTargetNode(it), classifier) || ListSequence.fromList(SNodeOperations.getNodeAncestors(SLinkOperations.getTargetNode(it), CONCEPTS.Classifier$Ix, false)).any(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return Objects.equals(it, classifier);
-            }
-          });
-        }
+      if (!(ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(classifier), CONCEPTS.BaseConcept$gP, false, new SAbstractConcept[]{})).where((it) -> ListSequence.fromList(SNodeOperations.getNodeAncestors(it, CONCEPTS.SingleLineComment$Kw, false)).isEmpty()).translate((it) -> SNodeOperations.getReferences(it)).any((it) -> {
+        return Objects.equals(SLinkOperations.getTargetNode(it), classifier) || ListSequence.fromList(SNodeOperations.getNodeAncestors(SLinkOperations.getTargetNode(it), CONCEPTS.Classifier$Ix, false)).any(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+          public Boolean invoke(SNode it) {
+            return Objects.equals(it, classifier);
+          }
+        });
       }))) {
         String msg;
         if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.EnumClass$Vk)) {

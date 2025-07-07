@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
-@GeneratedClass(node = "r:0bb5e892-3294-41a6-b5db-b1bdf3480f53(jetbrains.mps.debugger.java.runtime.ui.breakpoints)/742486944792833383", model = "r:0bb5e892-3294-41a6-b5db-b1bdf3480f53(jetbrains.mps.debugger.java.runtime.ui.breakpoints)")
+@GeneratedClass(nodeId = "742486944792833383", model = "r:0bb5e892-3294-41a6-b5db-b1bdf3480f53(jetbrains.mps.debugger.java.runtime.ui.breakpoints)")
 public class ExceptionChooserDialog extends StubsClassChooserDialog {
   private final Project myProject;
   public ExceptionChooserDialog(com.intellij.openapi.project.Project project, String title) throws HeadlessException {
@@ -29,7 +29,7 @@ public class ExceptionChooserDialog extends StubsClassChooserDialog {
   protected boolean isValid(SNode node) {
     final SNode throwableClassifier = new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Throwable").resolve(myProject.getRepository());
     SNode base = node;
-    while (base != null && SNodeOperations.isInstanceOf(base, CONCEPTS.ClassConcept$bK) && !((Objects.equals(base, throwableClassifier)))) {
+    while (base != null && SNodeOperations.isInstanceOf(base, CONCEPTS.ClassConcept$bK) && !(Objects.equals(base, throwableClassifier))) {
       base = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(base, CONCEPTS.ClassConcept$bK), LINKS.superclass$Mp9$), LINKS.classifier$cxMr);
     }
     return (base != null) && SNodeOperations.isInstanceOf(base, CONCEPTS.ClassConcept$bK);

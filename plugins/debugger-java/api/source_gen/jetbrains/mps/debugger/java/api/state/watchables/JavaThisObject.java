@@ -21,7 +21,7 @@ import jetbrains.mps.debugger.java.api.state.JavaUiState;
 import java.util.List;
 import jetbrains.mps.debug.api.programState.WatchablesCategory;
 
-@GeneratedClass(node = "r:6ed9d174-6cbf-4569-b2b8-259c43efcbd9(jetbrains.mps.debugger.java.api.state.watchables)/3432969378036014277", model = "r:6ed9d174-6cbf-4569-b2b8-259c43efcbd9(jetbrains.mps.debugger.java.api.state.watchables)")
+@GeneratedClass(nodeId = "3432969378036014277", model = "r:6ed9d174-6cbf-4569-b2b8-259c43efcbd9(jetbrains.mps.debugger.java.api.state.watchables)")
 public class JavaThisObject extends JavaWatchable implements IWatchable {
   private final ObjectReference myThisObject;
   private final JavaStackFrame myStackFrame;

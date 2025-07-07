@@ -53,7 +53,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "$LABEL$");
     editorCell.setCellId("Constant_x0em22_a0");
     Style style = new StyleImpl();
-    new macroStartStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new macroStartStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.PUNCTUATION_RIGHT, false);
     style.set(StyleAttributes.LAST_POSITION_ALLOWED, false);
     editorCell.getStyle().putAll(style);

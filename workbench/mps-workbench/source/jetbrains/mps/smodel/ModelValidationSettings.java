@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,30 +15,28 @@
  */
 package jetbrains.mps.smodel;
 
-import com.intellij.openapi.Disposable;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
-import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.smodel.ModelValidationSettings.MyState;
 import jetbrains.mps.validation.IModelValidationSettings;
-import jetbrains.mps.validation.ValidationSettings;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-import javax.swing.Icon;
 
+/**
+ * App service to initialize and to keep state of a CoreComponent
+ * XXX I wonder if it's ok to replace it with Registry value?
+ * Check {@link jetbrains.mps.ide.generator.GenerationSettings} for reason why there's no {@code #getInstance()} method
+ */
 @State(
     name = "ModelValidationSettings",
     storages = @Storage("mpsModelValidationSettings.xml"),
     reportStatistic = true
 )
-public class ModelValidationSettings implements PersistentStateComponent<MyState>, IModelValidationSettings, Disposable {
+public class ModelValidationSettings implements PersistentStateComponent<MyState>, IModelValidationSettings {
   private boolean myDisableTypeWasNotCalculated = true;
 
-  public ModelValidationSettings(MPSCoreComponents coreComponents) {
-    ValidationSettings.getInstance().setModelValidationSettings(this);
+  public ModelValidationSettings() {
   }
 
   void setDisableTypeWasNotCalculated(boolean disableTypeWasNotCalculated) {
@@ -48,20 +46,6 @@ public class ModelValidationSettings implements PersistentStateComponent<MyState
   @Override
   public boolean isDisableTypeWasNotCalculated() {
     return myDisableTypeWasNotCalculated;
-  }
-
-  public static ModelValidationSettings getInstance() {
-    return ApplicationManager.getApplication().getComponent(ModelValidationSettings.class);
-  }
-
-  @Nullable
-  public Icon getIcon() {
-    return null;
-  }
-
-  @Override
-  public void dispose() {
-    ValidationSettings.getInstance().setModelValidationSettings(null);
   }
 
   @Override

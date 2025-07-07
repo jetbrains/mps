@@ -13,7 +13,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ClassLike {
   public static class NodeFactory_1055884086724932454 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       ClassLikeInitHelper.init(SNodeOperations.cast(newNode, CONCEPTS.ClassConcept$bK), AutoInitDSLClass__BehaviorDescriptor.getDescriptor_idUBgfI9eMAt.invoke(newNode), model);
     }
   }

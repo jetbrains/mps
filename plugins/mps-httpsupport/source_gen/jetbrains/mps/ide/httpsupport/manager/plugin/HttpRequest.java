@@ -20,7 +20,7 @@ import com.intellij.util.io.NettyKt;
 import com.intellij.openapi.util.text.StringUtil;
 import java.net.URI;
 
-@GeneratedClass(node = "r:05ff02e5-9836-4ae9-a454-eab43fa58c8f(jetbrains.mps.ide.httpsupport.manager.plugin)/7720980209309576946", model = "r:05ff02e5-9836-4ae9-a454-eab43fa58c8f(jetbrains.mps.ide.httpsupport.manager.plugin)")
+@GeneratedClass(nodeId = "7720980209309576946", model = "r:05ff02e5-9836-4ae9-a454-eab43fa58c8f(jetbrains.mps.ide.httpsupport.manager.plugin)")
 public class HttpRequest {
 
   private final io.netty.handler.codec.http.HttpRequest request;
@@ -58,6 +58,8 @@ public class HttpRequest {
   }
 
   public void sendResponse(HttpResponseStatus status, String contentType, ByteBuf buffer) {
+    // as long as MPS.IDEA exposes io.netty, have to reference FullHttpResponse here through MPS.IDEA
+    // to satisfy Responses.send call
     FullHttpResponse response = Responses.response(contentType, buffer);
     response.setStatus(status);
     Responses.send(response, channel, request);
@@ -75,7 +77,7 @@ public class HttpRequest {
     if (path.startsWith("/")) {
       path = path.substring(1);
     }
-    return Sequence.fromIterable(Sequence.fromArray(path.split("/"))).toListSequence();
+    return Sequence.fromIterable(Sequence.fromArray(path.split("/"))).toList();
   }
 
   private static String getReferrerHost(io.netty.handler.codec.http.HttpRequest request) throws URISyntaxException {

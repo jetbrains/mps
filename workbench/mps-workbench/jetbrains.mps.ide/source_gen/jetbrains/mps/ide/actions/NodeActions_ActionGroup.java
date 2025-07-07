@@ -7,7 +7,7 @@ import jetbrains.mps.plugins.actions.GeneratedActionGroup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1204991215587", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1204991215587", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class NodeActions_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.actions.NodeActions_ActionGroup";
   public static final String LABEL_ID_newActions = ID + "newActions";
@@ -16,11 +16,15 @@ public class NodeActions_ActionGroup extends GeneratedActionGroup {
   public static final String LABEL_ID_find = ID + "find";
   public static final String LABEL_ID_refactoring = ID + "refactoring";
   public static final String LABEL_ID_favorites = ID + "favorites";
+  public static final String LABEL_ID_deletion = ID + "deletion";
   public static final String LABEL_ID_debug = ID + "debug";
+  public static final String LABEL_ID_diff = ID + "diff";
+  public static final String LABEL_ID_mpsvcs = ID + "mpsvcs";
+  public static final String LABEL_ID_idealocalhistory = ID + "idealocalhistory";
+  public static final String LABEL_ID_ideavcs = ID + "ideavcs";
   public static final String LABEL_ID_gotoConceptAspects = ID + "gotoConceptAspects";
   public static final String LABEL_ID_showIn = ID + "showIn";
   public static final String LABEL_ID_structure = ID + "structure";
-  public static final String LABEL_ID_diff = ID + "diff";
 
   public NodeActions_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("NodeActions", ID, plugin);
@@ -31,8 +35,6 @@ public class NodeActions_ActionGroup extends GeneratedActionGroup {
     addNamedAnchor(LABEL_ID_showGeneratedText);
     NodeActions_ActionGroup.this.addSeparator();
     NodeActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.SetNodePackage_Action");
-    NodeActions_ActionGroup.this.addSeparator();
-    NodeActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ExpandNode_Action");
     NodeActions_ActionGroup.this.addSeparator();
     NodeActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.CutNode_Action");
     NodeActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.CopyNode_Action");
@@ -48,10 +50,14 @@ public class NodeActions_ActionGroup extends GeneratedActionGroup {
     NodeActions_ActionGroup.this.addSeparator();
     addNamedAnchor(LABEL_ID_favorites);
     NodeActions_ActionGroup.this.addSeparator();
-    NodeActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.DeleteNode_Action");
-    NodeActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.SafeDelete_Action");
+    addNamedAnchor(LABEL_ID_deletion);
     NodeActions_ActionGroup.this.addSeparator();
     addNamedAnchor(LABEL_ID_debug);
+    NodeActions_ActionGroup.this.addSeparator();
+    addNamedAnchor(LABEL_ID_diff);
+    addNamedAnchor(LABEL_ID_mpsvcs);
+    addNamedAnchor(LABEL_ID_idealocalhistory);
+    addNamedAnchor(LABEL_ID_ideavcs);
     NodeActions_ActionGroup.this.addSeparator();
     addNamedAnchor(LABEL_ID_gotoConceptAspects);
     addNamedAnchor(LABEL_ID_showIn);
@@ -59,7 +65,6 @@ public class NodeActions_ActionGroup extends GeneratedActionGroup {
     NodeActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ShowConceptInHierarchy_Action");
     addNamedAnchor(LABEL_ID_structure);
     NodeActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ShowClassInHierarchy_Action");
-    addNamedAnchor(LABEL_ID_diff);
     NodeActions_ActionGroup.this.addSeparator();
     NodeActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ShowErrorMessage_Action");
   }

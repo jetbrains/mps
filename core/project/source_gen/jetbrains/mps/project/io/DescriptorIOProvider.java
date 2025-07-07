@@ -11,7 +11,7 @@ import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 /**
  * XXX does this class worth existence?
  */
-@GeneratedClass(node = "r:c7bbaee3-030a-4940-995f-2174babaf670(jetbrains.mps.project.io)/557142600900532740", model = "r:c7bbaee3-030a-4940-995f-2174babaf670(jetbrains.mps.project.io)")
+@GeneratedClass(nodeId = "557142600900532740", model = "r:c7bbaee3-030a-4940-995f-2174babaf670(jetbrains.mps.project.io)")
 public interface DescriptorIOProvider {
   DescriptorIO<SolutionDescriptor> solutionDescriptorIO();
   DescriptorIO<LanguageDescriptor> languageDescriptorIO();

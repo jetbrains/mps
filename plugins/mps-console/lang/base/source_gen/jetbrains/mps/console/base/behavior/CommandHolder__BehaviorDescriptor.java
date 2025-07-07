@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class CommandHolder__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e27160acb4484bL, "jetbrains.mps.console.base.structure.CommandHolder");
 
-  public static final SMethod<SNode> getCommandToEdit_idApbqR6U7je = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getCommandToEdit").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("ApbqR6U7je").build();
+  public static final SMethod<SNode> getCommandToEdit_idApbqR6U7je = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getCommandToEdit").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(691634242167796942L).languageId(0xb306d4d17f64c375L, 0xde1ad86d6e504a02L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCommandToEdit_idApbqR6U7je);
 

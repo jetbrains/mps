@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,15 +16,39 @@
 package jetbrains.mps.compiler;
 
 import jetbrains.mps.compiler.JavaCompilerOptionsComponent.JavaVersion;
+import jetbrains.mps.project.Project;
 import org.jetbrains.annotations.NotNull;
 
 public class JavaCompilerOptions {
   private final JavaVersion myTargetVersion;
+  private final boolean myReleaseTarget;
+
   public JavaCompilerOptions(@NotNull JavaVersion targetVersion) {
     myTargetVersion = targetVersion;
+    myReleaseTarget = false;
   }
+
+  public JavaCompilerOptions(@NotNull JavaVersion targetVersion, boolean strictReleaseTarget) {
+    myTargetVersion = targetVersion;
+    myReleaseTarget = strictReleaseTarget;
+  }
+
   @NotNull
   public JavaVersion getTargetJavaVersion() {
     return myTargetVersion;
+  }
+
+  /**
+   * When {@code true}, treat {@link #getTargetJavaVersion() target version} as precise 'release'
+   * for compilation, with respect to boot classpath/available modules (JPMS). See {@code javac -release} option.
+   * When {@code false}, treat {@link #getTargetJavaVersion() target version} as merely level of source/class files
+   * ({@code javac -source/-target}) and system classes/modules as available in the actual Java Environment.
+   */
+  public boolean isStrictReleaseTarget() {
+    return myReleaseTarget;
+  }
+
+  public interface Provider {
+    JavaCompilerOptions getJavaCompilerOptions(Project project);
   }
 }

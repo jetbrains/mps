@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,34 +15,28 @@
  */
 package jetbrains.mps.vfs.impl;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * @deprecated access instance through VFSManager.getFileSystem()
  */
-@Deprecated
-@ToRemove(version = 2019.1)
+@Deprecated(since = "2019.1", forRemoval = true)
 public class IoFileSystem implements FileSystem {
-  private static final Logger LOG = LogManager.getLogger(IoFileSystem.class);
-
-  // afaik there are no direct uses in mbeddr, only by means of FileSystem.getInstance()
-  public static IoFileSystem INSTANCE;
+  private static final Logger LOG = Logger.getLogger(IoFileSystem.class);
 
   private final VFSManager myManager;
 
   /**
    * IMPLEMENTATION METHOD FOR MPS INTERNAL USE!
    */
-  public static void newInstance(VFSManager vfsManager) {
-    INSTANCE = new IoFileSystem(vfsManager);
+  public static FileSystem newInstance(VFSManager vfsManager) {
+    return new IoFileSystem(vfsManager);
   }
 
   private IoFileSystem(VFSManager vfsManager) {
@@ -51,8 +45,7 @@ public class IoFileSystem implements FileSystem {
 
   @NotNull
   @Override
-  @Deprecated
-  @ToRemove(version = 2019.1)
+@Deprecated(since = "2019.1", forRemoval = true)
   //use either JarIoFS or LocalIoFS
   public IFile getFile(@NotNull String path) {
     path = FileUtil.getCanonicalPath(path);
@@ -74,6 +67,7 @@ public class IoFileSystem implements FileSystem {
       IFile f = getFile(path);
       return f.exists() ? f : null;
     } catch (PathFormatException e) {
+      // fixme apyshkin
       return null;
     }
   }
@@ -88,7 +82,7 @@ public class IoFileSystem implements FileSystem {
     try {
       r.run();
     } catch (Exception e) {
-      LOG.error(null, e);
+      LOG.error(e);
       return false;
     }
     return true;

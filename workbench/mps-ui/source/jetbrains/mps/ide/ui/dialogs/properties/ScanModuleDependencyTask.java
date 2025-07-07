@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.ide.ui.dialogs.properties;
 
-import jetbrains.mps.generator.impl.plan.ModelScanner;
+import jetbrains.mps.generator.impl.plan.TemplateModelScanner;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.dependency.GeneratorModuleScanner;
 import jetbrains.mps.smodel.ConceptDeclarationScanner;
@@ -70,7 +70,7 @@ class ScanModuleDependencyTask implements Runnable {
         eds.getDependencyModules().forEach(m -> extendsSet.add(m.getModuleReference()));
         notifyChanged();
       }
-      ModelScanner tms = new ModelScanner();
+      TemplateModelScanner tms = new TemplateModelScanner();
       for (Generator g : ((Language) myModule).getOwnedGenerators()) {
         g.getOwnTemplateModels().forEach(tms::scan);
       }

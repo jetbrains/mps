@@ -32,7 +32,6 @@ import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 
-import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JTree;
@@ -145,7 +144,7 @@ public class IntentionSettingsConfigurable implements Configurable, Composite {
     return new Configurable[0];
   }
 
-  private class LanguageTreeNode extends CheckedTreeNode {
+  private static class LanguageTreeNode extends CheckedTreeNode {
 
     LanguageTreeNode(final String languageFqName) {
       super(languageFqName);
@@ -157,7 +156,7 @@ public class IntentionSettingsConfigurable implements Configurable, Composite {
     }
   }
 
-  private class IntentionTreeNode extends CheckedTreeNode {
+  private static class IntentionTreeNode extends CheckedTreeNode {
     private final String myPersistentStateKey;
 
     IntentionTreeNode(final IntentionDescriptor intentionDescriptor) {
@@ -189,16 +188,12 @@ public class IntentionSettingsConfigurable implements Configurable, Composite {
       public void customizeRenderer(JTree tree, Object value, boolean selected, boolean expanded, boolean leaf, int row, boolean hasFocus) {
         super.customizeRenderer(tree, value, selected, expanded, leaf, row, hasFocus);
         ColoredTreeCellRenderer renderer = getTextRenderer();
-        JCheckBox checkBox = getCheckbox();
-
         if (value instanceof IntentionTreeNode) {
           IntentionTreeNode intentionTreeNode = (IntentionTreeNode) value;
           renderer.append(intentionTreeNode.getUserObject().getPresentation());
-          checkBox.setSelected(intentionTreeNode.isChecked());
         } else if (value instanceof LanguageTreeNode) {
           LanguageTreeNode languageTreeNode = (LanguageTreeNode) value;
           renderer.append(languageTreeNode.getUserObject());
-          checkBox.setSelected(languageTreeNode.isChecked());
         }
 
       }

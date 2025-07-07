@@ -10,12 +10,8 @@ public class ThisProvider {
   public ThisProvider() {
   }
   public void testThisExpression() {
-    Assert.assertEquals(10, this.bar);
-    new _FunctionTypes._return_P0_E0<Integer>() {
-      public Integer invoke() {
-        return ThisProvider.this.bar = 1000;
-      }
-    }.invoke();
-    Assert.assertEquals(1000, this.bar);
+    Assert.assertEquals(Integer.valueOf(10), Integer.valueOf(this.bar));
+    ((_FunctionTypes._return_P0_E0<Integer>) () -> ThisProvider.this.bar = 1000).invoke();
+    Assert.assertEquals(Integer.valueOf(1000), Integer.valueOf(this.bar));
   }
 }

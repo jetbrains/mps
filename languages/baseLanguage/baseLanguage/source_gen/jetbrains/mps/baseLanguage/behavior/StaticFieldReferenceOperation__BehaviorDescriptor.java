@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import java.util.function.Supplier;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.baseLanguage.util.ReflectionUtil;
@@ -33,11 +32,11 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class StaticFieldReferenceOperation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x35b563950dfe3377L, "jetbrains.mps.baseLanguage.structure.StaticFieldReferenceOperation");
 
-  public static final SMethod<SNode> getClassifier_id1U0U1G1L440 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClassifier").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1U0U1G1L440").build();
-  public static final SMethod<Boolean> isCompileTimeConstant_idi1LOPRp = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isCompileTimeConstant").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("i1LOPRp").build();
-  public static final SMethod<Object> getCompileTimeConstantValue_idi1LP2xI = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("getCompileTimeConstantValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("i1LP2xI").build(SMethodBuilder.createJavaParameter(SModule.class, ""));
-  public static final SMethod<Boolean> lvalue_id1653mnvAgpj = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("lvalue").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1653mnvAgpj").build();
-  public static final SMethod<Boolean> isLValue_idhEwIP$w = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIP$w").build();
+  public static final SMethod<SNode> getClassifier_id1U0U1G1L440 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClassifier").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2198011820848201984L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> isCompileTimeConstant_idi1LOPRp = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isCompileTimeConstant").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1238860258777L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Object> getCompileTimeConstantValue_idi1LP2xI = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("getCompileTimeConstantValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1238860310638L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(SModule.class, ""));
+  public static final SMethod<Boolean> lvalue_id1653mnvAgpj = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("lvalue").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741497939L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> isLValue_idhEwIP$w = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877410080L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getClassifier_id1U0U1G1L440, isCompileTimeConstant_idi1LOPRp, getCompileTimeConstantValue_idi1LP2xI, lvalue_id1653mnvAgpj, isLValue_idhEwIP$w);
 
@@ -49,11 +48,7 @@ public final class StaticFieldReferenceOperation__BehaviorDescriptor extends Bas
       return null;
     }
     final SNode instance = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR);
-    SNode instanceType = TypecheckingFacade.getFromContext().computeIsolated(new Supplier<SNode>() {
-      public SNode get() {
-        return TypecheckingFacade.getFromContext().getTypeOf(instance);
-      }
-    });
+    SNode instanceType = TypecheckingFacade.getFromContext().computeIsolated(() -> TypecheckingFacade.getFromContext().getTypeOf(instance));
 
     SNode classifierType = TypecheckingFacade.getFromContext().strongCoerceType(instanceType, CONCEPTS.ClassifierType$bL);
     if ((SLinkOperations.getTarget(classifierType, LINKS.classifier$cxMr) == null)) {

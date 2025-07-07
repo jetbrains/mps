@@ -26,7 +26,7 @@ public class typeof_CreateRootRule_InferenceRule extends AbstractInferenceRule_R
   }
   public void applyRule(final SNode nodeToCheck, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (SLinkOperations.getTarget(nodeToCheck, LINKS.label$rz_i) != null) {
-      if (!((SLinkOperations.getTarget(SLinkOperations.getTarget(nodeToCheck, LINKS.label$rz_i), LINKS.sourceConcept$RXk) == null))) {
+      if (!(SLinkOperations.getTarget(SLinkOperations.getTarget(nodeToCheck, LINKS.label$rz_i), LINKS.sourceConcept$RXk) == null)) {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(nodeToCheck, "Rule has no input, can't use mapping label with typed source", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "6851978633175434157", null, errorTarget);
       }

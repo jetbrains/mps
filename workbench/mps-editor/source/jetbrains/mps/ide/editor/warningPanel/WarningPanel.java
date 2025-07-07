@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,38 +16,35 @@
 package jetbrains.mps.ide.editor.warningPanel;
 
 import com.intellij.ui.HyperlinkLabel;
-import com.intellij.ui.LightColors;
+import com.intellij.util.ui.JBInsets;
+import com.intellij.util.ui.JBUI.CurrentTheme.Editor.Notification;
 import com.intellij.xml.util.XmlStringUtil;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.event.HyperlinkEvent;
-import javax.swing.event.HyperlinkListener;
 import java.awt.BorderLayout;
-import java.awt.Color;
 
-public class WarningPanel extends JPanel {
-  private String myText;
-  private EditorWarningsProvider myProvider;
+public final class WarningPanel extends JPanel {
+  private final String myText;
+  private final EditorWarningsProvider myProvider;
   
   WarningPanel(@NotNull EditorWarningsProvider provider, @NotNull String text) {
     this(provider, text, null, null);
   }
 
+  // FWIW, 'provider' here is mere identity object, to tell warnings from different origins.
   public WarningPanel(@NotNull EditorWarningsProvider provider, @NotNull String text, @Nullable String linkText, @Nullable final Runnable handler) {
+    super(new BorderLayout());
     myProvider = provider;
     myText = text;
-    setLayout(new BorderLayout());
 
-    setBackground(StyleRegistry.getInstance().isDarkTheme() ? Color.LIGHT_GRAY : LightColors.YELLOW);
-    setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
+    JBInsets jbInsets = Notification.borderInsetsWithoutStatus();
+    setBorder(BorderFactory.createEmptyBorder(jbInsets.top, jbInsets.left, jbInsets.bottom, jbInsets.right));
 
     final JLabel label = new JLabel("<html>" + XmlStringUtil.escapeString(text) + "</html>");
-    label.setForeground(StyleRegistry.getInstance().isDarkTheme() ? Color.DARK_GRAY : StyleRegistry.getInstance().getEditorForeground());
     add(label, BorderLayout.CENTER);
 
     if (linkText != null && handler != null) {

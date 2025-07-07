@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package jetbrains.mps.ide.devkit.generator;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import jetbrains.mps.ide.ui.tree.MPSTree;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.openapi.navigation.NavigationSupport;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.ModelReadRunnable;
@@ -132,7 +133,7 @@ final class GenerationTracerTree extends MPSTree {
       }
 
       // do not select top-level nodes - don't know the reason, but this is the way it used to be
-      NavigationSupport.getInstance().openNode(myProject, node, true, node.getModel() == null || node.getParent() != null);
+      new EditorNavigator(myProject).shallFocus(true).selectIfChild().open(node.getReference());
     }
 
     /*package*/ void go() {

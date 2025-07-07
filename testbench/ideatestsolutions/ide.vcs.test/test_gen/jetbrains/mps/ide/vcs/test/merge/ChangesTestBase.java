@@ -23,7 +23,6 @@ import com.intellij.openapi.application.ModalityState;
 import org.junit.Before;
 import java.io.File;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry;
-import jetbrains.mps.ide.platform.watching.ReloadManager;
 import com.intellij.openapi.vcs.impl.projectlevelman.AllVcses;
 import org.junit.Assume;
 import com.intellij.openapi.vcs.VcsShowConfirmationOption;
@@ -31,6 +30,7 @@ import com.intellij.openapi.vcs.ProjectLevelVcsManager;
 import com.intellij.openapi.vcs.impl.ProjectLevelVcsManagerImpl;
 import com.intellij.openapi.vcs.FileStatusManager;
 import org.junit.After;
+import com.intellij.openapi.util.Disposer;
 import jetbrains.mps.vcs.diff.ChangeSet;
 import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -39,11 +39,9 @@ import jetbrains.mps.vcs.diff.ChangeSetBuilder;
 import jetbrains.mps.vcs.changesmanager.NodeFileStatusMapping;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.model.SNode;
 import com.intellij.openapi.vcs.FileStatus;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import com.intellij.openapi.vcs.changes.Change;
 import java.util.List;
@@ -53,17 +51,18 @@ import com.intellij.openapi.vcs.rollback.RollbackEnvironment;
 import java.util.Collections;
 import com.intellij.openapi.vcs.rollback.RollbackProgressListener;
 import com.intellij.openapi.vfs.LocalFileSystem;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.ide.vfs.FileSystemBridge;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 
-@GeneratedClass(node = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)/3089989024970166387", model = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)")
+@GeneratedClass(nodeId = "3089989024970166387", model = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)")
 public abstract class ChangesTestBase implements EnvironmentAware {
   protected static boolean ourEnabled;
   protected Environment myEnv;
+  private static Environment ourProjectEnv;
   protected static MPSProject ourProject;
 
   protected Project myIdeaProject;
@@ -91,9 +90,11 @@ public abstract class ChangesTestBase implements EnvironmentAware {
   @AfterClass
   public static void tearDown() {
     ourEnabled = false;
-    // the right way to close project is Environment.closeProject(myProject), but at the moment PushEnvironmentRunnerBuilder does it with instance method only
-    ourProject.dispose();
+    // the right way to close project is Environment.closeProject(myProject),
+    // PushEnvironmentRunnerBuilder comes through instance method, we cache env value in ourProjectEnv
+    ourProjectEnv.closeProject(ourProject);
     ourProject = null;
+    ourProjectEnv = null;
   }
 
   private void refreshFS(@NotNull VirtualFile file) {
@@ -104,11 +105,9 @@ public abstract class ChangesTestBase implements EnvironmentAware {
   /*package*/ void updateChangeListManager() {
     VcsDirtyScopeManager.getInstance(myIdeaProject).markEverythingDirty();
     myChangeListManager.ensureUpToDate();
-    ApplicationManager.getApplication().invokeAndWait(new Runnable() {
-      public void run() {
-        // ensure `fileStatusesChanged' evens are fired
-        UIUtil.dispatchAllInvocationEvents();
-      }
+    ApplicationManager.getApplication().invokeAndWait(() -> {
+      // ensure `fileStatusesChanged' evens are fired
+      UIUtil.dispatchAllInvocationEvents();
     }, ModalityState.any());
   }
 
@@ -117,6 +116,7 @@ public abstract class ChangesTestBase implements EnvironmentAware {
     if (ourProject == null) {
       // Point to current directory with MPS project
       File mpsProject = new File("").getAbsoluteFile();
+      ourProjectEnv = myEnv;
       ourProject = ((MPSProject) myEnv.openProject(mpsProject));
       // For whatever reason, tests with this superclass work only if there's 1 project dispose per class (open/close of the project in Before/After doesn't work)
       // Given there's odd magic with ourEnabled and the fact it's VCS, I don't want to dive into this sh!t now.
@@ -125,7 +125,7 @@ public abstract class ChangesTestBase implements EnvironmentAware {
     myIdeaProject = ourProject.getProject();
     myChangeListManager = ChangeListManagerImpl.getInstanceImpl(myIdeaProject);
     CurrentDifferenceRegistry.getInstance(myIdeaProject).getCommandQueue().setHadExceptions(false);
-    myWaitHelper = new ChangesManagerTestWaitHelper(myIdeaProject, ApplicationManager.getApplication().getComponent(ReloadManager.class));
+    myWaitHelper = new ChangesManagerTestWaitHelper(myIdeaProject);
     myWaitHelper.waitForDiffRegistry();
 
     myGitVcs = AllVcses.getInstance(myIdeaProject).getByName("Git");
@@ -155,7 +155,7 @@ public abstract class ChangesTestBase implements EnvironmentAware {
     revertDiskChangesAndWait(getTestModelFile(), false);
     revertMemChangesAndWait(false);
     Assume.assumeFalse(CurrentDifferenceRegistry.getInstance(myIdeaProject).getCommandQueue().hadExceptions());
-    myWaitHelper.dispose();
+    Disposer.dispose(myWaitHelper);
   }
 
   protected MPSProject getProject() {
@@ -178,12 +178,10 @@ public abstract class ChangesTestBase implements EnvironmentAware {
   protected void testChanges(Runnable change) {
     makeChangeAndWait(change);
 
-    ourProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        ChangeSet cs = myDiff.getChangeSet();
-        ChangeSet rebuiltChangeSet = ChangeSetBuilder.buildChangeSet(cs.getOldModel(), cs.getNewModel());
-        Assert.assertEquals(getChangeSetString(rebuiltChangeSet), getChangeSetString(cs));
-      }
+    ourProject.getRepository().getModelAccess().runReadAction(() -> {
+      ChangeSet cs = myDiff.getChangeSet();
+      ChangeSet rebuiltChangeSet = ChangeSetBuilder.buildChangeSet(cs.getOldModel(), cs.getNewModel());
+      Assert.assertEquals(getChangeSetString(rebuiltChangeSet), getChangeSetString(cs));
     });
   }
 
@@ -195,53 +193,33 @@ public abstract class ChangesTestBase implements EnvironmentAware {
   }
 
   protected void checkRootStatuses(final RootStatusItem... statuses) {
-    final NodeFileStatusMapping fsm = myIdeaProject.getComponent(NodeFileStatusMapping.class);
+    final NodeFileStatusMapping fsm = NodeFileStatusMapping.getInstance(myIdeaProject);
     final SModel model = myDiff.getModelDescriptor();
     // query for first time
-    ourProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        ListSequence.fromList(SModelOperations.roots(model, null)).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode r) {
-            fsm.getStatus(r);
-          }
-        });
-      }
-    });
+    ourProject.getRepository().getModelAccess().runReadAction(() -> ListSequence.fromList(SModelOperations.roots(model, null)).visitAll((r) -> fsm.getStatus(r)));
     // wait while statuses update
     myWaitHelper.waitForDiffRegistry();
-    ourProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        ListSequence.fromList(SModelOperations.roots(model, null)).visitAll(new IVisitor<SNode>() {
-          public void visit(final SNode r) {
-            FileStatus actual = fsm.getStatus(r);
-            FileStatus expected = check_l1nwgz_a0b0a0a0a0g0mb(Sequence.fromIterable(Sequence.fromArray(statuses)).findFirst(new IWhereFilter<RootStatusItem>() {
-              public boolean accept(RootStatusItem it) {
-                return it.rootName().equals(r.getName());
-              }
-            }));
-            Assert.assertSame(expected, actual);
-          }
-        });
-      }
-    });
+    ourProject.getRepository().getModelAccess().runReadAction(() -> ListSequence.fromList(SModelOperations.roots(model, null)).visitAll((final SNode r) -> {
+      FileStatus actual = fsm.getStatus(r);
+      FileStatus expected = check_l1nwgz_a0b0a0a0a0g0nb(Sequence.fromIterable(Sequence.fromArray(statuses)).findFirst((it) -> it.rootName().equals(r.getName())));
+      Assert.assertSame(expected, actual);
+    }));
   }
 
   protected void revertMemChangesAndWait(final boolean withAsserts) {
-    ourProject.getRepository().getModelAccess().runWriteAction(new Runnable() {
-      public void run() {
-        EditableSModel testModel = getTestModel();
-        if (withAsserts) {
-          Assert.assertNotNull(testModel);
-        }
-        if (testModel != null) {
-          testModel.reloadFromSource();
-        }
+    ourProject.getRepository().getModelAccess().runWriteAction(() -> {
+      EditableSModel testModel = getTestModel();
+      if (withAsserts) {
+        Assert.assertNotNull(testModel);
+      }
+      if (testModel != null) {
+        testModel.reloadFromSource();
       }
     });
     myEnv.flushAllEvents();
     myWaitHelper.waitForDiffRegistry();
     if (withAsserts) {
-      Assert.assertTrue(ListSequence.fromList(check_l1nwgz_a0a0a3a04(myDiff.getChangeSet())).isEmpty());
+      Assert.assertTrue(ListSequence.fromList(check_l1nwgz_a0a0a3a14(myDiff.getChangeSet())).isEmpty());
     }
   }
 
@@ -266,7 +244,7 @@ public abstract class ChangesTestBase implements EnvironmentAware {
       updateChangeListManager();
       myWaitHelper.waitForDiffRegistry();
       if (withAsserts) {
-        Assert.assertTrue(ListSequence.fromList(check_l1nwgz_a0a0a01a4a24(myDiff.getChangeSet())).isEmpty());
+        Assert.assertTrue(ListSequence.fromList(check_l1nwgz_a0a0a01a4a34(myDiff.getChangeSet())).isEmpty());
       }
     }
   }
@@ -276,11 +254,13 @@ public abstract class ChangesTestBase implements EnvironmentAware {
   }
 
   protected EditableSModel getTestModel() {
-    return (EditableSModel) PersistenceFacade.getInstance().createModelReference("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)").resolve(ourProject.getRepository());
+    return new ModelAccessHelper(ourProject.getModelAccess()).runReadAction(() -> (EditableSModel) PersistenceFacade.getInstance().createModelReference("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)").resolve(ourProject.getRepository()));
   }
 
-  protected VirtualFile getTestModelFile() {
-    return VirtualFileUtils.getProjectVirtualFile(((FileDataSource) getTestModel().getSource()).getFile());
+  protected final VirtualFile getTestModelFile() {
+    // XXX LocalFileSystem.findFileByPath might be a decent alternative.
+    FileSystemBridge fileSystem = ourProject.getFileSystem();
+    return fileSystem.asVirtualFile(((FileDataSource) getTestModel().getSource()).getFile());
   }
 
   protected String getChangeSetString(ChangeSet changeSet) {
@@ -288,29 +268,21 @@ public abstract class ChangesTestBase implements EnvironmentAware {
   }
 
   protected String getChangeSetString(List<ModelChange> modelChanges) {
-    return IterableUtils.join(ListSequence.fromList(modelChanges).select(new ISelector<ModelChange, String>() {
-      public String select(ModelChange c) {
-        return c.toString();
-      }
-    }).sort(new ISelector<String, String>() {
-      public String select(String s) {
-        return s;
-      }
-    }, true), "|");
+    return IterableUtils.join(ListSequence.fromList(modelChanges).select((c) -> c.toString()).sort((s) -> s, true), "|");
   }
-  private static FileStatus check_l1nwgz_a0b0a0a0a0g0mb(RootStatusItem checkedDotOperand) {
+  private static FileStatus check_l1nwgz_a0b0a0a0a0g0nb(RootStatusItem checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.status();
     }
     return null;
   }
-  private static List<ModelChange> check_l1nwgz_a0a0a3a04(ChangeSet checkedDotOperand) {
+  private static List<ModelChange> check_l1nwgz_a0a0a3a14(ChangeSet checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModelChanges();
     }
     return null;
   }
-  private static List<ModelChange> check_l1nwgz_a0a0a01a4a24(ChangeSet checkedDotOperand) {
+  private static List<ModelChange> check_l1nwgz_a0a0a01a4a34(ChangeSet checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModelChanges();
     }

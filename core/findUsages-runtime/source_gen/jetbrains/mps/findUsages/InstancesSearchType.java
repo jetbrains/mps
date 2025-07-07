@@ -21,7 +21,7 @@ import jetbrains.mps.util.IterableUtil;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
 
-@GeneratedClass(node = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)/8568892084424435470", model = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)")
+@GeneratedClass(nodeId = "8568892084424435470", model = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)")
 /*package*/ class InstancesSearchType extends SearchType<SNode, SAbstractConcept> {
   private final boolean myExact;
   /*package*/ InstancesSearchType(boolean exact) {
@@ -51,11 +51,7 @@ import org.jetbrains.mps.openapi.util.SubProgressKind;
       }
       for (FindUsagesParticipant participant : participants) {
         final Set<SModel> next = new HashSet<SModel>(current);
-        participant.findInstances(current, queryConcepts, consumer, new Consumer<SModel>() {
-          public void consume(SModel m) {
-            next.remove(m);
-          }
-        });
+        participant.findInstances(current, queryConcepts, consumer, (SModel m) -> next.remove(m));
         current = next;
         monitor.advance(1);
       }

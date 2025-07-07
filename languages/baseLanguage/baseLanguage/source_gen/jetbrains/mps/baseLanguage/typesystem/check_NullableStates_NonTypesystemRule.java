@@ -8,7 +8,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.generator.TransientModelsModule;
+import jetbrains.mps.extapi.module.TransientSModule;
 import jetbrains.mps.analyzers.runtime.framework.CustomAnalyzerRunner;
 import java.util.Map;
 import jetbrains.mps.baseLanguage.dataFlow.NullableState;
@@ -25,7 +25,6 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.lang.dataFlow.framework.instructions.WriteInstruction;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.baseLanguage.behavior.IMethodLike__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -39,7 +38,7 @@ public class check_NullableStates_NonTypesystemRule extends AbstractNonTypesyste
   public check_NullableStates_NonTypesystemRule() {
   }
   public void applyRule(final SNode iMethodLike, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.getModel(iMethodLike).getModule() instanceof TransientModelsModule) {
+    if (SNodeOperations.getModel(iMethodLike).getModule() instanceof TransientSModule) {
       return;
     }
     // Find possible NPE
@@ -116,11 +115,7 @@ public class check_NullableStates_NonTypesystemRule extends AbstractNonTypesyste
     // Find Nullable returns of NotNull methods
     if (SNodeOperations.isInstanceOf(iMethodLike, CONCEPTS.BaseMethodDeclaration$kD)) {
       SNode method = SNodeOperations.cast(iMethodLike, CONCEPTS.BaseMethodDeclaration$kD);
-      if (Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(method, LINKS.annotation$K49I), LINKS.annotation$12Ek)).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.is(it, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~NotNull"));
-        }
-      })) {
+      if (Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(method, LINKS.annotation$K49I), LINKS.annotation$12Ek)).any((it) -> SNodeOperations.is(it, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~NotNull")))) {
         for (SNode returnStatement : RulesFunctions_BaseLanguage.collectReturnStatements(SLinkOperations.getTarget(method, LINKS.body$5xQk))) {
           RulesFunctions_BaseLanguage.checkReturningExpression(typeCheckingContext, SLinkOperations.getTarget(returnStatement, LINKS.expression$eJ92), returnStatement, program, result);
         }

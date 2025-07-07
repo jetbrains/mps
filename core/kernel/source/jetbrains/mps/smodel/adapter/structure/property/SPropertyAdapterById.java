@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package jetbrains.mps.smodel.adapter.structure.property;
 
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.SNodeId;
 import jetbrains.mps.smodel.adapter.ids.SPropertyId;
 import jetbrains.mps.smodel.adapter.structure.ConceptFeatureHelper;
 import jetbrains.mps.smodel.adapter.structure.FormatException;
@@ -26,7 +25,6 @@ import jetbrains.mps.smodel.runtime.PropertyDescriptor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
@@ -82,15 +80,9 @@ public class SPropertyAdapterById extends SPropertyAdapter {
     PropertyDescriptor d = getPropertyDescriptor();
     if (d != null) {
       SNodeReference sn = d.getSourceNode();
-      if(sn!=null) return sn.resolve(MPSModuleRepository.getInstance());
+      return sn == null ? null : sn.resolve(MPSModuleRepository.getInstance());
     }
-
-    SNode cnode = getOwner().getDeclarationNode();
-    if (cnode == null) {
-      return null;
-    }
-    SModel model = cnode.getModel();
-    return model.getNode(new SNodeId.Regular(myPropertyId.getIdValue()));
+    return null;
   }
 
   @Override

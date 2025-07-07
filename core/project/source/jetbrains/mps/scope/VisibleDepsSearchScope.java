@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,6 @@ import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager.Deptype;
 import jetbrains.mps.smodel.BaseScope;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.iterable.MergeIterator;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -30,7 +29,6 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -74,8 +72,14 @@ public class VisibleDepsSearchScope extends BaseScope {
 
   public VisibleDepsSearchScope(@Nullable SRepository repository, Collection<? extends SModule> modules, Collection<SLanguage> usedLanguages) {
     myRepository = repository;
-    // XXX not sure who's responsibility is to look at 'used devkits' and take their exported solutions. It depends whether we treat them 'visible' or not.
-    myModules = IterableUtil.asSet(new GlobalModuleDependenciesManager(modules).getModules(Deptype.VISIBLE));
+    if (repository != null) {
+      // XXX not sure whose responsibility is to look at 'used devkits' and take their exported solutions. It depends on whether we treat them 'visible' or not.
+      //   For now, I moved it into GMDM (see UsedModuleCollector.directlyUsedModules), although might be reasonable to
+      //   fill these in here, to avoid recursive walk for DevKit-exported solutions in addition to walk of declared dependencies.
+      myModules = Set.copyOf(new GlobalModuleDependenciesManager(modules).getModules(Deptype.VISIBLE));
+    } else {
+      myModules = Set.copyOf(modules);
+    }
 
     // accessory models of a language module are part of that module scope
     Set<SModel> accessoryModels = new HashSet<>();

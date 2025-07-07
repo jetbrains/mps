@@ -7,10 +7,9 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.editor.runtime.impl.cellActions.CommentUtil;
@@ -21,11 +20,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-@GeneratedClass(node = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)/5297043982019862014", model = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)")
+@GeneratedClass(nodeId = "5297043982019862014", model = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)")
 public class ChangesTestUtil {
   public static SNode createCommentedMethod() {
     SNode commentedMethod = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute"));
-    BHReflection.invoke0(commentedMethod, CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("setLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzM"), LINKS.member$L_2d);
+    BHReflection.invoke0(commentedMethod, CONCEPTS.ChildAttribute$m8, SMethodIdV2.create("setLink", 709746936026609906L, 0x553941aeb020c32eL), LINKS.member$L_2d);
     SLinkOperations.setTarget(commentedMethod, LINKS.commentedNode$MYvG, _quotation_createNode_l1u5rv_a0c0a());
     return commentedMethod;
   }
@@ -41,11 +40,7 @@ public class ChangesTestUtil {
   }
 
   public static void addBlockStatementToMethod2(SNode clazz, SNode anchor, boolean innerParameter) {
-    final SNode method2 = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(clazz, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("methods", CONCEPTS.Classifier$Ix, "4_LVZ3pBKCn")))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method2");
-      }
-    }).first();
+    final SNode method2 = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(clazz, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method2")).first();
     SLinkOperations.getTarget(method2, LINKS.body$5xQk).insertChildBefore(LINKS.statement$53DE, createBlockStatement(innerParameter), anchor);
   }
 

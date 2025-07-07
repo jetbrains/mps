@@ -21,5 +21,9 @@ import org.jetbrains.mps.openapi.module.SRepository;
   QuickFixBase that is not inherited from EditorQuickFix cannot be executed in editor, both in intention and autoapply modes
  */
 public interface EditorQuickFix extends QuickFixBase, FlavouredItem {
+
+  default boolean isApplicable(SRepository repository) { return true; }
+
   String getDescription(SRepository repository);
+  
 }

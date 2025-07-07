@@ -20,7 +20,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class NF_Model_CreateNewRootNodeOperation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x4c0fd74709e9f70cL, "jetbrains.mps.lang.actions.structure.NF_Model_CreateNewRootNodeOperation");
 
-  public static final SMethod<Boolean> applicableToModel_id1653mnvAf1y = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("applicableToModel").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1653mnvAf1y").build();
+  public static final SMethod<Boolean> applicableToModel_id1653mnvAf1y = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("applicableToModel").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741492322L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(applicableToModel_id1653mnvAf1y);
 

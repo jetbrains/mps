@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -300,7 +300,12 @@ public final class BinaryPersistence {
         os.writeLong(ci.getConceptId().getIdValue());
         assert ul.getName().equals(NameUtil.namespaceFromConceptFQName(ci.getName())) : "We save concept short name. This check ensures we can re-construct fqn based on language name";
         os.writeString(ci.getBriefName());
-        os.writeByte(ci.getKind().ordinal() << 4 | ci.getScope().ordinal());
+        // there are 4 values in ConceptKind enum, I don't expect it to grow
+        int flags = ci.getKind().ordinal() << 4 | ci.getScope().ordinal();
+        if (ci.isInterfaceConcept()) {
+          flags |= 0x80;
+        }
+        os.writeByte(flags);
         if (ci.isImplementationWithStub()) {
           os.writeByte(STUB_ID);
           os.writeLong(ci.getStubCounterpart().getIdValue());
@@ -366,7 +371,10 @@ public final class BinaryPersistence {
           assert stubToken == STUB_ID;
           stubId = new SConceptId(languageId, is.readLong());
         }
-        rh.withConcept(conceptId, conceptName, StaticScope.values()[flags & 0x0f], ConceptKind.values()[flags >> 4 & 0x0f], stubId, conceptIndex++);
+        final StaticScope ss = StaticScope.values()[flags & 0x0f];
+        final ConceptKind ck = ConceptKind.values()[flags >> 4 & 0x07];
+        final boolean isInterfaceConcept = 0 != (flags & 0x80);
+        rh.withConcept(conceptId, conceptName, ss, ck, isInterfaceConcept, stubId, conceptIndex++);
         //
         int propertyCount = is.readShort();
         while (propertyCount-- > 0) {
@@ -474,8 +482,8 @@ public final class BinaryPersistence {
     }
   }
 
-  public static SModelData getModelData(InputStream input) throws IOException {
-    ModelLoadResult result = loadModel(input, false, new StuffedMetaModelInfo(new BaseMetaModelInfo()));
+  public static SModelData getModelData(InputStream input, boolean keepMetaModelInfo) throws IOException {
+    ModelLoadResult result = loadModel(input, false, keepMetaModelInfo ? new StuffedMetaModelInfo(new RegularMetaModelInfo()) : null);
     return result.getModel();
   }
 

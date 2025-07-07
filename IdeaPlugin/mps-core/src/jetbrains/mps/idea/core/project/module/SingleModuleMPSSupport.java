@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,11 +23,12 @@ import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.messages.MessagesViewTool;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.ide.vfs.FileSystemBridge;
 import jetbrains.mps.idea.core.MPSBundle;
 import jetbrains.mps.idea.core.project.SolutionIdea;
 import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.persistence.DefaultModelRoot;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
@@ -64,7 +65,7 @@ public class SingleModuleMPSSupport extends ModuleMPSSupport {
     assert modules.length == 1;
     final Module singleModule = modules[0];
 
-    final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(project);
+    final MPSProject mpsProject = ProjectHelper.fromIdeaProject(project);
     if (mpsProject == null) {
       return;
     }
@@ -72,8 +73,14 @@ public class SingleModuleMPSSupport extends ModuleMPSSupport {
     final SRepository repository = mpsProject.getRepository();
 
     repository.getModelAccess().runWriteAction(() -> {
-      SolutionDescriptor solutionDescriptor = makeDescriptor(singleModule);
-      Solution solution = new SolutionIdea(singleModule, solutionDescriptor);
+      SolutionDescriptor solutionDescriptor = makeDescriptor(mpsProject, singleModule);
+      final FileSystemBridge fsb = mpsProject.getFileSystem();
+      // XXX solutionDescriptor doesn't define any SModuleFacet (compare to MPSConfigurationBean.newSolutionDescriptor() which adds IdeaPlugin + JMF)
+      //     I don't know if it's intended, overlooked or simply assumed presence of forced-at-the-time JMF.
+      //     This SingleModuleMPSSupport seems to be in use for other IDEs than IDEA, and I assume MPS has to work there pretty much like in
+      //     a regular MPS-as-IDEA-plugin scenario (including output/classes location of JMF). I wonder why we can not go regular MPSFacet way for
+      //     IDEs other than IDEA?
+      Solution solution = new SolutionIdea(singleModule, solutionDescriptor, fsb.fromVirtualFile(singleModule.getModuleFile()));
 
       if (repository.getModule(solution.getModuleId()) != null) {
         MessagesViewTool.log(project, MessageKind.ERROR, MPSBundle.message("facet.cannot.load.second.module", solutionDescriptor.getNamespace()));
@@ -86,14 +93,13 @@ public class SingleModuleMPSSupport extends ModuleMPSSupport {
     });
   }
 
-  private SolutionDescriptor makeDescriptor(Module module) {
+  private SolutionDescriptor makeDescriptor(MPSProject mpsProject, Module module) {
     VirtualFile moduleContentRoot = ModuleRootManager.getInstance(module).getContentRoots()[0];
     String outputPath = moduleContentRoot.getPath() + File.separator + SOURCE_GEN;
 
     SolutionDescriptor descriptor = new SolutionDescriptor();
     descriptor.setId(ModuleId.foreign(module.getName()));
-    descriptor.setOutputPath(outputPath);
-    descriptor.setCompileInMPS(false);
+    descriptor.setOutputRoot(outputPath);
 
     ArrayList<IFile> sourceRoots = new ArrayList<>();
 
@@ -101,7 +107,7 @@ public class SingleModuleMPSSupport extends ModuleMPSSupport {
       if (!VfsUtilCore.isAncestor(moduleContentRoot, sourceRoot, true)) {
         continue;
       }
-      IFile f = VirtualFileUtils.toIFile(sourceRoot);
+      IFile f = mpsProject.getFileSystem().fromVirtualFile(sourceRoot);
       if (f == null) {
         continue;
       }
@@ -109,9 +115,10 @@ public class SingleModuleMPSSupport extends ModuleMPSSupport {
     }
     final ModelRootDescriptor modelRootDesc;
     if (sourceRoots.isEmpty()) {
-      modelRootDesc = DefaultModelRoot.createSingleFolderDescriptor(VirtualFileUtils.toIFile(moduleContentRoot));
+      modelRootDesc = DefaultModelRoot.createSingleFolderDescriptor(new File(moduleContentRoot.getPath()));
     } else {
-      modelRootDesc = DefaultModelRoot.createDescriptor(VirtualFileUtils.toIFile(moduleContentRoot), sourceRoots.toArray(new IFile[0]));
+      // XXX in fact, can add another createDescriptor(File, File ...) and don't bother with project and FS at all
+      modelRootDesc = DefaultModelRoot.createDescriptor(mpsProject.getFileSystem().fromVirtualFile(moduleContentRoot), sourceRoots.toArray(new IFile[0]));
     }
 
     descriptor.getModelRootDescriptors().add(modelRootDesc);

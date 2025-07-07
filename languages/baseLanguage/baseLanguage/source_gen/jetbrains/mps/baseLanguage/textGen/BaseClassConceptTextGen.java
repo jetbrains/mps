@@ -35,7 +35,7 @@ public abstract class BaseClassConceptTextGen {
       boolean needsLineAfter = (boolean) ClassifierMember__BehaviorDescriptor.needsEmptyLineAfter_idzB21h1tQNm.invoke(member);
       BaseLanguageTextGen.newLine(needsLineBefore && !(isWrappedElementBefore), ctx);
       tgs.appendNode(member);
-      BaseLanguageTextGen.newLine(needsLineAfter && !((lastMember == member)), ctx);
+      BaseLanguageTextGen.newLine(needsLineAfter && !(lastMember == member), ctx);
       isWrappedElementBefore = needsLineAfter;
     }
   }

@@ -12,9 +12,9 @@ import java.util.List;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import javax.swing.Icon;
-import jetbrains.mps.ide.editor.popup.IconResourceBundle_OverrideImplements;
+import jetbrains.mps.ide.editor.popup.OverrideImplementsIcons;
 import com.intellij.openapi.actionSystem.AnAction;
 import jetbrains.mps.workbench.action.BaseAction;
 import com.intellij.openapi.actionSystem.ActionManager;
@@ -27,7 +27,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
  * could be overriding or implementing (different icons & text)
  * implementing a method without implementation
  */
-@GeneratedClass(node = "r:59f5b892-a6eb-4a9b-9c81-ecffc10026ee(jetbrains.mps.ide.highlighters.behavior)/8432634623182579907", model = "r:59f5b892-a6eb-4a9b-9c81-ecffc10026ee(jetbrains.mps.ide.highlighters.behavior)")
+@GeneratedClass(nodeId = "8432634623182579907", model = "r:59f5b892-a6eb-4a9b-9c81-ecffc10026ee(jetbrains.mps.ide.highlighters.behavior)")
 public final class MethodOverridesEditorMessage extends AbstractOverrideEditorMessage {
   private static final EditorMessageIconRenderer.IconRendererType TYPE = new EditorMessageIconRenderer.IconRendererType(1);
   private static final String INDENT = "     ";
@@ -61,12 +61,12 @@ public final class MethodOverridesEditorMessage extends AbstractOverrideEditorMe
   }
 
   private static String getTextFromMethod(SNode method) {
-    return ((String) BHReflection.invoke0(((SNode) BHReflection.invoke0(method, CONCEPTS.ConceptMethodDeclaration$N0, SMethodTrimmedId.create("getContainingConcept", CONCEPTS.ConceptMethodDeclaration$N0, "i3POAMX"))), CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+    return ((String) BHReflection.invoke0(((SNode) BHReflection.invoke0(method, CONCEPTS.ConceptMethodDeclaration$N0, SMethodIdV2.create("getContainingConcept", 1241074789565L, 0x28bccc7daff7d4f3L))), CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL)));
   }
 
   @Override
   public Icon getIcon() {
-    return (this.myOverriding ? IconResourceBundle_OverrideImplements.getInstance().getResource("OVERRIDING") : IconResourceBundle_OverrideImplements.getInstance().getResource("IMPLEMENTING"));
+    return (this.myOverriding ? OverrideImplementsIcons.OVERRIDING : OverrideImplementsIcons.IMPLEMENTING);
   }
 
   @Override

@@ -21,21 +21,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class Icon2Resource_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public Icon2Resource_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:b1dbf313-2794-40ca-90ec-f498ea7f9c90(jetbrains.mps.lang.resources.intentions)", "3524064283240511589"));
   }
+
   @Override
   public String getPresentation() {
     return "Icon2Resource";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -45,19 +45,30 @@ public final class Icon2Resource_Intention extends AbstractIntentionDescriptor i
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Convert to iconResource{}";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode icon = SLinkOperations.getTarget(node, LINKS.icon$OBvj);
       SLinkOperations.setTarget(SNodeOperations.replaceWithNewChild(node, CONCEPTS.IconResourceExpression$Qx), LINKS.icon$xBV6, icon);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return Icon2Resource_Intention.this;
     }
+
   }
 
   private static final class LINKS {

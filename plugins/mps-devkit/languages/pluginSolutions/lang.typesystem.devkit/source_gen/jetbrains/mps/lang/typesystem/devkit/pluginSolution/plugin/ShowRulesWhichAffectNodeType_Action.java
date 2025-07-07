@@ -9,7 +9,6 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import jetbrains.mps.project.MPSProject;
@@ -30,6 +29,7 @@ public class ShowRulesWhichAffectNodeType_Action extends BaseAction {
     super("Show Rules Which Affect Node's Type", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -42,21 +42,18 @@ public class ShowRulesWhichAffectNodeType_Action extends BaseAction {
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      MapSequence.fromMap(_params).put("node", node);
       if (node == null) {
         return false;
       }
     }
     {
       Project p = event.getData(CommonDataKeys.PROJECT);
-      MapSequence.fromMap(_params).put("ideaProject", p);
       if (p == null) {
         return false;
       }
     }
     {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      MapSequence.fromMap(_params).put("mpsProject", p);
       if (p == null) {
         return false;
       }
@@ -66,14 +63,12 @@ public class ShowRulesWhichAffectNodeType_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._T<SearchQuery> query = new Wrappers._T<SearchQuery>();
-    ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SearchScope scope = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getScope();
-        query.value = new SearchQuery(((SNode) MapSequence.fromMap(_params).get("node")), scope);
-      }
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(() -> {
+      SearchScope scope = event.getData(MPSCommonDataKeys.MPS_PROJECT).getScope();
+      query.value = new SearchQuery(event.getData(MPSCommonDataKeys.NODE), scope);
     });
     IResultProvider provider = FindUtils.makeProvider(new AffectingRulesFinder());
     UsageToolOptions opt = new UsageToolOptions().allowRunAgain(false).navigateIfSingle(false).forceNewTab(false).notFoundMessage("no rules found");
-    UsagesViewTool.showUsages(((Project) MapSequence.fromMap(_params).get("ideaProject")), provider, query.value, opt);
+    UsagesViewTool.showUsages(event.getData(CommonDataKeys.PROJECT), provider, query.value, opt);
   }
 }

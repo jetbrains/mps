@@ -20,21 +20,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class ViewAsTabularThroughTheEnumBox_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ViewAsTabularThroughTheEnumBox_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:609c99e8-3a24-425d-8723-60cb603f5c76(jetbrains.mps.samples.multipleProjections.requestTracking.intentions)", "1007054899182538857"));
   }
+
   @Override
   public String getPresentation() {
     return "ViewAsTabularThroughTheEnumBox";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -44,6 +44,7 @@ public final class ViewAsTabularThroughTheEnumBox_Intention extends AbstractInte
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       if (!(SEnumOperations.isMember(SPropertyOperations.getEnum(node, PROPS.presentation$bKY9), 0x3301f82dc7d4d8ffL))) {
@@ -52,6 +53,7 @@ public final class ViewAsTabularThroughTheEnumBox_Intention extends AbstractInte
         return "View As Structural Through the Enum Box";
       }
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if (!(SEnumOperations.isMember(SPropertyOperations.getEnum(node, PROPS.presentation$bKY9), 0x3301f82dc7d4d8ffL))) {
@@ -60,10 +62,19 @@ public final class ViewAsTabularThroughTheEnumBox_Intention extends AbstractInte
         SPropertyOperations.assignEnum(node, PROPS.presentation$bKY9, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x8d18a45bac7e4d84L, 0xa53975f1d720b09bL, 0x3301f82dc7d4d8f5L, "jetbrains.mps.samples.multipleProjections.requestTracking.structure.WorkflowPresentation"), 0x3301f82dc7d4d8f6L, "structural"));
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ViewAsTabularThroughTheEnumBox_Intention.this;
     }
+
   }
 
   private static final class PROPS {

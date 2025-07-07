@@ -26,12 +26,12 @@ import javax.swing.Icon;
 
 public class OpenMPSProjectFileChooserDescriptor extends FileChooserDescriptor {
   public OpenMPSProjectFileChooserDescriptor(boolean chooseFiles) {
-    super(chooseFiles, true, chooseFiles, chooseFiles, false, false);
+    super(chooseFiles, true, chooseFiles, chooseFiles, false, true);
   }
 
   @Override
   public boolean isFileSelectable(VirtualFile file) {
-    return isMpsProjectFile(file) || isMpsProjectDirectory(file);
+    return !file.isDirectory() || isMpsProjectDirectory(file);
   }
 
   @Override
@@ -51,10 +51,17 @@ public class OpenMPSProjectFileChooserDescriptor extends FileChooserDescriptor {
   }
 
   public static boolean isMpsProjectFile(VirtualFile file) {
+    if (file == null || file.getName() == null) {
+      return false;
+    }
     return file.isValid() && !file.isDirectory() && file.getName().toLowerCase().endsWith(MPSExtentions.DOT_MPS_PROJECT);
   }
 
   public static boolean isMpsProjectDirectory(final VirtualFile file) {
+    if (file == null) {
+      return false;
+    }
+
     /**
      * <code>file.getParent() == null<code/> checks that root directory of any drive is never an MPS project
      * */

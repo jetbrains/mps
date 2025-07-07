@@ -8,7 +8,7 @@ import java.util.List;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import org.jetbrains.mps.openapi.model.SModel;
 
-@GeneratedClass(node = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)/3834754559947571411", model = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)")
+@GeneratedClass(nodeId = "3834754559947571411", model = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)")
 public interface ChangeSet {
   @NotNull
   List<ModelChange> getModelChanges();
@@ -20,4 +20,7 @@ public interface ChangeSet {
   SModel getNewModel();
   @NotNull
   ChangeSet getOppositeChangeSet();
+  @NotNull
+  ChangeSet getChangeSetCopy(boolean withOpposite);
+  void restoreChangeSetByCopy(@NotNull ChangeSet copy, boolean withOpposite);
 }

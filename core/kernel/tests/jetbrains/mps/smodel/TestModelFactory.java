@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.extapi.model.EditableSModelBase;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.extapi.module.SRepositoryBase;
@@ -23,9 +22,7 @@ import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.smodel.adapter.BootstrapAdapterFactory;
 import jetbrains.mps.smodel.event.SModelListener;
-import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -37,14 +34,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeAccessListener;
 import org.jetbrains.mps.openapi.model.SNodeChangeListener;
 import org.jetbrains.mps.openapi.model.SNodeId;
-import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleId;
 import org.jetbrains.mps.openapi.module.SRepository;
-import org.jetbrains.mps.openapi.persistence.ModelSaveException;
-import org.jetbrains.mps.openapi.persistence.NullDataSource;
 
-import java.io.IOException;
 import java.util.ArrayDeque;
 
 /**
@@ -212,43 +205,62 @@ final class TestModelFactory {
   }
 
   // FIXME node add/remove operations don't require EditableSModelBase to dispatch events any more, and we may get back SModelBase as superclass
-  // however, at the moment, ther are still casts in #clearEditableChanged() and #isEditableChanged and unless we drop these,
-  // the class has to be of EditableSModel
-  @ToRemove(version = 3.3)
-  private static class TestModelBase extends EditableSModelBase {
-    private final jetbrains.mps.smodel.SModel myModelData;
+  // however, at the moment, there are still casts in #clearEditableChanged() and #isEditableChanged and unless we drop these,
+  // the class has to be of EditableSModel.
+  // UPDATE ^^^: now there's no use of EditableSModelBase, but the story of different test models (editable and not-editable) isn't complete, revisit.
+  @Deprecated(since = "3.3", forRemoval = true)
+  private static class TestModelBase extends TrivialModelDescriptor implements EditableSModel {
+    private boolean myChanged = false;
 
     public TestModelBase(jetbrains.mps.smodel.SModel modelData) {
-      super(modelData.getReference(), new NullDataSource());
-      myModelData = modelData;
-      myModelData.setModelDescriptor(this, getNodeEventDispatch());
-      setLoadingState(ModelLoadingState.FULLY_LOADED);
+      super(modelData);
     }
 
     @Override
-    public jetbrains.mps.smodel.SModel getSModelInternal() {
-      return myModelData;
-    }
-
-    @Nullable
-    @Override
-    protected jetbrains.mps.smodel.SModel getCurrentModelInternal() {
-      return myModelData;
+    public boolean isChanged() {
+      return myChanged;
     }
 
     @Override
-    protected void doUnload() {
+    public void setChanged(boolean changed) {
+      myChanged = changed;
+    }
+
+    @Override
+    public void addRootNode(@NotNull org.jetbrains.mps.openapi.model.SNode node) {
+      assertCanChange();
+      getModelData().addRootNode(node);
+    }
+
+    @Override
+    public void removeRootNode(@NotNull org.jetbrains.mps.openapi.model.SNode node) {
+      assertCanChange();
+      getModelData().removeRootNode(node);
+    }
+
+    @Override
+    public void addChangeListener(SNodeChangeListener listener) {
+      getNodeEventDispatch().addChangeListener(listener);
+    }
+
+    @Override
+    public void removeChangeListener(SNodeChangeListener listener) {
+      getNodeEventDispatch().removeChangeListener(listener);
+    }
+
+    @Override
+    public void reloadFromSource() {
       // no-op
     }
 
     @Override
-    protected void reloadContents() {
+    public void save() {
       // no-op
     }
 
     @Override
-    protected boolean saveModel() throws IOException, ModelSaveException {
-      return false;
+    public void rename(@NotNull String newModelName, boolean changeFile) {
+      throw new UnsupportedOperationException();
     }
   }
 
@@ -284,8 +296,10 @@ final class TestModelFactory {
   /*package*/ static class TestModelAccess extends AbstractModelAccess implements ModelCommandContext.Provider {
     private boolean myCanRead;
     private boolean myCanWrite;
+    // facilitates plain sequential alternative to executeCommand(Runnable)
     private int myCommandCount = 0;
     private final UndoHandler myUndoHandler;
+    private ModelCommandContext myCommandContext;
 
     // commands of this MA don't track undo
     TestModelAccess() {
@@ -312,12 +326,13 @@ final class TestModelFactory {
     }
     void enterCommand() {
       if (myCommandCount++ == 0) {
-        enableWrite();
+        // what myCommandActionDispatcher does for the very first command.
+        onCommandStarted();
       }
     }
     void leaveCommand() {
       if (--myCommandCount == 0) {
-        disableWrite();
+        onCommandFinished();
       }
     }
 
@@ -334,12 +349,14 @@ final class TestModelFactory {
 
     @Override
     public void runReadAction(Runnable r) {
-      r.run();
+      // beware, runReadAction while dispatch() in sending out readStart/Finish notifications
+      // would end up with deadlock/InterruptedException
+      myReadActionDispatcher.dispatch(r);
     }
 
     @Override
     public void runReadInEDT(Runnable r) {
-      r.run();
+      myReadActionDispatcher.dispatch(r);
     }
 
     @Override
@@ -354,16 +371,23 @@ final class TestModelFactory {
 
     @Override
     public void executeCommand(Runnable r) {
-      myCommandCount++;
+      if (isCommandAction()) {
+        r.run();
+        return;
+      }
+      if (canWrite() && myCommandActionDispatcher.isInsideNotificationDispatch()) {
+        // myCommandActionDispatcher.dispatch() doesn't tolerate re-enter while in certain phases.
+        // Well, in fact, it shall fail, trying to get notification lock, it's just too long to wait in tests.
+        // XXX This piece is not nice, as it copies logic of WorkbenchModelAccess, we need this code for
+        // ModelAccessTest.testNoCommandFromPre/PostListener tests.
+        throw new IllegalModelAccessException("");
+      }
       myCommandActionDispatcher.dispatch(r);
-      myCommandCount--;
     }
 
     @Override
-    public void executeCommandInEDT(Runnable r) {
-      myCommandCount++;
-      myCommandActionDispatcher.dispatch(r);
-      myCommandCount--;
+    public void executeCommandInEDT(@NotNull Runnable r) {
+      executeCommand(r);
     }
 
     @Override
@@ -373,19 +397,26 @@ final class TestModelFactory {
 
     @Override
     public boolean isCommandAction() {
-      return myCommandCount > 0;
+      return myCommandCount > 0 || myCommandActionDispatcher.isInsideAction();
     }
 
     @Nullable
     @Override
     public ModelCommandContext getCommandContext(SModel model) {
+      return myCommandContext;
+    }
+
+    @Override
+    protected void onCommandStarted() {
+      enableWrite();
       if (myUndoHandler == null) {
-        return null;
+        assert myCommandContext == null;
+        return;
       }
       // At the moment, I don't want UN/IR in tests, therefore use bare MCC impl with
       // UndoHandler only. However, if testing UN/IR is essential, shall consider refactoring
       // of MA.CommandContextProvider code to share it here
-      return new ModelCommandContext() {
+      myCommandContext = new ModelCommandContext() {
         @Override
         public void nodeAttached(SNode node) {
         }
@@ -395,7 +426,7 @@ final class TestModelFactory {
         }
 
         @Override
-        public void associationSet(SReference association) {
+        public void associationSet(SNode node, SReferenceLink link, AssociationData association) {
         }
 
         @Nullable
@@ -408,7 +439,18 @@ final class TestModelFactory {
         public void registerActionWithUndo(SNodeUndoableAction action) {
           myUndoHandler.addUndoableAction(action);
         }
+
+        @Override
+        public void registerActionWithUndo(ModelRenameUndoableAction action) {
+          myUndoHandler.addUndoableAction(action);
+        }
       };
+    }
+
+    @Override
+    protected void onCommandFinished() {
+      disableWrite();
+      myCommandContext = null;
     }
   }
 }

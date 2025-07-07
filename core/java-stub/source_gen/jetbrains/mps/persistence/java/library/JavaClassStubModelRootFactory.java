@@ -8,7 +8,7 @@ import jetbrains.mps.java.stub.ClassStubRootConfiguration;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
-@GeneratedClass(node = "r:adc783db-1c21-4910-9cf7-6a22bf949a4a(jetbrains.mps.persistence.java.library)/6619269785060746414", model = "r:adc783db-1c21-4910-9cf7-6a22bf949a4a(jetbrains.mps.persistence.java.library)")
+@GeneratedClass(nodeId = "6619269785060746414", model = "r:adc783db-1c21-4910-9cf7-6a22bf949a4a(jetbrains.mps.persistence.java.library)")
 public class JavaClassStubModelRootFactory implements ModelRootFactory {
   private final ClassStubRootConfiguration myStubRootProvider;
 

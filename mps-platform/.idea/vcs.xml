@@ -10,6 +10,5 @@
     <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
     <mapping directory="$PROJECT_DIR$/community" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/community/android" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/community/android/tools-base" vcs="Git" />
   </component>
 </project>

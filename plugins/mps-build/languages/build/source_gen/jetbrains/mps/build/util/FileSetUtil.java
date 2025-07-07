@@ -6,7 +6,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.build.behavior.BuildLayout_FileSet__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
@@ -28,17 +27,9 @@ public class FileSetUtil {
   public FileSetUtil() {
   }
   public static Iterable<SNode> getImplicitFilesets(SNode container) {
-    Iterable<SNode> result = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(container, LINKS.children$aMRO), CONCEPTS.BuildLayout_FileSet$5F)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) BuildLayout_FileSet__BehaviorDescriptor.isImplicit_id19QsrPuCW11.invoke(it);
-      }
-    });
+    Iterable<SNode> result = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(container, LINKS.children$aMRO), CONCEPTS.BuildLayout_FileSet$5F)).where((it) -> (boolean) BuildLayout_FileSet__BehaviorDescriptor.isImplicit_id19QsrPuCW11.invoke(it));
 
-    for (SNode folder : ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.children$aMRO)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Folder$AH) || SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Filemode$sx);
-      }
-    })) {
+    for (SNode folder : ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.children$aMRO)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Folder$AH) || SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Filemode$sx))) {
       result = Sequence.fromIterable(result).concat(Sequence.fromIterable(getImplicitFilesets(SNodeOperations.cast(folder, CONCEPTS.BuildLayout_Container$vv))));
     }
     return result;
@@ -73,15 +64,7 @@ public class FileSetUtil {
     // FIXME not that I care to get BL_Node, it's just a defect in descendants implementation that ignore stop concepts unless there's specific concept to look up.
     // JFTR, we care to get "explicit" (generated explicitly, as part of 'assembly' task, not as part of archive) of this Filemode node, not of any 
     // potential Filemode descendant, hence use of stop concept in descendants (and !BL_Filemode check, too).
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(container, CONCEPTS.BuildLayout_Node$Rb, false, new SAbstractConcept[]{CONCEPTS.BuildLayout_Filemode$sx})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.hasRole(it, LINKS.children$aMRO);
-      }
-    }).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !((SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_FileSet$5F) && (boolean) BuildLayout_FileSet__BehaviorDescriptor.isImplicit_id19QsrPuCW11.invoke(SNodeOperations.cast(it, CONCEPTS.BuildLayout_FileSet$5F)))) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Filemode$sx)) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Folder$AH));
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(container, CONCEPTS.BuildLayout_Node$Rb, false, new SAbstractConcept[]{CONCEPTS.BuildLayout_Filemode$sx})).where((it) -> SNodeOperations.hasRole(it, LINKS.children$aMRO)).any((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_FileSet$5F) && (boolean) BuildLayout_FileSet__BehaviorDescriptor.isImplicit_id19QsrPuCW11.invoke(SNodeOperations.cast(it, CONCEPTS.BuildLayout_FileSet$5F))) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Filemode$sx)) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Folder$AH)));
   }
 
   public static boolean hasExplicitFilesets(SNode container) {
@@ -90,11 +73,7 @@ public class FileSetUtil {
     //  ^^^^ Seems that we treat each Filemode's explicit fileset independently
     // 
     // Also, I don't quite understand why children other than specified are treated as explicit filesets, e.g. BL_ExportAsJavaLibrary or BuildMpsLayout_ModuleSources
-    return ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.children$aMRO)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !((SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_FileSet$5F) && (boolean) BuildLayout_FileSet__BehaviorDescriptor.isImplicit_id19QsrPuCW11.invoke(SNodeOperations.cast(it, CONCEPTS.BuildLayout_FileSet$5F)))) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Filemode$sx)) && (!(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Folder$AH)) || hasExplicitFilesets(SNodeOperations.cast(it, CONCEPTS.BuildLayout_Folder$AH)));
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.children$aMRO)).any((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_FileSet$5F) && (boolean) BuildLayout_FileSet__BehaviorDescriptor.isImplicit_id19QsrPuCW11.invoke(SNodeOperations.cast(it, CONCEPTS.BuildLayout_FileSet$5F))) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Filemode$sx)) && (!(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Folder$AH)) || hasExplicitFilesets(SNodeOperations.cast(it, CONCEPTS.BuildLayout_Folder$AH))));
   }
 
   public static SNode getFilesetLayoutContainer(SNode context) {

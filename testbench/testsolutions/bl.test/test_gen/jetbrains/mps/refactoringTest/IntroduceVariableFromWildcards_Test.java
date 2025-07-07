@@ -4,11 +4,10 @@ package jetbrains.mps.refactoringTest;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.IntroduceLocalVariableRefactoring;
@@ -21,13 +20,11 @@ import jetbrains.mps.lang.test.matcher.NodesMatcher;
 
 @MPSLaunch
 public class IntroduceVariableFromWildcards_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(IntroduceVariableFromWildcards_Test.class, "${mps_home}", "r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(IntroduceVariableFromWildcards_Test.class).projectPath(null).modelRef("r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)").reopenProject(null).build());
 
   public IntroduceVariableFromWildcards_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -41,27 +38,33 @@ public class IntroduceVariableFromWildcards_Test extends BaseTransformationTest 
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("6974242407276767366", "6974242407276777253");
+    }
+
     public void test_IntroduceVariableFromWildcardsTest() throws Exception {
-      addNodeById("6974242407276767366");
-      addNodeById("6974242407276777253");
-      IntroduceLocalVariableRefactoring refactoring = new IntroduceLocalVariableRefactoring();
-      refactoring.init(getNodeById("6974242407276767373"), null);
-      refactoring.setName("b");
-      refactoring.setReplacingAll(true);
-      refactoring.doRefactoring();
-      refactoring.init(getNodeById("6974242407276767385"), null);
-      refactoring.setName("b");
-      refactoring.setReplacingAll(true);
-      refactoring.doRefactoring();
-      refactoring.init(getNodeById("6974242407276767398"), null);
-      refactoring.setName("b");
-      refactoring.setReplacingAll(true);
-      refactoring.doRefactoring();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("6974242407276767367"));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("6974242407276777254"));
-        Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-      }
+      initTestNodes();
+      runWithinCommand(() -> {
+        IntroduceLocalVariableRefactoring refactoring = new IntroduceLocalVariableRefactoring();
+        refactoring.init(getAnnotatedNode("introduce1"), null);
+        refactoring.setName("b");
+        refactoring.setReplacingAll(true);
+        refactoring.doRefactoring();
+        refactoring.init(getAnnotatedNode("introduce2"), null);
+        refactoring.setName("b");
+        refactoring.setReplacingAll(true);
+        refactoring.doRefactoring();
+        refactoring.init(getAnnotatedNode("introduce3"), null);
+        refactoring.setName("b");
+        refactoring.setReplacingAll(true);
+        refactoring.doRefactoring();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("before"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("after"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+      });
     }
 
   }

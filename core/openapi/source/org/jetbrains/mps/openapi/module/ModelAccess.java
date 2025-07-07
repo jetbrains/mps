@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,14 @@
  */
 package org.jetbrains.mps.openapi.module;
 
-import org.jetbrains.annotations.ApiStatus.Experimental;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.repository.CommandListener;
 import org.jetbrains.mps.openapi.repository.ReadActionListener;
 import org.jetbrains.mps.openapi.repository.WriteActionListener;
+import org.jetbrains.mps.util.RunWithOutcome;
 
-import java.util.concurrent.Callable;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
-import java.util.concurrent.Semaphore;
 import java.util.function.Supplier;
 
 /**
@@ -72,14 +70,15 @@ public interface ModelAccess {
    */
   void runWriteAction(Runnable r);
 
+  default <T> T computeReadAction(Supplier<T> s) {
+    RunWithOutcome<T> r = new RunWithOutcome<>(s);
+    runReadAction(r);
+    return r.getResult();
+  }
   default <T> T computeWriteAction(Supplier<T> s) {
-    var aux = new Object() {
-      T result = null;
-    };
-    runWriteAction(() -> {
-      aux.result = s.get();
-    });
-    return aux.result;
+    RunWithOutcome<T> r = new RunWithOutcome<>(s);
+    runWriteAction(r);
+    return r.getResult();
   }
 
   /**
@@ -103,7 +102,6 @@ public interface ModelAccess {
   void executeCommandInEDT(@NotNull Runnable r);
 
   @NotNull
-  @Experimental
   default <T> Future<T> executeCommandInEDT(@NotNull Supplier<T> supplier) {
     CompletableFuture<T> future = new CompletableFuture<>();
     executeCommandInEDT(() -> {

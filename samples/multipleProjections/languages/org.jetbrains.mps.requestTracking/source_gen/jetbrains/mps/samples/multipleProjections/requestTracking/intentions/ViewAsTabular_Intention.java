@@ -17,21 +17,21 @@ import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 
 public final class ViewAsTabular_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ViewAsTabular_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:609c99e8-3a24-425d-8723-60cb603f5c76(jetbrains.mps.samples.multipleProjections.requestTracking.intentions)", "1007054899182276663"));
   }
+
   @Override
   public String getPresentation() {
     return "ViewAsTabular";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -41,6 +41,7 @@ public final class ViewAsTabular_Intention extends AbstractIntentionDescriptor i
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       String[] explicitEditorHintsForNode = editorContext.getEditorComponent().getUpdater().getExplicitEditorHintsForNode(SNodeOperations.getPointer(node));
@@ -50,6 +51,7 @@ public final class ViewAsTabular_Intention extends AbstractIntentionDescriptor i
         return "View As Structural";
       }
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       String[] explicitEditorHintsForNode = editorContext.getEditorComponent().getUpdater().getExplicitEditorHintsForNode(SNodeOperations.getPointer(node));
@@ -64,9 +66,18 @@ public final class ViewAsTabular_Intention extends AbstractIntentionDescriptor i
       }
       editorContext.getEditorComponent().getUpdater().update();
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ViewAsTabular_Intention.this;
     }
+
   }
 }

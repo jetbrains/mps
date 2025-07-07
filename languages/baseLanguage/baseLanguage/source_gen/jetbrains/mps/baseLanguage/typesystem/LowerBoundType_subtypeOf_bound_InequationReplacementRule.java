@@ -6,7 +6,7 @@ import jetbrains.mps.lang.typesystem.runtime.AbstractInequationReplacementRule_R
 import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicable2Status;
-import jetbrains.mps.lang.pattern.util.MatchingUtil;
+import jetbrains.mps.smodel.SNodeMatcher;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
@@ -20,7 +20,7 @@ public class LowerBoundType_subtypeOf_bound_InequationReplacementRule extends Ab
   public LowerBoundType_subtypeOf_bound_InequationReplacementRule() {
   }
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
-    return MatchingUtil.matchNodes(status.getPattern1().getMatchedNode("TYPE"), supertype);
+    return new SNodeMatcher().match(status.getPattern1().getMatchedNode("TYPE"), supertype);
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     // 'nuff said

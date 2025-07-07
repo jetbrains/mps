@@ -39,7 +39,7 @@ public class Template_NodeOrConcept extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = Collections.emptyList();
-    if (QueriesGenerated.ifMacro_Condition_81_0(new IfMacroContext(context, ifMacroRef_uearkf_b0a0c0g))) {
+    if (QueriesGenerated.ifMacro_Condition_81_0(new IfMacroContext(context, ifMacroRef))) {
       final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
       environment.resolve(new RefResolver(tnode2, myAssociationLinks[0], context, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525447835"), "thisConcept") {
         @Override
@@ -89,5 +89,5 @@ public class Template_NodeOrConcept extends TemplateDeclarationBase {
       return rv;
     }
   }
-  private static final SNodePointer ifMacroRef_uearkf_b0a0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8560627202335350385");
+  private static final SNodePointer ifMacroRef = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8560627202335350385");
 }

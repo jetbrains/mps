@@ -10,7 +10,6 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -34,20 +33,14 @@ public class RemoveCellModelCollectionDeprecatedProps extends MigrationScriptBas
     {
       SearchScope scope_rnfh72_a0e = CommandUtil.createScope(m);
       final SearchScope scope_rnfh72_a0e_0 = new EditableFilteringScope(scope_rnfh72_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_rnfh72_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.CellModel_Collection$Og, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SPropertyOperations.remove(it, PROPS.vertical$HAJ8);
-          SPropertyOperations.remove(it, PROPS.gridLayout$HAY9);
-        }
+      QueryExecutionContext context = () -> scope_rnfh72_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.CellModel_Collection$Og, false)).visitAll((it) -> {
+        SPropertyOperations.remove(it, PROPS.vertical$HAJ8);
+        SPropertyOperations.remove(it, PROPS.gridLayout$HAY9);
       });
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 11);
   }
 

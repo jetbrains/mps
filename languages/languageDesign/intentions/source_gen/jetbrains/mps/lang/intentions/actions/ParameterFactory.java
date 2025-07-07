@@ -16,7 +16,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ParameterFactory {
   public static class NodeFactory_4958616572666533619 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SPropertyOperations.assign(newNode, PROPS.name$MnvL, "parameter");
       ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.parameter$5xBj)).addElement(createForConceptMethodParameter_3abd0g_a0a1a0a());
       ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.parameter$5xBj)).addElement(_quotation_createNode_3abd0g_a0a2a0a());

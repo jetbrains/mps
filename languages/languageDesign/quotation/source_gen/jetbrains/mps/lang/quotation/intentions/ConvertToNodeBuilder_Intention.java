@@ -17,21 +17,21 @@ import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 
 public final class ConvertToNodeBuilder_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ConvertToNodeBuilder_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:f4b34c7d-c02f-43b9-b6e7-feff8966461c(jetbrains.mps.lang.quotation.intentions)", "8182547171709991153"));
   }
+
   @Override
   public String getPresentation() {
     return "ConvertToNodeBuilder";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -41,10 +41,12 @@ public final class ConvertToNodeBuilder_Intention extends AbstractIntentionDescr
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Convert to Light Quotation";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       QuotationConverter replacement = new QuotationConverter(node);
@@ -52,9 +54,18 @@ public final class ConvertToNodeBuilder_Intention extends AbstractIntentionDescr
         SNodeOperations.replaceWithAnother(node, replacement.convert());
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ConvertToNodeBuilder_Intention.this;
     }
+
   }
 }

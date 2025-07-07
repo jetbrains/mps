@@ -9,7 +9,6 @@ import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.nodeEditor.selection.SelectUpUtil;
-import java.util.function.BooleanSupplier;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -60,11 +59,7 @@ public class CommandHolder_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(final EditorContext editorContext, final SNode node) {
-        SelectUpUtil.executeWhile(editorContext, new BooleanSupplier() {
-          public boolean getAsBoolean() {
-            return !(Objects.equals(editorContext.getSelectionManager().getSelection().getSelectedNodes().get(0), SLinkOperations.getTarget(node, LINKS.command$RGil)));
-          }
-        });
+        SelectUpUtil.executeWhile(editorContext, () -> !(Objects.equals(editorContext.getSelectionManager().getSelection().getSelectedNodes().get(0), SLinkOperations.getTarget(node, LINKS.command$RGil))));
       }
       @Override
       public boolean canExecute(EditorContext editorContext) {

@@ -11,6 +11,8 @@
   <property name="teamcity.buildConfName" value="local" />
   <loadfile property="idea.platform.build.number" srcFile="${basedir}/lib/build.txt" />
   <property name="mps.build.counter" value="SNAPSHOT" />
+  <property file="${basedir}/build/dependencies/dependencies.properties" prefix="loaded.for.runtimeBuild" />
+  <property name="runtimeBuild" value="${loaded.for.runtimeBuild.runtimeBuild}" />
   <property name="mps_home" location="${basedir}" />
   <property name="artifacts.mpsBuild" location="${build.dir}/artifacts/mpsBuild" />
   <property name="artifacts.mpsConsolePlugin" location="${build.dir}/artifacts/mpsConsolePlugin" />
@@ -18,9 +20,9 @@
   <property name="artifacts.mpsStandalone" location="${build.dir}/artifacts/mpsStandalone" />
   <property name="artifacts.mpsDevKit" location="${build.dir}/artifacts/mpsDevKit" />
   <property name="artifacts.mpsPlugins" location="${build.dir}/artifacts/mpsPlugins" />
-  <property name="artifacts.mpsJavaPlatform" location="${build.dir}/artifacts/mpsJavaPlatform" />
   <property name="artifacts.mpsJava" location="${build.dir}/artifacts/mpsJava" />
   <property name="artifacts.mpsHttpSupportPlugin" location="${build.dir}/artifacts/mpsHttpSupportPlugin" />
+  <property name="artifacts.mpsNavigationBar" location="${build.dir}/artifacts/mpsNavigationBar" />
   <property name="artifacts.mpsMakePlugin" location="${build.dir}/artifacts/mpsMakePlugin" />
   <property name="artifacts.mpsBuildUI" location="${build.dir}/artifacts/mpsBuildUI" />
   <property name="artifacts.mpsVcs" location="${build.dir}/artifacts/mpsVcs" />
@@ -33,6 +35,10 @@
   <property name="artifacts.mpsTooltips" location="${build.dir}/artifacts/mpsTooltips" />
   <property name="artifacts.mpsTesting" location="${build.dir}/artifacts/mpsTesting" />
   <property name="artifacts.mpsContextActionsTool" location="${build.dir}/artifacts/mpsContextActionsTool" />
+  <property name="artifacts.mpsSpellCheckPlugin" location="${build.dir}/artifacts/mpsSpellCheckPlugin" />
+  <property name="artifacts.mpsKotlinPlugin" location="${build.dir}/artifacts/mpsKotlinPlugin" />
+  <property name="artifacts.mpsCore" location="${build.dir}/artifacts/mpsCore" />
+  <property name="artifacts.mpsAntToolsPlugin" location="${build.dir}/artifacts/mpsAntToolsPlugin" />
   <property file="${artifacts.mpsBuild}/build.properties" prefix="import.mpsBuild" />
   <property name="mpsBootstrapCore.version.major" value="${import.mpsBuild.mpsBootstrapCore.version.major}" />
   <property name="mpsBootstrapCore.version.minor" value="${import.mpsBuild.mpsBootstrapCore.version.minor}" />
@@ -61,26 +67,27 @@
     </copy>
     <mkdir dir="${build.layout}/lib" />
     <copy todir="${build.layout}/lib">
-      <fileset dir="${artifacts.mpsStandalone}/lib" />
+      <fileset dir="${artifacts.mpsStandalone}/lib">
+        <exclude name="jna/" />
+        <exclude name="pty4j/" />
+      </fileset>
     </copy>
     <mkdir dir="${build.tmp}/default/branding.jar" />
     <mkdir dir="${build.tmp}/default/branding.jar/idea" />
-    <echoxml file="${build.tmp}/default/branding.jar/idea/IdeaApplicationInfo.xml">
+    <echoxml file="${build.tmp}/default/branding.jar/idea/MPSApplicationInfo.xml">
       <component>
-        <version major="${mpsBootstrapCore.version.major}" minor="${mpsBootstrapCore.version.minor}${mpsBootstrapCore.version.bugfixNr}" eap="true" update-channel="MPS211EAP" />
+        <version major="${mpsBootstrapCore.version.major}" minor="${mpsBootstrapCore.version.minor}${mpsBootstrapCore.version.bugfixNr}" eap="true" update-channel="MPS252EAP" />
         <company name="JetBrains s.r.o." url="https://www.jetbrains.com/?fromIDE" copyrightStart="2009" />
         <build number="${build.number}" date="${date}" />
-        <logo url="/splash.png" textcolor="FFFFFF" progressColor="FFFFFF" progressY="397" progressHeight="3" />
-        <about url="/about.png" foreground="FFFFFF" copyrightForeground="FFFFFF" />
+        <logo url="/splash.png" textcolor="FFFFFF" progressColor="FFFFFF" progressY="396" progressHeight="4" />
         <icon ico="/MPS.ico" svg="/mps.svg" svg-small="/mps_16.svg" />
         <package code="code" />
         <names product="MPS" fullname="JetBrains MPS" script="mps" />
         
         <welcome-screen logo-url="/MPS_welcomeScreen.png" />
         
-        
         <plugins url="https://plugins.jetbrains.com/" />
-        <update-urls check="https://www.jetbrains.com/mps/update.xml" patches="https://www.jetbrains.com/mps/download/" />
+        <update-urls check="https://www.jetbrains.com/mps/update.xml" patches="https://www.jetbrains.com/mps/download/?utm_source=product&amp;utm_media=link&amp;utm_campaign=MPS&amp;utm_content=${mpsBootstrapCore.version.major}.${mpsBootstrapCore.version.minor}" />
         
         <help root="mps" webhelp-url="https://www.jetbrains.com/mps/webhelp/" />
         <documentation url="https://www.jetbrains.com/help/mps/${mpsBootstrapCore.version.major}.${mpsBootstrapCore.version.minor}/fast-track-to-mps.html" />
@@ -99,7 +106,6 @@
       <fileset file="${basedir}/workbench/mps-icons/source/MPS.ico" />
       <fileset file="${basedir}/workbench/mps-icons/source/MPS_welcomeScreen.png" />
       <fileset file="${basedir}/workbench/mps-icons/source/splash.png" />
-      <fileset file="${basedir}/workbench/mps-icons/source/about.png" />
       <fileset file="${basedir}/workbench/mps-icons/source/splash@2x.png" />
       <fileset file="${basedir}/workbench/mps-icons/source/about@2x.png" />
       <fileset file="${basedir}/workbench/mps-icons/source/MPS_welcomeScreen@2x.png" />
@@ -130,6 +136,13 @@
     </copy>
     <copy file="${artifacts.mpsStandalone}/LICENSE.txt" todir="${build.layout}" />
     <mkdir dir="${build.layout}/plugins" />
+    <copy todir="${build.layout}/plugins">
+      <fileset dir="${artifacts.mpsStandalone}/plugins" />
+    </copy>
+    <mkdir dir="${build.layout}/plugins/mps-core" />
+    <copy todir="${build.layout}/plugins/mps-core">
+      <fileset dir="${artifacts.mpsCore}/mps-core" />
+    </copy>
     <mkdir dir="${build.layout}/plugins/mps-build" />
     <copy todir="${build.layout}/plugins/mps-build">
       <fileset dir="${artifacts.mpsBuild}/mps-build" />
@@ -144,9 +157,6 @@
     <mkdir dir="${build.layout}/plugins/mps-java" />
     <copy todir="${build.layout}/plugins/mps-java">
       <fileset dir="${artifacts.mpsJava}/mps-java" />
-    </copy>
-    <copy todir="${build.layout}/plugins">
-      <fileset dir="${artifacts.mpsStandalone}/plugins" />
     </copy>
     <mkdir dir="${build.layout}/plugins/mps-devkit" />
     <copy todir="${build.layout}/plugins/mps-devkit">
@@ -165,17 +175,17 @@
     <copy todir="${build.layout}/plugins/mps-vcs">
       <fileset dir="${artifacts.mpsVcs}/mps-vcs" />
     </copy>
-    <mkdir dir="${build.layout}/plugins/git4idea" />
-    <copy todir="${build.layout}/plugins/git4idea">
-      <fileset dir="${artifacts.mpsVcs}/git4idea" />
+    <mkdir dir="${build.layout}/plugins/vcs-git" />
+    <copy todir="${build.layout}/plugins/vcs-git">
+      <fileset dir="${artifacts.mpsVcs}/vcs-git" />
     </copy>
     <mkdir dir="${build.layout}/plugins/mps-git4idea" />
     <copy todir="${build.layout}/plugins/mps-git4idea">
       <fileset dir="${artifacts.mpsVcs}/mps-git4idea" />
     </copy>
-    <mkdir dir="${build.layout}/plugins/svn4idea" />
-    <copy todir="${build.layout}/plugins/svn4idea">
-      <fileset dir="${artifacts.mpsVcs}/svn4idea" />
+    <mkdir dir="${build.layout}/plugins/vcs-svn" />
+    <copy todir="${build.layout}/plugins/vcs-svn">
+      <fileset dir="${artifacts.mpsVcs}/vcs-svn" />
     </copy>
     <mkdir dir="${build.layout}/plugins/mps-migration" />
     <copy todir="${build.layout}/plugins/mps-migration">
@@ -189,9 +199,9 @@
     <copy todir="${build.layout}/plugins/mps-tooltips">
       <fileset dir="${artifacts.mpsTooltips}/mps-tooltips" />
     </copy>
-    <mkdir dir="${build.layout}/plugins/mps-build" />
-    <copy todir="${build.layout}/plugins/mps-build">
-      <fileset dir="${artifacts.mpsBuildUI}/mps-build" />
+    <mkdir dir="${build.layout}/plugins/mps-build-ui" />
+    <copy todir="${build.layout}/plugins/mps-build-ui">
+      <fileset dir="${artifacts.mpsBuildUI}/mps-build-ui" />
     </copy>
     <copy todir="${build.layout}/plugins">
       <fileset dir="${artifacts.jetpad}" />
@@ -202,6 +212,10 @@
     <copy todir="${build.layout}/plugins">
       <fileset dir="${artifacts.mpsDebuggerPlugin}" />
     </copy>
+    <mkdir dir="${build.layout}/plugins/mps-junit5" />
+    <copy todir="${build.layout}/plugins/mps-junit5">
+      <fileset dir="${artifacts.mpsTesting}/mps-junit5" />
+    </copy>
     <mkdir dir="${build.layout}/plugins/mps-testing" />
     <copy todir="${build.layout}/plugins/mps-testing">
       <fileset dir="${artifacts.mpsTesting}/mps-testing" />
@@ -210,7 +224,21 @@
       <fileset dir="${artifacts.mpsHttpSupportPlugin}" />
     </copy>
     <copy todir="${build.layout}/plugins">
+      <fileset dir="${artifacts.mpsNavigationBar}" />
+    </copy>
+    <copy todir="${build.layout}/plugins">
       <fileset dir="${artifacts.mpsContextActionsTool}" />
+    </copy>
+    <copy todir="${build.layout}/plugins">
+      <fileset dir="${artifacts.mpsSpellCheckPlugin}" />
+    </copy>
+    <mkdir dir="${build.layout}/plugins/mps-kotlin" />
+    <copy todir="${build.layout}/plugins/mps-kotlin">
+      <fileset dir="${artifacts.mpsKotlinPlugin}/mps-kotlin" />
+    </copy>
+    <mkdir dir="${build.layout}/plugins/mps-ant-make" />
+    <copy todir="${build.layout}/plugins/mps-ant-make">
+      <fileset dir="${artifacts.mpsAntToolsPlugin}/mps-ant-make" />
     </copy>
     <zip destfile="${build.layout}/samples.zip">
       <zipfileset dir="${basedir}/samples" prefix="MPSSamples">
@@ -224,9 +252,6 @@
       <filterchain>
         <tokenfilter>
           <replaceregex pattern=".+" replace="${build.number}" flags="" />
-        </tokenfilter>
-        <tokenfilter>
-          <replaceregex pattern="MPS-" replace="" flags="" />
         </tokenfilter>
       </filterchain>
     </copy>
@@ -244,33 +269,29 @@
         </tokenfilter>
       </filterchain>
     </copy>
-    <echo file="${build.layout}/build.properties">mps.build.number=${build.number}${line.separator}mps.date=${date}${line.separator}mps.build.vcs.number=${build.vcs.number}${line.separator}mps.teamcity.buildConfName=${teamcity.buildConfName}${line.separator}mps.idea.platform.build.number=${idea.platform.build.number}${line.separator}mps.mps.build.counter=${mps.build.counter}${line.separator}mpsBootstrapCore.version.major=${mpsBootstrapCore.version.major}${line.separator}mpsBootstrapCore.version.minor=${mpsBootstrapCore.version.minor}${line.separator}mpsBootstrapCore.version.bugfixNr=${mpsBootstrapCore.version.bugfixNr}${line.separator}mpsBootstrapCore.version.eap=${mpsBootstrapCore.version.eap}${line.separator}mpsBootstrapCore.version=${mpsBootstrapCore.version}</echo>
+    <echo file="${build.layout}/build.properties">mps.build.number=${build.number}${line.separator}mps.date=${date}${line.separator}mps.build.vcs.number=${build.vcs.number}${line.separator}mps.teamcity.buildConfName=${teamcity.buildConfName}${line.separator}mps.idea.platform.build.number=${idea.platform.build.number}${line.separator}mps.mps.build.counter=${mps.build.counter}${line.separator}mps.runtimeBuild=${runtimeBuild}${line.separator}mpsBootstrapCore.version.major=${mpsBootstrapCore.version.major}${line.separator}mpsBootstrapCore.version.minor=${mpsBootstrapCore.version.minor}${line.separator}mpsBootstrapCore.version.bugfixNr=${mpsBootstrapCore.version.bugfixNr}${line.separator}mpsBootstrapCore.version.eap=${mpsBootstrapCore.version.eap}${line.separator}mpsBootstrapCore.version=${mpsBootstrapCore.version}</echo>
   </target>
   
   <target name="buildDependents">
     <ant antfile="build/mpsTrueBootstrap.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsBootstrapCore.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsCore.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsBuild.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsWorkbench.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsBuild.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsTesting.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsTroveCollections.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsPlugins.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsDevKit.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsMakePlugin.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsConsolePlugin.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsTroveCollections.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsStandalone.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsJavaCorePre.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsJavaCore.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsJavaPlatformPre.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsJavaPlatform.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsJavaPre.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsJava.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsPlugins.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsHttpSupportPlugin.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsNavigationBar.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsDebuggerPlugin.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsExecutionPlugin.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsBuildUI.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsVcsPlatformPre.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsVcsPlatform.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsVcsStandaloneJar.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsVcs.xml" inheritAll="false" useNativeBasedir="true" />
@@ -280,6 +301,9 @@
     <ant antfile="build/mpsDiagramEditor.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsTooltips.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsContextActionsTool.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsSpellCheckPlugin.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsKotlinPlugin.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsAntToolsPlugin.xml" inheritAll="false" useNativeBasedir="true" />
   </target>
   
   <target name="fetchDependencies" />

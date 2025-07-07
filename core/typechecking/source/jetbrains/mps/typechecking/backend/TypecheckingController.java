@@ -17,14 +17,18 @@ package jetbrains.mps.typechecking.backend;
 
 import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.lang.pattern.INodeMatchingPattern;
+import jetbrains.mps.typechecking.CacheState;
 import jetbrains.mps.typechecking.TypecheckingQueries;
 import jetbrains.mps.typechecking.TypecheckingSession.*;
+import jetbrains.mps.typechecking.backend.TypecheckingProvider.AuxDataContainer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.project.Project;
 
 import java.util.Collection;
+import java.util.Map;
 import java.util.function.Consumer;
 
 /**
@@ -36,7 +40,7 @@ import java.util.function.Consumer;
  *
  * @author Fedor Isakov
  */
-public abstract class TypecheckingController implements TypecheckingQueries {
+public abstract class TypecheckingController implements TypecheckingQueries, ParametersDiscoverable {
 
   private final TypecheckingBackend myTypecheckingBackend;
 
@@ -118,6 +122,15 @@ public abstract class TypecheckingController implements TypecheckingQueries {
     return getQueries(root, null, null).isCacheUpToDate(root);
   }
 
+  @Override
+  public CacheState getCacheState(SNode root) {
+    return getQueries(root, null, null).getCacheState(root);
+  }
+
+  public Map<String, Object> configure(Project project) {
+    return myTypecheckingBackend.configure(project);
+  }
+
   /**
    * Either initialize a new session or return a sharable session.
    */
@@ -130,14 +143,27 @@ public abstract class TypecheckingController implements TypecheckingQueries {
   @NotNull
   protected abstract TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept);
 
+  protected abstract TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept, Flags flags);
+
+  @Nullable
+  protected <C> C getData(Class<? extends C> dataClass) {
+    TypecheckingProvider<?> provider = myTypecheckingBackend.lookupAuxDataProvider(dataClass);
+    if (provider != null) {
+      AuxDataContainer dataContainer = getDataContainer(provider);
+      return dataContainer.getInstance(dataClass);
+    }
+    else return null;
+  }
+
+  protected abstract AuxDataContainer getDataContainer(TypecheckingProvider<?> provider);
+
   @NotNull
   protected  <Q extends TypecheckingQueries> TypecheckingProvider<Q> selectProvider(@NotNull Class<? extends Q> providerClass) {
     return myTypecheckingBackend.selectProvider(providerClass);
   }
 
   @NotNull
-  protected final TypecheckingProvider<? extends TypecheckingQueries> selectProvider(@NotNull SNode src, SNode trg, SConcept trgConcept) {
-    return myTypecheckingBackend.selectProvider(src, trg, trgConcept);
+  protected TypecheckingProvider<? extends TypecheckingQueries> selectProvider(@NotNull SNode src, SNode trg, SConcept trgConcept, Flags flags) {
+    return myTypecheckingBackend.selectProvider(src, trg, trgConcept, flags);
   }
-  
 }

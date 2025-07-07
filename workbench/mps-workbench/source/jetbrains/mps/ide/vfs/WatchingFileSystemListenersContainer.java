@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,12 +19,9 @@ import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.vfs.JarFileSystem;
 import jetbrains.mps.ide.platform.watching.FileSystemListenersContainer;
 import jetbrains.mps.ide.platform.watching.WatchedRoots;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.refresh.FileListener;
-import jetbrains.mps.vfs.refresh.FileListenerAdapter;
-import jetbrains.mps.vfs.refresh.FileSystemListener;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -39,7 +36,7 @@ import java.util.Map;
  * danilla 8/7/13
  */
 public class WatchingFileSystemListenersContainer extends FileSystemListenersContainer {
-  private static final Logger LOG = LogManager.getLogger(WatchingFileSystemListenersContainer.class);
+  private static final Logger LOG = Logger.getLogger(WatchingFileSystemListenersContainer.class);
 
   // paths are without in-jar suffix part
   private final Map<FileListener, String> myListenerToPathMap = new HashMap<>();
@@ -47,7 +44,7 @@ public class WatchingFileSystemListenersContainer extends FileSystemListenersCon
   @Override
   public void addListener(@NotNull FileListener listener, @NotNull IFile file) {
     if (myListenerToPathMap.containsKey(listener)) {
-      LOG.warn("Trying to add the same listener again " + listener);
+      LOG.warning("Trying to add the same listener again " + listener);
     }
     super.addListener(listener, file);
     @NotNull String path = lfsPath(file.getPath());

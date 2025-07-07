@@ -11,7 +11,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -28,11 +27,7 @@ public class check_BuildSource_JavaOptions_NonTypesystemRule extends AbstractNon
     if ("IntelliJ".equals(SPropertyOperations.getString(opts, PROPS.compiler$a4kP))) {
       SNode project = SNodeOperations.getNodeAncestor(opts, CONCEPTS.BuildProject$ae, false, false);
       if ((project != null)) {
-        boolean hasIdeaHomeVar = ListSequence.fromList(SLinkOperations.getChildren(project, LINKS.macros$r8_A)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildFolderMacro$mR) && SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.BuildFolderMacro$mR), PROPS.name$MnvL).equals("idea_home");
-          }
-        });
+        boolean hasIdeaHomeVar = ListSequence.fromList(SLinkOperations.getChildren(project, LINKS.macros$r8_A)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BuildFolderMacro$mR) && SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.BuildFolderMacro$mR), PROPS.name$MnvL).equals("idea_home"));
         if (!(hasIdeaHomeVar)) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();

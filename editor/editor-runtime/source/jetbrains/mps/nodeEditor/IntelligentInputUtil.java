@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,10 @@
  */
 package jetbrains.mps.nodeEditor;
 
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.editor.runtime.SideTransformInfoUtil;
 import jetbrains.mps.editor.runtime.commands.EditorComputable;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.cellActions.SideTransformSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellActions.SideTransformSubstituteInfo.Side;
 import jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteInfoFilterDecorator;
@@ -35,10 +36,10 @@ import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
-import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import org.apache.log4j.Logger;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.List;
@@ -166,7 +167,7 @@ public class IntelligentInputUtil {
             target = (EditorCell_Label) errorCell;
           }
 
-          if (target != null) {
+          if (target != null && !tail.isBlank()) {
             target.changeText(tail);
             target.end();
 
@@ -207,7 +208,7 @@ public class IntelligentInputUtil {
           && mySubstituteInfo.hasExactlyNActions(smallPattern + tail, false, 0)) {
         newNode = myCell.getSNode();
         cellForNewNode = myCell;
-        return applyRigthTransform(smallPattern, tail, cellForNewNode, newNode);
+        return applyRightTransform(smallPattern, tail, cellForNewNode, newNode);
       } else if (canCompleteSmallPatternImmediately(mySubstituteInfo, smallPattern, tail) ||
                  canCompleteSmallPatternImmediately(mySubstituteInfo, trimLeft(smallPattern), tail)) {
 
@@ -238,7 +239,7 @@ public class IntelligentInputUtil {
           return true;
         }
 
-        return applyRigthTransform(smallPattern, tail, cellForNewNode, newNode);
+        return applyRightTransform(smallPattern, tail, cellForNewNode, newNode);
       } else if (canCompleteTheWholeStringImmediately(mySubstituteInfo, smallPattern + tail) ||
                  canCompleteTheWholeStringImmediately(mySubstituteInfo, trimLeft(smallPattern) + tail)) {
 
@@ -272,7 +273,7 @@ public class IntelligentInputUtil {
       return false;
     }
 
-    private boolean applyRigthTransform(String smallPattern, final String tail,
+    private boolean applyRightTransform(String smallPattern, final String tail,
                                         final EditorCell cellForNewNode, SNode newNode) {
       EditorCell selectableLeaf = CellFinderUtil.findLastSelectableLeaf(cellForNewNode, true);
       CellAction rtAction = selectableLeaf != null ?
@@ -283,7 +284,7 @@ public class IntelligentInputUtil {
 
       if (rtAction == null || !hasSideActions) {
         final CellInfo cellInfo = cellForNewNode.getCellInfo();
-        putTextInErrorChild(cellInfo, smallPattern + tail, myEditorContext);
+        putTextInErrorChild(cellInfo, selectableLeaf, smallPattern + tail, myEditorContext);
         return false;
       }
 
@@ -317,7 +318,7 @@ public class IntelligentInputUtil {
         if (yetNewNode != null) {
           EditorCell yetNewNodeCell = findNodeCell(myEditorContext, yetNewNode);
           if (yetNewNodeCell == null) {
-            LOG.warn(
+            LOG.warning(
                 "Unable to find editor cell for the node returned as a result of right-transform: " + yetNewNode.toString() + "(" + yetNewNode.getConcept() +
                 "). Seems like the node is invisible in editor. Node was created by RT: " + rtItem.toString());
             return true;
@@ -344,8 +345,23 @@ public class IntelligentInputUtil {
       if (concept == null) {
         return false;
       }
-      boolean property = (Boolean) BHReflection.invoke(MetaAdapterByDeclaration.getConcept(concept),
-                                                       SMethodTrimmedId.create("substituteInAmbigousPosition", null, "1653mnvAgq$"));
+      // substituteInAmbigousPosition() is a behavior method declared in BaseConcept
+      // No idea why it's handwritten code
+      boolean property = false;
+      // FIXME need a mechanism like myEditorContext.getComponentHost().findComponent(CR.class), just need to figure out how to pass CH into the editor.
+      //       EditorConfigurationBuilder, perhaps?
+      //       Then, need to decide whether BehaviorRegistry is CoreComponent or not. Perhaps, centralized mediator like ConceptRegistry is not that bad, after all.
+      //noinspection removal
+      for (SMethod<?> dm : ConceptRegistry.getInstance()
+                                          .getBehaviorRegistry()
+                                          .getBHDescriptor(SNodeUtil.concept_BaseConcept)
+                                          .getDeclaredMethods()) {
+        if ("substituteInAmbigousPosition".equals(dm.getName()) && !dm.isPrivate() && !dm.isAbstract()) {
+          // we assume only 1 method with this name
+          property = (Boolean) dm.invoke(MetaAdapterByDeclaration.getConcept(concept));
+          break;
+        }
+      }
 
       if (property) {
         SNode outputConcept = substituteInfo.getMatchingActions(text, true).get(0).getOutputConcept();
@@ -404,7 +420,7 @@ public class IntelligentInputUtil {
       if (ltAction == null || !hasSideActions) {
         CellInfo cellInfo = cellForNewNode.getCellInfo();
         if (!sourceCellRemains) {
-          putTextInErrorChild(cellInfo, head + smallPattern, myEditorContext);
+          putTextInErrorChild(cellInfo, firstSelectableLeaf, head + smallPattern, myEditorContext);
           return false;
         } else {
           return false;
@@ -478,7 +494,7 @@ public class IntelligentInputUtil {
       return prepareSTCell(context, node, textToSet);
     }
 
-    private void putTextInErrorChild(CellInfo cellInfo, String textToSet, EditorContext editorContext) {
+    private void putTextInErrorChild(CellInfo cellInfo, EditorCell newCell, String textToSet, EditorContext editorContext) {
       editorContext.flushEvents();
       EditorComponent component = (EditorComponent) editorContext.getEditorComponent();
       EditorCell cellToSelect = cellInfo.findCell(component);
@@ -487,7 +503,13 @@ public class IntelligentInputUtil {
         if (label != null && label != cellToSelect && label.isEditable() && !(label instanceof EditorCell_Constant)) {
           label.changeText(textToSet);
           label.end();
+          return;
         }
+      }
+      if (newCell != cellToSelect && newCell instanceof EditorCell_Label && !(newCell instanceof EditorCell_Constant)) {
+        EditorCell_Label label = (EditorCell_Label) newCell;
+        label.changeText(textToSet);
+        label.end();
       }
     }
 

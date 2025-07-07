@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.ide.icons.IdeIcons;
 
-@GeneratedClass(node = "r:a35795b4-c996-4cf6-bdbd-9ddbda25cde5(jetbrains.mps.debugger.api.ui.tree)/4474271214083122145", model = "r:a35795b4-c996-4cf6-bdbd-9ddbda25cde5(jetbrains.mps.debugger.api.ui.tree)")
+@GeneratedClass(nodeId = "4474271214083122145", model = "r:a35795b4-c996-4cf6-bdbd-9ddbda25cde5(jetbrains.mps.debugger.api.ui.tree)")
 public class NodeTreeNode extends AbstractWatchableNode {
   public NodeTreeNode(@NotNull SNodeReference node) {
     super(node);

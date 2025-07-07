@@ -11,14 +11,22 @@
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
+      <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
+        <property id="7862711839422615217" name="text" index="t5JxN" />
+      </concept>
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
         <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
         <child id="1071489727084" name="propertyDeclaration" index="1TKVEl" />
       </concept>
+      <concept id="1169125989551" name="jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration" flags="ig" index="PlHQZ" />
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
         <reference id="1169127628841" name="intfc" index="PrY4T" />
       </concept>
+      <concept id="418049251856799813" name="jetbrains.mps.lang.structure.structure.ExperimentalAPINodeAttribute" flags="ig" index="1AhYRh">
+        <property id="418049251856799817" name="comment" index="1AhYRt" />
+      </concept>
+      <concept id="5583843313507852240" name="jetbrains.mps.lang.structure.structure.MarkerInterfaceAttribute" flags="ng" index="3MrDgS" />
       <concept id="1071489090640" name="jetbrains.mps.lang.structure.structure.ConceptDeclaration" flags="ig" index="1TIwiD">
         <property id="1096454100552" name="rootable" index="19KtqR" />
         <reference id="1071489389519" name="extends" index="1TJDcQ" />
@@ -37,7 +45,10 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
+        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
+      </concept>
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -87,6 +98,38 @@
     </node>
     <node concept="PrWs8" id="3f9_B0PQrl9" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="5Z6N5M4XbRr">
+    <property role="EcuMT" value="6901428176731553243" />
+    <property role="TrG5h" value="AspectDescriptor" />
+    <node concept="3MrDgS" id="5Z6N5M4XbT2" role="lGtFl" />
+    <node concept="t5JxF" id="5Z6N5M4XbT4" role="lGtFl">
+      <property role="t5JxN" value="Denotes a root contributed into descriptor model by a language aspect to facilitate its generation as part of module descriptor processing" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="IR$DxXuVkC">
+    <property role="EcuMT" value="844304638793200936" />
+    <property role="TrG5h" value="ModuleActivator" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="IR$DxXuVkF" role="1TKVEi">
+      <property role="IQ2ns" value="844304638793200939" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="extensions" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpee:fzclF80" resolve="StatementList" />
+    </node>
+    <node concept="1AhYRh" id="IR$DxXuVkD" role="lGtFl" />
+  </node>
+  <node concept="PlHQZ" id="3e7$st3rkg8">
+    <property role="EcuMT" value="3713096702806017032" />
+    <property role="TrG5h" value="ActivatorUnit" />
+    <node concept="3MrDgS" id="3e7$st3rkgc" role="lGtFl" />
+    <node concept="1AhYRh" id="3e7$st3rkga" role="lGtFl">
+      <property role="1AhYRt" value="much like AspectDescriptor, to trigger generation of ModuleActivator code" />
+    </node>
+    <node concept="t5JxF" id="3e7$st3rnII" role="lGtFl">
+      <property role="t5JxN" value="Piece of work/feature of a ModuleActivator" />
     </node>
   </node>
 </model>

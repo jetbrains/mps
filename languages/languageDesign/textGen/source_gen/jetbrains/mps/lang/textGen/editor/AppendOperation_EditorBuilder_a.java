@@ -62,7 +62,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "append");
     editorCell.setCellId("Constant_yuehr3_a0");
     Style style = new StyleImpl();
-    new TextGenOperationStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new TextGenOperationStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;

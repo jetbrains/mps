@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import java.util.Map;
 import java.io.IOException;
 
-@GeneratedClass(node = "r:4ea5a78b-cb8a-4831-b227-f7860a22491d(jetbrains.mps.make.resources)/2958721966247231768", model = "r:4ea5a78b-cb8a-4831-b227-f7860a22491d(jetbrains.mps.make.resources)")
+@GeneratedClass(nodeId = "2958721966247231768", model = "r:4ea5a78b-cb8a-4831-b227-f7860a22491d(jetbrains.mps.make.resources)")
 public interface IPropertiesIO {
   Object getKey();
   Map<String, String> readProperties() throws IOException;

@@ -21,7 +21,6 @@ import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -34,8 +33,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class PropertyDescriptor__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a0447fbb31L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.PropertyDescriptor");
 
-  public static final SMethod<SNode> create_id7ay_HjIOVVe = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("create").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7ay_HjIOVVe").build(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
-  public static final SMethod<Iterable<SNode>> find_id2gzehMfi1$l = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("find").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2gzehMfi1$l").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> create_id7ay_HjIOVVe = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("create").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8260330507834998478L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
+  public static final SMethod<Iterable<SNode>> find_id2gzehMfi1$l = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("find").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2603987804376013077L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(create_id7ay_HjIOVVe, find_id2gzehMfi1$l);
 
@@ -66,11 +65,7 @@ public final class PropertyDescriptor__BehaviorDescriptor extends BaseBHDescript
     return res;
   }
   /*package*/ static Iterable<SNode> find_id2gzehMfi1$l(@NotNull final SNode __thisNode__, SNode cls) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(cls, LINKS.member$L_2d), CONCEPTS.PropertyInstance$7w)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.decl$RIl) == __thisNode__;
-      }
-    });
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(cls, LINKS.member$L_2d), CONCEPTS.PropertyInstance$7w)).where((it) -> SLinkOperations.getTarget(it, LINKS.decl$RIl) == __thisNode__);
   }
 
   /*package*/ PropertyDescriptor__BehaviorDescriptor() {

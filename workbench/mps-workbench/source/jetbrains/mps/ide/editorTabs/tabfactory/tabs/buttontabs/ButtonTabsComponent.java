@@ -39,8 +39,9 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Stream;
 
-public class ButtonTabsComponent extends BaseTabsComponent {
+public class ButtonTabsComponent extends BaseTabsComponent<ButtonEditorTab> {
   private final List<ButtonEditorTab> myRealTabs = new ArrayList<>();
   private ActionToolbar myToolbar = null;
 
@@ -75,7 +76,7 @@ public class ButtonTabsComponent extends BaseTabsComponent {
   @Override
   public RelationDescriptor getCurrentTabAspect() {
     SNodeReference currentAspect = getEditedNode();
-    assert currentAspect != null;
+    if (currentAspect == null) return null;
 
     for (ButtonEditorTab bet : myRealTabs) {
       if (bet.isEditingTabFor(getEditedNode())) {
@@ -89,24 +90,29 @@ public class ButtonTabsComponent extends BaseTabsComponent {
   @Override
   public void updateTabs() {
     // Emulate old behaviour - always update
-    final SNodeReference reference = getEditedNode() != null ? getEditedNode() : myBaseNode;
+    final SNodeReference reference = getEditedNode() != null ? getEditedNode() : myBaseNodeRef;
     updateTabs(Collections.singletonList(reference));
   }
 
   @Override
+  @NotNull
+  protected Stream<ButtonEditorTab> getRealTabs() {
+    return myRealTabs.stream();
+  }
+
+  @Override
   public void updateTabs(Collection<SNodeReference> changedRoots) {
-    final SNodeReference reference = getEditedNode() != null ? getEditedNode() : myBaseNode;
-    if (isDisposed() || !changedRoots.contains(reference)) {
+    if (!needUpdateTabs(changedRoots)) {
       return;
     }
 
     if (getEditedNode() != null && getEditedNode().resolve(getProject().getRepository()) == null) {
-      editNode(myBaseNode);
+      editNode(myBaseNodeRef);
     }
 
     myRealTabs.clear();
 
-    final NodeChangeCallback callback = this::editNode;
+    final NodeChangeCallback callback = newNode -> executeNavigation(() -> editNode(newNode));
     TabEditorLayout newContent = updateDocumentsAndNodes();
     for (RelationDescriptor tabDescriptor : myPossibleTabs) {
       if (newContent.covers(tabDescriptor)) {
@@ -126,6 +132,7 @@ public class ButtonTabsComponent extends BaseTabsComponent {
       removeContent(myToolbar.getComponent());
     }
     ActionToolbar actionToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.EDITOR_TOOLBAR, group, true);
+    actionToolbar.setTargetComponent(null);
     actionToolbar.setLayoutPolicy(ActionToolbar.WRAP_LAYOUT_POLICY);
     myToolbar = actionToolbar;
     setContent(myToolbar.getComponent());
@@ -139,7 +146,7 @@ public class ButtonTabsComponent extends BaseTabsComponent {
           break;
         }
       }
-      editNode(isTabExists ? getEditedNode() : myBaseNode);
+      editNode(isTabExists ? getEditedNode() : myBaseNodeRef);
     }
   }
 

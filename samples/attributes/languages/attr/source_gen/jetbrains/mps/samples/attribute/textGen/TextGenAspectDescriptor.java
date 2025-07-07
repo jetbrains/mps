@@ -11,8 +11,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.text.rt.TextGenModelOutline;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.text.TextUnit;
-import jetbrains.mps.text.impl.BufferLayoutBuilder;
-import jetbrains.mps.text.impl.RegularTextUnit;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -40,7 +38,7 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
       if (root.getConcept().equals(CONCEPTS.HandlerAsRoot$Q)) {
         String fname = getFileName_HandlerAsRoot(root);
         String ext = getFileExtension_HandlerAsRoot(root);
-        outline.registerTextUnit(createTextUnit0((ext == null ? fname : (fname + '.' + ext)), root));
+        outline.registerTextUnit(createTextUnit0(outline, (ext == null ? fname : (fname + '.' + ext)), root));
         continue;
       }
     }
@@ -51,17 +49,14 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
   private static String getFileExtension_HandlerAsRoot(SNode node) {
     return null;
   }
-  private static TextUnit createTextUnit0(String filename, SNode node) {
-    BufferLayoutBuilder lb = new BufferLayoutBuilder();
-    lb.add("HEADER");
-    lb.add("IMPORTS");
-    lb.add("SEPARATOR");
-    lb.add("BODY");
-    lb.activate("BODY");
-    RegularTextUnit rv = new RegularTextUnit(node, filename, null);
-    rv.setBufferLayout(lb.create());
-    rv.addContextObject("ctx", Auxiliary.contextObjectInstance_ctx(node));
-    return rv;
+  private static TextUnit createTextUnit0(TextGenModelOutline outline, String filename, SNode node) {
+    TextGenModelOutline.UnitBuilder rv = outline.unitBuilder(filename, node);
+    rv.layout("HEADER", false);
+    rv.layout("IMPORTS", false);
+    rv.layout("SEPARATOR", false);
+    rv.layout("BODY", true);
+    rv.with("ctx", Auxiliary.contextObjectInstance_ctx(node));
+    return rv.build();
   }
 
   private static final class CONCEPTS {

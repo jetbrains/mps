@@ -19,8 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -31,8 +29,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class HTMLElement__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5bc4aa08e154b399L, "jetbrains.mps.baseLanguage.javadoc.structure.HTMLElement");
 
-  public static final SMethod<NodeCaretPair> smartDelete_id7PYAiugbmRz = new SMethodBuilder<NodeCaretPair>(new SJavaCompoundTypeImpl(NodeCaretPair.class)).name("smartDelete").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7PYAiugbmRz").build(SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
-  public static final SMethod<String> buildCommentText_id7Qt73fl2F3N = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("buildCommentText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7Qt73fl2F3N").build();
+  public static final SMethod<NodeCaretPair> smartDelete_id7PYAiugbmRz = new SMethodBuilder<NodeCaretPair>(new SJavaCompoundTypeImpl(NodeCaretPair.class)).name("smartDelete").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9042833497008205283L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2(SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
+  public static final SMethod<String> buildCommentText_id7Qt73fl2F3N = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("buildCommentText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9051421835027722483L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(smartDelete_id7PYAiugbmRz, buildCommentText_id7Qt73fl2F3N);
 
@@ -100,15 +98,7 @@ public final class HTMLElement__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static String buildCommentText_id7Qt73fl2F3N(@NotNull SNode __thisNode__) {
     if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.line$Psfe)).isNotEmpty()) {
-      return "<" + SPropertyOperations.getString(__thisNode__, PROPS.name$Ps0d) + ">" + ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.line$Psfe)).select(new ISelector<SNode, String>() {
-        public String select(SNode it) {
-          return (String) CommentLine__BehaviorDescriptor.buildCommentText_id7Qt73fl2z8k.invoke(it);
-        }
-      }).foldLeft("", new ILeftCombinator<String, String>() {
-        public String combine(String s, String it) {
-          return s + "\n" + it;
-        }
-      }) + "</" + SPropertyOperations.getString(__thisNode__, PROPS.name$Ps0d) + ">";
+      return "<" + SPropertyOperations.getString(__thisNode__, PROPS.name$Ps0d) + ">" + ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.line$Psfe)).select((it) -> (String) CommentLine__BehaviorDescriptor.buildCommentText_id7Qt73fl2z8k.invoke(it)).foldLeft("", (String s, String it) -> s + "\n" + it) + "</" + SPropertyOperations.getString(__thisNode__, PROPS.name$Ps0d) + ">";
 
     } else {
       return "<" + SPropertyOperations.getString(__thisNode__, PROPS.name$Ps0d) + "/>";

@@ -3,8 +3,8 @@
   <persistence version="9" />
   <languages>
     <use id="d7a92d38-f7db-40d0-8431-763b0c3c9f20" name="jetbrains.mps.lang.intentions" version="1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
     <import index="2omo" ref="r:de0d3c0c-d049-41cf-bbf9-a920ba513cd3(jetbrains.mps.lang.textGen.structure)" />
@@ -63,7 +63,7 @@
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
       </concept>
       <concept id="1081773326031" name="jetbrains.mps.baseLanguage.structure.BinaryOperation" flags="nn" index="3uHJSO">
@@ -111,7 +111,7 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -314,6 +314,41 @@
               <node concept="2Sf5sV" id="i0XBftR" role="2Oq$k0" />
               <node concept="3TrcHB" id="i0XBg7G" role="2OqNvi">
                 <ref role="3TsBF5" to="2omo:i0XA4av" resolve="withSeparator" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="2S6QgY" id="6O6RkI0xA3J">
+    <property role="TrG5h" value="ToggleGenerateFunctionTextOrBinary" />
+    <ref role="2ZfgGC" to="2omo:hX1bSug" resolve="GenerateTextDeclaration" />
+    <node concept="2S6ZIM" id="6O6RkI0xA3K" role="2ZfVej">
+      <node concept="3clFbS" id="6O6RkI0xA3L" role="2VODD2">
+        <node concept="3clFbF" id="6O6RkI0xArg" role="3cqZAp">
+          <node concept="Xl_RD" id="6O6RkI0xArf" role="3clFbG">
+            <property role="Xl_RC" value="Toggle text/binary generation" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2Sbjvc" id="6O6RkI0xA3M" role="2ZfgGD">
+      <node concept="3clFbS" id="6O6RkI0xA3N" role="2VODD2">
+        <node concept="3clFbF" id="6O6RkI0xB83" role="3cqZAp">
+          <node concept="37vLTI" id="6O6RkI0xEoI" role="3clFbG">
+            <node concept="3fqX7Q" id="6O6RkI0xEKc" role="37vLTx">
+              <node concept="2OqwBi" id="6O6RkI0xEKe" role="3fr31v">
+                <node concept="2Sf5sV" id="6O6RkI0xEKf" role="2Oq$k0" />
+                <node concept="3TrcHB" id="6O6RkI0xEKg" role="2OqNvi">
+                  <ref role="3TsBF5" to="2omo:mnd_T6VhrG" resolve="binaryOutput" />
+                </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="6O6RkI0xBkl" role="37vLTJ">
+              <node concept="2Sf5sV" id="6O6RkI0xB82" role="2Oq$k0" />
+              <node concept="3TrcHB" id="6O6RkI0xDhQ" role="2OqNvi">
+                <ref role="3TsBF5" to="2omo:mnd_T6VhrG" resolve="binaryOutput" />
               </node>
             </node>
           </node>

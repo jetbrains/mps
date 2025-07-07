@@ -59,7 +59,7 @@ public class Switch_switch_InputNode extends TemplateSwitchBase implements Templ
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
       TemplateContext context1 = context;
-      context1 = context1.withVariable("var:xxx", QueriesGenerated.varMacro_Value_3_0(new TemplateVarContext(context, new SNodePointer("r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)", "2409421742521903817"))));
+      context1 = context1.withVariable("var:xxx", QueriesGenerated.varMacro_Value_3_0(new TemplateVarContext(context1, new SNodePointer("r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)", "2409421742521903817"))));
       Collection<SNode> tlist2 = null;
       TemplateContext context2 = context1;
       context2 = context2.withVariable("text", ((String) context2.getVariable("var:xxx")));

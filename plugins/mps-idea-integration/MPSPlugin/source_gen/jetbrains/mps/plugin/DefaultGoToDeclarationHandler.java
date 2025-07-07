@@ -9,12 +9,12 @@ import org.jetbrains.mps.openapi.model.SNode;
 import javax.swing.SwingUtilities;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import java.rmi.RemoteException;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import java.rmi.RemoteException;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import com.intellij.openapi.application.ApplicationManager;
 import java.io.File;
@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-@GeneratedClass(node = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)/5516192790075456626", model = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)")
+@GeneratedClass(nodeId = "5516192790075456626", model = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)")
 /*package*/ class DefaultGoToDeclarationHandler extends GoToDeclarationHandlerRegistry.GoToDeclarationHandler {
   public DefaultGoToDeclarationHandler() {
   }
@@ -50,57 +50,39 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     assert isClassifier || isConstructor || isMethod || isField;
 
     if (isClassifier) {
-      final String fqName = ((String) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.Classifier$Ix), CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
-      return open(new _FunctionTypes._void_P1_E1<IProjectHandler, RemoteException>() {
-        public void invoke(IProjectHandler h) throws RemoteException {
-          h.openClass(fqName);
-        }
-      }, p);
+      final String fqName = ((String) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.Classifier$Ix), CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL)));
+      return open((IProjectHandler h) -> h.openClass(fqName), p);
     } else {
       SNode classifier = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.Classifier$Ix);
       assert classifier != null;
 
-      final String classifierName = ((String) BHReflection.invoke0(classifier, CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+      final String classifierName = ((String) BHReflection.invoke0(classifier, CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL)));
       if (isMethod) {
         SNode method = SNodeOperations.cast(node, CONCEPTS.BaseMethodDeclaration$kD);
         final String methodName = SPropertyOperations.getString(method, PROPS.name$MnvL);
         final int paramCount = ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count();
-        return open(new _FunctionTypes._void_P1_E1<IProjectHandler, RemoteException>() {
-          public void invoke(IProjectHandler h) throws RemoteException {
-            h.openMethod(classifierName, methodName, paramCount);
-          }
-        }, p);
+        return open((IProjectHandler h) -> h.openMethod(classifierName, methodName, paramCount), p);
       } else if (isConstructor) {
         final int paramCount = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.ConstructorDeclaration$yG), LINKS.parameter$5xBj)).count();
-        return open(new _FunctionTypes._void_P1_E1<IProjectHandler, RemoteException>() {
-          public void invoke(IProjectHandler h) throws RemoteException {
-            h.openConstructor(classifierName, paramCount);
-          }
-        }, p);
+        return open((IProjectHandler h) -> h.openConstructor(classifierName, paramCount), p);
       } else {
         final String fieldName = node.getName();
-        return open(new _FunctionTypes._void_P1_E1<IProjectHandler, RemoteException>() {
-          public void invoke(IProjectHandler h) throws RemoteException {
-            h.openField(classifierName, fieldName);
-          }
-        }, p);
+        return open((IProjectHandler h) -> h.openField(classifierName, fieldName), p);
       }
     }
   }
 
   private boolean open(final _FunctionTypes._void_P1_E1<? super IProjectHandler, ? extends RemoteException> todo, final MPSProject p) {
     final Wrappers._boolean result = new Wrappers._boolean(false);
-    ApplicationManager.getApplication().executeOnPooledThread(new Runnable() {
-      public void run() {
-        IProjectHandler handler = MPSPlugin.getInstance().getProjectHandler(check_tz3sru_a0a0a0a0a1a5(p.getProjectFile()));
-        if (handler != null) {
-          // unsuppress 2 errors here
-          try {
-            todo.invoke(handler);
-            result.value = true;
-          } catch (RemoteException e) {
-            e.printStackTrace();
-          }
+    ApplicationManager.getApplication().executeOnPooledThread(() -> {
+      IProjectHandler handler = MPSPlugin.getInstance().getProjectHandler(check_tz3sru_a0a0a0a0a1a5(p.getProjectFile()));
+      if (handler != null) {
+        // unsuppress 2 errors here
+        try {
+          todo.invoke(handler);
+          result.value = true;
+        } catch (RemoteException e) {
+          e.printStackTrace();
         }
       }
     });

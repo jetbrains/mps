@@ -7,8 +7,6 @@ import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.traceable.behavior.TraceableConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -25,12 +23,10 @@ public class MultiLineComment_TextGen extends TextGenDescriptorBase {
     tgs.append("/*");
     tgs.newLine();
     ctx.getBuffer().area().increaseIndent();
-    ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.lines$lpTr)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode line) {
-        tgs.indent();
-        Comments.commentLine(line, ctx);
-        tgs.newLine();
-      }
+    ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.lines$lpTr)).visitAll((line) -> {
+      tgs.indent();
+      Comments.commentLine(line, ctx);
+      tgs.newLine();
     });
     ctx.getBuffer().area().decreaseIndent();
     tgs.newLine();

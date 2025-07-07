@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,19 @@
  */
 package jetbrains.mps.nodeEditor.cellMenu;
 
-import com.intellij.codeInsight.CodeInsightSettings;
 import com.intellij.util.ui.UIUtil;
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.nodeEditor.EditorComponent;
-import jetbrains.mps.nodeEditor.EditorComponentSettingsImpl;
 import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
+import jetbrains.mps.nodeEditor.cells.FontRegistry;
 import jetbrains.mps.nodeEditor.cells.TextLine;
 import jetbrains.mps.nodeEditor.keyboard.TextChangeEvent;
 import jetbrains.mps.openapi.editor.EditorComponentSettings;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.cells.CellActionType;
+import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import org.jetbrains.annotations.NotNull;
 
@@ -37,14 +41,14 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Window;
 import java.awt.event.KeyEvent;
+import java.util.Objects;
 
 /**
  * Author: Sergey Dmitriev.
  * Time: Oct 20, 2003 1:45:39 PM
  */
 public class NodeSubstitutePatternEditor {
-  private final EditorComponentSettings mySettings;
-  @NotNull
+  private final EditorContext myContext;
   private final EditorCell_Label myCell;
   private TextLineOperations myTextLineOperations;
   private boolean myEditorActivated;
@@ -54,30 +58,27 @@ public class NodeSubstitutePatternEditor {
   private int mySavedCaretPosition = 0;
 
   /**
-   * Use {@link NodeSubstitutePatternEditor#NodeSubstitutePatternEditor(EditorComponentSettings)}
+   * Use {@link NodeSubstitutePatternEditor#NodeSubstitutePatternEditor(EditorContext)}
    */
   @Deprecated
   public NodeSubstitutePatternEditor() {
-    this(EditorComponentSettingsImpl.DEFAULT_SETTINGS);
-  }
-
-  public NodeSubstitutePatternEditor(EditorComponentSettings settings) {
-    mySettings = settings;
+    myContext = null;
     myCell = null;
   }
 
-  public NodeSubstitutePatternEditor(EditorComponentSettings settings, @NotNull EditorCell_Label cell) {
-    mySettings = settings;
-    // TODO: remove this after finishing MPS-30958
-    boolean autoPopup = CodeInsightSettings.getInstance().AUTO_POPUP_COMPLETION_LOOKUP;
-    if (autoPopup) {
-      myCell = cell;
-      TextLine textLine = myCell.getRenderedTextLine();
-      myCachedText = textLine.getText();
-      myCachedCaretPosition = textLine.getCaretPosition();
-    } else {
-      myCell = null;
-    }
+  public NodeSubstitutePatternEditor(@NotNull EditorContext context) {
+    // XXX in fact, in all but one scenario we've got EditorCell instance when constructing NSPE,
+    //     and can derive EC from EditorCell.getContext()
+    myContext = context;
+    myCell = null;
+  }
+
+  public NodeSubstitutePatternEditor(@NotNull EditorCell_Label cell) {
+    myContext = null;
+    myCell = cell;
+    TextLine textLine = myCell.getRenderedTextLine();
+    myCachedText = textLine.getText();
+    myCachedCaretPosition = textLine.getCaretPosition();
   }
 
   public void setText(String text) {
@@ -184,7 +185,7 @@ public class NodeSubstitutePatternEditor {
     if (!myEditorActivated) {
       myEditorActivated = true;
       if (myCell == null) {
-        EditorWindow editorWindow = new EditorWindow(owner, mySettings);
+        EditorWindow editorWindow = new EditorWindow(owner, myContext);
         editorWindow.setFocusableWindowState(false);
         editorWindow.setLocation(location);
         editorWindow.setMinimalSize(size);
@@ -196,7 +197,7 @@ public class NodeSubstitutePatternEditor {
         }
         myTextLineOperations = editorWindow;
       } else {
-        myTextLineOperations = new TextLineDelegate(location);
+        myTextLineOperations = new TextLineDelegate();
       }
     }
   }
@@ -215,6 +216,10 @@ public class NodeSubstitutePatternEditor {
     return myTextLineOperations.getHeight();
   }
 
+  public void commit() {
+    myTextLineOperations.commit();
+  }
+
   public void done() {
     if (myEditorActivated) {
       myTextLineOperations.dispose();
@@ -223,12 +228,12 @@ public class NodeSubstitutePatternEditor {
     }
   }
 
-  public Font getFont() {
-    return myTextLineOperations.getFont();
+  public void selectionChanged() {
+    myTextLineOperations.update();
   }
 
-  public void commit() {
-    myTextLineOperations.commit();
+  Font getFont() {
+    return myTextLineOperations.getFont();
   }
 
   private interface TextLineOperations {
@@ -242,45 +247,68 @@ public class NodeSubstitutePatternEditor {
     boolean processKeyTyped(KeyEvent keyEvent);
     void processTextChanged(TextChangeEvent event);
     void dispose();
+    void commit();
     void setLocation(Point point);
     int getHeight();
     Point getLocation();
     Font getFont();
-    void commit();
+    void execute(CellActionType type);
+    void update();
   }
 
   private class TextLineDelegate implements TextLineOperations {
-    private final int myOriginalCaret;
-    private final String myOriginalText;
     private final EditorComponent editorComponent;
-    private boolean committed;
+    private final String myOriginalText;
+    private final int myOriginalCaretPosition;
+    private String myText;
+    private int myCaretPosition;
+    private boolean myCommitted;
 
-    TextLineDelegate(Point location) {
-      myOriginalText = myCell.getText();
-      myOriginalCaret = myCell.getCaretPosition();
+    TextLineDelegate() {
+      myOriginalText = myText = myCell.getText();
+      myOriginalCaretPosition = myCaretPosition = myCell.getCaretPosition();
       editorComponent = (EditorComponent) myCell.getEditorComponent();
-      setLocation(location);
     }
 
     @Override
-    public void commit() {
-      committed = true;
+    public void update() {
+      myText = myCell.getText();
+      myCaretPosition = myCell.getCaretPosition();
+    }
+
+    @Override
+    public void execute(CellActionType type) {
+      String originalText = myText;
+      int originalCaret = myCaretPosition;
+      myCell.executeTextAction(type, true);
+      if (originalCaret != myCaretPosition || !Objects.equals(myText, originalText)) {
+        return;
+      }
+      if (type == CellActionType.BACKSPACE) {
+        myText = myText.substring(0, myCaretPosition - 1) + myText.substring(myCaretPosition);
+        myCaretPosition--;
+      } else {
+        myText = myText.substring(0, myCaretPosition) + myText.substring(myCaretPosition + 1);
+      }
     }
 
     @Override
     public Font getFont() {
-      return myCell.getFont();
+      Font cellFont = myCell.getFont();
+      return FontRegistry.getInstance().getFont(cellFont.getFamily(), 0, cellFont.getSize());
     }
 
     @Override
     public void setText(String text) {
+      myText = text;
       myCell.setText(text);
       editorComponent.relayout();
     }
 
     @Override
     public void setCaretPosition(int caretPosition) {
-      myCell.setCaretPosition(caretPosition);
+      myCaretPosition = Math.min(caretPosition, myText.length());
+      myCell.setCaretPositionIfPossible(myCaretPosition);
     }
 
     @Override
@@ -294,19 +322,24 @@ public class NodeSubstitutePatternEditor {
 
     @Override
     public int getCaretPosition() {
-      return myCell.getCaretPosition();
+      return myCaretPosition;
     }
 
     @Override
     public String getText() {
-      return myCell.getText();
+      return myText;
+    }
+
+    @Override
+    public void commit() {
+      myCommitted = true;
     }
 
     @Override
     public void dispose() {
-      if (!committed) {
+      if (!myCommitted) {
         myCell.setText(myOriginalText);
-        myCell.setCaretPosition(myOriginalCaret);
+        myCell.setCaretPosition(myOriginalCaretPosition);
       }
     }
 
@@ -331,12 +364,9 @@ public class NodeSubstitutePatternEditor {
         return false;
       }
 
-      String oldText = myCell.getText();
-      int caretPosition = myCell.getCaretPosition();
       if (keyEvent.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
-        if (caretPosition > 0) {
-          setText(oldText.substring(0, caretPosition - 1) + oldText.substring(caretPosition));
-          setCaretPosition(caretPosition - 1);
+        if (myCaretPosition > 0) {
+          execute(CellActionType.BACKSPACE);
           return true;
         } else {
           return false;
@@ -344,8 +374,8 @@ public class NodeSubstitutePatternEditor {
       }
 
       if (keyEvent.getKeyCode() == KeyEvent.VK_DELETE) {
-        if (caretPosition < oldText.length()) {
-          setText(oldText.substring(0, caretPosition) + oldText.substring(caretPosition + 1));
+        if (myCaretPosition < myText.length()) {
+          execute(CellActionType.DELETE);
           return true;
         } else {
           return false;
@@ -353,8 +383,8 @@ public class NodeSubstitutePatternEditor {
       }
 
       if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
-        if (caretPosition > 0) {
-          setCaretPosition(caretPosition - 1);
+        if (myCaretPosition > 0) {
+          setCaretPosition(myCaretPosition - 1);
           return true;
         } else {
           return false;
@@ -362,8 +392,8 @@ public class NodeSubstitutePatternEditor {
       }
 
       if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
-        if (caretPosition < oldText.length()) {
-          setCaretPosition(caretPosition + 1);
+        if (myCaretPosition < myText.length()) {
+          setCaretPosition(myCaretPosition + 1);
           return true;
         } else {
           return false;
@@ -374,41 +404,64 @@ public class NodeSubstitutePatternEditor {
 
     @Override
     public boolean processKeyTyped(KeyEvent keyEvent) {
-      String oldText = myCell.getText();
-      int caretPosition = myCell.getCaretPosition();
-
-      char keyChar = keyEvent.getKeyChar();
       if (UIUtil.isReallyTypedEvent(keyEvent)) {
-        setText(oldText.substring(0, caretPosition) + keyChar/* + myText.substring(caretPosition)*/);
-        setCaretPosition(caretPosition + 1);
-        return true;
+        myText = myText.substring(0, myCaretPosition) + keyEvent.getKeyChar() + myText.substring(myCaretPosition);
+        myCaretPosition++;
       }
       return false;
     }
 
     @Override
     public void processTextChanged(TextChangeEvent textChangeEvent) {
-      String oldText = myCell.getText();
-      int keptTextEndIndex = Math.max(myCell.getCaretPosition() - textChangeEvent.getOffset(), 0);
-      setText(oldText.substring(0, keptTextEndIndex) + textChangeEvent.getText());
+      int keptTextEndIndex = Math.max(myCaretPosition - textChangeEvent.getOffset(), 0);
+      setText(myText.substring(0, keptTextEndIndex) + textChangeEvent.getText());
       setCaretPosition(keptTextEndIndex + textChangeEvent.getText().length());
     }
   }
 
   private static class EditorWindow extends JWindow implements TextLineOperations {
     private final TextLine myTextLine;
-    private final EditorComponentSettings mySettings;
     private Dimension myMinimalSize;
 
-    EditorWindow(Window owner, EditorComponentSettings settings) {
+    EditorWindow(Window owner, EditorContext context) {
       super(owner);
-      myTextLine = new TextLine("", settings);
-      mySettings = settings;
-      add(new EditorPanel());
+      final EditorPanel p = new EditorPanel();
+      if (context != null) {
+        myTextLine = new TextLine("", context.getEditorComponent().getEditorComponentSettings());
+        // XXX another TextLineOperations uses font of a cell, removing styles like bold/italic.
+        //     Which approach is right? Can't we use editor's default font everywhere?
+        setFont(context.getEditorComponent().getEditorComponentSettings().getDefaultFont());
+        final Style cpStyle = context.getEditorComponent().getStyleRegistry().getStyle("COMPLETION_POPUP");
+        // XXX I wonder if we can use Style to pass Font information, not to use EditorComponentSettings
+        p.setBackground(cpStyle.get(StyleAttributes.TEXT_BACKGROUND_COLOR));
+        p.setForeground(cpStyle.get(StyleAttributes.TEXT_COLOR));
+      } else {
+        // just a transition line for mbeddr using NodeSubstitutePatternEditor no-arg cons
+        myTextLine = new TextLine("", new StyleImpl(), false);
+        p.setBackground(MPSColors.YELLOW);
+        p.setForeground(MPSColors.GRAY);
+      }
+      add(p);
     }
 
     @Override
     public void commit() {
+    }
+
+    @Override
+    public void update() {
+    }
+
+    @Override
+    public void execute(CellActionType type) {
+      String oldText = myTextLine.getText();
+      int caretPosition = myTextLine.getCaretPosition();
+      if (type == CellActionType.BACKSPACE) {
+        setText(oldText.substring(0, caretPosition - 1) + oldText.substring(caretPosition));
+        setCaretPosition(caretPosition - 1);
+      } else {
+        setText(oldText.substring(0, caretPosition) + oldText.substring(caretPosition + 1));
+      }
     }
 
     @Override
@@ -433,7 +486,8 @@ public class NodeSubstitutePatternEditor {
 
     @Override
     public Font getFont() {
-      return mySettings.getDefaultFont();
+      // no true need to override, just to highlight the fact TextLineOperations.getFont() relies on JWindow.getFont()
+      return super.getFont();
     }
 
     public void setMinimalSize(Dimension size) {
@@ -545,13 +599,13 @@ public class NodeSubstitutePatternEditor {
       protected void paintComponent(Graphics g) {
         // COLORS: move colors to properties
         Rectangle bounds = g.getClipBounds();
-        g.setColor(StyleRegistry.getInstance().getSimpleColor(MPSColors.YELLOW));
+        g.setColor(getBackground());
         g.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
-        g.setColor(StyleRegistry.getInstance().getSimpleColor(MPSColors.GRAY));
+        g.setColor(getForeground());
         g.drawRect(bounds.x, bounds.y, bounds.width - 1, bounds.height - 1);
         EditorComponent.turnOnAliasingIfPossible((Graphics2D) g);
 
-        TextLine textLine = myTextLine;
+        TextLine textLine = myTextLine; // oh, no! EditorPanel is just a "painting component" for TextLine?
         textLine.setSelected(false);
         textLine.setShowCaret(true);
         textLine.paint(g, 0, 0);

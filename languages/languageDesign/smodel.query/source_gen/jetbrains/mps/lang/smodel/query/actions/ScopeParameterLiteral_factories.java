@@ -12,7 +12,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ScopeParameterLiteral_factories {
   public static class NodeFactory_2362304834939062502 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SNodeFactoryOperations.setNewChild(newNode, LINKS.scope$y52y, CONCEPTS.GenericNewExpression$Fh);
     }
   }

@@ -4,9 +4,10 @@ package jetbrains.mps.editorTest;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.junit.Assert;
@@ -14,11 +15,11 @@ import jetbrains.mps.nodeEditor.reflectiveEditor.ReflectiveHintsManager;
 
 @MPSLaunch
 public class ShowReflectiveEditor_ThenRegularEditorsForSubtreeForParent_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(ShowReflectiveEditor_ThenRegularEditorsForSubtreeForParent_Test.class, "${mps_home}", "r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ShowReflectiveEditor_ThenRegularEditorsForSubtreeForParent_Test.class).projectPath(null).modelRef("r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)").reopenProject(false).build());
 
   public ShowReflectiveEditor_ThenRegularEditorsForSubtreeForParent_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -35,26 +36,16 @@ public class ShowReflectiveEditor_ThenRegularEditorsForSubtreeForParent_Test ext
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("8710742295992773244", "");
-      ReflectiveEditorActionsUtil.runReadInEDTAndWait(getEditorComponent(), new Runnable() {
-        public void run() {
-          getEditorComponent().selectNode(getNodeById("8710742295992773247"));
-        }
-      });
+      ReflectiveEditorActionsUtil.runReadInEDTAndWait(getEditorComponent(), () -> getEditorComponent().selectNode(getAnnotatedNode("node")));
       invokeAction("jetbrains.mps.ide.editor.actions.ShowReflectiveEditor_Action");
 
-      ReflectiveEditorActionsUtil.runReadInEDTAndWait(getEditorComponent(), new Runnable() {
-        public void run() {
-          getEditorComponent().selectNode(getNodeById("8710742295992773244"));
-        }
-      });
+      ReflectiveEditorActionsUtil.runReadInEDTAndWait(getEditorComponent(), () -> getEditorComponent().selectNode(getAnnotatedNode("parent")));
       invokeAction("jetbrains.mps.ide.editor.actions.ShowRegularEditor_Action");
 
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          Assert.assertFalse(ReflectiveHintsManager.shouldShowReflectiveEditor(getEditorComponent().getBigValidCellForNode(getNodeById("8710742295992773244")).getCellContext()));
-          Assert.assertFalse(ReflectiveHintsManager.shouldShowReflectiveEditor(getEditorComponent().getBigValidCellForNode(getNodeById("8710742295992773247")).getCellContext()));
-          Assert.assertFalse(ReflectiveHintsManager.shouldShowReflectiveEditor(getEditorComponent().getBigValidCellForNode(getNodeById("8710742295992773249")).getCellContext()));
-        }
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> {
+        Assert.assertFalse(ReflectiveHintsManager.shouldShowReflectiveEditor(getEditorComponent().getBigValidCellForNode(getAnnotatedNode("parent")).getCellContext()));
+        Assert.assertFalse(ReflectiveHintsManager.shouldShowReflectiveEditor(getEditorComponent().getBigValidCellForNode(getAnnotatedNode("node")).getCellContext()));
+        Assert.assertFalse(ReflectiveHintsManager.shouldShowReflectiveEditor(getEditorComponent().getBigValidCellForNode(getAnnotatedNode("child")).getCellContext()));
       });
     }
   }

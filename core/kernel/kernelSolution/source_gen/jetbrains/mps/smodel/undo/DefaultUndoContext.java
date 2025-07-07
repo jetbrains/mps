@@ -13,7 +13,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 /**
  * Regular implementation for {@code UndoContext} that treats roots of affected nodes as file-associated.
  */
-@GeneratedClass(node = "r:79655025-bd36-445f-8b79-189312ab627e(jetbrains.mps.smodel.undo)/63618339873681828", model = "r:79655025-bd36-445f-8b79-189312ab627e(jetbrains.mps.smodel.undo)")
+@GeneratedClass(nodeId = "63618339873681828", model = "r:79655025-bd36-445f-8b79-189312ab627e(jetbrains.mps.smodel.undo)")
 public class DefaultUndoContext implements UndoContext {
   private final SRepository myRepository;
 

@@ -15,7 +15,7 @@ import jetbrains.mps.debug.api.evaluation.IEvaluationProvider;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.textgen.trace.DefaultTraceInfoProvider;
 
-@GeneratedClass(node = "r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)/4474271214082912940", model = "r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)")
+@GeneratedClass(nodeId = "4474271214082912940", model = "r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)")
 public abstract class AbstractDebugSession<State extends AbstractUiState> {
   protected ProcessHandler myProcessHandler;
   private final List<SessionChangeListener> myListeners = new ArrayList<SessionChangeListener>();

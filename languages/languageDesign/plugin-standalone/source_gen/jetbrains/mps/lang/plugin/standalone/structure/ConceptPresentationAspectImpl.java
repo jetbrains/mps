@@ -31,7 +31,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_ApplicationPluginDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a0b0n);
+          cpb.icon(IconContainer.RESOURCE_0);
           props_ApplicationPluginDeclaration = cpb.create();
         }
         return props_ApplicationPluginDeclaration;
@@ -82,7 +82,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_ProjectPluginDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a7b0n);
+          cpb.icon(IconContainer.RESOURCE_1);
           props_ProjectPluginDeclaration = cpb.create();
         }
         return props_ProjectPluginDeclaration;

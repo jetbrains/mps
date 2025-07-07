@@ -16,7 +16,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.util.PathManager;
@@ -37,9 +36,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class NodeOperationsContainer__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, "jetbrains.mps.lang.test.structure.NodeOperationsContainer");
 
-  public static final SMethod<Void> detachAllErrorOperations_id4QaU5oI0Q4j = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("detachAllErrorOperations").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4QaU5oI0Q4j").build();
-  public static final SMethod<Void> createNodeAndAttachReference_idnMEi6H8iBO = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("createNodeAndAttachReference").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("nMEi6H8iBO").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(NodeReportItem.class, ""));
-  public static final SMethod<Boolean> suppress_id3612de_vrfV = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("suppress").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3612de_vrfV").build(SMethodBuilder.createJavaParameter(NodeReportItem.class, ""));
+  public static final SMethod<Void> detachAllErrorOperations_id4QaU5oI0Q4j = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("detachAllErrorOperations").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5587533744543326483L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
+  public static final SMethod<Void> createNodeAndAttachReference_idnMEi6H8iBO = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("createNodeAndAttachReference").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(428590876657265140L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(NodeReportItem.class, ""));
+  public static final SMethod<Boolean> suppress_id3612de_vrfV = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("suppress").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3567142084961743867L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter(NodeReportItem.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(detachAllErrorOperations_id4QaU5oI0Q4j, createNodeAndAttachReference_idnMEi6H8iBO, suppress_id3612de_vrfV);
 
@@ -47,11 +46,7 @@ public final class NodeOperationsContainer__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static void detachAllErrorOperations_id4QaU5oI0Q4j(@NotNull SNode __thisNode__) {
-    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.nodeOperations$Mgf9)).removeWhere(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.AbstractNodeRuleCheckOperation$eB);
-      }
-    });
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.nodeOperations$Mgf9)).removeWhere((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.AbstractNodeRuleCheckOperation$eB));
   }
   /*package*/ static void createNodeAndAttachReference_idnMEi6H8iBO(@NotNull SNode __thisNode__, @Nullable SNode reference, NodeReportItem reporter) {
     NodeRuleFactory factory = new NodeRuleFactory(reporter);
@@ -76,11 +71,7 @@ public final class NodeOperationsContainer__BehaviorDescriptor extends BaseBHDes
     if (project != null) {
       host.value = project.getPlatform();
     }
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.nodeOperations$Mgf9)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return (boolean) NodeCheckOperation__BehaviorDescriptor.expectsErrorsInside_id77$odk0vlBj.invoke(it, reportItem, repository, host.value);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.nodeOperations$Mgf9)).any((it) -> (boolean) NodeCheckOperation__BehaviorDescriptor.expectsErrorsInside_id77$odk0vlBj.invoke(it, reportItem, repository, host.value));
   }
 
   /*package*/ NodeOperationsContainer__BehaviorDescriptor() {

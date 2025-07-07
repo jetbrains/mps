@@ -4,11 +4,10 @@ package jetbrains.mps.smodel.test.concepts;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.junit.Assert;
@@ -22,13 +21,11 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class SConceptHierarchy_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(SConceptHierarchy_Test.class, "${mps_home}", "r:783567bb-6a97-47d3-ab6c-d2a82efd2145(jetbrains.mps.smodel.test.concepts@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SConceptHierarchy_Test.class).projectPath(null).modelRef("r:783567bb-6a97-47d3-ab6c-d2a82efd2145(jetbrains.mps.smodel.test.concepts@tests)").reopenProject(null).build());
 
   public SConceptHierarchy_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -50,38 +47,53 @@ public class SConceptHierarchy_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
+    }
+
     public void test_conceptHierarchy() throws Exception {
-      Assert.assertTrue(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(CONCEPTS.INamedConcept$Kd), CONCEPTS.BaseConcept$gP));
-      Assert.assertTrue(CONCEPTS.INamedConcept$Kd.isSubConceptOf(CONCEPTS.BaseConcept$gP));
-      Assert.assertFalse(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(CONCEPTS.BaseConcept$gP), CONCEPTS.INamedConcept$Kd));
-      Assert.assertTrue(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(CONCEPTS.INamedConcept$Kd), SNodeOperations.asSConcept(CONCEPTS.INamedConcept$Kd)));
-      Assert.assertTrue(CONCEPTS.INamedConcept$Kd instanceof SInterfaceConcept);
-      //  there's suspicious code in SConceptAdapter.getSuperInterfaces, make sure it didn't get out elsewhere
-      Assert.assertTrue(CONCEPTS.ImplementationWithStubPart$Lx.getSuperInterfaces().iterator().next().equals(CONCEPTS.ImplementationPart$LI));
+      initTestNodes();
+      runWithinCommand(() -> {
+        Assert.assertTrue(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(CONCEPTS.INamedConcept$Kd), CONCEPTS.BaseConcept$gP));
+        Assert.assertTrue(CONCEPTS.INamedConcept$Kd.isSubConceptOf(CONCEPTS.BaseConcept$gP));
+        Assert.assertFalse(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(CONCEPTS.BaseConcept$gP), CONCEPTS.INamedConcept$Kd));
+        Assert.assertTrue(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(CONCEPTS.INamedConcept$Kd), SNodeOperations.asSConcept(CONCEPTS.INamedConcept$Kd)));
+        Assert.assertTrue(CONCEPTS.INamedConcept$Kd instanceof SInterfaceConcept);
+        //  there's suspicious code in SConceptAdapter.getSuperInterfaces, make sure it didn't get out elsewhere
+        Assert.assertTrue(CONCEPTS.ImplementationWithStubPart$Lx.getSuperInterfaces().iterator().next().equals(CONCEPTS.ImplementationPart$LI));
+      });
     }
     public void test_conceptSuperConcept() throws Exception {
-      // state the fact we do not report BaseConcept as its own super-concept
-      // it's questionable, as it makes BC the only concept without superconcept.
-      SConcept baseConcept = CONCEPTS.BaseConcept$gP;
-      Assert.assertNull(baseConcept.getSuperConcept());
-      Assert.assertFalse(baseConcept.getSuperInterfaces().iterator().hasNext());
-      Assert.assertTrue(baseConcept.equals(CONCEPTS.Attribute$g1.getSuperConcept()));
-      Assert.assertTrue(CONCEPTS.Attribute$g1.equals(CONCEPTS.NodeAttribute$x2.getSuperConcept()));
+      initTestNodes();
+      runWithinCommand(() -> {
+        // state the fact we do not report BaseConcept as its own super-concept
+        // it's questionable, as it makes BC the only concept without superconcept.
+        SConcept baseConcept = CONCEPTS.BaseConcept$gP;
+        Assert.assertNull(baseConcept.getSuperConcept());
+        Assert.assertFalse(baseConcept.getSuperInterfaces().iterator().hasNext());
+        Assert.assertTrue(baseConcept.equals(CONCEPTS.Attribute$g1.getSuperConcept()));
+        Assert.assertTrue(CONCEPTS.Attribute$g1.equals(CONCEPTS.NodeAttribute$x2.getSuperConcept()));
+      });
     }
     public void test_defaultIfaceConcept() throws Exception {
-      SAbstractConcept defaultIfaceConcept = SNodeOperations.getConcept(SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(CONCEPTS.INamedConcept$Kd)));
-      Assert.assertTrue(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(defaultIfaceConcept), CONCEPTS.INamedConcept$Kd));
-      Assert.assertTrue(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(defaultIfaceConcept), CONCEPTS.BaseConcept$gP));
-      // next two checks are questionable, as it puzzles users (see mbeddr slack Sep 17, 2016)
-      Assert.assertFalse(defaultIfaceConcept.equals(CONCEPTS.INamedConcept$Kd));
-      Assert.assertFalse(SConceptOperations.isExactly(SNodeOperations.asSConcept(defaultIfaceConcept), CONCEPTS.INamedConcept$Kd));
+      initTestNodes();
+      runWithinCommand(() -> {
+        SAbstractConcept defaultIfaceConcept = SNodeOperations.getConcept(SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(CONCEPTS.INamedConcept$Kd)));
+        Assert.assertTrue(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(defaultIfaceConcept), CONCEPTS.INamedConcept$Kd));
+        Assert.assertTrue(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(defaultIfaceConcept), CONCEPTS.BaseConcept$gP));
+        // next two checks are questionable, as it puzzles users (see mbeddr slack Sep 17, 2016)
+        Assert.assertFalse(defaultIfaceConcept.equals(CONCEPTS.INamedConcept$Kd));
+        Assert.assertFalse(SConceptOperations.isExactly(SNodeOperations.asSConcept(defaultIfaceConcept), CONCEPTS.INamedConcept$Kd));
 
-      Assert.assertFalse(CONCEPTS.INamedConcept$Kd.isSubConceptOf(defaultIfaceConcept));
+        // was assert false; see MPS-33398
+        Assert.assertTrue(CONCEPTS.INamedConcept$Kd.isSubConceptOf(defaultIfaceConcept));
 
-      Assert.assertTrue(defaultIfaceConcept instanceof SConcept);
-      Assert.assertTrue(((SConcept) defaultIfaceConcept).getSuperConcept().equals(CONCEPTS.BaseConcept$gP));
-      Assert.assertTrue(IterableUtil.asCollection(((SConcept) defaultIfaceConcept).getSuperInterfaces()).size() == 1);
-      Assert.assertTrue(((SConcept) defaultIfaceConcept).getSuperInterfaces().iterator().next().equals(CONCEPTS.INamedConcept$Kd));
+        Assert.assertTrue(defaultIfaceConcept instanceof SConcept);
+        Assert.assertTrue(((SConcept) defaultIfaceConcept).getSuperConcept().equals(CONCEPTS.BaseConcept$gP));
+        Assert.assertTrue(IterableUtil.asCollection(((SConcept) defaultIfaceConcept).getSuperInterfaces()).size() == 1);
+        Assert.assertTrue(((SConcept) defaultIfaceConcept).getSuperInterfaces().iterator().next().equals(CONCEPTS.INamedConcept$Kd));
+      });
     }
 
   }

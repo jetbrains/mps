@@ -21,7 +21,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopeUtils;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Objects;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -38,18 +37,18 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class InstanceMethodDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
 
-  public static final SMethod<Boolean> isDataFlowChecked_idhRptrfk = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDataFlowChecked").modifiers(8, AccessPrivileges.PACKAGE).concept(CONCEPT).id("hRptrfk").build();
-  public static final SMethod<Boolean> canBeAnnotated_idhWp4PwP = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeAnnotated").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hWp4PwP").build();
-  public static final SMethod<IconResource> getSideIcon_id6TtJ6IUjtJX = new SMethodBuilder<IconResource>(new SJavaCompoundTypeImpl(IconResource.class)).name("getSideIcon").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6TtJ6IUjtJX").build();
-  public static final SMethod<Boolean> isAbstract_idhWjv7RO = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAbstract").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hWjv7RO").build();
-  public static final SMethod<Boolean> isAnAbstractMethod_id28P2dHxCoRl = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAnAbstractMethod").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("28P2dHxCoRl").build();
-  public static final SMethod<Boolean> hasBody_id10BRnhak8m8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasBody").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("10BRnhak8m8").build();
-  public static final SMethod<Boolean> hasVisibility_id1X7GQqyPHmE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasVisibility").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1X7GQqyPHmE").build();
-  public static final SMethod<List<SNode>> getChildrenToDisplayIntention_id3vsDNFqJVhw = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getChildrenToDisplayIntention").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3vsDNFqJVhw").build();
-  public static final SMethod<SNode> getImplementedInterfaceMethod_id7cTWCexFh1W = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getImplementedInterfaceMethod").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7cTWCexFh1W").build();
-  public static final SMethod<SNode> getNearestOverriddenMethod_id4DuBHEkPTzU = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getNearestOverriddenMethod").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4DuBHEkPTzU").build();
-  public static final SMethod<Void> populateMember_id6r77ob2UW9O = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateMember").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6r77ob2UW9O").build(SMethodBuilder.createJavaParameter(MembersPopulatingContext.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<String> getFqName_idhEwIO9y = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFqName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIO9y").build();
+  public static final SMethod<Boolean> isDataFlowChecked_idhRptrfk = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDataFlowChecked").modifiers(8, AccessPrivileges.PACKAGE).concept(CONCEPT).baseMethodId(1227714048980L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> canBeAnnotated_idhWp4PwP = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeAnnotated").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1233076312117L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<IconResource> getSideIcon_id6TtJ6IUjtJX = new SMethodBuilder<IconResource>(new SJavaCompoundTypeImpl(IconResource.class)).name("getSideIcon").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7952719687879351293L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  public static final SMethod<Boolean> isAbstract_idhWjv7RO = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAbstract").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1232982539764L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> isAnAbstractMethod_id28P2dHxCoRl = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAnAbstractMethod").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2464886109384052181L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> hasBody_id10BRnhak8m8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasBody").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1164142520231298440L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> hasVisibility_id1X7GQqyPHmE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasVisibility").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2253967391922247082L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<List<SNode>> getChildrenToDisplayIntention_id3vsDNFqJVhw = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getChildrenToDisplayIntention").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4025276038182319200L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> getImplementedInterfaceMethod_id7cTWCexFh1W = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getImplementedInterfaceMethod").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8302934035201331324L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> getNearestOverriddenMethod_id4DuBHEkPTzU = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getNearestOverriddenMethod").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5358895268254685434L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Void> populateMember_id6r77ob2UW9O = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateMember").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7405920559687254644L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(MembersPopulatingContext.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<String> getFqName_idhEwIO9y = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFqName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877404258L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isDataFlowChecked_idhRptrfk, canBeAnnotated_idhWp4PwP, getSideIcon_id6TtJ6IUjtJX, isAbstract_idhWjv7RO, isAnAbstractMethod_id28P2dHxCoRl, hasBody_id10BRnhak8m8, hasVisibility_id1X7GQqyPHmE, getChildrenToDisplayIntention_id3vsDNFqJVhw, getImplementedInterfaceMethod_id7cTWCexFh1W, getNearestOverriddenMethod_id4DuBHEkPTzU, populateMember_id6r77ob2UW9O, getFqName_idhEwIO9y);
 
@@ -110,11 +109,7 @@ public final class InstanceMethodDeclaration__BehaviorDescriptor extends BaseBHD
       return null;
     }
     Iterable<SNode> implementedInterfaces = SNodeOperations.ofConcept(ClassifierScopeUtils.getExtendedClassifiers(containingClassifier), CONCEPTS.Interface$db);
-    for (SNode method : Sequence.fromIterable(implementedInterfaces).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return (Iterable<SNode>) Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(it);
-      }
-    })) {
+    for (SNode method : Sequence.fromIterable(implementedInterfaces).translate((it) -> (Iterable<SNode>) Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(it))) {
       if (Objects.equals(SPropertyOperations.getString(method, PROPS.name$MnvL), SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count() == ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).count() && (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(method, __thisNode__)) {
         return method;
       }
@@ -131,11 +126,7 @@ public final class InstanceMethodDeclaration__BehaviorDescriptor extends BaseBHD
       parent = ((superclass == null) ? SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object") : SLinkOperations.getTarget(superclass, LINKS.classifier$cxMr));
     }
     Set<SNode> extendedClassifiers = ClassifierScopeUtils.getExtendedClassifiers(parent);
-    Iterable<SNode> instanceMethods = SetSequence.fromSet(extendedClassifiers).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return (Iterable<SNode>) Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(it);
-      }
-    });
+    Iterable<SNode> instanceMethods = SetSequence.fromSet(extendedClassifiers).translate((it) -> (Iterable<SNode>) Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(it));
     for (SNode methodCandidate : instanceMethods) {
       if (methodCandidate != __thisNode__ && Objects.equals(SPropertyOperations.getString(methodCandidate, PROPS.name$MnvL), SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL)) && ListSequence.fromList(SLinkOperations.getChildren(methodCandidate, LINKS.parameter$5xBj)).count() == ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).count()) {
         if ((boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(methodCandidate, __thisNode__)) {
@@ -146,7 +137,7 @@ public final class InstanceMethodDeclaration__BehaviorDescriptor extends BaseBHD
     return null;
   }
   /*package*/ static void populateMember_id6r77ob2UW9O(@NotNull SNode __thisNode__, MembersPopulatingContext context, SNode classifier) {
-    if (!((context.isElementVisible(__thisNode__)))) {
+    if (!(context.isElementVisible(__thisNode__))) {
       return;
     }
     MethodSignature signature = new MethodSignature(__thisNode__, context.getTypeByTypeVariableMapping());

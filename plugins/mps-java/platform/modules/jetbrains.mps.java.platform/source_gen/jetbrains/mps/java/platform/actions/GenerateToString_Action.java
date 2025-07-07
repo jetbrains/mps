@@ -10,8 +10,7 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -25,7 +24,6 @@ import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -35,7 +33,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-@GeneratedClass(node = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)/7111916581652592773", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
+@GeneratedClass(nodeId = "7111916581652592773", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
 public class GenerateToString_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -54,11 +52,7 @@ public class GenerateToString_Action extends BaseAction {
     if (classConcept == null) {
       return false;
     }
-    return !(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("methods", CONCEPTS.Classifier$Ix, "4_LVZ3pBKCn")))).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode method) {
-        return "toString".equals(SPropertyOperations.getString(method, PROPS.name$MnvL)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).isEmpty() && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), CONCEPTS.StringType$uX);
-      }
-    }));
+    return !(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).any((method) -> "toString".equals(SPropertyOperations.getString(method, PROPS.name$MnvL)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).isEmpty() && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), CONCEPTS.StringType$uX)));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -97,15 +91,9 @@ public class GenerateToString_Action extends BaseAction {
     SRepository repo = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository();
     final Wrappers._T<SNode> classConcept = new Wrappers._T<SNode>();
     final Wrappers._T<SNodeReference[]> fields = new Wrappers._T<SNodeReference[]>();
-    repo.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        classConcept.value = GenerateToString_Action.this.getClassConcept(_params);
-        fields.value = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept.value, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("fields", CONCEPTS.ClassConcept$bK, "4_LVZ3pC27C")))).select(new ISelector<SNode, SNodeReference>() {
-          public SNodeReference select(SNode it) {
-            return SNodeOperations.getPointer(it);
-          }
-        }).toGenericArray(SNodeReference.class);
-      }
+    repo.getModelAccess().runReadAction(() -> {
+      classConcept.value = GenerateToString_Action.this.getClassConcept(_params);
+      fields.value = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept.value, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("fields", 5292274854859383272L, 0x5745e3015c8914d3L)))).select((it) -> SNodeOperations.getPointer(it)).toGenericArray(SNodeReference.class);
     });
 
     SelectFieldsDialog selectFieldsDialog = new SelectFieldsDialog(fields.value, true, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
@@ -121,29 +109,27 @@ public class GenerateToString_Action extends BaseAction {
     final SNodeReference firstField = (selectedFields != null && selectedFields.length > 0 ? selectedFields[0] : null);
     final Wrappers._T<SNode> currentExpression = new Wrappers._T<SNode>(null);
 
-    repo.getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        for (SNodeReference fieldPtr : selectedFields) {
-          SNode field = SNodeOperations.cast(fieldPtr.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()), CONCEPTS.FieldDeclaration$ie);
-          SNode fieldRef = SNodeFactoryOperations.createNewNode(CONCEPTS.VariableReference$TC, null);
-          SLinkOperations.setTarget(fieldRef, LINKS.variableDeclaration$N1XG, field);
-          SNode item = _quotation_createNode_satqj4_a0d0a0a61a0(((fieldPtr == firstField ? "" : ", ")) + SPropertyOperations.getString(field, PROPS.name$MnvL) + "=");
-          if (fieldPtr == firstField) {
-            currentExpression.value = _quotation_createNode_satqj4_a0a0e0a0a61a0(SPropertyOperations.getString(classConcept.value, PROPS.name$MnvL) + "{", item);
-            currentExpression.value = _quotation_createNode_satqj4_a0b0e0a0a61a0(fieldRef, currentExpression.value);
-          } else {
-            currentExpression.value = _quotation_createNode_satqj4_a0a0a4a0a0q0a(item, currentExpression.value);
-            currentExpression.value = _quotation_createNode_satqj4_a0b0a4a0a0q0a(fieldRef, currentExpression.value);
-          }
-        }
-        if (selectedFields == null || selectedFields.length == 0) {
-          rightmostExpression.value = _quotation_createNode_satqj4_a0a0b0a61a0(SPropertyOperations.getString(classConcept.value, PROPS.name$MnvL) + "{}");
+    repo.getModelAccess().executeCommand(() -> {
+      for (SNodeReference fieldPtr : selectedFields) {
+        SNode field = SNodeOperations.cast(fieldPtr.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()), CONCEPTS.FieldDeclaration$ie);
+        SNode fieldRef = SNodeFactoryOperations.createNewNode(CONCEPTS.VariableReference$TC, null);
+        SLinkOperations.setTarget(fieldRef, LINKS.variableDeclaration$N1XG, field);
+        SNode item = _quotation_createNode_satqj4_a0d0a0a61a0(((fieldPtr == firstField ? "" : ", ")) + SPropertyOperations.getString(field, PROPS.name$MnvL) + "=");
+        if (fieldPtr == firstField) {
+          currentExpression.value = _quotation_createNode_satqj4_a0a0e0a0a61a0(SPropertyOperations.getString(classConcept.value, PROPS.name$MnvL) + "{", item);
+          currentExpression.value = _quotation_createNode_satqj4_a0b0e0a0a61a0(fieldRef, currentExpression.value);
         } else {
-          rightmostExpression.value = _quotation_createNode_satqj4_a0a0a1a0q0a(currentExpression.value);
+          currentExpression.value = _quotation_createNode_satqj4_a0a0a4a0a0q0a(item, currentExpression.value);
+          currentExpression.value = _quotation_createNode_satqj4_a0b0a4a0a0q0a(fieldRef, currentExpression.value);
         }
-        SNode method = ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$L_2d)).addElement(_quotation_createNode_satqj4_a0a0c0a61a0(rightmostExpression.value));
-        ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).select(method);
       }
+      if (selectedFields == null || selectedFields.length == 0) {
+        rightmostExpression.value = _quotation_createNode_satqj4_a0a0b0a61a0(SPropertyOperations.getString(classConcept.value, PROPS.name$MnvL) + "{}");
+      } else {
+        rightmostExpression.value = _quotation_createNode_satqj4_a0a0a1a0q0a(currentExpression.value);
+      }
+      SNode method = ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$L_2d)).addElement(_quotation_createNode_satqj4_a0a0c0a61a0(rightmostExpression.value));
+      ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).select(method);
     });
 
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,20 @@
  */
 package jetbrains.mps.ide.make;
 
+import com.intellij.openapi.ui.MessageType;
+import com.intellij.openapi.wm.ToolWindow;
+import com.intellij.openapi.wm.ToolWindowId;
+import com.intellij.openapi.wm.ToolWindowManager;
+import jetbrains.mps.ide.messages.MessageListOptions;
 import jetbrains.mps.ide.messages.MessagesViewTool;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.make.IMakeService;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.messages.IMessageHandler;
+import jetbrains.mps.messages.IMessageList;
 import jetbrains.mps.messages.LogHandler;
 import jetbrains.mps.project.Project;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -34,7 +41,17 @@ public class DefaultMakeMessageHandler implements IMessageHandler {
   public DefaultMakeMessageHandler(Project mpsProject) {
     MessagesViewTool tool = MessagesViewTool.getInstance(mpsProject);
     if (tool != null) {
-      myDelegate = tool.newHandler("Make", true);
+      Runnable balloonHandler = () -> {
+        final ToolWindowManager toolWindowManager = ToolWindowManager.getInstance(ProjectHelper.toIdeaProject(mpsProject));
+        ToolWindow toolWindow = toolWindowManager.getToolWindow(ToolWindowId.MESSAGES_WINDOW);
+        boolean visible = toolWindow != null && toolWindow.isVisible();
+        if (!visible) {
+          toolWindowManager.notifyByBalloon(ToolWindowId.MESSAGES_WINDOW, MessageType.INFO, "Make successful");
+        }
+      };
+      IMessageList list = tool.getMessageList("Make", balloonHandler, MessageListOptions.ActivateOnMessage, MessageListOptions.ReuseExisting);
+      list.clear();
+      myDelegate = list;
     } else {
       //it might happen if we haven't opened IDE yet
       myDelegate = new LogHandler(Logger.getLogger(IMakeService.class));

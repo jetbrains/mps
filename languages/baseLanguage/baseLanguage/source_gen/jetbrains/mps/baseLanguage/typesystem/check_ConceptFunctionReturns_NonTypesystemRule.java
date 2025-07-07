@@ -52,7 +52,7 @@ public class check_ConceptFunctionReturns_NonTypesystemRule extends AbstractNonT
         Set<SNode> throwables = SetSequence.fromSet(new HashSet<SNode>());
         StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(IMethodLike__BehaviorDescriptor.getBody_idi2fhZ_m.invoke(func), throwables, ((boolean) true));
         if (SetSequence.fromSet(throwables).isEmpty()) {
-          String whatExpected = ((expectedRetType == null) ? "some value" : "" + expectedRetType);
+          String whatExpected = ((expectedRetType == null) ? "some value" : "" + SNodeOperations.present(expectedRetType));
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(((SLinkOperations.getTarget(func, LINKS.body$e68K) != null) ? SLinkOperations.getTarget(func, LINKS.body$e68K) : func), "function should return " + whatExpected, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7243599812675828620", null, errorTarget);

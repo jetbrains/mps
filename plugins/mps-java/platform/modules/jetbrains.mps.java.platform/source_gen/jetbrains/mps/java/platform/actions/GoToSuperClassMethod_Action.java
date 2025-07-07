@@ -7,16 +7,19 @@ import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.IInterfacedFinder;
 import jetbrains.mps.ide.findusages.view.FindUtils;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
-import jetbrains.mps.project.MPSProject;
 import com.intellij.featureStatistics.FeatureUsageTracker;
 import java.awt.event.InputEvent;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -28,11 +31,13 @@ import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.ide.MPSCodeInsightBundle;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-@GeneratedClass(node = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)/2808756344206305969", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
+@GeneratedClass(nodeId = "2808756344206305969", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
 public class GoToSuperClassMethod_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -47,8 +52,16 @@ public class GoToSuperClassMethod_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    IInterfacedFinder finder = FindUtils.getFinder("jetbrains.mps.baseLanguage.findUsages.BaseMethod_Finder");
-    return finder != null && finder.isApplicable(((SNode) MapSequence.fromMap(_params).get("methodNode")));
+    SNode mn = GoToSuperClassMethod_Action.this.obtainMethod(((MPSProject) MapSequence.fromMap(_params).get("project")), _params);
+    if ((mn == null)) {
+      return false;
+    }
+    if (ListSequence.fromList(SLinkOperations.getChildren(mn, LINKS.annotation$K49I)).any((it) -> SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Override")))) {
+      IInterfacedFinder finder = FindUtils.getFinder("jetbrains.mps.baseLanguage.findUsages.BaseMethod_Finder");
+      return finder != null && finder.isApplicable(mn);
+    } else {
+      return false;
+    }
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -61,13 +74,17 @@ public class GoToSuperClassMethod_Action extends BaseAction {
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
+      MapSequence.fromMap(_params).put("node", node);
+      if (node == null) {
+        return false;
+      }
+    }
+    {
+      SNode node = event.getData(MPSCommonDataKeys.NODE);
       if (node != null && !(SNodeOperations.isInstanceOf(node, CONCEPTS.BaseMethodDeclaration$kD))) {
         node = null;
       }
       MapSequence.fromMap(_params).put("methodNode", node);
-      if (node == null) {
-        return false;
-      }
     }
     {
       EditorCell p = event.getData(MPSEditorDataKeys.EDITOR_CELL);
@@ -88,13 +105,18 @@ public class GoToSuperClassMethod_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("navigation.gotoOverridden");
+    SNode mn = GoToSuperClassMethod_Action.this.obtainMethod(((MPSProject) MapSequence.fromMap(_params).get("project")), _params);
+    if ((mn == null)) {
+      return;
+    }
+
     InputEvent inputEvent = event.getInputEvent();
     final SRepository repository = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository();
     DefaultBLMethodComparator comparator = new DefaultBLMethodComparator(repository);
     DefaultBLMethodNameFilter nameFilter = new DefaultBLMethodNameFilter(repository);
     DefaultMethodRenderer renderer = new DefaultMethodRenderer(repository);
-    CaptionFunction function = GoToSuperClassMethod_Action.this.captionFun(((MPSProject) MapSequence.fromMap(_params).get("project")), ((SNode) MapSequence.fromMap(_params).get("methodNode")), _params);
-    PopupSettingsBuilder settings = new PopupSettingsBuilder(((MPSProject) MapSequence.fromMap(_params).get("project"))).finders(FindUtils.getFinder("jetbrains.mps.baseLanguage.findUsages.BaseMethod_Finder")).renderer(renderer).captionFun(function).queryFromNode(((SNode) MapSequence.fromMap(_params).get("methodNode"))).pointFromCellAndEvent(((EditorCell) MapSequence.fromMap(_params).get("selectedCell")), inputEvent).comparator(comparator).nameFilter(nameFilter);
+    CaptionFunction function = GoToSuperClassMethod_Action.this.captionFun(((MPSProject) MapSequence.fromMap(_params).get("project")), mn, _params);
+    PopupSettingsBuilder settings = new PopupSettingsBuilder(((MPSProject) MapSequence.fromMap(_params).get("project"))).finders(FindUtils.getFinder("jetbrains.mps.baseLanguage.findUsages.BaseMethod_Finder")).renderer(renderer).captionFun(function).queryFromNode(mn).pointFromCellAndEvent(((EditorCell) MapSequence.fromMap(_params).get("selectedCell")), inputEvent).comparator(comparator).nameFilter(nameFilter);
     GoToHelper.showPopupAndSearchNodeInBackground(settings);
   }
   private CaptionFunction captionFun(final MPSProject mpsProject, final SNode node, final Map<String, Object> _params) {
@@ -107,6 +129,22 @@ public class GoToSuperClassMethod_Action extends BaseAction {
         });
       }
     };
+  }
+  private SNode obtainMethod(final MPSProject mpsProject, final Map<String, Object> _params) {
+    SNode mn = ((SNode) MapSequence.fromMap(_params).get("methodNode"));
+    if ((mn == null)) {
+      mn = new ModelAccessHelper(mpsProject.getRepository()).runReadAction(new Computable<SNode>() {
+        public SNode compute() {
+          return SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.BaseMethodDeclaration$kD, false, false);
+        }
+      });
+    }
+    return mn;
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink annotation$K49I = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SReferenceLink annotation$12Ek = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
   }
 
   private static final class CONCEPTS {

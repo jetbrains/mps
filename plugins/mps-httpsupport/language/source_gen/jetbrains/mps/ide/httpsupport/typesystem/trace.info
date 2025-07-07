@@ -266,57 +266,50 @@
       </scope>
     </file>
     <file name="check_RequestURIBuilderExpression_NonTypesystemRule.java">
-      <node id="4622937352052443050" at="27,100,28,175" concept="5" />
-      <node id="4622937352052449477" at="30,41,31,75" concept="6" />
-      <node id="4622937352052454440" at="33,9,34,0" concept="7" />
-      <node id="4622937352052456453" at="35,33,36,66" concept="5" />
-      <node id="4622937352052456453" at="36,66,37,286" concept="5" />
-      <node id="4622937352052365270" at="41,50,42,51" concept="6" />
-      <node id="4622937352052365270" at="44,68,45,102" concept="6" />
-      <node id="4622937352052365270" at="47,30,48,17" concept="6" />
-      <node id="4622937352052365270" at="52,0,53,0" concept="8" trace="requestHandler$_UKL" />
-      <node id="4622937352052365270" at="56,0,57,0" concept="8" trace="RequestURLBuilderExpression$pg" />
-      <node id="4622937352052365270" at="24,0,26,0" concept="1" trace="check_RequestURIBuilderExpression_NonTypesystemRule#()V" />
-      <node id="4622937352052449475" at="30,0,33,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="4622937352052365270" at="41,0,44,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="4622937352052365270" at="44,0,47,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="4622937352052365270" at="47,0,50,0" concept="4" trace="overrides#()Z" />
-      <node id="4622937352052456453" at="34,0,38,7" concept="3" />
-      <node id="4622937352052450825" at="28,175,33,9" concept="5" />
-      <node id="4622937352052365277" at="26,140,39,5" concept="3" />
-      <node id="4622937352052365270" at="26,0,41,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-      <scope id="4622937352052365270" at="24,64,24,64" />
-      <scope id="4622937352052449476" at="30,41,31,75" />
-      <scope id="4622937352052365270" at="41,50,42,51" />
-      <scope id="4622937352052365270" at="44,68,45,102" />
-      <scope id="4622937352052365270" at="47,30,48,17" />
-      <scope id="4622937352052365270" at="24,0,26,0" />
-      <scope id="4622937352052456453" at="35,33,37,286">
+      <node id="4622937352052443050" at="26,100,27,175" concept="5" />
+      <node id="4622937352052450825" at="27,175,28,290" concept="5" />
+      <node id="4622937352052454440" at="28,290,29,0" concept="7" />
+      <node id="4622937352052456453" at="30,33,31,66" concept="5" />
+      <node id="4622937352052456453" at="31,66,32,286" concept="5" />
+      <node id="4622937352052365270" at="36,50,37,51" concept="6" />
+      <node id="4622937352052365270" at="39,68,40,102" concept="6" />
+      <node id="4622937352052365270" at="42,30,43,17" concept="6" />
+      <node id="4622937352052365270" at="47,0,48,0" concept="8" trace="requestHandler$_UKL" />
+      <node id="4622937352052365270" at="51,0,52,0" concept="8" trace="RequestURLBuilderExpression$pg" />
+      <node id="4622937352052365270" at="23,0,25,0" concept="1" trace="check_RequestURIBuilderExpression_NonTypesystemRule#()V" />
+      <node id="4622937352052365270" at="36,0,39,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="4622937352052365270" at="39,0,42,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="4622937352052365270" at="42,0,45,0" concept="4" trace="overrides#()Z" />
+      <node id="4622937352052456453" at="29,0,33,7" concept="3" />
+      <node id="4622937352052365277" at="25,140,34,5" concept="3" />
+      <node id="4622937352052365270" at="25,0,36,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="4622937352052365270" at="23,64,23,64" />
+      <scope id="4622937352052365270" at="36,50,37,51" />
+      <scope id="4622937352052365270" at="39,68,40,102" />
+      <scope id="4622937352052365270" at="42,30,43,17" />
+      <scope id="4622937352052365270" at="23,0,25,0" />
+      <scope id="4622937352052456453" at="30,33,32,286">
         <var name="_reporter_2309309498" id="4622937352052456453" />
         <var name="errorTarget" id="4622937352052456453" />
       </scope>
-      <scope id="4622937352052449475" at="30,0,33,0">
-        <var name="it" id="4622937352052449475" />
-      </scope>
-      <scope id="4622937352052365270" at="41,0,44,0" />
-      <scope id="4622937352052365270" at="44,0,47,0">
+      <scope id="4622937352052365270" at="36,0,39,0" />
+      <scope id="4622937352052365270" at="39,0,42,0">
         <var name="argument" id="4622937352052365270" />
       </scope>
-      <scope id="4622937352052365270" at="47,0,50,0" />
-      <scope id="4622937352052365279" at="27,100,38,7">
+      <scope id="4622937352052365270" at="42,0,45,0" />
+      <scope id="4622937352052365279" at="26,100,33,7">
         <var name="allRequiredParams" id="4622937352052450828" />
         <var name="initializedParameters" id="4622937352052443053" />
       </scope>
-      <scope id="4622937352052365271" at="26,140,39,5" />
-      <scope id="4622937352052365270" at="26,0,41,0">
+      <scope id="4622937352052365271" at="25,140,34,5" />
+      <scope id="4622937352052365270" at="25,0,36,0">
         <var name="requestURIBuilderExpression" id="4622937352052365270" />
         <var name="status" id="4622937352052365270" />
         <var name="typeCheckingContext" id="4622937352052365270" />
       </scope>
-      <unit id="4622937352052365270" at="51,0,54,0" name="jetbrains.mps.ide.httpsupport.typesystem.check_RequestURIBuilderExpression_NonTypesystemRule$LINKS" />
-      <unit id="4622937352052365270" at="55,0,58,0" name="jetbrains.mps.ide.httpsupport.typesystem.check_RequestURIBuilderExpression_NonTypesystemRule$CONCEPTS" />
-      <unit id="4622937352052449475" at="29,227,33,7" name="jetbrains.mps.ide.httpsupport.typesystem.check_RequestURIBuilderExpression_NonTypesystemRule$1" />
-      <unit id="4622937352052365270" at="23,0,59,0" name="jetbrains.mps.ide.httpsupport.typesystem.check_RequestURIBuilderExpression_NonTypesystemRule" />
+      <unit id="4622937352052365270" at="46,0,49,0" name="jetbrains.mps.ide.httpsupport.typesystem.check_RequestURIBuilderExpression_NonTypesystemRule$LINKS" />
+      <unit id="4622937352052365270" at="50,0,53,0" name="jetbrains.mps.ide.httpsupport.typesystem.check_RequestURIBuilderExpression_NonTypesystemRule$CONCEPTS" />
+      <unit id="4622937352052365270" at="22,0,54,0" name="jetbrains.mps.ide.httpsupport.typesystem.check_RequestURIBuilderExpression_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:c79f1d68-0099-426e-a3a4-72db4a9f1693(jetbrains.mps.ide.httpsupport.typesystem)/4622937352052504552">
@@ -340,7 +333,7 @@
       <node id="4622937352052504552" at="52,0,53,0" concept="8" trace="QueryParameter$XL" />
       <node id="4622937352052504552" at="56,0,57,0" concept="8" trace="name$MnvL" />
       <node id="4622937352052504552" at="23,0,25,0" concept="1" trace="check_QueryParameter_NonTypesystemRule#()V" />
-      <node id="4622937352052524740" at="27,0,30,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="4622937352052524740" at="27,0,30,0" concept="4" trace="invoke#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Boolean;" />
       <node id="4622937352052504552" at="35,0,38,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="4622937352052504552" at="38,0,41,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="4622937352052504552" at="41,0,44,0" concept="4" trace="overrides#()Z" />
@@ -766,7 +759,7 @@
       <node id="610507601221454591" at="52,0,53,0" concept="8" trace="ParameterInitializer$k5" />
       <node id="610507601221454591" at="56,0,57,0" concept="8" trace="parameter$DxS8" />
       <node id="610507601221454591" at="23,0,25,0" concept="1" trace="check_ParameterInitializer_NonTypesystemRule#()V" />
-      <node id="610507601221685802" at="27,0,30,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="610507601221685802" at="27,0,30,0" concept="4" trace="invoke#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Boolean;" />
       <node id="610507601221454591" at="35,0,38,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="610507601221454591" at="38,0,41,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="610507601221454591" at="41,0,44,0" concept="4" trace="overrides#()Z" />

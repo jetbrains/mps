@@ -26,9 +26,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class NodeErrorCheckOperation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b01e7283dL, "jetbrains.mps.lang.test.structure.NodeErrorCheckOperation");
 
-  public static final SMethod<Boolean> canAttachReference_id2wBFdLy7HtS = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canAttachReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2wBFdLy7HtS").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Void> attachReference_id2wBFdLy8qmn = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("attachReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2wBFdLy8qmn").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getReference_id7eBNsYUkslm = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7eBNsYUkslm").build();
+  public static final SMethod<Boolean> canAttachReference_id2wBFdLy7HtS = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canAttachReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2893471348147804024L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Void> attachReference_id2wBFdLy8qmn = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("attachReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2893471348147987863L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getReference_id7eBNsYUkslm = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8333855927540237654L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canAttachReference_id2wBFdLy7HtS, attachReference_id2wBFdLy8qmn, getReference_id7eBNsYUkslm);
 
@@ -36,12 +36,12 @@ public final class NodeErrorCheckOperation__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static boolean canAttachReference_id2wBFdLy7HtS(@NotNull SNode __thisNode__, SNode reference) {
-    return SNodeOperations.isInstanceOf(reference, CONCEPTS.ReportErrorStatement$v1);
+    return SNodeOperations.isInstanceOf(reference, CONCEPTS.ReportErrorStatement$v1) || SNodeOperations.isInstanceOf(reference, CONCEPTS.Rule$DP);
   }
   /*package*/ static void attachReference_id2wBFdLy8qmn(@NotNull SNode __thisNode__, SNode reference) {
     assert ((boolean) IReferenceAttachable__BehaviorDescriptor.canAttachReference_id2wBFdLy7HtS.invoke(__thisNode__, reference));
     SLinkOperations.setTarget(__thisNode__, LINKS.errorRef$Yjyj, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x3ee2cbee8b19b06dL, "jetbrains.mps.lang.test.structure.ReportErrorStatementReference")));
-    SLinkOperations.setTarget(SLinkOperations.getTarget(__thisNode__, LINKS.errorRef$Yjyj), LINKS.declaration$oKj7, SNodeOperations.cast(reference, CONCEPTS.ReportErrorStatement$v1));
+    SLinkOperations.setTarget(SLinkOperations.getTarget(__thisNode__, LINKS.errorRef$Yjyj), LINKS.declaration$oKj7, reference);
   }
   /*package*/ static SNode getReference_id7eBNsYUkslm(@NotNull SNode __thisNode__) {
     return SLinkOperations.getTarget(__thisNode__, LINKS.errorRef$Yjyj);
@@ -100,6 +100,7 @@ public final class NodeErrorCheckOperation__BehaviorDescriptor extends BaseBHDes
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ReportErrorStatement$v1 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111b251a62aL, "jetbrains.mps.lang.typesystem.structure.ReportErrorStatement");
+    /*package*/ static final SConcept Rule$DP = MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.Rule");
   }
 
   private static final class LINKS {

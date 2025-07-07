@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,17 +15,17 @@
  */
 package jetbrains.mps.vfs;
 
-import jetbrains.mps.util.annotation.ToRemove;
-import jetbrains.mps.vfs.impl.IoFileSystem;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Use VFSManager
+ * THIS IS INTERNAL FS CONFIGURATION MECHANISM, DON'T USE TO ACCESS FS
+ * There are 2 uses in MPS for internal configuration purposes.
+ *
+ * @deprecated Use VFSManager
  */
-@Deprecated
-@ToRemove(version = 2019.1)
+@Deprecated(since = "2019.1", forRemoval = true)
 public final class FileSystemExtPoint {
-  private static FileSystem ourFS = IoFileSystem.INSTANCE;
+  private static FileSystem ourFS;
 
   public static void setFS(@NotNull FileSystem fileSystem) {
     ourFS = fileSystem;

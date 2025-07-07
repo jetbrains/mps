@@ -203,8 +203,8 @@
       <node id="1269198486696305052" at="218,0,221,0" concept="7" trace="sourceNodeQuery_0_17#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodeContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1269198486696304752" at="434,0,437,0" concept="7" trace="isNotEmptyString#(Ljava/lang/String;)Z" />
       <node id="1604932114057422543" at="52,102,56,9" concept="4" />
-      <node id="1269198486696304674" at="137,151,143,11" concept="3" />
-      <node id="1269198486696304962" at="198,151,204,11" concept="3" />
+      <node id="1269198486696304674" at="137,149,143,11" concept="3" />
+      <node id="1269198486696304962" at="198,149,204,11" concept="3" />
       <node id="1269198486696304734" at="69,88,76,5" concept="4" />
       <node id="1269198486696304804" at="81,88,88,5" concept="4" />
       <node id="1269198486696304888" at="93,88,100,5" concept="4" />
@@ -406,12 +406,12 @@
       <scope id="2021770776239049182" at="51,43,57,221">
         <var name="elementType" id="1604932114056598698" />
       </scope>
-      <scope id="1269198486696304673" at="137,151,143,11" />
-      <scope id="1269198486696304674" at="137,151,143,11">
+      <scope id="1269198486696304673" at="137,149,143,11" />
+      <scope id="1269198486696304674" at="137,149,143,11">
         <var name="supt" id="1269198486696304695" />
       </scope>
-      <scope id="1269198486696304961" at="198,151,204,11" />
-      <scope id="1269198486696304962" at="198,151,204,11">
+      <scope id="1269198486696304961" at="198,149,204,11" />
+      <scope id="1269198486696304962" at="198,149,204,11">
         <var name="supt" id="1269198486696304983" />
       </scope>
       <scope id="1269198486696304733" at="69,88,76,5" />

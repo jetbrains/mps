@@ -11,7 +11,7 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.baseLanguage.util.plugin.refactorings.InitializeFieldInConstructorRefactoring;
+import jetbrains.mps.java.refactoring.InitializeFieldInConstructorRefactoring;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
@@ -19,18 +19,15 @@ import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.baseLanguage.util.plugin.refactorings.MemberInsertingUtils;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)/7024895274320750543", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
+@GeneratedClass(nodeId = "7024895274320750543", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
 public class InitializeFieldInConstructor_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -98,27 +95,19 @@ public class InitializeFieldInConstructor_Action extends BaseAction {
 
     final InitializeFieldInConstructorRefactoring refactoring = new InitializeFieldInConstructorRefactoring();
     refactoring.isApplicable(field);
-    Iterable<SNode> constructors = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(clazz, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("constructors", CONCEPTS.ClassConcept$bK, "4_LVZ3pCvsd")))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return refactoring.doesNotContainFieldInitialization(it);
-      }
-    });
+    Iterable<SNode> constructors = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(clazz, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("constructors", 5292274854859503373L, 0x5745e3015c8914d3L)))).where((it) -> refactoring.doesNotContainFieldInitialization(it));
 
     SNodeReference[] selectedConstructors;
     SRepository repository = event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getRepository();
 
     if (Sequence.fromIterable(constructors).isEmpty()) {
-      SNode c = SNodeFactoryOperations.createNewNode(CONCEPTS.ConstructorDeclaration$yG, null);
-      MemberInsertingUtils.insertClassifierMemberInBestPlace(clazz, c);
+      SNode c = SNodeFactoryOperations.createNewNode(event.getData(MPSCommonDataKeys.CONTEXT_MODEL), CONCEPTS.ConstructorDeclaration$yG, null);
+      BHReflection.invoke0(clazz, CONCEPTS.Classifier$Ix, SMethodIdV2.create("insertInBestPlace", 8332041383517793958L, 0x5745e3015c8914d3L), c);
       selectedConstructors = new SNodeReference[]{SNodeOperations.getPointer(c)};
     } else if (Sequence.fromIterable(constructors).count() == 1) {
       selectedConstructors = new SNodeReference[]{SNodeOperations.getPointer(Sequence.fromIterable(constructors).first())};
     } else {
-      SNodeReference[] ctors = Sequence.fromIterable(constructors).select(new ISelector<SNode, SNodeReference>() {
-        public SNodeReference select(SNode it) {
-          return SNodeOperations.getPointer(it);
-        }
-      }).toGenericArray(SNodeReference.class);
+      SNodeReference[] ctors = Sequence.fromIterable(constructors).select((it) -> SNodeOperations.getPointer(it)).toGenericArray(SNodeReference.class);
       SelectConstructorsDialog selectConstructorsDialog = new SelectConstructorsDialog(ctors, event.getData(MPSCommonDataKeys.MPS_PROJECT));
       selectConstructorsDialog.setTitle("Choose Constructors to Add Initialization to");
       selectConstructorsDialog.show();
@@ -140,5 +129,6 @@ public class InitializeFieldInConstructor_Action extends BaseAction {
     /*package*/ static final SConcept FieldDeclaration$ie = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
     /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
     /*package*/ static final SConcept ConstructorDeclaration$yG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 }

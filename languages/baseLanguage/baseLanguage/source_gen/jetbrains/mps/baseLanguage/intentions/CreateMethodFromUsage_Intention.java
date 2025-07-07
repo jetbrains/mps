@@ -19,27 +19,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class CreateMethodFromUsage_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public CreateMethodFromUsage_Intention() {
     super(Kind.ERROR, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "2880942692235520135"));
   }
+
   @Override
   public String getPresentation() {
     return "CreateMethodFromUsage";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return new CreateMethodFromUsageHelper(node, editorContext).dryRun();
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -49,19 +43,36 @@ public final class CreateMethodFromUsage_Intention extends AbstractIntentionDesc
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       CreateMethodFromUsageHelper helper = new CreateMethodFromUsageHelper(node, editorContext);
       return "Create Method " + helper.getMethodName() + " in " + SPropertyOperations.getString(helper.getMethodClassifier(), PROPS.name$MnvL);
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       new CreateMethodFromUsageHelper(node, editorContext).run();
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return new CreateMethodFromUsageHelper(node, editorContext).dryRun();
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return CreateMethodFromUsage_Intention.this;
     }
+
   }
 
   private static final class PROPS {

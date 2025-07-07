@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,6 +50,9 @@ public class NodeFileIconProvider implements FileIconProvider, NamedComponent {
       return null;
     }
     if (file instanceof MPSNodeVirtualFile) {
+      // FIXME isn't it odd to require editor to provide an icon for an MPSNodeVirtualFile?
+      //       I understand our tabbed editors confuse IDEA (few MPSNodeVirtualFile per editor, with only 'main' one being known to IDEA)
+      //       but this code implies we get an icon here for an editor (e.g. not for a project pane entry)
       final MPSNodeVirtualFile nodeFile = (MPSNodeVirtualFile) file;
       return new ModelComputeRunnable<>(() -> {
         SNode node = MPSEditorUtil.getCurrentEditedNodeFromTabbedEditor(project, nodeFile);

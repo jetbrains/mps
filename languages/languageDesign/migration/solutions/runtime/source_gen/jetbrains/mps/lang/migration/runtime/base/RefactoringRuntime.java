@@ -8,10 +8,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -21,12 +19,11 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.smodel.SModelInternal;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-@GeneratedClass(node = "528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)/4853505765036703346", model = "528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)")
+@GeneratedClass(nodeId = "4853505765036703346", model = "528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)")
 public class RefactoringRuntime {
 
   public static void changePropertyInstance(SNode node, final SProperty oldProp, final SProperty newProp) {
@@ -36,15 +33,7 @@ public class RefactoringRuntime {
     }
 
     Iterable<SNode> attributes = (Iterable<SNode>) node.getChildren(LINKS.smodelAttribute$KJ43);
-    Sequence.fromIterable(SNodeOperations.ofConcept(attributes, CONCEPTS.PropertyAttribute$Gb)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ((SProperty) BHReflection.invoke0(it, CONCEPTS.PropertyAttribute$Gb, SMethodTrimmedId.create("getProperty", CONCEPTS.PropertyAttribute$Gb, "1avfQ4BBzOo"))).equals(oldProp);
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        BHReflection.invoke0(it, CONCEPTS.PropertyAttribute$Gb, SMethodTrimmedId.create("setProperty", CONCEPTS.PropertyAttribute$Gb, "6Gg5Klvu8CV"), newProp);
-      }
-    });
+    Sequence.fromIterable(SNodeOperations.ofConcept(attributes, CONCEPTS.PropertyAttribute$Gb)).where((it) -> ((SProperty) BHReflection.invoke0(it, CONCEPTS.PropertyAttribute$Gb, SMethodIdV2.create("getProperty", 1341860900488756504L, 0x553941aeb020c32eL))).equals(oldProp)).visitAll((it) -> BHReflection.invoke0(it, CONCEPTS.PropertyAttribute$Gb, SMethodIdV2.create("setProperty", 7714691473529670203L, 0x553941aeb020c32eL), newProp));
 
     String value = node.getProperty(oldProp);
     node.setProperty(newProp, value);
@@ -58,15 +47,7 @@ public class RefactoringRuntime {
     }
 
     Iterable<SNode> attributes = (Iterable<SNode>) node.getChildren(LINKS.smodelAttribute$KJ43);
-    Sequence.fromIterable(SNodeOperations.ofConcept(attributes, CONCEPTS.ChildAttribute$m8)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ((SContainmentLink) BHReflection.invoke0(it, CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzf"))).equals(oldLink);
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        BHReflection.invoke0(it, CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("setLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzM"), newLink);
-      }
-    });
+    Sequence.fromIterable(SNodeOperations.ofConcept(attributes, CONCEPTS.ChildAttribute$m8)).where((it) -> ((SContainmentLink) BHReflection.invoke0(it, CONCEPTS.ChildAttribute$m8, SMethodIdV2.create("getLink", 709746936026609871L, 0x553941aeb020c32eL))).equals(oldLink)).visitAll((it) -> BHReflection.invoke0(it, CONCEPTS.ChildAttribute$m8, SMethodIdV2.create("setLink", 709746936026609906L, 0x553941aeb020c32eL), newLink));
 
     List<SNode> children = ListSequence.fromListWithValues(new ArrayList<SNode>(), (Iterable<SNode>) node.getChildren(oldLink));
     for (SNode child : ListSequence.fromList(children)) {
@@ -82,15 +63,7 @@ public class RefactoringRuntime {
     }
 
     Iterable<SNode> attributes = (Iterable<SNode>) node.getChildren(LINKS.smodelAttribute$KJ43);
-    Sequence.fromIterable(SNodeOperations.ofConcept(attributes, CONCEPTS.LinkAttribute$v_)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return ((SReferenceLink) BHReflection.invoke0(it, CONCEPTS.LinkAttribute$v_, SMethodTrimmedId.create("getLink", CONCEPTS.LinkAttribute$v_, "1avfQ4BEFo6"))).equals(oldLink);
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        BHReflection.invoke0(it, CONCEPTS.LinkAttribute$v_, SMethodTrimmedId.create("setLink", CONCEPTS.LinkAttribute$v_, "6Gg5KlvuxxF"), newLink);
-      }
-    });
+    Sequence.fromIterable(SNodeOperations.ofConcept(attributes, CONCEPTS.LinkAttribute$v_)).where((it) -> ((SReferenceLink) BHReflection.invoke0(it, CONCEPTS.LinkAttribute$v_, SMethodIdV2.create("getLink", 1341860900489573894L, 0x553941aeb020c32eL))).equals(oldLink)).visitAll((it) -> BHReflection.invoke0(it, CONCEPTS.LinkAttribute$v_, SMethodIdV2.create("setLink", 7714691473529772139L, 0x553941aeb020c32eL), newLink));
 
     SNode referenceTarget = node.getReferenceTarget(oldLink);
     node.setReferenceTarget(newLink, referenceTarget);
@@ -118,19 +91,7 @@ public class RefactoringRuntime {
       }
     }
     final SNode result = SNodeOperations.replaceWithAnother(node, newInstance);
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(result, null, true, new SAbstractConcept[]{})).translate(new ITranslator2<SNode, SReference>() {
-      public Iterable<SReference> translate(SNode it) {
-        return SNodeOperations.getReferences(it);
-      }
-    }).where(new IWhereFilter<SReference>() {
-      public boolean accept(SReference it) {
-        return SLinkOperations.getTargetNode(it) == node;
-      }
-    }).visitAll(new IVisitor<SReference>() {
-      public void visit(SReference it) {
-        it.getSourceNode().setReferenceTarget(it.getLink(), result);
-      }
-    });
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(result, null, true, new SAbstractConcept[]{})).translate((it) -> SNodeOperations.getReferences(it)).where((it) -> SLinkOperations.getTargetNode(it) == node).visitAll((it) -> it.getSourceNode().setReferenceTarget(it.getLink(), result));
     return result;
   }
   private static <T> T as_7voxfg_a0a0a0a6a7(Object o, Class<T> type) {

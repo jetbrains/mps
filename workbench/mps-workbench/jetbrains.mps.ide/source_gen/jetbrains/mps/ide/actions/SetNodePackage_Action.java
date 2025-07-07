@@ -4,8 +4,7 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.workbench.action.BaseAction;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
@@ -13,7 +12,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SModelOperations;
 import org.jetbrains.annotations.NotNull;
@@ -21,32 +19,36 @@ import java.util.ArrayList;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
+import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import com.intellij.openapi.ui.InputValidator;
+import com.intellij.openapi.util.NlsSafe;
+import java.util.Arrays;
+import com.intellij.openapi.ui.Messages;
+import java.util.Objects;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Collections;
 import jetbrains.mps.plugins.relations.RelationDescriptor;
 import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
-import org.apache.log4j.Level;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/7889360268649425705", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "7889360268649425705", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class SetNodePackage_Action extends BaseAction {
-  private static final Logger LOG = LogManager.getLogger(SetNodePackage_Action.class);
+  private static final Logger LOG = Logger.getLogger(SetNodePackage_Action.class);
   private static final Icon ICON = null;
 
   public SetNodePackage_Action() {
     super("Set Virtual Package...", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -54,11 +56,7 @@ public class SetNodePackage_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes"))).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode n) {
-        return SNodeOperations.getParent(n) == null && SNodeOperations.getModel(n) != null && !(SModelOperations.isReadOnly(SNodeOperations.getModel(n)));
-      }
-    });
+    return ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes"))).all((n) -> SNodeOperations.getParent(n) == null && SNodeOperations.getModel(n) != null && !(SModelOperations.isReadOnly(SNodeOperations.getModel(n))));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -110,56 +108,64 @@ public class SetNodePackage_Action extends BaseAction {
         return false;
       }
     }
+    {
+      String p = event.getData(PlatformDataKeys.PREDEFINED_TEXT);
+      MapSequence.fromMap(_params).put("targetName", p);
+    }
     return true;
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._T<List<String>> packages = new Wrappers._T<List<String>>();
-    final Wrappers._T<String> oldPackage = new Wrappers._T<String>();
+    final Wrappers._T<String> nameHint = new Wrappers._T<String>(((String) MapSequence.fromMap(_params).get("targetName")));
     ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
-    modelAccess.runReadAction(new Runnable() {
-      public void run() {
-        packages.value = SetNodePackage_Action.this.fetchExistingPackages(((List<SNode>) MapSequence.fromMap(_params).get("nodes")), _params);
-        oldPackage.value = SPropertyOperations.getString(ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes"))).first(), PROPS.virtualPackage$EkXl);
-      }
+    modelAccess.runReadAction(() -> {
+      packages.value = SetNodePackage_Action.this.fetchExistingPackages(((List<SNode>) MapSequence.fromMap(_params).get("nodes")), _params);
+      nameHint.value = (nameHint.value == null ? SPropertyOperations.getString(ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes"))).first(), PROPS.virtualPackage$EkXl) : nameHint.value);
     });
-    final SetNodePackageDialog dialog = new SetNodePackageDialog(((MPSProject) MapSequence.fromMap(_params).get("project")), packages.value);
-    dialog.setPackage(oldPackage.value);
-    if (!(dialog.showAndGet())) {
+    nameHint.value = ((nameHint.value != null && nameHint.value.startsWith(".") ? nameHint.value.substring(1) : nameHint.value));
+    InputValidator validator = new InputValidator() {
+      @Override
+      public boolean checkInput(@NlsSafe String virtualFolder) {
+        String normalized = (virtualFolder == null ? "" : virtualFolder);
+        normalized = String.join(".", Arrays.asList(normalized.split("\\.+")));
+        if (!(normalized.equals(virtualFolder))) {
+          return false;
+        }
+        normalized = (normalized.startsWith(".") ? normalized.substring(1) : normalized);
+        if (!(normalized.equals(virtualFolder))) {
+          return false;
+        }
+        return true;
+      }
+      @Override
+      public boolean canClose(@NlsSafe String virtualFolder) {
+        return checkInput(virtualFolder);
+      }
+    };
+
+    final String newValue = Messages.showEditableChooseDialog("Enter virtual folder name", "Set Virtual Folder", Messages.getQuestionIcon(), ListSequence.fromList(packages.value).toGenericArray(String.class), nameHint.value, validator);
+    if (newValue == null) {
       return;
     }
-    modelAccess.executeCommandInEDT(new Runnable() {
-      public void run() {
-        for (SNode node : ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes")))) {
-          SPropertyOperations.assign(node, PROPS.virtualPackage$EkXl, dialog.getPackage());
-          if (SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$KA)) {
-            for (SNode aspect : ListSequence.fromList(SetNodePackage_Action.this.findAllAspects(((Project) MapSequence.fromMap(_params).get("ideaProject")), SNodeOperations.cast(node, CONCEPTS.AbstractConceptDeclaration$KA), _params))) {
-              SPropertyOperations.assign(aspect, PROPS.virtualPackage$EkXl, dialog.getPackage());
-            }
+    if (Objects.equals(nameHint.value, newValue) && ListSequence.fromList(packages.value).count() == 1 && Objects.equals(nameHint.value, ListSequence.fromList(packages.value).getElement(0))) {
+      return;
+    }
+
+    modelAccess.executeCommandInEDT(() -> {
+      for (SNode node : ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes")))) {
+        SPropertyOperations.assign(node, PROPS.virtualPackage$EkXl, newValue);
+        if (SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$KA)) {
+          for (SNode aspect : ListSequence.fromList(SetNodePackage_Action.this.findAllAspects(((Project) MapSequence.fromMap(_params).get("ideaProject")), SNodeOperations.cast(node, CONCEPTS.AbstractConceptDeclaration$KA), _params))) {
+            SPropertyOperations.assign(aspect, PROPS.virtualPackage$EkXl, newValue);
           }
         }
       }
     });
   }
-  /*package*/ List<String> fetchExistingPackages(List<SNode> nlist, final Map<String, Object> _params) {
-    Set<SModel> models = SetSequence.fromSetWithValues(new HashSet<SModel>(), ListSequence.fromList(nlist).select(new ISelector<SNode, SModel>() {
-      public SModel select(SNode n) {
-        return SNodeOperations.getModel(n);
-      }
-    }));
-    Set<String> packages = SetSequence.fromSetWithValues(new HashSet<String>(), SetSequence.fromSet(models).translate(new ITranslator2<SModel, SNode>() {
-      public Iterable<SNode> translate(SModel m) {
-        return jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.roots(m, CONCEPTS.BaseConcept$gP);
-      }
-    }).select(new ISelector<SNode, String>() {
-      public String select(SNode r) {
-        return SPropertyOperations.getString(r, PROPS.virtualPackage$EkXl);
-      }
-    }).where(new IWhereFilter<String>() {
-      public boolean accept(String p) {
-        return p != null;
-      }
-    }));
+  private List<String> fetchExistingPackages(List<SNode> nlist, final Map<String, Object> _params) {
+    Set<SModel> models = SetSequence.fromSetWithValues(new HashSet<SModel>(), ListSequence.fromList(nlist).select((n) -> SNodeOperations.getModel(n)));
+    Set<String> packages = SetSequence.fromSetWithValues(new HashSet<String>(), SetSequence.fromSet(models).translate((m) -> jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.roots(m, CONCEPTS.BaseConcept$gP)).select((r) -> SPropertyOperations.getString(r, PROPS.virtualPackage$EkXl)).where((p) -> p != null));
     List<String> result = ListSequence.fromListWithValues(new ArrayList<String>(), packages);
     Collections.sort(result);
     return result;
@@ -167,22 +173,12 @@ public class SetNodePackage_Action extends BaseAction {
   public List<SNode> findAllAspects(Project project, final SNode node, final Map<String, Object> _params) {
     List<RelationDescriptor> tabs = ProjectPluginManager.getApplicableTabs(project, node);
     try {
-      return ListSequence.fromList(tabs).where(new IWhereFilter<RelationDescriptor>() {
-        public boolean accept(RelationDescriptor it) {
-          return it.isApplicable(node);
-        }
-      }).translate(new ITranslator2<RelationDescriptor, SNode>() {
-        public Iterable<SNode> translate(final RelationDescriptor tab) {
-          List<SNode> nodes = tab.getNodes(node);
-          return ListSequence.fromList(nodes).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return tab.getBaseNode(it) == node;
-            }
-          });
-        }
-      }).toListSequence();
+      return ListSequence.fromList(tabs).where((it) -> it.isApplicable(node)).translate((final RelationDescriptor tab) -> {
+        List<SNode> nodes = tab.getNodes(node);
+        return ListSequence.fromList(nodes).where((it) -> tab.getBaseNode(it) == node);
+      }).toList();
     } catch (Throwable t) {
-      if (LOG.isEnabledFor(Level.ERROR)) {
+      if (LOG.isErrorLevel()) {
         LOG.error("Exception in extension: ", t);
       }
     }

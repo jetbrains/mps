@@ -10,11 +10,13 @@ public class JavaModuleActions_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.make.actions.JavaModuleActions_ActionGroup";
 
   public JavaModuleActions_ActionGroup(@NotNull ApplicationPlugin plugin) {
-    super("JavaModuleActions", ID, plugin);
+    super("Compile", ID, plugin);
+    setIsAlwaysVisible(false);
     setIsInternal(false);
-    setPopup(false);
+    setPopup(true);
     JavaModuleActions_ActionGroup.this.addAction("jetbrains.mps.ide.make.actions.MakeModule_Action");
     JavaModuleActions_ActionGroup.this.addAction("jetbrains.mps.ide.make.actions.RebuildModule_Action");
     JavaModuleActions_ActionGroup.this.addAction("jetbrains.mps.ide.make.actions.CleanModule_Action");
+    getTemplatePresentation().setHideGroupIfEmpty(true);
   }
 }

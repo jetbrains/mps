@@ -14,7 +14,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.annotations.Nullable;
 import java.util.Set;
 import java.util.LinkedHashSet;
@@ -22,8 +22,6 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import org.jetbrains.mps.annotations.Mutable;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.ide.findusages.view.FindUtils;
-import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder;
-import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
@@ -32,7 +30,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-@GeneratedClass(node = "r:59f5b892-a6eb-4a9b-9c81-ecffc10026ee(jetbrains.mps.ide.highlighters.behavior)/7515092869553787026", model = "r:59f5b892-a6eb-4a9b-9c81-ecffc10026ee(jetbrains.mps.ide.highlighters.behavior)")
+@GeneratedClass(nodeId = "7515092869553787026", model = "r:59f5b892-a6eb-4a9b-9c81-ecffc10026ee(jetbrains.mps.ide.highlighters.behavior)")
 /*package*/ final class AncestorsMethodsLookup {
   private final Cancellable myCancellable;
   private final SNode myBehavior;
@@ -52,7 +50,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   /*package*/ List<EditorMessage> calcMessages() {
     List<EditorMessage> result = ListSequence.fromList(new ArrayList<EditorMessage>());
     for (SNode method : ListSequence.fromList(SLinkOperations.getChildren(myBehavior, LINKS.method$w_in))) {
-      if (((boolean) (Boolean) BHReflection.invoke0(method, CONCEPTS.ConceptMethodDeclaration$N0, SMethodTrimmedId.create("isVirtual", CONCEPTS.ConceptMethodDeclaration$N0, "6WSEafdhbZX"))) && SLinkOperations.getTarget(method, LINKS.overriddenMethod$quKH) != null) {
+      if (((boolean) (Boolean) BHReflection.invoke0(method, CONCEPTS.ConceptMethodDeclaration$N0, SMethodIdV2.create("isVirtual", 8014340958382768125L, 0x28bccc7daff7d4f3L))) && SLinkOperations.getTarget(method, LINKS.overriddenMethod$quKH) != null) {
         EditorMessage msgForMethod = calcMessage(method);
         if (msgForMethod != null) {
           ListSequence.fromList(result).addElement(msgForMethod);
@@ -75,7 +73,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       if (SetSequence.fromSet(ancestors).isEmpty()) {
         return null;
       }
-      return new MethodOverridesEditorMessage(method, SetSequence.fromSet(ancestors).toListSequence(), myOwner);
+      return new MethodOverridesEditorMessage(method, SetSequence.fromSet(ancestors).toList(), myOwner);
     }
   }
 
@@ -86,20 +84,16 @@ import org.jetbrains.mps.openapi.language.SConcept;
         return super.isCanceled();
       }
     };
-    FindUtils.searchForResults(monitor, new IFinder.FindCallback() {
-      public void onUsageFound(@NotNull SearchResult<?> searchResult) {
-        SNode nodeParam = (SNode) searchResult.getObject();
-        new _FunctionTypes._void_P1_E0<SNode>() {
-          public void invoke(SNode foundNode) {
-            if (SNodeOperations.isInstanceOf(foundNode, CONCEPTS.ConceptMethodDeclaration$N0)) {
-              SetSequence.fromSet(result).addElement(SNodeOperations.cast(foundNode, CONCEPTS.ConceptMethodDeclaration$N0));
-              if (SetSequence.fromSet(result).count() > myMaxResultsToCollect) {
-                monitor.cancel();
-              }
-            }
+    FindUtils.searchForResults(monitor, (searchResult) -> {
+      SNode nodeParam = (SNode) searchResult.getObject();
+      ((_FunctionTypes._void_P1_E0<SNode>) (SNode foundNode) -> {
+        if (SNodeOperations.isInstanceOf(foundNode, CONCEPTS.ConceptMethodDeclaration$N0)) {
+          SetSequence.fromSet(result).addElement(SNodeOperations.cast(foundNode, CONCEPTS.ConceptMethodDeclaration$N0));
+          if (SetSequence.fromSet(result).count() > myMaxResultsToCollect) {
+            monitor.cancel();
           }
-        }.invoke(nodeParam);
-      }
+        }
+      }).invoke(nodeParam);
     }, new SearchQuery(currentMethod, myScope), FindUtils.getFinder("jetbrains.mps.lang.behavior.findUsages.OverriddenMethods_Finder"));
   }
 

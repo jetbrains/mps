@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,6 +45,6 @@ public class LanguagesPresentation implements ElementPresentation<SLanguage> {
   @Override
   public void render(@NotNull SLanguage element, @NotNull ElementDescriptor presentation) {
     presentation.name = element.getQualifiedName();
-    presentation.icon = MPSIcons.LanguageRuntime;
+    presentation.icon = MPSIcons.Nodes.LanguageRuntime;
   }
 }

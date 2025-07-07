@@ -14,7 +14,7 @@ import com.intellij.openapi.options.ConfigurationException;
 import java.util.List;
 import java.util.ArrayList;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1818770337282919795", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1818770337282919795", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class BehaviorDialogsPersistentOptions_PreferencesComponent extends BaseProjectPrefsComponent {
   @Tag(value = "state")
   private MyState myState = new MyState();

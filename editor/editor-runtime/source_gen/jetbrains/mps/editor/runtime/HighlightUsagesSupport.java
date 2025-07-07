@@ -6,7 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import java.util.concurrent.ScheduledExecutorService;
 import com.intellij.util.ConcurrencyUtil;
-import java.awt.Color;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import org.jetbrains.mps.openapi.module.SRepository;
 import com.intellij.openapi.project.DumbService;
@@ -16,39 +15,52 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import java.util.concurrent.TimeUnit;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.nodeEditor.cells.APICellAdapter;
 import jetbrains.mps.nodeEditor.NodeHighlightManager;
-import org.jetbrains.mps.openapi.module.SearchScope;
-import jetbrains.mps.ide.findusages.model.scopes.ModelsScope;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SReference;
+import java.util.HashSet;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.nodeEditor.cells.APICellAdapter;
+import jetbrains.mps.util.CollectConsumer;
+import org.jetbrains.mps.openapi.util.Consumer;
+import org.jetbrains.mps.openapi.module.SearchScope;
+import jetbrains.mps.ide.findusages.model.scopes.ModelsScope;
 import org.jetbrains.mps.openapi.module.FindUsagesFacade;
 import java.util.Collections;
+import com.intellij.openapi.editor.colors.TextAttributesKey;
+import com.intellij.openapi.editor.markup.TextAttributes;
+import com.intellij.openapi.editor.colors.EditorColorsManager;
+import java.awt.Color;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.ide.project.ProjectHelper;
 import java.util.List;
 
-@GeneratedClass(node = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)/4976050993950574656", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
+@GeneratedClass(nodeId = "4976050993950574656", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
 public class HighlightUsagesSupport {
 
   private static final EditorMessageOwner emo = new EditorMessageOwner() {};
   private static final ScheduledExecutorService scheduler = ConcurrencyUtil.newSingleScheduledThreadExecutor("HighlightUsages");
 
-  private final Color myHighlightColor;
   private final EditorComponent myEC;
   private final SRepository myRepository;
   private final DumbService myDumbService;
 
-  private long defaultUpdateDelayMillis = 500;
+  private long defaultUpdateDelayMillis = 250;
   private ScheduledFuture<?> highlightTask;
 
-  public HighlightUsagesSupport(@NotNull EditorComponent ec, @Nullable SRepository repository, Color color) {
+  public static HighlightUsagesSupport create(@NotNull EditorComponent ec, @Nullable SRepository repository) {
+    DumbService dumbService = getDumbService(repository);
+    if (dumbService == null) {
+      return null;
+    }
+    return new HighlightUsagesSupport(ec, repository, dumbService);
+  }
+
+  private HighlightUsagesSupport(@NotNull EditorComponent ec, @Nullable SRepository repository, @NotNull DumbService dumbService) {
     myEC = ec;
-    myHighlightColor = color;
     myRepository = repository;
-    myDumbService = getDumbService();
+    myDumbService = dumbService;
   }
 
   public void selectionChanged(@Nullable Selection newSelection) {
@@ -61,36 +73,12 @@ public class HighlightUsagesSupport {
       highlightTask.cancel(false);
     }
     if (selectedCell == null) {
-      scheduler.execute(new Runnable() {
-        public void run() {
-          myRepository.getModelAccess().runReadInEDT(new Runnable() {
-            public void run() {
-              clearMarks();
-            }
-          });
-        }
-      });
+      scheduler.execute(() -> myRepository.getModelAccess().runReadInEDT(() -> clearMarks()));
     } else {
       if (updateDelayMillis < 0) {
         updateDelayMillis = defaultUpdateDelayMillis;
       }
-      highlightTask = scheduler.schedule(new Runnable() {
-        public void run() {
-          myRepository.getModelAccess().runReadInEDT(new Runnable() {
-            public void run() {
-              highlight(selectedCell);
-            }
-          });
-        }
-      }, updateDelayMillis, TimeUnit.MILLISECONDS);
-    }
-  }
-
-  private void highlight(@NotNull EditorCell selectedCell) {
-    clearMarks();
-    SNode nodeToHighlight = APICellAdapter.getSNodeWRTReference(selectedCell);
-    if (nodeToHighlight != null) {
-      highlight(nodeToHighlight, selectedCell.getSNode());
+      highlightTask = scheduler.schedule(() -> highlightUsages(selectedCell), updateDelayMillis, TimeUnit.MILLISECONDS);
     }
   }
 
@@ -99,43 +87,83 @@ public class HighlightUsagesSupport {
     hm.clearForOwner(emo);
   }
 
-  private void highlight(@NotNull SNode nodeToHighlight, @Nullable SNode selectedCellNode) {
+  private void highlightUsages(@NotNull final EditorCell selectedCell) {
     if (myDumbService.isDumb()) {
       return;
     }
-    NodeHighlightManager hm = myEC.getHighlightManager();
-    EditorMessageOwner highlightMessagesOwner = myEC.getHighlightMessagesOwner();
+    final Set<SReference> refs = new HashSet<>();
+    myRepository.getModelAccess().runReadAction(() -> {
+      final SNode nodeToHighlight = APICellAdapter.getSNodeWRTReference(selectedCell, myRepository);
+      if (nodeToHighlight == null) {
+        return;
+      }
+      collectUsages(nodeToHighlight, new CollectConsumer<>(refs));
+      myRepository.getModelAccess().runReadInEDT(() -> {
+        EditorCell currentlySelectedCell = myEC.getSelectedCell();
+        if (selectedCell == currentlySelectedCell) {
+          markUsages(selectedCell.getSNode(), nodeToHighlight, refs);
+        }
+      });
+    });
+  }
 
+  private void collectUsages(@NotNull SNode nodeToHighlight, Consumer<SReference> consumer) {
+    SNode editedRoot = getEditedRoot();
+    if (editedRoot != null) {
+      SearchScope scope = new ModelsScope(editedRoot.getModel());
+      FindUsagesFacade.getInstance().findUsages(scope, Collections.singleton(nodeToHighlight), consumer, null);
+    }
+  }
+
+  @Nullable
+  private SNode getEditedRoot() {
     jetbrains.mps.nodeEditor.cells.EditorCell rootCell = myEC.getRootCell();
     if (rootCell == null) {
-      return;
+      return null;
     }
     SNode node = rootCell.getSNode();
     if (node == null) {
+      return null;
+    }
+    return node.getContainingRoot();
+  }
+
+  private void markUsages(@NotNull SNode selectedCellNode, @NotNull SNode nodeToHighlight, @NotNull Set<SReference> usages) {
+    clearMarks();
+
+    if (usages.isEmpty()) {
       return;
     }
-    SNode editedRoot = node.getContainingRoot();
-    SNode highlightingRoot = nodeToHighlight.getContainingRoot();
 
-    SearchScope scope = new ModelsScope(editedRoot.getModel());
-    Set<SReference> usages = FindUsagesFacade.getInstance().findUsages(scope, Collections.singleton(nodeToHighlight), null);
+    NodeHighlightManager hm = myEC.getHighlightManager();
+    EditorMessageOwner highlightMessagesOwner = myEC.getHighlightMessagesOwner();
+
+    TextAttributesKey attributes = TextAttributesKey.createTextAttributesKey("IDENTIFIER_UNDER_CARET_ATTRIBUTES");
+    TextAttributes textAttributes = EditorColorsManager.getInstance().getGlobalScheme().getAttributes(attributes);
+    Color color = textAttributes.getErrorStripeColor();
+    if (color == null) {
+      return;
+    }
+
+    SNode editedRoot = getEditedRoot();
+    SNode highlightingRoot = nodeToHighlight.getContainingRoot();
 
     for (SReference ref : SetSequence.fromSet(usages)) {
       SNode referenceNode = ref.getSourceNode();
       SNode referenceRoot = referenceNode.getContainingRoot();
       if (referenceRoot == editedRoot && referenceNode != selectedCellNode && hm.getMessagesFor(referenceNode, highlightMessagesOwner).isEmpty()) {
-        hm.mark(referenceNode, myHighlightColor, "usage", emo);
+        hm.mark(referenceNode, color, "usage", emo);
       }
     }
 
     if (highlightingRoot == editedRoot && nodeToHighlight != selectedCellNode && nodeToHighlight != editedRoot && hm.getMessagesFor(nodeToHighlight, highlightMessagesOwner).isEmpty()) {
-      hm.mark(nodeToHighlight, myHighlightColor, "usage", emo);
+      hm.mark(nodeToHighlight, color, "usage", emo);
     }
   }
 
   @Nullable
-  private DumbService getDumbService() {
-    Project mpsProject = ProjectHelper.getProject(myRepository);
+  private static DumbService getDumbService(SRepository repository) {
+    Project mpsProject = ProjectHelper.getProject(repository);
     if (mpsProject == null) {
       return null;
     }

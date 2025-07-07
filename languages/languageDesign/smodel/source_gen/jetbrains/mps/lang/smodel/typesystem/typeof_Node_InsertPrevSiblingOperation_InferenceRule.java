@@ -20,7 +20,7 @@ public class typeof_Node_InsertPrevSiblingOperation_InferenceRule extends Abstra
   }
   public void applyRule(final SNode op, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode parameter = SLinkOperations.getTarget(op, LINKS.insertedNode$7vk2);
-    if (!((parameter == null))) {
+    if (!(parameter == null)) {
       {
         SNode _nodeToCheck_1029348928467 = parameter;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, "incompatible type: snode expected", "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1186057110413", 0, null);

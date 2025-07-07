@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionExecutable;
 import jetbrains.mps.openapi.intentions.IntentionFactory;
 import jetbrains.mps.openapi.intentions.Kind;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -35,17 +34,6 @@ import java.util.stream.Collectors;
 public class NodeTransformerBasedIntentionFactory implements IntentionFactory {
   private final NodeTransformerFactory myFactory;
   private final Kind myKind;
-
-  /**
-   * @deprecated use {@link #NodeTransformerBasedIntentionFactory(NodeTransformerFactory, NodeTransformer.Kind)} instead.
-   *             Code generated with 2017.3 may use this constructor, remove once 2018.1 is out
-   *
-   */
-  @ToRemove(version = 2018.1)
-  public NodeTransformerBasedIntentionFactory(NodeTransformerFactory factory) {
-    myFactory = factory;
-    myKind = Kind.NORMAL;
-  }
 
   public NodeTransformerBasedIntentionFactory(NodeTransformerFactory factory, NodeTransformer.Kind kind) {
     myFactory = factory;
@@ -85,14 +73,6 @@ public class NodeTransformerBasedIntentionFactory implements IntentionFactory {
     return myFactory.isAvailableInChildren();
   }
 
-  @Override
-  public boolean isApplicable(SNode node, EditorContext editorContext) {
-    if (isAvailableInChildNodes() && node != editorContext.getSelectedNode()) {
-      return myFactory.isAvailableInChild(node, editorContext.getSelectedNode(), editorContext);
-    }
-    return myFactory.isApplicable(node, editorContext);
-  }
-
   @Nullable
   @Override
   public SNodeReference getIntentionNodeReference() {
@@ -114,6 +94,14 @@ public class NodeTransformerBasedIntentionFactory implements IntentionFactory {
     @Override
     public void execute(SNode node, EditorContext editorContext) {
       myTransformer.execute();
+    }
+
+    @Override
+    public boolean isApplicable(SNode node, EditorContext editorContext) {
+      if (myFactory.isAvailableInChildren() && node != editorContext.getSelectedNode()) {
+        return myFactory.isAvailableInChild(node, editorContext.getSelectedNode(), editorContext);
+      }
+      return myFactory.isApplicable(node, editorContext);
     }
 
     @Override

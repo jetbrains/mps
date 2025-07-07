@@ -60,7 +60,7 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "cell");
     editorCell.setCellId("Constant_ql48ef_b0");
     Style style = new StyleImpl();
-    new EditorOperationStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new EditorOperationStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     Annotation_Actions.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");

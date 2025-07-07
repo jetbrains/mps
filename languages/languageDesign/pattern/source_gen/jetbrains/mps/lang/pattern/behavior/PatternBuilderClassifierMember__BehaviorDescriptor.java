@@ -33,17 +33,17 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class PatternBuilderClassifierMember__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x50f8d1ebd50bbeb0L, "jetbrains.mps.lang.pattern.structure.PatternBuilderClassifierMember");
 
-  public static final SMethod<Boolean> isStatic_id7MS72Gc8avw = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isStatic").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7MS72Gc8avw").build();
-  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<String> getGeneratedName_id6SIgReParNN = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6SIgReParNN").build();
-  public static final SMethod<Void> populateMember_id6r77ob2UW9O = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateMember").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6r77ob2UW9O").build(SMethodBuilder.createJavaParameter(MembersPopulatingContext.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> isStaticClassifierMember_id7MS72Gc8avw = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isStaticClassifierMember").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8986964027630462944L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<String> getGeneratedName_id6SIgReParNN = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7939357357340474611L).languageId(0xaf012b78369b0ba7L, 0xd4615e3bd6714ba9L).build2();
+  public static final SMethod<Void> populateMember_id6r77ob2UW9O = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateMember").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7405920559687254644L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(MembersPopulatingContext.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isStatic_id7MS72Gc8avw, getScope_id52_Geb4QDV$, getGeneratedName_id6SIgReParNN, populateMember_id6r77ob2UW9O);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isStaticClassifierMember_id7MS72Gc8avw, getScope_id52_Geb4QDV$, getGeneratedName_id6SIgReParNN, populateMember_id6r77ob2UW9O);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static boolean isStatic_id7MS72Gc8avw(@NotNull SNode __thisNode__) {
+  /*package*/ static boolean isStaticClassifierMember_id7MS72Gc8avw(@NotNull SNode __thisNode__) {
     return true;
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
@@ -77,7 +77,7 @@ public final class PatternBuilderClassifierMember__BehaviorDescriptor extends Ba
     }
     switch (methodIndex) {
       case 0:
-        return (T) ((Boolean) isStatic_id7MS72Gc8avw(node));
+        return (T) ((Boolean) isStaticClassifierMember_id7MS72Gc8avw(node));
       case 1:
         return (T) ((Scope) getScope_id52_Geb4QDV$(node, (SAbstractConcept) parameters[0], (SNode) parameters[1]));
       case 2:

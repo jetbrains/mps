@@ -36,30 +36,32 @@
       <node id="1198265022560" at="70,0,71,0" concept="4" trace="sourceNodesQuery$RIct" />
       <node id="1198265022560" at="71,0,72,0" concept="4" trace="sourceNodesQuery$XjmI" />
       <node id="1198265022560" at="75,0,76,0" concept="4" trace="applyToConceptInheritors$PfLi" />
-      <node id="7834938100936651353" at="39,91,42,7" concept="1" />
-      <node id="224926278906350088" at="46,91,49,7" concept="1" />
-      <node id="7834938100936651350" at="39,0,44,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
-      <node id="224926278906344315" at="46,0,51,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <node id="7834938100936651353" at="39,102,42,7" concept="1" />
+      <node id="224926278906350088" at="46,102,49,7" concept="1" />
+      <node id="7834938100936651350" at="39,0,44,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;ILorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <node id="224926278906344315" at="46,0,51,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;ILorg/jetbrains/mps/openapi/model/SModel;)V" />
       <node id="5590278813170626320" at="24,40,33,11" concept="1" />
       <node id="3562028609770756949" at="23,145,34,9" concept="1" />
-      <node id="1207674483510" at="20,91,35,7" concept="1" />
-      <node id="1207674454116" at="20,0,37,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <node id="1207674483510" at="20,102,35,7" concept="1" />
+      <node id="1207674454116" at="20,0,37,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;ILorg/jetbrains/mps/openapi/model/SModel;)V" />
       <scope id="5590278813170626321" at="25,84,26,144" />
       <scope id="3562028609770837938" at="27,90,28,143" />
       <scope id="3562028609770842206" at="29,92,30,145" />
       <scope id="3562028609770842276" at="31,85,32,138" />
       <scope id="7834938100936651355" at="40,76,41,185" />
       <scope id="224926278906350089" at="47,84,48,87" />
-      <scope id="7834938100936651350" at="39,91,42,7" />
-      <scope id="224926278906344315" at="46,91,49,7" />
+      <scope id="7834938100936651350" at="39,102,42,7" />
+      <scope id="224926278906344315" at="46,102,49,7" />
       <scope id="7834938100936651350" at="39,0,44,0">
         <var name="enclosingNode" id="7834938100936651350" />
+        <var name="index" id="7834938100936651350" />
         <var name="model" id="7834938100936651350" />
         <var name="newNode" id="7834938100936651350" />
         <var name="sampleNode" id="7834938100936651350" />
       </scope>
       <scope id="224926278906344315" at="46,0,51,0">
         <var name="enclosingNode" id="224926278906344315" />
+        <var name="index" id="224926278906344315" />
         <var name="model" id="224926278906344315" />
         <var name="newNode" id="224926278906344315" />
         <var name="sampleNode" id="224926278906344315" />
@@ -68,9 +70,10 @@
       <scope id="1207674483512" at="21,76,34,9">
         <var name="sourceNodeQuery" id="3562028609770756519" />
       </scope>
-      <scope id="1207674454116" at="20,91,35,7" />
+      <scope id="1207674454116" at="20,102,35,7" />
       <scope id="1207674454116" at="20,0,37,0">
         <var name="enclosingNode" id="1207674454116" />
+        <var name="index" id="1207674454116" />
         <var name="model" id="1207674454116" />
         <var name="newNode" id="1207674454116" />
         <var name="sampleNode" id="1207674454116" />

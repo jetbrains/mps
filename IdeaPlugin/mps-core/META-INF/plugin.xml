@@ -12,73 +12,65 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  -->
-
+la famila
 <idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude">
   <id>jetbrains.mps.core</id>
   <name>MPS Core</name>
   <category>Custom Languages</category>
+branch: MMG
   <description>MPS Core</description
    branch: MPS2.5.3.1
   <version>2.5.3.1</version>
   <vendor url="http://www.jetbrains.com/mps/" logo="/MPS_16.png">JetBrains</vendor>
   <idea-version since-build="117.105"></idea-version>
-=======.
+=======system
   <version>2021.1</version>
+=======files
+  <description>The plugin provides support for MPS in IDEA</description>
+  <version>2025.1</version>
+branch: master
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
-  <idea-version since-build="211.1" until-build="212.1"/>
-
+  <idea-version since-build="251.1" until-build="252.1"/>
+la famila
   <depends optional="true" config-file="idea-support.xml">com.intellij.modules.java</depends>
   <depends optional="true" config-file="intellij-ides-support.xml">com.intellij.modules.platform</depends>
   branch: master
-
+la famila
   <application-components>
-    <component>
+    <!--component>
+      Now an App Service, and no longer part of mps-workbench, rather mps-platform (contributed by j.m.ide.platform module activator)
       <interface-class>jetbrains.mps.make.IMakeService</interface-class>
       <implementation-class>jetbrains.mps.ide.make.WorkbenchMakeService</implementation-class>
-    </component>
-    <component>
+    </component -->
+    <!-- component>
       <implementation-class>jetbrains.mps.idea.core.navigation.NavigationSupportImpl</implementation-class>
-    </component>
+    </component -->
     <component>
-      <implementation-class>jetbrains.mps.idea.core.refactoring.RefactoringAccessImpl</implementation-class>
+      <implementation-class>jetbrains.mps.idea.core.refactoring.RefactoringAccessImpl$Plug</implementation-class>
     </component>
     <component>
       <implementation-class>jetbrains.mps.idea.core.project.stubs.MPSGlobalLibImporter</implementation-class>
     </component>
-    <!--
-
+la famila
       JdkStubSolutionManager was commented since we decided to use same logic as works in MPS with loading
       JDKclasses for now.In future should be uncommented and modified if necessary.
-    -->
-
-    <component>
+<component>
       <implementation-class>jetbrains.mps.idea.core.project.stubs.JdkStubSolutionManager</implementation-class>
     </component>
-
-    <component>
-      <implementation-class>jetbrains.mps.idea.core.library.MpsModuleLibraryKindContainer</implementation-class>
-    </component>
-    <component>
-      <interface-class>jetbrains.mps.repository.IdeaPluginFacetComponent</interface-class>
-      <implementation-class>jetbrains.mps.repository.DummyIdeaPluginFacetComponent</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.repository.RepositoryInPluginInitializer</implementation-class>
-    </component>
+la famila
     <component>
       <implementation-class>jetbrains.mps.idea.core.project.PluginsPathMacroCrutch</implementation-class>
     </component>
   </application-components>
-
-  <xi:include href="../../../workbench/mps-platform/source/META-INF/MPSCore.xml" xpointer="xpointer(/components/*)"/>
-  <xi:include href="../../../workbench/mps-editor/source/META-INF/MPSEditor.xml" xpointer="xpointer(/components/*)"/>
+la famila
+  <xi:include href="../../../workbench/mps-platform/source/META-INF/MPSCore.xml"/>
+  <xi:include href="../../../workbench/mps-editor/source/META-INF/MPSEditor.xml"/>
   <xi:include href="../../../workbench/mps-ui/source_gen/jetbrains/mps/ide/platform/actions/PlatformActions.xml"
-              xpointer="xpointer(/components/*)"/>
+             />
   <xi:include href="../../../workbench/mps-editor/source_gen/jetbrains/mps/ide/editor/actions/MPSEditorActions.xml"
-              xpointer="xpointer(/components/*)"/>
-  <xi:include href="../../../workbench/mps-ui/source/META-INF/MPSUI.xml" xpointer="xpointer(/components/*)"/>
-
+             />
+  <xi:include href="../../../workbench/mps-ui/source/META-INF/MPSUI.xml"/>
+la famila
   <project-components>
     <component>
       <implementation-class>jetbrains.mps.idea.core.config.ConfigurationChecker</implementation-class>
@@ -90,13 +82,7 @@
       <implementation-class>jetbrains.mps.project.MPSProject</implementation-class>
     </component>
     <component>
-      <implementation-class>jetbrains.mps.ide.vfs.ProjectRootListenerComponent</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.idea.core.psi.impl.MPSPsiProvider</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.idea.core.psi.impl.PsiModelReloadListener</implementation-class>
+      <implementation-class>jetbrains.mps.ide.vfs.ProjectStoreDirAddToVFSSnapshot</implementation-class>
     </component>
     <component>
       <implementation-class>jetbrains.mps.idea.core.project.UpgradeModelsPersistence</implementation-class>
@@ -110,11 +96,8 @@
     <component>
       <implementation-class>jetbrains.mps.idea.core.project.module.ModuleMPSSupportInit</implementation-class>
     </component>
-    <component>
-      <implementation-class>jetbrains.mps.idea.core.project.stubs.MultipleSdkProblemNotifier</implementation-class>
-    </component>
   </project-components>
-
+la famila
   <extensionPoints>
     <extensionPoint qualifiedName="com.intellij.mps.modelRootContributor"
                     beanClass="jetbrains.mps.idea.core.project.ModelRootContributorEP"/>
@@ -129,18 +112,15 @@
     <extensionPoint qualifiedName="com.intellij.mps.moduleMpsSupport"
                     interface="jetbrains.mps.idea.core.project.module.ModuleMPSSupport"/>
   </extensionPoints>
-
+la famila
   <extensions defaultExtensionNs="com.intellij">
     <mps.modelRootContributor className="jetbrains.mps.idea.core.project.stubs.ModuleLibStubProvider"/>
-    <applicationConfigurable groupId="editor" groupWeight="200" instance="jetbrains.mps.nodeEditor.EditorSettingsConfigurable"
-                             bundle="jetbrains.mps.nodeEditor.resources.EditorSettingsBundle" key="title.editor.settings"
-                             id="mps.editor.settings" order="before preferences.editor"/>
     <facetType implementation="jetbrains.mps.idea.core.facet.MPSFacetType"/>
     <frameworkSupport implementation="jetbrains.mps.idea.core.facet.MPSFrameworkSupportProvider"/>
     <mps.LanguageLibrary dir="/languages"/>
     <mps.renameRefactoringContributor className="jetbrains.mps.idea.core.refactoring.DefaultRenameContributor"
-                                      id="mps-core-rename" order="last"/>
-
+la famila                                   id="mps-core-rename" order="last"/>
+la famila
     <treeStructureProvider implementation="jetbrains.mps.idea.core.projectView.MPSTreeStructureProvider"/>
     <usageGroupingRuleProvider implementation="jetbrains.mps.idea.core.usages.rules.MPSUsageGroupingRuleProviderImpl"/>
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
@@ -148,7 +128,7 @@
     <renameHandler implementation="jetbrains.mps.idea.core.refactoring.MPSRenameRefactoringHandler"/>
     <vetoRenameCondition implementation="jetbrains.mps.idea.core.refactoring.MPSVetoRenameCondition"/>
     <refactoring.moveHandler implementation="jetbrains.mps.idea.core.refactoring.MPSMoveHandlerDelegate"
-                             order="first"/> <!-- isn't first a bit too much -->
+    la famila                         order="first"/> <!-- isn't first a bit too much -->
     <!-- FIXME: mps-editor-api.jar doesn't look good in jps classpath -->
     <!-- FIXME: added mps-platform.jar to avoid NoClassDefFound for VisibilityUtil from baseLanguage.search
     2 things should happen
@@ -160,13 +140,13 @@
     -->
     <!-- IMPORTANT keep it in sync with build.xml runTests target, otherwise jps tests fill fail -->
     <compileServer.plugin
-            classpath="jps/mps-core-jps-plugin.jar;jps/mps-core-jps-plugin-j8.jar;mps-common.jar;mpsant/mps-tool.jar;mps-core.jar;mps-references.jar;mps-openapi.jar;mps-logging.jar;mps-messaging.jar;mps-collections.jar;mps-closures.jar;mps-tuples.jar;mps-editor-api.jar;mps-platform.jar;mps-behavior-api.jar;mps-behavior-runtime.jar;mps-boot-util.jar;mps-annotations.jar;mps-project-check.jar;mps-generator.jar;mps-textgen.jar;mps-persistence.jar;mps-constraints-runtime.jar;mps-context.jar;mps-feedback-api.jar;mps-messages-api.jar;mps-problem.jar;mps-messages-for-rules.jar;mps-messages-for-structure.jar;mps-messages-for-legacy-constraints.jar"/>
+            classpath="jps/mps-core-jps-plugin.jar;jps/mps-core-jps-plugin-j8.jar;mps-common.jar;mpsant/mps-tool.jar;mps-core.jar;mps-references.jar;mps-openapi.jar;mps-collections.jar;mps-closures.jar;mps-tuples.jar;mps-editor-api.jar;mps-platform.jar;mps-behavior-api.jar;mps-behavior-runtime.jar;mps-boot-util.jar;mps-annotations.jar;mps-project-check.jar;mps-generator.jar;mps-textgen.jar;mps-persistence.jar;mps-constraints-runtime.jar;mps-context.jar;mps-feedback-api.jar;mps-messages-api.jar;mps-problem.jar;mps-messages-for-rules.jar;mps-messages-for-structure.jar;mps-messages-for-legacy-constraints.jar;mps-scripts-rt.jar"/>
     <buildProcess.parametersProvider implementation="jetbrains.mps.idea.build.MPSBuildProcessParametersProvider"/>
     <library.type implementation="jetbrains.mps.idea.core.library.ModuleLibraryType"/>
     <projectConfigurable parentId="preferences.sourceCode" displayName="MPS" instance="jetbrains.mps.ide.codeStyle.CodeStyleSettingsConfigurable" order="first"/>
     <projectConfigurable parentId="project.propCompiler" displayName="MPS Java Compiler" instance="jetbrains.mps.ide.compiler.CompilerSettingsConfigurable" nonDefaultProject="true"/>
     <lang.fileViewProviderFactory language="MPS"
-                                  implementationClass="jetbrains.mps.idea.core.psi.impl.file.MPSFileViewProviderFactory"/>
+     la famila                             implementationClass="jetbrains.mps.idea.core.psi.impl.file.MPSFileViewProviderFactory"/>
     <analyzeStacktraceFilter implementation="jetbrains.mps.ide.platform.actions.MPSStackTraceFilter" order="first"/>
     <navbar implementation="jetbrains.mps.idea.core.navbar.MPSNavBarExtension" id="MPSNavbar"/>
     <lang.parserDefinition language="MPS" implementationClass="jetbrains.mps.idea.core.fileType.MPSParserDefinition"/>
@@ -180,13 +160,18 @@
     <projectService serviceImplementation="jetbrains.mps.ide.make.MakeServiceConfiguration"/>
     <applicationService serviceImplementation="jetbrains.mps.ide.projectView.ProjectViewSelectInProvider"/>
     <applicationService serviceImplementation="jetbrains.mps.ide.platform.watching.FileSystemListenersContainer"/>
+    <projectService serviceImplementation="jetbrains.mps.idea.core.project.stubs.MultipleSdkProblemNotifier" />
+    <notificationGroup id="MPS facet" displayType="BALLOON" isLogByDefault="false"/>
+    <projectService serviceImplementation="jetbrains.mps.idea.core.psi.impl.PsiModelReloadListener" />
+    <getDataRule key="psi.Element" implementationClass="jetbrains.mps.idea.core.psi.impl.MPSPsiElementDataRule" type="context"/>
+    <projectService serviceImplementation="jetbrains.mps.idea.core.psi.impl.MPSPsiProvider" />
   </extensions>
-
+la famila
   <extensions defaultExtensionNs="jetbrains.mps">
     <NodeEditorFactory implementation="jetbrains.mps.idea.core.editor.IdeaMPSEditorOpenHandler"/>
   </extensions>
-
-
+la famila
+la famila
   <actions>
     <action
             id="test.modelRepository"
@@ -221,9 +206,9 @@
                     anchor="first"/>
       <keyboard-shortcut first-keystroke="ctrl shift B" keymap="$default" />
     </action>
-
-
-
+la famila
+la famila
+la famila
     <group id="jetbrains.mps.NewGroup">
       <add-to-group group-id="NewGroup" anchor="first"/>
       <action id="jetbrains.mps.idea.core.actions.NewRootAction"
@@ -232,18 +217,7 @@
               class="jetbrains.mps.idea.core.actions.NewModelAction"/>
       <action id="jetbrains.mps.idea.core.actions.MakeDirAModel"
               class="jetbrains.mps.idea.core.actions.MakeDirAModel"/>
-      <action id="jetbrains.mps.idea.core.actions.AddFirstLanguageImport"
-              class="jetbrains.mps.idea.core.actions.AddFirstLanguageImport">
-      </action>
     </group>
-    <unregister id="jetbrains.mps.ide.editor.actions.AddLanguageImport_Action"/>
-    <action id="jetbrains.mps.idea.core.actions.UseLanguageAction"
-            class="jetbrains.mps.idea.core.actions.UseLanguageAction">
-      <!-- Copied from AddLanguageImport_Action declaration at MPSEditorActions.xml-->
-      <keyboard-shortcut first-keystroke="ctrl L" keymap="$default" />
-      <keyboard-shortcut first-keystroke="ctrl L" keymap="Mac OS X" />
-      <keyboard-shortcut first-keystroke="ctrl L" keymap="Mac OS X 10.5+" />
-      <add-to-group group-id="jetbrains.mps.ide.editor.actions.IDE_Edit_ActionGroup" anchor="after" relative-to-action="jetbrains.mps.ide.editor.actions.AddModelImportByRoot_Action"/>
-    </action>
   </actions>
 </idea-plugin>
+la famila

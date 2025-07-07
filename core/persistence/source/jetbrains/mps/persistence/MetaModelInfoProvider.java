@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.persistence;
 
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.smodel.adapter.ids.SConceptFeatureId;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.smodel.adapter.ids.SContainmentLinkId;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
@@ -30,12 +31,13 @@ import jetbrains.mps.smodel.runtime.LinkDescriptor;
 import jetbrains.mps.smodel.runtime.PropertyDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceDescriptor;
 import jetbrains.mps.smodel.runtime.StaticScope;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.persistence.ModelLoadingOption;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * PROVISIONAL API, DO NOT USE
@@ -116,9 +118,20 @@ public interface MetaModelInfoProvider {
 
   void setScope(SConceptId concept, StaticScope scope);
 
+  // since 2023.2
+  Boolean isInterfaceConcept(SConceptId concept);
+
+  void setInterfaceConcept(SConceptId concept);
+
   Boolean isUnordered(SContainmentLinkId link);
 
   void setUnordered(SContainmentLinkId link, boolean unordered);
+
+  /**
+   * no need for corresponding setter as the moment we read a feature (property/link) meta-info, we can be sure it's not transient
+   * FIXME what if feature id is INVALID, how about an idea to report it as transient?
+   */
+  boolean isTransient(SConceptFeatureId feature);
 
   /**
    * This method makes sense only for concepts with
@@ -205,6 +218,16 @@ public interface MetaModelInfoProvider {
     }
 
     @Override
+    public Boolean isInterfaceConcept(SConceptId concept) {
+      return null;
+    }
+
+    @Override
+    public void setInterfaceConcept(SConceptId concept) {
+      // intentionally no-op
+    }
+
+    @Override
     public Boolean isUnordered(SContainmentLinkId link) {
       return null;
     }
@@ -212,6 +235,11 @@ public interface MetaModelInfoProvider {
     @Override
     public void setUnordered(SContainmentLinkId link, boolean unordered) {
       // intentionally no-op
+    }
+
+    @Override
+    public boolean isTransient(SConceptFeatureId feature) {
+      return false;
     }
 
     @Override
@@ -232,7 +260,7 @@ public interface MetaModelInfoProvider {
    * <p/>
    */
   class RegularMetaModelInfo extends BaseMetaModelInfo {
-    private static final Logger LOG = Logger.wrap(LogManager.getLogger(DefaultModelPersistence.class));
+    private static final Logger LOG = Logger.getLogger(DefaultModelPersistence.class);
     private final MetaModelInfoProvider myDebugRegistry;
 
     public RegularMetaModelInfo() {
@@ -329,6 +357,16 @@ public interface MetaModelInfoProvider {
     }
 
     @Override
+    public Boolean isInterfaceConcept(SConceptId concept) {
+      ConceptDescriptor descriptor = ConceptRegistryUtil.getConceptDescriptor(concept);
+      if (descriptor != null) {
+        return descriptor.isInterfaceConcept();
+      }
+      // in persistence, we used to treat everything with SConceptId as a Concept
+      return Boolean.FALSE;
+    }
+
+    @Override
     public Boolean isUnordered(SContainmentLinkId link) {
       ConceptDescriptor descriptor = ConceptRegistryUtil.getConceptDescriptor(link.getConceptId());
       if (descriptor != null) {
@@ -338,6 +376,28 @@ public interface MetaModelInfoProvider {
         }
       }
       return Boolean.FALSE;
+    }
+
+    @Override
+    public boolean isTransient(SConceptFeatureId feature) {
+      ConceptDescriptor descriptor = ConceptRegistryUtil.getConceptDescriptor(feature.getConceptId());
+      if (descriptor != null) {
+        if (feature instanceof SContainmentLinkId) {
+          final LinkDescriptor ld = descriptor.getLinkDescriptor((SContainmentLinkId) feature);
+          return ld != null && ld.isTransient();
+        }
+        if (feature instanceof SPropertyId) {
+          final PropertyDescriptor pd = descriptor.getPropertyDescriptor((SPropertyId) feature);
+          return pd != null && pd.isTransient();
+        }
+        if (feature instanceof SReferenceLinkId) {
+          final ReferenceDescriptor rd = descriptor.getRefDescriptor((SReferenceLinkId) feature);
+          return rd != null && rd.isTransient();
+        }
+        assert false : String.format("Feature class: %s, id: %s. toString: %s", feature.getClass(), feature.getIdValue(), feature);
+        // fall-through, false is ok for defaults
+      }
+      return false;
     }
 
     @Override
@@ -395,6 +455,7 @@ public interface MetaModelInfoProvider {
     private final Map<SConceptId, StaticScope> myScope = new HashMap<>();
     private final Map<SConceptId, ConceptKind> myKind = new HashMap<>();
     private final Map<SConceptId, SConceptId> myStubs = new HashMap<>();
+    private final Set<SConceptId> myInterfaceConcepts = new HashSet<>();
     private final MetaModelInfoProvider myDelegate;
 
     public StuffedMetaModelInfo(@NotNull MetaModelInfoProvider delegate) {
@@ -420,6 +481,7 @@ public interface MetaModelInfoProvider {
       other.myScope.putAll(myScope);
       other.myKind.putAll(myKind);
       other.myStubs.putAll(myStubs);
+      other.myInterfaceConcepts.addAll(myInterfaceConcepts);
     }
 
     @Override
@@ -490,6 +552,12 @@ public interface MetaModelInfoProvider {
         myScope.put(concept, scope);
       }
       myDelegate.setScope(concept, scope);
+    }
+
+    @Override
+    public void setInterfaceConcept(SConceptId concept) {
+      myInterfaceConcepts.add(concept);
+      myDelegate.setInterfaceConcept(concept);
     }
 
     @Override
@@ -576,12 +644,26 @@ public interface MetaModelInfoProvider {
     }
 
     @Override
+    public Boolean isInterfaceConcept(SConceptId concept) {
+      return myInterfaceConcepts.contains(concept) ? Boolean.TRUE : myDelegate.isInterfaceConcept(concept);
+    }
+
+    @Override
     public Boolean isUnordered(SContainmentLinkId link) {
       Boolean unordered = myUnordered.get(link);
       if (unordered != null) {
         return unordered;
       }
       return myDelegate.isUnordered(link);
+    }
+
+    @Override
+    public boolean isTransient(SConceptFeatureId feature) {
+      // just to use base implementation explicitly, to show no delegation (myDelegate) is deliberate.
+      // I believe for scenarios with StuffedMetaModelInfo, when we read model first, we shall never encounter a case
+      // with a transient feature (here, I don't want to even think about features that used to be non-transient and then
+      // became transient, it's ok to read and write them back then, I suppose)
+      return super.isTransient(feature);
     }
 
     @Override

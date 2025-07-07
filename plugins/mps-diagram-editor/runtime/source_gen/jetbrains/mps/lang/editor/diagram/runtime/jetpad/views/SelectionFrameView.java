@@ -30,11 +30,7 @@ public class SelectionFrameView extends AbstractExternalFrameView {
                 super.registerSynchronizers(configuration);
                 configuration.add(Synchronizers.forProperty(color, getTarget().color()));
                 configuration.add(Synchronizers.forProperties(lineWidth, getTarget().width()));
-                configuration.add(Synchronizers.forProperty(frameRectangle, new Runnable() {
-                  public void run() {
-                    updateBorderView(getTarget(), frameRectangle.get());
-                  }
-                }));
+                configuration.add(Synchronizers.forProperty(frameRectangle, () -> updateBorderView(getTarget(), frameRectangle.get())));
               }
             };
           }

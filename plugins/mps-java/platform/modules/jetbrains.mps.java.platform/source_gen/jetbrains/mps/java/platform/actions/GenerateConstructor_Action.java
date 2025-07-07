@@ -22,13 +22,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import java.util.List;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -38,7 +36,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-@GeneratedClass(node = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)/7111916581652589824", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
+@GeneratedClass(nodeId = "7111916581652589824", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
 public class GenerateConstructor_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -98,49 +96,39 @@ public class GenerateConstructor_Action extends BaseAction {
     final Wrappers._boolean needsShowFieldsDialog = new Wrappers._boolean(false);
     final Wrappers._T<SNodeReference[]> fields = new Wrappers._T<SNodeReference[]>(null);
     final SRepository repo = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository();
-    repo.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        classConcept.value = GenerateConstructor_Action.this.getClassConcept(_params);
-        SNode superclass;
-        superclass = SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(classConcept.value, LINKS.superclass$Mp9$), LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK);
-        if (superclass == null) {
+    repo.getModelAccess().runReadAction(() -> {
+      classConcept.value = GenerateConstructor_Action.this.getClassConcept(_params);
+      SNode superclass;
+      superclass = SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(classConcept.value, LINKS.superclass$Mp9$), LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK);
+      if (superclass == null) {
+        selectedConstructors.value = new SNodeReference[]{new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object.<init>()")};
+      } else {
+        if (Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(superclass, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("constructors", 5292274854859503373L, 0x5745e3015c8914d3L)))).count() > 1) {
+          needsShowConstructorsDialog.value = true;
+          ctors.value = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(superclass, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("constructors", 5292274854859503373L, 0x5745e3015c8914d3L)))).select((it) -> SNodeOperations.getPointer(it)).toGenericArray(SNodeReference.class);
+        } else if (Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(superclass, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("constructors", 5292274854859503373L, 0x5745e3015c8914d3L)))).count() == 1) {
+          selectedConstructors.value = new SNodeReference[]{SNodeOperations.getPointer(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(superclass, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("constructors", 5292274854859503373L, 0x5745e3015c8914d3L)))).first())};
+        } else {
           selectedConstructors.value = new SNodeReference[]{new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object.<init>()")};
-        } else {
-          if (Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(superclass, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("constructors", CONCEPTS.ClassConcept$bK, "4_LVZ3pCvsd")))).count() > 1) {
-            needsShowConstructorsDialog.value = true;
-            ctors.value = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(superclass, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("constructors", CONCEPTS.ClassConcept$bK, "4_LVZ3pCvsd")))).select(new ISelector<SNode, SNodeReference>() {
-              public SNodeReference select(SNode it) {
-                return SNodeOperations.getPointer(it);
-              }
-            }).toGenericArray(SNodeReference.class);
-          } else if (Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(superclass, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("constructors", CONCEPTS.ClassConcept$bK, "4_LVZ3pCvsd")))).count() == 1) {
-            selectedConstructors.value = new SNodeReference[]{SNodeOperations.getPointer(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(superclass, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("constructors", CONCEPTS.ClassConcept$bK, "4_LVZ3pCvsd")))).first())};
-          } else {
-            selectedConstructors.value = new SNodeReference[]{new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object.<init>()")};
-          }
         }
-        if (needsShowConstructorsDialog.value) {
-          SelectConstructorsDialog selectConstructorsDialog = new SelectConstructorsDialog(ctors.value, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
-          selectConstructorsDialog.setTitle("Choose Super Class Constructor");
-          selectConstructorsDialog.show();
+      }
+      if (needsShowConstructorsDialog.value) {
+        SelectConstructorsDialog selectConstructorsDialog = new SelectConstructorsDialog(ctors.value, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
+        selectConstructorsDialog.setTitle("Choose Super Class Constructor");
+        selectConstructorsDialog.show();
 
-          if (!(selectConstructorsDialog.isOK())) {
-            return;
-          }
-          List<SNodeReference> selectedElements = selectConstructorsDialog.getSelectedElements();
-          selectedConstructors.value = (selectedElements != null ? selectedElements.toArray(new SNodeReference[selectedElements.size()]) : new SNodeReference[0]);
+        if (!(selectConstructorsDialog.isOK())) {
+          return;
         }
+        List<SNodeReference> selectedElements = selectConstructorsDialog.getSelectedElements();
+        selectedConstructors.value = (selectedElements != null ? selectedElements.toArray(new SNodeReference[selectedElements.size()]) : new SNodeReference[0]);
+      }
 
-        if (Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept.value, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("fields", CONCEPTS.ClassConcept$bK, "4_LVZ3pC27C")))).isNotEmpty()) {
-          needsShowFieldsDialog.value = true;
-          fields.value = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept.value, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("fields", CONCEPTS.ClassConcept$bK, "4_LVZ3pC27C")))).select(new ISelector<SNode, SNodeReference>() {
-            public SNodeReference select(SNode it) {
-              return SNodeOperations.getPointer(it);
-            }
-          }).toGenericArray(SNodeReference.class);
-        } else {
-          selectedFields.value = new SNodeReference[0];
-        }
+      if (Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept.value, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("fields", 5292274854859383272L, 0x5745e3015c8914d3L)))).isNotEmpty()) {
+        needsShowFieldsDialog.value = true;
+        fields.value = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept.value, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("fields", 5292274854859383272L, 0x5745e3015c8914d3L)))).select((it) -> SNodeOperations.getPointer(it)).toGenericArray(SNodeReference.class);
+      } else {
+        selectedFields.value = new SNodeReference[0];
       }
     });
 
@@ -155,47 +143,41 @@ public class GenerateConstructor_Action extends BaseAction {
       selectedFields.value = Sequence.fromIterable(((Iterable<SNodeReference>) selectFieldsDialog.getSelectedElements())).toGenericArray(SNodeReference.class);
     }
 
-    repo.getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        SNode constructorDeclaration = null;
-        for (SNodeReference ptr : selectedConstructors.value) {
-          SNode selectedSuperConstructor = SNodeOperations.cast(ptr.resolve(repo), CONCEPTS.ConstructorDeclaration$yG);
-          SNode constructor = SNodeFactoryOperations.createNewNode(CONCEPTS.ConstructorDeclaration$yG, null);
-          BHReflection.invoke0(classConcept.value, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("addConstructor", null, "32Td0Ia9Mgr"), constructor);
-          constructorDeclaration = constructor;
-          SNodeFactoryOperations.setNewChild(constructor, LINKS.body$5xQk, null);
-          if (ListSequence.fromList(SLinkOperations.getChildren(selectedSuperConstructor, LINKS.parameter$5xBj)).isNotEmpty()) {
-            SNode invocation = SNodeFactoryOperations.addNewChild(SLinkOperations.getTarget(constructor, LINKS.body$5xQk), LINKS.statement$53DE, CONCEPTS.SuperConstructorInvocation$wU);
-            SLinkOperations.setTarget(invocation, LINKS.baseMethodDeclaration$pyYw, selectedSuperConstructor);
-            for (SNode superParam : SLinkOperations.getChildren(selectedSuperConstructor, LINKS.parameter$5xBj)) {
-              final SNode parameter = SNodeFactoryOperations.addNewChild(constructor, LINKS.parameter$5xBj, null);
-              SPropertyOperations.set(parameter, PROPS.name$MnvL, SPropertyOperations.getString(superParam, PROPS.name$MnvL));
-              SLinkOperations.setTarget(parameter, LINKS.type$a1UY, SNodeOperations.copyNode(SLinkOperations.getTarget(superParam, LINKS.type$a1UY)));
-              ListSequence.fromList(SLinkOperations.getChildren(superParam, LINKS.annotation$K49I)).visitAll(new IVisitor<SNode>() {
-                public void visit(SNode it) {
-                  ListSequence.fromList(SLinkOperations.getChildren(parameter, LINKS.annotation$K49I)).addElement(SNodeOperations.copyNode(it));
-                }
-              });
-              SNode paramReference = SNodeFactoryOperations.addNewChild(invocation, LINKS.actualArgument$pzdx, CONCEPTS.VariableReference$TC);
-              SLinkOperations.setTarget(paramReference, LINKS.variableDeclaration$N1XG, parameter);
-            }
-          }
-          for (SNodeReference fieldPtr : selectedFields.value) {
-            SNode field = SNodeOperations.cast(fieldPtr.resolve(repo), CONCEPTS.FieldDeclaration$ie);
-            SNode parameterDeclaration = _quotation_createNode_yl16du_a0b0g0b0a31a0(SNodeOperations.copyNode(SLinkOperations.getTarget(field, LINKS.type$a1UY)), GenerateGettersAndSettersUtil.getParameterNameForField(field, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject"))));
-            ListSequence.fromList(SLinkOperations.getChildren(constructor, LINKS.parameter$5xBj)).addElement(parameterDeclaration);
-            SNode expressionStatement = SNodeFactoryOperations.addNewChild(SLinkOperations.getTarget(constructor, LINKS.body$5xQk), LINKS.statement$53DE, CONCEPTS.ExpressionStatement$O8);
-            SNode assignmentExpression = SNodeFactoryOperations.setNewChild(expressionStatement, LINKS.expression$5L7M, CONCEPTS.AssignmentExpression$SE);
-            SNode dotExpr = _quotation_createNode_yl16du_a0f0g0b0a31a0();
-            SLinkOperations.setTarget(dotExpr, LINKS.operand$w6IR, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression")));
-            SLinkOperations.setTarget(dotExpr, LINKS.operation$gs9E, _quotation_createNode_yl16du_a0h0g0b0a31a0(field));
-            SLinkOperations.setTarget(assignmentExpression, LINKS.lValue$splI, dotExpr);
-            SLinkOperations.setTarget(assignmentExpression, LINKS.rValue$spNK, _quotation_createNode_yl16du_a0a9a6a1a0n0a(parameterDeclaration));
+    repo.getModelAccess().executeCommand(() -> {
+      SNode constructorDeclaration = null;
+      for (SNodeReference ptr : selectedConstructors.value) {
+        SNode selectedSuperConstructor = SNodeOperations.cast(ptr.resolve(repo), CONCEPTS.ConstructorDeclaration$yG);
+        SNode constructor = SNodeFactoryOperations.createNewNode(CONCEPTS.ConstructorDeclaration$yG, null);
+        BHReflection.invoke0(classConcept.value, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("addConstructor", 3510894608679117851L, 0x5745e3015c8914d3L), constructor);
+        constructorDeclaration = constructor;
+        SNodeFactoryOperations.setNewChild(constructor, LINKS.body$5xQk, null);
+        if (ListSequence.fromList(SLinkOperations.getChildren(selectedSuperConstructor, LINKS.parameter$5xBj)).isNotEmpty()) {
+          SNode invocation = SNodeFactoryOperations.addNewChild(SLinkOperations.getTarget(constructor, LINKS.body$5xQk), LINKS.statement$53DE, CONCEPTS.SuperConstructorInvocation$wU);
+          SLinkOperations.setTarget(invocation, LINKS.baseMethodDeclaration$pyYw, selectedSuperConstructor);
+          for (SNode superParam : SLinkOperations.getChildren(selectedSuperConstructor, LINKS.parameter$5xBj)) {
+            final SNode parameter = SNodeFactoryOperations.addNewChild(constructor, LINKS.parameter$5xBj, null);
+            SPropertyOperations.set(parameter, PROPS.name$MnvL, SPropertyOperations.getString(superParam, PROPS.name$MnvL));
+            SLinkOperations.setTarget(parameter, LINKS.type$a1UY, SNodeOperations.copyNode(SLinkOperations.getTarget(superParam, LINKS.type$a1UY)));
+            ListSequence.fromList(SLinkOperations.getChildren(superParam, LINKS.annotation$K49I)).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(parameter, LINKS.annotation$K49I)).addElement(SNodeOperations.copyNode(it)));
+            SNode paramReference = SNodeFactoryOperations.addNewChild(invocation, LINKS.actualArgument$pzdx, CONCEPTS.VariableReference$TC);
+            SLinkOperations.setTarget(paramReference, LINKS.variableDeclaration$N1XG, parameter);
           }
         }
-        if (constructorDeclaration != null) {
-          ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).select(constructorDeclaration);
+        for (SNodeReference fieldPtr : selectedFields.value) {
+          SNode field = SNodeOperations.cast(fieldPtr.resolve(repo), CONCEPTS.FieldDeclaration$ie);
+          SNode parameterDeclaration = _quotation_createNode_yl16du_a0b0g0b0a31a0(SNodeOperations.copyNode(SLinkOperations.getTarget(field, LINKS.type$a1UY)), GenerateGettersAndSettersUtil.getParameterNameForField(field, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject"))));
+          ListSequence.fromList(SLinkOperations.getChildren(constructor, LINKS.parameter$5xBj)).addElement(parameterDeclaration);
+          SNode expressionStatement = SNodeFactoryOperations.addNewChild(SLinkOperations.getTarget(constructor, LINKS.body$5xQk), LINKS.statement$53DE, CONCEPTS.ExpressionStatement$O8);
+          SNode assignmentExpression = SNodeFactoryOperations.setNewChild(expressionStatement, LINKS.expression$5L7M, CONCEPTS.AssignmentExpression$SE);
+          SNode dotExpr = _quotation_createNode_yl16du_a0f0g0b0a31a0();
+          SLinkOperations.setTarget(dotExpr, LINKS.operand$w6IR, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression")));
+          SLinkOperations.setTarget(dotExpr, LINKS.operation$gs9E, _quotation_createNode_yl16du_a0h0g0b0a31a0(field));
+          SLinkOperations.setTarget(assignmentExpression, LINKS.lValue$splI, dotExpr);
+          SLinkOperations.setTarget(assignmentExpression, LINKS.rValue$spNK, _quotation_createNode_yl16du_a0a9a6a1a0n0a(parameterDeclaration));
         }
+      }
+      if (constructorDeclaration != null) {
+        ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).select(constructorDeclaration);
       }
     });
   }

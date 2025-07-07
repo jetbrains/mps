@@ -13,7 +13,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Iterator;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.dataFlow.framework.instructions.Instruction;
@@ -74,11 +73,7 @@ public class NullableUtil {
             arg_var = arg_it.next();
             param_var = param_it.next();
             if (Objects.equals(arg_var, source)) {
-              if (Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(param_var, LINKS.annotation$K49I), LINKS.annotation$12Ek)).any(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  return SNodeOperations.is(it, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~NotNull"));
-                }
-              }) && NullableState.canBeNull(state)) {
+              if (Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(param_var, LINKS.annotation$K49I), LINKS.annotation$12Ek)).any((it) -> SNodeOperations.is(it, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~NotNull"))) && NullableState.canBeNull(state)) {
                 String warning;
                 if (SNodeOperations.isInstanceOf(source, CONCEPTS.INamedConcept$Kd)) {
                   warning = "Argument " + SPropertyOperations.getString(SNodeOperations.cast(source, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL) + " might be null";
@@ -140,11 +135,7 @@ public class NullableUtil {
   }
   public static Tuples._2<String, SNode> checkNullableAssignment(WriteInstruction writeInstruction, AnalysisResult<Map<SNode, NullableState>> result) {
     List<SNode> annotation = SLinkOperations.getChildren(((SNode) writeInstruction.getVariable()), LINKS.annotation$K49I);
-    if (annotation != null && Sequence.fromIterable(SLinkOperations.collect(annotation, LINKS.annotation$12Ek)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.is(it, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~NotNull"));
-      }
-    })) {
+    if (annotation != null && Sequence.fromIterable(SLinkOperations.collect(annotation, LINKS.annotation$12Ek)).any((it) -> SNodeOperations.is(it, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~NotNull")))) {
       SNode value = (SNode) writeInstruction.getValue();
       if (SNodeOperations.isInstanceOf(value, CONCEPTS.VariableReference$TC)) {
         value = SLinkOperations.getTarget(SNodeOperations.cast(value, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG);

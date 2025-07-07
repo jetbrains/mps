@@ -35,7 +35,6 @@ import jetbrains.mps.console.ideCommands.util.PartitioningHelper;
 import jetbrains.mps.generator.impl.plan.GenerationPlan;
 import jetbrains.mps.generator.impl.plan.EngagedGeneratorCollector;
 import java.util.ArrayList;
-import java.util.function.Consumer;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -47,7 +46,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class ShowGenPlan__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, "jetbrains.mps.console.ideCommands.structure.ShowGenPlan");
 
-  public static final SMethod<Void> doExecute_id2SpVAIqougW = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("doExecute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2SpVAIqougW").build(SMethodBuilder.createJavaParameter(ConsoleContext.class, ""), SMethodBuilder.createJavaParameter(ConsoleStream.class, ""));
+  public static final SMethod<Void> doExecute_id2SpVAIqougW = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("doExecute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3321948346081469500L).languageId(0xb306d4d17f64c375L, 0xde1ad86d6e504a02L).build2(SMethodBuilder.createJavaParameter(ConsoleContext.class, ""), SMethodBuilder.createJavaParameter(ConsoleStream.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(doExecute_id2SpVAIqougW);
 
@@ -109,11 +108,7 @@ public final class ShowGenPlan__BehaviorDescriptor extends BaseBHDescriptor {
     egc.getGenerators();
     helper.printLanguages(languageRegistry, egc.getDirectlyUsedLanguages(), gp.getGenerators());
     final ArrayList<String> trace = new ArrayList<String>();
-    egc.dump(new Consumer<String>() {
-      public void accept(String s) {
-        trace.add(s);
-      }
-    });
+    egc.dump((String s) -> trace.add(s));
     helper.printToConsole("Engaged generators with trace:", trace);
     helper.printConnectedComponents(Sequence.<SModel>singleton(model));
   }

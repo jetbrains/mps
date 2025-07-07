@@ -4,8 +4,7 @@ package jetbrains.mps.execution.demo.pluginSolution.plugin;
 
 import jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration;
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.project.structure.modules.Copyable;
 import jetbrains.mps.execution.lib.NodeByConcept_Configuration;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -40,13 +39,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-public class DemoApplication_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
-  private static final Logger LOG = LogManager.getLogger(DemoApplication_Configuration.class);
-  private NodeByConcept_Configuration myNode = new NodeByConcept_Configuration(CONCEPTS.SomeConcept$LS, new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
-    public Boolean invoke(SNode node) {
-      return SPropertyOperations.getBoolean(SNodeOperations.cast(node, CONCEPTS.SomeConcept$LS), PROPS.valid$x_$w);
-    }
-  });
+public final class DemoApplication_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration, Copyable<DemoApplication_Configuration> {
+  private NodeByConcept_Configuration myNode = new NodeByConcept_Configuration(CONCEPTS.SomeConcept$LS, ((_FunctionTypes._return_P1_E0<Boolean, SNode>) (SNode node) -> SPropertyOperations.getBoolean(SNodeOperations.cast(node, CONCEPTS.SomeConcept$LS), PROPS.valid$x_$w)));
 
   @Override
   public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
@@ -66,23 +60,24 @@ public class DemoApplication_Configuration extends BaseMpsRunConfiguration imple
     if (element == null) {
       throw new InvalidDataException("Cant read " + this + ": element is null.");
     }
-    {
-      Element fieldElement = element.getChild("node");
-      if (fieldElement != null) {
-        myNode.readExternal(fieldElement);
-      } else {
-        if (LOG.isDebugEnabled()) {
-          LOG.debug("Element " + "node" + " in " + this.getClass().getName() + " was null.");
-        }
-      }
+    if (element.getChild("node") != null) {
+      myNode.readExternal(element.getChild("node"));
     }
   }
 
   @Override
+  @Deprecated
   public DemoApplication_Configuration clone() {
-    DemoApplication_Configuration clone = createCloneTemplate();
-    clone.myNode = (NodeByConcept_Configuration) myNode.clone();
-    return clone;
+    return copy();
+  }
+
+  @Override
+  public DemoApplication_Configuration copy() {
+    DemoApplication_Configuration cloneTemplate = createCloneTemplate();
+    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
+    // the value of myState, and != clone as regular Java passer-by would expect.
+    cloneTemplate.myNode = ((Copyable<NodeByConcept_Configuration>) myNode).copy();
+    return cloneTemplate;
   }
 
   public NodeByConcept_Configuration getNode() {
@@ -119,11 +114,7 @@ public class DemoApplication_Configuration extends BaseMpsRunConfiguration imple
   @Override
   public void checkConfiguration() throws RuntimeConfigurationException {
     final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
-    checkConfiguration(new PersistentConfigurationContext() {
-      public jetbrains.mps.project.Project getProject() {
-        return mpsProject;
-      }
-    });
+    checkConfiguration(() -> mpsProject);
   }
   @Override
   public boolean canExecute(String executorId) {

@@ -2,9 +2,9 @@
 <model ref="r:9e9ac0ea-b755-4d57-b406-d0cd74445963(jetbrains.mps.ide.httpsupport.tests.lang@tests)">
   <persistence version="9" />
   <languages>
-    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="5" />
+    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="6" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="-1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="817e4e70-961e-4a95-98a1-15e9f32231f1" name="jetbrains.mps.ide.httpsupport" version="-1" />
   </languages>
   <imports>
@@ -18,6 +18,7 @@
     <import index="i7mp" ref="r:539fc94d-6594-4105-bb3c-60718c110a18(jetbrains.mps.ide.httpsupport.tests.plugin)" />
     <import index="e5vs" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:org.jetbrains.ide(MPS.IDEA/)" />
     <import index="tpeh" ref="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)" />
+    <import index="l13q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:org.jetbrains.builtInWebServer(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test">
@@ -29,15 +30,13 @@
         <child id="1215604436604" name="nodeOperations" index="7EUXB" />
       </concept>
       <concept id="1215607067978" name="jetbrains.mps.lang.test.structure.CheckNodeForErrorMessagesOperation" flags="ng" index="7OXhh" />
-      <concept id="7691029917083872157" name="jetbrains.mps.lang.test.structure.IRuleReference" flags="ng" index="2u4UPC">
+      <concept id="7691029917083872157" name="jetbrains.mps.lang.test.structure.IRuleReference" flags="ngI" index="2u4UPC">
         <reference id="8333855927540250453" name="declaration" index="39XzEq" />
       </concept>
       <concept id="428590876651279930" name="jetbrains.mps.lang.test.structure.NodeTypeSystemErrorCheckOperation" flags="ng" index="2DdRWr" />
       <concept id="4531408400486526326" name="jetbrains.mps.lang.test.structure.WarningStatementReference" flags="ng" index="2PQEqo" />
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
-      </concept>
       <concept id="1216913645126" name="jetbrains.mps.lang.test.structure.NodesTestCase" flags="lg" index="1lH9Xt">
+        <property id="2616911529524314943" name="accessMode" index="3DII0k" />
         <child id="2325284917965993569" name="beforeTests" index="0EEgL" />
         <child id="1216993439383" name="methods" index="1qtyYc" />
         <child id="1217501822150" name="nodesToCheck" index="1SKRRt" />
@@ -71,6 +70,9 @@
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
+      </concept>
+      <concept id="1197029447546" name="jetbrains.mps.baseLanguage.structure.FieldReferenceOperation" flags="nn" index="2OwXpG">
+        <reference id="1197029500499" name="fieldDeclaration" index="2Oxat5" />
       </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
@@ -116,6 +118,9 @@
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
+      <concept id="1068580123137" name="jetbrains.mps.baseLanguage.structure.BooleanConstant" flags="nn" index="3clFbT">
+        <property id="1068580123138" name="value" index="3clFbU" />
+      </concept>
       <concept id="1068580320020" name="jetbrains.mps.baseLanguage.structure.IntegerConstant" flags="nn" index="3cmrfG">
         <property id="1068580320021" name="value" index="3cmrfH" />
       </concept>
@@ -131,7 +136,7 @@
       <concept id="1079359253375" name="jetbrains.mps.baseLanguage.structure.ParenthesizedExpression" flags="nn" index="1eOMI4">
         <child id="1079359253376" name="expression" index="1eOMHV" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -158,7 +163,7 @@
     </language>
     <language id="443f4c36-fcf5-4eb6-9500-8d06ed259e3e" name="jetbrains.mps.baseLanguage.classifiers">
       <concept id="1205752633985" name="jetbrains.mps.baseLanguage.classifiers.structure.ThisClassifierExpression" flags="nn" index="2WthIp" />
-      <concept id="1205756064662" name="jetbrains.mps.baseLanguage.classifiers.structure.IMemberOperation" flags="ng" index="2WEnae">
+      <concept id="1205756064662" name="jetbrains.mps.baseLanguage.classifiers.structure.IMemberOperation" flags="ngI" index="2WEnae">
         <reference id="1205756909548" name="member" index="2WH_rO" />
       </concept>
       <concept id="1205769003971" name="jetbrains.mps.baseLanguage.classifiers.structure.DefaultClassifierMethodDeclaration" flags="ng" index="2XrIbr" />
@@ -176,7 +181,7 @@
       <concept id="1172073500303" name="jetbrains.mps.baseLanguage.unitTest.structure.Message" flags="ng" index="3_1$Yv">
         <child id="1172073511101" name="message" index="3_1BAH" />
       </concept>
-      <concept id="1172075514136" name="jetbrains.mps.baseLanguage.unitTest.structure.MessageHolder" flags="ng" index="3_9gw8">
+      <concept id="1172075514136" name="jetbrains.mps.baseLanguage.unitTest.structure.MessageHolder" flags="ngI" index="3_9gw8">
         <child id="1172075534298" name="message" index="3_9lra" />
       </concept>
     </language>
@@ -184,7 +189,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -220,6 +225,7 @@
   </registry>
   <node concept="1lH9Xt" id="toFl8p6ebE">
     <property role="TrG5h" value="TestDefaultParameterConverter" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="toFl8p6pda" role="1SKRRt">
       <node concept="1TjqYI" id="toFl8p6qZA" role="1qenE9">
         <node concept="3uibUv" id="toFl8p6tAb" role="1TjqZ8">
@@ -373,6 +379,7 @@
   </node>
   <node concept="1lH9Xt" id="toFl8p77wT">
     <property role="TrG5h" value="TestQueryPath" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="toFl8p77wU" role="1SKRRt">
       <node concept="std77" id="toFl8p77wW" role="1qenE9">
         <node concept="std78" id="toFl8p77wY" role="std7y">
@@ -431,11 +438,9 @@
       </node>
     </node>
   </node>
-  <node concept="2XOHcx" id="toFl8p7aXP">
-    <property role="2XOHcw" value="${mps_home}" />
-  </node>
   <node concept="1lH9Xt" id="toFl8p7__m">
     <property role="TrG5h" value="TestRHBehavior" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="2XrIbr" id="toFl8p7_Cw" role="1qtyYc">
       <property role="TrG5h" value="testRequestResponse" />
       <node concept="3cqZAl" id="toFl8p7_CI" role="3clF45" />
@@ -1034,7 +1039,7 @@
                 <ref role="3cqZAo" node="49_GDO7AoLC" resolve="url" />
               </node>
               <node concept="3cmrfG" id="49_GDO7AI33" role="2XxRq1">
-                <property role="3cmrfH" value="404" />
+                <property role="3cmrfH" value="400" />
               </node>
               <node concept="10Nm6u" id="49_GDO7AI3$" role="2XxRq1" />
             </node>
@@ -1439,6 +1444,148 @@
             </node>
             <node concept="liA8E" id="1zPxZDfuG5G" role="2OqNvi">
               <ref role="37wK5l" to="e5vs:~BuiltInServerManager.waitForStart()" resolve="waitForStart" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="7XG5B_GS0OG" role="3cqZAp">
+          <node concept="1PaTwC" id="7XG5B_GS0OH" role="1aUNEU">
+            <node concept="3oM_SD" id="7XG5B_GS0Rb" role="1PaTwD">
+              <property role="3oM_SC" value="Without" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS0Sb" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS0Tc" role="1PaTwD">
+              <property role="3oM_SC" value="option" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS1ai" role="1PaTwD">
+              <property role="3oM_SC" value="DefaultWebServerPathHandler.process()" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS1bl" role="1PaTwD">
+              <property role="3oM_SC" value="will" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS1mt" role="1PaTwD">
+              <property role="3oM_SC" value="process" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS1pv" role="1PaTwD">
+              <property role="3oM_SC" value="all" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS1pC" role="1PaTwD">
+              <property role="3oM_SC" value="unhandled" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS55d" role="1PaTwD">
+              <property role="3oM_SC" value="requests" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="7XG5B_GS1xn" role="3cqZAp">
+          <node concept="1PaTwC" id="7XG5B_GS1x9" role="1aUNEU">
+            <node concept="3oM_SD" id="7XG5B_GS4ZO" role="1PaTwD">
+              <property role="3oM_SC" value="resulting" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS1Rm" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS1Tl" role="1PaTwD">
+              <property role="3oM_SC" value="UNAUTHORIZED" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS1RV" role="1PaTwD">
+              <property role="3oM_SC" value="(401)" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS22p" role="1PaTwD">
+              <property role="3oM_SC" value="HTTP" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS278" role="1PaTwD">
+              <property role="3oM_SC" value="status" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS58x" role="1PaTwD">
+              <property role="3oM_SC" value="code." />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS5cT" role="1PaTwD">
+              <property role="3oM_SC" value="This" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS2G0" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS2HZ" role="1PaTwD">
+              <property role="3oM_SC" value="was" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS2Ss" role="1PaTwD">
+              <property role="3oM_SC" value="originally" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS2I3" role="1PaTwD">
+              <property role="3oM_SC" value="written" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS2K4" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS2L8" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS2Lf" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="7XG5B_GS5fT" role="3cqZAp">
+          <node concept="1PaTwC" id="7XG5B_GS5fv" role="1aUNEU">
+            <node concept="3oM_SD" id="7XG5B_GS5fu" role="1PaTwD">
+              <property role="3oM_SC" value="assumption" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS2Nj" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS319" role="1PaTwD">
+              <property role="3oM_SC" value="HTTP" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS36A" role="1PaTwD">
+              <property role="3oM_SC" value="404" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS37N" role="1PaTwD">
+              <property role="3oM_SC" value="status" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS391" role="1PaTwD">
+              <property role="3oM_SC" value="(not" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS3be" role="1PaTwD">
+              <property role="3oM_SC" value="found)" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS32j" role="1PaTwD">
+              <property role="3oM_SC" value="will" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS5no" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS5nY" role="1PaTwD">
+              <property role="3oM_SC" value="returned" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS3mT" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS3mY" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS3o2" role="1PaTwD">
+              <property role="3oM_SC" value="case." />
+            </node>
+            <node concept="3oM_SD" id="7XG5B_GS5GX" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="7XG5B_GRZC4" role="3cqZAp">
+          <node concept="37vLTI" id="7XG5B_GS0Cx" role="3clFbG">
+            <node concept="3clFbT" id="7XG5B_GS0F7" role="37vLTx">
+              <property role="3clFbU" value="true" />
+            </node>
+            <node concept="2OqwBi" id="7XG5B_GRZUd" role="37vLTJ">
+              <node concept="2YIFZM" id="7XG5B_GRZHJ" role="2Oq$k0">
+                <ref role="37wK5l" to="l13q:~BuiltInServerOptions.getInstance()" resolve="getInstance" />
+                <ref role="1Pybhc" to="l13q:~BuiltInServerOptions" resolve="BuiltInServerOptions" />
+              </node>
+              <node concept="2OwXpG" id="7XG5B_GS0fV" role="2OqNvi">
+                <ref role="2Oxat5" to="l13q:~BuiltInServerOptions.allowUnsignedRequests" resolve="allowUnsignedRequests" />
+              </node>
             </node>
           </node>
         </node>

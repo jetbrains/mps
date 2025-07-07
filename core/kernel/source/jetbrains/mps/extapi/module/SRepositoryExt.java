@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,19 @@
  */
 package jetbrains.mps.extapi.module;
 
+import jetbrains.mps.extapi.model.StorageMemoryConflictResolver;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.EditableSModel;
+import org.jetbrains.mps.openapi.model.SaveOptions;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
 
 /**
  * Extension of {@link SRepository} API. Adds API we are either uncertain with yet, or API that at the moment
@@ -60,4 +66,43 @@ public interface SRepositoryExt extends SRepository {
   Set<MPSModuleOwner> getOwners(@NotNull SModule module);
 
   Set<SModule> getModules(MPSModuleOwner moduleOwner);
+
+  /**
+   * PROVISIONAL HACK TO ADDRESS UNCLEAR EditableSModule.isChanged semantics.
+   * Tells if there're modules/models in this repository that are changed and
+   * {@link SRepository#saveAll()} is in order.
+   *
+   * INTRODUCED FOR BUGFIX PURPOSES ONLY, NOT AN API, DON'T USE.
+   *
+   * @implNote doesn't require caller to hold model read the moment it consults the method.
+   * If necessary, implementation shall grab appropriate read access (never write!)
+   */
+  default boolean needsSave() {
+    return true;
+  }
+
+  /**
+   * PROVISIONAL CODE TO ADDRESS MODEL STORAGE CONFLICT RESOLUTION. NOT AN API, DON'T USE.
+   *
+   * @implNote at the moment, never null but it's not part of the contract as I hope to change it to optional
+   */
+  default StorageMemoryConflictResolver<EditableSModel> getConflictResolver() {
+    return createDefaultResolver();
+  }
+
+  @NotNull
+  private static StorageMemoryConflictResolver<EditableSModel> createDefaultResolver() {
+    // just force-save in case of a conflict
+    return new StorageMemoryConflictResolver<EditableSModel>() {
+      @NotNull
+      @Override
+      public CompletionStage<ConflictResolved> resolveConflict(@NotNull EditableSModel model) {
+        Logger.getLogger(EditableSModel.class).warning("Conflict happens, we always choose memory data by default", new Throwable());
+        model.save(new SaveOptions.SaveOptionsBuilder()
+                       .forceSave()
+                       .build());
+        return CompletableFuture.completedFuture(ConflictResolved.MEMORY_CHOSEN);
+      }
+    };
+  }
 }

@@ -14,7 +14,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class NF_Container {
   public static class NodeFactory_7789927720474697827 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Container$do)) {
         ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.containers$oP2K)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.Container$do), LINKS.containers$oP2K)));
       }

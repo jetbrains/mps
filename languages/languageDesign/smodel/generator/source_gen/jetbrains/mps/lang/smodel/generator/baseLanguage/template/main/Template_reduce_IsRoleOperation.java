@@ -44,13 +44,13 @@ public class Template_reduce_IsRoleOperation extends TemplateDeclarationBase {
       TemplateContext context1 = context.subContext();
       {
         Collection<SNode> tlist2 = null;
-        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_16_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_kk1kyx_b0a0c0d0c0g));
-        tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_kk1kyx_b0a0c0d0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/1144196353857", context1);
+        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_16_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro));
+        tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro, "tpl/r:00000000-0000-4000-0000-011c89590303/1144196353857", context1);
         environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
       }
       {
         Collection<SNode> tlist3 = null;
-        SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_16_1(new SourceSubstituteMacroNodeContext(context1, callMacro_kk1kyx_b0a0a1a4a2a6));
+        SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_16_1(new SourceSubstituteMacroNodeContext(context1, callMacro));
         TemplateContext context2 = context1;
         context2 = context2.subContext(null, callInputNode3);
         if (callInputNode3 != null) {
@@ -94,6 +94,6 @@ public class Template_reduce_IsRoleOperation extends TemplateDeclarationBase {
       return rv;
     }
   }
-  private static final SNodePointer copySrcMacro_kk1kyx_b0a0c0d0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1144196353858");
-  private static final SNodePointer callMacro_kk1kyx_b0a0a1a4a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145286");
+  private static final SNodePointer copySrcMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1144196353858");
+  private static final SNodePointer callMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145286");
 }

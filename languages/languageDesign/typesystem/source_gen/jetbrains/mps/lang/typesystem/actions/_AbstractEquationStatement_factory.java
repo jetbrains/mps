@@ -16,7 +16,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class _AbstractEquationStatement_factory {
   public static class NodeFactory_1174664649250 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.AbstractEquationStatement$If)) {
         SLinkOperations.setTarget(newNode, LINKS.leftExpression$U_o$, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractEquationStatement$If), LINKS.leftExpression$U_o$));
         SLinkOperations.setTarget(newNode, LINKS.rightExpression$U_B_, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractEquationStatement$If), LINKS.rightExpression$U_B_));
@@ -28,7 +28,7 @@ public class _AbstractEquationStatement_factory {
     }
   }
   public static class NodeFactory_1177408248539 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.IsSubtypeExpression$IG)) {
         SLinkOperations.setTarget(newNode, LINKS.subtypeExpression$6vQm, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.IsSubtypeExpression$IG), LINKS.subtypeExpression$6vQm));
         SLinkOperations.setTarget(newNode, LINKS.supertypeExpression$Cdwu, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.IsSubtypeExpression$IG), LINKS.supertypeExpression$Cdwu));
@@ -36,7 +36,7 @@ public class _AbstractEquationStatement_factory {
     }
   }
   public static class NodeFactory_1178879020940 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.CoerceExpression$ZP)) {
         SLinkOperations.setTarget(newNode, LINKS.nodeToCoerce$OvG7, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.CoerceExpression$ZP), LINKS.nodeToCoerce$OvG7));
         SLinkOperations.setTarget(newNode, LINKS.pattern$Ovt6, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.CoerceExpression$ZP), LINKS.pattern$Ovt6));
@@ -44,7 +44,7 @@ public class _AbstractEquationStatement_factory {
     }
   }
   public static class NodeFactory_1179476271703 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Expression$mB)) {
         if (!(SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.TypeOfExpression$QV))) {
           SLinkOperations.setTarget(newNode, LINKS.term$Dke$, SNodeOperations.cast(sampleNode, CONCEPTS.Expression$mB));

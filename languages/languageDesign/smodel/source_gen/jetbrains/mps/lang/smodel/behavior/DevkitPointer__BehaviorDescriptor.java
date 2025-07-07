@@ -25,8 +25,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class DevkitPointer__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x721adb764b3fbd1bL, "jetbrains.mps.lang.smodel.structure.DevkitPointer");
 
-  public static final SMethod<SModuleReference> getModuleReference_id78qQRpbgix2 = new SMethodBuilder<SModuleReference>(new SJavaCompoundTypeImpl(SModuleReference.class)).name("getModuleReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("78qQRpbgix2").build();
-  public static final SMethod<Void> setModuleReference_id78qQRpbgix9 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setModuleReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("78qQRpbgix9").build(SMethodBuilder.createJavaParameter(SModuleReference.class, ""));
+  public static final SMethod<SModuleReference> getModuleReference_id78qQRpbgix2 = new SMethodBuilder<SModuleReference>(new SJavaCompoundTypeImpl(SModuleReference.class)).name("getModuleReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8222125370833446978L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
+  public static final SMethod<Void> setModuleReference_id78qQRpbgix9 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setModuleReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8222125370833446985L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2(SMethodBuilder.createJavaParameter(SModuleReference.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getModuleReference_id78qQRpbgix2, setModuleReference_id78qQRpbgix9);
 

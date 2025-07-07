@@ -27,7 +27,7 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.smodel.SNodeLegacy;
 import jetbrains.mps.smodel.persistence.def.v4.ReferencePersister4;
 
-@GeneratedClass(node = "r:2cdd9596-2ed5-4152-b387-8144a1963c4c(jetbrains.mps.smodel.persistence.def.v5)/2286463592495096552", model = "r:2cdd9596-2ed5-4152-b387-8144a1963c4c(jetbrains.mps.smodel.persistence.def.v5)")
+@GeneratedClass(nodeId = "2286463592495096552", model = "r:2cdd9596-2ed5-4152-b387-8144a1963c4c(jetbrains.mps.smodel.persistence.def.v5)")
 public class ModelReader5Handler extends XMLSAXHandler<ModelLoadResult> {
   private ModelElementHandler modelHandler = new ModelElementHandler();
   private PersistenceElementHandler persistenceHandler = new PersistenceElementHandler();
@@ -147,7 +147,7 @@ public class ModelReader5Handler extends XMLSAXHandler<ModelLoadResult> {
     }
     @Override
     protected ModelLoadResult createObject(Attributes attrs) throws SAXException {
-      my_referenceDescriptorsField = new ArrayList<IReferencePersister>();
+      my_referenceDescriptorsField = new ArrayList<>();
       my_visibleModelElementsField = new SAXVisibleModelElements();
       my_modelField = new DefaultSModel(VCSPersistenceUtil.createModelReference(attrs.getValue("modelUID")), my_headerParam);
       return new ModelLoadResult((SModel) my_modelField, ModelLoadingState.FULLY_LOADED);
@@ -225,7 +225,7 @@ public class ModelReader5Handler extends XMLSAXHandler<ModelLoadResult> {
     private void handleChild_2286463592495498109(Object resultObject, Object value) throws SAXException {
       String[] child = (String[]) value;
       int version = Integer.parseInt(child[1]);
-      my_modelField.getImplicitImportsSupport().addAdditionalModelVersion(VCSPersistenceUtil.createModelReference(child[0]), version);
+      my_modelField.addModelImport(new SModel.ImportElement(VCSPersistenceUtil.createModelReference(child[0]), -1, version));
     }
     private void handleChild_2286463592495498227(Object resultObject, Object value) throws SAXException {
       String child = (String) value;

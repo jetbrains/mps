@@ -6,17 +6,14 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.ide.datatransfer.SNodeTransferable;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.datatransfer.PasteNodeData;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.text.behavior.IHoldParagraphs__BehaviorDescriptor;
 import jetbrains.mps.lang.text.behavior.IHoldLines__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
 import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -39,9 +36,9 @@ public class PasteHandler {
       handleStringValue(editorContext, node, dataFromClipboard);
     }
 
-    if (dataFromClipboard instanceof SNodeTransferable) {
+    if (dataFromClipboard instanceof PasteNodeData) {
       final Wrappers._T<SNode> currentNode = new Wrappers._T<SNode>(node);
-      PasteNodeData pasteData = ((SNodeTransferable) dataFromClipboard).createNodeData();
+      PasteNodeData pasteData = (PasteNodeData) dataFromClipboard;
       List<SNode> data = pasteData.getNodes();
 
       final Wrappers._T<SNode> currentLine = new Wrappers._T<SNode>(SNodeOperations.getNodeAncestor(currentNode.value, CONCEPTS.Line$yC, false, false));
@@ -58,31 +55,23 @@ public class PasteHandler {
         if (SNodeOperations.isInstanceOf(n, CONCEPTS.IHoldParagraphs$eh) && ListSequence.fromList(IHoldParagraphs__BehaviorDescriptor.getParagraphs_id2MpFNjy3tMn.invoke(SNodeOperations.as(n, CONCEPTS.IHoldParagraphs$eh))).count() > 1) {
           if (copyMultipleLinesToMultipleLines) {
             final Wrappers._boolean firstLine = new Wrappers._boolean(true);
-            ListSequence.fromList(IHoldParagraphs__BehaviorDescriptor.getParagraphs_id2MpFNjy3tMn.invoke(SNodeOperations.as(n, CONCEPTS.IHoldParagraphs$eh))).visitAll(new IVisitor<SNode>() {
-              public void visit(SNode paragraph) {
-                SNode l = Paragraph__BehaviorDescriptor.createLineInstance_id7q4Ywce6bwW.invoke(paragraph);
-                Line__BehaviorDescriptor.initializeFromParagraphs_id2iG$EWuZbnH.invoke(l, paragraph);
-                if (firstLine.value) {
-                  firstLine.value = false;
-                  currentLine.value = TextEditorHelper.insertLineIntoLines(currentLine.value, currentNode.value, l);
-                } else {
-                  currentLine.value = SNodeOperations.as(SNodeOperations.insertNextSiblingChild(currentLine.value, l), CONCEPTS.Line$yC);
-                }
+            ListSequence.fromList(IHoldParagraphs__BehaviorDescriptor.getParagraphs_id2MpFNjy3tMn.invoke(SNodeOperations.as(n, CONCEPTS.IHoldParagraphs$eh))).visitAll((paragraph) -> {
+              SNode l = Paragraph__BehaviorDescriptor.createLineInstance_id7q4Ywce6bwW.invoke(paragraph);
+              Line__BehaviorDescriptor.initializeFromParagraphs_id2iG$EWuZbnH.invoke(l, paragraph);
+              if (firstLine.value) {
+                firstLine.value = false;
+                currentLine.value = TextEditorHelper.insertLineIntoLines(currentLine.value, currentNode.value, l);
+              } else {
+                currentLine.value = SNodeOperations.as(SNodeOperations.insertNextSiblingChild(currentLine.value, l), CONCEPTS.Line$yC);
               }
             });
           } else {
-            ListSequence.fromList(IHoldParagraphs__BehaviorDescriptor.getParagraphs_id2MpFNjy3tMn.invoke(SNodeOperations.as(n, CONCEPTS.IHoldParagraphs$eh))).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return !((boolean) Paragraph__BehaviorDescriptor.isEmptyParagraph_id7r4EKYUymRW.invoke(it));
-              }
-            }).visitAll(new IVisitor<SNode>() {
-              public void visit(SNode p) {
-                SNode l = Paragraph__BehaviorDescriptor.createLineInstance_id7q4Ywce6bwW.invoke(p);
-                Line__BehaviorDescriptor.initializeFromParagraphs_id2iG$EWuZbnH.invoke(l, p);
-                SNode t = ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).last();
-                Line__BehaviorDescriptor.merge_id1YnOZxAMHtO.invoke(currentLine.value, l, currentNode.value);
-                currentNode.value = t;
-              }
+            ListSequence.fromList(IHoldParagraphs__BehaviorDescriptor.getParagraphs_id2MpFNjy3tMn.invoke(SNodeOperations.as(n, CONCEPTS.IHoldParagraphs$eh))).where((it) -> !((boolean) Paragraph__BehaviorDescriptor.isEmptyParagraph_id7r4EKYUymRW.invoke(it))).visitAll((p) -> {
+              SNode l = Paragraph__BehaviorDescriptor.createLineInstance_id7q4Ywce6bwW.invoke(p);
+              Line__BehaviorDescriptor.initializeFromParagraphs_id2iG$EWuZbnH.invoke(l, p);
+              SNode t = ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).last();
+              Line__BehaviorDescriptor.merge_id1YnOZxAMHtO.invoke(currentLine.value, l, currentNode.value);
+              currentNode.value = t;
             });
           }
           continue;
@@ -110,27 +99,19 @@ public class PasteHandler {
         if (SNodeOperations.isInstanceOf(n, CONCEPTS.IHoldLines$ky) && ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(SNodeOperations.as(n, CONCEPTS.IHoldLines$ky))).count() > 1) {
           if (copyMultipleLinesToMultipleLines) {
             final Wrappers._boolean firstLine = new Wrappers._boolean(true);
-            ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(SNodeOperations.as(n, CONCEPTS.IHoldLines$ky))).visitAll(new IVisitor<SNode>() {
-              public void visit(SNode line) {
-                if (firstLine.value) {
-                  firstLine.value = false;
-                  currentLine.value = TextEditorHelper.insertLineIntoLines(currentLine.value, currentNode.value, SNodeOperations.copyNode(line));
-                } else {
-                  currentLine.value = SNodeOperations.as(SNodeOperations.insertNextSiblingChild(currentLine.value, SNodeOperations.copyNode(line)), CONCEPTS.Line$yC);
-                }
+            ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(SNodeOperations.as(n, CONCEPTS.IHoldLines$ky))).visitAll((line) -> {
+              if (firstLine.value) {
+                firstLine.value = false;
+                currentLine.value = TextEditorHelper.insertLineIntoLines(currentLine.value, currentNode.value, SNodeOperations.copyNode(line));
+              } else {
+                currentLine.value = SNodeOperations.as(SNodeOperations.insertNextSiblingChild(currentLine.value, SNodeOperations.copyNode(line)), CONCEPTS.Line$yC);
               }
             });
           } else {
-            ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(SNodeOperations.as(n, CONCEPTS.IHoldLines$ky))).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return !((boolean) Line__BehaviorDescriptor.isEmptyLine_id1YnOZxAO76B.invoke(it));
-              }
-            }).visitAll(new IVisitor<SNode>() {
-              public void visit(SNode l) {
-                SNode t = ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).last();
-                Line__BehaviorDescriptor.merge_id1YnOZxAMHtO.invoke(currentLine.value, l, currentNode.value);
-                currentNode.value = t;
-              }
+            ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(SNodeOperations.as(n, CONCEPTS.IHoldLines$ky))).where((it) -> !((boolean) Line__BehaviorDescriptor.isEmptyLine_id1YnOZxAO76B.invoke(it))).visitAll((l) -> {
+              SNode t = ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).last();
+              Line__BehaviorDescriptor.merge_id1YnOZxAMHtO.invoke(currentLine.value, l, currentNode.value);
+              currentNode.value = t;
             });
           }
           continue;

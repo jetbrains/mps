@@ -79,7 +79,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     return rootClassifierEntry;
   }
 
-  private ImportEntry getRootClassifierRefText(String packageName, String className, SNode contextNode) {
+  /*package*/ ImportEntry getRootClassifierRefText(String packageName, String className, SNode contextNode) {
     assert !(className.contains("."));
 
     if (packageName.isEmpty()) {

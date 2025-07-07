@@ -4,26 +4,23 @@ package jetbrains.mps.vcs.platform.integration;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.vcs.checkin.CheckinHandler;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
-import jetbrains.mps.ide.ThreadUtils;
+import jetbrains.mps.logging.Logger;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vcs.CheckinProjectPanel;
 import com.intellij.openapi.vcs.VcsConfiguration;
 import com.intellij.openapi.vcs.ui.RefreshableOnComponent;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
-import javax.swing.JPanel;
-import java.awt.GridLayout;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.project.ProjectHelper;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.SModelFileTracker;
 import java.util.Collection;
-import java.io.File;
+import com.intellij.openapi.vfs.VirtualFile;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
 import java.util.ArrayList;
-import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.ide.ThreadUtils;
 import com.intellij.openapi.progress.Task;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.progress.ProgressIndicator;
@@ -37,9 +34,9 @@ import org.jetbrains.mps.openapi.model.EditableSModel;
 import com.intellij.openapi.vcs.checkin.CheckinHandlerFactory;
 import com.intellij.openapi.vcs.changes.CommitContext;
 
-@GeneratedClass(node = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)/5337823064584388635", model = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)")
+@GeneratedClass(nodeId = "5337823064584388635", model = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)")
 public class OptimizeImportsCheckinHandler extends CheckinHandler {
-  private static final Logger LOG = LogManager.getLogger(ThreadUtils.class);
+  private static final Logger LOG = Logger.getLogger(OptimizeImportsCheckinHandler.class);
   private Project myProject;
   private CheckinProjectPanel myPanel;
   public OptimizeImportsCheckinHandler(Project project, CheckinProjectPanel panel) {
@@ -55,9 +52,7 @@ public class OptimizeImportsCheckinHandler extends CheckinHandler {
     return new RefreshableOnComponent() {
       @Override
       public JComponent getComponent() {
-        JPanel panel = new JPanel(new GridLayout(1, 0));
-        panel.add(optimizeImportsCheckBox);
-        return panel;
+        return optimizeImportsCheckBox;
       }
       @Override
       public void restoreState() {
@@ -74,16 +69,15 @@ public class OptimizeImportsCheckinHandler extends CheckinHandler {
   }
   @Override
   public CheckinHandler.ReturnResult beforeCheckin() {
-    final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(myProject);
+    final MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
     if (getSettings().OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT && mpsProject != null) {
       final SRepository repository = mpsProject.getRepository();
       SModelFileTracker modelFileTracker = SModelFileTracker.getInstance(repository);
-      // FIXME there's getVirtualFiles that we can make use of to get IFile, provided there's access to project FS through MPSProject
-      Collection<File> affectedFiles = myPanel.getFiles();
-      // XXX getFiles gives deleted files as well (unlike getVirtualFiles), are we sure we'd need to use this method?! 
+      Collection<VirtualFile> affectedFiles = myPanel.getVirtualFiles();
+      // note, unlike getVirtualFiles, getFiles gives deleted files as well
       final List<SModel> affectedModels = new ArrayList<SModel>();
-      for (File file : affectedFiles) {
-        SModel model = modelFileTracker.findModel(FileSystem.getInstance().getFile(file.getAbsolutePath()));
+      for (VirtualFile file : affectedFiles) {
+        SModel model = modelFileTracker.findModel(mpsProject.getFileSystem().fromVirtualFile(file));
         if (model == null) {
           continue;
         }
@@ -97,40 +91,26 @@ public class OptimizeImportsCheckinHandler extends CheckinHandler {
           try {
             final int modelsNumber = affectedModels.size();
             monitor.start("Optimizing imports of " + modelsNumber + " models", modelsNumber);
-            WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(new Runnable() {
-              public void run() {
-              }
+            WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(() -> {
             });
 
             final OptimizeImportsHelper helper = new OptimizeImportsHelper(repository, mpsProject.getComponent(ModelsAutoImportsManager.class));
-            ApplicationManager.getApplication().invokeAndWait(new Runnable() {
-              public void run() {
-                repository.getModelAccess().executeCommand(new Runnable() {
-                  public void run() {
-                    helper.optimizeModelsImports(affectedModels, monitor.subTask(modelsNumber));
-                  }
-                });
-              }
-            }, ModalityState.current());
+            ApplicationManager.getApplication().invokeAndWait(() -> repository.getModelAccess().executeCommand(() -> helper.optimizeModelsImports(affectedModels, monitor.subTask(modelsNumber))), ModalityState.current());
             if (monitor.isCanceled()) {
               return;
             }
             monitor.step("Saving...");
-            WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(new Runnable() {
-              public void run() {
-                repository.getModelAccess().executeCommand(new Runnable() {
-                  public void run() {
-                    for (SModel affectedModel : affectedModels) {
-                      ((EditableSModel) affectedModel).save();
-                    }
-                  }
-                });
+            WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(() -> repository.getModelAccess().executeCommand(() -> {
+              for (SModel affectedModel : affectedModels) {
+                ((EditableSModel) affectedModel).save();
               }
-            });
+            }));
             monitor.advance(1);
 
           } catch (Throwable e) {
-            LOG.error("Couldn't optimize imports before commit", e);
+            if (LOG.isErrorLevel()) {
+              LOG.error("Couldn't optimize imports before commit", e);
+            }
           } finally {
             monitor.done();
           }

@@ -137,7 +137,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_Library == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a31b0eb);
+          cpb.icon(IconContainer.RESOURCE_0);
           props_Library = cpb.create();
         }
         return props_Library;
@@ -207,7 +207,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_Script == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a32b0eb);
+          cpb.icon(IconContainer.RESOURCE_1);
           props_Script = cpb.create();
         }
         return props_Script;

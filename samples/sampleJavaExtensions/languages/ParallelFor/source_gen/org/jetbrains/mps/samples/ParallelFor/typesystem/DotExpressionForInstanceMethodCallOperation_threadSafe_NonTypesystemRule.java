@@ -16,7 +16,6 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -49,11 +48,7 @@ public class DotExpressionForInstanceMethodCallOperation_threadSafe_NonTypesyste
             return;
           }
 
-          if (!(ListSequence.fromList(CheckingRuleHelper.allowedClasses()).any(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SLinkOperations.getTarget(it, LINKS.classifier$cxMr) == clazz;
-            }
-          }))) {
+          if (!(ListSequence.fromList(CheckingRuleHelper.allowedClasses()).any((it) -> SLinkOperations.getTarget(it, LINKS.classifier$cxMr) == clazz))) {
             {
               final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(SLinkOperations.getTarget(dotExpression, LINKS.operation$gs9E), "Calling a method on a potentially non-thread-safe shared object", "r:4c36f4b4-7816-4067-aa6e-a49c547265ed(org.jetbrains.mps.samples.ParallelFor.typesystem)", "3540747636396649371", null, errorTarget);
@@ -84,11 +79,7 @@ public class DotExpressionForInstanceMethodCallOperation_threadSafe_NonTypesyste
             }
           }
 
-          if (targetClassifier == null || !(ListSequence.fromList(CheckingRuleHelper.allowedClasses()).any(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SLinkOperations.getTarget(it, LINKS.classifier$cxMr) == targetClassifier;
-            }
-          }))) {
+          if (targetClassifier == null || !(ListSequence.fromList(CheckingRuleHelper.allowedClasses()).any((it) -> SLinkOperations.getTarget(it, LINKS.classifier$cxMr) == targetClassifier))) {
             {
               final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(SLinkOperations.getTarget(dotExpression, LINKS.operation$gs9E), "Calling a method on a potentially non-thread-safe shared object", "r:4c36f4b4-7816-4067-aa6e-a49c547265ed(org.jetbrains.mps.samples.ParallelFor.typesystem)", "3540747636396547907", null, errorTarget);

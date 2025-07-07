@@ -9,7 +9,7 @@ import com.intellij.util.ui.EmptyIcon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 
-@GeneratedClass(node = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)/708166622413807368", model = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)")
+@GeneratedClass(nodeId = "708166622413807368", model = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)")
 public class AcceptYoursTheirs extends BaseAction implements DumbAware {
   private MergeModelsPanel myMergeModelsDialog;
   private boolean myAcceptMine;

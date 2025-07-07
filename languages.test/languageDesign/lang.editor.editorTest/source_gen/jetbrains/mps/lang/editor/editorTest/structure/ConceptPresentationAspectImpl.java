@@ -17,6 +17,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_AttributeChild;
   private ConceptPresentation props_AttributeWithChildren;
   private ConceptPresentation props_AttributedConcept;
+  private ConceptPresentation props_AttributedNodeWithReference;
+  private ConceptPresentation props_AttributedNodesCollection;
   private ConceptPresentation props_AutoResolveChildWithErrorCell;
   private ConceptPresentation props_AutoResolveNodeToReference;
   private ConceptPresentation props_AutoResolveRoot;
@@ -52,9 +54,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_DeleteLineTestRoot;
   private ConceptPresentation props_DeleteWrapperChild;
   private ConceptPresentation props_DeleteWrapperRoot;
+  private ConceptPresentation props_DocumentationTestAttribute;
+  private ConceptPresentation props_FactoryElement;
+  private ConceptPresentation props_FactoryNode;
+  private ConceptPresentation props_FactoryTop;
   private ConceptPresentation props_FoldedCell;
   private ConceptPresentation props_FoldingContainer;
   private ConceptPresentation props_Foo;
+  private ConceptPresentation props_HTML5TestAttribute;
   private ConceptPresentation props_IBaseTestBlock;
   private ConceptPresentation props_IDelTestChild;
   private ConceptPresentation props_IDelTestConcreteChild;
@@ -133,6 +140,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_SwingComponentContainer;
   private ConceptPresentation props_SwingComponentinFoldedCell;
   private ConceptPresentation props_TestBlockList;
+  private ConceptPresentation props_TestInspectorChild;
+  private ConceptPresentation props_TestInspectorParent;
   private ConceptPresentation props_TwoStepDeleteAbstractChildContainer;
   private ConceptPresentation props_TwoStepDeleteAttribute;
   private ConceptPresentation props_TwoStepDeleteCellCollectionChild;
@@ -206,6 +215,20 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_AttributedConcept = cpb.create();
         }
         return props_AttributedConcept;
+      case LanguageConceptSwitch.AttributedNodeWithReference:
+        if (props_AttributedNodeWithReference == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_AttributedNodeWithReference = cpb.create();
+        }
+        return props_AttributedNodeWithReference;
+      case LanguageConceptSwitch.AttributedNodesCollection:
+        if (props_AttributedNodesCollection == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("AttributedNodesCollection");
+          props_AttributedNodesCollection = cpb.create();
+        }
+        return props_AttributedNodesCollection;
       case LanguageConceptSwitch.AutoResolveChildWithErrorCell:
         if (props_AutoResolveChildWithErrorCell == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -449,6 +472,34 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_DeleteWrapperRoot = cpb.create();
         }
         return props_DeleteWrapperRoot;
+      case LanguageConceptSwitch.DocumentationTestAttribute:
+        if (props_DocumentationTestAttribute == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_DocumentationTestAttribute = cpb.create();
+        }
+        return props_DocumentationTestAttribute;
+      case LanguageConceptSwitch.FactoryElement:
+        if (props_FactoryElement == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("FactoryElement");
+          props_FactoryElement = cpb.create();
+        }
+        return props_FactoryElement;
+      case LanguageConceptSwitch.FactoryNode:
+        if (props_FactoryNode == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("FactoryNode");
+          props_FactoryNode = cpb.create();
+        }
+        return props_FactoryNode;
+      case LanguageConceptSwitch.FactoryTop:
+        if (props_FactoryTop == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("FactoryTop");
+          props_FactoryTop = cpb.create();
+        }
+        return props_FactoryTop;
       case LanguageConceptSwitch.FoldedCell:
         if (props_FoldedCell == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -470,6 +521,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Foo = cpb.create();
         }
         return props_Foo;
+      case LanguageConceptSwitch.HTML5TestAttribute:
+        if (props_HTML5TestAttribute == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("HTML5TestAttribute");
+          props_HTML5TestAttribute = cpb.create();
+        }
+        return props_HTML5TestAttribute;
       case LanguageConceptSwitch.IBaseTestBlock:
         if (props_IBaseTestBlock == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -1009,6 +1067,20 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_TestBlockList = cpb.create();
         }
         return props_TestBlockList;
+      case LanguageConceptSwitch.TestInspectorChild:
+        if (props_TestInspectorChild == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_TestInspectorChild = cpb.create();
+        }
+        return props_TestInspectorChild;
+      case LanguageConceptSwitch.TestInspectorParent:
+        if (props_TestInspectorParent == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_TestInspectorParent = cpb.create();
+        }
+        return props_TestInspectorParent;
       case LanguageConceptSwitch.TwoStepDeleteAbstractChildContainer:
         if (props_TwoStepDeleteAbstractChildContainer == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

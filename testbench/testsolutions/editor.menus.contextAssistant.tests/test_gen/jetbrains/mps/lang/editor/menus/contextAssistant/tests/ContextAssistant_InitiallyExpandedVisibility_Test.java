@@ -4,9 +4,10 @@ package jetbrains.mps.lang.editor.menus.contextAssistant.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.openapi.editor.update.UpdaterListenerAdapter;
@@ -21,11 +22,11 @@ import java.util.ArrayList;
 
 @MPSLaunch
 public class ContextAssistant_InitiallyExpandedVisibility_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(ContextAssistant_InitiallyExpandedVisibility_Test.class, "${mps_home}", "r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ContextAssistant_InitiallyExpandedVisibility_Test.class).projectPath(null).modelRef("r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)").reopenProject(false).build());
 
   public ContextAssistant_InitiallyExpandedVisibility_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -52,20 +53,14 @@ public class ContextAssistant_InitiallyExpandedVisibility_Test extends BaseTrans
           }
         }
       });
-      SwingUtilities.invokeAndWait(new Runnable() {
-        public void run() {
-          getEditorComponent().getEditorContext().getContextAssistantManager().updateImmediately();
-        }
-      });
+      SwingUtilities.invokeAndWait(() -> getEditorComponent().getEditorContext().getContextAssistantManager().updateImmediately());
       pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " F5"));
-      SwingUtilities.invokeAndWait(new Runnable() {
-        public void run() {
-          getEditorComponent().getEditorContext().getContextAssistantManager().updateImmediately();
-          Set<EditorCell_WithComponent> componentCells = getEditorComponent().getCellTracker().getComponentCells();
-          Assert.assertFalse(componentCells.isEmpty());
-          for (EditorCell_WithComponent cell : SetSequence.fromSet(componentCells)) {
-            Assert.assertTrue(cell.getComponent().isVisible());
-          }
+      SwingUtilities.invokeAndWait(() -> {
+        getEditorComponent().getEditorContext().getContextAssistantManager().updateImmediately();
+        Set<EditorCell_WithComponent> componentCells = getEditorComponent().getCellTracker().getComponentCells();
+        Assert.assertFalse(componentCells.isEmpty());
+        for (EditorCell_WithComponent cell : SetSequence.fromSet(componentCells)) {
+          Assert.assertTrue(cell.getComponent().isVisible());
         }
       });
 

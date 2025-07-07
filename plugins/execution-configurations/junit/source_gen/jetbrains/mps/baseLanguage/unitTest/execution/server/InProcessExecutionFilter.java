@@ -53,7 +53,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     @Override
     @NotNull
     public String getFormattedMsg() {
-      return "The test %s is set not to be executed in-process.\nChange the property value via inspector or uncheck the 'in-process' flag from the configuration.\nIgnoring the test.";
+      return "The test %s is not allowed to be executed in the same process.\nUncheck the flag 'execute in the same process' in the run configuration.\nIgnoring the test.";
     }
   }
 
@@ -65,7 +65,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     @Override
     @NotNull
     public String getFormattedMsg() {
-      return "The project is set to be reopened in the TestInfo file,\nhowever it is impossible to simulate such behavior in-process.\nIgnoring the test %s.";
+      return "The project is set to be reopened in the TestInfo file, however it is impossible to simulate such behavior in-process.\nIgnoring the test %s.";
     }
   }
 

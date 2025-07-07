@@ -16,7 +16,9 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_Color;
   private ConceptPresentation props_ColorLiteral;
   private ConceptPresentation props_ConceptIconResourceExpression;
+  private ConceptPresentation props_ConstantFieldIcon;
   private ConceptPresentation props_FileIcon;
+  private ConceptPresentation props_GeneratedImage;
   private ConceptPresentation props_HelpURL;
   private ConceptPresentation props_Icon;
   private ConceptPresentation props_IconExpression;
@@ -24,9 +26,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_IconResourceExpression;
   private ConceptPresentation props_Image;
   private ConceptPresentation props_NodeIconResourceExpression;
-  private ConceptPresentation props_OldIconBundle;
-  private ConceptPresentation props_OldIconDeclaration;
-  private ConceptPresentation props_OldIconReference;
   private ConceptPresentation props_Primitive;
   private ConceptPresentation props_Rect;
   private ConceptPresentation props_Resource;
@@ -80,12 +79,18 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_ColorLiteral;
       case LanguageConceptSwitch.ConceptIconResourceExpression:
         if (props_ConceptIconResourceExpression == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7ce01982590bd1eL);
-          cpb.deprecateAssociation(0x7ce01982590bd48L, "concept_old");
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.rawPresentation("conceptIcon");
           props_ConceptIconResourceExpression = cpb.create();
         }
         return props_ConceptIconResourceExpression;
+      case LanguageConceptSwitch.ConstantFieldIcon:
+        if (props_ConstantFieldIcon == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("constant");
+          props_ConstantFieldIcon = cpb.create();
+        }
+        return props_ConstantFieldIcon;
       case LanguageConceptSwitch.FileIcon:
         if (props_FileIcon == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL);
@@ -94,6 +99,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_FileIcon = cpb.create();
         }
         return props_FileIcon;
+      case LanguageConceptSwitch.GeneratedImage:
+        if (props_GeneratedImage == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.experimental(true);
+          cpb.rawPresentation("GeneratedImage");
+          props_GeneratedImage = cpb.create();
+        }
+        return props_GeneratedImage;
       case LanguageConceptSwitch.HelpURL:
         if (props_HelpURL == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -141,31 +154,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_NodeIconResourceExpression = cpb.create();
         }
         return props_NodeIconResourceExpression;
-      case LanguageConceptSwitch.OldIconBundle:
-        if (props_OldIconBundle == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.deprecated(true);
-          cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a51b0y);
-          props_OldIconBundle = cpb.create();
-        }
-        return props_OldIconBundle;
-      case LanguageConceptSwitch.OldIconDeclaration:
-        if (props_OldIconDeclaration == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.deprecated(true);
-          cpb.presentationByName();
-          props_OldIconDeclaration = cpb.create();
-        }
-        return props_OldIconDeclaration;
-      case LanguageConceptSwitch.OldIconReference:
-        if (props_OldIconReference == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.deprecated(true);
-          cpb.rawPresentation("icon");
-          props_OldIconReference = cpb.create();
-        }
-        return props_OldIconReference;
       case LanguageConceptSwitch.Primitive:
         if (props_Primitive == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

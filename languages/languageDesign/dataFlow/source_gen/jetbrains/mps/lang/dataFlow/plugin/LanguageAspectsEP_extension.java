@@ -4,102 +4,59 @@ package jetbrains.mps.lang.dataFlow.plugin;
 
 import jetbrains.mps.smodel.structure.Extension;
 import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
+import jetbrains.mps.smodel.language.LanguageAspectDescriptorBase;
+import jetbrains.mps.aspects.OrderDescriptor;
+import jetbrains.mps.lang.structure.plugin.MPSAspects_Order;
 import jetbrains.mps.aspects.OrderParticipant;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
-import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.smodel.Language;
-import java.util.Collections;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.smodel.language.LanguageAspectGenerator;
 import jetbrains.mps.smodel.runtime.IconResource;
-import jetbrains.mps.aspects.OrderDescriptor;
-import jetbrains.mps.lang.structure.plugin.MPSAspects_Order;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import org.jetbrains.mps.openapi.persistence.ModelRoot;
-import jetbrains.mps.project.SModuleOperations;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.smodel.ModelImports;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 
 public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspectDescriptor> {
   public LanguageAspectsEP_extension() {
     super("jetbrains.mps.lang.aspect.LanguageAspectsEP");
   }
   public LanguageAspectDescriptor get() {
-    return new LanguageAspectDescriptor() {
-      public String getPresentableAspectName() {
-        return "dataFlow";
-      }
-      @Override
-      public String getId() {
-        return getPresentableAspectName();
-      }
+    return new LanguageAspectDescriptorBase("dataFlow") {
+      private OrderDescriptor myOrderConstraints = new MPSAspects_Order();
+
       @Override
       public int compareTo(OrderParticipant<String> other) {
         return myOrderConstraints.compare(this.getId(), other.getId());
       }
-      @NotNull
-      public Collection<SModel> getAspectModels(final SModule language) {
-        if (!((language instanceof Language))) {
-          return Collections.emptyList();
-        }
-        Iterable<SModel> allModels = language.getModels();
-        return Sequence.fromIterable(allModels).where(new IWhereFilter<SModel>() {
-          public boolean accept(SModel it) {
-            String fullName = it.getModelName();
-            return Objects.equals(fullName, language.getModuleName() + "." + getPresentableAspectName());
-          }
-        }).ofType(SModel.class).toListSequence();
+      public SModuleReference getDefaultDevkit() {
+        return PersistenceFacade.getInstance().createModuleReference("00000000-0000-4000-0000-443879f56b80(jetbrains.mps.devkit.aspect.dataflow)");
       }
       @NotNull
+      @Override
       public Collection<SLanguage> getMainLanguages() {
         return ListSequence.fromListAndArray(new ArrayList<SLanguage>(), MetaAdapterFactory.getLanguage(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, "jetbrains.mps.lang.dataFlow"));
       }
       @Nullable
-      public LanguageAspectGenerator getGenerator() {
-        return null;
-      }
-      @Nullable
       public IconResource getIconResource() {
-        return IconContainer.RESOURCE_a0a6a0a0a1;
+        return IconContainer.RESOURCE_0;
       }
       @Nullable
       public String getHelpUrl() {
-        return HELP_URL_ecu8yf_a0a7a0a0a1;
+        return HELP_URL;
       }
-
-
-      private OrderDescriptor myOrderConstraints = new MPSAspects_Order();
-
-
-
-
-
-
-      public boolean canCreate(SModule language) {
-        return CollectionSequence.fromCollection(getAspectModels(language)).isEmpty();
+      @Override
+      public void configureDescriptorModel(@NotNull SModule module, @NotNull SModel descriptorModel) {
+        new ModelImports(descriptorModel).addUsedLanguage(MetaAdapterFactory.getLanguage(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, "jetbrains.mps.lang.dataFlow"));
+        SModelOperations.createNewRootNode(descriptorModel, MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x7fbdaa9796878e0bL, "jetbrains.mps.lang.dataFlow.structure.DataFlowAspectDeputy"));
       }
-
-      public void create(SModule language) {
-        Language l = ((Language) language);
-        SModel structureModel = l.getStructureModelDescriptor();
-        ModelRoot modelRoot;
-        if (structureModel == null) {
-          modelRoot = l.getModelRoots().iterator().next();
-        } else {
-          modelRoot = structureModel.getModelRoot();
-        }
-        SModuleOperations.createModelWithAdjustments(l.getModuleName() + '.' + getPresentableAspectName(), modelRoot);
-      }
-
-
     };
   }
-  private static final String HELP_URL_ecu8yf_a0a7a0a0a1 = URLFunction_HelpCenterDocUrl.getUrl() + "/data-flow.html";
+  private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "data-flow.html";
 }

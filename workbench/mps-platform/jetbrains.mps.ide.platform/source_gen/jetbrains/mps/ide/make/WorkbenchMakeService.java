@@ -6,8 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.make.service.AbstractMakeService;
 import jetbrains.mps.make.IMakeService;
 import com.intellij.openapi.Disposable;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 import java.util.concurrent.atomic.AtomicMarkableReference;
 import jetbrains.mps.make.MakeSession;
 import java.util.concurrent.atomic.AtomicReference;
@@ -19,8 +17,8 @@ import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.core.platform.Platform;
+import java.io.File;
 import jetbrains.mps.ide.MPSCoreComponents;
-import jetbrains.mps.make.MakeServiceComponent;
 import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.make.script.IScript;
 import jetbrains.mps.make.script.IScriptController;
@@ -31,16 +29,25 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import com.intellij.openapi.project.DumbService;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.make.MakeNotification;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
+import java.nio.file.Path;
+import java.nio.file.Files;
+import com.intellij.openapi.util.Disposer;
+import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.make.runtime.util.FutureValue;
 import jetbrains.mps.make.dependencies.MakeSequence;
+import jetbrains.mps.messages.Message;
+import jetbrains.mps.messages.MessageKind;
 import com.intellij.openapi.progress.PerformInBackgroundOption;
+import com.intellij.openapi.progress.Task;
+import com.intellij.openapi.progress.ProgressIndicator;
+import jetbrains.mps.progress.ProgressMonitorAdapter;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.ide.IdeEventQueue;
 import com.intellij.openapi.progress.ProgressManager;
+import jetbrains.mps.make.MakeServiceComponent;
 import com.intellij.openapi.wm.IdeFrame;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.openapi.wm.ToolWindowManager;
@@ -49,36 +56,38 @@ import jetbrains.mps.make.script.IConfigMonitor;
 import jetbrains.mps.make.script.IJobMonitor;
 import jetbrains.mps.make.script.IPropertiesPool;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.make.script.IFeedback;
 import jetbrains.mps.make.facet.ITarget;
-import jetbrains.mps.internal.make.cfg.GenerateFacetInitializer;
-import jetbrains.mps.generator.IModifiableGenerationSettings;
-import jetbrains.mps.generator.GenerationSettingsProvider;
-import jetbrains.mps.internal.make.cfg.TextGenFacetInitializer;
 import jetbrains.mps.internal.make.cfg.JavaCompileFacetInitializer;
-import jetbrains.mps.compiler.JavaCompilerOptionsComponent;
+import jetbrains.mps.make.kotlin.KotlinCompilerOptions;
 import jetbrains.mps.make.script.IOption;
 import jetbrains.mps.make.script.IQuery;
 import jetbrains.mps.internal.make.runtime.script.MessageFeedbackStrategy;
 
-@GeneratedClass(node = "r:abe0ad99-3ef3-4277-a170-d1efd7986b86(jetbrains.mps.ide.make)/173672751428923285", model = "r:abe0ad99-3ef3-4277-a170-d1efd7986b86(jetbrains.mps.ide.make)")
+/**
+ * IDEA App Service, its instance is registered into MakeServiceComponent CC from activator of [mps-platform]/j.m.ide.platform
+ */
+@GeneratedClass(nodeId = "173672751428923285", model = "r:abe0ad99-3ef3-4277-a170-d1efd7986b86(jetbrains.mps.ide.make)")
 public class WorkbenchMakeService extends AbstractMakeService implements IMakeService, Disposable {
-
-  private static Logger LOG = LogManager.getLogger(WorkbenchMakeService.class);
 
   private AtomicMarkableReference<MakeSession> currentSessionStickyMark = new AtomicMarkableReference<MakeSession>(null, false);
   private volatile AtomicReference<Future<IResult>> currentProcess = new AtomicReference<Future<IResult>>();
   private List<IMakeNotificationListener> listeners = Collections.synchronizedList(ListSequence.fromList(new ArrayList<IMakeNotificationListener>()));
   private final Platform myPlatform;
 
-  public WorkbenchMakeService(MPSCoreComponents mpsComponents) {
-    myPlatform = mpsComponents.getPlatform();
-    myPlatform.findComponent(MakeServiceComponent.class).install(this);
+  /**
+   * File that indicates the service to be up, will get deleted on dispose. Used for kotlin compiler options.
+   */
+  private File myAliveFile;
+
+  public WorkbenchMakeService() {
+    myPlatform = MPSCoreComponents.getInstance().getPlatform();
   }
 
   @Override
   public void dispose() {
-    myPlatform.findComponent(MakeServiceComponent.class).uninstall(this);
+    // just serve as a top for dependant disposable
   }
 
   @Override
@@ -94,6 +103,8 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
         this.attemptCloseSession();
       }
     }
+    // FIXME I wonder if I can get 'composed' future here, the one that would report IResult, once ready, with displayInfo()
+    //      instead of done(). Perhaps, delegation? Just don't feel comfortable with access to this service instance.
     return result;
   }
 
@@ -152,16 +163,12 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
 
   @Override
   public void removeListener(IMakeNotificationListener listener) {
-    checkValidUsage();
+    // provisionally allow to unregister listeners at any moment (not necessarily when this is an active make service)
     ListSequence.fromList(listeners).removeElement(listener);
   }
 
   private void notifyListeners(final MakeNotification notification) {
-    ListSequence.fromList(ListSequence.fromListWithValues(new ArrayList<IMakeNotificationListener>(), listeners)).visitAll(new IVisitor<IMakeNotificationListener>() {
-      public void visit(IMakeNotificationListener li) {
-        li.handleNotification(notification);
-      }
-    });
+    ListSequence.fromList(ListSequence.fromListWithValues(new ArrayList<IMakeNotificationListener>(), listeners)).visitAll((li) -> li.handleNotification(notification));
   }
 
   private void attemptCloseSession() {
@@ -181,14 +188,27 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
     }
   }
 
+  private File getAliveFlagFile() {
+    if (myAliveFile == null) {
+      try {
+        Path createTempFile = Files.createTempFile("mps-workbench-make-", ".alive");
+        myAliveFile = createTempFile.toFile();
+        Disposer.register(this, () -> myAliveFile.delete());
+      } catch (IOException e) {
+        myAliveFile = new File("");
+      }
+    }
+
+    return myAliveFile;
+  }
+
   private synchronized void awaitCurrentProcess() {
     Future<IResult> proc = this.currentProcess.get();
     try {
       if (proc != null && !(proc.isDone())) {
         proc.get();
       }
-    } catch (InterruptedException ignore) {
-    } catch (ExecutionException ignore) {
+    } catch (InterruptedException | ExecutionException ignore) {
     } finally {
       this.currentProcess.set(null);
     }
@@ -196,53 +216,92 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
 
   private Future<IResult> _doMake(Iterable<? extends IResource> inputRes, final IScript defaultScript, IScriptController controller, @NotNull ProgressMonitor monitor) {
 
-    String scrName = ((this.getSession().isCleanMake() ? "Rebuild" : "Make"));
-    IMessageHandler mh = this.getSession().getMessageHandler();
+    final String scrName = ((this.getSession().isCleanMake() ? "Rebuild" : "Make"));
+    final IMessageHandler mh = this.getSession().getMessageHandler();
 
     if (Sequence.fromIterable(inputRes).isEmpty()) {
-      this.displayInfo("Everything is up to date");
-      return new FutureValue<IResult>(new IResult.SUCCESS(null));
+      String msg = "Everything is up to date";
+      displayInfo(msg);
+      return new FutureValue<IResult>(new IResult.SUCCESS(msg, null));
     }
 
     final MakeSession session = getSession();
     MakeSequence makeSeq = new MakeSequence(inputRes, defaultScript, session);
 
     Project ideaPrj = ProjectHelper.toIdeaProject(session.getProject());
-    PerformInBackgroundOption bg = MakeServiceConfiguration.getInstance(ideaPrj).getMakeInBackgroundOption();
-    final MakeTask task = new MakeTask(ideaPrj, scrName, makeSeq, new Controller(controller, mh), mh, bg) {
+    final WorkbenchMakeTask makeTask = new WorkbenchMakeTask(makeSeq, new Controller(controller, mh), mh) {
+
       @Override
-      protected void aboutToStart() {
+      protected void doRun(ProgressMonitor monitor) {
         notifyListeners(new MakeNotification(WorkbenchMakeService.this, MakeNotification.Kind.SCRIPT_ABOUT_TO_START));
+        super.doRun(monitor);
       }
+
       @Override
       protected void done() {
+        if (getResult() == null) {
+          // I work towards not null result, however, still seems to be possible in case MakeTask didn't start
+          String info = scrName + " aborted";
+          WorkbenchMakeService.this.displayInfo(info);
+        } else if (getResult().isSucessful()) {
+          String msg = scrName + " successful";
+          if (isNotEmptyString(getResult().message())) {
+            msg = msg + ". " + getResult().message();
+          }
+          WorkbenchMakeService.this.displayInfo(msg);
+        } else {
+          String msg = scrName + " failed";
+          if (isNotEmptyString(getResult().message())) {
+            msg = msg + ". " + getResult().message();
+          }
+          // displayBalloon would draw more attention to the failure, just need to make sure it works
+          WorkbenchMakeService.this.displayInfo(msg);
+          // FIXME I hate this string formatting, but for the moment just need to move this out of CoreMakeTask
+          mh.handle(new Message(MessageKind.ERROR, msg + ". See previous messages for details."));
+        }
         currentProcess.compareAndSet(this, null);
         attemptCloseSession();
         notifyListeners(new MakeNotification(WorkbenchMakeService.this, MakeNotification.Kind.SCRIPT_FINISHED));
       }
-      @Override
-      protected void displayInfo(String info) {
-        WorkbenchMakeService.this.displayInfo(info);
-      }
     };
+    PerformInBackgroundOption bg = MakeServiceConfiguration.getInstance(ideaPrj).getMakeInBackgroundOption();
+    final Task platformTask;
+    if (bg.shouldStartInBackground()) {
+      platformTask = new Task.Backgroundable(ideaPrj, scrName, true) {
+        @Override
+        public void run(@NotNull ProgressIndicator indicator) {
+          makeTask.run(new ProgressMonitorAdapter(indicator));
+        }
+
+        @Override
+        public void onCancel() {
+          makeTask.cancel(true);
+        }
+      };
+    } else {
+      platformTask = new Task.Modal(ideaPrj, scrName, true) {
+        @Override
+        public void run(@NotNull ProgressIndicator indicator) {
+          makeTask.run(new ProgressMonitorAdapter(indicator));
+        }
+        @Override
+        public void onCancel() {
+          makeTask.cancel(true);
+        }
+      };
+    }
 
     try {
-
-      getSession().doExecute(new Runnable() {
-        public void run() {
-          ApplicationManager.getApplication().invokeLater(new Runnable() {
-            public void run() {
-              IdeEventQueue.getInstance().flushQueue();
-              if (currentProcess.compareAndSet(null, task)) {
-                ProgressManager.getInstance().run(task);
-              } else {
-                throw new IllegalStateException("unexpected: make process is already running");
-              }
-              IdeEventQueue.getInstance().flushQueue();
-            }
-          });
+      // FIXME suspicious try/catch around doExecute -> invokeLater(). It's highly unlikely anything goes wrong with doExecute
+      getSession().doExecute(() -> ApplicationManager.getApplication().invokeLater(() -> {
+        IdeEventQueue.getInstance().flushQueue();
+        if (currentProcess.compareAndSet(null, makeTask)) {
+          ProgressManager.getInstance().run(platformTask);
+        } else {
+          throw new IllegalStateException("unexpected: make process is already running");
         }
-      });
+        IdeEventQueue.getInstance().flushQueue();
+      }));
 
     } catch (RuntimeException rex) {
       // abort session
@@ -252,7 +311,7 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
       throw rex;
     }
 
-    return task;
+    return makeTask;
   }
 
   private void checkValidUsage() {
@@ -267,7 +326,7 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
   }
 
   public void checkValidSession(MakeSession session) {
-    if (!((this.getSession() == session))) {
+    if (this.getSession() != session) {
       throw new IllegalStateException("invalid session");
     }
   }
@@ -279,13 +338,13 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
     }
   }
 
-  private void displayBaloon(String text) {
+  private void displayBalloon(String text) {
+    // FIXME is there tool window with "Make" id? I would prefer to report IResult.FAILURE with a balloon rather than status bar.
     ToolWindowManager.getInstance(ProjectHelper.toIdeaProject(this.getSession().getProject())).notifyByBalloon("Make", MessageType.WARNING, text);
 
   }
 
   private class Controller implements IScriptController {
-    private ProgressMonitor progressMonitor;
     private final IScriptController delegateScrCtr;
     private IConfigMonitor delegateConfMon;
     private IConfigMonitor confMon;
@@ -301,14 +360,12 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
     @Override
     public void runConfigWithMonitor(final _FunctionTypes._void_P1_E0<? super IConfigMonitor> code) {
       if (delegateScrCtr != null) {
-        delegateScrCtr.runConfigWithMonitor(new _FunctionTypes._void_P1_E0<IConfigMonitor>() {
-          public void invoke(IConfigMonitor c) {
-            try {
-              Controller.this.delegateConfMon = c;
-              code.invoke(confMon);
-            } finally {
-              Controller.this.delegateConfMon = null;
-            }
+        delegateScrCtr.runConfigWithMonitor((IConfigMonitor c) -> {
+          try {
+            Controller.this.delegateConfMon = c;
+            code.invoke(confMon);
+          } finally {
+            Controller.this.delegateConfMon = null;
           }
         });
       } else {
@@ -321,7 +378,7 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
       try {
         code.invoke(jobMon);
       } catch (RuntimeException e) {
-        WorkbenchMakeService.LOG.debug("Error running job", e);
+        Logger.getLogger(WorkbenchMakeService.class).debug("Error running job", e);
         jobMon.reportFeedback(new IFeedback.ERROR("Error running job", e));
         throw e;
       }
@@ -331,12 +388,9 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
     public void setup(IPropertiesPool ppool, Iterable<ITarget> targets, Iterable<? extends IResource> input) {
       ppool.setPredecessor(predParamPool);
       predParamPool = ppool;
-      new GenerateFacetInitializer().populate(ppool);
 
-      IModifiableGenerationSettings genSettings = getSession().getProject().getComponent(GenerationSettingsProvider.class).getGenerationSettings();
-      new TextGenFacetInitializer().generateDebugInfo(genSettings.isGenerateDebugInfo()).populate(ppool);
-
-      new JavaCompileFacetInitializer().setJavaCompileOptions(JavaCompilerOptionsComponent.getInstance().getJavaCompilerOptions(getSession().getProject())).populate(ppool);
+      // FIXME WorkbenchMakeService is generic code and doesn't need to know/care about JavaCompile facet existence or Kotlin compilation parameters.
+      new JavaCompileFacetInitializer().setKotlinCompileOptions(new KotlinCompilerOptions(getAliveFlagFile())).populate(ppool);
 
       if (delegateScrCtr != null) {
         delegateScrCtr.setup(ppool, targets, input);
@@ -365,5 +419,8 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
       };
       this.jobMon = confMon;
     }
+  }
+  private static boolean isNotEmptyString(String str) {
+    return str != null && str.length() > 0;
   }
 }

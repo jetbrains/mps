@@ -4,80 +4,73 @@ package jetbrains.mps.ide.datatransfer;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import java.awt.datatransfer.Transferable;
-import org.jetbrains.annotations.NotNull;
-import java.util.List;
-import org.jetbrains.mps.openapi.model.SNode;
-import java.util.ArrayList;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.mps.openapi.model.SModelReference;
-import java.util.Set;
-import java.util.HashSet;
-import org.jetbrains.mps.openapi.language.SLanguage;
+import jetbrains.mps.datatransfer.PasteNodeData;
+import org.jetbrains.annotations.NotNull;
+import java.util.List;
 import java.awt.datatransfer.DataFlavor;
+import java.util.ArrayList;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.datatransfer.SNodeClip;
 import java.util.Map;
+import java.util.Set;
 import java.util.Collections;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
 import java.io.StringReader;
-import jetbrains.mps.datatransfer.PasteNodeData;
 
-@GeneratedClass(node = "r:84719e1a-99f6-4297-90ba-8ad2a947fa4a(jetbrains.mps.ide.datatransfer)/6299533519672651952", model = "r:84719e1a-99f6-4297-90ba-8ad2a947fa4a(jetbrains.mps.ide.datatransfer)")
+@GeneratedClass(nodeId = "6299533519672651952", model = "r:84719e1a-99f6-4297-90ba-8ad2a947fa4a(jetbrains.mps.ide.datatransfer)")
 public class SNodeTransferable implements Transferable {
-  @NotNull
-  private List<SNode> mySNodes = new ArrayList<SNode>();
   @Nullable
-  private SNodeReference mySNodeReference;
-  @Nullable
-  private SModelReference mySourceModel;
-  @NotNull
-  private Set<SModelReference> myNecessaryModels = new HashSet<SModelReference>();
-  @NotNull
-  private Set<SLanguage> myNecessaryLanguages = new HashSet<SLanguage>();
+  private final SNodeReference mySNodeReference;
+
+  private final PasteNodeData myPasteData;
+
   @Nullable
   private String myText;
   @NotNull
-  private List<DataFlavor> mySupportedDataFlavors = new ArrayList<DataFlavor>(4);
+  private final List<DataFlavor> mySupportedDataFlavors = new ArrayList<DataFlavor>(4);
 
   public SNodeTransferable(List<SNode> nodes, String text) {
-    saveNodes(nodes, null);
+    myPasteData = saveNodes(nodes, null);
+    mySupportedDataFlavors.add(SModelDataFlavor.sNode);
+    mySupportedDataFlavors.add(SNodeClip.NODE);
     if (nodes.size() == 1) {
-      saveNodeReference(nodes.get(0));
+      mySNodeReference = nodes.get(0).getReference();
+      mySupportedDataFlavors.add(SNodeClip.NODEREF);
+    } else {
+      mySNodeReference = null;
     }
     saveText(text);
   }
-  /**
-   * Deprecated since MPS 3.1 looks like not used anymore
-   */
-  @Deprecated
-  public SNodeTransferable(List<SNode> nodes) {
-    saveNodes(nodes, null);
-    if (nodes.size() == 1) {
-      saveNodeReference(nodes.get(0));
-    }
-    saveText("");
-  }
+
   public SNodeTransferable(@NotNull List<SNode> nodes, String text, Map<SNode, Set<SNode>> nodesAndAttributes) {
-    saveNodes(nodes, nodesAndAttributes);
+    myPasteData = saveNodes(nodes, nodesAndAttributes);
+    mySupportedDataFlavors.add(SModelDataFlavor.sNode);
+    mySupportedDataFlavors.add(SNodeClip.NODE);
     if (nodes.size() == 1) {
-      saveNodeReference(nodes.get(0));
+      mySNodeReference = nodes.get(0).getReference();
+      mySupportedDataFlavors.add(SNodeClip.NODEREF);
+    } else {
+      mySNodeReference = null;
     }
     saveText(text);
   }
-  /**
-   * Deprecated since MPS 3.1 looks like not used anymore
-   */
-  @Deprecated
-  public SNodeTransferable(SNode node) {
-    saveNodes(Collections.singletonList(node), null);
-    saveNodeReference(node);
-    saveText("");
-  }
+
   public SNodeTransferable(String text, SNode node) {
+    // XXX beware, here comes important hidden knowledge.
+    // saveText here comes first to make sure CopyPasteUtil.isStringOnTopOfClipboard 
+    // gives true when one copies a text from a reference to get inserted/pasted as text,
+    // not as reference (as I would expect). See TestAutoresolve_Variable test for sample code.
     saveText(text);
-    saveNodes(Collections.singletonList(node), null);
-    saveNodeReference(node);
+    myPasteData = saveNodes(Collections.singletonList(node), null);
+    mySupportedDataFlavors.add(SModelDataFlavor.sNode);
+    mySupportedDataFlavors.add(SNodeClip.NODE);
+    mySNodeReference = node.getReference();
+    mySupportedDataFlavors.add(SNodeClip.NODEREF);
   }
+
   @Override
   public DataFlavor[] getTransferDataFlavors() {
     return mySupportedDataFlavors.toArray(new DataFlavor[mySupportedDataFlavors.size()]);
@@ -86,41 +79,39 @@ public class SNodeTransferable implements Transferable {
   public boolean isDataFlavorSupported(DataFlavor flavor) {
     return mySupportedDataFlavors.contains(flavor);
   }
+
   @Override
   public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException, IOException {
     if (isDataFlavorSupported(flavor)) {
-      if (flavor.equals(SModelDataFlavor.sNode)) {
+      if (SModelDataFlavor.sNode.equals(flavor)) {
+        // FIXME for transition period of 1 release we still support this flavor, and keep [ide.platform]SNodeTransferable
+        //      in Clipboard. I'm not aware of clients using SNodeTransferable directly, and generally there's no need to,
+        //      and the code will be removed after 2025.1
+        //      Perhaps, we shall replace SNodeTransferable with another Transferable implementation (SNodeClip?), which
+        //      won't be part of [ide.platform], not to drag complete IDEA platform just for the sake of Clipboard operations.
         return this;
-      } else if (flavor.equals(SModelDataFlavor.sNodeReference)) {
+      } else if (SNodeClip.NODEREF.equals(flavor)) {
         return mySNodeReference;
-      } else
-      if (flavor.equals(DataFlavor.stringFlavor)) {
+      } else if (SNodeClip.NODE.equals(flavor)) {
+        return createNodeData();
+      } else if (DataFlavor.stringFlavor.equals(flavor)) {
         return getAsString();
-      } else
-      if (flavor.equals(DataFlavor.plainTextFlavor)) {
+      } else if (flavor.equals(DataFlavor.plainTextFlavor)) {
         return new StringReader(getAsString());
       }
     }
     throw new UnsupportedFlavorException(flavor);
   }
+
   private String getAsString() {
     return myText;
   }
-  private void saveNodes(@NotNull List<SNode> nodes, @Nullable Map<SNode, Set<SNode>> nodesAndAttributes) {
+
+  private static PasteNodeData saveNodes(@NotNull List<SNode> nodes, @Nullable Map<SNode, Set<SNode>> nodesAndAttributes) {
     for (SNode node : nodes) {
       assert node.getParent() == nodes.get(0).getParent();
     }
-    assert mySNodes.isEmpty();
-    PasteNodeData pasteNodeData = CopyPasteUtil.createNodeDataIn(nodes, nodesAndAttributes);
-    mySNodes.addAll(pasteNodeData.getNodes());
-    mySourceModel = pasteNodeData.getSourceModel();
-    myNecessaryModels = pasteNodeData.getNecessaryModels();
-    myNecessaryLanguages = pasteNodeData.getNecessaryLanguages();
-    mySupportedDataFlavors.add(SModelDataFlavor.sNode);
-  }
-  private void saveNodeReference(@NotNull SNode node) {
-    mySNodeReference = node.getReference();
-    mySupportedDataFlavors.add(SModelDataFlavor.sNodeReference);
+    return CopyPasteUtil.createNodeDataIn(nodes, nodesAndAttributes);
   }
   private void saveText(String text) {
     myText = text;
@@ -128,9 +119,9 @@ public class SNodeTransferable implements Transferable {
     mySupportedDataFlavors.add(DataFlavor.plainTextFlavor);
   }
   public PasteNodeData createNodeData() {
-    return CopyPasteUtil.createNodeDataOut(mySNodes, mySourceModel, new HashSet<SLanguage>(myNecessaryLanguages), new HashSet<SModelReference>(myNecessaryModels));
+    return CopyPasteUtil.createNodeDataOut(myPasteData);
   }
   public boolean containsNodes() {
-    return (!(mySNodes.isEmpty()));
+    return !(myPasteData.getNodes().isEmpty());
   }
 }

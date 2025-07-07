@@ -2,7 +2,7 @@
 <model ref="r:00000000-0000-4000-0000-011c89590323(jetbrains.mps.lang.script.structure)">
   <persistence version="9" />
   <languages>
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="3" />
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
@@ -13,10 +13,6 @@
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
-      <concept id="5177162104569058199" name="jetbrains.mps.lang.resources.structure.HelpURL" flags="ng" index="1sEMCm">
-        <property id="5177162104569058200" name="url" index="1sEMCp" />
-        <reference id="4726480899534317252" name="baseURL" index="1fZFei" />
-      </concept>
       <concept id="8974276187400029883" name="jetbrains.mps.lang.resources.structure.FileIcon" flags="ng" index="1QGGSu">
         <property id="2756621024541341363" name="file" index="1iqoE4" />
       </concept>
@@ -24,14 +20,10 @@
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
       <concept id="3348158742936976480" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration" flags="ng" index="25R33">
         <property id="1421157252384165432" name="memberId" index="3tVfz5" />
-        <reference id="899069222106091871" name="oldMember" index="2wpffI" />
       </concept>
       <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclaration" flags="ng" index="25R3W">
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
         <child id="3348158742936976577" name="members" index="25R1y" />
-      </concept>
-      <concept id="6491077959632463275" name="jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo" flags="ng" index="3l_iC">
-        <child id="6491077959632463286" name="oldProperty" index="3l_iP" />
       </concept>
       <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
         <property id="1225118929411" name="build" index="YLPcu" />
@@ -39,25 +31,11 @@
       <concept id="1082978164218" name="jetbrains.mps.lang.structure.structure.DataTypeDeclaration" flags="ng" index="AxPO6">
         <property id="7791109065626895363" name="datatypeId" index="3F6X1D" />
       </concept>
-      <concept id="1082978164219" name="jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old" flags="ng" index="AxPO7">
-        <reference id="1083171729157" name="memberDataType" index="M4eZT" />
-        <child id="1083172003582" name="member" index="M5hS2" />
-      </concept>
-      <concept id="1588368162884797030" name="jetbrains.mps.lang.structure.structure.EnumMigrationInfo" flags="ng" index="2JgGob">
-        <property id="6491077959634662372" name="valueOpMigration" index="3scbB" />
-        <property id="6491077959634650670" name="nameOpMigration" index="3sfsH" />
-        <child id="6491077959632451996" name="oldEnum" index="3lCyv" />
-      </concept>
-      <concept id="1083171877298" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration_Old" flags="ig" index="M4N5e">
-        <property id="1083923523172" name="externalValue" index="1uS6qo" />
-        <property id="1083923523171" name="internalValue" index="1uS6qv" />
-      </concept>
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
         <property id="4628067390765956807" name="final" index="R5$K2" />
         <property id="4628067390765956802" name="abstract" index="R5$K7" />
         <property id="5092175715804935370" name="conceptAlias" index="34LRSv" />
-        <child id="1780177113170204155" name="helpURL" index="bvy1s" />
         <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
         <child id="1071489727084" name="propertyDeclaration" index="1TKVEl" />
       </concept>
@@ -88,7 +66,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -133,13 +111,6 @@
       <property role="TrG5h" value="type" />
       <property role="IQ2nx" value="5299416737274925395" />
       <ref role="AX2Wp" node="3Ftr4R6BFuT" resolve="ScriptType" />
-      <node concept="3l_iC" id="3Ftr4R6BH8n" role="lGtFl">
-        <node concept="1TJgyi" id="4AbjR7I215j" role="3l_iP">
-          <property role="TrG5h" value="type" />
-          <property role="IQ2nx" value="5299416737274925395" />
-          <ref role="AX2Wp" node="4AbjR7I215g" resolve="ScriptType" />
-        </node>
-      </node>
     </node>
     <node concept="1TJgyi" id="4AbjR7I215l" role="1TKVEl">
       <property role="TrG5h" value="toBuild" />
@@ -154,10 +125,6 @@
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJSt" role="rwd14">
       <property role="1iqoE4" value="${module}/icons/scriptsIcon.png" />
-    </node>
-    <node concept="1sEMCm" id="5wIG6OxYQAk" role="bvy1s">
-      <property role="1sEMCp" value="scripts.html" />
-      <ref role="1fZFei" to="n1pe:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
   </node>
   <node concept="1TIwiD" id="h8_Xfy3">
@@ -399,32 +366,13 @@
     <property role="TrG5h" value="ScriptType" />
     <property role="3F6X1D" value="5299416737274925392" />
     <ref role="1H5jkz" node="3Ftr4R6BFuV" resolve="enhancement" />
-    <node concept="2JgGob" id="3Ftr4R6BFuU" role="lGtFl">
-      <property role="3scbB" value="5CkWgdpp3eY/string_name" />
-      <property role="3sfsH" value="5CkWgdpp0p1/by_name" />
-      <node concept="AxPO7" id="4AbjR7I215g" role="3lCyv">
-        <property role="TrG5h" value="ScriptType" />
-        <property role="3F6X1D" value="5299416737274925392" />
-        <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
-        <node concept="M4N5e" id="4AbjR7I215h" role="M5hS2">
-          <property role="1uS6qv" value="enhancement" />
-          <property role="1uS6qo" value="enhancement" />
-        </node>
-        <node concept="M4N5e" id="4AbjR7I215i" role="M5hS2">
-          <property role="1uS6qv" value="migration" />
-          <property role="1uS6qo" value="migration" />
-        </node>
-      </node>
-    </node>
     <node concept="25R33" id="3Ftr4R6BFuV" role="25R1y">
       <property role="TrG5h" value="enhancement" />
       <property role="3tVfz5" value="5299416737274925393" />
-      <ref role="2wpffI" node="4AbjR7I215h" />
     </node>
     <node concept="25R33" id="3Ftr4R6BFuW" role="25R1y">
       <property role="TrG5h" value="migration" />
       <property role="3tVfz5" value="5299416737274925394" />
-      <ref role="2wpffI" node="4AbjR7I215i" />
     </node>
   </node>
 </model>

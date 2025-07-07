@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,11 @@
 package jetbrains.mps.vfs;
 
 import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.vfs.impl.IoFileSystem;
 import jetbrains.mps.vfs.iofs.file.LocalIoFileSystem;
 import jetbrains.mps.vfs.iofs.jar.JarIoFileSystem;
 import jetbrains.mps.vfs.iofs.jrt.JrtIoFileSystem;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -51,7 +50,7 @@ public class VFSManager implements CoreComponent {
   public static final String JAR_FS = "jar";
   public static final String JRT_FS = "jrt";
 
-  private static final Logger LOG = LogManager.getLogger(VFSManager.class);
+  private static final Logger LOG = Logger.getLogger(VFSManager.class);
 
   private final Map<String, IFileSystem> myFileSystems = new HashMap<>();
 
@@ -59,21 +58,27 @@ public class VFSManager implements CoreComponent {
   private JarIoFileSystem myDefaultJarFS;
   private JrtIoFileSystem myDefaultJrtFS;
 
+  private FileSystem myUmbrellaFileSystemJavaIO;
+
   public VFSManager() {
   }
 
+  @SuppressWarnings("removal")
   @Override
   public void init() {
     // provisional code to live as long as IoFileSystem is there. The idea is to provide access to VFSManager instance in locations where obtaining
     // ComponentHost is troublesome at the moment.
-    IoFileSystem.newInstance(this);
-    myDefaultLocalFileFS = new LocalIoFileSystem(this);
-    myDefaultJarFS = new JarIoFileSystem(this);
+    myUmbrellaFileSystemJavaIO = IoFileSystem.newInstance(this);
+    // it's a default impl, available through FileSystem.getInstance() unless there's IDEA impl to override it
+    FileSystemExtPoint.setFS(myUmbrellaFileSystemJavaIO);
+    myDefaultLocalFileFS = new LocalIoFileSystem(this, myUmbrellaFileSystemJavaIO);
+    myDefaultJarFS = new JarIoFileSystem(this, myUmbrellaFileSystemJavaIO);
     myDefaultJrtFS = new JrtIoFileSystem(this);
   }
 
   @Override
   public void dispose() {
+//    FileSystemExtPoint.setFS(null); XXX perhaps, shall do?
   }
 
 
@@ -85,11 +90,11 @@ public class VFSManager implements CoreComponent {
     if (JAVA_IO_FILE_FS.equals(fsId)) {
       // generally, our implementation should suffice, hence we discourage changes (we can not ensure the new one uses java.io, after all),
       // though do not prevent it.
-      LOG.warn("Override java.io filesystem from " + fs);
+      LOG.warning("Override java.io filesystem from " + fs);
       // fall though
     } else if (JAVA_IO_JAR_FS.equals(fsId)) {
       // same as above
-      LOG.warn("Override java.io-backed jar filesystem from " + fs);
+      LOG.warning("Override java.io-backed jar filesystem from " + fs);
     }
 
     myFileSystems.put(fsId, fs);
@@ -138,5 +143,16 @@ public class VFSManager implements CoreComponent {
     }
 
     return fs.getFile(path.getPath());
+  }
+
+  /**
+   * MPS INTERNAL USE ONLY!!!
+   * Give access to 'umbrella' {@link FileSystem} file system (java.io-based), the one that hides different {@link IFileSystem} implementations.
+   * {@implNote} if necessary, could expose not openapi.FileSystem, just want to keep to bare minimum
+   * @since 2025.1
+   */
+  @NotNull
+  public jetbrains.mps.vfs.openapi.FileSystem getUmbrellaFileSystemJavaIO() {
+    return myUmbrellaFileSystemJavaIO;
   }
 }

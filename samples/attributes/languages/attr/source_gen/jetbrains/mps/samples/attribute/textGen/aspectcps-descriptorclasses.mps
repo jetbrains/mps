@@ -7,14 +7,14 @@
   <languages />
   <imports>
     <import index="rnuf" ref="r:edfeddd0-4d5d-4ba0-8508-4c23321fc724(jetbrains.mps.samples.attribute.textGen)" />
-    <import index="ao3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.text(MPS.Core/)" />
+    <import index="kpbf" ref="7124e466-fc92-4803-a656-d7a6b7eb3910/java:jetbrains.mps.text.impl(MPS.TextGen/)" />
+    <import index="yfwt" ref="7124e466-fc92-4803-a656-d7a6b7eb3910/java:jetbrains.mps.text.rt(MPS.TextGen/)" />
     <import index="tpcf" ref="r:00000000-0000-4000-0000-011c89590293(jetbrains.mps.lang.structure.generator_new.baseLanguage@generator)" />
     <import index="dmyu" ref="r:c6eeedda-084d-4659-9c4d-80b7768f2bb2(jetbrains.mps.baseLanguage.textGen)" />
     <import index="t1gd" ref="r:e99786b4-cb81-48f5-ad96-d9e0d7c7aa3c(jetbrains.mps.samples.attribute.structure)" />
+    <import index="ao3" ref="7124e466-fc92-4803-a656-d7a6b7eb3910/java:jetbrains.mps.text(MPS.TextGen/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
-    <import index="yfwt" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.text.rt(MPS.Core/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
-    <import index="kpbf" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.text.impl(MPS.Core/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
   </imports>
   <registry>
@@ -24,7 +24,7 @@
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
@@ -85,6 +85,9 @@
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
+      <concept id="1068580123137" name="jetbrains.mps.baseLanguage.structure.BooleanConstant" flags="nn" index="3clFbT">
+        <property id="1068580123138" name="value" index="3clFbU" />
+      </concept>
       <concept id="1068580123140" name="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" flags="ig" index="3clFbW" />
       <concept id="1068581242875" name="jetbrains.mps.baseLanguage.structure.PlusExpression" flags="nn" index="3cpWs3" />
       <concept id="1068581242878" name="jetbrains.mps.baseLanguage.structure.ReturnStatement" flags="nn" index="3cpWs6">
@@ -98,7 +101,7 @@
       <concept id="1079359253375" name="jetbrains.mps.baseLanguage.structure.ParenthesizedExpression" flags="nn" index="1eOMI4">
         <child id="1079359253376" name="expression" index="1eOMHV" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -117,7 +120,7 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1144226303539" name="jetbrains.mps.baseLanguage.structure.ForeachStatement" flags="nn" index="1DcWWT">
@@ -197,7 +200,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -827,33 +830,36 @@
                       <ref role="37wK5l" to="yfwt:~TextGenModelOutline.registerTextUnit(jetbrains.mps.text.TextUnit)" resolve="registerTextUnit" />
                       <node concept="1rXfSq" id="3j" role="37wK5m">
                         <ref role="37wK5l" node="2i" resolve="createTextUnit0" />
-                        <node concept="3K4zz7" id="3k" role="37wK5m">
-                          <node concept="1eOMI4" id="3m" role="3K4GZi">
-                            <node concept="3cpWs3" id="3p" role="1eOMHV">
-                              <node concept="37vLTw" id="3q" role="3uHU7w">
+                        <node concept="37vLTw" id="3k" role="37wK5m">
+                          <ref role="3cqZAo" node="2S" resolve="outline" />
+                        </node>
+                        <node concept="3K4zz7" id="3l" role="37wK5m">
+                          <node concept="1eOMI4" id="3n" role="3K4GZi">
+                            <node concept="3cpWs3" id="3q" role="1eOMHV">
+                              <node concept="37vLTw" id="3r" role="3uHU7w">
                                 <ref role="3cqZAo" node="3c" resolve="ext" />
                               </node>
-                              <node concept="3cpWs3" id="3r" role="3uHU7B">
-                                <node concept="37vLTw" id="3s" role="3uHU7B">
+                              <node concept="3cpWs3" id="3s" role="3uHU7B">
+                                <node concept="37vLTw" id="3t" role="3uHU7B">
                                   <ref role="3cqZAo" node="38" resolve="fname" />
                                 </node>
-                                <node concept="1Xhbcc" id="3t" role="3uHU7w">
+                                <node concept="1Xhbcc" id="3u" role="3uHU7w">
                                   <property role="1XhdNS" value="." />
                                 </node>
                               </node>
                             </node>
                           </node>
-                          <node concept="37vLTw" id="3n" role="3K4E3e">
+                          <node concept="37vLTw" id="3o" role="3K4E3e">
                             <ref role="3cqZAo" node="38" resolve="fname" />
                           </node>
-                          <node concept="3clFbC" id="3o" role="3K4Cdx">
-                            <node concept="10Nm6u" id="3u" role="3uHU7w" />
-                            <node concept="37vLTw" id="3v" role="3uHU7B">
+                          <node concept="3clFbC" id="3p" role="3K4Cdx">
+                            <node concept="10Nm6u" id="3v" role="3uHU7w" />
+                            <node concept="37vLTw" id="3w" role="3uHU7B">
                               <ref role="3cqZAo" node="3c" resolve="ext" />
                             </node>
                           </node>
                         </node>
-                        <node concept="37vLTw" id="3l" role="37wK5m">
+                        <node concept="37vLTw" id="3m" role="37wK5m">
                           <ref role="3cqZAo" node="2Z" resolve="root" />
                         </node>
                       </node>
@@ -863,17 +869,17 @@
                 <node concept="3N13vt" id="37" role="3cqZAp" />
               </node>
               <node concept="2OqwBi" id="33" role="3clFbw">
-                <node concept="2OqwBi" id="3w" role="2Oq$k0">
-                  <node concept="37vLTw" id="3y" role="2Oq$k0">
+                <node concept="2OqwBi" id="3x" role="2Oq$k0">
+                  <node concept="37vLTw" id="3z" role="2Oq$k0">
                     <ref role="3cqZAo" node="2Z" resolve="root" />
                   </node>
-                  <node concept="liA8E" id="3z" role="2OqNvi">
+                  <node concept="liA8E" id="3$" role="2OqNvi">
                     <ref role="37wK5l" to="mhbf:~SNode.getConcept()" resolve="getConcept" />
                   </node>
                 </node>
-                <node concept="liA8E" id="3x" role="2OqNvi">
+                <node concept="liA8E" id="3y" role="2OqNvi">
                   <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
-                  <node concept="35c_gC" id="3$" role="37wK5m">
+                  <node concept="35c_gC" id="3_" role="37wK5m">
                     <ref role="35c_gD" to="t1gd:3fG6dkheFNp" resolve="HandlerAsRoot" />
                   </node>
                 </node>
@@ -882,20 +888,20 @@
           </node>
           <node concept="3cpWsn" id="2Z" role="1Duv9x">
             <property role="TrG5h" value="root" />
-            <node concept="3uibUv" id="3_" role="1tU5fm">
+            <node concept="3uibUv" id="3A" role="1tU5fm">
               <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
             </node>
           </node>
           <node concept="2OqwBi" id="30" role="1DdaDG">
-            <node concept="2OqwBi" id="3A" role="2Oq$k0">
-              <node concept="37vLTw" id="3C" role="2Oq$k0">
+            <node concept="2OqwBi" id="3B" role="2Oq$k0">
+              <node concept="37vLTw" id="3D" role="2Oq$k0">
                 <ref role="3cqZAo" node="2S" resolve="outline" />
               </node>
-              <node concept="liA8E" id="3D" role="2OqNvi">
+              <node concept="liA8E" id="3E" role="2OqNvi">
                 <ref role="37wK5l" to="yfwt:~TextGenModelOutline.getModel()" resolve="getModel" />
               </node>
             </node>
-            <node concept="liA8E" id="3B" role="2OqNvi">
+            <node concept="liA8E" id="3C" role="2OqNvi">
               <ref role="37wK5l" to="mhbf:~SModel.getRootNodes()" resolve="getRootNodes" />
             </node>
           </node>
@@ -910,25 +916,25 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="getFileName_HandlerAsRoot" />
-      <node concept="3clFbS" id="3E" role="3clF47">
-        <node concept="3cpWs6" id="3I" role="3cqZAp">
-          <node concept="2OqwBi" id="3J" role="3cqZAk">
-            <node concept="37vLTw" id="3K" role="2Oq$k0">
-              <ref role="3cqZAo" node="3H" resolve="node" />
+      <node concept="3clFbS" id="3F" role="3clF47">
+        <node concept="3cpWs6" id="3J" role="3cqZAp">
+          <node concept="2OqwBi" id="3K" role="3cqZAk">
+            <node concept="37vLTw" id="3L" role="2Oq$k0">
+              <ref role="3cqZAo" node="3I" resolve="node" />
             </node>
-            <node concept="liA8E" id="3L" role="2OqNvi">
+            <node concept="liA8E" id="3M" role="2OqNvi">
               <ref role="37wK5l" to="mhbf:~SNode.getName()" resolve="getName" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="3F" role="1B3o_S" />
-      <node concept="3uibUv" id="3G" role="3clF45">
+      <node concept="3Tm6S6" id="3G" role="1B3o_S" />
+      <node concept="3uibUv" id="3H" role="3clF45">
         <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
-      <node concept="37vLTG" id="3H" role="3clF46">
+      <node concept="37vLTG" id="3I" role="3clF46">
         <property role="TrG5h" value="node" />
-        <node concept="3uibUv" id="3M" role="1tU5fm">
+        <node concept="3uibUv" id="3N" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
         </node>
       </node>
@@ -938,18 +944,18 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="getFileExtension_HandlerAsRoot" />
-      <node concept="3clFbS" id="3N" role="3clF47">
-        <node concept="3cpWs6" id="3R" role="3cqZAp">
-          <node concept="10Nm6u" id="3S" role="3cqZAk" />
+      <node concept="3clFbS" id="3O" role="3clF47">
+        <node concept="3cpWs6" id="3S" role="3cqZAp">
+          <node concept="10Nm6u" id="3T" role="3cqZAk" />
         </node>
       </node>
-      <node concept="3Tm6S6" id="3O" role="1B3o_S" />
-      <node concept="3uibUv" id="3P" role="3clF45">
+      <node concept="3Tm6S6" id="3P" role="1B3o_S" />
+      <node concept="3uibUv" id="3Q" role="3clF45">
         <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
-      <node concept="37vLTG" id="3Q" role="3clF46">
+      <node concept="37vLTG" id="3R" role="3clF46">
         <property role="TrG5h" value="node" />
-        <node concept="3uibUv" id="3T" role="1tU5fm">
+        <node concept="3uibUv" id="3U" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
         </node>
       </node>
@@ -959,162 +965,137 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="createTextUnit0" />
-      <node concept="3clFbS" id="3U" role="3clF47">
-        <node concept="3cpWs8" id="3Z" role="3cqZAp">
-          <node concept="3cpWsn" id="49" role="3cpWs9">
-            <property role="TrG5h" value="lb" />
-            <node concept="3uibUv" id="4a" role="1tU5fm">
-              <ref role="3uigEE" to="kpbf:~BufferLayoutBuilder" resolve="BufferLayoutBuilder" />
+      <node concept="3clFbS" id="3V" role="3clF47">
+        <node concept="3cpWs8" id="41" role="3cqZAp">
+          <node concept="3cpWsn" id="48" role="3cpWs9">
+            <property role="TrG5h" value="rv" />
+            <node concept="3uibUv" id="49" role="1tU5fm">
+              <ref role="3uigEE" to="yfwt:~TextGenModelOutline$UnitBuilder" resolve="TextGenModelOutline.UnitBuilder" />
             </node>
-            <node concept="2ShNRf" id="4b" role="33vP2m">
-              <node concept="1pGfFk" id="4c" role="2ShVmc">
-                <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.&lt;init&gt;()" resolve="BufferLayoutBuilder" />
+            <node concept="2OqwBi" id="4a" role="33vP2m">
+              <node concept="37vLTw" id="4b" role="2Oq$k0">
+                <ref role="3cqZAo" node="3Y" resolve="outline" />
               </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="40" role="3cqZAp">
-          <node concept="2OqwBi" id="4d" role="3clFbG">
-            <node concept="37vLTw" id="4e" role="2Oq$k0">
-              <ref role="3cqZAo" node="49" resolve="lb" />
-            </node>
-            <node concept="liA8E" id="4f" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.add(java.lang.Object)" resolve="add" />
-              <node concept="Xl_RD" id="4g" role="37wK5m">
-                <property role="Xl_RC" value="HEADER" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="41" role="3cqZAp">
-          <node concept="2OqwBi" id="4h" role="3clFbG">
-            <node concept="37vLTw" id="4i" role="2Oq$k0">
-              <ref role="3cqZAo" node="49" resolve="lb" />
-            </node>
-            <node concept="liA8E" id="4j" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.add(java.lang.Object)" resolve="add" />
-              <node concept="Xl_RD" id="4k" role="37wK5m">
-                <property role="Xl_RC" value="IMPORTS" />
+              <node concept="liA8E" id="4c" role="2OqNvi">
+                <ref role="37wK5l" to="yfwt:~TextGenModelOutline.unitBuilder(java.lang.String,org.jetbrains.mps.openapi.model.SNode)" resolve="unitBuilder" />
+                <node concept="37vLTw" id="4d" role="37wK5m">
+                  <ref role="3cqZAo" node="3Z" resolve="filename" />
+                </node>
+                <node concept="37vLTw" id="4e" role="37wK5m">
+                  <ref role="3cqZAo" node="40" resolve="node" />
+                </node>
               </node>
             </node>
           </node>
         </node>
         <node concept="3clFbF" id="42" role="3cqZAp">
-          <node concept="2OqwBi" id="4l" role="3clFbG">
-            <node concept="37vLTw" id="4m" role="2Oq$k0">
-              <ref role="3cqZAo" node="49" resolve="lb" />
+          <node concept="2OqwBi" id="4f" role="3clFbG">
+            <node concept="37vLTw" id="4g" role="2Oq$k0">
+              <ref role="3cqZAo" node="48" resolve="rv" />
             </node>
-            <node concept="liA8E" id="4n" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.add(java.lang.Object)" resolve="add" />
-              <node concept="Xl_RD" id="4o" role="37wK5m">
-                <property role="Xl_RC" value="SEPARATOR" />
+            <node concept="liA8E" id="4h" role="2OqNvi">
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.layout(java.lang.Object,boolean)" resolve="layout" />
+              <node concept="Xl_RD" id="4i" role="37wK5m">
+                <property role="Xl_RC" value="HEADER" />
               </node>
+              <node concept="3clFbT" id="4j" role="37wK5m" />
             </node>
           </node>
         </node>
         <node concept="3clFbF" id="43" role="3cqZAp">
-          <node concept="2OqwBi" id="4p" role="3clFbG">
-            <node concept="37vLTw" id="4q" role="2Oq$k0">
-              <ref role="3cqZAo" node="49" resolve="lb" />
+          <node concept="2OqwBi" id="4k" role="3clFbG">
+            <node concept="37vLTw" id="4l" role="2Oq$k0">
+              <ref role="3cqZAo" node="48" resolve="rv" />
             </node>
-            <node concept="liA8E" id="4r" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.add(java.lang.Object)" resolve="add" />
-              <node concept="Xl_RD" id="4s" role="37wK5m">
-                <property role="Xl_RC" value="BODY" />
+            <node concept="liA8E" id="4m" role="2OqNvi">
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.layout(java.lang.Object,boolean)" resolve="layout" />
+              <node concept="Xl_RD" id="4n" role="37wK5m">
+                <property role="Xl_RC" value="IMPORTS" />
               </node>
+              <node concept="3clFbT" id="4o" role="37wK5m" />
             </node>
           </node>
         </node>
         <node concept="3clFbF" id="44" role="3cqZAp">
-          <node concept="2OqwBi" id="4t" role="3clFbG">
-            <node concept="37vLTw" id="4u" role="2Oq$k0">
-              <ref role="3cqZAo" node="49" resolve="lb" />
+          <node concept="2OqwBi" id="4p" role="3clFbG">
+            <node concept="37vLTw" id="4q" role="2Oq$k0">
+              <ref role="3cqZAo" node="48" resolve="rv" />
             </node>
-            <node concept="liA8E" id="4v" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.activate(java.lang.Object)" resolve="activate" />
-              <node concept="Xl_RD" id="4w" role="37wK5m">
-                <property role="Xl_RC" value="BODY" />
+            <node concept="liA8E" id="4r" role="2OqNvi">
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.layout(java.lang.Object,boolean)" resolve="layout" />
+              <node concept="Xl_RD" id="4s" role="37wK5m">
+                <property role="Xl_RC" value="SEPARATOR" />
               </node>
+              <node concept="3clFbT" id="4t" role="37wK5m" />
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="45" role="3cqZAp">
-          <node concept="3cpWsn" id="4x" role="3cpWs9">
-            <property role="TrG5h" value="rv" />
-            <node concept="3uibUv" id="4y" role="1tU5fm">
-              <ref role="3uigEE" to="kpbf:~RegularTextUnit" resolve="RegularTextUnit" />
+        <node concept="3clFbF" id="45" role="3cqZAp">
+          <node concept="2OqwBi" id="4u" role="3clFbG">
+            <node concept="37vLTw" id="4v" role="2Oq$k0">
+              <ref role="3cqZAo" node="48" resolve="rv" />
             </node>
-            <node concept="2ShNRf" id="4z" role="33vP2m">
-              <node concept="1pGfFk" id="4$" role="2ShVmc">
-                <ref role="37wK5l" to="kpbf:~RegularTextUnit.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,java.nio.charset.Charset)" resolve="RegularTextUnit" />
-                <node concept="37vLTw" id="4_" role="37wK5m">
-                  <ref role="3cqZAo" node="3Y" resolve="node" />
-                </node>
-                <node concept="37vLTw" id="4A" role="37wK5m">
-                  <ref role="3cqZAo" node="3X" resolve="filename" />
-                </node>
-                <node concept="10Nm6u" id="4B" role="37wK5m" />
+            <node concept="liA8E" id="4w" role="2OqNvi">
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.layout(java.lang.Object,boolean)" resolve="layout" />
+              <node concept="Xl_RD" id="4x" role="37wK5m">
+                <property role="Xl_RC" value="BODY" />
+              </node>
+              <node concept="3clFbT" id="4y" role="37wK5m">
+                <property role="3clFbU" value="true" />
               </node>
             </node>
           </node>
         </node>
         <node concept="3clFbF" id="46" role="3cqZAp">
-          <node concept="2OqwBi" id="4C" role="3clFbG">
-            <node concept="37vLTw" id="4D" role="2Oq$k0">
-              <ref role="3cqZAo" node="4x" resolve="rv" />
+          <node concept="2OqwBi" id="4z" role="3clFbG">
+            <node concept="37vLTw" id="4$" role="2Oq$k0">
+              <ref role="3cqZAo" node="48" resolve="rv" />
             </node>
-            <node concept="liA8E" id="4E" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~RegularTextUnit.setBufferLayout(jetbrains.mps.text.impl.BufferLayoutConfiguration)" resolve="setBufferLayout" />
-              <node concept="2OqwBi" id="4F" role="37wK5m">
-                <node concept="37vLTw" id="4G" role="2Oq$k0">
-                  <ref role="3cqZAo" node="49" resolve="lb" />
-                </node>
-                <node concept="liA8E" id="4H" role="2OqNvi">
-                  <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.create()" resolve="create" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="47" role="3cqZAp">
-          <node concept="2OqwBi" id="4I" role="3clFbG">
-            <node concept="37vLTw" id="4J" role="2Oq$k0">
-              <ref role="3cqZAo" node="4x" resolve="rv" />
-            </node>
-            <node concept="liA8E" id="4K" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~RegularTextUnit.addContextObject(java.lang.String,java.lang.Object)" resolve="addContextObject" />
-              <node concept="Xl_RD" id="4L" role="37wK5m">
+            <node concept="liA8E" id="4_" role="2OqNvi">
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.with(java.lang.String,java.lang.Object)" resolve="with" />
+              <node concept="Xl_RD" id="4A" role="37wK5m">
                 <property role="Xl_RC" value="ctx" />
               </node>
-              <node concept="2YIFZM" id="4M" role="37wK5m">
+              <node concept="2YIFZM" id="4B" role="37wK5m">
                 <ref role="1Pybhc" node="0" resolve="Auxiliary" />
                 <ref role="37wK5l" node="2" resolve="contextObjectInstance_ctx" />
-                <node concept="37vLTw" id="4N" role="37wK5m">
-                  <ref role="3cqZAo" node="3Y" resolve="node" />
+                <node concept="37vLTw" id="4C" role="37wK5m">
+                  <ref role="3cqZAo" node="40" resolve="node" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3cpWs6" id="48" role="3cqZAp">
-          <node concept="37vLTw" id="4O" role="3cqZAk">
-            <ref role="3cqZAo" node="4x" resolve="rv" />
+        <node concept="3cpWs6" id="47" role="3cqZAp">
+          <node concept="2OqwBi" id="4D" role="3cqZAk">
+            <node concept="37vLTw" id="4E" role="2Oq$k0">
+              <ref role="3cqZAo" node="48" resolve="rv" />
+            </node>
+            <node concept="liA8E" id="4F" role="2OqNvi">
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.build()" resolve="build" />
+            </node>
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="3V" role="1B3o_S" />
-      <node concept="3uibUv" id="3W" role="3clF45">
+      <node concept="3Tm6S6" id="3W" role="1B3o_S" />
+      <node concept="3uibUv" id="3X" role="3clF45">
         <ref role="3uigEE" to="ao3:~TextUnit" resolve="TextUnit" />
       </node>
-      <node concept="37vLTG" id="3X" role="3clF46">
+      <node concept="37vLTG" id="3Y" role="3clF46">
+        <property role="TrG5h" value="outline" />
+        <node concept="3uibUv" id="4G" role="1tU5fm">
+          <ref role="3uigEE" to="yfwt:~TextGenModelOutline" resolve="TextGenModelOutline" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="3Z" role="3clF46">
         <property role="TrG5h" value="filename" />
-        <node concept="3uibUv" id="4P" role="1tU5fm">
+        <node concept="3uibUv" id="4H" role="1tU5fm">
           <ref role="3uigEE" to="wyt6:~String" resolve="String" />
         </node>
       </node>
-      <node concept="37vLTG" id="3Y" role="3clF46">
+      <node concept="37vLTG" id="40" role="3clF46">
         <property role="TrG5h" value="node" />
-        <node concept="3uibUv" id="4Q" role="1tU5fm">
+        <node concept="3uibUv" id="4I" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
         </node>
       </node>

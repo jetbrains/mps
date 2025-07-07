@@ -19,13 +19,13 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.smodel.resources.TResource;
 import java.util.stream.IntStream;
+import jetbrains.mps.project.facets.GenerationTargetFacet;
+import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.internal.make.runtime.util.DeltaReconciler;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.make.runtime.util.FilesDelta;
-import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.make.facets.Make_Facet.Target_make;
 import jetbrains.mps.make.script.IFeedback;
 import jetbrains.mps.make.script.IConfig;
@@ -50,7 +50,7 @@ public class Diff_Facet extends IFacet.Stub {
     return null;
   }
   public Iterable<IFacet.Name> required() {
-    return Sequence.fromArray(new IFacet.Name[]{new IFacet.Name("jetbrains.mps.lang.core.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.Make")});
+    return Sequence.fromArray(new IFacet.Name[]{new IFacet.Name("jetbrains.mps.make.facets.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.Make")});
   }
   public Iterable<IFacet.Name> extended() {
     return null;
@@ -81,6 +81,14 @@ public class Diff_Facet extends IFacet.Stub {
                   String fqn = tgres.modelDescriptor().getName().getLongName();
                   subProgress_a0a0a0a.advance(1);
                   subProgress_a0a0a0a.step(fqn);
+                  // XXX I wonder if tgres.modelDescriptor is an original model or a transformed one. If latter, how come we
+                  //    access facets and output path that's available for original module only (not for a transient)?
+                  // As long as this code is dead, I don't care about thorough GTF scenario support
+                  GenerationTargetFacet gtf = GenerationTargetFacet.find(tgres.modelDescriptor());
+                  final IFile outDirPath = (gtf == null ? null : gtf.getOutputLocation(tgres.modelDescriptor()));
+                  if (outDirPath == null) {
+                    continue;
+                  }
                   DeltaReconciler dr = new DeltaReconciler(tgres.delta());
                   final Set<String> retainedPaths = SetSequence.fromSet(new HashSet<String>());
                   dr.visitAll(new FilesDelta.Visitor() {
@@ -92,9 +100,8 @@ public class Diff_Facet extends IFacet.Stub {
                   });
                   final Differ differ = new Differ(retainedPaths, vars(pa.global()).excludedFiles());
                   final StringBuilder errors = new StringBuilder();
-                  final String outDirPath = SModelOperations.getOutputLocation(tgres.modelDescriptor()).getPath();
 
-                  for (String diff : differ.diff(outDirPath, Target_make.vars(pa.global()).pathToFile().invoke(outDirPath).getPath())) {
+                  for (String diff : differ.diff(outDirPath.getPath(), Target_make.vars(pa.global()).alternateOutput().invoke(outDirPath).getPath())) {
                     errors.append("\n").append(diff);
                   }
                   if (errors.length() > 0) {

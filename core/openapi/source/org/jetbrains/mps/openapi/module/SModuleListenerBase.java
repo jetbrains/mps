@@ -15,7 +15,6 @@
  */
 package org.jetbrains.mps.openapi.module;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -26,8 +25,7 @@ import org.jetbrains.mps.openapi.model.SModelReference;
  * Now, with default methods inside the interface, of no real use.
  * See {@link SRepositoryListenerBase} for considerations about removal of the class
  */
-@Deprecated(forRemoval = true)
-@ToRemove(version = 2021.1)
+@Deprecated(since = "2021.1", forRemoval = true)
 public class SModuleListenerBase implements SModuleListener {
   @Override
   public void modelAdded(SModule module, SModel model) {

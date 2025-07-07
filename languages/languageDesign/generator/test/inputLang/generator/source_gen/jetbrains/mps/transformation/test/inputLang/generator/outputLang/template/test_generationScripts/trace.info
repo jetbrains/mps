@@ -42,10 +42,10 @@
       <node id="1195164863269" at="63,61,64,23" concept="7" />
       <node id="1195164863269" at="67,60,68,22" concept="7" />
       <node id="1195170730024" at="71,29,72,228" concept="11" />
-      <node id="1195170730024" at="75,94,76,104" concept="7" />
+      <node id="1195170730024" at="75,67,76,104" concept="7" />
       <node id="1195170730024" at="79,103,80,80" concept="6" />
       <node id="1195170730024" at="80,80,81,38" concept="6" />
-      <node id="1195170730024" at="82,108,83,73" concept="6" />
+      <node id="1195170730024" at="82,91,83,73" concept="6" />
       <node id="1195170730024" at="83,73,84,66" concept="2" />
       <node id="1195170730024" at="84,66,85,52" concept="2" />
       <node id="1195170730024" at="86,14,87,73" concept="6" />
@@ -53,18 +53,18 @@
       <node id="1195170730024" at="88,72,89,52" concept="2" />
       <node id="1195170730024" at="90,7,91,20" concept="7" />
       <node id="1202780884290" at="95,29,96,229" concept="11" />
-      <node id="1202780884290" at="99,94,100,104" concept="7" />
+      <node id="1202780884290" at="99,67,100,104" concept="7" />
       <node id="1202780884290" at="103,103,104,80" concept="6" />
       <node id="1202780884290" at="104,80,105,57" concept="6" />
       <node id="1202780884290" at="105,57,106,20" concept="7" />
       <node id="1195168895642" at="110,31,111,234" concept="11" />
-      <node id="1195168895642" at="114,94,115,97" concept="7" />
+      <node id="1195168895642" at="114,67,115,97" concept="7" />
       <node id="1195168895642" at="118,103,119,80" concept="6" />
       <node id="1195168895642" at="119,80,120,296" concept="6" />
       <node id="1195168895642" at="120,296,121,20" concept="7" />
       <node id="1195165196524" at="125,30,126,197" concept="11" />
-      <node id="1195165196524" at="129,94,130,110" concept="7" />
-      <node id="1195165196524" at="132,88,133,80" concept="6" />
+      <node id="1195165196524" at="129,67,130,110" concept="7" />
+      <node id="1195165196524" at="132,97,133,80" concept="6" />
       <node id="1195165196524" at="133,80,134,293" concept="6" />
       <node id="1195165196524" at="134,293,135,20" concept="7" />
       <node id="1195164863269" at="141,34,142,38" concept="6" />
@@ -73,7 +73,7 @@
       <node id="1195164863269" at="148,37,149,40" concept="6" />
       <node id="1195164863269" at="149,40,150,127" concept="2" />
       <node id="1195164863269" at="150,127,151,16" concept="7" />
-      <node id="1195164863269" at="156,0,157,0" concept="9" trace="rule_ief6mt_b0a0c0c11" />
+      <node id="1195164863269" at="156,0,157,0" concept="9" trace="rule" />
       <node id="1195164863269" at="159,0,160,0" concept="9" trace="InputNode_A$Jt" />
       <node id="1195164863269" at="160,0,161,0" concept="9" trace="InputRoot$nY" />
       <node id="1195170730024" at="71,0,74,0" concept="1" trace="ReductionRule0#()V" />
@@ -104,15 +104,15 @@
       <scope id="1195164863269" at="63,61,64,23" />
       <scope id="1195164863269" at="67,60,68,22" />
       <scope id="1195170730024" at="71,29,72,228" />
-      <scope id="1195170730024" at="75,94,76,104" />
+      <scope id="1195170730024" at="75,67,76,104" />
       <scope id="1202780884290" at="95,29,96,229" />
-      <scope id="1202780884290" at="99,94,100,104" />
+      <scope id="1202780884290" at="99,67,100,104" />
       <scope id="1195168895642" at="110,31,111,234" />
-      <scope id="1195168895642" at="114,94,115,97" />
+      <scope id="1195168895642" at="114,67,115,97" />
       <scope id="1195165196524" at="125,30,126,197" />
-      <scope id="1195165196524" at="129,94,130,110" />
+      <scope id="1195165196524" at="129,67,130,110" />
       <scope id="1195170730024" at="71,0,74,0" />
-      <scope id="1195170730024" at="82,108,85,52">
+      <scope id="1195170730024" at="82,91,85,52">
         <var name="tnode2" id="1195170730024" />
       </scope>
       <scope id="1195170730024" at="86,14,89,52">
@@ -129,7 +129,7 @@
         <var name="result" id="1195168895642" />
       </scope>
       <scope id="1195165196524" at="125,0,128,0" />
-      <scope id="1195165196524" at="132,88,135,20">
+      <scope id="1195165196524" at="132,97,135,20">
         <var name="environment" id="1195165196524" />
         <var name="result" id="1195165196524" />
       </scope>
@@ -233,7 +233,7 @@
     </file>
     <file name="Template_OutputRoot_By_RootRule.java">
       <node id="1195166061402" at="23,44,24,20" concept="11" />
-      <node id="1195166061402" at="27,43,28,32" concept="7" />
+      <node id="1195166061402" at="27,43,28,20" concept="7" />
       <node id="1195166061402" at="32,89,33,78" concept="6" />
       <node id="1195166061402" at="33,78,34,69" concept="6" />
       <node id="1195166061402" at="34,69,35,104" concept="2" />
@@ -247,14 +247,14 @@
       <node id="1195166061402" at="51,40,52,127" concept="2" />
       <node id="1195166061402" at="52,127,53,127" concept="2" />
       <node id="1195166061402" at="53,127,54,16" concept="7" />
-      <node id="1195166061402" at="59,0,60,0" concept="9" trace="template_bukw1z_a0a3" />
+      <node id="1195166061402" at="59,0,60,0" concept="9" trace="template" />
       <node id="1195166061402" at="23,0,26,0" concept="1" trace="Template_OutputRoot_By_RootRule#()V" />
       <node id="1195166061402" at="27,0,30,0" concept="5" trace="getTemplateNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="1195166061402" at="42,0,48,0" concept="5" trace="concepts#()[Lorg/jetbrains/mps/openapi/language/SConcept;" />
       <node id="1195166061402" at="49,0,56,0" concept="5" trace="properties#()[Lorg/jetbrains/mps/openapi/language/SProperty;" />
       <node id="1195166061402" at="31,0,40,0" concept="5" trace="apply#(Ljetbrains/mps/generator/runtime/TemplateContext;Ljetbrains/mps/generator/runtime/ApplySink;)V" />
       <scope id="1195166061402" at="23,44,24,20" />
-      <scope id="1195166061402" at="27,43,28,32" />
+      <scope id="1195166061402" at="27,43,28,20" />
       <scope id="1195166061402" at="23,0,26,0" />
       <scope id="1195166061402" at="27,0,30,0" />
       <scope id="1195166061402" at="43,34,46,16">
@@ -299,17 +299,17 @@
     </file>
     <file name="Template_OutputRoot_by_MappingRule.java">
       <node id="1195168984336" at="28,47,29,20" concept="11" />
-      <node id="1195168984336" at="32,43,33,32" concept="7" />
+      <node id="1195168984336" at="32,43,33,20" concept="7" />
       <node id="1195168984336" at="37,89,38,78" concept="6" />
       <node id="1195168984336" at="38,78,39,69" concept="6" />
       <node id="1195168984336" at="40,5,41,106" concept="2" />
       <node id="1195168984336" at="41,106,42,71" concept="2" />
-      <node id="1195598330257" at="42,71,43,206" concept="2" />
-      <node id="1195168984336" at="43,206,44,54" concept="6" />
+      <node id="1195598330257" at="42,71,43,188" concept="2" />
+      <node id="1195168984336" at="43,188,44,54" concept="6" />
       <node id="1195170418623" at="45,7,46,40" concept="6" />
-      <node id="1195170418623" at="46,40,47,172" concept="6" />
-      <node id="1195170418623" at="47,172,48,163" concept="2" />
-      <node id="1195170418623" at="48,163,49,69" concept="2" />
+      <node id="1195170418623" at="46,40,47,152" concept="6" />
+      <node id="1195170418623" at="47,152,48,143" concept="2" />
+      <node id="1195170418623" at="48,143,49,69" concept="2" />
       <node id="1195168984336" at="51,5,52,55" concept="2" />
       <node id="1195168984336" at="57,34,58,38" concept="6" />
       <node id="1195168984336" at="58,38,59,196" concept="2" />
@@ -321,9 +321,9 @@
       <node id="1195168984336" at="73,46,74,54" concept="6" />
       <node id="1195168984336" at="74,54,75,141" concept="2" />
       <node id="1195168984336" at="75,141,76,16" concept="7" />
-      <node id="1195168984336" at="79,0,80,0" concept="9" trace="template_5ou570_a0a3" />
-      <node id="1195168984336" at="80,0,81,0" concept="9" trace="propertyMacro_5ou570_c0a2a2a2a5" />
-      <node id="1195168984336" at="81,0,82,0" concept="9" trace="copySrcListMacro_5ou570_b0a0a1a4a2a5" />
+      <node id="1195168984336" at="79,0,80,0" concept="9" trace="template" />
+      <node id="1195168984336" at="80,0,81,0" concept="9" trace="propertyMacro" />
+      <node id="1195168984336" at="81,0,82,0" concept="9" trace="copySrcListMacro" />
       <node id="1195168984336" at="28,0,31,0" concept="1" trace="Template_OutputRoot_by_MappingRule#()V" />
       <node id="1195168984336" at="32,0,35,0" concept="5" trace="getTemplateNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="1195170418623" at="44,54,50,7" concept="0" />
@@ -333,7 +333,7 @@
       <node id="1195168984336" at="39,69,51,5" concept="0" />
       <node id="1195168984336" at="36,0,54,0" concept="5" trace="apply#(Ljetbrains/mps/generator/runtime/TemplateContext;Ljetbrains/mps/generator/runtime/ApplySink;)V" />
       <scope id="1195168984336" at="28,47,29,20" />
-      <scope id="1195168984336" at="32,43,33,32" />
+      <scope id="1195168984336" at="32,43,33,20" />
       <scope id="1195168984336" at="28,0,31,0" />
       <scope id="1195168984336" at="32,0,35,0" />
       <scope id="1195168984336" at="57,34,60,16">
@@ -387,34 +387,34 @@
       </scope>
     </file>
     <file name="Script_test_preMappingScript.java">
-      <node id="1195509228077" at="17,41,18,29" concept="7" />
-      <node id="1195509228077" at="20,31,21,146" concept="7" />
-      <node id="1195509228077" at="23,34,24,16" concept="7" />
-      <node id="1195509228077" at="26,24,27,22" concept="7" />
-      <node id="1195509228077" at="29,69,30,102" concept="2" />
-      <node id="1195509228077" at="32,0,33,0" concept="9" trace="mappingScriptNode" />
-      <node id="1195509228077" at="15,0,17,0" concept="1" trace="Script_test_preMappingScript#()V" />
-      <node id="1195509228077" at="17,0,20,0" concept="5" trace="getScriptNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="1195509228077" at="20,0,23,0" concept="5" trace="getLongName#()Ljava/lang/String;" />
-      <node id="1195509228077" at="23,0,26,0" concept="5" trace="modifiesModel#()Z" />
-      <node id="1195509228077" at="26,0,29,0" concept="5" trace="getKind#()I" />
-      <node id="1195509228077" at="29,0,32,0" concept="5" trace="apply#(Lorg/jetbrains/mps/openapi/model/SModel;Ljetbrains/mps/generator/runtime/TemplateExecutionEnvironment;)V" />
-      <scope id="1195509228077" at="15,41,15,41" />
-      <scope id="1195509228077" at="17,41,18,29" />
-      <scope id="1195509228077" at="20,31,21,146" />
-      <scope id="1195509228077" at="23,34,24,16" />
-      <scope id="1195509228077" at="26,24,27,22" />
-      <scope id="1195509228077" at="29,69,30,102" />
-      <scope id="1195509228077" at="15,0,17,0" />
-      <scope id="1195509228077" at="17,0,20,0" />
-      <scope id="1195509228077" at="20,0,23,0" />
-      <scope id="1195509228077" at="23,0,26,0" />
-      <scope id="1195509228077" at="26,0,29,0" />
-      <scope id="1195509228077" at="29,0,32,0">
-        <var name="env" id="1195509228077" />
+      <node id="1195509228077" at="19,41,20,29" concept="7" />
+      <node id="1195509228077" at="22,31,23,146" concept="7" />
+      <node id="1195509228077" at="25,34,26,16" concept="7" />
+      <node id="1195509228077" at="28,24,29,22" concept="7" />
+      <node id="1195509228077" at="33,120,34,114" concept="2" />
+      <node id="1195509228077" at="36,0,37,0" concept="9" trace="mappingScriptNode" />
+      <node id="1195509228077" at="17,0,19,0" concept="1" trace="Script_test_preMappingScript#()V" />
+      <node id="1195509228077" at="19,0,22,0" concept="5" trace="getScriptNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="1195509228077" at="22,0,25,0" concept="5" trace="getLongName#()Ljava/lang/String;" />
+      <node id="1195509228077" at="25,0,28,0" concept="5" trace="modifiesModel#()Z" />
+      <node id="1195509228077" at="28,0,31,0" concept="5" trace="getKind#()I" />
+      <node id="1195509228077" at="32,0,36,0" concept="5" trace="apply#(Lorg/jetbrains/mps/openapi/model/SModel;Ljetbrains/mps/generator/runtime/TemplateContext;)V" />
+      <scope id="1195509228077" at="17,41,17,41" />
+      <scope id="1195509228077" at="19,41,20,29" />
+      <scope id="1195509228077" at="22,31,23,146" />
+      <scope id="1195509228077" at="25,34,26,16" />
+      <scope id="1195509228077" at="28,24,29,22" />
+      <scope id="1195509228077" at="33,120,34,114" />
+      <scope id="1195509228077" at="17,0,19,0" />
+      <scope id="1195509228077" at="19,0,22,0" />
+      <scope id="1195509228077" at="22,0,25,0" />
+      <scope id="1195509228077" at="25,0,28,0" />
+      <scope id="1195509228077" at="28,0,31,0" />
+      <scope id="1195509228077" at="32,0,36,0">
         <var name="model" id="1195509228077" />
+        <var name="templateContext" id="1195509228077" />
       </scope>
-      <unit id="1195509228077" at="13,0,34,0" name="jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_generationScripts.Script_test_preMappingScript" />
+      <unit id="1195509228077" at="15,0,38,0" name="jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_generationScripts.Script_test_preMappingScript" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895905f6(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_generationScripts@generator)/1195510384868">
@@ -437,34 +437,34 @@
       </scope>
     </file>
     <file name="Script_test_postMappingScript.java">
-      <node id="1195510384868" at="17,41,18,29" concept="7" />
-      <node id="1195510384868" at="20,31,21,147" concept="7" />
-      <node id="1195510384868" at="23,34,24,17" concept="7" />
-      <node id="1195510384868" at="26,24,27,23" concept="7" />
-      <node id="1195510384868" at="29,69,30,102" concept="2" />
-      <node id="1195510384868" at="32,0,33,0" concept="9" trace="mappingScriptNode" />
-      <node id="1195510384868" at="15,0,17,0" concept="1" trace="Script_test_postMappingScript#()V" />
-      <node id="1195510384868" at="17,0,20,0" concept="5" trace="getScriptNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="1195510384868" at="20,0,23,0" concept="5" trace="getLongName#()Ljava/lang/String;" />
-      <node id="1195510384868" at="23,0,26,0" concept="5" trace="modifiesModel#()Z" />
-      <node id="1195510384868" at="26,0,29,0" concept="5" trace="getKind#()I" />
-      <node id="1195510384868" at="29,0,32,0" concept="5" trace="apply#(Lorg/jetbrains/mps/openapi/model/SModel;Ljetbrains/mps/generator/runtime/TemplateExecutionEnvironment;)V" />
-      <scope id="1195510384868" at="15,42,15,42" />
-      <scope id="1195510384868" at="17,41,18,29" />
-      <scope id="1195510384868" at="20,31,21,147" />
-      <scope id="1195510384868" at="23,34,24,17" />
-      <scope id="1195510384868" at="26,24,27,23" />
-      <scope id="1195510384868" at="29,69,30,102" />
-      <scope id="1195510384868" at="15,0,17,0" />
-      <scope id="1195510384868" at="17,0,20,0" />
-      <scope id="1195510384868" at="20,0,23,0" />
-      <scope id="1195510384868" at="23,0,26,0" />
-      <scope id="1195510384868" at="26,0,29,0" />
-      <scope id="1195510384868" at="29,0,32,0">
-        <var name="env" id="1195510384868" />
+      <node id="1195510384868" at="19,41,20,29" concept="7" />
+      <node id="1195510384868" at="22,31,23,147" concept="7" />
+      <node id="1195510384868" at="25,34,26,17" concept="7" />
+      <node id="1195510384868" at="28,24,29,23" concept="7" />
+      <node id="1195510384868" at="33,120,34,114" concept="2" />
+      <node id="1195510384868" at="36,0,37,0" concept="9" trace="mappingScriptNode" />
+      <node id="1195510384868" at="17,0,19,0" concept="1" trace="Script_test_postMappingScript#()V" />
+      <node id="1195510384868" at="19,0,22,0" concept="5" trace="getScriptNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="1195510384868" at="22,0,25,0" concept="5" trace="getLongName#()Ljava/lang/String;" />
+      <node id="1195510384868" at="25,0,28,0" concept="5" trace="modifiesModel#()Z" />
+      <node id="1195510384868" at="28,0,31,0" concept="5" trace="getKind#()I" />
+      <node id="1195510384868" at="32,0,36,0" concept="5" trace="apply#(Lorg/jetbrains/mps/openapi/model/SModel;Ljetbrains/mps/generator/runtime/TemplateContext;)V" />
+      <scope id="1195510384868" at="17,42,17,42" />
+      <scope id="1195510384868" at="19,41,20,29" />
+      <scope id="1195510384868" at="22,31,23,147" />
+      <scope id="1195510384868" at="25,34,26,17" />
+      <scope id="1195510384868" at="28,24,29,23" />
+      <scope id="1195510384868" at="33,120,34,114" />
+      <scope id="1195510384868" at="17,0,19,0" />
+      <scope id="1195510384868" at="19,0,22,0" />
+      <scope id="1195510384868" at="22,0,25,0" />
+      <scope id="1195510384868" at="25,0,28,0" />
+      <scope id="1195510384868" at="28,0,31,0" />
+      <scope id="1195510384868" at="32,0,36,0">
         <var name="model" id="1195510384868" />
+        <var name="templateContext" id="1195510384868" />
       </scope>
-      <unit id="1195510384868" at="13,0,34,0" name="jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_generationScripts.Script_test_postMappingScript" />
+      <unit id="1195510384868" at="15,0,38,0" name="jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_generationScripts.Script_test_postMappingScript" />
     </file>
   </root>
 </debug-info>

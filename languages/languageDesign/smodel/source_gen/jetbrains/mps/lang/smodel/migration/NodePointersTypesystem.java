@@ -10,7 +10,6 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.baseLanguage.behavior.IOperation__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -41,35 +40,27 @@ public class NodePointersTypesystem extends MigrationScriptBase {
     {
       SearchScope scope_p7xwcw_a0e = CommandUtil.createScope(m);
       final SearchScope scope_p7xwcw_a0e_0 = new EditableFilteringScope(scope_p7xwcw_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_p7xwcw_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.Node_PointerOperation$T2, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode ptrOperation) {
-          SNode dotExpression = IOperation__BehaviorDescriptor.getDotExpression_idhO_4GYO.invoke(ptrOperation);
-          if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(dotExpression), CONCEPTS.SemanticDowncastExpression$vW))) {
-            SNode sde = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aaf6d7435L, "jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression"));
-            SNodeOperations.replaceWithAnother(dotExpression, sde);
-            SLinkOperations.setTarget(sde, LINKS.leftExpression$ZUv8, dotExpression);
-          }
+      QueryExecutionContext context = () -> scope_p7xwcw_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.Node_PointerOperation$T2, false)).visitAll((ptrOperation) -> {
+        SNode dotExpression = IOperation__BehaviorDescriptor.getDotExpression_idhO_4GYO.invoke(ptrOperation);
+        if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(dotExpression), CONCEPTS.SemanticDowncastExpression$vW))) {
+          SNode sde = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aaf6d7435L, "jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression"));
+          SNodeOperations.replaceWithAnother(dotExpression, sde);
+          SLinkOperations.setTarget(sde, LINKS.leftExpression$ZUv8, dotExpression);
         }
       });
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.DotExpression$yW, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode dotExpr) {
-          if (SNodeOperations.is(SNodeOperations.getContainingRoot(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(dotExpr, LINKS.operation$gs9E), CONCEPTS.InstanceMethodCallOperation$uu), LINKS.baseMethodDeclaration$pyYw)), new SNodePointer("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SModelReference"))) {
-            SNode expr = SLinkOperations.getTarget(dotExpr, LINKS.operand$w6IR);
-            SNode exprType = TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(expr), CONCEPTS.SModelPointerType$ap);
-            if ((exprType != null)) {
-              SNodeOperations.replaceWithAnother(expr, createSemanticDowncastExpression_p7xwcw_a0a0a2a0a0a0b0a0g(expr));
-            }
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.DotExpression$yW, false)).visitAll((dotExpr) -> {
+        if (SNodeOperations.is(SNodeOperations.getContainingRoot(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(dotExpr, LINKS.operation$gs9E), CONCEPTS.InstanceMethodCallOperation$uu), LINKS.baseMethodDeclaration$pyYw)), new SNodePointer("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SModelReference"))) {
+          SNode expr = SLinkOperations.getTarget(dotExpr, LINKS.operand$w6IR);
+          SNode exprType = TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(expr), CONCEPTS.SModelPointerType$ap);
+          if ((exprType != null)) {
+            SNodeOperations.replaceWithAnother(expr, createSemanticDowncastExpression_p7xwcw_a0a0a2a0a0a0b0a0g(expr));
           }
         }
       });
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 9);
   }
 

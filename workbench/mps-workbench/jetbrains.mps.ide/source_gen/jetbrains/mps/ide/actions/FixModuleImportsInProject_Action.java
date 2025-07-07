@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.SModelStereotype;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.kernel.model.MissingDependenciesFixer;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/9164503229271455483", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "9164503229271455483", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class FixModuleImportsInProject_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -26,6 +26,7 @@ public class FixModuleImportsInProject_Action extends BaseAction {
     super("Fix Module Imports", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

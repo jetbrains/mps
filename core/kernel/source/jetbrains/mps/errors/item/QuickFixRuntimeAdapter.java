@@ -22,6 +22,7 @@ import jetbrains.mps.errors.item.ReportItemBase.SimpleReportItemFlavour;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
@@ -31,6 +32,10 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Provides access to an instance of {@link QuickFix_Runtime} and acts as an item that can
+ * be processed by the UI. 
+ */
 public class QuickFixRuntimeAdapter implements EditorQuickFix, NodeFlavouredItem, RuleIdFlavouredItem {
   private final LanguageRegistry myLanguageRegistry;
   private final QuickFixProvider myQuickFixProvider;
@@ -51,6 +56,10 @@ public class QuickFixRuntimeAdapter implements EditorQuickFix, NodeFlavouredItem
     return myQuickFixProvider.getQuickFix(myLanguageRegistry);
   }
 
+  public QuickFixProvider getFixProvider() {
+    return myQuickFixProvider;
+  }
+
   @Override
   public boolean isExecutedImmediately() {
     return myQuickFixProvider.isExecutedImmediately();
@@ -58,7 +67,16 @@ public class QuickFixRuntimeAdapter implements EditorQuickFix, NodeFlavouredItem
 
   @Override
   public void execute(SRepository repository) {
-    getFixRuntime().execute(myNode.resolve(repository));
+    QuickFix_Runtime qfixRuntime = getFixRuntime();
+    SNode node = myNode.resolve(repository);
+    if (qfixRuntime.isApplicable(node)) {
+      qfixRuntime.execute(node);
+    }
+  }
+
+  @Override
+  public boolean isApplicable(SRepository repository) {
+    return getFixRuntime().isApplicable(myNode.resolve(repository));
   }
 
   @Override
@@ -72,8 +90,8 @@ public class QuickFixRuntimeAdapter implements EditorQuickFix, NodeFlavouredItem
     return myNode;
   }
 
-  public static final SimpleReportItemFlavour<QuickFixRuntimeAdapter, QuickFix_Runtime> FLAVOUR_QUICKFIX_RUNTIME =
-      new SimpleReportItemFlavour<>("FLAVOUR_QUICKFIX_RUNTIME", QuickFixRuntimeAdapter.class, QuickFixRuntimeAdapter::getFixRuntime);
+  public static final SimpleReportItemFlavour<QuickFixRuntimeAdapter, QuickFixProvider> FLAVOUR_QUICKFIX_PROVIDER =
+      new SimpleReportItemFlavour<>("FLAVOUR_QUICKFIX_PROVIDER", QuickFixRuntimeAdapter.class, QuickFixRuntimeAdapter::getFixProvider);
 
   @Override
   public Collection<TypesystemRuleId> getRuleId() {
@@ -87,7 +105,7 @@ public class QuickFixRuntimeAdapter implements EditorQuickFix, NodeFlavouredItem
 
   @Override
   public Set<ReportItemFlavour<?, ?>> getIdFlavours() {
-    return new HashSet<>(Arrays.asList(FLAVOUR_CLASS, FLAVOUR_RULE_ID, FLAVOUR_NODE));
+    return new HashSet<>(Arrays.asList(FLAVOUR_CLASS, FLAVOUR_RULE_ID, FLAVOUR_NODE, FLAVOUR_QUICKFIX_PROVIDER));
   }
 
   @Override

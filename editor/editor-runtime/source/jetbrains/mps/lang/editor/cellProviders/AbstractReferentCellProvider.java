@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,6 @@ import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
 import jetbrains.mps.util.IterableUtil;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SAbstractLink;
@@ -43,11 +42,11 @@ import org.jetbrains.mps.openapi.model.SReference;
 import java.util.List;
 
 public abstract class AbstractReferentCellProvider extends CellProviderWithRole {
-  public static final Logger LOG = Logger.wrap(LogManager.getLogger(AbstractReferentCellProvider.class));
+  public static final Logger LOG = Logger.getLogger(AbstractReferentCellProvider.class);
 
-  private SAbstractLink myLink;
-  private String myRoleName; //used for error text ONLY
-  private SAbstractConcept myTargetConcept;
+  private final SAbstractLink myLink;
+  private final String myRoleName; //used for error text ONLY
+  private final SAbstractConcept myTargetConcept;
 
   private String myErrorText = null;
 

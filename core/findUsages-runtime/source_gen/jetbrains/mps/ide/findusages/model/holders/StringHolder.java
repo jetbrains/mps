@@ -9,7 +9,7 @@ import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.findusages.CantSaveSomethingException;
 
-@GeneratedClass(node = "r:6d26b589-14c5-496e-9d2b-5c71b3a15e5d(jetbrains.mps.ide.findusages.model.holders)/8568892084424435375", model = "r:6d26b589-14c5-496e-9d2b-5c71b3a15e5d(jetbrains.mps.ide.findusages.model.holders)")
+@GeneratedClass(nodeId = "8568892084424435375", model = "r:6d26b589-14c5-496e-9d2b-5c71b3a15e5d(jetbrains.mps.ide.findusages.model.holders)")
 public class StringHolder implements IHolder<String> {
   private static final String VALUE = "value";
   private String myString = "";

@@ -10,8 +10,8 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.typesystem.inference.EquationInfo;
-import jetbrains.mps.lang.generator.behavior.NodeMacro__BehaviorDescriptor;
 import jetbrains.mps.lang.generator.behavior.AbstractNodeMacroNamespace__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -32,11 +32,19 @@ public class typeof_LoopMacroNamespace_InferenceRule extends AbstractInferenceRu
       }
     } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(loopMacroNamespace, PROPS.variable$ww9P), 0x14d5f8229234079dL)) {
       // Input node
-      SNode inputNodeType = createSNodeType_9u1jwr_a0b0a0a1(NodeMacro__BehaviorDescriptor.getPreviousInputNodeType_id1kTmBBnrdlu.invoke(AbstractNodeMacroNamespace__BehaviorDescriptor.getTargetMacro_id2vVmcK3imJA.invoke(loopMacroNamespace)));
-      {
-        SNode _nodeToCheck_1029348928467 = loopMacroNamespace;
-        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1501378878163399576", 0, null);
-        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1501378878163399581", true), (SNode) inputNodeType, _info_12389875345);
+      // inspired bt typeof_TemplateFunctionParameter_sourceNode
+      SNode targetMacro = AbstractNodeMacroNamespace__BehaviorDescriptor.getTargetMacro_id2vVmcK3imJA.invoke(loopMacroNamespace);
+      SNode prevSourceSubstituteMacro = QueriesUtil.getEnclosing_SourceSubstituteMacro(SNodeOperations.getParent(targetMacro), targetMacro);
+      if (prevSourceSubstituteMacro != null) {
+        SNode query = jetbrains.mps.lang.generator.helper.QueriesUtil.getQueryFunction_fromSourceSubstituteMacro(prevSourceSubstituteMacro);
+        QueriesUtil.equate_outputNodeType_fromSourceQuery(typeCheckingContext, query, typeCheckingContext.typeOf(loopMacroNamespace, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "6679949581779100399", true));
+      } else {
+        SNode applicableConcept = jetbrains.mps.lang.generator.helper.QueriesUtil.getApplicableConcept_fromEnvironment(SNodeOperations.getParent(targetMacro));
+        {
+          SNode _nodeToCheck_1029348928467 = loopMacroNamespace;
+          EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1501378878163399576", 0, null);
+          typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1501378878163399581", true), (SNode) createSNodeType_9u1jwr_a1a0c0b0a4a0a0b(applicableConcept), _info_12389875345);
+        }
       }
     }
   }
@@ -53,7 +61,7 @@ public class typeof_LoopMacroNamespace_InferenceRule extends AbstractInferenceRu
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.IntegerType$7a);
     return n0.getResult();
   }
-  private static SNode createSNodeType_9u1jwr_a0b0a0a1(SNode p0) {
+  private static SNode createSNodeType_9u1jwr_a1a0c0b0a4a0a0b(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SNodeType$hR);
     n0.setReferenceTarget(LINKS.concept$OMgE, p0);
     return n0.getResult();

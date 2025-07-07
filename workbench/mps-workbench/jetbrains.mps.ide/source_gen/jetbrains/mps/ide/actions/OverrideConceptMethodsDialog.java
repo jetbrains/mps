@@ -13,23 +13,21 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.util.Comparator;
 import java.util.Objects;
 import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1818770337282919436", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1818770337282919436", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 /*package*/ class OverrideConceptMethodsDialog extends GroupedNodesChooser {
   private JCheckBox myRemoveAttributes;
   private JCheckBox myAddReturn;
@@ -40,7 +38,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   @Override
   protected void initOptions() {
     try {
-      myOptions = myProject.getComponent(ProjectPluginManager.class).getPrefsComponent(BehaviorDialogsPersistentOptions_PreferencesComponent.class);
+      myOptions = ProjectPluginManager.getInstance(myProject).getPrefsComponent(BehaviorDialogsPersistentOptions_PreferencesComponent.class);
     } catch (Exception e) {
       myOptions = null;
     }
@@ -59,7 +57,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptBehavior$2)) {
       SNode concept = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.ConceptBehavior$2), LINKS.concept$u6dL);
       if ((concept != null)) {
-        return ((String) BHReflection.invoke0(concept, CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+        return ((String) BHReflection.invoke0(concept, CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL)));
       }
     }
     return super.getText(node);
@@ -86,35 +84,29 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   public static Iterable<SNode> sortMethods(SNode baseClass, Iterable<SNode> methods) {
     final Map<SNode, Integer> containerIndex = MapSequence.fromMap(new HashMap<SNode, Integer>());
     int i = 1;
-    for (SNode c : ((List<SNode>) BHReflection.invoke0(baseClass, CONCEPTS.ConceptBehavior$2, SMethodTrimmedId.create("getAllSuperBehaviors", CONCEPTS.ConceptBehavior$2, "1$X$vL9L8i8")))) {
+    for (SNode c : ((List<SNode>) BHReflection.invoke0(baseClass, CONCEPTS.ConceptBehavior$2, SMethodIdV2.create("getAllSuperBehaviors", 1818770337282950280L, 0x28bccc7daff7d4f3L)))) {
       MapSequence.fromMap(containerIndex).put(c, i++);
     }
-    return Sequence.fromIterable(methods).sort(new Comparator<SNode>() {
-      public int compare(SNode a, SNode b) {
-        SNode parentA = SNodeOperations.getParent(a);
-        SNode parentB = SNodeOperations.getParent(b);
-        if (parentA == parentB) {
-          String aRole = SNodeOperations.getContainingLink(a).getName();
-          String bRole = SNodeOperations.getContainingLink(b).getName();
+    return Sequence.fromIterable(methods).sort((a, b) -> {
+      SNode parentA = SNodeOperations.getParent(a);
+      SNode parentB = SNodeOperations.getParent(b);
+      if (parentA == parentB) {
+        String aRole = SNodeOperations.getContainingLink(a).getName();
+        String bRole = SNodeOperations.getContainingLink(b).getName();
 
-          if (!(Objects.equals(aRole, bRole))) {
-            return aRole.compareTo(bRole);
-          }
-
-          return new Integer(IterableUtil.asList(parentA.getChildren(SNodeOperations.getContainingLink(a))).indexOf(a)).compareTo(IterableUtil.asList(parentB.getChildren(SNodeOperations.getContainingLink(b))).indexOf(b));
+        if (!(Objects.equals(aRole, bRole))) {
+          return aRole.compareTo(bRole);
         }
-        int iA = (parentA != null && MapSequence.fromMap(containerIndex).containsKey(parentA) ? MapSequence.fromMap(containerIndex).get(parentA) : 0);
-        int iB = (parentB != null && MapSequence.fromMap(containerIndex).containsKey(parentB) ? MapSequence.fromMap(containerIndex).get(parentB) : 0);
-        return new Integer(iA).compareTo(iB);
+
+        return new Integer(IterableUtil.asList(parentA.getChildren(SNodeOperations.getContainingLink(a))).indexOf(a)).compareTo(IterableUtil.asList(parentB.getChildren(SNodeOperations.getContainingLink(b))).indexOf(b));
       }
+      int iA = (parentA != null && MapSequence.fromMap(containerIndex).containsKey(parentA) ? MapSequence.fromMap(containerIndex).get(parentA) : 0);
+      int iB = (parentB != null && MapSequence.fromMap(containerIndex).containsKey(parentB) ? MapSequence.fromMap(containerIndex).get(parentB) : 0);
+      return new Integer(iA).compareTo(iB);
     }, true);
   }
   public static SNodeReference[] toNodePointers(Iterable<SNode> methods) {
-    return Sequence.fromIterable(methods).select(new ISelector<SNode, SNodePointer>() {
-      public SNodePointer select(SNode it) {
-        return new SNodePointer(it);
-      }
-    }).toGenericArray(SNodePointer.class);
+    return Sequence.fromIterable(methods).select((it) -> new SNodePointer(it)).toGenericArray(SNodePointer.class);
   }
 
   private static final class CONCEPTS {

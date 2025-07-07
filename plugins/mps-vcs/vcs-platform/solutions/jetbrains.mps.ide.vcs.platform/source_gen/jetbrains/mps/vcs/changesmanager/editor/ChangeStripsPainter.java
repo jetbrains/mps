@@ -26,17 +26,13 @@ import jetbrains.mps.vcs.diff.changes.NodeIdChange;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.Nullable;
 import java.awt.Point;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessage;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.awt.event.MouseEvent;
 import java.awt.Cursor;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 
-@GeneratedClass(node = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)/867367425399189430", model = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)")
+@GeneratedClass(nodeId = "867367425399189430", model = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)")
 public class ChangeStripsPainter extends AbstractFoldingAreaPainter {
-  private static final int AREA_WIDTH = 9;
+  private static final int AREA_WIDTH = 4;
   private static final int ARROW_HEIGHT = 8;
   private EditorHighlighter myEditorHighlighter;
   private ChangeGroupLayout myChangeGroupLayout;
@@ -48,7 +44,6 @@ public class ChangeStripsPainter extends AbstractFoldingAreaPainter {
     myEditorHighlighter = editorHighlighter;
     myChangeGroupLayout = new StripsChangeGroupLayout(myEditorHighlighter);
     myGroupMessages = new ChangeGroupMessages(myChangeGroupLayout, true);
-    myGroupMessages.startMaintaining();
   }
   @NotNull
   @Override
@@ -124,11 +119,9 @@ public class ChangeStripsPainter extends AbstractFoldingAreaPainter {
   private ChangeGroup findMessageGroupUnder(@NotNull final Point p) {
     double localX = p.getX() - getLeftHighlighter().getFoldingLineX();
     if (localX >= -AREA_WIDTH && localX < 0) {
-      return ListSequence.fromList(myChangeGroupLayout.getChangeGroups()).findFirst(new IWhereFilter<ChangeGroup>() {
-        public boolean accept(ChangeGroup cg) {
-          Bounds b = cg.getBounds(true);
-          return (int) b.start() <= p.getY() && p.getY() <= (int) b.end() || b.length() <= 1 && (int) b.start() - ARROW_HEIGHT / 2 <= p.getY() && p.getY() <= (int) b.end() + ARROW_HEIGHT / 2;
-        }
+      return ListSequence.fromList(myChangeGroupLayout.getChangeGroups()).findFirst((cg) -> {
+        Bounds b = cg.getBounds(true);
+        return (int) b.start() <= p.getY() && p.getY() <= (int) b.end() || b.length() <= 1 && (int) b.start() - ARROW_HEIGHT / 2 <= p.getY() && p.getY() <= (int) b.end() + ARROW_HEIGHT / 2;
       });
     } else {
       return null;
@@ -136,15 +129,7 @@ public class ChangeStripsPainter extends AbstractFoldingAreaPainter {
   }
   /*package*/ void setGroupHighlighted(@Nullable ChangeGroup group, final boolean highlighted) {
     if (group != null) {
-      ListSequence.fromList(group.getChanges()).translate(new ITranslator2<ModelChange, ChangeEditorMessage>() {
-        public Iterable<ChangeEditorMessage> translate(ModelChange ch) {
-          return myEditorHighlighter.getMessages(ch);
-        }
-      }).visitAll(new IVisitor<ChangeEditorMessage>() {
-        public void visit(ChangeEditorMessage m) {
-          m.setHighlighted(highlighted);
-        }
-      });
+      ListSequence.fromList(group.getChanges()).translate((ch) -> myEditorHighlighter.getMessages(ch)).visitAll((m) -> m.setHighlighted(highlighted));
     }
   }
   private void setGroupUnderMouse(@Nullable ChangeGroup group) {
@@ -213,18 +198,10 @@ public class ChangeStripsPainter extends AbstractFoldingAreaPainter {
     }
     if (next) {
       final int bottomY = contextCell.getY() + contextCell.getHeight();
-      return ListSequence.fromList(myChangeGroupLayout.getChangeGroups()).findFirst(new IWhereFilter<ChangeGroup>() {
-        public boolean accept(ChangeGroup g) {
-          return bottomY < (int) g.getBounds(true).start();
-        }
-      });
+      return ListSequence.fromList(myChangeGroupLayout.getChangeGroups()).findFirst((g) -> bottomY < (int) g.getBounds(true).start());
     } else {
       final int topY = contextCell.getY();
-      return ListSequence.fromList(myChangeGroupLayout.getChangeGroups()).findLast(new IWhereFilter<ChangeGroup>() {
-        public boolean accept(ChangeGroup g) {
-          return topY > (int) g.getBounds(true).end();
-        }
-      });
+      return ListSequence.fromList(myChangeGroupLayout.getChangeGroups()).findLast((g) -> topY > (int) g.getBounds(true).end());
     }
   }
   @Nullable

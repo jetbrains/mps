@@ -30,7 +30,6 @@ import jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.execution.lib.PointerUtils;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.baseLanguage.unitTest.behavior.ITestCase__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.unitTest.behavior.ITestMethod__BehaviorDescriptor;
@@ -82,7 +81,6 @@ public final class JUnitTests_Producer {
       setSourceElement(new MPSPsiElement(getMpsProject()));
       JUnitTests_Configuration configuration = ((JUnitTests_Configuration) getConfigurationFactory().createConfiguration("" + "All Tests in Project", getContext().getRunManager().getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
       configuration.getJUnitSettings().setJUnitRunType(JUnitRunTypes.PROJECT);
-      configuration.getJUnitSettings().setInProcess(false);
       return configuration;
     }
 
@@ -118,8 +116,7 @@ public final class JUnitTests_Producer {
       JUnitTests_Configuration configuration = ((JUnitTests_Configuration) getConfigurationFactory().createConfiguration("" + "Tests in '" + name + "'", getContext().getRunManager().getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
       configuration.getJUnitSettings().setJUnitRunType(JUnitRunTypes.MODULE);
       configuration.getJUnitSettings().setModuleRef(source.getModuleReference().toString());
-      configuration.getJUnitSettings().setInProcess(false);
-      return configuration;
+      return (source.isReadOnly() ? null : configuration);
     }
 
     @Override
@@ -163,8 +160,7 @@ public final class JUnitTests_Producer {
       configuration.getJUnitSettings().setJUnitRunType(JUnitRunTypes.MODEL);
       configuration.getJUnitSettings().setModelRef(PersistenceRegistry.getInstance().asString(source.getReference()));
       configuration.getJUnitSettings().setModuleRef(source.getModule().getModuleReference().toString());
-      configuration.getJUnitSettings().setInProcess(false);
-      return configuration;
+      return (source.isReadOnly() ? null : configuration);
     }
 
     @Override
@@ -231,7 +227,9 @@ public final class JUnitTests_Producer {
       JUnitTests_Configuration configuration = ((JUnitTests_Configuration) getConfigurationFactory().createConfiguration("" + name, getContext().getRunManager().getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
       configuration.getJUnitSettings().setJUnitRunType(JUnitRunTypes.NODE);
       configuration.getJUnitSettings().setTestCases(PointerUtils.nodeToCloneableList(testRoot));
-      configuration.getJUnitSettings().setInProcess(wrapper.canRunInProcess());
+      if (!(wrapper.canRunInProcess())) {
+        configuration.getJUnitSettings().setInProcessFlag(false);
+      }
       return configuration;
     }
 
@@ -248,21 +246,13 @@ public final class JUnitTests_Producer {
       if (context.getPsiLocation() instanceof MPSPsiElement) {
         final MPSPsiElement element = (MPSPsiElement) context.getPsiLocation();
         ModelAccessHelper mah = new ModelAccessHelper(element.getMPSProject().getRepository());
-        Object mpsItem = mah.runReadAction(new Computable<Object>() {
-          public Object compute() {
-            return element.getMPSItem();
-          }
-        });
+        Object mpsItem = mah.runReadAction(() -> element.getMPSItem());
         if (!(mpsItem instanceof SNode)) {
           return false;
         }
         final SNode sourceNode = (SNode) mpsItem;
         // no test for testableMethod since the run type are different for these two producers
-        SNode testableRoot = mah.runReadAction(new Computable<SNode>() {
-          public SNode compute() {
-            return TestNodeWrapperFactory.findWrappableAncestor(sourceNode, true);
-          }
-        });
+        SNode testableRoot = mah.runReadAction(() -> TestNodeWrapperFactory.findWrappableAncestor(sourceNode, true));
         if (testableRoot == null) {
           return false;
         }
@@ -303,7 +293,9 @@ public final class JUnitTests_Producer {
       JUnitTests_Configuration configuration = ((JUnitTests_Configuration) getConfigurationFactory().createConfiguration("" + wrapper.getName(), getContext().getRunManager().getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
       configuration.getJUnitSettings().setJUnitRunType(JUnitRunTypes.METHOD);
       configuration.getJUnitSettings().setTestMethods(PointerUtils.nodeToCloneableList(method));
-      configuration.getJUnitSettings().setInProcess(wrapper.canRunInProcess());
+      if (!(wrapper.canRunInProcess())) {
+        configuration.getJUnitSettings().setInProcessFlag(false);
+      }
       return configuration;
     }
 
@@ -320,20 +312,12 @@ public final class JUnitTests_Producer {
       if (context.getPsiLocation() instanceof MPSPsiElement) {
         final MPSPsiElement element = (MPSPsiElement) context.getPsiLocation();
         ModelAccessHelper mah = new ModelAccessHelper(element.getMPSProject().getRepository());
-        Object mpsItem = mah.runReadAction(new Computable<Object>() {
-          public Object compute() {
-            return element.getMPSItem();
-          }
-        });
+        Object mpsItem = mah.runReadAction(() -> element.getMPSItem());
         if (!(mpsItem instanceof SNode)) {
           return false;
         }
         final SNode sourceNode = (SNode) mpsItem;
-        SNode testableMethod = mah.runReadAction(new Computable<SNode>() {
-          public SNode compute() {
-            return TestNodeWrapperFactory.findWrappableAncestor(sourceNode, false);
-          }
-        });
+        SNode testableMethod = mah.runReadAction(() -> TestNodeWrapperFactory.findWrappableAncestor(sourceNode, false));
         if (testableMethod == null) {
           return false;
         }
@@ -359,7 +343,7 @@ public final class JUnitTests_Producer {
         return false;
       }
       for (Object obj : (List) source) {
-        if (!((obj instanceof SNode && SNodeOperations.isInstanceOf(((SNode) obj), CONCEPTS.ITestCase$Fp)))) {
+        if (!(obj instanceof SNode && SNodeOperations.isInstanceOf(((SNode) obj), CONCEPTS.ITestCase$Fp))) {
           return false;
         }
       }
@@ -372,7 +356,7 @@ public final class JUnitTests_Producer {
       boolean containsTest = false;
       boolean canRunInProcess = true;
       for (SNode testCase : source) {
-        if (ListSequence.fromList(ITestCase__BehaviorDescriptor.getTestMethods_id1RfJDyhAUar.invoke(testCase)).isNotEmpty()) {
+        if (ListSequence.fromList(ITestCase__BehaviorDescriptor.getUncommentedTestMethods_id6I8tQNTvi0f.invoke(testCase)).isNotEmpty()) {
           containsTest = true;
         }
         if (!((boolean) ITestCase__BehaviorDescriptor.canRunInProcess_id5_jSk8paieB.invoke(testCase))) {
@@ -386,7 +370,9 @@ public final class JUnitTests_Producer {
       JUnitTests_Configuration configuration = ((JUnitTests_Configuration) getConfigurationFactory().createConfiguration("" + SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(source).first(), CONCEPTS.ITestCase$Fp), PROPS.name$MnvL) + ",...", getContext().getRunManager().getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
       configuration.getJUnitSettings().setJUnitRunType(JUnitRunTypes.NODE);
       configuration.getJUnitSettings().setTestCases(PointerUtils.nodesToCloneableList(source));
-      configuration.getJUnitSettings().setInProcess(canRunInProcess);
+      if (!(canRunInProcess)) {
+        configuration.getJUnitSettings().setInProcessFlag(false);
+      }
       return configuration;
     }
 
@@ -407,7 +393,7 @@ public final class JUnitTests_Producer {
         return false;
       }
       for (Object obj : (List) source) {
-        if (!((obj instanceof SNode && SNodeOperations.isInstanceOf(((SNode) obj), CONCEPTS.ITestMethod$em)))) {
+        if (!(obj instanceof SNode && SNodeOperations.isInstanceOf(((SNode) obj), CONCEPTS.ITestMethod$em))) {
           return false;
         }
       }
@@ -427,7 +413,9 @@ public final class JUnitTests_Producer {
         }
       }
       configuration.getJUnitSettings().setTestMethods(PointerUtils.nodesToCloneableList(source));
-      configuration.getJUnitSettings().setInProcess(canRunInProcess);
+      if (!(canRunInProcess)) {
+        configuration.getJUnitSettings().setInProcessFlag(false);
+      }
       return configuration;
     }
 

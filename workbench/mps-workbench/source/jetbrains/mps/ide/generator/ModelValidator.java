@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,11 +21,13 @@ import org.jetbrains.mps.openapi.model.SModel;
 
 import java.util.List;
 
-/**
- * evgeny, 2/24/11
- */
 public interface ModelValidator {
 
+  /**
+   * @deprecated limited to extensions contributed through IDEA plugin.xml mechanism (and IDEA-managed code).
+   *             Use extensions registered via {@code ModuleRuntime.ActivatorContext.extension()} instead
+   */
+  @Deprecated(since = "2024.2", forRemoval = true)
   ExtensionPointName<ModelValidator> EP_NAME = ExtensionPointName.create("com.intellij.mps.ModelValidator");
 
   boolean check(Project p, List<SModel> modelDescriptors);

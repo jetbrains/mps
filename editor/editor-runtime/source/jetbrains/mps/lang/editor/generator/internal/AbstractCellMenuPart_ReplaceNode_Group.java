@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,10 +26,8 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.action.AbstractNodeSubstituteAction;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -136,34 +134,9 @@ public abstract class AbstractCellMenuPart_ReplaceNode_Group implements Substitu
   }
 
   @Nullable
-  protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
-    // FIXME once 2020.3 is out, either become abstract or just return null?
-    return createParameterObjects(node, editorContext.getOperationContext(), editorContext);
-  }
+  protected abstract List<?> createParameterObjects(SNode node, EditorContext editorContext);
 
-  /**
-   * @deprecated override {@link #createParameterObjects(SNode, EditorContext)} instead
-   */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.2)
-  protected List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-    return null;
-  }
-
-  protected SNode createReplacementNode(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
-    // FIXME make abstract once 2020.3 is out
-    return createReplacementNode(parameterObject, node, model, editorContext.getOperationContext(), editorContext);
-  }
-
-  /**
-   * @deprecated override {@link #createReplacementNode(Object, SNode, SModel, EditorContext)} instead
-   */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.2)
-  protected SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext,
-      EditorContext editorContext) {
-    return null;
-  }
+  protected abstract SNode createReplacementNode(Object parameterObject, SNode node, SModel model, EditorContext editorContext);
 
   protected EditorMenuDescriptor getEditorMenuDescriptor(Object parameterObject) {
     return null;

@@ -4,50 +4,33 @@ package jetbrains.mps.lang.text.editor;
 
 import java.awt.datatransfer.Transferable;
 import com.intellij.ide.CopyPasteManagerEx;
-import jetbrains.mps.ide.datatransfer.SModelDataFlavor;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.UnsupportedFlavorException;
-import java.io.IOException;
+import java.util.Optional;
+import jetbrains.mps.datatransfer.PasteNodeData;
+import jetbrains.mps.datatransfer.SNodeClip;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
+import jetbrains.mps.openapi.editor.EditorContext;
+import java.util.List;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class TextEditorHelper {
 
   public static Object getDataFromClipboard() {
-    Transferable contents = null;
-    for (Transferable trf : CopyPasteManagerEx.getInstanceEx().getAllContents()) {
-      if (trf != null && (trf.isDataFlavorSupported(SModelDataFlavor.sNode) || trf.isDataFlavorSupported(DataFlavor.stringFlavor))) {
-        contents = trf;
-      }
-      break;
+    Transferable[] allContents = CopyPasteManagerEx.getInstanceEx().getAllContents();
+    Optional<PasteNodeData> nf = SNodeClip.peekNodeFlavor(allContents);
+    if (nf.isPresent()) {
+      return nf.get();
     }
-    if (contents == null) {
-      return null;
-    }
-    if (contents.isDataFlavorSupported(SModelDataFlavor.sNode)) {
-      try {
-        return contents.getTransferData(SModelDataFlavor.sNode);
-      } catch (UnsupportedFlavorException ex) {
-        return null;
-      } catch (IOException ex) {
-        return null;
-      }
-    }
-    if (contents.isDataFlavorSupported(DataFlavor.stringFlavor)) {
-      try {
-        return contents.getTransferData(DataFlavor.stringFlavor);
-      } catch (UnsupportedFlavorException ex) {
-        return null;
-      } catch (IOException ex) {
-        return null;
-      }
-    }
-    return null;
+    return SNodeClip.peekStringFlavor(allContents).orElse(null);
   }
 
   public static SNode insertLineIntoLines(SNode currentLine, SNode currentNode, SNode lineToInsert) {
@@ -78,10 +61,26 @@ public class TextEditorHelper {
     }
   }
 
+  public static SNode getOrCreateSelectedWord(EditorContext editorContext, List<SNode> selectedNodes, int indexInSelection) {
+    SNode currentWord = SNodeOperations.as(selectedNodes.get(indexInSelection), CONCEPTS.TextElement$WN);
+    if (currentWord == null) {
+      SNode l = SNodeOperations.as(selectedNodes.get(indexInSelection), CONCEPTS.Line$yC);
+      assert (l != null) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(l, CONCEPTS.Line$yC), LINKS.elements$_j45)).isEmpty();
+      currentWord = SNodeFactoryOperations.addNewChild(l, LINKS.elements$_j45, CONCEPTS.Word$Dn);
+      SelectionUtil.selectNode(editorContext, currentWord);
+    }
+    return currentWord;
+  }
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept TextElement$WN = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement");
     /*package*/ static final SConcept Line$yC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
     /*package*/ static final SConcept TextualElement$9C = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20d9cfbL, "jetbrains.mps.lang.text.structure.TextualElement");
     /*package*/ static final SConcept Paragraph$XF = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph");
+    /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink elements$_j45 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
 }

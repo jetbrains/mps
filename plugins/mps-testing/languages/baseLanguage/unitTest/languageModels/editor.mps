@@ -2,10 +2,10 @@
 <model ref="r:00000000-0000-4000-0000-011c895902d4(jetbrains.mps.baseLanguage.unitTest.editor)">
   <persistence version="9" />
   <languages>
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="15" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -49,7 +49,7 @@
         <property id="1216560518566" name="position" index="10E5iX" />
       </concept>
       <concept id="1233758997495" name="jetbrains.mps.lang.editor.structure.PunctuationLeftStyleClassItem" flags="ln" index="11L4FC" />
-      <concept id="1381004262292414836" name="jetbrains.mps.lang.editor.structure.ICellStyle" flags="ng" index="1k5N5V">
+      <concept id="1381004262292414836" name="jetbrains.mps.lang.editor.structure.ICellStyle" flags="ngI" index="1k5N5V">
         <reference id="1381004262292426837" name="parentStyleClass" index="1k5W1q" />
       </concept>
       <concept id="1215007762405" name="jetbrains.mps.lang.editor.structure.FloatStyleClassItem" flags="ln" index="3$6MrZ">
@@ -77,7 +77,7 @@
         <property id="1073389577007" name="text" index="3F0ifm" />
       </concept>
       <concept id="1073389658414" name="jetbrains.mps.lang.editor.structure.CellModel_Property" flags="sg" stub="730538219796134133" index="3F0A7n" />
-      <concept id="1219418625346" name="jetbrains.mps.lang.editor.structure.IStyleContainer" flags="ng" index="3F0Thp">
+      <concept id="1219418625346" name="jetbrains.mps.lang.editor.structure.IStyleContainer" flags="ngI" index="3F0Thp">
         <child id="1219418656006" name="styleItem" index="3F10Kt" />
       </concept>
       <concept id="1073389882823" name="jetbrains.mps.lang.editor.structure.CellModel_RefNode" flags="sg" stub="730538219795960754" index="3F1sOY" />
@@ -149,7 +149,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -508,9 +508,9 @@
           <property role="Vb096" value="fLwANPu/blue" />
         </node>
       </node>
-      <node concept="3F1sOY" id="h3vm$Fz" role="3EZMnx">
-        <property role="1$x2rV" value="expected" />
-        <ref role="1NtTu8" to="tpe3:7jPoEeD$ZP4" resolve="expected" />
+      <node concept="3F1sOY" id="h3vmArp" role="3EZMnx">
+        <property role="1$x2rV" value="actual" />
+        <ref role="1NtTu8" to="tpe3:7jPoEeD$ZP5" resolve="actual" />
       </node>
       <node concept="3F0ifn" id="h3vlQYs" role="3EZMnx">
         <property role="3F0ifm" value="equals" />
@@ -518,9 +518,9 @@
           <property role="Vb096" value="fLwANPu/blue" />
         </node>
       </node>
-      <node concept="3F1sOY" id="h3vmArp" role="3EZMnx">
-        <property role="1$x2rV" value="actual" />
-        <ref role="1NtTu8" to="tpe3:7jPoEeD$ZP5" resolve="actual" />
+      <node concept="3F1sOY" id="h3vm$Fz" role="3EZMnx">
+        <property role="1$x2rV" value="expected" />
+        <ref role="1NtTu8" to="tpe3:7jPoEeD$ZP4" resolve="expected" />
       </node>
       <node concept="PMmxH" id="4uU5oUYY2Mp" role="3EZMnx">
         <ref role="PMmxG" node="4uU5oUYY2Mi" resolve="MessageComponent" />

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.util.InternUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade.IncorrectNodeIdFormatException;
@@ -105,7 +104,7 @@ public abstract class SNodeId implements Comparable<SNodeId>, org.jetbrains.mps.
 
     @Override
     public int hashCode() {
-      return (int) (myId ^ (myId >>> 32));
+      return Long.hashCode(myId);
     }
 
     @Override
@@ -127,15 +126,27 @@ public abstract class SNodeId implements Comparable<SNodeId>, org.jetbrains.mps.
   public static class Foreign extends SNodeId implements StringBasedId {
     public static final String ID_PREFIX = "~";
 
-    private final String myId;
     private final String myIdNoPrefix;
 
     public Foreign(@NotNull String id) {
       if (!id.startsWith(ID_PREFIX)) {
         throw new IncorrectNodeIdFormatException(String.format("A foreign node id must begin with '%s'", ID_PREFIX), null);
       }
-      myId = InternUtil.intern(id);
-      myIdNoPrefix = id.substring(1);
+      myIdNoPrefix = id.substring(1).intern();
+    }
+
+    private Foreign(String idNoPrefix, int unused) {
+      myIdNoPrefix = idNoPrefix;
+    }
+
+    /**
+     * For use when there's knowledge about id value and its kind (Foreign) to avoid prepending '~' just for the sake of kind identification
+     * @return node id
+     * @since 2023.3
+     */
+    public static Foreign fromIdNoPrefix(@NotNull String id) {
+      assert !id.isEmpty() && id.charAt(0) != '~' : id;
+      return new Foreign(id.intern(), 0);
     }
 
     @NotNull
@@ -143,19 +154,15 @@ public abstract class SNodeId implements Comparable<SNodeId>, org.jetbrains.mps.
       return myIdNoPrefix;
     }
 
+    @SuppressWarnings("removal")
     @Override
     public boolean equals(Object o) {
       if (this == o) return true;
       else if (o == null) return false;
-      else if (o instanceof StringBasedIdForJavaStubMethods) {
-        StringBasedIdForJavaStubMethods otherId = (StringBasedIdForJavaStubMethods) o;
-        String idNoPrefix = getIdNoPrefix();
-        return idNoPrefix.equals(otherId.getIdWithoutReturnTypeNoPrefix());
-      }
       if (getClass() != o.getClass()) return false;
 
       Foreign otherId = (Foreign) o;
-      return myId.equals(otherId.myId);
+      return myIdNoPrefix.equals(otherId.myIdNoPrefix);
     }
 
     @NotNull
@@ -170,7 +177,7 @@ public abstract class SNodeId implements Comparable<SNodeId>, org.jetbrains.mps.
 
     @Override
     public String toString() {
-      return myId;
+      return '~' + myIdNoPrefix;
     }
   }
 }

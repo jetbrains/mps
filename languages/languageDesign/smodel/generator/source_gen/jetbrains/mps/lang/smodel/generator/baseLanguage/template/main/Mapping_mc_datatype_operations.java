@@ -43,14 +43,14 @@ public class Mapping_mc_datatype_operations extends MapConfigBase implements Tem
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
       {
-        final SNode switchInput1 = QueriesGenerated.sourceNodeQuery_142_0(new SourceSubstituteMacroNodeContext(context, switchMacroRef_tk1ivr_b0a0a0a2a1d));
+        final SNode switchInput1 = QueriesGenerated.sourceNodeQuery_141_0(new SourceSubstituteMacroNodeContext(context, switchMacroRef));
         if (switchInput1 == null) {
           tlist1 = Collections.emptyList();
         } else {
           TemplateContext switchContext1 = context;
-          switchContext1 = switchContext1.withVariable("parameter", ((SNode) QueriesGenerated.templateArgumentQuery_142_0(new TemplateArgumentContext(switchContext1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344827005")))));
+          switchContext1 = switchContext1.withVariable("parameter", ((SNode) QueriesGenerated.templateArgumentQuery_141_0(new TemplateArgumentContext(switchContext1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344827005")))));
           switchContext1 = switchContext1.subContext(null, switchInput1);
-          tlist1 = environment.trySwitch(templateSwitchNode_tk1ivr_a0a0d0a1a2a1d, switchContext1);
+          tlist1 = environment.trySwitch(templateSwitchNode, switchContext1);
           if (tlist1 == null) {
             final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
             tlist1 = TemplateUtil.singletonList(tnode2);
@@ -69,14 +69,14 @@ public class Mapping_mc_datatype_operations extends MapConfigBase implements Tem
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
       {
-        final SNode switchInput1 = QueriesGenerated.sourceNodeQuery_142_1(new SourceSubstituteMacroNodeContext(context, switchMacroRef_tk1ivr_b0a0a0a2a1e));
+        final SNode switchInput1 = QueriesGenerated.sourceNodeQuery_141_1(new SourceSubstituteMacroNodeContext(context, switchMacroRef1));
         if (switchInput1 == null) {
           tlist1 = Collections.emptyList();
         } else {
           TemplateContext switchContext1 = context;
-          switchContext1 = switchContext1.withVariable("parameter", ((SNode) QueriesGenerated.templateArgumentQuery_142_1(new TemplateArgumentContext(switchContext1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377346111395")))));
+          switchContext1 = switchContext1.withVariable("parameter", ((SNode) QueriesGenerated.templateArgumentQuery_141_1(new TemplateArgumentContext(switchContext1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377346111395")))));
           switchContext1 = switchContext1.subContext(null, switchInput1);
-          tlist1 = environment.trySwitch(templateSwitchNode_tk1ivr_a0a0d0a1a2a1e, switchContext1);
+          tlist1 = environment.trySwitch(templateSwitchNode1, switchContext1);
           if (tlist1 == null) {
             final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
             tlist1 = TemplateUtil.singletonList(tnode2);
@@ -98,10 +98,10 @@ public class Mapping_mc_datatype_operations extends MapConfigBase implements Tem
 
 
   }
-  private static final SNodePointer switchMacroRef_tk1ivr_b0a0a0a2a1d = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8822815258147274063");
-  private static final SNodePointer templateSwitchNode_tk1ivr_a0a0d0a1a2a1d = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8822815258147280394");
-  private static final SNodePointer switchMacroRef_tk1ivr_b0a0a0a2a1e = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377346111394");
-  private static final SNodePointer templateSwitchNode_tk1ivr_a0a0d0a1a2a1e = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864763");
+  private static final SNodePointer switchMacroRef = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8822815258147274063");
+  private static final SNodePointer templateSwitchNode = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8822815258147280394");
+  private static final SNodePointer switchMacroRef1 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377346111394");
+  private static final SNodePointer templateSwitchNode1 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864763");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept PropertySerializeExpression$ga = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x76dcb083baaeddeaL, "jetbrains.mps.lang.smodel.structure.PropertySerializeExpression");

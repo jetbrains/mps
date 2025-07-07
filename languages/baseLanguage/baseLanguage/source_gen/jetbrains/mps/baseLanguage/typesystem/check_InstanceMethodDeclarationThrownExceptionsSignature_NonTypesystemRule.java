@@ -12,14 +12,13 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.InstanceMethodDeclaration__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -48,33 +47,25 @@ public class check_InstanceMethodDeclarationThrownExceptionsSignature_NonTypesys
     }
 
     final List<SNode> superThrown = SLinkOperations.getChildren(nearestOverriddenMethod, LINKS.throwsItem$CdW$);
-    ListSequence.fromList(myThrown).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode my) {
-        final SNode myClassifier = ThrownTypeVariableReferencesHelper.retrieveClassifier(my);
-        if (myClassifier == null) {
-          return;
-        }
-        Iterable<SNode> superTypes = Classifier__BehaviorDescriptor.getAllExtendedClassifiers_id2xreLMO8jma.invoke(myClassifier);
+    ListSequence.fromList(myThrown).visitAll((my) -> {
+      final SNode myClassifier = ThrownTypeVariableReferencesHelper.retrieveClassifier(my);
+      if (myClassifier == null) {
+        return;
+      }
+      Iterable<SNode> superTypes = Classifier__BehaviorDescriptor.getAllExtendedClassifiers_id2xreLMO8jma.invoke(myClassifier);
 
-        if (!((SNodeOperations.is(myClassifier, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~RuntimeException")) || Sequence.fromIterable(superTypes).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SNodeOperations.is(it, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~RuntimeException"));
+      if (!(SNodeOperations.is(myClassifier, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~RuntimeException")) || Sequence.fromIterable(superTypes).any((it) -> SNodeOperations.is(it, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~RuntimeException")))) && !(ListSequence.fromList(superThrown).any((it) -> {
+        final SNode superClassifier = ThrownTypeVariableReferencesHelper.retrieveClassifier(it);
+        return superClassifier != null && (Objects.equals(myClassifier, superClassifier) || SetSequence.fromSet(Classifier__BehaviorDescriptor.getAllExtendedClassifiers_id2xreLMO8jma.invoke(myClassifier)).any(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+          public Boolean invoke(SNode it) {
+            return Objects.equals(it, superClassifier);
           }
-        }))) && !(ListSequence.fromList(superThrown).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            final SNode superClassifier = ThrownTypeVariableReferencesHelper.retrieveClassifier(it);
-            return superClassifier != null && (Objects.equals(myClassifier, superClassifier) || SetSequence.fromSet(Classifier__BehaviorDescriptor.getAllExtendedClassifiers_id2xreLMO8jma.invoke(myClassifier)).any(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return Objects.equals(it, superClassifier);
-              }
-            }));
-          }
-        }))) {
-          String thrownName = SPropertyOperations.getString(myClassifier, PROPS.name$MnvL);
-          {
-            final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(my, "Overriden method does not throw " + thrownName, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8302934035215147192", null, errorTarget);
-          }
+        }));
+      }))) {
+        String thrownName = SPropertyOperations.getString(myClassifier, PROPS.name$MnvL);
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(my, "Overriden method does not throw " + thrownName, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8302934035215147192", null, errorTarget);
         }
       }
     });

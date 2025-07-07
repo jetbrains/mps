@@ -4,11 +4,10 @@ package jetbrains.mps.refactoringTest;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -27,13 +26,11 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class ExtractFromIntention_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(ExtractFromIntention_Test.class, "${mps_home}", "r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ExtractFromIntention_Test.class).projectPath(null).modelRef("r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)").reopenProject(null).build());
 
   public ExtractFromIntention_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -47,24 +44,28 @@ public class ExtractFromIntention_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052684510", "1230052684520", "1230052684528", "1230052684538");
+    }
+
     public void test_extractExpression() throws Exception {
-      addNodeById("1230052684510");
-      addNodeById("1230052684520");
-      addNodeById("1230052684528");
-      addNodeById("1230052684538");
-      SLinkOperations.setTarget(getNodeById("1230052684533"), LINKS.classConcept$M5BC, getNodeById("1230052684539"));
-      SLinkOperations.setTarget(getNodeById("1230052684533"), LINKS.baseMethodDeclaration$pyYw, getNodeById("1230052684540"));
-      ExtractMethodRefactoringParameters params = ExtractMethodFactory.createParameters(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052684515")));
-      params.setName("foo");
-      params.setVisibilityLevel(VisibilityLevel.PUBLIC);
-      ExtractMethodRefactoring ref = ExtractMethodFactory.createRefactoring(params);
-      ref.setStaticContainer(getNodeById("1230052684521"));
-      ref.doRefactor();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052684511"), getNodeById("1230052684521"));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052684529"), getNodeById("1230052684539"));
-        Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-      }
+      initTestNodes();
+      runWithinCommand(() -> {
+        SLinkOperations.setTarget(getAnnotatedNode("call"), LINKS.classConcept$M5BC, getAnnotatedNode("after2"));
+        SLinkOperations.setTarget(getAnnotatedNode("call"), LINKS.baseMethodDeclaration$pyYw, getAnnotatedNode("method"));
+        ExtractMethodRefactoringParameters params = ExtractMethodFactory.createParameters(ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("extract")));
+        params.setName("foo");
+        params.setVisibilityLevel(VisibilityLevel.PUBLIC);
+        ExtractMethodRefactoring ref = ExtractMethodFactory.createRefactoring(params);
+        ref.setStaticContainer(getAnnotatedNode("before2"));
+        ref.doRefactor();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("before1"), getAnnotatedNode("before2"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("after1"), getAnnotatedNode("after2"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+      });
     }
 
   }

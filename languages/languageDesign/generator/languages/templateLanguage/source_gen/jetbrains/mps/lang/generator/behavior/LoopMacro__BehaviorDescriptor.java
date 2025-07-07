@@ -20,7 +20,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.core.behavior.ISuppressErrors__BehaviorDescriptor;
@@ -38,11 +37,11 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class LoopMacro__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047ce009c3L, "jetbrains.mps.lang.generator.structure.LoopMacro");
 
-  public static final SMethod<SNode> getInputNodeTypeInsideOfMacro_idhEwIosJ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getInputNodeTypeInsideOfMacro").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIosJ").build();
-  public static final SMethod<String> getCounterVarName_id5KmckUrI7Lz = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getCounterVarName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5KmckUrI7Lz").build();
-  public static final SMethod<Boolean> isLoopVariableUsed_id5UJTmNZqi81 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLoopVariableUsed").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5UJTmNZqi81").build(SMethodBuilder.createJavaParameter((Class<SEnumerationLiteral>) ((Class) Object.class), ""));
-  public static final SMethod<List<SNode>> contextVariables_id6suuiWX_oN7 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("contextVariables").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6suuiWX_oN7").build();
-  public static final SMethod<Boolean> suppress_id2WmWrdnSpX7 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("suppress").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2WmWrdnSpX7").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getInputNodeTypeInsideOfMacro_idhEwIosJ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getInputNodeTypeInsideOfMacro").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877290799L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
+  public static final SMethod<String> getCounterVarName_id5KmckUrI7Lz = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getCounterVarName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6635545314666773603L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
+  public static final SMethod<Boolean> isLoopVariableUsed_id5UJTmNZqi81 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLoopVariableUsed").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6822924216793899521L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2(SMethodBuilder.createJavaParameter((Class<SEnumerationLiteral>) ((Class) Object.class), ""));
+  public static final SMethod<List<SNode>> contextVariables_id6suuiWX_oN7 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("contextVariables").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7430509679011531975L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
+  public static final SMethod<Boolean> suppress_id2WmWrdnSpX7 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("suppress").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3393165121846091591L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInputNodeTypeInsideOfMacro_idhEwIosJ, getCounterVarName_id5KmckUrI7Lz, isLoopVariableUsed_id5UJTmNZqi81, contextVariables_id6suuiWX_oN7, suppress_id2WmWrdnSpX7);
 
@@ -66,11 +65,7 @@ public final class LoopMacro__BehaviorDescriptor extends BaseBHDescriptor {
     return "cv:" + SPropertyOperations.getString(__thisNode__, PROPS.counterVarName$YOXn);
   }
   /*package*/ static boolean isLoopVariableUsed_id5UJTmNZqi81(@NotNull SNode __thisNode__, final SEnumerationLiteral variable) {
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getParent(__thisNode__), CONCEPTS.LoopMacroNamespaceAccessor$DO, false, new SAbstractConcept[]{})).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getEnum(it, PROPS.variable$ww9P) == variable;
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getParent(__thisNode__), CONCEPTS.LoopMacroNamespaceAccessor$DO, false, new SAbstractConcept[]{})).any((it) -> SPropertyOperations.getEnum(it, PROPS.variable$ww9P) == variable);
   }
   /*package*/ static List<SNode> contextVariables_id6suuiWX_oN7(@NotNull SNode __thisNode__) {
     List<SNode> rv = new ArrayList<SNode>();
@@ -85,11 +80,7 @@ public final class LoopMacro__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static boolean suppress_id2WmWrdnSpX7(@NotNull SNode __thisNode__, SNode child) {
     // child is not under any other macro except this one
-    return ((boolean) ISuppressErrors__BehaviorDescriptor.suppress_id2WmWrdnSpX7.invokeSuper(__thisNode__, CONCEPTS.LoopMacro$1T, child)) && ListSequence.fromList(SNodeOperations.getNodeAncestors(child, null, true)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Sequence.fromIterable(SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(it), CONCEPTS.AbstractMacro$bo)).isNotEmpty();
-      }
-    }) == SNodeOperations.getParent(__thisNode__);
+    return ((boolean) ISuppressErrors__BehaviorDescriptor.suppress_id2WmWrdnSpX7.invokeSuper(__thisNode__, CONCEPTS.LoopMacro$1T, child)) && ListSequence.fromList(SNodeOperations.getNodeAncestors(child, null, true)).findFirst((it) -> Sequence.fromIterable(SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(it), CONCEPTS.AbstractMacro$bo)).isNotEmpty()) == SNodeOperations.getParent(__thisNode__);
   }
 
   /*package*/ LoopMacro__BehaviorDescriptor() {
@@ -148,11 +139,11 @@ public final class LoopMacro__BehaviorDescriptor extends BaseBHDescriptor {
   private static SNode _quotation_createNode_cdqxf8_a0a0a0a0a() {
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
-    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10c25fb076aL, "ListType"));
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10c260e9444L, "SequenceType"));
     quotedNode_1 = nb.getResult();
     SNodeBuilder nb1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"));
     quotedNode_2 = nb1.getResult();
-    quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, 0x10c25fe95c5L, "elementType"), quotedNode_2);
+    quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType"), quotedNode_2);
     return quotedNode_1;
   }
   private static SNode createIntegerType_cdqxf8_a0e0d() {

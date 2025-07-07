@@ -10,25 +10,27 @@
   </root>
   <root nodeRef="r:fa8ccb4f-be82-497d-8a1d-abe52be0e6b9(jetbrains.mps.lang.editor.forms.actions)/5347446703373799064">
     <file name="CellModel_Checkbox_NodeFactories.java">
-      <node id="5347446703373799119" at="18,91,19,129" concept="0" />
-      <node id="5347446703373814562" at="23,91,24,71" concept="0" />
+      <node id="5347446703373799119" at="18,102,19,129" concept="0" />
+      <node id="5347446703373814562" at="23,102,24,71" concept="0" />
       <node id="5347446703373815100" at="24,71,25,70" concept="0" />
       <node id="5347446703373799064" at="30,0,31,0" concept="2" trace="ui$innv" />
       <node id="5347446703373799064" at="34,0,35,0" concept="2" trace="CheckboxUI_Text$kO" />
       <node id="5347446703373799064" at="38,0,39,0" concept="2" trace="falseText$JZn5" />
       <node id="5347446703373799064" at="39,0,40,0" concept="2" trace="trueText$JTXI" />
-      <node id="5347446703373799065" at="18,0,21,0" concept="1" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
-      <node id="5347446703373814501" at="23,0,27,0" concept="1" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
-      <scope id="5347446703373799065" at="18,91,19,129" />
-      <scope id="5347446703373814501" at="23,91,25,70" />
+      <node id="5347446703373799065" at="18,0,21,0" concept="1" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;ILorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <node id="5347446703373814501" at="23,0,27,0" concept="1" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;ILorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <scope id="5347446703373799065" at="18,102,19,129" />
+      <scope id="5347446703373814501" at="23,102,25,70" />
       <scope id="5347446703373799065" at="18,0,21,0">
         <var name="enclosingNode" id="5347446703373799065" />
+        <var name="index" id="5347446703373799065" />
         <var name="model" id="5347446703373799065" />
         <var name="newNode" id="5347446703373799065" />
         <var name="sampleNode" id="5347446703373799065" />
       </scope>
       <scope id="5347446703373814501" at="23,0,27,0">
         <var name="enclosingNode" id="5347446703373814501" />
+        <var name="index" id="5347446703373814501" />
         <var name="model" id="5347446703373814501" />
         <var name="newNode" id="5347446703373814501" />
         <var name="sampleNode" id="5347446703373814501" />

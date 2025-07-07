@@ -16,6 +16,7 @@
 
 package jetbrains.mps.idea.build;
 
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.LangDataKeys;
@@ -27,6 +28,7 @@ import jetbrains.mps.idea.core.project.module.ModuleMPSSupport;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -40,6 +42,11 @@ public class GenerateModuleInProcessAction extends AnAction {
 
   public GenerateModuleInProcessAction() {
     super("Generate module", null, FileIcons.MODEL_ICON);
+  }
+
+  @Override
+  public @NotNull ActionUpdateThread getActionUpdateThread() {
+    return ActionUpdateThread.BGT;
   }
 
   @Override

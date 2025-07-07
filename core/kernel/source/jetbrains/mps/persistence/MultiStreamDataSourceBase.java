@@ -32,13 +32,14 @@ public abstract class MultiStreamDataSourceBase implements MultiStreamDataSource
   }
 
   @Override
-  public boolean delete() {
-    throw new UnsupportedOperationException();
+  public void addListener(@NotNull DataSourceListener listener) {
+    // fixme needed for copy paste old action in popuppanel in vcs
+//    throw new UnsupportedOperationException();
   }
 
   @Override
-  public void addListener(@NotNull DataSourceListener listener) {
-    throw new UnsupportedOperationException();
+  public void removeListener(@NotNull DataSourceListener listener) {
+//    throw new UnsupportedOperationException();
   }
 
   @NotNull
@@ -50,11 +51,6 @@ public abstract class MultiStreamDataSourceBase implements MultiStreamDataSource
     }
     // write your own code
     return null;
-  }
-
-  @Override
-  public void removeListener(@NotNull DataSourceListener listener) {
-    throw new UnsupportedOperationException();
   }
 
   @NotNull

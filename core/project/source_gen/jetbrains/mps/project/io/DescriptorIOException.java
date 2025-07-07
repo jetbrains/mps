@@ -4,7 +4,7 @@ package jetbrains.mps.project.io;
 
 import jetbrains.mps.annotations.GeneratedClass;
 
-@GeneratedClass(node = "r:c7bbaee3-030a-4940-995f-2174babaf670(jetbrains.mps.project.io)/9081946191808704816", model = "r:c7bbaee3-030a-4940-995f-2174babaf670(jetbrains.mps.project.io)")
+@GeneratedClass(nodeId = "9081946191808704816", model = "r:c7bbaee3-030a-4940-995f-2174babaf670(jetbrains.mps.project.io)")
 public class DescriptorIOException extends Exception {
   public DescriptorIOException(Throwable cause) {
     super(cause);

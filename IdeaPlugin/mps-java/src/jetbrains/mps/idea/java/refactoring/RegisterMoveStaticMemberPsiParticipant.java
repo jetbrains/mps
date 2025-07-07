@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.java.refactoring;
 
 import com.intellij.openapi.components.ProjectComponent;
@@ -27,7 +26,6 @@ import jetbrains.mps.smodel.structure.ExtensionDescriptor;
 import org.jetbrains.annotations.NotNull;
 
 public class RegisterMoveStaticMemberPsiParticipant implements ProjectComponent {
-  private final MPSCoreComponents myComponents;
   private Project myProject;
   private ExtensionDescriptor myExtensionDescriptor;
 
@@ -47,14 +45,13 @@ public class RegisterMoveStaticMemberPsiParticipant implements ProjectComponent 
     }
   }
 
-  public RegisterMoveStaticMemberPsiParticipant(MPSCoreComponents coreComponents, Project project) {
-    myComponents = coreComponents;
+  public RegisterMoveStaticMemberPsiParticipant(Project project) {
     myProject = project;
   }
 
   @Override
   public void projectOpened() {
-    ExtensionRegistry extensionRegistry = myComponents.getPlatform().findComponent(ExtensionRegistry.class);
+    ExtensionRegistry extensionRegistry = MPSCoreComponents.getInstance().getPlatform().findComponent(ExtensionRegistry.class);
     if (extensionRegistry != null) {
       myExtensionDescriptor = new DefaultExtensionDescriptor(new UpdatePsiReferencesParticipant_extension(myProject));
       extensionRegistry.registerExtensionDescriptor(myExtensionDescriptor);
@@ -63,18 +60,10 @@ public class RegisterMoveStaticMemberPsiParticipant implements ProjectComponent 
 
   @Override
   public void projectClosed() {
-    ExtensionRegistry extensionRegistry = myComponents.getPlatform().findComponent(ExtensionRegistry.class);
+    ExtensionRegistry extensionRegistry = MPSCoreComponents.getInstance().getPlatform().findComponent(ExtensionRegistry.class);
     if (extensionRegistry != null && myExtensionDescriptor != null) {
       extensionRegistry.unregisterExtensionDescriptor(myExtensionDescriptor);
     }
-  }
-
-  @Override
-  public void initComponent() {
-  }
-
-  @Override
-  public void disposeComponent() {
   }
 
   @NotNull

@@ -10,7 +10,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -36,15 +35,11 @@ public class ChangeMethodSignatureFromCall_QuickFix extends QuickFix_Runtime {
       arityParam = ListSequence.fromList(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj)).removeLastElement();
     }
 
-    final MethodParameterMatcher matcher = new MethodParameterMatcher(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj), SLinkOperations.getChildren(((SNode) ChangeMethodSignatureFromCall_QuickFix.this.getField("call")[0]), LINKS.actualArgument$pzdx));
-    final List<SNode> callTypes = matcher.getCallParamTypes();
+    final MethodParameterMatcher matcher = MethodParameterMatcher.fromParameterAndExpressions(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj), SLinkOperations.getChildren(((SNode) ChangeMethodSignatureFromCall_QuickFix.this.getField("call")[0]), LINKS.actualArgument$pzdx));
+    final List<? extends SNode> callTypes = matcher.getCallParamTypes();
     final Integer[] callToDeclParam = matcher.findAppropriateMatching()._1();
 
-    List<SNode> newParameters = ListSequence.fromList(callTypes).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return (SNode) null;
-      }
-    }).toListSequence();
+    List<SNode> newParameters = ListSequence.fromList(callTypes).select((it) -> (SNode) null).toList();
 
     // Number of regular arguments that the method will have at the end
     int regularParamCount = ListSequence.fromList(callTypes).count();
@@ -64,11 +59,7 @@ public class ChangeMethodSignatureFromCall_QuickFix extends QuickFix_Runtime {
       } else {
         // Create new parameter matching type
         SNode param = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration"));
-        SPropertyOperations.assign(param, PROPS.name$MnvL, ParameterNameUtil.suggestParameterName(ListSequence.fromList(SLinkOperations.getChildren(((SNode) ChangeMethodSignatureFromCall_QuickFix.this.getField("call")[0]), LINKS.actualArgument$pzdx)).getElement(i), SNodeOperations.as(ListSequence.fromList(callTypes).getElement(i), CONCEPTS.Type$bu), ListSequence.fromList(newParameters).select(new ISelector<SNode, String>() {
-          public String select(SNode it) {
-            return SPropertyOperations.getString(it, PROPS.name$MnvL);
-          }
-        })));
+        SPropertyOperations.assign(param, PROPS.name$MnvL, ParameterNameUtil.suggestParameterName(ListSequence.fromList(SLinkOperations.getChildren(((SNode) ChangeMethodSignatureFromCall_QuickFix.this.getField("call")[0]), LINKS.actualArgument$pzdx)).getElement(i), SNodeOperations.as(ListSequence.fromList(callTypes).getElement(i), CONCEPTS.Type$bu), ListSequence.fromList(newParameters).select((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL))));
         SLinkOperations.setTarget(param, LINKS.type$a1UY, SNodeOperations.as(SNodeOperations.copyNode(ListSequence.fromList(callTypes).getElement(i)), CONCEPTS.Type$bu));
 
         ListSequence.fromList(newParameters).addElement(param);

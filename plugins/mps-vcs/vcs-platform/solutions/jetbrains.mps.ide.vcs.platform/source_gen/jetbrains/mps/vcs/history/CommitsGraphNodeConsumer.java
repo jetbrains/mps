@@ -4,7 +4,7 @@ package jetbrains.mps.vcs.history;
 
 import jetbrains.mps.annotations.GeneratedClass;
 
-@GeneratedClass(node = "r:2897a5d4-aed7-4a4e-ac07-fbc830f9ed9b(jetbrains.mps.vcs.history)/3143542063544523719", model = "r:2897a5d4-aed7-4a4e-ac07-fbc830f9ed9b(jetbrains.mps.vcs.history)")
+@GeneratedClass(nodeId = "3143542063544523719", model = "r:2897a5d4-aed7-4a4e-ac07-fbc830f9ed9b(jetbrains.mps.vcs.history)")
 public interface CommitsGraphNodeConsumer {
   default void commitProcessingStarted(CommitsGraphNode node) {
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +29,7 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * @author Artem Tikhomirov
@@ -59,30 +60,11 @@ final class CallSiteImpl implements TemplateCallSite {
 
   @Override
   public boolean weave(@NotNull TemplateContext context, @NotNull SNode outputContextNode, @Nullable WeavingWithAnchor anchorQuery) throws GenerationException {
-    final ArrayList<SNode> weaved = new ArrayList<>();
-    final NodeWeaveSupport nwf = new NodeWeaveSupport(context, outputContextNode, anchorQuery, myCallSite, myGenerator) {
-      @Override
-      public void add(SNode node) throws GenerationFailureException {
-        throw new TemplateProcessingFailureException(myTemplateDeclaration.getTemplateNode(), "Templates with fragments (TF) at the top are not supported for weaving");
-      }
+    final NodeWeaveSupport nwf = new NodeWeaveSupport(context, outputContextNode, anchorQuery, myCallSite, myGenerator);
 
-      @Override
-      public void add(SContainmentLink aggregation, SNode outputNodeToWeave) throws GenerationFailureException {
-        weaved.add(outputNodeToWeave);
-        weaveNode(aggregation, outputNodeToWeave);
-      }
-
-      @Override
-      public void add(SContainmentLink aggregation, Collection<SNode> outputNodesToWeave) throws GenerationFailureException {
-        weaved.addAll(outputNodesToWeave);
-        for (SNode outputNodeToWeave : outputNodesToWeave) {
-          weaveNode(aggregation, outputNodeToWeave);
-        }
-      }
-    };
-
-    myTemplateDeclaration.apply(context, nwf);
-    if (weaved != null && !weaved.isEmpty()) {
+    myTemplateDeclaration.apply(context, nwf); // XXX perhaps, context.withNewExecutionPath(), as in apply, above, would be better?
+    final List<SNode> weaved = nwf.weavedNodes();
+    if (!weaved.isEmpty()) {
       if (context.getInputName() != null) {
         // this is to replace code that used to be in generated WeavingRule classes (took td.weave() result and associated ML with it)
         // XXX seems that I could introduce tc.registerLabel(outputNodes) that would interally look into inputName!= null and use internal env to do the same.

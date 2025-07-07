@@ -4,6 +4,8 @@
   <property name="build.tmp" location="${build.dir}/tmp/mpsPluginTesting" />
   <property name="build.layout" location="${build.dir}/artifacts/mpsPluginTesting" />
   <property name="idea_home" location="" />
+  <property name="mps_home" location="" />
+  <property name="kotlinc_home" location="${mps_home}/plugins/mps-kotlin/kotlinc" />
   <property name="artifacts.mpsBootstrapCore" location="${build.dir}/artifacts/mpsBootstrapCore" />
   <property name="artifacts.mpsTesting" location="${build.dir}/artifacts/mpsTesting" />
   <property name="artifacts.mpsPluginCore" location="${build.dir}/artifacts/mpsPluginCore" />
@@ -22,6 +24,8 @@
   <property name="environment" value="env" />
   <property name="env.JAVA_HOME" value="${java.home}/.." />
   <property name="jdk.home" value="${env.JAVA_HOME}" />
+  
+  <typedef resource="org/jetbrains/kotlin/ant/antlib.xml" classpath="${kotlinc_home}/lib/kotlin-ant.jar" />
   
   <target name="assemble" depends="classes, fetchDependencies">
     <mkdir dir="${build.layout}" />
@@ -42,9 +46,7 @@
     <ant antfile="build/mpsCore.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsTesting.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="IdeaPlugin/mpsPluginCommon.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsJavaCorePre.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsJavaCore.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsJavaPlatformPre.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsJavaPlatform.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="IdeaPlugin/mpsJpsIdea.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="IdeaPlugin/mpsJpsIdeaJ8Compatibility.xml" inheritAll="false" useNativeBasedir="true" />
@@ -73,7 +75,8 @@
   <target name="java.compile.mps-tesing-plugin" depends="fetchDependencies">
     <mkdir dir="${basedir}/IdeaPlugin/mps-testing/src" />
     <mkdir dir="${build.tmp}/java/out/mps-tesing-plugin" />
-    <javac destdir="${build.tmp}/java/out/mps-tesing-plugin" fork="true" encoding="utf8" includeantruntime="false" debug="true">
+    <javac destdir="${build.tmp}/java/out/mps-tesing-plugin" fork="false" encoding="utf8" includeantruntime="false" debug="true">
+      <withKotlin moduleName="mps-tesing-plugin"></withKotlin>
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/IdeaPlugin/mps-testing/src" />
@@ -81,7 +84,6 @@
       <classpath>
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-openapi.jar" />
-        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-logging.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-closures.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-collections.jar" />
@@ -89,8 +91,6 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-references.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-behavior-runtime.jar" />
-        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-messaging.jar" />
-        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-context.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-generator.jar" />
@@ -102,15 +102,28 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-editor-api.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-editor-runtime.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-plugin.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mpsant/mps-tool.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
-        <fileset file="${artifacts.IDEA}/lib/log4j.jar" />
-        <fileset file="${artifacts.IDEA}/lib/jdom.jar" />
-        <fileset file="${artifacts.IDEA}/lib/trove4j.jar" />
-        <fileset file="${artifacts.IDEA}/lib/ecj-4.16.jar" />
-        <fileset file="${artifacts.IDEA}/plugins/java/lib/ecj-4.16.jar" />
-        <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
+        <fileset file="${artifacts.IDEA}/lib/trove.jar" />
+        <fileset file="${artifacts.IDEA}/lib/app.jar" />
+        <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
+        <fileset file="${artifacts.IDEA}/lib/lib.jar" />
+        <fileset file="${artifacts.IDEA}/lib/lib-client.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
+        <fileset file="${artifacts.IDEA}/lib/forms_rt.jar" />
+        <fileset file="${artifacts.IDEA}/lib/java-frontback.jar" />
+        <fileset file="${artifacts.IDEA}/lib/java-impl.jar" />
+        <fileset file="${artifacts.IDEA}/lib/jps-model.jar" />
+        <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
+        <fileset file="${artifacts.IDEA}/lib/stats.jar" />
+        <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
         <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
       </classpath>
     </javac>
+    <copy todir="${build.tmp}/java/out/mps-tesing-plugin">
+      <fileset dir="${basedir}/IdeaPlugin/mps-testing/src" excludes="**/*.java" />
+    </copy>
   </target>
 </project>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.idea.java.psi;
 
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.fileEditor.FileEditorManager;
@@ -26,7 +25,6 @@ import com.intellij.psi.PsiTreeChangeAdapter;
 import com.intellij.psi.PsiTreeChangeEvent;
 import com.intellij.psi.PsiTreeChangeListener;
 import com.intellij.refactoring.rename.inplace.InplaceRefactoring;
-import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.ide.platform.watching.ReloadAction;
 import jetbrains.mps.ide.platform.watching.ReloadManager;
 import jetbrains.mps.ide.project.ProjectHelper;
@@ -56,14 +54,10 @@ public class PsiChangesWatcher implements ProjectComponent {
   private Set<JavaPsiListener> toBeAdded = new HashSet<JavaPsiListener>();
   private Set<JavaPsiListener> toBeRemoved = new HashSet<JavaPsiListener>();
 
-  private MessageBusConnection connection;
   private PsiTreeChangeListener myOwnPsiListener = new OwnPsiListener();
-
-  private ReloadManager myReloadManager;
 
   PsiChangesWatcher(Project p) {
     myProject = p;
-    myReloadManager = ApplicationManager.getApplication().getComponent(ReloadManager.class);
   }
 
   @Override
@@ -154,7 +148,7 @@ public class PsiChangesWatcher implements ProjectComponent {
     public void childAdded(final PsiTreeChangeEvent event) {
       if (isFromMPSPsiProvider(event)) return;
 
-      myReloadManager.runReload(PsiChangeProcessor.class, new ReloadAction<PsiChangeProcessor>() {
+      ReloadManager.getInstance().runReload(PsiChangeProcessor.class, new ReloadAction<PsiChangeProcessor>() {
         @Override
         public void runAction(PsiChangeProcessor p) {
           p.childAdded(event);
@@ -166,7 +160,7 @@ public class PsiChangesWatcher implements ProjectComponent {
     public void childRemoved(final PsiTreeChangeEvent event) {
       if (isFromMPSPsiProvider(event)) return;
 
-      myReloadManager.runReload(PsiChangeProcessor.class, new ReloadAction<PsiChangeProcessor>() {
+      ReloadManager.getInstance().runReload(PsiChangeProcessor.class, new ReloadAction<PsiChangeProcessor>() {
         @Override
         public void runAction(PsiChangeProcessor p) {
           p.childRemoved(event);
@@ -186,7 +180,7 @@ public class PsiChangesWatcher implements ProjectComponent {
         }
       }
 
-      myReloadManager.runReload(PsiChangeProcessor.class, new ReloadAction<PsiChangeProcessor>() {
+      ReloadManager.getInstance().runReload(PsiChangeProcessor.class, new ReloadAction<PsiChangeProcessor>() {
         @Override
         public void runAction(PsiChangeProcessor p) {
           p.childReplaced(event);
@@ -198,7 +192,7 @@ public class PsiChangesWatcher implements ProjectComponent {
     public void childrenChanged(final PsiTreeChangeEvent event) {
       if (isFromMPSPsiProvider(event)) return;
 
-      myReloadManager.runReload(PsiChangeProcessor.class, new ReloadAction<PsiChangeProcessor>() {
+      ReloadManager.getInstance().runReload(PsiChangeProcessor.class, new ReloadAction<PsiChangeProcessor>() {
         @Override
         public void runAction(PsiChangeProcessor p) {
           p.childrenChanged(event);
@@ -210,7 +204,7 @@ public class PsiChangesWatcher implements ProjectComponent {
     public void childMoved(@NotNull final PsiTreeChangeEvent event) {
       if (isFromMPSPsiProvider(event)) return;
 
-      myReloadManager.runReload(PsiChangeProcessor.class, new ReloadAction<PsiChangeProcessor>() {
+      ReloadManager.getInstance().runReload(PsiChangeProcessor.class, new ReloadAction<PsiChangeProcessor>() {
         @Override
         public void runAction(PsiChangeProcessor p) {
           p.childMoved(event);
@@ -222,7 +216,7 @@ public class PsiChangesWatcher implements ProjectComponent {
     public void propertyChanged(@NotNull final PsiTreeChangeEvent event) {
       if (isFromMPSPsiProvider(event)) return;
 
-      myReloadManager.runReload(PsiChangeProcessor.class, new ReloadAction<PsiChangeProcessor>() {
+      ReloadManager.getInstance().runReload(PsiChangeProcessor.class, new ReloadAction<PsiChangeProcessor>() {
         @Override
         public void runAction(PsiChangeProcessor p) {
           p.propertyChanged(event);

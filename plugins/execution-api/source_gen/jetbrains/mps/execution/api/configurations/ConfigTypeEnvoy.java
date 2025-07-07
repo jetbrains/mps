@@ -20,7 +20,7 @@ import java.util.Iterator;
  * 
  * FIXME This is work in progress, need to introduce proxy classes for factory and run configuration. This class doesn't bear 'proxy' as it is full-fledged implementation (GenericConfigType? NonReloadableConfigType?)
  */
-@GeneratedClass(node = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)/7699828872023021372", model = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)")
+@GeneratedClass(nodeId = "7699828872023021372", model = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)")
 public final class ConfigTypeEnvoy implements ConfigurationType {
   private final String myId;
   private final Icon myIcon;
@@ -94,14 +94,15 @@ public final class ConfigTypeEnvoy implements ConfigurationType {
   /**
    * MPS INTERNAL API, DO NOT USE OUTSIDE OF MPS OR MPS-GENERATED CODE
    * 
-   * Unregister a previosul registerd factory with the configuration type
+   * Unregister a previously registered factory with the configuration type
    */
   public void removeFactoryFor(@NotNull Class<? extends BaseMpsRunConfiguration> runCfg) {
     for (Iterator<ConfigFactoryEnvoy> it = myFactories.iterator(); it.hasNext();) {
       ConfigFactoryEnvoy next = it.next();
       if (next.getRunConfigClass() == runCfg) {
         next.invalidate();
-        it.remove();
+        // iterator of CopyOnWriteArrayList is immutable, and walks over a copy, surprise!
+        myFactories.remove(it);
         // intentionally do not break as there's no check to ensure no duplicated addFactoryFor(sameClass) calls.
       }
     }

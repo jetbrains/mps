@@ -15,7 +15,6 @@ import java.util.Set;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -58,11 +57,7 @@ public class NodeByConceptChooser extends NodeChooser {
     if (this.myAcceptor == null) {
       return ListSequence.fromListWithValues(new ArrayList<SNode>(), instances);
     } else {
-      return ListSequence.fromList(ListSequence.fromListWithValues(new ArrayList<SNode>(), instances)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return NodeByConceptChooser.this.myAcceptor.invoke(it);
-        }
-      }).toListSequence();
+      return ListSequence.fromList(ListSequence.fromListWithValues(new ArrayList<SNode>(), instances)).where((it) -> NodeByConceptChooser.this.myAcceptor.invoke(it)).toList();
     }
   }
 

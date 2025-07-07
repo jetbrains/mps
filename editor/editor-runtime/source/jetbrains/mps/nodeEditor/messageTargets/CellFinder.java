@@ -22,7 +22,6 @@ import jetbrains.mps.nodeEditor.cells.CellConditions.LegacyPropertyCellCondition
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -82,8 +81,7 @@ public class CellFinder {
     /**
    * @deprecated uses string instead of SProperty to identify meta-object, use {@link jetbrains.mps.openapi.editor.cells.CellConditions.PropertyCellCondition} instead
    */
-  @Deprecated
-  @ToRemove(version = 2019.2)
+@Deprecated(since = "2019.2", forRemoval = true)
   static boolean isCellForProperty(@NotNull EditorCell cell, @Nullable SNode node, @NotNull String name) {
     return new LegacyPropertyCellCondition(node, name).met(cell);
   }

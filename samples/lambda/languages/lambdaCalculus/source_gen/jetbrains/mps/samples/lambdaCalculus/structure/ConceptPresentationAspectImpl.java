@@ -93,6 +93,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.ConcatenateOperation:
         if (props_ConcatenateOperation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("string concatenation");
           cpb.rawPresentation("+");
           props_ConcatenateOperation = cpb.create();
         }

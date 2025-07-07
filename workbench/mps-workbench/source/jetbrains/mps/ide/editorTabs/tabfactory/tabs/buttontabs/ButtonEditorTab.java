@@ -17,7 +17,9 @@ package jetbrains.mps.ide.editorTabs.tabfactory.tabs.buttontabs;
 
 import com.intellij.openapi.actionSystem.ToggleAction;
 import jetbrains.mps.ide.editorTabs.TabColorProvider;
+import jetbrains.mps.ide.editorTabs.tabfactory.tabs.AbstractEditorTab;
 import jetbrains.mps.ide.editorTabs.tabfactory.tabs.TabEditorLayout;
+import jetbrains.mps.ide.editorTabs.tabfactory.tabs.TabEditorLayout.Entry;
 import jetbrains.mps.plugins.relations.RelationDescriptor;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
@@ -26,12 +28,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * Describes tab location in tabs component, keeps actions/values associated with the tab.
  * Communicates with outer world using SNodeReference, doesn't resolve anything.
  */
-class ButtonEditorTab {
+/*package*/ class ButtonEditorTab implements AbstractEditorTab {
   private final ButtonTabsComponent myTabComponent;
   private final int myIndex;
   private final RelationDescriptor myDescriptor;
@@ -52,6 +55,10 @@ class ButtonEditorTab {
     return myDescriptor;
   }
 
+  @Override
+  public Stream<SNodeReference> getNodes() {
+    return myEntries.stream().map(Entry::getEditNode);
+  }
 
   public List<SNodeReference> getEditorNodes() {
     ArrayList<SNodeReference> rv = new ArrayList<>(5);

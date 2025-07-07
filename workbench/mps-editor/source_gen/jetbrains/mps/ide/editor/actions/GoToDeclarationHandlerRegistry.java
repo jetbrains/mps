@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SNode;
 
-@GeneratedClass(node = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/1710949916357298946", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
+@GeneratedClass(nodeId = "1710949916357298946", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
 public abstract class GoToDeclarationHandlerRegistry {
   private static List<GoToDeclarationHandler> ourHandlers = ListSequence.fromList(new ArrayList<GoToDeclarationHandler>());
 

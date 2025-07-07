@@ -1,5 +1,5 @@
-package jetbrains.mps.core.aspects.behaviour.api;/*
- * Copyright 2003-2015 JetBrains s.r.o.
+/*
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@ package jetbrains.mps.core.aspects.behaviour.api;/*
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package jetbrains.mps.core.aspects.behaviour.api;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -114,4 +115,8 @@ public interface SMethod<T> extends SExecutable {
    * @see #getModifiers()
    */
   boolean isStatic();
+
+  default boolean isPrivate() {
+    return getModifiers().isPrivate();
+  }
 }

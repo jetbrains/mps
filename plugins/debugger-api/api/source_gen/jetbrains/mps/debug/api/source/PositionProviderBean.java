@@ -13,7 +13,7 @@ import com.intellij.openapi.application.ApplicationManager;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
 
-@GeneratedClass(node = "r:7e184eff-8349-496f-875b-1e3646bb06f3(jetbrains.mps.debug.api.source)/6651324831440973871", model = "r:7e184eff-8349-496f-875b-1e3646bb06f3(jetbrains.mps.debug.api.source)")
+@GeneratedClass(nodeId = "6651324831440973871", model = "r:7e184eff-8349-496f-875b-1e3646bb06f3(jetbrains.mps.debug.api.source)")
 public class PositionProviderBean extends LazyExtensionInstance<IPositionProvider> implements PluginAware {
   @Attribute(value = "key")
   @RequiredElement

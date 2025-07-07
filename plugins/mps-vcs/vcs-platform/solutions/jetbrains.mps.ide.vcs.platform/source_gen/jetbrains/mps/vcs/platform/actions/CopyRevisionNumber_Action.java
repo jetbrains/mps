@@ -19,7 +19,7 @@ import com.intellij.openapi.ide.CopyPasteManager;
 import com.intellij.util.ui.TextTransferable;
 import org.jetbrains.annotations.Nullable;
 
-@GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/2260553905836919251", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
+@GeneratedClass(nodeId = "2260553905836919251", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public class CopyRevisionNumber_Action extends BaseAction {
   private static final Icon ICON = AllIcons.Actions.Copy;
 
@@ -35,7 +35,7 @@ public class CopyRevisionNumber_Action extends BaseAction {
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
     event.getPresentation().setText(VcsBundle.messagePointer("copy.revision.number.action"));
-    setEnabledState(event.getPresentation(), CopyRevisionNumber_Action.this.getCellMessage(event) != null);
+    setEnabledState(event.getPresentation(), CopyRevisionNumber_Action.this.getCellMessage(event) != null && !(CopyRevisionNumber_Action.this.getCellMessage(event).getCommitsGraphNode().isLocalRevision()));
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {

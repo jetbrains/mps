@@ -10,18 +10,18 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.bookmark.BookmarksTool;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1234190163902", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1234190163902", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class ShowBookmarks_Action extends BaseAction {
   private static final Icon ICON = null;
 
   public ShowBookmarks_Action() {
     super("Bookmarks...", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    this.setActionAccess(ActionAccess.NONE);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -34,7 +34,6 @@ public class ShowBookmarks_Action extends BaseAction {
     }
     {
       Project p = event.getData(CommonDataKeys.PROJECT);
-      MapSequence.fromMap(_params).put("project", p);
       if (p == null) {
         return false;
       }
@@ -43,6 +42,6 @@ public class ShowBookmarks_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    ((Project) MapSequence.fromMap(_params).get("project")).getComponent(BookmarksTool.class).openTool(true);
+    BookmarksTool.getInstance(event.getData(CommonDataKeys.PROJECT)).openTool();
   }
 }

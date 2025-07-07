@@ -18,6 +18,7 @@ package jetbrains.mps.ide.projectPane.fileSystem.actions.providers;
 import com.intellij.ide.CopyPasteManagerEx;
 import com.intellij.ide.CopyProvider;
 import com.intellij.ide.CutProvider;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -68,5 +69,10 @@ public class FilePaneCopyProvider implements CopyProvider, CutProvider {
 
   private boolean isEnabled(DataContext dataContext, boolean cut) {
     return getData(dataContext, cut) != null;
+  }
+
+  @Override
+  public @NotNull ActionUpdateThread getActionUpdateThread() {
+    return ActionUpdateThread.BGT;
   }
 }

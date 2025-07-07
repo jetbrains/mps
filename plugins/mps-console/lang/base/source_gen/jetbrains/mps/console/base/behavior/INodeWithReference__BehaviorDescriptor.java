@@ -32,11 +32,11 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class INodeWithReference__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x36ac6f29ae8c1fb5L, "jetbrains.mps.console.base.structure.INodeWithReference");
 
-  public static final SMethod<Runnable> execute_id7oNS25df64x = new SMethodBuilder<Runnable>(new SJavaCompoundTypeImpl(Runnable.class)).name("execute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7oNS25df64x").build(SMethodBuilder.createJavaParameter(MPSProject.class, ""));
-  public static final SMethod<Boolean> canExecute_id2QdC0h7dh1h = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canExecute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2QdC0h7dh1h").build();
-  public static final SMethod<String> getText_id5E451QuvdoB = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5E451QuvdoB").build();
-  public static final SMethod<String> getTextWhenBroken_idigjXyuNrou = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTextWhenBroken").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("igjXyuNrou").build();
-  public static final SMethod<Boolean> isBroken_id7m$hACyVN2F = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isBroken").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7m$hACyVN2F").build();
+  public static final SMethod<Runnable> execute_id7oNS25df64x = new SMethodBuilder<Runnable>(new SJavaCompoundTypeImpl(Runnable.class)).name("execute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8517397753922085153L).languageId(0xb306d4d17f64c375L, 0xde1ad86d6e504a02L).build2(SMethodBuilder.createJavaParameter(MPSProject.class, ""));
+  public static final SMethod<Boolean> canExecute_id2QdC0h7dh1h = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canExecute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3282455643657932881L).languageId(0xb306d4d17f64c375L, 0xde1ad86d6e504a02L).build2();
+  public static final SMethod<String> getText_id5E451QuvdoB = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6522360277784909351L).languageId(0xb306d4d17f64c375L, 0xde1ad86d6e504a02L).build2();
+  public static final SMethod<String> getTextWhenBroken_idigjXyuNrou = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTextWhenBroken").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(328850564593858078L).languageId(0xb306d4d17f64c375L, 0xde1ad86d6e504a02L).build2();
+  public static final SMethod<Boolean> isBroken_id7m$hACyVN2F = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isBroken").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8476977820284694699L).languageId(0xb306d4d17f64c375L, 0xde1ad86d6e504a02L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(execute_id7oNS25df64x, canExecute_id2QdC0h7dh1h, getText_id5E451QuvdoB, getTextWhenBroken_idigjXyuNrou, isBroken_id7m$hACyVN2F);
 
@@ -45,14 +45,10 @@ public final class INodeWithReference__BehaviorDescriptor extends BaseBHDescript
 
   /*package*/ static Runnable execute_id7oNS25df64x(@NotNull SNode __thisNode__, final MPSProject project) {
     final SNodeReference targetNode = SLinkOperations.getPointer(__thisNode__, LINKS.target$CsE);
-    return new Runnable() {
-      public void run() {
-        new EditorNavigator(project).shallFocus(true).selectIfChild().open(targetNode);
-      }
-    };
+    return () -> new EditorNavigator(project).shallFocus(true).selectIfChild().open(targetNode);
   }
   /*package*/ static boolean canExecute_id2QdC0h7dh1h(@NotNull SNode __thisNode__) {
-    return !(((boolean) INodeWithReference__BehaviorDescriptor.isBroken_id7m$hACyVN2F.invoke(__thisNode__)));
+    return !((boolean) INodeWithReference__BehaviorDescriptor.isBroken_id7m$hACyVN2F.invoke(__thisNode__));
   }
   /*package*/ static String getText_id5E451QuvdoB(@NotNull SNode __thisNode__) {
     return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.target$CsE));

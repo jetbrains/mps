@@ -13,12 +13,11 @@ import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -32,6 +31,7 @@ public class AddProducer_Action extends BaseAction {
     super("Add Producer", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -40,11 +40,7 @@ public class AddProducer_Action extends BaseAction {
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
     final SNode nodeFinal = event.getData(MPSCommonDataKeys.NODE);
-    boolean exists = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(nodeFinal), CONCEPTS.RunConfigurationProducer$AW)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.configuration$H39x), LINKS.persistentConfiguration$QL_P) == nodeFinal;
-      }
-    });
+    boolean exists = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(nodeFinal), CONCEPTS.RunConfigurationProducer$AW)).any((it) -> SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.configuration$H39x), LINKS.persistentConfiguration$QL_P) == nodeFinal);
     setEnabledState(event.getPresentation(), !(exists));
     event.getPresentation().setText("Create Producer for " + SPropertyOperations.getString(nodeFinal, PROPS.name$MnvL));
   }
@@ -76,7 +72,7 @@ public class AddProducer_Action extends BaseAction {
     SLinkOperations.setTarget(SLinkOperations.setNewChild(producer, LINKS.configuration$H39x, CONCEPTS.PersistentConfigurationType$MR), LINKS.persistentConfiguration$QL_P, event.getData(MPSCommonDataKeys.NODE));
     SPropertyOperations.set(producer, PROPS.virtualPackage$EkXl, SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.virtualPackage$EkXl));
     SModelOperations.addRootNode(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)), producer);
-    NavigationSupport.getInstance().openNode(event.getData(MPSCommonDataKeys.MPS_PROJECT), producer, true, false);
+    new EditorNavigator(event.getData(MPSCommonDataKeys.MPS_PROJECT)).shallFocus(true).open(SNodeOperations.getPointer(producer));
   }
 
   private static final class CONCEPTS {

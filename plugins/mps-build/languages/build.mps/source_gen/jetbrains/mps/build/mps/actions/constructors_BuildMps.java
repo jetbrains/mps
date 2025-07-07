@@ -17,13 +17,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class constructors_BuildMps {
   public static class NodeFactory_8369506495128727676 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SPropertyOperations.assign(newNode, PROPS.compact$3xo1, true);
       SNodeFactoryOperations.setNewChild(newNode, LINKS.path$iYKB, null);
     }
   }
   public static class NodeFactory_2105528055260692130 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BuildMpsLayout_ModuleSources$rB)) {
         SLinkOperations.setTarget(newNode, LINKS.module$zG3S, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.BuildMpsLayout_ModuleSources$rB), LINKS.module$zG3S));
       }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +28,7 @@ import jetbrains.mps.generator.runtime.TemplateSwitchMapping;
 import jetbrains.mps.generator.runtime.TemplateWeavingRule;
 import jetbrains.mps.util.FlattenIterable;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
@@ -153,7 +154,8 @@ public class RuleManager {
     return rules;
   }
 
-  public FastRuleFinder getSwitchRules(SNodeReference switch_) {
+  @Nullable
+  public FastRuleFinder<TemplateReductionRule> getSwitchRules(SNodeReference switch_) {
     return myTemplateSwitchGraph.getRuleFinder(switch_);
   }
 

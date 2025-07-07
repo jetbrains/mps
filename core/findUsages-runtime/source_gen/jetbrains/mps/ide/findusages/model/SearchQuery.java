@@ -20,7 +20,7 @@ import jetbrains.mps.ide.findusages.model.holders.ModuleRefHolder;
 import jetbrains.mps.ide.findusages.CantSaveSomethingException;
 import jetbrains.mps.ide.findusages.model.scopes.FindUsagesScope;
 
-@GeneratedClass(node = "r:d98d04fb-4a60-4106-81cf-6cb40b67de4d(jetbrains.mps.ide.findusages.model)/847291649006544485", model = "r:d98d04fb-4a60-4106-81cf-6cb40b67de4d(jetbrains.mps.ide.findusages.model)")
+@GeneratedClass(nodeId = "847291649006544485", model = "r:d98d04fb-4a60-4106-81cf-6cb40b67de4d(jetbrains.mps.ide.findusages.model)")
 public class SearchQuery implements IExternalizeable {
   private static final String HOLDER = "holder";
   private static final String HOLDER_CLASS = "holder_class";

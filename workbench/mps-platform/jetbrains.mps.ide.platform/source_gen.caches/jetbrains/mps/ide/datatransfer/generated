@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-dmydycc608gyoumv23jut619zhbfpk4">
-  <files names="CopyPasteUtil.java:SModelDataFlavor.java:SNodeTransferable.java:TextPasteUtil.java" />
+<product version="3" modelHash="-3ls642skrt545y8tmm5v9jwvpx4dl9a">
+  <files names="AddRequiredImportsDialog.java:CopyPasteMagic.java:CopyPasteUtil.java:ModelImportsCheck.java:SModelDataFlavor.java:SNodeTransferable.java:TextPasteUtil.java" />
 </product>
 

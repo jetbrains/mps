@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -26,8 +25,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class FunctionMethodDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x42d79e63a78a7784L, "jetbrains.mps.baseLanguage.closures.structure.FunctionMethodDeclaration");
 
-  public static final SMethod<SNode> functionType_id2uAWGxT6YKz = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("functionType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2uAWGxT6YKz").build();
-  public static final SMethod<Boolean> canBeInterfaceMember_id2zJQqQIUx2B = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeInterfaceMember").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2zJQqQIUx2B").build();
+  public static final SMethod<SNode> functionType_id2uAWGxT6YKz = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("functionType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2857237956452412451L).languageId(0x907112563d152375L, 0xfd3920347849419dL).build2();
+  public static final SMethod<Boolean> canBeInterfaceMember_id2zJQqQIUx2B = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeInterfaceMember").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2949815620938109095L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(functionType_id2uAWGxT6YKz, canBeInterfaceMember_id2zJQqQIUx2B);
 
@@ -35,15 +34,11 @@ public final class FunctionMethodDeclaration__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static SNode functionType_id2uAWGxT6YKz(@NotNull SNode __thisNode__) {
-    List<SNode> params = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode pd) {
-        return SNodeOperations.copyNode(SLinkOperations.getTarget(pd, LINKS.type$a1UY));
-      }
-    }).toListSequence();
+    List<SNode> params = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).select((pd) -> SNodeOperations.copyNode(SLinkOperations.getTarget(pd, LINKS.type$a1UY))).toList();
     return _quotation_createNode_c7xn2w_a1a0(params, SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.returnType$5xoi)));
   }
   /*package*/ static boolean canBeInterfaceMember_id2zJQqQIUx2B(@NotNull SAbstractConcept __thisConcept__) {
-    return false;
+    return true;
   }
 
   /*package*/ FunctionMethodDeclaration__BehaviorDescriptor() {

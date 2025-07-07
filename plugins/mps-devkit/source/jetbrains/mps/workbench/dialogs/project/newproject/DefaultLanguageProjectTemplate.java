@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,30 +15,71 @@
  */
 package jetbrains.mps.workbench.dialogs.project.newproject;
 
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.startup.StartupManager;
+import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.icons.MPSIcons.Nodes;
-import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
-import jetbrains.mps.ide.ui.dialogs.modules.NewLanguageSettings;
-import jetbrains.mps.project.MPSExtentions;
-import jetbrains.mps.project.Solution;
-import jetbrains.mps.smodel.Generator;
-import jetbrains.mps.smodel.Language;
-import jetbrains.mps.smodel.ModuleDependencyVersions;
-import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.ide.ui.dialogs.modules.NameLocationPanel;
+import jetbrains.mps.project.modules.LanguageAndSolutionsProducer;
+import jetbrains.mps.project.modules.NewModuleCheck;
+import jetbrains.mps.util.IStatus;
 import jetbrains.mps.workbench.DocumentationHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.Icon;
+import javax.swing.JCheckBox;
 import javax.swing.JComponent;
-import java.io.IOException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 
 public class DefaultLanguageProjectTemplate implements LanguageProjectTemplate {
 
-  private final NewLanguageSettings myLanguageSettings = new NewLanguageSettings();
+  private final NameLocationPanel mySettings;
+  private final JCheckBox myRuntimeSolution;
+  private final JCheckBox mySandboxSolution;
+  private final JCheckBox myGenerator;
 
   public DefaultLanguageProjectTemplate() {
-    myLanguageSettings.setListener(this::fireSettingsChanged);
+    myRuntimeSolution = new JCheckBox("Create Runtime Solution");
+    myRuntimeSolution.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent actionEvent) {
+        fireSettingsChanged();
+      }
+    });
+    mySandboxSolution = new JCheckBox("Create Sandbox Solution");
+    mySandboxSolution.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent actionEvent) {
+        fireSettingsChanged();
+      }
+    });
+    myGenerator = new JCheckBox("Create Generator (as part of the language)");
+    myGenerator.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent actionEvent) {
+        fireSettingsChanged();
+      }
+    });
+    mySettings = new NameLocationPanel(new File("."), "Language name:", "Language file location:") {
+      {
+        // logic derived from NewLanguageSettings, see NewLanguage_Action for further considerations.
+        add(myRuntimeSolution, 4, 0.0);
+        add(mySandboxSolution, 5, 0.0);
+        add(myGenerator, 6, 0.0);
+      }
+      @Override
+      public void reset() {
+        super.reset();
+        myRuntimeSolution.setSelected(false);
+        mySandboxSolution.setSelected(false);
+        myGenerator.setSelected(true);
+      }
+    };
+    mySettings.withDefaults("NewLanguage", "languages");
+    mySettings.onChange(this::fireSettingsChanged);
   }
 
   @Nullable
@@ -58,53 +99,61 @@ public class DefaultLanguageProjectTemplate implements LanguageProjectTemplate {
   public String getDescription() {
     return "In MPS, you create new languages and then use them to write code " +
            "in solutions. An <a href=\"" + DocumentationHelper.getHelpCenterBase() +
-           "MPS+project+structure#MPSprojectstructure-languages\">MPS language</a> describes the syntax, editor, generator and other aspects of the " +
+           "mps-project-structure.html#languages\">MPS language</a> describes the syntax, editor, generator and other aspects of the " +
            "new language.";
   }
 
   @Nullable
   @Override
   public JComponent getSettings() {
-    myLanguageSettings.reset();
-    return myLanguageSettings;
+    mySettings.reset();
+    return mySettings;
   }
 
 
   @NotNull
   @Override
   public TemplateFiller getTemplateFiller() {
-    return project -> StartupManager.getInstance(project.getProject()).registerPostStartupActivity(() -> project.getModelAccess().executeCommand(() -> {
-      Language language = NewModuleUtil.createLanguage(myLanguageSettings.getModuleName(), myLanguageSettings.getModuleLocation(),
-                                                       project);
+    return project -> StartupManager.getInstance(project.getProject()).runAfterOpened(() -> project.getModelAccess().executeCommandInEDT(() -> {
+      final LanguageAndSolutionsProducer lp = new LanguageAndSolutionsProducer(project);
+      lp.withRuntimeSolution(myRuntimeSolution.isSelected()).withSandboxSolution(mySandboxSolution.isSelected()).withGenerator(myGenerator.isSelected());
       try {
-        if (myLanguageSettings.isRuntimeSolutionNeeded()) {
-          Solution runtimeSolution = NewModuleUtil.createRuntimeSolution(language, myLanguageSettings.getModuleLocation(), project);
-          language.getModuleDescriptor().getRuntimeModules().add(runtimeSolution.getModuleReference());
-          final ModuleDependencyVersions mv = new ModuleDependencyVersions(project.getComponent(LanguageRegistry.class), project.getRepository());
-          mv.update(language);
-          // XXX again, do I care to update standalone generators, see NewLanguageDialog
-          for (Generator gen : language.getGenerators()) {
-            mv.update(gen);
-          }
-          language.save();
-        }
-        if (myLanguageSettings.isSandBoxSolutionNeeded()) {
-          NewModuleUtil.createSandboxSolution(language, myLanguageSettings.getModuleLocation(), project);
-        }
-      } catch (IOException e) {
-        // todo: !
+        lp.create(mySettings.getModuleName(), project.getFileSystem().getFile(mySettings.getModuleLocation()));
+      } catch (IllegalStateException | IllegalArgumentException e) {
+        // This is really just a fallback check if the producer raises an exception despite all the checks made by NewModuleUtil.check()
+        final String message = e.getMessage() != null ? e.getMessage() : "No message was provided by exception";
+        ApplicationManager.getApplication().invokeLater(() -> Messages.showErrorDialog(message, "Project Creation Failed"));
+        throw e;
       }
     }));
   }
 
   @Override
   public void setProjectPath(String projectPath) {
-    myLanguageSettings.setProjectPath(projectPath);
+    mySettings.withProjectPath(new File(projectPath));
   }
 
   @Nullable
   @Override
   public String checkSettings() {
-    return NewModuleUtil.check(null, MPSExtentions.DOT_LANGUAGE, myLanguageSettings.getModuleName(), myLanguageSettings.getModuleLocation());
+    final IStatus s = new NewModuleCheck().forLanguage().withName(mySettings.getModuleName()).withHome(mySettings.getModuleLocation()).checkAll();
+    if (s.isError()) {
+      return s.getMessage();
+    }
+    if (myRuntimeSolution.isSelected()) {
+      final File moduleLocation = new File(mySettings.getModuleLocation().getAbsolutePath() + ".runtime");
+      final IStatus status = new NewModuleCheck().forSolution().withName(mySettings.getModuleName() + ".runtime").withHome(moduleLocation).checkAll();
+      if (status.isError()) {
+        return status.getMessage();
+      }
+    }
+    if (mySandboxSolution.isSelected()) {
+      final File moduleLocation = new File(mySettings.getModuleLocation().getAbsolutePath() + ".sandbox");
+      final IStatus status = new NewModuleCheck().forSolution().withName(mySettings.getModuleName() + ".sandbox").withHome(moduleLocation).checkAll();
+      if (status.isError()) {
+        return status.getMessage();
+      }
+    }
+    return s.getMessage();
   }
 }

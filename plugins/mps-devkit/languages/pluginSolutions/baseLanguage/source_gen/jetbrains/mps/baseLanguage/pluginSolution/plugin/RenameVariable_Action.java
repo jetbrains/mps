@@ -21,7 +21,6 @@ import com.intellij.featureStatistics.FeatureUsageTracker;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -90,11 +89,7 @@ public class RenameVariable_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("refactoring.rename");
     ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
-    final Tuples._2<SNode, String> result = new ModelAccessHelper(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getEditorContext().getRepository()).runReadAction(new Computable<Tuples._2<SNode, String>>() {
-      public Tuples._2<SNode, String> compute() {
-        return MultiTuple.<SNode,String>from(SLinkOperations.getTarget(((SNode) MapSequence.fromMap(_params).get("node")), LINKS.variableDeclaration$N1XG), SPropertyOperations.getString(SLinkOperations.getTarget(((SNode) MapSequence.fromMap(_params).get("node")), LINKS.variableDeclaration$N1XG), PROPS.name$MnvL));
-      }
-    });
+    final Tuples._2<SNode, String> result = new ModelAccessHelper(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getEditorContext().getRepository()).runReadAction(() -> MultiTuple.<SNode,String>from(SLinkOperations.getTarget(((SNode) MapSequence.fromMap(_params).get("node")), LINKS.variableDeclaration$N1XG), SPropertyOperations.getString(SLinkOperations.getTarget(((SNode) MapSequence.fromMap(_params).get("node")), LINKS.variableDeclaration$N1XG), PROPS.name$MnvL)));
     final String newName = RenameDialog.getNewName(((MPSProject) MapSequence.fromMap(_params).get("project")).getProject(), result._1(), "Variable");
     if (newName == null) {
       return;

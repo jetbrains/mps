@@ -18,12 +18,15 @@ import java.text.MessageFormat;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.errors.BaseQuickFixProvider;
 import jetbrains.mps.baseLanguage.search.VisibilityUtil;
-import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import org.jetbrains.mps.openapi.language.SProperty;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.typechecking.TypecheckingFacade;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 /*package*/ final class ClassifierMethodsHierarchyChecker {
@@ -54,7 +57,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
   private void checkNotImplementedAbstractMethods(@Mutable List<ErrorReportingItem> errors) {
     if (!(abstractMethodsWithoutImplementationsAreAllowed())) {
-      final SNode abstractMethod = myCallback.firstAbstractMethodWithoutImplementation();
+      final InstanceMethod abstractMethod = myCallback.firstAbstractMethodWithoutImplementation();
       if (abstractMethod != null) {
         if (SNodeOperations.isInstanceOf(myClassifier, CONCEPTS.AnonymousClass$Bt)) {
           ListSequence.fromList(errors).addElement(new ErrorReportingItem() {
@@ -64,7 +67,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
               String msg = "The anonymous class must implement abstract method ''{0}'' in ''{1}''";
               {
                 final MessageTarget errorTarget = new NodeMessageTarget();
-                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(myNodeToReport, MessageFormat.format(msg, SPropertyOperations.getString(abstractMethod, PROPS.name$MnvL), SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(abstractMethod), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL)), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "824450455578865184", null, errorTarget);
+                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(myNodeToReport, MessageFormat.format(msg, abstractMethod.getSignature().getName(), SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(abstractMethod.getOrigin()), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL)), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "824450455578865184", null, errorTarget);
               }
             }
           });
@@ -76,7 +79,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
               String msg = "The classifier ''{0}'' must be declared abstract or implement abstract method ''{1}'' in ''{2}''";
               {
                 final MessageTarget errorTarget = new NodeMessageTarget();
-                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(myNodeToReport, MessageFormat.format(msg, SPropertyOperations.getString(SNodeOperations.cast(myNodeToReport, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL), SPropertyOperations.getString(abstractMethod, PROPS.name$MnvL), SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(abstractMethod), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL)), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7861981782410371482", null, errorTarget);
+                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(myNodeToReport, MessageFormat.format(msg, SPropertyOperations.getString(SNodeOperations.cast(myNodeToReport, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL), abstractMethod.getSignature().getName(), SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(abstractMethod.getOrigin()), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL)), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7861981782410371482", null, errorTarget);
                 {
                   BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MakeClassAbstract_QuickFix", "7861981782410371509", false);
                   _reporter_2309309498.addIntentionProvider(intentionProvider);
@@ -90,15 +93,20 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   }
 
   private void checkCorrespondenceToBaseMethodProblems(@Mutable List<ErrorReportingItem> errors) {
-    List<SNode> myOverridingMethods = myCallback.getMyOverridingMethods();
-    for (SNode method : ListSequence.fromList(myOverridingMethods)) {
-      List<SNode> baseMethods = myCallback.getBaseMethods(method);
-      for (SNode baseMethod : ListSequence.fromList(baseMethods)) {
+    List<InstanceMethod> myOverridingMethods = myCallback.getMyOverridingMethods();
+    for (InstanceMethod method : ListSequence.fromList(myOverridingMethods)) {
+      List<InstanceMethod> baseMethods = myCallback.getBaseMethods(method);
+      for (InstanceMethod baseMethod : ListSequence.fromList(baseMethods)) {
         ErrorReportingItem rv = checkVisibility(method, baseMethod);
         if (rv != null) {
           ListSequence.fromList(errors).addElement(rv);
         }
         rv = checkOverridingFinal(method, baseMethod);
+        if (rv != null) {
+          ListSequence.fromList(errors).addElement(rv);
+        }
+
+        rv = checkCompatibleReturnType(method, baseMethod);
         if (rv != null) {
           ListSequence.fromList(errors).addElement(rv);
         }
@@ -110,15 +118,55 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     return VisibilityUtil.packageName(classifier).equals(VisibilityUtil.packageName(superClassifier));
   }
 
+  private ErrorReportingItem checkCompatibleReturnType(final InstanceMethod method, final InstanceMethod baseMethod) {
+    SNode baseContainer = SNodeOperations.cast(SNodeOperations.getParent(baseMethod.getOrigin()), CONCEPTS.Classifier$Ix);
+    SNode overridingMethodParent = SNodeOperations.getParent(method.getOrigin());
+    SNode resolvedReturnType;
+    if (SNodeOperations.isInstanceOf(overridingMethodParent, CONCEPTS.Classifier$Ix)) {
+      resolvedReturnType = Classifier__BehaviorDescriptor.getWithResolvedTypeVars_id5DGRLTWx81d.invoke(SNodeOperations.cast(overridingMethodParent, CONCEPTS.Classifier$Ix), baseMethod.getReturnType(), baseContainer, method.getTypeVariables(), baseMethod.getTypeVariables());
+    } else if (SNodeOperations.isInstanceOf(overridingMethodParent, CONCEPTS.EnumConstantDeclaration$MW)) {
+      SNode enumClass = SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.cast(overridingMethodParent, CONCEPTS.EnumConstantDeclaration$MW)), CONCEPTS.EnumClass$Vk);
+      SNode dummy = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass"));
+      SLinkOperations.setTarget(dummy, LINKS.classifier$q_Y$, enumClass);
+      resolvedReturnType = Classifier__BehaviorDescriptor.getWithResolvedTypeVars_id5DGRLTWx81d.invoke(dummy, baseMethod.getReturnType(), baseContainer, method.getTypeVariables(), baseMethod.getTypeVariables());
+    } else {
+      return new ErrorReportingItem() {
+        @Override
+        @CheckingMethod
+        public void report(final TypeCheckingContext typeCheckingContext) {
+          {
+            final MessageTarget errorTarget = new NodeMessageTarget();
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(method.getOrigin(), "This node is not supposed to override methods", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6515828082931788074", null, errorTarget);
+          }
+        }
+      };
+    }
+
+    if (!(TypecheckingFacade.getFromContext().isSubtype(method.getReturnType(), resolvedReturnType))) {
+      return new ErrorReportingItem() {
+        @Override
+        @CheckingMethod
+        public void report(final TypeCheckingContext typeCheckingContext) {
+          {
+            final MessageTarget errorTarget = new NodeMessageTarget();
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError((method.getReturnType() != null ? method.getReturnType() : method.getOrigin()), "The method " + fullName(method) + " return type is incompatible with the base method ", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6115392061221562427", null, errorTarget);
+          }
+        }
+      };
+    }
+
+    return null;
+  }
+
   @Nullable
-  private ErrorReportingItem checkOverridingFinal(final SNode method, final SNode baseMethod) {
+  private ErrorReportingItem checkOverridingFinal(final InstanceMethod method, final InstanceMethod baseMethod) {
     ErrorReportingItem item = new ErrorReportingItem() {
       @Override
       @CheckingMethod
       public void report(final TypeCheckingContext typeCheckingContext) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(method, "The method '" + fullName(method) + "' cannot override the final method '" + fullName(baseMethod) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3950519302592864485", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(method.getOrigin(), "The method '" + fullName(method) + "' cannot override the final method '" + fullName(baseMethod) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3950519302592864485", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MatchVisibility_QuickFix", "3950519302592872394", false);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
@@ -126,20 +174,20 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
         }
       }
     };
-    if (SPropertyOperations.getBoolean(baseMethod, PROPS.isFinal$eVPk)) {
+    if (baseMethod.isFinalMethod()) {
       return item;
     }
     return null;
   }
 
-  private static String fullName(SNode method) {
-    return SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(method), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL) + ":" + SPropertyOperations.getString(method, PROPS.name$MnvL);
+  private static String fullName(InstanceMethod method) {
+    return SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(method.getOrigin()), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL) + ":" + method.getSignature().getName();
   }
 
   @Nullable
-  private ErrorReportingItem checkVisibility(final SNode method, SNode baseMethod) {
-    final SNode visibility = SLinkOperations.getTarget(method, LINKS.visibility$Yyua);
-    final SNode baseVisibility = SLinkOperations.getTarget(baseMethod, LINKS.visibility$Yyua);
+  private ErrorReportingItem checkVisibility(final InstanceMethod method, InstanceMethod baseMethod) {
+    final SNode visibility = method.getVisibility();
+    final SNode baseVisibility = baseMethod.getVisibility();
     if (SNodeOperations.isInstanceOf(visibility, CONCEPTS.PublicVisibility$R0)) {
       return null;
     }
@@ -153,7 +201,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       public void report(final TypeCheckingContext typeCheckingContext) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(method, "Trying to assign weaker privileges for the method '" + SPropertyOperations.getString(method, PROPS.name$MnvL) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3950519302595116711", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(method.getOrigin(), "Trying to assign weaker privileges for the method '" + method.getSignature().getName() + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3950519302595116711", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MatchVisibility_QuickFix", "3950519302595116714", false);
             intentionProvider.putArgument("visibility", baseVisibility);
@@ -169,7 +217,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       return item;
     }
     if (visibility == null && baseVisibility == null) {
-      if (!(ClassifierMethodsHierarchyChecker.packagesAreTheSame(SNodeOperations.cast(SNodeOperations.getParent(method), CONCEPTS.Classifier$Ix), SNodeOperations.cast(SNodeOperations.getParent(baseMethod), CONCEPTS.Classifier$Ix)))) {
+      if (!(ClassifierMethodsHierarchyChecker.packagesAreTheSame(SNodeOperations.cast(SNodeOperations.getParent(method.getOrigin()), CONCEPTS.Classifier$Ix), SNodeOperations.cast(SNodeOperations.getParent(baseMethod.getOrigin()), CONCEPTS.Classifier$Ix)))) {
         return item;
       }
     }
@@ -184,25 +232,25 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     return (SNodeOperations.isInstanceOf(myClassifier, CONCEPTS.Interface$db) || (SNodeOperations.isInstanceOf(myClassifier, CONCEPTS.ClassConcept$bK) && SPropertyOperations.getBoolean(SNodeOperations.cast(myClassifier, CONCEPTS.ClassConcept$bK), PROPS.abstractClass$Ta1X)));
   }
 
-  private static final class PROPS {
-    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isFinal$eVPk = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
-    /*package*/ static final SProperty abstractClass$Ta1X = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
-  }
-
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
     /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept EnumConstantDeclaration$MW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration");
+    /*package*/ static final SConcept EnumClass$Vk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
     /*package*/ static final SConcept PublicVisibility$R0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility");
     /*package*/ static final SConcept ProtectedVisibility$hr = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af958b686L, "jetbrains.mps.baseLanguage.structure.ProtectedVisibility");
-    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept EnumClass$Vk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
     /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
     /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
+  private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty abstractClass$Ta1X = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
+  }
+
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SReferenceLink classifier$q_Y$ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
     /*package*/ static final SContainmentLink enumConstant$qtgW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant");
   }
 }

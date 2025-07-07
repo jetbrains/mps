@@ -16,7 +16,7 @@
 
 package jetbrains.mps.jps.j8compatibility;
 
-import com.intellij.openapi.util.SystemInfo;
+import com.intellij.util.lang.JavaVersion;
 import jetbrains.mps.jps.model.JpsMPSExtensionService;
 import jetbrains.mps.jps.model.JpsMPSModuleExtension;
 import jetbrains.mps.jps.model.impl.JpsMPSExtensionServiceImpl;
@@ -30,7 +30,7 @@ public class J8JpsMPSExtensionServiceImpl implements JpsMPSExtensionService {
   @Nullable
   @Override
   public JpsMPSModuleExtension getExtension(@Nullable JpsModule module) {
-    if (!SystemInfo.isJavaVersionAtLeast(11)) {
+    if (!JavaVersion.current().isAtLeast(11)) {
       return null;
     }
 
@@ -44,7 +44,7 @@ public class J8JpsMPSExtensionServiceImpl implements JpsMPSExtensionService {
 
   @Override
   public void setExtension(@NotNull JpsModule module, @NotNull JpsMPSModuleExtension extension) {
-    if (!SystemInfo.isJavaVersionAtLeast(11)) {
+    if (!JavaVersion.current().isAtLeast(11)) {
       return;
     }
 

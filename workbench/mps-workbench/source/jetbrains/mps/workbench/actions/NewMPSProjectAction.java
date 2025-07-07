@@ -15,13 +15,18 @@
  */
 package jetbrains.mps.workbench.actions;
 
+import com.intellij.icons.AllIcons.General;
+import com.intellij.openapi.actionSystem.ActionPlaces;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.impl.welcomeScreen.NewWelcomeScreen;
+import com.intellij.ui.ExperimentalUI;
 import jetbrains.mps.workbench.action.BaseAction;
 import jetbrains.mps.workbench.dialogs.project.newproject.CreateProjectWizard;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
@@ -33,9 +38,21 @@ public class NewMPSProjectAction extends BaseAction implements DumbAware {
   }
 
   @Override
+  public @NotNull ActionUpdateThread getActionUpdateThread() {
+    return ActionUpdateThread.BGT;
+  }
+
+  @Override
   protected void doUpdate(AnActionEvent e, Map<String, Object> _params) {
     super.doUpdate(e, _params);
-    NewWelcomeScreen.updateNewProjectIconIfWelcomeScreen(e);
+    if (NewWelcomeScreen.isNewWelcomeScreen(e)) {
+      NewWelcomeScreen.updateNewProjectIconIfWelcomeScreen(e);
+    }
+    else if (ExperimentalUI.isNewUI() && ActionPlaces.PROJECT_WIDGET_POPUP.equals(e.getPlace())) {
+      //TODO (MPS-35169) Enable when the platform gets updated
+      //e.getPresentation().setIcon(ExpUiIcons.General.Add);
+      e.getPresentation().setIcon(General.Add);
+    }
   }
 
   @Override

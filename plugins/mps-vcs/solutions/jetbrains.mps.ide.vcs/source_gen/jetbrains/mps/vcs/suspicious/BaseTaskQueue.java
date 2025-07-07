@@ -21,7 +21,7 @@ import java.util.List;
  * 
  * @param <T> something one can queue and process in batch.
  */
-@GeneratedClass(node = "r:e74490a1-7013-47e5-9f40-14c310c80a86(jetbrains.mps.vcs.suspicious)/4707157387247635635", model = "r:e74490a1-7013-47e5-9f40-14c310c80a86(jetbrains.mps.vcs.suspicious)")
+@GeneratedClass(nodeId = "4707157387247635635", model = "r:e74490a1-7013-47e5-9f40-14c310c80a86(jetbrains.mps.vcs.suspicious)")
 /*package*/ abstract class BaseTaskQueue<T> {
   private final LinkedBlockingQueue<T> myTasks = new LinkedBlockingQueue<T>();
   private final Semaphore myProcessingSemaphore = new Semaphore(1);
@@ -38,11 +38,7 @@ import java.util.List;
     }
     //  Don't want a distinct thread sleeping and waiting for tasks to come, that's why got a timer
     // note, IDEA's scheduler doesn't support scheduleAtFixedRate().
-    myTimerTask = myScheduler.scheduleWithFixedDelay(new Runnable() {
-      public void run() {
-        scheduleProcessing();
-      }
-    }, period, period, unit);
+    myTimerTask = myScheduler.scheduleWithFixedDelay(() -> scheduleProcessing(), period, period, unit);
   }
 
   /**
@@ -63,11 +59,9 @@ import java.util.List;
     // we don't care to wait until processing starts. If there's one already scheduled, just let it complete, either it would
     // pick newly added tasks (if not started yet), or would process tasks at the next timer tick, if already running
     if (myProcessingSemaphore.tryAcquire()) {
-      myScheduler.execute(new Runnable() {
-        public void run() {
-          process();
-          myProcessingSemaphore.release();
-        }
+      myScheduler.execute(() -> {
+        process();
+        myProcessingSemaphore.release();
       });
     }
   }

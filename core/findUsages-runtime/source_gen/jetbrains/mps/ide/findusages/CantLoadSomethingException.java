@@ -4,7 +4,7 @@ package jetbrains.mps.ide.findusages;
 
 import jetbrains.mps.annotations.GeneratedClass;
 
-@GeneratedClass(node = "r:78f1dc30-d9c6-41ba-bc9c-1e73f8bda079(jetbrains.mps.ide.findusages)/8568892084424439064", model = "r:78f1dc30-d9c6-41ba-bc9c-1e73f8bda079(jetbrains.mps.ide.findusages)")
+@GeneratedClass(nodeId = "8568892084424439064", model = "r:78f1dc30-d9c6-41ba-bc9c-1e73f8bda079(jetbrains.mps.ide.findusages)")
 public class CantLoadSomethingException extends Exception {
   public CantLoadSomethingException() {
   }

@@ -15,9 +15,11 @@ import jetbrains.mps.util.PathManager;
 import jetbrains.mps.util.FileUtil;
 import javax.swing.JOptionPane;
 import java.io.IOException;
+import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.util.SystemInfo;
+import java.nio.file.Path;
 import com.intellij.openapi.vfs.VirtualFile;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import com.intellij.openapi.vfs.LocalFileSystem;
 import java.util.regex.Pattern;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -27,7 +29,7 @@ import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.fileChooser.FileChooserDialog;
 import com.intellij.openapi.fileChooser.FileChooserFactory;
 
-@GeneratedClass(node = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)/2191995028863072592", model = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)")
+@GeneratedClass(nodeId = "2191995028863072592", model = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)")
 public class InstallIDEAPlugin_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -35,6 +37,7 @@ public class InstallIDEAPlugin_Action extends BaseAction {
     super("Install IntelliJ IDEA Plugin", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -70,22 +73,30 @@ public class InstallIDEAPlugin_Action extends BaseAction {
       JOptionPane.showMessageDialog(event.getData(MPSCommonDataKeys.FRAME), "Failed to install plugin : " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
   }
+  @Nullable
   private File getTargetDir(final AnActionEvent event) {
     File targetIdeaInstallDir = InstallIDEAPlugin_Action.this.getTargetIdeaInstallDir(event);
     if (targetIdeaInstallDir == null) {
       return null;
     }
+    // XXX shouldn't it be installDir + "plugins" on Mac?
     if (SystemInfo.isMac) {
       return targetIdeaInstallDir;
     }
     return new File(targetIdeaInstallDir, "config" + File.separator + "plugins");
   }
+  @Nullable
   private File getTargetIdeaInstallDir(final AnActionEvent event) {
     boolean isMac = SystemInfo.isMac;
     String userHome = System.getProperty("user.home");
-    String ideaConfigRootPath = (isMac ? userHome + File.separator + "Library" + File.separator + "Application Support" : userHome);
-    final VirtualFile ideaConfigRoot = VirtualFileUtils.getVirtualFile(ideaConfigRootPath);
-    final Pattern namePattern = (isMac ? REGEXP_gyxeh4_a0a4a7_0 : REGEXP_gyxeh4_a0a4a7);
+    Path ideaConfigRootPath;
+    if (isMac) {
+      ideaConfigRootPath = Path.of(userHome, "Library", "Application Support", "JetBrains");
+    } else {
+      ideaConfigRootPath = Path.of(userHome);
+    }
+    final VirtualFile ideaConfigRoot = LocalFileSystem.getInstance().findFileByNioFile(ideaConfigRootPath);
+    final Pattern namePattern = (isMac ? REGEXP1 : REGEXP);
     List<VirtualFile> existingIdeaConfigs = ListSequence.fromList(new ArrayList<VirtualFile>());
     for (VirtualFile child : ideaConfigRoot.getChildren()) {
       if (child.isDirectory()) {
@@ -98,7 +109,7 @@ public class InstallIDEAPlugin_Action extends BaseAction {
       JOptionPane.showMessageDialog(event.getData(MPSCommonDataKeys.FRAME), "IntelliJ IDEA installation was not found", "Cannot install plugin", JOptionPane.ERROR_MESSAGE);
       return null;
     } else if (ListSequence.fromList(existingIdeaConfigs).count() == 1) {
-      return VirtualFileUtils.toFile(ListSequence.fromList(existingIdeaConfigs).first());
+      return new File(ListSequence.fromList(existingIdeaConfigs).first().getPath());
     }
 
     FileChooserDescriptor descriptor = new FileChooserDescriptor(false, true, false, false, false, false) {
@@ -116,11 +127,11 @@ public class InstallIDEAPlugin_Action extends BaseAction {
     String oldShowHiddenValue = PropertiesComponent.getInstance().getValue("FileChooser.showHiddens");
     PropertiesComponent.getInstance().setValue("FileChooser.showHiddens", Boolean.TRUE.toString());
     FileChooserDialog dialog = FileChooserFactory.getInstance().createFileChooser(descriptor, null, event.getData(MPSCommonDataKeys.FRAME));
-    VirtualFile[] files = dialog.choose(ideaConfigRoot, null);
+    VirtualFile[] files = dialog.choose(null, ideaConfigRoot);
     PropertiesComponent.getInstance().setValue("FileChooser.showHiddens", oldShowHiddenValue);
     assert files.length <= 1;
-    return (files.length == 0 ? null : VirtualFileUtils.toFile(files[0]));
+    return (files.length == 0 ? null : new File(files[0].getPath()));
   }
-  private static final Pattern REGEXP_gyxeh4_a0a4a7 = Pattern.compile("(?:\\.IntelliJIdea.*)|(?:\\.IdeaIC.*)", 0);
-  private static final Pattern REGEXP_gyxeh4_a0a4a7_0 = Pattern.compile("(?:IntelliJIdea.*)|(?:IdeaIC.*)", 0);
+  private static final Pattern REGEXP = Pattern.compile("(?:\\.IntelliJIdea.*)|(?:\\.IdeaIC.*)", 0);
+  private static final Pattern REGEXP1 = Pattern.compile("(?:IntelliJIdea.*)|(?:IdeaIC.*)", 0);
 }

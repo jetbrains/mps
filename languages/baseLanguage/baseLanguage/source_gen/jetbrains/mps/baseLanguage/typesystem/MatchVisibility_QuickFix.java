@@ -7,7 +7,7 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
@@ -19,11 +19,11 @@ public class MatchVisibility_QuickFix extends QuickFix_Runtime {
     return "Set visibility to " + (((((SNode) MatchVisibility_QuickFix.this.getField("visibility")[0]) == null) ? "Package-local" : ((SNode) MatchVisibility_QuickFix.this.getField("visibility")[0])));
   }
   public void execute(SNode node) {
-    SLinkOperations.setTarget(SNodeOperations.cast(node, CONCEPTS.InstanceMethodDeclaration$39), LINKS.visibility$Yyua, SNodeOperations.copyNode(((SNode) MatchVisibility_QuickFix.this.getField("visibility")[0])));
+    SLinkOperations.setTarget(SNodeOperations.cast(node, CONCEPTS.IVisible$zu), LINKS.visibility$Yyua, SNodeOperations.copyNode(((SNode) MatchVisibility_QuickFix.this.getField("visibility")[0])));
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SInterfaceConcept IVisible$zu = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible");
   }
 
   private static final class LINKS {

@@ -19,10 +19,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.persistence.lines.ReferenceLineContent;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
-@GeneratedClass(node = "r:3e2c3b97-24cc-4bee-9343-0bf0b2be88e3(jetbrains.mps.smodel.persistence.def)/8837498651724313880", model = "r:3e2c3b97-24cc-4bee-9343-0bf0b2be88e3(jetbrains.mps.smodel.persistence.def)")
+@GeneratedClass(nodeId = "8837498651724313880", model = "r:3e2c3b97-24cc-4bee-9343-0bf0b2be88e3(jetbrains.mps.smodel.persistence.def)")
 public final class LineContentAccumulator {
   private List<LineContent> myLineToContentMap = ListSequence.fromList(new ArrayList<LineContent>());
-  private Deque<SNodeId> myNodeIdStack = DequeSequence.fromDequeNew(new LinkedList<SNodeId>());
+  private Deque<SNodeId> myNodeIdStack = DequeSequence.fromDeque(new LinkedList<SNodeId>());
   private final Locator myLocator;
   private final boolean myWithPropertyValue;
   private final boolean myWithAssociationTarget;

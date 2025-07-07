@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,12 +41,6 @@ import org.junit.runners.model.RunnerBuilder;
     jetbrains.mps.util.MacrosTest.class,
     jetbrains.mps.vfs.path.NonArchivePathTest.class,
     jetbrains.mps.vfs.path.FilePathTest.class,
-    jetbrains.mps.dataFlow.lang.InitializedVariablesAnalysisTest.class,
-    jetbrains.mps.dataFlow.lang.LivenessAnalysisTest.class,
-    jetbrains.mps.dataFlow.lang.ProgramTest.class,
-    jetbrains.mps.dataFlow.lang.ReachabilityAnaysisTest.class,
-    jetbrains.mps.dataFlow.lang.ReachingDefinitionsTest.class,
-    jetbrains.mps.dataFlow.lang.StructuralProgramBuilderTest.class,
     jetbrains.mps.aspects.InOrderSorterTest.class,
     jetbrains.mps.compile.EclipseJavaCompilerTest.class,
     jetbrains.mps.classloading.ModuleClassLoaderTest.class,
@@ -56,7 +50,6 @@ import org.junit.runners.model.RunnerBuilder;
     jetbrains.mps.classloading.ModulesReloadTestStress.class,
     jetbrains.mps.ide.messages.MessageViewListModelTest.class,
     jetbrains.mps.lang.pattern.NodeMatcherTest.class,
-    jetbrains.mps.ide.depanalyzer.ModuleDependenciesTest.class,
     jetbrains.mps.make.TestMakeOnRealProject.class,
     jetbrains.mps.make.dependencies.FindStronglyConnectedComponentsTestCase.class,
     jetbrains.mps.make.dependencies.GraphTestCase.class,
@@ -68,6 +61,7 @@ import org.junit.runners.model.RunnerBuilder;
     jetbrains.mps.smodel.ModelListenerTest.class,
     jetbrains.mps.smodel.ModelChangeListenerTest.class,
     jetbrains.mps.smodel.ModelUndoTest.class,
+    jetbrains.mps.smodel.ModelAccessTest.class,
     jetbrains.mps.persistence.PersistenceUtilTest.class,
     jetbrains.mps.generator.impl.plan.TemplateModelScanTest.class,
     jetbrains.mps.generator.test.VariableNameSourceTest.class,
@@ -86,7 +80,7 @@ public class CoreTestSuite extends OutputWatchingTestSuite {
 
   // creating the environment for the first time
   static {
-    ourEnvironment = new MpsEnvironment(EnvironmentConfig.defaultConfig().withTestModeOn());
+    ourEnvironment = new MpsEnvironment(EnvironmentConfig.defaultConfig().withKotlinPlugin().withTestModeOn());
     ourEnvironment.init();
   }
 

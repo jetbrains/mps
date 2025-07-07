@@ -10,43 +10,30 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class TrimConstantCell_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public TrimConstantCell_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c8959029b(jetbrains.mps.lang.editor.intentions)", "1224530037892"));
   }
+
   @Override
   public String getPresentation() {
     return "TrimConstantCell";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    String text = SPropertyOperations.getString(node, PROPS.text$PIv7);
-    if (text == null || text.length() == 0) {
-      return false;
-    }
-    if (text.charAt(0) == ' ' || text.charAt(text.length() - 1) == ' ') {
-      return true;
-    }
-    return false;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -56,18 +43,42 @@ public final class TrimConstantCell_Intention extends AbstractIntentionDescripto
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Trim Constant Cell";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SPropertyOperations.set(node, PROPS.text$PIv7, SPropertyOperations.getString(node, PROPS.text$PIv7).trim());
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      String text = SPropertyOperations.getString(node, PROPS.text$PIv7);
+      if (text == null || text.length() == 0) {
+        return false;
+      }
+      if (text.charAt(0) == ' ' || text.charAt(text.length() - 1) == ' ') {
+        return true;
+      }
+      return false;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return TrimConstantCell_Intention.this;
     }
+
   }
 
   private static final class PROPS {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,6 +39,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+@Deprecated(forRemoval = true)
 public abstract class SNodeTreeUpdater<T extends MPSTreeNode> {
   protected final Project myProject;
   protected T myTreeNode;
@@ -69,7 +70,7 @@ public abstract class SNodeTreeUpdater<T extends MPSTreeNode> {
 
   public void addAndRemoveVisibleChildren(Set<SNode> removedNodes, Set<SNode> addedNodes) {
     if (getTree() == null) return;
-    DefaultTreeModel treeModel = getTree().getModel();
+    DefaultTreeModel treeModel = getTree().getDFTreeModel();
     for (SNode removed : removedNodes) {
       SNodeTreeNode node = (SNodeTreeNode) myTreeNode.findDescendantWith(removed.getNodeId().toString());
       if (node == null) continue;
@@ -93,18 +94,18 @@ public abstract class SNodeTreeUpdater<T extends MPSTreeNode> {
         SNodeTreeNode childNode = (SNodeTreeNode) child;
         int index = IterableUtil.asList(parentNode.getChildren()).indexOf(childNode.getSNode());
         if (index <= indexof) continue;
-        SNodeTreeNode newTreeNode = new SNodeTreeNode(added, added.getRoleInParent());
+        SNodeTreeNode newTreeNode = new SNodeTreeNode(added, added.getContainmentLink().getName());
         treeModel.insertNodeInto(newTreeNode,
           parent, treeModel.getIndexOfChild(parent, childNode));
         continue outer;
       }
-      treeModel.insertNodeInto(new SNodeTreeNode(added, added.getRoleInParent()), parent, parent.getChildCount());
+      treeModel.insertNodeInto(new SNodeTreeNode(added, added.getContainmentLink().getName()), parent, parent.getChildCount());
     }
   }
 
   public void updateChangedPresentations(Set<SNode> nodesWithChangedPresentations) {
     if (getTree() == null) return;
-    DefaultTreeModel treeModel = getTree().getModel();
+    DefaultTreeModel treeModel = getTree().getDFTreeModel();
     for (SNode node : nodesWithChangedPresentations) {
       SNodeTreeNode treeNode = (SNodeTreeNode) myTreeNode.findDescendantWith(node.getNodeId().toString());
       if (treeNode == null) continue;

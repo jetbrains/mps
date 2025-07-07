@@ -12,18 +12,16 @@ import com.intellij.execution.process.ProcessEvent;
 import jetbrains.mps.debug.api.IDebugger;
 import jetbrains.mps.execution.api.commands.CommandPart;
 import org.jetbrains.annotations.Nullable;
+import com.intellij.openapi.application.PathManager;
 import jetbrains.mps.execution.api.commands.ListCommandPart;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.execution.api.commands.PropertyCommandPart;
-import com.intellij.openapi.application.PathManager;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.baseLanguage.execution.api.JvmArgs;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.io.IOException;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.debug.api.run.IDebuggerConfiguration;
 import jetbrains.mps.debug.api.IDebuggerSettings;
 import jetbrains.mps.debugger.java.api.settings.LocalConnectionSettings;
@@ -88,40 +86,33 @@ public class Mps_Command {
       // macOS reuses ports so there is no need to bind to another port
       virtualMachineParameters = "-Dide.httpsupport.internalPort=63321 " + virtualMachineParameters;
     }
+    String jnaLibPath = new File(PathManager.getLibPath(), "jna").getAbsolutePath();
+    virtualMachineParameters = String.format("-Djna.boot.library.path=\"%s\" %s", jnaLibPath, virtualMachineParameters);
 
     if ((settingsPath != null && settingsPath.length() > 0)) {
       String configPath = new File(settingsPath, "config").getAbsolutePath();
       String systemPath = new File(settingsPath, "system").getAbsolutePath();
       String pluginsPath = new File(configPath, "plugins").getAbsolutePath();
       String logPath = new File(systemPath, "log").getAbsolutePath();
-      return new ListCommandPart(ListSequence.fromListAndArray(new ArrayList(), new PropertyCommandPart(PathManager.PROPERTY_CONFIG_PATH, configPath), new PropertyCommandPart(PathManager.PROPERTY_SYSTEM_PATH, systemPath), new PropertyCommandPart(PathManager.PROPERTY_PLUGINS_PATH, pluginsPath), new PropertyCommandPart(PathManager.PROPERTY_LOG_PATH, logPath), virtualMachineParameters));
+      return new ListCommandPart(ListSequence.fromListAndArray(new ArrayList<>(), new PropertyCommandPart(PathManager.PROPERTY_CONFIG_PATH, configPath), new PropertyCommandPart(PathManager.PROPERTY_SYSTEM_PATH, systemPath), new PropertyCommandPart(PathManager.PROPERTY_PLUGINS_PATH, pluginsPath), new PropertyCommandPart(PathManager.PROPERTY_LOG_PATH, logPath), virtualMachineParameters));
     } else {
       // actually we must fail here and settingsPath must be NotNull
-      return new ListCommandPart(ListSequence.fromListAndArray(new ArrayList(), virtualMachineParameters));
+      return new ListCommandPart(ListSequence.fromListAndArray(new ArrayList<>(), virtualMachineParameters));
     }
   }
   public static String getDefaultVirtualMachineParameters() {
     return IterableUtils.join(ListSequence.fromList(JvmArgs.getDefaultJvmArgs()), " ");
   }
   private static List<File> getClassPath() {
-    Iterable<String> currentClassPath = ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<String>(), System.getProperty("java.class.path").split(File.pathSeparator))).select(new ISelector<String, String>() {
-      public String select(String it) {
-        try {
-          return new File(it).getCanonicalPath();
-        } catch (IOException e) {
-          return it;
-        }
+    Iterable<String> currentClassPath = ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<String>(), System.getProperty("java.class.path").split(File.pathSeparator))).select((it) -> {
+      try {
+        return new File(it).getCanonicalPath();
+      } catch (IOException e) {
+        return it;
       }
     });
-    return Sequence.fromIterable(currentClassPath).where(new IWhereFilter<String>() {
-      public boolean accept(String it) {
-        return !(it.startsWith(System.getProperty("java.home")));
-      }
-    }).select(new ISelector<String, File>() {
-      public File select(String it) {
-        return new File(it);
-      }
-    }).toListSequence();
+
+    return Sequence.fromIterable(currentClassPath).where((it) -> !(it.startsWith(System.getProperty("java.home")))).select((it) -> new File(it)).toList();
   }
 
   public static IDebuggerConfiguration getDebuggerConfiguration() {

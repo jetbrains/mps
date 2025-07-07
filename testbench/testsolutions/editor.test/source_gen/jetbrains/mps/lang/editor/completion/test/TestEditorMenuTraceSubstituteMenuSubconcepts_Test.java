@@ -4,9 +4,10 @@ package jetbrains.mps.lang.editor.completion.test;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.junit.Assert;
@@ -14,6 +15,7 @@ import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -23,11 +25,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 @MPSLaunch
 public class TestEditorMenuTraceSubstituteMenuSubconcepts_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(TestEditorMenuTraceSubstituteMenuSubconcepts_Test.class, "${mps_home}", "r:f27d9626-8ef5-4cba-bce0-6aa6369f05ff(jetbrains.mps.lang.editor.completion.test)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestEditorMenuTraceSubstituteMenuSubconcepts_Test.class).projectPath(null).modelRef("r:f27d9626-8ef5-4cba-bce0-6aa6369f05ff(jetbrains.mps.lang.editor.completion.test)").reopenProject(false).build());
 
   public TestEditorMenuTraceSubstituteMenuSubconcepts_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -46,31 +48,31 @@ public class TestEditorMenuTraceSubstituteMenuSubconcepts_Test extends BaseTrans
       initEditorComponent("1384684774803304775", "1384684774803304777");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
       typeString("menu trace substitute subchild2");
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          Assert.assertTrue(getEditorComponent().getNodeSubstituteChooser().isVisible());
-          SubstituteAction action = (SubstituteAction) getEditorComponent().getData(PlatformDataKeys.SELECTED_ITEM.getName());
-          Assert.assertTrue(action != null);
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> {
+        Assert.assertTrue(getEditorComponent().getNodeSubstituteChooser().isVisible());
+        SubstituteAction action = (SubstituteAction) getEditorComponent().getData(PlatformDataKeys.SELECTED_ITEM.getName());
+        Assert.assertTrue(action != null);
 
-          EditorMenuTraceInfo editorMenuTraceInfo = action.getEditorMenuTraceInfo();
-          EditorMenuTraceTestUtil.checkTraceInfo(editorMenuTraceInfo, null);
+        EditorMenuTraceInfo editorMenuTraceInfo = action.getEditorMenuTraceInfo();
+        EditorMenuTraceTestUtil.checkTraceInfo(editorMenuTraceInfo, null);
 
-          editorMenuTraceInfo = editorMenuTraceInfo.getParent();
-          EditorMenuTraceTestUtil.checkTraceInfo(editorMenuTraceInfo, new SNodePointer("r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)", "913276302144045616"));
-          Assert.assertTrue(editorMenuTraceInfo.getMenuDescriptor().isImplicit());
-
-
-          editorMenuTraceInfo = editorMenuTraceInfo.getParent();
-          EditorMenuTraceTestUtil.checkTraceInfo(editorMenuTraceInfo, SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNode("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "913276302143897423"), LINKS.parts$yGO4), CONCEPTS.SubstituteMenuPart_Subconcepts$ad)).first()));
+        editorMenuTraceInfo = editorMenuTraceInfo.getParent();
+        EditorMenuTraceTestUtil.checkTraceInfo(editorMenuTraceInfo, new SNodePointer("r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)", "913276302144045616"));
+        Assert.assertTrue(editorMenuTraceInfo.getMenuDescriptor().isImplicit());
 
 
-          editorMenuTraceInfo = editorMenuTraceInfo.getParent();
-          EditorMenuTraceTestUtil.checkTraceInfo(editorMenuTraceInfo, new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "913276302143897423"));
+        editorMenuTraceInfo = editorMenuTraceInfo.getParent();
+
+        SNode sm = EditorMenuTraceTestUtil.substMenuNode(new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "913276302143897423"), getEditorComponent());
+        EditorMenuTraceTestUtil.checkTraceInfo(editorMenuTraceInfo, SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(sm, LINKS.parts$yGO4), CONCEPTS.SubstituteMenuPart_Subconcepts$ad)).first()));
 
 
-          editorMenuTraceInfo = editorMenuTraceInfo.getParent();
-          Assert.assertTrue(editorMenuTraceInfo == null);
-        }
+        editorMenuTraceInfo = editorMenuTraceInfo.getParent();
+        EditorMenuTraceTestUtil.checkTraceInfo(editorMenuTraceInfo, new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "913276302143897423"));
+
+
+        editorMenuTraceInfo = editorMenuTraceInfo.getParent();
+        Assert.assertTrue(editorMenuTraceInfo == null);
       });
     }
   }

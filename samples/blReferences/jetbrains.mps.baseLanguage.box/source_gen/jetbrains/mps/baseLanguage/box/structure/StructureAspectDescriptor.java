@@ -59,9 +59,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForBoxCreator() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.box", "BoxCreator", 0x1c5b433b3a0b47c4L, 0xbed8d496b01eb018L, 0x7cd580cc4008970cL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.AbstractCreator", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab844af9bL);
+    // extends: jetbrains.mps.baseLanguage.structure.AbstractCreator
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab844af9bL);
     b.origin("r:33002a0f-e7ab-4f16-ba18-62d15dfb4742(jetbrains.mps.baseLanguage.box.structure)/8995237445478422284");
-    b.version(2);
+    b.version(3);
     b.aggregate("value", 0x7cd580cc40089759L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(false).origin("8995237445478422361").done();
     b.aggregate("type", 0x4a89fb1d0046badfL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL).optional(false).ordered(true).multiple(false).origin("5371100132593285855").done();
     b.alias("box");
@@ -70,9 +71,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForBoxType() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.box", "BoxType", 0x1c5b433b3a0b47c4L, 0xbed8d496b01eb018L, 0x7cd580cc400895b8L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.Type", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL);
+    // extends: jetbrains.mps.baseLanguage.structure.Type
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL);
     b.origin("r:33002a0f-e7ab-4f16-ba18-62d15dfb4742(jetbrains.mps.baseLanguage.box.structure)/8995237445478421944");
-    b.version(2);
+    b.version(3);
     b.aggregate("type", 0x7cd580cc400895b9L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL).optional(false).ordered(true).multiple(false).origin("8995237445478421945").done();
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
     b.alias("box");
@@ -83,7 +85,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46ac030L);
     b.origin("r:33002a0f-e7ab-4f16-ba18-62d15dfb4742(jetbrains.mps.baseLanguage.box.structure)/8995237445478594044");
-    b.version(2);
+    b.version(3);
     b.alias("value");
     return b.create();
   }

@@ -9,7 +9,6 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.editor.behavior.CellActionMapDeclaration__BehaviorDescriptor;
@@ -26,11 +25,7 @@ public class check_CellActionMapDeclarationBackspaceWillBeAdded_NonTypesystemRul
   public check_CellActionMapDeclarationBackspaceWillBeAdded_NonTypesystemRule() {
   }
   public void applyRule(final SNode cellActionMapDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode deleteItem = ListSequence.fromList(SLinkOperations.getChildren(cellActionMapDeclaration, LINKS.item$ZCi9)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.actionId$On2r), 0x109519a19b4L);
-      }
-    }).first();
+    SNode deleteItem = ListSequence.fromList(SLinkOperations.getChildren(cellActionMapDeclaration, LINKS.item$ZCi9)).where((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.actionId$On2r), 0x109519a19b4L)).first();
     if ((deleteItem != null) && !((boolean) CellActionMapDeclaration__BehaviorDescriptor.containsItemOfType_id2pg2GNQgnKJ.invoke(cellActionMapDeclaration, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951993667L, "jetbrains.mps.lang.editor.structure.CellActionId"), 0x7d41f11ce69df74aL, "backspace_action_id")))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();

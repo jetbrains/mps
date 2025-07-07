@@ -10,14 +10,12 @@ import java.util.HashMap;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import java.util.Stack;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -38,11 +36,7 @@ public class ArtifactsRelativePathHelper {
       MapSequence.fromMap(prefixes).put(parent.value, sb.toString());
       if (SNodeOperations.isInstanceOf(parent.value, CONCEPTS.BuildLayout_Folder$AH)) {
         // Although not sure, the code below seems to address multiple folder entries with the same name under single parent (build language allows that)
-        for (SNode sfolder : Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(parent.value, false), CONCEPTS.BuildLayout_Folder$AH)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return it != parent.value && equalFolders(SNodeOperations.as(parent.value, CONCEPTS.BuildLayout_Folder$AH), it);
-          }
-        })) {
+        for (SNode sfolder : Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(parent.value, false), CONCEPTS.BuildLayout_Folder$AH)).where((it) -> it != parent.value && equalFolders(SNodeOperations.as(parent.value, CONCEPTS.BuildLayout_Folder$AH), it))) {
           MapSequence.fromMap(prefixes).put(sfolder, sb.toString());
         }
       }
@@ -120,32 +114,16 @@ public class ArtifactsRelativePathHelper {
     throw new RelativePathException("cannot build relative path for " + SNodeOperations.getConcept(node).getName());
   }
   private String getBSName(SNode string) throws RelativePathException {
-    if (ListSequence.fromList(SLinkOperations.getChildren(string, LINKS.parts$uJA0)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildTextStringPart$3R));
-      }
-    })) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(string, LINKS.parts$uJA0)).any((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildTextStringPart$3R)))) {
       throw new RelativePathException("macros are not allowed");
     }
-    return IterableUtils.join(ListSequence.fromList(SLinkOperations.getChildren(string, LINKS.parts$uJA0)).select(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.BuildTextStringPart$3R), PROPS.text$lRuU);
-      }
-    }), " ");
+    return IterableUtils.join(ListSequence.fromList(SLinkOperations.getChildren(string, LINKS.parts$uJA0)).select((it) -> SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.BuildTextStringPart$3R), PROPS.text$lRuU)), " ");
   }
   private boolean equalFolders(SNode left, SNode right) {
     if (SNodeOperations.getParent(left) != SNodeOperations.getParent(right)) {
       return false;
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(left, LINKS.containerName$ES_Y), LINKS.parts$uJA0)).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildTextStringPart$3R);
-      }
-    }) && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(right, LINKS.containerName$ES_Y), LINKS.parts$uJA0)).all(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildTextStringPart$3R);
-      }
-    })) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(left, LINKS.containerName$ES_Y), LINKS.parts$uJA0)).all((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BuildTextStringPart$3R)) && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(right, LINKS.containerName$ES_Y), LINKS.parts$uJA0)).all((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BuildTextStringPart$3R))) {
       return Objects.equals(SPropertyOperations.getString(left, PROPS.name$MnvL), SPropertyOperations.getString(right, PROPS.name$MnvL));
     }
     return false;

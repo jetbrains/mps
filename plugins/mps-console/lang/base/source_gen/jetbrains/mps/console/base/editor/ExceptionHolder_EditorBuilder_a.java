@@ -12,8 +12,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
-import jetbrains.mps.nodeEditor.MPSColors;
+import java.awt.Color;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 
 /*package*/ class ExceptionHolder_EditorBuilder_a extends AbstractEditorBuilder {
@@ -41,11 +40,14 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     editorCell.setBig(true);
     setCellContext(editorCell);
     Style style = new StyleImpl();
-    style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.pink));
+    style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_hbc894_a0a()));
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createConstant_0());
     editorCell.addEditorCell(createComponent_0());
     return editorCell;
+  }
+  private Color _StyleParameter_QueryFunction_hbc894_a0a() {
+    return getEditorContext().getEditorComponent().getStyleRegistry().getStyle("ERROR_CELL").get(StyleAttributes.TEXT_BACKGROUND_COLOR);
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "Exception:");

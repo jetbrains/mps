@@ -9,7 +9,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.editor.runtime.style.StyledTextPrinter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -36,11 +35,7 @@ public class BaseMethodParameterInformationQuery implements ParametersInformatio
     if (selectedNode == null) {
       return null;
     }
-    return ListSequence.fromList(SNodeOperations.getNodeAncestors(selectedNode, CONCEPTS.Expression$mB, true)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.IMethodCall$M9) && Objects.equals(SNodeOperations.getContainingLink(it), LINKS.actualArgument$pzdx);
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getNodeAncestors(selectedNode, CONCEPTS.Expression$mB, true)).findFirst((it) -> SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.IMethodCall$M9) && Objects.equals(SNodeOperations.getContainingLink(it), LINKS.actualArgument$pzdx));
   }
 
   private static final class CONCEPTS {

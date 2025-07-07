@@ -25,9 +25,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class LogLowLevelStatement__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, "jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement");
 
-  public static final SMethod<SNode> getMessage_id5vyNLjQPuX5 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getMessage").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5vyNLjQPuX5").build();
-  public static final SMethod<String> getSeverity_id5vyNLjQPuVr = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSeverity").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5vyNLjQPuVr").build();
-  public static final SMethod<SNode> getThrowable_id5vyNLjQPuWe = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getThrowable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5vyNLjQPuWe").build();
+  public static final SMethod<SNode> getMessage_id5vyNLjQPuX5 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getMessage").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6332851714983849797L).languageId(0x8bfd65db761a9ba3L, 0x760a0a8ceabb4521L).build2();
+  public static final SMethod<String> getSeverity_id5vyNLjQPuVr = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSeverity").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6332851714983849691L).languageId(0x8bfd65db761a9ba3L, 0x760a0a8ceabb4521L).build2();
+  public static final SMethod<SNode> getThrowable_id5vyNLjQPuWe = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getThrowable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6332851714983849742L).languageId(0x8bfd65db761a9ba3L, 0x760a0a8ceabb4521L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMessage_id5vyNLjQPuX5, getSeverity_id5vyNLjQPuVr, getThrowable_id5vyNLjQPuWe);
 

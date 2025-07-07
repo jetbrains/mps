@@ -4,50 +4,45 @@ package jetbrains.mps.workbench.findusages;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.psi.impl.cache.impl.id.IdIndexer;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import java.util.Map;
 import com.intellij.psi.impl.cache.impl.id.IdIndexEntry;
 import com.intellij.util.indexing.FileContent;
 import java.util.Collections;
 import org.jetbrains.org.objectweb.asm.ClassReader;
-import org.apache.log4j.Level;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMClass;
-import jetbrains.mps.util.JavaNameUtil;
-import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.stubs.javastub.classpath.ClassifierKind;
 
-@GeneratedClass(node = "r:9e8a9ffa-c450-4841-b749-c11aa0f49452(jetbrains.mps.workbench.findusages)/2810982631457565449", model = "r:9e8a9ffa-c450-4841-b749-c11aa0f49452(jetbrains.mps.workbench.findusages)")
+/**
+ * StubModelsFastFindSupport accesses indexed values we create here (through IdIndex.NAME, this class being contributor to the index)
+ */
+@GeneratedClass(nodeId = "2810982631457565449", model = "r:9e8a9ffa-c450-4841-b749-c11aa0f49452(jetbrains.mps.workbench.findusages)")
 public class JavaStubIdIndexer implements IdIndexer {
-  private static final Logger LOG = LogManager.getLogger(JavaStubIdIndexer.class);
+  private static final Logger LOG = Logger.getLogger(JavaStubIdIndexer.class);
   public JavaStubIdIndexer() {
   }
   @NotNull
   @Override
   public Map<IdIndexEntry, Integer> map(FileContent inputData) {
+    // FWIW, IDEA gives contents of .class files from within .jar
     byte[] bytes = inputData.getContent();
     if (bytes.length == 0) {
       return Collections.<IdIndexEntry,Integer>emptyMap();
     }
 
-    ClassReader reader;
     try {
+      ClassReader reader;
       reader = new ClassReader(bytes);
+      ASMClass ac = new ASMClass(reader, false);
+      // FWIW, here used to be failed check to ignore anonymous classes. I see no reason to ignore usages from within anonymous classes.
+      ClassifierCacher updater = new ClassifierCacher();
+      updater.updateClassifier(ac);
+      return updater.getResult();
     } catch (Throwable t) {
-      if (LOG.isEnabledFor(Level.WARN)) {
-        LOG.warn(inputData.getFileName() + " can't be parsed by ASM and will not be indexed. This can be caused by corrupted classfile or a classfile with a version not yet parsable by bundled ASM library");
+      if (LOG.isWarningLevel()) {
+        LOG.warning(String.format("%s can't be parsed by ASM and will not be indexed. This can be caused by corrupted class file or a version bundled ASM library could not parse", inputData.getFileName()));
       }
       return Collections.<IdIndexEntry,Integer>emptyMap();
     }
-    ASMClass ac = new ASMClass(reader, false);
-    String fqName = ac.getFqName();
-    if (JavaNameUtil.isAnonymous(NameUtil.namespaceFromLongName(fqName))) {
-      return Collections.<IdIndexEntry,Integer>emptyMap();
-    }
-
-    ClassifierCacher updater = new ClassifierCacher();
-    updater.updateClassifier(ClassifierKind.getClassifierKind(reader), ac);
-    return updater.getResult();
   }
 }

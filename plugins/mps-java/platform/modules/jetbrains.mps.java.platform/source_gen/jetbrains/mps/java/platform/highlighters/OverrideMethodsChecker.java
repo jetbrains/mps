@@ -14,7 +14,6 @@ import jetbrains.mps.baseLanguage.search.ClassifierSuccessors;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import jetbrains.mps.nodeEditor.EditorMessage;
@@ -24,7 +23,7 @@ import java.util.HashSet;
 import com.intellij.openapi.project.IndexNotReadyException;
 import jetbrains.mps.baseLanguage.util.OverridingMethodsCalculator;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import java.util.List;
 import jetbrains.mps.project.GlobalScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -35,9 +34,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Iterator;
 import jetbrains.mps.smodel.event.SModelEvent;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.smodel.event.SModelRootEvent;
-import jetbrains.mps.smodel.event.SModelFileChangedEvent;
 import jetbrains.mps.smodel.event.SModelChildEvent;
 import jetbrains.mps.smodel.event.SModelReferenceEvent;
 import org.jetbrains.mps.openapi.model.SReference;
@@ -52,7 +49,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 /**
  * Checks for overridden and implemented methods in order to highlight them
  */
-@GeneratedClass(node = "r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)/8432634623182578830", model = "r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)")
+@GeneratedClass(nodeId = "8432634623182578830", model = "r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)")
 public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
   private static final int MAX_MESSAGE_NUMBER = 5;
   private static final String LF = "\n";
@@ -75,11 +72,7 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
       return UpdateResult.CANCELLED;
     }
 
-    Iterable<SNode> classifiers = ListSequence.fromList(SNodeOperations.getNodeDescendants(rootNode, CONCEPTS.Classifier$Ix, true, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.ClassConcept$bK) || SNodeOperations.isInstanceOf(it, CONCEPTS.Interface$db);
-      }
-    });
+    Iterable<SNode> classifiers = ListSequence.fromList(SNodeOperations.getNodeDescendants(rootNode, CONCEPTS.Classifier$Ix, true, new SAbstractConcept[]{})).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.ClassConcept$bK) || SNodeOperations.isInstanceOf(it, CONCEPTS.Interface$db));
 
     if (Sequence.fromIterable(classifiers).isEmpty()) {
       return new UpdateResult.Completed(true, Collections.<EditorMessage>emptySet());
@@ -106,11 +99,7 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
       StringBuilder tooltip = new StringBuilder();
       int messageCounter = 0;
       Set<SNode> baseMethods = finder.getBaseMethods(overridingMethod);
-      boolean overrides = ((boolean) (Boolean) BHReflection.invoke0(overridingMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodTrimmedId.create("isAnAbstractMethod", null, "28P2dHxCoRl"))) || SetSequence.fromSet(baseMethods).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.BaseMethodDeclaration$kD, SMethodTrimmedId.create("isAnAbstractMethod", null, "28P2dHxCoRl"))));
-        }
-      }).isNotEmpty();
+      boolean overrides = ((boolean) (Boolean) BHReflection.invoke0(overridingMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L))) || SetSequence.fromSet(baseMethods).where((it) -> !((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L)))).isNotEmpty();
       for (SNode baseMethod : SetSequence.fromSet(baseMethods)) {
         SNode baseClassifier = SNodeOperations.cast(SNodeOperations.getParent(baseMethod), CONCEPTS.Classifier$Ix);
         tooltip.append((overrides ? "Overrides" : "Implements"));
@@ -129,10 +118,10 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
 
   private void collectOverriddenMethods(SNode container, Set<EditorMessage> messages) {
     List<SNode> derivedClassifiers = myProject.getComponent(ClassifierSuccessors.class).getDerivedClassifiers(myProject, container, new GlobalScope(myProject.getRepository()));
-    // fixme derivedClassifiers looks for project modules (because ClassifiersSuccessors works only with EditableSModel
+    // fixme getDerivedClassifiers look for .mps/.mpb models (indexers restriction), we need to add support for per-root and class stubs in order for it to work on all nodes
     // fixme in this method we decide whether to show the icon in the gutter for the classifier; in EditorMessageIconRenderer#getClickAction we do the real search where we invoke DerivedClassifiers/DerivedInterfaces finder
     // fixme the latter works for all models
-    if (myProject.isProjectModule(SNodeOperations.getModel(container).getModule()) && ListSequence.fromList(derivedClassifiers).isEmpty()) {
+    if (ListSequence.fromList(derivedClassifiers).isEmpty()) {
       return;
     }
     boolean isInterface = SNodeOperations.isInstanceOf(container, CONCEPTS.Interface$db);
@@ -155,11 +144,7 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
     SetSequence.fromSet(messages).addElement(new SubclassedClassifierEditorMessage(container, this, superClassifierTooltip.toString(), isInterface));
 
     Map<String, Set<SNode>> nameToMethodsMap = MapSequence.fromMap(new HashMap<String, Set<SNode>>());
-    for (SNode method : Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(container, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("methods", CONCEPTS.Classifier$Ix, "4_LVZ3pBKCn")))).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return OverridingMethodsCalculator.canBeOverridden(it);
-      }
-    })) {
+    for (SNode method : Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(container, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).where((it) -> OverridingMethodsCalculator.canBeOverridden(it))) {
       SetSequence.fromSet(OverridingMethodsCalculator.safeGet(nameToMethodsMap, SPropertyOperations.getString(method, PROPS.name$MnvL))).addElement(method);
     }
     if (MapSequence.fromMap(nameToMethodsMap).isEmpty()) {
@@ -170,7 +155,7 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
       if (SPropertyOperations.getBoolean(overridenMethod, PROPS.isFinal$eVPk)) {
         continue;
       }
-      boolean overriden = !(((boolean) (Boolean) BHReflection.invoke0(overridenMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodTrimmedId.create("isAnAbstractMethod", null, "28P2dHxCoRl"))));
+      boolean overriden = !((boolean) (Boolean) BHReflection.invoke0(overridenMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L)));
       StringBuffer tooltip = new StringBuffer("Is ");
       tooltip.append((overriden ? "overridden" : "implemented"));
       tooltip.append(" in");
@@ -192,20 +177,12 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
   private Map<SNode, Set<SNode>> createOverridenToOverridingMethodsMap(Map<String, Set<SNode>> nameToMethodsMap, Iterable<SNode> derivedClassifiers) {
     Map<SNode, Set<SNode>> result = MapSequence.fromMap(new HashMap<SNode, Set<SNode>>());
     for (SNode derivedClassifier : Sequence.fromIterable(derivedClassifiers)) {
-      for (final SNode derivedClassifierMethod : Sequence.fromIterable(OverridingMethodsCalculator.getInstanceMethods(derivedClassifier)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return OverridingMethodsCalculator.canOverride(it);
-        }
-      })) {
+      for (final SNode derivedClassifierMethod : Sequence.fromIterable(OverridingMethodsCalculator.getInstanceMethods(derivedClassifier)).where((it) -> OverridingMethodsCalculator.canOverride(it))) {
         Set<SNode> similarMethods = MapSequence.fromMap(nameToMethodsMap).get(SPropertyOperations.getString(derivedClassifierMethod, PROPS.name$MnvL));
         if (similarMethods == null) {
           continue;
         }
-        SNode overridenMethod = SetSequence.fromSet(similarMethods).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return ((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.BaseMethodDeclaration$kD, SMethodTrimmedId.create("hasSameSignature", CONCEPTS.BaseMethodDeclaration$kD, "hEwIB0z"), derivedClassifierMethod));
-          }
-        });
+        SNode overridenMethod = SetSequence.fromSet(similarMethods).findFirst((it) -> ((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("hasSameSignature", 1213877350435L, 0x5745e3015c8914d3L), derivedClassifierMethod)));
         if (overridenMethod != null) {
           Set<SNode> overridingMethods = OverridingMethodsCalculator.safeGet(result, overridenMethod);
           SetSequence.fromSet(overridingMethods).addElement(derivedClassifierMethod);
@@ -230,62 +207,60 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
       return true;
     }
     // TODO rewrite without read action, see doc of EditorChecker#processEvents
-    return new ModelAccessHelper(myProject.getRepository()).runReadAction(new Computable<Boolean>() {
-      public Boolean compute() {
-        for (SModelEvent event : ListSequence.fromList(events)) {
-          if (event instanceof SModelRootEvent || event instanceof SModelFileChangedEvent) {
+    return new ModelAccessHelper(myProject.getRepository()).runReadAction(() -> {
+      for (SModelEvent event : ListSequence.fromList(events)) {
+        if (event instanceof SModelRootEvent) {
+          return true;
+        }
+        if (event instanceof SModelChildEvent) {
+          SModelChildEvent childEvent = (SModelChildEvent) event;
+          SNode child = childEvent.getChild();
+          SNode parent = childEvent.getParent();
+          String childRole = childEvent.getChildRole();
+          // Class or Interface was added/removed
+          if (SNodeOperations.isInstanceOf(child, CONCEPTS.Interface$db) || SNodeOperations.isInstanceOf(child, CONCEPTS.ClassConcept$bK) || SNodeOperations.isInstanceOf(child, CONCEPTS.AnonymousClass$Bt) || SNodeOperations.isInstanceOf(child, CONCEPTS.AnonymousClassCreator$fS)) {
             return true;
           }
-          if (event instanceof SModelChildEvent) {
-            SModelChildEvent childEvent = (SModelChildEvent) event;
-            SNode child = childEvent.getChild();
-            SNode parent = childEvent.getParent();
-            String childRole = childEvent.getChildRole();
-            // Class or Interface was added/removed
-            if (SNodeOperations.isInstanceOf(child, CONCEPTS.Interface$db) || SNodeOperations.isInstanceOf(child, CONCEPTS.ClassConcept$bK) || SNodeOperations.isInstanceOf(child, CONCEPTS.AnonymousClass$Bt) || SNodeOperations.isInstanceOf(child, CONCEPTS.AnonymousClassCreator$fS)) {
-              return true;
-            }
-            // method was added/removed from containing Classifier
-            if (SNodeOperations.isInstanceOf(child, CONCEPTS.InstanceMethodDeclaration$39) && SNodeOperations.isInstanceOf(parent, CONCEPTS.Classifier$Ix)) {
-              return true;
-            }
-            // one of extendedInterface/superclass/implementedInterface child elements was added/removed
-            if (SNodeOperations.isInstanceOf(child, CONCEPTS.ClassifierType$bL) && (LINKS.extendedInterface$PDVO.getName().equals(childRole) || LINKS.superclass$Mp9$.getName().equals(childRole) || LINKS.implementedInterface$rujG.getName().equals(childRole))) {
-              return true;
-            }
-            // parameter was added/removed
-            if (SNodeOperations.isInstanceOf(child, CONCEPTS.ParameterDeclaration$RG) && LINKS.parameter$5xBj.getName().equals(childRole)) {
-              return true;
-            }
-            if (SNodeOperations.isInstanceOf(child, CONCEPTS.Type$bu) && isParameterType(child)) {
-              return true;
-            }
+          // method was added/removed from containing Classifier
+          if (SNodeOperations.isInstanceOf(child, CONCEPTS.InstanceMethodDeclaration$39) && SNodeOperations.isInstanceOf(parent, CONCEPTS.Classifier$Ix)) {
+            return true;
           }
-          if (event instanceof SModelReferenceEvent) {
-            SModelReferenceEvent referenceEvent = (SModelReferenceEvent) event;
-            SReference reference = referenceEvent.getReference();
-            SNode sourceNode = reference.getSourceNode();
-            SReferenceLink referenceRole = reference.getLink();
-            if (LINKS.classifier$cxMr.equals(referenceRole) && SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.ClassifierType$bL) && (SNodeOperations.isInstanceOf(SNodeOperations.getParent(sourceNode), CONCEPTS.Classifier$Ix))) {
-              return true;
-            }
-            if (LINKS.classifier$q_Y$.equals(referenceRole) && SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.AnonymousClass$Bt)) {
-              return true;
-            }
-            if (SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.Type$bu) && isParameterType(sourceNode)) {
-              return true;
-            }
+          // one of extendedInterface/superclass/implementedInterface child elements was added/removed
+          if (SNodeOperations.isInstanceOf(child, CONCEPTS.ClassifierType$bL) && (LINKS.extendedInterface$PDVO.getName().equals(childRole) || LINKS.superclass$Mp9$.getName().equals(childRole) || LINKS.implementedInterface$rujG.getName().equals(childRole))) {
+            return true;
           }
-          if (event instanceof SModelPropertyEvent) {
-            SModelPropertyEvent propertyEvent = (SModelPropertyEvent) event;
-            SNode node = propertyEvent.getNode();
-            if (SNodeOperations.isInstanceOf(node, CONCEPTS.BaseMethodDeclaration$kD)) {
-              return true;
-            }
+          // parameter was added/removed
+          if (SNodeOperations.isInstanceOf(child, CONCEPTS.ParameterDeclaration$RG) && LINKS.parameter$5xBj.getName().equals(childRole)) {
+            return true;
+          }
+          if (SNodeOperations.isInstanceOf(child, CONCEPTS.Type$bu) && isParameterType(child)) {
+            return true;
           }
         }
-        return false;
+        if (event instanceof SModelReferenceEvent) {
+          SModelReferenceEvent referenceEvent = (SModelReferenceEvent) event;
+          SReference reference = referenceEvent.getReference();
+          SNode sourceNode = reference.getSourceNode();
+          SReferenceLink referenceRole = reference.getLink();
+          if (LINKS.classifier$cxMr.equals(referenceRole) && SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.ClassifierType$bL) && (SNodeOperations.isInstanceOf(SNodeOperations.getParent(sourceNode), CONCEPTS.Classifier$Ix))) {
+            return true;
+          }
+          if (LINKS.classifier$q_Y$.equals(referenceRole) && SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.AnonymousClass$Bt)) {
+            return true;
+          }
+          if (SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.Type$bu) && isParameterType(sourceNode)) {
+            return true;
+          }
+        }
+        if (event instanceof SModelPropertyEvent) {
+          SModelPropertyEvent propertyEvent = (SModelPropertyEvent) event;
+          SNode node = propertyEvent.getNode();
+          if (SNodeOperations.isInstanceOf(node, CONCEPTS.BaseMethodDeclaration$kD)) {
+            return true;
+          }
+        }
       }
+      return false;
     });
   }
 
@@ -296,15 +271,15 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.EnumConstantDeclaration$MW)) {
       return getEnumConstantPresentation(SNodeOperations.cast(node, CONCEPTS.EnumConstantDeclaration$MW));
     }
-    return ((String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
+    return ((String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getPresentation", 1213877396640L, 0x553941aeb020c32eL)));
   }
 
   private String getClassifierPresentation(SNode classifier) {
-    return ((String) (String) BHReflection.invoke0(classifier, CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+    return ((String) (String) BHReflection.invoke0(classifier, CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL)));
   }
 
   private String getEnumConstantPresentation(SNode enumConstantDeclaration) {
-    return ((String) (String) BHReflection.invoke0(enumConstantDeclaration, CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+    return ((String) (String) BHReflection.invoke0(enumConstantDeclaration, CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL)));
   }
 
   private static boolean isParameterType(SNode type) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,16 @@
  */
 package jetbrains.mps.project.facets;
 
+import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
+
+import java.util.LinkedHashSet;
+import java.util.stream.Stream;
 
 /**
  * PROVISIONAL API, DO NOT USE OUTSIDE OF MPS.
@@ -82,4 +87,73 @@ public interface GenerationTargetFacet extends SModuleFacet {
    */
   @Nullable
   IFile getOutputCacheLocation(@NotNull SModel model);
+
+  /**
+   * Handy utility to get first reasonable {@link GenerationTargetFacet} attached to model's module,
+   * with respect to some obscure MPS internal knowledge about {@link TestsFacet} and {@code @tests} models.
+   * <br/>
+   * TODO Perhaps, worth adding static methods like {@code getOutputCacheLocation(SModel):Stream<IFile>} to simplify iteration over all GTFs
+   *      that are capable to answer certain API aspect (see SModelOperations#getOutputCacheLocation(SModel) and BaseModelCache).
+   */
+  @Nullable
+  static GenerationTargetFacet find(@NotNull SModel model) {
+    final SModule module = model.getModule();
+    if (module == null) {
+      return null;
+    }
+    final boolean testModel = SModelStereotype.isTestModel(model);
+    if (testModel) {
+      final TestsFacet tf = module.getFacet(TestsFacet.class);
+      if (tf != null) {
+        return tf;
+      }
+      // fall-through, still generate tests model with any suitable GTF
+    }
+    for (SModuleFacet mf : module.getFacets()) {
+      if (mf instanceof GenerationTargetFacet) {
+        if (!testModel && mf instanceof TestsFacet) {
+          // TestsFacet is picky about models and doesn't process models w/o @tests stereotype, therefore
+          // we skip one for a non-test model.
+          continue;
+        }
+        return (GenerationTargetFacet) mf;
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Utility to access multiple {@code GenerationTargetFacet} attached to a module
+   * with respect to some internal MPS considerations (use of TestsFacet)
+   */
+  static Stream<GenerationTargetFacet> stream(@NotNull SModel model) {
+    final SModule module = model.getModule();
+    if (module == null) {
+      return Stream.empty();
+    }
+    final LinkedHashSet<GenerationTargetFacet> rv = new LinkedHashSet<>();
+    final boolean testModel = SModelStereotype.isTestModel(model);
+    if (testModel) {
+      final TestsFacet testsFacet = module.getFacet(TestsFacet.class);
+      if (testsFacet != null) {
+        rv.add(testsFacet);
+      }
+    }
+    // give JMF precedence as a tribute
+    final JavaModuleFacet jmf = module.getFacet(JavaModuleFacet.class);
+    if (jmf != null) {
+      rv.add(jmf);
+    }
+    for (SModuleFacet mf : module.getFacets()) {
+      if (mf instanceof GenerationTargetFacet) {
+        // those already added keep their precedence
+        if (mf instanceof TestsFacet) {
+          // if testModel, it's already there. if not, no reason to query it for non-test model
+          continue;
+        }
+        rv.add((GenerationTargetFacet) mf);
+      }
+    }
+    return rv.stream();
+  }
 }

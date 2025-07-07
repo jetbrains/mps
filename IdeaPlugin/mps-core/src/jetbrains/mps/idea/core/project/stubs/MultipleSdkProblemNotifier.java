@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,37 +34,22 @@ import java.util.Map;
 import java.util.Set;
 
 /**
+ * MPS multiple SDK problem notifier
  * Created by danilla on 16/02/17.
  */
-public class MultipleSdkProblemNotifier implements ProjectComponent {
+public class MultipleSdkProblemNotifier {
+  // <notificationGroup> extension in mps-core/META-INF/plugin.xml
+  private static final String NOTIFICATION_GROUP = "MPS facet";
   private final Project myProject;
-  private Data myDataToReport = new Data();
-  private Map<Module, String> myBadJdks = new HashMap<>();
+  private final Data myDataToReport = new Data();
+  private final Map<Module, String> myBadJdks = new HashMap<>();
+
+  public static MultipleSdkProblemNotifier getInstance(Project project) {
+    return project.getService(MultipleSdkProblemNotifier.class);
+  }
 
   public MultipleSdkProblemNotifier(Project project) {
     myProject = project;
-  }
-
-  @Override
-  public void projectOpened() {
-  }
-
-  @Override
-  public void projectClosed() {
-  }
-
-  @Override
-  public void initComponent() {
-  }
-
-  @Override
-  public void disposeComponent() {
-  }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "MPS multiple SDK problem notifier";
   }
 
   public void reportSdkProblem(Module unluckyModule, DifferentSdkException exc) {
@@ -78,7 +63,7 @@ public class MultipleSdkProblemNotifier implements ProjectComponent {
         if (!myDataToReport.unluckyModules.isEmpty()) {
           myDataToReport.luckyModules.addAll(ApplicationManager.getApplication().getComponent(JdkStubSolutionManager.class).getModules());
 
-          new Notification("MPS facet",
+          new Notification(NOTIFICATION_GROUP,
                            "Multiple SDKs currently not supported in MPS plugin",
                            myDataToReport.createMessage(),
                            NotificationType.WARNING).notify(myProject);
@@ -100,8 +85,8 @@ public class MultipleSdkProblemNotifier implements ProjectComponent {
       @Override
       public void afterWriteActionFinished(@NotNull Object action) {
         if (!myBadJdks.isEmpty()) {
-          String title = "Modules with MPS facet only support JDK 11 and later";
-          new Notification("MPS facet", title, getBadJdksMessage(myBadJdks), NotificationType.WARNING).notify(myProject);
+          String title = "Modules with MPS facet only support JDK 17 and later";
+          new Notification(NOTIFICATION_GROUP, title, getBadJdksMessage(myBadJdks), NotificationType.WARNING).notify(myProject);
           myBadJdks.clear();
         }
         disposable.dispose();

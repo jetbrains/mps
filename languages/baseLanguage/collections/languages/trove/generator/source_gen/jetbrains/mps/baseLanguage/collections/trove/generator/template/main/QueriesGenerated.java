@@ -48,24 +48,16 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object referenceMacro_GetReferent_1_0(final ReferenceMacroContext _context) {
     String p = BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(_context.getNode());
-    return "[gnu.trove]T" + Character.toUpperCase(p.charAt(0)) + StringUtils.substring(p, 1) + "ArrayList";
+    return "gnu.trove.T" + Character.toUpperCase(p.charAt(0)) + StringUtils.substring(p, 1) + "ArrayList";
   }
   public static Object referenceMacro_GetReferent_1_1(final ReferenceMacroContext _context) {
     String p = BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(_context.getNode());
-    return "[gnu.trove]T" + Character.toUpperCase(p.charAt(0)) + StringUtils.substring(p, 1) + "ArrayList";
+    return "gnu.trove.T" + Character.toUpperCase(p.charAt(0)) + StringUtils.substring(p, 1) + "ArrayList";
   }
   public static Object referenceMacro_GetReferent_1_2(final ReferenceMacroContext _context) {
-    String p = BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(_context.getNode());
-    return "T" + Character.toUpperCase(p.charAt(0)) + StringUtils.substring(p, 1) + "ArrayListDecorator";
-  }
-  public static Object referenceMacro_GetReferent_1_3(final ReferenceMacroContext _context) {
-    String p = BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(_context.getNode());
-    return "T" + Character.toUpperCase(p.charAt(0)) + StringUtils.substring(p, 1) + "ArrayListDecorator";
-  }
-  public static Object referenceMacro_GetReferent_1_4(final ReferenceMacroContext _context) {
     return SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.cast(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(_context.getNode()), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK);
   }
-  public static Object referenceMacro_GetReferent_1_5(final ReferenceMacroContext _context) {
+  public static Object referenceMacro_GetReferent_1_3(final ReferenceMacroContext _context) {
     return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(_context.getNode()) + "Value";
   }
   public static SNode sourceNodeQuery_1_0(final SourceSubstituteMacroNodeContext _context) {
@@ -138,7 +130,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SNode) Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(_context.getNode());
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_x583g4_a0a0a23(), _quotation_createNode_x583g4_b0a0a23(), _quotation_createNode_x583g4_c0a0a23(), _quotation_createNode_x583g4_d0a0a23(), _quotation_createNode_x583g4_e0a0a23(), _quotation_createNode_x583g4_f0a0a23());
+    return ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_x583g4_a0a0a03(), _quotation_createNode_x583g4_b0a0a03(), _quotation_createNode_x583g4_c0a0a03(), _quotation_createNode_x583g4_d0a0a03(), _quotation_createNode_x583g4_e0a0a03(), _quotation_createNode_x583g4_f0a0a03());
   }
   private final Map<String, SourceNodeQuery> snqMethods = new HashMap<String, SourceNodeQuery>();
   {
@@ -292,10 +284,8 @@ public class QueriesGenerated extends QueryProviderBase {
   {
     rtqMethods.put("5499565529811371607", new RTQ(0, "TByteArrayList"));
     rtqMethods.put("5499565529811382099", new RTQ(1, "TByteArrayList"));
-    rtqMethods.put("5499565529811760473", new RTQ(2, "TPrimArrayListDecorator"));
-    rtqMethods.put("5499565529811760432", new RTQ(3, "TPrimArrayListDecorator"));
-    rtqMethods.put("5499565529811346968", new RTQ(4, "Byte"));
-    rtqMethods.put("5499565529811382398", new RTQ(5, "byteValue"));
+    rtqMethods.put("5499565529811346968", new RTQ(2, "Byte"));
+    rtqMethods.put("5499565529811382398", new RTQ(3, "byteValue"));
   }
   @NotNull
   @Override
@@ -320,46 +310,42 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.referenceMacro_GetReferent_1_2(ctx);
         case 3:
           return QueriesGenerated.referenceMacro_GetReferent_1_3(ctx);
-        case 4:
-          return QueriesGenerated.referenceMacro_GetReferent_1_4(ctx);
-        case 5:
-          return QueriesGenerated.referenceMacro_GetReferent_1_5(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
     }
   }
-  private static SNode _quotation_createNode_x583g4_a0a0a23() {
+  private static SNode _quotation_createNode_x583g4_a0a0a03() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d5b617L, "ByteType"));
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_x583g4_b0a0a23() {
+  private static SNode _quotation_createNode_x583g4_b0a0a03() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d451a6L, "DoubleType"));
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_x583g4_c0a0a23() {
+  private static SNode _quotation_createNode_x583g4_c0a0a03() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d327fdL, "FloatType"));
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_x583g4_d0a0a23() {
+  private static SNode _quotation_createNode_x583g4_d0a0a03() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d22479L, "IntegerType"));
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_x583g4_e0a0a23() {
+  private static SNode _quotation_createNode_x583g4_e0a0a03() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7f3L, "LongType"));
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_x583g4_f0a0a23() {
+  private static SNode _quotation_createNode_x583g4_f0a0a03() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940cc380dL, "ShortType"));
     quotedNode_1 = nb.getResult();

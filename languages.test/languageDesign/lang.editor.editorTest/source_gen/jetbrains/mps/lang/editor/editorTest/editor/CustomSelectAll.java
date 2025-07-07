@@ -6,7 +6,6 @@ import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.nodeEditor.selection.SelectUpUtil;
-import java.util.function.BooleanSupplier;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -23,11 +22,7 @@ public class CustomSelectAll {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(final EditorContext editorContext, SNode node) {
-        SelectUpUtil.executeWhile(editorContext, new BooleanSupplier() {
-          public boolean getAsBoolean() {
-            return !(editorContext.getSelectionManager().getSelection().getSelectedNodes().get(0).isInstanceOfConcept(CONCEPTS.SelectableCustomizedContainer$O6));
-          }
-        });
+        SelectUpUtil.executeWhile(editorContext, () -> !(editorContext.getSelectionManager().getSelection().getSelectedNodes().get(0).isInstanceOfConcept(CONCEPTS.SelectableCustomizedContainer$O6)));
       }
       @Override
       public boolean canExecute(EditorContext editorContext) {

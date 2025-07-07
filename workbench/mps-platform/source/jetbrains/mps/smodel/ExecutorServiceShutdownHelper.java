@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,7 @@
  */
 package jetbrains.mps.smodel;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
 
@@ -25,7 +24,6 @@ import java.util.concurrent.TimeUnit;
 
 @Immutable
 public final class ExecutorServiceShutdownHelper {
-  private static final Logger LOG = LogManager.getLogger(ExecutorServiceShutdownHelper.class);
 
   @NotNull private final ExecutorService myPool;
 
@@ -44,7 +42,7 @@ public final class ExecutorServiceShutdownHelper {
         myPool.shutdownNow(); // Cancel currently executing tasks
         // Wait a while for tasks to respond to being cancelled
         if (!myPool.awaitTermination(terminationTimeoutMS, TimeUnit.MILLISECONDS)) {
-          LOG.error("Pool did not terminate");
+          Logger.getLogger(ExecutorServiceShutdownHelper.class).error("Pool did not terminate");
         }
       }
     } catch (InterruptedException ie) {

@@ -9,13 +9,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.closures.util.Constants;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.annotations.Nullable;
@@ -46,11 +44,7 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return "jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes".equals(NameUtil.nodeFQName(node)) && !(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SPropertyOperations.getString(it, PROPS.name$MnvL).startsWith("_void");
-          }
-        }));
+        return "jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes".equals(NameUtil.nodeFQName(node)) && !(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).any((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).startsWith("_void")));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
@@ -59,31 +53,17 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
           List<SNode> excepTypeVars = new ArrayList<SNode>();
           for (int exceps = 0; exceps <= Constants.MAX_CLOSURE_EXCEPTIONS; exceps++) {
             List<SNode> tvds = new ArrayList<SNode>();
-            ListSequence.fromList(tvds).addSequence(ListSequence.fromList(paramTypeVars).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                return SNodeOperations.copyNode(it);
-              }
-            }));
+            ListSequence.fromList(tvds).addSequence(ListSequence.fromList(paramTypeVars).select((it) -> SNodeOperations.copyNode(it)));
 
             List<SNode> pdecls = new ArrayList<SNode>();
-            ListSequence.fromList(pdecls).addSequence(ListSequence.fromList(tvds).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                SNode tr = _quotation_createNode_awiph7_a0a0a0a0a4a1a1a0a(it);
-                return _quotation_createNode_awiph7_a1a0a0a0e0b0b0a0(tr, SPropertyOperations.getString(it, PROPS.name$MnvL).toLowerCase());
-              }
+            ListSequence.fromList(pdecls).addSequence(ListSequence.fromList(tvds).select((it) -> {
+              SNode tr = _quotation_createNode_awiph7_a0a0a0a0a4a1a1a0a(it);
+              return _quotation_createNode_awiph7_a1a0a0a0e0b0b0a0(tr, SPropertyOperations.getString(it, PROPS.name$MnvL).toLowerCase());
             }));
 
-            ListSequence.fromList(tvds).addSequence(ListSequence.fromList(excepTypeVars).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                return SNodeOperations.copyNode(it);
-              }
-            }));
+            ListSequence.fromList(tvds).addSequence(ListSequence.fromList(excepTypeVars).select((it) -> SNodeOperations.copyNode(it)));
             List<SNode> exdecls = new ArrayList<SNode>();
-            ListSequence.fromList(exdecls).addSequence(ListSequence.fromList(tvds).skip(ListSequence.fromList(paramTypeVars).count()).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                return _quotation_createNode_awiph7_a0a0a0a0i0b0b0a0(it);
-              }
-            }));
+            ListSequence.fromList(exdecls).addSequence(ListSequence.fromList(tvds).skip(ListSequence.fromList(paramTypeVars).count()).select((it) -> _quotation_createNode_awiph7_a0a0a0a0i0b0b0a0(it)));
 
             String name = "_void" + "_P" + params + "_E" + exceps;
             ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(_quotation_createNode_awiph7_a0a11a1a1a0a(tvds, name, pdecls, exdecls));
@@ -113,11 +93,7 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return "jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes".equals(NameUtil.nodeFQName(node)) && !(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SPropertyOperations.getString(it, PROPS.name$MnvL).startsWith("_return");
-          }
-        }));
+        return "jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes".equals(NameUtil.nodeFQName(node)) && !(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).any((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).startsWith("_return")));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
@@ -129,31 +105,17 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
             ListSequence.fromList(tvds).addElement(_quotation_createNode_awiph7_a0a1a1a1a0b());
             SNode retVal = _quotation_createNode_awiph7_a0c0b0b0a1(ListSequence.fromList(tvds).first());
 
-            ListSequence.fromList(tvds).addSequence(ListSequence.fromList(paramTypeVars).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                return SNodeOperations.copyNode(it);
-              }
-            }));
+            ListSequence.fromList(tvds).addSequence(ListSequence.fromList(paramTypeVars).select((it) -> SNodeOperations.copyNode(it)));
 
             List<SNode> pdecls = new ArrayList<SNode>();
-            ListSequence.fromList(pdecls).addSequence(ListSequence.fromList(tvds).skip(1).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                SNode tr = _quotation_createNode_awiph7_a0a0a0a0a7a1a1a0b(it);
-                return _quotation_createNode_awiph7_a1a0a0a0h0b0b0a1(tr, SPropertyOperations.getString(it, PROPS.name$MnvL).toLowerCase());
-              }
+            ListSequence.fromList(pdecls).addSequence(ListSequence.fromList(tvds).skip(1).select((it) -> {
+              SNode tr = _quotation_createNode_awiph7_a0a0a0a0a7a1a1a0b(it);
+              return _quotation_createNode_awiph7_a1a0a0a0h0b0b0a1(tr, SPropertyOperations.getString(it, PROPS.name$MnvL).toLowerCase());
             }));
 
-            ListSequence.fromList(tvds).addSequence(ListSequence.fromList(excepTypeVars).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                return SNodeOperations.copyNode(it);
-              }
-            }));
+            ListSequence.fromList(tvds).addSequence(ListSequence.fromList(excepTypeVars).select((it) -> SNodeOperations.copyNode(it)));
             List<SNode> exdecls = new ArrayList<SNode>();
-            ListSequence.fromList(exdecls).addSequence(ListSequence.fromList(tvds).skip(ListSequence.fromList(paramTypeVars).count() + 1).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                return _quotation_createNode_awiph7_a0a0a0a0l0b0b0a1(it);
-              }
-            }));
+            ListSequence.fromList(exdecls).addSequence(ListSequence.fromList(tvds).skip(ListSequence.fromList(paramTypeVars).count() + 1).select((it) -> _quotation_createNode_awiph7_a0a0a0a0l0b0b0a1(it)));
 
             String name = "_return" + "_P" + params + "_E" + exceps;
             ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(_quotation_createNode_awiph7_a0a41a1a1a0b(tvds, name, pdecls, retVal, exdecls));
@@ -183,11 +145,7 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return "jetbrains.mps.baseLanguage.closures.runtime._UnrestrictedFunctionTypes".equals(NameUtil.nodeFQName(node)) && !(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SPropertyOperations.getString(it, PROPS.name$MnvL).startsWith("_return_terminate");
-          }
-        }));
+        return "jetbrains.mps.baseLanguage.closures.runtime._UnrestrictedFunctionTypes".equals(NameUtil.nodeFQName(node)) && !(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).any((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).startsWith("_return_terminate")));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
@@ -202,30 +160,16 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
             SNode r = _quotation_createNode_awiph7_a0e0b0b0a2(ListSequence.fromList(tvds).last());
             SNode retVal = _quotation_createNode_awiph7_a0f0b0b0a2(t, r);
 
-            ListSequence.fromList(tvds).addSequence(ListSequence.fromList(paramTypeVars).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                return SNodeOperations.copyNode(it);
-              }
-            }));
+            ListSequence.fromList(tvds).addSequence(ListSequence.fromList(paramTypeVars).select((it) -> SNodeOperations.copyNode(it)));
             List<SNode> pdecls = new ArrayList<SNode>();
-            ListSequence.fromList(pdecls).addSequence(ListSequence.fromList(tvds).skip(2).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                SNode tr = _quotation_createNode_awiph7_a0a0a0a0a9a1a1a0c(it);
-                return _quotation_createNode_awiph7_a1a0a0a0j0b0b0a2(tr, SPropertyOperations.getString(it, PROPS.name$MnvL).toLowerCase());
-              }
+            ListSequence.fromList(pdecls).addSequence(ListSequence.fromList(tvds).skip(2).select((it) -> {
+              SNode tr = _quotation_createNode_awiph7_a0a0a0a0a9a1a1a0c(it);
+              return _quotation_createNode_awiph7_a1a0a0a0j0b0b0a2(tr, SPropertyOperations.getString(it, PROPS.name$MnvL).toLowerCase());
             }));
 
-            ListSequence.fromList(tvds).addSequence(ListSequence.fromList(excepTypeVars).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                return SNodeOperations.copyNode(it);
-              }
-            }));
+            ListSequence.fromList(tvds).addSequence(ListSequence.fromList(excepTypeVars).select((it) -> SNodeOperations.copyNode(it)));
             List<SNode> exdecls = new ArrayList<SNode>();
-            ListSequence.fromList(exdecls).addSequence(ListSequence.fromList(tvds).skip(ListSequence.fromList(paramTypeVars).count() + 2).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                return _quotation_createNode_awiph7_a0a0a0a0n0b0b0a2(it);
-              }
-            }));
+            ListSequence.fromList(exdecls).addSequence(ListSequence.fromList(tvds).skip(ListSequence.fromList(paramTypeVars).count() + 2).select((it) -> _quotation_createNode_awiph7_a0a0a0a0n0b0b0a2(it)));
 
             String name = "_return_terminate" + "_P" + params + "_E" + exceps;
             ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(_quotation_createNode_awiph7_a0a61a1a1a0c(tvds, name, pdecls, retVal, exdecls));
@@ -255,11 +199,7 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return "jetbrains.mps.baseLanguage.closures.runtime._UnrestrictedFunctionTypes".equals(NameUtil.nodeFQName(node)) && !(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SPropertyOperations.getString(it, PROPS.name$MnvL).startsWith("_void_terminate");
-          }
-        }));
+        return "jetbrains.mps.baseLanguage.closures.runtime._UnrestrictedFunctionTypes".equals(NameUtil.nodeFQName(node)) && !(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).any((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).startsWith("_void_terminate")));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
@@ -272,43 +212,21 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
             SNode t = _quotation_createNode_awiph7_a0c0b0b0a3(ListSequence.fromList(tvds).first());
             SNode retVal = _quotation_createNode_awiph7_a0d0b0b0a3(t);
 
-            ListSequence.fromList(tvds).addSequence(ListSequence.fromList(paramTypeVars).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                return SNodeOperations.copyNode(it);
-              }
-            }));
+            ListSequence.fromList(tvds).addSequence(ListSequence.fromList(paramTypeVars).select((it) -> SNodeOperations.copyNode(it)));
             List<SNode> pdecls = new ArrayList<SNode>();
-            ListSequence.fromList(pdecls).addSequence(ListSequence.fromList(tvds).skip(1).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                SNode tr = _quotation_createNode_awiph7_a0a0a0a0a7a1a1a0d(it);
-                return _quotation_createNode_awiph7_a1a0a0a0h0b0b0a3(tr, SPropertyOperations.getString(it, PROPS.name$MnvL).toLowerCase());
-              }
+            ListSequence.fromList(pdecls).addSequence(ListSequence.fromList(tvds).skip(1).select((it) -> {
+              SNode tr = _quotation_createNode_awiph7_a0a0a0a0a7a1a1a0d(it);
+              return _quotation_createNode_awiph7_a1a0a0a0h0b0b0a3(tr, SPropertyOperations.getString(it, PROPS.name$MnvL).toLowerCase());
             }));
 
-            ListSequence.fromList(tvds).addSequence(ListSequence.fromList(excepTypeVars).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                return SNodeOperations.copyNode(it);
-              }
-            }));
+            ListSequence.fromList(tvds).addSequence(ListSequence.fromList(excepTypeVars).select((it) -> SNodeOperations.copyNode(it)));
             List<SNode> exdecls = new ArrayList<SNode>();
-            ListSequence.fromList(exdecls).addSequence(ListSequence.fromList(tvds).skip(ListSequence.fromList(paramTypeVars).count() + 1).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                return _quotation_createNode_awiph7_a0a0a0a0l0b0b0a3(it);
-              }
-            }));
+            ListSequence.fromList(exdecls).addSequence(ListSequence.fromList(tvds).skip(ListSequence.fromList(paramTypeVars).count() + 1).select((it) -> _quotation_createNode_awiph7_a0a0a0a0l0b0b0a3(it)));
 
             final String ename = "_return_terminate" + "_P" + params + "_E" + exceps;
-            SNode eifc = SNodeOperations.cast(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).findFirst(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return ename.equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-              }
-            }), CONCEPTS.Interface$db);
+            SNode eifc = SNodeOperations.cast(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).findFirst((it) -> ename.equals(SPropertyOperations.getString(it, PROPS.name$MnvL))), CONCEPTS.Interface$db);
             List<SNode> eifcParams = new ArrayList<SNode>();
-            ListSequence.fromList(eifcParams).addSequence(ListSequence.fromList(tvds).skip(1).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                return _quotation_createNode_awiph7_a0a0a0a0q0b0b0a3(it);
-              }
-            }));
+            ListSequence.fromList(eifcParams).addSequence(ListSequence.fromList(tvds).skip(1).select((it) -> _quotation_createNode_awiph7_a0a0a0a0q0b0b0a3(it)));
 
             String name = "_void_terminate" + "_P" + params + "_E" + exceps;
             ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(_quotation_createNode_awiph7_a0a91a1a1a0d(t, eifcParams, eifc, tvds, name, pdecls, retVal, exdecls));
@@ -338,11 +256,7 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return "jetbrains.mps.baseLanguage.closures.runtime._UnrestrictedFunctionTypes".equals(NameUtil.nodeFQName(node)) && !(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SPropertyOperations.getString(it, PROPS.name$MnvL).startsWith("_return_void");
-          }
-        }));
+        return "jetbrains.mps.baseLanguage.closures.runtime._UnrestrictedFunctionTypes".equals(NameUtil.nodeFQName(node)) && !(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).any((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).startsWith("_return_void")));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
@@ -355,43 +269,21 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
             SNode r = _quotation_createNode_awiph7_a0c0b0b0a4(ListSequence.fromList(tvds).first());
             SNode retVal = _quotation_createNode_awiph7_a0d0b0b0a4(r);
 
-            ListSequence.fromList(tvds).addSequence(ListSequence.fromList(paramTypeVars).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                return SNodeOperations.copyNode(it);
-              }
-            }));
+            ListSequence.fromList(tvds).addSequence(ListSequence.fromList(paramTypeVars).select((it) -> SNodeOperations.copyNode(it)));
             List<SNode> pdecls = new ArrayList<SNode>();
-            ListSequence.fromList(pdecls).addSequence(ListSequence.fromList(tvds).skip(1).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                SNode tr = _quotation_createNode_awiph7_a0a0a0a0a7a1a1a0e(it);
-                return _quotation_createNode_awiph7_a1a0a0a0h0b0b0a4(tr, SPropertyOperations.getString(it, PROPS.name$MnvL).toLowerCase());
-              }
+            ListSequence.fromList(pdecls).addSequence(ListSequence.fromList(tvds).skip(1).select((it) -> {
+              SNode tr = _quotation_createNode_awiph7_a0a0a0a0a7a1a1a0e(it);
+              return _quotation_createNode_awiph7_a1a0a0a0h0b0b0a4(tr, SPropertyOperations.getString(it, PROPS.name$MnvL).toLowerCase());
             }));
 
-            ListSequence.fromList(tvds).addSequence(ListSequence.fromList(excepTypeVars).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                return SNodeOperations.copyNode(it);
-              }
-            }));
+            ListSequence.fromList(tvds).addSequence(ListSequence.fromList(excepTypeVars).select((it) -> SNodeOperations.copyNode(it)));
             List<SNode> exdecls = new ArrayList<SNode>();
-            ListSequence.fromList(exdecls).addSequence(ListSequence.fromList(tvds).skip(ListSequence.fromList(paramTypeVars).count() + 1).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                return _quotation_createNode_awiph7_a0a0a0a0l0b0b0a4(it);
-              }
-            }));
+            ListSequence.fromList(exdecls).addSequence(ListSequence.fromList(tvds).skip(ListSequence.fromList(paramTypeVars).count() + 1).select((it) -> _quotation_createNode_awiph7_a0a0a0a0l0b0b0a4(it)));
 
             final String ename = "_return_terminate" + "_P" + params + "_E" + exceps;
-            SNode eifc = SNodeOperations.cast(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).findFirst(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return ename.equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-              }
-            }), CONCEPTS.Interface$db);
+            SNode eifc = SNodeOperations.cast(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).findFirst((it) -> ename.equals(SPropertyOperations.getString(it, PROPS.name$MnvL))), CONCEPTS.Interface$db);
             List<SNode> eifcParams = new ArrayList<SNode>();
-            ListSequence.fromList(eifcParams).addSequence(ListSequence.fromList(tvds).skip(1).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                return _quotation_createNode_awiph7_a0a0a0a0q0b0b0a4(it);
-              }
-            }));
+            ListSequence.fromList(eifcParams).addSequence(ListSequence.fromList(tvds).skip(1).select((it) -> _quotation_createNode_awiph7_a0a0a0a0q0b0b0a4(it)));
 
             String name = "_return_void" + "_P" + params + "_E" + exceps;
             ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(_quotation_createNode_awiph7_a0a91a1a1a0e(r, eifcParams, eifc, tvds, name, pdecls, retVal, exdecls));
@@ -421,11 +313,7 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return "jetbrains.mps.baseLanguage.closures.runtime._UnrestrictedFunctionTypes".equals(NameUtil.nodeFQName(node)) && !(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SPropertyOperations.getString(it, PROPS.name$MnvL).startsWith("_void_void");
-          }
-        }));
+        return "jetbrains.mps.baseLanguage.closures.runtime._UnrestrictedFunctionTypes".equals(NameUtil.nodeFQName(node)) && !(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).any((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).startsWith("_void_void")));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
@@ -436,43 +324,21 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
             List<SNode> tvds = new ArrayList<SNode>();
             SNode retVal = _quotation_createNode_awiph7_a0b0b0b0a5();
 
-            ListSequence.fromList(tvds).addSequence(ListSequence.fromList(paramTypeVars).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                return SNodeOperations.copyNode(it);
-              }
-            }));
+            ListSequence.fromList(tvds).addSequence(ListSequence.fromList(paramTypeVars).select((it) -> SNodeOperations.copyNode(it)));
             List<SNode> pdecls = new ArrayList<SNode>();
-            ListSequence.fromList(pdecls).addSequence(ListSequence.fromList(tvds).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                SNode tr = _quotation_createNode_awiph7_a0a0a0a0a5a1a1a0f(it);
-                return _quotation_createNode_awiph7_a1a0a0a0f0b0b0a5(tr, SPropertyOperations.getString(it, PROPS.name$MnvL).toLowerCase());
-              }
+            ListSequence.fromList(pdecls).addSequence(ListSequence.fromList(tvds).select((it) -> {
+              SNode tr = _quotation_createNode_awiph7_a0a0a0a0a5a1a1a0f(it);
+              return _quotation_createNode_awiph7_a1a0a0a0f0b0b0a5(tr, SPropertyOperations.getString(it, PROPS.name$MnvL).toLowerCase());
             }));
 
-            ListSequence.fromList(tvds).addSequence(ListSequence.fromList(excepTypeVars).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                return SNodeOperations.copyNode(it);
-              }
-            }));
+            ListSequence.fromList(tvds).addSequence(ListSequence.fromList(excepTypeVars).select((it) -> SNodeOperations.copyNode(it)));
             List<SNode> exdecls = new ArrayList<SNode>();
-            ListSequence.fromList(exdecls).addSequence(ListSequence.fromList(tvds).skip(ListSequence.fromList(paramTypeVars).count()).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                return _quotation_createNode_awiph7_a0a0a0a0j0b0b0a5(it);
-              }
-            }));
+            ListSequence.fromList(exdecls).addSequence(ListSequence.fromList(tvds).skip(ListSequence.fromList(paramTypeVars).count()).select((it) -> _quotation_createNode_awiph7_a0a0a0a0j0b0b0a5(it)));
 
             final String ename = "_return_terminate" + "_P" + params + "_E" + exceps;
-            SNode eifc = SNodeOperations.cast(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).findFirst(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return ename.equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-              }
-            }), CONCEPTS.Interface$db);
+            SNode eifc = SNodeOperations.cast(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).findFirst((it) -> ename.equals(SPropertyOperations.getString(it, PROPS.name$MnvL))), CONCEPTS.Interface$db);
             List<SNode> eifcParams = new ArrayList<SNode>();
-            ListSequence.fromList(eifcParams).addSequence(ListSequence.fromList(tvds).select(new ISelector<SNode, SNode>() {
-              public SNode select(SNode it) {
-                return _quotation_createNode_awiph7_a0a0a0a0o0b0b0a5(it);
-              }
-            }));
+            ListSequence.fromList(eifcParams).addSequence(ListSequence.fromList(tvds).select((it) -> _quotation_createNode_awiph7_a0a0a0a0o0b0b0a5(it)));
 
             String name = "_void_void" + "_P" + params + "_E" + exceps;
             ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(_quotation_createNode_awiph7_a0a71a1a1a0f(eifcParams, eifc, tvds, name, pdecls, retVal, exdecls));

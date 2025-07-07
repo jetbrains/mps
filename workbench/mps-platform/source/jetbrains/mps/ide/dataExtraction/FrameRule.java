@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,14 +15,17 @@
  */
 package jetbrains.mps.ide.dataExtraction;
 
-import com.intellij.ide.impl.dataRules.GetDataRule;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
-import com.intellij.openapi.actionSystem.DataProvider;
+import com.intellij.openapi.actionSystem.DataMap;
+import com.intellij.openapi.actionSystem.DataSink;
+import com.intellij.openapi.actionSystem.DataSnapshot;
+import com.intellij.openapi.actionSystem.UiDataRule;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.IdeFrame;
 import com.intellij.openapi.wm.WindowManager;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import com.intellij.openapi.wm.ex.WindowManagerEx;
+import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -30,31 +33,44 @@ import javax.swing.FocusManager;
 import javax.swing.JFrame;
 import java.awt.Window;
 
-public class FrameRule implements GetDataRule {
-  private static final Logger LOG = LogManager.getLogger(FrameRule.class);
+public class FrameRule implements UiDataRule {
+  private static final Logger LOG = Logger.getLogger(FrameRule.class);
 
   @Override
+  public void uiDataSnapshot(@NotNull DataSink dataSink, @NotNull DataSnapshot dataSnapshot) {
+    dataSink.set(MPSCommonDataKeys.FRAME, deduceFrame(dataSnapshot));
+  }
+
   @Nullable
-  public JFrame getData(@NotNull DataProvider dataProvider) {
+  private JFrame deduceFrame(@NotNull DataMap dataProvider) {
     Project project = determineProject(dataProvider);
     if (project == null) {
-      // XXX this part could be quite dangerous, if anyone uses JFrame for anything but JFrame
-      //     e.g. LocationRule used to obtain MPSProject from JFrame, and ruined concept behind
-      //     IDEA's DataProvider hierarchy poll, by letting an incapable dataProvider to answer inquiries  it
-      //     wasn't supposed to cover.
-      // fixme this branch in 202/203 leads to not currently active frame and I do not know of the correct api
-      //       #deduceFromActive window is the correct approach but there is no Frame there so I am lost
-      LOG.warn("incorrect frame might be returned");
-      return WindowManager.getInstance().findVisibleFrame();
+      LOG.debug("could not determine the current project");
+      return null;
     }
     return WindowManager.getInstance().getFrame(project);
   }
 
   @Nullable
-  private Project determineProject(@NotNull DataProvider dataProvider) {
-    Project project = CommonDataKeys.PROJECT.getData(dataProvider);
-    return project != null ? project
-                           : deduceFromActiveWindow();
+  private Project deduceFromFrameHelper() {
+    var frameHelper = WindowManagerEx.getInstanceEx().findFirstVisibleFrameHelper();
+    if (frameHelper != null) {
+      return frameHelper.getProject();
+    }
+    return null;
+  }
+
+  @Nullable
+  private Project determineProject(@NotNull DataMap dataProvider) {
+    Project project = dataProvider.get(CommonDataKeys.PROJECT);
+    if (project != null) {
+      return project;
+    }
+    project = deduceFromActiveWindow();
+    if (project != null) {
+      return project;
+    }
+    return deduceFromFrameHelper();
   }
 
   @Nullable
@@ -63,8 +79,6 @@ public class FrameRule implements GetDataRule {
     Window activeWindow = FocusManager.getCurrentManager().getActiveWindow();
     if (activeWindow instanceof IdeFrame) {
       project = ((IdeFrame) activeWindow).getProject();
-    } else {
-      LOG.debug("Active frames have not been found");
     }
     return project;
   }

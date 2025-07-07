@@ -8,11 +8,8 @@ import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 
-@GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/4652592318748337083", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
+@GeneratedClass(nodeId = "4652592318748337083", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 public class ChangeGroup {
   private Bounds myLeftBounds;
   private Bounds myRightBounds;
@@ -22,20 +19,8 @@ public class ChangeGroup {
     myLeftBounds = leftBounds;
     myRightBounds = rightBounds;
     myChanges = changes;
-    myChangeType = ListSequence.fromList(changes).select(new ISelector<ModelChange, ChangeType>() {
-      public ChangeType select(ModelChange ch) {
-        return ch.getType();
-      }
-    }).reduceLeft(new ILeftCombinator<ChangeType, ChangeType>() {
-      public ChangeType combine(ChangeType a, ChangeType b) {
-        return (a == b ? a : ChangeType.CHANGE);
-      }
-    });
-    if (conflictChecker != null && ListSequence.fromList(changes).any(new IWhereFilter<ModelChange>() {
-      public boolean accept(ModelChange ch) {
-        return conflictChecker.isChangeConflicted(ch);
-      }
-    })) {
+    myChangeType = ListSequence.fromList(changes).select((ch) -> ch.getType()).reduceLeft((a, b) -> (a == b ? a : ChangeType.CHANGE));
+    if (conflictChecker != null && ListSequence.fromList(changes).any((ch) -> conflictChecker.isChangeConflicted(ch))) {
       myChangeType = ChangeType.CONFLICTED;
     }
   }

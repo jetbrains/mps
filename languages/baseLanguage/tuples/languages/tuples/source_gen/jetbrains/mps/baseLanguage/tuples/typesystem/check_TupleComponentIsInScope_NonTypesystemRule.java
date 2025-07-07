@@ -11,7 +11,6 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.tuples.behavior.NamedTupleDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -25,11 +24,7 @@ public class check_TupleComponentIsInScope_NonTypesystemRule extends AbstractNon
   public check_TupleComponentIsInScope_NonTypesystemRule() {
   }
   public void applyRule(final SNode namedTupleLiteral, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    List<SNode> tupleComponents = ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(namedTupleLiteral, LINKS.tupleDeclaration$Pcb7))).reversedList().translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode ntd) {
-        return SLinkOperations.getChildren(ntd, LINKS.component$wCHx);
-      }
-    }).toListSequence();
+    List<SNode> tupleComponents = ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(namedTupleLiteral, LINKS.tupleDeclaration$Pcb7))).reversedList().translate((ntd) -> SLinkOperations.getChildren(ntd, LINKS.component$wCHx)).toList();
     for (SNode ref : SLinkOperations.getChildren(namedTupleLiteral, LINKS.componentRef$hTGc)) {
       SNode tupleComponent = SLinkOperations.getTarget(ref, LINKS.componentDeclaration$nkzL);
       if (!(ListSequence.fromList(tupleComponents).contains(tupleComponent))) {

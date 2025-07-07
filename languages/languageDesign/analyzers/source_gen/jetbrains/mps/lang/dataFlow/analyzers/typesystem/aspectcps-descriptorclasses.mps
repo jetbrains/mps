@@ -7,11 +7,10 @@
   <languages />
   <imports>
     <import index="jxym" ref="r:139daa25-c5a7-4ac9-85a2-eb14d22e8f56(jetbrains.mps.lang.dataFlow.analyzers.typesystem)" />
+    <import index="9fia" ref="r:48cf50db-7ea3-4b1e-ab16-c3d84cbcf0df(jetbrains.mps.lang.dataFlow.framework.instructions)" />
     <import index="2gg1" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.errors(MPS.Core/)" />
-    <import index="1fjm" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework(MPS.Core/)" />
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
     <import index="bj1v" ref="r:8b09f5e2-b403-4747-aaa3-eac5acb1f753(jetbrains.mps.lang.dataFlow.analyzers.structure)" />
-    <import index="dau9" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework.instructions(MPS.Core/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="zavc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.errors.messageTargets(MPS.Core/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
@@ -19,6 +18,7 @@
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
+    <import index="8qxk" ref="r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)" />
     <import index="qurh" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.typesystem.runtime(MPS.Core/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="u78q" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typesystem.inference(MPS.Core/)" />
@@ -114,7 +114,7 @@
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -132,7 +132,7 @@
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
@@ -167,7 +167,7 @@
       </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
-      <concept id="1196350785110" name="jetbrains.mps.lang.quotation.structure.AbstractAntiquotation" flags="ng" index="2c44t0">
+      <concept id="1196350785110" name="jetbrains.mps.lang.quotation.structure.AbstractAntiquotation" flags="ngI" index="2c44t0">
         <child id="1196350785111" name="expression" index="2c44t1" />
       </concept>
       <concept id="1196350785117" name="jetbrains.mps.lang.quotation.structure.ReferenceAntiquotation" flags="ng" index="2c44tb" />
@@ -234,7 +234,7 @@
         <property id="1757699476691236116" name="role_DebugInfo" index="2qtEX8" />
         <property id="1341860900488019036" name="linkId" index="P3scX" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -2273,7 +2273,7 @@
                     <node concept="2c44tf" id="aT" role="10QFUP">
                       <uo k="s:originTrace" v="n:9177062368042359695" />
                       <node concept="3uibUv" id="aU" role="2c44tc">
-                        <ref role="3uigEE" to="1fjm:~ProgramState" resolve="ProgramState" />
+                        <ref role="3uigEE" to="8qxk:3yaa4ph8tpD" resolve="ProgramState" />
                         <uo k="s:originTrace" v="n:9177062368042359698" />
                       </node>
                     </node>
@@ -2606,7 +2606,7 @@
                         <ref role="3uigEE" to="33ny:~Map" resolve="Map" />
                         <uo k="s:originTrace" v="n:9120988775422998043" />
                         <node concept="3uibUv" id="cx" role="11_B2D">
-                          <ref role="3uigEE" to="1fjm:~ProgramState" resolve="ProgramState" />
+                          <ref role="3uigEE" to="8qxk:3yaa4ph8tpD" resolve="ProgramState" />
                           <uo k="s:originTrace" v="n:9120988775423002486" />
                         </node>
                         <node concept="3uibUv" id="cy" role="11_B2D">
@@ -3502,7 +3502,7 @@
                     <node concept="2c44tf" id="gQ" role="10QFUP">
                       <uo k="s:originTrace" v="n:9177062368042364928" />
                       <node concept="3uibUv" id="gR" role="2c44tc">
-                        <ref role="3uigEE" to="1fjm:~Program" resolve="Program" />
+                        <ref role="3uigEE" to="8qxk:3yaa4ph8tzc" resolve="Program" />
                         <uo k="s:originTrace" v="n:9177062368042364931" />
                       </node>
                     </node>
@@ -5483,7 +5483,7 @@
                     <node concept="2c44tf" id="qD" role="10QFUP">
                       <uo k="s:originTrace" v="n:7985661997283737371" />
                       <node concept="3uibUv" id="qE" role="2c44tc">
-                        <ref role="3uigEE" to="dau9:~Instruction" resolve="Instruction" />
+                        <ref role="3uigEE" to="9fia:3yaa4ph8tQC" resolve="Instruction" />
                         <uo k="s:originTrace" v="n:7985661997283737373" />
                       </node>
                     </node>
@@ -5771,7 +5771,7 @@
                     <node concept="2c44tf" id="s3" role="10QFUP">
                       <uo k="s:originTrace" v="n:3727642986272492243" />
                       <node concept="3uibUv" id="s4" role="2c44tc">
-                        <ref role="3uigEE" to="1fjm:~Program" resolve="Program" />
+                        <ref role="3uigEE" to="8qxk:3yaa4ph8tzc" resolve="Program" />
                         <uo k="s:originTrace" v="n:3727642986272492316" />
                       </node>
                     </node>

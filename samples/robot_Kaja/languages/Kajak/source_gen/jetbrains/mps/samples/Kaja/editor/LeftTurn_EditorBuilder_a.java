@@ -39,7 +39,7 @@ import jetbrains.mps.samples.Kaja.editor.KajakStyles_StyleSheet.CommandStyleClas
       setCellContext(bigCell);
     }
     Style style = new StyleImpl();
-    new CommandStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new CommandStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     return editorCell;
   }

@@ -4,8 +4,7 @@ package jetbrains.mps.debugger.java.runtime.engine;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.debug.api.AbstractDebugSessionCreator;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import java.util.Map;
 import com.sun.jdi.connect.Connector;
 import jetbrains.mps.debugger.java.api.settings.DebugConnectionSettings;
@@ -32,7 +31,6 @@ import jetbrains.mps.debugger.java.runtime.configurations.remote.RemoteProcessHa
 import com.intellij.execution.process.ProcessAdapter;
 import com.intellij.execution.process.ProcessEvent;
 import com.intellij.util.concurrency.Semaphore;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import com.sun.jdi.VirtualMachine;
 import java.io.IOException;
@@ -43,9 +41,9 @@ import com.sun.jdi.VirtualMachineManager;
 import com.sun.jdi.Bootstrap;
 import java.util.Iterator;
 
-@GeneratedClass(node = "r:0b933946-5ee4-42ea-9b69-bd1790a8e611(jetbrains.mps.debugger.java.runtime.engine)/4352118152439833399", model = "r:0b933946-5ee4-42ea-9b69-bd1790a8e611(jetbrains.mps.debugger.java.runtime.engine)")
+@GeneratedClass(nodeId = "4352118152439833399", model = "r:0b933946-5ee4-42ea-9b69-bd1790a8e611(jetbrains.mps.debugger.java.runtime.engine)")
 public class VmCreator extends AbstractDebugSessionCreator {
-  private static Logger LOG = LogManager.getLogger(VmCreator.class);
+  private static final Logger LOG = Logger.getLogger(VmCreator.class);
   private static final int LOCAL_START_TIMEOUT = 15000;
   /*package*/ static final String SOCKET_ATTACHING_CONNECTOR_NAME = "com.sun.jdi.SocketAttach";
   /*package*/ static final String SHMEM_ATTACHING_CONNECTOR_NAME = "com.sun.jdi.SharedMemoryAttach";
@@ -108,14 +106,14 @@ public class VmCreator extends AbstractDebugSessionCreator {
   }
   private void createVmFailed(Throwable t) {
     createVmFailed(t.getMessage());
-    LOG.warn("Create VM failed", t);
+    LOG.warning("Create VM failed", t);
   }
   private void createVmFailed(String message) {
     myEventsProcessor.getSystemMessagesReporter().reportError(message);
     fail();
   }
   private void fixStopBugUnderLinux(final ProcessHandler processHandler, final DebugSession session) {
-    if (!((processHandler instanceof RemoteProcessHandler))) {
+    if (!(processHandler instanceof RemoteProcessHandler)) {
       //  add listener only to non-remote process handler:
       //  on Unix systems destroying process does not cause VMDeathEvent to be generated,
       //  so we need to call debugProcess.stop() explicitly for graceful termination.
@@ -161,45 +159,35 @@ public class VmCreator extends AbstractDebugSessionCreator {
         processMulticaster.removeListener(this);
       }
     });
-    myEventsProcessor.schedule(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        final Wrappers._T<VirtualMachine> vm = new Wrappers._T<VirtualMachine>(null);
-        try {
-          final long time = System.currentTimeMillis();
-          while (System.currentTimeMillis() - time < LOCAL_START_TIMEOUT) {
-            try {
-              vm.value = doCreateVirtualMachine();
-              LOG.debug("Created VM " + vm.value);
-              break;
-            } catch (Throwable t) {
-              createVmFailed(t);
-              break;
-            }
+    myEventsProcessor.schedule(() -> {
+      final Wrappers._T<VirtualMachine> vm = new Wrappers._T<VirtualMachine>(null);
+      try {
+        final long time = System.currentTimeMillis();
+        while (System.currentTimeMillis() - time < LOCAL_START_TIMEOUT) {
+          try {
+            vm.value = doCreateVirtualMachine();
+            LOG.debug("Created VM " + vm.value);
+            break;
+          } catch (Throwable t) {
+            createVmFailed(t);
+            break;
           }
-        } finally {
-          semaphore.up();
         }
-        if (vm.value != null) {
-          executeAfterProcessStarted(new Runnable() {
-            @Override
-            public void run() {
-              VmCreator.LOG.debug("Schedule commit command.");
-              myEventsProcessor.schedule(new _FunctionTypes._void_P0_E0() {
-                public void invoke() {
-                  myEventsProcessor.commitVm(vm.value);
-                }
-              });
-            }
-          });
-        } else {
-          LOG.debug("VM is null.");
-        }
-      }
-    }, new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
+      } finally {
         semaphore.up();
       }
-    });
+      if (vm.value != null) {
+        executeAfterProcessStarted(new Runnable() {
+          @Override
+          public void run() {
+            VmCreator.LOG.debug("Schedule commit command.");
+            myEventsProcessor.schedule(() -> myEventsProcessor.commitVm(vm.value));
+          }
+        });
+      } else {
+        LOG.debug("VM is null.");
+      }
+    }, () -> semaphore.up());
     semaphore.waitFor();
   }
   private VirtualMachine doCreateVirtualMachine() throws RunFailedException {

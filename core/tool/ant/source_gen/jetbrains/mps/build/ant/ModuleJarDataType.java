@@ -9,7 +9,7 @@ import java.io.File;
 /**
  * Alternatively, use <repo><module jar="smth"></module jar="smth"></repo> instead
  */
-@GeneratedClass(node = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)/4003657351907893424", model = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)")
+@GeneratedClass(nodeId = "4003657351907893424", model = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)")
 public class ModuleJarDataType extends DataType {
   private File myJar;
   private File myModuleManifest;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.textgen.trace;
 
-import jetbrains.mps.util.InternUtil;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -71,11 +70,11 @@ public abstract class PositionInfo implements Comparable<PositionInfo> {
   }
 
   public void setFileName(String fileName) {
-    myFileName = InternUtil.intern(fileName);
+    myFileName = fileName;
   }
 
   public void setNodeId(@NonNls String nodeId) {
-    myNodeId = InternUtil.intern(nodeId);
+    myNodeId = nodeId;
   }
 
   public void setStartLine(int startLine) {

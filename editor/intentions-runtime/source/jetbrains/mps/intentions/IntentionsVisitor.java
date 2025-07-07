@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,11 @@
  */
 package jetbrains.mps.intentions;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.intentions.IntentionExecutable;
 import jetbrains.mps.openapi.intentions.IntentionFactory;
 import jetbrains.mps.openapi.intentions.Kind;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -33,12 +32,10 @@ import java.util.Map;
  * Date: 11/1/12
  */
 interface IntentionsVisitor {
-
   boolean visit(@NotNull IntentionFactory intentionFactory, SNode node);
 
   class CollectAvailableIntentionsVisitor implements IntentionsVisitor {
 
-    private static final Logger LOG = LogManager.getLogger(IntentionsManager.class);
     private final EditorContext myEditorContext;
     private final Map<IntentionExecutable, Kind> result = new HashMap<>();
 
@@ -50,9 +47,11 @@ interface IntentionsVisitor {
     public boolean visit(@NotNull IntentionFactory intentionFactory, SNode node) {
       for (IntentionExecutable executable : intentionFactory.instances(node, myEditorContext)) {
         try {
-          result.put(executable, intentionFactory.getKind());
-        } catch (Exception e) {
-          LOG.error("Exception during parameterized intentions instantiation", e);
+          if (executable.isApplicable(node, myEditorContext)) {
+            result.put(executable, intentionFactory.getKind());
+          }
+        } catch (Throwable t) {
+          Logger.getLogger(IntentionsVisitor.class).error("Exception during parameterized intentions instantiation", t);
         }
       }
       return true;
@@ -74,10 +73,21 @@ interface IntentionsVisitor {
 
     @Override
     public boolean visit(@NotNull IntentionFactory intentionFactory, SNode node) {
-      if (intentionFactory.instances(node, myEditorContext).size() > 0) {
+      boolean isEmpty = true;
+      for (var executable : intentionFactory.instances(node, myEditorContext)) {
+        try {
+          if (executable.isApplicable(node, myEditorContext)) {
+            isEmpty = false;
+            break;
+          }
+        } catch (Throwable t) {
+          Logger.getLogger(IntentionsVisitor.class).error("Exception during parameterized intentions instantiation", t);
+        }
+      }
+      if (!isEmpty) {
         myIntentionKind = intentionFactory.getKind();
       }
-      return myIntentionKind == null || myIntentionKind.ordinal() > 0;
+      return myIntentionKind == null || !myIntentionKind.IsTheMostSevere();
     }
 
     @Nullable

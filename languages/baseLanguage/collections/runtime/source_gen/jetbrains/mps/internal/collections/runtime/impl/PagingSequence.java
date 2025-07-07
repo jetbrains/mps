@@ -63,7 +63,7 @@ public class PagingSequence<U> extends Sequence<U> implements Iterable<U> {
       if (hasNext.unknown()) {
         moveToNext();
       }
-      if (!((hasNext.hasNext()))) {
+      if (!(hasNext.hasNext())) {
         throw new NoSuchElementException();
       }
       return clearNext();

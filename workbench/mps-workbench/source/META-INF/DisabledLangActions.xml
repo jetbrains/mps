@@ -15,6 +15,7 @@
   -->
 <idea-plugin>
   <actions>
+
     <action id="ClassNameCompletion" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <action id="SurroundWithLiveTemplate" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
 
@@ -23,7 +24,6 @@
     <action id="OverrideMethods" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <action id="ImplementMethods" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <action id="DelegateMethods" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="GeneratePattern" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <group id="GenerateFromTestCreatorsGroup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
     <!--    </group>-->
 
@@ -32,11 +32,9 @@
     <group id="ShowIntentionsGroup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
 
     <action id="TogglePopupHints" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="FindModal" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
+
 
     <action id="CodeInspection.OnEditor" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-
-    <action id="ActivateNavBar" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
 
     <action id="EditorIndentLineOrSelection" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
 
@@ -95,6 +93,12 @@
 
 
     <!-- View -->
+    <!--    <group id="QuickActions">-->
+    <!-- MPS patch: see MPS-24488  TODO: investigate-->
+    <action id="QuickImplementations" class="jetbrains.mps.codeInsight.hint.actions.MockShowImplementationsAction" overrides="true"/>
+    <action id="QuickJavaDoc" class="jetbrains.mps.codeInsight.documentation.actions.MockShowQuickDocInfoAction" overrides="true"/>
+    <!--    </group>-->
+
     <group id="CodeEditorBaseGroup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
     <!--    <group id="CodeEditorBaseGroup">-->
     <group id="CodeEditorViewGroup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
@@ -116,8 +120,18 @@
 
     <!-- Go To -->
     <group id="GoToTargetEx" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
+    <!-- keystroke values taken from platform-impl.jar!/keymaps/Mac OS X 10.5+.xml -->
+    <!-- I didn't find a better way to unregister these shortcuts to avoid conflicts with GoToModule/GoToModel actions-->
+    <action id="GotoSymbol" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true">
+      <keyboard-shortcut keymap="Mac OS X 10.5+" remove="true" first-keystroke="meta alt O"/>
+    </action>
+    <action id="GotoFile" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true">
+      <keyboard-shortcut keymap="Mac OS X 10.5+" remove="true" first-keystroke="meta shift O"/>
+    </action>
 
     <group id="GoToCodeGroup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
+
+    <action id="TypeHierarchy" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
 
     <!-- Code -->
     <!--    <group id="CodeMenu" popup="true">-->
@@ -256,10 +270,11 @@
     <action id="NewScratchFile" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <action id="NewDir" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <group id="FileTemplateSeparatorGroup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
-    <action id="NewFromTemplate" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
+    <group id="NewFromTemplate" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
     <!--    </group>-->
 
-    <group id="WeighingNewGroup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
+    <!-- PROVISIONAL HACK TO ADDRESS MPS-34610; the override was commented out, no idea why did we need it in the first place -->
+    <!-- group id="WeighingNewGroup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/ -->
 
 
     <!-- Toolbar -->
@@ -296,10 +311,6 @@
     <group id="ProjectViewPopupMenuModifyGroup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
     <!--    <group id="ProjectViewPopupMenuModifyGroup">-->
     <group id="MarkFileAs" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
-    <!--      <group id="MarkFileAs">-->
-    <action id="MarkAsPlainTextAction" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="MarkAsOriginalTypeAction" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <!--      </group>-->
     <!--    </group>-->
 
     <group id="ProjectViewPopupMenuRunGroup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
@@ -380,7 +391,6 @@
     <action id="Resume" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
 
     <action id="EvaluateExpression" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="QuickEvaluateExpression" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <action id="ShowExecutionPoint" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <!--      </group>-->
     <group id="BreakpointActionsGroup" popup="true" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
@@ -415,7 +425,6 @@
     <action id="XDebugger.RemoveWatch" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <action id="XDebugger.MoveWatchUp" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <action id="XDebugger.MoveWatchDown" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="XDebugger.SwitchWatchesInVariables" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <action id="XDebugger.RemoveAllWatches" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <action id="XDebugger.MuteBreakpoints" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <action id="XDebugger.ToggleSortValues" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
@@ -470,7 +479,7 @@
     <action id="openAssertEqualsDiff" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <group id="RunTestGroup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
 
-    <action id="DumpLookupElementWeights" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
+    <action id="DumpLookupElementWeights" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
 
     <action id="JumpToColorsAndFonts" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     
@@ -511,8 +520,8 @@
 
     <group id="InspectionToolWindow.TreePopup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
     <!--    <group id="InspectionToolWindow.TreePopup" compact="true">-->
-    <action id="QuickFixes" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="SuppressFixes" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
+    <group id="QuickFixes" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
+    <group id="SuppressFixes" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
     <action id="EditInspectionSettings" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <action id="DisableInspection" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <action id="RunInspectionOn" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
@@ -531,7 +540,5 @@
     <action id="TodoViewGroupByFlattenPackage" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <!--      </group>-->
     <!--    </group>-->
-
-    <action id="ProjectViewChangeView" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
   </actions>
 </idea-plugin>

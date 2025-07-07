@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class StateMachineTest__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116c17a1865L, "jetbrains.mps.samples.secretCompartmentLanguage.structure.StateMachineTest");
 
-  public static final SMethod<String> getStateMachineName_idhr1J3q0 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getStateMachineName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hr1J3q0").build();
+  public static final SMethod<String> getStateMachineName_idhr1J3q0 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getStateMachineName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1197251245696L).languageId(0xa2e9565e5049c1ceL, 0x6986543d82184ebfL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getStateMachineName_idhr1J3q0);
 

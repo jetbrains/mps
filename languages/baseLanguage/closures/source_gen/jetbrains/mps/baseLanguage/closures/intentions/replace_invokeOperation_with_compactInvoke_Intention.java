@@ -10,9 +10,9 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -23,27 +23,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class replace_invokeOperation_with_compactInvoke_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public replace_invokeOperation_with_compactInvoke_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:dda1964e-d5fa-4ee3-9168-3bfd25608c63(jetbrains.mps.baseLanguage.closures.intentions)", "1235748072133"));
   }
+
   @Override
   public String getPresentation() {
     return "replace_invokeOperation_with_compactInvoke";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.DotExpression$yW);
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -53,19 +47,36 @@ public final class replace_invokeOperation_with_compactInvoke_Intention extends 
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Replace with Compact Invoke Expression";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode parent = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.DotExpression$yW);
       SNodeOperations.replaceWithAnother(parent, _quotation_createNode_7ste6_a0a1a0(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(parent, LINKS.operation$gs9E), CONCEPTS.InvokeFunctionOperation$cv), LINKS.parameter$chHn), SLinkOperations.getTarget(parent, LINKS.operand$w6IR)));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.DotExpression$yW);
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return replace_invokeOperation_with_compactInvoke_Intention.this;
     }
+
   }
   private static SNode _quotation_createNode_7ste6_a0a1a0(Object parameter_1, Object parameter_2) {
     SNode quotedNode_3 = null;

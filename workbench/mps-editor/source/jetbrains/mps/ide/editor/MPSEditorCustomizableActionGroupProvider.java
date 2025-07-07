@@ -25,5 +25,6 @@ public class MPSEditorCustomizableActionGroupProvider extends CustomizableAction
     registrar.addCustomizableActionGroup(MPSActions.EDITOR_ACTIONS_GROUP, "MPS Editor Actions");
     registrar.addCustomizableActionGroup(MPSActions.EDITOR_LEFTPANEL_GROUP, "MPS Editor Gutter Popup Menu");
     registrar.addCustomizableActionGroup(MPSActions.ACTIONS_AS_INTENTIONS_GROUP, "MPS Actions As Intentions");
+    registrar.addCustomizableActionGroup(MPSActions.ACTIONS_AS_ERROR_INTENTIONS_GROUP, "MPS Actions As Error Intentions");
   }
 }

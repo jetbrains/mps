@@ -12,7 +12,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.baseLanguage.behavior.IContainsStatementList__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -31,11 +30,7 @@ public class UnwrapStatementsUtil {
     SNodeOperations.insertNextSiblingChild(ifStatement, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement")));
 
     List<SNode> statements = ListSequence.fromListWithValues(new ArrayList<SNode>(), SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(ifStatement, LINKS.ifFalseStatement$psZK), CONCEPTS.BlockStatement$u4), LINKS.statements$q65M), LINKS.statement$53DE));
-    ListSequence.fromList(statements).reversedList().visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNodeOperations.insertNextSiblingChild(ifStatement, it);
-      }
-    });
+    ListSequence.fromList(statements).reversedList().visitAll((it) -> SNodeOperations.insertNextSiblingChild(ifStatement, it));
     SNodeOperations.deleteNode(SLinkOperations.getTarget(ifStatement, LINKS.ifFalseStatement$psZK));
     CommentUtil.commentOutAll(commentedNodes);
     return (ListSequence.fromList(statements).last() != null ? ListSequence.fromList(statements).last() : (SNodeOperations.getNextSibling(ifStatement) != null ? SNodeOperations.getNextSibling(ifStatement) : ifStatement));
@@ -43,7 +38,7 @@ public class UnwrapStatementsUtil {
 
   public static void unwrapIContainsStatementList(SNode oldContainer) {
     if (!(SNodeOperations.isInstanceOf(oldContainer, CONCEPTS.Statement$P6))) {
-      throw new IllegalArgumentException("The supplied statement container " + oldContainer + " is not a Statement.");
+      throw new IllegalArgumentException("The supplied statement container " + SNodeOperations.present(oldContainer) + " is not a Statement.");
     }
     unwrapStatementListInContainer(SNodeOperations.cast(oldContainer, CONCEPTS.Statement$P6), IContainsStatementList__BehaviorDescriptor.getStatementList_idi0zv5tb.invoke(oldContainer));
   }
@@ -61,11 +56,7 @@ public class UnwrapStatementsUtil {
 
     Iterable<SNode> commentedNodes = CommentUtil.uncommentAll(oldContainer);
     List<SNode> statements = SLinkOperations.getChildren(oldContainer, LINKS.statement$53DE);
-    ListSequence.fromList(statements).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNodeOperations.insertPrevSiblingChild(toDelete, it);
-      }
-    });
+    ListSequence.fromList(statements).visitAll((it) -> SNodeOperations.insertPrevSiblingChild(toDelete, it));
     SNodeOperations.deleteNode(toDelete);
     CommentUtil.commentOutAll(commentedNodes);
   }

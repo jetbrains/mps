@@ -13,12 +13,11 @@ import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -31,6 +30,7 @@ public class AddExecutor_Action extends BaseAction {
     super("Add Executor", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -39,11 +39,7 @@ public class AddExecutor_Action extends BaseAction {
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
     final SNode nodeFinal = event.getData(MPSCommonDataKeys.NODE);
-    boolean exists = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(nodeFinal), CONCEPTS.AbstractRunConfigurationExecutor$Fp)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.configuration$CM7P) == nodeFinal;
-      }
-    });
+    boolean exists = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(nodeFinal), CONCEPTS.AbstractRunConfigurationExecutor$Fp)).any((it) -> SLinkOperations.getTarget(it, LINKS.configuration$CM7P) == nodeFinal);
     setEnabledState(event.getPresentation(), !(exists));
     event.getPresentation().setText("Create Executor for " + SPropertyOperations.getString(nodeFinal, PROPS.name$MnvL));
   }
@@ -75,8 +71,7 @@ public class AddExecutor_Action extends BaseAction {
     SLinkOperations.setTarget(executor, LINKS.configuration$CM7P, event.getData(MPSCommonDataKeys.NODE));
     SPropertyOperations.set(executor, PROPS.virtualPackage$EkXl, SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.virtualPackage$EkXl));
     SModelOperations.addRootNode(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)), executor);
-    NavigationSupport.getInstance().openNode(event.getData(MPSCommonDataKeys.MPS_PROJECT), executor, true, false);
-
+    new EditorNavigator(event.getData(MPSCommonDataKeys.MPS_PROJECT)).shallFocus(true).open(SNodeOperations.getPointer(executor));
   }
 
   private static final class CONCEPTS {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -161,7 +161,9 @@ public class NodeMaps {
 
   private boolean showTypeWasNotCalculated() {
     ValidationSettings instance = ValidationSettings.getInstance();
-    if (instance == null) return false;
+    if (instance == null) {
+      return false;
+    }
     IModelValidationSettings modelValidationSettings = instance.getModelValidationSettings();
     return modelValidationSettings != null && !modelValidationSettings.isDisableTypeWasNotCalculated();
   }

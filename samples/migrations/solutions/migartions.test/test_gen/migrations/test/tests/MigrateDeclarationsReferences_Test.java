@@ -4,11 +4,11 @@ package migrations.test.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import jetbrains.mps.lang.test.runtime.ExecuteCommandExtension;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseMigrationTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import java.util.Collection;
@@ -26,14 +26,14 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 @MPSLaunch
 public class MigrateDeclarationsReferences_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(MigrateDeclarationsReferences_Test.class, "${module}/../..", "r:fd0f5486-f8ee-4117-b081-77c304b23496(migrations.test.tests@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(MigrateDeclarationsReferences_Test.class).projectPath("${project_home}").modelRef("r:fd0f5486-f8ee-4117-b081-77c304b23496(migrations.test.tests@tests)").reopenProject(false).build());
 
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private ExecuteCommandExtension myCommandExtension = new ExecuteCommandExtension(this);
 
   public MigrateDeclarationsReferences_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test

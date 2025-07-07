@@ -4,9 +4,10 @@ package jetbrains.mps.editorTest;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.lang.test.runtime.EditorTestUtil;
@@ -15,11 +16,11 @@ import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 
 @MPSLaunch
 public class BackspaceAndDeleteStatementTwoStep_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(BackspaceAndDeleteStatementTwoStep_Test.class, "${mps_home}", "r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(BackspaceAndDeleteStatementTwoStep_Test.class).projectPath(null).modelRef("r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)").reopenProject(false).build());
 
   public BackspaceAndDeleteStatementTwoStep_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -36,17 +37,11 @@ public class BackspaceAndDeleteStatementTwoStep_Test extends BaseTransformationT
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("187814243217166685", "187814243217167301");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-          getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              Assert.assertTrue(DeletionApproverUtil.isApprovedForDeletion(getEditorComponent().getEditorContext(), getNodeById("2342352603926180548")));
-            }
-          });
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-          Assert.assertTrue(DeletionApproverUtil.isApprovedForDeletion(getEditorComponent().getEditorContext(), getEditorComponent().getSelectedNode()));
-        }
+      EditorTestUtil.runWithTwoStepDeletion(() -> {
+        invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
+        getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> Assert.assertTrue(DeletionApproverUtil.isApprovedForDeletion(getEditorComponent().getEditorContext(), getAnnotatedNode("node"))));
+        invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
+        Assert.assertTrue(DeletionApproverUtil.isApprovedForDeletion(getEditorComponent().getEditorContext(), getEditorComponent().getSelectedNode()));
       }, true);
 
     }

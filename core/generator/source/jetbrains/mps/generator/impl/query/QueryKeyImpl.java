@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package jetbrains.mps.generator.impl.query;
 
 import jetbrains.mps.smodel.SNodeId.Regular;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -27,11 +26,14 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.Map;
 
 /**
- * At the moment, some generated methods use QueryKey.getTemplateNode().getNodeId() to identify methods,
- * while others need {@link #getQueryNodeId()}. Since {@code ReflectiveQueryProvider} gone (which could not live
+ * Generated query methods use {@link QueryKey#forTemplateNode(Map)} or {@link QueryKey#forFunctionNode(Map)} to identify generated methods
+ * according to method template knowledge if the query is identified by its host node (template) or by itself.
+ * <p>
+ * Since {@code ReflectiveQueryProvider} gone (which could not live
  * without #getQueryNodeId() as it's the identity to derive method name from in most cases), it seems I can implement equals/hashCode
  * here to allow code like "myGeneratedField.contains(queryKey)" in QG (to replace "string id = queryKey.getTemplateNode().getNodeId().toString())
  * FIXME equals/hashCode and not exposure of internal structure in generated templates!
+ * </p>
  * @author Artem Tikhomirov
  * @since 3.4
  */
@@ -49,16 +51,6 @@ public final class QueryKeyImpl implements QueryKey {
   @Override
   public SNodeReference getTemplateNode() {
     return myTemplateNode;
-  }
-
-  /**
-   * @deprecated uses in generated code for non-compiled templates source node/nodes query.
-   *             leave here for at least a year to facilitate graceful transition
-   */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
-  public SNodeId getQueryNodeId() {
-    return myFunctionNodeId;
   }
 
   @Override

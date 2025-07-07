@@ -16,8 +16,10 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.LinkedList;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
+import java.util.Objects;
+import jetbrains.mps.vcs.diff.DiffUtil;
 
-@GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/6359197607515881703", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
+@GeneratedClass(nodeId = "6359197607515881703", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class AddRootChange extends StructureChange {
   private final SNodeId myNodeId;
 
@@ -62,5 +64,18 @@ public class AddRootChange extends StructureChange {
   @Override
   public List<Tuples._2<SNodeId, MessageTarget>> createMessageTargetsWithIds(boolean isNewModel) {
     return ListSequence.fromListAndArray(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getRootId(), ((MessageTarget) new NodeMessageTarget())));
+  }
+
+  @Override
+  public boolean conflictsWith(@NotNull ModelChange otherChange) {
+    if (super.conflictsWith(otherChange)) {
+      return true;
+    }
+    return otherChange instanceof AddRootChange && Objects.equals(otherChange.getRootId(), this.getRootId());
+  }
+
+  @Override
+  public boolean isSymmetricWith(@NotNull ModelChange otherChange) {
+    return otherChange instanceof AddRootChange && DiffUtil.nodeEquals(this.getChangeSet().getNewModel().getNode(this.getRootId()), otherChange.getChangeSet().getNewModel().getNode(otherChange.getRootId()));
   }
 }

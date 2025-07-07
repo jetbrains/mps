@@ -13,7 +13,6 @@
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
-      <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9" />
       <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
         <property id="7862711839422615217" name="text" index="t5JxN" />
       </concept>
@@ -40,6 +39,7 @@
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
         <reference id="1169127628841" name="intfc" index="PrY4T" />
       </concept>
+      <concept id="5583843313507852240" name="jetbrains.mps.lang.structure.structure.MarkerInterfaceAttribute" flags="ng" index="3MrDgS" />
       <concept id="1071489090640" name="jetbrains.mps.lang.structure.structure.ConceptDeclaration" flags="ig" index="1TIwiD">
         <property id="1096454100552" name="rootable" index="19KtqR" />
         <reference id="1071489389519" name="extends" index="1TJDcQ" />
@@ -62,7 +62,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -389,22 +389,6 @@
       <ref role="PrY4T" node="7aMlq14vYj7" resolve="DSLClassMember" />
     </node>
   </node>
-  <node concept="1TIwiD" id="3crTN2XY8Qo">
-    <property role="3GE5qa" value="DEPRECATED" />
-    <property role="TrG5h" value="GenerateModifier" />
-    <property role="34LRSv" value="generate" />
-    <property role="EcuMT" value="3682791316837141912" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="asaX9" id="6zkSwmUG6Et" role="lGtFl" />
-    <node concept="1TJgyi" id="3m06JgscQVS" role="1TKVEl">
-      <property role="TrG5h" value="name" />
-      <property role="IQ2nx" value="3855110916776619768" />
-      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
-    </node>
-    <node concept="PrWs8" id="3crTN2XY8Qq" role="PzmwI">
-      <ref role="PrY4T" node="2WSWNq1TGnY" resolve="MemberModifier" />
-    </node>
-  </node>
   <node concept="1TIwiD" id="1QReUKIFP7I">
     <property role="3GE5qa" value="member.modifier" />
     <property role="TrG5h" value="MultipleModifier" />
@@ -424,6 +408,7 @@
     <property role="3GE5qa" value="" />
     <property role="TrG5h" value="AutoInitDSLClass" />
     <property role="EcuMT" value="1055884086724924397" />
+    <node concept="3MrDgS" id="7jMp0D_Tek8" role="lGtFl" />
   </node>
   <node concept="1TIwiD" id="7GXvAHO00L4">
     <property role="3GE5qa" value="instances" />

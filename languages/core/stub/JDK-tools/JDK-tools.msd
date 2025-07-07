@@ -18,8 +18,7 @@
     </modelRoot>
   </models>
   <facets>
-    <facet type="java"/>
-    <facet pluginId="com.intellij" type="ideaPlugin" />
+    <facet type="java" compile="ext" classes="provided" ext="no"/>
   </facets>
   <sourcePath />
   <dependencies>

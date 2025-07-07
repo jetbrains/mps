@@ -14,12 +14,12 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/6869265041613223131", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "6869265041613223131", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class DefaultConceptNameFilter implements Function<SNodeReference, String> {
   private final SRepository myRepo;
 
@@ -36,7 +36,7 @@ public class DefaultConceptNameFilter implements Function<SNodeReference, String
         if (SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$KA)) {
           return SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.AbstractConceptDeclaration$KA), PROPS.name$MnvL);
         } else if (node != null) {
-          return ((String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
+          return ((String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getPresentation", 1213877396640L, 0x553941aeb020c32eL)));
         }
         return "";
       }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package jetbrains.mps.generator.impl;
 import jetbrains.mps.generator.IGeneratorLogger;
 import jetbrains.mps.generator.IGeneratorLogger.ProblemDescription;
 import jetbrains.mps.generator.impl.cache.MappingsMemento;
+import jetbrains.mps.generator.runtime.LabelDeclaration;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
 import jetbrains.mps.smodel.runtime.StaticScope;
@@ -52,6 +53,7 @@ import java.util.stream.Collectors;
  * Evgeny Gryaznov, Feb 16, 2010
  */
 public final class GeneratorMappings {
+  private final List<LabelDeclaration> myPrivateLabels;
   private final IGeneratorLogger myLog;
 
   /* input -> output */
@@ -62,7 +64,8 @@ public final class GeneratorMappings {
 
   private final LMCollector myLabeledMappings = new LMCollector();
 
-  public GeneratorMappings(IGeneratorLogger log) {
+  public GeneratorMappings(@NotNull List<LabelDeclaration> privateLabels, IGeneratorLogger log) {
+    myPrivateLabels = privateLabels;
     myLog = log;
   }
 
@@ -73,6 +76,7 @@ public final class GeneratorMappings {
       if (lmCollector.isEmpty()) {
         continue;
       }
+      // JFTR, #expose(), below, is sort of reverse operation
       lmCollector.forEachNoInput(myLabeledMappings::add);
       lmCollector.forEachWithInput(myLabeledMappings::add);
       // Bit of history:
@@ -238,7 +242,19 @@ public final class GeneratorMappings {
       }
     }
 
-    return null;
+    // XXX getInputHistory() ignores null input node, which is a legitimate case e.g. for a Create Root template
+    //     If we generate node "A" without any inputNode and then references to "A" with some inputNode set
+    //     (e.g. in lang.generator, for each reduction rule with condition, we generate instantiation of
+    //     a respective query class, which is not generated unless there are rules with conditions.)
+    //     To restore such reference, we have to check 'l.withoutInput()' case (see addOutputNodeForContext(), above).
+    //     I don't want to modify getInputHistory() yet to give null input (I suppose almost any TC would end up
+    //     with null in its input history then, and I don't want to record excessive values). Therefore, I check
+    //     here explicitly for null input just in case the one has been recorded.
+    if (templateContext.getInput() != null) {
+      // if it's null, we've checked this scenario already
+      outputTargetNode = l.get(null, tag);
+    }
+    return outputTargetNode;
   }
 
   public boolean isInputNodeHasUniqueCopiedOutputNode(SNode inputNode) {
@@ -282,33 +298,38 @@ public final class GeneratorMappings {
         map.forEachRecord(cc);
       }
     });
-    l.sort(new Comparator<>() {
-      private final SNodeComparator myNodeComparator = new SNodeComparator();
+    try {
+      l.sort(new Comparator<>() {
+        private final SNodeComparator myNodeComparator = new SNodeComparator();
 
-      @Override
-      public int compare(NodeMapRecord o1, NodeMapRecord o2) {
-        int v = myNodeComparator.compare(o1.key(), o2.key());
-        if (v == 0) {
-          // input node is the same (or indistinguishable), have to respect values to keep order consistent.
-          // E.g. a pattern in a typesystem rule is copied to to different methods, there are two output classes
-          // Pattern_nn7be_a0a0a0b0d and Pattern_nn7be_a0a0a0c, and label entry order is inconsistent
-          v = String.valueOf(o1.value()).compareTo(String.valueOf(o2.value()));
+        @Override
+        public int compare(NodeMapRecord o1, NodeMapRecord o2) {
+          int v = myNodeComparator.compare(o1.key(), o2.key());
           if (v == 0) {
-            // last resort, address scenario when input nodes were copied, and processed individually. Treat the one
-            // that served as a master one 'first', its copies 'subsequent'. Guess the master by node id matching the one
-            // of the original node.
-            final boolean b1 = SNodeComparator.nodeIdSameAsOriginal(o1.key());
-            final boolean b2 = SNodeComparator.nodeIdSameAsOriginal(o2.key());
-            if (b1 ^ b2) {
-              v = b1 ? -1 : 1;
+            // input node is the same (or indistinguishable), have to respect values to keep order consistent.
+            // E.g. a pattern in a typesystem rule is copied to to different methods, there are two output classes
+            // Pattern_nn7be_a0a0a0b0d and Pattern_nn7be_a0a0a0c, and label entry order is inconsistent
+            v = String.valueOf(o1.value()).compareTo(String.valueOf(o2.value()));
+            if (v == 0) {
+              // last resort, address scenario when input nodes were copied, and processed individually. Treat the one
+              // that served as a master one 'first', its copies 'subsequent'. Guess the master by node id matching the one
+              // of the original node.
+              final boolean b1 = SNodeComparator.nodeIdSameAsOriginal(o1.key());
+              final boolean b2 = SNodeComparator.nodeIdSameAsOriginal(o2.key());
+              if (b1 ^ b2) {
+                v = b1 ? -1 : 1;
+              }
+              // fall-through
             }
-            // fall-through
           }
+          return v;
         }
-        return v;
-      }
 
-    });
+      });
+    } catch (Exception ex) {
+      ProblemDescription[] dd = l.stream().map(e -> String.format("Key: %s, id: %s. Value: %s", e.key().getPresentation(), e.key().getNodeId(), e.value())).map(ProblemDescription::new).toArray(ProblemDescription[]::new);
+      myLog.warning(null, String.format("Can't arrange keys for '%s' mappings: %s. Consider overriding getPresentation() to facilitate sorting.", label, ex.getMessage()), dd);
+    }
     return l.stream().map(NodeMapRecord::key).collect(Collectors.toList());
   }
 
@@ -412,6 +433,40 @@ public final class GeneratorMappings {
       });
     });
     myLabeledMappings.forEachNoInput(cp::record);
+  }
+
+  /**
+   * We don't need to keep complete GeneratorMappings, just a subset with labeled input->output
+   * and conditional roots, LMCollector is enough.
+   *
+   * @return set of labeled records to get exposed in checkpoint models (excluding MLs considered 'private')
+   */
+  /*package*/ LMCollector exposed() {
+    // this is a third iteration I believe to make "persistence snapshot" of GM,
+    // first one being MappingMemento, the next one unused GM#export(). Now GenerationSession
+    // needs to keep tack of LMs from few steps, that's why we expose state as an object, rather than
+    // encapsulate LM record processing in here. Besides, the way CheckpointStateBuilder+DebugMappingsBuilder
+    // work doesn't leave me too much room for creativity here.
+    // What is beneficial is that we now keep only labels we gonna need (i.e. not complete GM with
+    // copied/template nodes)
+    final LMCollector exposed = new LMCollector();
+    final Set<String> privateLabels = myPrivateLabels.stream().map(LabelDeclaration::getName).collect(Collectors.toUnmodifiableSet());
+    myLabeledMappings.forEachNoInput((l, n) -> {
+      if (!privateLabels.contains(l)) {
+        exposed.add(l, n);
+      }
+    });
+    myLabeledMappings.forEachWithInput((l, nm) -> {
+      if (!privateLabels.contains(l)) {
+        exposed.add(l, nm);
+      }
+    });
+    myLabeledMappings.forEachComposite(lr -> {
+      if (!privateLabels.contains(lr.label)) {
+        exposed.addComposite(lr);
+      }
+    });
+    return exposed;
   }
 
   private static final class TagNodeList {

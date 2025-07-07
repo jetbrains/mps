@@ -12,11 +12,8 @@ import jetbrains.mps.typesystem.inference.EquationInfo;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.internal.collections.runtime.StopIteratingException;
 import jetbrains.mps.typechecking.TypecheckingFacade;
@@ -92,25 +89,23 @@ public class QueriesUtil {
       }
     }
     List<SNode> attributes = (currMacroNode == null ? new IAttributeDescriptor.AllAttributes().list(node) : SNodeOperations.getPrevSiblings(currMacroNode, false));
-    SNode prevMacro = SNodeOperations.as(Sequence.fromIterable(SNodeOperations.ofConcept(attributes, CONCEPTS.SourceSubstituteMacro$Uv)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        // macros can change source, skip those that do not change it due to missing optional query
-        if (SNodeOperations.isInstanceOf(it, CONCEPTS.MapSrcNodeMacro$p5) && (SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.MapSrcNodeMacro$p5), LINKS.sourceNodeQuery$n0M9) == null)) {
-          return false;
-        }
-        if (SNodeOperations.isInstanceOf(it, CONCEPTS.TemplateSwitchMacro$3G) && (SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.TemplateSwitchMacro$3G), LINKS.sourceNodeQuery$eJXb) == null)) {
-          return false;
-        }
-        if (SNodeOperations.isInstanceOf(it, CONCEPTS.TemplateCallMacro$qa) && (SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.TemplateCallMacro$qa), LINKS.sourceNodeQuery$r9Sk) == null)) {
-          return false;
-        }
-        if (SNodeOperations.isInstanceOf(it, CONCEPTS.ITemplateCall$ab) && SPropertyOperations.getBoolean(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.ITemplateCall$ab), LINKS.template$6_6), PROPS.needCallSite$fSr_)) {
-          // if we are inside a macro nested under CALL/SWITCH that passes CALL-SITE value, we
-          // are likely evaluating the value, and need not to look at CALL/SWTICH input node
-          return false;
-        }
-        return true;
+    SNode prevMacro = SNodeOperations.as(Sequence.fromIterable(SNodeOperations.ofConcept(attributes, CONCEPTS.SourceSubstituteMacro$Uv)).where((it) -> {
+      // macros can change source, skip those that do not change it due to missing optional query
+      if (SNodeOperations.isInstanceOf(it, CONCEPTS.MapSrcNodeMacro$p5) && (SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.MapSrcNodeMacro$p5), LINKS.sourceNodeQuery$n0M9) == null)) {
+        return false;
       }
+      if (SNodeOperations.isInstanceOf(it, CONCEPTS.TemplateSwitchMacro$3G) && (SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.TemplateSwitchMacro$3G), LINKS.sourceNodeQuery$eJXb) == null)) {
+        return false;
+      }
+      if (SNodeOperations.isInstanceOf(it, CONCEPTS.TemplateCallMacro$qa) && (SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.TemplateCallMacro$qa), LINKS.sourceNodeQuery$r9Sk) == null)) {
+        return false;
+      }
+      if (SNodeOperations.isInstanceOf(it, CONCEPTS.ITemplateCall$ab) && SPropertyOperations.getBoolean(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.ITemplateCall$ab), LINKS.template$6_6), PROPS.needCallSite$fSr_)) {
+        // if we are inside a macro nested under CALL/SWITCH that passes CALL-SITE value, we
+        // are likely evaluating the value, and need not to look at CALL/SWTICH input node
+        return false;
+      }
+      return true;
     }).last(), CONCEPTS.SourceSubstituteMacro$Uv);
     // ========
     if (prevMacro != null) {
@@ -120,61 +115,57 @@ public class QueriesUtil {
   }
   public static SNode getEnclosing_TemplateFragment(SNode node) {
     //  find first ancestor (inclusive) which has a template fragment attribute
-    Iterable<SNode> TFs = ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(final SNode it) {
-        return new Iterable<SNode>() {
-          public Iterator<SNode> iterator() {
-            return new YieldingIterator<SNode>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
+    Iterable<SNode> TFs = ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).translate((it) -> {
+      return (Iterable<SNode>) () -> {
+        return new YieldingIterator<SNode>() {
+          private int __CP__ = 0;
+          protected boolean moveToNext() {
 __loop__:
-                do {
+            do {
 __switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 6:
-                      if (_5_TF != null) {
-                        this.__CP__ = 7;
-                        break;
-                      }
-                      this.__CP__ = 3;
-                      break;
-                    case 3:
-                      if (false) {
-                        this.__CP__ = 2;
-                        break;
-                      }
-                      this.__CP__ = 1;
-                      break;
-                    case 8:
-                      this.__CP__ = 9;
-                      this.yield(_5_TF);
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    case 2:
-                      this._5_TF = new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq).get(((SNode) it));
-                      this.__CP__ = 6;
-                      break;
-                    case 7:
-                      this.__CP__ = 8;
-                      break;
-                    case 9:
-                      throw new StopIteratingException();
-                    default:
-                      break __loop__;
+              switch (this.__CP__) {
+                case -1:
+                  assert false : "Internal error";
+                  return false;
+                case 6:
+                  if (_5_TF != null) {
+                    this.__CP__ = 7;
+                    break;
                   }
-                } while (true);
-                return false;
+                  this.__CP__ = 3;
+                  break;
+                case 3:
+                  if (false) {
+                    this.__CP__ = 2;
+                    break;
+                  }
+                  this.__CP__ = 1;
+                  break;
+                case 8:
+                  this.__CP__ = 9;
+                  this.yield(_5_TF);
+                  return true;
+                case 0:
+                  this.__CP__ = 2;
+                  break;
+                case 2:
+                  this._5_TF = new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq).get(((SNode) it));
+                  this.__CP__ = 6;
+                  break;
+                case 7:
+                  this.__CP__ = 8;
+                  break;
+                case 9:
+                  throw new StopIteratingException();
+                default:
+                  break __loop__;
               }
-              private SNode _5_TF;
-            };
+            } while (true);
+            return false;
           }
+          private SNode _5_TF;
         };
-      }
+      };
     });
     return Sequence.fromIterable(TFs).first();
   }

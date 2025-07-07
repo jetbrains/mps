@@ -10,7 +10,6 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -25,15 +24,13 @@ public class check_SetAccessor_NonTypesystemRule extends AbstractNonTypesystemRu
   public check_SetAccessor_NonTypesystemRule() {
   }
   public void applyRule(final SNode setAccessor, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(setAccessor, CONCEPTS.IMethodCall$M9, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode methodCall) {
-        SNode method = SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$pyYw);
-        if ((method == null)) {
-          return;
-        }
-        Set<SNode> throwables = SetSequence.fromSetWithValues(new HashSet<SNode>(), SLinkOperations.getChildren(method, LINKS.throwsItem$CdW$));
-        RulesFunctions_BaseLanguage.check(typeCheckingContext, throwables, methodCall);
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(setAccessor, CONCEPTS.IMethodCall$M9, false, new SAbstractConcept[]{})).visitAll((methodCall) -> {
+      SNode method = SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$pyYw);
+      if ((method == null)) {
+        return;
       }
+      Set<SNode> throwables = SetSequence.fromSetWithValues(new HashSet<SNode>(), SLinkOperations.getChildren(method, LINKS.throwsItem$CdW$));
+      RulesFunctions_BaseLanguage.check(typeCheckingContext, throwables, methodCall);
     });
   }
   public SAbstractConcept getApplicableConcept() {

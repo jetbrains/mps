@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
@@ -17,8 +16,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.generator.GenerationFacade;
 
 public class BuildAspect_Action extends BaseAction {
@@ -30,6 +27,7 @@ public class BuildAspect_Action extends BaseAction {
     this.aspect = aspect_par;
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -37,7 +35,7 @@ public class BuildAspect_Action extends BaseAction {
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    event.getPresentation().setText(NameUtil.capitalize(BuildAspect_Action.this.aspect.getPresentableAspectName()));
+    event.getPresentation().setText(BuildAspect_Action.this.aspect.getPresentableAspectName());
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
@@ -55,19 +53,9 @@ public class BuildAspect_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._T<List<SModel>> models = new Wrappers._T<List<SModel>>();
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        List<Language> projectModules = ListSequence.fromList(((List<SModule>) event.getData(MPSCommonDataKeys.MPS_PROJECT).getProjectModules())).ofType(Language.class).toListSequence();
-        models.value = ListSequence.fromList(projectModules).translate(new ITranslator2<Language, SModel>() {
-          public Iterable<SModel> translate(Language it) {
-            return BuildAspect_Action.this.aspect.getAspectModels(it);
-          }
-        }).where(new IWhereFilter<SModel>() {
-          public boolean accept(SModel it) {
-            return GenerationFacade.canGenerate(it);
-          }
-        }).toListSequence();
-      }
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(() -> {
+      List<Language> projectModules = ListSequence.fromList(((List<SModule>) event.getData(MPSCommonDataKeys.MPS_PROJECT).getProjectModules())).ofType(Language.class).toList();
+      models.value = ListSequence.fromList(projectModules).translate((it) -> BuildAspect_Action.this.aspect.getAspectModels(it)).where((it) -> GenerationFacade.canGenerate(it)).toList();
     });
     new MakeActionImpl(new MakeActionParameters(event.getData(MPSCommonDataKeys.MPS_PROJECT)).models(models.value).cleanMake(true)).executeAction();
   }

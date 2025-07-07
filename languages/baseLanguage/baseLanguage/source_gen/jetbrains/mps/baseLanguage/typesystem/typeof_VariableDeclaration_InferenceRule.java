@@ -22,7 +22,7 @@ public class typeof_VariableDeclaration_InferenceRule extends AbstractInferenceR
   public typeof_VariableDeclaration_InferenceRule() {
   }
   public void applyRule(final SNode variableDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode initializer = SLinkOperations.getTarget(variableDeclaration, LINKS.initializer$2twD);
+    final SNode initializer = SLinkOperations.getTarget(variableDeclaration, LINKS.initializer$2twD);
     SConcept sconcept = SNodeOperations.getConcept(initializer);
     boolean abstractInitializer = sconcept != null && sconcept.isAbstract();
     if ((initializer != null)) {
@@ -30,27 +30,54 @@ public class typeof_VariableDeclaration_InferenceRule extends AbstractInferenceR
         // needed for MPS-20925
         return;
       } else {
-        if (!((CheckingUtil.isValidByteOrShortExpression(SLinkOperations.getTarget(variableDeclaration, LINKS.type$a1UY), initializer)))) {
-          if (!(typeCheckingContext.isSingleTypeComputation())) {
-            {
-              SNode _nodeToCheck_1029348928467 = variableDeclaration;
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "554301099359820442", 0, null);
-              {
-                BaseQuickFixProvider intentionProvider = null;
-                intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "4017912752403843828", false);
-                intentionProvider.putArgument("desiredType", variableDeclaration);
-                intentionProvider.putArgument("expression", initializer);
-                _info_12389875345.addIntentionProvider(intentionProvider);
+        if (!(CheckingUtil.isValidByteOrShortExpression(SLinkOperations.getTarget(variableDeclaration, LINKS.type$a1UY), initializer))) {
+          {
+            final SNode initType = typeCheckingContext.typeOf(initializer, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4371905702104105830", true);
+            typeCheckingContext.whenConcrete(initType, () -> {
+              if (InferenceHelper.isInferredFromContext(typeCheckingContext.getExpandedNode(initType))) {
+                {
+                  SNode _nodeToCheck_1029348928467 = variableDeclaration;
+                  EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4371905702104109662", 0, null);
+                  {
+                    BaseQuickFixProvider intentionProvider = null;
+                    intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "4371905702104109663", false);
+                    intentionProvider.putArgument("desiredType", variableDeclaration);
+                    intentionProvider.putArgument("expression", initializer);
+                    _info_12389875345.addIntentionProvider(intentionProvider);
+                  }
+                  {
+                    BaseQuickFixProvider intentionProvider = null;
+                    intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeExpectedType_QuickFix", "4371905702104109668", false);
+                    intentionProvider.putArgument("desiredType", initializer);
+                    intentionProvider.putArgument("expression", variableDeclaration);
+                    _info_12389875345.addIntentionProvider(intentionProvider);
+                  }
+                  typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getExpandedNode(initType), (SNode) typeCheckingContext.typeOf(variableDeclaration, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4371905702104109674", true), false, true, _info_12389875345);
+                }
+              } else {
+                if (!(typeCheckingContext.isSingleTypeComputation())) {
+                  {
+                    SNode _nodeToCheck_1029348928467 = variableDeclaration;
+                    EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "554301099359820442", 0, null);
+                    {
+                      BaseQuickFixProvider intentionProvider = null;
+                      intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "4017912752403843828", false);
+                      intentionProvider.putArgument("desiredType", variableDeclaration);
+                      intentionProvider.putArgument("expression", initializer);
+                      _info_12389875345.addIntentionProvider(intentionProvider);
+                    }
+                    {
+                      BaseQuickFixProvider intentionProvider = null;
+                      intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeExpectedType_QuickFix", "4017912752406141711", false);
+                      intentionProvider.putArgument("desiredType", initializer);
+                      intentionProvider.putArgument("expression", variableDeclaration);
+                      _info_12389875345.addIntentionProvider(intentionProvider);
+                    }
+                    typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getExpandedNode(initType), (SNode) typeCheckingContext.typeOf(variableDeclaration, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "554301099359820444", true), true, true, _info_12389875345);
+                  }
+                }
               }
-              {
-                BaseQuickFixProvider intentionProvider = null;
-                intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeExpectedType_QuickFix", "4017912752406141711", false);
-                intentionProvider.putArgument("desiredType", initializer);
-                intentionProvider.putArgument("expression", variableDeclaration);
-                _info_12389875345.addIntentionProvider(intentionProvider);
-              }
-              typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(initializer, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "554301099359820447", false), (SNode) typeCheckingContext.typeOf(variableDeclaration, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "554301099359820444", true), true, true, _info_12389875345);
-            }
+            }, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4371905702104105744", true, true);
           }
         } else {
           // Ensure the initializer is an IntegerType

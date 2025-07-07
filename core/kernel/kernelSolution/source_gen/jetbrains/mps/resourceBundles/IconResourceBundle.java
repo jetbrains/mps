@@ -5,6 +5,6 @@ package jetbrains.mps.resourceBundles;
 import jetbrains.mps.annotations.GeneratedClass;
 import javax.swing.Icon;
 
-@GeneratedClass(node = "r:5a1c73a7-6ef8-45c4-96b7-fef49633c51a(jetbrains.mps.resourceBundles)/2939287019638088102", model = "r:5a1c73a7-6ef8-45c4-96b7-fef49633c51a(jetbrains.mps.resourceBundles)")
+@GeneratedClass(nodeId = "2939287019638088102", model = "r:5a1c73a7-6ef8-45c4-96b7-fef49633c51a(jetbrains.mps.resourceBundles)")
 public interface IconResourceBundle extends PluginResourceBundle<Icon> {
 }

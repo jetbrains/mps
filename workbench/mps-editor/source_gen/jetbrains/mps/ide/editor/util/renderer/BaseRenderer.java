@@ -13,7 +13,7 @@ import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.Icon;
 
-@GeneratedClass(node = "r:74ecf5af-2b45-470e-b13c-a863221987cf(jetbrains.mps.ide.editor.util.renderer)/1616056205644509849", model = "r:74ecf5af-2b45-470e-b13c-a863221987cf(jetbrains.mps.ide.editor.util.renderer)")
+@GeneratedClass(nodeId = "1616056205644509849", model = "r:74ecf5af-2b45-470e-b13c-a863221987cf(jetbrains.mps.ide.editor.util.renderer)")
 public abstract class BaseRenderer<T> extends ColoredListCellRenderer<T> {
   protected BaseRenderer() {
   }

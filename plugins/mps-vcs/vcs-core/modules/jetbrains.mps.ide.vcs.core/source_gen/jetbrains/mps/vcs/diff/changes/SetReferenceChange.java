@@ -13,12 +13,14 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.util.SNodeOperations;
-import org.jetbrains.mps.openapi.model.SReference;
-import jetbrains.mps.smodel.StaticReference;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.vcs.util.MergeStrategy;
 import jetbrains.mps.vcs.mergehints.runtime.VCSAspectUtil;
+import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Objects;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.List;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -27,7 +29,7 @@ import java.util.LinkedList;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
 
-@GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/2732852465125672459", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
+@GeneratedClass(nodeId = "2732852465125672459", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class SetReferenceChange extends NodeChange {
   private final SReferenceLink myRole;
   private final SModelReference myTargetModelReference;
@@ -57,7 +59,7 @@ public class SetReferenceChange extends NodeChange {
 
   @NotNull
   public String getRole() {
-    return myRole.getRoleName();
+    return myRole.getName();
   }
 
   @NotNull
@@ -96,12 +98,10 @@ public class SetReferenceChange extends NodeChange {
       node.setReferenceTarget(myRole, null);
     } else {
       SModelReference targetModelReference = (myTargetModelReference == null ? SModelOperations.getPointer(model) : myTargetModelReference);
-      node.setReferenceTarget(myRole, null);
       if (myTargetNodeId == null) {
         node.setReference(myRole, SNodeOperations.qualifiedResolveInfo(myRole, targetModelReference, myResolveInfo));
       } else {
-        SReference reference = new StaticReference(myRole, node, targetModelReference, myTargetNodeId, myResolveInfo);
-        node.setReference(myRole, reference);
+        node.setReference(myRole, ResolveInfo.of(new SNodePointer(targetModelReference, myTargetNodeId), myResolveInfo));
       }
     }
   }
@@ -141,25 +141,21 @@ public class SetReferenceChange extends NodeChange {
     }
     String what = "target";
     _FunctionTypes._return_P1_E0<? extends String, ? super SReference> formatRef = null;
-    if (!(Objects.equals(oldRef.getTargetSModelReference(), newRef.getTargetSModelReference()))) {
-      formatRef = new _FunctionTypes._return_P1_E0<String, SReference>() {
-        public String invoke(SReference ref) {
-          return String.format("[model=%s,\n  id=%s, resolveInfo=%s]", ref.getTargetSModelReference(), ref.getTargetNodeId(), ((jetbrains.mps.smodel.SReference) ref).getResolveInfo());
-        }
-      };
+    SModelReference oldTargetModel = check_mgdhcs_a0h0ib(oldRef);
+    SModelReference newTargetModel = check_mgdhcs_a0i0ib(newRef);
+    SNode oldNode = getChangeSet().getOldModel().getNode(getAffectedNodeId(false));
+    SNode newNode = getChangeSet().getNewModel().getNode(getAffectedNodeId(true));
+    boolean modelsEquals = Objects.equals(oldTargetModel, newTargetModel) || (jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.getModel(oldNode).getReference().equals(oldTargetModel) && jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.getModel(newNode).getReference().equals(newTargetModel));
+
+    if (!(modelsEquals)) {
+      formatRef = (SReference ref) -> String.format("[model=%s,\n  id=%s, resolveInfo=%s]", ref.getTargetSModelReference(), ref.getTargetNodeId(), SLinkOperations.getResolveInfo(ref));
     } else if (!(Objects.equals(oldRef.getTargetNodeId(), newRef.getTargetNodeId()))) {
-      formatRef = new _FunctionTypes._return_P1_E0<String, SReference>() {
-        public String invoke(SReference ref) {
-          return String.format("[id=%s, resolveInfo=%s]", ref.getTargetNodeId(), ref.getTargetNodeId());
-        }
-      };
-    } else if (!(Objects.equals(((jetbrains.mps.smodel.SReference) oldRef).getResolveInfo(), ((jetbrains.mps.smodel.SReference) newRef).getResolveInfo()))) {
+      formatRef = (SReference ref) -> String.format("[id=%s, resolveInfo=%s]", ref.getTargetNodeId(), ref.getTargetNodeId());
+    } else if (!(Objects.equals(SLinkOperations.getResolveInfo(oldRef), SLinkOperations.getResolveInfo(newRef)))) {
       what = "resolve info";
-      formatRef = new _FunctionTypes._return_P1_E0<String, SReference>() {
-        public String invoke(SReference ref) {
-          return String.format("'%s'", ((jetbrains.mps.smodel.SReference) ref).getResolveInfo());
-        }
-      };
+      formatRef = (SReference ref) -> String.format("'%s'", SLinkOperations.getResolveInfo(ref));
+      // resolve info change description is not too long so for convenience we can use full description in short descriptions mode as well
+      return String.format("Changed %s reference %s \nfrom %s to %s", myRole, what, formatRef.invoke(oldRef), formatRef.invoke(newRef));
     }
     if (formatRef == null) {
       return toString();
@@ -192,12 +188,25 @@ public class SetReferenceChange extends NodeChange {
       // This is internal reference
       targetModel = null;
     }
-    return new SetReferenceChange(getChangeSet().getOppositeChangeSet(), getAffectedNodeId(true), getAffectedNodeId(false), myRole, targetModel, check_mgdhcs_f0a5a14(ref), check_mgdhcs_g0a5a14(((jetbrains.mps.smodel.SReference) ref)), myResolveInfoOnly);
+    return new SetReferenceChange(getChangeSet().getOppositeChangeSet(), getAffectedNodeId(true), getAffectedNodeId(false), myRole, targetModel, check_mgdhcs_f0a5a14(ref), SLinkOperations.getResolveInfo(ref), myResolveInfoOnly);
   }
 
   @Override
   public List<Tuples._2<SNodeId, MessageTarget>> createMessageTargetsWithIds(boolean isNewModel) {
-    return LinkedListSequence.fromListAndArrayNew(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getAffectedNodeId(isNewModel), ((MessageTarget) new ReferenceMessageTarget(getRoleLink()))));
+    return LinkedListSequence.fromListAndArray(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getAffectedNodeId(isNewModel), ((MessageTarget) new ReferenceMessageTarget(getRoleLink()))));
+  }
+
+  @Override
+  public boolean conflictsWith(@NotNull ModelChange otherChange) {
+    if (super.conflictsWith(otherChange)) {
+      return true;
+    }
+    return otherChange instanceof SetReferenceChange && Objects.equals(this.getAffectedNodeId(), as_mgdhcs_a0b0a0b0tb(otherChange, SetReferenceChange.class).getAffectedNodeId()) && Objects.equals(this.getRole(), as_mgdhcs_a0b0a1a54(otherChange, SetReferenceChange.class).getRole());
+  }
+
+  @Override
+  public boolean isSymmetricWith(@NotNull ModelChange otherChange) {
+    return otherChange instanceof SetReferenceChange && Objects.equals(this.getTargetNodeId(), as_mgdhcs_a0b0a0a0a74(otherChange, SetReferenceChange.class).getTargetNodeId()) && Objects.equals(this.getTargetModelReference(), as_mgdhcs_a0b0a0a0vb(otherChange, SetReferenceChange.class).getTargetModelReference()) && Objects.equals(this.getResolveInfo(), as_mgdhcs_a0b0a0a74(otherChange, SetReferenceChange.class).getResolveInfo());
   }
   private static SReference check_mgdhcs_a0b0ib(SNode checkedDotOperand, SReferenceLink myRole, SetReferenceChange checkedDotThisExpression) {
     if (null != checkedDotOperand) {
@@ -208,6 +217,18 @@ public class SetReferenceChange extends NodeChange {
   private static SReference check_mgdhcs_a0c0ib(SNode checkedDotOperand, SReferenceLink myRole, SetReferenceChange checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getReference(myRole);
+    }
+    return null;
+  }
+  private static SModelReference check_mgdhcs_a0h0ib(SReference checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getTargetSModelReference();
+    }
+    return null;
+  }
+  private static SModelReference check_mgdhcs_a0i0ib(SReference checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getTargetSModelReference();
     }
     return null;
   }
@@ -223,10 +244,19 @@ public class SetReferenceChange extends NodeChange {
     }
     return null;
   }
-  private static String check_mgdhcs_g0a5a14(jetbrains.mps.smodel.SReference checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getResolveInfo();
-    }
-    return null;
+  private static <T> T as_mgdhcs_a0b0a0b0tb(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_mgdhcs_a0b0a1a54(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_mgdhcs_a0b0a0a0a74(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_mgdhcs_a0b0a0a0vb(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_mgdhcs_a0b0a0a74(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 }

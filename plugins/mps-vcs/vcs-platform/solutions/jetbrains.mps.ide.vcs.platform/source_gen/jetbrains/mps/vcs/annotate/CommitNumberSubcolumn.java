@@ -11,7 +11,7 @@ import jetbrains.mps.vcs.history.CommitsGraphNode;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 
-@GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/6566909625908996008", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
+@GeneratedClass(nodeId = "6566909625908996008", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 public class CommitNumberSubcolumn extends AnnotationAspectSubcolumn {
 
   private Map<VcsFileRevision, Integer> myRevisionsToNumbers = MapSequence.fromMap(new HashMap<VcsFileRevision, Integer>());

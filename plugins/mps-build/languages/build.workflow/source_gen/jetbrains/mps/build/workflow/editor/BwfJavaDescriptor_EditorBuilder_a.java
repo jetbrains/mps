@@ -47,7 +47,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "java project");
     editorCell.setCellId("Constant_qa8ftx_a0");
     Style style = new StyleImpl();
-    new keywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new keywordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");

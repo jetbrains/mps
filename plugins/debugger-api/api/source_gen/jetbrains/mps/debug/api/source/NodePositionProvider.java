@@ -11,13 +11,12 @@ import jetbrains.mps.debug.api.programState.NullLocation;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import java.util.Iterator;
 import jetbrains.mps.textgen.trace.DebugInfo;
 import jetbrains.mps.util.NameUtil;
 import java.util.List;
 
-@GeneratedClass(node = "r:7e184eff-8349-496f-875b-1e3646bb06f3(jetbrains.mps.debug.api.source)/7048882195103545922", model = "r:7e184eff-8349-496f-875b-1e3646bb06f3(jetbrains.mps.debug.api.source)")
+@GeneratedClass(nodeId = "7048882195103545922", model = "r:7e184eff-8349-496f-875b-1e3646bb06f3(jetbrains.mps.debug.api.source)")
 public class NodePositionProvider implements IPositionProvider<NodeSourcePosition> {
 
   public NodePositionProvider() {
@@ -41,19 +40,17 @@ public class NodePositionProvider implements IPositionProvider<NodeSourcePositio
     final SRepository repo = session.getProject().getRepository();
     // XXX we need model read just to make sure reference could get resolved. Instead, a dedicated operation
     // in the SRepository might be worth adding (once this access is over, it's all the same about whether next attempt to resolve the reference would succeed or not)
-    return new ModelAccessHelper(repo).runReadAction(new Computable<SNodeReference>() {
-      public SNodeReference compute() {
-        for (Iterator<DebugInfo> it = session.getTraceProvider().debugInfo(NameUtil.namespaceFromLongName(location.getUnitName())).iterator(); it.hasNext();) {
-          DebugInfo next = it.next();
-          List<SNodeReference> nodes = next.getTracedNodesForPosition(location.getFileName(), location.getLineNumber());
-          for (SNodeReference nodeRef : nodes) {
-            if (nodeRef.resolve(repo) != null) {
-              return nodeRef;
-            }
+    return new ModelAccessHelper(repo).runReadAction(() -> {
+      for (Iterator<DebugInfo> it = session.getTraceProvider().debugInfo(NameUtil.namespaceFromLongName(location.getUnitName())).iterator(); it.hasNext();) {
+        DebugInfo next = it.next();
+        List<SNodeReference> nodes = next.getTracedNodesForPosition(location.getFileName(), location.getLineNumber());
+        for (SNodeReference nodeRef : nodes) {
+          if (nodeRef.resolve(repo) != null) {
+            return nodeRef;
           }
         }
-        return null;
       }
+      return null;
     });
   }
 

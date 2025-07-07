@@ -13,7 +13,6 @@ import java.util.List;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -29,40 +28,16 @@ public class check_FieldIsNeverUsedOrAssigned_NonTypesystemRule extends Abstract
       if (SNodeOperations.isInstanceOf(field, CONCEPTS.IMember$zu)) {
         final SNode member = SNodeOperations.cast(field, CONCEPTS.IMember$zu);
         List<SNode> memberOperations = ((SLinkOperations.getTarget(field, LINKS.visibility$Yyua) != null) ? SNodeOperations.getNodeDescendants(SNodeOperations.getParent(field), CONCEPTS.IMemberOperation$iZ, false, new SAbstractConcept[]{}) : SModelOperations.nodes(SNodeOperations.getModel(field), CONCEPTS.IMemberOperation$iZ));
-        Iterable<SNode> references = ListSequence.fromList(memberOperations).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.member$oLt6) == member;
-          }
-        });
+        Iterable<SNode> references = ListSequence.fromList(memberOperations).where((it) -> SLinkOperations.getTarget(it, LINKS.member$oLt6) == member);
         VariableReferenceUtil.checkField(typeCheckingContext, field, references);
       } else {
         SNode root = SNodeOperations.getContainingRoot(field);
-        List<SNode> localFieldRefs = ((SLinkOperations.getTarget(field, LINKS.visibility$Yyua) != null) ? ListSequence.fromList(SNodeOperations.getNodeDescendants(root, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.FieldDeclaration$ie);
-          }
-        }).toListSequence() : ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(root), CONCEPTS.VariableReference$TC)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.FieldDeclaration$ie);
-          }
-        }).toListSequence());
+        List<SNode> localFieldRefs = ((SLinkOperations.getTarget(field, LINKS.visibility$Yyua) != null) ? ListSequence.fromList(SNodeOperations.getNodeDescendants(root, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.FieldDeclaration$ie)).toList() : ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(root), CONCEPTS.VariableReference$TC)).where((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.FieldDeclaration$ie)).toList());
 
         List<SNode> fieldRefOperations = ((SLinkOperations.getTarget(field, LINKS.visibility$Yyua) != null) ? SNodeOperations.getNodeDescendants(root, CONCEPTS.FieldReferenceOperation$fU, false, new SAbstractConcept[]{}) : SModelOperations.nodes(SNodeOperations.getModel(root), CONCEPTS.FieldReferenceOperation$fU));
-        Iterable<SNode> localFieldReferences = ListSequence.fromList(localFieldRefs).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == field;
-          }
-        });
-        Iterable<SNode> fieldReferenceOperations = ListSequence.fromList(fieldRefOperations).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.fieldDeclaration$H7Ag) == field;
-          }
-        });
-        Iterable<SNode> refs = Sequence.fromIterable(localFieldReferences).union(Sequence.fromIterable(fieldReferenceOperations)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return (SNodeOperations.getNodeAncestor(it, CONCEPTS.SingleLineComment$Kw, false, false) == null);
-          }
-        });
+        Iterable<SNode> localFieldReferences = ListSequence.fromList(localFieldRefs).where((it) -> SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == field);
+        Iterable<SNode> fieldReferenceOperations = ListSequence.fromList(fieldRefOperations).where((it) -> SLinkOperations.getTarget(it, LINKS.fieldDeclaration$H7Ag) == field);
+        Iterable<SNode> refs = Sequence.fromIterable(localFieldReferences).union(Sequence.fromIterable(fieldReferenceOperations)).where((it) -> (SNodeOperations.getNodeAncestor(it, CONCEPTS.SingleLineComment$Kw, false, false) == null));
         VariableReferenceUtil.checkField(typeCheckingContext, field, refs);
       }
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.ide.editor.tabs;
 
-import com.intellij.openapi.components.ProjectComponent;
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.project.ProjectUtil;
 import com.intellij.openapi.vcs.FileStatusListener;
 import com.intellij.openapi.vcs.FileStatusManager;
@@ -25,8 +25,8 @@ import jetbrains.mps.ide.editorTabs.tabfactory.TabsComponent;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.ArrayList;
@@ -37,26 +37,28 @@ import java.util.Map;
 
 /**
  * Listener for file changes specific to tabbed editors (VCS changes).
- * Listener is shared between multiple editors (one for project) and available as {@link ProjectComponent}.
+ * Listener is shared between multiple editors (one for project) and available as a project service.
  */
-class FileStatusChangeListener implements FileStatusListener, ProjectComponent {
+class FileStatusChangeListener implements FileStatusListener, Disposable {
   private final Project myProject;
   private final com.intellij.openapi.project.Project myIdeaProject;
   private final Map<SNodeReference, Collection<TabsComponent>> myNodeRef2TabsComponents = new HashMap<>();
 
+  @Nullable
+  static FileStatusChangeListener getInstance(Project mpsProject) {
+    final com.intellij.openapi.project.Project ideaProject = ProjectHelper.toIdeaProject(mpsProject);
+    return ideaProject == null ? null : ideaProject.getService(FileStatusChangeListener.class);
+  }
+
   public FileStatusChangeListener(com.intellij.openapi.project.Project project) {
     myIdeaProject = project;
     myProject = ProjectHelper.fromIdeaProject(project);
+    // TODO: Verify correct Disposable used
+    FileStatusManager.getInstance(myIdeaProject).addFileStatusListener(this, this);
   }
 
   @Override
-  public void projectOpened() {
-    FileStatusManager.getInstance(myIdeaProject).addFileStatusListener(this);
-  }
-
-  @Override
-  public void projectClosed() {
-    FileStatusManager.getInstance(myIdeaProject).removeFileStatusListener(this);
+  public void dispose() {
     myNodeRef2TabsComponents.clear();
   }
 
@@ -95,11 +97,20 @@ class FileStatusChangeListener implements FileStatusListener, ProjectComponent {
   @Override
   public void fileStatusChanged(@NotNull VirtualFile virtualFile) {
     // Needed for quick update of one tab
+    if (!(virtualFile instanceof MPSNodeVirtualFile)) {
+      return;
+    }
+    final SNodeReference np = ((MPSNodeVirtualFile) virtualFile).getSNodePointer();
+    if (!myNodeRef2TabsComponents.containsKey(np)) {
+      return;
+    }
+    VirtualFile vfp = virtualFile.getParent();
     final VirtualFile projectDir = ProjectUtil.guessProjectDir(myIdeaProject);
-    if (virtualFile instanceof MPSNodeVirtualFile && projectDir != null &&
-        VfsUtilCore.isAncestor(projectDir, virtualFile.getParent(), false) &&
-        myNodeRef2TabsComponents.containsKey(((MPSNodeVirtualFile) virtualFile).getSNodePointer())) {
-      updateTabColorsLater(((MPSNodeVirtualFile) virtualFile).getSNodePointer());
+    // Not quite certain there's a reason to check for project/ancestor, provided we do
+    // have tab for the node. Indeed, we might have noticed a change in another project, but is
+    // it that important to save extra updateTabColorsLater()? 6df275a2 doesn't shed any light.
+    if (vfp != null && projectDir != null && VfsUtilCore.isAncestor(projectDir, vfp, false)) {
+      updateTabColorsLater(np);
     }
   }
 }

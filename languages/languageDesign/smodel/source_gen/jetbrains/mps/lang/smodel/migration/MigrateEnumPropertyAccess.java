@@ -14,9 +14,7 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptNotMigratedProblem;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.migration.runtime.base.UsageOfMigrateNodeNotMigratedProblem;
@@ -56,65 +54,17 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
     {
       SearchScope scope_xqhmgi_a0f = CommandUtil.createScope(m);
       final SearchScope scope_xqhmgi_a0f_0 = new EditableFilteringScope(scope_xqhmgi_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_xqhmgi_a0f_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_xqhmgi_a0f_0;
       List<Problem> problems = ListSequence.fromList(new ArrayList<Problem>());
-      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EnumMember_NameOperation_Old$QG, false)).select(new ISelector<SNode, DeprecatedConceptNotMigratedProblem>() {
-        public DeprecatedConceptNotMigratedProblem select(SNode it) {
-          return new DeprecatedConceptNotMigratedProblem(it);
-        }
-      }));
-      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EnumMember_ValueOperation_Old$rN, false)).select(new ISelector<SNode, DeprecatedConceptNotMigratedProblem>() {
-        public DeprecatedConceptNotMigratedProblem select(SNode it) {
-          return new DeprecatedConceptNotMigratedProblem(it);
-        }
-      }));
-      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EnumMemberReference_Old$15, false)).select(new ISelector<SNode, DeprecatedConceptNotMigratedProblem>() {
-        public DeprecatedConceptNotMigratedProblem select(SNode it) {
-          return new DeprecatedConceptNotMigratedProblem(it);
-        }
-      }));
-      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SEnumOperationInvocation$_F, false)).select(new ISelector<SNode, DeprecatedConceptNotMigratedProblem>() {
-        public DeprecatedConceptNotMigratedProblem select(SNode it) {
-          return new DeprecatedConceptNotMigratedProblem(it);
-        }
-      }));
-      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SEnumOperation_Old$hZ, false)).select(new ISelector<SNode, DeprecatedConceptNotMigratedProblem>() {
-        public DeprecatedConceptNotMigratedProblem select(SNode it) {
-          return new DeprecatedConceptNotMigratedProblem(it);
-        }
-      }));
-      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EnumMemberValueRefExpression$QG, false)).select(new ISelector<SNode, DeprecatedConceptNotMigratedProblem>() {
-        public DeprecatedConceptNotMigratedProblem select(SNode it) {
-          return new DeprecatedConceptNotMigratedProblem(it);
-        }
-      }));
-      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EnumMemberReference_Old$15, false)).select(new ISelector<SNode, DeprecatedConceptNotMigratedProblem>() {
-        public DeprecatedConceptNotMigratedProblem select(SNode it) {
-          return new DeprecatedConceptNotMigratedProblem(it);
-        }
-      }));
-      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SPropertyAccess$d9, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SLinkOperations.getTarget(it, LINKS.property$UiOu)), CONCEPTS.EnumPropertyMigrationInfo$O3);
-        }
-      }).select(new ISelector<SNode, UsageOfMigrateNodeNotMigratedProblem>() {
-        public UsageOfMigrateNodeNotMigratedProblem select(SNode it) {
-          return new UsageOfMigrateNodeNotMigratedProblem(it, SLinkOperations.getTarget(it, LINKS.property$UiOu));
-        }
-      }));
-      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SEnumerationMemberType$td, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.enum$VTAM), CONCEPTS.EnumerationDataTypeDeclaration_Old$B8);
-        }
-      }).select(new ISelector<SNode, UsageOfMigrateNodeNotMigratedProblem>() {
-        public UsageOfMigrateNodeNotMigratedProblem select(SNode it) {
-          return new UsageOfMigrateNodeNotMigratedProblem(it, SLinkOperations.getTarget(it, LINKS.enum$VTAM));
-        }
-      }));
+      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EnumMember_NameOperation_Old$QG, false)).select((it) -> new DeprecatedConceptNotMigratedProblem(it)));
+      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EnumMember_ValueOperation_Old$rN, false)).select((it) -> new DeprecatedConceptNotMigratedProblem(it)));
+      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EnumMemberReference_Old$15, false)).select((it) -> new DeprecatedConceptNotMigratedProblem(it)));
+      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SEnumOperationInvocation$_F, false)).select((it) -> new DeprecatedConceptNotMigratedProblem(it)));
+      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SEnumOperation_Old$hZ, false)).select((it) -> new DeprecatedConceptNotMigratedProblem(it)));
+      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EnumMemberValueRefExpression$QG, false)).select((it) -> new DeprecatedConceptNotMigratedProblem(it)));
+      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EnumMemberReference_Old$15, false)).select((it) -> new DeprecatedConceptNotMigratedProblem(it)));
+      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SPropertyAccess$d9, false)).where((it) -> SNodeOperations.isInstanceOf(SNodeOperations.getParent(SLinkOperations.getTarget(it, LINKS.property$UiOu)), CONCEPTS.EnumPropertyMigrationInfo$O3)).select((it) -> new UsageOfMigrateNodeNotMigratedProblem(it, SLinkOperations.getTarget(it, LINKS.property$UiOu))));
+      ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SEnumerationMemberType$td, false)).where((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.enum$VTAM), CONCEPTS.EnumerationDataTypeDeclaration_Old$B8)).select((it) -> new UsageOfMigrateNodeNotMigratedProblem(it, SLinkOperations.getTarget(it, LINKS.enum$VTAM))));
 
       return problems;
     }
@@ -122,7 +72,7 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
   public Iterable<MigrationScriptReference> executeAfter() {
     return ListSequence.fromListAndArray(new ArrayList<MigrationScriptReference>(), new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure"), 8));
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 15);
   }
 
@@ -132,11 +82,7 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
     {
       SearchScope scope_xqhmgi_a0l = CommandUtil.createScope(m);
       final SearchScope scope_xqhmgi_a0l_0 = new EditableFilteringScope(scope_xqhmgi_a0l);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_xqhmgi_a0l_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_xqhmgi_a0l_0;
 
       // node.enumProp
       for (SNode propertyAccess : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SPropertyAccess$d9, false))) {

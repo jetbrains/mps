@@ -17,7 +17,7 @@ import jetbrains.mps.vcs.annotate.AnnotatedCellMessage;
 import jetbrains.mps.vcs.annotate.AnnotationColumn;
 import org.jetbrains.annotations.Nullable;
 
-@GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/4577809193689859353", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
+@GeneratedClass(nodeId = "4577809193689859353", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public class ShowAffectedFiles_Action extends BaseAction {
   private static final Icon ICON = AllIcons.Actions.ListChanges;
 
@@ -33,7 +33,7 @@ public class ShowAffectedFiles_Action extends BaseAction {
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
     event.getPresentation().setText("Show All Affected Files");
-    setEnabledState(event.getPresentation(), ShowAffectedFiles_Action.this.getCellMessage(event) != null);
+    setEnabledState(event.getPresentation(), ShowAffectedFiles_Action.this.getCellMessage(event) != null && !(ShowAffectedFiles_Action.this.getCellMessage(event).getCommitsGraphNode().isLocalRevision()));
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {

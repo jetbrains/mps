@@ -4,11 +4,10 @@ package jetbrains.mps.lang.quotation.test.generationTest;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import java.util.List;
@@ -18,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.quotation.intentions.QuotationConverter;
 import java.util.ArrayList;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
@@ -32,13 +30,11 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 @MPSLaunch
 public class QuotationConverterTest_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(QuotationConverterTest_Test.class, "${mps_home}", "r:1cc42aa8-6d2d-49a0-9b1f-2e5f92988fc5(jetbrains.mps.lang.quotation.test.generationTest@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(QuotationConverterTest_Test.class).projectPath(null).modelRef("r:1cc42aa8-6d2d-49a0-9b1f-2e5f92988fc5(jetbrains.mps.lang.quotation.test.generationTest@tests)").reopenProject(null).build());
 
   public QuotationConverterTest_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -52,29 +48,29 @@ public class QuotationConverterTest_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
+    }
+
     public void test_compositeConvertDiffTest() throws Exception {
-      List<SNode> testMethods = SLinkOperations.getChildren(SNodeOperations.getNode("r:1cc42aa8-6d2d-49a0-9b1f-2e5f92988fc5(jetbrains.mps.lang.quotation.test.generationTest@tests)", "3455411064017080199"), LINKS.testMethods$htrK);
-      Assert.assertTrue(ListSequence.fromList(testMethods).isNotEmpty());
-      for (SNode method : ListSequence.fromList(testMethods)) {
-        SNode q = Sequence.fromIterable(SNodeOperations.ofConcept(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE), CONCEPTS.LocalVariableDeclarationStatement$4w)).select(new ISelector<SNode, SNode>() {
-          public SNode select(SNode it) {
-            return SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.localVariableDeclaration$RpjM), LINKS.initializer$2twD);
+      initTestNodes();
+      runWithinCommand(() -> {
+        List<SNode> testMethods = SLinkOperations.getChildren(SNodeOperations.getNode("r:1cc42aa8-6d2d-49a0-9b1f-2e5f92988fc5(jetbrains.mps.lang.quotation.test.generationTest@tests)", "3455411064017080199"), LINKS.testMethods$htrK);
+        Assert.assertTrue(ListSequence.fromList(testMethods).isNotEmpty());
+        for (SNode method : ListSequence.fromList(testMethods)) {
+          SNode q = Sequence.fromIterable(SNodeOperations.ofConcept(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE), CONCEPTS.LocalVariableDeclarationStatement$4w)).select((it) -> SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.localVariableDeclaration$RpjM), LINKS.initializer$2twD)), CONCEPTS.Quotation$Vl)).first();
+          SNode l = Sequence.fromIterable(SNodeOperations.ofConcept(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE), CONCEPTS.LocalVariableDeclarationStatement$4w)).select((it) -> SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.localVariableDeclaration$RpjM), LINKS.initializer$2twD)), CONCEPTS.NodeBuilder$GJ)).first();
+          Assert.assertNotNull(q);
+          Assert.assertNotNull(l);
+          SNode converted = SNodeOperations.cast(new QuotationConverter(SNodeOperations.copyNode(q)).convert(), CONCEPTS.NodeBuilder$GJ);
+          {
+            List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), converted);
+            List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), l);
+            Assert.assertTrue("converted quotation does not match light quotation in method " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.cast(SNodeOperations.getContainingRoot(method), CONCEPTS.INamedConcept$Kd)) + "." + SPropertyOperations.getString(method, PROPS.name$MnvL), new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
           }
-        }), CONCEPTS.Quotation$Vl)).first();
-        SNode l = Sequence.fromIterable(SNodeOperations.ofConcept(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE), CONCEPTS.LocalVariableDeclarationStatement$4w)).select(new ISelector<SNode, SNode>() {
-          public SNode select(SNode it) {
-            return SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.localVariableDeclaration$RpjM), LINKS.initializer$2twD);
-          }
-        }), CONCEPTS.NodeBuilder$GJ)).first();
-        Assert.assertNotNull(q);
-        Assert.assertNotNull(l);
-        SNode converted = SNodeOperations.cast(new QuotationConverter(SNodeOperations.copyNode(q)).convert(), CONCEPTS.NodeBuilder$GJ);
-        {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), converted);
-          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), l);
-          Assert.assertTrue("converted quotation does not match light quotation in method " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.cast(SNodeOperations.getContainingRoot(method), CONCEPTS.INamedConcept$Kd)) + "." + SPropertyOperations.getString(method, PROPS.name$MnvL), new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
         }
-      }
+      });
     }
 
   }

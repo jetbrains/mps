@@ -13,7 +13,7 @@ import java.util.Map;
 import jetbrains.mps.debug.api.AbstractDebugSession;
 import jetbrains.mps.debugger.api.ui.DebugActionsUtil;
 
-@GeneratedClass(node = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)/7064627997011532701", model = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)")
+@GeneratedClass(nodeId = "7064627997011532701", model = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)")
 public class StepInto_Action extends BaseAction {
   private static final Icon ICON = AllIcons.Actions.TraceInto;
 
@@ -21,6 +21,7 @@ public class StepInto_Action extends BaseAction {
     super("Step Into", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

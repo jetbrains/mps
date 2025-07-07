@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -72,6 +72,17 @@ public class LanguageValidator {
     ArrayDeque<SModuleReference> likelySuperfluousExtends = new ArrayDeque<>();
     Collection<SModuleReference> extendedLanguagesFromStructure = getActuallyExtendedLanguagesFromStructure();
     for (SModuleReference el : myLanguage.getExtendedLanguageRefs()) {
+      if (el.equals(myLanguage.getModuleReference())) {
+        if (!myProcessor.process(new ModuleValidationProblem(myLanguage, MessageStatus.ERROR, "The language references itself as extended language"))) {
+          return;
+        }
+      }
+      if (el.getModuleName().equals(myLanguage.getModuleName())) {
+        // not that I believe this is a reasonable case to check, just a tribute to mysterious legacy Language#validateExtends() I don't want to remove silently, w/o a trace
+        if (!myProcessor.process(new ModuleValidationProblem(myLanguage, MessageStatus.ERROR, String.format("The language extends a language with the same name but different id: %s", el)))) {
+          return;
+        }
+      }
       if (!extendedLanguagesFromStructure.contains(el) && !BootstrapLanguages.coreLanguageRef().equals(el)) {
         // Language.getExtendedLanguageRefs() adds implicitly extended lang.core, we don't need to warn about it.
         // Perhaps, lang.core has not be part of getExtendedLanguageRefs(), but added at RT only? Do we need to manifest it at source level? To reference

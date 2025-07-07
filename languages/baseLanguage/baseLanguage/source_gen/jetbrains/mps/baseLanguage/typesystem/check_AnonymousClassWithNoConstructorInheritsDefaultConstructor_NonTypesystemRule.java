@@ -16,6 +16,7 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.BaseQuickFixProvider;
+import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -25,8 +26,10 @@ public class check_AnonymousClassWithNoConstructorInheritsDefaultConstructor_Non
   public check_AnonymousClassWithNoConstructorInheritsDefaultConstructor_NonTypesystemRule() {
   }
   public void applyRule(final SNode anonymousClass, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(anonymousClass, LINKS.baseMethodDeclaration$pyYw) != null) && !(Objects.equals(SNodeOperations.getParent(SLinkOperations.getTarget(anonymousClass, LINKS.baseMethodDeclaration$pyYw)), SLinkOperations.getTarget(anonymousClass, LINKS.classifier$q_Y$))) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(anonymousClass, LINKS.classifier$q_Y$), CONCEPTS.ClassConcept$bK)) {
-      if (Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.cast(SLinkOperations.getTarget(anonymousClass, LINKS.classifier$q_Y$), CONCEPTS.ClassConcept$bK))).isNotEmpty()) {
+    // First check whether the constructor in is the referred class
+    if ((SLinkOperations.getTarget(anonymousClass, LINKS.baseMethodDeclaration$pyYw) != null) && !(Objects.equals(SNodeOperations.getParent(SLinkOperations.getTarget(anonymousClass, LINKS.baseMethodDeclaration$pyYw)), SLinkOperations.getTarget(anonymousClass, LINKS.classifier$q_Y$)))) {
+      if (Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.as(SLinkOperations.getTarget(anonymousClass, LINKS.classifier$q_Y$), CONCEPTS.ClassConcept$bK))).isNotEmpty()) {
+        // Set the constructor if the class has some
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(anonymousClass, "An explicit constructor available in the class", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7340437691571939069", null, errorTarget);
@@ -35,10 +38,22 @@ public class check_AnonymousClassWithNoConstructorInheritsDefaultConstructor_Non
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }
+      } else {
+        if (!(SLinkOperations.hasPointer(anonymousClass, LINKS.baseMethodDeclaration$pyYw, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object.<init>()")))) {
+          // Set the constructor to Object if it is not already
+          {
+            final MessageTarget errorTarget = new NodeMessageTarget();
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(anonymousClass, "The specified constructor is not available in the class", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6547506005695974950", null, errorTarget);
+            {
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SetConstructorToObject_QuickFix", "6547506005695996932", true);
+              _reporter_2309309498.addIntentionProvider(intentionProvider);
+            }
+          }
+        }
       }
     }
     // MethodCallsFixer_Rule and check_AnonymousClassHasConstructorDeclaration
-    // take care of null in constructorDeclaration
+    // take care of null already set in constructorDeclaration
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.AnonymousClass$Bt;

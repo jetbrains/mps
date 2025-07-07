@@ -67,14 +67,14 @@ public class MPSErrorDialog extends JDialog {
     }
   };
 
-  public MPSErrorDialog(Frame frame, String error, String title) {
-    this(frame, error, title, true);
+  public MPSErrorDialog(Frame frame, String text, String title) {
+    this(frame, text, title, true);
   }
 
-  public MPSErrorDialog(Window window, String error, String title, boolean initializeUI) throws HeadlessException {
+  public MPSErrorDialog(Window window, String text, String title, boolean initializeUI) throws HeadlessException {
     super(window, title, Dialog.DEFAULT_MODALITY_TYPE);
     myOwner = window;
-    init(error);
+    init(text);
     if (initializeUI) {
       initializeUI();
       setVisible(true);
@@ -87,8 +87,8 @@ public class MPSErrorDialog extends JDialog {
     }
     final NodeReportItem herror = message.getReportItem();
     ThreadUtils.runInUIThreadNoWait(() -> {
-      String s = message.getFormattedMessage();
-      final MPSErrorDialog dialog = new MPSErrorDialog(window, s, message.getStatus().getPresentation(), false);
+      String msg = message.getMessage(); // assuming no html wrapping going below
+      final MPSErrorDialog dialog = new MPSErrorDialog(window, msg, message.getStatus().getPresentation(), false);
       List<TypesystemRuleId> ruleIds = new ArrayList<>(RuleIdFlavouredItem.FLAVOUR_RULE_ID.getCollection(herror));
       if (!ruleIds.isEmpty()) {
         final JButton button = new JButton();

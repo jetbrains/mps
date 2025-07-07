@@ -32,32 +32,12 @@ public class ResizableSelectionFrameView extends AbstractExternalFrameView {
       protected void registerSynchronizers(Mapper.SynchronizersConfiguration configuration) {
         super.registerSynchronizers(configuration);
         // corner resize handle positions
-        configuration.add(Synchronizers.forProperty(resizable, new Runnable() {
-          public void run() {
-            updateCornerResizeHandlePositions(resizable.get(), frameRectangle.get());
-          }
-        }));
-        configuration.add(Synchronizers.forProperty(frameRectangle, new Runnable() {
-          public void run() {
-            updateCornerResizeHandlePositions(resizable.get(), frameRectangle.get());
-          }
-        }));
+        configuration.add(Synchronizers.forProperty(resizable, () -> updateCornerResizeHandlePositions(resizable.get(), frameRectangle.get())));
+        configuration.add(Synchronizers.forProperty(frameRectangle, () -> updateCornerResizeHandlePositions(resizable.get(), frameRectangle.get())));
         // side resize handle positions
-        configuration.add(Synchronizers.forProperty(resizable, new Runnable() {
-          public void run() {
-            updateSideResizeHandlePositions(resizable.get(), showSideHandler.get(), frameRectangle.get());
-          }
-        }));
-        configuration.add(Synchronizers.forProperty(showSideHandler, new Runnable() {
-          public void run() {
-            updateSideResizeHandlePositions(resizable.get(), showSideHandler.get(), frameRectangle.get());
-          }
-        }));
-        configuration.add(Synchronizers.forProperty(frameRectangle, new Runnable() {
-          public void run() {
-            updateSideResizeHandlePositions(resizable.get(), showSideHandler.get(), frameRectangle.get());
-          }
-        }));
+        configuration.add(Synchronizers.forProperty(resizable, () -> updateSideResizeHandlePositions(resizable.get(), showSideHandler.get(), frameRectangle.get())));
+        configuration.add(Synchronizers.forProperty(showSideHandler, () -> updateSideResizeHandlePositions(resizable.get(), showSideHandler.get(), frameRectangle.get())));
+        configuration.add(Synchronizers.forProperty(frameRectangle, () -> updateSideResizeHandlePositions(resizable.get(), showSideHandler.get(), frameRectangle.get())));
 
         configuration.add(Synchronizers.forConstantRole(this, ResizableSelectionFrameView.this, childSubList(), new MapperFactory<ResizableSelectionFrameView, SelectionFrameView>() {
           public Mapper<? extends ResizableSelectionFrameView, ? extends SelectionFrameView> createMapper(ResizableSelectionFrameView decoratorView) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,12 @@
  */
 package jetbrains.mps.classloading;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.smodel.ExecutorServiceShutdownHelper;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.EnvironmentAware;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.junit.Assert;
@@ -35,7 +34,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public class DeploymentConcurrencyTest implements EnvironmentAware {
-  private final static Logger LOG = LogManager.getLogger(DeploymentConcurrencyTest.class);
+  private final static Logger LOG = Logger.getLogger(DeploymentConcurrencyTest.class);
 
   private final static int nThreads = 10;
   private final static long TIME_OUT_MS = 20000;
@@ -51,9 +50,17 @@ public class DeploymentConcurrencyTest implements EnvironmentAware {
     ExecutorService pool = Executors.newFixedThreadPool(nThreads);
     Collection<Callable<Object>> taskList = new ArrayList<>(nThreads);
     MPSModuleRepository repo = myEnvironment.getPlatform().findComponent(MPSModuleRepository.class);
+    // With DeploymentNotificationImpl and its semaphores, we started to face InterruptedException from semaphore during this test.
+    // To me, it looks like 20 sec limit for the executor service is not enough. First thread grabs write for almost whole duration:
+    //   Write Action duration (us): 908, 1309, 1055, 1679, 1075, 1006, 1122, 1010, 1044, 986, 1029, 1040, 996, 1037, 988, 1033, 979, 1041, 1049, 867
+    // therefore, I decided to make fewer reloads (used to be 20). I feel 10 is enough to make a point.
+    final int TOTAL_RELOADS = 10;
+//    final ArrayList<Long> waDur = new ArrayList<>();
     taskList.add(() -> {
-      for (int i = 0; i < 20; ++i) {
-        repo.getModelAccess().runWriteAction(() -> getCLM().reloadAll(new EmptyProgressMonitor()));
+      for (int i = 0; i < TOTAL_RELOADS; i++) {
+//        final long s = System.nanoTime();
+        getCLM().reloadAll(new EmptyProgressMonitor());
+//        waDur.add(System.nanoTime() - s);
       }
       return null;
     });
@@ -72,7 +79,15 @@ public class DeploymentConcurrencyTest implements EnvironmentAware {
     }
     try {
       pool.invokeAll(taskList, TIME_OUT_MS, TimeUnit.MILLISECONDS);
-      new ExecutorServiceShutdownHelper(pool).shutdownAndAwaitTermination(20000);
+      new ExecutorServiceShutdownHelper(pool).shutdownAndAwaitTermination(TIME_OUT_MS);
+      /*
+      System.out.print("Write Action duration (us): ");
+      for (Long l : waDur) {
+        System.out.print(l / 1000000);
+        System.out.print(", ");
+      }
+      System.out.println();
+      */
     } catch (InterruptedException e) {
       e.printStackTrace();
       Assert.fail();

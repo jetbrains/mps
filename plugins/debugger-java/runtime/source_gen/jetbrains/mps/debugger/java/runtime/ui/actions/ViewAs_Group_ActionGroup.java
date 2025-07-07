@@ -21,12 +21,10 @@ import jetbrains.mps.debug.api.AbstractDebugSession;
 import jetbrains.mps.debugger.api.ui.DebugActionsUtil;
 import jetbrains.mps.debugger.java.api.state.JavaUiState;
 import jetbrains.mps.debugger.java.api.state.proxy.ValueWrapperFactory;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import jetbrains.mps.internal.collections.runtime.ICollectionSequence;
 import jetbrains.mps.debugger.java.runtime.state.customViewers.CustomViewersManagerImpl;
 import org.jetbrains.annotations.Nullable;
 
-@GeneratedClass(node = "r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)/4225554808929802673", model = "r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)")
+@GeneratedClass(nodeId = "4225554808929802673", model = "r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)")
 public class ViewAs_Group_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.debugger.java.runtime.ui.actions.ViewAs_Group_ActionGroup";
   private final Set<Pair<ActionPlace, Condition<BaseAction>>> myPlaces = SetSequence.fromSet(new HashSet<Pair<ActionPlace, Condition<BaseAction>>>());
@@ -52,11 +50,7 @@ public class ViewAs_Group_ActionGroup extends GeneratedActionGroup {
 
     JavaUiState uiState = (JavaUiState) debugSession.getUiState();
     final Set<ValueWrapperFactory> factories = SetSequence.fromSet(new HashSet<ValueWrapperFactory>());
-    uiState.invokeEvaluationSynchronously(new _FunctionTypes._return_P0_E0<ICollectionSequence<ValueWrapperFactory>>() {
-      public ICollectionSequence<ValueWrapperFactory> invoke() {
-        return SetSequence.fromSet(factories).addSequence(SetSequence.fromSet(CustomViewersManagerImpl.getInstanceImpl().getValueWrapperFactories(((ValueWrapper) value).getValue())));
-      }
-    });
+    uiState.invokeEvaluationSynchronously(() -> SetSequence.fromSet(factories).addSequence(SetSequence.fromSet(CustomViewersManagerImpl.getInstanceImpl().getValueWrapperFactories(((ValueWrapper) value).getValue()))));
 
     if (SetSequence.fromSet(factories).count() <= 1) {
       event.getPresentation().setVisible(false);

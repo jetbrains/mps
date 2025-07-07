@@ -4,31 +4,24 @@ package TestRulesConstraints.basic;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.project.ProjectBase;
-import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
 
 @MPSLaunch
 public class CanBeChildParentWorksInRules_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(CanBeChildParentWorksInRules_Test.class, "${mps_home}", "r:aca600c4-c2ff-4395-8294-417b84791061(TestRulesConstraints.basic@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(CanBeChildParentWorksInRules_Test.class).projectPath(null).modelRef("r:aca600c4-c2ff-4395-8294-417b84791061(TestRulesConstraints.basic@tests)").reopenProject(null).build());
 
   public CanBeChildParentWorksInRules_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -42,10 +35,6 @@ public class CanBeChildParentWorksInRules_Test extends BaseTransformationTest {
   @Test
   public void test_NodepropIsTrueCheck4999334160817530094() throws Throwable {
     new TestBody(this).test_NodepropIsTrueCheck4999334160817530094();
-  }
-  @Test
-  public void test_ErrorMessagesCheck4999334160817530111() throws Throwable {
-    new TestBody(this).test_ErrorMessagesCheck4999334160817530111();
   }
   @Test
   public void test_NodetoleranceNotTooHighCheck4999334160817532120() throws Throwable {
@@ -70,45 +59,59 @@ public class CanBeChildParentWorksInRules_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("4999334160817529596", "4999334160817531719");
+    }
+
     public void test_NodepropIsTrueCheck4999334160817530090() throws Exception {
-      SNode nodeToCheck = getRealNodeById("4999334160817529595");
-      SNode operation = getRealNodeById("4999334160817530090");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rules.test.constraints)", "8878450512092603199"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("4999334160817529595");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rules.test.constraints)", "8878450512092603199"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
     public void test_NodechildConceptCheck4999334160817530092() throws Exception {
-      SNode nodeToCheck = getRealNodeById("4999334160817529595");
-      SNode operation = getRealNodeById("4999334160817530092");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rules.test.constraints)", "8878450512092601214"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("4999334160817529595");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rules.test.constraints)", "8878450512092601214"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
     public void test_NodepropIsTrueCheck4999334160817530094() throws Exception {
-      SNode nodeToCheck = getRealNodeById("4999334160817529595");
-      SNode operation = getRealNodeById("4999334160817530094");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rules.test.constraints)", "8878450512092603199"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
-    }
-    public void test_ErrorMessagesCheck4999334160817530111() throws Exception {
-      SNode nodeToCheck = getRealNodeById("4999334160817530089");
-      SNode operation = getRealNodeById("4999334160817530111");
-      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4999334160817529595"), MessageStatus.ERROR, new SNodePointer("r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rules.test.constraints)", "8878450512092603199"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4999334160817529595"), MessageStatus.ERROR, new SNodePointer("r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rules.test.constraints)", "8878450512092601214"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4999334160817529595"), MessageStatus.ERROR, new SNodePointer("r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rules.test.constraints)", "8878450512092603199"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("4999334160817529595");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rules.test.constraints)", "8878450512092603199"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
     public void test_NodetoleranceNotTooHighCheck4999334160817532120() throws Exception {
-      SNode nodeToCheck = getRealNodeById("4999334160817532094");
-      SNode operation = getRealNodeById("4999334160817532120");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rules.test.constraints)", "8878450512092605113"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("4999334160817532094");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rules.test.constraints)", "8878450512092605113"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
     public void test_NodetoleranceNotTooLowCheck4999334160817532128() throws Exception {
-      SNode nodeToCheck = getRealNodeById("4999334160817532101");
-      SNode operation = getRealNodeById("4999334160817532128");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rules.test.constraints)", "8878450512092611869"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("4999334160817532101");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rules.test.constraints)", "8878450512092611869"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
     public void test_NodeUnknownRuleCheck4999334160817532069() throws Exception {
-      SNode nodeToCheck = getRealNodeById("4999334160817532060");
-      SNode operation = getRealNodeById("4999334160817532069");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rules.test.constraints)", "8409512132773797059"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("4999334160817532060");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rules.test.constraints)", "8409512132773797059"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
     public void test_NodechildConceptCheck4999334160817531756() throws Exception {
-      SNode nodeToCheck = getRealNodeById("4999334160817531720");
-      SNode operation = getRealNodeById("4999334160817531756");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rules.test.constraints)", "8878450512092601214"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("4999334160817531720");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rules.test.constraints)", "8878450512092601214"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
 
   }

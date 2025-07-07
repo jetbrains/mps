@@ -13,11 +13,10 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="kernel" />
     <orderEntry type="module" module-name="collections-runtime" />
-    <orderEntry type="module" module-name="typesystemEngine" />
     <orderEntry type="module" module-name="closures-runtime" />
     <orderEntry type="module" module-name="tuples-runtime" />
+    <orderEntry type="module" module-name="typechecking" />
     <orderEntry type="module" module-name="persistence" />
-    <orderEntry type="library" name="JDOM" level="project" />
     <orderEntry type="module" module-name="testbench" scope="TEST" />
     <orderEntry type="module" module-name="mps-platform" scope="TEST" />
     <orderEntry type="module" module-name="mps-workbench" scope="TEST" />
@@ -25,8 +24,7 @@
     <orderEntry type="module" module-name="environment" scope="TEST" />
     <orderEntry type="library" scope="TEST" name="JUnit4" level="project" />
     <orderEntry type="library" scope="TEST" name="Idea-platform" level="project" />
-    <orderEntry type="library" name="Trove" level="project" />
-    <orderEntry type="module" module-name="typechecking" />
-    <orderEntry type="module" module-name="pattern-runtime" />
+    <orderEntry type="library" name="gnu.trove" level="project" />
+    <orderEntry type="library" name="org.jdom" level="project" />
   </component>
 </module>

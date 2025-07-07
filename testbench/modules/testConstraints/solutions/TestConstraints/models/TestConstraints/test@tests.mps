@@ -2,7 +2,7 @@
 <model ref="r:63c35524-f256-4fdd-b128-2c53748bdd7c(TestConstraints.test@tests)">
   <persistence version="9" />
   <languages>
-    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="5" />
+    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="6" />
     <use id="2b800570-3758-4c14-86fb-871266fb9d11" name="constraints.test" version="-1" />
   </languages>
   <imports>
@@ -19,7 +19,7 @@
         <child id="3655334166513314307" name="nodes" index="3KTr4d" />
       </concept>
       <concept id="7691029917083831655" name="jetbrains.mps.lang.test.structure.UnknownRuleReference" flags="ng" index="2u4KIi" />
-      <concept id="7691029917083872157" name="jetbrains.mps.lang.test.structure.IRuleReference" flags="ng" index="2u4UPC">
+      <concept id="7691029917083872157" name="jetbrains.mps.lang.test.structure.IRuleReference" flags="ngI" index="2u4UPC">
         <reference id="8333855927540250453" name="declaration" index="39XzEq" />
       </concept>
       <concept id="1229187653856" name="jetbrains.mps.lang.test.structure.EditorTestCase" flags="lg" index="LiM7Y">
@@ -37,13 +37,11 @@
       <concept id="1227182079811" name="jetbrains.mps.lang.test.structure.TypeKeyStatement" flags="nn" index="2TK7Tu">
         <property id="1227184461946" name="keys" index="2TTd_B" />
       </concept>
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
-      </concept>
       <concept id="8333855927540283103" name="jetbrains.mps.lang.test.structure.NodeConstraintsErrorCheckOperation" flags="ng" index="39XrGg">
         <child id="8333855927548182241" name="errorRef" index="39rjcI" />
       </concept>
       <concept id="1216913645126" name="jetbrains.mps.lang.test.structure.NodesTestCase" flags="lg" index="1lH9Xt">
+        <property id="2616911529524314943" name="accessMode" index="3DII0k" />
         <child id="1217501822150" name="nodesToCheck" index="1SKRRt" />
       </concept>
       <concept id="1216989428737" name="jetbrains.mps.lang.test.structure.TestNode" flags="ng" index="1qefOq">
@@ -63,7 +61,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -106,6 +104,7 @@
   </registry>
   <node concept="1lH9Xt" id="52TFb$IPN3$">
     <property role="TrG5h" value="ConstraintsInheritance" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="52TFb$IPN3C" role="1SKRRt">
       <node concept="1YrDLd" id="52TFb$IQ2he" role="1qenE9">
         <property role="1YrDQh" value="true" />
@@ -187,11 +186,9 @@
       </node>
     </node>
   </node>
-  <node concept="2XOHcx" id="4qWC2JVszPl">
-    <property role="2XOHcw" value="${mps_home}" />
-  </node>
   <node concept="1lH9Xt" id="7gSQnpLgxs1">
     <property role="TrG5h" value="ConstraintsInvocation" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="7gSQnpLgxs2" role="1SKRRt">
       <node concept="5uJEq" id="Cy$byQ19er" role="1qenE9">
         <node concept="2W9wcp" id="Cy$byQ19CX" role="5uJEe" />
@@ -219,6 +216,7 @@
   <node concept="1lH9Xt" id="2hac6o5z27T">
     <property role="TrG5h" value="ConstraintsReferenceInheritence_Scopes" />
     <property role="3GE5qa" value="ref constraints inheritence" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="2hac6o5z2fw" role="1SKRRt">
       <node concept="xbyMT" id="2hac6o5z2fy" role="1qenE9">
         <node concept="xbyKi" id="2hac6o5z2fA" role="xbyM5">

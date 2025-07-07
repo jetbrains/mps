@@ -48,7 +48,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       setCellContext(bigCell);
     }
     Style style = new StyleImpl();
-    new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeyWordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
     style.set(StyleAttributes.STRIKE_OUT, _StyleParameter_QueryFunction_q0ga01_a1a());
     style.set(StyleAttributes.AUTO_DELETABLE, true);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,17 @@
  */
 package jetbrains.mps.extapi.module;
 
-import jetbrains.mps.classloading.DumbIdeaPluginFacet;
 import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.project.DevKit;
+import jetbrains.mps.project.Solution;
+import jetbrains.mps.project.facets.DocumentationFacet;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.facets.JavaModuleFacetImpl;
+import jetbrains.mps.project.facets.PlainTextTargetFacet;
 import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.project.facets.TestsFacetImpl;
 import jetbrains.mps.smodel.BootstrapLanguages;
+import jetbrains.mps.smodel.Language;
 import jetbrains.mps.util.containers.MultiMap;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -46,15 +50,18 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
   private final FacetFactory TESTS_FACET_FACTORY = new FacetFactory() {
     @Override
     public SModuleFacet create(@NotNull SModule module) {
-      final TestsFacetImpl rv = new TestsFacetImpl();
-      rv.setModule(module);
-      return rv;
+      return new TestsFacetImpl(module);
     }
 
     @NotNull
     @Override
     public String getPresentation() {
       return "Tests";
+    }
+
+    @Override
+    public boolean isApplicable(@NotNull SModule module) {
+      return !(module instanceof DevKit);
     }
   };
 
@@ -69,9 +76,48 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
     public String getPresentation() {
       return "Java";
     }
+
+    @Override
+    public boolean isApplicable(@NotNull SModule module) {
+      return !(module instanceof DevKit);
+    }
   };
 
-  private FacetFactory DUMB_IDEA_PLUGIN_FACET_FACTORY;
+  private final FacetFactory myPlainTextFacetFactory = new FacetFactory() {
+    @Override
+    public SModuleFacet create(@NotNull SModule module) {
+       return new PlainTextTargetFacet(module);
+    }
+
+    @NotNull
+    @Override
+    public String getPresentation() {
+      return "Plain text output";
+    }
+
+    @Override
+    public boolean isApplicable(@NotNull SModule module) {
+      return module instanceof Solution;
+    }
+  };
+
+  private final FacetFactory DOCUMENTATION_FACET_FACTORY = new FacetFactory() {
+    @Override
+    public SModuleFacet create(@NotNull SModule module) {
+      return new DocumentationFacet(module);
+    }
+
+    @NotNull
+    @Override
+    public String getPresentation() {
+      return "Documentation";
+    }
+
+    @Override
+    public boolean isApplicable(@NotNull SModule module) {
+      return module instanceof Language;
+    }
+  };
 
   private final MultiMap<String, String> myLanguageToFacetTypes = new MultiMap<>();
 
@@ -159,38 +205,19 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
 
     addFactory(JavaModuleFacet.FACET_TYPE, JAVA_MODULE_FACET_FACTORY);
     addFactory(TestsFacet.FACET_TYPE, TESTS_FACET_FACTORY);
-    setUpDumbIdeaFacet();
+    addFactory(PlainTextTargetFacet.FACET_TYPE, myPlainTextFacetFactory);
+    addFactory(DocumentationFacet.FACET_TYPE, DOCUMENTATION_FACET_FACTORY);
 
     registerLanguageFacet(BootstrapLanguages.getBaseLang(), JavaModuleFacet.FACET_TYPE);
-  }
-
-  private void setUpDumbIdeaFacet() {
-    FacetFactory existingFactory = getFacetFactory(DumbIdeaPluginFacet.FACET_TYPE);
-    if (existingFactory == null) {
-      DUMB_IDEA_PLUGIN_FACET_FACTORY = new FacetFactory() {
-        @Override
-        public SModuleFacet create(@NotNull SModule module) {
-          return new DumbIdeaPluginFacet(module);
-        }
-
-        @NotNull
-        @Override
-        public String getPresentation() {
-          return "Idea Plugin";
-        }
-      };
-      addFactory(DumbIdeaPluginFacet.FACET_TYPE, DUMB_IDEA_PLUGIN_FACET_FACTORY);
-    }
   }
 
   @Override
   public void dispose() {
     unregisterLanguageFacet(BootstrapLanguages.getBaseLang(), JavaModuleFacet.FACET_TYPE);
-    if (DUMB_IDEA_PLUGIN_FACET_FACTORY != null) {
-      removeFactory(DUMB_IDEA_PLUGIN_FACET_FACTORY);
-    }
+    removeFactory(myPlainTextFacetFactory);
     removeFactory(TESTS_FACET_FACTORY);
     removeFactory(JAVA_MODULE_FACET_FACTORY);
+    removeFactory(DOCUMENTATION_FACET_FACTORY);
     INSTANCE = null;
   }
 }

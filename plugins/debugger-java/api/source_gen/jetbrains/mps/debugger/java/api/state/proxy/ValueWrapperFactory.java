@@ -8,7 +8,7 @@ import jetbrains.mps.debugger.java.api.evaluation.proxies.IValueProxy;
 import jetbrains.mps.debugger.java.api.evaluation.EvaluationUtils;
 import com.sun.jdi.ThreadReference;
 
-@GeneratedClass(node = "r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)/3432969378036017270", model = "r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)")
+@GeneratedClass(nodeId = "3432969378036017270", model = "r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)")
 public abstract class ValueWrapperFactory {
   public ValueWrapperFactory() {
   }

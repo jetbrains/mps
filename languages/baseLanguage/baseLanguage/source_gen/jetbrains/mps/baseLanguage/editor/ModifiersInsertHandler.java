@@ -14,15 +14,13 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ModifiersInsertHandler {
 
@@ -78,15 +76,7 @@ public class ModifiersInsertHandler {
             // if yes then we allow to add a child into node.modifiers collection
             SModel model = SNodeOperations.getModel(node);
             List<SNode> modifiers = SLinkOperations.getChildren(node, LINKS.modifiers$F5MM);
-            return !(ListSequence.fromList(modifiers).select(new ISelector<SNode, SConcept>() {
-              public SConcept select(SNode it) {
-                return SNodeOperations.getConcept(it);
-              }
-            }).containsSequence(ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.Modifier$jW, model)).where(new IWhereFilter<SConcept>() {
-              public boolean accept(SConcept it) {
-                return !(it.isAbstract());
-              }
-            })));
+            return !(ListSequence.fromList(modifiers).select((it) -> SNodeOperations.getConcept(it)).containsSequence(ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.Modifier$jW, model)).where((it) -> !(it.isAbstract()))));
           } else if (Objects.equals(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$F5MM)).last(), contextNode)) {
             return false;
           }

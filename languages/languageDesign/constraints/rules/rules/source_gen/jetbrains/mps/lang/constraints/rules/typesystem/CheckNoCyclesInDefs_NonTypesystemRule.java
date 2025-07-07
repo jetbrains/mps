@@ -18,10 +18,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -35,7 +32,7 @@ public class CheckNoCyclesInDefs_NonTypesystemRule extends AbstractNonTypesystem
   public void applyRule(final SNode root, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     final Set<SNode> visited = SetSequence.fromSet(new HashSet<SNode>());
     final Set<SNode> visiting = SetSequence.fromSet(new HashSet<SNode>());
-    final Deque<SNode> stack = DequeSequence.fromDequeNew(new LinkedList<SNode>());
+    final Deque<SNode> stack = DequeSequence.fromDeque(new LinkedList<SNode>());
     List<SNode> allDefs = SNodeOperations.getNodeDescendants(root, CONCEPTS.DefForRule$_k, false, new SAbstractConcept[]{});
     while (ListSequence.fromList(allDefs).isNotEmpty()) {
       DequeSequence.fromDequeNew(stack).addFirstElement(ListSequence.fromList(allDefs).first());
@@ -49,35 +46,21 @@ public class CheckNoCyclesInDefs_NonTypesystemRule extends AbstractNonTypesystem
         }
         SetSequence.fromSet(visiting).addElement(def);
         Iterable<SNode> implicitDeps = SNodeOperations.getNodeDescendants(def, CONCEPTS.TypedDefReference$yw, false, new SAbstractConcept[]{});
-        Sequence.fromIterable(implicitDeps).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.declaration$xU6a), CONCEPTS.DefForRule$_k);
-          }
-        }).select(new ISelector<SNode, SNode>() {
-          public SNode select(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.declaration$xU6a);
-          }
-        }).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            SNode depDef = SNodeOperations.cast(it, CONCEPTS.DefForRule$_k);
-            if (SetSequence.fromSet(visiting).contains(depDef)) {
-              {
-                final MessageTarget errorTarget = new NodeMessageTarget();
-                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(def, "Remove cycle in the declared defs (" + it + " is involved)", "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "2716118816012262155", null, errorTarget);
-              }
-              return;
+        Sequence.fromIterable(implicitDeps).where((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.declaration$xU6a), CONCEPTS.DefForRule$_k)).select((it) -> SLinkOperations.getTarget(it, LINKS.declaration$xU6a)).visitAll((it) -> {
+          SNode depDef = SNodeOperations.cast(it, CONCEPTS.DefForRule$_k);
+          if (SetSequence.fromSet(visiting).contains(depDef)) {
+            {
+              final MessageTarget errorTarget = new NodeMessageTarget();
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(def, "Remove cycle in the declared defs (" + SNodeOperations.present(it) + " is involved)", "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "2716118816012262155", null, errorTarget);
             }
-            if (!(SetSequence.fromSet(visited).contains(depDef))) {
-              DequeSequence.fromDequeNew(stack).addFirstElement(depDef);
-            }
+            return;
+          }
+          if (!(SetSequence.fromSet(visited).contains(depDef))) {
+            DequeSequence.fromDequeNew(stack).addFirstElement(depDef);
           }
         });
       }
-      ListSequence.fromList(allDefs).removeWhere(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SetSequence.fromSet(visited).contains(it);
-        }
-      });
+      ListSequence.fromList(allDefs).removeWhere((it) -> SetSequence.fromSet(visited).contains(it));
     }
   }
   public SAbstractConcept getApplicableConcept() {

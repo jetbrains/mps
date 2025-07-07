@@ -143,6 +143,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_Node_GetReferenceOperation;
   private ConceptPresentation props_Node_GetReferencesOperation;
   private ConceptPresentation props_Node_GetSConceptOperation;
+  private ConceptPresentation props_Node_GetUID;
   private ConceptPresentation props_Node_HasNextSiblingOperation;
   private ConceptPresentation props_Node_HasPrevSiblingOperation;
   private ConceptPresentation props_Node_InsertNewNextSiblingOperation;
@@ -156,8 +157,10 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_Node_IsOperation;
   private ConceptPresentation props_Node_IsRoleOperation;
   private ConceptPresentation props_Node_PointerOperation;
+  private ConceptPresentation props_Node_PresentationOperation;
   private ConceptPresentation props_Node_ReplaceWithAnotherOperation;
   private ConceptPresentation props_Node_ReplaceWithNewOperation;
+  private ConceptPresentation props_Node_SetUID;
   private ConceptPresentation props_OfConceptOperation;
   private ConceptPresentation props_OperationParm_Concept;
   private ConceptPresentation props_OperationParm_ConceptList;
@@ -1207,6 +1210,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Node_GetSConceptOperation = cpb.create();
         }
         return props_Node_GetSConceptOperation;
+      case LanguageConceptSwitch.Node_GetUID:
+        if (props_Node_GetUID == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("get uuid");
+          props_Node_GetUID = cpb.create();
+        }
+        return props_Node_GetUID;
       case LanguageConceptSwitch.Node_HasNextSiblingOperation:
         if (props_Node_HasNextSiblingOperation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -1301,6 +1311,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Node_PointerOperation = cpb.create();
         }
         return props_Node_PointerOperation;
+      case LanguageConceptSwitch.Node_PresentationOperation:
+        if (props_Node_PresentationOperation == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("string representation");
+          cpb.rawPresentation("presentation");
+          props_Node_PresentationOperation = cpb.create();
+        }
+        return props_Node_PresentationOperation;
       case LanguageConceptSwitch.Node_ReplaceWithAnotherOperation:
         if (props_Node_ReplaceWithAnotherOperation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -1315,6 +1333,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Node_ReplaceWithNewOperation = cpb.create();
         }
         return props_Node_ReplaceWithNewOperation;
+      case LanguageConceptSwitch.Node_SetUID:
+        if (props_Node_SetUID == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("set uid");
+          props_Node_SetUID = cpb.create();
+        }
+        return props_Node_SetUID;
       case LanguageConceptSwitch.OfConceptOperation:
         if (props_OfConceptOperation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

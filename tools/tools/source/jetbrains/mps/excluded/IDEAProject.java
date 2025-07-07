@@ -20,6 +20,8 @@ import org.jdom.Attribute;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
+import org.jdom.filter2.AbstractFilter;
+import org.jdom.filter2.Filter;
 import org.jdom.filter2.Filters;
 import org.jdom.xpath.XPathExpression;
 import org.jdom.xpath.XPathFactory;
@@ -44,6 +46,13 @@ import java.util.stream.Stream;
  */
 public final class IDEAProject {
   private static final String PROJECT_DIR_PREFIX = "file://$PROJECT_DIR$";
+
+  private static final Filter<Attribute> attributeFilter = new AbstractFilter<>() {
+    @Override
+    public Attribute filter(Object content) {
+      return content instanceof Attribute ? (Attribute) content : null;
+    }
+  };
 
   private final boolean myDebugTimings = Boolean.FALSE;
   private final File myRoot;
@@ -123,9 +132,9 @@ public final class IDEAProject {
     final XPathFactory xpath = XPathFactory.instance();
     // Alternatively, "//component[@name='NewModuleRootManager']", but do I really care to match component by name when it's only one?
     myModuleDependencies = xpath.compile("module/component/orderEntry[@type='module']", Filters.element());
-    mySourceFolderURL = xpath.compile("module/component/content/sourceFolder/@url", Filters.attribute());
-    myContentRootsURL = xpath.compile("module/component/content/@url", Filters.attribute());
-    myProjectModuleURL = xpath.compile("/project/component/modules/module/@fileurl", Filters.attribute());
+    mySourceFolderURL = xpath.compile("module/component/content/sourceFolder/@url", attributeFilter);
+    myContentRootsURL = xpath.compile("module/component/content/@url", attributeFilter);
+    myProjectModuleURL = xpath.compile("/project/component/modules/module/@fileurl", attributeFilter);
     if (myDebugTimings) {
       // JFTR, it's around 110 ms on my computer now
       System.out.printf("XPath init took %d ms\n", (System.nanoTime() - start) / 1000000);

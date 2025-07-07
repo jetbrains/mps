@@ -8,16 +8,14 @@ import javax.swing.Icon;
 import jetbrains.mps.icons.MPSIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.SModelStereotype;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
-import org.jetbrains.mps.openapi.model.SModel;
-import javax.swing.tree.TreeNode;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1420252515663895912", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1420252515663895912", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class NewSubModel_Action extends BaseAction {
   private static final Icon ICON = MPSIcons.Nodes.Model;
 
@@ -32,14 +30,12 @@ public class NewSubModel_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    if (!(event.getData(MPSCommonDataKeys.TREE_NODE) instanceof SModelTreeNode)) {
-      return false;
-    }
-    if (!(event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getModule() instanceof AbstractModule)) {
+    final SModel model = ((SModel) event.getData(MPSCommonDataKeys.VALUE));
+    if (!(model.getModule() instanceof AbstractModule) || model.isReadOnly()) {
       return false;
     }
 
-    return Sequence.fromIterable(Sequence.fromArray(SModelStereotype.values)).contains(event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getName().getStereotype());
+    return Sequence.fromIterable(Sequence.fromArray(SModelStereotype.values)).contains(model.getName().getStereotype());
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -57,14 +53,11 @@ public class NewSubModel_Action extends BaseAction {
       }
     }
     {
-      SModel p = event.getData(MPSCommonDataKeys.CONTEXT_MODEL);
+      Object p = event.getData(MPSCommonDataKeys.VALUE);
       if (p == null) {
         return false;
       }
-    }
-    {
-      TreeNode p = event.getData(MPSCommonDataKeys.TREE_NODE);
-      if (p == null) {
+      if (p != null && !(p instanceof SModel)) {
         return false;
       }
     }
@@ -75,6 +68,9 @@ public class NewSubModel_Action extends BaseAction {
     NewSubModel_Action.this.getExecutor(event).execute();
   }
   protected NewModelActionExecutor getExecutor(final AnActionEvent event) {
-    return new NewModelActionExecutor(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getModule(), event.getData(MPSCommonDataKeys.CONTEXT_MODEL));
+    // XXX I don't feel this protected method truly helps with what 6d50aeda claims it does - 
+    //  e.g. not clear how does it access event parameters
+    final SModel model = ((SModel) event.getData(MPSCommonDataKeys.VALUE));
+    return new NewModelActionExecutor(event.getData(MPSCommonDataKeys.MPS_PROJECT), model.getModule(), model);
   }
 }

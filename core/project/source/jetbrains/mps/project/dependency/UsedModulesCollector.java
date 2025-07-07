@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,26 +15,22 @@
  */
 package jetbrains.mps.project.dependency;
 
+import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager.ErrorHandler;
-import jetbrains.mps.smodel.ModelImports;
+import jetbrains.mps.smodel.LanguageModuleScanner;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
-import org.jetbrains.mps.openapi.language.SLanguage;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SDependency;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 import static org.jetbrains.mps.openapi.module.SDependencyScope.DESIGN;
 import static org.jetbrains.mps.openapi.module.SDependencyScope.EXTENDS;
@@ -48,16 +44,16 @@ import static org.jetbrains.mps.openapi.module.SDependencyScope.GENERATES_INTO;
  */
 @Immutable
 public final class UsedModulesCollector {
-  private final Map<SLanguage, Collection<SModuleReference>> myLanguageRuntimesCache;
+  private final LanguageModuleScanner myLanguageRuntimesCache;
   private final ErrorHandler myErrorHandler;
 
-  public UsedModulesCollector() {
-    this(new PostingWarningsErrorHandler());
+  public UsedModulesCollector(SRepository repo) {
+    this(LanguageRegistry.getInstance(repo) == null ? new LanguageModuleScanner(repo) : new LanguageModuleScanner(LanguageRegistry.getInstance(repo), repo), new PostingWarningsErrorHandler());
   }
 
-  public UsedModulesCollector(ErrorHandler errorHandler) {
+  public UsedModulesCollector(LanguageModuleScanner languageModuleScanner, ErrorHandler errorHandler) {
     myErrorHandler = errorHandler;
-    myLanguageRuntimesCache = new HashMap<>();
+    myLanguageRuntimesCache = languageModuleScanner;
   }
 
   private UsedModulesCollector(ErrorHandler errorHandler, UsedModulesCollector copy) {
@@ -71,7 +67,7 @@ public final class UsedModulesCollector {
   }
 
   /**
-   *  Combination of {@link #collectModuleDependencies(SModule, boolean, Collection)} and {@link #collectRuntimeOfUsedLanguages(SModule, Collection)}
+   *  Combination of {@link #collectModuleDependencies(SModule, boolean, Collection)} and {@link #runtimeModulesOfUsedLanguages(SModule)}
    */
   @NotNull
   public Collection<SModule> directlyUsedModules(@NotNull SModule module, boolean includeNonReexport, boolean runtimes) {
@@ -80,14 +76,36 @@ public final class UsedModulesCollector {
     collectModuleDependencies(module, includeNonReexport, result);
 
     if (includeNonReexport) {
+      // XXX always wondered why is this double if. Check 754e7d88 for answer. Perhaps, it's time to bring this code back here?
+      if (module instanceof AbstractModule && module.getRepository() != null) {
+        final SRepository contextRepo = module.getRepository();
+        for (SModuleReference devkit : ((AbstractModule) module).collectLanguagesAndDevkits().devkits) {
+          final SModule dk = devkit.resolve(contextRepo);
+          if (false == dk instanceof DevKit) {
+            continue;
+          }
+          result.addAll(((DevKit) dk).getExportedSolutions());
+        }
+      }
       if (runtimes) {
-        collectRuntimeOfUsedLanguages(module, result);
+        final Set<SModuleReference> rtUsed = runtimeModulesOfUsedLanguages(module);
+        final SRepository contextRepo = module.getRepository();
+        assert contextRepo != null;
+        for (SModuleReference mr : rtUsed) {
+          SModule m = mr.resolve(contextRepo);
+          if (m == null) {
+            myErrorHandler.runtimeDependencyCannotBeFound(mr);
+          } else {
+            result.add(m);
+          }
+        }
       }
     }
 
     return result;
   }
 
+  // doesn't include initial module (well, unless there's a self-dependency. Shall I guard for this case?)
   public void collectModuleDependencies(@NotNull SModule module, boolean includeNonReexport, @NotNull final Collection<SModule> result) {
     // FIXME have to resort to DeploymentDescriptor, if any, much like RuntimesOfUsedLanguageCalculator.DeploymentStrategy does
     for (SDependency dependency : module.getDeclaredDependencies()) {
@@ -100,36 +118,15 @@ public final class UsedModulesCollector {
           result.add(dependencyModule);
         }
       } else {
-        if (scope != GENERATES_INTO && scope != DESIGN) {
+        if (scope != GENERATES_INTO && scope != DESIGN) { // aka CLDependencies.isClassLoadingDependency()
           myErrorHandler.depCannotBeResolved(module, dependency);
         }
       }
     }
   }
 
-  public void collectRuntimeOfUsedLanguages(@NotNull SModule module, @NotNull final Collection<SModule> result) {
-    SRepository contextRepo = module.getRepository();
-    assert contextRepo != null;
-    final RuntimesOfUsedLanguageCalculator rtCalc = new RuntimesOfUsedLanguageCalculator(myLanguageRuntimesCache, myErrorHandler);
-    final Set<SModuleReference> rtUsed = rtCalc.invoke(module);
-    // Unless I make sure runtimes in DD include those of generator-engaged languages, I keep this code to walk models here.
-    //    Although indeed it's place is in SourceStrategy of RuntimesOfUsedLanguageCalculator
-    // Primary client for these RTs is @descriptor model (MPS-32851). As long as we didn't use @descriptor model for packaged modules, and their dependencies
-    // (lacking RTs of engaged) were so far sufficient to compile user modules, I think I'm safe to keep this code to SourceStrategy only.
-    // However, there were some reports that mbeddr guys need to duplicate 'engaged' as 'used', and I'd need to clear these first.
-    ArrayList<SLanguage> engagedInGenerator = new ArrayList<>();
-    for (SModel m : module.getModels()) {
-      engagedInGenerator.addAll(new ModelImports(m).getLanguagesEngagedOnGeneration());
-    }
-    engagedInGenerator.stream().map(rtCalc::getRuntimesCached).forEach(rtUsed::addAll);
-    //
-    for (SModuleReference mr : rtUsed) {
-      SModule m = mr.resolve(contextRepo);
-      if (m == null) {
-        myErrorHandler.runtimeDependencyCannotBeFound(mr);
-      } else {
-        result.add(m);
-      }
-    }
+  public Set<SModuleReference> runtimeModulesOfUsedLanguages(@NotNull SModule module) {
+    assert myLanguageRuntimesCache != null;
+    return new RuntimesOfUsedLanguageCalculator(myLanguageRuntimesCache, myErrorHandler).invoke(module);
   }
 }

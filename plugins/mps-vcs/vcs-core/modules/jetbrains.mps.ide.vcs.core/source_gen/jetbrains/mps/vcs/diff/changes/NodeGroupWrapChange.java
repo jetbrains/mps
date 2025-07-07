@@ -5,65 +5,63 @@ package jetbrains.mps.vcs.diff.changes;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.vcs.diff.ChangeSet;
-import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.vcs.util.MergeStrategy;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.vcs.mergehints.runtime.VCSAspectUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.model.SNodeId;
-import jetbrains.mps.util.NameUtil;
+import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNodeId;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.util.NameUtil;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.vcs.diff.DiffUtil;
+import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
+import jetbrains.mps.errors.messageTargets.MessageTarget;
+import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
+import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
+import java.util.Map;
+import org.jetbrains.annotations.Nullable;
+import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/4047500669634631216", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
-public class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
+@GeneratedClass(nodeId = "4047500669634631216", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
+public final class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
 
-  protected final ModifiedNodesGroup myNewMovedGroup;
-  protected final ModifiedNodesGroup myNewInsertedGroup;
+  @NotNull
+  protected final WrappingNodesGroup myWrappingGroup;
   private boolean myIsWrap;
-  private String myDescription;
-  private String myShortDescription;
-  private String myInternalDescription;
+  private final String myDescription;
+  private final String myShortDescription;
 
 
-  public NodeGroupWrapChange(@NotNull ChangeSet changeSet, ModifiedNodesGroup oldGroup, ModifiedNodesGroup newMovedGroup, ModifiedNodesGroup newInsertedGroup, boolean isWrap) {
-    super(changeSet, oldGroup, createNewGroup(newMovedGroup, newInsertedGroup));
-    myNewMovedGroup = newMovedGroup;
-    myNewInsertedGroup = newInsertedGroup;
+  public NodeGroupWrapChange(@NotNull ChangeSet changeSet, @NotNull WrappingNodesGroup wrappingGroup, boolean isWrap) {
+    super(changeSet, createGroup(changeSet, wrappingGroup, isWrap, false), createGroup(changeSet, wrappingGroup, isWrap, true));
+    myWrappingGroup = wrappingGroup;
     myIsWrap = isWrap;
     myDescription = createDescription(true);
     myShortDescription = createDescription(false);
-    myInternalDescription = createInternalDescription();
-
   }
-  @Nullable
-  @Override
-  public MergeStrategy getMergeHint() {
-    // get "nonconflicting" attribute in metamodel
-    SNode n = getParent(false);
-    MergeStrategy hint = VCSAspectUtil.getDefaultMergeStrategy(getLink());
-    if (hint != null) {
-      return hint;
+
+
+  @NotNull
+  private static ModifiedNodesGroup createGroup(@NotNull ChangeSet changeSet, @NotNull WrappingNodesGroup wrappingGroup, boolean isWrap, boolean isNew) {
+
+    if (isNew == isWrap) {
+      return wrappingGroup;
     }
-    return VCSAspectUtil.getDefaultMergeStrategy(SNodeOperations.getConcept(n));
-  }
 
-  private static ModifiedNodesGroup createNewGroup(ModifiedNodesGroup newMovedGroup, ModifiedNodesGroup newInsertedGroup) {
-    List<ModifiedNode> newChanges = ListSequence.fromList(newInsertedGroup.getModifiedNodes()).concat(ListSequence.fromList(newMovedGroup.getModifiedNodes())).toListSequence();
-    ModifiedNodesGroup newGroup = new ModifiedNodesGroup(newInsertedGroup.getModel(), newChanges, newInsertedGroup.getNextNodeId());
-    newGroup.setNextGroup(newInsertedGroup.getNextGroup());
-    return newGroup;
-  }
-
-  public SContainmentLink getLink() {
-    return getLink(false);
+    List<ModifiedNodesGroup> unwrappedGroups = wrappingGroup.getUnwrappedGroups();
+    assert ListSequence.fromList(unwrappedGroups).isNotEmpty();
+    final List<ModifiedNode> nodes = ListSequence.fromList(new ArrayList<ModifiedNode>());
+    ListSequence.fromList(unwrappedGroups).visitAll((it) -> ListSequence.fromList(nodes).addSequence(ListSequence.fromList(it.getModifiedNodes())));
+    SModel model = (isNew ? changeSet.getNewModel() : changeSet.getOldModel());
+    SNodeId nextNodeId = ListSequence.fromList(unwrappedGroups).last().getNextNodeId();
+    return new ModifiedNodesGroup(model, nodes, nextNodeId);
   }
 
   public boolean isAbout(SContainmentLink link) {
-    return getLink().equals(link);
+    return getLink(false).equals(link);
   }
 
   @Override
@@ -71,12 +69,13 @@ public class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
     return getDescription(true);
   }
 
-  private String getNewIdsAsString() {
-    List<String> allIds = ListSequence.fromList(myNewMovedGroup.getIds()).select(new ISelector<SNodeId, String>() {
-      public String select(SNodeId id) {
-        return "#" + id;
-      }
-    }).toListSequence();
+  @Override
+  public String getShortDescription() {
+    return myShortDescription;
+  }
+
+  protected String getMultiLineIdsString(boolean isNew) {
+    List<String> allIds = ListSequence.fromList(getIds(isNew)).select((id) -> "#" + id).toList();
     int size = ListSequence.fromList(allIds).count();
     if (size == 1) {
       return ListSequence.fromList(allIds).getElement(0);
@@ -95,55 +94,137 @@ public class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
         }
       }
     }
-    sb.append(" --> #");
-    sb.append(ListSequence.fromList(myNewInsertedGroup.getIds()).first());
     return sb.toString();
   }
 
+  private String getIdsAsString() {
+    return getMultiLineIdsString(false) + " --> " + getMultiLineIdsString(true);
+  }
+
   private String createDescription(boolean verbose) {
-    String role = getLink().getName();
-    int movedSize = ListSequence.fromList(getModifiedNodes(false)).count();
-    String movedItems = (movedSize == 1 ? role : NameUtil.formatNumericalString(movedSize, role));
-    if (verbose) {
-      return String.format("Wrapped %s by new %s: %s", movedItems, role, getNewIdsAsString());
+    String unwrappedRole = myWrappingGroup.getUnwrappedLink().getName();
+    String wrappingRole = myWrappingGroup.getLink().getName();
+    List<ModifiedNodesGroup> wrappedMoves = ListSequence.fromList(myWrappingGroup.getUnwrappedGroups()).where((it) -> it.isWrappedMove()).toList();
+    int movedSize = ListSequence.fromList(wrappedMoves).select((it) -> it.getSize()).reduceLeft((a, b) -> a + b);
+    String wrappedItems = NameUtil.formatNumericalString(movedSize, unwrappedRole);
+    StringBuilder sb = new StringBuilder();
+    if (myIsWrap) {
+      sb.append(String.format("Wrapped %s by new %s", wrappedItems, wrappingRole));
     } else {
-      return String.format("Wrapped %s by new %s", movedItems, role);
+      sb.append(String.format("Unwrapped %s from old %s", wrappedItems, wrappingRole));
     }
+    if (verbose) {
+      sb.append(": ").append(getIdsAsString());
+    }
+    return sb.toString();
   }
 
-  public String getDescription(boolean verbose) {
+  private String getDescription(boolean verbose) {
     return (verbose ? myDescription : myShortDescription);
-  }
-
-  private String nodeRange(boolean isNew) {
-    int size = ListSequence.fromList(getModifiedNodes(isNew)).count();
-    if (size == 1) {
-      return String.format("node #%d", getBegin(isNew));
-    }
-    return String.format("nodes #%d-%d", getBegin(isNew), getEnd(isNew) - 1);
-  }
-
-  public boolean isWrap() {
-    return myIsWrap;
   }
 
   @Override
   public void apply(@NotNull SModel model, @NotNull NodeCopier nodeCopier) {
+    if (myWrappingGroup.isApplied(model)) {
+      return;
+    }
     if (myIsWrap) {
-      super.apply(model, nodeCopier);
+      wrapNodes(model, nodeCopier);
     } else {
-      getGroup(true).deleteFromModel(model);
-      getGroup(false).insertIntoModel(model, nodeCopier);
+      unwrapNodes(model, nodeCopier);
     }
   }
 
-  private String createInternalDescription() {
-    return String.format("Wrapped %s with node %s in role %s of node %s", nodeRange(false), nodeRange(true), getLink(), getParentId(false));
+  private void wrapNodes(@NotNull SModel model, @NotNull NodeCopier nodeCopier) {
+
+    List<SNode> nodes = getUnwrappedNodes(model, nodeCopier);
+    ListSequence.fromList(nodes).visitAll((it) -> SNodeOperations.deleteNode(it));
+    ListSequence.fromList(nodes).visitAll((it) -> it.delete());
+
+    myWrappingGroup.insertCopyIntoModel(model, nodeCopier);
+    myWrappingGroup.setIsApplied(model);
+
+    SNode parent = nodeCopier.getNode(model, myWrappingGroup.getWrappedParentId());
+    if (parent == null) {
+      return;
+    }
+    insertNodes(nodes, parent, myWrappingGroup.getWrappedLink(), null);
+  }
+
+  private void unwrapNodes(@NotNull final SModel model, @NotNull NodeCopier nodeCopier) {
+    List<SNode> nodes = getWrappedNodes(model, nodeCopier);
+    ListSequence.fromList(nodes).visitAll((it) -> SNodeOperations.deleteNode(it));
+    myWrappingGroup.deleteFromModel(model);
+
+    SNode parent = nodeCopier.getNode(model, ListSequence.fromList(myWrappingGroup.getWrappedGroups()).last().getInsertParentId(model));
+    if (parent == null) {
+      return;
+    }
+    SNodeId beforeAnchorId = ListSequence.fromList(myWrappingGroup.getUnwrappedGroups()).last().getNextInsertedNodeId(model);
+    SNode beforeAnchor = (beforeAnchorId == null ? null : nodeCopier.getNode(model, beforeAnchorId));
+    insertNodes(nodes, parent, myWrappingGroup.getLink(), beforeAnchor);
+    ListSequence.fromList(myWrappingGroup.getUnwrappedGroups()).where((it) -> it.getWrappingGroup() == myWrappingGroup).visitAll((it) -> it.setIsApplied(model));
+  }
+
+  @NotNull
+  private ModifiedNodesGroup getEffectiveUnwrappedGroup(@NotNull final ModifiedNodesGroup group, SModel model) {
+    WrappingNodesGroup wrappingGroup = group.getOppositeWrappingGroup();
+    ModifiedNodesGroup effectiveGroup = group;
+    while (wrappingGroup != null) {
+      if (wrappingGroup == myWrappingGroup) {
+        return effectiveGroup;
+      }
+      if (model.getNode(wrappingGroup.getFirstNodeId()) != null) {
+        effectiveGroup = wrappingGroup;
+      }
+      wrappingGroup = wrappingGroup.getWrappingGroup();
+    }
+    return effectiveGroup;
+  }
+
+  private List<SNode> getUnwrappedNodes(@NotNull final SModel model, @NotNull NodeCopier nodeCopier) {
+
+    ModifiedNodesGroup anyUnwrappedGroup = ListSequence.fromList(myWrappingGroup.getUnwrappedGroups()).where((it) -> it.isWrappedMove() && it.getOppositeWrappingGroup() == myWrappingGroup).first();
+
+    assert anyUnwrappedGroup != null;
+
+    SNode anyUnwrappedNode = nodeCopier.getNode(model, anyUnwrappedGroup.getFirstNodeId());
+
+    SNode parent = SNodeOperations.getParent(anyUnwrappedNode);
+
+    List<SNode> allChildren = DiffUtil.getChildrenInRole(parent, myWrappingGroup.getUnwrappedLink());
+    final List<SNodeId> allIds = ListSequence.fromList(allChildren).select((it) -> it.getNodeId()).toList();
+
+    List<ModifiedNodesGroup> effectiveUnwrappedGroups = ListSequence.fromList(myWrappingGroup.getUnwrappedGroups()).select((it) -> getEffectiveUnwrappedGroup(it, model)).where((it) -> ListSequence.fromList(allIds).contains(it.getFirstNodeId())).distinct().toList();
+
+    effectiveUnwrappedGroups = ListSequence.fromList(effectiveUnwrappedGroups).sort((it) -> ListSequence.fromList(allIds).indexOf(it.getFirstNodeId()), true).toList();
+
+    int start = ListSequence.fromList(allIds).indexOf(ListSequence.fromList(effectiveUnwrappedGroups).first().getFirstNodeId());
+    int end = ListSequence.fromList(allIds).indexOf(ListSequence.fromList(ListSequence.fromList(effectiveUnwrappedGroups).last().getIds()).last()) + 1;
+
+    assert start != -1;
+    assert end != 0;
+
+    return ListSequence.fromList(allChildren).page(start, end).toList();
+  }
+
+  private List<SNode> getWrappedNodes(@NotNull SModel model, @NotNull NodeCopier nodeCopier) {
+    SNode parent = nodeCopier.getNode(model, myWrappingGroup.getWrappedParentId());
+    return DiffUtil.getChildrenInRole(parent, myWrappingGroup.getWrappedLink());
+  }
+
+  private static void insertNodes(List<SNode> nodes, SNode parent, SContainmentLink link, SNode beforeAnchor) {
+    for (SNode node : ListSequence.fromList(nodes)) {
+      // nodes of type ChildAttribute can be inserted to 'smodelAttribute' role only.
+      // still, we want to show the commented nodes in the same changed group with regular nodes, see MPS-26874
+      SContainmentLink actualLink = (node.isInstanceOfConcept(CONCEPTS.ChildAttribute$m8) ? LINKS.smodelAttribute$KJ43 : link);
+      parent.insertChildBefore(actualLink, node, beforeAnchor);
+    }
   }
 
   @Override
   public String toString() {
-    return myInternalDescription;
+    return myDescription;
   }
 
   @NotNull
@@ -152,9 +233,127 @@ public class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
     return ChangeType.CHANGE;
   }
 
+  public boolean isWrap() {
+    return myIsWrap;
+  }
+
   @NotNull
   @Override
   protected ModelChange createOppositeChange() {
-    return new NodeGroupWrapChange(getChangeSet(), getGroup(false).makeCopy(), getGroup(true).makeCopy(), myNewInsertedGroup.makeCopy(), false);
+    return new NodeGroupWrapChange(getChangeSet().getOppositeChangeSet(), myWrappingGroup, !(myIsWrap));
+  }
+
+  public WrappingNodesGroup getWrappingGroup() {
+    return myWrappingGroup;
+  }
+
+  @Override
+  public List<Tuples._2<SNodeId, MessageTarget>> createMessageTargetsWithIds(boolean isNew) {
+    if (isNew == isWrap()) {
+      return super.createMessageTargetsWithIds(isNew);
+    }
+    // main difference here with the super method is that we don't create messages
+    // for internal changes in wrapped area and use only really wrapped unchanged groups. 
+    return ListSequence.fromList(getWrappingGroup().getUnwrappedGroups()).where((it) -> it.isWrappedMove()).translate((it) -> it.getModifiedNodes()).select((it) -> MultiTuple.<SNodeId,MessageTarget>from(it.getNodeId(), ((MessageTarget) new NodeMessageTarget()))).toList();
+  }
+
+  @Override
+  public boolean conflictsWith(@NotNull HierarchicalNodeGroupChange otherChange, Map<SNodeId, SNodeId> symmetricIds, boolean wrapConflictsWithInternalChanges) {
+    if (otherChange instanceof NodeGroupNotMoveChange) {
+      return HierarchicalChangeConflictsUtil.wrapConflictsWithNotMove(this, as_zav4l7_a1a0a0a25(otherChange, NodeGroupNotMoveChange.class), symmetricIds, wrapConflictsWithInternalChanges);
+    }
+
+    if (otherChange instanceof NodeGroupMoveChange) {
+      return HierarchicalChangeConflictsUtil.wrapConflictsWithMove(this, as_zav4l7_a1a0a2a25(otherChange, NodeGroupMoveChange.class), symmetricIds, wrapConflictsWithInternalChanges);
+    }
+
+    if (otherChange instanceof NodeGroupWrapChange) {
+      NodeGroupWrapChange other = as_zav4l7_a0a0a4a25(otherChange, NodeGroupWrapChange.class);
+      if (isWrap() && HierarchicalChangeConflictsUtil.wrappingGroupConflictsWithGroup(myWrappingGroup, true, other.getGroup(false), wrapConflictsWithInternalChanges)) {
+        return true;
+      }
+      if (!(isWrap()) && hasIntersectingSourceWith(other)) {
+        return true;
+      }
+      return this.containsDeletedNode(other.getParentId(false)) || other.containsDeletedNode(this.getParentId(false));
+    }
+
+    return false;
+  }
+
+  /*package*/ boolean containsDeletedNode(@Nullable SNodeId nodeId) {
+    if (nodeId == null || isWrap()) {
+      return false;
+    }
+    SNode oldNode = getChangeSet().getOldModel().getNode(nodeId);
+    while (oldNode != null) {
+      if (Objects.equals(oldNode.getNodeId(), getWrappingGroup().getWrappedParentId())) {
+        return false;
+      }
+      if (Objects.equals(oldNode.getNodeId(), getWrappingGroup().getWrappingNodeId())) {
+        return true;
+      }
+      oldNode = SNodeOperations.getParent(oldNode);
+    }
+    return false;
+  }
+
+
+  @Override
+  public boolean isSymmetricWith(@NotNull HierarchicalNodeGroupChange otherChange, Map<SNodeId, SNodeId> symmetricIds) {
+
+    if (!(otherChange instanceof NodeGroupWrapChange)) {
+      return false;
+    }
+
+    NodeGroupWrapChange other = as_zav4l7_a0a3a75(otherChange, NodeGroupWrapChange.class);
+    if (myIsWrap != other.isWrap()) {
+      return false;
+    }
+    SNodeId myId = myWrappingGroup.getWrappingNodeId();
+    SNodeId otherId = other.getWrappingGroup().getWrappingNodeId();
+    if (myIsWrap) {
+      SNode child = this.getChangeSet().getNewModel().getNode(myId);
+      SNode otherChild = other.getChangeSet().getNewModel().getNode(otherId);
+      if (!(DiffUtil.nodeEquals(child, otherChild, myWrappingGroup.getDependantGroupNodeIds(), other.myWrappingGroup.getDependantGroupNodeIds()))) {
+        return false;
+      }
+    } else {
+      if (!(Objects.equals(myId, otherId))) {
+        return false;
+      }
+    }
+    return Objects.equals(getWrappedIds(), other.getWrappedIds());
+  }
+
+  public boolean groupIsInternal(ModifiedNodesGroup group) {
+    return HierarchicalChangeConflictsUtil.modifiedGroupIsInternalInWrap(myWrappingGroup, myIsWrap, group);
+  }
+
+  private List<SNodeId> getWrappedIds() {
+    final List<SNodeId> wrappedIds = ListSequence.fromList(new ArrayList<SNodeId>());
+    ListSequence.fromList(myWrappingGroup.getUnwrappedGroups()).where((it) -> it.isWrappedMove()).visitAll((it) -> ListSequence.fromList(wrappedIds).addSequence(ListSequence.fromList(it.getIds())));
+    return wrappedIds;
+  }
+
+  private static <T> T as_zav4l7_a1a0a0a25(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_zav4l7_a1a0a2a25(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_zav4l7_a0a0a4a25(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_zav4l7_a0a3a75(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept ChildAttribute$m8 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink smodelAttribute$KJ43 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 }

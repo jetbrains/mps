@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,21 +15,20 @@
  */
 package jetbrains.mps.extapi.model;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.FastNodeFinder;
 import jetbrains.mps.smodel.SModel.ImportElement;
 import jetbrains.mps.smodel.SModelInternal;
-import jetbrains.mps.smodel.event.SModelFileChangedEvent;
 import jetbrains.mps.smodel.event.SModelListener;
 import jetbrains.mps.smodel.event.SModelListener.SModelListenerPriority;
 import jetbrains.mps.smodel.event.SModelRenamedEvent;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
@@ -45,28 +44,12 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * Unlike {@link SModelBase}, which is true root of model descriptor hierarchy, this class keeps
  * transition stuff like legacy SModelListeners and SModelInternal methods, our explicit though untold dependencies from smodel.SModel.
  * Perhaps, one day we can get rid of if altogether.
- *
- * TODO move listeners to openapi
  */
 public abstract class SModelDescriptorStub implements SModelInternal, SModel, FastNodeFinder.Factory {
 
-  private static final Logger LOG = LogManager.getLogger(SModelDescriptorStub.class);
+  private static final Logger LOG = Logger.getLogger(SModelDescriptorStub.class);
 
   private final List<SModelListener> myModelListeners = new CopyOnWriteArrayList<>();
-
-  /**
-   * Migration to 3.0. Loads and returns model data.
-   *
-   * FIXME Replace uses of this method with getSModel(), make it abstract and implement in SModelBase subclasses.
-   *       The name getSModelInternal is misleading as it clashes with SModelInternal interface this class implements.
-   *       Though getSModel is not much better, at least in the context of SModelDescriptor it makes more sense.
-   *
-   * @deprecated use {@link SModelBase#getModelData()} or {@link #getSModel()}
-   * FIXME  there's implicit convention that smodel.SModel has this openapi.SModel (aka descriptor) assigned once
-   * this method returns
-   */
-  @Deprecated
-  public abstract jetbrains.mps.smodel.SModel getSModelInternal();
 
   @Override
   public void addModelListener(@NotNull SModelListener listener) {
@@ -93,43 +76,13 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
 
   // Not SModel-specific listener notifications
 
-  /**
-   * @deprecated see SModelFileChangedEvent for details
-   */
-  @Deprecated(forRemoval = true, since = "2021.1")
-  @ToRemove(version = 2021.1)
-  protected final void fireBeforeModelFileChanged(SModelFileChangedEvent event) {
-    for (SModelListener sModelListener : getModelListeners()) {
-      try {
-        sModelListener.beforeModelFileChanged(event);
-      } catch (Throwable t) {
-        LOG.error(null, t);
-      }
-    }
-  }
-
-  /**
-   * @deprecated see SModelFileChangedEvent for details
-   */
-  @Deprecated(forRemoval = true, since = "2021.1")
-  @ToRemove(version = 2021.1)
-  protected final void fireModelFileChanged(SModelFileChangedEvent event) {
-    for (SModelListener sModelListener : getModelListeners()) {
-      try {
-        sModelListener.modelFileChanged(event);
-      } catch (Throwable t) {
-        LOG.error(null, t);
-      }
-    }
-  }
-
   @Deprecated
   protected void fireBeforeModelRenamed(SModelRenamedEvent event) {
     for (SModelListener sModelListener : getModelListeners()) {
       try {
         sModelListener.beforeModelRenamed(event);
       } catch (Throwable t) {
-        LOG.error(null, t);
+        LOG.error(t);
       }
     }
   }
@@ -140,7 +93,7 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
       try {
         sModelListener.modelRenamed(event);
       } catch (Throwable t) {
-        LOG.error(null, t);
+        LOG.error(t);
       }
     }
   }
@@ -155,7 +108,7 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
       try {
         sModelListener.modelLoadingStateChanged(this, newState);
       } catch (Throwable t) {
-        LOG.error(null, t);
+        LOG.error(t);
       }
     }
   }
@@ -165,7 +118,7 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
       try {
         sModelListener.beforeModelDisposed(model);
       } catch (Throwable t) {
-        LOG.error(null, t);
+        LOG.error(t);
       }
     }
   }
@@ -175,19 +128,20 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
       try {
         sModelListener.modelSaved(this);
       } catch (Throwable t) {
-        LOG.error(null, t);
+        LOG.error(t);
       }
     }
   }
 
   /**
+   * Gives access to model data implementation.
    * Use {@link SModelBase#getModelData()} wherever possible.
-   * Use this method when accessing implementation aspects of smodel.SModel that are not exposed
-   * through SModelInternal interface (for latter, use {@link #getSModelInternal()} until ceased).
+   * Use this method when accessing implementation aspects of j.m.smodel.SModel that are not exposed
+   * through SModelData interface.
+   * <p>
+   * there's implicit convention that smodel.SModel has this openapi.SModel (aka descriptor) assigned once this method returns. I wonder if I need to make this explicit?
    */
-  public jetbrains.mps.smodel.SModel getSModel() {
-    return getSModelInternal();
-  }
+  public abstract jetbrains.mps.smodel.SModel getSModel();
 
   @Override
   public java.util.Collection<SLanguage> importedLanguageIds() {
@@ -198,13 +152,27 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
   @Override
   public void deleteLanguageId(@NotNull SLanguage ref) {
     assertCanChange();
-    getSModel().deleteLanguage(ref);
+    jetbrains.mps.smodel.SModel md = getSModel();
+    if (md.deleteLanguage(ref) && md.canFireEvent()) {
+      fireUsedLanguageRemoved(ref);
+    }
   }
 
   @Override
   public void addLanguage(@NotNull SLanguage language) {
     assertCanChange();
-    getSModel().addLanguage(language);
+    jetbrains.mps.smodel.SModel md = getSModel();
+    if (md.addLanguage(language) && md.canFireEvent()) {
+      fireUsedLanguageAdded(language);
+    }
+  }
+
+  protected void fireUsedLanguageAdded(SLanguage language) {
+    // no-op
+  }
+
+  protected void fireUsedLanguageRemoved(SLanguage language) {
+    // no-op
   }
 
   @Override
@@ -228,13 +196,27 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
   @Override
   public final void addDevKit(SModuleReference ref) {
     assertCanChange();
-    getSModel().addDevKit(ref);
+    jetbrains.mps.smodel.SModel md = getSModel();
+    if (md.addDevKit(ref) && md.canFireEvent()) {
+      fireDevKitAdded(ref);
+    }
   }
 
   @Override
   public final void deleteDevKit(@NotNull SModuleReference ref) {
     assertCanChange();
-    getSModel().deleteDevKit(ref);
+    jetbrains.mps.smodel.SModel md = getSModel();
+    if (md.deleteDevKit(ref) && md.canFireEvent()) {
+      fireDevKitRemoved(ref);
+    }
+  }
+
+  protected void fireDevKitAdded(SModuleReference ref) {
+    // no-op
+  }
+
+  protected void fireDevKitRemoved(SModuleReference ref) {
+    // no-op
   }
 
   @NotNull
@@ -255,18 +237,33 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
       // don't add references to self
       return;
     }
-    getSModel().addModelImport(new ImportElement(ref));
+    jetbrains.mps.smodel.SModel md = getSModel();
+    if (md.addModelImport(new ImportElement(ref)) && md.canFireEvent()) {
+      fireModelImportAdded(ref);
+    }
   }
 
   @Override
   public final void deleteModelImport(SModelReference modelReference) {
     assertCanChange();
     final jetbrains.mps.smodel.SModel modelData = getSModel();
+    boolean deleted = false;
     for (ImportElement importElement : new ArrayList<>(modelData.importedModels())) {
       if (importElement.getModelReference().equals(modelReference)) {
-        modelData.deleteModelImport(importElement);
+        deleted |= modelData.deleteModelImport(importElement);
       }
     }
+    if (deleted && modelData.canFireEvent()) {
+      fireModelImportRemoved(modelReference);
+    }
+  }
+
+  protected void fireModelImportAdded(SModelReference ref) {
+    // no-op
+  }
+
+  protected void fireModelImportRemoved(SModelReference ref) {
+    // no-op
   }
 
   @NotNull
@@ -304,16 +301,6 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
     // intentionally no-op
   }
 
-    @Override
-  public boolean isDisposed() {
-    return getDisposedStacktrace() != null;
-  }
-
-  @Override
-  public final StackTraceElement[] getDisposedStacktrace() {
-    return getSModel().getDisposedStacktrace();
-  }
-
   @Override
   public FastNodeFinder createNodeFinder(@NotNull SModel model) {
     assert model == this;
@@ -321,14 +308,25 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
   }
 
   @Override
-  public final boolean updateExternalReferences(@NotNull SRepository repo) {
+  public final void updateExternalReferences(@NotNull SRepository repo) {
     assertCanChange();
-    return getSModel().updateExternalReferences(getRepository());
+    final boolean changed = getSModel().updateExternalReferences(repo);
+    // XXX perhaps, shall move this check or complete update logic to editable model descriptor subclass?
+    //     OTOH, updating model state might be a reasonable activity for almost any loaded model
+    if (changed && this instanceof EditableSModel) {
+      ((EditableSModel) this).setChanged(true);
+    }
   }
 
   @Override
   public void changeModelReference(SModelReference newModelReference) {
     assertCanChange();
     getSModel().changeModelReference(newModelReference);
+  }
+
+  @Override
+  public void changeNodeId(@NotNull SNodeId existingNodeId, @NotNull SNodeId newId) {
+    assertCanChange();
+    getSModel().changeNodeId(existingNodeId, newId);
   }
 }

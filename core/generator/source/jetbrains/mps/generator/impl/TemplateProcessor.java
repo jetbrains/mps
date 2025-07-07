@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -234,7 +234,7 @@ public final class TemplateProcessor implements ITemplateProcessor {
       myNextMacro = next;
       myTemplateProcessor = templateProcessor;
       myMacroNodeRef = new SNodePointer(macro);
-      myMappingLabel = GeneratorUtilEx.getMappingName_NodeMacro(macro, null);
+      myMappingLabel = RuleUtil.getNodeMacroLabel(macro);
     }
 
     @Override
@@ -804,7 +804,7 @@ public final class TemplateProcessor implements ITemplateProcessor {
       //     However, not sure if it should not be vice versa, or if it makes any difference at all.
       final TemplateContext withArgs = callProcessor.prepareCallContext(templateContext);
       if (callProcessor.needCallSite()) {
-        return templateContext.getEnvironment().withCallSiteNode(getMacroNodeRef(), templateContext, callSiteOutputNodes);
+        return templateContext.getEnvironment().withCallSiteNode(getMacroNodeRef(), withArgs, callSiteOutputNodes);
       } else {
         if (templateContext.getCallSiteNode() != null) {
           // just hide the one available in the current context
@@ -871,6 +871,9 @@ public final class TemplateProcessor implements ITemplateProcessor {
       try {
         collection = templateContext.getEnvironment().trySwitch(switchPtr, switchContext);
       } catch (GenerationCanceledException | GenerationFailureException | DismissTopMappingRuleException e) {
+        if (e.getTemplateModelLocation() == null) {
+          e.setTemplateModelLocation(getMacroNodeRef());
+        }
         throw e;
       } catch (GenerationException e) {
         getLogger().error(switchPtr, "internal error in switch: " + e.toString(), GeneratorUtil.describe(macro, "macro"));
@@ -910,9 +913,11 @@ public final class TemplateProcessor implements ITemplateProcessor {
         throws DismissTopMappingRuleException, GenerationFailureException, GenerationCanceledException {
 
       SNode newInputNode = getNewInputNode(templateContext);
-      if (newInputNode == null) {
-        return Collections.emptyList(); // skip template
-      }
+      // we used to skip template when newInputNode == null, however, that's odd as it prevents use of
+      // CALL in create root templates. Besides, compiled templates are ok with null input, that's why we
+      // should tolerate null here as well. Similarity with compiled is the reason I don't condition
+      // `newInputNode == null && templateContext.getInput() != null`; compiled templates just invoke the query
+      // and proceed with whatever value is returned.
       final TemplateExecutionEnvironment env = templateContext.getEnvironment();
 
       if (myTemplateRT == null) {

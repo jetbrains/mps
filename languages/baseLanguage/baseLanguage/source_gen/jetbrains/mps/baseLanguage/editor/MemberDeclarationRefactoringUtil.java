@@ -6,11 +6,9 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -19,29 +17,13 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public class MemberDeclarationRefactoringUtil {
 
   public static void rewireMethodReferences(final SNode originalMethod, final SNode replacingMethod) {
-    Iterable<SNode> refs = ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(replacingMethod), CONCEPTS.IMethodCall$M9, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$pyYw), originalMethod);
-      }
-    });
-    Sequence.fromIterable(refs).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SLinkOperations.setTarget(it, LINKS.baseMethodDeclaration$pyYw, replacingMethod);
-      }
-    });
+    Iterable<SNode> refs = ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(replacingMethod), CONCEPTS.IMethodCall$M9, false, new SAbstractConcept[]{})).where((it) -> Objects.equals(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$pyYw), originalMethod));
+    Sequence.fromIterable(refs).visitAll((it) -> SLinkOperations.setTarget(it, LINKS.baseMethodDeclaration$pyYw, replacingMethod));
   }
 
   public static void rewireFieldReferences(final SNode originalField, final SNode replacingField) {
-    Iterable<SNode> refs = ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(replacingField), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), originalField);
-      }
-    });
-    Sequence.fromIterable(refs).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SLinkOperations.setTarget(it, LINKS.variableDeclaration$N1XG, replacingField);
-      }
-    });
+    Iterable<SNode> refs = ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(replacingField), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where((it) -> Objects.equals(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), originalField));
+    Sequence.fromIterable(refs).visitAll((it) -> SLinkOperations.setTarget(it, LINKS.variableDeclaration$N1XG, replacingField));
   }
 
   private static final class CONCEPTS {

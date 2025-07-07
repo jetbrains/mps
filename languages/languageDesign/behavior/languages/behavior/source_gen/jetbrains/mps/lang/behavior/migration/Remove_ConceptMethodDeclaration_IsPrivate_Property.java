@@ -10,7 +10,6 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -33,19 +32,11 @@ public class Remove_ConceptMethodDeclaration_IsPrivate_Property extends Migratio
     {
       SearchScope scope_65f75z_a0e = CommandUtil.createScope(m);
       final SearchScope scope_65f75z_a0e_0 = new EditableFilteringScope(scope_65f75z_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_65f75z_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptMethodDeclaration$N0, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          it.setProperty(PROPS.isPrivate$qveJ, null);
-        }
-      });
+      QueryExecutionContext context = () -> scope_65f75z_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptMethodDeclaration$N0, false)).visitAll((it) -> it.setProperty(PROPS.isPrivate$qveJ, null));
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, "jetbrains.mps.lang.behavior"), 1);
   }
 

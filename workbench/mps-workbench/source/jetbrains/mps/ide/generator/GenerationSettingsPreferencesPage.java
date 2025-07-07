@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,17 +16,18 @@
 package jetbrains.mps.ide.generator;
 
 import com.intellij.ide.ui.UISettings;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.options.SearchableConfigurable;
 import com.intellij.ui.IdeBorderFactory;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ui.JBEmptyBorder;
 import com.intellij.util.ui.JBUI;
+import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.generator.GenerationOptions;
 import jetbrains.mps.generator.GenerationSettingsProvider;
 import jetbrains.mps.generator.IModifiableGenerationSettings;
 import jetbrains.mps.icons.MPSIcons.Nodes;
 import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.text.TextGenSettings;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -43,15 +44,20 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.event.ChangeListener;
 import javax.swing.text.DefaultFormatter;
+import javax.swing.text.NumberFormatter;
+import java.awt.Component;
+import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ItemListener;
+import java.text.DecimalFormat;
 import java.text.ParseException;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-class GenerationSettingsPreferencesPage implements SearchableConfigurable {
+final class GenerationSettingsPreferencesPage implements SearchableConfigurable {
   private final JPanel myPage;
   private final JCheckBox mySaveTransientModelsCheckBox = new JCheckBox("Save transient models on generation");
   private final JCheckBox myCheckModelsBeforeGenerationCheckBox = new JCheckBox("Check models for errors before generation");
@@ -61,33 +67,33 @@ class GenerationSettingsPreferencesPage implements SearchableConfigurable {
   private final JCheckBox myInplaceTransform = new JCheckBox("Apply transformations in place");
   private final JCheckBox myAvoidDynamicRefs = new JCheckBox("Resort to static references");
 
-  private JRadioButton myTraceNone = new JRadioButton("None");
-  private JRadioButton myTraceSteps = new JRadioButton("Generation steps only");
-  private JRadioButton myTraceLanguages = new JRadioButton("Time spent in language generators");
-  private JRadioButton myTraceTypes = new JRadioButton("Time spent in types calculation");
+  private final JRadioButton myTraceNone = new JRadioButton("None");
+  private final JRadioButton myTraceSteps = new JRadioButton("Generation steps only");
+  private final JRadioButton myTraceLanguages = new JRadioButton("Time spent in language generators");
+  private final JRadioButton myTraceTypes = new JRadioButton("Time spent in types calculation");
 
-  private JCheckBox myShowInfo = new JCheckBox("Show informational messages");
-  private JCheckBox myShowWarnings = new JCheckBox("Show warnings");
-  private JCheckBox myKeepModelsWithWarnings = new JCheckBox("Keep transient models with warnings");
-  private JCheckBox myShowBadChildWarnings = new JCheckBox("Warn when child cannot be placed into role");
-  private JCheckBox myWarnDynamicToStatic = new JCheckBox("Warn static reference could not replace dynamic");
-  private JCheckBox myLimitNumberOfModels = new JCheckBox("Maximum number of transient models to keep:");
-  private JFormattedTextField myNumberOfModelsToKeep = new JFormattedTextField(new RangeDecimalFormatter(0, 1000));
+  private final JCheckBox myShowInfo = new JCheckBox("Show informational messages");
+  private final JCheckBox myShowWarnings = new JCheckBox("Show warnings");
+  private final JCheckBox myKeepModelsWithWarnings = new JCheckBox("Keep transient models with warnings");
+  private final JCheckBox myShowBadChildWarnings = new JCheckBox("Warn when child cannot be placed into role");
+  private final JCheckBox myWarnDynamicToStatic = new JCheckBox("Warn static reference could not replace dynamic");
+  private final JCheckBox myLimitNumberOfModels = new JCheckBox("Maximum number of transient models to keep:");
+  private final JFormattedTextField myNumberOfModelsToKeep = new JFormattedTextField(new RangeDecimalFormatter(0, 1000));
 
-  private JCheckBox myGenerateDebugInfo = new JCheckBox("Generate debug information");
+  private final JCheckBox myGenerateDebugInfo = new JCheckBox("Generate debug information");
+  private final JFormattedTextField myPerModelTimeout = new JFormattedTextField(new NumberFormatter(new DecimalFormat("####00")));
 
   private JLabel myStatusLabel;
   private final ItemListener myStatusUpdater = e -> updateStatus();
 
   private final IModifiableGenerationSettings myGenerationSettings;
+  private final TextGenSettings myTextGenSettings;
   private final ButtonSelectStateTracker myButtonState = new ButtonSelectStateTracker();
 
   public GenerationSettingsPreferencesPage() {
-    myGenerationSettings = ApplicationManager.getApplication()
-                                             .getComponent(MPSCoreComponents.class)
-                                             .getPlatform()
-                                             .findComponent(GenerationSettingsProvider.class)
-                                             .getGenerationSettings();
+    final Platform mpsPlaf = MPSCoreComponents.getInstance().getPlatform();
+    myGenerationSettings = mpsPlaf.findComponent(GenerationSettingsProvider.class).getGenerationSettings();
+    myTextGenSettings = mpsPlaf.findComponent(TextGenSettings.class);
     reset();
     myPage = createPage();
     myButtonState.reset();
@@ -112,9 +118,17 @@ class GenerationSettingsPreferencesPage implements SearchableConfigurable {
     GridBagConstraints c = new GridBagConstraints();
     c.gridx = 0;
     c.weightx = 1;
-    c.fill = GridBagConstraints.BOTH;
 
     c.gridy = 0;
+    c.weighty = 0;
+    c.fill = GridBagConstraints.HORIZONTAL;
+    c.anchor = GridBagConstraints.WEST;
+    myStatusLabel = new JLabel();
+    myStatusLabel.setBorder(new JBEmptyBorder(JBUI.insets(5)));
+    myMainPanel.add(myStatusLabel, c);
+
+    c.fill = GridBagConstraints.BOTH;
+    c.gridy++;
     myMainPanel.add(createOptionsPanel(), c);
 
     c.gridy++;
@@ -129,13 +143,6 @@ class GenerationSettingsPreferencesPage implements SearchableConfigurable {
     c.gridy++;
     c.weighty = 1;
     myMainPanel.add(new JPanel(), c);
-    c.gridy++;
-    c.weighty = 0;
-    c.fill = GridBagConstraints.HORIZONTAL;
-    c.anchor = GridBagConstraints.WEST;
-    myStatusLabel = new JLabel();
-    myStatusLabel.setBorder(new JBEmptyBorder(JBUI.insets(5)));
-    myMainPanel.add(myStatusLabel, c);
     updateStatus();
     return myMainPanel;
   }
@@ -264,7 +271,18 @@ class GenerationSettingsPreferencesPage implements SearchableConfigurable {
   private JPanel createTextGenPanel() {
     JPanel textgenPanel = new JPanel();
     textgenPanel.setLayout(new BoxLayout(textgenPanel, BoxLayout.Y_AXIS));
+    myGenerateDebugInfo.setAlignmentX(Component.LEFT_ALIGNMENT);
     textgenPanel.add(myGenerateDebugInfo);
+    final String ttt = "To prevent m2t process hanging, restrict time for each model";
+    JPanel b = new JPanel(new FlowLayout(FlowLayout.LEADING));
+    final JLabel label = new JLabel("M2T timeout, per model:");
+    label.setToolTipText(ttt);
+    myPerModelTimeout.setToolTipText(ttt);
+    b.add(label);
+    b.add(myPerModelTimeout);
+    b.add(new JLabel("seconds"));
+    b.setAlignmentX(Component.LEFT_ALIGNMENT);
+    textgenPanel.add(b);
     textgenPanel.setBorder(IdeBorderFactory.createTitledBorder("TextGen options"));
     myButtonState.track(myGenerateDebugInfo);
     return textgenPanel;
@@ -290,7 +308,10 @@ class GenerationSettingsPreferencesPage implements SearchableConfigurable {
     myGenerationSettings.setNumberOfModelsToKeep(getNumberOfModelsToKeep());
     myGenerationSettings.enableInplaceTransformations(myInplaceTransform.isSelected());
     myGenerationSettings.setCreateStaticReferences(myAvoidDynamicRefs.isSelected());
-    myGenerationSettings.setGenerateDebugInfo(myGenerateDebugInfo.isSelected());
+    // TextGen
+    myGenerationSettings.setGenerateDebugInfo(myGenerateDebugInfo.isSelected()); // transitional
+    myTextGenSettings.setGenerateDebugInfo(myGenerateDebugInfo.isSelected());
+    myTextGenSettings.setPerModelTimeout(Duration.ofSeconds(((Number)myPerModelTimeout.getValue()).longValue()));
 
     myButtonState.reset(); // memorize the new state
 
@@ -313,7 +334,8 @@ class GenerationSettingsPreferencesPage implements SearchableConfigurable {
   public boolean isModified() {
     return myButtonState.isStateModified() ||
            myGenerationSettings.getNumberOfModelsToKeep() != getNumberOfModelsToKeep() ||
-           myGenerationSettings.getNumberOfParallelThreads() != (Integer) myNumberOfParallelThreads.getValue();
+           myGenerationSettings.getNumberOfParallelThreads() != (Integer) myNumberOfParallelThreads.getValue() ||
+           myTextGenSettings.getPerModelTimeout().toSeconds() != ((Number) myPerModelTimeout.getValue()).longValue();
   }
 
   @Override
@@ -346,7 +368,8 @@ class GenerationSettingsPreferencesPage implements SearchableConfigurable {
     myNumberOfModelsToKeep.setValue(myGenerationSettings.getNumberOfModelsToKeep() == -1 ? 16 : myGenerationSettings.getNumberOfModelsToKeep());
     myLimitNumberOfModels.setSelected(myGenerationSettings.getNumberOfModelsToKeep() != -1);
 
-    myGenerateDebugInfo.setSelected(myGenerationSettings.isGenerateDebugInfo());
+    myGenerateDebugInfo.setSelected(myTextGenSettings.isGenerateDebugInfo());
+    myPerModelTimeout.setValue(myTextGenSettings.getPerModelTimeout().toSeconds());
 
     final JRadioButton[] allbuttons = {myTraceNone, myTraceSteps, myTraceLanguages, myTraceTypes};
     allbuttons[myGenerationSettings.getPerformanceTracingLevel()].setSelected(true);
@@ -359,7 +382,7 @@ class GenerationSettingsPreferencesPage implements SearchableConfigurable {
     ArrayList<String> messages = new ArrayList<>();
     if (myInplaceTransform.isSelected() && mySaveTransientModelsCheckBox.isSelected()) {
       messages.add(
-          String.format("<h2>Warning:</h2>Using <strong>%s</strong><br>together with <strong>%s</strong>may slow down generation process significantly",
+          String.format("<h2>Warning:</h2>Using <strong>%s</strong><br>together with <strong>%s</strong> may slow down generation process significantly",
                         myInplaceTransform.getText(), mySaveTransientModelsCheckBox.getText()));
     }
     if (!messages.isEmpty()) {
@@ -373,7 +396,8 @@ class GenerationSettingsPreferencesPage implements SearchableConfigurable {
   @NotNull
   @Override
   public String getId() {
-    return "generator.manager";
+    // have to match one in MPSComponents.xml
+    return "preferences.generationSettings";
   }
 
   @Nullable
@@ -385,6 +409,7 @@ class GenerationSettingsPreferencesPage implements SearchableConfigurable {
   @Nls
   @Override
   public String getDisplayName() {
+    // have to match one in MPSComponents.xml
     return "Generator";
   }
 

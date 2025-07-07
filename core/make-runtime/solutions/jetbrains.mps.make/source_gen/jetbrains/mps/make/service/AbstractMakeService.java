@@ -18,7 +18,7 @@ import jetbrains.mps.make.script.IFeedback;
 import jetbrains.mps.make.script.IOption;
 import jetbrains.mps.make.script.IQuery;
 
-@GeneratedClass(node = "r:7cb72aee-d3e2-47e9-9964-3abda6a73a9a(jetbrains.mps.make.service)/2298333944697014852", model = "r:7cb72aee-d3e2-47e9-9964-3abda6a73a9a(jetbrains.mps.make.service)")
+@GeneratedClass(nodeId = "2298333944697014852", model = "r:7cb72aee-d3e2-47e9-9964-3abda6a73a9a(jetbrains.mps.make.service)")
 public abstract class AbstractMakeService implements IMakeService {
   public AbstractMakeService() {
   }
@@ -36,7 +36,7 @@ public abstract class AbstractMakeService implements IMakeService {
   }
   /**
    * Reasonable defaults when no IScriptController is supplied by client
-   * I'm not certain there's great value in this distinct subclass of IConfigMonitor.Stub, perhaph, could move everything in there.
+   * I'm not certain there's great value in this distinct subclass of IConfigMonitor.Stub, perhaps, could move everything in there.
    * Just don't understand why Stub.relayQuery is different, and whether we care to report feedback always.
    */
   public static class DefaultMonitor extends IConfigMonitor.Stub {

@@ -24,21 +24,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class FoldHTMLElement_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public FoldHTMLElement_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:17a5547b-be2d-47de-9fc3-8304c9f5de67(jetbrains.mps.baseLanguage.javadoc.intentions)", "6612597108004799966"));
   }
+
   @Override
   public String getPresentation() {
     return "FoldHTMLElement";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -48,11 +48,13 @@ public final class FoldHTMLElement_Intention extends AbstractIntentionDescriptor
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       String name = (isEmptyString(SPropertyOperations.getString(node, PROPS.name$Ps0d)) ? "..." : SPropertyOperations.getString(node, PROPS.name$Ps0d));
       return (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.line$Psfe)).isEmpty() ? String.format(Locale.getDefault(), "Convert to <%s></%s>", name, name) : String.format(Locale.getDefault(), "Convert to <%s />", name));
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.line$Psfe)).isEmpty()) {
@@ -62,10 +64,19 @@ public final class FoldHTMLElement_Intention extends AbstractIntentionDescriptor
         ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.line$Psfe)).clear();
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return FoldHTMLElement_Intention.this;
     }
+
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.isEmpty();

@@ -54,7 +54,7 @@ public class Switch_switch_ConceptIdentity_SConcept extends TemplateSwitchBase i
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2836521009935068567"), CONCEPTS.ConceptId$6E, true);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_92_0(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override

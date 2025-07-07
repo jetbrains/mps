@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="798100da-4f0a-421a-b991-71f8c50ce5d2" name="jetbrains.mps.build" version="0" />
-    <use id="0cf935df-4699-4e9c-a132-fa109541cba3" name="jetbrains.mps.build.mps" version="7" />
+    <use id="0cf935df-4699-4e9c-a132-fa109541cba3" name="jetbrains.mps.build.mps" version="8" />
   </languages>
   <imports>
     <import index="ffeo" ref="r:874d959d-e3b4-4d04-b931-ca849af130dd(jetbrains.mps.ide.build)" />
@@ -26,10 +26,6 @@
         <child id="8618885170173601778" name="tail" index="2Ry0An" />
       </concept>
       <concept id="6647099934206700647" name="jetbrains.mps.build.structure.BuildJavaPlugin" flags="ng" index="10PD9b" />
-      <concept id="7181125477683417252" name="jetbrains.mps.build.structure.BuildExternalLayoutDependency" flags="ng" index="13uUGR">
-        <reference id="7181125477683417255" name="layout" index="13uUGO" />
-        <child id="7181125477683417254" name="artifacts" index="13uUGP" />
-      </concept>
       <concept id="7389400916848050071" name="jetbrains.mps.build.structure.BuildLayout_Zip" flags="ng" index="3981dG" />
       <concept id="7389400916848050060" name="jetbrains.mps.build.structure.BuildLayout_NamedContainer" flags="ng" index="3981dR">
         <child id="4380385936562148502" name="containerName" index="Nbhlr" />
@@ -53,7 +49,7 @@
       <concept id="8654221991637384182" name="jetbrains.mps.build.structure.BuildFileIncludesSelector" flags="ng" index="3qWCbU">
         <property id="8654221991637384184" name="pattern" index="3qWCbO" />
       </concept>
-      <concept id="4701820937132344003" name="jetbrains.mps.build.structure.BuildLayout_Container" flags="ng" index="1y1bJS">
+      <concept id="4701820937132344003" name="jetbrains.mps.build.structure.BuildLayout_Container" flags="ngI" index="1y1bJS">
         <child id="7389400916848037006" name="children" index="39821P" />
       </concept>
       <concept id="841011766566059607" name="jetbrains.mps.build.structure.BuildStringNotEmpty" flags="ng" index="3_J27D" />
@@ -66,7 +62,7 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -146,31 +142,25 @@
           <node concept="2Ry0Ak" id="4Q7oJrne$o7" role="2Ry0An">
             <property role="2Ry0Am" value=".." />
             <node concept="2Ry0Ak" id="4Q7oJrne$o8" role="2Ry0An">
-              <property role="2Ry0Am" value="work" />
-              <node concept="2Ry0Ak" id="4Q7oJrne$o9" role="2Ry0An">
-                <property role="2Ry0Am" value="MPS 2021.1" />
+              <property role="2Ry0Am" value=".." />
+              <node concept="2Ry0Ak" id="4H3$xfoE0w8" role="2Ry0An">
+                <property role="2Ry0Am" value=".." />
+                <node concept="2Ry0Ak" id="4H3$xfoE0wd" role="2Ry0An">
+                  <property role="2Ry0Am" value="Downloads" />
+                  <node concept="2Ry0Ak" id="4H3$xfoE0wh" role="2Ry0An">
+                    <property role="2Ry0Am" value="MPS-213" />
+                  </node>
+                </node>
               </node>
             </node>
           </node>
         </node>
       </node>
     </node>
-    <node concept="398rNT" id="4Q7oJrne$oa" role="1l3spd">
-      <property role="TrG5h" value="idea_home" />
-      <node concept="398BVA" id="4Q7oJrne$ob" role="398pKh">
-        <ref role="398BVh" node="4Q7oJrne$o4" resolve="mps_dist" />
-      </node>
-    </node>
     <node concept="2sgV4H" id="4Q7oJrne$o0" role="1l3spa">
       <ref role="1l3spb" to="ffeo:3IKDaVZmzS6" resolve="mps" />
       <node concept="398BVA" id="4Q7oJrne$o1" role="2JcizS">
         <ref role="398BVh" node="4Q7oJrne$o4" resolve="mps_dist" />
-      </node>
-    </node>
-    <node concept="13uUGR" id="4Q7oJrne$o2" role="1l3spa">
-      <ref role="13uUGO" to="ffeo:6eCuTcwOnJO" resolve="IDEA" />
-      <node concept="398BVA" id="4Q7oJrne$o3" role="13uUGP">
-        <ref role="398BVh" node="4Q7oJrne$oa" resolve="idea_home" />
       </node>
     </node>
     <node concept="1l3spV" id="4Q7oJrneE3_" role="1l3spN">

@@ -20,7 +20,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class TestNode__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, "jetbrains.mps.lang.test.structure.TestNode");
 
-  public static final SMethod<Boolean> canAddTestAnnotation_id143xXLdi1EE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canAddTestAnnotation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("143xXLdi1EE").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> canAddTestAnnotation_id143xXLdi1EE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canAddTestAnnotation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1225972903834032810L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canAddTestAnnotation_id143xXLdi1EE);
 

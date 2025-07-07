@@ -24,8 +24,8 @@ public class TemplateModelImpl extends TemplateModelBase {
   private final SModelReference model;
   public TemplateModelImpl(TemplateModule module) {
     super(module);
-    mappings = TemplateUtil.<TemplateMappingConfiguration>asCollection(new Mapping_GeneratorModule(this), new Mapping_LanguageModule(this));
-    switches = TemplateUtil.<TemplateSwitchMapping>asCollection(new Switch_InstantiateAspectDescriptor(), new Switch_ContrubuteLanguageExtensions());
+    mappings = TemplateUtil.<TemplateMappingConfiguration>asCollection(new Mapping_GeneratorModule(this), new Mapping_LanguageModule(this), new Mapping_SolutionModule(this));
+    switches = TemplateUtil.<TemplateSwitchMapping>asCollection(new Switch_InstantiateAspectDescriptor(), new Switch_ContrubuteLanguageExtensions(), new Switch_AspectDescriptor_Instantiate(), new Switch_switch_ModuleActivator_Extensions());
     model = PersistenceFacade.getInstance().createModelReference("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)");
   }
   public String getLongName() {
@@ -50,6 +50,12 @@ public class TemplateModelImpl extends TemplateModelBase {
     final SNodeReference template = key.getSourceNode();
     if (template.equals(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "263208052639697475"))) {
       return new Template_GeneratorRuntime();
+    }
+    if (template.equals(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "844304638793287195"))) {
+      return new Template_ModuleActivatorToClass();
+    }
+    if (template.equals(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "844304638793600446"))) {
+      return new Template_ModuleActivatorInstance();
     }
     if (template.equals(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "9020561928507177266"))) {
       return new Template_Language();

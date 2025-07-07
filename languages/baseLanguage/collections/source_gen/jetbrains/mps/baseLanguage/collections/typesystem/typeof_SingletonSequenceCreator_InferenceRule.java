@@ -9,6 +9,7 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typesystem.inference.EquationInfo;
+import jetbrains.mps.baseLanguage.typesystem.InferenceHelper;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -20,19 +21,21 @@ public class typeof_SingletonSequenceCreator_InferenceRule extends AbstractInfer
   public typeof_SingletonSequenceCreator_InferenceRule() {
   }
   public void applyRule(final SNode creator, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode elementType = SLinkOperations.getTarget(creator, LINKS.elementType$plBR);
-    if (!(typeCheckingContext.isSingleTypeComputation())) {
+    final SNode elementType_typevar_7830826264606897291 = typeCheckingContext.createNewRuntimeTypesVariable();
+    if ((SLinkOperations.getTarget(creator, LINKS.elementType$plBR) != null)) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(creator, LINKS.singletonValue$Aowi);
-        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1235574608531", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1235574583102", true), (SNode) elementType, true, true, _info_12389875345);
+        SNode _nodeToCheck_1029348928467 = creator;
+        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7830826264606902431", 0, null);
+        typeCheckingContext.createEquation((SNode) SLinkOperations.getTarget(creator, LINKS.elementType$plBR), (SNode) typeCheckingContext.getRepresentative(elementType_typevar_7830826264606897291), _info_12389875345);
       }
     }
+
     {
-      SNode _nodeToCheck_1029348928467 = creator;
-      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1235573464921", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1235573464929", true), (SNode) _quotation_createNode_kyakf6_a1a0c0c0b(elementType), _info_12389875345);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(creator, LINKS.singletonValue$Aowi);
+      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1235574608531", 0, null);
+      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1235574583102", true), (SNode) typeCheckingContext.getRepresentative(elementType_typevar_7830826264606897291), false, true, _info_12389875345);
     }
+    InferenceHelper.addEquation(typeCheckingContext, _quotation_createNode_kyakf6_b0e0b(typeCheckingContext.getRepresentative(elementType_typevar_7830826264606897291)), (SLinkOperations.getTarget(creator, LINKS.elementType$plBR) == null), typeCheckingContext.typeOf(creator, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "8010275703121599484", true));
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.SingletonSequenceCreator$t3;
@@ -43,7 +46,7 @@ public class typeof_SingletonSequenceCreator_InferenceRule extends AbstractInfer
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_kyakf6_a1a0c0c0b(Object parameter_1) {
+  private static SNode _quotation_createNode_kyakf6_b0e0b(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10c260e9444L, "SequenceType"));

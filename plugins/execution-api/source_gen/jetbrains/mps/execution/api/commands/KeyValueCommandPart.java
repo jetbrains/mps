@@ -8,7 +8,7 @@ import java.io.File;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 
-@GeneratedClass(node = "r:da044acc-81a4-4fd8-b89a-91df4cfe6214(jetbrains.mps.execution.api.commands)/7656658799535004846", model = "r:da044acc-81a4-4fd8-b89a-91df4cfe6214(jetbrains.mps.execution.api.commands)")
+@GeneratedClass(nodeId = "7656658799535004846", model = "r:da044acc-81a4-4fd8-b89a-91df4cfe6214(jetbrains.mps.execution.api.commands)")
 public class KeyValueCommandPart extends AbstractCommandPart implements CommandPart {
   public KeyValueCommandPart(@Nullable String key, @Nullable String value) {
     if ((key != null && key.length() > 0) && (value != null && value.length() > 0)) {

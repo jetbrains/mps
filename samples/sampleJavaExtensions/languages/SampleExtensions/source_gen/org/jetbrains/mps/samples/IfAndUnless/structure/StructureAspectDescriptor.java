@@ -29,6 +29,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   @Override
   public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
     deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+    deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
     deps.aggregatedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
   }
 
@@ -64,28 +65,31 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForFalseFlow() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("org.jetbrains.mps.samples.IfAndUnless", "FalseFlow", 0x67b828fd8fbc4496L, 0xb7f78b64ac097c62L, 0xd403d58ad45dd24L);
     b.class_(false, false, false);
-    b.super_("org.jetbrains.mps.samples.IfAndUnless.structure.Flow", 0x67b828fd8fbc4496L, 0xb7f78b64ac097c62L, 0xd403d58ad448ccfL);
+    // extends: org.jetbrains.mps.samples.IfAndUnless.structure.Flow
+    b.super_(0x67b828fd8fbc4496L, 0xb7f78b64ac097c62L, 0xd403d58ad448ccfL);
     b.origin("r:47174b35-df1c-485d-9362-8e3256f44aca(org.jetbrains.mps.samples.IfAndUnless.structure)/954830572075998500");
-    b.version(2);
+    b.version(3);
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForFlow() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("org.jetbrains.mps.samples.IfAndUnless", "Flow", 0x67b828fd8fbc4496L, 0xb7f78b64ac097c62L, 0xd403d58ad448ccfL);
     b.class_(false, true, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.StatementList", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L);
+    // extends: jetbrains.mps.baseLanguage.structure.StatementList
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x12509ddfaa98f128L);
     b.origin("r:47174b35-df1c-485d-9362-8e3256f44aca(org.jetbrains.mps.samples.IfAndUnless.structure)/954830572075912399");
-    b.version(2);
+    b.version(3);
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForMyIfStatement() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("org.jetbrains.mps.samples.IfAndUnless", "MyIfStatement", 0x67b828fd8fbc4496L, 0xb7f78b64ac097c62L, 0xd403d58ad448ccaL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.Statement", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L);
+    // extends: jetbrains.mps.baseLanguage.structure.Statement
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L);
     b.origin("r:47174b35-df1c-485d-9362-8e3256f44aca(org.jetbrains.mps.samples.IfAndUnless.structure)/954830572075912394");
-    b.version(2);
+    b.version(3);
     b.aggregate("condition", 0xd403d58ad448ccdL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("954830572075912397").done();
     b.aggregate("body", 0xd403d58ad448cceL).target(0x67b828fd8fbc4496L, 0xb7f78b64ac097c62L, 0xd403d58ad45dd1fL).optional(false).ordered(true).multiple(false).origin("954830572075912398").done();
     b.aggregate("alternative", 0xd403d58ad457e4dL).target(0x67b828fd8fbc4496L, 0xb7f78b64ac097c62L, 0xd403d58ad45dd24L).optional(false).ordered(true).multiple(false).origin("954830572075974221").done();
@@ -96,18 +100,20 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForTrueFlow() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("org.jetbrains.mps.samples.IfAndUnless", "TrueFlow", 0x67b828fd8fbc4496L, 0xb7f78b64ac097c62L, 0xd403d58ad45dd1fL);
     b.class_(false, false, false);
-    b.super_("org.jetbrains.mps.samples.IfAndUnless.structure.Flow", 0x67b828fd8fbc4496L, 0xb7f78b64ac097c62L, 0xd403d58ad448ccfL);
+    // extends: org.jetbrains.mps.samples.IfAndUnless.structure.Flow
+    b.super_(0x67b828fd8fbc4496L, 0xb7f78b64ac097c62L, 0xd403d58ad448ccfL);
     b.origin("r:47174b35-df1c-485d-9362-8e3256f44aca(org.jetbrains.mps.samples.IfAndUnless.structure)/954830572075998495");
-    b.version(2);
+    b.version(3);
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForUnlessStatement() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("org.jetbrains.mps.samples.IfAndUnless", "UnlessStatement", 0x67b828fd8fbc4496L, 0xb7f78b64ac097c62L, 0x57547b70f36dc0dL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.Statement", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L);
+    // extends: jetbrains.mps.baseLanguage.structure.Statement
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L);
     b.origin("r:47174b35-df1c-485d-9362-8e3256f44aca(org.jetbrains.mps.samples.IfAndUnless.structure)/393299394024627213");
-    b.version(2);
+    b.version(3);
     b.aggregate("condition", 0x57547b70f36dc0eL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("393299394024627214").done();
     b.aggregate("body", 0x57547b70f36dc1cL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L).optional(false).ordered(true).multiple(false).origin("393299394024627228").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);

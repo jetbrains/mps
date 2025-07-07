@@ -7,12 +7,11 @@ import java.beans.PropertyChangeListener;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.vcs.diff.merge.MergeSession;
 import org.jetbrains.mps.openapi.model.SNodeId;
-import jetbrains.mps.vcs.diff.merge.MergeSessionState;
 import jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessage;
+import java.util.List;
 import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
 import com.intellij.diff.tools.util.side.ThreesideContentPanel;
 import com.intellij.ide.util.PropertiesComponent;
-import java.util.List;
 import jetbrains.mps.vcs.diff.ui.common.ChangeGroupLayout;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -26,6 +25,10 @@ import jetbrains.mps.vcs.diff.ui.common.NextPreviousTraverser;
 import com.intellij.ui.JBSplitter;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry;
 import jetbrains.mps.vcs.diff.ui.common.TripleChangeGroupLayout;
+import jetbrains.mps.vcs.diff.ui.common.ChangeGroupMessages;
+import org.jetbrains.annotations.Nullable;
+import com.intellij.diff.DiffEditorTitleCustomizer;
+import com.intellij.openapi.Disposable;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.module.ModelAccess;
@@ -36,30 +39,44 @@ import jetbrains.mps.vcs.changesmanager.CurrentDifferenceAdapter;
 import org.jetbrains.annotations.NotNull;
 import java.beans.PropertyChangeEvent;
 import com.intellij.openapi.ui.Splitter;
-import java.util.Iterator;
 import java.util.Arrays;
 import com.intellij.diff.util.Side;
 import javax.swing.JComponent;
 import com.intellij.openapi.actionSystem.ToggleAction;
+import com.intellij.openapi.project.DumbAware;
 import jetbrains.mps.ide.icons.IdeIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import java.util.function.Supplier;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.diff.DiffBundle;
-import com.intellij.openapi.actionSystem.Presentation;
+import jetbrains.mps.workbench.action.BaseGroup;
+import com.intellij.openapi.actionSystem.AnAction;
+import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
 import com.intellij.diff.tools.util.DiffSplitter;
 import java.awt.Graphics;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import javax.swing.JPanel;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.vcs.diff.ui.common.ChangeGroupMessages;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.repository.CommandListener;
 import java.util.concurrent.atomic.AtomicBoolean;
+import com.intellij.openapi.util.NlsContexts;
+import com.intellij.diff.FrameDiffTool;
+import com.intellij.util.LineSeparator;
+import java.nio.charset.Charset;
+import java.awt.BorderLayout;
+import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.components.BorderLayoutPanel;
+import com.intellij.ui.components.JBLabel;
+import com.intellij.openapi.util.text.StringUtil;
+import com.intellij.icons.AllIcons;
+import javax.swing.BoxLayout;
+import javax.swing.Box;
+import javax.swing.JLabel;
+import java.nio.charset.StandardCharsets;
+import com.intellij.ui.JBColor;
+import java.awt.Color;
 
-@GeneratedClass(node = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)/2657001694096388534", model = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)")
+@GeneratedClass(nodeId = "2657001694096388534", model = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)")
 public class MergeRootsPane implements PropertyChangeListener {
   private static final String PARAM_SHOW_INSPECTOR = MergeRootsPane.class.getName() + "ShowInspector";
   private static final String PARAM_INSPECTOR_SPLITTER_POSITION = MergeRootsPane.class.getName() + "InspectorSplitterPosition";
@@ -68,11 +85,11 @@ public class MergeRootsPane implements PropertyChangeListener {
   private Project myProject;
   private MergeSession myMergeSession;
   private SNodeId myRootId;
-  private MergeSessionState myStateToRestore;
+  private MergeSession.MergeSessionFullState myStateToRestore;
   private boolean myDisposed = false;
 
   private ChangeEditorMessage.ConflictChecker myConflictChecker;
-  private String[] myTitles;
+  private List<String> myTitles;
   private DiffEditor myResultEditor;
   private DiffEditor myMineEditor;
   private DiffEditor myRepositoryEditor;
@@ -95,19 +112,22 @@ public class MergeRootsPane implements PropertyChangeListener {
   private final InvalidationHandler myInvalidationHandler;
   private TripleChangeGroupLayout myMainLayout;
   private TripleChangeGroupLayout myInspectorLayout;
+  private final List<ChangeGroupMessages> myGutterMessagesRebuilders = ListSequence.fromList(new ArrayList<ChangeGroupMessages>());
+  @Nullable
+  private final List<DiffEditorTitleCustomizer> myTitleCustomizers;
+  private final List<Disposable> myTitleCustomizersDisposables = ListSequence.fromList(new ArrayList<Disposable>());
+  private final TrackMovedNodesModeUpdater myTrackMovedNodesModeUpdater;
 
-  public MergeRootsPane(Project project, MergeSession mergeSession, SNodeId rootId, String rootName, String[] titles) {
+
+  public MergeRootsPane(Project project, MergeSession mergeSession, SNodeId rootId, String rootName, List<String> titles, @Nullable List<DiffEditorTitleCustomizer> titleCustomizers, TrackMovedNodesModeUpdater trackMovedNodesModeUpdater) {
     myProject = project;
     myMergeSession = mergeSession;
     myRootId = rootId;
-    myStateToRestore = myMergeSession.getCurrentState();
+    myStateToRestore = myMergeSession.getCurrentFullState();
     myTitles = titles;
-
-    myConflictChecker = new ChangeEditorMessage.ConflictChecker() {
-      public boolean isChangeConflicted(ModelChange ch) {
-        return Sequence.fromIterable(myMergeSession.getConflictedWith(ch)).isNotEmpty();
-      }
-    };
+    myTitleCustomizers = titleCustomizers;
+    myConflictChecker = (ModelChange ch) -> Sequence.fromIterable(myMergeSession.getConflictedWith(ch)).isNotEmpty();
+    myTrackMovedNodesModeUpdater = trackMovedNodesModeUpdater;
 
     myMineEditor = addEditor(0, myMergeSession.getMyModel());
     myResultEditor = addEditor(1, myMergeSession.getResultModel());
@@ -121,17 +141,15 @@ public class MergeRootsPane implements PropertyChangeListener {
 
     myTraverser = new NextPreviousTraverser(myChangeGroupLayouts, myResultEditor.getMainEditor());
 
-    createActionGroup(rootName);
+    createActionGroup();
 
     highlightAllChanges();
     myTraverser.goToFirstChangeLater();
     myDiffRegistry = CurrentDifferenceRegistry.getInstance(myProject);
-    myDiffRegistry.getCommandQueue().runTask(new Runnable() {
-      public void run() {
-        if (myMergeSession.getMyModel() instanceof EditableSModel) {
-          final CurrentDifference currentDifference = myDiffRegistry.getCurrentDifference((EditableSModel) myMergeSession.getMyModel());
-          currentDifference.addDifferenceListener(myDifferenceListener);
-        }
+    myDiffRegistry.getCommandQueue().runTask(() -> {
+      if (myMergeSession.getMyModel() instanceof EditableSModel) {
+        final CurrentDifference currentDifference = myDiffRegistry.getCurrentDifference((EditableSModel) myMergeSession.getMyModel());
+        currentDifference.addDifferenceListener(myDifferenceListener);
       }
     });
   }
@@ -152,7 +170,7 @@ public class MergeRootsPane implements PropertyChangeListener {
     }
 
     private void rehighlightWithRebuild() {
-      check_lifo0_a0a5lb(ProjectHelper.getModelAccess(myProject), this);
+      check_lifo0_a0a5qb(ProjectHelper.getModelAccess(myProject), this);
     }
     private void doRehighlight() {
       rehighlight();
@@ -165,16 +183,11 @@ public class MergeRootsPane implements PropertyChangeListener {
       return;
     }
     Splitter sourceSplitter = (Splitter) event.getSource();
-    {
-      Iterator<JBSplitter> splitter_it = ListSequence.fromList(mySplitters).iterator();
-      JBSplitter splitter_var;
-      while (splitter_it.hasNext()) {
-        splitter_var = splitter_it.next();
-        if (splitter_var != sourceSplitter) {
-          splitter_var.removePropertyChangeListener(Splitter.PROP_PROPORTION, this);
-          splitter_var.setProportion((float) event.getNewValue());
-          splitter_var.addPropertyChangeListener(Splitter.PROP_PROPORTION, this);
-        }
+    for (JBSplitter splitter : ListSequence.fromList(mySplitters)) {
+      if (splitter != sourceSplitter) {
+        splitter.removePropertyChangeListener(Splitter.PROP_PROPORTION, this);
+        splitter.setProportion((float) event.getNewValue());
+        splitter.addPropertyChangeListener(Splitter.PROP_PROPORTION, this);
       }
     }
   }
@@ -197,17 +210,23 @@ public class MergeRootsPane implements PropertyChangeListener {
     linkEditors(panel, true, true);
     linkEditors(panel, false, true);
     myInspectorLayout = new TripleChangeGroupLayout((DiffChangeGroupLayout) ListSequence.fromList(myChangeGroupLayouts).getElement(2), (DiffChangeGroupLayout) ListSequence.fromList(myChangeGroupLayouts).getElement(3), true);
-
     panel.setPainter(new MyDividerPainter(true), Side.LEFT);
     panel.setPainter(new MyDividerPainter(false), Side.RIGHT);
     return panel;
   }
 
   protected List<JComponent> createTitles() {
+    if (myTitleCustomizers != null) {
+      List<JComponent> titles = ListSequence.fromList(new ArrayList<JComponent>());
+      for (int i = 0; i < ListSequence.fromList(myTitles).count(); i++) {
+        ListSequence.fromList(titles).addElement(createTitle(ListSequence.fromList(myTitles).getElement(i), ListSequence.fromList(myTitleCustomizers).getElement(i)));
+      }
+      return titles;
+    }
     return Arrays.asList(myMineEditor.getTitleComponent(), myResultEditor.getTitleComponent(), myRepositoryEditor.getTitleComponent());
   }
 
-  private void createActionGroup(String rootName) {
+  private void createActionGroup() {
     myActionGroup = new DefaultActionGroup();
     myActionGroup.add(new ApplyNonConflictsForRoot(this));
     myActionGroup.addSeparator();
@@ -215,34 +234,116 @@ public class MergeRootsPane implements PropertyChangeListener {
     myTraverser.previousAction().registerCustomShortcutSet(NextPreviousTraverser.PREV_CHANGE_SHORTCUT, myPanel);
     myTraverser.nextAction().registerCustomShortcutSet(NextPreviousTraverser.NEXT_CHANGE_SHORTCUT, myPanel);
     myActionGroup.addSeparator();
-    myActionGroup.add(new ToggleAction("Show Inspector", "Show Inspector Windows", IdeIcons.INSPECTOR_ICON) {
-      public boolean isSelected(AnActionEvent e) {
-        return isInspectorShown;
-      }
-      public void setSelected(AnActionEvent e, boolean b) {
-        showInspector(b);
-      }
-    });
-    myActionGroup.add(new ToggleAction(new Supplier<String>() {
-      public String get() {
-        return DiffBundle.message("synchronize.scrolling", new Object[0]);
-      }
-    }, Presentation.NULL_STRING, IdeIcons.SYNC_SCROLLING) {
-      @Override
-      public boolean isSelected(@NotNull AnActionEvent p1) {
-        return isEditorsScrollingSyncOptionEnabled();
-      }
-      @Override
-      public void setSelected(@NotNull AnActionEvent e, boolean b) {
-        saveEditorsScrollingSyncOption(b);
-        enableEditorsScrollingSynchronization(b);
-      }
-      @Override
-      public void update(@NotNull AnActionEvent e) {
-        super.update(e);
-        enableEditorsScrollingSynchronization(isEditorsScrollingSyncOptionEnabled());
-      }
-    });
+    myActionGroup.add(new ShowInspectorAction());
+    myActionGroup.add(new SyncScrollingAction());
+    myActionGroup.add(new SettingsAction());
+  }
+
+  private class ShowInspectorAction extends ToggleAction implements DumbAware {
+    private ShowInspectorAction() {
+      super("Show Inspector", "Show Inspector Windows", IdeIcons.INSPECTOR_ICON);
+    }
+    @Override
+    public boolean isSelected(AnActionEvent e) {
+      return isInspectorShown;
+    }
+    @Override
+    public void setSelected(AnActionEvent e, boolean b) {
+      showInspector(b);
+    }
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.EDT;
+    }
+  }
+
+  private class SyncScrollingAction extends ToggleAction implements DumbAware {
+    private SyncScrollingAction() {
+      super(() -> DiffBundle.message("synchronize.scrolling", new Object[0]), IdeIcons.SYNC_SCROLLING);
+    }
+    @Override
+    public boolean isSelected(@NotNull AnActionEvent p1) {
+      return isEditorsScrollingSyncOptionEnabled();
+    }
+    @Override
+    public void setSelected(@NotNull AnActionEvent e, boolean b) {
+      saveEditorsScrollingSyncOption(b);
+      enableEditorsScrollingSynchronization(b);
+    }
+    @Override
+    public void update(@NotNull AnActionEvent e) {
+      super.update(e);
+      enableEditorsScrollingSynchronization(isEditorsScrollingSyncOptionEnabled());
+    }
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.EDT;
+    }
+  }
+
+  private class SettingsAction extends BaseGroup {
+
+    private SettingsAction() {
+      super("Settings", null, IdeIcons.GEAR_PLAIN_ICON);
+      setPopup(true);
+    }
+
+    @Override
+    public AnAction[] getChildren(@Nullable AnActionEvent event) {
+      return new AnAction[]{new UseShortChangeDescriptionsAction(), new TrackMovedNodesAction()};
+    }
+  }
+
+  private class TrackMovedNodesAction extends ToggleAction implements DumbAware {
+
+    private TrackMovedNodesAction() {
+      super("Track Moved Nodes");
+    }
+
+    @Override
+    public boolean isSelected(@NotNull AnActionEvent p1) {
+      return DiffSettingsUtil.getTrackMovedNodesMergeOption();
+    }
+
+    @Override
+    public void setSelected(@NotNull AnActionEvent p1, boolean p2) {
+      check_lifo0_a0a5gc(myTrackMovedNodesModeUpdater);
+    }
+
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.EDT;
+    }
+  }
+
+  private static class UseShortChangeDescriptionsAction extends ToggleAction implements DumbAware {
+
+    private UseShortChangeDescriptionsAction() {
+      super("Use Short Change Descriptions");
+    }
+
+    @Override
+    public boolean isSelected(@NotNull AnActionEvent p1) {
+      return DiffSettingsUtil.getUseShortDescriptionsOption();
+    }
+
+    @Override
+    public void setSelected(@NotNull AnActionEvent p1, boolean p2) {
+      DiffSettingsUtil.setUseShortDescriptionsOption(p2);
+    }
+
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
+    }
+  }
+
+  public interface TrackMovedNodesModeUpdater {
+    void trackMovedNodesModeChanged();
   }
 
   private class MyDividerPainter implements DiffSplitter.Painter {
@@ -293,7 +394,7 @@ public class MergeRootsPane implements PropertyChangeListener {
 
   public void setRootId(SNodeId rootId) {
     myRootId = rootId;
-    myStateToRestore = myMergeSession.getCurrentState();
+    myStateToRestore = myMergeSession.getCurrentFullState();
     myMineEditor.editRoot(getRootNodeId(myMergeSession.getMyModel()), myMergeSession.getMyModel());
     myResultEditor.editRoot(getRootNodeId(myMergeSession.getResultModel()), myMergeSession.getResultModel());
     myRepositoryEditor.editRoot(getRootNodeId(myMergeSession.getRepositoryModel()), myMergeSession.getRepositoryModel());
@@ -303,11 +404,7 @@ public class MergeRootsPane implements PropertyChangeListener {
 
   public void setRoodId(SNodeId rootId, final MergeSession mergeSession) {
     myMergeSession = mergeSession;
-    MapSequence.fromMap(myDiffLayoutPart).visitAll(new IVisitor<IMapping<DiffChangeGroupLayout, Boolean>>() {
-      public void visit(IMapping<DiffChangeGroupLayout, Boolean> it) {
-        it.key().setChangeSet((it.value() ? mergeSession.getMyChangeSet() : mergeSession.getRepositoryChangeSet()));
-      }
-    });
+    MapSequence.fromMap(myDiffLayoutPart).visitAll((it) -> it.key().setChangeSet((it.value() ? mergeSession.getMyChangeSet() : mergeSession.getRepositoryChangeSet())));
     setRootId(rootId);
   }
 
@@ -360,17 +457,9 @@ public class MergeRootsPane implements PropertyChangeListener {
   }
 
   private void highlightAllChanges() {
-    ListSequence.fromList(myChangeGroupLayouts).visitAll(new IVisitor<ChangeGroupLayout>() {
-      public void visit(ChangeGroupLayout b) {
-        b.invalidate();
-      }
-    });
+    ListSequence.fromList(myChangeGroupLayouts).visitAll((b) -> b.invalidate());
 
-    List<ModelChange> changesForRoot = ListSequence.fromList(myMergeSession.getChangesForRoot(myRootId)).where(new IWhereFilter<ModelChange>() {
-      public boolean accept(ModelChange ch) {
-        return !(myMergeSession.isChangeResolved(ch));
-      }
-    }).toListSequence();
+    List<ModelChange> changesForRoot = ListSequence.fromList(myMergeSession.getChangesForRoot(myRootId)).where((ch) -> !(myMergeSession.isChangeResolved(ch))).toList();
     for (ModelChange change : ListSequence.fromList(changesForRoot)) {
       higlightChange(myResultEditor, myMergeSession.getResultModel(), true, change);
       if (myMergeSession.isMyChange(change)) {
@@ -379,11 +468,7 @@ public class MergeRootsPane implements PropertyChangeListener {
         higlightChange(myRepositoryEditor, myMergeSession.getRepositoryModel(), false, change);
       }
     }
-    ListSequence.fromList(myChangeGroupLayouts).visitAll(new IVisitor<ChangeGroupLayout>() {
-      public void visit(ChangeGroupLayout b) {
-        b.invalidate();
-      }
-    });
+    ListSequence.fromList(myChangeGroupLayouts).visitAll((b) -> b.invalidate());
     myMineEditor.repaintAndRebuildEditorMessages();
     myResultEditor.repaintAndRebuildEditorMessages();
     myRepositoryEditor.repaintAndRebuildEditorMessages();
@@ -395,8 +480,9 @@ public class MergeRootsPane implements PropertyChangeListener {
 
   private void linkEditors(ThreesideContentPanel panel, boolean mine, boolean inspector) {
     DiffChangeGroupLayout layout = new DiffChangeGroupLayout(myConflictChecker, (mine ? myMergeSession.getMyChangeSet() : myMergeSession.getRepositoryChangeSet()), (mine ? myMineEditor : myResultEditor), (mine ? myResultEditor : myRepositoryEditor), getSplitterRepainter(panel, mine), inspector);
+    layout.setIsMerge();
     MapSequence.fromMap(myDiffLayoutPart).put(layout, mine);
-    ChangeGroupMessages.startMaintaining(layout);
+    ListSequence.fromList(myGutterMessagesRebuilders).addElement(new ChangeGroupMessages(layout, mine));
     ListSequence.fromList(myChangeGroupLayouts).addElement(layout);
     MergeButtonsPainter.addTo(this, (mine ? myMineEditor : myRepositoryEditor), layout, inspector);
   }
@@ -426,8 +512,7 @@ public class MergeRootsPane implements PropertyChangeListener {
 
   private DiffEditor addEditor(int index, SModel model) {
     SNodeId rootId = getRootNodeId(model);
-    SNode root = (rootId == null ? null : model.getNode(rootId));
-    final DiffEditor result = new DiffEditor(ProjectHelper.fromIdeaProject(myProject), root, myTitles[index], index == 0, isInspectorShown);
+    final DiffEditor result = new DiffEditor(ProjectHelper.fromIdeaProject(myProject), model, rootId, ListSequence.fromList(myTitles).getElement(index), index == 0, index != 1, isInspectorShown);
     myDiffEditorsGroup.add(result);
     return result;
   }
@@ -436,8 +521,18 @@ public class MergeRootsPane implements PropertyChangeListener {
     return myMergeSession;
   }
 
+  /*package*/ void setMergeSession(final MergeSession mergeSession) {
+    myMergeSession = mergeSession;
+    MapSequence.fromMap(myDiffLayoutPart).visitAll((it) -> it.key().setChangeSet((it.value() ? mergeSession.getMyChangeSet() : mergeSession.getRepositoryChangeSet())));
+    myResultEditor.editRoot(getRootNodeId(myMergeSession.getResultModel()), myMergeSession.getResultModel());
+    rehighlight();
+
+    myDiffEditorsGroup.synchronizeViewWithOther(myMineEditor, myResultEditor, false);
+    myDiffEditorsGroup.synchronizeViewWithOther(myMineEditor, myResultEditor, true);
+  }
+
   public void restoreState() {
-    myMergeSession.restoreState(myStateToRestore);
+    myMergeSession.restoreFullState(myStateToRestore);
   }
 
   public void dispose() {
@@ -445,11 +540,13 @@ public class MergeRootsPane implements PropertyChangeListener {
       if (myDisposed) {
         return;
       }
-      myDiffRegistry.getCommandQueue().runTask(new Runnable() {
-        public void run() {
-          if (myMergeSession.getMyModel() instanceof EditableSModel) {
-            myDiffRegistry.getCurrentDifference((EditableSModel) myMergeSession.getMyModel()).removeDifferenceListener(myDifferenceListener);
-          }
+      ListSequence.fromList(myGutterMessagesRebuilders).visitAll((it) -> it.dispose());
+      ListSequence.fromList(myTitleCustomizersDisposables).visitAll((it) -> it.dispose());
+      ListSequence.fromList(myTitleCustomizersDisposables).clear();
+
+      myDiffRegistry.getCommandQueue().runTask(() -> {
+        if (myMergeSession.getMyModel() instanceof EditableSModel) {
+          myDiffRegistry.getCurrentDifference((EditableSModel) myMergeSession.getMyModel()).removeDifferenceListener(myDifferenceListener);
         }
       });
       if (myActionGroup != null) {
@@ -478,11 +575,7 @@ public class MergeRootsPane implements PropertyChangeListener {
     }
 
     private void doInvalidate() {
-      myMA.runReadInEDT(new Runnable() {
-        public void run() {
-          rehighlight();
-        }
-      });
+      myMA.runReadInEDT(() -> rehighlight());
     }
 
     public void dispose() {
@@ -506,13 +599,89 @@ public class MergeRootsPane implements PropertyChangeListener {
       }
     }
   }
-  private static void check_lifo0_a0a5lb(ModelAccess checkedDotOperand, final MyDifferenceListener checkedDotThisExpression) {
+
+  @NotNull
+  public JComponent createTitle(@Nullable @NlsContexts.Label String title, @Nullable DiffEditorTitleCustomizer titleCustomizer) {
+    return createTitle(null, title, null, null, null, false, titleCustomizer);
+  }
+  @NotNull
+  private JComponent createTitle(@Nullable FrameDiffTool.DiffViewer viewer, @Nullable @NlsContexts.Label String title, @Nullable LineSeparator separator, @Nullable Charset charset, @Nullable Boolean bom, boolean readOnly, @Nullable DiffEditorTitleCustomizer titleCustomizer) {
+    JPanel panel = new JPanel(new BorderLayout());
+    panel.setBorder(JBUI.Borders.empty(0, 4));
+    BorderLayoutPanel labelWithIcon = new BorderLayoutPanel();
+    JComponent titleLabel = (titleCustomizer != null ? titleCustomizer.getLabel() : new JBLabel(StringUtil.notNullize(title)).setCopyable(true));
+    if (titleCustomizer != null && titleLabel instanceof Disposable) {
+      // Disposer.register(viewer, disposableTitleLabel);
+      ListSequence.fromList(myTitleCustomizersDisposables).addElement((Disposable) titleLabel);
+    }
+    if (titleLabel != null) {
+      labelWithIcon.addToCenter(titleLabel);
+    }
+    if (readOnly) {
+      labelWithIcon.addToLeft(new JBLabel(AllIcons.Ide.Readonly));
+    }
+    panel.add(labelWithIcon, BorderLayout.CENTER);
+    if (charset != null || separator != null) {
+      JPanel panel2 = new JPanel();
+      panel2.setLayout(new BoxLayout(panel2, BoxLayout.X_AXIS));
+      if (charset != null) {
+        panel2.add(Box.createRigidArea(JBUI.size(4, 0)));
+        panel2.add(createCharsetPanel(charset, bom));
+      }
+      if (separator != null) {
+        panel2.add(Box.createRigidArea(JBUI.size(4, 0)));
+        panel2.add(createSeparatorPanel(separator));
+      }
+      panel.add(panel2, BorderLayout.EAST);
+    }
+    return panel;
+  }
+  @NotNull
+  private static JComponent createCharsetPanel(@NotNull Charset charset, @Nullable Boolean bom) {
+    String text = charset.displayName();
+    if (bom != null && bom) {
+      text = DiffBundle.message("diff.utf.charset.name.bom.suffix", text);
+    }
+    JLabel label = new JLabel(text);
+    // TODO: specific colors for other charsets
+    if (charset.equals(StandardCharsets.UTF_8)) {
+      label.setForeground(JBColor.BLUE);
+    } else
+    if (charset.equals(StandardCharsets.ISO_8859_1)) {
+      label.setForeground(JBColor.RED);
+    } else {
+      label.setForeground(JBColor.BLACK);
+    }
+    return label;
+  }
+  @NotNull
+  private static JComponent createSeparatorPanel(@NotNull LineSeparator separator) {
+    JLabel label = new JLabel(separator.toString());
+    Color color;
+    if (separator == LineSeparator.CRLF) {
+      color = JBColor.RED;
+    } else
+    if (separator == LineSeparator.LF) {
+      color = JBColor.BLUE;
+    } else
+    if (separator == LineSeparator.CR) {
+      color = JBColor.MAGENTA;
+    } else {
+      color = JBColor.BLACK;
+    }
+    label.setForeground(color);
+    return label;
+  }
+
+  private static void check_lifo0_a0a5qb(ModelAccess checkedDotOperand, final MyDifferenceListener checkedDotThisExpression) {
     if (null != checkedDotOperand) {
-      checkedDotOperand.runReadInEDT(new Runnable() {
-        public void run() {
-          checkedDotThisExpression.doRehighlight();
-        }
-      });
+      checkedDotOperand.runReadInEDT(() -> checkedDotThisExpression.doRehighlight());
+    }
+
+  }
+  private static void check_lifo0_a0a5gc(TrackMovedNodesModeUpdater checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      checkedDotOperand.trackMovedNodesModeChanged();
     }
 
   }

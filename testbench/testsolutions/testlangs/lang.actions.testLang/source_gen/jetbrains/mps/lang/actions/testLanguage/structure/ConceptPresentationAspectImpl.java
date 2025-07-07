@@ -56,7 +56,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_ActionTestChild1 == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a2b0ab);
+          cpb.icon(IconContainer.RESOURCE_0);
           props_ActionTestChild1 = cpb.create();
         }
         return props_ActionTestChild1;
@@ -71,7 +71,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_ActionTestChild1SubConcept == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a4b0ab);
+          cpb.icon(IconContainer.RESOURCE_1);
           props_ActionTestChild1SubConcept = cpb.create();
         }
         return props_ActionTestChild1SubConcept;
@@ -79,7 +79,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_ActionTestChild2 == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a5b0ab);
+          cpb.icon(IconContainer.RESOURCE_2);
           props_ActionTestChild2 = cpb.create();
         }
         return props_ActionTestChild2;

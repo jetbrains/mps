@@ -4,12 +4,21 @@ package jetbrains.mps.lang.editor.menus.extras.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.module.SRepository;
+import com.intellij.openapi.Disposable;
+import com.intellij.openapi.util.Disposer;
+import com.intellij.testFramework.TestApplicationManager;
+import com.intellij.openapi.actionSystem.DataProvider;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.NonNls;
+import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.refactoring.framework.IRefactoring;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.nodeEditor.menus.transformation.DefaultTransformationMenuContext;
@@ -19,11 +28,11 @@ import org.junit.Assert;
 
 @MPSLaunch
 public class RefactoringMenuItemBase_ApplicableRefactoring_CanExecute_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(RefactoringMenuItemBase_ApplicableRefactoring_CanExecute_Test.class, "${mps_home}", "r:a1e8c439-e997-416b-a5dc-df7c3fd41b00(jetbrains.mps.lang.editor.menus.extras.tests@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(RefactoringMenuItemBase_ApplicableRefactoring_CanExecute_Test.class).projectPath(null).modelRef("r:a1e8c439-e997-416b-a5dc-df7c3fd41b00(jetbrains.mps.lang.editor.menus.extras.tests@tests)").reopenProject(false).build());
 
   public RefactoringMenuItemBase_ApplicableRefactoring_CanExecute_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -42,16 +51,25 @@ public class RefactoringMenuItemBase_ApplicableRefactoring_CanExecute_Test exten
       initEditorComponent("6820996345401023608", "");
       final SRepository repository = getEditorComponent().getEditorContext().getRepository();
 
-      repository.getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          IRefactoring refactoring = ActionLookupUtils.getRefactoring(repository, new SNodePointer("r:2f49f947-e2b6-4dd2-87ae-7938deb42899(jetbrains.mps.lang.editor.menus.extras.testLanguage.refactorings)", "6820996345401025745"));
-
-          DefaultTransformationMenuContext context = DefaultTransformationMenuContext.createInitialContextForCell(getEditorComponent().getSelectedCell(), "irrelevant location");
-
-          ActionItem item = new RefactoringMenuItemBase(context, refactoring);
-          Assert.assertTrue(item.canExecute("irrelevant pattern"));
+      Disposable dd = Disposer.newDisposable();
+      TestApplicationManager.getInstance().setDataProvider(new DataProvider() {
+        @Nullable
+        @Override
+        public Object getData(@NotNull @NonNls String key) {
+          if (MPSCommonDataKeys.MPS_PROJECT.is(key)) {
+            return myProject;
+          }
+          return null;
         }
+      }, dd);
+      repository.getModelAccess().runReadAction(() -> {
+        IRefactoring refactoring = ActionLookupUtils.getRefactoring(myProject, new SNodePointer("r:2f49f947-e2b6-4dd2-87ae-7938deb42899(jetbrains.mps.lang.editor.menus.extras.testLanguage.refactorings)", "6820996345401025745"));
+        DefaultTransformationMenuContext context = DefaultTransformationMenuContext.createInitialContextForCell(getEditorComponent().getSelectedCell(), "irrelevant location");
+        ActionItem item = new RefactoringMenuItemBase(context, refactoring);
+
+        Assert.assertTrue(item.canExecute("irrelevant pattern"));
       });
+      Disposer.dispose(dd);
     }
   }
 }

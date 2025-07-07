@@ -8,7 +8,6 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.migration.MigrationTrigger;
 import jetbrains.mps.ide.migration.IStartupMigrationExecutor;
@@ -21,6 +20,7 @@ public class RunMigrationAssistant_Action extends BaseAction {
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
     this.setMnemonic("u".charAt(0));
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -33,7 +33,6 @@ public class RunMigrationAssistant_Action extends BaseAction {
     }
     {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      MapSequence.fromMap(_params).put("mpsProject", p);
       if (p == null) {
         return false;
       }
@@ -42,7 +41,7 @@ public class RunMigrationAssistant_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    MigrationTrigger mt = ((MigrationTrigger) ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getComponent(IStartupMigrationExecutor.class));
+    MigrationTrigger mt = (MigrationTrigger) IStartupMigrationExecutor.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT));
     mt.scheduleMigration(true);
   }
 }

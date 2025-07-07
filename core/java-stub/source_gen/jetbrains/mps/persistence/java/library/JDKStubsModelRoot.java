@@ -10,17 +10,14 @@ import jetbrains.mps.java.stub.PackageScopeControl;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.java.stub.ClassStubRootConfiguration;
 import jetbrains.mps.persistence.PersistenceRegistry;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SModelId;
+import org.jetbrains.mps.openapi.model.SModel;
 import java.util.Map;
+import org.jetbrains.mps.openapi.model.SModelId;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.util.MacroHelper;
@@ -34,7 +31,7 @@ import java.util.ArrayList;
  * JDK at all), and 'java_stubs' root, with IFile and slightly different persistence values, one have to cope with two entities instead of one. I can not imagine what would be guiding idea for any 
  * other MSPS developer to pick either of these when he needs stubs functionality.
  */
-@GeneratedClass(node = "r:adc783db-1c21-4910-9cf7-6a22bf949a4a(jetbrains.mps.persistence.java.library)/8258026808687960484", model = "r:adc783db-1c21-4910-9cf7-6a22bf949a4a(jetbrains.mps.persistence.java.library)")
+@GeneratedClass(nodeId = "8258026808687960484", model = "r:adc783db-1c21-4910-9cf7-6a22bf949a4a(jetbrains.mps.persistence.java.library)")
 public class JDKStubsModelRoot extends ModelRootBase {
   private List<QualifiedPath> myJrtPaths;
   private PackageScopeControl myScopeControl;
@@ -50,21 +47,18 @@ public class JDKStubsModelRoot extends ModelRootBase {
   public String getType() {
     return PersistenceRegistry.JDK_CLASSES_ROOT;
   }
-  @Nullable
+
   @Override
-  public SModel getModel(@NotNull SModelId id) {
-    return null;
+  public boolean canCreateModels() {
+    return false;
   }
+
   @NotNull
   @Override
   public Iterable<SModel> loadModels() {
     Map<SModelId, SModel> result = MapSequence.fromMap(new HashMap<SModelId, SModel>());
     // todo decide whether to use IdeaFS here
-    for (IFile file : ListSequence.fromList(myJrtPaths).select(new ISelector<QualifiedPath, IFile>() {
-      public IFile select(QualifiedPath it) {
-        return myVfsManager.getFile(it);
-      }
-    })) {
+    for (IFile file : ListSequence.fromList(myJrtPaths).select((it) -> myVfsManager.getFile(it))) {
       JavaClassStubsModelRoot.getModelDescriptors_(result, file, "", getModule(), myScopeControl, this);
     }
     return MapSequence.fromMap(result).values();
@@ -73,22 +67,9 @@ public class JDKStubsModelRoot extends ModelRootBase {
   public String getPresentation() {
     final StringBuilder res = new StringBuilder();
     res.append("JdkStubsModelRoot[");
-    ListSequence.fromList(myJrtPaths).visitAll(new IVisitor<QualifiedPath>() {
-      public void visit(QualifiedPath it) {
-        res.append(it + ",");
-      }
-    });
+    ListSequence.fromList(myJrtPaths).visitAll((it) -> res.append(it + ","));
     res.append("]");
     return res.toString();
-  }
-  @Override
-  public boolean canCreateModel(@NotNull String modelName) {
-    return false;
-  }
-  @Nullable
-  @Override
-  public SModel createModel(@NotNull String modelName) {
-    throw new UnsupportedOperationException();
   }
   @Override
   public void save(@NotNull Memento memento) {
@@ -109,11 +90,7 @@ public class JDKStubsModelRoot extends ModelRootBase {
       myScopeControl.load(packScope);
     }
     Iterable<Memento> children = memento.getChildren("path");
-    myJrtPaths = Sequence.fromIterable(children).select(new ISelector<Memento, QualifiedPath>() {
-      public QualifiedPath select(Memento it) {
-        return QualifiedPath.deserialize(it.get("value"), new MacroHelper.MacroNoHelper());
-      }
-    }).toListSequence();
+    myJrtPaths = Sequence.fromIterable(children).select((it) -> QualifiedPath.deserialize(it.get("value"), new MacroHelper.MacroNoHelper())).toList();
   }
 
   public void addPath(QualifiedPath qp) {

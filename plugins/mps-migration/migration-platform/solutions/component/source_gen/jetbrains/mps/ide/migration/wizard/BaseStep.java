@@ -7,10 +7,10 @@ import com.intellij.ide.wizard.AbstractWizardStepEx;
 import javax.swing.JComponent;
 import org.jetbrains.annotations.NotNull;
 import javax.swing.JPanel;
-import com.intellij.ui.IdeBorderFactory;
+import com.intellij.util.ui.JBUI;
 import com.intellij.ide.wizard.CommitStepException;
 
-@GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)/6781485246382121744", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)")
+@GeneratedClass(nodeId = "6781485246382121744", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)")
 public abstract class BaseStep extends AbstractWizardStepEx {
   private JComponent myComponent;
   private String myId;
@@ -27,7 +27,7 @@ public abstract class BaseStep extends AbstractWizardStepEx {
   public JComponent getComponent() {
     if (myComponent == null) {
       myComponent = new JPanel();
-      myComponent.setBorder(IdeBorderFactory.createEmptyBorder(0, 10, 0, 10));
+      myComponent.setBorder(JBUI.Borders.empty(0, 10, 0, 10));
       doCreateComponent(myComponent);
     }
 

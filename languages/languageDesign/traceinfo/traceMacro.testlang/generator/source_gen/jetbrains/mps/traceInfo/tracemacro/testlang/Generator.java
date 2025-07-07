@@ -5,6 +5,7 @@ package jetbrains.mps.traceInfo.tracemacro.testlang;
 import jetbrains.mps.generator.runtime.TemplateModuleBase;
 import java.util.Collection;
 import jetbrains.mps.generator.runtime.TemplateMappingPriorityRule;
+import java.util.concurrent.atomic.AtomicReference;
 import jetbrains.mps.generator.runtime.TemplateModel;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
@@ -19,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Generator extends TemplateModuleBase {
   private final Collection<TemplateMappingPriorityRule> priorities;
-  private TemplateModel[] models;
+  private final AtomicReference<TemplateModel[]> models = new AtomicReference<>();
 
   public Generator(LanguageRegistry languageRegistry, LanguageRuntime sourceLanguage) {
     super(languageRegistry, sourceLanguage);
@@ -32,11 +33,15 @@ public class Generator extends TemplateModuleBase {
 
   @Override
   public Collection<TemplateModel> getModels() {
-    if (models == null) {
-      models = new TemplateModel[1];
-      models[0] = new TemplateModelImpl(this);
+    TemplateModel[] rv = models.get();
+    while (rv == null) {
+      rv = new TemplateModel[1];
+      rv[0] = new TemplateModelImpl(this);
+      if (!(models.compareAndSet(null, rv))) {
+        rv = models.get();
+      }
     }
-    return Arrays.asList(models);
+    return Arrays.asList(rv);
   }
 
   @Override

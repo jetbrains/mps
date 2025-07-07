@@ -198,7 +198,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_PatternBuilderClassifierMember == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a12b0jb);
+          cpb.icon(IconContainer.RESOURCE_0);
           props_PatternBuilderClassifierMember = cpb.create();
         }
         return props_PatternBuilderClassifierMember;

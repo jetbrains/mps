@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,6 +61,9 @@ public abstract class AbstractFoldingAreaPainter extends AbstractHighlighterPain
 
   protected abstract void paintInLocalCoordinates(Graphics g);
 
+  /**
+   * request highlighter to repaint certain vertical area
+   */
   protected void repaint(int y, int height) {
     int foldingLineX = getLeftHighlighter().getFoldingLineX();
     getLeftHighlighter().repaint(foldingLineX - getLeftAreaWidth(), y, getLeftAreaWidth() + getRightAreaWidth() + 1, height + 1);

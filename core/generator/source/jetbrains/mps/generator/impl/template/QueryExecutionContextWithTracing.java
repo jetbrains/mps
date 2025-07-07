@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,6 @@ import jetbrains.mps.generator.impl.query.VariableValueQuery;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.TemplateCreateRootRule;
-import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.TemplateMappingScript;
 import jetbrains.mps.generator.runtime.TemplateReductionRule;
 import jetbrains.mps.generator.runtime.TemplateRootMappingRule;
@@ -78,7 +77,7 @@ public class QueryExecutionContextWithTracing implements QueryExecutionContext {
     if (ruleNode == null) {
       return name;
     }
-    return name + ':' + ruleNode.getModelReference().getName().getLongName();
+    return name + ':' + ruleNode.getModelReference().getName().getLongName() + '/' + ruleNode.getNodeId();
   }
 
   @Override
@@ -241,32 +240,27 @@ public class QueryExecutionContextWithTracing implements QueryExecutionContext {
   }
 
   @Override
-  public boolean applyRule(TemplateWeavingRule rule, TemplateContext context, SNode outputContextNode) throws GenerationException {
+  public boolean applyRule(@NotNull TemplateWeavingRule rule, @NotNull TemplateContext context) throws GenerationException {
     try {
       tracer.push(taskName("weave rule", rule.getRuleNode()));
-      return wrapped.applyRule(rule, context, outputContextNode);
+      return wrapped.applyRule(rule, context);
     } finally {
       tracer.pop();
     }
   }
 
   @Override
-  public SNode getContextNode(TemplateWeavingRule rule, TemplateContext context) throws GenerationFailureException {
-    try {
-      tracer.push(taskName("context for weaving", rule.getRuleNode()));
-      return wrapped.getContextNode(rule, context);
-    } finally {
-      tracer.pop();
-    }
-  }
-
-  @Override
-  public void executeScript(TemplateMappingScript mappingScript, SModel model, TemplateExecutionEnvironment env) throws GenerationFailureException {
+  public void executeScript(@NotNull TemplateMappingScript mappingScript, @NotNull SModel model, @NotNull TemplateContext templateContext) throws GenerationFailureException {
     try {
       tracer.push(taskName(String.format("mapping script (%s)", mappingScript.getLongName()), mappingScript.getScriptNode()));
-      wrapped.executeScript(mappingScript, model, env);
+      wrapped.executeScript(mappingScript, model, templateContext);
     } finally {
       tracer.pop();
     }
+  }
+
+  @Override
+  public QueryExecutionContext unwrap() {
+    return wrapped.unwrap();
   }
 }

@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class SubstituteMenuPart__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab4546aL, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart");
 
-  public static final SMethod<SNode> getOutputConcept_id7mC_uHFK7Hn = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getOutputConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7mC_uHFK7Hn").build();
+  public static final SMethod<SNode> getOutputConcept_id7mC_uHFK7Hn = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getOutputConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8478191136882588503L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getOutputConcept_id7mC_uHFK7Hn);
 

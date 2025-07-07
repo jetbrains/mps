@@ -15,28 +15,23 @@ import jetbrains.mps.vcs.diff.changes.ModelChange;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.vcs.diff.changes.NodeCopier;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.vcs.diff.changes.NodeGroupChange;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.vcs.diff.ui.common.Bounds;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
 import jetbrains.mps.vcs.diff.ui.common.DiffModelUtil;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.vcs.diff.changes.NodeChange;
 import jetbrains.mps.vcs.diff.changes.NodeIdChange;
 import java.util.Collections;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import java.util.Objects;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 
-@GeneratedClass(node = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)/2052504288806109972", model = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)")
+@GeneratedClass(nodeId = "2052504288806109972", model = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)")
 public final class ChangesStripActionsHelper {
   private final MPSProject myProject;
   private final EditorContext myEditorContext;
@@ -89,28 +84,18 @@ public final class ChangesStripActionsHelper {
     if (changes == null) {
       return;
     }
-    myEditorContext.getRepository().getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        final SModel model = ListSequence.fromList(changes).first().getChangeSet().getNewModel();
-        final NodeCopier nc = new NodeCopier(model);
-        Iterable<ModelChange> oppositeChanges = ListSequence.fromList(changes).select(new ISelector<ModelChange, ModelChange>() {
-          public ModelChange select(ModelChange ch) {
-            return ch.getOppositeChange();
-          }
-        });
-        for (ModelChange ch : Sequence.fromIterable(oppositeChanges)) {
-          if (ch instanceof NodeGroupChange) {
-            ((NodeGroupChange) ch).prepare();
-          }
+    myEditorContext.getRepository().getModelAccess().executeCommand(() -> {
+      final SModel model = ListSequence.fromList(changes).first().getChangeSet().getNewModel();
+      final NodeCopier nc = new NodeCopier(model);
+      Iterable<ModelChange> oppositeChanges = ListSequence.fromList(changes).select((ch) -> ch.getOppositeChange());
+      for (ModelChange ch : Sequence.fromIterable(oppositeChanges)) {
+        if (ch instanceof NodeGroupChange) {
+          ((NodeGroupChange) ch).prepare();
         }
-        Sequence.fromIterable(oppositeChanges).visitAll(new IVisitor<ModelChange>() {
-          public void visit(ModelChange ch) {
-            ch.apply(model, nc);
-          }
-        });
-        nc.restoreIds(true);
-        check_ikrecr_a6a0a0c0o(getPainter(), ChangesStripActionsHelper.this);
       }
+      Sequence.fromIterable(oppositeChanges).visitAll((ch) -> ch.apply(model, nc));
+      nc.restoreIds(true);
+      check_ikrecr_a6a0a0c0o(getPainter(), ChangesStripActionsHelper.this);
     });
   }
 
@@ -136,82 +121,48 @@ public final class ChangesStripActionsHelper {
     }
 
     // compute paths to root
-    Iterable<SNode> baseNodes = ListSequence.fromList(changeGroup.getChanges()).translate(new ITranslator2<ModelChange, SNode>() {
-      public Iterable<SNode> translate(ModelChange ch) {
-        if (ch instanceof NodeChange) {
-          return Sequence.<SNode>singleton(oldModel.getNode(((NodeChange) ch).getAffectedNodeId()));
-        } else if (ch instanceof NodeGroupChange) {
-          NodeGroupChange ngc = (NodeGroupChange) ch;
-          List<SNode> changeChildren = ngc.getChangedCollection(false);
-          return ListSequence.fromList(changeChildren).page(ngc.getBegin(), ngc.getEnd());
-        } else if (ch instanceof NodeIdChange) {
-          return Sequence.<SNode>singleton(oldModel.getNode(((NodeIdChange) ch).getNodeId(false)));
-        } else {
-          return Sequence.fromIterable(Collections.<SNode>emptyList());
-        }
+    Iterable<SNode> baseNodes = ListSequence.fromList(changeGroup.getChanges()).translate((ch) -> {
+      if (ch instanceof NodeChange) {
+        return Sequence.<SNode>singleton(oldModel.getNode(((NodeChange) ch).getAffectedNodeId()));
+      } else if (ch instanceof NodeGroupChange) {
+        NodeGroupChange ngc = (NodeGroupChange) ch;
+        List<SNode> changeChildren = ngc.getChangedCollection(false);
+        return ListSequence.fromList(changeChildren).page(ngc.getBegin(), ngc.getEnd());
+      } else if (ch instanceof NodeIdChange) {
+        return Sequence.<SNode>singleton(oldModel.getNode(((NodeIdChange) ch).getNodeId(false)));
+      } else {
+        return Sequence.fromIterable(Collections.<SNode>emptyList());
       }
     });
-    List<List<SNode>> paths = Sequence.fromIterable(baseNodes).select(new ISelector<SNode, List<SNode>>() {
-      public List<SNode> select(SNode n) {
-        return (List<SNode>) ListSequence.fromList(SNodeOperations.getNodeAncestors(n, null, true)).reversedList();
-      }
-    }).toListSequence();
+    List<List<SNode>> paths = Sequence.fromIterable(baseNodes).select((n) -> (List<SNode>) ListSequence.fromList(SNodeOperations.getNodeAncestors(n, null, true)).reversedList()).toList();
 
     // find common path
     final Wrappers._T<List<SNode>> commonPath = new Wrappers._T<List<SNode>>(ListSequence.fromList(paths).getElement(0));
     for (List<SNode> pathToRoot : ListSequence.fromList(paths)) {
       for (int i = 0; i < Math.min(ListSequence.fromList(commonPath.value).count(), ListSequence.fromList(pathToRoot).count()); i++) {
         if (ListSequence.fromList(commonPath.value).getElement(i) != ListSequence.fromList(pathToRoot).getElement(i)) {
-          commonPath.value = ListSequence.fromList(commonPath.value).take(i).toListSequence();
+          commonPath.value = ListSequence.fromList(commonPath.value).take(i).toList();
           break;
         }
       }
       if (ListSequence.fromList(pathToRoot).count() < ListSequence.fromList(commonPath.value).count()) {
-        commonPath.value = ListSequence.fromList(commonPath.value).take(ListSequence.fromList(pathToRoot).count()).toListSequence();
+        commonPath.value = ListSequence.fromList(commonPath.value).take(ListSequence.fromList(pathToRoot).count()).toList();
       }
     }
     assert !(ListSequence.fromList(commonPath.value).isEmpty());
 
     // by default, copy common ancestor
     SNode commonNode = ListSequence.fromList(commonPath.value).last();
-    List<SNode> nodesToCopy = Sequence.fromIterable(Sequence.<SNode>singleton(commonNode)).toListSequence();
+    List<SNode> nodesToCopy = Sequence.fromIterable(Sequence.<SNode>singleton(commonNode)).toList();
 
-    if (ListSequence.fromList(paths).all(new IWhereFilter<List<SNode>>() {
-      public boolean accept(List<SNode> p) {
-        return ListSequence.fromList(p).count() > ListSequence.fromList(commonPath.value).count();
-      }
-    })) {
-      Iterable<SNode> children = ListSequence.fromList(paths).select(new ISelector<List<SNode>, SNode>() {
-        public SNode select(List<SNode> p) {
-          return ListSequence.fromList(p).getElement(ListSequence.fromList(commonPath.value).count());
-        }
-      });
-      Iterable<SContainmentLink> links = Sequence.fromIterable(children).select(new ISelector<SNode, SContainmentLink>() {
-        public SContainmentLink select(SNode c) {
-          return SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection(c);
-        }
-      });
+    if (ListSequence.fromList(paths).all((p) -> ListSequence.fromList(p).count() > ListSequence.fromList(commonPath.value).count())) {
+      Iterable<SNode> children = ListSequence.fromList(paths).select((p) -> ListSequence.fromList(p).getElement(ListSequence.fromList(commonPath.value).count()));
+      Iterable<SContainmentLink> links = Sequence.fromIterable(children).select((c) -> SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection(c));
       final SContainmentLink commonRole = Sequence.fromIterable(links).first();
-      if (Sequence.fromIterable(links).all(new IWhereFilter<SContainmentLink>() {
-        public boolean accept(SContainmentLink r) {
-          return Objects.equals(r, commonRole);
-        }
-      })) {
-        Iterable<Integer> indices = Sequence.fromIterable(children).select(new ISelector<SNode, Integer>() {
-          public Integer select(SNode c) {
-            return SNodeOperations.getIndexInChildrenAndChildAttributesCollection(c);
-          }
-        }).distinct();
-        int min = Sequence.fromIterable(indices).reduceLeft(new ILeftCombinator<Integer, Integer>() {
-          public Integer combine(Integer a, Integer b) {
-            return Math.min(a, b);
-          }
-        });
-        int max = Sequence.fromIterable(indices).reduceLeft(new ILeftCombinator<Integer, Integer>() {
-          public Integer combine(Integer a, Integer b) {
-            return Math.max(a, b);
-          }
-        });
+      if (Sequence.fromIterable(links).all((r) -> Objects.equals(r, commonRole))) {
+        Iterable<Integer> indices = Sequence.fromIterable(children).select((c) -> SNodeOperations.getIndexInChildrenAndChildAttributesCollection(c)).distinct();
+        int min = Sequence.fromIterable(indices).reduceLeft((a, b) -> Math.min(a, b));
+        int max = Sequence.fromIterable(indices).reduceLeft((a, b) -> Math.max(a, b));
         ListSequence.fromList(nodesToCopy).clear();
         ListSequence.fromList(nodesToCopy).addSequence(Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(commonNode, commonRole)).page(min, max + 1));
       }

@@ -4,9 +4,10 @@ package jetbrains.mps.lang.editor.diagram.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import javax.swing.SwingUtilities;
@@ -21,11 +22,11 @@ import jetbrains.jetpad.projectional.view.View;
 
 @MPSLaunch
 public class SelectAnotherNodeFromCode_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(SelectAnotherNodeFromCode_Test.class, "${mps_home}", "r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SelectAnotherNodeFromCode_Test.class).projectPath(null).modelRef("r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)").reopenProject(false).build());
 
   public SelectAnotherNodeFromCode_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -42,23 +43,13 @@ public class SelectAnotherNodeFromCode_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("8041297453110598745", "8041297453110598749");
-      SwingUtilities.invokeAndWait(new Runnable() {
-        public void run() {
-          getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              getEditorComponent().selectNode(getNodeById("8041297453110598748"));
-            }
-          });
-        }
-      });
+      SwingUtilities.invokeAndWait(() -> getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> getEditorComponent().selectNode(getAnnotatedNode("node"))));
       final Wrappers._T<Mapper<? super SNode, ?>> descendantMapper = new Wrappers._T<Mapper<? super SNode, ?>>();
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          EditorCell selectedCell = getEditorComponent().getSelectedCell();
-          Assert.assertTrue(selectedCell != null);
-          DiagramCell diagramCell = CellFinderUtil.findChildByClass(getEditorComponent().getRootCell(), DiagramCell.class, true);
-          descendantMapper.value = diagramCell.getRootMapper().getDescendantMapper(selectedCell.getSNode());
-        }
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> {
+        EditorCell selectedCell = getEditorComponent().getSelectedCell();
+        Assert.assertTrue(selectedCell != null);
+        DiagramCell diagramCell = CellFinderUtil.findChildByClass(getEditorComponent().getRootCell(), DiagramCell.class, true);
+        descendantMapper.value = diagramCell.getRootMapper().getDescendantMapper(selectedCell.getSNode());
       });
       Assert.assertTrue(descendantMapper.value != null && descendantMapper.value.getTarget() != null);
       Assert.assertTrue(((View) descendantMapper.value.getTarget()).focused().get());

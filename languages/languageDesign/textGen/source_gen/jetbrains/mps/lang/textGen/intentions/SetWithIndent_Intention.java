@@ -10,10 +10,10 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.textGen.behavior.AbstractAppendPart__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -22,27 +22,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class SetWithIndent_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public SetWithIndent_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:7651b6e0-753b-4bcf-af83-d3dfc31e29e7(jetbrains.mps.lang.textGen.intentions)", "1236698667104"));
   }
+
   @Override
   public String getPresentation() {
     return "SetWithIndent";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(node, CONCEPTS.ConstantStringAppendPart$Pc) || SNodeOperations.isInstanceOf(node, CONCEPTS.NodeAppendPart$AK);
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -52,10 +46,12 @@ public final class SetWithIndent_Intention extends AbstractIntentionDescriptor i
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Append " + (((boolean) AbstractAppendPart__BehaviorDescriptor.withIndent_idi0uJgJ6.invoke(node) ? "without" : "with")) + " Indent";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       boolean indent = (boolean) AbstractAppendPart__BehaviorDescriptor.withIndent_idi0uJgJ6.invoke(node);
@@ -65,15 +61,30 @@ public final class SetWithIndent_Intention extends AbstractIntentionDescriptor i
         SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.NodeAppendPart$AK), PROPS.withIndent$mrKt, !(indent));
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return SNodeOperations.isInstanceOf(node, CONCEPTS.ConstantStringAppendPart$Pc) || SNodeOperations.isInstanceOf(node, CONCEPTS.NodeAppendPart$AK);
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return SetWithIndent_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodeAppendPart$AK = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015251a28L, "jetbrains.mps.lang.textGen.structure.NodeAppendPart");
     /*package*/ static final SConcept ConstantStringAppendPart$Pc = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, "jetbrains.mps.lang.textGen.structure.ConstantStringAppendPart");
+    /*package*/ static final SConcept NodeAppendPart$AK = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015251a28L, "jetbrains.mps.lang.textGen.structure.NodeAppendPart");
   }
 
   private static final class PROPS {

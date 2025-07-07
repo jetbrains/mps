@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,8 +58,15 @@ public final class ModuleFileTracker {
    * @param module module read from the file
    */
   public void track(@NotNull IFile file, @NotNull SModule module) {
+    // XXX although I do keep SModuleReference, is it right to allow reference, not instance?
+    //     there's ProjectModuleLoadingListener client of this class which I'd like to use reference, not SModule, hence the new method, yet I still
+    //     uncertain whether it's right. OTOH, there's forget() with SModuleReference.
+    track(file, module.getModuleReference());
+  }
+
+  public void track(@NotNull IFile file, @NotNull SModuleReference moduleRef) {
     Set<SModuleReference> modules = myFile2Module.computeIfAbsent(file, k -> new THashSet<>());
-    modules.add(module.getModuleReference());
+    modules.add(moduleRef);
   }
 
   /**

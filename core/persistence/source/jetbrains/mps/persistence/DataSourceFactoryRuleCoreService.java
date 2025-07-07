@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,8 +19,7 @@ import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromName;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRule;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService;
-import jetbrains.mps.persistence.FileDataSourceFactoryRule;
-import jetbrains.mps.persistence.FilePerRootDataSourceFactoryRule;
+import jetbrains.mps.vfs.VFSManager;
 
 /**
  * Service provider with MPS own data source factories.
@@ -36,15 +35,17 @@ import jetbrains.mps.persistence.FilePerRootDataSourceFactoryRule;
  */
 /*package*/ final class DataSourceFactoryRuleCoreService implements CoreComponent {
   private final DataSourceFactoryRuleService myDataSourceRegistry;
+  private final VFSManager myFileManager;
   private DataSourceFactoryRule[] myPredefinedRules;
 
-  public DataSourceFactoryRuleCoreService(DataSourceFactoryRuleService dsRegistry) {
+  public DataSourceFactoryRuleCoreService(DataSourceFactoryRuleService dsRegistry, VFSManager vfsManager) {
     myDataSourceRegistry = dsRegistry;
+    myFileManager = vfsManager;
   }
 
   @Override
   public void init() {
-    myPredefinedRules = new DataSourceFactoryRule[] { new FileDataSourceFactoryRule(), new FilePerRootDataSourceFactoryRule() };
+    myPredefinedRules = new DataSourceFactoryRule[] { new FileDataSourceFactoryRule(myFileManager), new FilePerRootDataSourceFactoryRule(myFileManager) };
     myDataSourceRegistry.register(myPredefinedRules[0]);
     myDataSourceRegistry.register(myPredefinedRules[1]);
   }

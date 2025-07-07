@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,11 +34,13 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
 /**
  * FIXME rewrite into several classes instead of this with Object field
+ *       reuse jetbrains.mps.ide.psi package
  */
 public class MPSPsiElement extends FakePsiElement {
   private final MPSProject myMPSProject;
@@ -54,12 +56,24 @@ public class MPSPsiElement extends FakePsiElement {
     this(project, nodes.stream().map(SNode::getReference).collect(Collectors.toList()), false);
   }
 
+  public MPSPsiElement(Collection<SNodeReference> nodes, MPSProject project) {
+    this(project, nodes.size() == 1 ? nodes.iterator().next() : nodes, false);
+  }
+
   public MPSPsiElement(SModel model, MPSProject project) {
     this(project, model.getReference(), model instanceof TransientSModel);
   }
 
+  public MPSPsiElement(SModelReference model, MPSProject project) {
+    this(project, model, false); // FIXME deal with isTransientElement()
+  }
+
   public MPSPsiElement(SModule module, MPSProject project) {
     this(project, module.getModuleReference(), module instanceof TransientSModule);
+  }
+
+  public MPSPsiElement(SModuleReference module, MPSProject project) {
+    this(project, module, false); // FIXME deal with isTransientElement()
   }
 
   public MPSPsiElement(@NotNull MPSProject project) {

@@ -51,18 +51,22 @@ import com.intellij.openapi.vcs.VcsActions;
 import com.intellij.ui.PopupHandler;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.util.BooleanGetter;
 import java.util.Collection;
+import jetbrains.mps.vcs.history.CommitsGraph;
 import com.intellij.openapi.progress.util.BackgroundTaskUtil;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.wm.ToolWindowManager;
+import com.intellij.openapi.vcs.changes.ui.ChangesViewContentManager;
+import com.intellij.openapi.ui.MessageType;
 import com.intellij.util.ui.update.Update;
 import java.util.Collections;
 import com.intellij.diff.requests.NoDiffRequest;
+import com.intellij.diff.requests.LoadingDiffRequest;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.diff.contents.DiffContent;
-import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
+import com.intellij.diff.contents.EmptyContent;
 import com.intellij.diff.requests.SimpleDiffRequest;
 import jetbrains.mps.vcs.platform.integration.ModelDiffViewer;
-import com.intellij.diff.requests.LoadingDiffRequest;
 import com.intellij.diff.requests.MessageDiffRequest;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -77,16 +81,18 @@ import com.intellij.util.containers.ContainerUtil;
 import com.intellij.openapi.util.Conditions;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import org.jetbrains.annotations.Nullable;
-import com.intellij.diff.contents.EmptyContent;
+import org.jetbrains.mps.openapi.persistence.ModelLoadException;
+import com.intellij.openapi.vcs.VcsException;
+import java.io.IOException;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
+import jetbrains.mps.vcspersistence.ModelSack;
 import jetbrains.mps.vfs.tracking.ModelDiffContent;
 import com.intellij.openapi.util.Disposer;
 
 /**
  * Most of this class copied from IDEA's VcsSelectionHistoryDialog
  */
-@GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/6427926084137200503", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
+@GeneratedClass(nodeId = "6427926084137200503", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
 public final class RootHistoryDialog extends FrameWrapper implements DataProvider {
   private final MPSProject myMPSProject;
   private final DiffRequestPanel myDiffPanel;
@@ -190,7 +196,7 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
     popupActions.add(ShowAllAffectedGenericAction.getInstance());
     popupActions.add(ActionManager.getInstance().getAction(VcsActions.ACTION_COPY_REVISION_NUMBER));
     PopupHandler.installPopupHandler(myList, popupActions, ActionPlaces.UPDATE_POPUP, ActionManager.getInstance());
-    for (AnAction action : popupActions.getChildren(null)) {
+    for (AnAction action : popupActions.getChildren(ActionManager.getInstance())) {
       action.registerCustomShortcutSet(action.getShortcutSet(), mySplitter);
     }
 
@@ -198,23 +204,28 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
     setComponent(mySplitter);
     setPreferredFocusedComponent(myList);
     closeOnEsc();
-    setOnCloseHandler(new BooleanGetter() {
-      public boolean get() {
-        return myRevisionsExtractor.stop();
-      }
-    });
+    setOnCloseHandler(() -> check_s4rg5p_a0a0a84a72(myRevisionsExtractor));
   }
 
   public void show(Collection<SNodeId> selection) {
     // for the moment, I support single node scenario. Moreover, root node, as DiffModelViewer (along with ChangeSet) is incapable to show changes for anything but root
     myRoot = selection.iterator().next();
-    myRevisionsExtractor = createHistoryExtractor();
+    try {
+      myRevisionsExtractor = createHistoryExtractor();
+    } catch (CommitsGraph.BuildException e) {
+      showWarning("Root history is not available until indices are built");
+      return;
+    }
     BackgroundTaskUtil.executeOnPooledThread(this, myRevisionsExtractor);
     updateRevisionList();
     show();
   }
 
-  private RevisionsExtractor createHistoryExtractor() {
+  private void showWarning(final String warning) {
+    ApplicationManager.getApplication().invokeLater(() -> ToolWindowManager.getInstance(myActiveVcs.getProject()).notifyByBalloon(ChangesViewContentManager.TOOLWINDOW_ID, MessageType.WARNING, warning));
+  }
+
+  private RevisionsExtractor createHistoryExtractor() throws CommitsGraph.BuildException {
     if (myCompareModels) {
       return new RootModelHistoryExtractor(myMPSProject, myRevisions, myRoot, myActualFile, getUpdateListener());
     } else {
@@ -223,16 +234,14 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
   }
 
   private Runnable getUpdateListener() {
-    return new Runnable() {
-      public void run() {
-        myUpdateQueue.queue(new Update(this) {
-          @Override
-          public void run() {
-            updateStatusLine();
-            updateRevisionList();
-          }
-        });
-      }
+    return () -> {
+      myUpdateQueue.queue(new Update(this) {
+        @Override
+        public void run() {
+          updateStatusLine();
+          updateRevisionList();
+        }
+      });
     };
   }
 
@@ -283,33 +292,41 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
       myDiffPanel.setRequest(NoDiffRequest.INSTANCE);
       return;
     }
+    if (myRevisionsExtractor.isLoading() && myRevisionsExtractor.getRevisions().isEmpty()) {
+      // Previous use of LoadingDiffRequest was in a strange place, derived from VcsSelectionHistoryDialog code,
+      // here I try to mimic similar logic in the mentioned dialog (blockData.getRevisions().size() == 0), assuming 
+      // revisions in RevisionsExtractor get populated over time, and if there are none, no reason even to look into revision parents (didn't quite get what's that - 
+      // if these are all file revisions, why do we try to get node diff for file revision, which not necessarily contains a change for this node)
+      myDiffPanel.setRequest(new LoadingDiffRequest());
+      return;
+    }
+
     List<VcsFileRevision> selection = myList.getSelectedObjects();
     VcsFileRevision revision = ListSequence.fromList(selection).first();
     List<VcsFileRevision> parents = myRevisionsExtractor.getRevisionParents(revision);
     VcsFileRevision oldRevision1 = (ListSequence.fromList(parents).count() > 0 ? ListSequence.fromList(parents).getElement(0) : null);
     List<DiffContent> contents = ListSequence.fromList(new ArrayList<DiffContent>());
     List<String> titles = ListSequence.fromList(new ArrayList<String>());
-    ListSequence.fromList(contents).addElement(createDiffContent(oldRevision1));
-    ListSequence.fromList(titles).addElement(createTitle(oldRevision1));
-    ListSequence.fromList(contents).addElement(createDiffContent(revision));
-    ListSequence.fromList(titles).addElement(createTitle(revision));
-    if (ListSequence.fromList(parents).count() == 2) {
-      VcsFileRevision oldRevision2 = ListSequence.fromList(parents).getElement(1);
-      ListSequence.fromList(contents).addElement(createDiffContent(oldRevision2));
-      ListSequence.fromList(titles).addElement(createTitle(oldRevision2));
-    }
-    if (ListSequence.fromList(contents).count() == ListSequence.fromList(contents).where(new NotNullWhereFilter<DiffContent>()).count()) {
+    // oldRevision1 is the only revision we tolerate as null and treat as 'empty' content. Others are expected to produce a model, and we fail diff if not
+    try {
+      ListSequence.fromList(contents).addElement((oldRevision1 == null ? new EmptyContent() : createDiffContent(oldRevision1)));
+      ListSequence.fromList(titles).addElement(createTitle(oldRevision1));
+      ListSequence.fromList(contents).addElement(createDiffContent(revision));
+      ListSequence.fromList(titles).addElement(createTitle(revision));
+      if (ListSequence.fromList(parents).count() == 2) {
+        VcsFileRevision oldRevision2 = ListSequence.fromList(parents).getElement(1);
+        ListSequence.fromList(contents).addElement(createDiffContent(oldRevision2));
+        ListSequence.fromList(titles).addElement(createTitle(oldRevision2));
+      }
+
       SimpleDiffRequest rq = new SimpleDiffRequest(null, contents, titles);
       ModelDiffViewer.DIFF_SHOW_ROOTID.set(rq, myRoot);
       ModelDiffViewer.DIFF_SHOW_TREE.set(rq, false);
       myDiffPanel.setRequest(rq, titles);
-      return;
-    }
-    if (myRevisionsExtractor.isLoading()) {
-      myDiffPanel.setRequest(new LoadingDiffRequest());
-    } else {
-      // FIXME throw an exception from createDiffContent, catch it here and present to user through MessageDiffRequest (there's no DiffContent that could do that instead)
-      myDiffPanel.setRequest(new MessageDiffRequest("Error", "Failed to build diff for selected revisions"));
+
+    } catch (Exception ex) {
+      // exception from createDiffContent presented to a user through MessageDiffRequest (there's no DiffContent that could do that instead)
+      myDiffPanel.setRequest(new MessageDiffRequest("Error", String.format("Failed to build diff for selected revisions (%s)", ex.getMessage())));
     }
   }
 
@@ -374,24 +391,22 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
     return (revision == null ? null : revision.getRevisionNumber().asString());
   }
 
-  @Nullable
-  private DiffContent createDiffContent(@Nullable VcsFileRevision revision) {
-    if (revision == null) {
-      return new EmptyContent();
-    }
-    SModel loaded;
-    try {
-      loaded = VCSPersistenceUtil.loadModel(revision.loadContent(), myActualFile.getExtension());
-    } catch (Exception ex) {
-      return null;
-    }
+  @NotNull
+  private DiffContent createDiffContent(@NotNull VcsFileRevision revision) throws ModelLoadException, VcsException, IOException, IllegalArgumentException {
+    SModel loaded = ModelSack.discover(myMPSProject.getPlatform(), myActualFile.getName()).load(revision.loadContent());
     // ModelDiffViewer doesn't tolerate reusable detached models, it registers and disposes such models solely on its own discretion
-    return (loaded == null ? new EmptyContent() : new ModelDiffContent(loaded, myActualFile.getFileType()));
+    return new ModelDiffContent(loaded, myActualFile.getFileType());
   }
 
   @Override
   public void dispose() {
     Disposer.dispose(myDiffPanel);
     super.dispose();
+  }
+  private static boolean check_s4rg5p_a0a0a84a72(RevisionsExtractor checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.stop();
+    }
+    return false;
   }
 }

@@ -4,16 +4,14 @@ package jetbrains.mps.lang.smodel.generator.smodelAdapter;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.logging.Logger;
-import org.apache.log4j.LogManager;
 import jetbrains.mps.RuntimeFlags;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.CopyUtil;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.SNodeUtil;
 import java.util.ArrayList;
 import jetbrains.mps.util.IterableUtil;
-import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.util.InstanceOfCondition;
 import org.jetbrains.mps.util.Condition;
 import org.jetbrains.mps.util.DescendantsTreeIterator;
@@ -22,23 +20,24 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
-import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
-import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.model.SReference;
 import java.util.Collections;
 import jetbrains.mps.util.ConditionalIterable;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)/6599163591527286941", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
+@GeneratedClass(nodeId = "6599163591527286941", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
 public class SNodeOperations {
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(SNodeOperations.class));
+  private static final Logger LOG = Logger.getLogger(SNodeOperations.class);
   private static boolean ourCastExceptionsEnabled = RuntimeFlags.isExceptionOnBadCast();
   /**
    * Empty list of nodes that can't be modified helps to detect otherwise hard to catch
@@ -74,13 +73,13 @@ public class SNodeOperations {
     if (node == null) {
       return null;
     }
-    int metaLevel = (sameMetaLevel ? SModelUtil_new.getMetaLevel(node) : 0);
+    int metaLevel = (sameMetaLevel ? SNodeUtil.getMetaLevel(node) : 0);
 
     // look up for certain concept
     if (root) {
       SNode rootParent = node.getContainingRoot();
       if (rootParent.getModel() != null && isInstanceOf(rootParent, ancestorConcept)) {
-        if (!(sameMetaLevel) || SModelUtil_new.getMetaLevel(rootParent) == metaLevel) {
+        if (!(sameMetaLevel) || SNodeUtil.getMetaLevel(rootParent) == metaLevel) {
           return rootParent;
         }
       }
@@ -98,13 +97,13 @@ public class SNodeOperations {
       return null;
     }
     if (isInstanceOf(outputNode, ancestorConcept)) {
-      if (!(sameMetaLevel) || SModelUtil_new.getMetaLevel(outputNode) == metaLevel) {
+      if (!(sameMetaLevel) || SNodeUtil.getMetaLevel(outputNode) == metaLevel) {
         return outputNode;
       }
     }
     while ((outputNode = outputNode.getParent()) != null) {
       if (isInstanceOf(outputNode, ancestorConcept)) {
-        if (!(sameMetaLevel) || SModelUtil_new.getMetaLevel(outputNode) == metaLevel) {
+        if (!(sameMetaLevel) || SNodeUtil.getMetaLevel(outputNode) == metaLevel) {
           break;
         }
       }
@@ -118,14 +117,14 @@ public class SNodeOperations {
     if (node == null) {
       return null;
     }
-    int metaLevel = (sameMetaLevel ? SModelUtil_new.getMetaLevel(node) : 0);
+    int metaLevel = (sameMetaLevel ? SNodeUtil.getMetaLevel(node) : 0);
     if (ancestorConceptFqNames.length == 0) {
       return null;
     }
     if (root) {
       SNode rootParent = node.getContainingRoot();
       if (SNodeOperations._isInstanceOf(rootParent, ancestorConceptFqNames)) {
-        if (!(sameMetaLevel) || SModelUtil_new.getMetaLevel(rootParent) == metaLevel) {
+        if (!(sameMetaLevel) || SNodeUtil.getMetaLevel(rootParent) == metaLevel) {
           return rootParent;
         }
       }
@@ -143,13 +142,13 @@ public class SNodeOperations {
       return null;
     }
     if (SNodeOperations._isInstanceOf(outputNode, ancestorConceptFqNames)) {
-      if (!(sameMetaLevel) || SModelUtil_new.getMetaLevel(outputNode) == metaLevel) {
+      if (!(sameMetaLevel) || SNodeUtil.getMetaLevel(outputNode) == metaLevel) {
         return outputNode;
       }
     }
     while ((outputNode = outputNode.getParent()) != null) {
       if (SNodeOperations._isInstanceOf(outputNode, ancestorConceptFqNames)) {
-        if (!(sameMetaLevel) || SModelUtil_new.getMetaLevel(outputNode) == metaLevel) {
+        if (!(sameMetaLevel) || SNodeUtil.getMetaLevel(outputNode) == metaLevel) {
           return outputNode;
         }
       }
@@ -192,7 +191,7 @@ public class SNodeOperations {
     if (node == null) {
       return EMPTY_LIST;
     }
-    return IterableUtil.asList(SNodeUtil.getDescendants(node, (childConcept == null ? null : new InstanceOfCondition(childConcept)), inclusion));
+    return IterableUtil.asList(org.jetbrains.mps.openapi.model.SNodeUtil.getDescendants(node, (childConcept == null ? null : new InstanceOfCondition(childConcept)), inclusion));
   }
   public static List<SNode> getNodeDescendants(SNode node, final SAbstractConcept childConcept, boolean inclusion, final SAbstractConcept[] stopConceptFqNames) {
     if (node == null) {
@@ -212,7 +211,7 @@ public class SNodeOperations {
     if (node == null || descendantConcepts.length == 0) {
       return EMPTY_LIST;
     }
-    return IterableUtil.asList(SNodeUtil.getDescendants(node, new InstanceOfCondition(descendantConcepts), inclusion));
+    return IterableUtil.asList(org.jetbrains.mps.openapi.model.SNodeUtil.getDescendants(node, new InstanceOfCondition(descendantConcepts), inclusion));
   }
   public static List<SNode> getNodeDescendantsWhereConceptInList(SNode node, final SAbstractConcept[] descendantConcepts, boolean inclusion, final SAbstractConcept[] stopConcepts) {
     if (node == null || descendantConcepts.length == 0) {
@@ -344,14 +343,14 @@ public class SNodeOperations {
     if (parent == null) {
       return result;
     }
-    if (inclusion) {
-      result.add(node);
-    }
     boolean childFound = false;
     SContainmentLink role = node.getContainmentLink();
     assert role != null;
     for (SNode child : parent.getChildren(role)) {
       if (child == node) {
+        if (inclusion) {
+          result.add(node);
+        }
         childFound = true;
       } else
       if (childFound) {
@@ -458,7 +457,7 @@ public class SNodeOperations {
     if (newChild == null) {
       return null;
     }
-    SNodeUtil.replaceWithAnother(oldChild, newChild);
+    org.jetbrains.mps.openapi.model.SNodeUtil.replaceWithAnother(oldChild, newChild);
     SNodeOperations.copyAllAttributes(oldChild, newChild);
     return newChild;
   }
@@ -468,7 +467,7 @@ public class SNodeOperations {
     final SContainmentLink smodelAttr = LINKS.smodelAttribute$KJ43;
     for (SNode attribute : AttributeOperations.getAllAttributes(oldChild)) {
       if (SNodeOperations.isInstanceOf(attribute, SNodeOperations.asSConcept(attrProperty))) {
-        SProperty property = ((SProperty) BHReflection.invoke0(SNodeOperations.cast(attribute, SNodeOperations.asSConcept(attrProperty)), CONCEPTS.PropertyAttribute$Gb, SMethodTrimmedId.create("getProperty", CONCEPTS.PropertyAttribute$Gb, "1avfQ4BBzOo")));
+        SProperty property = ((SProperty) BHReflection.invoke0(SNodeOperations.cast(attribute, SNodeOperations.asSConcept(attrProperty)), CONCEPTS.PropertyAttribute$Gb, SMethodIdV2.create("getProperty", 1341860900488756504L, 0x553941aeb020c32eL)));
         if (!(newChild.getConcept().getProperties().contains(property))) {
           // no such property in new child : don't copy the attribute
           String m = "couldn't copy attribute %s for property '%s': no such property in concept %s";
@@ -477,7 +476,7 @@ public class SNodeOperations {
         }
       }
       if (SNodeOperations.isInstanceOf(attribute, SNodeOperations.asSConcept(attrLink))) {
-        SReferenceLink link = ((SReferenceLink) BHReflection.invoke0(SNodeOperations.cast(attribute, SNodeOperations.asSConcept(attrLink)), CONCEPTS.LinkAttribute$v_, SMethodTrimmedId.create("getLink", CONCEPTS.LinkAttribute$v_, "1avfQ4BEFo6")));
+        SReferenceLink link = ((SReferenceLink) BHReflection.invoke0(SNodeOperations.cast(attribute, SNodeOperations.asSConcept(attrLink)), CONCEPTS.LinkAttribute$v_, SMethodIdV2.create("getLink", 1341860900489573894L, 0x553941aeb020c32eL)));
         if (!(newChild.getConcept().getReferenceLinks().contains(link))) {
           // no such link in new child : don't copy the attribute
           String m = "couldn't copy attribute %s for link '%s': no such link in concept %s";
@@ -490,7 +489,7 @@ public class SNodeOperations {
   }
   public static SNode replaceWithAnother(SNode node, SNode anotherNode) {
     assert node != null : "can't replace node. node is NULL";
-    return ((SNode) SNodeUtil.replaceWithAnother(node, anotherNode));
+    return ((SNode) org.jetbrains.mps.openapi.model.SNodeUtil.replaceWithAnother(node, anotherNode));
   }
   public static SNode deleteNode(SNode node) {
     if (node != null) {
@@ -508,10 +507,23 @@ public class SNodeOperations {
    * 
    * @deprecated used in generator of deprecated concept only
    */
-  @Deprecated
-  @ToRemove(version = 3.5)
+  @Deprecated(since = "3.5", forRemoval = true)
   public static SNode getConceptDeclaration(SNode node) {
-    return (node == null ? null : node.getConcept().getDeclarationNode());
+    if (node == null) {
+      return null;
+    } else {
+      SNodeReference sourceNode = node.getConcept().getSourceNode();
+      if (sourceNode == null) {
+        return null;
+      } else {
+        // XXX to deal with conceptNode<> uses, have to fall back to MPSModuleRepository singleton
+        // pretty much as in node<> (#getNode(string,string). mbeddr extensively uses conceptNode e.g. 
+        // for IInlineFormat.calculateCategory
+        SRepository repo = (node.getModel() == null ? MPSModuleRepository.getInstance() : node.getModel().getRepository());
+        // I assume clients of this method expected node<ACD>, hence the cast.
+        return SNodeOperations.as(SPointerOperations.resolveNode(sourceNode, repo), CONCEPTS.AbstractConceptDeclaration$KA);
+      }
+    }
   }
   public static SConcept getConcept(SNode node) {
     return (node == null ? null : node.getConcept());
@@ -534,7 +546,7 @@ public class SNodeOperations {
     if (role == null) {
       return -1;
     }
-    return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(node.getParent(), role)).toListSequence().indexOf(node);
+    return ListSequence.fromList(Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(node.getParent(), role)).toList()).indexOf(node);
   }
 
   public static List<SNode> getAllAttributes(SNode node) {
@@ -590,8 +602,11 @@ public class SNodeOperations {
     }
     return concept;
   }
-  @Deprecated
-  @ToRemove(version = 3.4)
+  /**
+   * 
+   * @deprecated 
+   */
+  @Deprecated(since = "3.4", forRemoval = true)
   public static SNode asConcept(SNode node, SAbstractConcept castTo) {
     if (node == null) {
       return null;
@@ -636,7 +651,7 @@ public class SNodeOperations {
   }
   public static SContainmentLink getContainingLinkInChildrenAndChildAttributesCollection(SNode childNode) {
     if (childNode.isInstanceOfConcept(CONCEPTS.ChildAttribute$m8)) {
-      return ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(childNode, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzf")));
+      return ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(childNode, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodIdV2.create("getLink", 709746936026609871L, 0x553941aeb020c32eL)));
     } else {
       return getContainingLink(childNode);
     }
@@ -697,10 +712,37 @@ public class SNodeOperations {
     }
   }
 
+  public static String present(SNode node) {
+    // Important: we take SNode here, not node<> as there are issues with library classes and
+    //    uses of them from a language that have respective argument types already reduced.
+    //   But for implementation, we shall invoke BEHAVIOR getPresentation(), not the one
+    //   available from SNode API
+    // Indeed clients can invoke getPresentation() behavior directly, this RT methods just
+    // gives extra layer to control for node<>.presentation operation, in case we need one later.
+    return ((String) BHReflection.invoke0(((SNode) node), CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getPresentation", 1213877396640L, 0x553941aeb020c32eL)));
+  }
+
+  public static void set_uid(SNode node, Object value) {
+    if (node != null) {
+      node.putUserObject("mps.experimental.uid", value);
+    }
+  }
+
+  public static String get_uid(SNode node) {
+    if (node == null) {
+      return null;
+    } else {
+      Object uo = node.getUserObject("mps.experimental.uid");
+      return (uo instanceof String ? (String) uo : null);
+    }
+  }
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
     /*package*/ static final SConcept LinkAttribute$v_ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
     /*package*/ static final SConcept ChildAttribute$m8 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 
   private static final class LINKS {

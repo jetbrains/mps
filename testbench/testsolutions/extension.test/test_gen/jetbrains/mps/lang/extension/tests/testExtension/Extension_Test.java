@@ -4,7 +4,7 @@ package jetbrains.mps.lang.extension.tests.testExtension;
 
 import jetbrains.mps.lang.extension.tests.plugin.TestObject;
 import jetbrains.mps.MPSLaunch;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.smodel.structure.Extension;
 import jetbrains.mps.smodel.structure.ExtensionPoint;
 import org.junit.Assert;
@@ -13,8 +13,7 @@ import java.util.NoSuchElementException;
 import jetbrains.mps.lang.extension.tests.plugin.LazyTestObject;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.junit.After;
+import org.junit.jupiter.api.AfterEach;
 import com.intellij.openapi.application.ex.ApplicationManagerEx;
 import com.intellij.openapi.application.ApplicationAdapter;
 
@@ -51,14 +50,10 @@ public class Extension_Test {
   @MPSLaunch
   @Test
   public void test_extensionPointExpression() throws Exception {
-    String string = IterableUtils.join(Sequence.fromIterable(new ExtensionPoint<String>("jetbrains.mps.lang.extension.tests.multiExtensionPoint").getObjects()).sort(new ISelector<String, String>() {
-      public String select(String it) {
-        return it;
-      }
-    }, false), ", ");
+    String string = IterableUtils.join(Sequence.fromIterable(new ExtensionPoint<String>("jetbrains.mps.lang.extension.tests.multiExtensionPoint").getObjects()).sort((it) -> it, false), ", ");
     Assert.assertEquals("salam, dunya", string);
   }
-  @After
+  @AfterEach
   public void tearDown() {
     if (TEST_OBJECT != null) {
       Assert.assertFalse(TEST_OBJECT.isShutDown());

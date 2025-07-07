@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,15 +28,10 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.module.SDependency;
-import org.jetbrains.mps.openapi.module.SModule;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -62,49 +57,6 @@ public class MenuUtil {
     // children concepts could get created without the need to import their languages explicitly.
     rv.addAll(languageHierarchy.getAggregated());
     return rv;
-  }
-
-  public static Collection<SLanguage> getUsedAndDependentLanguages(SModel model) {
-    LanguageRegistry lr = LanguageRegistry.getInstance(model.getRepository());
-    final Collection<SLanguage> languageImports = new ModelDependencyResolver(lr, model.getRepository()).usedLanguages(model);
-    Collection<SLanguage> allLanguages = lr.getAllLanguages();
-
-    Set<SLanguage> deps = collectModuleDeps(languageImports, allLanguages);
-    languageImports.addAll(deps);
-
-    SLanguageHierarchy languageHierarchy = new SLanguageHierarchy(lr, languageImports);
-    Set<SLanguage> rv = languageHierarchy.getExtended();
-    rv.addAll(languageHierarchy.getAggregated());
-    return rv;
-  }
-
-  @NotNull
-  private static Set<SLanguage> collectModuleDeps(@NotNull Collection<SLanguage> usedLanguages, @NotNull Collection<SLanguage> allLanguages) {
-    Map<SModule, SLanguage> moduleLanguages = new HashMap<>(usedLanguages.size());
-    for (SLanguage language : allLanguages) {
-      moduleLanguages.put(language.getSourceModule(), language);
-    }
-
-    Set<SModule> dependencies = new HashSet<>();
-    for (SLanguage language : usedLanguages) {
-      collectDependencies(language.getSourceModule(), dependencies);
-    }
-    Set<SLanguage> deps = new HashSet<>();
-    for (SModule module : dependencies) {
-      SLanguage language = moduleLanguages.get(module);
-      if (language != null) {
-        deps.add(language);
-      }
-    }
-    return deps;
-  }
-
-  private static void collectDependencies(@NotNull SModule module, @NotNull Set<SModule> dependencies) {
-    if (dependencies.add(module)) {
-      for (SDependency dependency : module.getDeclaredDependencies()) {
-        collectDependencies(dependency.getTarget(), dependencies);
-      }
-    }
   }
 
   public static boolean isMenuApplicableToLocation(@NotNull TransformationMenuLookup menuLookup, @NotNull String menuLocation, @NotNull SNode node) {

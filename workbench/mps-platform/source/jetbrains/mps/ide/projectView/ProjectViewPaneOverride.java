@@ -23,6 +23,7 @@ import com.intellij.ide.projectView.impl.AbstractProjectViewPane;
  *
  * @author fyodor on 08.07.2015.
  */
+@Deprecated(forRemoval = true)
 public interface ProjectViewPaneOverride  {
 
   /**

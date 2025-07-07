@@ -23,8 +23,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class PatternReduction_MappingRule__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a12ebb4L, "jetbrains.mps.lang.generator.structure.PatternReduction_MappingRule");
 
-  public static final SMethod<SAbstractConcept> getConcept_id1$dcvTE6OGV = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl((Class<SAbstractConcept>) ((Class) Object.class))).name("getConcept").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1$dcvTE6OGV").build();
-  public static final SMethod<SNode> getTemplateType_id1$dcvTE731L = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTemplateType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1$dcvTE731L").build();
+  public static final SMethod<SAbstractConcept> getConcept_id1$dcvTE6OGV = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl((Class<SAbstractConcept>) ((Class) Object.class))).name("getConcept").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1805153994417064763L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
+  public static final SMethod<SNode> getTemplateType_id1$dcvTE731L = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTemplateType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1805153994417123441L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getConcept_id1$dcvTE6OGV, getTemplateType_id1$dcvTE731L);
 

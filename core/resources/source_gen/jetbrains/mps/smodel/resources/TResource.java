@@ -12,7 +12,7 @@ import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.make.resources.IPropertiesIO;
 import jetbrains.mps.project.AbstractModule;
 
-@GeneratedClass(node = "r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)/2257725414731981663", model = "r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)")
+@GeneratedClass(nodeId = "2257725414731981663", model = "r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)")
 public class TResource extends DResource implements Tuples._3<Iterable<IDelta>, SModule, SModel>, ITResource, IResourceWithProperties {
   private final Tuples._2<SModule, SModel> tuple;
 

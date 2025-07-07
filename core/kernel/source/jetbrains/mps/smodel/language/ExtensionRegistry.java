@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,14 +17,13 @@ package jetbrains.mps.smodel.language;
 
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.classloading.DeployListener;
+import jetbrains.mps.classloading.MPSModuleClassLoader;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
-import jetbrains.mps.project.Solution;
-import jetbrains.mps.smodel.Language;
+import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.smodel.structure.ExtensionDescriptor;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -39,7 +38,7 @@ import java.util.Set;
  * Registry of extensions populated by classes loaded from compiled and deployed modules
  */
 public class ExtensionRegistry extends BaseExtensionRegistry implements CoreComponent {
-  private static final Logger LOG = LogManager.getLogger(ExtensionRegistry.class);
+  private static final Logger LOG = Logger.getLogger(ExtensionRegistry.class);
 
   private static ExtensionRegistry INSTANCE;
 
@@ -48,12 +47,12 @@ public class ExtensionRegistry extends BaseExtensionRegistry implements CoreComp
   private final DeployListener myClassesListener = new DeployListener() {
 
     @Override
-    public void onUnloaded(Set<ReloadableModule> unloadedModules, @NotNull ProgressMonitor monitor) {
+    public void onUnloaded(@NotNull Set<ReloadableModule> unloadedModules, @NotNull ProgressMonitor monitor) {
       unloadExtensionDescriptors(unloadedModules, monitor);
     }
 
     @Override
-    public void onLoaded(Set<ReloadableModule> loadedModules, @NotNull ProgressMonitor monitor) {
+    public void onLoaded(@NotNull Set<ReloadableModule> loadedModules, @NotNull ProgressMonitor monitor) {
       loadExtensionDescriptors(loadedModules, monitor);
     }
   };
@@ -111,49 +110,29 @@ public class ExtensionRegistry extends BaseExtensionRegistry implements CoreComp
     monitor.done();
   }
 
-  private ExtensionDescriptor findExtensionDescriptor(SModule mod) {
-    if (mod instanceof Language) {
-      return findLanguageExtensionDescriptor((Language) mod);
-    } else if (mod instanceof Solution) {
-      switch (((Solution) mod).getKind()) {
-        case PLUGIN_CORE:
-        case PLUGIN_EDITOR:
-        case PLUGIN_OTHER:
-          return findPluginSolutionExtensionDescriptor((Solution) mod);
-
-        default:
-          break;
+  private static ExtensionDescriptor findExtensionDescriptor(ReloadableModule mod) {
+    if (SModuleOperations.canSupplyExtensionsForMPS(mod.getModule())) {
+      // TODO: more flexible way of loading extensions from a module
+      String namespace = mod.getModuleName();
+      // FIXME quick-n-dirty hack for MPS-38457, until I come up with a mechanism to configure location where to take ExtensionDescriptor from
+      if ("jetbrains.mps.ide.refactoring.platform".equals(namespace)) {
+        namespace = "jetbrains.mps.refactoring.participant";
       }
-    }
-    return null;
-  }
-
-  private ExtensionDescriptor findPluginSolutionExtensionDescriptor(Solution solution) {
-    // TODO: more flexible way of loading extensions from plugin solution
-    String namespace = solution.getModuleName();
-    String className = namespace + ".plugin.ExtensionDescriptor";
-    Object compiled = getObjectByClassName(className, solution);
-    if (compiled instanceof ExtensionDescriptor) {
-      return (ExtensionDescriptor) compiled;
-    }
-    return null;
-  }
-
-  private ExtensionDescriptor findLanguageExtensionDescriptor(Language lang) {
-    String namespace = lang.getModuleName();
-    String className = namespace + ".plugin.ExtensionDescriptor";
-    Object compiled = getObjectByClassName(className, lang);
-    if (compiled instanceof ExtensionDescriptor) {
-      return (ExtensionDescriptor) compiled;
+      String className = namespace + ".plugin.ExtensionDescriptor";
+      Object compiled = getObjectByClassName(className, mod.getClassLoader());
+      if (compiled instanceof ExtensionDescriptor) {
+        return (ExtensionDescriptor) compiled;
+      }
+      return null;
     }
     return null;
   }
 
   @Nullable
-  private static Object getObjectByClassName(String className, ReloadableModule module) {
+  private static Object getObjectByClassName(String className, MPSModuleClassLoader moduleCL) {
     try {
-      Class clazz = module.getOwnClass(className);
-      return clazz.newInstance();
+      Class<?> clazz = moduleCL.loadOwnClass(className);
+      return clazz.getDeclaredConstructor().newInstance();
     } catch (Throwable e) {
       LOG.trace("error loading class\"" + className + "\"", e);
     }

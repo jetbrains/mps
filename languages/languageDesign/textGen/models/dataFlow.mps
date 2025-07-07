@@ -2,6 +2,7 @@
 <model ref="r:812dd537-4bc6-4b23-8ff0-eed686398e8b(jetbrains.mps.lang.textGen.dataFlow)">
   <persistence version="9" />
   <languages>
+    <use id="7fa12e9c-b949-4976-b4fa-19accbc320b4" name="jetbrains.mps.lang.dataFlow" version="1" />
     <devkit ref="00000000-0000-4000-0000-443879f56b80(jetbrains.mps.devkit.aspect.dataflow)" />
   </languages>
   <imports>
@@ -69,7 +70,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -402,6 +403,22 @@
             <property role="TrG5h" value="node" />
             <node concept="3Tqbb2" id="i0vLbiy" role="1tU5fm">
               <ref role="ehGHo" to="2omo:hXbweBj" resolve="OperationDeclaration" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="3_zdsH" id="4URE8v98Lq2">
+    <property role="3GE5qa" value="operation" />
+    <ref role="3_znuS" to="2omo:4URE8v98gJD" resolve="BinaryWriteOperation" />
+    <node concept="3__wT9" id="4URE8v98Lq3" role="3_A6iZ">
+      <node concept="3clFbS" id="4URE8v98Lq4" role="2VODD2">
+        <node concept="3AgYrR" id="4URE8v98Ls9" role="3cqZAp">
+          <node concept="2OqwBi" id="4URE8v98LBX" role="3Ah4Yx">
+            <node concept="3__QtB" id="4URE8v98Lts" role="2Oq$k0" />
+            <node concept="3TrEf2" id="4URE8v98LVz" role="2OqNvi">
+              <ref role="3Tt5mk" to="2omo:4URE8v98h6s" resolve="data" />
             </node>
           </node>
         </node>

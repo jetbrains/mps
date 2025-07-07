@@ -14,12 +14,15 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.generator.template.MapSrcMacroContext;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.text.behavior.Word__BehaviorDescriptor;
+import jetbrains.mps.lang.text.behavior.IHoldLines__BehaviorDescriptor;
 import jetbrains.mps.generator.template.MappingScriptContext;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -27,7 +30,6 @@ import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import org.jetbrains.mps.openapi.language.SProperty;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -107,11 +109,7 @@ public class QueriesGenerated {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.definitions$6Wm1);
   }
   public static Iterable<SNode> sourceNodesQuery_1_2(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.body$KJNw), LINKS.commands$z6Pr)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.Require$2c);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.body$KJNw), LINKS.commands$z6Pr)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.Require$2c));
   }
   public static Iterable<SNode> sourceNodesQuery_1_3(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(_context.getNode(), CONCEPTS.Require$2c), LINKS.library$JYHK), LINKS.definitions$K53V);
@@ -119,81 +117,53 @@ public class QueriesGenerated {
   public static Iterable<SNode> sourceNodesQuery_18_0(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.commands$z6Pr);
   }
+  public static SNode mapSrcMacro_map_22_0(final MapSrcMacroContext _context) {
+    SNode comment = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment"));
+    SNode line = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
+    SNode w = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word"));
+    SPropertyOperations.assign(w, PROPS.value$zQr_, SPropertyOperations.getString(_context.getNode(), PROPS.text$nAoW));
+    ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.elements$_j45)).addElement(w);
+    Word__BehaviorDescriptor.normalize_id3yV2h2COV$s.invoke(w);
+    IHoldLines__BehaviorDescriptor.addLine_id7q4YwcerggR.invoke(comment, line);
+    return comment;
+  }
   public static void mappingScript_CodeBlock_14(final MappingScriptContext _context) {
     List<SNode> roots = SModelOperations.roots(_context.getModel(), CONCEPTS.Script$FS);
-    ListSequence.fromList(roots).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.body$KJNw), LINKS.commands$z6Pr)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(it, CONCEPTS.RoutineDefinition$Gg);
-          }
-        });
-      }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNode script = SNodeOperations.getNodeAncestor(it, CONCEPTS.Script$FS, false, false);
-        SNodeOperations.deleteNode(it);
-        ListSequence.fromList(SLinkOperations.getChildren(script, LINKS.definitions$6Wm1)).addElement(SNodeOperations.cast(it, CONCEPTS.RoutineDefinition$Gg));
-      }
+    ListSequence.fromList(roots).translate((it) -> {
+      return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.body$KJNw), LINKS.commands$z6Pr)).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+        public Boolean invoke(SNode it) {
+          return SNodeOperations.isInstanceOf(it, CONCEPTS.RoutineDefinition$Gg);
+        }
+      });
+    }).visitAll((it) -> {
+      SNode script = SNodeOperations.getNodeAncestor(it, CONCEPTS.Script$FS, false, false);
+      SNodeOperations.deleteNode(it);
+      ListSequence.fromList(SLinkOperations.getChildren(script, LINKS.definitions$6Wm1)).addElement(SNodeOperations.cast(it, CONCEPTS.RoutineDefinition$Gg));
     });
   }
   public static void mappingScript_CodeBlock_17(final MappingScriptContext _context) {
-    ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.EmptyLine$iH)).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNodeOperations.deleteNode(it);
-      }
-    });
+    ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.EmptyLine$iH)).visitAll((it) -> SNodeOperations.deleteNode(it));
   }
   public static void mappingScript_CodeBlock_24(final MappingScriptContext _context) {
-    ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.Script$FS)).visitAll(new IVisitor<SNode>() {
-      public void visit(final SNode script) {
-        final Iterable<SNode> requireCommands = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(script, LINKS.body$KJNw), LINKS.commands$z6Pr)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(it, CONCEPTS.Require$2c);
-          }
+    ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.Script$FS)).visitAll((final SNode script) -> {
+      final Iterable<SNode> requireCommands = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(script, LINKS.body$KJNw), LINKS.commands$z6Pr)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.Require$2c));
+
+      Sequence.fromIterable(requireCommands).visitAll((final SNode requireCommand) -> {
+        Iterable<SNode> definitions = SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(requireCommand, CONCEPTS.Require$2c), LINKS.library$JYHK), LINKS.definitions$K53V);
+
+        final Map<SNode, SNode> newToOld = MapSequence.fromMap(new HashMap<SNode, SNode>());
+
+        Sequence.fromIterable(definitions).visitAll((final SNode definition) -> {
+          final SNode copy = SNodeOperations.copyNode(definition);
+          MapSequence.fromMap(newToOld).put(copy, definition);
+          SPropertyOperations.assign(copy, PROPS.name$MnvL, SPropertyOperations.getString(definition, PROPS.name$MnvL) + "_from_library_" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(requireCommand, CONCEPTS.Require$2c), LINKS.library$JYHK), PROPS.name$MnvL));
+          ListSequence.fromList(SLinkOperations.getChildren(script, LINKS.definitions$6Wm1)).addElement(copy);
+          ListSequence.fromList(SNodeOperations.getNodeDescendants(script, CONCEPTS.RoutineCall$mS, false, new SAbstractConcept[]{})).where((it) -> SLinkOperations.getTarget(it, LINKS.definition$J8D4) == definition).visitAll((it) -> SLinkOperations.setTarget(it, LINKS.definition$J8D4, copy));
         });
+        SNodeOperations.deleteNode(requireCommand);
 
-        Sequence.fromIterable(requireCommands).visitAll(new IVisitor<SNode>() {
-          public void visit(final SNode requireCommand) {
-            Iterable<SNode> definitions = SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(requireCommand, CONCEPTS.Require$2c), LINKS.library$JYHK), LINKS.definitions$K53V);
-
-            final Map<SNode, SNode> newToOld = MapSequence.fromMap(new HashMap<SNode, SNode>());
-
-            Sequence.fromIterable(definitions).visitAll(new IVisitor<SNode>() {
-              public void visit(final SNode definition) {
-                final SNode copy = SNodeOperations.copyNode(definition);
-                MapSequence.fromMap(newToOld).put(copy, definition);
-                SPropertyOperations.assign(copy, PROPS.name$MnvL, SPropertyOperations.getString(definition, PROPS.name$MnvL) + "_from_library_" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(requireCommand, CONCEPTS.Require$2c), LINKS.library$JYHK), PROPS.name$MnvL));
-                ListSequence.fromList(SLinkOperations.getChildren(script, LINKS.definitions$6Wm1)).addElement(copy);
-                ListSequence.fromList(SNodeOperations.getNodeDescendants(script, CONCEPTS.RoutineCall$mS, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-                  public boolean accept(SNode it) {
-                    return SLinkOperations.getTarget(it, LINKS.definition$J8D4) == definition;
-                  }
-                }).visitAll(new IVisitor<SNode>() {
-                  public void visit(SNode it) {
-                    SLinkOperations.setTarget(it, LINKS.definition$J8D4, copy);
-                  }
-                });
-              }
-            });
-            SNodeOperations.deleteNode(requireCommand);
-
-            MapSequence.fromMap(newToOld).visitAll(new IVisitor<IMapping<SNode, SNode>>() {
-              public void visit(final IMapping<SNode, SNode> entry) {
-                ListSequence.fromList(SNodeOperations.getNodeDescendants(script, CONCEPTS.RoutineCall$mS, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-                  public boolean accept(SNode it) {
-                    return SLinkOperations.getTarget(it, LINKS.definition$J8D4) == entry.value();
-                  }
-                }).visitAll(new IVisitor<SNode>() {
-                  public void visit(SNode it) {
-                    SLinkOperations.setTarget(it, LINKS.definition$J8D4, entry.key());
-                  }
-                });
-              }
-            });
-          }
-        });
-      }
+        MapSequence.fromMap(newToOld).visitAll((final IMapping<SNode, SNode> entry) -> ListSequence.fromList(SNodeOperations.getNodeDescendants(script, CONCEPTS.RoutineCall$mS, false, new SAbstractConcept[]{})).where((it) -> SLinkOperations.getTarget(it, LINKS.definition$J8D4) == entry.value()).visitAll((it) -> SLinkOperations.setTarget(it, LINKS.definition$J8D4, entry.key())));
+      });
     });
   }
 
@@ -202,6 +172,8 @@ public class QueriesGenerated {
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
     /*package*/ static final SProperty count$Ir4s = MetaAdapterFactory.getProperty(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecd14cL, 0x2de971c785ecd14eL, "count");
     /*package*/ static final SProperty message$SsNr = MetaAdapterFactory.getProperty(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2c8eb033a8375aeeL, 0x2c8eb033a8375aefL, "message");
+    /*package*/ static final SProperty value$zQr_ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
+    /*package*/ static final SProperty text$nAoW = MetaAdapterFactory.getProperty(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x58e59ea713fa2b43L, 0x58e59ea713fa2b45L, "text");
   }
 
   private static final class CONCEPTS {
@@ -229,5 +201,6 @@ public class QueriesGenerated {
     /*package*/ static final SContainmentLink definitions$6Wm1 = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc45746L, 0x2de971c785ed6f78L, "definitions");
     /*package*/ static final SReferenceLink library$JYHK = MetaAdapterFactory.getReferenceLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f1a1049L, 0x3cfcda239f1a104aL, "library");
     /*package*/ static final SContainmentLink definitions$K53V = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f19d316L, 0x3cfcda239f19d317L, "definitions");
+    /*package*/ static final SContainmentLink elements$_j45 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
 }

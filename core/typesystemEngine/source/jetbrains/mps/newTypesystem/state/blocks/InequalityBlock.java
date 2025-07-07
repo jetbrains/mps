@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,29 +19,29 @@ import gnu.trove.THashSet;
 import jetbrains.mps.lang.typesystem.runtime.AbstractInequationReplacementRule_Runtime;
 import jetbrains.mps.lang.typesystem.runtime.InequationReplacementRule_Runtime;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicable2Status;
+import jetbrains.mps.languageScope.LanguageScopeExecutor;
 import jetbrains.mps.newTypesystem.SubTypingManagerNew;
 import jetbrains.mps.newTypesystem.SubtypingResolver;
 import jetbrains.mps.newTypesystem.TypesUtil;
 import jetbrains.mps.newTypesystem.operation.AddRemarkOperation;
 import jetbrains.mps.newTypesystem.operation.CheckSubTypeOperation;
 import jetbrains.mps.newTypesystem.operation.ProcessReplacementRuleOperation;
-import jetbrains.mps.languageScope.LanguageScopeExecutor;
 import jetbrains.mps.newTypesystem.state.Equations;
 import jetbrains.mps.newTypesystem.state.State;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.typesystem.inference.EquationInfo;
-import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import jetbrains.mps.typesystemEngine.util.LatticeUtil;
 import jetbrains.mps.util.CollectionUtil;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.Pair;
+import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
 public class InequalityBlock extends RelationBlock {
-  private boolean lessThan;
+  private final boolean lessThan;
 
   public SNode getOutput() {
     if (lessThan) {
@@ -82,12 +82,13 @@ public class InequalityBlock extends RelationBlock {
   }
 
   private boolean processReplacementRules(final SNode subType, final SNode superType) {
-    final TypeChecker typeChecker = TypeChecker.getInstance();
+    final TypeCheckerHelper typeCheckerHelper = getState().getTypeCheckingContext().getTypeCheckerHelper();
 
     List<Pair<InequationReplacementRule_Runtime, IsApplicable2Status>> replacementRules =
       LanguageScopeExecutor.execWithMultiLanguageScope(
           SubTypingManagerNew.collectLanguagesRecursively(subType, superType),
-          () -> typeChecker.getRulesManager().getReplacementRules(subType, superType));
+          () -> typeCheckerHelper.getRulesManager().getReplacementRules(subType, superType),
+          typeCheckerHelper.getScopeFactory());
 
     for (jetbrains.mps.util.Pair<InequationReplacementRule_Runtime, IsApplicable2Status> inequalityReplacementRule : replacementRules) {
       final InequationReplacementRule_Runtime rule = inequalityReplacementRule.o1;
@@ -115,7 +116,7 @@ public class InequalityBlock extends RelationBlock {
     if (processReplacementRules(subType, superType)) {
       return;
     }
-    final SubTypingManagerNew subTyping = (SubTypingManagerNew) TypeChecker.getInstance().getSubtypingManager();
+    final SubTypingManagerNew subTyping = (SubTypingManagerNew) getState().getTypeCheckingContext().getTypeCheckerHelper().getSubtypingManager();
     getState().executeOperation(new CheckSubTypeOperation(subType, superType, () -> {
       if (!calcIsSubtype(subTyping, subType, superType)) {
         getState().getNodeMaps().reportSubTypeError(subType, superType, myEquationInfo, myRelationKind.isWeak());
@@ -163,9 +164,9 @@ public class InequalityBlock extends RelationBlock {
 
   private String getPresentationInternal(SNode left, SNode right) {
     if (lessThan) {
-      return left + myRelationKind.getRelationSign() + right;
+      return SNodeUtil.getPresentation(left) + myRelationKind.getRelationSign() + SNodeUtil.getPresentation(right);
     } else {
-      return right + myRelationKind.getReversedRelationSign() + left;
+      return SNodeUtil.getPresentation(right) + myRelationKind.getReversedRelationSign() + SNodeUtil.getPresentation(left);
     }
   }
 

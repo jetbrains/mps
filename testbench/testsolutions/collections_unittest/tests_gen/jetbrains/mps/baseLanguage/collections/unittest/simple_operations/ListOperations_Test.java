@@ -26,7 +26,7 @@ public class ListOperations_Test extends TestCase {
   }
   public void test_3() {
     List<Integer> li = Arrays.asList(1, 2, 3, 4, 5);
-    List<Integer> lo = ListSequence.fromList(li).concat(ListSequence.fromList(li)).distinct().toListSequence();
+    List<Integer> lo = ListSequence.fromList(li).concat(ListSequence.fromList(li)).distinct().toList();
     org.junit.Assert.assertEquals(li, lo);
   }
 }

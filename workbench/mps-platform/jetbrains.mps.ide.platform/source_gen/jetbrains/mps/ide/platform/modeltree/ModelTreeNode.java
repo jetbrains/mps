@@ -7,7 +7,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import jetbrains.mps.references.Reference;
 import javax.swing.Icon;
 
-@GeneratedClass(node = "r:e180cc3d-e9f2-4c0c-91b4-6730d80d9b23(jetbrains.mps.ide.platform.modeltree)/4288082098349208038", model = "r:e180cc3d-e9f2-4c0c-91b4-6730d80d9b23(jetbrains.mps.ide.platform.modeltree)")
+@GeneratedClass(nodeId = "4288082098349208038", model = "r:e180cc3d-e9f2-4c0c-91b4-6730d80d9b23(jetbrains.mps.ide.platform.modeltree)")
 public class ModelTreeNode extends DefaultMutableTreeNode {
   private String myText;
   public String getText() {

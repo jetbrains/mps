@@ -27,7 +27,7 @@ import javax.swing.ListSelectionModel;
 import java.util.function.Consumer;
 import jetbrains.mps.classloading.ModuleClassLoader;
 
-@GeneratedClass(node = "r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)/4819045807160363825", model = "r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)")
+@GeneratedClass(nodeId = "4819045807160363825", model = "r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)")
 public class GoToContextMenuHelperBase<T extends Navigatable> {
   protected final Project myProject;
   protected final CaptionFunction myCaptionFun;
@@ -107,7 +107,7 @@ public class GoToContextMenuHelperBase<T extends Navigatable> {
   }
 
   private static void checkClassLoader() {
-    assert !((GoToContextMenuHelperBase.class.getClassLoader() instanceof ModuleClassLoader)) : "if this class is loaded by a reloadable classloader, this will cause memleaks. See MPS-13481";
+    assert !(GoToContextMenuHelperBase.class.getClassLoader() instanceof ModuleClassLoader) : "if this class is loaded by a reloadable classloader, this will cause memleaks. See MPS-13481";
   }
 
 }

@@ -30,6 +30,7 @@ import java.util.Set;
  * Update for SModelTreeNodes based on SModelEvents.
  * Extracted from inner class of SModelNodeListeners which now deals with highlighter aspects only.
  */
+@Deprecated(forRemoval = true)
 class ModelStructureUpdate extends SNodeTreeUpdater<SModelTreeNode> {
   public ModelStructureUpdate(Project project, SModelTreeNode treeNode) {
     super(project, treeNode);
@@ -70,7 +71,7 @@ class ModelStructureUpdate extends SNodeTreeUpdater<SModelTreeNode> {
 
   @Override
   public void addAndRemoveRoots(Set<SNode> removedRoots, Set<SNode> addedRoots) {
-    DefaultTreeModel treeModel = getTree().getModel();
+    DefaultTreeModel treeModel = getTree().getDFTreeModel();
     for (SNode root : removedRoots) {
       SNodeTreeNode node = findRootSNodeTreeNode(root);
       if (node == null) {
@@ -89,7 +90,7 @@ class ModelStructureUpdate extends SNodeTreeUpdater<SModelTreeNode> {
 
   @Override
   public void updateNodesWithChangedPackages(Set<SNode> nodesWithChangedPackages) {
-    DefaultTreeModel treeModel = getTree().getModel();
+    DefaultTreeModel treeModel = getTree().getDFTreeModel();
 
     for (SNode node : nodesWithChangedPackages) {
       SNodeTreeNode treeNode = findRootSNodeTreeNode(node);

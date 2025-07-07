@@ -16,20 +16,23 @@
 package jetbrains.mps.typechecking.backend;
 
 import jetbrains.mps.typechecking.TypecheckingQueries;
-import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.typechecking.TypecheckingSession.Flags;
 import jetbrains.mps.typechecking.TypecheckingSession.*;
+import jetbrains.mps.typechecking.backend.TypecheckingProvider.AuxDataContainer;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
+
+import java.util.Map;
 
 /**
  * @author Fedor Isakov
  */
-public class SharedSessionTypecheckingController extends TypecheckingController {
+public class SharedSessionTypecheckingController extends TypecheckingController implements ParametersDiscoverable {
 
   private TypecheckingSessionImpl mySharedSession;
-  private final TypecheckingController myDelegate;
+  private TypecheckingController myDelegate;
 
   /**
    * Delegate controller is the bottom-most controller from the controller stack of TypecheckingFacade for this thread.
@@ -47,10 +50,19 @@ public class SharedSessionTypecheckingController extends TypecheckingController 
   @Override
   public void dispose() {
     if (mySharedSession != null) {
-      mySharedSession.decUsages();
+      // we can dispose the borrowed session if it has been orphaned
+      if (mySharedSession.decUsages() <= 0) {
+        mySharedSession.disposeIfOrphaned();
+      }
       this.mySharedSession = null;
     }
     // not disposing the delegate: TypecheckingFacade is responsible for it
+    this.myDelegate = null;
+  }
+
+  @Override
+  public Map<String, ?> discoverParameters(SNode anchor) {
+    return mySharedSession.getController().discoverParameters(anchor);
   }
 
   @NotNull
@@ -61,15 +73,34 @@ public class SharedSessionTypecheckingController extends TypecheckingController 
 
   @NotNull
   @Override
-  protected TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept) {
+  protected TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept, Flags flags) {
     SNode containingRoot = src.getContainingRoot();
     if (mySharedSession.flags().getRoot() == containingRoot) {
       return mySharedSession.getQueries(src, trg, trgConcept);
-      
+
     } else {
-      return myDelegate.getQueries(src, trg, trgConcept);
+      if (flags.getParamsMap() == null) {
+        flags = flags.withParameters(mySharedSession.flags().getParamsMap());
+      }
+      return myDelegate.getQueries(src, trg, trgConcept, flags);
     }
   }
 
+  @NotNull
+  @Override
+  protected TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept) {
+    return getQueries(src, trg, trgConcept, mySharedSession.flags());
+  }
+
+  @Nullable
+  @Override
+  protected <C> C getData(Class<? extends C> dataClass) {
+    return mySharedSession.getData(dataClass);
+  }
+
+  @Override
+  protected AuxDataContainer getDataContainer(TypecheckingProvider<?> provider) {
+    throw new UnsupportedOperationException(); // must never be called
+  }
 }
 

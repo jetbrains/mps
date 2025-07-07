@@ -7,10 +7,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
@@ -23,7 +21,7 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -46,35 +44,19 @@ public class ReplaceSingleLineCommentsWithGenericComments extends MigrationScrip
   }
   public void doExecute(final SModule m) {
     Iterable<SModel> models = ((Iterable<SModel>) m.getModels());
-    Sequence.fromIterable(models).visitAll(new IVisitor<SModel>() {
-      public void visit(SModel model) {
+    Sequence.fromIterable(models).visitAll((model) -> {
 
-        // Remove meaningless empty text comment parts
-        ListSequence.fromList(SModelOperations.nodes(model, CONCEPTS.TextCommentPart$LX)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.SingleLineComment$Kw) && isEmptyString(trim_o7ozeo_a0a0a0a0a0a0a0c0a0a0a0b0e(SPropertyOperations.getString(it, PROPS.text$ag2i))) && ListSequence.fromList(SNodeOperations.getAllSiblings(it, false)).isNotEmpty();
-          }
-        }).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            SNodeOperations.deleteNode(it);
-          }
-        });
+      // Remove meaningless empty text comment parts
+      ListSequence.fromList(SModelOperations.nodes(model, CONCEPTS.TextCommentPart$LX)).where((it) -> SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.SingleLineComment$Kw) && isEmptyString(trim_o7ozeo_a0a0a0a0a0a2a0a0b0e(SPropertyOperations.getString(it, PROPS.text$ag2i))) && ListSequence.fromList(SNodeOperations.getAllSiblings(it, false)).isNotEmpty()).visitAll((it) -> SNodeOperations.deleteNode(it));
 
-        final Wrappers._boolean moduleModified = new Wrappers._boolean(false);
-        ListSequence.fromList(SModelOperations.nodes(model, CONCEPTS.SingleLineComment$Kw)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.commentPart$Ib1g)).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.commentPart$Ib1g)).first(), CONCEPTS.StatementCommentPart$$y);
-          }
-        }).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode oldComment) {
-            SNode stmt = SNodeOperations.replaceWithAnother(oldComment, SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(oldComment, LINKS.commentPart$Ib1g)).first(), CONCEPTS.StatementCommentPart$$y), LINKS.commentedStatement$H9kM));
-            CommentUtil.commentOut(stmt);
-            moduleModified.value = true;
-          }
-        });
-        if (moduleModified.value) {
-          ModuleDependencyUtils.addDependencyOnCoreIfMissing(model);
-        }
+      final Wrappers._boolean moduleModified = new Wrappers._boolean(false);
+      ListSequence.fromList(SModelOperations.nodes(model, CONCEPTS.SingleLineComment$Kw)).where((it) -> ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.commentPart$Ib1g)).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.commentPart$Ib1g)).first(), CONCEPTS.StatementCommentPart$$y)).visitAll((oldComment) -> {
+        SNode stmt = SNodeOperations.replaceWithAnother(oldComment, SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(oldComment, LINKS.commentPart$Ib1g)).first(), CONCEPTS.StatementCommentPart$$y), LINKS.commentedStatement$H9kM));
+        CommentUtil.commentOut(stmt);
+        moduleModified.value = true;
+      });
+      if (moduleModified.value) {
+        ModuleDependencyUtils.addDependencyOnCoreIfMissing(model);
       }
     });
   }
@@ -83,26 +65,22 @@ public class ReplaceSingleLineCommentsWithGenericComments extends MigrationScrip
     {
       SearchScope scope_o7ozeo_a0f = CommandUtil.createScope(m);
       final SearchScope scope_o7ozeo_a0f_0 = new EditableFilteringScope(scope_o7ozeo_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_o7ozeo_a0f_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.StatementCommentPart$$y, false)).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
+      QueryExecutionContext context = () -> scope_o7ozeo_a0f_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.StatementCommentPart$$y, false)).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+        public Problem invoke(SNode it) {
           return ((Problem) new DeprecatedConceptNotMigratedProblem(it));
         }
       });
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 1);
   }
 
   private static boolean isEmptyString(String str) {
     return str == null || str.isEmpty();
   }
-  public static String trim_o7ozeo_a0a0a0a0a0a0a0c0a0a0a0b0e(String str) {
+  public static String trim_o7ozeo_a0a0a0a0a0a2a0a0b0e(String str) {
     return (str == null ? null : str.trim());
   }
 

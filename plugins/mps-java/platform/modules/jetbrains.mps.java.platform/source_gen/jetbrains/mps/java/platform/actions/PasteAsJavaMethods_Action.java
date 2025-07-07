@@ -5,7 +5,7 @@ package jetbrains.mps.java.platform.actions;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
-import jetbrains.mps.ide.editor.EditorActionAccess;
+import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.editor.runtime.cells.ReadOnlyUtil;
@@ -18,18 +18,23 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
+import com.intellij.openapi.project.Project;
+import jetbrains.mps.ide.project.ProjectHelper;
+import com.intellij.openapi.progress.ProgressManager;
+import jetbrains.mps.progress.ProgressMonitorAdapter;
+import jetbrains.mps.ide.IdeBundle;
 import jetbrains.mps.java.core.newparser.FeatureKind;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)/2872212824181502669", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
+@GeneratedClass(nodeId = "2872212824181502669", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
 public class PasteAsJavaMethods_Action extends BaseAction {
   private static final Icon ICON = null;
 
   public PasteAsJavaMethods_Action() {
     super("Paste as Java Class Content", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setActionAccess(EditorActionAccess.UNDO_EDITOR);
+    this.setActionAccess(ActionAccess.NONE);
   }
   @Override
   public boolean isDumbAware() {
@@ -40,7 +45,7 @@ public class PasteAsJavaMethods_Action extends BaseAction {
     if (ReadOnlyUtil.isSelectionReadOnlyInEditor(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")))) {
       return false;
     }
-    return (SNodeOperations.getNodeAncestor(((SNode) ((SNode) MapSequence.fromMap(_params).get("anchorNode"))), CONCEPTS.Classifier$Ix, true, false) != null) && JavaPaster.areDataAvailableInClipboard();
+    return (SNodeOperations.getNodeAncestor(((SNode) ((SNode) MapSequence.fromMap(_params).get("anchorNode"))), CONCEPTS.Classifier$Ix, true, false) != null) && JavaPaster.isStringOnlyDataAvailableInClipboard();
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -79,7 +84,17 @@ public class PasteAsJavaMethods_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    new JavaPaster().pasteJava(((SNode) MapSequence.fromMap(_params).get("anchorNode")), FeatureKind.CLASS_CONTENT, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
+    Project ideaProject = ProjectHelper.toIdeaProject(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
+    ProgressManager pm = ProgressManager.getInstance();
+    pm.runProcessWithProgressSynchronously(() -> {
+      ProgressMonitorAdapter monitor = new ProgressMonitorAdapter(ProgressManager.getInstance().getProgressIndicator());
+      monitor.start(IdeBundle.message("actions.pasteAsJavaMethods.progressTitle"), 5);
+      try {
+        new JavaPaster().pasteJava(((SNode) MapSequence.fromMap(_params).get("anchorNode")), FeatureKind.CLASS_CONTENT, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), monitor, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository());
+      } finally {
+        monitor.done();
+      }
+    }, IdeBundle.message("actions.pasteAsJavaMethods.progressTitle"), false, ideaProject);
   }
 
   private static final class CONCEPTS {

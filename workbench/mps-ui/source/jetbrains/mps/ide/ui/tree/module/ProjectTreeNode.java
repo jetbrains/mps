@@ -16,6 +16,8 @@
 package jetbrains.mps.ide.ui.tree.module;
 
 import com.intellij.configurationStore.SettingsSavingComponentJavaAdapter;
+import com.intellij.icons.AllIcons;
+import com.intellij.icons.AllIcons.Nodes;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.Service;
 import com.intellij.openapi.project.ProjectUtil;
@@ -36,7 +38,7 @@ public class ProjectTreeNode extends TextTreeNode implements TreeElement {
   public ProjectTreeNode(Project project) {
     super(project.getName());
     myProject = project;
-    setIcon(IdeIcons.PROJECT_ICON);
+    setIcon(Nodes.HomeFolder);
   }
 
   @Override

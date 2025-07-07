@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,8 @@ import com.intellij.openapi.util.Disposer;
 import jetbrains.mps.ide.ui.dialogs.properties.roots.editors.FileBasedModelRootEditor;
 import jetbrains.mps.ide.ui.dialogs.properties.roots.editors.FileBasedModelRootEntry;
 import jetbrains.mps.persistence.java.library.JavaClassStubsModelRoot;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.util.IStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.ui.persistence.ModelRootEntry;
@@ -36,8 +38,8 @@ public final class JavaClassStubsModelRootEntry implements ModelRootEntry<JavaCl
   @NotNull private final FileBasedModelRootEntry myModelRootData;
   @NotNull private final JavaClassStubsModelRoot myRoot;
 
-  public JavaClassStubsModelRootEntry(@NotNull JavaClassStubsModelRoot root) {
-    myModelRootData = new FileBasedModelRootEntry(root);
+  public JavaClassStubsModelRootEntry(MPSProject mpsProject, @NotNull JavaClassStubsModelRoot root) {
+    myModelRootData = new FileBasedModelRootEntry(mpsProject, root);
     myRoot = root;
   }
 
@@ -95,5 +97,11 @@ public final class JavaClassStubsModelRootEntry implements ModelRootEntry<JavaCl
   @Override
   public void resetForegroundColor() {
     myModelRootData.resetForegroundColor();
+  }
+
+  @NotNull
+  @Override
+  public IStatus conflictsWith(@NotNull ModelRootEntry<JavaClassStubsModelRoot> other) {
+    return myModelRootData.conflictsWith(((JavaClassStubsModelRootEntry) other).myModelRootData);
   }
 }

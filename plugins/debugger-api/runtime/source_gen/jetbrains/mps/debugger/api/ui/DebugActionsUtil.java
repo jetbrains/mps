@@ -15,7 +15,7 @@ import com.intellij.openapi.actionSystem.LangDataKeys;
 import jetbrains.mps.debug.api.DebugSessionManagerComponent;
 import com.intellij.execution.ExecutionManager;
 
-@GeneratedClass(node = "r:16e1d5b7-80ca-4570-9d1a-1cf2ce305e08(jetbrains.mps.debugger.api.ui)/2392684134639614907", model = "r:16e1d5b7-80ca-4570-9d1a-1cf2ce305e08(jetbrains.mps.debugger.api.ui)")
+@GeneratedClass(nodeId = "2392684134639614907", model = "r:16e1d5b7-80ca-4570-9d1a-1cf2ce305e08(jetbrains.mps.debugger.api.ui)")
 public class DebugActionsUtil {
   public DebugActionsUtil() {
   }

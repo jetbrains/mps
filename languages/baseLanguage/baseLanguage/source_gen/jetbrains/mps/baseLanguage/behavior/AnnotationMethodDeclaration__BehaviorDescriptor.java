@@ -26,8 +26,8 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class AnnotationMethodDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6a17a27L, "jetbrains.mps.baseLanguage.structure.AnnotationMethodDeclaration");
 
-  public static final SMethod<Boolean> canBeAnnotated_idhWp4PwP = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeAnnotated").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hWp4PwP").build();
-  public static final SMethod<Boolean> isGoodReturnType_id5JI19Xbr7EK = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isGoodReturnType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5JI19Xbr7EK").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> canBeAnnotated_idhWp4PwP = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeAnnotated").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1233076312117L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> isGoodReturnType_id5JI19Xbr7EK = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isGoodReturnType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6624237184120289968L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canBeAnnotated_idhWp4PwP, isGoodReturnType_id5JI19Xbr7EK);
 

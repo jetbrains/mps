@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,6 @@ import jetbrains.mps.module.ReloadableModule;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepositoryListener;
-import org.jetbrains.mps.openapi.module.SRepositoryListenerBase;
 import org.junit.After;
 import org.junit.Before;
 
@@ -29,10 +28,11 @@ public class ModulesReloadTestStress extends ModulesReloadTest {
   private SRepositoryListener myCrazyListener;
 
   @NotNull
-  static SRepositoryListenerBase createCrazyListener(@NotNull ClassLoaderManager clm) {
-    return new SRepositoryListenerBase() {
+  static SRepositoryListener createCrazyListener(@NotNull ClassLoaderManager clm) {
+    return new SRepositoryListener() {
       @Override
       public void moduleAdded(@NotNull SModule module) {
+        clm.getClassLoader(module); // to initiate a refresh session in CLManager
         checkModuleWatched(module);
         clm.reloadModule(module);
       }
@@ -40,15 +40,14 @@ public class ModulesReloadTestStress extends ModulesReloadTest {
       @Override
       public void beforeModuleRemoved(@NotNull SModule module) {
         checkModuleWatched(module);
+        // FWIW, I don't think this is legitimate code in beforeModuleRemoved().
+        // If dropped, event handling logic in ModuleUpdater could get streamlined.
         clm.reloadModule(module);
       }
 
       private void checkModuleWatched(SModule module) {
-        if (module instanceof ReloadableModule) {
-          ReloadableModule reloadableModule = (ReloadableModule) module;
-          reloadableModule.getClassLoader0(); // to initiate a refresh session in CLManager
-          assertTrue("The module " + module + " is not watched by class loading", clm.getModulesWatcher().isModuleWatched(reloadableModule));
-        }
+        // here we imply all modules added/removed during tests are suitable for CL (i.e. JMF + classes)
+        assertTrue("The module " + module + " is not watched by class loading", clm.getModulesWatcher().isModuleWatched(module));
       }
     };
   }

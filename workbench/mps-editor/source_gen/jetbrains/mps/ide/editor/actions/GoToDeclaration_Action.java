@@ -20,7 +20,7 @@ import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import com.intellij.featureStatistics.FeatureUsageTracker;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 
-@GeneratedClass(node = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/3228268613620327405", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
+@GeneratedClass(nodeId = "3228268613620327405", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
 public class GoToDeclaration_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -79,19 +79,17 @@ public class GoToDeclaration_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("navigation.goto.definition");
 
-    ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode wrtNode = APICellAdapter.getSNodeWRTReference(((EditorCell) MapSequence.fromMap(_params).get("cell")));
-        if (wrtNode != ((EditorCell) MapSequence.fromMap(_params).get("cell")).getSNode()) {
-          new EditorNavigator(((MPSProject) MapSequence.fromMap(_params).get("project"))).shallFocus(true).selectIfChild().open(SNodeOperations.getPointer(wrtNode));
-        } else {
-          for (SNode anc : ListSequence.fromList(SNodeOperations.getNodeAncestors(wrtNode, null, true))) {
-            if (GoToDeclarationHandlerRegistry.navigateAll(((MPSProject) MapSequence.fromMap(_params).get("project")), anc)) {
-              return;
-            }
+    ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().runReadAction(() -> {
+      SNode wrtNode = APICellAdapter.getSNodeWRTReference(((EditorCell) MapSequence.fromMap(_params).get("cell")));
+      if (wrtNode != ((EditorCell) MapSequence.fromMap(_params).get("cell")).getSNode()) {
+        new EditorNavigator(((MPSProject) MapSequence.fromMap(_params).get("project"))).shallFocus(true).selectIfChild().open(SNodeOperations.getPointer(wrtNode));
+      } else {
+        for (SNode anc : ListSequence.fromList(SNodeOperations.getNodeAncestors(wrtNode, null, true))) {
+          if (GoToDeclarationHandlerRegistry.navigateAll(((MPSProject) MapSequence.fromMap(_params).get("project")), anc)) {
+            return;
           }
-          // todo show notification: can't navigate
         }
+        // todo show notification: can't navigate
       }
     });
   }

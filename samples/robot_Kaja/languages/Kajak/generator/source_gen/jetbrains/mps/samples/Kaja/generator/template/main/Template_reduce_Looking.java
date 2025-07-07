@@ -39,18 +39,18 @@ public class Template_reduce_Looking extends TemplateDeclarationBase {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
     {
-      environment.resolveInTemplateLater(tnode1, myAssociationLinks[0], templateNode_yqxv9z_c0a0a2a6, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/7060824959893184061", "heading", context);
+      environment.resolveInTemplateLater(tnode1, myAssociationLinks[0], templateNode, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/7060824959893184061", "heading", context);
       TemplateContext context1 = context.subContext();
       {
         Collection<SNode> tlist2 = null;
         {
-          final SNode switchInput2 = QueriesGenerated.sourceNodeQuery_26_0(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_yqxv9z_b0a0a0a1a2a2a6));
+          final SNode switchInput2 = QueriesGenerated.sourceNodeQuery_26_0(new SourceSubstituteMacroNodeContext(context1, switchMacroRef));
           if (switchInput2 == null) {
             tlist2 = Collections.emptyList();
           } else {
             TemplateContext switchContext2 = context1;
             switchContext2 = switchContext2.subContext(null, switchInput2);
-            tlist2 = environment.trySwitch(templateSwitchNode_yqxv9z_a0a0c0a1a1a2a2a6, switchContext2);
+            tlist2 = environment.trySwitch(templateSwitchNode, switchContext2);
             if (tlist2 == null) {
               final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
               tlist2 = TemplateUtil.singletonList(tnode3);
@@ -93,7 +93,7 @@ public class Template_reduce_Looking extends TemplateDeclarationBase {
       return rv;
     }
   }
-  private static final SNodePointer templateNode_yqxv9z_c0a0a2a6 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "4923130412073306264");
-  private static final SNodePointer switchMacroRef_yqxv9z_b0a0a0a1a2a2a6 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "2238065674976419305");
-  private static final SNodePointer templateSwitchNode_yqxv9z_a0a0c0a1a1a2a2a6 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "7060824959896164452");
+  private static final SNodePointer templateNode = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "4923130412073306264");
+  private static final SNodePointer switchMacroRef = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "2238065674976419305");
+  private static final SNodePointer templateSwitchNode = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "7060824959896164452");
 }

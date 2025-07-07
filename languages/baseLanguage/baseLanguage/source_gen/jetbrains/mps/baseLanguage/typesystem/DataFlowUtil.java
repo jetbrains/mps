@@ -7,7 +7,7 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.generator.TransientModelsModule;
+import jetbrains.mps.extapi.module.TransientSModule;
 import jetbrains.mps.lang.dataFlow.framework.Program;
 import jetbrains.mps.lang.dataFlow.DataFlow;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -50,7 +50,13 @@ public class DataFlowUtil {
       return;
     }
     SModel m = SNodeOperations.getModel(statementList);
-    if (m != null && (m.getModule() instanceof TransientModelsModule)) {
+    // XXX I don't quite get the idea to exclude transient modules here; the marker is kind of
+    // overloaded/unclearly defined. Generally, we use transients for modules users don't intend to 
+    // work with or care to get properly analyzed/checked (e.g. intermediate model transformations),
+    // however, don't quite understand why can't we allow users to perform the check on any model they like.
+    // Besides, there's also unclear distinction between transient model and transient module; I wonder
+    // if we have to respect former in addition/instead of latter.
+    if (m != null && (m.getModule() instanceof TransientSModule)) {
       return;
     }
     try {
@@ -63,12 +69,12 @@ public class DataFlowUtil {
         return;
       }
       checkUnreachable(typeCheckingContext, program);
-      checkUninitializedReads(typeCheckingContext, program);
-      checkUnusedAssignments(typeCheckingContext, program);
       checkUnusedVariables(typeCheckingContext, statementList, program);
       if (checkReturns) {
         checkReturns(typeCheckingContext, program);
       }
+      checkUninitializedReads(typeCheckingContext, program);
+      checkUnusedAssignments(typeCheckingContext, program);
     } catch (DataflowBuilderException e) {
       throw new RuntimeException("Building dataflow for node: " + statementList.getNodeId().toString() + " model: " + statementList.getModel(), e);
     }
@@ -121,7 +127,6 @@ public class DataFlowUtil {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(n, "Unreachable node ", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1597542831870510169", null, errorTarget);
       }
-      return;
     }
   }
   public static Set<SNode> getUnreachableNodes(Program program) {

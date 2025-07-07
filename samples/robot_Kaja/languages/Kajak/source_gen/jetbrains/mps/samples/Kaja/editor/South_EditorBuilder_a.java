@@ -10,7 +10,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.cells.BigCellUtil;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
-import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.StringLiteralStyleClass;
+import jetbrains.mps.samples.Kaja.editor.KajakStyles_StyleSheet.StringLiteralStyleClass;
 
 /*package*/ class South_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -39,7 +39,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.StringLite
       setCellContext(bigCell);
     }
     Style style = new StyleImpl();
-    new StringLiteralStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new StringLiteralStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     return editorCell;
   }

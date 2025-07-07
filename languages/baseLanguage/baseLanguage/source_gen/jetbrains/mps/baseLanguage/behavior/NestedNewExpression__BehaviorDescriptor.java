@@ -26,7 +26,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class NestedNewExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x650f9fedfcb5b664L, "jetbrains.mps.baseLanguage.structure.NestedNewExpression");
 
-  public static final SMethod<Boolean> doesOperandHaveInnerClassesToInstantiateHere_id6GtiBfDgtyx = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("doesOperandHaveInnerClassesToInstantiateHere").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6GtiBfDgtyx").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> doesOperandHaveInnerClassesToInstantiateHere_id6GtiBfDgtyx = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("doesOperandHaveInnerClassesToInstantiateHere").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7718407198077999265L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(doesOperandHaveInnerClassesToInstantiateHere_id6GtiBfDgtyx);
 

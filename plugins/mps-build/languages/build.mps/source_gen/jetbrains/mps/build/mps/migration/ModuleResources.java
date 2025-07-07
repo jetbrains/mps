@@ -14,10 +14,8 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
@@ -48,27 +46,17 @@ public class ModuleResources extends MigrationScriptBase {
     {
       SearchScope scope_tzykqk_g0e = CommandUtil.createScope(m);
       final SearchScope scope_tzykqk_g0e_0 = new EditableFilteringScope(scope_tzykqk_g0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_tzykqk_g0e_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_tzykqk_g0e_0;
       // path.isNotNull check is a tribute to IF condition in template. In fact, it's likely just to filter out _Generator module, as others always have path
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BuildMps_Module$JW, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(it, LINKS.sources$mT1j), CONCEPTS.BuildMps_ModuleResources$M6)).isEmpty() && (SLinkOperations.getTarget(it, LINKS.path$iYKB) != null);
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNode cp = SNodeOperations.copyNode(proto);
-          // assume module root is the one with descriptor file (it's the way it used to be in templates)
-          SLinkOperations.setTarget(SNodeOperations.as(SLinkOperations.getTarget(cp, LINKS.files$uRjo), CONCEPTS.BuildInputFiles$lR), LINKS.dir$e6r$, BuildSourcePath__BehaviorDescriptor.getParent_id7wpYgMyTXsR.invoke(SLinkOperations.getTarget(it, LINKS.path$iYKB)));
-          ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.sources$mT1j)).addElement(cp);
-        }
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BuildMps_Module$JW, false)).where((it) -> Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(it, LINKS.sources$mT1j), CONCEPTS.BuildMps_ModuleResources$M6)).isEmpty() && (SLinkOperations.getTarget(it, LINKS.path$iYKB) != null)).visitAll((it) -> {
+        SNode cp = SNodeOperations.copyNode(proto);
+        // assume module root is the one with descriptor file (it's the way it used to be in templates)
+        SLinkOperations.setTarget(SNodeOperations.as(SLinkOperations.getTarget(cp, LINKS.files$uRjo), CONCEPTS.BuildInputFiles$lR), LINKS.dir$e6r$, BuildSourcePath__BehaviorDescriptor.getParent_id7wpYgMyTXsR.invoke(SLinkOperations.getTarget(it, LINKS.path$iYKB)));
+        ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.sources$mT1j)).addElement(cp);
       });
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xcf935df46994e9cL, 0xa132fa109541cba3L, "jetbrains.mps.build.mps"), 3);
   }
 

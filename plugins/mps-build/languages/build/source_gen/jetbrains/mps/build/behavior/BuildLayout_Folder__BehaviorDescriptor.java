@@ -19,11 +19,9 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.build.util.LocalSourcePathArtifact;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Objects;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -34,12 +32,12 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class BuildLayout_Folder__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c78L, "jetbrains.mps.build.structure.BuildLayout_Folder");
 
-  public static final SMethod<String> getChildrenOutputDir_WithMacro_id450ejGzh8bb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getChildrenOutputDir_WithMacro").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("450ejGzh8bb").build(SMethodBuilder.createJavaParameter(Context.class, ""));
-  public static final SMethod<Void> unpack_id6IqTD4bJTWZ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("unpack").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6IqTD4bJTWZ").build(SMethodBuilder.createJavaParameter(UnpackHelper.class, ""));
-  public static final SMethod<Boolean> isFolder_id1bWeed$oPYW = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFolder").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1bWeed$oPYW").build();
-  public static final SMethod<Boolean> isValidPart_id7XQqoCTkVIS = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValidPart").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7XQqoCTkVIS").build(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(SContainmentLink.class, ""));
-  public static final SMethod<Boolean> exports_id5FtnUVJQES1 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("exports").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5FtnUVJQES1").build(SMethodBuilder.createJavaParameter(Object.class, ""));
-  /*package*/ static final SMethod<Iterable<SNode>> getImportContentChildren_id675BBdHStY4 = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getImportContentChildren").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).id("675BBdHStY4").build();
+  public static final SMethod<String> getChildrenOutputDir_WithMacro_id450ejGzh8bb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getChildrenOutputDir_WithMacro").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4701820937132344011L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Context.class, ""));
+  public static final SMethod<Void> unpack_id6IqTD4bJTWZ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("unpack").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7753763219113484095L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(UnpackHelper.class, ""));
+  public static final SMethod<Boolean> isFolder_id1bWeed$oPYW = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFolder").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1368030936106753980L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
+  public static final SMethod<Boolean> isValidPart_id7XQqoCTkVIS = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValidPart").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9184644532456897464L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(SContainmentLink.class, ""));
+  public static final SMethod<Boolean> exports_id5FtnUVJQES1 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("exports").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6547494638219603457L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Object.class, ""));
+  /*package*/ static final SMethod<Iterable<SNode>> getImportContentChildren_id675BBdHStY4 = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getImportContentChildren").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(7045211410692956036L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getChildrenOutputDir_WithMacro_id450ejGzh8bb, unpack_id6IqTD4bJTWZ, isFolder_id1bWeed$oPYW, isValidPart_id7XQqoCTkVIS, exports_id5FtnUVJQES1, getImportContentChildren_id675BBdHStY4);
 
@@ -70,26 +68,23 @@ public final class BuildLayout_Folder__BehaviorDescriptor extends BaseBHDescript
     return true;
   }
   /*package*/ static boolean isValidPart_id7XQqoCTkVIS(@NotNull SNode __thisNode__, String propertyValue, SContainmentLink role) {
-    return !((propertyValue.contains("$") || propertyValue.contains("\\")));
+    return !(propertyValue.contains("$") || propertyValue.contains("\\"));
   }
   /*package*/ static boolean exports_id5FtnUVJQES1(@NotNull SNode __thisNode__, Object object) {
     if (object instanceof SNode) {
       final SNode node = (SNode) object;
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildLayout_Node$Rb)) {
-        return Sequence.fromIterable(BuildLayout_Folder__BehaviorDescriptor.getImportContentChildren_id675BBdHStY4.invoke(__thisNode__)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.target$HFO4) == node;
-          }
-        });
+        return Sequence.fromIterable(BuildLayout_Folder__BehaviorDescriptor.getImportContentChildren_id675BBdHStY4.invoke(__thisNode__)).any((it) -> SLinkOperations.getTarget(it, LINKS.target$HFO4) == node);
       }
     }
     if (object instanceof LocalSourcePathArtifact) {
       LocalSourcePathArtifact art = (LocalSourcePathArtifact) object;
-      if (!(art.isFolder()) || art.getRoot() != SNodeOperations.getContainingRoot(__thisNode__)) {
+      if (art.getRoot() != SNodeOperations.getContainingRoot(__thisNode__)) {
         return false;
       }
 
       for (SNode c : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.children$aMRO))) {
+        // XXX I wonder why we build LSPA(path.parent,path.tail) for a and get here and not handle exports(path) in BL_Files/BL_AbstractCopy instead?
         if (SNodeOperations.isInstanceOf(c, CONCEPTS.BuildLayout_Files$Oo)) {
           SNode files = SNodeOperations.as(c, CONCEPTS.BuildLayout_Files$Oo);
           if (ListSequence.fromList(SLinkOperations.getChildren(files, LINKS.parameters$WlG4)).isEmpty() && Objects.equals(art.getSourcePath(), BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(files, LINKS.path$Wlt3)))) {
@@ -109,12 +104,8 @@ public final class BuildLayout_Folder__BehaviorDescriptor extends BaseBHDescript
     return ((boolean) BuildLayout_Node__BehaviorDescriptor.exports_id5FtnUVJQES1.invokeSuper(__thisNode__, CONCEPTS.BuildLayout_Folder$AH, object));
   }
   /*package*/ static Iterable<SNode> getImportContentChildren_id675BBdHStY4(@NotNull SNode __thisNode__) {
-    List<SNode> list = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.children$aMRO), CONCEPTS.BuildLayout_ImportContent$wC)).toListSequence();
-    return ListSequence.fromList(list).concat(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collect(list, LINKS.target$HFO4), CONCEPTS.BuildLayout_Folder$AH)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return (Iterable<SNode>) BuildLayout_Folder__BehaviorDescriptor.getImportContentChildren_id675BBdHStY4.invoke(it);
-      }
-    }));
+    List<SNode> list = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.children$aMRO), CONCEPTS.BuildLayout_ImportContent$wC)).toList();
+    return ListSequence.fromList(list).concat(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collect(list, LINKS.target$HFO4), CONCEPTS.BuildLayout_Folder$AH)).translate((it) -> (Iterable<SNode>) BuildLayout_Folder__BehaviorDescriptor.getImportContentChildren_id675BBdHStY4.invoke(it)));
   }
 
   /*package*/ BuildLayout_Folder__BehaviorDescriptor() {

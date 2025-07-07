@@ -27,14 +27,14 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-@GeneratedClass(node = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/4362199797783336771", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
+@GeneratedClass(nodeId = "4362199797783336771", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
 public class ExtractComponent_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -111,7 +111,7 @@ public class ExtractComponent_Action extends BaseAction {
         SPropertyOperations.set(component, PROPS.name$MnvL, componentName);
         SNode container = SNodeOperations.getNodeAncestor(ecm, CONCEPTS.BaseEditorComponent$49, false, false);
         SPropertyOperations.assign(component, PROPS.virtualPackage$EkXl, SPropertyOperations.getString(container, PROPS.virtualPackage$EkXl));
-        SLinkOperations.setTarget(component, LINKS.conceptDeclaration$HJmJ, ((SNode) BHReflection.invoke0(container, CONCEPTS.AbstractComponent$YR, SMethodTrimmedId.create("getConceptDeclaration", null, "67EYkym$wx3"))));
+        SLinkOperations.setTarget(component, LINKS.conceptDeclaration$HJmJ, ((SNode) BHReflection.invoke0(container, CONCEPTS.AbstractComponent$YR, SMethodIdV2.create("getConceptDeclaration", 7055725856388417603L, 0xb0861a6038785d93L))));
         SLinkOperations.setTarget(component, LINKS.cellModel$L8Uc, SNodeOperations.copyNode(ecm));
         SNode toReplace = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c96896L, "jetbrains.mps.lang.editor.structure.CellModel_Component"));
         SLinkOperations.setTarget(toReplace, LINKS.editorComponent$DNa7, component);

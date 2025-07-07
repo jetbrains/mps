@@ -64,8 +64,8 @@ public class Switch_switch_toConceptNameStringExpr extends TemplateSwitchBase im
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_46_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_thr6xb_b0a0c0d0c0b6));
-          tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_thr6xb_b0a0c0d0c0b6, "tpl/r:00000000-0000-4000-0000-011c89590303/1206660454911", context1);
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_46_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro));
+          tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro, "tpl/r:00000000-0000-4000-0000-011c89590303/1206660454911", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
       }
@@ -80,7 +80,7 @@ public class Switch_switch_toConceptNameStringExpr extends TemplateSwitchBase im
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       final SNode tnode1 = environment.createOutputNode(myConcepts[1]);
-      SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_46_0(new PropertyMacroContext(context, "concept name", propertyMacro_thr6xb_c0a2a0a2a1h)));
+      SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_46_0(new PropertyMacroContext(context, "concept name", propertyMacro)));
       return TemplateUtil.singletonList(tnode1);
     }
   }
@@ -116,8 +116,8 @@ public class Switch_switch_toConceptNameStringExpr extends TemplateSwitchBase im
       return rv;
     }
   }
-  private static final SNodePointer copySrcMacro_thr6xb_b0a0c0d0c0b6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1206660454912");
-  private static final SNodePointer propertyMacro_thr6xb_c0a2a0a2a1h = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1206653862744");
+  private static final SNodePointer copySrcMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1206660454912");
+  private static final SNodePointer propertyMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1206653862744");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept PoundExpression$$N = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11885c0d945L, "jetbrains.mps.lang.smodel.structure.PoundExpression");

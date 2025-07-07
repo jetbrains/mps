@@ -18,8 +18,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -29,21 +27,21 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public final class TurnToForEachStatement_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public TurnToForEachStatement_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:2614090b-4018-4457-8ad5-c503bc8936fb(org.jetbrains.mps.samples.ParallelFor.intentions)", "5384012304952504715"));
   }
+
   @Override
   public String getPresentation() {
     return "TurnToForEachStatement";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -53,10 +51,12 @@ public final class TurnToForEachStatement_Intention extends AbstractIntentionDes
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Turn to Sequential";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode forStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.ForEachStatement$RO, null);
@@ -64,29 +64,28 @@ public final class TurnToForEachStatement_Intention extends AbstractIntentionDes
       SPropertyOperations.assign(variable, PROPS.name$MnvL, SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.loopVariable$q6dq), PROPS.name$MnvL));
       SLinkOperations.setTarget(forStatement, LINKS.variable$8Haf, variable);
       SLinkOperations.setTarget(forStatement, LINKS.inputSequence$YoEF, SLinkOperations.getTarget(node, LINKS.inputSequence$bOOx));
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(node, LINKS.body$c1sm), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41);
-        }
-      }).toListSequence().where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == SLinkOperations.getTarget(node, LINKS.loopVariable$q6dq);
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNode newReference = SNodeFactoryOperations.createNewNode(CONCEPTS.ForEachVariableReference$CR, null);
-          SLinkOperations.setTarget(newReference, LINKS.variable$j6kA, variable);
-          SNodeOperations.replaceWithAnother(it, newReference);
-        }
+      ListSequence.fromList(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(node, LINKS.body$c1sm), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41)).toList()).where((it) -> SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == SLinkOperations.getTarget(node, LINKS.loopVariable$q6dq)).visitAll((it) -> {
+        SNode newReference = SNodeFactoryOperations.createNewNode(CONCEPTS.ForEachVariableReference$CR, null);
+        SLinkOperations.setTarget(newReference, LINKS.variable$j6kA, variable);
+        SNodeOperations.replaceWithAnother(it, newReference);
       });
       SLinkOperations.setTarget(forStatement, LINKS.body$c1sm, SLinkOperations.getTarget(node, LINKS.body$c1sm));
       SNodeOperations.replaceWithAnother(node, forStatement);
       editorContext.selectWRTFocusPolicy(variable);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return TurnToForEachStatement_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

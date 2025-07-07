@@ -17,12 +17,12 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Iterator;
+import jetbrains.mps.smodel.NodeIdentityComponent;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import java.util.function.Consumer;
 import jetbrains.mps.openapi.actions.descriptor.ActionAspectDescriptor;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 
-@GeneratedClass(node = "r:1797d8fa-0ead-4018-8649-d2ee4016be0a(jetbrains.mps.datatransfer)/618908363385245775", model = "r:1797d8fa-0ead-4018-8649-d2ee4016be0a(jetbrains.mps.datatransfer)")
+@GeneratedClass(nodeId = "618908363385245775", model = "r:1797d8fa-0ead-4018-8649-d2ee4016be0a(jetbrains.mps.datatransfer)")
 public final class DataTransferManager implements LanguageRegistryListener {
 
   /**
@@ -101,6 +101,7 @@ public final class DataTransferManager implements LanguageRegistryListener {
       postProcessor.postProcessNode(pastedNode);
       return;
     }
+    NodeIdentityComponent.getInstance().configure(pastedNode, SNodeOperations.getModel(pastedNode), null);
 
     for (SNode pastedChild : ListSequence.fromList(SNodeOperations.getChildren(pastedNode))) {
       postProcessNode(pastedChild);
@@ -149,24 +150,22 @@ public final class DataTransferManager implements LanguageRegistryListener {
       return;
     }
     myLoaded = true;
-    myLanguageRegistry.withAvailableLanguages(new Consumer<LanguageRuntime>() {
-      public void accept(LanguageRuntime lang) {
-        ActionAspectDescriptor actionAscpect = lang.getAspect(ActionAspectDescriptor.class);
-        if (actionAscpect == null) {
-          return;
+    myLanguageRegistry.withAvailableLanguages((LanguageRuntime lang) -> {
+      ActionAspectDescriptor actionAscpect = lang.getAspect(ActionAspectDescriptor.class);
+      if (actionAscpect == null) {
+        return;
+      }
+      for (CopyPreProcessor copyPreProcessor : CollectionSequence.fromCollection(actionAscpect.getCopyPreProcessors())) {
+        MapSequence.fromMap(myCopyPreProcessors).put(copyPreProcessor.getApplicableConcept(), copyPreProcessor);
+      }
+      for (PastePostProcessor pastePostProcessor : CollectionSequence.fromCollection(actionAscpect.getPastePostProcessors())) {
+        MapSequence.fromMap(myPastePostProcessors).put(pastePostProcessor.getApplicableConcept(), pastePostProcessor);
+      }
+      for (PasteWrapper pasteWrapper : CollectionSequence.fromCollection(actionAscpect.getPasteWrappers())) {
+        if (!(MapSequence.fromMap(myPasteWrappers).containsKey(pasteWrapper.getTargetConcept()))) {
+          MapSequence.fromMap(myPasteWrappers).put(pasteWrapper.getTargetConcept(), MapSequence.fromMap(new HashMap<SAbstractConcept, PasteWrapper>()));
         }
-        for (CopyPreProcessor copyPreProcessor : CollectionSequence.fromCollection(actionAscpect.getCopyPreProcessors())) {
-          MapSequence.fromMap(myCopyPreProcessors).put(copyPreProcessor.getApplicableConcept(), copyPreProcessor);
-        }
-        for (PastePostProcessor pastePostProcessor : CollectionSequence.fromCollection(actionAscpect.getPastePostProcessors())) {
-          MapSequence.fromMap(myPastePostProcessors).put(pastePostProcessor.getApplicableConcept(), pastePostProcessor);
-        }
-        for (PasteWrapper pasteWrapper : CollectionSequence.fromCollection(actionAscpect.getPasteWrappers())) {
-          if (!(MapSequence.fromMap(myPasteWrappers).containsKey(pasteWrapper.getTargetConcept()))) {
-            MapSequence.fromMap(myPasteWrappers).put(pasteWrapper.getTargetConcept(), MapSequence.fromMap(new HashMap<SAbstractConcept, PasteWrapper>()));
-          }
-          MapSequence.fromMap(MapSequence.fromMap(myPasteWrappers).get(pasteWrapper.getTargetConcept())).put(pasteWrapper.getSourceConcept(), pasteWrapper);
-        }
+        MapSequence.fromMap(MapSequence.fromMap(myPasteWrappers).get(pasteWrapper.getTargetConcept())).put(pasteWrapper.getSourceConcept(), pasteWrapper);
       }
     });
   }

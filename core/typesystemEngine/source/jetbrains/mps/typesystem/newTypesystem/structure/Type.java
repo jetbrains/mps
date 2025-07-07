@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,7 @@ package jetbrains.mps.typesystem.newTypesystem.structure;
 
 import gnu.trove.THashMap;
 import gnu.trove.THashSet;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +25,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class Type<Meta, Target> {
-  private static Logger LOG = LogManager.getLogger(Type.class);
+  private static Logger LOG = Logger.getLogger(Type.class);
 
   protected String myRole;
   protected IReference<Meta> myMeta;

@@ -5,7 +5,7 @@ package jetbrains.mps.persistence.java.library;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.persistence.PersistenceRegistry;
 
-@GeneratedClass(node = "r:adc783db-1c21-4910-9cf7-6a22bf949a4a(jetbrains.mps.persistence.java.library)/6619269785060746035", model = "r:adc783db-1c21-4910-9cf7-6a22bf949a4a(jetbrains.mps.persistence.java.library)")
+@GeneratedClass(nodeId = "6619269785060746035", model = "r:adc783db-1c21-4910-9cf7-6a22bf949a4a(jetbrains.mps.persistence.java.library)")
 public class JavaClassStubConstants {
   /**
    * should be in sync with what's written in plugin.xml

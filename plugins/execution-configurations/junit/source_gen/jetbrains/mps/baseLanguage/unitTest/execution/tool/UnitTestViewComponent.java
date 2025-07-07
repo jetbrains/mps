@@ -45,6 +45,7 @@ import java.awt.LayoutManager;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NonNls;
 import jetbrains.mps.workbench.MPSDataKeys;
+import jetbrains.mps.ide.actions.SNodeActionData;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper;
 
@@ -127,6 +128,7 @@ public class UnitTestViewComponent extends JPanel implements Disposable {
     DefaultActionGroup group = new DefaultActionGroup(console.createConsoleActions());
     ActionManager manager = ActionManager.getInstance();
     ActionToolbar toolbar = manager.createActionToolbar("TestRunnerResults", group, false);
+    toolbar.setTargetComponent(console.getComponent());
     toolbar.setLayoutPolicy(ActionToolbar.WRAP_LAYOUT_POLICY);
     return toolbar.getComponent();
   }
@@ -200,18 +202,21 @@ public class UnitTestViewComponent extends JPanel implements Disposable {
     @Nullable
     @Override
     public Object getData(@NonNls String dataId) {
+      // FIXME don't quite understand why would anyone need this intermediate JPanel as a DataProvider
+      // TestTree could answer with ITestNodeWrapper information, 
+      // and UnitTestViewComponent may answer with MPS_PROJECT (if necessary, although I doubt it is)
       if (MPSDataKeys.MPS_PROJECT.is(dataId)) {
         return myProject;
       }
-      if (MPSDataKeys.NODE.is(dataId)) {
+      if (SNodeActionData.KEY.is(dataId)) {
         MPSTreeNode currentNode = myTreeComponent.getCurrentNode();
         if (currentNode == null) {
           return null;
         }
-        ITestNodeWrapper testWrapper = (ITestNodeWrapper) currentNode.getUserObject();
-        // XXX it's unclear whether we shall assume model read lock here, or obtain it ourselves
-        // I didn't get the lock here as it's stupid to ask for SNode not inside a lock already.
-        return testWrapper.getNodePointer().resolve(myProject.getRepository());
+        if (currentNode.getUserObject() instanceof ITestNodeWrapper) {
+          return SNodeActionData.from(((ITestNodeWrapper) currentNode.getUserObject()).getNodePointer());
+        }
+        return null;
       }
       return null;
     }

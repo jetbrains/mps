@@ -10,56 +10,39 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class AddSNodeCastStatement_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddSNodeCastStatement_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902ff(jetbrains.mps.lang.smodel.intentions)", "1193745200272"));
   }
+
   @Override
   public String getPresentation() {
     return "AddSNodeCastStatement";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    boolean isApplicable = false;
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.condition$5R17), CONCEPTS.DotExpression$yW)) {
-      SNode dotExpression = SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.condition$5R17), CONCEPTS.DotExpression$yW);
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(dotExpression, LINKS.operation$gs9E), CONCEPTS.Node_IsInstanceOfOperation$5d)) {
-        SNode iioo = SNodeOperations.cast(SLinkOperations.getTarget(dotExpression, LINKS.operation$gs9E), CONCEPTS.Node_IsInstanceOfOperation$5d);
-        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(iioo, LINKS.conceptArgument$pVqq), CONCEPTS.RefConcept_Reference$Ij)) {
-          SNode rc = SNodeOperations.cast(SLinkOperations.getTarget(iioo, LINKS.conceptArgument$pVqq), CONCEPTS.RefConcept_Reference$Ij);
-          isApplicable = (SLinkOperations.getTarget(rc, LINKS.conceptDeclaration$3mP7) != null);
-        }
-      }
-    }
-    return isApplicable;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -69,10 +52,12 @@ public final class AddSNodeCastStatement_Intention extends AbstractIntentionDesc
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Insert Cast Variable Declaration";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode castVariable = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalVariableDeclarationStatement$4w, null);
@@ -93,10 +78,46 @@ public final class AddSNodeCastStatement_Intention extends AbstractIntentionDesc
       }
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.ifTrue$5Rg8), LINKS.statement$53DE)).insertElement(0, castVariable);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      boolean isApplicable = false;
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.condition$5R17), CONCEPTS.DotExpression$yW)) {
+        SNode dotExpression = SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.condition$5R17), CONCEPTS.DotExpression$yW);
+        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(dotExpression, LINKS.operation$gs9E), CONCEPTS.Node_IsInstanceOfOperation$5d)) {
+          SNode iioo = SNodeOperations.cast(SLinkOperations.getTarget(dotExpression, LINKS.operation$gs9E), CONCEPTS.Node_IsInstanceOfOperation$5d);
+          if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(iioo, LINKS.conceptArgument$pVqq), CONCEPTS.RefConcept_Reference$Ij)) {
+            SNode rc = SNodeOperations.cast(SLinkOperations.getTarget(iioo, LINKS.conceptArgument$pVqq), CONCEPTS.RefConcept_Reference$Ij);
+            isApplicable = (SLinkOperations.getTarget(rc, LINKS.conceptDeclaration$3mP7) != null);
+          }
+        }
+      }
+      return isApplicable;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddSNodeCastStatement_Intention.this;
     }
+
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept LocalVariableDeclarationStatement$4w = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept Node_IsInstanceOfOperation$5d = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10956bb6029L, "jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation");
+    /*package*/ static final SConcept RefConcept_Reference$Ij = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1120c45902cL, "jetbrains.mps.lang.smodel.structure.RefConcept_Reference");
+    /*package*/ static final SConcept SNodeType$hR = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType");
+    /*package*/ static final SConcept SNodeTypeCastExpression$TK = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10975850da7L, "jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression");
+    /*package*/ static final SConcept CastExpression$$8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, "jetbrains.mps.baseLanguage.structure.CastExpression");
   }
 
   private static final class LINKS {
@@ -115,16 +136,6 @@ public final class AddSNodeCastStatement_Intention extends AbstractIntentionDesc
     /*package*/ static final SContainmentLink expression$XDmN = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
     /*package*/ static final SContainmentLink ifTrue$5Rg8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
     /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
-    /*package*/ static final SConcept Node_IsInstanceOfOperation$5d = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10956bb6029L, "jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation");
-    /*package*/ static final SConcept RefConcept_Reference$Ij = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1120c45902cL, "jetbrains.mps.lang.smodel.structure.RefConcept_Reference");
-    /*package*/ static final SConcept LocalVariableDeclarationStatement$4w = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement");
-    /*package*/ static final SConcept SNodeType$hR = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType");
-    /*package*/ static final SConcept SNodeTypeCastExpression$TK = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10975850da7L, "jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression");
-    /*package*/ static final SConcept CastExpression$$8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, "jetbrains.mps.baseLanguage.structure.CastExpression");
   }
 
   private static final class PROPS {

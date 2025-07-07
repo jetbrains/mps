@@ -5,36 +5,41 @@ package jetbrains.mps.console.tool;
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.ui.SimpleToolWindowPanel;
 import com.intellij.openapi.Disposable;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
+import jetbrains.mps.console.actions.IConsoleTool;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.fileEditor.FileEditor;
-import jetbrains.mps.nodeEditor.UIEditorComponent;
+import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.Highlighter;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import org.jdom.Element;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.nodeEditor.EditorComponent;
-import javax.swing.JScrollBar;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.ide.PasteProvider;
 import jetbrains.mps.nodeEditor.commands.CommandContextImpl;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import javax.swing.KeyStroke;
 import jetbrains.mps.openapi.editor.extensions.EditorExtensionUtil;
-import jetbrains.mps.smodel.tempmodel.TemporaryModels;
+import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.util.IFileUtil;
+import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.smodel.tempmodel.TempModuleOptions;
-import org.apache.log4j.Level;
-import jetbrains.mps.smodel.undo.NamedCommand;
+import jetbrains.mps.smodel.tempmodel.TemporaryModels;
+import com.intellij.openapi.vfs.VirtualFile;
+import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.ActionToolbar;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.util.Disposer;
 import jetbrains.mps.ide.ThreadUtils;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.wm.IdeFocusManager;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
@@ -42,13 +47,10 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import java.util.Collection;
 import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.project.ImportUtil;
 import jetbrains.mps.workbench.action.BaseAction;
 import com.intellij.openapi.actionSystem.CustomShortcutSet;
-import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
 import com.intellij.openapi.actionSystem.MouseShortcut;
 import java.awt.event.MouseEvent;
@@ -61,12 +63,10 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.workbench.action.ActionUtils;
 import com.intellij.openapi.actionSystem.DataContext;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
+import java.util.Optional;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import java.awt.datatransfer.Transferable;
+import jetbrains.mps.datatransfer.SNodeClip;
 import com.intellij.ide.CopyPasteManagerEx;
-import jetbrains.mps.ide.datatransfer.SModelDataFlavor;
-import java.awt.datatransfer.UnsupportedFlavorException;
-import java.io.IOException;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.nodeEditor.datatransfer.NodePaster;
@@ -74,35 +74,35 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.persistence.PersistenceUtil;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.module.SearchScope;
-import jetbrains.mps.ide.findusages.model.scopes.ProjectScope;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-@GeneratedClass(node = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)/4914591330900787311", model = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)")
+@GeneratedClass(nodeId = "4914591330900787311", model = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)")
 public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Disposable {
-  private static final Logger LOG = LogManager.getLogger(BaseConsoleTab.class);
-  private ConsoleTool myTool;
+  private static final Logger LOG = Logger.getLogger(BaseConsoleTab.class);
+  private IConsoleTool myTool;
   private SModel myModel;
   private MPSProject myProject;
   private FileEditor myFileEditor;
-  private UIEditorComponent myEditor;
+  private EditorComponent myEditor;
   private Highlighter myHighlighter;
   private String myTabTitle;
 
   protected SNode myRoot;
 
-  public BaseConsoleTab(MPSProject project, ConsoleTool tool, String title, @Nullable Element history) {
+  public BaseConsoleTab(MPSProject project, IConsoleTool tool, String title, @Nullable Element history) {
     super(false, true);
     myTool = tool;
     myTabTitle = title;
@@ -114,7 +114,7 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
     return myTabTitle;
   }
 
-  public ConsoleTool getTool() {
+  public IConsoleTool getTool() {
     return myTool;
   }
 
@@ -134,34 +134,38 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
     return myRoot;
   }
 
-  public ConsoleTool getConsoleTool() {
+  public IConsoleTool getConsoleTool() {
     return myTool;
   }
 
   protected void scrollToBottom() {
-    JScrollBar scrollBar = myEditor.getVerticalScrollBar();
-    scrollBar.setValue(scrollBar.getMaximum());
+    myEditor.scrollToBottom();
   }
 
   public void scrollToTop() {
-    JScrollBar scrollBar = myEditor.getVerticalScrollBar();
-    scrollBar.setValue(scrollBar.getMinimum());
+    myEditor.scrollToTop();
   }
 
   protected void createEditor() {
-    this.myEditor = new UIEditorComponent(myProject.getRepository(), null) {
+    this.myEditor = new EditorComponent(myProject.getRepository()) {
       @Nullable
       @Override
       public Object getData(@NonNls @NotNull String key) {
+        if (MPSEditorDataKeys.MPS_PROJECT.is(key)) {
+          return myProject;
+        }
         if (MPSConsoleDataKeys.CONSOLE_TAB.is(key)) {
           return BaseConsoleTab.this;
+        }
+        if (MPSConsoleDataKeys.PARENT_PASTE_PROVIDER.is(key)) {
+          return as_6q36mf_a0a0c0a0a0a0a13(super.getData(PlatformDataKeys.PASTE_PROVIDER.getName()), PasteProvider.class);
         }
         if (PlatformDataKeys.FILE_EDITOR.is(key)) {
           return myFileEditor;
         }
         if (PlatformDataKeys.PASTE_PROVIDER.is(key)) {
-          PasteProvider parentPasteProvider = as_6q36mf_a0a0a2a0a0a0a0fb(super.getData(key), PasteProvider.class);
-          return (myTool.getPasteAsRef() ? new MyPasteProvider(parentPasteProvider) : parentPasteProvider);
+          PasteProvider parentPasteProvider = as_6q36mf_a0a0a4a0a0a0a0fb(super.getData(key), PasteProvider.class);
+          return new MyPasteProvider(parentPasteProvider);
         }
         return super.getData(key);
       }
@@ -183,15 +187,20 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
         };
       }
     };
+    myEditor.unregisterKeyboardAction(KeyStroke.getKeyStroke("ESCAPE"));
     EditorExtensionUtil.extendUsingProject(myEditor, myProject);
     myEditor.editNode(myRoot);
     scrollToBottom();
   }
 
   protected void createConsoleModel() {
-    this.myModel = TemporaryModels.getInstance().createLongTerm("ConsoleModel", TempModuleOptions.forDefaultModuleWithSourceAndClassesGen());
+    // would be nice to get own repo for console operations, and use one for editor, make and command execution
+    final SRepository repo4console = myProject.getRepository();
+    IFile tmpDir = IFileUtil.createTmpDir(myProject.getFileSystem());
+    JavaModuleFacet jmf = TempModuleOptions.javaFacet().withSourceGen(tmpDir.findChild("src-gen")).withClassesGen(tmpDir.findChild("cls-gen")).build();
+    this.myModel = TemporaryModels.getInstance().createLongTerm("ConsoleModel", TempModuleOptions.forNewModule(repo4console, jmf));
     if (myModel == null) {
-      if (LOG.isEnabledFor(Level.ERROR)) {
+      if (LOG.isErrorLevel()) {
         LOG.error("Error: could not create console model");
       }
       return;
@@ -203,15 +212,13 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
       // non-undoable actions should not affect project files
       throw new IllegalStateException();
     }
-    // FIXME it's not nice to see undoable command just right after MPS startup. Get rid of command requirement to modify models
-    getProject().getModelAccess().executeCommand(new NamedCommand("Console initialization", true) {
-      public void run() {
-        createConsoleModel();
-        addBuiltInImports();
-        loadHistory(history);
-        createEditor();
-        myFileEditor = new ConsoleFileEditor(myEditor);
-      }
+    getProject().getModelAccess().runWriteAction(() -> {
+      createConsoleModel();
+      addBuiltInImports();
+      loadHistory(history);
+      createEditor();
+      VirtualFile file = NodeVirtualFileSystem.getInstance().getFileFor(myProject.getRepository(), myRoot);
+      myFileEditor = new ConsoleFileEditor(myEditor, file);
     });
 
     DefaultActionGroup group = new DefaultActionGroup();
@@ -224,8 +231,8 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
 
     Disposer.register(this, myFileEditor);
 
-    myHighlighter = myProject.getProject().getComponent(Highlighter.class);
-    check_6q36mf_a51a43(myHighlighter, myEditor);
+    myHighlighter = Highlighter.getInstance(myProject);
+    check_6q36mf_a41a43(myHighlighter, myEditor);
   }
 
   public void dispose() {
@@ -233,17 +240,11 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
   }
 
   public void disposeConsoleTab() {
-    myProject.getRepository().getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        if (myEditor != null) {
-          ThreadUtils.runInUIThreadNoWait(new Runnable() {
-            public void run() {
-              myEditor.dispose();
-            }
-          });
-        }
-        TemporaryModels.getInstance().dispose(myModel);
+    myProject.getRepository().getModelAccess().runWriteAction(() -> {
+      if (myEditor != null) {
+        ThreadUtils.runInUIThreadNoWait(() -> myEditor.dispose());
       }
+      TemporaryModels.getInstance().dispose(myModel);
     });
     if (myHighlighter != null) {
       myHighlighter.removeAdditionalEditorComponent(myEditor);
@@ -256,39 +257,27 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
   }
 
   public void selectNode(final SNode nodeToSelect) {
-    myTool.getToolWindow().activate(new Runnable() {
-      public void run() {
-        myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            myEditor.selectNode(nodeToSelect);
-            getEditorComponent().ensureSelectionVisible();
-            IdeFocusManager.getInstance(myProject.getProject()).requestFocus(myEditor, false);
-          }
-        });
-      }
+    ApplicationManager.getApplication().invokeLater(() -> {
+      myTool.getToolWindow().activate(() -> myProject.getRepository().getModelAccess().runReadAction(() -> {
+        myEditor.selectNode(nodeToSelect);
+        getEditorComponent().ensureSelectionVisible();
+        IdeFocusManager.getInstance(myProject.getProject()).requestFocus(myEditor, false);
+      }));
+      myTool.selectTab(BaseConsoleTab.this);
     });
-    myTool.selectTab(this);
   }
 
   protected void addBuiltInImports() {
     final DevKit consoleDevkit = new ModuleRepositoryFacade(myProject).getModule(PersistenceFacade.getInstance().createModuleReference("70d3d6da-af63-483d-a75f-9c8acf8de332(jetbrains.mps.console.devkit)"), DevKit.class);
     if (consoleDevkit == null) {
-      if (LOG.isEnabledFor(Level.ERROR)) {
+      if (LOG.isErrorLevel()) {
         LOG.error("Could not find console devkit in current repository");
       }
       return;
     }
     Collection<DevKit> allDevkits = new ModuleRepositoryFacade(myProject).getAllModules(DevKit.class);
     final SModelInternal modelInternal = ((SModelInternal) myModel);
-    CollectionSequence.fromCollection(allDevkits).where(new IWhereFilter<DevKit>() {
-      public boolean accept(DevKit it) {
-        return it.getAllExtendedDevkits().contains(consoleDevkit);
-      }
-    }).visitAll(new IVisitor<DevKit>() {
-      public void visit(DevKit it) {
-        modelInternal.addDevKit(it.getModuleReference());
-      }
-    });
+    CollectionSequence.fromCollection(allDevkits).where((it) -> it.getAllExtendedDevkits().contains(consoleDevkit)).visitAll((it) -> modelInternal.addDevKit(it.getModuleReference()));
   }
 
   protected void validateImports() {
@@ -368,23 +357,16 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
     public final void performPaste(@NotNull final DataContext context) {
       myProject.getModelAccess().executeCommand(new EditorCommand(myEditor) {
         protected void doExecute() {
+          //  XXX I wonder if this check and clipboard access have to be part of the command?
           if (!(isPastePossible(context))) {
             return;
           }
-          SNodeReference pastingNodeReference = null;
-          try {
-            for (Transferable trf : CopyPasteManagerEx.getInstanceEx().getAllContents()) {
-              if (trf != null && trf.isDataFlavorSupported(SModelDataFlavor.sNodeReference)) {
-                pastingNodeReference = (SNodeReference) trf.getTransferData(SModelDataFlavor.sNodeReference);
-              }
-              break;
-            }
-          } catch (UnsupportedFlavorException ignored) {
-          } catch (IOException ignored) {
-          }
+          Optional<SNodeReference> nrf = SNodeClip.peekNodeReferenceFlavor(CopyPasteManagerEx.getInstanceEx().getAllContents());
+          final SNodeReference pastingNodeReference = nrf.orElse(null);
+
           EditorCell currentCell = myEditor.getSelectedCell();
-          SNode referenceTarget = check_6q36mf_a0e0a0a0a0a0f06(pastingNodeReference, myProject);
-          if (referenceTarget != null && currentCell != null && !(check_6q36mf_a0a5a0a0a0a0a5ic(check_6q36mf_a0a0f0a0a0a0a0f06(pastingNodeReference), myModel))) {
+          SNode referenceTarget = check_6q36mf_a0g0a0a0a0a0f06(pastingNodeReference, myProject);
+          if (referenceTarget != null && currentCell != null && !(check_6q36mf_a0a7a0a0a0a0a5ic(check_6q36mf_a0a0h0a0a0a0a0f06(pastingNodeReference), myModel))) {
             SNode refContainer = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x51132a123c89fa7eL, "jetbrains.mps.console.base.structure.PastedNodeReference"));
             SLinkOperations.setTarget(refContainer, LINKS.target$CsE, referenceTarget);
             NodePaster paster = new NodePaster(ListSequence.fromListAndArray(new ArrayList<SNode>(), refContainer));
@@ -397,7 +379,7 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
             myEditor.getUpdater().flushModelEvents();
             SelectionUtil.selectLabelCellAnSetCaret(myEditor.getEditorContext(), refContainer, SelectionManager.LAST_CELL, -1);
           } else {
-            check_6q36mf_a0a0f0a0a0a0a0f06_0(myDefaultPasteProvider, context);
+            check_6q36mf_a0a0h0a0a0a0a0f06_0(myDefaultPasteProvider, context);
           }
         }
       });
@@ -408,6 +390,12 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
     public boolean isPasteEnabled(@NotNull DataContext context) {
       return myDefaultPasteProvider.isPasteEnabled(context);
     }
+
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return myDefaultPasteProvider.getActionUpdateThread();
+    }
   }
 
   protected abstract void loadHistory(Element state);
@@ -415,14 +403,12 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
   @Nullable
   public Element saveHistory() {
     final Wrappers._T<Element> result = new Wrappers._T<Element>(null);
-    myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        try {
-          result.value = (myModel == null ? null : PersistenceUtil.saveModelToXml(myModel, myProject.getComponent(ModelFactoryService.class)));
-        } catch (Exception e) {
-          if (LOG.isEnabledFor(Level.WARN)) {
-            LOG.warn("Error on console model saving", e);
-          }
+    myProject.getRepository().getModelAccess().runReadAction(() -> {
+      try {
+        result.value = (myModel == null ? null : PersistenceUtil.saveModelToXml(myModel, myProject.getComponent(ModelFactoryService.class)));
+      } catch (Exception e) {
+        if (LOG.isWarningLevel()) {
+          LOG.warning("Error on console model saving", e);
         }
       }
     });
@@ -436,33 +422,27 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
     }
     try {
       final Wrappers._T<SModel> loadedModel = new Wrappers._T<SModel>(PersistenceUtil.loadModelFromXml(state, myProject.getComponent(ModelFactoryService.class)));
-      ListSequence.fromList(SModelOperations.nodes(loadedModel.value, null)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(it.getConcept().isValid());
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          if ((SNodeOperations.getNodeAncestor(it, CONCEPTS.HistoryItem$vj, false, false) != null)) {
-            SNodeOperations.deleteNode(SNodeOperations.getNodeAncestor(it, CONCEPTS.HistoryItem$vj, false, false));
-            if (LOG.isEnabledFor(Level.ERROR)) {
-              LOG.error("Unknown concept on loading console history: removing enclosing history item");
-            }
-          } else {
-            loadedModel.value = null;
-            if (LOG.isEnabledFor(Level.ERROR)) {
-              LOG.error("Unknown concept on loading console history: not loading history");
-            }
+      ListSequence.fromList(SModelOperations.nodes(loadedModel.value, null)).where((it) -> !(it.getConcept().isValid())).visitAll((it) -> {
+        if ((SNodeOperations.getNodeAncestor(it, CONCEPTS.HistoryItem$vj, false, false) != null)) {
+          SNodeOperations.deleteNode(SNodeOperations.getNodeAncestor(it, CONCEPTS.HistoryItem$vj, false, false));
+          if (LOG.isErrorLevel()) {
+            LOG.error("Unknown concept on loading console history: removing enclosing history item");
+          }
+        } else {
+          loadedModel.value = null;
+          if (LOG.isErrorLevel()) {
+            LOG.error("Unknown concept on loading console history: not loading history");
           }
         }
       });
       return loadedModel.value;
     } catch (RuntimeException e) {
-      if (LOG.isEnabledFor(Level.ERROR)) {
+      if (LOG.isErrorLevel()) {
         LOG.error("Console history was not loaded. Maybe you are opening project from previous MPS versions?");
       }
       return null;
     } catch (Throwable e) {
-      if (LOG.isEnabledFor(Level.ERROR)) {
+      if (LOG.isErrorLevel()) {
         LOG.error("Error on loading console history.", e);
       }
       return null;
@@ -474,8 +454,8 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
       public Project getProject() {
         return myProject;
       }
-      public SearchScope getDefaultSearchScope() {
-        return new ProjectScope(myProject);
+      public SearchScope getScope() {
+        return myProject.getScope();
       }
       public BaseConsoleTab getOutputWindow() {
         return BaseConsoleTab.this;
@@ -494,77 +474,69 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
   public void execute(@Nullable final SNode command, @Nullable final Runnable executeBefore, @Nullable final Runnable executeAfter) {
     myTool.selectTab(this);
     final SNode[] typedCommand = new SNode[1];
-    myProject.getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        typedCommand[0] = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e27160acb4484bL, "jetbrains.mps.console.base.structure.CommandHolder"));
-        if (command != null) {
-          addNodeImports(command);
-          SLinkOperations.setTarget(typedCommand[0], LINKS.command$RGil, SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs), LINKS.command$RGil)));
-          SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs), LINKS.command$RGil, SNodeOperations.copyNode(command));
-        }
+    myProject.getModelAccess().executeCommand(() -> {
+      typedCommand[0] = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e27160acb4484bL, "jetbrains.mps.console.base.structure.CommandHolder"));
+      if (command != null) {
+        addNodeImports(command);
+        SLinkOperations.setTarget(typedCommand[0], LINKS.command$RGil, SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs), LINKS.command$RGil)));
+        SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs), LINKS.command$RGil, SNodeOperations.copyNode(command));
       }
     });
     final ConsoleStream consoleStream = new ConsoleStreamImpl(this);
-    Runnable beforeCommandClosure = new Runnable() {
-      public void run() {
-        if (myProject.getModelAccess().canWrite()) {
-          // non-undoable actions should not affect project files
-          throw new IllegalStateException();
+    Runnable beforeCommandClosure = () -> {
+      if (myProject.getModelAccess().canWrite()) {
+        // non-undoable actions should not affect project files
+        throw new IllegalStateException();
+      }
+      myProject.getModelAccess().executeCommand(new EditorCommand(myEditor) {
+        public void doExecute() {
+          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(myRoot, LINKS.history$LSLq), LINKS.item$DxJ4)).addElement(SNodeOperations.copyNode(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs)));
+          SLinkOperations.setNewChild(myRoot, LINKS.commandHolder$LTfs, CONCEPTS.CommandHolder$K4);
+          SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.cursor$hQXw), LINKS.target$kCjp, SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs));
+          check_6q36mf_a3a0a0a0a1a0a4a27(executeBefore);
         }
-        myProject.getModelAccess().executeCommand(new EditorCommand(myEditor) {
-          public void doExecute() {
-            ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(myRoot, LINKS.history$LSLq), LINKS.item$DxJ4)).addElement(SNodeOperations.copyNode(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs)));
-            SLinkOperations.setNewChild(myRoot, LINKS.commandHolder$LTfs, CONCEPTS.CommandHolder$K4);
-            SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.cursor$hQXw), LINKS.target$kCjp, SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs));
-            check_6q36mf_a3a0a0a0a1a0a4a27(executeBefore);
-          }
-        });
-      }
+      });
     };
-    Runnable afterCommandClosure = new Runnable() {
-      public void run() {
-        consoleStream.commitResult();
-        myProject.getRepository().getModelAccess().executeCommand(new Runnable() {
-          public void run() {
-            if (SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, LINKS.cursor$hQXw), LINKS.target$kCjp) == SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs)) {
-              SLinkOperations.setTarget(myRoot, LINKS.commandHolder$LTfs, typedCommand[0]);
-              SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.cursor$hQXw), LINKS.target$kCjp, SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs));
-            } else {
-              SLinkOperations.setTarget(myRoot, LINKS.commandHolder$LTfs, typedCommand[0]);
-            }
-            check_6q36mf_a1a0b0a0f0uc(executeAfter);
-          }
-        });
-      }
+    Runnable afterCommandClosure = () -> {
+      consoleStream.commitResult();
+      myProject.getRepository().getModelAccess().executeCommand(() -> {
+        if (SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, LINKS.cursor$hQXw), LINKS.target$kCjp) == SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs)) {
+          SLinkOperations.setTarget(myRoot, LINKS.commandHolder$LTfs, typedCommand[0]);
+          SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.cursor$hQXw), LINKS.target$kCjp, SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs));
+        } else {
+          SLinkOperations.setTarget(myRoot, LINKS.commandHolder$LTfs, typedCommand[0]);
+        }
+        check_6q36mf_a1a0b0a0f0uc(executeAfter);
+      });
     };
-    BHReflection.invoke0(SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs), LINKS.command$RGil), CONCEPTS.Command$6M, SMethodTrimmedId.create("execute", null, "5WvH$QO9bva"), getConsoleContext(), consoleStream, beforeCommandClosure, afterCommandClosure);
+    BHReflection.invoke0(SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs), LINKS.command$RGil), CONCEPTS.Command$6M, SMethodIdV2.create("execute", 6854397602732226506L, 0x6d1c0cbc11348977L), getConsoleContext(), consoleStream, beforeCommandClosure, afterCommandClosure);
   }
 
-  private static void check_6q36mf_a51a43(Highlighter checkedDotOperand, UIEditorComponent myEditor) {
+  private static void check_6q36mf_a41a43(Highlighter checkedDotOperand, EditorComponent myEditor) {
     if (null != checkedDotOperand) {
       checkedDotOperand.addAdditionalEditorComponent(myEditor);
     }
 
   }
-  private static SNode check_6q36mf_a0e0a0a0a0a0f06(SNodeReference checkedDotOperand, MPSProject myProject) {
+  private static SNode check_6q36mf_a0g0a0a0a0a0f06(SNodeReference checkedDotOperand, MPSProject myProject) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.resolve(myProject.getRepository());
     }
     return null;
   }
-  private static boolean check_6q36mf_a0a5a0a0a0a0a5ic(SModelReference checkedDotOperand, SModel myModel) {
+  private static boolean check_6q36mf_a0a7a0a0a0a0a5ic(SModelReference checkedDotOperand, SModel myModel) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.equals(SModelOperations.getPointer(myModel));
     }
     return false;
   }
-  private static SModelReference check_6q36mf_a0a0f0a0a0a0a0f06(SNodeReference checkedDotOperand) {
+  private static SModelReference check_6q36mf_a0a0h0a0a0a0a0f06(SNodeReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModelReference();
     }
     return null;
   }
-  private static void check_6q36mf_a0a0f0a0a0a0a0f06_0(PasteProvider checkedDotOperand, DataContext context) {
+  private static void check_6q36mf_a0a0h0a0a0a0a0f06_0(PasteProvider checkedDotOperand, DataContext context) {
     if (null != checkedDotOperand) {
       checkedDotOperand.performPaste(context);
     }
@@ -582,7 +554,10 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
     }
 
   }
-  private static <T> T as_6q36mf_a0a0a2a0a0a0a0fb(Object o, Class<T> type) {
+  private static <T> T as_6q36mf_a0a0c0a0a0a0a13(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_6q36mf_a0a0a4a0a0a0a0fb(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 

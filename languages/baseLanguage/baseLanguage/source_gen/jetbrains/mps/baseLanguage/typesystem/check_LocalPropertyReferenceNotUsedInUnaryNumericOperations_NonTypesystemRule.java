@@ -19,7 +19,7 @@ public class check_LocalPropertyReferenceNotUsedInUnaryNumericOperations_NonType
   public check_LocalPropertyReferenceNotUsedInUnaryNumericOperations_NonTypesystemRule() {
   }
   public void applyRule(final SNode localPropertyReference, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!((SNodeOperations.getNodeAncestorWhereConceptInList(localPropertyReference, new SAbstractConcept[]{CONCEPTS.PrefixDecrementExpression$En, CONCEPTS.PrefixIncrementExpression$xI, CONCEPTS.PostfixDecrementExpression$GY, CONCEPTS.PostfixIncrementExpression$wn}, false, false) == null))) {
+    if (!(SNodeOperations.getNodeAncestorWhereConceptInList(localPropertyReference, new SAbstractConcept[]{CONCEPTS.PrefixDecrementExpression$En, CONCEPTS.PrefixIncrementExpression$xI, CONCEPTS.PostfixDecrementExpression$GY, CONCEPTS.PostfixIncrementExpression$wn}, false, false) == null)) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(localPropertyReference, "variable expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6880273274252479801", null, errorTarget);
     }

@@ -4,6 +4,8 @@ package jetbrains.mps.vcs.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.vcs.actions.AbstractVcsAction;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.vcs.actions.VcsContext;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -13,9 +15,16 @@ import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.project.ProjectHelper;
 import com.intellij.openapi.actionSystem.Presentation;
 
-@GeneratedClass(node = "r:b2d164a2-987a-4229-af85-1f4f7d3ef996(jetbrains.mps.vcs.actions)/7705742079275757969", model = "r:b2d164a2-987a-4229-af85-1f4f7d3ef996(jetbrains.mps.vcs.actions)")
+@GeneratedClass(nodeId = "7705742079275757969", model = "r:b2d164a2-987a-4229-af85-1f4f7d3ef996(jetbrains.mps.vcs.actions)")
 public class ShowInLogicalView extends AbstractVcsAction {
   public ShowInLogicalView() {
+  }
+
+
+  @NotNull
+  @Override
+  public ActionUpdateThread getActionUpdateThread() {
+    return ActionUpdateThread.BGT;
   }
 
   @Override

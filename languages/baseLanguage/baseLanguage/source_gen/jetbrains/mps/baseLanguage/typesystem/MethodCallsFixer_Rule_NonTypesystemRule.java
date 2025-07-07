@@ -9,46 +9,45 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.baseLanguage.scopes.MethodResolveUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.baseLanguage.behavior.IFixableMethodReference__BehaviorDescriptor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
-import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
+import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.BaseQuickFixProvider;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MethodCallsFixer_Rule_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public MethodCallsFixer_Rule_NonTypesystemRule() {
   }
-  public void applyRule(final SNode methodCallNode, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
+  public void applyRule(final SNode methodRef, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // fixme the longest rule in bl in 2020.1
     // we should consider a softer strategy for auto-fixing the references
-    Tuples._2<SNode, Boolean> resolveResult = MethodResolveUtil.resolveMethod(methodCallNode);
+    Tuples._2<SNode, Boolean> resolveResult = MethodResolveUtil.resolveMethod(methodRef);
     SNode newTarget = resolveResult._0();
     boolean goodReplacement = (boolean) resolveResult._1();
 
-    SNode baseMethodDeclaration = SLinkOperations.getTarget(methodCallNode, LINKS.baseMethodDeclaration$pyYw);
+    SNode baseMethodDeclaration = IFixableMethodReference__BehaviorDescriptor.getMethodDeclaration_id5DBbMQ3xohB.invoke(methodRef);
     if (newTarget != null) {
       if (baseMethodDeclaration == null) {
         {
-          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.baseMethodDeclaration$pyYw);
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(methodCallNode, "Unresolved reference to method declaration", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "869282237625475452", null, errorTarget);
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(methodRef, "Unresolved reference to method declaration", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "869282237625475452", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MethodCallsFixer_Quickfix_QuickFix", "869282237625475997", true);
-            intentionProvider.putArgument("methodCall", methodCallNode);
+            intentionProvider.putArgument("methodRef", methodRef);
             intentionProvider.putArgument("properTarget", newTarget);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }
       } else if (goodReplacement) {
         if (!(newTarget == baseMethodDeclaration)) {
-          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.baseMethodDeclaration$pyYw);
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(methodCallNode, "Reference to wrong overridden method", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "869282237625479726", null, errorTarget);
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(methodRef, "Reference to wrong overridden method", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "869282237625479726", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MethodCallsFixer_Quickfix_QuickFix", true);
-            intentionProvider.putArgument("methodCall", methodCallNode);
+            intentionProvider.putArgument("methodRef", methodRef);
             intentionProvider.putArgument("properTarget", newTarget);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
@@ -57,7 +56,7 @@ public class MethodCallsFixer_Rule_NonTypesystemRule extends AbstractNonTypesyst
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.IMethodCall$M9;
+    return CONCEPTS.IFixableMethodReference$z6;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -66,11 +65,7 @@ public class MethodCallsFixer_Rule_NonTypesystemRule extends AbstractNonTypesyst
     return false;
   }
 
-  private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-  }
-
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IMethodCall$M9 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
+    /*package*/ static final SInterfaceConcept IFixableMethodReference$z6 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5a672f2d82ff2834L, "jetbrains.mps.baseLanguage.structure.IFixableMethodReference");
   }
 }

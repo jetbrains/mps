@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,14 @@
  */
 package jetbrains.mps.persistence;
 
+import jetbrains.mps.extapi.model.SModelBase;
+import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.extapi.persistence.CopyNotSupportedException;
 import jetbrains.mps.extapi.persistence.CopyableModelRoot;
 import jetbrains.mps.extapi.persistence.DefaultSourceRoot;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.extapi.persistence.FileDataSource;
+import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.extapi.persistence.ModelFactoryRegistry;
 import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.extapi.persistence.SourceRootKind;
@@ -27,23 +30,25 @@ import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromName;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService;
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
+import jetbrains.mps.logging.Logger;
+import jetbrains.mps.module.PersistenceContextImpl;
 import jetbrains.mps.persistence.DataSourceFactoryBridge.DSourceAndOptions;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelName;
+import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.DataSource;
+import org.jetbrains.mps.openapi.persistence.DataSourceNotSupportedProblem;
+import org.jetbrains.mps.openapi.persistence.MFProblem;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import org.jetbrains.mps.openapi.persistence.ModelCreationException;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
-import org.jetbrains.mps.openapi.persistence.MFProblem;
 import org.jetbrains.mps.openapi.persistence.ModelFactoryType;
 import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import org.jetbrains.mps.openapi.persistence.ModelLoadingOption;
@@ -56,6 +61,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.jetbrains.mps.openapi.persistence.MFProblem.NO_PROBLEM;
 
@@ -82,8 +90,9 @@ import static org.jetbrains.mps.openapi.persistence.MFProblem.NO_PROBLEM;
  * @author evgeny
  * @since 11/9/12
  */
+@SuppressWarnings("UnstableApiUsage")
 public final class DefaultModelRoot extends FileBasedModelRoot implements CopyableModelRoot<DefaultModelRoot> {
-  private static final Logger LOG = LogManager.getLogger(DefaultModelRoot.class);
+  private static final Logger LOG = Logger.getLogger(DefaultModelRoot.class);
   private final ModelFactoryRegistry myModelFactoryRegistry;
   private final DataSourceFactoryRuleService myDataSourceRegistry;
 
@@ -106,7 +115,7 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
    * JpsTestModelsEnvironment.createModelRoot relied on DMR, which is wrong, although used to work)
    *
    */
-  @ToRemove(version = 0)
+  @Deprecated(since = "0", forRemoval = true)
   private DefaultModelRoot(int ignored) {
     myModelFactoryRegistry = null;
     myDataSourceRegistry = null;
@@ -137,7 +146,7 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
       if (contentDir == null) {
         LOG.error(String.format("Bad model root (no content location nor sources) for module %s", getModule()));
       } else {
-        LOG.warn(String.format("No source roots specified for location %s of module %s, no models were loaded", contentDir, getModule()));
+        LOG.warning(String.format("No source roots specified for location %s of module %s, no models were loaded", contentDir, getModule()));
       }
       return Collections.emptyList();
     }
@@ -161,7 +170,7 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
     });
     modelSourceRootWalker.traverse(sourceRoot);
     if (result.isEmpty()) {
-      LOG.warn("Models have not been found within the " + sourceRoot);
+      LOG.warning("Models have not been found within the " + sourceRoot);
     }
     return result;
   }
@@ -171,8 +180,16 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
     return super.canCreateModels() && !getSourceRoots(SourceRootKinds.SOURCES).isEmpty();
   }
 
-  @Override
-  public boolean canCreateModel(@NotNull String modelName) {
+  private interface ModelNameRejectionHandler {
+    boolean handleRejection(DataSource dataSource);
+  }
+
+  /**
+   * Checks if a model with this name can be created. Calls the rejectionHandler, if it cannot be created because some model files collide with existing files.
+   * When renaming a model, the handler may investigate further to detect whether the colliding files belong to the model being renamed.
+   * @return True, if the model can be created.
+   */
+  private boolean processCanModelBeCreated(@NotNull SModelName modelName, ModelNameRejectionHandler rejectionHandler) {
     if (!canCreateModels()) {
       return false;
     }
@@ -186,21 +203,79 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
       // XXX could iterate over all source roots to find the one capable to create a model, but the rest of MR API (namely, createModel) would need
       //     to figure out proper source root as well, which is not a task I'd like to tackle now. I'd use object return value instead of simple
       //     boolean here, which would keep all relevant data (model factory, source root) for model creation
-      DSourceAndOptions<DataSource> result = getDataSourceFactoryBridge().create(new SModelName(modelName),
+      DSourceAndOptions<DataSource> result = getDataSourceFactoryBridge().create(modelName,
                                                                                  Defaults.sourceRoot(this),
                                                                                  Defaults.DATA_SOURCE_TYPE);
       DataSource dataSource = result.getDataSource();
       ModelLoadingOption[] modelLoadingOptions = result.getOptions().convertToLoadingOptions();
-      return NO_PROBLEM == defaultMF.canCreate(dataSource, new SModelName(modelName), modelLoadingOptions);
+
+      final MFProblem mfProblem = defaultMF.canCreate(dataSource, modelName, modelLoadingOptions);
+      if (mfProblem instanceof DataSourceNotSupportedProblem) return false;
+      final boolean canBeCreated = NO_PROBLEM == mfProblem;
+      if (canBeCreated) return true;
+
+      return rejectionHandler.handleRejection(dataSource);
+
     } catch (NoSourceRootsInModelRootException | DataSourceFactoryNotFoundException | SourceRootDoesNotExistException ignored) {
     }
     return false;
+
+  }
+  @Override
+  public boolean canCreateModel(@NotNull SModelName modelName) {
+    return processCanModelBeCreated(modelName, new ModelNameRejectionHandler() {
+      @Override
+      public boolean handleRejection(DataSource dataSource) {
+        return false;
+      }
+    });
+  }
+
+  @Override
+  public boolean canRenameModel(@NotNull SModelName modelName, EditableSModel currentModelDescriptor) {
+    return processCanModelBeCreated(modelName, new ModelNameRejectionHandler() {
+      @Override
+      public boolean handleRejection(DataSource dataSource) {
+        // When renaming a model the fact that its datasource already exists should not stop us renaming.
+        // On case-insensitive systems it may be an indication that the new model's name differs from the old name only in capitalization.
+        // Since there is no way to reliably detect a case-insensitive system, we have to grab all files (minus the existing model's files, i.e. before rename)
+        // that may collide with the new model's files and manually check whether any of them equalsIgnoreCase() with any of the new model's files.
+        final DataSource currentModelSource = currentModelDescriptor.getSource();
+        if (dataSource instanceof FileSystemBasedDataSource && currentModelSource instanceof FileSystemBasedDataSource) {
+          if (((FileSystemBasedDataSource) dataSource).exists()) {
+            final FileSystemBasedDataSource currentModelDS = (FileSystemBasedDataSource) currentModelSource;
+            final Set<IFile> currentModelFiles = currentModelDS.getAffectedFilesWithDirsExtracted().collect(Collectors.toSet());
+
+            final FileSystemBasedDataSource newModelDS = (FileSystemBasedDataSource) dataSource;
+            final Stream<IFile> involvedDirs =
+                newModelDS.getAffectedFilesWithDirsExtracted().map(IFile::getParent).filter(iFile -> iFile != null && iFile.isDirectory()).distinct();
+            //All files that do not belong to the current model
+            final List<IFile> allOtherFiles = involvedDirs.flatMap(dir -> dir.getChildren().stream())
+                                                          .filter(iFile -> !iFile.isDirectory())
+                                                          .filter(iFile -> currentModelFiles.stream()
+                                                                                            .noneMatch(currentModelF -> currentModelF.getName()
+                                                                                                                                     .equals(iFile.getName())))
+                                                          .collect(Collectors.toList());
+
+            // On case-sensitive systems we deduce that since the datasource returns true from "exists()", there must be a colliding file.
+            // If it is a file of the current model, we would be renaming a model to the same name, so we may disregard that option.
+            // If the collision is with a file that does not belong to the current model, the equalsIgnoreCase() will find it.
+            // In either case the renaming will not happen for case-sensitive systems.
+            return newModelDS.getAffectedFiles().stream().allMatch(iFile -> {
+              return allOtherFiles.stream().noneMatch(originalFile -> {
+                return iFile.getName().equalsIgnoreCase(originalFile.getName());
+              });
+            });
+          }
+        }
+        return false;
+      }
+    });
   }
 
   /**
    * Creates model in the default source root via default factory
    *
-   * @see Defaults#sourceRoot
    * @return null if there was IOException
    */
   @Override
@@ -208,6 +283,17 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
   public SModel createModel(@NotNull String modelName) {
     try {
       return createModel(new SModelName(modelName), null, (DataSourceType) null, null);
+    } catch (ModelCannotBeCreatedException e) {
+      LOG.error("", e);
+      return null;
+    }
+  }
+
+  @Nullable
+  @Override
+  public SModel createModel(@NotNull SModelName modelName) {
+    try {
+      return createModel(modelName, null, (DataSourceType) null, null);
     } catch (ModelCannotBeCreatedException e) {
       LOG.error("", e);
       return null;
@@ -327,8 +413,27 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
                                   boolean register) throws ModelCannotBeCreatedException {
     try {
       SModel model = modelFactory.create(dataSource, new SModelName(parameters.getModelName()), parameters.convertToLoadingOptions());
+      if (model instanceof EditableSModel) {
+        // treat newly created model as modified. Perhaps, it has to be ModelFactory to set this
+        // but doesn't hurt to force it here anyway.
+        ((EditableSModel) model).setChanged(true);
+      }
+      // associate with the root regardless of 'register' request.
+      // btw, why would anyone care to create a model through MR and not register it?
+      if (model instanceof SModelBase) {
+        ((SModelBase) model).setModelRoot(this);
+      }
       if (register) {
-        registerModel(model);
+        final SModule module = getModule();
+        if (module instanceof SModuleBase) {
+          // XXX it's odd code (no-op if not instanceof), but eventually I plan to lift restriction to register SModelBase
+          // (need to expose changeModelSet())
+          if (model instanceof SModelBase) {
+            ((SModuleBase) module).registerModel((SModelBase) model);
+          }
+        } else {
+          throw new ModelCannotBeCreatedException(String.format("Model registration requested but module %s doesn't support this", module));
+        }
       }
       return model;
     } catch (IOException | ModelCreationException e) {
@@ -344,11 +449,19 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
     FileDataSource source = (FileDataSource) result.getDataSource();
     IFile newFile = source.getFile();
     if (!newFile.equals(oldFile)) {
+      DSourceAndOptions<DataSource> tempResult = getDataSourceFactoryBridge().createFileDataSource(new SModelName(newName + "_temp_" + System.currentTimeMillis()), sourceRoot);
+      FileDataSource tempSource = (FileDataSource) tempResult.getDataSource();
+      IFile tempNewFile = tempSource.getFile();
+      tempNewFile.getParent().mkdirs();
+      tempNewFile.createNewFile();
+      dataSource.setFile(tempNewFile);
+      FileUtil.deleteWithAllEmptyDirs(oldFile);
+
       newFile.getParent().mkdirs();
       newFile.createNewFile();
       // at the moment, there's no mechanism to replace model's datasource, hence we replace file of the original source here.
       dataSource.setFile(newFile);
-      FileUtil.deleteWithAllEmptyDirs(oldFile);
+      FileUtil.deleteWithAllEmptyDirs(tempNewFile);
     }
   }
 
@@ -370,15 +483,9 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
     new CopyDefaultModelRootHelper(this, targetModelRoot).copy();
   }
 
-  /**
-   * Obviously whilst the model root descriptors are in the <code>AbstractModule</code> we
-   * need this method
-   */
-  @ToRemove(version = 3.6)
-  @Deprecated
-  public ModelRootDescriptor toDescriptor() {
+  private ModelRootDescriptor toDescriptor() {
     ModelRootDescriptor result = new ModelRootDescriptor(getType());
-    save(result.getMemento());
+    save(result.getMemento(), PersistenceContextImpl.empty());
     return result;
   }
 
@@ -418,27 +525,8 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
     // XXX proper implementation shall do what save() method does without need to instantiate DefaultModelRoot
     DefaultModelRoot result = new DefaultModelRoot(0);
     result.setContentDirectory(contentRoot);
-    class SourceRootPrim implements SourceRoot {
-      private final IFile myModelDir;
-
-      SourceRootPrim(IFile modelRoot) {
-        myModelDir = modelRoot;
-      }
-
-      @NotNull
-      @Override
-      public String getPath() {
-        return myModelDir.getPath();
-      }
-
-      @NotNull
-      @Override
-      public IFile getAbsolutePath() {
-        return myModelDir;
-      }
-    }
     for (IFile md : modelDir) {
-      result.addSourceRoot(SourceRootKinds.SOURCES, new SourceRootPrim(md));
+      result.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(md));
     }
     return result.toDescriptor();
   }
@@ -463,6 +551,7 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
    */
   public static ModelRootDescriptor createSingleFolderDescriptor(@NotNull final File modelDir) {
     // that's what #save(Memento) does, just without IFile
+    // FIXME revisit, now save() is much more relaxed about IFile use. Still uses MacroFactory, though
     ModelRootDescriptor result = new ModelRootDescriptor(PersistenceRegistry.DEFAULT_MODEL_ROOT);
     final Memento memento = result.getMemento();
     memento.put("type", PersistenceRegistry.DEFAULT_MODEL_ROOT);

@@ -8,7 +8,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import jetbrains.mps.nodeEditor.MPSColors;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/7546597551780207004", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "7546597551780207004", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class Line extends JComponent {
   public Line() {
     this.setPreferredSize(new Dimension(1, 1));

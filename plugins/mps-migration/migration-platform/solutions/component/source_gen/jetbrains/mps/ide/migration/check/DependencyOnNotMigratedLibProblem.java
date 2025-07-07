@@ -9,7 +9,7 @@ import jetbrains.mps.errors.item.ModuleReportItem;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
-@GeneratedClass(node = "r:5c426f30-a9c9-463b-90a5-2fae21a10696(jetbrains.mps.ide.migration.check)/699020670023251098", model = "r:5c426f30-a9c9-463b-90a5-2fae21a10696(jetbrains.mps.ide.migration.check)")
+@GeneratedClass(nodeId = "699020670023251098", model = "r:5c426f30-a9c9-463b-90a5-2fae21a10696(jetbrains.mps.ide.migration.check)")
 public class DependencyOnNotMigratedLibProblem extends Problem<SModule> implements ModuleReportItem {
   private SModule myDepModule;
   private SModule myProjectModule;

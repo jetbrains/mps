@@ -11,25 +11,27 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 
-@GeneratedClass(node = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)/4124845871897266050", model = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)")
+/**
+ * Use MergeSession.MergeSessionFullState
+ * 
+ * @deprecated 
+ */
+@Deprecated
+@GeneratedClass(nodeId = "4124845871897266050", model = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)")
 public class MergeSessionState {
   /*package*/ final MergeTemporaryModel myResultModel;
   /*package*/ final Set<ModelChange> myResolvedChanges;
   /*package*/ final Map<SNodeId, SNodeId> myIdReplacementCache;
+  @Deprecated
   /*package*/ MergeSessionState(MergeTemporaryModel resultModel, Set<ModelChange> resolvedChanges, Map<SNodeId, SNodeId> idReplacementCache) {
     // XXX as long as we know resultModel is MTM, shall we copy its persistence version as well (set by MergeSession)?
     myResultModel = MergeTemporaryModel.readonlyCloneOf(resultModel);
     myResolvedChanges = SetSequence.fromSetWithValues(new HashSet<ModelChange>(), resolvedChanges);
     myIdReplacementCache = MapSequence.fromMap(new HashMap<SNodeId, SNodeId>(MapSequence.fromMap(idReplacementCache).count()));
-    MapSequence.fromMap(idReplacementCache).visitAll(new IVisitor<IMapping<SNodeId, SNodeId>>() {
-      public void visit(IMapping<SNodeId, SNodeId> m) {
-        MapSequence.fromMap(myIdReplacementCache).put(m.key(), m.value());
-      }
-    });
+    MapSequence.fromMap(idReplacementCache).visitAll((m) -> MapSequence.fromMap(myIdReplacementCache).put(m.key(), m.value()));
   }
+  @Deprecated
   /*package*/ MergeSessionState(MergeSessionState copy) {
     this(copy.myResultModel, copy.myResolvedChanges, copy.myIdReplacementCache);
   }

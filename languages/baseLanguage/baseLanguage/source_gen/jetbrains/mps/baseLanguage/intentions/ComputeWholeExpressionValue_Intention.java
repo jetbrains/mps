@@ -10,10 +10,10 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.baseLanguage.behavior.Expression__BehaviorDescriptor;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.baseLanguage.behavior.Expression__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.typesystem.ExpressionPresentationUtil;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -24,33 +24,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class ComputeWholeExpressionValue_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ComputeWholeExpressionValue_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "8245314650930918171"));
   }
+
   @Override
   public String getPresentation() {
     return "ComputeWholeExpressionValue";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    SNode parent = SNodeOperations.getParent(node);
-    if (((parent == null) || !(SNodeOperations.isInstanceOf(parent, CONCEPTS.Expression$mB)) || !((boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SNodeOperations.cast(parent, CONCEPTS.Expression$mB))) || Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SNodeOperations.cast(parent, CONCEPTS.Expression$mB), SNodeOperations.getModel(parent).getModule()) == null) && (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(node) && !((boolean) Expression__BehaviorDescriptor.constant_id1653mnvAgr2.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(node))))) {
 
-      Object v = Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(node, SNodeOperations.getModel(node).getModule());
-      return v != null && (v instanceof Number || v instanceof Boolean || v instanceof String || v instanceof Character);
-    }
-    return false;
-  }
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -60,11 +48,13 @@ public final class ComputeWholeExpressionValue_Intention extends AbstractIntenti
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       Object v = Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(node, SNodeOperations.getModel(node).getModule());
       return "Replace expression " + ExpressionPresentationUtil.getExpressionPresentation(node) + " with compile-time value \"" + v.toString() + "\"";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       Object value = Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SNodeOperations.cast(node, CONCEPTS.Expression$mB), SNodeOperations.getModel(SNodeOperations.cast(node, CONCEPTS.Expression$mB)).getModule());
@@ -89,10 +79,31 @@ public final class ComputeWholeExpressionValue_Intention extends AbstractIntenti
         SPropertyOperations.assign(v, PROPS.value$ENN8, "" + ((Number) value).doubleValue());
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      SNode parent = SNodeOperations.getParent(node);
+      if (((parent == null) || !(SNodeOperations.isInstanceOf(parent, CONCEPTS.Expression$mB)) || !((boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SNodeOperations.cast(parent, CONCEPTS.Expression$mB))) || Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SNodeOperations.cast(parent, CONCEPTS.Expression$mB), SNodeOperations.getModel(parent).getModule()) == null) && (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(node) && !((boolean) Expression__BehaviorDescriptor.constant_id1653mnvAgr2.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(node))))) {
+
+        Object v = Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(node, SNodeOperations.getModel(node).getModule());
+        return v != null && (v instanceof Number || v instanceof Boolean || v instanceof String || v instanceof Character);
+      }
+      return false;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ComputeWholeExpressionValue_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

@@ -7,10 +7,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Iterator;
-import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -28,11 +26,7 @@ public class DispatchGroupDescriptor {
   public DispatchGroupDescriptor(SNode pattern) {
     methodName = SPropertyOperations.getString(pattern, PROPS.name$MnvL);
     isStatic = SNodeOperations.isInstanceOf(pattern, CONCEPTS.StaticMethodDeclaration$FJ);
-    otherParamTypes = ListSequence.fromList(SLinkOperations.getChildren(pattern, LINKS.parameter$5xBj)).skip(1).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.type$a1UY);
-      }
-    });
+    otherParamTypes = ListSequence.fromList(SLinkOperations.getChildren(pattern, LINKS.parameter$5xBj)).skip(1).select((it) -> SLinkOperations.getTarget(it, LINKS.type$a1UY));
   }
   @Override
   public boolean equals(Object o) {
@@ -70,11 +64,7 @@ public class DispatchGroupDescriptor {
   }
   @Override
   public int hashCode() {
-    return methodName.hashCode() + ((isStatic ? 1 : 0)) + Sequence.fromIterable(otherParamTypes).foldLeft(0, new ILeftCombinator<SNode, Integer>() {
-      public Integer combine(Integer s, SNode it) {
-        return s + typeHashCode(it);
-      }
-    });
+    return methodName.hashCode() + ((isStatic ? 1 : 0)) + Sequence.fromIterable(otherParamTypes).foldLeft(0, (Integer s, SNode it) -> s + typeHashCode(it));
   }
   private boolean typesEqual(SNode typ1, SNode typ2) {
     {

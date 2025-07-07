@@ -14,15 +14,12 @@ import org.jetbrains.mps.openapi.module.SModule;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.smodel.SModelOperations;
-import java.util.Arrays;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import jetbrains.mps.project.SModuleOperations;
 import java.util.Collections;
 import java.rmi.RemoteException;
 
-@GeneratedClass(node = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)/8632185942131071966", model = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)")
+@GeneratedClass(nodeId = "8632185942131071966", model = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)")
 public class IdeaJavaCompilerImpl implements ProjectComponent, IdeaJavaCompiler {
   private final Project myProject;
   private IProjectHandler myIdeaProjectHandler;
@@ -61,7 +58,7 @@ public class IdeaJavaCompilerImpl implements ProjectComponent, IdeaJavaCompiler 
 
   @Override
   public boolean isValid() {
-    return !((RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment())) && myIdeaProjectHandler != null;
+    return !(RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) && myIdeaProjectHandler != null;
   }
 
   @Override
@@ -70,17 +67,15 @@ public class IdeaJavaCompilerImpl implements ProjectComponent, IdeaJavaCompiler 
       return null;
     }
     Set<String> modulePaths = SetSequence.fromSet(new HashSet<String>());
+    final Set<SModuleReference> affected = SetSequence.fromSet(new HashSet<SModuleReference>());
     for (SModule module : modules) {
-      for (SModel model : Sequence.fromIterable(module.getModels())) {
-        IFile outputLocation = SModelOperations.getOutputLocation(model);
-        if (outputLocation != null) {
-          SetSequence.fromSet(modulePaths).addElement(outputLocation.getPath());
-        }
-      }
+      // we care about java sources only, getAllSourcePath looks into JavaModuleFacet and TestsFacet we know to contain Java
+      SetSequence.fromSet(modulePaths).addSequence(SetSequence.fromSet(SModuleOperations.getAllSourcePaths(module)));
+      SetSequence.fromSet(affected).addElement(module.getModuleReference());
     }
     try {
       @NotNull IdeaCompilationResult ideaResult = myIdeaProjectHandler.buildModules(SetSequence.fromSet(modulePaths).toGenericArray(String.class));
-      return new MPSCompilationResult(ideaResult.getErrorCount(), ideaResult.getWarningCount(), ideaResult.isAborted(), (ideaResult.hasCompiledAnything() ? Arrays.asList(modules) : Collections.<SModule>emptySet()));
+      return new MPSCompilationResult(ideaResult.getErrorCount(), ideaResult.getWarningCount(), ideaResult.isAborted(), (ideaResult.hasCompiledAnything() ? affected : Collections.<SModuleReference>emptySet()));
     } catch (RemoteException e) {
       e.printStackTrace();
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,13 +28,12 @@ import com.intellij.openapi.ui.DialogBuilder;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.ui.UIBundle;
-import jetbrains.mps.extapi.model.StorageMemoryConflictResolver.ConflictResolved;
+import jetbrains.mps.extapi.model.StorageMemoryConflictResolver;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.vfs.VFSManager;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.EditableSModel;
@@ -65,8 +64,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
  *       - sometimes there is a command, sometimes there is a write
  * @author apyshkin
  */
-public final class ConflictResolverImpl {
-  private static final Logger LOG = LogManager.getLogger(ConflictResolverImpl.class);
+public final class ConflictResolverImpl implements StorageMemoryConflictResolver<EditableSModel> {
+  private static final Logger LOG = Logger.getLogger(ConflictResolverImpl.class);
 
   private final MPSProject myProject;
   private final PersistenceFacade myPersistenceFacade;
@@ -87,7 +86,7 @@ public final class ConflictResolverImpl {
     myDialogExposer = exposer;
   }
 
-  ConflictResolverImpl(MPSProject project,
+  public ConflictResolverImpl(MPSProject project,
                        PersistenceFacade persistenceFacade,
                        VFSManager vfsManager) {
     myProject = project;
@@ -96,8 +95,14 @@ public final class ConflictResolverImpl {
     myDialogExposer = defaultExposer();
   }
 
+  @Deprecated(forRemoval = true)
   @NotNull
   CompletionStage<ConflictResolved> resolve(@NotNull EditableSModel model) {
+    return resolveConflict(model);
+  }
+
+  @Override
+  public @NotNull CompletionStage<ConflictResolved> resolveConflict(@NotNull EditableSModel model) {
     myResolverListeners.forEach(l -> l.onConflict(model));
     if (!(model.getSource() instanceof FileSystemBasedDataSource)) {
       LOG.error(String.format("Conflicting content in memory and on disk for models '%s' and '%s'. " +
@@ -149,7 +154,7 @@ public final class ConflictResolverImpl {
   private ConflictResolved saveModel(final EditableSModel model) {
     ModelAccess modelAccess = myProject.getRepository().getModelAccess();
     return modelAccess.computeWriteAction(() -> {
-      var result = model.save(SaveOptions.FORCE);
+      var result = model.save(SaveOptions.FORCE_SAVE_MEMORY);
       result.handle((res, throwable) -> {
         if (res != SaveResult.SAVED_TO_DATA_SOURCE) {
           LOG.error("The result is not expected", new IllegalStateException("While saving the conflicting model " + model + " to " + model.getSource()));
@@ -210,6 +215,8 @@ public final class ConflictResolverImpl {
     try {
       if (source.exists()) {
         onDisk = myPersistenceFacade.getModelFactory(source.getType()).load(source);
+        // make sure there are no subsequent attempts to alter the model's content (e.g. in case DS type supports partial/lazy loading)
+        onDisk.load();
       }
     } catch (UnsupportedDataSourceException | ModelLoadException e) {
       // properly reflect this case

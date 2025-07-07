@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -67,6 +67,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Evgeny Gryaznov, 11/10/10
@@ -79,6 +80,7 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
   // Does it bother me that failed rules are reported per-root in case of || generation?
   private final Set<SNodeReference> myFailedRules = new ConcurrentHashSet<>();
   private final LMCollector myLabels = new LMCollector();
+  private final EmployedLanguageCollector myEmployedLanguages = new EmployedLanguageCollector();
 
   /**
    * Input nodes coming from a model other than input model (or no model at all), e.g. if
@@ -112,7 +114,14 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
   @NotNull
   @Override
   public SNode createOutputNode(@NotNull SConcept concept) {
+    myEmployedLanguages.instanceCreated(concept);
     return generator.getOutputModel().createNode(concept);
+  }
+
+  /*package*/ SNode createOutputNode(SNode prototype) {
+    final SConcept concept = prototype.getConcept();
+    myEmployedLanguages.instanceCreated(concept);
+    return generator.getOutputModel().createNode(concept, prototype.getNodeId());
   }
 
   @NotNull
@@ -187,6 +196,8 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
   @Override
   public SNode insertNode(SNode child, SNodeReference templateNode, TemplateContext templateContext) {
     generator.checkIsExpectedLanguage(Collections.singletonList(child), templateNode, templateContext);
+    // FIXME respect children/all descendants. Part of ChildAdopter, perhaps?
+    myEmployedLanguages.instanceCreated(child.getConcept());
     return new ChildAdopter(generator).adopt(child, templateContext);
   }
 
@@ -223,7 +234,7 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
 
   @Override
   public void nullInputSwitch(SNodeReference _switch) throws GenerationCanceledException, GenerationFailureException {
-    final TemplateSwitchMapping templateSwitch = generator.getSwitch(_switch);
+    final TemplateSwitchMapping templateSwitch = generator.getRuleManager().getSwitch(_switch);
     if (templateSwitch != null) {
       templateSwitch.processNull(this);
     }
@@ -232,7 +243,12 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
   @Nullable
   @Override
   public Collection<SNode> trySwitch(SNodeReference _switch, TemplateContext context) throws GenerationException {
-    FastRuleFinder rf = generator.getRuleManager().getSwitchRules(_switch);
+    FastRuleFinder<TemplateReductionRule> rf = generator.getRuleManager().getSwitchRules(_switch);
+    if (rf == null) {
+      // we know _switch points to existing 'switch' node, see TemplateProcessor$SwitchMacro code. For some reason, however, we didn't
+      // collect any rules for the switch at the given transformation step, consider this as a show-stopper.
+      throw new GenerationFailureException("Current transformation step doesn't include rules for switch " + _switch);
+    }
     Collection<SNode> outputNodes = tryToReduce(rf, context.withNewExecutionPath());
     if (outputNodes != null) {
       // XXX it seems odd we do not do TracingUtil.fillOriginalNode(context.getInput(), outputNodes.get(0), false)
@@ -256,9 +272,14 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
     }
 
     // try the default case
-    TemplateSwitchMapping current = generator.getSwitch(_switch);
+    TemplateSwitchMapping current = generator.getRuleManager().getSwitch(_switch);
     if (current != null) {
       outputNodes = current.applyDefault(context);
+      while (outputNodes == null && current.getModifiesSwitch() != null) {
+        // not that I believe in more than Sw2 extends Sw1, but why not to iterate all (Sw3->Sw2-Sw1), unless it hurts
+        current = generator.getRuleManager().getSwitch(current.getModifiesSwitch());
+        outputNodes = current == null ? null : current.applyDefault(context);
+      }
       generator.recordTransformInputTrace(context.getInput(), outputNodes);
       return outputNodes;
     }
@@ -484,20 +505,30 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
   // access has to be package-only, but need to get LMs for current thread from TemplateQueryContext
   // contract is pretty much the same as GM.findOutputNodeByInputNodeAndMappingName(), null if no LM found, first node in case of
   // multiple mappings.
+  // XXX Alternatively, shall make LMCollector class public and move this method implementations right into TQC,
+  //     with public LMCollector:getNamedLabels()
   public SNode findLocalOutputRecordSingle(/*not null*/SNode inputNode, /*not null*/ String label) {
     return myLabels.values(label, inputNode).findFirst().orElse(null);
   }
 
-  public SNode findLocalOutputRecordSingle(/*not null*/ String label, Object key1, Object key2) {
+  public SNode findOutputRecordSingle(/*not null*/ String label, Object key1, Object key2) {
     if (notSNodeKey(key1) || notSNodeKey(key2)) {
       warnCompositeLabelKeys(key1, key2, label);
       return null;
     }
-    SNode rv = myLabels.getLookup(label).findOutputRecordSingle((SNode) key1, (SNode) key2);
-    if (rv == null) {
-      rv = generator.getLabelMapLookup(label).findOutputRecordSingle((SNode) key1, (SNode) key2);
+    final LMLookup local = myLabels.getLookup(label);
+    final LMLookup shared = generator.getLabelMapLookup(label);
+    return local.andThen(shared).findOutputRecordSingle((SNode) key1, (SNode) key2);
+  }
+
+  public List<SNode> findOutputRecordList(/*not null*/ String label, Object key1, Object key2) {
+    if (notSNodeKey(key1) || notSNodeKey(key2)) {
+      warnCompositeLabelKeys(key1, key2, label);
+      return Collections.emptyList();
     }
-    return rv;
+    final LMLookup local = myLabels.getLookup(label);
+    final LMLookup shared = generator.getLabelMapLookup(label);
+    return local.andThen(shared).compositeLMValues((SNode) key1, (SNode) key2).collect(Collectors.toList());
   }
 
   @NotNull
@@ -505,9 +536,14 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
     return myLabels;
   }
 
+  @NotNull
+  /*package*/ EmployedLanguageCollector getEmployedLanguages() {
+    return myEmployedLanguages;
+  }
+
   @Nullable
   Collection<SNode> tryToReduce(@NotNull SNode inputNode) throws GenerationFailureException, GenerationCanceledException {
-    FastRuleFinder rf = generator.getRuleManager().getReductionRules();
+    FastRuleFinder<TemplateReductionRule> rf = generator.getRuleManager().getReductionRules();
     Collection<SNode> outputNodes = tryToReduce(rf, new DefaultTemplateContext(this, inputNode, null));
     if (outputNodes != null) {
       if (outputNodes.size() == 1) {
@@ -599,6 +635,9 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
         getLogger().error(ruleNode, String.format("Reduction rule failed: %s", ex.getMessage()), ex.asProblemDescription());
       }
     } catch (GenerationFailureException | GenerationCanceledException ex) {
+      if (ex.getTemplateModelLocation() == null) {
+        ex.setTemplateModelLocation(reductionRule.getRuleNode());
+      }
       throw ex;
     } catch (GenerationException ex) {
       // ignore

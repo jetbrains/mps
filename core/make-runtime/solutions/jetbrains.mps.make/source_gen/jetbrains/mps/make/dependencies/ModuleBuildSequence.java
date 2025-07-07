@@ -18,22 +18,21 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 
-@GeneratedClass(node = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)/1030074786389909272", model = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)")
+@GeneratedClass(nodeId = "1030074786389909272", model = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)")
 /*package*/ class ModuleBuildSequence {
   private List<List<SModule>> myPhaseOne;
   private List<List<SModule>> myPhaseTwo;
   private List<List<SModule>> myPhaseThree;
 
   public void buildOrder(Iterable<SModule> pool) {
-    List<Language> languages = Sequence.fromIterable(pool).ofType(Language.class).toListSequence();
-    List<Generator> generators = Sequence.fromIterable(pool).ofType(Generator.class).toListSequence();
+    List<Language> languages = Sequence.fromIterable(pool).ofType(Language.class).toList();
+    List<Generator> generators = Sequence.fromIterable(pool).ofType(Generator.class).toList();
     Set<SModule> otherModules = SetSequence.fromSetWithValues(new HashSet<SModule>(), Sequence.fromIterable(pool).subtract(ListSequence.fromList(languages)).subtract(ListSequence.fromList(generators)));
 
     Set<SModule> phaseOne = SetSequence.fromSet(new HashSet<SModule>());
-    List<SModule> phaseTwo = ListSequence.fromList(languages).ofType(SModule.class).concat(ListSequence.fromList(generators)).toListSequence();
+    List<SModule> phaseTwo = ListSequence.fromList(languages).ofType(SModule.class).concat(ListSequence.fromList(generators)).toList();
     for (SModule dep : CollectionSequence.fromCollection(new GlobalModuleDependenciesManager(phaseTwo).getModules(GlobalModuleDependenciesManager.Deptype.EXECUTE))) {
       if (SetSequence.fromSet(otherModules).removeElement(dep) != null) {
         SetSequence.fromSet(phaseOne).addElement(dep);
@@ -65,18 +64,10 @@ import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 
     for (ModulesCluster.ModuleDeps md : Sequence.fromIterable(MapSequence.fromMap(graph).values())) {
       Iterable<SModule> reqmods = new GlobalModuleDependenciesManager(md.getModule()).getModules(GlobalModuleDependenciesManager.Deptype.COMPILE);
-      md.requires(Sequence.fromIterable(reqmods).select(new ISelector<SModule, ModulesCluster.ModuleDeps>() {
-        public ModulesCluster.ModuleDeps select(SModule it) {
-          return MapSequence.fromMap(graph).get(it.getModuleReference());
-        }
-      }).where(new NotNullWhereFilter<ModulesCluster.ModuleDeps>()));
+      md.requires(Sequence.fromIterable(reqmods).select((it) -> MapSequence.fromMap(graph).get(it.getModuleReference())).where(new NotNullWhereFilter()));
     }
 
     List<ModulesCluster.ModulesGraph.Cycle> compacted = new ModulesCluster.ModulesGraph(MapSequence.fromMap(graph).values()).compactTotalOrder();
-    return ListSequence.fromList(compacted).select(new ISelector<ModulesCluster.ModulesGraph.Cycle, List<SModule>>() {
-      public List<SModule> select(ModulesCluster.ModulesGraph.Cycle cycle) {
-        return cycle.modules();
-      }
-    }).toListSequence();
+    return ListSequence.fromList(compacted).select((cycle) -> cycle.modules()).toList();
   }
 }

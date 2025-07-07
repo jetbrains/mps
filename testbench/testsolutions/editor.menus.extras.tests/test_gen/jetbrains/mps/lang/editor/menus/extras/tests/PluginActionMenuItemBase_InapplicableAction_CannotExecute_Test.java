@@ -4,9 +4,10 @@ package jetbrains.mps.lang.editor.menus.extras.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -19,11 +20,11 @@ import org.junit.Assert;
 
 @MPSLaunch
 public class PluginActionMenuItemBase_InapplicableAction_CannotExecute_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(PluginActionMenuItemBase_InapplicableAction_CannotExecute_Test.class, "${mps_home}", "r:a1e8c439-e997-416b-a5dc-df7c3fd41b00(jetbrains.mps.lang.editor.menus.extras.tests@tests)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(PluginActionMenuItemBase_InapplicableAction_CannotExecute_Test.class).projectPath(null).modelRef("r:a1e8c439-e997-416b-a5dc-df7c3fd41b00(jetbrains.mps.lang.editor.menus.extras.tests@tests)").reopenProject(false).build());
 
   public PluginActionMenuItemBase_InapplicableAction_CannotExecute_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -42,23 +43,21 @@ public class PluginActionMenuItemBase_InapplicableAction_CannotExecute_Test exte
       initEditorComponent("8874023590561015430", "");
       SRepository repository = getEditorComponent().getEditorContext().getRepository();
 
-      repository.getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          AnAction action = new AnAction() {
-            @Override
-            public void update(AnActionEvent e) {
-              super.update(e);
-              e.getPresentation().setEnabled(false);
-            }
-            public void actionPerformed(AnActionEvent p0) {
-            }
-          };
+      repository.getModelAccess().runReadAction(() -> {
+        AnAction action = new AnAction() {
+          @Override
+          public void update(AnActionEvent e) {
+            super.update(e);
+            e.getPresentation().setEnabled(false);
+          }
+          public void actionPerformed(AnActionEvent p0) {
+          }
+        };
 
-          DefaultTransformationMenuContext context = DefaultTransformationMenuContext.createInitialContextForCell(getEditorComponent().getSelectedCell(), "irrelevant location");
+        DefaultTransformationMenuContext context = DefaultTransformationMenuContext.createInitialContextForCell(getEditorComponent().getSelectedCell(), "irrelevant location");
 
-          ActionItem item = new PluginActionMenuItemBase(context, action);
-          Assert.assertFalse(item.canExecute("irrelevant pattern"));
-        }
+        ActionItem item = new PluginActionMenuItemBase(context, action);
+        Assert.assertFalse(item.canExecute("irrelevant pattern"));
       });
     }
   }

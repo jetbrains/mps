@@ -31,7 +31,7 @@
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
@@ -101,7 +101,7 @@
       </concept>
       <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -113,7 +113,7 @@
       <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
         <reference id="1107535924139" name="classifier" index="3uigEE" />
       </concept>
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
@@ -147,6 +147,12 @@
       <concept id="1196350785113" name="jetbrains.mps.lang.quotation.structure.Quotation" flags="nn" index="2c44tf">
         <child id="1196350785114" name="quotedNode" index="2c44tc" />
       </concept>
+      <concept id="5455284157993863837" name="jetbrains.mps.lang.quotation.structure.NodeBuilder" flags="nn" index="2pJPEk">
+        <child id="5455284157993863838" name="quotedNode" index="2pJPEn" />
+      </concept>
+      <concept id="5455284157993863840" name="jetbrains.mps.lang.quotation.structure.NodeBuilderNode" flags="nn" index="2pJPED">
+        <reference id="5455284157993910961" name="concept" index="2pJxaS" />
+      </concept>
     </language>
     <language id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem">
       <concept id="2990591960991114251" name="jetbrains.mps.lang.typesystem.structure.OriginalNodeId" flags="ng" index="6wLe0">
@@ -175,12 +181,9 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
-    </language>
-    <language id="662a9f2b-5802-4d16-9558-72c65c7a681e" name="org.jetbrains.mps.samples.Money">
-      <concept id="5447719361346490730" name="org.jetbrains.mps.samples.Money.structure.MoneyType" flags="in" index="iynUf" />
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
       <concept id="1151689724996" name="jetbrains.mps.baseLanguage.collections.structure.SequenceType" flags="in" index="A3Dl8">
@@ -1072,10 +1075,11 @@
         <node concept="3clFbS" id="5f" role="3clF47">
           <node concept="3clFbF" id="5j" role="3cqZAp">
             <node concept="37vLTI" id="5s" role="3clFbG">
-              <node concept="2c44tf" id="5t" role="37vLTx">
-                <uo k="s:originTrace" v="n:2864272256649701503" />
-                <node concept="iynUf" id="5v" role="2c44tc">
-                  <uo k="s:originTrace" v="n:2864272256649701530" />
+              <node concept="2pJPEk" id="5t" role="37vLTx">
+                <uo k="s:originTrace" v="n:4645004758352410407" />
+                <node concept="2pJPED" id="5v" role="2pJPEn">
+                  <ref role="2pJxaS" to="v0h4:4IqbYlp4P5E" resolve="MoneyType" />
+                  <uo k="s:originTrace" v="n:4645004758352410406" />
                 </node>
               </node>
               <node concept="2OqwBi" id="5u" role="37vLTJ">
@@ -1094,10 +1098,11 @@
                 </node>
                 <node concept="Xjq3P" id="5A" role="2Oq$k0" />
               </node>
-              <node concept="2c44tf" id="5$" role="37vLTx">
-                <uo k="s:originTrace" v="n:2864272256649701768" />
-                <node concept="iynUf" id="5B" role="2c44tc">
-                  <uo k="s:originTrace" v="n:2864272256649701769" />
+              <node concept="2pJPEk" id="5$" role="37vLTx">
+                <uo k="s:originTrace" v="n:4645004758352410427" />
+                <node concept="2pJPED" id="5B" role="2pJPEn">
+                  <ref role="2pJxaS" to="v0h4:4IqbYlp4P5E" resolve="MoneyType" />
+                  <uo k="s:originTrace" v="n:4645004758352410426" />
                 </node>
               </node>
             </node>
@@ -1270,10 +1275,11 @@
         <node concept="3clFbS" id="6D" role="3clF47">
           <node concept="3clFbF" id="6H" role="3cqZAp">
             <node concept="37vLTI" id="6Q" role="3clFbG">
-              <node concept="2c44tf" id="6R" role="37vLTx">
-                <uo k="s:originTrace" v="n:5447719361346552323" />
-                <node concept="iynUf" id="6T" role="2c44tc">
-                  <uo k="s:originTrace" v="n:5447719361346552325" />
+              <node concept="2pJPEk" id="6R" role="37vLTx">
+                <uo k="s:originTrace" v="n:4645004758352410192" />
+                <node concept="2pJPED" id="6T" role="2pJPEn">
+                  <ref role="2pJxaS" to="v0h4:4IqbYlp4P5E" resolve="MoneyType" />
+                  <uo k="s:originTrace" v="n:4645004758352410191" />
                 </node>
               </node>
               <node concept="2OqwBi" id="6S" role="37vLTJ">
@@ -1292,10 +1298,11 @@
                 </node>
                 <node concept="Xjq3P" id="70" role="2Oq$k0" />
               </node>
-              <node concept="2c44tf" id="6Y" role="37vLTx">
-                <uo k="s:originTrace" v="n:5447719361346552326" />
-                <node concept="iynUf" id="71" role="2c44tc">
-                  <uo k="s:originTrace" v="n:5447719361346552328" />
+              <node concept="2pJPEk" id="6Y" role="37vLTx">
+                <uo k="s:originTrace" v="n:4645004758352410212" />
+                <node concept="2pJPED" id="71" role="2pJPEn">
+                  <ref role="2pJxaS" to="v0h4:4IqbYlp4P5E" resolve="MoneyType" />
+                  <uo k="s:originTrace" v="n:4645004758352410211" />
                 </node>
               </node>
             </node>
@@ -1394,10 +1401,11 @@
           <uo k="s:originTrace" v="n:5447719361346552319" />
           <node concept="3clFbF" id="7F" role="3cqZAp">
             <uo k="s:originTrace" v="n:5447719361346552330" />
-            <node concept="2c44tf" id="7G" role="3clFbG">
-              <uo k="s:originTrace" v="n:5447719361346552331" />
-              <node concept="iynUf" id="7H" role="2c44tc">
-                <uo k="s:originTrace" v="n:5447719361346552333" />
+            <node concept="2pJPEk" id="7G" role="3clFbG">
+              <uo k="s:originTrace" v="n:4645004758352410363" />
+              <node concept="2pJPED" id="7H" role="2pJPEn">
+                <ref role="2pJxaS" to="v0h4:4IqbYlp4P5E" resolve="MoneyType" />
+                <uo k="s:originTrace" v="n:4645004758352410362" />
               </node>
             </node>
           </node>
@@ -1609,10 +1617,11 @@
                     <node concept="3uibUv" id="8S" role="10QFUM">
                       <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
                     </node>
-                    <node concept="2c44tf" id="8T" role="10QFUP">
-                      <uo k="s:originTrace" v="n:654553635094918433" />
-                      <node concept="iynUf" id="8U" role="2c44tc">
-                        <uo k="s:originTrace" v="n:654553635094922833" />
+                    <node concept="2pJPEk" id="8T" role="10QFUP">
+                      <uo k="s:originTrace" v="n:4645004758352409864" />
+                      <node concept="2pJPED" id="8U" role="2pJPEn">
+                        <ref role="2pJxaS" to="v0h4:4IqbYlp4P5E" resolve="MoneyType" />
+                        <uo k="s:originTrace" v="n:4645004758352409863" />
                       </node>
                     </node>
                   </node>
@@ -2468,10 +2477,11 @@
                     <node concept="3uibUv" id="d8" role="10QFUM">
                       <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
                     </node>
-                    <node concept="2c44tf" id="d9" role="10QFUP">
-                      <uo k="s:originTrace" v="n:5447719361346496417" />
-                      <node concept="iynUf" id="da" role="2c44tc">
-                        <uo k="s:originTrace" v="n:5447719361346496419" />
+                    <node concept="2pJPEk" id="d9" role="10QFUP">
+                      <uo k="s:originTrace" v="n:4645004758352410706" />
+                      <node concept="2pJPED" id="da" role="2pJPEn">
+                        <ref role="2pJxaS" to="v0h4:4IqbYlp4P5E" resolve="MoneyType" />
+                        <uo k="s:originTrace" v="n:4645004758352410705" />
                       </node>
                     </node>
                   </node>
@@ -3050,10 +3060,11 @@
                     <node concept="3uibUv" id="fX" role="10QFUM">
                       <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
                     </node>
-                    <node concept="2c44tf" id="fY" role="10QFUP">
-                      <uo k="s:originTrace" v="n:4001135958233292349" />
-                      <node concept="iynUf" id="fZ" role="2c44tc">
-                        <uo k="s:originTrace" v="n:4001135958233292386" />
+                    <node concept="2pJPEk" id="fY" role="10QFUP">
+                      <uo k="s:originTrace" v="n:4645004758352388540" />
+                      <node concept="2pJPED" id="fZ" role="2pJPEn">
+                        <ref role="2pJxaS" to="v0h4:4IqbYlp4P5E" resolve="MoneyType" />
+                        <uo k="s:originTrace" v="n:4645004758352388539" />
                       </node>
                     </node>
                   </node>

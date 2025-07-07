@@ -18,7 +18,7 @@ import jetbrains.mps.vcs.annotate.AnnotatedCellMessage;
 import jetbrains.mps.vcs.annotate.AnnotationColumn;
 import org.jetbrains.annotations.Nullable;
 
-@GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/7889174376581657295", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
+@GeneratedClass(nodeId = "7889174376581657295", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public class AnnotateRevision_Action extends BaseAction {
   private static final Icon ICON = AllIcons.Actions.Annotate;
 
@@ -35,7 +35,7 @@ public class AnnotateRevision_Action extends BaseAction {
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
     event.getPresentation().setText(VcsBundle.messagePointer("action.annotate.revision.text"));
     event.getPresentation().setDescription(VcsBundle.messagePointer("action.annotate.selected.revision.in.new.tab.description"));
-    setEnabledState(event.getPresentation(), AnnotateRevision_Action.this.getCellMessage(event) != null);
+    setEnabledState(event.getPresentation(), AnnotateRevision_Action.this.getCellMessage(event) != null && !(AnnotateRevision_Action.this.getCellMessage(event).getCommitsGraphNode().isLocalRevision()));
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {

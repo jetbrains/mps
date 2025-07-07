@@ -4,27 +4,19 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.BaseKeymapChanges;
-import com.intellij.openapi.actionSystem.Shortcut;
-import com.intellij.openapi.actionSystem.KeyboardShortcut;
-import javax.swing.KeyStroke;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/6874470910152579882", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
-public class GnomeActionsKeymap_KeymapChanges extends BaseKeymapChanges {
+@GeneratedClass(nodeId = "6874470910152579882", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+public final class GnomeActionsKeymap_KeymapChanges extends BaseKeymapChanges {
   public GnomeActionsKeymap_KeymapChanges() {
-    // simple
-    // simple with remove/replace
-    addSimpleShortcut("jetbrains.mps.ide.actions.FastFindNodeUsages_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("alt shift 7"), false, true));
-    addSimpleShortcut("jetbrains.mps.ide.actions.FindConceptInstances_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("alt shift 6"), false, true));
-    addSimpleShortcut("jetbrains.mps.ide.actions.FindModelUsages_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("alt shift 7"), false, true));
-    addSimpleShortcut("jetbrains.mps.ide.actions.FindSpecificNodeUsages_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("ctrl alt shift 7"), false, true));
-    addSimpleShortcut("jetbrains.mps.ide.actions.ShowInLogicalView_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("alt shift 2"), false, true));
-    // simple parameterized
-    // complex
+    replace("jetbrains.mps.ide.actions.FastFindNodeUsages_Action", "alt shift 7");
+    replace("jetbrains.mps.ide.actions.FindConceptInstances_Action", "alt shift 6");
+    replace("jetbrains.mps.ide.actions.FindModelUsages_Action", "alt shift 7");
+    replace("jetbrains.mps.ide.actions.FindSpecificNodeUsages_Action", "ctrl alt shift 7");
+    replace("jetbrains.mps.ide.actions.ShowInLogicalView_Action", "alt shift 2");
   }
+  @Override
   public String getScheme() {
     return "Default for GNOME";
   }
-  public static Shortcut getShortcut(String stroke) {
-    return new KeyboardShortcut(KeyStroke.getKeyStroke(stroke), null);
-  }
+
 }

@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class BuildMps_TipsPackage__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5ea1926fded234efL, "jetbrains.mps.build.mps.structure.BuildMps_TipsPackage");
 
-  public static final SMethod<String> getTmpPath_id59gOS57Njec = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTmpPath").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("59gOS57Njec").build(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<String> getTmpPath_id59gOS57Njec = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTmpPath").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5931473261455815564L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTmpPath_id59gOS57Njec);
 

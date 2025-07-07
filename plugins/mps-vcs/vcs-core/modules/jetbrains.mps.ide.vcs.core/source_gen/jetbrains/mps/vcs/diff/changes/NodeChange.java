@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 
-@GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/5694687812507036176", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
+@GeneratedClass(nodeId = "5694687812507036176", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public abstract class NodeChange extends StructureChange {
   private final SNodeId myAffectedNodeId;
   private final SNodeId myOppositeNodeId;
@@ -51,5 +51,19 @@ public abstract class NodeChange extends StructureChange {
   @Override
   public ChangeType getType() {
     return ChangeType.CHANGE;
+  }
+
+  @Override
+  public boolean conflictsWith(@NotNull ModelChange otherChange) {
+    if (super.conflictsWith(otherChange)) {
+      return true;
+    }
+    return (otherChange instanceof NodeGroupChange && (as_mmglrt_a0a0a0a1a51(otherChange, NodeGroupChange.class)).containsDeletedNode(this.getAffectedNodeId(false))) || (otherChange instanceof NodeGroupNotMoveChange && (as_mmglrt_a0a0a0a1a51_0(otherChange, NodeGroupNotMoveChange.class)).containsDeletedNode(this.getAffectedNodeId(false)));
+  }
+  private static <T> T as_mmglrt_a0a0a0a1a51(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_mmglrt_a0a0a0a1a51_0(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 }

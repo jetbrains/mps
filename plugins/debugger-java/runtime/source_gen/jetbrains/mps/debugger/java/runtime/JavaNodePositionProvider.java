@@ -15,7 +15,7 @@ import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.textgen.trace.BaseLanguageNodeLookup;
 import jetbrains.mps.debugger.java.runtime.state.DebugSession;
 
-@GeneratedClass(node = "r:171d7488-7735-44dd-8049-f905d8fca4b0(jetbrains.mps.debugger.java.runtime)/7048882195103614171", model = "r:171d7488-7735-44dd-8049-f905d8fca4b0(jetbrains.mps.debugger.java.runtime)")
+@GeneratedClass(nodeId = "7048882195103614171", model = "r:171d7488-7735-44dd-8049-f905d8fca4b0(jetbrains.mps.debugger.java.runtime)")
 public class JavaNodePositionProvider extends NodePositionProvider {
   public JavaNodePositionProvider() {
   }

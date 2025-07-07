@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,7 @@ import com.intellij.ide.TreeExpander;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionToolbar;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataKey;
@@ -100,8 +101,8 @@ public class UsagesView implements IExternalizeable {
   private final ViewOptions myOptions2Update;
 
   //my components
-  private JPanel myPanel;
-  private UsagesTreeComponent myTreeComponent;
+  private final JPanel myPanel;
+  private final UsagesTreeComponent myTreeComponent;
   private String myCaption = "Usages";
   private Icon myIcon = Toolwindows.ToolWindowFind;
 
@@ -114,7 +115,7 @@ public class UsagesView implements IExternalizeable {
   private final OccurenceNavigatorSupport myOccurrenceNavigator;
 
   public UsagesView(com.intellij.openapi.project.Project project, ViewOptions defaultOptions) {
-    this(ProjectHelper.toMPSProject(project), defaultOptions);
+    this(ProjectHelper.fromIdeaProject(project), defaultOptions);
   }
 
   public UsagesView(Project mpsProject, ViewOptions defaultOptions) {
@@ -137,16 +138,18 @@ public class UsagesView implements IExternalizeable {
 
     myOccurrenceNavigator = new OccurenceNavigatorSupport(myTreeComponent.getTree()) {
       @Override
-      protected Navigatable createDescriptorForNode(DefaultMutableTreeNode node) {
+      protected Navigatable createDescriptorForNode(@NotNull DefaultMutableTreeNode node) {
         Navigatable n = myTreeComponent.getTree().toNavigatable(node);
         return n != null && n.canNavigate() ? n : null;
       }
 
+      @NotNull
       @Override
       public String getNextOccurenceActionName() {
         return UsageViewBundle.message("action.next.occurrence");
       }
 
+      @NotNull
       @Override
       public String getPreviousOccurenceActionName() {
         return UsageViewBundle.message("action.previous.occurrence");
@@ -230,6 +233,8 @@ public class UsagesView implements IExternalizeable {
 
   @Nullable
   public SearchResults getSearchResults() {
+    // FIXME the only use is in ModelCheckerViewer, which is likely plain wrong. Clients of MCV shall use
+    //       ModelCheckerIssueFinder directly, not through viewer
     return myLastResults;
   }
 
@@ -259,8 +264,7 @@ public class UsagesView implements IExternalizeable {
   /**
    * the need to implement OccurenceNavigator is unfortunate consequence of IDEA approach to discover one
    * using awt.Component hierarchy, see {@code OccurenceNavigatorActionBase#getNavigator()} implementation.
-   * Even though MPS controls the way OccurenceNavigator is discovered (e.g. check {@link InspectorRespectingPreviousOccurrenceAction}),
-   * it seems unreasonable to introduce own mechanism in addition to IDEA's.
+   * @see com.intellij.usages.impl.UsageViewImpl, we are doing the same
    */
   private class RootPanel extends JPanel implements DataProvider, OccurenceNavigator {
     public RootPanel() {
@@ -269,7 +273,7 @@ public class UsagesView implements IExternalizeable {
 
     @Nullable
     @Override
-    public Object getData(@NonNls String dataId) {
+    public Object getData(@NotNull @NonNls String dataId) {
       if (PlatformDataKeys.HELP_ID.is(dataId)) {
         return "ideaInterface.usagesView";
       }
@@ -278,6 +282,9 @@ public class UsagesView implements IExternalizeable {
       }
       if (USAGE_VIEW.is(dataId)) {
         return UsagesView.this;
+      }
+      if (PlatformDataKeys.COPY_PROVIDER.is(dataId)) {
+        return new UsagesCopyProvider();
       }
       return null;
     }
@@ -346,14 +353,19 @@ public class UsagesView implements IExternalizeable {
     actionGroup.add(new ToggleAction("Autoscroll to source", "", Icons.AUTOSCROLL_ICON) {
 
       @Override
-      public void setSelected(AnActionEvent e, boolean state) {
+      public void setSelected(@NotNull AnActionEvent e, boolean state) {
         myTree.setAutoscroll(state);
         myOptions2Update.setValues(myTreeComponent.getComponentsViewOptions());
       }
 
       @Override
-      public boolean isSelected(AnActionEvent e) {
+      public boolean isSelected(@NotNull AnActionEvent e) {
         return myTree.isAutoscroll();
+      }
+
+      @Override
+      public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.BGT;
       }
     });
     return actionGroup;
@@ -386,8 +398,13 @@ public class UsagesView implements IExternalizeable {
     }
 
     @Override
+    @NotNull
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
+    }
+
+    @Override
     public void update(@NotNull AnActionEvent e) {
-      super.update(e);
       e.getPresentation().setEnabled(mySearchTask != null);
     }
 
@@ -462,8 +479,13 @@ public class UsagesView implements IExternalizeable {
       return getSearchResults();
     }
 
-    public SearchResults getSearchResults() {
+    public SearchResults<?> getSearchResults() {
       return myLastResults;
+    }
+
+    @Nullable
+    public String getCaption() {
+      return mySearchQuery.getCaption();
     }
 
     @Nullable
@@ -513,6 +535,12 @@ public class UsagesView implements IExternalizeable {
     }
 
     @Override
+    @NotNull
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
+    }
+
+    @Override
     public void update(@NotNull AnActionEvent e) {
       e.getPresentation().setEnabled(myMakeSession.get() == null && !myMakeComponent.isSessionActive());
     }
@@ -527,10 +555,10 @@ public class UsagesView implements IExternalizeable {
             models.add(modelDescriptor);
           }
         }
-        return new ModelsToResources(models).resources();
+        return new ModelsToResources(models, true).resources();
       });
 
-      if (myMakeSession.compareAndSet(null, new MakeSession(mpsProject, new DefaultMakeMessageHandler(mpsProject), false))) {
+      if (myMakeSession.compareAndSet(null, new MakeSession(mpsProject, new DefaultMakeMessageHandler(mpsProject), true))) {
         try {
           IMakeService makeService = mpsProject.getComponent(MakeServiceComponent.class).get();
           if (makeService.openNewSession(myMakeSession.get())) {

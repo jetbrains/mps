@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 package jetbrains.mps.smodel;
 
 import jetbrains.mps.RuntimeFlags;
-import jetbrains.mps.logging.Log4jUtil;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.adapter.structure.types.SEnumerationAdapter;
 import jetbrains.mps.smodel.language.ConceptRegistryUtil;
 import jetbrains.mps.smodel.legacy.ConceptMetaInfoConverter;
@@ -25,7 +25,6 @@ import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.SNodeOperations;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SDataType;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -33,12 +32,13 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SType;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class SNodeAccessUtilImpl extends SNodeAccessUtil {
-  private static Logger LOG = Logger.getLogger(SNodeAccessUtil.class);
+  private static final Logger LOG = Logger.getLogger(SNodeAccessUtil.class);
 
   //SNodeAccessUtilImpl has only one instance, so we can omit remove() here though the field is not static
   private final ThreadLocal<Set<Pair<org.jetbrains.mps.openapi.model.SNode, SProperty>>> ourPropertySettersInProgress = new InProgressThreadLocal<>();
@@ -48,14 +48,7 @@ public class SNodeAccessUtilImpl extends SNodeAccessUtil {
 
   @Override
   protected boolean hasPropertyImpl(org.jetbrains.mps.openapi.model.SNode node, SProperty property) {
-    node.hasProperty(property); //todo this is to invoke corresponding read access. try to remove it by merging 2 types of access
-    String property_internal = node.getProperty(property);
-    return !SModelUtil_new.isEmptyPropertyValue(property_internal);
-  }
-
-  @Override
-  protected boolean hasPropertyImpl(org.jetbrains.mps.openapi.model.SNode node, String name) {
-    return hasPropertyImpl(node, ((ConceptMetaInfoConverter) node.getConcept()).convertProperty(name));
+    return node.hasProperty(property);
   }
 
   @Override
@@ -104,10 +97,10 @@ public class SNodeAccessUtilImpl extends SNodeAccessUtil {
 
   private void logControlFlow(RuntimeException ex) {
     // see ActionDispatcher.logUnexpectedRuntimeException for more details
-    if (RuntimeFlags.isInternalMode() || LOG.isDebugEnabled()) {
+    if (RuntimeFlags.isInternalMode() || LOG.isDebugLevel()) {
       String m = "Ignored control flow exception";
       if (RuntimeFlags.isInternalMode()) {
-        LOG.warn(m);
+        LOG.warning(m);
       } else {
         LOG.debug(m);
       }
@@ -132,11 +125,6 @@ public class SNodeAccessUtilImpl extends SNodeAccessUtil {
     ReferenceConstraintsDescriptor descriptor;
     descriptor = constraintsDescriptor.getReference(referenceLink);
     return descriptor;
-  }
-
-  @Override
-  public String getPropertyImpl(org.jetbrains.mps.openapi.model.SNode node, String name) {
-    return getPropertyImpl(node, ((ConceptMetaInfoConverter) node.getConcept()).convertProperty(name));
   }
 
   @Override
@@ -167,7 +155,7 @@ public class SNodeAccessUtilImpl extends SNodeAccessUtil {
         descriptor.setPropertyValue(node, propertyValue);
       } else {
         String m = String.format("Can't find property constraints for property `%s`. Setting directly. Value: `%s`.", property.getName(), propertyValue);
-        LOG.error(Log4jUtil.createMessageObject(m, node));
+        LOG.error(m, node);
         setPropertyDirectly(node, property, propertyValue);
       }
     } catch (Exception t) {
@@ -212,7 +200,7 @@ public class SNodeAccessUtilImpl extends SNodeAccessUtil {
 
     if (descriptor == null) {
       String m = String.format("Can't find reference constraints for reference `%s`. Setting directly.", referenceLink.getName());
-      LOG.error(Log4jUtil.createMessageObject(m, node));
+      LOG.error(m, node);
       node.setReferenceTarget(referenceLink, target);
       return;
     }
@@ -244,11 +232,17 @@ public class SNodeAccessUtilImpl extends SNodeAccessUtil {
     node.setReference(referenceLink, reference);
   }
 
-  public void setReferenceImpl(org.jetbrains.mps.openapi.model.SNode node, String role, @Nullable org.jetbrains.mps.openapi.model.SReference reference) {
-    setReferenceImpl(node, ((ConceptMetaInfoConverter) node.getConcept()).convertAssociation(role), reference);
+  @Override
+  protected void setAssociationImpl(SNode node, SReferenceLink referenceLink, SNodeReference target) {
+    if (target == null) {
+      node.dropReference(referenceLink);
+    } else {
+      //FIXME WHY there is no logic that invokes constraints like in SNodeAccessUtilImpl#setReferenceTargetImpl ???
+      node.setReference(referenceLink, target);
+    }
   }
 
-  private class InProgressThreadLocal<T> extends ThreadLocal<Set<Pair<org.jetbrains.mps.openapi.model.SNode, T>>> {
+  private static class InProgressThreadLocal<T> extends ThreadLocal<Set<Pair<org.jetbrains.mps.openapi.model.SNode, T>>> {
     @Override
     protected Set<Pair<org.jetbrains.mps.openapi.model.SNode, T>> initialValue() {
       return new HashSet<>();

@@ -35,7 +35,7 @@ public class Template_reduce_SuperConceptExpression extends TemplateDeclarationB
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    environment.resolve(new RefResolver(tnode1, myAssociationLinks[0], context, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7613853987897925127"), "thisConcept") {
+    environment.resolve(new RefResolver(tnode1, myAssociationLinks[0], context, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7012992644623028223"), "thisConcept") {
       @Override
       public Object resolve() {
         return QueriesGenerated.referenceMacro_GetReferent_12_0(createQueryContext());
@@ -68,7 +68,7 @@ public class Template_reduce_SuperConceptExpression extends TemplateDeclarationB
     @Override
     public SContainmentLink[] aggregations() {
       SContainmentLink[] rv = new SContainmentLink[1];
-      rv[0] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+      rv[0] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
       return rv;
     }
   }

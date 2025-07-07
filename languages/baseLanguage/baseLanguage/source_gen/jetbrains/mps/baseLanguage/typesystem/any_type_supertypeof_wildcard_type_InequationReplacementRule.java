@@ -21,7 +21,7 @@ public class any_type_supertypeof_wildcard_type_InequationReplacementRule extend
   public any_type_supertypeof_wildcard_type_InequationReplacementRule() {
   }
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
-    return !((SNodeOperations.isInstanceOf(supertype, CONCEPTS.PrimitiveType$sR) || TypecheckingFacade.getFromContext().isStrongSubtype(supertype, SLinkOperations.getTarget(_quotation_createNode_fu2yto_a1a0a0a0a1(), LINKS.descriptor$M2vT))));
+    return !(SNodeOperations.isInstanceOf(supertype, CONCEPTS.PrimitiveType$sR) || TypecheckingFacade.getFromContext().isStrongSubtype(supertype, SLinkOperations.getTarget(_quotation_createNode_fu2yto_a1a0a0a0a1(), LINKS.descriptor$M2vT)));
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
   }

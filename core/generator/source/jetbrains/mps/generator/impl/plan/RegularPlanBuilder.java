@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,6 +27,7 @@ import jetbrains.mps.generator.plan.PlanIdentity;
 import jetbrains.mps.generator.runtime.TemplateMappingConfiguration;
 import jetbrains.mps.generator.runtime.TemplateModel;
 import jetbrains.mps.generator.runtime.TemplateModule;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.messages.LogHandler;
 import jetbrains.mps.messages.Message;
@@ -35,7 +36,6 @@ import jetbrains.mps.smodel.SLanguageHierarchy;
 import jetbrains.mps.smodel.language.GeneratorRuntime;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -43,10 +43,8 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
@@ -119,7 +117,7 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
   public TransformStepBuilder transform(final boolean individualStepsPerGenerator) {
     class TSB implements TransformStepBuilder {
       private final List<Predicate<? super TemplateModule>> subSteps1 = new ArrayList<>(4);
-      private final List<Supplier<TemplateModule>> subSteps2 = new ArrayList<>(4);
+      private final List<Supplier<Stream<TemplateModule>>> subSteps2 = new ArrayList<>(4);
       @Override
       public TransformStepBuilder include(@NotNull SLanguage language, BuilderOption option) {
         if (BuilderOption.Extend.presentIn(option)) {
@@ -141,15 +139,16 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
         mySteps.add(new TransformEntry2(individualStepsPerGenerator, subSteps1, subSteps2));
       }
 
-      private Supplier<TemplateModule> ofLanguage(final LanguageRegistry languageRegistry, final SLanguage l) {
-        // XXX just takes the first one, although might be better to get a compound Supplier that gives all generators
+      private Supplier<Stream<TemplateModule>> ofLanguage(final LanguageRegistry languageRegistry, final SLanguage l) {
+        // XXX just takes the first one, although it might be better to get a compound Supplier that gives all generators
         // of the language?
         return () -> {
+          // XXX why did I use supplier that postpones access to lr.generators?
           final LanguageRuntime lr = languageRegistry.getLanguage(l);
           if (lr == null) {
-            return null;
+            return Stream.empty();
           }
-          return (TemplateModule) lr.getGenerators().stream().filter(gr -> gr instanceof TemplateModule).findFirst().orElse(null);
+          return lr.getGenerators().stream().filter(gr -> gr instanceof TemplateModule).map(TemplateModule.class::cast);
         };
       }
 
@@ -163,7 +162,7 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
         return tm -> !l.equals(tm.getSourceLanguage().getIdentity()) && tm.getTargetLanguages().contains(l);
       }
 
-    };
+    }
     return new TSB();
   }
 
@@ -199,67 +198,55 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
   public ModelGenerationPlan wrapUp(@NotNull PlanIdentity planIdentity) {
     HashSet<TemplateModule> explicitlyMentioned = new HashSet<>();
     mySteps.forEach(s -> s.reportInvolvedGenerators(explicitlyMentioned));
-    HashSet<TemplateModule> availableAsExt = new HashSet<>(myEngagedGenerators);
-    // FIXME quite ineffective way to deal with LanguageRuntime.getGenerators producing new instance of TemplateModule each time asked.
-    // XXX with no interpreted generators instantiated from LR.getGenerators, can get rid of this code.
-    availableAsExt.removeIf(tm -> explicitlyMentioned.stream().anyMatch(m -> m.getModuleReference().equals(tm.getModuleReference())));
-    class S implements Comparable<S> {
-      public final TemplateModule generator;
-      private final Collection<TemplateModule> directlyExtendedGenerators;
-      private final Collection<S> transitiveExtendedGenerators = new ArrayList<>();
-      public S(TemplateModule g) {
+    final HashSet<TemplateModule> availableAsExt = new HashSet<>(myEngagedGenerators);
+    class S {
+      private final TemplateModule generator;
+      private final Collection<SModuleReference> directlyExtendedGenerators;
+      public S(TemplateModule g, Collection<SModuleReference> extendedGenerators) {
         generator = g;
-        directlyExtendedGenerators = generator.getExtendedGenerators();
+        directlyExtendedGenerators = extendedGenerators;
       }
 
-      void prepare(HashMap<TemplateModule, S> allModules) {
-        for (TemplateModule tm : directlyExtendedGenerators) {
-          final S s = allModules.get(tm);
-          if (s != null) {
-            transitiveExtendedGenerators.add(s);
-          }
-        }
+      TemplateModule generator() {
+        return generator;
       }
 
       Collection<SModuleReference> directlyExtendedGenerators() {
-        return directlyExtendedGenerators.stream().map(GeneratorRuntime::getModuleReference).collect(Collectors.toList());
+        return directlyExtendedGenerators;
+      }
+    }
+    // topological sort
+    final class TopoSort {
+      private final HashSet<TemplateModule> visited = new HashSet<>();
+      final List<S> topoOrder = new ArrayList<>();
+
+      void depthFirst(TemplateModule tm) {
+        visited.add(tm);
+        final Collection<TemplateModule> extGen = tm.getExtendedGenerators();
+        for (TemplateModule etm : extGen) {
+          if (visited(etm)) {
+            continue;
+          }
+          depthFirst(etm);
+        }
+        // we've already visited all dependencies; if this TM is of interest (among availableAsExt), record it in the ordered list
+        if (availableAsExt.contains(tm)) {
+          topoOrder.add(new S(tm, extGen.stream().map(GeneratorRuntime::getModuleReference).collect(Collectors.toList())));
+        }
       }
 
-      boolean dependsFrom(final S other) {
-        // Have to be transitive, given C -> B -> A, shall answer A < B, B < C, and A < C
-        //    not to face issues like https://youtrack.jetbrains.com/issue/MPS-27394
-        return directlyExtendedGenerators.contains(other.generator) || transitiveExtendedGenerators.stream().anyMatch(e -> e.dependsFrom(other));
+      boolean visited(TemplateModule tm) {
+        return visited.contains(tm);
       }
+    }
 
-      @Override
-      public int compareTo(@NotNull S o) {
-        if (o == this) {
-          return 0;
-        }
-        // this needs o, then o < this
-        if (dependsFrom(o)) {
-          return -1;
-        }
-        // if o needs this, then o > this
-        if (o.dependsFrom(this)) {
-          return 1;
-        }
-        // otherwise, we don't care
-        return 0;
+    TopoSort ts = new TopoSort();
+    for (TemplateModule ttt : availableAsExt) {
+      if (ts.visited(ttt)) {
+        continue;
       }
+      ts.depthFirst(ttt);
     }
-    S[] topoOrder = new S[availableAsExt.size()]; // it's partial topo ordering, just for extended generators mentioned directly
-    int i = 0;
-    HashMap<TemplateModule, S> m = new HashMap<>();
-    for (TemplateModule extCandidate : availableAsExt) {
-      final S s = new S(extCandidate);
-      topoOrder[i++] = s;
-      m.put(extCandidate, s);
-    }
-    for (S s : topoOrder) {
-      s.prepare(m);
-    }
-    Arrays.sort(topoOrder);
     // It's intentional (though not necessarily right) that we look into generators extended directly only, not transitive closure.
     // The idea is that given C extends B extends A, and A.withExtensions and C among availableExt and no B whatsoever, I don't want C to show up.
     //
@@ -287,10 +274,22 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
      * For B: C
      * For E: G, F
      */
-    for (S s : topoOrder) {
+    for (S s : ts.topoOrder) {
+      final SModuleReference tmr = s.generator().getModuleReference();
+      // FIXME quite ineffective way to deal with LanguageRuntime.getGenerators producing new instance of TemplateModule each time asked.
+      // XXX with no interpreted generators instantiated from LR.getGenerators, can get rid of this code.
+      if (explicitlyMentioned.stream().anyMatch(em -> em.getModuleReference().equals(tmr))) {
+        // we can't exclude explicitly mentioned generators before we build topo order (as it used to be)
+        // as it might break transitive dependencies: X, Y -> Z, Z from 'explicitly mentioned'; Q -> Y;
+        // X.compareTo(Y) == 0, and Q.compareTo(X) == 0, but Q.compareTo(Y) != 0. Therefore, I try to keep
+        // "base" generators in the list to help with sorting (though this doesn't mean it would help always,
+        // there could be scenario when "base" is still not enough. Need to write a custom sorting algorithm
+        // that treats compareTo() == 0 as 'irrelevant' instead of 'equal'.
+        continue;
+      }
       Collection<SModuleReference> directlyExtendedGenerators = s.directlyExtendedGenerators();
       for (StepEntry se : mySteps) {
-        if (!se.registerIfIntersects(directlyExtendedGenerators, s.generator)) {
+        if (!se.registerIfIntersects(directlyExtendedGenerators, s.generator())) {
           break;
         }
       }
@@ -305,6 +304,10 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
     final ForkEntry forkStep = new ForkEntry();
     mySteps.add(forkStep);
     return new RegularPlanBuilder(myLanguageRegistry, myEngagedGenerators, myMessageHandler) {
+      @Override
+      public void setGenerationTarget(String targetHint) {
+        forkStep.myGenerationTarget = targetHint;
+      }
       @NotNull
       @Override
       public ModelGenerationPlan wrapUp(@NotNull PlanIdentity planIdentity) {
@@ -446,9 +449,9 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
     private final ArrayList<TemplateModule> myGenerators = new ArrayList<>(4);
     private final boolean myIndividualStepsPerGenerator;
     private final List<Predicate<? super TemplateModule>> myConditions;
-    private final List<Supplier<TemplateModule>> myInvolvedGenerators;
+    private final List<Supplier<Stream<TemplateModule>>> myInvolvedGenerators;
 
-    TransformEntry2(boolean individualStepsPerGenerator, List<Predicate<? super TemplateModule>> conditions, List<Supplier<TemplateModule>> involvedGenerators) {
+    TransformEntry2(boolean individualStepsPerGenerator, List<Predicate<? super TemplateModule>> conditions, List<Supplier<Stream<TemplateModule>>> involvedGenerators) {
       myIndividualStepsPerGenerator = individualStepsPerGenerator;
       myConditions = conditions;
       myInvolvedGenerators = involvedGenerators;
@@ -456,7 +459,7 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
 
     @Override
     public void reportInvolvedGenerators(Collection<TemplateModule> result) {
-      myInvolvedGenerators.stream().map(Supplier::get).filter(Objects::nonNull).forEach(result::add);
+      myInvolvedGenerators.stream().flatMap(Supplier::get).filter(Objects::nonNull).forEach(result::add);
     }
 
     @Override
@@ -475,8 +478,8 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
     @Override
     public void createStep(List<Step> steps) {
       // FIXME explicitly mentioned generators are added as last, usually it's  `lang TargetTo` followed by `lang Transform`
-      //      anyway, though would be great to keep order as indended by GP designer
-      myInvolvedGenerators.stream().map(Supplier::get).filter(Objects::nonNull).forEach(myGenerators::add);
+      //      anyway, though would be great to keep order as intended by GP designer
+      myInvolvedGenerators.stream().flatMap(Supplier::get).filter(Objects::nonNull).forEach(myGenerators::add);
       if (myGenerators.isEmpty()) {
         // FIXME need feedback so that user can find out there's nothing in the step.
         //       either provide it here or add a dedicated step that indicates none matched the step
@@ -560,6 +563,7 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
 
   private static class ForkEntry implements StepEntry {
     private List<StepEntry> mySteps = Collections.emptyList();
+    private String myGenerationTarget = null;
 
     public void steps(List<StepEntry> steps) {
       assert !steps.contains(this) : "Fork step shall not include itself";
@@ -585,7 +589,7 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
     public void createStep(List<Step> steps) {
       final ArrayList<Step> branch = new ArrayList<>();
       mySteps.forEach(s -> s.createStep(branch));
-      steps.add(new Fork(branch));
+      steps.add(new Fork(branch, myGenerationTarget));
     }
   }
 }

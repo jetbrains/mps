@@ -10,7 +10,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.common.FileOpenUtil;
 import com.intellij.execution.filters.HyperlinkInfo;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/4221956679901046710", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "4221956679901046710", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class StandaloneMPSStackTraceFilter extends MPSStackTraceFilter {
   public StandaloneMPSStackTraceFilter(Project project) {
     super(project);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,10 @@ import org.jetbrains.mps.openapi.model.SModel;
  * evgeny, 2/14/13
  */
 public interface GeneratableSModel extends SModel {
+  /**
+   * Key to keep in {@link ModelWithAttributes}
+   */
+  public static final String DO_NOT_GENERATE = "doNotGenerate";
 
   /**
    * Generally, {@link #isDoNotGenerate() doNotGenerate} is a primary reason to generate (or not) the model.

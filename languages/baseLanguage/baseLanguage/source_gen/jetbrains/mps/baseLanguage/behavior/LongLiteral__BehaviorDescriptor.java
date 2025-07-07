@@ -23,18 +23,17 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class LongLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b418722717710b4L, "jetbrains.mps.baseLanguage.structure.LongLiteral");
 
-  public static final SMethod<Boolean> constant_id1653mnvAgr2 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("constant").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1653mnvAgr2").build();
-  public static final SMethod<Object> getCompileTimeConstantValue_idi1LP2xI = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("getCompileTimeConstantValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("i1LP2xI").build(SMethodBuilder.createJavaParameter(SModule.class, ""));
+  public static final SMethod<Object> getCompileTimeConstantValue_idi1LP2xI = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("getCompileTimeConstantValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1238860310638L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(SModule.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(constant_id1653mnvAgr2, getCompileTimeConstantValue_idi1LP2xI);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCompileTimeConstantValue_idi1LP2xI);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static boolean constant_id1653mnvAgr2(@NotNull SAbstractConcept __thisConcept__) {
-    return true;
-  }
   /*package*/ static Object getCompileTimeConstantValue_idi1LP2xI(@NotNull SNode __thisNode__, SModule module) {
+    if (SPropertyOperations.getString(__thisNode__, PROPS.value$b84M) == null) {
+      return 0;
+    }
     try {
       String value = (SPropertyOperations.getString(__thisNode__, PROPS.value$b84M).endsWith("l") || SPropertyOperations.getString(__thisNode__, PROPS.value$b84M).endsWith("L") ? SPropertyOperations.getString(__thisNode__, PROPS.value$b84M).substring(0, SPropertyOperations.getString(__thisNode__, PROPS.value$b84M).length() - 1) : SPropertyOperations.getString(__thisNode__, PROPS.value$b84M));
       return Long.parseLong(value);
@@ -58,7 +57,7 @@ public final class LongLiteral__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
-      case 1:
+      case 0:
         return (T) ((Object) getCompileTimeConstantValue_idi1LP2xI(node, (SModule) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -72,8 +71,6 @@ public final class LongLiteral__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
-      case 0:
-        return (T) ((Boolean) constant_id1653mnvAgr2(concept));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

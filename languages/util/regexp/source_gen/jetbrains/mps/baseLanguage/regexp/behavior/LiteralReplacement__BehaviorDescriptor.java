@@ -24,9 +24,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class LiteralReplacement__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c192ab94cL, "jetbrains.mps.baseLanguage.regexp.structure.LiteralReplacement");
 
-  public static final SMethod<String> toString_id3iI_KKpaF_p = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("toString").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3iI_KKpaF_p").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> isValid_id3iI_KKpaMFg = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValid").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3iI_KKpaMFg").build();
-  public static final SMethod<String> toRegexp_id3iI_KKpaM6i = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("toRegexp").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3iI_KKpaM6i").build(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<String> toString_id3iI_KKpaF_p = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("toString").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3796137614137538905L).languageId(0xb09669cd7c8408c0L, 0xdaafa647f1f74b0bL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> isValid_id3iI_KKpaMFg = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValid").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3796137614137567952L).languageId(0xb09669cd7c8408c0L, 0xdaafa647f1f74b0bL).build2();
+  public static final SMethod<String> toRegexp_id3iI_KKpaM6i = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("toRegexp").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3796137614137565586L).languageId(0xb09669cd7c8408c0L, 0xdaafa647f1f74b0bL).build2(SMethodBuilder.createJavaParameter(String.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(toString_id3iI_KKpaF_p, isValid_id3iI_KKpaMFg, toRegexp_id3iI_KKpaM6i);
 

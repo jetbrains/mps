@@ -10,14 +10,12 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -32,7 +30,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class DefaultEditorBuilder {
-  private Deque<SNode> collectionsStack = DequeSequence.fromDequeNew(new LinkedList<SNode>());
+  private Deque<SNode> collectionsStack = DequeSequence.fromDeque(new LinkedList<SNode>());
   private SNode editorNode;
   private SNode conceptDeclaration;
   public DefaultEditorBuilder(@NotNull SNode node) {
@@ -50,21 +48,9 @@ public class DefaultEditorBuilder {
       addProperty(nameProperty);
     }
 
-    Iterable<SNode> props = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(conceptDeclaration)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return it != nameProperty && !(SNodeOperations.is(SNodeOperations.getParent(it), new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626")));
-      }
-    });
-    List<SNode> children = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(conceptDeclaration)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.is(SNodeOperations.getParent(it), new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626")));
-      }
-    }).toListSequence();
-    List<SNode> references = ListSequence.fromList(children).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b8L) || isSmartReference(it);
-      }
-    }).toListSequence();
+    Iterable<SNode> props = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(conceptDeclaration)).where((it) -> it != nameProperty && !(SNodeOperations.is(SNodeOperations.getParent(it), new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"))));
+    List<SNode> children = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(conceptDeclaration)).where((it) -> !(SNodeOperations.is(SNodeOperations.getParent(it), new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626")))).toList();
+    List<SNode> references = ListSequence.fromList(children).where((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b8L) || isSmartReference(it)).toList();
     ListSequence.fromList(children).removeSequence(ListSequence.fromList(references));
 
     buildHeader(references);
@@ -122,21 +108,9 @@ public class DefaultEditorBuilder {
       addProperty(nameProperty);
     }
 
-    Iterable<SNode> props = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(conceptDeclaration)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return it != nameProperty && !(SNodeOperations.is(SNodeOperations.getParent(it), new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626")));
-      }
-    });
-    List<SNode> children = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(conceptDeclaration)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return !(SNodeOperations.is(SNodeOperations.getParent(it), new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626")));
-      }
-    }).toListSequence();
-    List<SNode> references = ListSequence.fromList(children).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b8L) || isSmartReference(it);
-      }
-    }).toListSequence();
+    Iterable<SNode> props = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(conceptDeclaration)).where((it) -> it != nameProperty && !(SNodeOperations.is(SNodeOperations.getParent(it), new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"))));
+    List<SNode> children = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(conceptDeclaration)).where((it) -> !(SNodeOperations.is(SNodeOperations.getParent(it), new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626")))).toList();
+    List<SNode> references = ListSequence.fromList(children).where((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b8L) || isSmartReference(it)).toList();
     ListSequence.fromList(children).removeSequence(ListSequence.fromList(references));
 
     buildHeader(references);
@@ -154,11 +128,7 @@ public class DefaultEditorBuilder {
       addProperty(property);
       first = false;
     }
-    for (SNode linkDeclaration : ListSequence.fromList(children).sort(new ISelector<SNode, Boolean>() {
-      public Boolean select(SNode it) {
-        return (boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(it);
-      }
-    }, false)) {
+    for (SNode linkDeclaration : ListSequence.fromList(children).sort((it) -> (boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(it), false)) {
       if (!(first)) {
         addPunctuation(",");
       }
@@ -322,18 +292,10 @@ public class DefaultEditorBuilder {
       prio += (name.toLowerCase().indexOf("qualified") >= 0 ? 200 : 0);
       MapSequence.fromMap(idProperties).put(property, prio);
     }
-    if (Sequence.fromIterable(MapSequence.fromMap(idProperties).values()).all(new IWhereFilter<Integer>() {
-      public boolean accept(Integer it) {
-        return it == 0;
-      }
-    })) {
+    if (Sequence.fromIterable(MapSequence.fromMap(idProperties).values()).all((it) -> it == 0)) {
       return null;
     }
-    return SetSequence.fromSet(MapSequence.fromMap(idProperties).keySet()).sort(new ISelector<SNode, Integer>() {
-      public Integer select(SNode it) {
-        return MapSequence.fromMap(idProperties).get(it);
-      }
-    }, false).first();
+    return SetSequence.fromSet(MapSequence.fromMap(idProperties).keySet()).sort((it) -> MapSequence.fromMap(idProperties).get(it), false).first();
   }
   private boolean isSmartReference(SNode linkDeclaration) {
     if (SEnumOperations.isMember(SPropertyOperations.getEnum(linkDeclaration, PROPS.metaClass$PeKc), 0xfc6f4e95b8L)) {

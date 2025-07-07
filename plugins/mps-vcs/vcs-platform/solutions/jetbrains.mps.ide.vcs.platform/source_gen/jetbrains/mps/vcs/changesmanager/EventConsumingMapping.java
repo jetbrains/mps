@@ -8,15 +8,14 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.smodel.event.SModelEvent;
 import com.intellij.util.containers.BidirectionalMap;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.event.SModelRootEvent;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.smodel.event.SModelChildEvent;
 import jetbrains.mps.smodel.event.SModelPropertyEvent;
 import jetbrains.mps.smodel.event.SModelReferenceEvent;
 
-@GeneratedClass(node = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)/6389979038222847043", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
+@GeneratedClass(nodeId = "6389979038222847043", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
 public class EventConsumingMapping {
   private BidirectionalMultiMap<SNodeId, SModelEvent> myNodesToUnconsumedEvents = new BidirectionalMultiMap<SNodeId, SModelEvent>();
   private BidirectionalMap<SNodeId, SModelEvent> myAddedNodesToEvents = new BidirectionalMap<SNodeId, SModelEvent>();
@@ -24,15 +23,7 @@ public class EventConsumingMapping {
   }
   private void consumeAllForNode(SNode node) {
     final SNodeId id = node.getNodeId();
-    Sequence.fromIterable(((Iterable<SModelEvent>) myNodesToUnconsumedEvents.getValues(id))).where(new IWhereFilter<SModelEvent>() {
-      public boolean accept(SModelEvent e) {
-        return !(e instanceof SModelRootEvent);
-      }
-    }).toListSequence().visitAll(new IVisitor<SModelEvent>() {
-      public void visit(SModelEvent e) {
-        myNodesToUnconsumedEvents.remove(id, e);
-      }
-    });
+    ListSequence.fromList(Sequence.fromIterable(((Iterable<SModelEvent>) myNodesToUnconsumedEvents.getValues(id))).where((e) -> !(e instanceof SModelRootEvent)).toList()).visitAll((e) -> myNodesToUnconsumedEvents.remove(id, e));
   }
   public synchronized void addEvent(SModelEvent event) {
     SNode affectedNode = null;

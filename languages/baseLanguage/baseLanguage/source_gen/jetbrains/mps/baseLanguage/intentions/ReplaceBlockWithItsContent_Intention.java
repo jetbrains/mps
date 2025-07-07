@@ -10,58 +10,36 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import java.util.List;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ReplaceBlockWithItsContent_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ReplaceBlockWithItsContent_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "1199892779474"));
   }
+
   @Override
   public String getPresentation() {
     return "ReplaceBlockWithItsContent";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    boolean applicable = false;
-    SContainmentLink containmentLink = node.getContainmentLink();
-    if (containmentLink != null && SConceptOperations.isSuperConceptOf(SNodeOperations.asSConcept(CONCEPTS.Statement$P6), SNodeOperations.asSConcept((SAbstractConcept) containmentLink.getTargetConcept()))) {
-      int statementsCount = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.statements$q65M), LINKS.statement$53DE)).count();
-      switch (statementsCount) {
-        case 0:
-          applicable = containmentLink.isOptional();
-          break;
-        case 1:
-          applicable = true;
-          break;
-        default:
-          // statementsCount > 1
-          applicable = containmentLink.isMultiple();
-      }
-    }
-    return applicable;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -71,10 +49,12 @@ public final class ReplaceBlockWithItsContent_Intention extends AbstractIntentio
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Replace Block with Its Content";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       List<SNode> statements = SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.statements$q65M), LINKS.statement$53DE);
@@ -83,10 +63,41 @@ public final class ReplaceBlockWithItsContent_Intention extends AbstractIntentio
       }
       SNodeOperations.deleteNode(node);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      boolean applicable = false;
+      SContainmentLink containmentLink = node.getContainmentLink();
+      if (containmentLink != null && SConceptOperations.isSuperConceptOf(SNodeOperations.asSConcept(CONCEPTS.Statement$P6), SNodeOperations.asSConcept((SAbstractConcept) containmentLink.getTargetConcept()))) {
+        int statementsCount = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.statements$q65M), LINKS.statement$53DE)).count();
+        switch (statementsCount) {
+          case 0:
+            applicable = containmentLink.isOptional();
+            break;
+          case 1:
+            applicable = true;
+            break;
+          default:
+            // statementsCount > 1
+            applicable = containmentLink.isMultiple();
+        }
+      }
+      return applicable;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ReplaceBlockWithItsContent_Intention.this;
     }
+
   }
 
   private static final class LINKS {

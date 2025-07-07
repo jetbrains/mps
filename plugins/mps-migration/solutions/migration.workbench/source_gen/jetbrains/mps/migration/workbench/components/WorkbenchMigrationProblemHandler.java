@@ -6,15 +6,16 @@ import jetbrains.mps.ide.migration.MigrationProblemHandler;
 import jetbrains.mps.project.MPSProject;
 import java.util.Collection;
 import jetbrains.mps.errors.item.IssueKindReportItem;
+import java.util.List;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerTool;
 import jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerViewer;
+import java.util.ArrayList;
 import jetbrains.mps.ide.findusages.model.SearchResults;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
+import java.util.Collections;
 import com.intellij.icons.AllIcons;
 
 public class WorkbenchMigrationProblemHandler implements MigrationProblemHandler {
@@ -26,35 +27,17 @@ public class WorkbenchMigrationProblemHandler implements MigrationProblemHandler
 
   @Override
   public void showProblems(Collection<IssueKindReportItem> problems) {
-    Iterable<SearchResult<IssueKindReportItem>> items = CollectionSequence.fromCollection(problems).select(new ISelector<IssueKindReportItem, SearchResult<IssueKindReportItem>>() {
-      public SearchResult<IssueKindReportItem> select(IssueKindReportItem p) {
-        return new SearchResult<IssueKindReportItem>(p, IssueKindReportItem.PATH_OBJECT.get(p).resolve(myMpsProject.getRepository()), IssueKindReportItem.FLAVOUR_ISSUE_KIND.get(p).getSpecialization());
-      }
-    }).where(new IWhereFilter<SearchResult<IssueKindReportItem>>() {
-      public boolean accept(SearchResult<IssueKindReportItem> it) {
-        return it != null;
-      }
-    });
+    List<SearchResult<IssueKindReportItem>> items = CollectionSequence.fromCollection(problems).select((p) -> new SearchResult<IssueKindReportItem>(p, IssueKindReportItem.PATH_OBJECT.get(p).resolve(myMpsProject.getRepository()), IssueKindReportItem.FLAVOUR_ISSUE_KIND.get(p).getSpecialization())).where(new NotNullWhereFilter()).toList();
 
-    if (Sequence.fromIterable(items).isEmpty()) {
+    if (ListSequence.fromList(items).isEmpty()) {
       return;
     }
 
     final ModelCheckerTool mcTool = ModelCheckerTool.getInstance(myMpsProject.getProject());
-    ModelCheckerViewer v = new ModelCheckerViewer(myMpsProject.getProject(), false) {
-      @Override
-      protected void close() {
-        mcTool.closeTab(this);
-        super.close();
-      }
-    };
-
-    final SearchResults<IssueKindReportItem> result = new SearchResults<IssueKindReportItem>();
-    Sequence.fromIterable(items).visitAll(new IVisitor<SearchResult<IssueKindReportItem>>() {
-      public void visit(SearchResult<IssueKindReportItem> it) {
-        result.add(it);
-      }
-    });
+    // perhaps, shall rather expose createViewerForTab or introduce a method that takes collection of IssueKindReportItems
+    // here, we just pretend we run check on empty set of models
+    ModelCheckerViewer v = mcTool.checkModels(ListSequence.fromList(new ArrayList<>()));
+    SearchResults<IssueKindReportItem> result = new SearchResults<IssueKindReportItem>(Collections.emptyList(), items);
     v.setSearchResults(result);
     mcTool.showTabWithResults(v, "Migration issues", AllIcons.Nodes.ModuleGroup);
   }

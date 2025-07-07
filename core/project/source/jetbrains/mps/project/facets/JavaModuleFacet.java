@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,14 @@
  */
 package jetbrains.mps.project.facets;
 
+import jetbrains.mps.classloading.IdeaPluginModuleFacet;
 import jetbrains.mps.generator.fileGenerator.FileGenerationUtil;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.ProjectPathUtil;
+import jetbrains.mps.project.Solution;
+import jetbrains.mps.project.structure.modules.SolutionKind;
+import jetbrains.mps.smodel.Language;
+import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -28,12 +33,36 @@ import org.jetbrains.mps.openapi.module.SModuleFacet;
 import java.util.Set;
 
 // FIXME why some API is with String for files (like getLibraryClassPath, getClassPath, getAdditionalSourcePaths), not IFile?
+/**
+ * Captures various aspects of a module which ends up with Java code. Right now deals with Java-related, like Kotlin, code as well, although this might get
+ * chanegd as module facet story evolves.
+ * Handling of Java code includes:
+ *  - generation target (covered by {@link GenerationTargetFacet} with Java-specific (or legacy imposed) methods in this class),
+ *  - Java target version conformance {@link #getLanguageLevel()}
+ *  - compilation (and execution?) of Java code {@link #getCompile()}
+ *  - output of compilation artefacts ({@link #getClassesGen()}
+ *  - access to classes/resources {@link #getLoadClasses()}
+ *  - contributing extensions to MPS {@link #getLoadExtensions()}
+ */
+@SuppressWarnings("removal")
 public interface JavaModuleFacet extends SModuleFacet, GenerationTargetFacet {
   String FACET_TYPE = "java";
 
   // flag for internal use (we can compile either in MPS or in Idea)
   // for "generate" task
-  boolean isCompileInMps();
+  /**
+   * Use {@link #getCompile()} and {@link Compile#MPS} instead
+   */
+  @Deprecated(since = "2022.3", forRemoval = true)
+  default boolean isCompileInMps() {
+    return getCompile() == Compile.MPS;
+  }
+
+  @Override
+  @NotNull
+  default String getFacetType() {
+    return FACET_TYPE;
+  }
 
   JavaLanguageLevel getLanguageLevel();
 
@@ -74,9 +103,9 @@ public interface JavaModuleFacet extends SModuleFacet, GenerationTargetFacet {
   @Nullable
   default IFile getOutputRoot() {
     if (getModule() instanceof AbstractModule ) {
-      // there's no output location for packaged/deployed modules
-      String outputPath = ProjectPathUtil.getGeneratorOutputPath(((AbstractModule) getModule()).getModuleDescriptor());
-      return outputPath == null ? null : ((AbstractModule) getModule()).getFileSystem().getFile(outputPath);
+      // FIXME generally, there's no output location for packaged/deployed modules, but in fa6fcfeb MM removed !isPackaged check here
+      //       (w/o any justification, as usual). Get back here once AM.getOutputPath() use in JavaToMps_Test get resolved
+      return  ((AbstractModule) getModule()).getOutputPath();
     }
     return null;
   }
@@ -140,8 +169,8 @@ public interface JavaModuleFacet extends SModuleFacet, GenerationTargetFacet {
   default IFile getOutputCacheLocation(@NotNull SModel model) {
     final SModule associatedModule = getModule();
     assert model.getModule() == associatedModule;
-    IFile outputRoot = getOutputRoot();
-    return outputRoot == null ? null : FileGenerationUtil.getDefaultOutputDir(model.getReference(), FileGenerationUtil.getCachesDir(outputRoot));
+    IFile outputRoot = getOutputCacheRoot(model);
+    return outputRoot == null ? null : FileGenerationUtil.getDefaultOutputDir(model.getReference(), outputRoot);
   }
 
   /**
@@ -158,4 +187,229 @@ public interface JavaModuleFacet extends SModuleFacet, GenerationTargetFacet {
    * @return extra locations with source files to compile along with module's own generated artifacts from {@link #getOutputRoot()}, or empty collection.
    */
   Set<String> getAdditionalSourcePaths();
+
+  /**
+   * @see Compile
+   * @since 2022.3
+   */
+  @NotNull
+  default Compile getCompile() {
+    if (isCompileInMps()) {
+      return Compile.MPS;
+    }
+    return Compile.None;
+  }
+
+  /**
+   * @since 2022.3
+   */
+  default void setCompile(Compile compile) {
+    // no-op just to satisfy subclasses
+  }
+
+  /**
+   * @see LoadClasses
+   * @since 2022.3
+   */
+  @NotNull
+  default LoadClasses getLoadClasses() {
+    if (isCompileInMps()) {
+      return LoadClasses.ManagedByMPS;
+    }
+    final SModule module = getModule();
+    // compatibility code
+    if (module != null && module.getFacet(IdeaPluginModuleFacet.class) != null) {
+      return LoadClasses.ManagedByContributor;
+    }
+    return LoadClasses.NotAvailable;
+  }
+
+  /**
+   * @since 2022.3
+   */
+  default void setLoadClasses(LoadClasses loadClasses) {
+    // no-op to satisfy subclasses
+  }
+
+
+  /**
+   * @see LoadExtensions
+   * @since 2022.3
+   */
+  default LoadExtensions getLoadExtensions() {
+    final SModule module = getModule();
+    if (module instanceof Solution) {
+      return ((Solution) module).getKind() == SolutionKind.NONE ? LoadExtensions.NotAvailable : LoadExtensions.Plugin;
+    }
+    // this logic is different from SModuleOperations.canSupplyExtensionsForMPS(), which was derived from legacy implementation
+    // and had to address scenarios where no separate CL/Ext decision could be made (lack of relevant JMF API). Now, with this new API,
+    // I believe we can go less relaxed and don't allow modules not deemed to supply extensions.
+    return module instanceof Language ? LoadExtensions.Plugin : LoadExtensions.NotAvailable;
+  }
+
+  /**
+   * @since 2022.3
+   */
+  default void setLoadExtensions(LoadExtensions loadExtensions) {
+    // no-op to satisfy subclasses
+  }
+
+
+  /**
+   * Describes what MPS knows about compilation of a given module, see individual options for more details.
+   */
+  enum Compile {
+    /**
+     * Module code is not compiled. There's still {@link JavaModuleFacet#getLanguageLevel() Java language level} MPS may enforce on BaseLanguage sources.
+     * MPS assumes module like this are not part of classpath of any other module (let alone contributing extensions to MPS).
+     * For MPS, there are no classes in these modules.
+     * Intended use: sandbox solutions that are intended to try a language without imposing any consequences for MPS itself.
+     */
+    None(false, "off"),
+    /**
+     * MPS is responsible to compile code with a Java (and, perhaps, Kotlin, too) compiler.
+     * Modules with this level can serve as dependency targets for other modules with {@code MPS} compile setting and can depend on modules with
+     * {@link #External} setting.
+     * Note, this setting doesn't imply there's MPS classloading for the module. Module with this setting may utilize MPS to compile Java code but
+     * may target environment other than MPS (e.g. third-party Java framework)
+     */
+    MPS(true, "mps"),
+    /**
+     * MPS shall expect classes in modules with this setting; respects modules for classpath calculation for modules that depend on this one.
+     * Modules with this setting generally shall not depend on modules with {@code MPS} setting, although there are scenarios when MPS tolerates this
+     * (e.g. when dependency target is a Language (implicit {@code MPS} compile setting), MPS assumes references are design-time and get translated into
+     * code that doesn't use classes directly (e.g. concepts of a language get reduced to [openapi] {@code SConcept} classes)
+     *
+     * When modules with this setting are part of compilation/execution classpath (as a dependency target of another compiled module), their java libraries
+     * are taken into account.
+     */
+    External(true, "ext");
+    Compile(boolean compiled, String persistenceValue) {
+      myIsCompiled = compiled;
+      myPersistenceValue = persistenceValue;
+    }
+
+    public boolean isCompiled() {
+      return myIsCompiled;
+    }
+
+    public String toPersistenceValue() {
+      return myPersistenceValue;
+    }
+
+    public static Compile fromPersistenceValue(String value, Compile defValue) {
+      for(Compile c : Compile.values()) {
+        if (c.myPersistenceValue.equals(value)) {
+          return c;
+        }
+      }
+      return defValue;
+    }
+
+    private final boolean myIsCompiled;
+    private final String myPersistenceValue;
+  }
+
+  /**
+   * Describes scenarios when MPS needs to load a class (or access a resource) from a compiled module.
+   */
+  enum LoadClasses {
+    /**
+     * Modules with {@code NotAvailable} are ignored by MPS classloading logic
+     */
+    NotAvailable(false, "off"),
+    /**
+     * Regular MPS-managed classloader. MPS is capable to reload classes of this module when the module changes.
+     * Only {@link Compile#isCompiled()} modules can get this setting.
+     * Generally, it's even more restricted to {@link Compile#MPS}, as it's impossible for MPS to deal with externally compiled classes (can't clean them, or
+     * be sure they get updated once module changes), however, technically it shouldn't be an issue to create an MPS-managed CL for code compiled elsewhere.
+     * With this setting, MPS respects java library dependencies specified for the module, as well as own module classes (generated or hand-written).
+     */
+    ManagedByMPS(true, "mps"),
+    /**
+     * Tells MPS to consult module origin (e.g. {@link jetbrains.mps.library.SLibrary}) for a classloader for module classes. MPS makes no further assumptions
+     * about what's in the classpath, and doesn't augment classpath with java libraries or anything else specified for the module (assumes contributor takes
+     * care of this).
+     */
+    ManagedByContributor(true, "provided");
+
+    LoadClasses(boolean classesAvailable, String persistenceValue) {
+      myClassesAvailable = classesAvailable;
+      myPersistenceValue = persistenceValue;
+    }
+
+    public boolean classesAvailable() {
+      return myClassesAvailable;
+    }
+
+
+    public String toPersistenceValue() {
+      return myPersistenceValue;
+    }
+
+    public static LoadClasses fromPersistenceValue(String value, LoadClasses defValue) {
+      for(LoadClasses lc : LoadClasses.values()) {
+        if (lc.myPersistenceValue.equals(value)) {
+          return lc;
+        }
+      }
+      return defValue;
+    }
+
+    private final boolean myClassesAvailable;
+    private final String myPersistenceValue;
+  }
+
+  /**
+   * For modules with {@link LoadClasses#classesAvailable() available classes}, tells if MPS shall expect its own extensions in the module.
+   * "extensions" here mean:
+   *   module runtime/activator class (e.g. {@code jetbrains.mps.smodel.language.LanguageRuntime}),
+   *   {@code j.m.lang.plugin.standalone} contributions,
+   *   {@code j.m.lang.extensions} contributions,
+   *   and alike.
+   *
+   * Setting {@link #NotAvailable} comes handy for MPS modules like language runtime solution.
+   * Setting {@link #Plugin} is for pluginSolution scenario, or Language/Generator modules that are implicitly 'MPS-extension'-capable
+   *
+   * XXX However, event as generators and devkits are perfectly legal modules for extensions, perhaps we shall make a distinction between
+   *     activator/runtime class and lang.plugin/lang.extensions contributions, to avoid unnecessary CL attempts for modules we don't use for
+   *     contributions anyway.
+   */
+  enum LoadExtensions {
+    /**
+     * Module doesn't supply any extensions to MPS
+     */
+    NotAvailable(false, "no"),
+    // Activator,  XXX Perhaps, can make use of dedicated setting for ModuleActivator (aka module runtime) scenarios?
+    /**
+     * Module can supply extensions to MPS (what's known as {@code SolutionKind.PLUGIN_CORE}, {@code SolutionKind.PLUGIN_EDITOR} or {@code SolutionKind.PLUGIN_OTHER}
+     * If necessary, we can add compatibility/migration literals for CORE, EDITOR, OTHER cases (with accessor to give respective SolutionKind)
+     */
+    Plugin(true, "yes");
+
+    LoadExtensions(boolean contributesExtensions, String persistenceValue) {
+      myExtensions = contributesExtensions;
+      myPersistenceValue = persistenceValue;
+    }
+
+    public boolean contributesExtensions() {
+      return myExtensions;
+    }
+
+    public String toPersistenceValue() {
+      return myPersistenceValue;
+    }
+
+    public static LoadExtensions fromPersistenceValue(String value, LoadExtensions defValue) {
+      for(LoadExtensions le : LoadExtensions.values()) {
+        if (le.myPersistenceValue.equals(value)) {
+          return le;
+        }
+      }
+      return defValue;
+    }
+
+    private final boolean myExtensions;
+    private final String myPersistenceValue;
+  }
 }

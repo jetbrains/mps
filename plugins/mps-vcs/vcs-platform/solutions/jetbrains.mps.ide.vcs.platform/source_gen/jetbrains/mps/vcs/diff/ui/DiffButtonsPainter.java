@@ -9,16 +9,15 @@ import jetbrains.mps.vcs.diff.ui.common.ChangeGroupLayout;
 import jetbrains.mps.vcs.diff.ui.common.FoldingAreaButton;
 import jetbrains.mps.vcs.diff.ui.common.ChangeGroup;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
 import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
 import jetbrains.mps.ide.icons.IdeIcons;
 import java.util.Arrays;
 import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
 import javax.swing.Icon;
+import jetbrains.mps.vcs.diff.changes.ModelChange;
 
-@GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/8733553229778920021", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
+@GeneratedClass(nodeId = "8733553229778920021", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
 public class DiffButtonsPainter extends ButtonsPainter {
   private IHighlighter myDiffPane;
   private DiffButtonsPainter(IHighlighter rehighlighter, EditorComponent editorComponent, ChangeGroupLayout changeGroupLayout) {
@@ -28,16 +27,8 @@ public class DiffButtonsPainter extends ButtonsPainter {
   @Override
   protected Iterable<FoldingAreaButton> createButtonsForChangeGroup(ChangeGroup changeGroup, int y) {
     FoldingAreaButton button = null;
-    boolean allInsert = ListSequence.fromList(changeGroup.getChanges()).all(new IWhereFilter<ModelChange>() {
-      public boolean accept(ModelChange c) {
-        return c.getType() == ChangeType.ADD;
-      }
-    });
-    boolean allMove = ListSequence.fromList(changeGroup.getChanges()).all(new IWhereFilter<ModelChange>() {
-      public boolean accept(ModelChange c) {
-        return c instanceof NodeGroupMoveChange;
-      }
-    });
+    boolean allInsert = ListSequence.fromList(changeGroup.getChanges()).all((c) -> c.getType() == ChangeType.ADD);
+    boolean allMove = ListSequence.fromList(changeGroup.getChanges()).all((c) -> c instanceof NodeGroupMoveChange);
     if (isHighlightLeft()) {
       if (!(allInsert) && !(allMove)) {
         button = new MyButton(changeGroup, getX(0), y, "Replace", IdeIcons.APPLY_RIGHT);
@@ -68,11 +59,9 @@ public class DiffButtonsPainter extends ButtonsPainter {
     }
     @Override
     public void performAction() {
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().executeCommand(new Runnable() {
-        public void run() {
-          ModelChange.rollbackChanges(getChangeGroup().getChanges());
-          myDiffPane.rehighlight(true);
-        }
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().executeCommand(() -> {
+        ModelChange.rollbackChanges(getChangeGroup().getChanges());
+        myDiffPane.rehighlight(true);
       });
     }
   }

@@ -15,9 +15,7 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -29,8 +27,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class ExternalFigureReference__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a655cbL, "jetbrains.mps.lang.editor.diagram.structure.ExternalFigureReference");
 
-  public static final SMethod<List<String>> getFigureParameterNames_id1iN4mn3lWCq = new SMethodBuilder<List<String>>(new SJavaCompoundTypeImpl((Class<List<String>>) ((Class) Object.class))).name("getFigureParameterNames").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1iN4mn3lWCq").build();
-  public static final SMethod<SNode> getFigureParameter_id1iN4mn3oxt8 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getFigureParameter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1iN4mn3oxt8").build(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<List<String>> getFigureParameterNames_id1iN4mn3lWCq = new SMethodBuilder<List<String>>(new SJavaCompoundTypeImpl((Class<List<String>>) ((Class) Object.class))).name("getFigureParameterNames").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1491555030356445722L).languageId(0x80deedc5c602bfd1L, 0x6106f6117a7442d1L).build2();
+  public static final SMethod<SNode> getFigureParameter_id1iN4mn3oxt8 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getFigureParameter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1491555030357120840L).languageId(0x80deedc5c602bfd1L, 0x6106f6117a7442d1L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFigureParameterNames_id1iN4mn3lWCq, getFigureParameter_id1iN4mn3oxt8);
 
@@ -38,18 +36,10 @@ public final class ExternalFigureReference__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static List<String> getFigureParameterNames_id1iN4mn3lWCq(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.figure$O2V), LINKS.fields$KUgT)).select(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL);
-      }
-    }).toListSequence();
+    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.figure$O2V), LINKS.fields$KUgT)).select((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL)).toList();
   }
   /*package*/ static SNode getFigureParameter_id1iN4mn3oxt8(@NotNull SNode __thisNode__, final String name) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.figure$O2V), LINKS.fields$KUgT)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), name);
-      }
-    });
+    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.figure$O2V), LINKS.fields$KUgT)).findFirst((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), name));
   }
 
   /*package*/ ExternalFigureReference__BehaviorDescriptor() {

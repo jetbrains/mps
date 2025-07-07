@@ -8,14 +8,14 @@ import jetbrains.mps.nodeEditor.MessagesGutter;
 import com.intellij.util.ui.update.MergingUpdateQueue;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import com.intellij.util.ui.update.Update;
+import com.intellij.openapi.util.Disposer;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 import java.awt.Color;
 import jetbrains.mps.errors.MessageStatus;
 import org.jetbrains.mps.openapi.model.SNode;
 
-@GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/739457190729175664", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
+@GeneratedClass(nodeId = "739457190729175664", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 public class ChangeGroupMessages {
   public static final EditorMessageOwner OWNER = new EditorMessageOwner() {};
   private final ChangeGroupLayout myLayout;
@@ -23,47 +23,39 @@ public class ChangeGroupMessages {
   private final MessagesGutter myGutter;
   private final MergingUpdateQueue myUpdateQueue;
   private final Object myUpdateIdentity = new Object();
+  private final ChangeGroupInvalidateListener myLayoutListener;
 
   public ChangeGroupMessages(ChangeGroupLayout layout, boolean left) {
     myLayout = layout;
     myLeft = left;
     EditorComponent editorComponent = (left ? myLayout.getLeftComponent() : myLayout.getRightComponent());
     myGutter = editorComponent.getMessagesGutter();
-    myUpdateQueue = new MergingUpdateQueue("ChangeGroupMessages", 500, true, editorComponent, null, null, true);
+    myUpdateQueue = new MergingUpdateQueue("ChangeGroupMessages", 500, true, editorComponent, null, null, false);
     myUpdateQueue.setRestartTimerOnAdd(true);
+    myLayoutListener = () -> scheduleUpdate();
+    myLayout.addInvalidateListener(myLayoutListener);
   }
 
-  public void startMaintaining() {
-    myLayout.addInvalidateListener(new ChangeGroupInvalidateListener() {
-      public void changeGroupsInvalidated() {
-        myUpdateQueue.queue(new Update(myUpdateIdentity) {
-          public void run() {
-            if (myLayout.isValid()) {
-              rebuildGutterMessages();
-            }
-          }
-        });
+  public void scheduleUpdate() {
+    myUpdateQueue.queue(new Update(myUpdateIdentity) {
+      public void run() {
+        if (myLayout.isValid()) {
+          rebuildGutterMessages();
+        }
       }
     });
   }
-
   public void dispose() {
-    myUpdateQueue.dispose();
+    myLayout.removeInvalidateListener(myLayoutListener);
+    // we should always use Disposer#dispose for Disposable objects instead of direct call
+    // of dispose method.
+    Disposer.dispose(myUpdateQueue);
     myGutter.removeMessages(OWNER);
   }
 
   private void rebuildGutterMessages() {
     myGutter.removeMessages(OWNER);
-    ListSequence.fromList(myLayout.getChangeGroups()).visitAll(new IVisitor<ChangeGroup>() {
-      public void visit(ChangeGroup cg) {
-        myGutter.add(new MyChangeGroupMessage(cg));
-      }
-    });
-  }
-
-  public static void startMaintaining(ChangeGroupLayout layout) {
-    new ChangeGroupMessages(layout, false).startMaintaining();
-    new ChangeGroupMessages(layout, true).startMaintaining();
+    ListSequence.fromList(myLayout.getChangeGroups()).visitAll((cg) -> myGutter.add(new MyChangeGroupMessage(cg)));
   }
 
   private class MyChangeGroupMessage implements SimpleEditorMessage {

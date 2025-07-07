@@ -14,20 +14,18 @@ import java.awt.Frame;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.blame.dialog.BlameDialog;
 import jetbrains.mps.ide.blame.dialog.BlameDialogComponent;
+import jetbrains.mps.ide.blame.api.Reporter;
 import java.util.List;
 import java.io.File;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import com.intellij.openapi.application.PathManager;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.io.FilenameFilter;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.vcs.platform.util.MergeBackupUtil;
 import java.util.Arrays;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import com.intellij.openapi.ui.Messages;
 
-@GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/3531370237490077457", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
+@GeneratedClass(nodeId = "3531370237490077457", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public class ReportModelMergeProblem_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -72,42 +70,22 @@ public class ReportModelMergeProblem_Action extends BaseAction {
     final BlameDialog blameDialog = BlameDialogComponent.getInstance().createDialog(event.getData(CommonDataKeys.PROJECT), event.getData(MPSCommonDataKeys.FRAME));
     blameDialog.initDialog();
     blameDialog.setIssueHidden(true);
-    blameDialog.setSubsystem("Version Control");
+    blameDialog.setSubsystem(Reporter.SUBSYSTEM_VERSION_CONTROL);
     blameDialog.setIssueTitle("Model merge problem");
     List<File> filesToAttach = ListSequence.fromList(new ArrayList<File>());
     ListSequence.fromList(filesToAttach).addElement(new File(System.getProperty("user.home") + File.separator + ".gitconfig"));
     ListSequence.fromList(filesToAttach).addElement(new File(PathManager.getConfigPath() + File.separator + "mps-merger.sh"));
-    ListSequence.fromList(filesToAttach).addSequence(Sequence.fromIterable(Sequence.fromArray(new File(PathManager.getLogPath()).listFiles(new FilenameFilter() {
-      public boolean accept(File dir, String name) {
-        return name.startsWith("mergedriver.log");
-      }
-    }))));
-    ListSequence.fromList(filesToAttach).visitAll(new IVisitor<File>() {
-      public void visit(File f) {
-        blameDialog.addFile(f);
-      }
-    });
+    ListSequence.fromList(filesToAttach).addSequence(Sequence.fromIterable(Sequence.fromArray(new File(PathManager.getLogPath()).listFiles((File dir, String name) -> name.startsWith("mergedriver.log")))));
+    ListSequence.fromList(filesToAttach).visitAll((f) -> blameDialog.addFile(f));
 
     // Select merge-backup to attach
     File backupDir = new File(MergeBackupUtil.getMergeBackupDirPath());
-    File[] listFiles = backupDir.listFiles(new FilenameFilter() {
-      public boolean accept(File dir, String name) {
-        return name.endsWith(".zip");
-      }
-    });
+    File[] listFiles = backupDir.listFiles((File dir, String name) -> name.endsWith(".zip"));
     if (listFiles == null) {
       ReportModelMergeProblem_Action.this.showNoBackupsAvailable(event);
     } else {
       List<File> zipFiles = Arrays.asList(listFiles);
-      String[] zipNames = ListSequence.fromList(zipFiles).sort(new ISelector<File, Long>() {
-        public Long select(File f) {
-          return f.lastModified();
-        }
-      }, false).select(new ISelector<File, String>() {
-        public String select(File f) {
-          return f.getName();
-        }
-      }).toGenericArray(String.class);
+      String[] zipNames = ListSequence.fromList(zipFiles).sort((f) -> f.lastModified(), false).select((f) -> f.getName()).toGenericArray(String.class);
       if (zipNames.length == 0) {
         ReportModelMergeProblem_Action.this.showNoBackupsAvailable(event);
       } else {

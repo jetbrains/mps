@@ -7,9 +7,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.lang.core.behavior.LinkAttribute__BehaviorDescriptor;
@@ -22,9 +20,7 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -46,70 +42,38 @@ public class PropertyAttributeId extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     Iterable<SModel> models = m.getModels();
-    Iterable<SNode> propertyAttributes = Sequence.fromIterable(models).translate(new ITranslator2<SModel, SNode>() {
-      public Iterable<SNode> translate(SModel model) {
-        return SModelOperations.nodes(((SModel) model), CONCEPTS.PropertyAttribute$Gb);
-      }
-    });
-    Sequence.fromIterable(propertyAttributes).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode attribute) {
-        attribute.setProperty(PROPS.propertyId$ahGL, MetaIdHelper.getProperty(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(attribute)).serialize());
-      }
-    });
+    Iterable<SNode> propertyAttributes = Sequence.fromIterable(models).translate((model) -> SModelOperations.nodes(((SModel) model), CONCEPTS.PropertyAttribute$Gb));
+    Sequence.fromIterable(propertyAttributes).visitAll((attribute) -> attribute.setProperty(PROPS.propertyId$ahGL, MetaIdHelper.getProperty(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(attribute)).serialize()));
 
-    Iterable<SNode> referenceAttributes = Sequence.fromIterable(models).translate(new ITranslator2<SModel, SNode>() {
-      public Iterable<SNode> translate(SModel model) {
-        return SModelOperations.nodes(((SModel) model), CONCEPTS.LinkAttribute$v_);
-      }
-    });
+    Iterable<SNode> referenceAttributes = Sequence.fromIterable(models).translate((model) -> SModelOperations.nodes(((SModel) model), CONCEPTS.LinkAttribute$v_));
 
-    Sequence.fromIterable(referenceAttributes).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode attribute) {
-        attribute.setProperty(PROPS.linkId$P9Fc, MetaIdHelper.getAssociation(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(attribute)).serialize());
-      }
-    });
+    Sequence.fromIterable(referenceAttributes).visitAll((attribute) -> attribute.setProperty(PROPS.linkId$P9Fc, MetaIdHelper.getAssociation(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(attribute)).serialize()));
   }
   @Override
   public Iterable<Problem> check(SModule m) {
     {
       SearchScope scope_iro8gh_a0f = CommandUtil.createScope(m);
       final SearchScope scope_iro8gh_a0f_0 = new EditableFilteringScope(scope_iro8gh_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_iro8gh_a0f_0;
-        }
-      };
+      QueryExecutionContext context = () -> scope_iro8gh_a0f_0;
       List<Problem> result = ListSequence.fromList(new ArrayList<Problem>());
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyAttribute$Gb, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return isEmptyString(SPropertyOperations.getString(it, PROPS.propertyId$ahGL));
-        }
-      }).select(new ISelector<SNode, NotMigratedNode>() {
-        public NotMigratedNode select(SNode it) {
-          return new NotMigratedNode(it) {
-            public String getMessage() {
-              return "Property id is not set for property attribute";
-            }
-          };
-        }
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyAttribute$Gb, false)).where((it) -> isEmptyString(SPropertyOperations.getString(it, PROPS.propertyId$ahGL))).select((it) -> {
+        return new NotMigratedNode(it) {
+          public String getMessage() {
+            return "Property id is not set for property attribute";
+          }
+        };
       }));
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LinkAttribute$v_, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return isEmptyString(SPropertyOperations.getString(it, PROPS.linkId$P9Fc));
-        }
-      }).select(new ISelector<SNode, NotMigratedNode>() {
-        public NotMigratedNode select(SNode it) {
-          return new NotMigratedNode(it) {
-            public String getMessage() {
-              return "Link id is not set for link attribute";
-            }
-          };
-        }
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LinkAttribute$v_, false)).where((it) -> isEmptyString(SPropertyOperations.getString(it, PROPS.linkId$P9Fc))).select((it) -> {
+        return new NotMigratedNode(it) {
+          public String getMessage() {
+            return "Link id is not set for link attribute";
+          }
+        };
       }));
       return result;
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core"), 0);
   }
 

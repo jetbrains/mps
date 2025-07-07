@@ -5,60 +5,57 @@ package jetbrains.mps.ide.migration;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.module.SRepositoryListener;
-import jetbrains.mps.smodel.ModelsEventsCollector;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import jetbrains.mps.smodel.event.SModelEventVisitor;
+import jetbrains.mps.ide.platform.watching.ReloadManager;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
 import java.util.List;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.Set;
 import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.smodel.event.SModelEventVisitorAdapter;
-import jetbrains.mps.smodel.event.SModelLanguageEvent;
-import jetbrains.mps.smodel.event.SModelDevKitEvent;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
-import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.smodel.event.SModelEvent;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelListener;
+import java.util.concurrent.atomic.AtomicBoolean;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import jetbrains.mps.ide.platform.watching.ReloadListener;
 
-@GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/1847435758021779296", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
+@GeneratedClass(nodeId = "1847435758021779296", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 /*package*/ abstract class SilentModuleVersionUpdater {
   private final MPSProject myMpsProject;
   private ModuleBatchUpdater myTask = null;
-  private SRepositoryListener myRepoListener = new MyRepositoryContentListener();
-  private ModelsEventsCollector myModelListener;
-  private _FunctionTypes._return_P0_E0<? extends Boolean> myIsUnderReload;
-  private SModelEventVisitor myVisitor = new MyModelEventsVisitor();
-  private _FunctionTypes._return_P0_E0<? extends Boolean> myIsUnderMigration;
+  private final SRepositoryListener myRepoListener = new MyRepositoryContentListener();
+  private final _FunctionTypes._return_P0_E0<? extends Boolean> myIsUnderMigration;
+  private final ReloadManager myReloadManager;
+  private final MyReloadListener myReloadListener = new MyReloadListener();
 
-  public SilentModuleVersionUpdater(MPSProject mpsProject, _FunctionTypes._return_P0_E0<? extends Boolean> isUnderReload, _FunctionTypes._return_P0_E0<? extends Boolean> isUnderMigration) {
-    this.myMpsProject = mpsProject;
-    myIsUnderReload = isUnderReload;
+  public SilentModuleVersionUpdater(MPSProject mpsProject, _FunctionTypes._return_P0_E0<? extends Boolean> isUnderMigration) {
+    myMpsProject = mpsProject;
     myIsUnderMigration = isUnderMigration;
+    myReloadManager = ReloadManager.getInstance();
   }
 
   public void attach() {
     new RepoListenerRegistrar(myMpsProject.getRepository(), myRepoListener).attach();
+    myReloadManager.addReloadListener(myReloadListener);
   }
 
   public void detach() {
+    myReloadManager.removeReloadListener(myReloadListener);
     new RepoListenerRegistrar(myMpsProject.getRepository(), myRepoListener).detach();
   }
 
   protected abstract void runMigrationsIfNeeded(List<SModule> modules);
-  protected abstract void updateImportVersionsIfNeeded(SModule module);
 
-  private void updateSingleModuleDescriptorSilently(SModule module) {
-    if (!(isProjectMigrateableModule(module))) {
-      return;
+  private void updateSingleModuleDescriptorSilently(Iterable<SModule> modules) {
+    ModuleVersionUpdate mv = new ModuleVersionUpdate(myMpsProject);
+    for (SModule module : Sequence.fromIterable(modules)) {
+      mv.updateImportVersions(module);
     }
-    updateImportVersionsIfNeeded(module);
   }
 
   private boolean isProjectMigrateableModule(@NotNull SModule module) {
@@ -71,70 +68,34 @@ import org.jetbrains.mps.openapi.model.SModel;
       myMpsProject.getModelAccess().executeCommandInEDT(myTask);
     }
     SetSequence.fromSet(myTask.modulesTouched).addElement(module);
-    if (myIsUnderReload.invoke()) {
+    if (myReloadListener.isUnderReload()) {
       myTask.touchedUnderReload = true;
     }
   }
 
+  /**
+   * FIXME perhaps, this class, SMVU, shall keep responsibility to collect changes only, and notify 
+   *  MigrationTrigger of the changes. MT then would be responsible for updateModuleDescriptors + runMigrationsIfNeeded
+   */
   private class ModuleBatchUpdater implements Runnable {
-    public Set<SModule> modulesTouched = SetSequence.fromSet(new HashSet<SModule>());
+    public final Set<SModule> modulesTouched = SetSequence.fromSet(new HashSet<SModule>());
     private boolean touchedUnderReload = false;
+
     public void run() {
       myTask = null;
-      List<SModule> toUpdate = SetSequence.fromSet(modulesTouched).distinct().where(new IWhereFilter<SModule>() {
-        public boolean accept(SModule it) {
-          return isProjectMigrateableModule(it);
-        }
-      }).toListSequence();
+      // some of the changed module could be obsolete, make sure all changed modules we report for further processing are actual.
+      List<SModule> toUpdate = SetSequence.fromSet(modulesTouched).distinct().where((it) -> isProjectMigrateableModule(it) && it.getRepository() != null).toList();
       if (!(touchedUnderReload)) {
-        for (SModule m : ListSequence.fromList(toUpdate)) {
-          updateSingleModuleDescriptorSilently(m);
-        }
+        updateSingleModuleDescriptorSilently(toUpdate);
       }
       runMigrationsIfNeeded(toUpdate);
     }
   }
 
-  private class MyModelEventsVisitor extends SModelEventVisitorAdapter {
-    @Override
-    public void visitLanguageEvent(SModelLanguageEvent event) {
-      updateSingleModuleDescriptorSilently(event.getModel().getModule());
-    }
-    @Override
-    public void visitDevKitEvent(SModelDevKitEvent event) {
-      updateSingleModuleDescriptorSilently(event.getModel().getModule());
-    }
-  }
-
   private class MyRepositoryContentListener extends SRepositoryContentAdapter {
-    @Override
-    public void startListening(@NotNull SRepository repository) {
-      // Here we imply MyRepoListener is attached to a single repository. Otherwise,
-      // each next repo it starts listening to would override myModelListener value
-      assert myModelListener == null;
-      myModelListener = new ModelsEventsCollector(repository.getModelAccess()) {
-        @Override
-        protected void eventsHappened(List<SModelEvent> events) {
-          ListSequence.fromList(events).visitAll(new IVisitor<SModelEvent>() {
-            public void visit(SModelEvent it) {
-              it.accept(myVisitor);
-            }
-          });
-        }
-      };
-      super.startListening(repository);
-    }
-
     @Override
     protected boolean isIncluded(SModule module) {
       return isProjectMigrateableModule(module);
-    }
-
-    @Override
-    public void stopListening(@NotNull SRepository repository) {
-      super.stopListening(repository);
-      myModelListener.dispose();
-      myModelListener = null;
     }
 
     @Override
@@ -163,14 +124,64 @@ import org.jetbrains.mps.openapi.model.SModel;
 
     @Override
     protected void startListening(SModel model) {
-      super.startListening(model);
-      myModelListener.startListeningToModel(model);
+      if (!(model.isReadOnly())) {
+        model.addModelListener(this);
+      }
     }
 
     @Override
     protected void stopListening(SModel model) {
-      super.stopListening(model);
-      myModelListener.stopListeningToModel(model);
+      model.removeModelListener(this);
+    }
+
+    @Override
+    public void dependenciesChanged(final SModel model, SModelListener.DependencyChange change) {
+      // shall invoke moduleDepsChanged() once regardless of number of changed imports
+      final AtomicBoolean languageOrDevKit = new AtomicBoolean(false);
+      change.accept(new SModelListener.DependencyChangeVisitor() {
+        @Override
+        public void languageAdded(SLanguage language) {
+          languageOrDevKit.set(true);
+        }
+        @Override
+        public void languageRemoved(SLanguage language) {
+          languageOrDevKit.set(true);
+        }
+        @Override
+        public void devkitAdded(SModuleReference mref) {
+          languageOrDevKit.set(true);
+        }
+        @Override
+        public void devkitRemoved(SModuleReference mref) {
+          languageOrDevKit.set(true);
+        }
+      });
+      if (languageOrDevKit.get()) {
+        moduleDepsChanged(model.getModule());
+      }
+    }
+
+    private void moduleDepsChanged(SModule module) {
+      if (module == null || !(isProjectMigrateableModule(module))) {
+        return;
+      }
+      updateSingleModuleDescriptorSilently(Sequence.<SModule>singleton(module));
     }
   }
+
+  private static class MyReloadListener implements ReloadListener {
+    private boolean myUnderReload = false;
+    @Override
+    public void reloadStarted() {
+      myUnderReload = true;
+    }
+    @Override
+    public void reloadFinished() {
+      myUnderReload = false;
+    }
+    public boolean isUnderReload() {
+      return myUnderReload;
+    }
+  }
+
 }

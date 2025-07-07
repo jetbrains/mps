@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Arrays;
 import java.util.ArrayList;
 
-@GeneratedClass(node = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)/4003657351907890119", model = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)")
+@GeneratedClass(nodeId = "4003657351907890119", model = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)")
 public final class JvmArgs extends DataType {
   private final Set<String> myArgs = new HashSet<String>();
   private final List<String> myDefaultArgs = Arrays.asList("-Xmx512m", "-XX:+HeapDumpOnOutOfMemoryError");

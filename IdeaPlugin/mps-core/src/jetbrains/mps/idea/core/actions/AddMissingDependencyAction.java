@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.idea.core.actions;
 
 import com.intellij.codeInsight.daemon.QuickFixBundle;
-import com.intellij.compiler.ModuleCompilerUtil;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.application.ApplicationManager;
@@ -26,13 +25,13 @@ import com.intellij.openapi.roots.ModifiableRootModel;
 import com.intellij.openapi.roots.ModuleRootManager;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.Pair;
+import com.intellij.util.modules.CircularModuleDependenciesDetector;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.project.SolutionIdea;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.dependency.VisibilityUtil;
 import jetbrains.mps.workbench.action.BaseAction;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -47,8 +46,6 @@ import java.util.Map;
 import java.util.Set;
 
 public class AddMissingDependencyAction extends BaseAction {
-
-  protected static Logger log = LogManager.getLogger(AddMissingDependencyAction.class);
 
   public AddMissingDependencyAction() {
     super("Add Missing Dependency", "", null);
@@ -65,6 +62,7 @@ public class AddMissingDependencyAction extends BaseAction {
         return;
       }
       DataContext dataContext = e.getDataContext();
+      // there's model read as the action is executed inside command
       SNode curNode = MPSCommonDataKeys.NODE.getData(dataContext);
       if (curNode == null) {
         return;
@@ -94,7 +92,8 @@ public class AddMissingDependencyAction extends BaseAction {
 
           ideaModulesToDependOn.add(ideaModuleToDependOn);
 
-          Pair<Module, Module> circularModules = ModuleCompilerUtil.addingDependencyFormsCircularity(ideaDependentModule, ideaModuleToDependOn);
+          Pair<Module, Module> circularModules = CircularModuleDependenciesDetector.addingDependencyFormsCircularity(
+              ideaDependentModule, ideaModuleToDependOn);
           if (circularModules != null) {
             circularDependentModulesSet.add(circularModules.getFirst());
             circularDependentModulesSet.add(circularModules.getSecond());
@@ -152,7 +151,7 @@ public class AddMissingDependencyAction extends BaseAction {
       }
 
     } catch (Throwable t) {
-      log.error("User's action execute method failed. Action:" + "AddMissingDependency", t);
+      Logger.getLogger(AddMissingDependencyAction.class).error("User's action execute method failed. Action:" + "AddMissingDependency", t);
     }
 
   }
@@ -176,7 +175,7 @@ public class AddMissingDependencyAction extends BaseAction {
       boolean enabled = isApplicable(e);
       this.setEnabledState(e.getPresentation(), enabled);
     } catch (Throwable t) {
-      log.error("User's action doUpdate method failed. Action:" + "RenameMethod", t);
+      Logger.getLogger(AddMissingDependencyAction.class).error("User's action doUpdate method failed. Action:" + "RenameMethod", t);
       this.disable(e.getPresentation());
     }
   }

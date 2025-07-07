@@ -22,6 +22,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0xcd17a113ca4e472fL, 0xa8dec49008f9eea8L, "jetbrains.mps.lang.feedback");
+    deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
     deps.aggregatedLanguage(0xad93155d79b24759L, 0xb10c55123e763903L, "jetbrains.mps.lang.messages");
   }
 
@@ -52,7 +54,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xcd17a113ca4e472fL, 0xa8dec49008f9eea8L, 0x573ae5b8b8ccc349L);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L);
     b.origin("r:bce9672d-89d3-47d7-90eb-dde7199917c2(jetbrains.mps.lang.feedback.messages.structure)/7291380803381892689");
-    b.version(2);
+    b.version(3);
     b.aggregate("message", 0x48f860fc0e362dc8L).target(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL).optional(false).ordered(true).multiple(false).origin("5258059200641510856").done();
     b.alias("show message");
     return b.create();

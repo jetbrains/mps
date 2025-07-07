@@ -5,7 +5,12 @@ package jetbrains.mps.execution.configurations.implementation.plugin.plugin;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JFormattedTextField;
+import java.awt.Color;
 import java.awt.GridBagLayout;
+import com.intellij.openapi.editor.colors.EditorColorsScheme;
+import com.intellij.openapi.editor.colors.EditorColorsManager;
+import com.intellij.openapi.editor.HighlighterColors;
+import com.intellij.openapi.editor.colors.CodeInsightColors;
 import javax.swing.text.DefaultFormatter;
 import javax.swing.JLabel;
 import jetbrains.mps.ide.common.LayoutUtil;
@@ -14,8 +19,6 @@ import jetbrains.mps.debugger.java.api.settings.DebugConnectionSettings;
 import java.awt.event.KeyAdapter;
 import java.beans.PropertyChangeListener;
 import java.awt.event.KeyEvent;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
-import jetbrains.mps.nodeEditor.MPSColors;
 import java.beans.PropertyChangeEvent;
 import java.text.ParseException;
 import org.jetbrains.annotations.Nullable;
@@ -24,11 +27,17 @@ public class RemoteSettingsEditor extends JPanel {
   private final JTextField myHostTextField;
   private final JFormattedTextField myPortTextField;
   private final JTextField myCommandLineTextField;
+  private final Color myPortOk;
+  private final Color myPortBad;
   private int myPort;
   private String myHost;
   private String myCommandLine;
+
   public RemoteSettingsEditor() {
     super(new GridBagLayout());
+    EditorColorsScheme cs = EditorColorsManager.getInstance().getGlobalScheme();
+    myPortOk = cs.getAttributes(HighlighterColors.TEXT).getForegroundColor();
+    myPortBad = cs.getAttributes(CodeInsightColors.ERRORS_ATTRIBUTES).getForegroundColor();
     MyKeyAdapter listener = new MyKeyAdapter();
     myHostTextField = new JTextField();
     myHostTextField.addKeyListener(listener);
@@ -78,7 +87,7 @@ public class RemoteSettingsEditor extends JPanel {
     @Override
     public void keyReleased(KeyEvent e) {
       updateFieldsFromUi();
-      myPortTextField.setForeground((myPortTextField.isEditValid() ? StyleRegistry.getInstance().getEditorForeground() : MPSColors.RED));
+      myPortTextField.setForeground((myPortTextField.isEditValid() ? myPortOk : myPortBad));
     }
     @Override
     public void propertyChange(PropertyChangeEvent evt) {

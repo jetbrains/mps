@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package jetbrains.mps.project.structure;
 import jetbrains.mps.extapi.model.GeneratableSModel;
 import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.generator.ModelDigestUtil;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.persistence.LanguageDescriptorPersistence;
 import jetbrains.mps.smodel.BootstrapLanguages;
 import jetbrains.mps.smodel.Language;
@@ -25,6 +26,7 @@ import jetbrains.mps.smodel.SModelId.IntegerSModelId;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.smodel.SnapshotModelData;
 import jetbrains.mps.smodel.TrivialModelDescriptor;
+import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
 import jetbrains.mps.smodel.language.LanguageAspectSupport;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRegistryListener;
@@ -32,7 +34,6 @@ import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.util.JDOMUtil;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.Logger;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
@@ -44,6 +45,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeChangeListenerAdapter;
 import org.jetbrains.mps.openapi.module.SModule;
 
@@ -57,6 +59,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Consumer;
 
 /**
  * Contributes '@descriptor' model to Language modules.
@@ -71,22 +74,25 @@ public class LanguageDescriptorModelProvider extends DescriptorModelProvider {
   private class RootChangeListener extends SNodeChangeListenerAdapter {
     private final Set<SModelReference> myListenedModels = new HashSet<>();
 
+    // FIXME bad approach, needs to know about SModuleExt.
+    //       better is to listen to individual models come and go; need to revisit single #refresh() approach
     public void attach(SModule module) {
-      for (SModel model : module.getModels()) {
+      Consumer<SModel> mlattach = (model -> {
         if (model instanceof EditableSModel && LanguageAspectSupport.isAspectModel(model)) {
           if (myListenedModels.add(model.getReference())) {
             model.addChangeListener(this);
           }
         }
-      }
+      });
+      module.forEachRegisteredModel(mlattach);
     }
 
     public void detach(SModule module) {
-      // doesn't hurt to remove a listener even if we didn't add it
-      for (SModel m : module.getModels()) {
+      Consumer<SModel> mldetach = (m -> {
         myListenedModels.remove(m.getReference());
         m.removeChangeListener(this);
-      }
+      });
+      module.forEachRegisteredModel(mldetach);
     }
 
     @Override
@@ -177,16 +183,14 @@ public class LanguageDescriptorModelProvider extends DescriptorModelProvider {
     myListener.attach(language);
     Language module = (Language) language;
     SModelReference ref = getSModelReference(module);
-    if (!myModels.containsKey(ref)) {
+    LanguageModelDescriptor ldm = myModels.get(ref);
+    if (ldm == null) {
       createModel(ref, module);
     } else {
       if (!nodeChange){
-        myModels.get(ref).updateGenerationLanguages();
+        ldm.updateGenerationLanguages();
       }
-      LanguageModelDescriptor languageModelDescriptor = myModels.get(ref);
-      if (languageModelDescriptor != null) {
-        languageModelDescriptor.invalidate();
-      }
+      ldm.invalidate();
     }
   }
 
@@ -246,16 +250,32 @@ public class LanguageDescriptorModelProvider extends DescriptorModelProvider {
      */
     void updateGenerationLanguages() {
       jetbrains.mps.smodel.SModel m = getSModel();
+      ArrayList<SNode> roots = new ArrayList<>();
+      m.getRootNodes().forEach(roots::add);
+      roots.forEach(SNode::delete);
       m.addDevKit(BootstrapLanguages.getLanguageDescriptorDevKit());
       m.addEngagedOnGenerationLanguage(BootstrapLanguages.getLanguageDescriptorLang());
-      Collection<SModel> aspectModels = LanguageAspectSupport.getAspectModels(myModule);
-      for (SModel aspect : aspectModels) {
-        Collection<SLanguage> mainLanguages = new ArrayList<>(LanguageAspectSupport.getMainLanguages(aspect));
-        mainLanguages.addAll(LanguageAspectSupport.getDefaultDevkitLanguages(aspect));
-        for (@NotNull SLanguage aspectLanguage : mainLanguages) {
-          addEngagedOnGenerationLanguage(aspectLanguage);
+      for (LanguageAspectDescriptor lad : LanguageAspectSupport.collectAspects()) {
+        final Collection<SModel> aspectModels = lad.getAspectModels(myModule);
+        if (!aspectModels.isEmpty() && aspectModels.stream().anyMatch(am -> am.getRootNodes().iterator().hasNext())) {
+          // at the moment, configureDescriptorModel expects myModule attached to a repo
+          lad.configureDescriptorModel(myModule, this);
         }
       }
+    }
+
+    @Override
+    public void addRootNode(@NotNull SNode node) {
+      // need this operation for alternative configureDescriptorModel() implementations that add custom roots into the model
+      // In fact, I'd prefer to modify SModelData directly, and I can pass one into the method, but then I don't
+      // know how to accomplish adding root by means of lang.smodel (if I mean to generate
+      // configureDescriptorModel() implementation eventually).
+      // This method is sort of exposed to outer world, that's why not perfectly clear for this read-only (as
+      // SModelBase#isReadOnly() suggests) model.
+      assertCanChange();
+      getModelData().addRootNode(node);
+      // I don't care to implement removeRootNode() as it's snapshot model data, rebuilt every time from scratch,
+      // and there are no custom code (that might want to do remove) for configureDescriptorModel() possible at the moment.
     }
 
     @Override
@@ -284,7 +304,7 @@ public class LanguageDescriptorModelProvider extends DescriptorModelProvider {
 
       try {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
-        Element xmlElement = new LanguageDescriptorPersistence(MacrosFactory.forModuleFile(descriptorFile)).save(myModule.getModuleDescriptor());
+        Element xmlElement = new LanguageDescriptorPersistence().save(myModule.getModuleDescriptor());
         JDOMUtil.writeDocument(new Document(xmlElement), output);
         hash = ModelDigestUtil.hashText(output.toString());
       } catch (Exception ex) {
@@ -327,7 +347,10 @@ public class LanguageDescriptorModelProvider extends DescriptorModelProvider {
         // there is a need to re-init descriptor model.
         return;
       }
-      changeModelReference(getSModelReference(myModule));
+      final SModelReference actualMR = getSModelReference(myModule);
+      if (!actualMR.equals(getReference())) {
+        changeModelReference(actualMR);
+      }
       myHash = null;
     }
   }

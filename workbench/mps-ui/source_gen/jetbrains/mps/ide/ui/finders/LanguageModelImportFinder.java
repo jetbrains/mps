@@ -21,7 +21,7 @@ import jetbrains.mps.ide.findusages.model.SearchResult;
  * Doesn't look into actual model content, use {@link jetbrains.mps.ide.ui.finders.LanguageUsagesFinder } to find actual usages instead.
  * Tolerates single {@link org.jetbrains.mps.openapi.language.SLanguage } as lookup object, use {@link jetbrains.mps.findUsages.CompositeFinder } to look up few languages at once
  */
-@GeneratedClass(node = "r:50589489-29e2-47e3-84bb-6bbe4094b4ce(jetbrains.mps.ide.ui.finders)/457188507851339859", model = "r:50589489-29e2-47e3-84bb-6bbe4094b4ce(jetbrains.mps.ide.ui.finders)")
+@GeneratedClass(nodeId = "457188507851339859", model = "r:50589489-29e2-47e3-84bb-6bbe4094b4ce(jetbrains.mps.ide.ui.finders)")
 public class LanguageModelImportFinder implements IFinder {
   public LanguageModelImportFinder() {
   }

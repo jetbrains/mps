@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -107,7 +107,7 @@ public final class ModelDependencyResolver {
    * @return languages both listed directly as used, and available through employed devkits,
    *                   including extended devkits but not languages (use {@link SLanguageHierarchy} to build
    *                   complete set. Values are unique.
-   *                   XXX I am not sure this approach to build up a set of 'used' languages is 100% right,
+   *                   XXX I am not sure if this approach to build up a set of 'used' languages is 100% right,
    *                   e.g. why do we respect extended devkits but not extended languages.  Just kept the logic
    *                   the way it was for years.
    */

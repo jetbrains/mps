@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class ClassifierDocComment__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment");
 
-  public static final SMethod<Boolean> isTagSectionEmpty_id7lVCwDcz6WN = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isTagSectionEmpty").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7lVCwDcz6WN").build();
+  public static final SMethod<Boolean> isTagSectionEmpty_id7lVCwDcz6WN = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isTagSectionEmpty").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8465538089690623795L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isTagSectionEmpty_id7lVCwDcz6WN);
 

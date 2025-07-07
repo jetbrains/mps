@@ -9,12 +9,9 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.logging.Logger;
-import org.apache.log4j.LogManager;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.ArrayList;
-import jetbrains.mps.util.ComputeRunnable;
 import jetbrains.mps.util.ModelComputeRunnable;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -22,7 +19,7 @@ import jetbrains.mps.editor.runtime.commands.EditorCommandAdapter;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import java.util.Iterator;
@@ -35,7 +32,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-@GeneratedClass(node = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)/8201881142991326455", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
+@GeneratedClass(nodeId = "8201881142991326455", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
 public class IntelligentNodeMover {
   @NotNull
   private final Collection<SNode> myNodesToMove;
@@ -46,7 +43,7 @@ public class IntelligentNodeMover {
   private SContainmentLink myCommonNodesContainmentLink;
   private SNode myCommonNodesParent;
 
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(IntelligentNodeMover.class));
+  private static final Logger LOG = Logger.getLogger(IntelligentNodeMover.class);
   public IntelligentNodeMover(@NotNull SNode node, @NotNull EditorContext editorContext, boolean forward) {
     this(CollectionSequence.fromCollectionAndArray(new ArrayList<SNode>(), node), editorContext, forward);
   }
@@ -73,34 +70,30 @@ public class IntelligentNodeMover {
     if (!(myIsValid)) {
       throw new IllegalStateException("IntelligentNodeMover has invalid state. Nodes to move have different parents of different containment links");
     }
-    ComputeRunnable<Boolean> mover = new ModelComputeRunnable<Boolean>(new Computable<Boolean>() {
-      public Boolean compute() {
-        PlaceToMove placeToMove = findPlaceToMove();
-        if (placeToMove == null) {
-          return false;
-        }
-        Iterable<SNode> intersection = ListSequence.fromList(SNodeOperations.getNodeAncestors(placeToMove.myParent, null, false)).intersect(CollectionSequence.fromCollection(myNodesToMove));
-        if (Sequence.fromIterable(intersection).isNotEmpty()) {
-          SNode first = Sequence.fromIterable(intersection).first();
-          LOG.error("Possible creation of cyclic tree. Node [\"" + first + "\"; concept: " + SNodeOperations.getConcept(first) + "; id: " + first.getNodeId() + "] is supposed to be moved inside itself. Moving was cancelled");
-          return false;
-        }
-        doMove(placeToMove);
-        return true;
+    ModelComputeRunnable<Boolean> mover = new ModelComputeRunnable<Boolean>(() -> {
+      PlaceToMove placeToMove = findPlaceToMove();
+      if (placeToMove == null) {
+        return false;
       }
+      Iterable<SNode> intersection = ListSequence.fromList(SNodeOperations.getNodeAncestors(placeToMove.myParent, null, false)).intersect(CollectionSequence.fromCollection(myNodesToMove));
+      if (Sequence.fromIterable(intersection).isNotEmpty()) {
+        SNode first = Sequence.fromIterable(intersection).first();
+        LOG.error("Possible creation of cyclic tree. Node [\"" + SNodeOperations.present(first) + "\"; concept: " + SNodeOperations.getConcept(first) + "; id: " + first.getNodeId() + "] is supposed to be moved inside itself. Moving was cancelled");
+        return false;
+      }
+      doMove(placeToMove);
+      return true;
     });
     myEditorContext.getRepository().getModelAccess().executeCommand(new EditorCommandAdapter(mover, myEditorContext));
     boolean result = mover.getResult();
     if (result) {
       myEditorContext.flushEvents();
-      myEditorContext.getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          if (CollectionSequence.fromCollection(myNodesToMove).count() == 1) {
-            myEditorContext.select(getBoundaryNode());
-          } else {
-            SelectionManager selectionManager = myEditorContext.getSelectionManager();
-            selectionManager.setSelection(selectionManager.createRangeSelection(CollectionSequence.fromCollection(myNodesToMove).first(), CollectionSequence.fromCollection(myNodesToMove).last()));
-          }
+      myEditorContext.getRepository().getModelAccess().runReadAction(() -> {
+        if (CollectionSequence.fromCollection(myNodesToMove).count() == 1) {
+          myEditorContext.select(getBoundaryNode());
+        } else {
+          SelectionManager selectionManager = myEditorContext.getSelectionManager();
+          selectionManager.setSelection(selectionManager.createRangeSelection(CollectionSequence.fromCollection(myNodesToMove).first(), CollectionSequence.fromCollection(myNodesToMove).last()));
         }
       });
     }
@@ -118,38 +111,36 @@ public class IntelligentNodeMover {
    * @return true if valid
    */
   public boolean isValid() {
-    return new ModelAccessHelper(myEditorContext.getRepository()).runReadAction(new Computable<Boolean>() {
-      public Boolean compute() {
-        if (CollectionSequence.fromCollection(myNodesToMove).isEmpty()) {
+    return new ModelAccessHelper(myEditorContext.getRepository()).runReadAction(() -> {
+      if (CollectionSequence.fromCollection(myNodesToMove).isEmpty()) {
+        return false;
+      }
+      SNode commonParent = null;
+      SContainmentLink commonLink = null;
+      for (SNode node : CollectionSequence.fromCollection(myNodesToMove)) {
+        if (node == null) {
           return false;
         }
-        SNode commonParent = null;
-        SContainmentLink commonLink = null;
-        for (SNode node : CollectionSequence.fromCollection(myNodesToMove)) {
-          if (node == null) {
-            return false;
-          }
 
-          SContainmentLink link = getNodesContainmentLink(node);
-          if (link == null) {
-            return false;
-          }
-          if (commonLink == null) {
-            commonLink = link;
-          } else if (commonLink != link) {
-            return false;
-          }
-
-          SNode parent = node.getParent();
-          assert parent != null;
-          if (commonParent == null) {
-            commonParent = parent;
-          } else if (commonParent != parent) {
-            return false;
-          }
+        SContainmentLink link = getNodesContainmentLink(node);
+        if (link == null) {
+          return false;
         }
-        return true;
+        if (commonLink == null) {
+          commonLink = link;
+        } else if (commonLink != link) {
+          return false;
+        }
+
+        SNode parent = node.getParent();
+        assert parent != null;
+        if (commonParent == null) {
+          commonParent = parent;
+        } else if (commonParent != parent) {
+          return false;
+        }
       }
+      return true;
     });
   }
 
@@ -186,7 +177,7 @@ public class IntelligentNodeMover {
       getNodesCommonParent().removeChild(node);
       SContainmentLink link = (SNodeOperations.isInstanceOf(node, CONCEPTS.ChildAttribute$m8) ? LINKS.smodelAttribute$KJ43 : place.myLink);
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.ChildAttribute$m8)) {
-        BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("setLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzM"), place.myLink);
+        BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodIdV2.create("setLink", 709746936026609906L, 0x553941aeb020c32eL), place.myLink);
       }
       if (place.myIsAfter) {
         place.myParent.insertChildAfter(link, node, nextAnchor);
@@ -314,26 +305,24 @@ public class IntelligentNodeMover {
    * @return ancestor of the node which is contained in multiple role
    */
   public static SNode findNodeToMove(@NotNull final SNode node, @NotNull EditorContext editorContext) {
-    ModelComputeRunnable<SNode> findNode = new ModelComputeRunnable<SNode>(new Computable<SNode>() {
-      public SNode compute() {
-        SContainmentLink containmentLink = getNodesContainmentLink(node);
-        SNode current = node;
-        while (containmentLink != null) {
-          if (containmentLink.isMultiple()) {
-            return current;
-          }
-          current = SNodeOperations.getParent(current);
-          assert current != null;
-          containmentLink = getNodesContainmentLink(current);
+    ModelComputeRunnable<SNode> findNode = new ModelComputeRunnable<SNode>(() -> {
+      SContainmentLink containmentLink = getNodesContainmentLink(node);
+      SNode current = node;
+      while (containmentLink != null) {
+        if (containmentLink.isMultiple()) {
+          return current;
         }
-        return null;
+        current = SNodeOperations.getParent(current);
+        assert current != null;
+        containmentLink = getNodesContainmentLink(current);
       }
+      return null;
     });
     return findNode.runRead(editorContext.getRepository().getModelAccess());
   }
   private static SContainmentLink getNodesContainmentLink(@NotNull SNode node) {
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.ChildAttribute$m8)) {
-      return ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzf")));
+      return ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodIdV2.create("getLink", 709746936026609871L, 0x553941aeb020c32eL)));
     }
     return node.getContainmentLink();
   }

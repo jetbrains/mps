@@ -5,8 +5,7 @@ package jetbrains.mps.smodel.persistence.def.v6;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.util.xml.XMLSAXHandler;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import java.util.Stack;
 import org.xml.sax.Locator;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
@@ -24,11 +23,10 @@ import jetbrains.mps.util.xml.BreakParseSAXException;
 import jetbrains.mps.vcspersistence.SNodeFactory;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.smodel.SNodeLegacy;
-import org.apache.log4j.Level;
 
-@GeneratedClass(node = "r:83748538-cbc9-4e2d-b0e1-e282b3d0c13d(jetbrains.mps.smodel.persistence.def.v6)/7319439566871678351", model = "r:83748538-cbc9-4e2d-b0e1-e282b3d0c13d(jetbrains.mps.smodel.persistence.def.v6)")
+@GeneratedClass(nodeId = "7319439566871678351", model = "r:83748538-cbc9-4e2d-b0e1-e282b3d0c13d(jetbrains.mps.smodel.persistence.def.v6)")
 public class ModelReader6Handler extends XMLSAXHandler<ModelLoadResult> {
-  private static final Logger LOG = LogManager.getLogger(ModelReader6Handler.class);
+  private static final Logger LOG = Logger.getLogger(ModelReader6Handler.class);
   private ModelElementHandler modelHandler = new ModelElementHandler();
   private PersistenceElementHandler persistenceHandler = new PersistenceElementHandler();
   private Tag_with_namespaceElementHandler tag_with_namespaceHandler = new Tag_with_namespaceElementHandler();
@@ -379,7 +377,7 @@ public class ModelReader6Handler extends XMLSAXHandler<ModelLoadResult> {
       SNode result = (SNode) resultObject;
       String[] child = (String[]) value;
       if (child[2] == null) {
-        if (LOG.isEnabledFor(Level.ERROR)) {
+        if (LOG.isErrorLevel()) {
           LOG.error("couldn't create reference '" + child[0] + "' : traget node id is null");
         }
         return;

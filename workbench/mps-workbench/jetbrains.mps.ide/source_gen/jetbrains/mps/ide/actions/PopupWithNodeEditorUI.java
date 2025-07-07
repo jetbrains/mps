@@ -27,7 +27,6 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import com.intellij.ui.ColoredListCellRenderer;
 import javax.swing.JList;
-import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 import com.intellij.openapi.actionSystem.ActionToolbar;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
@@ -41,7 +40,6 @@ import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.ui.JBColor;
 import java.awt.Color;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import org.jetbrains.mps.openapi.model.SNode;
 import javax.swing.border.CompoundBorder;
 import javax.swing.JComponent;
@@ -53,6 +51,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -63,7 +62,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
  * @see jetbrains.mps.ide.actions.PopupWithNodeEditor 
  * @see jetbrains.mps.ide.actions.ShowDefinition_Action 
  */
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/670386341911975581", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "670386341911975581", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public final class PopupWithNodeEditorUI implements Disposable {
   private static final Dimension PANEL_SIZE = JBUI.size(700, 300);
 
@@ -143,11 +142,7 @@ public final class PopupWithNodeEditorUI implements Disposable {
   }
 
   private void configureBehaviour() {
-    myNodeChooser.addItemListener(new ItemListener() {
-      public void itemStateChanged(ItemEvent ignored) {
-        updateControls();
-      }
-    });
+    myNodeChooser.addItemListener((ItemEvent ignored) -> updateControls());
   }
 
   private ActionToolbar createToolbar() {
@@ -164,7 +159,7 @@ public final class PopupWithNodeEditorUI implements Disposable {
     showSource = new ShowSourceAction("Show Source", AllIcons.Actions.Preview, false);
     showSource.registerCustomShortcutSet(new CompositeShortcutSet(CommonShortcuts.getViewSource(), CommonShortcuts.CTRL_ENTER), myPanel);
     group.add(showSource);
-    return ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, group, true);
+    return ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, group, true);
   }
 
   private void updateControls() {
@@ -172,18 +167,16 @@ public final class PopupWithNodeEditorUI implements Disposable {
     if (index == -1) {
       return;
     }
-    myProject.getModelAccess().executeCommandInEDT(new Runnable() {
-      public void run() {
-        ImplementationNode node = myImplNodes.get(index);
-        myLocationLabel.setText(node.myModuleName);
-        myLocationLabel.setIcon(node.myModuleIcon);
-        myCountLabel.setText((index + 1) + " of " + myImplNodes.size());
-        myUIEditorComponent.editNode(node.myNode);
-        myUIEditorComponent.setBackground(new JBColor(new Color(255, 255, 225), StyleRegistry.getInstance().getEditorBackground()));
-        myUIEditorComponent.repaint();
-        myNodeChooser.updateUI();
-        myPopup.setCaption("Definition of " + node.myNode.getPresentation());
-      }
+    myProject.getModelAccess().executeCommandInEDT(() -> {
+      ImplementationNode node = myImplNodes.get(index);
+      myLocationLabel.setText(node.myModuleName);
+      myLocationLabel.setIcon(node.myModuleIcon);
+      myCountLabel.setText((index + 1) + " of " + myImplNodes.size());
+      myUIEditorComponent.editNode(node.myNode);
+      myUIEditorComponent.setBackground(new JBColor(new Color(255, 255, 225), myUIEditorComponent.getStyleRegistry().getEditorBackground()));
+      myUIEditorComponent.repaint();
+      myNodeChooser.updateUI();
+      myPopup.setCaption("Definition of " + node.myNode.getPresentation());
     });
   }
 
@@ -196,11 +189,9 @@ public final class PopupWithNodeEditorUI implements Disposable {
    */
   public void update(@NotNull final List<SNode> nodes) {
     myImplNodes.clear();
-    myProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        for (SNode node : nodes) {
-          myImplNodes.add(new ImplementationNode(node));
-        }
+    myProject.getModelAccess().runReadAction(() -> {
+      for (SNode node : nodes) {
+        myImplNodes.add(new ImplementationNode(node));
       }
     });
     if (!(myImplNodes.isEmpty())) {
@@ -214,7 +205,7 @@ public final class PopupWithNodeEditorUI implements Disposable {
       myNodeChooser.setVisible(false);
       ImplementationNode node = myImplNodes.get(0);
       myLabel.setIcon(node.myNodeIcon);
-      myLabel.setForeground(StyleRegistry.getInstance().getEditorForeground());
+      myLabel.setForeground(myUIEditorComponent.getStyleRegistry().getEditorForeground());
       myLabel.setText(node.myNodePresentation);
       myLabel.setBorder(new CompoundBorder(IdeBorderFactory.createRoundedBorder(), JBUI.Borders.empty(0, 5, 2, 5)));
       myLabel.setVisible(true);
@@ -286,6 +277,13 @@ public final class PopupWithNodeEditorUI implements Disposable {
         e.getPresentation().setVisible(false);
       }
     }
+
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      // Swing access
+      return ActionUpdateThread.EDT;
+    }
   }
 
   private class ForwardAction extends AnAction {
@@ -306,6 +304,13 @@ public final class PopupWithNodeEditorUI implements Disposable {
       if (myNodeChooser.getItemCount() <= 1) {
         e.getPresentation().setVisible(false);
       }
+    }
+
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      // Swing access
+      return ActionUpdateThread.EDT;
     }
   }
 

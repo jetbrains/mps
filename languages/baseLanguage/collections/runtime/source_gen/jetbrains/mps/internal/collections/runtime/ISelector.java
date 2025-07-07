@@ -4,7 +4,13 @@ package jetbrains.mps.internal.collections.runtime;
 
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 
+/**
+ * 
+ * @deprecated use closures, if usage is necessary, create an interface instead of this class
+ */
+@Deprecated
 public abstract class ISelector<T, S> implements _FunctionTypes._return_P1_E0<S, T> {
+  @Deprecated
   public ISelector() {
   }
   public abstract S select(T t);

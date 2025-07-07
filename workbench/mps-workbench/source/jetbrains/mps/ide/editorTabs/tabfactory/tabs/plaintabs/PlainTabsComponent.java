@@ -46,8 +46,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Stream;
 
-public class PlainTabsComponent extends BaseTabsComponent {
+public class PlainTabsComponent extends BaseTabsComponent<PlainEditorTab> {
   private final List<PlainEditorTab> myRealTabs = new ArrayList<>();
   private final JBTabsImpl myTabs;
   private RelationDescriptor myLastEmptyTab = null;
@@ -55,11 +56,16 @@ public class PlainTabsComponent extends BaseTabsComponent {
 
   private final Disposable myJbTabsDisposable = Disposer.newDisposable(PlainTabsComponent.class.getName());
 
-  public PlainTabsComponent(SNodeReference baseNode, Set<RelationDescriptor> possibleTabs, JComponent editor, NodeChangeCallback callback, boolean showGrayed,
-      CreateModeCallback createModeCallback, Project project) {
+  public PlainTabsComponent(SNodeReference baseNode,
+                            Set<RelationDescriptor> possibleTabs,
+                            JComponent editor,
+                            NodeChangeCallback callback,
+                            boolean showGrayed,
+                            CreateModeCallback createModeCallback,
+                            Project project) {
     super(baseNode, possibleTabs, editor, callback, showGrayed, createModeCallback, project);
 
-    myTabs = new JBTabsImpl(project, null, myJbTabsDisposable);
+    myTabs = new JBTabsImpl(project, myJbTabsDisposable);
     myTabs.setTabsPosition(JBTabsPosition.bottom);
 
     setContent(myTabs);
@@ -71,14 +77,19 @@ public class PlainTabsComponent extends BaseTabsComponent {
           return;
         }
 
-        getProject().getModelAccess().runReadAction(() -> onTabIndexChange());
+        getProject().getModelAccess().runReadAction(() -> onTabIndexChange(true));
       }
     });
   }
 
+  @Override
+  @NotNull
+  protected Stream<PlainEditorTab> getRealTabs() {
+    return myRealTabs.stream();
+  }
 
-  private synchronized void onTabIndexChange() {
-    if (isDisposed()) {
+  private synchronized void onTabIndexChange(boolean userAction) {
+    if (isDisposed() || myRebuilding) {
       return;
     }
 
@@ -95,7 +106,13 @@ public class PlainTabsComponent extends BaseTabsComponent {
 
     if (np != null) {
       myLastEmptyTab = null;
-      editNode(np);
+      if (userAction) {
+        executeNavigation(() -> {
+          editNode(np);
+        });
+      } else {
+        editNode(np);
+      }
     } else {
       myLastEmptyTab = tab.getTab();
       enterCreateMode(myLastEmptyTab);
@@ -111,7 +128,9 @@ public class PlainTabsComponent extends BaseTabsComponent {
     if (myLastEmptyTab != null) {
       return myLastEmptyTab;
     }
-    final int i = myTabs.getIndexOf(myTabs.getSelectedInfo());
+    TabInfo selectedInfo = myTabs.getSelectedInfo();
+    if (selectedInfo == null) return null;
+    final int i = myTabs.getIndexOf(selectedInfo);
     return i == -1 ? null : myRealTabs.get(i).getTab();
   }
 
@@ -144,6 +163,7 @@ public class PlainTabsComponent extends BaseTabsComponent {
   //this is synchronized because we change myJbTabs here (while disposing)
   @Override
   public synchronized void dispose() {
+    removeContent(myTabs);
     Disposer.dispose(myJbTabsDisposable);
     super.dispose();
   }
@@ -172,17 +192,15 @@ public class PlainTabsComponent extends BaseTabsComponent {
   @Override
   public void updateTabs() {
     // Emulate old behaviour - always update
-    final SNodeReference reference = getEditedNode() != null ? getEditedNode() : myBaseNode;
+    final SNodeReference reference = getEditedNode() != null ? getEditedNode() : myBaseNodeRef;
     updateTabs(Collections.singletonList(reference));
   }
 
   @Override
-  public synchronized void updateTabs(Collection<SNodeReference> changedRoots) {
-    final SNodeReference reference = getEditedNode() != null ? getEditedNode() : myBaseNode;
-    if (isDisposed() || !changedRoots.contains(reference)) {
+  public synchronized void updateTabs(Collection<SNodeReference> changedRootRefs) {
+    if (!needUpdateTabs(changedRootRefs)) {
       return;
     }
-
     SNodeReference selectedNode = null;
 
     int selected = myTabs.getTabCount() > 0 ? myTabs.getIndexOf(myTabs.getSelectedInfo()) : -1;
@@ -192,6 +210,7 @@ public class PlainTabsComponent extends BaseTabsComponent {
 
     boolean oldRebuilding = myRebuilding;
     myRebuilding = true;
+    var repository = getProject().getRepository();
     try {
       myTabs.removeAllTabs();
       myRealTabs.clear();
@@ -204,20 +223,20 @@ public class PlainTabsComponent extends BaseTabsComponent {
           for (Entry tabDescriptor : newContent.get(tab)) {
             final PlainEditorTab pet = new PlainEditorTab(tabDescriptor);
             myRealTabs.add(pet);
-            SNode node = pet.getNode().resolve(getProject().getRepository());
+            SNode node = pet.getNode().resolve(repository);
 
             TabInfo info = new TabInfo(getSpacer())
-                .setIcon(GlobalIconManager.getInstance().getIconFor(node))
-                .setText(node.getPresentation())
-                .setPreferredFocusableComponent(myEditor);
+                               .setIcon(GlobalIconManager.getInstance().getIconFor(node))
+                               .setText(node.getPresentation())
+                               .setPreferredFocusableComponent(myEditor);
             myTabs.addTab(info);
           }
         } else if (myShowGrayed) {
           myRealTabs.add(new PlainEditorTab(tab));
 
           TabInfo info = new TabInfo(getSpacer())
-              .setText(tab.getTitle()).setDefaultForeground(JBColor.GRAY)
-              .setPreferredFocusableComponent(myEditor);
+                             .setText(tab.getTitle()).setDefaultForeground(JBColor.GRAY)
+                             .setPreferredFocusableComponent(myEditor);
           myTabs.addTab(info);
         }
       }
@@ -228,10 +247,10 @@ public class PlainTabsComponent extends BaseTabsComponent {
 
     boolean selectionRestored = false;
     // selectedNode.resolve() != null even for removed roots because at the moment we get #updateTabs() from commandFinish
-    if (selectedNode != null && selectedNode.resolve(getProject().getRepository()) != null) {
+    if (selectedNode != null && selectedNode.resolve(repository) != null) {
       for (PlainEditorTab tab : myRealTabs) {
         if (selectedNode.equals(tab.getNode())) {
-          myTabs.select(myTabs.getTabAt(myRealTabs.indexOf(tab)), true);
+          myTabs.select(myTabs.getTabAt(myRealTabs.indexOf(tab)), false);
           selectionRestored = true;
           break;
         }
@@ -239,29 +258,31 @@ public class PlainTabsComponent extends BaseTabsComponent {
     }
 
     if (!selectionRestored && myTabs.getTabCount() > 0) {
-      myTabs.select(myTabs.getTabAt(0), true);
+      myTabs.select(myTabs.getTabAt(0), false);
       selectionRestored = true;
     }
 
     if (selectionRestored) {
       //this is needed as Idea component sends no events if we've just removed all tabs and added one new and then are trying to select it
       //see http://youtrack.jetbrains.com/issue/MPS-17943
-      onTabIndexChange();
+      onTabIndexChange(false);
     }
   }
 
   private synchronized void selectNodeTab() {
-    if (isDisposed()) return;
+    if (isDisposed()) {
+      return;
+    }
 
     for (PlainEditorTab t : myRealTabs) {
       if (t.getNode() != null && t.getNode().equals(getEditedNode())) {
-        myTabs.select(myTabs.getTabAt(myRealTabs.indexOf(t)), true);
+        myTabs.select(myTabs.getTabAt(myRealTabs.indexOf(t)), false);
         return;
       }
     }
     for (PlainEditorTab t : myRealTabs) {
       if (t.getNode() == null && t.getTab().equals(myLastEmptyTab)) {
-        myTabs.select(myTabs.getTabAt(myRealTabs.indexOf(t)), true);
+        myTabs.select(myTabs.getTabAt(myRealTabs.indexOf(t)), false);
         return;
       }
     }

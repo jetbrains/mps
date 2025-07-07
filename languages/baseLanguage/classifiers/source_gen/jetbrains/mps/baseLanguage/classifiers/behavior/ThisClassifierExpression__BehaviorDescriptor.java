@@ -26,8 +26,8 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class ThisClassifierExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc751a81L, "jetbrains.mps.baseLanguage.classifiers.structure.ThisClassifierExpression");
 
-  public static final SMethod<SNode> getClassifier_idhEwJeDN = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClassifier").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwJeDN").build();
-  public static final SMethod<List<SNode>> getPossibleClassifiers_idhJm8WEN = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getPossibleClassifiers").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hJm8WEN").build();
+  public static final SMethod<SNode> getClassifier_idhEwJeDN = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClassifier").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877512819L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
+  public static final SMethod<List<SNode>> getPossibleClassifiers_idhJm8WEN = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getPossibleClassifiers").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1219068414643L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getClassifier_idhEwJeDN, getPossibleClassifiers_idhJm8WEN);
 

@@ -29,6 +29,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.util.DepthFirstConceptIterator;
 
 import java.util.Collections;
 import java.util.List;
@@ -85,13 +86,25 @@ public final class MessagesFacade {
     if (noRegistryPresent()) {
       return Stream.empty();
     }
-    // any descriptor for that concept is fine since it will check for any provider there is (poor design, sry)
-    Optional<FeedbackPerConceptDescriptor> any = myRegistry.getPerConceptDescriptors(concept)
-                                                           .filter(d -> d.getConcept().equals(concept))
-                                                           .findAny();
-    return any.stream()
-              .flatMap(d -> d.getProvidersForProblem(PredefinedFeedbackTypes.SHOW_MESSAGE, problem.getId(), context))
-              .map(p -> (MessageProvider) p);
+
+    Optional<FeedbackPerConceptDescriptor> any = Optional.empty();
+    final DepthFirstConceptIterator iter = new DepthFirstConceptIterator(concept);
+
+    while (iter.hasNext()) {
+      SAbstractConcept currentConcept = iter.next();
+      any = myRegistry.getPerConceptDescriptors(currentConcept)
+                      .filter(d -> d.getConcept().equals(currentConcept))
+                      .findAny();
+      if (any.isEmpty()) continue;  //A speed check, to fail early without the need for all the code below to realize the sameª
+      final Stream<MessageProvider<C>> s = any.stream()
+                          .flatMap(d -> d.getProvidersForProblem(PredefinedFeedbackTypes.SHOW_MESSAGE, problem.getId(), context))
+                          .map(p -> (MessageProvider<C>) p);
+      final List<MessageProvider<C>> messageProviders = s.collect(Collectors.toList());
+      if (!messageProviders.isEmpty()) {
+        return messageProviders.stream();
+      }
+    }
+    return Stream.empty();
               // here we rely on the implicit knowledge: SHOW_MESSAGE <=> MessageProvider is in the generated code
   }
 

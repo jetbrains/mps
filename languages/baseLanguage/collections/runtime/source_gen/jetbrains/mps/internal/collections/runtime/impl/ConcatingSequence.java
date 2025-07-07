@@ -46,7 +46,7 @@ public class ConcatingSequence<U> extends Sequence<U> {
       if (hasNext.unknown()) {
         moveToNext();
       }
-      if (!((hasNext.hasNext()))) {
+      if (!(hasNext.hasNext())) {
         throw new NoSuchElementException();
       }
       return clearNext();

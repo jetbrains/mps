@@ -8,8 +8,9 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.vcs.diff.ChangeSet;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.ModelImports;
+import java.util.Objects;
 
-@GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/6562343564267124230", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
+@GeneratedClass(nodeId = "6562343564267124230", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class ImportedModelChange extends DependencyChange {
   private SModelReference myModelReference;
   public ImportedModelChange(@NotNull ChangeSet changeSet, @NotNull SModelReference modelReference, boolean delete) {
@@ -35,5 +36,18 @@ public class ImportedModelChange extends DependencyChange {
     } else {
       new ModelImports(model).addModelImport(myModelReference);
     }
+  }
+
+  @Override
+  public boolean conflictsWith(@NotNull ModelChange otherChange) {
+    return otherChange instanceof ImportedModelChange && Objects.equals(as_ak6hbu_a0a0a0a7(otherChange, ImportedModelChange.class).getModelReference(), this.getModelReference());
+  }
+
+  @Override
+  public boolean isSymmetricWith(@NotNull ModelChange otherChange) {
+    return this.conflictsWith(otherChange);
+  }
+  private static <T> T as_ak6hbu_a0a0a0a7(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 }

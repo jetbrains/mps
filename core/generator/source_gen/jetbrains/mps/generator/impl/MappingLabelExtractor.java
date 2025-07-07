@@ -12,7 +12,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-@GeneratedClass(node = "r:ab837574-aa54-4b18-9762-b783ef089263(jetbrains.mps.generator.impl)/404112845802897353", model = "r:ab837574-aa54-4b18-9762-b783ef089263(jetbrains.mps.generator.impl)")
+@GeneratedClass(nodeId = "404112845802897353", model = "r:ab837574-aa54-4b18-9762-b783ef089263(jetbrains.mps.generator.impl)")
 public class MappingLabelExtractor {
   /**
    * Reverse operation to {@link jetbrains.mps.generator.impl.DebugMappingsBuilder#build(SModel, GeneratorMappings) }, restore mappings information from debug node.
@@ -51,7 +51,7 @@ public class MappingLabelExtractor {
           SReference ref = SLinkOperations.getTarget(entry, LINKS.inputNode$NcgX).getReference(LINKS.nodePtr$Fm07);
           inputNodeId = ref.getTargetNodeId();
         } else {
-          inputNodeId = ((SNodeId) BHReflection.invoke0(SLinkOperations.getTarget(SLinkOperations.getTarget(entry, LINKS.inputNode$NcgX), LINKS.node$CLNB), CONCEPTS.NodeIdentity$rN, SMethodTrimmedId.create("getNodeId", null, "39TODbGsIdf")));
+          inputNodeId = ((SNodeId) BHReflection.invoke0(SLinkOperations.getTarget(SLinkOperations.getTarget(entry, LINKS.inputNode$NcgX), LINKS.node$CLNB), CONCEPTS.NodeIdentity$rN, SMethodIdV2.create("getNodeId", 3637169702552396623L, 0x3bd222b39cd71affL)));
         }
         // output node shall resolve as it's from the same node as debugNode, it's checkpoint model, after all.
         if (ListSequence.fromList(SLinkOperations.getChildren(entry, LINKS.outputNode$JC9e)).count() == 1) {
@@ -70,7 +70,7 @@ public class MappingLabelExtractor {
       InputKeyIdentity k1 = identify(SLinkOperations.getTarget(lr, LINKS.input1$dqcC));
       InputKeyIdentity k2 = identify(SLinkOperations.getTarget(lr, LINKS.input2$dvP0));
       for (SNode o : ListSequence.fromList(SLinkOperations.getChildren(lr, LINKS.output$dhZ5))) {
-        rv.addRecord(l, k1, k2, o);
+        rv.addRecord(l, k1, k2, SLinkOperations.getTarget(o, LINKS.node$JBUG));
       }
     }
     return rv;

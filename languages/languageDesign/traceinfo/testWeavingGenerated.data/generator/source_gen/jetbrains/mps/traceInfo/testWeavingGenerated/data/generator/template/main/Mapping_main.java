@@ -71,13 +71,13 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     public WeavingRule0() {
       super(new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008490337"), CONCEPTS.ChildConceptWeave$e4, false);
     }
-    @NotNull
     @Override
-    public SNode getContextNode(TemplateExecutionEnvironment environment, TemplateContext context) {
-      return QueriesGenerated.weavingRule_ContextQuery_0_0(new WeavingMappingRuleContext(context, getRuleNode()));
-    }
-    @Override
-    public boolean apply(final TemplateExecutionEnvironment environment, final TemplateContext context, final SNode outputContextNode) throws GenerationException {
+    public boolean apply(@NotNull final TemplateContext context) throws GenerationException {
+      final SNode outputContextNode = QueriesGenerated.weavingRule_ContextQuery_0_0(new WeavingMappingRuleContext(context, getRuleNode()));
+      if (!(checkContextNode(context, outputContextNode))) {
+        return false;
+      }
+      final TemplateExecutionEnvironment environment = context.getEnvironment();
       Iterable<SNode> weaveEachList = QueriesGenerated.sourceNodesQuery_0_0(new SourceSubstituteMacroNodesContext(context, new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008490341")));
       final TemplateCallSite callSite = environment.callSite(new Template_weave_ChildConceptWeave(), new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008490341"));
       boolean result = false;
@@ -97,13 +97,13 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     public WeavingRule1() {
       super(new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008522527"), CONCEPTS.RootConcept$L2, false);
     }
-    @NotNull
     @Override
-    public SNode getContextNode(TemplateExecutionEnvironment environment, TemplateContext context) {
-      return QueriesGenerated.weavingRule_ContextQuery_0_1(new WeavingMappingRuleContext(context, getRuleNode()));
-    }
-    @Override
-    public boolean apply(final TemplateExecutionEnvironment environment, final TemplateContext context, final SNode outputContextNode) throws GenerationException {
+    public boolean apply(@NotNull final TemplateContext context) throws GenerationException {
+      final SNode outputContextNode = QueriesGenerated.weavingRule_ContextQuery_0_1(new WeavingMappingRuleContext(context, getRuleNode()));
+      if (!(checkContextNode(context, outputContextNode))) {
+        return false;
+      }
+      final TemplateExecutionEnvironment environment = context.getEnvironment();
       Iterable<SNode> weaveEachList = QueriesGenerated.sourceNodesQuery_0_1(new SourceSubstituteMacroNodesContext(context, new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008522531")));
       final TemplateCallSite callSite = environment.callSite(new Template_weave_ChildConceptWeave(), new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008522531"));
       boolean result = false;
@@ -123,13 +123,13 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     public WeavingRule2() {
       super(new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008533375"), CONCEPTS.ChildConceptWeaveMany$nY, false);
     }
-    @NotNull
     @Override
-    public SNode getContextNode(TemplateExecutionEnvironment environment, TemplateContext context) {
-      return QueriesGenerated.weavingRule_ContextQuery_0_2(new WeavingMappingRuleContext(context, getRuleNode()));
-    }
-    @Override
-    public boolean apply(final TemplateExecutionEnvironment environment, final TemplateContext context, final SNode outputContextNode) throws GenerationException {
+    public boolean apply(@NotNull final TemplateContext context) throws GenerationException {
+      final SNode outputContextNode = QueriesGenerated.weavingRule_ContextQuery_0_2(new WeavingMappingRuleContext(context, getRuleNode()));
+      if (!(checkContextNode(context, outputContextNode))) {
+        return false;
+      }
+      final TemplateExecutionEnvironment environment = context.getEnvironment();
       Iterable<SNode> weaveEachList = QueriesGenerated.sourceNodesQuery_0_2(new SourceSubstituteMacroNodesContext(context, new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008533376")));
       final TemplateCallSite callSite = environment.callSite(new Template_weave_ChildConceptWeaveMany(), new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008533376"));
       boolean result = false;
@@ -149,13 +149,13 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     public WeavingRule3() {
       super(new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008533360"), CONCEPTS.RootConcept$L2, false);
     }
-    @NotNull
     @Override
-    public SNode getContextNode(TemplateExecutionEnvironment environment, TemplateContext context) {
-      return QueriesGenerated.weavingRule_ContextQuery_0_3(new WeavingMappingRuleContext(context, getRuleNode()));
-    }
-    @Override
-    public boolean apply(final TemplateExecutionEnvironment environment, final TemplateContext context, final SNode outputContextNode) throws GenerationException {
+    public boolean apply(@NotNull final TemplateContext context) throws GenerationException {
+      final SNode outputContextNode = QueriesGenerated.weavingRule_ContextQuery_0_3(new WeavingMappingRuleContext(context, getRuleNode()));
+      if (!(checkContextNode(context, outputContextNode))) {
+        return false;
+      }
+      final TemplateExecutionEnvironment environment = context.getEnvironment();
       Iterable<SNode> weaveEachList = QueriesGenerated.sourceNodesQuery_0_3(new SourceSubstituteMacroNodesContext(context, new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008533361")));
       final TemplateCallSite callSite = environment.callSite(new Template_weave_ChildConceptWeaveMany(), new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008533361"));
       boolean result = false;

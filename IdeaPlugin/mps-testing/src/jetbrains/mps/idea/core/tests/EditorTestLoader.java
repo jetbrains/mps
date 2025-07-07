@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,55 +16,52 @@
 
 package jetbrains.mps.idea.core.tests;
 
-import com.intellij.openapi.application.ApplicationManager;
-import jetbrains.mps.ide.MPSCoreComponents;
-import jetbrains.mps.ide.ThreadUtils;
-import jetbrains.mps.module.ReloadableModule;
+import jetbrains.mps.classloading.ClassLoaderManager;
+import jetbrains.mps.classloading.MPSModuleClassLoader;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.project.Project;
-import jetbrains.mps.testbench.junit.runners.PushEnvironmentRunnerBuilder;
-import jetbrains.mps.tool.environment.AbstractEnvironment;
-import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.project.SModuleOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import org.junit.runner.Runner;
-import org.junit.runners.model.RunnerBuilder;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 /*package*/ class EditorTestLoader {
   private final MPSProject myProject;
-  private final RunnerBuilder myBuilder;
-  private final List<Runner> myResult;
+//  private final RunnerBuilder myBuilder;
+  private final List<Class<?>> myResult;
 
   /**
    * This class expects IDEA Application fully initialized at creation time (accesses MPSCoreComponent).
    */
-  /*package*/EditorTestLoader(MPSProject mpsProject, RunnerBuilder builder) {
+  /*package*/EditorTestLoader(MPSProject mpsProject) {
     myProject = mpsProject;
-    myBuilder = new PushEnvironmentRunnerBuilder(new MPSIDEAPluginTestEnvironment(mpsProject), builder);
     myResult = new ArrayList<>();
   }
 
-  public List<Runner> getResult() {
+  public List<Class<?>> getResult() {
     return myResult;
   }
 
   public EditorTestLoader loadTestClassesFromModules(String moduleNames) throws Exception {
+    final ClassLoaderManager clm = myProject.getComponent(ClassLoaderManager.class);
     for (String nextModuleName : moduleNames.split(",")) {
-      ReloadableModule module = findModule( nextModuleName);
+      SModule module = findModule(nextModuleName);
       if (module == null) {
         continue;
       }
+      if (!SModuleOperations.classloadingManagedByMPS(module)) {
+        // I assume editor tests are in MPS-managed modules only
+        continue;
+      }
+      final MPSModuleClassLoader moduleCL = clm.getClassLoader(module);
       for (SModel model : module.getModels()) {
         for (SNode root : model.getRootNodes()) {
           if (isEditorTestCase(root)) {
-            myResult.add(createEditorTestRunner(root, model, module));
+            myResult.add(createEditorTestRunner(root, model, moduleCL));
           }
         }
       }
@@ -73,15 +70,16 @@ import java.util.List;
   }
 
   public EditorTestLoader loadTestClassesFromModels(String modelNames) throws Exception {
+    final ClassLoaderManager clm = myProject.getComponent(ClassLoaderManager.class);
     String[] modelRefs = modelNames.split(",");
     for (String modelRef : modelRefs) {
       SModelReference modelReference = PersistenceFacade.getInstance().createModelReference(modelRef);
       SModel model = modelReference.resolve(myProject.getRepository());
-      if (model != null && model.getModule() instanceof ReloadableModule) {
-        ReloadableModule module = (ReloadableModule) model.getModule();
+      if (model != null) {
+        final MPSModuleClassLoader moduleCL = clm.getClassLoader(model.getModule());
         for (SNode root : model.getRootNodes()) {
           if (isEditorTestCase(root)) {
-            myResult.add(createEditorTestRunner(root, model, module));
+            myResult.add(createEditorTestRunner(root, model, moduleCL));
           }
         }
       }
@@ -89,47 +87,21 @@ import java.util.List;
     return this;
   }
 
-  private Runner createEditorTestRunner(SNode root, SModel sModel, ReloadableModule module) throws Exception {
-    Class<?> cls = module.getOwnClass(sModel.getName().getLongName() + "." + root.getName() + "_Test"); //NON-NLS
-    return myBuilder.safeRunnerForClass(cls);
+  private Class<?> createEditorTestRunner(SNode root, SModel sModel, MPSModuleClassLoader moduleCL) throws Exception {
+    return moduleCL.loadOwnClass(sModel.getName().getLongName() + '.' + root.getName() + "_Test"); //NON-NLS
   }
 
   private static boolean isEditorTestCase(SNode root) {
     return "EditorTestCase".equals(root.getConcept().getName()); //NON-NLS
   }
 
-  private ReloadableModule findModule(String moduleName) {
+  private SModule findModule(String moduleName) {
     for (SModule sModule : myProject.getRepository().getModules()) {
-      if (moduleName.equals(sModule.getModuleName()) && sModule instanceof ReloadableModule) {
-        return (ReloadableModule) sModule;
+      if (moduleName.equals(sModule.getModuleName())) {
+        return sModule;
       }
     }
     return null;
   }
 
-  private static class MPSIDEAPluginTestEnvironment extends AbstractEnvironment {
-    private final MPSProject myProject;
-
-    public MPSIDEAPluginTestEnvironment(MPSProject project) {
-      super(ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getPlatform());
-      myProject = project;
-    }
-
-    @NotNull
-    @Override
-    public Project openProject(@NotNull File projectFile) {
-      return myProject;
-    }
-
-    @Override
-    public void closeProject(@NotNull Project project) {
-      // intentionally no-op
-    }
-
-    @Override
-    public void flushAllEvents() {
-      // no idea if there's a need for this code, just copy of what used to be in LightEnvironment
-      ThreadUtils.runInUIThreadAndWait(()->{});
-    }
-  }
 }

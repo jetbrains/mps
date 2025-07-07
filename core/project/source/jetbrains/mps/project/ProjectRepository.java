@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.project;
 
+import jetbrains.mps.extapi.model.StorageMemoryConflictResolver;
 import jetbrains.mps.extapi.module.SRepositoryBase;
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.extapi.module.SRepositoryRegistry;
@@ -23,6 +24,7 @@ import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.ReferenceScopeHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.module.ModelAccess;
@@ -50,6 +52,8 @@ public class ProjectRepository extends SRepositoryBase implements SRepositoryExt
   private final Project myProject;
   private final ModelAccess myProjectModelAccess;
   private final SRepositoryExt myRootRepo;
+  //
+  private StorageMemoryConflictResolver<EditableSModel> myConflictResolver;
 
   public ProjectRepository(@NotNull Project project, @NotNull SRepositoryExt rootRepo, @Nullable SRepositoryRegistry repositoryRegistry) {
     this(project, rootRepo, repositoryRegistry, new ProjectModelAccess(project));
@@ -147,10 +151,32 @@ public class ProjectRepository extends SRepositoryBase implements SRepositoryExt
   }
 
   @Override
+  public boolean needsSave() {
+    return getRootRepository().needsSave();
+  }
+
+  @Override
   public ReferenceScopeHelper getReferenceScopeHelper() {
     if (getRootRepository() instanceof ReferenceScopeHelper.Source) {
-      ((ReferenceScopeHelper.Source) getRootRepository()).getReferenceScopeHelper();
+      return ((ReferenceScopeHelper.Source) getRootRepository()).getReferenceScopeHelper();
     }
     return new ReferenceScopeHelper();
+  }
+
+  @Override
+  public StorageMemoryConflictResolver<EditableSModel> getConflictResolver() {
+    if (myConflictResolver != null) {
+      return myConflictResolver;
+    }
+    return SRepositoryExt.super.getConflictResolver();
+  }
+
+  public void setConflictResolver(StorageMemoryConflictResolver<? super EditableSModel> resolver) {
+    // null value resets to a default resolver logic.
+    myConflictResolver = (StorageMemoryConflictResolver<EditableSModel>) resolver;
+    // don't care if the original resolver deals with any other model, our code pass only EditableSModel instances.
+    if (myRootRepo instanceof MPSModuleRepository) {
+      ((MPSModuleRepository) myRootRepo).setConflictResolver(resolver);
+    }
   }
 }

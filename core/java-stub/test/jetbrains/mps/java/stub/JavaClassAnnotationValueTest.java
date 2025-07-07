@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,12 +23,12 @@ import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.smodel.LazySNode;
 import jetbrains.mps.smodel.SModelStereotype;
-import jetbrains.mps.smodel.StaticReference;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -64,11 +64,10 @@ public class JavaClassAnnotationValueTest {
       private final ModuleReference moduleRef = new ModuleReference("fake", ModuleId.regular());
       private final Map<String, SModelReference> bogusModelRefs = new HashMap<>();
 
-      @NotNull
       @Override
       public void create(SNode source, String pack, SNodeId targetNodeId, SReferenceLink role, String resolveInfo, SNodeId targetTopClassifier) {
         final SModelReference mr = bogusModelRefs.computeIfAbsent(pack, p -> new JavaPackageNameStub(p).asModelReference(moduleRef));
-        source.setReference(role, StaticReference.create(role, source, mr, targetNodeId, resolveInfo));
+        source.setReference(role, ResolveInfo.of(new SNodePointer(mr, targetNodeId), resolveInfo));
       }
     };
     final SConcept cc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");

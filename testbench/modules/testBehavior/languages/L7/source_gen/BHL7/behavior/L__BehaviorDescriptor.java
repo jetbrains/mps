@@ -20,8 +20,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class L__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x4239359f64574d2aL, 0xb1e014d3f948db39L, 0x65e1cc96389f813cL, "BHL7.structure.L");
 
-  public static final SMethod<Integer> foo_id6nxN9oSBS58 = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("foo").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6nxN9oSBS58").build();
-  public static final SMethod<Object> bar_id6nxN9oSBS5Q = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("bar").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6nxN9oSBS5Q").build();
+  public static final SMethod<Integer> foo_id6nxN9oSBS58 = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("foo").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7341373813157757256L).languageId(0xb1e014d3f948db39L, 0x4239359f64574d2aL).build2();
+  public static final SMethod<Object> bar_id6nxN9oSBS5Q = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("bar").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7341373813157757302L).languageId(0xb1e014d3f948db39L, 0x4239359f64574d2aL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(foo_id6nxN9oSBS58, bar_id6nxN9oSBS5Q);
 

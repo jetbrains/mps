@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,12 +17,18 @@ package jetbrains.mps.nodeEditor;
 
 import com.intellij.ide.IdeTooltip;
 import com.intellij.ide.IdeTooltipManager;
+import com.intellij.openapi.project.Project;
 import com.intellij.ui.HintHint;
+import jetbrains.mps.editor.runtime.DocumentationProvider;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.nodeEditor.actions.CursorPositionTracker;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import jetbrains.mps.nodeEditor.cells.GeometryUtil;
+import jetbrains.mps.nodeEditor.documentation.MPSDocumentationToolWindowManager;
+import jetbrains.mps.nodeEditor.documentation.ui.MPSDocumentationUI;
 import jetbrains.mps.nodeEditor.selection.NodeRangeSelection;
 import jetbrains.mps.nodeEditor.selection.SelectUpUtil;
 import jetbrains.mps.openapi.editor.EditorComponent;
@@ -67,7 +73,7 @@ public class NodeEditorActions {
   }
 
   public static class MoveLocal extends HorizontalNavigationAction {
-    private boolean myHome;
+    private final boolean myHome;
 
     public MoveLocal(boolean home) {
       myHome = home;
@@ -146,7 +152,7 @@ public class NodeEditorActions {
   }
 
   public static class MoveToRoot extends NavigationAction {
-    private boolean myHome;
+    private final boolean myHome;
 
     public MoveToRoot(boolean home) {
       myHome = home;
@@ -643,9 +649,24 @@ public class NodeEditorActions {
     }
   }
 
+  @NotNull
+  public static EditorCell findTopmostAttributeCell(@NotNull EditorCell cell, @NotNull SNode node) {
+    for (;;) {
+      EditorCell parent = cell.getParent();
+      if (parent == null) {
+        return cell;
+      }
+      SNode parentNode = parent.getSNode();
+      if (!AttributeOperations.isAttribute(parentNode) || !parentNode.getParent().equals(node)) {
+        return cell;
+      }
+      cell = parent;
+    }
+  }
+
   public static class EnlargeSelection extends NavigationAction {
 
-    private boolean myUp;
+    private final boolean myUp;
 
     public EnlargeSelection(boolean up) {
       myUp = up;
@@ -678,13 +699,24 @@ public class NodeEditorActions {
         if (topMostNodeInSingularContainment != selectedNode) {
           EditorCell nodeCell = editorComponent.findNodeCell(topMostNodeInSingularContainment);
           if (nodeCell != null) {
+            nodeCell = findTopmostAttributeCell(nodeCell, topMostNodeInSingularContainment);
             ((jetbrains.mps.nodeEditor.EditorComponent) editorComponent).pushSelection(nodeCell);
             editorComponent.scrollToCell(nodeCell);
           }
         } else {
           Selection newSelection = selectionManager.createRangeSelection(selectedNode, selectedNode);
-          if (newSelection instanceof NodeRangeSelection && (selectedCell.isBig() || !((NodeRangeSelection) newSelection).getFirstCell().isSelectable())) {
+          boolean needToEnlarge = newSelection instanceof NodeRangeSelection && (selectedCell.isBig() || !((NodeRangeSelection) newSelection).getFirstCell().isSelectable());
+          if (needToEnlarge) {
             newSelection = ((NodeRangeSelection) newSelection).enlargeSelection(myUp);
+          }
+          if (!needToEnlarge || newSelection == null) {
+            if (AttributeOperations.isAttribute(selectedNode) && selectedNode.getParent().getParent() != null) {
+              selectedNode = selectedNode.getParent();
+              newSelection = selectionManager.createRangeSelection(selectedNode, selectedNode);
+              if (needToEnlarge) {
+                newSelection = ((NodeRangeSelection) newSelection).enlargeSelection(myUp);
+              }
+            }
           }
           if (newSelection != null) {
             selectionManager.pushSelection(newSelection);
@@ -710,36 +742,24 @@ public class NodeEditorActions {
 
   public static class Complete extends AbstractCellAction {
 
-    Complete(){
-      super(false);
+    private final boolean mySmart;
+
+    public Complete(boolean smart) {
+      super(smart);
+      mySmart = smart;
     }
 
     @Override
-    public boolean canExecute(EditorContext context) {
+    public final boolean canExecute(EditorContext context) {
       EditorCell selection = context.getSelectedCell();
       return selection != null && selection.getSubstituteInfo() != null;
     }
 
     @Override
-    public void execute(EditorContext context) {
+    public final void execute(EditorContext context) {
       EditorCell selection = context.getSelectedCell();
       ((jetbrains.mps.nodeEditor.EditorComponent) context.getEditorComponent()).activateNodeSubstituteChooser(selection,
-          ((selection instanceof EditorCell_Label) && ((EditorCell_Label) selection).isEverythingSelected()), false);
-    }
-  }
-
-  public static class CompleteSmart extends AbstractCellAction {
-    @Override
-    public boolean canExecute(EditorContext context) {
-      EditorCell selection = context.getSelectedCell();
-      return selection != null && selection.getSubstituteInfo() != null;
-    }
-
-    @Override
-    public void execute(EditorContext context) {
-      EditorCell selection = context.getSelectedCell();
-      ((jetbrains.mps.nodeEditor.EditorComponent) context.getEditorComponent()).activateNodeSubstituteChooser(selection,
-          ((selection instanceof EditorCell_Label) && ((EditorCell_Label) selection).isEverythingSelected()), true);
+        ((selection instanceof EditorCell_Label) && ((EditorCell_Label) selection).isEverythingSelected()), mySmart);
     }
   }
 
@@ -766,6 +786,60 @@ public class NodeEditorActions {
       final JEditorPane pane = IdeTooltipManager.initPane(text, new HintHint().setAwtTooltip(true), null);
       final IdeTooltip tooltip = new IdeTooltip(editorComponent, point, pane);
       IdeTooltipManager.getInstance().show(tooltip, true);
+    }
+  }
+
+  private static abstract class SearchPanelAction extends AbstractCellAction {
+    protected SearchPanelAction() {
+      super(false);
+    }
+
+    protected final SearchPanel getSearchPanel(EditorContext context) {
+      //noinspection deprecation
+      return ((jetbrains.mps.nodeEditor.EditorComponent) context.getEditorComponent()).getSearchPanel();
+    }
+  }
+
+  public static class FindTextInEditor extends SearchPanelAction {
+    @Override
+    public void execute(EditorContext context) {
+      getSearchPanel(context).activate();
+    }
+  }
+
+  public static class FindNextTextInEditor extends SearchPanelAction {
+    @Override
+    public boolean canExecute(EditorContext context) {
+      return getSearchPanel(context).isVisible();
+    }
+
+    @Override
+    public void execute(EditorContext context) {
+      getSearchPanel(context).goToNext();
+    }
+  }
+
+  public static final class FindPrevTextInEditor extends SearchPanelAction {
+    @Override
+    public boolean canExecute(EditorContext context) {
+      return getSearchPanel(context).isVisible();
+    }
+
+    @Override
+    public void execute(EditorContext context) {
+      getSearchPanel(context).goToPrevious();
+    }
+  }
+
+  public static class CancelFindTextInEditor extends SearchPanelAction {
+    @Override
+    public boolean canExecute(EditorContext context) {
+      return getSearchPanel(context).isVisible();
+    }
+
+    @Override
+    public void execute(EditorContext context) {
+      getSearchPanel(context).deactivate();
     }
   }
 

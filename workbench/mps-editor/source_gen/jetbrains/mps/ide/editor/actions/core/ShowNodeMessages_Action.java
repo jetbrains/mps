@@ -13,16 +13,16 @@ import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import com.intellij.openapi.util.text.StringUtil;
+import com.intellij.openapi.ui.messages.MessageDialog;
 import com.intellij.openapi.ui.Messages;
 
-@GeneratedClass(node = "r:cb723a04-ead3-4054-b750-edbb165cca03(jetbrains.mps.ide.editor.actions.core)/7711023363876674047", model = "r:cb723a04-ead3-4054-b750-edbb165cca03(jetbrains.mps.ide.editor.actions.core)")
+@GeneratedClass(nodeId = "7711023363876674047", model = "r:cb723a04-ead3-4054-b750-edbb165cca03(jetbrains.mps.ide.editor.actions.core)")
 public class ShowNodeMessages_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -37,11 +37,7 @@ public class ShowNodeMessages_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return ListSequence.fromList(((List<SimpleEditorMessage>) ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getHighlightManager().getMessagesFor(((SNode) MapSequence.fromMap(_params).get("node"))))).any(new IWhereFilter<SimpleEditorMessage>() {
-      public boolean accept(SimpleEditorMessage it) {
-        return isNotEmptyString(it.getMessage());
-      }
-    });
+    return ListSequence.fromList(((List<SimpleEditorMessage>) ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getHighlightManager().getMessagesFor(((SNode) MapSequence.fromMap(_params).get("node"))))).any((it) -> isNotEmptyString(it.getMessage()));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -81,11 +77,7 @@ public class ShowNodeMessages_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     List<SimpleEditorMessage> messages = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getHighlightManager().getMessagesFor(((SNode) MapSequence.fromMap(_params).get("node")));
-    messages = ListSequence.fromList(messages).removeWhere(new IWhereFilter<SimpleEditorMessage>() {
-      public boolean accept(SimpleEditorMessage it) {
-        return isEmptyString(it.getMessage());
-      }
-    });
+    messages = ListSequence.fromList(messages).removeWhere((it) -> isEmptyString(it.getMessage()));
     // Try to guess messages text size
     StringBuilder sb = new StringBuilder(200 * ListSequence.fromList(messages).count());
     sb.append("<html>");
@@ -102,7 +94,9 @@ public class ShowNodeMessages_Action extends BaseAction {
     }
     sb.append("<html>");
 
-    Messages.showInfoMessage(((Project) MapSequence.fromMap(_params).get("project")), sb.toString(), "Node Messages");
+    MessageDialog dialog = new MessageDialog(((Project) MapSequence.fromMap(_params).get("project")), null, sb.toString(), "Node Messages", new String[]{Messages.getOkButton()}, 0, -1, Messages.getInformationIcon(), null, false, null);
+    dialog.setResizable(true);
+    dialog.show();
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;

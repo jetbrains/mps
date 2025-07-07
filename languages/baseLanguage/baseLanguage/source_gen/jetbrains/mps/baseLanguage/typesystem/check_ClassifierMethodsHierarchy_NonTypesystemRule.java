@@ -13,9 +13,9 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -30,17 +30,15 @@ public class check_ClassifierMethodsHierarchy_NonTypesystemRule extends Abstract
     // I think that it must be solved if we pull up all the traversing code to IMemberContainer (or smth like this)
     List<Pair<SNode, SNode>> toCheck = ListSequence.fromList(new ArrayList<Pair<SNode, SNode>>());
     if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.EnumClass$Vk) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classifier, CONCEPTS.EnumClass$Vk), LINKS.enumConstant$qtgW)).isNotEmpty()) {
-      ListSequence.fromList(toCheck).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classifier, CONCEPTS.EnumClass$Vk), LINKS.enumConstant$qtgW)).select(new ISelector<SNode, Pair<SNode, SNode>>() {
-        public Pair<SNode, SNode> select(SNode it) {
-          SNode dummyAnonymous = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass"));
-          SLinkOperations.setTarget(dummyAnonymous, LINKS.classifier$q_Y$, classifier);
-          ListSequence.fromList(SLinkOperations.getChildren(dummyAnonymous, LINKS.member$L_2d)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.method$pGvv)).select(new ISelector<SNode, SNode>() {
-            public SNode select(SNode it) {
-              return SNodeOperations.copyNode(it);
-            }
-          }));
-          return new Pair<SNode, SNode>(dummyAnonymous, it);
-        }
+      ListSequence.fromList(toCheck).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classifier, CONCEPTS.EnumClass$Vk), LINKS.enumConstant$qtgW)).select((it) -> {
+        SNode dummyAnonymous = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass"));
+        SLinkOperations.setTarget(dummyAnonymous, LINKS.classifier$q_Y$, classifier);
+        ListSequence.fromList(SLinkOperations.getChildren(dummyAnonymous, LINKS.member$L_2d)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.method$pGvv)).select(new _FunctionTypes._return_P1_E0<SNode, SNode>() {
+          public SNode invoke(SNode it) {
+            return SNodeOperations.copyNode(it);
+          }
+        }));
+        return new Pair<SNode, SNode>(dummyAnonymous, it);
       }));
     } else {
       ListSequence.fromList(toCheck).addElement(new Pair(classifier, classifier));

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.openapi.intentions;
 
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -36,8 +37,6 @@ public interface IntentionDescriptor {
   Kind getKind();
 
   boolean isAvailableInChildNodes();
-
-  boolean isApplicable(SNode node, EditorContext editorContext);
 
   @Nullable
   SNodeReference getIntentionNodeReference();

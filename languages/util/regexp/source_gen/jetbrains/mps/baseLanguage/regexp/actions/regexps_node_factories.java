@@ -15,14 +15,14 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class regexps_node_factories {
   public static class NodeFactory_6799940379546646404 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.UnaryRegexp$Nw)) {
         SLinkOperations.setTarget(newNode, LINKS.regexp$$Nis, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.UnaryRegexp$Nw), LINKS.regexp$$Nis));
       }
     }
   }
   public static class NodeFactory_8786899561263173301 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.LookRegexp$cd)) {
         SLinkOperations.setTarget(newNode, LINKS.regexp$a3MD, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.LookRegexp$cd), LINKS.regexp$a3MD));
       } else if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.ParensRegexp$KC)) {
@@ -33,7 +33,7 @@ public class regexps_node_factories {
     }
   }
   public static class NodeFactory_6799940379547316574 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.LookRegexp$cd)) {
         SLinkOperations.setTarget(newNode, LINKS.expr$EXG0, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.LookRegexp$cd), LINKS.regexp$a3MD));
       } else if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.MatchParensRegexp$Ea)) {
@@ -44,7 +44,7 @@ public class regexps_node_factories {
     }
   }
   public static class NodeFactory_3050481019131578337 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.LookRegexp$cd)) {
         SLinkOperations.setTarget(newNode, LINKS.regexp$G7fG, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.LookRegexp$cd), LINKS.regexp$a3MD));
       } else if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.ParensRegexp$KC)) {
@@ -55,21 +55,21 @@ public class regexps_node_factories {
     }
   }
   public static class NodeFactory_1353467374625228627 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Regexp$aA)) {
         SLinkOperations.setTarget(newNode, LINKS.left$41WX, SNodeOperations.cast(sampleNode, CONCEPTS.Regexp$aA));
       }
     }
   }
   public static class NodeFactory_4759120547780396753 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.SymbolClassRegexp$IA)) {
         ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.part$$2oq)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.SymbolClassRegexp$IA), LINKS.part$$2oq)));
       }
     }
   }
   public static class NodeFactory_7048923897762413188 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SLinkOperations.setTarget(newNode, LINKS.regexp$uW0J, SNodeFactoryOperations.createNewNode(CONCEPTS.InlineRegexpExpression$Am, null));
     }
   }

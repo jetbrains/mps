@@ -14,7 +14,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.scope.ModelPlusImportedScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import javax.swing.Icon;
@@ -33,11 +32,7 @@ public class MyMainActionGroup implements PaletteActionGroup {
   public PaletteElement[] getElements() {
     List<PaletteElement> groups = ListSequence.fromList(new ArrayList<PaletteElement>());
     ModelPlusImportedScope scope = new ModelPlusImportedScope(myDiagramCell.getSNode().getModel(), false, CONCEPTS.MetaBlock$17);
-    for (SNode node : Sequence.fromIterable(scope.getAvailableElements(null)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.MetaBlock$17);
-      }
-    })) {
+    for (SNode node : Sequence.fromIterable(scope.getAvailableElements(null)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.MetaBlock$17))) {
       String key = SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.MetaBlock$17), PROPS.path$4KJO);
       if (!(MapSequence.fromMap(tagToGroupMap).containsKey(key))) {
         MapSequence.fromMap(tagToGroupMap).put(key, ListSequence.fromList(new ArrayList<SNode>()));

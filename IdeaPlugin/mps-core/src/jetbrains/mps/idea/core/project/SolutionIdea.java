@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,15 +53,13 @@ import jetbrains.mps.idea.core.project.stubs.JdkStubSolutionManager;
 import jetbrains.mps.idea.core.project.stubs.MultipleSdkProblemNotifier;
 import jetbrains.mps.idea.core.psi.impl.PsiModelReloadListener;
 import jetbrains.mps.module.SDependencyImpl;
+import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.facets.JavaModuleFacet;
-import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import jetbrains.mps.project.structure.modules.Dependency;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
-import jetbrains.mps.vfs.FileSystem;
-import jetbrains.mps.vfs.FileSystemExtPoint;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.ModelAccess;
@@ -93,8 +91,10 @@ public class SolutionIdea extends Solution {
   private final SolutionIdea.MyRootSetChangedListener myRootSetListener = new MyRootSetChangedListener();
   private final SolutionIdea.MyLibrariesListener myLibrariesListener = new MyLibrariesListener();
 
-  public SolutionIdea(@NotNull Module module, SolutionDescriptor descriptor) {
-    super(descriptor, FileSystemExtPoint.getFS().getFile(module.getModuleFilePath()));
+  // FIXME Not sure there's need for descriptor file for this module; supposed to fix MPS-26338.
+  //       FTR, descriptorFile was removed deliberately, see 207abf6e881(MPS-26448)
+  public SolutionIdea(@NotNull Module module, SolutionDescriptor descriptor, IFile descriptorFile) {
+    super(descriptor, descriptorFile);
 
     myModule = module;
     myModelAccess = ProjectHelper.getModelAccess(myModule.getProject());
@@ -102,10 +102,8 @@ public class SolutionIdea extends Solution {
 
     // having it before call to setModuleDescriptor() (which should be removed by the way) because it leads to
     // updateModelSet() which sends modelAdded events
-    addModuleListener(myModule.getProject().getComponent(PsiModelReloadListener.class).getModuleListener());
+    addModuleListener(PsiModelReloadListener.getInstance(myModule.getProject()).getModuleListener());
 
-    // TODO: simply set solution descriptor local variable?
-    setModuleDescriptor(descriptor);
     myConnection = myModule.getProject().getMessageBus().connect();
     myConnection.subscribe(ProjectTopics.PROJECT_ROOTS, new MyModuleRootListener());
     myConnection.subscribe(FacetManager.FACETS_TOPIC, new MyFacetManagerAdapter());
@@ -124,6 +122,8 @@ public class SolutionIdea extends Solution {
       }
     }
     projectLibraryTable.addListener(myLibrariesListener);
+    // used to be part of setModuleDescriptor() call
+    updateJDKSolutionIfNeeded();
   }
 
   @Override
@@ -151,13 +151,13 @@ public class SolutionIdea extends Solution {
     String versionString = sdk.getVersionString();
     JavaSdkVersion sdkVersion = JavaSdkVersion.fromVersionString(versionString);
     if (sdkVersion == null || !sdkVersion.isAtLeast(JavaSdkVersion.JDK_11)) {
-      myModule.getProject().getComponent(MultipleSdkProblemNotifier.class).reportIncorrectJDK(myModule, versionString);
+      MultipleSdkProblemNotifier.getInstance(myModule.getProject()).reportIncorrectJDK(myModule, versionString);
     }
 
     try {
       ApplicationManager.getApplication().getComponent(JdkStubSolutionManager.class).claimSdk(myModule);
     } catch (final DifferentSdkException e) {
-      myModule.getProject().getComponent(MultipleSdkProblemNotifier.class).reportSdkProblem(myModule, e);
+      MultipleSdkProblemNotifier.getInstance(myModule.getProject()).reportSdkProblem(myModule, e);
     }
   }
 
@@ -234,7 +234,7 @@ public class SolutionIdea extends Solution {
           return true;
         }
 
-        if (ModuleLibraryType.isModuleLibrary(library)) {
+        if (ModuleLibraryType.isMPSModuleLibrary(library)) {
           Set<SModuleReference> moduleReferences = ModuleLibrariesUtil.getModules(ProjectHelper.getProjectRepository(myModule.getProject()), library);
           for (SModuleReference moduleReference : moduleReferences) {
             SModule m = moduleReference.resolve(getRepository());
@@ -289,12 +289,6 @@ public class SolutionIdea extends Solution {
   }
 
   @Override
-  protected void dependenciesChanged() {
-    super.dependenciesChanged();
-    myDependencies = null;
-  }
-
-  @Override
   public boolean isPackaged() {
     return false;
   }
@@ -341,32 +335,29 @@ public class SolutionIdea extends Solution {
     return true;
   }
 
-  @NotNull
-  @Override
-  protected SModuleFacet loadAndAttachIfNeeded(@NotNull SModuleFacet facet, Memento memento) {
-    if (facet instanceof JavaModuleFacet) {
-      facet = new JavaModuleFacetImpl(this) {
-        @Override
-        public IFile getClassesGen() {
-          IFile descriptorFile = getDescriptorFile();
-          if (descriptorFile != null && descriptorFile.isReadOnly()) {
-            return super.getClassesGen();
-          }
-
-          // FIXME the code here looks like a hack to allow TraceInfoCache to find trace.info files copied after build into classes_gen location.
-          //       I see no other reason to mangle getClassesGen() of a module in IDEA, as there are no classloading for these modules.
-          //       Perhaps, we shall override getOutputLocation() instead, see TraceInfoCache for further information.
-          CompilerModuleExtension compilerModuleExtension = ModuleRootManager.getInstance(myModule).getModuleExtension(CompilerModuleExtension.class);
-          VirtualFile compilerOutputPath = compilerModuleExtension.getCompilerOutputPath();
-          if (compilerOutputPath == null) {
-            return null;
-          }
-          return FileSystem.getInstance().getFile(compilerOutputPath.getPath());
-        }
-      };
-    }
-    return super.loadAndAttachIfNeeded(facet, memento);
-  }
+//  protected SModuleFacet loadAndAttachIfNeeded(@NotNull SModuleFacet facet, Memento memento) {
+//    if (facet instanceof JavaModuleFacet) {
+//      // XXX we used to mangle getClassesGen() here as a hack to allow TraceInfoCache to find trace.info files
+//      //    copied after build into classes_gen location. With the hack gone, I don't think there's any reason to
+//      //    override classes_gen location for a JMF of a module in IDEA project, however I just don't want to loose knowledge this code captures.
+//      // Indeed, it's quite specific to JavaModuleFacetImpl, and we'd rather get custom JMF implementation for MPS-as-IDEA-plugin
+//      //    scenario, but it would take another round of refactoring, including consideration of GenerationTargetFacet over JMF.
+//      CompilerModuleExtension compilerModuleExtension = ModuleRootManager.getInstance(myModule).getModuleExtension(CompilerModuleExtension.class);
+//      VirtualFile compilerOutputPath = compilerModuleExtension.getCompilerOutputPath();
+//      if (compilerOutputPath != null) {
+//        if (memento == null) {
+//          memento = new MementoImpl();
+//        }
+//        // In-line values of JavaModuleFacetImpl.CLASSES_KEY and other keys
+//        final Memento c = memento.createChild("classes");
+//        c.put("generated", "true");
+//        c.put("path", compilerOutputPath.getPath());
+//        return super.loadAndAttachIfNeeded(facet, c);
+//      }
+//      // fall through
+//    }
+//    return super.loadAndAttachIfNeeded(facet, memento);
+//  }
 
   public Module getIdeaModule() {
     return myModule;

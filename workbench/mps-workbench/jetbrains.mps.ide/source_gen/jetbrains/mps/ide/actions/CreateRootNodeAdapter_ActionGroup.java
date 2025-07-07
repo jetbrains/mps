@@ -21,7 +21,7 @@ import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.ide.projectPane.CreateRootNodeGroup;
 import org.jetbrains.annotations.Nullable;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2841218117793383532", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "2841218117793383532", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class CreateRootNodeAdapter_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.actions.CreateRootNodeAdapter_ActionGroup";
   private final Set<Pair<ActionPlace, Condition<BaseAction>>> myPlaces = SetSequence.fromSet(new HashSet<Pair<ActionPlace, Condition<BaseAction>>>());
@@ -34,7 +34,7 @@ public class CreateRootNodeAdapter_ActionGroup extends GeneratedActionGroup {
   public void doUpdate(AnActionEvent event) {
     removeAll();
     List<SModel> models = MPSCommonDataKeys.MODELS.getData(event.getDataContext());
-    if (ListSequence.fromList(models).count() == 1 && !((ListSequence.fromList(models).first() instanceof EditableSModel && !(ListSequence.fromList(models).first().isReadOnly())))) {
+    if (ListSequence.fromList(models).count() == 1 && !(ListSequence.fromList(models).first() instanceof EditableSModel && !(ListSequence.fromList(models).first().isReadOnly()))) {
       event.getPresentation().setVisible(false);
       return;
     }

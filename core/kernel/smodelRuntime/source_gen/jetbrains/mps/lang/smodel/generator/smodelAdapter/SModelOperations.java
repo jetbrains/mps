@@ -17,16 +17,16 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import jetbrains.mps.util.IterableUtil;
 import org.jetbrains.mps.openapi.model.SNodeId;
-import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
-import jetbrains.mps.smodel.SModelUtil_new;
-import jetbrains.mps.smodel.behaviour.BHReflection;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
+import jetbrains.mps.smodel.NodeIdentityComponent;
+import jetbrains.mps.smodel.behaviour.BHReflection;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.structure.stub.ProjectStructureBuilder;
 import org.jetbrains.mps.openapi.model.SModelReference;
 
-@GeneratedClass(node = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)/6599163591527280390", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
+@GeneratedClass(nodeId = "6599163591527280390", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
 public final class SModelOperations {
   public SModelOperations() {
   }
@@ -99,32 +99,39 @@ public final class SModelOperations {
     return result;
   }
 
-  public static SNode createNewNode(SModel model, SNodeId id, SAbstractConcept concept) {
+  public static SNode createNewNode(@Nullable SModel model, @Nullable SNodeId id, @Nullable SAbstractConcept concept) {
     if (concept == null) {
       return null;
     }
 
-    final SNode result;
-    if (model != null) {
-      result = model.createNode(MetaAdapterByDeclaration.asInstanceConcept(concept), id);
-    } else {
-      // legacy mechanism
-      result = SModelUtil_new.instantiateConceptDeclaration(concept, model, id, false);
-    }
-    if (result == null) {
-      return null;
-    }
+    // FIXME I suppose it's better to use ModelConstraints.getDefaultConcreteConcept(), not asInstanceConcept)(
+    // However, need to check 25802967bd, there's certain reasoning when to resort to default concrete concept, and when
+    // not to (just create the one explicitly specified by a user)
+    final SConcept properConcept = MetaAdapterByDeclaration.asInstanceConcept(concept);
+
+    final SNode result = newNode(model, id, properConcept);
+    NodeIdentityComponent.getInstance().configure(result, model, null);
 
     BHReflection.initNode(result);
     return result;
+  }
+
+  private static SNode newNode(@Nullable SModel model, @Nullable SNodeId id, SConcept properConcept) {
+    if (model != null) {
+      return model.createNode(properConcept, id);
+    } else {
+      return (id == null ? new jetbrains.mps.smodel.SNode(properConcept) : new jetbrains.mps.smodel.SNode(properConcept, id));
+    }
   }
 
   public static SNode createNewRootNode(SModel model, SConcept concept) {
     return createNewRootNode(model, null, concept);
   }
 
-  public static SNode createNewRootNode(SModel model, SNodeId nodeId, SConcept concept) {
-    SNode newNode = createNewNode(model, nodeId, concept);
+  public static SNode createNewRootNode(SModel model, @Nullable SNodeId nodeId, SConcept concept) {
+    SNode newNode = newNode(model, nodeId, concept);
+    NodeIdentityComponent.getInstance().configure(newNode, model, null);
+    BHReflection.initNode(newNode);
     model.addRootNode(newNode);
     return newNode;
   }

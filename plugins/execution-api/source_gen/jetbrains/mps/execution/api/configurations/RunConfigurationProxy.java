@@ -28,7 +28,7 @@ import jetbrains.mps.execution.api.settings.SettingsEditorEx;
  * (see reduce_RunConfigurationCreator), and I'd like to refactor producers first (including switch to RunConfigurationProducer instead of 
  * deprecated RuntimeConfigurationProducer) and then consider options for use of the proxy.
  */
-@GeneratedClass(node = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)/897795129551221893", model = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)")
+@GeneratedClass(nodeId = "897795129551221893", model = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)")
 /*package*/ final class RunConfigurationProxy extends BaseMpsRunConfiguration implements IPersistentConfiguration {
   private BaseMpsRunConfiguration myDelegate;
 

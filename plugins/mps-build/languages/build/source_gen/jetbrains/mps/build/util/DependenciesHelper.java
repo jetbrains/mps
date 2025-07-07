@@ -4,11 +4,11 @@ package jetbrains.mps.build.util;
 
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.generator.template.TemplateQueryContext;
 import java.util.HashMap;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.generator.template.TemplateQueryContext;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.extapi.model.TransientSModel;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -20,21 +20,19 @@ public class DependenciesHelper {
   private final Map<SNode, String> contentLocationMap;
   private final Map<Object, SNode> idToArtifactMap;
   private final MacroHelper macros;
-  private final TemplateQueryContext myGenContext;
   private final SNode myProject;
   private final String myLocationKey;
   private final String myContentLocationKey;
   private final String myLayoutRelativeKey;
   private final String myArtifactIdKey;
 
-  protected DependenciesHelper(TemplateQueryContext genContext, SNode project) {
+  protected DependenciesHelper(Context buildContext, SNode project) {
     // given the usage pattern of DH, with fill from preprocessing script, and reads from rules (that can be run in parallel), 
     // I feel regular, non-concurrent map is enough;
     locationMap = new HashMap<SNode, String>(100);
     contentLocationMap = new HashMap<SNode, String>(100);
     idToArtifactMap = new HashMap<Object, SNode>(100);
-    this.macros = new MacroHelper.MacroContext(project, genContext).getMacros(project);
-    myGenContext = genContext;
+    this.macros = buildContext.getMacros(project);
     myProject = project;
     final String qualifiedProjectName = SModelOperations.getModelName(SNodeOperations.getModel(project)) + '/' + SPropertyOperations.getString(project, PROPS.name$MnvL);
     myLocationKey = "location:" + qualifiedProjectName;
@@ -43,23 +41,17 @@ public class DependenciesHelper {
     myArtifactIdKey = "artifact-key:" + qualifiedProjectName;
   }
 
-  /*package*/ static void put(DependenciesHelper dh, String token) {
+  /*package*/ static void put(TemplateQueryContext genContext, DependenciesHelper dh, String token) {
     final String key = token + "::" + SModelOperations.getModelName(SNodeOperations.getModel(dh.myProject)) + "/" + SPropertyOperations.getString(dh.myProject, PROPS.name$MnvL);
     // FIXME eventually (if DH persists), could at least become 'step' object;
     //      now need to span several steps (build.mps: load modules, aliases, main), hence session
-    assert dh.myGenContext.getSessionObject(key) == null : "just to notice if anything wrong with our assumptions";
-    dh.myGenContext.putSessionObject(key, dh);
+    assert genContext.getSessionObject(key) == null : "just to notice if anything wrong with our assumptions";
+    genContext.putSessionObject(key, dh);
   }
 
   public static DependenciesHelper get(TemplateQueryContext genContext, SNode project, String token) {
     final String key = token + "::" + SModelOperations.getModelName(SNodeOperations.getModel(project)) + "/" + SPropertyOperations.getString(project, PROPS.name$MnvL);
     return (DependenciesHelper) genContext.getSessionObject(key);
-  }
-
-  public TemplateQueryContext getGenContext() {
-    // FIXME DH doesn't need genContext any more; shall get rid of this method here, as well as refactor last uses of getOriginalNode(),
-    //      just too much for the present change, left as an exercise.
-    return myGenContext;
   }
 
   public void putLocation(SNode layoutNode, String location) {
@@ -202,7 +194,7 @@ public class DependenciesHelper {
     // RequiredPlugins records transient nodes and getArtifact(node<>) needs to find out original node of that node.
     // If generation doesn't keep transient models (or uses in-place transformation), check for node.model==null here
     // would effectively prevent from using getArtifacts(recordedTransientNode).
-    if (SNodeOperations.getModel(node) != null && !((SNodeOperations.getModel(node) instanceof TransientSModel))) {
+    if (SNodeOperations.getModel(node) != null && !(SNodeOperations.getModel(node) instanceof TransientSModel)) {
       return node;
     }
 

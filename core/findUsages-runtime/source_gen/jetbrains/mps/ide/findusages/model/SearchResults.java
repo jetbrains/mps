@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.model.SNode;
  * the type parameter T does not make much sense since we allow usages with different kinds to be in the same
  * SearchResults container
  */
-@GeneratedClass(node = "r:d98d04fb-4a60-4106-81cf-6cb40b67de4d(jetbrains.mps.ide.findusages.model)/847291649004065516", model = "r:d98d04fb-4a60-4106-81cf-6cb40b67de4d(jetbrains.mps.ide.findusages.model)")
+@GeneratedClass(nodeId = "847291649004065516", model = "r:d98d04fb-4a60-4106-81cf-6cb40b67de4d(jetbrains.mps.ide.findusages.model)")
 public class SearchResults<T> implements UsagesList {
   private final SearchedObjects<?> mySearchedObjects;
   private final List<SearchResult<T>> mySearchResults;
@@ -50,6 +50,11 @@ public class SearchResults<T> implements UsagesList {
   @NotNull
   public static <T> SearchResults<T> empty() {
     return new SearchResults();
+  }
+
+  @NotNull
+  public static <T> SearchResults<T> singleton(@NotNull SearchResult<T> one) {
+    return new SearchResults<T>(Collections.emptyList(), Collections.singletonList(one));
   }
 
   @NotNull

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,13 +22,12 @@ import com.intellij.ui.speedSearch.SpeedSearchUtil;
 import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.ide.icons.IdeIcons;
-import jetbrains.mps.nodeEditor.EditorSettings;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
+import jetbrains.mps.openapi.editor.menus.IconResourceProvider;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -46,7 +45,7 @@ import java.util.Map;
 import java.util.Optional;
 
 class NodeItemCellRenderer extends JPanel implements ListCellRenderer<SubstituteAction> {
-  private static final Logger LOG = LogManager.getLogger(NodeItemCellRenderer.class);
+  private static final Logger LOG = Logger.getLogger(NodeItemCellRenderer.class);
   private static final String EXCEPTION_WAS_THROWN_TEXT = "!Exception was thrown!";
 
   private final SimpleColoredComponent myLeft = new SimpleColoredComponent();
@@ -89,14 +88,14 @@ class NodeItemCellRenderer extends JPanel implements ListCellRenderer<Substitute
       Icon icon = getIcon(action, pattern);
       myLeft.setIcon(icon);
     } catch (Throwable t) {
-      LOG.error(null, t);
+      LOG.error(t);
     }
 
     int style = Font.PLAIN;
     try {
       style = getStyle(action, pattern);
     } catch (Throwable t) {
-      LOG.error(null, t);
+      LOG.error(t);
     }
 
     Font font = getFont(style);
@@ -105,8 +104,13 @@ class NodeItemCellRenderer extends JPanel implements ListCellRenderer<Substitute
 
 
     CompletionCustomizationManager completionCustomizationManager = mySubstituteChooser.getCompletionCustomizationManager();
-    Optional<Color> actionTextColor = completionCustomizationManager.getTextColor(action, pattern);
-    Color foreground = actionTextColor.orElse(list.getForeground());
+    Color foreground;
+    if (isSelected) {
+      foreground = list.getSelectionForeground();
+    } else {
+      Optional<Color> actionTextColor = completionCustomizationManager.getTextColor(action, pattern);
+      foreground = actionTextColor.orElse(list.getForeground());
+    }
     try {
       String visibleMatchingText = action.getVisibleMatchingText(pattern);
       if (visibleMatchingText != null) {
@@ -115,7 +119,7 @@ class NodeItemCellRenderer extends JPanel implements ListCellRenderer<Substitute
       }
     } catch (Throwable t) {
       myLeft.append(EXCEPTION_WAS_THROWN_TEXT);
-      LOG.error(null, t);
+      LOG.error(t);
     }
 
     try {
@@ -125,7 +129,7 @@ class NodeItemCellRenderer extends JPanel implements ListCellRenderer<Substitute
       }
     } catch (Throwable t) {
       myRight.append(EXCEPTION_WAS_THROWN_TEXT);
-      LOG.error(null, t);
+      LOG.error(t);
     }
 
     if (isSelected) {
@@ -151,11 +155,10 @@ class NodeItemCellRenderer extends JPanel implements ListCellRenderer<Substitute
   }
 
   private void appendText(String pattern, SimpleColoredComponent component, boolean isSelected, String text, Color textColor, int style, boolean isStrikeout) {
-    Color foreground = isSelected ? NodeSubstituteChooserUi.SELECTED_FOREGROUND_COLOR : textColor;
     if (isStrikeout) {
       style = style | SimpleTextAttributes.STYLE_STRIKEOUT;
     }
-    final SimpleTextAttributes base = new SimpleTextAttributes(style, foreground);
+    final SimpleTextAttributes base = new SimpleTextAttributes(style, textColor);
 
     Iterable<TextRange> ranges = mySubstituteChooser.isMenuEmpty() ? null : getMatchingFragments(pattern, text);
     if (ranges != null) {
@@ -192,15 +195,15 @@ class NodeItemCellRenderer extends JPanel implements ListCellRenderer<Substitute
     try {
       font = font.deriveFont(style);
     } catch (Throwable t) {
-      LOG.error(null, t);
+      LOG.error(t);
     }
     return font;
   }
 
   private Icon getIcon(SubstituteAction action, String pattern) {
     Icon icon = null;
-    if (action instanceof CompletionActionItemAsSubstituteAction) {
-      icon = GlobalIconManager.getInstance().getIconForResource(((CompletionActionItemAsSubstituteAction) action).getIcon(pattern));
+    if (action instanceof IconResourceProvider) {
+      icon = GlobalIconManager.getInstance().getIconForResource(((IconResourceProvider) action).getIcon(pattern));
     }
     if (icon != null) {
       return icon;

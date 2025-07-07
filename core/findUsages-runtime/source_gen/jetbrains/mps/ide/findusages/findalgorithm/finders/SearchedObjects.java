@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 
 @Immutable
-@GeneratedClass(node = "r:1a2b3027-99d2-4946-917b-f185130ac75d(jetbrains.mps.ide.findusages.findalgorithm.finders)/7241723264099933722", model = "r:1a2b3027-99d2-4946-917b-f185130ac75d(jetbrains.mps.ide.findusages.findalgorithm.finders)")
+@GeneratedClass(nodeId = "7241723264099933722", model = "r:1a2b3027-99d2-4946-917b-f185130ac75d(jetbrains.mps.ide.findusages.findalgorithm.finders)")
 public class SearchedObjects<K> {
   private final Set<K> mySearchedNodes;
 

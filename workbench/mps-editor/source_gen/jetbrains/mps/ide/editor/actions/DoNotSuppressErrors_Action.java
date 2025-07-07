@@ -10,7 +10,6 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.annotations.NotNull;
@@ -19,7 +18,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/6893431717880288043", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
+@GeneratedClass(nodeId = "6893431717880288043", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
 public class DoNotSuppressErrors_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -27,6 +26,7 @@ public class DoNotSuppressErrors_Action extends BaseAction {
     super("Do not Supress Errors", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -39,14 +39,12 @@ public class DoNotSuppressErrors_Action extends BaseAction {
     }
     {
       SNode p = event.getData(MPSCommonDataKeys.NODE);
-      MapSequence.fromMap(_params).put("node", p);
       if (p == null) {
         return false;
       }
     }
     {
       SModel p = event.getData(MPSCommonDataKeys.MODEL);
-      MapSequence.fromMap(_params).put("model", p);
       if (!(p instanceof EditableSModel) || p.isReadOnly()) {
         return false;
       }
@@ -58,7 +56,7 @@ public class DoNotSuppressErrors_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1).list(((SNode) ((SNode) MapSequence.fromMap(_params).get("node"))))).clear();
+    ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1).list(((SNode) event.getData(MPSCommonDataKeys.NODE)))).clear();
   }
 
   private static final class CONCEPTS {

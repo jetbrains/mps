@@ -19,7 +19,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_DependentTypeDescriptor;
   private ConceptPresentation props_DependentTypeInstance;
   private ConceptPresentation props_EmptyMemberDescriptor;
-  private ConceptPresentation props_GenerateModifier;
   private ConceptPresentation props_ImplementationCode;
   private ConceptPresentation props_IntegerPropertyInstance;
   private ConceptPresentation props_MemberInstance;
@@ -109,14 +108,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_EmptyMemberDescriptor = cpb.create();
         }
         return props_EmptyMemberDescriptor;
-      case LanguageConceptSwitch.GenerateModifier:
-        if (props_GenerateModifier == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.deprecated(true);
-          cpb.rawPresentation("generate");
-          props_GenerateModifier = cpb.create();
-        }
-        return props_GenerateModifier;
       case LanguageConceptSwitch.ImplementationCode:
         if (props_ImplementationCode == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

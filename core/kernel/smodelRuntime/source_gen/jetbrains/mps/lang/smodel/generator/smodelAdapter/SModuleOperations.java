@@ -8,10 +8,9 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Language;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SModelName;
 
-@GeneratedClass(node = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)/6171083915388368126", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
+@GeneratedClass(nodeId = "6171083915388368126", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
 public class SModuleOperations {
   /**
    * We use name here because we can't make a connection between aspect and the corresponding interface
@@ -19,19 +18,15 @@ public class SModuleOperations {
    * Still, it is better if user does not write this by-name stuff explicitly - it will be changed later by regenerating, not by manually changing code
    */
   public static SModel getAspect(SModule module, final String name) {
-    if (!((module instanceof Language))) {
+    if (!(module instanceof Language)) {
       return null;
     }
     List<SModel> models = ((Language) module).getModels();
-    return ListSequence.fromList(models).findFirst(new IWhereFilter<SModel>() {
-      public boolean accept(SModel it) {
-        return !(it.getName().hasStereotype()) && it.getName().getSimpleName().equals(name);
-      }
-    });
+    return ListSequence.fromList(models).findFirst((it) -> !(it.getName().hasStereotype()) && it.getName().getSimpleName().equals(name));
   }
 
   public static boolean isAspect(SModel model, String name) {
-    if (!((model.getModule() instanceof Language))) {
+    if (!(model.getModule() instanceof Language)) {
       return false;
     }
     SModelName mn = model.getName();

@@ -7,7 +7,7 @@ import jetbrains.mps.plugins.actions.GeneratedActionGroup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1204991228238", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1204991228238", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class DevkitActions_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.actions.DevkitActions_ActionGroup";
   public static final String LABEL_ID_check = ID + "check";
@@ -30,7 +30,6 @@ public class DevkitActions_ActionGroup extends GeneratedActionGroup {
     DevkitActions_ActionGroup.this.addSeparator();
     DevkitActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.SetVirtualFolder_Action");
     DevkitActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.RemoveVirtualFolder_Action");
-    DevkitActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.RenameModule_Action");
     addNamedAnchor(LABEL_ID_refactoring);
     DevkitActions_ActionGroup.this.addSeparator();
     addNamedAnchor(LABEL_ID_find_usages);

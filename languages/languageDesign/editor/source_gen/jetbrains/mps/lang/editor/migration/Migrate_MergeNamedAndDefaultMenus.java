@@ -10,7 +10,6 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -45,36 +44,16 @@ public class Migrate_MergeNamedAndDefaultMenus extends MigrationScriptBase {
     {
       SearchScope scope_uuumhm_a0e = CommandUtil.createScope(m);
       final SearchScope scope_uuumhm_a0e_0 = new EditableFilteringScope(scope_uuumhm_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_uuumhm_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.TransformationMenu_Named$dh, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          migrateTransformationMenu(it);
-        }
-      });
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.TransformationMenu_Default$TY, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          migrateTransformationMenu(it);
-        }
-      });
+      QueryExecutionContext context = () -> scope_uuumhm_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.TransformationMenu_Named$dh, false)).visitAll((it) -> migrateTransformationMenu(it));
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.TransformationMenu_Default$TY, false)).visitAll((it) -> migrateTransformationMenu(it));
 
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SubstituteMenu_Named$cm, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          migrateSubstituteMenu(it);
-        }
-      });
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SubstituteMenu_Default$sV, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          migrateSubstituteMenu(it);
-        }
-      });
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SubstituteMenu_Named$cm, false)).visitAll((it) -> migrateSubstituteMenu(it));
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SubstituteMenu_Default$sV, false)).visitAll((it) -> migrateSubstituteMenu(it));
 
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 13);
   }
 

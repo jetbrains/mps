@@ -15,17 +15,22 @@
  */
 package jetbrains.mps.workbench.actions.welcomeScreen;
 
+import com.intellij.ide.impl.OpenProjectTask;
 import com.intellij.ide.impl.ProjectUtil;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.application.Application;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.ui.ExperimentalUI;
 import jetbrains.mps.samples.SamplesInfo;
 import jetbrains.mps.workbench.actions.OpenMPSProjectFileChooserDescriptor;
+import jetbrains.mps.workbench.actions.OpenMPSProjectTrustProjectHelper;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -34,6 +39,7 @@ import java.util.Comparator;
 
 public class OpenSampleProjectAction extends AnAction {
 
+  @SuppressWarnings("UnstableApiUsage")
   public void actionPerformed(@NotNull AnActionEvent e) {
     VirtualFile samplesFolder = null;
     String samplesPath = SamplesInfo.getInstance().getSamplesPath();
@@ -54,9 +60,14 @@ public class OpenSampleProjectAction extends AnAction {
     final FileChooserDescriptor descriptor = new OpenMPSProjectFileChooserDescriptor(true);
     descriptor.setTitle("Samples");
 
-    VirtualFile result = FileChooser.chooseFile(descriptor, currentProject, samplesFolder);
-    if (result != null) {
-      ProjectUtil.openProject(result.getPath(), currentProject, false);
+    final VirtualFile @NotNull [] virtualFiles = FileChooser.chooseFiles(descriptor, currentProject, samplesFolder);
+    for (VirtualFile virtualFile : virtualFiles) {
+      if (virtualFile == null) {
+        continue;
+      }
+      if (OpenMPSProjectTrustProjectHelper.checkTrust(virtualFile)) {
+        ProjectUtil.openProject(virtualFile.toNioPath(), OpenProjectTask.build().withProjectToClose(currentProject).withForceOpenInNewFrame(false));
+      }
     }
   }
 }

@@ -80,11 +80,11 @@ import org.jetbrains.mps.openapi.language.SProperty;
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.XmlPrologElement$b8;
     }
-    public SNode createNodeToInsert(EditorContext editorContext) {
-      return nodeFactory();
+    public SNode createNodeToInsert(EditorContext editorContext, SNode prevNode, SNode nextNode, int index) {
+      return nodeFactory(prevNode, nextNode, index);
     }
 
-    public SNode nodeFactory() {
+    public SNode nodeFactory(SNode prevNode, SNode nextNode, int index) {
       SNode n = SNodeFactoryOperations.createNewNode(CONCEPTS.XmlWhitespace$9F, null);
       SPropertyOperations.assign(n, PROPS.value$bSFr, "");
       return n;

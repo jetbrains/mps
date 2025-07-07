@@ -5,7 +5,6 @@ package jetbrains.mps.plugin;
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.wm.StatusBarWidget;
 import jetbrains.mps.logging.Logger;
-import org.apache.log4j.LogManager;
 import com.intellij.openapi.project.Project;
 import java.util.concurrent.atomic.AtomicReference;
 import com.intellij.openapi.wm.StatusBar;
@@ -21,9 +20,10 @@ import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.icons.MPSIcons;
 import javax.swing.Timer;
 
-@GeneratedClass(node = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)/8611316981187517974", model = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)")
+@GeneratedClass(nodeId = "8611316981187517974", model = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)")
 public class PluginStateWidget implements StatusBarWidget, StatusBarWidget.IconPresentation {
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(PluginStateWidget.class));
+  public static final String WIDGET_ID = "MpsPluginStateMonitor";
+  private static final Logger LOG = Logger.getLogger(PluginStateWidget.class);
   private static final int INITIAL_DELAY = 4000;
   private static final int CRITICAL_DELAY = 16000;
   private static final double DELAY_MUL = 2.0;
@@ -108,7 +108,7 @@ public class PluginStateWidget implements StatusBarWidget, StatusBarWidget.IconP
   @NotNull
   @Override
   public String ID() {
-    return "MpsPluginStateMonitor";
+    return WIDGET_ID;
   }
   private void tick() {
     LOG.assertLog(!(ThreadUtils.isInEDT()), "You should not do this in EDT");

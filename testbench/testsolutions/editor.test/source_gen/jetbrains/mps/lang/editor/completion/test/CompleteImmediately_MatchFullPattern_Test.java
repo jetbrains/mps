@@ -4,20 +4,21 @@ package jetbrains.mps.lang.editor.completion.test;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.junit.Assert;
 
 @MPSLaunch
 public class CompleteImmediately_MatchFullPattern_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(CompleteImmediately_MatchFullPattern_Test.class, "${mps_home}", "r:f27d9626-8ef5-4cba-bce0-6aa6369f05ff(jetbrains.mps.lang.editor.completion.test)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(CompleteImmediately_MatchFullPattern_Test.class).projectPath(null).modelRef("r:f27d9626-8ef5-4cba-bce0-6aa6369f05ff(jetbrains.mps.lang.editor.completion.test)").reopenProject(false).build());
 
   public CompleteImmediately_MatchFullPattern_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -36,7 +37,7 @@ public class CompleteImmediately_MatchFullPattern_Test extends BaseTransformatio
       initEditorComponent("264584657488355529", "264584657488355532");
       typeString("cursor");
       Assert.assertTrue(getEditorComponent().getNodeSubstituteChooser().isVisible());
-      Assert.assertEquals(2, getEditorComponent().getNodeSubstituteChooser().getNumberOfActions());
+      Assert.assertEquals(Integer.valueOf(2), Integer.valueOf(getEditorComponent().getNodeSubstituteChooser().getNumberOfActions()));
 
     }
   }

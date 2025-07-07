@@ -9,7 +9,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.debugger.java.api.evaluation.transform.TransformatorBuilder;
+import jetbrains.mps.debugger.java.runtime.evaluation.transform.TransformationUtil;
 import jetbrains.mps.debugger.java.customViewers.behavior.HighLevelCustomViewer__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
@@ -23,10 +23,9 @@ import jetbrains.mps.generator.template.MapSrcMacroPostProcContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.generator.template.MappingScriptContext;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.debugger.java.runtime.evaluation.transform.TransformatorImpl;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.CreateRootCondition;
 import java.util.HashMap;
@@ -67,10 +66,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_3_0(final PropertyMacroContext _context) {
-    return TransformatorBuilder.getInstance().getJniSignatureFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
+    return TransformationUtil.getJniSignatureFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
   }
   public static Object propertyMacro_GetValue_3_1(final PropertyMacroContext _context) {
-    return TransformatorBuilder.getInstance().getJniSignatureFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
+    return TransformationUtil.getJniSignatureFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
   }
   public static Object propertyMacro_GetValue_3_2(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL) + "Wrapper";
@@ -118,31 +117,31 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.getPresentation$wMV3) != null);
   }
   public static SNode sourceNodeQuery_3_0(final SourceSubstituteMacroNodeContext _context) {
-    return TransformatorBuilder.getInstance().getProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
+    return TransformationUtil.getValueProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
   }
   public static SNode sourceNodeQuery_3_1(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.canWrap$tqnC), LINKS.body$e68K);
   }
   public static SNode sourceNodeQuery_3_2(final SourceSubstituteMacroNodeContext _context) {
-    return TransformatorBuilder.getInstance().getProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
+    return TransformationUtil.getValueProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
   }
   public static SNode sourceNodeQuery_3_3(final SourceSubstituteMacroNodeContext _context) {
-    return TransformatorBuilder.getInstance().getProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
+    return TransformationUtil.getValueProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
   }
   public static SNode sourceNodeQuery_3_4(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.getWatchables$wNa4), LINKS.body$e68K);
   }
   public static SNode sourceNodeQuery_3_5(final SourceSubstituteMacroNodeContext _context) {
-    return TransformatorBuilder.getInstance().getProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
+    return TransformationUtil.getValueProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
   }
   public static SNode sourceNodeQuery_3_6(final SourceSubstituteMacroNodeContext _context) {
-    return TransformatorBuilder.getInstance().getProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
+    return TransformationUtil.getValueProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
   }
   public static SNode sourceNodeQuery_3_7(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.getPresentation$wMV3), LINKS.body$e68K);
   }
   public static SNode sourceNodeQuery_3_8(final SourceSubstituteMacroNodeContext _context) {
-    return TransformatorBuilder.getInstance().getProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
+    return TransformationUtil.getValueProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
   }
   public static SNode sourceNodeQuery_5_0(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.valueProxyType$DzNl);
@@ -185,11 +184,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static void mapSrcMacro_post_7_0(final MapSrcMacroPostProcContext _context) {
     new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw).setNew(_context.getOutputNode());
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(_context.getOutputNode(), null, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw).setNew(it);
-      }
-    });
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(_context.getOutputNode(), null, false, new SAbstractConcept[]{})).visitAll((it) -> new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw).setNew(it));
   }
   public static void mapSrcMacro_post_8_0(final MapSrcMacroPostProcContext _context) {
     new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw).setNew(_context.getOutputNode());
@@ -197,22 +192,18 @@ public class QueriesGenerated extends QueryProviderBase {
   public static void mappingScript_CodeBlock_4(final MappingScriptContext _context) {
     for (SNode classConcept : ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.ClassConcept$bK))) {
       if (SLinkOperations.hasPointer(SLinkOperations.getTarget(classConcept, LINKS.superclass$Mp9$), LINKS.classifier$cxMr, new SNodePointer("r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)", "3432969378036017270")) && SPropertyOperations.getString(classConcept, PROPS.name$MnvL).endsWith("_WrapperFactory")) {
-        for (SNode method : ListSequence.fromList(SNodeOperations.getNodeDescendants(classConcept, CONCEPTS.InstanceMethodDeclaration$39, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.ToProcessMethod$O5).get(it) != null);
-          }
-        })) {
-          if ((method == null)) {
-            continue;
-          }
-          TransformatorBuilder.getInstance().build(method, false).transform();
+        for (SNode method : ListSequence.fromList(SNodeOperations.getNodeDescendants(classConcept, CONCEPTS.InstanceMethodDeclaration$39, false, new SAbstractConcept[]{})).where((it) -> (new IAttributeDescriptor.NodeAttribute(CONCEPTS.ToProcessMethod$O5).get(it) != null))) {
+          // This code is executed w/o IDE running (e.g. command-line <generate>, and no chances to get TransformatorBuilder service initialized)
+          // DotExpression
+          new TransformatorImpl(method).transform();
         }
       }
     }
   }
   public static void mappingScript_CodeBlock_9(final MappingScriptContext _context) {
     for (SNode viewer : ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.HighLevelCustomViewer$Bb))) {
-      SNode valueProxyType = TransformatorBuilder.getInstance().getProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(viewer));
+      // see applyTransformationUtil for explanation about TransformatorBuilder.getInstance and use of TransformatorImpl
+      SNode valueProxyType = TransformationUtil.getValueProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(viewer));
       for (SNode valueParameter : ListSequence.fromList(SNodeOperations.getNodeDescendants(viewer, CONCEPTS.HighLevelValue_ConceptFunctionParameter$O5, false, new SAbstractConcept[]{}))) {
         SLinkOperations.setTarget(valueParameter, LINKS.valueProxyType$DzNl, SNodeOperations.copyNode(valueProxyType));
       }
@@ -463,7 +454,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
-    rtqMethods.put("8275758777999533504", new RTQ(0, "MyWatchable"));
+    rtqMethods.put("8275758777999533504", new RTQ(0, "map_CustomWatchablesContainer.MyWatchable"));
   }
   @NotNull
   @Override

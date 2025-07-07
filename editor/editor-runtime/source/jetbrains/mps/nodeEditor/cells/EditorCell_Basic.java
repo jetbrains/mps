@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,9 @@
  */
 package jetbrains.mps.nodeEditor.cells;
 
-import com.intellij.ui.JBColor;
 import com.intellij.util.ui.UIUtil;
 import gnu.trove.TIntObjectHashMap;
+import jetbrains.mps.editor.runtime.HtmlTextBuilderImpl;
 import jetbrains.mps.editor.runtime.TextBuilderImpl;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
 import jetbrains.mps.editor.runtime.impl.LayoutConstraints;
@@ -34,6 +34,7 @@ import jetbrains.mps.nodeEditor.cellMenu.NodeSubstitutePatternEditor;
 import jetbrains.mps.nodeEditor.cells.collections.Entry;
 import jetbrains.mps.nodeEditor.keyboard.TextChangeEvent;
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.HtmlTextBuilder;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -49,8 +50,6 @@ import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.util.ListMap;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -73,7 +72,7 @@ import java.util.Map;
 import java.util.Set;
 
 public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mps.openapi.editor.cells.EditorCell> {
-  public static final Logger LOG = Logger.wrap(LogManager.getLogger(EditorCell_Basic.class));
+  public static final Logger LOG = Logger.getLogger(EditorCell_Basic.class);
 
   public static final int BRACKET_WIDTH = 7;
 
@@ -197,7 +196,7 @@ public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mp
   @Override
   public Collection<CellActionType> getAvailableActions() {
     final Collection<CellActionType> result = new ArrayList<>(myActionMap.size());
-    myActionMap.forEachKey(value -> result.add(CellActionType.values()[value]));
+    myActionMap.forEach(value -> result.add(CellActionType.values()[value]));
     return result;
   }
 
@@ -357,8 +356,7 @@ public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mp
     return myCommandGroupId;
   }
 
-  @Deprecated
-  @ToRemove(version = 2018.2)
+@Deprecated(since = "2018.2", forRemoval = true)
   @Override
   public String getRole() {
     SConceptFeature sRole = getSRole();
@@ -502,7 +500,7 @@ public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mp
     if (node.getConcept().equals(concreteConcept)) {
       return null;
     }
-    jetbrains.mps.smodel.SNode newNode = new jetbrains.mps.smodel.SNode(concreteConcept);
+    SNode newNode = getContext().getModel().createNode(concreteConcept);
     SNodeUtil.replaceWithAnother(node, newNode);
     getContext().flushEvents();
     return newNode;
@@ -592,7 +590,7 @@ public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mp
 
   @Override
   public NodeSubstitutePatternEditor createSubstitutePatternEditor() {
-    return new NodeSubstitutePatternEditor(myEditorContext.getEditorComponent().getEditorComponentSettings());
+    return new NodeSubstitutePatternEditor(myEditorContext);
   }
 
   @Override
@@ -654,7 +652,10 @@ public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mp
   protected ParentSettings fillBackground(Graphics g, ParentSettings parentSettings) {
     ParentSettings settings = isSelectionPaintedOnAncestor(parentSettings);
     if (!settings.isSelectionPainted()) {
-      if (!parentSettings.isSkipBackground()) {
+      if (!parentSettings.isSkipBackground() && getStyle().isSpecified(StyleAttributes.BACKGROUND_COLOR)) {
+        // BACKGROUND_COLOR is always present as it's inherited from EC defaults; here we need to paint cell background
+        // only in case it was explicitly specified in the cell settings.
+        // PS.isSkipBackground seems to still make sense as it reflects EditorMessage aspect rather than BG inheritable defaults.
         Color backgroundColor = getStyle().get(StyleAttributes.BACKGROUND_COLOR);
         if (backgroundColor != null) {
           g.setColor(backgroundColor);
@@ -766,7 +767,7 @@ public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mp
   public void paintSelection(Graphics g, Color c, boolean drawBorder, ParentSettings parentSettings) {
     g.setColor(c);
     g.fillRect(getX(), getY() + getTopInset(), getWidth(), getHeight() - getTopInset() - getBottomInset());
-    if (getEditor().hasFocus() && drawBorder) {
+    if (getEditor().isFocusOwner() && drawBorder) {
       g.setColor(c.darker());
       g.drawRect(getX(), getY() + getTopInset(), getWidth(), getHeight());
     }
@@ -775,6 +776,10 @@ public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mp
   @Override
   public TextBuilder renderText() {
     return new TextBuilderImpl();
+  }
+
+  public HtmlTextBuilder renderHtml(){
+    return new HtmlTextBuilderImpl();
   }
 
   @Override

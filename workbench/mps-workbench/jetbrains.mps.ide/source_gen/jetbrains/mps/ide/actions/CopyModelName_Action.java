@@ -15,7 +15,7 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 import jetbrains.mps.util.SNodeOperations;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1236183891533", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1236183891533", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class CopyModelName_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -23,6 +23,7 @@ public class CopyModelName_Action extends BaseAction {
     super("Copy Model Name", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

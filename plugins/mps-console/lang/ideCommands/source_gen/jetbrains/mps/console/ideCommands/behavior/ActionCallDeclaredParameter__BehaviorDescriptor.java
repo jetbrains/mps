@@ -23,7 +23,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class ActionCallDeclaredParameter__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4d7759afce9587a7L, "jetbrains.mps.console.ideCommands.structure.ActionCallDeclaredParameter");
 
-  public static final SMethod<SNode> getParameterDeclaration_id4PRmqZe_o$D = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getParameterDeclaration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4PRmqZe_o$D").build();
+  public static final SMethod<SNode> getParameterDeclaration_id4PRmqZe_o$D = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getParameterDeclaration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5582028874769074473L).languageId(0xaab368fdf1c34ed0L, 0xa5e4de5346a344daL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameterDeclaration_id4PRmqZe_o$D);
 

@@ -5,6 +5,7 @@ package jetbrains.mps.vcs.plugin;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
@@ -14,16 +15,21 @@ import com.intellij.openapi.actionSystem.CommonDataKeys;
 import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import java.util.Objects;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.vcs.diff.ui.StructDifferenceDialog;
 
-@GeneratedClass(node = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/8199015172308449938", model = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)")
+@GeneratedClass(nodeId = "8199015172308449938", model = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)")
 public class ShowNodeDifference_Action extends BaseAction {
   private static final Icon ICON = null;
 
   public ShowNodeDifference_Action() {
     super("Compare Two Nodes", "Structure difference (node IDs ignored) between two nodes", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(true);
+    this.setActionAccess(ActionAccess.NONE);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -67,12 +73,17 @@ public class ShowNodeDifference_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode n1 = event.getData(MPSCommonDataKeys.NODES).get(0);
-        SNode n2 = event.getData(MPSCommonDataKeys.NODES).get(1);
-        StructDifferenceDialog.showNodeDifference(event.getData(CommonDataKeys.PROJECT), n1, n2, n1.toString(), n2.toString());
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(() -> {
+      SNode n1 = event.getData(MPSCommonDataKeys.NODES).get(0);
+      SNode n2 = event.getData(MPSCommonDataKeys.NODES).get(1);
+      String title1 = SNodeOperations.present(n1);
+      String title2 = SNodeOperations.present(n2);
+      if (Objects.equals(title1, title2)) {
+        final String fmt = "%s from %s (%s)";
+        title1 = String.format(fmt, title1, SModelOperations.getModelName(SNodeOperations.getModel(n1)), NameUtil.compactNamespace(SNodeOperations.getModel(n1).getModule().getModuleName()));
+        title2 = String.format(fmt, title2, SModelOperations.getModelName(SNodeOperations.getModel(n2)), NameUtil.compactNamespace(SNodeOperations.getModel(n2).getModule().getModuleName()));
       }
+      StructDifferenceDialog.showNodeDifference(event.getData(CommonDataKeys.PROJECT), n1, n2, title1, title2);
     });
   }
 }

@@ -10,6 +10,8 @@ import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -18,7 +20,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.modelapi.behavior.ModelPointer__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.console.tool.ConsoleTool;
+import jetbrains.mps.console.plugin.ConsoleTool_Tool;
+import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
+import jetbrains.mps.console.actions.TabState;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.console.tool.BaseConsoleTab;
 import java.awt.event.InputEvent;
@@ -33,10 +37,11 @@ public class ShowGenerationPlan_Action extends BaseAction {
     super("Show Generation Plan", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
-    return true;
+    return false;
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
@@ -61,6 +66,12 @@ public class ShowGenerationPlan_Action extends BaseAction {
       }
     }
     {
+      Project p = event.getData(CommonDataKeys.PROJECT);
+      if (p == null) {
+        return false;
+      }
+    }
+    {
       SModel p = event.getData(MPSCommonDataKeys.MODEL);
       if (p == null) {
         return false;
@@ -74,23 +85,16 @@ public class ShowGenerationPlan_Action extends BaseAction {
     final SNode command = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, "jetbrains.mps.console.ideCommands.structure.ShowGenPlan"));
     SPropertyOperations.assign(command, PROPS.ignoreExternalPlan$C8Pc, alternative);
     SLinkOperations.setTarget(command, LINKS.targetModel$AZJC, ModelPointer__BehaviorDescriptor.create_id_GDk1qZ2JP.invoke(SNodeOperations.asSConcept(CONCEPTS.ModelPointer$6N), event.getData(MPSCommonDataKeys.MODEL), event.getData(MPSCommonDataKeys.MODEL)));
-    ConsoleTool ct = event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject().getComponent(ConsoleTool.class);
+    ConsoleTool_Tool ct = ProjectPluginManager.getInstance(event.getData(CommonDataKeys.PROJECT)).getTool(ConsoleTool_Tool.class);
+
     // next code comes from ConsoleTool.executeCommand(node<Command>)
-    ConsoleTool.TabState ts = new ConsoleTool.TabState();
+    TabState ts = new TabState();
     ts.isHistoryTab = true;
     ts.title = String.format("%s plan", NameUtil.compactModelName(event.getData(MPSCommonDataKeys.MODEL).getReference()));
     final BaseConsoleTab tab = ct.addConsoleTab(ts, null, true);
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        tab.execute(command, null, new Runnable() {
-          public void run() {
-            tab.scrollToTop();
-          }
-        });
-      }
-    });
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().executeCommand(() -> tab.execute(command, null, () -> tab.scrollToTop()));
   }
-  /*package*/ boolean isIgnoreExternalPlan(AnActionEvent evt, final AnActionEvent event) {
+  private boolean isIgnoreExternalPlan(AnActionEvent evt, final AnActionEvent event) {
     if (evt.getInputEvent() != null && evt.getInputEvent().isAltDown()) {
       return true;
     }

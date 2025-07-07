@@ -13,40 +13,28 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
-import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 
 public final class ListCreatorWithInit__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10e39306c2eL, "jetbrains.mps.baseLanguage.collections.structure.ListCreatorWithInit");
 
-  public static final SMethod<SNode> createType_idi0I0ppH = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("i0I0ppH").build();
-  public static final SMethod<Boolean> hasInitSize_id1653mnvAgtY = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasInitSize").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1653mnvAgtY").build();
-  public static final SMethod<List<SNode>> getAvailableFor_id2D1PBM_bxHF = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getAvailableFor").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2D1PBM_bxHF").build();
+  public static final SMethod<SNode> createType_id6MGFJY7SgiV = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7830826264610014395L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> hasInitSize_id1653mnvAgtY = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasInitSize").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498238L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(createType_idi0I0ppH, hasInitSize_id1653mnvAgtY, getAvailableFor_id2D1PBM_bxHF);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(createType_id6MGFJY7SgiV, hasInitSize_id1653mnvAgtY);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static SNode createType_idi0I0ppH(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_42nh7a_a0a0(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$WxmV));
+  /*package*/ static SNode createType_id6MGFJY7SgiV(@NotNull SNode __thisNode__, SNode elementType) {
+    return _quotation_createNode_42nh7a_a0a0(elementType);
   }
   /*package*/ static boolean hasInitSize_id1653mnvAgtY(@NotNull SAbstractConcept __thisConcept__) {
     return true;
-  }
-  /*package*/ static List<SNode> getAvailableFor_id2D1PBM_bxHF(@NotNull SAbstractConcept __thisConcept__) {
-    List<SNode> result = AbstractContainerCreator__BehaviorDescriptor.getAvailableFor_id2D1PBM_bxHF.invoke0(__thisConcept__, CONCEPTS.AbstractContainerCreator$cz);
-    ListSequence.fromList(result).addElement(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)", "1151688443754"));
-    ListSequence.fromList(result).addElement(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)", "7125221305512719026"));
-    ListSequence.fromList(result).addElement(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)", "1151689724996"));
-    return result;
   }
 
   /*package*/ ListCreatorWithInit__BehaviorDescriptor() {
@@ -65,7 +53,7 @@ public final class ListCreatorWithInit__BehaviorDescriptor extends BaseBHDescrip
     }
     switch (methodIndex) {
       case 0:
-        return (T) ((SNode) createType_idi0I0ppH(node));
+        return (T) ((SNode) createType_id6MGFJY7SgiV(node, (SNode) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -80,8 +68,6 @@ public final class ListCreatorWithInit__BehaviorDescriptor extends BaseBHDescrip
     switch (methodIndex) {
       case 1:
         return (T) ((Boolean) hasInitSize_id1653mnvAgtY(concept));
-      case 2:
-        return (T) ((List<SNode>) getAvailableFor_id2D1PBM_bxHF(concept));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -108,13 +94,5 @@ public final class ListCreatorWithInit__BehaviorDescriptor extends BaseBHDescrip
       quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, 0x10c25fe95c5L, "elementType"), SNodeOperations.copyIfNecessary(quotedNode_3));
     }
     return quotedNode_2;
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$WxmV = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType");
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractContainerCreator$cz = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, "jetbrains.mps.baseLanguage.collections.structure.AbstractContainerCreator");
   }
 }

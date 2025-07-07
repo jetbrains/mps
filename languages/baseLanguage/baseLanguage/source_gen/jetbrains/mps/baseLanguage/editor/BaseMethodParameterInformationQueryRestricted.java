@@ -9,7 +9,6 @@ import jetbrains.mps.editor.runtime.style.StyledTextPrinter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -33,11 +32,7 @@ public class BaseMethodParameterInformationQueryRestricted implements Parameters
     if (selectedNode == null) {
       return null;
     }
-    return ListSequence.fromList(SNodeOperations.getNodeAncestors(selectedNode, CONCEPTS.Expression$mB, true)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.getParent(it) == methodCall && Objects.equals(SNodeOperations.getContainingLink(it), LINKS.actualArgument$pzdx);
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getNodeAncestors(selectedNode, CONCEPTS.Expression$mB, true)).findFirst((it) -> SNodeOperations.getParent(it) == methodCall && Objects.equals(SNodeOperations.getContainingLink(it), LINKS.actualArgument$pzdx));
   }
 
   private static final class LINKS {

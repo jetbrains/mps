@@ -21,21 +21,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class InlineConstant_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public InlineConstant_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:42e1ac37-7eb5-465e-8f7a-fef5bc98a099(org.jetbrains.mps.samples.Constants.intentions)", "3986994675334573650"));
   }
+
   @Override
   public String getPresentation() {
     return "InlineConstant";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -45,19 +45,30 @@ public final class InlineConstant_Intention extends AbstractIntentionDescriptor 
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Inline Constant";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode original = SLinkOperations.getTarget(node, LINKS.original$FCV3);
       SNodeOperations.replaceWithAnother(node, SNodeOperations.copyNode(SLinkOperations.getTarget(original, LINKS.initializer$uNcK)));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return InlineConstant_Intention.this;
     }
+
   }
 
   private static final class LINKS {

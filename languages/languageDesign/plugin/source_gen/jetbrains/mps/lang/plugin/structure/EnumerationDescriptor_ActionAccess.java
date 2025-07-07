@@ -21,7 +21,7 @@ public class EnumerationDescriptor_ActionAccess extends EnumerationDescriptorBas
   private final EnumerationDescriptor.MemberDescriptor myMember_editorCommand_0 = new EnumerationDescriptor.MemberDescriptor("editorCommand", "editor command", 0x6782cab5d9442894L, "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/7458746815261976724");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6782cab5d9442836L, 0x6782cab5d9442837L, 0x6782cab5d9442838L, 0x6782cab5d9442890L, 0x6782cab5d9442894L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_command_0, myMember_none_0, myMember_read_0, myMember_editorCommand_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_command_0, myMember_none_0, myMember_read_0, myMember_editorCommand_0);
 
   @Nullable
   @Override

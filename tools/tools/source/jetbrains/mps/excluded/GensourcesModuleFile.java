@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package jetbrains.mps.excluded;
 
 import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.util.JDOMUtil;
-import jetbrains.mps.util.containers.MultiMap;
 import jetbrains.mps.vfs.IFile;
 import org.jdom.Document;
 import org.jdom.Element;
@@ -87,16 +86,20 @@ class GensourcesModuleFile {
 
   public void updateGenSourcesIml(File... sourceDirs) throws IOException {
     for (File dir : sourceDirs) {
-      Element contentRoot = new Element(CONTENT);
-      contentRoot.setAttribute(URL, PATH_START_MODULE + dir);
-      myGeneratedModuleContentRoots.add(dir.getCanonicalPath());
-      myRootManagerElement.addContent(contentRoot);
-
       // generate lists of source gen and classes gen folders and add as source and excluded to content root
       List<String> sourceGenFolders = new ArrayList<>();
       List<String> classesGenFolders = new ArrayList<>();
       collectGeneratedSourcesAndClassesDirs(sourceGenFolders, classesGenFolders, dir);
       myGeneratedModuleSources.addAll(sourceGenFolders);
+
+      if (sourceGenFolders.isEmpty() && classesGenFolders.isEmpty()) {
+        continue;
+      }
+
+      Element contentRoot = new Element(CONTENT);
+      contentRoot.setAttribute(URL, PATH_START_MODULE + dir);
+      myGeneratedModuleContentRoots.add(dir.getCanonicalPath());
+      myRootManagerElement.addContent(contentRoot);
 
       for (String sourceGenFolder : sourceGenFolders) {
         Element sourceFolder = new Element(SOURCE_FOLDER);
@@ -136,10 +139,15 @@ class GensourcesModuleFile {
           if (myRegularModuleSources.contains(sourcePath)) {
             continue;
           }
-          String sourceCanonical = new File(sourcePath).getCanonicalPath();
+          final File spFile = new File(sourcePath);
+          String sourceCanonical = spFile.getCanonicalPath();
           assert sourceCanonical.startsWith(dir.getCanonicalPath()) : "module generates files to outside of 'root' folder for it:\n" + module.getModuleDir() + "\ngenerates into\n" + sourcePath;
-          if (new File(sourcePath).exists()) {
-            sourceGen.add(sourcePath);
+          if (spFile.isDirectory()) {
+            if (spFile.list().length > 0) {
+              sourceGen.add(sourcePath);
+            } else {
+              System.out.printf("\tEmpty source location %s, ignored\n", spFile);
+            }
           }
         }
         for (IFile classes : module.getClassGenPaths()) {

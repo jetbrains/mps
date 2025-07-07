@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<solution name="jetbrains.mps.generator.xmodel.test2" uuid="d8256d18-f5f5-4d78-8999-0bf716e43a91" moduleVersion="0" compileInMPS="true">
+<solution name="jetbrains.mps.generator.xmodel.test2" uuid="d8256d18-f5f5-4d78-8999-0bf716e43a91" moduleVersion="0">
   <models>
     <modelRoot contentPath="${module}" type="default">
       <sourceRoot location="models" />
     </modelRoot>
   </models>
   <facets>
-    <facet type="java">
+    <facet type="java" compile="mps" classes="mps" ext="no">
       <classes generated="true" path="${module}/classes_gen" />
     </facet>
   </facets>
-  <sourcePath />
   <dependencies>
     <dependency reexport="false">519e5d27-6128-4ba6-8758-43a055b1222d(jetbrains.mps.generator.xmodel.test)</dependency>
     <dependency reexport="false">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>

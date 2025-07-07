@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,8 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.logging.Log4jUtil;
-import jetbrains.mps.util.InternUtil;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.WeakSet;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -31,6 +27,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
+import java.util.Objects;
 import java.util.Set;
 
 public abstract class SReference implements org.jetbrains.mps.openapi.model.SReference {
@@ -39,37 +36,10 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
 
   protected final SNode mySourceNode; // made protected only for assert in DynamicReference
   private final SReferenceLink myRoleId;
-  private volatile String myResolveInfo;
 
   protected SReference(@NotNull SReferenceLink role, SNode sourceNode) {
     myRoleId = role;
     mySourceNode = sourceNode;
-  }
-
-  public static SReference create(SReferenceLink id, SNode sourceNode, SNode targetNode) {
-    if (sourceNode.getModel() != null && targetNode.getModel() != null) {
-      // 'mature' reference
-      return new StaticReference(id, sourceNode, targetNode.getModel().getReference(), targetNode.getNodeId(), targetNode.getName());
-    }
-    return new StaticReference(id, sourceNode, targetNode);
-  }
-
-  public static SReference create(SReferenceLink role, SNode sourceNode, SModelReference targetModelReference, SNodeId targetNodeId) {
-    return new StaticReference(role, sourceNode, targetModelReference, targetNodeId, null);
-  }
-  public static SReference create(SReferenceLink role, SNode sourceNode, SModelReference targetModelReference, SNodeId targetNodeId, String resolveInfo) {
-    return new StaticReference(role, sourceNode, targetModelReference, targetNodeId, resolveInfo);
-  }
-
-  public static SReference create(SReferenceLink role, SNode sourceNode, SNodeReference pointer, String resolveInfo) {
-    return create(role, sourceNode, pointer.getModelReference(), pointer.getNodeId(), resolveInfo);
-  }
-
-  @Override
-  @Deprecated
-  @ToRemove(version = 3.2)
-  public String getRole() {
-    return myRoleId.getRoleName();
   }
 
   @Override
@@ -116,24 +86,53 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
   @Override
   @Nullable
   public SNodeId getTargetNodeId() {
-    SNode targetNode = getTargetNode();
+    SNode targetNode = getTargetNode_internal(new ProblemReporter() {});
     return targetNode == null ? null : targetNode.getNodeId();
   }
 
+  /**
+   * @deprecated no-op, don't use
+   */
+  @Deprecated(since = "2025.1", forRemoval = true)
   public void makeDirect() {
     // no-op by default
   }
 
+  /**
+   * @deprecated no-op, don't use
+   */
+  @Deprecated(since = "2025.1", forRemoval = true)
   public boolean makeIndirect() {
     return false;
   }
 
   public String getResolveInfo() {
-    return myResolveInfo;
+    return null;
   }
 
   public void setResolveInfo(String info) {
-    myResolveInfo = InternUtil.intern(info);
+    // no-op
+  }
+
+  /*package*/ AssociationData getData() {
+    // FIXME shall be abstract but might require change in MPS-extensions or mbeddr
+    return null;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(getData()) + getSourceNode().hashCode()*31 + getLink().hashCode()*17;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj == null || obj.getClass() != getClass()) {
+      return false;
+    }
+    final SReference other = (SReference) obj;
+    // XXX I didn't implement equals for AssociationData as it seems sufficient for now just to
+    //     rely on == (tests pass). However, one day we might need to look deeper into AssociationData equality.
+    return Objects.equals(getData(), other.getData()) && getSourceNode() == other.getSourceNode() && getLink().equals(other.getLink());
   }
 
   protected abstract SNode getTargetNode_internal(/*not null*/ ProblemReporter reporter);
@@ -209,8 +208,8 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
       myRef = ref;
     }
 
-    private org.apache.log4j.Logger log() {
-      return LogManager.getLogger(SReference.class);
+    private Logger log() {
+      return Logger.getLogger(SReference.class);
     }
 
     @Override
@@ -220,7 +219,7 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
       }
       // I don't like the design, but would like to change ProblemReporter API anyway, to be more focused on what's going
       // on rather than on exact ways to report a message. Don't want to bother with this at the moment as my goal at the moment is getTargetNodeSilently()
-      log().warn(message);
+      log().warning(message);
     }
 
     private boolean isStubModel(SModel model) {
@@ -252,17 +251,20 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
       if (srcNodePresentation == null) {
         srcNodePresentation = String.format("<unnamed> %s[%s] (%s)", sourceNode.getConcept().getName(), sourceNode.getNodeId(), model == null ? "detached" : model.getName());
       }
-      String msg = String.format("Could not resolve reference '%s' from %s.", myRef.getRole(), srcNodePresentation);
+      String msg = String.format("Could not resolve reference '%s' from %s.", myRef.getLink().getName(), srcNodePresentation);
       msg += "\n" + sourceNode.getReference();
       if (message != null) {
         msg += "\n" + " -- " + message;
       }
       // fixme AP: multiline log messages is a bad style
       final Logger log = log();
-      log.error(msg);
+      // don't remove SNodeReference hint from the message! Generator tracks errors/warnings
+      // with dedicated log listener, and if there's no hint to an element of transient model, it doesn't record the message!
+      // see GenerationSession.TrackHintObjectsInLog
+      log.error(msg, sourceNode.getReference());
       if (problems != null) {
         for (ProblemDescription pd : problems) {
-          log.error(Log4jUtil.createMessageObject(pd.getMessage(), pd.getNode()));
+          log.error(pd.getMessage(), pd.getNode());
         }
       }
     }

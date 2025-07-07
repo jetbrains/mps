@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,10 @@
 package jetbrains.mps.smodel;
 
 import jetbrains.mps.extapi.module.SRepositoryExt;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
-import jetbrains.mps.module.ReloadableModuleBase;
 import jetbrains.mps.module.SDependencyImpl;
+import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.io.DescriptorIO;
 import jetbrains.mps.project.io.DescriptorIOFacade;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
@@ -27,9 +28,7 @@ import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.language.LanguageAspectSupport;
 import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -55,7 +54,7 @@ import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class Language extends ReloadableModuleBase implements ReloadableModule {
+public class Language extends AbstractModule implements ReloadableModule {
 
   /**
    * Default, although not mandatory location we save our models to.
@@ -65,8 +64,7 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
   /**
    * @deprecated Use of default value to detect aspect source root or to check module existence is wrong.
    */
-  @Deprecated
-  @ToRemove(version = 3.3)
+@Deprecated(since = "3.3", forRemoval = true)
   public static final String LEGACY_LANGUAGE_MODELS = "languageModels";
 
   @NotNull private LanguageDescriptor myLanguageDescriptor;
@@ -92,7 +90,6 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
     LanguageDescriptor moduleDescriptor = getModuleDescriptor();
     moduleDescriptor.getExtendedLanguages().add(langRef);
 
-    dependenciesChanged();
     setChanged();
 
     fireChanged();
@@ -163,25 +160,6 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
     return Collections.unmodifiableSet(myLanguageDescriptor.getRuntimeModules());
   }
 
-  public void validateExtends() {
-    List<SModuleReference> remove = new ArrayList<>();
-    for (SModuleReference ref : myLanguageDescriptor.getExtendedLanguages()) {
-      if (getModuleName().equals(ref.getModuleName())) {
-        remove.add(ref);
-      }
-    }
-
-    if (!remove.isEmpty()) {
-      myLanguageDescriptor.getExtendedLanguages().removeAll(remove);
-      setChanged();
-    }
-  }
-
-  @Override
-  public void onModuleLoad() {
-    super.onModuleLoad();
-    validateExtends();
-  }
 
   @Override
   public void attach(@NotNull SRepository repository) {
@@ -236,8 +214,7 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
         // looking for the existing generator with same ID
         Generator nextGeneratorCandidate = it.next();
         GeneratorDescriptor nextGeneratorCandidateDescriptor = nextGeneratorCandidate.getModuleDescriptor();
-        if (Objects.equals(nextGeneratorCandidateDescriptor.getNamespace(), nextDescriptor.getNamespace()) &&
-            Objects.equals(nextGeneratorCandidateDescriptor.getId(), nextDescriptor.getId())) {
+        if (Objects.equals(nextGeneratorCandidateDescriptor.getId(), nextDescriptor.getId())) {
           nextGenerator = nextGeneratorCandidate;
           it.remove();
           break;
@@ -336,8 +313,7 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
    *            Then, we could decide whether we truly need access to language's concept nodes this way, or shall use
    *            LanguageAspects instead.
    */
-  @Deprecated
-  @ToRemove(version = 3.4)
+@Deprecated(since = "3.4", forRemoval = true)
   public List<SNode> getConceptDeclarations() {
     // FIXME there are uses in mbeddr
     SModel structureModel = getStructureModelDescriptor();
@@ -372,14 +348,16 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
   @Override
   public void save() {
     super.save();
-    if (isReadOnly()) return;
+    if (isReadOnly() || getDescriptorFile() == null) {
+      return;
+    }
 
     if (myLanguageDescriptor.getLoadException() != null){
       return;
     }
 
     try {
-      DescriptorIO<LanguageDescriptor> io = DescriptorIOFacade.getInstance().standardProvider().languageDescriptorIO();
+      DescriptorIO<LanguageDescriptor> io = new DescriptorIOFacade().standardProvider().languageDescriptorIO();
       io.writeToFile(getModuleDescriptor(), getDescriptorFile());
     } catch (Exception ex) {
       Logger.getLogger(getClass()).error("Save failed", ex);
@@ -418,8 +396,7 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
     return getModuleName() + " [language]";
   }
 
-  @Deprecated
-  @ToRemove(version = 3.3)
+@Deprecated(since = "3.3", forRemoval = true)
   //no full equivalent to this method, use appropriate method from LanguageAspectSupport
   private LanguageAspect getAspectForModel(@NotNull org.jetbrains.mps.openapi.model.SModel sm) {
     for (LanguageAspect la : LanguageAspect.values()) {
@@ -434,8 +411,7 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
     return getLanguageFor(modelDescriptor);
   }
 
-  @Deprecated
-  @ToRemove(version = 3.3)
+@Deprecated(since = "3.3", forRemoval = true)
   //no full equivalent to this method, use appropriate method from LanguageAspectSupport
   //no usages in MPS, 4 uses in mbeddr
   @Nullable
@@ -519,13 +495,9 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
 
     @Override
     public Collection<SModuleReference> getDevKits(SModule contextModule, SModel forModel) {
-      Collection<SModuleReference> initialDevKits = new ArrayList<>(LanguageAspectSupport.getInitialDevKits(forModel));
       SModuleReference defaultDevkit = LanguageAspectSupport.getDefaultDevkit(forModel);
       if(defaultDevkit != null) {
-        initialDevKits.add(defaultDevkit);
-      }
-      if (!initialDevKits.isEmpty()) {
-        return initialDevKits;
+        return Collections.singleton(defaultDevkit);
       }
       return Collections.singleton(BootstrapLanguages.getGeneralPurposeDevKit());
     }

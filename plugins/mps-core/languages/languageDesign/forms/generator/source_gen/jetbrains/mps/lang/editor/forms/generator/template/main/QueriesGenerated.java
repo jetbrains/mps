@@ -7,15 +7,13 @@ import jetbrains.mps.generator.impl.query.QueryProviderBase;
 import jetbrains.mps.generator.template.BaseMappingRuleContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.generator.template.WeavingMappingRuleContext;
@@ -51,45 +49,13 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.item$bKeT)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.getChildren(it, LINKS.keystroke$_h8j);
-      }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return "none".equals(SPropertyOperations.getString(it, PROPS.modifiers$Dfs0)) && "VK_SPACE".equals(SPropertyOperations.getString(it, PROPS.keycode$DfF1));
-      }
-    }).isEmpty() && ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.CellModel_Checkbox$cL)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.keyMap$nhDK) == _context.getNode();
-      }
-    }).isNotEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.item$bKeT)).translate((it) -> SLinkOperations.getChildren(it, LINKS.keystroke$_h8j)).where((it) -> "none".equals(SPropertyOperations.getString(it, PROPS.modifiers$Dfs0)) && "VK_SPACE".equals(SPropertyOperations.getString(it, PROPS.keycode$DfF1))).isEmpty() && ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.CellModel_Checkbox$cL)).where((it) -> SLinkOperations.getTarget(it, LINKS.keyMap$nhDK) == _context.getNode()).isNotEmpty();
   }
   public static boolean rule_Condition_0_1(final BaseMappingRuleContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.item$ZCi9)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.actionId$On2r), 0x1af887883c6b2cefL);
-      }
-    }).isEmpty() && ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.CellModel_Checkbox$cL)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.actionMap$oNO2) == _context.getNode();
-      }
-    }).isNotEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.item$ZCi9)).where((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.actionId$On2r), 0x1af887883c6b2cefL)).isEmpty() && ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.CellModel_Checkbox$cL)).where((it) -> SLinkOperations.getTarget(it, LINKS.actionMap$oNO2) == _context.getNode()).isNotEmpty();
   }
   public static boolean rule_Condition_0_2(final BaseMappingRuleContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.keyMap$nhDK), LINKS.item$bKeT)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.getChildren(it, LINKS.keystroke$_h8j);
-      }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return "none".equals(SPropertyOperations.getString(it, PROPS.modifiers$Dfs0)) && "VK_SPACE".equals(SPropertyOperations.getString(it, PROPS.keycode$DfF1));
-      }
-    }).isEmpty() || ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.actionMap$oNO2), LINKS.item$ZCi9)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.actionId$On2r), 0x1af887883c6b2cefL);
-      }
-    }).isEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.keyMap$nhDK), LINKS.item$bKeT)).translate((it) -> SLinkOperations.getChildren(it, LINKS.keystroke$_h8j)).where((it) -> "none".equals(SPropertyOperations.getString(it, PROPS.modifiers$Dfs0)) && "VK_SPACE".equals(SPropertyOperations.getString(it, PROPS.keycode$DfF1))).isEmpty() || ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.actionMap$oNO2), LINKS.item$ZCi9)).where((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.actionId$On2r), 0x1af887883c6b2cefL)).isEmpty();
   }
   public static boolean rule_Condition_4_0(final BaseMappingRuleContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.actionMap$oNO2) == null;
@@ -176,18 +142,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.ui$innv);
   }
   public static SNode sourceNodeQuery_5_0(final SourceSubstituteMacroNodeContext _context) {
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.CellModel_Checkbox$cL)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.keyMap$nhDK) == _context.getNode();
-      }
-    }).first();
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.CellModel_Checkbox$cL)).where((it) -> SLinkOperations.getTarget(it, LINKS.keyMap$nhDK) == _context.getNode()).first();
   }
   public static SNode sourceNodeQuery_6_0(final SourceSubstituteMacroNodeContext _context) {
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.CellModel_Checkbox$cL)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.actionMap$oNO2) == _context.getNode();
-      }
-    }).first();
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.CellModel_Checkbox$cL)).where((it) -> SLinkOperations.getTarget(it, LINKS.actionMap$oNO2) == _context.getNode()).first();
   }
   public static Iterable<SNode> sourceNodesQuery_0_0(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.styleItem$FgZD);

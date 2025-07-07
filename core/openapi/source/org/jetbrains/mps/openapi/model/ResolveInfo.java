@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,10 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
 
 /**
+ * Captures information about target node necessary for association link
+ *
  * @author Artem Tikhomirov
+ * @since 2020.2
  */
 public interface ResolveInfo {
 
@@ -30,15 +33,19 @@ public interface ResolveInfo {
     return new S(resolveInfo);
   }
 
+  static ResolveInfo of(@NotNull SNodeReference target, @Nullable String resolveInfo) {
+    return new PS(target, resolveInfo);
+  }
+
+  static ResolveInfo of(@NotNull SNode plainTarget) {
+    return new N(plainTarget);
+  }
+
   /**
-   * Gives additional context where to resolve based on supplied resolveInfo
+   * @since 2025.1
    */
-  static ResolveInfo of(@Nullable SModelReference targetModel, String resolveInfo) {
-    if (targetModel == null) {
-      return new S(resolveInfo);
-    } else {
-      return new CM(targetModel, resolveInfo);
-    }
+  static ResolveInfo of(@NotNull SNodeId nodeId, @Nullable String resolveInfo) {
+    return new D(nodeId, resolveInfo);
   }
 
   @Immutable
@@ -54,21 +61,52 @@ public interface ResolveInfo {
     }
   }
 
-  @Immutable
-  final class CM implements ResolveInfo {
-    private final SModelReference myTargetModel;
+  final class PS implements ResolveInfo {
+    private final SNodeReference myTargetNode;
     private final String myResolveInfo;
 
-    private CM(@NotNull SModelReference targetModel, String resolveInfo) {
-      myTargetModel = targetModel;
+    private PS(SNodeReference targetNode, String resolveInfo) {
+      myTargetNode = targetNode;
       myResolveInfo = resolveInfo;
     }
 
     @NotNull
-    public SModelReference getTargetModel() {
-      return myTargetModel;
+    public SNodeReference getTargetNode() {
+      return myTargetNode;
     }
 
+    @Nullable
+    public String getValue() {
+      return myResolveInfo;
+    }
+
+  }
+
+  final class N implements ResolveInfo {
+    private final SNode myTargetNode;
+
+    private N(SNode targetNode) {
+      myTargetNode = targetNode;
+    }
+
+    public SNode getTargetNode() {
+      return myTargetNode;
+    }
+  }
+
+  final class D implements ResolveInfo {
+    private final SNodeId myNodeId;
+    private final String myResolveInfo;
+
+    private D(SNodeId nodeId, String resolveInfo) {
+      myNodeId = nodeId;
+      myResolveInfo = resolveInfo;
+    }
+
+    public SNodeId getTargetNode() {
+      return myNodeId;
+    }
+    @Nullable
     public String getValue() {
       return myResolveInfo;
     }

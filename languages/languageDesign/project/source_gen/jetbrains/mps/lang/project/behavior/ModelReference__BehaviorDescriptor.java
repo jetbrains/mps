@@ -6,17 +6,17 @@ import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
+import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
-import org.jetbrains.mps.openapi.model.SModelReference;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.model.SModelName;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -31,26 +31,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class ModelReference__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe27L, "jetbrains.mps.lang.project.structure.ModelReference");
 
-  public static final SMethod<String> getModelReference_id5qdugmiLBZZ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getModelReference").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5qdugmiLBZZ").build();
-  public static final SMethod<SModelReference> toModelReference_id2BHFktfnfdc = new SMethodBuilder<SModelReference>(new SJavaCompoundTypeImpl(SModelReference.class)).name("toModelReference").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2BHFktfnfdc").build();
-  public static final SMethod<Void> populateFrom_id2BHFktfniCd = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateFrom").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2BHFktfniCd").build(SMethodBuilder.createJavaParameter(SModelReference.class, ""));
+  public static final SMethod<SModelReference> toModelReference_id2BHFktfnfdc = new SMethodBuilder<SModelReference>(new SJavaCompoundTypeImpl(SModelReference.class)).name("toModelReference").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3021261446821245772L).languageId(0x947f093788f263a9L, 0x86ef829012bb4ca7L).build2();
+  public static final SMethod<Void> populateFrom_id2BHFktfniCd = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateFrom").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3021261446821259789L).languageId(0x947f093788f263a9L, 0x86ef829012bb4ca7L).build2(SMethodBuilder.createJavaParameter(SModelReference.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getModelReference_id5qdugmiLBZZ, toModelReference_id2BHFktfnfdc, populateFrom_id2BHFktfniCd);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(toModelReference_id2BHFktfnfdc, populateFrom_id2BHFktfniCd);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  @Deprecated
-  /*package*/ static String getModelReference_id5qdugmiLBZZ(@NotNull SNode __thisNode__) {
-    return PersistenceFacade.getInstance().asString(ModelReference__BehaviorDescriptor.toModelReference_id2BHFktfnfdc.invoke(__thisNode__));
-  }
   /*package*/ static SModelReference toModelReference_id2BHFktfnfdc(@NotNull SNode __thisNode__) {
     SModuleReference moduleRef = null;
     if (SLinkOperations.getTarget(__thisNode__, LINKS.module$al5i) != null) {
       moduleRef = ModuleReference__BehaviorDescriptor.toModuleReference_id2BHFktfnkjF.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.module$al5i));
     }
     PersistenceFacade pf = PersistenceFacade.getInstance();
-    return pf.createModelReference(moduleRef, pf.createModelId(SPropertyOperations.getString(__thisNode__, PROPS.uuid$2XQX)), new SModelName(SPropertyOperations.getString(__thisNode__, PROPS.qualifiedName$331j), SPropertyOperations.getString(__thisNode__, PROPS.stereotype$h2Bb)).getValue());
+    return pf.createModelReference(moduleRef, pf.createModelId(SPropertyOperations.getString(__thisNode__, PROPS.uuid$2XQX)), new SModelName(SPropertyOperations.getString(__thisNode__, PROPS.qualifiedName$331j), SPropertyOperations.getString(__thisNode__, PROPS.stereotype$h2Bb)));
   }
   /*package*/ static void populateFrom_id2BHFktfniCd(@NotNull SNode __thisNode__, SModelReference modelRef) {
     if (modelRef.getModelId().isGloballyUnique()) {
@@ -86,10 +81,8 @@ public final class ModelReference__BehaviorDescriptor extends BaseBHDescriptor {
     }
     switch (methodIndex) {
       case 0:
-        return (T) ((String) getModelReference_id5qdugmiLBZZ(node));
-      case 1:
         return (T) ((SModelReference) toModelReference_id2BHFktfnfdc(node));
-      case 2:
+      case 1:
         populateFrom_id2BHFktfniCd(node, (SModelReference) parameters[0]);
         return null;
       default:

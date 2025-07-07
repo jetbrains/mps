@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.application.ApplicationManager;
 
-@GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/8366029351943284486", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
+@GeneratedClass(nodeId = "8366029351943284486", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 /*package*/ final class EditorSettingsEditorColorsListener implements EditorColorsListener {
 
   @Override

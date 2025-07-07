@@ -13,21 +13,19 @@ import java.util.HashSet;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.project.Project;
+import jetbrains.mps.project.Project;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import java.util.List;
-import org.jetbrains.mps.openapi.language.SLanguage;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.smodel.SLanguageHierarchy;
-import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import java.util.Map;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
-import jetbrains.mps.util.NameUtil;
+import java.util.TreeMap;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import java.util.List;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.annotations.Nullable;
 
 public class LanguageMigrations_ActionGroup extends GeneratedActionGroup {
@@ -37,46 +35,33 @@ public class LanguageMigrations_ActionGroup extends GeneratedActionGroup {
   public LanguageMigrations_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("Language Migrations", ID, plugin);
     setIsInternal(false);
-    setMnemonic("l".charAt(0));
+    setMnemonic('l');
     setPopup(true);
+    updateInBackground(true);
   }
   public void doUpdate(AnActionEvent event) {
     removeAll();
-    Project project = event.getData(MPSCommonDataKeys.PROJECT);
-    if (project == null) {
-      return;
-    }
-    final jetbrains.mps.project.Project mpsProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+    Project mpsProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
     if (mpsProject == null) {
       return;
     }
 
-    List<SLanguage> languages = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(mpsProject)).translate(new ITranslator2<SModule, SLanguage>() {
-      public Iterable<SLanguage> translate(SModule module) {
-        return new SLanguageHierarchy(mpsProject.getComponent(LanguageRegistry.class), module.getUsedLanguages()).getExtended();
-      }
-    }).distinct().sort(new ISelector<SLanguage, String>() {
-      public String select(SLanguage it) {
-        return it.getQualifiedName();
-      }
-    }, true).toListSequence();
-
-    for (SLanguage language : languages) {
-      String name = language.getQualifiedName();
-      DefaultActionGroup langRootsGroup = new DefaultActionGroup(NameUtil.compactNamespace(name), true);
-
-      for (int ver = 0; ver < language.getLanguageVersion(); ver++) {
-        MigrationScript script = new MigrationScriptReference(language, ver).resolve(mpsProject, true);
-        if (script == null) {
-          continue;
+    final Map<String, DefaultActionGroup> groupByLanguage = new TreeMap<>();
+    final LanguageRegistry languageRegistry = mpsProject.getComponent(LanguageRegistry.class);
+    Map<SLanguage, List<MigrationScript>> availableScripts = MigrationScriptReference.availableScripts(languageRegistry, null);
+    for (SLanguage lang : SetSequence.fromSet(availableScripts.keySet())) {
+      List<MigrationScript> scripts = availableScripts.get(lang);
+      String langName = lang.getQualifiedName();
+      final DefaultActionGroup g = new DefaultActionGroup(NameUtil.compactNamespace(langName), true);
+      // groups get sorted by language name due to TreeMap
+      groupByLanguage.put(langName, g);
+      ListSequence.fromList(scripts).select((script) -> new RunMigration(script)).visitAll(new _FunctionTypes._void_P1_E0<RunMigration>() {
+        public void invoke(@NotNull RunMigration action) {
+          g.add(action);
         }
-
-        langRootsGroup.add(new RunMigration(script));
-      }
-      if (langRootsGroup.getChildrenCount() > 0) {
-        LanguageMigrations_ActionGroup.this.add(langRootsGroup);
-      }
+      });
     }
+    groupByLanguage.values().forEach(LanguageMigrations_ActionGroup.this::add);
     for (Pair<ActionPlace, Condition<BaseAction>> p : this.myPlaces) {
       this.addPlace(p.first, p.second);
     }

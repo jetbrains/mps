@@ -4,11 +4,10 @@ package jetbrains.mps.refactoringTest;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.IntroduceConstantRefactoring;
@@ -22,13 +21,11 @@ import jetbrains.mps.lang.test.matcher.NodesMatcher;
 
 @MPSLaunch
 public class IntroduceConstantFromAnonimousClass_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(IntroduceConstantFromAnonimousClass_Test.class, "${mps_home}", "r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(IntroduceConstantFromAnonimousClass_Test.class).projectPath(null).modelRef("r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)").reopenProject(null).build());
 
   public IntroduceConstantFromAnonimousClass_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -42,20 +39,26 @@ public class IntroduceConstantFromAnonimousClass_Test extends BaseTransformation
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2163048091639854957", "2163048091639855005");
+    }
+
     public void test_IntroduceConstantFromAnonimousClassTest() throws Exception {
-      addNodeById("2163048091639854957");
-      addNodeById("2163048091639855005");
-      IntroduceConstantRefactoring refactoring = new IntroduceConstantRefactoring();
-      refactoring.init(getNodeById("2163048091639854989"), null);
-      refactoring.setName("s");
-      refactoring.setReplacingAll(true);
-      refactoring.setVisibilityLevel(VisibilityLevel.PUBLIC);
-      refactoring.doRefactoring();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("2163048091639854958"));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("2163048091639855016"));
-        Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-      }
+      initTestNodes();
+      runWithinCommand(() -> {
+        IntroduceConstantRefactoring refactoring = new IntroduceConstantRefactoring();
+        refactoring.init(getAnnotatedNode("introduce"), null);
+        refactoring.setName("s");
+        refactoring.setReplacingAll(true);
+        refactoring.setVisibilityLevel(VisibilityLevel.PUBLIC);
+        refactoring.doRefactoring();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("before"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("after"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+      });
     }
 
   }

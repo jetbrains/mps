@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,28 +23,30 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
 import jetbrains.mps.newTypesystem.state.State;
-import org.apache.log4j.LogManager;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.*;
-import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.smodel.NodeReadEventsCaster;
 import jetbrains.mps.util.Pair;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /*
  *   Non-reenterable.
  */
 /*package*/ public class TypeSystemComponent extends IncrementalTypecheckingComponent<State> implements ITypeErrorComponent {
-  protected static final Logger LOG = Logger.wrap(LogManager.getLogger(TypeSystemComponent.class));
+  protected static final Logger LOG = Logger.getLogger(TypeSystemComponent.class);
 
   private Map<SNode, Set<SNode>> myNodesToDependentNodes;
 
   private Map<SNode, Set<Pair<String, String>>> myNodesToRules;
   private Set<SNode> myNodesDependentOnCaches;
 
-  public TypeSystemComponent(TypeChecker typeChecker, State state, IncrementalTypechecking component) {
-    super(typeChecker, state, component);
+  public TypeSystemComponent(State state, IncrementalTypechecking component) {
+    super(state, component);
 
     myNodesToRules = new THashMap<>();
     myNodesDependentOnCaches = new THashSet<>();
@@ -55,7 +57,7 @@ import java.util.*;
   @Override
   protected boolean doInvalidate() {
     if (isInvalidationWasPerformed()) {
-      return isInvalidationResult();
+      return hasInvalidated();
     }
     boolean result;
     Set<SNode> invalidatedNode = new THashSet<>();
@@ -84,7 +86,7 @@ import java.util.*;
 
     result = !invalidatedNode.isEmpty();
     clearNodeTypes();
-    setInvalidationResult(result);
+    setInvalidation(result);
     return result;
   }
 
@@ -93,7 +95,7 @@ import java.util.*;
     try {
       super.computeTypes(nodeToCheck, refreshTypes, forceChildrenCheck, additionalNodes, finalExpansion, initialNode);
     } finally {
-      setInvalidationWasPerformed(false);
+      clearInvalidation();
     }
   }
 
@@ -209,6 +211,11 @@ import java.util.*;
     super.addNodeToFrontier(node);
   }
 
+  /**
+   * @deprecated never called
+   * @param node
+   */
+  @Deprecated(forRemoval = true)
   private void addCacheDependentNodesTypesystem(SNode node) {
     myNodesDependentOnCaches.add(node);
   }

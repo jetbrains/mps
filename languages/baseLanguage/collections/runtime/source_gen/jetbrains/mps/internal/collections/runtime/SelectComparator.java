@@ -4,11 +4,10 @@ package jetbrains.mps.internal.collections.runtime;
 
 import java.util.Comparator;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import jetbrains.mps.baseLanguage.closures.runtime.AdapterClass;
 
 public class SelectComparator<T> implements Comparator<T> {
   private final _FunctionTypes._return_P1_E0<? extends Comparable<?>, ? super T> selector;
-  public SelectComparator(@AdapterClass(value = "ISelector") _FunctionTypes._return_P1_E0<? extends Comparable<?>, ? super T> selector) {
+  public SelectComparator(_FunctionTypes._return_P1_E0<? extends Comparable<?>, ? super T> selector) {
     this.selector = selector;
   }
   @SuppressWarnings(value = "unchecked")

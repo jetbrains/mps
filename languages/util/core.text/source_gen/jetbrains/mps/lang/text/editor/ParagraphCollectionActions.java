@@ -17,7 +17,6 @@ import jetbrains.mps.lang.text.behavior.TextualElement__BehaviorDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.text.behavior.IHoldParagraphs__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -271,11 +270,7 @@ public class ParagraphCollectionActions {
           SNode copy = SNodeOperations.insertPrevSiblingChild(holder, SNodeOperations.copyNode(holder));
           prev = ListSequence.fromList(IHoldParagraphs__BehaviorDescriptor.getParagraphs_id2MpFNjy3tMn.invoke(copy)).first();
           Paragraph__BehaviorDescriptor.clearTextualElements_id1uSfHaoOxlA.invoke(prev);
-          ListSequence.fromList(SNodeOperations.getAllSiblings(prev, false)).visitAll(new IVisitor<SNode>() {
-            public void visit(SNode it) {
-              SNodeOperations.deleteNode(it);
-            }
-          });
+          ListSequence.fromList(SNodeOperations.getAllSiblings(prev, false)).visitAll((it) -> SNodeOperations.deleteNode(it));
         }
         Paragraph__BehaviorDescriptor.initialize_id1v077Wg2A59.invoke(prev);
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, SelectionManager.FIRST_CELL, 0);

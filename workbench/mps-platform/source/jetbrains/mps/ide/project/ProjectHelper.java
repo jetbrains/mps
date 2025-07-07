@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,10 @@
 package jetbrains.mps.ide.project;
 
 import com.intellij.openapi.wm.WindowManager;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.ProjectRepository;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.ModelAccess;
@@ -35,7 +35,7 @@ public class ProjectHelper {
     if (p instanceof MPSProject) {
       return ((MPSProject) p).getProject();
     }
-    LogManager.getLogger(ProjectHelper.class).debug("The project " + p + " is not an instance of MPSProject");
+    Logger.getLogger(ProjectHelper.class).debug("The project " + p + " is not an instance of MPSProject");
     return null;
   }
 
@@ -46,10 +46,7 @@ public class ProjectHelper {
   @Deprecated
   @Nullable
   public static Project toMPSProject(com.intellij.openapi.project.Project p) {
-    if (p != null) {
-      return p.getComponent(MPSProject.class);
-    }
-    return null;
+    return fromIdeaProject(p);
   }
 
   /**
@@ -73,7 +70,7 @@ public class ProjectHelper {
    */
   @NotNull
   public static MPSProject fromIdeaProjectOrFail(@NotNull com.intellij.openapi.project.Project p) {
-    final MPSProject mpsProject = p.getComponent(MPSProject.class);
+    final MPSProject mpsProject = fromIdeaProject(p);
     if (mpsProject == null) {
       throw new IllegalArgumentException(String.format("Project '%s' got no MPS counterpart", p));
     }
@@ -86,7 +83,7 @@ public class ProjectHelper {
   @Nullable
   public static SRepository getProjectRepository(com.intellij.openapi.project.Project p) {
     if (p != null) {
-      Project project = p.getComponent(MPSProject.class);
+      Project project = fromIdeaProject(p);
       if (project != null) {
         return project.getRepository();
       }

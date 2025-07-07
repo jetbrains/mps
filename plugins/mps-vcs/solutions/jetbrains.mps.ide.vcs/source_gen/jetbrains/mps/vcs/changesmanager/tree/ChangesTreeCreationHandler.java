@@ -10,7 +10,7 @@ import jetbrains.mps.ide.ui.tree.MPSTree;
 /**
  * This is per-project extension to highlight vcs changes in a tree
  */
-@GeneratedClass(node = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)/4225526609875760407", model = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)")
+@GeneratedClass(nodeId = "4225526609875760407", model = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)")
 public class ChangesTreeCreationHandler extends TreeHighlighterExtension {
   private final Project myProject;
   public ChangesTreeCreationHandler(Project ideaProject) {

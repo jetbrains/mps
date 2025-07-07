@@ -4,9 +4,10 @@ package jetbrains.mps.lang.editor.actions.test;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.lang.test.runtime.EditorTestUtil;
@@ -15,11 +16,11 @@ import java.util.ArrayList;
 
 @MPSLaunch
 public class SubstituteSmartInvalidReference_CaretInCenter_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(SubstituteSmartInvalidReference_CaretInCenter_Test.class, "${mps_home}", "r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SubstituteSmartInvalidReference_CaretInCenter_Test.class).projectPath(null).modelRef("r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)").reopenProject(false).build());
 
   public SubstituteSmartInvalidReference_CaretInCenter_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
@@ -36,29 +37,27 @@ public class SubstituteSmartInvalidReference_CaretInCenter_Test extends BaseTran
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("2389096682426212168", "2389096682426212172");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          // replace node with the other node
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.Insert_Action");
-          typeString("smartOtherNode");
+      EditorTestUtil.runWithTwoStepDeletion(() -> {
+        // replace node with the other node
+        invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.Insert_Action");
+        typeString("smartOtherNode");
 
-          // go to the reference
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
+        // go to the reference
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
 
-          // put caret in after the sma|
-          invokeAction("jetbrains.mps.ide.editor.actions.Home_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveRight_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveRight_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveRight_Action");
+        // put caret in after the sma|
+        invokeAction("jetbrains.mps.ide.editor.actions.Home_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveRight_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveRight_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveRight_Action");
 
-          typeString("Other");
-          invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
-          pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
+        typeString("Other");
+        invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
+        pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
 
-        }
       }, false);
 
     }

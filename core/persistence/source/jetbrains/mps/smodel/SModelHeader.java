@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package jetbrains.mps.smodel;
 
 import jetbrains.mps.persistence.MetaModelInfoProvider;
 import jetbrains.mps.smodel.persistence.def.ModelPersistence;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.io.ModelInputStream;
 import jetbrains.mps.util.io.ModelOutputStream;
 import org.jetbrains.annotations.Nullable;
@@ -37,8 +36,6 @@ import java.util.Map;
  * for partial model loading and is in use by most persistence implementations supplied by MPS.
  */
 public class SModelHeader {
-  public static final String DO_NOT_GENERATE = "doNotGenerate";
-
   /*
    * Model is identified with SModelId, optional module id and has a name, these are elements we'd like to keep in header
    * for quick consideration. Although SModelReference has all these, and it seems straightforward to use it here,
@@ -60,23 +57,6 @@ public class SModelHeader {
 
   public void setPersistenceVersion(int persistenceVersion) {
     myPersistenceVersion = persistenceVersion;
-  }
-
-  /**
-   *
-   * @deprecated Just a handy alternative accessor for {@code getOptionalProperty(DO_NOT_GENERATE)}. This class is about persisting values, not about
-   *             nice typed api. For typed API, use GeneratableSModel, this class has to be generic.
-   */
-  @Deprecated
-  @ToRemove(version = 2020.1)
-  public boolean isDoNotGenerate() {
-    return Boolean.parseBoolean(getOptionalProperty(DO_NOT_GENERATE));
-  }
-
-  @Deprecated
-  @ToRemove(version = 2020.1)
-  public void setDoNotGenerate(boolean doNotGenerate) {
-    setOptionalProperty(DO_NOT_GENERATE, Boolean.toString(doNotGenerate));
   }
 
   /**
@@ -123,7 +103,7 @@ public class SModelHeader {
    * However, certain scenarios (command-line merge and ant task to convert models to binary) can't yet afford starting whole
    * MPS and thus shall rely on meta-information read from model files (which is generally sufficient to write the files back).
    *
-   * For these scenarios, we used to have global {@link jetbrains.mps.persistence.ModelEnvironmentInfo}, which is global and a bit
+   * For these scenarios, we used to have global {@code jetbrains.mps.persistence.ModelEnvironmentInfo}, which is global and a bit
    * outdated for modern persistence, hence it has been replaced with MetaModelInfoProvider, although this solution is provisional
    * and likely to get changed in future (perhaps, class known now as IdInfoCollector would replace it).
    */

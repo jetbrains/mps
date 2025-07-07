@@ -57,7 +57,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.highlevel.simpleEditor", "EditorAspectDeclaration", 0xc457c5de60274104L, 0xab9ca31c5404ae8bL, 0x346ead2c08cc7fbbL);
     b.class_(false, false, true);
     b.origin("r:64c71df5-2adc-4e3d-8424-aa08c0bc782f(jetbrains.mps.samples.highlevel.simpleEditor.structure)/3778147542048210875");
-    b.version(2);
+    b.version(3);
     b.aggregate("editors", 0x346ead2c08ccf70cL).target(0xc457c5de60274104L, 0xab9ca31c5404ae8bL, 0x346ead2c08ccf6ffL).optional(true).ordered(true).multiple(true).origin("3778147542048241420").done();
     return b.create();
   }
@@ -65,7 +65,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.highlevel.simpleEditor", "SimpleEditorDeclaration", 0xc457c5de60274104L, 0xab9ca31c5404ae8bL, 0x346ead2c08ccf6ffL);
     b.class_(false, false, false);
     b.origin("r:64c71df5-2adc-4e3d-8424-aa08c0bc782f(jetbrains.mps.samples.highlevel.simpleEditor.structure)/3778147542048241407");
-    b.version(2);
+    b.version(3);
     b.property("caption", 0x346ead2c08ccfa54L).type(PrimitiveTypeId.STRING).origin("3778147542048242260").done();
     b.associate("cncpt", 0x346ead2c08ccf9f3L).target(0xbaa9238b36da4ccbL, 0xa76b8ad70e222183L, 0x460f3ddb176b0a3cL).optional(false).origin("3778147542048242163").done();
     b.aggregate("visibleProperties", 0x346ead2c08ccfa0dL).target(0xc457c5de60274104L, 0xab9ca31c5404ae8bL, 0x346ead2c08ccfa10L).optional(true).ordered(true).multiple(true).origin("3778147542048242189").done();
@@ -75,7 +75,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.highlevel.simpleEditor", "SimplePropertyReference", 0xc457c5de60274104L, 0xab9ca31c5404ae8bL, 0x346ead2c08ccfa10L);
     b.class_(false, false, false);
     b.origin("r:64c71df5-2adc-4e3d-8424-aa08c0bc782f(jetbrains.mps.samples.highlevel.simpleEditor.structure)/3778147542048242192");
-    b.version(2);
+    b.version(3);
     b.associate("prop", 0x346ead2c08ccfa1fL).target(0xbaa9238b36da4ccbL, 0xa76b8ad70e222183L, 0x346ead2c08cc7faeL).optional(false).origin("3778147542048242207").done();
     return b.create();
   }

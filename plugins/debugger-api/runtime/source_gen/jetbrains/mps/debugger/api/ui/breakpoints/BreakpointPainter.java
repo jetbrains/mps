@@ -7,7 +7,7 @@ import jetbrains.mps.debugger.core.breakpoints.BreakpointPainterEx;
 import jetbrains.mps.debug.api.breakpoints.ILocationBreakpoint;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
-@GeneratedClass(node = "r:e8d15a56-f89d-47fc-ac9f-8a35d3539ac3(jetbrains.mps.debugger.api.ui.breakpoints)/4474271214083119913", model = "r:e8d15a56-f89d-47fc-ac9f-8a35d3539ac3(jetbrains.mps.debugger.api.ui.breakpoints)")
+@GeneratedClass(nodeId = "4474271214083119913", model = "r:e8d15a56-f89d-47fc-ac9f-8a35d3539ac3(jetbrains.mps.debugger.api.ui.breakpoints)")
 /*package*/ class BreakpointPainter extends BreakpointPainterEx<ILocationBreakpoint> {
   public BreakpointPainter(ILocationBreakpoint mpsBreakpoint) {
     super(mpsBreakpoint);

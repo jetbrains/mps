@@ -38,7 +38,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     editorCell.setBig(true);
     setCellContext(editorCell);
     Style style = new StyleImpl();
-    new OperationStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new OperationStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");

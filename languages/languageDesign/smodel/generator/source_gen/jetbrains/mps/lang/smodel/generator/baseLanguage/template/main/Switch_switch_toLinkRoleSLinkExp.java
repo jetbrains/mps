@@ -54,7 +54,7 @@ public class Switch_switch_toLinkRoleSLinkExp extends TemplateSwitchBase impleme
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_44_0(new SourceSubstituteMacroNodeContext(context, callMacro_gqxre5_b0a0a2a1g));
+      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_44_0(new SourceSubstituteMacroNodeContext(context, callMacro));
       TemplateContext context1 = context;
       context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
@@ -73,7 +73,7 @@ public class Switch_switch_toLinkRoleSLinkExp extends TemplateSwitchBase impleme
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_44_1(new SourceSubstituteMacroNodeContext(context, callMacro_gqxre5_b0a0a2a1h));
+      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_44_1(new SourceSubstituteMacroNodeContext(context, callMacro1));
       TemplateContext context1 = context;
       context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
@@ -92,7 +92,7 @@ public class Switch_switch_toLinkRoleSLinkExp extends TemplateSwitchBase impleme
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_44_2(new SourceSubstituteMacroNodeContext(context, callMacro_gqxre5_b0a0a2a1i));
+      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_44_2(new SourceSubstituteMacroNodeContext(context, callMacro2));
       TemplateContext context1 = context;
       context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
@@ -111,8 +111,8 @@ public class Switch_switch_toLinkRoleSLinkExp extends TemplateSwitchBase impleme
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_44_3(new SourceSubstituteMacroNodeContext(context, copySrcMacro_gqxre5_b0a0d0b9));
-      tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro_gqxre5_b0a0d0b9, "tpl/r:00000000-0000-4000-0000-011c89590303/1205435561388", context);
+      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_44_3(new SourceSubstituteMacroNodeContext(context, copySrcMacro));
+      tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro, "tpl/r:00000000-0000-4000-0000-011c89590303/1205435561388", context);
       return tlist1;
     }
   }
@@ -122,10 +122,10 @@ public class Switch_switch_toLinkRoleSLinkExp extends TemplateSwitchBase impleme
 
 
   }
-  private static final SNodePointer callMacro_gqxre5_b0a0a2a1g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145304");
-  private static final SNodePointer callMacro_gqxre5_b0a0a2a1h = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145305");
-  private static final SNodePointer callMacro_gqxre5_b0a0a2a1i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145306");
-  private static final SNodePointer copySrcMacro_gqxre5_b0a0d0b9 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1205435568234");
+  private static final SNodePointer callMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145304");
+  private static final SNodePointer callMacro1 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145305");
+  private static final SNodePointer callMacro2 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145306");
+  private static final SNodePointer copySrcMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1205435568234");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept SLinkAccess$Pk = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96ea2caL, "jetbrains.mps.lang.smodel.structure.SLinkAccess");

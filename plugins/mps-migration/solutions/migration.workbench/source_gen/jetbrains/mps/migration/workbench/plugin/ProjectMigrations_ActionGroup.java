@@ -25,7 +25,7 @@ public class ProjectMigrations_ActionGroup extends GeneratedActionGroup {
   public ProjectMigrations_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("Project Migrations", ID, plugin);
     setIsInternal(false);
-    setMnemonic("p".charAt(0));
+    setMnemonic('p');
     setPopup(true);
   }
   public void doUpdate(AnActionEvent event) {

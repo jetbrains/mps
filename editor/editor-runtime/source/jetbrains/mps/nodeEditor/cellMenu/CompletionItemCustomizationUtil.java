@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,18 +22,20 @@ import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.mps.openapi.module.SRepository;
 
-import java.util.Collection;
+import java.util.function.Consumer;
 
 public class CompletionItemCustomizationUtil {
-  public static void customize(EditorMenuItemCustomizationContext context, EditorMenuItemStyle style, SRepository repository) {
-    LanguageRegistry.getInstance(repository).withAvailableLanguages(languageRuntime -> {
-      EditorAspectDescriptor aspect = languageRuntime.getAspect(EditorAspectDescriptor.class);
+
+  public static void apply(LanguageRegistry languageRegistry, Consumer<EditorMenuItemCustomizer> operation) {
+    languageRegistry.withAvailableLanguages(lr -> {
+      EditorAspectDescriptor aspect = lr.getAspect(EditorAspectDescriptor.class);
       if (aspect != null) {
-        Collection<EditorMenuItemCustomizer> editorMenuItemCustomizers = aspect.getEditorMenuItemCustomizers();
-        for (EditorMenuItemCustomizer editorMenuItemCustomizer : editorMenuItemCustomizers) {
-          editorMenuItemCustomizer.customize(style, context);
-        }
+        aspect.getEditorMenuItemCustomizers().forEach(operation);
       }
     });
+  }
+
+  public static void customize(EditorMenuItemCustomizationContext context, EditorMenuItemStyle style, SRepository repository) {
+    apply(LanguageRegistry.getInstance(repository), emic -> emic.customize(style, context));
   }
 }

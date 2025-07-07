@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.persistence.lines.LineContent;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.xml.XMLSAXHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -32,19 +31,8 @@ public interface IModelPersistence {
 
   int getVersion();
 
-  /**
-   * @deprecated replaced with {@link #getModelWriter(MetaModelInfoProvider, ModelSaveOption...)}
-   *
-   * @param header optional parameter if there's auxiliary data to persist along with model
-   * @return handler to serialize model date into XML DOM
-   */
-  @Deprecated
-  @ToRemove(version = 2020.2)
-  default IModelWriter getModelWriter(@Nullable SModelHeader header) {
-    return null;
-  }
-
   default IModelWriter getModelWriter(@NotNull MetaModelInfoProvider mmi, @Nullable ModelSaveOption ... options) {
+    // has to keep default impl as long as legacy implementations share this interface (don't have to, though)
     return null;
   }
 

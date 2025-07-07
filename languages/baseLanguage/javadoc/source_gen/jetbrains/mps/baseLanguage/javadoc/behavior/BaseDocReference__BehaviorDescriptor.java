@@ -25,8 +25,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class BaseDocReference__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec252c9a26L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocReference");
 
-  public static final SMethod<String> getFQNameInContext_idM5aELaKhPF = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFQNameInContext").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("M5aELaKhPF").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<String> getFQNameInContextIgnoreSameClassifier_idM5aELaQ3fi = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFQNameInContextIgnoreSameClassifier").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("M5aELaQ3fi").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<String> getFQNameInContext_idM5aELaKhPF = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFQNameInContext").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(902174219834563947L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<String> getFQNameInContextIgnoreSameClassifier_idM5aELaQ3fi = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFQNameInContextIgnoreSameClassifier").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(902174219836077010L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFQNameInContext_idM5aELaKhPF, getFQNameInContextIgnoreSameClassifier_idM5aELaQ3fi);
 

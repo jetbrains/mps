@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,14 +39,16 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.font.TextAttribute;
-import java.util.Collections;
+import java.text.AttributedCharacterIterator.Attribute;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 public class TextLine {
-  // COLORS: Remove hardcoded color
+  // TODO COLORS: Remove hardcoded color
   private static final Color SELECTED_OR_BACKGROUND_ERROR_COLOR =
-      new JBColor(new Color(255, 220, 220, 128), ColorUtil.mix(StyleRegistry.getInstance().getEditorBackground(), DarculaColors.RED, 0.1));
-  private static final Color ERROR_FOREGROUND_COLOR = new JBColor(new Color(168, 30, 30, 255), DarculaColors.RED);
+      new JBColor(new Color(255, 220, 220, 90), new Color(0xd6, 0x4d, 0x5b, 50));
+  private static final Color ERROR_FOREGROUND_COLOR = new JBColor(new Color(168, 30, 30, 190), DarculaColors.RED);
 
   private String myText;
   private int myDescent = 0;
@@ -71,6 +73,7 @@ public class TextLine {
   private int myMinimalLength = 0;
 
   private final double myLineSpacing = EditorSettings.getInstance().getLineSpacing();
+  // FIXME use "COMPLETION_POPUP" (or dedicated) style instead of EditorSettings service
   private Color mySelectedTextColor = EditorSettings.getInstance().getSelectionForegroundColor();
   private final Color myTextSelectedTextColor = EditorSettings.getInstance().getSelectionForegroundColor();
   private final Color myTextSelectedBackgroundColor = EditorSettings.getInstance().getSelectionBackgroundColor();
@@ -184,6 +187,9 @@ public class TextLine {
   }
 
   private void updateStyle(Set<StyleAttribute> attributes) {
+    myStrikeOut = myStyle.get(StyleAttributes.STRIKE_OUT);
+    myUnderlined = myStyle.get(StyleAttributes.UNDERLINED);
+
     if (attributes == null
         || attributes.contains(StyleAttributes.FONT_SIZE)
         || attributes.contains(StyleAttributes.FONT_STYLE)
@@ -203,10 +209,15 @@ public class TextLine {
       fontSize = myEditorComponentSettings.getFontSizeScaled(fontSize);
 
       final Font font = FontRegistry.getInstance().getFont(family, style, fontSize);
-      if (ApplicationManager.getApplication() != null) {
-        myFont = EditorColorsManager.getInstance().getGlobalScheme().getFontPreferences().useLigatures() ?
-                 font.deriveFont(Collections.singletonMap(TextAttribute.LIGATURES, TextAttribute.LIGATURES_ON)) : font;
+
+      Map<Attribute, Object> fontAttributes = new HashMap<>();
+      if (ApplicationManager.getApplication() != null && EditorColorsManager.getInstance().getGlobalScheme().getFontPreferences().useLigatures()) {
+        fontAttributes.put(TextAttribute.LIGATURES, TextAttribute.LIGATURES_ON);
       }
+      if (myStrikeOut) {
+        fontAttributes.put(TextAttribute.STRIKETHROUGH, TextAttribute.STRIKETHROUGH_ON);
+      }
+      myFont = fontAttributes.isEmpty() ? font : font.deriveFont(fontAttributes);
       myFontMetrics = myEditorComponentSettings.getFontMetrics(family, style, fontSize);
       myFontCorrectionRightGap = FontRegistry.getInstance().isFakeItalic(family, style) ? 1 : 0;
       myFontCorrectionTextShift = (style & Font.ITALIC) > 0 ? -1 : 0;
@@ -218,8 +229,6 @@ public class TextLine {
     myPaddingBottom = getVerticalInternalInset(myStyle.get(StyleAttributes.PADDING_BOTTOM));
 
     myControlOvered = myStyle.get(StyleAttributes.CONTROL_OVERED_REFERENCE);
-    myStrikeOut = myStyle.get(StyleAttributes.STRIKE_OUT);
-    myUnderlined = myStyle.get(StyleAttributes.UNDERLINED);
 
     myTextColor = myStyle.get(StyleAttributes.TEXT_COLOR);
     myNullTextColor = myStyle.get(StyleAttributes.NULL_TEXT_COLOR);
@@ -351,13 +360,6 @@ public class TextLine {
     myShowsErrorColor = false;
   }
 
-  public Color getBackgroundColor() {
-    if (myShowsErrorColor) {
-      return SELECTED_OR_BACKGROUND_ERROR_COLOR;
-    }
-    return null;
-  }
-
   public Color getTextColor() {
     init();
     if (myControlOvered) {
@@ -371,47 +373,8 @@ public class TextLine {
     }
   }
 
-  public Color getEffectiveTextColor() {
-    if (myShowsErrorColor) {
-      return ERROR_FOREGROUND_COLOR;
-    } else {
-      return getTextColor();
-    }
-  }
-
-  public Color getEffectiveSelectedTextColor() {
-    if (myShowsErrorColor) {
-      return SELECTED_OR_BACKGROUND_ERROR_COLOR;
-    } else {
-      return mySelectedTextColor != null ? mySelectedTextColor : getTextColor();
-    }
-  }
-
-  public Color getTextBackgroundColor() {
-    init();
-    if (myShowsErrorColor) {
-      return SELECTED_OR_BACKGROUND_ERROR_COLOR;
-    } else {
-      if (!myNull) {
-        return myTextBackground;
-      } else {
-        return myNullTextBackground;
-      }
-    }
-  }
-
   public void setSelectedTextColor(Color selectedTextColor) {
     mySelectedTextColor = selectedTextColor;
-  }
-
-
-  public Color getSelectedTextBackgroundColor() {
-    init();
-    if (!myNull) {
-      return mySelectedTextBackground;
-    } else {
-      return myNulLSelectedTextBackground;
-    }
   }
 
   public Font getFont() {
@@ -440,30 +403,37 @@ public class TextLine {
   }
 
   public void paint(Graphics g, int shiftX, int shiftY, Color forcedTextColor) {
-    Color backgroundColor;
     Color textColor;
     Color textBackgroundColor;
 
-    backgroundColor = getBackgroundColor();
     if (forcedTextColor != null) {
       textColor = forcedTextColor;
       textBackgroundColor = null;
     } else {
       if (mySelected) {
-        textColor = getEffectiveSelectedTextColor();
-        textBackgroundColor = getSelectedTextBackgroundColor();
+        if (myShowsErrorColor) {
+          textColor =  ERROR_FOREGROUND_COLOR;
+        } else {
+          textColor =  mySelectedTextColor != null ? mySelectedTextColor : getTextColor();
+        }
+        if (myNull) {
+          textBackgroundColor = myNulLSelectedTextBackground;
+        } else {
+          textBackgroundColor = mySelectedTextBackground;
+        }
       } else {
-        textColor = getEffectiveTextColor();
-        textBackgroundColor = getTextBackgroundColor();
+        if (myShowsErrorColor) {
+          textColor = ERROR_FOREGROUND_COLOR;
+          textBackgroundColor = SELECTED_OR_BACKGROUND_ERROR_COLOR;
+        } else {
+          textColor = getTextColor();
+          if (myNull) {
+            textBackgroundColor =  myNullTextBackground;
+          } else {
+            textBackgroundColor =  myTextBackground;
+          }
+        }
       }
-    }
-
-    if (backgroundColor != null && !g.getColor().equals(backgroundColor) && !mySelected) {
-      g.setColor(backgroundColor);
-      g.fillRect(shiftX + getPaddingLeft(),
-                 shiftY + getPaddingTop(),
-                 getEffectiveWidth(),
-                 myTextHeight);
     }
 
     if (textBackgroundColor != null) {
@@ -490,18 +460,12 @@ public class TextLine {
       if (isUnderlined()) {
         g.drawLine(shiftX + getPaddingLeft(), baselineY + 1, selectionStartX, baselineY + 1);
       }
-      if (isStrikeOut()) {
-        drawStrikeOutLine(g, shiftX + getPaddingLeft(), selectionStartX, centerLineY);
-      }
     }
 
     if (getEndTextSelectionPosition() <= myText.length()) {
       g.drawString(myText.substring(getEndTextSelectionPosition()), selectionEndX + myFontCorrectionTextShift, baselineY);
       if (isUnderlined()) {
         g.drawLine(selectionEndX, baselineY + 1, endLineX, baselineY + 1);
-      }
-      if (isStrikeOut()) {
-        drawStrikeOutLine(g, selectionEndX, endLineX, centerLineY);
       }
     }
 
@@ -520,9 +484,6 @@ public class TextLine {
       if (isUnderlined()) {
         g.drawLine(selectionStartX, baselineY + 1, selectionEndX, baselineY + 1);
       }
-      if (isStrikeOut()) {
-        drawStrikeOutLine(g, selectionStartX, selectionEndX, centerLineY);
-      }
 
       g.setColor(textColor);
     }
@@ -530,10 +491,6 @@ public class TextLine {
     if (myShowCaret) {
       drawCaret(g, shiftX, shiftY);
     }
-  }
-
-  private void drawStrikeOutLine(Graphics g, int beginX, int endX, int constY) {
-    g.drawLine(beginX, constY + 1, endX, constY + 1);
   }
 
   private void drawCaret(Graphics g, int shiftX, int shiftY) {

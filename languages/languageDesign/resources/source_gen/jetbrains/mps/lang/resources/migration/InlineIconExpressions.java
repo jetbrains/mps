@@ -10,12 +10,9 @@ import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -39,20 +36,8 @@ public class InlineIconExpressions extends MigrationScriptBase {
     {
       SearchScope scope_a8f904_a0e = CommandUtil.createScope(m);
       final SearchScope scope_a8f904_a0e_0 = new EditableFilteringScope(scope_a8f904_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_a8f904_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IconExpression$d3, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(it, LINKS.icon$OBvj), CONCEPTS.FileIcon$Z0), LINKS.iconExpression$tVgU) != null);
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNodeOperations.replaceWithAnother(it, SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(it, LINKS.icon$OBvj), CONCEPTS.FileIcon$Z0), LINKS.iconExpression$tVgU));
-        }
-      });
+      QueryExecutionContext context = () -> scope_a8f904_a0e_0;
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IconExpression$d3, false)).where((it) -> (SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(it, LINKS.icon$OBvj), CONCEPTS.FileIcon$Z0), LINKS.iconExpression$tVgU) != null)).visitAll((it) -> SNodeOperations.replaceWithAnother(it, SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(it, LINKS.icon$OBvj), CONCEPTS.FileIcon$Z0), LINKS.iconExpression$tVgU)));
     }
   }
   @Override
@@ -60,27 +45,17 @@ public class InlineIconExpressions extends MigrationScriptBase {
     {
       SearchScope scope_a8f904_a0f = CommandUtil.createScope(m);
       final SearchScope scope_a8f904_a0f_0 = new EditableFilteringScope(scope_a8f904_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_a8f904_a0f_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IconExpression$d3, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(it, LINKS.icon$OBvj), CONCEPTS.FileIcon$Z0), LINKS.iconExpression$tVgU) != null);
-        }
-      }).select(new ISelector<SNode, NotMigratedNode>() {
-        public NotMigratedNode select(SNode it) {
-          return new NotMigratedNode(it) {
-            public String getMessage() {
-              return "icon{...} can be replaced with its content";
-            }
-          };
-        }
+      QueryExecutionContext context = () -> scope_a8f904_a0f_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IconExpression$d3, false)).where((it) -> (SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(it, LINKS.icon$OBvj), CONCEPTS.FileIcon$Z0), LINKS.iconExpression$tVgU) != null)).select((it) -> {
+        return new NotMigratedNode(it) {
+          public String getMessage() {
+            return "icon{...} can be replaced with its content";
+          }
+        };
       });
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources"), 1);
   }
 

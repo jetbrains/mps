@@ -9,7 +9,7 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
-import jetbrains.mps.smodel.LanguageAspect;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -27,7 +27,7 @@ public class check_ConceptForNotImplementedMethods_NonTypesystemRule extends Abs
   public check_ConceptForNotImplementedMethods_NonTypesystemRule() {
   }
   public void applyRule(final SNode conceptDecl, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode bhNode = SNodeOperations.cast(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspect_id7g4OXB0ykew.invoke(conceptDecl, LanguageAspect.BEHAVIOR), CONCEPTS.ConceptBehavior$2);
+    SNode bhNode = SNodeOperations.cast(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspect_id7g4OXB0yku$.invoke(conceptDecl, SModuleOperations.getAspect(SNodeOperations.getModel(conceptDecl).getModule(), "behavior")), CONCEPTS.ConceptBehavior$2);
     if (SPropertyOperations.getBoolean(conceptDecl, PROPS.abstract$ibpT)) {
       return;
     }

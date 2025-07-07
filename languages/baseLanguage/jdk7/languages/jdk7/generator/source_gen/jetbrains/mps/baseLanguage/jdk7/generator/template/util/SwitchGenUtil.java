@@ -5,7 +5,6 @@ package jetbrains.mps.baseLanguage.jdk7.generator.template.util;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Map;
@@ -21,11 +20,7 @@ public class SwitchGenUtil {
   public SwitchGenUtil() {
   }
   public static Iterable<SNode> getNodes(SNode node) {
-    return Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.case$8PWE), LINKS.expression$QQk6)).sort(new ISelector<SNode, String>() {
-      public String select(SNode it) {
-        return SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.StringLiteral$xu), PROPS.value$w7MM);
-      }
-    }, true);
+    return Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.case$8PWE), LINKS.expression$QQk6)).sort((it) -> SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.StringLiteral$xu), PROPS.value$w7MM), true);
   }
   public static Map<String, Integer> getMap(SNode node, TemplateQueryContext genContext) {
     Map<String, Integer> m = (Map<String, Integer>) genContext.getTransientObject("switch" + node.getNodeId().toString());

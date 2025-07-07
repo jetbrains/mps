@@ -84,6 +84,9 @@ public class EditorTextFieldProviderImpl implements EditorTextFieldProvider {
         return editor;
       }
 
+      /*
+      TODO: 223FIX Check that this is still needed
+
       @Override
       public Object getData(String dataId) {
         if (PlatformDataKeys.ACTIONS_SORTER.is(dataId)) {
@@ -91,6 +94,7 @@ public class EditorTextFieldProviderImpl implements EditorTextFieldProvider {
         }
         return super.getData(dataId);
       }
+       */
     };
   }
 }

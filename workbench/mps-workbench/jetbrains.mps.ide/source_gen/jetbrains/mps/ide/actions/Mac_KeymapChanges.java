@@ -4,50 +4,43 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.BaseKeymapChanges;
-import com.intellij.openapi.actionSystem.Shortcut;
-import com.intellij.openapi.actionSystem.KeyboardShortcut;
-import javax.swing.KeyStroke;
-import java.util.List;
-import java.util.ArrayList;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3734045384533036331", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
-public class Mac_KeymapChanges extends BaseKeymapChanges {
+@GeneratedClass(nodeId = "3734045384533036331", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+public final class Mac_KeymapChanges extends BaseKeymapChanges {
   public Mac_KeymapChanges() {
-    // simple
-    addSimpleShortcut("jetbrains.mps.ide.actions.NewElement_Action", getShortcut("ctrl N"), getShortcut("ctrl ENTER"));
-    addSimpleShortcut("jetbrains.mps.ide.actions.SafeDelete_Action", getShortcut("meta DELETE"));
-    addSimpleShortcut("jetbrains.mps.ide.actions.ShowClassInHierarchy_Action", getShortcut("ctrl H"));
-    addSimpleShortcut("jetbrains.mps.ide.actions.ShowConceptInHierarchy_Action", getShortcut("ctrl H"));
-    // simple with remove/replace
-    addSimpleShortcut("jetbrains.mps.ide.actions.FindTextInProject_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("ctrl alt shift F"), false, true));
-    addSimpleShortcut("jetbrains.mps.ide.actions.ShowNodeInfo_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("ctrl Q"), false, true));
-    // simple parameterized
-    // complex
-    addComplexShortcut("jetbrains.mps.ide.actions.GoToBookmark_Action", new BaseKeymapChanges.ComplexShortcut.ComplexShortcutWrapper(new GoToBookmark_ShortcutChange_tqv_f(), false, true));
-    addComplexShortcut("jetbrains.mps.ide.actions.SetBookmark_Action", new BaseKeymapChanges.ComplexShortcut.ComplexShortcutWrapper(new SetBookmark_ShortcutChange_tqv_g(), false, true));
+    add("jetbrains.mps.ide.actions.NewElement_Action", "ctrl N");
+    add("jetbrains.mps.ide.actions.NewElement_Action", "ctrl ENTER");
+    add("jetbrains.mps.ide.actions.ShowClassInHierarchy_Action", "ctrl H");
+    add("jetbrains.mps.ide.actions.ShowConceptInHierarchy_Action", "ctrl H");
+    add("jetbrains.mps.ide.actions.ShowQuickDocumentation_Action", " F1");
+    replace("jetbrains.mps.ide.actions.FindTextInProject_Action", "ctrl alt shift F");
+    replace("jetbrains.mps.ide.actions.ShowNodeInfo_Action", "ctrl shift Q");
+    customTemplate("jetbrains.mps.ide.actions.GoToBookmark_Action", new ShortcutChange0());
+    customTemplate("jetbrains.mps.ide.actions.SetBookmark_Action", new ShortcutChange1());
   }
+  @Override
   public String getScheme() {
     return "Mac OS X";
   }
-  public static Shortcut getShortcut(String stroke) {
-    return new KeyboardShortcut(KeyStroke.getKeyStroke(stroke), null);
+
+  private static class ShortcutChange0 extends BaseKeymapChanges.CustomChange {
+    public ShortcutChange0() {
+      super(false, true);
+    }
+
+    @Override
+    protected void fill() {
+      registerKeystroke("ctrl " + ((Integer) getParameters()[0]));
+    }
   }
-  public class GoToBookmark_ShortcutChange_tqv_f extends BaseKeymapChanges.ComplexShortcut {
-    public GoToBookmark_ShortcutChange_tqv_f() {
+  private static class ShortcutChange1 extends BaseKeymapChanges.CustomChange {
+    public ShortcutChange1() {
+      super(false, true);
     }
-    public List<Shortcut> getShortcutsFor(Object... objects) {
-      List<Shortcut> _result = new ArrayList<Shortcut>();
-      _result.add(new KeyboardShortcut(KeyStroke.getKeyStroke("ctrl " + ((Integer) objects[0])), null));
-      return _result;
-    }
-  }
-  public class SetBookmark_ShortcutChange_tqv_g extends BaseKeymapChanges.ComplexShortcut {
-    public SetBookmark_ShortcutChange_tqv_g() {
-    }
-    public List<Shortcut> getShortcutsFor(Object... objects) {
-      List<Shortcut> _result = new ArrayList<Shortcut>();
-      _result.add(new KeyboardShortcut(KeyStroke.getKeyStroke("ctrl shift " + ((Integer) objects[0])), null));
-      return _result;
+
+    @Override
+    protected void fill() {
+      registerKeystroke("ctrl shift " + ((Integer) getParameters()[0]));
     }
   }
 }

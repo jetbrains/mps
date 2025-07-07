@@ -37,7 +37,7 @@ import jetbrains.mps.samples.Expressions.editor.SimpleMath_StyleSheet.typeStyleC
     editorCell.setBig(true);
     setCellContext(editorCell);
     Style style = new StyleImpl();
-    new typeStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new typeStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;

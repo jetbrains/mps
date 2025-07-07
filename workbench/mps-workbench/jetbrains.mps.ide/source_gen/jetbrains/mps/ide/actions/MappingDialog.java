@@ -32,7 +32,7 @@ import javax.swing.Icon;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/7054831363147542055", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "7054831363147542055", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class MappingDialog extends DialogWrapper {
   private JPanel myMainComponent = new JPanel(new BorderLayout());
   private Language myLanguage;
@@ -84,21 +84,19 @@ public class MappingDialog extends DialogWrapper {
     }
     final TextTreeNode root = new TextTreeNode("Generators");
 
-    myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        GlobalIconManager iconManager = GlobalIconManager.getInstance();
-        for (final Generator generator : myLanguage.getGenerators()) {
-          MPSTreeNode generatorTreeNode = newTreeNode(MPSIcons.Nodes.Generator, generator.getModuleName(), "generator/" + generator.getModuleName());
-          root.add(generatorTreeNode);
-          for (SModel md : generator.getOwnTemplateModels()) {
-            MPSTreeNode modelTreeNode = newTreeNode(iconManager.getIconFor(md), md.toString(), md.getName().getValue());
-            generatorTreeNode.add(modelTreeNode);
-            SModel model = md;
-            for (SNode node : SModelOperations.roots(model, CONCEPTS.MappingConfiguration$7j)) {
-              MPSTreeNode mcTreeNode = newTreeNode(iconManager.getIconFor(node), node.getNodeId().toString(), node.getPresentation());
-              mcTreeNode.setUserObject(node);
-              modelTreeNode.add(mcTreeNode);
-            }
+    myProject.getRepository().getModelAccess().runReadAction(() -> {
+      GlobalIconManager iconManager = GlobalIconManager.getInstance();
+      for (final Generator generator : myLanguage.getGenerators()) {
+        MPSTreeNode generatorTreeNode = newTreeNode(MPSIcons.Nodes.Generator, generator.getModuleName(), "generator/" + generator.getModuleName());
+        root.add(generatorTreeNode);
+        for (SModel md : generator.getOwnTemplateModels()) {
+          MPSTreeNode modelTreeNode = newTreeNode(iconManager.getIconFor(md), md.toString(), md.getName().getValue());
+          generatorTreeNode.add(modelTreeNode);
+          SModel model = md;
+          for (SNode node : SModelOperations.roots(model, CONCEPTS.MappingConfiguration$7j)) {
+            MPSTreeNode mcTreeNode = newTreeNode(iconManager.getIconFor(node), node.getNodeId().toString(), node.getPresentation());
+            mcTreeNode.setUserObject(node);
+            modelTreeNode.add(mcTreeNode);
           }
         }
       }

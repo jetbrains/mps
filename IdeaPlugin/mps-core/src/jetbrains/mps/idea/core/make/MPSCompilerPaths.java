@@ -18,7 +18,7 @@ package jetbrains.mps.idea.core.make;
 
 import com.intellij.compiler.impl.CompilerCacheManager;
 import com.intellij.openapi.compiler.CompilerPaths;
-import com.intellij.openapi.compiler.IntermediateOutputCompiler;
+import com.intellij.openapi.compiler.Compiler;
 import com.intellij.openapi.module.Module;
 import org.jetbrains.annotations.NonNls;
 
@@ -28,7 +28,7 @@ public class MPSCompilerPaths {
   // Shamelessly copied over from the IDEA sources
 
   @NonNls
-  public static String getCachesOutputPath(IntermediateOutputCompiler compiler, Module module, final boolean forTestSources) {
+  public static String getCachesOutputPath(Compiler compiler, Module module, final boolean forTestSources) {
     // use the standard IDEA path for the compiler caches and let's hope there's no name collision
     final String cachesPath = new File(
       CompilerPaths.getCacheStoreDirectory(module.getProject()), CompilerCacheManager.getCompilerIdString(compiler)).getPath();

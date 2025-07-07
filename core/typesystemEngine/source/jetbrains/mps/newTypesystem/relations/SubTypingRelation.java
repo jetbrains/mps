@@ -20,11 +20,14 @@ import jetbrains.mps.newTypesystem.TypesUtil;
 import jetbrains.mps.newTypesystem.state.State;
 import jetbrains.mps.newTypesystem.state.blocks.RelationBlock;
 import jetbrains.mps.newTypesystem.state.blocks.RelationKind;
+import jetbrains.mps.smodel.SNodeUtil;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.typesystemEngine.util.LatticeUtil;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class SubTypingRelation extends AbstractRelation {
 
@@ -37,30 +40,34 @@ public class SubTypingRelation extends AbstractRelation {
   public boolean solve(SNode node, Set<SNode> leftTypes, Set<SNode> rightTypes, State state, Map<SNode, RelationBlock> typesToBlocks) {
     SNode result = null;
     EquationInfo info = null;
-    if (!leftTypes.isEmpty()) {
-      final LinkedList<SNode> leftTypesList = new LinkedList<>();
-      for (SNode lt: leftTypes) {
-        if (LatticeUtil.isMeet(lt)) {
-          lt = TypesUtil.cleanupMeet(lt);
-        }
-        leftTypesList.add(lt);
-      }
+
+    LinkedList<SNode> rightTypesList = new LinkedList<>(rightTypes);
+    // drop join types from "right" types to avoid incorrect type inference (can't reify join type)
+    rightTypesList.removeIf(LatticeUtil::isJoin);
+
+    LinkedList<SNode> leftTypesList = new LinkedList<>(leftTypes);
+    // "cleanup" meet types
+    leftTypesList.replaceAll(t -> LatticeUtil.isMeet(t) ? TypesUtil.cleanupMeet(t) : t);
+
+    String pullUp = node.getProperty(SNodeUtil.property_RuntimeTypeVariable_pullUp);
+    // ensure "right" types get preference, but only if !pullUp
+    if (!leftTypes.isEmpty() && (rightTypesList.isEmpty() || !Boolean.parseBoolean(pullUp))) {
       result = SubtypingUtil.createLeastCommonSupertype(leftTypesList, state.getTypeCheckingContext());
       if (LatticeUtil.isMeet(result)) {
         result = TypesUtil.cleanupMeet(result);
       }
       RelationBlock block = typesToBlocks.get(result);
       info = (block != null) ? block.getEquationInfo() : typesToBlocks.get(leftTypes.iterator().next()).getEquationInfo();
-    } else if (!rightTypes.isEmpty()) {
-      result = createMeet(rightTypes);
+    } else if (!rightTypesList.isEmpty()) {
+      result = createMeet(rightTypesList);
       RelationBlock block = typesToBlocks.get(result);
-      info = (block != null) ? block.getEquationInfo() : typesToBlocks.get(rightTypes.iterator().next()).getEquationInfo();
+      info = (block != null) ? block.getEquationInfo() : typesToBlocks.get(rightTypesList.iterator().next()).getEquationInfo();
     }
     if (TypesUtil.isVariable(result) && TypesUtil.isVariable(node) && result.getName().equals(node.getName())) return false;
     return result != null && state.addEquation(node, result, info);
   }
 
-  private SNode createMeet(Set<SNode> rightTypes) {
+  private SNode createMeet(Collection<SNode> rightTypes) {
     List<SNode> types = new LinkedList<>(rightTypes);
     if (types.size() > 1) {
       types = SubtypingUtil.eliminateSuperTypes(types);

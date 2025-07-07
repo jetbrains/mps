@@ -13,23 +13,25 @@ import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
-import jetbrains.mps.smodel.constraints.ModelConstraints;
+import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintContext;
+import jetbrains.mps.smodel.constraints.ConstraintsChildAndPropFacade;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.lang.editor.menus.transformation.PropertyTransformationMenuItem;
 
-@GeneratedClass(node = "r:e7d06f33-351b-4c9c-b848-ef96eff562e1(jetbrains.mps.editor.runtime.impl.cellMenu)/2816844678677465131", model = "r:e7d06f33-351b-4c9c-b848-ef96eff562e1(jetbrains.mps.editor.runtime.impl.cellMenu)")
+@GeneratedClass(nodeId = "2816844678677465131", model = "r:e7d06f33-351b-4c9c-b848-ef96eff562e1(jetbrains.mps.editor.runtime.impl.cellMenu)")
 public class EnumSPropertyTransformationItemFactory {
   private EnumSPropertyTransformationItemFactory() {
   }
   public static List<TransformationMenuItem> createItems(SProperty property, TransformationMenuContext transformationMenuContext) {
     SDataType type = property.getType();
-    if (!((type instanceof SEnumeration))) {
+    if (!(type instanceof SEnumeration)) {
       return Collections.<TransformationMenuItem>emptyList();
     }
     SEnumeration enumm = as_7biv4j_a0a2a1(type, SEnumeration.class);
     List<TransformationMenuItem> items = ListSequence.fromList(new ArrayList<TransformationMenuItem>(enumm.getLiterals().size()));
     for (final SEnumerationLiteral literal : enumm.getLiterals()) {
-      if (ModelConstraints.validatePropertyValue(transformationMenuContext.getNode(), property, literal)) {
+      FailingPropertyConstraintContext context = new FailingPropertyConstraintContext(transformationMenuContext.getNode(), property, literal);
+      if (ConstraintsChildAndPropFacade.checkPropertyValue(context).isEmpty()) {
         transformationMenuContext.getEditorMenuTrace().pushTraceInfo();
 
         try {

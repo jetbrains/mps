@@ -37,7 +37,7 @@ public class Template_weave_Statement extends TemplateDeclarationBase {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
     {
-      SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_8_0(new PropertyMacroContext(context, "statementX", propertyMacro_6c7ipi_c0a2a0a2a6)));
+      SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_8_0(new PropertyMacroContext(context, "statementX", propertyMacro)));
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
@@ -118,5 +118,5 @@ public class Template_weave_Statement extends TemplateDeclarationBase {
       return rv;
     }
   }
-  private static final SNodePointer propertyMacro_6c7ipi_c0a2a0a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "3571912445009934893");
+  private static final SNodePointer propertyMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "3571912445009934893");
 }

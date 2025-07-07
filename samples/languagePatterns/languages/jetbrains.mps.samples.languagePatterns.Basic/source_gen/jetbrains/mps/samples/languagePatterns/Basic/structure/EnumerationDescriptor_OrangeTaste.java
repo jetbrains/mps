@@ -20,7 +20,7 @@ public class EnumerationDescriptor_OrangeTaste extends EnumerationDescriptorBase
   private final EnumerationDescriptor.MemberDescriptor myMember_Bitter_0 = new EnumerationDescriptor.MemberDescriptor("Bitter", "Bitter", 0x34c8853ae786bbc1L, "r:150e80ad-a158-4a95-9515-f61f51743da4(jetbrains.mps.samples.languagePatterns.Basic.structure)/4241665505353448363");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae786bbbcL, 0x34c8853ae786bbbdL, 0x34c8853ae786bbbeL, 0x34c8853ae786bbc1L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_Sweet_0, myMember_Sour_0, myMember_Bitter_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_Sweet_0, myMember_Sour_0, myMember_Bitter_0);
 
   @Nullable
   @Override

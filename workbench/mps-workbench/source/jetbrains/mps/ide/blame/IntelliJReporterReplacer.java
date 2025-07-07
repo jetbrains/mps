@@ -19,6 +19,7 @@ import com.intellij.ExtensionPoints;
 import com.intellij.diagnostic.ITNReporter;
 import com.intellij.ide.AppLifecycleListener;
 import com.intellij.ide.plugins.PluginManagerCore;
+import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.extensions.PluginId;
 import org.jetbrains.mps.annotations.Internal;
 
@@ -33,6 +34,14 @@ class IntelliJReporterReplacer implements AppLifecycleListener {
   public void appStarted() {
     ExtensionPoints.ERROR_HANDLER_EP.getPoint().unregisterExtensions(
         (className, adapter) -> !(className.equals(ITNReporter.class.getCanonicalName()) &&
-                                  adapter.getPluginDescriptor().getPluginId() == PluginId.getId(PluginManagerCore.CORE_PLUGIN_ID)), false);
+                                  adapter.pluginDescriptor.getPluginId() == PluginId.getId(PluginManagerCore.CORE_PLUGIN_ID)), false);
+
+  // Make our action default in the error report dialog
+  final String LAST_OK_ACTION = "IdeErrorsDialog.LAST_OK_ACTION";
+  final String DEFAULT_ACTION_NAME = "DEFAULT";
+  String lastActionName = PropertiesComponent.getInstance().getValue(LAST_OK_ACTION);
+    if (lastActionName == null) {
+      PropertiesComponent.getInstance().setValue(LAST_OK_ACTION, DEFAULT_ACTION_NAME);
+    }
   }
 }

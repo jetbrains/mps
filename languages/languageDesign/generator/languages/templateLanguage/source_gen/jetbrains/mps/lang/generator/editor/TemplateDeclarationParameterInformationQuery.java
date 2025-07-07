@@ -10,7 +10,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.editor.runtime.style.StyledTextPrinter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
@@ -37,11 +36,7 @@ public class TemplateDeclarationParameterInformationQuery implements ParametersI
     if (selectedNode == null) {
       return null;
     }
-    return ListSequence.fromList(SNodeOperations.getNodeAncestors(selectedNode, CONCEPTS.Expression$mB, true)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.getParent(it) == templateCall && Objects.equals(SNodeOperations.getContainingLink(it), LINKS.actualArgument$ZcRg);
-      }
-    });
+    return ListSequence.fromList(SNodeOperations.getNodeAncestors(selectedNode, CONCEPTS.Expression$mB, true)).findFirst((it) -> SNodeOperations.getParent(it) == templateCall && Objects.equals(SNodeOperations.getContainingLink(it), LINKS.actualArgument$ZcRg));
   }
   /*package*/ void fillPresentation(SNode templateDeclaration, SNode selectedActualArgument, StyledTextPrinter styledText) {
     if (SPropertyOperations.getString(templateDeclaration, PROPS.name$MnvL) != null) {

@@ -9,6 +9,7 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -23,7 +24,7 @@ public class check_FinalVariableReferenceNotAssigned_NonTypesystemRule extends A
   }
   public void applyRule(final SNode variableReference, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$N1XG), PROPS.isFinal$gvTP)) {
-      if (!(VariableReferenceUtil.isUninitializedOrBad(variableReference))) {
+      if (!(VariableReferenceUtil.isUninitializedOrBad(variableReference)) || (SNodeOperations.isInstanceOf(SNodeOperations.getParent(variableReference), CONCEPTS.AbstractUnaryNumberOperation$Q6) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(variableReference), CONCEPTS.UnaryMinus$na)))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(variableReference, "Cannot assign a value to final variable '" + SPropertyOperations.getString(SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$N1XG), PROPS.name$MnvL) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4705425356437995912", null, errorTarget);
@@ -51,6 +52,8 @@ public class check_FinalVariableReferenceNotAssigned_NonTypesystemRule extends A
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept AbstractUnaryNumberOperation$Q6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, "jetbrains.mps.baseLanguage.structure.AbstractUnaryNumberOperation");
+    /*package*/ static final SConcept UnaryMinus$na = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6fea7de6103549b1L, "jetbrains.mps.baseLanguage.structure.UnaryMinus");
     /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
   }
 }

@@ -56,7 +56,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Horizontal(), false);
     editorCell.setCellId("RNLICS_refNodeList_children");
     Style style = new StyleImpl();
-    new testParentStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new testParentStyleStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setSRole(handler.getElementSRole());
     return editorCell;

@@ -21,21 +21,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class SwitchToComplexIsApplicable_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public SwitchToComplexIsApplicable_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:e5ea276a-79c7-4383-9407-3428086d3297(jetbrains.mps.debugger.api.lang.intentions)", "8751745335399757635"));
   }
+
   @Override
   public String getPresentation() {
     return "SwitchToComplexIsApplicable";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -45,6 +45,7 @@ public final class SwitchToComplexIsApplicable_Intention extends AbstractIntenti
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       if (SPropertyOperations.getBoolean(node, PROPS.isComplex$g0M0)) {
@@ -52,6 +53,7 @@ public final class SwitchToComplexIsApplicable_Intention extends AbstractIntenti
       }
       return "Use isApplicable Function";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SPropertyOperations.set(node, PROPS.isComplex$g0M0, !(SPropertyOperations.getBoolean(node, PROPS.isComplex$g0M0)));
@@ -62,10 +64,19 @@ public final class SwitchToComplexIsApplicable_Intention extends AbstractIntenti
         SLinkOperations.setTarget(node, LINKS.isApplicableBreakpoint$vi1A, null);
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return SwitchToComplexIsApplicable_Intention.this;
     }
+
   }
 
   private static final class PROPS {

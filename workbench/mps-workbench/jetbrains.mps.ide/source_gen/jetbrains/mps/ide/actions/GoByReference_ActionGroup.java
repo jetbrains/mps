@@ -18,11 +18,12 @@ import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.resolve.ResolverComponent;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.annotations.Nullable;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/965654005418338549", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "965654005418338549", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class GoByReference_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.actions.GoByReference_ActionGroup";
   private final Set<Pair<ActionPlace, Condition<BaseAction>>> myPlaces = SetSequence.fromSet(new HashSet<Pair<ActionPlace, Condition<BaseAction>>>());
@@ -50,8 +51,7 @@ public class GoByReference_ActionGroup extends GeneratedActionGroup {
     for (SReference ref : Sequence.fromIterable(refs)) {
       SNode targetNode = ref.getTargetNode();
       if (targetNode != null) {
-        String text = "[" + ref.getLink() + "] -> " + ((jetbrains.mps.smodel.SReference) ref).getResolveInfo();
-        GoByReference_ActionGroup.this.addParameterizedAction(new EditGivenNode_Action(targetNode.getReference(), text), targetNode.getReference(), text);
+        GoByReference_ActionGroup.this.addParameterizedAction(new EditGivenNode_Action(targetNode.getReference(), String.format("[%s] -> %s", ref.getLink(), SLinkOperations.getResolveInfo(ref))), targetNode.getReference(), String.format("[%s] -> %s", ref.getLink(), SLinkOperations.getResolveInfo(ref)));
         continue;
       }
 
@@ -59,12 +59,12 @@ public class GoByReference_ActionGroup extends GeneratedActionGroup {
       mpsProject.getModelAccess().runWriteInEDT(new Runnable() {
         @Override
         public void run() {
-          String text = "Bad reference: [" + finalRef.getLink() + "] -> " + ((jetbrains.mps.smodel.SReference) finalRef).getResolveInfo();
+          String text = String.format("Bad reference: [%s] -> %s", finalRef.getLink(), SLinkOperations.getResolveInfo(finalRef));
 
           mpsProject.getModelAccess().executeUndoTransparentCommand(new Runnable() {
             @Override
             public void run() {
-              ResolverComponent.getInstance().resolve(finalRef, mpsProject.getRepository());
+              mpsProject.getComponent(ResolverComponent.class).resolve(finalRef, mpsProject.getRepository());
             }
           });
           SReferenceLink role = finalRef.getLink();

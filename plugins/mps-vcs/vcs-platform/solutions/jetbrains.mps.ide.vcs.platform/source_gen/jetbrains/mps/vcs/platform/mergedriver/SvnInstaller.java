@@ -17,12 +17,11 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.Objects;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.vcs.core.mergedriver.MergeDriverMain;
 import java.io.IOException;
 
-@GeneratedClass(node = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)/5006749173646651481", model = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)")
+@GeneratedClass(nodeId = "5006749173646651481", model = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)")
 /*package*/ class SvnInstaller extends AbstractInstaller {
   private File myConfigFile;
   private File myConfigDir;
@@ -103,26 +102,14 @@ import java.io.IOException;
     }
 
     if (lineToReplace == -1) {
-      String commented = ListSequence.fromList(lines).findFirst(new IWhereFilter<String>() {
-        public boolean accept(String line) {
-          return line.trim().startsWith("# diff3-cmd");
-        }
-      });
+      String commented = ListSequence.fromList(lines).findFirst((line) -> line.trim().startsWith("# diff3-cmd"));
       if (commented != null) {
         lineToReplace = ListSequence.fromList(lines).indexOf(commented);
       } else {
-        int helpersStart = ListSequence.fromList(lines).indexOf(ListSequence.fromList(lines).findFirst(new IWhereFilter<String>() {
-          public boolean accept(String line) {
-            return line.trim().equals("[helpers]");
-          }
-        }));
+        int helpersStart = ListSequence.fromList(lines).indexOf(ListSequence.fromList(lines).findFirst((line) -> line.trim().equals("[helpers]")));
         if (helpersStart != -1) {
           // [helpers] section is present, finding next section start
-          int nextStart = ListSequence.fromList(lines).indexOf(ListSequence.fromList(lines).skip(helpersStart + 1).findFirst(new IWhereFilter<String>() {
-            public boolean accept(String line) {
-              return line.trim().startsWith("[");
-            }
-          }));
+          int nextStart = ListSequence.fromList(lines).indexOf(ListSequence.fromList(lines).skip(helpersStart + 1).findFirst((line) -> line.trim().startsWith("[")));
           if (nextStart == -1) {
             // [helpers] is the last section
             ListSequence.fromList(lines).addElement("");
@@ -130,11 +117,7 @@ import java.io.IOException;
           } else {
             Iterable<String> section = ListSequence.fromList(lines).page(helpersStart + 1, nextStart);
             // Finding last non-comment line
-            int nonComment = Sequence.fromIterable(section).indexOf(Sequence.fromIterable(section).findLast(new IWhereFilter<String>() {
-              public boolean accept(String line) {
-                return !(line.trim().startsWith("#")) && !(line.trim().isEmpty());
-              }
-            }));
+            int nonComment = Sequence.fromIterable(section).indexOf(Sequence.fromIterable(section).findLast((line) -> !(line.trim().startsWith("#")) && !(line.trim().isEmpty())));
             if (nonComment == -1) {
               lineToReplace = helpersStart + 1;
             } else {

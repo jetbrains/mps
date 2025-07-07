@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package org.jetbrains.mps.openapi.model;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -227,10 +226,21 @@ public interface SNode {
   void setReferenceTarget(@NotNull SReferenceLink role, @Nullable SNode target);
 
   /**
-   * Establish a 'dynamic' reference, the one with target determined by external scope based on {@code resolveInfo} additional information.
+   * Establish an association with node determined by an abstraction that captures mechanism to resolve a target.
+   * There are association with fixed aka 'static' targets as well as association with 'dynamic' targets that utilize
+   * external scope implementations to determine target node  based on {@code resolveInfo} additional information.
+   * <br/>
+   * This is a low-level mechanism, intended to replace {@link #setReference(SReferenceLink, SReference)} and to hide
+   * specific {@code SReference} implementation differences spread throughout the code. End-user code is supposed to
+   * go through higher-level methods of {@code SLinkOperations} and {@code SNodeAccessUtil}.
+   * Exemplary clients of this methods are persistence, M2M (Generator) and model copy/clone facilities.
+   * <br/>
+   *
    * FIXME dynamic references are generally not persisted, don't use them in models that are serialized using regular MPS persistence
    *
    * At the moment, we support {@code String} auxiliary resolution information, see {@link ResolveInfo#of(String)}
+   *
+   * FIXME null for resolveInfo - does it mean anything specific (broken dynamic reference or dropReference?)
    *
    * @since 2020.2
    * @param role meta-object that identifies association relation.
@@ -271,7 +281,13 @@ public interface SNode {
    * Sets a reference of the given role to a node that is resolved from the SReference.
    * Since SReference can refer to nodes by name and resolve them dynamically, this method may be able to resolve
    * the target node even when working with invalid code.
+   * @deprecated cumbersome api, use explicit {@code #dropReference()} for {@code null} case, or another method that
+   *    doesn't require construction of an object with source/link already specified.
+   *
+   * @implNote
+   *  Not marked for removal as it's open api and unlikely to get removed any time soon (in few years, perhaps). Just don't use it.
    */
+  @Deprecated
   void setReference(@NotNull SReferenceLink role, @Nullable SReference reference);
   // FIXME replace with setReference(SReference) or setReference(SReferenceLink link, SNode source, SNode target).
   // It's stupid to have explicit role along with SReference.getLink() (which not necessarily match)
@@ -326,88 +342,113 @@ public interface SNode {
   Iterable<Object> getUserObjectKeys();
 
   //------------deprecated, remove after 3.2-----------
+  // All uses in MPS have been removed or replaced with SNodeLegacy. However, there are still uses in mbeddr and MPS-extensions
 
   /**
    * @deprecated use getContainmentLink()
    */
   @Deprecated
-  String getRoleInParent();
+  default String getRoleInParent() {
+    // no-op, just to facilitate removal of overrides
+    return null;
+  }
 
   /**
    * @deprecated use hasProperty(SProperty), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-  @Deprecated
-  @ToRemove(version = 2020.2)
-  boolean hasProperty(String propertyName);
+  @Deprecated(since = "2020.2", forRemoval = true)
+  default boolean hasProperty(String propertyName) {
+    // no-op, just to facilitate removal of overrides
+    return false;
+  }
 
   /**
    * @deprecated use getProperty(SProperty), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-  @Deprecated
-  @ToRemove(version = 2020.2)
-  String getProperty(String propertyName);
+  @Deprecated(since = "2020.2", forRemoval = true)
+  default String getProperty(String propertyName) {
+    // no-op, just to facilitate removal of overrides
+    return null;
+  }
 
   /**
    * @deprecated use setProperty(SProperty), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-  @Deprecated
-  @ToRemove(version = 2020.2)
-  void setProperty(String propertyName, String propertyValue);
+  @Deprecated(since = "2020.2", forRemoval = true)
+  default void setProperty(String propertyName, String propertyValue) {
+    // no-op, just to facilitate removal of overrides
+  }
 
   /**
    * @deprecated use getProperties()
    */
   @Deprecated
-  Iterable<String> getPropertyNames();
+  default Iterable<String> getPropertyNames() {
+    // no-op, just to facilitate removal of overrides
+    return null;
+  }
 
   /**
    * @deprecated use setReferenceTarget(SReferenceLink, SNode), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-  @Deprecated
-  @ToRemove(version = 2020.2)
-  void setReferenceTarget(String role, @Nullable SNode target);
+  @Deprecated(since = "2020.2", forRemoval = true)
+  default void setReferenceTarget(String role, @Nullable SNode target) {
+    // no-op, just to facilitate removal of overrides
+    // FWIW, there's override in mps-extensions and no uses in mbeddr
+  }
 
   /**
    * @deprecated use getReferenceTarget(SReferenceLink), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-  @Deprecated
-  @ToRemove(version = 2020.2)
-  SNode getReferenceTarget(String role);
+  @Deprecated(since = "2020.2", forRemoval = true)
+  default SNode getReferenceTarget(String role) {
+    // no-op, just to facilitate removal of overrides
+    return null;
+  }
 
   // SReferences
 
   /**
    * @deprecated use getReference(SReferenceLink), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-  @Deprecated
-  @ToRemove(version = 2020.2)
-  SReference getReference(String role);
+  @Deprecated(since = "2020.2", forRemoval = true)
+  default SReference getReference(String role) {
+    // no-op, just to facilitate removal of overrides
+    // FWIW, there's override in mps-extensions and no uses in mbeddr
+    return null;
+  }
 
   /**
    * @deprecated use setReference(SReferenceLink, SReference), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-  @Deprecated
-  @ToRemove(version = 2020.2)
-  void setReference(String role, SReference reference);
+  @Deprecated(since = "2020.2", forRemoval = true)
+  default void setReference(String role, SReference reference) {
+    // no-op, just to facilitate removal of overrides
+    // FWIW, there's override in mps-extensions and no uses in mbeddr
+  }
 
   /**
    * @deprecated use insertChildBefore(SContainmentLink, SNode, SNode), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-  @Deprecated
-  @ToRemove(version = 2020.2)
-  void insertChildBefore(String role, SNode child, @Nullable SNode anchor);
+  @Deprecated(since = "2020.2", forRemoval = true)
+  default void insertChildBefore(String role, SNode child, @Nullable SNode anchor) {
+    // no-op, just to facilitate removal of overrides
+  }
 
   /**
    * @deprecated use addChild(SContainmentLink, SNode), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-  @Deprecated
-  @ToRemove(version = 2020.2)
-  void addChild(String role, SNode child);
+  @Deprecated(since = "2020.2", forRemoval = true)
+  default void addChild(String role, SNode child) {
+    // no-op, just to facilitate removal of overrides
+  }
 
   /**
    * @deprecated use getChildren(SContainmentLink), or {@code jetbrains.mps.smodel.SNodeLegacy} for compatibility code
    */
-  @Deprecated
-  @ToRemove(version = 2020.2)
-  Iterable<? extends SNode> getChildren(String role);
+  @Deprecated(since = "2020.2", forRemoval = true)
+  default Iterable<? extends SNode> getChildren(String role) {
+    // no-op, just to facilitate removal of overrides
+    return null;
+  }
 }

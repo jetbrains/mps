@@ -18,13 +18,10 @@ import jetbrains.mps.baseLanguage.checkedDots.behavior.CheckedDotExpression__Beh
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import java.util.Iterator;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.generator.template.MapSrcMacroContext;
 import jetbrains.mps.generator.template.TemplateQueryContext;
@@ -162,16 +159,8 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
     Iterable<SNode> refs = ReferenceConversionHelper.retrieveDescendentRefsAndConceptFunctionParams(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E));
-    if (Sequence.fromIterable(refs).select(new ISelector<SNode, String>() {
-      public String select(SNode ref) {
-        return ReferenceConversionHelper.getRefOrConceptFunctionParamName(ref);
-      }
-    }).distinct().count() != Sequence.fromIterable(refs).count()) {
-      Sequence.fromIterable(refs).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          it.putUserObject("needsUniqueName", true);
-        }
-      });
+    if (Sequence.fromIterable(refs).select((SNode ref) -> ReferenceConversionHelper.getRefOrConceptFunctionParamName(ref)).distinct().count() != Sequence.fromIterable(refs).count()) {
+      Sequence.fromIterable(refs).visitAll((it) -> it.putUserObject("needsUniqueName", true));
     }
     return refs;
   }
@@ -179,23 +168,17 @@ public class QueriesGenerated extends QueryProviderBase {
     Iterable<SNode> callsToConsider = ReferenceConversionHelper.retrieveDescendentMethodCalls(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E));
 
     final List<SNode> throwns = ListSequence.fromList(new ArrayList<SNode>());
-    Sequence.fromIterable(callsToConsider).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode call) {
-        SNode declaration;
-        declaration = SLinkOperations.getTarget(call, LINKS.baseMethodDeclaration$pyYw);
-        ListSequence.fromList(throwns).addSequence(ListSequence.fromList(SLinkOperations.getChildren(declaration, LINKS.throwsItem$CdW$)));
-      }
+    Sequence.fromIterable(callsToConsider).visitAll((call) -> {
+      SNode declaration;
+      declaration = SLinkOperations.getTarget(call, LINKS.baseMethodDeclaration$pyYw);
+      ListSequence.fromList(throwns).addSequence(ListSequence.fromList(SLinkOperations.getChildren(declaration, LINKS.throwsItem$CdW$)));
     });
 
     List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
     Iterator<SNode> iter = ListSequence.fromList(throwns).iterator();
     while (iter.hasNext()) {
       final SNode next = iter.next();
-      if (SNodeOperations.isInstanceOf(next, CONCEPTS.ClassifierType$bL) && ListSequence.fromList(result).all(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(Objects.equals(SLinkOperations.getTarget(it, LINKS.classifier$cxMr), SLinkOperations.getTarget(SNodeOperations.cast(next, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr)));
-        }
-      })) {
+      if (SNodeOperations.isInstanceOf(next, CONCEPTS.ClassifierType$bL) && ListSequence.fromList(result).all((it) -> !(Objects.equals(SLinkOperations.getTarget(it, LINKS.classifier$cxMr), SLinkOperations.getTarget(SNodeOperations.cast(next, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr))))) {
         ListSequence.fromList(result).addElement(SNodeOperations.cast(next, CONCEPTS.ClassifierType$bL));
       }
     }
@@ -211,6 +194,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.actualArgument$pzdx);
   }
   public static SNode mapSrcMacro_map_1_0(final MapSrcMacroContext _context) {
+    // Here comes speciality of MAP_SRC macro. Despite the fact we iterate over input model, we can't replace it
+    // COPY_SRCL, as there's another rule that updates the references, and idea behind this seemingly no-op `return node`
+    //  is to give node as it was the moment method was extracted, not transformed with a reference to parameter as if from within
+    //  the generated checkXXX method. Perhaps, could have accomplished the same with LOOP + INSERT, didn't check.
     return _context.getNode();
   }
   public static boolean mc_Condition_0(final TemplateQueryContext _context) {
@@ -330,7 +317,7 @@ public class QueriesGenerated extends QueryProviderBase {
     snsqMethods.put("629557350449693433", new SNsQ(i++));
     snsqMethods.put("5837079428841717746", new SNsQ(i++));
     snsqMethods.put("131924539844672796", new SNsQ(i++));
-    snsqMethods.put("4726684212254314052", new SNsQ(i++));
+    snsqMethods.put("19720371281058797", new SNsQ(i++));
     snsqMethods.put("4741735385321357379", new SNsQ(i++));
   }
   @NotNull
@@ -461,7 +448,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, MapNodeQuery> mnqMethods = new HashMap<String, MapNodeQuery>();
   {
-    mnqMethods.put("4726684212254314050", new MNQ(0));
+    mnqMethods.put("19720371281058796", new MNQ(0));
   }
   @NotNull
   @Override

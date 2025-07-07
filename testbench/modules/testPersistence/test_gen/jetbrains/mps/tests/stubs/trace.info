@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1144226303539:jetbrains.mps.baseLanguage.structure.ForeachStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <root nodeRef="r:04832cc3-1e0b-4e83-a27f-45bcca72211d(jetbrains.mps.tests.stubs@tests)/5316035204923438779">
+    <file name="CheckMPSStubModulesNotEmpty_Test.java">
+      <node id="5316035204923513438" at="27,0,28,0" concept="1" trace="myRepo" />
+      <node id="5316035204923864716" at="30,49,31,88" concept="6" />
+      <node id="5316035204923523523" at="31,88,32,144" concept="0" />
+      <node id="5316035204923523802" at="32,144,33,143" concept="0" />
+      <node id="5316035204923523820" at="33,143,34,148" concept="0" />
+      <node id="5316035204923524013" at="34,148,35,149" concept="0" />
+      <node id="5316035204923526677" at="35,149,36,0" concept="7" />
+      <node id="5316035204923529096" at="36,0,37,30" concept="5" />
+      <node id="5316035204923575041" at="39,128,40,28" concept="0" />
+      <node id="5316035204923631137" at="40,28,41,85" concept="5" />
+      <node id="5316035204923652799" at="41,85,42,129" concept="0" />
+      <node id="5316035204923764850" at="42,129,43,172" concept="0" />
+      <node id="5316035204923883930" at="45,7,46,116" concept="6" />
+      <node id="5316035204923589395" at="46,116,47,130" concept="0" />
+      <node id="5316035204923512304" at="51,23,52,82" concept="0" />
+      <node id="5316035204923438779" at="50,0,54,0" concept="4" trace="setUp#()V" />
+      <node id="5316035204923534690" at="38,45,44,9" concept="3" />
+      <node id="5316035204923533995" at="37,30,45,7" concept="2" />
+      <node id="4260274206687694999" at="29,48,48,7" concept="0" />
+      <node id="5316035204923498706" at="28,0,50,0" concept="4" trace="test_mps37248#()V" />
+      <scope id="5316035204923498789" at="51,23,52,82" />
+      <scope id="5316035204923534692" at="39,128,43,172">
+        <var name="stubModels" id="5316035204923631138" />
+      </scope>
+      <scope id="5316035204923438779" at="50,0,54,0" />
+      <scope id="5316035204923533998" at="38,45,44,9" />
+      <scope id="5316035204923533995" at="37,30,45,7">
+        <var name="m" id="5316035204923533999" />
+      </scope>
+      <scope id="4260274206687711757" at="30,49,47,130">
+        <var name="stubModuleCount" id="5316035204923529099" />
+      </scope>
+      <scope id="5316035204923498709" at="29,48,48,7" />
+      <scope id="5316035204923498706" at="28,0,50,0" />
+      <unit id="5316035204923438779" at="23,0,55,0" name="jetbrains.mps.tests.stubs.CheckMPSStubModulesNotEmpty_Test" />
+    </file>
+  </root>
+</debug-info>
+

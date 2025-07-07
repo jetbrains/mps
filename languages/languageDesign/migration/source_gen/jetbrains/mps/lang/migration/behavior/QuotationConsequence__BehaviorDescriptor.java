@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class QuotationConsequence__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6532d41L, "jetbrains.mps.lang.migration.structure.QuotationConsequence");
 
-  public static final SMethod<Boolean> isMyAntiquotationExpression_id4SwrQttKYC0 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isMyAntiquotationExpression").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4SwrQttKYC0").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> isMyAntiquotationExpression_id4SwrQttKYC0 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isMyAntiquotationExpression").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5629622023958555136L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isMyAntiquotationExpression_id4SwrQttKYC0);
 

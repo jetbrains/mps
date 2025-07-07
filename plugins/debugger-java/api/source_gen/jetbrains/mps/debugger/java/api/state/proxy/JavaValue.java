@@ -10,7 +10,7 @@ import com.sun.jdi.ThreadReference;
 import java.util.List;
 import jetbrains.mps.debug.api.programState.IWatchable;
 
-@GeneratedClass(node = "r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)/3432969378036013922", model = "r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)")
+@GeneratedClass(nodeId = "3432969378036013922", model = "r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)")
 public abstract class JavaValue<V extends IValueProxy> extends ProxyForJava implements IValue {
   @NotNull
   protected final V myValue;

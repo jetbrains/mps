@@ -26,21 +26,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class WrapInParens_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public WrapInParens_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:50fc5aab-7eb0-44b3-a36e-a92932aa0d2b(jetbrains.mps.samples.ChemMastery.intentions)", "3123291046853141904"));
   }
+
   @Override
   public String getPresentation() {
     return "WrapInParens";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return true;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -50,10 +50,12 @@ public final class WrapInParens_Intention extends AbstractIntentionDescriptor im
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Wrap in Parentheses";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       List<SNode> selectedNodes = editorContext.getSelectedNodes();
@@ -65,10 +67,19 @@ public final class WrapInParens_Intention extends AbstractIntentionDescriptor im
       }
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, parens, SelectionManager.LAST_CELL, -1);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return WrapInParens_Intention.this;
     }
+
   }
 
   private static final class LINKS {

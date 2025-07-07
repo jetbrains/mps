@@ -21,21 +21,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class InsertNodeWrapper_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public InsertNodeWrapper_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:d0aef15b-6499-4272-812e-6bb6f7408ee0(jetbrains.mps.lang.text.intentions)", "3213792450771388834"));
   }
+
   @Override
   public String getPresentation() {
     return "InsertNodeWrapper";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -45,18 +45,29 @@ public final class InsertNodeWrapper_Intention extends AbstractIntentionDescript
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Insert Node Wrapper";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       Paragraph__BehaviorDescriptor.insertTextualElementAtCaret_id7evo$BZbvad.invoke(SNodeOperations.getNodeAncestor(node, CONCEPTS.Paragraph$XF, false, false), editorContext, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20dcb4fL, "jetbrains.mps.lang.text.structure.NodeWrapperTextualElement")));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return InsertNodeWrapper_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

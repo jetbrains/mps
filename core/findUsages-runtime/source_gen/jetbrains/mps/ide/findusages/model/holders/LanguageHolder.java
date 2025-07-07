@@ -15,7 +15,7 @@ import jetbrains.mps.ide.findusages.CantSaveSomethingException;
 /**
  * @author Artem Tikhomirov
  */
-@GeneratedClass(node = "r:6d26b589-14c5-496e-9d2b-5c71b3a15e5d(jetbrains.mps.ide.findusages.model.holders)/8568892084424439100", model = "r:6d26b589-14c5-496e-9d2b-5c71b3a15e5d(jetbrains.mps.ide.findusages.model.holders)")
+@GeneratedClass(nodeId = "8568892084424439100", model = "r:6d26b589-14c5-496e-9d2b-5c71b3a15e5d(jetbrains.mps.ide.findusages.model.holders)")
 public class LanguageHolder implements IHolder<SLanguage> {
   private static final String ATTR1 = "lang";
   private SLanguage myLanguage;

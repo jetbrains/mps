@@ -28,7 +28,7 @@ public class XmlText_TextGen extends TextGenDescriptorBase {
       tgs.newLine();
       tgs.indent();
     }
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$6Orv));
+    tgs.append(XmlCharEscape.escapeText(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$6Orv)));
   }
 
   private static final class CONCEPTS {

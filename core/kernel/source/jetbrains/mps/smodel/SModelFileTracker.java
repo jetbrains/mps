@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,8 @@ package jetbrains.mps.smodel;
 
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.extapi.module.SRepositoryRegistry;
-import jetbrains.mps.extapi.persistence.FileDataSource;
-import jetbrains.mps.extapi.persistence.FolderDataSource;
+import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.ModelComputeRunnable;
 import jetbrains.mps.vfs.IFile;
@@ -47,6 +47,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
  *
  * XXX CoreComponent: what if we introduce notion of 'services' for an SRepository, so that there's no need to use static accessor (getInstance(SRepo))?
  *                    i.e. instead we'd have smth like SRepo.getService(SModelFileTracker.class)
+ *
+ * FTR, there's {@code jetbrains.mps.workbench.FileSystemModelHelper} and a lot of loose code scattered around that tries to address reverse task
  */
 public class SModelFileTracker {
   private static final List<SModelFileTracker> ourModelTrackers = new CopyOnWriteArrayList<>();
@@ -184,24 +186,27 @@ public class SModelFileTracker {
 
     private void addModelToFileCache(SModel md) {
       DataSource source = md.getSource();
-      if (!(source instanceof FileDataSource || source instanceof FolderDataSource)) {
+      if (!(source instanceof FileSystemBasedDataSource)) {
         return;
       }
 
-      IFile file = source instanceof FileDataSource
-          ? ((FileDataSource) source).getFile()
-          : ((FolderDataSource) source).getFolder();
-      myPathsToModels.put(file, md.getReference());
+      var ds = (FileSystemBasedDataSource) source;
+      for (var file : ds.getAffectedFiles()) {
+        Logger.getLogger(SModelFileTracker.class).debug("path->model:" + file + md.getReference());
+        myPathsToModels.put(file, md.getReference());
+      }
     }
 
     private void removeModelFromFileCache(SModel md) {
       DataSource source = md.getSource();
-      if (!(source instanceof FileDataSource || source instanceof FolderDataSource)) return;
+      if (!(source instanceof FileSystemBasedDataSource)) {
+        return;
+      }
 
-      IFile file = source instanceof FileDataSource
-          ? ((FileDataSource) source).getFile()
-          : ((FolderDataSource) source).getFolder();
-      myPathsToModels.remove(file);
+      var ds = (FileSystemBasedDataSource) source;
+      for (var file : ds.getAffectedFiles()) {
+        myPathsToModels.remove(file, md.getReference());
+      }
     }
 
     /*package*/ SModelReference findModel(IFile modelFile) {

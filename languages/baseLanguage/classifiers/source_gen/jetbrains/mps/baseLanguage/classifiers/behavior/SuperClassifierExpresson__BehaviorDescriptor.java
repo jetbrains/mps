@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class SuperClassifierExpresson__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x11b74b0357cL, "jetbrains.mps.baseLanguage.classifiers.structure.SuperClassifierExpresson");
 
-  public static final SMethod<SNode> getClassifier_idhHOIkvz = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClassifier").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hHOIkvz").build();
+  public static final SMethod<SNode> getClassifier_idhHOIkvz = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClassifier").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1217434044387L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getClassifier_idhHOIkvz);
 

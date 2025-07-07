@@ -4,16 +4,13 @@ package jetbrains.mps.execution.api.configurations;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.execution.BeforeRunTaskProvider;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import com.intellij.execution.configurations.RunConfiguration;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
-import org.apache.log4j.Level;
 import java.lang.reflect.Method;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import java.lang.reflect.InvocationTargetException;
 import com.intellij.execution.BeforeRunTask;
@@ -21,9 +18,9 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.util.Key;
 import com.intellij.openapi.project.Project;
 
-@GeneratedClass(node = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)/7037083547575991021", model = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)")
+@GeneratedClass(nodeId = "7037083547575991021", model = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)")
 public abstract class BaseMpsBeforeTaskProvider<T extends BaseMpsBeforeTaskProvider.BaseMpsBeforeRunTask<?>> extends BeforeRunTaskProvider<T> {
-  private static final Logger LOG = LogManager.getLogger(BaseMpsBeforeTaskProvider.class);
+  private static final Logger LOG = Logger.getLogger(BaseMpsBeforeTaskProvider.class);
   private final String myName;
   private final String myCaption;
 
@@ -70,7 +67,7 @@ public abstract class BaseMpsBeforeTaskProvider<T extends BaseMpsBeforeTaskProvi
     try {
       return task.execute(PlatformDataKeys.PROJECT.getData(context), env);
     } catch (Throwable t) {
-      if (LOG.isEnabledFor(Level.ERROR)) {
+      if (LOG.isErrorLevel()) {
         LOG.error("Error during executing provider " + (myCaption + "(" + this.getClass().getName() + ")"), t);
       }
     }
@@ -84,23 +81,19 @@ public abstract class BaseMpsBeforeTaskProvider<T extends BaseMpsBeforeTaskProvi
         return false;
       }
       Object[] parameters = (Object[]) method.invoke(runConfiguration);
-      Method configureMethod = Sequence.fromIterable(Sequence.fromArray(task.getClass().getMethods())).findFirst(new IWhereFilter<Method>() {
-        public boolean accept(Method it) {
-          return Objects.equals(it.getName(), getConfigureMethodName());
-        }
-      });
+      Method configureMethod = Sequence.fromIterable(Sequence.fromArray(task.getClass().getMethods())).findFirst((it) -> Objects.equals(it.getName(), getConfigureMethodName()));
       return (Boolean) configureMethod.invoke(task, parameters);
     } catch (NoSuchMethodException e) {
     } catch (InvocationTargetException e) {
-      if (LOG.isEnabledFor(Level.ERROR)) {
+      if (LOG.isErrorLevel()) {
         LOG.error("", e);
       }
     } catch (IllegalAccessException e) {
-      if (LOG.isEnabledFor(Level.ERROR)) {
+      if (LOG.isErrorLevel()) {
         LOG.error("", e);
       }
     } catch (ClassCastException e) {
-      if (LOG.isEnabledFor(Level.ERROR)) {
+      if (LOG.isErrorLevel()) {
         LOG.error("", e);
       }
     }

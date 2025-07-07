@@ -8,7 +8,6 @@ import jetbrains.mps.debugger.java.runtime.engine.requests.ClassPrepareRequestor
 import jetbrains.mps.debugger.java.runtime.engine.requests.LocatableEventRequestor;
 import com.sun.jdi.request.EventRequest;
 import jetbrains.mps.logging.Logger;
-import org.apache.log4j.LogManager;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.debugger.java.runtime.engine.events.EventsProcessor;
 import jetbrains.mps.debugger.java.runtime.engine.concurrent.ManagerThread;
@@ -24,11 +23,11 @@ import com.sun.jdi.IncompatibleThreadStateException;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.ide.project.ProjectHelper;
 
-@GeneratedClass(node = "r:b4441af2-7d93-477f-8f98-ff1136374539(jetbrains.mps.debugger.java.runtime.breakpoints)/2891782949125147777", model = "r:b4441af2-7d93-477f-8f98-ff1136374539(jetbrains.mps.debugger.java.runtime.breakpoints)")
+@GeneratedClass(nodeId = "2891782949125147777", model = "r:b4441af2-7d93-477f-8f98-ff1136374539(jetbrains.mps.debugger.java.runtime.breakpoints)")
 public abstract class JavaBreakpoint extends AbstractBreakpoint implements ClassPrepareRequestor, LocatableEventRequestor {
   private int mySuspendPolicy = EventRequest.SUSPEND_ALL;
   private boolean myLogMessage = false;
-  private final Logger LOG = Logger.wrap(LogManager.getLogger(JavaBreakpoint.class));
+  private final Logger LOG = Logger.getLogger(JavaBreakpoint.class);
   protected JavaBreakpoint(Project project) {
     super(project);
   }

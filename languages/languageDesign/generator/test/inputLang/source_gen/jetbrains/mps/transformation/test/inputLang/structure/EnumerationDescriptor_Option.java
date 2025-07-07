@@ -20,7 +20,7 @@ public class EnumerationDescriptor_Option extends EnumerationDescriptorBase {
   private final EnumerationDescriptor.MemberDescriptor myMember_drop_it_0 = new EnumerationDescriptor.MemberDescriptor("drop_it", "drop it", 0x1180b5173daL, "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/4241665505353446858");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11645a380abL, 0x11645a380acL, 0x11645a42e23L, 0x1180b5173daL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_option_default_0, myMember_option_1_0, myMember_drop_it_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_option_default_0, myMember_option_1_0, myMember_drop_it_0);
 
   @Nullable
   @Override

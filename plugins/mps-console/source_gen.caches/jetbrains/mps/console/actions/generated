@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-5psri90c1cq911blidd798z9esugpmp">
-  <files names="ClosureHoldingNodeUtil.java:ConsoleActions.xml:ConsoleClear_Action.java:ConsoleExecute_Action.java:ConsoleNext_Action.java:ConsolePrev_Action.java:ExecuteActionAttachedToCurrentNode_Action.java:PasteOriginalNode_Action.java" />
+<product version="3" modelHash="au97hi0g08p7l18g3i1jhd50t2pm46y">
+  <files names="ConsoleActions.xml:ConsoleClear_Action.java:ConsoleExecute_Action.java:ConsoleNext_Action.java:ConsolePrev_Action.java:ExecuteActionAttachedToCurrentNode_Action.java:IConsoleTool.java:MyState.java:PasteOriginalNode_Action.java:TabState.java" />
 </product>
 

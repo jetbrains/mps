@@ -13,7 +13,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class IfAndWhile {
   public static class NodeFactory_7721946591176420157 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode whileCmd = sampleNode;
         if (SNodeOperations.isInstanceOf(whileCmd, CONCEPTS.While$FO)) {
@@ -24,7 +24,7 @@ public class IfAndWhile {
     }
   }
   public static class NodeFactory_7721946591176515850 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
         final SNode ifCmd = sampleNode;
         if (SNodeOperations.isInstanceOf(ifCmd, CONCEPTS.IfStatement$mP)) {

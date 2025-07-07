@@ -37,7 +37,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
     SNode lt = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$sEj));
     SNode rt = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$nvX));
-    return (SNodeOperations.isInstanceOf(lt, CONCEPTS.PrimitiveType$sR) || SNodeOperations.isInstanceOf(rt, CONCEPTS.PrimitiveType$sR)) && !((SNodeOperations.isInstanceOf(lt, CONCEPTS.NullType$Ea) || SNodeOperations.isInstanceOf(rt, CONCEPTS.NullType$Ea)));
+    return (SNodeOperations.isInstanceOf(lt, CONCEPTS.PrimitiveType$sR) || SNodeOperations.isInstanceOf(rt, CONCEPTS.PrimitiveType$sR)) && !(SNodeOperations.isInstanceOf(lt, CONCEPTS.NullType$Ea) || SNodeOperations.isInstanceOf(rt, CONCEPTS.NullType$Ea));
   }
   public static boolean rule_Condition_0_1(final BaseMappingRuleContext _context) {
     return Helper.isCollectionElementAccess(SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$sEj));
@@ -45,7 +45,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static boolean rule_Condition_0_2(final BaseMappingRuleContext _context) {
     SNode lt = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$sEj));
     SNode rt = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$nvX));
-    return (SNodeOperations.isInstanceOf(lt, CONCEPTS.PrimitiveType$sR) || SNodeOperations.isInstanceOf(rt, CONCEPTS.PrimitiveType$sR)) && !((SNodeOperations.isInstanceOf(lt, CONCEPTS.NullType$Ea) || SNodeOperations.isInstanceOf(rt, CONCEPTS.NullType$Ea)));
+    return (SNodeOperations.isInstanceOf(lt, CONCEPTS.PrimitiveType$sR) || SNodeOperations.isInstanceOf(rt, CONCEPTS.PrimitiveType$sR)) && !(SNodeOperations.isInstanceOf(lt, CONCEPTS.NullType$Ea) || SNodeOperations.isInstanceOf(rt, CONCEPTS.NullType$Ea));
   }
   public static boolean rule_Condition_0_3(final BaseMappingRuleContext _context) {
     return Helper.isCollectionElementAccess(SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$nvX));

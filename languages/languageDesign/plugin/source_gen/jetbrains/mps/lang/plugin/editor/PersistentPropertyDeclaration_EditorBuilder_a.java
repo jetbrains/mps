@@ -120,7 +120,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.baseLanguage.editor.VariableDeclaration_NameCellComponent");
     Style style = new StyleImpl();
-    new FieldStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new FieldStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     PersistenPropertyDeclaration_Actions.setCellActions(editorCell, myNode, getEditorContext());
     return editorCell;
@@ -139,7 +139,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "=");
     editorCell.setCellId("Constant_k4cjtr_a2a");
     Style style = new StyleImpl();
-    new OperatorStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new OperatorStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;

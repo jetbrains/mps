@@ -4,34 +4,28 @@ package jetbrains.mps.baseLanguage.test;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.ClassRule;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.test.behavior.INodesTestMethod__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.project.ProjectBase;
-import org.jetbrains.mps.openapi.language.SInterfaceConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
+import jetbrains.mps.errors.MessageStatus;
 
 @MPSLaunch
 public class SimpleUnreachable_Test extends BaseTransformationTest {
-  @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(SimpleUnreachable_Test.class, "${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SimpleUnreachable_Test.class).projectPath(null).modelRef("r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)").reopenProject(null).build());
 
   public SimpleUnreachable_Test() {
-    super(ourParamCache);
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
   @Test
-  public void test_NodeUnreachableCheck3715262949174660907() throws Throwable {
-    new TestBody(this).test_NodeUnreachableCheck3715262949174660907();
+  public void test_NodeErrorCheck244475129983765579() throws Throwable {
+    new TestBody(this).test_NodeErrorCheck244475129983765579();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {
@@ -40,15 +34,18 @@ public class SimpleUnreachable_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeUnreachableCheck3715262949174660907() throws Exception {
-      SNode nodeToCheck = getRealNodeById("2702384151998850297");
-      SNode operation = getRealNodeById("3715262949174660907");
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(SNodeOperations.cast(operation, CONCEPTS.INodesTestMethod$rN), nodeToCheck, ((ProjectBase) myProject).getPlatform());
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2702384151998545189");
     }
 
-  }
+    public void test_NodeErrorCheck244475129983765579() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("2702384151998850297");
+        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
+    }
 
-  private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept INodesTestMethod$rN = MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod");
   }
 }

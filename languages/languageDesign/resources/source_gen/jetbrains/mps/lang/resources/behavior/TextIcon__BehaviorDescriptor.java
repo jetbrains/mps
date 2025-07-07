@@ -10,21 +10,15 @@ import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
-import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
-import jetbrains.mps.vfs.IFile;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.util.IconCreationUtil;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
-import jetbrains.mps.util.IconCreationUtil;
-import org.jetbrains.mps.openapi.util.Consumer;
-import com.intellij.ui.LayeredIcon;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import com.intellij.ui.LayeredIcon;
 import javax.swing.ImageIcon;
-import java.util.ArrayList;
-import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -34,10 +28,11 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class TextIcon__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, "jetbrains.mps.lang.resources.structure.TextIcon");
 
-  public static final SMethod<String> getResourceId_id2p1v3tOadt0 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getResourceId").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2p1v3tOadt0").build();
-  public static final SMethod<List<Tuples._2<IFile, byte[]>>> generate_id7Mb2akaesv8 = new SMethodBuilder<List<Tuples._2<IFile, byte[]>>>(new SJavaCompoundTypeImpl((Class<List<Tuples._2<IFile, byte[]>>>) ((Class) Object.class))).name("generate").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7Mb2akaesv8").build(SMethodBuilder.createJavaParameter(IFile.class, ""));
+  public static final SMethod<String> getResourceId_id2p1v3tOadt0 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getResourceId").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2756621024541333312L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
+  public static final SMethod<String> getNewuiResourceId_id1$fQzw7$LYY = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getNewuiResourceId").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1805901909778964414L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
+  /*package*/ static final SMethod<Void> processLayers_id2xAJZV4smYU = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("processLayers").modifiers(1, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(2911225310079971258L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(IconCreationUtil.DrawContext.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getResourceId_id2p1v3tOadt0, generate_id7Mb2akaesv8);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getResourceId_id2p1v3tOadt0, getNewuiResourceId_id1$fQzw7$LYY, processLayers_id2xAJZV4smYU);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -45,29 +40,20 @@ public final class TextIcon__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static String getResourceId_id2p1v3tOadt0(@NotNull SNode __thisNode__) {
     return "TextIcon_" + SPropertyOperations.getString(__thisNode__, PROPS.iconId$SZ3g) + ".png";
   }
-  /*package*/ static List<Tuples._2<IFile, byte[]>> generate_id7Mb2akaesv8(@NotNull final SNode __thisNode__, IFile outputDir) {
-
-    if (((int) BaseConcept__BehaviorDescriptor.getMetaLevel_id3t0v3yFOD1A.invoke(__thisNode__)) != 0) {
-      return null;
+  /*package*/ static String getNewuiResourceId_id1$fQzw7$LYY(@NotNull SNode __thisNode__) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.newuiLayers$lptJ)).isNotEmpty()) {
+      return "TextIconNewUI_" + SPropertyOperations.getString(__thisNode__, PROPS.iconId$SZ3g) + ".png";
+    } else {
+      return Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(__thisNode__);
     }
-
-    // copy
-    String source = Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(__thisNode__);
-    if (source == null) {
-      return null;
+  }
+  /*package*/ static void processLayers_id2xAJZV4smYU(@NotNull SAbstractConcept __thisConcept__, List<SNode> layers, IconCreationUtil.DrawContext dc) {
+    // todo copy layered icon into core
+    LayeredIcon res = new LayeredIcon(ListSequence.fromList(layers).count());
+    for (SNode layer : ListSequence.fromList(layers)) {
+      res.setIcon(new ImageIcon(IconLayerDescription__BehaviorDescriptor.getImageForGeneration_id2p1v3tObywX.invoke(layer)), ListSequence.fromList(layers).indexOf(layer));
     }
-
-    byte[] iconData = IconCreationUtil.drawIcon(new Consumer<IconCreationUtil.DrawContext>() {
-      public void consume(IconCreationUtil.DrawContext dc) {
-        // todo copy layered icon into core
-        LayeredIcon res = new LayeredIcon(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.layers$pqJD)).count());
-        for (SNode layer : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.layers$pqJD))) {
-          res.setIcon(new ImageIcon(IconLayerDescription__BehaviorDescriptor.getImageForGeneration_id2p1v3tObywX.invoke(layer)), ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.layers$pqJD)).indexOf(layer));
-        }
-        res.paintIcon(null, dc.g, 0, 0);
-      }
-    });
-    return ListSequence.fromListAndArray(new ArrayList<Tuples._2<IFile, byte[]>>(), MultiTuple.<IFile,byte[]>from(outputDir.getDescendant(Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(__thisNode__)), iconData));
+    res.paintIcon(null, dc.g, 0, 0);
   }
 
   /*package*/ TextIcon__BehaviorDescriptor() {
@@ -88,7 +74,7 @@ public final class TextIcon__BehaviorDescriptor extends BaseBHDescriptor {
       case 0:
         return (T) ((String) getResourceId_id2p1v3tOadt0(node));
       case 1:
-        return (T) ((List<Tuples._2<IFile, byte[]>>) generate_id7Mb2akaesv8(node, (IFile) parameters[0]));
+        return (T) ((String) getNewuiResourceId_id1$fQzw7$LYY(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -101,6 +87,9 @@ public final class TextIcon__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 2:
+        processLayers_id2xAJZV4smYU(concept, (List<SNode>) parameters[0], (IconCreationUtil.DrawContext) parameters[1]);
+        return null;
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -123,6 +112,6 @@ public final class TextIcon__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink layers$pqJD = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x26417c37742e0e66L, "layers");
+    /*package*/ static final SContainmentLink newuiLayers$lptJ = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x7cb0b849e7eb993bL, "newuiLayers");
   }
 }

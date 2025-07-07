@@ -11,7 +11,6 @@ import jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.unitTest.execution.TerminationTestEvent;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestMethodNodeKey;
@@ -36,11 +35,7 @@ public final class CheckTestStateListener extends TestStateAdapter {
     List<String> result = ListSequence.fromList(new ArrayList<String>());
     for (final ITestNodeWrapper test : ListSequence.fromList(tests)) {
       if (test.isTestCase()) {
-        ListSequence.fromList(result).addSequence(Sequence.fromIterable(test.getTestMethods()).select(new ISelector<ITestNodeWrapper, String>() {
-          public String select(ITestNodeWrapper method) {
-            return test.getFqName() + "." + method.getName();
-          }
-        }));
+        ListSequence.fromList(result).addSequence(Sequence.fromIterable(test.getTestMethods()).select((method) -> test.getFqName() + "." + method.getName()));
       } else {
         ListSequence.fromList(result).addElement(test.getTestCase().getFqName() + "." + test.getName());
       }

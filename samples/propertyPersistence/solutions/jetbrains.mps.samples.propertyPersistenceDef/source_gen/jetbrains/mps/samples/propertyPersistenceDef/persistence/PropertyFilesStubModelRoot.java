@@ -4,7 +4,7 @@ package jetbrains.mps.samples.propertyPersistenceDef.persistence;
 
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.extapi.persistence.CopyableModelRoot;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
@@ -12,27 +12,25 @@ import jetbrains.mps.extapi.persistence.SourceRootKind;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
-import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.persistence.Memento;
-import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.extapi.persistence.DefaultSourceRoot;
+import org.jetbrains.mps.openapi.persistence.ModulePersistenceContext;
+import org.jetbrains.mps.openapi.model.SModel;
 import java.util.Collection;
 import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.Set;
+import jetbrains.mps.vfs.IFile;
 import java.util.HashSet;
+import org.jetbrains.mps.openapi.model.SModelId;
+import jetbrains.mps.util.FileUtil;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.extapi.persistence.CopyNotSupportedException;
 import jetbrains.mps.persistence.CopyFileBasedModelRootHelper;
 
 public class PropertyFilesStubModelRoot extends FileBasedModelRoot implements CopyableModelRoot<PropertyFilesStubModelRoot> {
   private static final Logger LOG = Logger.getLogger(PropertyFilesStubModelRoot.class);
   private final PersistenceFacade myFacade = PersistenceFacade.getInstance();
-  private static final String PATH_KEY = "path";
 
   public PropertyFilesStubModelRoot() {
     // TODO Why FileBasedModelRoot, maybe the DefaultModelRoot is a better candidate for extension
@@ -51,24 +49,17 @@ public class PropertyFilesStubModelRoot extends FileBasedModelRoot implements Co
   }
 
   @Override
-  public SModel getModel(SModelId id) {
-    // TODO why is this method empty? Why does it exist? It seems not to be used
-    return null;
+  public boolean canCreateModels() {
+    return false;
   }
 
   @Override
-  public void load(Memento memento) {
+  public void load(@NotNull Memento memento, @NotNull ModulePersistenceContext context) {
     // This method documents how to leverage mementos. Since the parent class already handles setting up the content directory
     // and source roots, this method could in fact be deleted from this class.
-    super.load(memento);
-    if (memento.get(PATH_KEY) == null) {
-      return;
-    }
-    String path = FileUtil.stripLastSlashes(memento.get(PATH_KEY));
-    assert path != null;
-    // TODO Any replacement for this deprecation?
-    IFile file = getFileSystem().getFile(path);
-    addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(file));
+    super.load(memento, context);
+    // use memento.get(CUSTOM_KEY) to retrieve settings. Don't forget to do the opposite, memento.put(CUSTOM_KEY, value) in save(Memento)
+    // please note, this method deals with persisted state, model root is not completely initialized/attached to a model at this moment.
   }
 
   @Override
@@ -80,7 +71,9 @@ public class PropertyFilesStubModelRoot extends FileBasedModelRoot implements Co
       if (file.getAbsolutePath().isDirectory()) {
         ListSequence.fromList(result).addSequence(SetSequence.fromSet(getModels(file.getAbsolutePath())));
       } else {
-        LOG.error("The source root at " + file.getAbsolutePath() + " is not a directory and so cannot be loaded.");
+        if (LOG.isErrorLevel()) {
+          LOG.error(String.format("The source root at %s  s not a directory and so cannot be loaded.", file.getAbsolutePath()));
+        }
       }
     }
     return result;
@@ -110,16 +103,14 @@ public class PropertyFilesStubModelRoot extends FileBasedModelRoot implements Co
         PropertyFilesStubModelDescriptor model = new PropertyFilesStubModelDescriptor(ref, dataSource);
         SetSequence.fromSet(models).addElement(model);
       } else {
-        LOG.error("Could not create property  files source stub model for directory " + dir.getPath() + " (failed to guess the folder name)");
+        if (LOG.isErrorLevel()) {
+          LOG.error(String.format("Could not create property  files source stub model for directory %s (failed to guess the folder name)", dir.getPath()));
+        }
       }
     }
 
     Iterable<IFile> children = dir.getChildren();
-    Iterable<IFile> subDirs = Sequence.fromIterable(children).where(new IWhereFilter<IFile>() {
-      public boolean accept(IFile it) {
-        return it.isDirectory();
-      }
-    });
+    Iterable<IFile> subDirs = Sequence.fromIterable(children).where((it) -> it.isDirectory());
 
     for (IFile subDir : Sequence.fromIterable(subDirs)) {
       Set<SModel> set = getModels(subDir);
@@ -132,15 +123,5 @@ public class PropertyFilesStubModelRoot extends FileBasedModelRoot implements Co
   @Override
   public void copyTo(@NotNull PropertyFilesStubModelRoot targetModelRoot) throws CopyNotSupportedException {
     new CopyFileBasedModelRootHelper(this, targetModelRoot).copy();
-  }
-
-  @Override
-  public boolean canCreateModel(String string) {
-    return false;
-  }
-
-  @Override
-  public SModel createModel(String string) {
-    return null;
   }
 }

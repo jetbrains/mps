@@ -15,8 +15,6 @@ import java.util.ArrayList;
 import com.sun.jdi.ObjectReference;
 import com.sun.jdi.Field;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.debugger.java.api.state.watchables.JavaWatchable;
 import jetbrains.mps.debugger.java.api.state.proxy.JavaValue;
 import jetbrains.mps.debugger.java.api.state.customViewers.CustomViewersManager;
@@ -24,7 +22,7 @@ import jetbrains.mps.debug.api.programState.IValue;
 import javax.swing.Icon;
 import jetbrains.mps.debug.api.programState.WatchablesCategory;
 
-@GeneratedClass(node = "r:4388830e-b413-4ab4-a4d2-e76a7bc17a27(jetbrains.mps.debugger.java.runtime.state.customViewers)/7129857096177041157", model = "r:4388830e-b413-4ab4-a4d2-e76a7bc17a27(jetbrains.mps.debugger.java.runtime.state.customViewers)")
+@GeneratedClass(nodeId = "7129857096177041157", model = "r:4388830e-b413-4ab4-a4d2-e76a7bc17a27(jetbrains.mps.debugger.java.runtime.state.customViewers)")
 public class ObjectWrapperFactory extends ValueWrapperFactory {
   @Override
   public boolean canWrapValue(@NotNull IValueProxy value) {
@@ -48,15 +46,7 @@ public class ObjectWrapperFactory extends ValueWrapperFactory {
       if (ref != null) {
         List<Field> fieldList = ListSequence.fromList(new ArrayList<Field>());
         ListSequence.fromList(fieldList).addSequence(ListSequence.fromList(ref.referenceType().allFields()));
-        for (Field f : ListSequence.fromList(fieldList).where(new IWhereFilter<Field>() {
-          public boolean accept(Field it) {
-            return !(it.isStatic());
-          }
-        }).sort(new ISelector<Field, String>() {
-          public String select(Field it) {
-            return it.name();
-          }
-        }, true)) {
+        for (Field f : ListSequence.fromList(fieldList).where((it) -> !(it.isStatic())).sort((it) -> it.name(), true)) {
           watchables.add(new JavaField(f, ref, myThreadReference));
         }
       }

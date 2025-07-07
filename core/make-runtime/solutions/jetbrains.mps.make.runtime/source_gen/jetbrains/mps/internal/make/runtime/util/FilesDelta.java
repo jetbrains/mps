@@ -4,33 +4,22 @@ package jetbrains.mps.internal.make.runtime.util;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.make.delta.IDelta;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import java.util.Map;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.make.delta.IDeltaVisitor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 
-@GeneratedClass(node = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)/505174985642693148", model = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)")
+@GeneratedClass(nodeId = "505174985642693148", model = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)")
 public class FilesDelta implements IDelta {
-  private static Logger LOG = LogManager.getLogger(FilesDelta.class);
+  private static Logger LOG = Logger.getLogger(FilesDelta.class);
   private Map<IFile, Status> files = MapSequence.fromMap(new HashMap<IFile, Status>());
   private final DeltaKey key;
 
-  /**
-   * 
-   * @deprecated use cons that takes DeltaKey, as use of IFile here is confusing, it's merely a hierarchical indicator to merge deltas, and is unrelated to IFiles recorded.
-   */
-  @Deprecated
-  public FilesDelta(IFile dir) {
-    this(new DeltaKey(DirUtil.normalizeAsDir(dir.getPath()).split("/", 0)));
-  }
   public FilesDelta(DeltaKey dk) {
     this.key = dk;
   }
@@ -95,6 +84,7 @@ public class FilesDelta implements IDelta {
       return new FilesDelta(that).copy(this);
     }
 
+    // FIXME this functionality is never actually used
     DeltaKey commonPrefix = key.commonPrefix(that.key);
     if (!(commonPrefix.isEmpty())) {
       return new FilesDelta(commonPrefix).copy(this).copy(that);
@@ -103,15 +93,13 @@ public class FilesDelta implements IDelta {
   }
 
   private boolean acceptFilesVisitor(final Visitor visitor) {
-    MapSequence.fromMap(files).visitAll(new IVisitor<IMapping<IFile, Status>>() {
-      public void visit(IMapping<IFile, Status> m) {
-        if (m.value() == Status.KEPT && !(m.key().isDirectory())) {
-          visitor.acceptKept(m.key());
-        } else if (m.value() == Status.WRITTEN) {
-          visitor.acceptWritten(m.key());
-        } else if (m.value() == Status.DELETED || m.value() == Status.STALE) {
-          visitor.acceptDeleted(m.key());
-        }
+    MapSequence.fromMap(files).visitAll((m) -> {
+      if (m.value() == Status.KEPT && !(m.key().isDirectory())) {
+        visitor.acceptKept(m.key());
+      } else if (m.value() == Status.WRITTEN) {
+        visitor.acceptWritten(m.key());
+      } else if (m.value() == Status.DELETED || m.value() == Status.STALE) {
+        visitor.acceptDeleted(m.key());
       }
     });
     return true;

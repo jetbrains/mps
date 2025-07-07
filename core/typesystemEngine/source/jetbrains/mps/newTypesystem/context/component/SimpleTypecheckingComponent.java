@@ -32,9 +32,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.util.Pair;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -53,7 +53,7 @@ import java.util.Set;
 
   private final STATE myState;
   protected Queue<SNode> myQueue = new LinkedList<>();
-  protected boolean myIsChecked = false;
+  private boolean myIsChecked = false;
   protected BaseTypechecking<?, ?> myTypechecking;
   protected Set<SNode> myNodes = new THashSet<>();
   protected Set<SNode> myFullyCheckedNodes = new THashSet<>(); //nodes which are checked with their children
@@ -137,13 +137,7 @@ import java.util.Set;
   protected BaseTypechecking getTypechecking() {
     return myTypechecking;
   }
-
-  public void solveInequalitiesAndExpandTypes(boolean finalExpansion) {
-    myState.solveInequalities();
-    myState.expandAll(myNodes, finalExpansion);
-    myNodes.clear();
-  }
-
+  
   protected AccessTracking createAccessTracking() {
     return new AccessTracking();
   }
@@ -190,7 +184,7 @@ import java.util.Set;
 
   protected boolean collectNodesAndRules(SNode node, List<Pair<SNode, List<Pair<InferenceRule_Runtime, IsApplicableStatus>>>> nodesAndRules) {
     for (SNode nodeOrAttr : myTypechecking.nodesToApplyRulesTo(node)) {
-      List<Pair<InferenceRule_Runtime, IsApplicableStatus>> rules = TypeChecker.getInstance().getRulesManager().getInferenceRules(nodeOrAttr);
+      List<Pair<InferenceRule_Runtime, IsApplicableStatus>> rules = getState().getTypeCheckingContext().getTypeCheckerHelper().getRulesManager().getInferenceRules(nodeOrAttr);
       if (rules != null && !rules.isEmpty()) {
         nodesAndRules.add(new Pair<>(nodeOrAttr, rules));
 
@@ -270,8 +264,14 @@ import java.util.Set;
     while (!myQueue.isEmpty()) {
       drainQueue(forceChildrenCheck, initialNode, accessTracking);
       if (typeCalculated(initialNode) != null) return;
-      solveInequalitiesAndExpandTypes(finalExpansion);
+      solveInequalities(accessTracking);
+      myState.expandAll(myNodes, finalExpansion);
+      myNodes.clear();
     }
+  }
+
+  protected void solveInequalities(AccessTracking accessTracking) {
+    myState.solveInequalities();
   }
 
   protected SNode computeTypesForNode_special_(SNode initialNode, Collection<SNode> givenAdditionalNodes) {
@@ -306,7 +306,7 @@ import java.util.Set;
   }
 
   public void clear() {
-
+    myIsChecked = false;
   }
 
   /*package*/ STATE getState() {
@@ -337,7 +337,7 @@ import java.util.Set;
   }
 
   private List<Pair<SubstituteType_Runtime, IsApplicableStatus>> substituteTypeRules(SNode test) {
-    return TypeChecker.getInstance().getRulesManager().getSubstituteTypeRules(test);
+    return getState().getTypeCheckingContext().getTypeCheckerHelper().getRulesManager().getSubstituteTypeRules(test);
   }
 
 }

@@ -28,6 +28,7 @@ import com.intellij.openapi.roots.SourceFolder;
 import com.intellij.openapi.util.Computable;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
+import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
@@ -69,8 +70,11 @@ public class MPSFrameworkSupportProvider extends FacetBasedFrameworkSupportProvi
     MPSConfigurationBean configurationBean = mpsFacet.getConfiguration().getBean();
 
     if (contentEntry.getFile() != null && modelDirectory != null) {
-      IFile contentRoot = VirtualFileUtils.toIFile(contentEntry.getFile());
-      IFile modelDir = VirtualFileUtils.toIFile(modelDirectory);
+      final IdeaFileSystem projectFS = mpsFacet.getProject().getFileSystem();
+      IFile contentRoot = projectFS.fromVirtualFile(contentEntry.getFile());
+      // XXX DefaultModelRoot.createDescriptor can deal with File/Path, and modelDirectory is File initially (see above)
+      //     does it make any sense to go back and forth with File <-> VirtualFile <-> IFile?
+      IFile modelDir = projectFS.fromVirtualFile(modelDirectory);
       if (contentRoot != null && modelDir != null) {
         Collection<ModelRootDescriptor> oldRoots = configurationBean.getModelRootDescriptors();
         oldRoots.add(DefaultModelRoot.createDescriptor(contentRoot, modelDir));

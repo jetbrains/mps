@@ -10,7 +10,7 @@ import com.sun.jdi.Value;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.debugger.java.api.evaluation.EvaluationException;
 
-@GeneratedClass(node = "r:88da44e4-ffd4-490b-bf61-1da15124dd34(jetbrains.mps.debugger.java.runtime.evaluation.proxies)/3102837338444216799", model = "r:88da44e4-ffd4-490b-bf61-1da15124dd34(jetbrains.mps.debugger.java.runtime.evaluation.proxies)")
+@GeneratedClass(nodeId = "3102837338444216799", model = "r:88da44e4-ffd4-490b-bf61-1da15124dd34(jetbrains.mps.debugger.java.runtime.evaluation.proxies)")
 /*package*/ class NullValueProxy implements INullValueProxy {
   /*package*/ NullValueProxy() {
   }

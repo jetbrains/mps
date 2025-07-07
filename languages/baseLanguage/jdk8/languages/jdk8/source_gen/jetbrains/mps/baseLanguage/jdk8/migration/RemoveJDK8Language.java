@@ -11,11 +11,9 @@ import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.SModelInternal;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedLanguageNotMigratedProblem;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
@@ -37,16 +35,8 @@ public class RemoveJDK8Language extends MigrationScriptBase {
     {
       SearchScope scope_ev9oy9_a0e = CommandUtil.createScope(m);
       final SearchScope scope_ev9oy9_a0e_0 = new EditableFilteringScope(scope_ev9oy9_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_ev9oy9_a0e_0;
-        }
-      };
-      Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).ofType(SModelInternal.class).visitAll(new IVisitor<SModelInternal>() {
-        public void visit(SModelInternal it) {
-          it.deleteLanguageId(MetaAdapterFactory.getLanguage(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, "jetbrains.mps.baseLanguage.jdk8"));
-        }
-      });
+      QueryExecutionContext context = () -> scope_ev9oy9_a0e_0;
+      Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).ofType(SModelInternal.class).visitAll((it) -> it.deleteLanguageId(MetaAdapterFactory.getLanguage(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, "jetbrains.mps.baseLanguage.jdk8")));
     }
   }
   @Override
@@ -54,23 +44,15 @@ public class RemoveJDK8Language extends MigrationScriptBase {
     {
       SearchScope scope_ev9oy9_a0f = CommandUtil.createScope(m);
       final SearchScope scope_ev9oy9_a0f_0 = scope_ev9oy9_a0f;
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_ev9oy9_a0f_0;
-        }
-      };
-      return Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).ofType(SModelInternal.class).where(new IWhereFilter<SModelInternal>() {
-        public boolean accept(SModelInternal it) {
-          return it.importedLanguageIds().contains(MetaAdapterFactory.getLanguage(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, "jetbrains.mps.baseLanguage.jdk8"));
-        }
-      }).select(new ISelector<SModelInternal, Problem>() {
-        public Problem select(SModelInternal it) {
+      QueryExecutionContext context = () -> scope_ev9oy9_a0f_0;
+      return Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).ofType(SModelInternal.class).where((it) -> it.importedLanguageIds().contains(MetaAdapterFactory.getLanguage(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, "jetbrains.mps.baseLanguage.jdk8"))).select(new _FunctionTypes._return_P1_E0<Problem, SModelInternal>() {
+        public Problem invoke(SModelInternal it) {
           return (Problem) new DeprecatedLanguageNotMigratedProblem((SModel) it, MetaAdapterFactory.getLanguage(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, "jetbrains.mps.baseLanguage.jdk8"));
         }
       });
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, "jetbrains.mps.baseLanguage.jdk8"), 1);
   }
 

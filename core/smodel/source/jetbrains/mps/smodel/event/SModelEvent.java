@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel.event;
 
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -25,6 +26,7 @@ public abstract class SModelEvent {
 
   public abstract void accept(SModelEventVisitor visitor);
 
+  @Nullable
   public abstract SNode getAffectedRoot();
 
   protected SModelEvent(SModel model) {
@@ -33,13 +35,5 @@ public abstract class SModelEvent {
 
   public SModel getModel() {
     return myModel;
-  }
-
-  public SModel getModelDescriptor() {
-    return myModel;
-  }
-
-  public boolean isChangeEvent() {
-    return true;
   }
 }

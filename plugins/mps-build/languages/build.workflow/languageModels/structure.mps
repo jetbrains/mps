@@ -55,7 +55,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -116,6 +116,15 @@
       <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="2769948622284546679" />
       <ref role="20lvS9" node="2pKPpytmA9P" resolve="BwfSubTask" />
+    </node>
+    <node concept="1TJgyj" id="77zDu6tsjOV" role="1TKVEi">
+      <property role="IQ2ns" value="8206585334426844475" />
+      <property role="20kJfa" value="condition" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <ref role="20lvS9" node="77zDu6tsgP2" resolve="BwfTaskMacroCondition" />
+      <node concept="t5JxF" id="77zDu6tsk2p" role="lGtFl">
+        <property role="t5JxN" value="Provisional API to add if/unless condition to a task according to macro value. If necessary, could be generalized into BwfTaskCondition, with macro-specific sub-concept." />
+      </node>
     </node>
     <node concept="PrWs8" id="2pKPpytmA9O" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
@@ -263,6 +272,19 @@
       <property role="TrG5h" value="compilerOptions" />
       <property role="IQ2nx" value="1476884141930130693" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1TJgyi" id="77zDu6t_L80" role="1TKVEl">
+      <property role="IQ2nx" value="8206585334429323776" />
+      <property role="TrG5h" value="conditionalCompile" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+      <node concept="t5JxF" id="77zDu6t_LfT" role="lGtFl">
+        <property role="t5JxN" value="Experimental, see similar property of BuildSource_JavaModule" />
+      </node>
+    </node>
+    <node concept="1TJgyi" id="6EK__xlPJF1" role="1TKVEl">
+      <property role="IQ2nx" value="7687809870062877377" />
+      <property role="TrG5h" value="withKotlin" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
     <node concept="1TJgyj" id="6S1jmf0vFO_" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -536,6 +558,11 @@
     <node concept="PrWs8" id="1Mjrj7j4BGW" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
+    <node concept="1TJgyi" id="26q4_CMp5IF" role="1TKVEl">
+      <property role="IQ2nx" value="2421267928266857387" />
+      <property role="TrG5h" value="loader" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
   </node>
   <node concept="1TIwiD" id="827fHdHec6">
     <property role="TrG5h" value="BwfJavaLibrary" />
@@ -658,6 +685,42 @@
     <node concept="1AhYRh" id="AbdozcomNh" role="lGtFl" />
     <node concept="t5JxF" id="AbdozconQe" role="lGtFl">
       <property role="t5JxN" value="Mechanism to build attribute value based on referenced value" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4H3$xfo$ho8">
+    <property role="EcuMT" value="5423338990219630088" />
+    <property role="3GE5qa" value="Structure" />
+    <property role="TrG5h" value="BwfAntProjectPart" />
+    <property role="34LRSv" value="ant" />
+    <ref role="1TJDcQ" node="2pKPpytmAa7" resolve="BwfProjectPart" />
+    <node concept="1TJgyj" id="4H3$xfo$hI5" role="1TKVEi">
+      <property role="IQ2ns" value="5423338990219631493" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="element" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="iuxj:5M4a$b5iL2M" resolve="XmlElement" />
+    </node>
+    <node concept="t5JxF" id="4H3$xfo$izg" role="lGtFl">
+      <property role="t5JxN" value="Analogy to BwfAntStatement, resides up at project level" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="77zDu6tsgP2">
+    <property role="EcuMT" value="8206585334426832194" />
+    <property role="3GE5qa" value="Tasks" />
+    <property role="TrG5h" value="BwfTaskMacroCondition" />
+    <property role="34LRSv" value="condition" />
+    <property role="R4oN_" value="if/unless macro value condition for a task" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="77zDu6tsi$z" role="1TKVEi">
+      <property role="IQ2ns" value="8206585334426839331" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <property role="20kJfa" value="macro" />
+      <ref role="20lvS9" node="5YNybgUC_P8" resolve="BwfMacro" />
+    </node>
+    <node concept="1TJgyi" id="77zDu6tsi0V" role="1TKVEl">
+      <property role="IQ2nx" value="8206585334426837051" />
+      <property role="TrG5h" value="inverted" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
   </node>
 </model>

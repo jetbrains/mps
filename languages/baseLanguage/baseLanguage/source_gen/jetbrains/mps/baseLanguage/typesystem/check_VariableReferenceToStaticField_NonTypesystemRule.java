@@ -11,13 +11,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.scopes.Members;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -35,21 +32,11 @@ public class check_VariableReferenceToStaticField_NonTypesystemRule extends Abst
     if (!(SNodeOperations.isInstanceOf(variableReference, CONCEPTS.StaticFieldReference$cU)) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$N1XG), CONCEPTS.StaticFieldDeclaration$jR)) {
       final SNode field = SNodeOperations.as(SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$N1XG), CONCEPTS.StaticFieldDeclaration$jR);
       List<SNode> cls = SNodeOperations.getNodeAncestors(variableReference, CONCEPTS.Classifier$Ix, false);
-      Iterable<SNode> collidingDeclarations = ListSequence.fromList(cls).translate(new ITranslator2<SNode, SNode>() {
-        public Iterable<SNode> translate(SNode cl) {
-          return Sequence.fromIterable(Members.visibleStaticFields(cl, variableReference)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(field, PROPS.name$MnvL)) && !(Objects.equals(it, field));
-            }
-          });
-        }
-      });
-      Sequence.fromIterable(collidingDeclarations).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          {
-            final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(variableReference, "Reference to " + SPropertyOperations.getString(field, PROPS.name$MnvL) + " is ambiguous, both " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(field) + " and " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(it) + " match.", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1416886212489829967", null, errorTarget);
-          }
+      Iterable<SNode> collidingDeclarations = ListSequence.fromList(cls).translate((cl) -> Sequence.fromIterable(Members.visibleStaticFields(cl, variableReference)).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(field, PROPS.name$MnvL)) && !(Objects.equals(it, field))));
+      Sequence.fromIterable(collidingDeclarations).visitAll((it) -> {
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(variableReference, "Reference to " + SPropertyOperations.getString(field, PROPS.name$MnvL) + " is ambiguous, both " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(field) + " and " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(it) + " match.", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1416886212489829967", null, errorTarget);
         }
       });
     }

@@ -9,70 +9,74 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.annotations.NotNull;
-import java.util.List;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.progress.ProgressIndicator;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.util.WaitForProgressToShow;
+import java.util.List;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.Set;
 import org.jetbrains.mps.openapi.language.SLanguage;
+import jetbrains.mps.smodel.SLanguageHierarchy;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.SModelInternal;
 
 public class RunMigration extends BaseAction {
-  private MigrationScript myScript;
-  private MPSProject myProject;
+  private final MigrationScript myScript;
+  private MPSProject myMPSProject;
+
   public RunMigration(MigrationScript script) {
     this.myScript = script;
     this.setExecuteOutsideCommand(true);
     getTemplatePresentation().setText(myScript.getCaption());
+    updateInBackground(true);
   }
+
+
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
-    if (!((super.collectActionData(event, _params)))) {
+    if (!(super.collectActionData(event, _params))) {
       return false;
     }
-    myProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-    return myProject != null;
+    myMPSProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+    return myMPSProject != null;
   }
+
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final List<SModule>[] modules = new List[1];
-    myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        modules[0] = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(myProject)).toListSequence();
-      }
-    });
-    ProgressManager.getInstance().run(new Task.Modal(myProject.getProject(), "Run Migration", true) {
+    final LanguageRegistry languageRegistry = myMPSProject.getComponent(LanguageRegistry.class);
+    ProgressManager.getInstance().run(new Task.Modal(myMPSProject.getProject(), "Run Migration", true) {
       public void run(@NotNull ProgressIndicator progressIndicator) {
-        ProgressMonitorAdapter progressMonitor = new ProgressMonitorAdapter(progressIndicator);
-        int steps = modules[0].size();
-        progressMonitor.start(myScript.getCaption(), steps);
-        for (final SModule module : ListSequence.fromList(modules[0])) {
-          progressMonitor.step(module.getModuleName());
-          WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(new Runnable() {
-            public void run() {
-              RunMigration.this.myProject.getRepository().getModelAccess().executeCommand(new Runnable() {
-                public void run() {
-                  myScript.execute(module);
-                  updateModelVesionsIfPossible(module, myScript.getReference().getLanguage(), myScript.getReference().getFromVersion(), myScript.getReference().getFromVersion() + 1);
-                }
-              });
+        final ProgressMonitorAdapter progressMonitor = new ProgressMonitorAdapter(progressIndicator);
+        WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(() -> RunMigration.this.myMPSProject.getRepository().getModelAccess().executeCommand(() -> {
+          final List<SModule> migrateableModulesFromProject = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(myMPSProject)).toList();
+          progressMonitor.start(myScript.getCaption(), ListSequence.fromList(migrateableModulesFromProject).count());
+          for (SModule module : ListSequence.fromList(migrateableModulesFromProject)) {
+            if (progressMonitor.isCanceled()) {
+              break;
             }
-          });
-          progressMonitor.advance(1);
-          if (progressMonitor.isCanceled()) {
-            break;
+            progressMonitor.step(module.getModuleName());
+            Set<SLanguage> usedLanguages = module.getUsedLanguages();
+            SLanguage scriptLanguage = myScript.getReference().getLanguage();
+            if (usedLanguages.contains(scriptLanguage) || new SLanguageHierarchy(languageRegistry, usedLanguages).getExtended().contains(scriptLanguage)) {
+              myScript.execute(module);
+              int from = myScript.getReference().getFromVersion();
+              updateModelVesionsIfPossible(module, scriptLanguage, from, from + 1);
+            }
+            progressMonitor.advance(1);
           }
-        }
+        }));
+        progressMonitor.done();
       }
     });
   }
   public static void updateModelVesionsIfPossible(SModule module, SLanguage language, int from, int to) {
+    // FIXME similar code in MigrationModuleUtil, do I care to keep a copy?
     Iterable<SModel> models = module.getModels();
     for (SModelInternal model : Sequence.fromIterable(models).ofType(SModelInternal.class)) {
       if (model.getLanguageImportVersion(language) == from) {

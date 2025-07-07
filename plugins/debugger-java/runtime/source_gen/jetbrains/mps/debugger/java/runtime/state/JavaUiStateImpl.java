@@ -9,7 +9,6 @@ import jetbrains.mps.debugger.java.api.state.proxy.JavaThread;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.debugger.java.runtime.engine.events.Context;
 import java.util.Objects;
 import jetbrains.mps.debugger.java.runtime.engine.events.EventsProcessor;
@@ -21,7 +20,7 @@ import com.sun.jdi.ThreadReference;
 import jetbrains.mps.debug.api.programState.IThread;
 import jetbrains.mps.debug.api.AbstractUiState;
 
-@GeneratedClass(node = "r:63e7a653-1334-49d4-8e81-fd72b84fb4ff(jetbrains.mps.debugger.java.runtime.state)/4352118152439825362", model = "r:63e7a653-1334-49d4-8e81-fd72b84fb4ff(jetbrains.mps.debugger.java.runtime.state)")
+@GeneratedClass(nodeId = "4352118152439825362", model = "r:63e7a653-1334-49d4-8e81-fd72b84fb4ff(jetbrains.mps.debugger.java.runtime.state)")
 public abstract class JavaUiStateImpl extends JavaUiState {
   protected final DebugSession myDebugSession;
   protected int myThreadIndex;
@@ -41,11 +40,7 @@ public abstract class JavaUiStateImpl extends JavaUiState {
 
     initializeThreads();
 
-    ListSequence.fromList(myThreads).visitAll(new IVisitor<JavaThread>() {
-      public void visit(JavaThread it) {
-        it.initializeFrames();
-      }
-    });
+    ListSequence.fromList(myThreads).visitAll((it) -> it.initializeFrames());
   }
   public abstract Context getContext();
   @Override
@@ -74,7 +69,7 @@ public abstract class JavaUiStateImpl extends JavaUiState {
     if (thread == null) {
       return null;
     }
-    if (newContext == null || !((Objects.equals(newContext.getThread(), thread)))) {
+    if (newContext == null || !(Objects.equals(newContext.getThread(), thread))) {
       return getEventProcessor().getContextManager().findContextForThread(thread.getThread());
     }
     return newContext;
@@ -121,12 +116,10 @@ public abstract class JavaUiStateImpl extends JavaUiState {
   }
   @Override
   public void selectThread(@Nullable final IThread thread) {
-    myDebugSession.getEventsProcessor().schedule(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        AbstractUiState newState = selectThreadInternal(thread);
-        if (newState != JavaUiStateImpl.this) {
-          myAbstractDebugSession.trySetState(JavaUiStateImpl.this, newState);
-        }
+    myDebugSession.getEventsProcessor().schedule(() -> {
+      AbstractUiState newState = selectThreadInternal(thread);
+      if (newState != JavaUiStateImpl.this) {
+        myAbstractDebugSession.trySetState(JavaUiStateImpl.this, newState);
       }
     });
   }

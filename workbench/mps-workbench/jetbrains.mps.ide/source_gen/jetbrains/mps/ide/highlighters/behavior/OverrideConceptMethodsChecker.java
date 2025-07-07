@@ -20,7 +20,7 @@ import jetbrains.mps.ide.findusages.model.scopes.GlobalScope;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:59f5b892-a6eb-4a9b-9c81-ecffc10026ee(jetbrains.mps.ide.highlighters.behavior)/1401464578585832882", model = "r:59f5b892-a6eb-4a9b-9c81-ecffc10026ee(jetbrains.mps.ide.highlighters.behavior)")
+@GeneratedClass(nodeId = "1401464578585832882", model = "r:59f5b892-a6eb-4a9b-9c81-ecffc10026ee(jetbrains.mps.ide.highlighters.behavior)")
 public final class OverrideConceptMethodsChecker extends BaseEventProcessingEditorChecker {
   /**
    * fixme transfer to a bundle
@@ -63,7 +63,7 @@ public final class OverrideConceptMethodsChecker extends BaseEventProcessingEdit
       return ancestors;
     }
     List<EditorMessage> descendants = new DescendantsMethodsLookup(cancellable, new GlobalScope(myProject), behavior, this, MAX_ITEMS_TO_SHOW).calcMessages();
-    return ListSequence.fromList(ancestors).union(ListSequence.fromList(descendants)).toListSequence();
+    return ListSequence.fromList(ancestors).union(ListSequence.fromList(descendants)).toList();
   }
 
   private static final class CONCEPTS {

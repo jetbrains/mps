@@ -8,7 +8,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.messages.IMessageHandler;
 import com.intellij.openapi.application.ApplicationManager;
 
-@GeneratedClass(node = "r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)/2063851301518665061", model = "r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)")
+@GeneratedClass(nodeId = "2063851301518665061", model = "r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)")
 /*package*/ class IncrementalModelAccessWithCommand extends IncrementalModelAccessBase {
   public IncrementalModelAccessWithCommand(ModelAccess modelAccess, Iterable<SModel> models, IMessageHandler messageHandler) {
     super(modelAccess, models, messageHandler);
@@ -16,10 +16,6 @@ import com.intellij.openapi.application.ApplicationManager;
 
   @Override
   public void replaceNodes(final Runnable runnable) {
-    ApplicationManager.getApplication().invokeAndWait(new Runnable() {
-      public void run() {
-        myModelAccess.executeUndoTransparentCommand(runnable);
-      }
-    });
+    ApplicationManager.getApplication().invokeAndWait(() -> myModelAccess.executeUndoTransparentCommand(runnable));
   }
 }

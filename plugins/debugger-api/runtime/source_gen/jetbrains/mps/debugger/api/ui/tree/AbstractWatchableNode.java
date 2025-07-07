@@ -7,7 +7,7 @@ import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.annotations.Nullable;
 
-@GeneratedClass(node = "r:a35795b4-c996-4cf6-bdbd-9ddbda25cde5(jetbrains.mps.debugger.api.ui.tree)/4474271214083118844", model = "r:a35795b4-c996-4cf6-bdbd-9ddbda25cde5(jetbrains.mps.debugger.api.ui.tree)")
+@GeneratedClass(nodeId = "4474271214083118844", model = "r:a35795b4-c996-4cf6-bdbd-9ddbda25cde5(jetbrains.mps.debugger.api.ui.tree)")
 /*package*/ abstract class AbstractWatchableNode extends MPSTreeNode {
   private final SNodeReference myNode;
 

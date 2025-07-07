@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,11 @@
  */
 package jetbrains.mps.smodel;
 
+import jetbrains.mps.smodel.AssociationData.TransitionIndirect;
+import jetbrains.mps.smodel.AssociationData.TransitionDirect;
 import jetbrains.mps.smodel.ModelCommandContext.Provider;
 import jetbrains.mps.smodel.event.ModelEventDispatch;
+import jetbrains.mps.util.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -80,11 +83,17 @@ final class AttachedNodeOwner extends SNodeOwner {
       return;
     }
     repo.getModelAccess().checkWriteAccess();
-    // due to isCommandAction() check one can't modify an attached model from within a write action (e.g. JavaDebugEvaluate facet during make).
-    // Is it right? What's the reason to have write action then?
-    if (!repo.getModelAccess().isCommandAction()) {
-      throw new IllegalModelChangeError("registered node can be modified only inside a command or during model loading process " + myModel);
-    }
+    // here used to be one of most perplexing pieces of MPS core functionality, check for MA.isCommandAction with IMCE in case not.
+    // Speculations are the check ensured all model changes for a model inside repository got Undo recorded (MM, slack, 13.02.2017)
+    // however, I don't think it's proper in variant, as there are different models inside a repo (e.g. temp, transient,
+    // internal Console state, etc), and we don't need to record Undo for these.
+    // In case we need per-model variations in behavior, may invoke some internal API method on [smodel].SModel here, so that
+    // various SModel implementation may provide their own logic (e.g. check MA.isCommandAction() if they truly need to)
+    // Even better, the method might be part of SRepository or MA API. One could argue why not MA.isCommandAction() then, but
+    //   this method is way too overloaded, and keeping both 'inside command' and 'can modify node now' knowledge under single
+    //   method is worse than introducing a distinct API. For the same reason I believe having this check
+    //   inside MA.checkWriteAccess() might not be perfect idea (although don't have that strong objections as for the
+    //   single isCommandAction() check)
   }
 
   @Override
@@ -106,7 +115,8 @@ final class AttachedNodeOwner extends SNodeOwner {
       // not inside a repository, that's why I don't make them indirect just the moment node get attached to a model.
       // There's ImmatureReferences that would force indirect references the moment command completes, regardless of
       // repository presence.
-      node.makeReferencesIndirect();
+      final TransitionIndirect transition = new TransitionIndirect(myModel.getModelDescriptor(), false);
+      node.forEachAssociationDeep(data -> transition.makeIndirect(data, SNodeOperations::getResolveInfo));
     }
   }
 
@@ -137,7 +147,10 @@ final class AttachedNodeOwner extends SNodeOwner {
       // makeDirect has been separated from detach() code to give better control over reference resolution time.
       // indeed, in a perfect world we would know all nodes to be deleted during a command beforehand, and could process their references at once.
       // as it's not possible (node.sibling.detach could come right after node.detach) we at least go easy path for references within a detached subtree
-      node.makeReferencesDirect();
+      final org.jetbrains.mps.openapi.model.SModel current = myModel.getModelDescriptor();
+      final TransitionDirect transition = new TransitionDirect(current);
+      node.forEachAssociationDeep(data -> transition.makeDirect(data));
+      // Direct object pointers facilitate reference access operations from the detached nodes just in case there's need.
     }
 
     doUnregister(new DetachedNodeOwner(myModel), node, commandContext());
@@ -238,22 +251,22 @@ final class AttachedNodeOwner extends SNodeOwner {
   }
 
   @Override
-  /*package*/ void fireReferenceChange(SNode node, SReferenceLink l, org.jetbrains.mps.openapi.model.SReference oldRef, org.jetbrains.mps.openapi.model.SReference newRef) {
-    // XXX is it true we need to register immature even in update mode?
-    commandContext().associationSet(newRef);
+  /*package*/ void fireReferenceChange(SNode node, SReferenceLink l, AssociationData oldRef, AssociationData newRef) {
+    // FIXME is it true we need to register immature even in update mode?
+    commandContext().associationSet(node, l, newRef);
     if (myModel.isUpdateMode()) {
       return;
     }
     if (oldRef != null) {
-      myModel.fireReferenceRemovedEvent(oldRef);
+      myModel.fireReferenceRemovedEvent(node.toAPI(l, oldRef));
     }
     if (newRef != null) {
-      myModel.fireReferenceAddedEvent(newRef);
+      myModel.fireReferenceAddedEvent(node.toAPI(l, newRef));
     }
     // referenceChanged(l, oldRef, newRef);
     final ModelEventDispatch md = myEventDispatch;
     if (md != null) {
-      md.fireReferenceChange(node, l, oldRef, newRef);
+      md.fireReferenceChange(node, l, oldRef == null ? null : node.toAPI(l, oldRef), newRef == null ? null : node.toAPI(l, newRef));
     }
   }
 
@@ -293,7 +306,7 @@ final class AttachedNodeOwner extends SNodeOwner {
     if (node == null && role == null) {
       final ModelEventDispatch md = myEventDispatch;
       if (md != null) {
-        md.fireNodeRemove(null, null, child);
+        md.fireNodeRemove(null, null, child, null);
       }
       myModel.fireRootRemovedEvent(child);
       return;
@@ -305,7 +318,7 @@ final class AttachedNodeOwner extends SNodeOwner {
     //nodeRemoved(child, role);
     final ModelEventDispatch md = myEventDispatch;
     if (md != null) {
-      md.fireNodeRemove(node, role, child);
+      md.fireNodeRemove(node, role, child, anchor);
     }
   }
 

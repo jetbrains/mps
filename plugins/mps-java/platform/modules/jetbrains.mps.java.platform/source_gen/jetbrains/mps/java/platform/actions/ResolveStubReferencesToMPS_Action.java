@@ -8,17 +8,17 @@ import javax.swing.Icon;
 import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.project.MPSProject;
+import java.util.List;
 import jetbrains.mps.java.platform.util.StubResolver;
 import jetbrains.mps.project.OptimizeImportsHelper;
 import jetbrains.mps.project.ModelsAutoImportsManager;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 
-@GeneratedClass(node = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)/5175352797999992329", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
+@GeneratedClass(nodeId = "5175352797999992329", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
 public class ResolveStubReferencesToMPS_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -26,10 +26,24 @@ public class ResolveStubReferencesToMPS_Action extends BaseAction {
     super("Resolve Stub References to MPS Code", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
     return true;
+  }
+  @Override
+  public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
+    for (SModel model : event.getData(MPSCommonDataKeys.MODELS)) {
+      if (model.isReadOnly()) {
+        return false;
+      }
+    }
+    return true;
+  }
+  @Override
+  public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
+    this.setEnabledState(event.getPresentation(), this.isApplicable(event, _params));
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {

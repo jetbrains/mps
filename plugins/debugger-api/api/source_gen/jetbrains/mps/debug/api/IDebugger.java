@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.debug.api.breakpoints.ILocationBreakpoint;
 import org.jetbrains.mps.openapi.model.SNode;
 
-@GeneratedClass(node = "r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)/4474271214082912941", model = "r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)")
+@GeneratedClass(nodeId = "4474271214082912941", model = "r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)")
 public interface IDebugger<B extends IBreakpoint, K extends IBreakpointKind<B>> {
   @NotNull
   AbstractDebugSessionCreator createDebugSessionCreator(@NotNull Project project);

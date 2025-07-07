@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@ package jetbrains.mps.nodeEditor.menus.transformation;
 
 import jetbrains.mps.lang.editor.menus.transformation.DefaultTransformationMenuLookup;
 import jetbrains.mps.lang.editor.menus.transformation.InUsedLanguagesPredicate;
+import jetbrains.mps.logging.Logger;
+import jetbrains.mps.nodeEditor.cellMenu.CompletionItemCustomizationUtil;
 import jetbrains.mps.nodeEditor.menus.CachingPredicate;
 import jetbrains.mps.nodeEditor.menus.CanBeChildPredicate;
 import jetbrains.mps.nodeEditor.menus.CanBeParentPredicate;
@@ -27,7 +29,6 @@ import jetbrains.mps.nodeEditor.menus.RecursionSafeMenuItemFactory;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCellContext;
-import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTrace;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
@@ -35,7 +36,6 @@ import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuConte
 import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuItem;
 import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -69,9 +69,9 @@ public class DefaultTransformationMenuContext implements TransformationMenuConte
 
   private Predicate<SAbstractConcept> mySuitableForConstraintsPredicate;
 
-  private Set<EditorMenuItemCustomizer> myEditorMenuItemCustomizers;
+  private final Set<EditorMenuItemCustomizer> myEditorMenuItemCustomizers;
 
-  private Set<TransformationMenuLookup> myUsedLookups = new HashSet<>();
+  private final Set<TransformationMenuLookup> myUsedLookups = new HashSet<>();
 
   private static final Logger LOG = Logger.getLogger(DefaultTransformationMenuContext.class);
 
@@ -138,13 +138,7 @@ public class DefaultTransformationMenuContext implements TransformationMenuConte
     myNodeLocation = nodeLocation;
     myEditorMenuTrace = editorMenuTrace;
     myEditorMenuItemCustomizers = new HashSet<>();
-    LanguageRegistry.getInstance(myEditorContext.getRepository()).withAvailableLanguages(languageRuntime -> {
-      EditorAspectDescriptor aspect = languageRuntime.getAspect(EditorAspectDescriptor.class);
-      if (aspect != null) {
-        Collection<EditorMenuItemCustomizer> editorMenuItemCustomizers = aspect.getEditorMenuItemCustomizers();
-        myEditorMenuItemCustomizers.addAll(editorMenuItemCustomizers);
-      }
-    });
+    CompletionItemCustomizationUtil.apply(LanguageRegistry.getInstance(editorContext.getRepository()), myEditorMenuItemCustomizers::add);
   }
 
   @NotNull

@@ -6,6 +6,9 @@ import jetbrains.mps.annotations.GeneratedClass;
 import javax.swing.event.TreeExpansionListener;
 import javax.swing.JTree;
 import javax.swing.event.TreeExpansionEvent;
+import javax.swing.tree.TreeModel;
+import com.intellij.ui.tree.AsyncTreeModel;
+import javax.swing.tree.TreePath;
 import javax.swing.tree.DefaultTreeModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.ide.icons.GlobalIconManager;
@@ -13,16 +16,15 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import java.util.Enumeration;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-@GeneratedClass(node = "r:e180cc3d-e9f2-4c0c-91b4-6730d80d9b23(jetbrains.mps.ide.platform.modeltree)/4288082098349207686", model = "r:e180cc3d-e9f2-4c0c-91b4-6730d80d9b23(jetbrains.mps.ide.platform.modeltree)")
+@GeneratedClass(nodeId = "4288082098349207686", model = "r:e180cc3d-e9f2-4c0c-91b4-6730d80d9b23(jetbrains.mps.ide.platform.modeltree)")
 public abstract class ModelTreeBuilder implements TreeExpansionListener {
   private JTree myTree;
   public ModelTreeBuilder(JTree tree) {
@@ -45,7 +47,12 @@ public abstract class ModelTreeBuilder implements TreeExpansionListener {
   }
   protected abstract void initTreeNode(ModelTreeNode node);
   protected void notifyNodeStructureChanged(ModelTreeNode modelTreeNode) {
-    ((DefaultTreeModel) myTree.getModel()).nodeStructureChanged(modelTreeNode);
+    TreeModel m = myTree.getModel();
+    if (m instanceof AsyncTreeModel) {
+      ((AsyncTreeModel) m).treeStructureChanged(new TreePath(modelTreeNode.getPath()));
+    } else {
+      ((DefaultTreeModel) m).nodeStructureChanged(modelTreeNode);
+    }
   }
   public static ModelTreeNode createSModelTreeNode(SModel descriptor) {
     String label = descriptor.getName().getValue();
@@ -60,11 +67,7 @@ public abstract class ModelTreeBuilder implements TreeExpansionListener {
     return new ModelTreeNode(folderName, IdeIcons.CLOSED_FOLDER, IdeIcons.OPENED_FOLDER);
   }
   public static Iterable<SNode> sortChildNodes(Iterable<SNode> nodes) {
-    return Sequence.fromIterable(nodes).sort(new ISelector<SNode, String>() {
-      public String select(SNode node) {
-        return SPropertyOperations.getString(node, PROPS.virtualPackage$EkXl) + "|" + ((String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
-      }
-    }, true);
+    return Sequence.fromIterable(nodes).sort((node) -> SPropertyOperations.getString(node, PROPS.virtualPackage$EkXl) + "|" + ((String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getPresentation", 1213877396640L, 0x553941aeb020c32eL))), true);
   }
   public static void insertChildSNodeTreeNode(ModelTreeNode sModelTreeNode, ModelTreeNode sNodeTreeNode, String virtualPackage) {
     ModelTreeNode parentTreeNode = sModelTreeNode;

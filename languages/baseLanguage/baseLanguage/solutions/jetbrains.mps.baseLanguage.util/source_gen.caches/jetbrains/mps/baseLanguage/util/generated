@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-3ycfrrfstyej9uy2v4mdd8unfo8y6nl">
-  <files names="BaseLanguageEnvironmentHelper.java:CheckingUtil.java:CodeStyleSettings.java:CodeStyleSettingsRegistry.java:IdentifierConstraintsUtil.java:OverridingMethodsCalculator.java:ReflectionUtil.java:VariableInitializationUtil.java" />
-</product>
-

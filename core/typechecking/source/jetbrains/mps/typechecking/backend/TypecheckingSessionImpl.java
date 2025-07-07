@@ -18,7 +18,6 @@ package jetbrains.mps.typechecking.backend;
 import jetbrains.mps.typechecking.TypecheckingQueries;
 import jetbrains.mps.typechecking.TypecheckingSession;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -32,14 +31,16 @@ import java.util.Map.Entry;
  * This object corresponds to a session, which may contain several instances of {@link TypecheckingQueries}
  * coming from different providers.
  */
-public class TypecheckingSessionImpl implements TypecheckingSession {
+public abstract class TypecheckingSessionImpl implements TypecheckingSession {
 
-  private boolean myDisposed;
+  private boolean myDisposed = false;
+  
+  private boolean myOrphaned = false;
 
   private int myUsages = 0;
 
   private final TypecheckingController myController;
-  
+
   private final InternalFlags myFlags;
 
   private Map<TypecheckingProvider, TypecheckingQueries> myQueries = new HashMap<>();
@@ -55,23 +56,40 @@ public class TypecheckingSessionImpl implements TypecheckingSession {
   }
 
   @Override
-  public <Q extends TypecheckingQueries> Q getQueries(Class<? extends Q> providerClass) {
-    return getQueries(myController.selectProvider(providerClass));
+  public <Q extends TypecheckingQueries> Q getQueries(Class<? extends Q> queriesClass) {
+    return getQueries(myController.selectProvider(queriesClass));
   }
 
   @Override
   public TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept) {
-    return getQueries(myController.selectProvider(src, trg, trgConcept));
+    return getQueries(myController.selectProvider(src, trg, trgConcept, myFlags));
   }
 
   @Override
   public TypecheckingQueries getQueries(@NotNull SNode src, SNode trg) {
-    return getQueries(myController.selectProvider(src, trg, null));
+    return getQueries(myController.selectProvider(src, trg, null, myFlags));
   }
 
   @Override
   public TypecheckingQueries getQueries(@NotNull SNode node) {
-    return getQueries(myController.selectProvider(node, null, null));
+    return getQueries(myController.selectProvider(node, null, null, myFlags));
+  }
+
+  @Override
+  public abstract <C> C getData(Class<? extends C> dataClass);
+
+  protected TypecheckingController getController() {
+    return myController;
+  }
+
+  protected void disown() {
+    this.myOrphaned = true;
+  }
+
+  protected void disposeIfOrphaned() {
+    if (myOrphaned) {
+      dispose();
+    }
   }
 
   protected void dispose () {
@@ -86,10 +104,14 @@ public class TypecheckingSessionImpl implements TypecheckingSession {
     return myDisposed;
   }
 
+  protected boolean isOrphaned() {
+    return myOrphaned;
+  }
+
   @NotNull
   @SuppressWarnings("unchecked")
   protected <Q extends TypecheckingQueries> Q getQueries(TypecheckingProvider<Q> provider) {
-    myQueries.computeIfAbsent(provider, (key) -> provider.createQueries(flags()));
+    myQueries.computeIfAbsent(provider, (key) -> provider.createQueries(this));
     return (Q) myQueries.get(provider);
   }
 
@@ -107,9 +129,8 @@ public class TypecheckingSessionImpl implements TypecheckingSession {
   
   @Override
   public String toString() {
-    return String.format("Session{%s, usages=%d}", flags(), getUsages());
+    return String.format("Session{%s, usages=%d, disposed=%b, orphaned=%b}", myFlags, myUsages, myDisposed, myOrphaned);
   }
-
 
   private static class InternalFlags extends Flags {
     private InternalFlags(Flags copyFrom) {

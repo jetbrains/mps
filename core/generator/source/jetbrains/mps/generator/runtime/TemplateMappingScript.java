@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,13 +16,12 @@
 package jetbrains.mps.generator.runtime;
 
 import jetbrains.mps.generator.impl.GenerationFailureException;
-import jetbrains.mps.generator.template.ITemplateGenerator;
-import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 /**
- * Evgeny Gryaznov, Nov 29, 2010
+ * Runtime presentation for {@code node<MappingScript>}
  */
 public interface TemplateMappingScript {
 
@@ -35,18 +34,15 @@ public interface TemplateMappingScript {
 
   int getKind();
 
-  /**
-   * @deprecated use {@link #apply(SModel, TemplateExecutionEnvironment)} instead
-   */
-  @ToRemove(version = 2021.1)
-  @Deprecated
-  default void apply(SModel model, ITemplateGenerator generator) throws GenerationFailureException {
-    // no-op to let subclasses not implement this one
+  @Deprecated(since = "2025.2", forRemoval = true)
+  default void apply(SModel model, TemplateExecutionEnvironment env) throws GenerationFailureException {
+    // keep empty body for existing overrides, remove method once compiled templates get a chance to be re-generated (couple of releases
   }
 
-  default void apply(SModel model, TemplateExecutionEnvironment env) throws GenerationFailureException {
-    // remove the body once 2021.1 is out
-    apply(model, env.getGenerator());
+  default void apply(@NotNull SModel model, @NotNull TemplateContext templateContext) throws GenerationFailureException {
+    // since 2025.2
+    // fallback to legacy generated code
+    apply(model, templateContext.getEnvironment());
   }
 
   boolean modifiesModel();

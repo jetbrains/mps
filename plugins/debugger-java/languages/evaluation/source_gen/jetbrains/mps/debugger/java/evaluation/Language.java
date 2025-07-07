@@ -14,12 +14,14 @@ import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.debugger.java.evaluation.editor.EditorAspectDescriptorImpl;
 import jetbrains.mps.smodel.runtime.MakeAspectDescriptor;
 import jetbrains.mps.debugger.java.evaluation.plugin.FacetAspectDescriptor;
-import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
-import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
-import jetbrains.mps.debugger.java.evaluation.structure.ConceptPresentationAspectImpl;
 import jetbrains.mps.text.rt.TextGenAspectDescriptor;
 import jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor;
 import jetbrains.mps.debugger.java.evaluation.typesystem.TypesystemDescriptor;
+import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
+import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
+import jetbrains.mps.debugger.java.evaluation.structure.ConceptPresentationAspectImpl;
+import jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptor;
+import jetbrains.mps.debugger.java.evaluation.dataFlow.DataFlowAspectDescriptorImpl;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.language.LanguageExtensions;
 
@@ -63,17 +65,20 @@ public class Language extends LanguageRuntime {
     if (aspectClass == MakeAspectDescriptor.class) {
       return aspectClass.cast(new FacetAspectDescriptor());
     }
+    if (aspectClass == TextGenAspectDescriptor.class) {
+      return aspectClass.cast(new jetbrains.mps.debugger.java.evaluation.textGen.TextGenAspectDescriptor());
+    }
+    if (aspectClass == IHelginsDescriptor.class) {
+      return aspectClass.cast(new TypesystemDescriptor());
+    }
     if (aspectClass == StructureAspectDescriptor.class) {
       return aspectClass.cast(new jetbrains.mps.debugger.java.evaluation.structure.StructureAspectDescriptor());
     }
     if (aspectClass == ConceptPresentationAspect.class) {
       return aspectClass.cast(new ConceptPresentationAspectImpl());
     }
-    if (aspectClass == TextGenAspectDescriptor.class) {
-      return aspectClass.cast(new jetbrains.mps.debugger.java.evaluation.textGen.TextGenAspectDescriptor());
-    }
-    if (aspectClass == IHelginsDescriptor.class) {
-      return aspectClass.cast(new TypesystemDescriptor());
+    if (aspectClass == DataFlowAspectDescriptor.class) {
+      return aspectClass.cast(new DataFlowAspectDescriptorImpl());
     }
     return null;
   }

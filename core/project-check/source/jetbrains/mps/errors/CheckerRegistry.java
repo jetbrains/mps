@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,10 +30,21 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Serves as the central point for registering global checkers as instances of {@link IChecker}.
+ * <p>
+ * NB! Internally adds the "core" checkers that are always present in the list returned by {@link #getCheckers()}.
+ * <ul>
+ *   <li>{@link TargetConceptChecker2}</li>
+ *   <li>{@link UsedLanguagesChecker}</li>
+ *   <li>{@link RefScopeChecker}</li>
+ *   <li>{@link SuppressErrorsChecker}</li>
+ * </ul>
+ */
 public final class CheckerRegistry implements CoreComponent {
   private final MultiMap<CheckerCategory, IChecker<?, ?>> myCheckers = new MultiMap<>();
   private final MultiMap<CheckerCategory, AbstractNodeCheckerInEditor> myEditorCheckers = new MultiMap<>();
-  @NotNull private final ComponentHost myHost;
+  private final ComponentHost myHost;
 
   public CheckerRegistry(@NotNull ComponentHost host) {
     myHost = host;
@@ -77,6 +88,12 @@ public final class CheckerRegistry implements CoreComponent {
     return new ArrayList<>(myCheckers.values());
   }
 
+  /**
+   * Returns a list of all editor checkers (instances of {@link AbstractNodeCheckerInEditor}) registered with this registry.
+   * <p>
+   *   See {@code jetbrains.mps.ide.editor.MPSValidationComponent}
+   * </p>
+   */
   public List<AbstractNodeCheckerInEditor> getEditorCheckers() {
     ArrayList<AbstractNodeCheckerInEditor> result = new ArrayList<>(myEditorCheckers.values());
     for (IChecker<?, ?> checker: myCheckers.values()){

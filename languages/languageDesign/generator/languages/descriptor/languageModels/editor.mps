@@ -2,7 +2,7 @@
 <model ref="r:7ed7a88c-17bf-40a5-be72-b50cea0614c7(jetbrains.mps.lang.descriptor.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="15" />
   </languages>
   <imports>
     <import index="yv2q" ref="r:cdf8afc0-fdc6-47ca-b829-7b2226168efa(jetbrains.mps.lang.descriptor.structure)" />
@@ -67,6 +67,18 @@
     </node>
     <node concept="3F0A7n" id="eB6_hfARMm" role="6VMZX">
       <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+    </node>
+  </node>
+  <node concept="24kQdi" id="IR$DxXuVkR">
+    <ref role="1XX52x" to="yv2q:IR$DxXuVkC" resolve="ModuleActivator" />
+    <node concept="3EZMnI" id="IR$DxXuVla" role="2wV5jI">
+      <node concept="2iRkQZ" id="IR$DxXuVmm" role="2iSdaV" />
+      <node concept="3F0ifn" id="IR$DxXuVlc" role="3EZMnx">
+        <property role="3F0ifm" value="module activator" />
+      </node>
+      <node concept="3F1sOY" id="IR$DxXv2dN" role="3EZMnx">
+        <ref role="1NtTu8" to="yv2q:IR$DxXuVkF" resolve="extensions" />
+      </node>
     </node>
   </node>
 </model>

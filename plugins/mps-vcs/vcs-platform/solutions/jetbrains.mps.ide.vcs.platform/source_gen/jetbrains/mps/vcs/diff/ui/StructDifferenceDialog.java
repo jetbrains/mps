@@ -31,7 +31,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
 import org.jetbrains.annotations.NonNls;
 
-@GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/8199015172307807686", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
+@GeneratedClass(nodeId = "8199015172307807686", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
 public class StructDifferenceDialog extends DialogWrapper implements DataProvider {
   private Project myProject;
   private StructChangeSet myChangeSet;
@@ -88,7 +88,7 @@ public class StructDifferenceDialog extends DialogWrapper implements DataProvide
     myNodeDifferencePane = new StructDifferencePane(myProject, myChangeSet, myContentTitles);
     DefaultActionGroup actionGroup = new DefaultActionGroup();
     actionGroup.addAll(myNodeDifferencePane.getActions());
-    ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, actionGroup, true);
+    ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, actionGroup, true);
     myNodeDifferencePane.registerShortcuts(myComponent);
     myComponent.add(toolbar.getComponent(), BorderLayout.NORTH);
     myComponent.add(myNodeDifferencePane.getPanel(), BorderLayout.CENTER);

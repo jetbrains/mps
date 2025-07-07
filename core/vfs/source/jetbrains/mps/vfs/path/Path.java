@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.vfs.path;
 
-import jetbrains.mps.vfs.Watchable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -39,7 +38,7 @@ import java.util.List;
  *
  * @author apyshkin
  */
-public interface Path extends /*Comparable<Path>,*/ /*AP: do I want this?*/ Watchable, PathUtil {
+public interface Path extends /*Comparable<Path>,*/ /*AP: do I want this?*/ PathUtil {
   char SYSTEM_SEPARATOR_CHAR = File.separatorChar;
   String SYSTEM_SEPARATOR = File.separator;
 
@@ -68,6 +67,13 @@ public interface Path extends /*Comparable<Path>,*/ /*AP: do I want this?*/ Watc
    */
   boolean isRelative();
 
+  /**
+   * @return true if path points to a file inside an archive
+   * @since 2025.2
+   */
+  default boolean isArchive() {
+    return false;
+  }
 
   /**
    * @return null iff it is a root folder, the parent Path instance otherwise
@@ -88,15 +94,16 @@ public interface Path extends /*Comparable<Path>,*/ /*AP: do I want this?*/ Watc
   /**
    * path is a [<root name><root sep>]<name1><sep><name2><sep>...
    * @return a list with the root name, name1, name2, etc.
+   * the root part (the first element in the resulting list) must be equal to null if #isRelative is true
    */
   @NotNull List<String> getAllParts();
 
   @NotNull default List<String> getNonRootParts() {
-    if (!isRelative()) {
-      return getAllParts();
-    } else {
-      return getAllParts().subList(1, getAllParts().size());
+    List<String> allParts = getAllParts();
+    if (getAllParts().isEmpty()) {
+      throw new IllegalStateException("The contract of #getAllParts is broken");
     }
+    return allParts.subList(1, getAllParts().size());
   }
 
   /**

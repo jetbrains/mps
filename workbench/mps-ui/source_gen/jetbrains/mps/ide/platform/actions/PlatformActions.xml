@@ -1,16 +1,18 @@
-<components>
+<idea-plugin>
   <actions>
-    <action id="jetbrains.mps.ide.platform.actions.AnalyzeDependencies_Action" class="jetbrains.mps.ide.platform.actions.AnalyzeDependencies_Action"></action>
     <action id="jetbrains.mps.ide.platform.actions.GoToNodeById_Action" class="jetbrains.mps.ide.platform.actions.GoToNodeById_Action">
       <keyboard-shortcut first-keystroke="ctrl G" keymap="$default" />
     </action>
+    <group id="AnalyzePlatform_ActionGroupmodule" />
+    <group id="AnalyzePlatform_ActionGroupmodel" />
     <group id="AnalyzePlatform_ActionGroupother" />
     <group id="Code_ActionGroupstructure" />
     <group id="Code_ActionGroupoverrideImplement" />
     <group id="Code_ActionGroupcomments" />
     <group id="jetbrains.mps.ide.platform.actions.NodeRefactoring_ActionGroup" text="Refactoring" popup="true"></group>
     <group id="jetbrains.mps.ide.platform.actions.AnalyzePlatform_ActionGroup">
-      <reference ref="jetbrains.mps.ide.platform.actions.AnalyzeDependencies_Action" />
+      <reference ref="AnalyzePlatform_ActionGroupmodule" />
+      <reference ref="AnalyzePlatform_ActionGroupmodel" />
       <reference ref="AnalyzePlatform_ActionGroupother" />
       <add-to-group group-id="AnalyzeMenu" anchor="last" />
     </group>
@@ -27,4 +29,4 @@
       <add-to-group group-id="CodeMenu" anchor="last" />
     </group>
   </actions>
-</components>
+</idea-plugin>

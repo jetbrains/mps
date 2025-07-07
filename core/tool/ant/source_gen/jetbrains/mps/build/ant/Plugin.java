@@ -7,7 +7,7 @@ import org.apache.tools.ant.types.DataType;
 import java.io.File;
 import jetbrains.mps.tool.common.PluginData;
 
-@GeneratedClass(node = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)/978600701689990961", model = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)")
+@GeneratedClass(nodeId = "978600701689990961", model = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)")
 public class Plugin extends DataType {
   private String myPath;
   private String myId;

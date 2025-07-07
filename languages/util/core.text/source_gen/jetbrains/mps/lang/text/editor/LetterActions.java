@@ -14,7 +14,6 @@ import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
@@ -137,11 +136,7 @@ public class LetterActions {
             SNode myParagraph = SNodeOperations.as(SNodeOperations.getParent(currentNode), CONCEPTS.Paragraph$XF);
             SNode prevParagraph = SNodeOperations.as(SNodeOperations.getPrevSibling(SNodeOperations.getParent(currentNode)), CONCEPTS.Paragraph$XF);
             if (prevParagraph != null) {
-              Paragraph__BehaviorDescriptor.addAllTextualElements_id1uSfHaoPgT1.invoke(prevParagraph, Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(currentNode, true), CONCEPTS.TextualElement$9C)).where(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  return !(SNodeOperations.isInstanceOf(it, CONCEPTS.EmptyParagraphLetter$W6));
-                }
-              }));
+              Paragraph__BehaviorDescriptor.addAllTextualElements_id1uSfHaoPgT1.invoke(prevParagraph, Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(currentNode, true), CONCEPTS.TextualElement$9C)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.EmptyParagraphLetter$W6))));
               SNodeOperations.deleteNode(myParagraph);
               SNode prevLetter = SNodeOperations.getPrevSibling(currentNode);
               if ((prevLetter != null)) {

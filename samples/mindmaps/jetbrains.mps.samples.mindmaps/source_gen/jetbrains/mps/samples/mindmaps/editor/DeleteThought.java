@@ -8,9 +8,7 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -30,15 +28,7 @@ public class DeleteThought {
       public void execute_internal(EditorContext editorContext, final SNode node) {
         SNode mindMap = SNodeOperations.getNodeAncestor(node, CONCEPTS.MindMap$2X, false, false);
 
-        ListSequence.fromList(SLinkOperations.getChildren(mindMap, LINKS.relationships$rNth)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return Objects.equals(SLinkOperations.getTarget(it, LINKS.target$IRrP), node) || Objects.equals(SLinkOperations.getTarget(it, LINKS.source$thnF), node);
-          }
-        }).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            SNodeOperations.deleteNode(it);
-          }
-        });
+        ListSequence.fromList(SLinkOperations.getChildren(mindMap, LINKS.relationships$rNth)).where((it) -> Objects.equals(SLinkOperations.getTarget(it, LINKS.target$IRrP), node) || Objects.equals(SLinkOperations.getTarget(it, LINKS.source$thnF), node)).visitAll((it) -> SNodeOperations.deleteNode(it));
         SNodeOperations.deleteNode(node);
       }
 

@@ -1,24 +1,12 @@
 /*
- * Copyright 2000-2009 JetBrains s.r.o.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2000-2021 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 
 package jetbrains.mps.workbench.goTo.matcher;
 
-import com.intellij.ide.util.gotoByName.ChooseByNameBase;
 import com.intellij.ide.util.gotoByName.ChooseByNameItemProvider;
 import com.intellij.ide.util.gotoByName.ChooseByNameModel;
+import com.intellij.ide.util.gotoByName.ChooseByNameViewModel;
 import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.codeStyle.MinusculeMatcher;
@@ -36,9 +24,9 @@ import java.util.StringTokenizer;
 public class MPSPackageItemProvider implements ChooseByNameItemProvider {
 
   @Override
-  public boolean filterElements(@NotNull ChooseByNameBase base, @NotNull String pattern, boolean everywhere, @NotNull ProgressIndicator indicator,
-      @NotNull Processor<Object> consumer) {
-    return filterElements(base.getNames(everywhere), pattern, everywhere, base.getModel(), indicator, consumer);
+  public boolean filterElements(@NotNull ChooseByNameViewModel chooseByNameViewModel, @NotNull String pattern, boolean everywhere, @NotNull ProgressIndicator indicator,
+                                @NotNull Processor<Object> consumer) {
+    return filterElements(chooseByNameViewModel.getModel().getNames(everywhere), pattern, everywhere, chooseByNameViewModel.getModel(), indicator, consumer);
   }
 
   // This method is here for testing purposes only.
@@ -110,7 +98,7 @@ public class MPSPackageItemProvider implements ChooseByNameItemProvider {
 
   @NotNull
   @Override
-  public List<String> filterNames(@NotNull ChooseByNameBase base, @NotNull String[] names, @NotNull String pattern) {
+  public List<String> filterNames(@NotNull ChooseByNameViewModel chooseByNameViewModel, @NotNull String[] names, @NotNull String pattern) {
     return Collections.emptyList();
   }
 

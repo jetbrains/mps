@@ -13,6 +13,8 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
+import java.util.ArrayList;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -20,15 +22,24 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class ILocalVariableElement__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1206e6cc291L, "jetbrains.mps.baseLanguage.structure.ILocalVariableElement");
 
-  public static final SMethod<SNode> getLocalVariableDeclaration_idi1ItFZH = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLocalVariableDeclaration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("i1ItFZH").build();
+  public static final SMethod<SNode> getLocalVariableDeclaration_idi1ItFZH = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLocalVariableDeclaration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1238803857389L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<List<SNode>> getAllLocalVariableDeclarations_id3xYtul1v6S1 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getAllLocalVariableDeclarations").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4070820740696141313L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLocalVariableDeclaration_idi1ItFZH);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLocalVariableDeclaration_idi1ItFZH, getAllLocalVariableDeclarations_id3xYtul1v6S1);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
   /*package*/ static SNode getLocalVariableDeclaration_idi1ItFZH(@NotNull SNode __thisNode__) {
     return null;
+  }
+  /*package*/ static List<SNode> getAllLocalVariableDeclarations_id3xYtul1v6S1(@NotNull SNode __thisNode__) {
+    List<SNode> nodes = new ArrayList<SNode>();
+    SNode var = ILocalVariableElement__BehaviorDescriptor.getLocalVariableDeclaration_idi1ItFZH.invoke(__thisNode__);
+    if ((var != null)) {
+      ListSequence.fromList(nodes).addElement(var);
+    }
+    return nodes;
   }
 
   /*package*/ ILocalVariableElement__BehaviorDescriptor() {
@@ -48,6 +59,8 @@ public final class ILocalVariableElement__BehaviorDescriptor extends BaseBHDescr
     switch (methodIndex) {
       case 0:
         return (T) ((SNode) getLocalVariableDeclaration_idi1ItFZH(node));
+      case 1:
+        return (T) ((List<SNode>) getAllLocalVariableDeclarations_id3xYtul1v6S1(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

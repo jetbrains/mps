@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,21 +17,26 @@ package jetbrains.mps.ide;
 
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.extensions.ExtensionPointName;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.vfs.newvfs.ManagingFS;
 import com.intellij.openapi.vfs.newvfs.persistent.PersistentFSImpl;
-import jetbrains.mps.baseLanguage.search.MPSBaseLanguage;
 import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.components.ComponentPlugin;
+import jetbrains.mps.components.ComponentPluginFactory;
 import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.core.platform.PlatformFactory;
 import jetbrains.mps.core.platform.PlatformOptionsBuilder;
+import jetbrains.mps.ide.project.WorkbenchPathMacros;
+import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.library.LibraryInitializer;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.PersistenceRegistry;
+import jetbrains.mps.project.PathMacros;
 import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.smodel.WorkbenchModelAccess;
+import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
@@ -49,19 +54,55 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
  */
 public class MPSCoreComponents implements Disposable {
   private final Platform myPlatform;
+  // XXX I don't like the fact MPSCoreComponents know about WorkbenchPathMacros and PathMacros, but find this approach
+  // better than ApplicationLifecycleListener. Perhaps, shall introduce an extension like ComponentPluginFactory for
+  // initializations like that.
+  private WorkbenchPathMacros myPathMacros;
+
+  // once there are no direct uses of IdeaFuleSystem.getInstance(), can transform into into POJO and initialize as ComponentPlugin, perhaps?
+  private IdeaFileSystem myIdeaFileSystem;
 
   public MPSCoreComponents() {
+    //
+    // FIXME check ApplicationInitializedListener and <applicationInitializedListener> extpoint if they can serve MPSCoreComponents initialization task
+    //
     @NotNull ManagingFS fs = ManagingFS.getInstance();
-    @NotNull ModelAccess access = ApplicationManager.getApplication().getComponent(ModelAccess.class);
-    var delegate = PlatformFactory.initPlatform(PlatformOptionsBuilder.ALL);
-    myPlatform = new BLPlatform(delegate);
+    // Make sure WMA has a chance to MA.setInstance() *before* MPSModuleRepository and its GlobalModelAccess need one
+    ModelAccess access = WorkbenchModelAccess.getInstance();
+    assert access != null;
+    myPlatform = PlatformFactory.initPlatform(PlatformOptionsBuilder.ALL);
+    final ExtensionPointName<ComponentPluginFactory> cpfExtPoint = ExtensionPointName.create("jetbrains.mps.componentPluginFactory");
+    for (ComponentPluginFactory cpf : cpfExtPoint.getExtensionList()) {
+      try {
+        final ComponentPlugin cp = cpf.create(myPlatform);
+        if (cp != null) {
+          myPlatform.install(cp);
+        }
+      } catch (Exception ex) {
+        Logger.getLogger(getClass()).error(String.format("ComponentPluginFactory %s failed", cpf), ex);
+      }
+    }
 
     // Required to maintain correct dispose order between PersistenceFacade and FileBasedIndexImpl.
     Disposer.register(this, (PersistentFSImpl) fs);
+
+    myPathMacros = ApplicationManager.getApplication().getService(WorkbenchPathMacros.class);
+    if (myPathMacros == null) {
+      // would be great to have it instantiated and registered here directly, but no easy way
+      // to pass the instance down to WorkbenchPathMacros.MyProjectManagerListener
+      throw new IllegalStateException("Failed to initialize WorkbenchPathMacros, necessary to be ready before any attempt to load a module");
+    }
+    myPlatform.findComponent(PathMacros.class).addMacrosProvider(myPathMacros);
+    myIdeaFileSystem = IdeaFileSystem.getInstance();
+    myIdeaFileSystem.install(myPlatform.findComponent(VFSManager.class));
   }
 
   @Override
   public void dispose() {
+    myIdeaFileSystem.uninstall(myPlatform.findComponent(VFSManager.class));
+    myIdeaFileSystem = null;
+    myPlatform.findComponent(PathMacros.class).removeMacrosProvider(myPathMacros);
+    myPathMacros = null;
     myPlatform.dispose();
   }
 
@@ -88,8 +129,7 @@ public class MPSCoreComponents implements Disposable {
   /**
    * @deprecated it's our implementation part, shall drop once no uses
    */
-  @Deprecated
-  @ToRemove(version = 0)
+@Deprecated(since = "0", forRemoval = true)
   public MPSModuleRepository getModuleRepository() {
     return myPlatform.findComponent(MPSModuleRepository.class);
   }
@@ -104,32 +144,5 @@ public class MPSCoreComponents implements Disposable {
   public static MPSCoreComponents getInstance() {
     // With IDEA's "service" approach, I don't have other option but to follow platform's approach at least for few elements like MPSCoreComponents
     return ApplicationManager.getApplication().getComponent(MPSCoreComponents.class);
-  }
-
-  private static class BLPlatform implements Platform {
-    private final Platform myDelegate;
-    private final MPSBaseLanguage myBaseLanguage;
-
-    private BLPlatform(@NotNull Platform delegate) {
-      myDelegate = delegate;
-      myBaseLanguage = new MPSBaseLanguage();
-      myBaseLanguage.init();
-    }
-
-    @Nullable
-    @Override
-    public <T extends CoreComponent> T findComponent(@NotNull Class<T> componentClass) {
-      var c = myDelegate.findComponent(componentClass);
-      if (c != null) {
-        return c;
-      }
-      return myBaseLanguage.findComponent(componentClass);
-    }
-
-    @Override
-    public void dispose() {
-      myBaseLanguage.dispose();
-      myDelegate.dispose();
-    }
   }
 }

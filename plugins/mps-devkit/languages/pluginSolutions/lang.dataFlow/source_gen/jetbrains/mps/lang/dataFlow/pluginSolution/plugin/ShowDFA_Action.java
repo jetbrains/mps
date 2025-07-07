@@ -4,6 +4,7 @@ package jetbrains.mps.lang.dataFlow.pluginSolution.plugin;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -11,10 +12,12 @@ import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.lang.dataFlow.framework.Program;
 import jetbrains.mps.ide.dataFlow.presentation.ControlFlowGraph;
 import jetbrains.mps.ide.dataFlow.presentation.InstructionWrapper;
-import jetbrains.mps.lang.dataFlow.MPSProgramBuilder;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.lang.dataFlow.MPSProgramFactory;
+import jetbrains.mps.smodel.runtime.ModuleRuntime;
+import jetbrains.mps.lang.dataFlow.framework.Program;
 import jetbrains.mps.ide.dataFlow.presentation.ProgramWrapper;
 import jetbrains.mps.ide.dataFlow.presentation.GraphCreator;
 import jetbrains.mps.ide.dataFlow.presentation.ShowCFGDialog;
@@ -25,7 +28,8 @@ public class ShowDFA_Action extends BaseAction {
   public ShowDFA_Action() {
     super("Show Data Flow Graph", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(true);
+    this.setActionAccess(ActionAccess.NONE);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
@@ -52,13 +56,13 @@ public class ShowDFA_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final Wrappers._T<Program> program = new Wrappers._T<Program>();
     final Wrappers._T<ControlFlowGraph<InstructionWrapper>> graph = new Wrappers._T<ControlFlowGraph<InstructionWrapper>>();
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        program.value = new MPSProgramBuilder(event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository()).buildProgram(event.getData(MPSCommonDataKeys.NODE));
-        graph.value = new ControlFlowGraph<InstructionWrapper>(new ProgramWrapper(program.value), new GraphCreator());
-      }
+    final LanguageRegistry languageRegistry = event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(LanguageRegistry.class);
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(() -> {
+      languageRegistry.withAvailableExtensions(MPSProgramFactory.class, new ModuleRuntime.Extension.MatchRequest() {}, (pf) -> {
+        Program program = pf.createProgram(event.getData(MPSCommonDataKeys.NODE));
+        graph.value = new ControlFlowGraph<InstructionWrapper>(new ProgramWrapper(program), new GraphCreator());
+      });
     });
     new ShowCFGDialog(graph.value, event.getData(MPSCommonDataKeys.MPS_PROJECT), "Data Flow Graph").show();
   }

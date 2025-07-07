@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -122,6 +122,12 @@ public abstract class SReferenceLinkAdapter implements SReferenceLink {
     return myRoleId;
   }
 
+  @Override
+  public boolean isTransient() {
+    ReferenceDescriptor rd = getReferenceDescriptor();
+    return rd != null && rd.isTransient();
+  }
+
   private static class SScopeAdapter implements SScope {
     private final SNode myContextNode;
     private final Scope myScope;
@@ -152,7 +158,7 @@ public abstract class SReferenceLinkAdapter implements SReferenceLink {
 
   @Override
   public String toString() {
-    return getName();
+    return myName;
   }
 
   public abstract String serialize();

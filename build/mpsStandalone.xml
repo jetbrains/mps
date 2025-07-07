@@ -5,7 +5,6 @@
   <property name="build.layout" location="${build.dir}/artifacts/mpsStandalone" />
   <property name="mps_home" location="${basedir}" />
   <property name="artifacts.mpsBootstrapCore" location="${build.dir}/artifacts/mpsBootstrapCore" />
-  <property name="artifacts.mpsCore" location="${build.dir}/artifacts/mpsCore" />
   <property name="artifacts.mpsWorkbench" location="${build.dir}/artifacts/mpsWorkbench" />
   <property name="artifacts.IDEA" location="${mps_home}" />
   <property file="${artifacts.mpsBootstrapCore}/build.properties" prefix="import.mpsBootstrapCore" />
@@ -44,7 +43,7 @@
     <copy todir="${build.layout}/lib">
       <fileset dir="${artifacts.mpsWorkbench}/lib" />
     </copy>
-    <copy file="${artifacts.IDEA}/plugins/java/lib/ecj-4.16.jar" todir="${build.layout}/lib" />
+    <copy file="${artifacts.IDEA}/plugins/java/lib/ecj/eclipse.jar" todir="${build.layout}/lib" />
     <mkdir dir="${build.layout}/license" />
     <copy todir="${build.layout}/license">
       <fileset dir="${basedir}/license" />
@@ -53,25 +52,21 @@
       <fileset file="${basedir}/LICENSE.txt" />
     </copy>
     <mkdir dir="${build.layout}/plugins" />
-    <mkdir dir="${build.layout}/plugins/mps-core" />
-    <copy todir="${build.layout}/plugins/mps-core">
-      <fileset dir="${artifacts.mpsCore}/mps-core" />
+    <mkdir dir="${build.layout}/plugins/vcs-github" />
+    <copy todir="${build.layout}/plugins/vcs-github">
+      <fileset dir="${basedir}/plugins/vcs-github-IC" />
     </copy>
-    <mkdir dir="${build.layout}/plugins/github" />
-    <copy todir="${build.layout}/plugins/github">
-      <fileset dir="${basedir}/plugins/github" />
-    </copy>
-    <mkdir dir="${build.layout}/plugins/vcs-changeReminder" />
-    <copy todir="${build.layout}/plugins/vcs-changeReminder">
-      <fileset dir="${basedir}/plugins/vcs-changeReminder" />
+    <mkdir dir="${build.layout}/plugins/vcs-git-commit-modal" />
+    <copy todir="${build.layout}/plugins/vcs-git-commit-modal">
+      <fileset dir="${basedir}/plugins/vcs-git-commit-modal" />
     </copy>
     <mkdir dir="${build.layout}/plugins/platform-images" />
     <copy todir="${build.layout}/plugins/platform-images">
       <fileset dir="${basedir}/plugins/platform-images" />
     </copy>
-    <mkdir dir="${build.layout}/plugins/settings-repository" />
-    <copy todir="${build.layout}/plugins/settings-repository">
-      <fileset dir="${basedir}/plugins/settings-repository" />
+    <mkdir dir="${build.layout}/plugins/settingsSync" />
+    <copy todir="${build.layout}/plugins/settingsSync">
+      <fileset dir="${basedir}/plugins/settingsSync" />
     </copy>
     <mkdir dir="${build.layout}/plugins/tasks" />
     <copy todir="${build.layout}/plugins/tasks">
@@ -84,6 +79,10 @@
     <mkdir dir="${build.layout}/plugins/java" />
     <copy todir="${build.layout}/plugins/java">
       <fileset dir="${basedir}/plugins/java" />
+    </copy>
+    <mkdir dir="${build.layout}/plugins/json" />
+    <copy todir="${build.layout}/plugins/json">
+      <fileset dir="${basedir}/plugins/json" />
     </copy>
     <mkdir dir="${build.layout}/plugins/copyright" />
     <copy todir="${build.layout}/plugins/copyright">

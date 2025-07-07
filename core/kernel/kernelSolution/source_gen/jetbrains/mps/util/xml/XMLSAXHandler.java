@@ -5,7 +5,7 @@ package jetbrains.mps.util.xml;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.xml.sax.helpers.DefaultHandler;
 
-@GeneratedClass(node = "r:10bf3684-5fb2-4fa0-9dd9-1d05589df2e9(jetbrains.mps.util.xml)/2084096332909492403", model = "r:10bf3684-5fb2-4fa0-9dd9-1d05589df2e9(jetbrains.mps.util.xml)")
+@GeneratedClass(nodeId = "2084096332909492403", model = "r:10bf3684-5fb2-4fa0-9dd9-1d05589df2e9(jetbrains.mps.util.xml)")
 public class XMLSAXHandler<R> extends DefaultHandler {
   public XMLSAXHandler() {
   }

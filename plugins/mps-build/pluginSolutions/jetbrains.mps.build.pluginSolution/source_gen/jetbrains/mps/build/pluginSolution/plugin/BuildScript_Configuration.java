@@ -4,8 +4,7 @@ package jetbrains.mps.build.pluginSolution.plugin;
 
 import jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration;
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.project.structure.modules.Copyable;
 import jetbrains.mps.execution.lib.NodeByConcept_Configuration;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -42,13 +41,8 @@ import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class BuildScript_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
-  private static final Logger LOG = LogManager.getLogger(BuildScript_Configuration.class);
-  private NodeByConcept_Configuration myNodePointer = new NodeByConcept_Configuration(CONCEPTS.BuildProject$ae, new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
-    public Boolean invoke(SNode node) {
-      return true;
-    }
-  });
+public final class BuildScript_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration, Copyable<BuildScript_Configuration> {
+  private NodeByConcept_Configuration myNodePointer = new NodeByConcept_Configuration(CONCEPTS.BuildProject$ae, ((_FunctionTypes._return_P1_E0<Boolean, SNode>) (SNode node) -> true));
   private AntSettings_Configuration mySettings = new AntSettings_Configuration();
 
   @Override
@@ -60,11 +54,9 @@ public class BuildScript_Configuration extends BaseMpsRunConfiguration implement
     if (reference == null) {
       throw new RuntimeConfigurationError("The target of the node reference cannot be discovered " + nodePointer);
     }
-    repo.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode node = reference.resolve(repo);
-        isPackaged.value = node != null && SNodeOperations.getModel(node).getModule().isPackaged();
-      }
+    repo.getModelAccess().runReadAction(() -> {
+      SNode node = reference.resolve(repo);
+      isPackaged.value = node != null && SNodeOperations.getModel(node).getModule().isPackaged();
     });
     if (isPackaged.value) {
       throw new RuntimeConfigurationError("Can not execute packaged build script.");
@@ -89,34 +81,28 @@ public class BuildScript_Configuration extends BaseMpsRunConfiguration implement
     if (element == null) {
       throw new InvalidDataException("Cant read " + this + ": element is null.");
     }
-    {
-      Element fieldElement = element.getChild("myNodePointer");
-      if (fieldElement != null) {
-        myNodePointer.readExternal(fieldElement);
-      } else {
-        if (LOG.isDebugEnabled()) {
-          LOG.debug("Element " + "myNodePointer" + " in " + this.getClass().getName() + " was null.");
-        }
-      }
+    if (element.getChild("myNodePointer") != null) {
+      myNodePointer.readExternal(element.getChild("myNodePointer"));
     }
-    {
-      Element fieldElement = element.getChild("mySettings");
-      if (fieldElement != null) {
-        mySettings.readExternal(fieldElement);
-      } else {
-        if (LOG.isDebugEnabled()) {
-          LOG.debug("Element " + "mySettings" + " in " + this.getClass().getName() + " was null.");
-        }
-      }
+    if (element.getChild("mySettings") != null) {
+      mySettings.readExternal(element.getChild("mySettings"));
     }
   }
 
   @Override
+  @Deprecated
   public BuildScript_Configuration clone() {
-    BuildScript_Configuration clone = createCloneTemplate();
-    clone.myNodePointer = (NodeByConcept_Configuration) myNodePointer.clone();
-    clone.mySettings = (AntSettings_Configuration) mySettings.clone();
-    return clone;
+    return copy();
+  }
+
+  @Override
+  public BuildScript_Configuration copy() {
+    BuildScript_Configuration cloneTemplate = createCloneTemplate();
+    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
+    // the value of myState, and != clone as regular Java passer-by would expect.
+    cloneTemplate.myNodePointer = ((Copyable<NodeByConcept_Configuration>) myNodePointer).copy();
+    cloneTemplate.mySettings = ((Copyable<AntSettings_Configuration>) mySettings).copy();
+    return cloneTemplate;
   }
 
   public NodeByConcept_Configuration getNodePointer() {
@@ -159,11 +145,7 @@ public class BuildScript_Configuration extends BaseMpsRunConfiguration implement
   @Override
   public void checkConfiguration() throws RuntimeConfigurationException {
     final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
-    checkConfiguration(new PersistentConfigurationContext() {
-      public jetbrains.mps.project.Project getProject() {
-        return mpsProject;
-      }
-    });
+    checkConfiguration(() -> mpsProject);
   }
   @Override
   public boolean canExecute(String executorId) {

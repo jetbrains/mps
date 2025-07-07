@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,9 @@ import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.pom.Navigatable;
 import com.intellij.ui.LayeredIcon;
+import gnu.trove.THashMap;
 import jetbrains.mps.icons.MPSIcons.Nodes;
+import jetbrains.mps.ide.actions.MPSActionPlaces;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.DataTree;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.TextOptions;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.AbstractResultNodeData;
@@ -38,7 +40,6 @@ import jetbrains.mps.smodel.ModelReadRunnable;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.coverage.gnu.trove.THashMap;
 
 import javax.swing.Icon;
 import javax.swing.event.TreeSelectionEvent;
@@ -486,6 +487,14 @@ public class UsagesTree extends MPSTree {
     } else {
       super.doubleClick(nodeToClick);
     }
+  }
+
+  @Override
+  protected String getPopupMenuPlace() {
+    // need something instead of default UNKNOWN. Perhaps, distinct place would be better?
+    // UsagesTree is not necessarily part of Usages View, and even if it is, do we care to tell 'toolbar' place,
+    // see UsagesView.createActionsToolbar(), from 'popup' place?
+    return MPSActionPlaces.USAGES_VIEW;
   }
 
   private void goByNodeLink(@Nullable UsagesTreeNode treeNode, boolean inProjectIfPossible, boolean focus) {

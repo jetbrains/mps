@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -122,8 +122,14 @@ public abstract class SContainmentLinkAdapter implements SContainmentLink {
   }
 
   @Override
+  public boolean isTransient() {
+    LinkDescriptor ld = getLinkDescriptor();
+    return ld != null && ld.isTransient();
+  }
+
+  @Override
   public String toString() {
-    return getName();
+    return myName;
   }
 
   public abstract String serialize();

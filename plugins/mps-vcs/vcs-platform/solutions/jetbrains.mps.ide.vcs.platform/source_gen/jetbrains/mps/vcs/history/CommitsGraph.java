@@ -5,14 +5,21 @@ package jetbrains.mps.vcs.history;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
-import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
+import jetbrains.mps.components.ComponentHost;
+import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import com.intellij.openapi.vcs.history.CurrentRevision;
+import org.jetbrains.mps.openapi.model.SModel;
+import com.intellij.openapi.vcs.VcsException;
+import java.io.IOException;
+import org.jetbrains.mps.openapi.persistence.ModelLoadException;
+import jetbrains.mps.vcspersistence.ModelSack;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vcs.FilePath;
 import com.intellij.vcsUtil.VcsUtil;
 import com.intellij.vcs.log.util.VcsLogUtil;
@@ -23,8 +30,6 @@ import java.util.Collections;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import com.intellij.vcs.log.impl.HashImpl;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -32,26 +37,35 @@ import java.util.HashSet;
 import com.intellij.vcs.log.graph.VisibleGraph;
 import com.intellij.vcs.log.graph.PermanentGraph;
 import jetbrains.mps.internal.collections.runtime.IMapping;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import java.util.ArrayList;
 
-@GeneratedClass(node = "r:2897a5d4-aed7-4a4e-ac07-fbc830f9ed9b(jetbrains.mps.vcs.history)/4809466702829312972", model = "r:2897a5d4-aed7-4a4e-ac07-fbc830f9ed9b(jetbrains.mps.vcs.history)")
+@GeneratedClass(nodeId = "4809466702829312972", model = "r:2897a5d4-aed7-4a4e-ac07-fbc830f9ed9b(jetbrains.mps.vcs.history)")
 public final class CommitsGraph {
 
   @NotNull
   private final Collection<CommitsGraphNode> myNodes;
+  private final VirtualFile myFile;
+  private final ComponentHost myPlatform;
 
-  public CommitsGraph(@NotNull Project project, @NotNull VirtualFile file, @NotNull List<VcsFileRevision> revisions) {
-    myNodes = buildGraph(project, file, revisions);
+  public CommitsGraph(@NotNull MPSProject project, @NotNull VirtualFile file, @NotNull List<VcsFileRevision> revisions) throws BuildException {
+    myNodes = buildGraph(project.getProject(), file, revisions);
+    myFile = file;
+    myPlatform = project.getPlatform();
+  }
+
+  @NotNull
+  public VirtualFile getFile() {
+    // FIXME provisional code, as there's a file traveling along with CommitsGraph, and I see no reason to pass both when can keep it here
+    //     OTOH, don't quite get the idea of VF for a commit graph of a model. If indeed is ok, remove fixme and document like "actual file used to build the graph"
+    //     Provided there's single use, perhaps, shall remove notion of the file as CommitsGraph's public attribute? Still, need to keep it as a field.
+    return myFile;
   }
 
   @Nullable
   public CommitsGraphNode getHeadNode() {
-    List<CommitsGraphNode> heads = CollectionSequence.fromCollection(myNodes).where(new IWhereFilter<CommitsGraphNode>() {
-      public boolean accept(CommitsGraphNode it) {
-        return CollectionSequence.fromCollection(it.getChildren()).isEmpty();
-      }
-    }).toListSequence();
+    List<CommitsGraphNode> heads = CollectionSequence.fromCollection(myNodes).where((it) -> CollectionSequence.fromCollection(it.getChildren()).isEmpty()).toList();
     return (ListSequence.fromList(heads).count() == 1 ? ListSequence.fromList(heads).first() : null);
   }
 
@@ -60,8 +74,34 @@ public final class CommitsGraph {
     CollectionSequence.fromCollection(myNodes).addElement(localRevisionNode);
   }
 
+  public void addLocalRevisionNode(@NotNull CurrentRevision revision) {
+    SModel loadModel = null;
+    try {
+      loadModel = loadModel(revision);
+    } catch (Exception ex) {
+      // ignore as it was in RootModelHistoryExtractor prior to the refactoring. However, shall not happen and is likely an error - current revision w/o a model?
+    }
+    addLocalRevisionNode(new CommitsGraphNode(revision, loadModel));
+  }
+
   public Collection<CommitsGraphNode> getNodes() {
     return myNodes;
+  }
+
+  /*package*/ SModel loadModel(VcsFileRevision revision) throws VcsException, IOException, ModelLoadException, IllegalArgumentException {
+    // FIXME in fact, could discover once, and reuse ModelSack, and do not keep neither VF not CH. Just don't want to deal with exceptions from cons at the moment
+    return ModelSack.discover(myPlatform, myFile.getName()).load(revision.loadContent());
+  }
+
+  public static class BuildException extends Exception {
+
+    private BuildException() {
+    }
+
+    @Override
+    public String getMessage() {
+      return "Could not build the commits graph";
+    }
   }
 
   private static VirtualFile getRootFile(Project project, VirtualFile file) {
@@ -72,11 +112,11 @@ public final class CommitsGraph {
   @Nullable
   private static VcsLogData getDataManager(Project project) {
     VcsLogManager logManager = VcsProjectLog.getInstance(project).getLogManager();
-    return check_2ne4bd_a1a31(logManager);
+    return check_2ne4bd_a1a32(logManager);
   }
 
   @NotNull
-  private static Collection<CommitsGraphNode> buildGraph(Project project, VirtualFile file, Collection<VcsFileRevision> revisions) {
+  private static Collection<CommitsGraphNode> buildGraph(Project project, VirtualFile file, Collection<VcsFileRevision> revisions) throws BuildException {
 
     if (CollectionSequence.fromCollection(revisions).isEmpty()) {
       return Collections.emptyList();
@@ -90,57 +130,40 @@ public final class CommitsGraph {
 
     final Map<Integer, CommitsGraphNode> commitIndexToNodeMap = MapSequence.fromMap(new HashMap<Integer, CommitsGraphNode>());
 
-    Collection<CommitsGraphNode> nodes = CollectionSequence.fromCollection(revisions).select(new ISelector<VcsFileRevision, CommitsGraphNode>() {
-      public CommitsGraphNode select(VcsFileRevision it) {
-        return new CommitsGraphNode(it);
-      }
-    }).toListSequence();
+    Collection<CommitsGraphNode> nodes = CollectionSequence.fromCollection(revisions).select((it) -> new CommitsGraphNode(it)).toList();
 
-    CollectionSequence.fromCollection(nodes).visitAll(new IVisitor<CommitsGraphNode>() {
-      public void visit(CommitsGraphNode node) {
-        String hash = node.getRevision().getRevisionNumber().asString();
-        int commitIndex = dataManager.getCommitIndex(HashImpl.build(hash), rootFile);
-        MapSequence.fromMap(commitIndexToNodeMap).put(commitIndex, node);
-      }
+    CollectionSequence.fromCollection(nodes).visitAll((node) -> {
+      String hash = node.getRevision().getRevisionNumber().asString();
+      int commitIndex = dataManager.getCommitIndex(HashImpl.build(hash), rootFile);
+      MapSequence.fromMap(commitIndexToNodeMap).put(commitIndex, node);
     });
 
     Set<Integer> commitIndices = SetSequence.fromSetWithValues(new HashSet<Integer>(), MapSequence.fromMap(commitIndexToNodeMap).keySet());
 
-    final VisibleGraph<Integer> visibleGraphNormal = dataManager.getDataPack().getPermanentGraph().createVisibleGraph(PermanentGraph.SortType.Normal, null, commitIndices);
-    final VisibleGraph<Integer> visibleGraphBek = dataManager.getDataPack().getPermanentGraph().createVisibleGraph(PermanentGraph.SortType.Bek, null, commitIndices);
+    VisibleGraph<Integer> visibleGraphNormal = dataManager.getDataPack().getPermanentGraph().createVisibleGraph(PermanentGraph.SortType.Normal, null, commitIndices);
+    VisibleGraph<Integer> visibleGraphBek = dataManager.getDataPack().getPermanentGraph().createVisibleGraph(PermanentGraph.SortType.Bek, null, commitIndices);
 
-    MapSequence.fromMap(commitIndexToNodeMap).visitAll(new IVisitor<IMapping<Integer, CommitsGraphNode>>() {
-      public void visit(IMapping<Integer, CommitsGraphNode> it) {
-        final CommitsGraphNode revisionNode = it.value();
-        int commitIndex = it.key();
-        ListSequence.fromList(getParents(visibleGraphNormal, commitIndex, commitIndexToNodeMap)).concat(ListSequence.fromList(getParents(visibleGraphBek, commitIndex, commitIndexToNodeMap))).distinct().visitAll(new IVisitor<CommitsGraphNode>() {
-          public void visit(CommitsGraphNode parent) {
-            revisionNode.addParent(parent);
-          }
-        });
-      }
-    });
+    for (IMapping<Integer, CommitsGraphNode> it : MapSequence.fromMap(commitIndexToNodeMap)) {
+      final CommitsGraphNode revisionNode = it.value();
+      int commitIndex = it.key();
+      ListSequence.fromList(getParents(visibleGraphNormal, commitIndex, commitIndexToNodeMap)).concat(ListSequence.fromList(getParents(visibleGraphBek, commitIndex, commitIndexToNodeMap))).distinct().visitAll((parent) -> revisionNode.addParent(parent));
+    }
 
-    CollectionSequence.fromCollection(nodes).where(new IWhereFilter<CommitsGraphNode>() {
-      public boolean accept(CommitsGraphNode it) {
-        return ListSequence.fromList(it.getParents()).count() > 2;
-      }
-    }).visitAll(new IVisitor<CommitsGraphNode>() {
-      public void visit(CommitsGraphNode node) {
-        deleteIndirectParents(node);
-      }
-    });
+    CollectionSequence.fromCollection(nodes).where((it) -> ListSequence.fromList(it.getParents()).count() > 2).visitAll((node) -> deleteIndirectParents(node));
     return (graphIsCorrect(nodes) ? nodes : buildLinearGraph(revisions));
   }
 
-  private static List<CommitsGraphNode> getParents(final VisibleGraph<Integer> graph, int commitIndex, final Map<Integer, CommitsGraphNode> commitIndexToNodeMap) {
-    int row = graph.getVisibleRowIndex(commitIndex);
+  private static List<CommitsGraphNode> getParents(final VisibleGraph<Integer> graph, int commitIndex, final Map<Integer, CommitsGraphNode> commitIndexToNodeMap) throws BuildException {
+    Integer row = graph.getVisibleRowIndex(commitIndex);
+    if (row == null) {
+      throw new BuildException();
+    }
     List<Integer> childRows = graph.getRowInfo(row).getAdjacentRows(true);
-    return ListSequence.fromList(childRows).select(new ISelector<Integer, CommitsGraphNode>() {
-      public CommitsGraphNode select(Integer row) {
+    return ListSequence.fromList(childRows).select(new _FunctionTypes._return_P1_E0<CommitsGraphNode, Integer>() {
+      public CommitsGraphNode invoke(Integer row) {
         return MapSequence.fromMap(commitIndexToNodeMap).get(graph.getRowInfo(row).getCommit());
       }
-    }).where(new NotNullWhereFilter<CommitsGraphNode>()).toListSequence();
+    }).where(new NotNullWhereFilter()).toList();
   }
 
   private static boolean graphIsCorrect(Collection<CommitsGraphNode> nodes) {
@@ -149,11 +172,7 @@ public final class CommitsGraph {
         return false;
       }
     }
-    List<CommitsGraphNode> heads = CollectionSequence.fromCollection(nodes).where(new IWhereFilter<CommitsGraphNode>() {
-      public boolean accept(CommitsGraphNode it) {
-        return CollectionSequence.fromCollection(it.getChildren()).isEmpty();
-      }
-    }).toListSequence();
+    List<CommitsGraphNode> heads = CollectionSequence.fromCollection(nodes).where((it) -> CollectionSequence.fromCollection(it.getChildren()).isEmpty()).toList();
     return ListSequence.fromList(heads).count() == 1;
   }
 
@@ -173,27 +192,21 @@ public final class CommitsGraph {
         }
       }
     }
-    ListSequence.fromList(parentsToDelete).visitAll(new IVisitor<CommitsGraphNode>() {
-      public void visit(CommitsGraphNode it) {
-        ListSequence.fromList(parents).removeElement(it);
-        CollectionSequence.fromCollection(it.getChildren()).removeElement(node);
-      }
+    ListSequence.fromList(parentsToDelete).visitAll((it) -> {
+      ListSequence.fromList(parents).removeElement(it);
+      CollectionSequence.fromCollection(it.getChildren()).removeElement(node);
     });
   }
 
   @NotNull
   private static Collection<CommitsGraphNode> buildLinearGraph(Collection<VcsFileRevision> revisions) {
-    List<CommitsGraphNode> nodes = CollectionSequence.fromCollection(revisions).select(new ISelector<VcsFileRevision, CommitsGraphNode>() {
-      public CommitsGraphNode select(VcsFileRevision it) {
-        return new CommitsGraphNode(it);
-      }
-    }).toListSequence();
+    List<CommitsGraphNode> nodes = CollectionSequence.fromCollection(revisions).select((it) -> new CommitsGraphNode(it)).toList();
     for (int i = 0; i < ListSequence.fromList(nodes).count() - 1; i++) {
       ListSequence.fromList(nodes).getElement(i).addParent(ListSequence.fromList(nodes).getElement(i + 1));
     }
     return nodes;
   }
-  private static VcsLogData check_2ne4bd_a1a31(VcsLogManager checkedDotOperand) {
+  private static VcsLogData check_2ne4bd_a1a32(VcsLogManager checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getDataManager();
     }

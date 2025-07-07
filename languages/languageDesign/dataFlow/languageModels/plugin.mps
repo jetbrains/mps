@@ -3,12 +3,13 @@
   <persistence version="9" />
   <languages>
     <use id="f159adf4-3c93-40f9-9c5a-1f245a8697af" name="jetbrains.mps.lang.aspect" version="2" />
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="3" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
     <import index="tpcc" ref="r:00000000-0000-4000-0000-011c89590290(jetbrains.mps.lang.structure.plugin)" />
     <import index="smjb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.help(MPS.Core/)" />
+    <import index="tp41" ref="r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
@@ -25,7 +26,9 @@
     </language>
     <language id="f159adf4-3c93-40f9-9c5a-1f245a8697af" name="jetbrains.mps.lang.aspect">
       <concept id="3433054418424672374" name="jetbrains.mps.lang.aspect.structure.SimpleLanguageAspectDescriptor" flags="ng" index="3vrhyV">
+        <reference id="8426907848585442521" name="proponent" index="h493j" />
         <child id="6106419185511570295" name="mainLanguages" index="QG$2i" />
+        <child id="8222125370833980146" name="devkit" index="TkT64" />
         <child id="4726480899534753275" name="helpUrl" index="1fTXyH" />
         <child id="3433054418425083029" name="icon" index="3vqPLo" />
         <child id="2343319097654255233" name="order" index="3F_NFc" />
@@ -46,7 +49,7 @@
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
       </concept>
     </language>
@@ -62,19 +65,24 @@
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="8222125370833354011" name="jetbrains.mps.lang.smodel.structure.DevkitPointer" flags="ng" index="T9mpH">
+        <property id="8222125370833354012" name="devkitName" index="T9mpE" />
+        <property id="8222125370833354013" name="devkitId" index="T9mpF" />
+      </concept>
       <concept id="3542851458883438784" name="jetbrains.mps.lang.smodel.structure.LanguageId" flags="nn" index="2V$Bhx">
         <property id="3542851458883439831" name="namespace" index="2V$B1Q" />
         <property id="3542851458883439832" name="languageId" index="2V$B1T" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
   </registry>
   <node concept="3vrhyV" id="2LiUEk8oQ$g">
     <property role="TrG5h" value="dataFlow" />
+    <ref role="h493j" to="tp41:7YXEDumxSSb" resolve="DataFlowAspectDeputy" />
     <node concept="1QGGSu" id="P5ZkC6w36T" role="3vqPLo">
       <property role="1iqoE4" value="${module}/icons/dataFlowModel.png" />
     </node>
@@ -86,8 +94,12 @@
       <ref role="2vPcib" to="tpcc:264$spPfYX1" resolve="MPSAspects" />
     </node>
     <node concept="1sEMCm" id="46nPloex5Bn" role="1fTXyH">
-      <property role="1sEMCp" value="/data-flow.html" />
+      <property role="1sEMCp" value="data-flow.html" />
       <ref role="1fZFei" node="46nPloez0vX" resolve="HelpCenterDocUrl" />
+    </node>
+    <node concept="T9mpH" id="33Cba0CiWmu" role="TkT64">
+      <property role="T9mpF" value="00000000-0000-4000-0000-443879f56b80" />
+      <property role="T9mpE" value="jetbrains.mps.devkit.aspect.dataflow" />
     </node>
   </node>
   <node concept="1fZFc0" id="46nPloez0vX">

@@ -5,7 +5,6 @@ package jetbrains.mps.findUsages;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.module.FindUsagesFacade;
 import jetbrains.mps.components.CoreComponent;
-import jetbrains.mps.util.annotation.ToRemove;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.annotations.NotNull;
@@ -20,13 +19,14 @@ import org.jetbrains.mps.openapi.util.Consumer;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import java.util.LinkedHashSet;
 
-@GeneratedClass(node = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)/8568892084424436293", model = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)")
+@GeneratedClass(nodeId = "8568892084424436293", model = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)")
 public class FindUsagesManager extends FindUsagesFacade implements CoreComponent {
   /**
    * @deprecated it's {@link CoreComponent}, use {@link jetbrains.mps.components.ComponentHost#findComponent(Class)} to retrieve an instance
+   * 
+   * @deprecated 
    */
-  @Deprecated
-  @ToRemove(version = 2018.2)
+  @Deprecated(since = "2018.2", forRemoval = true)
   public static FindUsagesManager getInstance() {
     return (FindUsagesManager) FindUsagesFacade.INSTANCE;
   }
