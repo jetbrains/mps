@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 # Local IDE configurations when running from sources/tests/ant
 /system/
 /config/
@@ -112,3 +113,7 @@ teamcity-info.xml
 
 # scripts for mac signing
 /build/tools/mac
+=======
+*.md
+SECURITY.md
+>>>>>>> Stashed changes
