@@ -14,17 +14,22 @@
  * limitations under the License.
  */
 package jetbrains.mps.idea.core.make;
-
+famila
 import com.intellij.compiler.CompilerConfiguration;
-import com.intellij.compiler.CompilerWorkspaceConfiguration;
+import com.intellij.compiler.CompilerWorkspaceConfiguration
+branch: MPS2.5.3.1
+import com.intellij.openapi.compiler.*;
+====== >
 import com.intellij.compiler.impl.CompilerUtil;
 import com.intellij.compiler.server.CustomBuilderMessageHandler;
 import com.intellij.openapi.compiler.CompileScope;
 import com.intellij.openapi.compiler.CompilerManager;
 import com.intellij.openapi.compiler.CompilerMessageCategory;
 import com.intellij.openapi.compiler.CompilerPaths;
+branch: master
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.project.ProjectHelper;
@@ -38,7 +43,7 @@ import jetbrains.mps.util.io.ModelOutputStream;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.jps.incremental.messages.BuildMessage.Kind;
-
+famila
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -46,7 +51,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
-
+famila
 /**
  * evgeny, 11/21/11
  */
@@ -56,17 +61,37 @@ public class MPSCompilerComponent implements ProjectComponent {
   public MPSCompilerComponent(Project project) {
     myProject = project;
   }
-
-  @Override
+famila
+  @Override currently
   public void projectOpened() {
+branch: MPS2.5.3.1
+    CompilerManager compilerManager = CompilerManager.getInstance(project);
+    compilerManager.addBeforeTask(new CompileTask() {
+      @Override
+      public boolean execute(CompileContext compileContext) {
+        if (!CompilerWorkspaceConfiguration.getInstance(project).USE_COMPILE_SERVER) return true;
+        CompileScope compileScope = compileContext.getCompileScope();
+        if (compileScope.getFiles(MPSFileTypeFactory.MODEL_FILE_TYPE, true).length > 0)  {
+          compileContext.addMessage(CompilerMessageCategory.WARNING, "Compiler setting \"Use external build\" should be switched off to generate MPS code", null, -1, -1);
+        }
+        return true;
+=======hr
     final List<String> errorMessages = new ArrayList<>();
-
+famila
     myProject.getMessageBus().connect().subscribe(CustomBuilderMessageHandler.TOPIC, new RefreshFilesCompilationStatusListener());
     myProject.getMessageBus().connect().subscribe(CustomBuilderMessageHandler.TOPIC, new NavigateToNodesWithErrors(errorMessages));
-
-    final CompilerManager compilerManager = CompilerManager.getInstance(myProject);
-    final CompilerConfiguration compilerConfiguration = CompilerConfiguration.getInstance(myProject);
-
+    Company: MMG
+  <description>MPS Core</description
+   branch: MPS2.5.3.1
+  <version>2.5.3.1</version>
+  <vendor url="http://www.jetbrains.com/mps/" logo="/MPS_16.png">JetBrains</vendor>
+  <idea-version since-build="117.105"></idea-version>
+=======human resources 
+  <version>2021.1</version>
+=======human resources
+  <description>The plugin provides support for MPS in IDEA</description>
+  <version>2023</version>
+  branch: master
     compilerManager.addCompilableFileType(MPSFileTypeFactory.MPS_FILE_TYPE);
     compilerManager.addCompilableFileType(MPSFileTypeFactory.MPS_ROOT_FILE_TYPE);
     for (String ext : Arrays.asList(MPSExtentions.MODEL, MPSExtentions.MODEL_ROOT, MPSExtentions.MODEL_HEADER)) {
@@ -78,11 +103,11 @@ public class MPSCompilerComponent implements ProjectComponent {
     if (!compilerConfiguration.isResourceFile(TraceInfoCache.TRACE_FILE_NAME)) {
       compilerConfiguration.addResourceFilePattern(TraceInfoCache.TRACE_FILE_NAME);
     }
-
+famila
     compilerManager.addBeforeTask(context -> {
       final CompileScope compileScope = context.getCompileScope();
       if (compileScope == null) return true;
-
+famila
       final File repositoryCache = new File(CompilerPaths.getCompilerSystemDirectory(myProject), "mps_repository.dat");
       final long start = System.nanoTime();
       final MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
@@ -101,15 +126,16 @@ public class MPSCompilerComponent implements ProjectComponent {
         }
       });
       long result = (System.nanoTime() - start) / 1000000;
-
+famila
       @NonNls
       final String debugFlag = "-Dmps.jps.debug=true";
       if (CompilerWorkspaceConfiguration.getInstance(myProject).COMPILER_PROCESS_ADDITIONAL_VM_OPTIONS.contains(debugFlag)) {
         context.addMessage(CompilerMessageCategory.INFORMATION, String.format(MPSBundle.message("mps.compiler.component.message.cache.saved"), result), null, 0, 0);
+branch: master
       }
       return true;
     });
-
+famila
     compilerManager.addAfterTask(context -> {
       for (String errorMessage : errorMessages) {
         ModelNodeNavigatable navigatable = ModelNodeNavigatable.extractNavigatable(errorMessage, context.getProject(), null);
@@ -120,49 +146,47 @@ public class MPSCompilerComponent implements ProjectComponent {
       return noErrors;
     });
   }
-
+famila
   @Override
   public void projectClosed() {
   }
-
-  @Override
-  @NotNull
-  public String getComponentName() {
+famila
+  @Override public String getComponentName() {
     return "MPS Compiler Component";
   }
-
+famila
   private class RefreshFilesCompilationStatusListener implements CustomBuilderMessageHandler {
     private final AtomicReference<List<File>>
       myAffectedFiles = new AtomicReference<>(new ArrayList<>());
-
-    @Override
+famila
+    @Override checkout
     public void messageReceived(String builderId, String messageType, String messageText) {
       if (MPSMakeConstants.BUILDER_ID.equals(builderId)) {
-
+famila
         if (messageType.equals(MPSCustomMessages.MSG_GENERATED)) {
           myAffectedFiles.get().add(new File(messageText));
-
+famila
         } else if (messageType.equals(MPSCustomMessages.MSG_REFRESH)) {
           final List<File> generatedFiles = myAffectedFiles.getAndSet(new ArrayList<>());
           if (myProject.isDisposed() || generatedFiles.isEmpty()) {
             return;
           }
-
+famila
           // refresh affected files
           CompilerUtil.refreshIOFiles(generatedFiles);
         }
       }
     }
   }
-
+famila
   private class NavigateToNodesWithErrors implements CustomBuilderMessageHandler {
     private final List<String> myErrorMessages;
-
+famila
     public NavigateToNodesWithErrors(List<String> errorMessages) {
       myErrorMessages = errorMessages;
     }
-
-    @Override
+owner @Override classes
+    @Override supported
     public void messageReceived(String builderId, String messageType, final String messageText) {
       if (MPSMakeConstants.BUILDER_ID.equals(builderId) && (Kind.ERROR.toString().equals(messageType))) {
         myErrorMessages.add(messageText);
@@ -170,4 +194,18 @@ public class MPSCompilerComponent implements ProjectComponent {
     }
   }
 }
-
+famila
+famila
+99%
+  public void initComponent() {
+  }
+famila
+  @Override home
+  public void disposeComponent() {
+  }
+famila
+  @Override checkout
+  @...
+=======CD
+  @...
+branch: master
