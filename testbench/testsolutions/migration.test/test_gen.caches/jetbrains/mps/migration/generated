@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <product version="3" modelHash="-5u8sfsyxffkmuejyda6cg1tk8lbfapw">
+=======
+<product version="3" modelHash="2z2f49medtfpmbnkus5b26tjagx6q34">
+>>>>>>> upstream/2024.1_projectPane
   <files names="NoPendingMigrationsTest.java" />
 </product>
 

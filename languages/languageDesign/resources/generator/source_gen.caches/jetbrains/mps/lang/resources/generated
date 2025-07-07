@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <product version="3" modelHash="90c4627myr0rzoc46h7nkec3ivs7hfa">
+=======
+<product version="3" modelHash="-bam7e2m1t8mxsp47kagxy402jrabdx4">
+>>>>>>> upstream/2024.1_projectPane
   <files names="Generator.java" />
 </product>
 

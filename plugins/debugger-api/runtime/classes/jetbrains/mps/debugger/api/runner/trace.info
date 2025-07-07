@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1160998861373:jetbrains.mps.baseLanguage.structure.AssertStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082485599095:jetbrains.mps.baseLanguage.structure.BlockStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
+  <root nodeRef="r:2a614e43-21e7-49b5-9503-c8251b638b89(jetbrains.mps.debugger.api.runner)/4474271214083126640">
+    <file name="MPSDebugRunner.java">
+      <node id="4551500037857467360" at="34,94,35,195" concept="7" />
+      <node id="4474271214083126730" at="40,31,41,34" concept="7" />
+      <node id="4474271214083127122" at="44,138,45,61" concept="8" />
+      <node id="4474271214083126747" at="45,61,46,137" concept="7" />
+      <node id="4474271214083126769" at="49,206,50,23" concept="6" />
+      <node id="4474271214083127124" at="50,23,51,35" concept="8" />
+      <node id="4474271214083126783" at="52,51,53,92" concept="3" />
+      <node id="4474271214083126778" at="54,12,55,64" concept="9" />
+      <node id="4474271214083126799" at="57,27,58,59" concept="9" />
+      <node id="4474271214083126803" at="59,5,60,98" concept="6" />
+      <node id="4474271214083126810" at="60,98,61,103" concept="6" />
+      <node id="4474271214083126820" at="61,103,62,78" concept="6" />
+      <node id="6225536200579648566" at="62,78,63,135" concept="0" />
+      <node id="4474271214083126826" at="63,135,64,84" concept="3" />
+      <node id="4474271214083126832" at="64,84,65,126" concept="6" />
+      <node id="4474271214083126842" at="65,126,66,57" concept="7" />
+      <node id="4474271214083126857" at="69,100,70,16" concept="7" />
+      <node id="4474271214083126648" at="30,0,32,0" concept="2" trace="MPSDebugRunner#()V" />
+      <node id="4474271214083126776" at="54,10,56,5" concept="1" />
+      <node id="4474271214083126794" at="56,5,59,5" concept="4" />
+      <node id="4474271214083126652" at="33,0,37,0" concept="5" trace="canRun#(Ljava/lang/String;Lcom/intellij/execution/configurations/RunProfile;)Z" />
+      <node id="4474271214083126849" at="68,0,72,0" concept="5" trace="getSettingsEditor#(Lcom/intellij/execution/Executor;Lcom/intellij/execution/configurations/RunConfiguration;)Lcom/intellij/openapi/options/SettingsEditor;" />
+      <node id="4474271214083126726" at="38,0,43,0" concept="5" trace="getRunnerId#()Ljava/lang/String;" />
+      <node id="4474271214083126733" at="43,0,48,0" concept="5" trace="doExecute#(Lcom/intellij/execution/configurations/RunProfileState;Lcom/intellij/execution/runners/ExecutionEnvironment;)Lcom/intellij/execution/ui/RunContentDescriptor;" />
+      <node id="4474271214083126772" at="51,35,56,5" concept="4" />
+      <node id="4474271214083126755" at="48,0,68,0" concept="5" trace="createContentDescriptor#(Lcom/intellij/openapi/project/Project;Lcom/intellij/execution/Executor;Lcom/intellij/execution/configurations/RunProfileState;Lcom/intellij/execution/ui/RunContentDescriptor;Lcom/intellij/execution/runners/ExecutionEnvironment;)Lcom/intellij/execution/ui/RunContentDescriptor;" />
+      <scope id="4474271214083126651" at="30,27,30,27" />
+      <scope id="4474271214083126661" at="34,94,35,195" />
+      <scope id="4474271214083126729" at="40,31,41,34" />
+      <scope id="4474271214083126782" at="52,51,53,92" />
+      <scope id="4474271214083126777" at="54,12,55,64" />
+      <scope id="4474271214083126798" at="57,27,58,59" />
+      <scope id="4474271214083126856" at="69,100,70,16" />
+      <scope id="4474271214083126648" at="30,0,32,0" />
+      <scope id="4474271214083126746" at="44,138,46,137" />
+      <scope id="4474271214083126652" at="33,0,37,0">
+        <var name="executorId" id="4474271214083126655" />
+        <var name="profile" id="4474271214083126658" />
+      </scope>
+      <scope id="4474271214083126849" at="68,0,72,0">
+        <var name="configuration" id="4474271214083126854" />
+        <var name="executor" id="4474271214083126852" />
+      </scope>
+      <scope id="4474271214083126726" at="38,0,43,0" />
+      <scope id="4474271214083126733" at="43,0,48,0">
+        <var name="enviroment" id="4474271214083126744" />
+        <var name="state" id="4474271214083126740" />
+      </scope>
+      <scope id="4474271214083126768" at="49,206,66,57">
+        <var name="contentBuilder" id="4474271214083126833" />
+        <var name="debugSession" id="4474271214083126821" />
+        <var name="debugSessionCreator" id="4474271214083126804" />
+        <var name="debugger" id="4474271214083126770" />
+        <var name="executionResult" id="4474271214083126811" />
+      </scope>
+      <scope id="4474271214083126755" at="48,0,68,0">
+        <var name="contentToReuse" id="4474271214083126764" />
+        <var name="env" id="4474271214083126766" />
+        <var name="executor" id="4474271214083126760" />
+        <var name="project" id="4474271214083126758" />
+        <var name="state" id="4474271214083126762" />
+      </scope>
+      <unit id="4474271214083126640" at="28,0,73,0" name="jetbrains.mps.debugger.api.runner.MPSDebugRunner" />
+    </file>
+  </root>
+</debug-info>
+

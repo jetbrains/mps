@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <product version="3" modelHash="795lqp5pd8xbo6imypg81px20czbo22">
   <files names="AbstractDebugSession.java:AbstractDebugSessionCreator.java:AbstractDebugger.java:AbstractUiState.java:BreakpointCreator.java:BreakpointCreatorsManager.java:BreakpointInfo.java:BreakpointManagerComponent.java:DebugSessionManagerComponent.java:DebuggableFramesSelector.java:DebuggerImplBean.java:DebuggerNotPresentException.java:Debuggers.java:EmptyDebuggerSettings.java:IDebuggableFramesSelector.java:IDebugger.java:IDebuggerSettings.java:SessionChangeAdapter.java:SessionChangeListener.java" />
+=======
+<product version="3" modelHash="-20r69p90z96a5kpzcsmwdyjtzykar0d">
+  <files names="AbstractDebugSession.java:AbstractDebugSessionCreator.java:AbstractDebugger.java:AbstractUiState.java:BreakpointCreator.java:BreakpointCreatorsManager.java:BreakpointInfo.java:BreakpointManagerComponent.java:DebugSessionManagerComponent.java:DebuggableFramesSelector.java:DebuggerNotPresentException.java:Debuggers.java:EmptyDebuggerSettings.java:IDebuggableFramesSelector.java:IDebugger.java:IDebuggerSettings.java:SessionChangeAdapter.java:SessionChangeListener.java" />
+>>>>>>> upstream/2024.1_projectPane
 </product>
 
