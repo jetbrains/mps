@@ -31,11 +31,80 @@ public class Solution extends AbstractModule implements ReloadableModule {
   private SolutionDescriptor mySolutionDescriptor;
   public static final String SOLUTION_MODELS = "models";
 
+<<<<<<< HEAD
   /* TODO make package local, move to appropriate package */
   public Solution(SolutionDescriptor descriptor, @Nullable IFile file) {
     super(file);
     mySolutionDescriptor = descriptor;
     setModuleReference(descriptor.getModuleReference());
+=======
+  // -------------------------------------------------------------------
+
+  private Solution() {
+
+  }
+
+  //this is for stubs framework only
+
+  public static Solution newInstance(SolutionDescriptor descriptor, MPSModuleOwner moduleOwner) {
+    Solution solution = new Solution() {
+      public String getGeneratorOutputPath() {
+        return null;
+      }
+
+      public String getTestsGeneratorOutputPath() {
+        return null;
+      }
+    };
+
+    MPSModuleRepository repository = MPSModuleRepository.getInstance();
+    if (repository.existsModule(descriptor.getModuleReference())) {
+      LOG.error("Loading module " + descriptor.getNamespace() + " for the second time");
+      return repository.getSolution(descriptor.getModuleReference());
+    }
+
+    solution.setSolutionDescriptor(descriptor, false);
+    repository.addModule(solution, moduleOwner);
+
+    return solution;
+  }
+
+  public static Solution newInstance(IFile descriptorFile, MPSModuleOwner moduleOwner) {
+    Solution solution = new Solution();
+    SolutionDescriptor solutionDescriptor;
+    if (descriptorFile.exists()) {
+      solutionDescriptor = SolutionDescriptorPersistence.loadSolutionDescriptor(descriptorFile);
+      if (solutionDescriptor.getUUID() == null) {
+        solutionDescriptor.setUUID(UUID.randomUUID().toString());
+        SolutionDescriptorPersistence.saveSolutionDescriptor(descriptorFile, solutionDescriptor);
+      }
+    } else {
+      solutionDescriptor = new SolutionDescriptor();
+      solutionDescriptor.setUUID(UUID.randomUUID().toString());
+    }
+    solution.myDescriptorFile = descriptorFile;
+
+    MPSModuleRepository repository = MPSModuleRepository.getInstance();
+    if (repository.existsModule(solutionDescriptor.getModuleReference())) {
+      LOG.error("Loading module " + solutionDescriptor.getNamespace() + " for the second time");
+      return repository.getSolution(solutionDescriptor.getModuleReference());
+    }
+
+    solution.setSolutionDescriptor(solutionDescriptor, false);
+    repository.addModule(solution, moduleOwner);
+
+    return solution;
+  }
+
+  protected void readModels() {
+    if (!isInitialized()) {
+      super.readModels();
+
+      if (isInitialized()) {
+        fireModuleInitialized();
+      }
+    }
+>>>>>>> origin/MPS1.5
   }
 
   @NotNull
@@ -56,7 +125,77 @@ public class Solution extends AbstractModule implements ReloadableModule {
       mp = new jetbrains.mps.project.structure.modules.ModuleReference(descriptorFile.getPath(), mySolutionDescriptor.getId());
     }
 
+<<<<<<< HEAD
     setModuleReference(mp);
+=======
+    setModulePointer(mp);
+
+    reloadAfterDescriptorChange();
+
+    MPSModuleRepository.getInstance().fireModuleChanged(this);
+
+    if (reloadClasses) {
+      ClassLoaderManager.getInstance().reloadAll(new EmptyProgressIndicator());
+    }
+
+    invalidateDependencies();
+  }
+
+  public void dispose() {
+    super.dispose();
+    SModelRepository.getInstance().unRegisterModelDescriptors(this);
+  }
+
+  public void save() {
+    if (isStub()) return;
+    SolutionDescriptorPersistence.saveSolutionDescriptor(myDescriptorFile, getModuleDescriptor());
+  }
+
+  public boolean isStub() {
+    return myDescriptorFile == null;
+  }
+
+  public String toString() {
+    String namespace = mySolutionDescriptor.getNamespace();
+    if (namespace != null && namespace.length() != 0) return namespace;
+    assert myDescriptorFile != null;
+    namespace = myDescriptorFile.getName();
+    return namespace;
+  }
+
+  public boolean isExternallyVisible() {
+    return mySolutionDescriptor.isExternallyVisible();
+  }
+
+  public String getGeneratorOutputPath() {
+    String generatorOutputPath = mySolutionDescriptor.getOutputPath();
+    if (generatorOutputPath != null) return generatorOutputPath;
+    assert myDescriptorFile != null;
+    generatorOutputPath = myDescriptorFile.getParent().getCanonicalPath() + File.separatorChar + "source_gen";
+    return generatorOutputPath;
+  }
+
+  public String getTestsGeneratorOutputPath() {
+    assert myDescriptorFile != null;
+    return myDescriptorFile.getParent().getCanonicalPath() + File.separatorChar + "test_gen";
+  }
+
+  protected void collectRuntimePackages(Set<String> result, String current) {
+    if (!"".equals(current) && !getClassPathItem().getAvailableClasses(current).isEmpty()) {
+      result.add(current);
+    }
+    for (String subpack : getClassPathItem().getSubpackages(current)) {
+      collectRuntimePackages(result, subpack);
+    }
+  }
+
+  public boolean reloadClassesAfterGeneration() {
+    return false;
+  }
+
+  public boolean areJavaStubsEnabled() {
+    return getModuleDescriptor().getEnableJavaStubs() || !getModuleDescriptor().getSourcePaths().isEmpty();
+>>>>>>> origin/MPS1.5
   }
 
   @Override

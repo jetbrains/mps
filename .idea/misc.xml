@@ -10,7 +10,7 @@
   <component name="ProjectResources">
     <default-html-doctype>http://www.w3.org/1999/xhtml</default-html-doctype>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" project-jdk-name="JB JDK 21" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" project-jdk-name="Android API 36.0, extension level 17 Platform" project-jdk-type="Android SDK">
     <output url="file://$PROJECT_DIR$/classes" />
   </component>
   <component name="ProjectType">

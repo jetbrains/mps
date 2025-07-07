@@ -36,8 +36,15 @@ public enum LanguageAspect {
   //mostly migrated
   EDITOR("editor"),
 
+<<<<<<< HEAD
   //mostly migrated (no uses in MPS)
   ACTIONS("actions"),
+=======
+    public String getHelpURL() {
+      return "http://www.jetbrains.net/confluence/display/MPSD1/Structure";
+    }
+  },
+>>>>>>> origin/MPS1.5
 
   //mostly migrated
   CONSTRAINTS("constraints"),
@@ -45,8 +52,15 @@ public enum LanguageAspect {
   //mostly migrated
   BEHAVIOR("behavior"),
 
+<<<<<<< HEAD
   //mostly migrated
   TYPESYSTEM("typesystem"),
+=======
+    public String getHelpURL() {
+      return "http://www.jetbrains.net/confluence/display/MPSD1/Editor";
+    }
+  },
+>>>>>>> origin/MPS1.5
 
   //mostly migrated (no uses in MPS)
   REFACTORINGS("refactorings"),
@@ -54,8 +68,15 @@ public enum LanguageAspect {
   //mostly migrated (no uses in MPS)
   SCRIPTS("scripts"),
 
+<<<<<<< HEAD
   //mostly migrated (no uses in MPS)
   INTENTIONS("intentions"),
+=======
+    public String getHelpURL() {
+      return "http://www.jetbrains.net/confluence/display/MPSD1/Editor+Actions";
+    }
+  },
+>>>>>>> origin/MPS1.5
 
   //mostly migrated
   FIND_USAGES("findUsages"),
@@ -64,8 +85,15 @@ public enum LanguageAspect {
   // (no uses in MPS)
   PLUGIN("plugin"),
 
+<<<<<<< HEAD
   //mostly migrated (no uses in MPS)
   DATA_FLOW("dataFlow"),
+=======
+    public String getHelpURL() {
+      return "http://www.jetbrains.net/confluence/display/MPSD1/Constraints";
+    }
+  },
+>>>>>>> origin/MPS1.5
 
   //mostly migrated (no uses in MPS)
   TEST("test"),
@@ -73,11 +101,172 @@ public enum LanguageAspect {
   //mostly migrated (no uses in MPS)
   TEXT_GEN("textGen"),
 
+<<<<<<< HEAD
   //mostly migrated. No uses in MPS, 1 in mbeddr
   MIGRATION("migration");
 
   //TODO must be changed for each major/minor version release
   public static final String HELP_CENTER_BASE = "https://www.jetbrains.com/help/mps/2024.1/";
+=======
+    public String getHelpURL() {
+      return "http://www.jetbrains.net/confluence/display/MPSD1/Behavior";
+    }
+  },
+
+  TYPESYSTEM("typesystem") {
+    public SModelDescriptor get(Language l) {
+      SModelDescriptor result = super.get(l);
+      if (result == null) {
+        //todo backward compatibility
+        result = SModelRepository.getInstance().getModelDescriptor(SModelFqName.fromString(l.getNamespace() + ".helgins"));
+      }
+      return result;
+    }
+
+    public ModuleReference getMainLanguage() {
+      return Typesystem_Language.MODULE_REFERENCE;
+    }
+
+    public List<ModuleReference> getAllLanguagesToImport(Language l) {
+      List<ModuleReference> result = new ArrayList<ModuleReference>(super.getAllLanguagesToImport(l));
+      result.add(l.getModuleReference());
+      return result;
+    }
+
+    public Icon getIcon() {
+      return Icons.TYPESYSTEM_MODEL_ICON;
+    }
+
+    public String getHelpURL() {
+      return "http://www.jetbrains.net/confluence/display/MPSD1/Typesystem";
+    }
+  },
+
+  REFACTORINGS("refactorings") {
+    public ModuleReference getMainLanguage() {
+      return Refactoring_Language.MODULE_REFERENCE;
+    }
+
+    public Icon getIcon() {
+      return Icons.REFACTORINGS_MODEL_ICON;
+    }
+
+    public String getHelpURL() {
+      return "";
+    }
+  },
+
+  SCRIPTS("scripts") {
+    public ModuleReference getMainLanguage() {
+      return Script_Language.MODULE_REFERENCE;
+    }
+
+    public String getHelpURL() {
+      return "";
+    }
+  },
+
+  INTENTIONS("intentions") {
+    public ModuleReference getMainLanguage() {
+      return Intentions_Language.MODULE_REFERENCE;
+    }
+
+    public Icon getIcon() {
+      return Icons.INTENTIONS_MODEL_ICON;
+    }
+
+    public String getHelpURL() {
+      return "http://www.jetbrains.net/confluence/display/MPSD1/Intentions";
+    }
+  },
+
+  FIND_USAGES("findUsages") {
+    public ModuleReference getMainLanguage() {
+      return FindUsages_Language.MODULE_REFERENCE;
+    }
+
+    public Icon getIcon() {
+      return Icons.FIND_USAGES_MODEL_ICON;
+    }
+
+    public String getHelpURL() {
+      return "http://www.jetbrains.net/confluence/display/MPSD1/Find+usages";
+    }
+  },
+
+  PLUGIN("plugin") {
+    public ModuleReference getMainLanguage() {
+      return Plugin_Language.MODULE_REFERENCE;
+    }
+
+    public Icon getIcon() {
+      return Icons.PLUGIN_MODEL_ICON;
+    }
+
+    public String getHelpURL() {
+      return "http://www.jetbrains.net/confluence/display/MPSD1/Plugin";
+    }
+  },
+
+  DATA_FLOW("dataFlow") {
+    public ModuleReference getMainLanguage() {
+      return DataFlow_Language.MODULE_REFERENCE;
+    }
+
+    @Override
+    public Icon getIcon() {
+      return Icons.DATA_FLOW_MODEL_ICON;
+    }
+
+    public String getHelpURL() {
+      return "http://www.jetbrains.net/confluence/display/MPSD1/Data+flow#Dataflow-intermediatelanguage";
+    }
+  },
+
+  TEST("test") {
+    public ModuleReference getMainLanguage() {
+      return Test_Language.MODULE_REFERENCE;
+    }
+
+    @Override
+    public Icon getIcon() {
+      return Icons.TEST_MODEL_ICON;
+    }
+
+    public String getHelpURL() {
+      return "http://www.jetbrains.net/confluence/display/MPSD1/Language+tests+language#Languagetestslanguage-introduction";
+    }
+  },
+
+  TEXT_GEN("textGen") {
+    public ModuleReference getMainLanguage() {
+      return TextGen_Language.MODULE_REFERENCE;
+    }
+
+    @Override
+    public Icon getIcon() {
+      return Icons.TEXT_GEN_MODEL_ICON;
+    }
+
+    public String getHelpURL() {
+      return "";
+    }
+  },
+
+  STUBS("stubs") {
+    public ModuleReference getMainLanguage() {
+      return Stubs_Language.MODULE_REFERENCE;
+    }
+
+    public Icon getIcon() {
+      return Icons.STUBS_MODEL_ICON;
+    }
+
+    public String getHelpURL() {
+      return "";
+    }
+  },;
+>>>>>>> origin/MPS1.5
 
   private String myName;
 
